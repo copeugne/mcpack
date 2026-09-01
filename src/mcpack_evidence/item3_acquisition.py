@@ -6,6 +6,7 @@ import hashlib
 import http.client
 import time
 import urllib.parse
+import urllib.request
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import TYPE_CHECKING, ClassVar, Literal
@@ -196,7 +197,7 @@ def _download(url: str, partial: Path) -> None:
     if parsed.scheme != "https" or parsed.hostname not in _ALLOWED_HOSTS:
         message = f"untrusted artifact URL: {url}"
         raise ArtifactVerificationError(message)
-    connection = http.client.HTTPSConnection(parsed.hostname, timeout=120)
+    connection = _https_connection(parsed.hostname)
     target = parsed.path if not parsed.query else f"{parsed.path}?{parsed.query}"
     connection.request("GET", target, headers={"User-Agent": "mcpack-evidence/0.1"})
     response = connection.getresponse()
@@ -218,3 +219,17 @@ def _download(url: str, partial: Path) -> None:
     finally:
         response.close()
         connection.close()
+
+
+def _https_connection(hostname: str) -> http.client.HTTPSConnection:
+    """Open HTTPS through the configured managed proxy when one is present."""
+    proxy_url = urllib.request.getproxies().get("https")
+    if proxy_url is None:
+        return http.client.HTTPSConnection(hostname, timeout=120)
+    proxy = urllib.parse.urlsplit(proxy_url)
+    if proxy.scheme != "http" or proxy.hostname is None:
+        message = f"unsupported HTTPS proxy URL: {proxy_url}"
+        raise ArtifactVerificationError(message)
+    connection = http.client.HTTPSConnection(proxy.hostname, proxy.port or 80, timeout=120)
+    connection.set_tunnel(hostname, port=443)
+    return connection
