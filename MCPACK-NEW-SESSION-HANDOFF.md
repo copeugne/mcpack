@@ -1,11 +1,155 @@
 # Adventure & Engineering Minecraft Pack — New-Session Handoff
 
 **Prepared:** 2026-09-01
+**Live checkpoint updated:** 2026-09-01
 **Canonical repository:** `https://github.com/copeugne/mcpack`
 **Verified remote branch:** `main`
-**Verified remote HEAD:** `d0f3d22e3c235c451d9ebcb517ea345bbfa2e8f5`
-**Verified commit count:** 28
-**Primary status:** Recovery Gate R-1 is still open; repository reconstruction is published, but Items 2–10 require evidence reconstruction/reruns before Item 11.
+**Verified remote HEAD before this handoff commit:** `3d1f33551700c9804503d0e27edddce35ea285c4`
+**Verified commit count before this handoff commit:** 41
+**Primary status:** Item 2 is complete and published. Item 3 is incomplete and stopped after exact acquisition plus top-level and embedded-JAR inspection. Items 4–10 have not been advanced. Item 11 is not authorized.
+
+---
+
+## 0. Live Validated Checkpoint — Read Before the Historical Handoff
+
+This section supersedes older status statements in this file wherever they conflict. The remainder of the file preserves the recovery history, design contract, and execution context that remain applicable.
+
+### 0.1 Exact stop boundary
+
+The user explicitly stopped execution while Item 3 was in progress and requested this handoff. Do not continue from Item 4. Resume at the unfinished Item 3 compatibility evaluation, using the committed acquisition and JAR-inspection evidence described below.
+
+The live plan at the stop boundary is:
+
+1. **Complete:** Complete and publish Item 2 baseline evidence, validation, and recovery milestone.
+2. **In progress:** Validate all 190 Item 3 candidate artifacts, dependencies, conflicts, sides, and embedded overlaps.
+3. **Pending:** Publish Item 3 compatibility matrix, audit report, decisions, limitations, reproduction, and exit gate.
+4. **Pending:** Build and validate Item 4 deterministic isolated test environments, controls, and backup/restore boot.
+5. **Pending:** Implement and validate Item 5 profiling and gameplay-measurement methodology.
+6. **Pending:** Execute Item 6 generated-configuration audit without tuning.
+7. **Pending:** Execute Item 7 deterministic terrain/worldgen interaction inspection with preserved evidence.
+8. **Pending:** Execute Item 8 runtime-backed structure-family inventory.
+9. **Pending:** Execute Item 9 evidence-backed provisional tier classification.
+10. **Pending:** Execute Item 10 checkpointed density generation, integrity validation, analysis, and reporting.
+11. **Pending:** Run final cross-item QA, push atomic commits/tags, and determine whether Item 11 is authorized.
+
+### 0.2 Git and working-tree state
+
+Before this handoff edit, local `main`, `origin/main`, and `origin/HEAD` all resolved to `3d1f33551700c9804503d0e27edddce35ea285c4`. The tracked working tree was clean. The following untracked paths were deliberately not committed:
+
+- `.codegraph` — pre-existing user artifact;
+- `mcpack-reconstructed-28(1).bundle` — pre-existing user recovery bundle;
+- `.ulw-notepad.md` — live-session symlink to transient agent state, not project evidence.
+
+Do not delete, stage, or commit the first two paths. The live-session symlink may disappear when that agent session ends and is not a repository requirement.
+
+All relevant Item 2 and Item 3 implementation, tests, committed evidence, source maps, and acquisition procedures through the stop boundary are already committed and pushed. There were no additional uncommitted project sources to rescue when this handoff was prepared.
+
+The handoff commit is marked by annotated tag `item-3-jar-inspection-checkpoint-2026-09-01`. This is a durable partial-work checkpoint only; it does not mark Item 3 complete.
+
+### 0.3 Item 2 — complete from primary empirical evidence
+
+Item 2 passed its reconstructability exit gate. The accepted target is Minecraft 1.21.1, NeoForge 21.1.249, and Eclipse Temurin 21.0.12.1+1-LTS. The zero-mod server booted, flushed, stopped, restarted the existing world, was archived, independently restored, and booted again. The full installed archive was not redistributed because it contains third-party binaries; exact official acquisition plus the public state overlay is the reproducible equivalent.
+
+Relevant pushed commits:
+
+- `884beec` — strict evidence validation;
+- `7afacb4` — exact platform provisioning;
+- `40ebd9ac4beb3258d1ab3b88e7941da0bf5f5548` — reconstructed baseline evidence;
+- `5fce47f1f11a6ffeb1ef7b1dddfafdb7dc6eab29` — Item 2 closeout.
+
+Validated tags and durable assets:
+
+- `item-2-evidence-assets-2026-09-01` targets `40ebd9a` and publishes:
+  - `pristine-baseline-v0-state.tar.gz`, 1,275,395 bytes, SHA-256 `d7880902d37011075a3548404ffe84f0073ef5da7788b6244a24204dd3531663`;
+  - `item2-raw-evidence-2026-09-01.tar.gz`, 389,164 bytes, SHA-256 `e97ffe0f036e66be301604de867154a1532f20a5b8cc896c4ed93330e5ae239d`.
+- `item-2-baseline-recovery-2026-09-01` resolves to `5fce47f1f11a6ffeb1ef7b1dddfafdb7dc6eab29`.
+
+Primary Item 2 evidence is under `evidence/item-2/`; raw runtime evidence and exact acquisition records are under `evidence/raw/item2/` in the reconstructable evidence layout. Do not modify the frozen Item 2 control while finishing Item 3.
+
+### 0.4 Item 3 — committed progress, not completion
+
+Exactly 190 candidate filenames have exact file-level primary-source identities: 176 from Modrinth and 14 from CurseForge. All 190 exact artifacts were acquired into ignored audit storage and verified against publisher hashes where supplied or official file sizes where publisher hashes were unavailable. The acquisition set totals 699,397,290 bytes.
+
+All 190 outer archives passed ZIP integrity, path-safety, and expected SHA-256 checks. The inspection classified 188 outer archives as mods and 2 as libraries. Thirty-nine candidates contain embedded JARs; 204 embedded JARs were inspected, and no archive-integrity issue was reported. These facts prove artifact identity and parseability only. They do not prove loader compatibility, dedicated-server compatibility, dependency closure, conflict freedom, gameplay correctness, or acceptable performance.
+
+Relevant pushed commits, in order:
+
+- `3da9f40` — exact candidate audit model and validator foundation;
+- `ca807f97ddc1e36f3e1418e5ce97bdc601ef621a` — exact source identities and raw-source manifest;
+- `4c40642` — remote source-evidence verification;
+- `ac3b9f5` — exact candidate acquisition and identity manifest;
+- `e217570` — top-level candidate JAR metadata inspection;
+- `3d1f33551700c9804503d0e27edddce35ea285c4` — embedded-JAR metadata inspection.
+
+Validated Item 3 source-evidence milestone:
+
+- annotated tag `item-3-primary-source-evidence-2026-09-01` resolves to `ca807f97ddc1e36f3e1418e5ce97bdc601ef621a`;
+- release asset `item3-primary-source-raw-2026-09-01.tar.gz` is 20,124,166 bytes with SHA-256 `f2bf2902ade83adb3c8e7aac9bb1527000a04833267325666a6e934984a9ef04` and 771 archive members;
+- `evidence/item-3/source-evidence-durability.json` records a passing fresh-download, hash, size, and tar-listing verification.
+
+Machine-readable committed evidence:
+
+- `evidence/item-3/source-identity-matrix.json` — exact primary file identities;
+- `evidence/item-3/raw-source-manifest.json` — 767 preserved primary-response files, 122,432,761 bytes;
+- `evidence/item-3/source-evidence-durability.json` — release retrieval and integrity receipt;
+- `evidence/item-3/artifact-acquisition-manifest.json` — exact 190-file acquisition identities and computed hashes;
+- `evidence/item-3/jar-inspection.json` — outer and embedded archive/metadata inspection.
+
+Reproduction sources:
+
+- `candidate-mods/item3-curseforge-file-map.json`;
+- `candidate-mods/item3-search-query-overrides.json`;
+- `src/mcpack_evidence/item3*.py`;
+- `src/mcpack_evidence/raw_manifest.py`;
+- `tests/item3/`;
+- `tools/build_candidate_source_matrix.py`;
+- `tools/collect_candidate_modrinth.py`;
+- `tools/collect_candidate_curseforge.py`;
+- `tools/build_raw_evidence_manifest.py`;
+- `tools/acquire_candidate_artifacts.py`;
+- `tools/inspect_candidate_jars.py`.
+
+The exact candidate JARs are intentionally not committed to Git. Their ignored local acquisition path at the stop boundary is `downloads/item3/candidates/`. Reacquire them with the committed acquisition tool and verify the regenerated acquisition manifest before relying on them. The committed primary-response bundle contains no candidate JARs.
+
+### 0.5 Named hazard evidence
+
+These are verified static facts, not final enablement decisions:
+
+- `DungeonsAriseSevenSeas-1.21.x-1.0.4-neoforge.jar` is exact Modrinth version `erk04BGa`, 244,981 bytes, SHA-256 `549040fbd81d1b33aea38681109685e86d63985785246a831112c4ba5740d2df`. Its embedded NeoForge metadata identifies `dungeons_arise_seven_seas`, Minecraft range `[1.20,1.22)`, and NeoForge range `[21,)`; Minecraft 1.21.1 falls inside the declared static range. The broad filename and changing platform labels remain hazards requiring an explicit audited disposition.
+- `adorabuild-structures-2.11.0-neoforge-1.21.3.jar` is exact Modrinth version `l7GS6bZj`, 657,734 bytes, SHA-256 `6f399680da36dbb95b9a0dbf8b600f173e650be4d6bc25f50fcac792dcce081e`. Its embedded NeoForge metadata identifies `adorabuild_structures`, Minecraft range `[1.21,1.21.3]`, and NeoForge range `[21.0.0-beta,)`; Minecraft 1.21.1 falls inside the declared static range. The filename naming 1.21.3 must not be silently ignored, but it is not by itself proof of incompatibility.
+- `cc-tweaked-1.21.1-forge-1.116.1.jar` contains NeoForge metadata and declares NeoForge `[21.1.9,21.2)`. Its filename alone is not loader evidence.
+- `sliceanddice-forge-4.2.4.jar` contains NeoForge metadata and declares Minecraft `[1.21.1,)`, NeoForge `[21,)`, and required dependencies including Kotlin for Forge `[5.8,)` and Create `[6.0.9,7.0.0)`.
+- `modelfix` contains a malformed dotted dependency-table owner (`1.21-1.10`) and is client-side. Preserve this as a metadata hazard; do not repair upstream metadata or infer that the loader enforces the orphaned declarations.
+- `kotlinforforge-5.11.0-all.jar` is an outer `FMLModType: LIBRARY`; its nested metadata supplies the `kotlinforforge` mod identity. A top-level-only audit is insufficient.
+- Forgified Fabric API exposes both top-level and nested module identities. Do not treat a multi-loader artifact's inactive Fabric metadata branch as an active NeoForge hard dependency without proving the loader behavior.
+
+### 0.6 Evidence categories at the stop boundary
+
+**Verified from primary evidence:** exact source records for all 190 candidates; exact acquired bytes and computed hashes; publisher hash/size checks; outer and embedded ZIP integrity; parsed metadata documents; Item 2 server lifecycle and restore evidence; published release-asset integrity.
+
+**Reconstructed documentation:** reports and protocols inherited from the recovered 28-commit history remain context only unless superseded by the new Item 2 or Item 3 acceptance evidence above.
+
+**Provisional conclusions:** a declared Minecraft or NeoForge range containing the target is a static compatibility signal, not an enablement decision; embedded-library overlaps are potential conflict signals until loader selection and runtime behavior are evaluated.
+
+**Untested assumptions:** no candidate has yet been accepted for the dedicated-server stack; the full 190-candidate set has not been booted and should not be; server/client classifications, dependency closure, conflict behavior, optional integrations, and actual runtime compatibility are unfinished.
+
+**Missing evidence:** the final 190-row compatibility matrix; a machine-readable dependency/conflict/embedded-overlap evaluation; authoritative loader-semantics citations with retrieval dates; focused runtime boot evidence for retained clusters and named hazards; the human-readable Item 3 audit; decision-log entries; limitations and reproduction closeout; Item 3 exit-gate assessment; a final Item 3 recovery tag. Items 4–10 remain pending behind this gate.
+
+### 0.7 Exact restart instructions
+
+1. Read `SPECS.md` completely, then read this entire handoff and `INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md` completely. The infrastructure document is supplementary and does not supersede `SPECS.md` ordering.
+2. Run `git fetch origin main --tags`, verify branch/upstream/history/tags, and confirm `HEAD == origin/main` before editing.
+3. Preserve `.codegraph` and `mcpack-reconstructed-28(1).bundle` unchanged.
+4. Verify the committed Item 3 evidence and reacquire ignored candidate artifacts if the local audit cache is absent.
+5. Resume by grounding NeoForge dependency/version-range/side and Jar-in-Jar semantics, plus Fabric metadata semantics, in authoritative primary sources. Record exact URLs and retrieval date.
+6. Add failing-first tests for the compatibility evaluator. Evaluate active NeoForge metadata separately from inactive Fabric metadata on multi-loader artifacts.
+7. Produce the dependency graph, side classifications, missing required dependencies, conflicts, optional integrations, and embedded-library overlap report for all 190 exact candidates.
+8. Keep every candidate disabled until its disposition is supported. Perform focused isolated runtime boots only for evidence-supported retained clusters; do not mutate the frozen Item 2 control.
+9. Publish the machine-readable compatibility matrix and human audit, with explicit decisions for every candidate and both named hazards. Complete the Item 3 decision log, limitations, reproduction record, and exit-gate assessment.
+10. Inspect every diff, commit in small conventional increments, push each commit immediately, and create a validated Item 3 recovery tag only after the full Item 3 exit gate passes.
+11. Do not begin Item 4 until every applicable Item 3 subitem and gate is genuinely complete.
+
+The last known full validation after the embedded-metadata commit was 28 passing tests plus clean scoped Ruff, formatting, and basedpyright checks for `src/mcpack_evidence`, `tests`, and the Item 3 tools. Fifteen Ruff findings in later reconstructed tools pre-date this work and were deliberately not mixed into Item 3. Re-run the applicable checks after any new change rather than treating this statement as current proof.
 
 ---
 
