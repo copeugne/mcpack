@@ -1,0 +1,110 @@
+{
+  "schema_version": "item3-loader-semantics-sources-v1",
+  "retrieved_at": "2026-09-01T20:28:00Z",
+  "evidence_classification": "verified_primary_evidence",
+  "target": {
+    "minecraft": "1.21.1",
+    "neoforge": "21.1.249",
+    "fml_implementation_version": "4.0",
+    "fml_loader_artifact": {
+      "filename": "loader-4.0.44.jar",
+      "sha256": "f2096cd86d605c0484971fc712208e0dc6cecfe53e056db61d44a98cadc19499",
+      "manifest_git_commit": "96010059"
+    },
+    "maven_artifact": {
+      "version": "3.8.5",
+      "sha256": "91172bc294d6eab02fc9f45f4ea01fd0e418962d128cf489abea7b6957d988ee"
+    },
+    "commons_lang3": {
+      "version": "3.14.0",
+      "sha256": "7b96bf3ee68949abb5bc465559ac270e0551596fa34523fddf890ec418dde13c"
+    }
+  },
+  "fancy_mod_loader": {
+    "repository": "https://github.com/neoforged/FancyModLoader",
+    "commit": "96010059ad23bfcef8be966c1a675a3abe4c8867",
+    "commit_url": "https://github.com/neoforged/FancyModLoader/commit/96010059ad23bfcef8be966c1a675a3abe4c8867",
+    "sources": [
+      {
+        "path": "loader/src/main/java/net/neoforged/neoforgespi/language/MavenVersionAdapter.java",
+        "url": "https://raw.githubusercontent.com/neoforged/FancyModLoader/96010059ad23bfcef8be966c1a675a3abe4c8867/loader/src/main/java/net/neoforged/neoforgespi/language/MavenVersionAdapter.java",
+        "sha256": "365131c98b70edee0e7b6dc2377c40e6ea56eff4d8127c842eeb687212f60c71"
+      },
+      {
+        "path": "loader/src/main/java/net/neoforged/fml/loading/moddiscovery/ModInfo.java",
+        "url": "https://raw.githubusercontent.com/neoforged/FancyModLoader/96010059ad23bfcef8be966c1a675a3abe4c8867/loader/src/main/java/net/neoforged/fml/loading/moddiscovery/ModInfo.java",
+        "sha256": "3b7af699f333f30ab5b24b7fb0316744365c4dff60e3d93036982c0867443585"
+      },
+      {
+        "path": "loader/src/main/java/net/neoforged/fml/loading/ModSorter.java",
+        "url": "https://raw.githubusercontent.com/neoforged/FancyModLoader/96010059ad23bfcef8be966c1a675a3abe4c8867/loader/src/main/java/net/neoforged/fml/loading/ModSorter.java",
+        "sha256": "a1aedb70f632305a9f360e1adb072aa818600df8442a327dba9ecc2785b12927"
+      },
+      {
+        "path": "loader/src/main/java/net/neoforged/fml/loading/VersionSupportMatrix.java",
+        "url": "https://raw.githubusercontent.com/neoforged/FancyModLoader/96010059ad23bfcef8be966c1a675a3abe4c8867/loader/src/main/java/net/neoforged/fml/loading/VersionSupportMatrix.java",
+        "sha256": "a39dcd636dde637729376078fe156334c9424d38882c389defd633f65a1aaaf9"
+      },
+      {
+        "path": "loader/src/main/java/net/neoforged/fml/loading/moddiscovery/readers/JarModsDotTomlModFileReader.java",
+        "url": "https://raw.githubusercontent.com/neoforged/FancyModLoader/96010059ad23bfcef8be966c1a675a3abe4c8867/loader/src/main/java/net/neoforged/fml/loading/moddiscovery/readers/JarModsDotTomlModFileReader.java",
+        "sha256": "34a924221e7158bbc3a8fdd9e204ec1d09a2996e7063bd8dd454a22633479016"
+      },
+      {
+        "path": "loader/src/main/java/net/neoforged/fml/loading/BuiltInLanguageLoader.java",
+        "url": "https://raw.githubusercontent.com/neoforged/FancyModLoader/96010059ad23bfcef8be966c1a675a3abe4c8867/loader/src/main/java/net/neoforged/fml/loading/BuiltInLanguageLoader.java",
+        "sha256": "04b2e205ff98108c1d78bfea6b5c626d082c1d2426e084a4bcf4b98edf31aa17"
+      }
+    ]
+  },
+  "conclusions": [
+    {
+      "id": "maven_range_oracle",
+      "statement": "FML parses declared Maven ranges with VersionRange.createFromVersionSpec; compatibility evaluation must use the frozen Maven Artifact 3.8.5 runtime rather than an approximate parser.",
+      "source_paths": ["loader/src/main/java/net/neoforged/neoforgespi/language/MavenVersionAdapter.java"]
+    },
+    {
+      "id": "active_metadata",
+      "statement": "The NeoForge reader discovers META-INF/neoforge.mods.toml; Fabric metadata is not an active NeoForge dependency branch merely because it is present in an archive.",
+      "source_paths": ["loader/src/main/java/net/neoforged/fml/loading/moddiscovery/readers/JarModsDotTomlModFileReader.java"]
+    },
+    {
+      "id": "dependency_ownership",
+      "statement": "Dependency tables are attached only to their declared owning mod ID; orphan owner tables must be reported and must not be silently reassigned.",
+      "source_paths": ["loader/src/main/java/net/neoforged/fml/loading/moddiscovery/ModInfo.java"]
+    },
+    {
+      "id": "dependency_and_side_semantics",
+      "statement": "FML filters dependencies for the physical side, rejects missing or wrong-range required dependencies, permits absent optional dependencies but rejects installed wrong-range optional dependencies, rejects matching incompatible dependencies, and warns for matching discouraged dependencies.",
+      "source_paths": ["loader/src/main/java/net/neoforged/fml/loading/ModSorter.java"]
+    },
+    {
+      "id": "target_fallbacks",
+      "statement": "For the 1.21.1 target, direct target checks may fall back through the exact support matrix to Minecraft 1.21 and NeoForge 21.0.166; evaluator behavior must reproduce the source algorithm exactly.",
+      "source_paths": ["loader/src/main/java/net/neoforged/fml/loading/VersionSupportMatrix.java"]
+    },
+    {
+      "id": "builtin_language_version",
+      "statement": "Built-in language-provider range checks use the FML implementation version, observed in the frozen loader as 4.0.",
+      "source_paths": ["loader/src/main/java/net/neoforged/fml/loading/BuiltInLanguageLoader.java"]
+    }
+  ],
+  "supporting_documentation": [
+    "https://docs.neoforged.net/docs/1.21.1/gettingstarted/modfiles/",
+    "https://docs.neoforged.net/toolchain/docs/dependencies/jarinjar/",
+    "https://maven.apache.org/ref/3.8.5/maven-artifact/apidocs/org/apache/maven/artifact/versioning/VersionRange.html",
+    "https://docs.fabricmc.net/develop/loader/fabric-mod-json"
+  ],
+  "limitations": [
+    "This receipt establishes static loader semantics and exact source identity; it does not establish compatibility for any candidate mod.",
+    "Jar-in-Jar selection and negotiation require a separate overlap evaluator and runtime confirmation.",
+    "Physical-side and dependency conclusions still require application to every active NeoForge metadata record.",
+    "A successful dedicated-server launch alone will not prove client join, gameplay, world-generation, or performance correctness."
+  ],
+  "reproduction": [
+    "Retrieve every source URL exactly as recorded.",
+    "Compute SHA-256 for each response and compare it with the corresponding source record.",
+    "Verify the loader manifest Git-Commit resolves to the recorded full FancyModLoader commit.",
+    "Compile and run tools/MavenVersionRangeProbe.java with the recorded Maven Artifact and Commons Lang JARs from the frozen NeoForge installation."
+  ]
+}
