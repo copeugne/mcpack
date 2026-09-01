@@ -19,6 +19,7 @@ class _FileLocator(BaseModel):
 
     project_id: int = Field(gt=0)
     file_id: int = Field(gt=0)
+    project_slug: str = Field(min_length=1)
 
 
 class _FileRecord(BaseModel):
@@ -114,6 +115,10 @@ def main() -> int:
                 "project_id": locator.project_id,
                 "file_id": locator.file_id,
                 "source_url": source_url,
+                "file_page_url": (
+                    "https://www.curseforge.com/minecraft/mc-mods/"
+                    f"{locator.project_slug}/files/{locator.file_id}"
+                ),
                 "cdn_url": _cdn_url(locator.file_id, candidate),
                 "record": response.data.model_dump(mode="json", by_alias=True),
             }

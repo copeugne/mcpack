@@ -1,0 +1,25 @@
+{
+  "schema_version": "item3-source-evidence-durability-v1",
+  "status": "awaiting_remote_verification",
+  "release_tag": "item-3-primary-source-evidence-2026-09-01",
+  "release_url": "https://github.com/copeugne/mcpack/releases/tag/item-3-primary-source-evidence-2026-09-01",
+  "asset": {
+    "filename": "item3-primary-source-raw-2026-09-01.tar.gz",
+    "size_bytes": 20124166,
+    "sha256": "f2bf2902ade83adb3c8e7aac9bb1527000a04833267325666a6e934984a9ef04",
+    "archive_member_count": 771,
+    "content_root": "item3/"
+  },
+  "committed_manifests": {
+    "evidence/item-3/raw-source-manifest.json": "c111da6f7fbc71118c38c767a99c2c326155230627c6564bbda0d67c2140e216",
+    "evidence/item-3/source-identity-matrix.json": "4e11bd2d0aef17484027550314ebe04445de6ad9e506ca7bd5087a51990b9fa1"
+  },
+  "reproduction": [
+    "Download the release asset without renaming it.",
+    "Verify its SHA-256 and byte size against this record.",
+    "Create evidence/raw if needed, then extract the asset with tar -xzf item3-primary-source-raw-2026-09-01.tar.gz -C evidence/raw.",
+    "Run uv run python tools/build_raw_evidence_manifest.py --root evidence/raw/item3 --output /tmp/item3-raw-source-manifest.json.",
+    "Compare the regenerated manifest to evidence/item-3/raw-source-manifest.json; retrieval timestamps remain preserved inside the raw primary responses."
+  ],
+  "redistribution_scope": "Primary API JSON responses and request receipts only; no candidate JAR is included."
+}
