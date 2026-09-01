@@ -17,6 +17,16 @@ class MetadataDocument(BaseModel):
     sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
 
 
+class LoaderDeclaration(BaseModel):
+    """One mod-language loader and range tied to its metadata source."""
+
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid")
+
+    mod_loader: str
+    version_range: str
+    source_path: str
+
+
 class ModDeclaration(BaseModel):
     """One mod identity declared by top-level archive metadata."""
 
@@ -79,6 +89,7 @@ class CandidateJarInspection(BaseModel):
     manifest_implementation_version: str | None
     mod_loaders: tuple[str, ...]
     loader_ranges: tuple[str, ...]
+    loader_declarations: tuple[LoaderDeclaration, ...] = ()
     mods: tuple[ModDeclaration, ...]
     dependencies: tuple[DependencyDeclaration, ...]
     minecraft_ranges: tuple[str, ...]
