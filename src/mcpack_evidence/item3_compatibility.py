@@ -33,9 +33,19 @@ _ACTIVE_PATH = "META-INF/neoforge.mods.toml"
 def evaluate_compatibility(
     inspection: JarInspectionReport,
     oracle: RangeOracle,
+    provider_candidates: frozenset[str] | None = None,
 ) -> CompatibilityReport:
-    """Evaluate every candidate without promoting static success to runtime approval."""
-    provided = _provided_mods(inspection.candidates)
+    """Evaluate every candidate against either the inventory or an installed provider set."""
+    provider_scope = (
+        inspection.candidates
+        if provider_candidates is None
+        else tuple(
+            candidate
+            for candidate in inspection.candidates
+            if candidate.candidate_filename in provider_candidates
+        )
+    )
+    provided = _provided_mods(provider_scope)
     providers: dict[str, list[ProvidedMod]] = defaultdict(list)
     for mod in provided:
         providers[mod.mod_id].append(mod)

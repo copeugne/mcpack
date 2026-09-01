@@ -242,3 +242,33 @@ def test_evaluates_active_nested_mod_dependencies() -> None:
     row = _row(report, "bundle.jar")
     assert tuple(check.dependency_mod_id for check in row.dependency_checks) == ("helper",)
     assert row.dependency_checks[0].status == "pass"
+
+
+def test_evaluates_dependencies_against_explicit_installed_provider_scope() -> None:
+    report = evaluate_compatibility(
+        _inspection(
+            _candidate(
+                "consumer.jar",
+                mods=[_mod("consumer", "1.0")],
+                dependencies=[
+                    _dependency("consumer", "optional_helper", "optional", "[1,)"),
+                    _dependency("consumer", "required_helper", "required", "[1,)"),
+                    _dependency("consumer", "conflict", "incompatible", "[1,)"),
+                ],
+            ),
+            _candidate("optional.jar", mods=[_mod("optional_helper", "1.0")]),
+            _candidate("required.jar", mods=[_mod("required_helper", "1.0")]),
+            _candidate("conflict.jar", mods=[_mod("conflict", "1.0")]),
+        ),
+        _simple_oracle,
+        frozenset({"consumer.jar", "required.jar"}),
+    )
+
+    row = _row(report, "consumer.jar")
+    assert tuple(check.status for check in row.dependency_checks) == (
+        "optional_absent",
+        "pass",
+        "optional_absent",
+    )
+    assert row.dependency_checks[0].provider_candidates == ()
+    assert row.dependency_checks[1].provider_candidates == ("required.jar",)

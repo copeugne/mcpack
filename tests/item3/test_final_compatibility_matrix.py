@@ -32,6 +32,11 @@ def test_retained_rows_match_runtime_manifest_and_pass_static_gates() -> None:
         _dict(row["publisher_environment"])["server"] != "unsupported" for row in retained_rows
     )
     assert all(row["runtime_evidence"] is not None for row in retained_rows)
+    assert all(
+        {_str(value) for value in _list(check["provider_candidates"])}.issubset(retained_manifest)
+        for row in retained_rows
+        for check in (_dict(value) for value in _list(row["dependency_checks"]))
+    )
 
 
 def _dict(value: object) -> dict[str, object]:

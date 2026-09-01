@@ -25,17 +25,25 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source", type=Path, required=True)
     parser.add_argument("--static", type=Path, required=True)
+    parser.add_argument("--retained-static", type=Path, required=True)
     parser.add_argument("--overlap", type=Path, required=True)
     parser.add_argument("--retained", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     source = _by_filename(_load(args.source)["candidates"])
     static = _by_filename(_load(args.static)["candidates"])
+    retained_static = _by_filename(_load(args.retained_static)["candidates"])
     overlap = _load(args.overlap)
     retained = set(args.retained.read_text(encoding="utf-8").splitlines())
     overlap_by_candidate = _overlap_by_candidate(overlap)
     rows = [
-        _row(filename, source[filename], static[filename], overlap_by_candidate, retained)
+        _row(
+            filename,
+            source[filename],
+            retained_static[filename] if filename in retained else static[filename],
+            overlap_by_candidate,
+            retained,
+        )
         for filename in sorted(source)
     ]
     result = {
