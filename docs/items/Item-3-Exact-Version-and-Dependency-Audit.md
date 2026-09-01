@@ -13,6 +13,8 @@ This gate establishes loader, dependency, physical-side, and dedicated-server li
 - Active and nested metadata: `evidence/item-3/jar-inspection.json`.
 - Loader semantics: `evidence/item-3/loader-semantics-sources.json`.
 - Exact Maven requests/results: `evidence/item-3/maven-range-requests.tsv` and `evidence/item-3/maven-range-results.tsv`.
+- Full-inventory static evaluation: `evidence/item-3/static-compatibility-exact.json`.
+- Retained-provider static evaluation: `evidence/item-3/retained-compatibility-exact.json`.
 - Embedded overlap analysis: `evidence/item-3/embedded-overlap-report.json`.
 - Final 190-row decision surface: `evidence/item-3/final-compatibility-matrix.json`.
 - Runtime commands, manifests, outcomes, and hashed logs: `evidence/item-3/runtime/runtime-cluster-evidence.json`.
@@ -37,7 +39,23 @@ Every row includes exact publisher and artifact identity, declared targets/loade
 
 Only `META-INF/neoforge.mods.toml` participates in the active NeoForge branch. Fabric metadata is retained as inactive evidence and never promoted into a NeoForge hard dependency. Loader declarations remain tied to their source document, preventing legacy `mods.toml` ranges such as `[40,)` from being evaluated as active NeoForge language-loader constraints.
 
-The evaluator applies the FML 1.21.1 support matrix only after a direct target failure. Required missing or wrong-range dependencies fail; optional absent dependencies pass; installed optional wrong-range dependencies fail; matching incompatible dependencies fail; matching discouraged dependencies warn. Client-only dependency edges are ignored on the dedicated-server physical side. Unknown dependency owners are reported as ignored orphan tables because FML never attaches them to a declared mod.
+The evaluator applies the FML 1.21.1 support matrix only after a direct target failure. Required missing or wrong-range dependencies fail; optional absent dependencies pass; installed optional wrong-range dependencies fail; matching incompatible dependencies fail; matching discouraged dependencies warn. Client-only dependency edges are ignored on the dedicated-server physical side. Unknown dependency owners are reported as ignored orphan tables because FML never attaches them to a declared mod. The full-inventory report describes the 190-candidate audit pool; the separate retained-provider report recomputes every edge against only the 136 installed candidates. The final matrix uses retained-provider results for retained rows, so a disabled optional, required, incompatible, or discouraged provider cannot be mistaken for an installed provider.
+
+Reproduce those two scopes with:
+
+```bash
+uv run python tools/evaluate_candidate_compatibility.py \
+  --inspection evidence/item-3/jar-inspection.json \
+  --oracle-requests evidence/item-3/maven-range-requests.tsv \
+  --oracle-results evidence/item-3/maven-range-results.tsv \
+  --output evidence/item-3/static-compatibility-exact.json
+uv run python tools/evaluate_candidate_compatibility.py \
+  --inspection evidence/item-3/jar-inspection.json \
+  --oracle-requests evidence/item-3/maven-range-requests.tsv \
+  --oracle-results evidence/item-3/maven-range-results.tsv \
+  --provider-candidates evidence/item-3/runtime/retained-server-candidates.txt \
+  --output evidence/item-3/retained-compatibility-exact.json
+```
 
 Nested NeoForge mod IDs and their dependency tables participate in closure. This was necessary to expose bundled Aeronautics' active requirements on Create and Sable. `${file.jarVersion}` is replaced only from the inspected manifest implementation version.
 
