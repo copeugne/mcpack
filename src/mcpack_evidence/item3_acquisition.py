@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import hashlib
 import http.client
+import os
 import time
 import urllib.parse
-import urllib.request
 from base64 import b64encode
 from datetime import UTC, datetime
 from pathlib import Path
@@ -198,7 +198,7 @@ def _download(url: str, partial: Path) -> None:
     if parsed.scheme != "https" or parsed.hostname not in _ALLOWED_HOSTS:
         message = f"untrusted artifact URL: {url}"
         raise ArtifactVerificationError(message)
-    connection = _https_connection(parsed.hostname)
+    connection = create_https_connection(parsed.hostname)
     target = parsed.path if not parsed.query else f"{parsed.path}?{parsed.query}"
     connection.request("GET", target, headers={"User-Agent": "mcpack-evidence/0.1"})
     response = connection.getresponse()
@@ -222,14 +222,14 @@ def _download(url: str, partial: Path) -> None:
         connection.close()
 
 
-def _https_connection(hostname: str) -> http.client.HTTPSConnection:
-    """Open HTTPS through the configured managed proxy when one is present."""
-    proxy_url = urllib.request.getproxies().get("https")
-    if proxy_url is None:
+def create_https_connection(hostname: str) -> http.client.HTTPSConnection:
+    """Create an HTTPS connection that honors the standard HTTPS proxy environment."""
+    proxy_url = os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy")
+    if not proxy_url:
         return http.client.HTTPSConnection(hostname, timeout=120)
     proxy = urllib.parse.urlsplit(proxy_url)
     if proxy.scheme != "http" or proxy.hostname is None:
-        message = f"unsupported HTTPS proxy URL: {proxy_url}"
+        message = "HTTPS_PROXY must be an HTTP proxy URL with a hostname"
         raise ArtifactVerificationError(message)
     connection = http.client.HTTPSConnection(proxy.hostname, proxy.port or 80, timeout=120)
     connection.set_tunnel(hostname, port=443, headers=_proxy_tunnel_headers(proxy))

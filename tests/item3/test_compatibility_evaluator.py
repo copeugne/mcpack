@@ -65,7 +65,7 @@ def test_applies_required_optional_incompatible_discouraged_and_side_semantics()
     )
 
 
-def test_quarantines_orphan_owner_and_matching_incompatibility() -> None:
+def test_ignores_orphan_owner_but_quarantines_matching_incompatibility() -> None:
     report = evaluate_compatibility(
         _inspection(
             _candidate("helper.jar", mods=[_mod("helper", "2.0")]),
@@ -83,7 +83,7 @@ def test_quarantines_orphan_owner_and_matching_incompatibility() -> None:
 
     row = _row(report, "broken.jar")
     assert tuple(check.status for check in row.dependency_checks) == (
-        "orphan_owner",
+        "orphan_owner_ignored",
         "incompatible_present",
     )
     assert row.static_status == "incompatible"
@@ -145,6 +145,13 @@ def _candidate(
         "manifest_implementation_version": implementation_version,
         "mod_loaders": ["javafml"],
         "loader_ranges": ["[4,)"],
+        "loader_declarations": [
+            {
+                "mod_loader": "javafml",
+                "version_range": "[4,)",
+                "source_path": "META-INF/neoforge.mods.toml",
+            }
+        ],
         "mods": mods,
         "dependencies": dependencies or [],
         "minecraft_ranges": [],
@@ -186,3 +193,82 @@ def _simple_oracle(version: str, declared_range: str) -> str:
     if declared_range == "[3,)" and version == "2.0":
         return "fail"
     return "pass"
+
+
+def test_ignores_legacy_forge_loader_range_when_neoforge_metadata_is_active() -> None:
+    candidate = _candidate("dual.jar", mods=[_mod("dual", "1.0")])
+    candidate["loader_ranges"] = ["[1,)", "[40,)"]
+    candidate["loader_declarations"] = [
+        {
+            "mod_loader": "javafml",
+            "version_range": "[1,)",
+            "source_path": "META-INF/neoforge.mods.toml",
+        },
+        {
+            "mod_loader": "lowcodefml",
+            "version_range": "[40,)",
+            "source_path": "META-INF/mods.toml",
+        },
+    ]
+
+    report = evaluate_compatibility(_inspection(candidate), _simple_oracle)
+
+    assert tuple(check.declared_range for check in report.candidates[0].loader_checks) == ("[1,)",)
+
+
+def test_evaluates_active_nested_mod_dependencies() -> None:
+    bundled = _candidate("bundle.jar", mods=[_mod("outer", "1.0")])
+    bundled["embedded_libraries"] = [
+        {
+            "path": "META-INF/jarjar/nested.jar",
+            "size_bytes": 1,
+            "sha256": "d" * 64,
+            "identifier": "example:nested",
+            "artifact_version": "1.0",
+            "version_range": "[1,)",
+            "nested_zip_integrity": "pass",
+            "nested_metadata_paths": ["META-INF/neoforge.mods.toml"],
+            "nested_mod_ids": ["nested"],
+            "nested_dependencies": [_dependency("nested", "helper", "required", "[2,)")],
+            "nested_issues": [],
+        }
+    ]
+
+    report = evaluate_compatibility(
+        _inspection(_candidate("helper.jar", mods=[_mod("helper", "2.0")]), bundled),
+        _simple_oracle,
+    )
+
+    row = _row(report, "bundle.jar")
+    assert tuple(check.dependency_mod_id for check in row.dependency_checks) == ("helper",)
+    assert row.dependency_checks[0].status == "pass"
+
+
+def test_evaluates_dependencies_against_explicit_installed_provider_scope() -> None:
+    report = evaluate_compatibility(
+        _inspection(
+            _candidate(
+                "consumer.jar",
+                mods=[_mod("consumer", "1.0")],
+                dependencies=[
+                    _dependency("consumer", "optional_helper", "optional", "[1,)"),
+                    _dependency("consumer", "required_helper", "required", "[1,)"),
+                    _dependency("consumer", "conflict", "incompatible", "[1,)"),
+                ],
+            ),
+            _candidate("optional.jar", mods=[_mod("optional_helper", "1.0")]),
+            _candidate("required.jar", mods=[_mod("required_helper", "1.0")]),
+            _candidate("conflict.jar", mods=[_mod("conflict", "1.0")]),
+        ),
+        _simple_oracle,
+        frozenset({"consumer.jar", "required.jar"}),
+    )
+
+    row = _row(report, "consumer.jar")
+    assert tuple(check.status for check in row.dependency_checks) == (
+        "optional_absent",
+        "pass",
+        "optional_absent",
+    )
+    assert row.dependency_checks[0].provider_candidates == ()
+    assert row.dependency_checks[1].provider_candidates == ("required.jar",)

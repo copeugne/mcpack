@@ -20,6 +20,7 @@ from mcpack_evidence.item3_jar_models import (
     CandidateJarInspection,
     DependencyDeclaration,
     EmbeddedLibrary,
+    LoaderDeclaration,
     MetadataDocument,
     ModDeclaration,
 )
@@ -56,6 +57,7 @@ def inspect_candidate_jar(
         dependencies: list[DependencyDeclaration] = []
         loaders: list[str] = []
         loader_ranges: list[str] = []
+        loader_declarations: list[LoaderDeclaration] = []
         fabric_environment: str | None = None
         embedded_paths = {
             name
@@ -69,6 +71,13 @@ def inspect_candidate_jar(
                 dependencies.extend(parsed.dependencies)
                 loaders.append(parsed.mod_loader)
                 loader_ranges.append(parsed.loader_range)
+                loader_declarations.append(
+                    LoaderDeclaration(
+                        mod_loader=parsed.mod_loader,
+                        version_range=parsed.loader_range,
+                        source_path=metadata_path,
+                    )
+                )
         if FABRIC_PATH in names:
             parsed = parse_fabric_metadata(archive.read(FABRIC_PATH))
             mods.extend(parsed.mods)
@@ -109,6 +118,7 @@ def inspect_candidate_jar(
             manifest_implementation_version=manifest_version,
             mod_loaders=tuple(dict.fromkeys(value for value in loaders if value)),
             loader_ranges=tuple(dict.fromkeys(value for value in loader_ranges if value)),
+            loader_declarations=tuple(loader_declarations),
             mods=tuple(mods),
             dependencies=tuple(dependencies),
             minecraft_ranges=_dependency_ranges(dependencies, "minecraft"),
@@ -223,6 +233,7 @@ def _failed(
         manifest_implementation_version=None,
         mod_loaders=(),
         loader_ranges=(),
+        loader_declarations=(),
         mods=(),
         dependencies=(),
         minecraft_ranges=(),

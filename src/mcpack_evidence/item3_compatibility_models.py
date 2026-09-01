@@ -48,7 +48,7 @@ class DependencyCheck(BaseModel):
         "discouraged_present",
         "optional_absent",
         "ignored_physical_side",
-        "orphan_owner",
+        "orphan_owner_ignored",
         "unresolved",
     ]
     provider_candidates: tuple[str, ...]

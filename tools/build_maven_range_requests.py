@@ -19,8 +19,18 @@ def main() -> None:
     versions = _provided_versions(report)
     requests: set[tuple[str, str]] = set()
     for candidate in report.candidates:
-        requests.update(("4.0", value) for value in candidate.loader_ranges)
-        for dependency in candidate.dependencies:
+        requests.update(
+            ("4.0", declaration.version_range)
+            for declaration in candidate.loader_declarations
+            if declaration.source_path == "META-INF/neoforge.mods.toml"
+        )
+        dependencies = candidate.dependencies + tuple(
+            dependency
+            for library in candidate.embedded_libraries
+            if "META-INF/neoforge.mods.toml" in library.nested_metadata_paths
+            for dependency in library.nested_dependencies
+        )
+        for dependency in dependencies:
             if dependency.source_path != "META-INF/neoforge.mods.toml":
                 continue
             installed = versions.get(dependency.mod_id, ())

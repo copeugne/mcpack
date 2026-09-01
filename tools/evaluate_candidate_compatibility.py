@@ -17,6 +17,11 @@ def main() -> None:
     parser.add_argument("--inspection", type=Path, required=True)
     parser.add_argument("--oracle-requests", type=Path)
     parser.add_argument("--oracle-results", type=Path)
+    parser.add_argument(
+        "--provider-candidates",
+        type=Path,
+        help="newline-delimited installed candidate filenames; defaults to the full inventory",
+    )
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     inspection = JarInspectionReport.model_validate_json(
@@ -32,12 +37,19 @@ def main() -> None:
         lambda version, version_range: results.get(
             (version, version_range), "missing_oracle_result"
         ),
+        _read_provider_candidates(args.provider_candidates),
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     _ = args.output.write_text(
         json.dumps(report.model_dump(mode="json"), indent=2, sort_keys=False) + "\n",
         encoding="utf-8",
     )
+
+
+def _read_provider_candidates(path: Path | None) -> frozenset[str] | None:
+    if path is None:
+        return None
+    return frozenset(path.read_text(encoding="utf-8").splitlines())
 
 
 def _read_results(request_path: Path, result_path: Path) -> dict[tuple[str, str], str]:

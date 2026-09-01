@@ -9,6 +9,7 @@ import pytest
 from mcpack_evidence.item3_acquisition import (
     ArtifactVerificationError,
     _proxy_tunnel_headers,  # pyright: ignore[reportPrivateUsage]
+    create_https_connection,
     validate_artifact_redirect,
     verify_artifact_file,
 )
@@ -86,6 +87,19 @@ def test_rejects_redirect_host_or_path_substitution(target: str) -> None:
         _ = validate_artifact_redirect(source, target)
 
 
+def test_https_connection_uses_configured_proxy(monkeypatch: pytest.MonkeyPatch) -> None:
+    # Given
+    monkeypatch.setenv("HTTPS_PROXY", "http://proxy.example:8080")
+
+    # When
+    connection = create_https_connection("cdn.modrinth.com")
+
+    # Then
+    assert connection.host == "proxy.example"
+    assert connection.port == 8080
+    connection.close()
+
+
 def test_builds_proxy_authorization_for_percent_encoded_credentials() -> None:
     proxy = urllib.parse.urlsplit("http://build%40user:p%40ss@proxy.example:8080")
 
@@ -100,3 +114,15 @@ def test_rejects_incomplete_proxy_credentials(proxy_url: str) -> None:
 
     with pytest.raises(ArtifactVerificationError, match="both username and password"):
         _ = _proxy_tunnel_headers(proxy)
+
+
+def test_https_connection_defaults_http_proxy_to_port_80(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("HTTPS_PROXY", "http://proxy.example")
+
+    connection = create_https_connection("cdn.modrinth.com")
+
+    assert connection.host == "proxy.example"
+    assert connection.port == 80
+    connection.close()

@@ -19,7 +19,7 @@ type DependencyStatus = Literal[
     "discouraged_present",
     "optional_absent",
     "ignored_physical_side",
-    "orphan_owner",
+    "orphan_owner_ignored",
     "unresolved",
 ]
 type RangeResult = Literal["pass", "fail", "invalid", "missing_oracle_result"]
@@ -34,7 +34,7 @@ def evaluate_dependency(
 ) -> DependencyCheck:
     """Evaluate one active dependency exactly as it applies on a dedicated server."""
     if dependency.owner_mod_id not in {mod.mod_id for mod in own_mods}:
-        return _result(dependency, "orphan_owner")
+        return _result(dependency, "orphan_owner_ignored")
     if not applies_to_server(dependency.side):
         return _result(dependency, "ignored_physical_side")
     if dependency.mod_id in _BUILT_INS:
