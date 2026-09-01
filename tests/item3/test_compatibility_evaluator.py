@@ -214,3 +214,31 @@ def test_ignores_legacy_forge_loader_range_when_neoforge_metadata_is_active() ->
     report = evaluate_compatibility(_inspection(candidate), _simple_oracle)
 
     assert tuple(check.declared_range for check in report.candidates[0].loader_checks) == ("[1,)",)
+
+
+def test_evaluates_active_nested_mod_dependencies() -> None:
+    bundled = _candidate("bundle.jar", mods=[_mod("outer", "1.0")])
+    bundled["embedded_libraries"] = [
+        {
+            "path": "META-INF/jarjar/nested.jar",
+            "size_bytes": 1,
+            "sha256": "d" * 64,
+            "identifier": "example:nested",
+            "artifact_version": "1.0",
+            "version_range": "[1,)",
+            "nested_zip_integrity": "pass",
+            "nested_metadata_paths": ["META-INF/neoforge.mods.toml"],
+            "nested_mod_ids": ["nested"],
+            "nested_dependencies": [_dependency("nested", "helper", "required", "[2,)")],
+            "nested_issues": [],
+        }
+    ]
+
+    report = evaluate_compatibility(
+        _inspection(_candidate("helper.jar", mods=[_mod("helper", "2.0")]), bundled),
+        _simple_oracle,
+    )
+
+    row = _row(report, "bundle.jar")
+    assert tuple(check.dependency_mod_id for check in row.dependency_checks) == ("helper",)
+    assert row.dependency_checks[0].status == "pass"

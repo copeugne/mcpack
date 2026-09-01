@@ -103,7 +103,15 @@ def _evaluate_candidate(
         for declaration in candidate.loader_declarations
         if candidate.archive_role != "library" and declaration.source_path == _ACTIVE_PATH
     )
-    dependencies = tuple(dep for dep in candidate.dependencies if dep.source_path == _ACTIVE_PATH)
+    dependencies = tuple(
+        dep for dep in candidate.dependencies if dep.source_path == _ACTIVE_PATH
+    ) + tuple(
+        dependency
+        for library in candidate.embedded_libraries
+        if _ACTIVE_PATH in library.nested_metadata_paths
+        for dependency in library.nested_dependencies
+        if dependency.source_path == _ACTIVE_PATH
+    )
     minecraft = _target_checks(dependencies, "minecraft", "1.21.1", oracle)
     neoforge = _target_checks(dependencies, "neoforge", "21.1.249", oracle)
     dependency_checks = tuple(

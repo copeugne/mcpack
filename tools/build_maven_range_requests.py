@@ -24,7 +24,13 @@ def main() -> None:
             for declaration in candidate.loader_declarations
             if declaration.source_path == "META-INF/neoforge.mods.toml"
         )
-        for dependency in candidate.dependencies:
+        dependencies = candidate.dependencies + tuple(
+            dependency
+            for library in candidate.embedded_libraries
+            if "META-INF/neoforge.mods.toml" in library.nested_metadata_paths
+            for dependency in library.nested_dependencies
+        )
+        for dependency in dependencies:
             if dependency.source_path != "META-INF/neoforge.mods.toml":
                 continue
             installed = versions.get(dependency.mod_id, ())
