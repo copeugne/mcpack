@@ -54,6 +54,11 @@ class EmbeddedLibrary(BaseModel):
     identifier: str | None
     artifact_version: str | None
     version_range: str | None
+    nested_zip_integrity: Literal["pass", "fail"]
+    nested_metadata_paths: tuple[str, ...]
+    nested_mod_ids: tuple[str, ...]
+    nested_dependencies: tuple[DependencyDeclaration, ...]
+    nested_issues: tuple[str, ...]
 
 
 class CandidateJarInspection(BaseModel):

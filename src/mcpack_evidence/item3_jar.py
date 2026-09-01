@@ -23,6 +23,7 @@ from mcpack_evidence.item3_jar_models import (
     MetadataDocument,
     ModDeclaration,
 )
+from mcpack_evidence.item3_nested_jar import inspect_nested_jar
 
 _MANIFEST_PATH = "META-INF/MANIFEST.MF"
 
@@ -82,6 +83,9 @@ def inspect_candidate_jar(
         embedded = tuple(
             _embedded_identity(name, archive.read(name), coordinates.get(name))
             for name in sorted(embedded_paths & set(names))
+        )
+        issues.extend(
+            f"embedded:{row.path}:{issue}" for row in embedded for issue in row.nested_issues
         )
         issues.extend(
             "missing_supported_mod_metadata" for _ in [0] if not mods and archive_role != "library"
@@ -154,6 +158,7 @@ def _document_identity(path: str, body: bytes) -> MetadataDocument:
 
 
 def _embedded_identity(path: str, body: bytes, entry: JarCoordinate | None) -> EmbeddedLibrary:
+    nested = inspect_nested_jar(body)
     return EmbeddedLibrary(
         path=path,
         size_bytes=len(body),
@@ -161,6 +166,11 @@ def _embedded_identity(path: str, body: bytes, entry: JarCoordinate | None) -> E
         identifier=entry.identifier if entry else None,
         artifact_version=entry.artifact_version if entry else None,
         version_range=entry.version_range if entry else None,
+        nested_zip_integrity=nested.zip_integrity,
+        nested_metadata_paths=nested.metadata_paths,
+        nested_mod_ids=tuple(dict.fromkeys(mod.mod_id for mod in nested.mods)),
+        nested_dependencies=nested.dependencies,
+        nested_issues=nested.issues,
     )
 
 

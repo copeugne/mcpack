@@ -61,6 +61,7 @@ side = "SERVER"
     )
     assert result.embedded_libraries[0].identifier == "example.group:nested"
     assert len(result.embedded_libraries[0].sha256) == 64
+    assert result.embedded_libraries[0].nested_mod_ids == ("nested_mod",)
 
 
 def test_extracts_fabric_environment_and_dependency_ranges(tmp_path: Path) -> None:
@@ -172,5 +173,13 @@ def test_accepts_fml_library_without_mod_declaration(tmp_path: Path) -> None:
 def _nested_jar() -> bytes:
     buffer = io.BytesIO()
     with zipfile.ZipFile(buffer, "w") as archive:
-        archive.writestr("nested.txt", b"nested")
+        archive.writestr(
+            "META-INF/neoforge.mods.toml",
+            b"""modLoader="javafml"
+loaderVersion="[4,)"
+[[mods]]
+modId="nested_mod"
+version="1"
+""",
+        )
     return buffer.getvalue()
