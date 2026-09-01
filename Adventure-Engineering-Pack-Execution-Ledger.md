@@ -260,24 +260,26 @@ Secrets, access tokens, addresses, allowlists, player UUIDs, and authentication 
 | Candidate version currency | 62 of 176 Modrinth candidates have a newer compatible release; 22 use alpha/beta metadata | Review queue only; upgrades are not automatic |
 | Candidate declared dependency closure | Five required edges missing across two projects | Spell Engine requested by Archers/Rogues/Armory/Arsenal; Fabric API requested by LambDynamicLights |
 | Candidate environment split | 21 Modrinth candidates client-required/server-unsupported; seven more client-required/server-optional | Dedicated-server manifest must be separate |
-| Current test host | Linux x86-64; 9 logical CPUs; approximately 21 GiB RAM; approximately 30 GiB initially free | Measured in the active build workspace; not the production-server specification |
-| Local platform installation | Complete through full server boot | 72 publisher-hash-verified installer inputs; official processors completed offline after removing only the redundant network-only mappings processor |
+| Current test host | PikaOS 4, Linux 7.1.0, x86-64; AMD Ryzen 7 7840HS, 8 cores/16 logical CPUs; 27,091,542,016 bytes RAM; NVMe-backed Btrfs | Primary host discovery on 2026-09-01; not the production-server specification |
+| Local platform installation | Complete through full server boot | Exact official installer completed without modifying its processor plan; fresh boot, restart, restore boot, and clean-room reconstruction all passed |
 | Minecraft EULA | Explicitly accepted by the user for this local test server | `eula=true` recorded after authorization |
-| Pristine baseline runtime | First world boot plus one existing-world restart passed | Two `Done` states, two `save-all flush` operations, and two clean shutdowns; only Minecraft and NeoForge loaded |
+| Pristine baseline runtime | Fresh boot, existing-world restart, independently restored boot, and clean-room reconstructed boot passed | Four `Done` states, exact seed checks where applicable, flush operations, and clean shutdowns; only Minecraft and NeoForge loaded |
 | Pristine generated world | Seed `8953077177248245348` | Reconstruction proof world; not a selected measurement seed |
-| Pristine manifest | 133 files; 189,135,287 bytes | Manifest-file SHA-256 `a257c6fc10e743de53a1dfb67ae123b147739b553d41a116985492f654dfc519` |
-| Pristine snapshot | Verified extraction reproduces every included file | SHA-256 `856f4ca927e9831c93771aa03adecdb186cb916ef134de32501720c507e74555` |
+| Pristine manifest | 135 files, 251 directories, 188,776,734 bytes | Manifest-file SHA-256 `d43da4f72d1de5fe03ae4ea03bc6948316f4667439a6ebc2d47c43ae3e5d7400` |
+| Pristine snapshot | Independent extraction and deterministic repack pass; clean-room operational reconstruction also passes | Full local archive SHA-256 `4e4df44f0e0258f3814b5f20d22befd948dff58f21a5e2290ec087df53214c44`; durable state overlay SHA-256 `d7880902d37011075a3548404ffe84f0073ef5da7788b6244a24204dd3531663` |
 | Engineering-anchor experiment | 4 direct JARs + 15 embedded dependencies | Separate first boot/two-restart experiment and restore proof passed; not baseline admission |
 | Test heap | `-Xms1G -Xmx4G` | Construction-only envelope; not the final production allocation |
 
 ### 5.3 Item 2 status
 
 **Status: `COMPLETE`**
-The exact original state is reconstructible: Minecraft 1.21.1, NeoForge 21.1.249, Temurin Java 21.0.12.1+1, zero third-party mods, default generated platform configs/server properties, an empty dedicated-server `mods/` directory, and the recorded construction heap. First boot and restart passed; the snapshot was extracted and every included path, size, and SHA-256 matched. The 190 supplied filenames remain a tentative candidate pool and the four-mod engineering anchor remains a separate experiment.
+The zero-mod original technical state is reconstructible from primary evidence: Minecraft 1.21.1, NeoForge 21.1.249, Temurin Java 21.0.12.1+1, zero third-party mods, generated platform configs/server properties, an empty dedicated-server `mods/` directory, and the recorded construction heap. Fresh boot, restart, independent archive restore, and clean-room materialization all passed. The redistributable state and raw-evidence assets were retrieved from the durable GitHub release with matching hashes, and evidence commit `40ebd9ac4beb3258d1ab3b88e7941da0bf5f5548` is pushed and tagged. The 190 supplied filenames remain a tentative candidate pool governed by Item 3.
+
+The earlier reconstructed figures of 133 files, 189,135,287 bytes, manifest SHA-256 `a257c6fc10e743de53a1dfb67ae123b147739b553d41a116985492f654dfc519`, and snapshot SHA-256 `856f4ca927e9831c93771aa03adecdb186cb916ef134de32501720c507e74555` are retained here as superseded historical claims. They were not forced onto the newly observed baseline and are not acceptance evidence.
 
 ### 5.4 Mutable-instance integrity note
 
-The authoritative pristine baseline is `instances/pristine-baseline-v0` plus its verified frozen archive and manifest. During Item 5 construction Spark was briefly staged in the mutable `instances/baseline-v0` engineering experiment path; it was moved to the artifact cache before further work. That path already held the separate engineering-anchor experiment and was never authoritative. The pristine working `mods/` directory and frozen baseline remain empty.
+The authoritative local pristine baseline is `instances/pristine-baseline-v0` plus its verified frozen archive and manifests. The durable, redistributable recovery surface is the `item-2-evidence-assets-2026-09-01` release, exact authoritative input metadata, and the state overlay; the complete archive is not publicly redistributed because it contains Mojang and NeoForge software. Historical notes about Spark staging and an engineering-anchor experiment describe the lost predecessor workspace and are not claims about the recovered control. The recovered pristine working `mods/` directory and frozen baseline remain empty.
 
 ### 5.5 Item 6 configuration audit status
 
@@ -432,7 +434,7 @@ This register is additive. More variables will be discovered during artifact ins
 | Item | Short name | Status | Current blocker/evidence |
 |---:|---|---|---|
 | 1 | Design contract | `COMPLETE` | Binding design contract and Earned Sandbox Freedom Doctrine recorded. |
-| 2 | Freeze original technical baseline | `BLOCKED` | Prior result summarized, but archive, hashes, restore receipts, and original Git evidence were lost; reconstruct and rerun. |
+| 2 | Freeze original technical baseline | `COMPLETE` | Reconstructed from exact inputs; manifest, configs, archive/overlay, four lifecycle scenarios, clean-room proof, durable retrieval, and pushed/tagged Git receipts pass. |
 | 3 | Compatibility audit | `BLOCKED` | Conclusions survive in the ledger, but source inventory and audit evidence must be reconstructed. |
 | 4 | Controlled test environment | `BLOCKED` | Seed identities survive; snapshots, restore evidence, and environment scripts must be rebuilt. |
 | 5 | Measurement methodology | `BLOCKED` | Method summary survives; protocol, schemas, tools, and validation fixtures must be reconstructed. |

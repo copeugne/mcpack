@@ -1,6 +1,6 @@
 # Item 2 — Frozen Technical Baseline
 
-**Status:** `INCOMPLETE` — local archive restore and fresh operational reconstruction both pass; the exit gate awaits durable remote evidence and Git checkpoint receipts.
+**Status:** `COMPLETE` — local archive restore, fresh operational reconstruction, durable remote retrieval, and the Git checkpoint all pass.
 
 **Scope:** this is a newly constructed zero-third-party-mod control for Minecraft Java 1.21.1. It is not a claim that the 190 candidate filenames were installed, compatible, or the eventual pack.
 
@@ -12,7 +12,7 @@
 | Reconstructed documentation | Prior handoff and surviving Item 4–10 reports are comparison context only. They do not establish this item. |
 | Provisional conclusion | A zero-mod control is retained until Item 3 finishes the candidate-specific compatibility decision. |
 | Untested assumption | The 2–6 normal and 10 peak player targets are handoff-recorded user decisions; no performance capacity result is claimed. |
-| Missing evidence | A durable remote evidence retrieval receipt and commit/push/tag receipt. |
+| Missing evidence | No load-bearing Item 2 evidence. Client join, candidate compatibility, worldgen correctness, and performance remain downstream gates. |
 
 The machine-readable execution record is [baseline-execution-record.json](../../evidence/item-2/baseline-execution-record.json). The untouched file-level baseline is [baseline-manifest.json](../../evidence/item-2/baseline-manifest.json); it enumerates 135 files and 251 directories, including every installed library file and retained runtime log with size and SHA-256. [reconstruction-manifest.json](../../evidence/item-2/reconstruction-manifest.json) excludes only transient `logs/` and pins all 131 operational files and 250 operational directories required for an exact clean materialization.
 
@@ -63,7 +63,9 @@ Normal concurrency is **2–6** and peak concurrency is **10**, as handoff-recor
 | Complete frozen server | `evidence/raw/item2/frozen/pristine-baseline-v0.tar.gz` | 160,322,927 | `4e4df44f0e0258f3814b5f20d22befd948dff58f21a5e2290ec087df53214c44` | Full installed instance, libraries, configurations, and generated control world. |
 | State overlay | `evidence/raw/item2/frozen/pristine-baseline-v0-state.tar.gz` | 1,275,395 | `d7880902d37011075a3548404ffe84f0073ef5da7788b6244a24204dd3531663` | Mutable configs, empty `mods/`, and world state; combine with a verified fresh NeoForge installation to reproduce the operational tree. |
 
-All retained raw paths, sizes, and hashes are in [raw-evidence-inventory.json](../../evidence/item-2/raw-evidence-inventory.json). These raw objects are local and ignored by Git. No public durable-storage upload or successful remote retrieval is claimed yet.
+All retained raw paths, sizes, and hashes are in [raw-evidence-inventory.json](../../evidence/item-2/raw-evidence-inventory.json). The redistributable state overlay and raw-evidence bundle are published at the `item-2-evidence-assets-2026-09-01` GitHub release. Both were downloaded into a fresh directory and matched the expected sizes, SHA-256 values, and tar integrity checks; the exact URLs and retrieval procedure are in [durable-storage-receipt.json](../../evidence/item-2/durable-storage-receipt.json).
+
+The complete archive is intentionally not public because it contains redistribution-restricted Mojang and NeoForge software. Its exact local identity remains recorded, while the public state overlay, exact authoritative acquisition metadata, provisioning automation, reconstruction manifest, and passing clean-room receipt form the lawful equivalent reproducible snapshot.
 
 ## Decision log and limitations
 
@@ -92,4 +94,4 @@ find evidence/raw/item2 -type f -exec sha256sum {} + | sort
 
 ## Exit-gate assessment
 
-The Item 2 exit gate is **not yet complete**. Exact primary evidence, a local archive restore, and a fresh operational reconstruction are present, but [exit-gate-assessment.json](../../evidence/item-2/exit-gate-assessment.json) still requires a committed durable-storage location/retrieval receipt and the commit/push/tag receipt for this checkpoint. Do not advance on the premise that a server launch alone proves those properties.
+The Item 2 exit gate is **complete**. Exact primary evidence, a local archive restore, a fresh operational reconstruction, a fresh remote-asset retrieval, and the pushed/tagged evidence checkpoint are recorded in [exit-gate-assessment.json](../../evidence/item-2/exit-gate-assessment.json). This authorizes Item 3 only; it does not establish candidate compatibility or any later gameplay, world-generation, or performance gate.
