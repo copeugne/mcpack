@@ -7,6 +7,7 @@ import pytest
 
 from mcpack_evidence.item3_acquisition import (
     ArtifactVerificationError,
+    create_https_connection,
     validate_artifact_redirect,
     verify_artifact_file,
 )
@@ -82,3 +83,16 @@ def test_rejects_redirect_host_or_path_substitution(target: str) -> None:
     # When / Then
     with pytest.raises(ArtifactVerificationError, match="redirect"):
         _ = validate_artifact_redirect(source, target)
+
+
+def test_https_connection_uses_configured_proxy(monkeypatch: pytest.MonkeyPatch) -> None:
+    # Given
+    monkeypatch.setenv("HTTPS_PROXY", "http://proxy.example:8080")
+
+    # When
+    connection = create_https_connection("cdn.modrinth.com")
+
+    # Then
+    assert connection.host == "proxy.example"
+    assert connection.port == 8080
+    connection.close()
