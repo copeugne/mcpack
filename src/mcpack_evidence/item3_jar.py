@@ -47,6 +47,11 @@ def inspect_candidate_jar(
             for metadata_path in (*TOML_PATHS, FABRIC_PATH, JARJAR_PATH, _MANIFEST_PATH)
             if metadata_path in names
         )
+        manifest_version = (
+            _manifest_implementation_version(archive.read(_MANIFEST_PATH))
+            if _MANIFEST_PATH in names
+            else None
+        )
         mods: list[ModDeclaration] = []
         dependencies: list[DependencyDeclaration] = []
         loaders: list[str] = []
@@ -101,6 +106,7 @@ def inspect_candidate_jar(
             duplicate_entry_count=len(names) - len(set(names)),
             unsafe_entries=tuple(name for name in names if _unsafe(name)),
             metadata_documents=documents,
+            manifest_implementation_version=manifest_version,
             mod_loaders=tuple(dict.fromkeys(value for value in loaders if value)),
             loader_ranges=tuple(dict.fromkeys(value for value in loader_ranges if value)),
             mods=tuple(mods),
@@ -157,6 +163,23 @@ def _document_identity(path: str, body: bytes) -> MetadataDocument:
     )
 
 
+def _manifest_implementation_version(body: bytes) -> str | None:
+    lines = body.decode(errors="replace").replace("\r\n", "\n").replace("\r", "\n").split("\n")
+    main_section: list[str] = []
+    for line in lines:
+        if not line:
+            break
+        if line.startswith(" ") and main_section:
+            main_section[-1] += line[1:]
+        else:
+            main_section.append(line)
+    for line in main_section:
+        name, separator, value = line.partition(":")
+        if separator and name.casefold() == "implementation-version":
+            return value.strip()
+    return None
+
+
 def _embedded_identity(path: str, body: bytes, entry: JarCoordinate | None) -> EmbeddedLibrary:
     nested = inspect_nested_jar(body)
     return EmbeddedLibrary(
@@ -197,6 +220,7 @@ def _failed(
         duplicate_entry_count=0,
         unsafe_entries=(),
         metadata_documents=(),
+        manifest_implementation_version=None,
         mod_loaders=(),
         loader_ranges=(),
         mods=(),

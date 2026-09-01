@@ -40,6 +40,10 @@ side = "SERVER"
       }]
     }"""
     with zipfile.ZipFile(artifact, "w") as archive:
+        archive.writestr(
+            "META-INF/MANIFEST.MF",
+            b"Manifest-Version: 1.0\nImplementation-Version: 1.0+exact\n",
+        )
         archive.writestr("META-INF/neoforge.mods.toml", metadata)
         archive.writestr("META-INF/jarjar/metadata.json", jarjar)
         archive.writestr("META-INF/jarjar/nested-1.0.jar", nested)
@@ -53,6 +57,7 @@ side = "SERVER"
 
     # Then
     assert result.inspection_status == "pass"
+    assert result.manifest_implementation_version == "1.0+exact"
     assert tuple(mod.mod_id for mod in result.mods) == ("example",)
     assert result.minecraft_ranges == ("[1.21,1.22)",)
     assert tuple(dependency.mod_id for dependency in result.dependencies) == (

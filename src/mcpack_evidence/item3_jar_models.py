@@ -76,6 +76,7 @@ class CandidateJarInspection(BaseModel):
     duplicate_entry_count: int = Field(ge=0)
     unsafe_entries: tuple[str, ...]
     metadata_documents: tuple[MetadataDocument, ...]
+    manifest_implementation_version: str | None
     mod_loaders: tuple[str, ...]
     loader_ranges: tuple[str, ...]
     mods: tuple[ModDeclaration, ...]
