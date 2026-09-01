@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import gzip
 import hashlib
 import json
 from pathlib import Path
@@ -32,6 +33,21 @@ def test_runtime_log_artifacts_and_candidate_manifest_match_hashes() -> None:
         path = Path(_str(artifact["path"]))
         assert path.stat().st_size == artifact["size_bytes"]
         assert _sha256(path) == artifact["sha256"]
+
+
+def test_no_aeronautics_reproduction_log_is_retained_and_readable() -> None:
+    evidence = _dict(cast("object", json.loads(EVIDENCE.read_text(encoding="utf-8"))))
+    runs = [_dict(value) for value in _list(evidence["runs"])]
+    run = next(run for run in runs if run["id"] == "retained-no-aeronautics-138")
+    log_path = Path(_str(run["log_artifact"]))
+
+    with gzip.open(log_path, "rt", encoding="utf-8") as stream:
+        log = stream.read()
+
+    assert "Done (71.977s)!" in log
+    assert "minecraft:server_faucet_test_level" in log
+    assert "minecraft:server_projectile_test_level" in log
+    assert "Stopping server" not in log
 
 
 def _sha256(path: Path) -> str:
