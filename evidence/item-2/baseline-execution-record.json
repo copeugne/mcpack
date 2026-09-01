@@ -1,0 +1,48 @@
+{
+  "schema_version": "item2-execution-record-v1",
+  "item": 2,
+  "title": "Freeze the Existing Technical Baseline",
+  "status": "incomplete_pending_durable_archive_and_git_receipts",
+  "scope": "A freshly constructed, verified Minecraft 1.21.1 / NeoForge 21.1.249 zero-third-party-mod control baseline, not a reconstruction claim for the unresolved candidate mod pool.",
+  "evidence_classes": {
+    "primary": "Local downloaded artifacts, computed digests, generated configuration copies, installer outputs, runtime logs, archives, and host discovery collected 2026-09-01.",
+    "reconstructed": "Earlier handoff claims and historic reports are comparison context only and are not used as acceptance evidence.",
+    "provisional": "The zero-mod control is the safe reversible baseline while Item 3 determines the eventual retained stack.",
+    "untested": "No real client join, production hardware test, or candidate-mod compatibility test is represented by this Item 2 control.",
+    "missing": "Durable remote archive receipt and a committed/pushed/tagged checkpoint are not yet recorded here."
+  },
+  "platform": {
+    "minecraft": "1.21.1",
+    "neoforge": "21.1.249",
+    "java": {"vendor":"Eclipse Adoptium","version":"21.0.12.1+1-LTS","implementation":"Temurin HotSpot","architecture":"x86-64"},
+    "eula": "eula=true",
+    "jvm_flags": ["-Xms1G", "-Xmx4G"],
+    "jvm_effective": {"garbage_collector":"G1GC ergonomic","initial_heap_bytes":1073741824,"maximum_heap_bytes":4294967296,"g1_region_bytes":2097152,"conc_gc_threads":3,"parallel_gc_threads":13,"raw_evidence":"evidence/raw/item2/java/runtime-flags.txt","raw_evidence_sha256":"951a26d0b4a7e7131a8037b09cbe26033d9366b85bee8b3a5d6f989cbbe64d62"},
+    "player_count_assumptions": {"normal":"2-6 concurrent players","peak":"10 concurrent players","provenance":"handoff-recorded user decision; not performance-validated"}
+  },
+  "artifact_sets": {
+    "enabled_baseline_jars": [],
+    "disabled_baseline_jars": [],
+    "mods_directory": "present and empty",
+    "candidate_inventory": {"path":"candidate-mods/current-jars-2026-09-01.txt","status":"separate tentative candidate inventory; not materialized in the baseline"}
+  },
+  "configuration": {
+    "manifest":"evidence/item-2/baseline-manifest.json",
+    "copied_configuration_root":"evidence/item-2/configs",
+    "datapacks":"world/datapacks exists and is empty; initial-enabled-packs=vanilla; initial-disabled-packs is empty",
+    "world_generation":{"level_name":"world","level_seed":"8953077177248245348","level_type":"minecraft:normal","generator_settings":"{}","generate_structures":true},
+    "server_properties_sha256":"4e231067f3fba72bc8ece7c4b78551b4d4a90a2667e4da14e5840bddb5202b9d",
+    "eula_sha256":"ee27072e4a23e088522f740ddaab0c7c4145c186969e90a86254faa3a5ec5ce6",
+    "jvm_args_sha256":"6a4c4eac5cdd3687591f75e319387930116c73900256c93187c798f5e3eb94df"
+  },
+  "runtime_scenarios": [
+    {"name":"fresh-world boot","log":"evidence/raw/item2/boot1/latest.log","observation":"Minecraft 1.21.1 and NeoForge 21.1.249 loaded; Ready marker Done (3.777s); all dimensions saved and graceful stop recorded."},
+    {"name":"existing-world restart","log":"evidence/raw/item2/boot2/latest.log","observation":"Ready marker Done (0.871s); runtime seed response 8953077177248245348; all dimensions saved and graceful stop recorded."},
+    {"name":"restored-world boot","log":"evidence/raw/item2/restore-boot/latest.log","observation":"Ready marker Done (0.914s); runtime seed response 8953077177248245348; all dimensions saved and graceful stop recorded."},
+    {"name":"clean-room materialization and boot","log":"evidence/raw/item2/clean-room/latest.log","observation":"A fresh exact install plus hash-verified state overlay matched all 131 operational files and 250 directories before boot; Ready marker Done (0.852s), exact runtime seed and datapacks observed, all dimensions saved, and graceful stop exited 0.","receipt":"evidence/item-2/clean-room-receipt.json"}
+  ],
+  "archives": {"full":"evidence/raw/item2/frozen/pristine-baseline-v0.tar.gz","state_overlay":"evidence/raw/item2/frozen/pristine-baseline-v0-state.tar.gz","inventory":"evidence/item-2/raw-evidence-inventory.json"},
+  "reproduction": "Follow docs/items/Item-2-Frozen-Technical-Baseline.md#reproduction; verify a reconstructed operational tree against reconstruction-manifest.json before booting with the pinned Java binary and NeoForge unix_args.txt. Use baseline-manifest.json only to verify an extraction of the complete frozen archive.",
+  "decision_log":"evidence/item-2/decision-log.json",
+  "exit_gate_assessment":"evidence/item-2/exit-gate-assessment.json"
+}
