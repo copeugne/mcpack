@@ -1,0 +1,173 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 2 ]]; then
+  echo "usage: $0 PROJECT_ROOT OUTPUT_JSON" >&2
+  exit 64
+fi
+
+project_root=$(realpath -- "$1")
+output_json=$2
+mkdir -p -- "$(dirname -- "$output_json")"
+
+required=(bash curl git tar gzip sha256sum jq python3 ss rsync findmnt lsblk lscpu)
+missing=()
+for command_name in "${required[@]}"; do
+  if ! command -v "$command_name" >/dev/null 2>&1; then
+    missing+=("$command_name")
+  fi
+done
+if ((${#missing[@]})); then
+  printf 'missing required discovery commands: %s\n' "${missing[*]}" >&2
+  exit 69
+fi
+
+read_os_value() {
+  local key=$1
+  awk -F= -v key="$key" '$1 == key {value=$2; gsub(/^"|"$/, "", value); print value}' /etc/os-release
+}
+
+command_version() {
+  local command_name=$1
+  if ! command -v "$command_name" >/dev/null 2>&1; then
+    printf 'absent'
+    return
+  fi
+  case "$command_name" in
+    java) java -version 2>&1 | head -n 1 ;;
+    git-lfs) git lfs version | head -n 1 ;;
+    ss) ss --version | head -n 1 ;;
+    *) "$command_name" --version 2>&1 | head -n 1 ;;
+  esac
+}
+
+memory_value() {
+  local key=$1
+  awk -v key="$key" '$1 == key ":" {print $2 * 1024}' /proc/meminfo
+}
+
+cgroup_value() {
+  local path=$1
+  if [[ -r "$path" ]]; then
+    tr -d '\n' < "$path"
+  else
+    printf 'unavailable'
+  fi
+}
+
+port_state=()
+for port in 25565 25575 25566 24454 8080; do
+  if ss -H -lntu | awk -v port="$port" '$5 ~ (":" port "$") {found=1} END {exit !found}'; then
+    in_use=true
+  else
+    in_use=false
+  fi
+  port_state+=("$(jq -n --argjson port "$port" --argjson in_use "$in_use" '{port:$port,in_use:$in_use}')")
+done
+ports_json=$(printf '%s\n' "${port_state[@]}" | jq -s '.')
+
+network_state=()
+for endpoint in \
+  https://piston-meta.mojang.com/mc/game/version_manifest_v2.json \
+  https://piston-data.mojang.com/v1/objects/59353fb40c36d304f2035d51e7d6e6baa98dc05c/server.jar \
+  https://maven.neoforged.net/releases/net/neoforged/neoforge/21.1.249/neoforge-21.1.249-installer.jar \
+  https://github.com/adoptium/temurin21-binaries/releases/tag/jdk-21.0.12.1%2B1; do
+  status=$(curl --head --silent --location --max-time 20 --output /dev/null --write-out '%{http_code}' "$endpoint" || true)
+  network_state+=("$(jq -n --arg endpoint "$endpoint" --arg status "$status" '{endpoint:$endpoint,http_status:$status}')")
+done
+network_json=$(printf '%s\n' "${network_state[@]}" | jq -s '.')
+
+repositories_json=$(awk '/^[[:space:]]*URIs:/ {for (i=2; i<=NF; i++) print $i}' \
+  /etc/apt/sources.list /etc/apt/sources.list.d/*.sources 2>/dev/null | sort -u | jq -Rn '[inputs]')
+java_paths_json=$({ update-alternatives --list java 2>/dev/null || true; find /usr/lib/jvm -maxdepth 3 -type f -name java 2>/dev/null || true; } | sort -u | jq -Rn '[inputs]')
+group_ids_json=$(id -G | tr ' ' '\n' | jq -Rn '[inputs | tonumber]')
+
+cpu_json=$(lscpu -J | jq '{
+  architecture: ([.lscpu[] | select(.field == "Architecture:")][0].data),
+  model: ([.lscpu[] | select(.field == "Model name:")][0].data),
+  logical_cpus: ([.lscpu[] | select(.field == "CPU(s):")][0].data | tonumber),
+  cores_per_socket: ([.lscpu[] | select(.field == "Core(s) per socket:")][0].data | tonumber),
+  sockets: ([.lscpu[] | select(.field == "Socket(s):")][0].data | tonumber),
+  instruction_constraints: (([.lscpu[] | select(.field == "Flags:")][0].data | split(" ")) as $flags |
+    {sse4_2: ($flags | index("sse4_2") != null), avx2: ($flags | index("avx2") != null),
+     avx512f: ($flags | index("avx512f") != null), aes: ($flags | index("aes") != null)})
+}')
+storage_json=$(findmnt -J -b -T "$project_root" -o SOURCE,FSTYPE,OPTIONS,SIZE,AVAIL | jq '.filesystems[0]')
+devices_json=$(lsblk -J -b -d -o NAME,ROTA,TYPE,TRAN,MODEL,SIZE | jq '.blockdevices')
+
+if command -v sudo >/dev/null 2>&1; then
+  sudo_present=true
+  if sudo -n true 2>/dev/null; then
+    sudo_noninteractive=true
+  else
+    sudo_noninteractive=false
+  fi
+else
+  sudo_present=false
+  sudo_noninteractive=false
+fi
+
+jq -n \
+  --arg schema_version "host-discovery-v1" \
+  --arg captured_at "$(date --iso-8601=seconds)" \
+  --arg captured_at_utc "$(date --utc --iso-8601=seconds)" \
+  --arg distribution "$(read_os_value PRETTY_NAME)" \
+  --arg distribution_id "$(read_os_value ID)" \
+  --arg distribution_version "$(read_os_value VERSION_ID)" \
+  --arg kernel "$(uname -r)" \
+  --arg architecture "$(uname -m)" \
+  --arg shell "$SHELL" \
+  --arg shell_version "$(bash --version | head -n 1)" \
+  --arg timezone "$(timedatectl show --value -p Timezone 2>/dev/null || date +%Z)" \
+  --arg ntp_synchronized "$(timedatectl show --value -p NTPSynchronized 2>/dev/null || printf unknown)" \
+  --arg package_manager "$(command_version apt)" \
+  --arg git "$(command_version git)" \
+  --arg git_lfs "$(command_version git-lfs)" \
+  --arg python "$(command_version python3)" \
+  --arg uv "$(command_version uv)" \
+  --arg system_java "$(command_version java)" \
+  --arg docker "$(command_version docker)" \
+  --arg podman "$(command_version podman)" \
+  --arg cgroup_memory_max "$(cgroup_value /sys/fs/cgroup/memory.max)" \
+  --arg cgroup_cpu_max "$(cgroup_value /sys/fs/cgroup/cpu.max)" \
+  --arg cgroup_pids_max "$(cgroup_value /sys/fs/cgroup/pids.max)" \
+  --argjson cpu "$cpu_json" \
+  --argjson storage "$storage_json" \
+  --argjson devices "$devices_json" \
+  --argjson repositories "$repositories_json" \
+  --argjson java_paths "$java_paths_json" \
+  --argjson group_ids "$group_ids_json" \
+  --argjson ports "$ports_json" \
+  --argjson network "$network_json" \
+  --argjson sudo_present "$sudo_present" \
+  --argjson sudo_noninteractive "$sudo_noninteractive" \
+  --argjson effective_uid "$(id -u)" \
+  --argjson effective_gid "$(id -g)" \
+  --argjson memory_total "$(memory_value MemTotal)" \
+  --argjson memory_available "$(memory_value MemAvailable)" \
+  --argjson swap_total "$(memory_value SwapTotal)" \
+  --argjson swap_free "$(memory_value SwapFree)" \
+  --argjson fd_soft "$(ulimit -Sn)" \
+  --argjson fd_hard "$(ulimit -Hn)" \
+  --argjson process_soft "$(ulimit -Su)" \
+  --argjson process_hard "$(ulimit -Hu)" \
+  '{
+    schema_version:$schema_version, captured_at:$captured_at, captured_at_utc:$captured_at_utc,
+    operating_system:{distribution:$distribution,id:$distribution_id,version:$distribution_version,kernel:$kernel,architecture:$architecture},
+    cpu:$cpu,
+    memory:{physical_total_bytes:$memory_total,available_bytes:$memory_available,swap_total_bytes:$swap_total,swap_free_bytes:$swap_free},
+    cgroup_limits:{memory_max:$cgroup_memory_max,cpu_max:$cgroup_cpu_max,pids_max:$cgroup_pids_max},
+    storage:{workspace_filesystem:$storage,block_devices:$devices},
+    effective_identity:{uid:$effective_uid,gid:$effective_gid,supplementary_group_ids:$group_ids},
+    privilege:{sudo_present:$sudo_present,sudo_noninteractive:$sudo_noninteractive},
+    package_management:{resolved_version:$package_manager,configured_repository_uris:$repositories},
+    shell:{path:$shell,version:$shell_version},
+    runtimes:{system_java:$system_java,java_paths:$java_paths,python:$python,uv:$uv},
+    source_control:{git:$git,git_lfs:$git_lfs},
+    containers:{docker:$docker,podman:$podman},
+    relevant_ports:$ports,
+    authoritative_host_reachability:$network,
+    clock:{timezone:$timezone,ntp_synchronized:$ntp_synchronized},
+    limits:{file_descriptors:{soft:$fd_soft,hard:$fd_hard},processes:{soft:$process_soft,hard:$process_hard}},
+    capture_scope_note:"Read-only discovery captured after platform acquisition; project-local provisioning did not replace global Java or host packages."
+  }' > "$output_json"

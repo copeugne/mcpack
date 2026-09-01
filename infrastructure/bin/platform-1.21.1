@@ -1,0 +1,369 @@
+#!/usr/bin/env bash
+# Exact, project-local provisioning for the Item 2 Minecraft 1.21.1 control.
+set -euo pipefail
+
+readonly script_name=${0##*/}
+
+die() {
+  printf '%s: %s\n' "$script_name" "$*" >&2
+  exit 64
+}
+
+usage() {
+  cat >&2 <<'EOF'
+usage:
+  platform-1.21.1 inspect --root ROOT
+  platform-1.21.1 acquire --root ROOT --cache CACHE
+  platform-1.21.1 verify-cache --root ROOT --cache CACHE [--require-complete]
+  platform-1.21.1 provision-java --root ROOT --cache CACHE --java-home JAVA_HOME
+  platform-1.21.1 install-neoforge --root ROOT --cache CACHE --java-home JAVA_HOME --target TARGET --installer-log LOG
+  platform-1.21.1 materialize-pristine --root ROOT --cache CACHE --java-home JAVA_HOME --target TARGET --installer-log LOG --state-overlay PATH
+  platform-1.21.1 verify-instance --root ROOT --target TARGET --reconstruction-manifest PATH
+  platform-1.21.1 doctor --root ROOT --cache CACHE --java-home JAVA_HOME [--target TARGET]
+
+All targets must be explicit and absent or empty. The script never changes global Java.
+EOF
+  exit 64
+}
+
+require_commands() {
+  local command_name
+  for command_name in "$@"; do
+    command -v "$command_name" >/dev/null 2>&1 || die "required command is unavailable: $command_name"
+  done
+}
+
+is_empty_target() {
+  local target=$1
+  [[ ! -e "$target" ]] && return 0
+  [[ -d "$target" ]] || return 1
+  [[ -z "$(find "$target" -mindepth 1 -maxdepth 1 -print -quit)" ]]
+}
+
+require_empty_target() {
+  local target=$1
+  is_empty_target "$target" || die "target must be empty or absent: $target"
+}
+
+artifact_property() {
+  local artifact_id=$1
+  local property=$2
+  jq -er --arg id "$artifact_id" --arg property "$property" \
+    '.artifacts[] | select(.id == $id) | .[$property]' "$manifest"
+}
+
+artifact_path() {
+  local artifact_id=$1
+  local sha256
+  local filename
+  sha256=$(artifact_property "$artifact_id" sha256)
+  filename=$(artifact_property "$artifact_id" filename)
+  printf '%s/sha256/%s/%s\n' "$cache" "$sha256" "$filename"
+}
+
+verify_artifact() {
+  local artifact_id=$1
+  local artifact_file
+  local expected_size
+  local expected_sha256
+  local actual_size
+  local actual_sha256
+  artifact_file=$(artifact_path "$artifact_id")
+  expected_size=$(artifact_property "$artifact_id" size_bytes)
+  expected_sha256=$(artifact_property "$artifact_id" sha256)
+  [[ -f "$artifact_file" ]] || {
+    printf 'missing artifact: %s (%s)\n' "$artifact_id" "$artifact_file" >&2
+    return 1
+  }
+  actual_size=$(stat --printf='%s' -- "$artifact_file")
+  [[ "$actual_size" == "$expected_size" ]] || {
+    printf 'size mismatch for %s: expected %s, got %s\n' "$artifact_id" "$expected_size" "$actual_size" >&2
+    return 1
+  }
+  actual_sha256=$(sha256sum -- "$artifact_file" | awk '{print $1}')
+  [[ "$actual_sha256" == "$expected_sha256" ]] || {
+    printf 'SHA-256 mismatch for %s: expected %s, got %s\n' "$artifact_id" "$expected_sha256" "$actual_sha256" >&2
+    return 1
+  }
+}
+
+verify_all_artifacts() {
+  local require_complete=$1
+  local artifact_id
+  local failures=0
+  while IFS= read -r artifact_id; do
+    if ! verify_artifact "$artifact_id"; then
+      failures=1
+    fi
+  done < <(jq -er '.artifacts[].id' "$manifest")
+  if (( failures != 0 )) && (( require_complete != 0 )); then
+    return 1
+  fi
+  return "$failures"
+}
+
+validate_java_home() {
+  local java_binary="$java_home/bin/java"
+  local version_output
+  [[ -x "$java_binary" ]] || die "pinned Java binary is unavailable: $java_binary"
+  case "$(uname -m)" in
+    x86_64|amd64) ;;
+    *) die "unsupported host architecture for pinned x86-64 Java: $(uname -m)" ;;
+  esac
+  version_output=$("$java_binary" -version 2>&1)
+  grep -F '21.0.12.1' <<<"$version_output" >/dev/null || die "Java version does not match 21.0.12.1"
+  grep -F 'Temurin' <<<"$version_output" >/dev/null || die "Java vendor is not Eclipse Temurin"
+  grep -F '64-Bit Server VM' <<<"$version_output" >/dev/null || die "Java implementation is not the expected HotSpot server VM"
+}
+
+validate_neoforge_installation() {
+  [[ -f "$target/libraries/net/neoforged/neoforge/21.1.249/unix_args.txt" ]] || return 1
+  [[ -f "$target/run.sh" ]] || return 1
+  [[ -f "$target/run.bat" ]] || return 1
+}
+
+validate_relative_path() {
+  local path=$1
+  [[ -n "$path" && "$path" != /* && "$path" != ../* && "$path" != */../* && "$path" != *'/..' ]]
+}
+
+verify_reconstruction_instance() {
+  local reconstruction_manifest=$1
+  local path
+  local size_bytes
+  local expected_sha256
+  local actual_sha256
+  local failures=0
+  declare -A expected_files=()
+  declare -A expected_directories=()
+
+  [[ -f "$reconstruction_manifest" ]] || die "reconstruction manifest is unavailable: $reconstruction_manifest"
+  jq -e '.schema_version == "item2-operational-reconstruction-v1"' "$reconstruction_manifest" >/dev/null || die "unsupported reconstruction manifest schema"
+  while IFS=$'\t' read -r path size_bytes expected_sha256; do
+    validate_relative_path "$path" || die "reconstruction manifest contains an unsafe file path: $path"
+    expected_files["$path"]="$size_bytes:$expected_sha256"
+    if [[ ! -f "$target/$path" ]]; then
+      printf 'missing instance file: %s\n' "$path" >&2
+      failures=1
+      continue
+    fi
+    [[ "$(stat --printf='%s' -- "$target/$path")" == "$size_bytes" ]] || {
+      printf 'instance size mismatch: %s\n' "$path" >&2
+      failures=1
+      continue
+    }
+    actual_sha256=$(sha256sum -- "$target/$path" | awk '{print $1}')
+    [[ "$actual_sha256" == "$expected_sha256" ]] || {
+      printf 'instance SHA-256 mismatch: %s\n' "$path" >&2
+      failures=1
+    }
+  done < <(jq -r '.files[] | [.path, (.size_bytes | tostring), .sha256] | @tsv' "$reconstruction_manifest")
+  while IFS= read -r path; do
+    validate_relative_path "$path" || die "reconstruction manifest contains an unsafe directory path: $path"
+    expected_directories["$path"]=1
+    if [[ ! -d "$target/$path" ]]; then
+      printf 'missing instance directory: %s\n' "$path" >&2
+      failures=1
+    fi
+  done < <(jq -r '.directories[]' "$reconstruction_manifest")
+  while IFS= read -r path; do
+    [[ -v "expected_files[$path]" ]] || {
+      printf 'unexpected instance file: %s\n' "$path" >&2
+      failures=1
+    }
+  done < <(cd -- "$target" && find . -type f -printf '%P\n' | sort)
+  while IFS= read -r path; do
+    [[ -z "$path" || -v "expected_directories[$path]" ]] || {
+      printf 'unexpected instance directory: %s\n' "$path" >&2
+      failures=1
+    }
+  done < <(cd -- "$target" && find . -type d -printf '%P\n' | sort)
+  while IFS= read -r path; do
+    printf 'unsupported instance path type: %s\n' "$path" >&2
+    failures=1
+  done < <(cd -- "$target" && find . -mindepth 1 ! -type f ! -type d -printf '%P\n' | sort)
+  (( failures == 0 ))
+}
+
+run_neoforge_installer() {
+  local installer_file
+  local installer_directory
+  local generated_log
+  installer_file=$(artifact_path neoforge-installer)
+  installer_directory=$(dirname -- "$installer_log")
+  generated_log="$installer_directory/$(basename -- "$installer_file").log"
+  mkdir -p -- "$installer_directory"
+  (
+    cd -- "$installer_directory"
+    "$java_home/bin/java" -jar "$installer_file" --installServer "$target" > "$installer_log" 2>&1
+  )
+  if [[ -f "$generated_log" ]]; then
+    mv -- "$generated_log" "$installer_log.neoforge-installer-internal.log"
+  fi
+}
+
+command_name=${1:-}
+[[ -n "$command_name" ]] || usage
+shift
+
+root=''
+cache=''
+java_home=''
+target=''
+installer_log=''
+state_overlay=''
+reconstruction_manifest=''
+require_complete=0
+
+while (($#)); do
+  case "$1" in
+    --root) root=${2:-}; shift 2 ;;
+    --cache) cache=${2:-}; shift 2 ;;
+    --java-home) java_home=${2:-}; shift 2 ;;
+    --target) target=${2:-}; shift 2 ;;
+    --installer-log) installer_log=${2:-}; shift 2 ;;
+    --state-overlay) state_overlay=${2:-}; shift 2 ;;
+    --reconstruction-manifest) reconstruction_manifest=${2:-}; shift 2 ;;
+    --require-complete) require_complete=1; shift ;;
+    *) die "unknown argument: $1" ;;
+  esac
+done
+
+[[ -n "$root" ]] || die "--root is required"
+root=$(realpath -- "$root")
+manifest="$root/infrastructure/manifests/platform-1.21.1.json"
+[[ -f "$manifest" ]] || die "platform manifest is unavailable: $manifest"
+require_commands jq sha256sum stat find
+
+case "$command_name" in
+  inspect)
+    jq -e '
+      .minecraft as $minecraft |
+      .neoforge as $neoforge |
+      .java as $java |
+      {
+        minecraft: $minecraft,
+        neoforge: $neoforge,
+        java: $java,
+        artifact_count: (.artifacts | length)
+      }
+    ' "$manifest"
+    ;;
+  acquire)
+    [[ -n "$cache" ]] || die "--cache is required"
+    require_commands curl mkdir mv
+    cache=$(realpath -m -- "$cache")
+    while IFS= read -r artifact_id; do
+      artifact_file=$(artifact_path "$artifact_id")
+      if [[ -e "$artifact_file" ]]; then
+        verify_artifact "$artifact_id"
+        continue
+      fi
+      artifact_directory=$(dirname -- "$artifact_file")
+      mkdir -p -- "$artifact_directory"
+      temporary_file="$artifact_directory/.${artifact_id}.$$.$RANDOM.part"
+      source_url=$(artifact_property "$artifact_id" source_url)
+      trap 'rm -f -- "${temporary_file:-}"' EXIT
+      curl --fail --location --proto '=https' --tlsv1.2 --retry 3 --output "$temporary_file" "$source_url"
+      mv -- "$temporary_file" "$artifact_file"
+      temporary_file=''
+      verify_artifact "$artifact_id"
+    done < <(jq -er '.artifacts[].id' "$manifest")
+    trap - EXIT
+    ;;
+  verify-cache)
+    [[ -n "$cache" ]] || die "--cache is required"
+    cache=$(realpath -m -- "$cache")
+    verify_all_artifacts "$require_complete"
+    ;;
+  provision-java)
+    [[ -n "$cache" && -n "$java_home" ]] || die "--cache and --java-home are required"
+    require_commands tar mkdir mktemp mv rmdir grep uname
+    require_empty_target "$java_home"
+    cache=$(realpath -m -- "$cache")
+    java_home=$(realpath -m -- "$java_home")
+    verify_artifact temurin-jdk
+    mkdir -p -- "$(dirname -- "$java_home")"
+    extraction_parent=$(mktemp -d "$(dirname -- "$java_home")/.mcpack-java-extract.XXXXXX")
+    cleanup_extraction() {
+      status=$?
+      rm -rf -- "$extraction_parent"
+      exit "$status"
+    }
+    trap cleanup_extraction EXIT
+    tar --extract --gzip --file "$(artifact_path temurin-jdk)" --directory "$extraction_parent" --no-same-owner
+    extracted_home="$extraction_parent/jdk-21.0.12.1+1"
+    [[ -d "$extracted_home" ]] || die "Java archive did not contain expected top-level directory"
+    java_home="$extracted_home" validate_java_home
+    mv -- "$extracted_home" "$java_home"
+    rmdir -- "$extraction_parent"
+    trap - EXIT
+    ;;
+  install-neoforge)
+    [[ -n "$cache" && -n "$java_home" && -n "$target" && -n "$installer_log" ]] || die "--cache, --java-home, --target, and --installer-log are required"
+    require_commands mkdir grep uname
+    require_empty_target "$target"
+    cache=$(realpath -m -- "$cache")
+    java_home=$(realpath -m -- "$java_home")
+    target=$(realpath -m -- "$target")
+    installer_log=$(realpath -m -- "$installer_log")
+    verify_artifact neoforge-installer
+    validate_java_home
+    mkdir -p -- "$(dirname -- "$target")"
+    run_neoforge_installer
+    validate_neoforge_installation || die "NeoForge installer did not produce the required server launch files"
+    ;;
+  materialize-pristine)
+    [[ -n "$cache" && -n "$java_home" && -n "$target" && -n "$installer_log" && -n "$state_overlay" ]] || die "--cache, --java-home, --target, --installer-log, and --state-overlay are required"
+    require_commands mkdir grep uname tar awk
+    require_empty_target "$target"
+    cache=$(realpath -m -- "$cache")
+    java_home=$(realpath -m -- "$java_home")
+    target=$(realpath -m -- "$target")
+    installer_log=$(realpath -m -- "$installer_log")
+    state_overlay=$(realpath -- "$state_overlay")
+    verify_artifact neoforge-installer
+    validate_java_home
+    mkdir -p -- "$(dirname -- "$target")"
+    run_neoforge_installer
+    validate_neoforge_installation || die "NeoForge installer did not produce the required server launch files"
+    [[ -f "$state_overlay" ]] || die "baseline state overlay is unavailable: $state_overlay"
+    expected_overlay_sha256=$(jq -er '.baseline_state_overlay.sha256' "$manifest")
+    actual_overlay_sha256=$(sha256sum -- "$state_overlay" | awk '{print $1}')
+    [[ "$actual_overlay_sha256" == "$expected_overlay_sha256" ]] || die "baseline state overlay SHA-256 mismatch: expected $expected_overlay_sha256, got $actual_overlay_sha256"
+    while IFS= read -r overlay_member; do
+      [[ -n "$overlay_member" ]] || die "baseline state overlay contains an empty member name"
+      [[ "$overlay_member" != /* && "$overlay_member" != ../* && "$overlay_member" != */../* && "$overlay_member" != *'/..' ]] || die "baseline state overlay contains an unsafe member: $overlay_member"
+      overlay_top_level=${overlay_member%%/*}
+      jq -e --arg path "$overlay_top_level" '.baseline_state_overlay.safe_top_level_paths | index($path) != null' "$manifest" >/dev/null || die "baseline state overlay contains a disallowed member: $overlay_member"
+    done < <(tar --list --gzip --file "$state_overlay")
+    tar --extract --gzip --file "$state_overlay" --directory "$target" --no-same-owner --no-same-permissions
+    ;;
+  doctor)
+    [[ -n "$cache" && -n "$java_home" ]] || die "--cache and --java-home are required"
+    require_commands grep uname
+    cache=$(realpath -m -- "$cache")
+    java_home=$(realpath -m -- "$java_home")
+    verify_all_artifacts 1
+    validate_java_home
+    if [[ -n "$target" ]]; then
+      target=$(realpath -m -- "$target")
+      validate_neoforge_installation || die "NeoForge target is incomplete: $target"
+    fi
+    jq -n \
+      --arg manifest "$manifest" \
+      --arg cache "$cache" \
+      --arg java_home "$java_home" \
+      --arg target "$target" \
+      '{status:"pass",manifest:$manifest,cache:$cache,java_home:$java_home,target:($target | select(length > 0))}'
+    ;;
+  verify-instance)
+    [[ -n "$target" && -n "$reconstruction_manifest" ]] || die "--target and --reconstruction-manifest are required"
+    require_commands jq sha256sum stat find awk sort
+    target=$(realpath -- "$target")
+    reconstruction_manifest=$(realpath -- "$reconstruction_manifest")
+    verify_reconstruction_instance "$reconstruction_manifest"
+    jq -n --arg target "$target" --arg manifest "$reconstruction_manifest" '{status:"pass",target:$target,reconstruction_manifest:$manifest}'
+    ;;
+  *) usage ;;
+esac
