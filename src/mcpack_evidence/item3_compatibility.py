@@ -99,9 +99,9 @@ def _evaluate_candidate(
         if mod.provider_candidate == candidate.candidate_filename
     )
     loader_checks = tuple(
-        range_check("language_loader", "4.0", version_range, oracle)
-        for version_range in candidate.loader_ranges
-        if candidate.archive_role != "library"
+        range_check("language_loader", "4.0", declaration.version_range, oracle)
+        for declaration in candidate.loader_declarations
+        if candidate.archive_role != "library" and declaration.source_path == _ACTIVE_PATH
     )
     dependencies = tuple(dep for dep in candidate.dependencies if dep.source_path == _ACTIVE_PATH)
     minecraft = _target_checks(dependencies, "minecraft", "1.21.1", oracle)
@@ -113,7 +113,7 @@ def _evaluate_candidate(
     results = tuple(check.result for check in (*loader_checks, *minecraft, *neoforge))
     dependency_statuses = tuple(check.status for check in dependency_checks)
     incompatible = any(result in {"fail", "invalid"} for result in results) or any(
-        status in {"missing_required", "version_mismatch", "incompatible_present", "orphan_owner"}
+        status in {"missing_required", "version_mismatch", "incompatible_present"}
         for status in dependency_statuses
     )
     unresolved = (
@@ -175,7 +175,7 @@ def _hazards(
         hazards.append("legacy_forge_metadata_also_present")
     if any(doc.path == "fabric.mod.json" for doc in candidate.metadata_documents):
         hazards.append("inactive_fabric_metadata_present")
-    if any(check.status == "orphan_owner" for check in dependency_checks):
+    if any(check.status == "orphan_owner_ignored" for check in dependency_checks):
         hazards.append("orphan_dependency_owner")
     hazards.extend(
         f"provided_mod_id_collision:{mod.mod_id}"

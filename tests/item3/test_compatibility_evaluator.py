@@ -65,7 +65,7 @@ def test_applies_required_optional_incompatible_discouraged_and_side_semantics()
     )
 
 
-def test_quarantines_orphan_owner_and_matching_incompatibility() -> None:
+def test_ignores_orphan_owner_but_quarantines_matching_incompatibility() -> None:
     report = evaluate_compatibility(
         _inspection(
             _candidate("helper.jar", mods=[_mod("helper", "2.0")]),
@@ -83,7 +83,7 @@ def test_quarantines_orphan_owner_and_matching_incompatibility() -> None:
 
     row = _row(report, "broken.jar")
     assert tuple(check.status for check in row.dependency_checks) == (
-        "orphan_owner",
+        "orphan_owner_ignored",
         "incompatible_present",
     )
     assert row.static_status == "incompatible"
@@ -145,6 +145,13 @@ def _candidate(
         "manifest_implementation_version": implementation_version,
         "mod_loaders": ["javafml"],
         "loader_ranges": ["[4,)"],
+        "loader_declarations": [
+            {
+                "mod_loader": "javafml",
+                "version_range": "[4,)",
+                "source_path": "META-INF/neoforge.mods.toml",
+            }
+        ],
         "mods": mods,
         "dependencies": dependencies or [],
         "minecraft_ranges": [],
@@ -186,3 +193,24 @@ def _simple_oracle(version: str, declared_range: str) -> str:
     if declared_range == "[3,)" and version == "2.0":
         return "fail"
     return "pass"
+
+
+def test_ignores_legacy_forge_loader_range_when_neoforge_metadata_is_active() -> None:
+    candidate = _candidate("dual.jar", mods=[_mod("dual", "1.0")])
+    candidate["loader_ranges"] = ["[1,)", "[40,)"]
+    candidate["loader_declarations"] = [
+        {
+            "mod_loader": "javafml",
+            "version_range": "[1,)",
+            "source_path": "META-INF/neoforge.mods.toml",
+        },
+        {
+            "mod_loader": "lowcodefml",
+            "version_range": "[40,)",
+            "source_path": "META-INF/mods.toml",
+        },
+    ]
+
+    report = evaluate_compatibility(_inspection(candidate), _simple_oracle)
+
+    assert tuple(check.declared_range for check in report.candidates[0].loader_checks) == ("[1,)",)

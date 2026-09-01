@@ -19,7 +19,11 @@ def main() -> None:
     versions = _provided_versions(report)
     requests: set[tuple[str, str]] = set()
     for candidate in report.candidates:
-        requests.update(("4.0", value) for value in candidate.loader_ranges)
+        requests.update(
+            ("4.0", declaration.version_range)
+            for declaration in candidate.loader_declarations
+            if declaration.source_path == "META-INF/neoforge.mods.toml"
+        )
         for dependency in candidate.dependencies:
             if dependency.source_path != "META-INF/neoforge.mods.toml":
                 continue

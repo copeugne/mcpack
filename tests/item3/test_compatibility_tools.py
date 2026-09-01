@@ -60,6 +60,8 @@ def _inspection_json() -> str:
           "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"}],
         "manifest_implementation_version": null,
         "mod_loaders": ["javafml"], "loader_ranges": ["[4,)"],
+        "loader_declarations": [{"mod_loader": "javafml", "version_range": "[4,)",
+          "source_path": "META-INF/neoforge.mods.toml"}],
         "mods": [{"mod_id": "example", "version": "1.0", "display_name": null,
           "source_path": "META-INF/neoforge.mods.toml"}],
         "dependencies": [], "minecraft_ranges": [], "neoforge_ranges": [],
