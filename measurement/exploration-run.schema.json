@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "exploration-run.schema.json",
+  "title": "Exploration pacing run",
+  "type": "object",
+  "required": [
+    "run_id",
+    "seed",
+    "mode",
+    "endpoint",
+    "replicate",
+    "operator_id",
+    "review",
+    "artifacts"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seed": {
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "foot",
+        "standardized_horse",
+        "vanilla_boat"
+      ]
+    },
+    "endpoint": {
+      "enum": [
+        "fixed_time",
+        "fixed_distance"
+      ]
+    },
+    "replicate": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "operator_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "valid",
+        "invalidated",
+        "not-applicable"
+      ]
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "elapsed_seconds"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "visual",
+              "actionable",
+              "hostile_encounter",
+              "proper_dungeon",
+              "major_structure",
+              "village"
+            ]
+          },
+          "elapsed_seconds": {
+            "type": "number",
+            "minimum": 0
+          },
+          "family": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "meaningful_intervals": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "number",
+            "minimum": 0
+          }
+        ],
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "review": {
+      "type": "object",
+      "required": [
+        "reviewer_id",
+        "decision"
+      ],
+      "properties": {
+        "reviewer_id": {
+          "type": "string"
+        },
+        "decision": {
+          "enum": [
+            "pending",
+            "valid",
+            "invalidated",
+            "not-applicable"
+          ]
+        }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}
+
