@@ -230,6 +230,6 @@ def create_https_connection(hostname: str) -> http.client.HTTPSConnection:
     if proxy.scheme != "http" or proxy.hostname is None:
         message = "HTTPS_PROXY must be an HTTP proxy URL with a hostname"
         raise ArtifactVerificationError(message)
-    connection = http.client.HTTPSConnection(proxy.hostname, proxy.port, timeout=120)
+    connection = http.client.HTTPSConnection(proxy.hostname, proxy.port or 80, timeout=120)
     connection.set_tunnel(hostname)
     return connection

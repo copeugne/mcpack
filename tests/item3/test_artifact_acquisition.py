@@ -96,3 +96,15 @@ def test_https_connection_uses_configured_proxy(monkeypatch: pytest.MonkeyPatch)
     assert connection.host == "proxy.example"
     assert connection.port == 8080
     connection.close()
+
+
+def test_https_connection_defaults_http_proxy_to_port_80(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("HTTPS_PROXY", "http://proxy.example")
+
+    connection = create_https_connection("cdn.modrinth.com")
+
+    assert connection.host == "proxy.example"
+    assert connection.port == 80
+    connection.close()
