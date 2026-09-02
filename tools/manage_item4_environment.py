@@ -13,8 +13,12 @@ import os
 import shutil
 import tarfile
 import tempfile
+from contextlib import contextmanager
 from pathlib import Path
-from typing import Any, TypedDict
+from typing import TYPE_CHECKING, Any, TypedDict
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
 
 
 class MaterializationReceipt(TypedDict):
@@ -28,6 +32,7 @@ class MaterializationReceipt(TypedDict):
     retained_manifest_sha256: str
     pristine_source: str
     production_state_used: bool
+    copied_world_removed: bool
 
 
 class BackupReceipt(TypedDict):
@@ -91,6 +96,13 @@ def materialize(  # noqa: PLR0913, PLR0917
         message = f"retained artifacts absent from acquisition manifest: {missing}"
         raise ValueError(message)
     shutil.copytree(pristine, target, copy_function=shutil.copy2)
+    copied_world = target / "world"
+    copied_world_removed = copied_world.exists()
+    if copied_world.is_symlink() or (copied_world.exists() and not copied_world.is_dir()):
+        message = f"pristine world path is not a directory: {copied_world}"
+        raise ValueError(message)
+    if copied_world.exists():
+        shutil.rmtree(copied_world)
     mods = target / "mods"
     mods.mkdir(exist_ok=True)
     if any(mods.iterdir()):
@@ -118,6 +130,7 @@ def materialize(  # noqa: PLR0913, PLR0917
         "retained_manifest_sha256": sha256(retained_manifest),
         "pristine_source": str(pristine),
         "production_state_used": False,
+        "copied_world_removed": copied_world_removed,
     }
     (target / "item4-materialization.json").write_text(
         json.dumps(receipt, indent=2) + "\n", encoding="utf-8"
@@ -131,7 +144,12 @@ def backup(world: Path, archive: Path, receipt_path: Path) -> BackupReceipt:
     if not (world / "level.dat").is_file():
         message = f"world has no level.dat: {world}"
         raise ValueError(message)
-    _require_world_stopped(world)
+    with _world_backup_lock(world):
+        return _backup_locked(world, archive, receipt_path)
+
+
+def _backup_locked(world: Path, archive: Path, receipt_path: Path) -> BackupReceipt:
+    """Create the archive and receipt while the compatible world lock is held."""
     archive.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(dir=archive.parent, delete=False) as temporary:
         temporary_path = Path(temporary.name)
@@ -141,7 +159,7 @@ def backup(world: Path, archive: Path, receipt_path: Path) -> BackupReceipt:
             gzip.GzipFile(fileobj=raw, mode="wb", filename="", mtime=0) as compressed,
             tarfile.open(fileobj=compressed, mode="w|") as tar,
         ):
-            for path in sorted(world.rglob("*")):
+            for path in _backup_paths(world):
                 relative = path.relative_to(world)
                 info = tar.gettarinfo(str(path), arcname=str(Path("world") / relative))
                 info.uid = info.gid = 0
@@ -155,7 +173,7 @@ def backup(world: Path, archive: Path, receipt_path: Path) -> BackupReceipt:
         temporary_path.replace(archive)
     finally:
         temporary_path.unlink(missing_ok=True)
-    files = [_file_row(path, world) for path in sorted(world.rglob("*")) if path.is_file()]
+    files = [_file_row(path, world) for path in _backup_paths(world) if path.is_file()]
     receipt = {
         "schema_version": "item4-world-backup-v1",
         "archive": str(archive),
@@ -169,17 +187,24 @@ def backup(world: Path, archive: Path, receipt_path: Path) -> BackupReceipt:
     return receipt
 
 
-def _require_world_stopped(world: Path) -> None:
-    """Refuse backup while Minecraft holds its world session lock."""
+def _backup_paths(world: Path) -> list[Path]:
+    """List stable world content without opening Minecraft's live lock descriptor."""
+    return [path for path in sorted(world.rglob("*")) if path != world / "session.lock"]
+
+
+@contextmanager
+def _world_backup_lock(world: Path) -> Iterator[None]:
+    """Hold Minecraft's compatible session lock through archive and receipt creation."""
     lock_path = world / "session.lock"
-    if not lock_path.exists():
-        return
+    lock_path.touch(exist_ok=True)
     with lock_path.open("r+b") as lock:
         try:
             fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError as error:
             message = f"world is active; session lock is held: {world}"
             raise ValueError(message) from error
+        try:
+            yield
         finally:
             fcntl.lockf(lock, fcntl.LOCK_UN)
 

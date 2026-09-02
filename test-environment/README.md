@@ -26,7 +26,7 @@ uv run python tools/manage_item4_environment.py materialize \
   --target instances/item4/ordinary
 ```
 
-The command refuses an existing target, verifies every retained artifact before hard-linking it, and writes `level-seed`. To regenerate, stop the server, delete the entire disposable role instance, and rerun the command. Do not delete only `world/` while retaining generated state when a clean control is required.
+The command refuses an existing target, verifies every retained artifact before hard-linking it, removes any `world/` copied from the pristine reconstruction, and only then writes `level-seed`. This guarantees first boot generates the selected role seed instead of silently reusing baseline region data. To regenerate, stop the server, delete the entire disposable role instance, and rerun the command. Do not delete only `world/` while retaining generated state when a clean control is required.
 
 ## Backup and restore
 
@@ -57,7 +57,7 @@ done
 systemctl list-timers 'mcpack-item4-backup@*'
 ```
 
-The archives and per-run receipts remain in ignored operational storage. The unit intentionally fails rather than copying a live world; lifecycle orchestration must flush and stop a server before its scheduled backup window.
+The archives and per-run receipts remain in ignored operational storage. The unit takes a Java-compatible POSIX record lock and holds it throughout archive creation and receipt hashing; `session.lock` itself is excluded so opening/closing it cannot release the process-scoped record lock. The unit intentionally fails rather than copying a live world; lifecycle orchestration must flush and stop a server before its scheduled backup window.
 
 ## Rollback
 

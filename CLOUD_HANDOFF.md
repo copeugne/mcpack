@@ -99,11 +99,12 @@ The archive was verified before safe extraction into an absent target. The resto
   - refuses destructive target reuse;
   - verifies retained artifacts before materialization;
   - accepts an existing **empty** pristine `mods/` directory but rejects content;
+  - removes a copied pristine `world/` before applying the selected role seed, ensuring first boot generates that seed;
   - writes deterministic seed properties;
   - creates normalized deterministic stopped-world archives;
   - verifies archive hash before extraction;
   - rejects unsafe tar members;
-  - checks the Minecraft `session.lock` with a Java-compatible POSIX record lock and refuses a live-world backup (do not replace it with BSD `flock`).
+  - holds the Minecraft-compatible POSIX record lock through archive creation and receipt hashing, excludes `session.lock` from backup content to avoid releasing process-scoped locks by closing another descriptor, and refuses a live-world backup (do not replace it with BSD `flock`).
 - `tools/run_item4_server_lifecycle.py`:
   - waits for readiness;
   - issues `save-all flush`;

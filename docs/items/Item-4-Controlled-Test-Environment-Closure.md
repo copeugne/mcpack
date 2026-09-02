@@ -30,7 +30,7 @@ An initial mountainous run used a fixed five-minute delayed command pipe. The se
 
 ## Versioning and rollback
 
-`test-environment/README.md` defines configuration and experiment branch naming, clean regeneration, backup, restore, and rollback. The lifecycle tools refuse existing targets, verify retained artifact identities, use deterministic archives, verify archive hashes before extraction, and reject unsafe members. Config inputs are versioned through Item 2 evidence; project datapack, spawn-rule, loot-table, and worldgen-override inventories are explicitly empty. Generated mod configs remain untuned inputs for Item 6.
+`test-environment/README.md` defines configuration and experiment branch naming, clean regeneration, backup, restore, and rollback. Materialization removes any world copied from the pristine reconstruction before applying the selected seed. Backup holds a Minecraft-compatible POSIX record lock across both archive creation and receipt hashing. The lifecycle tools refuse existing targets, verify retained artifact identities, use deterministic archives, verify archive hashes before extraction, and reject unsafe members. Config inputs are versioned through Item 2 evidence; project datapack, spawn-rule, loot-table, and worldgen-override inventories are explicitly empty. Generated mod configs remain untuned inputs for Item 6.
 
 ## Known limitations carried forward
 

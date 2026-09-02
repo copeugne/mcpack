@@ -7,6 +7,7 @@ import sys
 from typing import TYPE_CHECKING, TextIO, cast
 
 import pytest
+import tools.manage_item4_environment as environment_manager
 from tools.manage_item4_environment import backup, materialize, restore
 
 if TYPE_CHECKING:
@@ -62,6 +63,8 @@ def test_materialize_accepts_existing_empty_pristine_mods(tmp_path: Path) -> Non
     pristine = tmp_path / "pristine"
     _ = (pristine / "mods").mkdir(parents=True)
     _ = (pristine / "server.properties").write_text("level-name=old\n")
+    _ = (pristine / "world").mkdir()
+    _ = (pristine / "world/level.dat").write_bytes(b"copied baseline world")
     artifact = tmp_path / "example.jar"
     _ = artifact.write_bytes(b"artifact")
     artifact_hash = hashlib.sha256(b"artifact").hexdigest()
@@ -87,7 +90,9 @@ def test_materialize_accepts_existing_empty_pristine_mods(tmp_path: Path) -> Non
     receipt = materialize(pristine, acquisition, retained, seeds, "ordinary", tmp_path / "out")
 
     assert receipt["retained_candidate_count"] == 1
+    assert receipt["copied_world_removed"] is True
     assert (tmp_path / "out/mods/example.jar").read_bytes() == b"artifact"
+    assert not (tmp_path / "out/world").exists()
 
 
 def test_backup_refuses_minecraft_compatible_posix_record_lock(tmp_path: Path) -> None:
@@ -121,3 +126,39 @@ def test_backup_refuses_minecraft_compatible_posix_record_lock(tmp_path: Path) -
         locker.terminate()
         _ = locker.wait(timeout=5)
         stdout.close()
+
+
+def test_backup_holds_record_lock_through_receipt_hashing(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    world = tmp_path / "world"
+    world.mkdir()
+    _ = (world / "level.dat").write_bytes(b"level")
+    observed: list[str] = []
+    original = environment_manager._file_row  # pyright: ignore[reportPrivateUsage]
+
+    def observe_lock(path: Path, root: Path) -> dict[str, object]:
+        if not observed:
+            probe = subprocess.run(  # noqa: S603
+                [
+                    sys.executable,
+                    "-c",
+                    (
+                        "import fcntl,sys; f=open(sys.argv[1], 'r+b'); "
+                        "\ntry: fcntl.lockf(f, fcntl.LOCK_EX | fcntl.LOCK_NB); print('acquired')"
+                        "\nexcept BlockingIOError: print('blocked')"
+                    ),
+                    str(world / "session.lock"),
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            observed.append(probe.stdout.strip())
+        return original(path, root)
+
+    monkeypatch.setattr(environment_manager, "_file_row", observe_lock)
+
+    _ = backup(world, tmp_path / "backup.tar.gz", tmp_path / "receipt.json")
+
+    assert observed == ["blocked"]
