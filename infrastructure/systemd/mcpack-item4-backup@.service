@@ -1,0 +1,11 @@
+[Unit]
+Description=Hash-verified stopped-world backup for mcpack Item 4 seed %i
+Documentation=file:///workspace/mcpack/test-environment/README.md
+
+[Service]
+Type=oneshot
+WorkingDirectory=/workspace/mcpack
+ExecStart=/workspace/mcpack/infrastructure/bin/item4-automated-backup --project-root /workspace/mcpack --role %i
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
