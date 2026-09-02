@@ -174,14 +174,14 @@ def _require_world_stopped(world: Path) -> None:
     lock_path = world / "session.lock"
     if not lock_path.exists():
         return
-    with lock_path.open("rb") as lock:
+    with lock_path.open("r+b") as lock:
         try:
-            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError as error:
             message = f"world is active; session lock is held: {world}"
             raise ValueError(message) from error
         finally:
-            fcntl.flock(lock, fcntl.LOCK_UN)
+            fcntl.lockf(lock, fcntl.LOCK_UN)
 
 
 def restore(archive: Path, expected_sha256: str, target: Path) -> RestoreReceipt:

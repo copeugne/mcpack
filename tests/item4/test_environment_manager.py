@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import hashlib
 import json
-from typing import TYPE_CHECKING
+import subprocess
+import sys
+from typing import TYPE_CHECKING, TextIO, cast
 
 import pytest
 from tools.manage_item4_environment import backup, materialize, restore
@@ -86,3 +88,36 @@ def test_materialize_accepts_existing_empty_pristine_mods(tmp_path: Path) -> Non
 
     assert receipt["retained_candidate_count"] == 1
     assert (tmp_path / "out/mods/example.jar").read_bytes() == b"artifact"
+
+
+def test_backup_refuses_minecraft_compatible_posix_record_lock(tmp_path: Path) -> None:
+    world = tmp_path / "world"
+    world.mkdir()
+    _ = (world / "level.dat").write_bytes(b"level")
+    lock_path = world / "session.lock"
+    _ = lock_path.write_bytes(b"lock")
+    locker: subprocess.Popen[str] = subprocess.Popen(  # noqa: S603
+        [
+            sys.executable,
+            "-c",
+            (
+                "import fcntl,sys,time; "
+                "f=open(sys.argv[1], 'r+b'); "
+                "fcntl.lockf(f, fcntl.LOCK_EX); "
+                "print('locked', flush=True); "
+                "time.sleep(30)"
+            ),
+            str(lock_path),
+        ],
+        stdout=subprocess.PIPE,
+        text=True,
+    )
+    stdout = cast("TextIO", locker.stdout)
+    try:
+        assert stdout.readline().strip() == "locked"
+        with pytest.raises(ValueError, match="world is active"):
+            _ = backup(world, tmp_path / "backup.tar.gz", tmp_path / "receipt.json")
+    finally:
+        locker.terminate()
+        _ = locker.wait(timeout=5)
+        stdout.close()
