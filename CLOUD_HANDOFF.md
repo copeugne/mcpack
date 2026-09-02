@@ -28,6 +28,7 @@ The exact restart point is:
   - `5821bd6 feat(item4): add deterministic environment lifecycle tooling`;
   - `ba31fff feat(item4): automate readiness-driven server lifecycle`.
 - Review-fix commit: `316c341 fix(item4): address environment lifecycle review`.
+- Lock-compatibility review fix: `57c900b fix(item4): use Minecraft-compatible world locking`.
 - Synchronization merge before the review fixes: `845f954 Merge remote-tracking branch 'origin/main' into work`.
 - Validated Item 4 tag already pushed: `item-4-controlled-environment-2026-09-02` (points to `845f954`; do not move or rewrite it).
 - Pull request: <https://github.com/copeugne/mcpack/pull/6> (`work` into `main`).
@@ -36,6 +37,7 @@ The exact restart point is:
   2. lifecycle timeout enforcement now uses a reader thread plus a queue deadline and kills the complete process group if the server is silent;
   3. a real persistent daily systemd backup timer and stopped-world backup runner are committed.
 - Commit `316c341` and this handoff are pushed. All three review threads were answered and resolved, the PR body was updated to 57 total tests / 8 Item 4 tests, and a new `@codex review` was requested. At handoff, GitHub reported the PR mergeable and clean with no unresolved threads.
+- A later review correctly identified that BSD `flock` does not contend with Java `FileChannel` locks. Commit `57c900b` switches the guard to a read/write POSIX record lock via `lockf`, adds a cross-process regression test, and is pushed. That thread was answered/resolved; the PR body now records 58 total tests / 9 Item 4 tests and another review was requested.
 - Before new Item 5 work, run `git status`, fetch `origin/main`, and merge it if it advanced. Do not rewrite valid commits.
 
 ## 3. Exit-gate status
@@ -101,7 +103,7 @@ The archive was verified before safe extraction into an absent target. The resto
   - creates normalized deterministic stopped-world archives;
   - verifies archive hash before extraction;
   - rejects unsafe tar members;
-  - checks the Minecraft `session.lock` and refuses a live-world backup.
+  - checks the Minecraft `session.lock` with a Java-compatible POSIX record lock and refuses a live-world backup (do not replace it with BSD `flock`).
 - `tools/run_item4_server_lifecycle.py`:
   - waits for readiness;
   - issues `save-all flush`;
@@ -302,7 +304,7 @@ After commit `316c341`, focused Item 4 validation passed:
 - `uv run basedpyright src tests` — 0 errors and 0 warnings;
 - `git diff --check` — pass.
 
-The complete suite was rerun before pushing/updating PR #6 and passed with 57 tests. A future test not rerun must not be represented as passing at a newer head.
+After commit `57c900b`, focused Item 4 validation passed with 9 tests, including a separate process holding the same POSIX record-lock class used by Minecraft/Java. The complete suite passed with 58 tests. A future test not rerun must not be represented as passing at a newer head.
 
 ## 15. Git discipline
 
