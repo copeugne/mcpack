@@ -14,6 +14,12 @@ rg -F 'ProtectSystem=strict' "$service" >/dev/null
 rg -F 'ReadWritePaths=/workspace/mcpack/instances/item4' "$service" >/dev/null
 rg -F 'ReadWritePaths=/workspace/mcpack/backups/item4/automated' "$service" >/dev/null
 rg -F 'ReadWritePaths=/workspace/mcpack/evidence/raw/item4/automated-backups' "$service" >/dev/null
+rg -F 'sudo chown -R --no-dereference mcpack:mcpack \' \
+  "$root/test-environment/README.md" >/dev/null
+rg -F '/workspace/mcpack/backups/item4/automated \' \
+  "$root/test-environment/README.md" >/dev/null
+rg -F '/workspace/mcpack/evidence/raw/item4/automated-backups' \
+  "$root/test-environment/README.md" >/dev/null
 rg -F 'OnCalendar=*-*-* 03:15:00 UTC' "$timer" >/dev/null
 rg -F 'Persistent=true' "$timer" >/dev/null
 rg -F 'WantedBy=timers.target' "$timer" >/dev/null

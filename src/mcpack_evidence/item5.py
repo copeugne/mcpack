@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import random
 import statistics
 from collections.abc import Iterable  # noqa: TC003 - Pydantic resolves this annotation.
 from datetime import datetime  # noqa: TC003 - Pydantic resolves this annotation.
@@ -50,7 +51,7 @@ class StrictModel(BaseModel):
 
 NonEmpty = Annotated[str, Field(min_length=1)]
 PositiveInt = Annotated[int, Field(gt=0)]
-NonNegativeFloat = Annotated[float, Field(ge=0)]
+BOOTSTRAP_RESAMPLES = 10_000
 
 
 class EnvironmentIdentity(StrictModel):
@@ -76,6 +77,7 @@ class MetricContract(StrictModel):
     unit: NonEmpty
     collection_procedure: tuple[NonEmpty, ...]
     warm_up: NonEmpty
+    warm_up_seconds: PositiveInt
     sample_interval_seconds: PositiveInt
     sample_window_seconds: PositiveInt
     total_run_duration_seconds: PositiveInt
@@ -95,8 +97,9 @@ class MetricContract(StrictModel):
     @model_validator(mode="after")
     def validate_windows(self) -> MetricContract:
         """Reject internally impossible timing and empty case lists."""
-        if self.sample_window_seconds > self.total_run_duration_seconds:
-            message = "sample window exceeds total duration"
+        minimum_duration = self.warm_up_seconds + self.sample_window_seconds
+        if minimum_duration > self.total_run_duration_seconds:
+            message = "warm-up plus sample window exceeds total duration"
             raise ValueError(message)
         if not self.collection_procedure or not self.seed_cases or not self.player_cases:
             message = "collection procedure, seeds, and player cases cannot be empty"
@@ -197,15 +200,48 @@ def analyze_samples(rows: Iterable[dict[str, str]]) -> dict[str, object]:
     grouped: dict[str, list[float]] = {}
     for row in rows:
         grouped.setdefault(row["metric_id"], []).append(float(row["value"]))
+    return {metric: _summarize(metric, values) for metric, values in sorted(grouped.items())}
+
+
+def _percentile(values: list[float], percentile: float) -> float:
+    """Return a linearly interpolated percentile for nonempty values."""
+    ordered = sorted(values)
+    position = (len(ordered) - 1) * percentile
+    lower = int(position)
+    upper = min(lower + 1, len(ordered) - 1)
+    fraction = position - lower
+    return ordered[lower] + (ordered[upper] - ordered[lower]) * fraction
+
+
+def _bootstrap_median_ci(metric: str, values: list[float]) -> list[float]:
+    """Return a reproducible percentile-bootstrap 95% CI for the median."""
+    seed = int.from_bytes(hashlib.sha256(metric.encode()).digest()[:8], "big")
+    generator = random.Random(seed)  # noqa: S311 - reproducibility, not security.
+    medians = [
+        statistics.median(generator.choices(values, k=len(values)))
+        for _ in range(BOOTSTRAP_RESAMPLES)
+    ]
+    return [_percentile(medians, 0.025), _percentile(medians, 0.975)]
+
+
+def _summarize(metric: str, values: list[float]) -> dict[str, object]:
+    """Produce every dispersion and uncertainty statistic promised by the protocol."""
+    values = sorted(values)
+    first_quartile = _percentile(values, 0.25)
+    third_quartile = _percentile(values, 0.75)
+    minimum, maximum = min(values), max(values)
     return {
-        metric: {
-            "count": len(values),
-            "min": min(values),
-            "median": statistics.median(values),
-            "max": max(values),
-            "mean": statistics.fmean(values),
-        }
-        for metric, values in sorted(grouped.items())
+        "count": len(values),
+        "min": minimum,
+        "median": statistics.median(values),
+        "mean": statistics.fmean(values),
+        "p95": _percentile(values, 0.95),
+        "p99": _percentile(values, 0.99),
+        "max": maximum,
+        "range": maximum - minimum,
+        "iqr": third_quartile - first_quartile,
+        "bootstrap_median_95ci": _bootstrap_median_ci(metric, values),
+        "bootstrap_resamples": BOOTSTRAP_RESAMPLES,
     }
 
 

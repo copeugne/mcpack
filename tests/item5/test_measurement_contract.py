@@ -48,11 +48,46 @@ def test_analyzer_is_order_independent_and_deterministic() -> None:
         {"metric_id": "tps", "value": "20"},
     ]
     expected = {
-        "idle_mspt": {"count": 1, "min": 8.0, "median": 8.0, "max": 8.0, "mean": 8.0},
-        "tps": {"count": 2, "min": 19.0, "median": 19.5, "max": 20.0, "mean": 19.5},
+        "idle_mspt": {
+            "bootstrap_median_95ci": [8.0, 8.0],
+            "bootstrap_resamples": 10_000,
+            "count": 1,
+            "iqr": 0.0,
+            "max": 8.0,
+            "mean": 8.0,
+            "median": 8.0,
+            "min": 8.0,
+            "p95": 8.0,
+            "p99": 8.0,
+            "range": 0.0,
+        },
+        "tps": {
+            "bootstrap_median_95ci": [19.0, 20.0],
+            "bootstrap_resamples": 10_000,
+            "count": 2,
+            "iqr": 0.5,
+            "max": 20.0,
+            "mean": 19.5,
+            "median": 19.5,
+            "min": 19.0,
+            "p95": 19.95,
+            "p99": 19.99,
+            "range": 1.0,
+        },
     }
     assert analyze_samples(rows) == expected
     assert analyze_samples(reversed(rows)) == expected
+
+
+def test_total_duration_includes_warm_up_and_sample_window() -> None:
+    """Every metric duration covers its maximum declared warm-up and capture."""
+    protocol = MeasurementProtocol.model_validate_json(
+        (ROOT / "measurement/item5/protocol-v1.json").read_bytes()
+    )
+    assert all(
+        metric.total_run_duration_seconds >= metric.warm_up_seconds + metric.sample_window_seconds
+        for metric in protocol.metrics
+    )
 
 
 @pytest.mark.parametrize("name", ["accepted.json", "rejected.json"])

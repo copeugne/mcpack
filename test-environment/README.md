@@ -55,7 +55,12 @@ sudo install -d -o mcpack -g mcpack \
   /workspace/mcpack/instances/item4 \
   /workspace/mcpack/backups/item4/automated \
   /workspace/mcpack/evidence/raw/item4/automated-backups
-sudo chown -R mcpack:mcpack /workspace/mcpack/instances/item4
+# This recursive migration is required when upgrading from the former root-run unit:
+# pre-existing per-role directories are otherwise left root-owned and mode 0755.
+sudo chown -R --no-dereference mcpack:mcpack \
+  /workspace/mcpack/instances/item4 \
+  /workspace/mcpack/backups/item4/automated \
+  /workspace/mcpack/evidence/raw/item4/automated-backups
 sudo systemctl link /workspace/mcpack/infrastructure/systemd/mcpack-item4-backup@.{service,timer}
 for role in ordinary mountainous ocean-heavy biome-diverse; do
   sudo systemctl enable --now "mcpack-item4-backup@${role}.timer"

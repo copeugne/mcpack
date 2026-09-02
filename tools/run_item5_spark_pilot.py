@@ -15,6 +15,16 @@ from pathlib import Path
 from typing import IO, cast
 
 
+def find_new_profiles(instance: Path, prior_profiles: dict[Path, tuple[int, int]]) -> list[Path]:
+    """Return nonempty profiles created or replaced after lifecycle startup."""
+    return sorted(
+        path
+        for path in instance.rglob("*.sparkprofile")
+        if path.stat().st_size > 0
+        and prior_profiles.get(path.resolve()) != (path.stat().st_size, path.stat().st_mtime_ns)
+    )
+
+
 def run(  # noqa: C901, PLR0915 - lifecycle state machine is intentionally linear.
     instance: Path, java_home: Path, log_path: Path, timeout: int
 ) -> dict[str, object]:
@@ -23,6 +33,10 @@ def run(  # noqa: C901, PLR0915 - lifecycle state machine is intentionally linea
     environment["PATH"] = f"{java_home / 'bin'}:{environment['PATH']}"
     started = time.monotonic()
     sent: list[str] = []
+    prior_profiles = {
+        path.resolve(): (path.stat().st_size, path.stat().st_mtime_ns)
+        for path in instance.rglob("*.sparkprofile")
+    }
     ready = profile_requested = profile_started = profile_stopped = flushed = False
     command_deadline = 0.0
     log_path.parent.mkdir(parents=True, exist_ok=True)
@@ -98,14 +112,15 @@ def run(  # noqa: C901, PLR0915 - lifecycle state machine is intentionally linea
             stdin.close()
             stdout.close()
             reader.join(timeout=1)
-    profiles = sorted(str(path.relative_to(instance)) for path in instance.rglob("*.sparkprofile"))
+    new_profiles = find_new_profiles(instance, prior_profiles)
+    profiles = [str(path.relative_to(instance)) for path in new_profiles]
     return {
         "schema_version": "item5-spark-lifecycle-v1",
         "ready": ready,
         "profile_started": profile_started,
         "profile_stopped": profile_stopped,
         "save_all_flush": flushed,
-        "clean_stop": return_code == 0 and ready and profile_stopped and flushed,
+        "clean_stop": return_code == 0 and ready and profile_stopped and flushed and bool(profiles),
         "return_code": return_code,
         "duration_seconds": round(time.monotonic() - started, 3),
         "commands": sent,
