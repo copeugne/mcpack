@@ -50,6 +50,37 @@ def test_pilot_protocol_hash_must_match_validated_protocol(tmp_path: Path) -> No
         load_validator()(ROOT / "measurement/item5/protocol-v1.json", [changed], ROOT)
 
 
+@pytest.mark.parametrize(
+    ("field", "message"),
+    [
+        ("retained_manifest_sha256", "retained manifest hash mismatch"),
+        ("host_evidence_sha256", "host evidence hash mismatch"),
+    ],
+)
+def test_pilot_committed_environment_hashes_are_recomputed(
+    tmp_path: Path, field: str, message: str
+) -> None:
+    """Receipts cannot substitute unrelated retained-manifest or host identities."""
+    receipt = json.loads((ROOT / "evidence/item-5/pilots/accepted.json").read_bytes())
+    receipt["environment"][field] = "0" * 64
+    changed = tmp_path / f"wrong-{field}.json"
+    changed.write_text(json.dumps(receipt), encoding="utf-8")
+    with pytest.raises(ValueError, match=message):
+        load_validator()(ROOT / "measurement/item5/protocol-v1.json", [changed], ROOT)
+
+
+def test_pilot_artifact_paths_cannot_escape_repository(tmp_path: Path) -> None:
+    """Even an existing absolute artifact cannot satisfy a receipt identity."""
+    receipt = json.loads((ROOT / "evidence/item-5/pilots/accepted.json").read_bytes())
+    receipt["raw_artifacts"][0]["path"] = str(
+        ROOT / "evidence/item-5/pilots/raw/accepted/lifecycle.json"
+    )
+    changed = tmp_path / "absolute-artifact.json"
+    changed.write_text(json.dumps(receipt), encoding="utf-8")
+    with pytest.raises(ValueError, match="artifact path escapes repository"):
+        load_validator()(ROOT / "measurement/item5/protocol-v1.json", [changed], ROOT)
+
+
 def test_pilot_environment_hashes_must_match_lifecycle(tmp_path: Path) -> None:
     """Accepted semantic identities are bound to the raw lifecycle receipt."""
     receipt = json.loads((ROOT / "evidence/item-5/pilots/accepted.json").read_bytes())

@@ -41,6 +41,24 @@ def test_missing_metric_and_duplicate_player_case_are_rejected() -> None:
         MeasurementProtocol.model_validate(payload)
 
 
+@pytest.mark.parametrize(
+    ("field", "value", "message"),
+    [
+        ("seed_cases", ["ordinary"], "every required seed case"),
+        ("player_cases", ["solo"], "every required player case"),
+        ("required_environment_hashes", [], "every environment hash"),
+    ],
+)
+def test_each_metric_requires_complete_cases_and_hashes(
+    field: str, value: list[str], message: str
+) -> None:
+    """A metric cannot narrow the protocol-wide environment coverage."""
+    payload = json.loads((ROOT / "measurement/item5/protocol-v1.json").read_bytes())
+    payload["metrics"][0][field] = value
+    with pytest.raises(ValidationError, match=message):
+        MeasurementProtocol.model_validate(payload)
+
+
 def test_analyzer_is_order_independent_and_deterministic() -> None:
     """Long-form aggregation has stable keys and statistics."""
     rows = [

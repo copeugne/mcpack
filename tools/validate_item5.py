@@ -21,6 +21,22 @@ REQUIRED_SPARK_COMMANDS = [
 ]
 
 
+def confined_artifact_path(root: Path, artifact_path: str) -> Path:
+    """Resolve a receipt path while refusing absolute and repository escapes."""
+    repository = root.resolve()
+    candidate = Path(artifact_path)
+    if candidate.is_absolute():
+        message = f"artifact path escapes repository: {artifact_path}"
+        raise ValueError(message)
+    resolved = (repository / candidate).resolve()
+    try:
+        resolved.relative_to(repository)
+    except ValueError as error:
+        message = f"artifact path escapes repository: {artifact_path}"
+        raise ValueError(message) from error
+    return resolved
+
+
 def validate_lifecycle_success(lifecycle: dict[str, object], pilot: PilotRun) -> None:
     """Require every operational success signal and the preserved profile."""
     success_fields = ("ready", "profile_started", "profile_stopped", "save_all_flush", "clean_stop")
@@ -63,9 +79,11 @@ def validate_processed_samples(pilot: PilotRun, root: Path) -> None:
     if len(csv_artifacts) != 1 or len(json_artifacts) != 1:
         message = "accepted pilot must bind one raw CSV to one processed JSON summary"
         raise ValueError(message)
-    with (root / csv_artifacts[0].path).open(encoding="utf-8", newline="") as stream:
+    with confined_artifact_path(root, csv_artifacts[0].path).open(
+        encoding="utf-8", newline=""
+    ) as stream:
         expected = analyze_samples(csv.DictReader(stream))
-    observed = json.loads((root / json_artifacts[0].path).read_bytes())
+    observed = json.loads(confined_artifact_path(root, json_artifacts[0].path).read_bytes())
     if observed != expected:
         message = "processed summary does not match the accepted raw samples"
         raise ValueError(message)
@@ -81,7 +99,7 @@ def validate_lifecycle_identities(pilot: PilotRun, root: Path) -> None:
     if len(lifecycle_artifacts) != 1:
         message = "accepted pilot must reference exactly one lifecycle receipt"
         raise ValueError(message)
-    lifecycle = json.loads((root / lifecycle_artifacts[0].path).read_bytes())
+    lifecycle = json.loads(confined_artifact_path(root, lifecycle_artifacts[0].path).read_bytes())
     expected_identities = {
         "configuration_sha256": pilot.environment.configuration_sha256,
         "world_snapshot_sha256": pilot.environment.world_snapshot_sha256,
@@ -107,15 +125,25 @@ def validate_pilots(protocol_path: Path, pilots: list[Path], root: Path) -> Meas
     """Validate protocol coverage, receipt binding, statuses, and artifact identities."""
     protocol = MeasurementProtocol.model_validate_json(protocol_path.read_bytes())
     protocol_sha256 = sha256_file(protocol_path)
+    retained_manifest_sha256 = sha256_file(
+        root / "evidence/item-3/runtime/retained-server-candidates.txt"
+    )
+    host_evidence_sha256 = sha256_file(root / "evidence/item-2/host-discovery.json")
     statuses: set[str] = set()
     for path in pilots:
         pilot = PilotRun.model_validate_json(path.read_bytes())
         if pilot.environment.protocol_sha256 != protocol_sha256:
             message = f"pilot protocol hash mismatch: {path}"
             raise ValueError(message)
+        if pilot.environment.retained_manifest_sha256 != retained_manifest_sha256:
+            message = f"pilot retained manifest hash mismatch: {path}"
+            raise ValueError(message)
+        if pilot.environment.host_evidence_sha256 != host_evidence_sha256:
+            message = f"pilot host evidence hash mismatch: {path}"
+            raise ValueError(message)
         statuses.add(pilot.status)
         for artifact in (*pilot.raw_artifacts, *pilot.processed_artifacts):
-            target = root / artifact.path
+            target = confined_artifact_path(root, artifact.path)
             if not target.is_file() or target.stat().st_size != artifact.size_bytes:
                 message = f"artifact missing or size mismatch: {artifact.path}"
                 raise ValueError(message)

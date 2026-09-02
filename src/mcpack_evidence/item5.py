@@ -42,6 +42,19 @@ REQUIRED_METRICS: set[str] = {
     "adventure_activity_ratio",
 }
 REQUIRED_PLAYER_CASES: set[str] = {"solo", "two", "four", "normal", "peak"}
+REQUIRED_SEED_CASES: set[str] = {
+    "ordinary",
+    "mountainous",
+    "ocean-heavy",
+    "biome-diverse",
+}
+REQUIRED_ENVIRONMENT_HASHES: set[str] = {
+    "protocol",
+    "retained_manifest",
+    "configuration",
+    "host",
+    "world_snapshot",
+}
 RATIO_METRICS: set[str] = {
     "structures_per_1000_chunks",
     "actionable_locations_per_1000_chunks",
@@ -128,8 +141,26 @@ class MetricContract(StrictModel):
         if minimum_duration > self.total_run_duration_seconds:
             message = "warm-up plus sample window exceeds total duration"
             raise ValueError(message)
-        if not self.collection_procedure or not self.seed_cases or not self.player_cases:
+        if not self.collection_procedure:
             message = "collection procedure, seeds, and player cases cannot be empty"
+            raise ValueError(message)
+        if (
+            len(self.seed_cases) != len(set(self.seed_cases))
+            or set(self.seed_cases) != REQUIRED_SEED_CASES
+        ):
+            message = "metric must cover every required seed case exactly once"
+            raise ValueError(message)
+        if (
+            len(self.player_cases) != len(set(self.player_cases))
+            or set(self.player_cases) != REQUIRED_PLAYER_CASES
+        ):
+            message = "metric must cover every required player case exactly once"
+            raise ValueError(message)
+        if (
+            len(self.required_environment_hashes) != len(set(self.required_environment_hashes))
+            or set(self.required_environment_hashes) != REQUIRED_ENVIRONMENT_HASHES
+        ):
+            message = "metric must require every environment hash exactly once"
             raise ValueError(message)
         return self
 
