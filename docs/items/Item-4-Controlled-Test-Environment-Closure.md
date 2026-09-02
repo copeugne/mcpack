@@ -5,45 +5,37 @@
 
 ## Exit-gate result
 
-Any current experiment can be regenerated from versioned inputs or rolled back to a hash-verified stopped-world archive. The pristine baseline, engineering experiment, generated seed worlds, and restore-validation tree occupy separate paths. No production instance exists.
+Any Item 4 experiment can be recreated from versioned inputs or rolled back into a new target from a hash-verified stopped-world archive. Runtime work is isolated under `instances/item4`; no production instance was present or read. The environment uses Minecraft 1.21.1, NeoForge 21.1.249, Temurin 21.0.12.1+1, the exact 136-candidate retained manifest, and the Item 2 baseline configuration.
 
-## Seed suite
+## Deterministic seed controls
 
-| Role | Seed | Acceptance evidence | Result |
-|---|---:|---|---|
-| Ordinary | `42` | Plains 520 blocks; forest 385; jagged peaks 2,648 | Pass |
-| Mountainous | `6671238423019257953` | Jagged peaks at spawn, Y=242 | Pass |
-| Ocean-heavy | `95920844204830198` | Cold ocean 101; deep cold ocean 226; forest 968 | Pass |
-| Biome-diverse | `-3503646078644842058` | Six queried families within 1,100; cold/wet/ocean contrasts within 2,500 | Pass |
+| Role | Seed | Full retained-stack lifecycle |
+|---|---:|---|
+| Ordinary | `42` | Ready in 125.098s; flush and clean stop passed |
+| Mountainous | `6671238423019257953` | Ready, flush, and clean stop passed in 406.918s |
+| Ocean-heavy | `95920844204830198` | Ready, flush, and clean stop passed in 338.181s |
+| Biome-diverse | `-3503646078644842058` | Ready, flush, and clean stop passed in 345.989s |
 
-Every world independently booted Minecraft 1.21.1 + NeoForge 21.1.249 with zero third-party mods, ran serial biome queries, completed `save-all flush`, and stopped cleanly. The parser's results are corroborated against retained full debug logs. Two earlier harness defects—blocking timeouts and unbound reader state—were detected and corrected; no result from those runs is accepted.
-
-## Preserved initial worlds
-
-| Role | Files | Uncompressed bytes | Archive SHA-256 |
-|---|---:|---:|---|
-| Ordinary | 17 | 4,263,957 | `00b32b91d854a5ad46c3acb839236daf834f55be287a3f5a38e3c2807b71d7ea` |
-| Mountainous | 17 | 4,444,172 | `70165e05f808ce26ff5800e235a4a44231ef03036a1597b173e0cf2cf4814779` |
-| Ocean-heavy | 21 | 3,249,573 | `383e7f25028262ae08c738bd8900cf07a7063f044582c7143341bcad05f7149f` |
-| Biome-diverse | 14 | 4,010,024 | `535624fc8e84fe62752f65300db3b604a94c7aa3a3c2f450c3c1d15fc3a8ef92` |
-
-Archives remain outside Git; JSON receipts retain the archive hash and each included file's path, size, and SHA-256.
+All four controls were independently materialized with exactly 136 hash-verified retained artifacts. Item 4 fixes their identities and proves lifecycle isolation. Item 7 remains responsible for empirical terrain, biome, structure, and cross-mod world-generation inspection.
 
 ## Backup and restore proof
 
-- Active-world lock simulation: backup refused with a non-zero exit.
-- Ordinary seed archive SHA-256: verified before extraction.
-- Restored file manifest: exact, 17 files and 4,263,957 bytes.
-- Restored-world boot: `Done (1.440s)`.
-- Reported restored seed: `42`.
-- Restored world: saved, flushed, and stopped cleanly.
-- Restore debug-log SHA-256: `0f3521a348aa6da6552d6f60b78776cccfdb304d70b6bf908039fa81a7ab3780`.
+The ordinary world was flushed and stopped before backup. Its deterministic archive contains 58 files, is 1,190,041 bytes, and has SHA-256 `2df51369e1c31407f5eb91f0db04f39c631ee0df712235831c2e2853dbe4a772`. Restore verified that hash before safe extraction into an absent target. The restored world contained the same 58 recorded files, reached readiness in 62.224 seconds, flushed, and stopped cleanly.
 
-## Versioning and source control
+The archive remains in the ignored backup store; `evidence/item-4/ordinary-backup-receipt.json` records every world-relative file, size, and SHA-256. The restore receipt and compressed runtime log are committed.
 
-The naming contract, regeneration procedure, version-controlled input policy, and backup rules are recorded in `test-environment/README.md`. Git is initialized on `main`; work is committed in atomic logical units. Configs are versioned, and datapack/spawn-rule/loot/worldgen override inventories are explicitly empty rather than assumed absent.
+## Failure preservation
 
-## Deferred production-only variables
+An initial mountainous run used a fixed five-minute delayed command pipe. The server reached readiness but the unchanged 60-second watchdog terminated a subsequent tick before the delayed flush arrived. The log and crash report are retained rather than discarded. This was classified as a procedural harness defect: the control was recreated from scratch and rerun with a readiness-driven harness that immediately flushed and stopped, which passed. No watchdog setting or generated configuration was altered.
 
-Backup frequency, retention, remote replication, recovery-point objective, recovery-time objective, hosting hardware, and production operations remain logged unknowns. They do not block the isolated Item 4 exit gate but must be resolved before production validation.
+## Versioning and rollback
 
+`test-environment/README.md` defines configuration and experiment branch naming, clean regeneration, backup, restore, and rollback. The lifecycle tools refuse existing targets, verify retained artifact identities, use deterministic archives, verify archive hashes before extraction, and reject unsafe members. Config inputs are versioned through Item 2 evidence; project datapack, spawn-rule, loot-table, and worldgen-override inventories are explicitly empty. Generated mod configs remain untuned inputs for Item 6.
+
+## Known limitations carried forward
+
+This gate proves deterministic setup, isolation, initial world boot, backup integrity, and restored-world boot. It does not approve terrain, structures, gameplay, client join, or performance. Network-dependent optional diagnostics remained unavailable to the Java runtime and are not treated as compatibility conclusions.
+
+## Exit-gate assessment
+
+`SPECS.md` Item 4 passes: the dedicated test server is separate, the validated baseline is cloned reproducibly, four deterministic seed controls are materialized and boot-validated, versioning and clean regeneration are documented, relevant project inputs are version-controlled, and an actual hash-verified backup/restore was proven by a restored-world boot. Item 5 is now dependency-eligible. Item 11 remains unauthorized.
