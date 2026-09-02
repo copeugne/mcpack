@@ -35,7 +35,7 @@ The exact restart point is:
   1. an existing empty pristine `mods/` directory is accepted and a non-empty one is rejected;
   2. lifecycle timeout enforcement now uses a reader thread plus a queue deadline and kills the complete process group if the server is silent;
   3. a real persistent daily systemd backup timer and stopped-world backup runner are committed.
-- Push `316c341`, reply to those three PR threads with exact commit/test evidence, resolve them only after verifying the remote diff, update the PR body/test count, and request `@codex review`.
+- Commit `316c341` and this handoff are pushed. All three review threads were answered and resolved, the PR body was updated to 57 total tests / 8 Item 4 tests, and a new `@codex review` was requested. At handoff, GitHub reported the PR mergeable and clean with no unresolved threads.
 - Before new Item 5 work, run `git status`, fetch `origin/main`, and merge it if it advanced. Do not rewrite valid commits.
 
 ## 3. Exit-gate status
@@ -126,21 +126,14 @@ A first mountainous attempt used a fixed five-minute command delay. It reached r
 
 `instances/`, `downloads/`, `backups/`, and `evidence/raw/` are intentionally ignored. They may exist in the current container but are not durable Git inputs. A future environment must reacquire candidates, provision the pinned platform, and rematerialize controls using committed evidence and tooling. Never claim ignored runtime state exists without checking it.
 
-## 6. Exact next actions — finish PR #6 review first
+## 6. Exact next actions
 
-1. `git status --short` and inspect `git log --oneline --decorate -10`.
-2. Run focused review-fix validation:
-   - `uv run pytest -q tests/item4`;
-   - `bash tests/infrastructure/test_item4_backup_schedule.sh`;
-   - `uv run ruff check tools/manage_item4_environment.py tools/run_item4_server_lifecycle.py infrastructure/bin/item4-automated-backup tests/item4`;
-   - `uv run basedpyright src tests`;
-   - `git diff --check`.
-3. Push `work`.
-4. Reply to PR #6 comments IDs `3909733529`, `3909733534`, and `3909733538` with commit `316c341` and the focused validation.
-5. Resolve the threads after verifying the pushed head contains the fixes.
-6. Update PR #6 summary and validation count; request `@codex review`.
-7. Confirm PR mergeability and no unresolved threads.
-8. Do **not** wait idly for review if Item 5 work can proceed safely on the same dependency-ordered branch.
+1. Read this handoff and `SPECS.md` completely.
+2. Run `git status --short` and inspect `git log --oneline --decorate -10`.
+3. Fetch `origin/main`; merge it before Item 5 if it advanced. Do not rewrite Item 4 commits.
+4. Query PR #6 for any review submitted after handoff commit `d76e40a`; address new valid findings before relying on the Item 4 gate.
+5. If no new finding reopens Item 4, begin Item 5 immediately at section 7 below.
+6. Do **not** wait idly for review if Item 5 work can proceed safely on the same dependency-ordered branch.
 
 ## 7. Item 5 — exact remaining work
 
@@ -309,7 +302,7 @@ After commit `316c341`, focused Item 4 validation passed:
 - `uv run basedpyright src tests` — 0 errors and 0 warnings;
 - `git diff --check` — pass.
 
-Run the complete suite again before pushing/updating PR #6. A test not rerun must not be represented as passing at the new head.
+The complete suite was rerun before pushing/updating PR #6 and passed with 57 tests. A future test not rerun must not be represented as passing at a newer head.
 
 ## 15. Git discipline
 
