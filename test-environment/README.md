@@ -50,7 +50,8 @@ Restore refuses an existing target, verifies the archive hash before extraction,
 The committed `mcpack-item4-backup@.timer` runs daily at 03:15 UTC with a persistent catch-up and randomized delay. It invokes `item4-automated-backup`, which refuses an active Minecraft session lock and writes collision-free archives plus raw integrity receipts. Install the units on the isolated test host with:
 
 ```bash
-sudo useradd --system --user-group --no-create-home --shell /usr/sbin/nologin mcpack
+id -u mcpack >/dev/null 2>&1 || \
+  sudo useradd --system --user-group --no-create-home --shell /usr/sbin/nologin mcpack
 sudo install -d -o mcpack -g mcpack \
   /workspace/mcpack/instances/item4 \
   /workspace/mcpack/backups/item4/automated \

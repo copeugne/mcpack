@@ -42,3 +42,14 @@ def test_only_new_nonempty_profiles_are_accepted(tmp_path: Path) -> None:
     created = tmp_path / "created.sparkprofile"
     created.write_bytes(b"new profile")
     assert find_new_profiles(tmp_path, prior) == [created]
+
+
+def test_unrelated_save_cannot_confirm_requested_flush() -> None:
+    """A save before Spark completion cannot advance lifecycle shutdown."""
+    module = load_pilot_module()
+    confirms_profile_save = cast("Callable[..., bool]", module.confirms_profile_save)
+    confirms_requested_flush = cast("Callable[..., bool]", module.confirms_requested_flush)
+    assert not confirms_profile_save("Saved the game", stop_requested=True)
+    assert not confirms_requested_flush("Saved the game", flush_requested=False)
+    assert confirms_profile_save("Profiler stopped & save complete!", stop_requested=True)
+    assert confirms_requested_flush("Saved the game", flush_requested=True)

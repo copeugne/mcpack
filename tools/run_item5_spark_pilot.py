@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import queue
@@ -13,6 +14,38 @@ import threading
 import time
 from pathlib import Path
 from typing import IO, cast
+
+
+def confirms_profile_save(line: str, *, stop_requested: bool) -> bool:
+    """Accept Spark's completion only after this harness requested a stop."""
+    return stop_requested and "Profiler stopped & save complete!" in line
+
+
+def confirms_requested_flush(line: str, *, flush_requested: bool) -> bool:
+    """Ignore unrelated or automatic saves until this harness requests its flush."""
+    return flush_requested and "Saved the game" in line
+
+
+def hash_tree(root: Path, relative_paths: tuple[Path, ...]) -> str:
+    """Hash paths, sizes, and contents for a deterministic tree identity."""
+    digest = hashlib.sha256()
+    files: list[Path] = []
+    for relative_path in relative_paths:
+        target = root / relative_path
+        if target.is_file():
+            files.append(target)
+        elif target.is_dir():
+            files.extend(path for path in target.rglob("*") if path.is_file())
+    for path in sorted(files, key=lambda candidate: candidate.relative_to(root).as_posix()):
+        relative = path.relative_to(root).as_posix()
+        if relative == "world/session.lock":
+            continue
+        size = path.stat().st_size
+        digest.update(f"{relative}\0{size}\0".encode())
+        with path.open("rb") as stream:
+            for block in iter(lambda: stream.read(1024 * 1024), b""):
+                digest.update(block)
+    return digest.hexdigest()
 
 
 def find_new_profiles(instance: Path, prior_profiles: dict[Path, tuple[int, int]]) -> list[Path]:
@@ -37,7 +70,17 @@ def run(  # noqa: C901, PLR0915 - lifecycle state machine is intentionally linea
         path.resolve(): (path.stat().st_size, path.stat().st_mtime_ns)
         for path in instance.rglob("*.sparkprofile")
     }
-    ready = profile_requested = profile_started = profile_stopped = flushed = False
+    configuration_sha256 = hash_tree(
+        instance,
+        (
+            Path("config"),
+            Path("defaultconfigs"),
+            Path("server.properties"),
+            Path("user_jvm_args.txt"),
+        ),
+    )
+    ready = profile_requested = profile_started = profile_stop_requested = False
+    profile_saved = flush_requested = flushed = False
     command_deadline = 0.0
     log_path.parent.mkdir(parents=True, exist_ok=True)
     with log_path.open("w", encoding="utf-8") as log:
@@ -73,9 +116,13 @@ def run(  # noqa: C901, PLR0915 - lifecycle state machine is intentionally linea
                 if elapsed >= timeout:
                     os.killpg(process.pid, signal.SIGKILL)
                     break
-                if profile_started and not profile_stopped and time.monotonic() >= command_deadline:
+                if (
+                    profile_started
+                    and not profile_stop_requested
+                    and time.monotonic() >= command_deadline
+                ):
                     send("spark profiler stop --save-to-file")
-                    profile_stopped = True
+                    profile_stop_requested = True
                 try:
                     line = lines.get(timeout=0.5)
                 except queue.Empty:
@@ -99,9 +146,13 @@ def run(  # noqa: C901, PLR0915 - lifecycle state machine is intentionally linea
                 ):
                     profile_started = True
                     command_deadline = time.monotonic() + 30
-                elif profile_stopped and "Profiler stopped & save complete!" in line:
+                elif confirms_profile_save(line, stop_requested=profile_stop_requested):
+                    profile_saved = True
                     send("save-all flush")
-                elif profile_stopped and not flushed and "Saved the game" in line:
+                    flush_requested = True
+                elif not flushed and confirms_requested_flush(
+                    line, flush_requested=flush_requested
+                ):
                     flushed = True
                     send("stop")
             return_code = process.wait(timeout=30)
@@ -114,17 +165,20 @@ def run(  # noqa: C901, PLR0915 - lifecycle state machine is intentionally linea
             reader.join(timeout=1)
     new_profiles = find_new_profiles(instance, prior_profiles)
     profiles = [str(path.relative_to(instance)) for path in new_profiles]
+    world_snapshot_sha256 = hash_tree(instance, (Path("world"),)) if ready else None
     return {
         "schema_version": "item5-spark-lifecycle-v1",
         "ready": ready,
         "profile_started": profile_started,
-        "profile_stopped": profile_stopped,
+        "profile_stopped": profile_saved,
         "save_all_flush": flushed,
-        "clean_stop": return_code == 0 and ready and profile_stopped and flushed and bool(profiles),
+        "clean_stop": return_code == 0 and ready and profile_saved and flushed and bool(profiles),
         "return_code": return_code,
         "duration_seconds": round(time.monotonic() - started, 3),
         "commands": sent,
         "local_profiles": profiles,
+        "configuration_sha256": configuration_sha256,
+        "world_snapshot_sha256": world_snapshot_sha256,
     }
 
 

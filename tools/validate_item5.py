@@ -3,10 +3,32 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 from typing import cast
 
 from mcpack_evidence.item5 import MeasurementProtocol, PilotRun, sha256_file
+
+
+def validate_lifecycle_identities(pilot: PilotRun, root: Path) -> None:
+    """Bind accepted environment identities to the raw lifecycle receipt."""
+    if pilot.status != "accepted":
+        return
+    lifecycle_artifacts = [
+        artifact for artifact in pilot.raw_artifacts if artifact.path.endswith("/lifecycle.json")
+    ]
+    if len(lifecycle_artifacts) != 1:
+        message = "accepted pilot must reference exactly one lifecycle receipt"
+        raise ValueError(message)
+    lifecycle = json.loads((root / lifecycle_artifacts[0].path).read_bytes())
+    expected_identities = {
+        "configuration_sha256": pilot.environment.configuration_sha256,
+        "world_snapshot_sha256": pilot.environment.world_snapshot_sha256,
+    }
+    for key, expected in expected_identities.items():
+        if lifecycle.get(key) != expected:
+            message = f"pilot {key} does not match lifecycle receipt"
+            raise ValueError(message)
 
 
 def validate_pilots(protocol_path: Path, pilots: list[Path], root: Path) -> MeasurementProtocol:
@@ -28,6 +50,7 @@ def validate_pilots(protocol_path: Path, pilots: list[Path], root: Path) -> Meas
             if sha256_file(target) != artifact.sha256:
                 message = f"artifact hash mismatch: {artifact.path}"
                 raise ValueError(message)
+        validate_lifecycle_identities(pilot, root)
     if pilots and statuses != {"accepted", "rejected"}:
         message = "pilot set must prove accepted and rejected handling"
         raise ValueError(message)

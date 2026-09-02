@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 
 import pytest
@@ -77,6 +78,29 @@ def test_analyzer_is_order_independent_and_deterministic() -> None:
     }
     assert analyze_samples(rows) == expected
     assert analyze_samples(reversed(rows)) == expected
+
+
+@pytest.mark.parametrize(
+    "rows",
+    [[], [{"metric_id": "tps", "value": "NaN"}], [{"metric_id": "tps", "value": "Infinity"}]],
+)
+def test_analyzer_rejects_empty_and_nonfinite_samples(rows: list[dict[str, str]]) -> None:
+    """Missing and non-finite samples cannot produce accepted JSON."""
+    assert not rows or not math.isfinite(float(rows[0]["value"]))
+    with pytest.raises(ValueError, match=r"no data|finite"):
+        analyze_samples(rows)
+
+
+def test_accepted_pilot_requires_processed_and_environment_evidence() -> None:
+    """Accepted receipts cannot omit processing or input identities."""
+    payload = json.loads((ROOT / "evidence/item-5/pilots/accepted.json").read_bytes())
+    payload["processed_artifacts"] = []
+    with pytest.raises(ValidationError, match="processed evidence"):
+        PilotRun.model_validate(payload)
+    payload = json.loads((ROOT / "evidence/item-5/pilots/accepted.json").read_bytes())
+    payload["environment"]["world_snapshot_sha256"] = None
+    with pytest.raises(ValidationError, match="configuration and world snapshot"):
+        PilotRun.model_validate(payload)
 
 
 def test_total_duration_includes_warm_up_and_sample_window() -> None:

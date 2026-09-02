@@ -37,3 +37,13 @@ def test_pilot_protocol_hash_must_match_validated_protocol(tmp_path: Path) -> No
     changed.write_text(json.dumps(receipt), encoding="utf-8")
     with pytest.raises(ValueError, match="pilot protocol hash mismatch"):
         load_validator()(ROOT / "measurement/item5/protocol-v1.json", [changed], ROOT)
+
+
+def test_pilot_environment_hashes_must_match_lifecycle(tmp_path: Path) -> None:
+    """Accepted semantic identities are bound to the raw lifecycle receipt."""
+    receipt = json.loads((ROOT / "evidence/item-5/pilots/accepted.json").read_bytes())
+    receipt["environment"]["configuration_sha256"] = "0" * 64
+    changed = tmp_path / "wrong-configuration.json"
+    changed.write_text(json.dumps(receipt), encoding="utf-8")
+    with pytest.raises(ValueError, match="configuration_sha256 does not match"):
+        load_validator()(ROOT / "measurement/item5/protocol-v1.json", [changed], ROOT)

@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import math
 import random
 import statistics
 from collections.abc import Iterable  # noqa: TC003 - Pydantic resolves this annotation.
@@ -62,6 +63,8 @@ class EnvironmentIdentity(StrictModel):
     protocol_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
     retained_manifest_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
     configuration_version: NonEmpty
+    configuration_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")] | None
+    world_snapshot_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")] | None
     minecraft_version: NonEmpty
     neoforge_version: NonEmpty
     java_version: NonEmpty
@@ -173,6 +176,15 @@ class PilotRun(StrictModel):
         if not self.raw_artifacts:
             message = "a pilot must preserve raw evidence"
             raise ValueError(message)
+        if self.status == "accepted" and not self.processed_artifacts:
+            message = "an accepted pilot must preserve processed evidence"
+            raise ValueError(message)
+        if self.status == "accepted" and (
+            self.environment.configuration_sha256 is None
+            or self.environment.world_snapshot_sha256 is None
+        ):
+            message = "an accepted pilot must record configuration and world snapshot hashes"
+            raise ValueError(message)
         return self
 
 
@@ -199,7 +211,19 @@ def analyze_samples(rows: Iterable[dict[str, str]]) -> dict[str, object]:
     """Deterministically aggregate long-form numeric samples."""
     grouped: dict[str, list[float]] = {}
     for row in rows:
-        grouped.setdefault(row["metric_id"], []).append(float(row["value"]))
+        try:
+            metric_id = row["metric_id"]
+            value = float(row["value"])
+        except (KeyError, TypeError, ValueError) as error:
+            message = "sample rows require metric_id and finite numeric value"
+            raise ValueError(message) from error
+        if not metric_id or not math.isfinite(value):
+            message = "sample rows require nonempty metric_id and finite numeric value"
+            raise ValueError(message)
+        grouped.setdefault(metric_id, []).append(value)
+    if not grouped:
+        message = "sample input contains no data rows"
+        raise ValueError(message)
     return {metric: _summarize(metric, values) for metric, values in sorted(grouped.items())}
 
 
@@ -249,4 +273,6 @@ def analyze_csv(source: Path, output: Path) -> None:
     """Process an immutable CSV into canonical JSON."""
     with source.open(encoding="utf-8", newline="") as stream:
         result = analyze_samples(csv.DictReader(stream))
-    _ = output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    _ = output.write_text(
+        json.dumps(result, allow_nan=False, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
