@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+"""Create one scheduled, integrity-receipted Item 4 stopped-world backup."""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from datetime import UTC, datetime
+from pathlib import Path
+
+
+def main() -> int:
+    """Invoke the shared backup implementation with collision-free UTC paths."""
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--project-root", type=Path, required=True)
+    parser.add_argument("--role", required=True)
+    args = parser.parse_args()
+    root = args.project_root.resolve()
+    sys.path.insert(0, str(root))
+    from tools.manage_item4_environment import backup  # noqa: PLC0415
+
+    timestamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
+    archive = root / "backups/item4/automated" / args.role / f"world-{timestamp}.tar.gz"
+    receipt = root / "evidence/raw/item4/automated-backups" / args.role / f"{timestamp}.json"
+    _ = backup(root / "instances/item4" / args.role / "world", archive, receipt)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

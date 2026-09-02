@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 import argparse
+import fcntl
 import gzip
 import hashlib
 import json
@@ -91,7 +92,10 @@ def materialize(  # noqa: PLR0913, PLR0917
         raise ValueError(message)
     shutil.copytree(pristine, target, copy_function=shutil.copy2)
     mods = target / "mods"
-    mods.mkdir()
+    mods.mkdir(exist_ok=True)
+    if any(mods.iterdir()):
+        message = f"pristine mods directory is not empty: {mods}"
+        raise ValueError(message)
     for filename in retained:
         row = artifacts[filename]
         source = Path(row["local_path"])
@@ -127,6 +131,7 @@ def backup(world: Path, archive: Path, receipt_path: Path) -> BackupReceipt:
     if not (world / "level.dat").is_file():
         message = f"world has no level.dat: {world}"
         raise ValueError(message)
+    _require_world_stopped(world)
     archive.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(dir=archive.parent, delete=False) as temporary:
         temporary_path = Path(temporary.name)
@@ -162,6 +167,21 @@ def backup(world: Path, archive: Path, receipt_path: Path) -> BackupReceipt:
     receipt_path.parent.mkdir(parents=True, exist_ok=True)
     receipt_path.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
     return receipt
+
+
+def _require_world_stopped(world: Path) -> None:
+    """Refuse backup while Minecraft holds its world session lock."""
+    lock_path = world / "session.lock"
+    if not lock_path.exists():
+        return
+    with lock_path.open("rb") as lock:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError as error:
+            message = f"world is active; session lock is held: {world}"
+            raise ValueError(message) from error
+        finally:
+            fcntl.flock(lock, fcntl.LOCK_UN)
 
 
 def restore(archive: Path, expected_sha256: str, target: Path) -> RestoreReceipt:

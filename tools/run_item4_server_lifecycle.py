@@ -7,7 +7,10 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import queue
+import signal
 import subprocess
+import threading
 import time
 from pathlib import Path
 from typing import IO, cast
@@ -32,11 +35,31 @@ def run_lifecycle(
             stderr=subprocess.STDOUT,
             text=True,
             bufsize=1,
+            start_new_session=True,
         )
         stdout = cast("IO[str]", process.stdout)
         stdin = cast("IO[str]", process.stdin)
-        try:
+        lines: queue.Queue[str | None] = queue.Queue()
+
+        def read_output() -> None:
             for line in iter(stdout.readline, ""):
+                lines.put(line)
+            lines.put(None)
+
+        reader = threading.Thread(target=read_output, daemon=True)
+        reader.start()
+        try:
+            while True:
+                remaining = timeout - (time.monotonic() - started)
+                if remaining <= 0:
+                    os.killpg(process.pid, signal.SIGKILL)
+                    break
+                try:
+                    line = lines.get(timeout=min(1.0, remaining))
+                except queue.Empty:
+                    continue
+                if line is None:
+                    break
                 log.write(line)
                 log.flush()
                 if not ready and "Done (" in line:
@@ -47,14 +70,15 @@ def run_lifecycle(
                     flushed = True
                     stdin.write("stop\n")
                     stdin.flush()
-                if time.monotonic() - started > timeout:
-                    process.kill()
-                    break
             return_code = process.wait(timeout=30)
         except (TimeoutError, subprocess.TimeoutExpired):
-            process.kill()
+            os.killpg(process.pid, signal.SIGKILL)
             _ = process.wait()
             return_code = -9
+        finally:
+            stdin.close()
+            stdout.close()
+            reader.join(timeout=1)
     return {
         "schema_version": "item4-server-lifecycle-v1",
         "instance": str(instance),

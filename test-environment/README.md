@@ -45,6 +45,20 @@ uv run python tools/manage_item4_environment.py restore \
 
 Restore refuses an existing target, verifies the archive hash before extraction, rejects links and unsafe archive members, and extracts below a new directory. Copy or rematerialize the versioned server files beside the restored `world/`, then boot, flush, and stop. The committed runtime receipt records the completed proof.
 
+## Automated backup schedule
+
+The committed `mcpack-item4-backup@.timer` runs daily at 03:15 UTC with a persistent catch-up and randomized delay. It invokes `item4-automated-backup`, which refuses an active Minecraft session lock and writes collision-free archives plus raw integrity receipts. Install the units on the isolated test host with:
+
+```bash
+sudo systemctl link /workspace/mcpack/infrastructure/systemd/mcpack-item4-backup@.{service,timer}
+for role in ordinary mountainous ocean-heavy biome-diverse; do
+  sudo systemctl enable --now "mcpack-item4-backup@${role}.timer"
+done
+systemctl list-timers 'mcpack-item4-backup@*'
+```
+
+The archives and per-run receipts remain in ignored operational storage. The unit intentionally fails rather than copying a live world; lifecycle orchestration must flush and stop a server before its scheduled backup window.
+
 ## Rollback
 
 Rollback never mutates the failed experiment in place. Stop it, preserve any required failure evidence, restore the selected hash-verified backup into a new target, attach the same configuration version, and boot-validate that new target. This keeps controls and failures independently auditable.
