@@ -9,6 +9,40 @@ from typing import cast
 
 from mcpack_evidence.item5 import MeasurementProtocol, PilotRun, sha256_file
 
+REQUIRED_SPARK_COMMANDS = [
+    "spark tps",
+    "spark health --memory",
+    "spark gc",
+    "spark profiler start --interval 4",
+    "spark profiler stop --save-to-file",
+    "save-all flush",
+    "stop",
+]
+
+
+def validate_lifecycle_success(lifecycle: dict[str, object], pilot: PilotRun) -> None:
+    """Require every operational success signal and the preserved profile."""
+    success_fields = ("ready", "profile_started", "profile_stopped", "save_all_flush", "clean_stop")
+    if not all(lifecycle.get(field) is True for field in success_fields):
+        message = "accepted pilot lifecycle does not report complete success"
+        raise ValueError(message)
+    if lifecycle.get("return_code") != 0 or lifecycle.get("console_pipe_failed") is not False:
+        message = "accepted pilot lifecycle has a process or console failure"
+        raise ValueError(message)
+    if lifecycle.get("commands") != REQUIRED_SPARK_COMMANDS:
+        message = "accepted pilot lifecycle does not contain the required command sequence"
+        raise ValueError(message)
+    profiles = lifecycle.get("local_profiles")
+    if not isinstance(profiles, list) or len(profiles) != 1:
+        message = "accepted pilot lifecycle must contain exactly one new local profile"
+        raise ValueError(message)
+    profile_artifacts = [
+        artifact for artifact in pilot.raw_artifacts if artifact.path.endswith(".sparkprofile")
+    ]
+    if len(profile_artifacts) != 1 or profile_artifacts[0].size_bytes <= 0:
+        message = "accepted pilot must preserve exactly one nonempty Spark profile"
+        raise ValueError(message)
+
 
 def validate_lifecycle_identities(pilot: PilotRun, root: Path) -> None:
     """Bind accepted environment identities to the raw lifecycle receipt."""
@@ -24,11 +58,22 @@ def validate_lifecycle_identities(pilot: PilotRun, root: Path) -> None:
     expected_identities = {
         "configuration_sha256": pilot.environment.configuration_sha256,
         "world_snapshot_sha256": pilot.environment.world_snapshot_sha256,
+        "spark_overlay_sha256": pilot.environment.spark_overlay_sha256,
+        "spark_artifact_sha256": pilot.environment.spark_artifact_sha256,
     }
     for key, expected in expected_identities.items():
         if lifecycle.get(key) != expected:
             message = f"pilot {key} does not match lifecycle receipt"
             raise ValueError(message)
+    overlay_path = root / "measurement/item5/spark-overlay.json"
+    overlay = json.loads(overlay_path.read_bytes())
+    if sha256_file(overlay_path) != pilot.environment.spark_overlay_sha256:
+        message = "pilot Spark overlay hash does not match the committed overlay"
+        raise ValueError(message)
+    if overlay["overlay"]["sha256"] != pilot.environment.spark_artifact_sha256:
+        message = "pilot Spark artifact hash does not match the committed overlay"
+        raise ValueError(message)
+    validate_lifecycle_success(lifecycle, pilot)
 
 
 def validate_pilots(protocol_path: Path, pilots: list[Path], root: Path) -> MeasurementProtocol:

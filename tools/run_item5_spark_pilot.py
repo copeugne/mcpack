@@ -15,6 +15,18 @@ import time
 from pathlib import Path
 from typing import IO, cast
 
+from mcpack_evidence.item5 import sha256_file
+
+REQUIRED_SPARK_COMMANDS = (
+    "spark tps",
+    "spark health --memory",
+    "spark gc",
+    "spark profiler start --interval 4",
+    "spark profiler stop --save-to-file",
+    "save-all flush",
+    "stop",
+)
+
 
 def confirms_profile_save(line: str, *, stop_requested: bool) -> bool:
     """Accept Spark's completion only after this harness requested a stop."""
@@ -24,6 +36,28 @@ def confirms_profile_save(line: str, *, stop_requested: bool) -> bool:
 def confirms_requested_flush(line: str, *, flush_requested: bool) -> bool:
     """Ignore unrelated or automatic saves until this harness requests its flush."""
     return flush_requested and "Saved the game" in line
+
+
+def send_console_command(stdin: IO[str], command: str) -> bool:
+    """Return false instead of losing the receipt when the console pipe closes."""
+    try:
+        stdin.write(command + "\n")
+        stdin.flush()
+    except (BrokenPipeError, OSError):
+        return False
+    return True
+
+
+def validate_spark_overlay(instance: Path, overlay_path: Path) -> tuple[str, str]:
+    """Verify the configured profiler artifact and return overlay/artifact identities."""
+    overlay = json.loads(overlay_path.read_bytes())
+    artifact = overlay["overlay"]
+    spark_path = instance / "mods" / artifact["filename"]
+    actual_sha256 = sha256_file(spark_path)
+    if actual_sha256 != artifact["sha256"]:
+        message = f"Spark artifact hash mismatch: {spark_path}"
+        raise ValueError(message)
+    return sha256_file(overlay_path), actual_sha256
 
 
 def hash_tree(root: Path, relative_paths: tuple[Path, ...]) -> str:
@@ -58,14 +92,16 @@ def find_new_profiles(instance: Path, prior_profiles: dict[Path, tuple[int, int]
     )
 
 
-def run(  # noqa: C901, PLR0915 - lifecycle state machine is intentionally linear.
-    instance: Path, java_home: Path, log_path: Path, timeout: int
+def run(  # noqa: C901, PLR0912, PLR0915 - lifecycle state machine is intentionally linear.
+    instance: Path, java_home: Path, spark_overlay: Path, log_path: Path, timeout: int
 ) -> dict[str, object]:
     """Boot, exercise every approved Spark command, flush, and stop."""
     environment = os.environ.copy()
     environment["PATH"] = f"{java_home / 'bin'}:{environment['PATH']}"
     started = time.monotonic()
     sent: list[str] = []
+    console_pipe_failed = False
+    spark_overlay_sha256, spark_artifact_sha256 = validate_spark_overlay(instance, spark_overlay)
     prior_profiles = {
         path.resolve(): (path.stat().st_size, path.stat().st_mtime_ns)
         for path in instance.rglob("*.sparkprofile")
@@ -104,9 +140,13 @@ def run(  # noqa: C901, PLR0915 - lifecycle state machine is intentionally linea
             lines.put(None)
 
         def send(command: str) -> None:
+            nonlocal console_pipe_failed
+            if console_pipe_failed:
+                return
+            if not send_console_command(stdin, command):
+                console_pipe_failed = True
+                return
             sent.append(command)
-            stdin.write(command + "\n")
-            stdin.flush()
 
         reader = threading.Thread(target=read_output, daemon=True)
         reader.start()
@@ -121,7 +161,7 @@ def run(  # noqa: C901, PLR0915 - lifecycle state machine is intentionally linea
                     and not profile_stop_requested
                     and time.monotonic() >= command_deadline
                 ):
-                    send("spark profiler stop --save-to-file")
+                    send(REQUIRED_SPARK_COMMANDS[4])
                     profile_stop_requested = True
                 try:
                     line = lines.get(timeout=0.5)
@@ -133,12 +173,7 @@ def run(  # noqa: C901, PLR0915 - lifecycle state machine is intentionally linea
                 log.flush()
                 if not ready and "Done (" in line:
                     ready = True
-                    for command in (
-                        "spark tps",
-                        "spark health --memory",
-                        "spark gc",
-                        "spark profiler start --interval 4",
-                    ):
+                    for command in REQUIRED_SPARK_COMMANDS[:4]:
                         send(command)
                     profile_requested = True
                 elif (
@@ -148,19 +183,22 @@ def run(  # noqa: C901, PLR0915 - lifecycle state machine is intentionally linea
                     command_deadline = time.monotonic() + 30
                 elif confirms_profile_save(line, stop_requested=profile_stop_requested):
                     profile_saved = True
-                    send("save-all flush")
+                    send(REQUIRED_SPARK_COMMANDS[5])
                     flush_requested = True
                 elif not flushed and confirms_requested_flush(
                     line, flush_requested=flush_requested
                 ):
                     flushed = True
-                    send("stop")
+                    send(REQUIRED_SPARK_COMMANDS[6])
             return_code = process.wait(timeout=30)
         except (TimeoutError, subprocess.TimeoutExpired):
             os.killpg(process.pid, signal.SIGKILL)
             return_code = process.wait()
         finally:
-            stdin.close()
+            try:
+                stdin.close()
+            except (BrokenPipeError, OSError):
+                console_pipe_failed = True
             stdout.close()
             reader.join(timeout=1)
     new_profiles = find_new_profiles(instance, prior_profiles)
@@ -172,13 +210,23 @@ def run(  # noqa: C901, PLR0915 - lifecycle state machine is intentionally linea
         "profile_started": profile_started,
         "profile_stopped": profile_saved,
         "save_all_flush": flushed,
-        "clean_stop": return_code == 0 and ready and profile_saved and flushed and bool(profiles),
+        "clean_stop": (
+            return_code == 0
+            and ready
+            and profile_saved
+            and flushed
+            and bool(profiles)
+            and not console_pipe_failed
+        ),
         "return_code": return_code,
         "duration_seconds": round(time.monotonic() - started, 3),
         "commands": sent,
         "local_profiles": profiles,
         "configuration_sha256": configuration_sha256,
         "world_snapshot_sha256": world_snapshot_sha256,
+        "spark_overlay_sha256": spark_overlay_sha256,
+        "spark_artifact_sha256": spark_artifact_sha256,
+        "console_pipe_failed": console_pipe_failed,
     }
 
 
@@ -187,11 +235,18 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     _ = parser.add_argument("--instance", type=Path, required=True)
     _ = parser.add_argument("--java-home", type=Path, required=True)
+    _ = parser.add_argument("--spark-overlay", type=Path, required=True)
     _ = parser.add_argument("--log", type=Path, required=True)
     _ = parser.add_argument("--receipt", type=Path, required=True)
     _ = parser.add_argument("--timeout", type=int, default=900)
     arguments = parser.parse_args()
-    receipt = run(arguments.instance, arguments.java_home, arguments.log, arguments.timeout)
+    receipt = run(
+        arguments.instance,
+        arguments.java_home,
+        arguments.spark_overlay,
+        arguments.log,
+        arguments.timeout,
+    )
     arguments.receipt.parent.mkdir(parents=True, exist_ok=True)
     _ = arguments.receipt.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(receipt, indent=2))

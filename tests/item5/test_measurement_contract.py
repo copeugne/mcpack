@@ -91,6 +91,38 @@ def test_analyzer_rejects_empty_and_nonfinite_samples(rows: list[dict[str, str]]
         analyze_samples(rows)
 
 
+def test_ratio_metrics_retain_numerators_and_denominators() -> None:
+    """Processed rate evidence keeps its auditable exposure inputs."""
+    result = analyze_samples(
+        [
+            {
+                "metric_id": "structures_per_1000_chunks",
+                "value": "2.0",
+                "numerator": "8",
+                "denominator": "4000",
+            },
+            {
+                "metric_id": "structures_per_1000_chunks",
+                "value": "3.0",
+                "numerator": "12",
+                "denominator": "4000",
+            },
+        ]
+    )
+    summary = result["structures_per_1000_chunks"]
+    assert isinstance(summary, dict)
+    assert summary["numerators"] == [8.0, 12.0]
+    assert summary["denominators"] == [4000.0, 4000.0]
+    assert summary["numerator_sum"] == 20.0
+    assert summary["denominator_sum"] == 8000.0
+
+
+def test_ratio_metric_requires_exposure_inputs() -> None:
+    """A precomputed rate without its exposure base is invalid."""
+    with pytest.raises(ValueError, match="requires numerator and denominator"):
+        analyze_samples([{"metric_id": "death_rate", "value": "0.5"}])
+
+
 def test_accepted_pilot_requires_processed_and_environment_evidence() -> None:
     """Accepted receipts cannot omit processing or input identities."""
     payload = json.loads((ROOT / "evidence/item-5/pilots/accepted.json").read_bytes())
@@ -99,7 +131,7 @@ def test_accepted_pilot_requires_processed_and_environment_evidence() -> None:
         PilotRun.model_validate(payload)
     payload = json.loads((ROOT / "evidence/item-5/pilots/accepted.json").read_bytes())
     payload["environment"]["world_snapshot_sha256"] = None
-    with pytest.raises(ValidationError, match="configuration and world snapshot"):
+    with pytest.raises(ValidationError, match="every environment and Spark hash"):
         PilotRun.model_validate(payload)
 
 

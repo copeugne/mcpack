@@ -1,17 +1,17 @@
 {
   "schema_version": "item5-pilot-run-v1",
   "exact_commands": [
-    "uv run python tools/manage_item4_environment.py materialize --pristine instances/item5/pristine-platform --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt --seed-suite test-environment/seed-suite.json --role ordinary --target instances/item5/review-accepted",
-    "cp downloads/item3/candidates/spark-1.10.124-neoforge.jar instances/item5/review-accepted/mods/",
-    "mkdir -p instances/item5/review-accepted/config/spark",
-    "cp measurement/spark/config.json instances/item5/review-accepted/config/spark/config.json",
-    "uv run python tools/run_item5_spark_pilot.py --instance instances/item5/review-accepted --java-home downloads/toolchains/temurin-21.0.12.1 --log evidence/raw/item-5/spark-pilot-review-accepted.log --receipt evidence/raw/item-5/spark-lifecycle-review-accepted.json --timeout 900",
+    "uv run python tools/manage_item4_environment.py materialize --pristine instances/item5/pristine-platform --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt --seed-suite test-environment/seed-suite.json --role ordinary --target instances/item5/review-4-accepted",
+    "cp downloads/item3/candidates/spark-1.10.124-neoforge.jar instances/item5/review-4-accepted/mods/",
+    "mkdir -p instances/item5/review-4-accepted/config/spark",
+    "cp measurement/spark/config.json instances/item5/review-4-accepted/config/spark/config.json",
+    "uv run python tools/run_item5_spark_pilot.py --instance instances/item5/review-4-accepted --java-home downloads/toolchains/temurin-21.0.12.1 --spark-overlay measurement/item5/spark-overlay.json --log evidence/raw/item-5/spark-pilot-review-4.log --receipt evidence/raw/item-5/spark-lifecycle-review-4.json --timeout 900",
     "uv run python tools/analyze_item5_samples.py --input evidence/item-5/pilots/raw/accepted/samples.csv --output evidence/item-5/pilots/processed/summary.json"
   ],
   "seed": 42,
   "player_case": "solo",
   "environment": {
-    "git_commit": "32f605ef08498c634681b1875302946ee579ea95",
+    "git_commit": "273a5c243e656fd05fa02508e5e9dd3b69dacda8",
     "git_dirty": true,
     "protocol_sha256": "a21858f4add16450cff86d38e4b1822ab10df79e01172951056f315d378bc9ee",
     "retained_manifest_sha256": "78e5bdc0697299782a535400ad5b313c088e8db10cfe075085ae4c8a531e30cb",
@@ -21,39 +21,41 @@
     "java_version": "Temurin 21.0.12.1+1-LTS",
     "host_evidence_sha256": "a9c46e6482373cf9bcf5d21f5bea1c8904ee08fdc9d574fc73b599a1c5db2f6b",
     "configuration_sha256": "fb047bb4cdc00c7a08cccc5c834d1f02c1ef2260ca7345a42874e65ce36493ad",
-    "world_snapshot_sha256": "aa7428654d3feaf7a227a724dd133f28bdf36b15eb14237e220e7476f155e6e1"
+    "world_snapshot_sha256": "ee3866106caa38fbd09ee7a38b1d66fefb67391992fb1ed7f7497777104d5d30",
+    "spark_overlay_sha256": "6ed23d2964af1bbc570fa7a87ad8fe608aa228c2ee0e0a6a8bdbdb4aaf7eb5b0",
+    "spark_artifact_sha256": "647e8a81afbe414dba1df4ba15fd06c5d32d4cb544e68828405e8e074c2e16db"
   },
-  "run_id": "item5-spark-accepted-review-fix-20260902T143943Z",
+  "run_id": "item5-spark-accepted-review-4-20260902T154000Z",
   "status": "accepted",
-  "started_at": "2026-09-02T14:39:43Z",
-  "ended_at": "2026-09-02T14:45:29Z",
+  "started_at": "2026-09-02T15:40:00Z",
+  "ended_at": "2026-09-02T15:47:32Z",
   "raw_artifacts": [
     {
       "path": "evidence/item-5/pilots/raw/accepted/lifecycle.json",
-      "size_bytes": 696,
-      "sha256": "df49cb4b6d407abe099557878005a4d925c49f6c5976efaf4f3991ea7543aef6"
+      "size_bytes": 917,
+      "sha256": "35dd2c169c4316526bf56470d9c1f64a48bcf2c5714d9a92aa40de53d6715c87"
     },
     {
       "path": "evidence/item-5/pilots/raw/accepted/debug.log.gz",
-      "size_bytes": 47676,
-      "sha256": "7820d071b2e7808efeb562af4235139518e4535578ed76015e9aedde6f7b7b41"
+      "size_bytes": 48932,
+      "sha256": "f0244a7865d8c9b5ec250b7df0b739a4d10dbda567c0a2ac66b7b53f77f89aae"
     },
     {
       "path": "evidence/item-5/pilots/raw/accepted/profile.sparkprofile",
-      "size_bytes": 61902,
-      "sha256": "fcb8d0ca20cccd6cba9fdb63ee327e3ba0b5ab9f4a80f4f3f90af3020951bc98"
+      "size_bytes": 61883,
+      "sha256": "1fbc3ee66e52abc78565b25e60012784a6f8017a93000455452f1cbefde92d0c"
     },
     {
       "path": "evidence/item-5/pilots/raw/accepted/samples.csv",
       "size_bytes": 186,
-      "sha256": "169f1d72039b05c5350fe8cd25d07fd5d6ab5bcbfa4d18d3510405bd2bfb1d3c"
+      "sha256": "b4a92b9d41a9c6692ff6010aa33c6d0974f59080f8e9d76c5da5d7f3ef5b5dc5"
     }
   ],
   "processed_artifacts": [
     {
       "path": "evidence/item-5/pilots/processed/summary.json",
       "size_bytes": 882,
-      "sha256": "76e61b0bbecccb6e06829bb0052675ad1628b0cd34b96a387903d5131902ffc6"
+      "sha256": "db0dbefc29f87d48da31ebbad78a67312a4bcd85f64e9a10d83920b9308bea99"
     }
   ],
   "rejection_reasons": []

@@ -42,6 +42,17 @@ REQUIRED_METRICS: set[str] = {
     "adventure_activity_ratio",
 }
 REQUIRED_PLAYER_CASES: set[str] = {"solo", "two", "four", "normal", "peak"}
+RATIO_METRICS: set[str] = {
+    "structures_per_1000_chunks",
+    "actionable_locations_per_1000_chunks",
+    "combat_encounters_per_1000_chunks",
+    "proper_dungeons_per_1000_chunks",
+    "major_expeditions_per_1000_chunks",
+    "death_rate",
+    "unique_structure_families_per_hour",
+    "repeated_dungeon_layout_frequency",
+    "adventure_activity_ratio",
+}
 
 
 class StrictModel(BaseModel):
@@ -65,6 +76,8 @@ class EnvironmentIdentity(StrictModel):
     configuration_version: NonEmpty
     configuration_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")] | None
     world_snapshot_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")] | None
+    spark_overlay_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")] | None
+    spark_artifact_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")] | None
     minecraft_version: NonEmpty
     neoforge_version: NonEmpty
     java_version: NonEmpty
@@ -182,8 +195,10 @@ class PilotRun(StrictModel):
         if self.status == "accepted" and (
             self.environment.configuration_sha256 is None
             or self.environment.world_snapshot_sha256 is None
+            or self.environment.spark_overlay_sha256 is None
+            or self.environment.spark_artifact_sha256 is None
         ):
-            message = "an accepted pilot must record configuration and world snapshot hashes"
+            message = "an accepted pilot must record every environment and Spark hash"
             raise ValueError(message)
         return self
 
@@ -210,6 +225,7 @@ def artifact_identity(path: Path, *, root: Path) -> ArtifactIdentity:
 def analyze_samples(rows: Iterable[dict[str, str]]) -> dict[str, object]:
     """Deterministically aggregate long-form numeric samples."""
     grouped: dict[str, list[float]] = {}
+    ratio_inputs: dict[str, list[tuple[float, float]]] = {}
     for row in rows:
         try:
             metric_id = row["metric_id"]
@@ -220,11 +236,27 @@ def analyze_samples(rows: Iterable[dict[str, str]]) -> dict[str, object]:
         if not metric_id or not math.isfinite(value):
             message = "sample rows require nonempty metric_id and finite numeric value"
             raise ValueError(message)
+        if metric_id in RATIO_METRICS:
+            try:
+                numerator = float(row["numerator"])
+                denominator = float(row["denominator"])
+            except (KeyError, TypeError, ValueError) as error:
+                message = f"ratio metric {metric_id} requires numerator and denominator"
+                raise ValueError(message) from error
+            if not math.isfinite(numerator) or not math.isfinite(denominator) or denominator <= 0:
+                message = (
+                    f"ratio metric {metric_id} requires finite inputs and positive denominator"
+                )
+                raise ValueError(message)
+            ratio_inputs.setdefault(metric_id, []).append((numerator, denominator))
         grouped.setdefault(metric_id, []).append(value)
     if not grouped:
         message = "sample input contains no data rows"
         raise ValueError(message)
-    return {metric: _summarize(metric, values) for metric, values in sorted(grouped.items())}
+    return {
+        metric: _summarize(metric, values, ratio_inputs.get(metric))
+        for metric, values in sorted(grouped.items())
+    }
 
 
 def _percentile(values: list[float], percentile: float) -> float:
@@ -248,13 +280,15 @@ def _bootstrap_median_ci(metric: str, values: list[float]) -> list[float]:
     return [_percentile(medians, 0.025), _percentile(medians, 0.975)]
 
 
-def _summarize(metric: str, values: list[float]) -> dict[str, object]:
+def _summarize(
+    metric: str, values: list[float], ratio_inputs: list[tuple[float, float]] | None
+) -> dict[str, object]:
     """Produce every dispersion and uncertainty statistic promised by the protocol."""
     values = sorted(values)
     first_quartile = _percentile(values, 0.25)
     third_quartile = _percentile(values, 0.75)
     minimum, maximum = min(values), max(values)
-    return {
+    summary: dict[str, object] = {
         "count": len(values),
         "min": minimum,
         "median": statistics.median(values),
@@ -267,6 +301,12 @@ def _summarize(metric: str, values: list[float]) -> dict[str, object]:
         "bootstrap_median_95ci": _bootstrap_median_ci(metric, values),
         "bootstrap_resamples": BOOTSTRAP_RESAMPLES,
     }
+    if ratio_inputs is not None:
+        summary["numerators"] = [numerator for numerator, _ in ratio_inputs]
+        summary["denominators"] = [denominator for _, denominator in ratio_inputs]
+        summary["numerator_sum"] = math.fsum(numerator for numerator, _ in ratio_inputs)
+        summary["denominator_sum"] = math.fsum(denominator for _, denominator in ratio_inputs)
+    return summary
 
 
 def analyze_csv(source: Path, output: Path) -> None:
