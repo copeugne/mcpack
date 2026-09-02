@@ -1,0 +1,60 @@
+{
+  "schema_version": "item5-pilot-run-v1",
+  "exact_commands": [
+    "uv run python tools/manage_item4_environment.py materialize --pristine instances/item5/pristine-platform --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt --seed-suite test-environment/seed-suite.json --role ordinary --target instances/item5/review-accepted",
+    "cp downloads/item3/candidates/spark-1.10.124-neoforge.jar instances/item5/review-accepted/mods/",
+    "mkdir -p instances/item5/review-accepted/config/spark",
+    "cp measurement/spark/config.json instances/item5/review-accepted/config/spark/config.json",
+    "uv run python tools/run_item5_spark_pilot.py --instance instances/item5/review-accepted --java-home downloads/toolchains/temurin-21.0.12.1 --log evidence/raw/item-5/spark-pilot-review-accepted.log --receipt evidence/raw/item-5/spark-lifecycle-review-accepted.json --timeout 900",
+    "uv run python tools/analyze_item5_samples.py --input evidence/item-5/pilots/raw/accepted/samples.csv --output evidence/item-5/pilots/processed/summary.json"
+  ],
+  "seed": 42,
+  "player_case": "solo",
+  "environment": {
+    "git_commit": "32f605ef08498c634681b1875302946ee579ea95",
+    "git_dirty": true,
+    "protocol_sha256": "a21858f4add16450cff86d38e4b1822ab10df79e01172951056f315d378bc9ee",
+    "retained_manifest_sha256": "78e5bdc0697299782a535400ad5b313c088e8db10cfe075085ae4c8a531e30cb",
+    "configuration_version": "test-environment-v0.1+item5-spark-overlay-v1",
+    "minecraft_version": "1.21.1",
+    "neoforge_version": "21.1.249",
+    "java_version": "Temurin 21.0.12.1+1-LTS",
+    "host_evidence_sha256": "a9c46e6482373cf9bcf5d21f5bea1c8904ee08fdc9d574fc73b599a1c5db2f6b",
+    "configuration_sha256": "fb047bb4cdc00c7a08cccc5c834d1f02c1ef2260ca7345a42874e65ce36493ad",
+    "world_snapshot_sha256": "aa7428654d3feaf7a227a724dd133f28bdf36b15eb14237e220e7476f155e6e1"
+  },
+  "run_id": "item5-spark-accepted-review-fix-20260902T143943Z",
+  "status": "accepted",
+  "started_at": "2026-09-02T14:39:43Z",
+  "ended_at": "2026-09-02T14:45:29Z",
+  "raw_artifacts": [
+    {
+      "path": "evidence/item-5/pilots/raw/accepted/lifecycle.json",
+      "size_bytes": 696,
+      "sha256": "df49cb4b6d407abe099557878005a4d925c49f6c5976efaf4f3991ea7543aef6"
+    },
+    {
+      "path": "evidence/item-5/pilots/raw/accepted/debug.log.gz",
+      "size_bytes": 47676,
+      "sha256": "7820d071b2e7808efeb562af4235139518e4535578ed76015e9aedde6f7b7b41"
+    },
+    {
+      "path": "evidence/item-5/pilots/raw/accepted/profile.sparkprofile",
+      "size_bytes": 61902,
+      "sha256": "fcb8d0ca20cccd6cba9fdb63ee327e3ba0b5ab9f4a80f4f3f90af3020951bc98"
+    },
+    {
+      "path": "evidence/item-5/pilots/raw/accepted/samples.csv",
+      "size_bytes": 186,
+      "sha256": "169f1d72039b05c5350fe8cd25d07fd5d6ab5bcbfa4d18d3510405bd2bfb1d3c"
+    }
+  ],
+  "processed_artifacts": [
+    {
+      "path": "evidence/item-5/pilots/processed/summary.json",
+      "size_bytes": 882,
+      "sha256": "76e61b0bbecccb6e06829bb0052675ad1628b0cd34b96a387903d5131902ffc6"
+    }
+  ],
+  "rejection_reasons": []
+}
