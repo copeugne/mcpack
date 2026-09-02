@@ -11,16 +11,16 @@ Any Item 4 experiment can be recreated from versioned inputs or rolled back into
 
 | Role | Seed | Full retained-stack lifecycle |
 |---|---:|---|
-| Ordinary | `42` | Ready in 125.098s; flush and clean stop passed |
-| Mountainous | `6671238423019257953` | Ready, flush, and clean stop passed in 406.918s |
-| Ocean-heavy | `95920844204830198` | Ready, flush, and clean stop passed in 338.181s |
-| Biome-diverse | `-3503646078644842058` | Ready, flush, and clean stop passed in 345.989s |
+| Ordinary | `42` | Regenerated after the materializer fix; `level.dat` seed observed as `42`; ready, flush, and clean stop passed in 324.086s |
+| Mountainous | `6671238423019257953` | Regenerated after the materializer fix; `level.dat` seed observed as declared; ready, flush, and clean stop passed in 409.085s |
+| Ocean-heavy | `95920844204830198` | Regenerated after the materializer fix; `level.dat` seed observed as declared; ready, flush, and clean stop passed in 340.580s |
+| Biome-diverse | `-3503646078644842058` | Regenerated after the materializer fix; `level.dat` seed observed as declared; ready, flush, and clean stop passed in 354.033s |
 
 All four controls were independently materialized with exactly 136 hash-verified retained artifacts. Item 4 fixes their identities and proves lifecycle isolation. Item 7 remains responsible for empirical terrain, biome, structure, and cross-mod world-generation inspection.
 
 ## Backup and restore proof
 
-The ordinary world was flushed and stopped before backup. Its deterministic archive contains 58 files, is 1,190,041 bytes, and has SHA-256 `2df51369e1c31407f5eb91f0db04f39c631ee0df712235831c2e2853dbe4a772`. Restore verified that hash before safe extraction into an absent target. The restored world contained the same 58 recorded files, reached readiness in 62.224 seconds, flushed, and stopped cleanly.
+The regenerated ordinary world was flushed and stopped before backup with the final lock-lifetime implementation. Its deterministic archive contains 57 files (excluding `session.lock`), is 1,172,490 bytes, and has SHA-256 `320a63f709a2df2fc9d2abccbb547e9eace05d5b44074fcb501ba294f7f4b0bd`. Restore verified that hash before safe extraction into an absent target. The restored world contained the same 57 recorded files, reached readiness in 267.369 seconds, flushed, and stopped cleanly.
 
 The archive remains in the ignored backup store; `evidence/item-4/ordinary-backup-receipt.json` records every world-relative file, size, and SHA-256. The restore receipt and compressed runtime log are committed.
 

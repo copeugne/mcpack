@@ -80,18 +80,18 @@ Seed controls in `test-environment/seed-suite.json`:
 | ocean-heavy | `95920844204830198` |
 | biome-diverse | `-3503646078644842058` |
 
-All four were independently materialized with the exact retained set, reached readiness, completed `save-all flush`, and stopped cleanly. Evidence is in `evidence/item-4/runtime-validation.json` and compressed logs under `evidence/item-4/logs/`.
+All four were independently rematerialized after the copied-world removal fix, reached readiness, completed `save-all flush`, and stopped cleanly. Each evidence row records the seed read from `Data.WorldGenSettings.seed` in the generated `world/level.dat`, plus that file's size and SHA-256. Evidence is in `evidence/item-4/runtime-validation.json` and compressed logs under `evidence/item-4/logs/`.
 
 ### 5.2 Backup/restore proof
 
 The ordinary control was backed up only after flush and stop:
 
-- 58 world files;
-- archive size 1,190,041 bytes;
-- archive SHA-256 `2df51369e1c31407f5eb91f0db04f39c631ee0df712235831c2e2853dbe4a772`;
+- 57 world files (`session.lock` deliberately excluded);
+- archive size 1,172,490 bytes;
+- archive SHA-256 `320a63f709a2df2fc9d2abccbb547e9eace05d5b44074fcb501ba294f7f4b0bd`;
 - per-file receipt: `evidence/item-4/ordinary-backup-receipt.json`.
 
-The archive was verified before safe extraction into an absent target. The restored world reached readiness in 62.224 seconds, flushed, and stopped cleanly. See `evidence/item-4/ordinary-restore-receipt.json` and `evidence/item-4/logs/ordinary-restored-boot.log.gz`.
+The archive was produced with the final lock-lifetime implementation, verified before safe extraction into an absent target, and contains no `session.lock`. The restored world reached readiness in 267.369 seconds, flushed, and stopped cleanly. See `evidence/item-4/ordinary-restore-receipt.json` and `evidence/item-4/logs/ordinary-restored-boot.log.gz`.
 
 ### 5.3 Lifecycle and backup tooling
 

@@ -39,7 +39,7 @@ uv run python tools/manage_item4_environment.py backup \
   --receipt evidence/item-4/ordinary-backup-receipt.json
 uv run python tools/manage_item4_environment.py restore \
   --archive backups/item4/ordinary-initial-world.tar.gz \
-  --sha256 2df51369e1c31407f5eb91f0db04f39c631ee0df712235831c2e2853dbe4a772 \
+  --sha256 320a63f709a2df2fc9d2abccbb547e9eace05d5b44074fcb501ba294f7f4b0bd \
   --target instances/item4/ordinary-restore
 ```
 

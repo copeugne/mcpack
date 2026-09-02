@@ -23,6 +23,10 @@ def test_all_seed_controls_pass_full_retained_lifecycle() -> None:
     assert all(row["materialized"] is True for row in controls)
     assert all(row["initial_boot_validated"] is True for row in controls)
     assert all(row.get("clean_stop", True) is True for row in controls)
+    for row in controls:
+        observation = _dict(row["world_seed_observation"])
+        assert observation["nbt_path"] == "Data.WorldGenSettings.seed"
+        assert observation["observed_seed"] == row["seed"]
 
 
 def test_committed_lifecycle_logs_match_hashes_and_events() -> None:
@@ -61,7 +65,10 @@ def test_backup_and_restore_receipts_agree() -> None:
 
     assert backup["archive_sha256"] == summary["archive_sha256"]
     assert restore["archive_sha256"] == backup["archive_sha256"]
-    assert restore["world_file_count"] == backup["world_file_count"] == 58
+    assert restore["world_file_count"] == backup["world_file_count"] == 57
+    files = [_dict(row) for row in _list(backup["world_files"])]
+    assert "session.lock" not in {_str(row["path"]) for row in files}
+    assert summary["session_lock_excluded"] is True
 
 
 def _dict(value: object) -> dict[str, object]:
