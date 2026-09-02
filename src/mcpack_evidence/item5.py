@@ -53,6 +53,17 @@ RATIO_METRICS: set[str] = {
     "repeated_dungeon_layout_frequency",
     "adventure_activity_ratio",
 }
+RATIO_SCALES: dict[str, float] = {
+    "structures_per_1000_chunks": 1000.0,
+    "actionable_locations_per_1000_chunks": 1000.0,
+    "combat_encounters_per_1000_chunks": 1000.0,
+    "proper_dungeons_per_1000_chunks": 1000.0,
+    "major_expeditions_per_1000_chunks": 1000.0,
+    "death_rate": 1.0,
+    "unique_structure_families_per_hour": 1.0,
+    "repeated_dungeon_layout_frequency": 1.0,
+    "adventure_activity_ratio": 1.0,
+}
 
 
 class StrictModel(BaseModel):
@@ -248,6 +259,11 @@ def analyze_samples(rows: Iterable[dict[str, str]]) -> dict[str, object]:
                     f"ratio metric {metric_id} requires finite inputs and positive denominator"
                 )
                 raise ValueError(message)
+            derived_value = numerator / denominator * RATIO_SCALES[metric_id]
+            if not math.isclose(value, derived_value, rel_tol=1e-9, abs_tol=1e-12):
+                message = f"ratio metric {metric_id} value does not match its operands"
+                raise ValueError(message)
+            value = derived_value
             ratio_inputs.setdefault(metric_id, []).append((numerator, denominator))
         grouped.setdefault(metric_id, []).append(value)
     if not grouped:

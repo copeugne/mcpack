@@ -28,6 +28,10 @@ REQUIRED_SPARK_COMMANDS = (
 )
 
 
+class SparkPreflightError(ValueError):
+    """The committed overlay or runtime profiler artifact is invalid."""
+
+
 def confirms_profile_save(line: str, *, stop_requested: bool) -> bool:
     """Accept Spark's completion only after this harness requested a stop."""
     return stop_requested and "Profiler stopped & save complete!" in line
@@ -50,14 +54,43 @@ def send_console_command(stdin: IO[str], command: str) -> bool:
 
 def validate_spark_overlay(instance: Path, overlay_path: Path) -> tuple[str, str]:
     """Verify the configured profiler artifact and return overlay/artifact identities."""
-    overlay = json.loads(overlay_path.read_bytes())
-    artifact = overlay["overlay"]
-    spark_path = instance / "mods" / artifact["filename"]
-    actual_sha256 = sha256_file(spark_path)
-    if actual_sha256 != artifact["sha256"]:
+    try:
+        overlay = json.loads(overlay_path.read_bytes())
+        artifact = overlay["overlay"]
+        spark_path = instance / "mods" / artifact["filename"]
+        actual_sha256 = sha256_file(spark_path)
+        expected_sha256 = artifact["sha256"]
+    except (KeyError, OSError, TypeError, ValueError) as error:
+        message = f"cannot verify Spark overlay: {error}"
+        raise SparkPreflightError(message) from error
+    if actual_sha256 != expected_sha256:
         message = f"Spark artifact hash mismatch: {spark_path}"
-        raise ValueError(message)
+        raise SparkPreflightError(message)
     return sha256_file(overlay_path), actual_sha256
+
+
+def preflight_failure_receipt(error: Exception) -> dict[str, object]:
+    """Return machine-readable rejected evidence for an overlay preflight failure."""
+    return {
+        "schema_version": "item5-spark-lifecycle-v1",
+        "ready": False,
+        "profile_started": False,
+        "profile_stopped": False,
+        "save_all_flush": False,
+        "clean_stop": False,
+        "return_code": None,
+        "duration_seconds": 0.0,
+        "commands": [],
+        "local_profiles": [],
+        "configuration_sha256": None,
+        "world_snapshot_sha256": None,
+        "spark_overlay_sha256": None,
+        "spark_artifact_sha256": None,
+        "local_profile_sha256": None,
+        "local_profile_size_bytes": None,
+        "console_pipe_failed": False,
+        "rejection_reason": f"Spark overlay preflight failed: {error}",
+    }
 
 
 def hash_tree(root: Path, relative_paths: tuple[Path, ...]) -> str:
@@ -203,6 +236,8 @@ def run(  # noqa: C901, PLR0912, PLR0915 - lifecycle state machine is intentiona
             reader.join(timeout=1)
     new_profiles = find_new_profiles(instance, prior_profiles)
     profiles = [str(path.relative_to(instance)) for path in new_profiles]
+    local_profile_sha256 = sha256_file(new_profiles[0]) if len(new_profiles) == 1 else None
+    local_profile_size_bytes = new_profiles[0].stat().st_size if len(new_profiles) == 1 else None
     world_snapshot_sha256 = hash_tree(instance, (Path("world"),)) if ready else None
     return {
         "schema_version": "item5-spark-lifecycle-v1",
@@ -226,6 +261,8 @@ def run(  # noqa: C901, PLR0912, PLR0915 - lifecycle state machine is intentiona
         "world_snapshot_sha256": world_snapshot_sha256,
         "spark_overlay_sha256": spark_overlay_sha256,
         "spark_artifact_sha256": spark_artifact_sha256,
+        "local_profile_sha256": local_profile_sha256,
+        "local_profile_size_bytes": local_profile_size_bytes,
         "console_pipe_failed": console_pipe_failed,
     }
 
@@ -240,13 +277,16 @@ def main() -> int:
     _ = parser.add_argument("--receipt", type=Path, required=True)
     _ = parser.add_argument("--timeout", type=int, default=900)
     arguments = parser.parse_args()
-    receipt = run(
-        arguments.instance,
-        arguments.java_home,
-        arguments.spark_overlay,
-        arguments.log,
-        arguments.timeout,
-    )
+    try:
+        receipt = run(
+            arguments.instance,
+            arguments.java_home,
+            arguments.spark_overlay,
+            arguments.log,
+            arguments.timeout,
+        )
+    except SparkPreflightError as error:
+        receipt = preflight_failure_receipt(error)
     arguments.receipt.parent.mkdir(parents=True, exist_ok=True)
     _ = arguments.receipt.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(receipt, indent=2))

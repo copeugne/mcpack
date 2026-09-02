@@ -123,6 +123,18 @@ def test_ratio_metric_requires_exposure_inputs() -> None:
         analyze_samples([{"metric_id": "death_rate", "value": "0.5"}])
 
 
+def test_ratio_metric_rejects_value_inconsistent_with_operands() -> None:
+    """A plausible-looking derived value cannot contradict its exposure inputs."""
+    row = {
+        "metric_id": "structures_per_1000_chunks",
+        "value": "999",
+        "numerator": "1",
+        "denominator": "1000",
+    }
+    with pytest.raises(ValueError, match="does not match its operands"):
+        analyze_samples([row])
+
+
 def test_accepted_pilot_requires_processed_and_environment_evidence() -> None:
     """Accepted receipts cannot omit processing or input identities."""
     payload = json.loads((ROOT / "evidence/item-5/pilots/accepted.json").read_bytes())

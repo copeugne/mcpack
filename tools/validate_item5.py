@@ -3,11 +3,12 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 from pathlib import Path
 from typing import cast
 
-from mcpack_evidence.item5 import MeasurementProtocol, PilotRun, sha256_file
+from mcpack_evidence.item5 import MeasurementProtocol, PilotRun, analyze_samples, sha256_file
 
 REQUIRED_SPARK_COMMANDS = [
     "spark tps",
@@ -41,6 +42,32 @@ def validate_lifecycle_success(lifecycle: dict[str, object], pilot: PilotRun) ->
     ]
     if len(profile_artifacts) != 1 or profile_artifacts[0].size_bytes <= 0:
         message = "accepted pilot must preserve exactly one nonempty Spark profile"
+        raise ValueError(message)
+    profile = profile_artifacts[0]
+    if (
+        lifecycle.get("local_profile_sha256") != profile.sha256
+        or lifecycle.get("local_profile_size_bytes") != profile.size_bytes
+    ):
+        message = "preserved Spark profile does not match lifecycle output"
+        raise ValueError(message)
+
+
+def validate_processed_samples(pilot: PilotRun, root: Path) -> None:
+    """Recompute accepted sample summaries and require exact semantic equality."""
+    if pilot.status != "accepted":
+        return
+    csv_artifacts = [artifact for artifact in pilot.raw_artifacts if artifact.path.endswith(".csv")]
+    json_artifacts = [
+        artifact for artifact in pilot.processed_artifacts if artifact.path.endswith(".json")
+    ]
+    if len(csv_artifacts) != 1 or len(json_artifacts) != 1:
+        message = "accepted pilot must bind one raw CSV to one processed JSON summary"
+        raise ValueError(message)
+    with (root / csv_artifacts[0].path).open(encoding="utf-8", newline="") as stream:
+        expected = analyze_samples(csv.DictReader(stream))
+    observed = json.loads((root / json_artifacts[0].path).read_bytes())
+    if observed != expected:
+        message = "processed summary does not match the accepted raw samples"
         raise ValueError(message)
 
 
@@ -96,6 +123,7 @@ def validate_pilots(protocol_path: Path, pilots: list[Path], root: Path) -> Meas
                 message = f"artifact hash mismatch: {artifact.path}"
                 raise ValueError(message)
         validate_lifecycle_identities(pilot, root)
+        validate_processed_samples(pilot, root)
     if pilots and statuses != {"accepted", "rejected"}:
         message = "pilot set must prove accepted and rejected handling"
         raise ValueError(message)

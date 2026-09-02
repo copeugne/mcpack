@@ -79,3 +79,23 @@ def test_accepted_pilot_requires_successful_lifecycle(tmp_path: Path) -> None:
     )
     with pytest.raises(ValueError, match="complete success"):
         validator(pilot, tmp_path)
+
+
+def test_processed_summary_must_match_raw_samples(tmp_path: Path) -> None:
+    """A stale or arbitrary processed artifact cannot satisfy the pilot gate."""
+    pilot = PilotRun.model_validate_json(
+        (ROOT / "evidence/item-5/pilots/accepted.json").read_bytes()
+    )
+    raw_relative = Path("evidence/item-5/pilots/raw/accepted/samples.csv")
+    raw_target = tmp_path / raw_relative
+    raw_target.parent.mkdir(parents=True)
+    raw_target.write_bytes((ROOT / raw_relative).read_bytes())
+    processed_relative = Path("evidence/item-5/pilots/processed/summary.json")
+    processed_target = tmp_path / processed_relative
+    processed_target.parent.mkdir(parents=True)
+    processed_target.write_text('{"unrelated": true}\n', encoding="utf-8")
+    validator = cast(
+        "Callable[[PilotRun, Path], None]", load_validator_module().validate_processed_samples
+    )
+    with pytest.raises(ValueError, match="does not match"):
+        validator(pilot, tmp_path)

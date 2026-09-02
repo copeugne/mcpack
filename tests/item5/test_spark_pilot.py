@@ -102,3 +102,15 @@ def test_spark_overlay_binds_the_runtime_artifact(tmp_path: Path) -> None:
     artifact.write_bytes(b"replaced")
     with pytest.raises(ValueError, match="Spark artifact hash mismatch"):
         validate_spark_overlay(tmp_path, overlay)
+
+
+def test_overlay_preflight_failure_has_rejection_receipt() -> None:
+    """An invalid profiler identity remains machine-readable evidence."""
+    module = load_pilot_module()
+    preflight_failure_receipt = cast(
+        "Callable[[Exception], dict[str, object]]", module.preflight_failure_receipt
+    )
+    receipt = preflight_failure_receipt(ValueError("wrong digest"))
+    assert receipt["clean_stop"] is False
+    assert receipt["commands"] == []
+    assert receipt["rejection_reason"] == "Spark overlay preflight failed: wrong digest"
