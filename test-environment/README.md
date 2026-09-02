@@ -1,0 +1,50 @@
+# Controlled test environment
+
+`test-environment-v0.1` is an isolated, disposable dedicated-server configuration. It never reads a production instance. Every seed instance is created from the pinned NeoForge platform, Item 2 configuration evidence, the Item 3 acquisition manifest, and the 136-file retained manifest.
+
+## Naming contract
+
+- Configuration versions: `test-environment-vMAJOR.MINOR`.
+- Experiment branches: `experiment/item-N-short-purpose`.
+- Runtime instances: `instances/item4/<seed-role>`.
+- Untouched controls: a newly materialized instance that has never booted.
+- Backups: `backups/item4/<seed-role>-<checkpoint>.tar.gz` with a committed receipt.
+
+Configs are versioned by their Item 2 evidence paths and this configuration version. Project datapacks, spawn rules, loot tables, and worldgen overrides have explicit empty inventories under `versions/test-environment-v0.1`; generated mod defaults are evidence for Item 6 and must not be tuned during Item 4.
+
+## Materialize or regenerate
+
+Acquire the pinned platform and candidates using the Item 2 and Item 3 procedures. Create the pristine NeoForge installation and overlay `evidence/item-2/configs/`. Then, for each role in `seed-suite.json`, run:
+
+```bash
+uv run python tools/manage_item4_environment.py materialize \
+  --pristine instances/item4/pristine-platform \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --role ordinary \
+  --target instances/item4/ordinary
+```
+
+The command refuses an existing target, verifies every retained artifact before hard-linking it, and writes `level-seed`. To regenerate, stop the server, delete the entire disposable role instance, and rerun the command. Do not delete only `world/` while retaining generated state when a clean control is required.
+
+## Backup and restore
+
+Stop and flush the server before backup:
+
+```bash
+uv run python tools/manage_item4_environment.py backup \
+  --world instances/item4/ordinary/world \
+  --archive backups/item4/ordinary-initial-world.tar.gz \
+  --receipt evidence/item-4/ordinary-backup-receipt.json
+uv run python tools/manage_item4_environment.py restore \
+  --archive backups/item4/ordinary-initial-world.tar.gz \
+  --sha256 2df51369e1c31407f5eb91f0db04f39c631ee0df712235831c2e2853dbe4a772 \
+  --target instances/item4/ordinary-restore
+```
+
+Restore refuses an existing target, verifies the archive hash before extraction, rejects links and unsafe archive members, and extracts below a new directory. Copy or rematerialize the versioned server files beside the restored `world/`, then boot, flush, and stop. The committed runtime receipt records the completed proof.
+
+## Rollback
+
+Rollback never mutates the failed experiment in place. Stop it, preserve any required failure evidence, restore the selected hash-verified backup into a new target, attach the same configuration version, and boot-validate that new target. This keeps controls and failures independently auditable.
