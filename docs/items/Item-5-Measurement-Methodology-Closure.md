@@ -18,6 +18,8 @@ The player cases are material rather than invented: P1, P2 and P4 come directly 
 
 Pydantic models forbid unknown or missing fields and enforce exact metric/player coverage. `tools/validate_item5.py` validates contracts, receipts and every referenced artifact hash. `tools/analyze_item5_samples.py` produces sorted deterministic JSON from immutable long-form CSV. Tests prove omissions, duplicates and missing fields are rejected.
 
+Every total duration includes the maximum declared 900-second warm-up plus the complete capture window: 1,500 seconds for 600-second performance captures and 4,500 seconds for 3,600-second adventure captures. The deterministic analyzer emits count, minimum, median, mean, p95, p99, maximum, range, IQR, and a 10,000-resample percentile-bootstrap 95% confidence interval for the median. Pilot validation binds each receipt to the exact SHA-256 of the protocol supplied to the validator.
+
 ## Spark operational procedure
 
 A clean seed-42 control is materialized from the Item 4 pristine platform and frozen retained manifest. Spark is copied only afterward from its hash-verified Item 3 acquisition path. Background profiling and response broadcasts are disabled. The bounded harness waits for `Done`, then sends:
