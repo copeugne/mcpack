@@ -1,0 +1,1137 @@
+{
+  "schema_version": "item5-measurement-protocol-v1",
+  "protocol_id": "ae-measurement-v1",
+  "player_cases": [
+    {
+      "case_id": "solo",
+      "players": 1,
+      "source": "SPECS Item 5 explicit solo case"
+    },
+    {
+      "case_id": "two",
+      "players": 2,
+      "source": "SPECS Item 5 explicit two-player case"
+    },
+    {
+      "case_id": "four",
+      "players": 4,
+      "source": "SPECS Item 5 explicit four-player case"
+    },
+    {
+      "case_id": "normal",
+      "players": 6,
+      "source": "Item 2 baseline decision: normal concurrency range is 2\u20136; upper bound is the load case"
+    },
+    {
+      "case_id": "peak",
+      "players": 10,
+      "source": "Item 2 baseline decision: expected peak concurrency is 10"
+    }
+  ],
+  "metrics": [
+    {
+      "metric_id": "idle_mspt",
+      "purpose": "Quantify server tick duration while empty and with a stationary player for reproducible baseline and paired comparisons.",
+      "measured_quantity": "server tick duration while empty and with a stationary player",
+      "unit": "milliseconds per tick",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "run Spark local-file profiling plus long-form system sampling",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 4,
+      "sample_window_seconds": 600,
+      "total_run_duration_seconds": 1500,
+      "repetitions": 5,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/idle_mspt.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/idle_mspt.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "active_combat_mspt",
+      "purpose": "Quantify server tick duration during a versioned combat fixture for reproducible baseline and paired comparisons.",
+      "measured_quantity": "server tick duration during a versioned combat fixture",
+      "unit": "milliseconds per tick",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "run Spark local-file profiling plus long-form system sampling",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 4,
+      "sample_window_seconds": 600,
+      "total_run_duration_seconds": 1500,
+      "repetitions": 5,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/active_combat_mspt.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/active_combat_mspt.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "fresh_worldgen_mspt",
+      "purpose": "Quantify server tick duration while generating never-generated chunks for reproducible baseline and paired comparisons.",
+      "measured_quantity": "server tick duration while generating never-generated chunks",
+      "unit": "milliseconds per tick",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "run Spark local-file profiling plus long-form system sampling",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 4,
+      "sample_window_seconds": 600,
+      "total_run_duration_seconds": 1500,
+      "repetitions": 5,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/fresh_worldgen_mspt.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/fresh_worldgen_mspt.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "tps",
+      "purpose": "Quantify completed server ticks per wall-clock second for reproducible baseline and paired comparisons.",
+      "measured_quantity": "completed server ticks per wall-clock second",
+      "unit": "ticks per second",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "run Spark local-file profiling plus long-form system sampling",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 600,
+      "total_run_duration_seconds": 1500,
+      "repetitions": 5,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/tps.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/tps.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "memory",
+      "purpose": "Quantify resident, heap, and non-heap bytes used for reproducible baseline and paired comparisons.",
+      "measured_quantity": "resident, heap, and non-heap bytes used",
+      "unit": "bytes",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "run Spark local-file profiling plus long-form system sampling",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 600,
+      "total_run_duration_seconds": 1500,
+      "repetitions": 5,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/memory.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/memory.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "garbage_collection",
+      "purpose": "Quantify collector pause duration and collection frequency for reproducible baseline and paired comparisons.",
+      "measured_quantity": "collector pause duration and collection frequency",
+      "unit": "milliseconds and collections",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "run Spark local-file profiling plus long-form system sampling",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 600,
+      "total_run_duration_seconds": 1500,
+      "repetitions": 5,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/garbage_collection.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/garbage_collection.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "entity_count",
+      "purpose": "Quantify loaded entities grouped by registry ID and dimension for reproducible baseline and paired comparisons.",
+      "measured_quantity": "loaded entities grouped by registry ID and dimension",
+      "unit": "entities",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "run Spark local-file profiling plus long-form system sampling",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 600,
+      "total_run_duration_seconds": 1500,
+      "repetitions": 5,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/entity_count.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/entity_count.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "pathfinding_cost",
+      "purpose": "Quantify sampled CPU time attributed to navigation call trees for reproducible baseline and paired comparisons.",
+      "measured_quantity": "sampled CPU time attributed to navigation call trees",
+      "unit": "milliseconds and percent CPU",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "run Spark local-file profiling plus long-form system sampling",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 4,
+      "sample_window_seconds": 600,
+      "total_run_duration_seconds": 1500,
+      "repetitions": 5,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/pathfinding_cost.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/pathfinding_cost.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "chunk_generation_cost",
+      "purpose": "Quantify request-to-full generation latency and CPU attribution for reproducible baseline and paired comparisons.",
+      "measured_quantity": "request-to-full generation latency and CPU attribution",
+      "unit": "milliseconds per chunk",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "run Spark local-file profiling plus long-form system sampling",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 600,
+      "total_run_duration_seconds": 1500,
+      "repetitions": 5,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/chunk_generation_cost.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/chunk_generation_cost.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "structure_count",
+      "purpose": "Quantify unique structure starts in fully generated chunks for reproducible baseline and paired comparisons.",
+      "measured_quantity": "unique structure starts in fully generated chunks",
+      "unit": "unique starts",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "record timestamped ground-truth events in immutable long-form CSV",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 3600,
+      "total_run_duration_seconds": 4500,
+      "repetitions": 3,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/structure_count.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/structure_count.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "structures_per_1000_chunks",
+      "purpose": "Quantify unique structure starts divided by fully generated chunks times 1000 for reproducible baseline and paired comparisons.",
+      "measured_quantity": "unique structure starts divided by fully generated chunks times 1000",
+      "unit": "starts per 1000 chunks",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "record timestamped ground-truth events in immutable long-form CSV",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 3600,
+      "total_run_duration_seconds": 4500,
+      "repetitions": 3,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/structures_per_1000_chunks.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/structures_per_1000_chunks.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "actionable_locations_per_1000_chunks",
+      "purpose": "Quantify actionable unique starts divided by fully generated chunks times 1000 for reproducible baseline and paired comparisons.",
+      "measured_quantity": "actionable unique starts divided by fully generated chunks times 1000",
+      "unit": "locations per 1000 chunks",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "record timestamped ground-truth events in immutable long-form CSV",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 3600,
+      "total_run_duration_seconds": 4500,
+      "repetitions": 3,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/actionable_locations_per_1000_chunks.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/actionable_locations_per_1000_chunks.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "combat_encounters_per_1000_chunks",
+      "purpose": "Quantify ground-truthed combat encounters divided by fully generated chunks times 1000 for reproducible baseline and paired comparisons.",
+      "measured_quantity": "ground-truthed combat encounters divided by fully generated chunks times 1000",
+      "unit": "encounters per 1000 chunks",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "record timestamped ground-truth events in immutable long-form CSV",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 3600,
+      "total_run_duration_seconds": 4500,
+      "repetitions": 3,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/combat_encounters_per_1000_chunks.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/combat_encounters_per_1000_chunks.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "proper_dungeons_per_1000_chunks",
+      "purpose": "Quantify verified Tier 2+ dungeon starts divided by fully generated chunks times 1000 for reproducible baseline and paired comparisons.",
+      "measured_quantity": "verified Tier 2+ dungeon starts divided by fully generated chunks times 1000",
+      "unit": "dungeons per 1000 chunks",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "record timestamped ground-truth events in immutable long-form CSV",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 3600,
+      "total_run_duration_seconds": 4500,
+      "repetitions": 3,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/proper_dungeons_per_1000_chunks.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/proper_dungeons_per_1000_chunks.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "major_expeditions_per_1000_chunks",
+      "purpose": "Quantify verified Tier 3+ starts divided by fully generated chunks times 1000 for reproducible baseline and paired comparisons.",
+      "measured_quantity": "verified Tier 3+ starts divided by fully generated chunks times 1000",
+      "unit": "expeditions per 1000 chunks",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "record timestamped ground-truth events in immutable long-form CSV",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 3600,
+      "total_run_duration_seconds": 4500,
+      "repetitions": 3,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/major_expeditions_per_1000_chunks.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/major_expeditions_per_1000_chunks.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "inter_structure_distance",
+      "purpose": "Quantify horizontal and route distance between unique structure starts for reproducible baseline and paired comparisons.",
+      "measured_quantity": "horizontal and route distance between unique structure starts",
+      "unit": "blocks",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "record timestamped ground-truth events in immutable long-form CSV",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 3600,
+      "total_run_duration_seconds": 4500,
+      "repetitions": 3,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/inter_structure_distance.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/inter_structure_distance.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "travel_time",
+      "purpose": "Quantify wall-clock time between declared route events for reproducible baseline and paired comparisons.",
+      "measured_quantity": "wall-clock time between declared route events",
+      "unit": "seconds",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "record timestamped ground-truth events in immutable long-form CSV",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 3600,
+      "total_run_duration_seconds": 4500,
+      "repetitions": 3,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/travel_time.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/travel_time.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "dungeon_duration",
+      "purpose": "Quantify entry-to-exit or abandonment duration with phase coding for reproducible baseline and paired comparisons.",
+      "measured_quantity": "entry-to-exit or abandonment duration with phase coding",
+      "unit": "seconds",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "record timestamped ground-truth events in immutable long-form CSV",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 3600,
+      "total_run_duration_seconds": 4500,
+      "repetitions": 3,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/dungeon_duration.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/dungeon_duration.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "death_rate",
+      "purpose": "Quantify deaths divided by player-hours, expeditions, and encounters for reproducible baseline and paired comparisons.",
+      "measured_quantity": "deaths divided by player-hours, expeditions, and encounters",
+      "unit": "deaths per exposure",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "record timestamped ground-truth events in immutable long-form CSV",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 3600,
+      "total_run_duration_seconds": 4500,
+      "repetitions": 3,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/death_rate.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/death_rate.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "loot_value",
+      "purpose": "Quantify separate chest and salvage multi-axis value vector for reproducible baseline and paired comparisons.",
+      "measured_quantity": "separate chest and salvage multi-axis value vector",
+      "unit": "value-vector components",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "record timestamped ground-truth events in immutable long-form CSV",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 3600,
+      "total_run_duration_seconds": 4500,
+      "repetitions": 3,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/loot_value.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/loot_value.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "unique_structure_families_per_hour",
+      "purpose": "Quantify distinct canonical gameplay families per player-hour for reproducible baseline and paired comparisons.",
+      "measured_quantity": "distinct canonical gameplay families per player-hour",
+      "unit": "families per player-hour",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "record timestamped ground-truth events in immutable long-form CSV",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 3600,
+      "total_run_duration_seconds": 4500,
+      "repetitions": 3,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/unique_structure_families_per_hour.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/unique_structure_families_per_hour.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "time_to_first_repeated_structure_family",
+      "purpose": "Quantify elapsed expedition time until first repeated canonical family for reproducible baseline and paired comparisons.",
+      "measured_quantity": "elapsed expedition time until first repeated canonical family",
+      "unit": "seconds",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "record timestamped ground-truth events in immutable long-form CSV",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 3600,
+      "total_run_duration_seconds": 4500,
+      "repetitions": 3,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/time_to_first_repeated_structure_family.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/time_to_first_repeated_structure_family.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "repeated_dungeon_layout_frequency",
+      "purpose": "Quantify repeated topology fingerprints divided by sampled dungeon layouts for reproducible baseline and paired comparisons.",
+      "measured_quantity": "repeated topology fingerprints divided by sampled dungeon layouts",
+      "unit": "proportion",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "record timestamped ground-truth events in immutable long-form CSV",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 3600,
+      "total_run_duration_seconds": 4500,
+      "repetitions": 3,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/repeated_dungeon_layout_frequency.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/repeated_dungeon_layout_frequency.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    },
+    {
+      "metric_id": "adventure_activity_ratio",
+      "purpose": "Quantify meaningful interaction seconds divided by total expedition seconds for reproducible baseline and paired comparisons.",
+      "measured_quantity": "meaningful interaction seconds divided by total expedition seconds",
+      "unit": "ratio",
+      "collection_procedure": [
+        "restore or materialize the declared clean seed control",
+        "verify all environment hashes before warm-up",
+        "record timestamped ground-truth events in immutable long-form CSV",
+        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+      ],
+      "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
+      "sample_interval_seconds": 10,
+      "sample_window_seconds": 3600,
+      "total_run_duration_seconds": 4500,
+      "repetitions": 3,
+      "seed_cases": [
+        "ordinary",
+        "mountainous",
+        "ocean-heavy",
+        "biome-diverse"
+      ],
+      "player_cases": [
+        "solo",
+        "two",
+        "four",
+        "normal",
+        "peak"
+      ],
+      "raw_format": "csv",
+      "raw_path_template": "evidence/raw/item-5/<run-id>/adventure_activity_ratio.csv",
+      "processed_format": "json",
+      "processed_path_template": "evidence/item-5/processed/<run-id>/adventure_activity_ratio.json",
+      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
+      "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
+      "required_environment_hashes": [
+        "protocol",
+        "retained_manifest",
+        "configuration",
+        "host",
+        "world_snapshot"
+      ],
+      "warm_up_seconds": 900
+    }
+  ]
+}
