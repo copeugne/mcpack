@@ -16,7 +16,7 @@ Item 5 therefore uses `measurement/item5/spark-overlay.json`: the unchanged 136-
 
 The player cases are material rather than invented: P1, P2 and P4 come directly from Item 5; normal uses the upper end of Item 2's recorded 2–6 range (P6), and peak uses Item 2's recorded P10. These remain intended load cases, not claims that the Cloud host sustains them.
 
-Pydantic models forbid unknown or missing fields and enforce exact metric/player coverage. `tools/validate_item5.py` validates contracts, receipts and every referenced artifact hash. `tools/analyze_item5_samples.py` produces sorted deterministic JSON from immutable long-form CSV. Tests prove omissions, duplicates and missing fields are rejected.
+Pydantic models forbid unknown or missing fields and enforce exact metric/player coverage. `tools/validate_item5.py` validates contracts, receipts and every referenced artifact hash. `tools/analyze_item5_samples.py` requires every long-form CSV row to identify its protocol metric, seed case, player case, and positive repetition; it rejects unknown identifiers and produces deterministic JSON groups without pooling distinct experimental conditions. Tests prove omissions, duplicates, incomplete dimensions and missing fields are rejected.
 
 Every total duration includes the maximum declared 900-second warm-up plus the complete capture window: 1,500 seconds for 600-second performance captures and 4,500 seconds for 3,600-second adventure captures. The deterministic analyzer emits count, minimum, median, mean, p95, p99, maximum, range, IQR, and a 10,000-resample percentile-bootstrap 95% confidence interval for the median. Pilot validation binds each receipt to the exact SHA-256 of the protocol supplied to the validator.
 
@@ -40,7 +40,7 @@ Profiler overhead must be measured by alternating at least five paired, same-see
 
 ## Pilot and failure preservation
 
-The first full-stack pilot exposed a real orchestration defect: the harness flushed/stopped while Spark was still assembling profile metadata. Spark saved a local profile but logged `Server already shutting down`, so the run is rejected for profiling evidence even though shutdown itself was clean. The raw profile, compressed log, lifecycle receipt and rejected run receipt are preserved.
+The first full-stack pilot exposed a real orchestration defect: the harness flushed/stopped while Spark was still assembling profile metadata. Spark saved a local profile but logged `Server already shutting down`, so the run is rejected for profiling evidence even though shutdown itself was clean. The raw profile, compressed log, lifecycle receipt and rejected run receipt are preserved. Validation does not trust the receipt's `rejected` label alone: it requires either failed lifecycle signals or a recognized failure marker in the hash-bound raw log.
 
 The corrected harness waits for `Profiler stopped & save complete!` before flushing and stopping. The accepted pilot receipt records exact commands, timestamps, runtime identities, seed, raw artifacts, deterministic processed output and hashes. Its configuration-tree, stopped-world snapshot, Spark overlay, and Spark artifact hashes are also recorded in the raw lifecycle receipt and cross-checked by the validator. The validator requires both accepted and rejected paths whenever pilot receipts are supplied.
 

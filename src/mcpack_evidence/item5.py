@@ -264,20 +264,35 @@ def artifact_identity(path: Path, *, root: Path) -> ArtifactIdentity:
     )
 
 
-def analyze_samples(rows: Iterable[dict[str, str]]) -> dict[str, object]:
-    """Deterministically aggregate long-form numeric samples."""
-    grouped: dict[str, list[float]] = {}
-    ratio_inputs: dict[str, list[tuple[float, float]]] = {}
+def analyze_samples(  # noqa: C901 - row validation is intentionally linear.
+    rows: Iterable[dict[str, str]],
+) -> dict[str, object]:
+    """Aggregate samples without pooling experimental dimensions."""
+    grouped: dict[tuple[str, str, str, int], list[float]] = {}
+    ratio_inputs: dict[tuple[str, str, str, int], list[tuple[float, float]]] = {}
     for row in rows:
         try:
             metric_id = row["metric_id"]
+            seed_case = row["seed_case"]
+            player_case = row["player_case"]
+            repetition = int(row["repetition"])
             value = float(row["value"])
         except (KeyError, TypeError, ValueError) as error:
-            message = "sample rows require metric_id and finite numeric value"
+            message = "sample rows require metric_id, seed_case, player_case, repetition, and value"
             raise ValueError(message) from error
-        if not metric_id or not math.isfinite(value):
-            message = "sample rows require nonempty metric_id and finite numeric value"
+        if metric_id not in REQUIRED_METRICS:
+            message = f"sample row has unknown metric_id: {metric_id}"
             raise ValueError(message)
+        if seed_case not in REQUIRED_SEED_CASES:
+            message = f"sample row has unknown seed_case: {seed_case}"
+            raise ValueError(message)
+        if player_case not in REQUIRED_PLAYER_CASES:
+            message = f"sample row has unknown player_case: {player_case}"
+            raise ValueError(message)
+        if repetition <= 0 or not math.isfinite(value):
+            message = "sample rows require positive repetition and finite numeric value"
+            raise ValueError(message)
+        group = (metric_id, seed_case, player_case, repetition)
         if metric_id in RATIO_METRICS:
             try:
                 numerator = float(row["numerator"])
@@ -295,15 +310,24 @@ def analyze_samples(rows: Iterable[dict[str, str]]) -> dict[str, object]:
                 message = f"ratio metric {metric_id} value does not match its operands"
                 raise ValueError(message)
             value = derived_value
-            ratio_inputs.setdefault(metric_id, []).append((numerator, denominator))
-        grouped.setdefault(metric_id, []).append(value)
+            ratio_inputs.setdefault(group, []).append((numerator, denominator))
+        grouped.setdefault(group, []).append(value)
     if not grouped:
         message = "sample input contains no data rows"
         raise ValueError(message)
-    return {
-        metric: _summarize(metric, values, ratio_inputs.get(metric))
-        for metric, values in sorted(grouped.items())
-    }
+    groups: list[dict[str, object]] = []
+    for group, values in sorted(grouped.items()):
+        metric_id, seed_case, player_case, repetition = group
+        groups.append(
+            {
+                "metric_id": metric_id,
+                "seed_case": seed_case,
+                "player_case": player_case,
+                "repetition": repetition,
+                "statistics": _summarize(metric_id, values, ratio_inputs.get(group)),
+            }
+        )
+    return {"groups": groups}
 
 
 def _percentile(values: list[float], percentile: float) -> float:
