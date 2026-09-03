@@ -177,17 +177,11 @@ def validate_runtime_provenance(pilot: PilotRun, root: Path) -> None:
             raise ValueError(message)
 
 
-def validate_rejected_lifecycle(pilot: PilotRun, root: Path) -> None:
-    """Require rejected receipts to bind a machine-observable failure."""
-    if pilot.status != "rejected":
-        return
-    lifecycle_artifacts = [
-        artifact for artifact in pilot.raw_artifacts if artifact.path.endswith("/lifecycle.json")
-    ]
-    if len(lifecycle_artifacts) != 1:
-        message = "rejected pilot must reference exactly one lifecycle receipt"
-        raise ValueError(message)
-    lifecycle = json.loads(confined_artifact_path(root, lifecycle_artifacts[0].path).read_bytes())
+def validate_rejected_lifecycle_document(lifecycle: object) -> dict[str, object]:
+    """Return a rejected lifecycle only after validating its core v1 shape."""
+    if not isinstance(lifecycle, dict):
+        message = "rejected pilot lifecycle is incomplete or malformed"
+        raise ValueError(message)  # noqa: TRY004 - evidence validation has one error contract.
     required_types: dict[str, type[object]] = {
         "schema_version": str,
         "ready": bool,
@@ -208,6 +202,22 @@ def validate_rejected_lifecycle(pilot: PilotRun, root: Path) -> None:
     if lifecycle["schema_version"] != "item5-spark-lifecycle-v1":
         message = "rejected pilot lifecycle has an unsupported schema"
         raise ValueError(message)
+    return lifecycle
+
+
+def validate_rejected_lifecycle(pilot: PilotRun, root: Path) -> None:
+    """Require rejected receipts to bind a machine-observable failure."""
+    if pilot.status != "rejected":
+        return
+    lifecycle_artifacts = [
+        artifact for artifact in pilot.raw_artifacts if artifact.path.endswith("/lifecycle.json")
+    ]
+    if len(lifecycle_artifacts) != 1:
+        message = "rejected pilot must reference exactly one lifecycle receipt"
+        raise ValueError(message)
+    lifecycle = validate_rejected_lifecycle_document(
+        json.loads(confined_artifact_path(root, lifecycle_artifacts[0].path).read_bytes())
+    )
     success_fields = ("ready", "profile_started", "profile_stopped", "save_all_flush", "clean_stop")
     console_pipe_failed = lifecycle.get("console_pipe_failed")
     if console_pipe_failed is not None and not isinstance(console_pipe_failed, bool):
