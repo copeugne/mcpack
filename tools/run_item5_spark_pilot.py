@@ -8,6 +8,7 @@ import hashlib
 import json
 import os
 import queue
+import re
 import signal
 import subprocess
 import threading
@@ -50,10 +51,11 @@ def validate_java_runtime(java_home: Path) -> tuple[Path, str]:
         [executable, "-version"], capture_output=True, text=True, check=False
     )
     output = completed.stderr + completed.stdout
-    if completed.returncode != 0 or 'version "21.0.12.1"' not in output or "Temurin" not in output:
+    build = re.search(r"Temurin-21\.0\.12\.1\+1(?:-LTS)?", output)
+    if completed.returncode != 0 or build is None:
         message = f"requested Java runtime is not pinned Temurin 21.0.12: {executable}"
         raise SparkPreflightError(message)
-    return executable, output.splitlines()[0]
+    return executable, build.group(0)
 
 
 def confirms_profile_save(line: str, *, stop_requested: bool) -> bool:
