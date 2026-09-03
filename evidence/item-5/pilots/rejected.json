@@ -1,0 +1,52 @@
+{
+  "schema_version": "item5-pilot-run-v1",
+  "exact_commands": [
+    "uv run python tools/manage_item4_environment.py materialize --pristine instances/item5/pristine-platform --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt --seed-suite test-environment/seed-suite.json --role ordinary --target instances/item5/ordinary",
+    "cp downloads/item3/candidates/spark-1.10.124-neoforge.jar instances/item5/ordinary/mods/",
+    "mkdir -p instances/item5/ordinary/config/spark",
+    "cp measurement/spark/config.json instances/item5/ordinary/config/spark/config.json",
+    "uv run python tools/run_item5_spark_pilot.py --instance instances/item5/ordinary --java-home downloads/toolchains/temurin-21.0.12.1 --log evidence/raw/item-5/spark-pilot-debug.log --receipt evidence/raw/item-5/spark-lifecycle.json --timeout 900"
+  ],
+  "seed": 42,
+  "player_case": "solo",
+  "environment": {
+    "git_commit": "1af46a50f9ec700c4c83b3a7a3923c2e8d61dbd6",
+    "git_dirty": true,
+    "protocol_sha256": "a21858f4add16450cff86d38e4b1822ab10df79e01172951056f315d378bc9ee",
+    "retained_manifest_sha256": "78e5bdc0697299782a535400ad5b313c088e8db10cfe075085ae4c8a531e30cb",
+    "configuration_version": "test-environment-v0.1+item5-spark-overlay-v1",
+    "minecraft_version": "1.21.1",
+    "neoforge_version": "21.1.249",
+    "java_version": "Temurin 21.0.12.1+1-LTS",
+    "host_evidence_sha256": "a9c46e6482373cf9bcf5d21f5bea1c8904ee08fdc9d574fc73b599a1c5db2f6b",
+    "configuration_sha256": null,
+    "world_snapshot_sha256": null,
+    "spark_overlay_sha256": null,
+    "spark_artifact_sha256": null
+  },
+  "run_id": "item5-spark-rejected-20260902T020523Z",
+  "status": "rejected",
+  "started_at": "2026-09-02T02:05:23Z",
+  "ended_at": "2026-09-02T02:10:54Z",
+  "raw_artifacts": [
+    {
+      "path": "evidence/item-5/pilots/raw/rejected/lifecycle.json",
+      "size_bytes": 507,
+      "sha256": "99d2f2eff781f5c1e1f5c7b33f5e66535630a398a70e9aca047df2a17f127cc4"
+    },
+    {
+      "path": "evidence/item-5/pilots/raw/rejected/debug.log.gz",
+      "size_bytes": 49334,
+      "sha256": "81da166b60d2319901b7bf7401d3ee867d1eaca8a5b39f3ed780746fcdbebd77"
+    },
+    {
+      "path": "evidence/item-5/pilots/raw/rejected/profile.sparkprofile",
+      "size_bytes": 34683,
+      "sha256": "934831772c1ec1944274c5d2f8958055ab7d9aa06b1caa8e97a1adb992575b78"
+    }
+  ],
+  "processed_artifacts": [],
+  "rejection_reasons": [
+    "The harness requested save/stop before Spark completed asynchronous metadata collection; the log records Server already shutting down."
+  ]
+}
