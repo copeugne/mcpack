@@ -1,77 +1,76 @@
 # Cloud Handoff — Items 5–10 Continuation
 
-## 1. Authority and restart rule
+## 1. Authority, scope, and restart rule
 
-This file is the authoritative continuation handoff as of **2026-09-02 UTC**. Read it in full, then read `SPECS.md` in full before changing the repository. `SPECS.md` remains the authoritative chronological and dependency-ordered requirements document; this handoff records actual repository and runtime state.
+This is the authoritative continuation handoff as of **2026-09-03 UTC**. Read it and then `SPECS.md` in full before changing the repository. `SPECS.md` remains the chronological and dependency-ordered requirements authority; this file records actual Git, review, evidence, and runtime state.
 
-Do not redo completed Items 2–4 unless verification or later evidence invalidates a gate. Do not begin Item 11. Continue autonomously in strict order:
-
-1. Item 5 measurement and profiling methodology;
-2. Item 6 generated-configuration audit;
-3. Item 7 real-world generation inspection;
-4. Item 8 structure-family enumeration;
-5. Item 9 structure classification;
-6. Item 10 representative-region validation and density analysis;
-7. final Items 2–10 cross-item audit;
-8. report whether Item 11 is eligible, without implementing it.
+Do not redo completed Items 2–5 unless verification or later evidence invalidates a gate. Do not begin Item 11. Continue in order: Item 6, Item 7, Item 8, Item 9, Item 10, the final Items 2–10 cross-item audit, and only then report Item 11 eligibility without implementing Item 11.
 
 The exact restart point is:
 
-> **Item 5 — configure and validate Spark, then make every required metric operational and reproducible.**
+> **Merge PR #11, then begin Item 6.** The `docs/item5-current-handoff` branch is based directly on `origin/main` and already contains the exact Temurin build-marker boundary fix plus its regression. Delivery reconciliation is complete on this branch; do not cherry-pick the fix again. Once PR #11 is merged, begin the generated-configuration audit by freezing untouched generated defaults before any tuning.
 
 ## 2. Current Git and delivery state
 
 - Repository: `/workspace/mcpack`.
-- Branch: `work`.
-- Item 4 gate commit: `994492c docs(item4): close deterministic environment gate`.
-- Item 4 lifecycle commits:
-  - `5821bd6 feat(item4): add deterministic environment lifecycle tooling`;
-  - `ba31fff feat(item4): automate readiness-driven server lifecycle`.
-- Review-fix commit: `316c341 fix(item4): address environment lifecycle review`.
-- Lock-compatibility review fix: `57c900b fix(item4): use Minecraft-compatible world locking`.
-- Synchronization merge before the review fixes: `845f954 Merge remote-tracking branch 'origin/main' into work`.
-- Validated Item 4 tag already pushed: `item-4-controlled-environment-2026-09-02` (points to `845f954`; do not move or rewrite it).
-- Pull request: <https://github.com/copeugne/mcpack/pull/6> (`work` into `main`).
-- PR #6 originally had three inline findings. Commit `316c341` addresses all three:
-  1. an existing empty pristine `mods/` directory is accepted and a non-empty one is rejected;
-  2. lifecycle timeout enforcement now uses a reader thread plus a queue deadline and kills the complete process group if the server is silent;
-  3. a real persistent daily systemd backup timer and stopped-world backup runner are committed.
-- Commit `316c341` and this handoff are pushed. All three review threads were answered and resolved, the PR body was updated to 57 total tests / 8 Item 4 tests, and a new `@codex review` was requested. At handoff, GitHub reported the PR mergeable and clean with no unresolved threads.
-- A later review correctly identified that BSD `flock` does not contend with Java `FileChannel` locks. Commit `57c900b` switches the guard to a read/write POSIX record lock via `lockf`, adds a cross-process regression test, and is pushed. That thread was answered/resolved; the PR body now records 58 total tests / 9 Item 4 tests and another review was requested.
-- Before new Item 5 work, run `git status`, fetch `origin/main`, and merge it if it advanced. Do not rewrite valid commits.
+- Current delivery branch at this handoff: `docs/item5-current-handoff`, based directly on `origin/main` at `4f61549`. It carries the exact `541d8ad` change as cherry-picked commit `9b0771f` and this updated handoff. Merge this branch through the repository's normal pull-request workflow before relying on the Item 5 gate. The aggregate `work` branch is not the delivery authority for starting Item 6.
+- `origin/main`: `4f61549` (`Merge pull request #9 from copeugne/fix/item5-java-runtime`).
+- PR #6 (Item 4): merged as `1af46a5` on 2026-09-02.
+- PR #8 (Item 5 protocol/pilot): merged as `4ebf2a9` on 2026-09-03.
+- PR #9 (pinned Java 21 correction): merged as `4f61549` on 2026-09-03. Its feature commits are:
+  - `9957be6 fix(item5): prove pinned Java 21 pilot runtime`;
+  - `f2ea027 docs(item5): complete Java pilot reproduction commands`;
+  - `b2a79a4 fix(item5): bind exact Temurin build identity`.
+- PR #10: merged as `d900297` **into `fix/item5-java-runtime`**, with source commit `541d8ad fix(item5): delimit pinned Java build marker`. Because its base branch had already been merged, PR #10 did not update `main`.
+- PR #11: open from `docs/item5-current-handoff` into `main`. Commit `9b0771f` is the main-based cherry-pick of the exact `541d8ad` two-file change; commit `7db0ec5` updates this handoff. The branch therefore already rejects false `+1` prefix matches such as `+10`. Reconciliation is complete on the PR branch and becomes complete on `main` when PR #11 merges.
+- The last PR #9 review thread was technically addressed by `541d8ad`, but GitHub still displayed that old PR #9 thread as unresolved when queried. Treat code delivery, not thread cosmetics on a merged PR, as the gate.
+- Existing validated tag `item-4-controlled-environment-2026-09-02` points to `845f954`. Never move or rewrite it.
+- No Item 5 milestone tag was created in this work.
+
+Recommended synchronization before new work:
+
+1. `git fetch origin --prune`.
+2. Start a continuation branch from `origin/main`, not from local aggregate commit `cff7606`.
+3. If PR #11 is still open, continue on or review `docs/item5-current-handoff`; do **not** cherry-pick `541d8ad` again because its exact change is already commit `9b0771f` on this branch.
+4. If PR #11 has merged, start a new Item 6 branch from the updated `origin/main` and verify that `tools/run_item5_spark_pilot.py` contains the delimited `+1` matcher and its `+10` regression.
+5. Do not infer delivery from PR #10 alone: its base was not `main`.
 
 ## 3. Exit-gate status
 
 | Item | Status | Authoritative evidence / note |
 |---|---|---|
-| 1 | Design contract exists in project history; outside this continuation's implementation scope | Re-audit only in final cross-item review where relevant. |
-| 2 | **Complete** | `docs/items/Item-2-Frozen-Technical-Baseline.md`, `evidence/item-2/`, platform tooling and reconstruction tests. |
-| 3 | **Complete** | `docs/items/Item-3-Exact-Version-and-Dependency-Audit.md`, `evidence/item-3/final-compatibility-matrix.json`, retained-provider evaluation, and runtime evidence. PR #5 is merged. |
-| 4 | **Complete**, subject to PR #6 review completion | `docs/items/Item-4-Controlled-Test-Environment-Closure.md`, `evidence/item-4/`, lifecycle/backup/restore tooling and tests. |
-| 5 | **Incomplete; exact next item** | Existing reconstructed prose/schemas are not accepted closure. |
-| 6 | **Pending; blocked by Item 5** | Generated configs exist only in ignored runtime instances; audit them only after Item 5 passes and do not tune first. |
-| 7 | **Pending; blocked by Item 6** | Item 4 boot evidence is not Item 7 world inspection. |
+| 1 | Existing design contract; outside this continuation's implementation scope | Re-audit where relevant during the final cross-item review. |
+| 2 | **Complete** | `docs/items/Item-2-Frozen-Technical-Baseline.md`, `evidence/item-2/`, platform tooling, and reconstruction tests. |
+| 3 | **Complete** | `docs/items/Item-3-Exact-Version-and-Dependency-Audit.md`, `evidence/item-3/final-compatibility-matrix.json`, exact retained-provider evaluation, and runtime evidence. |
+| 4 | **Complete** | PR #6 is merged. Closure and evidence are under `docs/items/Item-4-Controlled-Test-Environment-Closure.md` and `evidence/item-4/`. |
+| 5 | **Complete on the PR #11 branch; merge pending** | PRs #8 and #9 supplied the implementation and genuine pinned-Temurin pilot. PR #11 already carries the exact boundary fix on a `main`-based branch. Do not reapply it; merge PR #11 before branching for Item 6. |
+| 6 | **Exact next substantive item after PR #11 merges** | Generated configuration audit; freeze actual generated defaults before tuning. |
+| 7 | **Pending; blocked by Item 6** | Item 4/5 boot logs are not Item 7 world inspection. |
 | 8 | **Pending; blocked by Item 7** | Existing reconstructed inventory is not sufficient runtime proof. |
-| 9 | **Pending; blocked by Item 8** | Existing provisional report must be regenerated from verified Item 8 families. |
-| 10 | **Pending; blocked by Item 9** | Existing reconstructed density report/tooling is not accepted empirical closure. |
-| 11 | **NOT AUTHORIZED** | Do not implement, run, repair, or lint Item 11-specific workflows as part of Items 5–10. |
+| 9 | **Pending; blocked by Item 8** | Regenerate classifications from verified Item 8 families. |
+| 10 | **Pending; blocked by Item 9** | Existing reconstructed density material is not accepted empirical closure. |
+| 11 | **NOT AUTHORIZED** | Do not implement, run, repair, or lint Item 11-specific workflows. |
 
-## 4. Item 3 frozen result used downstream
+## 4. Frozen downstream identities
 
-The dedicated-server admission set contains exactly **136 candidates**. The retained manifest is:
+### Item 3 gameplay stack
 
-- `evidence/item-3/runtime/retained-server-candidates.txt`;
-- SHA-256 `78e5bdc0697299782a535400ad5b313c088e8db10cfe075085ae4c8a531e30cb`.
+- Minecraft `1.21.1`.
+- NeoForge `21.1.249`.
+- Eclipse Adoptium Temurin `21.0.12.1+1-LTS`.
+- JVM baseline: `-Xms1G -Xmx4G`.
+- Retained gameplay manifest: `evidence/item-3/runtime/retained-server-candidates.txt`.
+- Retained count: exactly 136.
+- Retained manifest SHA-256: `78e5bdc0697299782a535400ad5b313c088e8db10cfe075085ae4c8a531e30cb`.
+- Pinned Temurin archive SHA-256: `ce79869e1307ed8ee1e2baa86a412b1eb5b75d10a01006d788a6f968bcfaee94`.
 
-Targets are Minecraft `1.21.1`, NeoForge `21.1.249`, and Temurin `21.0.12.1+1-LTS`, with `-Xms1G -Xmx4G`. Do not silently re-enable Sable, bundled Aeronautics, Every Compat, the statically rejected spell-engine family, or Simply More/Simply Tooltips. If later runtime evidence contradicts Item 3, reopen Item 3 and repeat affected downstream validation.
+Do not silently re-enable Sable, bundled Aeronautics, Every Compat, the statically rejected spell-engine family, or Simply More/Simply Tooltips. If later runtime evidence contradicts Item 3, reopen Item 3 and repeat every affected downstream gate.
 
-## 5. Item 4 completed environment
+### Item 4 controlled-environment result
 
-### 5.1 Versioned controls
+#### Versioned controls and seeds
 
-Configuration version: `test-environment-v0.1`.
-
-Seed controls in `test-environment/seed-suite.json`:
+Configuration version is `test-environment-v0.1`. Seed controls are committed in `test-environment/seed-suite.json`:
 
 | Role | Seed |
 |---|---:|
@@ -80,259 +79,283 @@ Seed controls in `test-environment/seed-suite.json`:
 | ocean-heavy | `95920844204830198` |
 | biome-diverse | `-3503646078644842058` |
 
-All four were independently rematerialized after the copied-world removal fix, reached readiness, completed `save-all flush`, and stopped cleanly. Each evidence row records the seed read from `Data.WorldGenSettings.seed` in the generated `world/level.dat`, plus that file's size and SHA-256. Evidence is in `evidence/item-4/runtime-validation.json` and compressed logs under `evidence/item-4/logs/`.
+All four controls were independently rematerialized after the copied-world removal fix. Each reached readiness, completed `save-all flush`, received the matching save confirmation, and stopped cleanly. `evidence/item-4/runtime-validation.json` records the seed read from `Data.WorldGenSettings.seed` in each generated `world/level.dat`, together with file size and SHA-256. Compressed runtime logs are under `evidence/item-4/logs/`. Do not replace this evidence with a copied world or infer one seed's behavior from another.
 
-### 5.2 Backup/restore proof
+#### Materialization and lifecycle behavior
+
+`tools/manage_item4_environment.py`:
+
+- refuses destructive target reuse;
+- verifies retained artifacts before materialization;
+- accepts an existing empty pristine `mods/` directory but rejects a non-empty one;
+- removes a copied pristine `world/` before applying the selected seed so first boot genuinely generates that role;
+- writes deterministic seed properties;
+- creates normalized deterministic stopped-world archives;
+- verifies archive identity before extraction and rejects unsafe tar members;
+- holds a Minecraft-compatible POSIX record lock through archive creation and receipt hashing; and
+- deliberately excludes `session.lock`, because closing another descriptor can release process-scoped POSIX locks.
+
+`tools/run_item4_server_lifecycle.py` waits for readiness, requests `save-all flush`, waits for `Saved the game`, requests stop, enforces a deadline even if stdout becomes silent, and kills the complete process group on timeout. Preserve these state boundaries; an unrelated save line is not proof of a requested flush.
+
+#### Backup and restore proof
 
 The ordinary control was backed up only after flush and stop:
 
-- 57 world files (`session.lock` deliberately excluded);
+- 57 world files;
+- `session.lock` excluded;
 - archive size 1,172,490 bytes;
 - archive SHA-256 `320a63f709a2df2fc9d2abccbb547e9eace05d5b44074fcb501ba294f7f4b0bd`;
-- per-file receipt: `evidence/item-4/ordinary-backup-receipt.json`.
+- per-file receipt `evidence/item-4/ordinary-backup-receipt.json`.
 
-The archive was produced with the final lock-lifetime implementation, verified before safe extraction into an absent target, and contains no `session.lock`. The restored world reached readiness in 267.369 seconds, flushed, and stopped cleanly. See `evidence/item-4/ordinary-restore-receipt.json` and `evidence/item-4/logs/ordinary-restored-boot.log.gz`.
+The archive was verified before safe extraction into an absent target. The restored world reached readiness in 267.369 seconds, flushed, and stopped cleanly. Its receipt is `evidence/item-4/ordinary-restore-receipt.json`; its log is `evidence/item-4/logs/ordinary-restored-boot.log.gz`.
 
-### 5.3 Lifecycle and backup tooling
+#### Scheduled backup boundary
 
-- `tools/manage_item4_environment.py`:
-  - refuses destructive target reuse;
-  - verifies retained artifacts before materialization;
-  - accepts an existing **empty** pristine `mods/` directory but rejects content;
-  - removes a copied pristine `world/` before applying the selected role seed, ensuring first boot generates that seed;
-  - writes deterministic seed properties;
-  - creates normalized deterministic stopped-world archives;
-  - verifies archive hash before extraction;
-  - rejects unsafe tar members;
-  - holds the Minecraft-compatible POSIX record lock through archive creation and receipt hashing, excludes `session.lock` from backup content to avoid releasing process-scoped locks by closing another descriptor, and refuses a live-world backup (do not replace it with BSD `flock`).
-- `tools/run_item4_server_lifecycle.py`:
-  - waits for readiness;
-  - issues `save-all flush`;
-  - waits for `Saved the game`;
-  - requests stop;
-  - enforces the deadline even if stdout becomes silent;
-  - kills the process group on timeout.
-- `infrastructure/bin/item4-automated-backup` and `infrastructure/systemd/mcpack-item4-backup@.{service,timer}`:
-  - daily 03:15 UTC schedule;
-  - persistent catch-up;
-  - randomized delay;
-  - one instance per seed role;
-  - fails rather than backing up a live world.
+`infrastructure/bin/item4-automated-backup` and `infrastructure/systemd/mcpack-item4-backup@.{service,timer}` define a persistent daily 03:15 UTC schedule, randomized delay, one instance per seed role, and refusal to archive a live world. The service runs under the dedicated `mcpack` account with explicit writable paths and hardening. Installation commands are in `test-environment/README.md`. The cloud container may not run systemd; never claim the timer is active without actual `systemctl` evidence.
 
-The Cloud container may not run systemd. The committed service/timer is the configuration deliverable; host installation commands are in `test-environment/README.md`. Do not represent the timer as running in this container unless `systemctl` verification was actually performed.
+#### Preserved failure and locking constraint
 
-### 5.4 Preserved failure
+The first mountainous attempt used a fixed five-minute command delay. It reached readiness, but the unchanged watchdog terminated a later tick before the command arrived. The log and crash report are intentionally preserved under `evidence/item-4/failures/`. The instance was deleted, rematerialized, and successfully rerun with readiness-driven orchestration without tuning baseline controls. Do not erase or reinterpret this failure.
 
-A first mountainous attempt used a fixed five-minute command delay. It reached readiness but the unchanged watchdog terminated a later tick before the command arrived. Its log and crash report are preserved under `evidence/item-4/failures/`. The control was deleted, rematerialized, and rerun with the readiness-driven harness; that run passed without tuning any baseline control. Keep this failure in the audit trail.
+Keep the Java-compatible POSIX record-lock implementation. BSD `flock` does not contend with Java `FileChannel` locks and must not be substituted.
 
-### 5.5 Runtime state caveat
+## 5. Item 5 completed result
 
-`instances/`, `downloads/`, `backups/`, and `evidence/raw/` are intentionally ignored. They may exist in the current container but are not durable Git inputs. A future environment must reacquire candidates, provision the pinned platform, and rematerialize controls using committed evidence and tooling. Never claim ignored runtime state exists without checking it.
+### 5.1 Executable method
 
-## 6. Exact next actions
+- Protocol: `measurement/item5/protocol-v1.json`.
+- Strict evidence/analyzer models: `src/mcpack_evidence/item5.py`.
+- Deterministic processor: `tools/analyze_item5_samples.py`.
+- Cross-artifact validator: `tools/validate_item5.py`.
+- Spark lifecycle harness: `tools/run_item5_spark_pilot.py`.
+- Workload fixtures:
+  - `measurement/item5/combat-fixture-v1.json`;
+  - `measurement/item5/worldgen-fixture-v1.json`;
+  - `measurement/item5/pathfinding-fixture-v1.json`.
+- Spark overlay: `measurement/item5/spark-overlay.json`; Spark is instrumentation layered over the unchanged 136-file gameplay manifest, producing a 137-JAR profiling runtime.
 
-1. Read this handoff and `SPECS.md` completely.
-2. Run `git status --short` and inspect `git log --oneline --decorate -10`.
-3. Fetch `origin/main`; merge it before Item 5 if it advanced. Do not rewrite Item 4 commits.
-4. Query PR #6 for any review submitted after handoff commit `d76e40a`; address new valid findings before relying on the Item 4 gate.
-5. If no new finding reopens Item 4, begin Item 5 immediately at section 7 below.
-6. Do **not** wait idly for review if Item 5 work can proceed safely on the same dependency-ordered branch.
+The protocol has 24 exact metric contracts, four seed cases, five material player-load cases, and a distinct zero-player idle case. Models reject missing fields, incomplete cases/hashes, unknown metrics, invalid units, impossible negative physical values, inconsistent ratio operands, invalid proportions, and ambiguous multi-axis samples. Analyzer output separates metric, seed, player case, repetition, component, and unit.
 
-## 7. Item 5 — exact remaining work
+#### Metric and case coverage
 
-Re-read `SPECS.md` Item 5 before implementation. `docs/items/Item-5-Measurement-Methodology.md`, `docs/items/Item-5-Measurement-Methodology-Closure.md`, `measurement/*.json`, and any old reports are reconstructed starting material only. They must not be marked accepted merely because files exist.
+The exact 24 metric IDs cover:
 
-### 7.1 Spark
+- performance: idle MSPT, active-combat MSPT, fresh-worldgen MSPT, TPS, memory, garbage collection, entity count, pathfinding cost, and chunk-generation cost/time;
+- adventure and density: structure count, structures per 1,000 chunks, actionable locations per 1,000 chunks, combat encounters per 1,000 chunks, proper dungeons per 1,000 chunks, major expeditions per 1,000 chunks, inter-structure distance, travel time, dungeon duration, death rate, and loot value;
+- repetition and pacing: unique structure families per hour, time to first repeated structure family, and repeated dungeon-layout frequency; and
+- Adventure Activity Ratio: meaningful interaction time divided by total expedition time.
 
-1. Confirm `spark-1.10.124-neoforge.jar` is in the retained 136 manifest and its exact hash agrees with Item 3 evidence.
-2. Rematerialize a clean Item 5 control from Item 4 inputs; do not reuse a mutated Item 4 proof world as a baseline.
-3. Boot the retained stack and verify Spark loads from runtime logs.
-4. Record exact Spark commands, permissions, output locations, sampling overhead, warm-up, duration, and failure behavior.
-5. Preserve a raw Spark output example and a machine-readable receipt. Do not rely on screenshots or web links alone.
+Every contract states purpose, quantity, unit, command/procedure, warm-up, sampling window, duration, repetitions, seed cases, player cases, raw and processed formats/paths, aggregation, acceptance, rejection, uncertainty, and relevant environment hashes. The required deterministic seeds are ordinary, mountainous, ocean-heavy, and biome-diverse. Material player cases are solo, 2 players, 4 players, expected-normal concurrency, and expected-peak concurrency; idle zero-player measurement remains distinct rather than being silently treated as solo.
 
-### 7.2 Required metric contracts
+Rate metrics retain auditable numerators and positive denominators instead of preserving only derived floats. Proportions are bounded where semantically appropriate; `death_rate` is deliberately not treated as a probability because multiple deaths per exposure may be valid. Multi-axis observations retain explicit components: for example heap memory versus other memory views, wall-clock versus CPU pathfinding cost, and distinct loot-value components. Units are mandatory and metric-specific. Samples are grouped by metric, seed, player case, repetition, component, and unit so unlike experimental conditions cannot be pooled.
 
-For **every** metric below, define and implement:
+#### Trust boundaries and deterministic processing
 
-- purpose and exact measured quantity;
-- unit;
-- collection command/procedure;
-- warm-up behavior;
-- sample interval/window;
-- total run duration;
-- repetitions;
-- seed cases;
-- player-count cases;
-- raw format and path;
-- processed format and path;
-- aggregation/statistic;
-- acceptance rule;
-- rejection/invalid-run rule;
-- uncertainty treatment;
-- relevant environment hashes.
+The Pydantic models reject unknown fields as well as missing required fields. Validation enforces exact per-metric seed, player, and environment coverage and rejects duplicate cases. Sample ingestion rejects empty or header-only CSVs, unknown metric IDs, invalid cases, non-positive repetitions, non-finite values (`NaN` and infinities), incompatible units, missing required components, spurious components on single-axis metrics, and physically impossible negative values.
 
-Performance metrics:
+Receipt-controlled artifact paths are confined to the repository after symlink resolution; absolute paths, traversal, and escaped symlinks are rejected. The validator independently recomputes:
 
-- idle MSPT;
-- active-combat MSPT;
-- fresh-worldgen MSPT;
-- TPS;
-- memory;
-- garbage collection;
-- entity count;
-- pathfinding cost;
-- chunk-generation cost/time.
+- retained-manifest and host-discovery hashes from committed files;
+- protocol, fixture, overlay, runtime, lifecycle, log, profile, sample, and summary hashes;
+- deterministic processed output from raw samples; and
+- accepted runtime TPS, MSPT, and heap-memory observations from the hash-bound Spark log.
 
-Adventure/world metrics:
+Editing and rehashing only a receipt, CSV, or summary is therefore insufficient to manufacture accepted evidence. Unknown methodology fields and cross-artifact identity mismatches fail closed.
 
-- structure count and structures per 1,000 chunks;
-- actionable locations per 1,000 chunks;
-- combat encounters per 1,000 chunks;
-- proper dungeons per 1,000 chunks;
-- major expeditions per 1,000 chunks;
-- structure distance/inter-structure distance;
-- travel time;
-- dungeon duration;
-- death rate;
-- loot value;
-- unique structure families per hour;
-- time to first repeated structure family;
-- repeated dungeon-layout frequency;
-- Adventure Activity Ratio = meaningful interaction time / total expedition time.
+### 5.2 Accepted and rejected pilots
 
-Player-count cases:
+Committed evidence lives under `evidence/item-5/pilots/` and includes accepted/rejected receipts, compressed logs, lifecycle JSON, local Spark profiles, raw CSV, and deterministic processed JSON. The validator re-hashes every artifact, confines paths to the repository, recomputes processed output, verifies runtime and fixture identities, proves explicit rejected-run failure, and requires both accepted and rejected paths.
 
-- solo;
-- 2 players;
-- 4 players;
-- expected normal concurrency;
-- expected peak concurrency.
+The first full-stack attempt was rejected because shutdown began before Spark finished metadata collection. After correcting that lifecycle boundary, the original accepted-looking pilot was later invalidated because a relative Java `PATH` entry stopped resolving after the server process changed working directory and `run.sh` fell through to Oracle Java `25.0.2`. That evidence was superseded, never relabeled. PR #9 fixed the harness to resolve an absolute Java executable and reran a clean seed-42 retained-stack pilot. The replacement accepted pilot proves:
 
-Do not invent normal/peak values if the design/baseline evidence does not establish them. Record the unresolved input explicitly and use the known cases without claiming the gate until the specification's cases are materially defined.
+- Eclipse Adoptium Java `21.0.12.1` at runtime;
+- pinned archive/build `Temurin-21.0.12.1+1-LTS`;
+- exact 137-JAR identity;
+- input-world and stopped output-world hashes;
+- successful TPS, memory, and GC probes;
+- asynchronous profiler start and completion;
+- one preserved 236,557-byte `.sparkprofile`;
+- `save-all flush`, clean stop, and return code 0.
 
-### 7.3 Item 5 implementation expectations
+`b2a79a4` additionally binds receipts to the Temurin archive digest in `infrastructure/manifests/platform-1.21.1.json`. `541d8ad` closes the remaining parser edge case by preventing `+10` from matching the pinned `+1` prefix.
 
-- Use schemas/models that reject missing methodology fields.
-- Separate immutable raw data from processed output.
-- Add deterministic analyzers with tests and fixtures.
-- Add a validation command that checks every required metric and player case is covered.
-- Run at least one end-to-end pilot that proves collection, raw preservation, processing, and rejection handling; a prose-only methodology does not pass.
-- Preserve exact commands, runtime identity, retained manifest hash, configuration version, seed, and timestamps.
-- Explicitly assess the Item 5 exit gate before proceeding to Item 6.
-- Commit implementation, tests, evidence, and documentation as coherent atomic units.
+The lifecycle harness performs bounded readiness and command-state orchestration. It distinguishes profiler-stop request from Spark profile-save confirmation and distinguishes flush request from flush confirmation. It requires the exact seven-command sequence, confirmed TPS/memory/GC probes, exactly one new non-empty local profile, a successful explicit flush, clean stop, zero return code, and no console-pipe failure. Closed stdin is recorded as a failure rather than losing the receipt. Post-launch I/O failures kill and reap the Minecraft process group so no orphaned JVM can continue mutating the world.
 
-## 8. Item 6 — generated configuration audit after Item 5 passes
+Rejected receipts must reference a structurally valid preserved lifecycle and prove a machine-observable failure through explicit lifecycle state, a nonzero integer return code, console-pipe failure, or an accepted marker in a preserved log. Merely labeling a successful lifecycle as rejected does not pass. Separate fixtures/receipts preserve launch failure and cleaned-up post-launch I/O failure behavior.
 
-1. Use actual configs generated by clean Item 4/5 retained-stack boots; do not infer from upstream docs when generated files exist.
-2. Freeze a hash manifest before tuning anything.
-3. Record generated defaults, effective defaults, and every non-default value.
-4. Audit spacing, disabled sets, spawn changes, difficulty changes, performance interactions, worldgen interactions, structure interactions, and mod-to-mod config interactions.
-5. Explicitly record expected systems that are absent.
-6. Cover, when present: Sparse Structures, Structure Essentials, ServerCore, C2ME, Chunky, Structure Layout Optimizer, When Dungeons Arise, YUNG systems, IDAS, Moog systems, village generation, Loot Integrations, spawning, and difficulty.
-7. Preserve the original generated tree or a lossless deterministic archive plus per-file manifest.
-8. Do not tune during this baseline audit.
-9. Validate report-to-manifest consistency before starting Item 7.
+### 5.3 Known limitations, not false claims
 
-## 9. Item 7 — real-world generation inspection after Item 6
+- The operational pilot proves collection, preservation, processing, rejection handling, and environment binding. It is not a formal performance baseline.
+- Spark overhead remains `UNKNOWN` until the protocol's paired profiled/unprofiled repetitions are executed.
+- The accepted pilot used a dirty worktree and short startup sample; this is explicitly documented and is not a tuning result.
+- Two subsequent attempts made while preparing the exact-build review fix hit the unchanged Minecraft watchdog shortly after readiness. They existed only in ignored runtime paths and are absent in this reconstructed environment; do not present them as committed evidence.
 
-1. Regenerate clean worlds for all four deterministic seeds under the frozen config snapshot.
-2. Inspect actual terrain, biomes, structures, dimensions, cross-mod generation, boundaries, pathological generation, and expected content presence.
-3. Preserve traceable evidence for each observation: seed, dimension, coordinates, command, log, screenshot where applicable, world manifest/hash, observation, anomaly, confidence, and limitation.
-4. Synthetic registry enumeration is not a substitute for real-world evidence.
-5. Preserve failures and uncertain observations.
-6. Validate the Item 7 evidence inventory before Item 8.
+## 6. Runtime state in this container
 
-## 10. Item 8 — structure-family enumeration after Item 7
+At this handoff, direct checks showed these intentionally ignored paths are **absent**:
 
-Enumerate every relevant gameplay family using registries, datapacks, packaged mod data, runtime evidence, and generated-world evidence. For each family record canonical ID, namespace, source, family/group, placement/biome/dimension/generation constraints, physical footprint, hostility, mobs, loot, spawners, progression significance, discoverability, variants, aliases, runtime verification, evidence, confidence, and uncertainty.
+- `downloads/`;
+- `instances/`;
+- `evidence/raw/`.
 
-Do not count aliases, pools, pieces, variants, or implementation details as separate gameplay families unless the classification rules require it. Add completeness and uniqueness checks. Existing reconstructed inventories are hints, not closure.
+Therefore, do not claim the current container retains downloaded JARs, the Temurin extraction, NeoForge installations, generated configs, worlds, or raw uncommitted failure logs. Durable reconstruction sources remain committed evidence plus the Item 2 release assets. A new runtime must reacquire and verify all binaries.
 
-## 11. Item 9 — classification after Item 8
+The successful PR #9 reconstruction used:
 
-Classify every verified family into Tier 0, 1, 2, 3, 4, or Civilization using `SPECS.md` criteria. Cite evidence per row and record confidence/ambiguity/gameplay characteristics. Explicitly flag decorative, empty, redundant, pseudo-dungeon, visually substantial but low-gameplay, and uncertain families. Do not force confidence.
+1. `infrastructure/bin/platform-1.21.1 acquire` and `provision-java`;
+2. all 190 Item 3 candidates acquired through `tools/acquire_candidate_artifacts.py`;
+3. the durable Item 2 state overlay from the `item-2-evidence-assets-2026-09-01` release;
+4. a clean ordinary materialization from the 136-file retained manifest;
+5. the audited Spark overlay;
+6. the Item 5 harness with pinned Temurin.
 
-Machine-readable and human-readable outputs must agree exactly, with tests for full coverage and valid tiers.
+The Java-based NeoForge installer needed the environment HTTP proxy and a temporary Java trust store containing the environment's MITM proxy CA. These were operational-only inputs and were not committed.
 
-## 12. Item 10 — representative regions and density after Item 9
+## 7. Exact next actions
 
-Generate validated representative regions for all required seeds. Preserve raw structure starts/encounters and measure:
+1. Read this file and `SPECS.md` completely.
+2. Check `git status`, remotes, and recent graph; fetch all remotes.
+3. Query PR #11. If it is open, review/merge it; its branch already contains the exact boundary fix and regression. Do not cherry-pick the fix again.
+4. After PR #11 merges, create the Item 6 branch from the updated `origin/main` and verify the delimited `+1` matcher plus `+10` rejection test are present.
+5. Before relying on the Item 5 gate in a different or superseding branch, run at least:
+   - `uv run pytest -q tests/item5`;
+   - `uv run pytest -q`;
+   - scoped Ruff check and format check;
+   - `uv run basedpyright src tests`;
+   - the Item 5 validator against both receipts;
+   - applicable infrastructure shell checks;
+   - `git diff --check`.
+6. Begin Item 6 immediately after the merge and checks; delivery reconciliation requires no further code change.
+7. Reacquire/rematerialize a clean retained-stack instance, preserve the untouched generated configuration tree or a lossless deterministic archive, and freeze a per-file hash manifest **before any tuning**.
 
-- raw structure density;
-- encounter density;
-- gameplay-relevant density and value;
-- travel and inter-structure distances;
-- clustering;
-- empty-region frequency and extent;
-- biome variation;
-- seed variation;
-- dimensional variation;
-- Sparse Structures' actual effect.
+## 8. Item 6 — generated configuration audit
 
-Distinguish raw structure count from useful encounters. Preserve seeds, region boundaries, coordinates, manifests, logs, raw data, processing code, statistical summaries, uncertainty, integrity hashes, and reproduction instructions. Analyses must regenerate from committed/preserved raw data. Verify the Item 10 exit gate explicitly.
+### 8.1 Entry conditions and immutable baseline
 
-## 13. Final Items 2–10 audit
+Item 6 depends on Items 2–5. Begin only from a branch containing PR #9 and the delimited Temurin `+1` matcher delivered by PR #11. Reacquire all ignored dependencies, verify their committed hashes, and rematerialize a clean retained-stack instance. Do not reuse a proof world or mutated configuration tree.
 
-After Item 10 passes:
+Boot the exact retained stack only far enough to generate configuration. Before editing anything:
 
-1. Re-read `SPECS.md` Items 2–10 completely.
-2. Verify every checkbox and exit gate against actual evidence, not old status prose.
-3. Recompute hashes/manifests and check all referenced paths.
-4. Confirm machine/human reports agree.
-5. Search authorized scope for unresolved TODO/FIXME/placeholders and reconstructed claims presented as empirical evidence.
-6. Check later evidence for contradictions with Items 2–4; reopen and repeat downstream validation where necessary.
-7. Run the full project suite, static typing, applicable lint/format checks, shell tests, and evidence validators.
-8. Inspect full commit sequence, tags, branch/remote state, and PR state.
-9. Push validated milestone tags only under the existing convention; never move existing tags.
-10. Explicitly report whether Item 11 prerequisites pass. Do not implement Item 11.
+1. preserve the untouched generated configuration tree, or a deterministic lossless archive of it;
+2. generate a sorted per-file manifest containing relative path, size, and SHA-256;
+3. record platform, retained-manifest, Java archive/build, seed, configuration-version, command, and timestamp identities;
+4. distinguish files generated at installation, first startup, world creation, and shutdown; and
+5. validate the archive/tree against the manifest.
 
-## 14. Validation baseline at handoff
+No tuning is authorized during baseline capture. If a boot mutates a file, preserve the pre- and post-boot states and explain which one is effective rather than silently overwriting the baseline.
 
-Before the review-fix commit, the repository passed:
+### 8.2 Required audit coverage
 
-- `uv run pytest -q` — 55 tests;
-- `uv run pytest -q tests/item4` — 6 tests;
-- `uv run basedpyright src tests` — 0 errors and 0 warnings;
-- scoped Ruff checks and formatting;
-- four full retained-stack seed lifecycles;
-- one real backup/restore and restored-world lifecycle.
+Inspect actual generated configuration, not upstream documentation alone. Cover these systems when present and explicitly record absence when expected but not generated:
 
-After commit `316c341`, focused Item 4 validation passed:
+- Sparse Structures and every global spacing/separation multiplier or per-structure override;
+- Structure Essentials and Structure Layout Optimizer;
+- ServerCore, C2ME, and Chunky;
+- When Dungeons Arise and WDA Seven Seas;
+- YUNG structure systems;
+- IDAS and Integrated structures;
+- Moog structure families;
+- village generation, including CTOV, Towns & Towers, Better Village, and Village Taverns where applicable;
+- Loot Integrations and related loot behavior;
+- mob spawning and entity limits; and
+- difficulty-related settings.
 
-- `uv run pytest -q tests/item4` — 8 tests;
-- `bash tests/infrastructure/test_item4_backup_schedule.sh` — pass;
-- scoped Ruff — pass;
-- `uv run basedpyright src tests` — 0 errors and 0 warnings;
-- `git diff --check` — pass.
+For every relevant setting record file, key/path, generated default, effective value, whether it is non-default, source/owner, scope, interaction partners, and evidence. Identify global structure-spacing multipliers, per-structure overrides, disabled structure sets, hidden low-density causes, spawn/difficulty changes, performance/worldgen interactions, precedence, duplicated controls, and mod-to-mod conflicts. Separate an absent key, a generated default, and a loader/mod implicit default.
 
-After commit `57c900b`, focused Item 4 validation passed with 9 tests, including a separate process holding the same POSIX record-lock class used by Minecraft/Java. The complete suite passed with 58 tests. A future test not rerun must not be represented as passing at a newer head.
+### 8.3 Item 6 exit evidence
 
-## 15. Git discipline
+Produce machine-readable and human-readable outputs that agree exactly. The validator must prove that every reported file exists in the frozen manifest, every cited value matches preserved content, every non-default is accounted for, and no unexplained file is omitted. Preserve limitations and unresolved ownership rather than guessing. Item 7 remains blocked until report-to-manifest consistency passes.
 
-- Inspect `git status`, unstaged diff, staged diff, and recent log before every commit.
+## 9. Item 7 — terrain and world-generation interaction audit
+
+Regenerate clean worlds for all four deterministic seeds under the frozen Item 6 configuration. Inspect actual generated terrain rather than treating Item 4/5 boot logs or synthetic registry enumeration as world evidence. Cover, where retained: Tectonic, Terralith, Biomes O' Plenty, Regions Unexplored, TerraBlender, Lithostitched, BetterEnd, YUNG, WDA, IDAS, Integrated structures, Moog systems, Explorify, Explorations, Repurposed Structures, CTOV, and Towns & Towers.
+
+Inspect for fragmented/tiny biomes, unnatural transitions, buried or floating structures, cliff intersections, bad underwater placement, structure/village overlaps, failed placements, impossible biome restrictions, and excessive terrain modification. Classify each finding separately as cosmetic, gameplay-affecting, performance-affecting, or outright generation failure.
+
+Every observation must preserve seed, dimension, coordinates, command/procedure, relevant log or screenshot, input configuration identity, world manifest/hash, observation, anomaly classification, confidence, and limitation. Screenshots supplement but do not replace machine-readable evidence. If Item 7 contradicts the frozen configuration or retained set, reopen the affected upstream gate.
+
+## 10. Item 8 — structure-family inventory
+
+Inventory every gameplay-relevant structure family only after Item 7. Sources must include runtime registries, datapacks/packaged data, config evidence, logs, and generated-world observations. Enumerate WDA, WDA Seven Seas, YUNG, IDAS, Integrated Stronghold/Villages, Moog families, Explorify, Explorations, Repurposed Structures, AdoraBuild, CTOV, Towns & Towers, Better Village, and Village Taverns when present.
+
+For each canonical family record:
+
+- owning provider and canonical identifier;
+- aliases, variants, pools, pieces, and template relationships without double-counting them as families;
+- dimension and biome constraints;
+- approximate footprint and vertical size;
+- surface/underground classification and visual discoverability;
+- intended hostility and encounter role;
+- authored versus natural enemy source;
+- loot-table source and generated spawners;
+- runtime/generated-world evidence; and
+- confidence, ambiguity, and unresolved questions.
+
+Machine-readable inventory and narrative report must agree on family count and identity. Existing reconstructed inventories are leads, not proof.
+
+## 11. Item 9 — structure-stack classification
+
+Regenerate classification from the verified Item 8 inventory. Assign every canonical family exactly one provisional category: Tier 0 ambient landmark, Civilization, Tier 1 small encounter, Tier 2 proper dungeon, Tier 3 major expedition, or Tier 4 world objective. Apply the definitions in `SPECS.md`; do not infer tier solely from footprint or appearance.
+
+Record rationale, evidence, confidence, ambiguity, and any competing classification. Flag dungeon-looking structures without meaningful gameplay, decorative structures, oversized structures with little internal gameplay, overlapping themes, redundant village/ruin/tower/dungeon archetypes, and unclear aliases. Machine- and human-readable results must have exact family coverage and classification parity.
+
+## 12. Item 10 — representative-region density measurement
+
+Generate representative regions across all selected seeds using the frozen Item 6 configuration and verified Item 8/9 identities. Preserve region selection rules and exposure denominators so sampling cannot be chosen post hoc. Measure:
+
+- structures, actionable locations, combat encounters, proper dungeons, and major expeditions per 1,000 chunks;
+- village density;
+- average nearest-neighbor/inter-structure distance by category;
+- clustering and large empty regions;
+- biome, seed, and dimension variation; and
+- Sparse Structures' actual contribution to the observed distribution.
+
+Distinguish raw structure density from useful encounters and do not count aliases, pieces, or pools as independent families. Preserve raw observations immutably, process them deterministically through Item 5 contracts, and bind results to world/configuration/manifests. Record uncertainty, failures, censored samples, and limitations. Do not proceed on reconstructed density prose or inventories alone.
+
+## 13. Final Items 2–10 cross-item audit
+
+After Item 10, audit all gates together. Confirm that every downstream artifact references the same Minecraft, NeoForge, Temurin, retained-manifest, configuration, seed, world, and protocol identities; machine-readable and narrative counts agree; failures and uncertainty remain visible; and no later evidence invalidates an earlier gate. Reopen and repeat affected downstream work whenever an identity or conclusion changes.
+
+Only after Items 2–10 pass this audit may the next session report whether Item 11 is eligible. It must not implement, execute, repair, or lint Item 11-specific workflows under this handoff.
+
+## 14. Validation baseline
+
+Last verified at PR #9 head `b2a79a4`:
+
+- `uv run pytest -q` — **126 passed**;
+- `uv run pytest -q tests/item5` — **67 passed**;
+- scoped Ruff check/format — passed;
+- `uv run basedpyright src tests` — 0 errors, 0 warnings;
+- Item 5 validator — 24 metrics, 6 cases, 2 pilots;
+- `tests/infrastructure/test_item4_backup_schedule.sh` — passed;
+- `git diff --check` — passed.
+
+PR #11 branch, after carrying the exact PR #10 change onto `main` history:
+
+- `uv run pytest -q tests/item5/test_spark_pilot.py` — **16 passed**;
+- `uv run pytest -q tests/item5` — **68 passed**;
+- `uv run pytest -q` — **127 passed**;
+- scoped Ruff check and format check — passed;
+- `uv run basedpyright src tests` — 0 errors, 0 warnings, 0 notes;
+- Item 5 validator — 24 metrics, 6 cases, 2 pilots;
+- Item 4 backup schedule shell test — passed;
+- `git diff --check` — passed.
+
+These results establish the branch baseline. They do not prove that PR #11 has merged; check GitHub and fetch `origin/main` before starting Item 6.
+
+## 15. Git and evidence discipline
+
+- Inspect status, unstaged diff, staged diff, and recent log before every commit.
 - Preserve atomic commits; do not squash or rewrite valid history.
-- Commit code/tests, evidence, and documentation in coherent units rather than a single catch-all commit.
-- Push regularly after validation.
-- Keep PR bodies current with exact tests, evidence, limitations, exit gates, and unresolved uncertainty.
-- Never commit candidate JARs, Minecraft/NeoForge binaries, worlds, unredacted secrets, or operational caches.
-- Compressed UTF-8 logs/crash reports are evidence, not executables; record their hashes and purpose.
+- Keep review fixes distinct from substantive item milestones.
+- Keep PR descriptions current with exact checks, evidence, limitations, and unresolved uncertainty.
+- Never commit candidate JARs, Minecraft/NeoForge binaries, worlds, secrets, operational caches, proxy trust stores, or downloaded toolchains.
+- Compressed UTF-8 logs and Spark profiles are evidence, not executable dependencies; record hashes and purpose.
+- Do not alter raw evidence to make it pass. Supersede invalid evidence with a genuine rerun and preserve the failure history.
+- Never move existing tags.
 
-## 16. Prohibited shortcuts
+## 16. Prohibited shortcuts and stop condition
 
-- Do not begin Item 11.
-- Do not skip dependency order.
-- Do not treat Item 4 boot logs as Item 7 inspection.
-- Do not tune generated configs before Item 6 freezes/audits them.
-- Do not claim runtime measurements from methodology prose.
-- Do not treat Fabric metadata as active NeoForge metadata.
-- Do not assume Forge equivalence.
-- Do not discard failed runs or uncertainty.
-- Do not use reconstructed Item 5–10 documents as empirical proof without regenerating and validating their evidence.
-- Do not claim systemd timers are active in Cloud without actual `systemctl` evidence.
+Do not begin Item 11. Do not tune before Item 6 freezes generated defaults. Do not treat Item 4/5 boot logs as Item 7 inspection. Do not treat Fabric metadata as active NeoForge metadata or assume Forge equivalence. Do not discard failures or uncertainty. Do not present reconstructed prose as empirical proof. Do not claim systemd timers are active without actual `systemctl` evidence.
 
-## 17. Stop condition
-
-Continue through Items 5–10 without stopping at intermediate milestones. Stop only when:
-
-- Items 2–10 have passed the final cross-item audit, with Item 11 eligibility reported but Item 11 untouched; or
-- a genuine external blocker prevents meaningful progress after reasonable investigation and preservation of failure evidence.
+Continue through Items 6–10 and the final Items 2–10 audit. Stop only when Items 2–10 pass that audit and Item 11 eligibility can be reported without implementing it, or when a genuine external blocker prevents meaningful progress after reasonable investigation and preservation of failure evidence.

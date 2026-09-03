@@ -51,7 +51,7 @@ def validate_java_runtime(java_home: Path) -> tuple[Path, str]:
         [executable, "-version"], capture_output=True, text=True, check=False
     )
     output = completed.stderr + completed.stdout
-    build = re.search(r"Temurin-21\.0\.12\.1\+1(?:-LTS)?", output)
+    build = re.search(r"Temurin-21\.0\.12\.1\+1(?:-LTS)?(?=$|[\s)])", output)
     if completed.returncode != 0 or build is None:
         message = f"requested Java runtime is not pinned Temurin 21.0.12: {executable}"
         raise SparkPreflightError(message)

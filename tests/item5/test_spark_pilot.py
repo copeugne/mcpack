@@ -185,6 +185,16 @@ def test_java_preflight_rejects_another_build(tmp_path: Path) -> None:
         load_pilot_module().validate_java_runtime(java.parents[1])
 
 
+def test_java_preflight_rejects_build_with_pinned_prefix(tmp_path: Path) -> None:
+    """A longer build number cannot masquerade as the pinned build prefix."""
+    java = tmp_path / "prefixed-build/bin/java"
+    java.parent.mkdir(parents=True)
+    java.write_text("#!/bin/sh\necho 'OpenJDK Runtime Environment Temurin-21.0.12.1+10' >&2\n")
+    java.chmod(0o755)
+    with pytest.raises(ValueError, match="not pinned Temurin"):
+        load_pilot_module().validate_java_runtime(java.parents[1])
+
+
 def test_runtime_io_failure_has_cleanup_receipt() -> None:
     """Post-launch I/O is distinguished from failure to create the JVM."""
     receipt = load_pilot_module().runtime_failure_receipt(OSError("disk full"))
