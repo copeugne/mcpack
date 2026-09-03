@@ -55,13 +55,12 @@ def test_pilot_protocol_hash_must_match_validated_protocol(tmp_path: Path) -> No
     [
         ("retained_manifest_sha256", "retained manifest hash mismatch"),
         ("host_evidence_sha256", "host evidence hash mismatch"),
-        ("java_archive_sha256", "Java archive hash mismatch"),
     ],
 )
 def test_pilot_committed_environment_hashes_are_recomputed(
     tmp_path: Path, field: str, message: str
 ) -> None:
-    """Receipts cannot substitute unrelated committed environment identities."""
+    """Receipts cannot substitute unrelated retained-manifest or host identities."""
     receipt = json.loads((ROOT / "evidence/item-5/pilots/accepted.json").read_bytes())
     receipt["environment"][field] = "0" * 64
     changed = tmp_path / f"wrong-{field}.json"

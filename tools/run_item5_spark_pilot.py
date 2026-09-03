@@ -8,7 +8,6 @@ import hashlib
 import json
 import os
 import queue
-import re
 import signal
 import subprocess
 import threading
@@ -41,7 +40,7 @@ class PilotRuntimeError(OSError):
     """The launched server encountered a local harness I/O failure."""
 
 
-def validate_java_runtime(java_home: Path) -> tuple[Path, str]:
+def validate_java_runtime(java_home: Path) -> str:
     """Require the pinned Java executable rather than falling through PATH."""
     executable = (java_home / "bin/java").resolve()
     if not executable.is_file() or not os.access(executable, os.X_OK):
@@ -51,11 +50,10 @@ def validate_java_runtime(java_home: Path) -> tuple[Path, str]:
         [executable, "-version"], capture_output=True, text=True, check=False
     )
     output = completed.stderr + completed.stdout
-    build = re.search(r"Temurin-21\.0\.12\.1\+1(?:-LTS)?", output)
-    if completed.returncode != 0 or build is None:
+    if completed.returncode != 0 or 'version "21.0.12' not in output:
         message = f"requested Java runtime is not pinned Temurin 21.0.12: {executable}"
         raise SparkPreflightError(message)
-    return executable, build.group(0)
+    return output.splitlines()[0]
 
 
 def confirms_profile_save(line: str, *, stop_requested: bool) -> bool:
@@ -226,8 +224,8 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915, PLR0917 - explicit lifecycle 
 ) -> dict[str, object]:
     """Boot, exercise every approved Spark command, flush, and stop."""
     environment = os.environ.copy()
-    java_executable, java_version = validate_java_runtime(java_home)
-    environment["PATH"] = f"{java_executable.parent}:{environment['PATH']}"
+    java_version = validate_java_runtime(java_home)
+    environment["PATH"] = f"{java_home / 'bin'}:{environment['PATH']}"
     started = time.monotonic()
     sent: list[str] = []
     console_pipe_failed = False

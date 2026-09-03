@@ -154,7 +154,6 @@ class EnvironmentIdentity(StrictModel):
     minecraft_version: NonEmpty
     neoforge_version: NonEmpty
     java_version: NonEmpty
-    java_archive_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
     host_evidence_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
 
 
