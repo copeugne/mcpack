@@ -55,6 +55,23 @@ def test_only_new_nonempty_profiles_are_accepted(tmp_path: Path) -> None:
     assert find_new_profiles(tmp_path, prior) == [created]
 
 
+@pytest.mark.parametrize(("profile_count", "expected"), [(0, False), (1, True), (2, False)])
+def test_clean_stop_requires_exactly_one_profile(profile_count: int, expected: bool) -> None:
+    """A lifecycle cannot report success with missing or ambiguous profiler output."""
+    clean_stop_succeeded = cast("Callable[..., bool]", load_pilot_module().clean_stop_succeeded)
+    assert (
+        clean_stop_succeeded(
+            return_code=0,
+            ready=True,
+            profile_saved=True,
+            flushed=True,
+            profile_count=profile_count,
+            console_pipe_failed=False,
+        )
+        is expected
+    )
+
+
 def test_unrelated_save_cannot_confirm_requested_flush() -> None:
     """A save before Spark completion cannot advance lifecycle shutdown."""
     module = load_pilot_module()

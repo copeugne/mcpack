@@ -112,6 +112,22 @@ def test_accepted_pilot_requires_successful_lifecycle(tmp_path: Path) -> None:
         validator(pilot, tmp_path)
 
 
+def test_rejected_pilot_requires_machine_observable_failure(tmp_path: Path) -> None:
+    """Changing an accepted receipt's status cannot prove rejection handling."""
+    receipt = json.loads((ROOT / "evidence/item-5/pilots/accepted.json").read_bytes())
+    receipt["status"] = "rejected"
+    receipt["rejection_reasons"] = ["claimed failure"]
+    receipt["processed_artifacts"] = []
+    changed = tmp_path / "false-rejection.json"
+    changed.write_text(json.dumps(receipt), encoding="utf-8")
+    with pytest.raises(ValueError, match="no machine-observable lifecycle failure"):
+        load_validator()(
+            ROOT / "measurement/item5/protocol-v1.json",
+            [ROOT / "evidence/item-5/pilots/accepted.json", changed],
+            ROOT,
+        )
+
+
 def test_processed_summary_must_match_raw_samples(tmp_path: Path) -> None:
     """A stale or arbitrary processed artifact cannot satisfy the pilot gate."""
     pilot = PilotRun.model_validate_json(
