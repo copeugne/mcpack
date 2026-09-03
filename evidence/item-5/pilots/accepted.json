@@ -1,0 +1,72 @@
+{
+  "schema_version": "item5-pilot-run-v1",
+  "exact_commands": [
+    "infrastructure/bin/platform-1.21.1 acquire --root . --cache downloads/platform-cache",
+    "infrastructure/bin/platform-1.21.1 provision-java --root . --cache downloads/platform-cache --java-home downloads/toolchains/temurin-21.0.12.1",
+    "uv run python tools/acquire_candidate_artifacts.py --source-matrix evidence/item-3/source-identity-matrix.json --download-root downloads/item3/candidates --output /tmp/item3-acquisition.json --workers 12",
+    "curl -fL https://github.com/copeugne/mcpack/releases/download/item-2-evidence-assets-2026-09-01/pristine-baseline-v0-state.tar.gz -o evidence/raw/item2/frozen/pristine-baseline-v0-state.tar.gz",
+    "cp downloads/toolchains/temurin-21.0.12.1/lib/security/cacerts /tmp/mcpack-cacerts",
+    "downloads/toolchains/temurin-21.0.12.1/bin/keytool -importcert -noprompt -alias envoy -file /usr/local/share/ca-certificates/envoy-mitmproxy-ca-cert.crt -keystore /tmp/mcpack-cacerts -storepass changeit",
+    "JAVA_TOOL_OPTIONS=\"-Dhttp.proxyHost=proxy -Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy -Dhttps.proxyPort=8080 -Djavax.net.ssl.trustStore=/tmp/mcpack-cacerts -Djavax.net.ssl.trustStorePassword=changeit\" infrastructure/bin/platform-1.21.1 materialize-pristine --root . --cache downloads/platform-cache --java-home downloads/toolchains/temurin-21.0.12.1 --target instances/item5/pristine-platform --installer-log evidence/raw/item5/neoforge-installer.log --state-overlay evidence/raw/item2/frozen/pristine-baseline-v0-state.tar.gz",
+    "uv run python tools/manage_item4_environment.py materialize --pristine instances/item5/pristine-platform --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt --seed-suite test-environment/seed-suite.json --role ordinary --target instances/item5/java21-accepted",
+    "cp downloads/item3/candidates/spark-1.10.124-neoforge.jar instances/item5/java21-accepted/mods/",
+    "mkdir -p instances/item5/java21-accepted/config/spark",
+    "cp measurement/spark/config.json instances/item5/java21-accepted/config/spark/config.json",
+    "uv run python tools/run_item5_spark_pilot.py --instance instances/item5/java21-accepted --java-home downloads/toolchains/temurin-21.0.12.1 --spark-overlay measurement/item5/spark-overlay.json --log evidence/raw/item5/spark-pilot-java21-v2.log --receipt evidence/raw/item5/spark-lifecycle-java21-v2.json --timeout 900",
+    "uv run python tools/analyze_item5_samples.py --input evidence/item-5/pilots/raw/accepted/samples.csv --output evidence/item-5/pilots/processed/summary.json"
+  ],
+  "seed": 42,
+  "player_case": "solo",
+  "environment": {
+    "git_commit": "4ebf2a9d14153e69e281886b322bae8ce03423e3",
+    "git_dirty": true,
+    "protocol_sha256": "96e6e373886a1f2e5d470801b04345d2c2f82fa64d72dff3fe49a9fc7c0d93e0",
+    "retained_manifest_sha256": "78e5bdc0697299782a535400ad5b313c088e8db10cfe075085ae4c8a531e30cb",
+    "configuration_version": "test-environment-v0.1+item5-spark-overlay-v1",
+    "minecraft_version": "1.21.1",
+    "neoforge_version": "21.1.249",
+    "java_version": "Temurin-21.0.12.1+1-LTS",
+    "host_evidence_sha256": "a9c46e6482373cf9bcf5d21f5bea1c8904ee08fdc9d574fc73b599a1c5db2f6b",
+    "configuration_sha256": "fb047bb4cdc00c7a08cccc5c834d1f02c1ef2260ca7345a42874e65ce36493ad",
+    "world_snapshot_sha256": "ec591e5ab3d7e2b49332d12ae9eba74af87cee9881a3a1c735bfd2c1a35661b2",
+    "spark_overlay_sha256": "6ed23d2964af1bbc570fa7a87ad8fe608aa228c2ee0e0a6a8bdbdb4aaf7eb5b0",
+    "spark_artifact_sha256": "647e8a81afbe414dba1df4ba15fd06c5d32d4cb544e68828405e8e074c2e16db",
+    "runtime_mods_sha256": "92cc46c166e364aafc26afc7337f968b159d0b676732e56539929caf7280a2c6",
+    "input_world_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "java_archive_sha256": "ce79869e1307ed8ee1e2baa86a412b1eb5b75d10a01006d788a6f968bcfaee94"
+  },
+  "run_id": "item5-spark-accepted-java21-20260903T084327Z",
+  "status": "accepted",
+  "started_at": "2026-09-03T08:43:27Z",
+  "ended_at": "2026-09-03T08:50:10Z",
+  "raw_artifacts": [
+    {
+      "path": "evidence/item-5/pilots/raw/accepted/lifecycle.json",
+      "size_bytes": 1409,
+      "sha256": "11fffcad4ca356a81e1610a56baaf285aa117296324795c720e12de4e09b07be"
+    },
+    {
+      "path": "evidence/item-5/pilots/raw/accepted/debug.log.gz",
+      "size_bytes": 47834,
+      "sha256": "670dde75f216832d9613f6cd41c0f4287087aae112701e768240e2e780b5f7e0"
+    },
+    {
+      "path": "evidence/item-5/pilots/raw/accepted/profile.sparkprofile",
+      "size_bytes": 236557,
+      "sha256": "b5c1b964c6de6fdea02792998eafe831744545b830a9c90262fcc7b0124b3832"
+    },
+    {
+      "path": "evidence/item-5/pilots/raw/accepted/samples.csv",
+      "size_bytes": 295,
+      "sha256": "9803a82bc19ead81c103995f1ad133a292f44b933f1f50080bd9b76c8187c1f5"
+    }
+  ],
+  "processed_artifacts": [
+    {
+      "path": "evidence/item-5/pilots/processed/summary.json",
+      "size_bytes": 1610,
+      "sha256": "c5ac411cac7a85db4861edec494224f2a701db0298a1be211005197ab089449f"
+    }
+  ],
+  "rejection_reasons": []
+}
