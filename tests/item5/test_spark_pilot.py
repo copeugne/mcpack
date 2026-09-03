@@ -72,6 +72,19 @@ def test_clean_stop_requires_exactly_one_profile(profile_count: int, expected: b
     )
 
 
+def test_clean_stop_requires_all_probe_confirmations() -> None:
+    """Successful profiling cannot conceal a failed mandatory Spark probe."""
+    assert not load_pilot_module().clean_stop_succeeded(
+        return_code=0,
+        ready=True,
+        profile_saved=True,
+        flushed=True,
+        profile_count=1,
+        console_pipe_failed=False,
+        probes_confirmed=False,
+    )
+
+
 def test_unrelated_save_cannot_confirm_requested_flush() -> None:
     """A save before Spark completion cannot advance lifecycle shutdown."""
     module = load_pilot_module()
@@ -138,6 +151,12 @@ def test_launch_failure_has_rejection_receipt() -> None:
     receipt = load_pilot_module().launch_failure_receipt(FileNotFoundError("run.sh"))
     assert receipt["clean_stop"] is False
     assert receipt["rejection_reason"] == "Server launch failed: run.sh"
+
+
+def test_missing_requested_java_is_a_preflight_failure(tmp_path: Path) -> None:
+    """The harness cannot silently fall through to a system Java executable."""
+    with pytest.raises(ValueError, match="requested Java runtime is unavailable"):
+        load_pilot_module().validate_java_runtime(tmp_path / "missing-java-home")
 
 
 def test_runtime_io_failure_has_cleanup_receipt() -> None:

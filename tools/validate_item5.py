@@ -109,6 +109,7 @@ def validate_lifecycle_identities(pilot: PilotRun, root: Path) -> None:
         "spark_overlay_sha256": pilot.environment.spark_overlay_sha256,
         "spark_artifact_sha256": pilot.environment.spark_artifact_sha256,
         "runtime_mods_sha256": pilot.environment.runtime_mods_sha256,
+        "input_world_sha256": pilot.environment.input_world_sha256,
     }
     for key, expected in expected_identities.items():
         if lifecycle.get(key) != expected:
@@ -125,7 +126,9 @@ def validate_lifecycle_identities(pilot: PilotRun, root: Path) -> None:
     validate_lifecycle_success(lifecycle, pilot)
 
 
-def validate_runtime_provenance(pilot: PilotRun, root: Path) -> None:
+def validate_runtime_provenance(  # noqa: C901 - provenance checks are intentionally linear.
+    pilot: PilotRun, root: Path
+) -> None:
     """Bind receipt versions, seed, and player case to preserved raw evidence."""
     if pilot.status != "accepted":
         return
@@ -136,6 +139,15 @@ def validate_runtime_provenance(pilot: PilotRun, root: Path) -> None:
         raise ValueError(message)
     with gzip.open(confined_artifact_path(root, logs[0].path), "rt", encoding="utf-8") as stream:
         log = stream.read()
+    probe_markers = {
+        "spark tps": "TPS from last 5s",
+        "spark health --memory": "> Memory usage:",
+        "spark gc": "> Garbage Collector statistics",
+    }
+    for command, marker in probe_markers.items():
+        if marker not in log:
+            message = f"pilot has no successful response for required probe: {command}"
+            raise ValueError(message)
     minecraft = re.escape(pilot.environment.minecraft_version)
     neoforge = re.escape(pilot.environment.neoforge_version)
     version_patterns = {
@@ -248,14 +260,27 @@ def validate_rejected_lifecycle(pilot: PilotRun, root: Path) -> None:
         raise ValueError(message)
 
 
-def validate_pilots(protocol_path: Path, pilots: list[Path], root: Path) -> MeasurementProtocol:
+def validate_pilots(  # noqa: C901 - cross-artifact gate is intentionally linear.
+    protocol_path: Path, pilots: list[Path], root: Path
+) -> MeasurementProtocol:
     """Validate protocol coverage, receipt binding, statuses, and artifact identities."""
     protocol = MeasurementProtocol.model_validate_json(protocol_path.read_bytes())
     protocol_sha256 = sha256_file(protocol_path)
-    combat_fixture = root / "measurement/item5/combat-fixture-v1.json"
-    if sha256_file(combat_fixture) != protocol.combat_fixture_sha256:
-        message = "protocol combat fixture hash mismatch"
-        raise ValueError(message)
+    fixtures = {
+        "combat": ("measurement/item5/combat-fixture-v1.json", protocol.combat_fixture_sha256),
+        "worldgen": (
+            "measurement/item5/worldgen-fixture-v1.json",
+            protocol.worldgen_fixture_sha256,
+        ),
+        "pathfinding": (
+            "measurement/item5/pathfinding-fixture-v1.json",
+            protocol.pathfinding_fixture_sha256,
+        ),
+    }
+    for name, (relative_path, expected_hash) in fixtures.items():
+        if sha256_file(root / relative_path) != expected_hash:
+            message = f"protocol {name} fixture hash mismatch"
+            raise ValueError(message)
     retained_manifest_sha256 = sha256_file(
         root / "evidence/item-3/runtime/retained-server-candidates.txt"
     )

@@ -40,6 +40,22 @@ class PilotRuntimeError(OSError):
     """The launched server encountered a local harness I/O failure."""
 
 
+def validate_java_runtime(java_home: Path) -> str:
+    """Require the pinned Java executable rather than falling through PATH."""
+    executable = (java_home / "bin/java").resolve()
+    if not executable.is_file() or not os.access(executable, os.X_OK):
+        message = f"requested Java runtime is unavailable: {executable}"
+        raise SparkPreflightError(message)
+    completed = subprocess.run(  # noqa: S603 - executable is the validated pinned path.
+        [executable, "-version"], capture_output=True, text=True, check=False
+    )
+    output = completed.stderr + completed.stdout
+    if completed.returncode != 0 or 'version "21.0.12' not in output:
+        message = f"requested Java runtime is not pinned Temurin 21.0.12: {executable}"
+        raise SparkPreflightError(message)
+    return output.splitlines()[0]
+
+
 def confirms_profile_save(line: str, *, stop_requested: bool) -> bool:
     """Accept Spark's completion only after this harness requested a stop."""
     return stop_requested and "Profiler stopped & save complete!" in line
@@ -183,6 +199,7 @@ def clean_stop_succeeded(  # noqa: PLR0913 - explicit lifecycle signals prevent 
     flushed: bool,
     profile_count: int,
     console_pipe_failed: bool,
+    probes_confirmed: bool = True,
 ) -> bool:
     """Require one and only one preserved profile for lifecycle success."""
     return (
@@ -192,6 +209,7 @@ def clean_stop_succeeded(  # noqa: PLR0913 - explicit lifecycle signals prevent 
         and flushed
         and profile_count == 1
         and not console_pipe_failed
+        and probes_confirmed
     )
 
 
@@ -206,6 +224,7 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915, PLR0917 - explicit lifecycle 
 ) -> dict[str, object]:
     """Boot, exercise every approved Spark command, flush, and stop."""
     environment = os.environ.copy()
+    java_version = validate_java_runtime(java_home)
     environment["PATH"] = f"{java_home / 'bin'}:{environment['PATH']}"
     started = time.monotonic()
     sent: list[str] = []
@@ -226,8 +245,10 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915, PLR0917 - explicit lifecycle 
             Path("user_jvm_args.txt"),
         ),
     )
+    input_world_sha256 = hash_tree(instance, (Path("world"),))
     ready = profile_requested = profile_started = profile_stop_requested = False
     profile_saved = flush_requested = flushed = False
+    tps_confirmed = memory_confirmed = gc_confirmed = False
     command_deadline = 0.0
     log_path.parent.mkdir(parents=True, exist_ok=True)
     with log_path.open("w", encoding="utf-8") as log:
@@ -285,6 +306,9 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915, PLR0917 - explicit lifecycle 
                     break
                 log.write(line)
                 log.flush()
+                tps_confirmed = tps_confirmed or "TPS from last 5s" in line
+                memory_confirmed = memory_confirmed or "> Memory usage:" in line
+                gc_confirmed = gc_confirmed or "> Garbage Collector statistics" in line
                 if not ready and "Done (" in line:
                     ready = True
                     for command in REQUIRED_SPARK_COMMANDS[:4]:
@@ -343,12 +367,14 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915, PLR0917 - explicit lifecycle 
             flushed=flushed,
             profile_count=len(profiles),
             console_pipe_failed=console_pipe_failed,
+            probes_confirmed=tps_confirmed and memory_confirmed and gc_confirmed,
         ),
         "return_code": return_code,
         "duration_seconds": round(time.monotonic() - started, 3),
         "commands": sent,
         "local_profiles": profiles,
         "configuration_sha256": configuration_sha256,
+        "input_world_sha256": input_world_sha256,
         "world_snapshot_sha256": world_snapshot_sha256,
         "spark_overlay_sha256": spark_overlay_sha256,
         "spark_artifact_sha256": spark_artifact_sha256,
@@ -356,6 +382,12 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915, PLR0917 - explicit lifecycle 
         "local_profile_sha256": local_profile_sha256,
         "local_profile_size_bytes": local_profile_size_bytes,
         "console_pipe_failed": console_pipe_failed,
+        "probe_confirmations": {
+            "spark_tps": tps_confirmed,
+            "spark_health_memory": memory_confirmed,
+            "spark_gc": gc_confirmed,
+        },
+        "java_version": java_version,
     }
 
 

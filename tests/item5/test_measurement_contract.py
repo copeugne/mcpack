@@ -301,6 +301,21 @@ def test_combat_contract_names_executable_fixture() -> None:
     assert any("combat-fixture-v1.json" in step for step in combat["collection_procedure"])
 
 
+@pytest.mark.parametrize(
+    ("metric_id", "fixture"),
+    [
+        ("fresh_worldgen_mspt", "worldgen-fixture-v1.json"),
+        ("pathfinding_cost", "pathfinding-fixture-v1.json"),
+    ],
+)
+def test_specialized_workloads_name_versioned_fixtures(metric_id: str, fixture: str) -> None:
+    """Worldgen and navigation measurements cannot use arbitrary workloads."""
+    protocol = json.loads((ROOT / "measurement/item5/protocol-v1.json").read_bytes())
+    metric = next(row for row in protocol["metrics"] if row["metric_id"] == metric_id)
+    assert any(fixture in step for step in metric["collection_procedure"])
+    assert (ROOT / "measurement/item5" / fixture).is_file()
+
+
 def test_accepted_pilot_requires_processed_and_environment_evidence() -> None:
     """Accepted receipts cannot omit processing or input identities."""
     payload = json.loads((ROOT / "evidence/item-5/pilots/accepted.json").read_bytes())

@@ -147,6 +147,7 @@ class EnvironmentIdentity(StrictModel):
     configuration_version: NonEmpty
     configuration_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")] | None
     world_snapshot_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")] | None
+    input_world_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")] | None = None
     spark_overlay_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")] | None
     spark_artifact_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")] | None
     runtime_mods_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")] | None
@@ -240,6 +241,8 @@ class MeasurementProtocol(StrictModel):
     schema_version: Literal["item5-measurement-protocol-v1"]
     protocol_id: NonEmpty
     combat_fixture_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
+    worldgen_fixture_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
+    pathfinding_fixture_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
     player_cases: tuple[PlayerCase, ...]
     metrics: tuple[MetricContract, ...]
 
@@ -300,6 +303,7 @@ class PilotRun(StrictModel):
         if self.status == "accepted" and (
             self.environment.configuration_sha256 is None
             or self.environment.world_snapshot_sha256 is None
+            or self.environment.input_world_sha256 is None
             or self.environment.spark_overlay_sha256 is None
             or self.environment.spark_artifact_sha256 is None
             or self.environment.runtime_mods_sha256 is None

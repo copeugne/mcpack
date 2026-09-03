@@ -25,7 +25,7 @@
     {
       "case_id": "normal",
       "players": 6,
-      "source": "Item 2 baseline decision: normal concurrency range is 2–6; upper bound is the load case"
+      "source": "Item 2 baseline decision: normal concurrency range is 2\u20136; upper bound is the load case"
     },
     {
       "case_id": "peak",
@@ -137,6 +137,7 @@
       "measured_quantity": "server tick duration while generating never-generated chunks",
       "unit": "milliseconds per tick",
       "collection_procedure": [
+        "Execute measurement/item5/worldgen-fixture-v1.json exactly, including frontier-only route and both cache variants.",
         "restore or materialize the declared clean seed control",
         "verify all environment hashes before warm-up",
         "run Spark local-file profiling plus long-form system sampling",
@@ -367,6 +368,7 @@
       "measured_quantity": "sampled CPU time attributed to navigation call trees",
       "unit": "milliseconds and percent CPU",
       "collection_procedure": [
+        "Materialize and execute measurement/item5/pathfinding-fixture-v1.json exactly for every repetition.",
         "restore or materialize the declared clean seed control",
         "verify all environment hashes before warm-up",
         "run Spark local-file profiling plus long-form system sampling",
@@ -1144,5 +1146,7 @@
       "warm_up_seconds": 900
     }
   ],
-  "combat_fixture_sha256": "cbfdd484c9074cca52e7a9b4b1a1db18c0ffe7db2cc9be6a2a524d887b49ad02"
+  "combat_fixture_sha256": "cbfdd484c9074cca52e7a9b4b1a1db18c0ffe7db2cc9be6a2a524d887b49ad02",
+  "worldgen_fixture_sha256": "ffc3f7593ac90d69029919963aed46eb2f39dde6ac1a30cf882c7876a69416e7",
+  "pathfinding_fixture_sha256": "aca2f29fde16e573fd0a409bd67d0f9d0fba3c4a9aada7f8b96fa8b755816280"
 }
