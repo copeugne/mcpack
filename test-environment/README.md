@@ -50,6 +50,18 @@ Restore refuses an existing target, verifies the archive hash before extraction,
 The committed `mcpack-item4-backup@.timer` runs daily at 03:15 UTC with a persistent catch-up and randomized delay. It invokes `item4-automated-backup`, which refuses an active Minecraft session lock and writes collision-free archives plus raw integrity receipts. Install the units on the isolated test host with:
 
 ```bash
+id -u mcpack >/dev/null 2>&1 || \
+  sudo useradd --system --user-group --no-create-home --shell /usr/sbin/nologin mcpack
+sudo install -d -o mcpack -g mcpack \
+  /workspace/mcpack/instances/item4 \
+  /workspace/mcpack/backups/item4/automated \
+  /workspace/mcpack/evidence/raw/item4/automated-backups
+# This recursive migration is required when upgrading from the former root-run unit:
+# pre-existing per-role directories are otherwise left root-owned and mode 0755.
+sudo chown -R --no-dereference mcpack:mcpack \
+  /workspace/mcpack/instances/item4 \
+  /workspace/mcpack/backups/item4/automated \
+  /workspace/mcpack/evidence/raw/item4/automated-backups
 sudo systemctl link /workspace/mcpack/infrastructure/systemd/mcpack-item4-backup@.{service,timer}
 for role in ordinary mountainous ocean-heavy biome-diverse; do
   sudo systemctl enable --now "mcpack-item4-backup@${role}.timer"
@@ -57,7 +69,7 @@ done
 systemctl list-timers 'mcpack-item4-backup@*'
 ```
 
-The archives and per-run receipts remain in ignored operational storage. The unit takes a Java-compatible POSIX record lock and holds it throughout archive creation and receipt hashing; `session.lock` itself is excluded so opening/closing it cannot release the process-scoped record lock. The unit intentionally fails rather than copying a live world; lifecycle orchestration must flush and stop a server before its scheduled backup window.
+The dedicated `mcpack` system account owns the mutable instance and automated-backup paths; it does not own the checkout. The service also mounts the rest of the filesystem read-only, grants write access only to those operational paths, and prevents privilege escalation. The archives and per-run receipts remain in ignored operational storage. The unit takes a Java-compatible POSIX record lock and holds it throughout archive creation and receipt hashing; `session.lock` itself is excluded so opening/closing it cannot release the process-scoped record lock. The unit intentionally fails rather than copying a live world; lifecycle orchestration must flush and stop a server before its scheduled backup window.
 
 ## Rollback
 
