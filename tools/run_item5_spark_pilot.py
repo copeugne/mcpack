@@ -32,6 +32,14 @@ class SparkPreflightError(ValueError):
     """The committed overlay or runtime profiler artifact is invalid."""
 
 
+class ServerLaunchError(OSError):
+    """The server process could not be created."""
+
+
+class PilotRuntimeError(OSError):
+    """The launched server encountered a local harness I/O failure."""
+
+
 def confirms_profile_save(line: str, *, stop_requested: bool) -> bool:
     """Accept Spark's completion only after this harness requested a stop."""
     return stop_requested and "Profiler stopped & save complete!" in line
@@ -128,6 +136,13 @@ def launch_failure_receipt(error: OSError) -> dict[str, object]:
     return receipt
 
 
+def runtime_failure_receipt(error: OSError) -> dict[str, object]:
+    """Return machine-readable evidence for a cleaned-up post-launch failure."""
+    receipt = preflight_failure_receipt(error)
+    receipt["rejection_reason"] = f"Pilot runtime I/O failed after server cleanup: {error}"
+    return receipt
+
+
 def hash_tree(root: Path, relative_paths: tuple[Path, ...]) -> str:
     """Hash paths, sizes, and contents for a deterministic tree identity."""
     digest = hashlib.sha256()
@@ -216,17 +231,20 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915, PLR0917 - explicit lifecycle 
     command_deadline = 0.0
     log_path.parent.mkdir(parents=True, exist_ok=True)
     with log_path.open("w", encoding="utf-8") as log:
-        process = subprocess.Popen(
-            ["./run.sh", "nogui"],
-            cwd=instance,
-            env=environment,
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-            bufsize=1,
-            start_new_session=True,
-        )
+        try:
+            process = subprocess.Popen(
+                ["./run.sh", "nogui"],
+                cwd=instance,
+                env=environment,
+                stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                bufsize=1,
+                start_new_session=True,
+            )
+        except OSError as error:
+            raise ServerLaunchError(str(error)) from error
         stdin, stdout = cast("IO[str]", process.stdin), cast("IO[str]", process.stdout)
         lines: queue.Queue[str | None] = queue.Queue()
 
@@ -290,6 +308,16 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915, PLR0917 - explicit lifecycle 
         except (TimeoutError, subprocess.TimeoutExpired):
             os.killpg(process.pid, signal.SIGKILL)
             return_code = process.wait()
+        except OSError as error:
+            if process.poll() is None:
+                os.killpg(process.pid, signal.SIGKILL)
+                _ = process.wait()
+            raise PilotRuntimeError(str(error)) from error
+        except BaseException:
+            if process.poll() is None:
+                os.killpg(process.pid, signal.SIGKILL)
+                _ = process.wait()
+            raise
         finally:
             try:
                 stdin.close()
@@ -363,8 +391,10 @@ def main() -> int:
         )
     except SparkPreflightError as error:
         receipt = preflight_failure_receipt(error)
-    except OSError as error:
+    except ServerLaunchError as error:
         receipt = launch_failure_receipt(error)
+    except PilotRuntimeError as error:
+        receipt = runtime_failure_receipt(error)
     arguments.receipt.parent.mkdir(parents=True, exist_ok=True)
     _ = arguments.receipt.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(receipt, indent=2))

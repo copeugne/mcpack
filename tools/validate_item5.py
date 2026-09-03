@@ -6,6 +6,7 @@ import argparse
 import csv
 import gzip
 import json
+import math
 import re
 from pathlib import Path
 from typing import cast
@@ -160,6 +161,20 @@ def validate_runtime_provenance(pilot: PilotRun, root: Path) -> None:
     ):
         message = "pilot seed or player case does not match raw samples"
         raise ValueError(message)
+    tps = re.search(r"> TPS from last 5s[^\n]*:\n\s*([0-9]+(?:\.[0-9]+)?)", log)
+    mspt = re.search(r"> Tick durations [^\n]*:\n\s*([0-9]+(?:\.[0-9]+)?)/", log)
+    memory = re.search(r"> Memory usage:\n\s*([0-9]+(?:\.[0-9]+)?) GB", log)
+    runtime_values = {
+        ("tps", None): float(tps.group(1)) if tps else None,
+        ("idle_mspt", None): float(mspt.group(1)) if mspt else None,
+        ("memory", "heap_used_bytes"): float(memory.group(1)) * 1_000_000_000 if memory else None,
+    }
+    for row in rows:
+        key = (row["metric_id"], row.get("component") or None)
+        observed = runtime_values.get(key)
+        if observed is None or not math.isclose(float(row["value"]), observed):
+            message = f"sample {key[0]} value does not match preserved runtime output"
+            raise ValueError(message)
 
 
 def validate_rejected_lifecycle(pilot: PilotRun, root: Path) -> None:
@@ -173,11 +188,41 @@ def validate_rejected_lifecycle(pilot: PilotRun, root: Path) -> None:
         message = "rejected pilot must reference exactly one lifecycle receipt"
         raise ValueError(message)
     lifecycle = json.loads(confined_artifact_path(root, lifecycle_artifacts[0].path).read_bytes())
+    required_types: dict[str, type[object]] = {
+        "schema_version": str,
+        "ready": bool,
+        "profile_started": bool,
+        "profile_stopped": bool,
+        "save_all_flush": bool,
+        "clean_stop": bool,
+        "duration_seconds": (int, float),
+        "commands": list,
+        "local_profiles": list,
+    }
+    if any(
+        key not in lifecycle or not isinstance(lifecycle[key], kind)
+        for key, kind in required_types.items()
+    ):
+        message = "rejected pilot lifecycle is incomplete or malformed"
+        raise ValueError(message)
+    if lifecycle["schema_version"] != "item5-spark-lifecycle-v1":
+        message = "rejected pilot lifecycle has an unsupported schema"
+        raise ValueError(message)
     success_fields = ("ready", "profile_started", "profile_stopped", "save_all_flush", "clean_stop")
+    console_pipe_failed = lifecycle.get("console_pipe_failed")
+    if console_pipe_failed is not None and not isinstance(console_pipe_failed, bool):
+        message = "rejected pilot lifecycle has an invalid console-pipe status"
+        raise ValueError(message)
+    return_code = lifecycle.get("return_code")
+    if return_code is not None and (
+        isinstance(return_code, bool) or not isinstance(return_code, int)
+    ):
+        message = "rejected pilot lifecycle has an invalid return code"
+        raise ValueError(message)
     lifecycle_failed = (
-        not all(lifecycle.get(field) is True for field in success_fields)
-        or lifecycle.get("return_code") != 0
-        or lifecycle.get("console_pipe_failed") is True
+        any(lifecycle[field] is False for field in success_fields)
+        or (isinstance(return_code, int) and return_code != 0)
+        or console_pipe_failed is True
     )
     failure_markers = (b"Server already shutting down", b"Spark overlay preflight failed")
     log_failed = False

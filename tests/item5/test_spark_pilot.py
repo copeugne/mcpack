@@ -140,6 +140,15 @@ def test_launch_failure_has_rejection_receipt() -> None:
     assert receipt["rejection_reason"] == "Server launch failed: run.sh"
 
 
+def test_runtime_io_failure_has_cleanup_receipt() -> None:
+    """Post-launch I/O is distinguished from failure to create the JVM."""
+    receipt = load_pilot_module().runtime_failure_receipt(OSError("disk full"))
+    assert receipt["clean_stop"] is False
+    assert receipt["rejection_reason"] == (
+        "Pilot runtime I/O failed after server cleanup: disk full"
+    )
+
+
 def test_runtime_mod_preflight_rejects_extra_jar(tmp_path: Path) -> None:
     """Profiling cannot proceed with an added gameplay artifact."""
     module = load_pilot_module()

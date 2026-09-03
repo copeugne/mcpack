@@ -152,6 +152,49 @@ def test_rejected_pilot_requires_machine_observable_failure(tmp_path: Path) -> N
         )
 
 
+def test_rejected_pilot_rejects_empty_lifecycle_document(tmp_path: Path) -> None:
+    """Missing lifecycle fields are malformed evidence, not observable failures."""
+    pilot = PilotRun.model_validate_json(
+        (ROOT / "evidence/item-5/pilots/rejected.json").read_bytes()
+    )
+    relative = Path("evidence/item-5/pilots/raw/rejected/lifecycle.json")
+    target = tmp_path / relative
+    target.parent.mkdir(parents=True)
+    target.write_text("{}\n", encoding="utf-8")
+    validator = cast(
+        "Callable[[PilotRun, Path], None]", load_validator_module().validate_rejected_lifecycle
+    )
+    with pytest.raises(ValueError, match="incomplete or malformed"):
+        validator(pilot, tmp_path)
+
+
+def test_runtime_sample_values_must_match_preserved_log(tmp_path: Path) -> None:
+    """Rehashing invented CSV values cannot manufacture accepted observations."""
+    pilot = PilotRun.model_validate_json(
+        (ROOT / "evidence/item-5/pilots/accepted.json").read_bytes()
+    )
+    log_relative = Path("evidence/item-5/pilots/raw/accepted/debug.log.gz")
+    log_target = tmp_path / log_relative
+    log_target.parent.mkdir(parents=True)
+    log_target.write_bytes((ROOT / log_relative).read_bytes())
+    csv_relative = Path("evidence/item-5/pilots/raw/accepted/samples.csv")
+    csv_target = tmp_path / csv_relative
+    csv_target.write_text(
+        (ROOT / csv_relative)
+        .read_text(encoding="utf-8")
+        .replace("tps,ordinary,solo,1,,20.0", "tps,ordinary,solo,1,,19.0"),
+        encoding="utf-8",
+    )
+    seed_suite = tmp_path / "test-environment/seed-suite.json"
+    seed_suite.parent.mkdir()
+    seed_suite.write_bytes((ROOT / "test-environment/seed-suite.json").read_bytes())
+    validator = cast(
+        "Callable[[PilotRun, Path], None]", load_validator_module().validate_runtime_provenance
+    )
+    with pytest.raises(ValueError, match="does not match preserved runtime output"):
+        validator(pilot, tmp_path)
+
+
 def test_processed_summary_must_match_raw_samples(tmp_path: Path) -> None:
     """A stale or arbitrary processed artifact cannot satisfy the pilot gate."""
     pilot = PilotRun.model_validate_json(

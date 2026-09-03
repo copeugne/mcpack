@@ -87,6 +87,15 @@ RATIO_SCALES: dict[str, float] = {
     "adventure_activity_ratio": 1.0,
 }
 PROPORTION_METRICS = {"death_rate", "repeated_dungeon_layout_frequency", "adventure_activity_ratio"}
+MULTI_AXIS_METRICS = {
+    "memory",
+    "garbage_collection",
+    "entity_count",
+    "chunk_generation_cost",
+    "inter_structure_distance",
+    "death_rate",
+    "loot_value",
+}
 
 
 class StrictModel(BaseModel):
@@ -324,11 +333,11 @@ def analyze_samples(  # noqa: C901, PLR0912, PLR0915 - validation is intentional
             message = "sample rows require positive repetition and finite numeric value"
             raise ValueError(message)
         component = row.get("component") or None
-        if metric_id == "loot_value" and component is None:
-            message = "loot_value rows require a nonempty component"
+        if metric_id in MULTI_AXIS_METRICS and component is None:
+            message = f"multi-axis metric {metric_id} rows require a nonempty component"
             raise ValueError(message)
-        if metric_id != "loot_value" and component is not None:
-            message = "only loot_value rows may declare a component"
+        if metric_id not in MULTI_AXIS_METRICS and component is not None:
+            message = f"single-axis metric {metric_id} cannot declare a component"
             raise ValueError(message)
         group = (metric_id, seed_case, player_case, repetition, component)
         if metric_id in RATIO_METRICS:

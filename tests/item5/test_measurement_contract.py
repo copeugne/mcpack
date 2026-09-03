@@ -174,7 +174,7 @@ def test_ratio_metrics_retain_numerators_and_denominators() -> None:
 def test_ratio_metric_requires_exposure_inputs() -> None:
     """A precomputed rate without its exposure base is invalid."""
     with pytest.raises(ValueError, match="requires numerator and denominator"):
-        analyze_samples([sample("death_rate", "0.5")])
+        analyze_samples([sample("death_rate", "0.5", component="per_player_hour")])
 
 
 def test_ratio_metric_rejects_value_inconsistent_with_operands() -> None:
@@ -215,10 +215,23 @@ def test_loot_value_components_are_never_pooled() -> None:
     assert [group["component"] for group in groups] == ["replacement_cost", "utility"]
 
 
+@pytest.mark.parametrize("metric_id", ["memory", "garbage_collection", "entity_count"])
+def test_multi_axis_metrics_require_components(metric_id: str) -> None:
+    """Measurements with incomparable quantities cannot be pooled into one group."""
+    with pytest.raises(ValueError, match="require a nonempty component"):
+        analyze_samples([sample(metric_id, "1")])
+
+
 @pytest.mark.parametrize(
     "row",
     [
-        sample("death_rate", "-1", numerator="-1", denominator="1"),
+        sample(
+            "death_rate",
+            "-1",
+            numerator="-1",
+            denominator="1",
+            component="per_player_hour",
+        ),
         sample("adventure_activity_ratio", "2", numerator="2", denominator="1"),
     ],
 )
@@ -231,8 +244,8 @@ def test_ratio_metrics_reject_impossible_operands(row: dict[str, str]) -> None:
 def test_ratio_operand_output_is_order_independent() -> None:
     """Canonical summaries do not depend on equivalent input row order."""
     rows = [
-        sample("death_rate", "0.5", numerator="1", denominator="2"),
-        sample("death_rate", "0.5", numerator="2", denominator="4"),
+        sample("death_rate", "0.5", numerator="1", denominator="2", component="per_player_hour"),
+        sample("death_rate", "0.5", numerator="2", denominator="4", component="per_player_hour"),
     ]
     assert analyze_samples(rows) == analyze_samples(reversed(rows))
 
