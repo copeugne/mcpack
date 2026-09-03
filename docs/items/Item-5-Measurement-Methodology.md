@@ -174,3 +174,7 @@ Irrelevant evidence files may be omitted only when `run.json` explains why. Form
 
 Final `PERF-001..012`, cadence, dungeon topology and loot-value targets remain downstream decisions. This permits honest baseline collection but forbids final acceptance until the owning item predeclares its threshold.
 
+
+## 8. Enforced v1 artifacts (2026-09-02 continuation)
+
+The earlier v0.1 prose above is design input. The executable authority is now `measurement/item5/protocol-v1.json`, validated by the strict models in `src/mcpack_evidence/item5.py`. It expands every shorthand method into all fields required by the continuation handoff and rejects incomplete coverage. The immutable Item 3 gameplay manifest remains 136 files; Spark is an explicit one-file instrumentation overlay described in the closure report rather than an undisclosed change to the retained stack.
