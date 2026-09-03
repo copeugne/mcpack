@@ -1,81 +1,47 @@
-# Item 6 — Pristine Baseline Configuration Audit
-
-**Status:** `COMPLETE`
-**Audit mode:** read-only
-**Baseline:** zero third-party mods
-
-## Scope correction
-
-The supplied 190-JAR list is tentative, and the user confirmed no installed instance existed. Item 6 therefore audits the only honest baseline: Minecraft 1.21.1, NeoForge 21.1.249, no third-party JARs. It does not infer configuration for draft candidates, and it changes no settings.
-
-The independently booted Item 4 restore instance is the generated-default reference. All three platform TOML files match it byte-for-byte. `server.properties` differs only in its generated timestamp comment and matches after timestamp normalization.
-
-## Existing configuration inventory
-
-| Surface | State | Disposition |
-|---|---|---|
-| `config/fml.toml` | NeoForge-generated; exact independent-reference match | Default, no change |
-| `config/neoforge-common.toml` | NeoForge-generated; exact independent-reference match | Default, no change |
-| `config/neoforge-server.toml` | NeoForge-generated; exact independent-reference match | Default, no change |
-| `server.properties` | Minecraft-generated; independent normalized match | Default, no change |
-| `user_jvm_args.txt` | Explicit construction envelope: `-Xms1G`, `-Xmx4G` | Non-default project value; testing only |
-| `eula.txt` | `eula=true` after explicit user acceptance | Required authorized change |
-| `defaultconfigs/` | Empty | No overrides |
-| `world/datapacks/` | Empty | No datapacks |
-| `mods/` | Empty | Zero-mod baseline confirmed |
-| access-control JSON | Empty ops, whitelist and ban lists | Baseline state, not final operations policy |
-
-## Requested candidate surfaces
-
-| Requested audit family | Baseline result |
-|---|---|
-| Sparse Structures | Not installed; no config exists |
-| Structure Essentials | Not installed; no config exists |
-| ServerCore | Not installed; no config exists |
-| C2ME | Not installed; no config exists |
-| Chunky | Not installed in pristine baseline; no config exists |
-| Structure Layout Optimizer | Not installed; no config exists |
-| When Dungeons Arise / Seven Seas | Not installed; no config exists |
-| YUNG family | Not installed; no config exists |
-| IDAS / Integrated family | Not installed; no config exists |
-| Moog families | Not installed; no config exists |
-| village generators | Not installed; no config exists |
-| Loot Integrations | Not installed; no config exists |
-| modded mob spawning/difficulty | Not installed; only vanilla server properties exist |
-
-“No config” is not a compatibility or suitability conclusion. Every retained candidate will receive its own generated-config audit when admitted to an experimental branch.
-
-## Platform values relevant to later design
-
-These are unmodified defaults, but they can materially affect the intended pack and are flagged without changing them:
-
-| Key | Baseline | Later owner |
-|---|---:|---|
-| `difficulty` | `easy` | Items 14, 25–27, 44–45 |
-| `pvp` | `true` | Cooperative/consensual-PvP operations design |
-| `allow-flight` | `false` | Aeronautics runtime test; do not assume mod flight bypasses vanilla checks |
-| `view-distance` / `simulation-distance` | `10` / `10` | Performance and discoverability protocols |
-| `max-players` | `20` | Final value should reflect declared 10-player peak plus policy |
-| `generate-structures` | `true` | Required baseline worldgen behavior |
-| `sync-chunk-writes` | `true` | Item 17/49 storage and save testing |
-| `max-tick-time` | `60000` ms | Operations/watchdog design |
-| `spawn-monsters` / `spawn-npcs` | `true` / `true` | Baseline combat/civilization behavior |
-| `spawn-protection` | `16` | Claims/griefing and spawn policy |
-| `white-list` / `enforce-whitelist` | `false` / `false` | Final access-control policy |
-| `log-ips` | `true` | Privacy/log-redaction policy |
-
-NeoForge safety defaults `removeErroringEntities=false` and `removeErroringBlockEntities=false` preserve crash evidence instead of silently deleting state. `dependencyOverrides={}` proves no compatibility constraint is bypassed.
-
-## Non-default values
-
-Only two deliberate deviations exist:
-
-1. EULA acceptance, explicitly authorized by the user.
-2. The construction-only 1–4 GiB heap envelope.
-
-No hidden global structure multiplier, per-structure override, disabled structure set, modded spawn rule, loot override, or difficulty mod exists in the baseline. Therefore none can explain later candidate-stack density until actually installed.
+# Item 6 — Retained-stack generated configuration audit
 
 ## Exit decision
 
-The complete existing configuration surface is inventoried and hash-retained in `evidence/config-audit/item6-pristine-config-audit.json`. Every named absent surface is explicit. No setting was changed. Item 7 may evaluate the zero-mod terrain/worldgen control; modded interactions belong to controlled candidates after admission.
+**PASS.** The exact 136-JAR retained server stack was reconstructed under Minecraft 1.21.1, NeoForge 21.1.249, and Eclipse Temurin 21.0.12.1+1-LTS. A new ordinary seed-42 instance reached readiness, completed `save-all flush`, and stopped cleanly. No setting was tuned. The post-shutdown configuration tree is frozen losslessly in `evidence/item-6/frozen/`; the sorted 228-file manifest binds every relative path, byte size, SHA-256, and generation stage.
 
+The capture distinguishes 4 installation/materialization files, 223 first-startup files, and 1 world-creation server config. No file first appeared only during shutdown. The post-shutdown state is the effective baseline. The validator independently verifies exact tree equality, every file identity, report-to-manifest references, literal setting evidence, and the audit's manifest identity.
+
+## Reconstruction and capture boundary
+
+The run reacquired and hash-verified all platform artifacts and all 190 audited candidate artifacts, materialized only the 136 retained candidates, and removed the copied Item 2 world before applying seed 42. The NeoForge installer required the environment HTTP proxy and an operational-only Java trust store; neither was committed. The committed lifecycle receipt proves readiness, explicit flush confirmation, clean stop, and return code zero. The compressed log preserves generation diagnostics.
+
+The frozen tree contains `config/`, `defaultconfigs/`, `world/serverconfig` (normalized to `world-serverconfig/` in the evidence root), and `server.properties`. Candidate JARs, binaries, the generated world, caches, and the operational trust store remain excluded.
+
+## Configuration findings
+
+### Density and structure placement
+
+* **Sparse Structures is the primary explicit low-density control.** Its generated global `spreadFactor` is 2, so structure placements are made rarer. The generated mansion override is also factor 2. The precise way global and per-structure factors compose must be confirmed from runtime density evidence rather than guessed.
+* **Structure Essentials exposes a second global placement control**, but `spacingSeparationModifier` is neutral at 1.0. Its 32-block minimum-distance feature is disabled, as are automatic biome compatibility and overlap logging. Fast lookup is enabled and search radii differ from vanilla as documented in the generated file.
+* **Structure Layout Optimizer** retains its seed-parity-preserving default: template-pool list deduplication is false.
+* **Cristel Lib emits provider placement and toggle files.** WDA major/minor sets use 50/45 and 45/40 spacing/separation before any global Sparse Structures effect, and all listed WDA families are enabled. Equivalent preserved files cover Seven Seas, IDAS, Integrated structures, Explorations/Explorify, four Moog namespaces, Repurposed Structures, and YUNG providers. The machine-readable audit cites representative effective controls without falsely treating aliases or pieces as Item 8 families.
+* **Explicit replacements exist.** IDAS disables the vanilla desert pyramid by generated default. Integrated Villages disables vanilla villages by generated default. These are disabled vanilla sets caused by replacements, not missing generation.
+
+### Villages, loot, mobs, difficulty, and performance
+
+* Village ownership is crowded: CTOV, Towns & Towers, Better Village, Integrated Villages, and Village Taverns all generated controls. Towns & Towers towns use spacing 51 and separation 12; Better Village uses spacing 45 and separation 20; Village Taverns injects weight-10, limit-1 taverns into five village house pools. Their datapack/registry precedence remains an Item 7 runtime question.
+* Loot Integrations uses generated defaults: maps are skipped for added loot, existing items are not skipped, and modded-item weight is 3. Provider-specific integration JARs do not emit separate user configuration.
+* ServerCore dynamic adaptation, breeding caps, entity activation range, and special spawning mobcap enforcement are disabled. Its natural monster category remains 70 at a one-tick interval. Its non-parity `reduce-sync-loads` and `cache-ticking-chunks` optimizations are enabled by generated default.
+* The materialized server difficulty is `easy`; animal, monster, and NPC spawning are enabled. This is baseline input, not a tuning recommendation.
+* C2ME leaves user-facing values at `"default"`. It records that the End biome cache optimization is disabled at runtime due to Biolith 3.0.10 incompatibility. Chunky is retained but generated no config file, which is explicitly different from a generated default.
+
+## Precedence, uncertainty, and downstream gates
+
+There are two global spacing owners, numerous per-provider placements, explicit vanilla replacements, and several village pool/placement owners. The files establish configuration intent but cannot alone prove registry precedence or observed density. Item 7 must inspect fresh worlds for all four deterministic seeds under this exact manifest. Item 10 must quantify Sparse Structures' actual contribution. Loader/mod implicit defaults that produce no file remain identified as implicit or absent rather than fabricated.
+
+Item 7 is eligible only while `uv run python tools/freeze_item6_config.py validate ...` passes. Any configuration mutation creates a new identity and reopens this gate.
+
+## Reproduction
+
+```bash
+uv run python tools/freeze_item6_config.py validate \
+  --root evidence/item-6/frozen \
+  --manifest evidence/item-6/generated-config-manifest.json \
+  --audit evidence/item-6/config-audit.json
+uv run pytest -q tests/item6
+```

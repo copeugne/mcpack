@@ -115,6 +115,10 @@ def validate_lifecycle_identities(pilot: PilotRun, root: Path) -> None:
         if lifecycle.get(key) != expected:
             message = f"pilot {key} does not match lifecycle receipt"
             raise ValueError(message)
+    lifecycle_java = lifecycle.get("java_version")
+    if not isinstance(lifecycle_java, str) or 'version "21.0.12.1"' not in lifecycle_java:
+        message = "accepted pilot lifecycle does not identify pinned Temurin 21"
+        raise ValueError(message)
     overlay_path = root / "measurement/item5/spark-overlay.json"
     overlay = json.loads(overlay_path.read_bytes())
     if sha256_file(overlay_path) != pilot.environment.spark_overlay_sha256:
@@ -139,6 +143,15 @@ def validate_runtime_provenance(  # noqa: C901 - provenance checks are intention
         raise ValueError(message)
     with gzip.open(confined_artifact_path(root, logs[0].path), "rt", encoding="utf-8") as stream:
         log = stream.read()
+    if "java version 21.0.12.1 by Eclipse Adoptium" not in log:
+        message = "accepted pilot did not run on pinned Eclipse Adoptium Java 21"
+        raise ValueError(message)
+    if pilot.environment.java_version not in {
+        "Temurin-21.0.12.1+1",
+        "Temurin-21.0.12.1+1-LTS",
+    }:
+        message = "pilot java_version does not match pinned Temurin build"
+        raise ValueError(message)
     probe_markers = {
         "spark tps": "TPS from last 5s",
         "spark health --memory": "> Memory usage:",
@@ -153,7 +166,6 @@ def validate_runtime_provenance(  # noqa: C901 - provenance checks are intention
     version_patterns = {
         "minecraft_version": rf"--fml\.mcVersion, {minecraft}(?:,|\])",
         "neoforge_version": rf"--fml\.neoForgeVersion, {neoforge}(?:,|\])",
-        "java_version": rf"java version {re.escape(pilot.environment.java_version)}(?: |;)",
     }
     for field, pattern in version_patterns.items():
         if re.search(pattern, log) is None:
@@ -285,6 +297,10 @@ def validate_pilots(  # noqa: C901 - cross-artifact gate is intentionally linear
         root / "evidence/item-3/runtime/retained-server-candidates.txt"
     )
     host_evidence_sha256 = sha256_file(root / "evidence/item-2/host-discovery.json")
+    platform = json.loads((root / "infrastructure/manifests/platform-1.21.1.json").read_bytes())
+    java_archive_sha256 = next(
+        artifact["sha256"] for artifact in platform["artifacts"] if artifact["id"] == "temurin-jdk"
+    )
     statuses: set[str] = set()
     for path in pilots:
         pilot = PilotRun.model_validate_json(path.read_bytes())
@@ -296,6 +312,9 @@ def validate_pilots(  # noqa: C901 - cross-artifact gate is intentionally linear
             raise ValueError(message)
         if pilot.environment.host_evidence_sha256 != host_evidence_sha256:
             message = f"pilot host evidence hash mismatch: {path}"
+            raise ValueError(message)
+        if pilot.environment.java_archive_sha256 != java_archive_sha256:
+            message = f"pilot Java archive hash mismatch: {path}"
             raise ValueError(message)
         statuses.add(pilot.status)
         for artifact in (*pilot.raw_artifacts, *pilot.processed_artifacts):
