@@ -4,8 +4,17 @@ Documentation=file:///workspace/mcpack/test-environment/README.md
 
 [Service]
 Type=oneshot
+User=mcpack
+Group=mcpack
 WorkingDirectory=/workspace/mcpack
 ExecStart=/workspace/mcpack/infrastructure/bin/item4-automated-backup --project-root /workspace/mcpack --role %i
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/workspace/mcpack/instances/item4
+ReadWritePaths=/workspace/mcpack/backups/item4/automated
+ReadWritePaths=/workspace/mcpack/evidence/raw/item4/automated-backups
 Nice=10
 IOSchedulingClass=best-effort
 IOSchedulingPriority=7
