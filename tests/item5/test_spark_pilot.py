@@ -131,3 +131,47 @@ def test_overlay_preflight_failure_has_rejection_receipt() -> None:
     assert receipt["clean_stop"] is False
     assert receipt["commands"] == []
     assert receipt["rejection_reason"] == "Spark overlay preflight failed: wrong digest"
+
+
+def test_launch_failure_has_rejection_receipt() -> None:
+    """A missing run script remains a machine-readable failed lifecycle."""
+    receipt = load_pilot_module().launch_failure_receipt(FileNotFoundError("run.sh"))
+    assert receipt["clean_stop"] is False
+    assert receipt["rejection_reason"] == "Server launch failed: run.sh"
+
+
+def test_runtime_mod_preflight_rejects_extra_jar(tmp_path: Path) -> None:
+    """Profiling cannot proceed with an added gameplay artifact."""
+    module = load_pilot_module()
+    mods = tmp_path / "mods"
+    mods.mkdir()
+    (mods / "game.jar").write_bytes(b"game")
+    (mods / "spark.jar").write_bytes(b"spark")
+    (mods / "extra.jar").write_bytes(b"extra")
+
+    def digest(value: bytes) -> str:
+        return hashlib.sha256(value).hexdigest()
+
+    retained = tmp_path / "retained.txt"
+    retained.write_text("game.jar\n", encoding="utf-8")
+    acquisition = tmp_path / "acquisition.json"
+    acquisition.write_text(
+        json.dumps(
+            {
+                "artifacts": [
+                    {
+                        "candidate_filename": "game.jar",
+                        "identity": {"computed_sha256": digest(b"game")},
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    overlay = tmp_path / "overlay.json"
+    overlay.write_text(
+        json.dumps({"overlay": {"filename": "spark.jar", "sha256": digest(b"spark")}}),
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="filenames do not match"):
+        module.validate_runtime_mods(tmp_path, overlay, retained, acquisition)

@@ -3,6 +3,11 @@
   "protocol_id": "ae-measurement-v1",
   "player_cases": [
     {
+      "case_id": "zero",
+      "players": 0,
+      "source": "Item 5 idle baseline: empty server auxiliary case"
+    },
+    {
       "case_id": "solo",
       "players": 1,
       "source": "SPECS Item 5 explicit solo case"
@@ -20,7 +25,7 @@
     {
       "case_id": "normal",
       "players": 6,
-      "source": "Item 2 baseline decision: normal concurrency range is 2\u20136; upper bound is the load case"
+      "source": "Item 2 baseline decision: normal concurrency range is 2–6; upper bound is the load case"
     },
     {
       "case_id": "peak",
@@ -37,6 +42,7 @@
       "collection_procedure": [
         "restore or materialize the declared clean seed control",
         "verify all environment hashes before warm-up",
+        "capture the zero case before any player joins; then capture each declared player case independently",
         "run Spark local-file profiling plus long-form system sampling",
         "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
       ],
@@ -52,6 +58,7 @@
         "biome-diverse"
       ],
       "player_cases": [
+        "zero",
         "solo",
         "two",
         "four",
@@ -83,8 +90,11 @@
       "collection_procedure": [
         "restore or materialize the declared clean seed control",
         "verify all environment hashes before warm-up",
-        "run Spark local-file profiling plus long-form system sampling",
-        "stop, hash raw artifacts, then run tools/analyze_item5_samples.py"
+        "load measurement/item5/combat-fixture-v1.json and issue its setup_commands in order",
+        "start Spark profiler start --interval 4 and record its output locally",
+        "for 600 seconds issue all three fixture wave commands at each 30-second boundary while the declared players engage tagged hostiles",
+        "record command, monotonic offset, seed_case, player_case, repetition, and MSPT samples in the immutable raw CSV",
+        "issue spark profiler stop --save-to-file, save-all flush, and stop; hash raw artifacts, then run tools/analyze_item5_samples.py"
       ],
       "warm_up": "Discard the first replicate; after server readiness stabilize for 600 seconds (plus 300 seconds loaded-idle for player scenarios).",
       "sample_interval_seconds": 4,
@@ -109,7 +119,7 @@
       "processed_format": "json",
       "processed_path_template": "evidence/item-5/processed/<run-id>/active_combat_mspt.json",
       "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
-      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
+      "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim. The combat fixture file hash and complete 20-wave command event log are mandatory.",
       "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
       "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
       "required_environment_hashes": [
@@ -936,7 +946,7 @@
       "raw_path_template": "evidence/raw/item-5/<run-id>/loot_value.csv",
       "processed_format": "json",
       "processed_path_template": "evidence/item-5/processed/<run-id>/loot_value.json",
-      "aggregation": "Report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for the median; density ratios retain numerator and denominator.",
+      "aggregation": "Group independently by the nonempty value-vector component, seed, player case, and repetition; report count, median, mean, p95, p99, maximum, range/IQR, and 10,000-resample percentile-bootstrap 95% confidence interval for each component. Never aggregate unlike components.",
       "acceptance_rule": "Accept collection only when declared cases, seeds, repetitions, duration, hashes, raw artifacts, and predeclared threshold are present; an unresolved downstream threshold permits baseline reporting but not a tuning claim.",
       "invalid_run_rule": "Reject and retain the run when identity/hash verification fails, warm-up or duration is short, required samples/cases are missing, profiler fails, undeclared interference occurs, or raw data is malformed.",
       "uncertainty_treatment": "Retain outliers; report sample count, dispersion and bootstrap 95% interval. Mark fewer than 30 world observations sparse/right-censored and never impute missing samples.",
@@ -1133,5 +1143,6 @@
       ],
       "warm_up_seconds": 900
     }
-  ]
+  ],
+  "combat_fixture_sha256": "cbfdd484c9074cca52e7a9b4b1a1db18c0ffe7db2cc9be6a2a524d887b49ad02"
 }

@@ -91,6 +91,30 @@ def test_pilot_environment_hashes_must_match_lifecycle(tmp_path: Path) -> None:
         load_validator()(ROOT / "measurement/item5/protocol-v1.json", [changed], ROOT)
 
 
+@pytest.mark.parametrize(("field", "value"), [("seed", 999), ("player_case", "peak")])
+def test_pilot_case_labels_must_match_raw_samples(
+    tmp_path: Path, field: str, value: object
+) -> None:
+    """Receipts cannot relabel preserved measurements to another condition."""
+    receipt = json.loads((ROOT / "evidence/item-5/pilots/accepted.json").read_bytes())
+    receipt[field] = value
+    changed = tmp_path / f"wrong-{field}.json"
+    changed.write_text(json.dumps(receipt), encoding="utf-8")
+    with pytest.raises(ValueError, match=r"seed|player case"):
+        load_validator()(ROOT / "measurement/item5/protocol-v1.json", [changed], ROOT)
+
+
+@pytest.mark.parametrize("field", ["minecraft_version", "neoforge_version", "java_version"])
+def test_pilot_versions_must_match_runtime_log(tmp_path: Path, field: str) -> None:
+    """Declared runtime versions are observations rather than free-form labels."""
+    receipt = json.loads((ROOT / "evidence/item-5/pilots/accepted.json").read_bytes())
+    receipt["environment"][field] = "invented"
+    changed = tmp_path / f"wrong-{field}.json"
+    changed.write_text(json.dumps(receipt), encoding="utf-8")
+    with pytest.raises(ValueError, match=f"{field} does not match"):
+        load_validator()(ROOT / "measurement/item5/protocol-v1.json", [changed], ROOT)
+
+
 def test_accepted_pilot_requires_successful_lifecycle(tmp_path: Path) -> None:
     """Matching identities cannot turn a failed lifecycle into accepted evidence."""
     pilot = PilotRun.model_validate_json(
