@@ -86,15 +86,42 @@ RATIO_SCALES: dict[str, float] = {
     "repeated_dungeon_layout_frequency": 1.0,
     "adventure_activity_ratio": 1.0,
 }
-PROPORTION_METRICS = {"death_rate", "repeated_dungeon_layout_frequency", "adventure_activity_ratio"}
+PROPORTION_METRICS = {"repeated_dungeon_layout_frequency", "adventure_activity_ratio"}
 MULTI_AXIS_METRICS = {
     "memory",
     "garbage_collection",
     "entity_count",
+    "pathfinding_cost",
     "chunk_generation_cost",
     "inter_structure_distance",
     "death_rate",
     "loot_value",
+}
+SAMPLE_UNITS: dict[str, set[str]] = {
+    "idle_mspt": {"milliseconds per tick"},
+    "active_combat_mspt": {"milliseconds per tick"},
+    "fresh_worldgen_mspt": {"milliseconds per tick"},
+    "tps": {"ticks per second"},
+    "memory": {"bytes"},
+    "garbage_collection": {"milliseconds", "collections"},
+    "entity_count": {"entities"},
+    "pathfinding_cost": {"milliseconds", "percent CPU"},
+    "chunk_generation_cost": {"milliseconds per chunk"},
+    "structure_count": {"unique starts"},
+    "structures_per_1000_chunks": {"starts per 1000 chunks"},
+    "actionable_locations_per_1000_chunks": {"locations per 1000 chunks"},
+    "combat_encounters_per_1000_chunks": {"encounters per 1000 chunks"},
+    "proper_dungeons_per_1000_chunks": {"dungeons per 1000 chunks"},
+    "major_expeditions_per_1000_chunks": {"expeditions per 1000 chunks"},
+    "inter_structure_distance": {"blocks"},
+    "travel_time": {"seconds"},
+    "dungeon_duration": {"seconds"},
+    "death_rate": {"deaths per exposure"},
+    "loot_value": {"value-vector components"},
+    "unique_structure_families_per_hour": {"families per player-hour"},
+    "time_to_first_repeated_structure_family": {"seconds"},
+    "repeated_dungeon_layout_frequency": {"proportion"},
+    "adventure_activity_ratio": {"ratio"},
 }
 
 
@@ -305,8 +332,8 @@ def analyze_samples(  # noqa: C901, PLR0912, PLR0915 - validation is intentional
     rows: Iterable[dict[str, str]],
 ) -> dict[str, object]:
     """Aggregate samples without pooling experimental dimensions."""
-    grouped: dict[tuple[str, str, str, int, str | None], list[float]] = {}
-    ratio_inputs: dict[tuple[str, str, str, int, str | None], list[tuple[float, float]]] = {}
+    grouped: dict[tuple[str, str, str, int, str | None, str], list[float]] = {}
+    ratio_inputs: dict[tuple[str, str, str, int, str | None, str], list[tuple[float, float]]] = {}
     for row in rows:
         try:
             metric_id = row["metric_id"]
@@ -314,11 +341,15 @@ def analyze_samples(  # noqa: C901, PLR0912, PLR0915 - validation is intentional
             player_case = row["player_case"]
             repetition = int(row["repetition"])
             value = float(row["value"])
+            unit = row["unit"]
         except (KeyError, TypeError, ValueError) as error:
             message = "sample rows require metric_id, seed_case, player_case, repetition, and value"
             raise ValueError(message) from error
         if metric_id not in REQUIRED_METRICS:
             message = f"sample row has unknown metric_id: {metric_id}"
+            raise ValueError(message)
+        if unit not in SAMPLE_UNITS[metric_id]:
+            message = f"sample row has invalid unit for {metric_id}: {unit}"
             raise ValueError(message)
         if seed_case not in REQUIRED_SEED_CASES:
             message = f"sample row has unknown seed_case: {seed_case}"
@@ -329,8 +360,8 @@ def analyze_samples(  # noqa: C901, PLR0912, PLR0915 - validation is intentional
         if player_case not in allowed_player_cases:
             message = f"sample row has unknown player_case: {player_case}"
             raise ValueError(message)
-        if repetition <= 0 or not math.isfinite(value):
-            message = "sample rows require positive repetition and finite numeric value"
+        if repetition <= 0 or not math.isfinite(value) or value < 0:
+            message = "sample rows require positive repetition and nonnegative finite numeric value"
             raise ValueError(message)
         component = row.get("component") or None
         if metric_id in MULTI_AXIS_METRICS and component is None:
@@ -339,7 +370,7 @@ def analyze_samples(  # noqa: C901, PLR0912, PLR0915 - validation is intentional
         if metric_id not in MULTI_AXIS_METRICS and component is not None:
             message = f"single-axis metric {metric_id} cannot declare a component"
             raise ValueError(message)
-        group = (metric_id, seed_case, player_case, repetition, component)
+        group = (metric_id, seed_case, player_case, repetition, component, unit)
         if metric_id in RATIO_METRICS:
             try:
                 numerator = float(row["numerator"])
@@ -371,12 +402,13 @@ def analyze_samples(  # noqa: C901, PLR0912, PLR0915 - validation is intentional
         raise ValueError(message)
     groups: list[dict[str, object]] = []
     for group, values in sorted(grouped.items()):
-        metric_id, seed_case, player_case, repetition, component = group
+        metric_id, seed_case, player_case, repetition, component, unit = group
         result_group: dict[str, object] = {
             "metric_id": metric_id,
             "seed_case": seed_case,
             "player_case": player_case,
             "repetition": repetition,
+            "unit": unit,
             "statistics": _summarize(metric_id, values, ratio_inputs.get(group)),
         }
         if component is not None:

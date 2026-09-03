@@ -6,11 +6,12 @@ from __future__ import annotations
 import json
 import math
 from pathlib import Path
+from typing import cast
 
 import pytest
 from pydantic import ValidationError
 
-from mcpack_evidence.item5 import MeasurementProtocol, PilotRun, analyze_samples
+from mcpack_evidence.item5 import SAMPLE_UNITS, MeasurementProtocol, PilotRun, analyze_samples
 
 ROOT = Path(__file__).parents[2]
 
@@ -23,6 +24,7 @@ def sample(metric_id: str, value: str, **extra: str) -> dict[str, str]:
         "player_case": "solo",
         "repetition": "1",
         "value": value,
+        "unit": min(SAMPLE_UNITS.get(metric_id, {"unknown"})),
         **extra,
     }
 
@@ -103,6 +105,7 @@ def test_analyzer_is_order_independent_and_deterministic() -> None:
                 "seed_case": "ordinary",
                 "player_case": "solo",
                 "repetition": 1,
+                "unit": "milliseconds per tick",
                 "statistics": {
                     "bootstrap_median_95ci": [8.0, 8.0],
                     "bootstrap_resamples": 10_000,
@@ -122,6 +125,7 @@ def test_analyzer_is_order_independent_and_deterministic() -> None:
                 "seed_case": "ordinary",
                 "player_case": "solo",
                 "repetition": 1,
+                "unit": "ticks per second",
                 "statistics": {
                     "bootstrap_median_95ci": [19.0, 20.0],
                     "bootstrap_resamples": 10_000,
@@ -237,8 +241,45 @@ def test_multi_axis_metrics_require_components(metric_id: str) -> None:
 )
 def test_ratio_metrics_reject_impossible_operands(row: dict[str, str]) -> None:
     """Counts cannot be negative and proportions cannot exceed their exposure."""
-    with pytest.raises(ValueError, match="bounded proportion operands"):
+    with pytest.raises(ValueError, match=r"nonnegative finite|bounded proportion operands"):
         analyze_samples([row])
+
+
+def test_death_rate_can_exceed_one_per_exposure() -> None:
+    """Rates are not incorrectly constrained as probabilities."""
+    row = sample("death_rate", "2", numerator="2", denominator="1", component="per_player_hour")
+    groups = cast("list[dict[str, object]]", analyze_samples([row])["groups"])
+    statistics = cast("dict[str, object]", groups[0]["statistics"])
+    assert statistics["mean"] == 2.0
+
+
+def test_pathfinding_components_are_never_pooled() -> None:
+    """Pathfinding time and CPU attribution remain distinct quantities."""
+    rows = [
+        sample("pathfinding_cost", "5", component="wall_time", unit="milliseconds"),
+        sample("pathfinding_cost", "25", component="cpu_share", unit="percent CPU"),
+    ]
+    groups = cast("list[dict[str, object]]", analyze_samples(rows)["groups"])
+    assert len(groups) == 2
+
+
+@pytest.mark.parametrize(
+    "row",
+    [
+        {key: value for key, value in sample("travel_time", "2").items() if key != "unit"},
+        sample("travel_time", "2", unit="minutes"),
+    ],
+)
+def test_samples_require_protocol_units(row: dict[str, str]) -> None:
+    """Missing or incompatible units cannot enter canonical summaries."""
+    with pytest.raises(ValueError, match=r"require metric_id|invalid unit"):
+        analyze_samples([row])
+
+
+def test_negative_physical_measurements_are_rejected() -> None:
+    """Finite but impossible negative observations cannot be summarized."""
+    with pytest.raises(ValueError, match="nonnegative finite"):
+        analyze_samples([sample("tps", "-1")])
 
 
 def test_ratio_operand_output_is_order_independent() -> None:
