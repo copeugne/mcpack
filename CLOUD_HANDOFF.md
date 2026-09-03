@@ -13,7 +13,7 @@ The exact restart point is:
 ## 2. Current Git and delivery state
 
 - Repository: `/workspace/mcpack`.
-- Current local branch at this handoff: `work`, local head `cff7606`. This environment reconstructed an aggregate Item 5 commit and is not the branch to use as delivery authority.
+- Current local branch at this handoff: `work`. Its pre-handoff content head was reconstructed aggregate commit `cff7606`; the handoff was then committed and synchronized with `origin/work`. This branch is not the delivery authority for starting Item 6.
 - `origin/main`: `4f61549` (`Merge pull request #9 from copeugne/fix/item5-java-runtime`).
 - PR #6 (Item 4): merged as `1af46a5` on 2026-09-02.
 - PR #8 (Item 5 protocol/pilot): merged as `4ebf2a9` on 2026-09-03.
