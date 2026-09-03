@@ -125,6 +125,26 @@ def find_new_profiles(instance: Path, prior_profiles: dict[Path, tuple[int, int]
     )
 
 
+def clean_stop_succeeded(  # noqa: PLR0913 - explicit lifecycle signals prevent ambiguity.
+    *,
+    return_code: int,
+    ready: bool,
+    profile_saved: bool,
+    flushed: bool,
+    profile_count: int,
+    console_pipe_failed: bool,
+) -> bool:
+    """Require one and only one preserved profile for lifecycle success."""
+    return (
+        return_code == 0
+        and ready
+        and profile_saved
+        and flushed
+        and profile_count == 1
+        and not console_pipe_failed
+    )
+
+
 def run(  # noqa: C901, PLR0912, PLR0915 - lifecycle state machine is intentionally linear.
     instance: Path, java_home: Path, spark_overlay: Path, log_path: Path, timeout: int
 ) -> dict[str, object]:
@@ -245,13 +265,13 @@ def run(  # noqa: C901, PLR0912, PLR0915 - lifecycle state machine is intentiona
         "profile_started": profile_started,
         "profile_stopped": profile_saved,
         "save_all_flush": flushed,
-        "clean_stop": (
-            return_code == 0
-            and ready
-            and profile_saved
-            and flushed
-            and bool(profiles)
-            and not console_pipe_failed
+        "clean_stop": clean_stop_succeeded(
+            return_code=return_code,
+            ready=ready,
+            profile_saved=profile_saved,
+            flushed=flushed,
+            profile_count=len(profiles),
+            console_pipe_failed=console_pipe_failed,
         ),
         "return_code": return_code,
         "duration_seconds": round(time.monotonic() - started, 3),

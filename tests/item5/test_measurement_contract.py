@@ -15,6 +15,18 @@ from mcpack_evidence.item5 import MeasurementProtocol, PilotRun, analyze_samples
 ROOT = Path(__file__).parents[2]
 
 
+def sample(metric_id: str, value: str, **extra: str) -> dict[str, str]:
+    """Build one dimension-complete sample row."""
+    return {
+        "metric_id": metric_id,
+        "seed_case": "ordinary",
+        "player_case": "solo",
+        "repetition": "1",
+        "value": value,
+        **extra,
+    }
+
+
 def test_committed_protocol_has_exact_required_coverage() -> None:
     """The committed protocol covers all metrics and player cases."""
     protocol = MeasurementProtocol.model_validate_json(
@@ -62,37 +74,51 @@ def test_each_metric_requires_complete_cases_and_hashes(
 def test_analyzer_is_order_independent_and_deterministic() -> None:
     """Long-form aggregation has stable keys and statistics."""
     rows = [
-        {"metric_id": "tps", "value": "19"},
-        {"metric_id": "idle_mspt", "value": "8"},
-        {"metric_id": "tps", "value": "20"},
+        sample("tps", "19"),
+        sample("idle_mspt", "8"),
+        sample("tps", "20"),
     ]
     expected = {
-        "idle_mspt": {
-            "bootstrap_median_95ci": [8.0, 8.0],
-            "bootstrap_resamples": 10_000,
-            "count": 1,
-            "iqr": 0.0,
-            "max": 8.0,
-            "mean": 8.0,
-            "median": 8.0,
-            "min": 8.0,
-            "p95": 8.0,
-            "p99": 8.0,
-            "range": 0.0,
-        },
-        "tps": {
-            "bootstrap_median_95ci": [19.0, 20.0],
-            "bootstrap_resamples": 10_000,
-            "count": 2,
-            "iqr": 0.5,
-            "max": 20.0,
-            "mean": 19.5,
-            "median": 19.5,
-            "min": 19.0,
-            "p95": 19.95,
-            "p99": 19.99,
-            "range": 1.0,
-        },
+        "groups": [
+            {
+                "metric_id": "idle_mspt",
+                "seed_case": "ordinary",
+                "player_case": "solo",
+                "repetition": 1,
+                "statistics": {
+                    "bootstrap_median_95ci": [8.0, 8.0],
+                    "bootstrap_resamples": 10_000,
+                    "count": 1,
+                    "iqr": 0.0,
+                    "max": 8.0,
+                    "mean": 8.0,
+                    "median": 8.0,
+                    "min": 8.0,
+                    "p95": 8.0,
+                    "p99": 8.0,
+                    "range": 0.0,
+                },
+            },
+            {
+                "metric_id": "tps",
+                "seed_case": "ordinary",
+                "player_case": "solo",
+                "repetition": 1,
+                "statistics": {
+                    "bootstrap_median_95ci": [19.0, 20.0],
+                    "bootstrap_resamples": 10_000,
+                    "count": 2,
+                    "iqr": 0.5,
+                    "max": 20.0,
+                    "mean": 19.5,
+                    "median": 19.5,
+                    "min": 19.0,
+                    "p95": 19.95,
+                    "p99": 19.99,
+                    "range": 1.0,
+                },
+            },
+        ]
     }
     assert analyze_samples(rows) == expected
     assert analyze_samples(reversed(rows)) == expected
@@ -100,7 +126,7 @@ def test_analyzer_is_order_independent_and_deterministic() -> None:
 
 @pytest.mark.parametrize(
     "rows",
-    [[], [{"metric_id": "tps", "value": "NaN"}], [{"metric_id": "tps", "value": "Infinity"}]],
+    [[], [sample("tps", "NaN")], [sample("tps", "Infinity")]],
 )
 def test_analyzer_rejects_empty_and_nonfinite_samples(rows: list[dict[str, str]]) -> None:
     """Missing and non-finite samples cannot produce accepted JSON."""
@@ -113,21 +139,13 @@ def test_ratio_metrics_retain_numerators_and_denominators() -> None:
     """Processed rate evidence keeps its auditable exposure inputs."""
     result = analyze_samples(
         [
-            {
-                "metric_id": "structures_per_1000_chunks",
-                "value": "2.0",
-                "numerator": "8",
-                "denominator": "4000",
-            },
-            {
-                "metric_id": "structures_per_1000_chunks",
-                "value": "3.0",
-                "numerator": "12",
-                "denominator": "4000",
-            },
+            sample("structures_per_1000_chunks", "2.0", numerator="8", denominator="4000"),
+            sample("structures_per_1000_chunks", "3.0", numerator="12", denominator="4000"),
         ]
     )
-    summary = result["structures_per_1000_chunks"]
+    groups = result["groups"]
+    assert isinstance(groups, list)
+    summary = groups[0]["statistics"]
     assert isinstance(summary, dict)
     assert summary["numerators"] == [8.0, 12.0]
     assert summary["denominators"] == [4000.0, 4000.0]
@@ -138,19 +156,34 @@ def test_ratio_metrics_retain_numerators_and_denominators() -> None:
 def test_ratio_metric_requires_exposure_inputs() -> None:
     """A precomputed rate without its exposure base is invalid."""
     with pytest.raises(ValueError, match="requires numerator and denominator"):
-        analyze_samples([{"metric_id": "death_rate", "value": "0.5"}])
+        analyze_samples([sample("death_rate", "0.5")])
 
 
 def test_ratio_metric_rejects_value_inconsistent_with_operands() -> None:
     """A plausible-looking derived value cannot contradict its exposure inputs."""
-    row = {
-        "metric_id": "structures_per_1000_chunks",
-        "value": "999",
-        "numerator": "1",
-        "denominator": "1000",
-    }
+    row = sample("structures_per_1000_chunks", "999", numerator="1", denominator="1000")
     with pytest.raises(ValueError, match="does not match its operands"):
         analyze_samples([row])
+
+
+def test_analyzer_separates_experimental_dimensions() -> None:
+    """Seeds, player cases, and repetitions never share a distribution."""
+    rows = [
+        sample("tps", "20"),
+        {**sample("tps", "19"), "seed_case": "mountainous"},
+        {**sample("tps", "18"), "player_case": "two"},
+        {**sample("tps", "17"), "repetition": "2"},
+    ]
+    result = analyze_samples(rows)
+    groups = result["groups"]
+    assert isinstance(groups, list)
+    assert len(groups) == 4
+
+
+def test_analyzer_rejects_unknown_metric_id() -> None:
+    """Misspelled and invented metric identifiers cannot be summarized."""
+    with pytest.raises(ValueError, match="unknown metric_id"):
+        analyze_samples([sample("tpz", "20")])
 
 
 def test_accepted_pilot_requires_processed_and_environment_evidence() -> None:

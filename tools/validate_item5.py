@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import gzip
 import json
 from pathlib import Path
 from typing import cast
@@ -121,6 +122,37 @@ def validate_lifecycle_identities(pilot: PilotRun, root: Path) -> None:
     validate_lifecycle_success(lifecycle, pilot)
 
 
+def validate_rejected_lifecycle(pilot: PilotRun, root: Path) -> None:
+    """Require rejected receipts to bind a machine-observable failure."""
+    if pilot.status != "rejected":
+        return
+    lifecycle_artifacts = [
+        artifact for artifact in pilot.raw_artifacts if artifact.path.endswith("/lifecycle.json")
+    ]
+    if len(lifecycle_artifacts) != 1:
+        message = "rejected pilot must reference exactly one lifecycle receipt"
+        raise ValueError(message)
+    lifecycle = json.loads(confined_artifact_path(root, lifecycle_artifacts[0].path).read_bytes())
+    success_fields = ("ready", "profile_started", "profile_stopped", "save_all_flush", "clean_stop")
+    lifecycle_failed = (
+        not all(lifecycle.get(field) is True for field in success_fields)
+        or lifecycle.get("return_code") != 0
+        or lifecycle.get("console_pipe_failed") is True
+    )
+    failure_markers = (b"Server already shutting down", b"Spark overlay preflight failed")
+    log_failed = False
+    for artifact in pilot.raw_artifacts:
+        if artifact.path.endswith(".log.gz"):
+            with gzip.open(confined_artifact_path(root, artifact.path), "rb") as stream:
+                content = stream.read()
+            log_failed = any(marker in content for marker in failure_markers)
+            if log_failed:
+                break
+    if not lifecycle_failed and not log_failed:
+        message = "rejected pilot has no machine-observable lifecycle failure"
+        raise ValueError(message)
+
+
 def validate_pilots(protocol_path: Path, pilots: list[Path], root: Path) -> MeasurementProtocol:
     """Validate protocol coverage, receipt binding, statuses, and artifact identities."""
     protocol = MeasurementProtocol.model_validate_json(protocol_path.read_bytes())
@@ -151,6 +183,7 @@ def validate_pilots(protocol_path: Path, pilots: list[Path], root: Path) -> Meas
                 message = f"artifact hash mismatch: {artifact.path}"
                 raise ValueError(message)
         validate_lifecycle_identities(pilot, root)
+        validate_rejected_lifecycle(pilot, root)
         validate_processed_samples(pilot, root)
     if pilots and statuses != {"accepted", "rejected"}:
         message = "pilot set must prove accepted and rejected handling"
