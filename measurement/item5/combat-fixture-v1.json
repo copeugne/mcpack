@@ -1,0 +1,23 @@
+{
+  "schema_version": "item5-combat-fixture-v1",
+  "fixture_id": "hostile-wave-v1",
+  "arena": {"dimension": "minecraft:overworld", "origin": [0, 100, 0], "radius_blocks": 16},
+  "setup_commands": [
+    "difficulty hard",
+    "gamerule mobGriefing false",
+    "kill @e[tag=mcpack_item5_combat]",
+    "tp @a 0 100 0",
+    "effect give @a minecraft:resistance 1200 1 true"
+  ],
+  "wave": {
+    "interval_seconds": 30,
+    "count": 20,
+    "commands": [
+      "summon minecraft:zombie 8 100 0 {Tags:[\"mcpack_item5_combat\"],PersistenceRequired:1b}",
+      "summon minecraft:skeleton -8 100 0 {Tags:[\"mcpack_item5_combat\"],PersistenceRequired:1b}",
+      "summon minecraft:spider 0 100 8 {Tags:[\"mcpack_item5_combat\"],PersistenceRequired:1b}"
+    ]
+  },
+  "player_action": "All connected fixture players continuously engage tagged hostiles inside the arena; leaving the arena invalidates the run.",
+  "recording": "Record every issued command with monotonic offset in the raw event CSV; issue each wave command at every 30-second boundary for the 600-second sample window."
+}
