@@ -6,6 +6,7 @@ import argparse
 import csv
 import gzip
 import json
+import re
 from pathlib import Path
 from typing import cast
 
@@ -106,6 +107,7 @@ def validate_lifecycle_identities(pilot: PilotRun, root: Path) -> None:
         "world_snapshot_sha256": pilot.environment.world_snapshot_sha256,
         "spark_overlay_sha256": pilot.environment.spark_overlay_sha256,
         "spark_artifact_sha256": pilot.environment.spark_artifact_sha256,
+        "runtime_mods_sha256": pilot.environment.runtime_mods_sha256,
     }
     for key, expected in expected_identities.items():
         if lifecycle.get(key) != expected:
@@ -120,6 +122,44 @@ def validate_lifecycle_identities(pilot: PilotRun, root: Path) -> None:
         message = "pilot Spark artifact hash does not match the committed overlay"
         raise ValueError(message)
     validate_lifecycle_success(lifecycle, pilot)
+
+
+def validate_runtime_provenance(pilot: PilotRun, root: Path) -> None:
+    """Bind receipt versions, seed, and player case to preserved raw evidence."""
+    if pilot.status != "accepted":
+        return
+    logs = [artifact for artifact in pilot.raw_artifacts if artifact.path.endswith(".log.gz")]
+    csvs = [artifact for artifact in pilot.raw_artifacts if artifact.path.endswith(".csv")]
+    if len(logs) != 1 or len(csvs) != 1:
+        message = "accepted pilot must contain one runtime log and one sample CSV"
+        raise ValueError(message)
+    with gzip.open(confined_artifact_path(root, logs[0].path), "rt", encoding="utf-8") as stream:
+        log = stream.read()
+    minecraft = re.escape(pilot.environment.minecraft_version)
+    neoforge = re.escape(pilot.environment.neoforge_version)
+    version_patterns = {
+        "minecraft_version": rf"--fml\.mcVersion, {minecraft}(?:,|\])",
+        "neoforge_version": rf"--fml\.neoForgeVersion, {neoforge}(?:,|\])",
+        "java_version": rf"java version {re.escape(pilot.environment.java_version)}(?: |;)",
+    }
+    for field, pattern in version_patterns.items():
+        if re.search(pattern, log) is None:
+            message = f"pilot {field} does not match preserved runtime output"
+            raise ValueError(message)
+    seed_suite = json.loads((root / "test-environment/seed-suite.json").read_bytes())
+    seed_roles = {int(row["seed"]): row["role"] for row in seed_suite["seeds"]}
+    if pilot.seed not in seed_roles:
+        message = "pilot seed is not declared in the committed seed suite"
+        raise ValueError(message)
+    with confined_artifact_path(root, csvs[0].path).open(encoding="utf-8", newline="") as stream:
+        rows = list(csv.DictReader(stream))
+    if not rows or any(
+        row.get("seed_case") != seed_roles[pilot.seed]
+        or row.get("player_case") != pilot.player_case
+        for row in rows
+    ):
+        message = "pilot seed or player case does not match raw samples"
+        raise ValueError(message)
 
 
 def validate_rejected_lifecycle(pilot: PilotRun, root: Path) -> None:
@@ -157,6 +197,10 @@ def validate_pilots(protocol_path: Path, pilots: list[Path], root: Path) -> Meas
     """Validate protocol coverage, receipt binding, statuses, and artifact identities."""
     protocol = MeasurementProtocol.model_validate_json(protocol_path.read_bytes())
     protocol_sha256 = sha256_file(protocol_path)
+    combat_fixture = root / "measurement/item5/combat-fixture-v1.json"
+    if sha256_file(combat_fixture) != protocol.combat_fixture_sha256:
+        message = "protocol combat fixture hash mismatch"
+        raise ValueError(message)
     retained_manifest_sha256 = sha256_file(
         root / "evidence/item-3/runtime/retained-server-candidates.txt"
     )
@@ -183,6 +227,7 @@ def validate_pilots(protocol_path: Path, pilots: list[Path], root: Path) -> Meas
                 message = f"artifact hash mismatch: {artifact.path}"
                 raise ValueError(message)
         validate_lifecycle_identities(pilot, root)
+        validate_runtime_provenance(pilot, root)
         validate_rejected_lifecycle(pilot, root)
         validate_processed_samples(pilot, root)
     if pilots and statuses != {"accepted", "rejected"}:

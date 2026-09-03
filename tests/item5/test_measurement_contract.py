@@ -33,7 +33,8 @@ def test_committed_protocol_has_exact_required_coverage() -> None:
         (ROOT / "measurement/item5/protocol-v1.json").read_bytes()
     )
     assert len(protocol.metrics) == 24
-    assert len(protocol.player_cases) == 5
+    assert len(protocol.player_cases) == 6
+    assert protocol.player_cases[0].case_id == "zero"
 
 
 def test_missing_methodology_field_is_rejected() -> None:
@@ -48,7 +49,7 @@ def test_missing_metric_and_duplicate_player_case_are_rejected() -> None:
     """Coverage checks reject subtle omissions and duplicates."""
     payload = json.loads((ROOT / "measurement/item5/protocol-v1.json").read_bytes())
     payload["metrics"].pop()
-    payload["player_cases"][-1]["case_id"] = "solo"
+    payload["player_cases"][-1] = dict(payload["player_cases"][1])
     with pytest.raises(ValidationError, match="protocol must cover"):
         MeasurementProtocol.model_validate(payload)
 
@@ -69,6 +70,23 @@ def test_each_metric_requires_complete_cases_and_hashes(
     payload["metrics"][0][field] = value
     with pytest.raises(ValidationError, match=message):
         MeasurementProtocol.model_validate(payload)
+
+
+def test_player_case_labels_have_fixed_counts() -> None:
+    """Named load cases cannot silently change their player counts."""
+    payload = json.loads((ROOT / "measurement/item5/protocol-v1.json").read_bytes())
+    payload["player_cases"][-1]["players"] = 1
+    with pytest.raises(ValidationError, match="peak must contain 10 players"):
+        MeasurementProtocol.model_validate(payload)
+
+
+def test_idle_metric_includes_zero_player_case() -> None:
+    """The empty-server baseline has a distinct representable dimension."""
+    protocol = MeasurementProtocol.model_validate_json(
+        (ROOT / "measurement/item5/protocol-v1.json").read_bytes()
+    )
+    idle = next(metric for metric in protocol.metrics if metric.metric_id == "idle_mspt")
+    assert idle.player_cases[0] == "zero"
 
 
 def test_analyzer_is_order_independent_and_deterministic() -> None:
@@ -184,6 +202,49 @@ def test_analyzer_rejects_unknown_metric_id() -> None:
     """Misspelled and invented metric identifiers cannot be summarized."""
     with pytest.raises(ValueError, match="unknown metric_id"):
         analyze_samples([sample("tpz", "20")])
+
+
+def test_loot_value_components_are_never_pooled() -> None:
+    """Incomparable loot-vector axes retain separate statistics."""
+    rows = [
+        {**sample("loot_value", "2"), "component": "utility"},
+        {**sample("loot_value", "200"), "component": "replacement_cost"},
+    ]
+    groups = analyze_samples(rows)["groups"]
+    assert isinstance(groups, list)
+    assert [group["component"] for group in groups] == ["replacement_cost", "utility"]
+
+
+@pytest.mark.parametrize(
+    "row",
+    [
+        sample("death_rate", "-1", numerator="-1", denominator="1"),
+        sample("adventure_activity_ratio", "2", numerator="2", denominator="1"),
+    ],
+)
+def test_ratio_metrics_reject_impossible_operands(row: dict[str, str]) -> None:
+    """Counts cannot be negative and proportions cannot exceed their exposure."""
+    with pytest.raises(ValueError, match="bounded proportion operands"):
+        analyze_samples([row])
+
+
+def test_ratio_operand_output_is_order_independent() -> None:
+    """Canonical summaries do not depend on equivalent input row order."""
+    rows = [
+        sample("death_rate", "0.5", numerator="1", denominator="2"),
+        sample("death_rate", "0.5", numerator="2", denominator="4"),
+    ]
+    assert analyze_samples(rows) == analyze_samples(reversed(rows))
+
+
+def test_combat_contract_names_executable_fixture() -> None:
+    """Combat workload commands and cadence live in a versioned fixture."""
+    fixture = json.loads((ROOT / "measurement/item5/combat-fixture-v1.json").read_bytes())
+    assert fixture["wave"]["count"] == 20
+    assert len(fixture["wave"]["commands"]) == 3
+    protocol = json.loads((ROOT / "measurement/item5/protocol-v1.json").read_bytes())
+    combat = next(row for row in protocol["metrics"] if row["metric_id"] == "active_combat_mspt")
+    assert any("combat-fixture-v1.json" in step for step in combat["collection_procedure"])
 
 
 def test_accepted_pilot_requires_processed_and_environment_evidence() -> None:
