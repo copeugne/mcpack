@@ -1,0 +1,435 @@
+{
+  "schema_version": "item6-config-audit-v1",
+  "configuration_identity": "sha256:1db06570e4dd9531c5d8ce14ac4bbd2591618c8198cc76c7bc625dea5829fdbd",
+  "scope": "untouched retained-stack generated configuration after first clean shutdown",
+  "tuning_performed": false,
+  "systems": [
+    {
+      "system": "Sparse Structures",
+      "status": "generated",
+      "files": [
+        "config/sparsestructures.json5"
+      ]
+    },
+    {
+      "system": "Structure Essentials",
+      "status": "generated",
+      "files": [
+        "config/structureessentials.json"
+      ]
+    },
+    {
+      "system": "Structure Layout Optimizer",
+      "status": "generated",
+      "files": [
+        "config/structure_layout_optimizer.jsonc"
+      ]
+    },
+    {
+      "system": "ServerCore",
+      "status": "generated",
+      "files": [
+        "config/servercore/config.yml",
+        "config/servercore/optimizations.yml"
+      ]
+    },
+    {
+      "system": "C2ME",
+      "status": "generated",
+      "files": [
+        "config/c2me.toml"
+      ]
+    },
+    {
+      "system": "Chunky",
+      "status": "retained-but-no-config-generated",
+      "files": []
+    },
+    {
+      "system": "When Dungeons Arise",
+      "status": "generated-by-cristellib",
+      "files": [
+        "config/cristellib/dungeons_arise/structure_placement_config.json5",
+        "config/cristellib/dungeons_arise/structure_toggle_config.json5"
+      ]
+    },
+    {
+      "system": "WDA Seven Seas",
+      "status": "generated-by-cristellib",
+      "files": [
+        "config/cristellib/dungeons_arise_seven_seas/structure_placement_config.json5",
+        "config/cristellib/dungeons_arise_seven_seas/structure_toggle_config.json5"
+      ]
+    },
+    {
+      "system": "YUNG structure systems",
+      "status": "generated",
+      "files": [
+        "config/betterdungeons-neoforge-1_21.toml",
+        "config/betterstrongholds-neoforge-1_21.toml"
+      ]
+    },
+    {
+      "system": "IDAS",
+      "status": "generated",
+      "files": [
+        "config/idas-neoforge-1_21.toml",
+        "config/cristellib/idas/structure_placement_config.json5",
+        "config/cristellib/idas/structure_toggle_config.json5"
+      ]
+    },
+    {
+      "system": "Integrated structures",
+      "status": "generated",
+      "files": [
+        "config/integrated_villages-neoforge-1_21.toml",
+        "config/cristellib/integrated_stronghold/structure_placement_config.json5"
+      ]
+    },
+    {
+      "system": "Moog structure families",
+      "status": "generated-by-cristellib",
+      "files": [
+        "config/cristellib/mes/structure_placement_config.json5",
+        "config/cristellib/mns/structure_placement_config.json5",
+        "config/cristellib/mss/structure_placement_config.json5",
+        "config/cristellib/mvs/structure_placement_config.json5"
+      ]
+    },
+    {
+      "system": "Village generation",
+      "status": "generated",
+      "files": [
+        "config/ctov-common.toml",
+        "config/towns_and_towers/structure_rarity_new.json5",
+        "config/bettervillage_1.properties",
+        "config/village_taverns/villages.json"
+      ]
+    },
+    {
+      "system": "Loot Integrations",
+      "status": "generated",
+      "files": [
+        "config/lootintegrations.json"
+      ]
+    },
+    {
+      "system": "Mob spawning and entity limits",
+      "status": "generated",
+      "files": [
+        "config/servercore/config.yml",
+        "server.properties"
+      ]
+    },
+    {
+      "system": "Difficulty",
+      "status": "materialized-input",
+      "files": [
+        "server.properties"
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "system": "Sparse Structures",
+      "file": "config/sparsestructures.json5",
+      "key": "spreadFactor",
+      "generated_default": 2,
+      "effective_value": 2,
+      "non_default": false,
+      "scope": "global structure placements",
+      "owner": "sparsestructures",
+      "interactions": [
+        "Structure Essentials spacingSeparationModifier",
+        "Cristel Lib per-set spacing"
+      ],
+      "evidence": "\"spreadFactor\": 2"
+    },
+    {
+      "system": "Sparse Structures",
+      "file": "config/sparsestructures.json5",
+      "key": "customSpreadFactors.minecraft:mansion.factor",
+      "generated_default": 2,
+      "effective_value": 2,
+      "non_default": false,
+      "scope": "minecraft:mansion override",
+      "owner": "sparsestructures",
+      "interactions": [
+        "global spreadFactor"
+      ],
+      "evidence": "\"structure\": \"minecraft:mansion\""
+    },
+    {
+      "system": "Structure Essentials",
+      "file": "config/structureessentials.json",
+      "key": "spacingSeparationModifier.spacingSeparationModifier",
+      "generated_default": 1.0,
+      "effective_value": 1.0,
+      "non_default": false,
+      "scope": "global",
+      "owner": "structureessentials",
+      "interactions": [
+        "Sparse Structures spreadFactor"
+      ],
+      "evidence": "\"spacingSeparationModifier\": 1.0"
+    },
+    {
+      "system": "Structure Essentials",
+      "file": "config/structureessentials.json",
+      "key": "minimumStructureDistance.enabled",
+      "generated_default": false,
+      "effective_value": false,
+      "non_default": false,
+      "scope": "global overlap prevention",
+      "owner": "structureessentials",
+      "interactions": [
+        "all structure providers"
+      ],
+      "evidence": "\"minimumStructureDistance\": {"
+    },
+    {
+      "system": "Structure Layout Optimizer",
+      "file": "config/structure_layout_optimizer.jsonc",
+      "key": "deduplicateShuffledTemplatePoolElementList",
+      "generated_default": false,
+      "effective_value": false,
+      "non_default": false,
+      "scope": "jigsaw layouts",
+      "owner": "structure_layout_optimizer",
+      "interactions": [
+        "structure template pools"
+      ],
+      "evidence": "\"deduplicateShuffledTemplatePoolElementList\": false"
+    },
+    {
+      "system": "C2ME",
+      "file": "config/c2me.toml",
+      "key": "vanillaWorldGenOptimizations.useEndBiomeCache",
+      "generated_default": "default",
+      "effective_value": "compatibility-disabled at runtime",
+      "non_default": false,
+      "scope": "End worldgen performance",
+      "owner": "c2me",
+      "interactions": [
+        "biolith@3.0.10"
+      ],
+      "evidence": "Incompatible with biolith@3.0.10"
+    },
+    {
+      "system": "ServerCore",
+      "file": "config/servercore/config.yml",
+      "key": "dynamic.enabled",
+      "generated_default": false,
+      "effective_value": false,
+      "non_default": false,
+      "scope": "dynamic performance controls",
+      "owner": "servercore",
+      "interactions": [
+        "mob caps",
+        "view and simulation distance"
+      ],
+      "evidence": "  enabled: false"
+    },
+    {
+      "system": "ServerCore",
+      "file": "config/servercore/config.yml",
+      "key": "mob-spawning.categories.MONSTER.mobcap",
+      "generated_default": 70,
+      "effective_value": 70,
+      "non_default": false,
+      "scope": "monster category",
+      "owner": "servercore",
+      "interactions": [
+        "vanilla natural spawning"
+      ],
+      "evidence": "      mobcap: 70"
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_placement_config.json5",
+      "key": "major_structures.spacing",
+      "generated_default": 50,
+      "effective_value": 50,
+      "non_default": false,
+      "scope": "WDA major structure set before global factor",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [
+        "Sparse Structures factor 2"
+      ],
+      "evidence": "\"spacing\": 50"
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.*",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": "\"aviary\": true"
+    },
+    {
+      "system": "IDAS",
+      "file": "config/idas-neoforge-1_21.toml",
+      "key": "IDAS.General.Disable Vanilla Desert Pyramid",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "vanilla desert pyramid",
+      "owner": "idas",
+      "interactions": [
+        "vanilla structures"
+      ],
+      "evidence": "\"Disable Vanilla Desert Pyramid\" = true"
+    },
+    {
+      "system": "Integrated structures",
+      "file": "config/integrated_villages-neoforge-1_21.toml",
+      "key": "Integrated Villages.General.Disable Vanilla Villages",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "vanilla villages",
+      "owner": "integrated_villages",
+      "interactions": [
+        "CTOV",
+        "Towns and Towers",
+        "Better Village",
+        "Village Taverns"
+      ],
+      "evidence": "\"Disable Vanilla Villages\" = true"
+    },
+    {
+      "system": "Towns and Towers",
+      "file": "config/towns_and_towers/structure_rarity_new.json5",
+      "key": "towns.spacing",
+      "generated_default": 51,
+      "effective_value": 51,
+      "non_default": false,
+      "scope": "Towns and Towers village sets before global factor",
+      "owner": "towns_and_towers",
+      "interactions": [
+        "Sparse Structures factor 2",
+        "Integrated Villages vanilla replacement"
+      ],
+      "evidence": "\"spacing\": 51"
+    },
+    {
+      "system": "Better Village",
+      "file": "config/bettervillage_1.properties",
+      "key": "int.villages.spacing",
+      "generated_default": 45,
+      "effective_value": 45,
+      "non_default": false,
+      "scope": "Better Village placement",
+      "owner": "bettervillage",
+      "interactions": [
+        "other village providers",
+        "Sparse Structures factor 2"
+      ],
+      "evidence": "int.villages.spacing=45"
+    },
+    {
+      "system": "Village Taverns",
+      "file": "config/village_taverns/villages.json",
+      "key": "entries[*].structures[*].weight",
+      "generated_default": 10,
+      "effective_value": 10,
+      "non_default": false,
+      "scope": "five vanilla village house pools",
+      "owner": "village_taverns",
+      "interactions": [
+        "village pool replacements"
+      ],
+      "evidence": "\"weight\": 10"
+    },
+    {
+      "system": "Loot Integrations",
+      "file": "config/lootintegrations.json",
+      "key": "moddedItemWeight.moddedItemWeight",
+      "generated_default": 3,
+      "effective_value": 3,
+      "non_default": false,
+      "scope": "integrated loot selection",
+      "owner": "lootintegrations",
+      "interactions": [
+        "provider-specific Loot Integrations addons"
+      ],
+      "evidence": "\"moddedItemWeight\": 3"
+    },
+    {
+      "system": "Difficulty",
+      "file": "server.properties",
+      "key": "difficulty",
+      "generated_default": "easy",
+      "effective_value": "easy",
+      "non_default": false,
+      "scope": "server",
+      "owner": "minecraft",
+      "interactions": [
+        "mob spawning and combat"
+      ],
+      "evidence": "difficulty=easy"
+    }
+  ],
+  "findings": [
+    {
+      "id": "I6-F1",
+      "classification": "hidden-low-density-cause",
+      "summary": "Sparse Structures globally doubles spacing for all structure placements; mansion receives an additional factor of 2.",
+      "files": [
+        "config/sparsestructures.json5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "I6-F2",
+      "classification": "duplicated-control",
+      "summary": "Structure Essentials also owns a global spacing/separation modifier, but its effective value is neutral (1.0).",
+      "files": [
+        "config/structureessentials.json",
+        "config/sparsestructures.json5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "I6-F3",
+      "classification": "disabled-structure-set",
+      "summary": "IDAS disables vanilla desert pyramids and Integrated Villages disables vanilla villages by generated default; these are explicit replacements, not absent generation.",
+      "files": [
+        "config/idas-neoforge-1_21.toml",
+        "config/integrated_villages-neoforge-1_21.toml"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "I6-F4",
+      "classification": "worldgen-performance-interaction",
+      "summary": "C2ME records that its End biome cache optimization is disabled at runtime because Biolith 3.0.10 is incompatible.",
+      "files": [
+        "config/c2me.toml"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "I6-F5",
+      "classification": "precedence-risk",
+      "summary": "Village generation is controlled by multiple providers and pool injectors; actual registry/datapack precedence requires Item 7 runtime inspection.",
+      "files": [
+        "config/integrated_villages-neoforge-1_21.toml",
+        "config/ctov-common.toml",
+        "config/towns_and_towers/structure_rarity_new.json5",
+        "config/bettervillage_1.properties",
+        "config/village_taverns/villages.json"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "limitations": [
+    "Generated files do not expose every loader or datapack implicit default; absence is recorded rather than guessed.",
+    "The effective multiplicative composition of Sparse Structures with provider spacing is an implementation inference to verify empirically in Items 7 and 10.",
+    "No Item 7 terrain observation or Item 8 family inventory is claimed by this audit."
+  ]
+}
