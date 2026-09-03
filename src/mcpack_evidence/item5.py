@@ -42,6 +42,15 @@ REQUIRED_METRICS: set[str] = {
     "adventure_activity_ratio",
 }
 REQUIRED_PLAYER_CASES: set[str] = {"solo", "two", "four", "normal", "peak"}
+IDLE_PLAYER_CASE: str = "zero"
+PLAYER_COUNTS: dict[str, int] = {
+    "zero": 0,
+    "solo": 1,
+    "two": 2,
+    "four": 4,
+    "normal": 6,
+    "peak": 10,
+}
 REQUIRED_SEED_CASES: set[str] = {
     "ordinary",
     "mountainous",
@@ -77,6 +86,7 @@ RATIO_SCALES: dict[str, float] = {
     "repeated_dungeon_layout_frequency": 1.0,
     "adventure_activity_ratio": 1.0,
 }
+PROPORTION_METRICS = {"death_rate", "repeated_dungeon_layout_frequency", "adventure_activity_ratio"}
 
 
 class StrictModel(BaseModel):
@@ -87,6 +97,7 @@ class StrictModel(BaseModel):
 
 NonEmpty = Annotated[str, Field(min_length=1)]
 PositiveInt = Annotated[int, Field(gt=0)]
+NonNegativeInt = Annotated[int, Field(ge=0)]
 BOOTSTRAP_RESAMPLES = 10_000
 
 
@@ -102,6 +113,7 @@ class EnvironmentIdentity(StrictModel):
     world_snapshot_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")] | None
     spark_overlay_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")] | None
     spark_artifact_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")] | None
+    runtime_mods_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")] | None
     minecraft_version: NonEmpty
     neoforge_version: NonEmpty
     java_version: NonEmpty
@@ -123,7 +135,7 @@ class MetricContract(StrictModel):
     total_run_duration_seconds: PositiveInt
     repetitions: PositiveInt
     seed_cases: tuple[Literal["ordinary", "mountainous", "ocean-heavy", "biome-diverse"], ...]
-    player_cases: tuple[Literal["solo", "two", "four", "normal", "peak"], ...]
+    player_cases: tuple[Literal["zero", "solo", "two", "four", "normal", "peak"], ...]
     raw_format: Literal["csv", "json", "sparkprofile", "jvm_gc_log"]
     raw_path_template: NonEmpty
     processed_format: Literal["json"]
@@ -150,9 +162,12 @@ class MetricContract(StrictModel):
         ):
             message = "metric must cover every required seed case exactly once"
             raise ValueError(message)
+        expected_player_cases = REQUIRED_PLAYER_CASES | (
+            {IDLE_PLAYER_CASE} if self.metric_id == "idle_mspt" else set[str]()
+        )
         if (
             len(self.player_cases) != len(set(self.player_cases))
-            or set(self.player_cases) != REQUIRED_PLAYER_CASES
+            or set(self.player_cases) != expected_player_cases
         ):
             message = "metric must cover every required player case exactly once"
             raise ValueError(message)
@@ -168,9 +183,19 @@ class MetricContract(StrictModel):
 class PlayerCase(StrictModel):
     """Material player-count case."""
 
-    case_id: Literal["solo", "two", "four", "normal", "peak"]
-    players: PositiveInt
+    case_id: Literal["zero", "solo", "two", "four", "normal", "peak"]
+    players: NonNegativeInt
     source: NonEmpty
+
+    @model_validator(mode="after")
+    def validate_count(self) -> PlayerCase:
+        """Prevent semantic case labels from drifting away from fixed loads."""
+        if self.players != PLAYER_COUNTS[self.case_id]:
+            message = (
+                f"player case {self.case_id} must contain {PLAYER_COUNTS[self.case_id]} players"
+            )
+            raise ValueError(message)
+        return self
 
 
 class MeasurementProtocol(StrictModel):
@@ -178,6 +203,7 @@ class MeasurementProtocol(StrictModel):
 
     schema_version: Literal["item5-measurement-protocol-v1"]
     protocol_id: NonEmpty
+    combat_fixture_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
     player_cases: tuple[PlayerCase, ...]
     metrics: tuple[MetricContract, ...]
 
@@ -189,7 +215,8 @@ class MeasurementProtocol(StrictModel):
         if len(metrics) != len(set(metrics)) or set(metrics) != REQUIRED_METRICS:
             message = "protocol must cover every required metric exactly once"
             raise ValueError(message)
-        if len(cases) != len(set(cases)) or set(cases) != REQUIRED_PLAYER_CASES:
+        expected_cases = REQUIRED_PLAYER_CASES | {IDLE_PLAYER_CASE}
+        if len(cases) != len(set(cases)) or set(cases) != expected_cases:
             message = "protocol must cover every required player case exactly once"
             raise ValueError(message)
         return self
@@ -239,6 +266,7 @@ class PilotRun(StrictModel):
             or self.environment.world_snapshot_sha256 is None
             or self.environment.spark_overlay_sha256 is None
             or self.environment.spark_artifact_sha256 is None
+            or self.environment.runtime_mods_sha256 is None
         ):
             message = "an accepted pilot must record every environment and Spark hash"
             raise ValueError(message)
@@ -264,12 +292,12 @@ def artifact_identity(path: Path, *, root: Path) -> ArtifactIdentity:
     )
 
 
-def analyze_samples(  # noqa: C901 - row validation is intentionally linear.
+def analyze_samples(  # noqa: C901, PLR0912, PLR0915 - validation is intentionally linear.
     rows: Iterable[dict[str, str]],
 ) -> dict[str, object]:
     """Aggregate samples without pooling experimental dimensions."""
-    grouped: dict[tuple[str, str, str, int], list[float]] = {}
-    ratio_inputs: dict[tuple[str, str, str, int], list[tuple[float, float]]] = {}
+    grouped: dict[tuple[str, str, str, int, str | None], list[float]] = {}
+    ratio_inputs: dict[tuple[str, str, str, int, str | None], list[tuple[float, float]]] = {}
     for row in rows:
         try:
             metric_id = row["metric_id"]
@@ -286,13 +314,23 @@ def analyze_samples(  # noqa: C901 - row validation is intentionally linear.
         if seed_case not in REQUIRED_SEED_CASES:
             message = f"sample row has unknown seed_case: {seed_case}"
             raise ValueError(message)
-        if player_case not in REQUIRED_PLAYER_CASES:
+        allowed_player_cases = REQUIRED_PLAYER_CASES | (
+            {IDLE_PLAYER_CASE} if metric_id == "idle_mspt" else set[str]()
+        )
+        if player_case not in allowed_player_cases:
             message = f"sample row has unknown player_case: {player_case}"
             raise ValueError(message)
         if repetition <= 0 or not math.isfinite(value):
             message = "sample rows require positive repetition and finite numeric value"
             raise ValueError(message)
-        group = (metric_id, seed_case, player_case, repetition)
+        component = row.get("component") or None
+        if metric_id == "loot_value" and component is None:
+            message = "loot_value rows require a nonempty component"
+            raise ValueError(message)
+        if metric_id != "loot_value" and component is not None:
+            message = "only loot_value rows may declare a component"
+            raise ValueError(message)
+        group = (metric_id, seed_case, player_case, repetition, component)
         if metric_id in RATIO_METRICS:
             try:
                 numerator = float(row["numerator"])
@@ -300,9 +338,16 @@ def analyze_samples(  # noqa: C901 - row validation is intentionally linear.
             except (KeyError, TypeError, ValueError) as error:
                 message = f"ratio metric {metric_id} requires numerator and denominator"
                 raise ValueError(message) from error
-            if not math.isfinite(numerator) or not math.isfinite(denominator) or denominator <= 0:
+            if (
+                not math.isfinite(numerator)
+                or not math.isfinite(denominator)
+                or numerator < 0
+                or denominator <= 0
+                or (metric_id in PROPORTION_METRICS and numerator > denominator)
+            ):
                 message = (
-                    f"ratio metric {metric_id} requires finite inputs and positive denominator"
+                    f"ratio metric {metric_id} requires nonnegative finite inputs, a positive "
+                    "denominator, and bounded proportion operands"
                 )
                 raise ValueError(message)
             derived_value = numerator / denominator * RATIO_SCALES[metric_id]
@@ -317,16 +362,17 @@ def analyze_samples(  # noqa: C901 - row validation is intentionally linear.
         raise ValueError(message)
     groups: list[dict[str, object]] = []
     for group, values in sorted(grouped.items()):
-        metric_id, seed_case, player_case, repetition = group
-        groups.append(
-            {
-                "metric_id": metric_id,
-                "seed_case": seed_case,
-                "player_case": player_case,
-                "repetition": repetition,
-                "statistics": _summarize(metric_id, values, ratio_inputs.get(group)),
-            }
-        )
+        metric_id, seed_case, player_case, repetition, component = group
+        result_group: dict[str, object] = {
+            "metric_id": metric_id,
+            "seed_case": seed_case,
+            "player_case": player_case,
+            "repetition": repetition,
+            "statistics": _summarize(metric_id, values, ratio_inputs.get(group)),
+        }
+        if component is not None:
+            result_group["component"] = component
+        groups.append(result_group)
     return {"groups": groups}
 
 
@@ -373,6 +419,7 @@ def _summarize(
         "bootstrap_resamples": BOOTSTRAP_RESAMPLES,
     }
     if ratio_inputs is not None:
+        ratio_inputs = sorted(ratio_inputs)
         summary["numerators"] = [numerator for numerator, _ in ratio_inputs]
         summary["denominators"] = [denominator for _, denominator in ratio_inputs]
         summary["numerator_sum"] = math.fsum(numerator for numerator, _ in ratio_inputs)

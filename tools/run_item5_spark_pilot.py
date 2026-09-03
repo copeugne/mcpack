@@ -52,18 +52,45 @@ def send_console_command(stdin: IO[str], command: str) -> bool:
     return True
 
 
-def validate_spark_overlay(instance: Path, overlay_path: Path) -> tuple[str, str]:
-    """Verify the configured profiler artifact and return overlay/artifact identities."""
+def validate_runtime_mods(
+    instance: Path, overlay_path: Path, retained_path: Path, acquisition_path: Path
+) -> tuple[str, str, str]:
+    """Verify every gameplay and instrumentation JAR and return their identities."""
     try:
         overlay = json.loads(overlay_path.read_bytes())
         artifact = overlay["overlay"]
-        spark_path = instance / "mods" / artifact["filename"]
-        actual_sha256 = sha256_file(spark_path)
-        expected_sha256 = artifact["sha256"]
+        retained = [line for line in retained_path.read_text(encoding="utf-8").splitlines() if line]
+        acquisition = json.loads(acquisition_path.read_bytes())
+        acquired = {
+            row["candidate_filename"]: row["identity"]["computed_sha256"]
+            for row in acquisition["artifacts"]
+        }
+        expected = {name: acquired[name] for name in retained}
+        expected[artifact["filename"]] = artifact["sha256"]
     except (KeyError, OSError, TypeError, ValueError) as error:
-        message = f"cannot verify Spark overlay: {error}"
+        message = f"cannot construct runtime mod identity: {error}"
         raise SparkPreflightError(message) from error
-    if actual_sha256 != expected_sha256:
+    observed_names = {path.name for path in (instance / "mods").glob("*.jar")}
+    if observed_names != set(expected):
+        message = "runtime mod filenames do not match retained manifest plus Spark overlay"
+        raise SparkPreflightError(message)
+    observed = {name: sha256_file(instance / "mods" / name) for name in sorted(expected)}
+    if observed != expected:
+        message = "runtime mod hashes do not match acquisition manifest plus Spark overlay"
+        raise SparkPreflightError(message)
+    identity = hashlib.sha256(
+        json.dumps(observed, separators=(",", ":"), sort_keys=True).encode()
+    ).hexdigest()
+    return sha256_file(overlay_path), artifact["sha256"], identity
+
+
+def validate_spark_overlay(instance: Path, overlay_path: Path) -> tuple[str, str]:
+    """Compatibility helper that verifies the configured profiler artifact."""
+    overlay = json.loads(overlay_path.read_bytes())
+    artifact = overlay["overlay"]
+    spark_path = instance / "mods" / artifact["filename"]
+    actual_sha256 = sha256_file(spark_path)
+    if actual_sha256 != artifact["sha256"]:
         message = f"Spark artifact hash mismatch: {spark_path}"
         raise SparkPreflightError(message)
     return sha256_file(overlay_path), actual_sha256
@@ -86,11 +113,19 @@ def preflight_failure_receipt(error: Exception) -> dict[str, object]:
         "world_snapshot_sha256": None,
         "spark_overlay_sha256": None,
         "spark_artifact_sha256": None,
+        "runtime_mods_sha256": None,
         "local_profile_sha256": None,
         "local_profile_size_bytes": None,
         "console_pipe_failed": False,
         "rejection_reason": f"Spark overlay preflight failed: {error}",
     }
+
+
+def launch_failure_receipt(error: OSError) -> dict[str, object]:
+    """Return machine-readable rejected evidence when the JVM cannot launch."""
+    receipt = preflight_failure_receipt(error)
+    receipt["rejection_reason"] = f"Server launch failed: {error}"
+    return receipt
 
 
 def hash_tree(root: Path, relative_paths: tuple[Path, ...]) -> str:
@@ -145,8 +180,14 @@ def clean_stop_succeeded(  # noqa: PLR0913 - explicit lifecycle signals prevent 
     )
 
 
-def run(  # noqa: C901, PLR0912, PLR0915 - lifecycle state machine is intentionally linear.
-    instance: Path, java_home: Path, spark_overlay: Path, log_path: Path, timeout: int
+def run(  # noqa: C901, PLR0912, PLR0913, PLR0915, PLR0917 - explicit lifecycle inputs.
+    instance: Path,
+    java_home: Path,
+    spark_overlay: Path,
+    retained_manifest: Path,
+    acquisition_manifest: Path,
+    log_path: Path,
+    timeout: int,
 ) -> dict[str, object]:
     """Boot, exercise every approved Spark command, flush, and stop."""
     environment = os.environ.copy()
@@ -154,7 +195,9 @@ def run(  # noqa: C901, PLR0912, PLR0915 - lifecycle state machine is intentiona
     started = time.monotonic()
     sent: list[str] = []
     console_pipe_failed = False
-    spark_overlay_sha256, spark_artifact_sha256 = validate_spark_overlay(instance, spark_overlay)
+    spark_overlay_sha256, spark_artifact_sha256, runtime_mods_sha256 = validate_runtime_mods(
+        instance, spark_overlay, retained_manifest, acquisition_manifest
+    )
     prior_profiles = {
         path.resolve(): (path.stat().st_size, path.stat().st_mtime_ns)
         for path in instance.rglob("*.sparkprofile")
@@ -281,6 +324,7 @@ def run(  # noqa: C901, PLR0912, PLR0915 - lifecycle state machine is intentiona
         "world_snapshot_sha256": world_snapshot_sha256,
         "spark_overlay_sha256": spark_overlay_sha256,
         "spark_artifact_sha256": spark_artifact_sha256,
+        "runtime_mods_sha256": runtime_mods_sha256,
         "local_profile_sha256": local_profile_sha256,
         "local_profile_size_bytes": local_profile_size_bytes,
         "console_pipe_failed": console_pipe_failed,
@@ -293,6 +337,16 @@ def main() -> int:
     _ = parser.add_argument("--instance", type=Path, required=True)
     _ = parser.add_argument("--java-home", type=Path, required=True)
     _ = parser.add_argument("--spark-overlay", type=Path, required=True)
+    _ = parser.add_argument(
+        "--retained-manifest",
+        type=Path,
+        default=Path("evidence/item-3/runtime/retained-server-candidates.txt"),
+    )
+    _ = parser.add_argument(
+        "--acquisition-manifest",
+        type=Path,
+        default=Path("evidence/item-3/artifact-acquisition-manifest.json"),
+    )
     _ = parser.add_argument("--log", type=Path, required=True)
     _ = parser.add_argument("--receipt", type=Path, required=True)
     _ = parser.add_argument("--timeout", type=int, default=900)
@@ -302,11 +356,15 @@ def main() -> int:
             arguments.instance,
             arguments.java_home,
             arguments.spark_overlay,
+            arguments.retained_manifest,
+            arguments.acquisition_manifest,
             arguments.log,
             arguments.timeout,
         )
     except SparkPreflightError as error:
         receipt = preflight_failure_receipt(error)
+    except OSError as error:
+        receipt = launch_failure_receipt(error)
     arguments.receipt.parent.mkdir(parents=True, exist_ok=True)
     _ = arguments.receipt.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(receipt, indent=2))
