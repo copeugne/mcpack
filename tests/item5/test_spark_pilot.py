@@ -159,6 +159,32 @@ def test_missing_requested_java_is_a_preflight_failure(tmp_path: Path) -> None:
         load_pilot_module().validate_java_runtime(tmp_path / "missing-java-home")
 
 
+def test_validated_java_path_is_absolute(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Changing the server cwd cannot invalidate the selected Java PATH entry."""
+    java = tmp_path / "relative-home/bin/java"
+    java.parent.mkdir(parents=True)
+    java.write_text(
+        "#!/bin/sh\n"
+        "echo 'openjdk version \"21.0.12.1\"' >&2\n"
+        "echo 'OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)' >&2\n"
+    )
+    java.chmod(0o755)
+    monkeypatch.chdir(tmp_path)
+    executable, _ = load_pilot_module().validate_java_runtime(Path("relative-home"))
+    assert executable.is_absolute()
+    assert executable == java.resolve()
+
+
+def test_java_preflight_rejects_another_build(tmp_path: Path) -> None:
+    """The same patch release with a different build is not the pinned runtime."""
+    java = tmp_path / "wrong-build/bin/java"
+    java.parent.mkdir(parents=True)
+    java.write_text("#!/bin/sh\necho 'OpenJDK Runtime Environment Temurin-21.0.12.1+2' >&2\n")
+    java.chmod(0o755)
+    with pytest.raises(ValueError, match="not pinned Temurin"):
+        load_pilot_module().validate_java_runtime(java.parents[1])
+
+
 def test_runtime_io_failure_has_cleanup_receipt() -> None:
     """Post-launch I/O is distinguished from failure to create the JVM."""
     receipt = load_pilot_module().runtime_failure_receipt(OSError("disk full"))
