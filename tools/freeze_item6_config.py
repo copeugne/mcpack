@@ -21,7 +21,9 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def validate(root: Path, manifest_path: Path, audit_path: Path) -> None:  # noqa: C901, PLR0912
+def validate(  # noqa: C901, PLR0912, PLR0915
+    root: Path, manifest_path: Path, audit_path: Path
+) -> None:
     """Fail unless the frozen tree, manifest, and audit agree exactly."""
     manifest = cast("dict[str, Any]", json.loads(manifest_path.read_text(encoding="utf-8")))
     audit = cast("dict[str, Any]", json.loads(audit_path.read_text(encoding="utf-8")))
@@ -70,10 +72,31 @@ def validate(root: Path, manifest_path: Path, audit_path: Path) -> None:  # noqa
         for relative in finding["files"]:
             if relative not in expected:
                 raise ValueError(f"finding cites an unpreserved file: {relative}")
+            covered.add(relative)
     if any(setting["non_default"] for setting in audit["settings"]):
         raise ValueError("untouched generated baseline unexpectedly reports tuning")
-    if not covered:
-        raise ValueError("audit has no preserved-file coverage")
+    accounted: set[str] = set()
+    for classification in audit["file_accounting"]:
+        if classification["classification"] not in {"audited", "out-of-scope"}:
+            raise ValueError("invalid file-accounting classification")
+        for relative in classification["files"]:
+            if relative in accounted:
+                raise ValueError(f"file is classified more than once: {relative}")
+            accounted.add(relative)
+    if accounted != expected:
+        missing = sorted(expected - accounted)
+        extra = sorted(accounted - expected)
+        raise ValueError(
+            f"file accounting does not match manifest: missing={missing}, extra={extra}"
+        )
+    audited = {
+        relative
+        for classification in audit["file_accounting"]
+        if classification["classification"] == "audited"
+        for relative in classification["files"]
+    }
+    if audited != covered:
+        raise ValueError("audited file accounting does not match cited audit evidence")
 
 
 def capture(instance: Path, output: Path) -> None:

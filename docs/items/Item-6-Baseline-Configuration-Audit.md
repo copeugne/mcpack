@@ -19,8 +19,9 @@ The frozen tree contains `config/`, `defaultconfigs/`, `world/serverconfig` (nor
 * **Sparse Structures is the primary explicit low-density control.** Its generated global `spreadFactor` is 2, so structure placements are made rarer. The generated mansion override is also factor 2. The precise way global and per-structure factors compose must be confirmed from runtime density evidence rather than guessed.
 * **Structure Essentials exposes a second global placement control**, but `spacingSeparationModifier` is neutral at 1.0. Its 32-block minimum-distance feature is disabled, as are automatic biome compatibility and overlap logging. Fast lookup is enabled and search radii differ from vanilla as documented in the generated file.
 * **Structure Layout Optimizer** retains its seed-parity-preserving default: template-pool list deduplication is false.
+* **YUNG replacements disable vanilla structures by generated default.** Better Desert Temples, Nether Fortresses, Jungle Temples, Mineshafts, Ocean Monuments, and Witch Huts each disable their vanilla counterpart. Both Better Desert Temples and IDAS control desert-pyramid replacement, so Item 7 must treat that overlap explicitly.
 * **Cristel Lib emits provider placement and toggle files.** WDA major/minor sets use 50/45 and 45/40 spacing/separation before any global Sparse Structures effect, and all listed WDA families are enabled. Equivalent preserved files cover Seven Seas, IDAS, Integrated structures, Explorations/Explorify, four Moog namespaces, Repurposed Structures, and YUNG providers. The machine-readable audit cites representative effective controls without falsely treating aliases or pieces as Item 8 families.
-* **Explicit replacements exist.** IDAS disables the vanilla desert pyramid by generated default. Integrated Villages disables vanilla villages by generated default. These are disabled vanilla sets caused by replacements, not missing generation.
+* **Explicit replacements exist.** The YUNG replacements listed above, IDAS desert pyramids, and Integrated Villages all disable corresponding vanilla sets by generated default. These are replacement controls, not evidence of missing generation.
 
 ### Villages, loot, mobs, difficulty, and performance
 
@@ -34,7 +35,7 @@ The frozen tree contains `config/`, `defaultconfigs/`, `world/serverconfig` (nor
 
 There are two global spacing owners, numerous per-provider placements, explicit vanilla replacements, and several village pool/placement owners. The files establish configuration intent but cannot alone prove registry precedence or observed density. Item 7 must inspect fresh worlds for all four deterministic seeds under this exact manifest. Item 10 must quantify Sparse Structures' actual contribution. Loader/mod implicit defaults that produce no file remain identified as implicit or absent rather than fabricated.
 
-Item 7 is eligible only while `uv run python tools/freeze_item6_config.py validate ...` passes. Any configuration mutation creates a new identity and reopens this gate.
+Item 7 is eligible only while `uv run python tools/freeze_item6_config.py validate ...` passes. Every manifest path must also be classified as audited or explicitly out of scope; any omission, duplicate classification, or configuration mutation reopens this gate.
 
 ## Reproduction
 

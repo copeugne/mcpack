@@ -61,6 +61,30 @@ def test_audit_covers_required_systems() -> None:
     }
 
 
+def test_audit_includes_all_yung_replacement_configs() -> None:
+    """Every generated YUNG config that disables a vanilla structure is audited."""
+    audit = json.loads(AUDIT.read_text(encoding="utf-8"))
+    yung = next(row for row in audit["systems"] if row["system"] == "YUNG structure systems")
+    assert set(yung["files"]) >= {
+        "config/betterdeserttemples-neoforge-1_21.toml",
+        "config/betterfortresses-neoforge-1_21.toml",
+        "config/betterjungletemples-neoforge-1_21.toml",
+        "config/bettermineshafts-neoforge-1_21.toml",
+        "config/betteroceanmonuments-neoforge-1_21.toml",
+        "config/betterwitchhuts-neoforge-1_21.toml",
+    }
+
+
+def test_validator_rejects_unaccounted_manifest_file(tmp_path: Path) -> None:
+    """A partial semantic audit cannot satisfy the exhaustive file-accounting gate."""
+    audit = json.loads(AUDIT.read_text(encoding="utf-8"))
+    audit["file_accounting"][1]["files"].pop()
+    partial_audit = tmp_path / "partial-audit.json"
+    partial_audit.write_text(json.dumps(audit), encoding="utf-8")
+    with pytest.raises(ValueError, match="file accounting does not match manifest"):
+        validate(FROZEN, MANIFEST, partial_audit)
+
+
 def test_validator_rejects_changed_content(tmp_path: Path) -> None:
     """Rehashing is required after any preserved-content mutation."""
     captured = tmp_path / "frozen"
