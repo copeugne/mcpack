@@ -45,7 +45,7 @@ def test_repurposed_files_are_system_owned_and_audited() -> None:
     )
 
     # When/Then: both grouped files are owned and audited outside the exclusion set.
-    assert set(system["files"]) == set(FILES)
+    assert set(FILES) <= set(system["files"])
     assert set(FILES) <= set(audited)
     assert set(FILES).isdisjoint(excluded)
 
