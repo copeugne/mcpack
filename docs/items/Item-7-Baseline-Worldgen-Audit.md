@@ -68,7 +68,7 @@ Unresolved entries remain `UNKNOWN`. The audit does not convert startup success 
 
 ## Durable evidence and restoration
 
-The corrected raw evidence is split into four immutable release assets under tag `item-7-raw-evidence-2026-09-04-r2`, bound to source revision `b13344e8eaa39528b61643bf24534d709cfff131`:
+The final raw evidence is split into four immutable release assets under tag `item-7-raw-evidence-2026-09-04-r3`, bound to source revision `4503d647b81fbb15bc7f577d91df01867aa90e79`:
 
 | Asset | Files | Raw bytes | Archive bytes | Archive SHA-256 |
 |---|---:|---:|---:|---|
@@ -79,9 +79,11 @@ The corrected raw evidence is split into four immutable release assets under tag
 
 All four archives were restored into absent targets, checked file by file, downloaded again from the published GitHub release, and rehashed. The committed publication receipt and completion validator bind the release URL, tag, source revision, asset names, sizes, hashes, manifests, restore receipts, and verification tool. JARs, Minecraft and NeoForge binaries, credentials, `session.lock`, player data, caches, and symlinks are excluded.
 
-The first release under tag `item-7-raw-evidence-2026-09-04` is preserved as historical evidence. Exact-SHA review found that its staging procedure did not hold Java-compatible world locks and used hardlinks, so its process claim was rejected. The corrected r2 staging holds a POSIX record lock on each `session.lock` throughout independent copying. The r2 payloads are byte-identical in size and SHA-256 to the first release, which shows that the first payload bytes were not corrupted, but only r2 satisfies the accepted staging and publication procedure.
+The first release under tag `item-7-raw-evidence-2026-09-04` and the r2 release are preserved as historical evidence. The first procedure did not hold Java-compatible world locks and used hardlinks. The r2 procedure added locks and independent copies, but later review proved that its reusable staging and archive implementation still had pathname replacement gaps. Their matching payload hashes show that no observed payload bytes changed, but neither earlier procedure proves the final custody boundary.
 
-A later security review of revision `8c7e7b8bb5db79d826b78cab5a678605a8b5fc23` found remaining path-swap, hardlink, special-file, and mixed-repository verification defects in the reusable staging, archive, and release-verification tools. Commits `fdd99d9` and `c625d6e` correct those boundaries with focused regression coverage. The corrected verifier redownloaded and verified all four real r2 assets against the tag resolved from `copeugne/mcpack`. Both rejected review records remain under `evidence/item-7/review/`; a fresh exact-SHA review remains required before delivery.
+Reviews of revisions `8c7e7b8bb5db79d826b78cab5a678605a8b5fc23` and `438260f40fd0d50ff5f087a2b8aac028d5a39927` found remaining source, output, hardlink, special-file, and repository-binding defects. Commits `fdd99d9`, `c625d6e`, `f57503d`, and `4503d64` correct those boundaries and the vacuous mutation tests with focused regression coverage.
+
+The final staging implementation correctly rejected the original hardlinked raw roots. The r3 stages were rebuilt from the preserved r2 single-link snapshots, whose complete file inventories and bytes match the earlier manifests. The final implementation then created all four r3 archives, restored them into absent targets, and published them under an annotated tag resolving to `4503d647b81fbb15bc7f577d91df01867aa90e79`. Two independent downloads, including the tracked repository-bound verifier, matched every committed size and SHA-256. All three rejected review records remain under `evidence/item-7/review/`; a fresh exact-SHA review remains required before delivery.
 
 ## Reproduction
 
@@ -95,7 +97,7 @@ uv run ruff format --check src/mcpack_evidence/item7_*.py tools/*item7*.py tests
 uv run ruff check src/mcpack_evidence/item7_*.py tools/*item7*.py tests/item7
 uv run basedpyright src/mcpack_evidence/item7_*.py tools/*item7*.py tests/item7
 bash -n tools/stage_item7_raw_evidence.sh
-tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04-r2 evidence/item-7/archive/r2 evidence/item-7/archive/r2/publication.json /tmp/item7-release-verify-r2
+tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04-r3 evidence/item-7/archive/r3 evidence/item-7/archive/r3/publication.json /tmp/item7-release-verify-r3
 ```
 
 The Python quality commands are intentionally scoped to Item 7. They do not claim that unrelated reconstructed later-item tools are clean, and Item 11 tooling remains outside this gate until the required Item 2 through Item 10 cross-item audit passes.
@@ -109,10 +111,10 @@ The completion command is the tracked `tools/build_item7_completion.py` CLI with
 - `evidence/item-7/visual/integrity-review.json`
 - `evidence/item-7/visual/fidelity-review.json`
 - `evidence/item-7/visual/rejected-attempts.json`
-- `evidence/item-7/archive/r2/`
+- `evidence/item-7/archive/r3/`
 - `evidence/item-7/review/`
 - `evidence/item-7/completion.json`
-- GitHub release `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04-r2`
+- GitHub release `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04-r3`
 
 ## Superseded historical control
 
