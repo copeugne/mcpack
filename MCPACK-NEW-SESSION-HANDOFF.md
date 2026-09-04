@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-05
 
+Inventory work is delivered through `787523b`. `bf153ea` lets source-bound
+attribute decisions populate the existing inventory while protecting membership,
+observation references and incomplete status. `e6704a7` records Better
+Mineshafts hostile-room intent, cave-spider/zombie-villager spawner paths, base
+loot constant, authored/natural distinction and underground generation setup.
+Effective injections, occupied size and surface visibility remain unresolved.
+`eef10dd` enumerates all five Seven Seas vessel roots with distinct main hulls
+and start pools; spawner components are not extra families. Four focused tests
+passed and updated inventory runs reproduced byte for byte. Current inventory
+SHA-256: `3a53d5cf7e64251d08f1d52408d27f4666fb72798ab5fb526afefd421199f8d9`.
+The existing trace preserves Small Yacht's missing `small_yacht_spawner_3`
+template. Resolve that source gap and continue vessel attributes using the
+main hull, spawner and loot records. None of the five has an observation in
+the current Item 7 structure-start subset. The working inventory remains
+incomplete. Raw delivery, remaining providers/attributes, final report and gate,
+clean review and verified merge are still outstanding. No runtime is running.
+
 The working inventory deliverable now exists at `evidence/item-8/inventory.json`,
 delivered by `1c9c3a1`, built with `f2eaf2b`. It is explicitly incomplete and
 lists unassigned registry IDs, unresolved non-registry content and unknown

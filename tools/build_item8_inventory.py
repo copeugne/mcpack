@@ -24,7 +24,7 @@ INPUTS = {
     SOURCES: "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
     TRACES: "facb6f7bbafb6836e7eaa694535b975c2ee2deab1e36ab85930f1c11c7a471c8",
     BOUNDS: "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
-    DECISIONS: "81eb4eb182f57daba4db9763f27fa517c4f4d0c6300dd3540ef610e3531e4b48",
+    DECISIONS: "9a82c5c43f3a11908dfca8e8aaaefd8b7fd8abab99dbe5aa3bc4a39d16e5d61b",
     REGISTRY: "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
 }
 
@@ -103,6 +103,19 @@ def assemble(
             },
             "pool_trace_ids": [member for member in members if member in pool_traces],
         }
+        attributes = cast("dict[str, JsonValue]", decision.get("attributes", {}))
+        protected = {
+            "name",
+            "structure_ids",
+            "grouping_decision",
+            "status",
+            "world_observations",
+            "pool_trace_ids",
+        }
+        if attributes.keys() - family_row.keys() or attributes.keys() & protected:
+            message = f"unknown or protected family attribute: {family}"
+            raise ValueError(message)
+        family_row.update(attributes)
         families[family] = family_row
     return {
         "status": "INCOMPLETE",

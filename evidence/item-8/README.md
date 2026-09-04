@@ -2,8 +2,9 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-The working deliverable is `inventory.json`, assembled by source `f2eaf2b`.
-SHA-256: `58a200ca9ad7809f807cb73b6e3e72aed4cd1e1a9107723c9fcaa1640c62652d`.
+The working deliverable is `inventory.json`, initially assembled by `f2eaf2b`
+and updated through `eef10dd` using attribute support from `bf153ea`.
+SHA-256: `3a53d5cf7e64251d08f1d52408d27f4666fb72798ab5fb526afefd421199f8d9`.
 It is explicitly incomplete. It joins the currently recorded Better Mineshafts
 and CTOV size-group decisions to biome constraints, potential template content
 and saved-world observation references. It lists every unassigned registry ID
@@ -23,6 +24,29 @@ a new evidence framework. Source hashes bind all five existing inputs. Content
 references preserve packaged-versus-effective limitations, and saved piece
 envelopes are not promoted to physical dimensions. Continue resolving groups and
 attributes in this deliverable before replacing the obsolete narrative report.
+
+Better Mineshafts now records source-supported hostile-room intent, authored
+cave-spider and zombie-villager spawners, the base abandoned-mineshaft loot
+constant, authored versus natural spawning distinctions, and its underground
+generation setup. Each claim identifies its generation classes and limitations;
+the decision binds the preserved disassembly identities and frozen config hash.
+This does not resolve effective loot injections, physical dimensions or actual
+surface visibility. The updated committed-source output reproduced
+`evidence/raw/item8/inventory-mineshaft-attributes-pilot1.json` byte for byte at
+`evidence/raw/item8/inventory-mineshaft-attributes-reproduction1.json`.
+Three focused tests and scoped quality checks passed. Attribute updates cannot
+overwrite completion status, family membership or observation references.
+
+Source `eef10dd` assigns all five registered WDA Seven Seas vessel designs:
+Corsair Corvette, Pirate Junk, Small Yacht, Unicorn Galleon and Victory Frigate.
+Each has its own start pool and main hull template. Subordinate spawner pools
+and templates remain components, not additional families. The source-supported
+hostile encounter intent is recorded, while effective attributes remain open.
+The existing trace retains Small Yacht's missing
+`dungeons_arise_seven_seas:small_yacht/small_yacht_spawner_3` reference; no absent
+template is invented. Four focused grouping/assembly checks passed. Output
+`evidence/raw/item8/inventory-seven-seas-r1.json` reproduced byte for byte at
+`evidence/raw/item8/inventory-seven-seas-reproduction1.json`.
 
 The infrastructure requirements in
 `INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md` apply to this work. Reuse the
