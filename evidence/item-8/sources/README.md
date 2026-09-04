@@ -58,8 +58,8 @@ non-root packs and replacements requiring unknown mod order produce null values
 with explicit unresolved reasons. The frozen enabled-pack order recorded in
 `runtime/registry-r1/world-context.json` puts vanilla before `mod_data`.
 The expanded index SHA-256 is
-`8039bddca389178cface397cad532daffa2869c18774191c1a57c90729b59a4d`
-after the structure-constraint and dynamic-tag extensions below.
+`fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef`
+after the structure-constraint, dynamic-tag and pack-order extensions below.
 The committed-source run reproduced its pilot byte for byte. The generated
 addition is isolated because it indexes the existing catalog's tag contributions;
 it does not introduce another source extraction or runtime experiment.
@@ -88,8 +88,27 @@ preserved pilot byte for byte.
 These are source-derived constraints, not observed placement or a direct dump of
 runtime tag contents. Dynamic tag construction supplied Supplementaries'
 `has_galleons` and `has_road_signs` references; see `supplementaries-tags-code`.
-The three IDAS lumber-camp missing tags remain explicit. Several vanilla,
-CTOV, WDA and Explorify constraints depend on unresolved mod replacement order.
+Source `60c1ed1`, using `71ee444`, resolves the seven remaining competing tag
+orders from the captured debug log's final expanded sorting record, line 17812.
+The order is vanilla, Biomes O' Plenty, Towns & Towers, Terralith, then Regions
+Unexplored for these contributors. NeoForge mod IDs come from the hash-bound
+Item 3 JAR inspection. The existing index preserves the exact sorting record,
+archive mapping, raw log hash and source line in `biome_archive_order`.
+This resolves constraints for 884 of 887 structure IDs. The three IDAS
+lumber-camp missing tags remain explicit. Other contribution orders are not
+silently inferred from this partial mapping. Ten focused tests and scoped
+quality checks passed. The committed-source output reproduced the pilot exactly:
+
+```sh
+uv run -m tools.build_item8_structure_inputs --output evidence/raw/item8/structure-biomes-pack-order-reproduction1.json
+cmp evidence/raw/item8/structure-biomes-pack-order-pilot1.json evidence/raw/item8/structure-biomes-pack-order-reproduction1.json
+```
+
+Restore the original `evidence/raw/item8/registry-r1/debug.log` before rebuilding.
+Its SHA-256 is `e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b`;
+raw delivery remains pending. The generated change is isolated because resolving
+seven shared tags updates their dependent structure rows in the existing index.
+This is a runtime-log-bound source derivation, not a direct runtime tag dump.
 Neither a null result nor an empty biome list establishes structure-generation
 status without that disposition. Dimension eligibility still requires the
 generator's biome source and any custom placement restrictions.
