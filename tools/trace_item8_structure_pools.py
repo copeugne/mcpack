@@ -20,6 +20,7 @@ from mcpack_evidence.item8_pool_links import pool_links, template_links
 from mcpack_evidence.item8_pool_trace import trace_pool
 from mcpack_evidence.item8_registry import read_registry
 from mcpack_evidence.item8_resource_selection import select_resources
+from mcpack_evidence.item8_templates import template_content
 
 if TYPE_CHECKING:
     from pydantic import JsonValue
@@ -82,10 +83,25 @@ def main() -> None:
                 "type": document.get("type"),
                 "reason": "no direct start_pool; inspect custom generation path",
             }
+    referenced_templates = {
+        template
+        for trace in traces.values()
+        for template in cast("list[str]", cast("dict[str, JsonValue]", trace)["templates"])
+    }
+    contents: dict[str, JsonValue] = {}
+    for identifier in sorted(referenced_templates):
+        resource = templates[identifier]
+        document = cast("dict[str, JsonValue]", resource["document"])
+        contents[identifier] = {
+            "source": {key: resource[key] for key in ("archive", "path", "sha256")},
+            "template_size_xyz": document["size"],
+            **template_content(document),
+        }
     result: dict[str, JsonValue] = {
         "inputs": dict(INPUTS),
         "scope": "possible pool/template links only; not assembled placement or family counts",
         "structures": traces,
+        "template_contents": contents,
         "untraced_structures": unsupported,
         "excluded_pools": excluded_pools,
         "excluded_templates": excluded_templates,
