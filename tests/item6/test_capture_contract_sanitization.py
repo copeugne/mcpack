@@ -97,6 +97,21 @@ def test_capture_surgically_replaces_only_credential_json_string_bytes(tmp_path:
     assert _TEST_SOURCE_VALUE.encode() not in (tmp_path / "config-sanitization.json").read_bytes()
 
 
+def test_capture_rejects_already_redacted_source_credential(tmp_path: Path) -> None:
+    """A source sentinel cannot be reported as a newly redacted credential."""
+    # Given: the source instance already contains the reserved evidence sentinel.
+    instance = _make_instance(tmp_path)
+    payload = b'{"validator":{"if":{"password":"<redacted-generated-secret>"}}}'
+    _write_resourceful_config(instance, payload)
+    output = tmp_path / "output"
+
+    # When/Then: capture fails without claiming or creating a redaction.
+    with pytest.raises(ValueError, match="generated credential shape"):
+        capture(instance, output)
+    assert not output.exists()
+    assert not (tmp_path / "config-sanitization.json").exists()
+
+
 @pytest.mark.parametrize(
     "payload",
     [

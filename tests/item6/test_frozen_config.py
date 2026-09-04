@@ -203,6 +203,12 @@ def test_validator_rejects_changed_content(tmp_path: Path) -> None:
     ):
         _ = shutil.copytree(source, target)
     _ = shutil.copy2(FROZEN / "server.properties", instance / "server.properties")
+    source_config = instance / "config/resourceful-config-web.json"
+    source_config.write_bytes(
+        source_config.read_bytes().replace(
+            b'"<redacted-generated-secret>"', b'"test-only-source-value"'
+        )
+    )
     captured = tmp_path / "frozen"
     capture(instance, captured)
     changed = captured / "config/cupboard.json"

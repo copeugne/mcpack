@@ -38,6 +38,11 @@ class SourceSanitizationError(ValueError):
         """Create the required target path failure."""
         return cls("generated credential path is absent")
 
+    @classmethod
+    def reserved_value(cls) -> Self:
+        """Create the reserved redaction-sentinel failure."""
+        return cls("generated credential already equals the redaction sentinel")
+
 
 def redact_generated_credential(source: bytes) -> bytes:
     """Replace exactly one verified canonical credential string token."""
@@ -47,6 +52,8 @@ def redact_generated_credential(source: bytes) -> bytes:
     except (UnicodeDecodeError, StrictJsonError) as error:
         raise SourceSanitizationError.invalid_json() from error
     password = _require_string_credential(configuration)
+    if password == _REDACTION_SENTINEL:
+        raise SourceSanitizationError.reserved_value()
     matches = tuple(_PASSWORD_MEMBER.finditer(text))
     if len(matches) != 1:
         raise SourceSanitizationError.lexical_target()
