@@ -6,6 +6,20 @@
 
 ### Item 8 implementation checkpoint
 
+Latest delivered state: `34fceec4566223c2d5f869955d1a84fdac00a546` on
+`codex/item-8-completion`. The privacy correction described below is delivered:
+the current JSON and template catalogs are
+`evidence/item-8/sources/packaged-json-redacted.json.gz` and
+`evidence/item-8/sources/templates-redacted.json.gz`. The original JSON catalog
+was removed from the current tree, with history preserved. Source hashes and
+omitted-field paths remain explicit. The source README records reproduction.
+`structure-inputs.json` now binds to the redacted JSON artifact. Its builder
+preserves all 887 runtime IDs, candidate definitions and packaged placement sets,
+plus 22 source-proven CTOV size-variant groups. None of these counts is a final
+canonical family count. No extraction process remains running. Continue with
+effective-resource resolution, pool/template relationships and source-backed
+family attributes, plus remaining runtime log/configuration custody.
+
 Later continuation: the template pilot completed with exit zero. Its output is
 `evidence/raw/item8/templates-pilot1.json.gz`, SHA-256
 `9ffec196748525b0dc115a57e8141a67755e6c9d66ce056fbca667d8cb8ff3c0`.
