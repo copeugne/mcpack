@@ -2,6 +2,13 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
+The infrastructure requirements in
+`INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md` apply to this work. Reuse the
+existing host-discovery and platform doctor, pinned acquisition/materialization,
+configuration capture, and lifecycle primitives. Record each new run's source
+revision. Invoke pinned Java directly, check port availability, preserve full
+logs and failures, and keep operational inputs out of committed evidence.
+
 ## Required proof and boundaries
 
 The complete inventory covers every gameplay-relevant structure family in the
