@@ -9,6 +9,21 @@ from .item8_inventory import resource_identity
 if TYPE_CHECKING:
     from pydantic import JsonValue
 
+# Codec and registration evidence: evidence/item-8/sources/pool-codecs.
+_SINGLE_TYPES = frozenset(
+    {
+        "minecraft:single_pool_element",
+        "minecraft:legacy_single_pool_element",
+        "yungsapi:yung_single_element",
+        "integrated_api:integrated_api_single_pool_element",
+        "wover:single_end_pool_element",
+        "illagerinvasion:single_pool_element",
+        "moogs_structures:mirroring_single_pool_element",
+        "repurposed_structures:legacy_ocean_bottom_single_pool_element",
+        "moogs_structures:versioned_single_pool_element",
+    }
+)
+
 
 def pool_links(resources: list[JsonValue]) -> list[JsonValue]:
     """Preserve source-specific pool elements, fallback and processor references."""
@@ -101,14 +116,14 @@ def _link_record(
     }
 
 
-def _element(
+def _element(  # noqa: C901, PLR0912 - explicit handling of the observed codec variants.
     value: JsonValue, pointer: str, edges: list[JsonValue], unknown: list[JsonValue]
 ) -> None:
     if not isinstance(value, dict):
         message = f"invalid pool element at {pointer}"
         raise TypeError(message)
     kind = value.get("element_type")
-    if kind in ("minecraft:single_pool_element", "minecraft:legacy_single_pool_element"):
+    if isinstance(kind, str) and kind in _SINGLE_TYPES:
         location = value.get("location")
         if isinstance(location, str):
             edges.append(_edge("template", location, pointer + "/location"))
@@ -117,6 +132,18 @@ def _element(
         processors = value.get("processors")
         if isinstance(processors, str):
             edges.append(_edge("processor_list", processors, pointer + "/processors"))
+        if kind == "moogs_structures:versioned_single_pool_element":
+            locations = value.get("locations")
+            if isinstance(locations, dict):
+                for version_range, target in locations.items():
+                    if not isinstance(target, str):
+                        message = f"invalid versioned template location at {pointer}"
+                        raise TypeError(message)
+                    key = version_range.replace("~", "~0").replace("/", "~1")
+                    edge = _edge("template", target, pointer + "/locations/" + key)
+                    edge["version_range"] = version_range
+                    edges.append(edge)
+            unknown.append({"pointer": pointer, "reason": "version selection requires resolution"})
     elif kind == "minecraft:list_pool_element" and isinstance(value.get("elements"), list):
         children = value["elements"]
         assert isinstance(children, list)  # noqa: S101 - explicit validation above.
@@ -124,5 +151,13 @@ def _element(
             _element(child, f"{pointer}/elements/{index}", edges, unknown)
     elif kind == "minecraft:feature_pool_element" and isinstance(value.get("feature"), str):
         edges.append(_edge("placed_feature", str(value["feature"]), pointer + "/feature"))
+    elif kind == "minecraft:feature_pool_element" and isinstance(value.get("feature"), dict):
+        edges.append(
+            {
+                "kind": "inline_placed_feature",
+                "pointer": pointer + "/feature",
+                "document": value["feature"],
+            }
+        )
     elif kind != "minecraft:empty_pool_element":
         unknown.append({"pointer": pointer, "element_type": kind, "reason": "unresolved element"})
