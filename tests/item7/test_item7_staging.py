@@ -1,11 +1,17 @@
 from __future__ import annotations
 
+import os
+import shutil
 import subprocess
 import time
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 import pytest
 from tools.stage_item7_world import StageError, copy_world_boundary, stage
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 ROOT = Path(__file__).parents[2]
 
@@ -108,3 +114,110 @@ def test_shell_entrypoint_stages_core_boundary(tmp_path: Path) -> None:
     assert result.returncode == 0, result.stderr
     assert result.stdout == "staged 1 files using 8 bytes\n"
     assert (output / "evidence.json").read_bytes() == b"accepted"
+
+
+def test_world_stage_pins_the_directory_that_owns_the_lock(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    instance = tmp_path / "instance"
+    world = _world(instance)
+    displaced = tmp_path / "locked-world"
+    original_copy = shutil.copy2
+    swapped = False
+
+    def swap_before_copy(source: Path, destination: Path) -> Path:
+        nonlocal swapped
+        if not swapped:
+            _ = world.rename(displaced)
+            attacker = _world(instance)
+            _ = (attacker / "level.dat").write_bytes(b"attacker")
+            _ = (attacker / "region/r.0.0.mca").write_bytes(b"attacker-region")
+            swapped = True
+        return Path(original_copy(source, destination))
+
+    monkeypatch.setattr(shutil, "copy2", swap_before_copy)
+    output = tmp_path / "stage/world"
+
+    copy_world_boundary(instance, output)
+
+    assert (output / "level.dat").read_bytes() == b"level"
+    assert (output / "region/r.0.0.mca").read_bytes() == b"region"
+
+
+def test_core_stage_pins_the_validated_raw_root(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    project = tmp_path / "project"
+    raw = tmp_path / "raw"
+    displaced = tmp_path / "trusted-raw"
+    project.mkdir()
+    raw.mkdir()
+    _ = (raw / "evidence.bin").write_bytes(b"trusted")
+    original_copytree = shutil.copytree
+
+    def swap_before_copy(
+        source: Path,
+        destination: Path,
+        *,
+        copy_function: Callable[[str, str], object],
+        symlinks: bool,
+    ) -> Path:
+        _ = raw.rename(displaced)
+        raw.mkdir()
+        _ = (raw / "evidence.bin").write_bytes(b"attacker")
+        return Path(
+            original_copytree(
+                source,
+                destination,
+                copy_function=copy_function,
+                symlinks=symlinks,
+            )
+        )
+
+    monkeypatch.setattr(shutil, "copytree", swap_before_copy)
+    output = tmp_path / "stage"
+
+    count, size = stage("core", project, raw, output)
+
+    assert (count, size) == (1, len(b"trusted"))
+    assert (output / "evidence.bin").read_bytes() == b"trusted"
+
+
+def test_core_stage_rejects_hardlinked_source(tmp_path: Path) -> None:
+    project = tmp_path / "project"
+    raw = tmp_path / "raw"
+    project.mkdir()
+    raw.mkdir()
+    source = raw / "evidence.bin"
+    _ = source.write_bytes(b"trusted")
+    os.link(source, tmp_path / "alias.bin")
+    output = tmp_path / "stage"
+
+    with pytest.raises(StageError, match="hardlink"):
+        _ = stage("core", project, raw, output)
+
+    assert not output.exists()
+
+
+@pytest.mark.parametrize("mode", ["core", "world"])
+def test_stage_rejects_special_files_without_partial_output(tmp_path: Path, mode: str) -> None:
+    project = tmp_path / "project"
+    raw = tmp_path / "raw"
+    project.mkdir()
+    raw.mkdir()
+    if mode == "core":
+        _ = (raw / "accepted").write_bytes(b"accepted")
+        os.mkfifo(raw / "unsafe")
+        output = tmp_path / "stage"
+        with pytest.raises(StageError, match="regular"):
+            _ = stage("core", project, raw, output)
+    else:
+        instance = tmp_path / "instance"
+        world = _world(instance)
+        (world / "level.dat").unlink()
+        os.mkfifo(world / "level.dat")
+        output = tmp_path / "stage/world"
+        with pytest.raises(StageError, match="regular"):
+            copy_world_boundary(instance, output)
+
+    assert not output.exists()

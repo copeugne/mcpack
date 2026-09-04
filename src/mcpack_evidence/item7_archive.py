@@ -16,11 +16,20 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from .item7_archive_io import (
     UnsafeFilesystemError,
-    build_tar,
     duplicate_stream,
+    open_directory,
     open_regular,
     open_tree,
     sha256_descriptor,
+)
+from .item7_archive_publish import (
+    Publication,
+    UnsafePublicationError,
+    build_tar,
+    close_temporary,
+    publish_pair,
+    read_inventory,
+    stage_bytes,
 )
 
 
@@ -136,56 +145,51 @@ def create_archive(request: ArchiveRequest) -> ArchiveManifest:
     """Create a deterministic archive and publish its content manifest."""
     request.archive.parent.mkdir(parents=True, exist_ok=True)
     request.manifest.parent.mkdir(parents=True, exist_ok=True)
+    temporary = None
+    manifest_temporary = None
     try:
-        with open_tree(request.root) as files:
-            temporary = build_tar(request.archive, files)
+        with (
+            open_directory(request.archive.parent) as archive_parent,
+            open_directory(request.manifest.parent) as manifest_parent,
+            open_tree(request.root) as files,
+        ):
+            temporary = build_tar(archive_parent, files)
+            identities = tuple(
+                FileIdentity(
+                    relative_path=row.name,
+                    size_bytes=row.size,
+                    sha256=row.sha256,
+                )
+                for row in read_inventory(temporary)
+            )
+            metadata = os.fstat(temporary.descriptor)
+            manifest = ArchiveManifest(
+                revision=request.revision,
+                archive_name=request.archive.name,
+                archive_size_bytes=metadata.st_size,
+                archive_sha256=sha256_descriptor(temporary.descriptor),
+                file_count=len(identities),
+                total_size_bytes=sum(row.size_bytes for row in identities),
+                files=identities,
+            )
+            manifest_body = (manifest.model_dump_json(indent=2) + "\n").encode()
+            manifest_temporary = stage_bytes(manifest_parent, manifest_body)
+            publish_pair(
+                Publication(temporary, request.archive.name, request.archive.parent),
+                Publication(manifest_temporary, request.manifest.name, request.manifest.parent),
+            )
     except UnsafeFilesystemError as error:
         raise ArchiveValidationError(_ArchiveIssue.SOURCE_SYMLINK, request.root) from error
+    except UnsafePublicationError as error:
+        raise ArchiveValidationError(_ArchiveIssue.UNSAFE_PATH) from error
     except (FileNotFoundError, NotADirectoryError) as error:
         message = f"raw evidence root is not a directory: {request.root}"
         raise NotADirectoryError(message) from error
-    archived: list[FileIdentity] = []
-    with tarfile.open(temporary, "r:gz") as bundle:
-        for member in bundle.getmembers():
-            source = bundle.extractfile(member)
-            if source is None:
-                raise ArchiveValidationError(_ArchiveIssue.NONREGULAR, member.name)
-            with source:
-                digest = hashlib.sha256()
-                while block := source.read(1024 * 1024):
-                    digest.update(block)
-                archived.append(
-                    FileIdentity(
-                        relative_path=member.name,
-                        size_bytes=member.size,
-                        sha256=digest.hexdigest(),
-                    )
-                )
-    identities = tuple(archived)
-    manifest_temporary: Path | None = None
-    try:
-        manifest = ArchiveManifest(
-            revision=request.revision,
-            archive_name=request.archive.name,
-            archive_size_bytes=temporary.stat().st_size,
-            archive_sha256=_sha256(temporary),
-            file_count=len(identities),
-            total_size_bytes=sum(row.size_bytes for row in identities),
-            files=identities,
-        )
-        manifest_body = manifest.model_dump_json(indent=2) + "\n"
-        manifest_temporary = _stage_text(request.manifest, manifest_body)
-        os.link(manifest_temporary, request.manifest)
-        try:
-            os.link(temporary, request.archive)
-        except OSError:
-            if request.manifest.is_file() and request.manifest.samefile(manifest_temporary):
-                request.manifest.unlink()
-            raise
     finally:
-        temporary.unlink(missing_ok=True)
+        if temporary is not None:
+            close_temporary(temporary)
         if manifest_temporary is not None:
-            manifest_temporary.unlink(missing_ok=True)
+            close_temporary(manifest_temporary)
     return manifest
 
 

@@ -227,13 +227,26 @@ def test_archive_publication_failure_preserves_only_competing_manifest(
     failure = "injected archive publication failure"
     replacement = b"competing manifest"
 
-    def fail_archive_link(source: Path, target: Path) -> None:
-        if Path(target) == request.archive:
+    def fail_archive_link(
+        source: Path | str,
+        target: Path | str,
+        *,
+        src_dir_fd: int | None = None,
+        dst_dir_fd: int | None = None,
+        follow_symlinks: bool = True,
+    ) -> None:
+        if Path(target).name == request.archive.name:
             if competing_manifest:
                 request.manifest.unlink()
                 _ = request.manifest.write_bytes(replacement)
             raise OSError(failure)
-        original_link(source, target)
+        original_link(
+            source,
+            target,
+            src_dir_fd=src_dir_fd,
+            dst_dir_fd=dst_dir_fd,
+            follow_symlinks=follow_symlinks,
+        )
 
     monkeypatch.setattr(os, "link", fail_archive_link)
 

@@ -1,16 +1,23 @@
 from __future__ import annotations
 
 import shutil
-from typing import TYPE_CHECKING
+import tarfile
+from typing import TYPE_CHECKING, cast
 
 import pytest
 
 import mcpack_evidence.item7_archive as archive
-from mcpack_evidence.item7_archive_io import duplicate_stream as open_descriptor_stream
+from mcpack_evidence.item7_archive_io import (
+    duplicate_stream as open_descriptor_stream,
+)
 
 if TYPE_CHECKING:
+    from collections.abc import Callable
     from pathlib import Path
     from typing import BinaryIO
+
+    from mcpack_evidence.item7_archive_io import OpenedFile
+    from mcpack_evidence.item7_archive_publish import TemporaryFile
 
 
 def _create_request(root: Path, archive_name: str) -> archive.ArchiveRequest:
@@ -170,3 +177,33 @@ def test_restore_uses_verified_archive_descriptor_after_path_replacement(
     _ = archive.restore_archive(request)
 
     assert (request.target / "evidence.txt").read_bytes() == b"evidence"
+
+
+def test_create_rejects_output_parent_replaced_after_tar_build(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    output_parent = tmp_path / "output"
+    request = _create_request(output_parent, "item7-raw-output-race.tar.gz")
+    displaced = tmp_path / "displaced-output"
+    original_build = cast(
+        "Callable[[int, tuple[OpenedFile, ...]], TemporaryFile]",
+        archive.__dict__["build_tar"],
+    )
+
+    def replace_parent(directory: int, files: tuple[OpenedFile, ...]) -> TemporaryFile:
+        temporary = original_build(directory, files)
+        _ = output_parent.rename(displaced)
+        output_parent.mkdir()
+        attacker = output_parent / "attacker"
+        _ = attacker.write_bytes(b"attacker")
+        with tarfile.open(output_parent / temporary.name, "w:gz") as bundle:
+            bundle.add(attacker, arcname="evil")
+        return temporary
+
+    monkeypatch.setattr(archive, "build_tar", replace_parent)
+
+    with pytest.raises(archive.ArchiveValidationError, match="unsafe"):
+        _ = archive.create_archive(request)
+
+    assert not request.archive.exists()
+    assert not request.manifest.exists()

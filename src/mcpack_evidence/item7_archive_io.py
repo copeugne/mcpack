@@ -3,12 +3,9 @@
 from __future__ import annotations
 
 import errno
-import gzip
 import hashlib
 import os
 import stat
-import tarfile
-import tempfile
 from contextlib import contextmanager
 from dataclasses import dataclass
 from enum import StrEnum
@@ -38,6 +35,7 @@ class UnsafeFilesystemError(ValueError):
 
 
 class _FilesystemIssue(StrEnum):
+    HARDLINK = "source contains a hardlink"
     NONREGULAR = "entry is not regular"
     UNSAFE_ENTRY = "unsafe directory entry"
     SYMLINK = "source contains a symlink"
@@ -52,8 +50,7 @@ def open_regular(path: Path) -> Generator[tuple[int, os.stat_result]]:
     try:
         descriptor = _open_at(parent, path.name)
         metadata = os.fstat(descriptor)
-        if not stat.S_ISREG(metadata.st_mode):
-            raise UnsafeFilesystemError(_FilesystemIssue.NONREGULAR, path)
+        _require_regular(metadata, path)
         yield descriptor, metadata
     finally:
         if descriptor >= 0:
@@ -76,28 +73,53 @@ def open_tree(root: Path) -> Generator[tuple[OpenedFile, ...]]:
         os.close(root_descriptor)
 
 
+@contextmanager
+def open_directory(path: Path) -> Generator[int]:
+    """Open and pin a symlink-free directory path."""
+    descriptor = _open_directory(path)
+    try:
+        yield descriptor
+    finally:
+        os.close(descriptor)
+
+
+@contextmanager
+def open_regular_at(
+    directory: int, relative: PurePosixPath, *, writable: bool = False
+) -> Generator[tuple[int, os.stat_result]]:
+    """Open one relative regular file below a pinned directory."""
+    parent = _open_relative_directory(directory, relative.parts[:-1])
+    descriptor = -1
+    try:
+        descriptor = _open_at(parent, relative.name, writable=writable)
+        metadata = os.fstat(descriptor)
+        _require_regular(metadata, relative)
+        yield descriptor, metadata
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+        os.close(parent)
+
+
+@contextmanager
+def open_tree_at(directory: int, relative: PurePosixPath) -> Generator[tuple[OpenedFile, ...]]:
+    """Open and pin a relative subtree below a pinned directory."""
+    root_descriptor = _open_relative_directory(directory, relative.parts)
+    files: list[OpenedFile] = []
+    try:
+        _walk(root_descriptor, relative, files)
+        files.sort(key=lambda row: row.relative_path)
+        yield tuple(files)
+    finally:
+        for opened in files:
+            os.close(opened.descriptor)
+        os.close(root_descriptor)
+
+
 def duplicate_stream(descriptor: int) -> BinaryIO:
     """Return a binary stream over a duplicate of a pinned descriptor."""
     _ = os.lseek(descriptor, 0, os.SEEK_SET)
     return os.fdopen(os.dup(descriptor), "rb")
-
-
-def build_tar(archive: Path, files: tuple[OpenedFile, ...]) -> Path:
-    """Build a deterministic tar stream from pinned file descriptors."""
-    with tempfile.NamedTemporaryFile(dir=archive.parent, delete=False) as stream:
-        temporary = Path(stream.name)
-        with (
-            gzip.GzipFile(fileobj=stream, mode="wb", filename="", mtime=0) as compressed,
-            tarfile.open(fileobj=compressed, mode="w|", format=tarfile.PAX_FORMAT) as bundle,
-        ):
-            for opened in files:
-                info = tarfile.TarInfo(opened.relative_path)
-                info.size = opened.size_bytes
-                info.mode = 0o644
-                info.mtime = 0
-                with duplicate_stream(opened.descriptor) as source:
-                    bundle.addfile(info, source)
-    return temporary
 
 
 def sha256_descriptor(descriptor: int) -> str:
@@ -128,6 +150,9 @@ def _walk(directory: int, prefix: PurePosixPath, files: list[OpenedFile]) -> Non
         if not stat.S_ISREG(opened_metadata.st_mode):
             os.close(descriptor)
             raise UnsafeFilesystemError(_FilesystemIssue.NONREGULAR, relative)
+        if opened_metadata.st_nlink != 1:
+            os.close(descriptor)
+            raise UnsafeFilesystemError(_FilesystemIssue.HARDLINK, relative)
         if name == "session.lock":
             os.close(descriptor)
             continue
@@ -160,14 +185,40 @@ def _open_directory(path: Path) -> int:
     return descriptor
 
 
-def _open_at(directory: int, name: str) -> int:
+def _open_relative_directory(directory: int, parts: tuple[str, ...]) -> int:
+    descriptor = os.dup(directory)
+    try:
+        for component in parts:
+            next_descriptor = os.open(
+                component,
+                os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW | os.O_CLOEXEC,
+                dir_fd=descriptor,
+            )
+            os.close(descriptor)
+            descriptor = next_descriptor
+    except OSError as error:
+        os.close(descriptor)
+        if error.errno in {errno.ELOOP, errno.ENOTDIR}:
+            raise UnsafeFilesystemError(_FilesystemIssue.UNSAFE_DIRECTORY, parts) from error
+        raise
+    return descriptor
+
+
+def _open_at(directory: int, name: str, *, writable: bool = False) -> int:
     try:
         return os.open(
             name,
-            os.O_RDONLY | os.O_NONBLOCK | os.O_NOFOLLOW | os.O_CLOEXEC,
+            (os.O_RDWR if writable else os.O_RDONLY) | os.O_NONBLOCK | os.O_NOFOLLOW | os.O_CLOEXEC,
             dir_fd=directory,
         )
     except OSError as error:
         if error.errno == errno.ELOOP:
             raise UnsafeFilesystemError(_FilesystemIssue.SYMLINK, name) from error
         raise
+
+
+def _require_regular(metadata: os.stat_result, path: object) -> None:
+    if not stat.S_ISREG(metadata.st_mode):
+        raise UnsafeFilesystemError(_FilesystemIssue.NONREGULAR, path)
+    if metadata.st_nlink != 1:
+        raise UnsafeFilesystemError(_FilesystemIssue.HARDLINK, path)

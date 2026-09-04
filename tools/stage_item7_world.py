@@ -6,9 +6,20 @@ import argparse
 import errno
 import fcntl
 import shutil
+import tempfile
 from contextlib import contextmanager
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import TYPE_CHECKING, Final, final
+
+from mcpack_evidence.item7_archive_io import (
+    OpenedFile,
+    UnsafeFilesystemError,
+    duplicate_stream,
+    open_directory,
+    open_regular_at,
+    open_tree,
+    open_tree_at,
+)
 
 if TYPE_CHECKING:
     from collections.abc import Generator, Sequence
@@ -52,15 +63,22 @@ def stage(mode: str, project: Path, raw: Path, output: Path) -> tuple[int, int]:
     if not project.is_dir() or not raw.is_dir() or output.exists() or output.is_symlink():
         message = "project and raw roots must exist, and output must be absent"
         raise StageError(message)
-    if mode == "core":
-        _reject_forbidden(raw)
-        _ = shutil.copytree(raw, output, copy_function=shutil.copy2, symlinks=True)
-    else:
-        output.mkdir(parents=True)
-        names = _instance_names(mode)
-        for name in names:
-            copy_world_boundary(project / "instances/item7" / name, output / name / "world")
-    _reject_forbidden(output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    temporary = Path(tempfile.mkdtemp(prefix=".item7-stage-", dir=output.parent))
+    try:
+        if mode == "core":
+            with open_tree(raw) as files:
+                _copy_opened_files(files, temporary)
+        else:
+            for name in _instance_names(mode):
+                destination = temporary / name / "world"
+                copy_world_boundary(project / "instances/item7" / name, destination)
+        _ = temporary.rename(output)
+    except UnsafeFilesystemError as error:
+        raise StageError(str(error)) from error
+    finally:
+        if temporary.exists():
+            shutil.rmtree(temporary)
     files = tuple(path for path in output.rglob("*") if path.is_file())
     return len(files), sum(path.stat().st_size for path in files)
 
@@ -68,45 +86,87 @@ def stage(mode: str, project: Path, raw: Path, output: Path) -> tuple[int, int]:
 def copy_world_boundary(instance: Path, destination: Path) -> None:
     """Copy the declared stopped-world boundary while holding its record lock."""
     world = instance / "world"
-    with _world_lock(world):
-        destination.mkdir(parents=True)
-        for relative in WORLD_FILES:
-            source = world / relative
-            if source.is_symlink():
-                message = f"stage source contains a symlink: {source}"
-                raise StageError(message)
-            if source.is_file():
-                _ = shutil.copy2(source, destination / relative)
-        for relative in WORLD_DIRECTORIES:
-            source = world / relative
-            if source.is_dir():
-                _reject_forbidden(source)
-                _ = shutil.copytree(
-                    source,
-                    destination / relative,
-                    copy_function=shutil.copy2,
-                    symlinks=True,
-                )
+    if destination.exists() or destination.is_symlink():
+        message = f"stage destination already exists: {destination}"
+        raise StageError(message)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    temporary = Path(tempfile.mkdtemp(prefix=".item7-world-", dir=destination.parent))
+    try:
+        _copy_locked_world(world, temporary)
+        _ = temporary.rename(destination)
+    except UnsafeFilesystemError as error:
+        raise StageError(str(error)) from error
+    finally:
+        if temporary.exists():
+            shutil.rmtree(temporary)
+
+
+def _copy_locked_world(world: Path, destination: Path) -> None:
+    with open_directory(world) as world_descriptor:
+        lock_path = PurePosixPath("session.lock")
+        try:
+            lock_context = open_regular_at(world_descriptor, lock_path, writable=True)
+            with lock_context as (lock_descriptor, _):
+                _copy_under_lock(world_descriptor, lock_descriptor, destination)
+        except FileNotFoundError as error:
+            message = f"world session lock is missing or unsafe: {world / lock_path}"
+            raise StageError(message) from error
+
+
+def _copy_under_lock(directory: int, lock: int, destination: Path) -> None:
+    with _record_lock(lock):
+        for value in WORLD_FILES:
+            relative = PurePosixPath(value)
+            try:
+                with open_regular_at(directory, relative) as (descriptor, metadata):
+                    _copy_descriptor(descriptor, metadata.st_size, relative, destination)
+            except FileNotFoundError:
+                continue
+        for value in WORLD_DIRECTORIES:
+            relative = PurePosixPath(value)
+            try:
+                with open_tree_at(directory, relative) as files:
+                    _copy_opened_files(files, destination)
+            except FileNotFoundError:
+                continue
 
 
 @contextmanager
-def _world_lock(world: Path) -> Generator[None]:
-    lock_path = world / "session.lock"
-    if lock_path.is_symlink() or not lock_path.is_file():
-        message = f"world session lock is missing or unsafe: {lock_path}"
+def _record_lock(descriptor: int) -> Generator[None]:
+    try:
+        fcntl.lockf(descriptor, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError as error:
+        if error.errno in {errno.EACCES, errno.EAGAIN}:
+            message = "world is active"
+            raise StageError(message) from error
+        raise
+    try:
+        yield
+    finally:
+        fcntl.lockf(descriptor, fcntl.LOCK_UN)
+
+
+def _copy_opened_files(files: tuple[OpenedFile, ...], destination: Path) -> None:
+    for opened in files:
+        relative = PurePosixPath(opened.relative_path)
+        _require_allowed(relative)
+        _copy_descriptor(opened.descriptor, opened.size_bytes, relative, destination)
+
+
+def _copy_descriptor(descriptor: int, size: int, relative: PurePosixPath, root: Path) -> None:
+    target = root / relative
+    target.parent.mkdir(parents=True, exist_ok=True)
+    with duplicate_stream(descriptor) as source, target.open("xb") as output:
+        _ = shutil.copyfileobj(source, output)
+    if target.stat().st_size != size:
+        message = f"source changed while staging: {relative}"
         raise StageError(message)
-    with lock_path.open("r+b") as lock:
-        try:
-            fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        except OSError as error:
-            if error.errno in {errno.EACCES, errno.EAGAIN}:
-                message = f"world is active: {world}"
-                raise StageError(message) from error
-            raise
-        try:
-            yield
-        finally:
-            fcntl.lockf(lock, fcntl.LOCK_UN)
+
+
+def _require_allowed(relative: PurePosixPath) -> None:
+    if relative.suffix == ".jar" or relative.name == "session.lock":
+        message = f"forbidden runtime file entered the stage: {relative}"
+        raise StageError(message)
 
 
 def _instance_names(mode: str) -> tuple[str, ...]:
@@ -115,16 +175,6 @@ def _instance_names(mode: str) -> tuple[str, ...]:
     if mode == "run-b-worlds":
         return tuple(f"run-b-{role}" for role in RUN_ROLES)
     return AUXILIARY_INSTANCES
-
-
-def _reject_forbidden(root: Path) -> None:
-    for path in root.rglob("*"):
-        if path.is_symlink():
-            message = f"stage source contains a symlink: {path}"
-            raise StageError(message)
-        if path.is_file() and (path.suffix == ".jar" or path.name == "session.lock"):
-            message = f"forbidden runtime file entered the stage: {path}"
-            raise StageError(message)
 
 
 def build_parser() -> argparse.ArgumentParser:
