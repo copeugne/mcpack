@@ -14,17 +14,21 @@ from mcpack_evidence.item7_save_sequence import validate_save_sequences
 if TYPE_CHECKING:
     from collections.abc import Sequence
 
-_ARGUMENT_COUNT = 2
+_ARGUMENT_COUNT = 4
 _USAGE_EXIT = 2
 
 
 def main(arguments: Sequence[str]) -> int:
     """Print JSON line-order records for every accepted lifecycle console log."""
-    if len(arguments) != _ARGUMENT_COUNT or arguments[0] != "--core":
-        print("usage: validate_item7_save_sequence.py --core PATH")
+    if (
+        len(arguments) != _ARGUMENT_COUNT
+        or arguments[0] != "--core"
+        or arguments[2] != "--manifest"
+    ):
+        print("usage: validate_item7_save_sequence.py --core PATH --manifest JSON")
         return _USAGE_EXIT
     try:
-        records = validate_save_sequences(Path(arguments[1]))
+        records = validate_save_sequences(Path(arguments[1]), Path(arguments[3]))
     except Item7RuntimeError as error:
         print(str(error))
         return 1
