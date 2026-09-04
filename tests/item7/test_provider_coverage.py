@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pytest
+from pydantic import TypeAdapter
 
 from mcpack_evidence.item7_provider import (
     CatalogInputs,
@@ -139,3 +141,24 @@ def test_catalog_rejects_filename_only_provider_claim(tmp_path: Path) -> None:
 
     with pytest.raises(ProviderCatalogError, match="tectonic"):
         _ = build_provider_catalog(inputs.with_matrix(altered_matrix))
+
+
+def test_catalog_rejects_unknown_item3_evidence_fields(tmp_path: Path) -> None:
+    inputs = CatalogInputs.from_repository(ROOT)
+    document = TypeAdapter(dict[str, object]).validate_python(
+        json.loads(inputs.acquisition.read_text(encoding="utf-8"))
+    )
+    document["unexpected_acceptance_claim"] = True
+    altered = tmp_path / "acquisition.json"
+    _ = altered.write_text(json.dumps(document), encoding="utf-8")
+
+    with pytest.raises(ValueError, match="unexpected_acceptance_claim"):
+        _ = build_provider_catalog(
+            CatalogInputs(
+                retained=inputs.retained,
+                acquisition=altered,
+                matrix=inputs.matrix,
+                inspection=inputs.inspection,
+                candidate_directory=inputs.candidate_directory,
+            )
+        )

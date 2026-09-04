@@ -26,73 +26,136 @@ _MIN_STRUCTURE_PATH_PARTS: Final = 5
 
 
 class _AcquisitionIdentity(BaseModel):
-    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="ignore", strict=True)
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
 
     computed_sha256: str
+    size_bytes: int
+    verified_publisher_hashes: object
 
 
 class _AcquisitionArtifact(BaseModel):
-    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="ignore", strict=True)
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
 
     candidate_filename: str
+    upstream_filename: str
+    platform: str
+    source_url: str
+    local_path: str
+    acquisition: str
     identity: _AcquisitionIdentity
 
 
 class _AcquisitionManifest(BaseModel):
-    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="ignore", strict=True)
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
 
     schema_version: str
+    generated_at: str
+    candidate_count: int
+    total_size_bytes: int
     artifacts: tuple[_AcquisitionArtifact, ...]
 
 
 class _MatrixArtifact(BaseModel):
-    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="ignore", strict=True)
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
 
     exact_filename: str
+    download_url: str
+    file_id: object
+    publisher_hashes: object
+    size_bytes: int
 
 
 class _ProvidedMod(BaseModel):
-    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="ignore", strict=True)
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
 
     mod_id: str
+    origin: str
+    provider_candidate: str
+    source_path: str
+    version: str
 
 
 class _MatrixRow(BaseModel):
-    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="ignore", strict=True)
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
 
     candidate_filename: str
+    platform: str
+    project_id: str
+    version_id: str
+    version_number: str
     artifact: _MatrixArtifact
+    declared_game_versions: object
+    declared_loaders: object
+    publisher_environment: object
+    physical_side_classification: str
+    active_metadata_paths: object
+    inactive_metadata_paths: object
     final_disposition: str
     provided_mods: tuple[_ProvidedMod, ...]
+    loader_checks: object
+    minecraft_checks: object
+    neoforge_checks: object
+    dependency_checks: object
+    hazard_flags: object
+    static_status: str
+    rationale: str
+    confidence: str
+    runtime_evidence: str | None
+    limitations: object
 
 
 class _FinalMatrix(BaseModel):
-    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="ignore", strict=True)
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
 
     schema_version: str
+    target: object
+    candidate_count: int
     rows: tuple[_MatrixRow, ...]
+    limitations: object
 
 
 class _InspectionMod(BaseModel):
-    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="ignore", strict=True)
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
 
     mod_id: str
+    display_name: str
+    source_path: str
+    version: str
 
 
 class _InspectionRow(BaseModel):
-    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="ignore", strict=True)
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
 
     candidate_filename: str
     expected_sha256: str
     computed_sha256: str
+    zip_integrity: str
     inspection_status: str
+    archive_role: str
+    entry_count: int
+    duplicate_entry_count: int
+    unsafe_entries: object
+    metadata_documents: object
+    manifest_implementation_version: str | None
+    mod_loaders: object
+    loader_ranges: object
+    loader_declarations: object
     mods: tuple[_InspectionMod, ...]
+    dependencies: object
+    minecraft_ranges: object
+    neoforge_ranges: object
+    fabric_environment: object
+    embedded_libraries: object
+    issues: object
 
 
 class _JarInspection(BaseModel):
-    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="ignore", strict=True)
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
 
     schema_version: str
+    generated_at: str
+    candidate_count: int
+    all_inspections_passed: bool
     candidates: tuple[_InspectionRow, ...]
 
 
