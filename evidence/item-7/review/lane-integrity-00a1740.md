@@ -15,4 +15,4 @@ The accepted restored r8 trees reproduced:
 - 716-file world inventory SHA-256 `331bde517e6fb072a4aa0a66fb77b733559b27f92098f8fc1f236405bbe02f3e`.
 - 125-artifact completion receipt SHA-256 `c369178431abba0c17404b9723a47fa66e945c305b5477c63bd5a9a6ec281582`.
 
-Live GitHub metadata matched the annotated r8 tag, source revision, four release assets, and `publication-r8.json`. Exclusion and visual-provenance checks passed. No actionable findings.
+Live GitHub metadata matched the annotated r8 tag, source revision, four release assets, and `evidence/item-7/archive/r8/publication.json`. Exclusion and visual-provenance checks passed. No actionable findings.

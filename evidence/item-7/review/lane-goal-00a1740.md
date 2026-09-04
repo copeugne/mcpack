@@ -14,6 +14,6 @@ Reproduction results:
 - `tools/build_item7_world_archive_inventory.py`, using the literal invocation in `candidate-r8-validation.md`: `PASS`, 716 files, byte-identical SHA-256 `331bde517e6fb072a4aa0a66fb77b733559b27f92098f8fc1f236405bbe02f3e`.
 - `tools/build_item7_completion.py`, using the literal invocation in `candidate-r8-validation.md`: `PASS`, 125 artifacts, byte-identical SHA-256 `c369178431abba0c17404b9723a47fa66e945c305b5477c63bd5a9a6ec281582`.
 
-The frozen Minecraft, NeoForge, Java, retained-manifest, candidate-count, and four-seed identities agree across the specification, report, ledger, and completion receipt. All provider labels, anomaly classes, failure dispositions, limitations, and preserved unknowns are represented. Live GitHub metadata matched the r8 tag and four release assets recorded in `publication-r8.json`.
+The frozen Minecraft, NeoForge, Java, retained-manifest, candidate-count, and four-seed identities agree across the specification, report, ledger, and completion receipt. All provider labels, anomaly classes, failure dispositions, limitations, and preserved unknowns are represented. Live GitHub metadata matched the r8 tag and four release assets recorded in `evidence/item-7/archive/r8/publication.json`.
 
 No actionable findings remained. Item 7 was correctly classified as `PASS, DELIVERY PENDING`, and Item 8 remained blocked.
