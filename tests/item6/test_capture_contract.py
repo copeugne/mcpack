@@ -269,6 +269,33 @@ def test_capture_preserves_existing_output_bytes(tmp_path: Path) -> None:
     assert sorted(path.name for path in output.iterdir()) == ["sentinel.bin"]
 
 
+@pytest.mark.parametrize("nested", [False, True])
+def test_capture_rejects_symlinked_output_parent_before_staging(
+    tmp_path: Path, nested: bool
+) -> None:
+    """A lexical output parent must never resolve through an external symlink."""
+    # Given: the requested output parent or one of its lexical parents links externally.
+    instance = _make_instance(tmp_path)
+    external = tmp_path / "external"
+    external.mkdir()
+    linked_parent = tmp_path / "linked-output-parent"
+    linked_parent.symlink_to(external, target_is_directory=True)
+    output = (
+        linked_parent / "captured"
+        if not nested
+        else linked_parent / "nested-output-parent" / "captured"
+    )
+
+    # When: capture preflights the user-controlled output location.
+    with pytest.raises(ValueError, match="output parent"):
+        capture(instance, output)
+
+    # Then: no staging directory, output, or receipt can be materialized externally.
+    assert not (external / "captured").exists()
+    assert not (external / "nested-output-parent").exists()
+    assert not (external / "config-sanitization.json").exists()
+
+
 @pytest.mark.parametrize(
     "relative",
     [Path("config"), Path("defaultconfigs"), Path("world/serverconfig")],

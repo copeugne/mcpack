@@ -76,6 +76,7 @@ class CaptureValidationError(ValueError):
 
 def capture(instance: Path, output: Path) -> None:
     """Copy configuration-bearing paths without altering the source instance."""
+    _require_real_output_parent(output.parent)
     if output.exists():
         message = f"output already exists: {output}"
         raise FileExistsError(message)
@@ -160,6 +161,18 @@ def _require_regular_file(path: Path, name: str) -> None:
     if path.is_symlink() or not path.is_file():
         message = f"required regular non-symlink file is invalid: {name}"
         raise CaptureValidationError(message)
+
+
+def _require_real_output_parent(path: Path) -> None:
+    """Reject an existing symlink in the lexical output parent chain."""
+    candidate = path
+    while True:
+        if candidate.is_symlink():
+            message = f"output parent contains a symlink: {path}"
+            raise CaptureValidationError(message)
+        if candidate == candidate.parent:
+            return
+        candidate = candidate.parent
 
 
 def _require_no_nested_symlinks(path: Path, name: str) -> None:
