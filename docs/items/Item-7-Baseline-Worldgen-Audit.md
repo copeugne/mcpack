@@ -1,13 +1,13 @@
 # Item 7 Baseline Worldgen Interaction Audit
 
 **Acceptance status:** `PASS`
-**Delivery status:** awaiting pull request review and merge
+**Delivery status:** `COMPLETE`, merged by PR #15 as `a0f2fc275d2e72081ee5a9200e8309f0e3e720a0`
 **Protocol:** `item7-worldgen-audit-v1`
 **Frozen stack:** 136 retained JARs under Minecraft 1.21.1, NeoForge 21.1.249, and Temurin 21.0.12.1+1-LTS
 
 ## Decision
 
-Item 7's local exit gate passes. The retained stack was exercised in actual fresh worlds under the exact frozen Item 6 configuration, every required provider label and anomaly class has an evidence-backed disposition, the raw evidence is durably published and restore-tested, and the deterministic completion validator returns `PASS`.
+Item 7's exit gate and repository delivery pass. The retained stack was exercised in actual fresh worlds under the exact frozen Item 6 configuration, every required provider label and anomaly class has an evidence-backed disposition, the raw evidence is durably published and restore-tested, and the deterministic completion validator returns `PASS`. PR #15 merged accepted head `a57a00cf59005f59ad4694e3c1b0c6acc644754e` into `main`, and the fetched `origin/main` ref was verified at merge commit `a0f2fc275d2e72081ee5a9200e8309f0e3e720a0`.
 
 This is not a clean-worldgen claim. Independent fresh runs diverged semantically outside the central End, Better Caves emitted a confirmed generation failure, two YUNG components remain unobserved because canonical structure identifiers are unresolved, and most warning signatures remain `UNKNOWN`. These findings are carried forward to Item 8 and later gates. No Item 6 configuration was tuned.
 
@@ -135,4 +135,4 @@ The former zero-mod `terrain-control-v0.1` report was reconstructed prose whose 
 
 ## Exit decision
 
-The local Item 7 exit gate passes, with the limitations and downstream actions above preserved. Item 7 reaches repository-level `COMPLETE` only after this branch receives clean exact-SHA review and merges into `main`. Item 8 must then begin from that verified merged ref and must resolve canonical family identities without double-counting aliases, pieces, pools, or templates.
+Item 7 is repository-level `COMPLETE`, with the limitations and downstream actions above preserved. Item 8 must begin from verified merge commit `a0f2fc275d2e72081ee5a9200e8309f0e3e720a0` and must resolve canonical family identities without double-counting aliases, pieces, pools, or templates.
