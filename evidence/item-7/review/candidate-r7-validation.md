@@ -34,4 +34,16 @@ The older mutable `/tmp/mcpack-item7-raw-20260904` tree is not an accepted compl
 - Item 7 shell syntax: passed.
 - `git diff --check`: passed.
 
-A clean Git export of the reconciled documentation commit remains required before the fresh exact-SHA review lanes run.
+## Clean export validation
+
+Reconciled candidate `dc4e10bf5a4d686d3b4040548cf3d303c01dfd5c` was exported with `git archive` into `/tmp/mcpack-item7-clean-dc4e10b`. The first combined invocation tried to start with that not-yet-created path as its working directory and failed before creating a process or writing evidence. The corrected invocation created the export from the repository and then ran every check from the export.
+
+- Item 7 tests: 182 passed.
+- Repository tests: 863 passed.
+- Scoped Ruff formatting and checks: passed across 101 files.
+- Scoped basedpyright: 0 errors, 0 warnings, 0 notes.
+- Item 7 shell syntax: passed.
+- The tracked world inventory builder rehashed all 716 r7 restored world files and reproduced the committed inventory byte for byte.
+- The tracked completion builder used the r7 restored core and reproduced the committed 125-artifact `PASS` receipt byte for byte.
+
+The validation-record commit changes only documentation and evidence records. Fresh exact-SHA review lanes and a runtime audit must bind the resulting commit before push.

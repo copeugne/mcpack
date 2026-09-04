@@ -8,7 +8,7 @@ This section supersedes the dated status and restart instructions below. Preserv
 
 ### Git and delivery state
 
-- A fresh fetch on 2026-09-04 found `origin/main` at `eb84d842a7b108863dcdd4c86435a875f8a0c575` with no newer remote commits. The active branch is `experiment/item-7-worldgen-audit`, based on that ref. Corrected r7 custody evidence and completion are committed through `39217f4` before this handoff reconciliation.
+- A fresh fetch on 2026-09-04 found `origin/main` at `eb84d842a7b108863dcdd4c86435a875f8a0c575` with no newer remote commits. The active branch is `experiment/item-7-worldgen-audit`, based on that ref. Corrected r7 custody evidence, completion, and reconciled documentation are clean-export validated through `dc4e10bf5a4d686d3b4040548cf3d303c01dfd5c` before this validation record.
 - PR #11 merged Item 5 delivery as `398bf59b3a89669ec402026d52250c2b86e54047`.
 - PR #12 merged the initial Item 6 generated-default capture as `895ed1d999cd22ca511035e666ad8ac308ae63c1`.
 - PR #14 merged the completed Item 6 audit as `f38ea66ecc28911c33d525dcde26434853673ad3`. Its final Codex review completed against `96a914c8a457d2f23698cdaeba18c6ed899b56d1` and reported no major issues. The GitHub API currently exposes no thumbs-up reaction on that cycle, so do not claim that reaction; preserve this as a review-record discrepancy unless later evidence resolves it.
@@ -34,7 +34,7 @@ This section supersedes the dated status and restart instructions below. Preserv
 | 10 | `BLOCKED` by Items 7 through 9 | Regenerate and preserve predeclared density evidence only after the preceding gates pass. |
 | 11 | `BLOCKED` | Do not implement, run, repair, or lint Item 11 before the final Items 2 through 10 audit passes. It also requires at least two blind human operators. |
 
-The Item 7 completion command returns `PASS` and records 125 exact artifacts in `evidence/item-7/completion.json`, whose SHA-256 is `6bb509d87a215a67186fa70f285b59e6986d813c7c21f9ab19e8479ea078515c`. All four r7 archives restored through pinned descriptors and the repository-bound verifier downloaded every asset twice with matching size and SHA-256. The corrected 716-file inventory and completion receipt each rebuilt byte for byte from the r7 restore. The last complete Item 7 pass before the final two narrow archive fixes had 180 tests; the affected archive and completion suites now pass 27 tests. A fresh complete and clean-export gate remains before review. Fresh exact-SHA review, GitHub Codex review, merge, and delivered-ref verification remain.
+The Item 7 completion command returns `PASS` and records 125 exact artifacts in `evidence/item-7/completion.json`, whose SHA-256 is `6bb509d87a215a67186fa70f285b59e6986d813c7c21f9ab19e8479ea078515c`. All four r7 archives restored through pinned descriptors and the repository-bound verifier downloaded every asset twice with matching size and SHA-256. Clean export `dc4e10bf5a4d686d3b4040548cf3d303c01dfd5c` passed 182 Item 7 tests, 863 repository tests, all scoped quality checks, and byte-identical rebuilds of the 716-file inventory and 125-artifact completion receipt. Fresh exact-SHA review, GitHub Codex review, merge, and delivered-ref verification remain.
 
 ### Exact continuation point
 
