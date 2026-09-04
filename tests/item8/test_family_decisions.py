@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
-@pytest.mark.parametrize("namespace", ["integrated_villages:", "dungeons_arise:"])
+@pytest.mark.parametrize("namespace", ["integrated_villages:", "dungeons_arise:", "explorations:"])
 def test_authored_designs_bind_roots_settings_and_missing_components(
     namespace: str,
 ) -> None:
@@ -75,7 +75,16 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         identifier = str(row["family_id"])
         assert row["structure_ids"] == [identifier]
         definition = definitions[identifier]
-        assert row["start_pool"] == definition["start_pool"] == structures[identifier]["start_pool"]
+        assert row["start_pool"] == definition.get("start_pool")
+        if "start_pool" in definition:
+            assert row["start_pool"] == structures[identifier]["start_pool"]
+            assert row["missing_components"] == structures[identifier]["missing"]
+        else:
+            assert identifier in cast("dict[str, JsonValue]", traces["untraced_structures"])
+            assert (
+                row["missing_components"]
+                == "UNKNOWN: custom generation is outside current pool trace"
+            )
         assert row["generation_settings"] == {
             key: definition[key]
             for key in (
@@ -89,7 +98,6 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
             )
             if key in definition
         }
-        assert row["missing_components"] == structures[identifier]["missing"]
         for path, digest in cast("dict[str, str]", row["evidence"]).items():
             assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
 
