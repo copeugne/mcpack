@@ -14,6 +14,7 @@ from typing import TYPE_CHECKING, Final
 from .item7_archive_io import OpenedFile, duplicate_stream
 
 if TYPE_CHECKING:
+    from collections.abc import Callable
     from pathlib import Path
 
 _ATTEMPTS: Final = 32
@@ -137,6 +138,29 @@ def publish_pair(archive: Publication, manifest: Publication) -> None:
             archive.temporary.directory,
             archive.name,
             archive.temporary.descriptor,
+        )
+        raise
+
+
+def publish_one(publication: Publication, guard: Callable[[], None]) -> None:
+    """Publish one file only while its parent and external guard remain valid."""
+    _require_named_parent(publication.temporary.directory, publication.parent)
+    guard()
+    os.link(
+        publication.temporary.name,
+        publication.name,
+        src_dir_fd=publication.temporary.directory,
+        dst_dir_fd=publication.temporary.directory,
+        follow_symlinks=False,
+    )
+    try:
+        _require_named_parent(publication.temporary.directory, publication.parent)
+        guard()
+    except Exception:
+        _unlink_if_identity(
+            publication.temporary.directory,
+            publication.name,
+            publication.temporary.descriptor,
         )
         raise
 

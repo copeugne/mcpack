@@ -17,7 +17,7 @@ from .item7_archive_io import open_directory
 if TYPE_CHECKING:
     from collections.abc import Generator
     from pathlib import Path, PurePosixPath
-    from typing import BinaryIO, Protocol
+    from typing import IO, Protocol
 
     class _RenameAt2(Protocol):
         argtypes: list[object]
@@ -53,7 +53,7 @@ class StagingTree:
     temporary_name: str
     published: bool = False
 
-    def write(self, relative: PurePosixPath, source: BinaryIO, size: int) -> None:
+    def write(self, relative: PurePosixPath, source: IO[bytes], size: int) -> None:
         """Write one regular file below the pinned output root."""
         parts = _relative_parts(relative)
         parent = _create_directories(self.root_descriptor, parts[:-1])
@@ -80,20 +80,24 @@ class StagingTree:
 
     def publish(self) -> None:
         """Publish the complete tree without replacing an existing target."""
-        _require_named_directory(self.parent_descriptor, self.parent_path)
-        _require_named_tree(
-            self.parent_descriptor,
-            self.temporary_name,
-            self.root_descriptor,
-        )
+        self.require_named()
         _rename_noreplace(
             self.parent_descriptor,
             self.temporary_name,
             self.target_name,
         )
         self.temporary_name = self.target_name
-        _require_named_directory(self.parent_descriptor, self.parent_path)
+        self.require_named()
         self.published = True
+
+    def require_named(self) -> None:
+        """Require the pinned parent and tree to retain their approved names."""
+        _require_named_directory(self.parent_descriptor, self.parent_path)
+        _require_named_tree(
+            self.parent_descriptor,
+            self.temporary_name,
+            self.root_descriptor,
+        )
 
     def close(self) -> None:
         """Close the pinned tree and remove unpublished process-owned output."""

@@ -4,9 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import os
-import shutil
 import tarfile
-import tempfile
 from dataclasses import dataclass
 from enum import StrEnum
 from pathlib import Path, PurePosixPath
@@ -20,6 +18,7 @@ from .item7_archive_io import (
     open_directory,
     open_regular,
     open_tree,
+    open_tree_at,
     sha256_descriptor,
 )
 from .item7_archive_publish import (
@@ -27,10 +26,12 @@ from .item7_archive_publish import (
     UnsafePublicationError,
     build_tar,
     close_temporary,
+    publish_one,
     publish_pair,
     read_inventory,
     stage_bytes,
 )
+from .item7_stage_output import StageOutputError, StagingTree, staging_tree
 
 
 @dataclass(frozen=True, slots=True)
@@ -197,6 +198,9 @@ def restore_archive(request: RestoreRequest) -> RestoreReceipt:
     """Verify an archive against its manifest and restore to an absent target."""
     _require_absent(request.target)
     _require_absent(request.receipt)
+    request.target.parent.mkdir(parents=True, exist_ok=True)
+    request.receipt.parent.mkdir(parents=True, exist_ok=True)
+    receipt_temporary = None
     try:
         with (
             open_regular(request.manifest) as (manifest_descriptor, _),
@@ -204,44 +208,57 @@ def restore_archive(request: RestoreRequest) -> RestoreReceipt:
         ):
             manifest_bytes = manifest_stream.read()
         manifest = ArchiveManifest.model_validate_json(manifest_bytes)
-        with open_regular(request.archive) as (archive_descriptor, archive_metadata):
+        with (
+            open_regular(request.archive) as (archive_descriptor, archive_metadata),
+            open_directory(request.receipt.parent) as receipt_parent,
+            staging_tree(request.target) as destination,
+        ):
             if request.archive.name != manifest.archive_name:
                 raise ArchiveValidationError(_ArchiveIssue.ARCHIVE_NAME)
             if archive_metadata.st_size != manifest.archive_size_bytes:
                 raise ArchiveValidationError(_ArchiveIssue.ARCHIVE_SIZE)
             if sha256_descriptor(archive_descriptor) != manifest.archive_sha256:
                 raise ArchiveValidationError(_ArchiveIssue.ARCHIVE_HASH)
-            request.target.parent.mkdir(parents=True, exist_ok=True)
-            staging = Path(tempfile.mkdtemp(dir=request.target.parent))
-            try:
-                with (
-                    duplicate_stream(archive_descriptor) as archive_stream,
-                    tarfile.open(fileobj=archive_stream, mode="r:gz") as bundle,
-                ):
-                    _verify_and_extract(bundle, manifest, staging)
-                _ = shutil.copytree(staging, request.target)
-            finally:
-                if staging.exists():
-                    _ = shutil.rmtree(staging)
+            with (
+                duplicate_stream(archive_descriptor) as archive_stream,
+                tarfile.open(fileobj=archive_stream, mode="r:gz") as bundle,
+            ):
+                _verify_and_extract(bundle, manifest, destination)
+            _verify_restored_tree(destination, manifest)
+            destination.publish()
+            receipt = RestoreReceipt(
+                revision=manifest.revision,
+                archive_name=manifest.archive_name,
+                archive_sha256=manifest.archive_sha256,
+                manifest_sha256=hashlib.sha256(manifest_bytes).hexdigest(),
+                restored_target=request.target.as_posix(),
+                file_count=manifest.file_count,
+                total_size_bytes=manifest.total_size_bytes,
+                verified=True,
+            )
+            receipt_temporary = stage_bytes(
+                receipt_parent,
+                (receipt.model_dump_json(indent=2) + "\n").encode(),
+            )
+            publish_one(
+                Publication(receipt_temporary, request.receipt.name, request.receipt.parent),
+                destination.require_named,
+            )
     except UnsafeFilesystemError as error:
         raise ArchiveValidationError(_ArchiveIssue.UNSAFE_PATH) from error
-    receipt = RestoreReceipt(
-        revision=manifest.revision,
-        archive_name=manifest.archive_name,
-        archive_sha256=manifest.archive_sha256,
-        manifest_sha256=hashlib.sha256(manifest_bytes).hexdigest(),
-        restored_target=request.target.as_posix(),
-        file_count=manifest.file_count,
-        total_size_bytes=manifest.total_size_bytes,
-        verified=True,
-    )
-    receipt_temporary = _stage_text(request.receipt, receipt.model_dump_json(indent=2) + "\n")
-    os.link(receipt_temporary, request.receipt)
-    receipt_temporary.unlink()
+    except (StageOutputError, UnsafePublicationError) as error:
+        raise ArchiveValidationError(_ArchiveIssue.UNSAFE_PATH) from error
+    finally:
+        if receipt_temporary is not None:
+            close_temporary(receipt_temporary)
     return receipt
 
 
-def _verify_and_extract(bundle: tarfile.TarFile, manifest: ArchiveManifest, staging: Path) -> None:
+def _verify_and_extract(
+    bundle: tarfile.TarFile,
+    manifest: ArchiveManifest,
+    staging: StagingTree,
+) -> None:
     members = bundle.getmembers()
     for member in members:
         _ = _require_relative_path(member.name)
@@ -255,21 +272,22 @@ def _verify_and_extract(bundle: tarfile.TarFile, manifest: ArchiveManifest, stag
         source = bundle.extractfile(member)
         if source is None:
             raise ArchiveValidationError(_ArchiveIssue.NONREGULAR, member.name)
-        destination = staging / identity.relative_path
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        with source, destination.open("wb") as output:
-            _ = shutil.copyfileobj(source, output)
-        if destination.stat().st_size != identity.size_bytes:
-            raise ArchiveValidationError(_ArchiveIssue.RESTORED_SIZE, identity.relative_path)
-        if _sha256(destination) != identity.sha256:
-            raise ArchiveValidationError(_ArchiveIssue.RESTORED_HASH, identity.relative_path)
+        with source:
+            staging.write(PurePosixPath(identity.relative_path), source, identity.size_bytes)
 
 
-def _stage_text(path: Path, body: str) -> Path:
-    with tempfile.NamedTemporaryFile("wb", prefix=".", dir=path.parent, delete=False) as stream:
-        temporary = Path(stream.name)
-        _ = stream.write(body.encode("utf-8"))
-    return temporary
+def _verify_restored_tree(staging: StagingTree, manifest: ArchiveManifest) -> None:
+    with open_tree_at(staging.root_descriptor, PurePosixPath()) as files:
+        restored = tuple(
+            FileIdentity(
+                relative_path=row.relative_path,
+                size_bytes=row.size_bytes,
+                sha256=sha256_descriptor(row.descriptor),
+            )
+            for row in files
+        )
+    if restored != manifest.files:
+        raise ArchiveValidationError(_ArchiveIssue.RESTORED_HASH)
 
 
 def _require_relative_path(value: str) -> str:
@@ -283,8 +301,3 @@ def _require_absent(path: Path) -> None:
     if path.exists() or path.is_symlink():
         message = f"destination already exists: {path}"
         raise FileExistsError(message)
-
-
-def _sha256(path: Path) -> str:
-    with path.open("rb") as stream:
-        return hashlib.file_digest(stream, "sha256").hexdigest()
