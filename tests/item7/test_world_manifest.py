@@ -11,7 +11,7 @@ from typing import TYPE_CHECKING, Literal
 import pytest
 from pydantic import BaseModel
 
-from mcpack_evidence.item7_selections import PILOT_SELECTIONS, WorldgenSelection
+from mcpack_evidence.item7_selections import CONTROL_SELECTIONS, PILOT_SELECTIONS, WorldgenSelection
 from mcpack_evidence.item7_world_manifest import WorldManifestError, build_world_manifest
 
 if TYPE_CHECKING:
@@ -132,6 +132,12 @@ def _pilot_world(
     return world
 
 
+def _control_world(root: Path) -> Path:
+    world = root / "world"
+    _write_regions(world / "region", _coordinates(CONTROL_SELECTIONS[0]))
+    return world
+
+
 def test_end_outer_block_center_maps_to_chunk_center_96() -> None:
     selection = PILOT_SELECTIONS[-1]
 
@@ -140,6 +146,18 @@ def test_end_outer_block_center_maps_to_chunk_center_96() -> None:
     assert (96, 0) in coordinates
     assert min(chunk_x for chunk_x, _ in coordinates) == 92
     assert max(chunk_x for chunk_x, _ in coordinates) == 100
+
+
+def test_control_manifest_requires_only_the_81_chunk_overworld_selection(tmp_path: Path) -> None:
+    world = _control_world(tmp_path)
+    output = tmp_path / "manifest.json"
+    decoded = tmp_path / "chunks.jsonl"
+
+    manifest = build_world_manifest(world, output, decoded, mode="control")
+    payload = _PayloadView.model_validate_json(output.read_bytes())
+
+    assert manifest.record_count == 81
+    assert tuple(row.observed_chunk_count for row in payload.selections) == (81,)
 
 
 def test_manifest_is_deterministic_and_inventories_all_evidence(tmp_path: Path) -> None:

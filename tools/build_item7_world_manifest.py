@@ -18,6 +18,8 @@ class _Arguments:
 
 
 def _mode(value: str) -> ManifestMode:
+    if value == "control":
+        return "control"
     if value == "pilot":
         return "pilot"
     if value == "run":
@@ -32,7 +34,7 @@ def _parse(argv: tuple[str, ...]) -> _Arguments:
     if len(argv) != argument_count or tuple(argv[index] for index in range(1, 7, 2)) != expected:
         command = "build_item7_world_manifest.py"
         outputs = "WORLD --manifest JSON --decoded JSONL"
-        usage = f"usage: {command} {outputs} --mode pilot|run"
+        usage = f"usage: {command} {outputs} --mode control|pilot|run"
         raise SystemExit(usage)
     return _Arguments(
         world=Path(argv[0]),

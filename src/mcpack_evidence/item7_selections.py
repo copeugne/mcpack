@@ -43,6 +43,7 @@ PILOT_SELECTIONS: Final[tuple[WorldgenSelection, ...]] = (
         radius_chunks=4,
     ),
 )
+CONTROL_SELECTIONS: Final[tuple[WorldgenSelection, ...]] = (PILOT_SELECTIONS[0],)
 RUN_SELECTIONS: Final[tuple[WorldgenSelection, ...]] = (
     PILOT_SELECTIONS[0].model_copy(update={"radius_chunks": 31}),
     PILOT_SELECTIONS[1].model_copy(update={"radius_chunks": 15}),

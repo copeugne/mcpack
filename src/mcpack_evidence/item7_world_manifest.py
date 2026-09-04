@@ -11,7 +11,12 @@ from pathlib import Path
 from typing import BinaryIO, Literal, NoReturn
 
 from mcpack_evidence.item7_anvil import RegionContext, decode_region
-from mcpack_evidence.item7_selections import PILOT_SELECTIONS, RUN_SELECTIONS, WorldgenSelection
+from mcpack_evidence.item7_selections import (
+    CONTROL_SELECTIONS,
+    PILOT_SELECTIONS,
+    RUN_SELECTIONS,
+    WorldgenSelection,
+)
 from mcpack_evidence.item7_world_inventory import (
     Dimension,
     RegionInput,
@@ -24,7 +29,7 @@ from mcpack_evidence.item7_world_inventory import (
 
 __all__ = ("ManifestMode", "WorldManifest", "WorldManifestError", "build_world_manifest")
 
-type ManifestMode = Literal["pilot", "run"]
+type ManifestMode = Literal["control", "pilot", "run"]
 type ChunkKey = tuple[Dimension, int, int]
 
 
@@ -198,7 +203,11 @@ def build_world_manifest(
         _fail("outputs do not share one evidence directory", decoded_path)
     if manifest_path.resolve() == decoded_path.resolve():
         _fail("manifest and decoded output are the same path", decoded_path)
-    selections = PILOT_SELECTIONS if mode == "pilot" else RUN_SELECTIONS
+    selections = {
+        "control": CONTROL_SELECTIONS,
+        "pilot": PILOT_SELECTIONS,
+        "run": RUN_SELECTIONS,
+    }[mode]
     owners, expected = _geometry(selections)
     regions, external = inventory_regions(world), inventory_external(world)
     decoded_path.parent.mkdir(parents=True, exist_ok=True)
