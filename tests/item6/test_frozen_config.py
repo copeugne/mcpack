@@ -35,6 +35,7 @@ YUNG_PROVIDER_NAMES = {
     "betterfortresses",
     "betterjungletemples",
     "bettermineshafts",
+    "betteroceanmonuments",
 }
 YUNG_PROVIDER_FILES = {
     f"config/cristellib/{provider}/structure_{kind}_config.json5"
