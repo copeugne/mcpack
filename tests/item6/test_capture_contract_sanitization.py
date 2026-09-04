@@ -77,7 +77,7 @@ def test_capture_surgically_replaces_only_credential_json_string_bytes(tmp_path:
     instance = _make_instance(tmp_path)
     source = (
         b"{\r\n"
-        b'  "untouched" : [ 1, 2.5, true ],\r\n'
+        b'  "untouched" : [ "\xc3\xa9", 2.5, true ],\r\n'
         b'  "validator" : { "type" : "if", "if" : {\r\n'
         b'    "uuids" : [], "password" : "test-only-source-value", "type" : "uuid"\r\n'
         b"  } }\r\n"

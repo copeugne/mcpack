@@ -64,7 +64,9 @@ def redact_generated_credential(source: bytes) -> bytes:
         raise SourceSanitizationError.lexical_target() from error
     if matched_password != password:
         raise SourceSanitizationError.lexical_target()
-    start, end = match.span(1)
+    start_character, end_character = match.span(1)
+    start = len(text[:start_character].encode("utf-8"))
+    end = len(text[:end_character].encode("utf-8"))
     replacement = json.dumps(_REDACTION_SENTINEL, ensure_ascii=False).encode()
     return source[:start] + replacement + source[end:]
 
