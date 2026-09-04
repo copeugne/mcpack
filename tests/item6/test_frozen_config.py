@@ -3,27 +3,22 @@
 
 from __future__ import annotations
 
-import importlib.util
 import json
-from pathlib import Path
-from types import ModuleType
+from typing import TYPE_CHECKING
 
 import pytest
 
-ROOT = Path(__file__).parents[2]
-SPEC = importlib.util.spec_from_file_location(
-    "freeze_item6_config", ROOT / "tools/freeze_item6_config.py"
+from tests.item6.helpers import (
+    AUDIT,
+    FROZEN,
+    MANIFEST,
+    capture,
+    validate,
+    write_audit,
 )
-assert SPEC is not None
-assert SPEC.loader is not None
-MODULE = ModuleType(SPEC.name)
-SPEC.loader.exec_module(MODULE)
-capture = MODULE.capture
-validate = MODULE.validate
-FROZEN = ROOT / "evidence/item-6/frozen"
-MANIFEST = ROOT / "evidence/item-6/generated-config-manifest.json"
-AUDIT = ROOT / "evidence/item-6/config-audit.json"
 
+if TYPE_CHECKING:
+    from pathlib import Path
 
 def test_committed_item6_evidence_validates() -> None:
     """The committed report must remain bound to every frozen file."""
@@ -59,6 +54,21 @@ def test_audit_covers_required_systems() -> None:
         "When Dungeons Arise",
         "YUNG structure systems",
     }
+
+
+def test_validator_rejects_missing_file_accounting(tmp_path: Path) -> None:
+    audit = json.loads(AUDIT.read_text(encoding="utf-8"))
+    audit["file_accounting"][1]["files"].pop()
+    with pytest.raises(ValueError, match="file accounting does not match manifest"):
+        validate(FROZEN, MANIFEST, write_audit(tmp_path, audit))
+
+
+def test_validator_rejects_duplicate_file_accounting(tmp_path: Path) -> None:
+    audit = json.loads(AUDIT.read_text(encoding="utf-8"))
+    duplicate = audit["file_accounting"][0]["files"][0]
+    audit["file_accounting"][1]["files"].append(duplicate)
+    with pytest.raises(ValueError, match="file is classified more than once"):
+        validate(FROZEN, MANIFEST, write_audit(tmp_path, audit))
 
 
 def test_validator_rejects_changed_content(tmp_path: Path) -> None:
