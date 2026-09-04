@@ -1,4 +1,4 @@
-"""Inspect exact custom pool codecs with uv run -m tools.inspect_item8_pool_elements."""
+"""Inspect pool codecs and generation with uv run -m tools.inspect_item8_pool_elements."""
 
 from __future__ import annotations
 
@@ -22,7 +22,14 @@ ARCHIVES = frozenset(
         "repurposed_structures-7.5.21+1.21.1-neoforge.jar",
         "worldweaver-21.0.24.jar",
         "lithostitched-1.7.10+beta4-neoforge-21.1.jar",
+        "YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar",
     }
+)
+GENERATION_PREFIXES = (
+    "com/yungnickyoung/minecraft/bettermineshafts/world/",
+    "com/yungnickyoung/minecraft/bettermineshafts/config/",
+    "com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule",
+    "com/yungnickyoung/minecraft/bettermineshafts/module/StructureTypeModule",
 )
 CLASSES = (
     "YungJigsawSinglePoolElement.class",
@@ -55,12 +62,17 @@ def main() -> None:
     """Retain disassembly and exact class/archive identities for the observed custom types."""
     parser = argparse.ArgumentParser(description=__doc__)
     _ = parser.add_argument("--output", type=Path, required=True)
-    output = cast("Path", parser.parse_args().output)
+    _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
+    args = parser.parse_args()
+    output = cast("Path", args.output)
+    selected_archive = cast("str | None", args.archive)
     output.mkdir(parents=True, exist_ok=False)
     javap = ROOT / "downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap"
     identities: list[dict[str, str]] = []
     for source in retained_sources(ROOT):
         if source.name not in ARCHIVES:
+            continue
+        if selected_archive is not None and source.name != selected_archive:
             continue
         if hashlib.sha256(source.path.read_bytes()).hexdigest() != source.sha256:
             message = f"custom pool source hash mismatch: {source.name}"
@@ -72,8 +84,10 @@ def main() -> None:
                 if not name.endswith(".class"):
                     continue
                 payload = archive.read(name)
-                if not name.endswith(CLASSES) and not any(
-                    key in payload for key in REGISTRATION_KEYS
+                if (
+                    not name.startswith(GENERATION_PREFIXES)
+                    and not name.endswith(CLASSES)
+                    and not any(key in payload for key in REGISTRATION_KEYS)
                 ):
                     continue
                 class_name = name.removesuffix(".class").replace("/", ".")
