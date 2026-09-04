@@ -6,7 +6,7 @@
 - Annotated tag object: `7bd8dad5c4ae4baec9eddc767c96aac7d05b30af`.
 - Release: `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04-r8`.
 - World archive inventory SHA-256: `331bde517e6fb072a4aa0a66fb77b733559b27f92098f8fc1f236405bbe02f3e`, 716 files.
-- Completion SHA-256: `3bdcc69744bb9f779e6b4afc3c9ed8a7a2d8e85c77dbf37c4fa63255fca95d06`, 125 artifacts, `PASS`.
+- Completion SHA-256: `c369178431abba0c17404b9723a47fa66e945c305b5477c63bd5a9a6ec281582`, 125 artifacts, `PASS`.
 
 All four archives were rebuilt from the verified r7 restore with the tracked implementation at the tagged source revision. Their payload hashes are byte-identical to r7. Each archive restored into an absent target after its output parents were safely opened without following symlinks. The tracked repository-bound verifier downloaded all four assets twice to distinct disk-backed directories and matched their sizes and SHA-256 values.
 
@@ -65,9 +65,9 @@ uv run python tools/build_item7_completion.py \
   --restore-receipt evidence/item-7/archive/r8/run-b-worlds-restore.json \
   --restore-receipt evidence/item-7/archive/r8/auxiliary-worlds-restore.json \
   --publication evidence/item-7/archive/r8/publication.json \
-  --output /tmp/item7-completion-r8-rebuilt.json
-cmp evidence/item-7/completion.json /tmp/item7-completion-r8-rebuilt.json
-sha256sum evidence/item-7/completion.json /tmp/item7-completion-r8-rebuilt.json
+  --output /home/lonestar/Desktop/Projects/mcpack-item7-r8-completion-rebuilt.json
+cmp evidence/item-7/completion.json /home/lonestar/Desktop/Projects/mcpack-item7-r8-completion-rebuilt.json
+sha256sum evidence/item-7/completion.json /home/lonestar/Desktop/Projects/mcpack-item7-r8-completion-rebuilt.json
 ```
 
 Both exact rebuild commands returned `PASS`; both `cmp` commands returned zero; and the paired SHA-256 values matched the identities recorded above.
@@ -95,6 +95,6 @@ Reconciled candidate `f68cd0be8d2d9d4223bd2b9b003e32534a1bac75` was exported wit
 - Scoped basedpyright: 0 errors, 0 warnings, 0 notes.
 - Item 7 shell syntax: passed.
 - The tracked world inventory builder rehashed all 716 r8 restored world files and reproduced the committed inventory byte for byte.
-- The tracked completion builder used the r8 restored core and reproduced the committed 125-artifact `PASS` receipt byte for byte.
+- The tracked completion builder used the r8 restored core and reproduced the then-current 125-artifact `PASS` receipt byte for byte.
 
-The validation-record commit changes only documentation and evidence records. Fresh exact-SHA review lanes and a runtime audit must bind the resulting commit before push.
+After this run, a pre-review audit corrected `verified_at` from the failed `/tmp` download attempt to the observed first successful download time. The completion receipt was rebuilt to SHA-256 `c369178431abba0c17404b9723a47fa66e945c305b5477c63bd5a9a6ec281582`. A fresh clean export must bind that final evidence revision before exact-SHA review.

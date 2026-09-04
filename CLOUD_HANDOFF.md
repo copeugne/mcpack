@@ -8,7 +8,7 @@ This section supersedes the dated status and restart instructions below. Preserv
 
 ### Git and delivery state
 
-- A fresh fetch on 2026-09-04 found `origin/main` at `eb84d842a7b108863dcdd4c86435a875f8a0c575` with no newer remote commits. The active branch is `experiment/item-7-worldgen-audit`, based on that ref. Final r8 custody evidence, completion, and reconciled documentation are clean-export validated through `f68cd0be8d2d9d4223bd2b9b003e32534a1bac75` before this validation record.
+- A fresh fetch on 2026-09-04 found `origin/main` at `eb84d842a7b108863dcdd4c86435a875f8a0c575` with no newer remote commits. The active branch is `experiment/item-7-worldgen-audit`, based on that ref. The code and first r8 evidence revision passed clean-export validation at `f68cd0be8d2d9d4223bd2b9b003e32534a1bac75`. A pre-review audit then corrected the r8 verification timestamp and rebuilt completion; one final clean export remains required.
 - PR #11 merged Item 5 delivery as `398bf59b3a89669ec402026d52250c2b86e54047`.
 - PR #12 merged the initial Item 6 generated-default capture as `895ed1d999cd22ca511035e666ad8ac308ae63c1`.
 - PR #14 merged the completed Item 6 audit as `f38ea66ecc28911c33d525dcde26434853673ad3`. Its final Codex review completed against `96a914c8a457d2f23698cdaeba18c6ed899b56d1` and reported no major issues. The GitHub API currently exposes no thumbs-up reaction on that cycle, so do not claim that reaction; preserve this as a review-record discrepancy unless later evidence resolves it.
@@ -34,7 +34,7 @@ This section supersedes the dated status and restart instructions below. Preserv
 | 10 | `BLOCKED` by Items 7 through 9 | Regenerate and preserve predeclared density evidence only after the preceding gates pass. |
 | 11 | `BLOCKED` | Do not implement, run, repair, or lint Item 11 before the final Items 2 through 10 audit passes. It also requires at least two blind human operators. |
 
-The Item 7 completion command returns `PASS` and records 125 exact artifacts in `evidence/item-7/completion.json`, whose SHA-256 is `3bdcc69744bb9f779e6b4afc3c9ed8a7a2d8e85c77dbf37c4fa63255fca95d06`. The r8 world archive inventory binds 716 files at SHA-256 `331bde517e6fb072a4aa0a66fb77b733559b27f92098f8fc1f236405bbe02f3e`. All four r8 archives restored through pinned descriptors and the repository-bound verifier downloaded every asset twice with matching size and SHA-256. Clean export `f68cd0be8d2d9d4223bd2b9b003e32534a1bac75` passed 186 Item 7 tests, 867 repository tests, all scoped quality checks, and byte-identical rebuilds of the inventory and completion receipt. Fresh exact-SHA review, GitHub Codex review, merge, and delivered-ref verification remain.
+The Item 7 completion command returns `PASS` and records 125 exact artifacts in `evidence/item-7/completion.json`, whose SHA-256 is `c369178431abba0c17404b9723a47fa66e945c305b5477c63bd5a9a6ec281582`. The r8 world archive inventory binds 716 files at SHA-256 `331bde517e6fb072a4aa0a66fb77b733559b27f92098f8fc1f236405bbe02f3e`. All four r8 archives restored through pinned descriptors and the repository-bound verifier downloaded every asset twice with matching size and SHA-256. Clean export `f68cd0be8d2d9d4223bd2b9b003e32534a1bac75` passed 186 Item 7 tests, 867 repository tests, all scoped quality checks, and byte-identical rebuilds before the timestamp-only receipt correction. Final clean-export validation, fresh exact-SHA review, GitHub Codex review, merge, and delivered-ref verification remain.
 
 ### Exact continuation point
 
