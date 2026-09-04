@@ -152,7 +152,7 @@ def test_seven_seas_groups_cover_registered_roots_without_counting_spawner_compo
     raw = (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
     traces = cast("dict[str, JsonValue]", json.loads(gzip.decompress(raw)))
     structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
-    templates = cast("dict[str, JsonValue]", traces["template_contents"])
+    templates = cast("dict[str, dict[str, JsonValue]]", traces["template_contents"])
     members = [member for row in groups for member in cast("list[str]", row["structure_ids"])]
     assert len(members) == len(set(members))
     assert set(members) == {key for key in registry if key.startswith("dungeons_arise_seven_seas:")}
@@ -163,5 +163,41 @@ def test_seven_seas_groups_cover_registered_roots_without_counting_spawner_compo
         main = str(row["main_template"])
         assert main in cast("list[str]", structures[identifier]["templates"])
         assert main in templates
+        attributes = cast("dict[str, dict[str, JsonValue]]", row["attributes"])
+        dimensions = cast("list[int]", templates[main]["template_size_xyz"])
+        assert attributes["approximate_footprint"]["main_template_xz_blocks"] == [
+            dimensions[0],
+            dimensions[2],
+        ]
+        assert attributes["approximate_vertical_size"]["main_template_y_blocks"] == dimensions[1]
+        loot = cast("list[dict[str, JsonValue]]", templates[main]["loot_references"])
+        assert set(
+            cast("list[str]", attributes["loot_table_source"]["packaged_container_tables"])
+        ) == {str(reference["value"]) for reference in loot}
+        initial_types: set[str] = set()
+        potential_types: set[str] = set()
+        for template in cast("list[str]", structures[identifier]["templates"]):
+            for block in cast("list[dict[str, JsonValue]]", templates[template]["spawner_blocks"]):
+                nbt = cast("dict[str, JsonValue]", block["nbt"])
+                initial_types.add(
+                    cast("dict[str, dict[str, str]]", nbt["SpawnData"])["entity"]["id"]
+                )
+                for potential in cast("list[dict[str, JsonValue]]", nbt["SpawnPotentials"]):
+                    if cast("int", potential["weight"]) > 0:
+                        potential_types.add(
+                            cast("dict[str, dict[str, str]]", potential["data"])["entity"]["id"]
+                        )
+        assert (
+            initial_types
+            == potential_types
+            == set(cast("list[str]", attributes["mob_source"]["authored_spawner_types"]))
+        )
+        assert initial_types == set(
+            cast("list[str]", attributes["generated_spawners"]["authored_types"])
+        )
+        missing = cast("list[dict[str, str]]", structures[identifier]["missing"])
+        assert attributes["generated_spawners"]["missing_components"] == [
+            entry["id"] for entry in missing
+        ]
         for path, digest in cast("dict[str, str]", row["evidence"]).items():
             assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
