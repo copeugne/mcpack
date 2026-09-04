@@ -33,8 +33,17 @@ if [[ ${#revisions[@]} -ne 1 || ! ${revisions[0]} =~ ^[0-9a-f]{40}$ ]]; then
   exit 1
 fi
 
-tag_object=$(git ls-remote origin "refs/tags/$tag" | awk 'NR == 1 {print $1}')
-tag_commit=$(git ls-remote origin "refs/tags/$tag^{}" | awk 'NR == 1 {print $1}')
+tag_ref=$(gh api "repos/$repository/git/ref/tags/$tag")
+tag_object=$(jq -r '.object.sha' <<<"$tag_ref")
+tag_type=$(jq -r '.object.type' <<<"$tag_ref")
+if [[ $tag_type == tag ]]; then
+  tag_detail=$(gh api "repos/$repository/git/tags/$tag_object")
+  tag_commit=$(jq -r 'select(.object.type == "commit") | .object.sha' <<<"$tag_detail")
+elif [[ $tag_type == commit ]]; then
+  tag_commit=$tag_object
+else
+  tag_commit=
+fi
 if [[ $tag_commit != "${revisions[0]}" ]]; then
   echo "remote tag does not resolve to the archive revision" >&2
   exit 1
