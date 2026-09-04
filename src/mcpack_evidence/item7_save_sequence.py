@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Final
 
@@ -29,6 +30,8 @@ class SaveSequence:
     """One accepted lifecycle's final work and save-marker line numbers."""
 
     relative_path: str
+    size_bytes: int
+    sha256: str
     work_line: int
     saving_line: int
     saved_line: int
@@ -44,8 +47,9 @@ def validate_save_sequences(root: Path) -> tuple[SaveSequence, ...]:
 
 def _validate(path: Path, relative: str, work_marker: str) -> SaveSequence:
     try:
-        lines = tuple(path.read_text(encoding="utf-8").splitlines())
-    except OSError as error:
+        content = path.read_bytes()
+        lines = tuple(content.decode("utf-8").splitlines())
+    except (OSError, UnicodeDecodeError) as error:
         detail = f"console log could not be read: {relative}"
         raise Item7RuntimeError(_LIFECYCLE_STAGE, detail) from error
     work_line = _last_line(lines, work_marker, relative)
@@ -53,7 +57,14 @@ def _validate(path: Path, relative: str, work_marker: str) -> SaveSequence:
     saved_line = _last_line(lines, _SAVED, relative)
     if not work_line < saving_line < saved_line:
         raise Item7RuntimeError(_LIFECYCLE_STAGE, f"save sequence differs: {relative}")
-    return SaveSequence(relative, work_line, saving_line, saved_line)
+    return SaveSequence(
+        relative,
+        len(content),
+        hashlib.sha256(content).hexdigest(),
+        work_line,
+        saving_line,
+        saved_line,
+    )
 
 
 def _last_line(lines: tuple[str, ...], marker: str, relative: str) -> int:

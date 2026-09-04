@@ -31,6 +31,7 @@ def test_validate_save_sequences_accepts_post_work_save_protocol(tmp_path: Path)
     # Then: each accepted lifecycle has a strictly ordered save sequence.
     assert len(records) == 12
     assert all(record.work_line < record.saving_line < record.saved_line for record in records)
+    assert all(record.size_bytes > 0 and len(record.sha256) == 64 for record in records)
 
 
 def test_validate_save_sequences_rejects_save_finish_before_save_start(tmp_path: Path) -> None:
