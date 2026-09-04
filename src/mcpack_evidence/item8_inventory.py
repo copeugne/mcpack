@@ -26,6 +26,60 @@ def resource_identity(path: str, kind: str, extension: str = ".json") -> tuple[s
     )
 
 
+def biome_tag_inputs(resources: list[JsonValue]) -> dict[str, JsonValue]:
+    """Merge order-independent root tags and known vanilla-to-single-mod replacements.
+
+    Preserve unresolved conditional, removal, optional-pack and mod-order cases.
+    Callers must not interpret an unresolved contribution as an absent tag.
+    """
+    grouped: dict[str, list[dict[str, JsonValue]]] = {}
+    for resource in resources:
+        if not isinstance(resource, dict) or not isinstance(resource.get("path"), str):
+            message = "invalid biome tag source row"
+            raise TypeError(message)
+        identity = resource_identity(str(resource["path"]), "tags/worldgen/biome")
+        if identity is not None:
+            grouped.setdefault(identity[0], []).append(resource)
+    return {identifier: _merge_tag(rows) for identifier, rows in sorted(grouped.items())}
+
+
+def _merge_tag(rows: list[dict[str, JsonValue]]) -> dict[str, JsonValue]:
+    vanilla = "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar"
+    ordered = sorted(rows, key=lambda row: (row["archive"] != vanilla, str(row["archive"])))
+    sources: list[JsonValue] = []
+    values: list[JsonValue] = []
+    unresolved: list[JsonValue] = []
+    mod_count = sum(row["archive"] != vanilla for row in rows)
+    for row in ordered:
+        identity = resource_identity(str(row["path"]), "tags/worldgen/biome")
+        assert identity is not None  # noqa: S101 - grouped from exact resource identity above.
+        sources.append(_reference(row, identity))
+        document = row["document"]
+        if not isinstance(document, dict) or not isinstance(document.get("values"), list):
+            message = f"invalid biome tag document: {row['path']}"
+            raise TypeError(message)
+        unknown_fields = set(document) - {"values", "replace", "_comment"}
+        unknown_fields -= {key for key in unknown_fields if key.startswith("description_")}
+        if identity[1] or unknown_fields:
+            unresolved.append(
+                {"path": row["path"], "reason": "pack prefix or nonstandard tag fields"}
+            )
+        if document.get("replace") is True:
+            if row["archive"] != vanilla and mod_count > 1:
+                unresolved.append(
+                    {"path": row["path"], "reason": "replacement requires mod pack order"}
+                )
+            values.clear()
+        entries = document["values"]
+        assert isinstance(entries, list)  # noqa: S101 - explicit type check above.
+        values.extend(entries)
+    return {
+        "sources": sources,
+        "values": values if not unresolved else None,
+        "unresolved": unresolved,
+    }
+
+
 def structure_inputs(registry: tuple[str, ...], resources: list[JsonValue]) -> dict[str, JsonValue]:
     """Link each runtime structure to all packaged candidates, without choosing precedence."""
     definitions: dict[str, list[JsonValue]] = {}
