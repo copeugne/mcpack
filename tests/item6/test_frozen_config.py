@@ -86,6 +86,7 @@ def test_audit_covers_required_systems() -> None:
         "Structure Layout Optimizer",
         "Supplementaries",
         "Terralith",
+        "Vanilla Structures",
         "Village generation",
         "WDA Seven Seas",
         "When Dungeons Arise",
