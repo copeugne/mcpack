@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-05
 
+Later delivered increment: `1d2659e` adds
+`evidence/item-8/sources/world-bounds.json.gz`. It contains 792 saved structure
+starts from the eight hash-verified Item 7 r14 decoded streams. Every piece box,
+inclusive envelope, source line, seed, run and chunk status is retained. The
+extraction command in `bf623f1` reproduced the pilot byte for byte. Calculation
+tests and scoped Ruff/basedpyright passed. Use this artifact to bind observed
+family dimensions; it does not prove full placement of every intersecting chunk
+or global size limits. No new server experiment was needed. Pool aliases and
+custom-generation contents remain unresolved; proceed with their source
+inspection and the actual family inventory, not another evidence framework.
+
 Item 8 remains IN PROGRESS on `codex/item-8-completion`. Selected resource
 precedence is implemented in `b135beb`; it preserves known vanilla replacements
 and unresolved optional-pack exclusions. Pool tracing is implemented in
