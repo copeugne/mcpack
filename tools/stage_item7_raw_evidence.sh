@@ -75,8 +75,6 @@ mkdir -p "$output"
 case "$mode" in
   core)
     copy_contents "$raw" "$output"
-    mkdir -p "$output/pilot"
-    copy_contents "$project/evidence/item-7/pilot" "$output/pilot"
     ;;
   run-a-worlds)
     stage_run_worlds run-a
