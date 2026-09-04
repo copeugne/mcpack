@@ -6,17 +6,18 @@ from __future__ import annotations
 import json
 import re
 from dataclasses import dataclass, replace
-from math import isfinite
-from typing import TYPE_CHECKING, Final, TypedDict
+from typing import TYPE_CHECKING, Final, NotRequired, TypedDict
 
 from pydantic import TypeAdapter, ValidationError
 
+from mcpack_evidence.item6_declared_defaults import (
+    Scalar,
+    UpstreamDefault,
+    validate_upstream_default,
+)
+
 if TYPE_CHECKING:
     from pathlib import Path
-
-Scalar = bool | int | float | str
-type JsonValue = bool | int | float | str | list[JsonValue] | dict[str, JsonValue] | None
-
 
 class SurfaceLeaf(TypedDict):
     """One scalar claim bound to one exact source line."""
@@ -28,6 +29,7 @@ class SurfaceLeaf(TypedDict):
     generated_default: Scalar
     effective_value: Scalar
     non_default: bool
+    upstream_default: NotRequired[UpstreamDefault]
 
 
 class SettingSurface(TypedDict):
@@ -60,8 +62,8 @@ class _ParserState:
     in_block_comment: bool = False
 
 
-_JSON_ADAPTER: Final[TypeAdapter[JsonValue]] = TypeAdapter(JsonValue)
 _KEY_ADAPTER: Final[TypeAdapter[str]] = TypeAdapter(str)
+_SCALAR_ADAPTER: Final[TypeAdapter[Scalar]] = TypeAdapter(Scalar)
 _OPEN_OBJECT: Final = re.compile(r'^\s*("(?:[^"\\]|\\.)+")\s*:\s*\{\s*,?\s*$')
 _CLOSE_OBJECT: Final = re.compile(r"^\s*}\s*,?\s*$")
 _SCALAR_START: Final = r'^(?P<indent>\s*)(?P<key>"(?:[^"\\]|\\.)+")(?P<separator>\s*:\s*)'
@@ -76,15 +78,11 @@ class SurfaceValidationError(ValueError):
 
 
 def decode_scalar(raw: str) -> Scalar:
-    """Decode one finite strict JSON scalar."""
+    """Decode one finite strict JSON scalar from a CristelLib source line."""
     try:
-        decoded = _JSON_ADAPTER.validate_json(raw, strict=True)
+        decoded = _SCALAR_ADAPTER.validate_json(raw, strict=True)
     except (json.JSONDecodeError, ValidationError) as error:
         raise SurfaceValidationError("CristelLib scalar is malformed") from error
-    if not isinstance(decoded, (bool, int, float, str)):
-        raise SurfaceValidationError("CristelLib value is not a supported scalar")
-    if isinstance(decoded, float) and not isfinite(decoded):
-        raise SurfaceValidationError("CristelLib scalar is malformed")
     return decoded
 
 
@@ -228,15 +226,20 @@ def _validate_surface(
     leaves = surface["leaves"]
     if not leaves:
         raise SurfaceValidationError("setting surface leaves must be nonempty")
-    parsed = parse_cristellib_json5(root / relative)
+    source = root / relative
+    parsed = parse_cristellib_json5(source)
     if len(leaves) != len(parsed):
         raise SurfaceValidationError("setting surface does not enumerate every source leaf")
     keys = [leaf["key"] for leaf in leaves]
     lines = [leaf["line"] for leaf in leaves]
     if len(keys) != len(set(keys)) or len(lines) != len(set(lines)):
         raise SurfaceValidationError("setting surface leaf keys and lines must be unique")
+    source_lines = source.read_text(encoding="utf-8").splitlines()
     for claim, source_leaf in zip(leaves, parsed, strict=True):
         _validate_leaf(claim, source_leaf)
+        validate_upstream_default(
+            claim.get("upstream_default"), relative, source_leaf.key, source_lines
+        )
     covered.add(relative)
 
 

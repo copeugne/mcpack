@@ -38,7 +38,7 @@ YUNG's API, YUNG's Bridges, and YUNG's Extras generated no standalone config sur
 
 ### Villages, loot, mobs, difficulty, and performance
 
-* Village ownership is crowded: CTOV, Towns & Towers, Better Village, Integrated Villages, and Village Taverns all generated controls. Towns & Towers towns use spacing 51 and separation 12; Better Village uses spacing 45 and separation 20; Village Taverns injects weight-10, limit-1 taverns into five village house pools. Their datapack/registry precedence remains an Item 7 runtime question.
+* Village ownership is crowded: CTOV, Towns & Towers, Better Village, Integrated Villages, and Village Taverns all generated controls. Towns & Towers towns use spacing 51 and separation 12. Its towns and towers separation comments declare 24 upstream defaults, so the preserved value 12 is an upstream-default deviation but not user tuning. Better Village uses spacing 45 and separation 20; Village Taverns injects weight-10, limit-1 taverns into five village house pools. Their datapack/registry precedence remains an Item 7 runtime question.
 * Loot Integrations uses generated defaults: maps are skipped for added loot, existing items are not skipped, and modded-item weight is 3. Provider-specific integration JARs do not emit separate user configuration.
 * ServerCore dynamic adaptation, breeding caps, entity activation range, and special spawning mobcap enforcement are disabled. Its natural monster category remains 70 at a one-tick interval. Its non-parity `reduce-sync-loads` and `cache-ticking-chunks` optimizations are enabled by generated default.
 * The materialized server difficulty is `easy`; animal, monster, and NPC spawning are enabled. This is baseline input, not a tuning recommendation.
