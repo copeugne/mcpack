@@ -5,12 +5,18 @@ Status: IN PROGRESS. No family count or completion claim is accepted yet.
 The working deliverable is `inventory.json`, initially assembled by `f2eaf2b`
 and updated through `585de70` using attribute support from `bf153ea`.
 SHA-256: `abb98a78d9d0fa1deb465dfc8a4db4f2c2e6555a937b515b085597e16a55c3e1`.
-It is explicitly incomplete. It joins the currently recorded Better Mineshafts
-and CTOV size-group decisions to biome constraints, potential template content
+It is explicitly incomplete. It joins Better Mineshafts, CTOV size groups,
+Seven Seas vessels, Integrated Stronghold and Integrated Villages design groups
+to biome constraints, potential template content
 and saved-world observation references. It lists every unassigned registry ID
 and keeps unresolved attributes marked `UNKNOWN`. CTOV's broader design
 relationships and non-registry content remain unresolved. These rows are not
 an accepted canonical total or a substitute for completing each attribute.
+
+The complete registry capture now has durable raw custody, delivered through
+`63cb1f8`. See `raw-custody/README.md` for the published archive and verified
+downloaded restore. This resolves registry raw retention, not the remaining
+inventory, gameplay-attribute or review requirements.
 
 ```sh
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-reproduction1.json

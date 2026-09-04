@@ -106,7 +106,8 @@ cmp evidence/raw/item8/structure-biomes-pack-order-pilot1.json evidence/raw/item
 
 Restore the original `evidence/raw/item8/registry-r1/debug.log` before rebuilding.
 Its SHA-256 is `e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b`;
-raw delivery remains pending. The generated change is isolated because resolving
+raw delivery and downloaded restoration are recorded in `../raw-custody/README.md`.
+The generated change is isolated because resolving
 seven shared tags updates their dependent structure rows in the existing index.
 This is a runtime-log-bound source derivation, not a direct runtime tag dump.
 Neither a null result nor an empty biome list establishes structure-generation
