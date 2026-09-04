@@ -16,7 +16,9 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
-@pytest.mark.parametrize("namespace", ["integrated_villages:", "dungeons_arise:", "explorations:"])
+@pytest.mark.parametrize(
+    "namespace", ["integrated_villages:", "dungeons_arise:", "explorations:", "explorify:"]
+)
 def test_authored_designs_bind_roots_settings_and_missing_components(
     namespace: str,
 ) -> None:
@@ -36,6 +38,15 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
     members = [member for row in groups for member in cast("list[str]", row["structure_ids"])]
     assert len(members) == len(set(members))
     expected = {key for key in registry if key.startswith(namespace)}
+    if namespace == "explorify:":
+        # These biome variants require a separate grouping decision.
+        expected = {
+            key
+            for key in expected
+            if not key.startswith(
+                ("explorify:supply_cache/", "explorify:watchtower/", "explorify:guide_post_")
+            )
+        }
     assert members
     assert set(members) == expected
     catalog = cast(
