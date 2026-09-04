@@ -43,7 +43,7 @@ The four targeted structures were Better Desert Temples, Better Strongholds, Bet
 
 ## Interaction and anomaly inspection
 
-Sixteen Run A analysis reports cover all four seeds and all four selections. Each report contains one row for every required anomaly class, for 192 rows total. The analysis records denominators, candidates, method, status, and limitations. Fragmented and tiny biomes, terrain transitions, structure overlaps, and village overlaps were measured directly. Buried, floating, cliff, underwater, and terrain-modification checks become method-limited where complete terrain or footprint inputs are unavailable. Failed placement is method-limited because invalid starts omitted by the decoder cannot be treated as a complete absence.
+Sixteen Run A analysis reports cover all four seeds and all four selections. Each report contains one row for every required anomaly class, for 192 rows total. The analysis records denominators, candidates, method, status, and limitations. Fragmented and tiny biomes, terrain transitions, structure overlaps, and village overlaps were measured directly. Biome sampling uses the decoder's highest occupied Y directly. Floating placement is always method-limited because post-placement `WORLD_SURFACE` includes the structure and cannot prove an air gap below it. Buried, cliff, underwater, and terrain-modification checks become method-limited where complete terrain or footprint inputs are unavailable. Failed placement is method-limited because invalid starts omitted by the decoder cannot be treated as a complete absence.
 
 The hash-bound packaged restriction audit inspected all 762 structure definitions supplied by the exact 37 Item 7 provider components plus frozen Minecraft and NeoForge data. It resolved 757 definitions and found five impossible restrictions. Dungeons Arise's unplaced mining system and Terralith's unplaced underground witch hut deliberately use empty tags. Three IDAS lumber-camp compatibility variants reference missing biome tags while remaining members of the active `idas:idas_small` placement set. Those three findings are carried into Item 8; the Item 7 inspection subitem is resolved rather than reported as unknown.
 
@@ -70,22 +70,22 @@ Unresolved entries remain `UNKNOWN`. The audit does not convert startup success 
 
 ## Durable evidence and restoration
 
-The final raw evidence is split into four immutable release assets under tag `item-7-raw-evidence-2026-09-04-r3`, bound to source revision `4503d647b81fbb15bc7f577d91df01867aa90e79`:
+The final raw evidence is split into four immutable release assets under tag `item-7-raw-evidence-2026-09-04-r4`, bound to corrected source revision `bb6dd928b4a95db085c2e44d50296b7152f2b74d`:
 
 | Asset | Files | Raw bytes | Archive bytes | Archive SHA-256 |
 |---|---:|---:|---:|---|
-| Core | 4,297 | 2,254,349,287 | 190,090,342 | `8145da670e6a28bd8f7f2b458b6e3845e13f5481df7120c77b9ae83bef4b734d` |
+| Core | 4,618 | 2,515,785,938 | 243,943,142 | `2229673778123d8b7737048610d9c171aea9b49900724acc0f35ac48eed25773` |
 | Run A worlds | 249 | 484,774,742 | 291,011,199 | `575b8644bb888e2f2c09311f0ba3ac063ea00eda1d51159e0038218a28d96fa7` |
 | Run B worlds | 250 | 484,038,098 | 289,949,293 | `3a82829fa159323ec1844d6f98fdc9ab6b25feab78d15c1b268d2a2692c268ff` |
 | Auxiliary worlds | 217 | 165,166,012 | 48,648,807 | `d865320a9b1d2b44e59eb7d854fa499309746dc71a04b6b8caa46ede2a0c5a25` |
 
-All four archives were restored into absent targets, checked file by file, downloaded again from the published GitHub release, and rehashed. The committed publication receipt and completion validator bind the release URL, tag, source revision, asset names, sizes, hashes, manifests, restore receipts, and verification tool. JARs, Minecraft and NeoForge binaries, credentials, `session.lock`, player data, caches, and symlinks are excluded.
+All four archives were restored into absent targets, checked file by file, downloaded twice from the published GitHub release, and rehashed. The committed publication receipt and completion validator bind the release URL, tag, source revision, asset names, sizes, hashes, manifests, restore receipts, and verification tool. The independently constructed world archive inventory also binds all 716 raw Run A, Run B, and auxiliary world files to those manifests. JARs, Minecraft and NeoForge binaries, credentials, `session.lock`, player data, caches, and symlinks are excluded.
 
-The first release under tag `item-7-raw-evidence-2026-09-04` and the r2 release are preserved as historical evidence. The first procedure did not hold Java-compatible world locks and used hardlinks. The r2 procedure added locks and independent copies, but later review proved that its reusable staging and archive implementation still had pathname replacement gaps. Their matching payload hashes show that no observed payload bytes changed, but neither earlier procedure proves the final custody boundary.
+The first release, r2, and r3 remain preserved as historical evidence. The first procedure did not hold Java-compatible world locks and used hardlinks. The r2 procedure added locks and independent copies, but later review proved that its reusable staging and archive implementation still had pathname replacement gaps. r3 proved the corrected custody boundary, but the later GitHub review found invalid floating-placement and biome-height semantics plus incomplete raw-world binding. r4 preserves r3 outputs as explicitly superseded data, regenerates all 32 analyses and galleries plus all 128 captures with the corrected code, and adds the independent world archive inventory.
 
 Reviews of revisions `8c7e7b8bb5db79d826b78cab5a678605a8b5fc23` and `438260f40fd0d50ff5f087a2b8aac028d5a39927` found remaining source, output, hardlink, special-file, and repository-binding defects. Commits `fdd99d9`, `c625d6e`, `f57503d`, and `4503d64` correct those boundaries and the vacuous mutation tests with focused regression coverage.
 
-The final staging implementation correctly rejected the original hardlinked raw roots. The r3 stages were rebuilt from the preserved r2 single-link snapshots, whose complete file inventories and bytes match the earlier manifests. The final implementation then created all four r3 archives, restored them into absent targets, and published them under an annotated tag resolving to `4503d647b81fbb15bc7f577d91df01867aa90e79`. Two independent downloads, including the tracked repository-bound verifier, matched every committed size and SHA-256. All three rejected review records remain under `evidence/item-7/review/`; a fresh exact-SHA review remains required before delivery.
+The r4 core was rebuilt from a hash-verified r3 restore, then copied through the hardened descriptor-bound staging boundary. The three world archives were rebuilt from verified r3 restores and independently compared with `evidence/item-7/world-archive-inventory.json`. All four r4 archives were restored into absent targets and published under an annotated tag resolving to `bb6dd928b4a95db085c2e44d50296b7152f2b74d`. Two independent downloads with the tracked repository-bound verifier matched every committed size and SHA-256. Rejected review records remain under `evidence/item-7/review/`; a fresh exact-SHA review remains required before delivery.
 
 ## Reproduction
 
@@ -99,25 +99,26 @@ uv run ruff format --check src/mcpack_evidence/item7_*.py tools/*item7*.py tests
 uv run ruff check src/mcpack_evidence/item7_*.py tools/*item7*.py tests/item7
 uv run basedpyright src/mcpack_evidence/item7_*.py tools/*item7*.py tests/item7
 bash -n tools/stage_item7_raw_evidence.sh
-tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04-r3 evidence/item-7/archive/r3 evidence/item-7/archive/r3/publication.json /tmp/item7-release-verify-r3
+tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04-r4 evidence/item-7/archive/r4 evidence/item-7/archive/r4/publication.json /tmp/item7-release-verify-r4
 ```
 
 The Python quality commands are intentionally scoped to Item 7. They do not claim that unrelated reconstructed later-item tools are clean, and Item 11 tooling remains outside this gate until the required Item 2 through Item 10 cross-item audit passes.
 
-The completion command is the tracked `tools/build_item7_completion.py` CLI with the protocol, provider, biome-restriction, repeat, warning, control, visual, archive, restore, and publication inputs enumerated in `evidence/item-7/completion.json`. It returns `PASS` and records 124 artifact identities.
+The completion command is the tracked `tools/build_item7_completion.py` CLI with the protocol, provider, biome-restriction, world archive inventory, repeat, warning, control, visual, archive, restore, and publication inputs enumerated in `evidence/item-7/completion.json`. It returns `PASS` and records 125 artifact identities.
 
 ## Evidence index
 
 - `evidence/item-7/protocol/worldgen-audit-v1.json`
 - `evidence/item-7/provider-catalog.json`
 - `evidence/item-7/biome-restriction-audit.json`
+- `evidence/item-7/world-archive-inventory.json`
 - `evidence/item-7/visual/integrity-review.json`
 - `evidence/item-7/visual/fidelity-review.json`
 - `evidence/item-7/visual/rejected-attempts.json`
-- `evidence/item-7/archive/r3/`
+- `evidence/item-7/archive/r4/`
 - `evidence/item-7/review/`
 - `evidence/item-7/completion.json`
-- GitHub release `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04-r3`
+- GitHub release `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04-r4`
 
 ## Superseded historical control
 
