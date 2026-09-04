@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import hashlib
 from typing import TYPE_CHECKING, Final, TypedDict
 
 from pydantic import TypeAdapter, ValidationError
@@ -59,3 +60,10 @@ def validate_materialization(manifest: Manifest, references: RepositoryReference
         raise MaterializationValidationError("retained_candidate_count does not match manifest")
     if receipt["retained_manifest_sha256"] != retained["sha256"]:
         raise MaterializationValidationError("retained_manifest_sha256 does not match manifest")
+    _validate_receipt_digest(manifest, references)
+
+
+def _validate_receipt_digest(manifest: Manifest, references: RepositoryReferences) -> None:
+    digest = hashlib.sha256(references.materialization.read_bytes()).hexdigest()
+    if digest != manifest["materialization_sha256"]:
+        raise MaterializationValidationError("materialization receipt digest does not match")

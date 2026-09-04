@@ -88,6 +88,19 @@ def test_validate_rejects_extra_materialization_field(tmp_path: Path) -> None:
         validate(fixture.frozen, fixture.manifest, fixture.audit)
 
 
+def test_validate_rejects_materialization_receipt_identity_mismatch(tmp_path: Path) -> None:
+    # Given: a structurally valid receipt claims a different pristine source.
+    fixture = copy_item6_repository(tmp_path)
+    _rewrite(
+        fixture.materialization,
+        lambda receipt: _set(receipt, "pristine_source", "/different/pristine-source"),
+    )
+
+    # When/Then: the manifest-bound materialization bytes cannot be substituted.
+    with pytest.raises(ValueError, match="materialization receipt digest does not match"):
+        validate(fixture.frozen, fixture.manifest, fixture.audit)
+
+
 @pytest.mark.parametrize(
     ("field", "value", "message"),
     [

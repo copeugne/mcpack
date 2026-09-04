@@ -76,6 +76,7 @@ class Manifest(TypedDict):
     capture_command: str
     source_lifecycle: str
     source_lifecycle_sha256: str
+    materialization_sha256: str
     file_count: int
     files: list[ManifestRow]
     stage_notes: StageNotes
@@ -175,6 +176,7 @@ def validate_manifest_contract(manifest: Manifest) -> None:
         raise ManifestValidationError("sanitization receipt counts must each equal one")
     _require_sha256(sanitization["sha256"], "sanitization receipt")
     _require_sha256(manifest["source_lifecycle_sha256"], "lifecycle receipt")
+    _require_sha256(manifest["materialization_sha256"], "materialization receipt")
     paths = [row["path"] for row in manifest["files"]]
     component_paths = [_parse_manifest_path(path).parts for path in paths]
     if component_paths != sorted(component_paths):
