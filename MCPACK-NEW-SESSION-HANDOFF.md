@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+Explorify root mapping is delivered through `fe80f07`, built from `de8bac8`.
+Inventory SHA-256: `d2a5c7df744e7c96cbadc4da794a3990d6ba67c41c7c410520b09df9063daf8e`.
+`3e75d3e` and `0fc3bb1` assign and join eleven independent authored designs.
+`de8bac8` consolidates twelve guide-post, supply-cache and watchtower biome
+entries into three groups. Source definitions, template dimensions, loot
+differences and exact coverage of all 23 Explorify registry entries are tested.
+Eleven focused grouping tests and scoped Ruff/basedpyright checks pass. Initial
+test typing and assertion-style failures were corrected before delivery.
+Both generated increments reproduced byte for byte and preserved earlier groups.
+Current totals are 105 working groups, 170 assigned registry entries and 717
+unassigned entries. These are not a final canonical family count. Continue the
+remaining providers, non-registry generation relationships and required family
+attributes. The final gate, report, clean final review and verified main merge
+remain open. No runtime was launched and the frozen baseline was not modified.
+
 Current inventory is delivered through `85111fd`, built from `fd9705a`.
 SHA-256: `83f56c9ecaa8f76f853ffd0081a12537849489e4a30dea3edae099caf298250d`.
 `3b4f770` and `2f1dbda` parse and attribute ordinary/trial spawner base entity
