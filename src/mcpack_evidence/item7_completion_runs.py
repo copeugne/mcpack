@@ -8,7 +8,7 @@ from typing import ClassVar, Final, Literal
 from pydantic import BaseModel, ConfigDict
 
 from mcpack_evidence.item7_analysis import analyze_jsonl
-from mcpack_evidence.item7_analysis_models import ANOMALY_SPECS, AnalysisIdentity, WorldAnalysis
+from mcpack_evidence.item7_analysis_models import AnalysisIdentity, WorldAnalysis
 from mcpack_evidence.item7_completion_io import (
     fail,
     identity,
@@ -36,7 +36,20 @@ _SELECTIONS: Final = (
 _ANALYSIS_COUNT: Final = 16
 _BASE_CONFIG_COUNT: Final = 228
 _RUN_ARTIFACT_COUNT: Final = 96
-_ANOMALY_KEYS: Final = tuple(spec.key for spec in ANOMALY_SPECS)
+_ANOMALY_KEYS: Final = (
+    "fragmented_biomes",
+    "tiny_biomes",
+    "unnatural_terrain_transitions",
+    "buried_structures",
+    "floating_structures",
+    "cliff_intersections",
+    "bad_underwater_placement",
+    "overlapping_structures",
+    "overlapping_villages",
+    "failed_placements",
+    "impossible_biome_restrictions",
+    "excessive_terrain_modification",
+)
 
 
 class _RunReceipt(BaseModel):
