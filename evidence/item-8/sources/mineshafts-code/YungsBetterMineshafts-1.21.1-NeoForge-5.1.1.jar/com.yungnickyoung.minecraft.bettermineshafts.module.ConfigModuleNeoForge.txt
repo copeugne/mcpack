@@ -1,0 +1,228 @@
+Compiled from "ConfigModuleNeoForge.java"
+public class com.yungnickyoung.minecraft.bettermineshafts.module.ConfigModuleNeoForge {
+  public com.yungnickyoung.minecraft.bettermineshafts.module.ConfigModuleNeoForge();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init(net.neoforged.fml.ModContainer);
+    Code:
+       0: aload_0
+       1: getstatic     #7                  // Field net/neoforged/fml/config/ModConfig$Type.COMMON:Lnet/neoforged/fml/config/ModConfig$Type;
+       4: getstatic     #13                 // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+       7: ldc           #19                 // String bettermineshafts-neoforge-1_21.toml
+       9: invokevirtual #21                 // Method net/neoforged/fml/ModContainer.registerConfig:(Lnet/neoforged/fml/config/ModConfig$Type;Lnet/neoforged/fml/config/IConfigSpec;Ljava/lang/String;)V
+      12: getstatic     #27                 // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      15: invokedynamic #33,  0             // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+      20: invokeinterface #37,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      25: getstatic     #43                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsNeoForge.loadingContextEventBus:Lnet/neoforged/bus/api/IEventBus;
+      28: invokedynamic #48,  0             // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+      33: invokeinterface #37,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      38: return
+
+  private static void onWorldLoad(net.neoforged.neoforge.event.level.LevelEvent$Load);
+    Code:
+       0: invokestatic  #49                 // Method bakeConfig:()V
+       3: return
+
+  private static void onConfigChange(net.neoforged.fml.event.config.ModConfigEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #54                 // Method net/neoforged/fml/event/config/ModConfigEvent.getConfig:()Lnet/neoforged/fml/config/ModConfig;
+       4: invokevirtual #60                 // Method net/neoforged/fml/config/ModConfig.getSpec:()Lnet/neoforged/fml/config/IConfigSpec;
+       7: getstatic     #13                 // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+      10: if_acmpne     16
+      13: invokestatic  #49                 // Method bakeConfig:()V
+      16: return
+
+  private static void bakeConfig();
+    Code:
+       0: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+       3: getstatic     #72                 // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.disableVanillaMineshafts:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+       6: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+       9: checkcast     #82                 // class java/lang/Boolean
+      12: invokevirtual #84                 // Method java/lang/Boolean.booleanValue:()Z
+      15: putfield      #88                 // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.disableVanillaMineshafts:Z
+      18: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+      21: getstatic     #93                 // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.minY:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      24: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      27: checkcast     #96                 // class java/lang/Integer
+      30: invokevirtual #98                 // Method java/lang/Integer.intValue:()I
+      33: putfield      #102                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.minY:I
+      36: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+      39: getstatic     #105                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.maxY:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      42: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      45: checkcast     #96                 // class java/lang/Integer
+      48: invokevirtual #98                 // Method java/lang/Integer.intValue:()I
+      51: putfield      #108                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.maxY:I
+      54: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+      57: getfield      #110                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores;
+      60: getstatic     #114                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge;
+      63: getfield      #117                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge.enabled:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      66: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      69: checkcast     #82                 // class java/lang/Boolean
+      72: invokevirtual #84                 // Method java/lang/Boolean.booleanValue:()Z
+      75: putfield      #122                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores.enabled:Z
+      78: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+      81: getfield      #110                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores;
+      84: getstatic     #114                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge;
+      87: getfield      #126                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge.cobble:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      90: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      93: checkcast     #96                 // class java/lang/Integer
+      96: invokevirtual #98                 // Method java/lang/Integer.intValue:()I
+      99: putfield      #129                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores.cobble:I
+     102: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     105: getfield      #110                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores;
+     108: getstatic     #114                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge;
+     111: getfield      #131                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge.coal:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     114: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     117: checkcast     #96                 // class java/lang/Integer
+     120: invokevirtual #98                 // Method java/lang/Integer.intValue:()I
+     123: putfield      #134                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores.coal:I
+     126: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     129: getfield      #110                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores;
+     132: getstatic     #114                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge;
+     135: getfield      #136                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge.iron:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     138: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     141: checkcast     #96                 // class java/lang/Integer
+     144: invokevirtual #98                 // Method java/lang/Integer.intValue:()I
+     147: putfield      #139                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores.iron:I
+     150: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     153: getfield      #110                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores;
+     156: getstatic     #114                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge;
+     159: getfield      #141                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge.redstone:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     162: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     165: checkcast     #96                 // class java/lang/Integer
+     168: invokevirtual #98                 // Method java/lang/Integer.intValue:()I
+     171: putfield      #144                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores.redstone:I
+     174: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     177: getfield      #110                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores;
+     180: getstatic     #114                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge;
+     183: getfield      #146                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge.gold:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     186: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     189: checkcast     #96                 // class java/lang/Integer
+     192: invokevirtual #98                 // Method java/lang/Integer.intValue:()I
+     195: putfield      #149                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores.gold:I
+     198: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     201: getfield      #110                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores;
+     204: getstatic     #114                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge;
+     207: getfield      #151                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge.lapis:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     210: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     213: checkcast     #96                 // class java/lang/Integer
+     216: invokevirtual #98                 // Method java/lang/Integer.intValue:()I
+     219: putfield      #154                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores.lapis:I
+     222: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     225: getfield      #110                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores;
+     228: getstatic     #114                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge;
+     231: getfield      #156                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge.emerald:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     234: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     237: checkcast     #96                 // class java/lang/Integer
+     240: invokevirtual #98                 // Method java/lang/Integer.intValue:()I
+     243: putfield      #159                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores.emerald:I
+     246: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     249: getfield      #110                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores;
+     252: getstatic     #114                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge;
+     255: getfield      #161                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigOresNeoForge.diamond:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     258: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     261: checkcast     #96                 // class java/lang/Integer
+     264: invokevirtual #98                 // Method java/lang/Integer.intValue:()I
+     267: putfield      #164                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores.diamond:I
+     270: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     273: getfield      #166                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+     276: getstatic     #170                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge;
+     279: getfield      #173                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge.lanternSpawnRate:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     282: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     285: checkcast     #178                // class java/lang/Double
+     288: invokevirtual #180                // Method java/lang/Double.doubleValue:()D
+     291: putfield      #184                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.lanternSpawnRate:D
+     294: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     297: getfield      #166                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+     300: getstatic     #170                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge;
+     303: getfield      #189                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge.torchSpawnRate:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     306: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     309: checkcast     #178                // class java/lang/Double
+     312: invokevirtual #180                // Method java/lang/Double.doubleValue:()D
+     315: putfield      #192                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.torchSpawnRate:D
+     318: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     321: getfield      #166                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+     324: getstatic     #170                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge;
+     327: getfield      #194                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge.workstationSpawnRate:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     330: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     333: checkcast     #178                // class java/lang/Double
+     336: invokevirtual #180                // Method java/lang/Double.doubleValue:()D
+     339: putfield      #197                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.workstationSpawnRate:D
+     342: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     345: getfield      #166                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+     348: getstatic     #170                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge;
+     351: getfield      #199                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge.workstationDungeonSpawnRate:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     354: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     357: checkcast     #178                // class java/lang/Double
+     360: invokevirtual #180                // Method java/lang/Double.doubleValue:()D
+     363: putfield      #202                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.workstationDungeonSpawnRate:D
+     366: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     369: getfield      #166                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+     372: getstatic     #170                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge;
+     375: getfield      #204                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge.smallShaftSpawnRate:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     378: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     381: checkcast     #178                // class java/lang/Double
+     384: invokevirtual #180                // Method java/lang/Double.doubleValue:()D
+     387: putfield      #207                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.smallShaftSpawnRate:D
+     390: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     393: getfield      #166                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+     396: getstatic     #170                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge;
+     399: getfield      #209                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge.cobwebSpawnRate:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     402: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     405: checkcast     #178                // class java/lang/Double
+     408: invokevirtual #180                // Method java/lang/Double.doubleValue:()D
+     411: putfield      #212                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.cobwebSpawnRate:D
+     414: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     417: getfield      #166                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+     420: getstatic     #170                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge;
+     423: getfield      #214                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge.smallShaftChestMinecartSpawnRate:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     426: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     429: checkcast     #178                // class java/lang/Double
+     432: invokevirtual #180                // Method java/lang/Double.doubleValue:()D
+     435: putfield      #217                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.smallShaftChestMinecartSpawnRate:D
+     438: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     441: getfield      #166                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+     444: getstatic     #170                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge;
+     447: getfield      #219                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge.smallShaftTntMinecartSpawnRate:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     450: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     453: checkcast     #178                // class java/lang/Double
+     456: invokevirtual #180                // Method java/lang/Double.doubleValue:()D
+     459: putfield      #222                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.smallShaftTntMinecartSpawnRate:D
+     462: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     465: getfield      #166                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+     468: getstatic     #170                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge;
+     471: getfield      #224                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge.mainShaftChestMinecartSpawnRate:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     474: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     477: checkcast     #178                // class java/lang/Double
+     480: invokevirtual #180                // Method java/lang/Double.doubleValue:()D
+     483: putfield      #227                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.mainShaftChestMinecartSpawnRate:D
+     486: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     489: getfield      #166                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+     492: getstatic     #170                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge;
+     495: getfield      #229                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge.mainShaftTntMinecartSpawnRate:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     498: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     501: checkcast     #178                // class java/lang/Double
+     504: invokevirtual #180                // Method java/lang/Double.doubleValue:()D
+     507: putfield      #232                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.mainShaftTntMinecartSpawnRate:D
+     510: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     513: getfield      #166                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+     516: getstatic     #170                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge;
+     519: getfield      #234                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge.zombieVillagerRoomSpawnRate:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     522: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     525: checkcast     #96                 // class java/lang/Integer
+     528: invokevirtual #98                 // Method java/lang/Integer.intValue:()I
+     531: putfield      #237                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.zombieVillagerRoomSpawnRate:I
+     534: getstatic     #66                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     537: getfield      #166                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+     540: getstatic     #170                // Field com/yungnickyoung/minecraft/bettermineshafts/config/BMConfigNeoForge.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge;
+     543: getfield      #239                // Field com/yungnickyoung/minecraft/bettermineshafts/config/ConfigSpawnRatesNeoForge.smallShaftPieceChainLength:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     546: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     549: checkcast     #96                 // class java/lang/Integer
+     552: invokevirtual #98                 // Method java/lang/Integer.intValue:()I
+     555: putfield      #242                // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.smallShaftPieceChainLength:I
+     558: return
+}

@@ -1,0 +1,428 @@
+Compiled from "BetterMineshaftGenerator.java"
+public class com.yungnickyoung.minecraft.bettermineshafts.world.generator.BetterMineshaftGenerator {
+  public com.yungnickyoung.minecraft.bettermineshafts.world.generator.BetterMineshaftGenerator();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void generateAndAddBigTunnelPiece(net.minecraft.world.level.levelgen.structure.StructurePiece, net.minecraft.world.level.levelgen.structure.StructurePieceAccessor, net.minecraft.util.RandomSource, int, int, int, net.minecraft.core.Direction, int);
+    Code:
+       0: iload         7
+       2: iconst_3
+       3: if_icmple     7
+       6: return
+       7: aload_2
+       8: bipush        100
+      10: invokeinterface #7,  2            // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      15: istore        8
+      17: aload_0
+      18: checkcast     #13                 // class com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece
+      21: getfield      #15                 // Field com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece.config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+      24: astore        9
+      26: iload         8
+      28: bipush        10
+      30: if_icmpge     39
+      33: iload         7
+      35: iconst_2
+      36: if_icmpge     86
+      39: iload_3
+      40: iload         4
+      42: iload         5
+      44: aload         6
+      46: invokestatic  #19                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BigTunnel.determineBoxPosition:(IIILnet/minecraft/core/Direction;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      49: astore        10
+      51: new           #20                 // class com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BigTunnel
+      54: dup
+      55: iload         7
+      57: iconst_1
+      58: iadd
+      59: aload         10
+      61: aload         6
+      63: aload         9
+      65: invokespecial #25                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BigTunnel."<init>":(ILnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/core/Direction;Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;)V
+      68: astore        11
+      70: aload_1
+      71: aload         11
+      73: invokeinterface #28,  2           // InterfaceMethod net/minecraft/world/level/levelgen/structure/StructurePieceAccessor.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+      78: aload         11
+      80: aload_0
+      81: aload_1
+      82: aload_2
+      83: invokevirtual #34                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece.addChildren:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;)V
+      86: return
+
+  public static com.yungnickyoung.minecraft.bettermineshafts.world.generator.pieces.BetterMineshaftPiece generateAndAddSmallTunnelPiece(net.minecraft.world.level.levelgen.structure.StructurePiece, net.minecraft.world.level.levelgen.structure.StructurePieceAccessor, net.minecraft.util.RandomSource, int, int, int, net.minecraft.core.Direction, int);
+    Code:
+       0: aload_2
+       1: bipush        100
+       3: invokeinterface #7,  2            // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+       8: istore        9
+      10: aload_0
+      11: checkcast     #13                 // class com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece
+      14: getfield      #15                 // Field com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece.config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+      17: astore        10
+      19: iload         7
+      21: getstatic     #38                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+      24: getfield      #44                 // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+      27: getfield      #50                 // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.smallShaftPieceChainLength:I
+      30: iconst_2
+      31: isub
+      32: if_icmple     230
+      35: iload         9
+      37: getstatic     #38                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+      40: getfield      #44                 // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+      43: getfield      #56                 // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.zombieVillagerRoomSpawnRate:I
+      46: if_icmpge     158
+      49: aload         6
+      51: getstatic     #59                 // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+      54: if_acmpne     63
+      57: iinc          3, -1
+      60: goto          102
+      63: aload         6
+      65: getstatic     #65                 // Field net/minecraft/core/Direction.EAST:Lnet/minecraft/core/Direction;
+      68: if_acmpne     77
+      71: iinc          5, -1
+      74: goto          102
+      77: aload         6
+      79: getstatic     #68                 // Field net/minecraft/core/Direction.SOUTH:Lnet/minecraft/core/Direction;
+      82: if_acmpne     91
+      85: iinc          3, 1
+      88: goto          102
+      91: aload         6
+      93: getstatic     #71                 // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+      96: if_acmpne     102
+      99: iinc          5, 1
+     102: aload_1
+     103: iload_3
+     104: iload         4
+     106: iload         5
+     108: aload         6
+     110: invokestatic  #74                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/ZombieVillagerRoom.determineBoxPosition:(Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;IIILnet/minecraft/core/Direction;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     113: astore        8
+     115: aload         8
+     117: ifnull        228
+     120: new           #75                 // class com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/ZombieVillagerRoom
+     123: dup
+     124: iload         7
+     126: iconst_1
+     127: iadd
+     128: aload         8
+     130: aload         6
+     132: aload         10
+     134: invokespecial #79                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/ZombieVillagerRoom."<init>":(ILnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/core/Direction;Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;)V
+     137: astore        11
+     139: aload_1
+     140: aload         11
+     142: invokeinterface #28,  2           // InterfaceMethod net/minecraft/world/level/levelgen/structure/StructurePieceAccessor.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     147: aload         11
+     149: aload_0
+     150: aload_1
+     151: aload_2
+     152: invokevirtual #34                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece.addChildren:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;)V
+     155: aload         11
+     157: areturn
+     158: getstatic     #38                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     161: getfield      #80                 // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.ores:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores;
+     164: getfield      #84                 // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$Ores.enabled:Z
+     167: ifne          172
+     170: aconst_null
+     171: areturn
+     172: aload_1
+     173: iload_3
+     174: iload         4
+     176: iload         5
+     178: aload         6
+     180: invokestatic  #90                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit.determineBoxPosition:(Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;IIILnet/minecraft/core/Direction;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     183: astore        8
+     185: aload         8
+     187: ifnull        228
+     190: new           #91                 // class com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit
+     193: dup
+     194: iload         7
+     196: iconst_1
+     197: iadd
+     198: aload         8
+     200: aload         6
+     202: aload         10
+     204: invokespecial #93                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit."<init>":(ILnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/core/Direction;Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;)V
+     207: astore        11
+     209: aload_1
+     210: aload         11
+     212: invokeinterface #28,  2           // InterfaceMethod net/minecraft/world/level/levelgen/structure/StructurePieceAccessor.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     217: aload         11
+     219: aload_0
+     220: aload_1
+     221: aload_2
+     222: invokevirtual #34                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece.addChildren:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;)V
+     225: aload         11
+     227: areturn
+     228: aconst_null
+     229: areturn
+     230: iload         9
+     232: bipush        90
+     234: if_icmplt     315
+     237: iload         7
+     239: iconst_2
+     240: if_icmple     315
+     243: iload         7
+     245: getstatic     #38                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     248: getfield      #44                 // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+     251: getfield      #50                 // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.smallShaftPieceChainLength:I
+     254: iconst_2
+     255: isub
+     256: if_icmpge     315
+     259: aload_1
+     260: iload_3
+     261: iload         4
+     263: iload         5
+     265: aload         6
+     267: invokestatic  #94                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/LayeredIntersection4.determineBoxPosition:(Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;IIILnet/minecraft/core/Direction;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     270: astore        8
+     272: aload         8
+     274: ifnull        605
+     277: new           #95                 // class com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/LayeredIntersection4
+     280: dup
+     281: iload         7
+     283: iconst_1
+     284: iadd
+     285: aload         8
+     287: aload         6
+     289: aload         10
+     291: invokespecial #97                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/LayeredIntersection4."<init>":(ILnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/core/Direction;Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;)V
+     294: astore        11
+     296: aload_1
+     297: aload         11
+     299: invokeinterface #28,  2           // InterfaceMethod net/minecraft/world/level/levelgen/structure/StructurePieceAccessor.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     304: aload         11
+     306: aload_0
+     307: aload_1
+     308: aload_2
+     309: invokevirtual #34                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece.addChildren:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;)V
+     312: aload         11
+     314: areturn
+     315: iload         9
+     317: bipush        80
+     319: if_icmplt     394
+     322: iload         7
+     324: getstatic     #38                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     327: getfield      #44                 // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+     330: getfield      #50                 // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.smallShaftPieceChainLength:I
+     333: iconst_2
+     334: isub
+     335: if_icmpge     394
+     338: aload_1
+     339: iload_3
+     340: iload         4
+     342: iload         5
+     344: aload         6
+     346: invokestatic  #98                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/SmallTunnelStairs.determineBoxPosition:(Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;IIILnet/minecraft/core/Direction;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     349: astore        8
+     351: aload         8
+     353: ifnull        605
+     356: new           #99                 // class com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/SmallTunnelStairs
+     359: dup
+     360: iload         7
+     362: iconst_1
+     363: iadd
+     364: aload         8
+     366: aload         6
+     368: aload         10
+     370: invokespecial #101                // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/SmallTunnelStairs."<init>":(ILnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/core/Direction;Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;)V
+     373: astore        11
+     375: aload_1
+     376: aload         11
+     378: invokeinterface #28,  2           // InterfaceMethod net/minecraft/world/level/levelgen/structure/StructurePieceAccessor.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     383: aload         11
+     385: aload_0
+     386: aload_1
+     387: aload_2
+     388: invokevirtual #34                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece.addChildren:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;)V
+     391: aload         11
+     393: areturn
+     394: iload         9
+     396: bipush        70
+     398: if_icmplt     464
+     401: iload         7
+     403: iconst_2
+     404: if_icmple     464
+     407: aload_1
+     408: iload_3
+     409: iload         4
+     411: iload         5
+     413: aload         6
+     415: invokestatic  #102                // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/SmallTunnelTurn.determineBoxPosition:(Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;IIILnet/minecraft/core/Direction;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     418: astore        8
+     420: aload         8
+     422: ifnull        605
+     425: new           #103                // class com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/SmallTunnelTurn
+     428: dup
+     429: iload         7
+     431: iconst_1
+     432: iadd
+     433: aload_2
+     434: aload         8
+     436: aload         6
+     438: aload         10
+     440: invokespecial #105                // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/SmallTunnelTurn."<init>":(ILnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/core/Direction;Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;)V
+     443: astore        11
+     445: aload_1
+     446: aload         11
+     448: invokeinterface #28,  2           // InterfaceMethod net/minecraft/world/level/levelgen/structure/StructurePieceAccessor.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     453: aload         11
+     455: aload_0
+     456: aload_1
+     457: aload_2
+     458: invokevirtual #34                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece.addChildren:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;)V
+     461: aload         11
+     463: areturn
+     464: iload         9
+     466: bipush        60
+     468: if_icmplt     549
+     471: iload         7
+     473: iconst_2
+     474: if_icmple     549
+     477: iload         7
+     479: getstatic     #38                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.CONFIG:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule;
+     482: getfield      #44                 // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule.spawnRates:Lcom/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates;
+     485: getfield      #50                 // Field com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule$SpawnRates.smallShaftPieceChainLength:I
+     488: iconst_2
+     489: isub
+     490: if_icmpge     549
+     493: aload_1
+     494: iload_3
+     495: iload         4
+     497: iload         5
+     499: aload         6
+     501: invokestatic  #108                // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/LayeredIntersection5.determineBoxPosition:(Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;IIILnet/minecraft/core/Direction;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     504: astore        8
+     506: aload         8
+     508: ifnull        605
+     511: new           #109                // class com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/LayeredIntersection5
+     514: dup
+     515: iload         7
+     517: iconst_1
+     518: iadd
+     519: aload         8
+     521: aload         6
+     523: aload         10
+     525: invokespecial #111                // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/LayeredIntersection5."<init>":(ILnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/core/Direction;Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;)V
+     528: astore        11
+     530: aload_1
+     531: aload         11
+     533: invokeinterface #28,  2           // InterfaceMethod net/minecraft/world/level/levelgen/structure/StructurePieceAccessor.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     538: aload         11
+     540: aload_0
+     541: aload_1
+     542: aload_2
+     543: invokevirtual #34                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece.addChildren:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;)V
+     546: aload         11
+     548: areturn
+     549: aload_1
+     550: iload_3
+     551: iload         4
+     553: iload         5
+     555: aload         6
+     557: invokestatic  #112                // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/SmallTunnel.determineBoxPosition:(Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;IIILnet/minecraft/core/Direction;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     560: astore        8
+     562: aload         8
+     564: ifnull        605
+     567: new           #113                // class com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/SmallTunnel
+     570: dup
+     571: iload         7
+     573: iconst_1
+     574: iadd
+     575: aload         8
+     577: aload         6
+     579: aload         10
+     581: invokespecial #115                // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/SmallTunnel."<init>":(ILnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/core/Direction;Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;)V
+     584: astore        11
+     586: aload_1
+     587: aload         11
+     589: invokeinterface #28,  2           // InterfaceMethod net/minecraft/world/level/levelgen/structure/StructurePieceAccessor.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     594: aload         11
+     596: aload_0
+     597: aload_1
+     598: aload_2
+     599: invokevirtual #34                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece.addChildren:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;)V
+     602: aload         11
+     604: areturn
+     605: aconst_null
+     606: areturn
+
+  public static com.yungnickyoung.minecraft.bettermineshafts.world.generator.pieces.BetterMineshaftPiece generateAndAddSideRoomPiece(net.minecraft.world.level.levelgen.structure.StructurePiece, net.minecraft.world.level.levelgen.structure.StructurePieceAccessor, net.minecraft.util.RandomSource, int, int, int, net.minecraft.core.Direction, int);
+    Code:
+       0: aload_0
+       1: checkcast     #13                 // class com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece
+       4: getfield      #15                 // Field com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece.config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+       7: astore        8
+       9: aload_1
+      10: iload_3
+      11: iload         4
+      13: iload         5
+      15: aload         6
+      17: invokestatic  #116                // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/SideRoom.determineBoxPosition:(Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;IIILnet/minecraft/core/Direction;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      20: astore        9
+      22: aload         9
+      24: ifnull        65
+      27: new           #117                // class com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/SideRoom
+      30: dup
+      31: iload         7
+      33: iconst_1
+      34: iadd
+      35: aload         9
+      37: aload         6
+      39: aload         8
+      41: invokespecial #119                // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/SideRoom."<init>":(ILnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/core/Direction;Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;)V
+      44: astore        10
+      46: aload_1
+      47: aload         10
+      49: invokeinterface #28,  2           // InterfaceMethod net/minecraft/world/level/levelgen/structure/StructurePieceAccessor.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+      54: aload         10
+      56: aload_0
+      57: aload_1
+      58: aload_2
+      59: invokevirtual #34                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece.addChildren:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;)V
+      62: aload         10
+      64: areturn
+      65: aconst_null
+      66: areturn
+
+  public static com.yungnickyoung.minecraft.bettermineshafts.world.generator.pieces.BetterMineshaftPiece generateAndAddSideRoomDungeonPiece(net.minecraft.world.level.levelgen.structure.StructurePiece, net.minecraft.world.level.levelgen.structure.StructurePieceAccessor, net.minecraft.util.RandomSource, int, int, int, net.minecraft.core.Direction, int);
+    Code:
+       0: aload_0
+       1: checkcast     #13                 // class com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece
+       4: getfield      #15                 // Field com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece.config:Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;
+       7: astore        8
+       9: aload_1
+      10: iload_3
+      11: iload         4
+      13: iload         5
+      15: aload         6
+      17: invokestatic  #120                // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/SideRoomDungeon.determineBoxPosition:(Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;IIILnet/minecraft/core/Direction;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      20: astore        9
+      22: aload         9
+      24: ifnull        65
+      27: new           #121                // class com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/SideRoomDungeon
+      30: dup
+      31: iload         7
+      33: iconst_1
+      34: iadd
+      35: aload         9
+      37: aload         6
+      39: aload         8
+      41: invokespecial #123                // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/SideRoomDungeon."<init>":(ILnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/core/Direction;Lcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;)V
+      44: astore        10
+      46: aload_1
+      47: aload         10
+      49: invokeinterface #28,  2           // InterfaceMethod net/minecraft/world/level/levelgen/structure/StructurePieceAccessor.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+      54: aload         10
+      56: aload_0
+      57: aload_1
+      58: aload_2
+      59: invokevirtual #34                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece.addChildren:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;)V
+      62: aload         10
+      64: areturn
+      65: aconst_null
+      66: areturn
+}
