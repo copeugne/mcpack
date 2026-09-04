@@ -18,6 +18,10 @@ WDA_FILES = [
     "config/cristellib/dungeons_arise/structure_placement_config.json5",
     "config/cristellib/dungeons_arise/structure_toggle_config.json5",
 ]
+SEVEN_SEAS_FILES = [
+    "config/cristellib/dungeons_arise_seven_seas/structure_placement_config.json5",
+    "config/cristellib/dungeons_arise_seven_seas/structure_toggle_config.json5",
+]
 
 
 def test_wda_surfaces_reproduce_all_44_source_leaves() -> None:
@@ -51,4 +55,36 @@ def test_wda_surface_mutation_is_rejected(tmp_path: Path) -> None:
 
     # When/Then: repository validation rejects the false provider claim.
     with pytest.raises(ValueError, match="effective value does not match source"):
+        validate(FROZEN, MANIFEST, write_audit(tmp_path, audit))
+
+
+def test_seven_seas_surfaces_reproduce_all_eight_source_leaves() -> None:
+    # Given: the two committed WDA Seven Seas grouped surfaces.
+    surfaces = [
+        surface
+        for surface in AUDIT_DATA["setting_surfaces"]
+        if surface["system"] == "WDA Seven Seas"
+    ]
+
+    # When/Then: generator output matches exactly, with all 3 placement and 5 toggle leaves.
+    assert surfaces == [
+        build_setting_surface("WDA Seven Seas", relative, FROZEN / relative)
+        for relative in SEVEN_SEAS_FILES
+    ]
+    assert [len(surface["leaves"]) for surface in surfaces] == [3, 5]
+    assert not [
+        setting for setting in AUDIT_DATA["settings"] if setting["system"] == "WDA Seven Seas"
+    ]
+
+
+def test_seven_seas_surface_mutation_is_rejected(tmp_path: Path) -> None:
+    # Given: one exact Seven Seas leaf line changed without changing its preserved source.
+    audit = deepcopy(AUDIT_DATA)
+    surface = next(
+        surface for surface in audit["setting_surfaces"] if surface["system"] == "WDA Seven Seas"
+    )
+    surface["leaves"][0]["line"] += 1_000
+
+    # When/Then: repository validation rejects the false provider evidence.
+    with pytest.raises(ValueError, match="line evidence does not match source"):
         validate(FROZEN, MANIFEST, write_audit(tmp_path, audit))
