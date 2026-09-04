@@ -7,11 +7,12 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import shutil
 import tomllib
 from math import isfinite
 from pathlib import Path
 from typing import Any, cast
+
+from mcpack_evidence.item6_capture import capture
 
 Scalar = bool | int | float | str
 C2ME_KEY = "vanillaWorldGenOptimizations.useEndBiomeCache"
@@ -231,22 +232,6 @@ def validate(  # noqa: C901, PLR0912, PLR0915
     }
     if audited != covered:
         raise _AuditValidationError("audited file accounting does not match cited audit evidence")
-
-
-def capture(instance: Path, output: Path) -> None:
-    """Copy configuration-bearing paths without altering the source instance."""
-    if output.exists():
-        raise FileExistsError(f"output already exists: {output}")
-    output.mkdir(parents=True)
-    sources = {
-        instance / "config": output / "config",
-        instance / "defaultconfigs": output / "defaultconfigs",
-        instance / "world" / "serverconfig": output / "world-serverconfig",
-    }
-    for source, target in sources.items():
-        if source.is_dir():
-            shutil.copytree(source, target)
-    shutil.copy2(instance / "server.properties", output / "server.properties")
 
 
 def main() -> int:
