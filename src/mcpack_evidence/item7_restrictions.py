@@ -178,7 +178,7 @@ def _candidate(
         return None
     else:
         tag = reference[1:]
-        resolved, missing = _resolve(tag, tags, ())
+        resolved, missing = resolve_biome_tag(tag, tags)
         if resolved and not missing:
             return None
         status = "missing_tag" if missing else "empty_tag"
@@ -192,9 +192,19 @@ def _candidate(
     )
 
 
-def _resolve(
-    tag: str, tags: dict[str, list[object]], stack: tuple[str, ...]
+def resolve_biome_tag(  # noqa: C901 - explicit required/optional tag and biome semantics.
+    tag: str,
+    tags: dict[str, list[object]],
+    stack: tuple[str, ...] = (),
+    *,
+    registered_biomes: frozenset[str] | None = None,
 ) -> tuple[set[str], tuple[str, ...]]:
+    """Expand packaged tags, optionally distinguishing absent registered biome IDs.
+
+    The caller supplies already merged tag values. This does not resolve pack
+    precedence or prove that a runtime tag loader accepted a partially invalid tag.
+    Without a registry, retain the original Item 7 packaged-reference semantics.
+    """
     if tag in stack:
         return set(), (tag,)
     values = tags.get(tag)
@@ -213,11 +223,17 @@ def _resolve(
             message = f"invalid biome tag member: {tag}"
             raise RestrictionAuditError(message)
         if not value.startswith("#"):
-            resolved.add(value)
+            if registered_biomes is None or value in registered_biomes:
+                resolved.add(value)
+            elif required:
+                missing.add(value)
             continue
         nested = value[1:]
-        nested_values, nested_missing = _resolve(nested, tags, (*stack, tag))
-        resolved.update(nested_values)
+        nested_values, nested_missing = resolve_biome_tag(
+            nested, tags, (*stack, tag), registered_biomes=registered_biomes
+        )
+        if registered_biomes is None or not nested_missing:
+            resolved.update(nested_values)
         if required:
             missing.update(nested_missing)
     return resolved, tuple(sorted(missing))
