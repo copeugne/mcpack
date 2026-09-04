@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
-@pytest.mark.parametrize("namespace", ["integrated_villages:", "dungeons_arise:"])
+@pytest.mark.parametrize("namespace", ["integrated_villages:", "dungeons_arise:", "explorations:"])
 def test_authored_designs_bind_roots_settings_and_missing_components(
     namespace: str,
 ) -> None:
@@ -75,7 +75,16 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         identifier = str(row["family_id"])
         assert row["structure_ids"] == [identifier]
         definition = definitions[identifier]
-        assert row["start_pool"] == definition["start_pool"] == structures[identifier]["start_pool"]
+        assert row["start_pool"] == definition.get("start_pool")
+        if "start_pool" in definition:
+            assert row["start_pool"] == structures[identifier]["start_pool"]
+            assert row["missing_components"] == structures[identifier]["missing"]
+        else:
+            assert identifier in cast("dict[str, JsonValue]", traces["untraced_structures"])
+            assert (
+                row["missing_components"]
+                == "UNKNOWN: custom generation is outside current pool trace"
+            )
         assert row["generation_settings"] == {
             key: definition[key]
             for key in (
@@ -89,7 +98,6 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
             )
             if key in definition
         }
-        assert row["missing_components"] == structures[identifier]["missing"]
         for path, digest in cast("dict[str, str]", row["evidence"]).items():
             assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
 
@@ -299,11 +307,25 @@ def test_inventory_preserves_loot_kinds_and_rejects_missing_template_content() -
                 {"id": "example:rider", "path": "/entities/1/nbt/Passengers/0"},
             ],
             "unresolved_entities": [{"path": "/entities/2/nbt", "reason": "missing ID"}],
+            "spawner_blocks": [
+                {
+                    "path": "/block_entities/0",
+                    "nbt": {
+                        "id": "minecraft:mob_spawner",
+                        "SpawnData": {"entity": {"id": "minecraft:zombie"}},
+                        "SpawnPotentials": [],
+                    },
+                },
+                {"path": "/block_entities/1", "nbt": {"id": "example:custom_spawner"}},
+            ],
+            "generation_markers": [{"path": "/block_entities/2"}],
         },
         "example:empty": {
             "loot_references": [],
             "authored_entities": [],
             "unresolved_entities": [],
+            "spawner_blocks": [],
+            "generation_markers": [],
         },
     }
     traces: dict[str, JsonValue] = {
@@ -316,6 +338,27 @@ def test_inventory_preserves_loot_kinds_and_rejects_missing_template_content() -
     families = cast("dict[str, dict[str, JsonValue]]", result["families"])
     loot = cast("dict[str, JsonValue]", families["example:family"]["loot_table_source"])
     mobs = cast("dict[str, JsonValue]", families["example:family"]["mob_source"])
+    spawners = cast("dict[str, JsonValue]", families["example:family"]["generated_spawners"])
+    assert spawners["packaged_entity_sources"] == [
+        {
+            "spawner_id": "minecraft:mob_spawner",
+            "mode": "ordinary",
+            "entity_id": "minecraft:zombie",
+            "templates": ["example:room"],
+        }
+    ]
+    assert spawners["unresolved_sources"] == {
+        "example:room": [
+            {
+                "block_path": "/block_entities/1",
+                "mode": "custom",
+                "path": "",
+                "unresolved": "custom spawner semantics",
+                "source_value": "example:custom_spawner",
+            }
+        ]
+    }
+    assert spawners["generation_marker_templates"] == ["example:room"]
     assert mobs["packaged_authored_entity_templates"] == {
         "example:animal": ["example:room"],
         "example:rider": ["example:room"],
