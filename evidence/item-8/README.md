@@ -3,8 +3,8 @@
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
 The working deliverable is `inventory.json`, initially assembled by `f2eaf2b`
-and updated through `eef10dd` using attribute support from `bf153ea`.
-SHA-256: `3a53d5cf7e64251d08f1d52408d27f4666fb72798ab5fb526afefd421199f8d9`.
+and updated through `7100c21` using attribute support from `bf153ea`.
+SHA-256: `a13e96faa22c7e9042573d0ad3c489a493d5acbab827104161d0d537c9732040`.
 It is explicitly incomplete. It joins the currently recorded Better Mineshafts
 and CTOV size-group decisions to biome constraints, potential template content
 and saved-world observation references. It lists every unassigned registry ID
@@ -47,6 +47,22 @@ The existing trace retains Small Yacht's missing
 template is invented. Four focused grouping/assembly checks passed. Output
 `evidence/raw/item8/inventory-seven-seas-r1.json` reproduced byte for byte at
 `evidence/raw/item8/inventory-seven-seas-reproduction1.json`.
+
+Source `7100c21` adds the five vessels' main template extents, authored spawner
+entity types, container loot references and ocean-surface generation setup.
+These extents include stored air and are not assembled occupied dimensions.
+Effective loot injections, observed spawner counts and visual discoverability
+remain unresolved. The direct source checks caught an omitted skeleton entry
+for Victory Frigate during preparation; the corrected list matches both initial
+spawner data and positive-weight potentials. All four focused tests passed.
+The committed-source output at
+`evidence/raw/item8/inventory-seven-seas-attributes-reproduction1.json` matches
+`evidence/raw/item8/inventory-seven-seas-attributes-pilot1.json` byte for byte.
+Missing-template source inspection is preserved separately in
+`sources/missing-template-code`. The base Minecraft lookup creates an empty
+template with no attachment connectors. This is not a deliberate empty-pool
+element or an observed miss probability; mod transformations and effective
+placement remain to be resolved.
 
 The infrastructure requirements in
 `INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md` apply to this work. Reuse the
