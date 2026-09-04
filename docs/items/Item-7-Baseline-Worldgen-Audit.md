@@ -70,7 +70,7 @@ Unresolved entries remain `UNKNOWN`. The audit does not convert startup success 
 
 ## Durable evidence and restoration
 
-The final raw evidence is split into four immutable release assets under tag `item-7-raw-evidence-2026-09-04-r7`, bound to corrected source revision `ca646c19ad772bd6de6a47f4dcb0fc5dc4b5cbfc`:
+The final raw evidence is split into four immutable release assets under tag `item-7-raw-evidence-2026-09-04-r8`, bound to corrected source revision `85efc96b5f1c2d3518a594905a65a2777d904b4b`:
 
 | Asset | Files | Raw bytes | Archive bytes | Archive SHA-256 |
 |---|---:|---:|---:|---|
@@ -81,11 +81,11 @@ The final raw evidence is split into four immutable release assets under tag `it
 
 All four archives were restored into absent targets, checked file by file, downloaded twice from the published GitHub release, and rehashed. The committed publication receipt and completion validator bind the release URL, tag, source revision, asset names, sizes, hashes, manifests, restore receipts, and verification tool. The independently constructed world archive inventory also binds all 716 raw Run A, Run B, and auxiliary world files to those manifests. JARs, Minecraft and NeoForge binaries, credentials, `session.lock`, player data, caches, and symlinks are excluded.
 
-The first release, r2, r3, and r4 remain preserved as historical evidence. The first procedure did not hold Java-compatible world locks and used hardlinks. The r2 procedure added locks and independent copies, but later review proved that its reusable staging and archive implementation still had pathname replacement gaps. r3 proved corrected creation custody, but the later GitHub review found invalid floating-placement and biome-height semantics plus incomplete raw-world binding. r4 preserves r3 outputs as explicitly superseded data, regenerates all 32 analyses and galleries plus all 128 captures with the corrected code, and adds the independent world archive inventory. The exact-SHA review at `5a5623fbe161c3ab1874c8184b8f9f1d0418c9cd` then proved that restore target and receipt publication remained pathname-based. Tags r5 and r6 preserve unpublished failed attempts while that defect and a real descriptor-scan offset defect were corrected.
+The first release, r2, r3, r4, and r7 remain preserved as historical evidence. The first procedure did not hold Java-compatible world locks and used hardlinks. The r2 procedure added locks and independent copies, but later review proved that its reusable staging and archive implementation still had pathname replacement gaps. r3 proved corrected creation custody, but the later GitHub review found invalid floating-placement and biome-height semantics plus incomplete raw-world binding. r4 preserves r3 outputs as explicitly superseded data, regenerates all 32 analyses and galleries plus all 128 captures with the corrected code, and adds the independent world archive inventory. The exact-SHA review at `5a5623fbe161c3ab1874c8184b8f9f1d0418c9cd` then proved that restore target and receipt publication remained pathname-based. Tags r5 and r6 preserve unpublished failed attempts while that defect and a real descriptor-scan offset defect were corrected. The exact-SHA review at `708478ce925353d8cb64199df0fc47d69df6bdf5` then found pre-validation output-parent creation, two oversized modules, and an incomplete reproduction command. Its rejection is preserved under `evidence/item-7/review/`.
 
 Reviews of revisions `8c7e7b8bb5db79d826b78cab5a678605a8b5fc23` and `438260f40fd0d50ff5f087a2b8aac028d5a39927` found remaining source, output, hardlink, special-file, and repository-binding defects. Commits `fdd99d9`, `c625d6e`, `f57503d`, and `4503d64` correct those boundaries and the vacuous mutation tests with focused regression coverage.
 
-The r7 archives were rebuilt from the hash-verified r4 restore with the final descriptor-bound implementation. Restore writes into an unpublished tree through pinned descriptors, rehashes its complete inventory, publishes without replacement, and emits a receipt from a pinned directory only while the published target still names the verified inode. All four r7 archives restored into absent targets. Two independent downloads with the tracked repository-bound verifier matched every committed size and SHA-256. The canonical completion rebuild uses the r7 restored core, not the older mutable construction tree. Rejected review records remain under `evidence/item-7/review/`; a fresh exact-SHA review remains required before delivery.
+The r8 archives were rebuilt from the hash-verified r7 restore with the final implementation. Archive and restore output parents must exist and are opened component by component without following symlinks before any output is created. Restore writes into an unpublished tree through pinned descriptors, rehashes its complete inventory, publishes without replacement, and emits a receipt from a pinned directory only while the published target still names the verified inode. All four r8 archives restored into absent targets. Two independent downloads with the tracked repository-bound verifier matched every committed size and SHA-256. The initial r8 download attempt under `/tmp` failed from disk quota and is not acceptance evidence. The canonical completion rebuild uses the r8 restored core, not the older mutable construction tree. Rejected review records remain under `evidence/item-7/review/`; a fresh exact-SHA review remains required before delivery.
 
 ## Reproduction
 
@@ -99,12 +99,12 @@ uv run ruff format --check src/mcpack_evidence/item7_*.py tools/*item7*.py tests
 uv run ruff check src/mcpack_evidence/item7_*.py tools/*item7*.py tests/item7
 uv run basedpyright src/mcpack_evidence/item7_*.py tools/*item7*.py tests/item7
 bash -n tools/stage_item7_raw_evidence.sh
-tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04-r7 evidence/item-7/archive/r7 evidence/item-7/archive/r7/publication.json /tmp/item7-release-verify-r7
+tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04-r8 evidence/item-7/archive/r8 evidence/item-7/archive/r8/publication.json /home/lonestar/Desktop/Projects/mcpack-item7-r8-release-download-1
 ```
 
 The Python quality commands are intentionally scoped to Item 7. They do not claim that unrelated reconstructed later-item tools are clean, and Item 11 tooling remains outside this gate until the required Item 2 through Item 10 cross-item audit passes.
 
-After restoring all four r7 assets, run the tracked `tools/build_item7_completion.py` CLI with `--raw-root` and `--visual-manifest` under the restored r7 core, `--world-archive-inventory evidence/item-7/world-archive-inventory.json`, and the r7 archive manifests, restore receipts, and publication receipt. The remaining protocol, provider, biome-restriction, repeat, warning, and control inputs are the matching tracked or restored-core paths. The exact accepted invocation is recorded in `evidence/item-7/review/candidate-r7-validation.md`. It returns `PASS`, records 125 artifact identities, and must not use the older mutable `/tmp/mcpack-item7-raw-20260904` tree.
+After restoring all four r8 assets, run the tracked `tools/build_item7_completion.py` CLI with `--raw-root` and `--visual-manifest` under the restored r8 core, `--world-archive-inventory evidence/item-7/world-archive-inventory.json`, and the r8 archive manifests, restore receipts, and publication receipt. The remaining protocol, provider, biome-restriction, repeat, warning, and control inputs are the matching tracked or restored-core paths. The exact accepted invocation is recorded in `evidence/item-7/review/candidate-r8-validation.md`. It returns `PASS`, records 125 artifact identities, and must not use the older mutable `/tmp/mcpack-item7-raw-20260904` tree.
 
 ## Evidence index
 
@@ -115,10 +115,10 @@ After restoring all four r7 assets, run the tracked `tools/build_item7_completio
 - `evidence/item-7/visual/integrity-review.json`
 - `evidence/item-7/visual/fidelity-review.json`
 - `evidence/item-7/visual/rejected-attempts.json`
-- `evidence/item-7/archive/r7/`
+- `evidence/item-7/archive/r8/`
 - `evidence/item-7/review/`
 - `evidence/item-7/completion.json`
-- GitHub release `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04-r7`
+- GitHub release `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04-r8`
 
 ## Superseded historical control
 

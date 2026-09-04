@@ -1,0 +1,90 @@
+# Item 7 r8 candidate validation
+
+## Bound evidence
+
+- Archive source revision: `85efc96b5f1c2d3518a594905a65a2777d904b4b`.
+- Annotated tag object: `7bd8dad5c4ae4baec9eddc767c96aac7d05b30af`.
+- Release: `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04-r8`.
+- World archive inventory SHA-256: `331bde517e6fb072a4aa0a66fb77b733559b27f92098f8fc1f236405bbe02f3e`, 716 files.
+- Completion SHA-256: `3bdcc69744bb9f779e6b4afc3c9ed8a7a2d8e85c77dbf37c4fa63255fca95d06`, 125 artifacts, `PASS`.
+
+All four archives were rebuilt from the verified r7 restore with the tracked implementation at the tagged source revision. Their payload hashes are byte-identical to r7. Each archive restored into an absent target after its output parents were safely opened without following symlinks. The tracked repository-bound verifier downloaded all four assets twice to distinct disk-backed directories and matched their sizes and SHA-256 values.
+
+The first download attempt used `/tmp/mcpack-item7-r8-release-download-1` and failed with `disk quota exceeded` before verification completed. That incomplete directory was removed. It is not acceptance evidence and is not counted among the two successful downloads.
+
+The two successful verification commands were:
+
+```sh
+tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04-r8 evidence/item-7/archive/r8 evidence/item-7/archive/r8/publication.json /home/lonestar/Desktop/Projects/mcpack-item7-r8-release-download-1
+tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04-r8 evidence/item-7/archive/r8 evidence/item-7/archive/r8/publication.json /home/lonestar/Desktop/Projects/mcpack-item7-r8-release-download-2
+```
+
+## Exact inventory rebuild
+
+From the repository root, the exact world archive inventory rebuild and comparison invocation is:
+
+```sh
+uv run python tools/build_item7_world_archive_inventory.py \
+  --run-a /tmp/mcpack-item7-r8-delivery/restored/run-a \
+  --run-a-archive-name mcpack-item7-raw-run-a-worlds-r8.tar.gz \
+  --run-b /tmp/mcpack-item7-r8-delivery/restored/run-b \
+  --run-b-archive-name mcpack-item7-raw-run-b-worlds-r8.tar.gz \
+  --auxiliary /tmp/mcpack-item7-r8-delivery/restored/auxiliary \
+  --auxiliary-archive-name mcpack-item7-raw-auxiliary-worlds-r8.tar.gz \
+  --output /tmp/item7-world-inventory-r8-rebuilt.json
+cmp evidence/item-7/world-archive-inventory.json /tmp/item7-world-inventory-r8-rebuilt.json
+sha256sum evidence/item-7/world-archive-inventory.json /tmp/item7-world-inventory-r8-rebuilt.json
+```
+
+## Exact completion rebuild
+
+From the repository root, the exact completion rebuild and comparison invocation is:
+
+```sh
+uv run python tools/build_item7_completion.py \
+  --raw-root /tmp/mcpack-item7-r8-delivery/restored/core \
+  --protocol evidence/item-7/protocol/worldgen-audit-v1.json \
+  --provider-catalog evidence/item-7/provider-catalog.json \
+  --provider-coverage /tmp/mcpack-item7-r8-delivery/restored/core/run-a/provider-coverage.json \
+  --provider-disposition /tmp/mcpack-item7-r8-delivery/restored/core/provider-disposition.json \
+  --restriction-audit evidence/item-7/biome-restriction-audit.json \
+  --world-archive-inventory evidence/item-7/world-archive-inventory.json \
+  --repeat-comparison /tmp/mcpack-item7-r8-delivery/restored/core/repeat-comparison.json \
+  --warning-audit /tmp/mcpack-item7-r8-delivery/restored/core/warning-audit.json \
+  --warning-disposition /tmp/mcpack-item7-r8-delivery/restored/core/warning-disposition.json \
+  --control-comparison /tmp/mcpack-item7-r8-delivery/restored/core/control-comparison.json \
+  --visual-manifest /tmp/mcpack-item7-r8-delivery/restored/core/visual-qa/captures/capture-manifest.tsv \
+  --visual-review evidence/item-7/visual/integrity-review.json \
+  --visual-review evidence/item-7/visual/fidelity-review.json \
+  --archive-manifest evidence/item-7/archive/r8/core-manifest.json \
+  --archive-manifest evidence/item-7/archive/r8/run-a-worlds-manifest.json \
+  --archive-manifest evidence/item-7/archive/r8/run-b-worlds-manifest.json \
+  --archive-manifest evidence/item-7/archive/r8/auxiliary-worlds-manifest.json \
+  --restore-receipt evidence/item-7/archive/r8/core-restore.json \
+  --restore-receipt evidence/item-7/archive/r8/run-a-worlds-restore.json \
+  --restore-receipt evidence/item-7/archive/r8/run-b-worlds-restore.json \
+  --restore-receipt evidence/item-7/archive/r8/auxiliary-worlds-restore.json \
+  --publication evidence/item-7/archive/r8/publication.json \
+  --output /tmp/item7-completion-r8-rebuilt.json
+cmp evidence/item-7/completion.json /tmp/item7-completion-r8-rebuilt.json
+sha256sum evidence/item-7/completion.json /tmp/item7-completion-r8-rebuilt.json
+```
+
+Both exact rebuild commands returned `PASS`; both `cmp` commands returned zero; and the paired SHA-256 values matched the identities recorded above.
+
+The older mutable `/tmp/mcpack-item7-raw-20260904` tree is not an accepted completion input. The accepted r8 restored core contains capture manifest SHA-256 `219e17ed50b6e5b919c16a2b5bef34b7820b251c7272074d5df91c5123260f91`, which matches both accepted visual review receipts.
+
+## Worktree validation
+
+- `uv run pytest -q tests/item7`: 186 passed.
+- `uv run pytest -q`: 867 passed.
+- Scoped Ruff formatting: passed across 104 files.
+- Scoped Ruff checks: passed.
+- Scoped basedpyright: 0 errors, 0 warnings, 0 notes.
+- Item 7 shell syntax: passed.
+- `git diff --check`: passed.
+- The tracked archive CLI created and restored a one-file archive byte for byte and emitted a verified receipt.
+
+## Clean export validation
+
+Pending after this reconciliation commit. The clean export must rerun all tests and quality checks and reproduce both exact commands above byte for byte before fresh exact-SHA review.
