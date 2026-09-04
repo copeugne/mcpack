@@ -31,18 +31,42 @@ class RetainedManifest(TypedDict):
     sha256: str
 
 
+class JavaRuntime(TypedDict):
+    """Java runtime identity recorded in the frozen manifest."""
+
+    vendor: str
+    version: str
+    build: str
+    archive_sha256: str
+
+
+class StageNotes(TypedDict):
+    """Recorded observation basis for each frozen configuration stage."""
+
+    installation: str
+    first_startup: str
+    world_creation: str
+    shutdown: str
+
+
 class Manifest(TypedDict):
     """The Item 6 frozen configuration manifest."""
 
     schema_version: str
+    generated_at: str
     capture_boundary: str
+    minecraft_version: str
+    neoforge_version: str
+    java: JavaRuntime
     configuration_version: str
     seed_role: str
     seed: str
     retained_manifest: RetainedManifest
+    capture_command: str
     source_lifecycle: str
     file_count: int
     files: list[ManifestRow]
+    stage_notes: StageNotes
 
 
 _MANIFEST_ADAPTER: Final[TypeAdapter[Manifest]] = TypeAdapter(Manifest)
@@ -62,7 +86,7 @@ class ManifestValidationError(ValueError):
 
 def parse_manifest(manifest_path: Path) -> Manifest:
     """Parse the manifest at the untrusted file boundary."""
-    return _MANIFEST_ADAPTER.validate_json(manifest_path.read_bytes(), strict=True, extra="allow")
+    return _MANIFEST_ADAPTER.validate_json(manifest_path.read_bytes(), strict=True, extra="forbid")
 
 
 def validate_manifest_inventory(root: Path, manifest: Manifest) -> set[str]:

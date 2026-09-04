@@ -8,6 +8,7 @@ from copy import deepcopy
 from typing import TYPE_CHECKING
 
 import pytest
+from pydantic import ValidationError
 
 from mcpack_evidence.item6_manifest import (
     Manifest,
@@ -100,6 +101,33 @@ def test_manifest_contract_rejects_invalid_capture_boundary(tmp_path: Path) -> N
 
     # Then: only the documented post-shutdown capture point is accepted.
     _assert_manifest_rejected(manifest_path, audit_path, "invalid manifest capture boundary")
+
+
+@pytest.mark.parametrize(
+    ("anchor", "unexpected_field"),
+    [
+        ("{\n", '  "unexpected_top_level": true,\n'),
+        ('  "java": {\n', '    "unexpected_java_field": true,\n'),
+        ('  "retained_manifest": {\n', '    "unexpected_retained_field": true,\n'),
+        (
+            '    {\n      "path": "config/accessories.json5",\n',
+            '      "unexpected_row_field": true,\n',
+        ),
+    ],
+)
+def test_parse_manifest_rejects_unknown_fields(
+    tmp_path: Path, anchor: str, unexpected_field: str
+) -> None:
+    # Given: a committed manifest with one syntactically valid unknown field.
+    mutated = MANIFEST.read_text(encoding="utf-8").replace(
+        anchor, f"{anchor}{unexpected_field}", 1
+    )
+    manifest_path = tmp_path / "manifest-with-unknown-field.json"
+    manifest_path.write_text(mutated, encoding="utf-8")
+
+    # When/Then: typed parsing rejects the unknown object member.
+    with pytest.raises(ValidationError, match="extra_forbidden"):
+        parse_manifest(manifest_path)
 
 
 def _committed_manifest() -> Manifest:
