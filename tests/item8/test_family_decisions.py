@@ -16,7 +16,12 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
-def test_integrated_village_designs_cover_roots_and_preserve_missing_components() -> None:
+@pytest.mark.parametrize(
+    ("namespace", "complete"), [("integrated_villages:", True), ("dungeons_arise:", False)]
+)
+def test_authored_designs_bind_roots_settings_and_missing_components(
+    namespace: str, *, complete: bool
+) -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(
         "dict[str, JsonValue]",
@@ -25,14 +30,18 @@ def test_integrated_village_designs_cover_roots_and_preserve_missing_components(
     groups = [
         row
         for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
-        if str(row["family_id"]).startswith("integrated_villages:")
+        if str(row["family_id"]).startswith(namespace)
     ]
     registry = read_registry(
         root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
     )
     members = [member for row in groups for member in cast("list[str]", row["structure_ids"])]
     assert len(members) == len(set(members))
-    assert set(members) == {key for key in registry if key.startswith("integrated_villages:")}
+    expected = {key for key in registry if key.startswith(namespace)}
+    assert members
+    assert set(members) <= expected
+    if complete:
+        assert set(members) == expected
     catalog = cast(
         "dict[str, JsonValue]",
         json.loads(
@@ -58,6 +67,13 @@ def test_integrated_village_designs_cover_roots_and_preserve_missing_components(
         ),
     )
     structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
+    if namespace == "dungeons_arise:":
+        seen: set[str] = set()
+        for identifier in sorted(expected):
+            templates = set(cast("list[str]", structures[identifier]["templates"]))
+            assert templates
+            assert not seen.intersection(templates)
+            seen.update(templates)
     assert len({str(row["start_pool"]) for row in groups}) == len(groups)
     for row in groups:
         identifier = str(row["family_id"])
