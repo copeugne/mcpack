@@ -26,12 +26,17 @@ def resource_identity(path: str, kind: str, extension: str = ".json") -> tuple[s
     )
 
 
-def biome_tag_inputs(resources: list[JsonValue]) -> dict[str, JsonValue]:
+def biome_tag_inputs(
+    resources: list[JsonValue], archive_order: tuple[str, ...] = ()
+) -> dict[str, JsonValue]:
     """Merge order-independent root tags and known vanilla-to-single-mod replacements.
 
     Preserve unresolved conditional, removal, optional-pack and mod-order cases.
     Callers must not interpret an unresolved contribution as an absent tag.
     """
+    if len(set(archive_order)) != len(archive_order):
+        message = "duplicate archive in biome tag resource order"
+        raise ValueError(message)
     grouped: dict[str, list[dict[str, JsonValue]]] = {}
     for resource in resources:
         if not isinstance(resource, dict) or not isinstance(resource.get("path"), str):
@@ -40,12 +45,19 @@ def biome_tag_inputs(resources: list[JsonValue]) -> dict[str, JsonValue]:
         identity = resource_identity(str(resource["path"]), "tags/worldgen/biome")
         if identity is not None:
             grouped.setdefault(identity[0], []).append(resource)
-    return {identifier: _merge_tag(rows) for identifier, rows in sorted(grouped.items())}
+    return {
+        identifier: _merge_tag(rows, archive_order) for identifier, rows in sorted(grouped.items())
+    }
 
 
-def _merge_tag(rows: list[dict[str, JsonValue]]) -> dict[str, JsonValue]:
+def _merge_tag(
+    rows: list[dict[str, JsonValue]], archive_order: tuple[str, ...]
+) -> dict[str, JsonValue]:
     vanilla = "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar"
     ordered = sorted(rows, key=lambda row: (row["archive"] != vanilla, str(row["archive"])))
+    known_order = bool(archive_order) and all(row["archive"] in archive_order for row in rows)
+    if known_order:
+        ordered = sorted(rows, key=lambda row: archive_order.index(str(row["archive"])))
     sources: list[JsonValue] = []
     values: list[JsonValue] = []
     unresolved: list[JsonValue] = []
@@ -65,7 +77,7 @@ def _merge_tag(rows: list[dict[str, JsonValue]]) -> dict[str, JsonValue]:
                 {"path": row["path"], "reason": "pack prefix or nonstandard tag fields"}
             )
         if document.get("replace") is True:
-            if row["archive"] != vanilla and mod_count > 1:
+            if row["archive"] != vanilla and mod_count > 1 and not known_order:
                 unresolved.append(
                     {"path": row["path"], "reason": "replacement requires mod pack order"}
                 )
