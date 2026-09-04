@@ -91,6 +91,7 @@ class RenderMetadata:
     seed_role: str
     seed: str
     dimension: str
+    selection: Literal["overworld", "nether", "end-central", "end-outer"]
     region_hashes: dict[str, str]
 
 

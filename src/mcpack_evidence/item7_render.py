@@ -17,6 +17,7 @@ from mcpack_evidence.item7_render_input import (
     parse_input,
     sha256,
 )
+from mcpack_evidence.item7_render_svg import section_svg, topdown_svg
 
 RENDERER_VERSION: Final = "item7-offline-render-v1"
 _BIOME_INDEX_MESSAGE: Final = "decoded biome section has an invalid palette index"
@@ -91,18 +92,7 @@ def _render_topdown(metadata: RenderMetadata, chunks: tuple[RenderChunk, ...]) -
         for (kind, colour, biome), commands in sorted(paths.items())
     )
     boxes = "".join(_boxes(chunk, minimum_x, minimum_z) for chunk in chunks)
-    description = (
-        "<desc>Derived elevation and placement view. Water candidate means OCEAN_FLOOR is below "
-        "WORLD_SURFACE. Biome colours are derived from saved quart biome sections, not block "
-        "samples.</desc>"
-    )
-    content = "".join(
-        (
-            description,
-            f'<g class="terrain">{layers}</g><g class="structures">{boxes}</g>',
-        )
-    )
-    return _svg(metadata, width, height, "top-down derived elevation and placement view", content)
+    return topdown_svg(metadata, (minimum_x, minimum_z, width, height), layers, boxes)
 
 
 def _render_section(
@@ -110,25 +100,11 @@ def _render_section(
     chunks: tuple[RenderChunk, ...],
     axis: Literal["x", "z"],
 ) -> str:
-    _, _, width, height = _bounds(chunks)
+    minimum_x, minimum_z, width, height = _bounds(chunks)
     points = tuple(_section_points(chunks, axis))
-    highest, lowest = max(point[1] for point in points) + 8, min(point[1] for point in points) - 32
-    profile = " ".join(f"{coordinate},{highest - surface}" for coordinate, surface in points)
-    description = (
-        f"<desc>Heightmap-derived surface profile along the {axis} axis. "
-        "No block-column samples are present.</desc>"
-    )
-    content = "".join(
-        (
-            description,
-            f'<polyline class="surface-profile" points="{profile}"/>',
-        )
-    )
-    span = width if axis == "x" else height
-    document = _svg(
-        metadata, span, highest - lowest + 1, "orthogonal elevation cross-section", content
-    )
-    return document.replace("<svg ", f'<svg data-axis="{axis}" data-block-accurate="false" ')
+    origin = minimum_x if axis == "x" else minimum_z
+    slice_coordinate = minimum_z + height // 2 if axis == "x" else minimum_x + width // 2
+    return section_svg(metadata, axis, points, origin, slice_coordinate)
 
 
 def _bounds(chunks: tuple[RenderChunk, ...]) -> tuple[int, int, int, int]:
@@ -217,42 +193,23 @@ def _water_colour(surface: int) -> str:
     return f"#1c{depth_tone:02x}d8"
 
 
-def _svg(metadata: RenderMetadata, width: int, height: int, label: str, content: str) -> str:
-    identity = f"run={metadata.run_id}; seed={metadata.seed}; dimension={metadata.dimension}"
-    hashes = html.escape(json.dumps(dict(sorted(metadata.region_hashes.items())), sort_keys=True))
-    svg_open = (
-        f'<svg xmlns="http://www.w3.org/2000/svg" role="img" '
-        f'aria-label="{html.escape(label)}" '
-        f'data-run-id="{html.escape(metadata.run_id)}" '
-        f'data-seed="{html.escape(metadata.seed)}" '
-        f'data-dimension="{html.escape(metadata.dimension)}" '
-        f'data-input-region-hashes="{hashes}" '
-        f'viewBox="0 0 {width} {height}"><title>{html.escape(identity)}</title>'
-    )
-    return "".join(
-        (
-            '<?xml version="1.0" encoding="UTF-8"?>\n',
-            svg_open,
-            "<style>.background{fill:#101820}.structure{fill:none;stroke:#ff003c;stroke-width:1}.surface-profile{fill:none;stroke:#ffffff;stroke-width:1}</style>",
-            f'<rect class="background" x="0" y="0" width="{width}" height="{height}"/>',
-            f"{content}</svg>\n",
-        )
-    )
-
-
 def _metadata_document(render_input: RenderInput) -> dict[str, str | dict[str, str]]:
     return {
         "run_id": render_input.metadata.run_id,
         "seed_role": render_input.metadata.seed_role,
         "seed": render_input.metadata.seed,
         "dimension": render_input.metadata.dimension,
+        "selection": render_input.metadata.selection,
         "input_region_hashes": dict(sorted(render_input.metadata.region_hashes.items())),
         "chunks_sha256": render_input.chunks_sha256,
     }
 
 
 def _render_gallery(metadata: RenderMetadata, chunks_sha256: str) -> str:
-    title = f"Item 7 inspection: {metadata.run_id}, seed {metadata.seed}, {metadata.dimension}"
+    title = (
+        f"Item 7 inspection: {metadata.run_id}, seed role {metadata.seed_role}, seed "
+        f"{metadata.seed}, selection {metadata.selection}, {metadata.dimension}"
+    )
     rows = "".join(
         f'<li><a href="{name}">{label}</a></li>'
         for name, label in (
@@ -269,6 +226,12 @@ def _render_gallery(metadata: RenderMetadata, chunks_sha256: str) -> str:
         (
             '<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><title>',
             f"{html.escape(title)}</title></head><body><h1>{html.escape(title)}</h1>",
+            "".join(
+                (
+                    f"<p>Seed role: {html.escape(metadata.seed_role)}. Selection: ",
+                    f"{html.escape(metadata.selection)}.</p>",
+                )
+            ),
             f"<p>Decoded JSONL SHA-256: {chunks_sha256}</p><ul>{rows}</ul>",
             limitation,
             "</body></html>\n",

@@ -21,6 +21,7 @@ class _ManifestMetadata(BaseModel):
     seed_role: str
     seed: str
     dimension: str
+    selection: str
     input_region_hashes: dict[str, str]
     chunks_sha256: str
 
@@ -35,7 +36,12 @@ class _Manifest(BaseModel):
 
 def _metadata() -> RenderMetadata:
     return RenderMetadata(
-        "run-a", "ordinary", "42", "minecraft:overworld", {"region/r.0.0.mca": REGION_HASH}
+        run_id="run-a",
+        seed_role="ordinary",
+        seed="42",
+        dimension="minecraft:overworld",
+        selection="overworld",
+        region_hashes={"region/r.0.0.mca": REGION_HASH},
     )
 
 
@@ -96,6 +102,7 @@ def test_renderer_emits_deterministic_gallery_and_hashed_manifest(tmp_path: Path
     assert manifest.artifact_hashes == {name: _hash(first / name) for name in expected}
     assert manifest.metadata.input_region_hashes == {"region/r.0.0.mca": REGION_HASH}
     assert manifest.metadata.chunks_sha256 == source_hash
+    assert manifest.metadata.selection == "overworld"
 
 
 def test_renderer_marks_water_boxes_and_both_honest_cross_section_axes(tmp_path: Path) -> None:
@@ -111,10 +118,26 @@ def test_renderer_marks_water_boxes_and_both_honest_cross_section_axes(tmp_path:
     assert 'fill="#1c' in topdown
     assert 'class="structure"' in topdown
     assert 'data-provider="example"' in topdown
+    assert 'data-selection="overworld"' in topdown
+    assert "Elevation color" in topdown
+    assert "Water candidate" in topdown
+    assert "Structure bounds" in topdown
+    assert "North (-Z)" in topdown
+    assert "Resolution: 1 map cell = 1 block" in topdown
+    assert "Biome IDs are metadata" in topdown
+    assert 'clip-path="url(#map-boundary)"' in topdown
     assert 'class="background"' in x_section
     assert 'data-axis="x" data-block-accurate="false"' in x_section
     assert 'data-axis="z" data-block-accurate="false"' in z_section
     assert "Heightmap-derived surface profile" in x_section
+    assert "Horizontal coordinate (block X)" in x_section
+    assert "Elevation (blocks)" in x_section
+    assert "Slice at block Z" in x_section
+    assert "Selection: overworld" in x_section
+
+    index = (output / "index.html").read_text(encoding="utf-8")
+    assert "Seed role: ordinary" in index
+    assert "Selection: overworld" in index
 
 
 def test_renderer_rejects_stale_decoded_input_hash(tmp_path: Path) -> None:

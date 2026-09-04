@@ -6,7 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from typing import ClassVar
+from typing import ClassVar, Literal
 
 from pydantic import BaseModel, ConfigDict, ValidationError
 
@@ -24,6 +24,7 @@ class _Arguments(BaseModel):
     seed_role: str
     seed: str
     dimension: str
+    selection: Literal["overworld", "nether", "end-central", "end-outer"]
     world_manifest: Path
     expected_chunks_sha256: str | None
 
@@ -33,6 +34,7 @@ class _Arguments(BaseModel):
             self.seed_role,
             self.seed,
             self.dimension,
+            self.selection,
             read_region_hashes(self.world_manifest, self.dimension),
         )
         render_jsonl(
@@ -70,6 +72,9 @@ def main() -> int:
     _ = parser.add_argument("--seed-role", required=True)
     _ = parser.add_argument("--seed", required=True)
     _ = parser.add_argument("--dimension", required=True)
+    _ = parser.add_argument(
+        "--selection", choices=("overworld", "nether", "end-central", "end-outer"), required=True
+    )
     _ = parser.add_argument("--world-manifest", type=Path, required=True)
     _ = parser.add_argument("--expected-chunks-sha256")
     arguments = _Arguments.model_validate(vars(parser.parse_args()), strict=True)
