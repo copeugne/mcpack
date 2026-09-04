@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 
 import pytest
 
-from mcpack_evidence.item8_pool_trace import trace_pool
+from mcpack_evidence.item8_pool_trace import alias_targets, trace_pool
 
 if TYPE_CHECKING:
     from pydantic import JsonValue
@@ -63,3 +63,58 @@ def test_competing_resources_and_unknown_codecs_cannot_silently_pass() -> None:
     ]
     with pytest.raises(ValueError, match="duplicate"):
         _ = trace_pool("example:start", [pool, pool], [])
+
+
+def test_aliases_preserve_possible_group_targets_without_counting_aliases_as_pools() -> None:
+    bindings: list[JsonValue] = [
+        {
+            "type": "minecraft:random_group",
+            "groups": [
+                {
+                    "weight": 1,
+                    "data": [
+                        {"type": "minecraft:direct", "alias": "example:a", "target": "example:b"}
+                    ],
+                },
+                {
+                    "weight": 2,
+                    "data": [
+                        {"type": "minecraft:direct", "alias": "example:a", "target": "example:c"}
+                    ],
+                },
+            ],
+        },
+        {
+            "type": "minecraft:random",
+            "alias": "example:d",
+            "targets": [
+                {"data": "example:c", "weight": 1},
+                {"data": "example:disabled", "weight": 0},
+            ],
+        },
+    ]
+    assert alias_targets(bindings) == {
+        "example:a": {"example:b", "example:c"},
+        "example:d": {"example:c"},
+    }
+    result = trace_pool(
+        "example:a",
+        [
+            link("example:a", [{"kind": "template", "id": "example:shadowed"}]),
+            link("example:b", [{"kind": "pool", "id": "example:d"}]),
+            link("example:c", [{"kind": "pool", "id": "example:a"}]),
+        ],
+        [],
+        bindings,
+    )
+    assert result["pools"] == ["example:b", "example:c"]
+    assert result["resolved_aliases"] == {
+        "example:a": ["example:b", "example:c"],
+        "example:d": ["example:c"],
+    }
+    assert result["missing"] == []
+
+
+def test_unknown_alias_shape_fails_instead_of_omitting_targets() -> None:
+    with pytest.raises(ValueError, match="unsupported pool alias"):
+        _ = alias_targets([{"type": "custom:alias", "alias": "example:a"}])
