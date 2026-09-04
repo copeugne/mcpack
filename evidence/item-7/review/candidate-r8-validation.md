@@ -87,7 +87,9 @@ The older mutable `/tmp/mcpack-item7-raw-20260904` tree is not an accepted compl
 
 ## Clean export validation
 
-Reconciled candidate `f68cd0be8d2d9d4223bd2b9b003e32534a1bac75` was exported with `git archive` into `/home/lonestar/Desktop/Projects/mcpack-item7-clean-f68cd0b`. Pytest used `/home/lonestar/Desktop/Projects/mcpack-item7-clean-f68cd0b-tmp` so temporary writes did not depend on the exhausted `/tmp` quota.
+The first clean export at `f68cd0be8d2d9d4223bd2b9b003e32534a1bac75` passed every check below but preceded the verification-time correction. It is superseded as final clean-export evidence.
+
+Final evidence candidate `7184cc7ea2a56cf18304a1e180c649af5fefbb99` was exported with `git archive` into `/home/lonestar/Desktop/Projects/mcpack-item7-clean-7184cc7`. Pytest used `/home/lonestar/Desktop/Projects/mcpack-item7-clean-7184cc7-tmp` so temporary writes did not depend on the exhausted `/tmp` quota.
 
 - Item 7 tests: 186 passed.
 - Repository tests: 867 passed.
@@ -95,6 +97,6 @@ Reconciled candidate `f68cd0be8d2d9d4223bd2b9b003e32534a1bac75` was exported wit
 - Scoped basedpyright: 0 errors, 0 warnings, 0 notes.
 - Item 7 shell syntax: passed.
 - The tracked world inventory builder rehashed all 716 r8 restored world files and reproduced the committed inventory byte for byte.
-- The tracked completion builder used the r8 restored core and reproduced the then-current 125-artifact `PASS` receipt byte for byte.
+- The tracked completion builder used the r8 restored core and reproduced the final committed 125-artifact `PASS` receipt byte for byte.
 
-After this run, a pre-review audit corrected `verified_at` from the failed `/tmp` download attempt to the observed first successful download time. The completion receipt was rebuilt to SHA-256 `c369178431abba0c17404b9723a47fa66e945c305b5477c63bd5a9a6ec281582`. A fresh clean export must bind that final evidence revision before exact-SHA review.
+The validation-record commit changes only this evidence record and synchronized handoff text. Fresh exact-SHA review lanes and a runtime audit must bind the resulting commit before push.
