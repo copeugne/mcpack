@@ -1,0 +1,151 @@
+"""Assemble the working family inventory with uv run -m tools.build_item8_inventory."""
+
+from __future__ import annotations
+
+import argparse
+import gzip
+import hashlib
+import json
+from pathlib import Path
+from typing import TYPE_CHECKING, cast
+
+from mcpack_evidence.item8_registry import read_registry
+
+if TYPE_CHECKING:
+    from pydantic import JsonValue
+
+ROOT = Path(__file__).resolve().parents[1]
+SOURCES = "evidence/item-8/sources/structure-inputs.json"
+TRACES = "evidence/item-8/sources/pool-traces-content.json.gz"
+BOUNDS = "evidence/item-8/sources/world-bounds.json.gz"
+DECISIONS = "evidence/item-8/family-decisions.json"
+REGISTRY = "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+INPUTS = {
+    SOURCES: "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+    TRACES: "facb6f7bbafb6836e7eaa694535b975c2ee2deab1e36ab85930f1c11c7a471c8",
+    BOUNDS: "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+    DECISIONS: "81eb4eb182f57daba4db9763f27fa517c4f4d0c6300dd3540ef610e3531e4b48",
+    REGISTRY: "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+}
+
+
+def assemble(
+    registry: tuple[str, ...],
+    decisions: list[dict[str, JsonValue]],
+    sources: dict[str, JsonValue],
+    traces: dict[str, JsonValue],
+    bounds: dict[str, JsonValue],
+) -> dict[str, JsonValue]:
+    """Join resolved groups without treating unassigned IDs or unknown attributes as complete."""
+    families: dict[str, JsonValue] = {}
+    assigned: set[str] = set()
+    constraints = cast("dict[str, JsonValue]", sources["structure_biomes"])
+    pool_traces = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
+    custom = cast("dict[str, JsonValue]", traces["untraced_structures"])
+    observations = cast("list[dict[str, JsonValue]]", bounds["observations"])
+    for decision in decisions:
+        family = str(decision["family_id"])
+        members = cast("list[str]", decision["structure_ids"])
+        if family in families or not members or len(members) != len(set(members)):
+            message = f"duplicate family or invalid member list: {family}"
+            raise ValueError(message)
+        if set(members) - set(registry) or assigned.intersection(members):
+            message = f"unregistered or multiply assigned structure: {family}"
+            raise ValueError(message)
+        assigned.update(members)
+        templates = sorted(
+            {
+                template
+                for member in members
+                if member in pool_traces
+                for template in cast("list[str]", pool_traces[member]["templates"])
+            }
+        )
+        world_rows = [
+            index for index, row in enumerate(observations) if row["structure_id"] in members
+        ]
+        dimensions = sorted({str(observations[index]["dimension"]) for index in world_rows})
+        content: dict[str, JsonValue] = {
+            "artifact": TRACES,
+            "template_ids": cast("JsonValue", templates),
+            "custom_generation": {member: custom[member] for member in members if member in custom},
+            "status": "packaged possibilities; effective generation and injections unresolved",
+        }
+        family_row: dict[str, JsonValue] = {
+            "name": decision["name"],
+            "structure_ids": cast("JsonValue", members),
+            "grouping_decision": decision,
+            "status": "INCOMPLETE",
+            "dimension": {"observed": cast("JsonValue", dimensions), "eligibility": "UNKNOWN"},
+            "biome_constraints": {member: constraints[member] for member in members},
+            "approximate_footprint": "UNKNOWN: saved piece envelopes are not occupied footprint",
+            "approximate_vertical_size": "UNKNOWN: piece envelopes can exceed occupied height",
+            "intended_hostility": "UNKNOWN",
+            "mob_source": {
+                **content,
+                "fields": [
+                    "authored_entities",
+                    "spawner_blocks",
+                    "generation_markers",
+                    "unresolved_entities",
+                ],
+            },
+            "loot_table_source": {**content, "fields": ["loot_references"]},
+            "generated_spawners": {**content, "fields": ["spawner_blocks", "generation_markers"]},
+            "authored_or_natural_enemies": (
+                "UNKNOWN: requires generation and natural-spawn disposition"
+            ),
+            "visual_discoverability": "UNKNOWN",
+            "underground_surface_classification": "UNKNOWN",
+            "world_observations": {
+                "artifact": BOUNDS,
+                "observation_indexes": cast("JsonValue", world_rows),
+            },
+            "pool_trace_ids": [member for member in members if member in pool_traces],
+        }
+        families[family] = family_row
+    return {
+        "status": "INCOMPLETE",
+        "scope": (
+            "Working family inventory. Group relationships, provider coverage and attributes "
+            "remain unresolved. Not a canonical total or exit-gate pass."
+        ),
+        "families": families,
+        "unassigned_registry_ids": cast("JsonValue", sorted(set(registry) - assigned)),
+        "non_registry_content": (
+            "UNKNOWN: feature structures and injected village buildings need explicit relationships"
+        ),
+    }
+
+
+def main() -> None:
+    """Bind the delivered source files and write the reviewable working inventory."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    _ = parser.add_argument("--output", type=Path, required=True)
+    output = cast("Path", parser.parse_args().output)
+    documents: dict[str, dict[str, JsonValue]] = {}
+    for relative, digest in INPUTS.items():
+        raw = (ROOT / relative).read_bytes()
+        if hashlib.sha256(raw).hexdigest() != digest:
+            message = f"inventory source identity mismatch: {relative}"
+            raise ValueError(message)
+        if relative != REGISTRY:
+            documents[relative] = cast(
+                "dict[str, JsonValue]",
+                json.loads(gzip.decompress(raw) if relative.endswith(".gz") else raw),
+            )
+    result = assemble(
+        read_registry(ROOT / REGISTRY),
+        cast("list[dict[str, JsonValue]]", documents[DECISIONS]["groups"]),
+        documents[SOURCES],
+        documents[TRACES],
+        documents[BOUNDS],
+    )
+    result["inputs"] = dict(INPUTS)
+    with output.open("x", encoding="utf-8") as stream:
+        _ = stream.write(json.dumps(result, indent=2, sort_keys=True) + "\n")
+    print("Working inventory written; completion remains unproven")
+
+
+if __name__ == "__main__":
+    main()

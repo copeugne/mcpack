@@ -6,6 +6,9 @@ import json
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
+import pytest
+from tools.build_item8_inventory import assemble
+
 from mcpack_evidence.item8_inventory import resource_identity, size_variant_groups
 from mcpack_evidence.item8_registry import read_registry
 
@@ -97,3 +100,25 @@ def test_ctov_size_decisions_exactly_cover_source_proven_variant_groups() -> Non
         } == {str(row["family_id"]).split(":", 1)[1]}
         for path, digest in cast("dict[str, str]", row["evidence"]).items():
             assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+
+
+def test_working_inventory_keeps_unassigned_ids_and_rejects_double_counting() -> None:
+    decision: dict[str, JsonValue] = {
+        "family_id": "example:family",
+        "name": "Example",
+        "structure_ids": ["example:a"],
+    }
+    sources: dict[str, JsonValue] = {"structure_biomes": {"example:a": {"biomes": []}}}
+    traces: dict[str, JsonValue] = {
+        "structures": {},
+        "untraced_structures": {"example:a": {"reason": "custom"}},
+    }
+    bounds: dict[str, JsonValue] = {"observations": []}
+    result = assemble(("example:a", "example:b"), [decision], sources, traces, bounds)
+    assert result["status"] == "INCOMPLETE"
+    assert result["unassigned_registry_ids"] == ["example:b"]
+    conflicting = dict(decision, family_id="example:second")
+    with pytest.raises(ValueError, match="multiply assigned"):
+        _ = assemble(("example:a",), [decision, conflicting], sources, traces, bounds)
+    with pytest.raises(ValueError, match="unregistered"):
+        _ = assemble(("example:b",), [decision], sources, traces, bounds)
