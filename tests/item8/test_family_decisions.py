@@ -299,11 +299,25 @@ def test_inventory_preserves_loot_kinds_and_rejects_missing_template_content() -
                 {"id": "example:rider", "path": "/entities/1/nbt/Passengers/0"},
             ],
             "unresolved_entities": [{"path": "/entities/2/nbt", "reason": "missing ID"}],
+            "spawner_blocks": [
+                {
+                    "path": "/block_entities/0",
+                    "nbt": {
+                        "id": "minecraft:mob_spawner",
+                        "SpawnData": {"entity": {"id": "minecraft:zombie"}},
+                        "SpawnPotentials": [],
+                    },
+                },
+                {"path": "/block_entities/1", "nbt": {"id": "example:custom_spawner"}},
+            ],
+            "generation_markers": [{"path": "/block_entities/2"}],
         },
         "example:empty": {
             "loot_references": [],
             "authored_entities": [],
             "unresolved_entities": [],
+            "spawner_blocks": [],
+            "generation_markers": [],
         },
     }
     traces: dict[str, JsonValue] = {
@@ -316,6 +330,27 @@ def test_inventory_preserves_loot_kinds_and_rejects_missing_template_content() -
     families = cast("dict[str, dict[str, JsonValue]]", result["families"])
     loot = cast("dict[str, JsonValue]", families["example:family"]["loot_table_source"])
     mobs = cast("dict[str, JsonValue]", families["example:family"]["mob_source"])
+    spawners = cast("dict[str, JsonValue]", families["example:family"]["generated_spawners"])
+    assert spawners["packaged_entity_sources"] == [
+        {
+            "spawner_id": "minecraft:mob_spawner",
+            "mode": "ordinary",
+            "entity_id": "minecraft:zombie",
+            "templates": ["example:room"],
+        }
+    ]
+    assert spawners["unresolved_sources"] == {
+        "example:room": [
+            {
+                "block_path": "/block_entities/1",
+                "mode": "custom",
+                "path": "",
+                "unresolved": "custom spawner semantics",
+                "source_value": "example:custom_spawner",
+            }
+        ]
+    }
+    assert spawners["generation_marker_templates"] == ["example:room"]
     assert mobs["packaged_authored_entity_templates"] == {
         "example:animal": ["example:room"],
         "example:rider": ["example:room"],

@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
 from mcpack_evidence.item8_registry import read_registry
+from mcpack_evidence.item8_templates import spawner_entity_sources
 
 if TYPE_CHECKING:
     from pydantic import JsonValue
@@ -27,6 +28,44 @@ INPUTS = {
     DECISIONS: "8e358b5979b93b7b8b0cfe64b75d09a669ed0b1d2a05c69c1ded9bf8ef84ac62",
     REGISTRY: "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
 }
+
+
+def _spawner_sources(
+    templates: list[str], template_contents: dict[str, dict[str, JsonValue]]
+) -> dict[str, JsonValue]:
+    spawner_sources: dict[tuple[str, str, str], set[str]] = {}
+    unresolved_spawners: dict[str, list[JsonValue]] = {}
+    for template in templates:
+        for block in cast(
+            "list[dict[str, JsonValue]]", template_contents[template]["spawner_blocks"]
+        ):
+            nbt = cast("dict[str, JsonValue]", block["nbt"])
+            for source in spawner_entity_sources(nbt):
+                if "entity_id" in source:
+                    source_key = (str(nbt["id"]), str(source["mode"]), str(source["entity_id"]))
+                    spawner_sources.setdefault(source_key, set()).add(template)
+                else:
+                    unresolved_spawners.setdefault(template, []).append(
+                        {"block_path": block["path"], **source}
+                    )
+    return {
+        "packaged_entity_sources": cast(
+            "JsonValue",
+            [
+                {
+                    "spawner_id": kind,
+                    "mode": mode,
+                    "entity_id": entity,
+                    "templates": sorted(owners),
+                }
+                for (kind, mode, entity), owners in sorted(spawner_sources.items())
+            ],
+        ),
+        "unresolved_sources": cast("JsonValue", unresolved_spawners),
+        "generation_marker_templates": [
+            template for template in templates if template_contents[template]["generation_markers"]
+        ],
+    }
 
 
 def assemble(
@@ -136,7 +175,16 @@ def assemble(
                     for (field, value), owners in sorted(loot_sources.items())
                 ],
             },
-            "generated_spawners": {**content, "fields": ["spawner_blocks", "generation_markers"]},
+            "generated_spawners": {
+                **content,
+                "fields": ["spawner_blocks", "generation_markers"],
+                **_spawner_sources(templates, template_contents),
+                "source_scope": (
+                    "Explicit base entity IDs from initial data and positive-weight potentials. "
+                    "Not generated counts, passenger attribution or effective processor results. "
+                    "Generation markers require separate interpretation."
+                ),
+            },
             "authored_or_natural_enemies": (
                 "UNKNOWN: requires generation and natural-spawn disposition"
             ),
