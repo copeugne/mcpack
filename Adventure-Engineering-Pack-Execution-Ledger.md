@@ -439,9 +439,9 @@ This register is additive. More variables will be discovered during artifact ins
 |---:|---|---|---|
 | 1 | Design contract | `COMPLETE` | Binding design contract and Earned Sandbox Freedom Doctrine recorded. |
 | 2 | Freeze original technical baseline | `COMPLETE` | Reconstructed from exact inputs; manifest, configs, archive/overlay, four lifecycle scenarios, clean-room proof, durable retrieval, and pushed/tagged Git receipts pass. |
-| 3 | Compatibility audit | `BLOCKED` | Conclusions survive in the ledger, but source inventory and audit evidence must be reconstructed. |
-| 4 | Controlled test environment | `BLOCKED` | Seed identities survive; snapshots, restore evidence, and environment scripts must be rebuilt. |
-| 5 | Measurement methodology | `BLOCKED` | Method summary survives; protocol, schemas, tools, and validation fixtures must be reconstructed. |
+| 3 | Compatibility audit | `COMPLETE` | All 190 candidates have explicit dispositions; the 136-candidate retained dedicated-server set passes exact metadata/dependency checks and repeatable lifecycle validation. Evidence: `docs/items/Item-3-Exact-Version-and-Dependency-Audit.md`, `evidence/item-3/`. |
+| 4 | Controlled test environment | `COMPLETE` | Isolated four-seed environment, reproducible materialization, lifecycle validation, and hash-verified backup/restore with restored-world boot pass. Evidence: `docs/items/Item-4-Controlled-Test-Environment-Closure.md`, `evidence/item-4/`. |
+| 5 | Measurement methodology | `COMPLETE` | Strict 24-contract protocol, deterministic analyzer, pinned Temurin pilot, accepted/rejected handling, and cross-artifact hash validation pass. Evidence: `docs/items/Item-5-Measurement-Methodology-Closure.md`, `measurement/item5/`, `evidence/item-5/`. |
 | 6 | Existing configuration audit | `COMPLETE` | Retained 136-JAR stack, exact typed values, 228 frozen paths with 4/223/1/0 stages, exhaustive 54/174 accounting, lifecycle/materialization receipts, path and capture fail-closed gates, and `evidence/item-6/` report evidence pass. |
 | 7 | Terrain/worldgen interactions | `BLOCKED` | Results survive only as summaries; raw samples and repeat-verification evidence must be regenerated. |
 | 8 | Structure-family inventory | `BLOCKED` | Inventory summary survives; source matrix and registry verification must be reconstructed. |
