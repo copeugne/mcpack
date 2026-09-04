@@ -3,7 +3,11 @@
     "bettermineshafts:mineshaft": {
       "approximate_footprint": "UNKNOWN: saved piece envelopes are not occupied footprint",
       "approximate_vertical_size": "UNKNOWN: piece envelopes can exceed occupied height",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": "Cave-spider and zombie-villager spawner assignments are authored by custom generation code.",
+        "limitation": "This does not measure enemy counts or prove a particular live spawn.",
+        "natural": "No structure-level spawn override is declared; natural spawning remains conditional on the effective biome and world state."
+      },
       "biome_constraints": {
         "bettermineshafts:mineshaft_acacia": {
           "biomes": [
@@ -318,74 +322,85 @@
         ]
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {
-          "bettermineshafts:mineshaft_acacia": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
+        "authored_types": [
+          {
+            "entity": "minecraft:cave_spider",
+            "piece_class": "SideRoomDungeon"
           },
-          "bettermineshafts:mineshaft_desert": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_dripstone": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_ice": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_jungle": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_lush": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_mesa": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_mushroom": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_oak": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_overgrown": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_red_desert": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_spruce": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_spruce_snowy": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
+          {
+            "entity": "minecraft:zombie_villager",
+            "piece_class": "ZombieVillagerRoom"
           }
-        },
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
         ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": []
+        "basis": "The piece code places Blocks.SPAWNER, checks SpawnerBlockEntity, then calls setEntityId.",
+        "block": "minecraft:spawner",
+        "limitation": "Source-supported capability; room selection, successful placement and active spawning are not established for every generated sample.",
+        "observed_per_structure_counts": "UNKNOWN"
       },
       "grouping_decision": {
+        "attributes": {
+          "authored_or_natural_enemies": {
+            "authored": "Cave-spider and zombie-villager spawner assignments are authored by custom generation code.",
+            "limitation": "This does not measure enemy counts or prove a particular live spawn.",
+            "natural": "No structure-level spawn override is declared; natural spawning remains conditional on the effective biome and world state."
+          },
+          "generated_spawners": {
+            "authored_types": [
+              {
+                "entity": "minecraft:cave_spider",
+                "piece_class": "SideRoomDungeon"
+              },
+              {
+                "entity": "minecraft:zombie_villager",
+                "piece_class": "ZombieVillagerRoom"
+              }
+            ],
+            "basis": "The piece code places Blocks.SPAWNER, checks SpawnerBlockEntity, then calls setEntityId.",
+            "block": "minecraft:spawner",
+            "limitation": "Source-supported capability; room selection, successful placement and active spawning are not established for every generated sample.",
+            "observed_per_structure_counts": "UNKNOWN"
+          },
+          "intended_hostility": {
+            "basis": "Derived from explicit hostile-entity spawner assignment in SideRoomDungeon and ZombieVillagerRoom, not from structure naming or measured encounter frequency.",
+            "source_classes": [
+              "SideRoomDungeon",
+              "ZombieVillagerRoom"
+            ],
+            "value": "Hostile rooms within an abandoned mining network"
+          },
+          "loot_table_source": {
+            "base_table_constant": "BuiltInLootTables.ABANDONED_MINESHAFT",
+            "basis": "Direct references in the preserved generation disassemblies. SmallTunnel and BigTunnel include chest-minecart paths.",
+            "container_paths": [
+              "SideRoomDungeon",
+              "ZombieVillagerRoom",
+              "SideRoom",
+              "SmallTunnel",
+              "BigTunnel"
+            ],
+            "effective_injections": "UNKNOWN: retained loot-integration and container transformation effects still require attribution."
+          },
+          "mob_source": {
+            "authored_source": "Custom piece-generation code assigns ordinary block spawners to EntityType.CAVE_SPIDER and EntityType.ZOMBIE_VILLAGER.",
+            "natural_source": "The structure definitions have empty spawn_overrides. Ambient hostile populations depend on effective biome spawning and world conditions; their exact composition is UNKNOWN here.",
+            "scope": "Possible generation paths, not a claim that every mineshaft includes both rooms.",
+            "source_classes": [
+              "SideRoomDungeon",
+              "ZombieVillagerRoom"
+            ]
+          },
+          "underground_surface_classification": {
+            "basis": "Packaged step is underground_structures. BetterMineshaftStructure selects initial Y from the frozen -55 through 30 range and begins generation with VerticalEntrance.",
+            "limitation": "Initial Y is not total vertical size. The entrance envelope uses maximum build height and does not prove occupied blocks or a visible surface opening.",
+            "value": "Underground mining network with a VerticalEntrance generation component"
+          }
+        },
         "distinctions": {
           "minecraft:mineshaft": "Separate vanilla generator, registered but suppressed by the frozen Better Mineshafts hook",
           "minecraft:mineshaft_mesa": "Variant of the separate vanilla generator, registered but suppressed by the frozen Better Mineshafts hook"
         },
         "evidence": {
+          "evidence/item-6/frozen/config/bettermineshafts-neoforge-1_21.toml": "ee344cb26d156e67baa987f193fb44947fa6b3869b80aa16ef2b257370dc1ff1",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
           "evidence/item-8/sources/mineshafts-code/identities.json": "5e78a733f4198752de93fb640557a87fae13334a92a3fbad422cd33bb5d41127",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd"
@@ -409,133 +424,34 @@
           "bettermineshafts:mineshaft_spruce_snowy"
         ]
       },
-      "intended_hostility": "UNKNOWN",
-      "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {
-          "bettermineshafts:mineshaft_acacia": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_desert": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_dripstone": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_ice": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_jungle": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_lush": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_mesa": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_mushroom": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_oak": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_overgrown": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_red_desert": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_spruce": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_spruce_snowy": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          }
-        },
-        "fields": [
-          "loot_references"
+      "intended_hostility": {
+        "basis": "Derived from explicit hostile-entity spawner assignment in SideRoomDungeon and ZombieVillagerRoom, not from structure naming or measured encounter frequency.",
+        "source_classes": [
+          "SideRoomDungeon",
+          "ZombieVillagerRoom"
         ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": []
+        "value": "Hostile rooms within an abandoned mining network"
+      },
+      "loot_table_source": {
+        "base_table_constant": "BuiltInLootTables.ABANDONED_MINESHAFT",
+        "basis": "Direct references in the preserved generation disassemblies. SmallTunnel and BigTunnel include chest-minecart paths.",
+        "container_paths": [
+          "SideRoomDungeon",
+          "ZombieVillagerRoom",
+          "SideRoom",
+          "SmallTunnel",
+          "BigTunnel"
+        ],
+        "effective_injections": "UNKNOWN: retained loot-integration and container transformation effects still require attribution."
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {
-          "bettermineshafts:mineshaft_acacia": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_desert": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_dripstone": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_ice": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_jungle": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_lush": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_mesa": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_mushroom": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_oak": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_overgrown": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_red_desert": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_spruce": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          },
-          "bettermineshafts:mineshaft_spruce_snowy": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "bettermineshafts:mineshaft"
-          }
-        },
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": []
+        "authored_source": "Custom piece-generation code assigns ordinary block spawners to EntityType.CAVE_SPIDER and EntityType.ZOMBIE_VILLAGER.",
+        "natural_source": "The structure definitions have empty spawn_overrides. Ambient hostile populations depend on effective biome spawning and world conditions; their exact composition is UNKNOWN here.",
+        "scope": "Possible generation paths, not a claim that every mineshaft includes both rooms.",
+        "source_classes": [
+          "SideRoomDungeon",
+          "ZombieVillagerRoom"
+        ]
       },
       "name": "YUNG's Better Mineshafts",
       "pool_trace_ids": [],
@@ -555,7 +471,11 @@
         "bettermineshafts:mineshaft_spruce",
         "bettermineshafts:mineshaft_spruce_snowy"
       ],
-      "underground_surface_classification": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "Packaged step is underground_structures. BetterMineshaftStructure selects initial Y from the frozen -55 through 30 range and begins generation with VerticalEntrance.",
+        "limitation": "Initial Y is not total vertical size. The entrance envelope uses maximum build height and does not prove occupied blocks or a visible surface opening.",
+        "value": "Underground mining network with a VerticalEntrance generation component"
+      },
       "visual_discoverability": "UNKNOWN",
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
@@ -7419,7 +7339,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "81eb4eb182f57daba4db9763f27fa517c4f4d0c6300dd3540ef610e3531e4b48",
+    "evidence/item-8/family-decisions.json": "3c1ed082c9dc35231e6a7cad20faddc367a59a7d3551776d65c297f72c2a11fa",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "facb6f7bbafb6836e7eaa694535b975c2ee2deab1e36ab85930f1c11c7a471c8",
     "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
