@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-05
 
+Vanilla mineshaft suppression follow-up: source `9669fb1` extends the existing
+inspector with annotated mixin disassembly and exact loader/mixin declarations.
+The updated `sources/mineshafts-code` evidence demonstrates that the frozen
+disable setting causes the head injection into `ChunkGenerator.tryGenerateStructure`
+to return false for vanilla `StructureType.MINESHAFT`. Treat the vanilla normal
+and mesa IDs as registered but suppressed in normal generation on this
+source-and-configuration basis, not as independently observed callback runs.
+The separate locate warning only checks the direct normal-mineshaft ID.
+Portable extraction reproduced byte for byte and scoped quality checks passed.
+The source README now supersedes the earlier uninspected-hook statement below.
+Continue with canonical grouping and outstanding attributes; Item 8 is not closed.
+
 Latest custom-generation evidence: `b4b38e0` delivers
 `evidence/item-8/sources/mineshafts-code`, generated with `c51973c` and reproduced
 byte for byte. The existing inspector now accepts `--archive` and selects Better
