@@ -33,7 +33,8 @@ The runtime's enabled pack list includes `supplementaries:generated_pack` in
 `evidence/item-8/runtime/registry-r1/world-context.json`.
 
 This resolves the source of the two missing packaged tags. Do not classify them
-as absent or their structures as disabled from the static catalog alone. Merge
-the verified conditional contributions into the biome input path, retaining
-their code/config provenance. That integration and downstream attribute work
-remain outstanding; this is not a direct runtime tag dump or Item 8 closure.
+as absent or their structures as disabled from the static catalog alone.
+Source `e22815d` integrates these conditional contributions into the existing
+`structure-inputs.json`, retaining code/config provenance and parent toggles.
+Downstream attribute work remains outstanding; this is not a direct runtime tag
+dump or Item 8 closure.
