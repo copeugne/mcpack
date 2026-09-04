@@ -8,12 +8,13 @@ This section supersedes the dated status and restart instructions below. Preserv
 
 ### Git and delivery state
 
-- A fresh fetch on 2026-09-04 found local `main`, `HEAD`, `origin/main`, the configured upstream, and the `HEAD` to `origin/main` merge base all at `eb84d842a7b108863dcdd4c86435a875f8a0c575` before this handoff update.
+- A fresh fetch on 2026-09-04 found `origin/main` at `eb84d842a7b108863dcdd4c86435a875f8a0c575` with no newer remote commits. The active branch is `experiment/item-7-worldgen-audit`, based on that ref. Its accepted implementation and machine evidence reach `2a8ac9b84c2e7bcf8b4e8bfd4323f93bb1959acc` before this closure-document increment.
 - PR #11 merged Item 5 delivery as `398bf59b3a89669ec402026d52250c2b86e54047`.
 - PR #12 merged the initial Item 6 generated-default capture as `895ed1d999cd22ca511035e666ad8ac308ae63c1`.
 - PR #14 merged the completed Item 6 audit as `f38ea66ecc28911c33d525dcde26434853673ad3`. Its final Codex review completed against `96a914c8a457d2f23698cdaeba18c6ed899b56d1` and reported no major issues. The GitHub API currently exposes no thumbs-up reaction on that cycle, so do not claim that reaction; preserve this as a review-record discrepancy unless later evidence resolves it.
 - `eb84d842a7b108863dcdd4c86435a875f8a0c575` only renamed `CLAUDE.md` to `AGENTS.md` after the Item 6 merge.
-- At the start of this update there were no tracked staged or unstaged changes. Preserve the existing untracked `.codegraph`, `.omo/`, and `mcpack-reconstructed-28(1).bundle` paths.
+- Item 7 raw evidence is durably published at `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04`. The annotated tag resolves to source revision `5f358600a2e0581fdd99fbd2608ce742e74b08c1`, and all four assets passed a fresh remote download and hash verification.
+- Preserve the existing untracked `.codegraph`, `.omo/`, and `mcpack-reconstructed-28(1).bundle` paths. Committed evidence belongs under `evidence/`; acceptance-relevant source, tools, tests, and exact commands must remain tracked for reproduction.
 
 ### Current gate status
 
@@ -25,24 +26,25 @@ This section supersedes the dated status and restart instructions below. Preserv
 | 4 | `COMPLETE` | The isolated four-seed environment and backup/restore gate pass. |
 | 5 | `COMPLETE` | The versioned measurement protocol, strict evidence tooling, and pinned-Temurin pilot gate pass. Spark overhead remains `UNKNOWN`, and the pilot is not a performance baseline. |
 | 6 | `COMPLETE` | The untouched retained-stack configuration is frozen and audited. The manifest contains 228 paths, with 88 audited and 140 explicitly out of scope. No tuning was performed. |
-| 7 | `BLOCKED`, next authorized work | The old report survives, but its protocol, tool, raw samples, repeat verification, and failure evidence do not. Reconstruct and rerun Item 7 under the exact Item 6 identity. |
-| 8 | `BLOCKED` by Item 7 | Rebuild the runtime-backed canonical structure inventory only after Item 7 passes. |
+| 7 | `PASS`, delivery pending | Two fresh four-seed runs inspected 54,816 exact selected chunks. The 192 anomaly rows, all 37 provider-component dispositions, 1,222 warning signatures, 128 reviewed captures, four restore-tested published archives, and 123-artifact completion receipt pass. Exact-SHA review, GitHub Codex review, merge, and delivered-ref verification remain. |
+| 8 | `BLOCKED` by Item 7 delivery | Begin the runtime-backed canonical structure inventory only after the Item 7 pull request is cleanly reviewed, merged into `main`, and verified. |
 | 9 | `BLOCKED` by Item 8 | Reclassify every verified family exactly once only after Item 8 passes. |
 | 10 | `BLOCKED` by Items 7 through 9 | Regenerate and preserve predeclared density evidence only after the preceding gates pass. |
 | 11 | `BLOCKED` | Do not implement, run, repair, or lint Item 11 before the final Items 2 through 10 audit passes. It also requires at least two blind human operators. |
 
-The current Item 6 validation command passes from `eb84d842`: `uv run python tools/freeze_item6_config.py validate --root evidence/item-6/frozen --manifest evidence/item-6/generated-config-manifest.json --audit evidence/item-6/config-audit.json`. The focused Item 6 suite also passes with 554 tests.
+The Item 7 completion command returns `PASS` and records 123 exact artifacts in `evidence/item-7/completion.json`. The focused Item 7 suite passes with 144 tests. The raw-release verifier redownloaded all four assets and matched every committed size and SHA-256.
 
-### Exact Item 7 restart point
+### Exact continuation point
 
-1. Start from the frozen Item 6 identity: Minecraft `1.21.1`, NeoForge `21.1.249`, Eclipse Temurin `21.0.12.1+1-LTS`, retained manifest count `136`, retained manifest SHA-256 `78e5bdc0697299782a535400ad5b313c088e8db10cfe075085ae4c8a531e30cb`, configuration version `test-environment-v0.1`, and the four seeds `42`, `6671238423019257953`, `95920844204830198`, and `-3503646078644842058`.
-2. Treat `docs/items/Item-7-Baseline-Worldgen-Audit.md` as reconstructed historical guidance only. It describes the old zero-mod control. Its referenced `test-environment/terrain-sampling-v0.1.json`, `tools/sample_vanilla_terrain.py`, `evidence/worldgen/item7-terrain-control-r7.json`, `item7-terrain-control-r8.json`, repeat-verification file, and harness-failure directory are absent.
-3. Define the smallest decision-complete Item 7 protocol and evidence schema before running worlds. Use fresh, hash-verified materialization for every controlled run. Do not reuse Item 4 worlds, and do not treat Item 4 or Item 5 boot logs as Item 7 evidence.
-4. Inspect actual clean worlds for all four seeds under the exact frozen Item 6 identity. Cover the terrain, biome, dimension, and structure providers required by `SPECS.md` and the current ledger. Record fragmented or tiny biomes, unnatural transitions, buried or floating structures, cliff and underwater placement, structure and village overlaps, failed placement, impossible biome restrictions, and excessive terrain modification.
-5. Preserve for every observation the seed, dimension, coordinates, exact procedure, input identities, world manifest or hash, relevant log and screenshot, observation, anomaly class, confidence, and limitation. Keep cosmetic, gameplay, performance, and outright generation-failure findings separate.
-6. Preserve failed attempts. Require repeatability, machine-readable and narrative parity, a passing Item 7 exit gate, atomic delivery, a clean Codex review cycle, merge into `main`, and verified delivered refs before Item 8 begins.
+1. Treat `evidence/item-7/completion.json` and `docs/items/Item-7-Baseline-Worldgen-Audit.md` as the current acceptance summary. The former zero-mod report is superseded historical context.
+2. Preserve the measured semantic nondeterminism. Run A and Run B differ outside the central End; input drift and comparator artifacts were refuted, but the causal provider remains `UNKNOWN`. Do not tune the frozen Item 6 configuration inside Item 7.
+3. Preserve the confirmed Better Caves generation failure, the unresolved YUNG's Bridges and YUNG's Extras identifiers, and the 1,166 unresolved warning signatures as downstream work. Do not infer compatibility from server readiness.
+4. Run the required exact-SHA independent reviews and runtime debugging audit. Store all committed review evidence under `evidence/item-7/review/` and record the reviewed full SHA with every verdict.
+5. Push `experiment/item-7-worldgen-audit`, open a pull request against `main`, request `@codex review`, address every valid finding in separate review-fix commits, and repeat until a completed thumbs-up cycle has no unresolved valid findings.
+6. Merge without rewriting the atomic history, fetch, and verify that `origin/main` contains the accepted Item 7 commits. Only then create the Item 8 branch from the verified merged ref.
+7. Item 8 must combine verified runtime registries, packaged data, configuration evidence, logs, and generated-world observations. It must resolve canonical families without double-counting aliases, pieces, pools, or templates, and it must carry Item 7 run identity and unknowns forward.
 
-Recovery Gate R-1 remains open for Items 7 through 10 and their final cross-item audit. Item 7 is now the first actionable recovery item.
+Recovery Gate R-1 remains open for Items 8 through 10 and their final cross-item audit after Item 7 delivery completes.
 
 ## 1. Authority, scope, and restart rule
 
