@@ -51,6 +51,23 @@ It preserves competing and unregistered definitions and identifies same-provider
 definitions differing only in expansion size. These size relationships do not
 establish the final canonical family count or prove effective placement.
 
+Source `0ab3718` adds `biome_tags` to this same index. Each tag retains all source
+references and its merged values where additive root contributions or known
+vanilla-to-single-mod replacement resolve precedence. Conditional/removal fields,
+non-root packs and replacements requiring unknown mod order produce null values
+with explicit unresolved reasons. The frozen enabled-pack order recorded in
+`runtime/registry-r1/world-context.json` puts vanilla before `mod_data`.
+The expanded index SHA-256 is
+`bbfa9bacc93f2ae04eaa74dfb6f032c9f3efcc92c19da7e86e7cff256a87e777`.
+The committed-source run reproduced its pilot byte for byte. The generated
+addition is isolated because it indexes the existing catalog's tag contributions;
+it does not introduce another source extraction or runtime experiment.
+
+These tag inputs are not yet final runtime biome membership. Apply
+`resolve_biome_tag` with the captured biome registry only after accounting for
+every reachable unresolved contribution. In particular, an unresolved optional
+tag is not established to be absent and must not be silently skipped.
+
 Remaining work: distinguish actual resource kinds, resolve runtime availability
 and competing definitions, resolve template relationships, bind accepted Item 7 world
 observations, and establish source-supported canonical family relationships and
