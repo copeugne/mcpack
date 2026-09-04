@@ -23,6 +23,7 @@ ARCHIVES = frozenset(
         "worldweaver-21.0.24.jar",
         "lithostitched-1.7.10+beta4-neoforge-21.1.jar",
         "YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar",
+        "supplementaries-neoforge-1.21.1-3.6.8.jar",
     }
 )
 GENERATION_PREFIXES = (
@@ -30,6 +31,10 @@ GENERATION_PREFIXES = (
     "com/yungnickyoung/minecraft/bettermineshafts/config/",
     "com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule",
     "com/yungnickyoung/minecraft/bettermineshafts/module/StructureTypeModule",
+    "net/mehvahdjukaar/supplementaries/dynamicpack/ModServerDynamicResources",
+    "net/mehvahdjukaar/supplementaries/reg/ModTags",
+    "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Building",
+    "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES = (
     "YungJigsawSinglePoolElement.class",
