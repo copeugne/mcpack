@@ -6,6 +6,27 @@
 
 ### Continuation update - 2026-09-05
 
+Biome integration is now delivered through `c468308`. Source `e22815d` derives
+Supplementaries' two tags from frozen parent/leaf toggles and inspected code.
+Sources `71ee444` and `60c1ed1` resolve the seven competing vanilla biome tags
+using the original runtime debug log's final expanded sorting record, line
+17812, rather than JAR-name order. The existing structure input index retains
+the exact record, its raw hash, and the Item 3 metadata-bound archive mapping.
+It now resolves source-derived constraints for 884 of 887 registry IDs; the
+three IDAS lumber-camp missing tags remain explicit. Ten focused tests and
+scoped quality checks passed. Both dynamic-tag and pack-order outputs reproduced
+their pilots byte for byte. Current structure-input SHA-256:
+`fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef`.
+Rebuilding now also needs the preserved original registry `debug.log`, whose
+identity and command are recorded in the source README. Raw durability remains
+pending. This resolves biome source questions, not dimension eligibility,
+generation status, the remaining family attributes, or Item 8 completion.
+Continue the canonical provider/family inventory and required attributes using
+the existing catalogs, custom-generation inspection and Item 7 observations.
+No new runtime experiment, schema or evidence class was added for this fix.
+The active goal still requires the full local gate, durable evidence, clean
+final Codex review, nonsquash merge and verified `origin/main` delivery.
+
 Supplementaries' missing packaged tag source is now identified and preserved in
 `evidence/item-8/sources/supplementaries-tags-code`. Inspector source `5a5f752`
 records the dynamic generator, tag names and feature-supplier/config bindings.
