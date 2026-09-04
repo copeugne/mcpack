@@ -3,8 +3,8 @@
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
 The working deliverable is `inventory.json`, initially assembled by `f2eaf2b`
-and updated through `7100c21` using attribute support from `bf153ea`.
-SHA-256: `a13e96faa22c7e9042573d0ad3c489a493d5acbab827104161d0d537c9732040`.
+and updated through `93d526c` using attribute support from `bf153ea`.
+SHA-256: `2df2e12859eb6baacd304205a24e8f0506c4b1adbef63637e0398fd43296bf3f`.
 It is explicitly incomplete. It joins the currently recorded Better Mineshafts
 and CTOV size-group decisions to biome constraints, potential template content
 and saved-world observation references. It lists every unassigned registry ID
@@ -63,6 +63,16 @@ Missing-template source inspection is preserved separately in
 template with no attachment connectors. This is not a deliberate empty-pool
 element or an observed miss probability; mod transformations and effective
 placement remain to be resolved.
+
+Source `93d526c` adds Integrated Stronghold as one family rooted at its fountain
+pool. The connected room pools remain components. Its piece-bound natural
+monster-spawn override names silverfish and endermen, and its packaged start
+height has both absolute endpoints at Y=15. These settings do not establish
+encounter counts or final surface exposure. Two missing armory templates remain
+explicit, along with unresolved authored content and replacement relationships.
+Five focused tests and scoped Ruff and basedpyright checks passed. Output
+`evidence/raw/item8/inventory-integrated-stronghold-reproduction1.json` reproduced
+`evidence/raw/item8/inventory-integrated-stronghold-pilot1.json` byte for byte.
 
 The infrastructure requirements in
 `INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md` apply to this work. Reuse the
