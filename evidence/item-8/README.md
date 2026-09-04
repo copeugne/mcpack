@@ -2,6 +2,28 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
+The working deliverable is `inventory.json`, assembled by source `f2eaf2b`.
+SHA-256: `58a200ca9ad7809f807cb73b6e3e72aed4cd1e1a9107723c9fcaa1640c62652d`.
+It is explicitly incomplete. It joins the currently recorded Better Mineshafts
+and CTOV size-group decisions to biome constraints, potential template content
+and saved-world observation references. It lists every unassigned registry ID
+and keeps unresolved attributes marked `UNKNOWN`. CTOV's broader design
+relationships and non-registry content remain unresolved. These rows are not
+an accepted canonical total or a substitute for completing each attribute.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-reproduction1.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-reproduction1.json
+```
+
+The committed-source reproduction matched its pilot byte for byte. Three
+focused grouping/assembly tests and scoped quality checks passed. The generated
+inventory is isolated as the specification's required machine deliverable, not
+a new evidence framework. Source hashes bind all five existing inputs. Content
+references preserve packaged-versus-effective limitations, and saved piece
+envelopes are not promoted to physical dimensions. Continue resolving groups and
+attributes in this deliverable before replacing the obsolete narrative report.
+
 The infrastructure requirements in
 `INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md` apply to this work. Reuse the
 existing host-discovery and platform doctor, pinned acquisition/materialization,
