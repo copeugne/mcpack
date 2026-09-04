@@ -115,7 +115,10 @@ def build_completion(inputs: CompletionInputs) -> CompletionReport:
     raw_artifacts.extend(gaps)
     artifacts.append(
         validate_save_sequence_audit(
-            inputs.save_sequence_audit, inputs.raw_root, inputs.archive_manifests[0]
+            inputs.save_sequence_audit,
+            inputs.raw_root,
+            inputs.archive_manifests[0],
+            inputs.world_archive_inventory,
         )
     )
     visual = validate_visual_evidence(inputs.visual_manifest, inputs.visual_reviews)

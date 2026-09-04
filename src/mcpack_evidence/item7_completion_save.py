@@ -15,11 +15,11 @@ if TYPE_CHECKING:
 
 
 def validate_save_sequence_audit(
-    path: Path, raw_root: Path, core_manifest: Path
+    path: Path, raw_root: Path, core_manifest: Path, world_inventory: Path
 ) -> ArtifactIdentity:
-    """Require the committed audit to equal a rebuild from archived console logs."""
+    """Require the audit to equal a rebuild from archived source-bound evidence."""
     try:
-        rebuilt = build_save_sequence_audit(raw_root, core_manifest)
+        rebuilt = build_save_sequence_audit(raw_root, core_manifest, world_inventory)
     except Item7RuntimeError as error:
         fail("save sequence audit source binding", error.detail)
     if strict_json(path) != rebuilt:

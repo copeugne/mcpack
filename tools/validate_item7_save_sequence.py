@@ -13,22 +13,27 @@ from mcpack_evidence.item7_save_sequence import build_save_sequence_audit
 if TYPE_CHECKING:
     from collections.abc import Sequence
 
-_ARGUMENT_COUNT = 4
+_ARGUMENT_COUNT = 6
 _USAGE_EXIT = 2
 
 
 def main(arguments: Sequence[str]) -> int:
-    """Print JSON line-order records for every accepted lifecycle console log."""
+    """Print the source-bound audit for every accepted recovery lifecycle."""
     if (
         len(arguments) != _ARGUMENT_COUNT
         or arguments[0] != "--core"
         or arguments[2] != "--manifest"
+        or arguments[4] != "--world-inventory"
     ):
-        print("usage: validate_item7_save_sequence.py --core PATH --manifest JSON")
+        usage = (
+            "usage: validate_item7_save_sequence.py --core PATH "
+            "--manifest JSON --world-inventory JSON"
+        )
+        print(usage)
         return _USAGE_EXIT
     try:
         manifest = Path(arguments[3])
-        payload = build_save_sequence_audit(Path(arguments[1]), manifest)
+        payload = build_save_sequence_audit(Path(arguments[1]), manifest, Path(arguments[5]))
     except Item7RuntimeError as error:
         print(str(error))
         return 1
