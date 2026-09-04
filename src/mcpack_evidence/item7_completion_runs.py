@@ -7,7 +7,8 @@ from typing import ClassVar, Final, Literal
 
 from pydantic import BaseModel, ConfigDict
 
-from mcpack_evidence.item7_analysis_models import WorldAnalysis
+from mcpack_evidence.item7_analysis import analyze_jsonl
+from mcpack_evidence.item7_analysis_models import AnalysisIdentity, WorldAnalysis
 from mcpack_evidence.item7_completion_io import (
     fail,
     identity,
@@ -117,7 +118,6 @@ def validate_runs(raw_root: Path, protocol_sha256: str) -> tuple[tuple[ArtifactI
     """Validate all eight clean runs and all 16 Run A analysis reports."""
     artifacts: list[ArtifactIdentity] = []
     analysis_count = 0
-    anomaly_keys = _ANOMALY_KEYS
     for run_id in ("run-a", "run-b"):
         for role, seed in _ROLES:
             root = raw_root / run_id / role
@@ -156,6 +156,11 @@ def validate_runs(raw_root: Path, protocol_sha256: str) -> tuple[tuple[ArtifactI
                 if run_id == "run-a":
                     analysis_path = root / "analysis" / f"{label}.json"
                     analysis = strict_model(analysis_path, WorldAnalysis)
+                    rebuilt = analyze_jsonl(
+                        selected,
+                        AnalysisIdentity(run_id, role, label, dimension),
+                        selected_receipt.selected.sha256,
+                    )
                     keys = tuple(row.key for row in analysis.anomalies)
                     statuses = {row.status for row in analysis.anomalies}
                     if (
@@ -167,8 +172,9 @@ def validate_runs(raw_root: Path, protocol_sha256: str) -> tuple[tuple[ArtifactI
                             analysis.dimension,
                         )
                         != (run_id, role, label, dimension)
-                        or keys != anomaly_keys
+                        or keys != _ANOMALY_KEYS
                         or not statuses <= {"observed", "method-limited", "unresolved"}
+                        or analysis != rebuilt
                     ):
                         fail("analysis identity or anomaly accounting", analysis_path)
                     artifacts.append(
