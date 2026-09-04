@@ -1,0 +1,174 @@
+Compiled from "OreDeposit.java"
+public class com.yungnickyoung.minecraft.bettermineshafts.world.generator.pieces.OreDeposit extends com.yungnickyoung.minecraft.bettermineshafts.world.generator.pieces.BetterMineshaftPiece {
+  private com.yungnickyoung.minecraft.bettermineshafts.world.generator.pieces.OreDeposit$OreType oreType;
+
+  private static final int SECONDARY_AXIS_LEN = 5;
+
+  private static final int Y_AXIS_LEN = 5;
+
+  private static final int MAIN_AXIS_LEN = 4;
+
+  private static final int LOCAL_X_END = 4;
+
+  private static final int LOCAL_Y_END = 4;
+
+  private static final int LOCAL_Z_END = 3;
+
+  public com.yungnickyoung.minecraft.bettermineshafts.world.generator.pieces.OreDeposit(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: getstatic     #3                  // Field com/yungnickyoung/minecraft/bettermineshafts/module/StructurePieceTypeModule.ORE_DEPOSIT:Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;
+       4: aload_1
+       5: invokespecial #9                  // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;Lnet/minecraft/nbt/CompoundTag;)V
+       8: aload_0
+       9: aload_1
+      10: ldc           #15                 // String OreType
+      12: invokevirtual #17                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      15: invokestatic  #23                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType.valueOf:(I)Lcom/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType;
+      18: putfield      #29                 // Field oreType:Lcom/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType;
+      21: return
+
+  public com.yungnickyoung.minecraft.bettermineshafts.world.generator.pieces.OreDeposit(int, net.minecraft.world.level.levelgen.structure.BoundingBox, net.minecraft.core.Direction, com.yungnickyoung.minecraft.bettermineshafts.world.config.BetterMineshaftConfiguration);
+    Code:
+       0: aload_0
+       1: getstatic     #3                  // Field com/yungnickyoung/minecraft/bettermineshafts/module/StructurePieceTypeModule.ORE_DEPOSIT:Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;
+       4: iload_1
+       5: aload         4
+       7: aload_2
+       8: invokespecial #33                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;ILcom/yungnickyoung/minecraft/bettermineshafts/world/config/BetterMineshaftConfiguration;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+      11: aload_0
+      12: aload_3
+      13: invokevirtual #36                 // Method setOrientation:(Lnet/minecraft/core/Direction;)V
+      16: return
+
+  protected void addAdditionalSaveData(net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext, net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokespecial #40                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/BetterMineshaftPiece.addAdditionalSaveData:(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceSerializationContext;Lnet/minecraft/nbt/CompoundTag;)V
+       6: aload_2
+       7: ldc           #15                 // String OreType
+       9: aload_0
+      10: getfield      #29                 // Field oreType:Lcom/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType;
+      13: getfield      #44                 // Field com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType.value:I
+      16: invokevirtual #48                 // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      19: return
+
+  public static net.minecraft.world.level.levelgen.structure.BoundingBox determineBoxPosition(net.minecraft.world.level.levelgen.structure.StructurePieceAccessor, int, int, int, net.minecraft.core.Direction);
+    Code:
+       0: iload_1
+       1: iload_2
+       2: iload_3
+       3: iconst_5
+       4: iconst_5
+       5: iconst_4
+       6: aload         4
+       8: invokestatic  #52                 // Method com/yungnickyoung/minecraft/yungsapi/world/util/BoundingBoxHelper.boxFromCoordsWithRotation:(IIIIIILnet/minecraft/core/Direction;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      11: astore        5
+      13: aload_0
+      14: aload         5
+      16: invokeinterface #58,  2           // InterfaceMethod net/minecraft/world/level/levelgen/structure/StructurePieceAccessor.findCollisionPiece:(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Lnet/minecraft/world/level/levelgen/structure/StructurePiece;
+      21: astore        6
+      23: aload         6
+      25: ifnull        32
+      28: aconst_null
+      29: goto          34
+      32: aload         5
+      34: areturn
+
+  public void addChildren(net.minecraft.world.level.levelgen.structure.StructurePiece, net.minecraft.world.level.levelgen.structure.StructurePieceAccessor, net.minecraft.util.RandomSource);
+    Code:
+       0: aload_3
+       1: bipush        100
+       3: invokeinterface #64,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+       8: istore        4
+      10: invokestatic  #70                 // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType.values:()[Lcom/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType;
+      13: astore        5
+      15: aload         5
+      17: arraylength
+      18: istore        6
+      20: iconst_0
+      21: istore        7
+      23: iload         7
+      25: iload         6
+      27: if_icmpge     62
+      30: aload         5
+      32: iload         7
+      34: aaload
+      35: astore        8
+      37: iload         4
+      39: aload         8
+      41: getfield      #74                 // Field com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType.threshold:I
+      44: if_icmpge     56
+      47: aload_0
+      48: aload         8
+      50: putfield      #29                 // Field oreType:Lcom/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType;
+      53: goto          62
+      56: iinc          7, 1
+      59: goto          23
+      62: getstatic     #77                 // Field com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType.DIAMOND:Lcom/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType;
+      65: getfield      #74                 // Field com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType.threshold:I
+      68: bipush        100
+      70: if_icmpeq     83
+      73: getstatic     #80                 // Field com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      76: ldc           #86                 // String Your ore spawn chances don\'t add up to 100! Ores won\'t spawn as you intend!
+      78: invokeinterface #88,  2           // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+      83: aload_0
+      84: getfield      #29                 // Field oreType:Lcom/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType;
+      87: ifnonnull     97
+      90: aload_0
+      91: getstatic     #94                 // Field com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType.COBBLE:Lcom/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType;
+      94: putfield      #29                 // Field oreType:Lcom/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType;
+      97: return
+
+  public void postProcess(net.minecraft.world.level.WorldGenLevel, net.minecraft.world.level.StructureManager, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.structure.BoundingBox, net.minecraft.world.level.ChunkPos, net.minecraft.core.BlockPos);
+    Code:
+       0: getstatic     #97                 // Field net/minecraft/world/level/block/Blocks.COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+       3: invokevirtual #103                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       6: astore        8
+       8: aload_0
+       9: getfield      #29                 // Field oreType:Lcom/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType;
+      12: invokevirtual #109                // Method com/yungnickyoung/minecraft/bettermineshafts/world/generator/pieces/OreDeposit$OreType.getBlock:()Lnet/minecraft/world/level/block/state/BlockState;
+      15: astore        9
+      17: aload_0
+      18: aload_1
+      19: aload         5
+      21: aload         4
+      23: ldc           #112                // float 0.9f
+      25: iconst_0
+      26: iconst_0
+      27: iconst_0
+      28: iconst_4
+      29: iconst_4
+      30: iconst_3
+      31: aload         8
+      33: invokevirtual #113                // Method chanceReplaceSolid:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;FIIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+      36: aload_0
+      37: aload_1
+      38: aload         5
+      40: aload         4
+      42: ldc           #117                // float 0.65f
+      44: iconst_1
+      45: iconst_1
+      46: iconst_1
+      47: iconst_3
+      48: iconst_3
+      49: iconst_2
+      50: aload         9
+      52: invokevirtual #113                // Method chanceReplaceSolid:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;FIIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+      55: aload_0
+      56: aload_1
+      57: aload         5
+      59: aload         4
+      61: ldc           #118                // float 0.15f
+      63: iconst_0
+      64: iconst_0
+      65: iconst_0
+      66: iconst_4
+      67: iconst_4
+      68: iconst_3
+      69: aload         9
+      71: invokevirtual #113                // Method chanceReplaceSolid:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;FIIIIIILnet/minecraft/world/level/block/state/BlockState;)V
+      74: return
+}
