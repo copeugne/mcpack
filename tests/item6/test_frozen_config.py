@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 from typing import TYPE_CHECKING
 
 import pytest
@@ -181,10 +182,19 @@ def test_validator_rejects_yung_out_of_scope_classification(tmp_path: Path) -> N
 
 def test_validator_rejects_changed_content(tmp_path: Path) -> None:
     """Rehashing is required after any preserved-content mutation."""
+    instance = tmp_path / "instance"
+    for source, target in (
+        (FROZEN / "config", instance / "config"),
+        (FROZEN / "defaultconfigs", instance / "defaultconfigs"),
+        (FROZEN / "world-serverconfig", instance / "world" / "serverconfig"),
+    ):
+        _ = shutil.copytree(source, target)
+    _ = shutil.copy2(FROZEN / "server.properties", instance / "server.properties")
     captured = tmp_path / "frozen"
-    capture(FROZEN, captured)
-    # capture expects an instance shape, so the synthetic output cannot validate.
-    with pytest.raises(ValueError, match="inventory"):
+    capture(instance, captured)
+    changed = captured / "config/cupboard.json"
+    changed.write_bytes(changed.read_bytes() + b"\n")
+    with pytest.raises(ValueError, match="identity mismatch"):
         validate(captured, MANIFEST, AUDIT)
 
 
