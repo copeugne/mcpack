@@ -12,14 +12,17 @@ def trace_pool(
     start_pool: str,
     pools: list[JsonValue],
     templates: list[JsonValue],
+    pool_aliases: JsonValue = None,
 ) -> dict[str, JsonValue]:
     """Walk selected resources, retaining terminal edges and missing references.
 
     Inputs must already be selected for the frozen runtime. Fallback and jigsaw
     links give possible content, not placement probabilities or assembled bounds.
-    Alias IDs remain missing until resolved in the owning structure's context.
+    Alias alternatives are unioned, not sampled. Correlated groups remain in the
+    source definition; this trace makes no joint occurrence or probability claim.
     """
     indexes = {"pool": _index(pools), "template": _index(templates)}
+    aliases = alias_targets(pool_aliases)
     pending = [("pool", start_pool)]
     visited: set[tuple[str, str]] = set()
     missing: set[tuple[str, str]] = set()
@@ -27,6 +30,11 @@ def trace_pool(
     unresolved: list[JsonValue] = []
     while pending:
         kind, identifier = pending.pop()
+        if kind == "pool" and identifier in aliases:
+            if ("alias", identifier) not in visited:
+                visited.add(("alias", identifier))
+                pending.extend(("pool", target) for target in sorted(aliases[identifier]))
+            continue
         if (kind, identifier) in visited:
             continue
         visited.add((kind, identifier))
@@ -47,7 +55,7 @@ def trace_pool(
                 pending.append((target_kind, str(edge["id"])))
             else:
                 terminal.append({"kind": kind, "id": identifier, "edge": edge})
-    return {
+    result: dict[str, JsonValue] = {
         "start_pool": start_pool,
         "pools": [identifier for kind, identifier in sorted(visited - missing) if kind == "pool"],
         "templates": [
@@ -57,6 +65,72 @@ def trace_pool(
         "terminal_edges": terminal,
         "unresolved_elements": unresolved,
     }
+    if aliases:
+        result["resolved_aliases"] = {
+            identifier: cast("JsonValue", sorted(aliases[identifier]))
+            for kind, identifier in sorted(visited)
+            if kind == "alias"
+        }
+    return result
+
+
+def alias_targets(bindings: JsonValue) -> dict[str, set[str]]:  # noqa: C901, PLR0912 - three explicit packaged shapes.
+    """Collect declared positive-weight targets of the packaged vanilla alias shapes."""
+    result: dict[str, set[str]] = {}
+    if bindings is None:
+        return result
+    if not isinstance(bindings, list):
+        message = "pool aliases must be a list"
+        raise TypeError(message)
+    for binding in bindings:
+        if not isinstance(binding, dict):
+            message = "invalid pool alias binding"
+            raise TypeError(message)
+        kind = binding.get("type")
+        if kind == "minecraft:random_group":
+            for group in _weighted(binding.get("groups")):
+                for alias, targets in alias_targets(group).items():
+                    result.setdefault(alias, set()).update(targets)
+            continue
+        alias = binding.get("alias")
+        if not isinstance(alias, str):
+            message = "pool alias binding lacks its ID"
+            raise TypeError(message)
+        if kind == "minecraft:direct":
+            targets = [binding.get("target")]
+        elif kind == "minecraft:random":
+            targets = _weighted(binding.get("targets"))
+        else:
+            message = f"unsupported pool alias binding: {kind}"
+            raise ValueError(message)
+        for target in targets:
+            if not isinstance(target, str):
+                message = f"invalid pool alias target: {alias}"
+                raise TypeError(message)
+            result.setdefault(alias, set()).add(target)
+    return result
+
+
+def _weighted(value: JsonValue) -> list[JsonValue]:
+    if not isinstance(value, list):
+        message = "weighted alias alternatives must be a list"
+        raise TypeError(message)
+    result: list[JsonValue] = []
+    for entry in value:
+        if (
+            not isinstance(entry, dict)
+            or type(entry.get("weight")) is not int
+            or "data" not in entry
+        ):
+            message = "invalid weighted alias alternative"
+            raise TypeError(message)
+        weight = cast("int", entry["weight"])
+        if weight < 0:
+            message = "negative alias weight"
+            raise ValueError(message)
+        if weight:
+            result.append(entry["data"])
+    return result
 
 
 def _index(resources: list[JsonValue]) -> dict[str, dict[str, JsonValue]]:
