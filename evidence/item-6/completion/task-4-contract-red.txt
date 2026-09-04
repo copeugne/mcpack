@@ -1,0 +1,15 @@
+Item 6 Task 4, manifest-contract RED run
+
+Scenario: malformed manifests retain a recomputed audit configuration identity so validation reaches the intended manifest branch.
+Invocation:
+  uv run pytest -q tests/item6/test_manifest_contract.py
+
+Binary observable before hardening:
+  4 failed, 2 passed
+  duplicate path: accepted
+  unsorted paths: accepted
+  shutdown-classified row: accepted
+  invalid capture boundary: accepted
+  stale file_count: rejected by the pre-existing inventory count guard
+
+The failures were all "Failed: DID NOT RAISE <class 'ValueError'>". The suite therefore demonstrated the four missing contract guards before their implementation.

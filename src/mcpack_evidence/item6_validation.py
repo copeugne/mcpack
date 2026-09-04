@@ -11,7 +11,11 @@ from typing import TYPE_CHECKING, Final, TypedDict
 
 from pydantic import TypeAdapter, ValidationError
 
-from mcpack_evidence.item6_manifest import parse_manifest, validate_manifest_inventory
+from mcpack_evidence.item6_manifest import (
+    parse_manifest,
+    validate_manifest_contract,
+    validate_manifest_inventory,
+)
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -135,6 +139,7 @@ def validate(  # noqa: C901, PLR0912, PLR0915
         raise _AuditValidationError("audit configuration identity does not match manifest")
 
     expected = validate_manifest_inventory(root, manifest)
+    validate_manifest_contract(manifest)
 
     covered: set[str] = set()
     for system in audit["systems"]:

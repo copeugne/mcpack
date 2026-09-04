@@ -1,0 +1,22 @@
+Item 6 Task 4, manifest-contract GREEN run
+
+Scenario: the validated Item 6 manifest uses strictly increasing POSIX path-component tuples, unique paths, a matching file count, the after_first_clean_shutdown boundary, and the exact lifecycle-stage partition.
+Invocation:
+  uv run pytest -q tests/item6/test_manifest_contract.py
+  uv run pytest -q tests/item6
+  uv run python tools/freeze_item6_config.py validate --root evidence/item-6/frozen --manifest evidence/item-6/generated-config-manifest.json --audit evidence/item-6/config-audit.json
+  uv run ruff format --check src/mcpack_evidence/item6_manifest.py src/mcpack_evidence/item6_validation.py tools/freeze_item6_config.py tests/item6/test_manifest_contract.py tests/item6/test_frozen_config.py tests/item6/test_tool_facade.py
+  uv run ruff check src/mcpack_evidence/item6_manifest.py src/mcpack_evidence/item6_validation.py tools/freeze_item6_config.py tests/item6/test_manifest_contract.py tests/item6/test_frozen_config.py tests/item6/test_tool_facade.py
+  uv run basedpyright src/mcpack_evidence/item6_manifest.py src/mcpack_evidence/item6_validation.py tools/freeze_item6_config.py tests/item6/test_manifest_contract.py tests/item6/test_frozen_config.py tests/item6/test_tool_facade.py
+  git diff --quiet 895ed1d -- evidence/item-6/frozen evidence/item-6/generated-config-manifest.json evidence/item-6/config-audit.json
+  git diff --check
+
+Binary observables:
+  6 focused manifest-contract tests passed.
+  259 Item 6 tests passed.
+  The real CLI printed: validated Item 6 frozen configuration and audit.
+  Ruff completed with: All checks passed!
+  Basedpyright completed with: 0 errors, 0 warnings, 0 notes.
+  The immutable frozen tree, manifest, and audit had no diff from Item 6 base 895ed1d.
+
+The canonical order is lexicographic by POSIX path components, not by raw strings. This preserves the committed manifest, where a directory path may precede a sibling hyphenated filename.
