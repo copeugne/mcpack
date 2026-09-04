@@ -1,17 +1,18 @@
 from __future__ import annotations
 
 import os
-import shutil
 import subprocess
 import time
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
 
 import pytest
+import tools.stage_item7_world as staging
 from tools.stage_item7_world import StageError, copy_world_boundary, stage
 
 if TYPE_CHECKING:
     from collections.abc import Callable
+    from typing import BinaryIO
 
 ROOT = Path(__file__).parents[2]
 
@@ -122,10 +123,10 @@ def test_world_stage_pins_the_directory_that_owns_the_lock(
     instance = tmp_path / "instance"
     world = _world(instance)
     displaced = tmp_path / "locked-world"
-    original_copy = shutil.copy2
+    original_stream = cast("Callable[[int], BinaryIO]", staging.__dict__["duplicate_stream"])
     swapped = False
 
-    def swap_before_copy(source: Path, destination: Path) -> Path:
+    def swap_before_read(descriptor: int) -> BinaryIO:
         nonlocal swapped
         if not swapped:
             _ = world.rename(displaced)
@@ -133,13 +134,14 @@ def test_world_stage_pins_the_directory_that_owns_the_lock(
             _ = (attacker / "level.dat").write_bytes(b"attacker")
             _ = (attacker / "region/r.0.0.mca").write_bytes(b"attacker-region")
             swapped = True
-        return Path(original_copy(source, destination))
+        return original_stream(descriptor)
 
-    monkeypatch.setattr(shutil, "copy2", swap_before_copy)
+    monkeypatch.setitem(staging.__dict__, "duplicate_stream", swap_before_read)
     output = tmp_path / "stage/world"
 
     copy_world_boundary(instance, output)
 
+    assert swapped
     assert (output / "level.dat").read_bytes() == b"level"
     assert (output / "region/r.0.0.mca").read_bytes() == b"region"
 
@@ -153,34 +155,90 @@ def test_core_stage_pins_the_validated_raw_root(
     project.mkdir()
     raw.mkdir()
     _ = (raw / "evidence.bin").write_bytes(b"trusted")
-    original_copytree = shutil.copytree
+    original_stream = cast("Callable[[int], BinaryIO]", staging.__dict__["duplicate_stream"])
+    swapped = False
 
-    def swap_before_copy(
-        source: Path,
-        destination: Path,
-        *,
-        copy_function: Callable[[str, str], object],
-        symlinks: bool,
-    ) -> Path:
-        _ = raw.rename(displaced)
-        raw.mkdir()
-        _ = (raw / "evidence.bin").write_bytes(b"attacker")
-        return Path(
-            original_copytree(
-                source,
-                destination,
-                copy_function=copy_function,
-                symlinks=symlinks,
-            )
-        )
+    def swap_before_read(descriptor: int) -> BinaryIO:
+        nonlocal swapped
+        if not swapped:
+            _ = raw.rename(displaced)
+            raw.mkdir()
+            _ = (raw / "evidence.bin").write_bytes(b"attacker")
+            swapped = True
+        return original_stream(descriptor)
 
-    monkeypatch.setattr(shutil, "copytree", swap_before_copy)
+    monkeypatch.setitem(staging.__dict__, "duplicate_stream", swap_before_read)
     output = tmp_path / "stage"
 
     count, size = stage("core", project, raw, output)
 
+    assert swapped
     assert (count, size) == (1, len(b"trusted"))
     assert (output / "evidence.bin").read_bytes() == b"trusted"
+
+
+def test_stage_rejects_output_parent_replaced_during_copy(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    project = tmp_path / "project"
+    raw = tmp_path / "raw"
+    output_parent = tmp_path / "output-parent"
+    displaced = tmp_path / "displaced-output-parent"
+    project.mkdir()
+    raw.mkdir()
+    output_parent.mkdir()
+    _ = (raw / "evidence.bin").write_bytes(b"trusted")
+    output = output_parent / "stage"
+    original_stream = cast("Callable[[int], BinaryIO]", staging.__dict__["duplicate_stream"])
+    swapped = False
+
+    def swap_before_read(descriptor: int) -> BinaryIO:
+        nonlocal swapped
+        if not swapped:
+            temporary = next(output_parent.glob(".item7-stage-*"))
+            _ = output_parent.rename(displaced)
+            output_parent.mkdir()
+            (output_parent / temporary.name).mkdir()
+            swapped = True
+        return original_stream(descriptor)
+
+    monkeypatch.setitem(staging.__dict__, "duplicate_stream", swap_before_read)
+
+    with pytest.raises(StageError, match="output"):
+        _ = stage("core", project, raw, output)
+
+    assert swapped
+    assert not output.exists()
+
+
+def test_stage_preserves_target_created_during_copy(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    project = tmp_path / "project"
+    raw = tmp_path / "raw"
+    project.mkdir()
+    raw.mkdir()
+    _ = (raw / "evidence.bin").write_bytes(b"trusted")
+    output = tmp_path / "stage"
+    original_stream = cast("Callable[[int], BinaryIO]", staging.__dict__["duplicate_stream"])
+    created = False
+
+    def create_competing_target(descriptor: int) -> BinaryIO:
+        nonlocal created
+        if not created:
+            output.mkdir()
+            _ = (output / "owner").write_bytes(b"competing")
+            created = True
+        return original_stream(descriptor)
+
+    monkeypatch.setitem(staging.__dict__, "duplicate_stream", create_competing_target)
+
+    with pytest.raises(StageError, match="already exists"):
+        _ = stage("core", project, raw, output)
+
+    assert created
+    assert (output / "owner").read_bytes() == b"competing"
+    assert not tuple(tmp_path.glob(".item7-stage-*"))
 
 
 def test_core_stage_rejects_hardlinked_source(tmp_path: Path) -> None:

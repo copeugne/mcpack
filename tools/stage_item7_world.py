@@ -5,8 +5,6 @@ from __future__ import annotations
 import argparse
 import errno
 import fcntl
-import shutil
-import tempfile
 from contextlib import contextmanager
 from pathlib import Path, PurePosixPath
 from typing import TYPE_CHECKING, Final, final
@@ -19,6 +17,11 @@ from mcpack_evidence.item7_archive_io import (
     open_regular_at,
     open_tree,
     open_tree_at,
+)
+from mcpack_evidence.item7_stage_output import (
+    StageOutputError,
+    StagingTree,
+    staging_tree,
 )
 
 if TYPE_CHECKING:
@@ -64,23 +67,32 @@ def stage(mode: str, project: Path, raw: Path, output: Path) -> tuple[int, int]:
         message = "project and raw roots must exist, and output must be absent"
         raise StageError(message)
     output.parent.mkdir(parents=True, exist_ok=True)
-    temporary = Path(tempfile.mkdtemp(prefix=".item7-stage-", dir=output.parent))
     try:
-        if mode == "core":
-            with open_tree(raw) as files:
-                _copy_opened_files(files, temporary)
-        else:
-            for name in _instance_names(mode):
-                destination = temporary / name / "world"
-                copy_world_boundary(project / "instances/item7" / name, destination)
-        _ = temporary.rename(output)
-    except UnsafeFilesystemError as error:
+        with staging_tree(output) as destination:
+            if mode == "core":
+                with open_tree(raw) as files:
+                    count, size = _copy_opened_files(
+                        files,
+                        destination,
+                        PurePosixPath(),
+                    )
+            else:
+                count, size = 0, 0
+                for name in _instance_names(mode):
+                    added_count, added_size = _copy_locked_world(
+                        project / "instances/item7" / name / "world",
+                        destination,
+                        PurePosixPath(name) / "world",
+                    )
+                    count += added_count
+                    size += added_size
+            destination.publish()
+    except FileExistsError as error:
+        message = f"stage destination already exists: {output}"
+        raise StageError(message) from error
+    except (StageOutputError, UnsafeFilesystemError) as error:
         raise StageError(str(error)) from error
-    finally:
-        if temporary.exists():
-            shutil.rmtree(temporary)
-    files = tuple(path for path in output.rglob("*") if path.is_file())
-    return len(files), sum(path.stat().st_size for path in files)
+    return count, size
 
 
 def copy_world_boundary(instance: Path, destination: Path) -> None:
@@ -90,45 +102,74 @@ def copy_world_boundary(instance: Path, destination: Path) -> None:
         message = f"stage destination already exists: {destination}"
         raise StageError(message)
     destination.parent.mkdir(parents=True, exist_ok=True)
-    temporary = Path(tempfile.mkdtemp(prefix=".item7-world-", dir=destination.parent))
     try:
-        _copy_locked_world(world, temporary)
-        _ = temporary.rename(destination)
-    except UnsafeFilesystemError as error:
+        with staging_tree(destination) as output:
+            _ = _copy_locked_world(world, output, PurePosixPath())
+            output.publish()
+    except FileExistsError as error:
+        message = f"stage destination already exists: {destination}"
+        raise StageError(message) from error
+    except (StageOutputError, UnsafeFilesystemError) as error:
         raise StageError(str(error)) from error
-    finally:
-        if temporary.exists():
-            shutil.rmtree(temporary)
 
 
-def _copy_locked_world(world: Path, destination: Path) -> None:
+def _copy_locked_world(
+    world: Path,
+    destination: StagingTree,
+    prefix: PurePosixPath,
+) -> tuple[int, int]:
     with open_directory(world) as world_descriptor:
         lock_path = PurePosixPath("session.lock")
         try:
             lock_context = open_regular_at(world_descriptor, lock_path, writable=True)
             with lock_context as (lock_descriptor, _):
-                _copy_under_lock(world_descriptor, lock_descriptor, destination)
+                return _copy_under_lock(
+                    world_descriptor,
+                    lock_descriptor,
+                    destination,
+                    prefix,
+                )
         except FileNotFoundError as error:
             message = f"world session lock is missing or unsafe: {world / lock_path}"
             raise StageError(message) from error
 
 
-def _copy_under_lock(directory: int, lock: int, destination: Path) -> None:
+def _copy_under_lock(
+    directory: int,
+    lock: int,
+    destination: StagingTree,
+    prefix: PurePosixPath,
+) -> tuple[int, int]:
+    count, size = 0, 0
     with _record_lock(lock):
         for value in WORLD_FILES:
             relative = PurePosixPath(value)
             try:
                 with open_regular_at(directory, relative) as (descriptor, metadata):
-                    _copy_descriptor(descriptor, metadata.st_size, relative, destination)
+                    _copy_descriptor(
+                        descriptor,
+                        metadata.st_size,
+                        prefix / relative,
+                        destination,
+                    )
+                    count += 1
+                    size += metadata.st_size
             except FileNotFoundError:
                 continue
         for value in WORLD_DIRECTORIES:
             relative = PurePosixPath(value)
             try:
                 with open_tree_at(directory, relative) as files:
-                    _copy_opened_files(files, destination)
+                    added_count, added_size = _copy_opened_files(
+                        files,
+                        destination,
+                        prefix,
+                    )
+                    count += added_count
+                    size += added_size
             except FileNotFoundError:
                 continue
+    return count, size
 
 
 @contextmanager
@@ -146,21 +187,33 @@ def _record_lock(descriptor: int) -> Generator[None]:
         fcntl.lockf(descriptor, fcntl.LOCK_UN)
 
 
-def _copy_opened_files(files: tuple[OpenedFile, ...], destination: Path) -> None:
+def _copy_opened_files(
+    files: tuple[OpenedFile, ...],
+    destination: StagingTree,
+    prefix: PurePosixPath,
+) -> tuple[int, int]:
+    size = 0
     for opened in files:
         relative = PurePosixPath(opened.relative_path)
         _require_allowed(relative)
-        _copy_descriptor(opened.descriptor, opened.size_bytes, relative, destination)
+        _copy_descriptor(
+            opened.descriptor,
+            opened.size_bytes,
+            prefix / relative,
+            destination,
+        )
+        size += opened.size_bytes
+    return len(files), size
 
 
-def _copy_descriptor(descriptor: int, size: int, relative: PurePosixPath, root: Path) -> None:
-    target = root / relative
-    target.parent.mkdir(parents=True, exist_ok=True)
-    with duplicate_stream(descriptor) as source, target.open("xb") as output:
-        _ = shutil.copyfileobj(source, output)
-    if target.stat().st_size != size:
-        message = f"source changed while staging: {relative}"
-        raise StageError(message)
+def _copy_descriptor(
+    descriptor: int,
+    size: int,
+    relative: PurePosixPath,
+    destination: StagingTree,
+) -> None:
+    with duplicate_stream(descriptor) as source:
+        destination.write(relative, source, size)
 
 
 def _require_allowed(relative: PurePosixPath) -> None:
