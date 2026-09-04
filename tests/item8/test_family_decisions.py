@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
-from mcpack_evidence.item8_inventory import resource_identity
+from mcpack_evidence.item8_inventory import resource_identity, size_variant_groups
 from mcpack_evidence.item8_registry import read_registry
 
 if TYPE_CHECKING:
@@ -58,3 +58,42 @@ def test_mineshaft_group_covers_its_runtime_variants_and_preserved_specialized_g
             hashlib.sha256((code_root / row["disassembly"]).read_bytes()).hexdigest()
             == row["disassembly_sha256"]
         )
+
+
+def test_ctov_size_decisions_exactly_cover_source_proven_variant_groups() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, JsonValue]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    groups = [
+        row
+        for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
+        if str(row["family_id"]).startswith("ctov:")
+    ]
+    registry = read_registry(
+        root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )
+    raw = (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+    catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(raw)))
+    proven = size_variant_groups(registry, cast("list[JsonValue]", catalog["resources"]))
+    expected = {
+        tuple(str(member["structure_id"]) for member in cast("list[dict[str, JsonValue]]", group))
+        for group in proven
+    }
+    actual = [tuple(cast("list[str]", row["structure_ids"])) for row in groups]
+    assert len(actual) == len(set(actual))
+    assert set(actual) == expected
+    members = [identifier for group in actual for identifier in group]
+    assert len(members) == len(set(members))
+    assert set(members) == {
+        identifier
+        for identifier in registry
+        if identifier.startswith(("ctov:small/", "ctov:medium/", "ctov:large/"))
+    }
+    for row in groups:
+        assert {
+            identifier.split("/", 1)[1] for identifier in cast("list[str]", row["structure_ids"])
+        } == {str(row["family_id"]).split(":", 1)[1]}
+        for path, digest in cast("dict[str, str]", row["evidence"]).items():
+            assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
