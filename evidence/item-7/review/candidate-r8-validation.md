@@ -87,4 +87,14 @@ The older mutable `/tmp/mcpack-item7-raw-20260904` tree is not an accepted compl
 
 ## Clean export validation
 
-Pending after this reconciliation commit. The clean export must rerun all tests and quality checks and reproduce both exact commands above byte for byte before fresh exact-SHA review.
+Reconciled candidate `f68cd0be8d2d9d4223bd2b9b003e32534a1bac75` was exported with `git archive` into `/home/lonestar/Desktop/Projects/mcpack-item7-clean-f68cd0b`. Pytest used `/home/lonestar/Desktop/Projects/mcpack-item7-clean-f68cd0b-tmp` so temporary writes did not depend on the exhausted `/tmp` quota.
+
+- Item 7 tests: 186 passed.
+- Repository tests: 867 passed.
+- Scoped Ruff formatting and checks: passed across 104 files.
+- Scoped basedpyright: 0 errors, 0 warnings, 0 notes.
+- Item 7 shell syntax: passed.
+- The tracked world inventory builder rehashed all 716 r8 restored world files and reproduced the committed inventory byte for byte.
+- The tracked completion builder used the r8 restored core and reproduced the committed 125-artifact `PASS` receipt byte for byte.
+
+The validation-record commit changes only documentation and evidence records. Fresh exact-SHA review lanes and a runtime audit must bind the resulting commit before push.
