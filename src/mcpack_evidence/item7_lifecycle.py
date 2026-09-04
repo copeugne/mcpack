@@ -13,6 +13,7 @@ from typing import IO, TYPE_CHECKING, ClassVar, Final, Literal, final
 
 from pydantic import BaseModel, ConfigDict
 
+from mcpack_evidence.item7_output_sequence import OutputLine, OutputSequence, read_output
 from mcpack_evidence.item7_runtime import Item7RuntimeError, WorldgenRequest
 from mcpack_evidence.item7_selections import WorldgenSelection  # noqa: TC001
 
@@ -56,6 +57,8 @@ class _LifecycleState:
         "ready",
         "rejection",
         "request",
+        "save_confirmation_after",
+        "save_started",
         "started",
         "stdin",
     )
@@ -68,6 +71,8 @@ class _LifecycleState:
     flushed: bool
     killed: bool
     rejection: str | None
+    save_confirmation_after: int | None
+    save_started: bool
 
     def __init__(self, request: WorldgenRequest, stdin: IO[str]) -> None:
         self.request = request
@@ -79,6 +84,8 @@ class _LifecycleState:
         self.flushed = False
         self.killed = False
         self.rejection = None
+        self.save_confirmation_after = None
+        self.save_started = False
 
 
 def run_lifecycle(request: WorldgenRequest, java_executable: Path) -> LifecycleReceipt:
@@ -108,8 +115,8 @@ def run_lifecycle(request: WorldgenRequest, java_executable: Path) -> LifecycleR
         raise Item7RuntimeError(_LIFECYCLE_STAGE, f"server launch failed: {error}") from error
     stdin, stdout = _process_pipes(process, log)
     state = _LifecycleState(request, stdin)
-    lines: queue.Queue[str | None] = queue.Queue()
-    reader = threading.Thread(target=_read_output, args=(stdout, lines), daemon=True)
+    lines = OutputSequence()
+    reader = threading.Thread(target=read_output, args=(stdout, lines), daemon=True)
     reader.start()
     try:
         try:
@@ -159,31 +166,26 @@ def run_lifecycle(request: WorldgenRequest, java_executable: Path) -> LifecycleR
     )
 
 
-def _read_output(stdout: IO[str], lines: queue.Queue[str | None]) -> None:
-    for line in iter(stdout.readline, ""):
-        lines.put(line)
-    lines.put(None)
-
-
-def _drive_lifecycle(state: _LifecycleState, lines: queue.Queue[str | None], log: IO[str]) -> None:
+def _drive_lifecycle(state: _LifecycleState, lines: OutputSequence, log: IO[str]) -> None:
     while state.rejection is None and not state.flushed:
         remaining = state.request.timeout_seconds - (time.monotonic() - state.started)
         if remaining <= 0:
             state.rejection = "world generation timed out"
             return
         try:
-            line = lines.get(timeout=min(1.0, remaining))
+            output = lines.get(timeout=min(1.0, remaining))
         except queue.Empty:
             continue
-        if line is None:
+        if output is None:
             state.rejection = "server exited before lifecycle completion"
             return
-        _ = log.write(line)
+        _ = log.write(output.text)
         log.flush()
-        _handle_line(state, line)
+        _handle_line(state, output, lines)
 
 
-def _handle_line(state: _LifecycleState, line: str) -> None:
+def _handle_line(state: _LifecycleState, output: OutputLine, lines: OutputSequence) -> None:
+    line = output.text
     if not state.ready and "Done (" in line and _READY_MARKER in line:
         state.ready = True
         state.rejection = _send_selection(state, state.request.selections[0])
@@ -199,10 +201,21 @@ def _handle_line(state: _LifecycleState, line: str) -> None:
             if len(state.completed) < len(state.request.selections):
                 next_selection = state.request.selections[len(state.completed)]
                 state.rejection = _send_selection(state, next_selection)
-            elif not _send(state, "save-all flush"):
-                state.rejection = "server console pipe failed"
+            else:
+                state.save_confirmation_after = lines.checkpoint_and_send(
+                    lambda: _send(state, "save-all flush")
+                )
+                if state.save_confirmation_after is None:
+                    state.rejection = "server console pipe failed"
             return
-    if len(state.completed) == len(state.request.selections) and "Saved the game" in line:
+    if (
+        state.save_confirmation_after is not None
+        and output.sequence > state.save_confirmation_after
+        and "Saving the game" in line
+    ):
+        state.save_started = True
+        return
+    if state.save_started and "Saved the game" in line:
         state.flushed = True
         if not _send(state, "stop"):
             state.rejection = "server console pipe failed"

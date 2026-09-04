@@ -12,6 +12,7 @@ from tests.item7.runtime_support import (
     BrokenPipe,
     FakeProcess,
     PipeLessProcess,
+    SynchronousThread,
     fake_launch,
     pipe_less_launch,
     record_pid_signals,
@@ -31,7 +32,16 @@ def test_lifecycle_sends_commands_only_after_matching_markers(
     _ = request.target.mkdir()
     _ = (request.target / "logs").mkdir()
     _ = (request.target / "logs/latest.log").write_text("authoritative warning\n", encoding="utf-8")
-    process = FakeProcess(READY_LINES)
+    process = FakeProcess(
+        READY_LINES[:-1],
+        responses={
+            "save-all flush": (
+                "[Server thread/INFO]: Saving the game (this may take a moment!)\n",
+                "[Server thread/INFO]: Saved the game\n",
+            ),
+            "stop": ("[Server thread/INFO]: Stopped server\n",),
+        },
+    )
     launch_arguments: list[bool] = []
 
     def launch(*args: str, **kwargs: str | bool | int | Path) -> FakeProcess:
@@ -113,6 +123,27 @@ def test_lifecycle_rejects_broad_or_wrong_chunky_completion(
     assert receipt.clean_stop is False
     assert receipt.completed_selection_labels == ()
     assert "save-all flush" not in receipt.commands
+
+
+def test_lifecycle_rejects_save_confirmation_queued_before_flush_command(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # Given: all generation markers and an automatic save confirmation queued before the flush.
+    request = runtime_request(tmp_path, monkeypatch)
+    _ = request.target.mkdir()
+    _ = (request.target / "logs").mkdir()
+    process = FakeProcess((*READY_LINES[:-1], "[Server thread/INFO]: Saved the game\n"))
+    monkeypatch.setattr("mcpack_evidence.item7_lifecycle.subprocess.Popen", fake_launch(process))
+    monkeypatch.setattr("mcpack_evidence.item7_lifecycle.threading.Thread", SynchronousThread)
+    monkeypatch.setattr("mcpack_evidence.item7_lifecycle.os.killpg", _discard_kill)
+
+    # When: the lifecycle consumes the queued server output.
+    receipt = item7_lifecycle.run_lifecycle(request, request.java_home / "bin/java")
+
+    # Then: the stale confirmation cannot complete the requested flush.
+    assert receipt.save_all_flush is False
+    assert receipt.clean_stop is False
+    assert receipt.commands[-1] == "save-all flush"
 
 
 def test_lifecycle_kills_process_group_on_console_pipe_failure(

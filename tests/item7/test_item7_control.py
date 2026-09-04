@@ -12,6 +12,7 @@ from tests.item7.runtime_support import (
     FROZEN,
     BrokenPipe,
     FakeProcess,
+    SynchronousThread,
     fake_launch,
     record_pids,
     runtime_request,
@@ -69,9 +70,14 @@ def test_control_lifecycle_waits_for_success_then_settles_flushes_and_stops(
                 "[Server thread/INFO]: Marked 81 chunks in Overworld "
                 "from [-4, -4] to [4, 4] to be force loaded\n"
             ),
-            "[Server thread/INFO]: Saved the game\n",
-            "[Server thread/INFO]: Stopped server\n",
-        )
+        ),
+        responses={
+            "save-all flush": (
+                "[Server thread/INFO]: Saving the game (this may take a moment!)\n",
+                "[Server thread/INFO]: Saved the game\n",
+            ),
+            "stop": ("[Server thread/INFO]: Stopped server\n",),
+        },
     )
     sessions: list[bool] = []
     settled: list[float] = []
@@ -169,6 +175,33 @@ def test_control_lifecycle_kills_group_on_timeout_or_pipe_failure(
     )
     assert broken_kills == [43210]
     assert broken_receipt.rejection_reason == "server console pipe failed"
+
+
+def test_control_lifecycle_rejects_save_confirmation_queued_before_flush_command(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # Given: a force-load success and automatic save confirmation queued before the flush.
+    request = _request(tmp_path, monkeypatch, settle_seconds=0)
+    _ = request.runtime.target.mkdir()
+    process = FakeProcess((
+        '[Server thread/INFO]: Done (1.0s)! For help, type "help"\n',
+        (
+            "[Server thread/INFO]: Marked 81 chunks in Overworld "
+            "from [-4, -4] to [4, 4] to be force loaded\n"
+        ),
+        "[Server thread/INFO]: Saved the game\n",
+    ))
+    monkeypatch.setattr("mcpack_evidence.item7_control.subprocess.Popen", fake_launch(process))
+    monkeypatch.setattr("mcpack_evidence.item7_control.threading.Thread", SynchronousThread)
+    monkeypatch.setattr("mcpack_evidence.item7_control.os.killpg", lambda pid, signal: None)
+
+    # When: the control lifecycle consumes the queued server output.
+    receipt = item7_control.run_control_lifecycle(request, request.runtime.java_home / "bin/java")
+
+    # Then: the stale confirmation cannot complete the requested flush.
+    assert receipt.save_all_flush is False
+    assert receipt.clean_stop is False
+    assert receipt.commands[-1] == "save-all flush"
 
 
 def test_control_capture_sanitizes_and_rejects_chunky_files(

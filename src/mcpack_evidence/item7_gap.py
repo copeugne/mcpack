@@ -14,13 +14,15 @@ from typing import IO, TYPE_CHECKING, ClassVar, Final, Literal, final
 
 from pydantic import BaseModel, ConfigDict, model_validator
 
+from mcpack_evidence.item7_console import send_command
+from mcpack_evidence.item7_gap_markers import parse_completion
+from mcpack_evidence.item7_output_sequence import OutputLine, OutputSequence, read_output
 from mcpack_evidence.item7_runtime import Item7RuntimeError, WorldgenRequest
 
 if TYPE_CHECKING:
     from pathlib import Path
 
 _READY: Final = '! For help, type "help"'
-_COMPLETE: Final = "Task finished for minecraft:overworld. Processed: 81 chunks (100.00%)"
 _LOCATE: Final = re.compile(
     r"The nearest (?P<structure>[a-z0-9_./-]+:[a-z0-9_./-]+) is at \[(?P<x>-?\d+), ~, (?P<z>-?\d+)] \(\d+ blocks away\)"  # noqa: E501
 )
@@ -78,14 +80,14 @@ class GapLifecycleReceipt(BaseModel):
 
 @final
 class _State:
-    __slots__ = tuple("commands completed flushed killed located ready rejection started".split())  # noqa: SIM905
-
     def __init__(self) -> None:
         self.commands: list[str] = []
         self.completed: list[str] = []
         self.located: list[LocatedTarget] = []
         self.ready = self.flushed = self.killed = False
         self.rejection: str | None = None
+        self.save_confirmation_after: int | None = None
+        self.save_started = False
         self.started = time.monotonic()
 
 
@@ -100,9 +102,7 @@ def parse_locate_line(line: str, target: GapTarget) -> LocatedTarget:
 
 
 def parse_completion_marker(line: str, target: GapTarget) -> str:
-    if _COMPLETE not in line:
-        raise GapError("lifecycle", "completion marker differs from requested target")
-    return target.structure
+    return parse_completion(line, target.structure)
 
 
 def run_gap_lifecycle(request: GapRequest, java_executable: Path) -> GapLifecycleReceipt:
@@ -131,8 +131,8 @@ def run_gap_lifecycle(request: GapRequest, java_executable: Path) -> GapLifecycl
         raise GapError("lifecycle", f"server launch failed: {error}") from error
     stdin, stdout = _pipes(process, log)
     state = _State()
-    lines: queue.Queue[str | None] = queue.Queue()
-    reader = threading.Thread(target=_read, args=(stdout, lines), daemon=True)
+    lines = OutputSequence()
+    reader = threading.Thread(target=read_output, args=(stdout, lines), daemon=True)
     reader.start()
     try:
         _drive(request, stdin, lines, log, state)
@@ -164,7 +164,7 @@ def run_gap_lifecycle(request: GapRequest, java_executable: Path) -> GapLifecycl
 
 
 def _drive(
-    request: GapRequest, stdin: IO[str], lines: queue.Queue[str | None], log: IO[str], state: _State
+    request: GapRequest, stdin: IO[str], lines: OutputSequence, log: IO[str], state: _State
 ) -> None:
     while state.rejection is None and not state.flushed:
         remaining = request.runtime.timeout_seconds - (time.monotonic() - state.started)
@@ -172,21 +172,24 @@ def _drive(
             state.rejection = "gap target lifecycle timed out"
             return
         try:
-            line = lines.get(timeout=min(1.0, remaining))
+            output = lines.get(timeout=min(1.0, remaining))
         except queue.Empty:
             continue
-        if line is None:
+        if output is None:
             state.rejection = "server exited before gap target completion"
             return
-        _ = log.write(line)
+        _ = log.write(output.text)
         log.flush()
-        _observe(stdin, line, state)
+        _observe(stdin, output, lines, state)
 
 
-def _observe(stdin: IO[str], line: str, state: _State) -> None:
+def _observe(  # noqa: C901
+    stdin: IO[str], output: OutputLine, lines: OutputSequence, state: _State
+) -> None:
+    line = output.text
     if not state.ready and "Done (" in line and _READY in line:
         state.ready = True
-        state.rejection = _send(stdin, state.commands, _locate_command(GAP_TARGETS[0]))
+        state.rejection = send_command(stdin, state.commands, _locate_command(GAP_TARGETS[0]))
         return
     if state.ready and len(state.located) < len(GAP_TARGETS) and "The nearest " in line:
         target = GAP_TARGETS[len(state.located)]
@@ -196,7 +199,7 @@ def _observe(stdin: IO[str], line: str, state: _State) -> None:
             state.rejection = error.detail
             return
         if len(state.located) < len(GAP_TARGETS):
-            state.rejection = _send(
+            state.rejection = send_command(
                 stdin, state.commands, _locate_command(GAP_TARGETS[len(state.located)])
             )
         else:
@@ -218,11 +221,22 @@ def _observe(stdin: IO[str], line: str, state: _State) -> None:
                 stdin, state.commands, state.located[len(state.completed)]
             )
         else:
-            state.rejection = _send(stdin, state.commands, "save-all flush")
+            state.save_confirmation_after = lines.checkpoint_and_send(
+                lambda: send_command(stdin, state.commands, "save-all flush") is None
+            )
+            if state.save_confirmation_after is None:
+                state.rejection = "server console pipe failed"
         return
-    if len(state.completed) == len(GAP_TARGETS) and "Saved the game" in line:
+    if (
+        state.save_confirmation_after is not None
+        and output.sequence > state.save_confirmation_after
+        and "Saving the game" in line
+    ):
+        state.save_started = True
+        return
+    if state.save_started and "Saved the game" in line:
         state.flushed = True
-        state.rejection = _send(stdin, state.commands, "stop")
+        state.rejection = send_command(stdin, state.commands, "stop")
 
 
 def _locate_command(target: GapTarget) -> str:
@@ -236,26 +250,10 @@ def _send_chunky(stdin: IO[str], commands: list[str], target: LocatedTarget) -> 
         "chunky radius 4c",
         "chunky start",
     ):
-        rejection = _send(stdin, commands, command)
+        rejection = send_command(stdin, commands, command)
         if rejection is not None:
             return rejection
     return None
-
-
-def _send(stdin: IO[str], commands: list[str], command: str) -> str | None:
-    try:
-        _ = stdin.write(command + "\n")
-        stdin.flush()
-    except (BrokenPipeError, OSError):
-        return "server console pipe failed"
-    commands.append(command)
-    return None
-
-
-def _read(stdout: IO[str], lines: queue.Queue[str | None]) -> None:
-    for line in iter(stdout.readline, ""):
-        lines.put(line)
-    lines.put(None)
 
 
 def _pipes(process: subprocess.Popen[str], log: IO[str]) -> tuple[IO[str], IO[str]]:

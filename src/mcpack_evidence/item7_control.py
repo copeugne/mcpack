@@ -17,6 +17,8 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from mcpack_evidence.item6_capture import capture
 from mcpack_evidence.item7_config import FROZEN_FILE_COUNT, ConfigCaptureReceipt, RuntimeConfigDrift
+from mcpack_evidence.item7_console import send_command
+from mcpack_evidence.item7_output_sequence import OutputSequence, read_output
 from mcpack_evidence.item7_runtime import (
     Item7RuntimeError,
     WorldgenRequest,
@@ -67,13 +69,13 @@ class ControlLifecycleReceipt(BaseModel):  # noqa: D101
 
 @final
 class _State:
-    __slots__ = ("commands", "flushed", "killed", "ready", "rejection", "started", "success")
-
     def __init__(self) -> None:
         self.commands: list[str] = []
         self.started = time.monotonic()
         self.ready = self.success = self.flushed = self.killed = False
         self.rejection: str | None = None
+        self.save_confirmation_after: int | None = None
+        self.save_started = False
 
 
 def run_control_lifecycle(  # noqa: D103
@@ -103,8 +105,8 @@ def run_control_lifecycle(  # noqa: D103
         log.close()
         raise ControlError("lifecycle", f"server launch failed: {error}") from error
     stdin, stdout = _pipes(process, log)
-    lines: queue.Queue[str | None] = queue.Queue()
-    reader = threading.Thread(target=_read_output, args=(stdout, lines), daemon=True)
+    lines = OutputSequence()
+    reader = threading.Thread(target=read_output, args=(stdout, lines), daemon=True)
     reader.start()
     state = _State()
     try:
@@ -136,10 +138,10 @@ def run_control_lifecycle(  # noqa: D103
     )
 
 
-def _drive(
+def _drive(  # noqa: C901
     request: ControlRequest,
     stdin: IO[str],
-    lines: queue.Queue[str | None],
+    lines: OutputSequence,
     log: IO[str],
     state: _State,
 ) -> None:
@@ -149,39 +151,50 @@ def _drive(
             state.rejection = "control generation timed out"
             return
         try:
-            line = lines.get(timeout=min(1.0, remaining))
+            output = lines.get(timeout=min(1.0, remaining))
         except queue.Empty:
             continue
-        if line is None:
+        if output is None:
             if not state.flushed:
                 state.rejection = "server exited before control completion"
             return
-        _ = log.write(line)
+        _ = log.write(output.text)
         log.flush()
+        line = output.text
         if not state.ready and "Done (" in line and '! For help, type "help"' in line:
             state.ready = True
-            state.rejection = _send(stdin, state.commands, "forceload add -64 -64 64 64")
+            state.rejection = send_command(stdin, state.commands, "forceload add -64 -64 64 64")
         elif state.ready and not state.success and _SUCCESS in line:
             state.success = True
             if request.settle_seconds > remaining:
                 state.rejection = "control settling exceeded lifecycle timeout"
                 return
             time.sleep(request.settle_seconds)
-            state.rejection = _send(stdin, state.commands, "save-all flush")
-        elif state.success and "Saved the game" in line:
+            state.save_confirmation_after = lines.checkpoint_and_send(
+                lambda: send_command(stdin, state.commands, "save-all flush") is None
+            )
+            if state.save_confirmation_after is None:
+                state.rejection = "server console pipe failed"
+        elif (
+            state.save_confirmation_after is not None
+            and output.sequence > state.save_confirmation_after
+            and "Saving the game" in line
+        ):
+            state.save_started = True
+        elif state.save_started and "Saved the game" in line:
             state.flushed = True
-            state.rejection = _send(stdin, state.commands, "stop")
+            state.rejection = send_command(stdin, state.commands, "stop")
 
 
 def _finish(process: subprocess.Popen[str], state: _State) -> int:
     if state.rejection is not None and process.poll() is None:
-        _kill(process)
+        os.killpg(process.pid, signal.SIGKILL)
         state.killed = True
     try:
         return process.wait(timeout=30)
     except (OSError, subprocess.TimeoutExpired):
         if process.poll() is None:
-            _kill(process)
+            os.killpg(process.pid, signal.SIGKILL)
             state.killed = True
         state.rejection = "server lifecycle I/O failed"
         return process.wait()
@@ -199,31 +212,11 @@ def _capture_log(request: ControlRequest, return_code: int, state: _State) -> Pa
     return destination
 
 
-def _read_output(stdout: IO[str], lines: queue.Queue[str | None]) -> None:
-    for line in iter(stdout.readline, ""):
-        lines.put(line)
-    lines.put(None)
-
-
-def _send(stdin: IO[str], commands: list[str], command: str) -> str | None:
-    try:
-        _ = stdin.write(command + "\n")
-        stdin.flush()
-    except (BrokenPipeError, OSError):
-        return "server console pipe failed"
-    commands.append(command)
-    return None
-
-
-def _kill(process: subprocess.Popen[str]) -> None:
-    os.killpg(process.pid, signal.SIGKILL)
-
-
 def _pipes(process: subprocess.Popen[str], log: IO[str]) -> tuple[IO[str], IO[str]]:
     if process.stdin is not None and process.stdout is not None:
         return process.stdin, process.stdout
     if process.poll() is None:
-        _kill(process)
+        os.killpg(process.pid, signal.SIGKILL)
     log.close()
     raise ControlError("lifecycle", "server process pipe was not created")
 

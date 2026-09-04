@@ -3,8 +3,9 @@ from __future__ import annotations
 import hashlib
 import io
 import json
+import queue
 from pathlib import Path
-from typing import TYPE_CHECKING, Final, TypedDict, final, override
+from typing import IO, TYPE_CHECKING, Final, TypedDict, final, override
 
 from mcpack_evidence import item7_runtime
 from mcpack_evidence.item7_selections import PILOT_SELECTIONS
@@ -13,6 +14,8 @@ if TYPE_CHECKING:
     from collections.abc import Callable
 
     import pytest
+
+    from mcpack_evidence.item7_output_sequence import OutputSequence
 
 ROOT = Path(__file__).parents[2]
 FROZEN = ROOT / "evidence/item-6/frozen"
@@ -152,10 +155,19 @@ class RecordingPipe(io.StringIO):
 
 @final
 class FakeProcess:
-    def __init__(self, lines: tuple[str, ...], stdin: io.StringIO | None = None) -> None:
+    def __init__(
+        self,
+        lines: tuple[str, ...],
+        stdin: io.StringIO | None = None,
+        responses: dict[str, tuple[str, ...]] | None = None,
+    ) -> None:
         self.pid: int = 43210
-        self.stdin: io.StringIO = stdin or RecordingPipe()
-        self.stdout: io.StringIO = io.StringIO("".join(lines))
+        if responses is None:
+            self.stdin = stdin or RecordingPipe()
+            self.stdout: io.StringIO | CommandOutput = io.StringIO("".join(lines))
+        else:
+            self.stdout = CommandOutput(lines, responses)
+            self.stdin = CommandPipe(self.stdout)
         self._return_code: int | None = None
 
     def poll(self) -> int | None:
@@ -187,6 +199,69 @@ class BrokenPipe(RecordingPipe):
     def write(self, value: str) -> int:
         del value
         raise BrokenPipeError
+
+
+@final
+class CommandOutput:
+    def __init__(self, lines: tuple[str, ...], responses: dict[str, tuple[str, ...]]) -> None:
+        self._lines: queue.Queue[str | None] = queue.Queue()
+        self._responses = responses
+        for line in lines:
+            self._lines.put(line)
+
+    def close(self) -> None:
+        return None
+
+    def readline(self) -> str:
+        line = self._lines.get()
+        return "" if line is None else line
+
+    def respond(self, command: str) -> None:
+        for line in self._responses.get(command, ()):
+            self._lines.put(line)
+        if command == "stop":
+            self._lines.put(None)
+
+
+@final
+class CommandPipe:
+    def __init__(self, output: CommandOutput) -> None:
+        self._buffer = io.StringIO()
+        self._output = output
+
+    def close(self) -> None:
+        return None
+
+    def write(self, value: str) -> int:
+        written = self._buffer.write(value)
+        self._output.respond(value.removesuffix("\n"))
+        return written
+
+    def flush(self) -> None:
+        self._buffer.flush()
+
+    def getvalue(self) -> str:
+        return self._buffer.getvalue()
+
+
+@final
+class SynchronousThread:
+    def __init__(
+        self,
+        *,
+        target: Callable[..., None],
+        args: tuple[IO[str], OutputSequence],
+        daemon: bool,
+    ) -> None:
+        del daemon
+        self._args = args
+        self._target = target
+
+    def start(self) -> None:
+        self._target(*self._args)
+
+    def join(self, timeout: float | None = None) -> None:
+        del timeout
 
 
 READY_LINES: Final = (

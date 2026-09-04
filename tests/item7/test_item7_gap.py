@@ -8,7 +8,13 @@ import pytest
 from tools import run_item7_gap_targets
 
 from mcpack_evidence import item7_gap
-from tests.item7.runtime_support import FakeProcess, fake_launch, record_pids, runtime_request
+from tests.item7.runtime_support import (
+    FakeProcess,
+    SynchronousThread,
+    fake_launch,
+    record_pids,
+    runtime_request,
+)
 
 
 def _request(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> item7_gap.GapRequest:
@@ -43,9 +49,17 @@ def test_gap_targets_are_sorted_and_locations_drive_exact_chunky_commands(
         "[Chunky] Task finished for minecraft:overworld. Processed: 81 chunks (100.00%)\n",
         "[Chunky] Task finished for minecraft:overworld. Processed: 81 chunks (100.00%)\n",
         "[Chunky] Task finished for minecraft:overworld. Processed: 81 chunks (100.00%)\n",
-        "[Server thread/INFO]: Saved the game\n",
     )
-    process = FakeProcess(lines)
+    process = FakeProcess(
+        lines,
+        responses={
+            "save-all flush": (
+                "[Server thread/INFO]: Saving the game (this may take a moment!)\n",
+                "[Server thread/INFO]: Saved the game\n",
+            ),
+            "stop": ("[Server thread/INFO]: Stopped server\n",),
+        },
+    )
     monkeypatch.setattr("mcpack_evidence.item7_gap.subprocess.Popen", fake_launch(process))
 
     receipt = item7_gap.run_gap_lifecycle(request, request.runtime.java_home / "bin/java")
@@ -120,6 +134,37 @@ def test_gap_lifecycle_kills_group_on_timeout(
     assert receipt.clean_stop is False
     assert receipt.rejection_reason == "gap target lifecycle timed out"
     assert killed == [43210]
+
+
+def test_gap_lifecycle_rejects_save_confirmation_queued_before_flush_command(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # Given: all locate and Chunky markers plus an automatic save queued before the flush.
+    request = _request(tmp_path, monkeypatch)
+    _ = request.runtime.target.mkdir()
+    process = FakeProcess((
+        '[Server thread/INFO]: Done (1.0s)! For help, type "help"\n',
+        _located("betterdeserttemples:desert_temple", 32, -48),
+        _located("betterstrongholds:stronghold", -64, 96),
+        _located("betterwitchhuts:witch_hut", 128, 160),
+        _located("integrated_stronghold:stronghold", -192, -224),
+        *(
+            "[Chunky] Task finished for minecraft:overworld. Processed: 81 chunks (100.00%)\n"
+            for _ in item7_gap.GAP_TARGETS
+        ),
+        "[Server thread/INFO]: Saved the game\n",
+    ))
+    monkeypatch.setattr("mcpack_evidence.item7_gap.subprocess.Popen", fake_launch(process))
+    monkeypatch.setattr("mcpack_evidence.item7_gap.threading.Thread", SynchronousThread)
+    monkeypatch.setattr("mcpack_evidence.item7_gap.os.killpg", lambda pid, signal: None)
+
+    # When: the gap lifecycle consumes the queued server output.
+    receipt = item7_gap.run_gap_lifecycle(request, request.runtime.java_home / "bin/java")
+
+    # Then: the stale confirmation cannot complete the requested flush.
+    assert receipt.save_all_flush is False
+    assert receipt.clean_stop is False
+    assert receipt.commands[-1] == "save-all flush"
 
 
 def test_gap_cli_preserves_atomic_rejected_receipt_without_java(tmp_path: Path) -> None:
