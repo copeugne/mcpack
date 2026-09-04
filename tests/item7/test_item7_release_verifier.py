@@ -5,11 +5,27 @@ import json
 import os
 import subprocess
 from pathlib import Path
+from typing import TypedDict
 
 ROOT = Path(__file__).parents[2]
 GOOD_REVISION = "a" * 40
 TAG_OBJECT = "b" * 40
 OTHER_REPOSITORY_REVISION = "c" * 40
+
+
+class _ReleaseAsset(TypedDict):
+    name: str
+    size: int
+    state: str
+    url: str
+
+
+class _PublicationAsset(TypedDict):
+    name: str
+    size_bytes: int
+    sha256: str
+    manifest: str
+    url: str
 
 
 def test_verifier_rejects_tag_from_a_different_repository(tmp_path: Path) -> None:
@@ -19,8 +35,8 @@ def test_verifier_rejects_tag_from_a_different_repository(tmp_path: Path) -> Non
     manifests.mkdir()
     assets.mkdir()
     fake_bin.mkdir()
-    release_assets: list[dict[str, object]] = []
-    publication_assets: list[dict[str, object]] = []
+    release_assets: list[_ReleaseAsset] = []
+    publication_assets: list[_PublicationAsset] = []
     for index in range(4):
         name = f"raw-{index}.tar.gz"
         body = f"asset-{index}".encode()
@@ -91,6 +107,7 @@ def test_verifier_rejects_tag_from_a_different_repository(tmp_path: Path) -> Non
             "PATH": f"{fake_bin}:{environment['PATH']}",
             "FAKE_ASSETS": str(assets),
             "FAKE_RELEASE": str(release),
+            "FAKE_GIT_CALLED": str(tmp_path / "git-called"),
         }
     )
 
@@ -114,6 +131,7 @@ def test_verifier_rejects_tag_from_a_different_repository(tmp_path: Path) -> Non
     assert result.returncode == 1
     assert "remote tag does not resolve to the archive revision" in result.stderr
     assert not download.exists()
+    assert not (tmp_path / "git-called").exists()
 
 
 def _write_fake_git(path: Path) -> None:
@@ -121,6 +139,7 @@ def _write_fake_git(path: Path) -> None:
         "".join(
             (
                 "#!/usr/bin/env bash\n",
+                "printf 'called\\n' > \"$FAKE_GIT_CALLED\"\n",
                 f"if [[ $* == *'^{{}}'* ]]; then printf '%s\\n' '{GOOD_REVISION}'; ",
                 f"else printf '%s\\n' '{TAG_OBJECT}'; fi\n",
             )
