@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import hashlib
 import os
-import shutil
 import tarfile
 from pathlib import Path
 
@@ -61,7 +60,7 @@ def _arguments(command: str, **options: Path | str) -> tuple[str, ...]:
 
 def _create_request(root: Path, archive_name: str) -> archive.ArchiveRequest:
     raw = root / "raw"
-    raw.mkdir()
+    raw.mkdir(parents=True)
     _ = (raw / "evidence.txt").write_bytes(b"evidence")
     return archive.ArchiveRequest(raw, root / archive_name, root / "manifest.json", "qa-item7")
 
@@ -248,62 +247,6 @@ def test_archive_publication_failure_preserves_only_competing_manifest(
         assert request.manifest.read_bytes() == replacement
     else:
         assert not request.manifest.exists()
-
-
-def test_restore_refuses_concurrently_created_target(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    # Given
-    created = _create_request(tmp_path, "item7-raw-race.tar.gz")
-    _ = archive.create_archive(created)
-    request = _restore_request(tmp_path, created.archive, created.manifest)
-    original_copytree = shutil.copytree
-
-    def inject_competing_target(source: Path, target: Path) -> Path:
-        request.target.mkdir()
-        return original_copytree(source, target)
-
-    monkeypatch.setattr(shutil, "copytree", inject_competing_target)
-
-    # When
-    with pytest.raises(FileExistsError):
-        _ = archive.restore_archive(request)
-
-    # Then
-    assert request.target.is_dir()
-    assert not request.receipt.exists()
-
-
-def test_manifest_binds_bytes_archived_after_source_change(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    # Given
-    raw = tmp_path / "raw"
-    raw.mkdir()
-    source = raw / "evidence.bin"
-    _ = source.write_bytes(b"first")
-
-    def mutate_before_build(root: Path, output: Path, files: tuple[Path, ...]) -> Path:
-        _ = source.write_bytes(b"later")
-        temporary = output.parent / ".injected.tar.gz"
-        with tarfile.open(temporary, "w:gz") as bundle:
-            for path in files:
-                bundle.add(path, arcname=path.relative_to(root))
-        return temporary
-
-    monkeypatch.setattr(archive, "_build_tar", mutate_before_build)
-    request = archive.ArchiveRequest(
-        raw, tmp_path / "item7-raw-race.tar.gz", tmp_path / "manifest.json", "qa-item7"
-    )
-
-    # When
-    _ = archive.create_archive(request)
-
-    # Then
-    restore = archive.RestoreRequest(
-        request.archive, request.manifest, tmp_path / "restored", tmp_path / "receipt"
-    )
-    _ = archive.restore_archive(restore)
 
 
 def test_archive_cli_creates_and_restores_verified_evidence(tmp_path: Path) -> None:

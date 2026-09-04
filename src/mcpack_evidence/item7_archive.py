@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import gzip
 import hashlib
 import os
 import shutil
@@ -14,6 +13,15 @@ from pathlib import Path, PurePosixPath
 from typing import ClassVar, Literal, Self, final, override
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
+
+from .item7_archive_io import (
+    UnsafeFilesystemError,
+    build_tar,
+    duplicate_stream,
+    open_regular,
+    open_tree,
+    sha256_descriptor,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -126,13 +134,16 @@ class RestoreReceipt(_EvidenceModel):
 
 def create_archive(request: ArchiveRequest) -> ArchiveManifest:
     """Create a deterministic archive and publish its content manifest."""
-    if request.root.is_symlink() or not request.root.is_dir():
-        message = f"raw evidence root is not a directory: {request.root}"
-        raise NotADirectoryError(message)
     request.archive.parent.mkdir(parents=True, exist_ok=True)
     request.manifest.parent.mkdir(parents=True, exist_ok=True)
-    files = _source_files(request.root)
-    temporary = _build_tar(request.root, request.archive, files)
+    try:
+        with open_tree(request.root) as files:
+            temporary = build_tar(request.archive, files)
+    except UnsafeFilesystemError as error:
+        raise ArchiveValidationError(_ArchiveIssue.SOURCE_SYMLINK, request.root) from error
+    except (FileNotFoundError, NotADirectoryError) as error:
+        message = f"raw evidence root is not a directory: {request.root}"
+        raise NotADirectoryError(message) from error
     archived: list[FileIdentity] = []
     with tarfile.open(temporary, "r:gz") as bundle:
         for member in bundle.getmembers():
@@ -182,27 +193,39 @@ def restore_archive(request: RestoreRequest) -> RestoreReceipt:
     """Verify an archive against its manifest and restore to an absent target."""
     _require_absent(request.target)
     _require_absent(request.receipt)
-    manifest = ArchiveManifest.model_validate_json(request.manifest.read_bytes())
-    if request.archive.name != manifest.archive_name:
-        raise ArchiveValidationError(_ArchiveIssue.ARCHIVE_NAME)
-    if request.archive.stat().st_size != manifest.archive_size_bytes:
-        raise ArchiveValidationError(_ArchiveIssue.ARCHIVE_SIZE)
-    if _sha256(request.archive) != manifest.archive_sha256:
-        raise ArchiveValidationError(_ArchiveIssue.ARCHIVE_HASH)
-    request.target.parent.mkdir(parents=True, exist_ok=True)
-    staging = Path(tempfile.mkdtemp(dir=request.target.parent))
     try:
-        with tarfile.open(request.archive, "r:gz") as bundle:
-            _verify_and_extract(bundle, manifest, staging)
-        _ = shutil.copytree(staging, request.target)
-    finally:
-        if staging.exists():
-            _ = shutil.rmtree(staging)
+        with (
+            open_regular(request.manifest) as (manifest_descriptor, _),
+            duplicate_stream(manifest_descriptor) as manifest_stream,
+        ):
+            manifest_bytes = manifest_stream.read()
+        manifest = ArchiveManifest.model_validate_json(manifest_bytes)
+        with open_regular(request.archive) as (archive_descriptor, archive_metadata):
+            if request.archive.name != manifest.archive_name:
+                raise ArchiveValidationError(_ArchiveIssue.ARCHIVE_NAME)
+            if archive_metadata.st_size != manifest.archive_size_bytes:
+                raise ArchiveValidationError(_ArchiveIssue.ARCHIVE_SIZE)
+            if sha256_descriptor(archive_descriptor) != manifest.archive_sha256:
+                raise ArchiveValidationError(_ArchiveIssue.ARCHIVE_HASH)
+            request.target.parent.mkdir(parents=True, exist_ok=True)
+            staging = Path(tempfile.mkdtemp(dir=request.target.parent))
+            try:
+                with (
+                    duplicate_stream(archive_descriptor) as archive_stream,
+                    tarfile.open(fileobj=archive_stream, mode="r:gz") as bundle,
+                ):
+                    _verify_and_extract(bundle, manifest, staging)
+                _ = shutil.copytree(staging, request.target)
+            finally:
+                if staging.exists():
+                    _ = shutil.rmtree(staging)
+    except UnsafeFilesystemError as error:
+        raise ArchiveValidationError(_ArchiveIssue.UNSAFE_PATH) from error
     receipt = RestoreReceipt(
         revision=manifest.revision,
         archive_name=manifest.archive_name,
         archive_sha256=manifest.archive_sha256,
-        manifest_sha256=_sha256(request.manifest),
+        manifest_sha256=hashlib.sha256(manifest_bytes).hexdigest(),
         restored_target=request.target.as_posix(),
         file_count=manifest.file_count,
         total_size_bytes=manifest.total_size_bytes,
@@ -236,38 +259,6 @@ def _verify_and_extract(bundle: tarfile.TarFile, manifest: ArchiveManifest, stag
             raise ArchiveValidationError(_ArchiveIssue.RESTORED_SIZE, identity.relative_path)
         if _sha256(destination) != identity.sha256:
             raise ArchiveValidationError(_ArchiveIssue.RESTORED_HASH, identity.relative_path)
-
-
-def _build_tar(root: Path, archive: Path, files: tuple[Path, ...]) -> Path:
-    with tempfile.NamedTemporaryFile(dir=archive.parent, delete=False) as stream:
-        temporary = Path(stream.name)
-        with (
-            gzip.GzipFile(fileobj=stream, mode="wb", filename="", mtime=0) as compressed,
-            tarfile.open(fileobj=compressed, mode="w|", format=tarfile.PAX_FORMAT) as bundle,
-        ):
-            for path in files:
-                identity = path.relative_to(root).as_posix()
-                info = tarfile.TarInfo(identity)
-                info.size = path.stat().st_size
-                info.mode = 0o644
-                info.mtime = 0
-                with path.open("rb") as source:
-                    bundle.addfile(info, source)
-    return temporary
-
-
-def _source_files(root: Path) -> tuple[Path, ...]:
-    selected: list[Path] = []
-    for path in sorted(root.rglob("*"), key=lambda item: item.as_posix()):
-        if path.is_symlink():
-            raise ArchiveValidationError(_ArchiveIssue.SOURCE_SYMLINK, path)
-        if path.is_dir():
-            continue
-        if not path.is_file():
-            raise ArchiveValidationError(_ArchiveIssue.NONREGULAR, path)
-        if path.name != "session.lock":
-            selected.append(path)
-    return tuple(selected)
 
 
 def _stage_text(path: Path, body: str) -> Path:
