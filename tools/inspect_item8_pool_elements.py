@@ -45,6 +45,8 @@ CLASSES = (
     "LegacyOceanBottomSinglePoolElement.class",
     "SingleEndPoolElement.class",
     "BreaksSeedParityCondition.class",
+    "DisableVanillaMineshaftsMixin.class",
+    "LocateVanillaMineshaftCommandMixin.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -58,7 +60,7 @@ REGISTRATION_KEYS = (
 )
 
 
-def main() -> None:
+def main() -> None:  # noqa: C901 - explicit archive selection and portable verbose output.
     """Retain disassembly and exact class/archive identities for the observed custom types."""
     parser = argparse.ArgumentParser(description=__doc__)
     _ = parser.add_argument("--output", type=Path, required=True)
@@ -80,6 +82,17 @@ def main() -> None:
         destination = output / source.name
         destination.mkdir()
         with ZipFile(source.path) as archive:
+            if source.name == "YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar":
+                metadata = {
+                    name: {
+                        "sha256": hashlib.sha256(archive.read(name)).hexdigest(),
+                        "text": archive.read(name).decode("utf-8"),
+                    }
+                    for name in ("bettermineshafts.mixins.json", "META-INF/neoforge.mods.toml")
+                }
+                _ = (destination / "mixin-metadata.json").write_text(
+                    json.dumps(metadata, indent=2) + "\n", encoding="utf-8"
+                )
             for name in sorted(archive.namelist()):
                 if not name.endswith(".class"):
                     continue
@@ -97,6 +110,7 @@ def main() -> None:
                         "-p",
                         "-c",
                         "-constants",
+                        *(["-v"] if "/mixin/" in name else []),
                         "-classpath",
                         str(source.path),
                         class_name,
@@ -104,8 +118,18 @@ def main() -> None:
                     check=True,
                     capture_output=True,
                 )
+                disassembly = result.stdout
+                if "/mixin/" in name:
+                    if not disassembly.startswith(b"Classfile "):
+                        message = f"verbose javap lacks expected classfile header: {name}"
+                        raise ValueError(message)
+                    # Preserve archive/member identity without publishing a local host path.
+                    disassembly = (
+                        f"Classfile {source.name}!/{name}\n".encode()
+                        + disassembly.partition(b"\n")[2]
+                    )
                 target = destination / f"{class_name}.txt"
-                _ = target.write_bytes(result.stdout)
+                _ = target.write_bytes(disassembly)
                 identities.append(
                     {
                         "archive": source.name,
@@ -113,7 +137,7 @@ def main() -> None:
                         "class": name,
                         "class_sha256": hashlib.sha256(payload).hexdigest(),
                         "disassembly": target.relative_to(output).as_posix(),
-                        "disassembly_sha256": hashlib.sha256(result.stdout).hexdigest(),
+                        "disassembly_sha256": hashlib.sha256(disassembly).hexdigest(),
                     }
                 )
     _ = (output / "identities.json").write_text(
