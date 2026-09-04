@@ -162,6 +162,20 @@ def test_capture_preserves_existing_output_bytes(tmp_path: Path) -> None:
     assert sorted(path.name for path in output.iterdir()) == ["sentinel.bin"]
 
 
+def test_capture_rejects_parent_traversal_before_collision(tmp_path: Path) -> None:
+    instance = _make_instance(tmp_path)
+    victim = tmp_path / "victim"
+    victim.mkdir()
+    output = tmp_path / "new-parent" / ".." / "victim"
+
+    with pytest.raises(ValueError, match="parent traversal"):
+        capture(instance, output)
+    assert victim.is_dir()
+    assert not tuple(victim.iterdir())
+    assert not (tmp_path / "new-parent").exists()
+    assert not (tmp_path / "config-sanitization.json").exists()
+
+
 def test_capture_rejects_output_that_aliases_sanitization_receipt(tmp_path: Path) -> None:
     """The capture directory and adjacent receipt must be distinct paths."""
     # Given: the requested output has the fixed receipt filename.

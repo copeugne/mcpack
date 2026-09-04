@@ -57,6 +57,9 @@ class CaptureValidationError(ValueError):
 
 def capture(instance: Path, output: Path) -> None:
     """Copy configuration-bearing paths without altering the source instance."""
+    if ".." in output.parts:
+        message = "output path must not contain parent traversal"
+        raise CaptureValidationError(message)
     _require_real_output_parent(output.parent)
     receipt = output.parent / _SANITIZATION_RECEIPT
     if output == receipt:
