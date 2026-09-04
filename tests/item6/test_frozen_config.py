@@ -20,6 +20,17 @@ from tests.item6.helpers import (
 if TYPE_CHECKING:
     from pathlib import Path
 
+
+YUNG_REPLACEMENT_FILES = {
+    "config/betterdeserttemples-neoforge-1_21.toml",
+    "config/betterfortresses-neoforge-1_21.toml",
+    "config/betterjungletemples-neoforge-1_21.toml",
+    "config/bettermineshafts-neoforge-1_21.toml",
+    "config/betteroceanmonuments-neoforge-1_21.toml",
+    "config/betterwitchhuts-neoforge-1_21.toml",
+}
+
+
 def test_committed_item6_evidence_validates() -> None:
     """The committed report must remain bound to every frozen file."""
     validate(FROZEN, MANIFEST, AUDIT)
@@ -54,6 +65,14 @@ def test_audit_covers_required_systems() -> None:
         "When Dungeons Arise",
         "YUNG structure systems",
     }
+
+
+def test_yung_replacement_configs_are_audited_with_settings() -> None:
+    audit = json.loads(AUDIT.read_text(encoding="utf-8"))
+    yung = next(row for row in audit["systems"] if row["system"] == "YUNG structure systems")
+    setting_files = {row["file"] for row in audit["settings"]}
+    assert set(yung["files"]) >= YUNG_REPLACEMENT_FILES
+    assert setting_files >= YUNG_REPLACEMENT_FILES
 
 
 def test_validator_rejects_missing_file_accounting(tmp_path: Path) -> None:
