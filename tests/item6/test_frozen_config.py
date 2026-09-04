@@ -79,6 +79,7 @@ def test_audit_covers_required_systems() -> None:
         "Loot Integrations",
         "Mob spawning and entity limits",
         "Moog structure families",
+        "Naturalist",
         "Repurposed Structures",
         "ServerCore",
         "Sparse Structures",

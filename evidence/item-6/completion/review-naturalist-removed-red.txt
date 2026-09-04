@@ -1,0 +1,68 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+_____________ test_naturalist_audits_all_24_removed_booleans_once ______________
+
+    def test_naturalist_audits_all_24_removed_booleans_once() -> None:
+        source = tomllib.loads((FROZEN / FILE).read_text(encoding="utf-8"))["disable_mobs"]
+        expected = {key: value for key, value in source.items() if key.endswith("_removed")}
+        settings = [setting for setting in AUDIT_DATA["settings"] if setting["file"] == FILE]
+        observed = {setting["key"].removeprefix(KEY_PREFIX): setting for setting in settings}
+>       assert len(expected) == len(settings) == len(observed) == 24
+E       AssertionError: assert 24 == 0
+E        +  where 24 = len({'alligator_removed': False, 'bass_removed': False, 'bear_removed': False, 'bird_removed': False, ...})
+E        +  and   0 = len([])
+
+tests/item6/test_naturalist_removed_settings.py:27: AssertionError
+__________ test_naturalist_removed_evidence_binds_unique_source_lines __________
+
+    def test_naturalist_removed_evidence_binds_unique_source_lines() -> None:
+        source_lines = (FROZEN / FILE).read_text(encoding="utf-8").splitlines()
+        expected_lines = {
+            line.strip().partition(" = ")[0]: number
+            for number, line in enumerate(source_lines, start=1)
+            if line.strip().partition(" = ")[0].endswith("_removed")
+        }
+        settings = [setting for setting in AUDIT_DATA["settings"] if setting["file"] == FILE]
+        observed_lines = {
+            setting["key"].removeprefix(KEY_PREFIX): setting["evidence"]["observations"][0]["line"]
+            for setting in settings
+        }
+>       assert observed_lines == expected_lines
+E       AssertionError: assert {} == {'alligator_r...oved': 5, ...}
+E
+E         Right contains 24 more items:
+E         {'alligator_removed': 2,
+E          'bass_removed': 3,
+E          'bear_removed': 4,
+E          'bird_removed': 5,
+E          'boar_removed': 6,...
+E
+E         ...Full output truncated (20 lines hidden), use '-vv' to show
+
+tests/item6/test_naturalist_removed_settings.py:46: AssertionError
+__________________ test_naturalist_file_is_owned_and_audited ___________________
+
+    def test_naturalist_file_is_owned_and_audited() -> None:
+>       system = next(system for system in AUDIT_DATA["systems"] if system["system"] == SYSTEM)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/item6/test_naturalist_removed_settings.py:51: StopIteration
+_________________ test_naturalist_removed_mutation_is_rejected _________________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-351/test_naturalist_removed_mutati0')
+
+    def test_naturalist_removed_mutation_is_rejected(tmp_path: Path) -> None:
+        audit = deepcopy(AUDIT_DATA)
+>       setting = next(setting for setting in audit["settings"] if setting["file"] == FILE)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/item6/test_naturalist_removed_settings.py:67: StopIteration
+=========================== short test summary info ============================
+FAILED tests/item6/test_naturalist_removed_settings.py::test_naturalist_audits_all_24_removed_booleans_once
+FAILED tests/item6/test_naturalist_removed_settings.py::test_naturalist_removed_evidence_binds_unique_source_lines
+FAILED tests/item6/test_naturalist_removed_settings.py::test_naturalist_file_is_owned_and_audited
+FAILED tests/item6/test_naturalist_removed_settings.py::test_naturalist_removed_mutation_is_rejected
+4 failed in 0.09s
+expected_red_exit=1
