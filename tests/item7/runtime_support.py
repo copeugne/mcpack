@@ -12,13 +12,15 @@ from mcpack_evidence.item7_selections import PILOT_SELECTIONS
 if TYPE_CHECKING:
     from collections.abc import Callable
 
+    import pytest
+
 ROOT = Path(__file__).parents[2]
 FROZEN = ROOT / "evidence/item-6/frozen"
 FROZEN_MANIFEST = ROOT / "evidence/item-6/generated-config-manifest.json"
 CONFIG_AUDIT = ROOT / "evidence/item-6/config-audit.json"
 SEEDS = ROOT / "test-environment/seed-suite.json"
 RETAINED = ROOT / "evidence/item-3/runtime/retained-server-candidates.txt"
-CHUNKY = ROOT / "downloads/item3/candidates/Chunky-NeoForge-1.4.23.jar"
+CHUNKY_FIXTURE: Final = b"synthetic-item7-chunky-fixture"
 
 
 class ArtifactIdentity(TypedDict):
@@ -71,7 +73,12 @@ def pipe_less_launch(process: PipeLessProcess) -> Callable[..., PipeLessProcess]
     return launch
 
 
-def runtime_request(tmp_path: Path, *, role: str = "mountainous") -> item7_runtime.WorldgenRequest:
+def runtime_request(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    *,
+    role: str = "mountainous",
+) -> item7_runtime.WorldgenRequest:
     pristine = tmp_path / "pristine"
     _ = (pristine / "mods").mkdir(parents=True)
     _ = (pristine / "world").mkdir()
@@ -93,7 +100,9 @@ def runtime_request(tmp_path: Path, *, role: str = "mountainous") -> item7_runti
             }
         )
     chunky = artifacts / item7_runtime.CHUNKY_FILENAME
-    _ = chunky.write_bytes(CHUNKY.read_bytes())
+    _ = chunky.write_bytes(CHUNKY_FIXTURE)
+    monkeypatch.setattr(item7_runtime, "CHUNKY_SIZE_BYTES", len(CHUNKY_FIXTURE))
+    monkeypatch.setattr(item7_runtime, "CHUNKY_SHA256", _digest(CHUNKY_FIXTURE))
     records.append(
         {
             "candidate_filename": item7_runtime.CHUNKY_FILENAME,

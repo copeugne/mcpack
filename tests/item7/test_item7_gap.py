@@ -11,8 +11,8 @@ from mcpack_evidence import item7_gap
 from tests.item7.runtime_support import FakeProcess, fake_launch, record_pids, runtime_request
 
 
-def _request(tmp_path: Path) -> item7_gap.GapRequest:
-    return item7_gap.GapRequest(runtime=runtime_request(tmp_path, role="ordinary"))
+def _request(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> item7_gap.GapRequest:
+    return item7_gap.GapRequest(runtime=runtime_request(tmp_path, monkeypatch, role="ordinary"))
 
 
 def _located(structure: str, x: int, z: int) -> str:
@@ -28,7 +28,7 @@ def _parse_rejected(line: str, target: item7_gap.GapTarget) -> str:
 def test_gap_targets_are_sorted_and_locations_drive_exact_chunky_commands(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    request = _request(tmp_path)
+    request = _request(tmp_path, monkeypatch)
     request.runtime.target.mkdir()
     logs = request.runtime.target / "logs"
     logs.mkdir()
@@ -105,7 +105,9 @@ def test_gap_parser_rejects_wrong_structure_or_completion_marker(line: str, expe
 def test_gap_lifecycle_kills_group_on_timeout(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    runtime = runtime_request(tmp_path, role="ordinary").model_copy(update={"timeout_seconds": 0})
+    runtime = runtime_request(tmp_path, monkeypatch, role="ordinary").model_copy(
+        update={"timeout_seconds": 0}
+    )
     request = item7_gap.GapRequest(runtime=runtime)
     runtime.target.mkdir()
     process = FakeProcess(())

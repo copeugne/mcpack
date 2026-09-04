@@ -27,7 +27,7 @@ def _discard_kill(pid: int, signal_number: int) -> None:
 def test_lifecycle_sends_commands_only_after_matching_markers(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    request = runtime_request(tmp_path)
+    request = runtime_request(tmp_path, monkeypatch)
     _ = request.target.mkdir()
     _ = (request.target / "logs").mkdir()
     _ = (request.target / "logs/latest.log").write_text("authoritative warning\n", encoding="utf-8")
@@ -80,7 +80,7 @@ def test_lifecycle_sends_commands_only_after_matching_markers(
 def test_lifecycle_kills_process_group_on_timeout(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    request = runtime_request(tmp_path).model_copy(update={"timeout_seconds": 0})
+    request = runtime_request(tmp_path, monkeypatch).model_copy(update={"timeout_seconds": 0})
     _ = request.target.mkdir()
     process = FakeProcess(())
     killed: list[tuple[int, int]] = []
@@ -97,7 +97,7 @@ def test_lifecycle_kills_process_group_on_timeout(
 def test_lifecycle_rejects_broad_or_wrong_chunky_completion(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    request = runtime_request(tmp_path)
+    request = runtime_request(tmp_path, monkeypatch)
     _ = request.target.mkdir()
     process = FakeProcess(
         (
@@ -118,7 +118,7 @@ def test_lifecycle_rejects_broad_or_wrong_chunky_completion(
 def test_lifecycle_kills_process_group_on_console_pipe_failure(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    request = runtime_request(tmp_path)
+    request = runtime_request(tmp_path, monkeypatch)
     _ = request.target.mkdir()
     process = FakeProcess(READY_LINES, BrokenPipe())
     killed: list[int] = []
@@ -135,7 +135,7 @@ def test_lifecycle_kills_process_group_on_console_pipe_failure(
 def test_lifecycle_kills_process_group_on_post_launch_io_failure(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    request = runtime_request(tmp_path)
+    request = runtime_request(tmp_path, monkeypatch)
     _ = request.target.mkdir()
     process = FakeProcess(())
     killed: list[int] = []
@@ -158,7 +158,7 @@ def test_lifecycle_kills_process_group_on_post_launch_io_failure(
 def test_lifecycle_rejects_log_open_failure_before_launch(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    request = runtime_request(tmp_path)
+    request = runtime_request(tmp_path, monkeypatch)
     _ = request.target.mkdir()
     request = request.model_copy(update={"log_path": request.target})
     launched: list[bool] = []
@@ -178,7 +178,7 @@ def test_lifecycle_rejects_log_open_failure_before_launch(
 def test_lifecycle_kills_process_group_when_launch_has_no_console_pipe(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    request = runtime_request(tmp_path)
+    request = runtime_request(tmp_path, monkeypatch)
     _ = request.target.mkdir()
     process = PipeLessProcess()
     killed: list[int] = []
@@ -196,7 +196,7 @@ def test_lifecycle_kills_process_group_when_launch_has_no_console_pipe(
 def test_execute_preserves_completed_stages_when_config_capture_fails(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    request = runtime_request(tmp_path)
+    request = runtime_request(tmp_path, monkeypatch)
     lifecycle = item7_lifecycle.LifecycleReceipt(
         ready=True,
         generation_finished=True,

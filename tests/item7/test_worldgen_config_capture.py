@@ -12,8 +12,10 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 
-def _prepared_request(tmp_path: Path) -> item7_runtime.WorldgenRequest:
-    request = runtime_request(tmp_path)
+def _prepared_request(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> item7_runtime.WorldgenRequest:
+    request = runtime_request(tmp_path, monkeypatch)
     _ = item7_runtime.prepare_worldgen(request)
     resourceful = request.target / "config/resourceful-config-web.json"
     frozen_resourceful = (FROZEN / "config/resourceful-config-web.json").read_text()
@@ -34,8 +36,10 @@ def _write_chunky_files(request: item7_runtime.WorldgenRequest, content: bytes) 
         _ = path.write_bytes(content)
 
 
-def test_capture_sanitizes_generated_credential(tmp_path: Path) -> None:
-    request = _prepared_request(tmp_path)
+def test_capture_sanitizes_generated_credential(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    request = _prepared_request(tmp_path, monkeypatch)
     chunky_files = {
         "config/chunky/config.json": b"{}",
         "config/chunky/tasks/minecraft/overworld.properties": b"done=true\n",
@@ -58,8 +62,10 @@ def test_capture_sanitizes_generated_credential(tmp_path: Path) -> None:
     assert receipt.normalized_runtime_drifts == ()
 
 
-def test_capture_accepts_exact_overworld_only_chunky_inventory(tmp_path: Path) -> None:
-    request = _prepared_request(tmp_path)
+def test_capture_accepts_exact_overworld_only_chunky_inventory(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    request = _prepared_request(tmp_path, monkeypatch)
     overworld_paths = item7_config.OVERWORLD_CHUNKY_PATHS
     for relative in overworld_paths:
         path = request.target / relative
@@ -71,8 +77,10 @@ def test_capture_accepts_exact_overworld_only_chunky_inventory(tmp_path: Path) -
     assert tuple(row.path for row in receipt.chunky_files) == overworld_paths
 
 
-def test_capture_records_comment_only_runtime_normalization(tmp_path: Path) -> None:
-    request = _prepared_request(tmp_path)
+def test_capture_records_comment_only_runtime_normalization(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    request = _prepared_request(tmp_path, monkeypatch)
     _write_chunky_files(request, b"generated=true\n")
     normalized = request.target / "config/bettervillage_1.properties"
     _ = normalized.write_text(
@@ -89,8 +97,10 @@ def test_capture_records_comment_only_runtime_normalization(tmp_path: Path) -> N
     )
 
 
-def test_capture_rejects_value_drift_in_comment_normalized_file(tmp_path: Path) -> None:
-    request = _prepared_request(tmp_path)
+def test_capture_rejects_value_drift_in_comment_normalized_file(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    request = _prepared_request(tmp_path, monkeypatch)
     _write_chunky_files(request, b"generated=true\n")
     normalized = request.target / "config/bettervillage_1.properties"
     _ = normalized.write_text(
@@ -107,7 +117,7 @@ def test_capture_rejects_value_drift_in_comment_normalized_file(tmp_path: Path) 
 def test_capture_rejects_unsanitized_generated_credential(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    request = _prepared_request(tmp_path)
+    request = _prepared_request(tmp_path, monkeypatch)
     _write_chunky_files(request, b"generated=true\n")
 
     def leave_unsanitized(source: Path, destination: Path) -> None:

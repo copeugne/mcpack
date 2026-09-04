@@ -18,14 +18,22 @@ from tests.item7.runtime_support import (
 )
 
 
-def _request(tmp_path: Path, *, settle_seconds: float = 5) -> item7_control.ControlRequest:
+def _request(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    *,
+    settle_seconds: float = 5,
+) -> item7_control.ControlRequest:
     return item7_control.ControlRequest(
-        runtime=runtime_request(tmp_path, role="ordinary"), settle_seconds=settle_seconds
+        runtime=runtime_request(tmp_path, monkeypatch, role="ordinary"),
+        settle_seconds=settle_seconds,
     )
 
 
-def test_control_preflight_materializes_exact_136_without_chunky(tmp_path: Path) -> None:
-    request = _request(tmp_path)
+def test_control_preflight_materializes_exact_136_without_chunky(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    request = _request(tmp_path, monkeypatch)
 
     receipt = run_item7_control.prepare_control(request)
 
@@ -38,8 +46,10 @@ def test_control_preflight_materializes_exact_136_without_chunky(tmp_path: Path)
     assert "level-seed=42" in request.runtime.target.joinpath("server.properties").read_text()
 
 
-def test_control_preflight_rejects_nonordinary_role(tmp_path: Path) -> None:
-    runtime = runtime_request(tmp_path, role="mountainous")
+def test_control_preflight_rejects_nonordinary_role(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    runtime = runtime_request(tmp_path, monkeypatch, role="mountainous")
 
     with pytest.raises(ValueError, match="ordinary seed only"):
         item7_control.ControlRequest(runtime=runtime, settle_seconds=5)
@@ -48,7 +58,7 @@ def test_control_preflight_rejects_nonordinary_role(tmp_path: Path) -> None:
 def test_control_lifecycle_waits_for_success_then_settles_flushes_and_stops(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    request = _request(tmp_path)
+    request = _request(tmp_path, monkeypatch)
     request.runtime.target.mkdir()
     (request.runtime.target / "logs").mkdir()
     (request.runtime.target / "logs/latest.log").write_text("raw warning\n", encoding="utf-8")
@@ -106,7 +116,7 @@ def test_control_lifecycle_waits_for_success_then_settles_flushes_and_stops(
 def test_control_lifecycle_rejects_missing_exact_success_marker(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, lines: tuple[str, ...]
 ) -> None:
-    request = _request(tmp_path, settle_seconds=0)
+    request = _request(tmp_path, monkeypatch, settle_seconds=0)
     request.runtime.target.mkdir()
     process = FakeProcess(lines)
     killed: list[int] = []
@@ -124,9 +134,9 @@ def test_control_lifecycle_rejects_missing_exact_success_marker(
 def test_control_lifecycle_kills_group_on_timeout_or_pipe_failure(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    timeout_runtime = runtime_request(tmp_path / "timeout", role="ordinary").model_copy(
-        update={"timeout_seconds": 0}
-    )
+    timeout_runtime = runtime_request(
+        tmp_path / "timeout", monkeypatch, role="ordinary"
+    ).model_copy(update={"timeout_seconds": 0})
     timeout = item7_control.ControlRequest(
         runtime=timeout_runtime,
         settle_seconds=0,
@@ -144,7 +154,7 @@ def test_control_lifecycle_kills_group_on_timeout_or_pipe_failure(
     assert timeout_kills == [43210]
     assert timeout_receipt.rejection_reason == "control generation timed out"
 
-    broken = _request(tmp_path / "broken", settle_seconds=0)
+    broken = _request(tmp_path / "broken", monkeypatch, settle_seconds=0)
     broken.runtime.target.mkdir()
     broken_process = FakeProcess(
         ('[Server thread/INFO]: Done (1.0s)! For help, type "help"\n',), BrokenPipe()
@@ -161,8 +171,10 @@ def test_control_lifecycle_kills_group_on_timeout_or_pipe_failure(
     assert broken_receipt.rejection_reason == "server console pipe failed"
 
 
-def test_control_capture_sanitizes_and_rejects_chunky_files(tmp_path: Path) -> None:
-    request = _request(tmp_path)
+def test_control_capture_sanitizes_and_rejects_chunky_files(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    request = _request(tmp_path, monkeypatch)
     _ = run_item7_control.prepare_control(request)
     frozen_resourceful = FROZEN.joinpath("config/resourceful-config-web.json").read_text()
     request.runtime.target.joinpath("config/resourceful-config-web.json").write_text(
@@ -180,7 +192,7 @@ def test_control_capture_sanitizes_and_rejects_chunky_files(tmp_path: Path) -> N
     assert receipt.base_file_count == 228
     assert receipt.chunky_files == ()
 
-    rejected = _request(tmp_path / "rejected")
+    rejected = _request(tmp_path / "rejected", monkeypatch)
     _ = run_item7_control.prepare_control(rejected)
     chunky = rejected.runtime.target / "config/chunky/config.json"
     chunky.parent.mkdir(parents=True)
