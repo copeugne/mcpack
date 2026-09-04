@@ -115,3 +115,84 @@ def _loot_references(value: JsonValue, path: str, result: list[JsonValue]) -> No
     elif isinstance(value, list):
         for index, child in enumerate(value):
             _loot_references(child, f"{path}/{index}", result)
+
+
+def spawner_entity_sources(nbt: dict[str, JsonValue]) -> list[dict[str, JsonValue]]:
+    """Read explicit base entity IDs without inventing defaults or custom-spawner semantics."""
+    identifier = nbt.get("id")
+    rows: list[dict[str, JsonValue]] = []
+    sections: list[tuple[str, str, dict[str, JsonValue], str, str]] = []
+    if identifier == "minecraft:mob_spawner":
+        sections.append(("ordinary", "", nbt, "SpawnData", "SpawnPotentials"))
+    elif identifier == "minecraft:trial_spawner":
+        if "spawn_data" in nbt:
+            sections.append(("trial_current", "", nbt, "spawn_data", ""))
+        for mode in ("normal_config", "ominous_config"):
+            config = nbt.get(mode)
+            if isinstance(config, dict):
+                sections.append((mode, f"/{mode}", config, "", "spawn_potentials"))
+            else:
+                rows.append(
+                    {
+                        "mode": mode,
+                        "path": f"/{mode}",
+                        "unresolved": "missing or referenced trial configuration",
+                        "source_value": config,
+                    }
+                )
+    else:
+        return [
+            {
+                "mode": "custom",
+                "path": "",
+                "unresolved": "custom spawner semantics",
+                "source_value": identifier,
+            }
+        ]
+    for section in sections:
+        rows.extend(_spawner_section_sources(*section))
+    return rows
+
+
+def _spawner_section_sources(
+    mode: str, prefix: str, section: dict[str, JsonValue], initial_key: str, potentials_key: str
+) -> list[dict[str, JsonValue]]:
+    rows: list[dict[str, JsonValue]] = []
+    candidates: list[tuple[str, JsonValue]] = []
+    if initial_key:
+        candidates.append((f"{prefix}/{initial_key}", section.get(initial_key)))
+    if potentials_key:
+        potentials = section.get(potentials_key)
+        if not isinstance(potentials, list):
+            rows.append(
+                {
+                    "mode": mode,
+                    "path": f"{prefix}/{potentials_key}",
+                    "unresolved": "missing or non-list spawn potentials",
+                }
+            )
+        else:
+            for index, potential in enumerate(potentials):
+                pointer = f"{prefix}/{potentials_key}/{index}"
+                entry = cast("dict[str, JsonValue]", potential)
+                weight = entry.get("weight")
+                if type(weight) is not int or weight < 0:
+                    rows.append(
+                        {
+                            "mode": mode,
+                            "path": pointer,
+                            "unresolved": "invalid or missing potential weight",
+                        }
+                    )
+                elif weight > 0:
+                    candidates.append((f"{pointer}/data", entry.get("data")))
+    for pointer, data in candidates:
+        entity = data.get("entity") if isinstance(data, dict) else None
+        entity_id = entity.get("id") if isinstance(entity, dict) else None
+        row: dict[str, JsonValue] = {"mode": mode, "path": f"{pointer}/entity/id"}
+        if isinstance(entity_id, str) and entity_id:
+            row["entity_id"] = entity_id
+        else:
+            row["unresolved"] = "missing or empty explicit entity ID"
+        rows.append(row)
+    return rows
