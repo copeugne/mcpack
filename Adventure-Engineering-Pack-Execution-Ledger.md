@@ -305,7 +305,8 @@ Exact-SHA local reviews at `97262a21b0b76c253f57e32b8665e48d0a63f822`, `8c7e7b8b
 
 **Continuation decision, 2026-09-04:** The user explicitly authorized Item 8 after the continuation audit found that Item 7's final clean GitHub Codex review is not visible. Item 7 remains empirically verified and merged; its completion receipt rebuilt byte for byte and all 210 Item 7 tests passed. Proceeding is an explicit user exception to that prior review prerequisite, not a claim that the missing review occurred. Preserve r14 without regeneration. Item 8 must satisfy the full final-review and delivery requirements with no inherited exception.
 
-**Status: `READY`, not started; previous source matrix and verification evidence remain lost**
+**Status: `IN PROGRESS`; previous source matrix and verification evidence remain lost**
+The active branch is `codex/item-8-completion`, based on verified `origin/main` merge `b0e4fc0`. The predeclared evidence scope is `evidence/item-8/README.md`. Runtime and packaged-data collection are the next increment; no canonical count is accepted yet.
 The surviving report records 34 structure registry entries, 34 exact biome-tag bindings, and 20 placement sets grouped exactly once into 21 gameplay families. It also records that declared loot sources resolve in the embedded vanilla data pack and that tentative mod families are absent. The report survives as `Item-8-Baseline-Structure-Inventory.md`, but `structure-inventory/vanilla-1.21.1-structure-families.json` and `evidence/structure-inventory/item8-registry-verification.json` do not. Item 8 must be reconstructed and rerun before its reproducibility exit gate may return to `COMPLETE`.
 
 ### 5.8 Item 9 provisional-classification status
@@ -452,7 +453,7 @@ This register is additive. More variables will be discovered during artifact ins
 | 5 | Measurement methodology | `COMPLETE` | Strict 24-contract protocol, deterministic analyzer, pinned Temurin pilot, accepted/rejected handling, and cross-artifact hash validation pass. Evidence: `docs/items/Item-5-Measurement-Methodology-Closure.md`, `measurement/item5/`, `evidence/item-5/`. |
 | 6 | Existing configuration audit | `COMPLETE` | Retained 136-JAR stack, 228 manifest paths with 4/223/1/0 stages, exhaustive 88/140 accounting, 29 systems, 105 legacy setting rows, 44 grouped surfaces with 1,874 grouped leaves, 7 findings, lifecycle/materialization receipts, sanitization binding, path and capture fail-closed gates, and `evidence/item-6/` report evidence pass. |
 | 7 | Terrain/worldgen interactions | `COMPLETE` | The exit gate passes, PR #15 merged accepted head `a57a00c`, and verified `origin/main` is `a0f2fc2`. The r14 raw-evidence release remains an immutable evidence source, not the repository completion boundary. |
-| 8 | Structure-family inventory | `READY, NOT STARTED` | Item 7 is delivered. Branch `experiment/item-8-structure-inventory` exists at `a0f2fc2`, but no Item 8 implementation or evidence work has begun. |
+| 8 | Structure-family inventory | `IN PROGRESS` | User-authorized continuation on `codex/item-8-completion` from delivered `b0e4fc0`; predeclared scope in `evidence/item-8/README.md`. Canonical inventory and runtime evidence pending. |
 | 9 | Initial structure classification | `BLOCKED` | Classification summary survives; family matrix and validator evidence must be reconstructed. |
 | 10 | Baseline structure/encounter density | `BLOCKED` | Final report survives; raw generation, analysis, and validation evidence must be rerun. |
 | 11 | Exploration pacing/repetition | `BLOCKED` | Also depends on recovered Item 10; afterward requires real-client observations from at least two blind human operators. |
