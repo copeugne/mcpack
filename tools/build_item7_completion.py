@@ -28,6 +28,7 @@ class _Arguments(BaseModel):
     warning_disposition: Path
     control_comparison: Path
     visual_manifest: Path
+    publication: Path
     output: Path
     visual_review: list[Path]
     archive_manifest: list[Path]
@@ -48,6 +49,7 @@ def build_parser() -> argparse.ArgumentParser:
         "warning-disposition",
         "control-comparison",
         "visual-manifest",
+        "publication",
         "output",
     ):
         _ = parser.add_argument(f"--{flag}", type=Path, required=True)
@@ -96,6 +98,7 @@ def run(arguments: tuple[str, ...]) -> int:
                 restore_receipts[2],
                 restore_receipts[3],
             ),
+            publication=values.publication,
         )
     )
     print(report.exit_gate)

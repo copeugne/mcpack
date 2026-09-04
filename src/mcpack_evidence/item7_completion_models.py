@@ -136,4 +136,5 @@ class CompletionReport(FrozenModel):
     targeted_structure_count: Literal[4] = 4
     visual_summary: VisualSummary
     archive_count: Literal[4] = 4
+    archive_release_url: str
     limitations: tuple[str, ...]

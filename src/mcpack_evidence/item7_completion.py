@@ -22,6 +22,7 @@ from mcpack_evidence.item7_completion_provider_visual import (
     validate_provider_disposition,
     validate_visual_evidence,
 )
+from mcpack_evidence.item7_completion_publication import validate_publication
 from mcpack_evidence.item7_completion_repeat import validate_repeat
 from mcpack_evidence.item7_completion_runs import validate_runs
 from mcpack_evidence.item7_protocol import load_protocol
@@ -49,6 +50,7 @@ class CompletionInputs:
     visual_reviews: tuple[Path, Path]
     archive_manifests: tuple[Path, Path, Path, Path]
     restore_receipts: tuple[Path, Path, Path, Path]
+    publication: Path
     output: Path
 
 
@@ -108,12 +110,10 @@ def build_completion(inputs: CompletionInputs) -> CompletionReport:
     raw_artifacts.append(visual_manifest)
     artifacts.extend(identity(path, f"visual/{path.name}") for path in inputs.visual_reviews)
     artifacts.extend(
-        validate_archives(
-            inputs.archive_manifests,
-            inputs.restore_receipts,
-            tuple(raw_artifacts),
-        )
+        validate_archives(inputs.archive_manifests, inputs.restore_receipts, tuple(raw_artifacts))
     )
+    publication, release_url = validate_publication(inputs.publication, inputs.archive_manifests)
+    artifacts.append(publication)
     paths = tuple(row.path for row in artifacts)
     if len(paths) != len(set(paths)):
         issue = "duplicate completion artifact path"
@@ -124,6 +124,7 @@ def build_completion(inputs: CompletionInputs) -> CompletionReport:
         provider_summary=provider,
         control_disposition="not_attributable_due_to_measured_stack_nondeterminism",
         visual_summary=visual,
+        archive_release_url=release_url,
         limitations=(
             "Generated semantics differ across independent fresh runs; causal provider is UNKNOWN.",
             (

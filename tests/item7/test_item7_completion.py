@@ -12,9 +12,12 @@ from mcpack_evidence.item7_completion_provider_visual import (
     validate_provider_disposition,
     validate_visual_evidence,
 )
+from mcpack_evidence.item7_completion_publication import validate_publication
 
 if TYPE_CHECKING:
     from pathlib import Path
+
+    from pydantic import JsonValue
 
 
 def _sha() -> str:
@@ -153,3 +156,64 @@ def test_visual_adapter_binds_hashes_commits_and_all_capture_rows(tmp_path: Path
     capture.write_bytes(b"changed")
     with pytest.raises(CompletionError, match="capture identity"):
         validate_visual_evidence(manifest, tuple(reviews), expected_count=1)
+
+
+def test_publication_binds_every_remote_asset_to_its_archive_manifest(tmp_path: Path) -> None:
+    revision = "a" * 40
+    release_url = "https://github.com/copeugne/mcpack/releases/tag/item-7-test"
+    manifests: list[Path] = []
+    assets: list[dict[str, JsonValue]] = []
+    for index in range(4):
+        name = f"asset-{index}.tar.gz"
+        digest = str(index) * 64
+        manifest = tmp_path / f"asset-{index}-manifest.json"
+        manifest.write_text(
+            json.dumps(
+                {
+                    "schema_version": "item7-raw-evidence-archive-v1",
+                    "revision": revision,
+                    "archive_name": name,
+                    "archive_size_bytes": index + 1,
+                    "archive_sha256": digest,
+                    "file_count": 0,
+                    "total_size_bytes": 0,
+                    "files": [],
+                }
+            ),
+            encoding="utf-8",
+        )
+        manifests.append(manifest)
+        assets.append(
+            {
+                "name": name,
+                "size_bytes": index + 1,
+                "sha256": digest,
+                "manifest": f"evidence/item-7/archive/asset-{index}-manifest.json",
+                "restore_receipt": f"evidence/item-7/archive/asset-{index}-restore.json",
+                "url": f"{release_url.replace('/tag/', '/download/')}/{name}",
+            }
+        )
+    publication = tmp_path / "publication.json"
+    payload = {
+        "schema_version": "item7-raw-evidence-publication-v1",
+        "repository": "copeugne/mcpack",
+        "release_url": release_url,
+        "tag": "item-7-test",
+        "tag_object_sha": "b" * 40,
+        "source_revision": revision,
+        "published_at": "2026-09-04T00:00:00Z",
+        "verified_at": "2026-09-04T00:01:00Z",
+        "verification_tool": "tools/verify_item7_release.sh",
+        "verification_command": "tools/verify_item7_release.sh test",
+        "downloaded_bytes_verified": True,
+        "assets": assets,
+    }
+    publication.write_text(json.dumps(payload), encoding="utf-8")
+
+    _, observed_url = validate_publication(publication, tuple(manifests))
+
+    assert observed_url == release_url
+    assets[0]["sha256"] = "f" * 64
+    publication.write_text(json.dumps(payload), encoding="utf-8")
+    with pytest.raises(CompletionError, match="publication asset identities"):
+        validate_publication(publication, tuple(manifests))
