@@ -22,9 +22,9 @@ Use new target and output paths for any reproduction. The original source used a
 `--exit-timeout-seconds 120`; it does not alter the original receipt retroactively.
 Readiness, all seven dump responses, correlated flush, and clean exit were
 observed by the capture harness. Full console, latest and debug logs and captured
-configuration remain at `evidence/raw/item8/registry-r1` pending durable delivery.
-This partial delivery does not independently close the lifecycle or configuration
-evidence requirements and does not pass Item 8.
+configuration are durably archived with the complete capture directory. See
+`../raw-custody/README.md` for the published archive, manifest and verified
+downloaded restore. Preservation does not by itself pass Item 8's gameplay gate.
 
 ## Pack and dimension context
 
@@ -38,7 +38,8 @@ Source `level.dat` is preserved outside ordinary Git at
 `evidence/raw/item8/registry-r1/world-metadata/level.dat`, SHA-256
 `a867acca9a8970df7e8e474ef4011ad034e7e829785a037fc7a3812798b2be0e`.
 It was copied byte-for-byte from the stopped instance and checked with `cmp`.
-Durable raw custody remains pending together with the logs and configuration.
+Durable raw custody is recorded together with the logs and configuration in
+`../raw-custody/README.md`.
 Reproduce the projection using source `628ba37` or its unchanged successor:
 
 ```sh
