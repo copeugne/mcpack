@@ -28,7 +28,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 _SUCCESS: Final = (
-    "Marked 81 chunks in minecraft:overworld from [-4, -4] to [4, 4] to be force loaded"
+    "Marked 81 chunks in Overworld from [-4, -4] to [4, 4] to be force loaded"
 )
 # fmt: off
 _NORMALIZED: Final = frozenset(("config/bettervillage_1.properties", "config/c2me.toml",

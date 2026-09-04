@@ -56,7 +56,7 @@ def test_control_lifecycle_waits_for_success_then_settles_flushes_and_stops(
         (
             '[Server thread/INFO]: Done (1.0s)! For help, type "help"\n',
             (
-                "[Server thread/INFO]: Marked 81 chunks in minecraft:overworld "
+                "[Server thread/INFO]: Marked 81 chunks in Overworld "
                 "from [-4, -4] to [4, 4] to be force loaded\n"
             ),
             "[Server thread/INFO]: Saved the game\n",
@@ -97,7 +97,7 @@ def test_control_lifecycle_waits_for_success_then_settles_flushes_and_stops(
         (
             '[Server thread/INFO]: Done (1.0s)! For help, type "help"\n',
             (
-                "[Server thread/INFO]: Marked 80 chunks in minecraft:overworld "
+                "[Server thread/INFO]: Marked 81 chunks in minecraft:overworld "
                 "from [-4, -4] to [4, 4] to be force loaded\n"
             ),
         ),
