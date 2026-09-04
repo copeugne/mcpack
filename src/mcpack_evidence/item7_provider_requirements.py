@@ -15,6 +15,7 @@ class RequiredComponent:
     candidate_filename: str
     mod_id: str
     role: ProviderRole
+    non_structure_output_paths: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -26,11 +27,35 @@ class LabelRequirement:
     components: tuple[RequiredComponent, ...]
 
 
+NON_STRUCTURE_DIRECT_OUTPUT_PATHS: Final[dict[str, tuple[str, ...]]] = {
+    "betterendisland": (
+        "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature.class",
+        "data/betterendisland/structure/gateway.nbt",
+    ),
+    "yungsbridges": (
+        "data/yungsbridges/worldgen/placed_feature/bridge_list.json",
+        "data/yungsbridges/structure/bridge/stone/15_1.nbt",
+    ),
+    "yungsextras": (
+        "data/yungsextras/worldgen/placed_feature/desert/misc/desert_chillzone.json",
+        "data/yungsextras/structure/desert/misc/chillzone.nbt",
+    ),
+}
+
+
 def components(
     role: ProviderRole, entries: tuple[tuple[str, str], ...]
 ) -> tuple[RequiredComponent, ...]:
     """Bind exact candidate filenames to expected metadata identifiers."""
-    return tuple(RequiredComponent(filename, mod_id, role) for filename, mod_id in entries)
+    return tuple(
+        RequiredComponent(
+            filename,
+            mod_id,
+            role,
+            NON_STRUCTURE_DIRECT_OUTPUT_PATHS.get(mod_id, ()),
+        )
+        for filename, mod_id in entries
+    )
 
 
 REQUIREMENTS: Final[tuple[LabelRequirement, ...]] = (
@@ -152,8 +177,11 @@ REQUIREMENTS: Final[tuple[LabelRequirement, ...]] = (
                 ("MoogsNetherStructures-1.21-3.0.0-alpha.2.jar", "mns"),
                 ("MoogsSoaringStructures-1.21-2.1.2.jar", "mss"),
                 ("MoogsVoyagerStructures-1.21-5.0.11.jar", "mvs"),
-                ("moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar", "moogs_structures"),
             ),
+        )
+        + components(
+            ProviderRole.LIBRARY,
+            (("moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar", "moogs_structures"),),
         ),
     ),
     LabelRequirement(

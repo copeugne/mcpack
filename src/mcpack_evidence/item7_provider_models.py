@@ -75,6 +75,7 @@ class ProviderComponent(BaseModel):
     role: ProviderRole
     sha256: str
     data_namespaces: tuple[str, ...]
+    structure_ids: tuple[str, ...]
 
 
 class ProviderLabel(BaseModel):
@@ -91,5 +92,5 @@ class ProviderCatalog(BaseModel):
 
     model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
 
-    schema_version: Literal["item7-provider-catalog-v1"]
+    schema_version: Literal["item7-provider-catalog-v2"]
     labels: dict[str, ProviderLabel]

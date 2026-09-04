@@ -14,6 +14,7 @@ from .item7_provider_models import (
     CatalogInputs,
     ProviderCatalogError,
     ProviderComponent,
+    ProviderRole,
 )
 
 if TYPE_CHECKING:
@@ -21,6 +22,7 @@ if TYPE_CHECKING:
 
 
 _MIN_DATA_PATH_SEPARATORS: Final = 2
+_MIN_STRUCTURE_PATH_PARTS: Final = 5
 
 
 class _AcquisitionIdentity(BaseModel):
@@ -153,12 +155,14 @@ def build_component(component: RequiredComponent, evidence: EvidenceIndexes) -> 
     if hashlib.sha256(jar.read_bytes()).hexdigest() != sha256:
         detail = f"candidate jar hash mismatch for {filename}"
         raise ProviderCatalogError(detail)
+    data_namespaces, structure_ids = _data_inventory(jar, component)
     return ProviderComponent(
         candidate_filename=filename,
         mod_id=component.mod_id,
         role=component.role,
         sha256=sha256,
-        data_namespaces=_data_namespaces(jar),
+        data_namespaces=data_namespaces,
+        structure_ids=structure_ids,
     )
 
 
@@ -176,19 +180,54 @@ def _check_schema_versions(
         raise ProviderCatalogError(detail)
 
 
-def _data_namespaces(jar: Path) -> tuple[str, ...]:
+def _data_inventory(
+    jar: Path, component: RequiredComponent
+) -> tuple[tuple[str, ...], tuple[str, ...]]:
     try:
         with ZipFile(jar) as archive:
-            return tuple(
-                sorted(
-                    {
-                        entry.split("/")[1]
-                        for entry in archive.namelist()
-                        if entry.startswith("data/")
-                        and entry.count("/") >= _MIN_DATA_PATH_SEPARATORS
-                    }
-                )
-            )
+            entries = frozenset(archive.namelist())
     except (BadZipFile, FileNotFoundError) as error:
         detail = f"candidate jar is unreadable: {jar.name}"
         raise ProviderCatalogError(detail) from error
+    data_namespaces = tuple(
+        sorted(
+            {
+                entry.split("/")[1]
+                for entry in entries
+                if entry.startswith("data/") and entry.count("/") >= _MIN_DATA_PATH_SEPARATORS
+            }
+        )
+    )
+    structure_ids = tuple(sorted(filter(None, (_structure_id(entry) for entry in entries))))
+    _validate_direct_output(component, entries, structure_ids)
+    return data_namespaces, structure_ids
+
+
+def _structure_id(entry: str) -> str | None:
+    parts = entry.split("/")
+    if (
+        len(parts) < _MIN_STRUCTURE_PATH_PARTS
+        or parts[0] != "data"
+        or parts[2:4] != ["worldgen", "structure"]
+        or not parts[1]
+        or not all(parts[4:])
+        or not parts[-1].endswith(".json")
+        or len(parts[-1]) == len(".json")
+    ):
+        return None
+    resource_path = "/".join(parts[4:]).removesuffix(".json")
+    return f"{parts[1]}:{resource_path}"
+
+
+def _validate_direct_output(
+    component: RequiredComponent, entries: frozenset[str], structure_ids: tuple[str, ...]
+) -> None:
+    if component.role is not ProviderRole.DIRECT_STRUCTURE or structure_ids:
+        return
+    if not component.non_structure_output_paths:
+        detail = f"direct provider has no packaged structure IDs: {component.candidate_filename}"
+        raise ProviderCatalogError(detail)
+    missing = set(component.non_structure_output_paths).difference(entries)
+    if missing:
+        detail = f"direct provider output evidence missing: {component.candidate_filename}"
+        raise ProviderCatalogError(detail)

@@ -25,7 +25,7 @@ def build_provider_catalog(inputs: CatalogInputs) -> ProviderCatalog:
         )
         for requirement in REQUIREMENTS
     }
-    return ProviderCatalog(schema_version="item7-provider-catalog-v1", labels=labels)
+    return ProviderCatalog(schema_version="item7-provider-catalog-v2", labels=labels)
 
 
 __all__ = (

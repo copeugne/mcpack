@@ -86,6 +86,47 @@ def test_catalog_distinguishes_terrain_direct_and_library_providers() -> None:
     assert yung["bettercaves"].role is ProviderRole.TERRAIN_BIOME
 
 
+def test_catalog_reports_sorted_packaged_structure_registry_ids() -> None:
+    catalog = build_provider_catalog(CatalogInputs.from_repository(ROOT))
+
+    components = {
+        component.mod_id: component
+        for label in catalog.labels.values()
+        for component in label.components
+    }
+    assert components["dungeons_arise"].structure_ids[:3] == (
+        "dungeons_arise:abandoned_temple",
+        "dungeons_arise:aviary",
+        "dungeons_arise:bandit_towers",
+    )
+    assert components["integrated_villages"].structure_ids == (
+        "integrated_villages:airship_village",
+        "integrated_villages:cabin_village",
+        "integrated_villages:clockwork_village",
+        "integrated_villages:kutcha_village",
+        "integrated_villages:marketstead_village",
+        "integrated_villages:mediterranean_village",
+        "integrated_villages:mossy_mounds",
+        "integrated_villages:oasis_village",
+        "integrated_villages:pirate_village",
+        "integrated_villages:quark/minka_village",
+        "integrated_villages:sunken_village",
+        "integrated_villages:tavern_village",
+    )
+    assert "idas:animal_den/foxhound_den" in components["idas"].structure_ids
+    assert components["moogs_structures"].role is ProviderRole.LIBRARY
+    assert all(
+        component.structure_ids == tuple(sorted(set(component.structure_ids)))
+        for component in components.values()
+    )
+    assert all(
+        component.structure_ids
+        or component.role is not ProviderRole.DIRECT_STRUCTURE
+        or component.mod_id in {"betterendisland", "yungsbridges", "yungsextras"}
+        for component in components.values()
+    )
+
+
 def test_catalog_rejects_filename_only_provider_claim(tmp_path: Path) -> None:
     inputs = CatalogInputs.from_repository(ROOT)
     altered_matrix = tmp_path / "matrix.json"
