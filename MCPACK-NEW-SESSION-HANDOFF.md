@@ -2,6 +2,48 @@
 
 > Historical checkpoint: this file records the repository state on 2026-09-01 and is not the current continuation authority. Use `SPECS.md`, the master execution status in `Adventure-Engineering-Pack-Execution-Ledger.md`, and current Git/GitHub state for present status. The dated instructions below are preserved as recovery history.
 
+## Current continuation checkpoint - 2026-09-04
+
+This section supersedes the dated status and restart instructions below. Preserve the rest of this file as recovery history. `SPECS.md` remains the dependency-ordered requirements authority, and `Adventure-Engineering-Pack-Execution-Ledger.md` remains the status and evidence vocabulary authority.
+
+### Git and delivery state
+
+- A fresh fetch on 2026-09-04 found local `main`, `HEAD`, `origin/main`, the configured upstream, and the `HEAD` to `origin/main` merge base all at `eb84d842a7b108863dcdd4c86435a875f8a0c575` before this handoff update.
+- PR #11 merged Item 5 delivery as `398bf59b3a89669ec402026d52250c2b86e54047`.
+- PR #12 merged the initial Item 6 generated-default capture as `895ed1d999cd22ca511035e666ad8ac308ae63c1`.
+- PR #14 merged the completed Item 6 audit as `f38ea66ecc28911c33d525dcde26434853673ad3`. Its final Codex review completed against `96a914c8a457d2f23698cdaeba18c6ed899b56d1` and reported no major issues. The GitHub API currently exposes no thumbs-up reaction on that cycle, so do not claim that reaction; preserve this as a review-record discrepancy unless later evidence resolves it.
+- `eb84d842a7b108863dcdd4c86435a875f8a0c575` only renamed `CLAUDE.md` to `AGENTS.md` after the Item 6 merge.
+- At the start of this update there were no tracked staged or unstaged changes. Preserve the existing untracked `.codegraph`, `.omo/`, and `mcpack-reconstructed-28(1).bundle` paths.
+
+### Current gate status
+
+| Item | Current status | Evidence-bound meaning |
+|---:|---|---|
+| 1 | `COMPLETE` | The design contract and Earned Sandbox Freedom Doctrine remain binding. |
+| 2 | `COMPLETE` | Reconstructed baseline evidence, clean-room proof, durable retrieval, and Git receipts pass. |
+| 3 | `COMPLETE` | All 190 candidates have dispositions; the exact 136-candidate retained dedicated-server set passed its scoped static and lifecycle gate. |
+| 4 | `COMPLETE` | The isolated four-seed environment and backup/restore gate pass. |
+| 5 | `COMPLETE` | The versioned measurement protocol, strict evidence tooling, and pinned-Temurin pilot gate pass. Spark overhead remains `UNKNOWN`, and the pilot is not a performance baseline. |
+| 6 | `COMPLETE` | The untouched retained-stack configuration is frozen and audited. The manifest contains 228 paths, with 88 audited and 140 explicitly out of scope. No tuning was performed. |
+| 7 | `BLOCKED`, next authorized work | The old report survives, but its protocol, tool, raw samples, repeat verification, and failure evidence do not. Reconstruct and rerun Item 7 under the exact Item 6 identity. |
+| 8 | `BLOCKED` by Item 7 | Rebuild the runtime-backed canonical structure inventory only after Item 7 passes. |
+| 9 | `BLOCKED` by Item 8 | Reclassify every verified family exactly once only after Item 8 passes. |
+| 10 | `BLOCKED` by Items 7 through 9 | Regenerate and preserve predeclared density evidence only after the preceding gates pass. |
+| 11 | `BLOCKED` | Do not implement, run, repair, or lint Item 11 before the final Items 2 through 10 audit passes. It also requires at least two blind human operators. |
+
+The current Item 6 validation command passes from `eb84d842`: `uv run python tools/freeze_item6_config.py validate --root evidence/item-6/frozen --manifest evidence/item-6/generated-config-manifest.json --audit evidence/item-6/config-audit.json`. The focused Item 6 suite also passes with 554 tests.
+
+### Exact Item 7 restart point
+
+1. Start from the frozen Item 6 identity: Minecraft `1.21.1`, NeoForge `21.1.249`, Eclipse Temurin `21.0.12.1+1-LTS`, retained manifest count `136`, retained manifest SHA-256 `78e5bdc0697299782a535400ad5b313c088e8db10cfe075085ae4c8a531e30cb`, configuration version `test-environment-v0.1`, and the four seeds `42`, `6671238423019257953`, `95920844204830198`, and `-3503646078644842058`.
+2. Treat `docs/items/Item-7-Baseline-Worldgen-Audit.md` as reconstructed historical guidance only. It describes the old zero-mod control. Its referenced `test-environment/terrain-sampling-v0.1.json`, `tools/sample_vanilla_terrain.py`, `evidence/worldgen/item7-terrain-control-r7.json`, `item7-terrain-control-r8.json`, repeat-verification file, and harness-failure directory are absent.
+3. Define the smallest decision-complete Item 7 protocol and evidence schema before running worlds. Use fresh, hash-verified materialization for every controlled run. Do not reuse Item 4 worlds, and do not treat Item 4 or Item 5 boot logs as Item 7 evidence.
+4. Inspect actual clean worlds for all four seeds under the exact frozen Item 6 identity. Cover the terrain, biome, dimension, and structure providers required by `SPECS.md` and the current ledger. Record fragmented or tiny biomes, unnatural transitions, buried or floating structures, cliff and underwater placement, structure and village overlaps, failed placement, impossible biome restrictions, and excessive terrain modification.
+5. Preserve for every observation the seed, dimension, coordinates, exact procedure, input identities, world manifest or hash, relevant log and screenshot, observation, anomaly class, confidence, and limitation. Keep cosmetic, gameplay, performance, and outright generation-failure findings separate.
+6. Preserve failed attempts. Require repeatability, machine-readable and narrative parity, a passing Item 7 exit gate, atomic delivery, a clean Codex review cycle, merge into `main`, and verified delivered refs before Item 8 begins.
+
+Recovery Gate R-1 remains open for Items 7 through 10 and their final cross-item audit. Item 7 is now the first actionable recovery item.
+
 **Prepared:** 2026-09-01
 **Live checkpoint updated:** 2026-09-01
 **Canonical repository:** `https://github.com/copeugne/mcpack`
