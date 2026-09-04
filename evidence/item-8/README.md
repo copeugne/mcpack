@@ -2,8 +2,9 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-The working deliverable is `inventory.json`, assembled by source `f2eaf2b`.
-SHA-256: `58a200ca9ad7809f807cb73b6e3e72aed4cd1e1a9107723c9fcaa1640c62652d`.
+The working deliverable is `inventory.json`, initially assembled by `f2eaf2b`
+and updated with `e6704a7` using attribute support from `bf153ea`.
+SHA-256: `d9abcf0cb6a181373a38f9ef0ca42f0a61958d993662aa1331a8af0183e49122`.
 It is explicitly incomplete. It joins the currently recorded Better Mineshafts
 and CTOV size-group decisions to biome constraints, potential template content
 and saved-world observation references. It lists every unassigned registry ID
@@ -23,6 +24,18 @@ a new evidence framework. Source hashes bind all five existing inputs. Content
 references preserve packaged-versus-effective limitations, and saved piece
 envelopes are not promoted to physical dimensions. Continue resolving groups and
 attributes in this deliverable before replacing the obsolete narrative report.
+
+Better Mineshafts now records source-supported hostile-room intent, authored
+cave-spider and zombie-villager spawners, the base abandoned-mineshaft loot
+constant, authored versus natural spawning distinctions, and its underground
+generation setup. Each claim identifies its generation classes and limitations;
+the decision binds the preserved disassembly identities and frozen config hash.
+This does not resolve effective loot injections, physical dimensions or actual
+surface visibility. The updated committed-source output reproduced
+`evidence/raw/item8/inventory-mineshaft-attributes-pilot1.json` byte for byte at
+`evidence/raw/item8/inventory-mineshaft-attributes-reproduction1.json`.
+Three focused tests and scoped quality checks passed. Attribute updates cannot
+overwrite completion status, family membership or observation references.
 
 The infrastructure requirements in
 `INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md` apply to this work. Reuse the
