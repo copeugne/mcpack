@@ -292,18 +292,18 @@ No configuration was tuned. The frozen configuration, machine-readable audit, li
 
 ### 5.6 Item 7 worldgen-control status
 
-**Status: `COMPLETE`**
-Two final runs independently restored all four seed snapshots, sampled 50 stable-height/biome points per seed, saved and stopped twice per seed, and produced zero relevant generation problem lines. Every one of the 200 raw samples and every derived statistic repeated exactly. Named terrain/biome/structure candidates are absent and no compatibility claim is inferred. Evidence: `Item-7-Baseline-Worldgen-Audit.md` and `evidence/worldgen/item7-terrain-repeat-verification.json`.
+**Status: `BLOCKED` - previously complete; raw reproducibility evidence lost**
+The surviving report records that two final runs independently restored all four seed snapshots, sampled 50 stable-height/biome points per seed, saved and stopped twice per seed, and produced zero relevant generation problem lines. It also records that all 200 raw samples and derived statistics repeated exactly, with named terrain, biome, and structure candidates absent and no compatibility claim inferred. The report survives as `Item-7-Baseline-Worldgen-Audit.md`, but the referenced raw samples and `evidence/worldgen/item7-terrain-repeat-verification.json` do not. Item 7 must be reconstructed and rerun before its reproducibility exit gate may return to `COMPLETE`.
 
 ### 5.7 Item 8 structure-inventory status
 
-**Status: `COMPLETE`**
-Pinned runtime bytecode proves 34 structure registry entries, 34 exact biome-tag bindings and 20 placement sets. The full inventory groups all entries exactly once into 21 gameplay families and records every requested raw attribute. Every declared loot source resolves in the embedded vanilla data pack. Tentative mod families are explicitly absent. Evidence: `Item-8-Baseline-Structure-Inventory.md`, `structure-inventory/vanilla-1.21.1-structure-families.json`, and `evidence/structure-inventory/item8-registry-verification.json`.
+**Status: `BLOCKED` - previously complete; source matrix and verification evidence lost**
+The surviving report records 34 structure registry entries, 34 exact biome-tag bindings, and 20 placement sets grouped exactly once into 21 gameplay families. It also records that declared loot sources resolve in the embedded vanilla data pack and that tentative mod families are absent. The report survives as `Item-8-Baseline-Structure-Inventory.md`, but `structure-inventory/vanilla-1.21.1-structure-families.json` and `evidence/structure-inventory/item8-registry-verification.json` do not. Item 8 must be reconstructed and rerun before its reproducibility exit gate may return to `COMPLETE`.
 
 ### 5.8 Item 9 provisional-classification status
 
-**Status: `COMPLETE`**
-All 21 baseline families have exactly one provisional primary category: 4 ambient, 1 civilization, 8 Tier 1, 1 Tier 2, 5 Tier 3 and 2 Tier 4. Mechanical-depth, decoration, repetition, oversizing, value-concentration, discoverability and internal-variant overlap flags are explicit. No baseline family is declared redundant and no final retention decision is made. Evidence: `Item-9-Provisional-Structure-Classification.md` and `evidence/structure-inventory/item9-classification-verification.json`.
+**Status: `BLOCKED` - previously complete; family matrix and verification evidence lost**
+The surviving report records all 21 baseline families with exactly one provisional primary category: 4 ambient, 1 civilization, 8 Tier 1, 1 Tier 2, 5 Tier 3, and 2 Tier 4. It also records explicit mechanical-depth, decoration, repetition, oversizing, value-concentration, discoverability, and internal-variant overlap flags, with no family declared redundant and no final retention decision. The report survives as `Item-9-Provisional-Structure-Classification.md`, but the family matrix and `evidence/structure-inventory/item9-classification-verification.json` do not. Item 9 must be reconstructed after Item 8 before its reproducibility exit gate may return to `COMPLETE`.
 
 ### 5.9 Item 10 structure-density status
 
