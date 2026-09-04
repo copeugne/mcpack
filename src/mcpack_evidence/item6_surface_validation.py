@@ -204,8 +204,6 @@ def _validate_leaf(claim: SurfaceLeaf, source_leaf: ParsedLeaf) -> None:
         claim["effective_value"] != source_leaf.value
     ):
         raise SurfaceValidationError("setting surface effective value does not match source")
-    if claim["non_default"]:
-        raise SurfaceValidationError("untouched generated baseline unexpectedly reports tuning")
 
 
 def _validate_surface(
@@ -238,9 +236,17 @@ def _validate_surface(
     source_lines = source.read_text(encoding="utf-8").splitlines()
     for claim, source_leaf in zip(leaves, parsed, strict=True):
         _validate_leaf(claim, source_leaf)
-        validate_upstream_default(
+        upstream_default = validate_upstream_default(
             claim.get("upstream_default"), relative, source_leaf.key, source_lines
         )
+        differs_from_upstream = upstream_default is not None and (
+            type(claim["effective_value"]) is not type(upstream_default)
+            or claim["effective_value"] != upstream_default
+        )
+        if claim["non_default"] is not differs_from_upstream:
+            raise SurfaceValidationError(
+                "setting surface non-default flag does not match declared default"
+            )
     covered.add(relative)
 
 

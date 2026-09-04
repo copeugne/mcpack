@@ -220,7 +220,7 @@ def test_validator_rejects_inexact_surface_contract(
         ("generated-value", "generated value does not match"),
         ("generated-type", "generated value does not match"),
         ("effective-value", "effective value does not match"),
-        ("non-default", "unexpectedly reports tuning"),
+        ("non-default", "non-default flag does not match declared default"),
     ],
 )
 def test_validator_rejects_inexact_leaf_contract(

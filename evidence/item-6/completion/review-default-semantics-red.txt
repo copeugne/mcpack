@@ -1,0 +1,74 @@
+F...F                                                                    [100%]
+=================================== FAILURES ===================================
+_____________ test_towns_and_towers_changes_bind_declared_defaults _____________
+
+    def test_towns_and_towers_changes_bind_declared_defaults() -> None:
+        # Given: the committed Towns and Towers grouped configuration surface.
+        surface = _towns_surface(AUDIT_DATA)
+        leaves = {leaf["key"]: leaf for leaf in surface["leaves"]}
+
+        # When: its three source-declared changes are inspected.
+        changes = {key: leaves[key] for key in DEFAULTS}
+
+        # Then: effective values differ from bound upstream defaults and carry exact flags.
+        assert {key: leaf["generated_default"] for key, leaf in changes.items()} == {
+            "towers.separation": 12,
+            "towns.separation": 12,
+            "towns.spacing": 51,
+        }
+        assert {key: leaf["effective_value"] for key, leaf in changes.items()} == {
+            "towers.separation": 12,
+            "towns.separation": 12,
+            "towns.spacing": 51,
+        }
+>       assert {key: leaf["upstream_default"] for key, leaf in changes.items()} == DEFAULTS
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'upstream_default'
+
+tests/item6/test_towns_and_towers_defaults.py:46: KeyError
+_ test_validator_rejects_inexact_towns_and_towers_default_claim[false-flag-non-default flag does not match declared default] _
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-300/test_validator_rejects_inexact3')
+mutation = 'false-flag'
+message = 'non-default flag does not match declared default'
+
+    @pytest.mark.parametrize(
+        ("mutation", "message"),
+        [
+            ("missing", "requires declared default evidence"),
+            ("value", "declared default evidence does not match source"),
+            ("line", "declared default evidence does not match source"),
+            ("false-flag", "non-default flag does not match declared default"),
+        ],
+    )
+    def test_validator_rejects_inexact_towns_and_towers_default_claim(
+        tmp_path: Path, mutation: Mutation, message: str
+    ) -> None:
+        # Given: one committed declared-default claim is corrupted.
+        audit = deepcopy(AUDIT_DATA)
+        leaf = next(
+            leaf for leaf in _towns_surface(audit)["leaves"] if leaf["key"] == "towers.separation"
+        )
+        match mutation:
+            case "missing":
+                del leaf["upstream_default"]
+            case "value":
+                leaf["upstream_default"]["value"] = 23
+            case "line":
+                leaf["upstream_default"]["line"] = 29
+            case "false-flag":
+                leaf["non_default"] = False
+            case unreachable:
+                assert_never(unreachable)
+
+        # When/Then: validation rejects missing, malformed, or falsely tuned evidence.
+>       with pytest.raises(ValueError, match=message):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/item6/test_towns_and_towers_defaults.py:81: Failed
+=========================== short test summary info ============================
+FAILED tests/item6/test_towns_and_towers_defaults.py::test_towns_and_towers_changes_bind_declared_defaults
+FAILED tests/item6/test_towns_and_towers_defaults.py::test_validator_rejects_inexact_towns_and_towers_default_claim[false-flag-non-default flag does not match declared default]
+2 failed, 3 passed in 0.31s
+expected_red_exit=1

@@ -25,6 +25,7 @@ _SCALAR_ADAPTER: Final[TypeAdapter[Scalar]] = TypeAdapter(Scalar)
 _REQUIRED: Final = {
     ("config/towns_and_towers/structure_rarity_new.json5", "towers.separation"): 24,
     ("config/towns_and_towers/structure_rarity_new.json5", "towns.separation"): 24,
+    ("config/towns_and_towers/structure_rarity_new.json5", "towns.spacing"): 48,
 }
 
 
@@ -50,13 +51,13 @@ def validate_upstream_default(
     relative: str,
     key: str,
     source_lines: list[str],
-) -> None:
+) -> Scalar | None:
     """Bind one required or supplied upstream default to preserved source text."""
     required = _REQUIRED.get((relative, key))
     if required is not None and upstream_default is None:
         raise DeclaredDefaultValidationError("setting surface requires declared default evidence")
     if upstream_default is None:
-        return
+        return None
     line = upstream_default["line"]
     if line < 1 or line > len(source_lines):
         raise DeclaredDefaultValidationError("declared default evidence does not match source")
@@ -74,3 +75,4 @@ def validate_upstream_default(
         raise DeclaredDefaultValidationError("declared default evidence does not match source")
     if required is not None and declared != required:
         raise DeclaredDefaultValidationError("declared default evidence does not match source")
+    return declared

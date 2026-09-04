@@ -19,27 +19,32 @@ FILE = "config/towns_and_towers/structure_rarity_new.json5"
 DEFAULTS = {
     "towers.separation": {"value": 24, "line": 30, "prefix": "// DEFAULT ", "suffix": ""},
     "towns.separation": {"value": 24, "line": 38, "prefix": "// DEFAULT ", "suffix": ""},
+    "towns.spacing": {"value": 48, "line": 40, "prefix": "// DEFAULT ", "suffix": ""},
 }
-Mutation = Literal["missing", "value", "line", "non-default"]
+Mutation = Literal["missing", "value", "line", "false-flag"]
 
 
-def test_towns_and_towers_separations_bind_declared_defaults() -> None:
+def test_towns_and_towers_changes_bind_declared_defaults() -> None:
     # Given: the committed Towns and Towers grouped configuration surface.
     surface = _towns_surface(AUDIT_DATA)
     leaves = {leaf["key"]: leaf for leaf in surface["leaves"]}
 
-    # When: its two generated separation claims are inspected.
-    separations = {key: leaves[key] for key in DEFAULTS}
+    # When: its three source-declared changes are inspected.
+    changes = {key: leaves[key] for key in DEFAULTS}
 
-    # Then: frozen values remain 12 while source-declared defaults bind to 24 without tuning.
-    assert {key: leaf["generated_default"] for key, leaf in separations.items()} == dict.fromkeys(
-        DEFAULTS, 12
-    )
-    assert {key: leaf["effective_value"] for key, leaf in separations.items()} == dict.fromkeys(
-        DEFAULTS, 12
-    )
-    assert {key: leaf["upstream_default"] for key, leaf in separations.items()} == DEFAULTS
-    assert all(leaf["non_default"] is False for leaf in separations.values())
+    # Then: effective values differ from bound upstream defaults and carry exact flags.
+    assert {key: leaf["generated_default"] for key, leaf in changes.items()} == {
+        "towers.separation": 12,
+        "towns.separation": 12,
+        "towns.spacing": 51,
+    }
+    assert {key: leaf["effective_value"] for key, leaf in changes.items()} == {
+        "towers.separation": 12,
+        "towns.separation": 12,
+        "towns.spacing": 51,
+    }
+    assert {key: leaf["upstream_default"] for key, leaf in changes.items()} == DEFAULTS
+    assert {leaf["key"] for leaf in surface["leaves"] if leaf["non_default"]} == set(DEFAULTS)
     validate(FROZEN, MANIFEST, AUDIT)
 
 
@@ -49,26 +54,25 @@ def test_towns_and_towers_separations_bind_declared_defaults() -> None:
         ("missing", "requires declared default evidence"),
         ("value", "declared default evidence does not match source"),
         ("line", "declared default evidence does not match source"),
-        ("non-default", "unexpectedly reports tuning"),
+        ("false-flag", "non-default flag does not match declared default"),
     ],
 )
+@pytest.mark.parametrize("key", DEFAULTS)
 def test_validator_rejects_inexact_towns_and_towers_default_claim(
-    tmp_path: Path, mutation: Mutation, message: str
+    tmp_path: Path, key: str, mutation: Mutation, message: str
 ) -> None:
     # Given: one committed declared-default claim is corrupted.
     audit = deepcopy(AUDIT_DATA)
-    leaf = next(
-        leaf for leaf in _towns_surface(audit)["leaves"] if leaf["key"] == "towers.separation"
-    )
+    leaf = next(leaf for leaf in _towns_surface(audit)["leaves"] if leaf["key"] == key)
     match mutation:
         case "missing":
             del leaf["upstream_default"]
         case "value":
-            leaf["upstream_default"]["value"] = 23
+            leaf["upstream_default"]["value"] = -1
         case "line":
-            leaf["upstream_default"]["line"] = 29
-        case "non-default":
-            leaf["non_default"] = True
+            leaf["upstream_default"]["line"] = 1
+        case "false-flag":
+            leaf["non_default"] = False
         case unreachable:
             assert_never(unreachable)
 
