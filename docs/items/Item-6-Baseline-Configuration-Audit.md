@@ -4,7 +4,7 @@
 
 **PASS.** The exact 136-JAR retained server stack was reconstructed under Minecraft 1.21.1, NeoForge 21.1.249, and Eclipse Temurin 21.0.12.1+1-LTS. A new ordinary seed-42 instance reached readiness, completed `save-all flush`, and stopped cleanly. No setting was tuned. The post-shutdown configuration tree is frozen losslessly in `evidence/item-6/frozen/`; the sorted 228-file manifest binds every relative path, byte size, SHA-256, and generation stage.
 
-The capture distinguishes 4 installation/materialization files, 223 first-startup files, and 1 world-creation server config. No file first appeared only during shutdown. The post-shutdown state is the effective baseline. The validator independently verifies exact tree equality, every file identity, report-to-manifest references, literal setting evidence, the audit's manifest identity, and one accounting classification for each of the 228 manifest paths. The 45 audited paths are exactly the union cited by systems, settings, and findings. The remaining 183 paths are explicitly out of scope.
+The capture distinguishes 4 installation/materialization files, 223 first-startup files, and 1 world-creation server config. No file first appeared only during shutdown. The post-shutdown state is the effective baseline. The validator independently verifies exact tree equality, every file identity, report-to-manifest references, literal setting evidence, the audit's manifest identity, and one accounting classification for each of the 228 manifest paths. The 47 audited paths are exactly the union cited by systems, settings, and findings. The remaining 181 paths are explicitly out of scope.
 
 ## Reconstruction and capture boundary
 
@@ -24,7 +24,7 @@ The frozen tree contains `config/`, `defaultconfigs/`, `world/serverconfig` (nor
 
 ### YUNG control surfaces
 
-The YUNG structure inventory includes the Cristel Lib placement and toggle files for Better Desert Temples, Better Dungeons, Better Nether Fortresses, Better Jungle Temples, Better Mineshafts, and Better Ocean Monuments. The placement evidence records every spacing and separation value, plus the Better Mineshafts frequency. The toggle evidence records every enabled structure leaf. Sparse Structures remains a separate global factor that may interact with these enabled placements.
+The YUNG structure inventory includes the Cristel Lib placement and toggle files for Better Desert Temples, Better Dungeons, Better Nether Fortresses, Better Jungle Temples, Better Mineshafts, Better Ocean Monuments, and Better Strongholds. The placement evidence records every spacing and separation value, plus the Better Mineshafts frequency. The toggle evidence records every enabled structure leaf. Sparse Structures remains a separate global factor that may interact with these enabled placements.
 
 Better Dungeons also has a top-level TOML for gameplay controls. That top-level surface and the separate Cristel Lib placement and toggle surfaces are recorded as layered controls, without claiming runtime precedence between them.
 
