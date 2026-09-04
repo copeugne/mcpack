@@ -6,6 +6,29 @@
 
 ### Continuation update - 2026-09-05
 
+Current inventory is delivered through `2882825`, using source `729ccdd`.
+SHA-256: `6b2d8684f03af14ddd095b2c8a42c6c88bafa93f18e8f4ce8eade8f6ce355f32`.
+`1c92c0a` delivers compact packaged loot field/value attribution with source
+templates, built by `a590403`. `2882825` adds authored entity base IDs and source
+templates, including passengers and explicit unresolved entity records. Exact
+NBT paths remain in the existing content trace. Eight focused tests and scoped
+quality checks passed; both outputs reproduced their pilots byte for byte.
+Existing explicit family attribute decisions remain intact. These source lists
+do not assert effective loot, spawn success, enemy classification or populations.
+Continue spawner/marker and natural-spawn attribution, other required attributes
+and remaining provider coverage. Raw registry custody remains verified. The
+complete inventory, final report/gate, clean final review and verified merge
+remain required by the active goal.
+
+Loot attribution scope reassessment: the first `136ee84` output duplicated
+over thirteen thousand source-reference lines in the inventory. That is larger
+than Item 8's loot-source requirement needs. Keep exact NBT paths in the existing
+content trace and summarize distinct field/value pairs with source-template
+owners in the inventory. Preserve list-valued references and distinguish
+container LootTable from entity DeathLootTable. This direct change in the existing
+builder avoids another evidence class or framework. The detailed pilot and its
+reproduction remain local historical outputs, not accepted inventory artifacts.
+
 WDA root coverage is now delivered through `380e572`, using source decisions
 from `559edc0`, `d20b0c6`, `007d1f9` and `6540055`. All forty registered WDA
 layouts are assigned once. The existing authored-design test now covers WDA

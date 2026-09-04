@@ -253,6 +253,7 @@ def test_working_inventory_keeps_unassigned_ids_and_rejects_double_counting() ->
     traces: dict[str, JsonValue] = {
         "structures": {},
         "untraced_structures": {"example:a": {"reason": "custom"}},
+        "template_contents": {},
     }
     bounds: dict[str, JsonValue] = {"observations": []}
     result = assemble(("example:a", "example:b"), [decision], sources, traces, bounds)
@@ -273,6 +274,70 @@ def test_working_inventory_keeps_unassigned_ids_and_rejects_double_counting() ->
     assert families["example:family"]["status"] == "INCOMPLETE"
     decision["attributes"] = {"status": "COMPLETE"}
     with pytest.raises(ValueError, match="protected family attribute"):
+        _ = assemble(("example:a",), [decision], sources, traces, bounds)
+
+
+def test_inventory_preserves_loot_kinds_and_rejects_missing_template_content() -> None:
+    references: list[JsonValue] = [
+        {"path": "/block_entities/0/nbt/LootTable", "value": "example:chest"},
+        {"path": "/entities/0/nbt/DeathLootTable", "value": "example:chest"},
+        {"path": "/block_entities/1/nbt/LootTable", "value": "example:chest"},
+        {"path": "/block_entities/2/nbt/loot_tables_to_eject", "value": ["example:reward"]},
+    ]
+    decision: dict[str, JsonValue] = {
+        "family_id": "example:family",
+        "name": "Example",
+        "structure_ids": ["example:a"],
+    }
+    sources: dict[str, JsonValue] = {"structure_biomes": {"example:a": {"biomes": []}}}
+    contents: dict[str, JsonValue] = {
+        "example:room": {
+            "loot_references": references,
+            "authored_entities": [
+                {"id": "example:animal", "path": "/entities/0/nbt"},
+                {"id": "example:animal", "path": "/entities/1/nbt"},
+                {"id": "example:rider", "path": "/entities/1/nbt/Passengers/0"},
+            ],
+            "unresolved_entities": [{"path": "/entities/2/nbt", "reason": "missing ID"}],
+        },
+        "example:empty": {
+            "loot_references": [],
+            "authored_entities": [],
+            "unresolved_entities": [],
+        },
+    }
+    traces: dict[str, JsonValue] = {
+        "structures": {"example:a": {"templates": ["example:room", "example:empty"]}},
+        "untraced_structures": {},
+        "template_contents": contents,
+    }
+    bounds: dict[str, JsonValue] = {"observations": []}
+    result = assemble(("example:a",), [decision], sources, traces, bounds)
+    families = cast("dict[str, dict[str, JsonValue]]", result["families"])
+    loot = cast("dict[str, JsonValue]", families["example:family"]["loot_table_source"])
+    mobs = cast("dict[str, JsonValue]", families["example:family"]["mob_source"])
+    assert mobs["packaged_authored_entity_templates"] == {
+        "example:animal": ["example:room"],
+        "example:rider": ["example:room"],
+    }
+    assert mobs["unresolved_authored_entities"] == {
+        "example:room": [{"path": "/entities/2/nbt", "reason": "missing ID"}]
+    }
+    assert loot["packaged_references"] == [
+        {"field": "DeathLootTable", "value": "example:chest", "templates": ["example:room"]},
+        {"field": "LootTable", "value": "example:chest", "templates": ["example:room"]},
+        {
+            "field": "loot_tables_to_eject",
+            "value": ["example:reward"],
+            "templates": ["example:room"],
+        },
+    ]
+    assert (
+        loot["status"] == "packaged possibilities; effective generation and injections unresolved"
+    )
+    assert families["example:family"]["status"] == "INCOMPLETE"
+    del contents["example:room"]
+    with pytest.raises(KeyError, match="example:room"):
         _ = assemble(("example:a",), [decision], sources, traces, bounds)
 
 

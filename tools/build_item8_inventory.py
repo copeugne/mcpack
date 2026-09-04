@@ -42,6 +42,7 @@ def assemble(
     constraints = cast("dict[str, JsonValue]", sources["structure_biomes"])
     pool_traces = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
     custom = cast("dict[str, JsonValue]", traces["untraced_structures"])
+    template_contents = cast("dict[str, dict[str, JsonValue]]", traces["template_contents"])
     observations = cast("list[dict[str, JsonValue]]", bounds["observations"])
     for decision in decisions:
         family = str(decision["family_id"])
@@ -65,6 +66,27 @@ def assemble(
             index for index, row in enumerate(observations) if row["structure_id"] in members
         ]
         dimensions = sorted({str(observations[index]["dimension"]) for index in world_rows})
+        loot_sources: dict[tuple[str, str], list[str]] = {}
+        authored_sources: dict[str, list[str]] = {}
+        for template in templates:
+            entities = cast(
+                "list[dict[str, JsonValue]]", template_contents[template]["authored_entities"]
+            )
+            for entity in entities:
+                entity_owners = authored_sources.setdefault(str(entity["id"]), [])
+                if template not in entity_owners:
+                    entity_owners.append(template)
+            references = cast(
+                "list[dict[str, JsonValue]]", template_contents[template]["loot_references"]
+            )
+            for reference in references:
+                key = (
+                    str(reference["path"]).rsplit("/", 1)[-1],
+                    json.dumps(reference["value"], sort_keys=True),
+                )
+                owners = loot_sources.setdefault(key, [])
+                if template not in owners:
+                    owners.append(template)
         content: dict[str, JsonValue] = {
             "artifact": TRACES,
             "template_ids": cast("JsonValue", templates),
@@ -83,6 +105,18 @@ def assemble(
             "intended_hostility": "UNKNOWN",
             "mob_source": {
                 **content,
+                "packaged_authored_entity_templates": cast(
+                    "JsonValue", dict(sorted(authored_sources.items()))
+                ),
+                "unresolved_authored_entities": {
+                    template: template_contents[template]["unresolved_entities"]
+                    for template in templates
+                    if template_contents[template]["unresolved_entities"]
+                },
+                "authored_entity_scope": (
+                    "Base IDs of template entities and passengers, including non-mob entities. "
+                    "Not a hostile-enemy classification or spawned population."
+                ),
                 "fields": [
                     "authored_entities",
                     "spawner_blocks",
@@ -90,7 +124,18 @@ def assemble(
                     "unresolved_entities",
                 ],
             },
-            "loot_table_source": {**content, "fields": ["loot_references"]},
+            "loot_table_source": {
+                **content,
+                "fields": ["loot_references"],
+                "packaged_references": [
+                    {
+                        "field": field,
+                        "value": cast("JsonValue", json.loads(value)),
+                        "templates": cast("JsonValue", owners),
+                    }
+                    for (field, value), owners in sorted(loot_sources.items())
+                ],
+            },
             "generated_spawners": {**content, "fields": ["spawner_blocks", "generation_markers"]},
             "authored_or_natural_enemies": (
                 "UNKNOWN: requires generation and natural-spawn disposition"
