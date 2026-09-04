@@ -27,13 +27,13 @@ This section supersedes the dated status and restart instructions below. Preserv
 | 4 | `COMPLETE` | The isolated four-seed environment and backup/restore gate pass. |
 | 5 | `COMPLETE` | The versioned measurement protocol, strict evidence tooling, and pinned-Temurin pilot gate pass. Spark overhead remains `UNKNOWN`, and the pilot is not a performance baseline. |
 | 6 | `COMPLETE` | The untouched retained-stack configuration is frozen and audited. The manifest contains 228 paths, with 88 audited and 140 explicitly out of scope. No tuning was performed. |
-| 7 | `PASS`, delivery pending | Two fresh four-seed runs inspected 54,816 exact selected chunks. The 192 anomaly rows, all 37 provider-component dispositions, 1,222 warning signatures, 128 reviewed captures, final r3 restore-tested archives, and 123-artifact completion receipt pass. Three exact-SHA reviews were rejected and their valid findings were fixed. Fresh exact-SHA review, GitHub Codex review, merge, and delivered-ref verification remain. |
+| 7 | `PASS`, delivery pending | Two fresh four-seed runs inspected 54,816 exact selected chunks. The 192 anomaly rows, 762 packaged structure restrictions, all 37 provider-component dispositions, 1,222 warning signatures, 128 reviewed captures, final r3 restore-tested archives, and 124-artifact completion receipt pass. Three exact-SHA reviews were rejected and their valid findings were fixed. Fresh exact-SHA review, GitHub Codex review, merge, and delivered-ref verification remain. |
 | 8 | `BLOCKED` by Item 7 delivery | Begin the runtime-backed canonical structure inventory only after the Item 7 pull request is cleanly reviewed, merged into `main`, and verified. |
 | 9 | `BLOCKED` by Item 8 | Reclassify every verified family exactly once only after Item 8 passes. |
 | 10 | `BLOCKED` by Items 7 through 9 | Regenerate and preserve predeclared density evidence only after the preceding gates pass. |
 | 11 | `BLOCKED` | Do not implement, run, repair, or lint Item 11 before the final Items 2 through 10 audit passes. It also requires at least two blind human operators. |
 
-The Item 7 completion command returns `PASS` and records 123 exact artifacts in `evidence/item-7/completion.json`. The focused Item 7 suite passes with 164 tests. The prior `438260f` candidate passed 843 full-repository tests and a clean export, but the final candidate still requires a fresh full and clean-export gate. The repository-bound r3 verifier redownloaded all four assets and matched every committed size and SHA-256.
+The Item 7 completion command returns `PASS` and records 124 exact artifacts in `evidence/item-7/completion.json`. After the first GitHub review fixes, the focused Item 7 suite passes with 173 tests and the full repository suite passes with 854 tests. The final candidate requires a clean-export gate. The repository-bound r3 verifier redownloaded all four assets and matched every committed size and SHA-256.
 
 ### Exact continuation point
 

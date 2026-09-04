@@ -43,7 +43,9 @@ The four targeted structures were Better Desert Temples, Better Strongholds, Bet
 
 ## Interaction and anomaly inspection
 
-Sixteen Run A analysis reports cover all four seeds and all four selections. Each report contains one row for every required anomaly class, for 192 rows total. The analysis records denominators, candidates, method, status, and limitations. Fragmented and tiny biomes, terrain transitions, structure overlaps, and village overlaps were measured directly. Buried, floating, cliff, underwater, and terrain-modification checks become method-limited where complete terrain or footprint inputs are unavailable. Failed placement is method-limited because invalid starts omitted by the decoder cannot be treated as a complete absence. Impossible biome restrictions remain unresolved until Item 8 binds the packaged restriction inputs.
+Sixteen Run A analysis reports cover all four seeds and all four selections. Each report contains one row for every required anomaly class, for 192 rows total. The analysis records denominators, candidates, method, status, and limitations. Fragmented and tiny biomes, terrain transitions, structure overlaps, and village overlaps were measured directly. Buried, floating, cliff, underwater, and terrain-modification checks become method-limited where complete terrain or footprint inputs are unavailable. Failed placement is method-limited because invalid starts omitted by the decoder cannot be treated as a complete absence.
+
+The hash-bound packaged restriction audit inspected all 762 structure definitions supplied by the exact 37 Item 7 provider components plus frozen Minecraft and NeoForge data. It resolved 757 definitions and found five impossible restrictions. Dungeons Arise's unplaced mining system and Terralith's unplaced underground witch hut deliberately use empty tags. Three IDAS lumber-camp compatibility variants reference missing biome tags while remaining members of the active `idas:idas_small` placement set. Those three findings are carried into Item 8; the Item 7 inspection subitem is resolved rather than reported as unknown.
 
 Candidate counts are deterministic geometric or registry signals, not automatic gameplay defects. The 128 final offline captures provide elevation, biome, structure-overlay, and cross-section views for every seed, selection, and run. Two independent review lanes passed artifact identity, legends, orientation, scale, axes, units, limitations, clipping, and plot padding. The renders are derived inspection views, not block-accurate client screenshots.
 
@@ -102,12 +104,13 @@ tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04-r3 
 
 The Python quality commands are intentionally scoped to Item 7. They do not claim that unrelated reconstructed later-item tools are clean, and Item 11 tooling remains outside this gate until the required Item 2 through Item 10 cross-item audit passes.
 
-The completion command is the tracked `tools/build_item7_completion.py` CLI with the protocol, provider, repeat, warning, control, visual, archive, restore, and publication inputs enumerated in `evidence/item-7/completion.json`. It returns `PASS` and records 123 artifact identities.
+The completion command is the tracked `tools/build_item7_completion.py` CLI with the protocol, provider, biome-restriction, repeat, warning, control, visual, archive, restore, and publication inputs enumerated in `evidence/item-7/completion.json`. It returns `PASS` and records 124 artifact identities.
 
 ## Evidence index
 
 - `evidence/item-7/protocol/worldgen-audit-v1.json`
 - `evidence/item-7/provider-catalog.json`
+- `evidence/item-7/biome-restriction-audit.json`
 - `evidence/item-7/visual/integrity-review.json`
 - `evidence/item-7/visual/fidelity-review.json`
 - `evidence/item-7/visual/rejected-attempts.json`
