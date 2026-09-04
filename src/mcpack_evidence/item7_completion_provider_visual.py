@@ -163,7 +163,7 @@ def validate_visual_evidence(
                 manifest_sha,
                 manifest_path.stat().st_size,
                 expected_count,
-                "f51f900ca9f98ccba12ba7a647d036123f69528a",
+                "6a3a997517974b0b6ca01906638b02228c320110",
                 "81b39a6e5eb4c2ed5d2a57525e385b8c83aad34a",
             )
         }
