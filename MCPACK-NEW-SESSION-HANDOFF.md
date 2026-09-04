@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-05
 
+Current inventory is delivered through `85111fd`, built from `fd9705a`.
+SHA-256: `83f56c9ecaa8f76f853ffd0081a12537849489e4a30dea3edae099caf298250d`.
+`3b4f770` and `2f1dbda` parse and attribute ordinary/trial spawner base entity
+sources; `6a19784` delivers their inventory output. Modes and source templates
+remain distinct, missing/custom cases retain source paths, and generation
+markers remain separate. Sixteen focused parser/assembly checks passed and the
+output reproduced exactly. No default entities or generated counts are inferred.
+`fd9705a` assigns all ten Explorations roots, including Slime Cave's explicit
+custom-generation gap and Underground Temple's two missing templates. Variants
+and components remain grouped. Nine focused grouping checks and scoped quality
+checks passed; the generated join reproduced its pilot exactly. The current
+unassigned registry list has 740 entries; this is not a canonical family count.
+Continue remaining provider coverage and required attributes. Custom Slime Cave
+and Underground Temple generation need source inspection despite existing Item 7
+observations. Raw registry custody remains verified under the existing release.
+The full gate, final report, clean final review and verified merge remain open.
+
 Current inventory is delivered through `2882825`, using source `729ccdd`.
 SHA-256: `6b2d8684f03af14ddd095b2c8a42c6c88bafa93f18e8f4ce8eade8f6ce355f32`.
 `1c92c0a` delivers compact packaged loot field/value attribution with source
