@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from typing import TYPE_CHECKING
 
 from .item8_inventory import resource_identity
@@ -116,7 +117,7 @@ def _link_record(
     }
 
 
-def _element(  # noqa: C901, PLR0912 - explicit handling of the observed codec variants.
+def _element(  # noqa: C901 - explicit handling of the observed codec variants.
     value: JsonValue, pointer: str, edges: list[JsonValue], unknown: list[JsonValue]
 ) -> None:
     if not isinstance(value, dict):
@@ -126,24 +127,17 @@ def _element(  # noqa: C901, PLR0912 - explicit handling of the observed codec v
     if isinstance(kind, str) and kind in _SINGLE_TYPES:
         location = value.get("location")
         if isinstance(location, str):
-            edges.append(_edge("template", location, pointer + "/location"))
+            edge = _edge("template", location, pointer + "/location")
+            if kind == "moogs_structures:versioned_single_pool_element":
+                edge["selected"] = False
+            edges.append(edge)
         else:
             unknown.append({"pointer": pointer, "reason": "inline or invalid template location"})
         processors = value.get("processors")
         if isinstance(processors, str):
             edges.append(_edge("processor_list", processors, pointer + "/processors"))
         if kind == "moogs_structures:versioned_single_pool_element":
-            locations = value.get("locations")
-            if isinstance(locations, dict):
-                for version_range, target in locations.items():
-                    if not isinstance(target, str):
-                        message = f"invalid versioned template location at {pointer}"
-                        raise TypeError(message)
-                    key = version_range.replace("~", "~0").replace("/", "~1")
-                    edge = _edge("template", target, pointer + "/locations/" + key)
-                    edge["version_range"] = version_range
-                    edges.append(edge)
-            unknown.append({"pointer": pointer, "reason": "version selection requires resolution"})
+            edges.extend(_versioned_edges(value.get("locations"), pointer))
     elif kind == "minecraft:list_pool_element" and isinstance(value.get("elements"), list):
         children = value["elements"]
         assert isinstance(children, list)  # noqa: S101 - explicit validation above.
@@ -161,3 +155,44 @@ def _element(  # noqa: C901, PLR0912 - explicit handling of the observed codec v
         )
     elif kind != "minecraft:empty_pool_element":
         unknown.append({"pointer": pointer, "element_type": kind, "reason": "unresolved element"})
+
+
+def _versioned_edges(locations: JsonValue, pointer: str) -> list[JsonValue]:
+    if not isinstance(locations, dict):
+        message = f"versioned element lacks its inspected location mapping: {pointer}"
+        raise TypeError(message)
+    edges: list[JsonValue] = []
+    selected_count = 0
+    for version_range, target in locations.items():
+        if not isinstance(target, str):
+            message = f"invalid versioned template location at {pointer}"
+            raise TypeError(message)
+        bounds = version_range.split("-")
+        if len(bounds) not in (1, 2):
+            message = f"unsupported version range: {version_range}"
+            raise ValueError(message)
+        lower, upper = _version(bounds[0]), _version(bounds[-1])
+        if lower > upper:
+            message = f"reversed version range: {version_range}"
+            raise ValueError(message)
+        selected = lower <= (1, 21, 1) <= upper
+        selected_count += selected
+        key = version_range.replace("~", "~0").replace("/", "~1")
+        edge = _edge("template", target, pointer + "/locations/" + key)
+        edge.update(version_range=version_range, selected=selected, runtime_version="1.21.1")
+        edges.append(edge)
+    if selected_count != 1:
+        message = f"version mapping does not uniquely select frozen Minecraft 1.21.1: {pointer}"
+        raise ValueError(message)
+    return edges
+
+
+def _version(value: str) -> tuple[int, ...]:
+    """Compare the observed closed numeric ranges with Moog's zero-padding semantics."""
+    if re.fullmatch(r"[0-9]+(?:\.[0-9]+)*", value.strip()) is None:
+        message = f"unsupported numeric version: {value}"
+        raise ValueError(message)
+    parts = [int(part) for part in value.strip().split(".")]
+    while parts and parts[-1] == 0:
+        _ = parts.pop()
+    return tuple(parts)

@@ -1,6 +1,12 @@
 from __future__ import annotations
 
+import gzip
+import hashlib
+import json
+from pathlib import Path
 from typing import TYPE_CHECKING, cast
+
+import pytest
 
 from mcpack_evidence.item8_pool_links import pool_links, template_links
 from tests.item8.test_inventory_sources import row
@@ -74,7 +80,7 @@ def test_template_connectors_preserve_optional_pack_and_duplicate_connections() 
     assert edges[0]["id"] == edges[1]["id"] == "example:roads"
 
 
-def test_versioned_locations_are_conditional_not_effective_selection() -> None:
+def test_frozen_version_selection_preserves_unselected_alternatives() -> None:
     resource = row(
         "data/example/worldgen/template_pool/start.json",
         {
@@ -98,7 +104,9 @@ def test_versioned_locations_are_conditional_not_effective_selection() -> None:
         ("example:old", "1.21-1.21.8"),
         ("example:new", "26.1"),
     ]
-    assert result["unresolved_elements"]
+    assert [edge["selected"] for edge in conditional] == [True, False]
+    assert edges[0]["selected"] is False
+    assert result["unresolved_elements"] == []
 
 
 def test_custom_single_and_inline_entity_feature_keep_distinct_sources() -> None:
@@ -137,3 +145,50 @@ def test_custom_single_and_inline_entity_feature_keep_distinct_sources() -> None
     assert edges[-1]["kind"] == "inline_placed_feature"
     assert edges[-1]["document"] == feature
     assert result["unresolved_elements"] == []
+
+
+@pytest.mark.parametrize(
+    "locations",
+    [
+        {"1.21-1.21.8": "example:a", "1.21.1": "example:b"},
+        {"1.21.9-1.21.11": "example:newer"},
+    ],
+)
+def test_ambiguous_or_nonmatching_version_maps_fail(locations: dict[str, str]) -> None:
+    resource = row(
+        "data/example/worldgen/template_pool/start.json",
+        {
+            "elements": [
+                {
+                    "element": {
+                        "element_type": "moogs_structures:versioned_single_pool_element",
+                        "location": "example:fallback",
+                        "locations": dict(locations),
+                    }
+                }
+            ]
+        },
+    )
+    with pytest.raises(ValueError, match="does not uniquely select"):
+        _ = pool_links([resource])
+
+
+def test_frozen_catalog_has_no_unresolved_pool_codecs_or_version_selections() -> None:
+    root = Path(__file__).resolve().parents[2]
+    path = root / "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    raw = path.read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd"
+    )
+    catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(raw)))
+    resources = cast("list[JsonValue]", catalog["resources"])
+    records = cast("list[dict[str, JsonValue]]", pool_links(resources))
+    assert all(record["unresolved_elements"] == [] for record in records)
+    selected = [
+        edge
+        for record in records
+        for edge in cast("list[dict[str, JsonValue]]", record["edges"])
+        if edge.get("selected") is True
+    ]
+    assert len(selected) == 212
+    assert all(edge["runtime_version"] == "1.21.1" for edge in selected)
