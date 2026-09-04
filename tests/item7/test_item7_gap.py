@@ -142,18 +142,20 @@ def test_gap_lifecycle_rejects_save_confirmation_queued_before_flush_command(
     # Given: all locate and Chunky markers plus an automatic save queued before the flush.
     request = _request(tmp_path, monkeypatch)
     _ = request.runtime.target.mkdir()
-    process = FakeProcess((
-        '[Server thread/INFO]: Done (1.0s)! For help, type "help"\n',
-        _located("betterdeserttemples:desert_temple", 32, -48),
-        _located("betterstrongholds:stronghold", -64, 96),
-        _located("betterwitchhuts:witch_hut", 128, 160),
-        _located("integrated_stronghold:stronghold", -192, -224),
-        *(
-            "[Chunky] Task finished for minecraft:overworld. Processed: 81 chunks (100.00%)\n"
-            for _ in item7_gap.GAP_TARGETS
-        ),
-        "[Server thread/INFO]: Saved the game\n",
-    ))
+    process = FakeProcess(
+        (
+            '[Server thread/INFO]: Done (1.0s)! For help, type "help"\n',
+            _located("betterdeserttemples:desert_temple", 32, -48),
+            _located("betterstrongholds:stronghold", -64, 96),
+            _located("betterwitchhuts:witch_hut", 128, 160),
+            _located("integrated_stronghold:stronghold", -192, -224),
+            *(
+                "[Chunky] Task finished for minecraft:overworld. Processed: 81 chunks (100.00%)\n"
+                for _ in item7_gap.GAP_TARGETS
+            ),
+            "[Server thread/INFO]: Saved the game\n",
+        )
+    )
     monkeypatch.setattr("mcpack_evidence.item7_gap.subprocess.Popen", fake_launch(process))
     monkeypatch.setattr("mcpack_evidence.item7_gap.threading.Thread", SynchronousThread)
     monkeypatch.setattr("mcpack_evidence.item7_gap.os.killpg", lambda pid, signal: None)

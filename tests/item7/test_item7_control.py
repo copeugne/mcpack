@@ -183,14 +183,16 @@ def test_control_lifecycle_rejects_save_confirmation_queued_before_flush_command
     # Given: a force-load success and automatic save confirmation queued before the flush.
     request = _request(tmp_path, monkeypatch, settle_seconds=0)
     _ = request.runtime.target.mkdir()
-    process = FakeProcess((
-        '[Server thread/INFO]: Done (1.0s)! For help, type "help"\n',
+    process = FakeProcess(
         (
-            "[Server thread/INFO]: Marked 81 chunks in Overworld "
-            "from [-4, -4] to [4, 4] to be force loaded\n"
-        ),
-        "[Server thread/INFO]: Saved the game\n",
-    ))
+            '[Server thread/INFO]: Done (1.0s)! For help, type "help"\n',
+            (
+                "[Server thread/INFO]: Marked 81 chunks in Overworld "
+                "from [-4, -4] to [4, 4] to be force loaded\n"
+            ),
+            "[Server thread/INFO]: Saved the game\n",
+        )
+    )
     monkeypatch.setattr("mcpack_evidence.item7_control.subprocess.Popen", fake_launch(process))
     monkeypatch.setattr("mcpack_evidence.item7_control.threading.Thread", SynchronousThread)
     monkeypatch.setattr("mcpack_evidence.item7_control.os.killpg", lambda pid, signal: None)
