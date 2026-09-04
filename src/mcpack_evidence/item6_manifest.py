@@ -23,11 +23,24 @@ class ManifestRow(TypedDict):
     generation_stage: str
 
 
+class RetainedManifest(TypedDict):
+    """Identity of the retained dedicated-server candidate manifest."""
+
+    path: str
+    count: int
+    sha256: str
+
+
 class Manifest(TypedDict):
     """The Item 6 frozen configuration manifest."""
 
     schema_version: str
     capture_boundary: str
+    configuration_version: str
+    seed_role: str
+    seed: str
+    retained_manifest: RetainedManifest
+    source_lifecycle: str
     file_count: int
     files: list[ManifestRow]
 
