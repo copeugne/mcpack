@@ -3,13 +3,24 @@
 
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
-from typing import ClassVar, Final, Literal
+from typing import ClassVar, Final, Literal, TypedDict
 
 from pydantic import BaseModel, ConfigDict, Field, TypeAdapter, ValidationError
 
 _SENTINEL: Final = "<redacted-generated-secret>"
 _TARGET_PATH: Final = Path("config/resourceful-config-web.json")
+_CANONICAL_RECEIPT: Final = "evidence/item-6/config-sanitization.json"
+
+
+class SanitizationMetadata(TypedDict):
+    """Manifest metadata binding the canonical sanitization receipt."""
+
+    receipt: str
+    sha256: str
+    sanitized_file_count: int
+    redaction_count: int
 
 
 class SanitizationRedaction(BaseModel):
@@ -92,6 +103,42 @@ def validate_sanitization_receipt(receipt_path: Path, frozen_root: Path) -> Sani
             "sanitized target does not contain the redaction sentinel"
         )
     return receipt
+
+
+def validate_sanitization_binding(
+    manifest_path: Path, frozen_root: Path, metadata: SanitizationMetadata
+) -> None:
+    """Bind manifest sanitization metadata to the canonical receipt and frozen target."""
+    if metadata["receipt"] != _CANONICAL_RECEIPT:
+        raise SanitizationReceiptValidationError(
+            "sanitization receipt must name the canonical repository path"
+        )
+    receipt_path = manifest_path.parent / "config-sanitization.json"
+    try:
+        receipt = validate_sanitization_receipt(receipt_path, frozen_root)
+    except SanitizationReceiptValidationError as error:
+        raise SanitizationReceiptValidationError(
+            "sanitization receipt binding is invalid"
+        ) from error
+    if _sha256(receipt_path) != metadata["sha256"]:
+        raise SanitizationReceiptValidationError(
+            "sanitization receipt digest does not match manifest"
+        )
+    if (
+        receipt.sanitized_file_count != metadata["sanitized_file_count"]
+        or receipt.redaction_count != metadata["redaction_count"]
+    ):
+        raise SanitizationReceiptValidationError(
+            "sanitization receipt counts do not match manifest"
+        )
+
+
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def _require_regular_file(path: Path, name: str) -> None:
