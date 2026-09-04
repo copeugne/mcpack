@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 from copy import deepcopy
 from typing import TYPE_CHECKING
 
@@ -17,7 +18,15 @@ from mcpack_evidence.item6_manifest import (
     validate_manifest_inventory,
 )
 from mcpack_evidence.item6_validation import sha256
-from tests.item6.helpers import AUDIT, FROZEN, MANIFEST, validate
+from tests.item6.helpers import (
+    AUDIT,
+    FROZEN,
+    MANIFEST,
+    Item6RepositoryFixture,
+    copy_item6_repository,
+    rebind_audit,
+    validate,
+)
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -130,6 +139,59 @@ def test_parse_manifest_rejects_unknown_fields(
         parse_manifest(manifest_path)
 
 
+@pytest.mark.parametrize(
+    "unsafe_path",
+    [
+        "",
+        "/etc/passwd",
+        r"config\accessories.json5",
+        "./config/accessories.json5",
+        "config/./accessories.json5",
+        "config/../config/accessories.json5",
+        "config//accessories.json5",
+    ],
+)
+def test_validate_rejects_unsafe_manifest_row_path(tmp_path: Path, unsafe_path: str) -> None:
+    # Given: an otherwise valid repository fixture with an aliasing manifest path.
+    fixture = copy_item6_repository(tmp_path)
+    _rewrite_first_manifest_path(fixture, unsafe_path)
+
+    # When/Then: the path is rejected before frozen-tree inspection.
+    with pytest.raises(
+        ValueError, match="manifest file path must be a normalized relative POSIX path"
+    ):
+        validate(fixture.frozen, fixture.manifest, fixture.audit)
+
+
+def test_validate_rejects_external_identical_bytes_file_symlink(tmp_path: Path) -> None:
+    # Given: a recorded frozen file replaced by a symlink to identical external bytes.
+    fixture = copy_item6_repository(tmp_path)
+    relative = "config/accessories.json5"
+    frozen_file = fixture.frozen / relative
+    external = tmp_path / "external-identical-accessories.json5"
+    external.write_bytes(frozen_file.read_bytes())
+    frozen_file.unlink()
+    frozen_file.symlink_to(external)
+
+    # When/Then: the live validator refuses the symlink before hashing it.
+    with pytest.raises(ValueError, match="manifest path components must be real non-symlinks"):
+        validate(fixture.frozen, fixture.manifest, fixture.audit)
+
+
+def test_validate_rejects_symlinked_manifest_path_component(tmp_path: Path) -> None:
+    # Given: a manifest component is replaced by a link to byte-identical external contents.
+    fixture = copy_item6_repository(tmp_path)
+    config = fixture.frozen / "config"
+    external = tmp_path / "external-config"
+    shutil.copytree(config, external)
+    shutil.rmtree(config)
+    config.symlink_to(external, target_is_directory=True)
+
+    # When/Then: the live validator refuses the symlinked component before hashing files.
+    with pytest.raises(ValueError, match="manifest path components must be real non-symlinks"):
+        validate(fixture.frozen, fixture.manifest, fixture.audit)
+
+
 def _committed_manifest() -> Manifest:
     return parse_manifest(MANIFEST)
 
@@ -147,3 +209,10 @@ def _write_bound_manifest(tmp_path: Path, manifest: Manifest) -> tuple[Path, Pat
 def _assert_manifest_rejected(manifest_path: Path, audit_path: Path, message: str) -> None:
     with pytest.raises(ValueError, match=message):
         validate(FROZEN, manifest_path, audit_path)
+
+
+def _rewrite_first_manifest_path(fixture: Item6RepositoryFixture, path: str) -> None:
+    manifest = json.loads(fixture.manifest.read_text(encoding="utf-8"))
+    manifest["files"][0]["path"] = path
+    fixture.manifest.write_text(json.dumps(manifest), encoding="utf-8")
+    rebind_audit(fixture)

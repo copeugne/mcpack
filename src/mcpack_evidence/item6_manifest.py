@@ -92,12 +92,16 @@ def parse_manifest(manifest_path: Path) -> Manifest:
 def validate_manifest_inventory(root: Path, manifest: Manifest) -> set[str]:
     """Return the exact preserved paths after validating manifest inventory hashes."""
     rows = manifest["files"]
-    expected = {row["path"] for row in rows}
+    relatives = [_parse_manifest_path(row["path"]) for row in rows]
+    paths = [relative.as_posix() for relative in relatives]
+    expected = set(paths)
+    resolved_files = [_resolve_manifest_file(root, relative) for relative in relatives]
+    if any(path.is_symlink() for path in root.rglob("*")):
+        raise ManifestValidationError("manifest path components must be real non-symlinks")
     actual = {path.relative_to(root).as_posix() for path in root.rglob("*") if path.is_file()}
     if expected != actual or manifest["file_count"] != len(rows):
         raise ManifestValidationError("frozen file inventory does not match manifest")
-    for row in rows:
-        path = root / row["path"]
+    for row, path in zip(rows, resolved_files, strict=True):
         if path.stat().st_size != row["size_bytes"] or _sha256(path) != row["sha256"]:
             raise ManifestValidationError(f"frozen file identity mismatch: {row['path']}")
         if row["generation_stage"] not in _STAGES:
@@ -105,10 +109,44 @@ def validate_manifest_inventory(root: Path, manifest: Manifest) -> set[str]:
     return expected
 
 
+def _parse_manifest_path(path: str) -> PurePosixPath:
+    relative = PurePosixPath(path)
+    if (
+        not path
+        or "\\" in path
+        or relative.is_absolute()
+        or relative.as_posix() != path
+        or any(part in {".", ".."} for part in relative.parts)
+    ):
+        raise ManifestValidationError("manifest file path must be a normalized relative POSIX path")
+    return relative
+
+
+def _resolve_manifest_file(root: Path, relative: PurePosixPath) -> Path:
+    if root.is_symlink() or not root.is_dir():
+        raise ManifestValidationError("frozen root must be a real non-symlink directory")
+    root_resolved = root.resolve(strict=True)
+    candidate = root
+    for part in relative.parts:
+        candidate /= part
+        if candidate.is_symlink():
+            raise ManifestValidationError("manifest path components must be real non-symlinks")
+    if not candidate.is_file():
+        raise ManifestValidationError("manifest path must name a regular file")
+    try:
+        resolved_candidate = candidate.resolve(strict=True)
+        _ = resolved_candidate.relative_to(root_resolved)
+    except ValueError as error:
+        raise ManifestValidationError(
+            "manifest file path must be a normalized relative POSIX path"
+        ) from error
+    return candidate
+
+
 def validate_manifest_contract(manifest: Manifest) -> None:
     """Reject a manifest that is not the deterministic Item 6 capture record."""
     paths = [row["path"] for row in manifest["files"]]
-    component_paths = [PurePosixPath(path).parts for path in paths]
+    component_paths = [_parse_manifest_path(path).parts for path in paths]
     if component_paths != sorted(component_paths):
         raise ManifestValidationError("manifest paths must be strictly component-ordered")
     if len(paths) != len(set(paths)):
