@@ -44,6 +44,7 @@ class CompletionInputs:
     provider_coverage: Path
     provider_disposition: Path
     restriction_audit: Path
+    world_archive_inventory: Path
     repeat_comparison: Path
     warning_audit: Path
     warning_disposition: Path
@@ -114,7 +115,12 @@ def build_completion(inputs: CompletionInputs) -> CompletionReport:
     raw_artifacts.append(visual_manifest)
     artifacts.extend(identity(path, f"visual/{path.name}") for path in inputs.visual_reviews)
     artifacts.extend(
-        validate_archives(inputs.archive_manifests, inputs.restore_receipts, tuple(raw_artifacts))
+        validate_archives(
+            inputs.archive_manifests,
+            inputs.restore_receipts,
+            tuple(raw_artifacts),
+            inputs.world_archive_inventory,
+        )
     )
     publication, release_url = validate_publication(inputs.publication, inputs.archive_manifests)
     artifacts.append(publication)

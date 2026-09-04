@@ -24,6 +24,7 @@ class _Arguments(BaseModel):
     provider_coverage: Path
     provider_disposition: Path
     restriction_audit: Path
+    world_archive_inventory: Path
     repeat_comparison: Path
     warning_audit: Path
     warning_disposition: Path
@@ -46,6 +47,7 @@ def build_parser() -> argparse.ArgumentParser:
         "provider-coverage",
         "provider-disposition",
         "restriction-audit",
+        "world-archive-inventory",
         "repeat-comparison",
         "warning-audit",
         "warning-disposition",
@@ -82,6 +84,7 @@ def run(arguments: tuple[str, ...]) -> int:
             provider_coverage=values.provider_coverage,
             provider_disposition=values.provider_disposition,
             restriction_audit=values.restriction_audit,
+            world_archive_inventory=values.world_archive_inventory,
             repeat_comparison=values.repeat_comparison,
             warning_audit=values.warning_audit,
             warning_disposition=values.warning_disposition,

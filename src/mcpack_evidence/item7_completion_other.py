@@ -14,6 +14,7 @@ from mcpack_evidence.item7_gap import GAP_TARGETS, GapLifecycleReceipt
 from mcpack_evidence.item7_runtime import PreflightReceipt  # noqa: TC001
 from mcpack_evidence.item7_warning_disposition import WarningDispositionReport
 from mcpack_evidence.item7_warning_models import WarningAudit
+from mcpack_evidence.item7_world_archive_inventory import validate_world_archive_inventory
 
 _WARNING_SIGNATURES: Final = 1222
 _WARNING_OCCURRENCES: Final = 14003
@@ -145,6 +146,7 @@ def validate_archives(
     manifests: tuple[Path, ...],
     receipts: tuple[Path, ...],
     required: tuple[ArtifactIdentity, ...],
+    world_inventory: Path,
 ) -> tuple[ArtifactIdentity, ...]:
     """Bind four immutable archive manifests to four verified restore receipts."""
     if len(manifests) != _ARCHIVE_COUNT or len(receipts) != _ARCHIVE_COUNT:
@@ -152,8 +154,10 @@ def validate_archives(
     output: list[ArtifactIdentity] = []
     names: set[str] = set()
     archived: dict[str, list[tuple[str, int]]] = {}
+    parsed_manifests: list[ArchiveManifest] = []
     for index, (manifest_path, receipt_path) in enumerate(zip(manifests, receipts, strict=True)):
         manifest = strict_model(manifest_path, ArchiveManifest)
+        parsed_manifests.append(manifest)
         receipt = strict_model(receipt_path, RestoreReceipt)
         if (
             receipt.archive_name != manifest.archive_name
@@ -177,4 +181,5 @@ def validate_archives(
     for artifact in required:
         if archived.get(artifact.path) != [(artifact.sha256, artifact.size_bytes)]:
             fail("archive cross-input identity", artifact.path)
+    output.append(validate_world_archive_inventory(world_inventory, tuple(parsed_manifests)))
     return tuple(output)
