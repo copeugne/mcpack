@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-05
 
+Better Mineshafts grouping is now recorded in
+`evidence/item-8/family-decisions.json`: its 13 retained structure IDs belong to
+one specialized-generator family with biome/material/decoration/support variants.
+Vanilla normal and mesa mineshafts remain separate from this family and carry
+the previously derived suppressed-generation distinction. The focused family
+test verifies exact namespace coverage, definition commonality, source hashes
+and disassembly identities. The test and scoped quality checks passed.
+This is the grouping decision only. Complete the family's outstanding attributes
+and the other providers before any Item 8 gate or canonical total is claimed.
+
 Vanilla mineshaft suppression follow-up: source `9669fb1` extends the existing
 inspector with annotated mixin disassembly and exact loader/mixin declarations.
 The updated `sources/mineshafts-code` evidence demonstrates that the frozen

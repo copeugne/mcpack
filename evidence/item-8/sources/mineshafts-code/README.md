@@ -67,6 +67,12 @@ replaces only the leading local `Classfile` path with archive/member identity;
 the exact transformation is tracked. The original pilot containing a host path
 remains outside Git. Existing generation disassemblies remain unchanged.
 
-Remaining: finish canonical grouping, effective biome/dimension constraints,
+The resolved grouping is recorded in `evidence/item-8/family-decisions.json`:
+the 13 Better Mineshafts structure IDs form one family of biome, material,
+decoration and support variants. `tests/item8/test_family_decisions.py` checks
+exact runtime membership, the shared specialized definition fields and preserved
+code identities. This grouping decision does not resolve every family attribute.
+
+Remaining: finish effective biome/dimension constraints,
 generated physical size and visual discoverability, and
 effective loot attribution. This source inspection does not close Item 8.
