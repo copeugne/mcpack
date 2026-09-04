@@ -1,8 +1,10 @@
-# Cloud Handoff — Items 5–10 Continuation
+# Historical Cloud Handoff - Items 5-10 Continuation
+
+> Historical checkpoint: this file records the repository state on 2026-09-03 UTC and is not the current continuation authority. Use `SPECS.md`, the master execution status in `Adventure-Engineering-Pack-Execution-Ledger.md`, and current Git/GitHub state for present status. The dated instructions below are preserved as recovery history.
 
 ## 1. Authority, scope, and restart rule
 
-This is the authoritative continuation handoff as of **2026-09-03 UTC**. Read it and then `SPECS.md` in full before changing the repository. `SPECS.md` remains the chronological and dependency-ordered requirements authority; this file records actual Git, review, evidence, and runtime state.
+This was the continuation handoff as of **2026-09-03 UTC**. Read it as a dated snapshot. `SPECS.md` remains the chronological and dependency-ordered requirements authority.
 
 Do not redo completed Items 2–5 unless verification or later evidence invalidates a gate. Do not begin Item 11. Continue in order: Item 6, Item 7, Item 8, Item 9, Item 10, the final Items 2–10 cross-item audit, and only then report Item 11 eligibility without implementing Item 11.
 
