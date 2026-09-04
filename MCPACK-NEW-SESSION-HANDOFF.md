@@ -6,6 +6,28 @@
 
 ### Continuation update - 2026-09-05
 
+Current inventory is delivered through `376e8e6`, built from `585de70`.
+SHA-256: `abb98a78d9d0fa1deb465dfc8a4db4f2c2e6555a937b515b085597e16a55c3e1`.
+All twelve Integrated Villages registered designs now have working groups,
+distinct start pools, declared generation constraints and missing components.
+Broader village-family relationships and gameplay attributes remain open.
+Six focused tests and scoped quality checks passed; output reproduced exactly.
+WDA root inspection has begun but no WDA grouping decision is delivered yet.
+
+Registry raw durability is now resolved through `63cb1f8`. This archive was
+required by the existing evidence gate to preserve the previously local logs,
+configuration and source metadata. It reuses the existing archive and restore
+CLI and unchanged schema; no new framework or runtime experiment was added.
+Release/tag `item-8-registry-raw-2026-09-05-r1` binds custody revision `376e8e6`.
+Archive `item8-registry-r1-376e8e6.tar.gz`, SHA-256
+`03f60f97ba2d22f6ae86b600a1cf0d267896209254493e2730cc2f814f1d3645`,
+contains 241 files and is 603232 bytes. Local and downloaded restores verified
+all files; the world-context projection reproduced from downloaded level.dat.
+Use `evidence/item-8/raw-custody/README.md` for retrieval commands and receipts.
+This supersedes older registry raw-delivery-pending statements below. It does
+not close family coverage, required attributes, final gate, review or merge.
+Continue those requirements using the existing inventory and source catalogs.
+
 Inventory work is delivered through `451e5ce`, using decisions from `93d526c`.
 Current inventory SHA-256:
 `2df2e12859eb6baacd304205a24e8f0506c4b1adbef63637e0398fd43296bf3f`.
