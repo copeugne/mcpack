@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
+from zipfile import ZipFile
 
 import pytest
 from pydantic import TypeAdapter
@@ -12,12 +14,21 @@ from mcpack_evidence.item7_provider import (
     ProviderRole,
     build_provider_catalog,
 )
+from mcpack_evidence.item7_provider_evidence import build_component, load_evidence
+from mcpack_evidence.item7_provider_models import ProviderCatalog
+from mcpack_evidence.item7_provider_requirements import RequiredComponent
 
 ROOT = Path(__file__).parents[2]
 
 
+def _catalog() -> ProviderCatalog:
+    return ProviderCatalog.model_validate_json(
+        (ROOT / "evidence/item-7/provider-catalog.json").read_bytes()
+    )
+
+
 def test_catalog_covers_every_item7_label_with_verified_retained_components() -> None:
-    catalog = build_provider_catalog(CatalogInputs.from_repository(ROOT))
+    catalog = _catalog()
 
     assert set(catalog.labels) == {
         "Tectonic",
@@ -49,7 +60,7 @@ def test_catalog_covers_every_item7_label_with_verified_retained_components() ->
 
 
 def test_catalog_distinguishes_terrain_direct_and_library_providers() -> None:
-    catalog = build_provider_catalog(CatalogInputs.from_repository(ROOT))
+    catalog = _catalog()
 
     assert catalog.labels["Tectonic"].role is ProviderRole.TERRAIN_BIOME
     assert catalog.labels["WDA"].role is ProviderRole.DIRECT_STRUCTURE
@@ -89,7 +100,7 @@ def test_catalog_distinguishes_terrain_direct_and_library_providers() -> None:
 
 
 def test_catalog_reports_sorted_packaged_structure_registry_ids() -> None:
-    catalog = build_provider_catalog(CatalogInputs.from_repository(ROOT))
+    catalog = _catalog()
 
     components = {
         component.mod_id: component
@@ -162,3 +173,52 @@ def test_catalog_rejects_unknown_item3_evidence_fields(tmp_path: Path) -> None:
                 candidate_directory=inputs.candidate_directory,
             )
         )
+
+
+def test_component_builder_verifies_synthetic_jar_bytes(tmp_path: Path) -> None:
+    inputs = CatalogInputs.from_repository(ROOT)
+    filename = "tectonic-3.0.22-neoforge-21.1.jar"
+    candidates = tmp_path / "candidates"
+    candidates.mkdir()
+    jar = candidates / filename
+    with ZipFile(jar, "w") as bundle:
+        bundle.writestr("data/example/worldgen/structure/nested/demo.json", "{}")
+    digest = hashlib.sha256(jar.read_bytes()).hexdigest()
+
+    document_adapter = TypeAdapter(dict[str, object])
+    rows_adapter = TypeAdapter(list[dict[str, object]])
+    acquisition = document_adapter.validate_json(inputs.acquisition.read_bytes())
+    artifacts = rows_adapter.validate_python(acquisition["artifacts"])
+    artifact = next(row for row in artifacts if row["candidate_filename"] == filename)
+    identity = document_adapter.validate_python(artifact["identity"])
+    identity["computed_sha256"] = digest
+    identity["size_bytes"] = jar.stat().st_size
+    artifact["identity"] = identity
+    acquisition["artifacts"] = artifacts
+    acquisition_path = tmp_path / "acquisition.json"
+    _ = acquisition_path.write_text(json.dumps(acquisition), encoding="utf-8")
+
+    inspection = document_adapter.validate_json(inputs.inspection.read_bytes())
+    candidates_rows = rows_adapter.validate_python(inspection["candidates"])
+    inspected = next(row for row in candidates_rows if row["candidate_filename"] == filename)
+    inspected["expected_sha256"] = digest
+    inspected["computed_sha256"] = digest
+    inspection["candidates"] = candidates_rows
+    inspection_path = tmp_path / "inspection.json"
+    _ = inspection_path.write_text(json.dumps(inspection), encoding="utf-8")
+
+    evidence = load_evidence(
+        CatalogInputs(
+            retained=inputs.retained,
+            acquisition=acquisition_path,
+            matrix=inputs.matrix,
+            inspection=inspection_path,
+            candidate_directory=candidates,
+        )
+    )
+    component = build_component(
+        RequiredComponent(filename, "tectonic", ProviderRole.TERRAIN_BIOME), evidence
+    )
+
+    assert component.sha256 == digest
+    assert component.structure_ids == ("example:nested/demo",)
