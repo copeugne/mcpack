@@ -188,6 +188,13 @@ def test_region_is_rejected_when_slots_overlap(tmp_path: Path) -> None:
         _ = tuple(decode_region(region))
 
 
+def test_zero_byte_region_placeholder_decodes_no_chunks(tmp_path: Path) -> None:
+    region = tmp_path / "r.2.-1.mca"
+    region.touch()
+
+    assert tuple(decode_region(region)) == ()
+
+
 def test_region_is_rejected_when_slot_coordinates_disagree(tmp_path: Path) -> None:
     region = tmp_path / "r.0.0.mca"
     write_region(region, ChunkFixture(slot=0, chunk_x=1, chunk_z=0, compression=2))

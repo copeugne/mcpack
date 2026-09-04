@@ -76,6 +76,8 @@ def _region_coordinates(path: Path) -> tuple[int, int]:
 
 def _slots(path: Path, stream: BinaryIO) -> tuple[_Slot, ...]:
     size = path.stat().st_size
+    if size == 0:
+        return ()
     if size < _HEADER_BYTES or size % _SECTOR_BYTES != 0:
         raise _fail(path, None, "region size is not a complete Anvil sector sequence")
     header = stream.read(_HEADER_BYTES)
