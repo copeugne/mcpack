@@ -6,6 +6,27 @@
 
 ### Continuation update - 2026-09-05
 
+Inventory work is delivered through `451e5ce`, using decisions from `93d526c`.
+Current inventory SHA-256:
+`2df2e12859eb6baacd304205a24e8f0506c4b1adbef63637e0398fd43296bf3f`.
+`7100c21` and `bddaba7` deliver Seven Seas main hull extents, authored spawner
+types, loot references and ocean-surface setup, retaining all effective-world
+limitations. Source checks caught and corrected an omitted Victory Frigate
+skeleton entry. `5629b2b` and `f1fa7d1` preserve the pinned Minecraft missing
+template lookup and attachment paths: a missing template becomes empty and has
+no connectors. This is base code evidence, not proof of post-transform runtime
+behavior or a miss probability. Do not modify the frozen baseline to repair it.
+Integrated Stronghold is now one family with connected room components, its
+piece-bound natural silverfish/enderman spawn override, and packaged Y=15 start.
+Two missing armory templates remain explicit. Five focused tests and scoped
+quality checks passed; each inventory update reproduced its pilot byte for byte.
+Continue remaining provider grouping and attributes in the existing inventory.
+Integrated Stronghold's authored content, processors, replacement relationship,
+occupied size and visibility are still open. The current Item 7 start subset
+contains no observation for it. Raw durability, complete coverage and attributes,
+final report and gate, clean final Codex review and verified main merge remain
+required. No Item 8 completion is claimed and no server process is running.
+
 Inventory work is delivered through `787523b`. `bf153ea` lets source-bound
 attribute decisions populate the existing inventory while protecting membership,
 observation references and incomplete status. `e6704a7` records Better
