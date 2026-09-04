@@ -42,6 +42,7 @@ def assemble(
     constraints = cast("dict[str, JsonValue]", sources["structure_biomes"])
     pool_traces = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
     custom = cast("dict[str, JsonValue]", traces["untraced_structures"])
+    template_contents = cast("dict[str, dict[str, JsonValue]]", traces["template_contents"])
     observations = cast("list[dict[str, JsonValue]]", bounds["observations"])
     for decision in decisions:
         family = str(decision["family_id"])
@@ -90,7 +91,15 @@ def assemble(
                     "unresolved_entities",
                 ],
             },
-            "loot_table_source": {**content, "fields": ["loot_references"]},
+            "loot_table_source": {
+                **content,
+                "fields": ["loot_references"],
+                "packaged_references_by_template": {
+                    template: template_contents[template]["loot_references"]
+                    for template in templates
+                    if template_contents[template]["loot_references"]
+                },
+            },
             "generated_spawners": {**content, "fields": ["spawner_blocks", "generation_markers"]},
             "authored_or_natural_enemies": (
                 "UNKNOWN: requires generation and natural-spawn disposition"
