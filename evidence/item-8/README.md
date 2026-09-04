@@ -3,10 +3,10 @@
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
 The working deliverable is `inventory.json`, initially assembled by `f2eaf2b`
-and updated through `585de70` using attribute support from `bf153ea`.
-SHA-256: `abb98a78d9d0fa1deb465dfc8a4db4f2c2e6555a937b515b085597e16a55c3e1`.
+and updated through `6540055` using attribute support from `bf153ea`.
+SHA-256: `cfe53234f8bed18b3f494b16de318cd2c95c3dc875e54c3a520a196477a9d83d`.
 It is explicitly incomplete. It joins Better Mineshafts, CTOV size groups,
-Seven Seas vessels, Integrated Stronghold and Integrated Villages design groups
+WDA layouts, Seven Seas vessels, Integrated Stronghold and Integrated Villages design groups
 to biome constraints, potential template content
 and saved-world observation references. It lists every unassigned registry ID
 and keeps unresolved attributes marked `UNKNOWN`. CTOV's broader design
@@ -91,6 +91,20 @@ produce substantial repeated source references. No unrelated source changes are
 included. Committed-source output
 `evidence/raw/item8/inventory-integrated-villages-reproduction1.json` matches
 `evidence/raw/item8/inventory-integrated-villages-pilot1.json` byte for byte.
+
+WDA grouping decisions are delivered in four increments: `559edc0`, `d20b0c6`,
+`007d1f9` and `6540055`. All forty registered WDA roots are assigned once, with
+distinct start pools and disjoint reachable template sets. Rooms, decorations
+and spawners remain components. The source-bound test verifies these distinctions,
+exact registry coverage, placement settings and missing references. Seven focused
+tests and scoped quality checks passed. Effective placement and the remaining
+gameplay attributes are not inferred from root coverage.
+
+The resulting per-family biome and template joins are isolated in a generated
+inventory increment because these required references account for its size.
+No implementation changes are included with that output. Committed-source output
+`evidence/raw/item8/inventory-wda-reproduction1.json` matches
+`evidence/raw/item8/inventory-wda-pilot1.json` byte for byte.
 
 The infrastructure requirements in
 `INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md` apply to this work. Reuse the
