@@ -52,6 +52,36 @@ definitions differing only in expansion size. These size relationships do not
 establish the final canonical family count or prove effective placement.
 
 Remaining work: distinguish actual resource kinds, resolve runtime availability
-and competing definitions, decode template evidence, bind accepted Item 7 world
+and competing definitions, resolve template relationships, bind accepted Item 7 world
 observations, and establish source-supported canonical family relationships and
 all required attributes. No Item 9 classification is included here.
+
+## Template observations
+
+`templates-redacted.json.gz` contains 12,550 packaged template observations from
+all 138 source archives. SHA-256:
+`b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705`.
+Size: 6,211,961 bytes. The extraction implementation is `4cb8ce5`; redaction uses
+`bdeb98a`. The completed original pilot is retained outside Git as
+`evidence/raw/item8/templates-pilot1.json.gz`, SHA-256
+`9ffec196748525b0dc115a57e8141a67755e6c9d66ce056fbca667d8cb8ff3c0`.
+It must not be published without redaction.
+
+Reproduce using fresh output names:
+
+```sh
+uv run -m tools.extract_item8_sources --kind template --output evidence/raw/item8/templates-reproduction.json.gz
+uv run -m tools.redact_item8_catalog --input evidence/raw/item8/templates-reproduction.json.gz --output evidence/raw/item8/templates-redacted-reproduction.json.gz
+cmp evidence/item-8/sources/templates-redacted.json.gz evidence/raw/item8/templates-redacted-reproduction.json.gz
+```
+
+Each template records XYZ size, data version, palettes, block-state counts,
+block entity NBT and authored entities. Original archive/member hashes remain
+available for exact recovery. Profile, owner, UUID and password fields are
+explicitly omitted with their JSON-pointer paths recorded. These omitted fields
+cannot prove ownership behavior or credential validity. The catalog retains
+spawner configurations, loot references, jigsaw connectors, block positions for
+block entities and authored-entity positions. It does not retain ordinary block
+positions or constitute a visual render, generated-world observation, or assembled
+structure footprint. Resolve pool membership, processors, effective resources
+and actual generated bounds before attributing template contents to a family.
