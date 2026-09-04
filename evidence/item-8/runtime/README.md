@@ -25,3 +25,28 @@ observed by the capture harness. Full console, latest and debug logs and capture
 configuration remain at `evidence/raw/item8/registry-r1` pending durable delivery.
 This partial delivery does not independently close the lifecycle or configuration
 evidence requirements and does not pass Item 8.
+
+## Pack and dimension context
+
+`registry-r1/world-context.json` projects `DataVersion`, `Version`, `DataPacks`
+and `WorldGenSettings` from the stopped registry instance. It excludes players
+and unrelated world metadata. The full generator settings are retained for
+source-backed dimension and biome analysis. Its SHA-256 is
+`0615a2dcdeb2120a467648df95f69aa9f1ef53e8989ae8c2191028d6f5c1aca2`.
+
+Source `level.dat` is preserved outside ordinary Git at
+`evidence/raw/item8/registry-r1/world-metadata/level.dat`, SHA-256
+`a867acca9a8970df7e8e474ef4011ad034e7e829785a037fc7a3812798b2be0e`.
+It was copied byte-for-byte from the stopped instance and checked with `cmp`.
+Durable raw custody remains pending together with the logs and configuration.
+Reproduce the projection using source `628ba37` or its unchanged successor:
+
+```sh
+uv run -m tools.extract_item8_world_context --level evidence/raw/item8/registry-r1/world-metadata/level.dat --output evidence/raw/item8/world-context-reproduction.json
+cmp evidence/item-8/runtime/registry-r1/world-context.json evidence/raw/item8/world-context-reproduction.json
+```
+
+The metadata records `mod_data` after `vanilla` in the enabled-pack list. Preserve
+that order when assessing overrides. The projection is source context, not proof
+of every resource's effective value, observed structure placement or Item 8
+completion.
