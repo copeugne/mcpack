@@ -3,8 +3,8 @@
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
 The working deliverable is `inventory.json`, initially assembled by `f2eaf2b`
-and updated through `a590403` using attribute support from `bf153ea`.
-SHA-256: `ae3e32ef3378920442ef05327c85581aa0a13c5395b96074c5335ae15e9fa8c2`.
+and updated through `729ccdd` using attribute support from `bf153ea`.
+SHA-256: `6b2d8684f03af14ddd095b2c8a42c6c88bafa93f18e8f4ce8eade8f6ce355f32`.
 It is explicitly incomplete. It joins Better Mineshafts, CTOV size groups,
 WDA layouts, Seven Seas vessels, Integrated Stronghold and Integrated Villages design groups
 to biome constraints, potential template content
@@ -118,6 +118,16 @@ Eight focused tests and scoped quality checks passed. The output at
 The more verbose `136ee84` pilot and reproduction were rejected for unnecessary
 duplication of raw paths; they are not the current inventory. This generated
 increment contains the required loot-source attribution and its documentation.
+
+Source `729ccdd` similarly attributes authored entity base IDs to their source
+templates, including passengers and non-mob entities. Unresolved entity records
+remain explicit. Spawner contents, generation markers, processors, natural
+spawning and actual hostility require their separate dispositions; an empty
+authored-entity summary is not evidence of an empty encounter. Existing explicit
+family attribute decisions remain intact. Eight focused tests and scoped quality
+checks passed, including duplicate-entity, passenger and missing-ID cases.
+`evidence/raw/item8/inventory-authored-entities-reproduction1.json` reproduced
+`evidence/raw/item8/inventory-authored-entities-pilot1.json` byte for byte.
 
 The infrastructure requirements in
 `INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md` apply to this work. Reuse the
