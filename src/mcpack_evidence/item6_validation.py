@@ -27,6 +27,8 @@ type JsonValue = bool | int | float | str | list[JsonValue] | dict[str, JsonValu
 
 
 class _System(TypedDict):
+    system: str
+    status: str
     files: list[str]
 
 
@@ -43,8 +45,12 @@ class _SettingEvidence(TypedDict):
 
 
 class _Setting(TypedDict):
+    system: str
     file: str
     key: str
+    scope: str
+    owner: str
+    interactions: list[str]
     evidence: _SettingEvidence
     generated_default: Scalar
     effective_value: Scalar
@@ -52,7 +58,11 @@ class _Setting(TypedDict):
 
 
 class _Finding(TypedDict):
+    id: str
+    classification: str
+    summary: str
     files: list[str]
+    confidence: str
 
 
 class _Classification(TypedDict):
@@ -62,12 +72,14 @@ class _Classification(TypedDict):
 
 class _Audit(TypedDict):
     schema_version: str
-    tuning_performed: bool
     configuration_identity: str
+    scope: str
+    tuning_performed: bool
     systems: list[_System]
     settings: list[_Setting]
     findings: list[_Finding]
     file_accounting: list[_Classification]
+    limitations: list[str]
 
 
 _AUDIT_ADAPTER: Final[TypeAdapter[_Audit]] = TypeAdapter(_Audit)
@@ -129,7 +141,7 @@ def validate(  # noqa: C901, PLR0912, PLR0915
 ) -> None:
     """Fail unless the frozen tree, manifest, and audit agree exactly."""
     manifest = parse_manifest(manifest_path)
-    audit = _AUDIT_ADAPTER.validate_json(audit_path.read_bytes(), strict=True, extra="allow")
+    audit = _AUDIT_ADAPTER.validate_json(audit_path.read_bytes(), strict=True, extra="forbid")
     if manifest["schema_version"] != "item6-frozen-config-manifest-v1":
         raise _AuditValidationError("unsupported manifest schema")
     if audit["schema_version"] != "item6-config-audit-v1":
