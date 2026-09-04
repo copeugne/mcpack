@@ -21,6 +21,7 @@ ARCHIVES = frozenset(
         "IllagerInvasion-v21.1.6-1.21.1-NeoForge.jar",
         "repurposed_structures-7.5.21+1.21.1-neoforge.jar",
         "worldweaver-21.0.24.jar",
+        "lithostitched-1.7.10+beta4-neoforge-21.1.jar",
     }
 )
 CLASSES = (
@@ -36,6 +37,7 @@ CLASSES = (
     "LegacySingleNoLiquidPoolElement.class",
     "LegacyOceanBottomSinglePoolElement.class",
     "SingleEndPoolElement.class",
+    "BreaksSeedParityCondition.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -45,6 +47,7 @@ REGISTRATION_KEYS = (
     b"single_end_pool_element",
     b"legacy_ocean_bottom_single_pool_element",
     b"single_pool_element",
+    b"breaks_seed_parity",
 )
 
 
