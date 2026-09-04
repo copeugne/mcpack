@@ -1,0 +1,142 @@
+{
+  "schema_version": "item7-worldgen-audit-v1",
+  "identity": {
+    "minecraft_version": "1.21.1",
+    "neoforge_version": "21.1.249",
+    "java_build": "Temurin-21.0.12.1+1-LTS",
+    "java_archive_sha256": "ce79869e1307ed8ee1e2baa86a412b1eb5b75d10a01006d788a6f968bcfaee94",
+    "configuration_version": "test-environment-v0.1",
+    "frozen_config_manifest": {
+      "path": "evidence/item-6/generated-config-manifest.json",
+      "sha256": "2e0aaeb0f84747a3cb17146eb435d34cc7d6703b9372211e8fc8cff2df2b436f"
+    },
+    "config_audit": {
+      "path": "evidence/item-6/config-audit.json",
+      "sha256": "181e0c299f44ded319d93c84f7b983738364b4090286251b00421fa041b989dd"
+    },
+    "retained_manifest": {
+      "path": "evidence/item-3/runtime/retained-server-candidates.txt",
+      "sha256": "78e5bdc0697299782a535400ad5b313c088e8db10cfe075085ae4c8a531e30cb",
+      "count": 136
+    },
+    "seed_suite": {
+      "path": "test-environment/seed-suite.json",
+      "sha256": "de5e5e89bd04b6f75dac4eab2e84524956f46faa91660b5315c8eade269d39ae",
+      "schema_version": "item4-seed-suite-v1"
+    }
+  },
+  "runs": ["run-a", "run-b"],
+  "seeds": [
+    {"role": "ordinary", "seed": "42"},
+    {"role": "mountainous", "seed": "6671238423019257953"},
+    {"role": "ocean-heavy", "seed": "95920844204830198"},
+    {"role": "biome-diverse", "seed": "-3503646078644842058"}
+  ],
+  "selections": [
+    {"label": "overworld", "dimension": "minecraft:overworld", "coordinate_unit": "block", "center_x": 0, "center_z": 0, "radius_chunks": 31, "expected_chunk_count": 3969},
+    {"label": "nether", "dimension": "minecraft:the_nether", "coordinate_unit": "block", "center_x": 0, "center_z": 0, "radius_chunks": 15, "expected_chunk_count": 961},
+    {"label": "end-central", "dimension": "minecraft:the_end", "coordinate_unit": "block", "center_x": 0, "center_z": 0, "radius_chunks": 15, "expected_chunk_count": 961},
+    {"label": "end-outer", "dimension": "minecraft:the_end", "coordinate_unit": "block", "center_x": 1536, "center_z": 0, "radius_chunks": 15, "expected_chunk_count": 961}
+  ],
+  "generation": {
+    "maximum_passes_per_selection": 3,
+    "maximum_provider_gap_targets": 24
+  },
+  "providers": [
+    {"label": "Tectonic", "observation_role": "direct"},
+    {"label": "Terralith", "observation_role": "direct"},
+    {"label": "Biomes O' Plenty", "observation_role": "direct"},
+    {"label": "Regions Unexplored", "observation_role": "direct"},
+    {"label": "TerraBlender", "observation_role": "library"},
+    {"label": "Lithostitched", "observation_role": "library"},
+    {"label": "BetterEnd", "observation_role": "direct"},
+    {"label": "YUNG", "observation_role": "direct"},
+    {"label": "WDA", "observation_role": "direct"},
+    {"label": "IDAS", "observation_role": "direct"},
+    {"label": "Integrated structures", "observation_role": "direct"},
+    {"label": "Moog", "observation_role": "direct"},
+    {"label": "Explorify", "observation_role": "direct"},
+    {"label": "Explorations", "observation_role": "direct"},
+    {"label": "Repurposed Structures", "observation_role": "direct"},
+    {"label": "CTOV", "observation_role": "direct"},
+    {"label": "Towns & Towers", "observation_role": "direct"}
+  ],
+  "anomaly_classes": [
+    "fragmented_biomes",
+    "tiny_biomes",
+    "unnatural_terrain_transitions",
+    "buried_structures",
+    "floating_structures",
+    "cliff_intersections",
+    "bad_underwater_placement",
+    "overlapping_structures",
+    "overlapping_villages",
+    "failed_placements",
+    "impossible_biome_restrictions",
+    "excessive_terrain_modification"
+  ],
+  "primary_classifications": [
+    "cosmetic",
+    "gameplay",
+    "performance",
+    "outright_generation_failure"
+  ],
+  "normalization": {
+    "chunk_compare_fields": [
+      "schema_version",
+      "dimension",
+      "slot",
+      "chunk_x",
+      "chunk_z",
+      "data_version",
+      "status",
+      "full",
+      "heightmaps",
+      "biome_sections",
+      "structure_starts"
+    ],
+    "excluded_transport_fields": ["region", "timestamp", "compression", "external"],
+    "raw_region_hash_treatment": "preserve_and_explain_not_compare"
+  },
+  "regions": {
+    "account_every_chunk_region_mca_file": true,
+    "kinds": ["anvil", "empty_placeholder"],
+    "empty_placeholder_size_bytes": 0,
+    "anvil_sector_bytes": 4096,
+    "unexplained_files_allowed": false
+  },
+  "archive": {
+    "storage": "external_immutable_archive",
+    "committed_receipts_root": "evidence/item-7",
+    "required_contents": [
+      "region_files",
+      "logs",
+      "run_manifests",
+      "decoded_jsonl",
+      "render_sources",
+      "galleries",
+      "screenshots",
+      "failed_attempts"
+    ],
+    "forbidden_contents": [
+      "instances",
+      "jar_files",
+      "minecraft_or_neoforge_binaries",
+      "credentials",
+      "session_lock",
+      "player_data",
+      "caches"
+    ],
+    "required_identity_fields": [
+      "archive_name",
+      "sha256",
+      "size_bytes",
+      "file_count",
+      "commit",
+      "tag",
+      "durable_location",
+      "restore_receipt"
+    ],
+    "restore_required": true
+  }
+}

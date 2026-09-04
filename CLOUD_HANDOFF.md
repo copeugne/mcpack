@@ -2,6 +2,58 @@
 
 > Historical checkpoint: this file records the repository state on 2026-09-03 UTC and is not the current continuation authority. Use `SPECS.md`, the master execution status in `Adventure-Engineering-Pack-Execution-Ledger.md`, and current Git/GitHub state for present status. The dated instructions below are preserved as recovery history.
 
+## Current continuation checkpoint - 2026-09-04
+
+### Item 7 scope-control incident
+
+Item 7 exceeded the intended completion-efficiency boundary during repeated r10 and r11 review repair. A real flush-correlation defect required a narrow empirical replacement, but locally defensible validators, receipts, custody revisions, and repeat checks accumulated without a hard comparison against the smallest `SPECS.md` exit gate. Do not repeat that pattern. Treat scope growth itself as blocking: before adding any new evidence class, schema, receipt, validator, archive revision, review framework, or broader regression surface, prove that the demonstrated defect cannot be fixed inside the existing path and record the reason here. Otherwise reject the addition.
+
+The recovery-runner repair and all 12 sequential source-bound recoveries are complete without regenerating world-generation evidence. The r14 archives, restores, published release, fresh remote download verification, v3 save audit, 138-artifact completion gate, and final validation pass. The frozen remaining Item 7 path is limited to exact-SHA review, updating PR #15, obtaining a clean GitHub Codex review, merging, and verifying `origin/main`. Do not add another acceptance layer. The first r12 recovery attempt remains rejected: concurrent servers collided on the configured port, one completed flush was killed by the runner's post-stop process timeout, and interruption left child process groups alive until explicitly terminated.
+
+This section supersedes the dated status and restart instructions below. Preserve the rest of this file as recovery history. `SPECS.md` remains the dependency-ordered requirements authority, and `Adventure-Engineering-Pack-Execution-Ledger.md` remains the status and evidence vocabulary authority.
+
+### Git and delivery state
+
+- A fresh fetch on 2026-09-04 found `origin/main` at `eb84d842a7b108863dcdd4c86435a875f8a0c575` with no newer remote commits. The active branch is `experiment/item-7-worldgen-audit`, based on that ref. Final validation passed at `d0907824e4b3929c3580028b5702d4b794dc5061` and is recorded in `evidence/item-7/review/candidate-r14-validation.md`; exact-SHA review remains before push.
+- PR #11 merged Item 5 delivery as `398bf59b3a89669ec402026d52250c2b86e54047`.
+- PR #12 merged the initial Item 6 generated-default capture as `895ed1d999cd22ca511035e666ad8ac308ae63c1`.
+- PR #14 merged the completed Item 6 audit as `f38ea66ecc28911c33d525dcde26434853673ad3`. Its final Codex review completed against `96a914c8a457d2f23698cdaeba18c6ed899b56d1` and reported no major issues. The GitHub API currently exposes no thumbs-up reaction on that cycle, so do not claim that reaction; preserve this as a review-record discrepancy unless later evidence resolves it.
+- `eb84d842a7b108863dcdd4c86435a875f8a0c575` only renamed `CLAUDE.md` to `AGENTS.md` after the Item 6 merge.
+- PR #15 is open from `experiment/item-7-worldgen-audit` into `main`. Its remote head is still rejected revision `2863f2d01c7446fe757b54593ea311bcacf35adb`; the subsequent local repair and r14 custody commits have not yet been pushed for the next GitHub review cycle.
+- Item 7 final raw evidence is durably published at `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04-r14`. Annotated tag object `4b5fefe4a58f310bbd47796772520e6d3288f480` resolves to source revision `4497b3f650990f501b594b82e933c40eaf5540ac`. All four assets restored successfully and one fresh complete remote download matched every committed size and SHA-256. The three unchanged world assets retain their r11 filenames but are bound by r14 manifests to the r14 source revision.
+- GitHub Codex review `5116118114` rejected `2863f2d01c7446fe757b54593ea311bcacf35adb` with two P1 source-rebuild defects and one P2 flush-order defect. Subsequent review proved the r11 save proof remained causally ambiguous. The source-bound recovery path now verifies each source world, runtime identity, unique before and after markers, ordered save messages, and clean stop. The r12 runner failure is preserved, and the corrected sequential r13 run passed all 12 worlds. Rejected review and custody records remain under `evidence/item-7/review/`. Fresh final-SHA local review and GitHub review remain mandatory.
+- Preserve the existing untracked `.codegraph`, `.omo/`, and `mcpack-reconstructed-28(1).bundle` paths. Committed evidence belongs under `evidence/`; acceptance-relevant source, tools, tests, and exact commands must remain tracked for reproduction.
+
+### Current gate status
+
+| Item | Current status | Evidence-bound meaning |
+|---:|---|---|
+| 1 | `COMPLETE` | The design contract and Earned Sandbox Freedom Doctrine remain binding. |
+| 2 | `COMPLETE` | Reconstructed baseline evidence, clean-room proof, durable retrieval, and Git receipts pass. |
+| 3 | `COMPLETE` | All 190 candidates have dispositions; the exact 136-candidate retained dedicated-server set passed its scoped static and lifecycle gate. |
+| 4 | `COMPLETE` | The isolated four-seed environment and backup/restore gate pass. |
+| 5 | `COMPLETE` | The versioned measurement protocol, strict evidence tooling, and pinned-Temurin pilot gate pass. Spark overhead remains `UNKNOWN`, and the pilot is not a performance baseline. |
+| 6 | `COMPLETE` | The untouched retained-stack configuration is frozen and audited. The manifest contains 228 paths, with 88 audited and 140 explicitly out of scope. No tuning was performed. |
+| 7 | `PASS`, delivery pending | Two fresh four-seed runs inspected 54,816 exact selected chunks. The 192 anomaly rows, 762 packaged structure restrictions, all 37 provider-component dispositions, 1,222 warning signatures, corrected 128-capture visual set, final r14 restore-tested release, 12-world source-bound v3 save audit, complete 716-file world archive inventory, and 138-artifact source-rebuilt completion receipt pass. Fresh exact-SHA review, GitHub Codex review, merge, and delivered-ref verification remain. |
+| 8 | `BLOCKED` by Item 7 delivery | Begin the runtime-backed canonical structure inventory only after the Item 7 pull request is cleanly reviewed, merged into `main`, and verified. |
+| 9 | `BLOCKED` by Item 8 | Reclassify every verified family exactly once only after Item 8 passes. |
+| 10 | `BLOCKED` by Items 7 through 9 | Regenerate and preserve predeclared density evidence only after the preceding gates pass. |
+| 11 | `BLOCKED` | Do not implement, run, repair, or lint Item 11 before the final Items 2 through 10 audit passes. It also requires at least two blind human operators. |
+
+The Item 7 completion command returns `PASS` and records 138 exact artifacts in `evidence/item-7/completion.json`, whose SHA-256 is `0ef7c83438ab2a2cfe67eadc858e806ada9c9eecc213d883649ae3e8493cb1d3`. The world archive inventory binds 716 files at SHA-256 `7907bfd705bb8b1b7e794133e634e59ba1d3a694210353da65193eff7dd79027`. The r14 source-bound v3 save audit covers all 12 archived worlds and has SHA-256 `087ebb0a5b019fb5138fd6975598176c07495eb81954f0d4bc4ce524502893b3`. All four r14 release assets restored through pinned descriptors, and the repository-bound verifier downloaded and matched the complete release once. Final validation passed with 210 Item 7 tests, 891 repository tests, clean static checks, and byte-identical save-audit and completion rebuilds. Fresh exact-SHA review, GitHub Codex review, merge, and delivered-ref verification remain.
+
+### Exact continuation point
+
+1. Treat `evidence/item-7/completion.json` and `docs/items/Item-7-Baseline-Worldgen-Audit.md` as the current acceptance summary. The former zero-mod report is superseded historical context.
+2. Preserve the measured semantic nondeterminism. Run A and Run B differ outside the central End; input drift and comparator artifacts were refuted, but the causal provider remains `UNKNOWN`. Do not tune the frozen Item 6 configuration inside Item 7.
+3. Preserve the confirmed Better Caves generation failure, the unresolved YUNG's Bridges and YUNG's Extras identifiers, and the 1,166 unresolved warning signatures as downstream work. Do not infer compatibility from server readiness.
+4. Run the required exact-SHA independent reviews and runtime debugging audit. Store all committed review evidence under `evidence/item-7/review/` and record the reviewed full SHA with every verdict.
+5. Push `experiment/item-7-worldgen-audit` to existing PR #15, request `@codex review`, address every valid finding in separate review-fix commits, and repeat until a completed thumbs-up cycle has no unresolved valid findings.
+6. Merge without rewriting the atomic history, fetch, and verify that `origin/main` contains the accepted Item 7 commits. Only then create the Item 8 branch from the verified merged ref.
+7. Item 8 must combine verified runtime registries, packaged data, configuration evidence, logs, and generated-world observations. It must resolve canonical families without double-counting aliases, pieces, pools, or templates, and it must carry Item 7 run identity and unknowns forward.
+
+Recovery Gate R-1 remains open for Items 8 through 10 and their final cross-item audit after Item 7 delivery completes.
+
 ## 1. Authority, scope, and restart rule
 
 This was the continuation handoff as of **2026-09-03 UTC**. Read it as a dated snapshot. `SPECS.md` remains the chronological and dependency-ordered requirements authority.

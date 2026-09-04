@@ -1,0 +1,296 @@
+"""Item 3 evidence parsing and exact JAR verification for Item 7."""
+
+from __future__ import annotations
+
+import hashlib
+from dataclasses import dataclass
+from pathlib import Path
+from typing import TYPE_CHECKING, ClassVar, Final
+from zipfile import BadZipFile, ZipFile
+
+from pydantic import BaseModel, ConfigDict
+
+from .item7_provider_models import (
+    CatalogInputs,
+    ProviderCatalogError,
+    ProviderComponent,
+    ProviderRole,
+)
+
+if TYPE_CHECKING:
+    from .item7_provider_requirements import RequiredComponent
+
+
+_MIN_DATA_PATH_SEPARATORS: Final = 2
+_MIN_STRUCTURE_PATH_PARTS: Final = 5
+
+
+class _AcquisitionIdentity(BaseModel):
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
+
+    computed_sha256: str
+    size_bytes: int
+    verified_publisher_hashes: object
+
+
+class _AcquisitionArtifact(BaseModel):
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
+
+    candidate_filename: str
+    upstream_filename: str
+    platform: str
+    source_url: str
+    local_path: str
+    acquisition: str
+    identity: _AcquisitionIdentity
+
+
+class _AcquisitionManifest(BaseModel):
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
+
+    schema_version: str
+    generated_at: str
+    candidate_count: int
+    total_size_bytes: int
+    artifacts: tuple[_AcquisitionArtifact, ...]
+
+
+class _MatrixArtifact(BaseModel):
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
+
+    exact_filename: str
+    download_url: str
+    file_id: object
+    publisher_hashes: object
+    size_bytes: int
+
+
+class _ProvidedMod(BaseModel):
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
+
+    mod_id: str
+    origin: str
+    provider_candidate: str
+    source_path: str
+    version: str
+
+
+class _MatrixRow(BaseModel):
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
+
+    candidate_filename: str
+    platform: str
+    project_id: str
+    version_id: str
+    version_number: str
+    artifact: _MatrixArtifact
+    declared_game_versions: object
+    declared_loaders: object
+    publisher_environment: object
+    physical_side_classification: str
+    active_metadata_paths: object
+    inactive_metadata_paths: object
+    final_disposition: str
+    provided_mods: tuple[_ProvidedMod, ...]
+    loader_checks: object
+    minecraft_checks: object
+    neoforge_checks: object
+    dependency_checks: object
+    hazard_flags: object
+    static_status: str
+    rationale: str
+    confidence: str
+    runtime_evidence: str | None
+    limitations: object
+
+
+class _FinalMatrix(BaseModel):
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
+
+    schema_version: str
+    target: object
+    candidate_count: int
+    rows: tuple[_MatrixRow, ...]
+    limitations: object
+
+
+class _InspectionMod(BaseModel):
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
+
+    mod_id: str
+    display_name: str
+    source_path: str
+    version: str
+
+
+class _InspectionRow(BaseModel):
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
+
+    candidate_filename: str
+    expected_sha256: str
+    computed_sha256: str
+    zip_integrity: str
+    inspection_status: str
+    archive_role: str
+    entry_count: int
+    duplicate_entry_count: int
+    unsafe_entries: object
+    metadata_documents: object
+    manifest_implementation_version: str | None
+    mod_loaders: object
+    loader_ranges: object
+    loader_declarations: object
+    mods: tuple[_InspectionMod, ...]
+    dependencies: object
+    minecraft_ranges: object
+    neoforge_ranges: object
+    fabric_environment: object
+    embedded_libraries: object
+    issues: object
+
+
+class _JarInspection(BaseModel):
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
+
+    schema_version: str
+    generated_at: str
+    candidate_count: int
+    all_inspections_passed: bool
+    candidates: tuple[_InspectionRow, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class EvidenceIndexes:
+    """Indexes parsed from the exact retained Item 3 evidence boundary."""
+
+    retained: frozenset[str]
+    acquisition: dict[str, _AcquisitionArtifact]
+    matrix: dict[str, _MatrixRow]
+    inspection: dict[str, _InspectionRow]
+    candidate_directory: Path
+
+
+def load_evidence(inputs: CatalogInputs) -> EvidenceIndexes:
+    """Parse the Item 3 boundary into component lookup indexes."""
+    acquisition = _AcquisitionManifest.model_validate_json(inputs.acquisition.read_bytes())
+    matrix = _FinalMatrix.model_validate_json(inputs.matrix.read_bytes())
+    inspection = _JarInspection.model_validate_json(inputs.inspection.read_bytes())
+    _check_schema_versions(acquisition, matrix, inspection)
+    return EvidenceIndexes(
+        retained=frozenset(
+            line for line in inputs.retained.read_text(encoding="utf-8").splitlines() if line
+        ),
+        acquisition={row.candidate_filename: row for row in acquisition.artifacts},
+        matrix={row.candidate_filename: row for row in matrix.rows},
+        inspection={row.candidate_filename: row for row in inspection.candidates},
+        candidate_directory=inputs.candidate_directory,
+    )
+
+
+def build_component(component: RequiredComponent, evidence: EvidenceIndexes) -> ProviderComponent:
+    """Verify one component against manifests, metadata, and exact JAR bytes."""
+    filename = component.candidate_filename
+    if Path(filename).name != filename or filename not in evidence.retained:
+        detail = f"required retained provider missing: {filename}"
+        raise ProviderCatalogError(detail)
+    acquisition = evidence.acquisition.get(filename)
+    matrix = evidence.matrix.get(filename)
+    inspection = evidence.inspection.get(filename)
+    if acquisition is None or matrix is None or inspection is None:
+        detail = f"missing Item 3 provenance for {filename}"
+        raise ProviderCatalogError(detail)
+    if matrix.artifact.exact_filename != filename or matrix.final_disposition != "retained_server":
+        detail = f"final matrix does not retain exact provider {filename}"
+        raise ProviderCatalogError(detail)
+    if component.mod_id not in {entry.mod_id for entry in matrix.provided_mods}:
+        detail = f"matrix metadata does not prove {component.mod_id} in {filename}"
+        raise ProviderCatalogError(detail)
+    if component.mod_id not in {entry.mod_id for entry in inspection.mods}:
+        detail = f"jar metadata does not prove {component.mod_id} in {filename}"
+        raise ProviderCatalogError(detail)
+    sha256 = acquisition.identity.computed_sha256
+    if inspection.inspection_status != "pass" or (
+        sha256 != inspection.expected_sha256 or sha256 != inspection.computed_sha256
+    ):
+        detail = f"jar inspection identity failed for {filename}"
+        raise ProviderCatalogError(detail)
+    jar = evidence.candidate_directory / filename
+    if hashlib.sha256(jar.read_bytes()).hexdigest() != sha256:
+        detail = f"candidate jar hash mismatch for {filename}"
+        raise ProviderCatalogError(detail)
+    data_namespaces, structure_ids = _data_inventory(jar, component)
+    return ProviderComponent(
+        candidate_filename=filename,
+        mod_id=component.mod_id,
+        role=component.role,
+        sha256=sha256,
+        data_namespaces=data_namespaces,
+        structure_ids=structure_ids,
+    )
+
+
+def _check_schema_versions(
+    acquisition: _AcquisitionManifest, matrix: _FinalMatrix, inspection: _JarInspection
+) -> None:
+    if acquisition.schema_version != "item3-artifact-acquisition-v1":
+        detail = "unsupported acquisition schema"
+        raise ProviderCatalogError(detail)
+    if matrix.schema_version != "item3-final-compatibility-matrix-v1":
+        detail = "unsupported final matrix schema"
+        raise ProviderCatalogError(detail)
+    if inspection.schema_version != "item3-jar-inspection-v1":
+        detail = "unsupported jar inspection schema"
+        raise ProviderCatalogError(detail)
+
+
+def _data_inventory(
+    jar: Path, component: RequiredComponent
+) -> tuple[tuple[str, ...], tuple[str, ...]]:
+    try:
+        with ZipFile(jar) as archive:
+            entries = frozenset(archive.namelist())
+    except (BadZipFile, FileNotFoundError) as error:
+        detail = f"candidate jar is unreadable: {jar.name}"
+        raise ProviderCatalogError(detail) from error
+    data_namespaces = tuple(
+        sorted(
+            {
+                entry.split("/")[1]
+                for entry in entries
+                if entry.startswith("data/") and entry.count("/") >= _MIN_DATA_PATH_SEPARATORS
+            }
+        )
+    )
+    structure_ids = tuple(sorted(filter(None, (_structure_id(entry) for entry in entries))))
+    _validate_direct_output(component, entries, structure_ids)
+    return data_namespaces, structure_ids
+
+
+def _structure_id(entry: str) -> str | None:
+    parts = entry.split("/")
+    if (
+        len(parts) < _MIN_STRUCTURE_PATH_PARTS
+        or parts[0] != "data"
+        or parts[2:4] != ["worldgen", "structure"]
+        or not parts[1]
+        or not all(parts[4:])
+        or not parts[-1].endswith(".json")
+        or len(parts[-1]) == len(".json")
+    ):
+        return None
+    resource_path = "/".join(parts[4:]).removesuffix(".json")
+    return f"{parts[1]}:{resource_path}"
+
+
+def _validate_direct_output(
+    component: RequiredComponent, entries: frozenset[str], structure_ids: tuple[str, ...]
+) -> None:
+    if component.role is not ProviderRole.DIRECT_STRUCTURE or structure_ids:
+        return
+    if not component.non_structure_output_paths:
+        detail = f"direct provider has no packaged structure IDs: {component.candidate_filename}"
+        raise ProviderCatalogError(detail)
+    missing = set(component.non_structure_output_paths).difference(entries)
+    if missing:
+        detail = f"direct provider output evidence missing: {component.candidate_filename}"
+        raise ProviderCatalogError(detail)

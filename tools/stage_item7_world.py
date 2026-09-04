@@ -1,0 +1,312 @@
+"""Stage Item 7 raw evidence with locked, independent world copies."""
+
+from __future__ import annotations
+
+import argparse
+import errno
+import fcntl
+from contextlib import contextmanager
+from pathlib import Path, PurePosixPath
+from typing import TYPE_CHECKING, Final, final
+
+from mcpack_evidence.item7_archive_io import (
+    OpenedFile,
+    UnsafeFilesystemError,
+    duplicate_stream,
+    open_directory,
+    open_regular_at,
+    open_tree,
+    open_tree_at,
+)
+from mcpack_evidence.item7_stage_output import (
+    StageOutputError,
+    StagingTree,
+    staging_tree,
+)
+
+if TYPE_CHECKING:
+    from collections.abc import Generator, Sequence
+
+RUN_ROLES: Final = ("ordinary", "mountainous", "ocean-heavy", "biome-diverse")
+AUXILIARY_INSTANCES: Final = (
+    "control-ordinary",
+    "control-ordinary-failed-marker",
+    "gap-a-ordinary",
+    "gap-a-ordinary-rejected-config-contract",
+    "gap-b-ordinary",
+    "pilot-characterization",
+    "pilot-tracked-ordinary",
+    "pilot-tracked-ordinary-success",
+)
+WORLD_FILES: Final = ("level.dat", "level.dat_old")
+WORLD_DIRECTORIES: Final = ("region", "DIM-1/region", "DIM1/region")
+MODES: Final = ("core", "run-a-worlds", "run-b-worlds", "auxiliary-worlds")
+CORE_ROOTS: Final = frozenset(
+    {
+        "control",
+        "control-comparison.json",
+        "gap-a",
+        "gap-b",
+        "flush-recovery",
+        "pilot",
+        "provider-disposition.json",
+        "repeat-comparison.json",
+        "run-a",
+        "run-b",
+        "visual-qa",
+        "warning-audit.json",
+        "warning-disposition.json",
+    }
+)
+CORE_SUFFIXES: Final = frozenset(
+    {
+        ".html",
+        ".json",
+        ".json5",
+        ".jsonc",
+        ".jsonl",
+        ".log",
+        ".png",
+        ".properties",
+        ".svg",
+        ".toml",
+        ".tsv",
+        ".txt",
+        ".yml",
+    }
+)
+FORBIDDEN_PARTS: Final = frozenset(
+    {
+        "advancements",
+        "cache",
+        "caches",
+        "credentials",
+        "instances",
+        "libraries",
+        "mods",
+        "playerdata",
+        "stats",
+    }
+)
+SECRET_TERMS: Final = ("credential", "password", "secret", "token")
+
+
+class StageError(ValueError):
+    """The requested raw-evidence stage is unsafe or incomplete."""
+
+
+@final
+class _Namespace(argparse.Namespace):
+    def __init__(self) -> None:
+        """Supply typed placeholders that argparse replaces with required values."""
+        super().__init__()
+        self.mode = ""
+        self.project = Path()
+        self.raw = Path()
+        self.output = Path()
+
+
+def stage(mode: str, project: Path, raw: Path, output: Path) -> tuple[int, int]:
+    """Create one Item 7 stage and return its file count and byte size."""
+    if mode not in MODES:
+        message = f"unknown stage mode: {mode}"
+        raise StageError(message)
+    if not project.is_dir() or not raw.is_dir() or output.exists() or output.is_symlink():
+        message = "project and raw roots must exist, and output must be absent"
+        raise StageError(message)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        with staging_tree(output) as destination:
+            if mode == "core":
+                with open_tree(raw) as files:
+                    count, size = _copy_opened_files(
+                        files,
+                        destination,
+                        PurePosixPath(),
+                        require_core_policy=True,
+                    )
+            else:
+                count, size = 0, 0
+                for name in _instance_names(mode):
+                    added_count, added_size = _copy_locked_world(
+                        project / "instances/item7" / name / "world",
+                        destination,
+                        PurePosixPath(name) / "world",
+                    )
+                    count += added_count
+                    size += added_size
+            destination.publish()
+    except FileExistsError as error:
+        message = f"stage destination already exists: {output}"
+        raise StageError(message) from error
+    except (StageOutputError, UnsafeFilesystemError) as error:
+        raise StageError(str(error)) from error
+    return count, size
+
+
+def copy_world_boundary(instance: Path, destination: Path) -> None:
+    """Copy the declared stopped-world boundary while holding its record lock."""
+    world = instance / "world"
+    if destination.exists() or destination.is_symlink():
+        message = f"stage destination already exists: {destination}"
+        raise StageError(message)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        with staging_tree(destination) as output:
+            _ = _copy_locked_world(world, output, PurePosixPath())
+            output.publish()
+    except FileExistsError as error:
+        message = f"stage destination already exists: {destination}"
+        raise StageError(message) from error
+    except (StageOutputError, UnsafeFilesystemError) as error:
+        raise StageError(str(error)) from error
+
+
+def _copy_locked_world(
+    world: Path,
+    destination: StagingTree,
+    prefix: PurePosixPath,
+) -> tuple[int, int]:
+    with open_directory(world) as world_descriptor:
+        lock_path = PurePosixPath("session.lock")
+        try:
+            lock_context = open_regular_at(world_descriptor, lock_path, writable=True)
+            with lock_context as (lock_descriptor, _):
+                return _copy_under_lock(
+                    world_descriptor,
+                    lock_descriptor,
+                    destination,
+                    prefix,
+                )
+        except FileNotFoundError as error:
+            message = f"world session lock is missing or unsafe: {world / lock_path}"
+            raise StageError(message) from error
+
+
+def _copy_under_lock(
+    directory: int,
+    lock: int,
+    destination: StagingTree,
+    prefix: PurePosixPath,
+) -> tuple[int, int]:
+    count, size = 0, 0
+    with _record_lock(lock):
+        for value in WORLD_FILES:
+            relative = PurePosixPath(value)
+            try:
+                with open_regular_at(directory, relative) as (descriptor, metadata):
+                    _copy_descriptor(
+                        descriptor,
+                        metadata.st_size,
+                        prefix / relative,
+                        destination,
+                    )
+                    count += 1
+                    size += metadata.st_size
+            except FileNotFoundError:
+                continue
+        for value in WORLD_DIRECTORIES:
+            relative = PurePosixPath(value)
+            try:
+                with open_tree_at(directory, relative) as files:
+                    added_count, added_size = _copy_opened_files(
+                        files,
+                        destination,
+                        prefix,
+                    )
+                    count += added_count
+                    size += added_size
+            except FileNotFoundError:
+                continue
+    return count, size
+
+
+@contextmanager
+def _record_lock(descriptor: int) -> Generator[None]:
+    try:
+        fcntl.lockf(descriptor, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError as error:
+        if error.errno in {errno.EACCES, errno.EAGAIN}:
+            message = "world is active"
+            raise StageError(message) from error
+        raise
+    try:
+        yield
+    finally:
+        fcntl.lockf(descriptor, fcntl.LOCK_UN)
+
+
+def _copy_opened_files(
+    files: tuple[OpenedFile, ...],
+    destination: StagingTree,
+    prefix: PurePosixPath,
+    *,
+    require_core_policy: bool = False,
+) -> tuple[int, int]:
+    size = 0
+    for opened in files:
+        relative = PurePosixPath(opened.relative_path)
+        if require_core_policy:
+            _require_allowed(relative)
+        _copy_descriptor(
+            opened.descriptor,
+            opened.size_bytes,
+            prefix / relative,
+            destination,
+        )
+        size += opened.size_bytes
+    return len(files), size
+
+
+def _copy_descriptor(
+    descriptor: int,
+    size: int,
+    relative: PurePosixPath,
+    destination: StagingTree,
+) -> None:
+    with duplicate_stream(descriptor) as source:
+        destination.write(relative, source, size)
+
+
+def _require_allowed(relative: PurePosixPath) -> None:
+    parts = tuple(part.casefold() for part in relative.parts)
+    filename = parts[-1]
+    if (
+        parts[0] not in CORE_ROOTS
+        or relative.suffix.casefold() not in CORE_SUFFIXES
+        or FORBIDDEN_PARTS.intersection(parts)
+        or filename == "session.lock"
+        or any(term in filename for term in SECRET_TERMS)
+    ):
+        message = f"forbidden runtime file entered the stage: {relative}"
+        raise StageError(message)
+
+
+def _instance_names(mode: str) -> tuple[str, ...]:
+    if mode == "run-a-worlds":
+        return tuple(f"run-a-{role}" for role in RUN_ROLES)
+    if mode == "run-b-worlds":
+        return tuple(f"run-b-{role}" for role in RUN_ROLES)
+    return AUXILIARY_INSTANCES
+
+
+def build_parser() -> argparse.ArgumentParser:
+    """Build the command-line parser."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    _ = parser.add_argument("mode", choices=MODES)
+    _ = parser.add_argument("project", type=Path)
+    _ = parser.add_argument("raw", type=Path)
+    _ = parser.add_argument("output", type=Path)
+    return parser
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    """Stage the requested evidence boundary."""
+    options = build_parser().parse_args(argv, namespace=_Namespace())
+    count, size = stage(options.mode, options.project, options.raw, options.output)
+    print(f"staged {count} files using {size} bytes")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
