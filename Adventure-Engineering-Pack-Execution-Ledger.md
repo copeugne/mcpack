@@ -284,7 +284,11 @@ The authoritative local pristine baseline is `instances/pristine-baseline-v0` pl
 ### 5.5 Item 6 configuration audit status
 
 **Status: `COMPLETE`**
-The pristine baseline has three NeoForge-generated TOML files, generated `server.properties`, the explicitly authorized EULA, and the construction-only `-Xms1G/-Xmx4G` heap. The three TOMLs exactly match an independent clean boot; server properties match after ignoring only the generated timestamp. `mods/`, `defaultconfigs/`, and world datapacks are empty. All requested candidate config surfaces are explicitly absent, and no value was changed. Evidence: `Item-6-Baseline-Configuration-Audit.md` and `evidence/config-audit/item6-pristine-config-audit.json`.
+The exact retained stack contains 136 JARs under Minecraft 1.21.1, NeoForge 21.1.249, and Eclipse Temurin 21.0.12.1+1-LTS. A clean ordinary seed-42 lifecycle reached readiness, confirmed `save-all flush`, stopped cleanly, and returned zero. Materialization records the matching retained-manifest identity, no production state, and removal of the copied world before generation.
+
+The frozen baseline contains exactly 228 configuration paths: 4 installation, 223 first-startup, 1 world-creation, and 0 shutdown-only. Its audit accounts for every path exactly once: 54 audited and 174 explicitly out of scope. All 110 audited settings bind their generated and effective values to structured, typed source observations. The validator rejects an identity mismatch, a malformed or noncanonical lifecycle/materialization receipt, a path escape or symlinked reference, an unexplained manifest path, and a noncanonical manifest contract. Capture also fails before output creation for a missing, wrong-type, or symlinked required source, including nested source-tree symlinks.
+
+No configuration was tuned. The frozen configuration, machine-readable audit, lifecycle and materialization receipts, and completion records are retained under `evidence/item-6/`; the narrative report is `docs/items/Item-6-Baseline-Configuration-Audit.md`. This establishes the unchanged baseline needed by Item 7 and does not claim Item 7 terrain observations or later item results.
 
 ### 5.6 Item 7 worldgen-control status
 
@@ -438,7 +442,7 @@ This register is additive. More variables will be discovered during artifact ins
 | 3 | Compatibility audit | `BLOCKED` | Conclusions survive in the ledger, but source inventory and audit evidence must be reconstructed. |
 | 4 | Controlled test environment | `BLOCKED` | Seed identities survive; snapshots, restore evidence, and environment scripts must be rebuilt. |
 | 5 | Measurement methodology | `BLOCKED` | Method summary survives; protocol, schemas, tools, and validation fixtures must be reconstructed. |
-| 6 | Existing configuration audit | `BLOCKED` | Summary survives; machine evidence and detailed report must be regenerated. |
+| 6 | Existing configuration audit | `COMPLETE` | Retained 136-JAR stack, exact typed values, 228 frozen paths with 4/223/1/0 stages, exhaustive 54/174 accounting, lifecycle/materialization receipts, path and capture fail-closed gates, and `evidence/item-6/` report evidence pass. |
 | 7 | Terrain/worldgen interactions | `BLOCKED` | Results survive only as summaries; raw samples and repeat-verification evidence must be regenerated. |
 | 8 | Structure-family inventory | `BLOCKED` | Inventory summary survives; source matrix and registry verification must be reconstructed. |
 | 9 | Initial structure classification | `BLOCKED` | Classification summary survives; family matrix and validator evidence must be reconstructed. |
