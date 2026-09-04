@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 from typing import ClassVar
 
@@ -134,6 +135,12 @@ def test_renderer_marks_water_boxes_and_both_honest_cross_section_axes(tmp_path:
     assert "Elevation (blocks)" in x_section
     assert "Slice at block Z" in x_section
     assert "Selection: overworld" in x_section
+    assert "Observed range: Y=63 to Y=64" in x_section
+    profile = re.search(r'class="surface-profile" points="([^"]+)"', x_section)
+    assert profile is not None
+    profile_y = [float(point.partition(",")[2]) for point in profile.group(1).split()]
+    assert min(profile_y) > 116
+    assert max(profile_y) < 476
 
     index = (output / "index.html").read_text(encoding="utf-8")
     assert "Seed role: ordinary" in index

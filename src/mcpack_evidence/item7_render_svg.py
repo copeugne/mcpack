@@ -93,6 +93,8 @@ def section_svg(
     """Frame one heightmap profile with visible scale, units, and limitations."""
     surfaces = tuple(surface for _, surface in points)
     minimum_y, maximum_y = min(surfaces), max(surfaces)
+    padding = max(4, (maximum_y - minimum_y + 19) // 20)
+    plot_minimum_y, plot_maximum_y = minimum_y - padding, maximum_y + padding
     plot_width, plot_height = 900, 360
     left, top = 86, 116
     canvas_width, canvas_height = left + plot_width + 38, top + plot_height + 118
@@ -100,11 +102,11 @@ def section_svg(
     slice_axis = "Z" if axis == "x" else "X"
     last_coordinate = max(coordinate for coordinate, _ in points)
     x_scale = plot_width / max(last_coordinate, 1)
-    y_span = max(maximum_y - minimum_y, 1)
+    y_span = plot_maximum_y - plot_minimum_y
 
     def profile_point(coordinate: int, surface: int) -> str:
         x_value = left + coordinate * x_scale
-        y_value = top + (maximum_y - surface) * plot_height / y_span
+        y_value = top + (plot_maximum_y - surface) * plot_height / y_span
         return f"{x_value:.2f},{y_value:.2f}"
 
     profile = " ".join(profile_point(coordinate, surface) for coordinate, surface in points)
@@ -150,8 +152,13 @@ def section_svg(
                     f"{origin + last_coordinate}</text>",
                 )
             ),
-            f'<text x="{left - 12}" y="{top + plot_height}" text-anchor="end">{minimum_y}</text>',
-            f'<text x="{left - 12}" y="{top + 12}" text-anchor="end">{maximum_y}</text>',
+            "".join(
+                (
+                    f'<text x="{left - 12}" y="{top + plot_height}" text-anchor="end">',
+                    f"{plot_minimum_y}</text>",
+                )
+            ),
+            f'<text x="{left - 12}" y="{top + 12}" text-anchor="end">{plot_maximum_y}</text>',
             "".join(
                 (
                     f'<text class="axis-label" x="{left + plot_width / 2}" ',
@@ -171,6 +178,12 @@ def section_svg(
                     f'<text class="muted" x="{left}" y="{canvas_height - 28}">Slice at block ',
                     f"{slice_axis}={slice_coordinate}. Heightmap-derived only; ",
                     "no block-column samples.</text>",
+                )
+            ),
+            "".join(
+                (
+                    f'<text class="muted" x="{left + 420}" y="{top - 18}">Observed range: ',
+                    f"Y={minimum_y} to Y={maximum_y}; plot padding: {padding} blocks.</text>",
                 )
             ),
         )
