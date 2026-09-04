@@ -268,6 +268,33 @@ def test_nbt_string_length_uses_unsigned_short_encoding() -> None:
     assert record.full is True
 
 
+def test_nbt_string_accepts_java_modified_utf8_surrogate_pair() -> None:
+    modified_utf8_emoji = struct.pack(">H", 6) + b"\xed\xa0\xbd\xed\xb8\x80"
+    payload = compound(
+        "",
+        (
+            tag(8, "note", modified_utf8_emoji),
+            integer("xPos", 0),
+            integer("zPos", 0),
+            string("Status", "minecraft:full"),
+        ),
+    )
+    source = ChunkSource(
+        dimension="minecraft:overworld",
+        region="region/r.0.0.mca",
+        slot=0,
+        timestamp=0,
+        compression="raw",
+        external=False,
+        min_y=-64,
+        build_height=384,
+    )
+
+    record = decode_chunk_nbt(payload, source)
+
+    assert record.full is True
+
+
 def test_cli_does_not_replace_output_when_decode_fails(tmp_path: Path) -> None:
     world = tmp_path / "world"
     region_dir = world / "region"

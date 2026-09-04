@@ -95,9 +95,11 @@ def _text(data: memoryview, offset: int) -> tuple[str, int]:
     length, offset = _integer(data, offset, 2, signed=False)
     _require(data, offset, length)
     try:
-        value = bytes(data[offset : offset + length]).decode("utf-8")
-    except UnicodeDecodeError as error:
-        raise NbtDecodeError("NBT string is not valid UTF-8") from error
+        encoded = bytes(data[offset : offset + length]).replace(b"\xc0\x80", b"\x00")
+        code_units = encoded.decode("utf-8", errors="surrogatepass")
+        value = code_units.encode("utf-16", errors="surrogatepass").decode("utf-16")
+    except UnicodeError as error:
+        raise NbtDecodeError("NBT string is not valid modified UTF-8") from error
     return value, offset + length
 
 
