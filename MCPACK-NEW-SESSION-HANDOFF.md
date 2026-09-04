@@ -33,7 +33,7 @@ This section supersedes the dated status and restart instructions below. Preserv
 | 10 | `BLOCKED` by Items 7 through 9 | Regenerate and preserve predeclared density evidence only after the preceding gates pass. |
 | 11 | `BLOCKED` | Do not implement, run, repair, or lint Item 11 before the final Items 2 through 10 audit passes. It also requires at least two blind human operators. |
 
-The Item 7 completion command returns `PASS` and records 124 exact artifacts in `evidence/item-7/completion.json`. After the first GitHub review fixes, the focused Item 7 suite passes with 173 tests and the full repository suite passes with 854 tests. The final candidate requires a clean-export gate. The repository-bound r3 verifier redownloaded all four assets and matched every committed size and SHA-256.
+The Item 7 completion command returns `PASS` and records 124 exact artifacts in `evidence/item-7/completion.json`. After the first GitHub review fixes, the focused Item 7 suite passes with 173 tests and the full repository suite passes with 854 tests. A clean Git export also passes all 173 Item 7 tests, scoped formatting, lint, type, and shell checks, and byte-identical rebuilds of the restriction audit and completion receipt. Fresh GitHub Codex review, merge, and delivered-ref verification remain. The repository-bound r3 verifier redownloaded all four assets and matched every committed size and SHA-256.
 
 ### Exact continuation point
 
