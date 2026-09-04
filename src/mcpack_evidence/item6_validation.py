@@ -56,6 +56,9 @@ class Audit(TypedDict):
 
 
 _AUDIT_ADAPTER: Final[TypeAdapter[Audit]] = TypeAdapter(Audit)
+_FROZEN_MANIFEST_IDENTITY: Final = (
+    "sha256:2e0aaeb0f84747a3cb17146eb435d34cc7d6703b9372211e8fc8cff2df2b436f"
+)
 
 
 class _AuditValidationError(ValueError):
@@ -111,6 +114,8 @@ def validate(root: Path, manifest_path: Path, audit_path: Path) -> None:
         raise _AuditValidationError("untouched generated baseline unexpectedly reports tuning")
     validate_file_accounting(expected, covered, audit["file_accounting"])
     validate_audit_semantic_identity(audit)
+    if identity != _FROZEN_MANIFEST_IDENTITY:
+        raise _AuditValidationError("manifest identity does not match frozen baseline")
 
 
 def _collect_system_files(systems: list[_System], expected: set[str]) -> set[str]:
