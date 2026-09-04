@@ -58,7 +58,8 @@ non-root packs and replacements requiring unknown mod order produce null values
 with explicit unresolved reasons. The frozen enabled-pack order recorded in
 `runtime/registry-r1/world-context.json` puts vanilla before `mod_data`.
 The expanded index SHA-256 is
-`bbfa9bacc93f2ae04eaa74dfb6f032c9f3efcc92c19da7e86e7cff256a87e777`.
+`d4bde9f10ab18076d7ccd7466e315a2c49e677da79a5e9156986696fab472775`
+after the structure-constraint extension below.
 The committed-source run reproduced its pilot byte for byte. The generated
 addition is isolated because it indexes the existing catalog's tag contributions;
 it does not introduce another source extraction or runtime experiment.
@@ -67,6 +68,24 @@ These tag inputs are not yet final runtime biome membership. Apply
 `resolve_biome_tag` with the captured biome registry only after accounting for
 every reachable unresolved contribution. In particular, an unresolved optional
 tag is not established to be absent and must not be silently skipped.
+
+Source `0be5021` adds `structure_biomes` for all 887 registered structure IDs,
+binding the captured biome registry as an additional input. It resolves packaged
+constraints for 825 IDs. The others preserve missing required references or
+reachable unresolved tag contributions, including optional references to tags
+whose activation/order is unknown. Every Better Mineshafts variant has a resolved
+packaged constraint. Ten focused biome tests and scoped quality checks passed;
+the committed-source output reproduced the pilot byte for byte.
+
+These are source-derived constraints, not observed placement or a direct dump of
+runtime tag contents. Dynamic tag construction can supply a missing packaged
+reference. In particular, Supplementaries' `has_galleons` and `has_road_signs`
+references require inspection of their runtime source before disposition.
+The three IDAS lumber-camp missing tags remain explicit. Several vanilla,
+CTOV, WDA and Explorify constraints depend on unresolved mod replacement order.
+Neither a null result nor an empty biome list establishes structure-generation
+status without that disposition. Dimension eligibility still requires the
+generator's biome source and any custom placement restrictions.
 
 Remaining work: distinguish actual resource kinds, resolve runtime availability
 and competing definitions, resolve template relationships, bind accepted Item 7 world
