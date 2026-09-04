@@ -23,6 +23,8 @@ from mcpack_evidence.item7_runtime import Item7RuntimeError, WorldgenRequest, sh
 if TYPE_CHECKING:
     from pathlib import Path
 
+_CLEAN_EXIT_TIMEOUT_SECONDS = 120
+
 
 class RecoveryLifecycleRequest(Protocol):
     """Inputs used by the recovery lifecycle without coupling its model."""
@@ -53,16 +55,22 @@ def run_recovery_lifecycle(request: RecoveryLifecycleRequest, java: Path) -> Rec
         reader = threading.Thread(target=read_output, args=(stdout, lines), daemon=True)
         reader.start()
         try:
-            _drive(request, state, stdin, lines, log)
-        except OSError:
-            state.rejection = "server lifecycle I/O failed"
-        return_code = _finish(process, state)
-        try:
-            stdin.close()
-        except (BrokenPipeError, OSError):
-            state.rejection = state.rejection or "server console pipe failed"
-        stdout.close()
-        reader.join(timeout=1)
+            try:
+                _drive(request, state, stdin, lines, log)
+            except OSError:
+                state.rejection = "server lifecycle I/O failed"
+            return_code = _finish(process, state)
+        finally:
+            if process.poll() is None:
+                os.killpg(process.pid, signal.SIGKILL)
+                state.killed = True
+                _ = process.wait()
+            try:
+                stdin.close()
+            except (BrokenPipeError, OSError):
+                state.rejection = state.rejection or "server console pipe failed"
+            stdout.close()
+            reader.join(timeout=1)
     minecraft_log = request.console_log.with_name("minecraft-latest.log")
     try:
         _ = shutil.copyfile(request.runtime.target / "logs/latest.log", minecraft_log)
@@ -157,7 +165,7 @@ def _finish(process: subprocess.Popen[str], state: _State) -> int:
         os.killpg(process.pid, signal.SIGKILL)
         state.killed = True
     try:
-        return process.wait(timeout=30)
+        return process.wait(timeout=_CLEAN_EXIT_TIMEOUT_SECONDS)
     except (OSError, subprocess.TimeoutExpired):
         if process.poll() is None:
             os.killpg(process.pid, signal.SIGKILL)

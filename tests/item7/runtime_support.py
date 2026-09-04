@@ -178,12 +178,13 @@ class FakeProcess:
             self.stdout = CommandOutput(lines, responses, delayed_lines)
             self.stdin = CommandPipe(self.stdout)
         self._return_code: int | None = None
+        self.wait_timeouts: list[float | None] = []
 
     def poll(self) -> int | None:
         return self._return_code
 
     def wait(self, timeout: float | None = None) -> int:
-        del timeout
+        self.wait_timeouts.append(timeout)
         self._return_code = 0
         return 0
 

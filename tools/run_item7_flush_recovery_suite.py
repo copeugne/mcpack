@@ -6,7 +6,6 @@ from __future__ import annotations
 import argparse
 import subprocess
 import sys
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from pathlib import Path
 from typing import ClassVar
@@ -24,7 +23,6 @@ class _Arguments(BaseModel):
     pristine: Path
     java_home: Path
     output: Path
-    workers: int = Field(ge=1, le=4)
     timeout_seconds: int = Field(gt=0)
 
 
@@ -41,7 +39,6 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("project", "restored", "pristine", "java-home", "output"):
         _ = parser.add_argument(f"--{name}", type=Path, required=True)
-    _ = parser.add_argument("--workers", type=int, default=2)
     _ = parser.add_argument("--timeout-seconds", type=int, default=900)
     return parser
 
@@ -112,17 +109,14 @@ def main() -> int:
         print(f"output must be absent: {arguments.output}", file=sys.stderr)
         return 2
     arguments.output.mkdir(parents=True)
-    results: list[_Result] = []
-    with ThreadPoolExecutor(max_workers=arguments.workers) as executor:
-        futures = {executor.submit(_run, arguments, target): target for target in RECOVERY_TARGETS}
-        for future in as_completed(futures):
-            result = future.result()
-            results.append(result)
-            print(f"{result.key}: {'PASS' if result.return_code == 0 else 'FAIL'}", flush=True)
-    failed = tuple(result for result in results if result.return_code != 0)
-    for result in sorted(failed, key=lambda row: row.key):
-        print(f"{result.key}\n{result.stdout}\n{result.stderr}", file=sys.stderr)
-    return 1 if failed else 0
+    for target in RECOVERY_TARGETS:
+        result = _run(arguments, target)
+        passed = result.return_code == 0
+        print(f"{result.key}: {'PASS' if passed else 'FAIL'}", flush=True)
+        if not passed:
+            print(f"{result.key}\n{result.stdout}\n{result.stderr}", file=sys.stderr)
+            return 1
+    return 0
 
 
 if __name__ == "__main__":

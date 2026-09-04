@@ -1,9 +1,12 @@
 from __future__ import annotations
 
 import hashlib
+import secrets
 from typing import TYPE_CHECKING
 
-from mcpack_evidence import item7_flush_recovery
+import pytest
+
+from mcpack_evidence import item7_flush_recovery, item7_flush_recovery_lifecycle
 from mcpack_evidence.item7_archive_models import FileIdentity
 from mcpack_evidence.item7_flush_recovery import FlushRecoveryRequest
 from mcpack_evidence.item7_flush_recovery_models import (
@@ -16,12 +19,17 @@ from mcpack_evidence.item7_world_archive_inventory import (
     WorldArchiveContents,
     WorldArchiveInventory,
 )
-from tests.item7.runtime_support import ROOT, runtime_request
+from tests.item7.runtime_support import (
+    ROOT,
+    FakeProcess,
+    fake_launch,
+    fixed_token,
+    record_pids,
+    runtime_request,
+)
 
 if TYPE_CHECKING:
     from pathlib import Path
-
-    import pytest
 
 
 def _identity(path: Path, relative_path: str) -> FileIdentity:
@@ -141,3 +149,70 @@ def test_recovery_rejects_source_world_changed_after_inventory(
     assert receipt.rejection_reason == "recovery source world differs: run-a/ordinary"
     assert receipt.source is None
     assert receipt.lifecycle is None
+
+
+def test_recovery_lifecycle_allows_bounded_clean_exit(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    request, _ = _request(tmp_path, monkeypatch)
+    _ = request.runtime.target.mkdir()
+    _ = (request.runtime.target / "logs").mkdir()
+    _ = (request.runtime.target / "logs/latest.log").write_text("accepted\n", encoding="utf-8")
+    monkeypatch.setattr(secrets, "token_hex", fixed_token("a" * 32))
+
+    process = FakeProcess(
+        ('[Server thread/INFO]: Done (1.0s)! For help, type "help"\n',),
+        responses={
+            f"say mcpack-item7-flush-{'a' * 32}-before": (
+                f"[Server] mcpack-item7-flush-{'a' * 32}-before\n",
+            ),
+            "save-all flush": (
+                "Saving the game (this may take a moment!)\n",
+                "Saved the game\n",
+            ),
+            f"say mcpack-item7-flush-{'a' * 32}-after": (
+                f"[Server] mcpack-item7-flush-{'a' * 32}-after\n",
+            ),
+            "stop": ("Stopped server\n",),
+        },
+    )
+    monkeypatch.setattr(
+        "mcpack_evidence.item7_flush_recovery_lifecycle.subprocess.Popen",
+        fake_launch(process),
+    )
+
+    lifecycle = item7_flush_recovery_lifecycle.run_recovery_lifecycle(
+        request, request.runtime.java_home / "bin/java"
+    )
+
+    assert lifecycle.clean_stop is True
+    assert process.wait_timeouts == [120]
+
+
+def test_recovery_lifecycle_kills_process_group_when_interrupted(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    request, _ = _request(tmp_path, monkeypatch)
+    _ = request.runtime.target.mkdir()
+    process = FakeProcess(())
+    killed: list[int] = []
+
+    def interrupt(*args: object) -> None:
+        del args
+        raise KeyboardInterrupt
+
+    monkeypatch.setattr(
+        "mcpack_evidence.item7_flush_recovery_lifecycle.subprocess.Popen",
+        fake_launch(process),
+    )
+    monkeypatch.setattr("mcpack_evidence.item7_flush_recovery_lifecycle._drive", interrupt)
+    monkeypatch.setattr(
+        "mcpack_evidence.item7_flush_recovery_lifecycle.os.killpg", record_pids(killed)
+    )
+
+    with pytest.raises(KeyboardInterrupt):
+        _ = item7_flush_recovery_lifecycle.run_recovery_lifecycle(
+            request, request.runtime.java_home / "bin/java"
+        )
+
+    assert killed == [43210]
