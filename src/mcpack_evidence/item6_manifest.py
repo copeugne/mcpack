@@ -1,0 +1,66 @@
+# ruff: noqa: EM101, EM102, TRY003
+"""Parse and validate the frozen Item 6 manifest inventory."""
+
+from __future__ import annotations
+
+import hashlib
+from typing import TYPE_CHECKING, Final, TypedDict
+
+from pydantic import TypeAdapter
+
+if TYPE_CHECKING:
+    from pathlib import Path
+
+
+class ManifestRow(TypedDict):
+    """One hash-bound frozen configuration file."""
+
+    path: str
+    size_bytes: int
+    sha256: str
+    generation_stage: str
+
+
+class Manifest(TypedDict):
+    """The Item 6 frozen configuration manifest."""
+
+    schema_version: str
+    file_count: int
+    files: list[ManifestRow]
+
+
+_MANIFEST_ADAPTER: Final[TypeAdapter[Manifest]] = TypeAdapter(Manifest)
+_STAGES: Final = {"installation", "first_startup", "world_creation", "shutdown"}
+
+
+class ManifestValidationError(ValueError):
+    """Raised when a frozen-manifest inventory is inconsistent."""
+
+
+def parse_manifest(manifest_path: Path) -> Manifest:
+    """Parse the manifest at the untrusted file boundary."""
+    return _MANIFEST_ADAPTER.validate_json(manifest_path.read_bytes(), strict=True, extra="allow")
+
+
+def validate_manifest_inventory(root: Path, manifest: Manifest) -> set[str]:
+    """Return the exact preserved paths after validating manifest inventory hashes."""
+    rows = manifest["files"]
+    expected = {row["path"] for row in rows}
+    actual = {path.relative_to(root).as_posix() for path in root.rglob("*") if path.is_file()}
+    if expected != actual or manifest["file_count"] != len(rows):
+        raise ManifestValidationError("frozen file inventory does not match manifest")
+    for row in rows:
+        path = root / row["path"]
+        if path.stat().st_size != row["size_bytes"] or _sha256(path) != row["sha256"]:
+            raise ManifestValidationError(f"frozen file identity mismatch: {row['path']}")
+        if row["generation_stage"] not in _STAGES:
+            raise ManifestValidationError(f"invalid generation stage: {row['path']}")
+    return expected
+
+
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()

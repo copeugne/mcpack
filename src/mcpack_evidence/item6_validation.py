@@ -11,24 +11,13 @@ from typing import TYPE_CHECKING, Final, TypedDict
 
 from pydantic import TypeAdapter, ValidationError
 
+from mcpack_evidence.item6_manifest import parse_manifest, validate_manifest_inventory
+
 if TYPE_CHECKING:
     from pathlib import Path
 
 Scalar = bool | int | float | str
 type JsonValue = bool | int | float | str | list[JsonValue] | dict[str, JsonValue] | None
-
-
-class _ManifestRow(TypedDict):
-    path: str
-    size_bytes: int
-    sha256: str
-    generation_stage: str
-
-
-class _Manifest(TypedDict):
-    schema_version: str
-    file_count: int
-    files: list[_ManifestRow]
 
 
 class _System(TypedDict):
@@ -75,7 +64,6 @@ class _Audit(TypedDict):
     file_accounting: list[_Classification]
 
 
-_MANIFEST_ADAPTER: Final[TypeAdapter[_Manifest]] = TypeAdapter(_Manifest)
 _AUDIT_ADAPTER: Final[TypeAdapter[_Audit]] = TypeAdapter(_Audit)
 _JSON_ADAPTER: Final[TypeAdapter[JsonValue]] = TypeAdapter(JsonValue)
 _TOML_ADAPTER: Final[TypeAdapter[dict[str, JsonValue]]] = TypeAdapter(dict[str, JsonValue])
@@ -134,9 +122,7 @@ def validate(  # noqa: C901, PLR0912, PLR0915
     root: Path, manifest_path: Path, audit_path: Path
 ) -> None:
     """Fail unless the frozen tree, manifest, and audit agree exactly."""
-    manifest = _MANIFEST_ADAPTER.validate_json(
-        manifest_path.read_bytes(), strict=True, extra="allow"
-    )
+    manifest = parse_manifest(manifest_path)
     audit = _AUDIT_ADAPTER.validate_json(audit_path.read_bytes(), strict=True, extra="allow")
     if manifest["schema_version"] != "item6-frozen-config-manifest-v1":
         raise _AuditValidationError("unsupported manifest schema")
@@ -148,22 +134,7 @@ def validate(  # noqa: C901, PLR0912, PLR0915
     if audit["configuration_identity"] != identity:
         raise _AuditValidationError("audit configuration identity does not match manifest")
 
-    rows = manifest["files"]
-    expected = {row["path"] for row in rows}
-    actual = {path.relative_to(root).as_posix() for path in root.rglob("*") if path.is_file()}
-    if expected != actual or manifest["file_count"] != len(rows):
-        raise _AuditValidationError("frozen file inventory does not match manifest")
-    for row in rows:
-        path = root / row["path"]
-        if path.stat().st_size != row["size_bytes"] or sha256(path) != row["sha256"]:
-            raise _AuditValidationError(f"frozen file identity mismatch: {row['path']}")
-        if row["generation_stage"] not in {
-            "installation",
-            "first_startup",
-            "world_creation",
-            "shutdown",
-        }:
-            raise _AuditValidationError(f"invalid generation stage: {row['path']}")
+    expected = validate_manifest_inventory(root, manifest)
 
     covered: set[str] = set()
     for system in audit["systems"]:
