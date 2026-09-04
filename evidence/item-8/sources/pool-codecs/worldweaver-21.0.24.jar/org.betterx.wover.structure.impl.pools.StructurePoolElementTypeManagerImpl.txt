@@ -1,0 +1,109 @@
+Compiled from "StructurePoolElementTypeManagerImpl.java"
+public class org.betterx.wover.structure.impl.pools.StructurePoolElementTypeManagerImpl {
+  private static final java.util.Map<net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.structure.pools.StructurePoolElementType<?>>, net.minecraft.world.level.levelgen.structure.pools.StructurePoolElementType<?>> TYPES;
+
+  public static final net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.structure.pools.StructurePoolElementType<?>> END_KEY;
+
+  public static net.minecraft.world.level.levelgen.structure.pools.StructurePoolElementType<org.betterx.wover.structure.impl.pools.SingleEndPoolElement> END;
+
+  public org.betterx.wover.structure.impl.pools.StructurePoolElementTypeManagerImpl();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static <P extends net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement> net.minecraft.world.level.levelgen.structure.pools.StructurePoolElementType<P> createType(com.mojang.serialization.MapCodec<P>);
+    Code:
+       0: aload_0
+       1: invokedynamic #7,  0              // InvokeDynamic #0:codec:(Lcom/mojang/serialization/MapCodec;)Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElementType;
+       6: areturn
+
+  public static void register(net.neoforged.neoforge.registries.RegisterEvent);
+    Code:
+       0: aload_0
+       1: getstatic     #11                 // Field net/minecraft/core/registries/Registries.STRUCTURE_POOL_ELEMENT:Lnet/minecraft/resources/ResourceKey;
+       4: invokedynamic #17,  0             // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+       9: invokevirtual #21                 // Method net/neoforged/neoforge/registries/RegisterEvent.register:(Lnet/minecraft/resources/ResourceKey;Ljava/util/function/Consumer;)V
+      12: return
+
+  public static void ensureStaticallyLoaded();
+    Code:
+       0: return
+
+  public static <P extends net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement> net.minecraft.world.level.levelgen.structure.pools.StructurePoolElementType<P> registerExternal(net.minecraft.resources.ResourceLocation, com.mojang.serialization.MapCodec<P>);
+    Code:
+       0: getstatic     #11                 // Field net/minecraft/core/registries/Registries.STRUCTURE_POOL_ELEMENT:Lnet/minecraft/resources/ResourceKey;
+       3: aload_0
+       4: invokestatic  #27                 // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+       7: astore_2
+       8: getstatic     #33                 // Field TYPES:Ljava/util/Map;
+      11: aload_2
+      12: aload_1
+      13: invokedynamic #39,  0             // InvokeDynamic #2:apply:(Lcom/mojang/serialization/MapCodec;)Ljava/util/function/Function;
+      18: invokeinterface #43,  3           // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      23: checkcast     #49                 // class net/minecraft/world/level/levelgen/structure/pools/StructurePoolElementType
+      26: astore_3
+      27: aload_3
+      28: areturn
+
+  private static net.minecraft.world.level.levelgen.structure.pools.StructurePoolElementType lambda$registerExternal$3(com.mojang.serialization.MapCodec, net.minecraft.resources.ResourceKey);
+    Code:
+       0: aload_0
+       1: invokestatic  #51                 // Method createType:(Lcom/mojang/serialization/MapCodec;)Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElementType;
+       4: areturn
+
+  private static void lambda$register$2(net.neoforged.neoforge.registries.RegisterEvent$RegisterHelper);
+    Code:
+       0: getstatic     #54                 // Field org/betterx/wover/structure/impl/pools/SingleEndPoolElement.CODEC:Lcom/mojang/serialization/MapCodec;
+       3: invokestatic  #51                 // Method createType:(Lcom/mojang/serialization/MapCodec;)Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElementType;
+       6: putstatic     #60                 // Field END:Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElementType;
+       9: getstatic     #33                 // Field TYPES:Ljava/util/Map;
+      12: getstatic     #64                 // Field END_KEY:Lnet/minecraft/resources/ResourceKey;
+      15: getstatic     #60                 // Field END:Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElementType;
+      18: invokeinterface #67,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      23: pop
+      24: getstatic     #33                 // Field TYPES:Ljava/util/Map;
+      27: aload_0
+      28: invokedynamic #71,  0             // InvokeDynamic #3:accept:(Lnet/neoforged/neoforge/registries/RegisterEvent$RegisterHelper;)Ljava/util/function/BiConsumer;
+      33: invokeinterface #74,  2           // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+      38: invokestatic  #78                 // Method org/betterx/wover/legacy/api/LegacyHelper.isLegacyEnabled:()Z
+      41: ifeq          71
+      44: aload_0
+      45: getstatic     #84                 // Field org/betterx/wover/legacy/api/LegacyHelper.BCLIB_CORE:Lorg/betterx/wover/core/api/ModCore;
+      48: getstatic     #64                 // Field END_KEY:Lnet/minecraft/resources/ResourceKey;
+      51: invokevirtual #88                 // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      54: invokevirtual #92                 // Method org/betterx/wover/core/api/ModCore.convertNamespace:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceLocation;
+      57: getstatic     #54                 // Field org/betterx/wover/structure/impl/pools/SingleEndPoolElement.CODEC:Lcom/mojang/serialization/MapCodec;
+      60: invokestatic  #98                 // Method org/betterx/wover/legacy/api/LegacyHelper.wrap:(Lcom/mojang/serialization/MapCodec;)Lcom/mojang/serialization/MapCodec;
+      63: invokestatic  #51                 // Method createType:(Lcom/mojang/serialization/MapCodec;)Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElementType;
+      66: invokeinterface #102,  3          // InterfaceMethod net/neoforged/neoforge/registries/RegisterEvent$RegisterHelper.register:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Object;)V
+      71: return
+
+  private static void lambda$register$1(net.neoforged.neoforge.registries.RegisterEvent$RegisterHelper, net.minecraft.resources.ResourceKey, net.minecraft.world.level.levelgen.structure.pools.StructurePoolElementType);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #88                 // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       5: aload_2
+       6: invokeinterface #102,  3          // InterfaceMethod net/neoforged/neoforge/registries/RegisterEvent$RegisterHelper.register:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Object;)V
+      11: return
+
+  private static com.mojang.serialization.MapCodec lambda$createType$0(com.mojang.serialization.MapCodec);
+    Code:
+       0: aload_0
+       1: areturn
+
+  static {};
+    Code:
+       0: new           #107                // class java/util/LinkedHashMap
+       3: dup
+       4: invokespecial #109                // Method java/util/LinkedHashMap."<init>":()V
+       7: putstatic     #33                 // Field TYPES:Ljava/util/Map;
+      10: getstatic     #11                 // Field net/minecraft/core/registries/Registries.STRUCTURE_POOL_ELEMENT:Lnet/minecraft/resources/ResourceKey;
+      13: getstatic     #110                // Field org/betterx/wover/entrypoint/LibWoverStructure.C:Lorg/betterx/wover/core/api/ModCore;
+      16: ldc           #115                // String single_end_pool_element
+      18: invokevirtual #117                // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      21: invokestatic  #27                 // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+      24: putstatic     #64                 // Field END_KEY:Lnet/minecraft/resources/ResourceKey;
+      27: return
+}
