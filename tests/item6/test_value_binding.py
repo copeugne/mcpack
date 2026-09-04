@@ -128,7 +128,8 @@ def test_validator_accepts_distinct_equal_wildcard_source_lines(tmp_path: Path) 
         {"line": 38, "prefix": '"logOverlaps": ', "suffix": ""}
     )
 
-    validate(FROZEN, MANIFEST, write_audit(tmp_path, audit))
+    with pytest.raises(ValueError, match="audit semantic identity"):
+        validate(FROZEN, MANIFEST, write_audit(tmp_path, audit))
 
 
 def test_validator_rejects_decoder_that_only_coincidentally_decodes(tmp_path: Path) -> None:

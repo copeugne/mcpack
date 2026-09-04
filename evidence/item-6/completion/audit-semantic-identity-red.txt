@@ -1,0 +1,179 @@
+.FFFFF.                                                                  [100%]
+=================================== FAILURES ===================================
+_________ test_validator_rejects_audit_semantic_tampering[setting-key] _________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-277/test_validator_rejects_audit_s0')
+mutation = 'setting-key'
+
+    @pytest.mark.parametrize(
+        "mutation",
+        ["setting-key", "remove-setting", "duplicate-setting", "system-label", "finding-summary", "leaf-line"],
+    )
+    def test_validator_rejects_audit_semantic_tampering(tmp_path: Path, mutation: Mutation) -> None:
+        # Given: one audit semantic element is changed while configuration identity remains valid.
+        audit = deepcopy(AUDIT_DATA)
+        match mutation:
+            case "setting-key":
+                audit["settings"][0]["key"] = "renamed.setting"
+            case "remove-setting":
+                audit["settings"].pop(0)
+            case "duplicate-setting":
+                audit["settings"].append(deepcopy(audit["settings"][0]))
+            case "system-label":
+                audit["systems"][0]["system"] = "renamed system"
+            case "finding-summary":
+                audit["findings"][0]["summary"] = "renamed finding summary"
+            case "leaf-line":
+                audit["setting_surfaces"][0]["leaves"][0]["line"] += 1
+            case unreachable:
+                assert_never(unreachable)
+
+        # When/Then: every semantic change fails validation, even with a valid configuration identity.
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/item6/test_audit_semantic_identity.py:57: Failed
+_______ test_validator_rejects_audit_semantic_tampering[remove-setting] ________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-277/test_validator_rejects_audit_s1')
+mutation = 'remove-setting'
+
+    @pytest.mark.parametrize(
+        "mutation",
+        ["setting-key", "remove-setting", "duplicate-setting", "system-label", "finding-summary", "leaf-line"],
+    )
+    def test_validator_rejects_audit_semantic_tampering(tmp_path: Path, mutation: Mutation) -> None:
+        # Given: one audit semantic element is changed while configuration identity remains valid.
+        audit = deepcopy(AUDIT_DATA)
+        match mutation:
+            case "setting-key":
+                audit["settings"][0]["key"] = "renamed.setting"
+            case "remove-setting":
+                audit["settings"].pop(0)
+            case "duplicate-setting":
+                audit["settings"].append(deepcopy(audit["settings"][0]))
+            case "system-label":
+                audit["systems"][0]["system"] = "renamed system"
+            case "finding-summary":
+                audit["findings"][0]["summary"] = "renamed finding summary"
+            case "leaf-line":
+                audit["setting_surfaces"][0]["leaves"][0]["line"] += 1
+            case unreachable:
+                assert_never(unreachable)
+
+        # When/Then: every semantic change fails validation, even with a valid configuration identity.
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/item6/test_audit_semantic_identity.py:57: Failed
+______ test_validator_rejects_audit_semantic_tampering[duplicate-setting] ______
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-277/test_validator_rejects_audit_s2')
+mutation = 'duplicate-setting'
+
+    @pytest.mark.parametrize(
+        "mutation",
+        ["setting-key", "remove-setting", "duplicate-setting", "system-label", "finding-summary", "leaf-line"],
+    )
+    def test_validator_rejects_audit_semantic_tampering(tmp_path: Path, mutation: Mutation) -> None:
+        # Given: one audit semantic element is changed while configuration identity remains valid.
+        audit = deepcopy(AUDIT_DATA)
+        match mutation:
+            case "setting-key":
+                audit["settings"][0]["key"] = "renamed.setting"
+            case "remove-setting":
+                audit["settings"].pop(0)
+            case "duplicate-setting":
+                audit["settings"].append(deepcopy(audit["settings"][0]))
+            case "system-label":
+                audit["systems"][0]["system"] = "renamed system"
+            case "finding-summary":
+                audit["findings"][0]["summary"] = "renamed finding summary"
+            case "leaf-line":
+                audit["setting_surfaces"][0]["leaves"][0]["line"] += 1
+            case unreachable:
+                assert_never(unreachable)
+
+        # When/Then: every semantic change fails validation, even with a valid configuration identity.
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/item6/test_audit_semantic_identity.py:57: Failed
+________ test_validator_rejects_audit_semantic_tampering[system-label] _________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-277/test_validator_rejects_audit_s3')
+mutation = 'system-label'
+
+    @pytest.mark.parametrize(
+        "mutation",
+        ["setting-key", "remove-setting", "duplicate-setting", "system-label", "finding-summary", "leaf-line"],
+    )
+    def test_validator_rejects_audit_semantic_tampering(tmp_path: Path, mutation: Mutation) -> None:
+        # Given: one audit semantic element is changed while configuration identity remains valid.
+        audit = deepcopy(AUDIT_DATA)
+        match mutation:
+            case "setting-key":
+                audit["settings"][0]["key"] = "renamed.setting"
+            case "remove-setting":
+                audit["settings"].pop(0)
+            case "duplicate-setting":
+                audit["settings"].append(deepcopy(audit["settings"][0]))
+            case "system-label":
+                audit["systems"][0]["system"] = "renamed system"
+            case "finding-summary":
+                audit["findings"][0]["summary"] = "renamed finding summary"
+            case "leaf-line":
+                audit["setting_surfaces"][0]["leaves"][0]["line"] += 1
+            case unreachable:
+                assert_never(unreachable)
+
+        # When/Then: every semantic change fails validation, even with a valid configuration identity.
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/item6/test_audit_semantic_identity.py:57: Failed
+_______ test_validator_rejects_audit_semantic_tampering[finding-summary] _______
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-277/test_validator_rejects_audit_s4')
+mutation = 'finding-summary'
+
+    @pytest.mark.parametrize(
+        "mutation",
+        ["setting-key", "remove-setting", "duplicate-setting", "system-label", "finding-summary", "leaf-line"],
+    )
+    def test_validator_rejects_audit_semantic_tampering(tmp_path: Path, mutation: Mutation) -> None:
+        # Given: one audit semantic element is changed while configuration identity remains valid.
+        audit = deepcopy(AUDIT_DATA)
+        match mutation:
+            case "setting-key":
+                audit["settings"][0]["key"] = "renamed.setting"
+            case "remove-setting":
+                audit["settings"].pop(0)
+            case "duplicate-setting":
+                audit["settings"].append(deepcopy(audit["settings"][0]))
+            case "system-label":
+                audit["systems"][0]["system"] = "renamed system"
+            case "finding-summary":
+                audit["findings"][0]["summary"] = "renamed finding summary"
+            case "leaf-line":
+                audit["setting_surfaces"][0]["leaves"][0]["line"] += 1
+            case unreachable:
+                assert_never(unreachable)
+
+        # When/Then: every semantic change fails validation, even with a valid configuration identity.
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/item6/test_audit_semantic_identity.py:57: Failed
+=========================== short test summary info ============================
+FAILED tests/item6/test_audit_semantic_identity.py::test_validator_rejects_audit_semantic_tampering[setting-key]
+FAILED tests/item6/test_audit_semantic_identity.py::test_validator_rejects_audit_semantic_tampering[remove-setting]
+FAILED tests/item6/test_audit_semantic_identity.py::test_validator_rejects_audit_semantic_tampering[duplicate-setting]
+FAILED tests/item6/test_audit_semantic_identity.py::test_validator_rejects_audit_semantic_tampering[system-label]
+FAILED tests/item6/test_audit_semantic_identity.py::test_validator_rejects_audit_semantic_tampering[finding-summary]
+5 failed, 2 passed in 0.48s

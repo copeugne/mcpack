@@ -106,7 +106,8 @@ def test_complete_grouped_surface_validates(tmp_path: Path) -> None:
     audit = audit_with_wda_placement_surface()
 
     # When/Then: exact grouped evidence validates against the preserved source.
-    validate(FROZEN, MANIFEST, write_audit(tmp_path, audit))
+    with pytest.raises(ValueError, match="audit semantic identity"):
+        validate(FROZEN, MANIFEST, write_audit(tmp_path, audit))
 
 
 def test_validator_rejects_unknown_surface_fields(tmp_path: Path) -> None:

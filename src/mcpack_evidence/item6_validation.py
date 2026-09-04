@@ -11,6 +11,7 @@ from typing import TYPE_CHECKING, Final, TypedDict
 
 from pydantic import TypeAdapter, ValidationError
 
+from mcpack_evidence.item6_audit_identity import validate_audit_semantic_identity
 from mcpack_evidence.item6_file_accounting import Classification, validate_file_accounting
 from mcpack_evidence.item6_manifest import (
     Manifest,
@@ -265,6 +266,7 @@ def validate(  # noqa: C901, PLR0912, PLR0915
     if any(setting["non_default"] for setting in audit["settings"]):
         raise _AuditValidationError("untouched generated baseline unexpectedly reports tuning")
     validate_file_accounting(expected, covered, audit["file_accounting"])
+    validate_audit_semantic_identity(audit)
 
 
 def _validate_sanitization_binding(manifest_path: Path, root: Path, manifest: Manifest) -> None:
