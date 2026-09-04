@@ -21,9 +21,12 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 FROZEN_FILE_COUNT: Final = 228
-CHUNKY_PATHS: Final = (
+OVERWORLD_CHUNKY_PATHS: Final = (
     "config/chunky/config.json",
     "config/chunky/tasks/minecraft/overworld.properties",
+)
+CHUNKY_PATHS: Final = (
+    *OVERWORLD_CHUNKY_PATHS,
     "config/chunky/tasks/minecraft/the_end.properties",
     "config/chunky/tasks/minecraft/the_nether.properties",
 )
@@ -60,15 +63,17 @@ class ConfigCaptureReceipt(BaseModel):
     normalized_runtime_drifts: tuple[RuntimeConfigDrift, ...]
 
 
-def capture_runtime_configuration(request: WorldgenRequest) -> ConfigCaptureReceipt:
-    """Capture safely, require Item 6 parity, and isolate four Chunky files."""
+def capture_runtime_configuration(
+    request: WorldgenRequest, *, chunky_paths: tuple[str, ...] = CHUNKY_PATHS
+) -> ConfigCaptureReceipt:
+    """Capture safely, require Item 6 parity, and isolate the expected Chunky files."""
     try:
         capture(request.target, request.captured_config)
     except (OSError, ValueError) as error:
         raise Item7RuntimeError(_CAPTURE_STAGE, str(error)) from error
     frozen_files = _relative_files(request.frozen_config)
     captured_files = _relative_files(request.captured_config)
-    if set(captured_files) != set(frozen_files) | set(CHUNKY_PATHS):
+    if set(captured_files) != set(frozen_files) | set(chunky_paths):
         detail = "captured file inventory differs from Item 6 plus Chunky"
         raise Item7RuntimeError(_CAPTURE_STAGE, detail)
     normalized_drifts: list[RuntimeConfigDrift] = []
@@ -92,7 +97,7 @@ def capture_runtime_configuration(request: WorldgenRequest) -> ConfigCaptureRece
         )
     rows = tuple(
         ArtifactHash(path=relative, sha256=sha256_file(captured_files[relative]))
-        for relative in CHUNKY_PATHS
+        for relative in chunky_paths
     )
     if len(frozen_files) != FROZEN_FILE_COUNT:
         detail = "frozen Item 6 inventory is not exactly 228 files"

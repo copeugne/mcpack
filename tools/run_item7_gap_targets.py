@@ -10,7 +10,11 @@ from typing import TYPE_CHECKING, ClassVar, Literal
 
 from pydantic import BaseModel, ConfigDict
 
-from mcpack_evidence.item7_config import ConfigCaptureReceipt, capture_runtime_configuration
+from mcpack_evidence.item7_config import (
+    OVERWORLD_CHUNKY_PATHS,
+    ConfigCaptureReceipt,
+    capture_runtime_configuration,
+)
 from mcpack_evidence.item7_gap import GapError, GapLifecycleReceipt, GapRequest, run_gap_lifecycle
 from mcpack_evidence.item7_runtime import (
     Item7RuntimeError,
@@ -76,7 +80,9 @@ def execute(request: GapRequest) -> GapRunReceipt:
             rejection_reason=lifecycle.rejection_reason,
         )
     try:
-        configuration = capture_runtime_configuration(request.runtime)
+        configuration = capture_runtime_configuration(
+            request.runtime, chunky_paths=OVERWORLD_CHUNKY_PATHS
+        )
     except Item7RuntimeError as error:
         return GapRunReceipt(
             preflight=preflight,

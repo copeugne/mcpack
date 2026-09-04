@@ -58,6 +58,19 @@ def test_capture_sanitizes_generated_credential(tmp_path: Path) -> None:
     assert receipt.normalized_runtime_drifts == ()
 
 
+def test_capture_accepts_exact_overworld_only_chunky_inventory(tmp_path: Path) -> None:
+    request = _prepared_request(tmp_path)
+    overworld_paths = item7_config.OVERWORLD_CHUNKY_PATHS
+    for relative in overworld_paths:
+        path = request.target / relative
+        _ = path.parent.mkdir(parents=True, exist_ok=True)
+        _ = path.write_bytes(b"generated=true\n")
+
+    receipt = item7_config.capture_runtime_configuration(request, chunky_paths=overworld_paths)
+
+    assert tuple(row.path for row in receipt.chunky_files) == overworld_paths
+
+
 def test_capture_records_comment_only_runtime_normalization(tmp_path: Path) -> None:
     request = _prepared_request(tmp_path)
     _write_chunky_files(request, b"generated=true\n")
