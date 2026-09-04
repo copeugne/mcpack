@@ -6,6 +6,19 @@
 
 ### Continuation update - 2026-09-05
 
+Latest custom-generation evidence: `b4b38e0` delivers
+`evidence/item-8/sources/mineshafts-code`, generated with `c51973c` and reproduced
+byte for byte. The existing inspector now accepts `--archive` and selects Better
+Mineshafts world-generation/configuration classes. Source proves code-authored
+cave-spider and zombie-villager spawners and abandoned-mineshaft loot references.
+It also exposes an important size limitation: the initial VerticalEntrance box
+uses maximum build height. Do not promote its saved box height to occupied
+structure height. The evidence README records findings and remaining work.
+The actual vanilla-replacement hook is still uninspected; the retained JAR has
+`DisableVanillaMineshaftsMixin` and `LocateVanillaMineshaftCommandMixin` for that
+follow-up. Family grouping and final attributes remain incomplete. No runtime
+process is live, and no Item 8 completion or review is claimed.
+
 Latest delivered trace correction: `fba2e84` retains
 `evidence/item-8/sources/pool-traces-aliases.json.gz`. Use it instead of the
 preserved first `pool-traces.json.gz`. Implementation `dc96708` follows declared
