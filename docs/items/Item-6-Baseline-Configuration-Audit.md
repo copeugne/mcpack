@@ -2,15 +2,21 @@
 
 ## Exit decision
 
-**PASS.** The exact 136-JAR retained server stack was reconstructed under Minecraft 1.21.1, NeoForge 21.1.249, and Eclipse Temurin 21.0.12.1+1-LTS. A new ordinary seed-42 instance reached readiness, completed `save-all flush`, and stopped cleanly. No setting was tuned. The post-shutdown configuration tree is frozen losslessly in `evidence/item-6/frozen/`; the sorted 228-file manifest binds every relative path, byte size, SHA-256, and generation stage.
+**PASS.** The exact 136-JAR retained server stack was reconstructed under Minecraft 1.21.1, NeoForge 21.1.249, and Eclipse Temurin 21.0.12.1+1-LTS. A new ordinary seed-42 instance reached readiness, completed `save-all flush`, and stopped cleanly. No setting was tuned. The post-shutdown configuration tree is frozen losslessly in `evidence/item-6/frozen/`; the canonical, component-sorted 228-file manifest binds every relative path, byte size, SHA-256, and generation stage.
 
-The capture distinguishes 4 installation/materialization files, 223 first-startup files, and 1 world-creation server config. No file first appeared only during shutdown. The post-shutdown state is the effective baseline. The validator independently verifies exact tree equality, every file identity, report-to-manifest references, literal setting evidence, the audit's manifest identity, and one accounting classification for each of the 228 manifest paths. The 54 audited paths are exactly the union cited by systems, settings, and findings. The remaining 174 paths are explicitly out of scope.
+The capture distinguishes exactly 4 installation files, 223 first-startup files, 1 world-creation server config, and 0 shutdown-only files. The post-shutdown state is the effective baseline. The validator independently verifies exact tree equality, every file identity, manifest ordering and uniqueness, the canonical capture boundary, report-to-manifest references, and the audit's manifest identity. Each of the 110 audited settings has structured source-line evidence with a typed exact-value check for its generated and effective values. Every manifest path has exactly one accounting classification: the 54 audited paths are exactly the union cited by systems, settings, and findings, and the remaining 174 paths are explicitly out of scope.
 
 ## Reconstruction and capture boundary
 
 The run reacquired and hash-verified all platform artifacts and all 190 audited candidate artifacts, materialized only the 136 retained candidates, and removed the copied Item 2 world before applying seed 42. The NeoForge installer required the environment HTTP proxy and an operational-only Java trust store; neither was committed. The committed lifecycle receipt proves readiness, explicit flush confirmation, clean stop, and return code zero. The compressed log preserves generation diagnostics.
 
 The frozen tree contains `config/`, `defaultconfigs/`, `world/serverconfig` (normalized to `world-serverconfig/` in the evidence root), and `server.properties`. Candidate JARs, binaries, the generated world, caches, and the operational trust store remain excluded.
+
+## Provenance and capture safeguards
+
+The manifest can name only canonical repository-relative, regular, non-symlink evidence files. Validation cross-binds the retained 136-candidate manifest, the successful lifecycle receipt, and the materialization receipt to the frozen configuration identity. The lifecycle receipt requires readiness, flush confirmation, clean stop, and return code zero. The materialization receipt requires ordinary seed 42, the retained manifest hash and count, no production state, and removal of the copied world before generation.
+
+Capture validates all required source directories and `server.properties` before it creates output. It rejects a missing source, a wrong type, a symlinked capture root or required source, and a nested symlink within a copied source tree. This prevents a partial output tree or a filesystem escape from being represented as a frozen baseline.
 
 ## Configuration findings
 
