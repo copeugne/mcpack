@@ -58,10 +58,13 @@ class CaptureValidationError(ValueError):
 def capture(instance: Path, output: Path) -> None:
     """Copy configuration-bearing paths without altering the source instance."""
     _require_real_output_parent(output.parent)
+    receipt = output.parent / _SANITIZATION_RECEIPT
+    if output == receipt:
+        message = "output path collides with sanitization receipt"
+        raise CaptureValidationError(message)
     if output.exists():
         message = f"output already exists: {output}"
         raise FileExistsError(message)
-    receipt = output.parent / _SANITIZATION_RECEIPT
     if receipt.exists():
         message = f"sanitization receipt already exists: {receipt}"
         raise FileExistsError(message)

@@ -162,6 +162,18 @@ def test_capture_preserves_existing_output_bytes(tmp_path: Path) -> None:
     assert sorted(path.name for path in output.iterdir()) == ["sentinel.bin"]
 
 
+def test_capture_rejects_output_that_aliases_sanitization_receipt(tmp_path: Path) -> None:
+    """The capture directory and adjacent receipt must be distinct paths."""
+    # Given: the requested output has the fixed receipt filename.
+    instance = _make_instance(tmp_path)
+    output = tmp_path / "config-sanitization.json"
+
+    # When/Then: aliasing fails before either artifact is created.
+    with pytest.raises(ValueError, match="collides with sanitization receipt"):
+        capture(instance, output)
+    assert not output.exists()
+
+
 @pytest.mark.parametrize("nested", [False, True])
 def test_capture_rejects_symlinked_output_parent_before_staging(
     tmp_path: Path, nested: bool
