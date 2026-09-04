@@ -16,6 +16,72 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
+def test_integrated_village_designs_cover_roots_and_preserve_missing_components() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, JsonValue]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    groups = [
+        row
+        for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
+        if str(row["family_id"]).startswith("integrated_villages:")
+    ]
+    registry = read_registry(
+        root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )
+    members = [member for row in groups for member in cast("list[str]", row["structure_ids"])]
+    assert len(members) == len(set(members))
+    assert set(members) == {key for key in registry if key.startswith("integrated_villages:")}
+    catalog = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    definitions: dict[str, dict[str, JsonValue]] = {}
+    for resource in cast("list[dict[str, JsonValue]]", catalog["resources"]):
+        identity = resource_identity(str(resource["path"]), "worldgen/structure")
+        if identity is not None and identity[0] in members:
+            assert identity[1] == ""
+            assert identity[0] not in definitions
+            definitions[identity[0]] = cast("dict[str, JsonValue]", resource["document"])
+    assert set(definitions) == set(members)
+    traces = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
+    assert len({str(row["start_pool"]) for row in groups}) == len(groups)
+    for row in groups:
+        identifier = str(row["family_id"])
+        assert row["structure_ids"] == [identifier]
+        definition = definitions[identifier]
+        assert row["start_pool"] == definition["start_pool"] == structures[identifier]["start_pool"]
+        assert row["generation_settings"] == {
+            key: definition[key]
+            for key in (
+                "type",
+                "start_height",
+                "project_start_to_heightmap",
+                "required_mods",
+                "target_biomes",
+                "target_biome_radius_check_blocks",
+                "cannot_spawn_in_liquid",
+            )
+            if key in definition
+        }
+        assert row["missing_components"] == structures[identifier]["missing"]
+        for path, digest in cast("dict[str, str]", row["evidence"]).items():
+            assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+
+
 def test_integrated_stronghold_keeps_rooms_as_components_and_binds_spawn_override() -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(
