@@ -3,10 +3,11 @@
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
 The working deliverable is `inventory.json`, initially assembled by `f2eaf2b`
-and updated through `2f1dbda` using attribute support from `bf153ea`.
-SHA-256: `c1e8af3ab7e229d2f3923e4c52bdfc977efd16d4c2e7ed344e05552aeec5bd75`.
+and updated through `fd9705a` using attribute support from `bf153ea`.
+SHA-256: `83f56c9ecaa8f76f853ffd0081a12537849489e4a30dea3edae099caf298250d`.
 It is explicitly incomplete. It joins Better Mineshafts, CTOV size groups,
-WDA layouts, Seven Seas vessels, Integrated Stronghold and Integrated Villages design groups
+WDA layouts, Seven Seas vessels, Integrated Stronghold, Integrated Villages design groups
+and Explorations families
 to biome constraints, potential template content
 and saved-world observation references. It lists every unassigned registry ID
 and keeps unresolved attributes marked `UNKNOWN`. CTOV's broader design
@@ -139,6 +140,16 @@ effective processor behavior. Sixteen focused parser/assembly tests and scoped
 quality checks passed. The output at
 `evidence/raw/item8/inventory-spawners-reproduction1.json` reproduced
 `evidence/raw/item8/inventory-spawners-pilot1.json` byte for byte.
+
+Source `fd9705a` covers all ten registered Explorations roots. Alternate campsite,
+ruin and log templates remain components or variants. Slime Cave has no declared
+start pool and retains its custom-generation gap. Underground Temple retains two
+missing templates. Nine focused grouping/assembly tests and scoped quality checks
+passed. Committed-source output
+`evidence/raw/item8/inventory-explorations-reproduction1.json` reproduced
+`evidence/raw/item8/inventory-explorations-pilot1.json` byte for byte. The generated
+join is isolated from implementation changes and does not close the remaining
+family attributes or custom-generation questions.
 
 The infrastructure requirements in
 `INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md` apply to this work. Reuse the
