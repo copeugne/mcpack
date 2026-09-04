@@ -20,7 +20,6 @@ from tests.item6.helpers import (
 if TYPE_CHECKING:
     from pathlib import Path
 
-
 YUNG_REPLACEMENT_FILES = {
     "config/betterdeserttemples-neoforge-1_21.toml",
     "config/betterfortresses-neoforge-1_21.toml",
@@ -130,7 +129,23 @@ def test_yung_cristellib_settings_cover_every_placement_and_toggle_leaf() -> Non
             and not line.strip().endswith("{")
             and not line.strip().startswith('"salt"')
         }
-        actual_evidence = {row["evidence"] for row in audit["settings"] if row["file"] == path}
+        actual_evidence = set()
+        source_lines = (FROZEN / path).read_text(encoding="utf-8").splitlines()
+        for row in audit["settings"]:
+            if row["file"] != path:
+                continue
+            evidence = row["evidence"]
+            assert evidence["decoder"] == "json"
+            assert evidence["effective_semantics"] == "same_as_generated"
+            assert len(evidence["observations"]) == 1
+            observation = evidence["observations"][0]
+            source_line = source_lines[observation["line"] - 1].strip()
+            assert source_line == (
+                observation["prefix"]
+                + json.dumps(row["generated_default"], separators=(",", ":"))
+                + observation["suffix"]
+            )
+            actual_evidence.add(source_line.rstrip(","))
         assert actual_evidence == expected_evidence
 
 

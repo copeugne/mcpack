@@ -65,13 +65,13 @@
       "system": "YUNG structure systems",
       "status": "generated",
       "files": [
-        "config/betterdeserttemples-neoforge-1_21.toml",
         "config/betterdungeons-neoforge-1_21.toml",
+        "config/betterstrongholds-neoforge-1_21.toml",
+        "config/betterdeserttemples-neoforge-1_21.toml",
         "config/betterfortresses-neoforge-1_21.toml",
         "config/betterjungletemples-neoforge-1_21.toml",
         "config/bettermineshafts-neoforge-1_21.toml",
         "config/betteroceanmonuments-neoforge-1_21.toml",
-        "config/betterstrongholds-neoforge-1_21.toml",
         "config/betterwitchhuts-neoforge-1_21.toml",
         "config/cristellib/betterdeserttemples/structure_placement_config.json5",
         "config/cristellib/betterdeserttemples/structure_toggle_config.json5",
@@ -165,7 +165,17 @@
         "Structure Essentials spacingSeparationModifier",
         "Cristel Lib per-set spacing"
       ],
-      "evidence": "\"spreadFactor\": 2"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 10,
+            "prefix": "\"spreadFactor\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "Sparse Structures",
@@ -179,7 +189,17 @@
       "interactions": [
         "global spreadFactor"
       ],
-      "evidence": "\"structure\": \"minecraft:mansion\""
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 22,
+            "prefix": "\"factor\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "Structure Essentials",
@@ -193,7 +213,17 @@
       "interactions": [
         "Sparse Structures spreadFactor"
       ],
-      "evidence": "\"spacingSeparationModifier\": 1.0"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 28,
+            "prefix": "\"spacingSeparationModifier\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "Structure Essentials",
@@ -207,7 +237,17 @@
       "interactions": [
         "all structure providers"
       ],
-      "evidence": "\"minimumStructureDistance\": {"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 37,
+            "prefix": "\"enabled\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "Structure Layout Optimizer",
@@ -221,7 +261,17 @@
       "interactions": [
         "structure template pools"
       ],
-      "evidence": "\"deduplicateShuffledTemplatePoolElementList\": false"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 16,
+            "prefix": "\"deduplicateShuffledTemplatePoolElementList\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "C2ME",
@@ -235,7 +285,27 @@
       "interactions": [
         "biolith@3.0.10"
       ],
-      "evidence": "Incompatible with biolith@3.0.10"
+      "evidence": {
+        "decoder": "toml",
+        "observations": [
+          {
+            "line": 80,
+            "prefix": "useEndBiomeCache = ",
+            "suffix": ""
+          },
+          {
+            "line": 78,
+            "prefix": "# Set to false for the following reasons:",
+            "suffix": ""
+          },
+          {
+            "line": 79,
+            "prefix": "# Incompatible with biolith@3.0.10 (*) (defined in c2me)",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "c2me_biolith_runtime_disable"
+      }
     },
     {
       "system": "ServerCore",
@@ -250,7 +320,17 @@
         "mob caps",
         "view and simulation distance"
       ],
-      "evidence": "  enabled: false"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 19,
+            "prefix": "enabled: ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "ServerCore",
@@ -264,7 +344,17 @@
       "interactions": [
         "vanilla natural spawning"
       ],
-      "evidence": "      mobcap: 70"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 140,
+            "prefix": "mobcap: ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "When Dungeons Arise",
@@ -278,19 +368,865 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"spacing\": 50"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"spacing\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "When Dungeons Arise",
       "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
-      "key": "major_structures.*",
+      "key": "major_structures.aviary",
       "generated_default": true,
       "effective_value": true,
       "non_default": false,
       "scope": "all listed WDA major families",
       "owner": "cristellib/dungeons_arise",
       "interactions": [],
-      "evidence": "\"aviary\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 6,
+            "prefix": "\"aviary\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.bandit_towers",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 7,
+            "prefix": "\"bandit_towers\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.bandit_village",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"bandit_village\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.ceryneian_hind",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 9,
+            "prefix": "\"ceryneian_hind\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.coliseum",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 10,
+            "prefix": "\"coliseum\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.foundry",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 11,
+            "prefix": "\"foundry\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.greenwood_pub",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 12,
+            "prefix": "\"greenwood_pub\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.heavenly_challenger",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 13,
+            "prefix": "\"heavenly_challenger\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.heavenly_conqueror",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 14,
+            "prefix": "\"heavenly_conqueror\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.heavenly_rider",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 15,
+            "prefix": "\"heavenly_rider\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.illager_campsite",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 16,
+            "prefix": "\"illager_campsite\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.illager_corsair",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 17,
+            "prefix": "\"illager_corsair\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.illager_fort",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 18,
+            "prefix": "\"illager_fort\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.illager_galley",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 19,
+            "prefix": "\"illager_galley\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.illager_windmill",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 20,
+            "prefix": "\"illager_windmill\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.infested_temple",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 21,
+            "prefix": "\"infested_temple\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.keep_kayra",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 22,
+            "prefix": "\"keep_kayra\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.kisegi_sanctuary",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 23,
+            "prefix": "\"kisegi_sanctuary\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.mechanical_nest",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 24,
+            "prefix": "\"mechanical_nest\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.merchant_campsite",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 25,
+            "prefix": "\"merchant_campsite\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.mining_complex",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 26,
+            "prefix": "\"mining_complex\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.monastery",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 27,
+            "prefix": "\"monastery\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.mushroom_house",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 28,
+            "prefix": "\"mushroom_house\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.mushroom_mines",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 29,
+            "prefix": "\"mushroom_mines\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.mushroom_village",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 30,
+            "prefix": "\"mushroom_village\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.plague_asylum",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 31,
+            "prefix": "\"plague_asylum\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.scorched_mines",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 32,
+            "prefix": "\"scorched_mines\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.shiraz_palace",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 33,
+            "prefix": "\"shiraz_palace\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.small_blimp",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 34,
+            "prefix": "\"small_blimp\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.thornborn_towers",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 35,
+            "prefix": "\"thornborn_towers\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.typhon",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 36,
+            "prefix": "\"typhon\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "When Dungeons Arise",
+      "file": "config/cristellib/dungeons_arise/structure_toggle_config.json5",
+      "key": "major_structures.undead_pirate_ship",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "all listed WDA major families",
+      "owner": "cristellib/dungeons_arise",
+      "interactions": [],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 37,
+            "prefix": "\"undead_pirate_ship\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "YUNG structure systems",
+      "file": "config/betterdeserttemples-neoforge-1_21.toml",
+      "key": "Better Desert Temples.General.Disable Vanilla Pyramids",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "vanilla desert pyramids",
+      "owner": "betterdeserttemples",
+      "interactions": [
+        "vanilla structures"
+      ],
+      "evidence": {
+        "decoder": "toml",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"Disable Vanilla Pyramids\" = ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "YUNG structure systems",
+      "file": "config/betterfortresses-neoforge-1_21.toml",
+      "key": "Better Nether Fortresses.General.Disable Vanilla Nether Fortresses",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "vanilla Nether fortresses",
+      "owner": "betterfortresses",
+      "interactions": [
+        "vanilla structures"
+      ],
+      "evidence": {
+        "decoder": "toml",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"Disable Vanilla Nether Fortresses\" = ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "YUNG structure systems",
+      "file": "config/betterjungletemples-neoforge-1_21.toml",
+      "key": "Better Jungle Temples.General.Disable Vanilla Jungle Temples",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "vanilla jungle temples",
+      "owner": "betterjungletemples",
+      "interactions": [
+        "vanilla structures"
+      ],
+      "evidence": {
+        "decoder": "toml",
+        "observations": [
+          {
+            "line": 2,
+            "prefix": "\"Disable Vanilla Jungle Temples\" = ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "YUNG structure systems",
+      "file": "config/bettermineshafts-neoforge-1_21.toml",
+      "key": "Better Mineshafts.Disable Vanilla Mineshafts",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "vanilla mineshafts",
+      "owner": "bettermineshafts",
+      "interactions": [
+        "vanilla structures"
+      ],
+      "evidence": {
+        "decoder": "toml",
+        "observations": [
+          {
+            "line": 4,
+            "prefix": "\"Disable Vanilla Mineshafts\" = ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "YUNG structure systems",
+      "file": "config/betteroceanmonuments-neoforge-1_21.toml",
+      "key": "Better Ocean Monuments.General.Disable Vanilla Ocean Monuments",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "vanilla ocean monuments",
+      "owner": "betteroceanmonuments",
+      "interactions": [
+        "vanilla structures"
+      ],
+      "evidence": {
+        "decoder": "toml",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"Disable Vanilla Ocean Monuments\" = ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "YUNG structure systems",
+      "file": "config/betterwitchhuts-neoforge-1_21.toml",
+      "key": "Better Witch Huts.General.Disable Vanilla Witch Huts",
+      "generated_default": true,
+      "effective_value": true,
+      "non_default": false,
+      "scope": "vanilla witch huts",
+      "owner": "betterwitchhuts",
+      "interactions": [
+        "vanilla structures"
+      ],
+      "evidence": {
+        "decoder": "toml",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"Disable Vanilla Witch Huts\" = ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "IDAS",
@@ -304,7 +1240,17 @@
       "interactions": [
         "vanilla structures"
       ],
-      "evidence": "\"Disable Vanilla Desert Pyramid\" = true"
+      "evidence": {
+        "decoder": "toml",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"Disable Vanilla Desert Pyramid\" = ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "Integrated structures",
@@ -321,7 +1267,17 @@
         "Better Village",
         "Village Taverns"
       ],
-      "evidence": "\"Disable Vanilla Villages\" = true"
+      "evidence": {
+        "decoder": "toml",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"Disable Vanilla Villages\" = ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "Towns and Towers",
@@ -336,14 +1292,24 @@
         "Sparse Structures factor 2",
         "Integrated Villages vanilla replacement"
       ],
-      "evidence": "\"spacing\": 51"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 41,
+            "prefix": "\"spacing\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "Better Village",
       "file": "config/bettervillage_1.properties",
       "key": "int.villages.spacing",
-      "generated_default": 45,
-      "effective_value": 45,
+      "generated_default": "45",
+      "effective_value": "45",
       "non_default": false,
       "scope": "Better Village placement",
       "owner": "bettervillage",
@@ -351,12 +1317,22 @@
         "other village providers",
         "Sparse Structures factor 2"
       ],
-      "evidence": "int.villages.spacing=45"
+      "evidence": {
+        "decoder": "string",
+        "observations": [
+          {
+            "line": 6,
+            "prefix": "int.villages.spacing=",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "Village Taverns",
       "file": "config/village_taverns/villages.json",
-      "key": "entries[*].structures[*].weight",
+      "key": "entries[0].structures[0].weight",
       "generated_default": 10,
       "effective_value": 10,
       "non_default": false,
@@ -365,7 +1341,113 @@
       "interactions": [
         "village pool replacements"
       ],
-      "evidence": "\"weight\": 10"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"weight\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "Village Taverns",
+      "file": "config/village_taverns/villages.json",
+      "key": "entries[1].structures[0].weight",
+      "generated_default": 10,
+      "effective_value": 10,
+      "non_default": false,
+      "scope": "five vanilla village house pools",
+      "owner": "village_taverns",
+      "interactions": [
+        "village pool replacements"
+      ],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 18,
+            "prefix": "\"weight\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "Village Taverns",
+      "file": "config/village_taverns/villages.json",
+      "key": "entries[2].structures[0].weight",
+      "generated_default": 10,
+      "effective_value": 10,
+      "non_default": false,
+      "scope": "five vanilla village house pools",
+      "owner": "village_taverns",
+      "interactions": [
+        "village pool replacements"
+      ],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 28,
+            "prefix": "\"weight\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "Village Taverns",
+      "file": "config/village_taverns/villages.json",
+      "key": "entries[3].structures[0].weight",
+      "generated_default": 10,
+      "effective_value": 10,
+      "non_default": false,
+      "scope": "five vanilla village house pools",
+      "owner": "village_taverns",
+      "interactions": [
+        "village pool replacements"
+      ],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 38,
+            "prefix": "\"weight\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
+    },
+    {
+      "system": "Village Taverns",
+      "file": "config/village_taverns/villages.json",
+      "key": "entries[4].structures[0].weight",
+      "generated_default": 10,
+      "effective_value": 10,
+      "non_default": false,
+      "scope": "five vanilla village house pools",
+      "owner": "village_taverns",
+      "interactions": [
+        "village pool replacements"
+      ],
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 48,
+            "prefix": "\"weight\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "Loot Integrations",
@@ -379,7 +1461,17 @@
       "interactions": [
         "provider-specific Loot Integrations addons"
       ],
-      "evidence": "\"moddedItemWeight\": 3"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 16,
+            "prefix": "\"moddedItemWeight\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "Difficulty",
@@ -393,91 +1485,17 @@
       "interactions": [
         "mob spawning and combat"
       ],
-      "evidence": "difficulty=easy"
-    },
-    {
-      "system": "YUNG structure systems",
-      "file": "config/betterdeserttemples-neoforge-1_21.toml",
-      "key": "Better Desert Temples.General.Disable Vanilla Pyramids",
-      "generated_default": true,
-      "effective_value": true,
-      "non_default": false,
-      "scope": "vanilla desert pyramids",
-      "owner": "betterdeserttemples",
-      "interactions": [
-        "vanilla structures"
-      ],
-      "evidence": "\"Disable Vanilla Pyramids\" = true"
-    },
-    {
-      "system": "YUNG structure systems",
-      "file": "config/betterfortresses-neoforge-1_21.toml",
-      "key": "Better Nether Fortresses.General.Disable Vanilla Nether Fortresses",
-      "generated_default": true,
-      "effective_value": true,
-      "non_default": false,
-      "scope": "vanilla Nether fortresses",
-      "owner": "betterfortresses",
-      "interactions": [
-        "vanilla structures"
-      ],
-      "evidence": "\"Disable Vanilla Nether Fortresses\" = true"
-    },
-    {
-      "system": "YUNG structure systems",
-      "file": "config/betterjungletemples-neoforge-1_21.toml",
-      "key": "Better Jungle Temples.General.Disable Vanilla Jungle Temples",
-      "generated_default": true,
-      "effective_value": true,
-      "non_default": false,
-      "scope": "vanilla jungle temples",
-      "owner": "betterjungletemples",
-      "interactions": [
-        "vanilla structures"
-      ],
-      "evidence": "\"Disable Vanilla Jungle Temples\" = true"
-    },
-    {
-      "system": "YUNG structure systems",
-      "file": "config/bettermineshafts-neoforge-1_21.toml",
-      "key": "Better Mineshafts.Disable Vanilla Mineshafts",
-      "generated_default": true,
-      "effective_value": true,
-      "non_default": false,
-      "scope": "vanilla mineshafts",
-      "owner": "bettermineshafts",
-      "interactions": [
-        "vanilla structures"
-      ],
-      "evidence": "\"Disable Vanilla Mineshafts\" = true"
-    },
-    {
-      "system": "YUNG structure systems",
-      "file": "config/betteroceanmonuments-neoforge-1_21.toml",
-      "key": "Better Ocean Monuments.General.Disable Vanilla Ocean Monuments",
-      "generated_default": true,
-      "effective_value": true,
-      "non_default": false,
-      "scope": "vanilla ocean monuments",
-      "owner": "betteroceanmonuments",
-      "interactions": [
-        "vanilla structures"
-      ],
-      "evidence": "\"Disable Vanilla Ocean Monuments\" = true"
-    },
-    {
-      "system": "YUNG structure systems",
-      "file": "config/betterwitchhuts-neoforge-1_21.toml",
-      "key": "Better Witch Huts.General.Disable Vanilla Witch Huts",
-      "generated_default": true,
-      "effective_value": true,
-      "non_default": false,
-      "scope": "vanilla witch huts",
-      "owner": "betterwitchhuts",
-      "interactions": [
-        "vanilla structures"
-      ],
-      "evidence": "\"Disable Vanilla Witch Huts\" = true"
+      "evidence": {
+        "decoder": "string",
+        "observations": [
+          {
+            "line": 9,
+            "prefix": "difficulty=",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -491,7 +1509,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"separation\": 20"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 7,
+            "prefix": "\"separation\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -505,7 +1533,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"spacing\": 30"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"spacing\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -519,7 +1557,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"desert_temple\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 6,
+            "prefix": "\"desert_temple\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -534,7 +1582,17 @@
         "Sparse Structures factor 2",
         "top-level Better Dungeons gameplay controls; no runtime precedence claimed"
       ],
-      "evidence": "\"separation\": 23"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 7,
+            "prefix": "\"separation\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -549,7 +1607,17 @@
         "Sparse Structures factor 2",
         "top-level Better Dungeons gameplay controls; no runtime precedence claimed"
       ],
-      "evidence": "\"spacing\": 46"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"spacing\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -564,7 +1632,17 @@
         "Sparse Structures factor 2",
         "top-level Better Dungeons gameplay controls; no runtime precedence claimed"
       ],
-      "evidence": "\"separation\": 6"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 12,
+            "prefix": "\"separation\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -579,7 +1657,17 @@
         "Sparse Structures factor 2",
         "top-level Better Dungeons gameplay controls; no runtime precedence claimed"
       ],
-      "evidence": "\"spacing\": 10"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 13,
+            "prefix": "\"spacing\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -594,7 +1682,17 @@
         "Sparse Structures factor 2",
         "top-level Better Dungeons gameplay controls; no runtime precedence claimed"
       ],
-      "evidence": "\"separation\": 10"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 17,
+            "prefix": "\"separation\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -609,7 +1707,17 @@
         "Sparse Structures factor 2",
         "top-level Better Dungeons gameplay controls; no runtime precedence claimed"
       ],
-      "evidence": "\"spacing\": 16"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 18,
+            "prefix": "\"spacing\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -624,7 +1732,17 @@
         "Sparse Structures factor 2",
         "top-level Better Dungeons gameplay controls; no runtime precedence claimed"
       ],
-      "evidence": "\"separation\": 22"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 22,
+            "prefix": "\"separation\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -639,7 +1757,17 @@
         "Sparse Structures factor 2",
         "top-level Better Dungeons gameplay controls; no runtime precedence claimed"
       ],
-      "evidence": "\"spacing\": 44"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 23,
+            "prefix": "\"spacing\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -654,7 +1782,17 @@
         "Sparse Structures factor 2",
         "top-level Better Dungeons gameplay controls; no runtime precedence claimed"
       ],
-      "evidence": "\"separation\": 24"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 27,
+            "prefix": "\"separation\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -669,7 +1807,17 @@
         "Sparse Structures factor 2",
         "top-level Better Dungeons gameplay controls; no runtime precedence claimed"
       ],
-      "evidence": "\"spacing\": 48"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 28,
+            "prefix": "\"spacing\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -683,7 +1831,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"skeleton_dungeon\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 6,
+            "prefix": "\"skeleton_dungeon\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -697,7 +1855,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"small_dungeon\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 9,
+            "prefix": "\"small_dungeon\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -711,7 +1879,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"small_nether_dungeon\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 12,
+            "prefix": "\"small_nether_dungeon\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -725,7 +1903,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"spider_dungeon\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 15,
+            "prefix": "\"spider_dungeon\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -739,7 +1927,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"zombie_dungeon\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 18,
+            "prefix": "\"zombie_dungeon\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -753,7 +1951,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"separation\": 20"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 7,
+            "prefix": "\"separation\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -767,7 +1975,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"spacing\": 30"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"spacing\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -781,7 +1999,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"fortress\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 6,
+            "prefix": "\"fortress\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -795,7 +2023,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"separation\": 8"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 7,
+            "prefix": "\"separation\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -809,7 +2047,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"spacing\": 24"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"spacing\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -823,7 +2071,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"jungle_temple\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 6,
+            "prefix": "\"jungle_temple\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -837,7 +2095,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"frequency\": 0.003"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 6,
+            "prefix": "\"frequency\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -851,7 +2119,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"separation\": 0"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"separation\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -865,7 +2143,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"spacing\": 1"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 9,
+            "prefix": "\"spacing\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -879,7 +2167,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"mineshaft_acacia\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 6,
+            "prefix": "\"mineshaft_acacia\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -893,7 +2191,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"mineshaft_desert\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 7,
+            "prefix": "\"mineshaft_desert\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -907,7 +2215,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"mineshaft_dripstone\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"mineshaft_dripstone\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -921,7 +2239,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"mineshaft_ice\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 9,
+            "prefix": "\"mineshaft_ice\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -935,7 +2263,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"mineshaft_jungle\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 10,
+            "prefix": "\"mineshaft_jungle\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -949,7 +2287,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"mineshaft_lush\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 11,
+            "prefix": "\"mineshaft_lush\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -963,7 +2311,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"mineshaft_mesa\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 12,
+            "prefix": "\"mineshaft_mesa\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -977,7 +2335,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"mineshaft_mushroom\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 13,
+            "prefix": "\"mineshaft_mushroom\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -991,7 +2359,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"mineshaft_oak\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 14,
+            "prefix": "\"mineshaft_oak\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -1005,7 +2383,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"mineshaft_overgrown\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 15,
+            "prefix": "\"mineshaft_overgrown\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -1019,7 +2407,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"mineshaft_red_desert\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 16,
+            "prefix": "\"mineshaft_red_desert\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -1033,7 +2431,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"mineshaft_spruce\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 17,
+            "prefix": "\"mineshaft_spruce\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -1047,7 +2455,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"mineshaft_spruce_snowy\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 18,
+            "prefix": "\"mineshaft_spruce_snowy\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -1061,7 +2479,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"separation\": 20"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 7,
+            "prefix": "\"separation\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -1075,7 +2503,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"spacing\": 50"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"spacing\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -1089,7 +2527,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"ocean_monument\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 6,
+            "prefix": "\"ocean_monument\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -1103,7 +2551,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"separation\": 50"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 7,
+            "prefix": "\"separation\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -1117,7 +2575,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"spacing\": 85"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"spacing\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -1131,7 +2599,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"stronghold\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 6,
+            "prefix": "\"stronghold\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -1145,7 +2623,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"separation\": 10"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 7,
+            "prefix": "\"separation\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -1159,7 +2647,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"spacing\": 40"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 8,
+            "prefix": "\"spacing\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -1173,7 +2671,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"separation\": 8"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 12,
+            "prefix": "\"separation\": ",
+            "suffix": ","
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -1187,7 +2695,17 @@
       "interactions": [
         "Sparse Structures factor 2"
       ],
-      "evidence": "\"spacing\": 30"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 13,
+            "prefix": "\"spacing\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -1201,7 +2719,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"witch_circle\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 6,
+            "prefix": "\"witch_circle\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     },
     {
       "system": "YUNG structure systems",
@@ -1215,7 +2743,17 @@
       "interactions": [
         "paired Cristel Lib placement controls"
       ],
-      "evidence": "\"witch_hut\": true"
+      "evidence": {
+        "decoder": "json",
+        "observations": [
+          {
+            "line": 9,
+            "prefix": "\"witch_hut\": ",
+            "suffix": ""
+          }
+        ],
+        "effective_semantics": "same_as_generated"
+      }
     }
   ],
   "findings": [
@@ -1372,10 +2910,10 @@
       "files": [
         "config/accessories.json5",
         "config/aeroblender-common.toml",
+        "config/aether/sun_altar_whitelist.json",
         "config/aether-common.toml",
         "config/aether-server.toml",
         "config/aether-startup.toml",
-        "config/aether/sun_altar_whitelist.json",
         "config/aethersdelight-common.toml",
         "config/aiimprovements-common.toml",
         "config/almanac-common.toml",
