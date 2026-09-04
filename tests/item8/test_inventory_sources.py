@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, cast
 
 import pytest
 
-from mcpack_evidence.item8_inventory import resource_identity, structure_inputs
+from mcpack_evidence.item8_inventory import resource_identity, size_variant_groups, structure_inputs
 
 if TYPE_CHECKING:
     from pydantic import JsonValue
@@ -52,3 +52,21 @@ def test_preserves_competing_optional_and_unregistered_definitions() -> None:
 def test_missing_runtime_structure_is_not_silently_omitted() -> None:
     with pytest.raises(ValueError, match="lack packaged definitions"):
         _ = structure_inputs(("example:missing",), [])
+
+
+def test_size_grouping_requires_same_content_and_unambiguous_sources() -> None:
+    resources: list[JsonValue] = [
+        row(f"data/example/worldgen/structure/{name}.json", cast("JsonValue", document))
+        for name, document in (
+            ("small", {"size": 4, "start_pool": "example:town", "biomes": "#example:plains"}),
+            ("large", {"size": 6, "start_pool": "example:town", "biomes": "#example:plains"}),
+            ("other", {"size": 6, "start_pool": "example:town", "biomes": "#example:desert"}),
+        )
+    ]
+    registry = ("example:small", "example:large", "example:other")
+    groups = size_variant_groups(registry, resources)
+    assert len(groups) == 1
+    members = cast("list[dict[str, JsonValue]]", groups[0])
+    assert {str(member["structure_id"]) for member in members} == {"example:small", "example:large"}
+    resources.append(row("optional/data/example/worldgen/structure/small.json", {}))
+    assert size_variant_groups(registry, resources) == []
