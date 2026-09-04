@@ -49,6 +49,15 @@ class StageNotes(TypedDict):
     shutdown: str
 
 
+class SanitizationMetadata(TypedDict):
+    """Identity and cardinality of the evidence-safe credential redaction receipt."""
+
+    receipt: str
+    sha256: str
+    sanitized_file_count: int
+    redaction_count: int
+
+
 class Manifest(TypedDict):
     """The Item 6 frozen configuration manifest."""
 
@@ -67,11 +76,14 @@ class Manifest(TypedDict):
     file_count: int
     files: list[ManifestRow]
     stage_notes: StageNotes
+    sanitization: SanitizationMetadata
 
 
 _MANIFEST_ADAPTER: Final[TypeAdapter[Manifest]] = TypeAdapter(Manifest)
 _STAGES: Final = {"installation", "first_startup", "world_creation", "shutdown"}
 _CAPTURE_BOUNDARY: Final = "after_first_clean_shutdown"
+_SANITIZATION_RECEIPT: Final = "evidence/item-6/config-sanitization.json"
+_SHA256_HEX_LENGTH: Final = 64
 _EXPECTED_STAGE_COUNTS: Final = {
     "installation": 4,
     "first_startup": 223,
@@ -145,6 +157,20 @@ def _resolve_manifest_file(root: Path, relative: PurePosixPath) -> Path:
 
 def validate_manifest_contract(manifest: Manifest) -> None:
     """Reject a manifest that is not the deterministic Item 6 capture record."""
+    if manifest["schema_version"] != "item6-frozen-config-manifest-v2":
+        raise ManifestValidationError("unsupported manifest schema")
+    sanitization = manifest["sanitization"]
+    if sanitization["receipt"] != _SANITIZATION_RECEIPT:
+        raise ManifestValidationError(
+            "sanitization receipt must name the canonical repository path"
+        )
+    if sanitization["sanitized_file_count"] != 1 or sanitization["redaction_count"] != 1:
+        raise ManifestValidationError("sanitization receipt counts must each equal one")
+    receipt_digest = sanitization["sha256"]
+    if len(receipt_digest) != _SHA256_HEX_LENGTH or any(
+        character not in "0123456789abcdef" for character in receipt_digest
+    ):
+        raise ManifestValidationError("sanitization receipt digest must be a lowercase SHA-256")
     paths = [row["path"] for row in manifest["files"]]
     component_paths = [_parse_manifest_path(path).parts for path in paths]
     if component_paths != sorted(component_paths):

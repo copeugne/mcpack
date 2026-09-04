@@ -13,12 +13,17 @@ from pydantic import TypeAdapter, ValidationError
 
 from mcpack_evidence.item6_file_accounting import Classification, validate_file_accounting
 from mcpack_evidence.item6_manifest import (
+    Manifest,
     parse_manifest,
     validate_manifest_contract,
     validate_manifest_inventory,
 )
 from mcpack_evidence.item6_materialization import validate_materialization
 from mcpack_evidence.item6_provenance import validate_lifecycle, validate_repository_references
+from mcpack_evidence.item6_sanitization import (
+    SanitizationReceiptValidationError,
+    validate_sanitization_receipt,
+)
 from mcpack_evidence.item6_surface_validation import SettingSurface, validate_setting_surfaces
 
 if TYPE_CHECKING:
@@ -85,6 +90,7 @@ _AUDIT_ADAPTER: Final[TypeAdapter[Audit]] = TypeAdapter(Audit)
 _JSON_ADAPTER: Final[TypeAdapter[Scalar]] = TypeAdapter(Scalar)
 _TOML_ADAPTER: Final[TypeAdapter[dict[str, Scalar]]] = TypeAdapter(dict[str, Scalar])
 C2ME_KEY: Final = "vanillaWorldGenOptimizations.useEndBiomeCache"
+_CANONICAL_SANITIZATION_RECEIPT: Final = "evidence/item-6/config-sanitization.json"
 C2ME_OBSERVATIONS: Final = [
     {"line": 80, "prefix": "useEndBiomeCache = ", "suffix": ""},
     {"line": 78, "prefix": "# Set to false for the following reasons:", "suffix": ""},
@@ -139,7 +145,7 @@ def validate(  # noqa: C901, PLR0912, PLR0915
     """Fail unless the frozen tree, manifest, and audit agree exactly."""
     manifest = parse_manifest(manifest_path)
     audit = _AUDIT_ADAPTER.validate_json(audit_path.read_bytes(), strict=True, extra="forbid")
-    if manifest["schema_version"] != "item6-frozen-config-manifest-v1":
+    if manifest["schema_version"] != "item6-frozen-config-manifest-v2":
         raise _AuditValidationError("unsupported manifest schema")
     if audit["schema_version"] != "item6-config-audit-v2":
         raise _AuditValidationError("unsupported audit schema")
@@ -154,6 +160,7 @@ def validate(  # noqa: C901, PLR0912, PLR0915
     validate_lifecycle(manifest, references)
     validate_materialization(manifest, references)
     expected = validate_manifest_inventory(root, manifest)
+    _validate_sanitization_binding(manifest_path, root, manifest)
 
     covered: set[str] = set()
     declared_systems = {system["system"] for system in audit["systems"]}
@@ -258,3 +265,22 @@ def validate(  # noqa: C901, PLR0912, PLR0915
     if any(setting["non_default"] for setting in audit["settings"]):
         raise _AuditValidationError("untouched generated baseline unexpectedly reports tuning")
     validate_file_accounting(expected, covered, audit["file_accounting"])
+
+
+def _validate_sanitization_binding(manifest_path: Path, root: Path, manifest: Manifest) -> None:
+    """Bind manifest v2 metadata to the one canonical sanitized frozen target receipt."""
+    metadata = manifest["sanitization"]
+    if metadata["receipt"] != _CANONICAL_SANITIZATION_RECEIPT:
+        raise _AuditValidationError("sanitization receipt must name the canonical repository path")
+    receipt_path = manifest_path.parent / "config-sanitization.json"
+    try:
+        receipt = validate_sanitization_receipt(receipt_path, root)
+    except SanitizationReceiptValidationError as error:
+        raise _AuditValidationError("sanitization receipt binding is invalid") from error
+    if sha256(receipt_path) != metadata["sha256"]:
+        raise _AuditValidationError("sanitization receipt digest does not match manifest")
+    if (
+        receipt.sanitized_file_count != metadata["sanitized_file_count"]
+        or receipt.redaction_count != metadata["redaction_count"]
+    ):
+        raise _AuditValidationError("sanitization receipt counts do not match manifest")

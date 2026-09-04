@@ -128,9 +128,7 @@ def test_parse_manifest_rejects_unknown_fields(
     tmp_path: Path, anchor: str, unexpected_field: str
 ) -> None:
     # Given: a committed manifest with one syntactically valid unknown field.
-    mutated = MANIFEST.read_text(encoding="utf-8").replace(
-        anchor, f"{anchor}{unexpected_field}", 1
-    )
+    mutated = MANIFEST.read_text(encoding="utf-8").replace(anchor, f"{anchor}{unexpected_field}", 1)
     manifest_path = tmp_path / "manifest-with-unknown-field.json"
     manifest_path.write_text(mutated, encoding="utf-8")
 
@@ -199,6 +197,9 @@ def _committed_manifest() -> Manifest:
 def _write_bound_manifest(tmp_path: Path, manifest: Manifest) -> tuple[Path, Path]:
     manifest_path = tmp_path / "manifest.json"
     manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    shutil.copy2(
+        MANIFEST.parent / "config-sanitization.json", tmp_path / "config-sanitization.json"
+    )
     audit = json.loads(AUDIT.read_text(encoding="utf-8"))
     audit["configuration_identity"] = f"sha256:{sha256(manifest_path)}"
     audit_path = tmp_path / "audit.json"
