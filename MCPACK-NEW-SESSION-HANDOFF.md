@@ -8,7 +8,7 @@ This section supersedes the dated status and restart instructions below. Preserv
 
 ### Git and delivery state
 
-- A fresh fetch on 2026-09-04 found `origin/main` at `eb84d842a7b108863dcdd4c86435a875f8a0c575` with no newer remote commits. The active branch is `experiment/item-7-worldgen-audit`, based on that ref. Corrected r4 evidence is committed through `f5c558a` before this reconciliation increment.
+- A fresh fetch on 2026-09-04 found `origin/main` at `eb84d842a7b108863dcdd4c86435a875f8a0c575` with no newer remote commits. The active branch is `experiment/item-7-worldgen-audit`, based on that ref. Corrected r4 evidence and reconciled documentation are committed through validated revision `857164b4e5320d017828102268c0ad87e7c31924` before this validation record.
 - PR #11 merged Item 5 delivery as `398bf59b3a89669ec402026d52250c2b86e54047`.
 - PR #12 merged the initial Item 6 generated-default capture as `895ed1d999cd22ca511035e666ad8ac308ae63c1`.
 - PR #14 merged the completed Item 6 audit as `f38ea66ecc28911c33d525dcde26434853673ad3`. Its final Codex review completed against `96a914c8a457d2f23698cdaeba18c6ed899b56d1` and reported no major issues. The GitHub API currently exposes no thumbs-up reaction on that cycle, so do not claim that reaction; preserve this as a review-record discrepancy unless later evidence resolves it.
@@ -34,14 +34,14 @@ This section supersedes the dated status and restart instructions below. Preserv
 | 10 | `BLOCKED` by Items 7 through 9 | Regenerate and preserve predeclared density evidence only after the preceding gates pass. |
 | 11 | `BLOCKED` | Do not implement, run, repair, or lint Item 11 before the final Items 2 through 10 audit passes. It also requires at least two blind human operators. |
 
-The Item 7 completion command returns `PASS` and records 125 exact artifacts in `evidence/item-7/completion.json`, whose SHA-256 is `33b3dffb1f99ea5dca62e03818ae9886d2abed8ecacf2ec432cbd32645c1ea14`. The corrected worktree passes 177 Item 7 tests and 858 repository tests. Scoped formatting, lint, type, and shell checks pass. Both required visual lanes passed against one read-only r4 restore, and the repository-bound verifier downloaded all four r4 assets twice and matched every committed size and SHA-256. Clean-export validation at the final documentation revision, fresh exact-SHA review, GitHub Codex review, merge, and delivered-ref verification remain.
+The Item 7 completion command returns `PASS` and records 125 exact artifacts in `evidence/item-7/completion.json`, whose SHA-256 is `33b3dffb1f99ea5dca62e03818ae9886d2abed8ecacf2ec432cbd32645c1ea14`. The corrected worktree passes 177 Item 7 tests and 858 repository tests. A clean Git export of `857164b4e5320d017828102268c0ad87e7c31924` passes all 177 Item 7 tests, scoped formatting, lint, type, and shell checks, and byte-identical inventory and completion rebuilds. Both required visual lanes passed against one read-only r4 restore, and the repository-bound verifier downloaded all four r4 assets twice and matched every committed size and SHA-256. Fresh exact-SHA review, GitHub Codex review, merge, and delivered-ref verification remain.
 
 ### Exact continuation point
 
 1. Treat `evidence/item-7/completion.json` and `docs/items/Item-7-Baseline-Worldgen-Audit.md` as the current acceptance summary. The former zero-mod report is superseded historical context.
 2. Preserve the measured semantic nondeterminism. Run A and Run B differ outside the central End; input drift and comparator artifacts were refuted, but the causal provider remains `UNKNOWN`. Do not tune the frozen Item 6 configuration inside Item 7.
 3. Preserve the confirmed Better Caves generation failure, the unresolved YUNG's Bridges and YUNG's Extras identifiers, and the 1,166 unresolved warning signatures as downstream work. Do not infer compatibility from server readiness.
-4. Run clean-export validation, the required exact-SHA independent reviews, and the runtime debugging audit. Store all committed review evidence under `evidence/item-7/review/` and record the reviewed full SHA with every verdict.
+4. Run the required exact-SHA independent reviews and runtime debugging audit. Store all committed review evidence under `evidence/item-7/review/` and record the reviewed full SHA with every verdict.
 5. Push `experiment/item-7-worldgen-audit` to existing PR #15, request `@codex review`, address every valid finding in separate review-fix commits, and repeat until a completed thumbs-up cycle has no unresolved valid findings.
 6. Merge without rewriting the atomic history, fetch, and verify that `origin/main` contains the accepted Item 7 commits. Only then create the Item 8 branch from the verified merged ref.
 7. Item 8 must combine verified runtime registries, packaged data, configuration evidence, logs, and generated-world observations. It must resolve canonical families without double-counting aliases, pieces, pools, or templates, and it must carry Item 7 run identity and unknowns forward.
