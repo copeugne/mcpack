@@ -31,6 +31,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         row
         for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
         if str(row["family_id"]).startswith(namespace)
+        and len(cast("list[str]", row["structure_ids"])) == 1
     ]
     registry = read_registry(
         root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
@@ -39,7 +40,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
     assert len(members) == len(set(members))
     expected = {key for key in registry if key.startswith(namespace)}
     if namespace == "explorify:":
-        # These biome variants require a separate grouping decision.
+        # Multi-entry biome groups are covered by the Explorify variant test.
         expected = {
             key
             for key in expected
@@ -110,6 +111,106 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
             if key in definition
         }
         for path, digest in cast("dict[str, str]", row["evidence"]).items():
+            assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+
+
+def test_explorify_variants_bind_definitions_templates_and_complete_namespace() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, JsonValue]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    groups = {
+        str(row["family_id"]): row
+        for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
+        if str(row["family_id"]).startswith("explorify:")
+    }
+    registry = read_registry(
+        root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )
+    members = [
+        member for row in groups.values() for member in cast("list[str]", row["structure_ids"])
+    ]
+    assert len(members) == len(set(members)) == 23
+    assert set(members) == {key for key in registry if key.startswith("explorify:")}
+    catalog = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    definitions: dict[str, dict[str, JsonValue]] = {}
+    for resource in cast("list[dict[str, JsonValue]]", catalog["resources"]):
+        identity = resource_identity(str(resource["path"]), "worldgen/structure")
+        if identity is not None and identity[0] in members:
+            assert identity[1] == ""
+            assert identity[0] not in definitions
+            definitions[identity[0]] = cast("dict[str, JsonValue]", resource["document"])
+    traces = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
+    contents = cast("dict[str, dict[str, JsonValue]]", traces["template_contents"])
+    variants = {
+        "guide_post": (["guide_post_cold", "guide_post_warm"], [11, 25, 11], "whole"),
+        "supply_cache": (
+            [
+                "supply_cache/" + key
+                for key in ("birch", "dark", "desert", "forest", "jungle", "mangrove", "taiga")
+            ],
+            [3, 4, 4],
+            "01",
+        ),
+        "watchtower": (
+            ["watchtower/" + key for key in ("plains", "savanna", "taiga")],
+            [9, 25, 9],
+            "main",
+        ),
+    }
+    for family, (names, size, suffix) in variants.items():
+        group = groups["explorify:" + family]
+        assert group["structure_ids"] == ["explorify:" + name for name in names]
+        for member in cast("list[str]", group["structure_ids"]):
+            definition = definitions[member]
+            assert group["common_generation_definition"] == {
+                key: value
+                for key, value in definition.items()
+                if key not in ("biomes", "start_pool")
+            }
+            trace = structures[member]
+            assert (
+                cast("dict[str, JsonValue]", group["start_pools"])[member]
+                == definition["start_pool"]
+                == trace["start_pool"]
+            )
+            assert (
+                cast("dict[str, JsonValue]", group["missing_components"])[member]
+                == trace["missing"]
+                == []
+            )
+            assert trace["templates"] == [str(definition["start_pool"]) + "/" + suffix]
+            content = contents[cast("list[str]", trace["templates"])[0]]
+            assert content["template_size_xyz"] == size
+            assert content["authored_entities"] == content["spawner_blocks"] == []
+            loot = [
+                row["value"]
+                for row in cast("list[dict[str, JsonValue]]", content["loot_references"])
+            ]
+            if family == "guide_post":
+                assert loot == []
+            elif family == "supply_cache":
+                assert loot == ["explorify:chest/supply_cache"] * 2
+            else:
+                biome = member.rsplit("/", 1)[1]
+                assert loot == [f"minecraft:chests/village/village_{biome}_house"]
+        for path, digest in cast("dict[str, str]", group["evidence"]).items():
             assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
 
 
