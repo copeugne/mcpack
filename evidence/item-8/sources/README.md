@@ -201,6 +201,8 @@ Size: 157,969 bytes. Source `dc96708` traverses declared direct, random and
 random-group alias targets with positive weights. It preserves original alias
 definitions and records resolved alias IDs separately from actual pools.
 The successful pilot and committed-source reproduction were byte-identical.
+The command below reproduces this historical artifact using source `dc96708`.
+Current source adds the content index described next.
 
 ```sh
 uv run -m tools.trace_item8_structure_pools --output evidence/raw/item8/pool-traces-aliases-reproduction.json.gz
@@ -212,6 +214,44 @@ possible-content inventory, not a sampled assignment or a claim that correlated
 alternatives occur together. Unknown alias shapes fail explicitly. Other missing
 references and all 69 custom-generation cases remain unresolved. This correction
 does not establish a canonical family count or final Item 8 acceptance.
+
+### Trace with packaged content
+
+`pool-traces-content.json.gz` extends the alias-aware trace with a shared
+`template_contents` index for its reachable selected templates. It retains
+the same 818 traced structure IDs and 69 custom-generation cases. Source:
+`333f1d4`, using the content indexer in `2d62944`. SHA-256:
+`facb6f7bbafb6836e7eaa694535b975c2ee2deab1e36ab85930f1c11c7a471c8`.
+Size: 734,481 bytes. The committed-source output reproduced the pilot exactly.
+
+```sh
+uv run -m tools.trace_item8_structure_pools --output evidence/raw/item8/pool-traces-content-reproduction1.json.gz
+cmp evidence/item-8/sources/pool-traces-content.json.gz evidence/raw/item8/pool-traces-content-reproduction1.json.gz
+```
+
+Each template content record binds its archive, member path and hash. It projects
+the original XYZ template dimensions, authored entity IDs including passengers,
+ordinary/trial/dread-spawner block NBT, structure-block and spawn-box markers,
+and loot-reference values with exact JSON-pointer paths. Spawner NBT remains
+intact, including spawn alternatives and trial reward weights. Trial-spawned
+mobs are not falsely listed as directly authored template entities. Six focused
+tests and scoped Ruff/basedpyright checks passed.
+
+The initial content probe rejected an empty authored entity compound in
+`MoogsVoyagerStructures-1.21-5.0.11.jar`, member
+`data/mvs/structure/mineshaft/stable.nbt`, member SHA-256
+`05ea9b8b071c6cad0c37ec407a2f727be565e4c690a5f29d043b4b16389a352d`,
+at `/entities/7/nbt`. The indexer now preserves missing IDs in explicit
+`unresolved_entities` rows. It does not invent an entity or discard the failure.
+The exact source compound remains in the previously committed template catalog.
+
+This is an extension of the existing trace for the required mob, spawner and
+loot attributes, not an additional extraction or evidence framework. These
+contents are packaged possibilities before data fixing, processor effects and
+custom generation. An empty list does not prove a structure has no enemies or
+loot; generator code, natural spawning and loot injections still need inspection.
+Template dimensions do not represent assembled family dimensions. Use this
+artifact for current content attribution while preserving those limitations.
 
 ## Generated-world piece bounds
 
