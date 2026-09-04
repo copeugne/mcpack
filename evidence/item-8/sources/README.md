@@ -114,10 +114,8 @@ SHA-256: `d09325da6389180f95f6687f8479374b35b54a8cea81badca6d9540734abe920`.
 Size: 157,886 bytes. Implementation: `f9fb51f`, using the selected-resource
 rules in `b135beb` and tracing implementation in `9fae9cf`.
 
-```sh
-uv run -m tools.trace_item8_structure_pools --output evidence/raw/item8/pool-traces-reproduction.json.gz
-cmp evidence/item-8/sources/pool-traces.json.gz evidence/raw/item8/pool-traces-reproduction.json.gz
-```
+This first trace is preserved as a superseded partial result. Its reproduction
+requires source `f9fb51f`. Use the alias-aware result below for current work.
 
 The committed-source run reproduced the successful pilot byte for byte. An
 earlier attempt stopped before writing output because the frozen Lithostitched
@@ -132,6 +130,26 @@ proof of assembly feasibility, generated contents, probabilities, or footprint.
 Optional-pack exclusions remain unresolved where activation has not been proved.
 Custom generation, dynamic injection, processors, aliases and generated-world
 observations still need to be incorporated before assigning family attributes.
+
+### Alias-aware trace
+
+`pool-traces-aliases.json.gz` supersedes the first trace for inventory work.
+SHA-256: `a32e64a928d972b078519add2c3117be1c4cfd7f494f44f1cfcad34de6a6e8b9`.
+Size: 157,969 bytes. Source `dc96708` traverses declared direct, random and
+random-group alias targets with positive weights. It preserves original alias
+definitions and records resolved alias IDs separately from actual pools.
+The successful pilot and committed-source reproduction were byte-identical.
+
+```sh
+uv run -m tools.trace_item8_structure_pools --output evidence/raw/item8/pool-traces-aliases-reproduction.json.gz
+cmp evidence/item-8/sources/pool-traces-aliases.json.gz evidence/raw/item8/pool-traces-aliases-reproduction.json.gz
+```
+
+Trial Chambers now includes its declared spawner alternatives. The union is a
+possible-content inventory, not a sampled assignment or a claim that correlated
+alternatives occur together. Unknown alias shapes fail explicitly. Other missing
+references and all 69 custom-generation cases remain unresolved. This correction
+does not establish a canonical family count or final Item 8 acceptance.
 
 ## Generated-world piece bounds
 
