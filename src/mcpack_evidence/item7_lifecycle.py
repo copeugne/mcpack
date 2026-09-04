@@ -13,7 +13,8 @@ from typing import IO, TYPE_CHECKING, ClassVar, Final, Literal, final
 
 from pydantic import BaseModel, ConfigDict
 
-from mcpack_evidence.item7_output_sequence import OutputLine, OutputSequence, read_output
+from mcpack_evidence.item7_console import FlushCorrelation, send_correlated_flush
+from mcpack_evidence.item7_output_sequence import OutputSequence, read_output
 from mcpack_evidence.item7_runtime import Item7RuntimeError, WorldgenRequest
 from mcpack_evidence.item7_selections import WorldgenSelection  # noqa: TC001
 
@@ -52,13 +53,12 @@ class _LifecycleState:
     __slots__ = (
         "commands",
         "completed",
+        "flush_correlation",
         "flushed",
         "killed",
         "ready",
         "rejection",
         "request",
-        "save_confirmation_after",
-        "save_started",
         "started",
         "stdin",
     )
@@ -71,8 +71,7 @@ class _LifecycleState:
     flushed: bool
     killed: bool
     rejection: str | None
-    save_confirmation_after: int | None
-    save_started: bool
+    flush_correlation: FlushCorrelation | None
 
     def __init__(self, request: WorldgenRequest, stdin: IO[str]) -> None:
         self.request = request
@@ -84,8 +83,7 @@ class _LifecycleState:
         self.flushed = False
         self.killed = False
         self.rejection = None
-        self.save_confirmation_after = None
-        self.save_started = False
+        self.flush_correlation = None
 
 
 def run_lifecycle(request: WorldgenRequest, java_executable: Path) -> LifecycleReceipt:
@@ -179,13 +177,12 @@ def _drive_lifecycle(state: _LifecycleState, lines: OutputSequence, log: IO[str]
         if output is None:
             state.rejection = "server exited before lifecycle completion"
             return
-        _ = log.write(output.text)
+        _ = log.write(output)
         log.flush()
-        _handle_line(state, output, lines)
+        _handle_line(state, output)
 
 
-def _handle_line(state: _LifecycleState, output: OutputLine, lines: OutputSequence) -> None:
-    line = output.text
+def _handle_line(state: _LifecycleState, line: str) -> None:
     if not state.ready and "Done (" in line and _READY_MARKER in line:
         state.ready = True
         state.rejection = _send_selection(state, state.request.selections[0])
@@ -202,20 +199,11 @@ def _handle_line(state: _LifecycleState, output: OutputLine, lines: OutputSequen
                 next_selection = state.request.selections[len(state.completed)]
                 state.rejection = _send_selection(state, next_selection)
             else:
-                state.save_confirmation_after = lines.checkpoint_and_send(
-                    lambda: _send(state, "save-all flush")
-                )
-                if state.save_confirmation_after is None:
+                state.flush_correlation = send_correlated_flush(state.stdin, state.commands)
+                if state.flush_correlation is None:
                     state.rejection = "server console pipe failed"
             return
-    if (
-        state.save_confirmation_after is not None
-        and output.sequence > state.save_confirmation_after
-        and "Saving the game" in line
-    ):
-        state.save_started = True
-        return
-    if state.save_started and "Saved the game" in line:
+    if state.flush_correlation is not None and state.flush_correlation.observe(line):
         state.flushed = True
         if not _send(state, "stop"):
             state.rejection = "server console pipe failed"

@@ -45,6 +45,14 @@ def _digest(content: bytes) -> str:
     return hashlib.sha256(content).hexdigest()
 
 
+def fixed_token(value: str) -> Callable[[int], str]:
+    def token_hex(length: int) -> str:
+        del length
+        return value
+
+    return token_hex
+
+
 def record_pids(killed: list[int]) -> Callable[[int, int], None]:
     def record(pid: int, signal_number: int) -> None:
         del signal_number
@@ -160,13 +168,14 @@ class FakeProcess:
         lines: tuple[str, ...],
         stdin: io.StringIO | None = None,
         responses: dict[str, tuple[str, ...]] | None = None,
+        delayed_lines: tuple[str, ...] = (),
     ) -> None:
         self.pid: int = 43210
         if responses is None:
             self.stdin = stdin or RecordingPipe()
             self.stdout: io.StringIO | CommandOutput = io.StringIO("".join(lines))
         else:
-            self.stdout = CommandOutput(lines, responses)
+            self.stdout = CommandOutput(lines, responses, delayed_lines)
             self.stdin = CommandPipe(self.stdout)
         self._return_code: int | None = None
 
@@ -203,9 +212,15 @@ class BrokenPipe(RecordingPipe):
 
 @final
 class CommandOutput:
-    def __init__(self, lines: tuple[str, ...], responses: dict[str, tuple[str, ...]]) -> None:
+    def __init__(
+        self,
+        lines: tuple[str, ...],
+        responses: dict[str, tuple[str, ...]],
+        delayed_lines: tuple[str, ...],
+    ) -> None:
         self._lines: queue.Queue[str | None] = queue.Queue()
         self._responses = responses
+        self._delayed_lines = delayed_lines
         for line in lines:
             self._lines.put(line)
 
@@ -217,6 +232,9 @@ class CommandOutput:
         return "" if line is None else line
 
     def respond(self, command: str) -> None:
+        for line in self._delayed_lines:
+            self._lines.put(line)
+        self._delayed_lines = ()
         for line in self._responses.get(command, ()):
             self._lines.put(line)
         if command == "stop":

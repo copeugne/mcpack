@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import secrets
 from pathlib import Path
 from signal import SIGKILL
 
@@ -14,6 +15,7 @@ from tests.item7.runtime_support import (
     PipeLessProcess,
     SynchronousThread,
     fake_launch,
+    fixed_token,
     pipe_less_launch,
     record_pid_signals,
     record_pids,
@@ -28,6 +30,7 @@ def _discard_kill(pid: int, signal_number: int) -> None:
 def test_lifecycle_sends_commands_only_after_matching_markers(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
+    monkeypatch.setattr(secrets, "token_hex", fixed_token("fixed"))
     request = runtime_request(tmp_path, monkeypatch)
     _ = request.target.mkdir()
     _ = (request.target / "logs").mkdir()
@@ -35,9 +38,15 @@ def test_lifecycle_sends_commands_only_after_matching_markers(
     process = FakeProcess(
         READY_LINES[:-1],
         responses={
+            "say mcpack-item7-flush-fixed-before": (
+                "[Server thread/INFO]: [Server] mcpack-item7-flush-fixed-before\n",
+            ),
             "save-all flush": (
                 "[Server thread/INFO]: Saving the game (this may take a moment!)\n",
                 "[Server thread/INFO]: Saved the game\n",
+            ),
+            "say mcpack-item7-flush-fixed-after": (
+                "[Server thread/INFO]: [Server] mcpack-item7-flush-fixed-after\n",
             ),
             "stop": ("[Server thread/INFO]: Stopped server\n",),
         },
@@ -70,7 +79,9 @@ def test_lifecycle_sends_commands_only_after_matching_markers(
         "chunky center 1536 0",
         "chunky radius 4c",
         "chunky start",
+        "say mcpack-item7-flush-fixed-before",
         "save-all flush",
+        "say mcpack-item7-flush-fixed-after",
         "stop",
     ]
     assert launch_arguments == [True]
@@ -85,6 +96,51 @@ def test_lifecycle_sends_commands_only_after_matching_markers(
         "end-central",
         "end-outer",
     )
+
+
+def test_lifecycle_waits_for_unique_marker_before_accepting_delayed_save_lines(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(secrets, "token_hex", fixed_token("delayed"))
+    request = runtime_request(tmp_path, monkeypatch)
+    _ = request.target.mkdir()
+    _ = (request.target / "logs").mkdir()
+    _ = (request.target / "logs/latest.log").write_text("warnings\n", encoding="utf-8")
+    process = FakeProcess(
+        READY_LINES[:-1],
+        responses={
+            "say mcpack-item7-flush-delayed-before": (
+                "[Server thread/INFO]: [Server] mcpack-item7-flush-delayed-before\n",
+            ),
+            "save-all flush": (
+                "[Server thread/INFO]: Saving the game (this may take a moment!)\n",
+                "[Server thread/INFO]: Saved the game\n",
+            ),
+            "say mcpack-item7-flush-delayed-after": (
+                "[Server thread/INFO]: [Server] mcpack-item7-flush-delayed-after\n",
+            ),
+            "stop": ("[Server thread/INFO]: Stopped server\n",),
+        },
+        delayed_lines=(
+            "[Server thread/INFO]: Saving the game (this may take a moment!)\n",
+            "[Server thread/INFO]: Saved the game\n",
+        ),
+    )
+    monkeypatch.setattr("mcpack_evidence.item7_lifecycle.subprocess.Popen", fake_launch(process))
+
+    receipt = item7_lifecycle.run_lifecycle(request, request.java_home / "bin/java")
+
+    assert receipt.clean_stop is True
+    assert process.stdin.getvalue().splitlines()[-4:] == [
+        "say mcpack-item7-flush-delayed-before",
+        "save-all flush",
+        "say mcpack-item7-flush-delayed-after",
+        "stop",
+    ]
+    lines = request.log_path.read_text(encoding="utf-8").splitlines()
+    marker = next(index for index, line in enumerate(lines) if "flush-delayed-before" in line)
+    assert sum("Saving the game" in line for line in lines[:marker]) == 1
+    assert sum("Saving the game" in line for line in lines[marker + 1 :]) == 1
 
 
 def test_lifecycle_kills_process_group_on_timeout(
@@ -143,7 +199,7 @@ def test_lifecycle_rejects_save_confirmation_queued_before_flush_command(
     # Then: the stale confirmation cannot complete the requested flush.
     assert receipt.save_all_flush is False
     assert receipt.clean_stop is False
-    assert receipt.commands[-1] == "save-all flush"
+    assert "save-all flush" in receipt.commands
 
 
 def test_lifecycle_kills_process_group_on_console_pipe_failure(

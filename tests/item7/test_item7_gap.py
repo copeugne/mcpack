@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import secrets
 from pathlib import Path
 
 import pytest
@@ -12,6 +13,7 @@ from tests.item7.runtime_support import (
     FakeProcess,
     SynchronousThread,
     fake_launch,
+    fixed_token,
     record_pids,
     runtime_request,
 )
@@ -34,6 +36,7 @@ def _parse_rejected(line: str, target: item7_gap.GapTarget) -> str:
 def test_gap_targets_are_sorted_and_locations_drive_exact_chunky_commands(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
+    monkeypatch.setattr(secrets, "token_hex", fixed_token("gap"))
     request = _request(tmp_path, monkeypatch)
     request.runtime.target.mkdir()
     logs = request.runtime.target / "logs"
@@ -53,9 +56,15 @@ def test_gap_targets_are_sorted_and_locations_drive_exact_chunky_commands(
     process = FakeProcess(
         lines,
         responses={
+            "say mcpack-item7-flush-gap-before": (
+                "[Server thread/INFO]: [Server] mcpack-item7-flush-gap-before\n",
+            ),
             "save-all flush": (
                 "[Server thread/INFO]: Saving the game (this may take a moment!)\n",
                 "[Server thread/INFO]: Saved the game\n",
+            ),
+            "say mcpack-item7-flush-gap-after": (
+                "[Server thread/INFO]: [Server] mcpack-item7-flush-gap-after\n",
             ),
             "stop": ("[Server thread/INFO]: Stopped server\n",),
         },
@@ -90,10 +99,64 @@ def test_gap_targets_are_sorted_and_locations_drive_exact_chunky_commands(
         "chunky center -192 -224",
         "chunky radius 4c",
         "chunky start",
+        "say mcpack-item7-flush-gap-before",
         "save-all flush",
+        "say mcpack-item7-flush-gap-after",
         "stop",
     ]
     assert Path(receipt.minecraft_log or "").read_text(encoding="utf-8") == "authoritative log\n"
+
+
+def test_gap_waits_for_unique_marker_before_accepting_delayed_save_lines(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(secrets, "token_hex", fixed_token("gap-delayed"))
+    request = _request(tmp_path, monkeypatch)
+    _ = request.runtime.target.mkdir()
+    _ = (request.runtime.target / "logs").mkdir()
+    _ = (request.runtime.target / "logs/latest.log").write_text("warnings\n", encoding="utf-8")
+    lines = (
+        '[Server thread/INFO]: Done (1.0s)! For help, type "help"\n',
+        _located("betterdeserttemples:desert_temple", 32, -48),
+        _located("betterstrongholds:stronghold", -64, 96),
+        _located("betterwitchhuts:witch_hut", 128, 160),
+        _located("integrated_stronghold:stronghold", -192, -224),
+        *(
+            "[Chunky] Task finished for minecraft:overworld. Processed: 81 chunks (100.00%)\n"
+            for _ in item7_gap.GAP_TARGETS
+        ),
+    )
+    process = FakeProcess(
+        lines,
+        responses={
+            "say mcpack-item7-flush-gap-delayed-before": (
+                "[Server thread/INFO]: [Server] mcpack-item7-flush-gap-delayed-before\n",
+            ),
+            "save-all flush": (
+                "[Server thread/INFO]: Saving the game (this may take a moment!)\n",
+                "[Server thread/INFO]: Saved the game\n",
+            ),
+            "say mcpack-item7-flush-gap-delayed-after": (
+                "[Server thread/INFO]: [Server] mcpack-item7-flush-gap-delayed-after\n",
+            ),
+            "stop": ("[Server thread/INFO]: Stopped server\n",),
+        },
+        delayed_lines=(
+            "[Server thread/INFO]: Saving the game (this may take a moment!)\n",
+            "[Server thread/INFO]: Saved the game\n",
+        ),
+    )
+    monkeypatch.setattr("mcpack_evidence.item7_gap.subprocess.Popen", fake_launch(process))
+
+    receipt = item7_gap.run_gap_lifecycle(request, request.runtime.java_home / "bin/java")
+
+    assert receipt.clean_stop is True
+    assert process.stdin.getvalue().splitlines()[-4:] == [
+        "say mcpack-item7-flush-gap-delayed-before",
+        "save-all flush",
+        "say mcpack-item7-flush-gap-delayed-after",
+        "stop",
+    ]
 
 
 @pytest.mark.parametrize(
@@ -166,7 +229,7 @@ def test_gap_lifecycle_rejects_save_confirmation_queued_before_flush_command(
     # Then: the stale confirmation cannot complete the requested flush.
     assert receipt.save_all_flush is False
     assert receipt.clean_stop is False
-    assert receipt.commands[-1] == "save-all flush"
+    assert "save-all flush" in receipt.commands
 
 
 def test_gap_cli_preserves_atomic_rejected_receipt_without_java(tmp_path: Path) -> None:

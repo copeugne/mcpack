@@ -1,53 +1,28 @@
-"""Sequence console output around lifecycle command checkpoints."""
+"""Transfer lifecycle console output from the reader thread."""
 
 from __future__ import annotations
 
 import queue
-import threading
-from dataclasses import dataclass
-from typing import IO, TYPE_CHECKING, final
-
-if TYPE_CHECKING:
-    from collections.abc import Callable
-
-
-@dataclass(frozen=True, slots=True)
-class OutputLine:
-    """One console line with its reader-assigned sequence number."""
-
-    sequence: int
-    text: str
+from typing import IO, final
 
 
 @final
 class OutputSequence:
-    """Serialize reader publication and command checkpoints with one lock."""
+    """Transfer complete console lines from the reader to the lifecycle."""
 
-    __slots__ = ("_lines", "_lock", "_sequence")
+    __slots__ = ("_lines",)
 
     def __init__(self) -> None:
         """Create an empty synchronized output sequence."""
-        self._lines: queue.Queue[OutputLine | None] = queue.Queue()
-        self._lock = threading.Lock()
-        self._sequence = 0
+        self._lines: queue.Queue[str | None] = queue.Queue()
 
-    def checkpoint_and_send(self, send: Callable[[], bool]) -> int | None:
-        """Send a command and return the sequence boundary it must follow."""
-        with self._lock:
-            checkpoint = self._sequence
-            if not send():
-                return None
-            return checkpoint
-
-    def get(self, timeout: float) -> OutputLine | None:
+    def get(self, timeout: float) -> str | None:
         """Return the next reader-published output line."""
         return self._lines.get(timeout=timeout)
 
     def publish(self, text: str) -> None:
-        """Add a console line after assigning its monotonic sequence number."""
-        with self._lock:
-            self._sequence += 1
-            self._lines.put(OutputLine(sequence=self._sequence, text=text))
+        """Add one complete console line."""
+        self._lines.put(text)
 
     def finish(self) -> None:
         """Mark the end of console output."""

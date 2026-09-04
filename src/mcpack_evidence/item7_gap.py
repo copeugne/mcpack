@@ -14,9 +14,9 @@ from typing import IO, TYPE_CHECKING, ClassVar, Final, Literal, final
 
 from pydantic import BaseModel, ConfigDict, model_validator
 
-from mcpack_evidence.item7_console import send_command
+from mcpack_evidence.item7_console import FlushCorrelation, send_command, send_correlated_flush
 from mcpack_evidence.item7_gap_markers import parse_completion
-from mcpack_evidence.item7_output_sequence import OutputLine, OutputSequence, read_output
+from mcpack_evidence.item7_output_sequence import OutputSequence, read_output
 from mcpack_evidence.item7_runtime import Item7RuntimeError, WorldgenRequest
 
 if TYPE_CHECKING:
@@ -86,8 +86,7 @@ class _State:
         self.located: list[LocatedTarget] = []
         self.ready = self.flushed = self.killed = False
         self.rejection: str | None = None
-        self.save_confirmation_after: int | None = None
-        self.save_started = False
+        self.flush_correlation: FlushCorrelation | None = None
         self.started = time.monotonic()
 
 
@@ -178,15 +177,12 @@ def _drive(
         if output is None:
             state.rejection = "server exited before gap target completion"
             return
-        _ = log.write(output.text)
+        _ = log.write(output)
         log.flush()
-        _observe(stdin, output, lines, state)
+        _observe(stdin, output, state)
 
 
-def _observe(  # noqa: C901
-    stdin: IO[str], output: OutputLine, lines: OutputSequence, state: _State
-) -> None:
-    line = output.text
+def _observe(stdin: IO[str], line: str, state: _State) -> None:
     if not state.ready and "Done (" in line and _READY in line:
         state.ready = True
         state.rejection = send_command(stdin, state.commands, _locate_command(GAP_TARGETS[0]))
@@ -221,20 +217,11 @@ def _observe(  # noqa: C901
                 stdin, state.commands, state.located[len(state.completed)]
             )
         else:
-            state.save_confirmation_after = lines.checkpoint_and_send(
-                lambda: send_command(stdin, state.commands, "save-all flush") is None
-            )
-            if state.save_confirmation_after is None:
+            state.flush_correlation = send_correlated_flush(stdin, state.commands)
+            if state.flush_correlation is None:
                 state.rejection = "server console pipe failed"
         return
-    if (
-        state.save_confirmation_after is not None
-        and output.sequence > state.save_confirmation_after
-        and "Saving the game" in line
-    ):
-        state.save_started = True
-        return
-    if state.save_started and "Saved the game" in line:
+    if state.flush_correlation is not None and state.flush_correlation.observe(line):
         state.flushed = True
         state.rejection = send_command(stdin, state.commands, "stop")
 

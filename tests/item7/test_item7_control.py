@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import secrets
 from pathlib import Path
 
 import pytest
@@ -14,6 +15,7 @@ from tests.item7.runtime_support import (
     FakeProcess,
     SynchronousThread,
     fake_launch,
+    fixed_token,
     record_pids,
     runtime_request,
 )
@@ -59,6 +61,7 @@ def test_control_preflight_rejects_nonordinary_role(
 def test_control_lifecycle_waits_for_success_then_settles_flushes_and_stops(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
+    monkeypatch.setattr(secrets, "token_hex", fixed_token("control"))
     request = _request(tmp_path, monkeypatch)
     request.runtime.target.mkdir()
     (request.runtime.target / "logs").mkdir()
@@ -72,9 +75,15 @@ def test_control_lifecycle_waits_for_success_then_settles_flushes_and_stops(
             ),
         ),
         responses={
+            "say mcpack-item7-flush-control-before": (
+                "[Server thread/INFO]: [Server] mcpack-item7-flush-control-before\n",
+            ),
             "save-all flush": (
                 "[Server thread/INFO]: Saving the game (this may take a moment!)\n",
                 "[Server thread/INFO]: Saved the game\n",
+            ),
+            "say mcpack-item7-flush-control-after": (
+                "[Server thread/INFO]: [Server] mcpack-item7-flush-control-after\n",
             ),
             "stop": ("[Server thread/INFO]: Stopped server\n",),
         },
@@ -94,7 +103,9 @@ def test_control_lifecycle_waits_for_success_then_settles_flushes_and_stops(
 
     assert process.stdin.getvalue().splitlines() == [
         "forceload add -64 -64 64 64",
+        "say mcpack-item7-flush-control-before",
         "save-all flush",
+        "say mcpack-item7-flush-control-after",
         "stop",
     ]
     assert sessions == [True]
@@ -104,6 +115,53 @@ def test_control_lifecycle_waits_for_success_then_settles_flushes_and_stops(
     assert receipt.minecraft_log is not None
     assert Path(receipt.minecraft_log).read_text() == "raw warning\n"
     assert request.runtime.log_path.read_text().endswith("Stopped server\n")
+
+
+def test_control_waits_for_unique_marker_before_accepting_delayed_save_lines(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(secrets, "token_hex", fixed_token("control-delayed"))
+    request = _request(tmp_path, monkeypatch, settle_seconds=0)
+    _ = request.runtime.target.mkdir()
+    _ = (request.runtime.target / "logs").mkdir()
+    _ = (request.runtime.target / "logs/latest.log").write_text("warnings\n", encoding="utf-8")
+    process = FakeProcess(
+        (
+            '[Server thread/INFO]: Done (1.0s)! For help, type "help"\n',
+            (
+                "[Server thread/INFO]: Marked 81 chunks in Overworld "
+                "from [-4, -4] to [4, 4] to be force loaded\n"
+            ),
+        ),
+        responses={
+            "say mcpack-item7-flush-control-delayed-before": (
+                "[Server thread/INFO]: [Server] mcpack-item7-flush-control-delayed-before\n",
+            ),
+            "save-all flush": (
+                "[Server thread/INFO]: Saving the game (this may take a moment!)\n",
+                "[Server thread/INFO]: Saved the game\n",
+            ),
+            "say mcpack-item7-flush-control-delayed-after": (
+                "[Server thread/INFO]: [Server] mcpack-item7-flush-control-delayed-after\n",
+            ),
+            "stop": ("[Server thread/INFO]: Stopped server\n",),
+        },
+        delayed_lines=(
+            "[Server thread/INFO]: Saving the game (this may take a moment!)\n",
+            "[Server thread/INFO]: Saved the game\n",
+        ),
+    )
+    monkeypatch.setattr("mcpack_evidence.item7_control.subprocess.Popen", fake_launch(process))
+
+    receipt = item7_control.run_control_lifecycle(request, request.runtime.java_home / "bin/java")
+
+    assert receipt.clean_stop is True
+    assert process.stdin.getvalue().splitlines()[-4:] == [
+        "say mcpack-item7-flush-control-delayed-before",
+        "save-all flush",
+        "say mcpack-item7-flush-control-delayed-after",
+        "stop",
+    ]
 
 
 @pytest.mark.parametrize(
@@ -203,7 +261,7 @@ def test_control_lifecycle_rejects_save_confirmation_queued_before_flush_command
     # Then: the stale confirmation cannot complete the requested flush.
     assert receipt.save_all_flush is False
     assert receipt.clean_stop is False
-    assert receipt.commands[-1] == "save-all flush"
+    assert "save-all flush" in receipt.commands
 
 
 def test_control_capture_sanitizes_and_rejects_chunky_files(

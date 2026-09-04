@@ -17,7 +17,7 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from mcpack_evidence.item6_capture import capture
 from mcpack_evidence.item7_config import FROZEN_FILE_COUNT, ConfigCaptureReceipt, RuntimeConfigDrift
-from mcpack_evidence.item7_console import send_command
+from mcpack_evidence.item7_console import FlushCorrelation, send_command, send_correlated_flush
 from mcpack_evidence.item7_output_sequence import OutputSequence, read_output
 from mcpack_evidence.item7_runtime import (
     Item7RuntimeError,
@@ -74,8 +74,7 @@ class _State:
         self.started = time.monotonic()
         self.ready = self.success = self.flushed = self.killed = False
         self.rejection: str | None = None
-        self.save_confirmation_after: int | None = None
-        self.save_started = False
+        self.flush_correlation: FlushCorrelation | None = None
 
 
 def run_control_lifecycle(  # noqa: D103
@@ -158,9 +157,9 @@ def _drive(  # noqa: C901
             if not state.flushed:
                 state.rejection = "server exited before control completion"
             return
-        _ = log.write(output.text)
+        _ = log.write(output)
         log.flush()
-        line = output.text
+        line = output
         if not state.ready and "Done (" in line and '! For help, type "help"' in line:
             state.ready = True
             state.rejection = send_command(stdin, state.commands, "forceload add -64 -64 64 64")
@@ -170,18 +169,10 @@ def _drive(  # noqa: C901
                 state.rejection = "control settling exceeded lifecycle timeout"
                 return
             time.sleep(request.settle_seconds)
-            state.save_confirmation_after = lines.checkpoint_and_send(
-                lambda: send_command(stdin, state.commands, "save-all flush") is None
-            )
-            if state.save_confirmation_after is None:
+            state.flush_correlation = send_correlated_flush(stdin, state.commands)
+            if state.flush_correlation is None:
                 state.rejection = "server console pipe failed"
-        elif (
-            state.save_confirmation_after is not None
-            and output.sequence > state.save_confirmation_after
-            and "Saving the game" in line
-        ):
-            state.save_started = True
-        elif state.save_started and "Saved the game" in line:
+        elif state.flush_correlation is not None and state.flush_correlation.observe(line):
             state.flushed = True
             state.rejection = send_command(stdin, state.commands, "stop")
 
