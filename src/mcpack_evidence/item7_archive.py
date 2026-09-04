@@ -2,150 +2,48 @@
 
 from __future__ import annotations
 
-import hashlib
 import os
-import tarfile
-from dataclasses import dataclass
-from enum import StrEnum
-from pathlib import Path, PurePosixPath
-from typing import ClassVar, Literal, Self, final, override
-
-from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from .item7_archive_io import (
     UnsafeFilesystemError,
-    duplicate_stream,
     open_directory,
-    open_regular,
     open_tree,
-    open_tree_at,
     sha256_descriptor,
+)
+from .item7_archive_models import (
+    ArchiveIssue,
+    ArchiveManifest,
+    ArchiveRequest,
+    ArchiveValidationError,
+    FileIdentity,
+    RestoreReceipt,
+    RestoreRequest,
 )
 from .item7_archive_publish import (
     Publication,
     UnsafePublicationError,
     build_tar,
     close_temporary,
-    publish_one,
     publish_pair,
     read_inventory,
     stage_bytes,
 )
-from .item7_stage_output import StageOutputError, StagingTree, staging_tree
+from .item7_archive_restore import restore_archive
 
-
-@dataclass(frozen=True, slots=True)
-class ArchiveRequest:
-    """Inputs for one raw-evidence archive publication."""
-
-    root: Path
-    archive: Path
-    manifest: Path
-    revision: str
-
-
-@dataclass(frozen=True, slots=True)
-class RestoreRequest:
-    """Inputs for one verified archive restoration."""
-
-    archive: Path
-    manifest: Path
-    target: Path
-    receipt: Path
-
-
-@final
-class ArchiveValidationError(ValueError):
-    """A violated archive or manifest integrity invariant."""
-
-    def __init__(self, issue: _ArchiveIssue, path: str | Path | None = None) -> None:
-        """Preserve the closed issue and optional affected path."""
-        self.issue: _ArchiveIssue = issue
-        self.path: str | Path | None = path
-        super().__init__(str(self))
-
-    @override
-    def __str__(self) -> str:
-        return self.issue.value if self.path is None else f"{self.issue.value}: {self.path}"
-
-
-class _ArchiveIssue(StrEnum):
-    NONBLANK_IDENTITY = "revision and archive name must be nonblank and trimmed"
-    ARCHIVE_NAME = "archive name must be a basename ending in .tar.gz"
-    MANIFEST_PATHS = "manifest paths must be sorted and unique"
-    MANIFEST_COUNT = "manifest file count does not match files"
-    MANIFEST_SIZE = "manifest total size does not match files"
-    SOURCE_SYMLINK = "source contains a symlink"
-    NONREGULAR = "entry is not regular"
-    ARCHIVE_SIZE = "archive size does not match manifest"
-    ARCHIVE_HASH = "archive SHA-256 does not match manifest"
-    MEMBERS_MISMATCH = "archive members do not exactly match manifest"
-    RESTORED_SIZE = "restored size mismatch"
-    RESTORED_HASH = "restored SHA-256 mismatch"
-    UNSAFE_PATH = "unsafe relative path"
-
-
-class _EvidenceModel(BaseModel):
-    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
-
-
-class FileIdentity(_EvidenceModel):
-    """Content identity for one archived regular file."""
-
-    relative_path: str
-    size_bytes: int = Field(ge=0)
-    sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
-
-
-class ArchiveManifest(_EvidenceModel):
-    """Immutable identity and contents of one external Item 7 archive."""
-
-    schema_version: Literal["item7-raw-evidence-archive-v1"] = "item7-raw-evidence-archive-v1"
-    revision: str = Field(min_length=1)
-    archive_name: str
-    archive_size_bytes: int = Field(ge=0)
-    archive_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
-    file_count: int = Field(ge=0)
-    total_size_bytes: int = Field(ge=0)
-    files: tuple[FileIdentity, ...]
-
-    @model_validator(mode="after")
-    def _validate_inventory(self) -> Self:
-        if not self.revision.strip() or self.revision != self.revision.strip():
-            raise ArchiveValidationError(_ArchiveIssue.NONBLANK_IDENTITY)
-        archive_name = self.archive_name
-        if Path(archive_name).name != archive_name or not archive_name.endswith(".tar.gz"):
-            raise ArchiveValidationError(_ArchiveIssue.ARCHIVE_NAME)
-        paths = tuple(row.relative_path for row in self.files)
-        for path in paths:
-            _ = _require_relative_path(path)
-        if paths != tuple(sorted(paths)) or len(paths) != len(set(paths)):
-            raise ArchiveValidationError(_ArchiveIssue.MANIFEST_PATHS)
-        if self.file_count != len(self.files):
-            raise ArchiveValidationError(_ArchiveIssue.MANIFEST_COUNT)
-        if self.total_size_bytes != sum(row.size_bytes for row in self.files):
-            raise ArchiveValidationError(_ArchiveIssue.MANIFEST_SIZE)
-        return self
-
-
-class RestoreReceipt(_EvidenceModel):
-    """Proof that an archive was verified before restoration."""
-
-    schema_version: Literal["item7-raw-evidence-restore-v1"] = "item7-raw-evidence-restore-v1"
-    revision: str
-    archive_name: str
-    archive_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
-    manifest_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
-    restored_target: str
-    file_count: int = Field(ge=0)
-    total_size_bytes: int = Field(ge=0)
-    verified: Literal[True]
+__all__ = (
+    "ArchiveManifest",
+    "ArchiveRequest",
+    "ArchiveValidationError",
+    "FileIdentity",
+    "RestoreReceipt",
+    "RestoreRequest",
+    "create_archive",
+    "restore_archive",
+)
 
 
 def create_archive(request: ArchiveRequest) -> ArchiveManifest:
     """Create a deterministic archive and publish its content manifest."""
-    request.archive.parent.mkdir(parents=True, exist_ok=True)
-    request.manifest.parent.mkdir(parents=True, exist_ok=True)
     temporary = None
     manifest_temporary = None
     try:
@@ -180,11 +78,11 @@ def create_archive(request: ArchiveRequest) -> ArchiveManifest:
                 Publication(manifest_temporary, request.manifest.name, request.manifest.parent),
             )
     except UnsafeFilesystemError as error:
-        raise ArchiveValidationError(_ArchiveIssue.SOURCE_SYMLINK, request.root) from error
+        raise ArchiveValidationError(ArchiveIssue.SOURCE_SYMLINK, request.root) from error
     except UnsafePublicationError as error:
-        raise ArchiveValidationError(_ArchiveIssue.UNSAFE_PATH) from error
+        raise ArchiveValidationError(ArchiveIssue.UNSAFE_PATH) from error
     except (FileNotFoundError, NotADirectoryError) as error:
-        message = f"raw evidence root is not a directory: {request.root}"
+        message = "archive source and output parents must be existing directories"
         raise NotADirectoryError(message) from error
     finally:
         if temporary is not None:
@@ -192,117 +90,3 @@ def create_archive(request: ArchiveRequest) -> ArchiveManifest:
         if manifest_temporary is not None:
             close_temporary(manifest_temporary)
     return manifest
-
-
-def restore_archive(request: RestoreRequest) -> RestoreReceipt:
-    """Verify an archive against its manifest and restore to an absent target."""
-    _require_absent(request.target)
-    _require_absent(request.receipt)
-    request.target.parent.mkdir(parents=True, exist_ok=True)
-    request.receipt.parent.mkdir(parents=True, exist_ok=True)
-    receipt_temporary = None
-    try:
-        with (
-            open_regular(request.manifest) as (manifest_descriptor, _),
-            duplicate_stream(manifest_descriptor) as manifest_stream,
-        ):
-            manifest_bytes = manifest_stream.read()
-        manifest = ArchiveManifest.model_validate_json(manifest_bytes)
-        with (
-            open_regular(request.archive) as (archive_descriptor, archive_metadata),
-            open_directory(request.receipt.parent) as receipt_parent,
-            staging_tree(request.target) as destination,
-        ):
-            if request.archive.name != manifest.archive_name:
-                raise ArchiveValidationError(_ArchiveIssue.ARCHIVE_NAME)
-            if archive_metadata.st_size != manifest.archive_size_bytes:
-                raise ArchiveValidationError(_ArchiveIssue.ARCHIVE_SIZE)
-            if sha256_descriptor(archive_descriptor) != manifest.archive_sha256:
-                raise ArchiveValidationError(_ArchiveIssue.ARCHIVE_HASH)
-            with (
-                duplicate_stream(archive_descriptor) as archive_stream,
-                tarfile.open(fileobj=archive_stream, mode="r:gz") as bundle,
-            ):
-                _verify_and_extract(bundle, manifest, destination)
-            _verify_restored_tree(destination, manifest)
-            destination.publish()
-            receipt = RestoreReceipt(
-                revision=manifest.revision,
-                archive_name=manifest.archive_name,
-                archive_sha256=manifest.archive_sha256,
-                manifest_sha256=hashlib.sha256(manifest_bytes).hexdigest(),
-                restored_target=request.target.as_posix(),
-                file_count=manifest.file_count,
-                total_size_bytes=manifest.total_size_bytes,
-                verified=True,
-            )
-            receipt_temporary = stage_bytes(
-                receipt_parent,
-                (receipt.model_dump_json(indent=2) + "\n").encode(),
-            )
-            publish_one(
-                Publication(receipt_temporary, request.receipt.name, request.receipt.parent),
-                destination.require_named,
-            )
-    except UnsafeFilesystemError as error:
-        raise ArchiveValidationError(_ArchiveIssue.UNSAFE_PATH) from error
-    except (StageOutputError, UnsafePublicationError) as error:
-        raise ArchiveValidationError(_ArchiveIssue.UNSAFE_PATH) from error
-    finally:
-        if receipt_temporary is not None:
-            close_temporary(receipt_temporary)
-    return receipt
-
-
-def _verify_and_extract(
-    bundle: tarfile.TarFile,
-    manifest: ArchiveManifest,
-    staging: StagingTree,
-) -> None:
-    members = bundle.getmembers()
-    for member in members:
-        _ = _require_relative_path(member.name)
-        if not member.isfile():
-            raise ArchiveValidationError(_ArchiveIssue.NONREGULAR, member.name)
-    expected_paths = tuple(identity.relative_path for identity in manifest.files)
-    if tuple(member.name for member in members) != expected_paths:
-        raise ArchiveValidationError(_ArchiveIssue.MEMBERS_MISMATCH)
-    for identity in manifest.files:
-        member = bundle.getmember(identity.relative_path)
-        source = bundle.extractfile(member)
-        if source is None:
-            raise ArchiveValidationError(_ArchiveIssue.NONREGULAR, member.name)
-        with source:
-            staging.write(PurePosixPath(identity.relative_path), source, identity.size_bytes)
-
-
-def _verify_restored_tree(staging: StagingTree, manifest: ArchiveManifest) -> None:
-    with open_tree_at(staging.root_descriptor, PurePosixPath()) as files:
-        restored = tuple(
-            FileIdentity(
-                relative_path=row.relative_path,
-                size_bytes=row.size_bytes,
-                sha256=sha256_descriptor(row.descriptor),
-            )
-            for row in files
-        )
-    if restored != manifest.files:
-        for expected, actual in zip(manifest.files, restored, strict=False):
-            if expected != actual:
-                detail = f"expected {expected.model_dump()} but restored {actual.model_dump()}"
-                raise ArchiveValidationError(_ArchiveIssue.RESTORED_HASH, detail)
-        detail = f"expected {len(manifest.files)} files but restored {len(restored)}"
-        raise ArchiveValidationError(_ArchiveIssue.RESTORED_HASH, detail)
-
-
-def _require_relative_path(value: str) -> str:
-    candidate = PurePosixPath(value)
-    if any((not value, candidate.is_absolute(), ".." in candidate.parts, value != str(candidate))):
-        raise ArchiveValidationError(_ArchiveIssue.UNSAFE_PATH, value)
-    return value
-
-
-def _require_absent(path: Path) -> None:
-    if path.exists() or path.is_symlink():
-        message = f"destination already exists: {path}"
-        raise FileExistsError(message)
