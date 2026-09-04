@@ -1,10 +1,10 @@
-# Item 6 — Retained-stack generated configuration audit
+# Item 6: Retained-stack generated configuration audit
 
 ## Exit decision
 
 **PASS.** The exact 136-JAR retained server stack was reconstructed under Minecraft 1.21.1, NeoForge 21.1.249, and Eclipse Temurin 21.0.12.1+1-LTS. A new ordinary seed-42 instance reached readiness, completed `save-all flush`, and stopped cleanly. No setting was tuned. The post-shutdown configuration tree is frozen losslessly in `evidence/item-6/frozen/`; the sorted 228-file manifest binds every relative path, byte size, SHA-256, and generation stage.
 
-The capture distinguishes 4 installation/materialization files, 223 first-startup files, and 1 world-creation server config. No file first appeared only during shutdown. The post-shutdown state is the effective baseline. The validator independently verifies exact tree equality, every file identity, report-to-manifest references, literal setting evidence, the audit's manifest identity, and one accounting classification for each of the 228 manifest paths. The 33 audited paths are exactly the union cited by systems, settings, and findings. The remaining 195 paths are explicitly out of scope.
+The capture distinguishes 4 installation/materialization files, 223 first-startup files, and 1 world-creation server config. No file first appeared only during shutdown. The post-shutdown state is the effective baseline. The validator independently verifies exact tree equality, every file identity, report-to-manifest references, literal setting evidence, the audit's manifest identity, and one accounting classification for each of the 228 manifest paths. The 35 audited paths are exactly the union cited by systems, settings, and findings. The remaining 193 paths are explicitly out of scope.
 
 ## Reconstruction and capture boundary
 
@@ -19,8 +19,12 @@ The frozen tree contains `config/`, `defaultconfigs/`, `world/serverconfig` (nor
 * **Sparse Structures is the primary explicit low-density control.** Its generated global `spreadFactor` is 2, so structure placements are made rarer. The generated mansion override is also factor 2. The precise way global and per-structure factors compose must be confirmed from runtime density evidence rather than guessed.
 * **Structure Essentials exposes a second global placement control**, but `spacingSeparationModifier` is neutral at 1.0. Its 32-block minimum-distance feature is disabled, as are automatic biome compatibility and overlap logging. Fast lookup is enabled and search radii differ from vanilla as documented in the generated file.
 * **Structure Layout Optimizer** retains its seed-parity-preserving default: template-pool list deduplication is false.
-* **Cristel Lib emits provider placement and toggle files.** WDA major/minor sets use 50/45 and 45/40 spacing/separation before any global Sparse Structures effect, and all listed WDA families are enabled. Equivalent preserved files cover Seven Seas, IDAS, Integrated structures, Explorations/Explorify, four Moog namespaces, Repurposed Structures, and YUNG providers. The machine-readable audit cites representative effective controls without falsely treating aliases or pieces as Item 8 families.
+* **Cristel Lib emits provider placement and toggle files.** WDA major/minor sets use 50/45 and 45/40 spacing/separation before any global Sparse Structures effect, and all listed WDA families are enabled. Equivalent preserved files cover Seven Seas, IDAS, Integrated structures, Explorations/Explorify, four Moog namespaces, Repurposed Structures, and YUNG providers. The machine-readable audit cites each audited YUNG placement scalar and enabled toggle without falsely treating aliases or pieces as Item 8 families.
 * **Explicit replacements exist.** Six YUNG generated defaults disable vanilla desert pyramids, Nether fortresses, jungle temples, mineshafts, ocean monuments, and witch huts. IDAS also disables the vanilla desert pyramid, so that replacement is duplicated in the generated configuration. Integrated Villages disables vanilla villages. These are disabled vanilla sets caused by replacements, not missing generation.
+
+### YUNG control surfaces
+
+The YUNG structure inventory includes the Cristel Lib placement and toggle files for Better Desert Temples. The placement evidence records every spacing and separation value. The toggle evidence records every enabled structure leaf. Sparse Structures remains a separate global factor that may interact with these enabled placements.
 
 ### Villages, loot, mobs, difficulty, and performance
 
