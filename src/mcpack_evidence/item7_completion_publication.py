@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from pathlib import Path  # noqa: TC003
+from pathlib import Path, PurePosixPath
 from typing import ClassVar, Final, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -67,11 +67,10 @@ def validate_publication(
         manifest.archive_name: (
             manifest.archive_size_bytes,
             manifest.archive_sha256,
-            f"evidence/item-7/archive/{manifest_path.name}",
-            (
-                "evidence/item-7/archive/"
-                f"{manifest_path.name.removesuffix('-manifest.json')}-restore.json"
-            ),
+            _logical_archive_path(manifest_path),
+            PurePosixPath(_logical_archive_path(manifest_path))
+            .with_name(f"{manifest_path.name.removesuffix('-manifest.json')}-restore.json")
+            .as_posix(),
             (
                 f"https://github.com/{_REPOSITORY}/releases/download/"
                 f"{publication.tag}/{manifest.archive_name}"
@@ -91,4 +90,14 @@ def validate_publication(
     }
     if len(observed) != len(publication.assets) or observed != expected:
         fail("publication asset identities", path)
-    return identity(path, "archive/publication.json"), publication.release_url
+    logical_publication = _logical_archive_path(path).removeprefix("evidence/item-7/")
+    return identity(path, logical_publication), publication.release_url
+
+
+def _logical_archive_path(path: Path) -> str:
+    parts = path.parts
+    marker = ("evidence", "item-7", "archive")
+    for index in range(len(parts) - len(marker) + 1):
+        if tuple(parts[index : index + len(marker)]) == marker:
+            return PurePosixPath(*parts[index:]).as_posix()
+    return f"evidence/item-7/archive/{path.name}"

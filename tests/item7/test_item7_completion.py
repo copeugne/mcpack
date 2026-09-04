@@ -161,12 +161,14 @@ def test_visual_adapter_binds_hashes_commits_and_all_capture_rows(tmp_path: Path
 def test_publication_binds_every_remote_asset_to_its_archive_manifest(tmp_path: Path) -> None:
     revision = "a" * 40
     release_url = "https://github.com/copeugne/mcpack/releases/tag/item-7-test"
+    archive_directory = tmp_path / "evidence/item-7/archive/r2"
+    archive_directory.mkdir(parents=True)
     manifests: list[Path] = []
     assets: list[dict[str, JsonValue]] = []
     for index in range(4):
         name = f"asset-{index}.tar.gz"
         digest = str(index) * 64
-        manifest = tmp_path / f"asset-{index}-manifest.json"
+        manifest = archive_directory / f"asset-{index}-manifest.json"
         manifest.write_text(
             json.dumps(
                 {
@@ -188,12 +190,12 @@ def test_publication_binds_every_remote_asset_to_its_archive_manifest(tmp_path: 
                 "name": name,
                 "size_bytes": index + 1,
                 "sha256": digest,
-                "manifest": f"evidence/item-7/archive/asset-{index}-manifest.json",
-                "restore_receipt": f"evidence/item-7/archive/asset-{index}-restore.json",
+                "manifest": f"evidence/item-7/archive/r2/asset-{index}-manifest.json",
+                "restore_receipt": f"evidence/item-7/archive/r2/asset-{index}-restore.json",
                 "url": f"{release_url.replace('/tag/', '/download/')}/{name}",
             }
         )
-    publication = tmp_path / "publication.json"
+    publication = archive_directory / "publication.json"
     payload = {
         "schema_version": "item7-raw-evidence-publication-v1",
         "repository": "copeugne/mcpack",
@@ -210,9 +212,10 @@ def test_publication_binds_every_remote_asset_to_its_archive_manifest(tmp_path: 
     }
     publication.write_text(json.dumps(payload), encoding="utf-8")
 
-    _, observed_url = validate_publication(publication, tuple(manifests))
+    publication_identity, observed_url = validate_publication(publication, tuple(manifests))
 
     assert observed_url == release_url
+    assert publication_identity.path == "archive/r2/publication.json"
     assets[0]["sha256"] = "f" * 64
     publication.write_text(json.dumps(payload), encoding="utf-8")
     with pytest.raises(CompletionError, match="publication asset identities"):
