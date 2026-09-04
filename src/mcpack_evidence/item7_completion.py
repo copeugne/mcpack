@@ -23,6 +23,7 @@ from mcpack_evidence.item7_completion_provider_visual import (
 from mcpack_evidence.item7_completion_publication import validate_publication
 from mcpack_evidence.item7_completion_repeat import validate_repeat
 from mcpack_evidence.item7_completion_runs import validate_runs
+from mcpack_evidence.item7_completion_save import validate_save_sequence_audit
 from mcpack_evidence.item7_completion_sources import validate_control, validate_warnings
 from mcpack_evidence.item7_protocol import load_protocol
 from mcpack_evidence.item7_restrictions import validate_restriction_audit
@@ -53,6 +54,7 @@ class CompletionInputs:
     archive_manifests: tuple[Path, Path, Path, Path]
     restore_receipts: tuple[Path, Path, Path, Path]
     publication: Path
+    save_sequence_audit: Path
     output: Path
 
 
@@ -111,6 +113,11 @@ def build_completion(inputs: CompletionInputs) -> CompletionReport:
     artifacts.extend(gaps)
     raw_artifacts.extend(control)
     raw_artifacts.extend(gaps)
+    artifacts.append(
+        validate_save_sequence_audit(
+            inputs.save_sequence_audit, inputs.raw_root, inputs.archive_manifests[0]
+        )
+    )
     visual = validate_visual_evidence(inputs.visual_manifest, inputs.visual_reviews)
     visual_manifest = identity(inputs.visual_manifest, "visual-qa/captures/capture-manifest.tsv")
     artifacts.append(visual_manifest)

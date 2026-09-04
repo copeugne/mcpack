@@ -6,7 +6,7 @@ import hashlib
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Final
 
-from pydantic import ValidationError
+from pydantic import JsonValue, ValidationError
 
 from mcpack_evidence.item7_archive_models import ArchiveManifest, ArchiveValidationError
 from mcpack_evidence.item7_runtime import Item7RuntimeError
@@ -53,6 +53,30 @@ def validate_save_sequences(
     if manifest_path is not None:
         _validate_manifest(records, manifest_path)
     return records
+
+
+def build_save_sequence_audit(root: Path, manifest_path: Path) -> dict[str, JsonValue]:
+    """Build the portable machine-readable audit bound to the core archive manifest."""
+    records = validate_save_sequences(root, manifest_path)
+    return {
+        "schema_version": "item7-save-sequence-audit-v1",
+        "core_manifest": {
+            "path": str(manifest_path),
+            "size_bytes": manifest_path.stat().st_size,
+            "sha256": hashlib.sha256(manifest_path.read_bytes()).hexdigest(),
+        },
+        "records": [
+            {
+                "relative_path": record.relative_path,
+                "size_bytes": record.size_bytes,
+                "sha256": record.sha256,
+                "work_line": record.work_line,
+                "saving_line": record.saving_line,
+                "saved_line": record.saved_line,
+            }
+            for record in records
+        ],
+    }
 
 
 def _validate(path: Path, relative: str, work_marker: str) -> SaveSequence:

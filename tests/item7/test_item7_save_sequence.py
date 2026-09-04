@@ -1,13 +1,20 @@
 from __future__ import annotations
 
 import hashlib
+import json
 from typing import TYPE_CHECKING
 
 import pytest
 
 from mcpack_evidence.item7_archive_models import ArchiveManifest, FileIdentity
+from mcpack_evidence.item7_completion_io import CompletionError
+from mcpack_evidence.item7_completion_save import validate_save_sequence_audit
 from mcpack_evidence.item7_runtime import Item7RuntimeError
-from mcpack_evidence.item7_save_sequence import SAVE_SEQUENCE_TARGETS, validate_save_sequences
+from mcpack_evidence.item7_save_sequence import (
+    SAVE_SEQUENCE_TARGETS,
+    build_save_sequence_audit,
+    validate_save_sequences,
+)
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -88,3 +95,20 @@ def test_validate_save_sequences_rejects_log_not_bound_by_archive_manifest(tmp_p
     # When / Then: the accepted sequence must remain bound to its archived source bytes.
     with pytest.raises(Item7RuntimeError, match="console log differs from core manifest"):
         _ = validate_save_sequences(tmp_path, manifest)
+
+
+def test_completion_rebuilds_save_sequence_audit_from_archived_logs(tmp_path: Path) -> None:
+    _write_accepted_logs(tmp_path)
+    manifest = tmp_path / "manifest.json"
+    _write_manifest(tmp_path, manifest)
+    audit = tmp_path / "save-sequence-test.json"
+    payload = build_save_sequence_audit(tmp_path, manifest)
+    _ = audit.write_text(json.dumps(payload), encoding="utf-8")
+
+    accepted = validate_save_sequence_audit(audit, tmp_path, manifest)
+    assert accepted.path == audit.name
+
+    payload["records"] = []
+    _ = audit.write_text(json.dumps(payload), encoding="utf-8")
+    with pytest.raises(CompletionError, match="save sequence audit source binding"):
+        _ = validate_save_sequence_audit(audit, tmp_path, manifest)

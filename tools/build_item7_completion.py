@@ -31,6 +31,7 @@ class _Arguments(BaseModel):
     control_comparison: Path
     visual_manifest: Path
     publication: Path
+    save_sequence_audit: Path
     output: Path
     visual_review: list[Path]
     archive_manifest: list[Path]
@@ -54,6 +55,7 @@ def build_parser() -> argparse.ArgumentParser:
         "control-comparison",
         "visual-manifest",
         "publication",
+        "save-sequence-audit",
         "output",
     ):
         _ = parser.add_argument(f"--{flag}", type=Path, required=True)
@@ -105,6 +107,7 @@ def run(arguments: tuple[str, ...]) -> int:
                 restore_receipts[3],
             ),
             publication=values.publication,
+            save_sequence_audit=values.save_sequence_audit,
         )
     )
     print(report.exit_gate)
