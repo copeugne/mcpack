@@ -70,7 +70,7 @@ Unresolved entries remain `UNKNOWN`. The audit does not convert startup success 
 
 ## Durable evidence and restoration
 
-The final raw evidence is split into four immutable release assets under tag `item-7-raw-evidence-2026-09-04-r8`, bound to corrected source revision `85efc96b5f1c2d3518a594905a65a2777d904b4b`:
+The final raw evidence is split into four immutable release assets under tag `item-7-raw-evidence-2026-09-04-r9`, bound to corrected source revision `fb901b1050f211cb88fe1fb9d074f5d7c1e17407` and annotated tag object `f4a573dd5263caef541f4e0ff622469a356bd2b8`:
 
 | Asset | Files | Raw bytes | Archive bytes | Archive SHA-256 |
 |---|---:|---:|---:|---|
@@ -85,7 +85,11 @@ The first release, r2, r3, r4, and r7 remain preserved as historical evidence. T
 
 Reviews of revisions `8c7e7b8bb5db79d826b78cab5a678605a8b5fc23` and `438260f40fd0d50ff5f087a2b8aac028d5a39927` found remaining source, output, hardlink, special-file, and repository-binding defects. Commits `fdd99d9`, `c625d6e`, `f57503d`, and `4503d64` correct those boundaries and the vacuous mutation tests with focused regression coverage.
 
-The r8 archives were rebuilt from the hash-verified r7 restore with the final implementation. Archive and restore output parents must exist and are opened component by component without following symlinks before any output is created. Restore writes into an unpublished tree through pinned descriptors, rehashes its complete inventory, publishes without replacement, and emits a receipt from a pinned directory only while the published target still names the verified inode. All four r8 archives restored into absent targets. Two independent downloads with the tracked repository-bound verifier matched every committed size and SHA-256. The initial r8 download attempt under `/tmp` failed from disk quota and is not acceptance evidence. The canonical completion rebuild uses the r8 restored core, not the older mutable construction tree. Rejected review records remain under `evidence/item-7/review/`; a fresh exact-SHA review remains required before delivery.
+The r8 archives were rebuilt from the hash-verified r7 restore with the hardened archive implementation. Archive and restore output parents must exist and are opened component by component without following symlinks before any output is created. Restore writes into an unpublished tree through pinned descriptors, rehashes its complete inventory, publishes without replacement, and emits a receipt from a pinned directory only while the published target still names the verified inode.
+
+GitHub Codex then rejected revision `fe55d451bf081341101fc541ead992113133ab5b` because completion accepted derived warning and control results without independently binding every raw input. Commit `fb901b1050f211cb88fe1fb9d074f5d7c1e17407` fixes both findings. Completion now rebuilds the warning audit from all 11 declared logs and requires exact equality, and it verifies the path, SHA-256, byte size, and record count of the control and pilot chunk streams and run receipts. The source logic and focused regression tests are tracked. Duplicate paths are included once, producing 137 artifacts.
+
+The final r9 archives preserve the same verified payload bytes while binding custody to that corrected source revision. All four r9 archives restored into absent targets. Two independent downloads with the tracked repository-bound verifier matched every committed size and SHA-256. The first construction attempt under `/tmp` failed closed on quota, and the first remote download was interrupted; neither is acceptance evidence. The canonical inventory and completion rebuilds use the r9 restored trees and reproduce the committed files byte for byte. Rejected review records remain under `evidence/item-7/review/`; a fresh exact-SHA review remains required before delivery.
 
 ## Reproduction
 
@@ -99,12 +103,12 @@ uv run ruff format --check src/mcpack_evidence/item7_*.py tools/*item7*.py tests
 uv run ruff check src/mcpack_evidence/item7_*.py tools/*item7*.py tests/item7
 uv run basedpyright src/mcpack_evidence/item7_*.py tools/*item7*.py tests/item7
 bash -n tools/stage_item7_raw_evidence.sh
-tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04-r8 evidence/item-7/archive/r8 evidence/item-7/archive/r8/publication.json /home/lonestar/Desktop/Projects/mcpack-item7-r8-release-download-1
+tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04-r9 evidence/item-7/archive/r9 evidence/item-7/archive/r9/publication.json /home/lonestar/Desktop/Projects/mcpack-item7-r9-release-download-2
 ```
 
 The Python quality commands are intentionally scoped to Item 7. They do not claim that unrelated reconstructed later-item tools are clean, and Item 11 tooling remains outside this gate until the required Item 2 through Item 10 cross-item audit passes.
 
-After restoring all four r8 assets, run the tracked `tools/build_item7_completion.py` CLI with `--raw-root` and `--visual-manifest` under the restored r8 core, `--world-archive-inventory evidence/item-7/world-archive-inventory.json`, and the r8 archive manifests, restore receipts, and publication receipt. The remaining protocol, provider, biome-restriction, repeat, warning, and control inputs are the matching tracked or restored-core paths. The exact accepted invocation is recorded in `evidence/item-7/review/candidate-r8-validation.md`. It returns `PASS`, records 125 artifact identities, and must not use the older mutable `/tmp/mcpack-item7-raw-20260904` tree.
+After restoring all four r9 assets, run the tracked `tools/build_item7_completion.py` CLI with `--raw-root` and `--visual-manifest` under the restored r9 core, `--world-archive-inventory evidence/item-7/world-archive-inventory.json`, and the r9 archive manifests, restore receipts, and publication receipt. The remaining protocol, provider, biome-restriction, repeat, warning, and control inputs are the matching tracked or restored-core paths. The exact accepted inventory, completion, and two-download invocations are recorded in `evidence/item-7/review/candidate-r9-validation.md`. The completion command returns `PASS`, records 137 artifact identities, and reproduces SHA-256 `76603b037d38534f56a4a2625666032b60929d7efe74c0a434b73310858c4c69`. The inventory binds 716 files and reproduces SHA-256 `e417d77272151a91153a94df993da058f174fb568be75a1e61e49916dbc1e994`.
 
 ## Evidence index
 
@@ -115,10 +119,10 @@ After restoring all four r8 assets, run the tracked `tools/build_item7_completio
 - `evidence/item-7/visual/integrity-review.json`
 - `evidence/item-7/visual/fidelity-review.json`
 - `evidence/item-7/visual/rejected-attempts.json`
-- `evidence/item-7/archive/r8/`
+- `evidence/item-7/archive/r9/`
 - `evidence/item-7/review/`
 - `evidence/item-7/completion.json`
-- GitHub release `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04-r8`
+- GitHub release `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04-r9`
 
 ## Superseded historical control
 
