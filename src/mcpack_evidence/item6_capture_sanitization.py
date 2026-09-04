@@ -68,7 +68,10 @@ def redact_generated_credential(source: bytes) -> bytes:
     start = len(text[:start_character].encode("utf-8"))
     end = len(text[:end_character].encode("utf-8"))
     replacement = json.dumps(_REDACTION_SENTINEL, ensure_ascii=False).encode()
-    return source[:start] + replacement + source[end:]
+    redacted = source[:start] + replacement + source[end:]
+    if _require_string_credential(parse_strict_json(redacted)) != _REDACTION_SENTINEL:
+        raise SourceSanitizationError.lexical_target()
+    return redacted
 
 
 def _require_string_credential(configuration: JsonValue) -> str:

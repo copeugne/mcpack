@@ -121,6 +121,7 @@ def test_capture_rejects_already_redacted_source_credential(tmp_path: Path) -> N
         b'{"validator":{"if":{"password":"test-only-source-value"}},"invalid":1e309}',
         b'{"validator":{"if":{"password":"test-only-source-value","password":"other"}}}',
         b'{"validator":{"if":{"\\u0070assword":"test-only-source-value"}}}',
+        b'{"validator":{"if":{"pass\\u0077ord":"test-only-source-value"}},"other":{"password":"test-only-source-value"}}',
         b'{"validator":{"if":{"password":"test-only-source-value"}},"other":{"password":"other"}}',
         b'{"validator":{"if":{"password":false}}}',
         b'{"validator":{"if":{"password":"test-only-source-value"}',
