@@ -1,0 +1,22 @@
+Scenario: lifecycle receipt contract after implementation
+Invocation: uv run pytest -q tests/item6/test_receipt_binding.py
+Binary observable: all repository-reference and lifecycle receipt cases pass
+Result: GREEN, 22 passed in 0.36s, including malformed JSON and directory-at-path rejection.
+
+Scenario: full Item 6 regression suite after lifecycle binding
+Invocation: uv run pytest -q tests/item6
+Binary observable: every Item 6 test passes, including manifest-contract precedence
+Result: PASS, 281 passed in 3.38s.
+
+Scenario: real Item 6 validation CLI with historical absolute observation fields
+Invocation: uv run python tools/freeze_item6_config.py validate --root evidence/item-6/frozen --manifest evidence/item-6/generated-config-manifest.json --audit evidence/item-6/config-audit.json
+Binary observable: exit code 0 and exact success message while instance and log remain historical absolute strings
+Result: PASS, validated Item 6 frozen configuration and audit.
+
+Quality gates:
+- uv run ruff format --check on changed Python paths: PASS, 3 files already formatted.
+- uv run ruff check on changed Python paths: PASS, all checks passed.
+- uv run basedpyright on Item 6 modules and focused tests: PASS, 0 errors, 0 warnings, 0 notes.
+- git diff --check: PASS.
+- item6_provenance.py: 114 lines.
+- test_receipt_binding.py: 214 lines.

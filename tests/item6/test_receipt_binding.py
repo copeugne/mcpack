@@ -105,6 +105,27 @@ def test_validate_rejects_missing_lifecycle_receipt(tmp_path: Path) -> None:
         validate(fixture.frozen, fixture.manifest, fixture.audit)
 
 
+def test_validate_rejects_nonfile_lifecycle_receipt(tmp_path: Path) -> None:
+    # Given: the canonical lifecycle receipt is a directory rather than a file.
+    fixture = copy_item6_repository(tmp_path)
+    fixture.lifecycle.unlink()
+    fixture.lifecycle.mkdir()
+
+    # When/Then: a directory cannot satisfy the lifecycle reference contract.
+    with pytest.raises(ValueError, match="regular non-symlink file"):
+        validate(fixture.frozen, fixture.manifest, fixture.audit)
+
+
+def test_validate_rejects_malformed_lifecycle_receipt(tmp_path: Path) -> None:
+    # Given: the canonical lifecycle receipt contains malformed JSON.
+    fixture = copy_item6_repository(tmp_path)
+    fixture.lifecycle.write_text("{", encoding="utf-8")
+
+    # When/Then: malformed receipt bytes cannot prove the lifecycle contract.
+    with pytest.raises(ValueError, match="lifecycle receipt is malformed"):
+        validate(fixture.frozen, fixture.manifest, fixture.audit)
+
+
 @pytest.mark.parametrize(
     ("field", "value", "message"),
     [
@@ -128,10 +149,74 @@ def test_validate_rejects_retained_manifest_identity_mismatch(
         validate(fixture.frozen, fixture.manifest, fixture.audit)
 
 
+@pytest.mark.parametrize("field", ["ready", "save_all_flush", "clean_stop"])
+def test_validate_rejects_unsuccessful_lifecycle_status(tmp_path: Path, field: str) -> None:
+    # Given: one required lifecycle status is false.
+    fixture = copy_item6_repository(tmp_path)
+    _rewrite_json(fixture.lifecycle, lambda receipt: _set_false(receipt, field))
+
+    # When/Then: the lifecycle cannot prove a clean generation boundary.
+    with pytest.raises(ValueError, match=f"lifecycle {field} must be true"):
+        validate(fixture.frozen, fixture.manifest, fixture.audit)
+
+
+@pytest.mark.parametrize("return_code", [1, True])
+def test_validate_rejects_invalid_lifecycle_return_code(
+    tmp_path: Path, return_code: int | bool
+) -> None:
+    # Given: the lifecycle has a nonzero integer or boolean return code.
+    fixture = copy_item6_repository(tmp_path)
+    _rewrite_json(
+        fixture.lifecycle,
+        lambda receipt: receipt.__setitem__("return_code", return_code),
+    )
+
+    # When/Then: only the exact integer zero is accepted.
+    with pytest.raises(
+        ValueError, match=r"lifecycle receipt is malformed|return_code must be zero"
+    ):
+        validate(fixture.frozen, fixture.manifest, fixture.audit)
+
+
+def test_validate_rejects_wrong_lifecycle_schema(tmp_path: Path) -> None:
+    # Given: a structurally valid receipt under an unrecognized schema.
+    fixture = copy_item6_repository(tmp_path)
+    _rewrite_json(
+        fixture.lifecycle,
+        lambda receipt: receipt.__setitem__("schema_version", "item4-server-lifecycle-v2"),
+    )
+
+    # When/Then: validation rejects the unrecognized lifecycle protocol.
+    with pytest.raises(ValueError, match="unsupported lifecycle receipt schema"):
+        validate(fixture.frozen, fixture.manifest, fixture.audit)
+
+
+def test_validate_rejects_noncanonical_lifecycle_source(tmp_path: Path) -> None:
+    # Given: the manifest points at an existing receipt under a different repository path.
+    fixture = copy_item6_repository(tmp_path)
+    alternate = fixture.lifecycle.with_name("alternate-lifecycle.json")
+    fixture.lifecycle.rename(alternate)
+    _rewrite_manifest(
+        fixture.manifest,
+        lambda manifest: _set_lifecycle_path(manifest, "evidence/item-6/alternate-lifecycle.json"),
+    )
+    rebind_audit(fixture)
+
+    # When/Then: only the canonical retained lifecycle receipt is accepted.
+    with pytest.raises(ValueError, match="source_lifecycle must name the canonical receipt"):
+        validate(fixture.frozen, fixture.manifest, fixture.audit)
+
+
 def _rewrite_manifest(path: Path, mutate: Callable[[dict], None]) -> None:
     manifest = json.loads(path.read_text(encoding="utf-8"))
     mutate(manifest)
     path.write_text(json.dumps(manifest), encoding="utf-8")
+
+
+def _rewrite_json(path: Path, mutate: Callable[[dict], None]) -> None:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    mutate(payload)
+    path.write_text(json.dumps(payload), encoding="utf-8")
 
 
 def _set_retained_path(manifest: dict, reference: str) -> None:
@@ -140,6 +225,10 @@ def _set_retained_path(manifest: dict, reference: str) -> None:
 
 def _set_lifecycle_path(manifest: dict, reference: str) -> None:
     manifest["source_lifecycle"] = reference
+
+
+def _set_false(payload: dict, field: str) -> None:
+    payload[field] = False
 
 
 def _set_retained_identity(manifest: dict, field: str, value: int | str) -> None:

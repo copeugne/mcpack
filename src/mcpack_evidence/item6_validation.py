@@ -16,7 +16,7 @@ from mcpack_evidence.item6_manifest import (
     validate_manifest_contract,
     validate_manifest_inventory,
 )
-from mcpack_evidence.item6_provenance import validate_repository_references
+from mcpack_evidence.item6_provenance import validate_lifecycle, validate_repository_references
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -139,9 +139,10 @@ def validate(  # noqa: C901, PLR0912, PLR0915
     if audit["configuration_identity"] != identity:
         raise _AuditValidationError("audit configuration identity does not match manifest")
 
-    _ = validate_repository_references(manifest_path, manifest)
-    expected = validate_manifest_inventory(root, manifest)
     validate_manifest_contract(manifest)
+    references = validate_repository_references(manifest_path, manifest)
+    validate_lifecycle(manifest, references)
+    expected = validate_manifest_inventory(root, manifest)
 
     covered: set[str] = set()
     for system in audit["systems"]:
