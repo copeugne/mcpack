@@ -26,7 +26,7 @@
 
 ## Old-to-new commit map
 
-Patch-identical rows have the same stable patch ID. Split rows partition one former combined patch into independently validatable commits.
+Patch-identical rows have the same stable patch ID. Split rows partition one former combined patch into independently validatable commits. The AdoraBuild ordering-only commit is an extracted partition of that source patch.
 
 | Original commit | Original subject | Reconstructed commit or commits | Disposition |
 |---|---|---|---|
@@ -76,7 +76,7 @@ Patch-identical rows have the same stable patch ID. Split rows partition one for
 | `daf781ffa577b18cec1e49d087e3e7e0926e823b` | fix(item6): complete MVS setting surfaces | `a819c7806ae3d78f38191b11da1c4b6c0036535f`<br>`d33cf08dd6c3b29edcb3c518f7bd2ca54166deea` | split |
 | `8ba90fee9b075d06cb881b3bed3b48d048790cbf` | fix(item6): complete Repurposed Structures surfaces | `ca373c47461f36353c3a79825b468b5bbada78ce`<br>`e8a3db46d629d205b1c0e4d40581dc3d099ec783` | split |
 | `ced2675e66f97b73752d6bcb350d1819a58af4b9` | fix(item6): audit Repurposed Structures loot controls | `640dab61e3f1faf81d547ea0487dbe93875f1738` | patch-identical replay |
-| `17491911f0e4d84f5eb2487e2fa660953f657251` | fix(item6): complete AdoraBuild setting surfaces | `52c45ceec103c8759b6e5f04a5745c041588c3ea`<br>`5fcced1452a146587f8e936dc62cd22f37be884a` | split |
+| `17491911f0e4d84f5eb2487e2fa660953f657251` | fix(item6): complete AdoraBuild setting surfaces | `05252535911be56d3a62feffc834b09c7f1000a7`<br>`52c45ceec103c8759b6e5f04a5745c041588c3ea`<br>`5fcced1452a146587f8e936dc62cd22f37be884a` | split |
 | `646401048b8e87f44201ba35e05f0ef14ebd812b` | fix(item6): complete Aether setting surfaces | `8cf2cb01324b3d80e9f497e73464080ca50e2ac2`<br>`8a2a7a8cac21ffadbc35a97e3b67e07812ee039c` | split |
 | `6cc388c0664dc92c839db976299bb825fe01a87a` | fix(item6): complete BetterEnd setting surfaces | `9d8cd34b23c569d592502db092e3f77246eed710`<br>`db75e0d3d7e849215099c1cb33328b37f1c262dc` | split |
 | `5b5d3202b6bbb46ca660d60c67cc140e27c93243` | fix(item6): complete Creating Space setting surfaces | `9e50fe473d41faa520797a81a9d9a836cbbf9d30`<br>`22deaa00c500705c2875b343b510720a42f5f8bc` | split |
@@ -106,7 +106,6 @@ Patch-identical rows have the same stable patch ID. Split rows partition one for
 | `b621e9ec27b2f5b88ebd45cf5666bf0200d90f38` | fix(item6): audit vanilla structure toggles | `2a5fa02c187e42400f426fbbde70231d715281a6` | patch-identical replay |
 | `76baf1d96a3537b1a61c28247c6bab13f058685e` | fix(item6): audit Naturalist mob removals | `ca086ce639b8da3643c18addd2c2fefeae86199f` | patch-identical replay |
 | `7da1923e655e65046734ae5e9f7cf8df330b8362` | docs(item6): sync final audit counts | `d7f7974fedbb702af2a846f3dddde1a7b50710dd` | patch-identical replay |
-| none | No source predecessor | `05252535911be56d3a62feffc834b09c7f1000a7` | Ordering-only prerequisite that prevents later provider commits from carrying unrelated classification reordering |
 
 ## Reviewability boundary
 
