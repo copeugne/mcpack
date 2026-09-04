@@ -126,6 +126,19 @@ def test_validate_rejects_malformed_lifecycle_receipt(tmp_path: Path) -> None:
         validate(fixture.frozen, fixture.manifest, fixture.audit)
 
 
+def test_validate_rejects_lifecycle_receipt_identity_mismatch(tmp_path: Path) -> None:
+    # Given: a structurally successful receipt from a different server instance.
+    fixture = copy_item6_repository(tmp_path)
+    _rewrite_json(
+        fixture.lifecycle,
+        lambda receipt: receipt.__setitem__("instance", "/different/instance"),
+    )
+
+    # When/Then: the manifest-bound lifecycle bytes cannot be substituted.
+    with pytest.raises(ValueError, match="lifecycle receipt digest does not match"):
+        validate(fixture.frozen, fixture.manifest, fixture.audit)
+
+
 @pytest.mark.parametrize(
     ("field", "value", "message"),
     [

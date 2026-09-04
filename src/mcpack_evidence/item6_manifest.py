@@ -75,6 +75,7 @@ class Manifest(TypedDict):
     retained_manifest: RetainedManifest
     capture_command: str
     source_lifecycle: str
+    source_lifecycle_sha256: str
     file_count: int
     files: list[ManifestRow]
     stage_notes: StageNotes
@@ -172,11 +173,8 @@ def validate_manifest_contract(manifest: Manifest) -> None:
         )
     if sanitization["sanitized_file_count"] != 1 or sanitization["redaction_count"] != 1:
         raise ManifestValidationError("sanitization receipt counts must each equal one")
-    receipt_digest = sanitization["sha256"]
-    if len(receipt_digest) != _SHA256_HEX_LENGTH or any(
-        character not in "0123456789abcdef" for character in receipt_digest
-    ):
-        raise ManifestValidationError("sanitization receipt digest must be a lowercase SHA-256")
+    _require_sha256(sanitization["sha256"], "sanitization receipt")
+    _require_sha256(manifest["source_lifecycle_sha256"], "lifecycle receipt")
     paths = [row["path"] for row in manifest["files"]]
     component_paths = [_parse_manifest_path(path).parts for path in paths]
     if component_paths != sorted(component_paths):
@@ -198,3 +196,10 @@ def _sha256(path: Path) -> str:
         for chunk in iter(lambda: stream.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _require_sha256(value: str, label: str) -> None:
+    if len(value) != _SHA256_HEX_LENGTH or any(
+        character not in "0123456789abcdef" for character in value
+    ):
+        raise ManifestValidationError(f"{label} digest must be a lowercase SHA-256")

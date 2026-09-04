@@ -83,6 +83,8 @@ def validate_lifecycle(manifest: Manifest, references: RepositoryReferences) -> 
             raise ProvenanceValidationError(message)
     if receipt["return_code"] != 0:
         raise ProvenanceValidationError("lifecycle return_code must be zero")
+    if _sha256(references.source_lifecycle) != manifest["source_lifecycle_sha256"]:
+        raise ProvenanceValidationError("lifecycle receipt digest does not match referenced file")
 
 
 def _resolve_regular_file(repository: Path, reference: str) -> Path:
