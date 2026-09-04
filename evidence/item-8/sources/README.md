@@ -85,3 +85,23 @@ block entities and authored-entity positions. It does not retain ordinary block
 positions or constitute a visual render, generated-world observation, or assembled
 structure footprint. Resolve pool membership, processors, effective resources
 and actual generated bounds before attributing template contents to a family.
+
+## Pack metadata
+
+`pack-metadata.json.gz` preserves root and nested `pack.mcmeta` documents from the
+same verified archive set. SHA-256:
+`a0ff3cb2c9d363810752acca0948402ce24b7587bb0a1c430d08820857bbf426`.
+Reproduce with:
+
+```sh
+uv run -m tools.extract_item8_sources --kind metadata --output evidence/raw/item8/pack-metadata-reproduction.json.gz
+cmp evidence/item-8/sources/pack-metadata.json.gz evidence/raw/item8/pack-metadata-reproduction.json.gz
+```
+
+Lithostitched's metadata declares its `overlay.breaks_seed_parity` overlay under
+the NeoForge condition `lithostitched:breaks_seed_parity`. The frozen
+`evidence/item-6/frozen/config/lithostitched.json` sets `breaks_seed_parity` to
+true. The runtime context is preserved in
+`evidence/item-8/runtime/registry-r1/world-context.json`. These inputs support
+resolving the competing packaged resources; the inventory must still distinguish
+selected resources, unselected alternatives, and unresolved conditions.

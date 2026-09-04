@@ -79,3 +79,18 @@ def test_comment_parsing_and_invalid_json_are_explicit(tmp_path: Path) -> None:
     assert failures[0]["document"] is None
     assert failures[0]["raw_text"] == "{invalid}"
     assert "cannot decode packaged JSON" in str(failures[0]["parse_error"])
+
+
+def test_metadata_preserves_root_and_optional_pack_conditions(tmp_path: Path) -> None:
+    item = source(
+        tmp_path,
+        "mod.jar",
+        {
+            "pack.mcmeta": b'{"pack":{"pack_format":48}}',
+            "optional/pack.mcmeta": b'{"pack":{"description":"optional"}}',
+            "assets/example/textures/block.png.mcmeta": b'{"animation":{}}',
+        },
+    )
+    rows = cast("list[dict[str, JsonValue]]", packaged_sources((item,), "metadata")["resources"])
+    assert [row["path"] for row in rows] == ["optional/pack.mcmeta", "pack.mcmeta"]
+    assert rows[1]["document"] == {"pack": {"pack_format": 48}}
