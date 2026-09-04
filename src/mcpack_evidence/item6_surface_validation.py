@@ -19,6 +19,7 @@ from mcpack_evidence.item6_declared_defaults import (
 if TYPE_CHECKING:
     from pathlib import Path
 
+
 class SurfaceLeaf(TypedDict):
     """One scalar claim bound to one exact source line."""
 

@@ -58,9 +58,7 @@ def test_validator_rejects_inexact_towns_and_towers_default_claim(
     # Given: one committed declared-default claim is corrupted.
     audit = deepcopy(AUDIT_DATA)
     leaf = next(
-        leaf
-        for leaf in _towns_surface(audit)["leaves"]
-        if leaf["key"] == "towers.separation"
+        leaf for leaf in _towns_surface(audit)["leaves"] if leaf["key"] == "towers.separation"
     )
     match mutation:
         case "missing":
