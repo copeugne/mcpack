@@ -3,8 +3,8 @@
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
 The working deliverable is `inventory.json`, initially assembled by `f2eaf2b`
-and updated with `e6704a7` using attribute support from `bf153ea`.
-SHA-256: `d9abcf0cb6a181373a38f9ef0ca42f0a61958d993662aa1331a8af0183e49122`.
+and updated through `eef10dd` using attribute support from `bf153ea`.
+SHA-256: `3a53d5cf7e64251d08f1d52408d27f4666fb72798ab5fb526afefd421199f8d9`.
 It is explicitly incomplete. It joins the currently recorded Better Mineshafts
 and CTOV size-group decisions to biome constraints, potential template content
 and saved-world observation references. It lists every unassigned registry ID
@@ -36,6 +36,17 @@ surface visibility. The updated committed-source output reproduced
 `evidence/raw/item8/inventory-mineshaft-attributes-reproduction1.json`.
 Three focused tests and scoped quality checks passed. Attribute updates cannot
 overwrite completion status, family membership or observation references.
+
+Source `eef10dd` assigns all five registered WDA Seven Seas vessel designs:
+Corsair Corvette, Pirate Junk, Small Yacht, Unicorn Galleon and Victory Frigate.
+Each has its own start pool and main hull template. Subordinate spawner pools
+and templates remain components, not additional families. The source-supported
+hostile encounter intent is recorded, while effective attributes remain open.
+The existing trace retains Small Yacht's missing
+`dungeons_arise_seven_seas:small_yacht/small_yacht_spawner_3` reference; no absent
+template is invented. Four focused grouping/assembly checks passed. Output
+`evidence/raw/item8/inventory-seven-seas-r1.json` reproduced byte for byte at
+`evidence/raw/item8/inventory-seven-seas-reproduction1.json`.
 
 The infrastructure requirements in
 `INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md` apply to this work. Reuse the
