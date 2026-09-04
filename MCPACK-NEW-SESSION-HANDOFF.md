@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-05
 
+Biome resolution increment: `3bc5d96` exposes the existing Item 7 tag resolver as
+`resolve_biome_tag` with optional `registered_biomes` filtering. Item 7's default
+packaged-reference behavior is unchanged. With a runtime registry supplied,
+absent optional biome IDs are excluded, absent required IDs remain explicit
+failures, and invalid nested tags do not contribute partial contents. Seven
+focused restriction/resolution tests and scoped Ruff/basedpyright checks passed.
+This is reusable calculation code, not a completed effective-biome artifact.
+Resolve tag contributions, conditions and pack precedence before applying it to
+the full family inventory; do not equate the old packaged restriction audit with
+runtime biome membership.
+
 Better Mineshafts grouping is now recorded in
 `evidence/item-8/family-decisions.json`: its 13 retained structure IDs belong to
 one specialized-generator family with biome/material/decoration/support variants.
