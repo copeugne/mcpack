@@ -6,6 +6,21 @@
 
 ### Item 8 implementation checkpoint
 
+Later continuation: the template pilot completed with exit zero. Its output is
+`evidence/raw/item8/templates-pilot1.json.gz`, SHA-256
+`9ffec196748525b0dc115a57e8141a67755e6c9d66ce056fbca667d8cb8ff3c0`.
+Do not restart or poll its old process as live. The output is not publishable as
+is: packaged templates contain authored profile/owner UUIDs and password fields.
+The delivered JSON catalog also contains three authored profile components.
+AGENTS.md's prohibition on player UUIDs requires a narrow correction to these
+derived catalogs before further acceptance. This concrete publication boundary
+cannot be fixed by family grouping or existing configuration-secret redaction.
+Use `tools.redact_item8_catalog` to preserve original archive/member identities,
+record omitted field paths, and emit publishable derivatives. Keep original raw
+catalogs outside ordinary Git. Correct the delivered JSON artifact and its index
+bindings without rewriting existing Git history. This is a privacy correction,
+not another runtime experiment or a new family acceptance gate.
+
 This checkpoint supersedes the older branch and `READY, not started` statements
 below. Item 8 is IN PROGRESS on `codex/item-8-completion`, delivered through
 `0315f21629843e1fe5eae93eafb3e26f6702819f`. No Item 8 completion gate or review is
