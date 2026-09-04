@@ -4,6 +4,12 @@
 
 ## Current continuation checkpoint - 2026-09-04
 
+### Item 7 scope-control incident
+
+Item 7 exceeded the intended completion-efficiency boundary during repeated r10 and r11 review repair. A real flush-correlation defect required a narrow empirical replacement, but locally defensible validators, receipts, custody revisions, and repeat checks accumulated without a hard comparison against the smallest `SPECS.md` exit gate. Do not repeat that pattern. Treat scope growth itself as blocking: before adding any new evidence class, schema, receipt, validator, archive revision, review framework, or broader regression surface, prove that the demonstrated defect cannot be fixed inside the existing path and record the reason here. Otherwise reject the addition.
+
+The frozen remaining Item 7 path is limited to repairing the observed recovery-runner failures, rerunning the 12 existing archived worlds without regenerating world-generation evidence, packaging the resulting logs and receipts through the existing archive path, running the existing completion gate once, completing exact-SHA review, updating PR #15, obtaining a clean GitHub Codex review, merging, and verifying `origin/main`. Do not add another acceptance layer. The first r12 recovery attempt is rejected: concurrent servers collided on the configured port, one completed flush was killed by the runner's post-stop process timeout, and interruption left child process groups alive until explicitly terminated. Preserve that disposition in later Item 7 closure evidence.
+
 This section supersedes the dated status and restart instructions below. Preserve the rest of this file as recovery history. `SPECS.md` remains the dependency-ordered requirements authority, and `Adventure-Engineering-Pack-Execution-Ledger.md` remains the status and evidence vocabulary authority.
 
 ### Git and delivery state

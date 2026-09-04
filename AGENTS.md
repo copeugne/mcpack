@@ -73,6 +73,7 @@
 
 ## Completion efficiency
 
+- Treat scope growth as a blocking defect. Before adding a new evidence class, schema, receipt, validator, archive revision, review framework, or broader regression surface, compare it directly with the current `SPECS.md` exit gate and the demonstrated defect. Proceed only when the defect cannot be fixed within the existing path, record that reason in the active handoff, and reject cumulative locally reasonable additions that expand the item beyond its smallest complete proof.
 - Define the smallest evidence set and validation surface that directly prove the current item exit gate before implementation expands.
 - After the required behavior, focused tests, manual surface check, evidence, and affected quality checks pass, stop local expansion and open the pull request promptly.
 - Do not add validators, receipts, review frameworks, adversarial matrices, or duplicate evidence merely to make an already-passing item feel safer. Add them only when `SPECS.md` requires them, a real trust or safety boundary requires them, or a concrete defect has been reproduced.
