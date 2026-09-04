@@ -7,6 +7,7 @@ from typing import ClassVar
 
 import pytest
 from pydantic import BaseModel, ConfigDict, JsonValue
+from tools.render_item7_world import read_region_hashes
 
 from mcpack_evidence.item7_render import RenderInputError, RenderMetadata, render_jsonl
 
@@ -139,3 +140,37 @@ def test_renderer_streams_decoded_jsonl_without_reading_the_whole_file(
     render_jsonl(chunks, tmp_path / "render", _metadata())
 
     assert (tmp_path / "render/manifest.json").is_file()
+
+
+def test_render_cli_derives_dimension_region_hashes_from_world_manifest(tmp_path: Path) -> None:
+    manifest = tmp_path / "world-manifest.json"
+    payload = {
+        "schema_version": "item7-world-manifest-v1",
+        "mode": "run",
+        "regions": [
+            {
+                "path": "world/region/r.0.0.mca",
+                "dimension": "minecraft:overworld",
+                "region_x": 0,
+                "region_z": 0,
+                "size_bytes": 8192,
+                "sha256": REGION_HASH,
+                "zero_byte_placeholder": False,
+                "decoded_chunk_count": 1,
+            }
+        ],
+        "external_chunks": [],
+        "selections": [],
+        "extra_chunks": [],
+        "decoded": {
+            "path": "chunks.jsonl",
+            "size_bytes": 1,
+            "sha256": "b" * 64,
+            "record_count": 1,
+        },
+    }
+    _ = manifest.write_text(json.dumps(payload), encoding="utf-8")
+
+    hashes = read_region_hashes(manifest, "minecraft:overworld")
+
+    assert hashes == {"world/region/r.0.0.mca": REGION_HASH}
