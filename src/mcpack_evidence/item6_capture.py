@@ -69,6 +69,7 @@ def capture(instance: Path, output: Path) -> None:
         message = f"sanitization receipt already exists: {receipt}"
         raise FileExistsError(message)
     _require_directory(instance, "instance")
+    _require_external_destinations(instance, output, receipt)
     sources = tuple(instance / relative for relative in _DIRECTORIES)
     for source, relative in zip(sources, _DIRECTORIES, strict=True):
         _require_directory(source, relative)
@@ -158,3 +159,14 @@ def _require_no_nested_symlinks(path: Path, name: str) -> None:
         if candidate.is_symlink():
             message = f"required source tree contains a symlink: {name}"
             raise CaptureValidationError(message)
+
+
+def _require_external_destinations(instance: Path, *destinations: Path) -> None:
+    instance_root = instance.resolve(strict=True)
+    for destination in destinations:
+        try:
+            _ = destination.resolve(strict=False).relative_to(instance_root)
+        except ValueError:
+            continue
+        message = "capture destinations must remain outside the source instance"
+        raise CaptureValidationError(message)
