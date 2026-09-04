@@ -4,6 +4,26 @@
 
 ## Current continuation checkpoint - 2026-09-04
 
+### Continuation update - 2026-09-05
+
+Item 8 remains IN PROGRESS on `codex/item-8-completion`. Selected resource
+precedence is implemented in `b135beb`; it preserves known vanilla replacements
+and unresolved optional-pack exclusions. Pool tracing is implemented in
+`9fae9cf` and its frozen-input command in `f9fb51f`.
+`evidence/item-8/sources/pool-traces.json.gz` was reproduced byte for byte and
+records 818 direct start-pool traces plus 69 explicit custom-generation cases.
+These are registry entries, not canonical families. The source README records
+identities, reproduction and limitations. Focused tracing tests, Ruff and
+basedpyright passed. No server or extraction process is running.
+
+Next: resolve aliases, custom generation and dynamic injection in the existing
+inventory path; retain unresolved optional references until their activation is
+proved. Bind Item 7 actual generated-world bounds and observations, then complete
+canonical families and all Item 8 attributes. Runtime raw log/configuration and
+level.dat durability remains outstanding. No local exit gate, clean final Codex
+review, pull request merge or Item 8 completion is claimed. The Item 7 review
+exception remains specific to Item 7. Do not begin Items 9, 10 or 11.
+
 ### Item 8 implementation checkpoint
 
 Latest delivered state: `34fceec4566223c2d5f869955d1a84fdac00a546` on
