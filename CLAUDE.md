@@ -13,6 +13,10 @@
 
 - Use `uv` for every Python command and dependency operation.
 - Choose the simplest complete solution. Do not over-complicate or over-engineer.
+- Do not add an abstraction, schema or validator, receipt, compatibility layer, generalized helper, fallback, or future-proofing unless the user or specification directly requires it, it fixes a reproduced defect, or it serves multiple current consumers.
+- Prefer the smaller direct change in the existing path when it satisfies the current requirement.
+- If implementation scope grows materially beyond the smallest expected change, pause and reassess the design before adding more machinery.
+- Stop adding machinery once required behavior and proportionate validation pass.
 - Reuse existing implementations and patterns. Do not create duplicate functions, classes, or variants.
 - Do the actual required work. Do not substitute shortcuts, simplifications, or approximations.
 - Do not fail silently or add unneeded speculative fallbacks. Errors and exceptions must be clear and descriptive.
