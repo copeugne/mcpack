@@ -4,6 +4,38 @@
 
 ## Current continuation checkpoint - 2026-09-04
 
+### Item 8 implementation checkpoint
+
+This checkpoint supersedes the older branch and `READY, not started` statements
+below. Item 8 is IN PROGRESS on `codex/item-8-completion`, delivered through
+`0315f21629843e1fe5eae93eafb3e26f6702819f`. No Item 8 completion gate or review is
+claimed. The user-authorized Item 7 review exception below remains unchanged.
+
+- The exact retained-136 registry capture completed under source `367ba59`.
+  Seven registry dumps and the original receipt are committed under
+  `evidence/item-8/runtime/registry-r1`. They contain 887 structure registry IDs,
+  not an accepted family count. Full logs and configuration still require durable
+  delivery from `evidence/raw/item8/registry-r1` before closure.
+- The packaged JSON catalog and reproduction instructions are committed under
+  `evidence/item-8/sources`. Competing definitions and optional-pack paths remain
+  separate. The empty CTOV process-list tag remains an explicit parse failure.
+- Source `4cb8ce5` extends the same extractor to template NBT, preserving size,
+  palettes, block-state counts, block entity NBT, and authored entities. Its 27
+  Item 8 tests passed. Scoped Ruff and basedpyright passed. Re-extraction of the
+  JSON catalog remained byte-identical to the committed artifact.
+- Template pilot command: `uv run -m tools.extract_item8_sources --kind template
+  --output evidence/raw/item8/templates-pilot1.json.gz`. The pilot was started
+  before the equivalent implementation was committed. At this checkpoint its
+  exec session `97479` and process `627414` are live, with log at
+  `evidence/raw/item8/templates-pilot1.log`. Poll the existing session or inspect
+  that process before deciding whether it terminated. Do not restart because an
+  observation call times out. No template output has been accepted yet.
+- Remaining: finish template extraction; deliver full runtime custody; resolve
+  runtime resources, variants, replacements, injected buildings and feature-based
+  structures into canonical families; bind Item 7 generated-world observations;
+  complete every Item 8 attribute; validate the full gate; complete a clean final
+  Codex PR review loop and verified nonsquash merge. No Item 9, 10, or 11 work.
+
 ### User-authorized Item 8 continuation
 
 The user explicitly authorized proceeding to Item 8 after being informed that GitHub does not show a final clean Codex review of Item 7's merged head. This is a user-authorized exception to the review prerequisite for the already delivered Item 7, not evidence that the missing review occurred. Item 7's completion receipt was rebuilt byte for byte and its 210 tests passed during the continuation audit. Preserve its accepted r14 evidence without another custody revision. The earlier statement below that no review work remains must be read with this explicit exception.
