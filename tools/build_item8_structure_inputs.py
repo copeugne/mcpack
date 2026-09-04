@@ -36,6 +36,68 @@ DYNAMIC_INPUTS = {
 }
 
 
+RUNTIME_LOG = "evidence/raw/item8/registry-r1/debug.log"
+INSPECTION = "evidence/item-3/jar-inspection.json"
+ORDER_INPUTS = {
+    RUNTIME_LOG: "e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b",
+    INSPECTION: "4f888ae07fd72daaf057833904aa1fd37e3b6d3c24f00071e15b99c6b197b64e",
+}
+ORDER_ARCHIVES = (
+    "BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar",
+    "Terralith_1.21.1_v2.6.2_Neoforge.jar",
+    "regions-unexplored-0.6.1-neoforge-21.1.jar",
+    "t_and_t-neoforge-fabric-1.13.9+1.21.1.jar",
+)
+
+
+def runtime_order(log: str, archive_packs: dict[str, str]) -> dict[str, JsonValue]:
+    """Retain the final expanded sorting record and order the inspected contributors."""
+    marker = "[net.fabricmc.fabric.impl.resource.loader.ModResourcePackUtil/]: "
+    marker += "[Fabric] Final sorting result: "
+    records = [(number, line) for number, line in enumerate(log.splitlines(), 1) if marker in line]
+    if not records:
+        message = "runtime log lacks final expanded resource pack sorting"
+        raise ValueError(message)
+    number, line = records[-1]
+    payload = line.split(marker, 1)[1]
+    if not payload.startswith("[") or not payload.endswith("]"):
+        message = "malformed expanded resource pack sorting record"
+        raise ValueError(message)
+    packs = payload[1:-1].split(", ")
+    if len(packs) != len(set(packs)) or not set(archive_packs.values()) <= set(packs):
+        message = "expanded sorting has duplicate packs or lacks an inspected contributor"
+        raise ValueError(message)
+    archives = sorted(archive_packs, key=lambda archive: packs.index(archive_packs[archive]))
+    return {
+        "source": RUNTIME_LOG,
+        "source_sha256": ORDER_INPUTS[RUNTIME_LOG],
+        "line": number,
+        "record": line,
+        "archive_packs": dict(archive_packs),
+        "archives": cast("JsonValue", archives),
+    }
+
+
+def inspected_archive_packs() -> dict[str, str]:
+    """Bind the four competing contributors to their inspected NeoForge mod IDs."""
+    inspection = cast("dict[str, JsonValue]", json.loads((ROOT / INSPECTION).read_bytes()))
+    candidates = cast("list[dict[str, JsonValue]]", inspection["candidates"])
+    archive_packs = {
+        "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar": "vanilla"
+    }
+    for archive in ORDER_ARCHIVES:
+        row = next(row for row in candidates if row["candidate_filename"] == archive)
+        mods = cast("list[dict[str, str]]", row["mods"])
+        identifiers = {
+            mod["mod_id"] for mod in mods if mod["source_path"] == "META-INF/neoforge.mods.toml"
+        }
+        if len(identifiers) != 1:
+            message = f"ambiguous inspected mod pack identity: {archive}"
+            raise ValueError(message)
+        archive_packs[archive] = f"mod/{identifiers.pop()}"
+    return archive_packs
+
+
 def main() -> None:
     """Read the delivered source identities and write the deterministic relationship index."""
     parser = argparse.ArgumentParser(description=__doc__)
@@ -46,6 +108,7 @@ def main() -> None:
         REGISTRY_PATH: REGISTRY_SHA256,
         BIOMES_PATH: BIOMES_SHA256,
         **DYNAMIC_INPUTS,
+        **ORDER_INPUTS,
     }
     for relative, digest in inputs.items():
         if hashlib.sha256((ROOT / relative).read_bytes()).hexdigest() != digest:
@@ -73,7 +136,9 @@ def main() -> None:
     registry = read_registry(ROOT / REGISTRY_PATH)
     result = structure_inputs(registry, resources)
     result["size_variant_groups"] = size_variant_groups(registry, resources)
-    tags = biome_tag_inputs(resources)
+    order = runtime_order((ROOT / RUNTIME_LOG).read_text(), inspected_archive_packs())
+    result["biome_archive_order"] = order
+    tags = biome_tag_inputs(resources, tuple(cast("list[str]", order["archives"])))
     config = cast(
         "dict[str, JsonValue]", tomllib.loads((ROOT / SUPPLEMENTARIES_CONFIG).read_text())
     )
