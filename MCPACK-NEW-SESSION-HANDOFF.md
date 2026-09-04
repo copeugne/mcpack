@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-05
 
+Latest delivered trace correction: `fba2e84` retains
+`evidence/item-8/sources/pool-traces-aliases.json.gz`. Use it instead of the
+preserved first `pool-traces.json.gz`. Implementation `dc96708` follows declared
+positive-weight alias alternatives, keeps alias IDs separate from actual pools,
+and preserves original weighted groups without claiming joint occurrence.
+Trial Chambers' four alias references now resolve to its declared spawner
+templates. Focused tests and scoped quality checks passed; committed-source
+output reproduced the pilot byte for byte. The remaining custom-generation and
+missing-resource cases still require disposition before final family attributes.
+
 Later delivered increment: `1d2659e` adds
 `evidence/item-8/sources/world-bounds.json.gz`. It contains 792 saved structure
 starts from the eight hash-verified Item 7 r14 decoded streams. Every piece box,
