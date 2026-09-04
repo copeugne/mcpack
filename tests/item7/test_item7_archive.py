@@ -6,6 +6,7 @@ import tarfile
 from pathlib import Path
 
 import pytest
+from pydantic import ValidationError
 from tools.archive_item7_evidence import run
 
 import mcpack_evidence.item7_archive as archive
@@ -205,6 +206,22 @@ def test_restore_rejects_inconsistent_manifest_count(tmp_path: Path) -> None:
     # Then
     assert not request.target.exists()
     assert not request.receipt.exists()
+
+
+def test_restore_rejects_coerced_manifest_scalar(tmp_path: Path) -> None:
+    request = _create_request(tmp_path, "item7-raw-coerced.tar.gz")
+    _ = archive.create_archive(request)
+    original = request.manifest.read_text(encoding="utf-8")
+    coerced = original.replace('"file_count": 1', '"file_count": "1"')
+    assert coerced != original
+    _ = request.manifest.write_text(coerced, encoding="utf-8")
+    restore = _restore_request(tmp_path, request.archive, request.manifest)
+
+    with pytest.raises(ValidationError, match="valid integer"):
+        _ = archive.restore_archive(restore)
+
+    assert not restore.target.exists()
+    assert not restore.receipt.exists()
 
 
 def test_refuses_existing_archive_manifest_target_and_receipt(tmp_path: Path) -> None:

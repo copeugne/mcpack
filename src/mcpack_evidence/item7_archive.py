@@ -86,7 +86,7 @@ class _ArchiveIssue(StrEnum):
 
 
 class _EvidenceModel(BaseModel):
-    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid")
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True, extra="forbid", strict=True)
 
 
 class FileIdentity(_EvidenceModel):
