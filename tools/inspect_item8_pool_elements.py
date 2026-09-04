@@ -10,11 +10,20 @@ from pathlib import Path
 from typing import cast
 from zipfile import ZipFile
 
+from mcpack_evidence.item7_restriction_inputs import ArchiveInput
 from mcpack_evidence.item8_sources import retained_sources
 
 ROOT = Path(__file__).resolve().parents[1]
+MAPPED_SERVER = ArchiveInput(
+    "server-1.21.1-20240808.144430-srg.jar",
+    ROOT
+    / "instances/pristine-baseline-v0/libraries/net/minecraft/server"
+    / "1.21.1-20240808.144430/server-1.21.1-20240808.144430-srg.jar",
+    "26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71",
+)
 ARCHIVES = frozenset(
     {
+        MAPPED_SERVER.name,
         "YungsApi-1.21.1-NeoForge-5.1.6.jar",
         "integrated_api-1.7.3+1.21.1-neoforge.jar",
         "moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar",
@@ -37,6 +46,10 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES = (
+    "net/minecraft/world/level/levelgen/structure/pools/SinglePoolElement.class",
+    "net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement$Placer.class",
+    "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager.class",
+    "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.class",
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs.class",
     "YungJigsawSinglePoolElement.class",
     "IASinglePoolElement.class",
@@ -77,7 +90,7 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
     output.mkdir(parents=True, exist_ok=False)
     javap = ROOT / "downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap"
     identities: list[dict[str, str]] = []
-    for source in retained_sources(ROOT):
+    for source in (*retained_sources(ROOT), MAPPED_SERVER):
         if source.name not in ARCHIVES:
             continue
         if selected_archive is not None and source.name != selected_archive:
@@ -102,6 +115,8 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
             for name in sorted(archive.namelist()):
                 if not name.endswith(".class"):
                     continue
+                if source.name == MAPPED_SERVER.name and name not in CLASSES[:4]:
+                    continue
                 payload = archive.read(name)
                 if (
                     not name.startswith(GENERATION_PREFIXES)
@@ -110,13 +125,14 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                 ):
                     continue
                 class_name = name.removesuffix(".class").replace("/", ".")
+                verbose = "/mixin/" in name or name == CLASSES[0]
                 result = subprocess.run(  # noqa: S603 - pinned javap and verified retained JAR.
                     [
                         str(javap),
                         "-p",
                         "-c",
                         "-constants",
-                        *(["-v"] if "/mixin/" in name else []),
+                        *(["-v"] if verbose else []),
                         "-classpath",
                         str(source.path),
                         class_name,
@@ -125,7 +141,7 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     capture_output=True,
                 )
                 disassembly = result.stdout
-                if "/mixin/" in name:
+                if verbose:
                     if not disassembly.startswith(b"Classfile "):
                         message = f"verbose javap lacks expected classfile header: {name}"
                         raise ValueError(message)
