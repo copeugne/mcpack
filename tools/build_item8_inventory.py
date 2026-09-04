@@ -66,6 +66,19 @@ def assemble(
             index for index, row in enumerate(observations) if row["structure_id"] in members
         ]
         dimensions = sorted({str(observations[index]["dimension"]) for index in world_rows})
+        loot_sources: dict[tuple[str, str], list[str]] = {}
+        for template in templates:
+            references = cast(
+                "list[dict[str, JsonValue]]", template_contents[template]["loot_references"]
+            )
+            for reference in references:
+                key = (
+                    str(reference["path"]).rsplit("/", 1)[-1],
+                    json.dumps(reference["value"], sort_keys=True),
+                )
+                owners = loot_sources.setdefault(key, [])
+                if template not in owners:
+                    owners.append(template)
         content: dict[str, JsonValue] = {
             "artifact": TRACES,
             "template_ids": cast("JsonValue", templates),
@@ -94,11 +107,14 @@ def assemble(
             "loot_table_source": {
                 **content,
                 "fields": ["loot_references"],
-                "packaged_references_by_template": {
-                    template: template_contents[template]["loot_references"]
-                    for template in templates
-                    if template_contents[template]["loot_references"]
-                },
+                "packaged_references": [
+                    {
+                        "field": field,
+                        "value": cast("JsonValue", json.loads(value)),
+                        "templates": cast("JsonValue", owners),
+                    }
+                    for (field, value), owners in sorted(loot_sources.items())
+                ],
             },
             "generated_spawners": {**content, "fields": ["spawner_blocks", "generation_markers"]},
             "authored_or_natural_enemies": (

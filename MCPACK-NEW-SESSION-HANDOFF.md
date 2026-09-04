@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Loot attribution scope reassessment: the first `136ee84` output duplicated
+over thirteen thousand source-reference lines in the inventory. That is larger
+than Item 8's loot-source requirement needs. Keep exact NBT paths in the existing
+content trace and summarize distinct field/value pairs with source-template
+owners in the inventory. Preserve list-valued references and distinguish
+container LootTable from entity DeathLootTable. This direct change in the existing
+builder avoids another evidence class or framework. The detailed pilot and its
+reproduction remain local historical outputs, not accepted inventory artifacts.
+
 WDA root coverage is now delivered through `380e572`, using source decisions
 from `559edc0`, `d20b0c6`, `007d1f9` and `6540055`. All forty registered WDA
 layouts are assigned once. The existing authored-design test now covers WDA
