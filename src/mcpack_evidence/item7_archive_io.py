@@ -132,6 +132,7 @@ def sha256_descriptor(descriptor: int) -> str:
 
 
 def _walk(directory: int, prefix: PurePosixPath, files: list[OpenedFile]) -> None:
+    _ = os.lseek(directory, 0, os.SEEK_SET)
     for name in sorted(os.listdir(directory)):
         if name in {"", ".", ".."} or "/" in name:
             raise UnsafeFilesystemError(_FilesystemIssue.UNSAFE_ENTRY, name)

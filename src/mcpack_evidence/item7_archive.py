@@ -287,7 +287,12 @@ def _verify_restored_tree(staging: StagingTree, manifest: ArchiveManifest) -> No
             for row in files
         )
     if restored != manifest.files:
-        raise ArchiveValidationError(_ArchiveIssue.RESTORED_HASH)
+        for expected, actual in zip(manifest.files, restored, strict=False):
+            if expected != actual:
+                detail = f"expected {expected.model_dump()} but restored {actual.model_dump()}"
+                raise ArchiveValidationError(_ArchiveIssue.RESTORED_HASH, detail)
+        detail = f"expected {len(manifest.files)} files but restored {len(restored)}"
+        raise ArchiveValidationError(_ArchiveIssue.RESTORED_HASH, detail)
 
 
 def _require_relative_path(value: str) -> str:

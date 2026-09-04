@@ -1,19 +1,20 @@
 from __future__ import annotations
 
+import os
 import tarfile
+from pathlib import PurePosixPath
 from typing import TYPE_CHECKING, cast
 
 import pytest
 
 import mcpack_evidence.item7_archive as archive
-from mcpack_evidence.item7_archive_io import (
-    duplicate_stream as open_descriptor_stream,
-)
+from mcpack_evidence.item7_archive_io import duplicate_stream as open_descriptor_stream
+from mcpack_evidence.item7_archive_io import open_directory, open_tree_at
 from mcpack_evidence.item7_stage_output import StagingTree
 
 if TYPE_CHECKING:
     from collections.abc import Callable
-    from pathlib import Path, PurePosixPath
+    from pathlib import Path
     from typing import IO, BinaryIO
 
     from mcpack_evidence.item7_archive_io import OpenedFile
@@ -65,6 +66,17 @@ def test_restore_refuses_concurrently_created_target(
     assert created_target
     assert request.target.is_dir()
     assert not request.receipt.exists()
+
+
+def test_tree_scan_rewinds_pinned_directory(tmp_path: Path) -> None:
+    root = tmp_path / "root"
+    root.mkdir()
+    _ = (root / "evidence.bin").write_bytes(b"trusted")
+
+    with open_directory(root) as descriptor:
+        _ = os.lseek(descriptor, 1 << 20, os.SEEK_SET)
+        with open_tree_at(descriptor, PurePosixPath()) as files:
+            assert tuple(row.relative_path for row in files) == ("evidence.bin",)
 
 
 def test_manifest_binds_bytes_archived_after_source_change(
