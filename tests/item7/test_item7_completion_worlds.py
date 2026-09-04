@@ -19,17 +19,31 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
-def _archive_pair(root: Path, index: int, name: str) -> tuple[Path, Path]:
+def _archive_pair(
+    root: Path,
+    index: int,
+    name: str,
+    relative_path: str | None,
+) -> tuple[Path, Path]:
     manifest = root / f"manifest-{index}.json"
+    files: list[JsonValue] = []
+    if relative_path is not None:
+        files.append(
+            {
+                "relative_path": relative_path,
+                "size_bytes": 8192,
+                "sha256": "c" * 64,
+            }
+        )
     payload: dict[str, JsonValue] = {
         "schema_version": "item7-raw-evidence-archive-v1",
         "revision": "a" * 40,
         "archive_name": name,
         "archive_size_bytes": 0,
         "archive_sha256": "b" * 64,
-        "file_count": 0,
-        "total_size_bytes": 0,
-        "files": [],
+        "file_count": len(files),
+        "total_size_bytes": 8192 * len(files),
+        "files": files,
     }
     _ = manifest.write_text(json.dumps(payload), encoding="utf-8")
     receipt = root / f"receipt-{index}.json"
@@ -42,8 +56,8 @@ def _archive_pair(root: Path, index: int, name: str) -> tuple[Path, Path]:
                 "archive_sha256": "b" * 64,
                 "manifest_sha256": hashlib.sha256(manifest.read_bytes()).hexdigest(),
                 "restored_target": str(root / f"restore-{index}"),
-                "file_count": 0,
-                "total_size_bytes": 0,
+                "file_count": len(files),
+                "total_size_bytes": 8192 * len(files),
                 "verified": True,
             }
         ),
@@ -73,16 +87,24 @@ def test_world_archive_inventory_hashes_every_staged_file(tmp_path: Path) -> Non
 
 
 def test_completion_rejects_world_archive_missing_expected_region(tmp_path: Path) -> None:
+    definitions = (
+        ("mcpack-item7-raw-core-r4.tar.gz", None),
+        (
+            "mcpack-item7-raw-run-a-worlds-r4.tar.gz",
+            "run-a-ordinary/world/region/r.1.0.mca",
+        ),
+        (
+            "mcpack-item7-raw-run-b-worlds-r4.tar.gz",
+            "run-b-ordinary/world/region/r.0.0.mca",
+        ),
+        (
+            "mcpack-item7-raw-auxiliary-worlds-r4.tar.gz",
+            "control/world/region/r.0.0.mca",
+        ),
+    )
     pairs = tuple(
-        _archive_pair(tmp_path, index, name)
-        for index, name in enumerate(
-            (
-                "mcpack-item7-raw-core-r4.tar.gz",
-                "mcpack-item7-raw-run-a-worlds-r4.tar.gz",
-                "mcpack-item7-raw-run-b-worlds-r4.tar.gz",
-                "mcpack-item7-raw-auxiliary-worlds-r4.tar.gz",
-            )
-        )
+        _archive_pair(tmp_path, index, name, relative_path)
+        for index, (name, relative_path) in enumerate(definitions)
     )
     inventory = tmp_path / "world-archive-inventory.json"
     _ = inventory.write_text(
@@ -102,11 +124,23 @@ def test_completion_rejects_world_archive_missing_expected_region(tmp_path: Path
                     },
                     {
                         "archive_name": "mcpack-item7-raw-run-b-worlds-r4.tar.gz",
-                        "files": [],
+                        "files": [
+                            {
+                                "relative_path": "run-b-ordinary/world/region/r.0.0.mca",
+                                "size_bytes": 8192,
+                                "sha256": "c" * 64,
+                            }
+                        ],
                     },
                     {
                         "archive_name": "mcpack-item7-raw-auxiliary-worlds-r4.tar.gz",
-                        "files": [],
+                        "files": [
+                            {
+                                "relative_path": "control/world/region/r.0.0.mca",
+                                "size_bytes": 8192,
+                                "sha256": "c" * 64,
+                            }
+                        ],
                     },
                 ],
             }
@@ -114,7 +148,10 @@ def test_completion_rejects_world_archive_missing_expected_region(tmp_path: Path
         encoding="utf-8",
     )
 
-    with pytest.raises(CompletionError, match="world archive inventory"):
+    with pytest.raises(
+        CompletionError,
+        match=r"world archive inventory: mcpack-item7-raw-run-a-worlds-r4\.tar\.gz",
+    ):
         _ = validate_archives(
             tuple(pair[0] for pair in pairs),
             tuple(pair[1] for pair in pairs),
