@@ -105,3 +105,30 @@ true. The runtime context is preserved in
 `evidence/item-8/runtime/registry-r1/world-context.json`. These inputs support
 resolving the competing packaged resources; the inventory must still distinguish
 selected resources, unselected alternatives, and unresolved conditions.
+
+## Potential pool relationships
+
+`pool-traces.json.gz` records direct start-pool walks for 818 registered structure
+IDs and explicitly lists the other 69 IDs for custom generation inspection.
+SHA-256: `d09325da6389180f95f6687f8479374b35b54a8cea81badca6d9540734abe920`.
+Size: 157,886 bytes. Implementation: `f9fb51f`, using the selected-resource
+rules in `b135beb` and tracing implementation in `9fae9cf`.
+
+```sh
+uv run -m tools.trace_item8_structure_pools --output evidence/raw/item8/pool-traces-reproduction.json.gz
+cmp evidence/item-8/sources/pool-traces.json.gz evidence/raw/item8/pool-traces-reproduction.json.gz
+```
+
+The committed-source run reproduced the successful pilot byte for byte. An
+earlier attempt stopped before writing output because the frozen Lithostitched
+configuration contains comments. The tool now reads the already inspected
+setting from that exact hash-verified configuration.
+
+This is a partial relationship result, not the final inventory. Missing pools
+and templates remain explicit. Pool aliases are retained in each structure's
+context but are not resolved by this walk. Inline features and processor-list
+references remain terminal edges. Potential fallback and jigsaw paths are not
+proof of assembly feasibility, generated contents, probabilities, or footprint.
+Optional-pack exclusions remain unresolved where activation has not been proved.
+Custom generation, dynamic injection, processors, aliases and generated-world
+observations still need to be incorporated before assigning family attributes.
