@@ -16,11 +16,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     _ = parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     _ = parser.add_argument("--output", type=Path, required=True)
-    _ = parser.add_argument("--kind", choices=("json", "template"), default="json")
+    _ = parser.add_argument("--kind", choices=("json", "template", "metadata"), default="json")
     args = parser.parse_args()
     root = cast("Path", args.root)
     output = cast("Path", args.output)
-    kind = cast("Literal['json', 'template']", args.kind)
+    kind = cast("Literal['json', 'template', 'metadata']", args.kind)
     result = packaged_sources(retained_sources(root), kind)
     raw = (json.dumps(result, sort_keys=True, separators=(",", ":")) + "\n").encode()
     with output.open("xb") as stream:

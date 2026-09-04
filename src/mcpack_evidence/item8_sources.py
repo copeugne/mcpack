@@ -63,7 +63,7 @@ def retained_sources(root: Path) -> tuple[ArchiveInput, ...]:
 
 
 def packaged_sources(
-    sources: tuple[ArchiveInput, ...], kind: Literal["json", "template"] = "json"
+    sources: tuple[ArchiveInput, ...], kind: Literal["json", "template", "metadata"] = "json"
 ) -> dict[str, JsonValue]:
     """Preserve packaged resources without inferring runtime activation."""
     archives: list[JsonValue] = []
@@ -84,7 +84,10 @@ def packaged_sources(
 
 
 def _collect(
-    payload: bytes, location: str, resources: list[JsonValue], kind: Literal["json", "template"]
+    payload: bytes,
+    location: str,
+    resources: list[JsonValue],
+    kind: Literal["json", "template", "metadata"],
 ) -> None:
     with ZipFile(BytesIO(payload)) as archive:
         names = archive.namelist()
@@ -109,7 +112,9 @@ def _collect(
                         "document": template_summary(raw),
                     }
                 )
-            elif kind == "json" and name.endswith(".json") and "data" in path.parts:
+            elif (kind == "json" and name.endswith(".json") and "data" in path.parts) or (
+                kind == "metadata" and path.name == "pack.mcmeta"
+            ):
                 raw = archive.read(name)
                 try:
                     value, parser = _parse_json(raw, f"{location}!/{name}")
