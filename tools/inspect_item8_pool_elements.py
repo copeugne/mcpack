@@ -37,6 +37,7 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES = (
+    "net/mehvahdjukaar/supplementaries/configs/CommonConfigs.class",
     "YungJigsawSinglePoolElement.class",
     "IASinglePoolElement.class",
     "VersionAwareSinglePoolElement.class",
