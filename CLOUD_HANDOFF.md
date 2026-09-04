@@ -8,7 +8,7 @@ This section supersedes the dated status and restart instructions below. Preserv
 
 ### Git and delivery state
 
-- A fresh fetch on 2026-09-04 found `origin/main` at `eb84d842a7b108863dcdd4c86435a875f8a0c575` with no newer remote commits. The active branch is `experiment/item-7-worldgen-audit`, based on that ref. The current local r11 evidence milestone is `3c69865`; final documentation reconciliation and exact-SHA review remain.
+- A fresh fetch on 2026-09-04 found `origin/main` at `eb84d842a7b108863dcdd4c86435a875f8a0c575` with no newer remote commits. The active branch is `experiment/item-7-worldgen-audit`, based on that ref. Revision `44fc86af4c735f30c82e41e7e490029c5f62456b` is clean-export validated; exact-SHA review remains.
 - PR #11 merged Item 5 delivery as `398bf59b3a89669ec402026d52250c2b86e54047`.
 - PR #12 merged the initial Item 6 generated-default capture as `895ed1d999cd22ca511035e666ad8ac308ae63c1`.
 - PR #14 merged the completed Item 6 audit as `f38ea66ecc28911c33d525dcde26434853673ad3`. Its final Codex review completed against `96a914c8a457d2f23698cdaeba18c6ed899b56d1` and reported no major issues. The GitHub API currently exposes no thumbs-up reaction on that cycle, so do not claim that reaction; preserve this as a review-record discrepancy unless later evidence resolves it.
@@ -34,7 +34,7 @@ This section supersedes the dated status and restart instructions below. Preserv
 | 10 | `BLOCKED` by Items 7 through 9 | Regenerate and preserve predeclared density evidence only after the preceding gates pass. |
 | 11 | `BLOCKED` | Do not implement, run, repair, or lint Item 11 before the final Items 2 through 10 audit passes. It also requires at least two blind human operators. |
 
-The Item 7 completion command returns `PASS` and records 138 exact artifacts in `evidence/item-7/completion.json`, whose SHA-256 is `ecfef0a93778dc75bc5d0ec3bb11ee1692eb90d55106a0b81483251366ed88ed`. The r11 world archive inventory binds 716 files at SHA-256 `7907bfd705bb8b1b7e794133e634e59ba1d3a694210353da65193eff7dd79027`. The r11 save-order audit has SHA-256 `55ef4a83a0c618520f05110c216e66d4915615141ff43fc7a963e6fdb249dd12`. All four r11 archives restored through pinned descriptors and the repository-bound verifier downloaded every asset twice with matching size and SHA-256. The current source gate passes 197 Item 7 tests, Ruff, and basedpyright with zero findings. Clean export, fresh exact-SHA review, GitHub Codex review, merge, and delivered-ref verification remain.
+The Item 7 completion command returns `PASS` and records 138 exact artifacts in `evidence/item-7/completion.json`, whose SHA-256 is `ecfef0a93778dc75bc5d0ec3bb11ee1692eb90d55106a0b81483251366ed88ed`. The r11 world archive inventory binds 716 files at SHA-256 `7907bfd705bb8b1b7e794133e634e59ba1d3a694210353da65193eff7dd79027`. The r11 save-order audit has SHA-256 `55ef4a83a0c618520f05110c216e66d4915615141ff43fc7a963e6fdb249dd12`. All four r11 archives restored through pinned descriptors and the repository-bound verifier downloaded every asset twice with matching size and SHA-256. Clean export `44fc86af4c735f30c82e41e7e490029c5f62456b` passed 197 Item 7 tests, 878 repository tests, Ruff, basedpyright with zero findings, shell syntax, and byte-identical rebuilds of the inventory, save audit, and completion receipt. Fresh exact-SHA review, GitHub Codex review, merge, and delivered-ref verification remain.
 
 ### Exact continuation point
 

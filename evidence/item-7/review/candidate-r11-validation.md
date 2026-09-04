@@ -98,9 +98,17 @@ The completion builder returns `PASS`. It rebuilds all 16 accepted analyses from
 
 ## Current validation state
 
+Clean export revision `44fc86af4c735f30c82e41e7e490029c5f62456b` passed:
+
 - Item 7 tests: 197 passed.
-- Scoped Ruff checks: passed.
-- Scoped basedpyright: zero errors, warnings, or notes.
-- Inventory rebuild: 716 files, `PASS`.
-- Completion rebuild: 138 artifacts, `PASS`.
-- Final clean-export, exact-SHA review lanes, and GitHub review remain delivery gates rather than completed claims in this record.
+- Repository tests: 878 passed.
+- Ruff formatting: 118 files already formatted.
+- Ruff lint: all checks passed.
+- basedpyright: zero errors, warnings, or notes.
+- Shell syntax: passed for the staging and release-verification scripts.
+- Repository diff check: passed.
+- Inventory rebuild: 716 files, byte-identical at SHA-256 `7907bfd705bb8b1b7e794133e634e59ba1d3a694210353da65193eff7dd79027`.
+- Save-order rebuild: 12 lifecycles, byte-identical at SHA-256 `55ef4a83a0c618520f05110c216e66d4915615141ff43fc7a963e6fdb249dd12`.
+- Completion rebuild: 138 artifacts, byte-identical at SHA-256 `ecfef0a93778dc75bc5d0ec3bb11ee1692eb90d55106a0b81483251366ed88ed`, `PASS`.
+
+Exact-SHA review lanes and GitHub review remain delivery gates rather than completed claims in this record.
