@@ -69,6 +69,15 @@
 - Machine-readable and narrative outputs must agree exactly. Validators must bind claims to preserved artifacts and fail on omissions, unexplained files, escaped paths, changed hashes, unknown fields, or identity mismatches.
 - A server reaching readiness proves only that lifecycle point. It does not prove gameplay, compatibility, persistence, performance, or scientific reproducibility.
 
+## Completion efficiency
+
+- Define the smallest evidence set and validation surface that directly prove the current item exit gate before implementation expands.
+- After the required behavior, focused tests, manual surface check, evidence, and affected quality checks pass, stop local expansion and open the pull request promptly.
+- Do not add validators, receipts, review frameworks, adversarial matrices, or duplicate evidence merely to make an already-passing item feel safer. Add them only when `SPECS.md` requires them, a real trust or safety boundary requires them, or a concrete defect has been reproduced.
+- Treat review findings narrowly. Fix the demonstrated defect and its direct regression without generalizing it into a redesign of neighboring clean code.
+- After a narrow fix, rerun affected checks. Run the full applicable gate once before pushing or merging, but do not repeat unchanged validation solely for reassurance.
+- These limits prevent process growth, not required rigor. Explicit specification gates and material correctness, security, privacy, reproducibility, and data-integrity risks remain mandatory.
+
 ## Dependency and experiment discipline
 
 - Work chronologically and dependency-first. Do not proceed when an explicit dependency or decision gate has failed.
