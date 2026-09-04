@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-05
 
+Biome tag contribution indexing is now delivered by source `0ab3718` in the
+existing `evidence/item-8/sources/structure-inputs.json`. The `biome_tags` field
+preserves source references, deterministic additive/vanilla-to-single-mod
+merges, and explicit unresolved conditions, removals, non-root packs or unknown
+replacement order. The output reproduced byte for byte; seven focused inventory
+and tag-merge tests and scoped quality checks passed. Use these inputs with the
+runtime-aware resolver, propagating any reachable unresolved contribution even
+when its reference is optional. Do not interpret null merged values as absence.
+Final family-level constraints and the overall Item 8 gate remain incomplete.
+
 Biome resolution increment: `3bc5d96` exposes the existing Item 7 tag resolver as
 `resolve_biome_tag` with optional `registered_biomes` filtering. Item 7's default
 packaged-reference behavior is unchanged. With a runtime registry supplied,
