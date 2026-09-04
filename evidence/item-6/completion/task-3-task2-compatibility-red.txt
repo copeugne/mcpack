@@ -1,0 +1,439 @@
+$ uv run pytest -q tests/item6/test_frozen_config.py -k 'file_accounting or yung'
+..FFFF                                                                   [100%]
+=================================== FAILURES ===================================
+_____ test_yung_cristellib_settings_cover_every_placement_and_toggle_leaf ______
+
+    def test_yung_cristellib_settings_cover_every_placement_and_toggle_leaf() -> None:
+        audit = json.loads(AUDIT.read_text(encoding="utf-8"))
+        for path in YUNG_PROVIDER_FILES:
+            expected_evidence = {
+                line.strip().rstrip(",")
+                for line in (FROZEN / path).read_text(encoding="utf-8").splitlines()
+                if line.strip().startswith('"')
+                and not line.strip().endswith("{")
+                and not line.strip().startswith('"salt"')
+            }
+>           actual_evidence = {row["evidence"] for row in audit["settings"] if row["file"] == path}
+                               ^^^^^^^^^^^^^^^
+E           TypeError: unhashable type: 'dict'
+
+tests/item6/test_frozen_config.py:132: TypeError
+________________ test_validator_rejects_missing_file_accounting ________________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-30/test_validator_rejects_missing0')
+
+    def test_validator_rejects_missing_file_accounting(tmp_path: Path) -> None:
+        audit = json.loads(AUDIT.read_text(encoding="utf-8"))
+        audit["file_accounting"][1]["files"].pop()
+        with pytest.raises(ValueError, match="file accounting does not match manifest"):
+>           validate(FROZEN, MANIFEST, write_audit(tmp_path, audit))
+
+tests/item6/test_frozen_config.py:140:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = PosixPath('/home/lonestar/Desktop/Projects/mcpack-item6-completion/evidence/item-6/frozen')
+manifest_path = PosixPath('/home/lonestar/Desktop/Projects/mcpack-item6-completion/evidence/item-6/generated-config-manifest.json')
+audit_path = PosixPath('/tmp/pytest-of-lonestar/pytest-30/test_validator_rejects_missing0/audit.json')
+
+    def validate(  # noqa: C901, PLR0912, PLR0915
+        root: Path, manifest_path: Path, audit_path: Path
+    ) -> None:
+        """Fail unless the frozen tree, manifest, and audit agree exactly."""
+        manifest = cast("dict[str, Any]", json.loads(manifest_path.read_text(encoding="utf-8")))
+        audit = cast("dict[str, Any]", json.loads(audit_path.read_text(encoding="utf-8")))
+        if manifest["schema_version"] != "item6-frozen-config-manifest-v1":
+            raise ValueError("unsupported manifest schema")
+        if audit["schema_version"] != "item6-config-audit-v1":
+            raise ValueError("unsupported audit schema")
+        if audit["tuning_performed"] is not False:
+            raise ValueError("baseline must not contain tuning")
+        identity = f"sha256:{sha256(manifest_path)}"
+        if audit["configuration_identity"] != identity:
+            raise ValueError("audit configuration identity does not match manifest")
+
+        rows = manifest["files"]
+        expected = {row["path"] for row in rows}
+        actual = {path.relative_to(root).as_posix() for path in root.rglob("*") if path.is_file()}
+        if expected != actual or manifest["file_count"] != len(rows):
+            raise ValueError("frozen file inventory does not match manifest")
+        for row in rows:
+            path = root / row["path"]
+            if path.stat().st_size != row["size_bytes"] or sha256(path) != row["sha256"]:
+                raise ValueError(f"frozen file identity mismatch: {row['path']}")
+            if row["generation_stage"] not in {
+                "installation",
+                "first_startup",
+                "world_creation",
+                "shutdown",
+            }:
+                raise ValueError(f"invalid generation stage: {row['path']}")
+
+        covered: set[str] = set()
+        for system in audit["systems"]:
+            for relative in system["files"]:
+                if relative not in expected:
+                    raise ValueError(f"system cites an unpreserved file: {relative}")
+                covered.add(relative)
+        for setting in audit["settings"]:
+            relative = setting["file"]
+            if relative not in expected:
+                raise ValueError(f"setting cites an unpreserved file: {relative}")
+            evidence = setting["evidence"]
+            if not isinstance(evidence, dict) or set(evidence) != {
+                "decoder",
+                "observations",
+                "effective_semantics",
+            }:
+                raise ValueError("setting evidence must use the structured contract")
+            decoder = evidence["decoder"]
+            if decoder not in {"json", "toml", "string"}:
+                raise ValueError("unsupported setting evidence decoder")
+            observations = evidence["observations"]
+            if not isinstance(observations, list) or not observations:
+                raise ValueError("setting evidence observations must be nonempty")
+            lines = (root / relative).read_text(encoding="utf-8").splitlines()
+            extracted: list[Scalar] = []
+            for observation_index, observation in enumerate(observations):
+                if not isinstance(observation, dict) or set(observation) != {
+                    "line",
+                    "prefix",
+                    "suffix",
+                }:
+                    raise ValueError("setting evidence observation is malformed")
+                line_number = observation["line"]
+                prefix = observation["prefix"]
+                suffix = observation["suffix"]
+                if type(line_number) is not int or line_number < 1:
+                    raise ValueError("setting evidence line must be a positive integer")
+                if line_number > len(lines):
+                    raise ValueError("setting evidence line is out of range")
+                if not isinstance(prefix, str) or not isinstance(suffix, str):
+                    raise ValueError("setting evidence prefix and suffix must be strings")
+                source_line = lines[line_number - 1].strip()
+                if not source_line.startswith(prefix):
+                    raise ValueError("setting evidence prefix does not match source line")
+                if not source_line.endswith(suffix):
+                    raise ValueError("setting evidence suffix does not match source line")
+                scalar_end = len(source_line) - len(suffix) if suffix else len(source_line)
+                if len(prefix) > scalar_end:
+                    raise ValueError("setting evidence prefix and suffix overlap")
+                if evidence["effective_semantics"] != "c2me_biolith_runtime_disable" or (
+                    observation_index == 0
+                ):
+                    extracted.append(
+                        decode_setting_scalar(source_line[len(prefix) : scalar_end], decoder)
+                    )
+            semantics = evidence["effective_semantics"]
+            if semantics == "same_as_generated":
+                first = extracted[0]
+                if any(not same_typed_value(first, value) for value in extracted[1:]):
+                    raise ValueError("setting evidence observations disagree")
+                if not same_typed_value(setting["generated_default"], first) or not same_typed_value(
+                    setting["effective_value"], first
+                ):
+>                   raise ValueError("setting claimed value does not match source")
+E                   ValueError: setting claimed value does not match source
+
+tools/freeze_item6_config.py:163: ValueError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-30/test_validator_rejects_missing0')
+
+    def test_validator_rejects_missing_file_accounting(tmp_path: Path) -> None:
+        audit = json.loads(AUDIT.read_text(encoding="utf-8"))
+        audit["file_accounting"][1]["files"].pop()
+>       with pytest.raises(ValueError, match="file accounting does not match manifest"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E        Regex: 'file accounting does not match manifest'
+E        Input: 'setting claimed value does not match source'
+
+tests/item6/test_frozen_config.py:139: AssertionError
+_______________ test_validator_rejects_duplicate_file_accounting _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-30/test_validator_rejects_duplica0')
+
+    def test_validator_rejects_duplicate_file_accounting(tmp_path: Path) -> None:
+        audit = json.loads(AUDIT.read_text(encoding="utf-8"))
+        duplicate = audit["file_accounting"][0]["files"][0]
+        audit["file_accounting"][1]["files"].append(duplicate)
+        with pytest.raises(ValueError, match="file is classified more than once"):
+>           validate(FROZEN, MANIFEST, write_audit(tmp_path, audit))
+
+tests/item6/test_frozen_config.py:148:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = PosixPath('/home/lonestar/Desktop/Projects/mcpack-item6-completion/evidence/item-6/frozen')
+manifest_path = PosixPath('/home/lonestar/Desktop/Projects/mcpack-item6-completion/evidence/item-6/generated-config-manifest.json')
+audit_path = PosixPath('/tmp/pytest-of-lonestar/pytest-30/test_validator_rejects_duplica0/audit.json')
+
+    def validate(  # noqa: C901, PLR0912, PLR0915
+        root: Path, manifest_path: Path, audit_path: Path
+    ) -> None:
+        """Fail unless the frozen tree, manifest, and audit agree exactly."""
+        manifest = cast("dict[str, Any]", json.loads(manifest_path.read_text(encoding="utf-8")))
+        audit = cast("dict[str, Any]", json.loads(audit_path.read_text(encoding="utf-8")))
+        if manifest["schema_version"] != "item6-frozen-config-manifest-v1":
+            raise ValueError("unsupported manifest schema")
+        if audit["schema_version"] != "item6-config-audit-v1":
+            raise ValueError("unsupported audit schema")
+        if audit["tuning_performed"] is not False:
+            raise ValueError("baseline must not contain tuning")
+        identity = f"sha256:{sha256(manifest_path)}"
+        if audit["configuration_identity"] != identity:
+            raise ValueError("audit configuration identity does not match manifest")
+
+        rows = manifest["files"]
+        expected = {row["path"] for row in rows}
+        actual = {path.relative_to(root).as_posix() for path in root.rglob("*") if path.is_file()}
+        if expected != actual or manifest["file_count"] != len(rows):
+            raise ValueError("frozen file inventory does not match manifest")
+        for row in rows:
+            path = root / row["path"]
+            if path.stat().st_size != row["size_bytes"] or sha256(path) != row["sha256"]:
+                raise ValueError(f"frozen file identity mismatch: {row['path']}")
+            if row["generation_stage"] not in {
+                "installation",
+                "first_startup",
+                "world_creation",
+                "shutdown",
+            }:
+                raise ValueError(f"invalid generation stage: {row['path']}")
+
+        covered: set[str] = set()
+        for system in audit["systems"]:
+            for relative in system["files"]:
+                if relative not in expected:
+                    raise ValueError(f"system cites an unpreserved file: {relative}")
+                covered.add(relative)
+        for setting in audit["settings"]:
+            relative = setting["file"]
+            if relative not in expected:
+                raise ValueError(f"setting cites an unpreserved file: {relative}")
+            evidence = setting["evidence"]
+            if not isinstance(evidence, dict) or set(evidence) != {
+                "decoder",
+                "observations",
+                "effective_semantics",
+            }:
+                raise ValueError("setting evidence must use the structured contract")
+            decoder = evidence["decoder"]
+            if decoder not in {"json", "toml", "string"}:
+                raise ValueError("unsupported setting evidence decoder")
+            observations = evidence["observations"]
+            if not isinstance(observations, list) or not observations:
+                raise ValueError("setting evidence observations must be nonempty")
+            lines = (root / relative).read_text(encoding="utf-8").splitlines()
+            extracted: list[Scalar] = []
+            for observation_index, observation in enumerate(observations):
+                if not isinstance(observation, dict) or set(observation) != {
+                    "line",
+                    "prefix",
+                    "suffix",
+                }:
+                    raise ValueError("setting evidence observation is malformed")
+                line_number = observation["line"]
+                prefix = observation["prefix"]
+                suffix = observation["suffix"]
+                if type(line_number) is not int or line_number < 1:
+                    raise ValueError("setting evidence line must be a positive integer")
+                if line_number > len(lines):
+                    raise ValueError("setting evidence line is out of range")
+                if not isinstance(prefix, str) or not isinstance(suffix, str):
+                    raise ValueError("setting evidence prefix and suffix must be strings")
+                source_line = lines[line_number - 1].strip()
+                if not source_line.startswith(prefix):
+                    raise ValueError("setting evidence prefix does not match source line")
+                if not source_line.endswith(suffix):
+                    raise ValueError("setting evidence suffix does not match source line")
+                scalar_end = len(source_line) - len(suffix) if suffix else len(source_line)
+                if len(prefix) > scalar_end:
+                    raise ValueError("setting evidence prefix and suffix overlap")
+                if evidence["effective_semantics"] != "c2me_biolith_runtime_disable" or (
+                    observation_index == 0
+                ):
+                    extracted.append(
+                        decode_setting_scalar(source_line[len(prefix) : scalar_end], decoder)
+                    )
+            semantics = evidence["effective_semantics"]
+            if semantics == "same_as_generated":
+                first = extracted[0]
+                if any(not same_typed_value(first, value) for value in extracted[1:]):
+                    raise ValueError("setting evidence observations disagree")
+                if not same_typed_value(setting["generated_default"], first) or not same_typed_value(
+                    setting["effective_value"], first
+                ):
+>                   raise ValueError("setting claimed value does not match source")
+E                   ValueError: setting claimed value does not match source
+
+tools/freeze_item6_config.py:163: ValueError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-30/test_validator_rejects_duplica0')
+
+    def test_validator_rejects_duplicate_file_accounting(tmp_path: Path) -> None:
+        audit = json.loads(AUDIT.read_text(encoding="utf-8"))
+        duplicate = audit["file_accounting"][0]["files"][0]
+        audit["file_accounting"][1]["files"].append(duplicate)
+>       with pytest.raises(ValueError, match="file is classified more than once"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E        Regex: 'file is classified more than once'
+E        Input: 'setting claimed value does not match source'
+
+tests/item6/test_frozen_config.py:147: AssertionError
+___________ test_validator_rejects_yung_out_of_scope_classification ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-30/test_validator_rejects_yung_ou0')
+
+    def test_validator_rejects_yung_out_of_scope_classification(tmp_path: Path) -> None:
+        audit = json.loads(AUDIT.read_text(encoding="utf-8"))
+        audited = next(row for row in audit["file_accounting"] if row["classification"] == "audited")
+        out_of_scope = next(
+            row for row in audit["file_accounting"] if row["classification"] == "out-of-scope"
+        )
+        path = "config/cristellib/betterdeserttemples/structure_placement_config.json5"
+        audited["files"].remove(path)
+        out_of_scope["files"].append(path)
+        with pytest.raises(
+            ValueError, match="audited file accounting does not match cited audit evidence"
+        ):
+>           validate(FROZEN, MANIFEST, write_audit(tmp_path, audit))
+
+tests/item6/test_frozen_config.py:163:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = PosixPath('/home/lonestar/Desktop/Projects/mcpack-item6-completion/evidence/item-6/frozen')
+manifest_path = PosixPath('/home/lonestar/Desktop/Projects/mcpack-item6-completion/evidence/item-6/generated-config-manifest.json')
+audit_path = PosixPath('/tmp/pytest-of-lonestar/pytest-30/test_validator_rejects_yung_ou0/audit.json')
+
+    def validate(  # noqa: C901, PLR0912, PLR0915
+        root: Path, manifest_path: Path, audit_path: Path
+    ) -> None:
+        """Fail unless the frozen tree, manifest, and audit agree exactly."""
+        manifest = cast("dict[str, Any]", json.loads(manifest_path.read_text(encoding="utf-8")))
+        audit = cast("dict[str, Any]", json.loads(audit_path.read_text(encoding="utf-8")))
+        if manifest["schema_version"] != "item6-frozen-config-manifest-v1":
+            raise ValueError("unsupported manifest schema")
+        if audit["schema_version"] != "item6-config-audit-v1":
+            raise ValueError("unsupported audit schema")
+        if audit["tuning_performed"] is not False:
+            raise ValueError("baseline must not contain tuning")
+        identity = f"sha256:{sha256(manifest_path)}"
+        if audit["configuration_identity"] != identity:
+            raise ValueError("audit configuration identity does not match manifest")
+
+        rows = manifest["files"]
+        expected = {row["path"] for row in rows}
+        actual = {path.relative_to(root).as_posix() for path in root.rglob("*") if path.is_file()}
+        if expected != actual or manifest["file_count"] != len(rows):
+            raise ValueError("frozen file inventory does not match manifest")
+        for row in rows:
+            path = root / row["path"]
+            if path.stat().st_size != row["size_bytes"] or sha256(path) != row["sha256"]:
+                raise ValueError(f"frozen file identity mismatch: {row['path']}")
+            if row["generation_stage"] not in {
+                "installation",
+                "first_startup",
+                "world_creation",
+                "shutdown",
+            }:
+                raise ValueError(f"invalid generation stage: {row['path']}")
+
+        covered: set[str] = set()
+        for system in audit["systems"]:
+            for relative in system["files"]:
+                if relative not in expected:
+                    raise ValueError(f"system cites an unpreserved file: {relative}")
+                covered.add(relative)
+        for setting in audit["settings"]:
+            relative = setting["file"]
+            if relative not in expected:
+                raise ValueError(f"setting cites an unpreserved file: {relative}")
+            evidence = setting["evidence"]
+            if not isinstance(evidence, dict) or set(evidence) != {
+                "decoder",
+                "observations",
+                "effective_semantics",
+            }:
+                raise ValueError("setting evidence must use the structured contract")
+            decoder = evidence["decoder"]
+            if decoder not in {"json", "toml", "string"}:
+                raise ValueError("unsupported setting evidence decoder")
+            observations = evidence["observations"]
+            if not isinstance(observations, list) or not observations:
+                raise ValueError("setting evidence observations must be nonempty")
+            lines = (root / relative).read_text(encoding="utf-8").splitlines()
+            extracted: list[Scalar] = []
+            for observation_index, observation in enumerate(observations):
+                if not isinstance(observation, dict) or set(observation) != {
+                    "line",
+                    "prefix",
+                    "suffix",
+                }:
+                    raise ValueError("setting evidence observation is malformed")
+                line_number = observation["line"]
+                prefix = observation["prefix"]
+                suffix = observation["suffix"]
+                if type(line_number) is not int or line_number < 1:
+                    raise ValueError("setting evidence line must be a positive integer")
+                if line_number > len(lines):
+                    raise ValueError("setting evidence line is out of range")
+                if not isinstance(prefix, str) or not isinstance(suffix, str):
+                    raise ValueError("setting evidence prefix and suffix must be strings")
+                source_line = lines[line_number - 1].strip()
+                if not source_line.startswith(prefix):
+                    raise ValueError("setting evidence prefix does not match source line")
+                if not source_line.endswith(suffix):
+                    raise ValueError("setting evidence suffix does not match source line")
+                scalar_end = len(source_line) - len(suffix) if suffix else len(source_line)
+                if len(prefix) > scalar_end:
+                    raise ValueError("setting evidence prefix and suffix overlap")
+                if evidence["effective_semantics"] != "c2me_biolith_runtime_disable" or (
+                    observation_index == 0
+                ):
+                    extracted.append(
+                        decode_setting_scalar(source_line[len(prefix) : scalar_end], decoder)
+                    )
+            semantics = evidence["effective_semantics"]
+            if semantics == "same_as_generated":
+                first = extracted[0]
+                if any(not same_typed_value(first, value) for value in extracted[1:]):
+                    raise ValueError("setting evidence observations disagree")
+                if not same_typed_value(setting["generated_default"], first) or not same_typed_value(
+                    setting["effective_value"], first
+                ):
+>                   raise ValueError("setting claimed value does not match source")
+E                   ValueError: setting claimed value does not match source
+
+tools/freeze_item6_config.py:163: ValueError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-30/test_validator_rejects_yung_ou0')
+
+    def test_validator_rejects_yung_out_of_scope_classification(tmp_path: Path) -> None:
+        audit = json.loads(AUDIT.read_text(encoding="utf-8"))
+        audited = next(row for row in audit["file_accounting"] if row["classification"] == "audited")
+        out_of_scope = next(
+            row for row in audit["file_accounting"] if row["classification"] == "out-of-scope"
+        )
+        path = "config/cristellib/betterdeserttemples/structure_placement_config.json5"
+        audited["files"].remove(path)
+        out_of_scope["files"].append(path)
+>       with pytest.raises(
+            ValueError, match="audited file accounting does not match cited audit evidence"
+        ):
+E       AssertionError: Regex pattern did not match.
+E        Regex: 'audited file accounting does not match cited audit evidence'
+E        Input: 'setting claimed value does not match source'
+
+tests/item6/test_frozen_config.py:160: AssertionError
+=========================== short test summary info ============================
+FAILED tests/item6/test_frozen_config.py::test_yung_cristellib_settings_cover_every_placement_and_toggle_leaf
+FAILED tests/item6/test_frozen_config.py::test_validator_rejects_missing_file_accounting
+FAILED tests/item6/test_frozen_config.py::test_validator_rejects_duplicate_file_accounting
+FAILED tests/item6/test_frozen_config.py::test_validator_rejects_yung_out_of_scope_classification
+4 failed, 2 passed, 5 deselected in 0.08s
