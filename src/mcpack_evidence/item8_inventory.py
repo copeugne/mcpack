@@ -9,10 +9,10 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
-def resource_identity(path: str, kind: str) -> tuple[str, str] | None:
+def resource_identity(path: str, kind: str, extension: str = ".json") -> tuple[str, str] | None:
     """Identify a resource exactly, preserving any optional-pack prefix."""
     parts = path.split("/")
-    if "data" not in parts or not path.endswith(".json"):
+    if "data" not in parts or not path.endswith(extension):
         return None
     anchor = parts.index("data")
     marker = kind.split("/")
@@ -20,7 +20,10 @@ def resource_identity(path: str, kind: str) -> tuple[str, str] | None:
     end = start + len(marker)
     if len(parts) <= end or parts[start:end] != marker:
         return None
-    return f"{parts[anchor + 1]}:{'/'.join(parts[end:])[:-5]}", "/".join(parts[:anchor])
+    return (
+        f"{parts[anchor + 1]}:{'/'.join(parts[end:]).removesuffix(extension)}",
+        "/".join(parts[:anchor]),
+    )
 
 
 def structure_inputs(registry: tuple[str, ...], resources: list[JsonValue]) -> dict[str, JsonValue]:
