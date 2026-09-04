@@ -303,6 +303,8 @@ Exact-SHA local reviews at `97262a21b0b76c253f57e32b8665e48d0a63f822`, `8c7e7b8b
 
 ### 5.7 Item 8 structure-inventory status
 
+**Continuation decision, 2026-09-04:** The user explicitly authorized Item 8 after the continuation audit found that Item 7's final clean GitHub Codex review is not visible. Item 7 remains empirically verified and merged; its completion receipt rebuilt byte for byte and all 210 Item 7 tests passed. Proceeding is an explicit user exception to that prior review prerequisite, not a claim that the missing review occurred. Preserve r14 without regeneration. Item 8 must satisfy the full final-review and delivery requirements with no inherited exception.
+
 **Status: `READY`, not started; previous source matrix and verification evidence remain lost**
 The surviving report records 34 structure registry entries, 34 exact biome-tag bindings, and 20 placement sets grouped exactly once into 21 gameplay families. It also records that declared loot sources resolve in the embedded vanilla data pack and that tentative mod families are absent. The report survives as `Item-8-Baseline-Structure-Inventory.md`, but `structure-inventory/vanilla-1.21.1-structure-families.json` and `evidence/structure-inventory/item8-registry-verification.json` do not. Item 8 must be reconstructed and rerun before its reproducibility exit gate may return to `COMPLETE`.
 
@@ -465,8 +467,8 @@ This register is additive. More variables will be discovered during artifact ins
 
 ## 8. Next Authorized Execution Step
 
-1. Review the accepted Item 7 evidence and implementation at one exact commit, complete the GitHub Codex review loop, merge the pull request into `main`, and verify the delivered ref.
-2. Begin Item 8 only from that verified merged `main`. Reconstruct the canonical runtime-backed structure-family inventory from registries, packaged data, configuration, logs, and generated-world observations.
+1. Preserve the accepted Item 7 evidence and merged delivery. The user explicitly authorized proceeding despite the missing final clean review record, as recorded in section 5.7. Do not claim that review occurred.
+2. Execute Item 8 from verified merged `main`. Reconstruct the canonical runtime-backed structure-family inventory from registries, packaged data, configuration, logs, and generated-world observations. Complete its own clean Codex review loop before declaring completion.
 3. Continue Items 9 and 10 in dependency order, then audit Items 2 through 10 together for identity and narrative consistency.
 4. Do not implement, run, repair, or lint Item 11 until the cross-item audit passes. Item 11 will still require real-client evidence from at least two blind human operators.
 
