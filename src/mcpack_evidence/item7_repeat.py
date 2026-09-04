@@ -180,6 +180,22 @@ def first_mismatch(
     raise RepeatComparisonError(issue, label)
 
 
+def field_mismatch_counts(
+    records: tuple[dict[ChunkKey, ChunkRecord], dict[ChunkKey, ChunkRecord]],
+    fields: tuple[str, ...],
+) -> dict[str, JsonValue]:
+    """Count differing chunks independently for every frozen semantic field."""
+    left, right = records
+    counts = dict.fromkeys(fields, 0)
+    for key in sorted(left):
+        left_row, right_row = normalized_chunk(left[key]), normalized_chunk(right[key])
+        for field in fields:
+            if left_row[field] != right_row[field]:
+                counts[field] += 1
+    result: dict[str, JsonValue] = dict(counts)
+    return result
+
+
 def write_receipt(output: Path, payload: dict[str, JsonValue]) -> None:
     """Atomically write one deterministic strict JSON receipt."""
     output.parent.mkdir(parents=True, exist_ok=True)

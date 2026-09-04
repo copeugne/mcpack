@@ -23,8 +23,8 @@ from mcpack_evidence.item7_repeat import (
     RepeatDecodedIdentity,
     RepeatRegion,
     RepeatWorldManifest,
+    field_mismatch_counts,
     first_mismatch,
-    normalized_chunk,
     normalized_sha256,
     write_receipt,
 )
@@ -212,7 +212,10 @@ def compare_runs(inputs: ComparisonInputs) -> bool:
         selections: list[JsonValue] = []
         for index, selection in enumerate(protocol.selections):
             left, right = selected_a[index], selected_b[index]
-            equal = all(normalized_chunk(left[key]) == normalized_chunk(right[key]) for key in left)
+            mismatch_counts = field_mismatch_counts(
+                (left, right), protocol.normalization.chunk_compare_fields
+            )
+            equal = not any(mismatch_counts.values())
             selections.append(
                 {
                     "label": selection.label,
@@ -220,6 +223,7 @@ def compare_runs(inputs: ComparisonInputs) -> bool:
                     "run_a_normalized_sha256": normalized_sha256(left),
                     "run_b_normalized_sha256": normalized_sha256(right),
                     "equal": equal,
+                    "field_mismatch_counts": mismatch_counts,
                 }
             )
             if not equal and first is None:

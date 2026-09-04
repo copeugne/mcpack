@@ -27,17 +27,6 @@ ROOT = Path(__file__).parents[2]
 PROTOCOL = ROOT / "evidence/item-7/protocol/worldgen-audit-v1.json"
 
 
-class _MismatchView(BaseModel):
-    model_config: ClassVar[ConfigDict] = ConfigDict(extra="forbid", strict=True)
-
-    seed_role: str
-    selection: str
-    dimension: str
-    chunk_x: int
-    chunk_z: int
-    field: str
-
-
 class _SelectionView(BaseModel):
     model_config: ClassVar[ConfigDict] = ConfigDict(extra="forbid", strict=True)
 
@@ -46,6 +35,7 @@ class _SelectionView(BaseModel):
     run_a_normalized_sha256: str
     run_b_normalized_sha256: str
     equal: bool
+    field_mismatch_counts: dict[str, int]
 
 
 class _SeedView(BaseModel):
@@ -66,7 +56,7 @@ class _ReceiptView(BaseModel):
     raw_region_hash_treatment: Literal["preserve_and_explain_not_compare"]
     equal: bool
     seeds: tuple[_SeedView, ...]
-    first_mismatch: _MismatchView | None
+    first_mismatch: dict[str, str | int] | None
 
 
 def _records() -> Iterator[dict[str, str | int | bool | list[dict[str, str]]]]:
@@ -168,10 +158,14 @@ def test_compare_runs_normalizes_transport_fields_and_preserves_region_hashes(
 
     assert receipt.equal is True
     assert receipt.first_mismatch is None
-    assert len(receipt.seeds) == 4
-    assert all(sum(row.count for row in seed.selections) == 6852 for seed in receipt.seeds)
-    assert receipt.seeds[0].run_a_regions[0].sha256 == "a" * 64
-    assert receipt.seeds[0].run_b_regions[0].sha256 == "b" * 64
+    assert (
+        len(receipt.seeds),
+        {sum(row.count for row in seed.selections) for seed in receipt.seeds},
+    ) == (4, {6852})
+    assert (receipt.seeds[0].run_a_regions[0].sha256, receipt.seeds[0].run_b_regions[0].sha256) == (
+        "a" * 64,
+        "b" * 64,
+    )
 
 
 def test_compare_runs_reports_first_semantic_mismatch(tmp_path: Path) -> None:
@@ -199,15 +193,17 @@ def test_compare_runs_reports_first_semantic_mismatch(tmp_path: Path) -> None:
     receipt = _ReceiptView.model_validate_json(inputs.output.read_bytes(), strict=True)
 
     assert receipt.equal is False
-    assert receipt.first_mismatch is not None
+    first = receipt.first_mismatch
+    assert first is not None
     assert (
-        receipt.first_mismatch.seed_role,
-        receipt.first_mismatch.selection,
-        receipt.first_mismatch.dimension,
-        receipt.first_mismatch.chunk_x,
-        receipt.first_mismatch.chunk_z,
-        receipt.first_mismatch.field,
+        first["seed_role"],
+        first["selection"],
+        first["dimension"],
+        first["chunk_x"],
+        first["chunk_z"],
+        first["field"],
     ) == ("ordinary", "overworld", "minecraft:overworld", -31, -31, "data_version")
+    assert receipt.seeds[0].selections[0].field_mismatch_counts["data_version"] == 1
 
 
 type _Failure = Literal["stale", "duplicate", "missing", "nonfull", "escape"]
