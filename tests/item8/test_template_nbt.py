@@ -2,12 +2,16 @@ from __future__ import annotations
 
 import gzip
 import struct
+from typing import TYPE_CHECKING
 
 import pytest
 
 from mcpack_evidence.item7_nbt import NbtDecodeError, decode_compound_nbt
-from mcpack_evidence.item8_templates import template_summary
+from mcpack_evidence.item8_templates import template_content, template_summary
 from tests.item7.anvil_support import compound, integer, list_tag, string, tag
+
+if TYPE_CHECKING:
+    from pydantic import JsonValue
 
 
 def test_template_nbt_preserves_nested_compounds_and_arrays() -> None:
@@ -72,3 +76,45 @@ def test_template_summary_preserves_spawner_loot_and_authored_entities() -> None
 def test_template_summary_rejects_non_template_nbt() -> None:
     with pytest.raises(ValueError, match="missing valid size or blocks"):
         _ = template_summary(compound("", ()))
+
+
+def test_content_index_keeps_trial_rewards_and_passengers_separate_from_spawned_mobs() -> None:
+    trial: dict[str, JsonValue] = {
+        "id": "minecraft:trial_spawner",
+        "normal_config": {
+            "spawn_potentials": [{"data": {"entity": {"id": "minecraft:skeleton"}}, "weight": 1}],
+            "loot_tables_to_eject": [{"data": "example:reward", "weight": 2}],
+        },
+    }
+    document: dict[str, JsonValue] = {
+        "block_entities": [
+            {"pos": [1, 2, 3], "nbt": trial},
+            {"pos": [4, 5, 6], "nbt": {"id": "minecraft:chest", "LootTable": "example:chest"}},
+        ],
+        "entities": [
+            {"nbt": {"id": "minecraft:horse", "Passengers": [{"id": "minecraft:zombie"}]}}
+        ],
+    }
+    result = template_content(document)
+    assert result["authored_entities"] == [
+        {"path": "/entities/0/nbt", "id": "minecraft:horse"},
+        {"path": "/entities/0/nbt/Passengers/0", "id": "minecraft:zombie"},
+    ]
+    assert result["spawner_blocks"] == [
+        {"path": "/block_entities/0", "position": [1, 2, 3], "nbt": trial}
+    ]
+    assert result["loot_references"] == [
+        {
+            "path": "/block_entities/0/nbt/normal_config/loot_tables_to_eject",
+            "value": [{"data": "example:reward", "weight": 2}],
+        },
+        {"path": "/block_entities/1/nbt/LootTable", "value": "example:chest"},
+    ]
+
+
+def test_empty_authored_entity_is_retained_as_unresolved() -> None:
+    result = template_content({"block_entities": [], "entities": [{"nbt": {}}]})
+    assert result["authored_entities"] == []
+    assert result["unresolved_entities"] == [
+        {"path": "/entities/0/nbt", "reason": "authored entity lacks an ID"}
+    ]
