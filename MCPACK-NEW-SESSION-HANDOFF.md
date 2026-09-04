@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-05
 
+WDA root coverage is now delivered through `380e572`, using source decisions
+from `559edc0`, `d20b0c6`, `007d1f9` and `6540055`. All forty registered WDA
+layouts are assigned once. The existing authored-design test now covers WDA
+and Integrated Villages, with full namespace coverage for both. For WDA it
+also verifies disjoint reachable template sets across the complete namespace.
+Start pools, placement settings and missing components are source-bound.
+Seven focused tests and scoped quality checks passed. The generated inventory
+reproduced its pilot byte for byte. Current inventory SHA-256:
+`cfe53234f8bed18b3f494b16de318cd2c95c3dc875e54c3a520a196477a9d83d`.
+The large generated join was isolated from implementation changes. Root coverage
+does not resolve effective placement or remaining required attributes. Continue
+remaining providers and attribute attribution using the existing source catalogs,
+template content and world observations. Raw registry custody remains verified
+under the existing r1 release; no new runtime or archive was needed for WDA.
+Final inventory coverage, report, full gate, clean review and verified merge
+remain outstanding. Do not advance Items 9 through 11.
+
 Current inventory is delivered through `376e8e6`, built from `585de70`.
 SHA-256: `abb98a78d9d0fa1deb465dfc8a4db4f2c2e6555a937b515b085597e16a55c3e1`.
 All twelve Integrated Villages registered designs now have working groups,
