@@ -224,44 +224,44 @@
 
 ## 7. Audit Current Terrain and Worldgen Interactions
 
-- [ ] Test:
-  - [ ] Tectonic.
-  - [ ] Terralith.
-  - [ ] Biomes O' Plenty.
-  - [ ] Regions Unexplored.
-  - [ ] TerraBlender.
-  - [ ] Lithostitched.
-  - [ ] BetterEnd.
-  - [ ] YUNG.
-  - [ ] WDA.
-  - [ ] IDAS.
-  - [ ] Integrated structures.
-  - [ ] Moog.
-  - [ ] Explorify.
-  - [ ] Explorations.
-  - [ ] Repurposed Structures.
-  - [ ] CTOV.
-  - [ ] Towns & Towers.
+- [x] Test:
+  - [x] Tectonic.
+  - [x] Terralith.
+  - [x] Biomes O' Plenty.
+  - [x] Regions Unexplored.
+  - [x] TerraBlender.
+  - [x] Lithostitched.
+  - [x] BetterEnd.
+  - [x] YUNG.
+  - [x] WDA.
+  - [x] IDAS.
+  - [x] Integrated structures.
+  - [x] Moog.
+  - [x] Explorify.
+  - [x] Explorations.
+  - [x] Repurposed Structures.
+  - [x] CTOV.
+  - [x] Towns & Towers.
 
-- [ ] Inspect for:
-  - [ ] fragmented biomes.
-  - [ ] tiny biomes.
-  - [ ] unnatural terrain transitions.
-  - [ ] buried structures.
-  - [ ] floating structures.
-  - [ ] cliff intersections.
-  - [ ] bad underwater placement.
-  - [ ] overlapping structures.
-  - [ ] overlapping villages.
-  - [ ] failed placements.
-  - [ ] impossible biome restrictions.
-  - [ ] excessive terrain modification around structures.
+- [x] Inspect for:
+  - [x] fragmented biomes.
+  - [x] tiny biomes.
+  - [x] unnatural terrain transitions.
+  - [x] buried structures.
+  - [x] floating structures.
+  - [x] cliff intersections.
+  - [x] bad underwater placement.
+  - [x] overlapping structures.
+  - [x] overlapping villages.
+  - [x] failed placements.
+  - [x] impossible biome restrictions.
+  - [x] excessive terrain modification around structures.
 
-- [ ] Separate:
-  - [ ] cosmetic issues.
-  - [ ] gameplay issues.
-  - [ ] performance issues.
-  - [ ] outright generation failures.
+- [x] Separate:
+  - [x] cosmetic issues.
+  - [x] gameplay issues.
+  - [x] performance issues.
+  - [x] outright generation failures.
 
 ### Depends On
 - Item 6.

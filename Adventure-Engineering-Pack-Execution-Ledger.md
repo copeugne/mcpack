@@ -292,8 +292,12 @@ No configuration was tuned. The frozen configuration, machine-readable audit, li
 
 ### 5.6 Item 7 worldgen-control status
 
-**Status: `BLOCKED` - previously complete; raw reproducibility evidence lost**
-The surviving report records that two final runs independently restored all four seed snapshots, sampled 50 stable-height/biome points per seed, saved and stopped twice per seed, and produced zero relevant generation problem lines. It also records that all 200 raw samples and derived statistics repeated exactly, with named terrain, biome, and structure candidates absent and no compatibility claim inferred. The report survives as `Item-7-Baseline-Worldgen-Audit.md`, but the referenced raw samples and `evidence/worldgen/item7-terrain-repeat-verification.json` do not. Item 7 must be reconstructed and rerun before its reproducibility exit gate may return to `COMPLETE`.
+**Status: `PASS`, delivery review and merge pending**
+The retained 136-JAR stack was exercised in two independent fresh runs across all four deterministic seeds. Each accepted seed run inspected 3,969 Overworld chunks and 961 chunks in each of the Nether, central End, and outer End, for 54,816 exact selected chunks across eight seed runs. All selected chunks were present once at `minecraft:full`. Sixteen Run A analyses contain all 192 required anomaly rows. Provider closure accounts for all 37 exact components: 23 directly observed, 4 observed through two independent targeted runs, 1 Better Caves generation failure, 7 indirectly observed, and 2 unobserved with explicit Item 8 limits.
+
+Independent fresh runs are not semantically equal outside the central End. Input drift, decoder ordering, transport fields, and heightmap-only explanations were refuted; the causal provider remains `UNKNOWN`. The retained control also has two of 81 heightmap mismatches, so the Chunky comparison is not attributable under measured stack nondeterminism. The warning audit preserves 1,222 signatures and 14,003 occurrences, including 1,166 unresolved signatures rather than silently treating startup as compatibility proof.
+
+The final 128 derived inspection captures passed two independent visual review lanes. Four immutable raw-evidence archives were restored file by file, published under tag `item-7-raw-evidence-2026-09-04`, downloaded again, and rehashed. Their manifests, restore receipts, release receipt, tracked verification tool, and 123-artifact completion receipt are committed under `evidence/item-7/`. The local completion gate returns `PASS`. Repository-level completion still requires exact-SHA review, a clean Codex review cycle, merge into `main`, and delivered-ref verification.
 
 ### 5.7 Item 8 structure-inventory status
 
@@ -443,8 +447,8 @@ This register is additive. More variables will be discovered during artifact ins
 | 4 | Controlled test environment | `COMPLETE` | Isolated four-seed environment, reproducible materialization, lifecycle validation, and hash-verified backup/restore with restored-world boot pass. Evidence: `docs/items/Item-4-Controlled-Test-Environment-Closure.md`, `evidence/item-4/`. |
 | 5 | Measurement methodology | `COMPLETE` | Strict 24-contract protocol, deterministic analyzer, pinned Temurin pilot, accepted/rejected handling, and cross-artifact hash validation pass. Evidence: `docs/items/Item-5-Measurement-Methodology-Closure.md`, `measurement/item5/`, `evidence/item-5/`. |
 | 6 | Existing configuration audit | `COMPLETE` | Retained 136-JAR stack, 228 manifest paths with 4/223/1/0 stages, exhaustive 88/140 accounting, 29 systems, 105 legacy setting rows, 44 grouped surfaces with 1,874 grouped leaves, 7 findings, lifecycle/materialization receipts, sanitization binding, path and capture fail-closed gates, and `evidence/item-6/` report evidence pass. |
-| 7 | Terrain/worldgen interactions | `BLOCKED` | Results survive only as summaries; raw samples and repeat-verification evidence must be regenerated. |
-| 8 | Structure-family inventory | `BLOCKED` | Inventory summary survives; source matrix and registry verification must be reconstructed. |
+| 7 | Terrain/worldgen interactions | `PASS, DELIVERY PENDING` | Fresh four-seed retained-stack runs, 54,816 exact selected chunks, 192 anomaly rows, complete provider and warning dispositions, visual review, four durable raw archives, tested restore, and the 123-artifact completion gate pass. Exact-SHA review and merge remain. |
+| 8 | Structure-family inventory | `BLOCKED BY ITEM 7 DELIVERY` | Begin only after the accepted Item 7 branch is reviewed, merged into `main`, and the delivered ref is verified. Then rebuild the runtime-backed canonical family inventory. |
 | 9 | Initial structure classification | `BLOCKED` | Classification summary survives; family matrix and validator evidence must be reconstructed. |
 | 10 | Baseline structure/encounter density | `BLOCKED` | Final report survives; raw generation, analysis, and validation evidence must be rerun. |
 | 11 | Exploration pacing/repetition | `BLOCKED` | Also depends on recovered Item 10; afterward requires real-client observations from at least two blind human operators. |
@@ -459,12 +463,9 @@ This register is additive. More variables will be discovered during artifact ins
 
 ## 8. Next Authorized Execution Step
 
-1. Complete Recovery Gate R-1 in the canonical GitHub repository: reconstruct protocols, schemas, tools, reports, environment manifests, and raw-evidence paths in dependency order.
-2. Rerun and push the missing Item 2–10 evidence; preserve high-cost checkpoints as tagged Git history and durable archives.
-3. Execute the Item 11 human observation matrix under `exploration-pacing-v0.1`; retain videos, traces, manifests, world archives, and hashes.
-4. Run `tools/analyze_exploration_pacing.py`; do not advance until every applicable cell and operator/review gate passes.
-5. Continue Items 12–18 against the zero-mod baseline only after Item 11 completes.
-6. Expand the master dependency graph with the missing engineering design and release tracks before final implementation.
-7. Discover and evaluate candidates only where a defined requirement or measured deficiency calls for them.
+1. Review the accepted Item 7 evidence and implementation at one exact commit, complete the GitHub Codex review loop, merge the pull request into `main`, and verify the delivered ref.
+2. Begin Item 8 only from that verified merged `main`. Reconstruct the canonical runtime-backed structure-family inventory from registries, packaged data, configuration, logs, and generated-world observations.
+3. Continue Items 9 and 10 in dependency order, then audit Items 2 through 10 together for identity and narrative consistency.
+4. Do not implement, run, repair, or lint Item 11 until the cross-item audit passes. Item 11 will still require real-client evidence from at least two blind human operators.
 
 No later item will be marked complete out of order or from inference.

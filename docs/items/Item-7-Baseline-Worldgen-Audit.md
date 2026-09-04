@@ -1,83 +1,114 @@
-# Item 7 — Pristine Baseline Terrain and Worldgen Audit
+# Item 7 Baseline Worldgen Interaction Audit
 
-**Status:** `COMPLETE` for the existing zero-mod baseline
-**Method:** `terrain-control-v0.1`
-**Decision:** retain as the control; no modded terrain/worldgen candidate is admitted by this item
+**Acceptance status:** `PASS`
+**Delivery status:** awaiting pull request review and merge
+**Protocol:** `item7-worldgen-audit-v1`
+**Frozen stack:** 136 retained JARs under Minecraft 1.21.1, NeoForge 21.1.249, and Temurin 21.0.12.1+1-LTS
 
-## Scope
+## Decision
 
-The current baseline contains Minecraft 1.21.1 and NeoForge 21.1.249 with zero third-party mods. Therefore Tectonic, Terralith, Biomes O' Plenty, Regions Unexplored, TerraBlender, Lithostitched, BetterEnd, YUNG, When Dungeons Arise, IDAS, Integrated structures, Moog, Explorify, Explorations, Repurposed Structures, CTOV and Towns & Towers are **absent**, not silently presumed compatible.
+Item 7's local exit gate passes. The retained stack was exercised in actual fresh worlds under the exact frozen Item 6 configuration, every required provider label and anomaly class has an evidence-backed disposition, the raw evidence is durably published and restore-tested, and the deterministic completion validator returns `PASS`.
 
-This item establishes the unmodified control those candidates must later beat. Any admitted worldgen candidate reopens the relevant Item 7 interaction tests on an isolated branch.
+This is not a clean-worldgen claim. Independent fresh runs diverged semantically outside the central End, Better Caves emitted a confirmed generation failure, two YUNG components remain unobserved because canonical structure identifiers are unresolved, and most warning signatures remain `UNKNOWN`. These findings are carried forward to Item 8 and later gates. No Item 6 configuration was tuned.
 
-## Controlled method
+## Bound identity and sampling geometry
 
-For each of the four verified seeds:
+The protocol binds the following inputs exactly:
 
-1. Restore the hash-backed initial world and require exact archive/file-manifest verification.
-2. Add only a temporary data-only probe function; retain zero third-party JARs.
-3. Sample two intentionally different 5×5 patches at 32-block spacing.
-4. Force-load one bounded rectangle per patch, never a growing set of sparse tickets.
-5. Query exact biome and `motion_blocking_no_leaves` height at every point.
-6. Remove the rectangle, flush-save and stop.
-7. Repeat the complete 200-sample experiment from fresh snapshots.
-8. Require exact equality of every raw record and derived statistic.
+- retained manifest count 136, SHA-256 `78e5bdc0697299782a535400ad5b313c088e8db10cfe075085ae4c8a531e30cb`;
+- frozen configuration manifest SHA-256 `2e0aaeb0f84747a3cb17146eb435d34cc7d6703b9372211e8fc8cff2df2b436f`;
+- configuration audit SHA-256 `181e0c299f44ded319d93c84f7b983738364b4090286251b00421fa041b989dd`;
+- seed-suite SHA-256 `de5e5e89bd04b6f75dac4eab2e84524956f46faa91660b5315c8eade269d39ae`;
+- ordinary seed `42`, mountainous seed `6671238423019257953`, ocean-heavy seed `95920844204830198`, and biome-diverse seed `-3503646078644842058`.
 
-Macro biome-role evidence comes from the already-verified Item 4 `/locate biome` suite. The local probe deliberately concentrates on origins, jagged peaks, coasts/oceans and biome transitions; it is not an unbiased global biome-frequency survey.
+Run A and Run B each used fresh materializations for all four seeds. Each run generated and inspected four fixed selections: 3,969 Overworld chunks, 961 Nether chunks, 961 central End chunks, and 961 outer End chunks. This is 6,852 selected chunks per seed run, 27,408 per run ID, and 54,816 selected chunks across the eight accepted seed runs. Every selected chunk was present exactly once at `minecraft:full` status. Spawn and transport extras were inventoried separately rather than counted as selected observations.
 
-## Results
+The separately declared Chunky 1.4.23 JAR was used only as a generation instrument. The retained-stack control used exactly the 136 retained JARs and vanilla `forceload`, with no Chunky files.
 
-Both final runs contain 50 samples/seed, two clean lifecycles/seed, exact restores and zero warning/error lines matching worldgen, structure, chunk, biome, feature, carver or noise. The repeat verifier passed every seed.
+## Provider coverage
 
-| Seed / patch | Biomes in 25 cells | Same-biome edge ratio | Singleton cells | Stable Y range | Adjacent ΔY p95 / max |
-|---|---:|---:|---:|---:|---:|
-| ordinary / origin | 2 | 0.875 | 0% | 63–75 | 8.05 / 11 |
-| ordinary / jagged peaks | 2 | 0.900 | 4% | 80–160 | 33.15 / 37 |
-| mountain / origin peaks | 3 | 0.700 | 8% | 181–252 | 31.20 / 42 |
-| mountain / ocean transition | 4 | 0.625 | 0% | 63–104 | 34.35 / 41 |
-| ocean / origin plains | 1 | 1.000 | 0% | 64–82 | 9.15 / 14 |
-| ocean / deep ocean | 4 | 0.725 | 4% | 63–63 | 0 / 0 |
-| diverse / desert transition | 3 | 0.700 | 8% | 63–101 | 26.15 / 36 |
-| diverse / deep ocean | 4 | 0.725 | 4% | 63–63 | 0 / 0 |
+The audit covered every provider label required by `SPECS.md`: Tectonic, Terralith, Biomes O' Plenty, Regions Unexplored, TerraBlender, Lithostitched, BetterEnd, YUNG, WDA, IDAS, Integrated structures, Moog, Explorify, Explorations, Repurposed Structures, CTOV, and Towns & Towers.
 
-The high mountain deltas are expected control characteristics and a later gameplay/vehicle-design input, not evidence of a broken transition. Boundary-focused patches show at most 8% singleton cells; this does not support a claim of pervasive tiny-biome fragmentation. It also cannot prove the opposite globally, so candidate comparisons must use the same method plus wider sampling.
+The catalog contains 37 exact retained components. Final dispositions are:
 
-## Requested defect classifications
+| Disposition | Components | Meaning |
+|---|---:|---|
+| Directly observed | 23 | Saved decoded chunks contain provider-owned biomes or structure starts. |
+| Targeted observed | 4 | Two independent targeted runs each saved the same requested structure start. |
+| Observed generation failure | 1 | Better Caves logged an `AquiferContext` failure and warned that Liquid Regions may not generate correctly. |
+| Indirectly observed | 7 | Runtime evidence proves a loaded or executed consumer path, but saved output cannot be attributed directly. |
+| Not observed with explicit limit | 2 | YUNG's Bridges and YUNG's Extras lack resolved canonical structure identifiers and remain Item 8 follow-ups. |
 
-| Class | Baseline finding |
-|---|---|
-| Fragmented/tiny biomes | No local red flag in the deliberately difficult patches; no global conclusion from 200 boundary-focused samples |
-| Unnatural terrain transitions | No numeric discontinuity beyond expected mountain/coastal controls; visual aesthetic judgment remains a candidate comparison task |
-| Buried/floating/cliff-intersecting structures | Not applicable: none of the named structure mods is installed; vanilla families are inventoried in Item 8 |
-| Bad underwater placement | No modded structures exist; deep-ocean surface controls are stable at Y=63 |
-| Overlap/failed placement/impossible restrictions | No modded structure stack exists; zero relevant warning/error lines |
-| Excessive terrain modification around structures | Not applicable until a structure candidate is installed |
-| Cosmetic issues | Server-only numeric control cannot ratify aesthetics; later visual QA is mandatory per candidate |
-| Gameplay issues | Steep mountain/control transitions are flagged for walking, vehicle and discoverability testing, not rejected |
-| Performance issues | Formal Item 17 measurement still required; see harness-failure lesson below |
-| Outright generation failure | None in either final run |
+The four targeted structures were Better Desert Temples, Better Strongholds, Better Witch Huts, and Integrated Stronghold. Targeted observation proves generation at the located coordinates, not frequency.
 
-## Harness failures and correction
+## Interaction and anomaly inspection
 
-The audit deliberately retains its failed methods:
+Sixteen Run A analysis reports cover all four seeds and all four selections. Each report contains one row for every required anomaly class, for 192 rows total. The analysis records denominators, candidates, method, status, and limitations. Fragmented and tiny biomes, terrain transitions, structure overlaps, and village overlaps were measured directly. Buried, floating, cliff, underwater, and terrain-modification checks become method-limited where complete terrain or footprint inputs are unavailable. Failed placement is method-limited because invalid starts omitted by the decoder cannot be treated as a complete absence. Impossible biome restrictions remain unresolved until Item 8 binds the packaged restriction inputs.
 
-- a direct invocation permission error before Minecraft launch;
-- an exact console-response parser mismatch;
-- sparse discontiguous force-loads accumulated roughly 3,800 resident chunks and triggered the default 60-second watchdog;
-- repeated sparse-probe batching produced an unreliable console stream.
+Candidate counts are deterministic geometric or registry signals, not automatic gameplay defects. The 128 final offline captures provide elevation, biome, structure-overlay, and cross-section views for every seed, selection, and run. Two independent review lanes passed artifact identity, legends, orientation, scale, axes, units, limitations, clipping, and plot padding. The renders are derived inspection views, not block-accurate client screenshots.
 
-The accepted method does **not** disable the watchdog. It uses bounded rectangular tickets, removes them, and restarts per patch. Minecraft's own current and rotated debug logs—not the intermittently incomplete parent-console mirror—are authoritative lifecycle evidence. The sparse-probe crash is a test-harness artifact, not representative gameplay performance, but it proves later worldgen tools must bound tickets/backlog and remain under watchdog policy.
+## Repeatability and control result
 
-## Evidence
+Run A and Run B are not semantically equal. All central End selections match. Overworld, Nether, and outer End selections contain genuine heightmap, biome-section, or structure-start differences depending on seed and dimension. Exact inputs, selected coordinates, lifecycle commands, configuration semantics, decoder ordering, and transport-only fields were checked and do not explain the divergence.
 
-- `test-environment/terrain-sampling-v0.1.json`
-- `tools/sample_vanilla_terrain.py`
-- `evidence/worldgen/item7-terrain-control-r7.json`
-- `evidence/worldgen/item7-terrain-control-r8.json`
-- `evidence/worldgen/item7-terrain-repeat-verification.json`
-- `evidence/worldgen/harness-failures/`
+The causal provider is `UNKNOWN`. An order-sensitive worldgen interaction is plausible but unconfirmed. Changing C2ME or another frozen setting would be a tuning experiment and was not permitted inside Item 7.
+
+The retained-136 control compared 81 exact Overworld chunks against the accepted pilot. It found two heightmap mismatches and no biome or structure-start mismatches. Because the full retained stack itself demonstrated semantic nondeterminism, the control result is `not_attributable_due_to_measured_stack_nondeterminism`, not proof that Chunky changed terrain.
+
+## Warning evidence
+
+The accepted warning audit preserves 1,222 exact signatures and 14,003 occurrences: 10,095 warning occurrences and 3,908 error occurrences. The downstream disposition records:
+
+- 39 confirmed generation-failure signatures with 50 occurrences;
+- 11 performance signatures with 11 occurrences;
+- 6 follow-up signatures with 141 occurrences;
+- 1,166 unresolved signatures with 13,801 occurrences.
+
+Unresolved entries remain `UNKNOWN`. The audit does not convert startup success into compatibility proof and does not discard duplicate, noisy, or unattributed messages.
+
+## Durable evidence and restoration
+
+The raw evidence is split into four immutable release assets under tag `item-7-raw-evidence-2026-09-04`, bound to source revision `5f358600a2e0581fdd99fbd2608ce742e74b08c1`:
+
+| Asset | Files | Raw bytes | Archive bytes | Archive SHA-256 |
+|---|---:|---:|---:|---|
+| Core | 4,297 | 2,254,349,287 | 190,090,342 | `8145da670e6a28bd8f7f2b458b6e3845e13f5481df7120c77b9ae83bef4b734d` |
+| Run A worlds | 249 | 484,774,742 | 291,011,199 | `575b8644bb888e2f2c09311f0ba3ac063ea00eda1d51159e0038218a28d96fa7` |
+| Run B worlds | 250 | 484,038,098 | 289,949,293 | `3a82829fa159323ec1844d6f98fdc9ab6b25feab78d15c1b268d2a2692c268ff` |
+| Auxiliary worlds | 217 | 165,166,012 | 48,648,807 | `d865320a9b1d2b44e59eb7d854fa499309746dc71a04b6b8caa46ede2a0c5a25` |
+
+All four archives were restored into absent targets, checked file by file, downloaded again from the published GitHub release, and rehashed. The committed publication receipt and completion validator bind the release URL, tag, source revision, asset names, sizes, hashes, manifests, restore receipts, and verification tool. JARs, Minecraft and NeoForge binaries, credentials, `session.lock`, player data, caches, and symlinks are excluded.
+
+## Reproduction
+
+All acceptance-relevant implementation, CLIs, and tests are tracked under `src/mcpack_evidence/`, `tools/`, and `tests/item7/`. The protocol and committed receipts are under `evidence/item-7/`. The exact runtime commands and their outputs are retained in the raw archives.
+
+The final local checks are:
+
+```bash
+uv run pytest tests/item7 -q
+uv run ruff check src tools tests/item7
+uv run basedpyright src tools tests/item7
+tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04 evidence/item-7/archive evidence/item-7/archive/publication.json /tmp/item7-release-verify
+```
+
+The completion command is the tracked `tools/build_item7_completion.py` CLI with the protocol, provider, repeat, warning, control, visual, archive, restore, and publication inputs enumerated in `evidence/item-7/completion.json`. It returns `PASS` and records 123 artifact identities.
+
+## Evidence index
+
+- `evidence/item-7/protocol/worldgen-audit-v1.json`
+- `evidence/item-7/provider-catalog.json`
+- `evidence/item-7/visual/integrity-review.json`
+- `evidence/item-7/visual/fidelity-review.json`
+- `evidence/item-7/visual/rejected-attempts.json`
+- `evidence/item-7/archive/`
+- `evidence/item-7/completion.json`
+- GitHub release `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04`
+
+## Superseded historical control
+
+The former zero-mod `terrain-control-v0.1` report was reconstructed prose whose raw samples, verification file, and probe tool were lost. Its reported 200 exact repeated samples remain historical context only. This retained-stack audit replaces it as Item 7 acceptance evidence.
 
 ## Exit decision
 
-The existing terrain/worldgen baseline is reproducibly characterized and issue types are separated without inventing mod interactions. Item 8 may inventory the structures actually present in this zero-mod control. Every later admitted terrain, biome, dimension or structure mod must repeat the relevant Item 7 probes and add visual placement inspection before retention.
-
+The local Item 7 exit gate passes, with the limitations and downstream actions above preserved. Item 7 reaches repository-level `COMPLETE` only after this branch receives clean exact-SHA review and merges into `main`. Item 8 must then begin from that verified merged ref and must resolve canonical family identities without double-counting aliases, pieces, pools, or templates.
