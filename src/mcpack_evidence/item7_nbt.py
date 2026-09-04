@@ -3,6 +3,7 @@ from __future__ import annotations
 import struct
 from collections.abc import Mapping
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
 from .item7_nbt_models import (
     BiomeSection,
@@ -13,6 +14,9 @@ from .item7_nbt_models import (
     StructureStart,
 )
 
+if TYPE_CHECKING:
+    from pydantic import JsonValue
+
 __all__ = (
     "BiomeSection",
     "ChunkRecord",
@@ -21,6 +25,7 @@ __all__ = (
     "StructureBox",
     "StructureStart",
     "decode_chunk_nbt",
+    "decode_compound_nbt",
 )
 
 
@@ -124,6 +129,21 @@ def _root(payload: bytes) -> _Compound:
     value, offset = _payload(10, data, offset)
     if not isinstance(value, _Compound) or offset != len(data):
         raise NbtDecodeError("NBT root payload has trailing bytes")
+    return value
+
+
+def decode_compound_nbt(payload: bytes) -> dict[str, JsonValue]:
+    """Decode template or world compound NBT with the existing binary parser."""
+    return {name: _json_value(value) for name, value in _root(payload).values.items()}
+
+
+def _json_value(value: _NbtValue) -> JsonValue:
+    if isinstance(value, _Compound):
+        return {name: _json_value(child) for name, child in value.values.items()}
+    if isinstance(value, _NumberArray):
+        return list(value.values)
+    if isinstance(value, (bytes, tuple)):
+        return [_json_value(child) for child in value]
     return value
 
 
