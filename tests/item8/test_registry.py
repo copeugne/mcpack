@@ -39,6 +39,7 @@ def fake_java(tmp_path: Path) -> Callable[[str], Path]:
                         print('Saving the game', flush=True)
                         print('Saved the game', flush=True)
                     elif command == 'stop':
+                        if mode == 'slow-stop': time.sleep(30)
                         print('last shutdown diagnostic', flush=True)
                         sys.exit(3 if mode == 'bad-exit' else 0)
                 """),
@@ -97,6 +98,24 @@ def test_existing_console_log_is_preserved(tmp_path: Path) -> None:
     with pytest.raises(FileExistsError):
         _ = run_registry_lifecycle(tmp_path, tmp_path / "missing-java", log, 1)
     assert log.read_text() == "preserved"
+
+
+def test_configurable_exit_timeout_rejects_hung_shutdown(
+    tmp_path: Path, fake_java: Callable[[str], Path]
+) -> None:
+    result = run_registry_lifecycle(
+        tmp_path, fake_java("slow-stop"), tmp_path / "console.log", 30, exit_timeout_seconds=1
+    )
+    assert result.save_all_flush
+    assert result.commands[-1] == "stop"
+    assert result.process_group_killed
+    assert not result.clean_stop
+
+
+def test_nonpositive_exit_timeout_is_rejected_before_launch(tmp_path: Path) -> None:
+    with pytest.raises(ValueError, match="timeouts must be positive"):
+        _ = run_registry_lifecycle(tmp_path, tmp_path / "java", tmp_path / "log", 5, 0)
+    assert not (tmp_path / "log").exists()
 
 
 @pytest.mark.parametrize("content", ["", "a:b\na:b\n", "z:b\na:b\n", "bad id\n", "4 - a:b\n"])

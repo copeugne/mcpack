@@ -35,7 +35,6 @@ REGISTRIES = (
     "minecraft:dimension_type",
 )
 _ID = re.compile(r"[a-z0-9_.-]+:[a-z0-9_./-]+")
-_EXIT_TIMEOUT = 120
 
 
 class RegistryLifecycle(BaseModel):
@@ -90,10 +89,17 @@ class _Capture:
                 self.rejection = "server console pipe failed"
 
 
-def run_registry_lifecycle(
-    target: Path, java: Path, console_log: Path, timeout_seconds: int
+def run_registry_lifecycle(  # noqa: C901 - keep process cleanup in its lifecycle scope.
+    target: Path,
+    java: Path,
+    console_log: Path,
+    timeout_seconds: int,
+    exit_timeout_seconds: int = 120,
 ) -> RegistryLifecycle:
     """Dump each registry after readiness, then correlate flush and require clean exit."""
+    if timeout_seconds <= 0 or exit_timeout_seconds <= 0:
+        message = "capture and clean-exit timeouts must be positive"
+        raise ValueError(message)
     state = _Capture()
     killed = False
     deadline = time.monotonic() + timeout_seconds
@@ -121,7 +127,7 @@ def run_registry_lifecycle(
             lines = OutputSequence()
             reader = threading.Thread(target=read_output, args=(process.stdout, lines), daemon=True)
             reader.start()
-            deadline = _drive(state, lines, process.stdin, log, deadline)
+            deadline = _drive(state, lines, process.stdin, log, deadline, exit_timeout_seconds)
             if state.rejection is None:
                 try:
                     _ = process.wait(timeout=max(0.01, deadline - time.monotonic()))
@@ -163,8 +169,13 @@ def run_registry_lifecycle(
         )
 
 
-def _drive(
-    state: _Capture, lines: OutputSequence, stdin: IO[str], log: IO[str], deadline: float
+def _drive(  # noqa: PLR0913, PLR0917 - explicit separate capture and shutdown deadlines.
+    state: _Capture,
+    lines: OutputSequence,
+    stdin: IO[str],
+    log: IO[str],
+    deadline: float,
+    exit_timeout_seconds: int,
 ) -> float:
     while state.rejection is None:
         remaining = deadline - time.monotonic()
@@ -182,7 +193,7 @@ def _drive(
         was_flushed = state.flushed
         state.observe(line, stdin)
         if state.flushed and not was_flushed:
-            deadline = time.monotonic() + _EXIT_TIMEOUT
+            deadline = time.monotonic() + exit_timeout_seconds
     return deadline
 
 

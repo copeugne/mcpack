@@ -41,6 +41,7 @@ class Arguments(BaseModel):
     target: Path
     output: Path
     timeout_seconds: int = Field(gt=0)
+    exit_timeout_seconds: int = Field(default=120, gt=0)
 
 
 def check_ports(properties: Path) -> None:
@@ -78,6 +79,8 @@ def capture(arguments: Arguments) -> dict[str, JsonValue]:
         "configuration": None,
         "registries": {},
         "rejection_reason": "capture did not finish",
+        "timeout_seconds": arguments.timeout_seconds,
+        "exit_timeout_seconds": arguments.exit_timeout_seconds,
     }
     request = ControlRequest(
         runtime=WorldgenRequest(
@@ -112,7 +115,11 @@ def capture(arguments: Arguments) -> dict[str, JsonValue]:
         check_ports(request.runtime.target / "server.properties")
         java, _ = validate_java_runtime(request.runtime.java_home)
         lifecycle = run_registry_lifecycle(
-            request.runtime.target, java, request.runtime.log_path, arguments.timeout_seconds
+            request.runtime.target,
+            java,
+            request.runtime.log_path,
+            arguments.timeout_seconds,
+            arguments.exit_timeout_seconds,
         )
         report["lifecycle"] = json.loads(lifecycle.model_dump_json())
         if not lifecycle.clean_stop:
@@ -156,6 +163,7 @@ def main() -> int:
     for name in ("pristine", "java-home", "target", "output"):
         _ = parser.add_argument(f"--{name}", type=Path, required=True)
     _ = parser.add_argument("--timeout-seconds", type=int, default=900)
+    _ = parser.add_argument("--exit-timeout-seconds", type=int, default=120)
     arguments = Arguments.model_validate(vars(parser.parse_args()), strict=True)
     report = capture(arguments)
     print(json.dumps(report, indent=2))
