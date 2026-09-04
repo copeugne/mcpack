@@ -29,3 +29,23 @@ The three review reproductions for baseline-seed rebinding, retained-candidate s
 and generation-stage swapping failed before the manifest seal and pass after it. The fix is
 one immutable manifest identity check plus three focused regressions. No Item 7 behavior is
 included.
+
+## Credential-path review fix
+
+Reviewed implementation: `724071e4b96a89761700c246b683c81150fb2cea`
+
+| Gate | Result |
+| --- | --- |
+| Item 6 suite | PASS, 553 tests |
+| Full suite | PASS, 680 tests |
+| Ruff on 58 changed Python files | PASS |
+| basedpyright on `src`, `tests`, and the public CLI | PASS, 0 errors, 0 warnings, 0 notes |
+| Public Item 6 validation CLI | PASS |
+| Goal, code, security, QA, and context review lanes | PASS |
+| H1, escaped-key bypass | REFUTED |
+| H2, byte-preservation regression | REFUTED |
+| H3, stale loaded implementation | REFUTED |
+
+The exact escaped-target-key reproduction and an alternate key escape are rejected before
+capture creates an output or receipt. Canonical UTF-8 capture remains byte-exact outside the
+credential token.
