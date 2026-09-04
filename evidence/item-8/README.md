@@ -3,8 +3,8 @@
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
 The working deliverable is `inventory.json`, initially assembled by `f2eaf2b`
-and updated through `6540055` using attribute support from `bf153ea`.
-SHA-256: `cfe53234f8bed18b3f494b16de318cd2c95c3dc875e54c3a520a196477a9d83d`.
+and updated through `a590403` using attribute support from `bf153ea`.
+SHA-256: `ae3e32ef3378920442ef05327c85581aa0a13c5395b96074c5335ae15e9fa8c2`.
 It is explicitly incomplete. It joins Better Mineshafts, CTOV size groups,
 WDA layouts, Seven Seas vessels, Integrated Stronghold and Integrated Villages design groups
 to biome constraints, potential template content
@@ -105,6 +105,19 @@ inventory increment because these required references account for its size.
 No implementation changes are included with that output. Committed-source output
 `evidence/raw/item8/inventory-wda-reproduction1.json` matches
 `evidence/raw/item8/inventory-wda-pilot1.json` byte for byte.
+
+Source `a590403` adds distinct packaged loot field/value references and their
+source templates to the existing loot-source field. Original NBT paths remain
+in `sources/pool-traces-content.json.gz`. Container and death-loot fields remain
+separate, and list-valued trial-spawner references are preserved. This is source
+attribution, not a generated loot count, successful table resolution or effective
+loot-injection result. Existing explicit family attribute decisions remain intact.
+Eight focused tests and scoped quality checks passed. The output at
+`evidence/raw/item8/inventory-loot-summary-reproduction1.json` reproduced
+`evidence/raw/item8/inventory-loot-summary-pilot1.json` byte for byte.
+The more verbose `136ee84` pilot and reproduction were rejected for unnecessary
+duplication of raw paths; they are not the current inventory. This generated
+increment contains the required loot-source attribution and its documentation.
 
 The infrastructure requirements in
 `INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md` apply to this work. Reuse the
