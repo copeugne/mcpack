@@ -808,6 +808,54 @@
           "limitation": "The offset locates the start, not every hull block; submerged extent and surface visibility remain unmeasured."
         }
       }
+    },
+    {
+      "family_id": "integrated_stronghold:stronghold",
+      "name": "Integrated Stronghold",
+      "structure_ids": [
+        "integrated_stronghold:stronghold"
+      ],
+      "rationale": "One assembled stronghold rooted at the fountain start pool. Dining halls, libraries, prisons, portal rooms and other connected pools are components of this structure, not independent families. Vanilla and Better Strongholds remain separate generator identities; their effective replacement relationships require disposition.",
+      "start_pool": "integrated_stronghold:fountain/fountain",
+      "evidence": {
+        "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
+        "evidence/item-8/sources/pool-traces-content.json.gz": "facb6f7bbafb6836e7eaa694535b975c2ee2deab1e36ab85930f1c11c7a471c8",
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+      },
+      "attributes": {
+        "mob_source": {
+          "structure_spawn_override": {
+            "monster": {
+              "bounding_box": "piece",
+              "spawns": [
+                {
+                  "maxCount": 2,
+                  "minCount": 1,
+                  "type": "minecraft:silverfish",
+                  "weight": 1
+                },
+                {
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "type": "minecraft:enderman",
+                  "weight": 1
+                }
+              ]
+            }
+          },
+          "basis": "Packaged structure definition. This is a natural monster-spawn override within piece bounds, not an authored spawn count.",
+          "authored_content": "Reachable template entities, spawners and processors remain to be attributed.",
+          "source_trace": "integrated_stronghold:stronghold"
+        },
+        "underground_surface_classification": {
+          "value": "Underground start with assembled surface exposure unresolved",
+          "basis": "Packaged start_height is a uniform distribution with both absolute endpoints at Y=15 and generation step strongholds. The custom generator and terrain determine the final occupied extent."
+        }
+      },
+      "missing_components": [
+        "integrated_stronghold:small_room/small_armory_left",
+        "integrated_stronghold:small_room/small_armory_right"
+      ]
     }
   ]
 }
