@@ -9,10 +9,9 @@ from pydantic import BaseModel, ConfigDict, Field, JsonValue
 
 from mcpack_evidence.item7_completion_io import fail, identity, strict_model
 from mcpack_evidence.item7_completion_models import ArtifactIdentity  # noqa: TC001
+from mcpack_evidence.item7_repeat_comparison import rebuild_selection_comparison
 
-_ROLES: Final = ("ordinary", "mountainous", "ocean-heavy", "biome-diverse")
-_SELECTIONS: Final = ("overworld", "nether", "end-central", "end-outer")
-_FIELDS: Final = frozenset(
+_STRUCTURAL: Final = frozenset(
     {
         "schema_version",
         "dimension",
@@ -22,12 +21,8 @@ _FIELDS: Final = frozenset(
         "data_version",
         "status",
         "full",
-        "heightmaps",
-        "biome_sections",
-        "structure_starts",
     }
 )
-_STRUCTURAL: Final = _FIELDS - {"heightmaps", "biome_sections", "structure_starts"}
 
 
 class _RepeatReport(BaseModel):
@@ -41,45 +36,33 @@ class _RepeatReport(BaseModel):
     seeds: tuple[dict[str, JsonValue], ...]
 
 
-def validate_repeat(path: Path, protocol_sha256: str) -> ArtifactIdentity:
-    """Require measured semantic divergence with intact comparison geometry."""
+def validate_repeat(path: Path, protocol_path: Path) -> ArtifactIdentity:
+    """Require the reported receipt to exactly match rebuilt selection evidence."""
     report = strict_model(path, _RepeatReport)
-    if report.protocol_sha256 != protocol_sha256 or len(report.seeds) != len(_ROLES):
-        fail("repeat identity or seed accounting", path)
-    differences = tuple(
-        _seed_has_difference(path, role, seed)
-        for role, seed in zip(_ROLES, report.seeds, strict=True)
-    )
-    if not any(differences) or not report.first_mismatch:
-        fail("repeat nondeterminism evidence", path)
+    rebuilt = rebuild_selection_comparison(protocol_path, path.parent)
+    if report.model_dump(mode="json") != rebuilt:
+        fail("repeat comparison source binding", path)
+    if _has_structural_mismatch(rebuilt):
+        fail("repeat structural mismatch", path)
     return identity(path, "repeat-comparison.json")
 
 
-def _seed_has_difference(path: Path, role: str, seed: dict[str, JsonValue]) -> bool:
-    if seed.get("role") != role:
-        fail("repeat seed role accounting", path)
-    selections = seed.get("selections")
-    if not isinstance(selections, list) or len(selections) != len(_SELECTIONS):
-        fail("repeat selection accounting", path)
-    return any(
-        _selection_has_difference(path, label, selection)
-        for label, selection in zip(_SELECTIONS, selections, strict=True)
-    )
-
-
-def _selection_has_difference(path: Path, label: str, selection: JsonValue) -> bool:
-    if not isinstance(selection, dict) or selection.get("label") != label:
-        fail("repeat selection label accounting", path)
-    counts = selection.get("field_mismatch_counts")
-    if not isinstance(counts, dict) or set(counts) != set(_FIELDS):
-        fail("repeat field accounting", path)
-    values = tuple(_count(path, value) for value in counts.values())
-    if any(counts[field] != 0 for field in _STRUCTURAL):
-        fail("repeat structural mismatch", path)
-    return any(value > 0 for value in values)
-
-
-def _count(path: Path, value: JsonValue) -> int:
-    if not isinstance(value, int) or isinstance(value, bool) or value < 0:
-        fail("repeat mismatch count", path)
-    return value
+def _has_structural_mismatch(report: dict[str, JsonValue]) -> bool:
+    seeds = report["seeds"]
+    if not isinstance(seeds, list):
+        fail("repeat selection accounting", "seeds")
+    for seed in seeds:
+        if not isinstance(seed, dict):
+            fail("repeat seed accounting", "seed")
+        selections = seed.get("selections")
+        if not isinstance(selections, list):
+            fail("repeat selection accounting", "selections")
+        for selection in selections:
+            if not isinstance(selection, dict):
+                fail("repeat selection accounting", "selection")
+            counts = selection.get("field_mismatch_counts")
+            if not isinstance(counts, dict):
+                fail("repeat field accounting", "field_mismatch_counts")
+            if any(counts.get(field) != 0 for field in _STRUCTURAL):
+                return True
+    return False

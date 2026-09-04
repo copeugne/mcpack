@@ -68,7 +68,7 @@ def build_completion(inputs: CompletionInputs) -> CompletionReport:
         raise CompletionError(issue, str(anomaly_rows))
     artifacts.extend(run_artifacts)
     raw_artifacts.extend(run_artifacts)
-    repeat = validate_repeat(inputs.repeat_comparison, protocol_sha)
+    repeat = validate_repeat(inputs.repeat_comparison, inputs.protocol)
     warning_artifacts = validate_warnings(
         inputs.raw_root, inputs.warning_audit, inputs.warning_disposition
     )
