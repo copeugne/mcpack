@@ -1,0 +1,58 @@
+$ git diff --exit-code 895ed1d999cd22ca511035e666ad8ac308ae63c1 -- evidence/item-6/frozen evidence/item-6/generated-config-manifest.json
+PASS: frozen tree and manifest are byte-identical to 895ed1d
+
+$ rg -n '"evidence": "' evidence/item-6/config-audit.json
+PASS: no string evidence rows
+
+$ setting inventory checks
+PASS: settings=110 unique_file_key_pairs=110 mutation_cases=220 c2me_rows=1 wildcards=0
+
+$ uv run ruff format --check tools/freeze_item6_config.py tests/item6/test_value_binding.py tests/item6/test_frozen_config.py
+3 files already formatted
+$ uv run ruff check tools/freeze_item6_config.py tests/item6/test_value_binding.py tests/item6/test_frozen_config.py
+All checks passed!
+$ uv run basedpyright
+0 errors, 0 warnings, 0 notes
+$ no-excuse checker
+no violations in 3 file(s)
+$ git diff --check
+
+ADVERSARIAL QA:
+malformed_input=PASS (12 focused rejection cases; task-3-value-binding-error.txt)
+stale_state=PASS (exact 1-based line/prefix/suffix and frozen-byte identity)
+dirty_worktree=PASS (explicit owned-path staging only)
+flaky_tests=PASS (two consecutive 222-case focused GREEN runs)
+misleading_success_output=PASS (110 settings x 2 fields = 220 mutation cases)
+accessibility_ui=not_applicable (offline CLI/data validator; no UI)
+network_external_integration=not_applicable (no network or external service)
+performance_load=not_applicable (bounded 228-file evidence validation)
+localization=not_applicable (machine evidence and fixed CLI success line)
+auth_security=not_applicable (local read-only evidence validation)
+
+CLEANUP: tests created pytest tmp_path data only; no worker-created temp files/directories, process, port, or container remains.
+RISK: tools/freeze_item6_config.py is 247 pure LOC (warning band); split validation responsibilities before the next substantive edit.
+
+POST-COMMIT CLEANUP AND DONE CLAIM
+$ git rev-parse HEAD
+4456f5c39fcb74e5fdebf896e18f7ccfeec12553
+$ git log -1 --oneline
+4456f5c fix(item6): bind audit values to frozen sources
+$ git diff-tree --no-commit-id --name-only -r HEAD
+evidence/item-6/config-audit.json
+tests/item6/test_frozen_config.py
+tests/item6/test_value_binding.py
+tools/freeze_item6_config.py
+PASS: commit contains exactly four authorized paths
+$ git diff HEAD^ --check
+$ git diff --exit-code 895ed1d999cd22ca511035e666ad8ac308ae63c1 -- evidence/item-6/frozen evidence/item-6/generated-config-manifest.json
+PASS: frozen tree and manifest remain byte-identical to 895ed1d
+$ git status --short
+PASS: worktree clean
+$ evidence artifacts
+130 /home/lonestar/Desktop/Projects/mcpack/.omo/evidence/item6-completion/task-3-characterization.txt
+163536 /home/lonestar/Desktop/Projects/mcpack/.omo/evidence/item6-completion/task-3-value-binding-red.txt
+4377 /home/lonestar/Desktop/Projects/mcpack/.omo/evidence/item6-completion/task-3-value-binding-green.txt
+2216 /home/lonestar/Desktop/Projects/mcpack/.omo/evidence/item6-completion/task-3-value-binding-error.txt
+232 /home/lonestar/Desktop/Projects/mcpack/.omo/evidence/item6-completion/task-3-cli.txt
+3013 /home/lonestar/Desktop/Projects/mcpack/.omo/evidence/item6-completion/task-3-cleanup.txt
+DONECLAIM: settings=110; claim_mutations=220; malformed_rejections=12; focused_green_twice=222 each; item6_suite=247; CLI=exact success; cleanup=no leftovers; risk=validator 247 pure LOC warning band; SHA=4456f5c
