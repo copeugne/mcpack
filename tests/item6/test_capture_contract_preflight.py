@@ -174,6 +174,20 @@ def test_capture_rejects_output_that_aliases_sanitization_receipt(tmp_path: Path
     assert not output.exists()
 
 
+@pytest.mark.parametrize("target_name", ["output", "config-sanitization.json"])
+def test_capture_preserves_dangling_target_symlink(tmp_path: Path, target_name: str) -> None:
+    instance = _make_instance(tmp_path)
+    output = tmp_path / "output"
+    target = tmp_path / target_name
+    target.symlink_to("missing-target")
+
+    with pytest.raises(FileExistsError, match="already exists"):
+        capture(instance, output)
+    assert target.is_symlink()
+    assert target.readlink() == Path("missing-target")
+    assert not tuple(tmp_path.glob(".*.capture-*"))
+
+
 @pytest.mark.parametrize("nested", [False, True])
 def test_capture_rejects_symlinked_output_parent_before_staging(
     tmp_path: Path, nested: bool

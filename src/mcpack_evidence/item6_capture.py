@@ -62,10 +62,10 @@ def capture(instance: Path, output: Path) -> None:
     if output == receipt:
         message = "output path collides with sanitization receipt"
         raise CaptureValidationError(message)
-    if output.exists():
+    if output.exists() or output.is_symlink():
         message = f"output already exists: {output}"
         raise FileExistsError(message)
-    if receipt.exists():
+    if receipt.exists() or receipt.is_symlink():
         message = f"sanitization receipt already exists: {receipt}"
         raise FileExistsError(message)
     _require_directory(instance, "instance")
