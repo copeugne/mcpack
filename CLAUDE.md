@@ -9,6 +9,20 @@
 - Preserve `.codegraph` and `mcpack-reconstructed-28(1).bundle`. Do not delete, stage, or commit them.
 - Keep current branch names, commit IDs, pull request numbers, item status, active defects, and continuation instructions in handoff or ledger documents, not in this file.
 
+## General engineering discipline
+
+- Use `uv` for every Python command and dependency operation.
+- Choose the simplest complete solution. Do not over-complicate or over-engineer.
+- Reuse existing implementations and patterns. Do not create duplicate functions, classes, or variants.
+- Do the actual required work. Do not substitute shortcuts, simplifications, or approximations.
+- Do not fail silently or add unneeded speculative fallbacks. Errors and exceptions must be clear and descriptive.
+- Apply critical thinking. Verify claims and challenge incorrect premises rather than agreeing mechanically.
+- Quantitative claims require measurement or solid evidence. Do not invent or imply unsupported numbers.
+- Do not use placeholder `pass` to conceal incomplete code. Fail explicitly with a clear exception and mark the implementation incomplete.
+- Clarify material unknowns instead of inventing facts or silently assuming them.
+- Make plans and implementation steps atomic, each with one independently verifiable outcome.
+- Never use em dashes or en dashes in documentation, prose, or commit messages. Use punctuation such as a period, comma, colon, or parentheses instead.
+
 ## Product and design contract
 
 - Build an engineering-driven multiplayer adventure sandbox.
