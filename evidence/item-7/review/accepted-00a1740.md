@@ -13,12 +13,12 @@
 
 | Lane | Verdict | Confidence | Binding evidence |
 | --- | --- | --- | --- |
-| Goal and constraints | PASS | HIGH, 0.97 | `/root/item7_r4_goal_review` final result |
-| Code quality | PASS | HIGH | `/root/item7_r4_code_review` final result |
-| Security and evidence integrity | PASS | HIGH | `/root/item7_r4_integrity_review` final result |
-| Hands-on QA | PASS | HIGH | `/root/item7_r4_qa_review` final result and `/home/lonestar/mcpack-item7-qa-00a.Gbdpfu/00a174015de96c9219565034428df2421a42c66e-manual-qa.md` |
-| Context and reproducibility | PASS | HIGH | `/root/item7_r4_context_review` final result |
-| Runtime debugging audit | PASS | HIGH | `/root/item7_r4_runtime_audit` final result and `/tmp/item7-r8-runtime-audit-00a.md` |
+| Goal and constraints | PASS | HIGH, 0.97 | `lane-goal-00a1740.md` |
+| Code quality | PASS | HIGH | `lane-code-quality-00a1740.md` |
+| Security and evidence integrity | PASS | HIGH | `lane-integrity-00a1740.md` |
+| Hands-on QA | PASS | HIGH | `lane-qa-00a1740.md` |
+| Context and reproducibility | PASS | HIGH | `lane-context-00a1740.md` |
+| Runtime debugging audit | PASS | HIGH | `lane-runtime-00a1740.md` |
 
 Every lane bound its verdict to the exact full revision above. No result from an earlier revision was reused.
 
@@ -35,7 +35,7 @@ Every lane bound its verdict to the exact full revision above. No result from an
 - Archive, manifest, scalar, inventory, completion, and lifecycle tamper cases rejected as required.
 - Real archive CLI creation and restore passed. A real r8 auxiliary restore produced 217 files with no symlinks or `session.lock`.
 - Ten lifecycle receipts passed readiness, flush and save, stop, clean-exit, and process-cleanup assertions. No Java process survived QA.
-- Fifty-two focused security and evidence-integrity tests and fourteen runtime adversarial archive tests passed.
+- Focused security, evidence-integrity, and runtime adversarial archive selections passed. Their tracked superset is the 186-test Item 7 suite.
 - Live GitHub metadata matched the r8 tag, four release assets, sizes, and digests recorded in the committed publication evidence.
 
 ## Prior finding disposition
@@ -50,7 +50,7 @@ No actionable findings remained.
 
 ## Residuals and delivery gate
 
-- No lane performed a third download of the approximately 848 MiB release. The accepted record already preserves two independent successful repository-bound downloads, and the final lanes verified live release metadata and the restored payloads.
+- No lane performed a third download of the 833.08 MiB release. The accepted record already preserves two independent successful repository-bound downloads, and the final lanes verified live release metadata and the restored payloads.
 - Reproduction paths in the validation report are host-specific. Another operator may substitute equivalent pre-existing parent paths while preserving the required absent final output targets.
 - Item 7 is not `COMPLETE` at this revision. PR `#15` must receive this accepted branch, complete a fresh clean GitHub Codex review cycle with no valid unresolved findings, merge into `main`, and have the delivered ref verified.
 - Item 8 remains blocked until that delivery gate passes.
