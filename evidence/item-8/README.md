@@ -3,8 +3,8 @@
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
 The working deliverable is `inventory.json`, initially assembled by `f2eaf2b`
-and updated through `93d526c` using attribute support from `bf153ea`.
-SHA-256: `2df2e12859eb6baacd304205a24e8f0506c4b1adbef63637e0398fd43296bf3f`.
+and updated through `585de70` using attribute support from `bf153ea`.
+SHA-256: `abb98a78d9d0fa1deb465dfc8a4db4f2c2e6555a937b515b085597e16a55c3e1`.
 It is explicitly incomplete. It joins the currently recorded Better Mineshafts
 and CTOV size-group decisions to biome constraints, potential template content
 and saved-world observation references. It lists every unassigned registry ID
@@ -73,6 +73,18 @@ explicit, along with unresolved authored content and replacement relationships.
 Five focused tests and scoped Ruff and basedpyright checks passed. Output
 `evidence/raw/item8/inventory-integrated-stronghold-reproduction1.json` reproduced
 `evidence/raw/item8/inventory-integrated-stronghold-pilot1.json` byte for byte.
+
+Source `585de70` enumerates all twelve registered Integrated Villages designs
+with distinct start pools. Connected buildings, paths and inhabitants remain
+components, including shared components. Broader village-family relationships
+remain open. Minka's declared Quark dependency, Pirate Village's target biome
+and radius, height settings and missing pool/template references are preserved.
+Six focused tests and scoped quality checks passed. The generated inventory
+increment is isolated because the required per-family biome and template joins
+produce substantial repeated source references. No unrelated source changes are
+included. Committed-source output
+`evidence/raw/item8/inventory-integrated-villages-reproduction1.json` matches
+`evidence/raw/item8/inventory-integrated-villages-pilot1.json` byte for byte.
 
 The infrastructure requirements in
 `INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md` apply to this work. Reuse the
