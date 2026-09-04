@@ -12,15 +12,39 @@ All four archives were rebuilt from the verified r4 restore with the tracked imp
 
 The world archive inventory was rebuilt from the r7 restored Run A, Run B, and auxiliary trees. The completion receipt was built twice from the r7 restored core plus the tracked r7 manifests, restore receipts, publication receipt, and world inventory. Both completion outputs were byte-identical.
 
-The canonical completion invocation uses:
+From the repository root, the exact accepted completion rebuild and comparison invocation is:
 
-- `--raw-root /home/lonestar/Desktop/Projects/mcpack-item7-r7-delivery/restored/core`;
-- `--visual-manifest /home/lonestar/Desktop/Projects/mcpack-item7-r7-delivery/restored/core/visual-qa/captures/capture-manifest.tsv`;
-- the tracked protocol, provider catalog, biome-restriction audit, and visual review receipts under `evidence/item-7/`;
-- provider, repeat, warning, control, run, gap, analysis, and capture inputs under the restored r7 core;
-- `evidence/item-7/world-archive-inventory.json`;
-- all four manifests and restore receipts under `evidence/item-7/archive/r7/`;
-- `evidence/item-7/archive/r7/publication.json`.
+```sh
+uv run python tools/build_item7_completion.py \
+  --raw-root /home/lonestar/Desktop/Projects/mcpack-item7-r7-delivery/restored/core \
+  --protocol evidence/item-7/protocol/worldgen-audit-v1.json \
+  --provider-catalog evidence/item-7/provider-catalog.json \
+  --provider-coverage /home/lonestar/Desktop/Projects/mcpack-item7-r7-delivery/restored/core/run-a/provider-coverage.json \
+  --provider-disposition /home/lonestar/Desktop/Projects/mcpack-item7-r7-delivery/restored/core/provider-disposition.json \
+  --restriction-audit evidence/item-7/biome-restriction-audit.json \
+  --world-archive-inventory evidence/item-7/world-archive-inventory.json \
+  --repeat-comparison /home/lonestar/Desktop/Projects/mcpack-item7-r7-delivery/restored/core/repeat-comparison.json \
+  --warning-audit /home/lonestar/Desktop/Projects/mcpack-item7-r7-delivery/restored/core/warning-audit.json \
+  --warning-disposition /home/lonestar/Desktop/Projects/mcpack-item7-r7-delivery/restored/core/warning-disposition.json \
+  --control-comparison /home/lonestar/Desktop/Projects/mcpack-item7-r7-delivery/restored/core/control-comparison.json \
+  --visual-manifest /home/lonestar/Desktop/Projects/mcpack-item7-r7-delivery/restored/core/visual-qa/captures/capture-manifest.tsv \
+  --visual-review evidence/item-7/visual/integrity-review.json \
+  --visual-review evidence/item-7/visual/fidelity-review.json \
+  --archive-manifest evidence/item-7/archive/r7/core-manifest.json \
+  --archive-manifest evidence/item-7/archive/r7/run-a-worlds-manifest.json \
+  --archive-manifest evidence/item-7/archive/r7/run-b-worlds-manifest.json \
+  --archive-manifest evidence/item-7/archive/r7/auxiliary-worlds-manifest.json \
+  --restore-receipt evidence/item-7/archive/r7/core-restore.json \
+  --restore-receipt evidence/item-7/archive/r7/run-a-worlds-restore.json \
+  --restore-receipt evidence/item-7/archive/r7/run-b-worlds-restore.json \
+  --restore-receipt evidence/item-7/archive/r7/auxiliary-worlds-restore.json \
+  --publication evidence/item-7/archive/r7/publication.json \
+  --output /tmp/item7-completion-r7-rebuilt.json
+cmp evidence/item-7/completion.json /tmp/item7-completion-r7-rebuilt.json
+sha256sum evidence/item-7/completion.json /tmp/item7-completion-r7-rebuilt.json
+```
+
+This command returned `PASS`; `cmp` returned zero; and both SHA-256 values were `6bb509d87a215a67186fa70f285b59e6986d813c7c21f9ab19e8479ea078515c`.
 
 The older mutable `/tmp/mcpack-item7-raw-20260904` tree is not an accepted completion input. A rejected QA attempt used that tree and correctly failed on three stale capture identities. The accepted r7 restored core contains capture manifest SHA-256 `219e17ed50b6e5b919c16a2b5bef34b7820b251c7272074d5df91c5123260f91`, which matches both accepted visual review receipts.
 
