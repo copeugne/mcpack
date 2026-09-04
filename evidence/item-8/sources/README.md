@@ -58,8 +58,8 @@ non-root packs and replacements requiring unknown mod order produce null values
 with explicit unresolved reasons. The frozen enabled-pack order recorded in
 `runtime/registry-r1/world-context.json` puts vanilla before `mod_data`.
 The expanded index SHA-256 is
-`d4bde9f10ab18076d7ccd7466e315a2c49e677da79a5e9156986696fab472775`
-after the structure-constraint extension below.
+`fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef`
+after the structure-constraint, dynamic-tag and pack-order extensions below.
 The committed-source run reproduced its pilot byte for byte. The generated
 addition is isolated because it indexes the existing catalog's tag contributions;
 it does not introduce another source extraction or runtime experiment.
@@ -77,12 +77,38 @@ whose activation/order is unknown. Every Better Mineshafts variant has a resolve
 packaged constraint. Ten focused biome tests and scoped quality checks passed;
 the committed-source output reproduced the pilot byte for byte.
 
+Source `e22815d` incorporates Supplementaries' two dynamic tags, resolving 827 of
+887 constraints. The input records bind the inspected generator and feature
+supplier disassemblies, frozen config, and captured enabled-pack list. Parent
+feature toggles are included; disabled features produce empty tags. Five focused
+tests and scoped quality checks passed. The committed-source reproduction at
+`evidence/raw/item8/structure-biomes-dynamic-reproduction1.json` matched the
+preserved pilot byte for byte.
+
 These are source-derived constraints, not observed placement or a direct dump of
-runtime tag contents. Dynamic tag construction can supply a missing packaged
-reference. In particular, Supplementaries' `has_galleons` and `has_road_signs`
-references require inspection of their runtime source before disposition.
-The three IDAS lumber-camp missing tags remain explicit. Several vanilla,
-CTOV, WDA and Explorify constraints depend on unresolved mod replacement order.
+runtime tag contents. Dynamic tag construction supplied Supplementaries'
+`has_galleons` and `has_road_signs` references; see `supplementaries-tags-code`.
+Source `60c1ed1`, using `71ee444`, resolves the seven remaining competing tag
+orders from the captured debug log's final expanded sorting record, line 17812.
+The order is vanilla, Biomes O' Plenty, Towns & Towers, Terralith, then Regions
+Unexplored for these contributors. NeoForge mod IDs come from the hash-bound
+Item 3 JAR inspection. The existing index preserves the exact sorting record,
+archive mapping, raw log hash and source line in `biome_archive_order`.
+This resolves constraints for 884 of 887 structure IDs. The three IDAS
+lumber-camp missing tags remain explicit. Other contribution orders are not
+silently inferred from this partial mapping. Ten focused tests and scoped
+quality checks passed. The committed-source output reproduced the pilot exactly:
+
+```sh
+uv run -m tools.build_item8_structure_inputs --output evidence/raw/item8/structure-biomes-pack-order-reproduction1.json
+cmp evidence/raw/item8/structure-biomes-pack-order-pilot1.json evidence/raw/item8/structure-biomes-pack-order-reproduction1.json
+```
+
+Restore the original `evidence/raw/item8/registry-r1/debug.log` before rebuilding.
+Its SHA-256 is `e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b`;
+raw delivery remains pending. The generated change is isolated because resolving
+seven shared tags updates their dependent structure rows in the existing index.
+This is a runtime-log-bound source derivation, not a direct runtime tag dump.
 Neither a null result nor an empty biome list establishes structure-generation
 status without that disposition. Dimension eligibility still requires the
 generator's biome source and any custom placement restrictions.

@@ -1,0 +1,362 @@
+Compiled from "ModServerDynamicResources.java"
+public class net.mehvahdjukaar.supplementaries.dynamicpack.ModServerDynamicResources extends net.mehvahdjukaar.moonlight.api.resources.pack.DynamicServerResourceProvider {
+  public static final java.util.Map<net.minecraft.resources.ResourceLocation, net.minecraft.server.packs.resources.Resource> TAG_TRANSLATION_HACK;
+
+  public net.mehvahdjukaar.supplementaries.dynamicpack.ModServerDynamicResources();
+    Code:
+       0: aload_0
+       1: ldc           #1                  // String generated_pack
+       3: invokestatic  #3                  // Method net/mehvahdjukaar/supplementaries/Supplementaries.res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       6: invokestatic  #9                  // Method net/mehvahdjukaar/moonlight/api/platform/PlatHelper.isDev:()Z
+       9: ifeq          18
+      12: getstatic     #15                 // Field net/mehvahdjukaar/moonlight/api/resources/pack/PackGenerationStrategy.CACHED:Lnet/mehvahdjukaar/moonlight/api/resources/pack/PackGenerationStrategy;
+      15: goto          32
+      18: getstatic     #21                 // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$General.DYNAMIC_ASSETS_GEN_MODE:Ljava/util/function/Supplier;
+      21: invokeinterface #27,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      26: checkcast     #33                 // class net/mehvahdjukaar/supplementaries/dynamicpack/GenMode
+      29: invokevirtual #35                 // Method net/mehvahdjukaar/supplementaries/dynamicpack/GenMode.toStrategy:()Lnet/mehvahdjukaar/moonlight/api/resources/pack/PackGenerationStrategy;
+      32: invokespecial #39                 // Method net/mehvahdjukaar/moonlight/api/resources/pack/DynamicServerResourceProvider."<init>":(Lnet/minecraft/resources/ResourceLocation;Lnet/mehvahdjukaar/moonlight/api/resources/pack/PackGenerationStrategy;)V
+      35: return
+
+  public boolean needsToRegenerate();
+    Code:
+       0: aload_0
+       1: invokespecial #45                 // Method net/mehvahdjukaar/moonlight/api/resources/pack/DynamicServerResourceProvider.needsToRegenerate:()Z
+       4: ifne          13
+       7: invokestatic  #9                  // Method net/mehvahdjukaar/moonlight/api/platform/PlatHelper.isDev:()Z
+      10: ifeq          17
+      13: iconst_1
+      14: goto          18
+      17: iconst_0
+      18: ireturn
+
+  protected java.util.Collection<java.lang.String> gatherSupportedNamespaces();
+    Code:
+       0: ldc           #48                 // String minecraft
+       2: invokestatic  #50                 // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+       5: areturn
+
+  public void regenerateDynamicAssets(java.util.function.Consumer<net.mehvahdjukaar.moonlight.api.resources.pack.ResourceGenTask>);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokedynamic #56,  0             // InvokeDynamic #0:accept:(Lnet/mehvahdjukaar/supplementaries/dynamicpack/ModServerDynamicResources;)Lnet/mehvahdjukaar/moonlight/api/resources/pack/ResourceGenTask;
+       7: invokeinterface #60,  2           // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      12: return
+
+  private void addCannonBoatRecipes(net.minecraft.server.packs.resources.ResourceManager, net.mehvahdjukaar.moonlight.api.resources.pack.ResourceSink);
+    Code:
+       0: getstatic     #65                 // Field net/mehvahdjukaar/supplementaries/reg/ModRegistry.CANNON_BOAT_ITEMS:Ljava/util/Map;
+       3: aload_2
+       4: aload_1
+       5: invokedynamic #71,  0             // InvokeDynamic #1:accept:(Lnet/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink;Lnet/minecraft/server/packs/resources/ResourceManager;)Ljava/util/function/BiConsumer;
+      10: invokeinterface #74,  2           // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+      15: return
+
+  private void addSignPostRecipes(net.minecraft.server.packs.resources.ResourceManager, net.mehvahdjukaar.moonlight.api.resources.pack.ResourceSink);
+    Code:
+       0: new           #80                 // class java/util/concurrent/atomic/AtomicInteger
+       3: dup
+       4: invokespecial #82                 // Method java/util/concurrent/atomic/AtomicInteger."<init>":()V
+       7: astore_3
+       8: getstatic     #85                 // Field net/mehvahdjukaar/supplementaries/reg/ModRegistry.WAY_SIGN_ITEMS:Ljava/util/Map;
+      11: aload_3
+      12: aload_2
+      13: aload_1
+      14: invokedynamic #88,  0             // InvokeDynamic #2:accept:(Ljava/util/concurrent/atomic/AtomicInteger;Lnet/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink;Lnet/minecraft/server/packs/resources/ResourceManager;)Ljava/util/function/BiConsumer;
+      19: invokeinterface #74,  2           // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+      24: getstatic     #91                 // Field net/mehvahdjukaar/supplementaries/Supplementaries.LOGGER:Lorg/apache/logging/log4j/Logger;
+      27: ldc           #95                 // String Generated {} sign post recipes
+      29: aload_3
+      30: invokevirtual #97                 // Method java/util/concurrent/atomic/AtomicInteger.get:()I
+      33: invokestatic  #100                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      36: invokeinterface #106,  3          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+      41: return
+
+  private static void lambda$addSignPostRecipes$2(java.util.concurrent.atomic.AtomicInteger, net.mehvahdjukaar.moonlight.api.resources.pack.ResourceSink, net.minecraft.server.packs.resources.ResourceManager, net.mehvahdjukaar.moonlight.api.set.wood.WoodType, net.mehvahdjukaar.supplementaries.common.items.SignPostItem);
+    Code:
+       0: aload_3
+       1: getstatic     #112                // Field net/mehvahdjukaar/moonlight/api/set/wood/VanillaWoodTypes.OAK:Lnet/mehvahdjukaar/moonlight/api/set/wood/WoodType;
+       4: if_acmpne     8
+       7: return
+       8: aload_3
+       9: ldc           #118                // String sign
+      11: invokevirtual #120                // Method net/mehvahdjukaar/moonlight/api/set/wood/WoodType.getChild:(Ljava/lang/String;)Ljava/lang/Object;
+      14: ifnonnull     29
+      17: getstatic     #91                 // Field net/mehvahdjukaar/supplementaries/Supplementaries.LOGGER:Lorg/apache/logging/log4j/Logger;
+      20: ldc           #126                // String Could not find Sign for wood {}. Does this block even exist? It should! Skipping way sign recipe generation
+      22: aload_3
+      23: invokeinterface #128,  3          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+      28: return
+      29: aload_0
+      30: iconst_1
+      31: invokevirtual #131                // Method java/util/concurrent/atomic/AtomicInteger.addAndGet:(I)I
+      34: pop
+      35: aload_1
+      36: aload_2
+      37: ldc           #135                // String way_sign_oak
+      39: invokestatic  #3                  // Method net/mehvahdjukaar/supplementaries/Supplementaries.res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      42: getstatic     #112                // Field net/mehvahdjukaar/moonlight/api/set/wood/VanillaWoodTypes.OAK:Lnet/mehvahdjukaar/moonlight/api/set/wood/WoodType;
+      45: aload_3
+      46: aload_3
+      47: invokevirtual #137                // Method net/mehvahdjukaar/moonlight/api/set/wood/WoodType.getTypeName:()Ljava/lang/String;
+      50: invokedynamic #141,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      55: invokestatic  #3                  // Method net/mehvahdjukaar/supplementaries/Supplementaries.res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      58: invokevirtual #145                // Method net/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink.addBlockTypeSwapRecipe:(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/resources/ResourceLocation;Lnet/mehvahdjukaar/moonlight/api/set/BlockType;Lnet/mehvahdjukaar/moonlight/api/set/BlockType;Lnet/minecraft/resources/ResourceLocation;)V
+      61: goto          80
+      64: astore        5
+      66: getstatic     #91                 // Field net/mehvahdjukaar/supplementaries/Supplementaries.LOGGER:Lorg/apache/logging/log4j/Logger;
+      69: ldc           #153                // String Failed to generate recipe for sign post {}:
+      71: aload         4
+      73: aload         5
+      75: invokeinterface #155,  4          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      80: return
+    Exception table:
+       from    to  target type
+          29    61    64   Class java/lang/Exception
+
+  private static void lambda$addCannonBoatRecipes$1(net.mehvahdjukaar.moonlight.api.resources.pack.ResourceSink, net.minecraft.server.packs.resources.ResourceManager, net.mehvahdjukaar.moonlight.api.set.wood.WoodType, net.mehvahdjukaar.supplementaries.common.items.CannonBoatItem);
+    Code:
+       0: aload_2
+       1: getstatic     #112                // Field net/mehvahdjukaar/moonlight/api/set/wood/VanillaWoodTypes.OAK:Lnet/mehvahdjukaar/moonlight/api/set/wood/WoodType;
+       4: if_acmpne     8
+       7: return
+       8: aload_2
+       9: ldc           #159                // String boat
+      11: invokevirtual #120                // Method net/mehvahdjukaar/moonlight/api/set/wood/WoodType.getChild:(Ljava/lang/String;)Ljava/lang/Object;
+      14: ifnonnull     29
+      17: getstatic     #91                 // Field net/mehvahdjukaar/supplementaries/Supplementaries.LOGGER:Lorg/apache/logging/log4j/Logger;
+      20: ldc           #161                // String Could not find Boat for wood {}. Does this item even exist? It should! Skipping cannon boat generation
+      22: aload_2
+      23: invokeinterface #128,  3          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+      28: return
+      29: aload_0
+      30: aload_1
+      31: ldc           #163                // String cannon_boat_oak
+      33: invokestatic  #3                  // Method net/mehvahdjukaar/supplementaries/Supplementaries.res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      36: getstatic     #112                // Field net/mehvahdjukaar/moonlight/api/set/wood/VanillaWoodTypes.OAK:Lnet/mehvahdjukaar/moonlight/api/set/wood/WoodType;
+      39: aload_2
+      40: aload_2
+      41: invokevirtual #137                // Method net/mehvahdjukaar/moonlight/api/set/wood/WoodType.getTypeName:()Ljava/lang/String;
+      44: invokedynamic #165,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      49: invokestatic  #3                  // Method net/mehvahdjukaar/supplementaries/Supplementaries.res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      52: invokevirtual #145                // Method net/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink.addBlockTypeSwapRecipe:(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/resources/ResourceLocation;Lnet/mehvahdjukaar/moonlight/api/set/BlockType;Lnet/mehvahdjukaar/moonlight/api/set/BlockType;Lnet/minecraft/resources/ResourceLocation;)V
+      55: goto          73
+      58: astore        4
+      60: getstatic     #91                 // Field net/mehvahdjukaar/supplementaries/Supplementaries.LOGGER:Lorg/apache/logging/log4j/Logger;
+      63: ldc           #166                // String Failed to generate recipe for cannon boat {}:
+      65: aload_3
+      66: aload         4
+      68: invokeinterface #155,  4          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      73: return
+    Exception table:
+       from    to  target type
+          29    55    58   Class java/lang/Exception
+
+  private void lambda$regenerateDynamicAssets$0(net.minecraft.server.packs.resources.ResourceManager, net.mehvahdjukaar.moonlight.api.resources.pack.ResourceSink);
+    Code:
+       0: ldc           #168                // String way_signs
+       2: invokestatic  #3                  // Method net/mehvahdjukaar/supplementaries/Supplementaries.res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       5: invokestatic  #170                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.of:(Lnet/minecraft/resources/ResourceLocation;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+       8: astore_3
+       9: aload_3
+      10: getstatic     #85                 // Field net/mehvahdjukaar/supplementaries/reg/ModRegistry.WAY_SIGN_ITEMS:Ljava/util/Map;
+      13: invokeinterface #175,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      18: invokevirtual #179                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.addEntries:(Ljava/util/Collection;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+      21: pop
+      22: aload_2
+      23: aload_3
+      24: getstatic     #183                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+      27: invokevirtual #189                // Method net/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink.addTag:(Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;Lnet/minecraft/resources/ResourceKey;)V
+      30: ldc           #193                // String cannon_boats
+      32: invokestatic  #3                  // Method net/mehvahdjukaar/supplementaries/Supplementaries.res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      35: invokestatic  #170                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.of:(Lnet/minecraft/resources/ResourceLocation;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+      38: astore_3
+      39: aload_3
+      40: getstatic     #65                 // Field net/mehvahdjukaar/supplementaries/reg/ModRegistry.CANNON_BOAT_ITEMS:Ljava/util/Map;
+      43: invokeinterface #175,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      48: invokevirtual #179                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.addEntries:(Ljava/util/Collection;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+      51: pop
+      52: aload_2
+      53: aload_3
+      54: getstatic     #183                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+      57: invokevirtual #189                // Method net/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink.addTag:(Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;Lnet/minecraft/resources/ResourceKey;)V
+      60: getstatic     #195                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Building.WAY_SIGN_ENABLED:Ljava/util/function/Supplier;
+      63: invokeinterface #27,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      68: checkcast     #200                // class java/lang/Boolean
+      71: invokevirtual #202                // Method java/lang/Boolean.booleanValue:()Z
+      74: ifeq          83
+      77: aload_0
+      78: aload_1
+      79: aload_2
+      80: invokevirtual #205                // Method addSignPostRecipes:(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink;)V
+      83: getstatic     #211                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional.CANNON_BOAT_ENABLED:Ljava/util/function/Supplier;
+      86: invokeinterface #27,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      91: checkcast     #200                // class java/lang/Boolean
+      94: invokevirtual #202                // Method java/lang/Boolean.booleanValue:()Z
+      97: ifeq          106
+     100: aload_0
+     101: aload_1
+     102: aload_2
+     103: invokevirtual #216                // Method addCannonBoatRecipes:(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink;)V
+     106: getstatic     #219                // Field net/mehvahdjukaar/supplementaries/reg/ModTags.HAS_ROAD_SIGNS:Lnet/minecraft/tags/TagKey;
+     109: invokestatic  #225                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.of:(Lnet/minecraft/tags/TagKey;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+     112: astore_3
+     113: getstatic     #228                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Building.ROAD_SIGN_ENABLED:Ljava/util/function/Supplier;
+     116: invokeinterface #27,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     121: checkcast     #200                // class java/lang/Boolean
+     124: invokevirtual #202                // Method java/lang/Boolean.booleanValue:()Z
+     127: ifeq          138
+     130: aload_3
+     131: getstatic     #231                // Field net/minecraft/tags/BiomeTags.IS_OVERWORLD:Lnet/minecraft/tags/TagKey;
+     134: invokevirtual #236                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.addTag:(Lnet/minecraft/tags/TagKey;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+     137: pop
+     138: aload_2
+     139: aload_3
+     140: getstatic     #238                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+     143: invokevirtual #189                // Method net/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink.addTag:(Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;Lnet/minecraft/resources/ResourceKey;)V
+     146: getstatic     #241                // Field net/mehvahdjukaar/supplementaries/reg/ModTags.HAS_GALLEONS:Lnet/minecraft/tags/TagKey;
+     149: invokestatic  #225                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.of:(Lnet/minecraft/tags/TagKey;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+     152: astore_3
+     153: getstatic     #244                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional.GALLEONS_ENABLED:Ljava/util/function/Supplier;
+     156: invokeinterface #27,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     161: checkcast     #200                // class java/lang/Boolean
+     164: invokevirtual #202                // Method java/lang/Boolean.booleanValue:()Z
+     167: ifeq          178
+     170: aload_3
+     171: getstatic     #247                // Field net/minecraft/tags/BiomeTags.IS_OCEAN:Lnet/minecraft/tags/TagKey;
+     174: invokevirtual #236                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.addTag:(Lnet/minecraft/tags/TagKey;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+     177: pop
+     178: aload_2
+     179: aload_3
+     180: getstatic     #238                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+     183: invokevirtual #189                // Method net/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink.addTag:(Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;Lnet/minecraft/resources/ResourceKey;)V
+     186: invokestatic  #250                // Method net/mehvahdjukaar/moonlight/api/platform/PlatHelper.getPlatform:()Lnet/mehvahdjukaar/moonlight/api/platform/PlatHelper$Platform;
+     189: invokevirtual #254                // Method net/mehvahdjukaar/moonlight/api/platform/PlatHelper$Platform.isForge:()Z
+     192: ifeq          391
+     195: getstatic     #259                // Field net/mehvahdjukaar/supplementaries/reg/ModTags.HAS_CAVE_URNS:Lnet/minecraft/tags/TagKey;
+     198: invokestatic  #225                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.of:(Lnet/minecraft/tags/TagKey;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+     201: astore_3
+     202: getstatic     #262                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional.URN_PILE_ENABLED:Ljava/util/function/Supplier;
+     205: invokeinterface #27,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     210: checkcast     #200                // class java/lang/Boolean
+     213: invokevirtual #202                // Method java/lang/Boolean.booleanValue:()Z
+     216: ifeq          227
+     219: aload_3
+     220: getstatic     #231                // Field net/minecraft/tags/BiomeTags.IS_OVERWORLD:Lnet/minecraft/tags/TagKey;
+     223: invokevirtual #236                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.addTag:(Lnet/minecraft/tags/TagKey;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+     226: pop
+     227: aload_2
+     228: aload_3
+     229: getstatic     #238                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+     232: invokevirtual #189                // Method net/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink.addTag:(Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;Lnet/minecraft/resources/ResourceKey;)V
+     235: getstatic     #265                // Field net/mehvahdjukaar/supplementaries/reg/ModTags.HAS_BARNACLES:Lnet/minecraft/tags/TagKey;
+     238: invokestatic  #225                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.of:(Lnet/minecraft/tags/TagKey;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+     241: astore_3
+     242: getstatic     #268                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Building.BARNACLES_ENABLED:Ljava/util/function/Supplier;
+     245: invokeinterface #27,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     250: checkcast     #200                // class java/lang/Boolean
+     253: invokevirtual #202                // Method java/lang/Boolean.booleanValue:()Z
+     256: ifeq          286
+     259: aload_3
+     260: getstatic     #247                // Field net/minecraft/tags/BiomeTags.IS_OCEAN:Lnet/minecraft/tags/TagKey;
+     263: invokevirtual #236                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.addTag:(Lnet/minecraft/tags/TagKey;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+     266: pop
+     267: aload_3
+     268: getstatic     #271                // Field net/minecraft/world/level/biome/Biomes.STONY_SHORE:Lnet/minecraft/resources/ResourceKey;
+     271: invokevirtual #276                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     274: invokevirtual #282                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.add:(Lnet/minecraft/resources/ResourceLocation;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+     277: pop
+     278: aload_3
+     279: getstatic     #285                // Field net/minecraft/tags/BiomeTags.IS_BEACH:Lnet/minecraft/tags/TagKey;
+     282: invokevirtual #236                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.addTag:(Lnet/minecraft/tags/TagKey;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+     285: pop
+     286: aload_2
+     287: aload_3
+     288: getstatic     #238                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+     291: invokevirtual #189                // Method net/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink.addTag:(Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;Lnet/minecraft/resources/ResourceKey;)V
+     294: getstatic     #288                // Field net/mehvahdjukaar/supplementaries/reg/ModTags.HAS_WILD_FLAX:Lnet/minecraft/tags/TagKey;
+     297: invokestatic  #225                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.of:(Lnet/minecraft/tags/TagKey;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+     300: astore_3
+     301: getstatic     #291                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional.WILD_FLAX_ENABLED:Ljava/util/function/Supplier;
+     304: invokeinterface #27,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     309: checkcast     #200                // class java/lang/Boolean
+     312: invokevirtual #202                // Method java/lang/Boolean.booleanValue:()Z
+     315: ifeq          326
+     318: aload_3
+     319: getstatic     #231                // Field net/minecraft/tags/BiomeTags.IS_OVERWORLD:Lnet/minecraft/tags/TagKey;
+     322: invokevirtual #236                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.addTag:(Lnet/minecraft/tags/TagKey;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+     325: pop
+     326: aload_2
+     327: aload_3
+     328: getstatic     #238                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+     331: invokevirtual #189                // Method net/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink.addTag:(Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;Lnet/minecraft/resources/ResourceKey;)V
+     334: getstatic     #294                // Field net/mehvahdjukaar/supplementaries/reg/ModTags.HAS_BASALT_ASH:Lnet/minecraft/tags/TagKey;
+     337: invokestatic  #225                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.of:(Lnet/minecraft/tags/TagKey;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+     340: astore_3
+     341: getstatic     #297                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Building.BASALT_ASH_ENABLED:Ljava/util/function/Supplier;
+     344: invokeinterface #27,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     349: checkcast     #200                // class java/lang/Boolean
+     352: invokevirtual #202                // Method java/lang/Boolean.booleanValue:()Z
+     355: ifeq          380
+     358: aload_3
+     359: getstatic     #300                // Field net/minecraft/world/level/biome/Biomes.BASALT_DELTAS:Lnet/minecraft/resources/ResourceKey;
+     362: invokevirtual #276                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     365: invokevirtual #282                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.add:(Lnet/minecraft/resources/ResourceLocation;)Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;
+     368: pop
+     369: aload_3
+     370: ldc_w         #303                // String incendium:volcanic_deltas
+     373: invokestatic  #305                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     376: invokevirtual #310                // Method net/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder.addOptionalElement:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagBuilder;
+     379: pop
+     380: aload_2
+     381: aload_3
+     382: getstatic     #238                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+     385: invokevirtual #189                // Method net/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink.addTag:(Lnet/mehvahdjukaar/moonlight/api/resources/SimpleTagBuilder;Lnet/minecraft/resources/ResourceKey;)V
+     388: goto          469
+     391: aload_2
+     392: aload_1
+     393: getstatic     #314                // Field net/minecraft/world/item/enchantment/Enchantments.QUICK_CHARGE:Lnet/minecraft/resources/ResourceKey;
+     396: iconst_1
+     397: anewarray     #319                // class net/minecraft/world/item/Item
+     400: dup
+     401: iconst_0
+     402: getstatic     #321                // Field net/mehvahdjukaar/supplementaries/reg/ModRegistry.SLINGSHOT_ITEM:Ljava/util/function/Supplier;
+     405: invokeinterface #27,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     410: checkcast     #319                // class net/minecraft/world/item/Item
+     413: aastore
+     414: invokevirtual #324                // Method net/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink.appendItemToEnchantment:(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/resources/ResourceKey;[Lnet/minecraft/world/item/Item;)V
+     417: aload_2
+     418: aload_1
+     419: getstatic     #328                // Field net/minecraft/world/item/enchantment/Enchantments.MULTISHOT:Lnet/minecraft/resources/ResourceKey;
+     422: iconst_1
+     423: anewarray     #319                // class net/minecraft/world/item/Item
+     426: dup
+     427: iconst_0
+     428: getstatic     #321                // Field net/mehvahdjukaar/supplementaries/reg/ModRegistry.SLINGSHOT_ITEM:Ljava/util/function/Supplier;
+     431: invokeinterface #27,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     436: checkcast     #319                // class net/minecraft/world/item/Item
+     439: aastore
+     440: invokevirtual #324                // Method net/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink.appendItemToEnchantment:(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/resources/ResourceKey;[Lnet/minecraft/world/item/Item;)V
+     443: aload_2
+     444: aload_1
+     445: getstatic     #331                // Field net/minecraft/world/item/enchantment/Enchantments.KNOCKBACK:Lnet/minecraft/resources/ResourceKey;
+     448: iconst_1
+     449: anewarray     #319                // class net/minecraft/world/item/Item
+     452: dup
+     453: iconst_0
+     454: getstatic     #334                // Field net/mehvahdjukaar/supplementaries/reg/ModRegistry.WRENCH:Ljava/util/function/Supplier;
+     457: invokeinterface #27,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     462: checkcast     #319                // class net/minecraft/world/item/Item
+     465: aastore
+     466: invokevirtual #324                // Method net/mehvahdjukaar/moonlight/api/resources/pack/ResourceSink.appendItemToEnchantment:(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/resources/ResourceKey;[Lnet/minecraft/world/item/Item;)V
+     469: return
+
+  static {};
+    Code:
+       0: new           #337                // class java/util/HashMap
+       3: dup
+       4: invokespecial #339                // Method java/util/HashMap."<init>":()V
+       7: putstatic     #340                // Field TAG_TRANSLATION_HACK:Ljava/util/Map;
+      10: return
+}
