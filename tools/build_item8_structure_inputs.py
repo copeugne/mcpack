@@ -16,8 +16,8 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_PATH = "evidence/item-8/sources/packaged-json.json.gz"
-SOURCE_SHA256 = "c7ea06de3f7cd2dedaead5c6f9ac9021ebe4d03deb007bc15dc712ddfe28a5a2"
+SOURCE_PATH = "evidence/item-8/sources/packaged-json-redacted.json.gz"
+SOURCE_SHA256 = "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd"
 REGISTRY_PATH = (
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
 )
