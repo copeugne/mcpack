@@ -16,11 +16,9 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
-@pytest.mark.parametrize(
-    ("namespace", "complete"), [("integrated_villages:", True), ("dungeons_arise:", False)]
-)
+@pytest.mark.parametrize("namespace", ["integrated_villages:", "dungeons_arise:"])
 def test_authored_designs_bind_roots_settings_and_missing_components(
-    namespace: str, *, complete: bool
+    namespace: str,
 ) -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(
@@ -39,9 +37,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
     assert len(members) == len(set(members))
     expected = {key for key in registry if key.startswith(namespace)}
     assert members
-    assert set(members) <= expected
-    if complete:
-        assert set(members) == expected
+    assert set(members) == expected
     catalog = cast(
         "dict[str, JsonValue]",
         json.loads(
