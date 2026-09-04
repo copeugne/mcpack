@@ -63,10 +63,18 @@ def test_audit_covers_required_systems() -> None:
     audit = json.loads(AUDIT.read_text(encoding="utf-8"))
     systems = {row["system"] for row in audit["systems"]}
     assert systems == {
+        "AdoraBuild Structures",
+        "Aether",
+        "BetterEnd",
         "C2ME",
         "Chunky",
+        "Creating Space",
+        "Deep Aether",
         "Difficulty",
+        "Explorations",
+        "Explorify",
         "IDAS",
+        "Illager Invasion",
         "Integrated structures",
         "Loot Integrations",
         "Mob spawning and entity limits",
@@ -76,6 +84,8 @@ def test_audit_covers_required_systems() -> None:
         "Sparse Structures",
         "Structure Essentials",
         "Structure Layout Optimizer",
+        "Supplementaries",
+        "Terralith",
         "Village generation",
         "WDA Seven Seas",
         "When Dungeons Arise",

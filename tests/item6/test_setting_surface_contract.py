@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from collections import Counter
 from copy import deepcopy
 from typing import TYPE_CHECKING, Literal, assert_never
 
@@ -36,6 +37,58 @@ LeafMutation = Literal[
     "effective-value",
     "non-default",
 ]
+
+
+def test_every_cristellib_structure_surface_is_audited_exactly_once() -> None:
+    source_files = sorted(
+        relative.relative_to(FROZEN).as_posix()
+        for pattern in (
+            "config/cristellib/*/structure_placement_config.json5",
+            "config/cristellib/*/structure_toggle_config.json5",
+        )
+        for relative in FROZEN.glob(pattern)
+    )
+    grouped_files = [
+        surface["file"]
+        for surface in AUDIT_DATA["setting_surfaces"]
+        if surface["file"].endswith(
+            ("/structure_placement_config.json5", "/structure_toggle_config.json5")
+        )
+    ]
+    legacy_files = {
+        setting["file"]
+        for setting in AUDIT_DATA["settings"]
+        if setting["file"].endswith(
+            ("/structure_placement_config.json5", "/structure_toggle_config.json5")
+        )
+    }
+    excluded = next(
+        row["files"]
+        for row in AUDIT_DATA["file_accounting"]
+        if row["classification"] == "out-of-scope"
+    )
+    assert Counter(grouped_files) == Counter(set(grouped_files))
+    assert set(grouped_files).isdisjoint(legacy_files)
+    assert set(grouped_files) | legacy_files == set(source_files)
+    assert set(source_files).isdisjoint(excluded)
+
+    for relative in legacy_files:
+        provider = relative.removeprefix("config/cristellib/").partition("/")[0]
+        source_leaves = [
+            leaf
+            for leaf in build_setting_surface("legacy", relative, FROZEN / relative)["leaves"]
+            if not leaf["key"].endswith(".salt")
+        ]
+        settings = [setting for setting in AUDIT_DATA["settings"] if setting["file"] == relative]
+        expected_keys = {f"{provider}.{leaf['key']}" for leaf in source_leaves}
+        observation_lines = [
+            observation["line"]
+            for setting in settings
+            for observation in setting["evidence"]["observations"]
+        ]
+        assert len(settings) == len(source_leaves)
+        assert {setting["key"] for setting in settings} == expected_keys
+        assert Counter(observation_lines) == Counter(leaf["line"] for leaf in source_leaves)
 
 
 def audit_with_wda_placement_surface() -> Audit:
