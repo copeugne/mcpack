@@ -48,7 +48,7 @@ def _record(
         external=False,
         heightmaps=heightmaps,
         biome_sections=(
-            BiomeSection(section_y=3, palette=("minecraft:plains",), indices=(0,) * 64),
+            BiomeSection(section_y=4, palette=("minecraft:plains",), indices=(0,) * 64),
         ),
         structure_starts=starts,
     )
@@ -88,3 +88,20 @@ def test_analysis_rejects_reversed_y_structure_bounds(tmp_path: Path) -> None:
     # When / Then
     with pytest.raises(AnalysisError, match="reversed structure bounds"):
         _ = analyze_jsonl(decoded, _identity(), digest)
+
+
+def test_analysis_samples_biome_at_decoded_highest_occupied_y(tmp_path: Path) -> None:
+    decoded = tmp_path / "chunks.jsonl"
+    record = _record("minecraft:overworld").model_copy(
+        update={
+            "biome_sections": (
+                BiomeSection(section_y=3, palette=("minecraft:plains",), indices=(0,) * 64),
+                BiomeSection(section_y=4, palette=("minecraft:forest",), indices=(0,) * 64),
+            )
+        }
+    )
+    digest = _write(decoded, (record,))
+
+    report = analyze_jsonl(decoded, _identity(), digest)
+
+    assert tuple(row.biome for row in report.biomes) == ("minecraft:forest",)

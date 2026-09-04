@@ -140,7 +140,7 @@ def _terrain(
     starts: tuple[ObservedStart, ...],
 ) -> tuple[tuple[tuple[MetricCandidate, ...], ...], int, int]:
     groups: tuple[list[MetricCandidate], ...] = ([], [], [], [], [])
-    buried, floating, cliffs, underwater, modification = groups
+    buried, _floating, cliffs, underwater, modification = groups
     complete_count = 0
     modification_count = 0
     for start in starts:
@@ -150,12 +150,9 @@ def _terrain(
         complete_count += 1
         values = [heights[point] for point in covered]
         terrain = median_low(values)
-        minimum_y = min(box[1] for box in start.boxes)
         maximum_y = max(box[4] for box in start.boxes)
         if maximum_y < terrain:
             buried.append(_candidate(start.identifier, terrain - maximum_y, 1))
-        if minimum_y > max(values) + 4:
-            floating.append(_candidate(start.identifier, minimum_y - max(values), 5))
         span = max(values) - min(values)
         if span >= _HEIGHT_DELTA:
             cliffs.append(_candidate(start.identifier, span, _HEIGHT_DELTA))

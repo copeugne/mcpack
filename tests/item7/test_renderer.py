@@ -10,6 +10,7 @@ import pytest
 from pydantic import BaseModel, ConfigDict, JsonValue
 from tools.render_item7_world import read_region_hashes
 
+from mcpack_evidence.item6_json import parse_strict_json
 from mcpack_evidence.item7_render import RenderInputError, RenderMetadata, render_jsonl
 
 REGION_HASH = "a" * 64
@@ -170,6 +171,37 @@ def test_renderer_streams_decoded_jsonl_without_reading_the_whole_file(
     render_jsonl(chunks, tmp_path / "render", _metadata())
 
     assert (tmp_path / "render/manifest.json").is_file()
+
+
+def test_renderer_samples_biome_at_decoded_highest_occupied_y(tmp_path: Path) -> None:
+    chunks = tmp_path / "chunks.jsonl"
+    payload = parse_strict_json(_record().encode())
+    assert isinstance(payload, dict)
+    heightmaps = payload["heightmaps"]
+    assert isinstance(heightmaps, list)
+    first_heightmap = heightmaps[0]
+    assert isinstance(first_heightmap, dict)
+    first_heightmap["values"] = list[JsonValue]([64] * 256)
+    sections: list[JsonValue] = [
+        {
+            "section_y": 3,
+            "palette": list[JsonValue](["minecraft:plains"]),
+            "indices": list[JsonValue]([0] * 64),
+        },
+        {
+            "section_y": 4,
+            "palette": list[JsonValue](["minecraft:forest"]),
+            "indices": list[JsonValue]([0] * 64),
+        },
+    ]
+    payload["biome_sections"] = sections
+    _ = chunks.write_text(json.dumps(payload) + "\n", encoding="utf-8")
+
+    render_jsonl(chunks, tmp_path / "render", _metadata())
+
+    topdown = (tmp_path / "render/topdown.svg").read_text(encoding="utf-8")
+    assert 'data-biome="minecraft:forest"' in topdown
+    assert 'data-biome="minecraft:plains"' not in topdown
 
 
 def test_render_cli_derives_dimension_region_hashes_from_world_manifest(tmp_path: Path) -> None:

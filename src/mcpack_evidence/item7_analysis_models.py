@@ -138,7 +138,8 @@ ANOMALY_SPECS: Final = (
     AnomalySpec(
         "floating_structures",
         "complete_structure_footprints",
-        "Structure bottom at least five blocks above its complete WORLD_SURFACE footprint.",
+        "Post-placement WORLD_SURFACE cannot prove an air gap below a structure footprint.",
+        "method-limited",
     ),
     AnomalySpec(
         "cliff_intersections",

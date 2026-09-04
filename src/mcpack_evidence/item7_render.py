@@ -135,7 +135,7 @@ def _section_points(
 
 
 def _biome(chunk: RenderChunk, index: int) -> str:
-    surface = chunk.world_surface[index] - 1
+    surface = chunk.world_surface[index]
     section_y = surface // 16
     section = next((row for row in chunk.biome_sections if row.section_y == section_y), None)
     if section is None:

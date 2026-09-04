@@ -104,7 +104,7 @@ def _heightmap(record: ChunkRecord, name: str) -> tuple[int, ...]:
 
 
 def _surface_biome(record: ChunkRecord, height: int, quart_x: int, quart_z: int) -> str | None:
-    surface_y = height - 1
+    surface_y = height
     section_y = surface_y // 16
     matches = tuple(row for row in record.biome_sections if row.section_y == section_y)
     minimum_section = min((row.section_y for row in record.biome_sections), default=section_y)

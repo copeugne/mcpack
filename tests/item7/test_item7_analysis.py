@@ -53,7 +53,7 @@ def _record(
     palette = ["minecraft:plains", "minecraft:forest", "minecraft:desert"]
     indices = [0] * 64
     if chunk_x == 0:
-        indices[48], indices[50], indices[58] = 1, 1, 2
+        indices[0], indices[2], indices[10] = 1, 1, 2
     structures: list[JsonValue] = []
     if chunk_x == 0:
         structures = [
@@ -81,7 +81,7 @@ def _record(
     }
     heightmaps.extend((surface_row, floor_row))
     biome_row: dict[str, JsonValue] = {
-        "section_y": 0 if void else 3,
+        "section_y": 0 if void else 4,
         "palette": _json_list(palette),
         "indices": _json_list(indices),
     }
@@ -128,8 +128,7 @@ def test_analysis_reports_stable_metrics_and_all_anomaly_methods(tmp_path: Path)
 
     # Then
     assert first.model_dump_json() == second.model_dump_json()
-    assert first.input_protocol == "item7-anvil-chunk-v1"
-    assert first.input_sha256 == expected_hash
+    assert (first.input_protocol, first.input_sha256) == ("item7-anvil-chunk-v1", expected_hash)
     d = first.denominators
     assert (d.chunk_count, d.input_chunk_records) == (2, 2)
     assert (d.other_selection_chunk_records, d.extra_chunk_records) == (0, 0)
@@ -166,7 +165,8 @@ def test_analysis_reports_stable_metrics_and_all_anomaly_methods(tmp_path: Path)
     assert anomalies["tiny_biomes"].candidates
     assert anomalies["unnatural_terrain_transitions"].candidates
     assert anomalies["buried_structures"].candidates
-    assert anomalies["floating_structures"].candidates
+    floating = anomalies["floating_structures"]
+    assert (floating.status, floating.candidates) == ("method-limited", ())
     assert anomalies["cliff_intersections"].candidates
     assert anomalies["bad_underwater_placement"].candidates
     assert all(
