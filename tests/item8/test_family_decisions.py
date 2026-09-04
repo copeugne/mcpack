@@ -17,7 +17,20 @@ if TYPE_CHECKING:
 
 
 @pytest.mark.parametrize(
-    "namespace", ["integrated_villages:", "dungeons_arise:", "explorations:", "explorify:"]
+    "namespace",
+    [
+        "integrated_villages:",
+        "dungeons_arise:",
+        "explorations:",
+        "explorify:",
+        "betterdeserttemples:",
+        "betterdungeons:",
+        "betterfortresses:",
+        "betterjungletemples:",
+        "betteroceanmonuments:",
+        "betterstrongholds:",
+        "betterwitchhuts:",
+    ],
 )
 def test_authored_designs_bind_roots_settings_and_missing_components(
     namespace: str,
