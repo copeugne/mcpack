@@ -26,6 +26,7 @@ from mcpack_evidence.item7_completion_publication import validate_publication
 from mcpack_evidence.item7_completion_repeat import validate_repeat
 from mcpack_evidence.item7_completion_runs import validate_runs
 from mcpack_evidence.item7_protocol import load_protocol
+from mcpack_evidence.item7_restrictions import validate_restriction_audit
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -42,6 +43,7 @@ class CompletionInputs:
     provider_catalog: Path
     provider_coverage: Path
     provider_disposition: Path
+    restriction_audit: Path
     repeat_comparison: Path
     warning_audit: Path
     warning_disposition: Path
@@ -78,9 +80,11 @@ def build_completion(inputs: CompletionInputs) -> CompletionReport:
         inputs.provider_coverage,
         raw_root=inputs.raw_root,
     )
+    _ = validate_restriction_audit(inputs.restriction_audit, sha256_file(inputs.provider_catalog))
     artifacts.extend(
         (
             identity(inputs.provider_catalog, "provider-catalog.json"),
+            identity(inputs.restriction_audit, "biome-restriction-audit.json"),
             identity(inputs.provider_coverage, "run-a/provider-coverage.json"),
             identity(inputs.provider_disposition, "provider-disposition.json"),
         )
