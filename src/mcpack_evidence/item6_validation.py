@@ -18,12 +18,12 @@ from mcpack_evidence.item6_manifest import (
 )
 from mcpack_evidence.item6_materialization import validate_materialization
 from mcpack_evidence.item6_provenance import validate_lifecycle, validate_repository_references
+from mcpack_evidence.item6_surface_validation import SettingSurface, validate_setting_surfaces
 
 if TYPE_CHECKING:
     from pathlib import Path
 
 Scalar = bool | int | float | str
-type JsonValue = bool | int | float | str | list[JsonValue] | dict[str, JsonValue] | None
 
 
 class _System(TypedDict):
@@ -70,21 +70,24 @@ class _Classification(TypedDict):
     files: list[str]
 
 
-class _Audit(TypedDict):
+class Audit(TypedDict):
+    """Strict machine-readable Item 6 configuration audit."""
+
     schema_version: str
     configuration_identity: str
     scope: str
     tuning_performed: bool
     systems: list[_System]
     settings: list[_Setting]
+    setting_surfaces: list[SettingSurface]
     findings: list[_Finding]
     file_accounting: list[_Classification]
     limitations: list[str]
 
 
-_AUDIT_ADAPTER: Final[TypeAdapter[_Audit]] = TypeAdapter(_Audit)
-_JSON_ADAPTER: Final[TypeAdapter[JsonValue]] = TypeAdapter(JsonValue)
-_TOML_ADAPTER: Final[TypeAdapter[dict[str, JsonValue]]] = TypeAdapter(dict[str, JsonValue])
+_AUDIT_ADAPTER: Final[TypeAdapter[Audit]] = TypeAdapter(Audit)
+_JSON_ADAPTER: Final[TypeAdapter[Scalar]] = TypeAdapter(Scalar)
+_TOML_ADAPTER: Final[TypeAdapter[dict[str, Scalar]]] = TypeAdapter(dict[str, Scalar])
 C2ME_KEY: Final = "vanillaWorldGenOptimizations.useEndBiomeCache"
 C2ME_OBSERVATIONS: Final = [
     {"line": 80, "prefix": "useEndBiomeCache = ", "suffix": ""},
@@ -125,8 +128,6 @@ def _decode_setting_scalar(raw: str, decoder: str) -> Scalar:
             raise _AuditValidationError("unsupported setting evidence decoder")
     except (json.JSONDecodeError, tomllib.TOMLDecodeError, ValidationError) as error:
         raise _AuditValidationError("setting evidence scalar is malformed") from error
-    if not isinstance(decoded, (bool, int, float, str)):
-        raise _AuditValidationError("setting evidence scalar is not a supported scalar")
     if isinstance(decoded, float) and not isfinite(decoded):
         raise _AuditValidationError("setting evidence scalar is malformed")
     return decoded
@@ -144,7 +145,7 @@ def validate(  # noqa: C901, PLR0912, PLR0915
     audit = _AUDIT_ADAPTER.validate_json(audit_path.read_bytes(), strict=True, extra="forbid")
     if manifest["schema_version"] != "item6-frozen-config-manifest-v1":
         raise _AuditValidationError("unsupported manifest schema")
-    if audit["schema_version"] != "item6-config-audit-v1":
+    if audit["schema_version"] != "item6-config-audit-v2":
         raise _AuditValidationError("unsupported audit schema")
     if audit["tuning_performed"] is not False:
         raise _AuditValidationError("baseline must not contain tuning")
@@ -159,6 +160,7 @@ def validate(  # noqa: C901, PLR0912, PLR0915
     expected = validate_manifest_inventory(root, manifest)
 
     covered: set[str] = set()
+    declared_systems = {system["system"] for system in audit["systems"]}
     for system in audit["systems"]:
         for relative in system["files"]:
             if relative not in expected:
@@ -169,8 +171,6 @@ def validate(  # noqa: C901, PLR0912, PLR0915
         if relative not in expected:
             raise _AuditValidationError(f"setting cites an unpreserved file: {relative}")
         evidence = setting["evidence"]
-        if set(evidence) != {"decoder", "observations", "effective_semantics"}:
-            raise _AuditValidationError("setting evidence must use the structured contract")
         decoder = evidence["decoder"]
         if decoder not in {"json", "toml", "string"}:
             raise _AuditValidationError("unsupported setting evidence decoder")
@@ -192,8 +192,6 @@ def validate(  # noqa: C901, PLR0912, PLR0915
         lines = source_path.read_text(encoding="utf-8").splitlines()
         extracted: list[Scalar] = []
         for observation_index, observation in enumerate(observations):
-            if set(observation) != {"line", "prefix", "suffix"}:
-                raise _AuditValidationError("setting evidence observation is malformed")
             line_number = observation["line"]
             prefix = observation["prefix"]
             suffix = observation["suffix"]
@@ -249,6 +247,13 @@ def validate(  # noqa: C901, PLR0912, PLR0915
         else:
             raise _AuditValidationError("unsupported setting effective semantics")
         covered.add(relative)
+    surface_files = validate_setting_surfaces(
+        root, expected, declared_systems, audit["setting_surfaces"]
+    )
+    legacy_setting_files = {setting["file"] for setting in audit["settings"]}
+    if surface_files & legacy_setting_files:
+        raise _AuditValidationError("file is claimed by both legacy and grouped setting evidence")
+    covered.update(surface_files)
     for finding in audit["findings"]:
         for relative in finding["files"]:
             if relative not in expected:

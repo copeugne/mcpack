@@ -7,6 +7,10 @@ import shutil
 from dataclasses import dataclass
 from pathlib import Path
 from types import ModuleType
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from mcpack_evidence.item6_validation import Audit
 
 ROOT = Path(__file__).parents[2]
 FROZEN = ROOT / "evidence/item-6/frozen"
@@ -77,7 +81,7 @@ def rebind_audit(fixture: Item6RepositoryFixture) -> None:
     fixture.audit.write_text(json.dumps(audit), encoding="utf-8")
 
 
-def write_audit(tmp_path: Path, audit: dict, name: str = "audit.json") -> Path:
+def write_audit(tmp_path: Path, audit: Audit, name: str = "audit.json") -> Path:
     path = tmp_path / name
     path.write_text(json.dumps(audit), encoding="utf-8")
     return path

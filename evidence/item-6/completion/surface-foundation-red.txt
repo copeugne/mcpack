@@ -1,0 +1,23 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______ test_validator_rejects_file_claimed_by_legacy_and_grouped_evidence ______
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-179/test_validator_rejects_file_cl0')
+
+    def test_validator_rejects_file_claimed_by_legacy_and_grouped_evidence(tmp_path: Path) -> None:
+        # Given: a complete grouped surface for a file that still has a legacy setting row.
+        audit = deepcopy(AUDIT_DATA)
+        relative = "config/cristellib/dungeons_arise/structure_placement_config.json5"
+        audit["setting_surfaces"] = [
+            build_setting_surface("When Dungeons Arise", relative, FROZEN / relative)
+        ]
+
+        # When/Then: validation rejects two competing evidence representations for one file.
+>       with pytest.raises(ValueError, match="both legacy and grouped"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/item6/test_setting_surfaces.py:135: Failed
+=========================== short test summary info ============================
+FAILED tests/item6/test_setting_surfaces.py::test_validator_rejects_file_claimed_by_legacy_and_grouped_evidence
+1 failed in 0.10s
