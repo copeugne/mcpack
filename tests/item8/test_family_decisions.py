@@ -291,8 +291,20 @@ def test_inventory_preserves_loot_kinds_and_rejects_missing_template_content() -
     }
     sources: dict[str, JsonValue] = {"structure_biomes": {"example:a": {"biomes": []}}}
     contents: dict[str, JsonValue] = {
-        "example:room": {"loot_references": references},
-        "example:empty": {"loot_references": []},
+        "example:room": {
+            "loot_references": references,
+            "authored_entities": [
+                {"id": "example:animal", "path": "/entities/0/nbt"},
+                {"id": "example:animal", "path": "/entities/1/nbt"},
+                {"id": "example:rider", "path": "/entities/1/nbt/Passengers/0"},
+            ],
+            "unresolved_entities": [{"path": "/entities/2/nbt", "reason": "missing ID"}],
+        },
+        "example:empty": {
+            "loot_references": [],
+            "authored_entities": [],
+            "unresolved_entities": [],
+        },
     }
     traces: dict[str, JsonValue] = {
         "structures": {"example:a": {"templates": ["example:room", "example:empty"]}},
@@ -303,6 +315,14 @@ def test_inventory_preserves_loot_kinds_and_rejects_missing_template_content() -
     result = assemble(("example:a",), [decision], sources, traces, bounds)
     families = cast("dict[str, dict[str, JsonValue]]", result["families"])
     loot = cast("dict[str, JsonValue]", families["example:family"]["loot_table_source"])
+    mobs = cast("dict[str, JsonValue]", families["example:family"]["mob_source"])
+    assert mobs["packaged_authored_entity_templates"] == {
+        "example:animal": ["example:room"],
+        "example:rider": ["example:room"],
+    }
+    assert mobs["unresolved_authored_entities"] == {
+        "example:room": [{"path": "/entities/2/nbt", "reason": "missing ID"}]
+    }
     assert loot["packaged_references"] == [
         {"field": "DeathLootTable", "value": "example:chest", "templates": ["example:room"]},
         {"field": "LootTable", "value": "example:chest", "templates": ["example:room"]},

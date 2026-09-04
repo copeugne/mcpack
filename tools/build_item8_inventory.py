@@ -67,7 +67,15 @@ def assemble(
         ]
         dimensions = sorted({str(observations[index]["dimension"]) for index in world_rows})
         loot_sources: dict[tuple[str, str], list[str]] = {}
+        authored_sources: dict[str, list[str]] = {}
         for template in templates:
+            entities = cast(
+                "list[dict[str, JsonValue]]", template_contents[template]["authored_entities"]
+            )
+            for entity in entities:
+                entity_owners = authored_sources.setdefault(str(entity["id"]), [])
+                if template not in entity_owners:
+                    entity_owners.append(template)
             references = cast(
                 "list[dict[str, JsonValue]]", template_contents[template]["loot_references"]
             )
@@ -97,6 +105,18 @@ def assemble(
             "intended_hostility": "UNKNOWN",
             "mob_source": {
                 **content,
+                "packaged_authored_entity_templates": cast(
+                    "JsonValue", dict(sorted(authored_sources.items()))
+                ),
+                "unresolved_authored_entities": {
+                    template: template_contents[template]["unresolved_entities"]
+                    for template in templates
+                    if template_contents[template]["unresolved_entities"]
+                },
+                "authored_entity_scope": (
+                    "Base IDs of template entities and passengers, including non-mob entities. "
+                    "Not a hostile-enemy classification or spawned population."
+                ),
                 "fields": [
                     "authored_entities",
                     "spawner_blocks",
