@@ -62,6 +62,7 @@
 ## Evidence and completion rules
 
 - Store every committed evidence artifact under `evidence/`, grouped by the applicable item. Do not place authoritative evidence in documentation, measurement, temporary, instance, or tool directories. Large raw evidence that cannot be committed must still have its committed manifest, identity, durability, and restore receipts under `evidence/`.
+- Commit every source file, script, schema, test, decoder, transformer, validator, and renderer required to reproduce or verify accepted evidence. An authoritative result must not depend on inline commands, shell history, session-only code, or transient scratch. If a one-off probe informs an acceptance claim, promote its exact logic into a tracked tool or test and record the reproducible command under `evidence/` before closing the item.
 - Do not infer completion from a commit subject, report prose, filename, reconstructed summary, successful launch, or green tests alone.
 - Reconstructed history and `evidence/reconstruction/` are context and scaffolding, not primary empirical acceptance evidence.
 - Unknown values remain `UNKNOWN` until resolved by a user decision, artifact inspection, authoritative source, controlled experiment, reproducible measurement, or documented derivation from verified facts.
