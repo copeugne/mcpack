@@ -3,8 +3,8 @@
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
 The working deliverable is `inventory.json`, initially assembled by `f2eaf2b`
-and updated through `729ccdd` using attribute support from `bf153ea`.
-SHA-256: `6b2d8684f03af14ddd095b2c8a42c6c88bafa93f18e8f4ce8eade8f6ce355f32`.
+and updated through `2f1dbda` using attribute support from `bf153ea`.
+SHA-256: `c1e8af3ab7e229d2f3923e4c52bdfc977efd16d4c2e7ed344e05552aeec5bd75`.
 It is explicitly incomplete. It joins Better Mineshafts, CTOV size groups,
 WDA layouts, Seven Seas vessels, Integrated Stronghold and Integrated Villages design groups
 to biome constraints, potential template content
@@ -128,6 +128,17 @@ family attribute decisions remain intact. Eight focused tests and scoped quality
 checks passed, including duplicate-entity, passenger and missing-ID cases.
 `evidence/raw/item8/inventory-authored-entities-reproduction1.json` reproduced
 `evidence/raw/item8/inventory-authored-entities-pilot1.json` byte for byte.
+
+Sources `3b4f770` and `2f1dbda` add explicit spawner base-entity attribution.
+Ordinary, trial-current, normal and ominous sources remain separate. Only
+positive-weight potentials contribute entity IDs. Missing IDs/configurations,
+invalid weights and custom-spawner semantics remain unresolved with source
+paths. Generation-marker templates remain separate from parsed spawner sources.
+This does not infer default entities, passenger populations, spawned counts or
+effective processor behavior. Sixteen focused parser/assembly tests and scoped
+quality checks passed. The output at
+`evidence/raw/item8/inventory-spawners-reproduction1.json` reproduced
+`evidence/raw/item8/inventory-spawners-pilot1.json` byte for byte.
 
 The infrastructure requirements in
 `INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md` apply to this work. Reuse the
