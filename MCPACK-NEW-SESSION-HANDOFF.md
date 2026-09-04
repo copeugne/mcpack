@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-05
 
+Content attribution is now delivered by `2de3c84`. Current trace artifact:
+`evidence/item-8/sources/pool-traces-content.json.gz`, SHA-256
+`facb6f7bbafb6836e7eaa694535b975c2ee2deab1e36ab85930f1c11c7a471c8`.
+Source `333f1d4` extends the existing trace with reachable-template content;
+`2d62944` indexes authored entities/passengers, spawner NBT, generation markers
+and loot references without asserting processing or placement. Six focused
+tests and scoped quality checks passed, and committed-source output reproduced
+the pilot byte for byte. Empty authored entity compounds remain explicit
+unresolved rows, including the observed Moog mineshaft stable case documented
+in the source README. Prior alias-only output remains historical and requires
+its original source for reproduction. Use the new content trace to assemble
+the required family mob/spawner/loot attributes, together with source spawn
+overrides, custom generator code and effective processors. No complete family
+inventory, Item 8 gate pass, PR review or merge is claimed. Raw durability and
+all remaining family attributes are still required by the active goal.
+
 Biome integration is now delivered through `c468308`. Source `e22815d` derives
 Supplementaries' two tags from frozen parent/leaf toggles and inspected code.
 Sources `71ee444` and `60c1ed1` resolve the seven competing vanilla biome tags
