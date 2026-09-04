@@ -7,7 +7,11 @@ from typing import TYPE_CHECKING
 import pytest
 
 from mcpack_evidence.item7_nbt import NbtDecodeError, decode_compound_nbt
-from mcpack_evidence.item8_templates import template_content, template_summary
+from mcpack_evidence.item8_templates import (
+    spawner_entity_sources,
+    template_content,
+    template_summary,
+)
 from tests.item7.anvil_support import compound, integer, list_tag, string, tag
 
 if TYPE_CHECKING:
@@ -117,4 +121,74 @@ def test_empty_authored_entity_is_retained_as_unresolved() -> None:
     assert result["authored_entities"] == []
     assert result["unresolved_entities"] == [
         {"path": "/entities/0/nbt", "reason": "authored entity lacks an ID"}
+    ]
+
+
+def test_spawner_sources_distinguish_initial_and_positive_weight_potentials() -> None:
+    result = spawner_entity_sources(
+        {
+            "id": "minecraft:mob_spawner",
+            "SpawnData": {"entity": {"id": "minecraft:zombie"}},
+            "SpawnPotentials": [
+                {"weight": 0, "data": {"entity": {"id": "minecraft:pig"}}},
+                {"weight": 1, "data": {"entity": {"id": "minecraft:skeleton"}}},
+                {"weight": 2, "data": {"entity": {}}},
+            ],
+        }
+    )
+    assert result == [
+        {"mode": "ordinary", "path": "/SpawnData/entity/id", "entity_id": "minecraft:zombie"},
+        {
+            "mode": "ordinary",
+            "path": "/SpawnPotentials/1/data/entity/id",
+            "entity_id": "minecraft:skeleton",
+        },
+        {
+            "mode": "ordinary",
+            "path": "/SpawnPotentials/2/data/entity/id",
+            "unresolved": "missing or empty explicit entity ID",
+        },
+    ]
+
+
+def test_trial_modes_and_custom_spawners_do_not_invent_defaults() -> None:
+    result = spawner_entity_sources(
+        {
+            "id": "minecraft:trial_spawner",
+            "normal_config": {
+                "spawn_potentials": [{"weight": 1, "data": {"entity": {"id": "minecraft:bogged"}}}]
+            },
+            "ominous_config": "example:ominous",
+        }
+    )
+    assert result == [
+        {
+            "mode": "ominous_config",
+            "path": "/ominous_config",
+            "unresolved": "missing or referenced trial configuration",
+            "source_value": "example:ominous",
+        },
+        {
+            "mode": "normal_config",
+            "path": "/normal_config/spawn_potentials/0/data/entity/id",
+            "entity_id": "minecraft:bogged",
+        },
+    ]
+    assert spawner_entity_sources(
+        {"id": "iceandfire:dread_spawner", "SpawnData": {"entity": {"id": "minecraft:pig"}}}
+    ) == [
+        {
+            "mode": "custom",
+            "path": "",
+            "unresolved": "custom spawner semantics",
+            "source_value": "iceandfire:dread_spawner",
+        }
+    ]
+    ordinary = spawner_entity_sources({"id": "minecraft:mob_spawner", "SpawnPotentials": []})
+    assert ordinary == [
+        {
+            "mode": "ordinary",
+            "path": "/SpawnData/entity/id",
+            "unresolved": "missing or empty explicit entity ID",
+        }
     ]
