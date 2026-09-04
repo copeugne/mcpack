@@ -14,9 +14,7 @@ from mcpack_evidence.item7_completion_io import (
 from mcpack_evidence.item7_completion_models import ArtifactIdentity, CompletionReport
 from mcpack_evidence.item7_completion_other import (
     validate_archives,
-    validate_control,
     validate_gaps,
-    validate_warnings,
 )
 from mcpack_evidence.item7_completion_provider_visual import (
     validate_provider_disposition,
@@ -25,6 +23,7 @@ from mcpack_evidence.item7_completion_provider_visual import (
 from mcpack_evidence.item7_completion_publication import validate_publication
 from mcpack_evidence.item7_completion_repeat import validate_repeat
 from mcpack_evidence.item7_completion_runs import validate_runs
+from mcpack_evidence.item7_completion_sources import validate_control, validate_warnings
 from mcpack_evidence.item7_protocol import load_protocol
 from mcpack_evidence.item7_restrictions import validate_restriction_audit
 
@@ -70,7 +69,9 @@ def build_completion(inputs: CompletionInputs) -> CompletionReport:
     artifacts.extend(run_artifacts)
     raw_artifacts.extend(run_artifacts)
     repeat = validate_repeat(inputs.repeat_comparison, protocol_sha)
-    warning_artifacts = validate_warnings(inputs.warning_audit, inputs.warning_disposition)
+    warning_artifacts = validate_warnings(
+        inputs.raw_root, inputs.warning_audit, inputs.warning_disposition
+    )
     artifacts.append(repeat)
     artifacts.extend(warning_artifacts)
     raw_artifacts.append(repeat)
@@ -91,23 +92,24 @@ def build_completion(inputs: CompletionInputs) -> CompletionReport:
         )
     )
     raw_artifacts.extend(artifacts[-2:])
+    provider_paths = (
+        "run-a/mountainous/minecraft-latest.log",
+        "gap-a/ordinary/chunks.jsonl",
+        "gap-a/ordinary/gap-minecraft-latest.log",
+        "gap-b/ordinary/chunks.jsonl",
+        "gap-b/ordinary/gap-minecraft-latest.log",
+    )
+    bound_paths = {artifact.path for artifact in artifacts}
     provider_evidence = tuple(
-        identity(inputs.raw_root / path, path)
-        for path in (
-            "run-a/mountainous/minecraft-latest.log",
-            "gap-a/ordinary/chunks.jsonl",
-            "gap-a/ordinary/gap-minecraft-latest.log",
-            "gap-b/ordinary/chunks.jsonl",
-            "gap-b/ordinary/gap-minecraft-latest.log",
-        )
+        identity(inputs.raw_root / path, path) for path in provider_paths if path not in bound_paths
     )
     artifacts.extend(provider_evidence)
     raw_artifacts.extend(provider_evidence)
-    control = validate_control(inputs.control_comparison, inputs.repeat_comparison)
+    control = validate_control(inputs.raw_root, inputs.control_comparison, inputs.repeat_comparison)
     gaps = validate_gaps(inputs.raw_root)
-    artifacts.append(control)
+    artifacts.extend(control)
     artifacts.extend(gaps)
-    raw_artifacts.append(control)
+    raw_artifacts.extend(control)
     raw_artifacts.extend(gaps)
     visual = validate_visual_evidence(inputs.visual_manifest, inputs.visual_reviews)
     visual_manifest = identity(inputs.visual_manifest, "visual-qa/captures/capture-manifest.tsv")
