@@ -68,7 +68,7 @@ Unresolved entries remain `UNKNOWN`. The audit does not convert startup success 
 
 ## Durable evidence and restoration
 
-The raw evidence is split into four immutable release assets under tag `item-7-raw-evidence-2026-09-04`, bound to source revision `5f358600a2e0581fdd99fbd2608ce742e74b08c1`:
+The corrected raw evidence is split into four immutable release assets under tag `item-7-raw-evidence-2026-09-04-r2`, bound to source revision `b13344e8eaa39528b61643bf24534d709cfff131`:
 
 | Asset | Files | Raw bytes | Archive bytes | Archive SHA-256 |
 |---|---:|---:|---:|---|
@@ -78,6 +78,8 @@ The raw evidence is split into four immutable release assets under tag `item-7-r
 | Auxiliary worlds | 217 | 165,166,012 | 48,648,807 | `d865320a9b1d2b44e59eb7d854fa499309746dc71a04b6b8caa46ede2a0c5a25` |
 
 All four archives were restored into absent targets, checked file by file, downloaded again from the published GitHub release, and rehashed. The committed publication receipt and completion validator bind the release URL, tag, source revision, asset names, sizes, hashes, manifests, restore receipts, and verification tool. JARs, Minecraft and NeoForge binaries, credentials, `session.lock`, player data, caches, and symlinks are excluded.
+
+The first release under tag `item-7-raw-evidence-2026-09-04` is preserved as historical evidence. Exact-SHA review found that its staging procedure did not hold Java-compatible world locks and used hardlinks, so its process claim was rejected. The corrected r2 staging holds a POSIX record lock on each `session.lock` throughout independent copying. The r2 payloads are byte-identical in size and SHA-256 to the first release, which shows that the first payload bytes were not corrupted, but only r2 satisfies the accepted staging and publication procedure.
 
 ## Reproduction
 
@@ -91,7 +93,7 @@ uv run ruff format --check src/mcpack_evidence/item7_*.py tools/*item7*.py tests
 uv run ruff check src/mcpack_evidence/item7_*.py tools/*item7*.py tests/item7
 uv run basedpyright src/mcpack_evidence/item7_*.py tools/*item7*.py tests/item7
 bash -n tools/stage_item7_raw_evidence.sh
-tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04 evidence/item-7/archive evidence/item-7/archive/publication.json /tmp/item7-release-verify
+tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04-r2 evidence/item-7/archive/r2 evidence/item-7/archive/r2/publication.json /tmp/item7-release-verify-r2
 ```
 
 The Python quality commands are intentionally scoped to Item 7. They do not claim that unrelated reconstructed later-item tools are clean, and Item 11 tooling remains outside this gate until the required Item 2 through Item 10 cross-item audit passes.
@@ -105,9 +107,10 @@ The completion command is the tracked `tools/build_item7_completion.py` CLI with
 - `evidence/item-7/visual/integrity-review.json`
 - `evidence/item-7/visual/fidelity-review.json`
 - `evidence/item-7/visual/rejected-attempts.json`
-- `evidence/item-7/archive/`
+- `evidence/item-7/archive/r2/`
+- `evidence/item-7/review/`
 - `evidence/item-7/completion.json`
-- GitHub release `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04`
+- GitHub release `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04-r2`
 
 ## Superseded historical control
 

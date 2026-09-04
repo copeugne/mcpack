@@ -8,12 +8,13 @@ This section supersedes the dated status and restart instructions below. Preserv
 
 ### Git and delivery state
 
-- A fresh fetch on 2026-09-04 found `origin/main` at `eb84d842a7b108863dcdd4c86435a875f8a0c575` with no newer remote commits. The active branch is `experiment/item-7-worldgen-audit`, based on that ref. Its accepted implementation and machine evidence reach `2a8ac9b84c2e7bcf8b4e8bfd4323f93bb1959acc` before this closure-document increment.
+- A fresh fetch on 2026-09-04 found `origin/main` at `eb84d842a7b108863dcdd4c86435a875f8a0c575` with no newer remote commits. The active branch is `experiment/item-7-worldgen-audit`, based on that ref. Its corrected implementation and r2 machine evidence reach `4e6b44094a6a11370c1d86b8c3d39a4a31f8ce45` before this reconciliation increment.
 - PR #11 merged Item 5 delivery as `398bf59b3a89669ec402026d52250c2b86e54047`.
 - PR #12 merged the initial Item 6 generated-default capture as `895ed1d999cd22ca511035e666ad8ac308ae63c1`.
 - PR #14 merged the completed Item 6 audit as `f38ea66ecc28911c33d525dcde26434853673ad3`. Its final Codex review completed against `96a914c8a457d2f23698cdaeba18c6ed899b56d1` and reported no major issues. The GitHub API currently exposes no thumbs-up reaction on that cycle, so do not claim that reaction; preserve this as a review-record discrepancy unless later evidence resolves it.
 - `eb84d842a7b108863dcdd4c86435a875f8a0c575` only renamed `CLAUDE.md` to `AGENTS.md` after the Item 6 merge.
-- Item 7 raw evidence is durably published at `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04`. The annotated tag resolves to source revision `5f358600a2e0581fdd99fbd2608ce742e74b08c1`, and all four assets passed a fresh remote download and hash verification.
+- Item 7 corrected raw evidence is durably published at `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04-r2`. The annotated tag resolves to source revision `b13344e8eaa39528b61643bf24534d709cfff131`, and all four assets passed a fresh remote download and hash verification. The first release is preserved, but its staging-process claim is superseded because it lacked Java-compatible world locks and independent copies. The r2 asset hashes match the first release exactly.
+- The first exact-SHA review at `97262a21b0b76c253f57e32b8665e48d0a63f822` returned `REJECTED`. It found clean-test dependency on ignored JARs, archive path-swap races, missing world locks and hardlink isolation, permissive provider fields, two oversized modules, and overbroad quality commands. Commits `9d1ff11` through `4e6b440` fix and re-evidence those issues. A fresh final-SHA review remains mandatory.
 - Preserve the existing untracked `.codegraph`, `.omo/`, and `mcpack-reconstructed-28(1).bundle` paths. Committed evidence belongs under `evidence/`; acceptance-relevant source, tools, tests, and exact commands must remain tracked for reproduction.
 
 ### Current gate status
@@ -26,13 +27,13 @@ This section supersedes the dated status and restart instructions below. Preserv
 | 4 | `COMPLETE` | The isolated four-seed environment and backup/restore gate pass. |
 | 5 | `COMPLETE` | The versioned measurement protocol, strict evidence tooling, and pinned-Temurin pilot gate pass. Spark overhead remains `UNKNOWN`, and the pilot is not a performance baseline. |
 | 6 | `COMPLETE` | The untouched retained-stack configuration is frozen and audited. The manifest contains 228 paths, with 88 audited and 140 explicitly out of scope. No tuning was performed. |
-| 7 | `PASS`, delivery pending | Two fresh four-seed runs inspected 54,816 exact selected chunks. The 192 anomaly rows, all 37 provider-component dispositions, 1,222 warning signatures, 128 reviewed captures, four restore-tested published archives, and 123-artifact completion receipt pass. Exact-SHA review, GitHub Codex review, merge, and delivered-ref verification remain. |
+| 7 | `PASS`, delivery pending | Two fresh four-seed runs inspected 54,816 exact selected chunks. The 192 anomaly rows, all 37 provider-component dispositions, 1,222 warning signatures, 128 reviewed captures, corrected r2 restore-tested archives, and 123-artifact completion receipt pass. The first exact-SHA review was rejected and fixed. Fresh exact-SHA review, GitHub Codex review, merge, and delivered-ref verification remain. |
 | 8 | `BLOCKED` by Item 7 delivery | Begin the runtime-backed canonical structure inventory only after the Item 7 pull request is cleanly reviewed, merged into `main`, and verified. |
 | 9 | `BLOCKED` by Item 8 | Reclassify every verified family exactly once only after Item 8 passes. |
 | 10 | `BLOCKED` by Items 7 through 9 | Regenerate and preserve predeclared density evidence only after the preceding gates pass. |
 | 11 | `BLOCKED` | Do not implement, run, repair, or lint Item 11 before the final Items 2 through 10 audit passes. It also requires at least two blind human operators. |
 
-The Item 7 completion command returns `PASS` and records 123 exact artifacts in `evidence/item-7/completion.json`. The focused Item 7 suite passes with 144 tests. The raw-release verifier redownloaded all four assets and matched every committed size and SHA-256.
+The Item 7 completion command returns `PASS` and records 123 exact artifacts in `evidence/item-7/completion.json`. The focused Item 7 suite passes with 155 tests in both the working tree and a clean `git archive` export. The r2 raw-release verifier redownloaded all four assets and matched every committed size and SHA-256.
 
 ### Exact continuation point
 
