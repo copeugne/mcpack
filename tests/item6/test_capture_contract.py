@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import shutil
 import subprocess
 import sys
@@ -11,6 +12,9 @@ from pathlib import Path
 import pytest
 
 from tests.item6.helpers import ROOT, capture
+
+_REDACTION_SENTINEL = "<redacted-generated-secret>"
+_TEST_SOURCE_VALUE = "test-only-source-value"
 
 
 def _make_instance(tmp_path: Path) -> Path:
@@ -23,8 +27,96 @@ def _make_instance(tmp_path: Path) -> Path:
     ):
         directory.mkdir(parents=True)
         (directory / "settings.txt").write_text(payload, encoding="utf-8")
+    (instance / "config" / "resourceful-config-web.json").write_text(
+        json.dumps(
+            {
+                "enabled": False,
+                "port": 8080,
+                "validator": {
+                    "if": {
+                        "password": _TEST_SOURCE_VALUE,
+                        "type": "uuid",
+                        "uuids": [],
+                    },
+                    "type": "if",
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
     (instance / "server.properties").write_text("level-name=world\n", encoding="utf-8")
     return instance
+
+
+def test_capture_redacts_generated_credential_and_writes_safe_receipt(tmp_path: Path) -> None:
+    """Capture substitutes the generated credential before evidence exists."""
+    # Given: a complete source instance with the generated web-validator credential.
+    instance = _make_instance(tmp_path)
+    output = tmp_path / "output"
+    receipt_path = tmp_path / "config-sanitization.json"
+
+    # When: the capture boundary materializes frozen configuration evidence.
+    capture(instance, output)
+
+    # Then: a receipt exists before inspecting the redacted configuration payload.
+    assert receipt_path.is_file()
+    captured = json.loads(
+        (output / "config" / "resourceful-config-web.json").read_text(encoding="utf-8")
+    )
+    expected = json.loads(
+        (instance / "config" / "resourceful-config-web.json").read_text(encoding="utf-8")
+    )
+    expected["validator"]["if"]["password"] = _REDACTION_SENTINEL
+    assert captured == expected
+    assert captured["validator"]["if"]["password"] == _REDACTION_SENTINEL
+    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    assert receipt == {
+        "files": [
+            {
+                "path": "config/resourceful-config-web.json",
+                "redactions": [
+                    {
+                        "json_pointer": "/validator/if/password",
+                        "replacement": _REDACTION_SENTINEL,
+                        "value_type": "string",
+                    }
+                ],
+            }
+        ],
+        "redaction_count": 1,
+        "sanitized_file_count": 1,
+        "schema_version": "item6-config-sanitization-v1",
+    }
+    receipt_text = receipt_path.read_text(encoding="utf-8")
+    captured_text = (output / "config" / "resourceful-config-web.json").read_text(encoding="utf-8")
+    captured_file_contents = tuple(
+        path.read_text(encoding="utf-8") for path in output.rglob("*") if path.is_file()
+    )
+    assert all(_TEST_SOURCE_VALUE not in content for content in captured_file_contents)
+    assert _TEST_SOURCE_VALUE not in captured_text
+    assert _TEST_SOURCE_VALUE not in receipt_text
+    assert "hash" not in receipt_text
+
+
+@pytest.mark.parametrize("payload", [None, "{}"])
+def test_capture_rejects_missing_or_invalid_resourceful_credential_before_output(
+    tmp_path: Path, payload: str | None
+) -> None:
+    """Missing or malformed credential input cannot leave a capture directory behind."""
+    # Given: a complete instance whose target configuration is absent or lacks the password.
+    instance = _make_instance(tmp_path)
+    source = instance / "config" / "resourceful-config-web.json"
+    if payload is None:
+        source.unlink()
+    else:
+        _ = source.write_text(payload, encoding="utf-8")
+    output = tmp_path / "output"
+
+    # When/Then: capture rejects the unsafe shape before output exists.
+    with pytest.raises(ValueError, match="resourceful-config-web"):
+        capture(instance, output)
+    assert not output.exists()
+    assert not (tmp_path / "config-sanitization.json").exists()
 
 
 @pytest.mark.parametrize(
@@ -221,13 +313,24 @@ def test_capture_cli_writes_exact_public_layout(tmp_path: Path) -> None:
         text=True,
     )
 
-    # Then: the command succeeds with exactly the public output inventory.
+    # Then: the command succeeds with exactly the public configuration inventory.
     assert completed.returncode == 0, completed.stderr
+    assert _TEST_SOURCE_VALUE not in completed.stdout
+    assert _TEST_SOURCE_VALUE not in completed.stderr
+    captured = json.loads(
+        (output / "config" / "resourceful-config-web.json").read_text(encoding="utf-8")
+    )
+    assert captured["validator"]["if"]["password"] == _REDACTION_SENTINEL
+    receipt_text = (tmp_path / "config-sanitization.json").read_text(encoding="utf-8")
+    assert _TEST_SOURCE_VALUE not in receipt_text
+    assert "hash" not in receipt_text
     assert sorted(
         path.relative_to(output).as_posix() for path in output.rglob("*") if path.is_file()
     ) == [
+        "config/resourceful-config-web.json",
         "config/settings.txt",
         "defaultconfigs/settings.txt",
         "server.properties",
         "world-serverconfig/settings.txt",
     ]
+    assert (tmp_path / "config-sanitization.json").is_file()

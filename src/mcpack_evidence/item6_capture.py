@@ -3,13 +3,71 @@
 from __future__ import annotations
 
 import shutil
-from typing import TYPE_CHECKING, Final
+import tempfile
+from pathlib import Path
+from typing import ClassVar, Final, Literal
 
-if TYPE_CHECKING:
-    from pathlib import Path
-
+from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 _DIRECTORIES: Final = ("config", "defaultconfigs", "world", "world/serverconfig")
+_RESOURCEFUL_CONFIG_PATH: Final = "config/resourceful-config-web.json"
+_RESOURCEFUL_CONFIG: Final = Path(_RESOURCEFUL_CONFIG_PATH)
+_SANITIZATION_RECEIPT: Final = "config-sanitization.json"
+_REDACTION_SENTINEL: Final = "<redacted-generated-secret>"
+
+
+class _ResourcefulValidatorIf(BaseModel):
+    """Typed `validator.if` content that must contain the generated credential."""
+
+    model_config: ClassVar[ConfigDict] = ConfigDict(extra="allow", frozen=True, strict=True)
+
+    password: str
+
+
+class _ResourcefulValidator(BaseModel):
+    """Typed validator section that retains all unmodeled configuration fields."""
+
+    model_config: ClassVar[ConfigDict] = ConfigDict(extra="allow", frozen=True, strict=True)
+
+    if_: _ResourcefulValidatorIf = Field(alias="if")
+
+
+class _ResourcefulConfig(BaseModel):
+    """Resourceful web configuration retaining all unmodeled fields unchanged."""
+
+    model_config: ClassVar[ConfigDict] = ConfigDict(extra="allow", frozen=True, strict=True)
+
+    validator: _ResourcefulValidator
+
+
+class _ReceiptRedaction(BaseModel):
+    """One evidence-safe replacement recorded by the sanitization receipt."""
+
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True)
+
+    json_pointer: Literal["/validator/if/password"] = "/validator/if/password"
+    replacement: Literal["<redacted-generated-secret>"] = _REDACTION_SENTINEL
+    value_type: Literal["string"] = "string"
+
+
+class _ReceiptFile(BaseModel):
+    """One sanitized file recorded without its source credential or identity."""
+
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True)
+
+    path: Literal["config/resourceful-config-web.json"] = _RESOURCEFUL_CONFIG_PATH
+    redactions: tuple[_ReceiptRedaction, ...] = (_ReceiptRedaction(),)
+
+
+class _SanitizationReceipt(BaseModel):
+    """Evidence-safe receipt for the capture-side generated credential replacement."""
+
+    model_config: ClassVar[ConfigDict] = ConfigDict(frozen=True)
+
+    schema_version: Literal["item6-config-sanitization-v1"] = "item6-config-sanitization-v1"
+    sanitized_file_count: Literal[1] = 1
+    redaction_count: Literal[1] = 1
+    files: tuple[_ReceiptFile, ...] = (_ReceiptFile(),)
 
 
 class CaptureValidationError(ValueError):
@@ -21,6 +79,10 @@ def capture(instance: Path, output: Path) -> None:
     if output.exists():
         message = f"output already exists: {output}"
         raise FileExistsError(message)
+    receipt = output.parent / _SANITIZATION_RECEIPT
+    if receipt.exists():
+        message = f"sanitization receipt already exists: {receipt}"
+        raise FileExistsError(message)
     _require_directory(instance, "instance")
     sources = tuple(instance / relative for relative in _DIRECTORIES)
     for source, relative in zip(sources, _DIRECTORIES, strict=True):
@@ -28,15 +90,62 @@ def capture(instance: Path, output: Path) -> None:
         _require_no_nested_symlinks(source, relative)
     properties = instance / "server.properties"
     _require_regular_file(properties, "server.properties")
+    resourceful_config = instance / _RESOURCEFUL_CONFIG
+    _require_regular_file(resourceful_config, _RESOURCEFUL_CONFIG.as_posix())
+    sanitized_resourceful_config = _sanitize_resourceful_config(resourceful_config)
 
-    output.mkdir(parents=True)
-    for source, target in (
-        (instance / "config", output / "config"),
-        (instance / "defaultconfigs", output / "defaultconfigs"),
-        (instance / "world" / "serverconfig", output / "world-serverconfig"),
-    ):
-        _ = shutil.copytree(source, target)
-    _ = shutil.copy2(properties, output / "server.properties")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    staging = Path(tempfile.mkdtemp(prefix=f".{output.name}.capture-", dir=output.parent))
+    try:
+        _copy_configuration_tree(
+            instance / "config", staging / "config", sanitized_resourceful_config
+        )
+        for source, target in (
+            (instance / "defaultconfigs", staging / "defaultconfigs"),
+            (instance / "world" / "serverconfig", staging / "world-serverconfig"),
+        ):
+            _ = shutil.copytree(source, target)
+        _ = shutil.copy2(properties, staging / "server.properties")
+        staged_receipt = staging / _SANITIZATION_RECEIPT
+        _ = staged_receipt.write_text(
+            _SanitizationReceipt().model_dump_json(indent=2) + "\n", encoding="utf-8"
+        )
+        _ = staging.replace(output)
+        _ = (output / _SANITIZATION_RECEIPT).replace(receipt)
+    finally:
+        if staging.exists():
+            _ = shutil.rmtree(staging)
+
+
+def _sanitize_resourceful_config(path: Path) -> str:
+    """Parse and redact only the generated web-validator credential in memory."""
+    try:
+        configuration = _ResourcefulConfig.model_validate_json(path.read_bytes())
+    except ValidationError:
+        message = f"invalid generated credential shape: {_RESOURCEFUL_CONFIG.as_posix()}"
+        raise CaptureValidationError(message) from None
+    redacted_validator = configuration.validator.model_copy(
+        update={
+            "if_": configuration.validator.if_.model_copy(update={"password": _REDACTION_SENTINEL})
+        }
+    )
+    redacted_configuration = configuration.model_copy(update={"validator": redacted_validator})
+    return redacted_configuration.model_dump_json(by_alias=True, indent=2) + "\n"
+
+
+def _copy_configuration_tree(source: Path, target: Path, sanitized_resourceful_config: str) -> None:
+    """Copy configuration while replacing the sensitive target before it reaches staging."""
+
+    def ignore_resourceful_config(directory: str, names: list[str]) -> set[str]:
+        """Exclude only the root resourceful configuration file from the byte copy."""
+        if Path(directory) == source and _RESOURCEFUL_CONFIG.name in names:
+            return {_RESOURCEFUL_CONFIG.name}
+        return set()
+
+    _ = shutil.copytree(source, target, ignore=ignore_resourceful_config)
+    _ = (target / _RESOURCEFUL_CONFIG.name).write_text(
+        sanitized_resourceful_config, encoding="utf-8"
+    )
 
 
 def _require_directory(path: Path, name: str) -> None:
