@@ -103,7 +103,7 @@ def test_capture_rejects_required_directory_symlink(tmp_path: Path, relative: Pa
     output = tmp_path / "output"
 
     # When/Then: capture rejects the symlink before creating the output.
-    with pytest.raises(ValueError, match="non-symlink"):
+    with pytest.raises(ValueError, match="symlink"):
         capture(instance, output)
     assert not output.exists()
 
@@ -175,6 +175,27 @@ def test_capture_preserves_existing_output_bytes(tmp_path: Path) -> None:
         capture(instance, output)
     assert sentinel.read_bytes() == b"existing evidence\x00"
     assert sorted(path.name for path in output.iterdir()) == ["sentinel.bin"]
+
+
+@pytest.mark.parametrize(
+    "relative",
+    [Path("config"), Path("defaultconfigs"), Path("world/serverconfig")],
+)
+def test_capture_rejects_nested_symlink_before_creating_output(
+    tmp_path: Path, relative: Path
+) -> None:
+    """Copied source trees must not contain nested symlink entries."""
+    # Given: one copied source tree contains a symlink to an external regular file.
+    instance = _make_instance(tmp_path)
+    target = tmp_path / f"external-{relative.name}.txt"
+    target.write_text("external=value\n", encoding="utf-8")
+    (instance / relative / "linked.txt").symlink_to(target)
+    output = tmp_path / "output"
+
+    # When/Then: capture rejects the tree and leaves no partial output behind.
+    with pytest.raises(ValueError, match="symlink"):
+        capture(instance, output)
+    assert not output.exists()
 
 
 def test_capture_cli_writes_exact_public_layout(tmp_path: Path) -> None:

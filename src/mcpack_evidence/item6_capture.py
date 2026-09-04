@@ -25,6 +25,7 @@ def capture(instance: Path, output: Path) -> None:
     sources = tuple(instance / relative for relative in _DIRECTORIES)
     for source, relative in zip(sources, _DIRECTORIES, strict=True):
         _require_directory(source, relative)
+        _require_no_nested_symlinks(source, relative)
     properties = instance / "server.properties"
     _require_regular_file(properties, "server.properties")
 
@@ -50,3 +51,11 @@ def _require_regular_file(path: Path, name: str) -> None:
     if path.is_symlink() or not path.is_file():
         message = f"required regular non-symlink file is invalid: {name}"
         raise CaptureValidationError(message)
+
+
+def _require_no_nested_symlinks(path: Path, name: str) -> None:
+    """Reject symlink entries within one source tree before copying starts."""
+    for candidate in path.rglob("*"):
+        if candidate.is_symlink():
+            message = f"required source tree contains a symlink: {name}"
+            raise CaptureValidationError(message)

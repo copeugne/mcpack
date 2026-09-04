@@ -1,0 +1,5 @@
+Scenario: each copied source tree rejects a nested symlink before capture output exists.
+Invocation: uv run pytest tests/item6/test_capture_contract.py::test_capture_rejects_nested_symlink_before_creating_output -q
+Observed: exit 1. 3 failed in 0.08s.
+Cause: capture followed nested symlinks in config, defaultconfigs, and world/serverconfig instead of rejecting the source tree.
+Captured before recursive source-tree validation implementation.
