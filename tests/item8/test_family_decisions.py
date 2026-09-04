@@ -122,3 +122,14 @@ def test_working_inventory_keeps_unassigned_ids_and_rejects_double_counting() ->
         _ = assemble(("example:a",), [decision, conflicting], sources, traces, bounds)
     with pytest.raises(ValueError, match="unregistered"):
         _ = assemble(("example:b",), [decision], sources, traces, bounds)
+    decision["attributes"] = {"intended_hostility": {"value": "hostile", "basis": "source"}}
+    result = assemble(("example:a",), [decision], sources, traces, bounds)
+    families = cast("dict[str, dict[str, JsonValue]]", result["families"])
+    assert families["example:family"]["intended_hostility"] == {
+        "value": "hostile",
+        "basis": "source",
+    }
+    assert families["example:family"]["status"] == "INCOMPLETE"
+    decision["attributes"] = {"status": "COMPLETE"}
+    with pytest.raises(ValueError, match="protected family attribute"):
+        _ = assemble(("example:a",), [decision], sources, traces, bounds)

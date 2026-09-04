@@ -103,6 +103,19 @@ def assemble(
             },
             "pool_trace_ids": [member for member in members if member in pool_traces],
         }
+        attributes = cast("dict[str, JsonValue]", decision.get("attributes", {}))
+        protected = {
+            "name",
+            "structure_ids",
+            "grouping_decision",
+            "status",
+            "world_observations",
+            "pool_trace_ids",
+        }
+        if attributes.keys() - family_row.keys() or attributes.keys() & protected:
+            message = f"unknown or protected family attribute: {family}"
+            raise ValueError(message)
+        family_row.update(attributes)
         families[family] = family_row
     return {
         "status": "INCOMPLETE",
