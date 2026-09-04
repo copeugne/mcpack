@@ -1,0 +1,42 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_____________ test_vanilla_toggle_surface_reproduces_all_34_leaves _____________
+
+    def test_vanilla_toggle_surface_reproduces_all_34_leaves() -> None:
+>       surface = next(
+            surface for surface in AUDIT_DATA["setting_surfaces"] if surface["file"] == FILE
+        )
+E       StopIteration
+
+tests/item6/test_vanilla_structures_toggle_surface.py:22: StopIteration
+________________ test_vanilla_toggle_file_is_owned_and_audited _________________
+
+    def test_vanilla_toggle_file_is_owned_and_audited() -> None:
+        system = next(system for system in AUDIT_DATA["systems"] if system["system"] == SYSTEM)
+        audited = next(
+            row["files"] for row in AUDIT_DATA["file_accounting"] if row["classification"] == "audited"
+        )
+        excluded = next(
+            row["files"] for row in AUDIT_DATA["file_accounting"] if row["classification"] == "out-of-scope"
+        )
+>       assert FILE in system["files"]
+E       AssertionError: assert 'config/vanilla_structures/toggle_structure_config.json5' in ['config/vanilla_structures/placement_structure_config.json5']
+
+tests/item6/test_vanilla_structures_toggle_surface.py:38: AssertionError
+___________________ test_vanilla_toggle_mutation_is_rejected ___________________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-348/test_vanilla_toggle_mutation_i0')
+
+    def test_vanilla_toggle_mutation_is_rejected(tmp_path: Path) -> None:
+        audit = deepcopy(AUDIT_DATA)
+>       surface = next(surface for surface in audit["setting_surfaces"] if surface["file"] == FILE)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/item6/test_vanilla_structures_toggle_surface.py:45: StopIteration
+=========================== short test summary info ============================
+FAILED tests/item6/test_vanilla_structures_toggle_surface.py::test_vanilla_toggle_surface_reproduces_all_34_leaves
+FAILED tests/item6/test_vanilla_structures_toggle_surface.py::test_vanilla_toggle_file_is_owned_and_audited
+FAILED tests/item6/test_vanilla_structures_toggle_surface.py::test_vanilla_toggle_mutation_is_rejected
+3 failed in 0.09s
+expected_red_exit=1
