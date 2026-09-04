@@ -81,6 +81,8 @@ All four archives were restored into absent targets, checked file by file, downl
 
 The first release under tag `item-7-raw-evidence-2026-09-04` is preserved as historical evidence. Exact-SHA review found that its staging procedure did not hold Java-compatible world locks and used hardlinks, so its process claim was rejected. The corrected r2 staging holds a POSIX record lock on each `session.lock` throughout independent copying. The r2 payloads are byte-identical in size and SHA-256 to the first release, which shows that the first payload bytes were not corrupted, but only r2 satisfies the accepted staging and publication procedure.
 
+A later security review of revision `8c7e7b8bb5db79d826b78cab5a678605a8b5fc23` found remaining path-swap, hardlink, special-file, and mixed-repository verification defects in the reusable staging, archive, and release-verification tools. Commits `fdd99d9` and `c625d6e` correct those boundaries with focused regression coverage. The corrected verifier redownloaded and verified all four real r2 assets against the tag resolved from `copeugne/mcpack`. Both rejected review records remain under `evidence/item-7/review/`; a fresh exact-SHA review remains required before delivery.
+
 ## Reproduction
 
 All acceptance-relevant implementation, CLIs, and tests are tracked under `src/mcpack_evidence/`, `tools/`, and `tests/item7/`. The protocol and committed receipts are under `evidence/item-7/`. The exact runtime commands and their outputs are retained in the raw archives.
