@@ -1,0 +1,12 @@
+Scenario: validate the committed frozen baseline through the public CLI.
+Invocation: uv run python tools/freeze_item6_config.py validate --root evidence/item-6/frozen --manifest evidence/item-6/generated-config-manifest.json --audit evidence/item-6/config-audit.json
+Observed: exit 0. Output: validated Item 6 frozen configuration and audit.
+Scenario: run the Item 6 capture contract and full Item 6 regression suite.
+Invocation: uv run pytest tests/item6/test_capture_contract.py -q; uv run pytest tests/item6 -q
+Observed: both exited 0. The focused suite reported 23 passed in 0.18s. The full suite reported 323 passed in 3.90s.
+Scenario: run direct quality gates over the public tool, capture module, and Item 6 tests.
+Invocation: uv run ruff format --check tools/freeze_item6_config.py src/mcpack_evidence/item6_capture.py tests/item6; uv run ruff check tools/freeze_item6_config.py src/mcpack_evidence/item6_capture.py tests/item6; uv run basedpyright tools/freeze_item6_config.py src/mcpack_evidence/item6_capture.py tests/item6; git diff --check
+Observed: all commands exited 0. basedpyright reported 0 errors, 0 warnings, 0 notes.
+Scenario: verify Task 6 did not alter immutable frozen input bytes.
+Invocation: git diff --name-only 93cdc722e0aa98ed5db05e24dc5ce03838b987bd..HEAD -- evidence/item-6/frozen
+Observed: exit 0 with no output. No immutable frozen inputs changed.

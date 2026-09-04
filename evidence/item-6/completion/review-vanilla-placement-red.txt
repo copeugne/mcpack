@@ -1,0 +1,36 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+___________ test_vanilla_placement_surface_reproduces_all_60_leaves ____________
+
+    def test_vanilla_placement_surface_reproduces_all_60_leaves() -> None:
+>       surface = next(
+            surface for surface in AUDIT_DATA["setting_surfaces"] if surface["file"] == FILE
+        )
+E       StopIteration
+
+tests/item6/test_vanilla_structures_placement_surface.py:22: StopIteration
+_______________ test_vanilla_placement_file_is_owned_and_audited _______________
+
+    def test_vanilla_placement_file_is_owned_and_audited() -> None:
+>       system = next(system for system in AUDIT_DATA["systems"] if system["system"] == SYSTEM)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/item6/test_vanilla_structures_placement_surface.py:36: StopIteration
+_________________ test_vanilla_placement_mutation_is_rejected __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-345/test_vanilla_placement_mutatio0')
+
+    def test_vanilla_placement_mutation_is_rejected(tmp_path: Path) -> None:
+        audit = deepcopy(AUDIT_DATA)
+>       surface = next(surface for surface in audit["setting_surfaces"] if surface["file"] == FILE)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/item6/test_vanilla_structures_placement_surface.py:50: StopIteration
+=========================== short test summary info ============================
+FAILED tests/item6/test_vanilla_structures_placement_surface.py::test_vanilla_placement_surface_reproduces_all_60_leaves
+FAILED tests/item6/test_vanilla_structures_placement_surface.py::test_vanilla_placement_file_is_owned_and_audited
+FAILED tests/item6/test_vanilla_structures_placement_surface.py::test_vanilla_placement_mutation_is_rejected
+3 failed in 0.09s
+expected_red_exit=1

@@ -1,0 +1,40 @@
+$ explicit coverage inventory
+settings=110 fields=2 mutation_cases=220
+
+$ uv run pytest -q tests/item6/test_value_binding.py -k 'claimed_setting_value'
+........................................................................ [ 32%]
+........................................................................ [ 65%]
+........................................................................ [ 97%]
+.....                                                                    [100%]
+221 passed, 14 deselected in 2.77s
+
+$ uv run pytest -q tests/item6/test_value_binding.py -k 'rejects_'
+...........                                                              [100%]
+11 passed, 224 deselected in 0.15s
+
+FINAL ERROR COVERAGE AFTER QUALITY FIXES
+$ explicit coverage inventory
+settings=110 fields=2 mutation_cases=220
+$ uv run pytest -q tests/item6/test_value_binding.py -k 'claimed_setting_value'
+........................................................................ [ 32%]
+........................................................................ [ 65%]
+........................................................................ [ 97%]
+.....                                                                    [100%]
+221 passed, 15 deselected in 2.78s
+$ uv run pytest -q tests/item6/test_value_binding.py -k 'rejects_'
+............                                                             [100%]
+12 passed, 224 deselected in 0.14s
+
+FINAL ERROR COVERAGE AFTER FLOAT-TYPE CORRECTION
+$ explicit coverage inventory
+settings=110 fields=2 mutation_cases=220
+suffix_contract=PASS allowed_exact_suffixes=[empty,comma]
+$ uv run pytest -q tests/item6/test_value_binding.py -k 'claimed_setting_value'
+........................................................................ [ 32%]
+........................................................................ [ 65%]
+........................................................................ [ 97%]
+.....                                                                    [100%]
+221 passed, 15 deselected in 2.68s
+$ uv run pytest -q tests/item6/test_value_binding.py -k 'rejects_'
+............                                                             [100%]
+12 passed, 224 deselected in 0.17s

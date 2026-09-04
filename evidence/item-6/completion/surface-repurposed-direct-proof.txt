@@ -1,0 +1,17 @@
+Scenario: bind the remaining Repurposed Structures modded-loot controls directly to their frozen TOML source.
+Relevance: these controls govern automatic modded-item injection into Repurposed Structures loot tables, so they are part of Item 6's structure and loot configuration audit.
+Source: config/repurposed_structures-neoforge/modded_loot.toml
+Observed leaves: 2
+- line 3: Repurposed Structures.modded_loot.importModdedItems = true
+- line 7: Repurposed Structures.modded_loot.blacklistedRSLoottablesFromImportingModdedItems = ""
+Accounting: the source file is owned by the Repurposed Structures system, classified audited, and absent from out-of-scope accounting.
+Mutation proof: the focused parametrized test changes each effective-value claim independently and requires strict source validation to reject both mutations.
+Observable: 4 focused tests pass; the real CLI validates; Ruff format/check, basedpyright, and no-excuse checks all exit 0.
+Commands:
+  uv run pytest -q tests/item6/test_repurposed_direct_settings.py
+  uv run python tools/freeze_item6_config.py validate --root evidence/item-6/frozen --manifest evidence/item-6/generated-config-manifest.json --audit evidence/item-6/config-audit.json
+  uv run ruff format --check tests/item6/test_repurposed_direct_settings.py
+  uv run ruff check tests/item6/test_repurposed_direct_settings.py
+  uv run basedpyright tests/item6/test_repurposed_direct_settings.py
+  uv run python /home/lonestar/.codex/plugins/cache/sisyphuslabs/omo/4.19.4/skills/programming/scripts/python/check-no-excuse-rules.py tests/item6/test_repurposed_direct_settings.py
+Captured output: evidence/item-6/completion/surface-repurposed-direct-green.txt

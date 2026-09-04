@@ -1,5 +1,7 @@
 # Adventure & Engineering Minecraft Pack — New-Session Handoff
 
+> Historical checkpoint: this file records the repository state on 2026-09-01 and is not the current continuation authority. Use `SPECS.md`, the master execution status in `Adventure-Engineering-Pack-Execution-Ledger.md`, and current Git/GitHub state for present status. The dated instructions below are preserved as recovery history.
+
 **Prepared:** 2026-09-01
 **Live checkpoint updated:** 2026-09-01
 **Canonical repository:** `https://github.com/copeugne/mcpack`
@@ -10,9 +12,9 @@
 
 ---
 
-## 0. Live Validated Checkpoint — Read Before the Historical Handoff
+## 0. Historical Validated Checkpoint - Read Before the Older Handoff
 
-This section supersedes older status statements in this file wherever they conflict. The remainder of the file preserves the recovery history, design contract, and execution context that remain applicable.
+As of 2026-09-01, this section superseded older status statements in this file wherever they conflicted. The remainder of the file preserves the recovery history, design contract, and execution context that remained applicable at that checkpoint.
 
 ### 0.1 Exact stop boundary
 

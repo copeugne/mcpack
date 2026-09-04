@@ -1,0 +1,131 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+_ test_parse_manifest_rejects_unknown_fields[{\n-  "unexpected_top_level": true,\n] _
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-160/test_parse_manifest_rejects_un0')
+anchor = '{\n', unexpected_field = '  "unexpected_top_level": true,\n'
+
+    @pytest.mark.parametrize(
+        ("anchor", "unexpected_field"),
+        [
+            ("{\n", '  "unexpected_top_level": true,\n'),
+            ('  "java": {\n', '    "unexpected_java_field": true,\n'),
+            ('  "retained_manifest": {\n', '    "unexpected_retained_field": true,\n'),
+            ('    {\n      "path": "config/accessories.json5",\n', '      "unexpected_row_field": true,\n'),
+        ],
+    )
+    def test_parse_manifest_rejects_unknown_fields(
+        tmp_path: Path, anchor: str, unexpected_field: str
+    ) -> None:
+        # Given: a committed manifest with one syntactically valid unknown field.
+        mutated = MANIFEST.read_text(encoding="utf-8").replace(
+            anchor, f"{anchor}{unexpected_field}", 1
+        )
+        manifest_path = tmp_path / "manifest-with-unknown-field.json"
+        manifest_path.write_text(mutated, encoding="utf-8")
+
+        # When/Then: typed parsing rejects the unknown object member.
+>       with pytest.raises(ValidationError, match="extra_forbidden"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+
+tests/item6/test_manifest_contract.py:126: Failed
+_ test_parse_manifest_rejects_unknown_fields[  "java": {\n-    "unexpected_java_field": true,\n] _
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-160/test_parse_manifest_rejects_un1')
+anchor = '  "java": {\n'
+unexpected_field = '    "unexpected_java_field": true,\n'
+
+    @pytest.mark.parametrize(
+        ("anchor", "unexpected_field"),
+        [
+            ("{\n", '  "unexpected_top_level": true,\n'),
+            ('  "java": {\n', '    "unexpected_java_field": true,\n'),
+            ('  "retained_manifest": {\n', '    "unexpected_retained_field": true,\n'),
+            ('    {\n      "path": "config/accessories.json5",\n', '      "unexpected_row_field": true,\n'),
+        ],
+    )
+    def test_parse_manifest_rejects_unknown_fields(
+        tmp_path: Path, anchor: str, unexpected_field: str
+    ) -> None:
+        # Given: a committed manifest with one syntactically valid unknown field.
+        mutated = MANIFEST.read_text(encoding="utf-8").replace(
+            anchor, f"{anchor}{unexpected_field}", 1
+        )
+        manifest_path = tmp_path / "manifest-with-unknown-field.json"
+        manifest_path.write_text(mutated, encoding="utf-8")
+
+        # When/Then: typed parsing rejects the unknown object member.
+>       with pytest.raises(ValidationError, match="extra_forbidden"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+
+tests/item6/test_manifest_contract.py:126: Failed
+_ test_parse_manifest_rejects_unknown_fields[  "retained_manifest": {\n-    "unexpected_retained_field": true,\n] _
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-160/test_parse_manifest_rejects_un2')
+anchor = '  "retained_manifest": {\n'
+unexpected_field = '    "unexpected_retained_field": true,\n'
+
+    @pytest.mark.parametrize(
+        ("anchor", "unexpected_field"),
+        [
+            ("{\n", '  "unexpected_top_level": true,\n'),
+            ('  "java": {\n', '    "unexpected_java_field": true,\n'),
+            ('  "retained_manifest": {\n', '    "unexpected_retained_field": true,\n'),
+            ('    {\n      "path": "config/accessories.json5",\n', '      "unexpected_row_field": true,\n'),
+        ],
+    )
+    def test_parse_manifest_rejects_unknown_fields(
+        tmp_path: Path, anchor: str, unexpected_field: str
+    ) -> None:
+        # Given: a committed manifest with one syntactically valid unknown field.
+        mutated = MANIFEST.read_text(encoding="utf-8").replace(
+            anchor, f"{anchor}{unexpected_field}", 1
+        )
+        manifest_path = tmp_path / "manifest-with-unknown-field.json"
+        manifest_path.write_text(mutated, encoding="utf-8")
+
+        # When/Then: typed parsing rejects the unknown object member.
+>       with pytest.raises(ValidationError, match="extra_forbidden"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+
+tests/item6/test_manifest_contract.py:126: Failed
+_ test_parse_manifest_rejects_unknown_fields[    {\n      "path": "config/accessories.json5",\n-      "unexpected_row_field": true,\n] _
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-160/test_parse_manifest_rejects_un3')
+anchor = '    {\n      "path": "config/accessories.json5",\n'
+unexpected_field = '      "unexpected_row_field": true,\n'
+
+    @pytest.mark.parametrize(
+        ("anchor", "unexpected_field"),
+        [
+            ("{\n", '  "unexpected_top_level": true,\n'),
+            ('  "java": {\n', '    "unexpected_java_field": true,\n'),
+            ('  "retained_manifest": {\n', '    "unexpected_retained_field": true,\n'),
+            ('    {\n      "path": "config/accessories.json5",\n', '      "unexpected_row_field": true,\n'),
+        ],
+    )
+    def test_parse_manifest_rejects_unknown_fields(
+        tmp_path: Path, anchor: str, unexpected_field: str
+    ) -> None:
+        # Given: a committed manifest with one syntactically valid unknown field.
+        mutated = MANIFEST.read_text(encoding="utf-8").replace(
+            anchor, f"{anchor}{unexpected_field}", 1
+        )
+        manifest_path = tmp_path / "manifest-with-unknown-field.json"
+        manifest_path.write_text(mutated, encoding="utf-8")
+
+        # When/Then: typed parsing rejects the unknown object member.
+>       with pytest.raises(ValidationError, match="extra_forbidden"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+
+tests/item6/test_manifest_contract.py:126: Failed
+=========================== short test summary info ============================
+FAILED tests/item6/test_manifest_contract.py::test_parse_manifest_rejects_unknown_fields[{\n-  "unexpected_top_level": true,\n]
+FAILED tests/item6/test_manifest_contract.py::test_parse_manifest_rejects_unknown_fields[  "java": {\n-    "unexpected_java_field": true,\n]
+FAILED tests/item6/test_manifest_contract.py::test_parse_manifest_rejects_unknown_fields[  "retained_manifest": {\n-    "unexpected_retained_field": true,\n]
+FAILED tests/item6/test_manifest_contract.py::test_parse_manifest_rejects_unknown_fields[    {\n      "path": "config/accessories.json5",\n-      "unexpected_row_field": true,\n]
+4 failed in 0.07s

@@ -1,0 +1,129 @@
+Script started on 2026-09-04 00:16:12+02:00 [COMMAND="git rev-parse codex/item-6-completion-pre-atomic-rewrite codex/item-6-completion-pre-provider-split HEAD; git hash-object evidence/item-6/generated-config-manifest.json; git rev-parse origin/main:evidence/item-6/generated-config-manifest.json; git diff --name-status codex/item-6-completion-pre-provider-split -- . ':(exclude)evidence/item-6/completion/**'; git diff --name-status origin/main -- evidence/item-6/frozen evidence/item-6/generated-config-manifest.json; git ls-files '.omo/**'; git log --reverse --format='%H %s' --stat origin/main..HEAD" <not executed on terminal>]
+a3b2202e9fceefaceef45d481c965437008f86b6
+22f84b44bd02346ffc189e321f9539cc071e8638
+d33ceb121aeb4311a53c1a14496ef48f513264e5
+d3abde105b371ceeae2727707218a80747e63ade
+d3abde105b371ceeae2727707218a80747e63ade
+be6039219a14f1913680e768459fb63cd213c8b3 fix(item6): account for every frozen config file
+
+ docs/items/Item-6-Baseline-Configuration-Audit.md  |   2 +-
+ .../completion/atomic-01-accounting-green.txt      |   6 +
+ .../item-6/completion/task-2-accounting-red.txt    |  74 +++++++
+ .../item-6/completion/task-2-characterization.txt  |   2 +
+ .../task-2-yung-classification-error.txt           |  11 +
+ evidence/item-6/config-audit.json                  | 240 +++++++++++++++++++++
+ tests/item6/helpers.py                             |  28 +++
+ tests/item6/test_frozen_config.py                  |  40 ++--
+ tools/freeze_item6_config.py                       |  29 ++-
+ 9 files changed, 413 insertions(+), 19 deletions(-)
+c53b3d3a7f618a64f77ba6d5233d4b0625d905e5 fix(item6): audit YUNG replacement defaults
+
+ docs/items/Item-6-Baseline-Configuration-Audit.md  |   4 +-
+ .../atomic-02-yung-replacements-green.txt          |   6 ++
+ evidence/item-6/config-audit.json                  | 112 +++++++++++++++++++--
+ tests/item6/test_frozen_config.py                  |  19 ++++
+ 4 files changed, 131 insertions(+), 10 deletions(-)
+8b4173f80da250a787420dc211900ff71fbce56e fix(item6): audit Better Desert Temples placement
+
+ docs/items/Item-6-Baseline-Configuration-Audit.md  | 10 +++-
+ .../atomic-03a-betterdeserttemples-green.txt       | 14 +++++
+ evidence/item-6/config-audit.json                  | 50 +++++++++++++++-
+ tests/item6/test_frozen_config.py                  | 67 ++++++++++++++++++++++
+ 4 files changed, 135 insertions(+), 6 deletions(-)
+6e18b70a04b4ae22b1a549b906c2446070ffd670 fix(item6): audit Better Dungeons placement
+
+ docs/items/Item-6-Baseline-Configuration-Audit.md  |   6 +-
+ .../completion/atomic-03b-betterdungeons-green.txt |   6 +
+ evidence/item-6/config-audit.json                  | 240 ++++++++++++++++++++-
+ tests/item6/test_frozen_config.py                  |   1 +
+ 4 files changed, 248 insertions(+), 5 deletions(-)
+26a6d6fcf80823fd5c97bad9427c10b5cfcd452f fix(item6): audit Better Nether Fortresses placement
+
+ docs/items/Item-6-Baseline-Configuration-Audit.md  |  4 +-
+ .../atomic-03c-betterfortresses-green.txt          |  6 +++
+ evidence/item-6/config-audit.json                  | 50 ++++++++++++++++++++--
+ tests/item6/test_frozen_config.py                  |  1 +
+ 4 files changed, 56 insertions(+), 5 deletions(-)
+4b52609efe6fcc82c8144bba17cb485fd10901ca fix(item6): audit Better Jungle Temples placement
+
+ docs/items/Item-6-Baseline-Configuration-Audit.md  |  4 +-
+ .../atomic-03d-betterjungletemples-green.txt       |  6 +++
+ evidence/item-6/config-audit.json                  | 50 ++++++++++++++++++++--
+ tests/item6/test_frozen_config.py                  |  1 +
+ 4 files changed, 56 insertions(+), 5 deletions(-)
+4bc0e69ca88ee696be5fe51b3c01c50d68840ca3 fix(item6): audit Better Mineshafts placement
+
+ docs/items/Item-6-Baseline-Configuration-Audit.md  |   4 +-
+ .../atomic-03e-bettermineshafts-green.txt          |   6 +
+ evidence/item-6/config-audit.json                  | 232 ++++++++++++++++++++-
+ tests/item6/test_frozen_config.py                  |   1 +
+ 4 files changed, 238 insertions(+), 5 deletions(-)
+ba154748ff40cf78c2031939fc60780d8e706cfd fix(item6): audit Better Ocean Monuments placement
+
+ docs/items/Item-6-Baseline-Configuration-Audit.md  |  4 +-
+ .../atomic-03f-betteroceanmonuments-green.txt      |  6 +++
+ evidence/item-6/config-audit.json                  | 50 ++++++++++++++++++++--
+ tests/item6/test_frozen_config.py                  |  1 +
+ 4 files changed, 56 insertions(+), 5 deletions(-)
+ffc3149487da58af4f3ab83388d31958b6ca9e52 fix(item6): audit Better Strongholds placement
+
+ docs/items/Item-6-Baseline-Configuration-Audit.md  |  4 +-
+ .../atomic-03g-betterstrongholds-green.txt         |  6 +++
+ evidence/item-6/config-audit.json                  | 50 ++++++++++++++++++++--
+ tests/item6/test_frozen_config.py                  |  1 +
+ 4 files changed, 56 insertions(+), 5 deletions(-)
+f05bb3f02a5af10aa5fdea7dd3959dc0c3ffe400 fix(item6): audit Better Witch Huts placement
+
+ docs/items/Item-6-Baseline-Configuration-Audit.md  |  6 +-
+ .../completion/atomic-03-yung-placement-green.txt  |  6 ++
+ .../atomic-03h-betterwitchhuts-green.txt           |  6 ++
+ evidence/item-6/config-audit.json                  | 92 +++++++++++++++++++++-
+ tests/item6/test_frozen_config.py                  |  3 +-
+ 5 files changed, 106 insertions(+), 7 deletions(-)
+08e84113c91e8152f80c1224adcdde417891522f docs(item6): classify auxiliary YUNG surfaces
+
+ docs/items/Item-6-Baseline-Configuration-Audit.md  |  4 +++-
+ .../completion/atomic-04-yung-auxiliary-green.txt  |  6 ++++++
+ evidence/item-6/config-audit.json                  | 23 +++++++++++++++++-----
+ 3 files changed, 27 insertions(+), 6 deletions(-)
+5d24ded7c19c861d1a77bb8e28ab9998a5cb0a56 fix(item6): bind audit values to frozen sources
+
+ .../completion/atomic-06-value-binding-green.txt   |    9 +
+ evidence/item-6/config-audit.json                  | 1838 ++++++++++++++++++--
+ tests/item6/test_frozen_config.py                  |   19 +-
+ tests/item6/test_value_binding.py                  |  193 ++
+ tools/freeze_item6_config.py                       |  167 +-
+ 5 files changed, 2056 insertions(+), 170 deletions(-)
+2fac6d0e65d3a91d7b4738a4d0294689423122be fix(item6): reject repeated wildcard source lines
+
+ .../completion/task-3-review-fix-cleanup.txt       |   9 ++
+ .../item-6/completion/task-3-review-fix-green.txt  |  30 +++++
+ .../item-6/completion/task-3-review-fix-red.txt    |  22 ++++
+ .../completion/task-3-second-review-cleanup.txt    |  12 ++
+ .../completion/task-3-second-review-green.txt      | 140 +++++++++++++++++++++
+ .../item-6/completion/task-3-second-review-red.txt |  23 ++++
+ tests/item6/test_value_binding.py                  |  34 +++++
+ tools/freeze_item6_config.py                       |   3 +
+ 8 files changed, 273 insertions(+)
+5b68f5cf2954bc9bfe0389de73c94cd07e00a356 test(item6): retain worktree isolation receipts
+
+ .../completion/task-1-preserved-untracked.txt      | 36 ++++++++++++++++
+ evidence/item-6/completion/task-1-worktree.txt     | 50 ++++++++++++++++++++++
+ 2 files changed, 86 insertions(+)
+46238b4992c86af276bd6e8c62483789409d31b9 test(item6): retain accounting closure receipts
+
+ evidence/item-6/completion/task-2-accounting-green.txt |  8 ++++++++
+ evidence/item-6/completion/task-2-cleanup.txt          | 13 +++++++++++++
+ 2 files changed, 21 insertions(+)
+d33ceb121aeb4311a53c1a14496ef48f513264e5 test(item6): retain value-binding verification receipts
+
+ .../item-6/completion/task-3-characterization.txt  |    3 +
+ evidence/item-6/completion/task-3-cleanup.txt      |   58 +
+ evidence/item-6/completion/task-3-cli.txt          |    2 +
+ .../completion/task-3-task2-compatibility-red.txt  |  439 +++
+ .../completion/task-3-value-binding-error.txt      |   40 +
+ .../completion/task-3-value-binding-green.txt      |   70 +
+ .../item-6/completion/task-3-value-binding-red.txt | 3626 ++++++++++++++++++++
+ 7 files changed, 4238 insertions(+)
+
+Script done on 2026-09-04 00:16:12+02:00 [COMMAND_EXIT_CODE="0"]

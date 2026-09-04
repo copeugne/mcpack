@@ -1,0 +1,22 @@
+$ uv run pytest -q tests/item6/test_value_binding.py -k duplicate_wildcard_observation
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________ test_validator_rejects_duplicate_wildcard_observation _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-54/test_validator_rejects_duplica0')
+
+    def test_validator_rejects_duplicate_wildcard_observation(tmp_path: Path) -> None:
+        audit = deepcopy(AUDIT_DATA)
+        setting = audit["settings"][0]
+        setting["key"] = "spreadFactor.*"
+        observation = setting["evidence"]["observations"][0]
+        setting["evidence"]["observations"].append(deepcopy(observation))
+
+>       with pytest.raises(ValueError, match="wildcard setting evidence repeats a source leaf"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/item6/test_value_binding.py:107: Failed
+=========================== short test summary info ============================
+FAILED tests/item6/test_value_binding.py::test_validator_rejects_duplicate_wildcard_observation
+1 failed, 236 deselected in 0.04s

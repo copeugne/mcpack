@@ -1,0 +1,7 @@
+Scenario: capture requires a real instance, config, defaultconfigs, world, world/serverconfig, and server.properties before target creation.
+Invocation: uv run pytest tests/item6/test_capture_contract.py -q
+Observed: exit 0. 20 passed in 0.18s.
+Adjacent regression: uv run pytest tests/item6 -q
+Observed: exit 0. 320 passed in 4.08s.
+Quality: uv run ruff format --check src/mcpack_evidence/item6_capture.py tests/item6/test_capture_contract.py tests/item6/test_frozen_config.py; uv run ruff check src/mcpack_evidence/item6_capture.py tests/item6/test_capture_contract.py tests/item6/test_frozen_config.py; uv run basedpyright src/mcpack_evidence/item6_capture.py tests/item6/test_capture_contract.py tests/item6/test_frozen_config.py
+Observed: all commands exited 0. basedpyright reported 0 errors, 0 warnings, 0 notes.

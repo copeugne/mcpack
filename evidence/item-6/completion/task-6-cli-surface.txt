@@ -1,0 +1,6 @@
+Scenario: public capture CLI accepts a complete real source instance and rejects an incomplete one before creating output.
+Invocation: uv run python tools/freeze_item6_config.py capture --instance <complete fixture> --output <absent target>
+Observed: exit 0. The captured inventory contained 228 files, with server.properties at the root.
+Invocation: uv run python tools/freeze_item6_config.py capture --instance <empty real directory> --output <absent target>
+Observed: nonzero exit with CaptureValidationError: required directory must be a real non-symlink directory: config. The invalid output target was absent.
+The direct CLI output is recorded by this durable receipt.

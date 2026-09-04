@@ -1,0 +1,54 @@
+FF...                                                                    [100%]
+=================================== FAILURES ===================================
+________________ test_file_accounting_uses_canonical_rationales ________________
+
+    def test_file_accounting_uses_canonical_rationales() -> None:
+        # Given: the committed Item 6 file-accounting classifications.
+        rationales = {
+            row["classification"]: row.get("rationale") for row in AUDIT_DATA["file_accounting"]
+        }
+
+        # When/Then: each classification states its stable, machine-enforced scope rule.
+>       assert rationales == RATIONALES
+E       AssertionError: assert {'audited': N...-scope': None} == {'audited': '...m 6 systems.'}
+E
+E         Differing items:
+E         {'audited': None} != {'audited': 'Audited paths control or directly inform Item 6 named systems, settings, or findings.'}
+E         {'out-of-scope': None} != {'out-of-scope': 'Out-of-scope paths are preserved and identity-checked but do not control required Item 6 systems.'}
+E         Use -v to get more diff
+
+tests/item6/test_file_accounting_rationale.py:32: AssertionError
+______ test_validator_rejects_invalid_file_accounting_rationale[missing] _______
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-257/test_validator_rejects_invalid0')
+mutation = 'missing'
+
+    @pytest.mark.parametrize("mutation", ["missing", "blank", "unknown", "altered"])
+    def test_validator_rejects_invalid_file_accounting_rationale(
+        tmp_path: Path, mutation: Mutation
+    ) -> None:
+        # Given: one committed file-accounting rationale is invalidated.
+        audit = deepcopy(AUDIT_DATA)
+        row = audit["file_accounting"][0]
+        match mutation:
+            case "missing":
+                row.pop("rationale", None)
+            case "blank":
+                row["rationale"] = ""
+            case "unknown":
+                row["rationale"] = "not a canonical scope rule"
+            case "altered":
+                row["rationale"] = RATIONALES["audited"].replace("directly", "indirectly")
+            case unreachable:
+                assert_never(unreachable)
+
+        # When/Then: strict validation rejects omissions, blanks, unknowns, and semantic drift.
+>       with pytest.raises((ValueError, KeyError)):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>)
+
+tests/item6/test_file_accounting_rationale.py:56: Failed
+=========================== short test summary info ============================
+FAILED tests/item6/test_file_accounting_rationale.py::test_file_accounting_uses_canonical_rationales
+FAILED tests/item6/test_file_accounting_rationale.py::test_validator_rejects_invalid_file_accounting_rationale[missing]
+2 failed, 3 passed in 0.15s

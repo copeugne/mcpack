@@ -1,0 +1,17 @@
+Item 6 Task 4, extraction characterization
+
+Scenario: the committed frozen tree is checked through the extracted manifest parser and inventory validator.
+Invocation:
+  uv run pytest -q tests/item6/test_manifest_contract.py tests/item6/test_frozen_config.py tests/item6/test_tool_facade.py
+  uv run python tools/freeze_item6_config.py validate --root evidence/item-6/frozen --manifest evidence/item-6/generated-config-manifest.json --audit evidence/item-6/config-audit.json
+  uv run ruff format --check src/mcpack_evidence/item6_manifest.py src/mcpack_evidence/item6_validation.py tests/item6/test_manifest_contract.py
+  uv run ruff check src/mcpack_evidence/item6_manifest.py src/mcpack_evidence/item6_validation.py tools/freeze_item6_config.py tests/item6/test_manifest_contract.py tests/item6/test_frozen_config.py tests/item6/test_tool_facade.py
+  uv run basedpyright src/mcpack_evidence/item6_manifest.py src/mcpack_evidence/item6_validation.py tools/freeze_item6_config.py tests/item6/test_manifest_contract.py tests/item6/test_frozen_config.py tests/item6/test_tool_facade.py
+
+Binary observables:
+  15 passed
+  validated Item 6 frozen configuration and audit
+  All checks passed!
+  0 errors, 0 warnings, 0 notes
+
+Scope: behavior-preserving extraction only. The manifest contract had not yet been tightened.

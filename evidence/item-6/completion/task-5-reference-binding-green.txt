@@ -1,0 +1,21 @@
+Scenario: repository-reference boundary after implementation
+Invocation: uv run pytest -q tests/item6/test_receipt_binding.py
+Binary observable: all reference confinement, regular-file, retained-count, and retained-digest cases pass
+Result: GREEN, 13 passed in 0.22s.
+
+Scenario: real Item 6 validation CLI
+Invocation: uv run python tools/freeze_item6_config.py validate --root evidence/item-6/frozen --manifest evidence/item-6/generated-config-manifest.json --audit evidence/item-6/config-audit.json
+Binary observable: exit code 0 and exact success message
+Result: PASS, validated Item 6 frozen configuration and audit.
+
+Quality gates:
+- uv run ruff format --check on changed Python paths: PASS, 5 files already formatted.
+- uv run ruff check on changed Python paths: PASS, all checks passed.
+- uv run basedpyright on changed Python paths: PASS, 0 errors, 0 warnings, 0 notes.
+- git diff --check: PASS.
+
+Immutable evidence identity check:
+- generated-config-manifest.json: 1db06570e4dd9531c5d8ce14ac4bbd2591618c8198cc76c7bc625dea5829fdbd
+- config-audit.json: 63856186c105460846f30eb284766f7900c35f05c9079405215b00608b920853
+- first-boot-lifecycle.json: f0b449fe1fa8fcca06228606600877f269999b680581d7a0be372f2e92b25238
+- materialization.json: 1dbd93089259e84062bf4bd91f5ac67bff48e981022c88d66f65191e0d8306a4

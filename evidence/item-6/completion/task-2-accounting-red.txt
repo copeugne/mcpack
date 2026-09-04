@@ -1,0 +1,74 @@
+FFFFF                                                                    [100%]
+=================================== FAILURES ===================================
+___________ test_yung_replacement_configs_are_audited_with_settings ____________
+
+    def test_yung_replacement_configs_are_audited_with_settings() -> None:
+        audit = load_audit()
+        yung = next(row for row in audit["systems"] if row["system"] == "YUNG structure systems")
+        setting_files = {row["file"] for row in audit["settings"]}
+>       assert YUNG_REPLACEMENT_FILES <= set(yung["files"])
+E       AssertionError: assert {'config/bett...ge-1_21.toml'} <= {'config/bett...ge-1_21.toml'}
+E
+E         Extra items in the left set:
+E         'config/betteroceanmonuments-neoforge-1_21.toml'
+E         'config/betterfortresses-neoforge-1_21.toml'
+E         'config/betterdeserttemples-neoforge-1_21.toml'
+E         'config/betterjungletemples-neoforge-1_21.toml'
+E         'config/betterwitchhuts-neoforge-1_21.toml'
+E         'config/bettermineshafts-neoforge-1_21.toml'
+
+tests/item6/test_frozen_config.py:86: AssertionError
+__________ test_yung_cristellib_provider_pairs_are_audited_and_cited ___________
+
+    def test_yung_cristellib_provider_pairs_are_audited_and_cited() -> None:
+        audit = load_audit()
+        yung = next(row for row in audit["systems"] if row["system"] == "YUNG structure systems")
+        audited = next(
+            set(row["files"])
+>           for row in audit["file_accounting"]
+                       ^^^^^^^^^^^^^^^^^^^^^^^^
+            if row["classification"] == "audited"
+        )
+E       KeyError: 'file_accounting'
+
+tests/item6/test_frozen_config.py:95: KeyError
+________________ test_validator_rejects_missing_file_accounting ________________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-11/test_validator_rejects_missing0')
+
+    def test_validator_rejects_missing_file_accounting(tmp_path: Path) -> None:
+        audit = load_audit()
+>       audit["file_accounting"][1]["files"].pop()
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'file_accounting'
+
+tests/item6/test_frozen_config.py:119: KeyError
+_______________ test_validator_rejects_duplicate_file_accounting _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-11/test_validator_rejects_duplica0')
+
+    def test_validator_rejects_duplicate_file_accounting(tmp_path: Path) -> None:
+        audit = load_audit()
+>       duplicate = audit["file_accounting"][0]["files"][0]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'file_accounting'
+
+tests/item6/test_frozen_config.py:126: KeyError
+___________ test_validator_rejects_yung_out_of_scope_classification ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-11/test_validator_rejects_yung_ou0')
+
+    def test_validator_rejects_yung_out_of_scope_classification(tmp_path: Path) -> None:
+        audit = load_audit()
+>       audited = next(row for row in audit["file_accounting"] if row["classification"] == "audited")
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'file_accounting'
+
+tests/item6/test_frozen_config.py:134: KeyError
+=========================== short test summary info ============================
+FAILED tests/item6/test_frozen_config.py::test_yung_replacement_configs_are_audited_with_settings
+FAILED tests/item6/test_frozen_config.py::test_yung_cristellib_provider_pairs_are_audited_and_cited
+FAILED tests/item6/test_frozen_config.py::test_validator_rejects_missing_file_accounting
+FAILED tests/item6/test_frozen_config.py::test_validator_rejects_duplicate_file_accounting
+FAILED tests/item6/test_frozen_config.py::test_validator_rejects_yung_out_of_scope_classification
+5 failed, 5 deselected in 0.03s

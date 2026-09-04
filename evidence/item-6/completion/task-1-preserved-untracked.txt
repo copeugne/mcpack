@@ -1,0 +1,36 @@
+Task 1 — shared-checkout preservation proof
+Captured: 2026-09-03 (Europe/Paris)
+
+Before worktree creation (captured after the required fetch and before `worktree add`)
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack status --short
+Observable:
+?? .codegraph
+?? .omo/
+?? CLAUDE.md
+?? mcpack-reconstructed-28(1).bundle
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack diff --stat
+Observable: empty output.
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack diff --cached --stat
+Observable: empty output.
+
+After worktree creation
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack status --short
+Observable:
+?? .codegraph
+?? .omo/
+?? CLAUDE.md
+?? mcpack-reconstructed-28(1).bundle
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack diff --quiet
+Observable: exit 0; tracked diff empty.
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack diff --cached --quiet
+Observable: exit 0; staged diff empty.
+
+Required preservation assertions (after)
+Invocation: inspect `git status --short` paths and exact-match each required top-level entry.
+Observable:
+PASS: ?? .codegraph
+PASS: ?? .omo/
+PASS: ?? CLAUDE.md
+PASS: ?? mcpack-reconstructed-28(1).bundle
+
+Result: shared checkout retained all four required untracked entries and has no tracked or staged diff. No stash, clean, reset, switch, delete, stage, or commit was used.

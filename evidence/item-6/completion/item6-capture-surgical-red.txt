@@ -1,0 +1,5 @@
+Scenario: capture replaces only the verified `/validator/if/password` JSON string bytes and rejects unsafe source JSON before output.
+Invocation: uv run pytest -q tests/item6/test_capture_contract.py -k surgically
+Binary observable: the captured configuration differs only at the target token; malformed, non-string, duplicate, nonstandard constant, and overflow input leave no output or receipt.
+Result before implementation: FAIL — 6 failed because whole-document Pydantic reserialization changed unrelated bytes and accepted NaN, Infinity, -Infinity, overflow, and an ambiguous target duplicate.
+Scope-reduction RED: after adding escaped-key and second lexical-password cases, the custom walker failed `2` cases because it could not fail closed on lexical ambiguity.

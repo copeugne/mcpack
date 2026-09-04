@@ -284,22 +284,26 @@ The authoritative local pristine baseline is `instances/pristine-baseline-v0` pl
 ### 5.5 Item 6 configuration audit status
 
 **Status: `COMPLETE`**
-The pristine baseline has three NeoForge-generated TOML files, generated `server.properties`, the explicitly authorized EULA, and the construction-only `-Xms1G/-Xmx4G` heap. The three TOMLs exactly match an independent clean boot; server properties match after ignoring only the generated timestamp. `mods/`, `defaultconfigs/`, and world datapacks are empty. All requested candidate config surfaces are explicitly absent, and no value was changed. Evidence: `Item-6-Baseline-Configuration-Audit.md` and `evidence/config-audit/item6-pristine-config-audit.json`.
+The exact retained stack contains 136 JARs under Minecraft 1.21.1, NeoForge 21.1.249, and Eclipse Temurin 21.0.12.1+1-LTS. A clean ordinary seed-42 lifecycle reached readiness, confirmed `save-all flush`, stopped cleanly, and returned zero. Materialization records the matching retained-manifest identity, no production state, and removal of the copied world before generation.
+
+The frozen baseline contains exactly 228 configuration paths: 4 installation, 223 first-startup, 1 world-creation, and 0 shutdown-only. Its audit accounts for every path exactly once: 88 audited and 140 explicitly out of scope. It records 29 systems, 105 legacy setting rows, 44 grouped surfaces with 1,874 grouped leaves, and 7 findings under manifest schema v2. One generated web-validator credential is replaced at capture by an explicit sentinel and bound through `evidence/item-6/config-sanitization.json`; this is evidence-safety redaction, not tuning, and the other 227 frozen paths remain byte-identical. The validator rejects an identity mismatch, a malformed or noncanonical lifecycle/materialization receipt, a path escape or symlinked reference, a linked output parent, an unexplained manifest path, unknown fields, value or rationale mismatches, semantic audit inconsistencies, and a noncanonical manifest contract. Capture also fails before output creation for a missing, wrong-type, or symlinked required source, including nested source-tree symlinks.
+
+No configuration was tuned. The frozen configuration, machine-readable audit, lifecycle and materialization receipts, and completion records are retained under `evidence/item-6/`; the narrative report is `docs/items/Item-6-Baseline-Configuration-Audit.md`. This establishes the unchanged baseline needed by Item 7 and does not claim Item 7 terrain observations or later item results.
 
 ### 5.6 Item 7 worldgen-control status
 
-**Status: `COMPLETE`**
-Two final runs independently restored all four seed snapshots, sampled 50 stable-height/biome points per seed, saved and stopped twice per seed, and produced zero relevant generation problem lines. Every one of the 200 raw samples and every derived statistic repeated exactly. Named terrain/biome/structure candidates are absent and no compatibility claim is inferred. Evidence: `Item-7-Baseline-Worldgen-Audit.md` and `evidence/worldgen/item7-terrain-repeat-verification.json`.
+**Status: `BLOCKED` - previously complete; raw reproducibility evidence lost**
+The surviving report records that two final runs independently restored all four seed snapshots, sampled 50 stable-height/biome points per seed, saved and stopped twice per seed, and produced zero relevant generation problem lines. It also records that all 200 raw samples and derived statistics repeated exactly, with named terrain, biome, and structure candidates absent and no compatibility claim inferred. The report survives as `Item-7-Baseline-Worldgen-Audit.md`, but the referenced raw samples and `evidence/worldgen/item7-terrain-repeat-verification.json` do not. Item 7 must be reconstructed and rerun before its reproducibility exit gate may return to `COMPLETE`.
 
 ### 5.7 Item 8 structure-inventory status
 
-**Status: `COMPLETE`**
-Pinned runtime bytecode proves 34 structure registry entries, 34 exact biome-tag bindings and 20 placement sets. The full inventory groups all entries exactly once into 21 gameplay families and records every requested raw attribute. Every declared loot source resolves in the embedded vanilla data pack. Tentative mod families are explicitly absent. Evidence: `Item-8-Baseline-Structure-Inventory.md`, `structure-inventory/vanilla-1.21.1-structure-families.json`, and `evidence/structure-inventory/item8-registry-verification.json`.
+**Status: `BLOCKED` - previously complete; source matrix and verification evidence lost**
+The surviving report records 34 structure registry entries, 34 exact biome-tag bindings, and 20 placement sets grouped exactly once into 21 gameplay families. It also records that declared loot sources resolve in the embedded vanilla data pack and that tentative mod families are absent. The report survives as `Item-8-Baseline-Structure-Inventory.md`, but `structure-inventory/vanilla-1.21.1-structure-families.json` and `evidence/structure-inventory/item8-registry-verification.json` do not. Item 8 must be reconstructed and rerun before its reproducibility exit gate may return to `COMPLETE`.
 
 ### 5.8 Item 9 provisional-classification status
 
-**Status: `COMPLETE`**
-All 21 baseline families have exactly one provisional primary category: 4 ambient, 1 civilization, 8 Tier 1, 1 Tier 2, 5 Tier 3 and 2 Tier 4. Mechanical-depth, decoration, repetition, oversizing, value-concentration, discoverability and internal-variant overlap flags are explicit. No baseline family is declared redundant and no final retention decision is made. Evidence: `Item-9-Provisional-Structure-Classification.md` and `evidence/structure-inventory/item9-classification-verification.json`.
+**Status: `BLOCKED` - previously complete; family matrix and verification evidence lost**
+The surviving report records all 21 baseline families with exactly one provisional primary category: 4 ambient, 1 civilization, 8 Tier 1, 1 Tier 2, 5 Tier 3, and 2 Tier 4. It also records explicit mechanical-depth, decoration, repetition, oversizing, value-concentration, discoverability, and internal-variant overlap flags, with no family declared redundant and no final retention decision. The report survives as `Item-9-Provisional-Structure-Classification.md`, but the family matrix and `evidence/structure-inventory/item9-classification-verification.json` do not. Item 9 must be reconstructed after Item 8 before its reproducibility exit gate may return to `COMPLETE`.
 
 ### 5.9 Item 10 structure-density status
 
@@ -435,10 +439,10 @@ This register is additive. More variables will be discovered during artifact ins
 |---:|---|---|---|
 | 1 | Design contract | `COMPLETE` | Binding design contract and Earned Sandbox Freedom Doctrine recorded. |
 | 2 | Freeze original technical baseline | `COMPLETE` | Reconstructed from exact inputs; manifest, configs, archive/overlay, four lifecycle scenarios, clean-room proof, durable retrieval, and pushed/tagged Git receipts pass. |
-| 3 | Compatibility audit | `BLOCKED` | Conclusions survive in the ledger, but source inventory and audit evidence must be reconstructed. |
-| 4 | Controlled test environment | `BLOCKED` | Seed identities survive; snapshots, restore evidence, and environment scripts must be rebuilt. |
-| 5 | Measurement methodology | `BLOCKED` | Method summary survives; protocol, schemas, tools, and validation fixtures must be reconstructed. |
-| 6 | Existing configuration audit | `BLOCKED` | Summary survives; machine evidence and detailed report must be regenerated. |
+| 3 | Compatibility audit | `COMPLETE` | All 190 candidates have explicit dispositions; the 136-candidate retained dedicated-server set passes exact metadata/dependency checks and repeatable lifecycle validation. Evidence: `docs/items/Item-3-Exact-Version-and-Dependency-Audit.md`, `evidence/item-3/`. |
+| 4 | Controlled test environment | `COMPLETE` | Isolated four-seed environment, reproducible materialization, lifecycle validation, and hash-verified backup/restore with restored-world boot pass. Evidence: `docs/items/Item-4-Controlled-Test-Environment-Closure.md`, `evidence/item-4/`. |
+| 5 | Measurement methodology | `COMPLETE` | Strict 24-contract protocol, deterministic analyzer, pinned Temurin pilot, accepted/rejected handling, and cross-artifact hash validation pass. Evidence: `docs/items/Item-5-Measurement-Methodology-Closure.md`, `measurement/item5/`, `evidence/item-5/`. |
+| 6 | Existing configuration audit | `COMPLETE` | Retained 136-JAR stack, 228 manifest paths with 4/223/1/0 stages, exhaustive 88/140 accounting, 29 systems, 105 legacy setting rows, 44 grouped surfaces with 1,874 grouped leaves, 7 findings, lifecycle/materialization receipts, sanitization binding, path and capture fail-closed gates, and `evidence/item-6/` report evidence pass. |
 | 7 | Terrain/worldgen interactions | `BLOCKED` | Results survive only as summaries; raw samples and repeat-verification evidence must be regenerated. |
 | 8 | Structure-family inventory | `BLOCKED` | Inventory summary survives; source matrix and registry verification must be reconstructed. |
 | 9 | Initial structure classification | `BLOCKED` | Classification summary survives; family matrix and validator evidence must be reconstructed. |

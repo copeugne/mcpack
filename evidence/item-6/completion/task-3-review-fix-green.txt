@@ -1,0 +1,30 @@
+$ uv run pytest -q tests/item6/test_value_binding.py -k duplicate_wildcard_observation
+.                                                                        [100%]
+1 passed, 236 deselected in 0.03s
+$ uv run pytest -q tests/item6/test_value_binding.py -k duplicate_wildcard_observation
+.                                                                        [100%]
+1 passed, 236 deselected in 0.02s
+$ uv run pytest -q tests/item6
+........................................................................ [ 29%]
+........................................................................ [ 58%]
+........................................................................ [ 87%]
+................................                                         [100%]
+248 passed in 2.49s
+$ uv run pytest -q tests/item6/test_frozen_config.py -k 'file_accounting or yung'
+......                                                                   [100%]
+6 passed, 5 deselected in 0.05s
+$ uv run python tools/freeze_item6_config.py validate --root evidence/item-6/frozen --manifest evidence/item-6/generated-config-manifest.json --audit evidence/item-6/config-audit.json
+validated Item 6 frozen configuration and audit
+$ uv run ruff format --check tools/freeze_item6_config.py tests/item6/test_value_binding.py
+2 files already formatted
+$ uv run ruff check tools/freeze_item6_config.py tests/item6/test_value_binding.py
+All checks passed!
+$ uv run basedpyright
+0 errors, 0 warnings, 0 notes
+$ no-excuse checker
+no violations in 2 file(s)
+$ git diff --check
+$ validator pure LOC
+tools/freeze_item6_config.py pure_loc=249
+$ frozen/manifest unchanged from 895ed1d
+PASS: frozen tree and manifest unchanged
