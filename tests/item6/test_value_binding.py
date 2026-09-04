@@ -97,6 +97,40 @@ def test_validator_rejects_wildcard_without_explicit_leaf_observations(
         validate(FROZEN, MANIFEST, write_audit(tmp_path, audit))
 
 
+def test_validator_rejects_duplicate_wildcard_observation(tmp_path: Path) -> None:
+    audit = deepcopy(AUDIT_DATA)
+    setting = audit["settings"][0]
+    setting["key"] = "spreadFactor.*"
+    observation = setting["evidence"]["observations"][0]
+    setting["evidence"]["observations"].append(deepcopy(observation))
+
+    with pytest.raises(ValueError, match="wildcard setting evidence repeats a source leaf"):
+        validate(FROZEN, MANIFEST, write_audit(tmp_path, audit))
+
+
+def test_validator_rejects_reframed_wildcard_source_line(tmp_path: Path) -> None:
+    audit = deepcopy(AUDIT_DATA)
+    setting = audit["settings"][0]
+    setting["key"] = "spreadFactor.*"
+    observation = deepcopy(setting["evidence"]["observations"][0])
+    observation["prefix"] = observation["prefix"].rstrip()
+    setting["evidence"]["observations"].append(observation)
+
+    with pytest.raises(ValueError, match="wildcard setting evidence repeats a source leaf"):
+        validate(FROZEN, MANIFEST, write_audit(tmp_path, audit))
+
+
+def test_validator_accepts_distinct_equal_wildcard_source_lines(tmp_path: Path) -> None:
+    audit = deepcopy(AUDIT_DATA)
+    setting = audit["settings"][3]
+    setting["key"] = "minimumStructureDistance.*"
+    setting["evidence"]["observations"].append(
+        {"line": 38, "prefix": '"logOverlaps": ', "suffix": ""}
+    )
+
+    validate(FROZEN, MANIFEST, write_audit(tmp_path, audit))
+
+
 def test_validator_rejects_decoder_that_only_coincidentally_decodes(tmp_path: Path) -> None:
     audit = deepcopy(AUDIT_DATA)
     audit["settings"][0]["evidence"]["decoder"] = "toml"

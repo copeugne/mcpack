@@ -1,0 +1,23 @@
+$ uv run pytest -q tests/item6/test_value_binding.py -k reframed_wildcard_source_line
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_validator_rejects_reframed_wildcard_source_line _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-69/test_validator_rejects_reframe0')
+
+    def test_validator_rejects_reframed_wildcard_source_line(tmp_path: Path) -> None:
+        audit = deepcopy(AUDIT_DATA)
+        setting = audit["settings"][0]
+        setting["key"] = "spreadFactor.*"
+        observation = deepcopy(setting["evidence"]["observations"][0])
+        observation["prefix"] = observation["prefix"].rstrip()
+        setting["evidence"]["observations"].append(observation)
+
+>       with pytest.raises(ValueError, match="wildcard setting evidence repeats a source leaf"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/item6/test_value_binding.py:119: Failed
+=========================== short test summary info ============================
+FAILED tests/item6/test_value_binding.py::test_validator_rejects_reframed_wildcard_source_line
+1 failed, 237 deselected in 0.05s

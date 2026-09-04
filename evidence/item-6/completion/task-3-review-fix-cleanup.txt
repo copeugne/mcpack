@@ -1,0 +1,9 @@
+REVIEW-FIX CLEANUP PRE-COMMIT
+scenario=duplicate wildcard observation identity
+red=validator accepted two identical observations (task-3-review-fix-red.txt)
+green=focused regression passed twice; full Item 6 248 passed; Task 2 YUNG focus 6 passed
+cli=validated Item 6 frozen configuration and audit
+quality=Ruff format/check PASS; basedpyright 0 errors; no-excuse 0 violations; diff check PASS
+baseline=frozen tree and manifest byte-identical to 895ed1d
+cleanup=pytest tmp_path only; no worker-created temp files/directories, process, port, or container remains
+risk=none known; distinct wildcard leaves are compared by exact line/prefix/suffix observation identity

@@ -150,6 +150,9 @@ def validate(  # noqa: C901, PLR0912, PLR0915
             suffix = observation["suffix"]
             if type(line_number) is not int or line_number < 1:
                 raise _AuditValidationError("setting evidence line must be a positive integer")
+            prior_lines = (prior["line"] for prior in observations[:observation_index])
+            if "*" in setting["key"] and line_number in prior_lines:
+                raise _AuditValidationError("wildcard setting evidence repeats a source leaf")
             if line_number > len(lines):
                 raise _AuditValidationError("setting evidence line is out of range")
             if not isinstance(prefix, str) or not isinstance(suffix, str):
