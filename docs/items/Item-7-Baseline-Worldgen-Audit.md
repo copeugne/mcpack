@@ -70,16 +70,16 @@ Unresolved entries remain `UNKNOWN`. The audit does not convert startup success 
 
 ## Durable evidence and restoration
 
-The final raw evidence is split into four immutable release assets under tag `item-7-raw-evidence-2026-09-04-r11`, bound to source revision `4b6d12e6507ecf948edd11bef9033faeea622c81` and annotated tag object `4bd01efe585cdc5a8a26a1b19f688a276fb31d62`:
+The final raw evidence is split into four immutable release assets under tag `item-7-raw-evidence-2026-09-04-r14`, bound to source revision `4497b3f650990f501b594b82e933c40eaf5540ac` and annotated tag object `4b5fefe4a58f310bbd47796772520e6d3288f480`:
 
 | Asset | Files | Raw bytes | Archive bytes | Archive SHA-256 |
 |---|---:|---:|---:|---|
-| Core | 4,618 | 2,515,785,938 | 243,943,142 | `2229673778123d8b7737048610d9c171aea9b49900724acc0f35ac48eed25773` |
+| Core | 4,654 | 2,529,710,394 | 244,910,044 | `1edc8a1a9ac21d9dbf27473933f449ded0e69b125a68cdf621616d7db1f520ce` |
 | Run A worlds | 249 | 484,774,742 | 291,011,199 | `575b8644bb888e2f2c09311f0ba3ac063ea00eda1d51159e0038218a28d96fa7` |
 | Run B worlds | 250 | 484,038,098 | 289,949,293 | `3a82829fa159323ec1844d6f98fdc9ab6b25feab78d15c1b268d2a2692c268ff` |
 | Auxiliary worlds | 217 | 165,166,012 | 48,648,807 | `d865320a9b1d2b44e59eb7d854fa499309746dc71a04b6b8caa46ede2a0c5a25` |
 
-All four archives were restored into absent targets, checked file by file, downloaded twice from the published GitHub release, and rehashed. The committed publication receipt and completion validator bind the release URL, tag, source revision, asset names, sizes, hashes, manifests, restore receipts, and verification tool. The independently constructed world archive inventory also binds all 716 raw Run A, Run B, and auxiliary world files to those manifests. JARs, Minecraft and NeoForge binaries, credentials, `session.lock`, player data, caches, and symlinks are excluded.
+All four archives were restored into absent targets and checked file by file. One fresh download of all four assets from the published GitHub release matched every committed size and SHA-256. The committed publication receipt and completion validator bind the release URL, tag, source revision, asset names, sizes, hashes, manifests, restore receipts, and verification tool. The independently constructed world archive inventory also binds all 716 raw Run A, Run B, and auxiliary world files to those manifests. JARs, Minecraft and NeoForge binaries, credentials, `session.lock`, player data, caches, and symlinks are excluded.
 
 The first release, r2, r3, r4, and r7 remain preserved as historical evidence. The first procedure did not hold Java-compatible world locks and used hardlinks. The r2 procedure added locks and independent copies, but later review proved that its reusable staging and archive implementation still had pathname replacement gaps. r3 proved corrected creation custody, but the later GitHub review found invalid floating-placement and biome-height semantics plus incomplete raw-world binding. r4 preserves r3 outputs as explicitly superseded data, regenerates all 32 analyses and galleries plus all 128 captures with the corrected code, and adds the independent world archive inventory. The exact-SHA review at `5a5623fbe161c3ab1874c8184b8f9f1d0418c9cd` then proved that restore target and receipt publication remained pathname-based. Tags r5 and r6 preserve unpublished failed attempts while that defect and a real descriptor-scan offset defect were corrected. The exact-SHA review at `708478ce925353d8cb64199df0fc47d69df6bdf5` then found pre-validation output-parent creation, two oversized modules, and an incomplete reproduction command. Its rejection is preserved under `evidence/item-7/review/`.
 
@@ -91,9 +91,9 @@ GitHub Codex then rejected revision `fe55d451bf081341101fc541ead992113133ab5b` b
 
 GitHub Codex review `5116118114` later rejected revision `2863f2d01c7446fe757b54593ea311bcacf35adb`. It found that completion did not rebuild the 16 accepted analyses or the complete repeat-comparison receipt from selected JSONL, and that a queued generic save message could satisfy the requested flush in the main, gap, and control state machines. Commits `8345df7`, `d51d176`, and `dbec2ee` fix those three findings with regression tests. Completion now uses the tracked analyzer for complete analysis equality, uses one shared comparator core for both the CLI producer and source rebuild, and requires the post-command `Saving the game` then `Saved the game` sequence.
 
-The retained worlds did not require regeneration. A tracked audit rebuilt all 12 accepted lifecycle console logs and proved that the final work marker precedes save start and save completion. Each observation is bound by byte size and SHA-256 to the core archive manifest. Completion rebuilds and requires this audit. r10 preserved the valid payload and remote publication but is explicitly rejected as final custody because its immutable source tag predates that last completion binding.
+The r11 review proved that uncorrelated server save messages could satisfy the former flush gate. Its lifecycle logs and world bytes remain preserved, but its save-order result is rejected as causal proof. The retained worlds did not require regeneration. The source-bound recovery procedure reopened each of the 12 existing archives under its exact retained runtime identity, verified its complete preboot world inventory byte for byte, issued unique phase markers around `save-all flush`, observed the ordered save messages, and required a clean stop. The resulting v3 audit binds every recovery receipt, source archive inventory, runtime identity, unique marker sequence, and recovery log to the r14 core manifest.
 
-The final r11 archives preserve the same verified payload bytes and bind custody to the complete corrected producer set. All four r11 archives restored into absent targets. Two independent downloads with the tracked repository-bound verifier matched every committed size and SHA-256. The canonical inventory, save-order audit, and completion rebuilds use the r11 restored trees. Rejected review and custody records remain under `evidence/item-7/review/`; a fresh exact-SHA review remains required before delivery.
+The first r12 recovery attempt is rejected. Concurrent processes collided on the configured server port, one otherwise completed recovery exceeded the original post-stop timeout, and interruption left Java process groups that were then explicitly terminated. Commit `a427873` made the existing runner sequential and fail-fast, increased the clean-exit wait to 120 seconds, and guaranteed process-group cleanup. The subsequent r13 recovery completed all 12 archived worlds. The r14 release packages those 36 recovery artifacts with the prior accepted core evidence. The three unchanged world archives retain their r11 asset names because their bytes and SHA-256 values did not change; their r14 manifests bind those unchanged assets to the r14 source revision. Rejected review and custody records remain under `evidence/item-7/review/`; a fresh exact-SHA review remains required before delivery.
 
 ## Reproduction
 
@@ -107,12 +107,12 @@ uv run ruff format --check src/mcpack_evidence/item7_*.py tools/*item7*.py tests
 uv run ruff check src/mcpack_evidence/item7_*.py tools/*item7*.py tests/item7
 uv run basedpyright src/mcpack_evidence/item7_*.py tools/*item7*.py tests/item7
 bash -n tools/stage_item7_raw_evidence.sh
-tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04-r11 evidence/item-7/archive/r11 evidence/item-7/archive/r11/publication.json /home/lonestar/Desktop/Projects/mcpack-item7-r11-release-download-1
+tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04-r14 evidence/item-7/archive/r14 evidence/item-7/archive/r14/publication.json /home/lonestar/Desktop/Projects/mcpack-item7-r14-release-download-1
 ```
 
 The Python quality commands are intentionally scoped to Item 7. They do not claim that unrelated reconstructed later-item tools are clean, and Item 11 tooling remains outside this gate until the required Item 2 through Item 10 cross-item audit passes.
 
-After restoring all four r11 assets, run the tracked `tools/build_item7_completion.py` CLI with `--raw-root` and `--visual-manifest` under the restored r11 core, `--world-archive-inventory evidence/item-7/world-archive-inventory.json`, `--save-sequence-audit evidence/item-7/save-sequence-r11.json`, and the r11 archive manifests, restore receipts, and publication receipt. The remaining protocol, provider, biome-restriction, repeat, warning, and control inputs are the matching tracked or restored-core paths. The exact accepted inventory, save-audit, completion, and two-download invocations are recorded in `evidence/item-7/review/candidate-r11-validation.md`. The completion command returns `PASS`, records 138 artifact identities, and reproduces SHA-256 `ecfef0a93778dc75bc5d0ec3bb11ee1692eb90d55106a0b81483251366ed88ed`. The inventory binds 716 files and reproduces SHA-256 `7907bfd705bb8b1b7e794133e634e59ba1d3a694210353da65193eff7dd79027`. The save audit reproduces SHA-256 `55ef4a83a0c618520f05110c216e66d4915615141ff43fc7a963e6fdb249dd12`.
+After restoring all four r14 assets, run the tracked `tools/build_item7_completion.py` CLI with `--raw-root` and `--visual-manifest` under the restored r14 core, `--world-archive-inventory evidence/item-7/world-archive-inventory.json`, `--save-sequence-audit evidence/item-7/save-sequence-r14.json`, and the r14 archive manifests, restore receipts, and publication receipt. The remaining protocol, provider, biome-restriction, repeat, warning, and control inputs are the matching tracked or restored-core paths. The completion command returns `PASS`, records 138 artifact identities, and reproduces SHA-256 `0ef7c83438ab2a2cfe67eadc858e806ada9c9eecc213d883649ae3e8493cb1d3`. The inventory binds 716 files and reproduces SHA-256 `7907bfd705bb8b1b7e794133e634e59ba1d3a694210353da65193eff7dd79027`. The source-bound v3 save audit covers 12 recoveries and reproduces SHA-256 `087ebb0a5b019fb5138fd6975598176c07495eb81954f0d4bc4ce524502893b3`.
 
 ## Evidence index
 
@@ -123,11 +123,11 @@ After restoring all four r11 assets, run the tracked `tools/build_item7_completi
 - `evidence/item-7/visual/integrity-review.json`
 - `evidence/item-7/visual/fidelity-review.json`
 - `evidence/item-7/visual/rejected-attempts.json`
-- `evidence/item-7/archive/r11/`
-- `evidence/item-7/save-sequence-r11.json`
+- `evidence/item-7/archive/r14/`
+- `evidence/item-7/save-sequence-r14.json`
 - `evidence/item-7/review/`
 - `evidence/item-7/completion.json`
-- GitHub release `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04-r11`
+- GitHub release `https://github.com/copeugne/mcpack/releases/tag/item-7-raw-evidence-2026-09-04-r14`
 
 ## Superseded historical control
 
