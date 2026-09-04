@@ -11,6 +11,47 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
+def supplementaries_tag_inputs(
+    config: dict[str, JsonValue], evidence: dict[str, str]
+) -> dict[str, JsonValue]:
+    """Derive the two inspected dynamic tags, including parent feature toggles."""
+    paths = {
+        "supplementaries:has_road_signs": (
+            "minecraft:is_overworld",
+            ("building.way_sign.enabled", "building.way_sign.road_signs.enabled"),
+        ),
+        "supplementaries:has_galleons": (
+            "minecraft:is_ocean",
+            (
+                "functional.cannon.enabled",
+                "functional.cannon.plunderer.enabled",
+                "functional.cannon.plunderer.galleon",
+            ),
+        ),
+    }
+    result: dict[str, JsonValue] = {}
+    for identifier, (target, switches) in paths.items():
+        enabled = True
+        for path in switches:
+            value: JsonValue = config
+            for part in path.split("."):
+                if not isinstance(value, dict) or part not in value:
+                    message = f"missing Supplementaries feature setting: {path}"
+                    raise ValueError(message)
+                value = value[part]
+            if type(value) is not bool:
+                message = f"non-boolean Supplementaries feature setting: {path}"
+                raise TypeError(message)
+            enabled = enabled and value
+        result[identifier] = {
+            "sources": [{"kind": "derived_dynamic_tag", "evidence": dict(evidence)}],
+            "values": [f"#{target}"] if enabled else [],
+            "unresolved": [],
+            "feature_settings": cast("JsonValue", list(switches)),
+        }
+    return result
+
+
 def structure_biomes(
     registry: tuple[str, ...],
     resources: list[JsonValue],

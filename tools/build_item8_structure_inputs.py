@@ -6,10 +6,11 @@ import argparse
 import gzip
 import hashlib
 import json
+import tomllib
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
-from mcpack_evidence.item8_biomes import structure_biomes
+from mcpack_evidence.item8_biomes import structure_biomes, supplementaries_tag_inputs
 from mcpack_evidence.item8_inventory import biome_tag_inputs, size_variant_groups, structure_inputs
 from mcpack_evidence.item8_registry import read_registry
 
@@ -25,6 +26,14 @@ REGISTRY_PATH = (
 REGISTRY_SHA256 = "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
 BIOMES_PATH = "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_biome.txt"
 BIOMES_SHA256 = "0970c5296980495640901e3ba7fd44fa90e97da4774900368fa924a263446713"
+SUPPLEMENTARIES_CONFIG = "evidence/item-6/frozen/config/supplementaries-common.toml"
+SUPPLEMENTARIES_CODE = "evidence/item-8/sources/supplementaries-tags-code/identities.json"
+CONTEXT = "evidence/item-8/runtime/registry-r1/world-context.json"
+DYNAMIC_INPUTS = {
+    SUPPLEMENTARIES_CONFIG: "14210291891759b831951eba24c65985ed5bd27a7d09b6383aeb9fd3e8f1bc8c",
+    SUPPLEMENTARIES_CODE: "1b6470427cc06bc41e6d3e690b0475568c0ef274d1101ea05a912eeb87edc30d",
+    CONTEXT: "0615a2dcdeb2120a467648df95f69aa9f1ef53e8989ae8c2191028d6f5c1aca2",
+}
 
 
 def main() -> None:
@@ -36,11 +45,24 @@ def main() -> None:
         SOURCE_PATH: SOURCE_SHA256,
         REGISTRY_PATH: REGISTRY_SHA256,
         BIOMES_PATH: BIOMES_SHA256,
+        **DYNAMIC_INPUTS,
     }
     for relative, digest in inputs.items():
         if hashlib.sha256((ROOT / relative).read_bytes()).hexdigest() != digest:
             message = f"source identity mismatch: {relative}"
             raise ValueError(message)
+    code = cast("list[dict[str, str]]", json.loads((ROOT / SUPPLEMENTARIES_CODE).read_bytes()))
+    for row in code:
+        relative = str(Path(SUPPLEMENTARIES_CODE).parent / row["disassembly"])
+        if hashlib.sha256((ROOT / relative).read_bytes()).hexdigest() != row["disassembly_sha256"]:
+            message = f"dynamic tag code identity mismatch: {relative}"
+            raise ValueError(message)
+        inputs[relative] = row["disassembly_sha256"]
+    context = cast("dict[str, JsonValue]", json.loads((ROOT / CONTEXT).read_bytes()))
+    packs = cast("dict[str, JsonValue]", context["DataPacks"])
+    if "supplementaries:generated_pack" not in cast("list[str]", packs["Enabled"]):
+        message = "captured runtime does not enable Supplementaries generated resources"
+        raise ValueError(message)
     catalog = cast(
         "dict[str, JsonValue]", json.loads(gzip.decompress((ROOT / SOURCE_PATH).read_bytes()))
     )
@@ -52,6 +74,14 @@ def main() -> None:
     result = structure_inputs(registry, resources)
     result["size_variant_groups"] = size_variant_groups(registry, resources)
     tags = biome_tag_inputs(resources)
+    config = cast(
+        "dict[str, JsonValue]", tomllib.loads((ROOT / SUPPLEMENTARIES_CONFIG).read_text())
+    )
+    dynamic_tags = supplementaries_tag_inputs(config, DYNAMIC_INPUTS)
+    if tags.keys() & dynamic_tags.keys():
+        message = "dynamic biome tags now have packaged competitors; resolve precedence"
+        raise ValueError(message)
+    tags.update(dynamic_tags)
     result["biome_tags"] = tags
     constraints = structure_biomes(
         registry, resources, tags, frozenset(read_registry(ROOT / BIOMES_PATH))
@@ -63,7 +93,9 @@ def main() -> None:
     resolved = sum(
         isinstance(row, dict) and row["biomes"] is not None for row in constraints.values()
     )
-    print(f"Packaged biome constraints: {resolved} resolved of {len(constraints)} registry IDs")
+    print(
+        f"Source-derived biome constraints: {resolved} resolved of {len(constraints)} registry IDs"
+    )
 
 
 if __name__ == "__main__":

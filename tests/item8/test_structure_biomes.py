@@ -4,7 +4,11 @@ from typing import TYPE_CHECKING
 
 import pytest
 
-from mcpack_evidence.item8_biomes import biome_constraint, structure_biomes
+from mcpack_evidence.item8_biomes import (
+    biome_constraint,
+    structure_biomes,
+    supplementaries_tag_inputs,
+)
 
 if TYPE_CHECKING:
     from pydantic import JsonValue
@@ -49,3 +53,28 @@ def test_registered_structure_requires_unique_definition_and_complete_coverage()
         _ = structure_biomes(("example:tower",), [row, row], {}, registered)
     with pytest.raises(ValueError, match="lacks"):
         _ = structure_biomes(("example:tower",), [], {}, registered)
+
+
+@pytest.mark.parametrize("parents_enabled", [True, False])
+def test_dynamic_tags_require_parent_features_and_publish_empty_tags_when_disabled(
+    parents_enabled: bool,
+) -> None:
+    config: dict[str, JsonValue] = {
+        "building": {"way_sign": {"enabled": parents_enabled, "road_signs": {"enabled": True}}},
+        "functional": {
+            "cannon": {
+                "enabled": parents_enabled,
+                "plunderer": {"enabled": True, "galleon": True},
+            }
+        },
+    }
+    tags = supplementaries_tag_inputs(config, {"config": "a" * 64})
+    registered = frozenset({"minecraft:plains", "minecraft:ocean"})
+    tags["minecraft:is_overworld"] = {"values": ["minecraft:plains"], "unresolved": []}
+    tags["minecraft:is_ocean"] = {"values": ["minecraft:ocean"], "unresolved": []}
+    assert biome_constraint("#supplementaries:has_road_signs", tags, registered)["biomes"] == (
+        ["minecraft:plains"] if parents_enabled else []
+    )
+    assert biome_constraint("#supplementaries:has_galleons", tags, registered)["biomes"] == (
+        ["minecraft:ocean"] if parents_enabled else []
+    )
