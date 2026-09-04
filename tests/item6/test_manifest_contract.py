@@ -112,6 +112,29 @@ def test_manifest_contract_rejects_invalid_capture_boundary(tmp_path: Path) -> N
     _assert_manifest_rejected(manifest_path, audit_path, "invalid manifest capture boundary")
 
 
+@pytest.mark.parametrize("identity", ["minecraft", "neoforge", "java"])
+def test_manifest_contract_rejects_changed_runtime_identity(identity: str) -> None:
+    manifest = _committed_manifest()
+    match identity:
+        case "minecraft":
+            manifest["minecraft_version"] = "1.21.2"
+        case "neoforge":
+            manifest["neoforge_version"] = "21.1.250"
+        case "java":
+            manifest["java"] = {
+                "vendor": "Different Vendor",
+                "version": "21.0.12.1",
+                "build": "Temurin-21.0.12.1+1-LTS",
+                "archive_sha256": (
+                    "ce79869e1307ed8ee1e2baa86a412b1eb5b75d10a01006d788a6f968bcfaee94"
+                ),
+            }
+        case unexpected:
+            pytest.fail(f"unexpected runtime identity: {unexpected}")
+    with pytest.raises(ValueError, match="runtime identity does not match"):
+        validate_manifest_contract(manifest)
+
+
 @pytest.mark.parametrize(
     ("anchor", "unexpected_field"),
     [

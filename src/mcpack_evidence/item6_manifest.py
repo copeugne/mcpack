@@ -88,6 +88,14 @@ _STAGES: Final = {"installation", "first_startup", "world_creation", "shutdown"}
 _CAPTURE_BOUNDARY: Final = "after_first_clean_shutdown"
 _SANITIZATION_RECEIPT: Final = "evidence/item-6/config-sanitization.json"
 _SHA256_HEX_LENGTH: Final = 64
+_MINECRAFT_VERSION: Final = "1.21.1"
+_NEOFORGE_VERSION: Final = "21.1.249"
+_JAVA_RUNTIME: Final[JavaRuntime] = {
+    "vendor": "Eclipse Adoptium",
+    "version": "21.0.12.1",
+    "build": "Temurin-21.0.12.1+1-LTS",
+    "archive_sha256": "ce79869e1307ed8ee1e2baa86a412b1eb5b75d10a01006d788a6f968bcfaee94",
+}
 _EXPECTED_STAGE_COUNTS: Final = {
     "installation": 4,
     "first_startup": 223,
@@ -167,6 +175,7 @@ def validate_manifest_contract(manifest: Manifest) -> None:
     """Reject a manifest that is not the deterministic Item 6 capture record."""
     if manifest["schema_version"] != "item6-frozen-config-manifest-v2":
         raise ManifestValidationError("unsupported manifest schema")
+    _validate_runtime_identity(manifest)
     sanitization = manifest["sanitization"]
     if sanitization["receipt"] != _SANITIZATION_RECEIPT:
         raise ManifestValidationError(
@@ -205,3 +214,12 @@ def _require_sha256(value: str, label: str) -> None:
         character not in "0123456789abcdef" for character in value
     ):
         raise ManifestValidationError(f"{label} digest must be a lowercase SHA-256")
+
+
+def _validate_runtime_identity(manifest: Manifest) -> None:
+    if (
+        manifest["minecraft_version"] != _MINECRAFT_VERSION
+        or manifest["neoforge_version"] != _NEOFORGE_VERSION
+        or manifest["java"] != _JAVA_RUNTIME
+    ):
+        raise ManifestValidationError("runtime identity does not match the frozen baseline")
