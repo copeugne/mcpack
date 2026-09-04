@@ -132,3 +132,32 @@ proof of assembly feasibility, generated contents, probabilities, or footprint.
 Optional-pack exclusions remain unresolved where activation has not been proved.
 Custom generation, dynamic injection, processors, aliases and generated-world
 observations still need to be incorporated before assigning family attributes.
+
+## Generated-world piece bounds
+
+`world-bounds.json.gz` retains 792 saved structure starts from the eight Item 7
+`run-a` and `run-b` decoded streams across all four frozen seeds. SHA-256:
+`fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b`.
+Size: 474,504 bytes. Extraction source: `bf623f1`; envelope calculation and direct
+tests: `472a1f7`. The committed-source extraction reproduced its pilot byte for
+byte. Every decoded input is checked against its size and hash in the committed
+Item 7 r14 core archive manifest before reading observations.
+
+After restoring the Item 7 r14 core archive using its existing delivery records:
+
+```sh
+uv run -m tools.extract_item8_world_bounds --core <restored-core-directory> --output evidence/raw/item8/world-bounds-reproduction.json.gz
+cmp evidence/item-8/sources/world-bounds.json.gz evidence/raw/item8/world-bounds-reproduction.json.gz
+```
+
+Rows retain source file and line, run, seed, dimension, chunk coordinates,
+chunk generation status, structure and start IDs, and every decoded piece box.
+The envelope uses the minimum and maximum coordinates across those boxes;
+XYZ sizes include both endpoint blocks. Empty boxes remain null, and reversed
+boxes fail extraction. Repeated runs remain separate observations.
+
+These are saved piece envelopes, not occupied-block volume, generation frequency,
+or proof that every piece has finished placement. The start chunk's full status
+does not establish that all intersecting chunks are full. Structures absent from
+these bounded worlds still need other evidence. Do not interpret sample extrema
+as global size limits or these observations as exploration pacing.
