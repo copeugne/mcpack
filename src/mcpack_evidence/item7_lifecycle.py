@@ -13,7 +13,11 @@ from typing import IO, TYPE_CHECKING, ClassVar, Final, Literal, final
 
 from pydantic import BaseModel, ConfigDict
 
-from mcpack_evidence.item7_console import FlushCorrelation, send_correlated_flush
+from mcpack_evidence.item7_console import (
+    FlushCorrelation,
+    advance_correlated_flush,
+    begin_correlated_flush,
+)
 from mcpack_evidence.item7_output_sequence import OutputSequence, read_output
 from mcpack_evidence.item7_runtime import Item7RuntimeError, WorldgenRequest
 from mcpack_evidence.item7_selections import WorldgenSelection  # noqa: TC001
@@ -199,14 +203,15 @@ def _handle_line(state: _LifecycleState, line: str) -> None:
                 next_selection = state.request.selections[len(state.completed)]
                 state.rejection = _send_selection(state, next_selection)
             else:
-                state.flush_correlation = send_correlated_flush(state.stdin, state.commands)
+                state.flush_correlation = begin_correlated_flush(state.stdin, state.commands)
                 if state.flush_correlation is None:
                     state.rejection = "server console pipe failed"
             return
-    if state.flush_correlation is not None and state.flush_correlation.observe(line):
-        state.flushed = True
-        if not _send(state, "stop"):
-            state.rejection = "server console pipe failed"
+    if state.flush_correlation is not None:
+        flushed, state.rejection = advance_correlated_flush(
+            state.flush_correlation, line, state.stdin, state.commands
+        )
+        state.flushed = state.flushed or flushed
 
 
 def _finish_process(state: _LifecycleState, process: subprocess.Popen[str]) -> int:

@@ -14,7 +14,12 @@ from typing import IO, TYPE_CHECKING, ClassVar, Final, Literal, final
 
 from pydantic import BaseModel, ConfigDict, model_validator
 
-from mcpack_evidence.item7_console import FlushCorrelation, send_command, send_correlated_flush
+from mcpack_evidence.item7_console import (
+    FlushCorrelation,
+    advance_correlated_flush,
+    begin_correlated_flush,
+    send_command,
+)
 from mcpack_evidence.item7_gap_markers import parse_completion
 from mcpack_evidence.item7_output_sequence import OutputSequence, read_output
 from mcpack_evidence.item7_runtime import Item7RuntimeError, WorldgenRequest
@@ -217,13 +222,15 @@ def _observe(stdin: IO[str], line: str, state: _State) -> None:
                 stdin, state.commands, state.located[len(state.completed)]
             )
         else:
-            state.flush_correlation = send_correlated_flush(stdin, state.commands)
+            state.flush_correlation = begin_correlated_flush(stdin, state.commands)
             if state.flush_correlation is None:
                 state.rejection = "server console pipe failed"
         return
-    if state.flush_correlation is not None and state.flush_correlation.observe(line):
-        state.flushed = True
-        state.rejection = send_command(stdin, state.commands, "stop")
+    if state.flush_correlation is not None:
+        flushed, state.rejection = advance_correlated_flush(
+            state.flush_correlation, line, stdin, state.commands
+        )
+        state.flushed = state.flushed or flushed
 
 
 def _locate_command(target: GapTarget) -> str:

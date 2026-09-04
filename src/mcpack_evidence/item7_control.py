@@ -17,7 +17,12 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from mcpack_evidence.item6_capture import capture
 from mcpack_evidence.item7_config import FROZEN_FILE_COUNT, ConfigCaptureReceipt, RuntimeConfigDrift
-from mcpack_evidence.item7_console import FlushCorrelation, send_command, send_correlated_flush
+from mcpack_evidence.item7_console import (
+    FlushCorrelation,
+    advance_correlated_flush,
+    begin_correlated_flush,
+    send_command,
+)
 from mcpack_evidence.item7_output_sequence import OutputSequence, read_output
 from mcpack_evidence.item7_runtime import (
     Item7RuntimeError,
@@ -169,12 +174,14 @@ def _drive(  # noqa: C901
                 state.rejection = "control settling exceeded lifecycle timeout"
                 return
             time.sleep(request.settle_seconds)
-            state.flush_correlation = send_correlated_flush(stdin, state.commands)
+            state.flush_correlation = begin_correlated_flush(stdin, state.commands)
             if state.flush_correlation is None:
                 state.rejection = "server console pipe failed"
-        elif state.flush_correlation is not None and state.flush_correlation.observe(line):
-            state.flushed = True
-            state.rejection = send_command(stdin, state.commands, "stop")
+        elif state.flush_correlation is not None:
+            flushed, state.rejection = advance_correlated_flush(
+                state.flush_correlation, line, stdin, state.commands
+            )
+            state.flushed = state.flushed or flushed
 
 
 def _finish(process: subprocess.Popen[str], state: _State) -> int:

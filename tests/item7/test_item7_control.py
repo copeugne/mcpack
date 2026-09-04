@@ -261,7 +261,7 @@ def test_control_lifecycle_rejects_save_confirmation_queued_before_flush_command
     # Then: the stale confirmation cannot complete the requested flush.
     assert receipt.save_all_flush is False
     assert receipt.clean_stop is False
-    assert "save-all flush" in receipt.commands
+    assert receipt.commands[-1].endswith("-before")
 
 
 def test_control_capture_sanitizes_and_rejects_chunky_files(

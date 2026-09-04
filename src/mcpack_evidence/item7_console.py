@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import secrets
 from dataclasses import dataclass
-from typing import IO
+from typing import IO, Literal
+
+type FlushProgress = Literal["pending", "complete", "pipe-failed"]
 
 
 @dataclass(slots=True)
@@ -13,22 +15,23 @@ class FlushCorrelation:
 
     before_marker: str
     after_marker: str
-    before_seen: bool = False
-    save_started: bool = False
-    save_finished: bool = False
+    phase: Literal["before", "saving", "saved", "after"] = "before"
 
-    def observe(self, line: str) -> bool:
-        """Accept only a complete save sequence between the two unique markers."""
-        if not self.before_seen:
-            self.before_seen = self.before_marker in line
-            return False
-        if not self.save_started:
-            self.save_started = "Saving the game" in line
-            return False
-        if not self.save_finished:
-            self.save_finished = "Saved the game" in line
-            return False
-        return self.after_marker in line
+    def observe(self, line: str, stdin: IO[str], commands: list[str]) -> FlushProgress:
+        """Advance the save protocol only after each exact prior response."""
+        if self.phase == "before" and line.rstrip().endswith(f"[Server] {self.before_marker}"):
+            if send_command(stdin, commands, "save-all flush") is not None:
+                return "pipe-failed"
+            self.phase = "saving"
+        elif self.phase == "saving" and "Saving the game" in line:
+            self.phase = "saved"
+        elif self.phase == "saved" and "Saved the game" in line:
+            if send_command(stdin, commands, f"say {self.after_marker}") is not None:
+                return "pipe-failed"
+            self.phase = "after"
+        elif self.phase == "after" and line.rstrip().endswith(f"[Server] {self.after_marker}"):
+            return "complete"
+        return "pending"
 
 
 def send_command(stdin: IO[str], commands: list[str], command: str) -> str | None:
@@ -42,18 +45,26 @@ def send_command(stdin: IO[str], commands: list[str], command: str) -> str | Non
     return None
 
 
-def send_correlated_flush(stdin: IO[str], commands: list[str]) -> FlushCorrelation | None:
-    """Bracket a flush command with unpredictable server-echoed markers."""
+def begin_correlated_flush(stdin: IO[str], commands: list[str]) -> FlushCorrelation | None:
+    """Send the unpredictable marker that must precede one flush request."""
     token = secrets.token_hex(16)
     correlation = FlushCorrelation(
         before_marker=f"mcpack-item7-flush-{token}-before",
         after_marker=f"mcpack-item7-flush-{token}-after",
     )
-    for command in (
-        f"say {correlation.before_marker}",
-        "save-all flush",
-        f"say {correlation.after_marker}",
-    ):
-        if send_command(stdin, commands, command) is not None:
-            return None
+    if send_command(stdin, commands, f"say {correlation.before_marker}") is not None:
+        return None
     return correlation
+
+
+def advance_correlated_flush(
+    correlation: FlushCorrelation, line: str, stdin: IO[str], commands: list[str]
+) -> tuple[bool, str | None]:
+    """Advance one response-gated flush and stop only after its after marker."""
+    progress = correlation.observe(line, stdin, commands)
+    if progress == "pipe-failed":
+        return False, "server console pipe failed"
+    if progress == "complete":
+        rejection = send_command(stdin, commands, "stop")
+        return rejection is None, rejection
+    return False, None
