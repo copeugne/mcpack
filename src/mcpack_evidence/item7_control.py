@@ -27,9 +27,7 @@ from mcpack_evidence.item7_runtime import (
 if TYPE_CHECKING:
     from pathlib import Path
 
-_SUCCESS: Final = (
-    "Marked 81 chunks in Overworld from [-4, -4] to [4, 4] to be force loaded"
-)
+_SUCCESS: Final = "Marked 81 chunks in Overworld from [-4, -4] to [4, 4] to be force loaded"
 # fmt: off
 _NORMALIZED: Final = frozenset(("config/bettervillage_1.properties", "config/c2me.toml",
                                 "config/libraryferret_1.properties", "server.properties"))
