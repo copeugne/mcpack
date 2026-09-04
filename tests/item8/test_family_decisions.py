@@ -277,10 +277,12 @@ def test_working_inventory_keeps_unassigned_ids_and_rejects_double_counting() ->
         _ = assemble(("example:a",), [decision], sources, traces, bounds)
 
 
-def test_inventory_preserves_loot_paths_and_rejects_missing_template_content() -> None:
+def test_inventory_preserves_loot_kinds_and_rejects_missing_template_content() -> None:
     references: list[JsonValue] = [
         {"path": "/block_entities/0/nbt/LootTable", "value": "example:chest"},
         {"path": "/entities/0/nbt/DeathLootTable", "value": "example:chest"},
+        {"path": "/block_entities/1/nbt/LootTable", "value": "example:chest"},
+        {"path": "/block_entities/2/nbt/loot_tables_to_eject", "value": ["example:reward"]},
     ]
     decision: dict[str, JsonValue] = {
         "family_id": "example:family",
@@ -301,7 +303,15 @@ def test_inventory_preserves_loot_paths_and_rejects_missing_template_content() -
     result = assemble(("example:a",), [decision], sources, traces, bounds)
     families = cast("dict[str, dict[str, JsonValue]]", result["families"])
     loot = cast("dict[str, JsonValue]", families["example:family"]["loot_table_source"])
-    assert loot["packaged_references_by_template"] == {"example:room": references}
+    assert loot["packaged_references"] == [
+        {"field": "DeathLootTable", "value": "example:chest", "templates": ["example:room"]},
+        {"field": "LootTable", "value": "example:chest", "templates": ["example:room"]},
+        {
+            "field": "loot_tables_to_eject",
+            "value": ["example:reward"],
+            "templates": ["example:room"],
+        },
+    ]
     assert (
         loot["status"] == "packaged possibilities; effective generation and injections unresolved"
     )
