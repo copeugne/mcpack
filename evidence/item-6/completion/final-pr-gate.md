@@ -49,3 +49,23 @@ Reviewed implementation: `724071e4b96a89761700c246b683c81150fb2cea`
 The exact escaped-target-key reproduction and an alternate key escape are rejected before
 capture creates an output or receipt. Canonical UTF-8 capture remains byte-exact outside the
 credential token.
+
+## Parent-traversal review fix
+
+Reviewed implementation: `882ad986f9f19ea705b8bda0e93cae33b8811d91`
+
+| Gate | Result |
+| --- | --- |
+| Item 6 suite | PASS, 554 tests |
+| Full suite | PASS, 681 tests |
+| Ruff on 58 changed Python files | PASS |
+| basedpyright on `src`, `tests`, and the public CLI | PASS, 0 errors, 0 warnings, 0 notes |
+| Public Item 6 validation CLI | PASS |
+| Goal, code, security, QA, and context review lanes | PASS |
+| H1, alternate parent-traversal bypass | REFUTED |
+| H2, ordinary capture or collision regression | REFUTED |
+| H3, stale loaded implementation | REFUTED |
+
+Absolute-shaped and relative nested parent traversal are rejected before capture creates a
+directory or receipt, and an existing empty victim remains untouched. Ordinary capture and
+direct existing-output preservation remain valid.
