@@ -47,6 +47,7 @@ CORE_ROOTS: Final = frozenset(
         "control-comparison.json",
         "gap-a",
         "gap-b",
+        "flush-recovery",
         "pilot",
         "provider-disposition.json",
         "repeat-comparison.json",

@@ -45,6 +45,21 @@ def test_core_stage_uses_independent_files(tmp_path: Path) -> None:
     assert staged.read_bytes() == b"accepted"
 
 
+def test_core_stage_accepts_flush_recovery_evidence(tmp_path: Path) -> None:
+    project = tmp_path / "project"
+    raw = tmp_path / "raw"
+    source = raw / "flush-recovery/run-a/ordinary/run-receipt.json"
+    project.mkdir()
+    source.parent.mkdir(parents=True)
+    _ = source.write_bytes(b"accepted")
+    output = tmp_path / "stage"
+
+    count, size = stage("core", project, raw, output)
+
+    assert (count, size) == (1, len(b"accepted"))
+    assert (output / source.relative_to(raw)).read_bytes() == b"accepted"
+
+
 def test_world_stage_is_independent_and_excludes_session_lock(tmp_path: Path) -> None:
     instance = tmp_path / "instance"
     world = _world(instance)
