@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, cast
 
+import pytest
+
 from mcpack_evidence.item8_inventory import biome_tag_inputs
 
 if TYPE_CHECKING:
@@ -54,3 +56,21 @@ def test_condition_removal_and_optional_pack_are_not_silently_merged() -> None:
     row["path"] = "optional/data/example/tags/worldgen/biome/test.json"
     result = cast("dict[str, JsonValue]", biome_tag_inputs([row])["example:test"])
     assert result["values"] is None
+
+
+def test_verified_order_discards_only_contributions_before_replacement() -> None:
+    rows: list[JsonValue] = [
+        source("a.jar", {"values": ["minecraft:forest"]}),
+        source("b.jar", {"replace": True, "values": ["minecraft:plains"]}),
+        source("c.jar", {"values": ["minecraft:desert"]}),
+    ]
+    result = biome_tag_inputs(rows, ("a.jar", "b.jar", "c.jar"))
+    row = cast("dict[str, JsonValue]", result["example:test"])
+    assert row["values"] == ["minecraft:plains", "minecraft:desert"]
+    assert row["unresolved"] == []
+    result = biome_tag_inputs(rows, ("a.jar", "c.jar", "b.jar"))
+    assert cast("dict[str, JsonValue]", result["example:test"])["values"] == ["minecraft:plains"]
+    result = biome_tag_inputs(rows, ("a.jar", "b.jar"))
+    assert cast("dict[str, JsonValue]", result["example:test"])["values"] is None
+    with pytest.raises(ValueError, match="duplicate archive"):
+        _ = biome_tag_inputs(rows, ("a.jar", "a.jar"))
