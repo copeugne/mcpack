@@ -86,11 +86,15 @@ All acceptance-relevant implementation, CLIs, and tests are tracked under `src/m
 The final local checks are:
 
 ```bash
-uv run pytest tests/item7 -q
-uv run ruff check src tools tests/item7
-uv run basedpyright src tools tests/item7
+uv run pytest -q tests/item7
+uv run ruff format --check src/mcpack_evidence/item7_*.py tools/*item7*.py tests/item7
+uv run ruff check src/mcpack_evidence/item7_*.py tools/*item7*.py tests/item7
+uv run basedpyright src/mcpack_evidence/item7_*.py tools/*item7*.py tests/item7
+bash -n tools/stage_item7_raw_evidence.sh
 tools/verify_item7_release.sh copeugne/mcpack item-7-raw-evidence-2026-09-04 evidence/item-7/archive evidence/item-7/archive/publication.json /tmp/item7-release-verify
 ```
+
+The Python quality commands are intentionally scoped to Item 7. They do not claim that unrelated reconstructed later-item tools are clean, and Item 11 tooling remains outside this gate until the required Item 2 through Item 10 cross-item audit passes.
 
 The completion command is the tracked `tools/build_item7_completion.py` CLI with the protocol, provider, repeat, warning, control, visual, archive, restore, and publication inputs enumerated in `evidence/item-7/completion.json`. It returns `PASS` and records 123 artifact identities.
 
