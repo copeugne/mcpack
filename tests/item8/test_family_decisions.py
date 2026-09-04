@@ -133,3 +133,35 @@ def test_working_inventory_keeps_unassigned_ids_and_rejects_double_counting() ->
     decision["attributes"] = {"status": "COMPLETE"}
     with pytest.raises(ValueError, match="protected family attribute"):
         _ = assemble(("example:a",), [decision], sources, traces, bounds)
+
+
+def test_seven_seas_groups_cover_registered_roots_without_counting_spawner_components() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, JsonValue]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    groups = [
+        row
+        for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
+        if str(row["family_id"]).startswith("dungeons_arise_seven_seas:")
+    ]
+    registry = read_registry(
+        root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )
+    raw = (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+    traces = cast("dict[str, JsonValue]", json.loads(gzip.decompress(raw)))
+    structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
+    templates = cast("dict[str, JsonValue]", traces["template_contents"])
+    members = [member for row in groups for member in cast("list[str]", row["structure_ids"])]
+    assert len(members) == len(set(members))
+    assert set(members) == {key for key in registry if key.startswith("dungeons_arise_seven_seas:")}
+    for row in groups:
+        identifier = str(row["family_id"])
+        assert row["structure_ids"] == [identifier]
+        assert row["start_pool"] == structures[identifier]["start_pool"]
+        main = str(row["main_template"])
+        assert main in cast("list[str]", structures[identifier]["templates"])
+        assert main in templates
+        for path, digest in cast("dict[str, str]", row["evidence"]).items():
+            assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
