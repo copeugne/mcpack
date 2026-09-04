@@ -11,6 +11,7 @@ from typing import TYPE_CHECKING, Final, TypedDict
 
 from pydantic import TypeAdapter, ValidationError
 
+from mcpack_evidence.item6_file_accounting import Classification, validate_file_accounting
 from mcpack_evidence.item6_manifest import (
     parse_manifest,
     validate_manifest_contract,
@@ -65,11 +66,6 @@ class _Finding(TypedDict):
     confidence: str
 
 
-class _Classification(TypedDict):
-    classification: str
-    files: list[str]
-
-
 class Audit(TypedDict):
     """Strict machine-readable Item 6 configuration audit."""
 
@@ -81,7 +77,7 @@ class Audit(TypedDict):
     settings: list[_Setting]
     setting_surfaces: list[SettingSurface]
     findings: list[_Finding]
-    file_accounting: list[_Classification]
+    file_accounting: list[Classification]
     limitations: list[str]
 
 
@@ -261,25 +257,4 @@ def validate(  # noqa: C901, PLR0912, PLR0915
             covered.add(relative)
     if any(setting["non_default"] for setting in audit["settings"]):
         raise _AuditValidationError("untouched generated baseline unexpectedly reports tuning")
-    accounted: set[str] = set()
-    for classification in audit["file_accounting"]:
-        if classification["classification"] not in {"audited", "out-of-scope"}:
-            raise _AuditValidationError("invalid file-accounting classification")
-        for relative in classification["files"]:
-            if relative in accounted:
-                raise _AuditValidationError(f"file is classified more than once: {relative}")
-            accounted.add(relative)
-    if accounted != expected:
-        missing = sorted(expected - accounted)
-        extra = sorted(accounted - expected)
-        raise _AuditValidationError(
-            f"file accounting does not match manifest: missing={missing}, extra={extra}"
-        )
-    audited = {
-        relative
-        for classification in audit["file_accounting"]
-        if classification["classification"] == "audited"
-        for relative in classification["files"]
-    }
-    if audited != covered:
-        raise _AuditValidationError("audited file accounting does not match cited audit evidence")
+    validate_file_accounting(expected, covered, audit["file_accounting"])
