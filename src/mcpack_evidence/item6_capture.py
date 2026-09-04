@@ -7,37 +7,18 @@ import tempfile
 from pathlib import Path
 from typing import ClassVar, Final, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, ValidationError
+from pydantic import BaseModel, ConfigDict
+
+from mcpack_evidence.item6_capture_sanitization import (
+    SourceSanitizationError,
+    redact_generated_credential,
+)
 
 _DIRECTORIES: Final = ("config", "defaultconfigs", "world", "world/serverconfig")
 _RESOURCEFUL_CONFIG_PATH: Final = "config/resourceful-config-web.json"
 _RESOURCEFUL_CONFIG: Final = Path(_RESOURCEFUL_CONFIG_PATH)
 _SANITIZATION_RECEIPT: Final = "config-sanitization.json"
 _REDACTION_SENTINEL: Final = "<redacted-generated-secret>"
-
-
-class _ResourcefulValidatorIf(BaseModel):
-    """Typed `validator.if` content that must contain the generated credential."""
-
-    model_config: ClassVar[ConfigDict] = ConfigDict(extra="allow", frozen=True, strict=True)
-
-    password: str
-
-
-class _ResourcefulValidator(BaseModel):
-    """Typed validator section that retains all unmodeled configuration fields."""
-
-    model_config: ClassVar[ConfigDict] = ConfigDict(extra="allow", frozen=True, strict=True)
-
-    if_: _ResourcefulValidatorIf = Field(alias="if")
-
-
-class _ResourcefulConfig(BaseModel):
-    """Resourceful web configuration retaining all unmodeled fields unchanged."""
-
-    model_config: ClassVar[ConfigDict] = ConfigDict(extra="allow", frozen=True, strict=True)
-
-    validator: _ResourcefulValidator
 
 
 class _ReceiptRedaction(BaseModel):
@@ -118,23 +99,18 @@ def capture(instance: Path, output: Path) -> None:
             _ = shutil.rmtree(staging)
 
 
-def _sanitize_resourceful_config(path: Path) -> str:
-    """Parse and redact only the generated web-validator credential in memory."""
+def _sanitize_resourceful_config(path: Path) -> bytes:
+    """Strictly verify and redact only the generated web-validator credential."""
     try:
-        configuration = _ResourcefulConfig.model_validate_json(path.read_bytes())
-    except ValidationError:
+        return redact_generated_credential(path.read_bytes())
+    except SourceSanitizationError:
         message = f"invalid generated credential shape: {_RESOURCEFUL_CONFIG.as_posix()}"
         raise CaptureValidationError(message) from None
-    redacted_validator = configuration.validator.model_copy(
-        update={
-            "if_": configuration.validator.if_.model_copy(update={"password": _REDACTION_SENTINEL})
-        }
-    )
-    redacted_configuration = configuration.model_copy(update={"validator": redacted_validator})
-    return redacted_configuration.model_dump_json(by_alias=True, indent=2) + "\n"
 
 
-def _copy_configuration_tree(source: Path, target: Path, sanitized_resourceful_config: str) -> None:
+def _copy_configuration_tree(
+    source: Path, target: Path, sanitized_resourceful_config: bytes
+) -> None:
     """Copy configuration while replacing the sensitive target before it reaches staging."""
 
     def ignore_resourceful_config(directory: str, names: list[str]) -> set[str]:
@@ -144,9 +120,7 @@ def _copy_configuration_tree(source: Path, target: Path, sanitized_resourceful_c
         return set()
 
     _ = shutil.copytree(source, target, ignore=ignore_resourceful_config)
-    _ = (target / _RESOURCEFUL_CONFIG.name).write_text(
-        sanitized_resourceful_config, encoding="utf-8"
-    )
+    _ = (target / _RESOURCEFUL_CONFIG.name).write_bytes(sanitized_resourceful_config)
 
 
 def _require_directory(path: Path, name: str) -> None:

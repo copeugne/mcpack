@@ -48,6 +48,11 @@ def _make_instance(tmp_path: Path) -> Path:
     return instance
 
 
+def _write_resourceful_config(instance: Path, payload: bytes) -> None:
+    """Replace the capture source config with exact bytes for boundary tests."""
+    _ = (instance / "config" / "resourceful-config-web.json").write_bytes(payload)
+
+
 def test_capture_redacts_generated_credential_and_writes_safe_receipt(tmp_path: Path) -> None:
     """Capture substitutes the generated credential before evidence exists."""
     # Given: a complete source instance with the generated web-validator credential.
@@ -96,6 +101,62 @@ def test_capture_redacts_generated_credential_and_writes_safe_receipt(tmp_path: 
     assert _TEST_SOURCE_VALUE not in captured_text
     assert _TEST_SOURCE_VALUE not in receipt_text
     assert "hash" not in receipt_text
+
+
+def test_capture_surgically_replaces_only_credential_json_string_bytes(tmp_path: Path) -> None:
+    """Capture preserves each verified source byte outside the target string token."""
+    # Given: a valid configuration whose deliberate whitespace and key order are evidence bytes.
+    instance = _make_instance(tmp_path)
+    source = (
+        b"{\r\n"
+        b'  "untouched" : [ 1, 2.5, true ],\r\n'
+        b'  "validator" : { "type" : "if", "if" : {\r\n'
+        b'    "uuids" : [], "password" : "test-only-source-value", "type" : "uuid"\r\n'
+        b"  } }\r\n"
+        b"}\r\n"
+    )
+    _write_resourceful_config(instance, source)
+    output = tmp_path / "output"
+
+    # When: capture sanitizes the generated credential.
+    capture(instance, output)
+
+    # Then: exactly the password JSON string token changes and no source marker is retained.
+    captured = (output / "config" / "resourceful-config-web.json").read_bytes()
+    expected = source.replace(b'"test-only-source-value"', b'"<redacted-generated-secret>"')
+    assert captured == expected
+    assert _TEST_SOURCE_VALUE.encode() not in captured
+    assert _TEST_SOURCE_VALUE.encode() not in (tmp_path / "config-sanitization.json").read_bytes()
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [
+        b'{"validator":{"if":{"password":"test-only-source-value"}},"invalid":NaN}',
+        b'{"validator":{"if":{"password":"test-only-source-value"}},"invalid":Infinity}',
+        b'{"validator":{"if":{"password":"test-only-source-value"}},"invalid":-Infinity}',
+        b'{"validator":{"if":{"password":"test-only-source-value"}},"invalid":1e309}',
+        b'{"validator":{"if":{"password":"test-only-source-value","password":"other"}}}',
+        b'{"validator":{"if":{"\\u0070assword":"test-only-source-value"}}}',
+        b'{"validator":{"if":{"password":"test-only-source-value"}},"other":{"password":"other"}}',
+        b'{"validator":{"if":{"password":false}}}',
+        b'{"validator":{"if":{"password":"test-only-source-value"}',
+    ],
+)
+def test_capture_surgically_rejects_ambiguous_or_nonstandard_credential_json(
+    tmp_path: Path, payload: bytes
+) -> None:
+    """Unsafe JSON source forms cannot reach a capture output or receipt."""
+    # Given: a complete source instance with one nonstandard or ambiguous JSON form.
+    instance = _make_instance(tmp_path)
+    _write_resourceful_config(instance, payload)
+    output = tmp_path / "output"
+
+    # When/Then: strict sanitization fails before either output artifact exists.
+    with pytest.raises(ValueError, match="generated credential shape"):
+        capture(instance, output)
+    assert not output.exists()
+    assert not (tmp_path / "config-sanitization.json").exists()
 
 
 @pytest.mark.parametrize("payload", [None, "{}"])
