@@ -10,7 +10,7 @@ from typing import TYPE_CHECKING, Final
 if TYPE_CHECKING:
     from collections.abc import Mapping
 
-AUDIT_SEMANTIC_SHA256: Final = "b8306763bdad15fe868da31de92f5bab43224d4d61cd95a6d8e07395194f3482"
+AUDIT_SEMANTIC_SHA256: Final = "65c0bf42bf714ac626f85d5c662b8b4b1cf611427cb2169940b4f1bb1fbc61f0"
 
 
 def validate_audit_semantic_identity(audit: Mapping[str, object]) -> None:

@@ -1,0 +1,42 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+________ test_towns_and_towers_toggle_surface_reproduces_all_60_leaves _________
+
+    def test_towns_and_towers_toggle_surface_reproduces_all_60_leaves() -> None:
+>       surface = next(
+            surface for surface in AUDIT_DATA["setting_surfaces"] if surface["file"] == FILE
+        )
+E       StopIteration
+
+tests/item6/test_towns_and_towers_toggle_surface.py:22: StopIteration
+____________ test_towns_and_towers_toggle_file_is_owned_and_audited ____________
+
+    def test_towns_and_towers_toggle_file_is_owned_and_audited() -> None:
+        system = next(system for system in AUDIT_DATA["systems"] if system["system"] == SYSTEM)
+        audited = next(
+            row["files"] for row in AUDIT_DATA["file_accounting"] if row["classification"] == "audited"
+        )
+        excluded = next(
+            row["files"] for row in AUDIT_DATA["file_accounting"] if row["classification"] == "out-of-scope"
+        )
+>       assert FILE in system["files"]
+E       AssertionError: assert 'config/towns_and_towers/structure_enable_or_disable_new.json5' in ['config/ctov-common.toml', 'config/towns_and_towers/structure_rarity_new.json5', 'config/bettervillage_1.properties', 'config/village_taverns/villages.json']
+
+tests/item6/test_towns_and_towers_toggle_surface.py:37: AssertionError
+______________ test_towns_and_towers_toggle_mutation_is_rejected _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-312/test_towns_and_towers_toggle_m0')
+
+    def test_towns_and_towers_toggle_mutation_is_rejected(tmp_path: Path) -> None:
+        audit = deepcopy(AUDIT_DATA)
+>       surface = next(surface for surface in audit["setting_surfaces"] if surface["file"] == FILE)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/item6/test_towns_and_towers_toggle_surface.py:44: StopIteration
+=========================== short test summary info ============================
+FAILED tests/item6/test_towns_and_towers_toggle_surface.py::test_towns_and_towers_toggle_surface_reproduces_all_60_leaves
+FAILED tests/item6/test_towns_and_towers_toggle_surface.py::test_towns_and_towers_toggle_file_is_owned_and_audited
+FAILED tests/item6/test_towns_and_towers_toggle_surface.py::test_towns_and_towers_toggle_mutation_is_rejected
+3 failed in 0.09s
+expected_red_exit=1
