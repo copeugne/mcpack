@@ -4,6 +4,12 @@
 
 ## Current continuation checkpoint - 2026-09-04
 
+### User-authorized Item 8 continuation
+
+The user explicitly authorized proceeding to Item 8 after being informed that GitHub does not show a final clean Codex review of Item 7's merged head. This is a user-authorized exception to the review prerequisite for the already delivered Item 7, not evidence that the missing review occurred. Item 7's completion receipt was rebuilt byte for byte and its 210 tests passed during the continuation audit. Preserve its accepted r14 evidence without another custody revision. The earlier statement below that no review work remains must be read with this explicit exception.
+
+Item 8 is now authorized. Its end-to-end goal includes the complete specification inventory, reproducible evidence, atomic delivery, a completed clean Codex review cycle covering its final changes, and verified merge into `main`. The Item 7 exception does not apply to Item 8. Do not mark Item 8 complete from tests, a merge, an older review, or documentation alone.
+
 ### Item 7 scope-control incident
 
 Item 7 exceeded the intended completion-efficiency boundary during repeated r10 and r11 review repair. A real flush-correlation defect required a narrow empirical replacement, but locally defensible validators, receipts, custody revisions, and repeat checks accumulated without a hard comparison against the smallest `SPECS.md` exit gate. Do not repeat that pattern. Treat scope growth itself as blocking: before adding any new evidence class, schema, receipt, validator, archive revision, review framework, or broader regression surface, prove that the demonstrated defect cannot be fixed inside the existing path and record the reason here. Otherwise reject the addition.
@@ -48,7 +54,7 @@ The Item 7 completion command returns `PASS` and records 138 exact artifacts in 
 2. Preserve the measured semantic nondeterminism. Run A and Run B differ outside the central End; input drift and comparator artifacts were refuted, but the causal provider remains `UNKNOWN`. Do not tune the frozen Item 6 configuration inside Item 7.
 3. Preserve the confirmed Better Caves generation failure, the unresolved YUNG's Bridges and YUNG's Extras identifiers, and the 1,166 unresolved warning signatures as downstream work. Do not infer compatibility from server readiness.
 4. Do not reopen Item 7 or create another custody revision without new evidence that invalidates its explicit exit gate.
-5. Item 8 has not started. Continue only when the user explicitly authorizes it.
+5. Item 8 continuation is explicitly authorized under the checkpoint above.
 6. Item 8 must combine verified runtime registries, packaged data, configuration evidence, logs, and generated-world observations. It must resolve canonical families without double-counting aliases, pieces, pools, or templates, and it must carry Item 7 run identity and unknowns forward.
 
 Recovery Gate R-1 remains open for Items 8 through 10 and their final cross-item audit after Item 7 delivery completes.
