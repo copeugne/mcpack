@@ -1,0 +1,50 @@
+Task 1 — isolated origin/main worktree proof
+Captured: 2026-09-03 (Europe/Paris)
+
+Scope: Git/worktree setup only; no product files edited.
+
+Precondition and adversarial stale-state check
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack fetch origin main --tags
+Observable: exit 0; fetch reported `main -> FETCH_HEAD`.
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack rev-parse refs/remotes/origin/main
+Observable: 895ed1d999cd22ca511035e666ad8ac308ae63c1 (exact expected SHA).
+Invocation: test -e /home/lonestar/Desktop/Projects/mcpack-item6-completion
+Observable: absent before creation.
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack show-ref --verify --quiet refs/heads/codex/item-6-completion
+Observable: absent before creation (nonzero lookup; branch was not present).
+
+Creation
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack worktree add -b codex/item-6-completion /home/lonestar/Desktop/Projects/mcpack-item6-completion refs/remotes/origin/main
+Observable: exit 0; `Preparing worktree (new branch 'codex/item-6-completion')`; `HEAD is now at 895ed1d Merge pull request #12 from copeugne/experiment/item-6-generated-config`.
+
+Postcondition verification
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack-item6-completion branch --show-current
+Observable: codex/item-6-completion.
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack-item6-completion status --porcelain=v1 --untracked-files=all
+Observable: empty output; target worktree clean.
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack-item6-completion rev-parse HEAD
+Observable: 895ed1d999cd22ca511035e666ad8ac308ae63c1; exact expected SHA.
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack-item6-completion merge-base HEAD refs/remotes/origin/main
+Observable: 895ed1d999cd22ca511035e666ad8ac308ae63c1.
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack-item6-completion merge-base --is-ancestor 895ed1d999cd22ca511035e666ad8ac308ae63c1 HEAD
+Observable: exit 0; expected SHA is an ancestor of HEAD.
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack-item6-completion log -5 --oneline --decorate
+Observable:
+895ed1d (HEAD -> codex/item-6-completion, origin/main, origin/HEAD, main) Merge pull request #12 from copeugne/experiment/item-6-generated-config
+dfd4761 feat(item6): freeze retained-stack generated defaults
+398bf59 Merge pull request #11 from copeugne/docs/item5-current-handoff
+ebfb09a (origin/docs/item5-current-handoff) docs(handoff): restore comprehensive continuation context
+7db0ec5 docs(handoff): record Item 5 completion and delivery state
+
+Worktree registry observable
+Invocation: git -C /home/lonestar/Desktop/Projects/mcpack worktree list --porcelain
+Observable:
+worktree /home/lonestar/Desktop/Projects/mcpack
+HEAD 895ed1d999cd22ca511035e666ad8ac308ae63c1
+branch refs/heads/main
+
+worktree /home/lonestar/Desktop/Projects/mcpack-item6-completion
+HEAD 895ed1d999cd22ca511035e666ad8ac308ae63c1
+branch refs/heads/codex/item-6-completion
+
+Result: all Task 1 worktree criteria pass. Worktree intentionally retained for downstream work.
