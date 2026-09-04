@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-05
 
+The working inventory deliverable now exists at `evidence/item-8/inventory.json`,
+delivered by `1c9c3a1`, built with `f2eaf2b`. It is explicitly incomplete and
+lists unassigned registry IDs, unresolved non-registry content and unknown
+attributes. SHA-256:
+`58a200ca9ad7809f807cb73b6e3e72aed4cd1e1a9107723c9fcaa1640c62652d`.
+Source `cbbfd01` consolidates CTOV's 66 village size entries into 22 proven
+size groups in `family-decisions.json`; broader relationships between different
+village designs remain unresolved before any canonical total. The inventory
+joins these groups and Better Mineshafts to current biome constraints, potential
+template content and Item 7 world observations. Three focused tests and scoped
+quality checks passed; committed-source output reproduced its pilot exactly.
+Use the existing builder and deliverable for further family/attribute work.
+Do not interpret field presence, content references or piece envelopes as
+resolved effective attributes. The final report, raw durability, full gate,
+clean Codex review and verified merge are still outstanding. The goal remains
+active with no blocker or completion claim.
+
 Content attribution is now delivered by `2de3c84`. Current trace artifact:
 `evidence/item-8/sources/pool-traces-content.json.gz`, SHA-256
 `facb6f7bbafb6836e7eaa694535b975c2ee2deab1e36ab85930f1c11c7a471c8`.
