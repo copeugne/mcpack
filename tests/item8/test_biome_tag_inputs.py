@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, cast
 
 import pytest
+from tools.build_item8_structure_inputs import runtime_order
 
 from mcpack_evidence.item8_inventory import biome_tag_inputs
 
@@ -74,3 +75,20 @@ def test_verified_order_discards_only_contributions_before_replacement() -> None
     assert cast("dict[str, JsonValue]", result["example:test"])["values"] is None
     with pytest.raises(ValueError, match="duplicate archive"):
         _ = biome_tag_inputs(rows, ("a.jar", "a.jar"))
+
+
+def test_runtime_order_uses_last_expanded_record_and_preserves_its_line() -> None:
+    marker = "[net.fabricmc.fabric.impl.resource.loader.ModResourcePackUtil/]: "
+    marker += "[Fabric] Final sorting result: "
+    first = f"{marker}[mod/b, mod/a]"
+    last = f"{marker}[vanilla, mod/a, mod/b]"
+    mapping = {"a.jar": "mod/a", "b.jar": "mod/b"}
+    result = runtime_order(f"{first}\nunrelated\n{last}\n", mapping)
+    assert result["archives"] == ["a.jar", "b.jar"]
+    assert result["line"] == 3
+    assert result["record"] == last
+    for payload in ("[mod/a]", "[mod/a, mod/a, mod/b]", "mod/a, mod/b"):
+        with pytest.raises(ValueError, match=r"expanded.*sorting"):
+            _ = runtime_order(marker + payload, mapping)
+    with pytest.raises(ValueError, match="lacks final expanded"):
+        _ = runtime_order("unrelated", mapping)
