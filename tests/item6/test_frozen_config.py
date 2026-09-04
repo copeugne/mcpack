@@ -37,6 +37,7 @@ YUNG_PROVIDER_NAMES = {
     "bettermineshafts",
     "betteroceanmonuments",
     "betterstrongholds",
+    "betterwitchhuts",
 }
 YUNG_PROVIDER_FILES = {
     f"config/cristellib/{provider}/structure_{kind}_config.json5"
@@ -111,7 +112,7 @@ def test_yung_cristellib_provider_pairs_are_audited_and_cited() -> None:
         for path in yung["files"]
         if path.startswith("config/cristellib/better") and path.split("/")[2] in YUNG_PROVIDER_NAMES
     }
-    assert len(YUNG_PROVIDER_FILES) == 2 * len(YUNG_PROVIDER_NAMES)
+    assert len(YUNG_PROVIDER_FILES) == 16
     assert provider_files_in_system == YUNG_PROVIDER_FILES
     assert setting_files >= YUNG_PROVIDER_FILES
     assert cited >= YUNG_PROVIDER_FILES
