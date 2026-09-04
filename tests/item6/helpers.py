@@ -13,6 +13,7 @@ FROZEN = ROOT / "evidence/item-6/frozen"
 MANIFEST = ROOT / "evidence/item-6/generated-config-manifest.json"
 AUDIT = ROOT / "evidence/item-6/config-audit.json"
 LIFECYCLE = ROOT / "evidence/item-6/first-boot-lifecycle.json"
+MATERIALIZATION = ROOT / "evidence/item-6/materialization.json"
 RETAINED = ROOT / "evidence/item-3/runtime/retained-server-candidates.txt"
 
 SPEC = importlib.util.spec_from_file_location(
@@ -35,6 +36,7 @@ class Item6RepositoryFixture:
     manifest: Path
     audit: Path
     lifecycle: Path
+    materialization: Path
     retained: Path
 
 
@@ -46,12 +48,14 @@ def copy_item6_repository(tmp_path: Path) -> Item6RepositoryFixture:
     manifest = repository / "evidence/item-6/generated-config-manifest.json"
     audit = repository / "evidence/item-6/config-audit.json"
     lifecycle = repository / "evidence/item-6/first-boot-lifecycle.json"
+    materialization = repository / "evidence/item-6/materialization.json"
     retained = repository / "evidence/item-3/runtime/retained-server-candidates.txt"
     retained.parent.mkdir(parents=True)
     for source, destination in (
         (MANIFEST, manifest),
         (AUDIT, audit),
         (LIFECYCLE, lifecycle),
+        (MATERIALIZATION, materialization),
         (RETAINED, retained),
     ):
         _ = shutil.copy2(source, destination)
@@ -61,6 +65,7 @@ def copy_item6_repository(tmp_path: Path) -> Item6RepositoryFixture:
         manifest=manifest,
         audit=audit,
         lifecycle=lifecycle,
+        materialization=materialization,
         retained=retained,
     )
 

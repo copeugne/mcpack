@@ -25,6 +25,7 @@ class RepositoryReferences:
     root: Path
     retained_manifest: Path
     source_lifecycle: Path
+    materialization: Path
 
 
 class _LifecycleReceipt(TypedDict):
@@ -40,6 +41,7 @@ class _LifecycleReceipt(TypedDict):
 
 _LIFECYCLE_ADAPTER: Final[TypeAdapter[_LifecycleReceipt]] = TypeAdapter(_LifecycleReceipt)
 _LIFECYCLE_PATH: Final = "evidence/item-6/first-boot-lifecycle.json"
+_MATERIALIZATION_PATH: Final = "evidence/item-6/materialization.json"
 
 
 def validate_repository_references(manifest_path: Path, manifest: Manifest) -> RepositoryReferences:
@@ -47,6 +49,7 @@ def validate_repository_references(manifest_path: Path, manifest: Manifest) -> R
     repository = manifest_path.parent.parent.parent
     retained = _resolve_regular_file(repository, manifest["retained_manifest"]["path"])
     lifecycle = _resolve_regular_file(repository, manifest["source_lifecycle"])
+    materialization = _resolve_regular_file(repository, _MATERIALIZATION_PATH)
     retained_identity = manifest["retained_manifest"]
     if len(retained.read_bytes().splitlines()) != retained_identity["count"]:
         raise ProvenanceValidationError("retained manifest count does not match referenced file")
@@ -56,6 +59,7 @@ def validate_repository_references(manifest_path: Path, manifest: Manifest) -> R
         root=repository.resolve(strict=True),
         retained_manifest=retained,
         source_lifecycle=lifecycle,
+        materialization=materialization,
     )
 
 

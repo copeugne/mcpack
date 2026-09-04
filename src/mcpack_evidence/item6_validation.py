@@ -16,6 +16,7 @@ from mcpack_evidence.item6_manifest import (
     validate_manifest_contract,
     validate_manifest_inventory,
 )
+from mcpack_evidence.item6_materialization import validate_materialization
 from mcpack_evidence.item6_provenance import validate_lifecycle, validate_repository_references
 
 if TYPE_CHECKING:
@@ -142,6 +143,7 @@ def validate(  # noqa: C901, PLR0912, PLR0915
     validate_manifest_contract(manifest)
     references = validate_repository_references(manifest_path, manifest)
     validate_lifecycle(manifest, references)
+    validate_materialization(manifest, references)
     expected = validate_manifest_inventory(root, manifest)
 
     covered: set[str] = set()

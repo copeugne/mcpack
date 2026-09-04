@@ -1,0 +1,37 @@
+Scenario: strict materialization receipt binding after implementation
+Invocation: uv run pytest -q tests/item6/test_materialization_binding.py
+Binary observable: canonical valid receipt passes; all boundary, schema, flag, primitive-type, and cross-identity mutations fail; absent historical pristine_source remains accepted
+Result: GREEN, 19 passed in 0.31s.
+
+Scenario: full Item 6 regression suite
+Invocation: uv run pytest -q tests/item6
+Binary observable: every Item 6 test passes
+Result: PASS, 300 passed in 3.63s.
+
+Scenario: real Item 6 validation CLI
+Invocation: uv run python tools/freeze_item6_config.py validate --root evidence/item-6/frozen --manifest evidence/item-6/generated-config-manifest.json --audit evidence/item-6/config-audit.json
+Binary observable: exit code 0 and exact success message
+Result: PASS, validated Item 6 frozen configuration and audit.
+
+Scenario: canonical materialization filesystem identity
+Invocation: test -f evidence/item-6/materialization.json && test ! -L evidence/item-6/materialization.json
+Binary observable: exit code 0
+Result: PASS, materialization_regular_non_symlink=PASS.
+
+Immutable committed input checks:
+- generated-config-manifest.json: 1db06570e4dd9531c5d8ce14ac4bbd2591618c8198cc76c7bc625dea5829fdbd, PASS
+- config-audit.json: 63856186c105460846f30eb284766f7900c35f05c9079405215b00608b920853, PASS
+- first-boot-lifecycle.json: f0b449fe1fa8fcca06228606600877f269999b680581d7a0be372f2e92b25238, PASS
+- materialization.json: 1dbd93089259e84062bf4bd91f5ac67bff48e981022c88d66f65191e0d8306a4, PASS
+- frozen/server.properties: feeaf1509c3b44fd27ebf7dc850e0cd58a2dede1ba9e75ae2357ab2a0bb5ea34, PASS
+
+Quality gates:
+- uv run ruff format --check on changed Python paths: PASS, 5 files already formatted.
+- uv run ruff check on changed Python paths: PASS, all checks passed.
+- uv run basedpyright tools/freeze_item6_config.py src/mcpack_evidence/item6_*.py tests/item6: PASS, 0 errors, 0 warnings, 0 notes.
+- uv run check-no-excuse-rules.py on changed Python paths: PASS, no violations in 5 files.
+- git diff --check: PASS.
+- item6_materialization.py: 46 pure lines.
+- item6_provenance.py: 96 pure lines.
+- item6_validation.py: 233 pure lines.
+- test_materialization_binding.py: 87 pure lines.
