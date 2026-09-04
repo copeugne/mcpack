@@ -72,7 +72,9 @@ def main() -> None:
         document = cast("dict[str, JsonValue]", structures[identifier]["document"])
         start_pool = document.get("start_pool")
         if isinstance(start_pool, str):
-            result = trace_pool(start_pool, pool_edges, template_edges)
+            result = trace_pool(
+                start_pool, pool_edges, template_edges, document.get("pool_aliases", [])
+            )
             result["pool_aliases"] = document.get("pool_aliases", [])
             traces[identifier] = result
         else:
