@@ -32,7 +32,7 @@ def test_core_stage_uses_independent_files(tmp_path: Path) -> None:
     raw = tmp_path / "raw"
     project.mkdir()
     raw.mkdir()
-    source = raw / "evidence.json"
+    source = raw / "control-comparison.json"
     _ = source.write_bytes(b"accepted")
     output = tmp_path / "stage"
 
@@ -94,7 +94,7 @@ def test_world_stage_rejects_java_compatible_record_lock(tmp_path: Path) -> None
 def test_shell_entrypoint_stages_core_boundary(tmp_path: Path) -> None:
     raw = tmp_path / "raw"
     raw.mkdir()
-    _ = (raw / "evidence.json").write_bytes(b"accepted")
+    _ = (raw / "control-comparison.json").write_bytes(b"accepted")
     output = tmp_path / "stage"
 
     result = subprocess.run(  # noqa: S603 - fixed repository staging tool.
@@ -114,7 +114,7 @@ def test_shell_entrypoint_stages_core_boundary(tmp_path: Path) -> None:
 
     assert result.returncode == 0, result.stderr
     assert result.stdout == "staged 1 files using 8 bytes\n"
-    assert (output / "evidence.json").read_bytes() == b"accepted"
+    assert (output / "control-comparison.json").read_bytes() == b"accepted"
 
 
 def test_world_stage_pins_the_directory_that_owns_the_lock(
@@ -154,7 +154,7 @@ def test_core_stage_pins_the_validated_raw_root(
     displaced = tmp_path / "trusted-raw"
     project.mkdir()
     raw.mkdir()
-    _ = (raw / "evidence.bin").write_bytes(b"trusted")
+    _ = (raw / "control-comparison.json").write_bytes(b"trusted")
     original_stream = cast("Callable[[int], BinaryIO]", staging.__dict__["duplicate_stream"])
     swapped = False
 
@@ -163,7 +163,7 @@ def test_core_stage_pins_the_validated_raw_root(
         if not swapped:
             _ = raw.rename(displaced)
             raw.mkdir()
-            _ = (raw / "evidence.bin").write_bytes(b"attacker")
+            _ = (raw / "control-comparison.json").write_bytes(b"attacker")
             swapped = True
         return original_stream(descriptor)
 
@@ -174,7 +174,7 @@ def test_core_stage_pins_the_validated_raw_root(
 
     assert swapped
     assert (count, size) == (1, len(b"trusted"))
-    assert (output / "evidence.bin").read_bytes() == b"trusted"
+    assert (output / "control-comparison.json").read_bytes() == b"trusted"
 
 
 def test_stage_rejects_output_parent_replaced_during_copy(
@@ -187,7 +187,7 @@ def test_stage_rejects_output_parent_replaced_during_copy(
     project.mkdir()
     raw.mkdir()
     output_parent.mkdir()
-    _ = (raw / "evidence.bin").write_bytes(b"trusted")
+    _ = (raw / "control-comparison.json").write_bytes(b"trusted")
     output = output_parent / "stage"
     original_stream = cast("Callable[[int], BinaryIO]", staging.__dict__["duplicate_stream"])
     swapped = False
@@ -218,7 +218,7 @@ def test_stage_preserves_target_created_during_copy(
     raw = tmp_path / "raw"
     project.mkdir()
     raw.mkdir()
-    _ = (raw / "evidence.bin").write_bytes(b"trusted")
+    _ = (raw / "control-comparison.json").write_bytes(b"trusted")
     output = tmp_path / "stage"
     original_stream = cast("Callable[[int], BinaryIO]", staging.__dict__["duplicate_stream"])
     created = False
@@ -246,12 +246,38 @@ def test_core_stage_rejects_hardlinked_source(tmp_path: Path) -> None:
     raw = tmp_path / "raw"
     project.mkdir()
     raw.mkdir()
-    source = raw / "evidence.bin"
+    source = raw / "control-comparison.json"
     _ = source.write_bytes(b"trusted")
     os.link(source, tmp_path / "alias.bin")
     output = tmp_path / "stage"
 
     with pytest.raises(StageError, match="hardlink"):
+        _ = stage("core", project, raw, output)
+
+    assert not output.exists()
+
+
+@pytest.mark.parametrize(
+    "relative",
+    [
+        "instances/run/world/level.dat",
+        "run-a/ordinary/mods/provider.JAR",
+        "run-a/ordinary/runtime/server.class",
+        "run-a/ordinary/credentials/token.txt",
+        "run-a/ordinary/playerdata/player.dat",
+        "run-a/ordinary/caches/index",
+    ],
+)
+def test_core_stage_rejects_every_forbidden_category(tmp_path: Path, relative: str) -> None:
+    project = tmp_path / "project"
+    raw = tmp_path / "raw"
+    source = raw / relative
+    project.mkdir()
+    source.parent.mkdir(parents=True)
+    _ = source.write_bytes(b"forbidden")
+    output = tmp_path / "stage"
+
+    with pytest.raises(StageError, match="forbidden"):
         _ = stage("core", project, raw, output)
 
     assert not output.exists()
@@ -264,8 +290,9 @@ def test_stage_rejects_special_files_without_partial_output(tmp_path: Path, mode
     project.mkdir()
     raw.mkdir()
     if mode == "core":
-        _ = (raw / "accepted").write_bytes(b"accepted")
-        os.mkfifo(raw / "unsafe")
+        _ = (raw / "control-comparison.json").write_bytes(b"accepted")
+        (raw / "control").mkdir()
+        os.mkfifo(raw / "control/unsafe.json")
         output = tmp_path / "stage"
         with pytest.raises(StageError, match="regular"):
             _ = stage("core", project, raw, output)

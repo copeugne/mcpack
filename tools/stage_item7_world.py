@@ -41,6 +41,53 @@ AUXILIARY_INSTANCES: Final = (
 WORLD_FILES: Final = ("level.dat", "level.dat_old")
 WORLD_DIRECTORIES: Final = ("region", "DIM-1/region", "DIM1/region")
 MODES: Final = ("core", "run-a-worlds", "run-b-worlds", "auxiliary-worlds")
+CORE_ROOTS: Final = frozenset(
+    {
+        "control",
+        "control-comparison.json",
+        "gap-a",
+        "gap-b",
+        "pilot",
+        "provider-disposition.json",
+        "repeat-comparison.json",
+        "run-a",
+        "run-b",
+        "visual-qa",
+        "warning-audit.json",
+        "warning-disposition.json",
+    }
+)
+CORE_SUFFIXES: Final = frozenset(
+    {
+        ".html",
+        ".json",
+        ".json5",
+        ".jsonc",
+        ".jsonl",
+        ".log",
+        ".png",
+        ".properties",
+        ".svg",
+        ".toml",
+        ".tsv",
+        ".txt",
+        ".yml",
+    }
+)
+FORBIDDEN_PARTS: Final = frozenset(
+    {
+        "advancements",
+        "cache",
+        "caches",
+        "credentials",
+        "instances",
+        "libraries",
+        "mods",
+        "playerdata",
+        "stats",
+    }
+)
+SECRET_TERMS: Final = ("credential", "password", "secret", "token")
 
 
 class StageError(ValueError):
@@ -75,6 +122,7 @@ def stage(mode: str, project: Path, raw: Path, output: Path) -> tuple[int, int]:
                         files,
                         destination,
                         PurePosixPath(),
+                        require_core_policy=True,
                     )
             else:
                 count, size = 0, 0
@@ -191,11 +239,14 @@ def _copy_opened_files(
     files: tuple[OpenedFile, ...],
     destination: StagingTree,
     prefix: PurePosixPath,
+    *,
+    require_core_policy: bool = False,
 ) -> tuple[int, int]:
     size = 0
     for opened in files:
         relative = PurePosixPath(opened.relative_path)
-        _require_allowed(relative)
+        if require_core_policy:
+            _require_allowed(relative)
         _copy_descriptor(
             opened.descriptor,
             opened.size_bytes,
@@ -217,7 +268,15 @@ def _copy_descriptor(
 
 
 def _require_allowed(relative: PurePosixPath) -> None:
-    if relative.suffix == ".jar" or relative.name == "session.lock":
+    parts = tuple(part.casefold() for part in relative.parts)
+    filename = parts[-1]
+    if (
+        parts[0] not in CORE_ROOTS
+        or relative.suffix.casefold() not in CORE_SUFFIXES
+        or FORBIDDEN_PARTS.intersection(parts)
+        or filename == "session.lock"
+        or any(term in filename for term in SECRET_TERMS)
+    ):
         message = f"forbidden runtime file entered the stage: {relative}"
         raise StageError(message)
 
