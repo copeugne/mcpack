@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
-from mcpack_evidence.item8_inventory import structure_inputs
+from mcpack_evidence.item8_inventory import size_variant_groups, structure_inputs
 from mcpack_evidence.item8_registry import read_registry
 
 if TYPE_CHECKING:
@@ -40,7 +40,9 @@ def main() -> None:
     if not isinstance(resources, list):
         message = "packaged source catalog has no resources list"
         raise TypeError(message)
-    result = structure_inputs(read_registry(ROOT / REGISTRY_PATH), resources)
+    registry = read_registry(ROOT / REGISTRY_PATH)
+    result = structure_inputs(registry, resources)
+    result["size_variant_groups"] = size_variant_groups(registry, resources)
     result["inputs"] = {SOURCE_PATH: SOURCE_SHA256, REGISTRY_PATH: REGISTRY_SHA256}
     with output.open("x", encoding="utf-8") as stream:
         _ = stream.write(json.dumps(result, indent=2, sort_keys=True) + "\n")
