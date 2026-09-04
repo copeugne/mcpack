@@ -11,8 +11,9 @@ Temurin installation available:
 uv run -m tools.inspect_item8_pool_elements --output evidence/raw/item8/pool-codecs-reproduction
 ```
 
-The collector at `3fd012c` hashes the retained input archives, selects the observed
-custom element implementations and their registration classes, and invokes the
+The collector at `3fd012c`, extended with resolver classes at `898e934`, hashes
+the retained input archives, selects the observed custom element implementations
+and their registration classes, and invokes the
 pinned `javap -p -c -constants`. `identities.json` binds each disassembly to its
 archive, original class bytes, and output bytes. The delivered output matched the
 pilot byte-for-byte using `diff -r`. Directory names preserve their source JAR
@@ -26,12 +27,26 @@ and air before delegating placement. These classes support tracing template
 references, not assuming vanilla placement semantics.
 
 Moog's version-aware element decodes `location` and version-keyed `locations`,
-then calls `VersionResolver` to choose a template. The link reader preserves the
-fallback and conditional locations but explicitly leaves version selection
-unresolved. Inspect that resolver against the frozen Minecraft 1.21.1 identity
-before admitting conditional templates into effective family contents. Do not
-infer selection from the absence of log messages: selected-template logging is
-conditional on the mod's debug flag.
+then calls `VersionResolver` to choose a template. The retained resolver contains
+the constant `1.21.1`, compares numeric version components with zero padding,
+and uses inclusive bounds. The link reader now marks the uniquely matching
+mapping as selected and preserves fallback and other-version locations as
+unselected. It rejects ambiguous or nonmatching mappings instead of relying on
+catalog key order or silently taking a fallback. This intentionally verifies the
+observed closed numeric mappings for the frozen identity; it is not a general
+replacement for every format the mod might support.
+
+The complete frozen JSON catalog has 212 such versioned elements, each with one
+selected mapping. Reproduce that source-bound check with:
+
+```sh
+uv run pytest -q tests/item8/test_pool_links.py
+```
+
+Do not infer selection from the absence of log messages: selected-template
+logging is conditional on the mod's debug flag. The selection here is derived
+from preserved bytecode and packaged mappings, not claimed as a logged runtime
+observation.
 
 The link reader also preserves inline placed-feature definitions found in the
 packaged pools. These can author entities, such as Supplementaries' boat with
