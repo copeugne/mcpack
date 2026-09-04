@@ -23,11 +23,69 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
-        "evidence/item-8/sources/mineshafts-code/identities.json": "5e78a733f4198752de93fb640557a87fae13334a92a3fbad422cd33bb5d41127"
+        "evidence/item-8/sources/mineshafts-code/identities.json": "5e78a733f4198752de93fb640557a87fae13334a92a3fbad422cd33bb5d41127",
+        "evidence/item-6/frozen/config/bettermineshafts-neoforge-1_21.toml": "ee344cb26d156e67baa987f193fb44947fa6b3869b80aa16ef2b257370dc1ff1"
       },
       "distinctions": {
         "minecraft:mineshaft": "Separate vanilla generator, registered but suppressed by the frozen Better Mineshafts hook",
         "minecraft:mineshaft_mesa": "Variant of the separate vanilla generator, registered but suppressed by the frozen Better Mineshafts hook"
+      },
+      "attributes": {
+        "intended_hostility": {
+          "value": "Hostile rooms within an abandoned mining network",
+          "basis": "Derived from explicit hostile-entity spawner assignment in SideRoomDungeon and ZombieVillagerRoom, not from structure naming or measured encounter frequency.",
+          "source_classes": [
+            "SideRoomDungeon",
+            "ZombieVillagerRoom"
+          ]
+        },
+        "mob_source": {
+          "authored_source": "Custom piece-generation code assigns ordinary block spawners to EntityType.CAVE_SPIDER and EntityType.ZOMBIE_VILLAGER.",
+          "natural_source": "The structure definitions have empty spawn_overrides. Ambient hostile populations depend on effective biome spawning and world conditions; their exact composition is UNKNOWN here.",
+          "source_classes": [
+            "SideRoomDungeon",
+            "ZombieVillagerRoom"
+          ],
+          "scope": "Possible generation paths, not a claim that every mineshaft includes both rooms."
+        },
+        "loot_table_source": {
+          "base_table_constant": "BuiltInLootTables.ABANDONED_MINESHAFT",
+          "container_paths": [
+            "SideRoomDungeon",
+            "ZombieVillagerRoom",
+            "SideRoom",
+            "SmallTunnel",
+            "BigTunnel"
+          ],
+          "basis": "Direct references in the preserved generation disassemblies. SmallTunnel and BigTunnel include chest-minecart paths.",
+          "effective_injections": "UNKNOWN: retained loot-integration and container transformation effects still require attribution."
+        },
+        "generated_spawners": {
+          "block": "minecraft:spawner",
+          "authored_types": [
+            {
+              "entity": "minecraft:cave_spider",
+              "piece_class": "SideRoomDungeon"
+            },
+            {
+              "entity": "minecraft:zombie_villager",
+              "piece_class": "ZombieVillagerRoom"
+            }
+          ],
+          "basis": "The piece code places Blocks.SPAWNER, checks SpawnerBlockEntity, then calls setEntityId.",
+          "observed_per_structure_counts": "UNKNOWN",
+          "limitation": "Source-supported capability; room selection, successful placement and active spawning are not established for every generated sample."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Cave-spider and zombie-villager spawner assignments are authored by custom generation code.",
+          "natural": "No structure-level spawn override is declared; natural spawning remains conditional on the effective biome and world state.",
+          "limitation": "This does not measure enemy counts or prove a particular live spawn."
+        },
+        "underground_surface_classification": {
+          "value": "Underground mining network with a VerticalEntrance generation component",
+          "basis": "Packaged step is underground_structures. BetterMineshaftStructure selects initial Y from the frozen -55 through 30 range and begins generation with VerticalEntrance.",
+          "limitation": "Initial Y is not total vertical size. The entrance envelope uses maximum build height and does not prove occupied blocks or a visible surface opening."
+        }
       }
     },
     {
