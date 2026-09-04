@@ -6,7 +6,7 @@ import hashlib
 import json
 from io import BytesIO
 from pathlib import Path, PurePosixPath
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Literal, cast
 from zipfile import ZipFile
 
 from .item3_acquisition import ArtifactAcquisitionManifest
@@ -17,6 +17,7 @@ from .item7_restriction_inputs import (
     ArchiveInput,
 )
 from .item7_runtime import RETAINED_MANIFEST_SHA256
+from .item8_templates import template_summary
 
 if TYPE_CHECKING:
     from pydantic import JsonValue
@@ -61,8 +62,10 @@ def retained_sources(root: Path) -> tuple[ArchiveInput, ...]:
     )
 
 
-def packaged_json_sources(sources: tuple[ArchiveInput, ...]) -> dict[str, JsonValue]:
-    """Preserve data JSON and archive ownership without inferring runtime activation."""
+def packaged_sources(
+    sources: tuple[ArchiveInput, ...], kind: Literal["json", "template"] = "json"
+) -> dict[str, JsonValue]:
+    """Preserve packaged resources without inferring runtime activation."""
     archives: list[JsonValue] = []
     resources: list[JsonValue] = []
     for source in sources:
@@ -76,11 +79,13 @@ def packaged_json_sources(sources: tuple[ArchiveInput, ...]) -> dict[str, JsonVa
             with ZipFile(BytesIO(payload)) as outer:
                 payload = outer.read(source.nested_archive)
             location += "!/" + source.nested_archive
-        _collect_json(payload, location, resources)
+        _collect(payload, location, resources, kind)
     return {"archives": archives, "resources": resources}
 
 
-def _collect_json(payload: bytes, location: str, resources: list[JsonValue]) -> None:
+def _collect(
+    payload: bytes, location: str, resources: list[JsonValue], kind: Literal["json", "template"]
+) -> None:
     with ZipFile(BytesIO(payload)) as archive:
         names = archive.namelist()
         if len(names) != len(set(names)):
@@ -92,8 +97,19 @@ def _collect_json(payload: bytes, location: str, resources: list[JsonValue]) -> 
                 message = f"unsafe ZIP member: {location}!/{name}"
                 raise ValueError(message)
             if name.endswith(".jar"):
-                _collect_json(archive.read(name), f"{location}!/{name}", resources)
-            elif name.endswith(".json") and "data" in path.parts:
+                _collect(archive.read(name), f"{location}!/{name}", resources, kind)
+            elif kind == "template" and name.endswith(".nbt") and "data" in path.parts:
+                raw = archive.read(name)
+                resources.append(
+                    {
+                        "archive": location,
+                        "path": name,
+                        "sha256": hashlib.sha256(raw).hexdigest(),
+                        "size_bytes": len(raw),
+                        "document": template_summary(raw),
+                    }
+                )
+            elif kind == "json" and name.endswith(".json") and "data" in path.parts:
                 raw = archive.read(name)
                 try:
                     value, parser = _parse_json(raw, f"{location}!/{name}")
