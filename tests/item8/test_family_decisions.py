@@ -253,6 +253,7 @@ def test_working_inventory_keeps_unassigned_ids_and_rejects_double_counting() ->
     traces: dict[str, JsonValue] = {
         "structures": {},
         "untraced_structures": {"example:a": {"reason": "custom"}},
+        "template_contents": {},
     }
     bounds: dict[str, JsonValue] = {"observations": []}
     result = assemble(("example:a", "example:b"), [decision], sources, traces, bounds)
@@ -273,6 +274,40 @@ def test_working_inventory_keeps_unassigned_ids_and_rejects_double_counting() ->
     assert families["example:family"]["status"] == "INCOMPLETE"
     decision["attributes"] = {"status": "COMPLETE"}
     with pytest.raises(ValueError, match="protected family attribute"):
+        _ = assemble(("example:a",), [decision], sources, traces, bounds)
+
+
+def test_inventory_preserves_loot_paths_and_rejects_missing_template_content() -> None:
+    references: list[JsonValue] = [
+        {"path": "/block_entities/0/nbt/LootTable", "value": "example:chest"},
+        {"path": "/entities/0/nbt/DeathLootTable", "value": "example:chest"},
+    ]
+    decision: dict[str, JsonValue] = {
+        "family_id": "example:family",
+        "name": "Example",
+        "structure_ids": ["example:a"],
+    }
+    sources: dict[str, JsonValue] = {"structure_biomes": {"example:a": {"biomes": []}}}
+    contents: dict[str, JsonValue] = {
+        "example:room": {"loot_references": references},
+        "example:empty": {"loot_references": []},
+    }
+    traces: dict[str, JsonValue] = {
+        "structures": {"example:a": {"templates": ["example:room", "example:empty"]}},
+        "untraced_structures": {},
+        "template_contents": contents,
+    }
+    bounds: dict[str, JsonValue] = {"observations": []}
+    result = assemble(("example:a",), [decision], sources, traces, bounds)
+    families = cast("dict[str, dict[str, JsonValue]]", result["families"])
+    loot = cast("dict[str, JsonValue]", families["example:family"]["loot_table_source"])
+    assert loot["packaged_references_by_template"] == {"example:room": references}
+    assert (
+        loot["status"] == "packaged possibilities; effective generation and injections unresolved"
+    )
+    assert families["example:family"]["status"] == "INCOMPLETE"
+    del contents["example:room"]
+    with pytest.raises(KeyError, match="example:room"):
         _ = assemble(("example:a",), [decision], sources, traces, bounds)
 
 
