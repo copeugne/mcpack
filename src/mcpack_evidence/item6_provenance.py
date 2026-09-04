@@ -10,6 +10,8 @@ from typing import TYPE_CHECKING, Final, TypedDict
 
 from pydantic import TypeAdapter, ValidationError
 
+from mcpack_evidence.item6_json import StrictJsonError, parse_strict_json
+
 if TYPE_CHECKING:
     from mcpack_evidence.item6_manifest import Manifest
 
@@ -68,10 +70,10 @@ def validate_lifecycle(manifest: Manifest, references: RepositoryReferences) -> 
     if manifest["source_lifecycle"] != _LIFECYCLE_PATH:
         raise ProvenanceValidationError("source_lifecycle must name the canonical receipt")
     try:
-        receipt = _LIFECYCLE_ADAPTER.validate_json(
-            references.source_lifecycle.read_bytes(), strict=True, extra="forbid"
+        receipt = _LIFECYCLE_ADAPTER.validate_python(
+            parse_strict_json(references.source_lifecycle.read_bytes()), strict=True, extra="forbid"
         )
-    except ValidationError as error:
+    except (StrictJsonError, ValidationError) as error:
         raise ProvenanceValidationError("lifecycle receipt is malformed") from error
     if receipt["schema_version"] != "item4-server-lifecycle-v1":
         raise ProvenanceValidationError("unsupported lifecycle receipt schema")

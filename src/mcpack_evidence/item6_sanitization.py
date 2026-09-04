@@ -9,6 +9,8 @@ from typing import ClassVar, Final, Literal, TypedDict
 
 from pydantic import BaseModel, ConfigDict, Field, TypeAdapter, ValidationError
 
+from mcpack_evidence.item6_json import StrictJsonError, parse_strict_json
+
 _SENTINEL: Final = "<redacted-generated-secret>"
 _TARGET_PATH: Final = Path("config/resourceful-config-web.json")
 _CANONICAL_RECEIPT: Final = "evidence/item-6/config-sanitization.json"
@@ -88,15 +90,17 @@ def validate_sanitization_receipt(receipt_path: Path, frozen_root: Path) -> Sani
     """Return a strictly parsed receipt only when its target has the exact sentinel."""
     _require_regular_file(receipt_path, "sanitization receipt")
     try:
-        receipt = _RECEIPT_ADAPTER.validate_json(
-            receipt_path.read_bytes(), strict=True, extra="forbid"
-        )
-    except ValidationError:
+        receipt_bytes = receipt_path.read_bytes()
+        _ = parse_strict_json(receipt_bytes)
+        receipt = _RECEIPT_ADAPTER.validate_json(receipt_bytes, strict=True, extra="forbid")
+    except (StrictJsonError, ValidationError):
         raise SanitizationReceiptValidationError("sanitization receipt is malformed") from None
     target = _resolve_target(frozen_root)
     try:
-        configuration = _ResourcefulConfig.model_validate_json(target.read_bytes())
-    except ValidationError:
+        configuration = _ResourcefulConfig.model_validate(
+            parse_strict_json(target.read_bytes()), strict=True
+        )
+    except (StrictJsonError, ValidationError):
         raise SanitizationReceiptValidationError("sanitized target JSON is malformed") from None
     if configuration.validator.if_.password != _SENTINEL:
         raise SanitizationReceiptValidationError(

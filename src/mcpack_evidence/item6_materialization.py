@@ -7,6 +7,8 @@ from typing import TYPE_CHECKING, Final, TypedDict
 
 from pydantic import TypeAdapter, ValidationError
 
+from mcpack_evidence.item6_json import StrictJsonError, parse_strict_json
+
 if TYPE_CHECKING:
     from mcpack_evidence.item6_manifest import Manifest
     from mcpack_evidence.item6_provenance import RepositoryReferences
@@ -35,10 +37,10 @@ class MaterializationValidationError(ValueError):
 def validate_materialization(manifest: Manifest, references: RepositoryReferences) -> None:
     """Require strict materialization isolation and exact manifest identity agreement."""
     try:
-        receipt = _ADAPTER.validate_json(
-            references.materialization.read_bytes(), strict=True, extra="forbid"
+        receipt = _ADAPTER.validate_python(
+            parse_strict_json(references.materialization.read_bytes()), strict=True, extra="forbid"
         )
-    except ValidationError as error:
+    except (StrictJsonError, ValidationError) as error:
         raise MaterializationValidationError("materialization receipt is malformed") from error
     if receipt["schema_version"] != _SCHEMA:
         raise MaterializationValidationError("unsupported materialization receipt schema")

@@ -10,6 +10,8 @@ from typing import TYPE_CHECKING, Final, TypedDict
 
 from pydantic import TypeAdapter
 
+from mcpack_evidence.item6_json import StrictJsonError, parse_strict_json
+
 if TYPE_CHECKING:
     from pathlib import Path
 
@@ -98,7 +100,11 @@ class ManifestValidationError(ValueError):
 
 def parse_manifest(manifest_path: Path) -> Manifest:
     """Parse the manifest at the untrusted file boundary."""
-    return _MANIFEST_ADAPTER.validate_json(manifest_path.read_bytes(), strict=True, extra="forbid")
+    try:
+        document = parse_strict_json(manifest_path.read_bytes())
+    except StrictJsonError:
+        raise ManifestValidationError("manifest is not strict JSON") from None
+    return _MANIFEST_ADAPTER.validate_python(document, strict=True, extra="forbid")
 
 
 def validate_manifest_inventory(root: Path, manifest: Manifest) -> set[str]:

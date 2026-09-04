@@ -10,6 +10,7 @@ from pydantic import TypeAdapter
 
 from mcpack_evidence.item6_audit_identity import validate_audit_semantic_identity
 from mcpack_evidence.item6_file_accounting import Classification, validate_file_accounting
+from mcpack_evidence.item6_json import StrictJsonError, parse_strict_json
 from mcpack_evidence.item6_legacy_settings import Setting, validate_legacy_settings
 from mcpack_evidence.item6_manifest import (
     parse_manifest,
@@ -73,7 +74,11 @@ def sha256(path: Path) -> str:
 def validate(root: Path, manifest_path: Path, audit_path: Path) -> None:
     """Fail unless the frozen tree, manifest, and audit agree exactly."""
     manifest = parse_manifest(manifest_path)
-    audit = _AUDIT_ADAPTER.validate_json(audit_path.read_bytes(), strict=True, extra="forbid")
+    try:
+        document = parse_strict_json(audit_path.read_bytes())
+    except StrictJsonError:
+        raise _AuditValidationError("audit is not strict JSON") from None
+    audit = _AUDIT_ADAPTER.validate_python(document, strict=True, extra="forbid")
     if manifest["schema_version"] != "item6-frozen-config-manifest-v2":
         raise _AuditValidationError("unsupported manifest schema")
     if audit["schema_version"] != "item6-config-audit-v2":

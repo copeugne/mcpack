@@ -4,14 +4,14 @@ from __future__ import annotations
 
 import json
 import re
-from math import isfinite
-from typing import Final, Never, Self
+from typing import Final, Self
 
 from pydantic import JsonValue, TypeAdapter, ValidationError
 
+from mcpack_evidence.item6_json import StrictJsonError, parse_strict_json
+
 _PASSWORD_MEMBER: Final = re.compile(r'"password"\s*:\s*("(?:[^"\\]|\\.)*")')
 _REDACTION_SENTINEL: Final = "<redacted-generated-secret>"
-_JSON_VALUE_ADAPTER: Final[TypeAdapter[JsonValue]] = TypeAdapter(JsonValue)
 _JSON_STRING_ADAPTER: Final = TypeAdapter(str)
 
 
@@ -43,8 +43,8 @@ def redact_generated_credential(source: bytes) -> bytes:
     """Replace exactly one verified canonical credential string token."""
     try:
         text = source.decode("utf-8")
-        configuration = _parse_strict_json(text)
-    except (UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
+        configuration = parse_strict_json(source)
+    except (UnicodeDecodeError, StrictJsonError) as error:
         raise SourceSanitizationError.invalid_json() from error
     password = _require_string_credential(configuration)
     matches = tuple(_PASSWORD_MEMBER.finditer(text))
@@ -60,42 +60,6 @@ def redact_generated_credential(source: bytes) -> bytes:
     start, end = match.span(1)
     replacement = json.dumps(_REDACTION_SENTINEL, ensure_ascii=False).encode()
     return source[:start] + replacement + source[end:]
-
-
-def _parse_strict_json(source: str) -> JsonValue:
-    """Parse JSON while rejecting duplicate keys, constants, and float overflow."""
-    return _JSON_VALUE_ADAPTER.validate_python(
-        json.loads(
-            source,
-            object_pairs_hook=_reject_duplicate_keys,
-            parse_constant=_reject_nonstandard_constant,
-            parse_float=_parse_finite_float,
-        ),
-        strict=True,
-    )
-
-
-def _reject_duplicate_keys(pairs: list[tuple[str, JsonValue]]) -> dict[str, JsonValue]:
-    """Construct one object only when every JSON member name is unique."""
-    result: dict[str, JsonValue] = {}
-    for key, value in pairs:
-        if key in result:
-            raise SourceSanitizationError.invalid_json()
-        result[key] = value
-    return result
-
-
-def _reject_nonstandard_constant(value: str) -> Never:
-    """Reject JavaScript-style numeric constants not permitted by JSON."""
-    raise SourceSanitizationError.invalid_json() from ValueError(value)
-
-
-def _parse_finite_float(value: str) -> float:
-    """Parse one JSON floating number only when it stays finite."""
-    parsed = float(value)
-    if not isfinite(parsed):
-        raise SourceSanitizationError.invalid_json()
-    return parsed
 
 
 def _require_string_credential(configuration: JsonValue) -> str:
