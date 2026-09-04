@@ -84,7 +84,7 @@ class _NormalizationPolicy(_FrozenModel):
 
 
 class _RegionPolicy(_FrozenModel):
-    account_every_mca_file: Literal[True]
+    account_every_chunk_region_mca_file: Literal[True]
     kinds: tuple[Literal["anvil", "empty_placeholder"], ...]
     empty_placeholder_size_bytes: Literal[0]
     anvil_sector_bytes: Literal[4096]

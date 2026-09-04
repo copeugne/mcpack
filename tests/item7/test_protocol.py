@@ -105,7 +105,7 @@ def test_protocol_fixes_normalization_region_accounting_and_archive_policy() -> 
 
     assert "timestamp" in protocol.normalization.excluded_transport_fields
     assert "heightmaps" in protocol.normalization.chunk_compare_fields
-    assert protocol.regions.account_every_mca_file is True
+    assert protocol.regions.account_every_chunk_region_mca_file is True
     assert protocol.regions.kinds == ("anvil", "empty_placeholder")
     assert protocol.regions.empty_placeholder_size_bytes == 0
     assert protocol.regions.unexplained_files_allowed is False
@@ -125,6 +125,11 @@ def test_protocol_fixes_normalization_region_accounting_and_archive_policy() -> 
         ('"observation_role": "direct"', '"observation_role": "library"', "providers"),
         ('"timestamp"', '"runtime_timestamp"', "normalization"),
         ('      "session_lock",\n', "", "archive"),
+        (
+            '"account_every_chunk_region_mca_file"',
+            '"account_every_mca_file"',
+            "account_every_mca_file",
+        ),
     ],
 )
 def test_protocol_rejects_frozen_value_drift(
