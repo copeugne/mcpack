@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import re
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Final
 
@@ -16,6 +17,8 @@ if TYPE_CHECKING:
 
 _SAVING: Final = "Saving the game (this may take a moment!)"
 _SAVED: Final = "Saved the game"
+_BEFORE: Final = re.compile(r"mcpack-item7-flush-(?P<token>[0-9a-f]{32})-before")
+_AFTER: Final = re.compile(r"mcpack-item7-flush-(?P<token>[0-9a-f]{32})-after")
 _LIFECYCLE_STAGE: Final = "lifecycle"
 SAVE_SEQUENCE_TARGETS: Final = (
     ("control/ordinary", "Marked 81 chunks in Overworld"),
@@ -38,8 +41,10 @@ class SaveSequence:
     size_bytes: int
     sha256: str
     work_line: int
+    before_marker_line: int
     saving_line: int
     saved_line: int
+    after_marker_line: int
 
 
 def validate_save_sequences(
@@ -59,9 +64,9 @@ def build_save_sequence_audit(root: Path, manifest_path: Path) -> dict[str, Json
     """Build the portable machine-readable audit bound to the core archive manifest."""
     records = validate_save_sequences(root, manifest_path)
     return {
-        "schema_version": "item7-save-sequence-audit-v1",
+        "schema_version": "item7-save-sequence-audit-v2",
         "core_manifest": {
-            "path": str(manifest_path),
+            "path": manifest_path.name,
             "size_bytes": manifest_path.stat().st_size,
             "sha256": hashlib.sha256(manifest_path.read_bytes()).hexdigest(),
         },
@@ -71,8 +76,10 @@ def build_save_sequence_audit(root: Path, manifest_path: Path) -> dict[str, Json
                 "size_bytes": record.size_bytes,
                 "sha256": record.sha256,
                 "work_line": record.work_line,
+                "before_marker_line": record.before_marker_line,
                 "saving_line": record.saving_line,
                 "saved_line": record.saved_line,
+                "after_marker_line": record.after_marker_line,
             }
             for record in records
         ],
@@ -87,17 +94,21 @@ def _validate(path: Path, relative: str, work_marker: str) -> SaveSequence:
         detail = f"console log could not be read: {relative}"
         raise Item7RuntimeError(_LIFECYCLE_STAGE, detail) from error
     work_line = _last_line(lines, work_marker, relative)
+    before_line, token = _last_token_line(lines, _BEFORE, relative)
     saving_line = _last_line(lines, _SAVING, relative)
     saved_line = _last_line(lines, _SAVED, relative)
-    if not work_line < saving_line < saved_line:
+    after_line, after_token = _last_token_line(lines, _AFTER, relative)
+    if token != after_token or not work_line < before_line < saving_line < saved_line < after_line:
         raise Item7RuntimeError(_LIFECYCLE_STAGE, f"save sequence differs: {relative}")
     return SaveSequence(
         relative,
         len(content),
         hashlib.sha256(content).hexdigest(),
         work_line,
+        before_line,
         saving_line,
         saved_line,
+        after_line,
     )
 
 
@@ -105,6 +116,19 @@ def _last_line(lines: tuple[str, ...], marker: str, relative: str) -> int:
     matches = tuple(index for index, line in enumerate(lines, start=1) if marker in line)
     if not matches:
         raise Item7RuntimeError(_LIFECYCLE_STAGE, f"save marker missing: {relative}: {marker}")
+    return matches[-1]
+
+
+def _last_token_line(
+    lines: tuple[str, ...], pattern: re.Pattern[str], relative: str
+) -> tuple[int, str]:
+    matches = tuple(
+        (index, match.group("token"))
+        for index, line in enumerate(lines, start=1)
+        if (match := pattern.search(line)) is not None
+    )
+    if not matches:
+        raise Item7RuntimeError(_LIFECYCLE_STAGE, f"save marker missing: {relative}")
     return matches[-1]
 
 
