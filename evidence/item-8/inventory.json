@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "a294b2c9219e1916ef1384acd0e4d8392133499f2b56a93a2a57e53cb5ffd92b",
+    "evidence/item-8/family-decisions.json": "b850abc5df9278da4113694f5e01254e4cf08099a927185527f4f509840336b5",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -159141,6 +159141,54 @@
         }
       },
       "yungsextras:feature_entrypoints": {
+        "biome_constraints": {
+          "scope": "Existing merged packaged tag resolution against registered biomes. Overlap with captured live dimension possible-biome lists is not proof of successful generation or observed removal. Optional absent members are not silently promoted to active biomes.",
+          "tags": {
+            "yungsextras:has_structure/desert_decorations": {
+              "dimension_biome_overlap": {
+                "minecraft:overworld": [
+                  "biomesoplenty:lush_desert",
+                  "minecraft:desert",
+                  "terralith:lush_desert"
+                ]
+              },
+              "missing_required_members": [],
+              "registered_biomes": [
+                "biomesoplenty:lush_desert",
+                "minecraft:desert",
+                "terralith:lush_desert"
+              ]
+            },
+            "yungsextras:has_structure/swamp_structures": {
+              "dimension_biome_overlap": {
+                "minecraft:overworld": [
+                  "minecraft:mangrove_swamp",
+                  "minecraft:swamp"
+                ]
+              },
+              "missing_required_members": [],
+              "registered_biomes": [
+                "minecraft:mangrove_swamp",
+                "minecraft:swamp"
+              ]
+            },
+            "yungsextras:has_structure/vanilla_desert_well": {
+              "dimension_biome_overlap": {
+                "minecraft:overworld": [
+                  "biomesoplenty:lush_desert",
+                  "minecraft:desert",
+                  "terralith:lush_desert"
+                ]
+              },
+              "missing_required_members": [],
+              "registered_biomes": [
+                "biomesoplenty:lush_desert",
+                "minecraft:desert",
+                "terralith:lush_desert"
+              ]
+            }
+          }
+        },
         "biome_modifiers": {
           "data/yungsextras/neoforge/biome_modifier/desert_decorations_addition.json": {
             "biomes": "#yungsextras:has_structure/desert_decorations",
@@ -159239,14 +159287,17 @@
           "yungsextras:swamp_pillar": 3
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+          "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_biome.txt": "0970c5296980495640901e3ba7fd44fa90e97da4774900368fa924a263446713",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_configured_feature.txt": "7522f8d6f1bcd1f3c5d9211c89f3fcf2e201c80cee88dab52d4e2274b0fbc844",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_placed_feature.txt": "20d3a7d932b6e5c8f417ff07060a1fa63e95294f35ef78d92651efc221a4a48f",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
-          "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd"
+          "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
         },
         "mechanism": "NeoForge biome modifiers add placed features, which reference configured features. No yungsextras structure-registry roots are present.",
         "relationship": "The two addition modifiers reference 62 distinct placed features, each with a same-ID configured feature. These are contribution entry points, not 62 canonical families. The configured feature types are generator categories, not an accepted family classification.",
-        "removal_scope": "The packaged removal targets minecraft:desert_well at surface_structures in #yungsextras:has_structure/vanilla_desert_well. Effective configuration/biome scope and generated-world consequences remain to be reconciled.",
+        "removal_scope": "The packaged removal targets minecraft:desert_well at surface_structures in the same three resolved desert biomes as desert additions. Their captured dimension overlap is overworld only. Configuration/registration effects and generated-world consequences remain to be reconciled.",
         "scope": "Runtime registry presence plus packaged root references only. Template membership, custom generators, configuration, family relationships and required attributes remain incomplete. Forge-path duplicates are not counted as additional NeoForge contributions."
       }
     },

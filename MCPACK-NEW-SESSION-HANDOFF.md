@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-05
 
+Extras biome scope is delivered in `397812a`. Desert additions and declared
+vanilla well removal share three resolved desert biomes; swamp additions have
+two. All intersect only the captured overworld list, with no required missing
+tag members. This is packaged scope, not observed generation/removal. Thirteen
+affected tests and scoped quality checks passed. Inventory SHA-256:
+`7a1110e2734dd4f04a4084ed2ffbe9aa3be0a6af9fc61ffd5518ff40c831aba0`.
+All 421 registry family rows and 887 roots remain unchanged. Continue Extras
+template/custom-generator attribution and effective configuration registration;
+bridge configuration and wider provider coverage remain open. Item 8 remains
+incomplete, with no new capture or measurement system added.
+
+
 YUNG Extras entry points are delivered in `fe1fb1e`. Two NeoForge additions
 reference 16 desert and 46 swamp placed features, matching all 62 same-ID
 configured/placed runtime entries. There are zero yungsextras structure roots.
