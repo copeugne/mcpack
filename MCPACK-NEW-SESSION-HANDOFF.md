@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Monument packaged encounter and loot inputs are integrated in 62f005a and the
+inventory reproduces exactly. Do not repeat candidate entity/chest joins.
+Processor documents add jungle archaeology loot and downward pillar paths;
+their custom implementations remain untraced. Reuse existing catalogs and
+extractor to resolve only effects needed for content and geometry attribution.
+Six affected tests and scoped static checks pass. No world measurement or
+Item 8 completion claim.
+
 Monument fitters and their interface are delivered in 58cbbfa. The interface
 is abstract, correcting the earlier default-opening assumption. The focused
 catalog test reconciles 76 candidate pools and 88 templates; it passes with

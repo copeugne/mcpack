@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `8ba362c`, SHA-256
-`741729ef5b76783ad16534db906b29f08baa03fbe0a96a086cb04d1504f6c12e`.
+Current working inventory regenerated at `62f005a`, SHA-256
+`592c71265a00bc9181868c0407042732ea0d4f791569abd3bf5d998711883086`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -70,6 +70,18 @@ coverage has already identified every remaining family or dependency. Closing
 that coverage question is itself an outstanding deliverable in step 4.
 
 ## Historical increments
+
+The 62f005a increment records monument candidate template entities, chest loot,
+archaeology loot input and absence of spawner block entities in the candidate
+templates. It changes only the monument family and decision input identity.
+Effective processors, placement, geometry and discoverability remain open.
+Six affected tests and scoped static checks passed. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-monument-62f005a.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-monument-62f005a.json
+uv run pytest -q tests/item8/test_monument_components.py tests/item8/test_inventory_sources.py
+```
 
 The 8ba362c increment integrates mansion candidate components, persistent child
 entity templates, chest loot references, selected spider spawner inputs and
