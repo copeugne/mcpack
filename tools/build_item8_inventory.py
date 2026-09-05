@@ -23,9 +23,9 @@ DECISIONS = "evidence/item-8/family-decisions.json"
 REGISTRY = "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
 INPUTS = {
     SOURCES: "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
-    TRACES: "9bac83e23b19826a872a3d760ca44bdcf6e24b3ef9df3a2693c9737ec28f3a0d",
+    TRACES: "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
     BOUNDS: "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
-    DECISIONS: "3ebb87bee8c663dc488b164b14a7f328d65fa17b4becb381aebc9c9db217de65",
+    DECISIONS: "8a311905415a0b0b855c39961e5f816113a3017171f02dcb85ea371a2be627fb",
     REGISTRY: "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
 }
 

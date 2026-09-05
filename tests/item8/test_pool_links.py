@@ -49,7 +49,7 @@ def test_frozen_trace_reaches_all_selected_village_additions() -> None:
     root = Path(__file__).resolve().parents[2]
     raw = (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
     assert hashlib.sha256(raw).hexdigest() == (
-        "9bac83e23b19826a872a3d760ca44bdcf6e24b3ef9df3a2693c9737ec28f3a0d"
+        "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5"
     )
     trace = cast("dict[str, JsonValue]", json.loads(gzip.decompress(raw)))
     report = cast("dict[str, JsonValue]", trace["pool_modifiers"])
