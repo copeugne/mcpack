@@ -316,6 +316,7 @@ CLASSES = (
     "org/violetmoon/zeta/world/generator/multichunk/MultiChunkFeatureGenerator.class",
     "org/violetmoon/zeta/config/type/DimensionConfig.class",
     "org/violetmoon/zeta/world/generator/Generator.class",
+    "org/violetmoon/zeta/config/type/CompoundBiomeConfig.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
