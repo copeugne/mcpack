@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Candidate-boundary reconciliation now includes the RS Farmer's Delight add-on:
+all 13 templates link to 12 already registered RS village targets; 11 processor
+lists modify components rather than create roots. The focused full-archive test
+passes, with scoped static checks passing after type/string corrections.
+provider-scope.md has 17 explicit provider dispositions; 119 remain to reconcile
+with existing evidence. This is not a family count. Continue the five data-only
+structure providers and remaining code providers before detailed attributes.
+
 Construction-provider entry captures are delivered in 007ff06. The nine Macaw
 constructors and full-payload checks now support explicit no-independent-family
 dispositions in evidence/item-8/provider-scope.md. Nine focused cases and scoped
