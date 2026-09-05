@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `6ab0446`, SHA-256
-`71022f417deeea318935299d9e7169cf96857fe778884835021f8ba0a57dd577`.
+Current working inventory regenerated at `ca135b3`, SHA-256
+`58190c3567996eedc16a8857cbef5bfa20dd926da264d0042c8862efac035ad5`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -70,6 +70,20 @@ coverage has already identified every remaining family or dependency. Closing
 that coverage question is itself an outstanding deliverable in step 4.
 
 ## Historical increments
+
+The ca135b3 increment integrates Bronze dungeon template entities, marker
+chest/mimic selection, source loot keys and scoped spawner/natural-spawn
+attribution. The six template candidates and three selected processor lists
+are bound to the packaged catalogs; both marker loot tables resolve. Only the
+Bronze row and decision input identity change. Geometry, full assembly and
+effective placement remain unresolved. Two focused tests and scoped static
+checks passed. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-bronze-ca135b3.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-bronze-ca135b3.json
+uv run pytest -q tests/item8/test_aether_bronze_components.py
+```
 
 The 6ab0446 increment binds the Aether cloud provider to the captured writer
 and records a working terrain/cloud disposition. The registry row is retained
