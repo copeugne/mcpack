@@ -272,3 +272,25 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-circ
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-circle-2ba75aa-repro.json
 cmp evidence/raw/item8/inventory-circle-2ba75aa.json evidence/raw/item8/inventory-circle-2ba75aa-repro.json
 ```
+
+Medium house source `298911d` and generated join `8d778dc` used:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-medium-house-298911d.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-medium-house-298911d-repro.json
+cmp evidence/raw/item8/inventory-medium-house-298911d.json evidence/raw/item8/inventory-medium-house-298911d-repro.json
+```
+
+Nether generator source `37e0c78` and evidence `d3e8c20` used:
+
+```sh
+uv run -m tools.inspect_item8_pool_elements --archive moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar --output evidence/raw/item8/moog-nether-code-pilot1
+uv run -m tools.inspect_item8_pool_elements --archive moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar --output evidence/item-8/sources/moog-nether-generator-code
+diff -qr evidence/raw/item8/moog-nether-code-pilot1 evidence/item-8/sources/moog-nether-generator-code
+```
+
+Use new output paths when reproducing. The generator's `postLayoutAdjustments`
+selects fixed height or terrain utility results and moves the assembled pieces.
+The called terrain utilities and inherited layout path remain necessary to
+resolve effective placement. This is source evidence, not a completed runtime
+placement claim.
