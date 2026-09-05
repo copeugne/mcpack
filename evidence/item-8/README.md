@@ -676,3 +676,24 @@ they add limited delegate elements to vanilla village house pools, while the
 current pool trace does not apply modifiers. The existing packaged catalog
 retains their exact conditions, target pools and definitions. Closing this
 requires modifying the existing trace, not a separate measurement system.
+
+Lithostitched delegate prerequisite (`4fe823b`, evidence `fc6adee`, decoder `06b1ae2`):
+
+```sh
+uv run -m tools.inspect_item8_pool_elements --archive lithostitched-1.7.10+beta4-neoforge-21.1.jar --output evidence/item-8/sources/lithostitched-pool-additions-code
+uv run pytest tests/item8/test_pool_links.py tests/item8/test_pool_trace.py -q
+```
+
+The output directory must be absent when reproducing. All six disassembly
+hashes matched their identity records. The existing selector includes three
+previously inspected condition/config classes alongside the three new classes.
+Thirteen affected tests passed, including retained terminal constraints,
+nested unknowns and missing delegates. Scoped Ruff/basedpyright checks passed.
+The initial lint findings were explicit regex formatting and the observed-codec
+branch count; the existing codec complexity exception was extended narrowly.
+
+This delivers decoding support, not effective modifier application. The pinned
+code confirms additions append weighted elements and limited elements delegate
+to their wrapped template. Conditions, other applicable modifications and
+runtime generation remain unresolved. The accepted pool trace and inventory
+are unchanged until that application step is supported and implemented.
