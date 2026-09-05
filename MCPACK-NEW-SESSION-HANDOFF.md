@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-05
 
+Ruin fragments are reconciled through `0f500c9`, built from `61d6501`.
+The former `mns:very_small_ruins` working group is now `mns:ruin_fragments`,
+covering thirteen registry IDs and twelve templates after adding six larger
+wall, pillar and rubble variants. Identical definitions except start pools and
+empty authored-content fields are source-checked; the duplicate root remains
+explicit. Forty-eight retained observations are linked and qualified geometry
+estimates updated. Thirty-one focused tests and scoped quality checks passed;
+reproduction was byte-identical and unrelated groups remained unchanged.
+Inventory SHA-256: `cab8caba7b568a35bbcc7ad3fbf7fa61fa7e8fe26b1eda231b8708e871021677`.
+Totals: 168 working groups, 272 assigned IDs, 615 unassigned; 22 mns roots remain.
+Continue the remaining Nether designs and shared behavior, then other providers.
+Required attributes, canonical reconciliation and final Item 8 delivery remain
+incomplete. No final gate, review or main merge is claimed.
+
 Observed layout estimates are delivered through `be1171c`, built from `62be1ff`.
 Inventory SHA-256:
 `fc73778e20d09b91e4424b905995882c4c68469ac90c7c42c39cfdc5c3ea6109`.
