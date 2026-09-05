@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Nether obsidian spikes are integrated as one working family in 4151e8c, with
+ordinary and large encounter variants explicit. The large variant authors a
+blaze spawner and chest using the selected minecraft:chests/nether_bridge table,
+bound by 7455ffc. Source geometry and initial settings are captured in f566496.
+Do not repeat generator or shared Zeta mapping. Remaining direct dependencies
+are CompressedBlocksModule decoration and MiscUtil.HORIZONTALS contents, plus
+relevant global loot/ambient spawning and world attribution. Broader provider
+coverage remains incomplete. All 35 affected tests passed; no new measurement.
+
 Continue Quark provider coverage with NetherObsidianSpikesModule and
 ObsidianSpikeGenerator through the existing extractor. These direct sources are
 needed to decide landmark-family inclusion and the required placement/content

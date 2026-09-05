@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "920c86e28d48b6b6574a8a77fe9ee6506115e545d9e6c85b74f38ee3d2b20ceb",
+    "evidence/item-8/family-decisions.json": "b21b37f87871736cb4659a0b5db751a6606d3b0b03f9b91202922949443cd634",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -160368,6 +160368,60 @@
           "sha256": "8b19e927b6b5d1a4de5f210eb301402c7f5e9dca4d4eb210b2fa31219cde4d06",
           "validation": "tests/item8/test_end_blocks.py::test_preserved_overworld_sample_has_no_monster_boxes"
         }
+      },
+      "quark:nether_obsidian_spike": {
+        "evidence": {
+          "evidence/item-8/sources/quark-nether-spikes/identities.json": "5c80fe8dba773400a3cd3fd42309d5b374499a9f7ff5c12e22c51c8c87a3ce4f"
+        },
+        "families": [
+          {
+            "approximate_footprint": "Base is 3 by 3 blocks; middle writes center and MiscUtil.HORIZONTALS offsets; tip is one block wide. Preflight checks 5 by 5, which is not an occupied footprint. Exact shared direction-array contents remain unbound.",
+            "approximate_vertical_size": "Source requested envelope: ordinary 17..24 blocks, large 36..43 blocks, including ten layers below the lava target. Occupied height may differ due to skipped unbreakable base blocks and unchecked write results.",
+            "authored_or_natural": "Large-variant blaze selection is authored through a physical spawner. Ambient natural spawning is separate and unresolved.",
+            "biome_constraints": "No direct biome filter. Attempts scan down to the first lava block while Y>10, starting 50 blocks above the supplied chunk corner. Placement requires a 5-by-5 air/lava clearance volume above the target.",
+            "dimension": "minecraft:the_nether initial allowlist.",
+            "family": "quark:nether_obsidian_spike",
+            "generated_spawners": "One physical blaze spawner in the large encounter branch, one block below the first tip layer. No spawner in ordinary spikes. Successful placement and subsequent spawning are not observed.",
+            "intended_hostility": "Ordinary variant has no authored enemies. Large variant with Big Spike Spawners enabled authors a blaze-spawner encounter over lava.",
+            "loot_table_source": "Large encounter branch places one chest and assigns minecraft:chests/nether_bridge when its block entity is a randomizable container. Selected base definition is bound in loot_source. Later global loot modifications remain separate.",
+            "mob_source": "Large encounter branch places minecraft:spawner and requests EntityType.BLAZE through BaseSpawner.setEntityId. No immediate entity spawn is requested by this generator. Ambient mobs remain unresolved.",
+            "observation_status": "UNKNOWN: no saved-world spike attribution or live encounter observation accepted.",
+            "rationale": "One tapered obsidian-spike design with ordinary and large variants. The large variant adds an authored blaze-spawner/chest encounter under frozen settings; this gameplay difference is retained explicitly rather than counting each size or repeated spike as a family. Working boundary remains subject to final reconciliation.",
+            "surface_underground": "Nether lava-surface landmark with ten layers of requested base extending below the target; not an authored underground room.",
+            "templates": [],
+            "visual_discoverability": "Source-derived vertical obsidian spike emerging from lava; large encounter variant has a luminous decoration. Terrain occlusion and visibility distance are not observed."
+          }
+        ],
+        "frozen_configuration": {
+          "Big Spike Chance": 0.03,
+          "Big Spike Spawners": true,
+          "Chance Per Chunk": 0.1,
+          "Tries Per Chunk": 4,
+          "binding": "Config annotations, module construction log at registry-r1 debug line 13906 and shared initial-refresh/configuration mapping establish initial values. These are not measured generation frequencies.",
+          "dimensions": {
+            "Dimensions": [
+              "minecraft:the_nether"
+            ],
+            "Is Blacklist": false
+          },
+          "file": "evidence/item-6/frozen/config/quark-common.toml",
+          "module_toggle": true,
+          "sha256": "94bfff490eea33f9bb105fae298606c4708ddb8af2f3df8630cc0f0ac7e85327"
+        },
+        "interpretation": "evidence/item-8/sources/quark-nether-spikes/README.md",
+        "loot_source": {
+          "catalog": "evidence/item-8/sources/packaged-json-redacted.json.gz",
+          "catalog_sha256": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
+          "constant_evidence": "evidence/item-8/sources/vanilla-end-city-code/server-1.21.1-20240808.144430-srg.jar/net.minecraft.world.level.storage.loot.BuiltInLootTables.txt",
+          "id": "minecraft:chests/nether_bridge",
+          "selected_archive": "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar",
+          "selected_sha256": "56fceac267476866f2381335b4ac1b3eeab33993610d854752cd2f011c2062e6",
+          "validation": "tests/item8/test_feature_modifier_references.py::test_monster_box_selected_loot_sources"
+        },
+        "mechanism": "NetherObsidianSpikesModule registers ObsidianSpikeGenerator through Zeta at UNDERGROUND_DECORATION with weight 10. Direct block generation has no member structure templates.",
+        "remaining": "Resolve CompressedBlocksModule luminous-decoration choice, shared horizontal-direction contents, relevant global loot/ambient-spawn contributions and preserved-world attribution. Do not repeat the captured generator or shared Zeta mapping. Final family reconciliation remains open.",
+        "scope": "Working Item 8 family and required attributes only. No Item 9 tier or observed pacing claim.",
+        "shared_enablement_evidence": "quark:monster_box.effective_enablement and its linked shared Zeta sources. This module also specifies only category world; frozen category/module toggles are true."
       },
       "quark:spiral_spire": {
         "evidence_reference": "betterendisland:platform_gateway.effective_biome_gap.zeta_resolution",
