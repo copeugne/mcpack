@@ -333,6 +333,8 @@ CLASSES: tuple[str, ...] = (
     "org/violetmoon/quark/content/world/module/FallenLogsModule.class",
     "org/violetmoon/quark/content/world/module/FairyRingsModule.class",
     "org/violetmoon/quark/content/world/module/MonsterBoxModule.class",
+    "org/violetmoon/quark/content/world/module/NetherObsidianSpikesModule.class",
+    "org/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator.class",
     "org/violetmoon/quark/content/world/gen/FallenLogGenerator.class",
     "org/violetmoon/quark/content/world/gen/FallenLogGenerator$Decor.class",
     "org/violetmoon/quark/content/world/gen/FairyRingGenerator.class",
@@ -428,6 +430,8 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     continue
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = "/mixin/" in name or "/mixins/" in name or name in {
+                    "org/violetmoon/quark/content/world/module/NetherObsidianSpikesModule.class",
+                    "org/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator.class",
                     "org/violetmoon/quark/base/proxy/CommonProxy.class",
                     "org/violetmoon/zetaimplforge/module/ModFileScanDataModuleFinder.class",
                     "org/violetmoon/quark/content/world/module/MonsterBoxModule.class",
