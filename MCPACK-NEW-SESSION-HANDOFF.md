@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+The optional spike-decoration investigation is dispositioned in de6b0dc.
+Keep both conditional materials and exact selection UNKNOWN. Do not capture
+CompressedBlocksModule merely to choose between the two decorations: the source
+branches rejoin before identical spawner/chest operations and preserve geometry.
+This does not waive required family attributes, provider coverage or world
+observations. Return to broader coverage and unresolved gameplay-relevant inputs.
+All 31 affected tests passed; no new source capture or measurement was added.
+
 Shared direction geometry is resolved in 239f150 from capture 49df38d.
 HORIZONTALS is NORTH, SOUTH, WEST, EAST. Nether spikes request a 3-by-3 footprint;
 Fallen Log side decoration is perpendicular, giving possible 5-by-3 or 6-by-3
