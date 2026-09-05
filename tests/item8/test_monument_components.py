@@ -58,3 +58,60 @@ def test_monument_candidate_component_resources() -> None:
                                   enabled_packs=["vanilla", "mod_data"],
                                   lithostitched_overlay=True)
     assert template_ids <= selected.keys()
+    expected_entities = {
+        "desert": {"minecraft:skeleton", "minecraft:creeper", "minecraft:husk",
+                   "minecraft:guardian"},
+        "icy": {"minecraft:stray", "minecraft:vex", "minecraft:guardian"},
+        "jungle": {"minecraft:skeleton", "minecraft:creeper", "minecraft:husk",
+                   "minecraft:guardian"},
+        "nether": {"minecraft:wither_skeleton", "minecraft:magma_cube", "minecraft:strider"},
+    }
+    for variant, expected in expected_entities.items():
+        documents = [cast("dict[str, JsonValue]", selected[key]["document"])
+                     for key in template_ids
+                     if key.startswith(f"repurposed_structures:monuments/{variant}/")]
+        assert len(documents) == 22
+        entities = [cast("dict[str, JsonValue]", entity["nbt"])
+                    for doc in documents
+                    for entity in cast("list[dict[str, JsonValue]]", doc["entities"])]
+        assert {str(entity["id"]) for entity in entities} == expected
+        blocks = [cast("dict[str, JsonValue]", block["nbt"])
+                  for doc in documents
+                  for block in cast("list[dict[str, JsonValue]]", doc["block_entities"])]
+        assert {str(block["id"]) for block in blocks} == {"minecraft:chest"}
+        assert {str(block["LootTable"]) for block in blocks} == {
+            f"repurposed_structures:chests/monuments/{variant}"}
+
+
+def test_monument_processor_loot_references() -> None:
+    raw = Path("evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd")
+    catalog = cast("dict[str, list[JsonValue]]", json.loads(gzip.decompress(raw)))
+    candidates: list[JsonValue] = [
+        row for row in catalog["resources"] if isinstance(row, dict)
+        and "data/repurposed_structures/worldgen/processor_list/monuments/"
+        in str(row.get("path"))
+    ]
+    selected, _ = select_resources(candidates, "worldgen/processor_list",
+                                  enabled_packs=["vanilla", "mod_data"],
+                                  lithostitched_overlay=True)
+    assert set(selected) == {f"repurposed_structures:monuments/{name}" for name in (
+        "desert_randomize", "icy_randomize", "jungle_randomize", "nether_randomize",
+        "nether_openings")}
+    jungle = cast("dict[str, list[dict[str, JsonValue]]]",
+                  selected["repurposed_structures:monuments/jungle_randomize"]["document"])
+    surface = jungle["processors"][0]
+    assert surface["processor_type"] == "repurposed_structures:structure_surface_processor"
+    delegate = cast("dict[str, JsonValue]", surface["delegate"])
+    assert delegate["processor_type"] == "minecraft:rule"
+    rules = cast("list[dict[str, JsonValue]]", delegate["rules"])
+    modifiers = [r["block_entity_modifier"] for r in rules if "block_entity_modifier" in r]
+    assert modifiers == [{"loot_table": "repurposed_structures:archaeology/monument_jungle",
+                          "type": "minecraft:append_loot"}] * 4
+    loot, _ = select_resources(catalog["resources"], "loot_table",
+                              enabled_packs=["vanilla", "mod_data"],
+                              lithostitched_overlay=True)
+    assert "repurposed_structures:archaeology/monument_jungle" in loot
+    assert {f"repurposed_structures:chests/monuments/{v}"
+            for v in ("desert", "icy", "jungle", "nether")} <= loot.keys()
