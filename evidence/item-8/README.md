@@ -2,9 +2,9 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory: `702ec5c`, SHA-256
-`ae7f0a16a86929ad24361ab9befa80aebf5e51100c72bc9ba44a64f8f8bafba2`.
-All 887 registered roots are assigned once in 452 working groups. This is not
+Current working inventory regenerated at `5bb0942`, SHA-256
+`21481771b21790e45a616efbef2d7b958fe719302b4bcf4e0dc8683e749760e5`.
+All 887 registered roots are assigned once in 431 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
 IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
@@ -876,3 +876,10 @@ All 67 affected tests and scoped checks passed. The smaller decision file
 replaces duplicated family attributes with one family and explicit design/root
 relationships. Inventory regrouping is delivered separately because it is a
 large generated change produced by the existing builder.
+
+Grouping and verification are delivered in `5bb0942`. Inventory regenerated at
+that revision, SHA-256:
+`21481771b21790e45a616efbef2d7b958fe719302b4bcf4e0dc8683e749760e5`.
+The 22 prior CTOV village rows become one, retaining their union of templates,
+biome constraints, loot references and saved-start observation indexes. All other
+family rows are unchanged. Raw sources and their identities are unchanged.
