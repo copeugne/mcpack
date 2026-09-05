@@ -1,0 +1,143 @@
+Compiled from "PermafrostModule.java"
+public class org.violetmoon.quark.content.world.module.PermafrostModule extends org.violetmoon.zeta.module.ZetaModule {
+  public org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyleConfig generationSettings;
+
+  public static org.violetmoon.zeta.block.ZetaBlock permafrost;
+
+  public static java.util.List<net.minecraft.world.level.block.Block> blocks;
+
+  public org.violetmoon.quark.content.world.module.PermafrostModule();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method org/violetmoon/zeta/module/ZetaModule."<init>":()V
+       4: aload_0
+       5: invokestatic  #7                  // Method org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig.styleBuilder:()Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder;
+       8: new           #13                 // class org/violetmoon/quark/content/world/undergroundstyle/PermafrostStyle
+      11: dup
+      12: invokespecial #15                 // Method org/violetmoon/quark/content/world/undergroundstyle/PermafrostStyle."<init>":()V
+      15: invokevirtual #16                 // Method org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder.style:(Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyle;)Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder;
+      18: iconst_0
+      19: iconst_1
+      20: anewarray     #22                 // class java/lang/String
+      23: dup
+      24: iconst_0
+      25: ldc           #24                 // String minecraft:frozen_peaks
+      27: aastore
+      28: invokestatic  #26                 // Method org/violetmoon/zeta/config/type/CompoundBiomeConfig.fromBiomeReslocs:(Z[Ljava/lang/String;)Lorg/violetmoon/zeta/config/type/CompoundBiomeConfig;
+      31: invokevirtual #32                 // Method org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder.biomes:(Lorg/violetmoon/zeta/config/type/IBiomeConfig;)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      34: checkcast     #17                 // class org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder
+      37: iconst_2
+      38: invokevirtual #36                 // Method org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder.rarity:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      41: checkcast     #17                 // class org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder
+      44: bipush        72
+      46: invokevirtual #40                 // Method org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder.horizontalSize:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      49: checkcast     #17                 // class org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder
+      52: bipush        15
+      54: invokevirtual #43                 // Method org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder.verticalSize:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      57: checkcast     #17                 // class org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder
+      60: bipush        22
+      62: invokevirtual #46                 // Method org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder.horizontalVariation:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      65: checkcast     #17                 // class org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder
+      68: iconst_4
+      69: invokevirtual #49                 // Method org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder.verticalVariation:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      72: checkcast     #17                 // class org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder
+      75: bipush        105
+      77: invokevirtual #52                 // Method org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder.minYLevel:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      80: checkcast     #17                 // class org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder
+      83: sipush        140
+      86: invokevirtual #55                 // Method org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder.maxYLevel:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      89: checkcast     #17                 // class org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder
+      92: invokevirtual #58                 // Method org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig$Builder.build:()Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig;
+      95: putfield      #62                 // Field generationSettings:Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig;
+      98: return
+
+  public final void register(org.violetmoon.zeta.event.load.ZRegister);
+    Code:
+       0: getstatic     #68                 // Field net/minecraft/world/item/CreativeModeTabs.BUILDING_BLOCKS:Lnet/minecraft/resources/ResourceKey;
+       3: iconst_0
+       4: iconst_1
+       5: getstatic     #74                 // Field net/minecraft/world/level/block/Blocks.DEEPSLATE:Lnet/minecraft/world/level/block/Block;
+       8: invokestatic  #80                 // Method org/violetmoon/zeta/registry/CreativeTabManager.startChain:(Lnet/minecraft/resources/ResourceKey;ZZLnet/minecraft/world/level/ItemLike;)V
+      11: new           #86                 // class org/violetmoon/zeta/block/ZetaBlock
+      14: dup
+      15: ldc           #88                 // String permafrost
+      17: aload_0
+      18: invokestatic  #90                 // Method org/violetmoon/zeta/block/OldMaterials.stone:()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+      21: getstatic     #96                 // Field net/minecraft/world/level/material/MapColor.COLOR_LIGHT_BLUE:Lnet/minecraft/world/level/material/MapColor;
+      24: invokevirtual #102                // Method net/minecraft/world/level/block/state/BlockBehaviour$Properties.mapColor:(Lnet/minecraft/world/level/material/MapColor;)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+      27: invokevirtual #108                // Method net/minecraft/world/level/block/state/BlockBehaviour$Properties.requiresCorrectToolForDrops:()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+      30: ldc           #111                // float 1.5f
+      32: ldc           #112                // float 10.0f
+      34: invokevirtual #113                // Method net/minecraft/world/level/block/state/BlockBehaviour$Properties.strength:(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+      37: getstatic     #117                // Field net/minecraft/world/level/block/SoundType.STONE:Lnet/minecraft/world/level/block/SoundType;
+      40: invokevirtual #123                // Method net/minecraft/world/level/block/state/BlockBehaviour$Properties.sound:(Lnet/minecraft/world/level/block/SoundType;)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+      43: invokespecial #127                // Method org/violetmoon/zeta/block/ZetaBlock."<init>":(Ljava/lang/String;Lorg/violetmoon/zeta/module/ZetaModule;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+      46: getstatic     #68                 // Field net/minecraft/world/item/CreativeModeTabs.BUILDING_BLOCKS:Lnet/minecraft/resources/ResourceKey;
+      49: getstatic     #74                 // Field net/minecraft/world/level/block/Blocks.DEEPSLATE:Lnet/minecraft/world/level/block/Block;
+      52: iconst_1
+      53: invokevirtual #130                // Method org/violetmoon/zeta/block/ZetaBlock.setCreativeTab:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/ItemLike;Z)Lnet/minecraft/world/level/block/Block;
+      56: checkcast     #86                 // class org/violetmoon/zeta/block/ZetaBlock
+      59: putstatic     #134                // Field permafrost:Lorg/violetmoon/zeta/block/ZetaBlock;
+      62: new           #86                 // class org/violetmoon/zeta/block/ZetaBlock
+      65: dup
+      66: ldc           #137                // String permafrost_bricks
+      68: aload_0
+      69: getstatic     #134                // Field permafrost:Lorg/violetmoon/zeta/block/ZetaBlock;
+      72: invokestatic  #139                // Method org/violetmoon/quark/base/util/BlockPropertyUtil.copyPropertySafe:(Lnet/minecraft/world/level/block/Block;)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+      75: invokespecial #127                // Method org/violetmoon/zeta/block/ZetaBlock."<init>":(Ljava/lang/String;Lorg/violetmoon/zeta/module/ZetaModule;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+      78: getstatic     #68                 // Field net/minecraft/world/item/CreativeModeTabs.BUILDING_BLOCKS:Lnet/minecraft/resources/ResourceKey;
+      81: invokevirtual #145                // Method org/violetmoon/zeta/block/ZetaBlock.setCreativeTab:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/level/block/Block;
+      84: checkcast     #86                 // class org/violetmoon/zeta/block/ZetaBlock
+      87: astore_2
+      88: invokestatic  #148                // Method org/violetmoon/zeta/registry/CreativeTabManager.endChain:()V
+      91: aload_1
+      92: invokeinterface #151,  1          // InterfaceMethod org/violetmoon/zeta/event/load/ZRegister.getVariantRegistry:()Lorg/violetmoon/zeta/registry/VariantRegistry;
+      97: getstatic     #134                // Field permafrost:Lorg/violetmoon/zeta/block/ZetaBlock;
+     100: getstatic     #68                 // Field net/minecraft/world/item/CreativeModeTabs.BUILDING_BLOCKS:Lnet/minecraft/resources/ResourceKey;
+     103: invokevirtual #157                // Method org/violetmoon/zeta/registry/VariantRegistry.addSlabStairsWall:(Lorg/violetmoon/zeta/block/IZetaBlock;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/level/block/Block;
+     106: pop
+     107: aload_1
+     108: invokeinterface #151,  1          // InterfaceMethod org/violetmoon/zeta/event/load/ZRegister.getVariantRegistry:()Lorg/violetmoon/zeta/registry/VariantRegistry;
+     113: aload_2
+     114: getstatic     #68                 // Field net/minecraft/world/item/CreativeModeTabs.BUILDING_BLOCKS:Lnet/minecraft/resources/ResourceKey;
+     117: invokevirtual #157                // Method org/violetmoon/zeta/registry/VariantRegistry.addSlabStairsWall:(Lorg/violetmoon/zeta/block/IZetaBlock;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/level/block/Block;
+     120: pop
+     121: aload_0
+     122: getfield      #62                 // Field generationSettings:Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig;
+     125: getfield      #163                // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig.style:Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyle;
+     128: checkcast     #13                 // class org/violetmoon/quark/content/world/undergroundstyle/PermafrostStyle
+     131: getstatic     #134                // Field permafrost:Lorg/violetmoon/zeta/block/ZetaBlock;
+     134: invokevirtual #166                // Method org/violetmoon/zeta/block/ZetaBlock.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     137: invokevirtual #170                // Method org/violetmoon/quark/content/world/undergroundstyle/PermafrostStyle.setBlock:(Lnet/minecraft/world/level/block/state/BlockState;)V
+     140: getstatic     #174                // Field blocks:Ljava/util/List;
+     143: getstatic     #134                // Field permafrost:Lorg/violetmoon/zeta/block/ZetaBlock;
+     146: invokeinterface #178,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     151: pop
+     152: getstatic     #174                // Field blocks:Ljava/util/List;
+     155: aload_2
+     156: invokeinterface #178,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     161: pop
+     162: return
+
+  public final void setup(org.violetmoon.zeta.event.load.ZCommonSetup);
+    Code:
+       0: aload_0
+       1: new           #184                // class org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator
+       4: dup
+       5: aload_0
+       6: getfield      #62                 // Field generationSettings:Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig;
+       9: ldc           #88                 // String permafrost
+      11: invokespecial #186                // Method org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator."<init>":(Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig;Ljava/lang/String;)V
+      14: getstatic     #189                // Field net/minecraft/world/level/levelgen/GenerationStep$Decoration.UNDERGROUND_DECORATION:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+      17: iconst_1
+      18: invokestatic  #197                // Method org/violetmoon/zeta/world/WorldGenHandler.addGenerator:(Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/world/generator/Generator;Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;I)V
+      21: return
+
+  static {};
+    Code:
+       0: new           #203                // class java/util/ArrayList
+       3: dup
+       4: invokespecial #205                // Method java/util/ArrayList."<init>":()V
+       7: putstatic     #174                // Field blocks:Ljava/util/List;
+      10: return
+}

@@ -1,0 +1,72 @@
+Compiled from "PermafrostStyle.java"
+public class org.violetmoon.quark.content.world.undergroundstyle.PermafrostStyle extends org.violetmoon.quark.content.world.undergroundstyle.base.BasicUndergroundStyle {
+  public org.violetmoon.quark.content.world.undergroundstyle.PermafrostStyle();
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field net/minecraft/world/level/block/Blocks.PACKED_ICE:Lnet/minecraft/world/level/block/Block;
+       4: invokevirtual #7                  // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       7: getstatic     #1                  // Field net/minecraft/world/level/block/Blocks.PACKED_ICE:Lnet/minecraft/world/level/block/Block;
+      10: invokevirtual #7                  // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      13: getstatic     #1                  // Field net/minecraft/world/level/block/Blocks.PACKED_ICE:Lnet/minecraft/world/level/block/Block;
+      16: invokevirtual #7                  // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      19: iconst_1
+      20: invokespecial #13                 // Method org/violetmoon/quark/content/world/undergroundstyle/base/BasicUndergroundStyle."<init>":(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+      23: return
+
+  public void setBlock(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: aload_1
+       3: dup_x1
+       4: putfield      #19                 // Field floorState:Lnet/minecraft/world/level/block/state/BlockState;
+       7: putfield      #25                 // Field ceilingState:Lnet/minecraft/world/level/block/state/BlockState;
+      10: return
+
+  public void fillFloor(org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyleGenerator$Context, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: invokespecial #28                 // Method org/violetmoon/quark/content/world/undergroundstyle/base/BasicUndergroundStyle.fillFloor:(Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator$Context;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+       7: aload_1
+       8: getfield      #32                 // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator$Context.world:Lnet/minecraft/server/level/WorldGenRegion;
+      11: astore        4
+      13: aload_1
+      14: getfield      #38                 // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator$Context.random:Ljava/util/Random;
+      17: invokevirtual #42                 // Method java/util/Random.nextDouble:()D
+      20: ldc2_w        #48                 // double 0.015d
+      23: dcmpg
+      24: ifge          88
+      27: iconst_3
+      28: aload_1
+      29: getfield      #38                 // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator$Context.random:Ljava/util/Random;
+      32: iconst_3
+      33: invokevirtual #50                 // Method java/util/Random.nextInt:(I)I
+      36: iadd
+      37: istore        5
+      39: iconst_0
+      40: istore        6
+      42: iload         6
+      44: iload         5
+      46: if_icmpge     88
+      49: aload_2
+      50: invokevirtual #54                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      53: astore_2
+      54: aload         4
+      56: aload_2
+      57: invokeinterface #60,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      62: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+      65: ifeq          88
+      68: aload         4
+      70: aload_2
+      71: aload_0
+      72: getfield      #19                 // Field floorState:Lnet/minecraft/world/level/block/state/BlockState;
+      75: iconst_2
+      76: invokeinterface #72,  4           // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      81: pop
+      82: iinc          6, 1
+      85: goto          42
+      88: return
+}
