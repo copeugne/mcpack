@@ -740,7 +740,10 @@ def test_design_groups_cover_registry_and_bind_variant_definitions(namespace: st
                     assert definition[f"{kind}_type"] == name.removeprefix(kind + "_")
                 assert traces["untraced_structures"][identifier]["type"] == definition["type"]
                 assert identifier in traces["untraced_structures"]
-                if identifier in {"minecraft:buried_treasure", "minecraft:swamp_hut"}:
+                if identifier in {
+                    "minecraft:buried_treasure", "minecraft:swamp_hut",
+                    "minecraft:desert_pyramid",
+                }:
                     assert (
                         variant["missing_components"] == variant["vanilla_code_template_ids"] == []
                     )
