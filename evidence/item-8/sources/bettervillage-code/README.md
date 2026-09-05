@@ -42,3 +42,28 @@ be attributed to Better Village within the existing village family, rather
 than counted as new registered families. The family regression records the
 reachable templates and the packaged templates absent from current reachability.
 Other village contributors and incomplete Item 8 attributes remain open.
+
+## Family attribution
+
+Decision and regression implementation: `9595c52`. Validation commands:
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py -k better_village
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-bettervillage.json
+```
+
+The focused test passed (57 unrelated cases deselected), and both quality checks
+passed after correcting JSON type annotations and line lengths. The test binds
+all village evidence hashes and verifies 246 packaged replacements, 244 selected
+reachable replacements, the exact two unreachable snowy-street templates,
+disabled/absent compatibility targets, frozen config and the activation log.
+No Better Village family was introduced. Only the existing vanilla village
+record changed in the generated inventory, apart from the top-level decision
+input hash. The working inventory remains incomplete.
+
+Decision SHA-256:
+`ac85610fd8f09a8fd4c35cbecfe924ce1e8c01313fa64587000da6d5cd7e50e3`.
+Inventory SHA-256:
+`f8f649f13b19f4ed97f3c234be1346298239dc9ebc977f6eacb3ef2c1f9171ed`.
