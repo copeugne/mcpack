@@ -42,6 +42,28 @@ def test_end_island_packaged_biome_entrypoints() -> None:
                              "biome": parts[1] + ":" + parts[-1][:-5],
                              "placed_features": cast("JsonValue", links)})
     assert entrypoints["rows"] == expected
+    gap = cast("dict[str, JsonValue]", contributions[
+        "betterendisland:platform_gateway"]["effective_biome_gap"])
+    delegates = [
+        {key: row[key] for key in ("archive", "path", "sha256", "document")}
+        for row in cast("list[dict[str, JsonValue]]", catalog["resources"])
+        if "/neoforge/biome_modifier/" in str(row["path"])
+        and isinstance(row["document"], dict)
+        and row["document"].get("type") in {
+            "zeta:biome_modifier", "fabric_biome_api_v1:fabric_biome_modifier"}
+    ]
+    assert gap["code_delegating_modifiers"] == delegates
+    zeta = cast("dict[str, JsonValue]", gap["zeta_resolution"])
+    frozen = cast("dict[str, JsonValue]", zeta["frozen_configuration"])
+    config_bytes = Path(str(frozen["file"])).read_bytes()
+    assert hashlib.sha256(config_bytes).hexdigest() == frozen["sha256"]
+    world = cast("dict[str, JsonValue]", tomllib.loads(config_bytes.decode())["world"])
+    assert frozen["module_toggles"] == {
+        key: world[key] for key in ("Chorus Vegetation", "Spiral Spires")}
+    for key in ("chorus_vegetation", "spiral_spires"):
+        assert frozen[key] == world[key]
+    for path, digest in cast("dict[str, str]", zeta["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
     placement = cast("dict[str, JsonValue]", contributions[
         "betterendisland:platform_gateway"]["packaged_feature_placement"])
     recorded = cast("dict[str, dict[str, JsonValue]]", placement["resources"])

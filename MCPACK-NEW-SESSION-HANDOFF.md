@@ -6,6 +6,98 @@
 
 ### Continuation update - 2026-09-05
 
+Spiral Spires generation-setting binding is resolved in `c96729d`. The inventory
+joins source mapping, frozen/captured file equality and the initial-refresh log.
+Do not repeat the configuration-name or field-binding investigation for this
+family. World occurrence, natural spawning, other Quark consumers and broader
+provider coverage remain open. Thirty focused tests passed. No new runtime or
+measurement system was used.
+
+Configuration binding sources are preserved in `sources/zeta-config-binding`,
+`sources/quark-spire-config-annotations` and `sources/zeta-config-event-fields`
+under evidence/item-8. The latter README binds the initial refresh call to the
+existing registry-r1 debug log and resolves nested leaf annotation names.
+Do not repeat event execution or leaf predicate tracing. Reconcile parent
+section naming and frozen-file provenance using existing artifacts, then update
+the inventory's configuration attribution. No runtime field dump or spire
+observation is claimed. Broader provider coverage remains open.
+
+Spire biome filter semantics are integrated in `4233dec`, using compound and
+component captures delivered in `fb71580` and `e0792bc`. The default empty tag
+blacklist passes and the explicit allowlist admits End Highlands only. Do not
+repeat predicate tracing. Effective configuration binding, world attribution,
+other Quark consumers and broader provider coverage remain open. Thirty focused
+tests and scoped checks passed. No new measurement system was added.
+
+Spiral spire is one working landmark family in `0288f13`; repeated spires and
+random geometry remain instances/variants. Chorus vegetation is accounted for
+without a separate structure family. Source-derived attributes reference the
+existing captures and geometry derivation. Configuration binding, biome
+predicates and saved-world attribution remain open. Thirty focused tests and
+scoped checks passed. Do not reopen the procedural-versus-template distinction
+merely because the generator is outside the structure registry.
+
+Spiral spire geometry and direct contents are interpreted in `4586c78`, using
+existing captured code. Conservative requested-write envelope is 35x97x35,
+not an occupied measurement. Full geometry formulas and preflight limitations
+are in spiral_spire_geometry. This resolves the geometry portion of the older
+zeta_resolution.remaining note. Configuration binding, biome predicates,
+provider/family boundary disposition and other consumers remain open. Thirty
+focused tests and scoped checks passed; no new measurement was added.
+
+Zeta/selected Quark call-chain attribution and frozen settings are integrated
+in `d961290`. Inherited Generator unwraps ServerLevel and dispatches into the
+captured multi-chunk implementation. Frozen radii are 7 and 15; effective field
+binding remains open, alongside complete spire geometry, biome predicates,
+other Quark consumers and Forgified Fabric callbacks. Thirty focused tests and
+scoped checks passed after a test typing correction. Do not repeat captured
+library tracing. Item 8 and broader provider coverage remain incomplete.
+
+Shared applicability sources are delivered in `1d6be84`. Source search uses
+ceil(radius/16) neighboring chunks; DimensionConfig's LevelAccessor overload
+requires a Level. Resolve the inherited Generator.canGenerate/generate caller
+before interpreting this as disabling WorldGenRegion generation. Capture only
+that exact base class through the existing extractor.
+
+Quark generator capture is delivered in `a7af165`. Both reject source positions
+closer than 1050 to origin, but that alone does not bound generated parts.
+Resolve MultiChunkFeatureGenerator and DimensionConfig through the existing
+extractor, then reconcile frozen radii and dimensions. These are direct
+applicability dependencies, not permission to expand unrelated library tracing.
+
+Quark registrations are delivered in `c4cb9ec`; Zeta DeferredFeature execution
+link is in `de0cdac`. Inspect the directly registered ChorusVegetationGenerator
+and SpiralSpireGenerator next using the existing extractor. Their actual block
+placement and eligibility checks are needed for non-registry provider coverage
+and End interactions; no broader library tracing is justified by module names.
+
+Zeta handlers are delivered in `1b650ca`. Exploratory class-reference search
+located Quark consumer modules. Inspect ChorusVegetationModule and
+SpiralSpiresModule registrations plus Zeta DeferredFeature's execution link
+using the existing extractor. These are concrete consumer paths relevant to End
+generation; module names alone do not establish applicability. Other Quark
+consumers remain in broader provider coverage, and the exploratory search is
+not accepted as an exhaustive consumer inventory.
+
+Zeta modifier source is delivered in `3138b23`. It appends a deferred feature
+per decoration stage and delegates spawning separately. Continue with its exact
+WorldGenHandler and ZetaSpawnModifier dependencies through the existing extractor;
+these resolve the concrete generation and natural-mob paths. Do not recapture
+the modifier or generalize the extraction framework.
+
+Trace Zeta's exact org/violetmoon/zetaimplforge/world/ZetaBiomeModifier class
+with the existing extractor. Its retained JSON names a code-backed modifier
+without feature targets, so this class directly addresses the effective-biome
+gap. Add only the retained archive and exact class selection; no new extraction
+framework or runtime measurement is needed.
+
+Effective biome follow-up is now concrete in `bb42eb0`: retained Zeta and
+Forgified Fabric biome-modifier documents delegate to code without declaring
+feature targets. Their exact identities are in effective_biome_gap. Resolve
+relevant implementations/callbacks before claiming packaged End feature lists
+are final. Do not infer they change End content merely because they exist.
+Thirty focused tests and scoped checks passed. Item 8 remains incomplete.
+
 Platform caller attribution is integrated in `6032002`, source `ccc5c2f`.
 EndPlatformFeature.place forwards level/origin/false to the static hooked method.
 Frozen configuration selects the custom generator. Nominal bounds for the

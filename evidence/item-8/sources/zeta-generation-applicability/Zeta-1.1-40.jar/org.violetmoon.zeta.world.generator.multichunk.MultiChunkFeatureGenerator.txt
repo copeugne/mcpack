@@ -1,0 +1,263 @@
+Compiled from "MultiChunkFeatureGenerator.java"
+public abstract class org.violetmoon.zeta.world.generator.multichunk.MultiChunkFeatureGenerator extends org.violetmoon.zeta.world.generator.Generator {
+  private final long seedXor;
+
+  public org.violetmoon.zeta.world.generator.multichunk.MultiChunkFeatureGenerator(org.violetmoon.zeta.config.type.DimensionConfig, java.util.function.BooleanSupplier, long);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokespecial #1                  // Method org/violetmoon/zeta/world/generator/Generator."<init>":(Lorg/violetmoon/zeta/config/type/DimensionConfig;Ljava/util/function/BooleanSupplier;)V
+       6: aload_0
+       7: lload_3
+       8: putfield      #7                  // Field seedXor:J
+      11: return
+
+  public final void generateChunk(net.minecraft.server.level.WorldGenRegion, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: invokevirtual #13                 // Method getFeatureRadius:()I
+       4: istore        5
+       6: iload         5
+       8: ifgt          12
+      11: return
+      12: iload         5
+      14: i2d
+      15: ldc2_w        #17                 // double 16.0d
+      18: ddiv
+      19: invokestatic  #19                 // Method java/lang/Math.ceil:(D)D
+      22: d2i
+      23: istore        6
+      25: aload_1
+      26: invokevirtual #25                 // Method net/minecraft/server/level/WorldGenRegion.getSeed:()J
+      29: lstore        7
+      31: new           #31                 // class java/util/Random
+      34: dup
+      35: lload         7
+      37: invokespecial #33                 // Method java/util/Random."<init>":(J)V
+      40: astore        9
+      42: aload         9
+      44: invokevirtual #36                 // Method java/util/Random.nextLong:()J
+      47: lstore        10
+      49: aload         9
+      51: invokevirtual #36                 // Method java/util/Random.nextLong:()J
+      54: lstore        12
+      56: aload         4
+      58: invokevirtual #39                 // Method net/minecraft/core/BlockPos.getX:()I
+      61: iconst_4
+      62: ishr
+      63: istore        14
+      65: aload         4
+      67: invokevirtual #44                 // Method net/minecraft/core/BlockPos.getZ:()I
+      70: iconst_4
+      71: ishr
+      72: istore        15
+      74: lload         10
+      76: iload         14
+      78: i2l
+      79: lmul
+      80: lload         12
+      82: iload         15
+      84: i2l
+      85: lmul
+      86: ladd
+      87: lload         7
+      89: lxor
+      90: aload_0
+      91: getfield      #7                  // Field seedXor:J
+      94: lxor
+      95: lstore        16
+      97: new           #31                 // class java/util/Random
+     100: dup
+     101: lload         16
+     103: invokespecial #33                 // Method java/util/Random."<init>":(J)V
+     106: astore        18
+     108: iload         14
+     110: iload         6
+     112: isub
+     113: istore        19
+     115: iload         19
+     117: iload         14
+     119: iload         6
+     121: iadd
+     122: if_icmpgt     258
+     125: iload         15
+     127: iload         6
+     129: isub
+     130: istore        20
+     132: iload         20
+     134: iload         15
+     136: iload         6
+     138: iadd
+     139: if_icmpgt     252
+     142: lload         10
+     144: iload         19
+     146: i2l
+     147: lmul
+     148: lload         12
+     150: iload         20
+     152: i2l
+     153: lmul
+     154: ladd
+     155: lload         7
+     157: lxor
+     158: aload_0
+     159: getfield      #7                  // Field seedXor:J
+     162: lxor
+     163: lstore        16
+     165: new           #31                 // class java/util/Random
+     168: dup
+     169: lload         16
+     171: invokespecial #33                 // Method java/util/Random."<init>":(J)V
+     174: astore        21
+     176: new           #40                 // class net/minecraft/core/BlockPos
+     179: dup
+     180: iload         19
+     182: iconst_4
+     183: ishl
+     184: iconst_0
+     185: iload         20
+     187: iconst_4
+     188: ishl
+     189: invokespecial #47                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     192: astore        22
+     194: aload_0
+     195: aload_1
+     196: aload         21
+     198: aload_2
+     199: aload         22
+     201: invokevirtual #50                 // Method getSourcesInChunk:(Lnet/minecraft/server/level/WorldGenRegion;Ljava/util/Random;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/core/BlockPos;)[Lnet/minecraft/core/BlockPos;
+     204: astore        23
+     206: aload         23
+     208: arraylength
+     209: istore        24
+     211: iconst_0
+     212: istore        25
+     214: iload         25
+     216: iload         24
+     218: if_icmpge     246
+     221: aload         23
+     223: iload         25
+     225: aaload
+     226: astore        26
+     228: aload_0
+     229: aload         26
+     231: aload_2
+     232: aload         18
+     234: aload         4
+     236: aload_1
+     237: invokevirtual #54                 // Method generateChunkPart:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/chunk/ChunkGenerator;Ljava/util/Random;Lnet/minecraft/core/BlockPos;Lnet/minecraft/server/level/WorldGenRegion;)V
+     240: iinc          25, 1
+     243: goto          214
+     246: iinc          20, 1
+     249: goto          132
+     252: iinc          19, 1
+     255: goto          115
+     258: return
+
+  public abstract int getFeatureRadius();
+
+  public abstract void generateChunkPart(net.minecraft.core.BlockPos, net.minecraft.world.level.chunk.ChunkGenerator, java.util.Random, net.minecraft.core.BlockPos, net.minecraft.server.level.WorldGenRegion);
+
+  public abstract net.minecraft.core.BlockPos[] getSourcesInChunk(net.minecraft.server.level.WorldGenRegion, java.util.Random, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.core.BlockPos);
+
+  public void forEachChunkBlock(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, int, int, java.util.function.Consumer<net.minecraft.core.BlockPos>);
+    Code:
+       0: aload_1
+       1: invokeinterface #58,  1           // InterfaceMethod net/minecraft/world/level/LevelReader.getMinBuildHeight:()I
+       6: iconst_1
+       7: iadd
+       8: iload_3
+       9: invokestatic  #63                 // Method java/lang/Math.max:(II)I
+      12: istore_3
+      13: aload_1
+      14: invokeinterface #67,  1           // InterfaceMethod net/minecraft/world/level/LevelReader.getMaxBuildHeight:()I
+      19: iconst_1
+      20: isub
+      21: iload         4
+      23: invokestatic  #70                 // Method java/lang/Math.min:(II)I
+      26: istore        4
+      28: aload_2
+      29: invokevirtual #39                 // Method net/minecraft/core/BlockPos.getX:()I
+      32: istore        6
+      34: aload_2
+      35: invokevirtual #44                 // Method net/minecraft/core/BlockPos.getZ:()I
+      38: istore        7
+      40: new           #73                 // class net/minecraft/core/BlockPos$MutableBlockPos
+      43: dup
+      44: iconst_0
+      45: iconst_0
+      46: iconst_0
+      47: invokespecial #75                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":(III)V
+      50: astore        8
+      52: iconst_0
+      53: istore        9
+      55: iload         9
+      57: bipush        16
+      59: if_icmpge     127
+      62: iload_3
+      63: istore        10
+      65: iload         10
+      67: iload         4
+      69: if_icmpge     121
+      72: iconst_0
+      73: istore        11
+      75: iload         11
+      77: bipush        16
+      79: if_icmpge     115
+      82: aload         8
+      84: iload         6
+      86: iload         9
+      88: iadd
+      89: iload         10
+      91: iload         7
+      93: iload         11
+      95: iadd
+      96: invokevirtual #76                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      99: pop
+     100: aload         5
+     102: aload         8
+     104: invokeinterface #80,  2           // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+     109: iinc          11, 1
+     112: goto          75
+     115: iinc          10, 1
+     118: goto          65
+     121: iinc          9, 1
+     124: goto          55
+     127: return
+
+  public boolean isInsideChunk(net.minecraft.core.BlockPos, int, int);
+    Code:
+       0: iload_2
+       1: bipush        16
+       3: imul
+       4: istore        4
+       6: iload_3
+       7: bipush        16
+       9: imul
+      10: istore        5
+      12: aload_1
+      13: invokevirtual #39                 // Method net/minecraft/core/BlockPos.getX:()I
+      16: iload         4
+      18: if_icmple     58
+      21: aload_1
+      22: invokevirtual #44                 // Method net/minecraft/core/BlockPos.getZ:()I
+      25: iload         5
+      27: if_icmple     58
+      30: aload_1
+      31: invokevirtual #39                 // Method net/minecraft/core/BlockPos.getX:()I
+      34: iload         4
+      36: bipush        16
+      38: iadd
+      39: if_icmpge     58
+      42: aload_1
+      43: invokevirtual #44                 // Method net/minecraft/core/BlockPos.getZ:()I
+      46: iload         5
+      48: bipush        16
+      50: iadd
+      51: if_icmpge     58
+      54: iconst_1
+      55: goto          59
+      58: iconst_0
+      59: ireturn
+}

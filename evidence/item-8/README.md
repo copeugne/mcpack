@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `6032002`, SHA-256
-`065dbbf1c6e1d25b2feec3996d574c1fd9f29c5cbc5a6dd6981ab2e74c50464c`.
+Current working inventory regenerated at `c96729d`, SHA-256
+`b7b7716e0b4c59e372750193d8c806c6d2ae7aeed9115f829a8b68740acb46d5`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,70 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The c96729d increment resolves Spiral Spires generation-setting binding through
+module naming, recursive field mapping, frozen-file equality and the preserved
+initial-refresh log. Thirty focused tests and scoped checks passed. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-spire-bound-reproduction.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-spire-bound-reproduction.json
+```
+
+The 4233dec increment resolves the source semantics of the compound biome
+filter used by Spiral Spires. Its constructor defaults admit End Highlands;
+frozen-file values agree. Effective configuration binding remains open.
+Thirty focused tests and scoped checks passed. Reproduce this inventory with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-spire-biomes-4233dec.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-spire-biomes-4233dec.json
+```
+
+The 0288f13 increment retains quark:spiral_spire as one working landmark family.
+Procedural generation does not exclude a distinct landmark design; randomized
+geometry and repeated spires remain variants or instances. Chorus plant
+placements are accounted for as vegetation, not another structure family.
+Applicability and saved-world attribution remain open. Thirty focused tests and
+scoped checks passed. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-spire-family-0288f13.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-spire-family-0288f13.json
+```
+
+The 4586c78 increment interprets the already preserved SpiralSpireGenerator
+body and crystal geometry. The conservative 35x97x35 write envelope is derived
+from the recorded formulas, not a measured typical structure size. Central-column
+preflight is not whole-footprint clearance. Direct generator content has no
+entity, loot-table or physical-spawner requests; later block behavior remains
+separate. Thirty focused tests and scoped checks passed. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-spire-geometry-4586c78.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-spire-geometry-4586c78.json
+```
+
+The d961290 increment integrates the captured Zeta call chain and selected
+Quark consumer registrations, plus exact frozen consumer settings. It resolves
+region unwrapping and source-search reach, while effective configuration binding,
+other consumers and Forgified Fabric effects remain open. Thirty focused tests
+passed; scoped checks passed after a test typing correction. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-zeta-chain-d961290.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-zeta-chain-d961290.json
+```
+
+The bb42eb0 increment identifies Zeta and Forgified Fabric biome modifiers whose
+JSON delegates to code without enumerating affected features. Their effects must
+be resolved before treating packaged End feature membership as effective.
+Thirty focused tests and scoped checks passed. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-biome-gap-bb42eb0.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-biome-gap-bb42eb0.json
+```
 
 The 6032002 increment closes the platform caller link with the preserved
 vanilla EndPlatformFeature implementation. The packaged fixed-origin path
