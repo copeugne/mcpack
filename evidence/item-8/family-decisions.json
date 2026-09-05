@@ -23227,7 +23227,7 @@
         "minecraft:shipwreck",
         "minecraft:shipwreck_beached"
       ],
-      "rationale": "Beached and ocean roots share the shipwreck generator. The is_beached flag and biome constraints are placement variants. Packaged definition identity is preserved; retained-mod hooks, effective content and remaining attributes require reconciliation.",
+      "rationale": "Ocean and beached roots share a single-template shipwreck generator. The is_beached flag selects 20 ocean or 11 beached alternatives and different terrain placement rules. Degradation, hull orientation and wood palettes are design variants, not separate families. All vanilla template references resolve; retained-mod changes remain to be reconciled.",
       "variants": {
         "minecraft:shipwreck": {
           "definition": {
@@ -23237,7 +23237,30 @@
             "step": "surface_structures",
             "type": "minecraft:shipwreck"
           },
-          "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+          "missing_components": [],
+          "vanilla_code_template_ids": [
+            "minecraft:shipwreck/with_mast",
+            "minecraft:shipwreck/upsidedown_full",
+            "minecraft:shipwreck/upsidedown_fronthalf",
+            "minecraft:shipwreck/upsidedown_backhalf",
+            "minecraft:shipwreck/sideways_full",
+            "minecraft:shipwreck/sideways_fronthalf",
+            "minecraft:shipwreck/sideways_backhalf",
+            "minecraft:shipwreck/rightsideup_full",
+            "minecraft:shipwreck/rightsideup_fronthalf",
+            "minecraft:shipwreck/rightsideup_backhalf",
+            "minecraft:shipwreck/with_mast_degraded",
+            "minecraft:shipwreck/upsidedown_full_degraded",
+            "minecraft:shipwreck/upsidedown_fronthalf_degraded",
+            "minecraft:shipwreck/upsidedown_backhalf_degraded",
+            "minecraft:shipwreck/sideways_full_degraded",
+            "minecraft:shipwreck/sideways_fronthalf_degraded",
+            "minecraft:shipwreck/sideways_backhalf_degraded",
+            "minecraft:shipwreck/rightsideup_full_degraded",
+            "minecraft:shipwreck/rightsideup_fronthalf_degraded",
+            "minecraft:shipwreck/rightsideup_backhalf_degraded"
+          ],
+          "component_scope": "Frozen vanilla template array selected by is_beached; retained-mod generator transformations remain unresolved."
         },
         "minecraft:shipwreck_beached": {
           "definition": {
@@ -23247,13 +23270,100 @@
             "step": "surface_structures",
             "type": "minecraft:shipwreck"
           },
-          "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+          "missing_components": [],
+          "vanilla_code_template_ids": [
+            "minecraft:shipwreck/with_mast",
+            "minecraft:shipwreck/sideways_full",
+            "minecraft:shipwreck/sideways_fronthalf",
+            "minecraft:shipwreck/sideways_backhalf",
+            "minecraft:shipwreck/rightsideup_full",
+            "minecraft:shipwreck/rightsideup_fronthalf",
+            "minecraft:shipwreck/rightsideup_backhalf",
+            "minecraft:shipwreck/with_mast_degraded",
+            "minecraft:shipwreck/rightsideup_full_degraded",
+            "minecraft:shipwreck/rightsideup_fronthalf_degraded",
+            "minecraft:shipwreck/rightsideup_backhalf_degraded"
+          ],
+          "component_scope": "Frozen vanilla template array selected by is_beached; retained-mod generator transformations remain unresolved."
         }
       },
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/vanilla-shipwreck-code/identities.json": "313d8031a873de27b39ca5fa8fed9ab1ea1f3694fc56db8afcd7127a3e4415b8",
+        "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c"
+      },
+      "attributes": {
+        "approximate_footprint": {
+          "nominal_width_blocks": 9,
+          "nominal_length_options_blocks": [
+            16,
+            17,
+            22,
+            24,
+            28
+          ],
+          "basis": [
+            "evidence/item-8/sources/vanilla-shipwreck-code/identities.json",
+            "evidence/item-8/sources/templates-redacted.json.gz"
+          ],
+          "scope": "Single-template envelope; rotation exchanges horizontal axes. Not occupied volume or visible footprint after burial; retained-mod changes remain unresolved."
+        },
+        "approximate_vertical_size": {
+          "nominal_height_options_blocks": [
+            9,
+            21
+          ],
+          "with_mast_height_blocks": 21,
+          "other_templates_height_blocks": 9,
+          "basis": [
+            "evidence/item-8/sources/vanilla-shipwreck-code/identities.json",
+            "evidence/item-8/sources/templates-redacted.json.gz"
+          ],
+          "scope": "Template envelope, not exposed height. Beached placement may bury part of it."
+        },
+        "mob_source": {
+          "vanilla_authored_entity_ids": [],
+          "mechanism": "All selected templates have empty entity lists; ShipwreckPiece.handleDataMarker assigns chest loot and does not create mobs.",
+          "basis": [
+            "evidence/item-8/sources/vanilla-shipwreck-code/identities.json",
+            "evidence/item-8/sources/templates-redacted.json.gz"
+          ],
+          "scope": "Natural biome spawning and retained-mod additions remain unresolved."
+        },
+        "loot_table_source": {
+          "marker_tables": {
+            "map_chest": "minecraft:chests/shipwreck_map",
+            "supply_chest": "minecraft:chests/shipwreck_supply",
+            "treasure_chest": "minecraft:chests/shipwreck_treasure"
+          },
+          "mechanism": "Assign the mapped loot table to the block below the DATA marker.",
+          "basis": [
+            "evidence/item-8/sources/vanilla-shipwreck-code/identities.json",
+            "evidence/item-8/sources/vanilla-end-city-code/identities.json"
+          ],
+          "scope": "Vanilla assignment sources; effective modded table contents and observed loot remain unresolved."
+        },
+        "generated_spawners": {
+          "vanilla_template_spawner_block_types": [],
+          "basis": [
+            "evidence/item-8/sources/vanilla-shipwreck-code/identities.json",
+            "evidence/item-8/sources/templates-redacted.json.gz"
+          ],
+          "scope": "All palettes of selected templates lack ordinary/trial-spawner blocks. The vanilla marker handler does not place spawners. Retained-mod injections remain unresolved."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "No mobs authored by the selected vanilla templates or marker handler.",
+          "natural": "Packaged spawn_overrides is empty; natural biome populations and retained-mod effects are not resolved by this source inspection."
+        },
+        "underground_surface_classification": {
+          "minecraft:shipwreck": "Ocean-floor placement using sampled mean OCEAN_FLOOR_WG height; not a fixed-depth underground structure.",
+          "minecraft:shipwreck_beached": "Surface-associated, partially buried placement: sampled minimum WORLD_SURFACE_WG height minus half template height (integer division) minus nextInt(3).",
+          "basis": "evidence/item-8/sources/vanilla-shipwreck-code/identities.json",
+          "scope": "Frozen vanilla placement rule; actual exposure, water cover and retained-mod changes are not measured."
+        }
       }
     },
     {
