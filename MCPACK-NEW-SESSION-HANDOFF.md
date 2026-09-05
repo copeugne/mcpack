@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-05
 
+Lake placement and visual shore cues are delivered in `8292695`. All five roots
+preserve the base precheck and their distinct center/neighbor conditions. The
+two piece algorithms retain different shore/dust/plant cues; actual visibility
+is unmeasured. All 74 affected tests and scoped checks passed. Inventory SHA-256:
+`25e78dd6bbe34e3ac2c6ee60c1bda55119ae79772c2f69c6c32fc29270a48247`.
+Only lake placement/cues and grouping evidence changed; still 421 working groups
+and 887 roots. Continue remaining direct lake content, provider/canonical coverage
+and required attributes. The narrative report still contains obsolete zero-mod
+completion claims and needs explicit historical labeling. Item 8 is incomplete;
+no new runtime, measurement system or downstream work was added.
+
+
 Mountain base placement precheck is integrated in `b52dfa9`. The independent
 FeatureBaseStructure Y >= 10 check precedes the root-specific Y > 5 / Y > 50
 checks. Both sampling stages remain explicit. All 73 affected tests and scoped
