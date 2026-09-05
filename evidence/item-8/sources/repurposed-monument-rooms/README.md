@@ -46,3 +46,27 @@ coverage, not complete graph reachability, assembly geometry, generation
 success or an accepted family count. The packaged openings/wall_2 resources
 are not included in the captured direct candidate suffixes. Their existence
 does not establish an active call path or justify calling them unreachable.
+
+## Packaged encounter and loot inputs
+
+The candidate-template test now binds base entity IDs separately for each
+variant. Desert/jungle contain skeleton, creeper, husk and guardian sources;
+icy contains stray, vex and guardian; Nether contains wither skeleton, magma
+cube and strider. These are component contents, not generated population counts.
+All candidate block entities are chests, with the variant-specific monument
+loot table. No candidate spawner block entities were found. This does not
+exclude processors or other retained generation effects.
+
+The processor test selects the five referenced nonempty lists and binds the
+jungle surface processor's delegated append_loot rules to
+repurposed_structures:archaeology/monument_jungle. All five chest/archaeology
+table references resolve. The rules' execution and the custom pillar, surface,
+noise, random-replacement and Y-position implementations are not yet attributed.
+In particular, pillar configuration prevents assuming template height equals
+the final occupied structure height. No new measurement was performed.
+
+These inputs are integrated in the working monument decision. The initial
+template test used a slash where the resource namespace requires a colon and
+matched no documents; correcting the prefix exposed the intended selected set.
+Ruff then rejected two long lines, which were split. Final validation: six
+monument/inventory-source tests and scoped Ruff/Basedpyright passed.

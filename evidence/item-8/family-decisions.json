@@ -13165,7 +13165,7 @@
         "repurposed_structures:monument_jungle",
         "repurposed_structures:monument_nether"
       ],
-      "rationale": "Four monument variants use the same custom monument generator and distinct monument_type. Nether fixes Y at 30; the others use different terrain weighting. Spawn overrides differ. No direct start pool exists, so custom layout and content remain untraced. This grouping preserves design variants without claiming effective generation or completed gameplay attributes.",
+      "rationale": "Four material/biome variants share the custom MonumentBuilding room graph and ordered room fitters. Captured building/fitter call sites bind candidate pools and templates. Rooms, openings and body sections are components, not additional families. Nether fixes Y at 30; other variants use terrain weighting, and spawn overrides differ. Exact graph reachability and effective content remain unresolved.",
       "variants": {
         "repurposed_structures:monument_desert": {
           "definition": {
@@ -13315,7 +13315,72 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/repurposed-monument/identities.json": "3e6b74fb9b31ae3758d87b1ba365090f52962ae582deb6d55dae85db29a59379",
+        "evidence/item-8/sources/repurposed-monument-rooms/identities.json": "58a0a51e3c6eec5171d450ed23b7345420230e3a71e05f608d09da4dc74059d9",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+      },
+      "custom_components": {
+        "candidate_pool_count": 76,
+        "candidate_template_count": 88,
+        "binding_test": "tests/item8/test_monument_components.py",
+        "selection": "Direct building and fitter call sites select single pool elements via getRandomTemplate. This is a custom graph assembly, not recursive jigsaw expansion.",
+        "scope": "All tested candidate resources are present. Exact reachable graph coverage and successful placement remain UNKNOWN. Packaged openings/wall_2 has no assigned relationship in the tested candidate set."
+      },
+      "attributes": {
+        "mob_source": {
+          "candidate_template_entities_by_variant": {
+            "desert": [
+              "minecraft:creeper",
+              "minecraft:guardian",
+              "minecraft:husk",
+              "minecraft:skeleton"
+            ],
+            "icy": [
+              "minecraft:guardian",
+              "minecraft:stray",
+              "minecraft:vex"
+            ],
+            "jungle": [
+              "minecraft:creeper",
+              "minecraft:guardian",
+              "minecraft:husk",
+              "minecraft:skeleton"
+            ],
+            "nether": [
+              "minecraft:magma_cube",
+              "minecraft:strider",
+              "minecraft:wither_skeleton"
+            ]
+          },
+          "natural_source": "Each selected structure definition supplies monster spawn overrides with piece bounding-box scope. Preserve the exact variant definitions for entity weights and group sizes; these are natural-spawn inputs, not generated entity counts.",
+          "scope": "Base authored template IDs only. Effective processor behavior, entity placement/finalization, retained spawning modifications and live populations remain UNKNOWN."
+        },
+        "loot_table_source": {
+          "candidate_chest_tables": [
+            "repurposed_structures:chests/monuments/desert",
+            "repurposed_structures:chests/monuments/icy",
+            "repurposed_structures:chests/monuments/jungle",
+            "repurposed_structures:chests/monuments/nether"
+          ],
+          "processor_table": "repurposed_structures:archaeology/monument_jungle",
+          "basis": "All candidate chest NBT references resolve in the selected loot catalog. The jungle surface processor delegates rules with append_loot for suspicious gravel to the archaeology table.",
+          "scope": "Selected packaged inputs. Surface processor execution and relevant retained loot modifications remain UNKNOWN."
+        },
+        "generated_spawners": {
+          "candidate_template_spawner_block_entities": [],
+          "basis": "All block entities in the tested candidate template set are chests.",
+          "scope": "This is not proof of absence after processors, external generation modifications or world placement."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Candidate templates explicitly contain hostile entity IDs, with nonhostile striders additionally present in the Nether variant.",
+          "natural": "Per-variant monster spawn overrides define additional natural-spawn sources within pieces.",
+          "scope": "Source attribution only. No claim that every room or generated monument contains every listed entity."
+        },
+        "intended_hostility": {
+          "value": "Hostile monument encounter",
+          "basis": "Explicit hostile template entities and per-variant monster spawn overrides. This does not measure encounter density or difficulty."
+        }
       }
     },
     {
