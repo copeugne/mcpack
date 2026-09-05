@@ -1,0 +1,144 @@
+Compiled from "AddProcessorListProcessorsModifier.java"
+public final class dev.worldgen.lithostitched.worldgen.modifier.AddProcessorListProcessorsModifier extends java.lang.Record implements dev.worldgen.lithostitched.api.worldgen.modifier.WorldgenModifier {
+  private final java.util.Optional<dev.worldgen.lithostitched.api.predicate.LoadPredicate> predicate;
+
+  private final int priority;
+
+  private final net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList> processorLists;
+
+  private final net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList processors;
+
+  public static final com.mojang.serialization.MapCodec<dev.worldgen.lithostitched.worldgen.modifier.AddProcessorListProcessorsModifier> CODEC;
+
+  public dev.worldgen.lithostitched.worldgen.modifier.AddProcessorListProcessorsModifier(java.util.Optional<dev.worldgen.lithostitched.api.predicate.LoadPredicate>, int, net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList>, net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList);
+    Code:
+       0: aload_0
+       1: invokespecial #41                 // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #43                 // Field predicate:Ljava/util/Optional;
+       9: aload_0
+      10: iload_2
+      11: putfield      #45                 // Field priority:I
+      14: aload_0
+      15: aload_3
+      16: putfield      #47                 // Field processorLists:Lnet/minecraft/core/HolderSet;
+      19: aload_0
+      20: aload         4
+      22: putfield      #49                 // Field processors:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorList;
+      25: return
+
+  public void apply(net.minecraft.core.RegistryAccess);
+    Code:
+       0: aload_0
+       1: getfield      #47                 // Field processorLists:Lnet/minecraft/core/HolderSet;
+       4: invokeinterface #60,  1           // InterfaceMethod net/minecraft/core/HolderSet.stream:()Ljava/util/stream/Stream;
+       9: invokedynamic #81,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      14: invokeinterface #87,  2           // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      19: aload_0
+      20: invokedynamic #99,  0             // InvokeDynamic #1:accept:(Ldev/worldgen/lithostitched/worldgen/modifier/AddProcessorListProcessorsModifier;)Ljava/util/function/Consumer;
+      25: invokeinterface #103,  2          // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+      30: return
+
+  public void applyModifier(net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList);
+    Code:
+       0: aload_1
+       1: checkcast     #107                // class dev/worldgen/lithostitched/mixin/common/StructureProcessorListAccessor
+       4: astore_2
+       5: new           #109                // class java/util/ArrayList
+       8: dup
+       9: aload_1
+      10: invokevirtual #115                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorList.list:()Ljava/util/List;
+      13: invokespecial #118                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+      16: astore_3
+      17: aload_3
+      18: aload_0
+      19: getfield      #49                 // Field processors:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorList;
+      22: invokevirtual #115                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorList.list:()Ljava/util/List;
+      25: invokeinterface #124,  2          // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+      30: pop
+      31: aload_2
+      32: aload_3
+      33: invokeinterface #128,  2          // InterfaceMethod dev/worldgen/lithostitched/mixin/common/StructureProcessorListAccessor.setProcessors:(Ljava/util/List;)V
+      38: return
+
+  public com.mojang.serialization.MapCodec<? extends dev.worldgen.lithostitched.api.worldgen.modifier.WorldgenModifier> codec();
+    Code:
+       0: getstatic     #138                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+       3: areturn
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #156,  0            // InvokeDynamic #2:toString:(Ldev/worldgen/lithostitched/worldgen/modifier/AddProcessorListProcessorsModifier;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #161,  0            // InvokeDynamic #2:hashCode:(Ldev/worldgen/lithostitched/worldgen/modifier/AddProcessorListProcessorsModifier;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #167,  0            // InvokeDynamic #2:equals:(Ldev/worldgen/lithostitched/worldgen/modifier/AddProcessorListProcessorsModifier;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public java.util.Optional<dev.worldgen.lithostitched.api.predicate.LoadPredicate> predicate();
+    Code:
+       0: aload_0
+       1: getfield      #43                 // Field predicate:Ljava/util/Optional;
+       4: areturn
+
+  public int priority();
+    Code:
+       0: aload_0
+       1: getfield      #45                 // Field priority:I
+       4: ireturn
+
+  public net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList> processorLists();
+    Code:
+       0: aload_0
+       1: getfield      #47                 // Field processorLists:Lnet/minecraft/core/HolderSet;
+       4: areturn
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList processors();
+    Code:
+       0: aload_0
+       1: getfield      #49                 // Field processors:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorList;
+       4: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #181                // Field dev/worldgen/lithostitched/api/predicate/LoadPredicate.FIELD_CODEC:Lcom/mojang/serialization/MapCodec;
+       4: invokedynamic #187,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+       9: invokevirtual #193                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      12: getstatic     #196                // Field PRIORITY_DEFAULT_CODEC:Lcom/mojang/serialization/MapCodec;
+      15: invokedynamic #202,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      20: invokevirtual #193                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      23: getstatic     #208                // Field net/minecraft/core/registries/Registries.PROCESSOR_LIST:Lnet/minecraft/resources/ResourceKey;
+      26: ldc           #210                // String processor_lists
+      28: invokestatic  #216                // InterfaceMethod dev/worldgen/lithostitched/worldgen/LithostitchedCodecs.registrySet:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      31: invokedynamic #222,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+      36: invokevirtual #193                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      39: getstatic     #228                // Field net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType.LIST_OBJECT_CODEC:Lcom/mojang/serialization/Codec;
+      42: ldc           #229                // String processors
+      44: invokeinterface #235,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      49: invokedynamic #241,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+      54: invokevirtual #193                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      57: invokevirtual #245                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P4;
+      60: aload_0
+      61: invokedynamic #255,  0            // InvokeDynamic #7:apply:()Lcom/mojang/datafixers/util/Function4;
+      66: invokevirtual #258                // Method com/mojang/datafixers/Products$P4.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function4;)Lcom/mojang/datafixers/kinds/App;
+      69: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #265,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+       5: invokestatic  #269                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #138                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}
