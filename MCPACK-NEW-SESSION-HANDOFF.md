@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Packaged End biome entrypoints are preserved in `9025a02`. All catalog biome
+references to end_platform, end_spike and end_gateway_return are linked to
+registered biomes and captured End-only possible-biome membership. This is
+packaged eligibility evidence, not complete effective runtime feature lists or
+proof of every lifecycle caller. Thirty focused tests passed; scoped checks
+passed after correcting test typing. Next reconcile effective feature/caller
+applicability and remaining family attributes. No new measurement system was
+added and Item 8 remains incomplete.
+
 Direct encounter content is assigned to the three Better End Island families
 in `02b5164`. Empty stored entity/spawner/loot-source lists bind to member
 templates; arena code-created crystals and dragon are recorded separately.
