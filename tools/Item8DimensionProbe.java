@@ -64,7 +64,11 @@ public final class Item8DimensionProbe {
             Object generator = call(call(level, "getChunkSource"), "getGenerator");
             Object source = call(generator, "getBiomeSource");
             TreeSet<String> biomes = new TreeSet<>();
-            for (Object holder : (Collection<?>) call(source, "possibleBiomes")) {
+            // Subclass reflection can resolve unrelated client-only method signatures.
+            Class<?> biomeSource = Class.forName("net.minecraft.world.level.biome.BiomeSource",
+                false, source.getClass().getClassLoader());
+            Collection<?> possible = (Collection<?>) biomeSource.getMethod("possibleBiomes").invoke(source);
+            for (Object holder : possible) {
                 Object key = ((Optional<?>) call(holder, "unwrapKey")).orElseThrow();
                 biomes.add(identifier(key));
             }
