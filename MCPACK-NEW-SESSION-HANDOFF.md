@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-05
 
+Vanilla mineshaft normal-generation suppression is explicit for both registered
+roots in `9e8f032`. Existing configuration, binding code and required mixin
+metadata support the disposition; no vanilla piece extraction or new server
+measurement was needed. All 62 affected tests and scoped checks pass. Inventory:
+`3ac3368b6de3d939f9ac78d117eb0397bbe0c2092967b72e71b6d2b4223d13f3`.
+Decision SHA: `303874189f6806bc565d51e5cc234c2b57279cc7c621b161646de5c098400c23`.
+Commands are in `evidence/item-8/sources/mineshafts-code/README.md`.
+Keep registered IDs and biome compatibility despite suppression; command placement
+and pre-existing worlds are outside the normal-generation claim. Prior vanilla
+mineshaft dissection instructions are superseded. Prioritize remaining provider
+coverage and required attributes; inspect deeper code only for a concrete unresolved
+field. The user requested clearer progress explanations and avoidance of excessive
+generator detail. Item 8 remains incomplete and its review/main-merge gate is open.
+
 Jungle temple source is delivered in `8397ebc`, and nine-attribute integration
 in `b4c5e6f`. The jungle_pyramid registry root and jungle_temple generator type
 remain one family. Both chest and dispenser loot paths are recorded, with saved
