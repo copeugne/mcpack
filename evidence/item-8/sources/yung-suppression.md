@@ -45,3 +45,41 @@ The inventory is unchanged at this source milestone. Next bind frozen settings
 and these hook identities to each applicable registered vanilla family, keeping
 existing source-derived descriptions separate from effective generation.
 Do not continue detailed inactive-generator inspection merely for completeness.
+
+## Family dispositions
+
+The source milestone above is delivered in `40922f3`. Six existing vanilla
+family variants now record normal_generation.status=SUPPRESSED:
+
+| Registry root | Cancelling retained mod | Frozen predicate |
+|---|---|---|
+| minecraft:desert_pyramid | betterdeserttemples | Disable Vanilla Pyramids=true |
+| minecraft:fortress | betterfortresses | Disable Vanilla Nether Fortresses=true |
+| minecraft:jungle_pyramid | betterjungletemples | Disable Vanilla Jungle Temples=true |
+| minecraft:monument | betteroceanmonuments | Disable Vanilla Ocean Monuments=true |
+| minecraft:stronghold | betterstrongholds | Unconditional after STRONGHOLD type match |
+| minecraft:swamp_hut | betterwitchhuts | Disable Vanilla Witch Huts=true |
+
+Each family binds its source manifest and mixin metadata; configurable cases
+also bind the frozen TOML. Existing content descriptions remain vanilla source
+information, not proof of active generation. Registered IDs and biome memberships
+remain intact. This supersedes the pending integration instruction above but
+not the remaining Item 8 work. IDAS and Integrated Villages hooks are separate
+remaining provider checks; these six dispositions do not infer their behavior.
+
+The parameterized test verifies preserved source hashes, loader/mixin declarations,
+exact structure-type guards, cancellable HEAD injection, false return, config
+labels and runtime-field binding. It covers all six current cases without adding
+a new validation framework or collecting another runtime.
+
+```sh
+uv run pytest -q tests/item8/test_yung_suppression.py tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_yung_suppression.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py tools/inspect_item8_pool_elements.py
+uv run basedpyright tests/item8/test_yung_suppression.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py tools/inspect_item8_pool_elements.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-suppression.json
+```
+
+Decision SHA-256:
+`216306ee257892d8bb21d0b25a9b0ce797dbaa1fa00c9f6b6a449168783a7167`.
+
+All 69 affected tests passed. Scoped Ruff and Basedpyright passed.
