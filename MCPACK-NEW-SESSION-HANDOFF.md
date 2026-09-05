@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-05
 
+Quark registrations are delivered in `c4cb9ec`; Zeta DeferredFeature execution
+link is in `de0cdac`. Inspect the directly registered ChorusVegetationGenerator
+and SpiralSpireGenerator next using the existing extractor. Their actual block
+placement and eligibility checks are needed for non-registry provider coverage
+and End interactions; no broader library tracing is justified by module names.
+
 Zeta handlers are delivered in `1b650ca`. Exploratory class-reference search
 located Quark consumer modules. Inspect ChorusVegetationModule and
 SpiralSpiresModule registrations plus Zeta DeferredFeature's execution link

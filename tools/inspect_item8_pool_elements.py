@@ -311,6 +311,8 @@ CLASSES = (
     "org/violetmoon/zeta/world/DeferredFeature.class",
     "org/violetmoon/quark/content/world/module/ChorusVegetationModule.class",
     "org/violetmoon/quark/content/world/module/SpiralSpiresModule.class",
+    "org/violetmoon/quark/content/world/gen/ChorusVegetationGenerator.class",
+    "org/violetmoon/quark/content/world/gen/SpiralSpireGenerator.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
