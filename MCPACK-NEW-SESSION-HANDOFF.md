@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-05
 
+Monument entry and building captures are delivered in 5fceeb4 and reproduced
+exactly. Follow the eight named Fit*Room classes and MonumentRoomFitter's
+default opening creation. Their pool references are the remaining direct
+component-selection gap. Use verbose output for concatenation recipes, then
+join existing catalogs. Do not repeat entry capture or add a layout simulator.
+
 Inspect the missing Repurposed Structures monument entry, assembly and base-piece
 paths using the existing extractor. The working monument decision explicitly
 lacks custom layout/content attribution. Select MonumentStructure, MonumentPieces
