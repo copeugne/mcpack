@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-05
 
+Activation and respawn interpretation is integrated in `a7feb3f`. The source
+chain connects NeoForge constructor, Common/config initialization and packaged
+services. SUMMONING_PILLARS and END now carry direct spike/podium rebuild and
+dragon-source attribution. WorldgenUtils surface selection is resolved as an
+END_STONE scan. Twenty-nine focused tests and scoped builder checks passed.
+Inventory SHA-256: `da8cecc81ca80eeb5cd3b8a894cf6547689881582205aa6b78e20d7bc6937a7e`.
+Next reconcile preserved runtime loaded-mod evidence and generated-world
+observations, then settle family records. Do not repeat completed source reads
+or expand unused helper internals. Item 8 remains incomplete.
+
 Activation/respawn source capture now reproduces exactly under
 sources/better-end-island-activation (extractor fd83868). It preserves eight
 classes and the two packaged service declarations; previous mixin metadata
