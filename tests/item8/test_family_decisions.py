@@ -53,7 +53,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
     members = [member for row in groups for member in cast("list[str]", row["structure_ids"])]
     assert len(members) == len(set(members))
     expected = {key for key in registry if key.startswith(namespace)}
-    # Multi-entry Explorify groups have a separate test; Mega Ship is still unresolved.
+    # Multi-entry Explorify and Mega Ship groups have separate coverage tests.
     excluded_prefixes = {
         "explorify:": ("explorify:supply_cache/", "explorify:watchtower/", "explorify:guide_post_"),
         "mes:": ("mes:mega_ship",),
@@ -233,6 +233,75 @@ def test_explorify_variants_bind_definitions_templates_and_complete_namespace() 
                 assert loot == [f"minecraft:chests/village/village_{biome}_house"]
         for path, digest in cast("dict[str, str]", group["evidence"]).items():
             assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+
+
+def test_mega_ship_variants_preserve_definitions_modules_and_mes_coverage() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, JsonValue]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    groups = [
+        row
+        for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
+        if str(row["family_id"]).startswith("mes:")
+    ]
+    members = [member for row in groups for member in cast("list[str]", row["structure_ids"])]
+    registry = read_registry(
+        root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )
+    assert len(members) == len(set(members)) == 25
+    assert set(members) == {key for key in registry if key.startswith("mes:")}
+    group = next(row for row in groups if row["family_id"] == "mes:mega_ship")
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    assert group["structure_ids"] == sorted(variants)
+    assert set(variants) == {key for key in registry if key.startswith("mes:mega_ship")}
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+    catalog = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    resources = cast("list[dict[str, JsonValue]]", catalog["resources"])
+    traces = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
+    contents = cast("dict[str, dict[str, JsonValue]]", traces["template_contents"])
+    for identifier, variant in variants.items():
+        name = identifier.split(":")[1]
+        definitions = [
+            row["document"]
+            for row in resources
+            if row["path"] == f"data/mes/worldgen/structure/{name}.json"
+        ]
+        assert definitions == [variant["definition"]]
+        definition = cast("dict[str, JsonValue]", variant["definition"])
+        trace = structures[identifier]
+        assert trace["start_pool"] == definition["start_pool"]
+        assert variant["missing_components"] == trace["missing"] == []
+        for suffix, size in (("", [48, 48, 48]), ("_middle", [48, 48, 48]), ("_end", [35, 20, 23])):
+            template = f"mes:mega_ship/{name}{suffix}"
+            assert template in cast("list[str]", trace["templates"])
+            assert contents[template]["template_size_xyz"] == size
+        if name.startswith("mega_ship_crashed"):
+            assert variant["placement_form"] == "wreck"
+            assert definition["start_height"] == {"absolute": 0}
+            assert definition["terrain_adaptation"] == "beard_thin"
+        else:
+            assert variant["placement_form"] == "airborne"
+            height = cast("dict[str, JsonValue]", definition["start_height"])
+            assert height["min_inclusive"] == {"absolute": 30}
+            assert definition["terrain_adaptation"] == "none"
 
 
 def test_spider_dungeon_attributes_bind_custom_spawners_loot_and_components() -> None:
