@@ -6,6 +6,28 @@
 
 ### Continuation update - 2026-09-05
 
+Remaining registered YUNG roots are assigned by `d8a3b93` and joined in
+`548e338`. Inventory SHA-256:
+`62d3eeb923216554112386152a174abfa5a71c132b01a6839ece0a09175db620`.
+Current totals are 117 working groups, 182 assigned entries and 705 unassigned.
+Eighteen focused grouping tests and scoped quality checks passed. The inventory
+reproduced byte for byte and prior groups remained equal. Missing Zombie Dungeon
+and fortress templates and the Stronghold spiral-stairs pool remain explicit.
+This covers registered roots only, not YUNG Bridges/Extras feature generation.
+
+`d7c955f` extends the existing disassembler for seven Better Dungeons custom
+classes; `3d16811` retains the reproducible text under
+`evidence/item-8/sources/betterdungeons-code`. Its README records commands and
+source findings. Spider Dungeon starts with BigTunnel and constructs tunnel,
+nest and egg-room components. Nest code places cave-spider spawners; EggRoom
+code branches between its loot-table chest and a spider spawner. These findings
+still need source-bound family attribute decisions and direct checks. Do not
+infer generated counts or unconditional placement. Small Nether Dungeon checks
+an enabled config before its custom placement path; effective configuration and
+assembly remain to be attributed. Continue required attributes and remaining
+provider/non-registry coverage. No runtime was launched, no baseline was tuned,
+and the Item 8 exit gate, report, review and verified main merge remain open.
+
 Explorify root mapping is delivered through `fe80f07`, built from `de8bac8`.
 Inventory SHA-256: `d2a5c7df744e7c96cbadc4da794a3990d6ba67c41c7c410520b09df9063daf8e`.
 `3e75d3e` and `0fc3bb1` assign and join eleven independent authored designs.
