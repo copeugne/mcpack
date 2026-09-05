@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `c96729d`, SHA-256
-`b7b7716e0b4c59e372750193d8c806c6d2ae7aeed9115f829a8b68740acb46d5`.
+Current working inventory regenerated at `79c866d`, SHA-256
+`c92eca63ea9f34e9e08742265ea73fa0ecea829b3bca34f90d90c2f347c8559d`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,16 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 79c866d increment retains the Fairy Ring and associated buried ore as one
+working family. Flower and ore choices remain variants. Source-derived fields,
+frozen settings and unresolved dependencies are explicit. Thirty focused tests
+and scoped checks passed. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-fairy-ring-79c866d.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-fairy-ring-79c866d.json
+```
 
 The c96729d increment resolves Spiral Spires generation-setting binding through
 module naming, recursive field mapping, frozen-file equality and the preserved
