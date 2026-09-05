@@ -31,6 +31,7 @@ if TYPE_CHECKING:
         "betterstrongholds:",
         "betterwitchhuts:",
         "mes:",
+        "mss:",
     ],
 )
 def test_authored_designs_bind_roots_settings_and_missing_components(
@@ -53,10 +54,11 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
     members = [member for row in groups for member in cast("list[str]", row["structure_ids"])]
     assert len(members) == len(set(members))
     expected = {key for key in registry if key.startswith(namespace)}
-    # Multi-entry Explorify groups have a separate test; Mega Ship is still unresolved.
+    # Variant groups have separate coverage tests.
     excluded_prefixes = {
         "explorify:": ("explorify:supply_cache/", "explorify:watchtower/", "explorify:guide_post_"),
         "mes:": ("mes:mega_ship",),
+        "mss:": ("mss:tree_", "mss:birch_river", "mss:cherry_river"),
     }.get(namespace, ())
     expected = {key for key in expected if not key.startswith(excluded_prefixes)}
     assert members
@@ -86,7 +88,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         ),
     )
     structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
-    if namespace in ("dungeons_arise:", "mes:"):
+    if namespace in ("dungeons_arise:", "mes:", "mss:"):
         seen: set[str] = set()
         for identifier in sorted(expected):
             templates = set(cast("list[str]", structures[identifier]["templates"]))
@@ -233,6 +235,230 @@ def test_explorify_variants_bind_definitions_templates_and_complete_namespace() 
                 assert loot == [f"minecraft:chests/village/village_{biome}_house"]
         for path, digest in cast("dict[str, str]", group["evidence"]).items():
             assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+
+
+def test_mega_ship_variants_preserve_definitions_modules_and_mes_coverage() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, JsonValue]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    groups = [
+        row
+        for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
+        if str(row["family_id"]).startswith("mes:")
+    ]
+    members = [member for row in groups for member in cast("list[str]", row["structure_ids"])]
+    registry = read_registry(
+        root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )
+    assert len(members) == len(set(members)) == 25
+    assert set(members) == {key for key in registry if key.startswith("mes:")}
+    group = next(row for row in groups if row["family_id"] == "mes:mega_ship")
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    assert group["structure_ids"] == sorted(variants)
+    assert set(variants) == {key for key in registry if key.startswith("mes:mega_ship")}
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+    catalog = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    resources = cast("list[dict[str, JsonValue]]", catalog["resources"])
+    traces = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
+    contents = cast("dict[str, dict[str, JsonValue]]", traces["template_contents"])
+    for identifier, variant in variants.items():
+        name = identifier.split(":")[1]
+        definitions = [
+            row["document"]
+            for row in resources
+            if row["path"] == f"data/mes/worldgen/structure/{name}.json"
+        ]
+        assert definitions == [variant["definition"]]
+        definition = cast("dict[str, JsonValue]", variant["definition"])
+        trace = structures[identifier]
+        assert trace["start_pool"] == definition["start_pool"]
+        assert variant["missing_components"] == trace["missing"] == []
+        for suffix, size in (("", [48, 48, 48]), ("_middle", [48, 48, 48]), ("_end", [35, 20, 23])):
+            template = f"mes:mega_ship/{name}{suffix}"
+            assert template in cast("list[str]", trace["templates"])
+            assert contents[template]["template_size_xyz"] == size
+        if name.startswith("mega_ship_crashed"):
+            assert variant["placement_form"] == "wreck"
+            assert definition["start_height"] == {"absolute": 0}
+            assert definition["terrain_adaptation"] == "beard_thin"
+        else:
+            assert variant["placement_form"] == "airborne"
+            height = cast("dict[str, JsonValue]", definition["start_height"])
+            assert height["min_inclusive"] == {"absolute": 30}
+            assert definition["terrain_adaptation"] == "none"
+
+
+def test_soaring_tree_variants_bind_common_definition_and_template_contents() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, JsonValue]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    group = next(
+        row
+        for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
+        if row["family_id"] == "mss:tree"
+    )
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    registry = read_registry(
+        root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )
+    assert group["structure_ids"] == sorted(variants)
+    assert set(variants) == {key for key in registry if key.startswith("mss:tree_")}
+    assert len(variants) == 8
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+    catalog = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    resources = cast("list[dict[str, JsonValue]]", catalog["resources"])
+    traces = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
+    contents = cast("dict[str, dict[str, JsonValue]]", traces["template_contents"])
+    for identifier, variant in variants.items():
+        name = identifier.split(":")[1]
+        definitions = [
+            cast("dict[str, JsonValue]", row["document"])
+            for row in resources
+            if row["path"] == f"data/mss/worldgen/structure/{name}.json"
+        ]
+        assert len(definitions) == 1
+        assert group["common_generation_definition"] == {
+            key: value for key, value in definitions[0].items() if key != "start_pool"
+        }
+        assert variant["start_pool"] == definitions[0]["start_pool"]
+        assert variant["template"] == identifier
+        pools = [
+            row["document"]
+            for row in resources
+            if row["path"] == f"data/mss/worldgen/template_pool/{name}_start_pool.json"
+        ]
+        assert pools == [
+            {
+                "name": variant["start_pool"],
+                "fallback": "minecraft:empty",
+                "elements": [
+                    {
+                        "weight": 1,
+                        "element": {
+                            "element_type": "minecraft:single_pool_element",
+                            "location": identifier,
+                            "processors": "minecraft:empty",
+                            "projection": "rigid",
+                        },
+                    }
+                ],
+            }
+        ]
+        assert structures[identifier]["templates"] == [identifier]
+        assert structures[identifier]["missing"] == []
+        content = contents[identifier]
+        assert variant["template_size_xyz"] == content["template_size_xyz"]
+        assert content["authored_entities"] == content["loot_references"] == []
+        assert content["spawner_blocks"] == content["generation_markers"] == []
+
+
+def test_soaring_rivers_preserve_omitted_default_and_complete_namespace() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, JsonValue]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    groups = [
+        row
+        for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
+        if str(row["family_id"]).startswith("mss:")
+    ]
+    members = [member for row in groups for member in cast("list[str]", row["structure_ids"])]
+    registry = read_registry(
+        root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )
+    assert len(members) == len(set(members)) == 35
+    assert set(members) == {key for key in registry if key.startswith("mss:")}
+    group = next(row for row in groups if row["family_id"] == "mss:river")
+    assert group["structure_ids"] == ["mss:birch_river", "mss:cherry_river"]
+    code = ""
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        raw = (root / path).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == digest
+        if path.endswith("GenericJigsawStructure.txt"):
+            code = raw.decode()
+    default = code.split("// String cannot_spawn_in_liquid\n", 1)[1].split("InvokeDynamic", 1)[0]
+    assert "PrimitiveCodec.fieldOf:" in default
+    assert "iconst_0" in default
+    assert "Boolean.valueOf:" in default
+    assert "MapCodec.orElse:" in default
+    assert group["effective_cannot_spawn_in_liquid"] is False
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    catalog = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    traces = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    resources = cast("list[dict[str, JsonValue]]", catalog["resources"])
+    contents = cast("dict[str, dict[str, JsonValue]]", traces["template_contents"])
+    normalized: list[dict[str, JsonValue]] = []
+    for identifier, variant in variants.items():
+        name = identifier.split(":")[1]
+        definitions = [
+            row["document"]
+            for row in resources
+            if row["path"] == f"data/mss/worldgen/structure/{name}.json"
+        ]
+        assert definitions == [variant["definition"]]
+        definition = dict(cast("dict[str, JsonValue]", variant["definition"]))
+        if name == "cherry_river":
+            assert "cannot_spawn_in_liquid" not in definition
+        else:
+            assert definition["cannot_spawn_in_liquid"] is False
+        _ = definition.setdefault("cannot_spawn_in_liquid", False)
+        normalized.append(
+            {key: value for key, value in definition.items() if key not in ("biomes", "start_pool")}
+        )
+        assert variant["template"] == identifier
+        assert variant["template_size_xyz"] == contents[identifier]["template_size_xyz"]
+    assert normalized[0] == normalized[1]
 
 
 def test_spider_dungeon_attributes_bind_custom_spawners_loot_and_components() -> None:

@@ -6,6 +6,78 @@
 
 ### Continuation update - 2026-09-05
 
+Soaring river grouping is delivered through `0c08c16`, built from `977b343`.
+Inventory SHA-256: `d6c506ffc79c56888ae7ca2caa3120c9b611908275ec9467f778f48c4db659f9`.
+All 35 mss registry entries map once to 27 working families. Birch and Cherry
+River are biome/layout variants of one river landmark; original definitions and
+template dimensions remain distinct. The source check binds the retained codec
+false default for omitted cannot_spawn_in_liquid, preserves the omitted field
+in Cherry River's definition, and verifies other definition differences are
+limited to biome and pool. Neither river has a retained world observation.
+Twenty-four focused tests and scoped quality checks passed after correcting an
+unused-call-result warning in the test. Inventory reproduction was byte-identical
+and prior groups remained equal. Current totals: 162 working groups, 242 assigned
+registry entries and 645 unassigned. Continue remaining Moog namespaces mns/mvs,
+other retained providers, non-registry relationships and required attributes.
+Broader canonical relationships, effective placement and gameplay remain open;
+no final gate, report, clean review or main merge is claimed.
+
+Twenty-five non-tree, non-river Soaring designs are assigned by `1d47dc4` and
+joined in `7efb67c`. Inventory SHA-256:
+`8987fb9ff136039ca913d5f2732ede93d81b05abec850d12691cc3ce3b0ffed6`.
+Current totals: 161 working groups, 240 assigned entries and 647 unassigned.
+The test covers all singleton mss roots except the two rivers, preserves their
+definition settings and verifies disjoint reachable template sets. These are
+working design assignments; broader house/tower/landscape relationships remain
+provisional. Twenty-three focused tests and scoped quality checks passed. The
+inventory reproduced byte for byte and all earlier groups remained equal.
+
+`d764903` extends the existing disassembler to the shared Moog generator and
+enum. `2688751` preserves its full archive-scoped ten-class output and identities
+under `evidence/item-8/sources/moog-generator-code`. Extraction reproduced its
+pilot. The generator codec defaults omitted `cannot_spawn_in_liquid` to false,
+resolving Cherry River's omission against Birch River's explicit false. Their
+biome references and authored layouts still differ; river grouping and a direct
+source-bound decision remain next work. Use the generator for other Moog custom
+placement attribution as needed, without treating an option default as proof of
+full runtime behavior. Continue remaining providers, non-registry generation and
+required attributes. Item 8 still needs its final report/gate, clean review and
+verified main merge. No runtime or tuning was performed.
+
+Soaring Structures tree grouping is delivered through `91b4135`, built from
+`3006f48`. Inventory SHA-256:
+`69367cacd7678a253866695295b57e6a2c5184616952203d83b2fa4e4e855a3e`.
+Eight `mss:tree_*` roots map to one tree-landmark family. Definitions are identical
+except start pools; each pool selects its matching single template with empty
+processors and fallback. Per-template dimensions preserve shape/size differences.
+The source check also verifies no packaged entities, loot references, spawner
+blocks or generation markers in these eight templates. This is not an effective
+runtime spawn or loot claim. World observations 282, 411, 671 and 791 are linked.
+Twenty-two focused tests and scoped quality checks passed. The inventory
+reproduced byte for byte and previous groups remained equal. Totals are now
+136 working groups, 215 assigned registry entries and 672 unassigned entries.
+The other 27 mss roots remain unassigned. Continue their design/variant comparison,
+remaining providers and required attributes. Frozen runtime custom placement,
+occupied geometry, discoverability and non-registry generation remain open;
+no final gate, report, review or main merge is claimed.
+
+Mega Ship grouping is delivered through `4b4686f`, built from `2a2eeea`.
+Inventory SHA-256: `6b545d5176bbdd6a8a26c50d770924dd9f277aa1eb094c90fc26c1c7fad6e728`.
+All 25 mes registry entries now map once to 18 working families. Mega Ship is
+one modular family with eight material, attachment and wreck variants. Full
+per-variant definitions preserve distinct spawn overrides, height and terrain
+settings. Common initial/middle/end module roles and bounds support grouping;
+they do not prove identical occupied geometry or gameplay. Five airborne and
+three wreck forms remain distinguished. Entity and loot references retain
+template ownership. No Mega Ship has a retained Item 7 observation.
+Twenty-one focused tests and scoped Ruff/basedpyright checks passed. The
+inventory reproduced byte for byte and earlier groups remained unchanged.
+Current totals: 135 working groups, 207 assigned registry entries, 680 unassigned.
+Continue remaining Moog providers (mns, mss, mvs), other providers, non-registry
+generation and required attributes. Effective custom placement, occupied size,
+discoverability and gameplay attribution remain open. Item 8 has not passed its
+final gate, report, clean review or verified main merge.
+
 Seventeen non-Mega-Ship Moog End designs are assigned by `cf3083f` and joined
 in `dad9743`. Inventory SHA-256:
 `8a548b710b53676b3baf3850a005fa741770bd916339018dc0cb3333eeb28d5b`.
