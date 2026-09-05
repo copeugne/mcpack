@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-05
 
+Chef's Delight provider component relationship and frozen weights are recorded
+in c51df00; source injection capture is d6e6740. It appends to runtime templates,
+not rawTemplates. Both plains additions read cookHousePlains. Do not repeat
+those captures or assume packaged/raw pool serialization contains the added
+houses. Next: reconcile runtime-only village component content with consumers
+and continue Farmer's Delight/provider coverage. No standalone house families
+were added. Frozen settings are recorded as inputs, not measured runtime counts.
+
+Resumed after user pause. Archive-list coverage check delivered in b06a842:
+both packaged catalogs match all retained candidate and platform identities.
+Five inventory-source tests and scoped static checks pass. This is archive
+coverage, not complete provider contribution coverage. Village Taverns has an
+explicit component disposition in c8577f6, reusing existing village/IDAS links;
+no new family rows. Continue remaining provider reconciliation. Chef's Delight
+and Farmer's Delight packaged village components are candidate next consumers;
+their injection relationships must be checked against existing evidence before
+new source work. Do not resume exhaustive Bronze helper tracing by default.
+
 Scope reassessment following the user's expansion concern: repeated helper
 tracing has become too granular. SPECS Item 8 requires eleven inventory
 attributes, not exhaustive implementation reconstruction, measured encounter

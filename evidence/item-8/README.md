@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `d4482a1`, SHA-256
-`bc47e4ec2d81184f0d807335e4d261f47e85fd2749076136a12ba327f764730f`.
+Current working inventory regenerated at `c3b345f`, SHA-256
+`a0c581e5b372c7f14dc997bf2a45a598b41383916b2e185c3d9ce207ad4642bf`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -70,6 +70,38 @@ coverage has already identified every remaining family or dependency. Closing
 that coverage question is itself an outstanding deliverable in step 4.
 
 ## Historical increments
+
+The c3b345f increment integrates the tested Chef's Delight direct template
+content into its existing provider record. Only contribution content and the
+input identity change; every family row is unchanged. The focused content test
+was delivered in ecea629. Builder static checks passed. The generated output
+reproduces exactly:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-chefs-content-c3b345f.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-chefs-content-c3b345f.json
+```
+
+
+The c51df00 increment records Chef's Delight's runtime village house-pool
+injection and frozen configuration inputs. It adds no standalone families.
+Only contribution records and the decision input identity change. Builder
+static checks passed; the output reproduces exactly:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-chefs-c51df00.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-chefs-c51df00.json
+```
+
+The c8577f6 increment explicitly reconciles Village Taverns as components of
+existing village and IDAS castle family relationships. It adds no family rows.
+CTOV's similarly named tavern field does not itself establish asset provenance.
+The existing packaged modifiers provide the source relationship. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-taverns-c8577f6.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-taverns-c8577f6.json
+```
 
 The d4482a1 increment integrates Bronze Sentry trap suppliers, the shared
 processor callback and conditional surface-clue attribution. Only the Bronze
@@ -2501,3 +2533,20 @@ changed. Reproduce with the existing builder in a fresh output path:
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-runtime.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-runtime.json
 ```
+
+## Retained archive coverage boundary
+
+The existing inventory-source test now compares both packaged catalog archive
+lists, including every identity, against retained_sources and its frozen
+manifest/acquisition inputs. All 136 retained candidates plus Minecraft and
+NeoForge are represented in both lists. This establishes archive-input coverage,
+not complete generation-hook or canonical-family coverage. The narrower Item 7
+provider-label catalog is contextual and cannot replace this retained boundary.
+
+```sh
+uv run pytest -q tests/item8/test_inventory_sources.py
+```
+
+Five tests pass. Scoped Ruff and Basedpyright pass after correcting one import
+spacing finding. Provider contribution reconciliation remains open; no new
+schema, measurement system or runtime sample was introduced.
