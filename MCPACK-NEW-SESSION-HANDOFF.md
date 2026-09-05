@@ -6,6 +6,47 @@
 
 ### Continuation update - 2026-09-05
 
+CTOV canonical village reconciliation is delivered in `5bb0942`. One civilian
+village family now contains 22 named architectural/placement designs and all 66
+size/design roots; hostile outposts remain separate. Exact definitions, missing
+references, tavern links, biome/loot coverage and observed-start indexes remain
+preserved. This supersedes CTOV broader grouping being open in older checkpoints.
+Working total: 431 groups, still 887 registry roots, not final Item 8 acceptance.
+All 67 affected tests and scoped checks pass. Inventory SHA-256:
+`21481771b21790e45a616efbef2d7b958fe719302b4bcf4e0dc8683e749760e5`.
+Decision SHA-256:
+`4d545b2a01ea7d142a4fbd15f7917a836559a6fd48634c04526c44aefedf6483`.
+Commands and rationale are in the final CTOV section of `evidence/item-8/README.md`.
+Continue remaining family reconciliation (including MVS/BetterEnd), non-registry
+provider coverage and outstanding attributes. No downstream work or tuning.
+
+
+CTOV content/start-placement attributes are delivered in `f937ea9`.
+The 23 current CTOV groups now record authored entity IDs, hostile versus
+natural-override sources, resolved-template spawner absence and heightmap start
+intent. Villages have empty spawn overrides; outposts have authored ravagers
+and four separate natural-override monster types. Underground village starts
+use a -14 surface-relative offset, not the zero offset of the other designs.
+Missing components and runtime transformations remain limitations. All 64
+affected tests and scoped checks passed. Inventory SHA-256:
+`f51b1333d6e322ab60f9f7f051958ce683a482bf9c553faafa02efd24d2b7e97`.
+See the final CTOV section of `evidence/item-8/README.md` for reproduction.
+Item 8 remains incomplete; continue canonical grouping, non-registry coverage
+and remaining attributes. No new runtime, measurement framework or tuning.
+
+
+CTOV village definitions and missing-component bindings are delivered in
+`21fdbe0`. All 66 village roots across 22 working design groups are now bound
+to exact packaged definitions and existing pool traces. Existing outpost checks
+cover the other 12 CTOV roots. All 63 affected tests and scoped checks pass.
+Inventory SHA-256:
+`9205723b5e8748e56aeac40190d15365aa2b198a98c79e81ecb37409a0c5112e`.
+Reproduction commands and limitations are in the final CTOV section of
+`evidence/item-8/README.md`. Canonical relationships between village designs,
+non-registry provider coverage and outstanding required attributes remain open.
+No family count, configuration, runtime or measurement-system change.
+
+
 Integrated Villages/IDAS suppression sources are delivered in `9d88842`, with
 family integration in `feb9da7`. Integrated Villages suppresses seven exact keys:
 the five vanilla villages and both Terralith fortified villages. It does not

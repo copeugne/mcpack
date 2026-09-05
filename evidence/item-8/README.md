@@ -2,9 +2,9 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory: `702ec5c`, SHA-256
-`ae7f0a16a86929ad24361ab9befa80aebf5e51100c72bc9ba44a64f8f8bafba2`.
-All 887 registered roots are assigned once in 452 working groups. This is not
+Current working inventory regenerated at `5bb0942`, SHA-256
+`21481771b21790e45a616efbef2d7b958fe719302b4bcf4e0dc8683e749760e5`.
+All 887 registered roots are assigned once in 431 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
 IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
@@ -754,3 +754,132 @@ at that commit with the command above, SHA-256:
 `e0fddbb286ce87c8a23285d7af33eac42563db754f8ad833d1826080d4c50327`.
 Only grouping-decision attribution/evidence and the decision input hash change.
 Family membership, content attributes and world-observation links are preserved.
+
+## CTOV village definition reconciliation (2026-09-05)
+
+All 66 village roots in the existing 22 CTOV working design groups now retain
+full packaged definitions and exact missing-component dispositions from the
+existing pool traces. Together with the already reconciled 12 outpost roots,
+the CTOV assignments cover all 78 runtime structure IDs exactly once. This does
+not finalize relationships between village designs or establish provider-wide
+non-registry completeness. No family count changes in this increment.
+
+The existing CTOV size-group test independently reconstructs the groups from
+packaged definitions, verifies exact runtime coverage, compares every definition
+and pool start, and requires the stored missing references to equal the trace.
+Missing components remain potential-path defects, not measured generation
+failure rates. Tavern component relationships are preserved.
+
+Verification:
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+```
+
+All 63 affected tests and both scoped checks passed. The data increment preserves
+all 66 definitions directly rather than introducing another schema or generator;
+the existing test verifies the full addition against the preserved catalog and
+traces. Decision SHA-256:
+`5f49f674fbadd6f86decc6b97623526150ba97b0d919ad8da63e751fe5f392e9`.
+Inventory regeneration uses `uv run -m tools.build_item8_inventory --output
+evidence/raw/item8/inventory-ctov-definitions.json` and is delivered separately.
+
+Definitions and verification are delivered in `21fdbe0`. Inventory regenerated
+at that revision, SHA-256:
+`9205723b5e8748e56aeac40190d15365aa2b198a98c79e81ecb37409a0c5112e`.
+Only the 22 village grouping decisions and decision input hash change; all
+family memberships, other attributes and world-observation links are preserved.
+
+## CTOV content and start-placement attributes (2026-09-05)
+
+The existing 23 CTOV groups now distinguish packaged authored entities from
+structure-controlled natural spawning. Resolved village templates contain
+civilian, passive or defensive mobs and sometimes display entities, with no
+hostile entity IDs. All village definitions declare empty spawn overrides.
+Outpost templates include ravagers; their definitions separately override monster
+spawns with pillagers, evokers, vindicators and witches. These are potential
+sources, not live entity counts or proof of effective runtime replacements.
+
+No spawner blocks or generation markers occur in the resolved reachable CTOV
+templates. This does not dispose of missing templates or external generation
+hooks. The inventory preserves these limitations rather than treating the
+entire provider as proven spawner-free.
+
+All CTOV starts use WORLD_SURFACE_WG projection. Village underground specifies
+an absolute start offset of -14; the other designs and outposts specify zero.
+Every definition uses surface_structures, demonstrating why generation step
+alone does not establish underground/surface placement. These attributes record
+start intent, not assembled room elevations, terrain exposure or visibility.
+
+The added case in the existing family-decision test compares every recorded
+entity ID, natural override and placement field with preserved sources and
+requires empty spawner, marker and unresolved-entity lists for resolved content.
+No new extraction or measurement system was needed. The initial focused run
+passed all three CTOV tests; type checking then required two explicit JSON casts,
+which changed no behavior. Full affected verification uses the three commands
+in the preceding CTOV section. Decision SHA-256:
+`b67aca5bcab0e5c621f7d5d2a12b72e02a2ab89af1e31847adc7d8d726529032`.
+
+All 64 affected tests and scoped Ruff/Basedpyright checks passed. The inventory
+is regenerated separately using:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ctov-attributes.json
+```
+
+Attributes and verification delivered in `f937ea9`. Inventory rebuilt at that
+revision, SHA-256:
+`f51b1333d6e322ab60f9f7f051958ce683a482bf9c553faafa02efd24d2b7e97`.
+Only the affected CTOV attributes/grouping decisions and decision input hash
+change. Membership, geometry, loot and world-observation links are preserved.
+
+## CTOV canonical village relationship (2026-09-05)
+
+The 22 CTOV village design groups are consolidated into one `ctov:village`
+family, preserving all 66 registry IDs and each named design under
+`design_variants`. All exact variant definitions, missing references and tavern
+links are retained. CTOV outposts remain a separate hostile family.
+
+The family decision follows shared civilian settlement identity, not a count of
+start pools. All village roots use the same Lithostitched jigsaw contract, empty
+spawn overrides and civilian template content. Their definitions differ only in
+biomes, start pools, expansion size and start height. Fortified, canopy and
+underground designs retain their architecture/placement distinctions as variants,
+consistent with the vanilla and Towns & Towers village treatment. This is an
+Item 8 identity decision, not Item 9 tier assignment or a claim that the variants
+have identical layouts, exposure or gameplay experience.
+
+The existing size-relationship test still derives all 22 three-size design groups
+from packaged data, now requires them to partition one family, and checks common
+definition fields. The content test verifies the combined entity sources and
+per-root placement offsets. Tavern coverage still binds the same 66 affected
+roots across the stack; their family owners are now CTOV village, vanilla village
+and IDAS castle. No templates become independent families.
+
+The working total is now 431 groups for 887 registered roots. Other grouping and
+provider questions remain open, so this is not an accepted final count.
+Decision SHA-256:
+`4d545b2a01ea7d142a4fbd15f7917a836559a6fd48634c04526c44aefedf6483`.
+
+Verification and subsequent inventory regeneration:
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py tests/item8/test_integrated_suppression.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ctov-family.json
+```
+
+All 67 affected tests and scoped checks passed. The smaller decision file
+replaces duplicated family attributes with one family and explicit design/root
+relationships. Inventory regrouping is delivered separately because it is a
+large generated change produced by the existing builder.
+
+Grouping and verification are delivered in `5bb0942`. Inventory regenerated at
+that revision, SHA-256:
+`21481771b21790e45a616efbef2d7b958fe719302b4bcf4e0dc8683e749760e5`.
+The 22 prior CTOV village rows become one, retaining their union of templates,
+biome constraints, loot references and saved-start observation indexes. All other
+family rows are unchanged. Raw sources and their identities are unchanged.
