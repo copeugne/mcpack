@@ -461,7 +461,16 @@ def test_soaring_rivers_preserve_omitted_default_and_complete_namespace() -> Non
     assert normalized[0] == normalized[1]
 
 
-def test_nether_small_ruins_preserve_duplicate_definition_and_template_identity() -> None:
+@pytest.mark.parametrize(
+    ("family", "prefix", "member_count", "template_count"),
+    [("mns:very_small_ruins", "mns:very_small", 7, 6), ("mns:bridge", "mns:bridge_", 6, 6)],
+)
+def test_nether_variants_preserve_definitions_and_template_identity(
+    family: str,
+    prefix: str,
+    member_count: int,
+    template_count: int,
+) -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(
         "dict[str, JsonValue]",
@@ -470,15 +479,15 @@ def test_nether_small_ruins_preserve_duplicate_definition_and_template_identity(
     group = next(
         row
         for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
-        if row["family_id"] == "mns:very_small_ruins"
+        if row["family_id"] == family
     )
     variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
     registry = read_registry(
         root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
     )
     assert group["structure_ids"] == sorted(variants)
-    assert set(variants) == {key for key in registry if key.startswith("mns:very_small")}
-    assert len(variants) == 7
+    assert set(variants) == {key for key in registry if key.startswith(prefix)}
+    assert len(variants) == member_count
     for path, digest in cast("dict[str, str]", group["evidence"]).items():
         assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
     catalog = cast(
@@ -519,7 +528,13 @@ def test_nether_small_ruins_preserve_duplicate_definition_and_template_identity(
         assert (
             variant["template_size_xyz"] == contents[str(variant["template"])]["template_size_xyz"]
         )
-    assert len({str(row["template"]) for row in variants.values()}) == 6
+    assert len({str(row["template"]) for row in variants.values()}) == template_count
+    if family == "mns:bridge":
+        for variant in variants.values():
+            content = contents[str(variant["template"])]
+            assert content["authored_entities"] == content["loot_references"] == []
+            assert content["spawner_blocks"] == content["generation_markers"] == []
+        return
     assert group["duplicate_definition_ids"] == [
         "mns:very_small_blackstone",
         "mns:very_small_nether_brick",
