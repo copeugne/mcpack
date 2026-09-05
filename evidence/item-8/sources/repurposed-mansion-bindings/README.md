@@ -32,3 +32,33 @@ component/content coverage. Do not add an unrelated layout simulator.
 Scoped extractor Ruff and Basedpyright passed. No new measurement or server run.
 The original incomplete disassemblies remain preserved. Family attribution and
 the Item 8 gate remain incomplete.
+
+## Candidate catalog reconciliation
+
+The focused test below binds the selected definitions for all eight mansion
+types and the 47 source-derived candidate selectors per type. These select
+376 pools with 848 positive-weight entries and 592 unique parent templates.
+Every selected entry is a single pool element, and all templates are present.
+The parent templates link to 24 mob pools (allays, evokers and vindicators for
+each variant). Each mob pool has itself as fallback. Their positive-weight
+entries name five shared child templates: evoker, vindicator, and one/two/three
+allays. This closes the catalog's missing-component question for that candidate
+set, but not attachment success or control-flow reachability for every selector.
+
+```sh
+uv run pytest -q tests/item8/test_mansion_components.py
+```
+
+Do not count these templates, room selectors, weights or child pools as families.
+The custom attachment path is one level: it adds the child and junctions but
+does not recurse into the child's jigsaws. The already preserved mirrored-piece
+wrapper retains template/processors and enables entity placement/finalization.
+Mushroom and spawner processors on parent entries still need attribution before
+effective content is accepted. Existing generic pool tracing is not substituted
+for this custom selection algorithm.
+
+The focused test passed. Initial Ruff rejected its 53 statements against the
+50-statement limit; a local documented suppression preserves the single linear
+source-reconciliation test without introducing a helper framework.
+Basedpyright then rejected an unhashable JsonValue set entry; the comparison
+now explicitly converts the element-type value to a string.
