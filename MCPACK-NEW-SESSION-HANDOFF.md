@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-05
 
+Soaring Structures tree grouping is delivered through `91b4135`, built from
+`3006f48`. Inventory SHA-256:
+`69367cacd7678a253866695295b57e6a2c5184616952203d83b2fa4e4e855a3e`.
+Eight `mss:tree_*` roots map to one tree-landmark family. Definitions are identical
+except start pools; each pool selects its matching single template with empty
+processors and fallback. Per-template dimensions preserve shape/size differences.
+The source check also verifies no packaged entities, loot references, spawner
+blocks or generation markers in these eight templates. This is not an effective
+runtime spawn or loot claim. World observations 282, 411, 671 and 791 are linked.
+Twenty-two focused tests and scoped quality checks passed. The inventory
+reproduced byte for byte and previous groups remained equal. Totals are now
+136 working groups, 215 assigned registry entries and 672 unassigned entries.
+The other 27 mss roots remain unassigned. Continue their design/variant comparison,
+remaining providers and required attributes. Frozen runtime custom placement,
+occupied geometry, discoverability and non-registry generation remain open;
+no final gate, report, review or main merge is claimed.
+
 Mega Ship grouping is delivered through `4b4686f`, built from `2a2eeea`.
 Inventory SHA-256: `6b545d5176bbdd6a8a26c50d770924dd9f277aa1eb094c90fc26c1c7fad6e728`.
 All 25 mes registry entries now map once to 18 working families. Mega Ship is
