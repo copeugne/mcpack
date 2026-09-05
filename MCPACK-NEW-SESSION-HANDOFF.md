@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Village Taverns full-provider scope now passes: all fifteen top-level classes,
+bundled Tiny Config entry, parent/nested files and five component links are
+accounted for. The focused test and scoped static checks pass after recognizing
+the inspected villager-hat .png.mcmeta asset and formatting. provider-scope.md
+now records 24 dispositions of 136, leaving 112 to reconcile. Stop Tavern source
+expansion and continue other retained providers using existing evidence first.
+
 Bundled Tiny Config entry and ConfigManager captures now reproduce using 0b01353
 in sources/tiny-config-entry. NeoForge entry calls an empty common init;
 ConfigManager handles JSON I/O and optional caller callbacks, not independent
