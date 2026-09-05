@@ -9,6 +9,7 @@ from typing import TYPE_CHECKING, cast
 import pytest
 
 from mcpack_evidence.item8_pool_links import pool_links, template_links
+from mcpack_evidence.item8_pool_trace import trace_pool
 from tests.item8.test_inventory_sources import row
 
 if TYPE_CHECKING:
@@ -192,3 +193,68 @@ def test_frozen_catalog_has_no_unresolved_pool_codecs_or_version_selections() ->
     ]
     assert len(selected) == 212
     assert all(edge["runtime_version"] == "1.21.1" for edge in selected)
+
+
+def test_limited_delegate_preserves_constraints_and_nested_source_links() -> None:
+    element: dict[str, JsonValue] = {
+        "element_type": "lithostitched:limited",
+        "limit": 1,
+        "min_depth": 2,
+        "delegate": {
+            "element_type": "minecraft:single_pool_element",
+            "location": "village_taverns:village/plains/tavern",
+            "processors": "minecraft:empty",
+            "projection": "rigid",
+        },
+    }
+    resource = row(
+        "data/example/worldgen/template_pool/houses.json",
+        {
+            "elements": [{"weight": 5, "element": element}],
+        },
+    )
+    result = cast("dict[str, JsonValue]", pool_links([resource])[0])
+    pointer = "/elements/0/element"
+    assert result["unresolved_elements"] == []
+    assert result["edges"] == [
+        {
+            "kind": "pool_element_constraint",
+            "pointer": pointer,
+            "document": {
+                "element_type": "lithostitched:limited",
+                "limit": 1,
+                "min_depth": 2,
+            },
+        },
+        {
+            "kind": "template",
+            "id": "village_taverns:village/plains/tavern",
+            "pointer": pointer + "/delegate/location",
+        },
+        {
+            "kind": "processor_list",
+            "id": "minecraft:empty",
+            "pointer": pointer + "/delegate/processors",
+        },
+    ]
+    trace = trace_pool("example:houses", [result], [])
+    terminal = cast("list[dict[str, JsonValue]]", trace["terminal_edges"])
+    assert terminal[0]["edge"] == cast("list[JsonValue]", result["edges"])[0]
+    assert trace["missing"] == [
+        {
+            "kind": "template",
+            "id": "village_taverns:village/plains/tavern",
+        }
+    ]
+    element["delegate"] = {"element_type": "example:unsupported"}
+    result = cast("dict[str, JsonValue]", pool_links([resource])[0])
+    assert result["unresolved_elements"] == [
+        {
+            "pointer": pointer + "/delegate",
+            "element_type": "example:unsupported",
+            "reason": "unresolved element",
+        }
+    ]
+    del element["delegate"]
+    with pytest.raises(TypeError, match=r"invalid pool element.*delegate"):
+        _ = pool_links([resource])
