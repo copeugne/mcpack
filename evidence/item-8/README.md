@@ -310,3 +310,11 @@ fields; all original observations remain linked. Values describe saved-piece
 layout envelopes including air/padding, not occupied blocks, complete component
 population or family-wide size limits. Explicit family assessments override
 the generic estimates. Missing suitable observations remain unknown.
+
+Ruin-fragment reconciliation (`61d6501`, joined in `0f500c9`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ruins-61d6501.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ruins-61d6501-repro.json
+cmp evidence/raw/item8/inventory-ruins-61d6501.json evidence/raw/item8/inventory-ruins-61d6501-repro.json
+```
