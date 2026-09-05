@@ -646,7 +646,8 @@ def test_repurposed_design_groups_cover_registry_and_bind_variant_definitions() 
 
 
 @pytest.mark.parametrize(
-    ("namespace", "count"), [("towns_and_towers", 60), ("idas", 84), ("adorabuild_structures", 106)]
+    ("namespace", "count"),
+    [("towns_and_towers", 60), ("idas", 84), ("adorabuild_structures", 106), ("terralith", 28)],
 )
 def test_provider_groups_bind_full_definitions_pools_and_registry(
     namespace: str,
@@ -750,6 +751,25 @@ def test_provider_groups_bind_full_definitions_pools_and_registry(
             "watercraft": 7,
         }
         expected = {key: ("adorabuild_structures:", size) for key, size in counts.items()}
+    if namespace == "terralith":
+        expected = {
+            "desert_outpost": ("terralith:regular/desert_outpost", 1),
+            "fortified_village": ("terralith:village/", 2),
+            "glacial_hut": ("terralith:ruin/glacial/hut", 1),
+            "igloo": ("terralith:regular/igloo", 1),
+            "mage_complex": ("terralith:mage/complex_start", 1),
+            "mage_tower": ("terralith:mage/", 5),
+            "rubble": ("terralith:rubble/", 6),
+            "spire": ("terralith:spire/layer2", 1),
+            "underground/frosted_dungeon": ("terralith:underground/frosted_dungeon", 1),
+            "underground/giant_bee_hive": ("terralith:underground/giant_bee_hive", 1),
+            "underground/mining_outpost": ("terralith:underground/mining_outpost", 1),
+            "underground/old_refinery": ("terralith:underground/old_refinery", 1),
+            "underground/sunken_tower": ("terralith:underground/sunken_tower", 1),
+            "underground_cabin": ("terralith:underground/oak_cabin", 2),
+            "valley_lodge": ("terralith:regular/valley_lodge", 1),
+            "witch_hut": ("terralith:regular/witch_hut", 2),
+        }
     assert {str(r["family_id"]).split(":")[1] for r in groups} == set(expected)
     for group in groups:
         kind = str(group["family_id"]).split(":")[1]

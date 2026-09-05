@@ -545,3 +545,21 @@ is isolated from its source decisions. Prior family records are unchanged.
 World observations exist for basalt chambers, houses, Nether fortresses and
 prisons. Custom generator behavior, effective attributes and final canonical
 reconciliation remain open. No new measurement system was needed.
+
+Terralith (`7b386d2`, joined in `0c06094`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-terralith-7b386d2.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-terralith-7b386d2-repro.json
+cmp evidence/raw/item8/inventory-terralith-7b386d2.json evidence/raw/item8/inventory-terralith-7b386d2-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 48 focused tests and scoped Ruff/basedpyright checks passed. The reused
+provider check binds 28 distinct roots in 16 working groups, full definitions,
+start-pool families and exact missing-component lists. Cabin and witch-hut
+shared designs retain both registry identities and their different definitions.
+The underground-prefixed witch hut has an empty resolved biome set and surface
+heightmap projection. No retained Terralith structure observations exist.
+The generated increment is isolated, and prior family records remain unchanged.
+Effective attributes and final canonical reconciliation remain open.
