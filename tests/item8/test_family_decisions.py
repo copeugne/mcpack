@@ -544,6 +544,107 @@ def test_voyager_carts_and_igloos_preserve_authored_content_and_shared_pieces() 
             assert nbt["SpawnPotentials"] == []
 
 
+def test_repurposed_design_groups_cover_registry_and_bind_variant_definitions() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, list[dict[str, JsonValue]]]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    catalog = cast(
+        "dict[str, list[dict[str, JsonValue]]]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    traces = cast(
+        "dict[str, dict[str, dict[str, JsonValue]]]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    groups = [
+        row
+        for row in decisions["groups"]
+        if str(row["family_id"]).startswith("repurposed_structures:")
+    ]
+    registry = {
+        key
+        for key in read_registry(
+            root
+            / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+        )
+        if key.startswith("repurposed_structures:")
+    }
+    members = [key for row in groups for key in cast("list[str]", row["structure_ids"])]
+    assert len(members) == len(set(members)) == 107
+    assert set(members) == registry
+    counts = {
+        "ancient_city": 3,
+        "bastion": 1,
+        "city": 2,
+        "fortress": 1,
+        "igloo": 4,
+        "mansion": 8,
+        "mineshaft": 16,
+        "monument": 4,
+        "outpost": 18,
+        "pyramid": 11,
+        "ruined_portal": 1,
+        "ruins": 5,
+        "shipwreck": 4,
+        "stronghold": 2,
+        "temple": 7,
+        "village": 14,
+        "witch_hut": 6,
+    }
+    assert {str(row["family_id"]).split(":")[1] for row in groups} == set(counts)
+    custom: set[str] = set()
+    for row in groups:
+        family = str(row["family_id"])
+        kind = family.split(":")[1]
+        variants = cast("dict[str, dict[str, JsonValue]]", row["variants"])
+        assert (
+            row["structure_ids"]
+            == sorted(variants)
+            == sorted(key for key in registry if key.startswith(family + "_"))
+        )
+        assert len(variants) == counts[kind]
+        for path, digest in cast("dict[str, str]", row["evidence"]).items():
+            assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+        if kind == "witch_hut":
+            continue  # Covered by the common-definition/template variant check.
+        for identifier, variant in variants.items():
+            name = identifier.split(":")[1]
+            definitions = [
+                cast("dict[str, JsonValue]", r["document"])
+                for r in catalog["resources"]
+                if r["path"] == f"data/repurposed_structures/worldgen/structure/{name}.json"
+            ]
+            assert definitions == [variant["definition"]]
+            definition = definitions[0]
+            if "start_pool" in definition:
+                trace = traces["structures"][identifier]
+                assert trace["start_pool"] == definition["start_pool"]
+                assert variant["missing_components"] == trace["missing"] == []
+                assert trace["templates"]
+                assert trace["unresolved_elements"] == []
+            else:
+                custom.add(identifier)
+                assert kind in {"mansion", "monument"}
+                assert definition["type"] == f"repurposed_structures:{kind}_structure"
+                assert definition[f"{kind}_type"] == name.removeprefix(kind + "_")
+                assert identifier in traces["untraced_structures"]
+                assert (
+                    variant["missing_components"]
+                    == "UNKNOWN: custom generation is outside current pool trace"
+                )
+    assert len(custom) == 12
+
+
 def test_soaring_tree_variants_bind_common_definition_and_template_contents() -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(
