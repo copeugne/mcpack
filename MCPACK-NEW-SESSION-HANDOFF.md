@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Moog shared-library provider candidate coverage now passes. Registration and
+lifecycle boundaries delivered in ee8e2c0 using f28c96b. The full payload and
+declared entry/service/mixin routes are bound by test_moog_library_provider_scope.py;
+five focused cases and scoped checks pass. No independent family is added by
+the library. Reuse all eight capture directories and do not expand this provider
+into geometry or registry-container internals. Effective consumer attributes
+remain later work. Counts: 31 dispositions, 105 open. Continue the named provider
+queue before resuming family attributes or claiming a final family denominator.
+
 User again requires the actual complete family denominator, not repeated reports
 that provider coverage is open. The immediate deliverable remains the complete
 candidate list with explicit family/variant decisions and named ambiguities.

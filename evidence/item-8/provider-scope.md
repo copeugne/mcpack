@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 30 of 136. The exact queue below has 106 open rows.
+Supported provider dispositions: 31 of 136. The exact queue below has 105 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -621,7 +621,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `lithostitched-1.7.10+beta4-neoforge-21.1.jar` | `lithostitched-alias-code`, `lithostitched-biome-injector-code`, `lithostitched-feature-modifier-code`, `lithostitched-platform-modifier-code`, `lithostitched-pool-additions-code`, `lithostitched-pool-compilation-code`, `lithostitched-processor-registration-code`, `lithostitched-random-block-code`, `lithostitched-street-processor-code`, `lithostitched-surface-lifecycle-code`, `pool-codecs` | Reuse modifier, pool, alias and processor captures; reconcile remaining entry/codec consumers and packaged modifiers. |
 | `lootintegrations-1.21.1-4.7.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect core loot callbacks and consumers; addon data closures do not close this implementation. |
 | `mca-neoforge-7.7.11+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar` | `moog-generator-code`, `moog-nether-generator-code`, `pool-codecs`, `moog-provider-entries`, `moog-provider-callbacks`, `moog-declared-mixins`, `moog-direct-boundaries` | Direct helpers delivered in cd015c3 resolve MixinUtils, EnhancedBeardifierHelper, DebugFlags and the registry service target. Finish NeoForgeResourcefulRegistry registration boundary and whole-provider reconciliation. Reuse existing captures; do not trace unrelated geometry/noise internals. |
+| `moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar` | Eight capture directories bound by test_moog_library_provider_scope.py; latest registration boundaries ee8e2c0. | RESOLVED: shared generation and modification library; no independent authored family or packaged generation resources. See Moog library provider disposition below. |
 | `moonlight-neoforge-1.21.1-3.0.17.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `naturalist-1.0.2-neoforge-1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `oceansdelight-neoforge-1.0.4-1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -794,3 +794,51 @@ uv run pytest -q tests/item8/test_yungs_extras_provider_scope.py tests/item8/tes
 Nine cases pass, 20 unrelated cases deselected. Scoped Ruff and Basedpyright pass.
 Provider dispositions: 30 of 136; 106 remain open. This resolves provider coverage,
 not canonical grouping or the final Item 8 gate.
+
+## Moog library provider disposition
+
+The shared library supplies the existing generic jigsaw and Nether jigsaw
+implementations, pool elements/pieces, placement modifiers, processors and terrain
+adaptation. Its role is implementing and modifying consumer-provided generation.
+It contributes no independent authored family. The four Moog data providers have
+separate, already closed coverage dispositions; their grouping remains provisional.
+
+The full nonclass payload is exhausted by metadata, two declared mixin configs,
+one registry service, access declarations, pack metadata, icon and license.
+There are no packaged roots, features, pools, templates, functions, nested JARs
+or other data resources. The two loader/subscriber entry classes are the already
+captured NeoForge entry and the build-time NBT datagen subscriber. All sixteen
+declared mixins and the sole service implementation have preserved captures.
+The source roles, not a zero-hit keyword result, establish this disposition.
+
+Common/NeoForge entry captures bind the registration and lifecycle callbacks.
+Registration wrappers forward supplied names and suppliers to DeferredRegister;
+they do not introduce an extra design. Lifecycle callbacks start/stop locating
+infrastructure, register the trial-spawner JSON reload listener, and expose debug
+commands. The direct locate handlers search supplied registered structures.
+The datagen callback writes through DataGenerator, not a live world event.
+
+Mixin and direct-helper captures resolve tagged basalt/delta suppression, locate
+radius changes, codec weight limits, optional jigsaw-block retention and terrain
+adaptation around existing starts. Accessors expose existing pieces/pools and
+resources. Reuse the previously captured pool/version/generator paths to interpret
+consumer resources. Do not count registered implementation types or terrain
+adaptation as families. No need to trace unrelated geometry or registry containers.
+
+Keep runtime activation and effective attributes separate: optional mixins are
+not proved active by class presence; debug flags initially default false but can
+change; invalid trial-spawner JSON is logged and skipped. Effective processors,
+loot and spawner attributes still need consumer attribution during the later
+attribute pass. This closure does not certify those attributes or gameplay.
+
+```sh
+uv run pytest -q tests/item8/test_moog_library_provider_scope.py tests/item8/test_moog_data_provider_scope.py
+uv run ruff check tests/item8/test_moog_library_provider_scope.py
+uv run basedpyright tests/item8/test_moog_library_provider_scope.py
+```
+
+Five focused cases pass. Scoped checks pass after type annotations and long
+string formatting corrections; no behavioral failure was hidden. Eight existing
+capture directories are hash-bound to the frozen archive. Latest five-class
+capture ee8e2c0 reproduced using f28c96b. No new runtime or measurement framework.
+Provider dispositions: 31 of 136; 105 remain open.
