@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-05
 
+Podium invocation is integrated in `1bb1b8e`, source helper `48c6ceb`. Frozen
+true/true tower settings select the custom podium in both dragon-history states.
+Initial scan, missing-portal recovery, tracked-dragon death and reset now have
+explicit variant dispositions and placement-success limitations. Twenty-nine
+focused tests and scoped builder checks passed. Inventory SHA-256:
+`e51be54e048cc8147e5d08d9eb6865368848913cc4e3a0b714399ff265d7987d`.
+Next reconcile respawn-animation callers, initialization/runtime binding and
+generated-world observations. ExitPortalUtils and EndDragonFightMixin invocation
+interpretation are complete for their recorded scope; do not recapture them.
+WorldgenUtils surface helper remains untraced if needed for origin applicability.
+Item 8 remains incomplete; final families and full provider coverage remain open.
+
 EndDragonFightMixin reset directly invokes the initial full podium when
 spawnCentralTowerInitially is true. Initial state scanning, missing-portal
 recovery and dragon death instead delegate to ExitPortalUtils.spawnPortal.
