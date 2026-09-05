@@ -51,6 +51,34 @@ INPUTS = {
         "1bcc020827e31e893e47baf01e173e915197bd755f5034fd18ef38c1d828b1be",
     "evidence/item-8/sources/lithostitched-alias-code/identities.json":
         "eea3af78139809c0a2452a0027bfe83fac321380574b3a10ba3d8dcc16c1691b",
+    "evidence/item-6/frozen/config/regions_unexplored/common.json":
+        "300dda462e31f6f1bcce0d67308e4939d1b461a03c8cc92ba805f7ac9d1cb66c",
+    "evidence/item-8/sources/lithostitched-pool-compilation-code/identities.json":
+        "c69e16e8ae53df5fa0d817126b3b62d739e7780292576c1891e3084054ee556e",
+    "evidence/item-8/sources/lithostitched-street-processor-code/identities.json":
+        "b813d2393bfb7ff410451e5cee65a6036187abe438405bb2a1d9cd00e5f5cafc",
+    "evidence/item-8/sources/lithostitched-processor-registration-code/identities.json":
+        "803ac1e2b0d9992d51c5e5246db7ff88683fe0f7de21ec6f4e9881d240da991f",
+    "evidence/item-8/sources/lithostitched-feature-modifier-code/identities.json":
+        "b7138be0cec7822f8e4fb19c6c9175e3ac1ba7ab174cb58015c34be488b9aaa1",
+    "evidence/item-8/sources/regions-unexplored-feature-code/identities.json":
+        "d27de44a59aedb2dd41e12dcc0f35db1328207314c8cbe59dae6120de5b9953b",
+    "evidence/item-8/sources/lithostitched-platform-modifier-code/identities.json":
+        "b9705872460fd2c8aac838cfc70780fc4085700ab1aaa92b9ca66fb4ba3f52d5",
+    "evidence/item-8/sources/lithostitched-surface-lifecycle-code/identities.json":
+        "ed1f626e586466a933457e0bc18859254fc483cd062e4c359d58f6e8aa084885",
+    "evidence/item-8/sources/regions-unexplored-feature-config-code/identities.json":
+        "1b447725ac61174b8cf0f35ed5457291460c54938c49b9d8296809781a87ba8d",
+    "evidence/item-8/sources/lithostitched-random-block-code/identities.json":
+        "03ae09f76ee50c52058b4cb0818fab9ab2a2ffbe458676a3a4020f9bed127c8d",
+}
+# These dispositions apply to the exact catalog and configuration bound above.
+NON_FAMILY_CONTRIBUTIONS = {
+    "lithostitched:internal/compile_raw_templates": "pool entry storage and ordering",
+    "lithostitched:add_processor_list_processors": "conditional village street palette",
+    "lithostitched:add_surface_rule": "Overworld surface and subsurface terrain palette",
+    "lithostitched:add_features": "enabled vegetation, ground cover and ash-vent additions",
+    "lithostitched:remove_features": "enabled vanilla vegetation feature removals",
 }
 
 
@@ -159,6 +187,7 @@ def _pool_modifiers(
         document = cast("dict[str, JsonValue]", resource["document"])
         kind = document.get("type")
         status = "untraced modifier type"
+        contribution: dict[str, JsonValue] = {}
         if kind in {"lithostitched:add_template_pool_elements", "lithostitched:set_pool_aliases"}:
             if "predicate" in document or "neoforge:value" in document:
                 message = f"unresolved additional pool modifier condition or wrapper: {identifier}"
@@ -170,16 +199,24 @@ def _pool_modifiers(
                     status = "included alias replacement"
             else:
                 status = "excluded by NeoForge mod conditions"
+        elif isinstance(kind, str) and kind in NON_FAMILY_CONTRIBUTIONS:
+            status = "inspected non-family contribution"
+            contribution = {
+                "contribution": NON_FAMILY_CONTRIBUTIONS[kind],
+                "document": document,
+                "scope": "frozen source disposition; not observed placement or pacing",
+            }
         dispositions.append({
             "id": identifier, "type": kind, "status": status,
             "conditions": document.get("neoforge:conditions", []),
+            **contribution,
             **{key: resource[key] for key in ("archive", "path", "sha256")},
         })
     return additions, {
         "runtime_mod_lines": cast("JsonValue", mods),
         "dispositions": dispositions,
         "excluded_resource_layers": excluded,
-        "scope": "additive potential links only; other modifier types and runtime hooks untraced",
+        "scope": "selected packaged modifier contributions; other runtime hooks remain separate",
     }
 
 
