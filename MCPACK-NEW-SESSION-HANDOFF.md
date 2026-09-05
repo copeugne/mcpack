@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-05
 
+Bridge support geometry is delivered in `733c0cf`. Captured code places the
+marker then descends through air/liquid at fixed X/Z while Y > 0. Template
+height is the body envelope, not the terrain-dependent total support height.
+Block-write success is not checked by this helper. Nine affected tests passed;
+scoped Ruff and Basedpyright pass after splitting one compound assertion.
+Inventory SHA-256:
+`5410d6d5ae2e6e5ad584dece89db3396c70c561056de5d9e47545c97fcd3a9e7`.
+All 421 registry family rows and 887 roots remain unchanged. Continue other
+bridge processor effects, placement/configuration and provider coverage. Item 8
+is incomplete. No new runtime, source capture or measurement system added.
+
+
 Bridge generation ordering and success limits are delivered in `955936c`.
 The contribution now binds sea-level anchoring, axis rotation and the twelve
 post-template processors. The discarded template-placement boolean means feature
