@@ -512,6 +512,8 @@ CLASSES: tuple[str, ...] = (
     "com/finndog/moogs_structures/modinit/MoogsStructuresStructurePlacementType.class",
     "com/finndog/moogs_structures/modinit/MoogsStructuresStructures.class",
     "com/finndog/moogs_structures/modinit/MoogsStructuresTags.class",
+    "com/finndog/moogs_structures/commands/DebugCommand.class",
+    "com/finndog/moogs_structures/misc/trialspawnerconfig/TrialSpawnerConfigManager.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -625,6 +627,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = source.name.startswith("mcw-")
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
+                    "com/finndog/moogs_structures/MoogsStructuresCommon.class",
+                    "com/finndog/moogs_structures/neoforge/MoogsStructuresNeoforge.class",
                     "org/betterx/betterend/registry/EndFeatures.class",
                     "net/redstonegames/chefsdelight/ChefsDelight.class",
                     "net/redstonegames/chefsdelight/worldgen/village/VillageStructures.class",
