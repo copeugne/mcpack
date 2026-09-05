@@ -418,3 +418,23 @@ authored entity IDs, SAVE markers, loot references and the small igloo's stray
 spawner. Shared villager templates remain components. Four cart observations
 are linked; no retained igloo observations exist. Effective populations and
 marker/loot processing remain unresolved. No new measurement system was added.
+
+Remaining Voyager roots (`f4fdcc2`, joined in `dd2c364`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-f4fdcc2.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-f4fdcc2-repro.json
+cmp evidence/raw/item8/inventory-voyager-f4fdcc2.json evidence/raw/item8/inventory-voyager-f4fdcc2-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 41 focused tests and scoped Ruff/basedpyright checks passed. The existing
+root/settings test now verifies all 129 Voyager registry IDs exactly once,
+including prior variant groups. The 64 new working root assignments retain
+complete generation settings, missing-component lists and joined content.
+All prior family records remain unchanged. The large generated increment is
+isolated from its source decisions and documentation; expanded biome lists
+and shared component attribution account for most of its size. Canonical
+relationships and effective gameplay attributes remain open. In particular,
+cathedral loot references `minecraft:mvs/cathedral_common` and two empty explicit
+spawner IDs in the large warped tower remain visible for disposition.

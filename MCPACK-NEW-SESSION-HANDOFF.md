@@ -6,6 +6,27 @@
 
 ### Continuation update - 2026-09-05
 
+Voyager's remaining 64 roots are delivered through `dd2c364`, built from
+`f4fdcc2`. All 129 runtime registry entries are assigned exactly once across
+73 working groups. This completes namespace assignment, not canonical-family
+reconciliation. Full generation settings and existing traces are bound by the
+reused source check. Forty-one focused tests and scoped quality checks passed;
+two builds were identical and all 199 earlier family records remained equal.
+The large generated JSON expansion is isolated in its own commit because it
+joins every remaining root to existing biome/template/world evidence. It adds
+no evidence framework or measurement system. Inventory SHA-256:
+`7ff1ac25e82012bd5b01b9c57a493e0930a4c669638cbc5c96aee8670ddad7d0`.
+Totals: 263 working groups, 423 assigned IDs, 464 unassigned.
+
+Reconcile the explicitly open Voyager relationships: boulder/stone_rock,
+floating islands, ponds, camps and related house/ruin designs. Cathedral retains
+`minecraft:mvs/cathedral_common` loot references requiring disposition. Large
+warped tower retains two missing explicit spawner entity IDs; do not infer them.
+Ocean tower uses OCEAN_FLOOR_WG and a maximum-Y allowance, so its generation step
+does not establish surface exposure. Continue other providers and non-registry
+contributions alongside shared effective attributes. Final canonical inventory,
+required attributes, Item 8 gate, clean review and main merge remain open.
+
 Voyager carts and igloos are delivered through `925a781`, built from `631cb1a`.
 Six roots form two working groups. Carts preserve authored wandering traders,
 SAVE markers and variant loot differences. Igloos preserve shared vanilla
