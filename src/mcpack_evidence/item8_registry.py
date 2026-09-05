@@ -8,6 +8,7 @@ import signal
 import subprocess
 import threading
 import time
+from contextlib import suppress
 from dataclasses import dataclass, field
 from os import killpg
 from typing import IO, TYPE_CHECKING, ClassVar
@@ -100,7 +101,7 @@ class _Capture:
                 self.rejection = "server console pipe failed"
 
 
-def run_registry_lifecycle(  # noqa: C901, PLR0913 - keep optional probe within process cleanup.
+def run_registry_lifecycle(  # noqa: C901, PLR0912, PLR0913 - retain probe and console cleanup together.
     target: Path,
     java: Path,
     console_log: Path,
@@ -117,6 +118,7 @@ def run_registry_lifecycle(  # noqa: C901, PLR0913 - keep optional probe within 
     killed = False
     deadline = time.monotonic() + timeout_seconds
     reader: threading.Thread | None = None
+    lines = OutputSequence()
     with console_log.open("x", encoding="utf-8") as log:
         process = subprocess.Popen(  # noqa: S603 - pinned executable and fixed server arguments.
             [
@@ -144,7 +146,6 @@ def run_registry_lifecycle(  # noqa: C901, PLR0913 - keep optional probe within 
             if process.stdin is None or process.stdout is None:
                 message = "server console pipes are unavailable"
                 raise OSError(message)  # noqa: TRY301 - cleanup must cover missing pipes.
-            lines = OutputSequence()
             reader = threading.Thread(target=read_output, args=(process.stdout, lines), daemon=True)
             reader.start()
             deadline = _drive(state, lines, process.stdin, log, deadline, exit_timeout_seconds)
@@ -162,6 +163,10 @@ def run_registry_lifecycle(  # noqa: C901, PLR0913 - keep optional probe within 
             return_code = process.wait()
             if reader is not None:
                 reader.join(timeout=1)
+            with suppress(queue.Empty):
+                while (tail := lines.get(timeout=0)) is not None:
+                    _ = log.write(tail)
+            log.flush()
             if process.stdin is not None:
                 try:
                     process.stdin.close()
