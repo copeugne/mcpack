@@ -6,6 +6,19 @@
 
 ### Continuation update - 2026-09-05
 
+MVS surface campsite grouping is delivered in `aa01ac1`. Campsite, fire camp
+and horse campsite are one family with all three exact definitions/templates
+preserved. Mine with campsite remains separate due to its lower spawner-bearing
+mining component and shared villager pieces. The modular mineshaft relationship
+is still open. Working total: 427 groups with 887 registered roots.
+All 67 affected tests and scoped checks pass. Inventory SHA-256:
+`d38983b380fedb771dbe47aefb274e287a9dfa355e37d4b9a617babac68df33e`.
+Reproduction and limitations are in the final MVS section of
+`evidence/item-8/README.md`. Continue unresolved MVS island/mining relationships,
+BetterEnd, non-registry coverage and required attributes. Item 8 remains active;
+no configuration changes, new measurement system or downstream work.
+
+
 MVS rock/pond grouping decisions are delivered in `bdcee2c`. Boulder and
 stone-rock roots become one rock family; mushroom and oak pond roots become
 one pond family. Exact definitions, seven rock template alternatives, four pond
