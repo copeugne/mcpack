@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+SpikeFeatureMixin and full BetterSpikeFeature/BetterEndPodiumFeature captures
+now reproduce exactly under sources/better-end-island-spike-podium. Both spike
+hooks replace vanilla behavior without a local config condition. The place hook
+passes whether the accessor is a WorldGenRegion. Interpret the preserved full
+generators next; do not recapture them. Podium invocation remains untraced.
+Inventory is unchanged, and Item 8 remains incomplete.
+
 Continue Better End Island provider coverage with SpikeFeatureMixin,
 BetterSpikeFeature and BetterEndPodiumFeature. These three exact source classes
 resolve untraced generation beyond the completed platform/gateway paths. Reuse
