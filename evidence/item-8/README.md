@@ -294,3 +294,19 @@ selects fixed height or terrain utility results and moves the assembled pieces.
 The called terrain utilities and inherited layout path remain necessary to
 resolve effective placement. This is source evidence, not a completed runtime
 placement claim.
+
+Observed geometry source `62be1ff` and generated evidence `be1171c` use the
+existing world-bounds artifact. Reproduction:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-geometry-62be1ff.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-geometry-62be1ff-repro.json
+cmp evidence/raw/item8/inventory-geometry-62be1ff.json evidence/raw/item8/inventory-geometry-62be1ff-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+Only observations with `chunk_full=true` contribute to the approximate geometry
+fields; all original observations remain linked. Values describe saved-piece
+layout envelopes including air/padding, not occupied blocks, complete component
+population or family-wide size limits. Explicit family assessments override
+the generic estimates. Missing suitable observations remain unknown.
