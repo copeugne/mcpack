@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `0e582dd`, SHA-256
-`dae60a7e5068e65f3ae7c2e07fd821bb028fb11bec9aba73efc1d220229cabe9`.
+Current working inventory regenerated at `c221e11`, SHA-256
+`7b47782c2e2109500c3f432044e4aa99326ac70c7ced516bcfc131b9671ac841`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,16 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The c221e11 increment resolves Monster Box initial enablement from category
+construction, annotation conversion, configuration callback order and preserved
+initial-refresh evidence. Saved-world attribution and relevant ambient spawning
+remain open. All 31 focused tests passed. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-monster-enabled-c221e11.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-monster-enabled-c221e11.json
+```
 
 The 0e582dd increment integrates Monster Box as one working non-registry
 encounter family. It records source-derived geometry, activation, authored mob

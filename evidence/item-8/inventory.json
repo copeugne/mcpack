@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "bde90f40e03a0fe95868615ae31483363c1501d025297e109372fde778a9bed2",
+    "evidence/item-8/family-decisions.json": "465a8d5f9cc0054aab8370a295e63125f841c90bfa015745d29955e0a2c31307",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -160296,10 +160296,24 @@
       },
       "quark:monster_box": {
         "behavior_interpretation": "evidence/item-8/sources/quark-monster-box-behavior/README.md",
+        "effective_enablement": {
+          "enabled_after_initial_refresh": true,
+          "evidence": "evidence/item-8/sources/quark-world-category/README.md#initial-enable-state",
+          "limits": "Derived initial state, not a direct runtime field dump or observed encounter. Later runtime mutation is not measured.",
+          "status": "RESOLVED_SOURCE_CONFIG_LOG_DERIVATION"
+        },
         "evidence": {
+          "evidence/item-8/sources/quark-enablement-callers/identities.json": "10046ea0375f2b2bca63749954b6316c177282bf17631320ad2f69329569280e",
           "evidence/item-8/sources/quark-landmark-encounter-generators/identities.json": "9e85bdd251270a20b8922c12a2b3567a9ffa18920426b94b1fec4bd1e9965971",
           "evidence/item-8/sources/quark-monster-box-behavior/identities.json": "9ce1a6e746759357630f45fcd135c126df48f38f4951d5fa0932144b3788e79b",
-          "evidence/item-8/sources/quark-monster-box-bindings/identities.json": "e8b2cf605a2c485da43a062cf0a37128491fb085d92d46f54a3c694eff4a28ae"
+          "evidence/item-8/sources/quark-monster-box-bindings/identities.json": "e8b2cf605a2c485da43a062cf0a37128491fb085d92d46f54a3c694eff4a28ae",
+          "evidence/item-8/sources/quark-world-category/identities.json": "5157d8b0b79f4da07faa2bcc284869e8d58c673bd9c2a1a0d0993d575f546f62",
+          "evidence/item-8/sources/zeta-config-binding/identities.json": "16802f7394df715f82bd4d14f4f2ce36154d7db6b7ae21e6585050ffe1d92d5e",
+          "evidence/item-8/sources/zeta-config-event-fields/identities.json": "05201729f592b83a7129df6bc7eb29b2fde19d1e1c191fc2e24a9e8dba9115a3",
+          "evidence/item-8/sources/zeta-enablement-inputs/identities.json": "296a18f820faacbcd149a7f42fae453122fc01eafb28184bc275e12a241c011a",
+          "evidence/item-8/sources/zeta-module-assignment/identities.json": "e2c01f2e58f5c3df5e4619862fb4ca1887c6bb815b80c2697dd00a1e55aee9fc",
+          "evidence/item-8/sources/zeta-module-name/identities.json": "be6109c7d9ee30f6174e6ea384e7d5f2b6ddad186e66aa784b8fc7bffae4ed08",
+          "evidence/item-8/sources/zeta-module-section/identities.json": "1ebf92172aa8dc1f01ecc7ea2908fa53d90740828f2db5eac284aa000302a830"
         },
         "families": [
           {
@@ -160307,7 +160321,7 @@
             "approximate_vertical_size": "One block. Initial candidate Y is in [-50,0); downward search checks at most 15 positions strictly above -50.",
             "authored_or_natural": "Box-selected enemies are authored. Ambient natural spawning remains separate and unresolved.",
             "biome_constraints": "No biome filter in the direct generator. Flat-world rejection and replaceable non-liquid target above stone-based sturdy support apply.",
-            "dimension": "Initial configured allowlist is minecraft:overworld. Effective module enablement remains unresolved.",
+            "dimension": "minecraft:overworld initial configured allowlist. Initial module enablement is resolved by source, frozen configuration and initial-refresh log.",
             "family": "quark:monster_box",
             "generated_spawners": "One custom monster-box block, removed after its activation sequence. No direct minecraft:spawner placement. SPAWNER entity reason does not imply a physical vanilla spawner.",
             "intended_hostility": "Authored hostile proximity encounter outside Peaceful difficulty. A non-spectator player strictly within 2.5 blocks starts activation; spawning is requested on the 41st active tick.",
@@ -160321,7 +160335,7 @@
           }
         ],
         "frozen_configuration": {
-          "binding": "Initial values derived from captured field annotations, shared Zeta mapping, frozen/captured file equality and retained initial-refresh log. Effective category/overlap enablement remains UNKNOWN.",
+          "binding": "Initial values derived from captured annotations, Zeta mapping, frozen/captured file equality and retained initial-refresh log. World category and module toggles are true; category requires no extra mod; selected annotation converter supplies no overlap exclusions. ConfigManager applies category and overlap options before module options.",
           "file": "evidence/item-6/frozen/config/quark-common.toml",
           "module_toggle": true,
           "settings": {
@@ -160344,7 +160358,7 @@
         },
         "interpretation": "evidence/item-8/sources/quark-monster-box-bindings/README.md#frozen-setting-attribution",
         "mechanism": "MonsterBoxModule registers MonsterBoxGenerator through Zeta at UNDERGROUND_DECORATION. It directly places a proximity-triggered encounter block, without structure templates.",
-        "remaining": "Resolve effective module/category/overlap enablement and saved-world attribution. Integrate relevant ambient spawning in the broader provider reconciliation. Generation, activation, loot selection, callback targets and initial field binding are already interpreted; do not repeat those investigations.",
+        "remaining": "Resolve saved-world attribution and relevant ambient spawning in the broader provider reconciliation. Initial module enablement, generation, activation, loot selection, callback targets and field binding are already interpreted; do not repeat those investigations.",
         "scope": "Working Item 8 family identity and source-derived attributes only. No Item 9 tier, observed frequency or final global family count."
       },
       "quark:spiral_spire": {

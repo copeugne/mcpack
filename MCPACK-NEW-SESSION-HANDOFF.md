@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Monster Box initial enablement is resolved in c221e11. The captured category
+has no required mod, the selected annotation converter supplies no overlap
+candidates, and ConfigManager applies enabled category settings before module
+settings during the preserved initial refresh. Both frozen toggles are true.
+Do not repeat enablement, field mapping, activation or loot investigations.
+Saved-world attribution, relevant ambient spawning and broader provider coverage
+remain open. All 31 focused tests passed; no new measurement was added.
+
 Monster Box enablement follow-up selects only ZetaCategory and
 ZetaLoadModuleAnnotationData through the existing extractor. The captured
 setEnabled path checks category requirements and overlap, but the preserved
