@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-05
 
+Extras explicit template membership is delivered in `2957779`. All 59 explicit
+location references resolve, with nominal XYZ sizes recorded. Three empty-config
+generators (desert_chillzone, desert_giant_torch, desert_ruins_0) require code
+attribution; similarly named packaged templates are not assumed linked or unused.
+Fourteen affected tests and scoped quality checks passed after one assertion wrap.
+Inventory SHA-256:
+`f66b81d0def7ecf9de36eb82f036ef646ed9b343930b92f8f030a9546ab1c060`.
+All 421 registry family rows and 887 roots remain unchanged. Continue Extras
+custom-generator/content attribution and configuration registration. Four
+packaged templates have block entities (chillzone, giant_torch, ruins_0 and
+swamp_pillar_2); their effective content is not yet attributed. Item 8 remains
+incomplete; no new extraction or measurement system added.
+
+
 Extras biome scope is delivered in `397812a`. Desert additions and declared
 vanilla well removal share three resolved desert biomes; swamp additions have
 two. All intersect only the captured overworld list, with no required missing
