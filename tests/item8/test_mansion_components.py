@@ -102,3 +102,35 @@ def test_mansion_candidate_pools_and_child_fallbacks() -> None:  # noqa: PLR0915
           for n in (1, 2, 3)),
     }
     assert child_templates <= by_id.keys()
+
+
+def test_mansion_spawner_lists_and_processors() -> None:
+    raw = Path("evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd")
+    catalog = cast("dict[str, list[JsonValue]]", json.loads(gzip.decompress(raw)))
+    spawners, _ = select_resources(catalog["resources"], "rs_spawners",
+                                  enabled_packs=["vanilla", "mod_data"],
+                                  lithostitched_overlay=True)
+    mansion_processors: list[JsonValue] = [
+        row for row in catalog["resources"] if isinstance(row, dict)
+        and "data/repurposed_structures/worldgen/processor_list/mansions/"
+        in str(row.get("path"))
+    ]
+    processors, _ = select_resources(mansion_processors, "worldgen/processor_list",
+                                    enabled_packs=["vanilla", "mod_data"],
+                                    lithostitched_overlay=True)
+    for variant in ("birch", "desert", "jungle", "mangrove", "oak", "savanna", "snowy", "taiga"):
+        key = f"repurposed_structures:mansions/{variant}"
+        row = spawners[key]
+        assert row["archive"] == "repurposed_structures-7.5.21+1.21.1-neoforge.jar"
+        assert row["sha256"] == "39439a1a2e54f048e0e61d770536233ccf68443f48fb0188fda1d46958bc7dc0"
+        assert row["document"] == {"mobs": [{"name": "minecraft:spider", "weight": 100}]}
+        assert processors[key + "/spawner"]["document"] == {"processors": [{
+            "processor_type": "repurposed_structures:spawner_randomizing_processor",
+            "rs_spawner_resourcelocation": key,
+            "valid_block_light_level": {"max_inclusive": 7, "min_inclusive": 0},
+        }]}
+        assert processors[key + "/mushroom"]["document"] == {"processors": [{
+            "processor_type": "repurposed_structures:force_place_mushroom_blocks_processor",
+        }]}
