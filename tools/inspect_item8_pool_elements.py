@@ -53,6 +53,7 @@ ARCHIVES = frozenset(
         "YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar",
         "integrated_villages-1.3.3+1.21.1-neoforge.jar",
         "idas-1.13.7+1.21.1-neoforge.jar",
+        "BetterEnd-21.0.31.jar",
     }
 )
 GENERATION_PREFIXES = (
@@ -209,6 +210,15 @@ CLASSES = (
     "net/regions_unexplored/lithostitched/ConfigPredicate.class",
     "net/regions_unexplored/config/state/common/RUCommonConfig.class",
     "net/regions_unexplored/worldgen/stateprovider/RandomizedGroundCoverStateProvider.class",
+    "org/betterx/betterend/registry/EndStructures.class",
+    "org/betterx/betterend/world/structures/features/FeatureBaseStructure.class",
+    "org/betterx/betterend/world/structures/features/EndLakeStructure.class",
+    "org/betterx/betterend/world/structures/features/EndLakeNormalStructure.class",
+    "org/betterx/betterend/world/structures/features/EndLakeRareStructure.class",
+    "org/betterx/betterend/world/structures/features/MegaLakeStructure.class",
+    "org/betterx/betterend/world/structures/features/MegaLakeSmallStructure.class",
+    "org/betterx/betterend/world/structures/features/MountainStructure.class",
+    "org/betterx/betterend/world/structures/features/PaintedMountainStructure.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -287,6 +297,7 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = "/mixin/" in name or "/mixins/" in name or name in {
                     CLASSES[0],
+                    "org/betterx/betterend/registry/EndStructures.class",
                     "net/minecraft/world/level/levelgen/structure/structures/DesertPyramidStructure.class",
                     "net/minecraft/world/level/levelgen/structure/structures/JungleTempleStructure.class",
                     "net/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece.class",

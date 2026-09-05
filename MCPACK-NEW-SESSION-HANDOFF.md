@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+BetterEnd lake/mountain registration and generator sources are captured under
+`evidence/item-8/sources/betterend-formations-code`. The existing extractor now
+selects nine exact classes from retained BetterEnd, including verbose registration
+bootstrap bindings. Identity manifest SHA-256:
+`150df9fc0a941cc523bca51a782c39fcd0f08a32b11af77a64cf6f248c170961`.
+Initial source inspection: normal/rare EndLake subclasses only forward construction
+and override type(); MegaLakeSmall has its own generatePieces. Mountain and
+painted mountain use separate piece classes. Integrate relationships only after
+comparing these preserved implementations and settings. No new measurement system
+was added: packaged definitions do not expose the code needed for these open
+family decisions, so the existing source extraction path supplies it. Extraction
+and scoped checks pass. Inventory and its 426 working groups remain unchanged.
+Commands and limitations are in the source directory README.
+
+
 MVS mining relationship and encounter attribution are delivered in `7c1d6c6`.
 Compact mine-with-campsite and modular mineshaft remain separate families;
 shared villager pieces are components. Both now record packaged hostile intent
