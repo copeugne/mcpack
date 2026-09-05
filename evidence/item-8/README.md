@@ -785,3 +785,9 @@ traces. Decision SHA-256:
 `5f49f674fbadd6f86decc6b97623526150ba97b0d919ad8da63e751fe5f392e9`.
 Inventory regeneration uses `uv run -m tools.build_item8_inventory --output
 evidence/raw/item8/inventory-ctov-definitions.json` and is delivered separately.
+
+Definitions and verification are delivered in `21fdbe0`. Inventory regenerated
+at that revision, SHA-256:
+`9205723b5e8748e56aeac40190d15365aa2b198a98c79e81ecb37409a0c5112e`.
+Only the 22 village grouping decisions and decision input hash change; all
+family memberships, other attributes and world-observation links are preserved.

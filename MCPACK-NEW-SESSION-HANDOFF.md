@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-05
 
+CTOV village definitions and missing-component bindings are delivered in
+`21fdbe0`. All 66 village roots across 22 working design groups are now bound
+to exact packaged definitions and existing pool traces. Existing outpost checks
+cover the other 12 CTOV roots. All 63 affected tests and scoped checks pass.
+Inventory SHA-256:
+`9205723b5e8748e56aeac40190d15365aa2b198a98c79e81ecb37409a0c5112e`.
+Reproduction commands and limitations are in the final CTOV section of
+`evidence/item-8/README.md`. Canonical relationships between village designs,
+non-registry provider coverage and outstanding required attributes remain open.
+No family count, configuration, runtime or measurement-system change.
+
+
 Integrated Villages/IDAS suppression sources are delivered in `9d88842`, with
 family integration in `feb9da7`. Integrated Villages suppresses seven exact keys:
 the five vanilla villages and both Terralith fortified villages. It does not
