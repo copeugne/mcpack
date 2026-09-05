@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Village Taverns entry/mixin source is captured reproducibly using d8d1107 in
+sources/tavern-provider-entries. Its StructurePoolAPI injection is conditional on
+Lithostitched absence; do not double-count fallback and packaged additions.
+Mixins affect potion compatibility and bartender scheduling. Full provider
+closure still needs remaining registration helpers/defaults and bundled
+tiny-config entry accounting. Counts remain 23 dispositions and 113 to reconcile.
+
 Chef's Delight now has a full-provider component-only disposition. All six
 classes are captured, with the remaining four delivered in 23ee872. Full file
 accounting and the existing component-content test pass, as do scoped static

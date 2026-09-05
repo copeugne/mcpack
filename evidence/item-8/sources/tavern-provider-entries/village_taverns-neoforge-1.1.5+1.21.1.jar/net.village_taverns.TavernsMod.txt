@@ -1,0 +1,59 @@
+Compiled from "TavernsMod.java"
+public class net.village_taverns.TavernsMod {
+  public static final java.lang.String ID = "village_taverns";
+
+  public static net.tiny_config.ConfigManager<net.fabric_extras.structure_pool.api.StructurePoolConfig> villageConfig;
+
+  public net.village_taverns.TavernsMod();
+    Code:
+       0: aload_0
+       1: invokespecial #21                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init();
+    Code:
+       0: getstatic     #26                 // Field villageConfig:Lnet/tiny_config/ConfigManager;
+       3: invokevirtual #29                 // Method net/tiny_config/ConfigManager.refresh:()V
+       6: invokestatic  #35                 // InterfaceMethod net/fabricmc/loader/api/FabricLoader.getInstance:()Lnet/fabricmc/loader/api/FabricLoader;
+       9: ldc           #37                 // String lithostitched
+      11: invokeinterface #41,  2           // InterfaceMethod net/fabricmc/loader/api/FabricLoader.isModLoaded:(Ljava/lang/String;)Z
+      16: ifne          31
+      19: getstatic     #26                 // Field villageConfig:Lnet/tiny_config/ConfigManager;
+      22: getfield      #45                 // Field net/tiny_config/ConfigManager.value:Ljava/lang/Object;
+      25: checkcast     #47                 // class net/fabric_extras/structure_pool/api/StructurePoolConfig
+      28: invokestatic  #53                 // Method net/fabric_extras/structure_pool/api/StructurePoolAPI.injectAll:(Lnet/fabric_extras/structure_pool/api/StructurePoolConfig;)V
+      31: getstatic     #26                 // Field villageConfig:Lnet/tiny_config/ConfigManager;
+      34: invokevirtual #56                 // Method net/tiny_config/ConfigManager.save:()V
+      37: return
+
+  public static void registerBlocks();
+    Code:
+       0: invokestatic  #62                 // Method net/village_taverns/block/TavernBlocks.register:()V
+       3: return
+
+  public static void registerPOI();
+    Code:
+       0: invokestatic  #67                 // Method net/village_taverns/TavernVillagers.registerPOI:()V
+       3: return
+
+  public static void registerVillagers();
+    Code:
+       0: invokestatic  #70                 // Method net/village_taverns/TavernVillagers.registerVillagers:()V
+       3: return
+
+  static {};
+    Code:
+       0: new           #9                  // class net/tiny_config/ConfigManager
+       3: dup
+       4: ldc           #73                 // String villages
+       6: getstatic     #78                 // Field net/village_taverns/config/Defaults.villages:Lnet/fabric_extras/structure_pool/api/StructurePoolConfig;
+       9: invokespecial #81                 // Method net/tiny_config/ConfigManager."<init>":(Ljava/lang/String;Ljava/lang/Object;)V
+      12: invokevirtual #85                 // Method net/tiny_config/ConfigManager.builder:()Lnet/tiny_config/ConfigManager$Builder;
+      15: ldc           #14                 // String village_taverns
+      17: invokevirtual #89                 // Method net/tiny_config/ConfigManager$Builder.setDirectory:(Ljava/lang/String;)Lnet/tiny_config/ConfigManager$Builder;
+      20: iconst_1
+      21: invokevirtual #93                 // Method net/tiny_config/ConfigManager$Builder.sanitize:(Z)Lnet/tiny_config/ConfigManager$Builder;
+      24: invokevirtual #97                 // Method net/tiny_config/ConfigManager$Builder.build:()Lnet/tiny_config/ConfigManager;
+      27: putstatic     #26                 // Field villageConfig:Lnet/tiny_config/ConfigManager;
+      30: return
+}
