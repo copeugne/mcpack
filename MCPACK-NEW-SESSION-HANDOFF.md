@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+User requires resolution of the unknown candidate denominator. The exact open
+provider queue in evidence/item-8/provider-scope.md now names all 110 remaining
+archives, existing capture directories and next checks. Together with 26 closed
+dispositions it reconciles the retained manifest. This is a work queue, not
+acceptance evidence. Resolve it before detailed attributes; stop helper tracing
+once the candidate boundary is supported. No new measurement system is needed.
+
 Towns and Towers scope now passes: 60 roots, 187 pools, 837 base templates;
 three disconnected pools and 23 disconnected templates explicitly accounted for.
 The optional three-template Waystones pack requires an absent captured mod ID.
