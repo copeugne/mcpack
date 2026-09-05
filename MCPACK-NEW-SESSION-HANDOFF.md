@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+Monument fitters and their interface are delivered in 58cbbfa. The interface
+is abstract, correcting the earlier default-opening assumption. The focused
+catalog test reconciles 76 candidate pools and 88 templates; it passes with
+scoped static checks. Inspect the five referenced nonempty processor lists and
+candidate template content next. Preserve wall_2's unassigned source relationship
+and graph-reachability uncertainty; do not count components as families.
+
 Monument entry and building captures are delivered in 5fceeb4 and reproduced
 exactly. Follow the eight named Fit*Room classes and MonumentRoomFitter's
 default opening creation. Their pool references are the remaining direct
