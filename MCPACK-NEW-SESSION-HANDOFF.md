@@ -6,6 +6,19 @@
 
 ### Continuation update - 2026-09-05
 
+YUNG Extras entry points are delivered in `fe1fb1e`. Two NeoForge additions
+reference 16 desert and 46 swamp placed features, matching all 62 same-ID
+configured/placed runtime entries. There are zero yungsextras structure roots.
+The third modifier declares vanilla desert-well removal. Neither 62 features
+nor 11 generator types are accepted family counts. Twelve affected tests and
+scoped quality checks passed. Inventory SHA-256:
+`9fcd6b648bd22c311a0d9f167c0013cb500e3817ed6c06406666e0dc719cadac`.
+All 421 registry family rows and 887 roots remain unchanged. Continue Extras
+template/custom-generator attribution and configuration/biome scope. Bridge
+standalone configuration and wider provider coverage also remain open. Item 8
+is incomplete; no new capture or measurement system was added.
+
+
 Bridge biome/modifier constraints are delivered in `c19f9d5`. Existing merged
 tags resolve six registered river biomes with no required missing members;
 only the captured overworld possible-biome list overlaps. All 22 variants
