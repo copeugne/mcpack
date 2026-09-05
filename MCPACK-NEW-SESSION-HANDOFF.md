@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Zeta handlers are delivered in `1b650ca`. Exploratory class-reference search
+located Quark consumer modules. Inspect ChorusVegetationModule and
+SpiralSpiresModule registrations plus Zeta DeferredFeature's execution link
+using the existing extractor. These are concrete consumer paths relevant to End
+generation; module names alone do not establish applicability. Other Quark
+consumers remain in broader provider coverage, and the exploratory search is
+not accepted as an exhaustive consumer inventory.
+
 Zeta modifier source is delivered in `3138b23`. It appends a deferred feature
 per decoration stage and delegates spawning separately. Continue with its exact
 WorldGenHandler and ZetaSpawnModifier dependencies through the existing extractor;
