@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `8ca1e21`, SHA-256
-`d04abd3d02744ce7af0ac2ae286642ceaedca036efa603a9db08122b78280072`.
+Current working inventory regenerated at `a485c80`, SHA-256
+`175fd05691be098c8e5904482325772757cdf9185a5017b3d765429e920f67ea`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1163,3 +1163,9 @@ it was separated into a focused placement/cue test without a shared abstraction.
 Four focused BetterEnd cases and scoped Ruff/Basedpyright checks pass. An initial
 read-only inventory inspection assumed families was a list and raised TypeError;
 it was corrected to use the existing mapping, with no artifact mutation.
+
+The affected suite passed 71 tests before the test-only split; all four BetterEnd
+cases passed afterward. Inventory regenerated at `a485c80`, SHA-256:
+`175fd05691be098c8e5904482325772757cdf9185a5017b3d765429e920f67ea`.
+Only the mountain grouping evidence and its placement/visual fields changed.
+All other families, saved observation links and size envelopes are unchanged.

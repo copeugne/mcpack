@@ -14208,7 +14208,28 @@
         "unresolved_sources": {}
       },
       "grouping_decision": {
+        "attributes": {
+          "underground_surface_classification": {
+            "basis": "Both root generators sample the base surface height and construct their piece at that Y only above the recorded threshold. PaintedMountainPiece builds columns upward from local surface support; CrystalMountainPiece places a mountain body and crystal formations.",
+            "classification": "Surface-rooted procedural mountain formation.",
+            "minimum_exclusive_start_y_by_structure": {
+              "betterend:mountain": 5,
+              "betterend:painted_mountain": 50
+            },
+            "scope": "Authored placement intent. Local terrain, noise and support checks affect the result; this is not proof that every generated block is exposed. The MountainPiece bounding box uses radius on Y as well as X/Z, so its saved envelope is not occupied mountain height.",
+            "start_heightmap": "WORLD_SURFACE_WG"
+          },
+          "visual_discoverability": {
+            "authored_cues_by_structure": {
+              "betterend:mountain": "Procedural mountain body with crystal moss and aurora crystal formations.",
+              "betterend:painted_mountain": "Procedural mountain columns with noise-varied layers selected from end stone, flavolite and violecite."
+            },
+            "basis": "CrystalMountainPiece places CRYSTAL_MOSS, END_STONE and AURORA_CRYSTAL. PaintedMountainStructure supplies the three-material palette; PaintedMountainPiece selects slices by height and noise and writes them into columns.",
+            "scope": "Source-derived visual cues for surface formations. Observed visibility distance, occlusion and player discovery probability remain UNKNOWN; these cues are not an exploration-pacing measurement."
+          }
+        },
         "evidence": {
+          "evidence/item-8/sources/betterend-formation-pieces/identities.json": "2ecc0877f072bee316254a4e5df4395c43e24802d923a29bd83c19c8a7718f39",
           "evidence/item-8/sources/betterend-formations-code/identities.json": "150df9fc0a941cc523bca51a782c39fcd0f08a32b11af77a64cf6f248c170961",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -14297,8 +14318,24 @@
         "betterend:mountain",
         "betterend:painted_mountain"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "Both root generators sample the base surface height and construct their piece at that Y only above the recorded threshold. PaintedMountainPiece builds columns upward from local surface support; CrystalMountainPiece places a mountain body and crystal formations.",
+        "classification": "Surface-rooted procedural mountain formation.",
+        "minimum_exclusive_start_y_by_structure": {
+          "betterend:mountain": 5,
+          "betterend:painted_mountain": 50
+        },
+        "scope": "Authored placement intent. Local terrain, noise and support checks affect the result; this is not proof that every generated block is exposed. The MountainPiece bounding box uses radius on Y as well as X/Z, so its saved envelope is not occupied mountain height.",
+        "start_heightmap": "WORLD_SURFACE_WG"
+      },
+      "visual_discoverability": {
+        "authored_cues_by_structure": {
+          "betterend:mountain": "Procedural mountain body with crystal moss and aurora crystal formations.",
+          "betterend:painted_mountain": "Procedural mountain columns with noise-varied layers selected from end stone, flavolite and violecite."
+        },
+        "basis": "CrystalMountainPiece places CRYSTAL_MOSS, END_STONE and AURORA_CRYSTAL. PaintedMountainStructure supplies the three-material palette; PaintedMountainPiece selects slices by height and noise and writes them into columns.",
+        "scope": "Source-derived visual cues for surface formations. Observed visibility distance, occlusion and player discovery probability remain UNKNOWN; these cues are not an exploration-pacing measurement."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": [
@@ -158876,7 +158913,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "1def4cbabbfb5bf97e5afa984144424469000aa5bfe891227610dd290b062712",
+    "evidence/item-8/family-decisions.json": "87b4d8967824e33e6c8dbdd7dd689654b24d215390f4bbf63c26ccd74a199422",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",

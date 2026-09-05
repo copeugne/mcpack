@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-05
 
+BetterEnd mountain placement and visual cues are delivered in `a485c80`, using
+piece source capture `01d4f63`. Both variants now record surface height selection,
+distinct minimum Y thresholds and source-derived crystal/layered-stone cues.
+Observed visibility remains unmeasured. MountainPiece uses radius for its Y
+bounding box; saved envelopes are not occupied height. Existing size evidence
+and all other family rows are unchanged. The affected suite passed 71 tests;
+after separating the new test to satisfy lint, four BetterEnd cases and scoped
+Ruff/Basedpyright passed. Inventory SHA-256:
+`175fd05691be098c8e5904482325772757cdf9185a5017b3d765429e920f67ea`.
+Still 421 working groups and 887 roots. Continue required content attribution,
+remaining canonical/provider coverage and attributes. Item 8 remains incomplete;
+no new runtime, measurement system or downstream work was added.
+
+
 BetterEnd mountain grouping is delivered in `8ca1e21`. Ordinary and painted
 mountains are variants of one formation family. Separate generator/piece types,
 biome restrictions, height thresholds and material paths remain preserved in
