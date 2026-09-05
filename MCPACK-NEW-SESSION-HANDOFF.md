@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-05
 
+Shared applicability sources are delivered in `1d6be84`. Source search uses
+ceil(radius/16) neighboring chunks; DimensionConfig's LevelAccessor overload
+requires a Level. Resolve the inherited Generator.canGenerate/generate caller
+before interpreting this as disabling WorldGenRegion generation. Capture only
+that exact base class through the existing extractor.
+
 Quark generator capture is delivered in `a7af165`. Both reject source positions
 closer than 1050 to origin, but that alone does not bound generated parts.
 Resolve MultiChunkFeatureGenerator and DimensionConfig through the existing
