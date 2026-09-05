@@ -1,0 +1,314 @@
+Compiled from "MonsterBoxBlockEntity.java"
+public class org.violetmoon.quark.content.world.block.be.MonsterBoxBlockEntity extends org.violetmoon.zeta.block.be.ZetaBlockEntity {
+  private int breakProgress;
+
+  public org.violetmoon.quark.content.world.block.be.MonsterBoxBlockEntity(net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field org/violetmoon/quark/content/world/module/MonsterBoxModule.blockEntityType:Lnet/minecraft/world/level/block/entity/BlockEntityType;
+       4: aload_1
+       5: aload_2
+       6: invokespecial #7                  // Method org/violetmoon/zeta/block/be/ZetaBlockEntity."<init>":(Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+       9: return
+
+  public static void tick(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, org.violetmoon.quark.content.world.block.be.MonsterBoxBlockEntity);
+    Code:
+       0: aload_0
+       1: invokevirtual #13                 // Method net/minecraft/world/level/Level.getDifficulty:()Lnet/minecraft/world/Difficulty;
+       4: getstatic     #19                 // Field net/minecraft/world/Difficulty.PEACEFUL:Lnet/minecraft/world/Difficulty;
+       7: if_acmpne     11
+      10: return
+      11: aload_1
+      12: invokevirtual #25                 // Method net/minecraft/core/BlockPos.getX:()I
+      15: istore        4
+      17: aload_1
+      18: invokevirtual #31                 // Method net/minecraft/core/BlockPos.getY:()I
+      21: istore        5
+      23: aload_1
+      24: invokevirtual #34                 // Method net/minecraft/core/BlockPos.getZ:()I
+      27: istore        6
+      29: aload_0
+      30: getfield      #37                 // Field net/minecraft/world/level/Level.isClientSide:Z
+      33: ifeq          80
+      36: aload_0
+      37: aload_3
+      38: getfield      #41                 // Field breakProgress:I
+      41: ifne          50
+      44: getstatic     #47                 // Field net/minecraft/core/particles/ParticleTypes.FLAME:Lnet/minecraft/core/particles/SimpleParticleType;
+      47: goto          53
+      50: getstatic     #53                 // Field net/minecraft/core/particles/ParticleTypes.LARGE_SMOKE:Lnet/minecraft/core/particles/SimpleParticleType;
+      53: iload         4
+      55: i2d
+      56: invokestatic  #56                 // Method java/lang/Math.random:()D
+      59: dadd
+      60: iload         5
+      62: i2d
+      63: invokestatic  #56                 // Method java/lang/Math.random:()D
+      66: dadd
+      67: iload         6
+      69: i2d
+      70: invokestatic  #56                 // Method java/lang/Math.random:()D
+      73: dadd
+      74: dconst_0
+      75: dconst_0
+      76: dconst_0
+      77: invokevirtual #62                 // Method net/minecraft/world/level/Level.addParticle:(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V
+      80: aload_3
+      81: getfield      #41                 // Field breakProgress:I
+      84: ifle          91
+      87: iconst_1
+      88: goto          92
+      91: iconst_0
+      92: istore        7
+      94: iload         7
+      96: ifne          190
+      99: aload_0
+     100: invokevirtual #66                 // Method net/minecraft/world/level/Level.players:()Ljava/util/List;
+     103: astore        8
+     105: aload         8
+     107: invokeinterface #70,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     112: astore        9
+     114: aload         9
+     116: invokeinterface #76,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     121: ifeq          190
+     124: aload         9
+     126: invokeinterface #82,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     131: checkcast     #86                 // class net/minecraft/world/entity/player/Player
+     134: astore        10
+     136: aload         10
+     138: iload         4
+     140: i2d
+     141: ldc2_w        #88                 // double 0.5d
+     144: dadd
+     145: iload         5
+     147: i2d
+     148: ldc2_w        #88                 // double 0.5d
+     151: dadd
+     152: iload         6
+     154: i2d
+     155: ldc2_w        #88                 // double 0.5d
+     158: dadd
+     159: invokevirtual #90                 // Method net/minecraft/world/entity/player/Player.distanceToSqr:(DDD)D
+     162: getstatic     #94                 // Field org/violetmoon/quark/content/world/module/MonsterBoxModule.activationRange:D
+     165: getstatic     #94                 // Field org/violetmoon/quark/content/world/module/MonsterBoxModule.activationRange:D
+     168: dmul
+     169: dcmpg
+     170: ifge          187
+     173: aload         10
+     175: invokevirtual #98                 // Method net/minecraft/world/entity/player/Player.isSpectator:()Z
+     178: ifne          187
+     181: iconst_1
+     182: istore        7
+     184: goto          190
+     187: goto          114
+     190: iload         7
+     192: ifeq          263
+     195: aload_3
+     196: getfield      #41                 // Field breakProgress:I
+     199: ifne          217
+     202: aload_0
+     203: aconst_null
+     204: aload_1
+     205: getstatic     #101                // Field org/violetmoon/quark/base/handler/QuarkSounds.BLOCK_MONSTER_BOX_GROWL:Lnet/minecraft/sounds/SoundEvent;
+     208: getstatic     #107                // Field net/minecraft/sounds/SoundSource.BLOCKS:Lnet/minecraft/sounds/SoundSource;
+     211: ldc           #113                // float 0.5f
+     213: fconst_1
+     214: invokevirtual #114                // Method net/minecraft/world/level/Level.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+     217: aload_3
+     218: dup
+     219: getfield      #41                 // Field breakProgress:I
+     222: iconst_1
+     223: iadd
+     224: putfield      #41                 // Field breakProgress:I
+     227: aload_3
+     228: getfield      #41                 // Field breakProgress:I
+     231: bipush        40
+     233: if_icmple     263
+     236: aload_3
+     237: invokevirtual #118                // Method spawnMobs:()V
+     240: aload_0
+     241: sipush        2001
+     244: aload_1
+     245: aload_0
+     246: aload_1
+     247: invokevirtual #124                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     250: invokestatic  #128                // Method net/minecraft/world/level/block/Block.getId:(Lnet/minecraft/world/level/block/state/BlockState;)I
+     253: invokevirtual #134                // Method net/minecraft/world/level/Level.levelEvent:(ILnet/minecraft/core/BlockPos;I)V
+     256: aload_0
+     257: aload_1
+     258: iconst_0
+     259: invokevirtual #138                // Method net/minecraft/world/level/Level.removeBlock:(Lnet/minecraft/core/BlockPos;Z)Z
+     262: pop
+     263: return
+
+  private void spawnMobs();
+    Code:
+       0: aload_0
+       1: getfield      #142                // Field level:Lnet/minecraft/world/level/Level;
+       4: astore_2
+       5: aload_2
+       6: instanceof    #146                // class net/minecraft/server/level/ServerLevel
+       9: ifeq          171
+      12: aload_2
+      13: checkcast     #146                // class net/minecraft/server/level/ServerLevel
+      16: astore_1
+      17: aload_0
+      18: invokevirtual #148                // Method getBlockPos:()Lnet/minecraft/core/BlockPos;
+      21: astore_2
+      22: aload_1
+      23: invokevirtual #152                // Method net/minecraft/server/level/ServerLevel.getServer:()Lnet/minecraft/server/MinecraftServer;
+      26: invokevirtual #156                // Method net/minecraft/server/MinecraftServer.reloadableRegistries:()Lnet/minecraft/server/ReloadableServerRegistries$Holder;
+      29: getstatic     #162                // Field net/minecraft/core/registries/Registries.LOOT_TABLE:Lnet/minecraft/resources/ResourceKey;
+      32: getstatic     #168                // Field org/violetmoon/quark/content/world/module/MonsterBoxModule.MONSTER_BOX_SPAWNS_LOOT_TABLE:Lnet/minecraft/resources/ResourceLocation;
+      35: invokestatic  #172                // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+      38: invokevirtual #178                // Method net/minecraft/server/ReloadableServerRegistries$Holder.getLootTable:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/level/storage/loot/LootTable;
+      41: astore_3
+      42: new           #184                // class net/minecraft/world/level/storage/loot/LootParams$Builder
+      45: dup
+      46: aload_1
+      47: invokespecial #186                // Method net/minecraft/world/level/storage/loot/LootParams$Builder."<init>":(Lnet/minecraft/server/level/ServerLevel;)V
+      50: getstatic     #189                // Field net/minecraft/world/level/storage/loot/parameters/LootContextParams.ORIGIN:Lnet/minecraft/world/level/storage/loot/parameters/LootContextParam;
+      53: aload_2
+      54: invokestatic  #195                // Method net/minecraft/world/phys/Vec3.atCenterOf:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/world/phys/Vec3;
+      57: invokevirtual #201                // Method net/minecraft/world/level/storage/loot/LootParams$Builder.withParameter:(Lnet/minecraft/world/level/storage/loot/parameters/LootContextParam;Ljava/lang/Object;)Lnet/minecraft/world/level/storage/loot/LootParams$Builder;
+      60: getstatic     #205                // Field net/minecraft/world/level/storage/loot/parameters/LootContextParams.BLOCK_STATE:Lnet/minecraft/world/level/storage/loot/parameters/LootContextParam;
+      63: aload_0
+      64: invokevirtual #208                // Method getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      67: invokevirtual #201                // Method net/minecraft/world/level/storage/loot/LootParams$Builder.withParameter:(Lnet/minecraft/world/level/storage/loot/parameters/LootContextParam;Ljava/lang/Object;)Lnet/minecraft/world/level/storage/loot/LootParams$Builder;
+      70: getstatic     #211                // Field net/minecraft/world/level/storage/loot/parameters/LootContextParams.TOOL:Lnet/minecraft/world/level/storage/loot/parameters/LootContextParam;
+      73: getstatic     #214                // Field net/minecraft/world/item/ItemStack.EMPTY:Lnet/minecraft/world/item/ItemStack;
+      76: invokevirtual #201                // Method net/minecraft/world/level/storage/loot/LootParams$Builder.withParameter:(Lnet/minecraft/world/level/storage/loot/parameters/LootContextParam;Ljava/lang/Object;)Lnet/minecraft/world/level/storage/loot/LootParams$Builder;
+      79: getstatic     #220                // Field net/minecraft/world/level/storage/loot/parameters/LootContextParams.BLOCK_ENTITY:Lnet/minecraft/world/level/storage/loot/parameters/LootContextParam;
+      82: aload_0
+      83: invokevirtual #201                // Method net/minecraft/world/level/storage/loot/LootParams$Builder.withParameter:(Lnet/minecraft/world/level/storage/loot/parameters/LootContextParam;Ljava/lang/Object;)Lnet/minecraft/world/level/storage/loot/LootParams$Builder;
+      86: astore        4
+      88: aload         4
+      90: getstatic     #223                // Field net/minecraft/world/level/storage/loot/parameters/LootContextParamSets.BLOCK:Lnet/minecraft/world/level/storage/loot/parameters/LootContextParamSet;
+      93: invokevirtual #229                // Method net/minecraft/world/level/storage/loot/LootParams$Builder.create:(Lnet/minecraft/world/level/storage/loot/parameters/LootContextParamSet;)Lnet/minecraft/world/level/storage/loot/LootParams;
+      96: astore        5
+      98: getstatic     #232                // Field org/violetmoon/quark/content/world/module/MonsterBoxModule.minMobCount:I
+     101: aload_0
+     102: getfield      #142                // Field level:Lnet/minecraft/world/level/Level;
+     105: getfield      #235                // Field net/minecraft/world/level/Level.random:Lnet/minecraft/util/RandomSource;
+     108: getstatic     #238                // Field org/violetmoon/quark/content/world/module/MonsterBoxModule.maxMobCount:I
+     111: getstatic     #232                // Field org/violetmoon/quark/content/world/module/MonsterBoxModule.minMobCount:I
+     114: isub
+     115: iconst_1
+     116: iadd
+     117: iconst_1
+     118: invokestatic  #241                // Method java/lang/Math.max:(II)I
+     121: invokeinterface #245,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     126: iadd
+     127: istore        6
+     129: iconst_0
+     130: istore        7
+     132: iload         7
+     134: iload         6
+     136: if_icmpge     159
+     139: aload_3
+     140: aload         5
+     142: aload_0
+     143: aload_1
+     144: aload_2
+     145: invokedynamic #251,  0            // InvokeDynamic #0:accept:(Lorg/violetmoon/quark/content/world/block/be/MonsterBoxBlockEntity;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;)Ljava/util/function/Consumer;
+     150: invokevirtual #255                // Method net/minecraft/world/level/storage/loot/LootTable.getRandomItemsRaw:(Lnet/minecraft/world/level/storage/loot/LootParams;Ljava/util/function/Consumer;)V
+     153: iinc          7, 1
+     156: goto          132
+     159: aload_1
+     160: invokevirtual #261                // Method net/minecraft/server/level/ServerLevel.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+     163: aconst_null
+     164: getstatic     #265                // Field net/minecraft/world/level/gameevent/GameEvent.ENTITY_PLACE:Lnet/minecraft/core/Holder$Reference;
+     167: aload_2
+     168: invokevirtual #271                // Method net/minecraft/server/level/ServerLevel.gameEvent:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/core/Holder;Lnet/minecraft/core/BlockPos;)V
+     171: return
+
+  private void lambda$spawnMobs$0(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.world.item.ItemStack);
+    Code:
+       0: aconst_null
+       1: astore        4
+       3: aload_3
+       4: invokevirtual #275                // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+       7: astore        6
+       9: aload         6
+      11: instanceof    #279                // class net/minecraft/world/item/SpawnEggItem
+      14: ifeq          179
+      17: aload         6
+      19: checkcast     #279                // class net/minecraft/world/item/SpawnEggItem
+      22: astore        5
+      24: aload         5
+      26: aload_3
+      27: invokevirtual #281                // Method net/minecraft/world/item/SpawnEggItem.getType:(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/entity/EntityType;
+      30: astore        6
+      32: aload         6
+      34: aload_1
+      35: aload_3
+      36: aconst_null
+      37: aload_2
+      38: getstatic     #285                // Field net/minecraft/world/entity/MobSpawnType.SPAWNER:Lnet/minecraft/world/entity/MobSpawnType;
+      41: iconst_1
+      42: iconst_1
+      43: invokevirtual #291                // Method net/minecraft/world/entity/EntityType.spawn:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/MobSpawnType;ZZ)Lnet/minecraft/world/entity/Entity;
+      46: astore        4
+      48: aload         4
+      50: ifnull        179
+      53: ldc2_w        #297                // double 0.4d
+      56: dstore        7
+      58: aload         4
+      60: aload_2
+      61: invokevirtual #25                 // Method net/minecraft/core/BlockPos.getX:()I
+      64: i2d
+      65: ldc2_w        #88                 // double 0.5d
+      68: dadd
+      69: aload_2
+      70: invokevirtual #31                 // Method net/minecraft/core/BlockPos.getY:()I
+      73: i2d
+      74: ldc2_w        #88                 // double 0.5d
+      77: dadd
+      78: aload_2
+      79: invokevirtual #34                 // Method net/minecraft/core/BlockPos.getZ:()I
+      82: i2d
+      83: ldc2_w        #88                 // double 0.5d
+      86: dadd
+      87: invokevirtual #299                // Method net/minecraft/world/entity/Entity.setPos:(DDD)V
+      90: aload_0
+      91: getfield      #142                // Field level:Lnet/minecraft/world/level/Level;
+      94: getfield      #235                // Field net/minecraft/world/level/Level.random:Lnet/minecraft/util/RandomSource;
+      97: invokeinterface #305,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     102: f2d
+     103: ldc2_w        #88                 // double 0.5d
+     106: dsub
+     107: dload         7
+     109: dmul
+     110: dstore        9
+     112: aload_0
+     113: getfield      #142                // Field level:Lnet/minecraft/world/level/Level;
+     116: getfield      #235                // Field net/minecraft/world/level/Level.random:Lnet/minecraft/util/RandomSource;
+     119: invokeinterface #305,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     124: f2d
+     125: ldc2_w        #88                 // double 0.5d
+     128: dsub
+     129: dload         7
+     131: dmul
+     132: dstore        11
+     134: aload_0
+     135: getfield      #142                // Field level:Lnet/minecraft/world/level/Level;
+     138: getfield      #235                // Field net/minecraft/world/level/Level.random:Lnet/minecraft/util/RandomSource;
+     141: invokeinterface #305,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     146: f2d
+     147: ldc2_w        #88                 // double 0.5d
+     150: dsub
+     151: dload         7
+     153: dmul
+     154: dstore        13
+     156: aload         4
+     158: dload         9
+     160: dload         11
+     162: dload         13
+     164: invokevirtual #309                // Method net/minecraft/world/entity/Entity.setDeltaMovement:(DDD)V
+     167: aload         4
+     169: invokevirtual #312                // Method net/minecraft/world/entity/Entity.getPersistentData:()Lnet/minecraft/nbt/CompoundTag;
+     172: ldc_w         #316                // String quark:monster_box_spawned
+     175: iconst_1
+     176: invokevirtual #318                // Method net/minecraft/nbt/CompoundTag.putBoolean:(Ljava/lang/String;Z)V
+     179: return
+}
