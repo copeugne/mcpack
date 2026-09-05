@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `8d11e68`, SHA-256
-`54b4dd382725ea6e48181b4e077feadcdc466c2b98d56221bb094ac4c2312579`.
+Current working inventory regenerated at `e8982e8`, SHA-256
+`fb8e1b31eca3bc8050d8103e0078ff949b12b14cc53daf8f3a0d3e63383b5c10`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -2021,3 +2021,11 @@ or complete provider acceptance. Crystal offsets and applicable block replacemen
 behavior are also attributed. Podium invocation and effective runtime activation
 remain open. The focused catalog-coverage test reproduces the index derivation
 and exact template-content joins; 29 focused tests and scoped checks passed.
+
+Regenerated at `e8982e8`; only input identity and Better End Island contribution
+changed. Reproduce with the existing builder and a fresh output path:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-template-links.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-template-links.json
+```
