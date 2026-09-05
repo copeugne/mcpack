@@ -463,11 +463,20 @@ def test_soaring_rivers_preserve_omitted_default_and_complete_namespace() -> Non
 
 @pytest.mark.parametrize(
     ("family", "prefix", "member_count", "template_count"),
-    [("mns:very_small_ruins", "mns:very_small", 7, 6), ("mns:bridge", "mns:bridge_", 6, 6)],
+    [
+        ("mns:very_small_ruins", ("mns:very_small",), 7, 6),
+        ("mns:bridge", ("mns:bridge_",), 6, 6),
+        (
+            "mns:medium_fungus",
+            ("mns:medium_crimson_fungus", "mns:medium_warped_fungus"),
+            4,
+            4,
+        ),
+    ],
 )
 def test_nether_variants_preserve_definitions_and_template_identity(
     family: str,
-    prefix: str,
+    prefix: tuple[str, ...],
     member_count: int,
     template_count: int,
 ) -> None:
@@ -519,8 +528,12 @@ def test_nether_variants_preserve_definitions_and_template_identity(
         ]
         assert len(rows) == 1
         definitions[identifier] = rows[0]
+        excluded = {"start_pool"}
+        if "biomes" in variant:
+            assert variant["biomes"] == rows[0]["biomes"]
+            excluded.add("biomes")
         assert group["common_generation_definition"] == {
-            key: value for key, value in rows[0].items() if key != "start_pool"
+            key: value for key, value in rows[0].items() if key not in excluded
         }
         assert variant["start_pool"] == rows[0]["start_pool"]
         assert structures[identifier]["templates"] == [variant["template"]]
@@ -529,7 +542,7 @@ def test_nether_variants_preserve_definitions_and_template_identity(
             variant["template_size_xyz"] == contents[str(variant["template"])]["template_size_xyz"]
         )
     assert len({str(row["template"]) for row in variants.values()}) == template_count
-    if family == "mns:bridge":
+    if family in {"mns:bridge", "mns:medium_fungus"}:
         for variant in variants.values():
             content = contents[str(variant["template"])]
             assert content["authored_entities"] == content["loot_references"] == []
