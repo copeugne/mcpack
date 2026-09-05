@@ -5,9 +5,12 @@ import json
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
+from tools.build_item8_inventory import main as build_inventory
+
 from mcpack_evidence.item8_registry import read_registry
 
 if TYPE_CHECKING:
+    import pytest
     from pydantic import JsonValue
 
 
@@ -78,3 +81,38 @@ def test_dimension_capture_preserves_stack_and_registry_identity() -> None:
         hashlib.sha256(Path("tools/Item8DimensionProbe.mf").read_bytes()).hexdigest()
         == probe["manifest_sha256"]
     )
+
+
+def test_inventory_dimension_join_covers_every_frozen_root(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    output = tmp_path / "inventory.json"
+    monkeypatch.setattr("sys.argv", ["build_item8_inventory", "--output", str(output)])
+    build_inventory()
+    inventory = cast("dict[str, JsonValue]", json.loads(output.read_bytes()))
+    families = cast("dict[str, dict[str, JsonValue]]", inventory["families"])
+    memberships: dict[str, JsonValue] = {}
+    for family in families.values():
+        dimension = cast("dict[str, JsonValue]", family["dimension"])
+        by_root = cast("dict[str, JsonValue]", dimension["biome_compatible_by_structure"])
+        assert by_root.keys() == set(cast("list[str]", family["structure_ids"]))
+        assert not memberships.keys() & by_root.keys()
+        memberships.update(by_root)
+        possible = {dim for value in by_root.values() if isinstance(value, list)
+                    for dim in cast("list[str]", value)}
+        assert set(cast("list[str]", dimension["observed"])) <= possible
+    assert set(memberships) == set(read_registry(Path(
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )))
+    assert {root for root, value in memberships.items() if isinstance(value, str)} == {
+        "idas:lumber_camp/lumber_camp_bopmahogany",
+        "idas:lumber_camp/lumber_camp_bygmahogany",
+        "idas:lumber_camp/lumber_camp_bygredwood",
+    }
+    assert {root for root, value in memberships.items() if value == []} == {
+        "deep_aether:altar_camp", "deep_aether:campfire", "deep_aether:combiner_corridor",
+        "dungeons_arise:mining_system", "idas:desert_camp/desert_camp_bygwindswept",
+        "terralith:underground/witch_hut", "towns_and_towers:exclusives/pillager_outpost_nilotic",
+        "towns_and_towers:exclusives/village_nilotic", "towns_and_towers:exclusives/village_piglin",
+    }
+    assert inventory["status"] == "INCOMPLETE"
