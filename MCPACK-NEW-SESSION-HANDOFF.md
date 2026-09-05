@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+Surface-rule reference closure is delivered in `7b7c886`. The focused test
+`tests/item8/test_surface_rule_contribution.py` follows all 52 referenced
+Regions Unexplored Overworld rule documents in the pinned catalog and verifies
+their 42 terrain-block terminal types, including both config branches. The
+existing resource selector now accepts surface-rule resources; no runtime
+measurement or new extraction system was added. Nine affected tests and scoped
+Ruff/basedpyright passed. The evidence README under
+`lithostitched-platform-modifier-code` records the command and limits.
+The surface rule contributes terrain palette changes, not an extra family.
+Config activation is unnecessary for this limited claim because both branches
+are covered. Compiler, street processor and surface-rule source dispositions
+are now ready for the combined report update; the 34 feature addition/removal
+modifiers still need their content/config checks. The machine trace/inventory
+has not yet been regenerated. Item 8 remains incomplete.
+
 NeoForge dispatch and surface lifecycle are resolved in source evidence
 `236b3e5`, extracted with selectors `59df00e` and `643c1d4`. See
 `evidence/item-8/sources/lithostitched-platform-modifier-code/README.md` for
