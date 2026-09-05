@@ -1,0 +1,215 @@
+Compiled from "EndLakeStructure.java"
+public class org.betterx.betterend.world.structures.features.EndLakeStructure extends org.betterx.betterend.world.structures.features.FeatureBaseStructure {
+  public org.betterx.betterend.world.structures.features.EndLakeStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method org/betterx/betterend/world/structures/features/FeatureBaseStructure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       5: return
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<?> type();
+    Code:
+       0: getstatic     #7                  // Field org/betterx/betterend/registry/EndStructures.END_LAKE:Lorg/betterx/wover/structure/api/StructureKey$Simple;
+       3: invokeinterface #13,  1           // InterfaceMethod org/betterx/wover/structure/api/StructureKey$Simple.type:()Lnet/minecraft/world/level/levelgen/structure/StructureType;
+       8: areturn
+
+  protected void generatePieces(net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_2
+       1: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+       4: astore_3
+       5: aload_2
+       6: invokevirtual #25                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+       9: astore        4
+      11: aload_2
+      12: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      15: astore        5
+      17: aload_2
+      18: invokevirtual #33                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+      21: astore        6
+      23: aload_2
+      24: invokevirtual #37                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      27: astore        7
+      29: aload         4
+      31: iconst_4
+      32: bipush        12
+      34: aload_3
+      35: invokestatic  #41                 // Method org/betterx/bclib/util/MHelper.randRange:(IILnet/minecraft/util/RandomSource;)I
+      38: invokevirtual #47                 // Method net/minecraft/world/level/ChunkPos.getBlockX:(I)I
+      41: istore        8
+      43: aload         4
+      45: iconst_4
+      46: bipush        12
+      48: aload_3
+      49: invokestatic  #41                 // Method org/betterx/bclib/util/MHelper.randRange:(IILnet/minecraft/util/RandomSource;)I
+      52: invokevirtual #53                 // Method net/minecraft/world/level/ChunkPos.getBlockZ:(I)I
+      55: istore        9
+      57: aload         5
+      59: iload         8
+      61: iload         9
+      63: getstatic     #56                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      66: aload         7
+      68: aload         6
+      70: invokevirtual #62                 // Method net/minecraft/world/level/chunk/ChunkGenerator.getBaseHeight:(IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+      73: istore        10
+      75: iload         10
+      77: bipush        10
+      79: if_icmpge     83
+      82: return
+      83: ldc2_w        #68                 // double 10.0d
+      86: ldc2_w        #70                 // double 20.0d
+      89: aload_3
+      90: invokestatic  #72                 // Method org/betterx/bclib/util/MHelper.randRange:(DDLnet/minecraft/util/RandomSource;)D
+      93: d2f
+      94: fstore        11
+      96: fload         11
+      98: f2d
+      99: ldc2_w        #75                 // double 0.5d
+     102: dmul
+     103: ldc2_w        #77                 // double 0.8d
+     106: ldc2_w        #79                 // double 1.2d
+     109: aload_3
+     110: invokestatic  #72                 // Method org/betterx/bclib/util/MHelper.randRange:(DDLnet/minecraft/util/RandomSource;)D
+     113: dmul
+     114: d2f
+     115: fstore        12
+     117: fload         11
+     119: f2d
+     120: invokestatic  #81                 // Method org/betterx/bclib/util/MHelper.floor:(D)I
+     123: istore        13
+     125: iload         10
+     127: istore        14
+     129: iconst_4
+     130: anewarray     #85                 // class "[I"
+     133: dup
+     134: iconst_0
+     135: iconst_2
+     136: newarray       int
+     138: dup
+     139: iconst_0
+     140: iload         13
+     142: ineg
+     143: iastore
+     144: dup
+     145: iconst_1
+     146: iconst_0
+     147: iastore
+     148: aastore
+     149: dup
+     150: iconst_1
+     151: iconst_2
+     152: newarray       int
+     154: dup
+     155: iconst_0
+     156: iload         13
+     158: iastore
+     159: dup
+     160: iconst_1
+     161: iconst_0
+     162: iastore
+     163: aastore
+     164: dup
+     165: iconst_2
+     166: iconst_2
+     167: newarray       int
+     169: dup
+     170: iconst_0
+     171: iconst_0
+     172: iastore
+     173: dup
+     174: iconst_1
+     175: iload         13
+     177: ineg
+     178: iastore
+     179: aastore
+     180: dup
+     181: iconst_3
+     182: iconst_2
+     183: newarray       int
+     185: dup
+     186: iconst_0
+     187: iconst_0
+     188: iastore
+     189: dup
+     190: iconst_1
+     191: iload         13
+     193: iastore
+     194: aastore
+     195: astore        15
+     197: aload         15
+     199: astore        16
+     201: aload         16
+     203: arraylength
+     204: istore        17
+     206: iconst_0
+     207: istore        18
+     209: iload         18
+     211: iload         17
+     213: if_icmpge     279
+     216: aload         16
+     218: iload         18
+     220: aaload
+     221: astore        19
+     223: aload         5
+     225: iload         8
+     227: aload         19
+     229: iconst_0
+     230: iaload
+     231: iadd
+     232: iload         9
+     234: aload         19
+     236: iconst_1
+     237: iaload
+     238: iadd
+     239: getstatic     #56                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     242: aload         7
+     244: aload         6
+     246: invokevirtual #62                 // Method net/minecraft/world/level/chunk/ChunkGenerator.getBaseHeight:(IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+     249: istore        20
+     251: iload         10
+     253: iload         20
+     255: isub
+     256: invokestatic  #87                 // Method java/lang/Math.abs:(I)I
+     259: iconst_5
+     260: if_icmple     264
+     263: return
+     264: iload         14
+     266: iload         20
+     268: invokestatic  #92                 // Method java/lang/Math.min:(II)I
+     271: istore        14
+     273: iinc          18, 1
+     276: goto          209
+     279: aload_0
+     280: aload         5
+     282: aload         6
+     284: iload         8
+     286: iconst_2
+     287: ishr
+     288: iload         10
+     290: iconst_2
+     291: ishr
+     292: iload         9
+     294: iconst_2
+     295: ishr
+     296: invokevirtual #96                 // Method getNoiseBiome:(Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/levelgen/RandomState;III)Lnet/minecraft/core/Holder;
+     299: astore        16
+     301: new           #102                // class org/betterx/betterend/world/structures/piece/EndLakePiece
+     304: dup
+     305: new           #104                // class net/minecraft/core/BlockPos
+     308: dup
+     309: iload         8
+     311: iload         10
+     313: iload         9
+     315: invokespecial #106                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     318: iload         14
+     320: fload         11
+     322: fload         12
+     324: aload_3
+     325: aload         16
+     327: invokespecial #109                // Method org/betterx/betterend/world/structures/piece/EndLakePiece."<init>":(Lnet/minecraft/core/BlockPos;IFFLnet/minecraft/util/RandomSource;Lnet/minecraft/core/Holder;)V
+     330: astore        17
+     332: aload_1
+     333: aload         17
+     335: invokevirtual #112                // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     338: return
+}
