@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `79c866d`, SHA-256
-`c92eca63ea9f34e9e08742265ea73fa0ecea829b3bca34f90d90c2f347c8559d`.
+Current working inventory regenerated at `ec8a1e9`, SHA-256
+`fccdfc12548624499dab76279770791a9bbd9b3d4f9cb80541eb6bbd6f93b9eb`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,16 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The ec8a1e9 increment records Fallen Logs as one working family, with wood,
+hollow form, length and decoration as variants. Known attributes, frozen
+settings and open dependencies are explicit. Thirty focused tests and scoped
+checks passed. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-fallen-log-ec8a1e9.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-fallen-log-ec8a1e9.json
+```
 
 The 79c866d increment retains the Fairy Ring and associated buried ore as one
 working family. Flower and ore choices remain variants. Source-derived fields,

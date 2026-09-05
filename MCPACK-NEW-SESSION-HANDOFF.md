@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+Fallen Logs are integrated as one working family in `ec8a1e9`, with generator
+and decoration interpretation in `41bda20`. Do not repeat those interpretations.
+Configuration mapping, effective tags, hollow-log dependency and world
+attribution remain open. Monster Box block/entity behavior is the next direct
+encounter-content gap; its module and generator are already captured. Thirty
+focused tests passed. Broader retained-provider coverage remains incomplete.
+
 Fairy Ring and associated buried ore are one working family in `79c866d`.
 The captured generator interpretation is delivered in `db36cc4`; do not repeat
 its geometry analysis or split the deposit into another family. Configuration
