@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+Village street processor source closure is delivered in `3c19575`, with exact
+selectors in `c23bbab` and registration selection in `eb0cb28`. The six retained
+classes and reproduction commands are under
+`evidence/item-8/sources/lithostitched-street-processor-code` and
+`lithostitched-processor-registration-code`. They establish conditional silt/peat
+path and grass substitutions, preserving positions and NBT. This contribution
+adds no family, pool, template, authored entity, spawner or loot reference.
+This does not claim observed activation of the biome/config conditions.
+Processor identities SHA:
+`b813d2393bfb7ff410451e5cee65a6036187abe438405bb2a1d9cd00e5f5cafc`.
+Registration identities SHA:
+`803ac1e2b0d9992d51c5e5246db7ff88683fe0f7de21ec6f4e9881d240da991f`.
+Scoped Ruff/basedpyright and identity inspection passed; the pushed evidence
+ref was verified. No new measurement system or runtime capture was added.
+
 Pool compilation source closure is delivered in `3fa8f5b`, generated with tool
 `45e194d`. The three exact classes under
 `evidence/item-8/sources/lithostitched-pool-compilation-code` show raw pairs
@@ -17,18 +32,24 @@ for this possible-content requirement. The machine-readable report remains
 unchanged pending the remaining modifier dispositions; combine those report
 updates to avoid repeated whole-inventory reference migrations.
 
-The remaining selected modifier listing contains Regions Unexplored feature
-additions/removals, its Overworld surface rule and its village-path processor.
-Inspect their bodies, not names alone. The path processor references
-`regions_unexplored:village_path_fix`, whose packaged conditions select silt/peat
-biomes plus `custom_dirts`. Its declared swaps change dirt_path and grass_block
-to corresponding Regions Unexplored silt/peat blocks. The next exact classes
-located in Lithostitched are `AddProcessorListProcessorsModifier`,
-`impl/worldgen/processor/UnboundReferenceProcessor`, `ConditionProcessor`, and
-`BlockSwapStructureProcessor`. They have not yet been retained or inspected.
-Use the existing selector to establish the scope of those changes. No new
-measurement system was added. Inventory, family decisions and trace identities
-remain as recorded immediately below; broader Item 8 closure remains open.
+The remaining selected modifier checks are Regions Unexplored's 30 feature
+additions, four feature removals and one Overworld surface-rule injection.
+Their modifier bodies have been inspected. Follow placed/configured feature
+references and surface-rule references before assigning final dispositions.
+The feature documents include simple blocks, patches/flowers, weighted
+selectors, trees, a giant lily and a composite swamp-tree feature. The latter
+also contains a conditional bioshroom placement, so names alone are insufficient.
+The surface-rule injection prepends `regions_unexplored:overworld`; its body
+references further surface, subsurface, swamp and cave rules. These references
+are not yet fully closed. Reuse the preserved catalog and existing inspection
+tool; do not simulate placement merely to establish possible content.
+
+Correction to the prior checkpoint: `ReferenceStructureProcessor` is the class
+bound to the JSON `lithostitched:reference`, not `UnboundReferenceProcessor`.
+Inventory, family decisions and trace identities remain as recorded below.
+The machine report still has 37 untraced modifier entries pending the combined
+update, including the compiler and street processor now resolved in source
+evidence. Broader Item 8 closure remains open.
 
 Trial alias correction is delivered: shared tag/alias decoder `749c1a2`, trace
 integration `f4efdcc`, generated trace and decision bindings `48df0e9`, rebuilt
