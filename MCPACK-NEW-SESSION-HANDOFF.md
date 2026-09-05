@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-05
 
+Trial-spawner selection code is delivered in `776dcdb`, extracted with `ed49f84`.
+See `evidence/item-8/sources/vanilla-trial-spawner-code/README.md` for the exact
+command, method/offset references and limitations. Manifest SHA:
+`aa43a73247921fd7ece2e3a71d811c0bddba492a6ea04e198825fc111082449e`.
+An omitted potential list decodes empty. The ominous transition preserves
+existing next-spawn data when that list is empty; it does not copy normal-mode
+potentials into the ominous configuration. Exact entity attribution remains
+conditional on prior lifecycle state. Do not repeat these three class extractions
+or replace the five unresolved entries with unconditional normal-mode IDs.
+The current inventory and trace hashes below remain unchanged. Next finish the
+conditional attribution using the existing lifecycle/source path and move on to
+the remaining custom-generation and provider coverage gaps. No new measurement
+system was added. Extraction and scoped Ruff/basedpyright passed; refs verified.
+
 The ID-less vanilla trial-spawner omission is fixed in `74b748c`, with trace
 delivery `f539e25` and inventory rebuild `cc819fe`. All 14 affected packaged
 templates identify the trial spawner through the palette, not NBT `id`.
