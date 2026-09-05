@@ -1,0 +1,82 @@
+Compiled from "ZetaSpawnModifier.java"
+public class org.violetmoon.zetaimplforge.world.ZetaSpawnModifier {
+  public org.violetmoon.zetaimplforge.world.ZetaSpawnModifier();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void modifyBiome(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>, org.violetmoon.zeta.world.EntitySpawnHandler, net.neoforged.neoforge.common.world.ModifiableBiomeInfo$BiomeInfo$Builder);
+    Code:
+       0: aload_2
+       1: invokevirtual #7                  // Method net/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder.getMobSpawnSettings:()Lnet/neoforged/neoforge/common/world/MobSpawnSettingsBuilder;
+       4: astore_3
+       5: aload_1
+       6: getfield      #13                 // Field org/violetmoon/zeta/world/EntitySpawnHandler.trackedSpawnConfigs:Ljava/util/List;
+       9: invokeinterface #19,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      14: astore        4
+      16: aload         4
+      18: invokeinterface #25,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      23: ifeq          158
+      26: aload         4
+      28: invokeinterface #31,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      33: checkcast     #35                 // class org/violetmoon/zeta/world/EntitySpawnHandler$TrackedSpawnConfig
+      36: astore        5
+      38: aload_3
+      39: aload         5
+      41: getfield      #37                 // Field org/violetmoon/zeta/world/EntitySpawnHandler$TrackedSpawnConfig.classification:Lnet/minecraft/world/entity/MobCategory;
+      44: invokevirtual #41                 // Method net/neoforged/neoforge/common/world/MobSpawnSettingsBuilder.getSpawner:(Lnet/minecraft/world/entity/MobCategory;)Ljava/util/List;
+      47: astore        6
+      49: aload         5
+      51: getfield      #47                 // Field org/violetmoon/zeta/world/EntitySpawnHandler$TrackedSpawnConfig.secondary:Z
+      54: ifne          72
+      57: aload         6
+      59: aload         5
+      61: invokedynamic #51,  0             // InvokeDynamic #0:test:(Lorg/violetmoon/zeta/world/EntitySpawnHandler$TrackedSpawnConfig;)Ljava/util/function/Predicate;
+      66: invokeinterface #55,  2           // InterfaceMethod java/util/List.removeIf:(Ljava/util/function/Predicate;)Z
+      71: pop
+      72: aload         5
+      74: getfield      #59                 // Field org/violetmoon/zeta/world/EntitySpawnHandler$TrackedSpawnConfig.config:Lorg/violetmoon/zeta/config/type/EntitySpawnConfig;
+      77: invokevirtual #63                 // Method org/violetmoon/zeta/config/type/EntitySpawnConfig.isEnabled:()Z
+      80: ifeq          113
+      83: aload         5
+      85: getfield      #59                 // Field org/violetmoon/zeta/world/EntitySpawnHandler$TrackedSpawnConfig.config:Lorg/violetmoon/zeta/config/type/EntitySpawnConfig;
+      88: getfield      #68                 // Field org/violetmoon/zeta/config/type/EntitySpawnConfig.biomes:Lorg/violetmoon/zeta/config/type/IBiomeConfig;
+      91: aload_0
+      92: invokeinterface #72,  2           // InterfaceMethod org/violetmoon/zeta/config/type/IBiomeConfig.canSpawn:(Lnet/minecraft/core/Holder;)Z
+      97: ifeq          113
+     100: aload         6
+     102: aload         5
+     104: invokevirtual #78                 // Method org/violetmoon/zeta/world/EntitySpawnHandler$TrackedSpawnConfig.getEntry:()Lnet/minecraft/world/level/biome/MobSpawnSettings$SpawnerData;
+     107: invokeinterface #82,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     112: pop
+     113: aload         5
+     115: getfield      #59                 // Field org/violetmoon/zeta/world/EntitySpawnHandler$TrackedSpawnConfig.config:Lorg/violetmoon/zeta/config/type/EntitySpawnConfig;
+     118: astore        8
+     120: aload         8
+     122: instanceof    #86                 // class org/violetmoon/zeta/config/type/CostSensitiveEntitySpawnConfig
+     125: ifeq          155
+     128: aload         8
+     130: checkcast     #86                 // class org/violetmoon/zeta/config/type/CostSensitiveEntitySpawnConfig
+     133: astore        7
+     135: aload_3
+     136: aload         5
+     138: getfield      #88                 // Field org/violetmoon/zeta/world/EntitySpawnHandler$TrackedSpawnConfig.entityType:Lnet/minecraft/world/entity/EntityType;
+     141: aload         7
+     143: getfield      #92                 // Field org/violetmoon/zeta/config/type/CostSensitiveEntitySpawnConfig.spawnCost:D
+     146: aload         7
+     148: getfield      #96                 // Field org/violetmoon/zeta/config/type/CostSensitiveEntitySpawnConfig.maxCost:D
+     151: invokevirtual #99                 // Method net/neoforged/neoforge/common/world/MobSpawnSettingsBuilder.addMobCharge:(Lnet/minecraft/world/entity/EntityType;DD)Lnet/minecraft/world/level/biome/MobSpawnSettings$Builder;
+     154: pop
+     155: goto          16
+     158: return
+
+  private static boolean lambda$modifyBiome$0(org.violetmoon.zeta.world.EntitySpawnHandler$TrackedSpawnConfig, net.minecraft.world.level.biome.MobSpawnSettings$SpawnerData);
+    Code:
+       0: aload_1
+       1: getfield      #103                // Field net/minecraft/world/level/biome/MobSpawnSettings$SpawnerData.type:Lnet/minecraft/world/entity/EntityType;
+       4: aload_0
+       5: getfield      #88                 // Field org/violetmoon/zeta/world/EntitySpawnHandler$TrackedSpawnConfig.entityType:Lnet/minecraft/world/entity/EntityType;
+       8: invokevirtual #108                // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+      11: ireturn
+}

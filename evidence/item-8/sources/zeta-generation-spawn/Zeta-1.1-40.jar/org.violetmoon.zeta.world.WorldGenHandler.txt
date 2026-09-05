@@ -1,0 +1,280 @@
+Compiled from "WorldGenHandler.java"
+public class org.violetmoon.zeta.world.WorldGenHandler {
+  public static final java.util.Map<net.minecraft.world.level.levelgen.GenerationStep$Decoration, net.minecraft.core.Holder<net.minecraft.world.level.levelgen.placement.PlacedFeature>> defers;
+
+  public static final java.util.Map<net.minecraft.world.level.levelgen.GenerationStep$Decoration, java.util.SortedSet<org.violetmoon.zeta.world.WeightedGenerator>> generators;
+
+  public org.violetmoon.zeta.world.WorldGenHandler();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void register(org.violetmoon.zeta.event.load.ZRegister);
+    Code:
+       0: invokestatic  #7                  // Method net/minecraft/world/level/levelgen/GenerationStep$Decoration.values:()[Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+       3: astore_1
+       4: aload_1
+       5: arraylength
+       6: istore_2
+       7: iconst_0
+       8: istore_3
+       9: iload_3
+      10: iload_2
+      11: if_icmpge     125
+      14: aload_1
+      15: iload_3
+      16: aaload
+      17: astore        4
+      19: new           #13                 // class org/violetmoon/zeta/world/DeferredFeature
+      22: dup
+      23: aload         4
+      25: invokespecial #15                 // Method org/violetmoon/zeta/world/DeferredFeature."<init>":(Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;)V
+      28: astore        5
+      30: aload         4
+      32: invokevirtual #18                 // Method net/minecraft/world/level/levelgen/GenerationStep$Decoration.name:()Ljava/lang/String;
+      35: getstatic     #22                 // Field java/util/Locale.ROOT:Ljava/util/Locale;
+      38: invokevirtual #28                 // Method java/lang/String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+      41: invokedynamic #34,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      46: astore        6
+      48: getstatic     #38                 // Field org/violetmoon/zeta/mod/ZetaMod.ZETA:Lorg/violetmoon/zeta/Zeta;
+      51: getfield      #44                 // Field org/violetmoon/zeta/Zeta.registry:Lorg/violetmoon/zeta/registry/ZetaRegistry;
+      54: aload         5
+      56: aload         6
+      58: getstatic     #50                 // Field net/minecraft/core/registries/Registries.FEATURE:Lnet/minecraft/resources/ResourceKey;
+      61: invokevirtual #56                 // Method org/violetmoon/zeta/registry/ZetaRegistry.register:(Ljava/lang/Object;Ljava/lang/String;Lnet/minecraft/resources/ResourceKey;)V
+      64: new           #62                 // class net/minecraft/world/level/levelgen/feature/ConfiguredFeature
+      67: dup
+      68: aload         5
+      70: getstatic     #64                 // Field net/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration.NONE:Lnet/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration;
+      73: invokespecial #70                 // Method net/minecraft/world/level/levelgen/feature/ConfiguredFeature."<init>":(Lnet/minecraft/world/level/levelgen/feature/Feature;Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;)V
+      76: astore        7
+      78: aload         7
+      80: invokestatic  #73                 // InterfaceMethod net/minecraft/core/Holder.direct:(Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+      83: astore        8
+      85: new           #79                 // class net/minecraft/world/level/levelgen/placement/PlacedFeature
+      88: dup
+      89: aload         8
+      91: invokestatic  #81                 // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      94: invokespecial #87                 // Method net/minecraft/world/level/levelgen/placement/PlacedFeature."<init>":(Lnet/minecraft/core/Holder;Ljava/util/List;)V
+      97: astore        9
+      99: aload         9
+     101: invokestatic  #73                 // InterfaceMethod net/minecraft/core/Holder.direct:(Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+     104: astore        10
+     106: getstatic     #90                 // Field defers:Ljava/util/Map;
+     109: aload         4
+     111: aload         10
+     113: invokeinterface #96,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     118: pop
+     119: iinc          3, 1
+     122: goto          9
+     125: return
+
+  public static void addGenerator(org.violetmoon.zeta.module.ZetaModule, org.violetmoon.zeta.world.generator.Generator, net.minecraft.world.level.levelgen.GenerationStep$Decoration, int);
+    Code:
+       0: new           #102                // class org/violetmoon/zeta/world/WeightedGenerator
+       3: dup
+       4: aload_0
+       5: aload_1
+       6: iload_3
+       7: invokespecial #104                // Method org/violetmoon/zeta/world/WeightedGenerator."<init>":(Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/world/generator/Generator;I)V
+      10: astore        4
+      12: getstatic     #107                // Field generators:Ljava/util/Map;
+      15: aload_2
+      16: invokeinterface #110,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      21: ifne          41
+      24: getstatic     #107                // Field generators:Ljava/util/Map;
+      27: aload_2
+      28: new           #114                // class java/util/TreeSet
+      31: dup
+      32: invokespecial #116                // Method java/util/TreeSet."<init>":()V
+      35: invokeinterface #96,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      40: pop
+      41: getstatic     #107                // Field generators:Ljava/util/Map;
+      44: aload_2
+      45: invokeinterface #117,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      50: checkcast     #121                // class java/util/SortedSet
+      53: aload         4
+      55: invokeinterface #123,  2          // InterfaceMethod java/util/SortedSet.add:(Ljava/lang/Object;)Z
+      60: pop
+      61: return
+
+  public static void generateChunk(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>, net.minecraft.world.level.levelgen.GenerationStep$Decoration);
+    Code:
+       0: aload_0
+       1: invokevirtual #126                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_2
+       6: instanceof    #132                // class net/minecraft/server/level/WorldGenRegion
+       9: ifeq          20
+      12: aload_2
+      13: checkcast     #132                // class net/minecraft/server/level/WorldGenRegion
+      16: astore_3
+      17: goto          21
+      20: return
+      21: aload_0
+      22: invokevirtual #134                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      25: astore        4
+      27: aload_0
+      28: invokevirtual #138                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      31: astore        5
+      33: new           #142                // class net/minecraft/core/BlockPos
+      36: dup
+      37: aload         5
+      39: invokevirtual #144                // Method net/minecraft/core/BlockPos.getX:()I
+      42: iconst_0
+      43: aload         5
+      45: invokevirtual #148                // Method net/minecraft/core/BlockPos.getZ:()I
+      48: invokespecial #151                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      51: astore        6
+      53: new           #154                // class net/minecraft/world/level/levelgen/WorldgenRandom
+      56: dup
+      57: new           #156                // class net/minecraft/world/level/levelgen/LegacyRandomSource
+      60: dup
+      61: aload_3
+      62: invokevirtual #158                // Method net/minecraft/server/level/WorldGenRegion.getSeed:()J
+      65: invokespecial #162                // Method net/minecraft/world/level/levelgen/LegacyRandomSource."<init>":(J)V
+      68: invokespecial #165                // Method net/minecraft/world/level/levelgen/WorldgenRandom."<init>":(Lnet/minecraft/util/RandomSource;)V
+      71: astore        7
+      73: aload_3
+      74: invokevirtual #168                // Method net/minecraft/server/level/WorldGenRegion.getCenter:()Lnet/minecraft/world/level/ChunkPos;
+      77: astore        8
+      79: aload         7
+      81: aload_3
+      82: invokevirtual #158                // Method net/minecraft/server/level/WorldGenRegion.getSeed:()J
+      85: aload         8
+      87: getfield      #172                // Field net/minecraft/world/level/ChunkPos.x:I
+      90: bipush        16
+      92: imul
+      93: aload         8
+      95: getfield      #178                // Field net/minecraft/world/level/ChunkPos.z:I
+      98: bipush        16
+     100: imul
+     101: invokevirtual #181                // Method net/minecraft/world/level/levelgen/WorldgenRandom.setDecorationSeed:(JII)J
+     104: lstore        9
+     106: aload_1
+     107: invokevirtual #185                // Method net/minecraft/world/level/levelgen/GenerationStep$Decoration.ordinal:()I
+     110: sipush        10000
+     113: imul
+     114: istore        11
+     116: getstatic     #107                // Field generators:Ljava/util/Map;
+     119: aload_1
+     120: invokeinterface #110,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+     125: ifeq          265
+     128: getstatic     #107                // Field generators:Ljava/util/Map;
+     131: aload_1
+     132: invokeinterface #117,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     137: checkcast     #121                // class java/util/SortedSet
+     140: astore        12
+     142: aload         12
+     144: invokeinterface #188,  1          // InterfaceMethod java/util/SortedSet.iterator:()Ljava/util/Iterator;
+     149: astore        13
+     151: aload         13
+     153: invokeinterface #192,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     158: ifeq          265
+     161: aload         13
+     163: invokeinterface #198,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     168: checkcast     #102                // class org/violetmoon/zeta/world/WeightedGenerator
+     171: astore        14
+     173: aload         14
+     175: invokevirtual #202                // Method org/violetmoon/zeta/world/WeightedGenerator.generator:()Lorg/violetmoon/zeta/world/generator/Generator;
+     178: astore        15
+     180: aload         14
+     182: invokevirtual #206                // Method org/violetmoon/zeta/world/WeightedGenerator.module:()Lorg/violetmoon/zeta/module/ZetaModule;
+     185: invokevirtual #210                // Method org/violetmoon/zeta/module/ZetaModule.isEnabled:()Z
+     188: ifeq          262
+     191: aload         15
+     193: aload_3
+     194: invokevirtual #215                // Method org/violetmoon/zeta/world/generator/Generator.canGenerate:(Lnet/minecraft/world/level/ServerLevelAccessor;)Z
+     197: ifeq          262
+     200: getstatic     #221                // Field org/violetmoon/zeta/config/ZetaGeneralConfig.enableWorldgenWatchdog:Z
+     203: ifeq          243
+     206: iload         11
+     208: istore        16
+     210: aload         15
+     212: aload         15
+     214: iload         16
+     216: lload         9
+     218: aload_1
+     219: aload_3
+     220: aload         4
+     222: aload         7
+     224: aload         6
+     226: invokedynamic #227,  0            // InvokeDynamic #1:call:(Lorg/violetmoon/zeta/world/generator/Generator;IJLnet/minecraft/world/level/levelgen/GenerationStep$Decoration;Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/levelgen/WorldgenRandom;Lnet/minecraft/core/BlockPos;)Ljava/util/concurrent/Callable;
+     231: iconst_1
+     232: getstatic     #231                // Field java/util/concurrent/TimeUnit.MINUTES:Ljava/util/concurrent/TimeUnit;
+     235: invokestatic  #237                // Method watchdogRun:(Lorg/violetmoon/zeta/world/generator/Generator;Ljava/util/concurrent/Callable;ILjava/util/concurrent/TimeUnit;)I
+     238: istore        11
+     240: goto          262
+     243: aload         15
+     245: iload         11
+     247: lload         9
+     249: aload_1
+     250: aload_3
+     251: aload         4
+     253: aload         7
+     255: aload         6
+     257: invokevirtual #241                // Method org/violetmoon/zeta/world/generator/Generator.generate:(IJLnet/minecraft/world/level/levelgen/GenerationStep$Decoration;Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/levelgen/WorldgenRandom;Lnet/minecraft/core/BlockPos;)I
+     260: istore        11
+     262: goto          151
+     265: return
+
+  private static int watchdogRun(org.violetmoon.zeta.world.generator.Generator, java.util.concurrent.Callable<java.lang.Integer>, int, java.util.concurrent.TimeUnit);
+    Code:
+       0: invokestatic  #245                // Method java/util/concurrent/Executors.newSingleThreadExecutor:()Ljava/util/concurrent/ExecutorService;
+       3: astore        4
+       5: aload         4
+       7: aload_1
+       8: invokeinterface #251,  2          // InterfaceMethod java/util/concurrent/ExecutorService.submit:(Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
+      13: astore        5
+      15: aload         4
+      17: invokeinterface #257,  1          // InterfaceMethod java/util/concurrent/ExecutorService.shutdown:()V
+      22: aload         5
+      24: iload_2
+      25: i2l
+      26: aload_3
+      27: invokeinterface #260,  4          // InterfaceMethod java/util/concurrent/Future.get:(JLjava/util/concurrent/TimeUnit;)Ljava/lang/Object;
+      32: checkcast     #265                // class java/lang/Integer
+      35: invokevirtual #267                // Method java/lang/Integer.intValue:()I
+      38: ireturn
+      39: astore        6
+      41: new           #272                // class java/lang/RuntimeException
+      44: dup
+      45: aload_0
+      46: invokestatic  #274                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      49: invokedynamic #278,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      54: aload         6
+      56: invokespecial #279                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+      59: athrow
+    Exception table:
+       from    to  target type
+          22    38    39   Class java/lang/Exception
+
+  private static java.lang.Integer lambda$generateChunk$0(org.violetmoon.zeta.world.generator.Generator, int, long, net.minecraft.world.level.levelgen.GenerationStep$Decoration, net.minecraft.server.level.WorldGenRegion, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.world.level.levelgen.WorldgenRandom, net.minecraft.core.BlockPos) throws java.lang.Exception;
+    Code:
+       0: aload_0
+       1: iload_1
+       2: lload_2
+       3: aload         4
+       5: aload         5
+       7: aload         6
+       9: aload         7
+      11: aload         8
+      13: invokevirtual #241                // Method org/violetmoon/zeta/world/generator/Generator.generate:(IJLnet/minecraft/world/level/levelgen/GenerationStep$Decoration;Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/levelgen/WorldgenRandom;Lnet/minecraft/core/BlockPos;)I
+      16: invokestatic  #282                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      19: areturn
+
+  static {};
+    Code:
+       0: new           #285                // class java/util/EnumMap
+       3: dup
+       4: ldc           #8                  // class net/minecraft/world/level/levelgen/GenerationStep$Decoration
+       6: invokespecial #287                // Method java/util/EnumMap."<init>":(Ljava/lang/Class;)V
+       9: putstatic     #90                 // Field defers:Ljava/util/Map;
+      12: new           #285                // class java/util/EnumMap
+      15: dup
+      16: ldc           #8                  // class net/minecraft/world/level/levelgen/GenerationStep$Decoration
+      18: invokespecial #287                // Method java/util/EnumMap."<init>":(Ljava/lang/Class;)V
+      21: putstatic     #107                // Field generators:Ljava/util/Map;
+      24: return
+}
