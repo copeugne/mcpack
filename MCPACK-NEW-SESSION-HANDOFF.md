@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-05
 
+Towns & Towers is delivered through `a0c9c6e`, built from `2177cc2`.
+All 60 registry roots are assigned exactly once across eight working groups:
+fort, tower and camp outposts, villages, ocean outposts, ocean villages, ocean
+wreckage and the desert mimic. Full definitions and nested exclusive IDs remain
+intact. Their `kaisyn` pools are components, not additional families. Missing
+references remain explicit, including the Nilotic outpost's `minecraft:emptY`
+pool. Fixed ocean heights are not classified from their generation step.
+Forty-five focused tests and scoped quality checks passed; two builds were
+identical and all prior family records unchanged. Inventory SHA-256:
+`22113611f09ead1c9940c110f4c9c4a23247804bf966d2ed03f8470ba41ccff9`.
+Totals: 289 working groups, 602 assigned IDs, 285 unassigned. Continue remaining
+providers, non-registry contributions, canonical reconciliation and required
+attributes. Final Item 8 gate, review and main merge remain open. The user's
+latest constraint permits another measurement system only when strictly
+necessary and worth its time and effort. This increment reused existing sources
+and processing; it needed no new measurement system.
+
 CTOV outposts are delivered through `c5c8c7a`, built from `07bcde5`. Twelve
 biome roots form one outpost family; badlands and mesa definitions are exact
 duplicates with the same start pool. All 78 CTOV registry entries are assigned
