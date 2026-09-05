@@ -1,0 +1,92 @@
+Compiled from "OrCondition.java"
+public final class net.neoforged.neoforge.common.conditions.OrCondition extends java.lang.Record implements net.neoforged.neoforge.common.conditions.ICondition {
+  private final java.util.List<net.neoforged.neoforge.common.conditions.ICondition> values;
+
+  public static final com.mojang.serialization.MapCodec<net.neoforged.neoforge.common.conditions.OrCondition> CODEC;
+
+  public net.neoforged.neoforge.common.conditions.OrCondition(java.util.List<net.neoforged.neoforge.common.conditions.ICondition>);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field values:Ljava/util/List;
+       9: return
+
+  public boolean test(net.neoforged.neoforge.common.conditions.ICondition$IContext);
+    Code:
+       0: aload_0
+       1: invokevirtual #13                 // Method values:()Ljava/util/List;
+       4: invokeinterface #16,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       9: astore_2
+      10: aload_2
+      11: invokeinterface #22,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      16: ifeq          44
+      19: aload_2
+      20: invokeinterface #28,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      25: checkcast     #32                 // class net/neoforged/neoforge/common/conditions/ICondition
+      28: astore_3
+      29: aload_3
+      30: aload_1
+      31: invokeinterface #34,  2           // InterfaceMethod net/neoforged/neoforge/common/conditions/ICondition.test:(Lnet/neoforged/neoforge/common/conditions/ICondition$IContext;)Z
+      36: ifeq          41
+      39: iconst_1
+      40: ireturn
+      41: goto          10
+      44: iconst_0
+      45: ireturn
+
+  public com.mojang.serialization.MapCodec<? extends net.neoforged.neoforge.common.conditions.ICondition> codec();
+    Code:
+       0: getstatic     #38                 // Field CODEC:Lcom/mojang/serialization/MapCodec;
+       3: areturn
+
+  public java.lang.String toString();
+    Code:
+       0: ldc           #42                 // String  ||
+       2: invokestatic  #44                 // Method com/google/common/base/Joiner.on:(Ljava/lang/String;)Lcom/google/common/base/Joiner;
+       5: aload_0
+       6: invokevirtual #13                 // Method values:()Ljava/util/List;
+       9: invokevirtual #50                 // Method com/google/common/base/Joiner.join:(Ljava/lang/Iterable;)Ljava/lang/String;
+      12: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #87,  0             // InvokeDynamic #2:hashCode:(Lnet/neoforged/neoforge/common/conditions/OrCondition;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #91,  0             // InvokeDynamic #2:equals:(Lnet/neoforged/neoforge/common/conditions/OrCondition;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public java.util.List<net.neoforged.neoforge.common.conditions.ICondition> values();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field values:Ljava/util/List;
+       4: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #54                 // Field LIST_CODEC:Lcom/mojang/serialization/Codec;
+       4: ldc           #58                 // String values
+       6: invokeinterface #59,  2           // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #65,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      16: invokevirtual #69                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: invokevirtual #75                 // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P1;
+      22: aload_0
+      23: invokedynamic #81,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      28: invokevirtual #82                 // Method com/mojang/datafixers/Products$P1.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/Function;)Lcom/mojang/datafixers/kinds/App;
+      31: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #95,  0             // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+       5: invokestatic  #96                 // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #38                 // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}

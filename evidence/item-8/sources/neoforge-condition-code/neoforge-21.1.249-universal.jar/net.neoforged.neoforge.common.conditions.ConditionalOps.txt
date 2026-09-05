@@ -1,0 +1,153 @@
+Compiled from "ConditionalOps.java"
+public class net.neoforged.neoforge.common.conditions.ConditionalOps<T> extends net.minecraft.resources.RegistryOps<T> {
+  private final net.neoforged.neoforge.common.conditions.ICondition$IContext context;
+
+  public static final java.lang.String DEFAULT_CONDITIONS_KEY = "neoforge:conditions";
+
+  public static final java.lang.String CONDITIONAL_VALUE_KEY = "neoforge:value";
+
+  public net.neoforged.neoforge.common.conditions.ConditionalOps(net.minecraft.resources.RegistryOps<T>, net.neoforged.neoforge.common.conditions.ICondition$IContext);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/resources/RegistryOps."<init>":(Lnet/minecraft/resources/RegistryOps;)V
+       5: aload_0
+       6: aload_2
+       7: putfield      #7                  // Field context:Lnet/neoforged/neoforge/common/conditions/ICondition$IContext;
+      10: return
+
+  public net.neoforged.neoforge.common.conditions.ConditionalOps(com.mojang.serialization.DynamicOps<T>, net.minecraft.resources.RegistryOps$RegistryInfoLookup, net.neoforged.neoforge.common.conditions.ICondition$IContext);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokespecial #13                 // Method net/minecraft/resources/RegistryOps."<init>":(Lcom/mojang/serialization/DynamicOps;Lnet/minecraft/resources/RegistryOps$RegistryInfoLookup;)V
+       6: aload_0
+       7: aload_3
+       8: putfield      #7                  // Field context:Lnet/neoforged/neoforge/common/conditions/ICondition$IContext;
+      11: return
+
+  public static com.mojang.serialization.MapCodec<net.neoforged.neoforge.common.conditions.ICondition$IContext> retrieveContext();
+    Code:
+       0: invokedynamic #16,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+       5: invokestatic  #20                 // Method net/minecraft/util/ExtraCodecs.retrieveContext:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: areturn
+
+  public static <T> com.mojang.serialization.Codec<java.util.Optional<T>> createConditionalCodec(com.mojang.serialization.Codec<T>);
+    Code:
+       0: aload_0
+       1: ldc           #26                 // String neoforge:conditions
+       3: invokestatic  #28                 // Method createConditionalCodec:(Lcom/mojang/serialization/Codec;Ljava/lang/String;)Lcom/mojang/serialization/Codec;
+       6: areturn
+
+  public static <T> com.mojang.serialization.Codec<java.util.Optional<T>> createConditionalCodec(com.mojang.serialization.Codec<T>, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #32                 // Method createConditionalCodecWithConditions:(Lcom/mojang/serialization/Codec;Ljava/lang/String;)Lcom/mojang/serialization/Codec;
+       5: invokedynamic #35,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      10: invokedynamic #36,  0             // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      15: invokeinterface #37,  3           // InterfaceMethod com/mojang/serialization/Codec.xmap:(Ljava/util/function/Function;Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;
+      20: areturn
+
+  public static <T> com.mojang.serialization.Codec<java.util.List<T>> decodeListWithElementConditions(com.mojang.serialization.Codec<T>);
+    Code:
+       0: aload_0
+       1: invokeinterface #43,  1           // InterfaceMethod com/mojang/serialization/Codec.listOf:()Lcom/mojang/serialization/Codec;
+       6: aload_0
+       7: invokestatic  #47                 // Method createConditionalCodec:(Lcom/mojang/serialization/Codec;)Lcom/mojang/serialization/Codec;
+      10: invokestatic  #50                 // Method net/neoforged/neoforge/common/util/NeoForgeExtraCodecs.listWithOptionalElements:(Lcom/mojang/serialization/Codec;)Lcom/mojang/serialization/Codec;
+      13: invokestatic  #55                 // InterfaceMethod com/mojang/serialization/Codec.of:(Lcom/mojang/serialization/Encoder;Lcom/mojang/serialization/Decoder;)Lcom/mojang/serialization/Codec;
+      16: areturn
+
+  public static <T> com.mojang.serialization.Codec<java.util.Optional<net.neoforged.neoforge.common.conditions.WithConditions<T>>> createConditionalCodecWithConditions(com.mojang.serialization.Codec<T>);
+    Code:
+       0: aload_0
+       1: ldc           #26                 // String neoforge:conditions
+       3: invokestatic  #32                 // Method createConditionalCodecWithConditions:(Lcom/mojang/serialization/Codec;Ljava/lang/String;)Lcom/mojang/serialization/Codec;
+       6: areturn
+
+  public static <T> com.mojang.serialization.Codec<java.util.Optional<net.neoforged.neoforge.common.conditions.WithConditions<T>>> createConditionalCodecWithConditions(com.mojang.serialization.Codec<T>, java.lang.String);
+    Code:
+       0: new           #59                 // class net/neoforged/neoforge/common/conditions/ConditionalOps$ConditionalEncoder
+       3: dup
+       4: aload_1
+       5: getstatic     #61                 // Field net/neoforged/neoforge/common/conditions/ICondition.LIST_CODEC:Lcom/mojang/serialization/Codec;
+       8: aload_0
+       9: invokespecial #67                 // Method net/neoforged/neoforge/common/conditions/ConditionalOps$ConditionalEncoder."<init>":(Ljava/lang/String;Lcom/mojang/serialization/Codec;Lcom/mojang/serialization/Encoder;)V
+      12: new           #70                 // class net/neoforged/neoforge/common/conditions/ConditionalOps$ConditionalDecoder
+      15: dup
+      16: aload_1
+      17: getstatic     #61                 // Field net/neoforged/neoforge/common/conditions/ICondition.LIST_CODEC:Lcom/mojang/serialization/Codec;
+      20: invokestatic  #72                 // Method retrieveContext:()Lcom/mojang/serialization/MapCodec;
+      23: invokevirtual #75                 // Method com/mojang/serialization/MapCodec.codec:()Lcom/mojang/serialization/Codec;
+      26: aload_0
+      27: invokespecial #80                 // Method net/neoforged/neoforge/common/conditions/ConditionalOps$ConditionalDecoder."<init>":(Ljava/lang/String;Lcom/mojang/serialization/Codec;Lcom/mojang/serialization/Codec;Lcom/mojang/serialization/Decoder;)V
+      30: invokestatic  #55                 // InterfaceMethod com/mojang/serialization/Codec.of:(Lcom/mojang/serialization/Encoder;Lcom/mojang/serialization/Decoder;)Lcom/mojang/serialization/Codec;
+      33: areturn
+
+  public <U> net.neoforged.neoforge.common.conditions.ConditionalOps<U> withParent(com.mojang.serialization.DynamicOps<U>);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #83                 // Field delegate:Lcom/mojang/serialization/DynamicOps;
+       5: if_acmpne     12
+       8: aload_0
+       9: goto          28
+      12: new           #8                  // class net/neoforged/neoforge/common/conditions/ConditionalOps
+      15: dup
+      16: aload_1
+      17: aload_0
+      18: getfield      #87                 // Field lookupProvider:Lnet/minecraft/resources/RegistryOps$RegistryInfoLookup;
+      21: aload_0
+      22: getfield      #7                  // Field context:Lnet/neoforged/neoforge/common/conditions/ICondition$IContext;
+      25: invokespecial #91                 // Method "<init>":(Lcom/mojang/serialization/DynamicOps;Lnet/minecraft/resources/RegistryOps$RegistryInfoLookup;Lnet/neoforged/neoforge/common/conditions/ICondition$IContext;)V
+      28: areturn
+
+  public net.minecraft.resources.RegistryOps withParent(com.mojang.serialization.DynamicOps);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #94                 // Method withParent:(Lcom/mojang/serialization/DynamicOps;)Lnet/neoforged/neoforge/common/conditions/ConditionalOps;
+       5: areturn
+
+  private static java.util.Optional lambda$createConditionalCodec$3(java.util.Optional);
+    Code:
+       0: aload_0
+       1: invokedynamic #98,  0             // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+       6: invokevirtual #99                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+       9: areturn
+
+  private static net.neoforged.neoforge.common.conditions.WithConditions lambda$createConditionalCodec$2(java.lang.Object);
+    Code:
+       0: new           #105                // class net/neoforged/neoforge/common/conditions/WithConditions
+       3: dup
+       4: invokestatic  #107                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+       7: aload_0
+       8: invokespecial #112                // Method net/neoforged/neoforge/common/conditions/WithConditions."<init>":(Ljava/util/List;Ljava/lang/Object;)V
+      11: areturn
+
+  private static java.util.Optional lambda$createConditionalCodec$1(java.util.Optional);
+    Code:
+       0: aload_0
+       1: invokedynamic #115,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+       6: invokevirtual #99                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+       9: areturn
+
+  private static com.mojang.serialization.DataResult lambda$retrieveContext$0(com.mojang.serialization.DynamicOps);
+    Code:
+       0: aload_0
+       1: instanceof    #8                  // class net/neoforged/neoforge/common/conditions/ConditionalOps
+       4: ifeq          15
+       7: aload_0
+       8: checkcast     #8                  // class net/neoforged/neoforge/common/conditions/ConditionalOps
+      11: astore_1
+      12: goto          22
+      15: getstatic     #116                // Field net/neoforged/neoforge/common/conditions/ICondition$IContext.EMPTY:Lnet/neoforged/neoforge/common/conditions/ICondition$IContext;
+      18: invokestatic  #121                // InterfaceMethod com/mojang/serialization/DataResult.success:(Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      21: areturn
+      22: aload_1
+      23: getfield      #7                  // Field context:Lnet/neoforged/neoforge/common/conditions/ICondition$IContext;
+      26: invokestatic  #121                // InterfaceMethod com/mojang/serialization/DataResult.success:(Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      29: areturn
+}
