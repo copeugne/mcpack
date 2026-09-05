@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-05
 
+NeoForge dispatch and surface lifecycle are resolved in source evidence
+`236b3e5`, extracted with selectors `59df00e` and `643c1d4`. See
+`evidence/item-8/sources/lithostitched-platform-modifier-code/README.md` for
+commands, identities and runtime log bindings. The NeoForge lifecycle mixin
+appends converted Lithostitched biome modifiers; the dedicated-server mixin
+calls surface application before level loading. Raw log lines 13027 and 12905
+confirm the respective mixins. Surface merging preserves other generator
+settings and orders PREPEND, original, APPEND rules. No observed final surface
+tree or feature placement is claimed. Scoped checks passed and delivery was
+verified. The earlier next-hook instruction below is now superseded.
+
+Next finish the referenced feature/rule bodies and configuration predicates,
+then apply the accumulated modifier dispositions together. Do not add a new
+measurement system for this static contribution check. Broader family coverage,
+attributes, custom generators, trial-spawner config references, final gate,
+review and main merge remain incomplete; the goal remains active.
+
 Feature implementation inputs are delivered in `78dce5f` (Regions Unexplored)
 and `cea115f` (Lithostitched), extracted by existing tool selection `d0043b6`.
 Each source directory has the executed reproduction command and scope:
