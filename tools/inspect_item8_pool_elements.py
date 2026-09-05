@@ -101,6 +101,7 @@ CLASSES = (
     "dev/worldgen/lithostitched/worldgen/structure/LithostitchedTemplates.class",
     "dev/worldgen/lithostitched/worldgen/structure/LithostitchedTemplates$WeightedEntry.class",
     "dev/worldgen/lithostitched/api/worldgen/processor/LithostitchedProcessors.class",
+    "dev/worldgen/lithostitched/impl/LithostitchedVersion.class",
     "dev/worldgen/lithostitched/worldgen/modifier/AddProcessorListProcessorsModifier.class",
     "dev/worldgen/lithostitched/impl/worldgen/processor/ReferenceStructureProcessor.class",
     "dev/worldgen/lithostitched/impl/worldgen/processor/ConditionProcessor.class",
