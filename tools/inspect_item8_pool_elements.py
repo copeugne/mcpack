@@ -504,6 +504,14 @@ CLASSES: tuple[str, ...] = (
     "com/yungnickyoung/minecraft/yungsextras/world/config/DesertWellFeatureConfiguration.class",
     "com/yungnickyoung/minecraft/yungsextras/world/config/ResourceLocationFeatureConfiguration.class",
     "com/yungnickyoung/minecraft/yungsextras/world/placement/RngInitializerPlacement.class",
+    "com/finndog/moogs_structures/MoogsStructuresCommon.class",
+    "com/finndog/moogs_structures/neoforge/MoogsStructuresNeoforge.class",
+    "com/finndog/moogs_structures/modinit/MoogsStructuresConditionsRegistry.class",
+    "com/finndog/moogs_structures/modinit/MoogsStructuresPlacements.class",
+    "com/finndog/moogs_structures/modinit/MoogsStructuresProcessors.class",
+    "com/finndog/moogs_structures/modinit/MoogsStructuresStructurePlacementType.class",
+    "com/finndog/moogs_structures/modinit/MoogsStructuresStructures.class",
+    "com/finndog/moogs_structures/modinit/MoogsStructuresTags.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
