@@ -501,6 +501,13 @@ def test_soaring_rivers_preserve_omitted_default_and_complete_namespace() -> Non
         ("mns:circle_ruin", ("mns:circle_",), 2, 2),
         ("mns:medium_house", ("mns:medium_house",), 2, 2),
         (
+            "mvs:stall",
+            ("mvs:blue_stall", "mvs:orange_stall", "mvs:pink_stall", "mvs:red_stall"),
+            4,
+            4,
+        ),
+        ("mvs:end_scraps", ("mvs:end_scraps_",), 4, 4),
+        (
             "mvs:log_pile",
             tuple(
                 f"mvs:{wood}_log_pile"
