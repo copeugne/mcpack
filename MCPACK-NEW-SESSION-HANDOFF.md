@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Moog callback/reload/command capture delivered in 5a83e4c using 6d7a961,
+reproduced byte for byte at evidence/raw/item8/moog-provider-callbacks-r1. The
+entry callback bootstrap omission is resolved. TrialSpawnerConfigManager loads
+JSON compound values, logging/skipping invalid entries. DebugCommand calls flags
+and reports status; keep-jigsaw downstream behavior remains with the pending
+mixin. Continue declared mixins and registry/service dispatch. Count unchanged:
+30 provider dispositions, 106 open. Do not repeat callback or reload inspection.
+
 Moog shared library entry/registry capture delivered in 88bafe0 using e5341ca;
 eight classes reproduced at evidence/raw/item8/moog-provider-entries-r1. Provider
 still open: declared mixins, callback bootstrap targets, registry/service dispatch,
