@@ -23945,7 +23945,7 @@
       "structure_ids": [
         "minecraft:swamp_hut"
       ],
-      "rationale": "One vanilla swamp hut generation design. Its components and layout alternatives are not extra families. Packaged definition identity is preserved; retained-mod hooks, effective content and remaining attributes require reconciliation.",
+      "rationale": "One direct swamp hut generator with a single wooden hut piece. Generation attempts for witch and cat are distinct from piece-bounded natural-spawn overrides; neither creates an additional structure family.",
       "variants": {
         "minecraft:swamp_hut": {
           "definition": {
@@ -23977,13 +23977,96 @@
             "step": "surface_structures",
             "type": "minecraft:swamp_hut"
           },
-          "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+          "missing_components": [],
+          "vanilla_code_template_ids": [],
+          "vanilla_code_piece_class": "net/minecraft/world/level/levelgen/structure/structures/SwampHutPiece.class",
+          "component_scope": "One direct piece without templates or pools. Rotation, terrain height and supports are not separate families."
         }
       },
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/vanilla-swamp-hut-code/identities.json": "504b9d418376e547f229aca14b3d91e8b60fa0e2e4fe84f733dfa1cfc376bb5e",
+        "evidence/item-8/sources/vanilla-scattered-feature-code/identities.json": "62d64cfdb219f8424e9cbac0b6bb3aa683c773a8969ecf93fd558f6195a3b8e7"
+      },
+      "attributes": {
+        "approximate_footprint": {
+          "nominal_piece_xz_blocks": [
+            7,
+            9
+          ],
+          "basis": "SwampHutPiece supplies width 7 and depth 9 to ScatteredFeaturePiece; horizontal orientation exchanges axes.",
+          "scope": "Nominal vanilla piece envelope, not observed occupied or exposed footprint."
+        },
+        "approximate_vertical_size": {
+          "nominal_piece_height_blocks": 7,
+          "support_columns": "Four downward oak-log support calls begin at local Y -1 and depend on terrain.",
+          "basis": "Constructor height parameter 7, plus fillColumnDown at local X in {1,5}, Z in {2,7}.",
+          "scope": "The seven-block piece height excludes downward support extent. Total generated height and exposure depend on terrain; retained-mod changes remain unresolved."
+        },
+        "intended_hostility": {
+          "interpretation": "Authored witch encounter with a cat; natural witch spawning is also configured.",
+          "basis": "Direct entity creation paths and packaged piece-bounded spawn overrides.",
+          "scope": "Source-based interpretation, not measured difficulty, population or Item 9 classification."
+        },
+        "mob_source": {
+          "authored_entity_ids": [
+            "minecraft:cat",
+            "minecraft:witch"
+          ],
+          "mechanism": "Separate saved flags control generation attempts at transformed local (2,2,5), clipped to the active box. Each flag is set before the create/null check; successful creations are persistent and finalized with STRUCTURE reason and local difficulty.",
+          "natural_spawn_overrides": {
+            "creature": {
+              "bounding_box": "piece",
+              "spawns": [
+                {
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "type": "minecraft:cat",
+                  "weight": 1
+                }
+              ]
+            },
+            "monster": {
+              "bounding_box": "piece",
+              "spawns": [
+                {
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "type": "minecraft:witch",
+                  "weight": 1
+                }
+              ]
+            }
+          },
+          "scope": "Generation attempts and natural-spawn candidate configuration, not successful spawn counts, specific cat variants or retained-mod behavior."
+        },
+        "loot_table_source": {
+          "vanilla_assigned_tables": [],
+          "mechanism": "Direct hut block placement has no chest or container-loot assignment path.",
+          "scope": "No authored container loot in inspected vanilla generation; entity drops, block salvage and retained-mod loot are outside this statement."
+        },
+        "generated_spawners": {
+          "vanilla_spawner_block_types": [],
+          "mechanism": "Witch and cat are created directly and also configured as natural-spawn candidates; no spawner blocks or templates are used.",
+          "scope": "Vanilla source, not retained-mod injections or farm throughput."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "One-time witch generation attempt controlled by saved Witch flag; the cat has its own Cat flag.",
+          "natural": "Packaged monster override selects witch and creature override selects cat within the piece bounding box, each weight 1 and minCount=maxCount=1.",
+          "scope": "Candidate sources, not a measured population. Flags are set before creation and do not prove an entity survived or was created."
+        },
+        "visual_discoverability": {
+          "authored_form": "Wooden hut with spruce plank/stair roof and walls, oak-log supports and fences.",
+          "basis": "Explicit vanilla block-placement path and downward support columns.",
+          "scope": "Authored visible form only; terrain, vegetation, rendering distance and actual exposure are not measured."
+        },
+        "underground_surface_classification": {
+          "classification": "Surface hut adjusted to average ground height, with downward supports.",
+          "basis": "WORLD_SURFACE_WG generation stub; updateAverageGroundHeight uses MOTION_BLOCKING_NO_LEAVES samples in the clipping box and offset 0.",
+          "scope": "Initial Y 64 is not final placement. No eligible height samples cause early return; final terrain and retained-mod effects remain unresolved."
+        }
       }
     },
     {
