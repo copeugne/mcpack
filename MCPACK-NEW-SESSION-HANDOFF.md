@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Both YUNG initialization findings are integrated in `f569bde`; the generated
+inventory now links all corresponding source captures. Twenty focused tests and
+scoped checks passed. Inventory SHA-256:
+`c6d84d64ce8570bbe4e3a388a9d1a8a0997e29e88474233088b5ca4a75e0a4a7`.
+Extras scope now reflects completed template links and direct generator rules.
+Continue provider coverage and canonical family reconciliation; do not repeat
+empty module-loader inspection. Item 8 remains incomplete with 421 provisional
+registry groups and 887 roots. No new measurement system was added.
+
 Initialization captures in `3ff1893` show Extras/Bridges NeoForge loaders
 delegate to IModulesLoader.loadModules. The newly preserved default methods
 contain only return. This branch does not register configuration controls; do
