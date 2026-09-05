@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `5f52351`, SHA-256
-`a88bb2864dbbbf4af04006deece95a825a7ed41f905156f9d1b96bbacbbb371d`.
+Current working inventory regenerated at `d06f076`, SHA-256
+`878db7626144c928e32a1b5a6eeef52fa8cc934d3ed1a2d8dfed2ec2bcfaa318`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1780,3 +1780,11 @@ All four inherit the empty custom processor list from AbstractNbtFeature.
 This closes their direct terrain/processor attribution, not external stack effects
 or observed discoverability. The preserved source captures were reused unchanged.
 The existing focused command passed 19 tests; scoped Ruff/Basedpyright passed.
+
+Inventory regenerated at `d06f076`; only input identity and the Extras desert
+surface-generation field changed. All registry-family rows remain unchanged.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-extras-desert-surface.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-extras-desert-surface.json
+```
