@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "2404f992446fadd89726268f6a53f69d7a7de419606ca53154727f558ee10982",
+    "evidence/item-8/family-decisions.json": "7a52266e59c18e533b7d80100abfaa1b86a3b40d42b8bdb1ef59fb24ec566ac4",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -158957,7 +158957,32 @@
           "BetterEndGatewayFeature": "betterendisland:gateway",
           "BetterEndSpawnPlatformFeature": "betterendisland:spawn_platform"
         },
+        "configuration": {
+          "binding": "BEIConfigNeoForge defines these keys and defaults. ConfigModuleNeoForge.init registers the spec as COMMON under this filename. bakeConfig copies each ConfigValue into the corresponding BetterEndIslandCommon.CONFIG field. ConfigModule constructor defaults match the frozen values.",
+          "file": "evidence/item-6/frozen/config/betterendisland-neoforge-1_21.toml",
+          "key_to_field": {
+            "Play Bell Sound": "playBellSound",
+            "Respawn Central Tower on Resummon": "spawnCentralTowerOnResummon",
+            "Resummoned Dragon Drops Egg": "resummonedDragonDropsEgg",
+            "Spawn Central Tower Initially": "spawnCentralTowerInitially",
+            "Spawn Vanilla End Gateways": "useVanillaEndGateways",
+            "Spawn Vanilla Obsidian Platform": "useVanillaSpawnPlatform"
+          },
+          "platform_gateway_effect": "Both vanilla-generation toggles are false, selecting the custom branch in their captured hooks when those hooks apply.",
+          "scope": "Verified frozen values and direct key-to-field assignment. This does not prove entrypoint invocation, effective mixin activation or successful world generation. Tower/egg/bell consumers require separate attribution.",
+          "section": "YUNG's Better End Island",
+          "values": {
+            "Play Bell Sound": true,
+            "Respawn Central Tower on Resummon": true,
+            "Resummoned Dragon Drops Egg": false,
+            "Spawn Central Tower Initially": true,
+            "Spawn Vanilla End Gateways": false,
+            "Spawn Vanilla Obsidian Platform": false
+          }
+        },
         "evidence": {
+          "evidence/item-6/frozen/config/betterendisland-neoforge-1_21.toml": "9f967435aa86ab5959ee76a215cde5176bee106fae08df3b6e440c77a823867a",
+          "evidence/item-8/sources/better-end-island-configuration/identities.json": "56c0b14dfb0f0a11156acd745548cb01085bce05ed965bbc38bdbeae19fed3cb",
           "evidence/item-8/sources/better-end-island-platform-gateway/identities.json": "6d6944ae221e62182308d1ac3cdcc10a9b028d98bb0e2fa0d72e910cd366b48a",
           "evidence/item-8/sources/better-end-island-processors/identities.json": "dfeb5a2586c4b82b3e0e6eb5712149d1ab8adfc6689cc7ece108490a2b7d9b95",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
@@ -158985,7 +159010,7 @@
           "scope": "Direct block substitution only. Neither processor directly spawns entities, configures spawners or assigns loot tables. This does not establish engine/API behavior, ordinary block drops, external retained-stack modifications or observed world results."
         },
         "processors": "Platform static processor list is empty; gateway static list contains DragonEggProcessor. Both then add ObsidianProcessor with dragon-kill count, read only when the supplied accessor is a ServerLevel with a non-null dragon fight, otherwise zero. Direct effects are recorded below.",
-        "scope": "Direct code and packaged template attribution only. Configuration-field binding, mixin activation, dimension applicability, family reconciliation and generated-world observations remain open. Spike and podium generation are not covered by this contribution.",
+        "scope": "Direct code and packaged template attribution only. Mixin activation, dimension applicability, family reconciliation and generated-world observations remain open. Spike and podium generation are not covered by this contribution.",
         "success_limits": "Missing templates log a warning and return false. Loaded-template helpers discard placeInWorld boolean and return true. Platform hook cancellation does not depend on success. Gateway returns its template helper result, not whether portal-block placement or exit initialization succeeded."
       },
       "yungsbridges:bridges": {
