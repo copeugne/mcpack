@@ -1934,3 +1934,15 @@ identity. Prior contributions and registry-family rows remain unchanged.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-features.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-features.json
 ```
+
+### Better End Island direct processor effects
+
+DragonEggProcessor preserves an existing world egg at the incoming position;
+it does not create a new egg reward at an empty target. ObsidianProcessor changes
+incoming obsidian to crying obsidian according to the clamped dragon-kill count
+and position-specific settings random source. The exact threshold expression,
+pass-through rules, position and incoming-NBT preservation are recorded.
+Neither captured processor directly spawns entities, configures spawners or
+assigns loot tables. This is scoped to those processors, not all runtime effects.
+Twenty-six focused tests and scoped Ruff/Basedpyright passed. Configuration binding,
+mixin activation, dimensions and the remaining provider paths are still open.

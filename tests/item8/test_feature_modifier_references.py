@@ -922,3 +922,26 @@ def test_better_end_island_template_calls_and_failure_limits() -> None:
     assert "bipush        -14" in platform
     assert "CallbackInfo.cancel:" in sources["EndPlatformFeatureMixin"]
     assert "CallbackInfoReturnable.setReturnValue:" in sources["EndGatewayFeatureMixin"]
+
+
+def test_better_end_island_processors_preserve_eggs_and_vary_obsidian() -> None:
+    base = Path("evidence/item-8/sources/better-end-island-processors")
+    rows = cast("list[dict[str, str]]", json.loads((base / "identities.json").read_bytes()))
+    sources: dict[str, str] = {}
+    for row in rows:
+        raw = (base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    egg = sources["DragonEggProcessor"].split("  protected ")[0]
+    assert egg.index("LevelReader.getBlockState:") < egg.index("Blocks.DRAGON_EGG:")
+    obsidian = sources["ObsidianProcessor"].split("  protected ")[0]
+    assert obsidian.index("StructureBlockInfo.state:") < obsidian.index("Blocks.OBSIDIAN:")
+    assert "StructurePlaceSettings.getRandom:" in obsidian
+    assert "Mth.clamp:(III)I" in obsidian
+    assert "Mth.lerp:(FFF)F" in obsidian
+    assert "// float 0.5f" in obsidian
+    assert "Blocks.CRYING_OBSIDIAN:" in obsidian
+    for source in sources.values():
+        assert "StructureBlockInfo.nbt:" in source
+        for excluded in ("addFreshEntity", "setLootTable", "BaseSpawner", "Blocks.SPAWNER:"):
+            assert excluded not in source
