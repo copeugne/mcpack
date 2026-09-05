@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+No Extras/Bridges-named path was found in the frozen configuration tree, but
+this is not an absence-of-controls conclusion. Resolve the initialization path
+using four exact classes with the existing extractor: Extras common/NeoForge
+entrypoints and both NeoForgeModulesLoader implementations. Existing Bridges
+entrypoints delegate to the module loader and are already captured. This is a
+specific configuration attribution gap; no new measurement system is needed.
+
 Extras remaining desert terrain and empty custom processor paths are resolved
 in `d06f076`: chillzone, giant torch, small ruins and obelisk. Nineteen focused
 tests and scoped checks passed. Inventory SHA-256:
