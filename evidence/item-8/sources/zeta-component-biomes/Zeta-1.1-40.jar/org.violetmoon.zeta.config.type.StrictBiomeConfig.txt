@@ -1,0 +1,61 @@
+Compiled from "StrictBiomeConfig.java"
+public class org.violetmoon.zeta.config.type.StrictBiomeConfig implements org.violetmoon.zeta.config.type.IBiomeConfig,org.violetmoon.zeta.config.type.IConfigType {
+  private java.util.List<java.lang.String> biomeStrings;
+
+  private boolean isBlacklist;
+
+  protected org.violetmoon.zeta.config.type.StrictBiomeConfig(boolean, java.lang.String...);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iload_1
+       6: putfield      #7                  // Field isBlacklist:Z
+       9: aload_0
+      10: new           #13                 // class java/util/LinkedList
+      13: dup
+      14: invokespecial #15                 // Method java/util/LinkedList."<init>":()V
+      17: putfield      #16                 // Field biomeStrings:Ljava/util/List;
+      20: aload_0
+      21: getfield      #16                 // Field biomeStrings:Ljava/util/List;
+      24: aload_2
+      25: invokestatic  #20                 // Method java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+      28: invokeinterface #26,  2           // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+      33: pop
+      34: return
+
+  public boolean canSpawn(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: aload_1
+       1: invokeinterface #32,  1           // InterfaceMethod net/minecraft/core/Holder.unwrap:()Lcom/mojang/datafixers/util/Either;
+       6: aload_0
+       7: invokedynamic #38,  0             // InvokeDynamic #0:apply:(Lorg/violetmoon/zeta/config/type/StrictBiomeConfig;)Ljava/util/function/Function;
+      12: invokedynamic #42,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      17: invokevirtual #45                 // Method com/mojang/datafixers/util/Either.map:(Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/lang/Object;
+      20: checkcast     #51                 // class java/lang/Boolean
+      23: invokevirtual #53                 // Method java/lang/Boolean.booleanValue:()Z
+      26: ireturn
+
+  private static java.lang.Boolean lambda$canSpawn$1(net.minecraft.world.level.biome.Biome);
+    Code:
+       0: iconst_0
+       1: invokestatic  #57                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       4: areturn
+
+  private java.lang.Boolean lambda$canSpawn$0(net.minecraft.resources.ResourceKey);
+    Code:
+       0: aload_0
+       1: getfield      #16                 // Field biomeStrings:Ljava/util/List;
+       4: aload_1
+       5: invokevirtual #61                 // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       8: invokevirtual #67                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      11: invokeinterface #73,  2           // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+      16: aload_0
+      17: getfield      #7                  // Field isBlacklist:Z
+      20: if_icmpeq     27
+      23: iconst_1
+      24: goto          28
+      27: iconst_0
+      28: invokestatic  #57                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      31: areturn
+}
