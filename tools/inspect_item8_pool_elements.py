@@ -59,6 +59,8 @@ ARCHIVES = frozenset(
         "integrated_villages-1.3.3+1.21.1-neoforge.jar",
         "idas-1.13.7+1.21.1-neoforge.jar",
         "BetterEnd-21.0.31.jar",
+        "BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar",
+        "deep_aether-1.21.1-1.1.5.1.jar",
         "YungsBridges-1.21.1-NeoForge-5.1.1.jar",
         "YungsExtras-1.21.1-NeoForge-5.1.1.jar",
         "YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar",
@@ -349,6 +351,14 @@ CLASSES: tuple[str, ...] = (
     "com/tristankechlo/explorations/worldgen/structures/SlimeCaveStructure.class",
     "com/tristankechlo/explorations/worldgen/structures/pieces/SlimeCaveStructurePiece.class",
     "com/tristankechlo/explorations/worldgen/structures/processors/DeepslateProcessor.class",
+    "org/betterx/betterend/registry/EndFeatures.class",
+    "org/betterx/betterend/world/features/BuildingListFeature.class",
+    "org/betterx/betterend/world/features/CrashedShipFeature.class",
+    "biomesoplenty/worldgen/feature/misc/AnomalyFeature.class",
+    "biomesoplenty/worldgen/feature/misc/MonolithFeature.class",
+    "biomesoplenty/worldgen/feature/misc/BoneSpineFeature.class",
+    "io/github/razordevs/deep_aether/world/feature/features/TotemFeature.class",
+    "com/tristankechlo/explorations/worldgen/features/ScarecrowFeature.class",
     "net/redstonegames/chefsdelight/ChefsDelight.class",
     "net/redstonegames/chefsdelight/worldgen/village/VillageStructures.class",
     "com/aetherteam/aether/world/structure/BronzeDungeonStructure.class",
@@ -512,6 +522,7 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     continue
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = "/mixin/" in name or "/mixins/" in name or name in {
+                    "org/betterx/betterend/registry/EndFeatures.class",
                     "net/redstonegames/chefsdelight/ChefsDelight.class",
                     "net/redstonegames/chefsdelight/worldgen/village/VillageStructures.class",
                     "com/aetherteam/aether/block/AetherBlocks.class",
