@@ -6,6 +6,27 @@
 
 ### Continuation update - 2026-09-05
 
+Observed layout estimates are delivered through `be1171c`, built from `62be1ff`.
+Inventory SHA-256:
+`fc73778e20d09b91e4424b905995882c4c68469ac90c7c42c39cfdc5c3ea6109`.
+The existing builder now reports qualified approximate X/Z envelopes and heights
+for 25 working families with retained full-start-chunk observations. This uses
+the existing bounds evidence, not a new measurement system. Paired X/Z values
+preserve rotations; duplicates are removed. Partial start chunks are excluded
+from these estimates, but their raw observations remain linked. Saved-piece
+extents include air and padding, do not prove component chunks are populated,
+and are not occupied dimensions or family-wide limits. The underground temple's
+2 by 2 by 2 envelope remains visible rather than silently removing an unusual
+observation. Existing explicit geometry overrides remain unchanged.
+Thirty-one focused tests and scoped quality checks passed. The inventory
+reproduced byte for byte; only the two geometry fields changed. Family counts
+remain 168 working groups, 266 assigned IDs, 621 unassigned. Other required
+attributes, provider coverage, canonical grouping and final delivery gates are
+still open. User reiterated that new measurement systems are allowed only when
+strictly necessary and worth their time and effort. Batch related source
+inspection and resolve common behavior across consumers; avoid repeating small
+research cycles or demanding occupied-voxel precision for approximate fields.
+
 Medium Nether houses are delivered through `8d778dc`, built from `298911d`.
 Inventory SHA-256:
 `0b255191173f24467ac1fe8f337372e6d0ee08b4df1fd2e3cae8400fe242b088`.
