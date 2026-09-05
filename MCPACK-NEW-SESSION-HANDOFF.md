@@ -6,6 +6,19 @@
 
 ### Continuation update - 2026-09-05
 
+BetterEnd lake grouping is delivered in `f90d6da`. Five registered lake types
+are variants of one lake-formation family. Normal/rare EndLake classes share
+base generation; megalake/small-megalake use LakePiece with distinct parameters.
+Both algorithms, all definitions, biome constraints and original observation
+links are retained. Piece content and effective attributes remain open, as do
+mountain relationships. All 70 affected tests and scoped checks pass. Current
+working total: 422 groups with 887 registered roots. Inventory SHA-256:
+`620b2c61a0890bd4e2e387c4dd4f6e907682c653f752a8835a728eea6133ec2a`.
+Reproduction is in the final BetterEnd section of `evidence/item-8/README.md`.
+Continue remaining canonical/provider reconciliation and required attributes.
+Item 8 is incomplete; no runtime, measurement framework or downstream work added.
+
+
 BetterEnd lake/mountain registration and generator sources are captured under
 `evidence/item-8/sources/betterend-formations-code`. The existing extractor now
 selects nine exact classes from retained BetterEnd, including verbose registration
