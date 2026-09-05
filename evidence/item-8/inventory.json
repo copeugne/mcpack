@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "d894507f6a028766e091ede35bb58de28a9489cd5d2a1f51deafe4f7e5642fb4",
+    "evidence/item-8/family-decisions.json": "c6e3111cd30e6aa12bbb566d0691837fc217fe01ea9979cddecb57c23e016bc6",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -158998,6 +158998,15 @@
           "evidence/item-8/sources/yungs-bridge-processors/identities.json": "97da8471a115645afe18fee88f98407410097d244ed1d43d2a25ae4a6ad0bfaf"
         },
         "generation": {
+          "placement_eligibility": {
+            "banks": "Endpoint centers are length + 1 blocks apart. Both must canOcclude and have WORLD_SURFACE height <= sea level. At each endpoint, count the center plus contiguous qualifying lateral cells on each side, stopping that side at its first failure or width/2. Each endpoint count must reach numSolidBlocksNeeded.",
+            "sampling_plane": "Sea level minus one. The generator subsequently anchors the template at sea level.",
+            "scope": "These are the custom terrain checks. Biome filtering, selector variants and rarity modifiers remain separate packaged constraints; no world observation is inferred.",
+            "search": "For each lateral offset from width/2 + widthOffset + 1 (inclusive) to 16 - width/2 - widthOffset (exclusive), try longitudinal offsets 0 through 15. Integer division is used. Swap X/Z roles for non-Z-axis variants. Return only the first valid candidate, or an empty stream.",
+            "source": "BridgePlacement.getPositions in the captured generator manifest.",
+            "span": "Every cell from lateral -width/2 through width/2 and longitudinal minWaterZ through maxWaterZ (inclusive) must satisfy BlockState.liquid at sea level minus one. The predicate does not specifically test water.",
+            "surface_classification": "Surface liquid-crossing placement intent, supported by the bank heightmap and sea-level checks. This is not proof of player visibility or observed generation frequency."
+          },
           "processing_stage": "StructureTemplate.placeInWorld runs before the custom processor list is applied in order.",
           "processor_order": [
             "LEG_PROCESSOR",
