@@ -98,3 +98,8 @@ All three affected tests and scoped checks passed. Decision SHA-256:
 `6c0e1ee405a80290bc0d38675250a8486a283655a27595b9f21ab8609cb5631a`.
 This supersedes the unresolved geometry fields, not the lack of an observed
 buried-treasure sample or other recorded limitations. Item 8 remains incomplete.
+
+Geometry decisions and checks are delivered in `d59a52e`. The inventory rebuilt
+at that revision has SHA-256
+`9840227ee2568964048442f5549adc215ad8e345a1e0fea1662a7d77c9c3f5bb`.
+Only buried treasure geometry and decision input identity change.

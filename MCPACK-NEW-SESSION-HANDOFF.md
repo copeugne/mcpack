@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-05
 
+Buried treasure geometry is resolved in `d59a52e` from the existing direct piece
+source: a one-block chest target, with potential direct infill enclosed by a
+3 by 3 footprint and 2-block height. The solid support below cannot enter the
+air/liquid replacement branch. These are source-derived write bounds, not an
+observed sample or guaranteed changed-block count. Three affected tests and
+scoped checks pass. Rebuilt inventory SHA:
+`9840227ee2568964048442f5549adc215ad8e345a1e0fea1662a7d77c9c3f5bb`.
+Decision SHA: `6c0e1ee405a80290bc0d38675250a8486a283655a27595b9f21ab8609cb5631a`.
+Commands and derivation are in the buried treasure source README. No new
+measurement system was added. Continue the remaining direct generators and
+provider gaps; actual world observations and effective mod transformations are
+not supplied by this geometry derivation. Item 8 remains incomplete.
+
+
 Buried treasure source (`90eb4d4`) and family integration (`9f68b51`) resolve
 its direct piece path without inventing template or pool components. Seven
 attributes now record authored content, placement and lack of a generated
