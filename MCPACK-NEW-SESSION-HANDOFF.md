@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+Effective biome follow-up is now concrete in `bb42eb0`: retained Zeta and
+Forgified Fabric biome-modifier documents delegate to code without declaring
+feature targets. Their exact identities are in effective_biome_gap. Resolve
+relevant implementations/callbacks before claiming packaged End feature lists
+are final. Do not infer they change End content merely because they exist.
+Thirty focused tests and scoped checks passed. Item 8 remains incomplete.
+
 Platform caller attribution is integrated in `6032002`, source `ccc5c2f`.
 EndPlatformFeature.place forwards level/origin/false to the static hooked method.
 Frozen configuration selects the custom generator. Nominal bounds for the

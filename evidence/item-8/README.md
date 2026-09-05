@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `6032002`, SHA-256
-`065dbbf1c6e1d25b2feec3996d574c1fd9f29c5cbc5a6dd6981ab2e74c50464c`.
+Current working inventory regenerated at `bb42eb0`, SHA-256
+`54c035e0d6a59d53def2b9c57a7b6019d8b70d49d7fcce1827d86fb215edc945`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,16 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The bb42eb0 increment identifies Zeta and Forgified Fabric biome modifiers whose
+JSON delegates to code without enumerating affected features. Their effects must
+be resolved before treating packaged End feature membership as effective.
+Thirty focused tests and scoped checks passed. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-biome-gap-bb42eb0.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-biome-gap-bb42eb0.json
+```
 
 The 6032002 increment closes the platform caller link with the preserved
 vanilla EndPlatformFeature implementation. The packaged fixed-origin path

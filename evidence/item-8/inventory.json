@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "d197e0f090cb79bd597d6781ac00335e2338759178ee2d56a2a1a73a9238c8ac",
+    "evidence/item-8/family-decisions.json": "986becd2c14bc47fc23de40d16c071417e607288edeb02317d1978c1cf1e4afc",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -158979,6 +158979,29 @@
             "Spawn Vanilla End Gateways": false,
             "Spawn Vanilla Obsidian Platform": false
           }
+        },
+        "effective_biome_gap": {
+          "code_delegating_modifiers": [
+            {
+              "archive": "Zeta-1.1-40.jar",
+              "document": {
+                "type": "zeta:biome_modifier"
+              },
+              "path": "data/zeta/neoforge/biome_modifier/biome_modifier.json",
+              "sha256": "b9308ee64f5f95374a06c1dd2e9a1c461d45927dc022618753ac4be79e3ec59b"
+            },
+            {
+              "archive": "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar!/META-INF/jars/fabric-biome-api-v1-13.0.31+1e62d33c19.jar",
+              "document": {
+                "type": "fabric_biome_api_v1:fabric_biome_modifier"
+              },
+              "path": "data/fabric_biome_api_v1/neoforge/biome_modifier/fabric_biome_modifier_instance.json",
+              "sha256": "ce414908a4ff8cf2e8a527f16e6f79f203f7a7a07282de72f1bdc31f54aaaf6f"
+            }
+          ],
+          "finding": "These retained NeoForge biome-modifier documents name code-backed modifier types without declaring target biomes or feature changes. Their documents cannot prove either removal or preservation of the packaged End feature lists.",
+          "required_followup": "Resolve relevant registrations and callbacks for these two implementations before asserting that the packaged biome feature membership is effective. Reuse existing source extraction; do not infer modifications from provider names alone.",
+          "scope": "Concrete unresolved code-delegation paths found in the packaged catalog. This is not a claim that these modifiers alter End features or an exhaustive list of all cross-provider effects."
         },
         "evidence": {
           "evidence/item-6/frozen/config/betterendisland-neoforge-1_21.toml": "9f967435aa86ab5959ee76a215cde5176bee106fae08df3b6e440c77a823867a",
