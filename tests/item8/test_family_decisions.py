@@ -33,6 +33,7 @@ if TYPE_CHECKING:
         "mes:",
         "mss:",
         "mns:",
+        "mvs:",
     ],
 )
 def test_authored_designs_bind_roots_settings_and_missing_components(
@@ -62,7 +63,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         "mss:": ("mss:tree_", "mss:birch_river", "mss:cherry_river"),
     }.get(namespace, ())
     expected = {key for key in expected if not key.startswith(excluded_prefixes)}
-    if namespace == "mns:":
+    if namespace in {"mns:", "mvs:"}:
         variants = [
             member
             for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
@@ -70,7 +71,11 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
             and len(cast("list[str]", row["structure_ids"])) > 1
             for member in cast("list[str]", row["structure_ids"])
         ]
-        assert len(members + variants) == len(set(members + variants)) == 52
+        assert (
+            len(members + variants)
+            == len(set(members + variants))
+            == {"mns:": 52, "mvs:": 129}[namespace]
+        )
         expected -= set(variants)
     assert members
     assert set(members) == expected
@@ -126,6 +131,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
                 "biomes",
             },
         }
+        custom_keys["mvs:"] = custom_keys["mns:"]
         if namespace in custom_keys:
             assert row["custom_generation_settings"] == {
                 key: definition[key] for key in custom_keys[namespace] if key in definition
