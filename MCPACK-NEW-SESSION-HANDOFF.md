@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+Aether cloud provider and direct content have a working terrain/cloud
+disposition in 6ab0446; entry/writer captures are in e2dd34b. Its registry row
+remains for coverage, not an accepted authored family. The focused test and
+scoped static checks pass; inventory reproduction is exact. Do not repeat the
+provider/writer join. Continue BronzeDungeonBuilder and direct dungeon pieces,
+then Silver and Gold assembly/content dependencies. No new world measurement.
+
 Aether custom roots still lack generator attribution. Select the retained
 Aether archive's BronzeDungeonStructure, SilverDungeonStructure,
 GoldDungeonStructure, LargeAercloudStructure and LargeAercloudChunk with the
