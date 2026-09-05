@@ -1788,3 +1788,17 @@ surface-generation field changed. All registry-family rows remain unchanged.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-extras-desert-surface.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-extras-desert-surface.json
 ```
+
+### Extras and Bridges initialization attribution
+
+Both contribution records now link the preserved entrypoint and module-loader
+sources. Common initialization scans the module package and calls the module
+service. The packaged NeoForge loader delegates to a default method containing
+only return. This implementation performs no configuration registration. Service
+selection, annotation-driven registration and external controls are explicitly
+outside that conclusion. Extras' top-level scope now reflects its delivered
+62 template links and direct generator rules instead of the obsolete entrypoint-only
+status. Canonical family and effective attribute completion remain open.
+
+Twenty focused tests and scoped Ruff/Basedpyright passed using the existing
+commands above. No runtime, source extraction or new validation framework added.

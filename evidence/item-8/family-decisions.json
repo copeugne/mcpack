@@ -26916,7 +26916,9 @@
           "evidence/item-8/sources/yungs-bridge-processors/identities.json": "97da8471a115645afe18fee88f98407410097d244ed1d43d2a25ae4a6ad0bfaf",
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_biome.txt": "0970c5296980495640901e3ba7fd44fa90e97da4774900368fa924a263446713",
-          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+          "evidence/item-8/sources/yungs-bridges-module-loader/identities.json": "9bed9e79b9acc13472a27c341058a7f38d23fd072c0433847e2f7b4b8c600595",
+          "evidence/item-8/sources/yungs-bridges-module-default/identities.json": "a88c07b516b2ee1692c6629ab8db0a4f4a63c8455265ce3aa7c061679e67a581"
         },
         "template_content": {
           "referenced_nominal_xyz_blocks": {
@@ -27060,6 +27062,11 @@
           "rarity_scope": "All 22 inline variants specify chance=3 after their terrain filter. This is not an observed bridge frequency or an independent one-in-three chance per chunk; the selector can try multiple candidates.",
           "rng_initializer": "Consumes two nextLong values, forces their low bits to one, combines them with candidate X/Z and constants to reseed the supplied random source, then returns the same position. No additional position or eligibility test.",
           "scope": "Biome resolution uses existing merged packaged tags and the verified biome registry. Dimension overlap uses the captured live possible-biome lists, not observed successful bridge placement. Standalone configuration registration and external modifications remain unresolved."
+        },
+        "initialization": {
+          "entrypoint": "The NeoForge constructor calls the common init method. Common init scans the mod module package with YungAutoRegister.scanPackageForAnnotations, then calls Services.MODULES.loadModules().",
+          "neoforge_module_loader": "The packaged NeoForgeModulesLoader delegates directly to IModulesLoader.loadModules. That default method contains only return, so this module-loader implementation performs no configuration registration.",
+          "scope": "Verified direct entrypoint and module-loader implementation. Service selection and annotation-driven registration remain separate from this finding. This does not establish absence of all configuration, data-driven or external generation controls."
         }
       },
       "yungsextras:feature_entrypoints": {
@@ -27163,7 +27170,7 @@
         },
         "relationship": "The two addition modifiers reference 62 distinct placed features, each with a same-ID configured feature. These are contribution entry points, not 62 canonical families. The configured feature types are generator categories, not an accepted family classification.",
         "removal_scope": "The packaged removal targets minecraft:desert_well at surface_structures in the same three resolved desert biomes as desert additions. Their captured dimension overlap is overworld only. Configuration/registration effects and generated-world consequences remain to be reconciled.",
-        "scope": "Runtime registry presence plus packaged root references only. Template membership, custom generators, configuration, family relationships and required attributes remain incomplete. Forge-path duplicates are not counted as additional NeoForge contributions.",
+        "scope": "Runtime registry and packaged biome-modifier entrypoints, all 62 template links/envelopes, packaged contents and direct generator/processor rules are recorded below. Canonical families, effective retained-stack effects, configuration/provider coverage and remaining required attributes are incomplete. Forge-path duplicates are not additional NeoForge contributions.",
         "evidence": {
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
@@ -27176,7 +27183,9 @@
           "evidence/item-8/sources/yungs-extras-desert-code/identities.json": "c595f5123a71105b276884d33229e4b7da2bf9b91b70ec8e5cbf1cba069d465b",
           "evidence/item-8/sources/yungs-extras-registration/identities.json": "07300368df9a9fe1fe8f7e6efad0bc12505ebeb2e4db2a00389150a39b9e417e",
           "evidence/item-8/sources/yungs-extras-generators/identities.json": "6295b0a24fca944020cd1f489beae29c75deef061d93c411504e7aaadfe23210",
-          "evidence/item-8/sources/yungs-extras-processor-bindings/identities.json": "1b79d6b5d0afdc5a965dd1fa0f9ed732d77fe3dcaa9378e4115fa942efb1e0d6"
+          "evidence/item-8/sources/yungs-extras-processor-bindings/identities.json": "1b79d6b5d0afdc5a965dd1fa0f9ed732d77fe3dcaa9378e4115fa942efb1e0d6",
+          "evidence/item-8/sources/yungs-extras-initialization/identities.json": "9a3c1a412e4ddc0e2ac21911776e5fc251fd36a51deb441f50e8df56c9e83675",
+          "evidence/item-8/sources/yungs-extras-module-default/identities.json": "7c82ad69ee51b4a1157d8bdccdb7910899b999f49d94f30a1cd377e064a56507"
         },
         "biome_constraints": {
           "tags": {
@@ -27899,6 +27908,11 @@
           "placement": "Chillzone, giant torch and obelisk center their template one block above landing. Small ruins center at landing Y. Obelisk reads the configured location; the other three fixed template links are recorded separately.",
           "processors": "All four directly inherit AbstractNbtFeature and do not override useProcessors. The base initializes processors from useProcessors(), which returns a new empty ArrayList. These classes therefore add no custom post-placement processor through this path.",
           "scope": "Source-derived terrain and placement rules only. Packaged chest and campfire contents remain recorded separately. This does not prove successful placement, full retained-stack content effects or observed visual discoverability."
+        },
+        "initialization": {
+          "entrypoint": "The NeoForge constructor calls the common init method. Common init scans the mod module package with YungAutoRegister.scanPackageForAnnotations, then calls Services.MODULES.loadModules().",
+          "neoforge_module_loader": "The packaged NeoForgeModulesLoader delegates directly to IModulesLoader.loadModules. That default method contains only return, so this module-loader implementation performs no configuration registration.",
+          "scope": "Verified direct entrypoint and module-loader implementation. Service selection and annotation-driven registration remain separate from this finding. This does not establish absence of all configuration, data-driven or external generation controls."
         }
       }
     }
