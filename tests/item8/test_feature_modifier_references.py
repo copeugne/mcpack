@@ -809,7 +809,8 @@ def test_yung_family_geometry_uses_only_member_template_envelopes() -> None:
     ).read_bytes()))
     content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
     contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
-    for key, contribution in contributions.items():
+    for key in ("yungsbridges:bridges", "yungsextras:feature_entrypoints"):
+        contribution = contributions[key]
         if key == "yungsbridges:bridges":
             links = cast("dict[str, str]", contribution["configured_to_template"])
             sizes = cast("dict[str, JsonValue]", contribution["template_content"])
@@ -839,7 +840,8 @@ def test_yung_family_biomes_follow_their_addition_modifiers() -> None:
     ).read_bytes()))
     content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
     contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
-    for key, contribution in contributions.items():
+    for key in ("yungsbridges:bridges", "yungsextras:feature_entrypoints"):
+        contribution = contributions[key]
         families = cast("list[dict[str, JsonValue]]", contribution["families"])
         for family in families:
             if key == "yungsbridges:bridges":
@@ -892,3 +894,31 @@ def test_yung_family_contents_keep_template_and_processor_loot_separate() -> Non
             ]
         else:
             assert "processor_loot_sources" not in family
+
+
+def test_better_end_island_template_calls_and_failure_limits() -> None:
+    base = Path("evidence/item-8/sources/better-end-island-platform-gateway")
+    rows = cast("list[dict[str, str]]", json.loads((base / "identities.json").read_bytes()))
+    sources: dict[str, str] = {}
+    for row in rows:
+        raw = (base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    for name, template in (("BetterEndSpawnPlatformFeature", "spawn_platform"),
+                           ("BetterEndGatewayFeature", "gateway")):
+        source = sources[name]
+        assert "// String betterendisland" in source
+        assert "// String " + template in source
+        assert "ObsidianProcessor." in source
+        assert "LiquidSettings.IGNORE_WATERLOGGING:" in source
+        assert source.split("StructureTemplate.placeInWorld:")[1].splitlines()[1].endswith("pop")
+    gateway = sources["BetterEndGatewayFeature"]
+    place = gateway.split("  private static boolean placeTemplate")[0]
+    assert place.index("Method placeTemplate:") < place.index("Blocks.END_GATEWAY:")
+    assert "TheEndGatewayBlockEntity.setExitPosition:" in gateway
+    assert "DragonEggProcessor." in gateway
+    platform = sources["BetterEndSpawnPlatformFeature"]
+    assert "RandomSource.create:" in platform
+    assert "bipush        -14" in platform
+    assert "CallbackInfo.cancel:" in sources["EndPlatformFeatureMixin"]
+    assert "CallbackInfoReturnable.setReturnValue:" in sources["EndGatewayFeatureMixin"]

@@ -1906,3 +1906,23 @@ All membership, geometry and biome records remain unchanged.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-family-content.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-yung-family-content.json
 ```
+
+### Better End Island platform and gateway contribution
+
+A third non-registry contribution now records the conditional vanilla feature
+replacement hooks and links custom generators to spawn_platform (7x22x7) and
+gateway (3x9x3) templates. Both template entity/block-entity lists are empty;
+the gateway block is separately placed in code. Placement offsets, random-source
+selection, processor order and gateway exit initialization are preserved.
+
+Both helpers discard placeInWorld failure; platform cancellation ignores its
+custom result. Gateway still attempts its portal block after template failure.
+These limits prevent successful hook execution from being treated as successful
+structure placement. Obsidian/dragon-egg processor effects, effective configuration,
+mixin activation, dimensions, family grouping and world observations remain open.
+This contribution does not cover spikes or the central podium.
+
+Twenty-five focused tests and scoped Ruff/Basedpyright passed. The two existing
+family geometry/biome checks now explicitly select Extras/Bridges because the new
+provider contribution does not yet have reconciled family records. No acceptance
+requirement was relaxed and no new measurement system was added.
