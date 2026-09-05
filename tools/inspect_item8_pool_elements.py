@@ -44,6 +44,7 @@ ARCHIVES = frozenset(
         "YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar",
         "supplementaries-neoforge-1.21.1-3.6.8.jar",
         "bettervillage-neoforge-1.21.1-3.3.1.jar",
+        "regions-unexplored-0.6.1-neoforge-21.1.jar",
     }
 )
 GENERATION_PREFIXES = (
@@ -106,6 +107,20 @@ CLASSES = (
     "dev/worldgen/lithostitched/impl/worldgen/processor/ReferenceStructureProcessor.class",
     "dev/worldgen/lithostitched/impl/worldgen/processor/ConditionProcessor.class",
     "dev/worldgen/lithostitched/impl/worldgen/processor/BlockSwapStructureProcessor.class",
+    "dev/worldgen/lithostitched/impl/worldgen/modifier/AddFeaturesModifier.class",
+    "dev/worldgen/lithostitched/impl/worldgen/modifier/RemoveFeaturesModifier.class",
+    "dev/worldgen/lithostitched/impl/worldgen/surface/rule/ReferenceRule.class",
+    "dev/worldgen/lithostitched/worldgen/feature/CompositeFeature.class",
+    "dev/worldgen/lithostitched/worldgen/feature/WeightedSelectorFeature.class",
+    "dev/worldgen/lithostitched/worldgen/feature/config/WeightedSelectorConfig.class",
+    "dev/worldgen/lithostitched/worldgen/modifier/AddSurfaceRuleModifier.class",
+    "net/regions_unexplored/registry/RUFeatureTypes.class",
+    "net/regions_unexplored/world/level/feature/GiantLilyPadFeature.class",
+    "net/regions_unexplored/world/level/feature/tree/BambooTreeFeature.class",
+    "net/regions_unexplored/world/level/feature/tree/PalmTreeFeature.class",
+    "net/regions_unexplored/world/level/feature/tree/SaguaroCactusFeature.class",
+    "net/regions_unexplored/worldgen/rootplacer/WillowRootPlacer.class",
+    "net/regions_unexplored/worldgen/rulesource/ConfigRuleSource.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
