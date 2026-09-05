@@ -6,6 +6,30 @@
 
 ### Continuation update - 2026-09-05
 
+Pool compilation source closure is delivered in `3fa8f5b`, generated with tool
+`45e194d`. The three exact classes under
+`evidence/item-8/sources/lithostitched-pool-compilation-code` show raw pairs
+copied into weighted entries holding the same element. Shuffling changes order
+but introduces no template or family. Identities SHA:
+`c69e16e8ae53df5fa0d817126b3b62d739e7780292576c1891e3084054ee556e`.
+The extraction and scoped quality checks passed. Do not build a shuffle simulator
+for this possible-content requirement. The machine-readable report remains
+unchanged pending the remaining modifier dispositions; combine those report
+updates to avoid repeated whole-inventory reference migrations.
+
+The remaining selected modifier listing contains Regions Unexplored feature
+additions/removals, its Overworld surface rule and its village-path processor.
+Inspect their bodies, not names alone. The path processor references
+`regions_unexplored:village_path_fix`, whose packaged conditions select silt/peat
+biomes plus `custom_dirts`. Its declared swaps change dirt_path and grass_block
+to corresponding Regions Unexplored silt/peat blocks. The next exact classes
+located in Lithostitched are `AddProcessorListProcessorsModifier`,
+`impl/worldgen/processor/UnboundReferenceProcessor`, `ConditionProcessor`, and
+`BlockSwapStructureProcessor`. They have not yet been retained or inspected.
+Use the existing selector to establish the scope of those changes. No new
+measurement system was added. Inventory, family decisions and trace identities
+remain as recorded immediately below; broader Item 8 closure remains open.
+
 Trial alias correction is delivered: shared tag/alias decoder `749c1a2`, trace
 integration `f4efdcc`, generated trace and decision bindings `48df0e9`, rebuilt
 inventory `073cfb3`. The existing tag merger is now named `tag_inputs` and
