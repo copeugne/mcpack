@@ -29,3 +29,19 @@ Before adding this README, recursive comparison with the fresh reproduction
 matched all files byte-for-byte. Scoped extractor Ruff/Basedpyright passed.
 The two mixin captures retain verbose annotations. No new measurement system
 or runtime was added.
+
+## Packaged mixin declaration
+
+The extractor also produced `mixin-metadata.json`, initially omitted from staging
+because its parent directory ends in .jar. It is now retained alongside these
+classes. Its SHA-256 is
+`9edd653c4d2fb45318c02ff41838941b914774d87f8d799d20aa99aa8fa91813`.
+The preserved NeoForge metadata declares betterendisland.mixins.json; that file
+lists EndPlatformFeatureMixin and EndGatewayFeatureMixin among its common mixins,
+with required=true and defaultRequire=1. There is no plugin entry in that mixin
+configuration. This is the packaged application declaration, not direct proof of
+runtime transformation or successful generated-world placement.
+
+The existing fresh reproduction contains an identical metadata file. No new
+capture or runtime was needed. Metadata copies produced by later processor and
+configuration captures are identical duplicate outputs, not separate evidence.
