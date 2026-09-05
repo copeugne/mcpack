@@ -1,0 +1,168 @@
+Compiled from "NetherFossilStructure.java"
+public class net.minecraft.world.level.levelgen.structure.structures.NetherFossilStructure extends net.minecraft.world.level.levelgen.structure.Structure {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.world.level.levelgen.structure.structures.NetherFossilStructure> CODEC;
+
+  public final net.minecraft.world.level.levelgen.heightproviders.HeightProvider height;
+
+  public net.minecraft.world.level.levelgen.structure.structures.NetherFossilStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings, net.minecraft.world.level.levelgen.heightproviders.HeightProvider);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #44                 // Method net/minecraft/world/level/levelgen/structure/Structure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       5: aload_0
+       6: aload_2
+       7: putfield      #46                 // Field height:Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+      10: return
+
+  public java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_1
+       1: invokevirtual #58                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #62                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+       9: invokevirtual #68                 // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+      12: aload_2
+      13: bipush        16
+      15: invokevirtual #74                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+      18: iadd
+      19: istore_3
+      20: aload_1
+      21: invokevirtual #62                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      24: invokevirtual #77                 // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+      27: aload_2
+      28: bipush        16
+      30: invokevirtual #74                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+      33: iadd
+      34: istore        4
+      36: aload_1
+      37: invokevirtual #81                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      40: invokevirtual #86                 // Method net/minecraft/world/level/chunk/ChunkGenerator.getSeaLevel:()I
+      43: istore        5
+      45: new           #88                 // class net/minecraft/world/level/levelgen/WorldGenerationContext
+      48: dup
+      49: aload_1
+      50: invokevirtual #81                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      53: aload_1
+      54: invokevirtual #92                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      57: invokespecial #95                 // Method net/minecraft/world/level/levelgen/WorldGenerationContext."<init>":(Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/LevelHeightAccessor;)V
+      60: astore        6
+      62: aload_0
+      63: getfield      #46                 // Field height:Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+      66: aload_2
+      67: aload         6
+      69: invokevirtual #101                // Method net/minecraft/world/level/levelgen/heightproviders/HeightProvider.sample:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/WorldGenerationContext;)I
+      72: istore        7
+      74: aload_1
+      75: invokevirtual #81                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      78: iload_3
+      79: iload         4
+      81: aload_1
+      82: invokevirtual #92                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      85: aload_1
+      86: invokevirtual #105                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+      89: invokevirtual #109                // Method net/minecraft/world/level/chunk/ChunkGenerator.getBaseColumn:(IILnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)Lnet/minecraft/world/level/NoiseColumn;
+      92: astore        8
+      94: new           #13                 // class net/minecraft/core/BlockPos$MutableBlockPos
+      97: dup
+      98: iload_3
+      99: iload         7
+     101: iload         4
+     103: invokespecial #112                // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":(III)V
+     106: astore        9
+     108: iload         7
+     110: iload         5
+     112: if_icmple     182
+     115: aload         8
+     117: iload         7
+     119: invokevirtual #118                // Method net/minecraft/world/level/NoiseColumn.getBlock:(I)Lnet/minecraft/world/level/block/state/BlockState;
+     122: astore        10
+     124: iinc          7, -1
+     127: aload         8
+     129: iload         7
+     131: invokevirtual #118                // Method net/minecraft/world/level/NoiseColumn.getBlock:(I)Lnet/minecraft/world/level/block/state/BlockState;
+     134: astore        11
+     136: aload         10
+     138: invokevirtual #124                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     141: ifeq          179
+     144: aload         11
+     146: getstatic     #130                // Field net/minecraft/world/level/block/Blocks.SOUL_SAND:Lnet/minecraft/world/level/block/Block;
+     149: invokevirtual #134                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     152: ifne          182
+     155: aload         11
+     157: getstatic     #140                // Field net/minecraft/world/level/EmptyBlockGetter.INSTANCE:Lnet/minecraft/world/level/EmptyBlockGetter;
+     160: aload         9
+     162: iload         7
+     164: invokevirtual #144                // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     167: getstatic     #150                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     170: invokevirtual #154                // Method net/minecraft/world/level/block/state/BlockState.isFaceSturdy:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Z
+     173: ifeq          179
+     176: goto          182
+     179: goto          108
+     182: iload         7
+     184: iload         5
+     186: if_icmpgt     193
+     189: invokestatic  #160                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     192: areturn
+     193: new           #15                 // class net/minecraft/core/BlockPos
+     196: dup
+     197: iload_3
+     198: iload         7
+     200: iload         4
+     202: invokespecial #161                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     205: astore        10
+     207: new           #18                 // class net/minecraft/world/level/levelgen/structure/Structure$GenerationStub
+     210: dup
+     211: aload         10
+     213: aload_1
+     214: aload_2
+     215: aload         10
+     217: invokedynamic #181,  0            // InvokeDynamic #0:accept:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/world/level/levelgen/WorldgenRandom;Lnet/minecraft/core/BlockPos;)Ljava/util/function/Consumer;
+     222: invokespecial #184                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationStub."<init>":(Lnet/minecraft/core/BlockPos;Ljava/util/function/Consumer;)V
+     225: invokestatic  #188                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+     228: areturn
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<?> type();
+    Code:
+       0: getstatic     #217                // Field net/minecraft/world/level/levelgen/structure/StructureType.NETHER_FOSSIL:Lnet/minecraft/world/level/levelgen/structure/StructureType;
+       3: areturn
+
+  private static void lambda$findGenerationPoint$2(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, net.minecraft.world.level.levelgen.WorldgenRandom, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder);
+    Code:
+       0: aload_0
+       1: invokevirtual #221                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.structureTemplateManager:()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+       4: aload_3
+       5: aload_1
+       6: aload_2
+       7: invokestatic  #227                // Method net/minecraft/world/level/levelgen/structure/structures/NetherFossilPieces.addPieces:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+      10: return
+
+  private static com.mojang.datafixers.kinds.App lambda$static$1(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokestatic  #238                // Method settingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       5: getstatic     #241                // Field net/minecraft/world/level/levelgen/heightproviders/HeightProvider.CODEC:Lcom/mojang/serialization/Codec;
+       8: ldc           #242                // String height
+      10: invokeinterface #248,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      15: invokedynamic #260,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      20: invokevirtual #266                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      23: invokevirtual #270                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P2;
+      26: aload_0
+      27: invokedynamic #280,  0            // InvokeDynamic #2:apply:()Ljava/util/function/BiFunction;
+      32: invokevirtual #283                // Method com/mojang/datafixers/Products$P2.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/BiFunction;)Lcom/mojang/datafixers/kinds/App;
+      35: areturn
+
+  private static net.minecraft.world.level.levelgen.heightproviders.HeightProvider lambda$static$0(net.minecraft.world.level.levelgen.structure.structures.NetherFossilStructure);
+    Code:
+       0: aload_0
+       1: getfield      #46                 // Field height:Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #293,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+       5: invokestatic  #297                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #299                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}
