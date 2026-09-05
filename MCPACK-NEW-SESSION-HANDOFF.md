@@ -6,6 +6,28 @@
 
 ### Continuation update - 2026-09-05
 
+Modifier evidence regeneration is delivered: trace and dependent decision/pin
+updates in `755fbd8`, inventory rebuild in `7cd7893`. The committed-source
+trace reproduction matched the pilot byte for byte. The trace changes only
+input identities and modifier-report entries; all structure reachability and
+template contents remain unchanged. The 429 family-decision substitutions and
+431 inventory substitutions are source hashes only. All 71 affected family,
+pool and modifier checks passed, with scoped Ruff/basedpyright passing after
+two narrow test-style corrections. Delivered refs were verified.
+
+Current trace SHA:
+`9bac83e23b19826a872a3d760ca44bdcf6e24b3ef9df3a2693c9737ec28f3a0d`.
+Current decisions SHA:
+`3ebb87bee8c663dc488b164b14a7f328d65fa17b4becb381aebc9c9db217de65`.
+Current inventory SHA:
+`9fdf722bfe1346e0747687760203281b2121cf344ae2e94fb314a83511aa7441`.
+The old instructions below to regenerate the modifier report are superseded.
+No selected packaged modifier remains marked untraced, but this does not close
+all provider hooks or family attributes. Continue the broader inventory gaps,
+including the 69 custom-generation roots and effective spawner/mob/loot sources.
+The working 452-group inventory remains incomplete; review and main merge are
+still required. Do not redo completed modifier source checks.
+
 Selected feature contributions are resolved in `bcacd6a`: the terminal
 configuration check covers 11 component types and 44 configured block IDs,
 with tree/root/state-provider implementation dispositions in
