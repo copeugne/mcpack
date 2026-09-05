@@ -32,6 +32,7 @@ if TYPE_CHECKING:
         "betterwitchhuts:",
         "mes:",
         "mss:",
+        "mns:",
     ],
 )
 def test_authored_designs_bind_roots_settings_and_missing_components(
@@ -61,6 +62,16 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         "mss:": ("mss:tree_", "mss:birch_river", "mss:cherry_river"),
     }.get(namespace, ())
     expected = {key for key in expected if not key.startswith(excluded_prefixes)}
+    if namespace == "mns:":
+        variants = [
+            member
+            for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
+            if str(row["family_id"]).startswith(namespace)
+            and len(cast("list[str]", row["structure_ids"])) > 1
+            for member in cast("list[str]", row["structure_ids"])
+        ]
+        assert len(members + variants) == len(set(members + variants)) == 52
+        expected -= set(variants)
     assert members
     assert set(members) == expected
     catalog = cast(
@@ -100,15 +111,24 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         identifier = str(row["family_id"])
         assert row["structure_ids"] == [identifier]
         definition = definitions[identifier]
-        if namespace == "mes:":
+        custom_keys = {
+            "mes:": {"allowed_terrain_height_range", "terrain_height_radius_check", "y_allowance"},
+            "mns:": set(definition)
+            - {
+                "type",
+                "start_height",
+                "project_start_to_heightmap",
+                "required_mods",
+                "target_biomes",
+                "target_biome_radius_check_blocks",
+                "cannot_spawn_in_liquid",
+                "start_pool",
+                "biomes",
+            },
+        }
+        if namespace in custom_keys:
             assert row["custom_generation_settings"] == {
-                key: definition[key]
-                for key in (
-                    "allowed_terrain_height_range",
-                    "terrain_height_radius_check",
-                    "y_allowance",
-                )
-                if key in definition
+                key: definition[key] for key in custom_keys[namespace] if key in definition
             }
         assert row["start_pool"] == definition.get("start_pool")
         if "start_pool" in definition:
@@ -464,7 +484,19 @@ def test_soaring_rivers_preserve_omitted_default_and_complete_namespace() -> Non
 @pytest.mark.parametrize(
     ("family", "prefix", "member_count", "template_count"),
     [
-        ("mns:very_small_ruins", ("mns:very_small",), 7, 6),
+        (
+            "mns:ruin_fragments",
+            (
+                "mns:very_small",
+                "mns:large_blackstone_",
+                "mns:large_nether_brick",
+                "mns:leafy_rubble",
+                "mns:medium_blackstone",
+                "mns:small_nether_brick",
+            ),
+            13,
+            12,
+        ),
         ("mns:bridge", ("mns:bridge_",), 6, 6),
         ("mns:circle_ruin", ("mns:circle_",), 2, 2),
         ("mns:medium_house", ("mns:medium_house",), 2, 2),
@@ -544,12 +576,12 @@ def test_nether_variants_preserve_definitions_and_template_identity(
             variant["template_size_xyz"] == contents[str(variant["template"])]["template_size_xyz"]
         )
     assert len({str(row["template"]) for row in variants.values()}) == template_count
-    if family in {"mns:bridge", "mns:medium_fungus"}:
+    if family in {"mns:bridge", "mns:medium_fungus", "mns:ruin_fragments"}:
         for variant in variants.values():
             content = contents[str(variant["template"])]
             assert content["authored_entities"] == content["loot_references"] == []
             assert content["spawner_blocks"] == content["generation_markers"] == []
-    if family != "mns:very_small_ruins":
+    if family != "mns:ruin_fragments":
         return
     assert group["duplicate_definition_ids"] == [
         "mns:very_small_blackstone",
