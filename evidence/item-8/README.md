@@ -1051,3 +1051,40 @@ revision, SHA-256:
 `bf56126ef196c73126ab1da8880b4027c5f8c98b3b2e6331df5ebbc47a182e31`.
 Only both mining families' grouping decisions, intended hostility and enemy
 attribution change, plus the decision input hash. All other fields are preserved.
+
+## BetterEnd lake-family reconciliation (2026-09-05)
+
+Five registered lake roots now belong to `betterend:end_lake`, with all types,
+biome constraints and procedural implementations retained as variants. Normal
+and rare lake classes inherit EndLakeStructure and only forward construction and
+return their own type. The base generator creates EndLakePiece. Both megalake
+classes create LakePiece with different size parameters and terrain checks.
+They remain different generation algorithms inside one lake-formation family,
+not five independent families merely because five types are registered.
+
+Registration constructor handles are bound through the preserved verbose
+EndStructures bootstrap table. The existing family-decision test now checks
+those handles, all five packaged definitions, source hashes, inheritance and
+piece allocation. BetterEnd coverage also checks all 14 roots exactly once
+across singleton and grouped records. No new extraction or runtime is needed.
+
+This family relationship does not establish material composition, mob/loot
+absence, effective placement, actual dimensions or frequency. Piece-content
+interpretation and remaining attributes stay open. Normal/rare names are not
+observed frequency measurements. The working total becomes 422 groups with
+887 registered roots. Mountain relationships remain unresolved.
+
+Decision SHA-256:
+`55477e77db70a5504032cd850757f77eec038789e41df0a9d126edad54b27692`.
+The initial two focused BetterEnd cases passed; lint requested assertion/quote
+formatting and one line wrap, corrected without changing behavior.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-lakes.json
+```
+
+All 70 affected tests and scoped Ruff/Basedpyright checks passed. The source
+capture remains the already delivered `1f7f8fe` increment.
