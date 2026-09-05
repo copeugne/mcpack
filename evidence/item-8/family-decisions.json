@@ -22603,6 +22603,24 @@
           "classification": "Buried chest target searched downward from OCEAN_FLOOR_WG.",
           "basis": "At chunk-local X/Z 9/9, selects a position above default sandstone, stone, andesite, granite or diorite; returns without placement when no match is found above minimum build height.",
           "scope": "Vanilla placement rule, not universal burial depth or guaranteed chest generation. Neighbor infill can extend outside the one-block piece box."
+        },
+        "approximate_footprint": {
+          "chest_target_xz_blocks": [
+            1,
+            1
+          ],
+          "direct_write_envelope_xz_blocks": [
+            3,
+            3
+          ],
+          "basis": "One chest target and potential infill at its four horizontal neighbors; these positions span X/Z -1 through 1 relative to the target.",
+          "scope": "Conservative envelope of direct generator writes, not nine occupied blocks, a world observation or a guarantee of chest placement. Indirect physics effects and retained-mod changes are outside this bound."
+        },
+        "approximate_vertical_size": {
+          "chest_target_blocks": 1,
+          "direct_write_envelope_blocks": 2,
+          "basis": "The chest target is at relative Y 0; infill can affect horizontal neighbors and the neighbor at Y 1. The neighbor below is the already-verified solid support, so it cannot pass the air/liquid replacement condition.",
+          "scope": "Direct writes span relative Y 0 through 1 when placement is attempted. Actual changed blocks can be fewer or none; indirect physics effects and retained-mod changes are excluded."
         }
       }
     },
