@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Seven Seas provider scope now passes: five roots, ten pools, 36 templates and
+its sole logging-only class are accounted for. Preserve the already recorded
+small_yacht_spawner_3 missing component; no baseline repair or new family.
+Focused test and scoped static checks pass after the NBT-extension and indentation
+corrections. Counts: 25 dispositions, 111 remaining. Next Towns and Towers:
+entry source delivered in 1608481; use resource_identity to avoid counting
+structure tags as roots, and reconcile its Waystones pack/disconnected resources.
+
 Village Taverns full-provider scope now passes: all fifteen top-level classes,
 bundled Tiny Config entry, parent/nested files and five component links are
 accounted for. The focused test and scoped static checks pass after recognizing

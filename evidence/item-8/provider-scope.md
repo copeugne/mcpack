@@ -434,3 +434,35 @@ formatting. Source captures reproduced and are durably delivered. Explicit
 provider dispositions now cover 24 of 136, with 112 remaining to reconcile.
 Do not repeat Tavern block, trade or configuration-source investigation absent
 a concrete new contradictory finding.
+
+## Seven Seas structure provider
+
+`DungeonsAriseSevenSeas-1.21.x-1.0.4-neoforge.jar` contributes five existing
+structure roots, ten pools and 36 templates. Its only class has an empty
+constructor and logger initialization, captured in seven-seas-entry. Complete
+archive accounting identifies only that class, metadata, templates, root/set/pool
+definitions, loot tables and biome tags. It has no separate feature or injected
+code-generation route. All packaged pools and templates are linked to the five
+existing dungeons_arise_seven_seas root candidates in the preserved inventory.
+
+One known graph failure remains explicitly preserved:
+small_yacht/small_yacht_spawners references
+`dungeons_arise_seven_seas:small_yacht/small_yacht_spawner_3`, which is missing.
+The packaged element has weight 1, uses minecraft:single_pool_element and empty
+processors. The existing small_yacht trace records the same missing template.
+Disposition: missing referenced component, not another family or permission to
+invent a replacement. Keep the effect on assembled content unresolved until the
+applicable family evidence establishes it. Do not change the frozen mod stack.
+No packaged template or pool is left without a candidate link.
+
+```sh
+uv run pytest -q tests/item8/test_seven_seas_provider_scope.py
+```
+
+One case passes, as do scoped Ruff and Basedpyright. The first check exposed an
+incorrect use of the JSON extension default for NBT identities; the test now
+passes the existing helper's NBT extension explicitly. An indentation mistake
+during that correction was fixed before the passing run. No production decoder
+or graph behavior changed. Explicit dispositions now cover 25 of 136 providers;
+111 remain to reconcile. Towns and Towers' entry source is delivered in 1608481,
+but its optional pack and disconnected resources still need dispositions.
