@@ -468,9 +468,13 @@ def test_mega_ship_variants_preserve_definitions_modules_and_mes_coverage() -> N
          {"mvs:mushroom_pond", "mvs:pond"}),
         ("mvs:campsite", ["mvs:campsite", "mvs:fire_camp", "mvs:horse_campsite"], 3,
          {"mvs:abandoned", "mvs:general", "mvs:houses_common", "mvs:houses_uncommon"}),
+        ("mvs:floating_islands", ["mvs:floating_islands", "mvs:large_floating_island"], 5,
+         {"mvs:houses_common", "mvs:houses_rare", "mvs:houses_uncommon",
+          "minecraft:chests/shipwreck_treasure", "minecraft:chests/stronghold_crossing",
+          "minecraft:chests/stronghold_library"}),
     ],
 )
-def test_voyager_rocks_ponds_and_camps_preserve_variant_content(
+def test_voyager_related_layouts_preserve_variant_content(
     family: str, members: list[str], template_count: int, loot: set[str]
 ) -> None:
     decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
@@ -507,15 +511,21 @@ def test_voyager_rocks_ponds_and_camps_preserve_variant_content(
         sizes = cast("dict[str, JsonValue]", variant["templates"])
         assert trace["templates"] == sorted(sizes)
         templates.update(sizes)
+        entities: set[str] = set()
         for template, size in sizes.items():
             content = traces["template_contents"][template]
             assert content["template_size_xyz"] == size
-            for field in ("authored_entities", "unresolved_entities", "spawner_blocks",
-                          "generation_markers"):
+            entities.update(str(e["id"]) for e in cast(
+                "list[dict[str, JsonValue]]", content["authored_entities"]
+            ))
+            for field in ("unresolved_entities", "spawner_blocks", "generation_markers"):
                 assert content[field] == []
             loot_found.update(str(r["value"]) for r in cast(
                 "list[dict[str, JsonValue]]", content["loot_references"]
             ))
+        assert entities == (
+            {"minecraft:villager"} if identifier == "mvs:large_floating_island" else set()
+        )
     assert len(templates) == template_count
     assert loot_found == loot
     if family == "mvs:campsite":

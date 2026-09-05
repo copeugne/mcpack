@@ -10419,26 +10419,87 @@
     },
     {
       "family_id": "mvs:floating_islands",
-      "name": "Moog's Voyager Structures Floating Islands",
+      "name": "Moog's Voyager Structures Floating Island",
       "structure_ids": [
-        "mvs:floating_islands"
+        "mvs:floating_islands",
+        "mvs:large_floating_island"
       ],
-      "rationale": "Floating island layout with start-height offset 60 and no terrain adaptation. Relationship to large_floating_island remains open. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
-      "start_pool": "mvs:nature/floating_islands",
-      "generation_settings": {
-        "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
+      "rationale": "Two airborne island layouts form one family. Full definitions differ only in start pool: both use WORLD_SURFACE_WG plus 60, size 1, no terrain adaptation and empty spawn overrides. The nature layout has no authored entities and uses MVS house loot. The large-house layout also reaches three shared villager templates and uses vanilla shipwreck/stronghold loot. Preserve habitation and reward differences as variants of the same elevated island encounter, not independent families for shared villagers. Resolved content contains no spawners or generation markers. Template dimensions do not establish complete assembled extents or visual discovery distance.",
+      "common_generation_definition": {
+        "biomes": "#c:is_overworld",
+        "project_start_to_heightmap": "WORLD_SURFACE_WG",
+        "size": 1,
+        "spawn_overrides": {},
         "start_height": {
           "absolute": 60
         },
-        "project_start_to_heightmap": "WORLD_SURFACE_WG"
-      },
-      "custom_generation_settings": {
-        "size": 1,
-        "spawn_overrides": {},
         "step": "surface_structures",
-        "terrain_adaptation": "none"
+        "terrain_adaptation": "none",
+        "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
       },
-      "missing_components": [],
+      "variants": {
+        "mvs:floating_islands": {
+          "definition": {
+            "biomes": "#c:is_overworld",
+            "project_start_to_heightmap": "WORLD_SURFACE_WG",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 60
+            },
+            "start_pool": "mvs:nature/floating_islands",
+            "step": "surface_structures",
+            "terrain_adaptation": "none",
+            "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+          },
+          "templates": {
+            "mvs:nature/floating_islands": [
+              26,
+              19,
+              30
+            ]
+          },
+          "missing_components": []
+        },
+        "mvs:large_floating_island": {
+          "definition": {
+            "biomes": "#c:is_overworld",
+            "project_start_to_heightmap": "WORLD_SURFACE_WG",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 60
+            },
+            "start_pool": "mvs:houses/large_floating_island/start_pool",
+            "step": "surface_structures",
+            "terrain_adaptation": "none",
+            "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+          },
+          "templates": {
+            "minecraft:village/plains/villagers/baby": [
+              1,
+              2,
+              1
+            ],
+            "minecraft:village/plains/villagers/nitwit": [
+              1,
+              3,
+              1
+            ],
+            "minecraft:village/plains/villagers/unemployed": [
+              1,
+              3,
+              1
+            ],
+            "mvs:houses/large_floating_island": [
+              26,
+              28,
+              23
+            ]
+          },
+          "missing_components": []
+        }
+      },
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -10682,34 +10743,6 @@
         "step": "surface_structures",
         "terrain_adaptation": "beard_thin",
         "terrain_height_radius_check": 1
-      },
-      "missing_components": [],
-      "evidence": {
-        "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-        "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
-      }
-    },
-    {
-      "family_id": "mvs:large_floating_island",
-      "name": "Moog's Voyager Structures Large Floating Island",
-      "structure_ids": [
-        "mvs:large_floating_island"
-      ],
-      "rationale": "Floating island house with vanilla loot and shared villager pieces, offset 60 and no terrain adaptation. Relationship to floating_islands remains open. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
-      "start_pool": "mvs:houses/large_floating_island/start_pool",
-      "generation_settings": {
-        "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
-        "start_height": {
-          "absolute": 60
-        },
-        "project_start_to_heightmap": "WORLD_SURFACE_WG"
-      },
-      "custom_generation_settings": {
-        "size": 1,
-        "spawn_overrides": {},
-        "step": "surface_structures",
-        "terrain_adaptation": "none"
       },
       "missing_components": [],
       "evidence": {
