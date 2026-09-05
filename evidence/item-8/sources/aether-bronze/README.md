@@ -36,3 +36,28 @@ loot constants and direct encounter-producing blocks where required. Reuse
 these captures. No new measurement system or runtime acceptance claim.
 
 Scoped extractor Ruff and Basedpyright passed before capture.
+
+## Selected component catalog binding
+
+The focused catalog test binds the six named template candidates to the frozen
+Aether archive. Sizes (X, Y, Z) are boss_room (16, 14, 16), chest_room (12, 8, 12),
+end_corridor (6, 8, 5), entrance (6, 8, 1), lobby (12, 12, 12), and square_tunnel
+(6, 6, 6). These are component sizes, not assembled family dimensions.
+The boss template has one authored aether:slider and a treasure chest with a
+Treasure Chest marker. The chest room has a Chest marker; the other four
+candidates have no entity or block-entity entries. These template inputs do
+not establish effective processor results, successful placement or populations.
+
+The selected definition sets maxrooms=8, aboveBottom=32, belowTop=24 and twelve
+piece-bound spawn overrides with empty lists. This is a natural-spawn override
+input, not proof of no enemies or no external spawn modifications. Its selected
+processor lists are aether:bronze_boss_room, aether:bronze_room and
+aether:bronze_tunnel. The test binds processor type order, including custom
+boss_room and double_drops processors. Their behavior remains a direct source
+dependency, alongside the inherited piece writer and marker-generated blocks.
+
+```sh
+uv run pytest -q tests/item8/test_aether_bronze_components.py
+```
+
+Both focused tests and scoped Ruff/Basedpyright passed. No world measurement.
