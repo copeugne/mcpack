@@ -45,6 +45,12 @@ ARCHIVES = frozenset(
         "supplementaries-neoforge-1.21.1-3.6.8.jar",
         "bettervillage-neoforge-1.21.1-3.3.1.jar",
         "regions-unexplored-0.6.1-neoforge-21.1.jar",
+        "YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar",
+        "YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar",
+        "YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar",
+        "YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar",
+        "YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar",
+        "YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar",
     }
 )
 GENERATION_PREFIXES = (
@@ -130,6 +136,22 @@ CLASSES = (
     "dev/worldgen/lithostitched/worldgen/poolelement/DelegatingPoolElement.class",
     "dev/worldgen/lithostitched/worldgen/modifier/AddTemplatePoolElementsModifier.class",
     "DisableVanillaMineshaftsMixin.class",
+    "com/yungnickyoung/minecraft/betterdeserttemples/mixin/DisableVanillaPyramidsMixin.class",
+    "com/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModuleNeoForge.class",
+    "com/yungnickyoung/minecraft/betterdeserttemples/config/ConfigGeneralNeoForge.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/mixin/DisableVanillaJungleTempleMixin.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/module/ConfigModuleNeoForge.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/config/ConfigGeneralNeoForge.class",
+    "com/yungnickyoung/minecraft/betterfortresses/mixin/DisableVanillaFortressesMixin.class",
+    "com/yungnickyoung/minecraft/betterfortresses/module/ConfigModuleNeoForge.class",
+    "com/yungnickyoung/minecraft/betterfortresses/config/ConfigGeneralNeoForge.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/mixin/DisableVanillaMonumentsMixin.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/module/ConfigModuleNeoForge.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/config/ConfigGeneralForge.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/mixin/DisableVanillaStrongholdsMixin.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/mixin/DisableVanillaWitchHutsMixin.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/module/ConfigModuleNeoForge.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/config/ConfigGeneralNeoForge.class",
     "LocateVanillaMineshaftCommandMixin.class",
     "dev/worldgen/lithostitched/impl/worldgen/modifier/ModifierManager.class",
     "dev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier.class",
@@ -216,13 +238,16 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
         destination = output / source.name
         destination.mkdir()
         with ZipFile(source.path) as archive:
-            if source.name == "YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar":
+            if source.name.startswith("YungsBetter"):
                 metadata = {
                     name: {
                         "sha256": hashlib.sha256(archive.read(name)).hexdigest(),
                         "text": archive.read(name).decode("utf-8"),
                     }
-                    for name in ("bettermineshafts.mixins.json", "META-INF/neoforge.mods.toml")
+                    for name in (
+                        *sorted(n for n in archive.namelist() if n.endswith(".mixins.json")),
+                        "META-INF/neoforge.mods.toml",
+                    )
                 }
                 _ = (destination / "mixin-metadata.json").write_text(
                     json.dumps(metadata, indent=2) + "\n", encoding="utf-8"

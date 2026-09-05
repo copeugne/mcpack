@@ -6,6 +6,52 @@
 
 ### Continuation update - 2026-09-05
 
+Six additional vanilla normal-generation dispositions are resolved in `f1f4649`,
+using suppression sources delivered in `40922f3`: desert pyramid, jungle pyramid,
+fortress, ocean monument, stronghold and swamp hut. Five frozen settings enable
+their cancellation hooks; the stronghold hook is unconditional after type match.
+All 69 affected tests and scoped checks pass. Inventory SHA:
+`385100c3e7f984662e7e9eaad598d4b858553a13c5965caabb29f764b2d61816`.
+Decision SHA: `216306ee257892d8bb21d0b25a9b0ce797dbaa1fa00c9f6b6a449168783a7167`.
+Exact source selections, checks and boundaries are recorded in
+`evidence/item-8/sources/yung-suppression.md`. Do not dissect these inactive vanilla
+generators further merely to fill descriptions. Keep registry presence, compatible
+biomes and existing vanilla source descriptions separate from active generation.
+Next verify Integrated Villages' Disable Vanilla Villages=true hook and IDAS's
+Disable Vanilla Desert Pyramid=true hook. Their frozen labels were inspected,
+but cancellation behavior has not yet been bound. Continue other provider and
+attribute gaps afterward. No new runtime measurement system was added. Item 8
+remains incomplete, including final Codex review and verified main merge.
+
+Village Taverns parent attribution is delivered in `1e7dd7c`. The existing
+family records now link 25 reachable tavern templates to 66 registry roots in
+22 working groups, including IDAS castle. Twenty-six conditioned modifiers are
+included in the preserved trace; the CTOV dark-forest tavern has no traced parent
+despite its registered target pool. Do not treat that case as a missing pool or
+count components as new families. All 63 affected tests and scoped checks pass.
+Inventory SHA: `e0fddbb286ce87c8a23285d7af33eac42563db754f8ad833d1826080d4c50327`.
+Decision SHA: `f74b70a63144b337d3483dba03e50a3193bcf82b06eeeb1112d3f6898e7c3236`.
+Commands and scope are in the final Village Taverns section of
+`evidence/item-8/README.md`. This reuses existing catalog/trace evidence and the
+builder; no new measurement system or general relationship framework was added.
+Continue remaining provider coverage and family attributes. CTOV's final family
+relationships, other non-registry content and effective generation remain open.
+Item 8 is incomplete, with final review and main merge still pending.
+
+Vanilla mineshaft normal-generation suppression is explicit for both registered
+roots in `9e8f032`. Existing configuration, binding code and required mixin
+metadata support the disposition; no vanilla piece extraction or new server
+measurement was needed. All 62 affected tests and scoped checks pass. Inventory:
+`3ac3368b6de3d939f9ac78d117eb0397bbe0c2092967b72e71b6d2b4223d13f3`.
+Decision SHA: `303874189f6806bc565d51e5cc234c2b57279cc7c621b161646de5c098400c23`.
+Commands are in `evidence/item-8/sources/mineshafts-code/README.md`.
+Keep registered IDs and biome compatibility despite suppression; command placement
+and pre-existing worlds are outside the normal-generation claim. Prior vanilla
+mineshaft dissection instructions are superseded. Prioritize remaining provider
+coverage and required attributes; inspect deeper code only for a concrete unresolved
+field. The user requested clearer progress explanations and avoidance of excessive
+generator detail. Item 8 remains incomplete and its review/main-merge gate is open.
+
 Jungle temple source is delivered in `8397ebc`, and nine-attribute integration
 in `b4c5e6f`. The jungle_pyramid registry root and jungle_temple generator type
 remain one family. Both chest and dispenser loot paths are recorded, with saved

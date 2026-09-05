@@ -3,6 +3,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+import tomllib
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
@@ -15,6 +16,61 @@ from mcpack_evidence.item8_resource_selection import runtime_mod_ids
 
 if TYPE_CHECKING:
     from pydantic import JsonValue
+
+
+def test_tavern_components_link_to_every_reachable_parent_family() -> None:
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    trace_path = "evidence/item-8/sources/pool-traces-content.json.gz"
+    traces = cast("dict[str, JsonValue]", json.loads(gzip.decompress(
+        Path(trace_path).read_bytes()
+    )))
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ).read_bytes())))
+    resources = [r for r in catalog["resources"]
+                 if "/lithostitched/worldgen_modifier/" in str(r["path"])
+                 and (r["archive"] == "village_taverns-neoforge-1.1.5+1.21.1.jar"
+                      or "/worldgen_modifier/village_taverns/" in str(r["path"]))]
+    templates: set[str] = set()
+    dispositions = cast("dict[str, JsonValue]", traces["pool_modifiers"])
+    included = {str(r["sha256"]) for r in cast(
+        "list[dict[str, JsonValue]]", dispositions["dispositions"]
+    ) if r["status"] == "included in potential pool reachability"}
+    for resource in resources:
+        assert resource["sha256"] in included
+        document = cast("dict[str, JsonValue]", resource["document"])
+        assert document["neoforge:conditions"] == [
+            {"type": "neoforge:mod_loaded", "modid": "village_taverns"}
+        ]
+        elements = cast("list[dict[str, JsonValue]]", document["elements"])
+        assert len(elements) == 1
+        element = cast("dict[str, JsonValue]", elements[0]["element"])
+        assert element["element_type"] == "lithostitched:limited"
+        templates.add(str(cast("dict[str, JsonValue]", element["delegate"])["location"]))
+    assert len(resources) == len(templates) == 26
+    structure_traces = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
+    expected = {rid: sorted(templates & set(cast("list[str]", row["templates"])))
+                for rid, row in structure_traces.items()}
+    expected = {rid: ts for rid, ts in expected.items() if ts}
+    actual: dict[str, list[str]] = {}
+    for group in decisions["groups"]:
+        links = cast("dict[str, list[str]]", group.get("village_taverns_templates", {}))
+        assert set(links) <= set(cast("list[str]", group["structure_ids"]))
+        assert not actual.keys() & links.keys()
+        actual.update(links)
+        if links:
+            assert cast("dict[str, str]", group["evidence"])[trace_path] == (
+                hashlib.sha256(Path(trace_path).read_bytes()).hexdigest()
+            )
+    assert actual == expected
+    assert len(actual) == 66
+    assert sum("village_taverns_templates" in g for g in decisions["groups"]) == 22
+    assert templates - {t for ts in actual.values() for t in ts} == {
+        "ctov:village/dark_forest/jobsite/tavern"
+    }
+    assert actual["idas:castle"] == ["village_taverns:village/plains/tavern"]
 
 
 def test_better_village_contributes_templates_without_an_extra_family() -> None:
@@ -1576,6 +1632,51 @@ def test_mineshaft_group_covers_its_runtime_variants_and_preserved_specialized_g
             hashlib.sha256((code_root / row["disassembly"]).read_bytes()).hexdigest()
             == row["disassembly_sha256"]
         )
+
+
+def test_vanilla_mineshaft_suppression_binds_both_roots_to_the_frozen_hook() -> None:
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    group = next(g for g in decisions["groups"] if g["family_id"] == "minecraft:mineshaft")
+    for source, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256(Path(source).read_bytes()).hexdigest() == digest
+    config = tomllib.loads(Path(
+        "evidence/item-6/frozen/config/bettermineshafts-neoforge-1_21.toml"
+    ).read_text())
+    assert config["YUNG's Better Mineshafts"]["Disable Vanilla Mineshafts"] is True
+    root = Path("evidence/item-8/sources/mineshafts-code")
+    code: dict[str, str] = {}
+    for entry in cast("list[dict[str, str]]", json.loads((root / "identities.json").read_bytes())):
+        raw = (root / entry["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == entry["disassembly_sha256"]
+        code[entry["class"].rsplit("/", 1)[1]] = raw.decode()
+    hook = code["DisableVanillaMineshaftsMixin.class"]
+    assert 'method=["tryGenerateStructure"]' in hook
+    assert 'value="HEAD"' in hook
+    assert "cancellable=true" in hook
+    assert "StructureType.MINESHAFT:" in hook
+    assert "ConfigModule.disableVanillaMineshafts:Z" in hook
+    assert "32: iconst_0" in hook
+    assert "CallbackInfoReturnable.setReturnValue:" in hook
+    assert "ConfigModule.disableVanillaMineshafts:Z" in code["ConfigModuleNeoForge.class"]
+    metadata = cast("dict[str, dict[str, str]]", json.loads((
+        root / "YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar/mixin-metadata.json"
+    ).read_bytes()))
+    for member in metadata.values():
+        assert hashlib.sha256(member["text"].encode()).hexdigest() == member["sha256"]
+    mixins = cast("dict[str, JsonValue]", json.loads(
+        metadata["bettermineshafts.mixins.json"]["text"]
+    ))
+    assert mixins["required"] is True
+    assert "DisableVanillaMineshaftsMixin" in cast("list[str]", mixins["mixins"])
+    assert ('config = "bettermineshafts.mixins.json"'
+            in metadata["META-INF/neoforge.mods.toml"]["text"])
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    assert set(variants) == {"minecraft:mineshaft", "minecraft:mineshaft_mesa"}
+    for variant in variants.values():
+        assert cast("dict[str, JsonValue]", variant["definition"])["type"] == "minecraft:mineshaft"
+        assert cast("dict[str, JsonValue]", variant["normal_generation"])["status"] == "SUPPRESSED"
 
 
 def test_ctov_size_decisions_exactly_cover_source_proven_variant_groups() -> None:
