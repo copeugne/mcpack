@@ -1,0 +1,366 @@
+Compiled from "DragonRespawnStage.java"
+final class com.yungnickyoung.minecraft.betterendisland.world.DragonRespawnStage$3 extends com.yungnickyoung.minecraft.betterendisland.world.DragonRespawnStage {
+  private com.yungnickyoung.minecraft.betterendisland.world.DragonRespawnStage$3(java.lang.String, int, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: aload_3
+       4: invokespecial #1                  // Method com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage."<init>":(Ljava/lang/String;ILjava/lang/String;)V
+       7: return
+
+  public void tick(net.minecraft.server.level.ServerLevel, net.minecraft.world.level.dimension.end.EndDragonFight, java.util.List<net.minecraft.world.entity.boss.enderdragon.EndCrystal>, int);
+    Code:
+       0: bipush        40
+       2: istore        5
+       4: iload         4
+       6: iload         5
+       8: irem
+       9: ifne          16
+      12: iconst_1
+      13: goto          17
+      16: iconst_0
+      17: istore        6
+      19: iload         4
+      21: iload         5
+      23: irem
+      24: bipush        39
+      26: if_icmpne     33
+      29: iconst_1
+      30: goto          34
+      33: iconst_0
+      34: istore        7
+      36: iload         6
+      38: ifne          46
+      41: iload         7
+      43: ifeq          495
+      46: aload_1
+      47: invokestatic  #7                  // Method net/minecraft/world/level/levelgen/feature/SpikeFeature.getSpikesForLevel:(Lnet/minecraft/world/level/WorldGenLevel;)Ljava/util/List;
+      50: astore        8
+      52: iload         4
+      54: iload         5
+      56: idiv
+      57: istore        9
+      59: iload         9
+      61: aload         8
+      63: invokeinterface #13,  1           // InterfaceMethod java/util/List.size:()I
+      68: if_icmpge     478
+      71: aload         8
+      73: iload         9
+      75: invokeinterface #19,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      80: checkcast     #23                 // class net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike
+      83: astore        10
+      85: aload         10
+      87: invokevirtual #25                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getHeight:()I
+      90: bipush        73
+      92: isub
+      93: iconst_3
+      94: idiv
+      95: istore        11
+      97: iload         11
+      99: bipush        10
+     101: if_icmpne     108
+     104: bipush        9
+     106: istore        11
+     108: aload         10
+     110: checkcast     #28                 // class com/yungnickyoung/minecraft/betterendisland/world/IEndSpike
+     113: iload         11
+     115: invokeinterface #30,  2           // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/world/IEndSpike.setCrystalYOffsetFromPillarHeight:(I)V
+     120: getstatic     #34                 // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.betterEnd:Z
+     123: ifeq          131
+     126: bipush        70
+     128: goto          133
+     131: bipush        60
+     133: istore        12
+     135: iload         12
+     137: aload         10
+     139: checkcast     #28                 // class com/yungnickyoung/minecraft/betterendisland/world/IEndSpike
+     142: invokeinterface #40,  1           // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/world/IEndSpike.getCrystalYOffset:()I
+     147: iadd
+     148: iconst_1
+     149: isub
+     150: istore        13
+     152: iload         6
+     154: ifeq          217
+     157: aload_3
+     158: invokeinterface #43,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     163: astore        14
+     165: aload         14
+     167: invokeinterface #47,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     172: ifeq          214
+     175: aload         14
+     177: invokeinterface #53,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     182: checkcast     #57                 // class net/minecraft/world/entity/boss/enderdragon/EndCrystal
+     185: astore        15
+     187: aload         15
+     189: new           #59                 // class net/minecraft/core/BlockPos
+     192: dup
+     193: aload         10
+     195: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterX:()I
+     198: iload         13
+     200: aload         10
+     202: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterZ:()I
+     205: invokespecial #67                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     208: invokevirtual #70                 // Method net/minecraft/world/entity/boss/enderdragon/EndCrystal.setBeamTarget:(Lnet/minecraft/core/BlockPos;)V
+     211: goto          165
+     214: goto          475
+     217: aload_1
+     218: aconst_null
+     219: aload         10
+     221: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterX:()I
+     224: i2f
+     225: ldc           #74                 // float 0.5f
+     227: fadd
+     228: f2d
+     229: iload         13
+     231: i2d
+     232: aload         10
+     234: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterZ:()I
+     237: i2f
+     238: ldc           #74                 // float 0.5f
+     240: fadd
+     241: f2d
+     242: ldc           #75                 // float 5.0f
+     244: getstatic     #76                 // Field net/minecraft/world/level/Level$ExplosionInteraction.BLOCK:Lnet/minecraft/world/level/Level$ExplosionInteraction;
+     247: invokevirtual #82                 // Method net/minecraft/server/level/ServerLevel.explode:(Lnet/minecraft/world/entity/Entity;DDDFLnet/minecraft/world/level/Level$ExplosionInteraction;)Lnet/minecraft/world/level/Explosion;
+     250: pop
+     251: aload_1
+     252: invokevirtual #88                 // Method net/minecraft/server/level/ServerLevel.players:()Ljava/util/List;
+     255: aload_1
+     256: aload         10
+     258: iload         13
+     260: invokedynamic #92,  0             // InvokeDynamic #0:accept:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;I)Ljava/util/function/Consumer;
+     265: invokeinterface #96,  2           // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+     270: bipush        11
+     272: istore        14
+     274: getstatic     #34                 // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.betterEnd:Z
+     277: ifeq          285
+     280: bipush        40
+     282: goto          287
+     285: bipush        30
+     287: istore        15
+     289: new           #59                 // class net/minecraft/core/BlockPos
+     292: dup
+     293: aload         10
+     295: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterX:()I
+     298: iload         14
+     300: isub
+     301: aload         10
+     303: invokevirtual #25                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getHeight:()I
+     306: iload         15
+     308: isub
+     309: aload         10
+     311: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterZ:()I
+     314: iload         14
+     316: isub
+     317: invokespecial #67                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     320: new           #59                 // class net/minecraft/core/BlockPos
+     323: dup
+     324: aload         10
+     326: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterX:()I
+     329: iload         14
+     331: iadd
+     332: aload         10
+     334: invokevirtual #25                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getHeight:()I
+     337: iload         15
+     339: iadd
+     340: aload         10
+     342: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterZ:()I
+     345: iload         14
+     347: iadd
+     348: invokespecial #67                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     351: invokestatic  #100                // Method net/minecraft/core/BlockPos.betweenClosed:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Ljava/lang/Iterable;
+     354: invokeinterface #104,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+     359: astore        16
+     361: aload         16
+     363: invokeinterface #47,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     368: ifeq          409
+     371: aload         16
+     373: invokeinterface #53,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     378: checkcast     #59                 // class net/minecraft/core/BlockPos
+     381: astore        17
+     383: aload_1
+     384: aload         17
+     386: invokevirtual #107                // Method net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     389: getstatic     #111                // Field net/minecraft/world/level/block/Blocks.END_STONE:Lnet/minecraft/world/level/block/Block;
+     392: invokevirtual #117                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     395: ifne          406
+     398: aload_1
+     399: aload         17
+     401: iconst_0
+     402: invokevirtual #123                // Method net/minecraft/server/level/ServerLevel.removeBlock:(Lnet/minecraft/core/BlockPos;Z)Z
+     405: pop
+     406: goto          361
+     409: new           #127                // class net/minecraft/world/level/levelgen/feature/configurations/SpikeConfiguration
+     412: dup
+     413: iconst_1
+     414: aload         10
+     416: invokestatic  #129                // Method com/google/common/collect/ImmutableList.of:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList;
+     419: new           #59                 // class net/minecraft/core/BlockPos
+     422: dup
+     423: iconst_0
+     424: sipush        128
+     427: iconst_0
+     428: invokespecial #67                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     431: invokespecial #135                // Method net/minecraft/world/level/levelgen/feature/configurations/SpikeConfiguration."<init>":(ZLjava/util/List;Lnet/minecraft/core/BlockPos;)V
+     434: astore        16
+     436: getstatic     #138                // Field net/minecraft/world/level/levelgen/feature/Feature.END_SPIKE:Lnet/minecraft/world/level/levelgen/feature/Feature;
+     439: aload         16
+     441: aload_1
+     442: aload_1
+     443: invokevirtual #144                // Method net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+     446: invokevirtual #148                // Method net/minecraft/server/level/ServerChunkCache.getGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+     449: invokestatic  #154                // InterfaceMethod net/minecraft/util/RandomSource.create:()Lnet/minecraft/util/RandomSource;
+     452: new           #59                 // class net/minecraft/core/BlockPos
+     455: dup
+     456: aload         10
+     458: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterX:()I
+     461: bipush        45
+     463: aload         10
+     465: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterZ:()I
+     468: invokespecial #67                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     471: invokevirtual #160                // Method net/minecraft/world/level/levelgen/feature/Feature.place:(Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Z
+     474: pop
+     475: goto          495
+     478: iload         6
+     480: ifeq          495
+     483: aload_2
+     484: checkcast     #164                // class com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight
+     487: getstatic     #166                // Field SUMMONING_DRAGON:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+     490: invokeinterface #172,  2          // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight.advanceRespawnStage:(Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;)V
+     495: return
+
+  private static void lambda$tick$0(net.minecraft.server.level.ServerLevel, net.minecraft.world.level.levelgen.feature.SpikeFeature$EndSpike, int, net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: aload_0
+       1: aload_3
+       2: getstatic     #176                // Field net/minecraft/core/particles/ParticleTypes.EXPLOSION_EMITTER:Lnet/minecraft/core/particles/SimpleParticleType;
+       5: iconst_1
+       6: aload_1
+       7: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterX:()I
+      10: i2f
+      11: ldc           #75                 // float 5.0f
+      13: fsub
+      14: f2d
+      15: iload_2
+      16: i2d
+      17: aload_1
+      18: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterZ:()I
+      21: i2f
+      22: ldc           #75                 // float 5.0f
+      24: fsub
+      25: f2d
+      26: iconst_1
+      27: dconst_0
+      28: dconst_0
+      29: dconst_0
+      30: dconst_0
+      31: invokevirtual #182                // Method net/minecraft/server/level/ServerLevel.sendParticles:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/particles/ParticleOptions;ZDDDIDDDD)Z
+      34: pop
+      35: aload_0
+      36: aload_3
+      37: getstatic     #176                // Field net/minecraft/core/particles/ParticleTypes.EXPLOSION_EMITTER:Lnet/minecraft/core/particles/SimpleParticleType;
+      40: iconst_1
+      41: aload_1
+      42: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterX:()I
+      45: i2f
+      46: ldc           #75                 // float 5.0f
+      48: fsub
+      49: f2d
+      50: iload_2
+      51: i2d
+      52: aload_1
+      53: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterZ:()I
+      56: i2f
+      57: ldc           #75                 // float 5.0f
+      59: fadd
+      60: f2d
+      61: iconst_1
+      62: dconst_0
+      63: dconst_0
+      64: dconst_0
+      65: dconst_0
+      66: invokevirtual #182                // Method net/minecraft/server/level/ServerLevel.sendParticles:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/particles/ParticleOptions;ZDDDIDDDD)Z
+      69: pop
+      70: aload_0
+      71: aload_3
+      72: getstatic     #176                // Field net/minecraft/core/particles/ParticleTypes.EXPLOSION_EMITTER:Lnet/minecraft/core/particles/SimpleParticleType;
+      75: iconst_1
+      76: aload_1
+      77: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterX:()I
+      80: i2f
+      81: ldc           #75                 // float 5.0f
+      83: fadd
+      84: f2d
+      85: iload_2
+      86: i2d
+      87: aload_1
+      88: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterZ:()I
+      91: i2f
+      92: ldc           #75                 // float 5.0f
+      94: fsub
+      95: f2d
+      96: iconst_1
+      97: dconst_0
+      98: dconst_0
+      99: dconst_0
+     100: dconst_0
+     101: invokevirtual #182                // Method net/minecraft/server/level/ServerLevel.sendParticles:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/particles/ParticleOptions;ZDDDIDDDD)Z
+     104: pop
+     105: aload_0
+     106: aload_3
+     107: getstatic     #176                // Field net/minecraft/core/particles/ParticleTypes.EXPLOSION_EMITTER:Lnet/minecraft/core/particles/SimpleParticleType;
+     110: iconst_1
+     111: aload_1
+     112: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterX:()I
+     115: i2f
+     116: ldc           #75                 // float 5.0f
+     118: fadd
+     119: f2d
+     120: iload_2
+     121: i2d
+     122: aload_1
+     123: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterZ:()I
+     126: i2f
+     127: ldc           #75                 // float 5.0f
+     129: fadd
+     130: f2d
+     131: iconst_1
+     132: dconst_0
+     133: dconst_0
+     134: dconst_0
+     135: dconst_0
+     136: invokevirtual #182                // Method net/minecraft/server/level/ServerLevel.sendParticles:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/particles/ParticleOptions;ZDDDIDDDD)Z
+     139: pop
+     140: aload_3
+     141: aload_1
+     142: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterX:()I
+     145: i2d
+     146: iload_2
+     147: i2d
+     148: aload_1
+     149: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterZ:()I
+     152: i2d
+     153: invokevirtual #186                // Method net/minecraft/server/level/ServerPlayer.distanceToSqr:(DDD)D
+     156: ldc2_w        #192                // double 32.0d
+     159: dcmpl
+     160: ifle          199
+     163: aload_0
+     164: aconst_null
+     165: new           #59                 // class net/minecraft/core/BlockPos
+     168: dup
+     169: aload_1
+     170: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterX:()I
+     173: iload_2
+     174: aload_1
+     175: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterZ:()I
+     178: invokespecial #67                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     181: getstatic     #194                // Field net/minecraft/sounds/SoundEvents.GENERIC_EXPLODE:Lnet/minecraft/core/Holder$Reference;
+     184: invokevirtual #200                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+     187: checkcast     #205                // class net/minecraft/sounds/SoundEvent
+     190: getstatic     #207                // Field net/minecraft/sounds/SoundSource.NEUTRAL:Lnet/minecraft/sounds/SoundSource;
+     193: ldc           #213                // float 24.0f
+     195: fconst_1
+     196: invokevirtual #214                // Method net/minecraft/server/level/ServerLevel.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+     199: return
+}
