@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Better End Island processor effects are resolved in `69d3e14`, source capture
+`763bd43`. DragonEggProcessor preserves existing eggs; ObsidianProcessor varies
+obsidian with the clamped dragon-kill count. Twenty-six focused tests and scoped
+checks passed. Inventory SHA-256:
+`1b1b7b3e61f6b86c2d0e0ed7f32e01ce420d6700702872b18025bdad0015fd5f`.
+Next resolve frozen configuration binding/mixin activation and spike/podium
+paths. Do not recapture or reinterpret the two completed processors. Item 8
+remains incomplete; prior registry and feature family records are unchanged.
+
 Resolve Better End Island platform/gateway processed contents by capturing the
 two directly invoked processors, ObsidianProcessor and DragonEggProcessor, with
 the existing exact-class extractor. Template entities alone cannot establish
