@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-05
 
+Extras desert class-to-template calls are delivered in `0f8e610`. The three
+classes pass fixed IDs through centered placement, with above-ground anchors
+for chillzone/torch and the ground anchor for ruins. Placement success is
+discarded by the shared helper. Sixteen affected tests and scoped checks passed.
+Inventory SHA-256:
+`55fd39f5efd49aee91e1a922eacc763291a09dc9892ba4175c1802bd741eeb0d`.
+All 421 registry family rows and 887 roots remain unchanged. The non-verbose
+FeatureModule capture lacks registration annotations: preserve a verbose capture
+of that exact class to finish feature-ID binding. Remaining terrain/content and
+configuration work remains open. Item 8 is incomplete; no new measurement added.
+
+
 The next Extras source capture selects five exact classes using the existing
 extractor: feature registration, AbstractNbtFeature and the three empty-config
 desert generators. JSON cannot establish their template links or custom effects.
