@@ -13,6 +13,7 @@ from tools.build_item8_inventory import assemble
 from mcpack_evidence.item8_inventory import resource_identity, size_variant_groups
 from mcpack_evidence.item8_registry import read_registry
 from mcpack_evidence.item8_resource_selection import runtime_mod_ids
+from mcpack_evidence.item8_templates import spawner_entity_sources
 
 if TYPE_CHECKING:
     from pydantic import JsonValue
@@ -534,6 +535,44 @@ def test_voyager_related_layouts_preserve_variant_content(
         assert traces["template_contents"][
             "mvs:other_decoration/mine_with_campsite_lower"
         ]["spawner_blocks"]
+
+
+def test_voyager_mining_families_keep_distinct_layouts_and_authored_sources() -> None:
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    traces = cast("dict[str, dict[str, dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/pool-traces-content.json.gz"
+    ).read_bytes())))
+    for family, count, size in (("mvs:mine_with_campsite", 5, 1), ("mvs:mineshaft", 38, 17)):
+        group = next(g for g in decisions["groups"] if g["family_id"] == family)
+        assert group["structure_ids"] == [family]
+        for path, digest in cast("dict[str, str]", group["evidence"]).items():
+            assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+        settings = cast("dict[str, JsonValue]", group["custom_generation_settings"])
+        assert settings["spawn_overrides"] == {}
+        assert settings["size"] == size
+        templates = cast("list[str]", traces["structures"][family]["templates"])
+        assert len(templates) == count
+        entities: set[str] = set()
+        spawners: set[str] = set()
+        for template in templates:
+            content = traces["template_contents"][template]
+            entities.update(str(e["id"]) for e in cast(
+                "list[dict[str, JsonValue]]", content["authored_entities"]
+            ))
+            assert content["unresolved_entities"] == content["generation_markers"] == []
+            for block in cast("list[dict[str, JsonValue]]", content["spawner_blocks"]):
+                for source in spawner_entity_sources(cast("dict[str, JsonValue]", block["nbt"])):
+                    assert "entity_id" in source
+                    spawners.add(str(source["entity_id"]))
+        attrs = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
+        sources = attrs["authored_or_natural_enemies"]
+        others = {"minecraft:villager", "minecraft:armor_stand"}
+        assert sources["authored_hostile_entity_ids"] == sorted(entities - others)
+        assert sources["other_authored_entity_ids"] == sorted(entities & others)
+        assert sources["authored_spawner_entity_ids"] == sorted(spawners)
+        assert sources["natural_structure_override_entity_ids"] == []
 
 
 @pytest.mark.parametrize(
