@@ -263,3 +263,12 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-well
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-well-d320686-repro.json
 cmp evidence/raw/item8/inventory-well-d320686.json evidence/raw/item8/inventory-well-d320686-repro.json
 ```
+
+Circular ruin source increment `2ba75aa` uses the existing Nether variant test.
+Generated join `d62ade9` reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-circle-2ba75aa.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-circle-2ba75aa-repro.json
+cmp evidence/raw/item8/inventory-circle-2ba75aa.json evidence/raw/item8/inventory-circle-2ba75aa-repro.json
+```
