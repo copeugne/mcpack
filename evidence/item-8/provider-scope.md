@@ -206,3 +206,44 @@ and JSON type corrections. This brings the explicit provider dispositions in
 this document to 17 of 136. The other 119 require reconciliation into this gate,
 including reuse of previously captured and interpreted evidence. This is a
 provider-accounting remainder, not an unfinished-family count.
+
+## Moog End and Soaring data providers
+
+| Retained mod | Supported role | Root candidates | Pools | Templates |
+| --- | --- | ---: | ---: | ---: |
+| MoogsEndStructures-1.21-2.0.3.jar | Packaged structure families and their components, using registered pool codecs | 25 | 57 | 67 |
+| MoogsSoaringStructures-1.21-2.1.2.jar | Packaged structure families and their components, using registered pool codecs | 35 | 91 | 99 |
+
+These are root and resource counts, not canonical-family counts. The complete
+candidate lists are the `mes:` and `mss:` structure roots in the existing
+inventory and pool-traces-content.json.gz. All packaged roots occur in those
+preserved traces. Every packaged pool links to at least one such root, with no
+unresolved pool element codec in this provider pass. All templates either occur
+in a root's potential graph or are explicitly unselected alternatives in the
+versioned pool elements. This is candidate reachability, not observed placement.
+
+The End provider has one such unselected alternative:
+`mes:mega_ship/v1_21_9/mega_ship_deepslate_2_middle`. The Soaring provider has eight,
+all under `mss:1_21_9/`: arena/arena_2, arena/arena_3, arena/arena_4, castle_tower,
+desert_pyramid, large_tower, large_tower_top and taiga. Their exclusion is checked
+against the actual versioned element selections for frozen Minecraft 1.21.1,
+not inferred from their filenames. They are component alternatives, not extra
+families. Existing pool-codec evidence and selection logic are reused.
+
+Full archive accounting permits only metadata, icon/language assets, templates,
+biome tags, loot tables, structure definitions, structure sets and template
+pools. Neither archive contains executable code or a separate feature, event,
+mixin, injection or direct-generation implementation. The shared Moog codec
+implementation remains a separate retained-provider responsibility.
+
+```sh
+uv run pytest -q tests/item8/test_moog_data_provider_scope.py
+```
+
+Two cases pass, as do scoped Ruff and Basedpyright. The test binds original
+archive identities and the preserved pool trace hash; no new capture or graph
+implementation was added. Explicit provider dispositions now cover 19 of 136;
+117 remain to reconcile, including already delivered evidence. Explorify, Moog
+Nether and Moog Voyager are not included in this closure: their unmatched
+resources still require named dispositions. Canonical design grouping remains
+separate from this provider candidate-boundary result.
