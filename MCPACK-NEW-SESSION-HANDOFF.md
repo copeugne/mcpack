@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-06
 
+Bundled Tiny Config entry and ConfigManager captures now reproduce using 0b01353
+in sources/tiny-config-entry. NeoForge entry calls an empty common init;
+ConfigManager handles JSON I/O and optional caller callbacks, not independent
+generation registration. Do not recapture these. Finish remaining Tavern entry
+classes and full archive accounting. Counts remain 23 dispositions, 113 open.
+
 Necessary capture-path adjustment: Village Taverns bundles executable Tiny Config
 classes, while the existing javap capture only reads top-level JARs. The narrow
 Tiny Config selector retains the existing identity format, verifies both frozen
