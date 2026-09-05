@@ -305,6 +305,8 @@ CLASSES = (
     "com/yungnickyoung/minecraft/betterendisland/services/NeoForgeModulesLoader.class",
     "net/minecraft/world/level/levelgen/feature/EndPlatformFeature.class",
     "org/violetmoon/zetaimplforge/world/ZetaBiomeModifier.class",
+    "org/violetmoon/zeta/world/WorldGenHandler.class",
+    "org/violetmoon/zetaimplforge/world/ZetaSpawnModifier.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",

@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-05
 
+Zeta modifier source is delivered in `3138b23`. It appends a deferred feature
+per decoration stage and delegates spawning separately. Continue with its exact
+WorldGenHandler and ZetaSpawnModifier dependencies through the existing extractor;
+these resolve the concrete generation and natural-mob paths. Do not recapture
+the modifier or generalize the extraction framework.
+
 Trace Zeta's exact org/violetmoon/zetaimplforge/world/ZetaBiomeModifier class
 with the existing extractor. Its retained JSON names a code-backed modifier
 without feature targets, so this class directly addresses the effective-biome
