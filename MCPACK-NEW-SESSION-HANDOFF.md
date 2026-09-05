@@ -6,6 +6,49 @@
 
 ### Continuation update - 2026-09-05
 
+Mansion candidate content and source placement are integrated in 8ba362c.
+Child template entities, chest loot references and selected spider spawner
+inputs are tested; surface anchoring and the foundation envelope limitation
+are explicit. The working inventory reproduces byte for byte. Do not repeat
+these catalog joins. Exact layout reachability, runtime loading, geometry,
+external effects and discoverability remain open. Continue the remaining
+custom-generation and provider-coverage work in the evidence README.
+
+The remaining delivery work is now listed in evidence/item-8/README.md, under
+"Remaining delivery work at 4a8478b". Use the existing family and contribution
+records to resolve that list; do not add a progress measurement system. Provider
+coverage is still incomplete, so the list is not a claim that every remaining
+family has already been identified. Integrate the delivered mansion findings
+next, then continue the listed custom-generation and coverage gaps.
+
+Mansion spawner/processor inputs are bound in 4a8478b. Ten focused tests and
+scoped Ruff/Basedpyright pass. The selector type declarations now admit these
+two existing JSON consumers. The unrelated village bamboo crop processor
+collision remains open for its own consumers. Do not repeat this mansion input
+check or claim successful runtime reload/spawning from its packaged inputs.
+
+Mansion candidate-pool reconciliation is tested in 77e7d0e: 376 candidate
+pools, 592 parent templates and five shared child templates are present.
+Keep candidate selection distinct from layout reachability and placement.
+Inspect the referenced mushroom/spawner processors and spawner data manager
+using the existing extractor to resolve their direct content effects.
+
+The ordinary mansion layout capture in aaeaabc omits invokedynamic string
+recipes needed for exact pool IDs. Enable existing verbose output for the
+layout and three floor selectors. This fixes that concrete attribution gap;
+preserve the ordinary attempt. MirroringSingleJigsawPiece is already captured
+under pool-codecs and should be reused, not recaptured.
+
+Mansion entry/foundation paths are preserved in 80b4fc4. Follow the direct
+LayoutGenerator and its RoomCollection/FirstFloor/SecondFloor/ThirdFloor
+selectors to bind component pools. Existing saved-piece envelopes exclude
+possible foundation extension. Reuse existing catalogs and tracing tools.
+
+Continue Repurposed Structures mansion custom-generation attribution with
+MansionStructure, MansionPieces and MansionStructurePiece. Existing pool traces
+do not resolve this custom path. Reuse the extractor and template catalogs;
+inspect delegated layout code only as needed for component/content attribution.
+
 Slime Cave custom components and encounters are integrated in 0feca29, with
 processor attribution in 9f7b811. The focused test binds its single template,
 six slime markers, one spawner marker and chest loot-table selection. Existing
