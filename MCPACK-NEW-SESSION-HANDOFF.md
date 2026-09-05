@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-05
 
+Lake direct encounter/loot attribution is delivered in `a4548bf`, using helper
+capture `28ed678`. Eleven captured classes show no direct authored entity,
+explicit spawner configuration or container-loot assignment. BlockFixer adjusts
+vegetation/crystals/fluids and schedules fluid ticks. The five content fields
+explicitly preserve unresolved dynamic material-provider and external effects;
+this is not proof of zero effective spawners or mobs. All 75 affected tests and
+scoped checks passed. Inventory SHA-256:
+`65d6dd6270f40edae66a5401a4e3aafe3f3aba5d4adccf9f6703b0dd00c8958f`.
+Only lake direct-content fields and grouping evidence changed. Still 421 working
+groups / 887 roots. Continue material/provider coverage and remaining canonical
+families/attributes. Do not repeat unchanged lake/mountain source captures or
+checks. Item 8 remains incomplete; no runtime or measurement system added.
+
+
 Lake placement and visual shore cues are delivered in `8292695`. All five roots
 preserve the base precheck and their distinct center/neighbor conditions. The
 two piece algorithms retain different shore/dust/plant cues; actual visibility

@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `8292695`, SHA-256
-`25e78dd6bbe34e3ac2c6ee60c1bda55119ae79772c2f69c6c32fc29270a48247`.
+Current working inventory regenerated at `a4548bf`, SHA-256
+`65d6dd6270f40edae66a5401a4e3aafe3f3aba5d4adccf9f6703b0dd00c8958f`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1306,3 +1306,9 @@ uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_invento
 uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-lake-content.json
 ```
+
+All 75 affected tests and scoped checks passed. Inventory regenerated at
+`a4548bf`, SHA-256:
+`65d6dd6270f40edae66a5401a4e3aafe3f3aba5d4adccf9f6703b0dd00c8958f`.
+Only lake direct-content fields and their grouping decision changed. Other family
+rows, size envelopes, placement/cues and observation links are unchanged.
