@@ -58,3 +58,39 @@ git ls-remote origin refs/tags/item-8-registry-raw-2026-09-05-r1
 The downloaded archive restored all 241 files with verified hashes. The saved
 world-context projection reproduced byte for byte from the downloaded source.
 For a new retrieval, change output paths to avoid overwriting preserved records.
+
+## Dimension capture attempts r1 through r3
+
+The same archive/restore implementation preserves all three complete capture
+directories, including failed attempts. Archive `item8-dimensions-r1-r3-cd04324.tar.gz`
+is 1446795 bytes, SHA `29c9b189483f96f29d45a62d79556fdf10655729cf901204def50789578b5cb7`.
+It contains 261 files totaling 16993965 uncompressed bytes. The custody revision
+is `cd043241a1beabaa47acd9657790af1e987e9dd0`; each capture retains its own original
+source revision. The manifest and local restore are delivered in `e9a91c2`;
+remote publication and downloaded restore evidence are delivered in `5b742a5`.
+
+Contents include logs, capture records, the compiled measurement probe and build
+logs, r3's dimension output and seven dumps, and its sanitized configuration.
+No Minecraft/NeoForge binaries or world regions are included. r1's missing queued
+console tail remains missing; r2 preserves the diagnostic that led to the fix.
+The generated credential redaction follows the unchanged capture implementation.
+
+Executed commands, using absent destination paths:
+
+```sh
+mkdir evidence/raw/item8/dimension-custody-r1
+mkdir evidence/raw/item8/dimension-custody-r1/captures
+cp -a evidence/raw/item8/dimension-r1 evidence/raw/item8/dimension-r2 evidence/raw/item8/dimension-r3 evidence/raw/item8/dimension-custody-r1/captures/
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/dimension-custody-r1/captures --archive evidence/raw/item8/dimension-custody-r1/item8-dimensions-r1-r3-cd04324.tar.gz --manifest evidence/item-8/raw-custody/dimensions-r1-r3-manifest.json --revision cd043241a1beabaa47acd9657790af1e987e9dd0
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/dimension-custody-r1/item8-dimensions-r1-r3-cd04324.tar.gz --manifest evidence/item-8/raw-custody/dimensions-r1-r3-manifest.json --target evidence/raw/item8/dimension-custody-r1/restored-local --receipt evidence/item-8/raw-custody/dimensions-r1-r3-local-restore.json
+gh release view item-8-dimensions-raw-2026-09-05-r1 --repo copeugne/mcpack --json tagName,url,isDraft,isPrerelease,publishedAt,assets > evidence/item-8/raw-custody/dimensions-r1-r3-release.json
+gh release download item-8-dimensions-raw-2026-09-05-r1 --repo copeugne/mcpack --dir evidence/raw/item8/dimension-custody-r1/downloaded
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/dimension-custody-r1/downloaded/item8-dimensions-r1-r3-cd04324.tar.gz --manifest evidence/item-8/raw-custody/dimensions-r1-r3-manifest.json --target evidence/raw/item8/dimension-custody-r1/restored-download --receipt evidence/item-8/raw-custody/dimensions-r1-r3-downloaded-restore.json
+git ls-remote origin refs/tags/item-8-dimensions-raw-2026-09-05-r1
+```
+
+Both restores verified all 261 files. The remote tag resolves to the custody
+revision. The published release's uploaded asset matches the manifest's size,
+and the downloaded bytes passed the archive hash and member checks.
+Release: [Item 8 dimension biome raw captures](https://github.com/copeugne/mcpack/releases/tag/item-8-dimensions-raw-2026-09-05-r1).
+Local and GitHub copies provide separate storage; local copies share a host.
