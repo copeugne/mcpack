@@ -28607,12 +28607,18 @@
         "packaged_template_content": "Both linked templates have empty entities and block_entities. This excludes neither processor-created blocks nor the gateway block explicitly placed by code.",
         "platform_placement": "Offset the input position down 14 blocks, then subtract integer half template X/Z. Use Rotation.NONE, pivot (3,0,3), IGNORE_WATERLOGGING and placement flag 2. A fresh RandomSource.create() is used rather than a supplied seeded source. The destroyBlocks boolean is forwarded to placeTemplate but not read there.",
         "gateway_placement": "Subtract integer half template X/Y/Z from context origin. Use context random, Rotation.NONE, pivot (1,0,1), IGNORE_WATERLOGGING and placement flag 2. After the template call, request END_GATEWAY at context origin with flag 3, regardless of the template helper result. If configuration has an exit and the block entity is an EndGateway, set its exit position/exactness and mark changed.",
-        "processors": "Platform static processor list is empty; gateway static list contains DragonEggProcessor. Both then add ObsidianProcessor with dragon-kill count, read only when the supplied accessor is a ServerLevel with a non-null dragon fight, otherwise zero. Processor effects remain to be inspected.",
+        "processors": "Platform static processor list is empty; gateway static list contains DragonEggProcessor. Both then add ObsidianProcessor with dragon-kill count, read only when the supplied accessor is a ServerLevel with a non-null dragon fight, otherwise zero. Direct effects are recorded below.",
         "success_limits": "Missing templates log a warning and return false. Loaded-template helpers discard placeInWorld boolean and return true. Platform hook cancellation does not depend on success. Gateway returns its template helper result, not whether portal-block placement or exit initialization succeeded.",
-        "scope": "Direct code and packaged template attribution only. Configuration-field binding, mixin activation, processor effects, dimension applicability, family reconciliation and generated-world observations remain open. Spike and podium generation are not covered by this contribution.",
+        "scope": "Direct code and packaged template attribution only. Configuration-field binding, mixin activation, dimension applicability, family reconciliation and generated-world observations remain open. Spike and podium generation are not covered by this contribution.",
         "evidence": {
           "evidence/item-8/sources/better-end-island-platform-gateway/identities.json": "6d6944ae221e62182308d1ac3cdcc10a9b028d98bb0e2fa0d72e910cd366b48a",
-          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+          "evidence/item-8/sources/better-end-island-processors/identities.json": "dfeb5a2586c4b82b3e0e6eb5712149d1ab8adfc6689cc7ece108490a2b7d9b95"
+        },
+        "processor_effects": {
+          "DragonEggProcessor": "Reads the existing world block at the incoming target position. If it is DRAGON_EGG, replaces the incoming block state with default DRAGON_EGG while preserving position and incoming NBT. Otherwise returns the incoming block unchanged. This preserves an existing egg, rather than creating an egg reward at an empty target.",
+          "ObsidianProcessor": "Only incoming OBSIDIAN is transformed. Obtain random from StructurePlaceSettings.getRandom(target position); clamp dragon kills to 0..10; use lerp(clampedKills/10.0, 0, 0.5) as the nextFloat threshold for CRYING_OBSIDIAN, otherwise default OBSIDIAN. Preserve position and incoming NBT. Non-obsidian input passes through unchanged.",
+          "scope": "Direct block substitution only. Neither processor directly spawns entities, configures spawners or assigns loot tables. This does not establish engine/API behavior, ordinary block drops, external retained-stack modifications or observed world results."
         }
       }
     }
