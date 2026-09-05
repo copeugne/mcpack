@@ -501,6 +501,38 @@ def test_soaring_rivers_preserve_omitted_default_and_complete_namespace() -> Non
         ("mns:circle_ruin", ("mns:circle_",), 2, 2),
         ("mns:medium_house", ("mns:medium_house",), 2, 2),
         (
+            "mvs:log_pile",
+            tuple(
+                f"mvs:{wood}_log_pile"
+                for wood in ("acacia", "birch", "dark_oak", "jungle", "oak", "spruce")
+            ),
+            6,
+            6,
+        ),
+        (
+            "mvs:lantern",
+            (
+                "mvs:medium_oak_lantern",
+                *tuple(
+                    f"mvs:small_{kind}_lantern"
+                    for kind in (
+                        "acacia",
+                        "bamboo",
+                        "birch",
+                        "campfire",
+                        "cherry",
+                        "dark_oak",
+                        "jungle",
+                        "mangrove",
+                        "oak",
+                        "spruce",
+                    )
+                ),
+            ),
+            11,
+            11,
+        ),
+        (
             "mns:medium_fungus",
             ("mns:medium_crimson_fungus", "mns:medium_warped_fungus"),
             4,
@@ -508,7 +540,7 @@ def test_soaring_rivers_preserve_omitted_default_and_complete_namespace() -> Non
         ),
     ],
 )
-def test_nether_variants_preserve_definitions_and_template_identity(
+def test_moog_variants_preserve_definitions_and_template_identity(
     family: str,
     prefix: tuple[str, ...],
     member_count: int,
@@ -554,11 +586,11 @@ def test_nether_variants_preserve_definitions_and_template_identity(
     contents = cast("dict[str, dict[str, JsonValue]]", traces["template_contents"])
     definitions: dict[str, dict[str, JsonValue]] = {}
     for identifier, variant in variants.items():
-        name = identifier.split(":")[1]
+        namespace, name = identifier.split(":")
         rows = [
             cast("dict[str, JsonValue]", row["document"])
             for row in resources
-            if row["path"] == f"data/mns/worldgen/structure/{name}.json"
+            if row["path"] == f"data/{namespace}/worldgen/structure/{name}.json"
         ]
         assert len(rows) == 1
         definitions[identifier] = rows[0]
@@ -576,7 +608,13 @@ def test_nether_variants_preserve_definitions_and_template_identity(
             variant["template_size_xyz"] == contents[str(variant["template"])]["template_size_xyz"]
         )
     assert len({str(row["template"]) for row in variants.values()}) == template_count
-    if family in {"mns:bridge", "mns:medium_fungus", "mns:ruin_fragments"}:
+    if family in {
+        "mns:bridge",
+        "mns:medium_fungus",
+        "mns:ruin_fragments",
+        "mvs:log_pile",
+        "mvs:lantern",
+    }:
         for variant in variants.values():
             content = contents[str(variant["template"])]
             assert content["authored_entities"] == content["loot_references"] == []
