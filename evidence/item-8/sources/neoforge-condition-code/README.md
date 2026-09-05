@@ -38,3 +38,25 @@ The initial patched-server selector also emitted an unrelated StructureTemplate
 class. That output is retained locally in the ignored
 `evidence/raw/item8/neoforge-registry-loading-initial` directory and is not
 acceptance evidence. The selector was narrowed and the accepted output rerun.
+
+## Frozen condition resolution
+
+Implementation and direct regressions are delivered in `12bd9d1`. Run:
+
+```sh
+uv run pytest -q tests/item8/test_resource_selection.py -k 'mod_list or mod_conditions'
+```
+
+This command passed all three affected tests. It requires the existing r1 raw
+archive restored at `evidence/raw/item8/registry-r1`; no new capture is required.
+The hash-bound debug log's Mod List contains 212 IDs. Applying the two observed
+condition codecs to all 1,024 packaged additions selects 68: 26 Village Taverns,
+21 Chef's Delight and 21 Farmer's Delight integrations. The other 956 are
+excluded. The test binds the exact log and catalog hashes and the taverns log
+line, and checks incomplete/duplicate mod rows and unsupported conditions.
+Scoped Ruff and basedpyright passed after resolving unused-result annotations
+and a line-length finding in the tests.
+
+This result resolves mod conditions only. Resource-layer selection, applying
+the selected additions to the trace, and other runtime modifications remain
+open. It does not establish a new family count or observed spawn frequency.
