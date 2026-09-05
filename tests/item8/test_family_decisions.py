@@ -654,6 +654,7 @@ def test_repurposed_design_groups_cover_registry_and_bind_variant_definitions() 
         ("terralith", 28),
         ("illagerinvasion", 5),
         ("creatingspace", 4),
+        ("supplementaries", 2),
     ],
 )
 def test_provider_groups_bind_full_definitions_pools_and_registry(
@@ -795,6 +796,11 @@ def test_provider_groups_bind_full_definitions_pools_and_registry(
             "moon/crashed_rocket": ("creatingspace:moon/crashed_rocket/start_pool", 1),
             "moon/crashed_ship": ("creatingspace:moon/crashed_ship/start_pool", 1),
         }
+    if namespace == "supplementaries":
+        expected = {
+            "galleon": ("supplementaries:galleon/start_pool", 1),
+            "road_sign": ("supplementaries:road_sign/start_pool", 1),
+        }
     assert {str(r["family_id"]).split(":")[1] for r in groups} == set(expected)
     for group in groups:
         kind = str(group["family_id"]).split(":")[1]
@@ -818,11 +824,10 @@ def test_provider_groups_bind_full_definitions_pools_and_registry(
             assert trace["templates"]
             assert trace["unresolved_elements"] == []
             assert trace["missing"] == variant["missing_components"]
-    if namespace == "towns_and_towers":
-        assert {"id": "minecraft:emptY", "kind": "pool"} in cast(
-            "list[JsonValue]",
-            traces["structures"]["towns_and_towers:exclusives/pillager_outpost_nilotic"]["missing"],
-        )
+    assert {"id": "minecraft:emptY", "kind": "pool"} in cast(
+        "list[JsonValue]",
+        traces["structures"]["towns_and_towers:exclusives/pillager_outpost_nilotic"]["missing"],
+    )
 
 
 def test_illager_invasion_hostile_intent_binds_authored_component_entities() -> None:
