@@ -77,3 +77,28 @@ Populate the existing shipwreck family attributes and per-root component lists
 from these sources, retaining beached versus ocean selection and burial details.
 The current inventory and family decisions are unchanged by this source milestone.
 No additional runtime measurement system was needed for nominal geometry.
+
+## Delivered integration
+
+`4363af9` integrates per-root components and seven family attributes using the
+existing override mechanism. `3c30ead` delivers the rebuilt inventory. This
+supersedes the pending integration instruction above. The source check now binds
+both template arrays and nominal dimensions to the family record and verifies
+its evidence hashes.
+
+```sh
+uv run pytest -q tests/item8/test_shipwreck_sources.py tests/item8/test_family_decisions.py
+uv run pytest -q tests/item8/test_shipwreck_sources.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-shipwreck-content.json
+```
+
+All 59 affected checks passed. The final focused check and scoped Ruff/basedpyright
+passed after narrow annotation and iteration cleanup. Decision SHA-256:
+`da5faabb91380aaa6fc09b36a941ded23a633dc50888705eb0a5776e2f8a3bb3`.
+Inventory SHA-256:
+`7f15e3abd77c380cfccfc836f677027f65d94782fac7ebf2ed033af010f1dcee`.
+Only this family's grouping and seven attributes change semantically. The trace,
+raw world bounds and world_observations links are unchanged. The dimension
+attributes now report nominal template envelopes instead of sample-only sizes;
+observed geometry remains available through those original links. Overall Item 8
+and remaining effective family attributes are still incomplete.
