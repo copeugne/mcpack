@@ -420,3 +420,38 @@ def test_yungs_extras_entrypoints_cover_runtime_features_without_family_inferenc
     assert not any(item.startswith("yungsextras:") for item in read_registry(
         registry / "worldgen_structure.txt"
     ))
+
+
+def test_yungs_extras_biome_scope_binds_additions_and_well_removal() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    contribution = contributions["yungsextras:feature_entrypoints"]
+    constraints = cast("dict[str, JsonValue]", contribution["biome_constraints"])
+    recorded = cast("dict[str, dict[str, JsonValue]]", constraints["tags"])
+    modifiers = cast("dict[str, dict[str, JsonValue]]", contribution["biome_modifiers"])
+    assert set(recorded) == {str(mod["biomes"]).removeprefix("#") for mod in modifiers.values()}
+    inputs = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/sources/structure-inputs.json"
+    ).read_bytes()))
+    tag_rows = cast("dict[str, dict[str, JsonValue]]", inputs["biome_tags"])
+    tags = {key: cast("list[object]", row["values"])
+            for key, row in tag_rows.items() if not row["unresolved"]}
+    registered = frozenset(read_registry(Path(
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_biome.txt"
+    )))
+    dimensions = cast("dict[str, list[str]]", json.loads(Path(
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json"
+    ).read_bytes()))
+    for key, row in recorded.items():
+        biomes, missing = resolve_biome_tag(key, tags, registered_biomes=registered)
+        assert sorted(biomes) == row["registered_biomes"]
+        assert list(missing) == row["missing_required_members"] == []
+        assert {dimension: sorted(set(values) & biomes)
+                for dimension, values in dimensions.items() if set(values) & biomes} == (
+            row["dimension_biome_overlap"]
+        )
+    prefix = "yungsextras:has_structure/"
+    assert recorded[prefix + "desert_decorations"] == recorded[prefix + "vanilla_desert_well"]

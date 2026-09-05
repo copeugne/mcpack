@@ -1559,3 +1559,25 @@ Inventory regenerated at `fe1fb1e`, SHA-256:
 `9fcd6b648bd22c311a0d9f167c0013cb500e3817ed6c06406666e0dc719cadac`.
 Only the decision identity and new Extras entry-point contribution changed.
 All 421 registry family rows and 887 roots remain unchanged.
+
+## YUNG Extras biome scope
+
+The three modifier tags resolve through existing merged tag evidence and the
+verified biome registry without missing required members. Desert additions and
+vanilla desert-well removal share minecraft:desert, biomesoplenty:lush_desert
+and terralith:lush_desert. Swamp additions use minecraft:swamp and
+minecraft:mangrove_swamp. Only the captured overworld possible-biome list
+intersects these sets. This resolves packaged biome scope, not actual placement,
+effective registration/configuration effects or observed removal. Optional
+absent tag members are not treated as active content. No new capture or
+measurement system was added.
+
+Thirteen affected tests and scoped Ruff/Basedpyright passed. Decision SHA-256:
+`b850abc5df9278da4113694f5e01254e4cf08099a927185527f4f509840336b5`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-extras-biomes.json
+```
