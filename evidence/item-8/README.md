@@ -1743,3 +1743,21 @@ unchanged. Reproduce with a fresh output directory:
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-extras-well-generation.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-extras-well-generation.json
 ```
+
+### Extras swamp placement and appearance
+
+The six registered swamp feature types use their configured templates through
+AbstractSwampFeature and its shared SwampFeatureProcessor. The inventory now
+records each generator's selected non-empty terrain offsets and common landing
+anchor. Ogre checks are at landing height; the other five check four blocks below.
+These checks do not establish solid ground across the entire footprint.
+
+Gray markers become masonry with downward supports through air, liquid or
+replaceable blocks. There is no explicit minimum-Y guard in that processor loop,
+and template height excludes these terrain-dependent supports. Other recorded
+effects are masonry/stair substitution and randomized candle color, count and
+lighting. These are authored appearance rules, not observed visual discoverability.
+The decision retains the limits of direct source inspection and placement success.
+
+The existing focused command above passed 19 tests, and scoped Ruff/Basedpyright
+passed. No extraction, runtime, measurement system or generalized helper was added.
