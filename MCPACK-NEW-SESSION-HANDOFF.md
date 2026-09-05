@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-05
 
+Ruined portal source inspection (`07dda51`) and family integration (`84faa88`)
+resolve thirteen template alternatives across all seven roots, retained as one
+family. Six attributes record authored content and per-root placement modes.
+Each template has one ruined-portal loot chest and no authored entities or
+spawner blocks. The five jigsaws reference only minecraft:empty pools; their
+metadata are preserved without inventing extra families or final block states.
+Observed geometry remains intact because terrain additions exceed template
+bounds. All 62 affected tests and scoped Ruff/Basedpyright checks pass.
+Inventory SHA: `fdd49f9bb42cd4169fa57f946bae28f43b7045a67f44bbc91d292d9874c1c3e7`.
+Decision SHA: `b8e7afa9e0bce110f88071c2eefdabd1f0c4500a93c0f2f1c1e6b4f4dde1f305`.
+Commands and limitations are in
+`evidence/item-8/sources/vanilla-ruined-portal-code/README.md`.
+Continue the remaining custom generators and provider gaps. Vanilla buried
+treasure, desert pyramid, jungle temple and swamp hut are remaining direct
+piece generators. Retained-mod transformations and visual discoverability
+remain open. No new measurement system was added; Item 8 is not complete.
+
+
 Ocean ruin source inspection (`9cdff83`) and family integration (`ddecb9b`)
 resolve all 48 references, with 12 warm and 36 cold templates kept inside one
 family. Six source-backed attributes now include authored drowned, chest and
