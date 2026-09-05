@@ -317,6 +317,8 @@ CLASSES = (
     "org/violetmoon/zeta/config/type/DimensionConfig.class",
     "org/violetmoon/zeta/world/generator/Generator.class",
     "org/violetmoon/zeta/config/type/CompoundBiomeConfig.class",
+    "org/violetmoon/zeta/config/type/BiomeTagConfig.class",
+    "org/violetmoon/zeta/config/type/StrictBiomeConfig.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
