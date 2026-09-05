@@ -59,3 +59,19 @@ The immediate semantic reconciliation queue is:
 Do not resume detailed per-family attribute work until this scope queue has an
 explicit disposition. The resulting finite family list, not these provider
 counts, is the requested answer to how many families remain.
+
+## Reconciliation checkpoint at ac990fd
+
+| Candidate | Delivered result | Remaining scope decision |
+| --- | --- | --- |
+| BetterEnd building lists | Six live configured-feature IDs and their mixed building/vegetation lists; selector source in 9695ae5. | Assign actual designs and variants; do not call all six lists one family or count every template separately. |
+| BetterEnd crashed ship | Registered feature implementation and vanilla ship template reuse in 9695ae5. | Establish active configured/placed use before adding a family. |
+| BOP anomaly, monolith, bone spine | Direct writers in 846bc09; both bone-spine definitions reuse one type. | Resolve landmark/terrain boundaries and bind active placement. |
+| Deep Aether totem | One stacked design with block/height/facing variations in b0194ce. | Bind registration and placement; preserve one design rather than counting blocks as families. |
+| Explorations scarecrow | One figure design, nine material configurations and a selector in ac990fd. | Bind registration and selector/placement relationships; do not count ten configured entries as ten families. |
+
+These captures are delivered and must not be repeated. They narrow the candidate
+scope; they are not final per-family attribute acceptance. Supplementaries aliases,
+component consumers, remaining utility/terrain dispositions and canonical grouping
+within the existing provisional inventory still require reconciliation. Continue
+this finite provider queue before returning to attribute implementation.
