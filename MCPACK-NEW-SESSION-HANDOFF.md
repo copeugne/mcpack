@@ -6,6 +6,28 @@
 
 ### Continuation update - 2026-09-05
 
+Conditional trial-chamber mob attribution is now in the machine-readable family
+attribute, delivered in `343095a` and inventory rebuild `f441595`. The existing
+attribute override was sufficient; no builder logic or new schema was added.
+All 68 affected template/family tests and scoped Ruff/basedpyright passed.
+Decision SHA:
+`fda5d5c1b1ea4a33d2a5a099fd51ecd24b760a921008107f9f89d2758de1cb75`.
+Inventory SHA:
+`2f915136cf8ff69430a4be1e099f675ea9e7a928175c7621c51f485d3020740d`.
+Trace SHA remains `703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5`.
+Only this family's grouping evidence and mob-source attribute changed beyond
+the decision input hash. Raw omitted ominous-list entries remain available and
+are explicitly cross-referenced by the conditional mob-source disposition.
+The previous instructions to incorporate this disposition are superseded.
+
+Do not interpret the trace's 69 no-direct-pool roots as 69 wholly uninspected
+generators. Current decisions already have six source-based attributes for the
+13 Better Mineshafts roots and the spider dungeon; other attributes still need
+closure. Inspect existing decisions before repeating custom-generation work.
+The next useful unresolved source paths include vanilla end cities and the
+remaining custom families. Overall canonical grouping, provider coverage, final
+attributes, review and main merge remain open. Delivered refs were verified.
+
 Initial vanilla trial-spawner attribution is now resolved conditionally.
 Lifecycle source `bb9582a`, extractor selection `2c43578` and frozen-catalog
 check `c5531da` show initialization from normal potentials before player
