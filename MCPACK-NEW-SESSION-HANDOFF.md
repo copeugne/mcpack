@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-05
 
+Circular Nether ruins are delivered through `d62ade9`, built from `2ba75aa`.
+Inventory SHA-256:
+`f24fa7c214ee95359b1b2607cb14e097152653febad7da73b8291c893195a7d6`.
+Two circle roots map to one working family with separate biome, geometry,
+spawner and loot attribution. The joined output retains wither skeleton and
+houses loot on blackstone, and piglin/brute spawners without packaged loot on
+nether brick. Four retained observations are linked. Twenty-nine focused tests
+and scoped quality checks passed; the inventory reproduced byte for byte and
+prior families remained unchanged. Totals: 167 working groups, 264 assigned IDs,
+623 unassigned; 30 mns roots remain unassigned. Continue houses, arenas and
+remaining Nether designs, then other providers and required attributes. The
+retained Moog JAR also contains GenericNetherJigsawStructure and its direction
+enum, YRangeAllowance, and PieceLimitedJigsawManager; the existing disassembler
+can be extended narrowly when resolving the already-open custom placement
+attributes. No final gate, clean review, main merge or complete attributes are
+claimed.
+
 Nether well grouping is delivered through `2cb05ba`, built from `d320686`.
 Inventory SHA-256:
 `0b16127f113e6339b3095c7aaa31b1e9899c931cecaea64cf6ade639b6a9366c`.
