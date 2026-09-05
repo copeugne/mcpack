@@ -24083,7 +24083,7 @@
         },
         "step": "top_layer_modification"
       },
-      "missing_components": "Direct assembly and piece captures are preserved. Six template candidates and three selected processor lists are bound by tests/item8/test_aether_bronze_components.py. Remaining: full builder/surface-ruins interpretation, inherited chest placement and processor callback binding, sentry/trap behavior, and generated geometry/placement/visibility attribution.",
+      "missing_components": "Six template candidates, selected processor lists, shared processor callback, Bronze trap suppliers and trap event dispatch are attributed. Assembly/surface-clue findings are preserved in aether-bronze/README.md. Remaining: exact effective room-provider binding and relevant placement helpers, inherited chest writer, entity registry-key binding, retained modifications, and actual assembled geometry/placement/visibility.",
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -24091,12 +24091,15 @@
         "evidence/item-8/sources/aether-custom-entry/identities.json": "e33ddae6869cc516beafc2eff72976b2db2ee6d7602443d2af389c2778b01954",
         "evidence/item-8/sources/aether-bronze/identities.json": "34141e73a72160d007367fd34118d0f7ce68580d0be214e332e018f23555f4b4",
         "evidence/item-8/sources/aether-placement/identities.json": "14d7c34fe022eaf47cfa324ad56646b2bf4e736b4cfc0a249ddd94b8d1408113",
-        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/aether-piece-binding/identities.json": "659938555001e750eb6f21b84c1b797f9641783d99775916315cab9f68dbb48d",
+        "evidence/item-8/sources/aether-trapped-block/identities.json": "729a601cbf86cbb65c8e4f7dd16842cc36dfa6ddecf1e86de83b0a00578750c5",
+        "evidence/item-8/sources/aether-trap-bindings/identities.json": "f2815a15dad2b0e62e2d2db44ce5e27a86476a5ed269a49f186bb18ffa8b1261"
       },
       "attributes": {
         "intended_hostility": {
           "value": "Authored dungeon encounter sources",
-          "basis": "Boss template contains aether:slider. Chest markers may choose a mimic block whose opening/break path attempts to spawn a Mimic. Sentry/trap block behavior remains to be attributed; no encounter counts or difficulty claim."
+          "basis": "Boss template authors a Slider; chest markers can select a mimic block; both selected trapped-stone outputs supply Sentry through player-triggered activation. These are authored encounter sources, not observed counts or a difficulty claim."
         },
         "mob_source": {
           "template_entities": {
@@ -24105,7 +24108,8 @@
             ]
           },
           "marker_source": "BronzeDungeonRoom Chest marker chooses CHEST_MIMIC for nextInt(5) outcomes 0 and 1, otherwise an ordinary chest. ChestMimicBlock attempts entity creation on unblocked server useWithoutItem or spawnAfterBreak; addFreshEntity success is not checked.",
-          "remaining": "Effective engine placement, sentry/trap content and retained external modifications remain unresolved."
+          "remaining": "Inherited engine placement, exact entity registry-key binding and retained external modifications remain unresolved.",
+          "trap_source": "trapped_carved_stone and trapped_sentry_stone registrations both construct TrappedBlock with AetherEntityTypes.SENTRY. Player steps post cancellable TriggerTrapEvent; when uncancelled, facade replacement precedes a server MobSpawnType.TRIGGERED spawn attempt. The spawn result is discarded. This binds the Java supplier, not an independently verified entity registry key or successful population."
         },
         "loot_table_source": {
           "marker_call_sites": {
@@ -24116,14 +24120,23 @@
           "scope": "Mimic block entity is not a randomizable container; do not assume it receives the ordinary chest table. Effective inherited assignment and retained loot modifications remain unresolved."
         },
         "authored_or_natural_enemies": {
-          "authored": "Slider template entity and marker-selected interaction/break-triggered mimic source. Other sentry/trap sources remain unresolved.",
+          "authored": "Slider template entity, marker-selected mimic block and processor-selected trapped-stone Sentry suppliers. Mimic activation is interaction/break-triggered; Sentry trap activation is a player step through a cancellable event.",
           "natural": "Selected definition supplies twelve piece-bound spawn overrides with empty lists. This is an override input, not proof of no natural enemies, ingress or external spawn effects."
         },
         "generated_spawners": {
           "template_scope": "No conventional spawner block-entity entries in the six selected template candidates. Boss and chest-room entries are treasure chest and/or structure markers; the other candidates have no block-entity entries.",
           "remaining": "This does not establish absence from the full generator, processors or retained hooks. Mimic blocks are separately attributed trigger sources."
+        },
+        "visual_discoverability": {
+          "source_clue": "Conditional surface-ruin perimeter columns and flower-patch attempt above a sufficiently wide room. The builder skips this component if no qualifying room exists or room maxY+1 exceeds the sampled terrain height.",
+          "observed": "UNKNOWN: no retained visual observation establishes visibility or discovery distance. Source intent does not guarantee a visible clue."
+        },
+        "underground_surface_classification": {
+          "source": "Terrain-covered room candidates with attempted horizontal exit and conditional surface-ruin component.",
+          "scope": "Room coverage uses sampled generator base columns. End-tunnel selection can retain an unsuccessful attempt, and the surface component can be omitted. Final terrain-relative placement remains unobserved."
         }
-      }
+      },
+      "processor_effects": "Shared AetherTemplateStructurePiece callback is bound to StructurePlaceSettings.addProcessor for each configured list entry. BossRoomProcessor adds Dungeon metadata to authored entity NBT; DoubleDropsProcessor sets DOUBLE_DROPS=true where supported while preserving position and NBT. This is source attribution, not proof of effective world placement."
     },
     {
       "family_id": "aether:gold_dungeon",
