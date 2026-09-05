@@ -302,6 +302,7 @@ CLASSES = (
     "com/yungnickyoung/minecraft/betterendisland/services/Services.class",
     "com/yungnickyoung/minecraft/betterendisland/services/NeoForgePlatformHelper.class",
     "com/yungnickyoung/minecraft/betterendisland/services/NeoForgeModulesLoader.class",
+    "net/minecraft/world/level/levelgen/feature/EndPlatformFeature.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -367,7 +368,12 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     selected_classes is not None and name not in selected_classes
                 ):
                     continue
-                if source.name == MAPPED_SERVER.name and name not in CLASSES[:48]:
+                if (
+                    source.name == MAPPED_SERVER.name and name not in CLASSES[:48]
+                    and name != (
+                        "net/minecraft/world/level/levelgen/feature/EndPlatformFeature.class"
+                    )
+                ):
                     continue
                 if (
                     source.name == PATCHED_SERVER.name

@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+Resolve the concrete platform caller gap with the exact vanilla
+EndPlatformFeature class using the existing extractor. The class is in the
+pinned mapped server archive and absent from the pinned patched server archive.
+Add only this mapped-class exception without shifting the historic first-48
+selection. This is necessary to bind the packaged feature to the captured static
+hook; it does not introduce another measurement or validation framework.
+
 Packaged End placed/configured feature rules are integrated in `7144dd8`.
 Return gateways use motion-blocking height plus 3..9, supporting a source-derived
 surface placement and discoverability description. Platform fixed origin
