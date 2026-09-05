@@ -2029,3 +2029,15 @@ changed. Reproduce with the existing builder and a fresh output path:
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-template-links.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-template-links.json
 ```
+
+### Better End Island podium invocation
+
+Preserved EndDragonFightMixin and ExitPortalUtils establish the frozen tower
+switch selection and constructor argument mapping. Initial state scanning,
+missing-portal recovery, tracked-dragon death and reset calls now have explicit
+variant dispositions. Both tower switches are true, selecting the custom helper
+branch. The helper updates first-exit state without checking custom placement
+success; this limitation remains explicit. Respawn animation callers, runtime
+initialization and generated-world reconciliation remain open. Manual bytecode
+inspection supports the new attribution; 29 existing focused tests and scoped
+builder checks passed. No new measurement or validation framework was added.
