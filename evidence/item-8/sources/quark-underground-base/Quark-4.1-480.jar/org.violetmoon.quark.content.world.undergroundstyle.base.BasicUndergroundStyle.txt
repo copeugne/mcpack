@@ -1,0 +1,95 @@
+Compiled from "BasicUndergroundStyle.java"
+public class org.violetmoon.quark.content.world.undergroundstyle.base.BasicUndergroundStyle extends org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyle {
+  public net.minecraft.world.level.block.state.BlockState floorState;
+
+  public net.minecraft.world.level.block.state.BlockState ceilingState;
+
+  public net.minecraft.world.level.block.state.BlockState wallState;
+
+  public final boolean mimicInside;
+
+  public org.violetmoon.quark.content.world.undergroundstyle.base.BasicUndergroundStyle(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: iconst_0
+       5: invokespecial #1                  // Method "<init>":(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+       8: return
+
+  public org.violetmoon.quark.content.world.undergroundstyle.base.BasicUndergroundStyle(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState, boolean);
+    Code:
+       0: aload_0
+       1: invokespecial #7                  // Method org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyle."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #12                 // Field floorState:Lnet/minecraft/world/level/block/state/BlockState;
+       9: aload_0
+      10: aload_2
+      11: putfield      #16                 // Field ceilingState:Lnet/minecraft/world/level/block/state/BlockState;
+      14: aload_0
+      15: aload_3
+      16: putfield      #19                 // Field wallState:Lnet/minecraft/world/level/block/state/BlockState;
+      19: aload_0
+      20: iload         4
+      22: putfield      #22                 // Field mimicInside:Z
+      25: return
+
+  public void fillFloor(org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyleGenerator$Context, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getfield      #12                 // Field floorState:Lnet/minecraft/world/level/block/state/BlockState;
+       4: ifnull        21
+       7: aload_1
+       8: getfield      #26                 // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator$Context.world:Lnet/minecraft/server/level/WorldGenRegion;
+      11: aload_2
+      12: aload_0
+      13: getfield      #12                 // Field floorState:Lnet/minecraft/world/level/block/state/BlockState;
+      16: iconst_2
+      17: invokevirtual #32                 // Method net/minecraft/server/level/WorldGenRegion.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      20: pop
+      21: return
+
+  public void fillCeiling(org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyleGenerator$Context, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getfield      #16                 // Field ceilingState:Lnet/minecraft/world/level/block/state/BlockState;
+       4: ifnull        21
+       7: aload_1
+       8: getfield      #26                 // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator$Context.world:Lnet/minecraft/server/level/WorldGenRegion;
+      11: aload_2
+      12: aload_0
+      13: getfield      #16                 // Field ceilingState:Lnet/minecraft/world/level/block/state/BlockState;
+      16: iconst_2
+      17: invokevirtual #32                 // Method net/minecraft/server/level/WorldGenRegion.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      20: pop
+      21: return
+
+  public void fillWall(org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyleGenerator$Context, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field wallState:Lnet/minecraft/world/level/block/state/BlockState;
+       4: ifnull        21
+       7: aload_1
+       8: getfield      #26                 // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator$Context.world:Lnet/minecraft/server/level/WorldGenRegion;
+      11: aload_2
+      12: aload_0
+      13: getfield      #19                 // Field wallState:Lnet/minecraft/world/level/block/state/BlockState;
+      16: iconst_2
+      17: invokevirtual #32                 // Method net/minecraft/server/level/WorldGenRegion.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      20: pop
+      21: return
+
+  public void fillInside(org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyleGenerator$Context, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field mimicInside:Z
+       4: ifeq          14
+       7: aload_0
+       8: aload_1
+       9: aload_2
+      10: aload_3
+      11: invokevirtual #38                 // Method fillWall:(Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator$Context;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      14: return
+}
