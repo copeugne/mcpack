@@ -53,7 +53,32 @@ application, not observed feature placement or an independently dumped final
 surface-rule tree. The latter is not claimed here.
 
 The selected Regions Unexplored surface modifier declares PREPEND for the
-Overworld. Its referenced rule bodies and the feature modifiers' configuration
-predicates still require disposition before the combined machine-readable
-update. Do not infer inactive modifiers from their no-op direct methods, or
-claim complete provider coverage from this dispatch evidence alone.
+Overworld. Source check `7b7c886` now follows its complete rule reference graph
+in the hash-bound packaged catalog, using the existing resource selector. All
+52 referenced documents resolve to that retained Regions Unexplored archive.
+Their terminal rule bodies are `minecraft:block` selections from 42 explicitly
+checked terrain block types. The traversal follows every sequence child,
+conditional result, referenced rule and both config branches, rejecting unknown
+rule forms and missing references. Its exact block set is in
+`tests/item8/test_surface_rule_contribution.py`.
+
+Executed successfully:
+
+```sh
+uv run pytest -q tests/item8/test_surface_rule_contribution.py tests/item8/test_resource_selection.py
+uv run ruff check src/mcpack_evidence/item8_resource_selection.py tests/item8/test_surface_rule_contribution.py
+uv run basedpyright src/mcpack_evidence/item8_resource_selection.py tests/item8/test_surface_rule_contribution.py
+```
+
+All nine tests and scoped quality checks passed. The source contribution is
+terrain surface/subsurface palette selection, not an additional structure
+family, template, authored enemy, spawner or loot source. Both configuration
+branches are covered, so determining which branch activates is unnecessary
+for this limited contribution disposition. This is not a claim that all 42
+blocks occur in the preserved worlds or that surface materials cannot affect
+exploration. The initial Ruff run requested two split assertions; those were
+corrected before the passing checks.
+
+Apply this surface disposition with the previously resolved compiler and street
+processor in the planned combined machine-readable update. The 34 feature
+addition/removal modifiers and broader provider coverage still require closure.
