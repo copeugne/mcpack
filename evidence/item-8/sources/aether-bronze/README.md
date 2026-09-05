@@ -61,3 +61,51 @@ uv run pytest -q tests/item8/test_aether_bronze_components.py
 ```
 
 Both focused tests and scoped Ruff/Basedpyright passed. No world measurement.
+
+## Assembly and conditional surface clue
+
+These findings derive from the preserved BronzeDungeonBuilder and
+BronzeDungeonSurfaceRuins disassemblies in this directory, not a simulation.
+
+initializeDungeon selects a boss room, square tunnel and first chest room
+when boss rotation and orientation permit. It then attempts further room
+propagation, a final lobby propagation, an end tunnel and a surface component.
+Propagation tries three relative directions in random order, follows existing
+connections recursively, and checks candidate collision, distance and terrain
+coverage. The distance check permits candidate template origins within three
+chunks in chessboard distance of the starting chunk. This is not a bound on
+the complete occupied footprint. The coverage check samples four base columns
+one block outside the candidate's horizontal corners; it does not inspect
+an entire generated roof. A propagation attempt can fail, so maxrooms=8 is
+not a guarantee of eight placed rooms.
+
+buildEndTunnel tries three directions. It accepts the first attempt returning
+success, otherwise retains the attempt with the most pieces. buildTunnelFromRoom
+starts with an entrance, adds end_corridor pieces until collision, sampled air,
+or the coordinate-distance limit stops it. Its success requires a corridor
+addition and air checks at the sampled position's bottom and piece maximum Y.
+checkForAirAtPos reads the generator base column, not the final world. A retained
+unsuccessful attempt is therefore not evidence of an open exit. The coordinate
+limit is checked after addition and does not establish an exact family width.
+
+buildSurfaceTunnel searches backward for a node with both X and Z spans greater
+than six. It samples OCEAN_FLOOR_WG first occupied height at that node's center.
+It returns without a surface piece when no such node exists or node maxY+1
+exceeds that height. Otherwise it adds BronzeDungeonSurfaceRuins above the room,
+with each horizontal side inset by three and maximum Y at sampled height+4.
+This is a conditional component, not a separate family or guaranteed entrance.
+
+The surface piece processes its horizontal perimeter using local terrain
+heights, randomized column placement, holystone/mossy holystone and slab
+providers. Column writes use world setBlock directly after an initial clipping
+check; the saved maximum Y alone is not a complete occupied-envelope proof.
+It also attempts a flower patch when the supplied clipping box contains the
+piece center. The patch anchor uses the supplied clipping box's center projected
+to OCEAN_FLOOR_WG, not necessarily the piece center. Placement results are
+ignored. These paths support a potential surface clue; they do not establish
+successful surface placement, guaranteed visual prominence or discovery range.
+
+Still unresolved: exact effective room-provider callback binding, boss rotation
+and coverage helper details where required for placement attribution, inherited
+writers and retained modifications, actual assembled envelopes and visual
+observations. Do not repeat these source reads to infer measured geometry.
