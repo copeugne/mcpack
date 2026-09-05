@@ -358,6 +358,7 @@ CLASSES: tuple[str, ...] = (
     "com/aetherteam/aether/world/processor/DoubleDropsProcessor.class",
     "com/aetherteam/aether/loot/AetherLoot.class",
     "com/aetherteam/aether/block/dungeon/ChestMimicBlock.class",
+    "com/aetherteam/aether/block/dungeon/TrappedBlock.class",
     "com/aetherteam/aether/blockentity/ChestMimicBlockEntity.class",
     "com/aetherteam/aether/world/structurepiece/bronzedungeon/BronzeDungeonBuilder.class",
     "com/aetherteam/aether/world/structurepiece/bronzedungeon/BronzeDungeonBuilder$Connection.class",
