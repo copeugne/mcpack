@@ -70,3 +70,31 @@ The inventory was rebuilt at `9f68b51` using the command above. Inventory SHA:
 `5e426fa4293e0a222ec010598921bac7ad8d550ee44b8571326fb47b57703efa`.
 Only buried treasure content/grouping and the decision input identity change;
 existing observed geometry, dimensions and world-observation links remain.
+
+## Direct-write geometry
+
+The remaining footprint and height fields are resolved from the preserved code.
+The chest target is one block. Possible infill positions are its four horizontal
+neighbors and its upper neighbor. The lower neighbor is the support state that
+already matched sandstone, stone, andesite, granite or diorite, so it cannot
+pass the subsequent air/liquid replacement condition. Relative write targets
+are therefore the center, (+/-1, 0, 0), (0, 0, +/-1) and (0, 1, 0).
+Their conservative enclosing box is 3 by 3 horizontally and 2 blocks high.
+This is not eighteen placed blocks, nor a measured generated-world footprint.
+Actual writes can be fewer or absent. Indirect block updates and retained-mod
+transformations are outside this direct-code bound.
+
+The existing focused test now derives those spans from the source-backed target
+positions. No new tool, schema or measurement system is needed.
+
+```sh
+uv run pytest -q tests/item8/test_buried_treasure_sources.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_buried_treasure_sources.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_buried_treasure_sources.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-buried-treasure-geometry.json
+```
+
+All three affected tests and scoped checks passed. Decision SHA-256:
+`6c0e1ee405a80290bc0d38675250a8486a283655a27595b9f21ab8609cb5631a`.
+This supersedes the unresolved geometry fields, not the lack of an observed
+buried-treasure sample or other recorded limitations. Item 8 remains incomplete.

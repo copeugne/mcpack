@@ -40,6 +40,16 @@ def test_buried_treasure_direct_piece_source_binding() -> None:
     assert tables == ["minecraft:chests/buried_treasure"]
     constants = code["net/minecraft/world/level/storage/loot/BuiltInLootTables.class"]
     assert "// String " + tables[0].removeprefix("minecraft:") in constants
+    # The successful support match excludes DOWN from the air/liquid infill branch.
+    # Retain the center plus the other possible direct write targets; this is an
+    # envelope, not a claim that all positions change in a generated world.
+    targets = [(0, 0, 0), (-1, 0, 0), (1, 0, 0), (0, 0, -1), (0, 0, 1), (0, 1, 0)]
+    spans = [max(p[axis] for p in targets) - min(p[axis] for p in targets) + 1
+             for axis in range(3)]
+    assert attrs["approximate_footprint"]["chest_target_xz_blocks"] == [1, 1]
+    assert attrs["approximate_footprint"]["direct_write_envelope_xz_blocks"] == [spans[0], spans[2]]
+    assert attrs["approximate_vertical_size"]["chest_target_blocks"] == 1
+    assert attrs["approximate_vertical_size"]["direct_write_envelope_blocks"] == spans[1]
     assert attrs["mob_source"]["authored_entity_ids"] == []
     assert attrs["generated_spawners"]["vanilla_spawner_block_types"] == []
     assert cast("dict[str, JsonValue]", variant["definition"])["spawn_overrides"] == {}
