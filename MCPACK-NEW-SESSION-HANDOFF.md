@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-05
 
+Very Small Nether Ruins grouping is delivered through `7e883a8`, built from
+`cfe63fe`. Inventory SHA-256:
+`53d6ea7bba9c7accdd3d4b075ad27fba5a50f3d530458555ac216d6c19ca98a6`.
+Seven registry entries map to one working ruin family with six distinct
+templates. The unnumbered `mns:very_small_nether_brick` definition exactly
+duplicates `mns:very_small_blackstone`, including its start pool, and reaches
+`mns:ruins/very_small_blackstone_1`. Both IDs remain for placement accounting;
+the duplicate does not create another family or template. The direct source
+check binds this finding, common definitions, variant dimensions and coverage.
+Fourteen retained world observations are linked. Twenty-five focused tests and
+scoped quality checks passed. The inventory reproduced byte for byte and prior
+groups remained equal. Current totals: 163 working groups, 249 assigned entries,
+638 unassigned. Forty-five mns roots remain unassigned. Continue their bridge,
+fungus, well, arena and other design/variant relationships, then other providers
+and required attributes. Relationships to larger ruins, effective custom Nether
+placement and gameplay remain unresolved. No final gate, report, review or main
+merge is claimed.
+
 Soaring river grouping is delivered through `0c08c16`, built from `977b343`.
 Inventory SHA-256: `d6c506ffc79c56888ae7ca2caa3120c9b611908275ec9467f778f48c4db659f9`.
 All 35 mss registry entries map once to 27 working families. Birch and Cherry
