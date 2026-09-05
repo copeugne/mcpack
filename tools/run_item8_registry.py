@@ -42,6 +42,7 @@ class Arguments(BaseModel):
     output: Path
     timeout_seconds: int = Field(gt=0)
     exit_timeout_seconds: int = Field(default=120, gt=0)
+    dimension_biomes: bool = False
 
 
 def check_ports(properties: Path) -> None:
@@ -59,7 +60,7 @@ def check_ports(properties: Path) -> None:
         probe.bind(("0.0.0.0", port))  # noqa: S104 - availability check only; never listens.
 
 
-def capture(arguments: Arguments) -> dict[str, JsonValue]:
+def capture(arguments: Arguments) -> dict[str, JsonValue]:  # noqa: C901, PLR0915 - probe build and receipt share capture cleanup.
     """Reuse the retained-136 preflight and configuration audit, preserving failures."""
     if any(path.is_symlink() for path in (arguments.output, *arguments.output.parents)):
         message = "capture output must not traverse a symlink"
@@ -114,17 +115,47 @@ def capture(arguments: Arguments) -> dict[str, JsonValue]:
         report["preflight"] = json.loads(preflight.model_dump_json())
         check_ports(request.runtime.target / "server.properties")
         java, _ = validate_java_runtime(request.runtime.java_home)
+        probe: Path | None = None
+        if arguments.dimension_biomes:
+            classes = output / "dimension-probe-classes"
+            classes.mkdir()
+            probe = output / "dimension-probe.jar"
+            source = ROOT / "tools/Item8DimensionProbe.java"
+            manifest = ROOT / "tools/Item8DimensionProbe.mf"
+            report["dimension_probe"] = {
+                "source_sha256": sha256_file(source),
+                "manifest_sha256": sha256_file(manifest),
+            }
+            with (output / "dimension-probe-build.log").open("x", encoding="utf-8") as build_log:
+                for command in (
+                    [str(java.with_name("javac")), "-classpath", str(classes), "-Xlint:all",
+                     "-Werror", "-d", str(classes), str(source)],
+                    [str(java.with_name("jar")), "--create", "--file", str(probe),
+                     "--manifest", str(manifest), "--date=2026-09-05T00:00:00Z",
+                     "-C", str(classes), "."],
+                ):
+                    _ = subprocess.run(  # noqa: S603 - pinned JDK, tracked source, fresh output.
+                        command, stdout=build_log, stderr=subprocess.STDOUT, check=True, timeout=45
+                    )
+            report["dimension_probe"] = {
+                "source_sha256": sha256_file(source),
+                "manifest_sha256": sha256_file(manifest),
+                "jar_sha256": sha256_file(probe),
+            }
         lifecycle = run_registry_lifecycle(
             request.runtime.target,
             java,
             request.runtime.log_path,
             arguments.timeout_seconds,
             arguments.exit_timeout_seconds,
+            dimension_probe=probe,
         )
         report["lifecycle"] = json.loads(lifecycle.model_dump_json())
         if not lifecycle.clean_stop:
             message = lifecycle.rejection_reason or "registry lifecycle rejected"
             raise ValueError(message)  # noqa: TRY301 - emit the rejected capture receipt.
+        if arguments.dimension_biomes:
+            report["dimension_biomes_sha256"] = sha256_file(output / "dimension-biomes.json")
         configuration = capture_control_configuration(request)
         report["configuration"] = json.loads(configuration.model_dump_json())
         registries: dict[str, JsonValue] = {}
@@ -143,7 +174,7 @@ def capture(arguments: Arguments) -> dict[str, JsonValue]:
             }
         report["registries"] = registries
         report["rejection_reason"] = None
-    except (OSError, ValueError, Item7RuntimeError) as error:
+    except (OSError, ValueError, Item7RuntimeError, subprocess.SubprocessError) as error:
         report["rejection_reason"] = str(error)
     finally:
         for name in ("latest.log", "debug.log"):
@@ -164,6 +195,7 @@ def main() -> int:
         _ = parser.add_argument(f"--{name}", type=Path, required=True)
     _ = parser.add_argument("--timeout-seconds", type=int, default=900)
     _ = parser.add_argument("--exit-timeout-seconds", type=int, default=120)
+    _ = parser.add_argument("--dimension-biomes", action="store_true")
     arguments = Arguments.model_validate(vars(parser.parse_args()), strict=True)
     report = capture(arguments)
     print(json.dumps(report, indent=2))
