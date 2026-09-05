@@ -346,6 +346,7 @@ CLASSES: tuple[str, ...] = (
     "org/violetmoon/zeta/world/generator/OreGenerator.class",
     "com/tristankechlo/explorations/worldgen/structures/SlimeCaveStructure.class",
     "com/tristankechlo/explorations/worldgen/structures/pieces/SlimeCaveStructurePiece.class",
+    "com/tristankechlo/explorations/worldgen/structures/processors/DeepslateProcessor.class",
     "org/violetmoon/quark/content/world/gen/BigStoneClusterGenerator$1.class",
     "org/violetmoon/quark/content/world/module/CherryGroveWaterPetalsModule.class",
     "org/violetmoon/quark/content/world/gen/BlossomTreeGenerator.class",

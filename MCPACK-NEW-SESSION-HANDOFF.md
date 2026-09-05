@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-05
 
+Slime Cave's custom structure and piece are preserved in d3543c5. One rotated
+template supplies slime and spawner markers. Inspect its DeepslateProcessor
+before final effective-content attribution, then bind the existing template
+catalog in a focused test and integrate the required attributes. Do not repeat
+generator/marker tracing or create a new measurement system.
+
 The provider review confirms Explorations Slime Cave still lacks custom
 generation/component attribution in the existing inventory. Inspect its
 SlimeCaveStructure and SlimeCaveStructurePiece using the existing extractor.
