@@ -6,6 +6,32 @@
 
 ### Continuation update - 2026-09-05
 
+Medium Nether houses are delivered through `8d778dc`, built from `298911d`.
+Inventory SHA-256:
+`0b255191173f24467ac1fe8f337372e6d0ee08b4df1fd2e3cae8400fe242b088`.
+Two roots form one working family; twelve retained observations are linked.
+The joined output preserves three empty spawner entity objects in the first
+template and two in the second as unresolved, alongside the first template's
+explicit piglin spawner. Template-authored piglin/brute entities remain distinct
+from spawner sources. Thirty focused tests and scoped quality checks passed;
+the inventory reproduced byte for byte with prior families unchanged. Totals:
+168 working groups, 266 assigned IDs, 621 unassigned; 28 mns roots remain open.
+
+`37e0c78` extends the existing extractor by two class prefixes to inspect
+GenericNetherJigsawStructure, its direction enum and YRangeAllowance.
+`d3e8c20` retains the reproducible archive-scoped output in
+`evidence/item-8/sources/moog-nether-generator-code`. The existing extractor
+emits the superclass and pool codecs too; its complete identity manifest is
+preserved without adding a filtering framework. This directly supports the
+open Item 8 placement attributes for the Nether families. Scoped quality checks
+passed and output matched the pilot. postLayoutAdjustments centers pieces,
+selects fixed height or GeneralUtils highest/lowest land, applies offsets and
+height bounds, then moves pieces. GeneralUtils terrain methods and inherited
+layout behavior still need inspection before claiming complete placement.
+Continue remaining Nether designs, provider coverage and attributes. Large and
+warped house relationships remain undecided. No final Item 8 gate, clean review
+or main merge is claimed.
+
 Circular Nether ruins are delivered through `d62ade9`, built from `2ba75aa`.
 Inventory SHA-256:
 `f24fa7c214ee95359b1b2607cb14e097152653febad7da73b8291c893195a7d6`.
