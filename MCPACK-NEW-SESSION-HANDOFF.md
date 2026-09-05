@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+All sixteen declared Moog mixins delivered in a7af1d6 using c388784 and reproduced
+at evidence/raw/item8/moog-declared-mixins-r1. Ten accessors, six behavioral hooks.
+StructurePoolMixin raises a codec weight bound to 5000, not content injection;
+optional injection remains distinct from runtime activation. Remaining direct
+boundaries: registry/service dispatch, MixinUtils, EnhancedBeardifierHelper and
+DebugFlags. Do not repeat mixin capture or expand into geometry/noise internals.
+Count unchanged: 30 provider dispositions, 106 open. Continue candidate coverage.
+
 Moog callback/reload/command capture delivered in 5a83e4c using 6d7a961,
 reproduced byte for byte at evidence/raw/item8/moog-provider-callbacks-r1. The
 entry callback bootstrap omission is resolved. TrialSpawnerConfigManager loads
