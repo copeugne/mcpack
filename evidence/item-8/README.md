@@ -707,3 +707,44 @@ code confirms additions append weighted elements and limited elements delegate
 to their wrapped template. Conditions, other applicable modifications and
 runtime generation remain unresolved. The accepted pool trace and inventory
 are unchanged until that application step is supported and implemented.
+
+## Village Taverns parent-family relationships
+
+The existing modifier and pool evidence now has explicit parent links in each
+applicable family decision's village_taverns_templates field. This is component
+attribution, not a new family classification or observed placement count.
+
+The packaged catalog contains 26 applicable additions conditioned on
+village_taverns: five from Village Taverns and 21 from CTOV. The preserved trace
+includes all 26 modifiers. Of their 26 distinct template references, 25 are
+reachable from 66 registered roots in 22 current working groups: 60 CTOV roots
+in 20 groups, five vanilla village roots in one group, and the IDAS castle root.
+The castle reaches the plains tavern through its pool graph, so restricting
+attribution to village-named roots would omit a real relationship.
+
+ctov:village/dark_forest/jobsite/tavern is the remaining untraced addition.
+Its target ctov:village/halloween/house is registered, but no current structure
+trace reaches that template. Preserve it as an included modifier with no traced
+parent, not a missing mod, missing pool, generating family or observed failure.
+These links do not establish successful placement, full provider completeness,
+final CTOV canonical grouping or all non-registry content.
+
+The existing builder preserves these links inside grouping_decision. The
+focused family test independently derives the template set from the packaged
+modifier definitions, checks selected modifier dispositions and joins the
+existing structure traces to every parent assignment. Its assertions are the
+tracked reproduction logic for the counts above. No new measurement system,
+collector or general relationship framework is introduced.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-tavern-relationships.json
+```
+
+Decision SHA-256:
+`f74b70a63144b337d3483dba03e50a3193bcf82b06eeeb1112d3f6898e7c3236`.
+
+All 63 affected tests passed. Scoped Ruff and Basedpyright passed; the initial
+lint finding was one long test line, corrected without changing behavior.
