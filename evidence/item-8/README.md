@@ -2,9 +2,9 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `bdcee2c`, SHA-256
-`151e5afe848e375cfdc7ef42887ec8e43c311250a45882a52645362de1c2e9ed`.
-All 887 registered roots are assigned once in 429 working groups. This is not
+Current working inventory regenerated at `aa01ac1`, SHA-256
+`d38983b380fedb771dbe47aefb274e287a9dfa355e37d4b9a617babac68df33e`.
+All 887 registered roots are assigned once in 427 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
 IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
@@ -963,3 +963,8 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-mvs-
 
 All 67 affected tests and scoped Ruff/Basedpyright checks passed. Full variant
 records retain the terrain-check differences; no configuration was changed.
+
+Grouping delivered in `aa01ac1`; inventory regenerated at that revision, SHA-256:
+`d38983b380fedb771dbe47aefb274e287a9dfa355e37d4b9a617babac68df33e`.
+Camp root/template/biome/loot and observation coverage is preserved. The mine
+row changes only its grouping rationale; other family rows are unchanged.
