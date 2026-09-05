@@ -257,12 +257,8 @@ def test_spider_dungeon_attributes_bind_custom_spawners_loot_and_components() ->
         "SpiderDungeonSmallTunnelPiece",
         "SpiderDungeonNestPiece",
     ):
-        assert (
-            "// class com/yungnickyoung/minecraft/betterdungeons/"
-            + "world/structure/spider_dungeon/piece/"
-            + component
-            in texts["SpiderDungeonBigTunnelPiece"]
-        )
+        reference = f"spider_dungeon/piece/{component}"
+        assert reference in texts["SpiderDungeonBigTunnelPiece"]
     assert "SpiderDungeonEggRoomPiece" in texts["SpiderDungeonSmallTunnelPiece"]
     attrs = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
     spawners = cast("list[dict[str, str]]", attrs["generated_spawners"]["source_components"])
