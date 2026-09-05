@@ -42,3 +42,39 @@ container reward. Resolve its selected packaged definition and module event
 handlers before finalizing mob IDs or later spawned-mob behavior. Frozen field
 binding, ticker callback binding and saved-world attribution also remain open.
 Do not mistake the SPAWNER spawn reason for a placed minecraft:spawner block.
+
+## Selected packaged loot sources
+
+The existing resource selector, with vanilla/mod_data and the verified
+Lithostitched overlay, selects the following Quark-4.1-480.jar resources from
+packaged-json-redacted.json.gz. The tracked test binds the catalog hash, selected
+archive and resource hashes, and the complete spawn-selection document:
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py -k monster_box
+```
+
+- quark:misc/monster_box_spawns: b8f5f6566c55bb61ce0b0415ac256aee6a2bec157d882270054539f6b0116a22.
+- quark:misc/monster_box: d55a75d3ff4510472cf68eed41fc5c2a40aa898629493d90b4ff57f4a444423d.
+- quark:blocks/monster_box: 54529647aa2f43bc3a48fe1cf9379926ea6cbff35d1fbfee70fd74498d00288e.
+
+The spawn-selection table has one pool and one roll, with witch, cave-spider
+and zombie spawn eggs weighted 1, 2 and 7. These are authored selection weights,
+not measured encounter frequencies or successful entity counts. The block's
+ordinary loot table declares no pools. The separate misc/monster_box table is
+an entity-context reward table, with one roll across weighted resources, food,
+equipment and rarities. Its exact entries remain in the preserved catalog.
+
+The already captured MonsterBoxModule.onDrops uses that reward table only when
+enableExtraLootTable is true, the entity is on a ServerLevel and carries
+quark:monster_box_spawned, doMobLoot is true, and the accessor's last-hurt-by-player
+time is positive. It appends the resulting captured drops to the event's drops.
+This is not a container reward and does not replace the spawn-selection table.
+Event binding and the accessor's target semantics remain unresolved.
+
+The first test execution passed but the type check rejected loot_table as an
+undeclared selector kind. Adding that existing resource kind to the Literal
+annotation required no selection-logic change. All 31 focused tests, Ruff and
+Basedpyright then passed. No runtime or measurement system was added. Family
+integration, effective callback/configuration binding and world attribution
+remain open; the packaged table identity and entries need no further extraction.
