@@ -71,6 +71,7 @@ CLASSES = (
     "net/minecraft/world/level/block/entity/trialspawner/TrialSpawner.class",
     "net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig.class",
     "net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData.class",
+    "net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerState.class",
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs.class",
     "YungJigsawSinglePoolElement.class",
     "IASinglePoolElement.class",
@@ -187,7 +188,7 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     selected_classes is not None and name not in selected_classes
                 ):
                     continue
-                if source.name == MAPPED_SERVER.name and name not in CLASSES[:7]:
+                if source.name == MAPPED_SERVER.name and name not in CLASSES[:8]:
                     continue
                 if (
                     source.name == PATCHED_SERVER.name
