@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-05
 
+MVS rock/pond grouping decisions are delivered in `bdcee2c`. Boulder and
+stone-rock roots become one rock family; mushroom and oak pond roots become
+one pond family. Exact definitions, seven rock template alternatives, four pond
+components and distinct pond loot references are preserved. Working total is
+429 groups with 887 registered roots. All 66 affected tests passed; after an
+annotation-only fix the two affected cases and scoped checks also pass.
+Inventory SHA-256:
+`151e5afe848e375cfdc7ef42887ec8e43c311250a45882a52645362de1c2e9ed`.
+Reproduction is in the final MVS section of `evidence/item-8/README.md`.
+Remaining MVS camps/island relationships, BetterEnd, provider coverage and
+required attributes are still open. Item 8 remains incomplete; no tuning or
+downstream work. No additional measurement system was introduced.
+
+
 CTOV canonical village reconciliation is delivered in `5bb0942`. One civilian
 village family now contains 22 named architectural/placement designs and all 66
 size/design roots; hostile outposts remain separate. Exact definitions, missing
