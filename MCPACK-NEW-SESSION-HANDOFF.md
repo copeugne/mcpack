@@ -6,6 +6,37 @@
 
 ### Continuation update - 2026-09-05
 
+Trial alias source semantics are delivered in `fab1b99`; tool selection was
+added in `0b43dfd`/`484ff42`. The existing inspection tool now optionally selects
+exact classes so new evidence does not duplicate old disassemblies or revise
+unrelated identities. Four exact classes were retained under
+`evidence/item-8/sources/lithostitched-alias-code`. Identities SHA:
+`eea3af78139809c0a2452a0027bfe83fac321380574b3a10ba3d8dcc16c1691b`.
+All four matched the corresponding initial broad extraction; scoped Ruff and
+basedpyright passed. Reproduction and method details are in that directory's
+README. No new measurement system or runtime capture was added.
+
+The alias gap is material: Regions Unexplored adds
+`regions_unexplored:trial_chambers/ashen` to the melee pool tag. The current
+accepted trace still omits that replacement path. `SetPoolAliasesModifier`
+replaces vanilla jigsaw aliases when append=false. `RandomEntries` draws one
+index using the first holder-set size, then applies that index across the
+aliases and holder sets. Preserve this shared-index relationship, especially
+ranged/slow-ranged. Its `allTargets` method returns an empty stream and is not
+valid evidence of absent targets. The lookup mixin keeps the last duplicate
+alias entry. Do not infer ordered tag membership or joint spawn frequency from
+a sorted union of possible targets.
+
+Next correct the existing trace using the replacement and additive pool-tag
+sources, with a focused regression proving the ashen contribution and preserved
+source/correlation evidence. Existing biome tag merging is currently hardcoded
+to biome tags; reuse that logic where appropriate rather than adding a parallel
+tag framework. Raw-template compilation runs at priority 2147483647 and calls
+each pool's `compileRawTemplates`; the delegate implementation still needs
+inspection. The accepted trace, family decisions and working inventory remain
+unchanged by this source inspection. Broader Item 8 closure remains open as
+listed below.
+
 Better Village attribution is delivered: tool `cd2d54f`, seven-class code
 evidence `45ab692`, family decision/test `9595c52`, working inventory `18c7466`.
 No extra family or compatibility simulator was introduced. The existing
