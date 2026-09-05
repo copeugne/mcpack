@@ -6,6 +6,19 @@
 
 ### Continuation update - 2026-09-05
 
+Mountain base placement precheck is integrated in `b52dfa9`. The independent
+FeatureBaseStructure Y >= 10 check precedes the root-specific Y > 5 / Y > 50
+checks. Both sampling stages remain explicit. All 73 affected tests and scoped
+checks passed. Inventory SHA-256:
+`e7c1a4fefa8ba492c93cef684994c60509cf8849a44934500d6563d7413fee80`.
+Only mountain placement and its grouping decision changed. Still 421 working
+groups / 887 roots. Continue lake/custom content and canonical/provider coverage;
+Item 8 remains incomplete. LakePiece inspection shows biome top-material lookup
+via EndBiome.findTopMaterial and direct jungle-grass/umbrella-moss rim placement;
+these are leads for the remaining lake attribution, not accepted full contents.
+No new measurement system, runtime or downstream work was added.
+
+
 BetterEnd mountain direct encounter/loot attribution is delivered in `1ee796e`.
 The seven preserved generator/base/piece classes contain no direct authored mob,
 spawner or container-loot path; both definitions have empty spawn overrides.

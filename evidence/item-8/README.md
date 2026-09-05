@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `1ee796e`, SHA-256
-`24e6dfa796602032aedb3e97642453fa92b9ceeace619f70df51797a4b3383aa`.
+Current working inventory regenerated at `b52dfa9`, SHA-256
+`e7c1a4fefa8ba492c93cef684994c60509cf8849a44934500d6563d7413fee80`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1233,3 +1233,8 @@ uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_invento
 uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-mountain-precheck.json
 ```
+
+All 73 affected tests and scoped checks passed. Inventory regenerated at
+`b52dfa9`, SHA-256:
+`e7c1a4fefa8ba492c93cef684994c60509cf8849a44934500d6563d7413fee80`.
+Only the mountain placement field and its grouping decision changed.

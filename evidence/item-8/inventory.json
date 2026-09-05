@@ -14221,6 +14221,13 @@
             "scope": "Direct BetterEnd generator and piece code. Natural biome spawning and external retained-mod injections are not measured by this source inspection."
           },
           "underground_surface_classification": {
+            "base_generation_point_check": {
+              "class": "org.betterx.betterend.world.structures.features.FeatureBaseStructure",
+              "method": "findGenerationPoint",
+              "minimum_inclusive_sampled_y": 10,
+              "ordering": "The base check runs before generatePieces. Both this check and the later per-root threshold must pass; they must not be collapsed into one threshold at one position.",
+              "sampling": "getGenerationHeight samples WORLD_SURFACE_WG using getFirstOccupiedHeight; this is a separate position selection from the root generatePieces getBaseHeight sample."
+            },
             "basis": "Both root generators sample the base surface height and construct their piece at that Y only above the recorded threshold. PaintedMountainPiece builds columns upward from local surface support; CrystalMountainPiece places a mountain body and crystal formations.",
             "classification": "Surface-rooted procedural mountain formation.",
             "minimum_exclusive_start_y_by_structure": {
@@ -14301,6 +14308,13 @@
         "betterend:painted_mountain"
       ],
       "underground_surface_classification": {
+        "base_generation_point_check": {
+          "class": "org.betterx.betterend.world.structures.features.FeatureBaseStructure",
+          "method": "findGenerationPoint",
+          "minimum_inclusive_sampled_y": 10,
+          "ordering": "The base check runs before generatePieces. Both this check and the later per-root threshold must pass; they must not be collapsed into one threshold at one position.",
+          "sampling": "getGenerationHeight samples WORLD_SURFACE_WG using getFirstOccupiedHeight; this is a separate position selection from the root generatePieces getBaseHeight sample."
+        },
         "basis": "Both root generators sample the base surface height and construct their piece at that Y only above the recorded threshold. PaintedMountainPiece builds columns upward from local surface support; CrystalMountainPiece places a mountain body and crystal formations.",
         "classification": "Surface-rooted procedural mountain formation.",
         "minimum_exclusive_start_y_by_structure": {
@@ -158895,7 +158909,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "3b9163176c218891042b6caa75b4060a4ec413fa5293079fb1c4ebd3e1c6e727",
+    "evidence/item-8/family-decisions.json": "2e7648906f19e6052298cc4a999aa591a6694756315cc6a63da0dc3ea9d6a10b",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
