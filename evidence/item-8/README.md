@@ -527,3 +527,21 @@ rewrite was rejected during diff inspection and removed before committing;
 prior decisions and generated family records remain unchanged. The generated
 join is isolated because it expands existing biome, template and observation
 attribution for the whole provider. No new measurement system was introduced.
+
+AdoraBuild (`306e678`, joined in `d0ad289`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-306e678.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-306e678-repro.json
+cmp evidence/raw/item8/inventory-adora-306e678.json evidence/raw/item8/inventory-adora-306e678-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 47 focused tests and scoped Ruff/basedpyright checks passed. The existing
+provider check now binds 106 distinct AdoraBuild roots across 31 working groups,
+full definitions and missing-component lists. Material and size variants remain
+explicit without increasing the family count for each root. The generated join
+is isolated from its source decisions. Prior family records are unchanged.
+World observations exist for basalt chambers, houses, Nether fortresses and
+prisons. Custom generator behavior, effective attributes and final canonical
+reconciliation remain open. No new measurement system was needed.
