@@ -63,3 +63,8 @@ All 62 affected tests passed. Scoped Ruff and Basedpyright passed after fixing
 a line wrap and explicitly converting palette names to strings in the new test.
 The final focused test passed as well. Decision SHA-256:
 `d1af44e8dd07c4ab772e223d52f16984520eb5ba6517db884bc0d06c99c69593`.
+
+The inventory was rebuilt at delivered source revision `9e13390` with the command
+above. Inventory SHA-256:
+`d2be7cc46dd728e03729370881c10747960302a91770644fc98a8bbcc87bb573`.
+Source inspection is delivered in `fab790e`. Item 8 remains incomplete.
