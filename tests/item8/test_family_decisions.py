@@ -36,6 +36,7 @@ if TYPE_CHECKING:
         "mvs:",
         "aether:",
         "deep_aether:",
+        "betterend:",
     ],
 )
 def test_authored_designs_bind_roots_settings_and_missing_components(
@@ -135,8 +136,8 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
             },
         }
         custom_keys["mvs:"] = custom_keys["aether:"] = custom_keys["deep_aether:"] = custom_keys[
-            "mns:"
-        ]
+            "betterend:"
+        ] = custom_keys["mns:"]
         if namespace in custom_keys:
             assert row["custom_generation_settings"] == {
                 key: definition[key] for key in custom_keys[namespace] if key in definition
