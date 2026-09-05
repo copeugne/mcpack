@@ -160,3 +160,49 @@ Nine cases pass. Scoped Ruff and Basedpyright pass after correcting an overlong
 assertion and splitting a compound assertion. No additional runtime measurement.
 Continue supported roles and unexplained-resource reconciliation for the other
 retained providers; the whole-stack gate remains open.
+
+## Repurposed Structures Farmer's Delight component provider
+
+`repurposed_structures_farmers_delight_compat_v7.jar` contributes component
+injection declarations, piece-count limits and block-rule processor data for
+existing Repurposed Structures villages. It contributes no independent root.
+The complete archive contains only three metadata files, 13 templates, 12 pool
+addition documents, 12 piece-count documents and 11 processor lists. The loader
+is lowcodefml; complete file accounting excludes executable code or additional
+generation resource mechanisms in this add-on.
+
+The twelve target variants are badlands, bamboo, birch, cherry, dark_forest,
+giant_taiga, jungle, mountains, mushroom, oak, ocean and swamp. For each variant
+`V`, the component link is:
+
+- Root candidate: `repurposed_structures:village_V`, present in the captured
+  live structure registry.
+- Pool addition target: `repurposed_structures:villages/V/houses`.
+- Component: `farmersdelight:villages/V/houses/compost_pile_1`.
+
+The mushroom target also references `farmersdelight:villages/mushroom/houses/mushroom_farm`.
+The sets referenced by pool additions and piece-count declarations each equal
+the entire packaged template set. No template is left without a component link.
+Ten crop_randomizer processor lists cover the variants other than mushroom and
+ocean; the eleventh is mushroom/mushroom_randomizer. All use minecraft:rule.
+These are existing-generation modifications, not additional family candidates.
+
+This establishes the add-on's candidate boundary. Actual injection execution,
+effective processor precedence and resulting family attributes still belong to
+the consuming Repurposed Structures implementation and existing inventory work.
+In particular, this does not resolve the already recorded bamboo processor
+collision or claim that every component was observed in generated worlds.
+
+The full JSON and template payloads are already preserved in the pinned packaged
+catalogs listed above. No new raw capture is required. Reproduce the complete
+archive accounting and runtime-root links with:
+
+```sh
+uv run pytest -q tests/item8/test_rs_delight_provider_scope.py
+```
+
+One case passes. Ruff and Basedpyright pass after explicit string concatenation
+and JSON type corrections. This brings the explicit provider dispositions in
+this document to 17 of 136. The other 119 require reconciliation into this gate,
+including reuse of previously captured and interpreted evidence. This is a
+provider-accounting remainder, not an unfinished-family count.
