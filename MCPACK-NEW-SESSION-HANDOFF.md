@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+Spire biome filter semantics are integrated in `4233dec`, using compound and
+component captures delivered in `fb71580` and `e0792bc`. The default empty tag
+blacklist passes and the explicit allowlist admits End Highlands only. Do not
+repeat predicate tracing. Effective configuration binding, world attribution,
+other Quark consumers and broader provider coverage remain open. Thirty focused
+tests and scoped checks passed. No new measurement system was added.
+
 Spiral spire is one working landmark family in `0288f13`; repeated spires and
 random geometry remain instances/variants. Chorus vegetation is accounted for
 without a separate structure family. Source-derived attributes reference the
