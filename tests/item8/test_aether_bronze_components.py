@@ -82,3 +82,8 @@ def test_bronze_selected_processor_inputs() -> None:
         doc = cast("dict[str, JsonValue]", processors[key]["document"])
         entries = cast("list[dict[str, JsonValue]]", doc["processors"])
         assert [entry["processor_type"] for entry in entries] == types
+    loot, _ = select_resources(catalog["resources"], "loot_table",
+                              enabled_packs=["vanilla", "mod_data"],
+                              lithostitched_overlay=True)
+    assert {"aether:chests/dungeon/bronze/bronze_dungeon",
+            "aether:chests/dungeon/bronze/bronze_dungeon_reward"} <= loot.keys()
