@@ -1,0 +1,369 @@
+Compiled from "DumpCommand.java"
+class net.neoforged.neoforge.server.command.DumpCommand {
+  private static final org.slf4j.Logger LOGGER;
+
+  private static final net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<net.minecraft.core.Registry<?>>> ROOT_REGISTRY_KEY;
+
+  private static final java.lang.String ALPHABETICAL_SORT_PARAM = "alphabetical_sort";
+
+  private static final java.lang.String PRINT_NUMERIC_ID_PARAM = "print_numeric_ids";
+
+  private static final com.mojang.brigadier.exceptions.DynamicCommandExceptionType UNKNOWN_REGISTRY;
+
+  net.neoforged.neoforge.server.command.DumpCommand();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static com.mojang.brigadier.builder.ArgumentBuilder<net.minecraft.commands.CommandSourceStack, ?> register();
+    Code:
+       0: ldc           #7                  // String dump
+       2: invokestatic  #9                  // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+       5: invokedynamic #15,  0             // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+      10: invokevirtual #19                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.requires:(Ljava/util/function/Predicate;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      13: checkcast     #20                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      16: ldc           #25                 // String registry
+      18: invokestatic  #9                  // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+      21: ldc           #25                 // String registry
+      23: getstatic     #27                 // Field ROOT_REGISTRY_KEY:Lnet/minecraft/resources/ResourceKey;
+      26: invokestatic  #33                 // Method net/minecraft/commands/arguments/ResourceKeyArgument.key:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/commands/arguments/ResourceKeyArgument;
+      29: invokestatic  #39                 // Method net/minecraft/commands/Commands.argument:(Ljava/lang/String;Lcom/mojang/brigadier/arguments/ArgumentType;)Lcom/mojang/brigadier/builder/RequiredArgumentBuilder;
+      32: invokedynamic #43,  0             // InvokeDynamic #1:getSuggestions:()Lcom/mojang/brigadier/suggestion/SuggestionProvider;
+      37: invokevirtual #47                 // Method com/mojang/brigadier/builder/RequiredArgumentBuilder.suggests:(Lcom/mojang/brigadier/suggestion/SuggestionProvider;)Lcom/mojang/brigadier/builder/RequiredArgumentBuilder;
+      40: invokedynamic #53,  0             // InvokeDynamic #2:run:()Lcom/mojang/brigadier/Command;
+      45: invokevirtual #57                 // Method com/mojang/brigadier/builder/RequiredArgumentBuilder.executes:(Lcom/mojang/brigadier/Command;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      48: checkcast     #48                 // class com/mojang/brigadier/builder/RequiredArgumentBuilder
+      51: ldc           #61                 // String alphabetical_sort
+      53: invokestatic  #63                 // Method com/mojang/brigadier/arguments/BoolArgumentType.bool:()Lcom/mojang/brigadier/arguments/BoolArgumentType;
+      56: invokestatic  #39                 // Method net/minecraft/commands/Commands.argument:(Ljava/lang/String;Lcom/mojang/brigadier/arguments/ArgumentType;)Lcom/mojang/brigadier/builder/RequiredArgumentBuilder;
+      59: invokedynamic #69,  0             // InvokeDynamic #3:run:()Lcom/mojang/brigadier/Command;
+      64: invokevirtual #57                 // Method com/mojang/brigadier/builder/RequiredArgumentBuilder.executes:(Lcom/mojang/brigadier/Command;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      67: checkcast     #48                 // class com/mojang/brigadier/builder/RequiredArgumentBuilder
+      70: ldc           #70                 // String print_numeric_ids
+      72: invokestatic  #63                 // Method com/mojang/brigadier/arguments/BoolArgumentType.bool:()Lcom/mojang/brigadier/arguments/BoolArgumentType;
+      75: invokestatic  #39                 // Method net/minecraft/commands/Commands.argument:(Ljava/lang/String;Lcom/mojang/brigadier/arguments/ArgumentType;)Lcom/mojang/brigadier/builder/RequiredArgumentBuilder;
+      78: invokedynamic #72,  0             // InvokeDynamic #4:run:()Lcom/mojang/brigadier/Command;
+      83: invokevirtual #57                 // Method com/mojang/brigadier/builder/RequiredArgumentBuilder.executes:(Lcom/mojang/brigadier/Command;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      86: invokevirtual #73                 // Method com/mojang/brigadier/builder/RequiredArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      89: invokevirtual #73                 // Method com/mojang/brigadier/builder/RequiredArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      92: invokevirtual #77                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      95: invokevirtual #77                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      98: areturn
+
+  private static int dumpRegistry(com.mojang.brigadier.context.CommandContext<net.minecraft.commands.CommandSourceStack>, boolean, boolean) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: aload_0
+       1: ldc           #25                 // String registry
+       3: getstatic     #27                 // Field ROOT_REGISTRY_KEY:Lnet/minecraft/resources/ResourceKey;
+       6: invokestatic  #78                 // Method net/neoforged/neoforge/server/command/CommandUtils.getResourceKey:(Lcom/mojang/brigadier/context/CommandContext;Ljava/lang/String;Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+       9: invokevirtual #84                 // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+      12: checkcast     #90                 // class net/minecraft/resources/ResourceKey
+      15: astore_3
+      16: aload_0
+      17: invokevirtual #92                 // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+      20: checkcast     #97                 // class net/minecraft/commands/CommandSourceStack
+      23: invokevirtual #99                 // Method net/minecraft/commands/CommandSourceStack.getServer:()Lnet/minecraft/server/MinecraftServer;
+      26: invokevirtual #103                // Method net/minecraft/server/MinecraftServer.registryAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+      29: aload_3
+      30: invokeinterface #109,  2          // InterfaceMethod net/minecraft/core/RegistryAccess$Frozen.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      35: aload_3
+      36: invokedynamic #114,  0            // InvokeDynamic #5:get:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/function/Supplier;
+      41: invokevirtual #118                // Method java/util/Optional.orElseThrow:(Ljava/util/function/Supplier;)Ljava/lang/Object;
+      44: checkcast     #121                // class net/minecraft/core/Registry
+      47: astore        4
+      49: ldc           #123                // String
+      51: astore        5
+      53: invokestatic  #125                // Method net/neoforged/fml/loading/FMLLoader.getGamePath:()Ljava/nio/file/Path;
+      56: ldc           #131                // String dumps
+      58: invokeinterface #133,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      63: ldc           #25                 // String registry
+      65: invokeinterface #133,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      70: astore        6
+      72: aload         6
+      74: aload_3
+      75: invokevirtual #139                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      78: invokevirtual #143                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+      81: ldc           #149                // String [/:.]
+      83: ldc           #151                // String _
+      85: invokevirtual #153                // Method java/lang/String.replaceAll:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      88: invokeinterface #133,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      93: astore        7
+      95: aload         7
+      97: iconst_0
+      98: anewarray     #159                // class java/nio/file/attribute/FileAttribute
+     101: invokestatic  #161                // Method java/nio/file/Files.createDirectories:(Ljava/nio/file/Path;[Ljava/nio/file/attribute/FileAttribute;)Ljava/nio/file/Path;
+     104: pop
+     105: aload_3
+     106: invokevirtual #139                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     109: invokevirtual #167                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+     112: ldc           #149                // String [/:.]
+     114: ldc           #151                // String _
+     116: invokevirtual #153                // Method java/lang/String.replaceAll:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     119: invokedynamic #170,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     124: astore        8
+     126: aload         7
+     128: aload         8
+     130: invokeinterface #133,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+     135: astore        9
+     137: aload         9
+     139: invokeinterface #174,  1          // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+     144: astore        5
+     146: aload         9
+     148: iconst_0
+     149: anewarray     #177                // class java/nio/file/OpenOption
+     152: invokestatic  #179                // Method java/nio/file/Files.newOutputStream:(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Ljava/io/OutputStream;
+     155: astore        10
+     157: iload_1
+     158: iload_2
+     159: aload         4
+     161: invokestatic  #183                // Method getSortedRegistryKeys:(ZZLnet/minecraft/core/Registry;)Ljava/util/List;
+     164: astore        11
+     166: aload         11
+     168: invokeinterface #187,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     173: astore        12
+     175: aload         12
+     177: invokeinterface #193,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     182: ifeq          244
+     185: aload         12
+     187: invokeinterface #199,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     192: checkcast     #144                // class net/minecraft/resources/ResourceLocation
+     195: astore        13
+     197: aload         13
+     199: invokevirtual #202                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+     202: astore        14
+     204: iload_2
+     205: ifeq          226
+     208: aload         4
+     210: aload         13
+     212: invokeinterface #203,  2          // InterfaceMethod net/minecraft/core/Registry.getId:(Lnet/minecraft/resources/ResourceLocation;)I
+     217: aload         14
+     219: invokedynamic #207,  0            // InvokeDynamic #7:makeConcatWithConstants:(ILjava/lang/String;)Ljava/lang/String;
+     224: astore        14
+     226: aload         10
+     228: aload         14
+     230: invokedynamic #210,  0            // InvokeDynamic #8:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     235: invokevirtual #211                // Method java/lang/String.getBytes:()[B
+     238: invokevirtual #215                // Method java/io/OutputStream.write:([B)V
+     241: goto          175
+     244: aload         10
+     246: ifnull        284
+     249: aload         10
+     251: invokevirtual #221                // Method java/io/OutputStream.close:()V
+     254: goto          284
+     257: astore        11
+     259: aload         10
+     261: ifnull        281
+     264: aload         10
+     266: invokevirtual #221                // Method java/io/OutputStream.close:()V
+     269: goto          281
+     272: astore        12
+     274: aload         11
+     276: aload         12
+     278: invokevirtual #226                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     281: aload         11
+     283: athrow
+     284: invokestatic  #125                // Method net/neoforged/fml/loading/FMLLoader.getGamePath:()Ljava/nio/file/Path;
+     287: aload         9
+     289: invokeinterface #230,  2          // InterfaceMethod java/nio/file/Path.relativize:(Ljava/nio/file/Path;)Ljava/nio/file/Path;
+     294: invokestatic  #234                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     297: invokedynamic #238,  0            // InvokeDynamic #9:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     302: invokestatic  #239                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     305: getstatic     #244                // Field net/minecraft/ChatFormatting.UNDERLINE:Lnet/minecraft/ChatFormatting;
+     308: invokevirtual #250                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     311: getstatic     #256                // Field net/minecraft/ChatFormatting.GOLD:Lnet/minecraft/ChatFormatting;
+     314: invokevirtual #250                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     317: astore        10
+     319: invokestatic  #259                // Method net/neoforged/fml/loading/FMLLoader.getDist:()Lnet/neoforged/api/distmarker/Dist;
+     322: invokevirtual #263                // Method net/neoforged/api/distmarker/Dist.isDedicatedServer:()Z
+     325: ifne          341
+     328: aload         10
+     330: aload         9
+     332: invokedynamic #268,  0            // InvokeDynamic #10:apply:(Ljava/nio/file/Path;)Ljava/util/function/UnaryOperator;
+     337: invokevirtual #272                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Ljava/util/function/UnaryOperator;)Lnet/minecraft/network/chat/MutableComponent;
+     340: pop
+     341: aload_0
+     342: invokevirtual #92                 // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+     345: checkcast     #97                 // class net/minecraft/commands/CommandSourceStack
+     348: aload_3
+     349: aload         10
+     351: invokedynamic #275,  0            // InvokeDynamic #11:get:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/network/chat/MutableComponent;)Ljava/util/function/Supplier;
+     356: iconst_0
+     357: invokevirtual #278                // Method net/minecraft/commands/CommandSourceStack.sendSuccess:(Ljava/util/function/Supplier;Z)V
+     360: iconst_1
+     361: ireturn
+     362: astore        6
+     364: aload_0
+     365: invokevirtual #92                 // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+     368: checkcast     #97                 // class net/minecraft/commands/CommandSourceStack
+     371: ldc_w         #286                // String commands.neoforge.dump.failure
+     374: iconst_2
+     375: anewarray     #2                  // class java/lang/Object
+     378: dup
+     379: iconst_0
+     380: aload_3
+     381: invokevirtual #139                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     384: invokevirtual #202                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+     387: invokestatic  #239                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     390: getstatic     #288                // Field net/minecraft/ChatFormatting.YELLOW:Lnet/minecraft/ChatFormatting;
+     393: invokevirtual #250                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     396: aastore
+     397: dup
+     398: iconst_1
+     399: aload         5
+     401: invokestatic  #239                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     404: getstatic     #256                // Field net/minecraft/ChatFormatting.GOLD:Lnet/minecraft/ChatFormatting;
+     407: invokevirtual #250                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     410: aastore
+     411: invokestatic  #291                // Method net/neoforged/neoforge/server/command/CommandUtils.makeTranslatableWithFallback:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+     414: invokevirtual #295                // Method net/minecraft/commands/CommandSourceStack.sendFailure:(Lnet/minecraft/network/chat/Component;)V
+     417: getstatic     #299                // Field LOGGER:Lorg/slf4j/Logger;
+     420: aload_3
+     421: invokestatic  #234                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     424: aload         5
+     426: invokedynamic #303,  0            // InvokeDynamic #12:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     431: aload         6
+     433: invokeinterface #305,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+     438: iconst_0
+     439: ireturn
+    Exception table:
+       from    to  target type
+         157   244   257   Class java/lang/Throwable
+         264   269   272   Class java/lang/Throwable
+          53   361   362   Class java/lang/Exception
+
+  private static java.util.List<net.minecraft.resources.ResourceLocation> getSortedRegistryKeys(boolean, boolean, net.minecraft.core.Registry<?>);
+    Code:
+       0: new           #311                // class java/util/ArrayList
+       3: dup
+       4: aload_2
+       5: invokeinterface #313,  1          // InterfaceMethod net/minecraft/core/Registry.keySet:()Ljava/util/Set;
+      10: invokespecial #317                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+      13: astore_3
+      14: iload_0
+      15: ifeq          32
+      18: aload_3
+      19: invokedynamic #320,  0            // InvokeDynamic #13:compare:()Ljava/util/Comparator;
+      24: invokeinterface #324,  2          // InterfaceMethod java/util/List.sort:(Ljava/util/Comparator;)V
+      29: goto          67
+      32: iload_1
+      33: ifeq          67
+      36: aload_3
+      37: invokeinterface #328,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+      42: aload_2
+      43: dup
+      44: invokestatic  #332                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      47: pop
+      48: invokedynamic #338,  0            // InvokeDynamic #14:applyAsInt:(Lnet/minecraft/core/Registry;)Ljava/util/function/ToIntFunction;
+      53: invokestatic  #342                // InterfaceMethod java/util/Comparator.comparingInt:(Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+      56: invokeinterface #348,  2          // InterfaceMethod java/util/stream/Stream.sorted:(Ljava/util/Comparator;)Ljava/util/stream/Stream;
+      61: invokeinterface #354,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      66: astore_3
+      67: aload_3
+      68: areturn
+
+  private static net.minecraft.network.chat.Component lambda$dumpRegistry$7(net.minecraft.resources.ResourceKey, net.minecraft.network.chat.MutableComponent);
+    Code:
+       0: ldc_w         #358                // String commands.neoforge.dump.success
+       3: iconst_2
+       4: anewarray     #2                  // class java/lang/Object
+       7: dup
+       8: iconst_0
+       9: aload_0
+      10: invokevirtual #139                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      13: invokevirtual #202                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      16: invokestatic  #239                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      19: getstatic     #288                // Field net/minecraft/ChatFormatting.YELLOW:Lnet/minecraft/ChatFormatting;
+      22: invokevirtual #250                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      25: aastore
+      26: dup
+      27: iconst_1
+      28: aload_1
+      29: aastore
+      30: invokestatic  #291                // Method net/neoforged/neoforge/server/command/CommandUtils.makeTranslatableWithFallback:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      33: areturn
+
+  private static net.minecraft.network.chat.Style lambda$dumpRegistry$6(java.nio.file.Path, net.minecraft.network.chat.Style);
+    Code:
+       0: aload_1
+       1: new           #360                // class net/minecraft/network/chat/ClickEvent
+       4: dup
+       5: getstatic     #362                // Field net/minecraft/network/chat/ClickEvent$Action.OPEN_FILE:Lnet/minecraft/network/chat/ClickEvent$Action;
+       8: aload_0
+       9: invokeinterface #174,  1          // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      14: invokespecial #368                // Method net/minecraft/network/chat/ClickEvent."<init>":(Lnet/minecraft/network/chat/ClickEvent$Action;Ljava/lang/String;)V
+      17: invokevirtual #371                // Method net/minecraft/network/chat/Style.withClickEvent:(Lnet/minecraft/network/chat/ClickEvent;)Lnet/minecraft/network/chat/Style;
+      20: areturn
+
+  private static com.mojang.brigadier.exceptions.CommandSyntaxException lambda$dumpRegistry$5(net.minecraft.resources.ResourceKey);
+    Code:
+       0: getstatic     #377                // Field UNKNOWN_REGISTRY:Lcom/mojang/brigadier/exceptions/DynamicCommandExceptionType;
+       3: aload_0
+       4: invokevirtual #139                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       7: invokevirtual #381                // Method com/mojang/brigadier/exceptions/DynamicCommandExceptionType.create:(Ljava/lang/Object;)Lcom/mojang/brigadier/exceptions/CommandSyntaxException;
+      10: areturn
+
+  private static int lambda$register$4(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: aload_0
+       1: aload_0
+       2: ldc           #61                 // String alphabetical_sort
+       4: invokestatic  #387                // Method com/mojang/brigadier/arguments/BoolArgumentType.getBool:(Lcom/mojang/brigadier/context/CommandContext;Ljava/lang/String;)Z
+       7: aload_0
+       8: ldc           #70                 // String print_numeric_ids
+      10: invokestatic  #387                // Method com/mojang/brigadier/arguments/BoolArgumentType.getBool:(Lcom/mojang/brigadier/context/CommandContext;Ljava/lang/String;)Z
+      13: invokestatic  #391                // Method dumpRegistry:(Lcom/mojang/brigadier/context/CommandContext;ZZ)I
+      16: ireturn
+
+  private static int lambda$register$3(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: aload_0
+       1: aload_0
+       2: ldc           #61                 // String alphabetical_sort
+       4: invokestatic  #387                // Method com/mojang/brigadier/arguments/BoolArgumentType.getBool:(Lcom/mojang/brigadier/context/CommandContext;Ljava/lang/String;)Z
+       7: iconst_0
+       8: invokestatic  #391                // Method dumpRegistry:(Lcom/mojang/brigadier/context/CommandContext;ZZ)I
+      11: ireturn
+
+  private static int lambda$register$2(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: iconst_0
+       3: invokestatic  #391                // Method dumpRegistry:(Lcom/mojang/brigadier/context/CommandContext;ZZ)I
+       6: ireturn
+
+  private static boolean lambda$register$1(net.minecraft.commands.CommandSourceStack);
+    Code:
+       0: aload_0
+       1: iconst_4
+       2: invokevirtual #395                // Method net/minecraft/commands/CommandSourceStack.hasPermission:(I)Z
+       5: ireturn
+
+  private static com.mojang.brigadier.Message lambda$static$0(java.lang.Object);
+    Code:
+       0: ldc_w         #399                // String commands.neoforge.dump.error.unknown_registry
+       3: iconst_1
+       4: anewarray     #2                  // class java/lang/Object
+       7: dup
+       8: iconst_0
+       9: aload_0
+      10: aastore
+      11: invokestatic  #291                // Method net/neoforged/neoforge/server/command/CommandUtils.makeTranslatableWithFallback:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      14: areturn
+
+  static {};
+    Code:
+       0: invokestatic  #401                // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       3: putstatic     #299                // Field LOGGER:Lorg/slf4j/Logger;
+       6: ldc_w         #407                // String root
+       9: invokestatic  #409                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      12: invokestatic  #413                // Method net/minecraft/resources/ResourceKey.createRegistryKey:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+      15: putstatic     #27                 // Field ROOT_REGISTRY_KEY:Lnet/minecraft/resources/ResourceKey;
+      18: new           #382                // class com/mojang/brigadier/exceptions/DynamicCommandExceptionType
+      21: dup
+      22: invokedynamic #417,  0            // InvokeDynamic #15:apply:()Ljava/util/function/Function;
+      27: invokespecial #420                // Method com/mojang/brigadier/exceptions/DynamicCommandExceptionType."<init>":(Ljava/util/function/Function;)V
+      30: putstatic     #377                // Field UNKNOWN_REGISTRY:Lcom/mojang/brigadier/exceptions/DynamicCommandExceptionType;
+      33: return
+}
