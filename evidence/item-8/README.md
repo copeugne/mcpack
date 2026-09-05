@@ -1387,3 +1387,31 @@ Inventory regenerated at `01edbb8`, SHA-256:
 `38eb038f5c04562162292988e8d55c407ea6f78cc489cdac8a0c5db9f69d3938`.
 Only the bridge contribution and decision identity changed; all 421 registry
 family rows and 887 roots remain unchanged.
+
+## YUNG bridge generation ordering and success limitation
+
+The bridge contribution now records the source-bound generation flow: set origin
+Y to world sea level; rotate counterclockwise 90 degrees for non-Z-axis variants;
+place the template; then execute the twelve recorded custom processors in order.
+The selector randomly tries remaining placed-feature candidates, removes failed
+candidates and stops at the first successful return or exhaustion. This is not
+an observed frequency or pacing result.
+
+AbstractTemplateFeature discards StructureTemplate.placeInWorld's boolean.
+BridgeFeature returns true when template loading returned non-null. Accordingly,
+feature success alone cannot prove all template blocks were placed. This source
+limitation is preserved without modifying the retained mod or treating it as an
+observed world failure. Processor effects, support geometry and placement
+eligibility remain open. No new extraction or measurement system was added.
+
+Eight affected feature-reference/inventory-source tests passed. After wrapping
+one long test line, scoped Ruff and Basedpyright passed.
+Decision SHA-256:
+`59a6d7d18eb9b560825eeed494b532cfbe5a21426bbfa69817a5b096cbf89bba`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-bridge-generation.json
+```

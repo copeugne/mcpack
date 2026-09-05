@@ -254,3 +254,34 @@ def test_yungs_bridge_templates_keep_unreferenced_layouts_separate() -> None:
     for document in templates.values():
         assert document["entities"] == content["authored_entity_ids"] == []
         assert document["block_entities"] == content["block_entities"] == []
+
+
+def test_yungs_bridge_generation_binds_anchor_rotation_and_processor_order() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    generation = cast("dict[str, JsonValue]", contributions["yungsbridges:bridges"]["generation"])
+    base = Path("evidence/item-8/sources/yungs-bridge-generation")
+    rows = cast("list[dict[str, str]]", json.loads((base / "identities.json").read_bytes()))
+    sources: dict[str, str] = {}
+    for row in rows:
+        raw = (base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    bridge = sources["BridgeFeature"]
+    assert bridge.index("WorldGenLevel.getSeaLevel:") < bridge.index("createTemplateWithPlacement:")
+    assert "Rotation.COUNTERCLOCKWISE_90" in bridge
+    order = [line.split("FeatureProcessorModule.")[1].split(":")[0]
+             for line in bridge.splitlines()
+             if "// Field " in line and "FeatureProcessorModule." in line]
+    assert order == generation["processor_order"]
+    assert len(order) == 12
+    template = sources["AbstractTemplateFeature"]
+    assert template.index("StructureTemplate.placeInWorld:") < template.index("List.forEach:")
+    following = template.split("StructureTemplate.placeInWorld:")[1].splitlines()[1]
+    assert following.strip().endswith("pop")
+    selector = sources["MultipleAttemptSingleRandomFeature"]
+    assert selector.index("PlacedFeature.place:") < selector.index("List.remove:")
+    assert "RandomSource.nextInt:" in selector
