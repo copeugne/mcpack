@@ -117,6 +117,7 @@ CLASSES = (
     "dev/worldgen/lithostitched/mixin/common/ServerLifecycleHooksMixin.class",
     "dev/worldgen/lithostitched/impl/worldgen/modifier/NeoforgeModifierHolder.class",
     "dev/worldgen/lithostitched/worldgen/surface/SurfaceRuleManager.class",
+    "dev/worldgen/lithostitched/worldgen/stateprovider/RandomBlockProvider.class",
     "dev/worldgen/lithostitched/impl/LithostitchedInternalHooks.class",
     "dev/worldgen/lithostitched/mixin/server/DedicatedServerMixin.class",
     "dev/worldgen/lithostitched/impl/worldgen/surface/rule/TransientMergedRule.class",
