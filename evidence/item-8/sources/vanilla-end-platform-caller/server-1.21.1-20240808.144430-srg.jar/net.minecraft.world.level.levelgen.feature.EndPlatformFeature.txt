@@ -1,0 +1,84 @@
+Compiled from "EndPlatformFeature.java"
+public class net.minecraft.world.level.levelgen.feature.EndPlatformFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> {
+  public net.minecraft.world.level.levelgen.feature.EndPlatformFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #16                 // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #30                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: aload_1
+       5: invokevirtual #34                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       8: iconst_0
+       9: invokestatic  #38                 // Method createEndPlatform:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;Z)V
+      12: iconst_1
+      13: ireturn
+
+  public static void createEndPlatform(net.minecraft.world.level.ServerLevelAccessor, net.minecraft.core.BlockPos, boolean);
+    Code:
+       0: aload_1
+       1: invokevirtual #45                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       4: astore_3
+       5: bipush        -2
+       7: istore        4
+       9: iload         4
+      11: iconst_2
+      12: if_icmpgt     131
+      15: bipush        -2
+      17: istore        5
+      19: iload         5
+      21: iconst_2
+      22: if_icmpgt     125
+      25: iconst_m1
+      26: istore        6
+      28: iload         6
+      30: iconst_3
+      31: if_icmpge     119
+      34: aload_3
+      35: aload_1
+      36: invokevirtual #49                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      39: iload         5
+      41: iload         6
+      43: iload         4
+      45: invokevirtual #53                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      48: astore        7
+      50: iload         6
+      52: iconst_m1
+      53: if_icmpne     62
+      56: getstatic     #59                 // Field net/minecraft/world/level/block/Blocks.OBSIDIAN:Lnet/minecraft/world/level/block/Block;
+      59: goto          65
+      62: getstatic     #62                 // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+      65: astore        8
+      67: aload_0
+      68: aload         7
+      70: invokeinterface #70,  2           // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      75: aload         8
+      77: invokevirtual #76                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      80: ifne          113
+      83: iload_2
+      84: ifeq          98
+      87: aload_0
+      88: aload         7
+      90: iconst_1
+      91: aconst_null
+      92: invokeinterface #80,  4           // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.destroyBlock:(Lnet/minecraft/core/BlockPos;ZLnet/minecraft/world/entity/Entity;)Z
+      97: pop
+      98: aload_0
+      99: aload         7
+     101: aload         8
+     103: invokevirtual #84                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     106: iconst_3
+     107: invokeinterface #88,  4           // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     112: pop
+     113: iinc          6, 1
+     116: goto          28
+     119: iinc          5, 1
+     122: goto          19
+     125: iinc          4, 1
+     128: goto          9
+     131: return
+}
