@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-05
 
+Mansion candidate-pool reconciliation is tested in 77e7d0e: 376 candidate
+pools, 592 parent templates and five shared child templates are present.
+Keep candidate selection distinct from layout reachability and placement.
+Inspect the referenced mushroom/spawner processors and spawner data manager
+using the existing extractor to resolve their direct content effects.
+
 The ordinary mansion layout capture in aaeaabc omits invokedynamic string
 recipes needed for exact pool IDs. Enable existing verbose output for the
 layout and three floor selectors. This fixes that concrete attribution gap;
