@@ -742,7 +742,8 @@ def test_design_groups_cover_registry_and_bind_variant_definitions(namespace: st
                 assert identifier in traces["untraced_structures"]
                 if identifier in {
                     "minecraft:end_city", "minecraft:igloo", "minecraft:nether_fossil",
-                    "minecraft:shipwreck", "minecraft:shipwreck_beached"
+                    "minecraft:shipwreck", "minecraft:shipwreck_beached",
+                    "minecraft:ocean_ruin_cold", "minecraft:ocean_ruin_warm"
                 }:
                     assert variant["missing_components"] == []
                     assert variant["vanilla_code_template_ids"]
