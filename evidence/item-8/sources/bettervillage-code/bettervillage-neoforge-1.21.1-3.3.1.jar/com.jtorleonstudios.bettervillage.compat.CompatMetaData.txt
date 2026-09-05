@@ -1,0 +1,584 @@
+Compiled from "CompatMetaData.java"
+public final class com.jtorleonstudios.bettervillage.compat.CompatMetaData {
+  private static final java.lang.String CURSE_URL_BETTER_VILLAGES = "https://www.curseforge.com/minecraft/mc-mods/better-village-forge";
+
+  private static final com.google.gson.Gson GSON;
+
+  private final java.lang.String modId;
+
+  private final java.lang.String modName;
+
+  private final boolean enabled;
+
+  private final boolean replaceStructures;
+
+  private final java.lang.String[] poolPlains;
+
+  private final java.lang.String[] poolDesert;
+
+  private final java.lang.String[] poolSnowy;
+
+  private final java.lang.String[] poolSavanna;
+
+  private final java.lang.String[] poolTaiga;
+
+  private com.jtorleonstudios.bettervillage.compat.CompatMetaData(java.lang.String, java.lang.String, boolean, boolean, java.lang.String[], java.lang.String[], java.lang.String[], java.lang.String[], java.lang.String[]);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field modId:Ljava/lang/String;
+       9: aload_0
+      10: aload_2
+      11: putfield      #13                 // Field modName:Ljava/lang/String;
+      14: aload_0
+      15: iload_3
+      16: putfield      #16                 // Field enabled:Z
+      19: aload_0
+      20: iload         4
+      22: putfield      #20                 // Field replaceStructures:Z
+      25: aload_0
+      26: aload         5
+      28: putfield      #23                 // Field poolPlains:[Ljava/lang/String;
+      31: aload_0
+      32: aload         6
+      34: putfield      #27                 // Field poolDesert:[Ljava/lang/String;
+      37: aload_0
+      38: aload         7
+      40: putfield      #30                 // Field poolSnowy:[Ljava/lang/String;
+      43: aload_0
+      44: aload         8
+      46: putfield      #33                 // Field poolSavanna:[Ljava/lang/String;
+      49: aload_0
+      50: aload         9
+      52: putfield      #36                 // Field poolTaiga:[Ljava/lang/String;
+      55: return
+
+  public boolean isLoadedModForCompat();
+    Code:
+       0: invokestatic  #39                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: aload_0
+       4: getfield      #7                  // Field modId:Ljava/lang/String;
+       7: invokevirtual #45                 // Method net/neoforged/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+      10: ireturn
+
+  public boolean requireApplyCompat();
+    Code:
+       0: aload_0
+       1: invokevirtual #49                 // Method isLoadedModForCompat:()Z
+       4: ifeq          18
+       7: aload_0
+       8: getfield      #16                 // Field enabled:Z
+      11: ifeq          18
+      14: iconst_1
+      15: goto          19
+      18: iconst_0
+      19: ireturn
+
+  public void debugInformationForEndUser();
+    Code:
+       0: aload_0
+       1: invokevirtual #49                 // Method isLoadedModForCompat:()Z
+       4: ifeq          63
+       7: aload_0
+       8: getfield      #16                 // Field enabled:Z
+      11: ifeq          34
+      14: getstatic     #53                 // Field com/jtorleonstudios/bettervillage/Main.LOGGER:Lorg/apache/logging/log4j/Logger;
+      17: aload_0
+      18: getfield      #13                 // Field modName:Ljava/lang/String;
+      21: invokedynamic #59,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      26: invokeinterface #63,  2           // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+      31: goto          63
+      34: getstatic     #53                 // Field com/jtorleonstudios/bettervillage/Main.LOGGER:Lorg/apache/logging/log4j/Logger;
+      37: ldc           #69                 // String %s compatibility is not enabled for Better Village and %<s is present in your mod list.%n     - Please install the datapack for better compatibility between Better Villages and %<s.%n     - You can find the datapack URL in the `compatibility` section of the Better Villages description.%n     - URL=%s
+      39: iconst_2
+      40: anewarray     #2                  // class java/lang/Object
+      43: dup
+      44: iconst_0
+      45: aload_0
+      46: getfield      #13                 // Field modName:Ljava/lang/String;
+      49: aastore
+      50: dup
+      51: iconst_1
+      52: ldc           #71                 // String https://www.curseforge.com/minecraft/mc-mods/better-village-forge
+      54: aastore
+      55: invokestatic  #73                 // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+      58: invokeinterface #79,  2           // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+      63: return
+
+  public static com.jtorleonstudios.bettervillage.compat.CompatMetaData deserialize(net.minecraft.resources.ResourceLocation, com.google.gson.JsonObject);
+    Code:
+       0: aload_1
+       1: ifnonnull     21
+       4: new           #82                 // class java/lang/NullPointerException
+       7: dup
+       8: aload_0
+       9: invokevirtual #84                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      12: invokedynamic #90,  0             // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      17: invokespecial #91                 // Method java/lang/NullPointerException."<init>":(Ljava/lang/String;)V
+      20: athrow
+      21: new           #8                  // class com/jtorleonstudios/bettervillage/compat/CompatMetaData
+      24: dup
+      25: aload_0
+      26: aload_1
+      27: ldc           #93                 // String mod_id
+      29: invokestatic  #95                 // Method getOrThrowString:(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;Ljava/lang/String;)Ljava/lang/String;
+      32: aload_0
+      33: aload_1
+      34: ldc           #99                 // String mod_name
+      36: invokestatic  #95                 // Method getOrThrowString:(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;Ljava/lang/String;)Ljava/lang/String;
+      39: aload_0
+      40: aload_1
+      41: ldc           #101                // String enabled
+      43: invokestatic  #102                // Method getOrThrowBoolean:(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;Ljava/lang/String;)Z
+      46: aload_0
+      47: aload_1
+      48: ldc           #106                // String replace_structures
+      50: invokestatic  #102                // Method getOrThrowBoolean:(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;Ljava/lang/String;)Z
+      53: aload_0
+      54: aload_1
+      55: ldc           #108                // String pool_plains
+      57: invokestatic  #110                // Method getOrThrowStringArray:(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;Ljava/lang/String;)[Ljava/lang/String;
+      60: aload_0
+      61: aload_1
+      62: ldc           #114                // String pool_desert
+      64: invokestatic  #110                // Method getOrThrowStringArray:(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;Ljava/lang/String;)[Ljava/lang/String;
+      67: aload_0
+      68: aload_1
+      69: ldc           #116                // String pool_snowy
+      71: invokestatic  #110                // Method getOrThrowStringArray:(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;Ljava/lang/String;)[Ljava/lang/String;
+      74: aload_0
+      75: aload_1
+      76: ldc           #118                // String pool_savanna
+      78: invokestatic  #110                // Method getOrThrowStringArray:(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;Ljava/lang/String;)[Ljava/lang/String;
+      81: aload_0
+      82: aload_1
+      83: ldc           #120                // String pool_taiga
+      85: invokestatic  #110                // Method getOrThrowStringArray:(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;Ljava/lang/String;)[Ljava/lang/String;
+      88: invokespecial #122                // Method "<init>":(Ljava/lang/String;Ljava/lang/String;ZZ[Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;)V
+      91: areturn
+
+  private static java.lang.String getOrThrowString(net.minecraft.resources.ResourceLocation, com.google.gson.JsonObject, java.lang.String);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokevirtual #125                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+       5: ifne          26
+       8: new           #82                 // class java/lang/NullPointerException
+      11: dup
+      12: aload_0
+      13: invokevirtual #84                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      16: aload_2
+      17: invokedynamic #130,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      22: invokespecial #91                 // Method java/lang/NullPointerException."<init>":(Ljava/lang/String;)V
+      25: athrow
+      26: aload_1
+      27: aload_2
+      28: invokevirtual #133                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      31: astore_3
+      32: aload_3
+      33: ifnonnull     54
+      36: new           #82                 // class java/lang/NullPointerException
+      39: dup
+      40: aload_0
+      41: invokevirtual #84                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      44: aload_2
+      45: invokedynamic #136,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      50: invokespecial #91                 // Method java/lang/NullPointerException."<init>":(Ljava/lang/String;)V
+      53: athrow
+      54: aload_3
+      55: invokevirtual #137                // Method com/google/gson/JsonElement.getAsString:()Ljava/lang/String;
+      58: areturn
+      59: astore        4
+      61: new           #142                // class java/lang/ClassCastException
+      64: dup
+      65: aload_0
+      66: invokevirtual #84                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      69: aload_2
+      70: invokedynamic #144,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      75: invokespecial #145                // Method java/lang/ClassCastException."<init>":(Ljava/lang/String;)V
+      78: athrow
+      79: astore        4
+      81: new           #146                // class java/lang/IllegalStateException
+      84: dup
+      85: aload_0
+      86: invokevirtual #84                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      89: aload_2
+      90: invokedynamic #148,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      95: invokespecial #149                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      98: athrow
+    Exception table:
+       from    to  target type
+          54    58    59   Class java/lang/ClassCastException
+          54    58    79   Class java/lang/IllegalStateException
+
+  private static boolean getOrThrowBoolean(net.minecraft.resources.ResourceLocation, com.google.gson.JsonObject, java.lang.String);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokevirtual #125                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+       5: ifne          26
+       8: new           #82                 // class java/lang/NullPointerException
+      11: dup
+      12: aload_0
+      13: invokevirtual #84                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      16: aload_2
+      17: invokedynamic #130,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      22: invokespecial #91                 // Method java/lang/NullPointerException."<init>":(Ljava/lang/String;)V
+      25: athrow
+      26: aload_1
+      27: aload_2
+      28: invokevirtual #133                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      31: astore_3
+      32: aload_3
+      33: ifnonnull     54
+      36: new           #82                 // class java/lang/NullPointerException
+      39: dup
+      40: aload_0
+      41: invokevirtual #84                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      44: aload_2
+      45: invokedynamic #136,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      50: invokespecial #91                 // Method java/lang/NullPointerException."<init>":(Ljava/lang/String;)V
+      53: athrow
+      54: aload_3
+      55: invokevirtual #150                // Method com/google/gson/JsonElement.getAsBoolean:()Z
+      58: ireturn
+      59: astore        4
+      61: new           #142                // class java/lang/ClassCastException
+      64: dup
+      65: aload_0
+      66: invokevirtual #84                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      69: aload_2
+      70: invokedynamic #153,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      75: invokespecial #145                // Method java/lang/ClassCastException."<init>":(Ljava/lang/String;)V
+      78: athrow
+      79: astore        4
+      81: new           #146                // class java/lang/IllegalStateException
+      84: dup
+      85: aload_0
+      86: invokevirtual #84                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      89: aload_2
+      90: invokedynamic #148,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      95: invokespecial #149                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      98: athrow
+    Exception table:
+       from    to  target type
+          54    58    59   Class java/lang/ClassCastException
+          54    58    79   Class java/lang/IllegalStateException
+
+  private static java.lang.String[] getOrThrowStringArray(net.minecraft.resources.ResourceLocation, com.google.gson.JsonObject, java.lang.String);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokevirtual #125                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+       5: ifne          26
+       8: new           #82                 // class java/lang/NullPointerException
+      11: dup
+      12: aload_0
+      13: invokevirtual #84                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      16: aload_2
+      17: invokedynamic #130,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      22: invokespecial #91                 // Method java/lang/NullPointerException."<init>":(Ljava/lang/String;)V
+      25: athrow
+      26: aload_1
+      27: aload_2
+      28: invokevirtual #133                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      31: astore_3
+      32: aload_3
+      33: ifnonnull     54
+      36: new           #82                 // class java/lang/NullPointerException
+      39: dup
+      40: aload_0
+      41: invokevirtual #84                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      44: aload_2
+      45: invokedynamic #136,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      50: invokespecial #91                 // Method java/lang/NullPointerException."<init>":(Ljava/lang/String;)V
+      53: athrow
+      54: getstatic     #154                // Field GSON:Lcom/google/gson/Gson;
+      57: aload_3
+      58: ldc           #158                // class "[Ljava/lang/String;"
+      60: invokevirtual #159                // Method com/google/gson/Gson.fromJson:(Lcom/google/gson/JsonElement;Ljava/lang/Class;)Ljava/lang/Object;
+      63: checkcast     #158                // class "[Ljava/lang/String;"
+      66: areturn
+      67: astore        4
+      69: getstatic     #53                 // Field com/jtorleonstudios/bettervillage/Main.LOGGER:Lorg/apache/logging/log4j/Logger;
+      72: aload         4
+      74: invokeinterface #167,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/Object;)V
+      79: new           #142                // class java/lang/ClassCastException
+      82: dup
+      83: aload_0
+      84: invokevirtual #84                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      87: aload_2
+      88: invokedynamic #170,  0            // InvokeDynamic #7:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      93: invokespecial #145                // Method java/lang/ClassCastException."<init>":(Ljava/lang/String;)V
+      96: athrow
+      97: astore        4
+      99: getstatic     #53                 // Field com/jtorleonstudios/bettervillage/Main.LOGGER:Lorg/apache/logging/log4j/Logger;
+     102: aload         4
+     104: invokeinterface #167,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/Object;)V
+     109: new           #142                // class java/lang/ClassCastException
+     112: dup
+     113: aload_0
+     114: invokevirtual #84                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+     117: aload_2
+     118: invokedynamic #171,  0            // InvokeDynamic #8:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     123: invokespecial #145                // Method java/lang/ClassCastException."<init>":(Ljava/lang/String;)V
+     126: athrow
+     127: astore        4
+     129: getstatic     #53                 // Field com/jtorleonstudios/bettervillage/Main.LOGGER:Lorg/apache/logging/log4j/Logger;
+     132: aload         4
+     134: invokeinterface #167,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/Object;)V
+     139: new           #146                // class java/lang/IllegalStateException
+     142: dup
+     143: aload_0
+     144: invokevirtual #84                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+     147: aload_2
+     148: invokedynamic #148,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     153: invokespecial #149                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+     156: athrow
+    Exception table:
+       from    to  target type
+          54    66    67   Class com/google/gson/JsonSyntaxException
+          54    66    97   Class java/lang/ClassCastException
+          67    97    97   Class java/lang/ClassCastException
+          54    66   127   Class java/lang/IllegalStateException
+          67    97   127   Class java/lang/IllegalStateException
+
+  public java.lang.String getModId();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field modId:Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String getModName();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field modName:Ljava/lang/String;
+       4: areturn
+
+  public boolean isEnabled();
+    Code:
+       0: aload_0
+       1: getfield      #16                 // Field enabled:Z
+       4: ireturn
+
+  public boolean isReplaceStructures();
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field replaceStructures:Z
+       4: ireturn
+
+  public java.lang.String[] getPoolPlains();
+    Code:
+       0: aload_0
+       1: getfield      #23                 // Field poolPlains:[Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String[] getPoolDesert();
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field poolDesert:[Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String[] getPoolSnowy();
+    Code:
+       0: aload_0
+       1: getfield      #30                 // Field poolSnowy:[Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String[] getPoolSavanna();
+    Code:
+       0: aload_0
+       1: getfield      #33                 // Field poolSavanna:[Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String[] getPoolTaiga();
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field poolTaiga:[Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String toString();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field modId:Ljava/lang/String;
+       4: aload_0
+       5: getfield      #13                 // Field modName:Ljava/lang/String;
+       8: aload_0
+       9: getfield      #16                 // Field enabled:Z
+      12: aload_0
+      13: getfield      #20                 // Field replaceStructures:Z
+      16: aload_0
+      17: getfield      #23                 // Field poolPlains:[Ljava/lang/String;
+      20: invokestatic  #172                // Method java/util/Arrays.toString:([Ljava/lang/Object;)Ljava/lang/String;
+      23: aload_0
+      24: getfield      #27                 // Field poolDesert:[Ljava/lang/String;
+      27: invokestatic  #172                // Method java/util/Arrays.toString:([Ljava/lang/Object;)Ljava/lang/String;
+      30: aload_0
+      31: getfield      #30                 // Field poolSnowy:[Ljava/lang/String;
+      34: invokestatic  #172                // Method java/util/Arrays.toString:([Ljava/lang/Object;)Ljava/lang/String;
+      37: aload_0
+      38: getfield      #33                 // Field poolSavanna:[Ljava/lang/String;
+      41: invokestatic  #172                // Method java/util/Arrays.toString:([Ljava/lang/Object;)Ljava/lang/String;
+      44: aload_0
+      45: getfield      #36                 // Field poolTaiga:[Ljava/lang/String;
+      48: invokestatic  #172                // Method java/util/Arrays.toString:([Ljava/lang/Object;)Ljava/lang/String;
+      51: invokedynamic #177,  0            // InvokeDynamic #9:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      56: areturn
+
+  public boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: if_acmpne     7
+       5: iconst_1
+       6: ireturn
+       7: aload_1
+       8: ifnull        22
+      11: aload_0
+      12: invokevirtual #180                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      15: aload_1
+      16: invokevirtual #180                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      19: if_acmpeq     24
+      22: iconst_0
+      23: ireturn
+      24: aload_1
+      25: checkcast     #8                  // class com/jtorleonstudios/bettervillage/compat/CompatMetaData
+      28: astore_2
+      29: aload_0
+      30: getfield      #16                 // Field enabled:Z
+      33: aload_2
+      34: getfield      #16                 // Field enabled:Z
+      37: if_icmpne     153
+      40: aload_0
+      41: getfield      #20                 // Field replaceStructures:Z
+      44: aload_2
+      45: getfield      #20                 // Field replaceStructures:Z
+      48: if_icmpne     153
+      51: aload_0
+      52: getfield      #7                  // Field modId:Ljava/lang/String;
+      55: aload_2
+      56: getfield      #7                  // Field modId:Ljava/lang/String;
+      59: invokestatic  #184                // Method java/util/Objects.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+      62: ifeq          153
+      65: aload_0
+      66: getfield      #13                 // Field modName:Ljava/lang/String;
+      69: aload_2
+      70: getfield      #13                 // Field modName:Ljava/lang/String;
+      73: invokestatic  #184                // Method java/util/Objects.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+      76: ifeq          153
+      79: aload_0
+      80: getfield      #23                 // Field poolPlains:[Ljava/lang/String;
+      83: aload_2
+      84: getfield      #23                 // Field poolPlains:[Ljava/lang/String;
+      87: invokestatic  #190                // Method java/util/Arrays.equals:([Ljava/lang/Object;[Ljava/lang/Object;)Z
+      90: ifeq          153
+      93: aload_0
+      94: getfield      #27                 // Field poolDesert:[Ljava/lang/String;
+      97: aload_2
+      98: getfield      #27                 // Field poolDesert:[Ljava/lang/String;
+     101: invokestatic  #190                // Method java/util/Arrays.equals:([Ljava/lang/Object;[Ljava/lang/Object;)Z
+     104: ifeq          153
+     107: aload_0
+     108: getfield      #30                 // Field poolSnowy:[Ljava/lang/String;
+     111: aload_2
+     112: getfield      #30                 // Field poolSnowy:[Ljava/lang/String;
+     115: invokestatic  #190                // Method java/util/Arrays.equals:([Ljava/lang/Object;[Ljava/lang/Object;)Z
+     118: ifeq          153
+     121: aload_0
+     122: getfield      #33                 // Field poolSavanna:[Ljava/lang/String;
+     125: aload_2
+     126: getfield      #33                 // Field poolSavanna:[Ljava/lang/String;
+     129: invokestatic  #190                // Method java/util/Arrays.equals:([Ljava/lang/Object;[Ljava/lang/Object;)Z
+     132: ifeq          153
+     135: aload_0
+     136: getfield      #36                 // Field poolTaiga:[Ljava/lang/String;
+     139: aload_2
+     140: getfield      #36                 // Field poolTaiga:[Ljava/lang/String;
+     143: invokestatic  #190                // Method java/util/Arrays.equals:([Ljava/lang/Object;[Ljava/lang/Object;)Z
+     146: ifeq          153
+     149: iconst_1
+     150: goto          154
+     153: iconst_0
+     154: ireturn
+
+  public int hashCode();
+    Code:
+       0: iconst_4
+       1: anewarray     #2                  // class java/lang/Object
+       4: dup
+       5: iconst_0
+       6: aload_0
+       7: getfield      #7                  // Field modId:Ljava/lang/String;
+      10: aastore
+      11: dup
+      12: iconst_1
+      13: aload_0
+      14: getfield      #13                 // Field modName:Ljava/lang/String;
+      17: aastore
+      18: dup
+      19: iconst_2
+      20: aload_0
+      21: getfield      #16                 // Field enabled:Z
+      24: invokestatic  #193                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      27: aastore
+      28: dup
+      29: iconst_3
+      30: aload_0
+      31: getfield      #20                 // Field replaceStructures:Z
+      34: invokestatic  #193                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      37: aastore
+      38: invokestatic  #199                // Method java/util/Objects.hash:([Ljava/lang/Object;)I
+      41: istore_1
+      42: bipush        31
+      44: iload_1
+      45: imul
+      46: aload_0
+      47: getfield      #23                 // Field poolPlains:[Ljava/lang/String;
+      50: invokestatic  #203                // Method java/util/Arrays.hashCode:([Ljava/lang/Object;)I
+      53: iadd
+      54: istore_1
+      55: bipush        31
+      57: iload_1
+      58: imul
+      59: aload_0
+      60: getfield      #27                 // Field poolDesert:[Ljava/lang/String;
+      63: invokestatic  #203                // Method java/util/Arrays.hashCode:([Ljava/lang/Object;)I
+      66: iadd
+      67: istore_1
+      68: bipush        31
+      70: iload_1
+      71: imul
+      72: aload_0
+      73: getfield      #30                 // Field poolSnowy:[Ljava/lang/String;
+      76: invokestatic  #203                // Method java/util/Arrays.hashCode:([Ljava/lang/Object;)I
+      79: iadd
+      80: istore_1
+      81: bipush        31
+      83: iload_1
+      84: imul
+      85: aload_0
+      86: getfield      #33                 // Field poolSavanna:[Ljava/lang/String;
+      89: invokestatic  #203                // Method java/util/Arrays.hashCode:([Ljava/lang/Object;)I
+      92: iadd
+      93: istore_1
+      94: bipush        31
+      96: iload_1
+      97: imul
+      98: aload_0
+      99: getfield      #36                 // Field poolTaiga:[Ljava/lang/String;
+     102: invokestatic  #203                // Method java/util/Arrays.hashCode:([Ljava/lang/Object;)I
+     105: iadd
+     106: istore_1
+     107: iload_1
+     108: ireturn
+
+  static {};
+    Code:
+       0: new           #160                // class com/google/gson/Gson
+       3: dup
+       4: invokespecial #206                // Method com/google/gson/Gson."<init>":()V
+       7: putstatic     #154                // Field GSON:Lcom/google/gson/Gson;
+      10: return
+}
