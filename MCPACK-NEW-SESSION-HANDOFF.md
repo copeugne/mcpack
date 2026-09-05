@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Necessary capture-path adjustment: Village Taverns bundles executable Tiny Config
+classes, while the existing javap capture only reads top-level JARs. The narrow
+Tiny Config selector retains the existing identity format, verifies both frozen
+parent and nested payload, and uses a cleaned temporary classpath. This directly
+closes an otherwise unsupported entry path in the candidate-completeness gate;
+it adds no measurement system or general recursive capture framework.
+
 Tavern Defaults and block-registration captures now reproduce using 297edcb in
 sources/tavern-registration-scope. Defaults links the same five village/tavern
 identities as packaged additions; fallback integer arguments must not replace

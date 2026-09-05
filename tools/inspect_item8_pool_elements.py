@@ -6,7 +6,9 @@ import argparse
 import hashlib
 import json
 import subprocess
+from contextlib import ExitStack
 from pathlib import Path
+from tempfile import NamedTemporaryFile
 from typing import cast
 from zipfile import ZipFile
 
@@ -390,6 +392,9 @@ CLASSES: tuple[str, ...] = (
     "net/village_taverns/config/Defaults.class",
     "net/village_taverns/block/TavernBlocks.class",
     "net/village_taverns/block/TavernBlocks$Entry.class",
+    "net/tiny_config/neoforge/ExampleModNeoForge.class",
+    "net/tiny_config/ExampleMod.class",
+    "net/tiny_config/ConfigManager.class",
     "net/village_taverns/mixin/PotionsMixin.class",
     "net/village_taverns/mixin/VillagerMixin.class",
     "com/aetherteam/aether/world/structure/BronzeDungeonStructure.class",
@@ -478,16 +483,21 @@ REGISTRATION_KEYS = (
 )
 
 
-def main() -> None:  # noqa: C901 - explicit archive selection and portable verbose output.
+def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive capture.
     """Retain disassembly and exact class/archive identities for the observed custom types."""
     parser = argparse.ArgumentParser(description=__doc__)
     _ = parser.add_argument("--output", type=Path, required=True)
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
+    _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/tiny-config-3.1.0-neoforge.jar"])
     args = parser.parse_args()
     output = cast("Path", args.output)
     selected_archive = cast("str | None", args.archive)
     selected_classes = cast("list[str] | None", args.class_name)
+    nested = cast("str | None", args.nested_archive)
+    if nested and selected_archive != "village_taverns-neoforge-1.1.5+1.21.1.jar":
+        parser.error("the selected nested archive requires the frozen Village Taverns parent")
     output.mkdir(parents=True, exist_ok=False)
     javap = ROOT / "downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap"
     identities: list[dict[str, str]] = []
@@ -501,7 +511,26 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
             raise ValueError(message)
         destination = output / source.name
         destination.mkdir()
-        with ZipFile(source.path) as archive:
+        with ZipFile(source.path) as parent, ExitStack() as stack:
+            archive = parent
+            classpath = source.path
+            archive_name, archive_sha = source.name, source.sha256
+            if nested:
+                nested_payload = parent.read(nested)
+                archive_sha = hashlib.sha256(nested_payload).hexdigest()
+                if archive_sha != (
+                    "1587ed9848881e7b677da5b8c85e0f35719315eb5f6571592d31840cf1421f63"
+                ):
+                    message = "bundled Tiny Config identity mismatch"
+                    raise ValueError(message)
+                temporary = stack.enter_context(NamedTemporaryFile(suffix=".jar"))
+                _ = temporary.write(nested_payload)
+                temporary.flush()
+                classpath = Path(temporary.name)
+                archive = stack.enter_context(ZipFile(classpath))
+                archive_name += "!/" + nested
+                destination /= Path(nested).name
+                destination.mkdir()
             if source.name.startswith("YungsBetter") or source.name in {
                 "integrated_villages-1.3.3+1.21.1-neoforge.jar",
                 "idas-1.13.7+1.21.1-neoforge.jar",
@@ -606,7 +635,7 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                         "-constants",
                         *(["-v"] if verbose else []),
                         "-classpath",
-                        str(source.path),
+                        str(classpath),
                         class_name,
                     ],
                     check=True,
@@ -619,15 +648,15 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                         raise ValueError(message)
                     # Preserve archive/member identity without publishing a local host path.
                     disassembly = (
-                        f"Classfile {source.name}!/{name}\n".encode()
+                        f"Classfile {archive_name}!/{name}\n".encode()
                         + disassembly.partition(b"\n")[2]
                     )
                 target = destination / f"{class_name}.txt"
                 _ = target.write_bytes(disassembly)
                 identities.append(
                     {
-                        "archive": source.name,
-                        "archive_sha256": source.sha256,
+                        "archive": archive_name,
+                        "archive_sha256": archive_sha,
                         "class": name,
                         "class_sha256": hashlib.sha256(payload).hexdigest(),
                         "disassembly": target.relative_to(output).as_posix(),
