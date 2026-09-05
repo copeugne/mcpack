@@ -326,6 +326,12 @@ CLASSES = (
     "org/violetmoon/zeta/module/ZetaModule.class",
     "org/violetmoon/zeta/module/ZetaModuleManager.class",
     "org/violetmoon/zeta/module/TentativeModule.class",
+    "org/violetmoon/quark/content/world/module/FallenLogsModule.class",
+    "org/violetmoon/quark/content/world/module/FairyRingsModule.class",
+    "org/violetmoon/quark/content/world/module/MonsterBoxModule.class",
+    "org/violetmoon/quark/content/world/gen/FallenLogGenerator.class",
+    "org/violetmoon/quark/content/world/gen/FairyRingGenerator.class",
+    "org/violetmoon/quark/content/world/gen/MonsterBoxGenerator.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
