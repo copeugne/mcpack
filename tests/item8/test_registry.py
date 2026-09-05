@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import shlex
+import subprocess
 import sys
 from textwrap import dedent
 from typing import TYPE_CHECKING
@@ -71,6 +72,40 @@ def test_capture_waits_for_all_dumps_and_correlated_flush(
     assert result.commands[8] == "save-all flush"
     assert result.commands[-1] == "stop"
     assert "last shutdown diagnostic" in log.read_text()
+
+
+@pytest.mark.parametrize("fails", [False, True])
+def test_dimension_probe_runs_after_readiness_and_failure_kills_server(
+    tmp_path: Path, fake_java: Callable[[str], Path], monkeypatch: pytest.MonkeyPatch, fails: bool
+) -> None:
+    log = tmp_path / "console.log"
+    seen: list[tuple[str, ...]] = []
+
+    def probe(command: tuple[str, ...], **kwargs: object) -> subprocess.CompletedProcess[str]:
+        assert "Done (" in log.read_text()
+        assert "registry's contents" not in log.read_text()
+        assert command[1:4] == ("--add-modules", "jdk.attach", "-jar")
+        assert command[5].isdigit()
+        assert command[-1] == str(tmp_path / "dimension-biomes.json")
+        assert kwargs["check"] is True
+        seen.append(command)
+        if fails:
+            raise subprocess.CalledProcessError(1, command)
+        return subprocess.CompletedProcess(command, 0)
+
+    monkeypatch.setattr(subprocess, "run", probe)
+    result = run_registry_lifecycle(
+        tmp_path, fake_java("pass"), log, 5, dimension_probe=tmp_path / "probe.jar"
+    )
+    assert len(seen) == 1
+    assert result.clean_stop is not fails
+    assert result.process_group_killed is fails
+    if fails:
+        assert not result.commands
+        assert result.rejection_reason
+    else:
+        assert result.completed_registries == REGISTRIES
+        assert result.save_all_flush
 
 
 @pytest.mark.parametrize("mode", ["eof", "bad-exit"])
