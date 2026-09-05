@@ -219,6 +219,12 @@ CLASSES = (
     "org/betterx/betterend/world/structures/features/MegaLakeSmallStructure.class",
     "org/betterx/betterend/world/structures/features/MountainStructure.class",
     "org/betterx/betterend/world/structures/features/PaintedMountainStructure.class",
+    "org/betterx/betterend/world/structures/piece/BasePiece.class",
+    "org/betterx/betterend/world/structures/piece/EndLakePiece.class",
+    "org/betterx/betterend/world/structures/piece/LakePiece.class",
+    "org/betterx/betterend/world/structures/piece/MountainPiece.class",
+    "org/betterx/betterend/world/structures/piece/CrystalMountainPiece.class",
+    "org/betterx/betterend/world/structures/piece/PaintedMountainPiece.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
