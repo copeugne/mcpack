@@ -90,6 +90,11 @@ CLASSES = (
     "net/minecraft/world/level/levelgen/structure/structures/NetherFossilStructure.class",
     "net/minecraft/world/level/levelgen/structure/structures/NetherFossilPieces.class",
     "net/minecraft/world/level/levelgen/structure/structures/NetherFossilPieces$NetherFossilPiece.class",
+    "net/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure.class",
+    "net/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure$Type.class",
+    "net/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces.class",
+    "net/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$OceanRuinPiece.class",
+    "net/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$1.class",
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs.class",
     "YungJigsawSinglePoolElement.class",
     "IASinglePoolElement.class",
@@ -210,7 +215,7 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     selected_classes is not None and name not in selected_classes
                 ):
                     continue
-                if source.name == MAPPED_SERVER.name and name not in CLASSES[:26]:
+                if source.name == MAPPED_SERVER.name and name not in CLASSES[:31]:
                     continue
                 if (
                     source.name == PATCHED_SERVER.name

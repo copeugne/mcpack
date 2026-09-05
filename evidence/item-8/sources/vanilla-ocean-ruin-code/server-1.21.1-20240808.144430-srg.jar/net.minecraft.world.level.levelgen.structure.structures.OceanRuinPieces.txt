@@ -1,0 +1,750 @@
+Compiled from "OceanRuinPieces.java"
+public class net.minecraft.world.level.levelgen.structure.structures.OceanRuinPieces {
+  static final net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor WARM_SUSPICIOUS_BLOCK_PROCESSOR;
+
+  static final net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor COLD_SUSPICIOUS_BLOCK_PROCESSOR;
+
+  private static final net.minecraft.resources.ResourceLocation[] WARM_RUINS;
+
+  private static final net.minecraft.resources.ResourceLocation[] RUINS_BRICK;
+
+  private static final net.minecraft.resources.ResourceLocation[] RUINS_CRACKED;
+
+  private static final net.minecraft.resources.ResourceLocation[] RUINS_MOSSY;
+
+  private static final net.minecraft.resources.ResourceLocation[] BIG_RUINS_BRICK;
+
+  private static final net.minecraft.resources.ResourceLocation[] BIG_RUINS_MOSSY;
+
+  private static final net.minecraft.resources.ResourceLocation[] BIG_RUINS_CRACKED;
+
+  private static final net.minecraft.resources.ResourceLocation[] BIG_WARM_RUINS;
+
+  public net.minecraft.world.level.levelgen.structure.structures.OceanRuinPieces();
+    Code:
+       0: aload_0
+       1: invokespecial #31                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  private static net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor archyRuleProcessor(net.minecraft.world.level.block.Block, net.minecraft.world.level.block.Block, net.minecraft.resources.ResourceKey<net.minecraft.world.level.storage.loot.LootTable>);
+    Code:
+       0: new           #38                 // class net/minecraft/world/level/levelgen/structure/templatesystem/CappedProcessor
+       3: dup
+       4: new           #40                 // class net/minecraft/world/level/levelgen/structure/templatesystem/RuleProcessor
+       7: dup
+       8: new           #42                 // class net/minecraft/world/level/levelgen/structure/templatesystem/ProcessorRule
+      11: dup
+      12: new           #44                 // class net/minecraft/world/level/levelgen/structure/templatesystem/BlockMatchTest
+      15: dup
+      16: aload_0
+      17: invokespecial #47                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/BlockMatchTest."<init>":(Lnet/minecraft/world/level/block/Block;)V
+      20: getstatic     #53                 // Field net/minecraft/world/level/levelgen/structure/templatesystem/AlwaysTrueTest.INSTANCE:Lnet/minecraft/world/level/levelgen/structure/templatesystem/AlwaysTrueTest;
+      23: getstatic     #58                 // Field net/minecraft/world/level/levelgen/structure/templatesystem/PosAlwaysTrueTest.INSTANCE:Lnet/minecraft/world/level/levelgen/structure/templatesystem/PosAlwaysTrueTest;
+      26: aload_1
+      27: invokevirtual #64                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      30: new           #66                 // class net/minecraft/world/level/levelgen/structure/templatesystem/rule/blockentity/AppendLoot
+      33: dup
+      34: aload_2
+      35: invokespecial #69                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/rule/blockentity/AppendLoot."<init>":(Lnet/minecraft/resources/ResourceKey;)V
+      38: invokespecial #72                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/ProcessorRule."<init>":(Lnet/minecraft/world/level/levelgen/structure/templatesystem/RuleTest;Lnet/minecraft/world/level/levelgen/structure/templatesystem/RuleTest;Lnet/minecraft/world/level/levelgen/structure/templatesystem/PosRuleTest;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/levelgen/structure/templatesystem/rule/blockentity/RuleBlockEntityModifier;)V
+      41: invokestatic  #78                 // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+      44: invokespecial #81                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/RuleProcessor."<init>":(Ljava/util/List;)V
+      47: iconst_5
+      48: invokestatic  #86                 // Method net/minecraft/util/valueproviders/ConstantInt.of:(I)Lnet/minecraft/util/valueproviders/ConstantInt;
+      51: invokespecial #89                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/CappedProcessor."<init>":(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor;Lnet/minecraft/util/valueproviders/IntProvider;)V
+      54: areturn
+
+  private static net.minecraft.resources.ResourceLocation getSmallWarmRuin(net.minecraft.util.RandomSource);
+    Code:
+       0: getstatic     #99                 // Field WARM_RUINS:[Lnet/minecraft/resources/ResourceLocation;
+       3: aload_0
+       4: invokestatic  #105                // Method net/minecraft/Util.getRandom:([Ljava/lang/Object;Lnet/minecraft/util/RandomSource;)Ljava/lang/Object;
+       7: checkcast     #107                // class net/minecraft/resources/ResourceLocation
+      10: areturn
+
+  private static net.minecraft.resources.ResourceLocation getBigWarmRuin(net.minecraft.util.RandomSource);
+    Code:
+       0: getstatic     #112                // Field BIG_WARM_RUINS:[Lnet/minecraft/resources/ResourceLocation;
+       3: aload_0
+       4: invokestatic  #105                // Method net/minecraft/Util.getRandom:([Ljava/lang/Object;Lnet/minecraft/util/RandomSource;)Ljava/lang/Object;
+       7: checkcast     #107                // class net/minecraft/resources/ResourceLocation
+      10: areturn
+
+  public static void addPieces(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager, net.minecraft.core.BlockPos, net.minecraft.world.level.block.Rotation, net.minecraft.world.level.levelgen.structure.StructurePieceAccessor, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.structure.structures.OceanRuinStructure);
+    Code:
+       0: aload         4
+       2: invokeinterface #121,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+       7: aload         5
+       9: getfield      #125                // Field net/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure.largeProbability:F
+      12: fcmpg
+      13: ifgt          20
+      16: iconst_1
+      17: goto          21
+      20: iconst_0
+      21: istore        6
+      23: iload         6
+      25: ifeq          33
+      28: ldc           #126                // float 0.9f
+      30: goto          35
+      33: ldc           #127                // float 0.8f
+      35: fstore        7
+      37: aload_0
+      38: aload_1
+      39: aload_2
+      40: aload_3
+      41: aload         4
+      43: aload         5
+      45: iload         6
+      47: fload         7
+      49: invokestatic  #131                // Method addPiece:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure;ZF)V
+      52: iload         6
+      54: ifeq          84
+      57: aload         4
+      59: invokeinterface #121,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      64: aload         5
+      66: getfield      #134                // Field net/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure.clusterProbability:F
+      69: fcmpg
+      70: ifgt          84
+      73: aload_0
+      74: aload         4
+      76: aload_2
+      77: aload_1
+      78: aload         5
+      80: aload_3
+      81: invokestatic  #138                // Method addClusterRuins:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;)V
+      84: return
+
+  private static void addClusterRuins(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager, net.minecraft.util.RandomSource, net.minecraft.world.level.block.Rotation, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.structures.OceanRuinStructure, net.minecraft.world.level.levelgen.structure.StructurePieceAccessor);
+    Code:
+       0: new           #154                // class net/minecraft/core/BlockPos
+       3: dup
+       4: aload_3
+       5: invokevirtual #158                // Method net/minecraft/core/BlockPos.getX:()I
+       8: bipush        90
+      10: aload_3
+      11: invokevirtual #161                // Method net/minecraft/core/BlockPos.getZ:()I
+      14: invokespecial #164                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      17: astore        6
+      19: new           #154                // class net/minecraft/core/BlockPos
+      22: dup
+      23: bipush        15
+      25: iconst_0
+      26: bipush        15
+      28: invokespecial #164                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      31: getstatic     #170                // Field net/minecraft/world/level/block/Mirror.NONE:Lnet/minecraft/world/level/block/Mirror;
+      34: aload_2
+      35: getstatic     #173                // Field net/minecraft/core/BlockPos.ZERO:Lnet/minecraft/core/BlockPos;
+      38: invokestatic  #179                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.transform:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Mirror;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+      41: aload         6
+      43: invokevirtual #183                // Method net/minecraft/core/BlockPos.offset:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+      46: astore        7
+      48: aload         6
+      50: aload         7
+      52: invokestatic  #189                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.fromCorners:(Lnet/minecraft/core/Vec3i;Lnet/minecraft/core/Vec3i;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      55: astore        8
+      57: new           #154                // class net/minecraft/core/BlockPos
+      60: dup
+      61: aload         6
+      63: invokevirtual #158                // Method net/minecraft/core/BlockPos.getX:()I
+      66: aload         7
+      68: invokevirtual #158                // Method net/minecraft/core/BlockPos.getX:()I
+      71: invokestatic  #195                // Method java/lang/Math.min:(II)I
+      74: aload         6
+      76: invokevirtual #198                // Method net/minecraft/core/BlockPos.getY:()I
+      79: aload         6
+      81: invokevirtual #161                // Method net/minecraft/core/BlockPos.getZ:()I
+      84: aload         7
+      86: invokevirtual #161                // Method net/minecraft/core/BlockPos.getZ:()I
+      89: invokestatic  #195                // Method java/lang/Math.min:(II)I
+      92: invokespecial #164                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      95: astore        9
+      97: aload_1
+      98: aload         9
+     100: invokestatic  #202                // Method allPositions:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+     103: astore        10
+     105: aload_1
+     106: iconst_4
+     107: bipush        8
+     109: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+     112: istore        11
+     114: iconst_0
+     115: istore        12
+     117: iload         12
+     119: iload         11
+     121: if_icmpge     242
+     124: aload         10
+     126: invokeinterface #216,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+     131: ifne          236
+     134: aload_1
+     135: aload         10
+     137: invokeinterface #219,  1          // InterfaceMethod java/util/List.size:()I
+     142: invokeinterface #222,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     147: istore        13
+     149: aload         10
+     151: iload         13
+     153: invokeinterface #226,  2          // InterfaceMethod java/util/List.remove:(I)Ljava/lang/Object;
+     158: checkcast     #154                // class net/minecraft/core/BlockPos
+     161: astore        14
+     163: aload_1
+     164: invokestatic  #231                // Method net/minecraft/world/level/block/Rotation.getRandom:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/Rotation;
+     167: astore        15
+     169: new           #154                // class net/minecraft/core/BlockPos
+     172: dup
+     173: iconst_5
+     174: iconst_0
+     175: bipush        6
+     177: invokespecial #164                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     180: getstatic     #170                // Field net/minecraft/world/level/block/Mirror.NONE:Lnet/minecraft/world/level/block/Mirror;
+     183: aload         15
+     185: getstatic     #173                // Field net/minecraft/core/BlockPos.ZERO:Lnet/minecraft/core/BlockPos;
+     188: invokestatic  #179                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.transform:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Mirror;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+     191: aload         14
+     193: invokevirtual #183                // Method net/minecraft/core/BlockPos.offset:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+     196: astore        16
+     198: aload         14
+     200: aload         16
+     202: invokestatic  #189                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.fromCorners:(Lnet/minecraft/core/Vec3i;Lnet/minecraft/core/Vec3i;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     205: astore        17
+     207: aload         17
+     209: aload         8
+     211: invokevirtual #235                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.intersects:(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Z
+     214: ifeq          220
+     217: goto          236
+     220: aload_0
+     221: aload         14
+     223: aload         15
+     225: aload         5
+     227: aload_1
+     228: aload         4
+     230: iconst_0
+     231: ldc           #127                // float 0.8f
+     233: invokestatic  #131                // Method addPiece:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure;ZF)V
+     236: iinc          12, 1
+     239: goto          117
+     242: return
+
+  private static java.util.List<net.minecraft.core.BlockPos> allPositions(net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: invokestatic  #262                // Method com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;
+       3: astore_2
+       4: aload_2
+       5: aload_1
+       6: bipush        -16
+       8: aload_0
+       9: iconst_1
+      10: bipush        8
+      12: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+      15: iadd
+      16: iconst_0
+      17: bipush        16
+      19: aload_0
+      20: iconst_1
+      21: bipush        7
+      23: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+      26: iadd
+      27: invokevirtual #265                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      30: invokeinterface #269,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      35: pop
+      36: aload_2
+      37: aload_1
+      38: bipush        -16
+      40: aload_0
+      41: iconst_1
+      42: bipush        8
+      44: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+      47: iadd
+      48: iconst_0
+      49: aload_0
+      50: iconst_1
+      51: bipush        7
+      53: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+      56: invokevirtual #265                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      59: invokeinterface #269,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      64: pop
+      65: aload_2
+      66: aload_1
+      67: bipush        -16
+      69: aload_0
+      70: iconst_1
+      71: bipush        8
+      73: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+      76: iadd
+      77: iconst_0
+      78: bipush        -16
+      80: aload_0
+      81: iconst_4
+      82: bipush        8
+      84: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+      87: iadd
+      88: invokevirtual #265                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      91: invokeinterface #269,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      96: pop
+      97: aload_2
+      98: aload_1
+      99: aload_0
+     100: iconst_1
+     101: bipush        7
+     103: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+     106: iconst_0
+     107: bipush        16
+     109: aload_0
+     110: iconst_1
+     111: bipush        7
+     113: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+     116: iadd
+     117: invokevirtual #265                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     120: invokeinterface #269,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     125: pop
+     126: aload_2
+     127: aload_1
+     128: aload_0
+     129: iconst_1
+     130: bipush        7
+     132: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+     135: iconst_0
+     136: bipush        -16
+     138: aload_0
+     139: iconst_4
+     140: bipush        6
+     142: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+     145: iadd
+     146: invokevirtual #265                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     149: invokeinterface #269,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     154: pop
+     155: aload_2
+     156: aload_1
+     157: bipush        16
+     159: aload_0
+     160: iconst_1
+     161: bipush        7
+     163: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+     166: iadd
+     167: iconst_0
+     168: bipush        16
+     170: aload_0
+     171: iconst_3
+     172: bipush        8
+     174: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+     177: iadd
+     178: invokevirtual #265                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     181: invokeinterface #269,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     186: pop
+     187: aload_2
+     188: aload_1
+     189: bipush        16
+     191: aload_0
+     192: iconst_1
+     193: bipush        7
+     195: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+     198: iadd
+     199: iconst_0
+     200: aload_0
+     201: iconst_1
+     202: bipush        7
+     204: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+     207: invokevirtual #265                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     210: invokeinterface #269,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     215: pop
+     216: aload_2
+     217: aload_1
+     218: bipush        16
+     220: aload_0
+     221: iconst_1
+     222: bipush        7
+     224: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+     227: iadd
+     228: iconst_0
+     229: bipush        -16
+     231: aload_0
+     232: iconst_4
+     233: bipush        8
+     235: invokestatic  #208                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+     238: iadd
+     239: invokevirtual #265                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     242: invokeinterface #269,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     247: pop
+     248: aload_2
+     249: areturn
+
+  private static void addPiece(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager, net.minecraft.core.BlockPos, net.minecraft.world.level.block.Rotation, net.minecraft.world.level.levelgen.structure.StructurePieceAccessor, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.structure.structures.OceanRuinStructure, boolean, float);
+    Code:
+       0: getstatic     #276                // Field net/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$1.$SwitchMap$net$minecraft$world$level$levelgen$structure$structures$OceanRuinStructure$Type:[I
+       3: aload         5
+       5: getfield      #280                // Field net/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure.biomeTemp:Lnet/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure$Type;
+       8: invokevirtual #283                // Method net/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure$Type.ordinal:()I
+      11: iaload
+      12: lookupswitch  { // 2
+                     1: 40
+                     2: 90
+               default: 40
+          }
+      40: iload         6
+      42: ifeq          53
+      45: aload         4
+      47: invokestatic  #285                // Method getBigWarmRuin:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/resources/ResourceLocation;
+      50: goto          58
+      53: aload         4
+      55: invokestatic  #287                // Method getSmallWarmRuin:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/resources/ResourceLocation;
+      58: astore        8
+      60: aload_3
+      61: new           #9                  // class net/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$OceanRuinPiece
+      64: dup
+      65: aload_0
+      66: aload         8
+      68: aload_1
+      69: aload_2
+      70: fload         7
+      72: aload         5
+      74: getfield      #280                // Field net/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure.biomeTemp:Lnet/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure$Type;
+      77: iload         6
+      79: invokespecial #290                // Method net/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$OceanRuinPiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;FLnet/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure$Type;Z)V
+      82: invokeinterface #293,  2          // InterfaceMethod net/minecraft/world/level/levelgen/structure/StructurePieceAccessor.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+      87: goto          242
+      90: iload         6
+      92: ifeq          101
+      95: getstatic     #295                // Field BIG_RUINS_BRICK:[Lnet/minecraft/resources/ResourceLocation;
+      98: goto          104
+     101: getstatic     #297                // Field RUINS_BRICK:[Lnet/minecraft/resources/ResourceLocation;
+     104: astore        9
+     106: iload         6
+     108: ifeq          117
+     111: getstatic     #300                // Field BIG_RUINS_CRACKED:[Lnet/minecraft/resources/ResourceLocation;
+     114: goto          120
+     117: getstatic     #302                // Field RUINS_CRACKED:[Lnet/minecraft/resources/ResourceLocation;
+     120: astore        10
+     122: iload         6
+     124: ifeq          133
+     127: getstatic     #304                // Field BIG_RUINS_MOSSY:[Lnet/minecraft/resources/ResourceLocation;
+     130: goto          136
+     133: getstatic     #306                // Field RUINS_MOSSY:[Lnet/minecraft/resources/ResourceLocation;
+     136: astore        11
+     138: aload         4
+     140: aload         9
+     142: arraylength
+     143: invokeinterface #222,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     148: istore        12
+     150: aload_3
+     151: new           #9                  // class net/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$OceanRuinPiece
+     154: dup
+     155: aload_0
+     156: aload         9
+     158: iload         12
+     160: aaload
+     161: aload_1
+     162: aload_2
+     163: fload         7
+     165: aload         5
+     167: getfield      #280                // Field net/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure.biomeTemp:Lnet/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure$Type;
+     170: iload         6
+     172: invokespecial #290                // Method net/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$OceanRuinPiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;FLnet/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure$Type;Z)V
+     175: invokeinterface #293,  2          // InterfaceMethod net/minecraft/world/level/levelgen/structure/StructurePieceAccessor.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     180: aload_3
+     181: new           #9                  // class net/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$OceanRuinPiece
+     184: dup
+     185: aload_0
+     186: aload         10
+     188: iload         12
+     190: aaload
+     191: aload_1
+     192: aload_2
+     193: ldc_w         #307                // float 0.7f
+     196: aload         5
+     198: getfield      #280                // Field net/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure.biomeTemp:Lnet/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure$Type;
+     201: iload         6
+     203: invokespecial #290                // Method net/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$OceanRuinPiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;FLnet/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure$Type;Z)V
+     206: invokeinterface #293,  2          // InterfaceMethod net/minecraft/world/level/levelgen/structure/StructurePieceAccessor.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     211: aload_3
+     212: new           #9                  // class net/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$OceanRuinPiece
+     215: dup
+     216: aload_0
+     217: aload         11
+     219: iload         12
+     221: aaload
+     222: aload_1
+     223: aload_2
+     224: ldc_w         #308                // float 0.5f
+     227: aload         5
+     229: getfield      #280                // Field net/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure.biomeTemp:Lnet/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure$Type;
+     232: iload         6
+     234: invokespecial #290                // Method net/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$OceanRuinPiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;FLnet/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure$Type;Z)V
+     237: invokeinterface #293,  2          // InterfaceMethod net/minecraft/world/level/levelgen/structure/StructurePieceAccessor.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     242: return
+
+  static {};
+    Code:
+       0: getstatic     #323                // Field net/minecraft/world/level/block/Blocks.SAND:Lnet/minecraft/world/level/block/Block;
+       3: getstatic     #326                // Field net/minecraft/world/level/block/Blocks.SUSPICIOUS_SAND:Lnet/minecraft/world/level/block/Block;
+       6: getstatic     #331                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.OCEAN_RUIN_WARM_ARCHAEOLOGY:Lnet/minecraft/resources/ResourceKey;
+       9: invokestatic  #333                // Method archyRuleProcessor:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/block/Block;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor;
+      12: putstatic     #335                // Field WARM_SUSPICIOUS_BLOCK_PROCESSOR:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor;
+      15: getstatic     #338                // Field net/minecraft/world/level/block/Blocks.GRAVEL:Lnet/minecraft/world/level/block/Block;
+      18: getstatic     #341                // Field net/minecraft/world/level/block/Blocks.SUSPICIOUS_GRAVEL:Lnet/minecraft/world/level/block/Block;
+      21: getstatic     #344                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.OCEAN_RUIN_COLD_ARCHAEOLOGY:Lnet/minecraft/resources/ResourceKey;
+      24: invokestatic  #333                // Method archyRuleProcessor:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/block/Block;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor;
+      27: putstatic     #346                // Field COLD_SUSPICIOUS_BLOCK_PROCESSOR:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor;
+      30: bipush        8
+      32: anewarray     #107                // class net/minecraft/resources/ResourceLocation
+      35: dup
+      36: iconst_0
+      37: ldc_w         #348                // String underwater_ruin/warm_1
+      40: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      43: aastore
+      44: dup
+      45: iconst_1
+      46: ldc_w         #354                // String underwater_ruin/warm_2
+      49: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      52: aastore
+      53: dup
+      54: iconst_2
+      55: ldc_w         #356                // String underwater_ruin/warm_3
+      58: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      61: aastore
+      62: dup
+      63: iconst_3
+      64: ldc_w         #358                // String underwater_ruin/warm_4
+      67: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      70: aastore
+      71: dup
+      72: iconst_4
+      73: ldc_w         #360                // String underwater_ruin/warm_5
+      76: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      79: aastore
+      80: dup
+      81: iconst_5
+      82: ldc_w         #362                // String underwater_ruin/warm_6
+      85: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      88: aastore
+      89: dup
+      90: bipush        6
+      92: ldc_w         #364                // String underwater_ruin/warm_7
+      95: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      98: aastore
+      99: dup
+     100: bipush        7
+     102: ldc_w         #366                // String underwater_ruin/warm_8
+     105: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     108: aastore
+     109: putstatic     #99                 // Field WARM_RUINS:[Lnet/minecraft/resources/ResourceLocation;
+     112: bipush        8
+     114: anewarray     #107                // class net/minecraft/resources/ResourceLocation
+     117: dup
+     118: iconst_0
+     119: ldc_w         #368                // String underwater_ruin/brick_1
+     122: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     125: aastore
+     126: dup
+     127: iconst_1
+     128: ldc_w         #370                // String underwater_ruin/brick_2
+     131: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     134: aastore
+     135: dup
+     136: iconst_2
+     137: ldc_w         #372                // String underwater_ruin/brick_3
+     140: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     143: aastore
+     144: dup
+     145: iconst_3
+     146: ldc_w         #374                // String underwater_ruin/brick_4
+     149: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     152: aastore
+     153: dup
+     154: iconst_4
+     155: ldc_w         #376                // String underwater_ruin/brick_5
+     158: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     161: aastore
+     162: dup
+     163: iconst_5
+     164: ldc_w         #378                // String underwater_ruin/brick_6
+     167: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     170: aastore
+     171: dup
+     172: bipush        6
+     174: ldc_w         #380                // String underwater_ruin/brick_7
+     177: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     180: aastore
+     181: dup
+     182: bipush        7
+     184: ldc_w         #382                // String underwater_ruin/brick_8
+     187: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     190: aastore
+     191: putstatic     #297                // Field RUINS_BRICK:[Lnet/minecraft/resources/ResourceLocation;
+     194: bipush        8
+     196: anewarray     #107                // class net/minecraft/resources/ResourceLocation
+     199: dup
+     200: iconst_0
+     201: ldc_w         #384                // String underwater_ruin/cracked_1
+     204: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     207: aastore
+     208: dup
+     209: iconst_1
+     210: ldc_w         #386                // String underwater_ruin/cracked_2
+     213: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     216: aastore
+     217: dup
+     218: iconst_2
+     219: ldc_w         #388                // String underwater_ruin/cracked_3
+     222: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     225: aastore
+     226: dup
+     227: iconst_3
+     228: ldc_w         #390                // String underwater_ruin/cracked_4
+     231: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     234: aastore
+     235: dup
+     236: iconst_4
+     237: ldc_w         #392                // String underwater_ruin/cracked_5
+     240: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     243: aastore
+     244: dup
+     245: iconst_5
+     246: ldc_w         #394                // String underwater_ruin/cracked_6
+     249: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     252: aastore
+     253: dup
+     254: bipush        6
+     256: ldc_w         #396                // String underwater_ruin/cracked_7
+     259: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     262: aastore
+     263: dup
+     264: bipush        7
+     266: ldc_w         #398                // String underwater_ruin/cracked_8
+     269: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     272: aastore
+     273: putstatic     #302                // Field RUINS_CRACKED:[Lnet/minecraft/resources/ResourceLocation;
+     276: bipush        8
+     278: anewarray     #107                // class net/minecraft/resources/ResourceLocation
+     281: dup
+     282: iconst_0
+     283: ldc_w         #400                // String underwater_ruin/mossy_1
+     286: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     289: aastore
+     290: dup
+     291: iconst_1
+     292: ldc_w         #402                // String underwater_ruin/mossy_2
+     295: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     298: aastore
+     299: dup
+     300: iconst_2
+     301: ldc_w         #404                // String underwater_ruin/mossy_3
+     304: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     307: aastore
+     308: dup
+     309: iconst_3
+     310: ldc_w         #406                // String underwater_ruin/mossy_4
+     313: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     316: aastore
+     317: dup
+     318: iconst_4
+     319: ldc_w         #408                // String underwater_ruin/mossy_5
+     322: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     325: aastore
+     326: dup
+     327: iconst_5
+     328: ldc_w         #410                // String underwater_ruin/mossy_6
+     331: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     334: aastore
+     335: dup
+     336: bipush        6
+     338: ldc_w         #412                // String underwater_ruin/mossy_7
+     341: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     344: aastore
+     345: dup
+     346: bipush        7
+     348: ldc_w         #414                // String underwater_ruin/mossy_8
+     351: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     354: aastore
+     355: putstatic     #306                // Field RUINS_MOSSY:[Lnet/minecraft/resources/ResourceLocation;
+     358: iconst_4
+     359: anewarray     #107                // class net/minecraft/resources/ResourceLocation
+     362: dup
+     363: iconst_0
+     364: ldc_w         #416                // String underwater_ruin/big_brick_1
+     367: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     370: aastore
+     371: dup
+     372: iconst_1
+     373: ldc_w         #418                // String underwater_ruin/big_brick_2
+     376: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     379: aastore
+     380: dup
+     381: iconst_2
+     382: ldc_w         #420                // String underwater_ruin/big_brick_3
+     385: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     388: aastore
+     389: dup
+     390: iconst_3
+     391: ldc_w         #422                // String underwater_ruin/big_brick_8
+     394: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     397: aastore
+     398: putstatic     #295                // Field BIG_RUINS_BRICK:[Lnet/minecraft/resources/ResourceLocation;
+     401: iconst_4
+     402: anewarray     #107                // class net/minecraft/resources/ResourceLocation
+     405: dup
+     406: iconst_0
+     407: ldc_w         #424                // String underwater_ruin/big_mossy_1
+     410: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     413: aastore
+     414: dup
+     415: iconst_1
+     416: ldc_w         #426                // String underwater_ruin/big_mossy_2
+     419: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     422: aastore
+     423: dup
+     424: iconst_2
+     425: ldc_w         #428                // String underwater_ruin/big_mossy_3
+     428: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     431: aastore
+     432: dup
+     433: iconst_3
+     434: ldc_w         #430                // String underwater_ruin/big_mossy_8
+     437: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     440: aastore
+     441: putstatic     #304                // Field BIG_RUINS_MOSSY:[Lnet/minecraft/resources/ResourceLocation;
+     444: iconst_4
+     445: anewarray     #107                // class net/minecraft/resources/ResourceLocation
+     448: dup
+     449: iconst_0
+     450: ldc_w         #432                // String underwater_ruin/big_cracked_1
+     453: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     456: aastore
+     457: dup
+     458: iconst_1
+     459: ldc_w         #434                // String underwater_ruin/big_cracked_2
+     462: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     465: aastore
+     466: dup
+     467: iconst_2
+     468: ldc_w         #436                // String underwater_ruin/big_cracked_3
+     471: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     474: aastore
+     475: dup
+     476: iconst_3
+     477: ldc_w         #438                // String underwater_ruin/big_cracked_8
+     480: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     483: aastore
+     484: putstatic     #300                // Field BIG_RUINS_CRACKED:[Lnet/minecraft/resources/ResourceLocation;
+     487: iconst_4
+     488: anewarray     #107                // class net/minecraft/resources/ResourceLocation
+     491: dup
+     492: iconst_0
+     493: ldc_w         #440                // String underwater_ruin/big_warm_4
+     496: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     499: aastore
+     500: dup
+     501: iconst_1
+     502: ldc_w         #442                // String underwater_ruin/big_warm_5
+     505: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     508: aastore
+     509: dup
+     510: iconst_2
+     511: ldc_w         #444                // String underwater_ruin/big_warm_6
+     514: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     517: aastore
+     518: dup
+     519: iconst_3
+     520: ldc_w         #446                // String underwater_ruin/big_warm_7
+     523: invokestatic  #352                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     526: aastore
+     527: putstatic     #112                // Field BIG_WARM_RUINS:[Lnet/minecraft/resources/ResourceLocation;
+     530: return
+}

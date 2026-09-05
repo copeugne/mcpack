@@ -1,0 +1,134 @@
+Compiled from "OceanRuinStructure.java"
+public class net.minecraft.world.level.levelgen.structure.structures.OceanRuinStructure extends net.minecraft.world.level.levelgen.structure.Structure {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.world.level.levelgen.structure.structures.OceanRuinStructure> CODEC;
+
+  public final net.minecraft.world.level.levelgen.structure.structures.OceanRuinStructure$Type biomeTemp;
+
+  public final float largeProbability;
+
+  public final float clusterProbability;
+
+  public net.minecraft.world.level.levelgen.structure.structures.OceanRuinStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings, net.minecraft.world.level.levelgen.structure.structures.OceanRuinStructure$Type, float, float);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #50                 // Method net/minecraft/world/level/levelgen/structure/Structure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       5: aload_0
+       6: aload_2
+       7: putfield      #52                 // Field biomeTemp:Lnet/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure$Type;
+      10: aload_0
+      11: fload_3
+      12: putfield      #54                 // Field largeProbability:F
+      15: aload_0
+      16: fload         4
+      18: putfield      #56                 // Field clusterProbability:F
+      21: return
+
+  public java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_1
+       1: getstatic     #70                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.OCEAN_FLOOR_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+       4: aload_0
+       5: aload_1
+       6: invokedynamic #90,  0             // InvokeDynamic #0:accept:(Lnet/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Ljava/util/function/Consumer;
+      11: invokestatic  #94                 // Method onTopOfChunkCenter:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Ljava/util/function/Consumer;)Ljava/util/Optional;
+      14: areturn
+
+  private void generatePieces(net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: new           #100                // class net/minecraft/core/BlockPos
+       3: dup
+       4: aload_2
+       5: invokevirtual #104                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+       8: invokevirtual #110                // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+      11: bipush        90
+      13: aload_2
+      14: invokevirtual #104                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      17: invokevirtual #113                // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+      20: invokespecial #116                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      23: astore_3
+      24: aload_2
+      25: invokevirtual #120                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+      28: invokestatic  #126                // Method net/minecraft/world/level/block/Rotation.getRandom:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/Rotation;
+      31: astore        4
+      33: aload_2
+      34: invokevirtual #130                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.structureTemplateManager:()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+      37: aload_3
+      38: aload         4
+      40: aload_1
+      41: aload_2
+      42: invokevirtual #120                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+      45: aload_0
+      46: invokestatic  #136                // Method net/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces.addPieces:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure;)V
+      49: return
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<?> type();
+    Code:
+       0: getstatic     #152                // Field net/minecraft/world/level/levelgen/structure/StructureType.OCEAN_RUIN:Lnet/minecraft/world/level/levelgen/structure/StructureType;
+       3: areturn
+
+  private void lambda$findGenerationPoint$4(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: aload_1
+       3: invokevirtual #154                // Method generatePieces:(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)V
+       6: return
+
+  private static com.mojang.datafixers.kinds.App lambda$static$3(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokestatic  #162                // Method settingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       5: getstatic     #165                // Field net/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure$Type.CODEC:Lcom/mojang/serialization/Codec;
+       8: ldc           #167                // String biome_temp
+      10: invokeinterface #173,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      15: invokedynamic #185,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      20: invokevirtual #191                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      23: fconst_0
+      24: fconst_1
+      25: invokestatic  #195                // InterfaceMethod com/mojang/serialization/Codec.floatRange:(FF)Lcom/mojang/serialization/Codec;
+      28: ldc           #197                // String large_probability
+      30: invokeinterface #173,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      35: invokedynamic #204,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      40: invokevirtual #191                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      43: fconst_0
+      44: fconst_1
+      45: invokestatic  #195                // InterfaceMethod com/mojang/serialization/Codec.floatRange:(FF)Lcom/mojang/serialization/Codec;
+      48: ldc           #206                // String cluster_probability
+      50: invokeinterface #173,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      55: invokedynamic #211,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      60: invokevirtual #191                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      63: invokevirtual #215                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P4;
+      66: aload_0
+      67: invokedynamic #225,  0            // InvokeDynamic #4:apply:()Lcom/mojang/datafixers/util/Function4;
+      72: invokevirtual #228                // Method com/mojang/datafixers/Products$P4.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function4;)Lcom/mojang/datafixers/kinds/App;
+      75: areturn
+
+  private static java.lang.Float lambda$static$2(net.minecraft.world.level.levelgen.structure.structures.OceanRuinStructure);
+    Code:
+       0: aload_0
+       1: getfield      #56                 // Field clusterProbability:F
+       4: invokestatic  #236                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+       7: areturn
+
+  private static java.lang.Float lambda$static$1(net.minecraft.world.level.levelgen.structure.structures.OceanRuinStructure);
+    Code:
+       0: aload_0
+       1: getfield      #54                 // Field largeProbability:F
+       4: invokestatic  #236                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+       7: areturn
+
+  private static net.minecraft.world.level.levelgen.structure.structures.OceanRuinStructure$Type lambda$static$0(net.minecraft.world.level.levelgen.structure.structures.OceanRuinStructure);
+    Code:
+       0: aload_0
+       1: getfield      #52                 // Field biomeTemp:Lnet/minecraft/world/level/levelgen/structure/structures/OceanRuinStructure$Type;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #246,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+       5: invokestatic  #250                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #252                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}
