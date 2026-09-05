@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Extras well archaeology and placement rules are delivered in `b8c4a7e`, with
+processor constructor evidence in `0389282`. The regenerated inventory SHA-256 is
+`8c5c53f1135cbaa6c038d1e89260c15a4fbba58ccc4bf0ad3ed0fb575300ce86`. Eighteen affected tests and scoped checks passed.
+Both marker loot paths, conditional brushable assignment and the six-block-deep
+template anchor are recorded. Registry membership remains 421 provisional groups
+and 887 roots. Continue swamp/other generator effects, configuration/provider
+coverage and canonical-family reconciliation. Do not recapture the processor
+module or repeat well interpretation. Item 8 remains incomplete.
+
 The twelve-class Extras capture is delivered in `4303da0`. DesertWellProcessor
 adds suspicious-sand loot absent from stored template block entities. The
 generator references FeatureProcessorModule.DESERT_WELL_PROCESSOR, so capture

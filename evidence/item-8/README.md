@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `bb970de`, SHA-256
-`c7fa2fed220886d952ea872056cd9fcf0899719e431b70923fc21be72b4835ea`.
+Current working inventory regenerated at `b8c4a7e`, SHA-256
+`8c5c53f1135cbaa6c038d1e89260c15a4fbba58ccc4bf0ad3ed0fb575300ce86`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1733,4 +1733,13 @@ splitting it resolved the finding, and scoped Ruff/Basedpyright passed.
 uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
 uv run ruff check tools/build_item8_inventory.py tests/item8/test_feature_modifier_references.py
 uv run basedpyright tools/build_item8_inventory.py tests/item8/test_feature_modifier_references.py
+```
+
+Inventory regeneration at `b8c4a7e` changed only input identity and the Extras
+non-registry contribution. All registry-family rows and Bridges content remain
+unchanged. Reproduce with a fresh output directory:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-extras-well-generation.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-extras-well-generation.json
 ```
