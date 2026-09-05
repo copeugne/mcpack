@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-05
 
+Better End Island template reconciliation is integrated in `e8982e8`, with
+source dependency capture `46c2bf2`. All 41 packaged templates are linked
+(36 spike pieces, three podium variants, platform and gateway), not counted
+as families. Spike indices, crystal offsets and applicable block replacement
+are resolved. Twenty-nine focused tests and scoped checks passed. Inventory
+SHA-256: `fb8e1b31eca3bc8050d8103e0078ff949b12b14cc53daf8f3a0d3e63383b5c10`.
+Next interpret the already captured EndDragonFightMixin podium invocation
+and runtime/initialization applicability. Its reset method contains the direct
+podium constructor call; other portal calls may identify an exact helper. Do
+not repeat template extraction or completed processor/offset interpretation.
+Item 8 remains incomplete; no new measurement system was added.
+
 Resolve concrete spike/podium inventory gaps with the existing extractor: verbose
 bootstrap constants for the two generators, SpikeCacheLoader for variant indices,
 EndSpikeMixin for crystal offsets, BlockReplaceProcessor for generated contents,

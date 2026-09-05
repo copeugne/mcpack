@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "22f459a7ceb753de6729adaf73e9bd70ffa7649a48b82119ec8a750563212265",
+    "evidence/item-8/family-decisions.json": "7ed47edb86091eb3146b8333afac75d94a19479436cb96fa4cf940231eb8ba44",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -158983,6 +158983,7 @@
         "evidence": {
           "evidence/item-6/frozen/config/betterendisland-neoforge-1_21.toml": "9f967435aa86ab5959ee76a215cde5176bee106fae08df3b6e440c77a823867a",
           "evidence/item-8/sources/better-end-island-configuration/identities.json": "56c0b14dfb0f0a11156acd745548cb01085bce05ed965bbc38bdbeae19fed3cb",
+          "evidence/item-8/sources/better-end-island-generator-dependencies/identities.json": "8c3ce129b5cdde84f33f705a24735cff5c219462b9b0a5db494b927c21d3ca3e",
           "evidence/item-8/sources/better-end-island-platform-gateway/YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar/mixin-metadata.json": "9edd653c4d2fb45318c02ff41838941b914774d87f8d799d20aa99aa8fa91813",
           "evidence/item-8/sources/better-end-island-platform-gateway/identities.json": "6d6944ae221e62182308d1ac3cdcc10a9b028d98bb0e2fa0d72e910cd366b48a",
           "evidence/item-8/sources/better-end-island-processors/identities.json": "dfeb5a2586c4b82b3e0e6eb5712149d1ab8adfc6689cc7ece108490a2b7d9b95",
@@ -159025,16 +159026,445 @@
         "processors": "Platform static processor list is empty; gateway static list contains DragonEggProcessor. Both then add ObsidianProcessor with dragon-kill count, read only when the supplied accessor is a ServerLevel with a non-null dragon fight, otherwise zero. Direct effects are recorded below.",
         "scope": "Direct code and packaged template attribution, extended with partial spike/podium generator findings below. Mixin activation, dimension applicability, family reconciliation and generated-world observations remain open.",
         "spike_podium_generators": {
+          "crystal_y_offsets_by_template_index": {
+            "1": 22,
+            "2": 22,
+            "3": 26,
+            "4": 27,
+            "5": 27,
+            "6": 32,
+            "7": 32,
+            "8": 32,
+            "9": 38
+          },
           "podium_entity_source": "When isInitialSpawn is true, after the template helper, request four EndCrystal entities, one eight blocks in each horizontal cardinal direction from origin.above(6), with X/Z centered by +0.5. Set showBottom false and invulnerable true. This branch does not check template-helper success and discards entity-add results. It establishes direct authored entity requests, not successful observed generation or hostile-mob spawning.",
-          "podium_geometry": "Use context origin and random, subtract integer half template X/Z, Rotation.NONE, and pivot (3,0,3) for bottom-only or (14,0,14) otherwise. Template envelopes remain unresolved.",
-          "podium_variants": "Constructor arguments are isInitialSpawn, isBottomOnly, isActive, in that order. Bottom-only selects betterendisland:tower_bottom_open; otherwise selection uses initial or broken in an unresolved concatenated path. Invocation and configuration-to-constructor mapping remain UNKNOWN.",
-          "processors": "Spike static order: three BlockReplaceProcessor instances (orange terracotta selector with obsidian/crying obsidian; magenta terracotta selector with air/crying obsidian/obsidian; purple concrete selector with obsidian), then DragonEggProcessor, then per-placement ObsidianProcessor. Podium: gray concrete/bedrock BlockReplaceProcessor, DragonEggProcessor, active red concrete/end portal or inactive red concrete/air BlockReplaceProcessor, then ObsidianProcessor. BlockReplaceProcessor implementation remains untraced; selector arguments are not asserted as observed frequencies.",
+          "podium_geometry": "Use context origin and random, subtract integer half template X/Z, Rotation.NONE, and pivot (3,0,3) for bottom-only or (14,0,14) otherwise. Full tower envelope is 29x27x29; bottom-only is 7x11x7. These include air and are not occupied-block measurements.",
+          "podium_variants": "Constructor arguments are isInitialSpawn, isBottomOnly, isActive, in that order. Bottom-only selects betterendisland:tower_bottom_open; otherwise initial selects betterendisland:tower_initial and false selects betterendisland:tower_broken. Invocation and configuration-to-constructor mapping remain under review in the captured EndDragonFightMixin.",
+          "processors": "Spike static order: three BlockReplaceProcessor instances (orange terracotta selector with obsidian/crying obsidian; magenta terracotta selector with air/crying obsidian/obsidian; purple concrete selector with obsidian), then DragonEggProcessor, then per-placement ObsidianProcessor. Podium: gray concrete/bedrock BlockReplaceProcessor, DragonEggProcessor, active red concrete/end portal or inactive red concrete/air BlockReplaceProcessor, then ObsidianProcessor. For these instances all four optional flags are false. BlockReplaceProcessor matches incoming block type, selects output with settings random at target position, preserves incoming position/NBT and passes nonmatching input unchanged. No optional property copying, facing/half randomization or waterlog preservation applies. Configured outputs exclude water/lava, so its fluid-tick branch does not apply. Selector arguments are not asserted as observed frequencies.",
           "scope": "Partial attribution from the preserved full generators. Does not establish final families, complete generated contents, absence of loot/spawners, runtime activation or world observations. Resolve only dependencies needed for those Item 8 attributes.",
-          "spike_entity_source": "After both template helpers return true, and only when the WorldGenRegion flag is false, request an END_CRYSTAL at (center X + 0.5, anchor Y + IEndSpike crystal offset, center Z + 0.5). Beam target and invulnerability come from SpikeConfiguration. Request BEDROCK one block below. Entity-add and block-write booleans are discarded. The crystal offset implementation remains unresolved; this is a direct entity request, not a spawner or observed successful spawn.",
-          "spike_geometry": "Top anchor is (spike center X, 70 when BetterEndIslandCommon.betterEnd is true, otherwise 60, spike center Z); bottom anchor is 67 blocks below. Both subtract integer half template X/Z and use the same random rotation with pivot (9,0,9). Effective betterEnd flag and template envelopes remain unresolved.",
+          "spike_entity_source": "After both template helpers return true, and only when the WorldGenRegion flag is false, request an END_CRYSTAL at (center X + 0.5, anchor Y + IEndSpike crystal offset, center Z + 0.5). Beam target and invulnerability come from SpikeConfiguration. Request BEDROCK one block below. Entity-add and block-write booleans are discarded. EndSpikeMixin supplies the recorded crystal offsets; this is a direct entity request, not a spawner or observed successful spawn.",
+          "spike_geometry": "Top anchor is (spike center X, 70 when BetterEndIslandCommon.betterEnd is true, otherwise 60, spike center Z); bottom anchor is 67 blocks below. Both subtract integer half template X/Z and use the same random rotation with pivot (9,0,9). Each top template envelope is 19x69x19 and each bottom is 19x67x19. Adjacent vertical anchors give a combined 19x136x19 nominal envelope per spike, including air, not occupied-block height. Effective betterEnd flag remains unresolved.",
           "spike_hook": "SpikeFeatureMixin replaces getSpikesForLevel with the custom result. Its cancellable HEAD placeSpike hook calls BetterSpikeFeature with an accessor-is-WorldGenRegion flag, then cancels vanilla. Neither hook has a local configuration condition.",
-          "spike_variants": "chooseTemplates selects initial when the WorldGenRegion flag is true; otherwise guarded when the supplied random nextFloat is below 0.2, broken otherwise. Index is Java integer division (EndSpike.height - 73) / 3, with 10 remapped to 9. Exact concatenated template paths and reachable index range remain UNKNOWN pending bootstrap constants and SpikeCacheLoader.",
-          "success_limits": "Both template helpers warn and return false when the template is absent; otherwise they discard StructureTemplate.placeInWorld boolean and return true. Both use IGNORE_WATERLOGGING and flag 2. A false spike helper logs an error and returns before subsequent steps. Podium returns its helper boolean even though initial crystal requests can occur after helper failure."
+          "spike_layout": "SpikeCacheLoader places ten centers around radius 42 when betterEnd is true, otherwise 54, using floor(radius*cos(angle)) and floor(radius*sin(angle)), angle 2*(-pi + pi*i/10), i=0..9. BetterEndIslandCommon.init assigns betterEnd from Services.PLATFORM.isModLoaded(\"betterend\"). Effective initialization/runtime binding remains to be reconciled.",
+          "spike_variants": "SpikeCacheLoader shuffles 0..9 and creates ten spikes with height 76 + 3*j. chooseTemplates maps (height - 73)/3 to 1..10, then remaps 10 to 9: indices 1..8 once and 9 twice per generated list. Templates are betterendisland:pillar_{initial|guarded|broken}_{index} and betterendisland:pillar_bottom_{index}. WorldGenRegion selects initial; otherwise random nextFloat below 0.2 selects guarded, else broken. The loader guarded flag (j equals 1 or 2) is not consulted by chooseTemplates. This describes the captured loader path, not arbitrary externally supplied EndSpike objects.",
+          "success_limits": "Both template helpers warn and return false when the template is absent; otherwise they discard StructureTemplate.placeInWorld boolean and return true. Both use IGNORE_WATERLOGGING and flag 2. A false spike helper logs an error and returns before subsequent steps. Podium returns its helper boolean even though initial crystal requests can occur after helper failure.",
+          "template_content_scope": "These 39 spike/podium templates plus the two previously linked platform/gateway templates account for every template in this provider catalog. All have empty stored entities; only the two full tower templates have block entities (one bell each). This does not erase the direct code-created crystal source or establish complete runtime provider coverage.",
+          "templates": {
+            "betterendisland:pillar_bottom_1": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                67,
+                19
+              ],
+              "sha256": "949e0c7b7ac1046159933b14f33b56739b45612c44db569fe603f9338b7a1d50"
+            },
+            "betterendisland:pillar_bottom_2": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                67,
+                19
+              ],
+              "sha256": "f6cd73a6b53ddec59fa36a1f90a19d2e3e95755ae1e0663eed0c8bfae91e89ca"
+            },
+            "betterendisland:pillar_bottom_3": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                67,
+                19
+              ],
+              "sha256": "01dc9ae84b6f2e77d5fc742de4db084e50308e9a3e41a1c3b8f6f33587d5a27f"
+            },
+            "betterendisland:pillar_bottom_4": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                67,
+                19
+              ],
+              "sha256": "6eb6a3382d8e0bb4f843e8b1aef69025c72e08548c3b0191818c5bda8318c3ea"
+            },
+            "betterendisland:pillar_bottom_5": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                67,
+                19
+              ],
+              "sha256": "5d9e17b346bf1ab0d8332b6293c74d5cd4f6bb4b7e1b42d0340c574d5255f8e0"
+            },
+            "betterendisland:pillar_bottom_6": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                67,
+                19
+              ],
+              "sha256": "0762dae95f3929cf2cc58a8864f98d82645bfe7ed35770d484944a28f04e1609"
+            },
+            "betterendisland:pillar_bottom_7": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                67,
+                19
+              ],
+              "sha256": "66d28b8acd2743b4697a3d1f20109a3e17bc01dc1c6a23b3afd6df1084f16824"
+            },
+            "betterendisland:pillar_bottom_8": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                67,
+                19
+              ],
+              "sha256": "c4b3e299d5baca58bdd09538a81b0a14e2325c06fcdab6de52ead6a46530d219"
+            },
+            "betterendisland:pillar_bottom_9": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                67,
+                19
+              ],
+              "sha256": "a54c99b881915c7a5a4e8a4024b4d2c85d4303261f58fb35a30bf50ee531ad06"
+            },
+            "betterendisland:pillar_broken_1": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "e89f362a2f446f0b2091d2894eb3e28c0d5ea07d827b432ecbcf95c0063bf73e"
+            },
+            "betterendisland:pillar_broken_2": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "47d8e55d1c266a7101edc14d9f5becc3338b05192664f0b192b47b4466dc11fd"
+            },
+            "betterendisland:pillar_broken_3": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "3a24db50160f3b2418f336bc309f223e0fa398fd63e5e0612b8f3de18c192835"
+            },
+            "betterendisland:pillar_broken_4": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "e995c45674b945a6b48fdaa2ffc03216572cfc67f9cac28033530e105e064a1b"
+            },
+            "betterendisland:pillar_broken_5": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "772803f380817d12a08f9904765589d7913357480338a6bf919827dfbf40655b"
+            },
+            "betterendisland:pillar_broken_6": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "d8fd38eae0a2d13cba5abff11b986381164c372787f1521a18c6ecefe81b0b5a"
+            },
+            "betterendisland:pillar_broken_7": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "e80030a8b5751253bab285126dbfcc02b833e7060a21719e56ef70483dfe23a9"
+            },
+            "betterendisland:pillar_broken_8": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "7b9f2ee7f819acf7cc893bcdd09f037900e8d2850e9c86e253ef50c65abc9372"
+            },
+            "betterendisland:pillar_broken_9": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "cb6dd917ee454d81b1cd405a78b1725eb28119c2e263e2710479595166fdaec9"
+            },
+            "betterendisland:pillar_guarded_1": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "bebda28e7301aedf1009a91fd24b9c6b681f3e9bf14ced818b599625aa7e58ed"
+            },
+            "betterendisland:pillar_guarded_2": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "46b46874889d267b7f1952a60ae0c307b27072e3d6dda6be9fb6b65f7413ccaa"
+            },
+            "betterendisland:pillar_guarded_3": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "a99fb66d57d8b7e49b5381ed56423dfa87ac4322e7fbaf339c622afc6a4efb24"
+            },
+            "betterendisland:pillar_guarded_4": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "75b2a8285bccc814df499a3d8e51d7d0c801c7fbec58dce1940dbf61094d0c97"
+            },
+            "betterendisland:pillar_guarded_5": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "781f0bd7fd4fe2b09cc396da2a422b0b6c6fb522a55469e912907e1d9065b1f9"
+            },
+            "betterendisland:pillar_guarded_6": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "df6209899e188111163749478df543949a285234084b020a36db10cec8e86068"
+            },
+            "betterendisland:pillar_guarded_7": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "e4c473c68513bd9a982436b1a36eee32b638ff7a17b37fe548906207d6548ca6"
+            },
+            "betterendisland:pillar_guarded_8": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "85cc6240757a106faa485dff71b82a51deb3ed46ad6fdcf383c235c500f078fe"
+            },
+            "betterendisland:pillar_guarded_9": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "c08f4c54a3dab69f195d02aaf819fc4a408af2e6780f19d81d6dccf082e711d2"
+            },
+            "betterendisland:pillar_initial_1": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "6a2634cd2c84fcae0195d0f3209c6af53150f7ed219a510f226b05bc9d73321c"
+            },
+            "betterendisland:pillar_initial_2": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "d1d4090ff4bf5f9d036b9411e79fe4ecf6c52e7c0ced856767f929f27727be7e"
+            },
+            "betterendisland:pillar_initial_3": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "d8f4ab0c409f5f348de264edc24263de0faa490f179a8d26ae4a4e0b3b302bb9"
+            },
+            "betterendisland:pillar_initial_4": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "7abdf693d0db94a08e724dd5ecd6259097f02285c9dd1052b77b1da8d6658769"
+            },
+            "betterendisland:pillar_initial_5": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "a2a41ff90b8f437be58d0f4a846f4b47d3a449547c34001ffb84647c7bf7fb6f"
+            },
+            "betterendisland:pillar_initial_6": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "70afd5e9fe467cc8885e7c7e8c49e3c4e07aa77abf20f77b0021a8720be8644b"
+            },
+            "betterendisland:pillar_initial_7": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "edbf222d553a1961096970897519f6419bea171e763a3eda1288b84ab8164e98"
+            },
+            "betterendisland:pillar_initial_8": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "133cff3feb75ecdd786ce1b3cf5d6d58d0f27cc1c8ddb839e0d309c8fd88527b"
+            },
+            "betterendisland:pillar_initial_9": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                19,
+                69,
+                19
+              ],
+              "sha256": "115da8914c0a354db4edb0ab27b8ab7a94542223a41eef0af57c11a5ea347786"
+            },
+            "betterendisland:tower_bottom_open": {
+              "block_entities": [],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                7,
+                11,
+                7
+              ],
+              "sha256": "d6a64692a15069b74653ad6a403f49601412deea8bbc5d2710bf39a6b1f7732e"
+            },
+            "betterendisland:tower_broken": {
+              "block_entities": [
+                {
+                  "nbt": {
+                    "id": "minecraft:bell"
+                  },
+                  "pos": [
+                    14,
+                    20,
+                    14
+                  ],
+                  "state": 31
+                }
+              ],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                29,
+                27,
+                29
+              ],
+              "sha256": "8831cedb2b4cad9ab63e1237cb3af1389275f7114f4f3a8f5120f76a8821f4d5"
+            },
+            "betterendisland:tower_initial": {
+              "block_entities": [
+                {
+                  "nbt": {
+                    "id": "minecraft:bell"
+                  },
+                  "pos": [
+                    14,
+                    20,
+                    14
+                  ],
+                  "state": 31
+                }
+              ],
+              "entities": [],
+              "nominal_xyz_blocks": [
+                29,
+                27,
+                29
+              ],
+              "sha256": "36d155015ca55d1cbef81e3755a082255c37afafaf2c1e024288424d941ef7cf"
+            }
+          }
         },
         "success_limits": "Missing templates log a warning and return false. Loaded-template helpers discard placeInWorld boolean and return true. Platform hook cancellation does not depend on success. Gateway returns its template helper result, not whether portal-block placement or exit initialization succeeded."
       },
