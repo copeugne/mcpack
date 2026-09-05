@@ -3,6 +3,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+import tomllib
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
@@ -1576,6 +1577,51 @@ def test_mineshaft_group_covers_its_runtime_variants_and_preserved_specialized_g
             hashlib.sha256((code_root / row["disassembly"]).read_bytes()).hexdigest()
             == row["disassembly_sha256"]
         )
+
+
+def test_vanilla_mineshaft_suppression_binds_both_roots_to_the_frozen_hook() -> None:
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    group = next(g for g in decisions["groups"] if g["family_id"] == "minecraft:mineshaft")
+    for source, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256(Path(source).read_bytes()).hexdigest() == digest
+    config = tomllib.loads(Path(
+        "evidence/item-6/frozen/config/bettermineshafts-neoforge-1_21.toml"
+    ).read_text())
+    assert config["YUNG's Better Mineshafts"]["Disable Vanilla Mineshafts"] is True
+    root = Path("evidence/item-8/sources/mineshafts-code")
+    code: dict[str, str] = {}
+    for entry in cast("list[dict[str, str]]", json.loads((root / "identities.json").read_bytes())):
+        raw = (root / entry["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == entry["disassembly_sha256"]
+        code[entry["class"].rsplit("/", 1)[1]] = raw.decode()
+    hook = code["DisableVanillaMineshaftsMixin.class"]
+    assert 'method=["tryGenerateStructure"]' in hook
+    assert 'value="HEAD"' in hook
+    assert "cancellable=true" in hook
+    assert "StructureType.MINESHAFT:" in hook
+    assert "ConfigModule.disableVanillaMineshafts:Z" in hook
+    assert "32: iconst_0" in hook
+    assert "CallbackInfoReturnable.setReturnValue:" in hook
+    assert "ConfigModule.disableVanillaMineshafts:Z" in code["ConfigModuleNeoForge.class"]
+    metadata = cast("dict[str, dict[str, str]]", json.loads((
+        root / "YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar/mixin-metadata.json"
+    ).read_bytes()))
+    for member in metadata.values():
+        assert hashlib.sha256(member["text"].encode()).hexdigest() == member["sha256"]
+    mixins = cast("dict[str, JsonValue]", json.loads(
+        metadata["bettermineshafts.mixins.json"]["text"]
+    ))
+    assert mixins["required"] is True
+    assert "DisableVanillaMineshaftsMixin" in cast("list[str]", mixins["mixins"])
+    assert ('config = "bettermineshafts.mixins.json"'
+            in metadata["META-INF/neoforge.mods.toml"]["text"])
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    assert set(variants) == {"minecraft:mineshaft", "minecraft:mineshaft_mesa"}
+    for variant in variants.values():
+        assert cast("dict[str, JsonValue]", variant["definition"])["type"] == "minecraft:mineshaft"
+        assert cast("dict[str, JsonValue]", variant["normal_generation"])["status"] == "SUPPRESSED"
 
 
 def test_ctov_size_decisions_exactly_cover_source_proven_variant_groups() -> None:
