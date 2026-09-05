@@ -23170,7 +23170,7 @@
         "minecraft:ocean_ruin_cold",
         "minecraft:ocean_ruin_warm"
       ],
-      "rationale": "Cold and warm ruins share one generator with the same cluster and large-ruin probabilities. Temperature and biome selections are variants. Packaged definition identity is preserved; retained-mod hooks, effective content and remaining attributes require reconciliation.",
+      "rationale": "Cold and warm roots share one ocean ruin generator, with small and large alternatives and optional clusters. Cold material layers form one ruin, not independent families. All 48 vanilla references resolve; temperature, size, material layers and cluster components remain within one family.",
       "variants": {
         "minecraft:ocean_ruin_cold": {
           "definition": {
@@ -23182,7 +23182,46 @@
             "step": "surface_structures",
             "type": "minecraft:ocean_ruin"
           },
-          "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+          "missing_components": [],
+          "vanilla_code_template_ids": [
+            "minecraft:underwater_ruin/big_brick_1",
+            "minecraft:underwater_ruin/big_brick_2",
+            "minecraft:underwater_ruin/big_brick_3",
+            "minecraft:underwater_ruin/big_brick_8",
+            "minecraft:underwater_ruin/big_cracked_1",
+            "minecraft:underwater_ruin/big_cracked_2",
+            "minecraft:underwater_ruin/big_cracked_3",
+            "minecraft:underwater_ruin/big_cracked_8",
+            "minecraft:underwater_ruin/big_mossy_1",
+            "minecraft:underwater_ruin/big_mossy_2",
+            "minecraft:underwater_ruin/big_mossy_3",
+            "minecraft:underwater_ruin/big_mossy_8",
+            "minecraft:underwater_ruin/brick_1",
+            "minecraft:underwater_ruin/brick_2",
+            "minecraft:underwater_ruin/brick_3",
+            "minecraft:underwater_ruin/brick_4",
+            "minecraft:underwater_ruin/brick_5",
+            "minecraft:underwater_ruin/brick_6",
+            "minecraft:underwater_ruin/brick_7",
+            "minecraft:underwater_ruin/brick_8",
+            "minecraft:underwater_ruin/cracked_1",
+            "minecraft:underwater_ruin/cracked_2",
+            "minecraft:underwater_ruin/cracked_3",
+            "minecraft:underwater_ruin/cracked_4",
+            "minecraft:underwater_ruin/cracked_5",
+            "minecraft:underwater_ruin/cracked_6",
+            "minecraft:underwater_ruin/cracked_7",
+            "minecraft:underwater_ruin/cracked_8",
+            "minecraft:underwater_ruin/mossy_1",
+            "minecraft:underwater_ruin/mossy_2",
+            "minecraft:underwater_ruin/mossy_3",
+            "minecraft:underwater_ruin/mossy_4",
+            "minecraft:underwater_ruin/mossy_5",
+            "minecraft:underwater_ruin/mossy_6",
+            "minecraft:underwater_ruin/mossy_7",
+            "minecraft:underwater_ruin/mossy_8"
+          ],
+          "component_scope": "Warm selects one template; cold combines matching brick, cracked and mossy array indices at the same position and rotation. Large ruins can add a cluster. Frozen vanilla references only; retained-mod transformations remain unresolved."
         },
         "minecraft:ocean_ruin_warm": {
           "definition": {
@@ -23194,13 +23233,72 @@
             "step": "surface_structures",
             "type": "minecraft:ocean_ruin"
           },
-          "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+          "missing_components": [],
+          "vanilla_code_template_ids": [
+            "minecraft:underwater_ruin/big_warm_4",
+            "minecraft:underwater_ruin/big_warm_5",
+            "minecraft:underwater_ruin/big_warm_6",
+            "minecraft:underwater_ruin/big_warm_7",
+            "minecraft:underwater_ruin/warm_1",
+            "minecraft:underwater_ruin/warm_2",
+            "minecraft:underwater_ruin/warm_3",
+            "minecraft:underwater_ruin/warm_4",
+            "minecraft:underwater_ruin/warm_5",
+            "minecraft:underwater_ruin/warm_6",
+            "minecraft:underwater_ruin/warm_7",
+            "minecraft:underwater_ruin/warm_8"
+          ],
+          "component_scope": "Warm selects one template; cold combines matching brick, cracked and mossy array indices at the same position and rotation. Large ruins can add a cluster. Frozen vanilla references only; retained-mod transformations remain unresolved."
         }
       },
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/vanilla-ocean-ruin-code/identities.json": "966f0fe1112562cc35c718bad64a241c2ef4dd8ad7331f9afd4a77b7da155382",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c"
+      },
+      "attributes": {
+        "intended_hostility": {
+          "interpretation": "Ruins include authored drowned encounters alongside chest and archaeology rewards.",
+          "basis": "Inferred from drowned generation markers, the Drowned factory and STRUCTURE spawn reason in the vanilla handler.",
+          "scope": "Source-based design interpretation, not an Item 9 tier, combat difficulty measurement or guaranteed encounter at every ruin."
+        },
+        "mob_source": {
+          "authored_entity_ids": [
+            "minecraft:drowned"
+          ],
+          "mechanism": "The drowned DATA marker creates a persistent drowned, finalizes spawning using local difficulty and STRUCTURE reason, and adds it with passengers. Templates have empty entity lists.",
+          "scope": "Authored generation path. Marker counts, layered templates and clusters must not be treated as observed mob populations; retained-mod effects remain unresolved."
+        },
+        "loot_table_source": {
+          "chest_tables_by_size": {
+            "small": "minecraft:chests/underwater_ruin_small",
+            "large": "minecraft:chests/underwater_ruin_big"
+          },
+          "archaeology_tables_by_temperature": {
+            "cold": "minecraft:archaeology/ocean_ruin_cold",
+            "warm": "minecraft:archaeology/ocean_ruin_warm"
+          },
+          "mechanism": "Chest DATA markers place waterlogged-as-needed chests and assign size-dependent tables. Warm sand and cold gravel are processed into corresponding suspicious blocks with archaeology loot; each processor is constructed with cap 5.",
+          "scope": "Vanilla assignments, not guaranteed counts, realized loot or effective retained-mod tables. Multiple cold material layers must not be summed as independent rewards."
+        },
+        "generated_spawners": {
+          "vanilla_template_spawner_block_types": [],
+          "mechanism": "No ordinary or trial-spawner blocks in any of the 48 template palettes. Inspected generator and marker paths create drowned directly rather than spawner blocks.",
+          "scope": "Vanilla sources and packaged templates; retained-mod injections remain unresolved."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Drowned from generation markers, despite empty template entity lists.",
+          "natural": "Both packaged roots have empty spawn_overrides. This does not prevent natural biome spawning.",
+          "scope": "Source attribution, not a measured population or retained-mod behavior."
+        },
+        "underground_surface_classification": {
+          "classification": "Seafloor ruins with terrain-adjusted placement.",
+          "basis": "Each piece samples OCEAN_FLOOR_WG and applies getHeight support adjustment before placement; initial constructor Y 90 is not final Y.",
+          "scope": "Vanilla placement rule. It does not prove every ruin is submerged, exposed or visible; cluster parts may occupy different heights."
+        }
       }
     },
     {
