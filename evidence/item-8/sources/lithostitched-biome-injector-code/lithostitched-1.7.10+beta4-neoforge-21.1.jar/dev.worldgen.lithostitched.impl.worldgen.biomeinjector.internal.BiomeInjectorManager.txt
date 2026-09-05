@@ -1,0 +1,324 @@
+Compiled from "BiomeInjectorManager.java"
+public class dev.worldgen.lithostitched.impl.worldgen.biomeinjector.internal.BiomeInjectorManager {
+  public dev.worldgen.lithostitched.impl.worldgen.biomeinjector.internal.BiomeInjectorManager();
+    Code:
+       0: aload_0
+       1: invokespecial #39                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void applyBiomeInjectors(net.minecraft.server.MinecraftServer);
+    Code:
+       0: aload_0
+       1: invokevirtual #50                 // Method net/minecraft/server/MinecraftServer.registryAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+       4: astore_1
+       5: aload_1
+       6: getstatic     #56                 // Field net/minecraft/core/registries/Registries.LEVEL_STEM:Lnet/minecraft/resources/ResourceKey;
+       9: invokestatic  #62                 // Method dev/worldgen/lithostitched/Lithostitched.registry:(Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+      12: astore_2
+      13: aload_0
+      14: invokestatic  #68                 // Method dev/worldgen/lithostitched/impl/LithostitchedVersion.getSeed:(Lnet/minecraft/server/MinecraftServer;)J
+      17: lstore_3
+      18: aload_2
+      19: invokeinterface #74,  1           // InterfaceMethod net/minecraft/core/Registry.entrySet:()Ljava/util/Set;
+      24: invokeinterface #80,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      29: astore        5
+      31: aload         5
+      33: invokeinterface #86,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      38: ifeq          550
+      41: aload         5
+      43: invokeinterface #90,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      48: checkcast     #12                 // class java/util/Map$Entry
+      51: astore        6
+      53: aload         6
+      55: invokeinterface #93,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      60: checkcast     #95                 // class net/minecraft/resources/ResourceKey
+      63: astore        7
+      65: new           #97                 // class java/util/HashMap
+      68: dup
+      69: invokespecial #98                 // Method java/util/HashMap."<init>":()V
+      72: astore        8
+      74: aload_1
+      75: getstatic     #103                // Field dev/worldgen/lithostitched/api/registry/LithostitchedRegistries.BIOME_INJECTOR:Lnet/minecraft/resources/ResourceKey;
+      78: invokeinterface #107,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.lookupOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/HolderLookup$RegistryLookup;
+      83: invokeinterface #111,  1          // InterfaceMethod net/minecraft/core/HolderLookup$RegistryLookup.listElements:()Ljava/util/stream/Stream;
+      88: aload         7
+      90: aload         8
+      92: invokedynamic #131,  0            // InvokeDynamic #0:accept:(Lnet/minecraft/resources/ResourceKey;Ljava/util/Map;)Ljava/util/function/Consumer;
+      97: invokeinterface #137,  2          // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+     102: getstatic     #143                // Field dev/worldgen/lithostitched/api/event/AddBiomeInjectorsEvent.EVENT:Ldev/worldgen/lithostitched/impl/event/LithostitchedEvent;
+     105: invokevirtual #148                // Method dev/worldgen/lithostitched/impl/event/LithostitchedEvent.invoker:()Ljava/lang/Object;
+     108: checkcast     #139                // class dev/worldgen/lithostitched/api/event/AddBiomeInjectorsEvent
+     111: aload_1
+     112: aload         8
+     114: aload         7
+     116: invokedynamic #160,  0            // InvokeDynamic #1:accept:(Ljava/util/Map;Lnet/minecraft/resources/ResourceKey;)Ljava/util/function/BiConsumer;
+     121: invokeinterface #164,  3          // InterfaceMethod dev/worldgen/lithostitched/api/event/AddBiomeInjectorsEvent.addInjectors:(Lnet/minecraft/core/RegistryAccess;Ljava/util/function/BiConsumer;)V
+     126: aload         8
+     128: invokeinterface #167,  1          // InterfaceMethod java/util/Map.isEmpty:()Z
+     133: ifeq          139
+     136: goto          31
+     139: aload         6
+     141: invokeinterface #170,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     146: checkcast     #172                // class net/minecraft/world/level/dimension/LevelStem
+     149: invokevirtual #176                // Method net/minecraft/world/level/dimension/LevelStem.generator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+     152: astore        9
+     154: aload         9
+     156: instanceof    #178                // class net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator
+     159: ifeq          31
+     162: aload         9
+     164: checkcast     #178                // class net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator
+     167: astore        10
+     169: aload         10
+     171: invokevirtual #182                // Method net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator.generatorSettings:()Lnet/minecraft/core/Holder;
+     174: invokeinterface #185,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     179: checkcast     #187                // class net/minecraft/world/level/levelgen/NoiseGeneratorSettings
+     182: aload_1
+     183: getstatic     #190                // Field net/minecraft/core/registries/Registries.NOISE:Lnet/minecraft/resources/ResourceKey;
+     186: invokeinterface #107,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.lookupOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/HolderLookup$RegistryLookup;
+     191: lload_3
+     192: invokestatic  #196                // Method net/minecraft/world/level/levelgen/RandomState.create:(Lnet/minecraft/world/level/levelgen/NoiseGeneratorSettings;Lnet/minecraft/core/HolderGetter;J)Lnet/minecraft/world/level/levelgen/RandomState;
+     195: astore        11
+     197: new           #198                // class dev/worldgen/lithostitched/api/worldgen/util/DensityFunctionWrapper
+     200: dup
+     201: lload_3
+     202: aload         10
+     204: invokevirtual #182                // Method net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator.generatorSettings:()Lnet/minecraft/core/Holder;
+     207: invokeinterface #185,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     212: checkcast     #187                // class net/minecraft/world/level/levelgen/NoiseGeneratorSettings
+     215: invokevirtual #201                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.useLegacyRandomSource:()Z
+     218: aload         11
+     220: aload         11
+     222: checkcast     #203                // class dev/worldgen/lithostitched/mixin/common/RandomStateAccessor
+     225: invokeinterface #207,  1          // InterfaceMethod dev/worldgen/lithostitched/mixin/common/RandomStateAccessor.getRandom:()Lnet/minecraft/world/level/levelgen/PositionalRandomFactory;
+     230: invokespecial #210                // Method dev/worldgen/lithostitched/api/worldgen/util/DensityFunctionWrapper."<init>":(JZLnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/PositionalRandomFactory;)V
+     233: astore        12
+     235: new           #97                 // class java/util/HashMap
+     238: dup
+     239: invokespecial #98                 // Method java/util/HashMap."<init>":()V
+     242: astore        13
+     244: aload_1
+     245: getstatic     #213                // Field dev/worldgen/lithostitched/api/registry/LithostitchedRegistries.REGION:Lnet/minecraft/resources/ResourceKey;
+     248: invokeinterface #107,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.lookupOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/HolderLookup$RegistryLookup;
+     253: invokeinterface #111,  1          // InterfaceMethod net/minecraft/core/HolderLookup$RegistryLookup.listElements:()Ljava/util/stream/Stream;
+     258: aload         7
+     260: invokedynamic #226,  0            // InvokeDynamic #2:test:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/function/Predicate;
+     265: invokeinterface #230,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+     270: aload         13
+     272: invokedynamic #238,  0            // InvokeDynamic #3:accept:(Ljava/util/Map;)Ljava/util/function/Consumer;
+     277: invokeinterface #137,  2          // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+     282: getstatic     #239                // Field dev/worldgen/lithostitched/api/event/AddRegionsEvent.EVENT:Ldev/worldgen/lithostitched/impl/event/LithostitchedEvent;
+     285: invokevirtual #148                // Method dev/worldgen/lithostitched/impl/event/LithostitchedEvent.invoker:()Ljava/lang/Object;
+     288: checkcast     #24                 // class dev/worldgen/lithostitched/api/event/AddRegionsEvent
+     291: aload_1
+     292: aload         8
+     294: aload         7
+     296: aload         13
+     298: invokedynamic #249,  0            // InvokeDynamic #4:accept:(Ljava/util/Map;Lnet/minecraft/resources/ResourceKey;Ljava/util/Map;)Ldev/worldgen/lithostitched/api/event/AddRegionsEvent$RegionConsumer;
+     303: invokeinterface #253,  3          // InterfaceMethod dev/worldgen/lithostitched/api/event/AddRegionsEvent.addRegions:(Lnet/minecraft/core/RegistryAccess;Ldev/worldgen/lithostitched/api/event/AddRegionsEvent$RegionConsumer;)V
+     308: getstatic     #256                // Field net/minecraft/core/registries/Registries.DENSITY_FUNCTION:Lnet/minecraft/resources/ResourceKey;
+     311: aload         7
+     313: invokestatic  #260                // Method createRegionId:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/resources/ResourceLocation;
+     316: invokestatic  #263                // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+     319: astore        14
+     321: aload_1
+     322: getstatic     #256                // Field net/minecraft/core/registries/Registries.DENSITY_FUNCTION:Lnet/minecraft/resources/ResourceKey;
+     325: invokestatic  #62                 // Method dev/worldgen/lithostitched/Lithostitched.registry:(Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+     328: aload         14
+     330: invokeinterface #267,  2          // InterfaceMethod net/minecraft/core/Registry.getOptional:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+     335: astore        15
+     337: aload         9
+     339: checkcast     #269                // class dev/worldgen/lithostitched/mixin/common/ChunkGeneratorAccessor
+     342: astore        16
+     344: aload         16
+     346: invokeinterface #273,  1          // InterfaceMethod dev/worldgen/lithostitched/mixin/common/ChunkGeneratorAccessor.getBiomeSource:()Lnet/minecraft/world/level/biome/BiomeSource;
+     351: astore        17
+     353: iconst_1
+     354: istore        18
+     356: getstatic     #279                // Field net/minecraft/core/registries/BuiltInRegistries.BIOME_SOURCE:Lnet/minecraft/core/Registry;
+     359: getstatic     #285                // Field dev/worldgen/lithostitched/api/tag/LithostitchedBiomeSourceTags.CANNOT_INJECT_INTO:Lnet/minecraft/tags/TagKey;
+     362: invokeinterface #289,  2          // InterfaceMethod net/minecraft/core/Registry.getTagOrEmpty:(Lnet/minecraft/tags/TagKey;)Ljava/lang/Iterable;
+     367: invokeinterface #292,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+     372: astore        19
+     374: aload         19
+     376: invokeinterface #86,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     381: ifeq          431
+     384: aload         19
+     386: invokeinterface #90,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     391: checkcast     #29                 // class net/minecraft/core/Holder
+     394: astore        20
+     396: aload         20
+     398: invokeinterface #185,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     403: checkcast     #300                // class com/mojang/serialization/MapCodec
+     406: aload         17
+     408: checkcast     #302                // class dev/worldgen/lithostitched/mixin/common/BiomeSourceInvoker
+     411: invokeinterface #306,  1          // InterfaceMethod dev/worldgen/lithostitched/mixin/common/BiomeSourceInvoker.getCodec:()Lcom/mojang/serialization/MapCodec;
+     416: invokevirtual #309                // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+     419: ifeq          428
+     422: iconst_0
+     423: istore        18
+     425: goto          431
+     428: goto          374
+     431: iload         18
+     433: ifne          439
+     436: goto          31
+     439: aload         17
+     441: instanceof    #311                // class dev/worldgen/lithostitched/impl/worldgen/biomeinjector/internal/InjectorBiomeSource
+     444: ifeq          459
+     447: aload         17
+     449: checkcast     #311                // class dev/worldgen/lithostitched/impl/worldgen/biomeinjector/internal/InjectorBiomeSource
+     452: astore        20
+     454: aload         20
+     456: goto          473
+     459: new           #311                // class dev/worldgen/lithostitched/impl/worldgen/biomeinjector/internal/InjectorBiomeSource
+     462: dup
+     463: aload         16
+     465: invokeinterface #273,  1          // InterfaceMethod dev/worldgen/lithostitched/mixin/common/ChunkGeneratorAccessor.getBiomeSource:()Lnet/minecraft/world/level/biome/BiomeSource;
+     470: invokespecial #314                // Method dev/worldgen/lithostitched/impl/worldgen/biomeinjector/internal/InjectorBiomeSource."<init>":(Lnet/minecraft/world/level/biome/BiomeSource;)V
+     473: astore        19
+     475: aload         19
+     477: aload         8
+     479: aload         15
+     481: aload         13
+     483: aload         12
+     485: invokevirtual #318                // Method dev/worldgen/lithostitched/impl/worldgen/biomeinjector/internal/InjectorBiomeSource.applyInjectors:(Ljava/util/Map;Ljava/util/Optional;Ljava/util/Map;Ldev/worldgen/lithostitched/api/worldgen/util/DensityFunctionWrapper;)V
+     488: aload         16
+     490: aload         19
+     492: invokeinterface #321,  2          // InterfaceMethod dev/worldgen/lithostitched/mixin/common/ChunkGeneratorAccessor.setBiomeSource:(Lnet/minecraft/world/level/biome/BiomeSource;)V
+     497: aload         16
+     499: aload         19
+     501: aload         16
+     503: invokedynamic #333,  0            // InvokeDynamic #5:get:(Ldev/worldgen/lithostitched/impl/worldgen/biomeinjector/internal/InjectorBiomeSource;Ldev/worldgen/lithostitched/mixin/common/ChunkGeneratorAccessor;)Lcom/google/common/base/Supplier;
+     508: invokestatic  #339                // Method com/google/common/base/Suppliers.memoize:(Lcom/google/common/base/Supplier;)Lcom/google/common/base/Supplier;
+     511: invokeinterface #343,  2          // InterfaceMethod dev/worldgen/lithostitched/mixin/common/ChunkGeneratorAccessor.setFeaturesPerStep:(Ljava/util/function/Supplier;)V
+     516: ldc_w         #345                // String Applying {} biome injections for dimension {}
+     519: iconst_2
+     520: anewarray     #4                  // class java/lang/Object
+     523: dup
+     524: iconst_0
+     525: aload         8
+     527: invokeinterface #349,  1          // InterfaceMethod java/util/Map.size:()I
+     532: invokestatic  #355                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     535: aastore
+     536: dup
+     537: iconst_1
+     538: aload         7
+     540: invokevirtual #359                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     543: aastore
+     544: invokestatic  #363                // Method dev/worldgen/lithostitched/Lithostitched.debug:(Ljava/lang/String;[Ljava/lang/Object;)V
+     547: goto          31
+     550: return
+
+  private static net.minecraft.resources.ResourceLocation createRegionId(net.minecraft.resources.ResourceKey<net.minecraft.world.level.dimension.LevelStem>);
+    Code:
+       0: aload_0
+       1: invokevirtual #359                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       4: invokestatic  #409                // Method dev/worldgen/lithostitched/Lithostitched.vanillaToLithostitched:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceLocation;
+       7: ldc_w         #411                // String region/
+      10: invokevirtual #417                // Method net/minecraft/resources/ResourceLocation.withPrefix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      13: areturn
+
+  private static java.util.List lambda$applyBiomeInjectors$5(dev.worldgen.lithostitched.impl.worldgen.biomeinjector.internal.InjectorBiomeSource, dev.worldgen.lithostitched.mixin.common.ChunkGeneratorAccessor);
+    Code:
+       0: aload_0
+       1: invokevirtual #420                // Method dev/worldgen/lithostitched/impl/worldgen/biomeinjector/internal/InjectorBiomeSource.possibleBiomes:()Ljava/util/Set;
+       4: invokestatic  #426                // InterfaceMethod java/util/List.copyOf:(Ljava/util/Collection;)Ljava/util/List;
+       7: aload_1
+       8: invokedynamic #439,  0            // InvokeDynamic #6:apply:(Ldev/worldgen/lithostitched/mixin/common/ChunkGeneratorAccessor;)Ljava/util/function/Function;
+      13: iconst_1
+      14: invokestatic  #445                // Method net/minecraft/world/level/biome/FeatureSorter.buildFeaturesPerStep:(Ljava/util/List;Ljava/util/function/Function;Z)Ljava/util/List;
+      17: areturn
+
+  private static java.util.List lambda$applyBiomeInjectors$6(dev.worldgen.lithostitched.mixin.common.ChunkGeneratorAccessor, net.minecraft.core.Holder);
+    Code:
+       0: aload_0
+       1: invokeinterface #450,  1          // InterfaceMethod dev/worldgen/lithostitched/mixin/common/ChunkGeneratorAccessor.getGetter:()Ljava/util/function/Function;
+       6: aload_1
+       7: invokeinterface #454,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+      12: checkcast     #456                // class net/minecraft/world/level/biome/BiomeGenerationSettings
+      15: invokevirtual #459                // Method net/minecraft/world/level/biome/BiomeGenerationSettings.features:()Ljava/util/List;
+      18: areturn
+
+  private static void lambda$applyBiomeInjectors$4(java.util.Map, net.minecraft.resources.ResourceKey, java.util.Map, net.minecraft.resources.ResourceKey, net.minecraft.resources.ResourceKey, net.minecraft.core.HolderSet, int);
+    Code:
+       0: aload_3
+       1: aload         4
+       3: aload         5
+       5: iload         6
+       7: invokestatic  #468                // Method dev/worldgen/lithostitched/impl/worldgen/biomeinjector/region/Region.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/core/HolderSet;I)Ldev/worldgen/lithostitched/impl/worldgen/biomeinjector/region/Region;
+      10: astore        7
+      12: aload_0
+      13: aload_3
+      14: invokeinterface #471,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      19: ifne          44
+      22: aload         7
+      24: invokevirtual #474                // Method dev/worldgen/lithostitched/impl/worldgen/biomeinjector/region/Region.dimension:()Lnet/minecraft/resources/ResourceKey;
+      27: aload_1
+      28: invokevirtual #309                // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+      31: ifeq          44
+      34: aload_2
+      35: aload_3
+      36: aload         7
+      38: invokeinterface #478,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      43: pop
+      44: return
+
+  private static void lambda$applyBiomeInjectors$3(java.util.Map, net.minecraft.core.Holder$Reference);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #485                // Method net/minecraft/core/Holder$Reference.key:()Lnet/minecraft/resources/ResourceKey;
+       5: aload_1
+       6: invokevirtual #486                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+       9: checkcast     #465                // class dev/worldgen/lithostitched/impl/worldgen/biomeinjector/region/Region
+      12: invokeinterface #478,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      17: pop
+      18: return
+
+  private static boolean lambda$applyBiomeInjectors$2(net.minecraft.resources.ResourceKey, net.minecraft.core.Holder$Reference);
+    Code:
+       0: aload_1
+       1: invokevirtual #486                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+       4: checkcast     #465                // class dev/worldgen/lithostitched/impl/worldgen/biomeinjector/region/Region
+       7: invokevirtual #474                // Method dev/worldgen/lithostitched/impl/worldgen/biomeinjector/region/Region.dimension:()Lnet/minecraft/resources/ResourceKey;
+      10: aload_0
+      11: invokevirtual #309                // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+      14: ireturn
+
+  private static void lambda$applyBiomeInjectors$1(java.util.Map, net.minecraft.resources.ResourceKey, net.minecraft.resources.ResourceLocation, dev.worldgen.lithostitched.api.worldgen.biomeinjector.BiomeInjector);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: invokeinterface #471,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+       7: ifne          32
+      10: aload_3
+      11: invokeinterface #492,  1          // InterfaceMethod dev/worldgen/lithostitched/api/worldgen/biomeinjector/BiomeInjector.dimension:()Lnet/minecraft/resources/ResourceKey;
+      16: aload_1
+      17: invokevirtual #309                // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+      20: ifeq          32
+      23: aload_0
+      24: aload_2
+      25: aload_3
+      26: invokeinterface #478,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      31: pop
+      32: return
+
+  private static void lambda$applyBiomeInjectors$0(net.minecraft.resources.ResourceKey, java.util.Map, net.minecraft.core.Holder$Reference);
+    Code:
+       0: aload_2
+       1: invokevirtual #486                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+       4: checkcast     #491                // class dev/worldgen/lithostitched/api/worldgen/biomeinjector/BiomeInjector
+       7: invokeinterface #492,  1          // InterfaceMethod dev/worldgen/lithostitched/api/worldgen/biomeinjector/BiomeInjector.dimension:()Lnet/minecraft/resources/ResourceKey;
+      12: aload_0
+      13: invokevirtual #309                // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+      16: ifeq          40
+      19: aload_1
+      20: aload_2
+      21: invokevirtual #485                // Method net/minecraft/core/Holder$Reference.key:()Lnet/minecraft/resources/ResourceKey;
+      24: invokevirtual #359                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      27: aload_2
+      28: invokevirtual #486                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      31: checkcast     #491                // class dev/worldgen/lithostitched/api/worldgen/biomeinjector/BiomeInjector
+      34: invokeinterface #478,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      39: pop
+      40: return
+}
