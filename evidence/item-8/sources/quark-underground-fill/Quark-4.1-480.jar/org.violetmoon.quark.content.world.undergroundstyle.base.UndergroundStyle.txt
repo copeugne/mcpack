@@ -1,0 +1,247 @@
+Compiled from "UndergroundStyle.java"
+public abstract class org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyle {
+  private static final net.minecraft.tags.TagKey<net.minecraft.world.level.block.Block> UNDERGROUND_BIOME_REPLACEABLE;
+
+  public org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyle();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public boolean canReplace(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+       4: ifne          17
+       7: aload_1
+       8: getstatic     #13                 // Field UNDERGROUND_BIOME_REPLACEABLE:Lnet/minecraft/tags/TagKey;
+      11: invokevirtual #19                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      14: ifeq          21
+      17: iconst_1
+      18: goto          22
+      21: iconst_0
+      22: ireturn
+
+  public final void fill(org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyleGenerator$Context, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: getfield      #23                 // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator$Context.world:Lnet/minecraft/server/level/WorldGenRegion;
+       4: astore_3
+       5: aload_3
+       6: aload_2
+       7: invokeinterface #29,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      12: astore        4
+      14: aload         4
+      16: aload_3
+      17: aload_2
+      18: invokevirtual #35                 // Method net/minecraft/world/level/block/state/BlockState.getDestroySpeed:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)F
+      21: ldc           #39                 // float -1.0f
+      23: fcmpl
+      24: ifne          28
+      27: return
+      28: aload_0
+      29: aload_3
+      30: aload_2
+      31: aload         4
+      33: invokevirtual #40                 // Method isFloor:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+      36: ifeq          50
+      39: aload_0
+      40: aload_1
+      41: aload_2
+      42: aload         4
+      44: invokevirtual #44                 // Method fillFloor:(Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator$Context;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      47: goto          111
+      50: aload_0
+      51: aload_3
+      52: aload_2
+      53: aload         4
+      55: invokevirtual #48                 // Method isCeiling:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+      58: ifeq          72
+      61: aload_0
+      62: aload_1
+      63: aload_2
+      64: aload         4
+      66: invokevirtual #51                 // Method fillCeiling:(Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator$Context;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      69: goto          111
+      72: aload_0
+      73: aload_3
+      74: aload_2
+      75: aload         4
+      77: invokevirtual #54                 // Method isWall:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+      80: ifeq          94
+      83: aload_0
+      84: aload_1
+      85: aload_2
+      86: aload         4
+      88: invokevirtual #57                 // Method fillWall:(Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator$Context;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      91: goto          111
+      94: aload_0
+      95: aload         4
+      97: invokevirtual #60                 // Method isInside:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+     100: ifeq          111
+     103: aload_0
+     104: aload_1
+     105: aload_2
+     106: aload         4
+     108: invokevirtual #64                 // Method fillInside:(Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator$Context;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     111: return
+
+  public abstract void fillFloor(org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyleGenerator$Context, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+
+  public abstract void fillCeiling(org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyleGenerator$Context, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+
+  public abstract void fillWall(org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyleGenerator$Context, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+
+  public abstract void fillInside(org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyleGenerator$Context, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+
+  public boolean isFloor(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_3
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #67                 // Method net/minecraft/world/level/block/state/BlockState.isSolidRender:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Z
+       6: ifeq          17
+       9: aload_0
+      10: aload_3
+      11: invokevirtual #71                 // Method canReplace:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+      14: ifne          19
+      17: iconst_0
+      18: ireturn
+      19: aload_2
+      20: invokevirtual #74                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      23: astore        4
+      25: aload_1
+      26: aload         4
+      28: invokeinterface #80,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      33: ifne          50
+      36: aload_1
+      37: aload         4
+      39: invokeinterface #29,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      44: invokevirtual #7                  // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+      47: ifeq          54
+      50: iconst_1
+      51: goto          55
+      54: iconst_0
+      55: ireturn
+
+  public boolean isCeiling(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_3
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #67                 // Method net/minecraft/world/level/block/state/BlockState.isSolidRender:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Z
+       6: ifeq          17
+       9: aload_0
+      10: aload_3
+      11: invokevirtual #71                 // Method canReplace:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+      14: ifne          19
+      17: iconst_0
+      18: ireturn
+      19: aload_2
+      20: invokevirtual #84                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      23: astore        4
+      25: aload_1
+      26: aload         4
+      28: invokeinterface #80,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      33: ifne          50
+      36: aload_1
+      37: aload         4
+      39: invokeinterface #29,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      44: invokevirtual #7                  // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+      47: ifeq          54
+      50: iconst_1
+      51: goto          55
+      54: iconst_0
+      55: ireturn
+
+  public boolean isWall(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_3
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #67                 // Method net/minecraft/world/level/block/state/BlockState.isSolidRender:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Z
+       6: ifeq          17
+       9: aload_0
+      10: aload_3
+      11: invokevirtual #71                 // Method canReplace:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+      14: ifne          19
+      17: iconst_0
+      18: ireturn
+      19: aload_0
+      20: aload_1
+      21: aload_2
+      22: invokevirtual #87                 // Method isBorder:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+      25: ireturn
+
+  public net.minecraft.core.Direction getBorderSide(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokeinterface #29,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       7: astore_3
+       8: getstatic     #91                 // Field org/violetmoon/zeta/util/MiscUtil.HORIZONTALS:[Lnet/minecraft/core/Direction;
+      11: astore        4
+      13: aload         4
+      15: arraylength
+      16: istore        5
+      18: iconst_0
+      19: istore        6
+      21: iload         6
+      23: iload         5
+      25: if_icmpge     87
+      28: aload         4
+      30: iload         6
+      32: aaload
+      33: astore        7
+      35: aload_2
+      36: aload         7
+      38: invokevirtual #97                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      41: astore        8
+      43: aload_1
+      44: aload         8
+      46: invokeinterface #29,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      51: astore        9
+      53: aload_3
+      54: aload         9
+      56: if_acmpeq     70
+      59: aload_1
+      60: aload         8
+      62: invokeinterface #80,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      67: ifne          78
+      70: aload         9
+      72: invokevirtual #7                  // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+      75: ifeq          81
+      78: aload         7
+      80: areturn
+      81: iinc          6, 1
+      84: goto          21
+      87: aconst_null
+      88: areturn
+
+  public boolean isBorder(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #101                // Method getBorderSide:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Direction;
+       6: ifnull        13
+       9: iconst_1
+      10: goto          14
+      13: iconst_0
+      14: ireturn
+
+  public boolean isInside(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_1
+       1: getstatic     #13                 // Field UNDERGROUND_BIOME_REPLACEABLE:Lnet/minecraft/tags/TagKey;
+       4: invokevirtual #19                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+       7: ireturn
+
+  static {};
+    Code:
+       0: getstatic     #105                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+       3: ldc           #111                // String underground_biome_replaceable
+       5: invokestatic  #113                // Method org/violetmoon/quark/base/Quark.asTagKey:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lnet/minecraft/tags/TagKey;
+       8: putstatic     #13                 // Field UNDERGROUND_BIOME_REPLACEABLE:Lnet/minecraft/tags/TagKey;
+      11: return
+}
