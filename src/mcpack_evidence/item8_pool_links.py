@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import re
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
 
 from .item8_inventory import resource_identity
 
@@ -43,15 +43,57 @@ def pool_links(resources: list[JsonValue]) -> list[JsonValue]:
         fallback = document.get("fallback")
         if isinstance(fallback, str):
             edges.append(_edge("pool", fallback, "/fallback"))
-        elements = document["elements"]
-        assert isinstance(elements, list)  # noqa: S101 - explicit validation above.
-        for index, entry in enumerate(elements):
-            if not isinstance(entry, dict) or "element" not in entry:
-                message = f"pool has an invalid weighted element: {resource['path']}"
-                raise TypeError(message)
-            _element(entry["element"], f"/elements/{index}/element", edges, unknown)
+        _weighted_elements(document["elements"], edges, unknown)
         result.append(_link_record(resource, identity, edges, unknown))
     return result
+
+
+def add_pool_elements(pools: list[JsonValue], modifiers: list[JsonValue]) -> None:
+    """Append possible links from already-selected, condition-passing additions.
+
+    Additive reachability commutes; this does not simulate priority, weights or
+    limited-element placement. Preserve modifier provenance on every new edge.
+    """
+    by_id = {str(cast("dict[str, JsonValue]", pool)["id"]): pool for pool in pools}
+    for raw in modifiers:
+        resource = _row(raw)
+        document = cast("dict[str, JsonValue]", resource["document"])
+        if document.get("type") != "lithostitched:add_template_pool_elements":
+            message = f"unsupported pool modifier: {resource['path']}"
+            raise ValueError(message)
+        targets = document.get("template_pools")
+        if isinstance(targets, str):
+            targets = [targets]
+        if not isinstance(targets, list) or any(not isinstance(t, str) for t in targets):
+            message = f"invalid pool modifier targets: {resource['path']}"
+            raise TypeError(message)
+        edges: list[JsonValue] = []
+        unknown: list[JsonValue] = []
+        _weighted_elements(document.get("elements"), edges, unknown)
+        source = {key: resource[key] for key in ("archive", "path", "sha256")}
+        for item in (*edges, *unknown):
+            cast("dict[str, JsonValue]", item)["source"] = source
+        edges.append({"kind": "pool_addition", "source": source, "document": document})
+        for target in targets:
+            if str(target) not in by_id:
+                message = f"unresolved pool modifier target: {target} in {resource['path']}"
+                raise ValueError(message)
+            pool = cast("dict[str, JsonValue]", by_id[str(target)])
+            cast("list[JsonValue]", pool["edges"]).extend(edges)
+            cast("list[JsonValue]", pool["unresolved_elements"]).extend(unknown)
+
+
+def _weighted_elements(
+    elements: JsonValue, edges: list[JsonValue], unknown: list[JsonValue]
+) -> None:
+    if not isinstance(elements, list):
+        message = "pool elements must be a list"
+        raise TypeError(message)
+    for index, entry in enumerate(elements):
+        if not isinstance(entry, dict) or "element" not in entry:
+            message = f"invalid weighted pool element at /elements/{index}"
+            raise TypeError(message)
+        _element(entry["element"], f"/elements/{index}/element", edges, unknown)
 
 
 def template_links(resources: list[JsonValue]) -> list[JsonValue]:

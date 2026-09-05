@@ -78,7 +78,12 @@ def mod_conditions_match(conditions: JsonValue, loaded_mods: set[str]) -> bool:
 
 def select_resources(
     resources: list[JsonValue],
-    kind: Literal["worldgen/structure", "worldgen/template_pool", "structure"],
+    kind: Literal[
+        "worldgen/structure",
+        "worldgen/template_pool",
+        "structure",
+        "lithostitched/worldgen_modifier",
+    ],
     *,
     enabled_packs: list[str],
     lithostitched_overlay: bool,
