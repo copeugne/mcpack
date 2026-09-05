@@ -545,3 +545,38 @@ def test_yungs_extras_packaged_entities_and_loot_sources() -> None:
         "data/" + table.replace(":", "/loot_table/", 1) + ".json"
         for tables in loot.values() for table in tables
     }
+
+
+def test_extras_desert_classes_pass_fixed_ids_to_centered_placement() -> None:
+    base = Path("evidence/item-8/sources/yungs-extras-desert-code")
+    manifest = (base / "identities.json").read_bytes()
+    assert hashlib.sha256(manifest).hexdigest() == (
+        "c595f5123a71105b276884d33229e4b7da2bf9b91b70ec8e5cbf1cba069d465b"
+    )
+    rows = cast("list[dict[str, str]]", json.loads(manifest))
+    sources: dict[str, str] = {}
+    for row in rows:
+        raw = (base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    for name, location in {
+        "ChillzoneDesertFeature": "desert/misc/chillzone",
+        "DesertGiantTorchFeature": "desert/misc/giant_torch",
+        "DesertSmallRuinsFeature": "desert/misc/ruins_0",
+    }.items():
+        source = sources[name]
+        assert "// String yungsextras" in source
+        assert "// String " + location in source
+        assert "ResourceLocation.fromNamespaceAndPath:" in source
+        assert "putstatic" in source
+        assert "Field ID:" in source
+        assert "createTemplateFromCenter:" in source
+        assert ("BlockPos.above:" in source) == (name != "DesertSmallRuinsFeature")
+        assert name + '."<init>":' in sources["FeatureModule"]
+    helper = sources["AbstractNbtFeature"].split("protected net.minecraft.world.level.levelgen.")
+    centered = next(part for part in helper if part.startswith(
+        "structure.templatesystem.StructureTemplate createTemplateFromCenterWithPlacement("
+    ))
+    assert centered.index("StructureTemplate.placeInWorld:") < centered.index("List.forEach:")
+    assert centered.split("StructureTemplate.placeInWorld:")[1].splitlines()[1].endswith("pop")
+    assert centered.count("ineg") == 2

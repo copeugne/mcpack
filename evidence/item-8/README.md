@@ -1639,3 +1639,27 @@ Inventory regenerated at `bae0ae4`, SHA-256:
 `c27dbad3867324ff9110ef5f0dfe04a5e6b3dfd4867e8af9205cb9b3c431ff3a`.
 Only decision identity and Extras packaged-template content changed.
 All 421 registry family rows and 887 roots remain unchanged.
+
+## Extras desert class-to-template calls
+
+The three captured classes pass fixed template IDs to createTemplateFromCenter:
+chillzone, giant_torch and ruins_0 respectively. The first two use ground above();
+ruins uses ground directly. The helper subtracts half template X/Z, preserves Y,
+and places with default settings before applying its processor list. It discards
+the placement boolean; the callers test non-null template loading. Full placement
+success is therefore not established by the returned boolean.
+
+This is class-to-template evidence. FeatureModule constructs these classes, but
+the current non-verbose capture omits registration annotations. Exact runtime
+feature-ID binding remains open. The JSON-explicit links are preserved separately.
+No new capture or measurement system was added for this interpretation.
+
+Sixteen affected tests and scoped quality checks passed. Decision SHA-256:
+`251c7036fc0bae5d26b0f94b9970198857887a1dc244d1fc4a80537c458f796d`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-extras-desert-calls.json
+```
