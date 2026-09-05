@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Monument processor effects are integrated in 077fcd2 using dc9ac0a's reproduced
+captures. The inventory preserves downward support extent, state-only pillar
+writes, surface finalization and unseeded ordering as source findings with
+runtime/geometry limits. Two focused tests and scoped static checks pass;
+inventory reproduction is exact. Do not repeat these processor captures or
+candidate-content joins. Continue unresolved engine/registration dependencies
+only where required for an attribute, and the remaining provider coverage.
+
 Trace the five custom processor/predicate implementations referenced by the
 monument lists, plus RSProcessors to bind their registered identities. Pillars
 affect vertical extent, surface delegation affects archaeology loot, and the
