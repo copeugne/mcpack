@@ -87,6 +87,8 @@ def select_resources(
         "worldgen/placed_feature",
         "worldgen/configured_feature",
         "loot_table",
+        "rs_spawners",
+        "worldgen/processor_list",
     ],
     *,
     enabled_packs: list[str],

@@ -36,3 +36,28 @@ then attribute effective enemy IDs alongside child templates. Resource listener
 registration and preserved logs remain separate from this method inspection.
 Do not infer live spawning, accepted reload state or encounter counts from the
 source alone. Scoped extractor Ruff and Basedpyright passed. No new measurement.
+
+## Selected mansion spawner data
+
+The focused test now binds all eight selected rs_spawners mansion lists. Each
+contains only minecraft:spider with weight 100, with identical SHA-256
+39439a1a2e54f048e0e61d770536233ccf68443f48fb0188fda1d46958bc7dc0.
+Each matching processor list references that variant's spawner resource and
+block-light range 0..7. Mushroom lists contain only the captured mushroom
+processor. These are selected packaged inputs to the inspected manager, not
+proof of listener registration, successful reload or live spawning.
+
+```sh
+uv run pytest -q tests/item8/test_mansion_components.py
+```
+
+The first test attempt selected every processor list and failed on an unrelated
+competing repurposed_structures:villages/bamboo/crop_randomizer definition.
+Selection is now limited to mansion processor resource identities, including
+their competing candidates. The village conflict is not resolved or suppressed
+for its own consumers. Static checking then found two missing supported kind
+annotations and an invariant list type mismatch. The selector's existing JSON
+selection behavior needs no change: its declared kinds now include the two
+current consumers, and the filtered list has the required JsonValue annotation.
+The resulting overlong line was split after Ruff rejected it. Final validation:
+10 mansion/resource-selection tests passed; scoped Ruff and Basedpyright passed.
