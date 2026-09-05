@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Current progress and definition of done are reconciled in evidence/item-8/README.md
+under "Current delivery work at 934dbcb". That section supersedes older next-step
+instructions below. Chef's Delight direct content is integrated and published
+in c3b345f and 934dbcb; inventory reproduction is exact and family rows unchanged.
+Next is Farmer's Delight/provider coverage, then canonical reconciliation and
+required attributes. The user requests frequent concrete updates on completed
+work and what remains. Do not imply a known remaining-family count while coverage
+is open, or use generic INCOMPLETE rows as a progress measure.
+
 Chef's Delight provider component relationship and frozen weights are recorded
 in c51df00; source injection capture is d6e6740. It appends to runtime templates,
 not rawTemplates. Both plains additions read cookHousePlains. Do not repeat
