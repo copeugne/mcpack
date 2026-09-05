@@ -66,3 +66,21 @@ count, natural-spawn composition or saved-world occurrence is established here.
 
 Scoped extractor Ruff and Basedpyright checks passed. No new measurement
 system or server run was added.
+
+## Decoration scope disposition
+
+The earlier instruction to trace CompressedBlocksModule is not a mandatory
+Item 8 dependency. The captured conditional selects only the decoration block
+at the first tip position. Both branches rejoin before the same spawner and
+chest placements, so this choice does not change the recorded family geometry,
+authored blaze source, physical-spawner count or chest loot-table assignment.
+Record the two possible decoration identities and the condition explicitly;
+do not claim which is selected in the frozen runtime without evidence.
+
+Item 8 requires visual discoverability, not an exhaustive material bill or
+light-level measurement. The record describes the vertical spike form and the
+conditional decoration, with visibility and terrain occlusion unmeasured.
+Further tracing of this optional material choice is therefore deferred unless
+evidence shows an effect on a required attribute. This is a scope disposition,
+not resolution of the exact selected decoration. No required inventory field
+or world-observation obligation is waived.
