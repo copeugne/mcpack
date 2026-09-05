@@ -1737,6 +1737,55 @@ def test_ctov_size_decisions_exactly_cover_source_proven_variant_groups() -> Non
             assert trace["unresolved_elements"] == []
 
 
+def test_ctov_content_attributes_bind_templates_and_placement() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    traces = cast("dict[str, JsonValue]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/pool-traces-content.json.gz"
+    ).read_bytes())))
+    groups = cast("list[dict[str, JsonValue]]", decisions["groups"])
+    structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
+    contents = cast("dict[str, dict[str, JsonValue]]", traces["template_contents"])
+    for group in groups:
+        if not str(group["family_id"]).startswith("ctov:"):
+            continue
+        attributes = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
+        templates = {t for rid in cast("list[str]", group["structure_ids"])
+                     for t in cast("list[str]", structures[rid]["templates"])}
+        entities = {str(e["id"]) for t in templates for e in cast(
+            "list[dict[str, JsonValue]]", contents[t]["authored_entities"]
+        )}
+        enemies = attributes["authored_or_natural_enemies"]
+        assert enemies["packaged_entity_ids"] == sorted(entities)
+        hostile = entities - {
+            "minecraft:allay", "minecraft:armor_stand", "minecraft:camel", "minecraft:cat",
+            "minecraft:chicken", "minecraft:cow", "minecraft:horse", "minecraft:iron_golem",
+            "minecraft:item_frame", "minecraft:pig", "minecraft:sheep", "minecraft:villager",
+        }
+        assert enemies["authored_hostile_entity_ids"] == sorted(hostile)
+        assert attributes["generated_spawners"]["packaged_spawner_templates"] == []
+        for template in templates:
+            for field in ("spawner_blocks", "generation_markers", "unresolved_entities"):
+                assert contents[template][field] == []
+        placement = attributes["underground_surface_classification"]
+        variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+        for variant in variants.values():
+            definition = cast("dict[str, JsonValue]", variant.get(
+                "definition", group.get("common_generation_definition")
+            ))
+            assert definition["start_height"] == {
+                "absolute": placement["start_height_offset_blocks"]
+            }
+            assert definition["project_start_to_heightmap"] == placement["heightmap"]
+            assert definition["step"] == "surface_structures"
+            overrides = cast("dict[str, dict[str, JsonValue]]", definition["spawn_overrides"])
+            natural = {str(s["type"]) for category in overrides.values() for s in cast(
+                "list[dict[str, JsonValue]]", category["spawns"]
+            )}
+            assert enemies["natural_structure_override_entity_ids"] == sorted(natural)
+
+
 def test_ctov_outposts_preserve_duplicate_roots_and_missing_components() -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(

@@ -791,3 +791,40 @@ at that revision, SHA-256:
 `9205723b5e8748e56aeac40190d15365aa2b198a98c79e81ecb37409a0c5112e`.
 Only the 22 village grouping decisions and decision input hash change; all
 family memberships, other attributes and world-observation links are preserved.
+
+## CTOV content and start-placement attributes (2026-09-05)
+
+The existing 23 CTOV groups now distinguish packaged authored entities from
+structure-controlled natural spawning. Resolved village templates contain
+civilian, passive or defensive mobs and sometimes display entities, with no
+hostile entity IDs. All village definitions declare empty spawn overrides.
+Outpost templates include ravagers; their definitions separately override monster
+spawns with pillagers, evokers, vindicators and witches. These are potential
+sources, not live entity counts or proof of effective runtime replacements.
+
+No spawner blocks or generation markers occur in the resolved reachable CTOV
+templates. This does not dispose of missing templates or external generation
+hooks. The inventory preserves these limitations rather than treating the
+entire provider as proven spawner-free.
+
+All CTOV starts use WORLD_SURFACE_WG projection. Village underground specifies
+an absolute start offset of -14; the other designs and outposts specify zero.
+Every definition uses surface_structures, demonstrating why generation step
+alone does not establish underground/surface placement. These attributes record
+start intent, not assembled room elevations, terrain exposure or visibility.
+
+The added case in the existing family-decision test compares every recorded
+entity ID, natural override and placement field with preserved sources and
+requires empty spawner, marker and unresolved-entity lists for resolved content.
+No new extraction or measurement system was needed. The initial focused run
+passed all three CTOV tests; type checking then required two explicit JSON casts,
+which changed no behavior. Full affected verification uses the three commands
+in the preceding CTOV section. Decision SHA-256:
+`b67aca5bcab0e5c621f7d5d2a12b72e02a2ab89af1e31847adc7d8d726529032`.
+
+All 64 affected tests and scoped Ruff/Basedpyright checks passed. The inventory
+is regenerated separately using:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ctov-attributes.json
+```
