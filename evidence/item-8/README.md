@@ -10,10 +10,77 @@ root's biome constraints to captured live dimension memberships. Three unresolve
 IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
-## Remaining delivery work at 4a8478b
+## Current delivery work at 934dbcb
 
-This is the current work order, not a new acceptance framework or a percentage
-estimate. The existing inventory rows and contribution records remain the
+This section supersedes the historical work order below. It is the current
+status summary, not another measurement system. Family-specific evidence and
+unknowns remain in family-decisions.json and inventory.json.
+
+Delivered foundations and integrations:
+
+- Runtime enumeration assigns all 887 registered roots once to 421 provisional
+  groups. Packaged JSON and template archive lists match the frozen retained
+  candidate and platform identities (b06a842). Archive coverage does not yet
+  prove complete coverage of generation hooks or canonical families.
+- Existing dimension memberships, biome constraints, template/pool content and
+  generated-world envelopes are joined into the working inventory. These are
+  evidence inputs, not completed attributes for every family.
+- Repurposed Structures mansion content (8ba362c), monument content and processor
+  effects (077fcd2), Slime Cave components (0feca29), Aether cloud disposition
+  (6ab0446), and Bronze trap/callback/surface attribution (d4482a1) are integrated.
+  Do not repeat those increments. Their recorded limitations still apply.
+- Village Taverns component relationships (c8577f6) and Chef's Delight injection,
+  frozen inputs and direct template content (c51df00, c3b345f, 934dbcb) are recorded.
+  They add components to consuming families, not standalone house families.
+
+Remaining work, in execution order:
+
+1. Finish retained-provider reconciliation, including providers without registry
+   roots. Next inspect Farmer's Delight village component injection using the
+   existing catalogs and source extractor, then join relevant runtime-only
+   village contributions to their consumers. Record supported family, component
+   or non-structure dispositions. This step ends when every retained provider
+   has an evidence-backed disposition for its relevant generation contributions.
+2. Resolve canonical family boundaries, particularly Moog and village designs,
+   against actual definitions and component relationships. This step ends when
+   roots and nonregistry contributions have justified family/variant/component
+   assignments with no unresolved family-boundary ambiguity or double counting.
+3. Complete required attributes using existing evidence first. Known gaps include
+   Aether Silver and Gold, Deep Aether Brass, remaining YUNG custom content,
+   vanilla mansion/monument retained hooks, unresolved IDAS biome constraints,
+   village processor conflicts and relevant loot/spawn modifications. Bronze,
+   RS mansion and monument have delivered attribution, but still have scoped
+   geometry/content/discoverability limitations. Inspect further code only when
+   a specific required attribute cannot be resolved from existing evidence.
+4. Reconcile the resulting inventory with frozen configuration, runtime logs and
+   preserved worlds. Resolve material conflicts. Add observations only for a
+   named Item 8 requirement that existing evidence cannot establish.
+5. Deliver the final report, requirement-by-requirement acceptance decision,
+   reproducible outputs and durable evidence; run affected final quality checks.
+6. Complete the final PR and Codex review loop, merge into main and verify the
+   delivered ref. A branch push or a successful test is not Item 8 completion.
+
+Definition of done: every applicable provider in SPECS Item 8 is enumerated;
+retained-stack coverage also accounts for nonregistry generation; every accepted
+family has dimension, biome constraints, approximate footprint and vertical
+size, intended hostility, mob source, loot-table source, generated spawners,
+authored/natural enemy attribution, visual discoverability and underground/
+surface classification. Each answer must have evidence and a stated scope.
+A documented limitation must not conceal a missing required answer. Canonical
+assignments, evidence identities, narrative and generated inventory must agree,
+and the review/delivery gate above must pass. Frequency, balance, exact encounter
+populations and blind-client tests are not added to this item.
+
+The total number of remaining families is not yet established because provider
+and canonical reconciliation remain open. Do not report a completion percentage
+from provisional groups or generic INCOMPLETE flags. Progress updates must name
+the resolved requirement, next concrete step, remaining categories and any newly
+discovered scope change before implementation expands.
+
+## Historical remaining-work checkpoint at 4a8478b
+
+This was the work order at 4a8478b and is superseded by the current section
+above. It was not a new acceptance framework or a percentage estimate. The existing inventory rows and contribution records remain the
 locations for family-specific findings. An assigned registry root is not a
 completed family. Generic INCOMPLETE fields do not measure remaining effort.
 
@@ -81,7 +148,6 @@ reproduces exactly:
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-chefs-content-c3b345f.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-chefs-content-c3b345f.json
 ```
-
 
 The c51df00 increment records Chef's Delight's runtime village house-pool
 injection and frozen configuration inputs. It adds no standalone families.
