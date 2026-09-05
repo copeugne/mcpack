@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-05
 
+Swamp hut source and shared ScatteredFeaturePiece placement code are delivered
+in `ab64119`; family integration is `5498f16`. Nine attributes now record its
+7 by 9 nominal footprint, 7-block piece height excluding downward supports,
+authored witch/cat attempts, distinct natural-spawn overrides, no container-loot
+or spawner path, visual form and surface placement. Flags are set before entity
+creation and do not prove successful spawning. Both source manifests and the
+packaged overrides are bound by the focused test. All 62 affected tests and
+scoped checks pass. Inventory SHA:
+`d93524bb47e54899420a239639a7799f24f698ff0e8e104264d2b6eb7fe0ae14`.
+Decision SHA: `ce6e76b57b9b5a015cd05472a95ea23510a67c99d2c544949ef9931097d69ef1`.
+Commands and limitations are in `evidence/item-8/sources/vanilla-swamp-hut-code/README.md`.
+The shared placement class resolves actual constructor dimensions and height
+adjustment, and can be reused for the remaining desert pyramid and jungle temple.
+No measurement system was added. Continue those direct generators and provider
+reconciliation; actual visibility and effective retained-mod behavior remain open.
+Item 8 is not complete and has not reached its final review/merge gate.
+
+
 Buried treasure geometry is resolved in `d59a52e` from the existing direct piece
 source: a one-block chest target, with potential direct infill enclosed by a
 3 by 3 footprint and 2-block height. The solid support below cannot enter the

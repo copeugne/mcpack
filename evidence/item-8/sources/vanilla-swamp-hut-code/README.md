@@ -68,3 +68,9 @@ This records vanilla behavior with its limitations, not successful placement,
 actual visibility, effective retained-mod behavior or completion of Item 8.
 
 All 62 affected tests passed. Scoped Ruff and Basedpyright checks passed.
+
+Source evidence is delivered in `ab64119`, decisions and tests in `5498f16`.
+The inventory was rebuilt at `5498f16` with the command above. Inventory SHA:
+`d93524bb47e54899420a239639a7799f24f698ff0e8e104264d2b6eb7fe0ae14`.
+Changes are confined to swamp hut content/grouping and decision input identity.
+Dimension membership, biome constraints and existing world-observation links are preserved.
