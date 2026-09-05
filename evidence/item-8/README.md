@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `18ecfe4`, SHA-256
-`87667133ab2560dfa6120872a0023dcf761217e2f81080a631925808fa9d6a34`.
+Current working inventory regenerated at `7c1d6c6`, SHA-256
+`bf56126ef196c73126ab1da8880b4027c5f8c98b3b2e6331df5ebbc47a182e31`.
 All 887 registered roots are assigned once in 426 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1045,3 +1045,9 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-mvs-
 
 All 69 affected tests and scoped Ruff/Basedpyright checks passed. No additional
 measurement system, runtime or configuration change was required.
+
+Decisions and attributes delivered in `7c1d6c6`; inventory rebuilt at that
+revision, SHA-256:
+`bf56126ef196c73126ab1da8880b4027c5f8c98b3b2e6331df5ebbc47a182e31`.
+Only both mining families' grouping decisions, intended hostility and enemy
+attribution change, plus the decision input hash. All other fields are preserved.
