@@ -1,0 +1,972 @@
+Compiled from "SpiderDungeonNestPiece.java"
+public class com.yungnickyoung.minecraft.betterdungeons.world.structure.spider_dungeon.piece.SpiderDungeonNestPiece extends com.yungnickyoung.minecraft.betterdungeons.world.structure.spider_dungeon.piece.SpiderDungeonPiece {
+  private final net.minecraft.core.BlockPos startPos;
+
+  private float xRadius;
+
+  private float yRadius;
+
+  private float zRadius;
+
+  private static final float X_MINRADIUS = 6.0f;
+
+  private static final float X_MAXRADIUS = 10.0f;
+
+  private static final float Y_MINRADIUS = 4.0f;
+
+  private static final float Y_MAXRADIUS = 6.0f;
+
+  private static final float Z_MINRADIUS = 6.0f;
+
+  private static final float Z_MAXRADIUS = 10.0f;
+
+  private static final com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer COBWEB_SELECTOR;
+
+  private static final com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer WOOL_SELECTOR;
+
+  public com.yungnickyoung.minecraft.betterdungeons.world.structure.spider_dungeon.piece.SpiderDungeonNestPiece(net.minecraft.core.BlockPos, int);
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field com/yungnickyoung/minecraft/betterdungeons/module/StructurePieceTypeModule.NEST:Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;
+       4: iload_2
+       5: aload_1
+       6: invokestatic  #7                  // Method getInitialBoundingBox:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       9: invokespecial #13                 // Method com/yungnickyoung/minecraft/betterdungeons/world/structure/spider_dungeon/piece/SpiderDungeonPiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;ILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+      12: aload_0
+      13: fconst_0
+      14: putfield      #19                 // Field xRadius:F
+      17: aload_0
+      18: fconst_0
+      19: putfield      #23                 // Field yRadius:F
+      22: aload_0
+      23: fconst_0
+      24: putfield      #26                 // Field zRadius:F
+      27: aload_0
+      28: new           #29                 // class net/minecraft/core/BlockPos
+      31: dup
+      32: aload_1
+      33: invokevirtual #31                 // Method net/minecraft/core/BlockPos.getX:()I
+      36: aload_1
+      37: invokevirtual #35                 // Method net/minecraft/core/BlockPos.getY:()I
+      40: aload_1
+      41: invokevirtual #38                 // Method net/minecraft/core/BlockPos.getZ:()I
+      44: invokespecial #41                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+      47: putfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+      50: return
+
+  public com.yungnickyoung.minecraft.betterdungeons.world.structure.spider_dungeon.piece.SpiderDungeonNestPiece(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field com/yungnickyoung/minecraft/betterdungeons/module/StructurePieceTypeModule.NEST:Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;
+       4: aload_1
+       5: invokespecial #48                 // Method com/yungnickyoung/minecraft/betterdungeons/world/structure/spider_dungeon/piece/SpiderDungeonPiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;Lnet/minecraft/nbt/CompoundTag;)V
+       8: aload_0
+       9: fconst_0
+      10: putfield      #19                 // Field xRadius:F
+      13: aload_0
+      14: fconst_0
+      15: putfield      #23                 // Field yRadius:F
+      18: aload_0
+      19: fconst_0
+      20: putfield      #26                 // Field zRadius:F
+      23: aload_1
+      24: ldc           #51                 // String startPos
+      26: invokevirtual #52                 // Method net/minecraft/nbt/CompoundTag.getIntArray:(Ljava/lang/String;)[I
+      29: astore_2
+      30: aload_0
+      31: new           #29                 // class net/minecraft/core/BlockPos
+      34: dup
+      35: aload_2
+      36: iconst_0
+      37: iaload
+      38: aload_2
+      39: iconst_1
+      40: iaload
+      41: aload_2
+      42: iconst_2
+      43: iaload
+      44: invokespecial #41                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+      47: putfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+      50: aload_0
+      51: aload_1
+      52: ldc           #58                 // String xRadius
+      54: invokevirtual #59                 // Method net/minecraft/nbt/CompoundTag.getFloat:(Ljava/lang/String;)F
+      57: putfield      #19                 // Field xRadius:F
+      60: aload_0
+      61: aload_1
+      62: ldc           #63                 // String yRadius
+      64: invokevirtual #59                 // Method net/minecraft/nbt/CompoundTag.getFloat:(Ljava/lang/String;)F
+      67: putfield      #23                 // Field yRadius:F
+      70: aload_0
+      71: aload_1
+      72: ldc           #64                 // String zRadius
+      74: invokevirtual #59                 // Method net/minecraft/nbt/CompoundTag.getFloat:(Ljava/lang/String;)F
+      77: putfield      #26                 // Field zRadius:F
+      80: return
+
+  protected void addAdditionalSaveData(net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext, net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_2
+       1: ldc           #51                 // String startPos
+       3: iconst_3
+       4: newarray       int
+       6: dup
+       7: iconst_0
+       8: aload_0
+       9: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+      12: invokevirtual #31                 // Method net/minecraft/core/BlockPos.getX:()I
+      15: iastore
+      16: dup
+      17: iconst_1
+      18: aload_0
+      19: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+      22: invokevirtual #35                 // Method net/minecraft/core/BlockPos.getY:()I
+      25: iastore
+      26: dup
+      27: iconst_2
+      28: aload_0
+      29: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+      32: invokevirtual #38                 // Method net/minecraft/core/BlockPos.getZ:()I
+      35: iastore
+      36: invokevirtual #65                 // Method net/minecraft/nbt/CompoundTag.putIntArray:(Ljava/lang/String;[I)V
+      39: aload_2
+      40: ldc           #58                 // String xRadius
+      42: aload_0
+      43: getfield      #19                 // Field xRadius:F
+      46: invokevirtual #69                 // Method net/minecraft/nbt/CompoundTag.putFloat:(Ljava/lang/String;F)V
+      49: aload_2
+      50: ldc           #63                 // String yRadius
+      52: aload_0
+      53: getfield      #23                 // Field yRadius:F
+      56: invokevirtual #69                 // Method net/minecraft/nbt/CompoundTag.putFloat:(Ljava/lang/String;F)V
+      59: aload_2
+      60: ldc           #64                 // String zRadius
+      62: aload_0
+      63: getfield      #26                 // Field zRadius:F
+      66: invokevirtual #69                 // Method net/minecraft/nbt/CompoundTag.putFloat:(Ljava/lang/String;F)V
+      69: return
+
+  public void addChildren(net.minecraft.world.level.levelgen.structure.StructurePiece, net.minecraft.world.level.levelgen.structure.StructurePieceAccessor, net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: aload_3
+       2: invokeinterface #73,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+       7: ldc           #79                 // float 4.0f
+       9: fmul
+      10: ldc           #80                 // float 6.0f
+      12: fadd
+      13: putfield      #19                 // Field xRadius:F
+      16: aload_0
+      17: aload_3
+      18: invokeinterface #73,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      23: fconst_2
+      24: fmul
+      25: ldc           #79                 // float 4.0f
+      27: fadd
+      28: putfield      #23                 // Field yRadius:F
+      31: aload_0
+      32: aload_3
+      33: invokeinterface #73,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      38: ldc           #79                 // float 4.0f
+      40: fmul
+      41: ldc           #80                 // float 6.0f
+      43: fadd
+      44: putfield      #26                 // Field zRadius:F
+      47: aload_0
+      48: getfield      #81                 // Field boundingBox:Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      51: checkcast     #85                 // class com/yungnickyoung/minecraft/betterdungeons/mixin/accessor/BoundingBoxAccessor
+      54: aload_0
+      55: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+      58: invokevirtual #31                 // Method net/minecraft/core/BlockPos.getX:()I
+      61: aload_0
+      62: getfield      #19                 // Field xRadius:F
+      65: f2i
+      66: isub
+      67: iconst_4
+      68: isub
+      69: invokeinterface #87,  2           // InterfaceMethod com/yungnickyoung/minecraft/betterdungeons/mixin/accessor/BoundingBoxAccessor.setMinX:(I)V
+      74: aload_0
+      75: getfield      #81                 // Field boundingBox:Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      78: checkcast     #85                 // class com/yungnickyoung/minecraft/betterdungeons/mixin/accessor/BoundingBoxAccessor
+      81: aload_0
+      82: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+      85: invokevirtual #31                 // Method net/minecraft/core/BlockPos.getX:()I
+      88: aload_0
+      89: getfield      #19                 // Field xRadius:F
+      92: f2i
+      93: iadd
+      94: iconst_4
+      95: iadd
+      96: invokeinterface #91,  2           // InterfaceMethod com/yungnickyoung/minecraft/betterdungeons/mixin/accessor/BoundingBoxAccessor.setMaxX:(I)V
+     101: aload_0
+     102: getfield      #81                 // Field boundingBox:Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     105: checkcast     #85                 // class com/yungnickyoung/minecraft/betterdungeons/mixin/accessor/BoundingBoxAccessor
+     108: aload_0
+     109: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+     112: invokevirtual #35                 // Method net/minecraft/core/BlockPos.getY:()I
+     115: aload_0
+     116: getfield      #23                 // Field yRadius:F
+     119: f2i
+     120: isub
+     121: iconst_4
+     122: isub
+     123: invokeinterface #94,  2           // InterfaceMethod com/yungnickyoung/minecraft/betterdungeons/mixin/accessor/BoundingBoxAccessor.setMinY:(I)V
+     128: aload_0
+     129: getfield      #81                 // Field boundingBox:Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     132: checkcast     #85                 // class com/yungnickyoung/minecraft/betterdungeons/mixin/accessor/BoundingBoxAccessor
+     135: aload_0
+     136: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+     139: invokevirtual #35                 // Method net/minecraft/core/BlockPos.getY:()I
+     142: aload_0
+     143: getfield      #23                 // Field yRadius:F
+     146: f2i
+     147: iadd
+     148: iconst_4
+     149: iadd
+     150: invokeinterface #97,  2           // InterfaceMethod com/yungnickyoung/minecraft/betterdungeons/mixin/accessor/BoundingBoxAccessor.setMaxY:(I)V
+     155: aload_0
+     156: getfield      #81                 // Field boundingBox:Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     159: checkcast     #85                 // class com/yungnickyoung/minecraft/betterdungeons/mixin/accessor/BoundingBoxAccessor
+     162: aload_0
+     163: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+     166: invokevirtual #38                 // Method net/minecraft/core/BlockPos.getZ:()I
+     169: aload_0
+     170: getfield      #26                 // Field zRadius:F
+     173: f2i
+     174: isub
+     175: iconst_4
+     176: isub
+     177: invokeinterface #100,  2          // InterfaceMethod com/yungnickyoung/minecraft/betterdungeons/mixin/accessor/BoundingBoxAccessor.setMinZ:(I)V
+     182: aload_0
+     183: getfield      #81                 // Field boundingBox:Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     186: checkcast     #85                 // class com/yungnickyoung/minecraft/betterdungeons/mixin/accessor/BoundingBoxAccessor
+     189: aload_0
+     190: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+     193: invokevirtual #38                 // Method net/minecraft/core/BlockPos.getZ:()I
+     196: aload_0
+     197: getfield      #26                 // Field zRadius:F
+     200: f2i
+     201: iadd
+     202: iconst_4
+     203: iadd
+     204: invokeinterface #103,  2          // InterfaceMethod com/yungnickyoung/minecraft/betterdungeons/mixin/accessor/BoundingBoxAccessor.setMaxZ:(I)V
+     209: return
+
+  public void postProcess(net.minecraft.world.level.WorldGenLevel, net.minecraft.world.level.StructureManager, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.structure.BoundingBox, net.minecraft.world.level.ChunkPos, net.minecraft.core.BlockPos);
+    Code:
+       0: new           #106                // class net/minecraft/core/BlockPos$MutableBlockPos
+       3: dup
+       4: invokespecial #108                // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+       7: astore        8
+       9: new           #111                // class net/minecraft/world/level/levelgen/WorldgenRandom
+      12: dup
+      13: new           #113                // class net/minecraft/world/level/levelgen/LegacyRandomSource
+      16: dup
+      17: lconst_0
+      18: invokespecial #115                // Method net/minecraft/world/level/levelgen/LegacyRandomSource."<init>":(J)V
+      21: invokespecial #118                // Method net/minecraft/world/level/levelgen/WorldgenRandom."<init>":(Lnet/minecraft/util/RandomSource;)V
+      24: astore        9
+      26: aload         9
+      28: aload_1
+      29: invokeinterface #121,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getSeed:()J
+      34: aload_0
+      35: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+      38: invokevirtual #31                 // Method net/minecraft/core/BlockPos.getX:()I
+      41: aload_0
+      42: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+      45: invokevirtual #38                 // Method net/minecraft/core/BlockPos.getZ:()I
+      48: invokevirtual #127                // Method net/minecraft/world/level/levelgen/WorldgenRandom.setLargeFeatureSeed:(JII)V
+      51: iconst_4
+      52: istore        10
+      54: iconst_4
+      55: istore        11
+      57: aload_1
+      58: invokeinterface #131,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getMaxBuildHeight:()I
+      63: aload_1
+      64: invokeinterface #134,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getMinBuildHeight:()I
+      69: isub
+      70: invokestatic  #137                // Method net/minecraft/util/Mth.ceillog2:(I)I
+      73: istore        12
+      75: new           #143                // class java/util/BitSet
+      78: dup
+      79: ldc2_w        #145                // double 2.0d
+      82: iload         10
+      84: iload         11
+      86: iadd
+      87: iload         12
+      89: iadd
+      90: i2d
+      91: invokestatic  #147                // Method java/lang/Math.pow:(DD)D
+      94: d2i
+      95: invokespecial #153                // Method java/util/BitSet."<init>":(I)V
+      98: astore        13
+     100: new           #155                // class com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer
+     103: dup
+     104: getstatic     #157                // Field net/minecraft/world/level/block/Blocks.COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+     107: invokevirtual #163                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     110: invokespecial #169                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer."<init>":(Lnet/minecraft/world/level/block/state/BlockState;)V
+     113: astore        14
+     115: sipush        256
+     118: newarray       int
+     120: astore        15
+     122: iconst_0
+     123: istore        16
+     125: iload         16
+     127: bipush        16
+     129: if_icmpge     207
+     132: iconst_0
+     133: istore        17
+     135: iload         17
+     137: bipush        16
+     139: if_icmpge     201
+     142: aload         8
+     144: aload         6
+     146: invokevirtual #172                // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+     149: iload         16
+     151: iadd
+     152: iconst_1
+     153: aload         6
+     155: invokevirtual #177                // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+     158: iload         17
+     160: iadd
+     161: invokevirtual #180                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     164: pop
+     165: aload         15
+     167: iload         16
+     169: bipush        16
+     171: imul
+     172: iload         17
+     174: iadd
+     175: aload_1
+     176: getstatic     #184                // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     179: aload         8
+     181: invokevirtual #190                // Method net/minecraft/core/BlockPos$MutableBlockPos.getX:()I
+     184: aload         8
+     186: invokevirtual #191                // Method net/minecraft/core/BlockPos$MutableBlockPos.getZ:()I
+     189: invokeinterface #192,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getHeight:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;II)I
+     194: iastore
+     195: iinc          17, 1
+     198: goto          135
+     201: iinc          16, 1
+     204: goto          125
+     207: aload_0
+     208: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+     211: invokevirtual #31                 // Method net/minecraft/core/BlockPos.getX:()I
+     214: i2f
+     215: fstore        16
+     217: aload_0
+     218: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+     221: invokevirtual #35                 // Method net/minecraft/core/BlockPos.getY:()I
+     224: i2f
+     225: fstore        17
+     227: aload_0
+     228: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+     231: invokevirtual #38                 // Method net/minecraft/core/BlockPos.getZ:()I
+     234: i2f
+     235: fstore        18
+     237: fload         16
+     239: aload_0
+     240: getfield      #19                 // Field xRadius:F
+     243: fsub
+     244: invokestatic  #196                // Method net/minecraft/util/Mth.floor:(F)I
+     247: aload         6
+     249: getfield      #200                // Field net/minecraft/world/level/ChunkPos.x:I
+     252: bipush        16
+     254: imul
+     255: isub
+     256: iconst_1
+     257: isub
+     258: istore        19
+     260: fload         16
+     262: aload_0
+     263: getfield      #19                 // Field xRadius:F
+     266: fadd
+     267: invokestatic  #196                // Method net/minecraft/util/Mth.floor:(F)I
+     270: aload         6
+     272: getfield      #200                // Field net/minecraft/world/level/ChunkPos.x:I
+     275: bipush        16
+     277: imul
+     278: isub
+     279: iconst_1
+     280: iadd
+     281: istore        20
+     283: fload         17
+     285: aload_0
+     286: getfield      #23                 // Field yRadius:F
+     289: fsub
+     290: invokestatic  #196                // Method net/minecraft/util/Mth.floor:(F)I
+     293: iconst_1
+     294: isub
+     295: aload_1
+     296: invokeinterface #134,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getMinBuildHeight:()I
+     301: aload_1
+     302: invokeinterface #131,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getMaxBuildHeight:()I
+     307: invokestatic  #204                // Method net/minecraft/util/Mth.clamp:(III)I
+     310: istore        21
+     312: fload         17
+     314: aload_0
+     315: getfield      #23                 // Field yRadius:F
+     318: fadd
+     319: invokestatic  #196                // Method net/minecraft/util/Mth.floor:(F)I
+     322: iconst_1
+     323: iadd
+     324: aload_1
+     325: invokeinterface #134,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getMinBuildHeight:()I
+     330: aload_1
+     331: invokeinterface #131,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getMaxBuildHeight:()I
+     336: invokestatic  #204                // Method net/minecraft/util/Mth.clamp:(III)I
+     339: istore        22
+     341: fload         18
+     343: aload_0
+     344: getfield      #26                 // Field zRadius:F
+     347: fsub
+     348: invokestatic  #196                // Method net/minecraft/util/Mth.floor:(F)I
+     351: aload         6
+     353: getfield      #208                // Field net/minecraft/world/level/ChunkPos.z:I
+     356: bipush        16
+     358: imul
+     359: isub
+     360: iconst_1
+     361: isub
+     362: istore        23
+     364: fload         18
+     366: aload_0
+     367: getfield      #26                 // Field zRadius:F
+     370: fadd
+     371: invokestatic  #196                // Method net/minecraft/util/Mth.floor:(F)I
+     374: aload         6
+     376: getfield      #208                // Field net/minecraft/world/level/ChunkPos.z:I
+     379: bipush        16
+     381: imul
+     382: isub
+     383: iconst_1
+     384: iadd
+     385: istore        24
+     387: iload         19
+     389: iconst_0
+     390: bipush        15
+     392: invokestatic  #204                // Method net/minecraft/util/Mth.clamp:(III)I
+     395: istore        19
+     397: iload         20
+     399: iconst_0
+     400: bipush        15
+     402: invokestatic  #204                // Method net/minecraft/util/Mth.clamp:(III)I
+     405: istore        20
+     407: iload         23
+     409: iconst_0
+     410: bipush        15
+     412: invokestatic  #204                // Method net/minecraft/util/Mth.clamp:(III)I
+     415: istore        23
+     417: iload         24
+     419: iconst_0
+     420: bipush        15
+     422: invokestatic  #204                // Method net/minecraft/util/Mth.clamp:(III)I
+     425: istore        24
+     427: iload         19
+     429: i2f
+     430: fstore        25
+     432: fload         25
+     434: iload         20
+     436: i2f
+     437: fcmpg
+     438: ifgt          1044
+     441: fload         25
+     443: f2i
+     444: aload         6
+     446: getfield      #200                // Field net/minecraft/world/level/ChunkPos.x:I
+     449: bipush        16
+     451: imul
+     452: iadd
+     453: istore        26
+     455: iload         26
+     457: aload         6
+     459: invokevirtual #172                // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+     462: if_icmplt     1035
+     465: iload         26
+     467: aload         6
+     469: invokevirtual #211                // Method net/minecraft/world/level/ChunkPos.getMaxBlockX:()I
+     472: if_icmple     478
+     475: goto          1035
+     478: iload         26
+     480: i2f
+     481: fload         16
+     483: fsub
+     484: ldc           #214                // float 0.5f
+     486: fadd
+     487: aload_0
+     488: getfield      #19                 // Field xRadius:F
+     491: fdiv
+     492: fstore        27
+     494: iload         23
+     496: i2f
+     497: fstore        28
+     499: fload         28
+     501: iload         24
+     503: i2f
+     504: fcmpg
+     505: ifgt          1035
+     508: fload         28
+     510: f2i
+     511: aload         6
+     513: getfield      #208                // Field net/minecraft/world/level/ChunkPos.z:I
+     516: bipush        16
+     518: imul
+     519: iadd
+     520: istore        29
+     522: iload         29
+     524: aload         6
+     526: invokevirtual #177                // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+     529: if_icmplt     1026
+     532: iload         29
+     534: aload         6
+     536: invokevirtual #215                // Method net/minecraft/world/level/ChunkPos.getMaxBlockZ:()I
+     539: if_icmple     545
+     542: goto          1026
+     545: iload         29
+     547: i2f
+     548: fload         18
+     550: fsub
+     551: ldc           #214                // float 0.5f
+     553: fadd
+     554: aload_0
+     555: getfield      #26                 // Field zRadius:F
+     558: fdiv
+     559: fstore        30
+     561: iload         21
+     563: i2f
+     564: fstore        31
+     566: fload         31
+     568: iload         22
+     570: i2f
+     571: fcmpg
+     572: ifgt          1026
+     575: fload         31
+     577: f2i
+     578: istore        32
+     580: iload         32
+     582: aload         15
+     584: fload         25
+     586: f2i
+     587: bipush        16
+     589: irem
+     590: bipush        16
+     592: imul
+     593: fload         28
+     595: f2i
+     596: bipush        16
+     598: irem
+     599: iadd
+     600: iaload
+     601: if_icmple     607
+     604: goto          1026
+     607: fload         31
+     609: fload         17
+     611: fsub
+     612: ldc           #214                // float 0.5f
+     614: fsub
+     615: aload_0
+     616: getfield      #23                 // Field yRadius:F
+     619: fdiv
+     620: fstore        33
+     622: fload         25
+     624: f2i
+     625: fload         28
+     627: f2i
+     628: iconst_4
+     629: ishl
+     630: ior
+     631: fload         31
+     633: aload_1
+     634: invokeinterface #134,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getMinBuildHeight:()I
+     639: i2f
+     640: fsub
+     641: f2i
+     642: bipush        8
+     644: ishl
+     645: ior
+     646: istore        34
+     648: fload         27
+     650: fload         27
+     652: fmul
+     653: fload         33
+     655: fload         33
+     657: fmul
+     658: fadd
+     659: fload         30
+     661: fload         30
+     663: fmul
+     664: fadd
+     665: fstore        35
+     667: fload         35
+     669: f2d
+     670: dconst_1
+     671: dcmpg
+     672: ifge          790
+     675: iload         26
+     677: i2f
+     678: fload         16
+     680: fcmpl
+     681: ifne          724
+     684: iload         29
+     686: i2f
+     687: fload         18
+     689: fcmpl
+     690: ifne          724
+     693: iload         32
+     695: i2f
+     696: fload         17
+     698: fcmpl
+     699: ifle          724
+     702: aload_0
+     703: aload_1
+     704: getstatic     #218                // Field net/minecraft/world/level/block/Blocks.WHITE_WOOL:Lnet/minecraft/world/level/block/Block;
+     707: invokevirtual #163                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     710: iload         26
+     712: iload         32
+     714: iload         29
+     716: aload         5
+     718: invokevirtual #221                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     721: goto          1017
+     724: aload         13
+     726: iload         34
+     728: invokevirtual #225                // Method java/util/BitSet.get:(I)Z
+     731: ifne          1017
+     734: getstatic     #229                // Field BLOCK_BLACKLIST:Ljava/util/Set;
+     737: aload_0
+     738: aload_1
+     739: iload         26
+     741: iload         32
+     743: iload         29
+     745: aload         5
+     747: invokevirtual #233                // Method getBlock:(Lnet/minecraft/world/level/BlockGetter;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)Lnet/minecraft/world/level/block/state/BlockState;
+     750: invokevirtual #237                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     753: invokeinterface #242,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+     758: ifne          1017
+     761: aload_0
+     762: aload_1
+     763: getstatic     #248                // Field net/minecraft/world/level/block/Blocks.CAVE_AIR:Lnet/minecraft/world/level/block/Block;
+     766: invokevirtual #163                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     769: iload         26
+     771: iload         32
+     773: iload         29
+     775: aload         5
+     777: invokevirtual #221                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     780: aload         13
+     782: iload         34
+     784: invokevirtual #251                // Method java/util/BitSet.set:(I)V
+     787: goto          1017
+     790: iload         26
+     792: i2f
+     793: fload         16
+     795: fsub
+     796: ldc           #214                // float 0.5f
+     798: fadd
+     799: aload_0
+     800: getfield      #19                 // Field xRadius:F
+     803: ldc           #253                // float 1.2f
+     805: fadd
+     806: fdiv
+     807: fstore        36
+     809: fload         31
+     811: fload         17
+     813: fsub
+     814: ldc           #214                // float 0.5f
+     816: fsub
+     817: aload_0
+     818: getfield      #23                 // Field yRadius:F
+     821: ldc           #253                // float 1.2f
+     823: fadd
+     824: fdiv
+     825: fstore        37
+     827: iload         29
+     829: i2f
+     830: fload         18
+     832: fsub
+     833: ldc           #214                // float 0.5f
+     835: fadd
+     836: aload_0
+     837: getfield      #26                 // Field zRadius:F
+     840: ldc           #253                // float 1.2f
+     842: fadd
+     843: fdiv
+     844: fstore        38
+     846: fload         36
+     848: fload         36
+     850: fmul
+     851: fload         37
+     853: fload         37
+     855: fmul
+     856: fadd
+     857: fload         38
+     859: fload         38
+     861: fmul
+     862: fadd
+     863: fstore        39
+     865: fload         39
+     867: f2d
+     868: dconst_1
+     869: dcmpg
+     870: ifge          1017
+     873: iload         26
+     875: i2f
+     876: fload         16
+     878: fcmpl
+     879: ifne          922
+     882: iload         29
+     884: i2f
+     885: fload         18
+     887: fcmpl
+     888: ifne          922
+     891: iload         32
+     893: i2f
+     894: fload         17
+     896: fcmpl
+     897: ifle          922
+     900: aload_0
+     901: aload_1
+     902: getstatic     #218                // Field net/minecraft/world/level/block/Blocks.WHITE_WOOL:Lnet/minecraft/world/level/block/Block;
+     905: invokevirtual #163                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     908: iload         26
+     910: iload         32
+     912: iload         29
+     914: aload         5
+     916: invokevirtual #221                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     919: goto          1017
+     922: aload         13
+     924: iload         34
+     926: invokevirtual #225                // Method java/util/BitSet.get:(I)Z
+     929: ifne          1017
+     932: aload_0
+     933: aload_1
+     934: iload         26
+     936: iload         32
+     938: iload         29
+     940: aload         5
+     942: invokevirtual #233                // Method getBlock:(Lnet/minecraft/world/level/BlockGetter;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)Lnet/minecraft/world/level/block/state/BlockState;
+     945: astore        40
+     947: getstatic     #229                // Field BLOCK_BLACKLIST:Ljava/util/Set;
+     950: aload         40
+     952: invokevirtual #237                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     955: invokeinterface #242,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+     960: ifne          1017
+     963: aload         40
+     965: invokevirtual #254                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     968: ifeq          1017
+     971: aload         40
+     973: invokevirtual #258                // Method net/minecraft/world/level/block/state/BlockState.getFluidState:()Lnet/minecraft/world/level/material/FluidState;
+     976: invokevirtual #262                // Method net/minecraft/world/level/material/FluidState.getType:()Lnet/minecraft/world/level/material/Fluid;
+     979: getstatic     #268                // Field net/minecraft/world/level/material/Fluids.EMPTY:Lnet/minecraft/world/level/material/Fluid;
+     982: if_acmpne     997
+     985: aload         9
+     987: invokevirtual #274                // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextFloat:()F
+     990: ldc_w         #275                // float 0.8f
+     993: fcmpg
+     994: ifge          1017
+     997: aload_0
+     998: aload_1
+     999: aload         14
+    1001: aload         9
+    1003: invokevirtual #276                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+    1006: iload         26
+    1008: iload         32
+    1010: iload         29
+    1012: aload         5
+    1014: invokevirtual #221                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1017: fload         31
+    1019: fconst_1
+    1020: fadd
+    1021: fstore        31
+    1023: goto          566
+    1026: fload         28
+    1028: fconst_1
+    1029: fadd
+    1030: fstore        28
+    1032: goto          499
+    1035: fload         25
+    1037: fconst_1
+    1038: fadd
+    1039: fstore        25
+    1041: goto          432
+    1044: aload_0
+    1045: aload_1
+    1046: aload         5
+    1048: fload         16
+    1050: f2i
+    1051: fload         17
+    1053: f2i
+    1054: iconst_1
+    1055: iadd
+    1056: fload         18
+    1058: f2i
+    1059: fconst_2
+    1060: aload         9
+    1062: ldc           #214                // float 0.5f
+    1064: getstatic     #279                // Field WOOL_SELECTOR:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+    1067: iconst_1
+    1068: invokevirtual #283                // Method placeSphereRandomized:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIFLnet/minecraft/util/RandomSource;FLcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Z)V
+    1071: aload_0
+    1072: aload_1
+    1073: getstatic     #218                // Field net/minecraft/world/level/block/Blocks.WHITE_WOOL:Lnet/minecraft/world/level/block/Block;
+    1076: invokevirtual #163                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1079: fload         16
+    1081: f2i
+    1082: iconst_1
+    1083: iadd
+    1084: fload         17
+    1086: f2i
+    1087: iconst_1
+    1088: iadd
+    1089: fload         18
+    1091: f2i
+    1092: aload         5
+    1094: invokevirtual #221                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1097: aload_0
+    1098: aload_1
+    1099: getstatic     #218                // Field net/minecraft/world/level/block/Blocks.WHITE_WOOL:Lnet/minecraft/world/level/block/Block;
+    1102: invokevirtual #163                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1105: fload         16
+    1107: f2i
+    1108: iconst_1
+    1109: isub
+    1110: fload         17
+    1112: f2i
+    1113: iconst_1
+    1114: iadd
+    1115: fload         18
+    1117: f2i
+    1118: aload         5
+    1120: invokevirtual #221                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1123: aload_0
+    1124: aload_1
+    1125: getstatic     #218                // Field net/minecraft/world/level/block/Blocks.WHITE_WOOL:Lnet/minecraft/world/level/block/Block;
+    1128: invokevirtual #163                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1131: fload         16
+    1133: f2i
+    1134: fload         17
+    1136: f2i
+    1137: iconst_1
+    1138: iadd
+    1139: fload         18
+    1141: f2i
+    1142: iconst_1
+    1143: iadd
+    1144: aload         5
+    1146: invokevirtual #221                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1149: aload_0
+    1150: aload_1
+    1151: getstatic     #218                // Field net/minecraft/world/level/block/Blocks.WHITE_WOOL:Lnet/minecraft/world/level/block/Block;
+    1154: invokevirtual #163                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1157: fload         16
+    1159: f2i
+    1160: fload         17
+    1162: f2i
+    1163: iconst_1
+    1164: iadd
+    1165: fload         18
+    1167: f2i
+    1168: iconst_1
+    1169: isub
+    1170: aload         5
+    1172: invokevirtual #221                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1175: aload_0
+    1176: aload_1
+    1177: getstatic     #218                // Field net/minecraft/world/level/block/Blocks.WHITE_WOOL:Lnet/minecraft/world/level/block/Block;
+    1180: invokevirtual #163                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1183: fload         16
+    1185: f2i
+    1186: fload         17
+    1188: f2i
+    1189: fload         18
+    1191: f2i
+    1192: aload         5
+    1194: invokevirtual #221                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1197: aload_0
+    1198: aload_1
+    1199: aload         5
+    1201: fload         16
+    1203: f2i
+    1204: fload         17
+    1206: f2i
+    1207: iconst_1
+    1208: iadd
+    1209: fload         18
+    1211: f2i
+    1212: ldc_w         #287                // float 3.0f
+    1215: aload         9
+    1217: ldc           #214                // float 0.5f
+    1219: getstatic     #288                // Field COBWEB_SELECTOR:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+    1222: iconst_1
+    1223: invokevirtual #283                // Method placeSphereRandomized:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIFLnet/minecraft/util/RandomSource;FLcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Z)V
+    1226: aload_0
+    1227: aload_1
+    1228: getstatic     #291                // Field net/minecraft/world/level/block/Blocks.SPAWNER:Lnet/minecraft/world/level/block/Block;
+    1231: invokevirtual #163                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1234: fload         16
+    1236: f2i
+    1237: fload         17
+    1239: f2i
+    1240: iconst_1
+    1241: iadd
+    1242: fload         18
+    1244: f2i
+    1245: aload         5
+    1247: invokevirtual #221                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1250: aload         5
+    1252: aload_0
+    1253: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+    1256: invokevirtual #294                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.isInside:(Lnet/minecraft/core/Vec3i;)Z
+    1259: ifeq          1325
+    1262: aload_1
+    1263: aload_0
+    1264: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+    1267: getstatic     #300                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+    1270: invokevirtual #306                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+    1273: invokeinterface #310,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+    1278: astore        25
+    1280: aload         25
+    1282: instanceof    #314                // class net/minecraft/world/level/block/entity/SpawnerBlockEntity
+    1285: ifeq          1304
+    1288: aload         25
+    1290: checkcast     #314                // class net/minecraft/world/level/block/entity/SpawnerBlockEntity
+    1293: getstatic     #316                // Field net/minecraft/world/entity/EntityType.CAVE_SPIDER:Lnet/minecraft/world/entity/EntityType;
+    1296: aload         4
+    1298: invokevirtual #322                // Method net/minecraft/world/level/block/entity/SpawnerBlockEntity.setEntityId:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/util/RandomSource;)V
+    1301: goto          1325
+    1304: getstatic     #326                // Field com/yungnickyoung/minecraft/betterdungeons/BetterDungeonsCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+    1307: ldc_w         #332                // String Expected cave spider spawner entity at {}, but found none!
+    1310: aload_0
+    1311: getfield      #44                 // Field startPos:Lnet/minecraft/core/BlockPos;
+    1314: getstatic     #300                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+    1317: invokevirtual #306                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+    1320: invokeinterface #334,  3          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+    1325: aload_0
+    1326: aload_1
+    1327: aload         9
+    1329: aload         6
+    1331: aload         5
+    1333: aload         13
+    1335: invokevirtual #340                // Method decorateCave:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Ljava/util/BitSet;)V
+    1338: return
+
+  static {};
+    Code:
+       0: iconst_1
+       1: anewarray     #238                // class net/minecraft/world/level/block/state/BlockState
+       4: dup
+       5: iconst_0
+       6: getstatic     #344                // Field net/minecraft/world/level/block/Blocks.COBWEB:Lnet/minecraft/world/level/block/Block;
+       9: invokevirtual #163                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      12: aastore
+      13: invokestatic  #347                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.from:([Lnet/minecraft/world/level/block/state/BlockState;)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      16: putstatic     #288                // Field COBWEB_SELECTOR:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      19: iconst_1
+      20: anewarray     #238                // class net/minecraft/world/level/block/state/BlockState
+      23: dup
+      24: iconst_0
+      25: getstatic     #218                // Field net/minecraft/world/level/block/Blocks.WHITE_WOOL:Lnet/minecraft/world/level/block/Block;
+      28: invokevirtual #163                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      31: aastore
+      32: invokestatic  #347                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.from:([Lnet/minecraft/world/level/block/state/BlockState;)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      35: putstatic     #279                // Field WOOL_SELECTOR:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      38: return
+}
