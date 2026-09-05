@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+YUNG Bridges provider coverage now passes. Remaining seven classes captured in
+a20bccf using dfca574; full 31-class payload is accounted for. Existing feature,
+template and processor evidence reused. Seven focused cases and scoped checks
+pass. Preserve SuppressLogMixin's far-chunk-warning limitation. Three disconnected
+wood templates remain excluded from active candidates. Queue: 29 dispositions,
+107 open. Do not repeat this provider capture or infer canonical families from
+22 configurations/eleven referenced templates. Continue coverage before attributes.
+
 Better Village provider closure reuses seven-class source 45ab692 and existing
 contribution regression. Full payload accounted for: 246 replacements, four
 disabled/absent compatibility targets, two named disconnected snowy streets.
