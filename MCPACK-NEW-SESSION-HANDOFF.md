@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-05
 
+Ocean ruin source inspection (`9cdff83`) and family integration (`ddecb9b`)
+resolve all 48 references, with 12 warm and 36 cold templates kept inside one
+family. Six source-backed attributes now include authored drowned, chest and
+archaeology loot paths. Cold brick/cracked/mossy layers must not be counted as
+separate families or independent rewards. Existing observed geometry, dimension
+and world-observation links remain intact. All 62 affected tests and scoped
+checks passed. Rebuilt inventory SHA:
+`bcc6a0988f1abf235b2f1b5f6eab4b6cc793e24bf02c4a1adabc4201eb45317c`.
+Decision SHA: `e0c453f708bf61c484ec379d3c3d7924733f587a109699a6dccbcb9e6bf5023b`.
+Commands and limitations are in
+`evidence/item-8/sources/vanilla-ocean-ruin-code/README.md`.
+Continue remaining custom generators and provider reconciliation. Vanilla ruined
+portals are a next bounded source candidate. Visual discoverability and effective
+retained-mod transformations remain open. No new measurement system was added.
+Item 8 is incomplete and its final review/merge gate is still pending.
+
+
 Nether fossil source inspection and family integration are delivered in
 `fab790e` and `9e13390`. All fourteen template references resolve as alternatives
 within one family. Seven source-backed attributes are recorded and all 62 affected
