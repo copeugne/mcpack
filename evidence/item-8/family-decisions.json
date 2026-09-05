@@ -28622,7 +28622,8 @@
           "evidence/item-8/sources/better-end-island-exit-portal/identities.json": "c33781ceaf0c25c60be92da62653f8fe73afbdc83b6248066bedd7ad2b61dcbd",
           "evidence/item-8/sources/better-end-island-activation/identities.json": "65c8b9e69ad267dced5a68b6035808345da4d67193d919e1760028ccf8ec399a",
           "evidence/item-8/sources/better-end-island-activation/YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar/mixin-metadata.json": "fd67753423f30ae9026bc7a92d2a70ad3fbf6caf4cdb92c26bbc93fd4607a7cf",
-          "evidence/item-8/raw-custody/registry-r1-manifest.json": "2e97fcfd93bba7cb3963b1e88afb1fae7e8804a9fe1aec54ff3be245a59642ee"
+          "evidence/item-8/raw-custody/registry-r1-manifest.json": "2e97fcfd93bba7cb3963b1e88afb1fae7e8804a9fe1aec54ff3be245a59642ee",
+          "evidence/item-8/sources/vanilla-end-platform-caller/identities.json": "f12714cdddce670e7ed2bde4eb4d51b2d8e720d6e7c6d61a8a80f2b3fbfe4fcb"
         },
         "processor_effects": {
           "DragonEggProcessor": "Reads the existing world block at the incoming target position. If it is DRAGON_EGG, replaces the incoming block state with default DRAGON_EGG while preserving position and incoming NBT. Otherwise returns the incoming block unchanged. This preserves an existing egg, rather than creating an egg reward at an empty target.",
@@ -29190,7 +29191,8 @@
               "platform_placement",
               "hooks",
               "configuration",
-              "runtime_activation"
+              "runtime_activation",
+              "evidence/item-8/sources/vanilla-end-platform-caller/identities.json"
             ],
             "observation_status": "UNKNOWN: the central-End block projection does not establish arrival-platform placement.",
             "direct_encounter_content": {
@@ -29213,7 +29215,7 @@
             "packaged_placed_feature_references": [
               "minecraft:end_platform"
             ],
-            "placement_interpretation": "The selected packaged placed feature fixes origin at (100,49,0) and applies a biome filter. Its configured type is minecraft:end_platform. This origin lies outside the bounded X/Z -64..63 world projection, so that projection cannot establish its generation. The connection from this vanilla feature entrypoint to the captured static createEndPlatform hook remains to be verified before treating the custom template offset as its effective worldgen geometry."
+            "placement_interpretation": "The selected packaged placed feature fixes origin at (100,49,0) and applies a biome filter. Its configured type is minecraft:end_platform. The captured vanilla EndPlatformFeature.place passes context.level(), context.origin() and false directly to createEndPlatform, then returns true. This binds the packaged entrypoint to the captured static mixin hook. With the frozen useVanillaSpawnPlatform=false, the custom generator is selected. Its down-14 and half-X/Z offsets produce nominal template origin (97,35,-3), spanning X=97..103, Y=35..56, Z=-3..3 for the 7x22x7 envelope including air. This lies outside the bounded central-End world projection. The caller return and discarded placement booleans do not establish successful generation; other callers may supply different origins."
           },
           {
             "family": "betterendisland:gateway",
@@ -29593,7 +29595,7 @@
               ]
             }
           ],
-          "scope": "Exact packaged biome feature references across the preserved catalog. These biomes are registered and appear only in minecraft:the_end in the captured possible-biome membership. This is not an exhaustive runtime feature-list dump: code-added or removed features and lifecycle calls remain separate. In particular, packaged minecraft:end_platform is a reference, not proof that its complete caller path reaches the captured arrival-platform hook."
+          "scope": "Exact packaged biome feature references across the preserved catalog. These biomes are registered and appear only in minecraft:the_end in the captured possible-biome membership. This is not an exhaustive runtime feature-list dump: code-added or removed features and lifecycle calls remain separate. The captured vanilla EndPlatformFeature.place now binds the packaged end_platform entrypoint to the custom static hook; it does not prove successful placement."
         },
         "packaged_feature_placement": {
           "resources": {
