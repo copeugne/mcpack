@@ -284,6 +284,47 @@ The compiler, street, surface, feature, platform and config source directories
 contain the contribution rationale, preserved limitations and extraction commands.
 Overall Item 8 completion remains unproven.
 
+## ID-less vanilla trial spawners
+
+Decoder fix `74b748c` resolves a reproduced omission: 14 vanilla trial-chamber
+spawner templates in the existing hash-verified template catalog omit NBT `id`.
+Their palette identifies `minecraft:trial_spawner`. The decoder retains the
+palette identity separately as `block_id`, preserving the original NBT. Conflicting
+palette identities fail explicitly. The existing inventory builder uses that
+identity to decode the already preserved inline normal and ominous configurations.
+No new runtime measurement or evidence archive was required.
+
+Trace delivery `f539e25` changes only these template-content entries. Its SHA-256
+is `703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5`
+(816,204 bytes). Updated family-decision SHA-256:
+`8a311905415a0b0b855c39961e5f816113a3017171f02dcb85ea371a2be627fb`.
+Inventory delivery `cc819fe` has SHA-256
+`05232e50f2e151da2ed21e6aebe5c6c589e58ab87c86020625303d5364770b42`.
+Its semantic changes are confined to trial-chamber generated-spawner sources;
+all other changes are shared source hashes. These identities supersede the
+preceding modifier checkpoint. Working family grouping remains unchanged.
+
+Executed commands:
+
+```sh
+uv run pytest -q tests/item8/test_template_nbt.py tests/item8/test_family_decisions.py tests/item8/test_pool_trace.py tests/item8/test_pool_links.py
+uv run -m tools.trace_item8_structure_pools --output evidence/raw/item8/pool-traces-idless-trial-spawners.json.gz
+uv run pytest -q tests/item8/test_pool_links.py tests/item8/test_family_decisions.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idless-trial-spawners.json
+```
+
+The first test run passed 84 checks; the regenerated-evidence run passed 69.
+Scoped Ruff and basedpyright passed after narrow formatting and type-annotation
+corrections. The catalog regression identifies all 14 affected templates and
+checks that their original NBT remains unchanged.
+
+This correction does not establish effective trial-spawner defaults. Five
+templates omit ominous spawn-potential lists: breeze, spider, cave spider,
+silverfish and slime. Their unresolved entries are retained in the inventory
+until the existing game-code path establishes the semantics. Earlier speculation
+about registry-reference configurations does not explain this observed omission.
+No generated encounter counts or actual spawning success are claimed.
+
 ## Generated-world piece bounds
 
 `world-bounds.json.gz` retains 792 saved structure starts from the eight Item 7
