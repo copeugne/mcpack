@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-05
 
+Extras FeatureModule now requires verbose javap output: the initial capture
+omitted field annotations, leaving exact feature-ID binding unproven. Enable
+verbose output for that exact existing class and preserve a separate capture;
+keep the prior raw capture intact. No generalized extraction option is needed.
+
+
 Extras desert class-to-template calls are delivered in `0f8e610`. The three
 classes pass fixed IDs through centered placement, with above-ground anchors
 for chillzone/torch and the ground anchor for ruins. Placement success is

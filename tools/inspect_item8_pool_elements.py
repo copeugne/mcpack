@@ -335,6 +335,7 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                 verbose = "/mixin/" in name or "/mixins/" in name or name in {
                     CLASSES[0],
                     "org/betterx/betterend/registry/EndStructures.class",
+                    "com/yungnickyoung/minecraft/yungsextras/module/FeatureModule.class",
                     "net/minecraft/world/level/levelgen/structure/structures/DesertPyramidStructure.class",
                     "net/minecraft/world/level/levelgen/structure/structures/JungleTempleStructure.class",
                     "net/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece.class",
