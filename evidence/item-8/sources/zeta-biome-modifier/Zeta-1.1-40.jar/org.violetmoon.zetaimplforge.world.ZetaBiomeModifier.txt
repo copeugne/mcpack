@@ -1,0 +1,115 @@
+Compiled from "ZetaBiomeModifier.java"
+public class org.violetmoon.zetaimplforge.world.ZetaBiomeModifier implements net.neoforged.neoforge.common.world.BiomeModifier {
+  public static final net.minecraft.resources.ResourceLocation RESOURCE;
+
+  private static final net.neoforged.neoforge.registries.DeferredHolder<com.mojang.serialization.MapCodec<? extends net.neoforged.neoforge.common.world.BiomeModifier>, com.mojang.serialization.MapCodec<? extends net.neoforged.neoforge.common.world.BiomeModifier>> SERIALIZER;
+
+  public org.violetmoon.zetaimplforge.world.ZetaBiomeModifier();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public void modify(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>, net.neoforged.neoforge.common.world.BiomeModifier$Phase, net.neoforged.neoforge.common.world.ModifiableBiomeInfo$BiomeInfo$Builder);
+    Code:
+       0: aload_2
+       1: getstatic     #7                  // Field net/neoforged/neoforge/common/world/BiomeModifier$Phase.ADD:Lnet/neoforged/neoforge/common/world/BiomeModifier$Phase;
+       4: if_acmpne     60
+       7: aload_1
+       8: aload_3
+       9: invokestatic  #13                 // Method modifyBiome:(Lnet/minecraft/core/Holder;Lnet/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder;)V
+      12: getstatic     #19                 // Field org/violetmoon/zeta/util/zetalist/ZetaList.INSTANCE:Lorg/violetmoon/zeta/util/zetalist/ZetaList;
+      15: invokevirtual #25                 // Method org/violetmoon/zeta/util/zetalist/ZetaList.getZetas:()Ljava/lang/Iterable;
+      18: invokeinterface #29,  1           // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+      23: astore        4
+      25: aload         4
+      27: invokeinterface #35,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      32: ifeq          60
+      35: aload         4
+      37: invokeinterface #41,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      42: checkcast     #45                 // class org/violetmoon/zeta/Zeta
+      45: astore        5
+      47: aload_1
+      48: aload         5
+      50: getfield      #47                 // Field org/violetmoon/zeta/Zeta.entitySpawn:Lorg/violetmoon/zeta/world/EntitySpawnHandler;
+      53: aload_3
+      54: invokestatic  #51                 // Method org/violetmoon/zetaimplforge/world/ZetaSpawnModifier.modifyBiome:(Lnet/minecraft/core/Holder;Lorg/violetmoon/zeta/world/EntitySpawnHandler;Lnet/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder;)V
+      57: goto          25
+      60: return
+
+  public com.mojang.serialization.MapCodec<? extends net.neoforged.neoforge.common.world.BiomeModifier> codec();
+    Code:
+       0: getstatic     #56                 // Field SERIALIZER:Lnet/neoforged/neoforge/registries/DeferredHolder;
+       3: invokevirtual #60                 // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+       6: checkcast     #65                 // class com/mojang/serialization/MapCodec
+       9: areturn
+
+  public static com.mojang.serialization.MapCodec<org.violetmoon.zetaimplforge.world.ZetaBiomeModifier> makeCodec();
+    Code:
+       0: invokedynamic #67,  0             // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+       5: invokestatic  #70                 // Method com/mojang/serialization/MapCodec.unit:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/MapCodec;
+       8: areturn
+
+  public static void modifyBiome(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>, net.neoforged.neoforge.common.world.ModifiableBiomeInfo$BiomeInfo$Builder);
+    Code:
+       0: aload_1
+       1: invokevirtual #74                 // Method net/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder.getGenerationSettings:()Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;
+       4: astore_2
+       5: invokestatic  #80                 // Method net/minecraft/world/level/levelgen/GenerationStep$Decoration.values:()[Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+       8: astore_3
+       9: aload_3
+      10: arraylength
+      11: istore        4
+      13: iconst_0
+      14: istore        5
+      16: iload         5
+      18: iload         4
+      20: if_icmpge     64
+      23: aload_3
+      24: iload         5
+      26: aaload
+      27: astore        6
+      29: aload_2
+      30: aload         6
+      32: invokevirtual #86                 // Method net/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder.getFeatures:(Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;)Ljava/util/List;
+      35: astore        7
+      37: aload         7
+      39: getstatic     #92                 // Field org/violetmoon/zeta/world/WorldGenHandler.defers:Ljava/util/Map;
+      42: aload         6
+      44: invokeinterface #98,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      49: checkcast     #103                // class net/minecraft/core/Holder
+      52: invokeinterface #105,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      57: pop
+      58: iinc          5, 1
+      61: goto          16
+      64: return
+
+  public static void registerBiomeModifier(net.neoforged.bus.api.IEventBus);
+    Code:
+       0: getstatic     #111                // Field net/neoforged/neoforge/registries/NeoForgeRegistries$Keys.BIOME_MODIFIER_SERIALIZERS:Lnet/minecraft/resources/ResourceKey;
+       3: ldc           #119                // String zeta
+       5: invokestatic  #121                // Method net/neoforged/neoforge/registries/DeferredRegister.create:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lnet/neoforged/neoforge/registries/DeferredRegister;
+       8: astore_1
+       9: aload_1
+      10: aload_0
+      11: invokevirtual #127                // Method net/neoforged/neoforge/registries/DeferredRegister.register:(Lnet/neoforged/bus/api/IEventBus;)V
+      14: aload_1
+      15: getstatic     #131                // Field RESOURCE:Lnet/minecraft/resources/ResourceLocation;
+      18: invokevirtual #135                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      21: invokedynamic #141,  0            // InvokeDynamic #1:get:()Ljava/util/function/Supplier;
+      26: invokevirtual #142                // Method net/neoforged/neoforge/registries/DeferredRegister.register:(Ljava/lang/String;Ljava/util/function/Supplier;)Lnet/neoforged/neoforge/registries/DeferredHolder;
+      29: pop
+      30: return
+
+  static {};
+    Code:
+       0: ldc           #119                // String zeta
+       2: ldc           #145                // String biome_modifier
+       4: invokestatic  #147                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       7: putstatic     #131                // Field RESOURCE:Lnet/minecraft/resources/ResourceLocation;
+      10: getstatic     #111                // Field net/neoforged/neoforge/registries/NeoForgeRegistries$Keys.BIOME_MODIFIER_SERIALIZERS:Lnet/minecraft/resources/ResourceKey;
+      13: getstatic     #131                // Field RESOURCE:Lnet/minecraft/resources/ResourceLocation;
+      16: invokestatic  #151                // Method net/neoforged/neoforge/registries/DeferredHolder.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/neoforged/neoforge/registries/DeferredHolder;
+      19: putstatic     #56                 // Field SERIALIZER:Lnet/neoforged/neoforge/registries/DeferredHolder;
+      22: return
+}
