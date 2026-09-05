@@ -74,6 +74,7 @@ ARCHIVES = frozenset(
         "integrated_villages-1.3.3+1.21.1-neoforge.jar",
         "integrated_stronghold-1.1.4+1.21.1-neoforge.jar",
         "adorabuild-structures-2.11.0-neoforge-1.21.3.jar",
+        "[Neoforge]ctov-3.6.3.jar",
         "idas-1.13.7+1.21.1-neoforge.jar",
         "BetterEnd-21.0.31.jar",
         "BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar",
@@ -84,6 +85,8 @@ ARCHIVES = frozenset(
     }
 )
 GENERATION_PREFIXES = (
+    "net/choicetheorem/ctov/",
+    "architectury_inject_ChoiceTheoremsoverhauledvillage_common_",
     "net/adorabuild/structures/",
     "com/craisinlord/integrated_stronghold/",
     "com/jtorleonstudios/bettervillage/",
@@ -659,6 +662,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = source.name.startswith("mcw-")
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
+                    "net/choicetheorem/ctov/CTOV.class",
+                    "net/choicetheorem/ctov/neoforge/ctovNeo.class",
                     "net/adorabuild/structures/AdorabuildStructuresMod.class",
                     "com/craisinlord/integrated_stronghold/IntegratedStronghold.class",
                     "com/craisinlord/integrated_stronghold/neoforge/IntegratedStrongholdNeoforge.class",
