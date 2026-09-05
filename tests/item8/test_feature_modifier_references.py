@@ -16,6 +16,32 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
+def test_monster_box_selected_loot_sources() -> None:
+    payload = Path("evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+    assert hashlib.sha256(payload).hexdigest() == (
+        "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd")
+    catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(payload)))
+    selected, _ = select_resources(
+        cast("list[JsonValue]", catalog["resources"]), "loot_table",
+        enabled_packs=["vanilla", "mod_data"], lithostitched_overlay=True)
+    for identifier, digest in {
+        "quark:misc/monster_box_spawns":
+            "b8f5f6566c55bb61ce0b0415ac256aee6a2bec157d882270054539f6b0116a22",
+        "quark:misc/monster_box":
+            "d55a75d3ff4510472cf68eed41fc5c2a40aa898629493d90b4ff57f4a444423d",
+        "quark:blocks/monster_box":
+            "54529647aa2f43bc3a48fe1cf9379926ea6cbff35d1fbfee70fd74498d00288e",
+    }.items():
+        assert selected[identifier]["archive"] == "Quark-4.1-480.jar"
+        assert selected[identifier]["sha256"] == digest
+    assert selected["quark:misc/monster_box_spawns"]["document"] == {
+        "pools": [{"entries": [
+            {"name": "minecraft:witch_spawn_egg", "type": "minecraft:item", "weight": 1},
+            {"name": "minecraft:cave_spider_spawn_egg", "type": "minecraft:item", "weight": 2},
+            {"name": "minecraft:zombie_spawn_egg", "type": "minecraft:item", "weight": 7},
+        ], "rolls": 1}], "random_sequence": "quark:misc/monster_box_spawns"}
+
+
 def test_end_island_packaged_biome_entrypoints() -> None:
     decisions = cast("dict[str, JsonValue]", json.loads(Path(
         "evidence/item-8/family-decisions.json").read_bytes()))

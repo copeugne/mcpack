@@ -86,6 +86,7 @@ def select_resources(
         "lithostitched/surface_rule",
         "worldgen/placed_feature",
         "worldgen/configured_feature",
+        "loot_table",
     ],
     *,
     enabled_packs: list[str],
