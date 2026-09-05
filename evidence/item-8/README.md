@@ -472,3 +472,19 @@ are not converted into empty-content claims. Sixteen added groups join the
 remaining 101 roots; the earlier witch-hut group and all other prior families
 remain unchanged. Effective attributes and final canonical acceptance remain
 unresolved. No additional measurement system was needed.
+
+CTOV outposts (`07bcde5`, joined in `c5c8c7a`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-outposts-07bcde5.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-outposts-07bcde5-repro.json
+cmp evidence/raw/item8/inventory-outposts-07bcde5.json evidence/raw/item8/inventory-outposts-07bcde5-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 44 focused tests and scoped Ruff/basedpyright checks passed. The direct
+outpost check verifies the common definition and each variant's biome, size,
+start pool and missing-component list, the exact badlands/mesa duplicate, and
+complete distinct assignment of all 78 CTOV registry IDs. Existing village
+size checks remain intact. No retained outpost observations exist. Missing
+components are preserved rather than silently corrected or counted as families.

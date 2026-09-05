@@ -1247,7 +1247,7 @@ def test_ctov_size_decisions_exactly_cover_source_proven_variant_groups() -> Non
     groups = [
         row
         for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
-        if str(row["family_id"]).startswith("ctov:")
+        if str(row["family_id"]).startswith("ctov:") and row["family_id"] != "ctov:pillager_outpost"
     ]
     registry = read_registry(
         root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
@@ -1275,6 +1275,88 @@ def test_ctov_size_decisions_exactly_cover_source_proven_variant_groups() -> Non
         } == {str(row["family_id"]).split(":", 1)[1]}
         for path, digest in cast("dict[str, str]", row["evidence"]).items():
             assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+
+
+def test_ctov_outposts_preserve_duplicate_roots_and_missing_components() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, list[dict[str, JsonValue]]]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    group = next(row for row in decisions["groups"] if row["family_id"] == "ctov:pillager_outpost")
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+    catalog = cast(
+        "dict[str, list[dict[str, JsonValue]]]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    traces = cast(
+        "dict[str, dict[str, dict[str, JsonValue]]]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    registry = {
+        k
+        for k in read_registry(
+            root
+            / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+        )
+        if k.startswith("ctov:")
+    }
+    members = [
+        k
+        for row in decisions["groups"]
+        if str(row["family_id"]).startswith("ctov:")
+        for k in cast("list[str]", row["structure_ids"])
+    ]
+    assert set(members) == registry
+    assert len(members) == len(set(members)) == 78
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    assert (
+        group["structure_ids"]
+        == sorted(variants)
+        == sorted(k for k in registry if k.startswith("ctov:pillager_outpost_"))
+    )
+    assert len(variants) == 12
+    definitions: dict[str, dict[str, JsonValue]] = {}
+    for identifier, variant in variants.items():
+        name = identifier.split(":")[1]
+        rows = [
+            cast("dict[str, JsonValue]", r["document"])
+            for r in catalog["resources"]
+            if r["path"] == f"data/ctov/worldgen/structure/{name}.json"
+        ]
+        assert len(rows) == 1
+        definition = rows[0]
+        definitions[identifier] = definition
+        assert group["common_generation_definition"] == {
+            k: v for k, v in definition.items() if k not in ("biomes", "size", "start_pool")
+        }
+        for field in ("biomes", "size", "start_pool"):
+            assert variant[field] == definition[field]
+        trace = traces["structures"][identifier]
+        assert trace["start_pool"] == variant["start_pool"]
+        assert trace["missing"] == variant["missing_components"]
+        assert {
+            "id": "savage_and_ravage:pillager_outpost/feature_targets_arrow",
+            "kind": "template",
+        } in cast("list[JsonValue]", trace["missing"])
+        assert trace["unresolved_elements"] == []
+    assert group["duplicate_definition_ids"] == [
+        "ctov:pillager_outpost_badlands",
+        "ctov:pillager_outpost_mesa",
+    ]
+    assert (
+        definitions["ctov:pillager_outpost_badlands"] == definitions["ctov:pillager_outpost_mesa"]
+    )
+    assert variants["ctov:pillager_outpost_badlands"] == variants["ctov:pillager_outpost_mesa"]
 
 
 def test_working_inventory_keeps_unassigned_ids_and_rejects_double_counting() -> None:
