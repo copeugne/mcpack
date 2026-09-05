@@ -9,12 +9,88 @@ from typing import TYPE_CHECKING, cast
 import pytest
 
 from mcpack_evidence.item8_registry import read_registry
-from mcpack_evidence.item8_resource_selection import LITHOSTITCHED, select_resources
+from mcpack_evidence.item8_resource_selection import (
+    LITHOSTITCHED,
+    mod_conditions_match,
+    runtime_mod_ids,
+    select_resources,
+)
 
 if TYPE_CHECKING:
     from pydantic import JsonValue
 
 VANILLA = "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar"
+
+
+def test_mod_list_binds_ids_to_lines_and_rejects_incomplete_or_duplicate_rows() -> None:
+    log = (
+        "[log record]\n     Mod List:\n\t\tName Version (Mod Id)\n\n"
+        "\t\tVillage Taverns (RPG Series) 1.1.5 (village_taverns)\n"
+        "\t\tNested dependency 1.0 (dependency)\n[next log record]\n"
+    )
+    assert runtime_mod_ids(log) == {"village_taverns": 5, "dependency": 6}
+    with pytest.raises(ValueError, match="exactly one"):
+        _ = runtime_mod_ids(log + log)
+    with pytest.raises(ValueError, match="unterminated"):
+        _ = runtime_mod_ids(log.replace("[next log record]\n", ""))
+    with pytest.raises(ValueError, match="invalid or duplicate"):
+        _ = runtime_mod_ids(log.replace("(dependency)", "(village_taverns)"))
+    with pytest.raises(ValueError, match="invalid or duplicate"):
+        _ = runtime_mod_ids(log.replace("(dependency)", "missing-id"))
+
+
+def test_mod_conditions_filter_optional_integrations_without_hiding_unknowns() -> None:
+    present: JsonValue = {"type": "neoforge:mod_loaded", "modid": "village_taverns"}
+    absent: JsonValue = {"type": "neoforge:mod_loaded", "modid": "rats"}
+    loaded = {"village_taverns"}
+    assert mod_conditions_match([], loaded)
+    assert mod_conditions_match([present], loaded)
+    assert not mod_conditions_match([present, absent], loaded)
+    assert mod_conditions_match([{"type": "neoforge:or", "values": [present, absent]}], loaded)
+    assert not mod_conditions_match([{"type": "neoforge:or", "values": [absent]}], loaded)
+    with pytest.raises(ValueError, match="unsupported"):
+        _ = mod_conditions_match(
+            [{"type": "neoforge:or", "values": [present, {"type": "unknown"}]}], loaded
+        )
+    with pytest.raises(TypeError, match="values must be a list"):
+        _ = mod_conditions_match([{"type": "neoforge:or", "values": None}], loaded)
+    with pytest.raises(ValueError, match="unsupported"):
+        _ = mod_conditions_match(
+            [{"type": "neoforge:mod_loaded", "modid": "rats", "extra": 1}], loaded
+        )
+
+
+def test_frozen_mod_list_selects_only_retained_village_integrations() -> None:
+    root = Path(__file__).resolve().parents[2]
+    raw = (root / "evidence/raw/item8/registry-r1/debug.log").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b"
+    )
+    mods = runtime_mod_ids(raw.decode())
+    assert len(mods) == 212
+    assert mods["village_taverns"] == 1686
+    payload = (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+    assert hashlib.sha256(payload).hexdigest() == (
+        "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd"
+    )
+    catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(payload)))
+    selected: dict[str, int] = {}
+    rejected = 0
+    for row in cast("list[dict[str, JsonValue]]", catalog["resources"]):
+        if "/lithostitched/worldgen_modifier/" not in str(row["path"]):
+            continue
+        document = cast("dict[str, JsonValue]", row["document"])
+        if document.get("type") != "lithostitched:add_template_pool_elements":
+            continue
+        conditions = document["neoforge:conditions"]
+        if mod_conditions_match(conditions, set(mods)):
+            condition = cast("list[dict[str, JsonValue]]", conditions)[0]
+            identifier = str(condition["modid"])
+            selected[identifier] = selected.get(identifier, 0) + 1
+        else:
+            rejected += 1
+    assert selected == {"village_taverns": 26, "chefsdelight": 21, "farmersdelight": 21}
+    assert rejected == 956
 
 
 def resource(archive: str, path: str) -> dict[str, JsonValue]:
