@@ -26,8 +26,9 @@ def resource_identity(path: str, kind: str, extension: str = ".json") -> tuple[s
     )
 
 
-def biome_tag_inputs(
-    resources: list[JsonValue], archive_order: tuple[str, ...] = ()
+def tag_inputs(
+    resources: list[JsonValue], archive_order: tuple[str, ...] = (),
+    *, kind: str = "tags/worldgen/biome",
 ) -> dict[str, JsonValue]:
     """Merge order-independent root tags and known vanilla-to-single-mod replacements.
 
@@ -42,16 +43,17 @@ def biome_tag_inputs(
         if not isinstance(resource, dict) or not isinstance(resource.get("path"), str):
             message = "invalid biome tag source row"
             raise TypeError(message)
-        identity = resource_identity(str(resource["path"]), "tags/worldgen/biome")
+        identity = resource_identity(str(resource["path"]), kind)
         if identity is not None:
             grouped.setdefault(identity[0], []).append(resource)
     return {
-        identifier: _merge_tag(rows, archive_order) for identifier, rows in sorted(grouped.items())
+        identifier: _merge_tag(rows, archive_order, kind)
+        for identifier, rows in sorted(grouped.items())
     }
 
 
 def _merge_tag(
-    rows: list[dict[str, JsonValue]], archive_order: tuple[str, ...]
+    rows: list[dict[str, JsonValue]], archive_order: tuple[str, ...], kind: str
 ) -> dict[str, JsonValue]:
     vanilla = "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar"
     ordered = sorted(rows, key=lambda row: (row["archive"] != vanilla, str(row["archive"])))
@@ -63,7 +65,7 @@ def _merge_tag(
     unresolved: list[JsonValue] = []
     mod_count = sum(row["archive"] != vanilla for row in rows)
     for row in ordered:
-        identity = resource_identity(str(row["path"]), "tags/worldgen/biome")
+        identity = resource_identity(str(row["path"]), kind)
         assert identity is not None  # noqa: S101 - grouped from exact resource identity above.
         sources.append(_reference(row, identity))
         document = row["document"]

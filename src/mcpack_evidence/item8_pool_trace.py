@@ -13,6 +13,7 @@ def trace_pool(
     pools: list[JsonValue],
     templates: list[JsonValue],
     pool_aliases: JsonValue = None,
+    pool_alias_tags: dict[str, list[str]] | None = None,
 ) -> dict[str, JsonValue]:
     """Walk selected resources, retaining terminal edges and missing references.
 
@@ -22,7 +23,7 @@ def trace_pool(
     source definition; this trace makes no joint occurrence or probability claim.
     """
     indexes = {"pool": _index(pools), "template": _index(templates)}
-    aliases = alias_targets(pool_aliases)
+    aliases = alias_targets(pool_aliases, pool_alias_tags)
     pending = [("pool", start_pool)]
     visited: set[tuple[str, str]] = set()
     missing: set[tuple[str, str]] = set()
@@ -74,7 +75,9 @@ def trace_pool(
     return result
 
 
-def alias_targets(bindings: JsonValue) -> dict[str, set[str]]:  # noqa: C901, PLR0912 - three explicit packaged shapes.
+def alias_targets(  # noqa: C901, PLR0912 - explicit observed alias codecs.
+    bindings: JsonValue, pool_tags: dict[str, list[str]] | None = None
+) -> dict[str, set[str]]:
     """Collect declared positive-weight targets of the packaged vanilla alias shapes."""
     result: dict[str, set[str]] = {}
     if bindings is None:
@@ -87,9 +90,13 @@ def alias_targets(bindings: JsonValue) -> dict[str, set[str]]:  # noqa: C901, PL
             message = "invalid pool alias binding"
             raise TypeError(message)
         kind = binding.get("type")
+        if kind == "lithostitched:internal/random_entries":
+            for alias, targets in _random_entries(binding, pool_tags or {}).items():
+                result.setdefault(alias, set()).update(targets)
+            continue
         if kind == "minecraft:random_group":
             for group in _weighted(binding.get("groups")):
-                for alias, targets in alias_targets(group).items():
+                for alias, targets in alias_targets(group, pool_tags).items():
                     result.setdefault(alias, set()).update(targets)
             continue
         alias = binding.get("alias")
@@ -108,6 +115,31 @@ def alias_targets(bindings: JsonValue) -> dict[str, set[str]]:  # noqa: C901, PL
                 message = f"invalid pool alias target: {alias}"
                 raise TypeError(message)
             result.setdefault(alias, set()).add(target)
+    return result
+
+
+def _random_entries(
+    binding: dict[str, JsonValue], pool_tags: dict[str, list[str]]
+) -> dict[str, set[str]]:
+    aliases, pools = binding.get("aliases"), binding.get("pools")
+    if not isinstance(aliases, list) or not isinstance(pools, list) or len(aliases) != len(pools):
+        message = "random_entries requires matching alias and holder-set lists"
+        raise ValueError(message)
+    result: dict[str, set[str]] = {}
+    sizes: set[int] = set()
+    for alias, pool in zip(aliases, pools, strict=True):
+        if not isinstance(alias, str) or not isinstance(pool, str) or not pool.startswith("#"):
+            message = "unsupported random_entries alias or holder-set form"
+            raise ValueError(message)
+        values = pool_tags.get(pool[1:])
+        if not values:
+            message = f"missing or empty random_entries pool tag: {pool}"
+            raise ValueError(message)
+        sizes.add(len(values))
+        result[alias] = set(values)
+    if len(sizes) != 1:
+        message = "random_entries holder sets cannot share an index across unequal lengths"
+        raise ValueError(message)
     return result
 
 

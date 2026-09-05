@@ -14,6 +14,34 @@ def link(identifier: str, edges: list[JsonValue]) -> dict[str, JsonValue]:
     return {"id": identifier, "edges": edges, "unresolved_elements": []}
 
 
+def test_random_entries_trace_uses_merged_tags_without_flattening_raw_bindings() -> None:
+    bindings: JsonValue = [{
+        "type": "lithostitched:internal/random_entries",
+        "aliases": ["example:ranged", "example:slow"],
+        "pools": ["#example:ranged", "#example:slow"],
+    }]
+    tags = {"example:ranged": ["example:skeleton", "example:stray"],
+            "example:slow": ["example:slow_skeleton", "example:slow_stray"]}
+    assert alias_targets(bindings, tags) == {
+        "example:ranged": {"example:skeleton", "example:stray"},
+        "example:slow": {"example:slow_skeleton", "example:slow_stray"},
+    }
+    result = trace_pool("example:ranged", [], [], bindings, tags)
+    assert result["missing"] == [
+        {"kind": "pool", "id": "example:skeleton"},
+        {"kind": "pool", "id": "example:stray"},
+    ]
+    assert bindings == [{
+        "type": "lithostitched:internal/random_entries",
+        "aliases": ["example:ranged", "example:slow"],
+        "pools": ["#example:ranged", "#example:slow"],
+    }]
+    with pytest.raises(ValueError, match="missing or empty"):
+        _ = alias_targets(bindings, {})
+    with pytest.raises(ValueError, match="unequal lengths"):
+        _ = alias_targets(bindings, {**tags, "example:slow": ["example:slow_skeleton"]})
+
+
 def test_cycles_versions_missing_and_non_template_content_are_preserved() -> None:
     pools: list[JsonValue] = [
         link(
