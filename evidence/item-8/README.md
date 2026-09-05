@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `239f150`, SHA-256
-`62da55305669bfd9bb3ad9092d80359b685644d5e07fa627c51e0f0189724f62`.
+Current working inventory regenerated at `de6b0dc`, SHA-256
+`c3afd629a6db2f0dc4e091fc08d82d241573dc951ef7757e1d75e4fbc52a7d03`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,17 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The de6b0dc increment records both conditional Nether spike decorations and
+keeps exact runtime material UNKNOWN. Further material tracing is deferred:
+the captured branches rejoin before identical spawner/chest placement and do
+not change recorded geometry. This scope disposition does not waive required
+family attributes or world evidence. All 31 affected tests passed. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-spike-scope-de6b0dc.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-spike-scope-de6b0dc.json
+```
 
 The 239f150 increment binds the shared direction array for Nether spikes and
 Fallen Logs. Spikes request a 3-by-3 footprint; logs with optional decoration
