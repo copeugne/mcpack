@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-05
 
+CTOV content/start-placement attributes are delivered in `f937ea9`.
+The 23 current CTOV groups now record authored entity IDs, hostile versus
+natural-override sources, resolved-template spawner absence and heightmap start
+intent. Villages have empty spawn overrides; outposts have authored ravagers
+and four separate natural-override monster types. Underground village starts
+use a -14 surface-relative offset, not the zero offset of the other designs.
+Missing components and runtime transformations remain limitations. All 64
+affected tests and scoped checks passed. Inventory SHA-256:
+`f51b1333d6e322ab60f9f7f051958ce683a482bf9c553faafa02efd24d2b7e97`.
+See the final CTOV section of `evidence/item-8/README.md` for reproduction.
+Item 8 remains incomplete; continue canonical grouping, non-registry coverage
+and remaining attributes. No new runtime, measurement framework or tuning.
+
+
 CTOV village definitions and missing-component bindings are delivered in
 `21fdbe0`. All 66 village roots across 22 working design groups are now bound
 to exact packaged definitions and existing pool traces. Existing outpost checks

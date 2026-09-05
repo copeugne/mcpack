@@ -828,3 +828,9 @@ is regenerated separately using:
 ```sh
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ctov-attributes.json
 ```
+
+Attributes and verification delivered in `f937ea9`. Inventory rebuilt at that
+revision, SHA-256:
+`f51b1333d6e322ab60f9f7f051958ce683a482bf9c553faafa02efd24d2b7e97`.
+Only the affected CTOV attributes/grouping decisions and decision input hash
+change. Membership, geometry, loot and world-observation links are preserved.
