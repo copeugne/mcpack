@@ -73,3 +73,8 @@ This supersedes pending family integration above. Item 8 remains incomplete.
 
 All 72 affected tests passed. Scoped Ruff and Basedpyright passed after correcting
 one long test line and annotating a regex result; those fixes changed no behavior.
+
+Dispositions and tests are delivered in `feb9da7`. Inventory rebuilt at that
+commit, SHA-256:
+`98ac8b670b5383ae61c62c4cde95c31959d822dcc13701de5ca1df59edbfc144`.
+Only the affected dispositions, source identities and decision input hash change.

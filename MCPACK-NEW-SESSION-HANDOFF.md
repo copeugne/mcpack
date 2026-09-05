@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-05
 
+Integrated Villages/IDAS suppression sources are delivered in `9d88842`, with
+family integration in `feb9da7`. Integrated Villages suppresses seven exact keys:
+the five vanilla villages and both Terralith fortified villages. It does not
+suppress the jigsaw type generally. IDAS adds a desert-pyramid suppression hook;
+its three Ice and Fire targets are absent from the runtime structure registry.
+All 72 affected tests and scoped checks pass. Inventory SHA:
+`98ac8b670b5383ae61c62c4cde95c31959d822dcc13701de5ca1df59edbfc144`.
+Decision SHA: `0eeb35394a6ac67eb052b79c5045d79c9e11b55c8eb827910a9f857460de7dd5`.
+Commands, exact scope and source identities are in
+`evidence/item-8/sources/integrated-suppression.md`. The pending hook checks below
+are superseded. Preserve tavern/Better Village potential component relationships
+without treating suppressed vanilla villages as normal generated encounters.
+No configuration, runtime or measurement framework changed. Continue remaining
+provider/family coverage and required attributes, avoiding inactive-generator
+detail. Item 8 remains incomplete, including final review and verified main merge.
+
 Six additional vanilla normal-generation dispositions are resolved in `f1f4649`,
 using suppression sources delivered in `40922f3`: desert pyramid, jungle pyramid,
 fortress, ocean monument, stronghold and swamp hut. Five frozen settings enable
