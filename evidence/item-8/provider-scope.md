@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 28 of 136. The exact queue below has 108 open rows.
+Supported provider dispositions: 29 of 136. The exact queue below has 107 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -519,8 +519,9 @@ sample or graph implementation. Explicit provider dispositions now cover 26 of
 
 This is the working queue, not an acceptance result. Initially, the 26 dispositions
 above and 110 queued archive names partitioned the 136-line retained manifest.
-WDA and Better Village are now resolved below: 28 dispositions and 108 open
-providers. Their rows remain as explicit closure links. Platform Minecraft and NeoForge are shared consumers, not
+WDA, Better Village and YUNG Bridges are resolved below: 29 dispositions and
+107 open providers. Their rows remain as closure links. Minecraft and NeoForge are
+shared consumers, not
 extra retained mods. Existing capture directories below are relative to
 `sources/`; their presence means evidence to reuse, not provider closure. An
 empty directory index does not mean no evidence exists in other items.
@@ -566,7 +567,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar` | `monument-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar` | `stronghold-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar` | `witch-hut-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
-| `YungsBridges-1.21.1-NeoForge-5.1.1.jar` | `yungs-bridge-generation`, `yungs-bridge-processors`, `yungs-bridges-module-default`, `yungs-bridges-module-loader` | Reuse generator, processor and module-default captures; close full resource/entry coverage. |
+| `YungsBridges-1.21.1-NeoForge-5.1.1.jar` | `yungs-bridge-generation`, `yungs-bridge-processors`, `yungs-bridges-module-default`, `yungs-bridges-module-loader` | RESOLVED: see YUNG Bridges provider disposition below. |
 | `YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `YungsExtras-1.21.1-NeoForge-5.1.1.jar` | `yungs-extras-desert-code`, `yungs-extras-generators`, `yungs-extras-initialization`, `yungs-extras-module-default`, `yungs-extras-processor-bindings`, `yungs-extras-registration` | Reuse feature registrations, generators and module activation; close full resource/entry coverage. |
 | `Zeta-1.1-40.jar` | `quark-enablement-callers`, `zeta-biome-modifier`, `zeta-component-biomes`, `zeta-compound-biome`, `zeta-config-binding`, `zeta-config-event-fields`, `zeta-deferred-feature`, `zeta-enablement-inputs`, `zeta-generation-applicability`, `zeta-generation-spawn`, `zeta-generator-dispatch`, `zeta-horizontal-directions`, `zeta-module-assignment`, `zeta-module-name`, `zeta-module-section`, `zeta-stone-ore` | Reuse Quark module/feature dispatch captures; reconcile remaining public generation and nested entry consumers. |
@@ -726,3 +727,39 @@ uv run pytest -q tests/item8/test_bettervillage_provider_scope.py tests/item8/te
 Two cases pass, 72 unrelated cases deselected. Scoped Ruff and Basedpyright pass
 after shortening two overlong access-transformer assertions. No additional runtime
 or measurement framework. Provider dispositions: 28 of 136; 108 remain open.
+
+## YUNG Bridges provider disposition
+
+The provider contributes the already recorded nonregistry bridge path. It has
+23 configured features: one selector and 22 configurations referencing eleven
+templates. These are configuration/layout alternatives, not 23 or eleven accepted
+canonical families. Existing grouping remains provisional until the whole-stack
+candidate boundary is closed. The registered structure list has no yungsbridges
+roots. Existing tests bind actual configured/placed registries, biome modifier,
+selector, dimension overlap, template links, generation and processors.
+
+All 31 classes are accounted for by the five source directories named in
+test_yungs_bridges_provider_scope.py. The seven remaining registration, service,
+configuration and mixin classes were delivered in a20bccf, reproduced using
+dfca574. They introduce no further candidate content. YUNG API module annotation
+scanning remains part of that shared provider's scope.
+
+The full payload contains fourteen templates, 23 configured features, one placed
+feature, five tags, the Forge/NeoForge biome-modifier declarations, known metadata
+and the two service registrations. No unexplained additional payload remains.
+The existing nonregistry regression binds the NeoForge declaration to the active
+selector. Three templates remain explicitly unreferenced: yungsbridges:bridge/wood/
+13_0, 13_0_broken and 15_0. They are disconnected layouts, not extra active families.
+
+SuppressLogMixin optionally cancels Util.logAndPauseIfInIde for messages beginning
+"Detected setBlock in a far chunk" and containing "yungsbridges:bridge_list". It
+adds no generation route. Preserve this logging limitation: absence of that
+warning cannot establish absence of far-chunk placement. No baseline change.
+
+```sh
+uv run pytest -q tests/item8/test_yungs_bridges_provider_scope.py tests/item8/test_feature_modifier_references.py -k 'yungs_bridge'
+```
+
+Seven cases pass, 22 unrelated cases deselected. Scoped Ruff/Basedpyright pass.
+No new runtime, graph or measurement framework. Provider dispositions: 29 of 136;
+107 remain open. Family grouping and the full Item 8 gate are still incomplete.
