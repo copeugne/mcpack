@@ -72,6 +72,7 @@ ARCHIVES = frozenset(
         "YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar",
         "YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar",
         "integrated_villages-1.3.3+1.21.1-neoforge.jar",
+        "integrated_stronghold-1.1.4+1.21.1-neoforge.jar",
         "idas-1.13.7+1.21.1-neoforge.jar",
         "BetterEnd-21.0.31.jar",
         "BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar",
@@ -82,6 +83,7 @@ ARCHIVES = frozenset(
     }
 )
 GENERATION_PREFIXES = (
+    "com/craisinlord/integrated_stronghold/",
     "com/jtorleonstudios/bettervillage/",
     "com/finndog/moogs_structures/world/structures/GenericJigsawStructure",
     "com/finndog/moogs_structures/world/structures/GenericNetherJigsawStructure",
@@ -541,6 +543,7 @@ CLASSES: tuple[str, ...] = (
     "com/finndog/moogs_structures/utils/AsyncLocator.class",
     "com/finndog/moogs_structures/utils/neoforge/PlatformHooksImpl.class",
     "com/finndog/moogs_structures/datagen/StructureNbtUpdaterDatagen.class",
+    "architectury_inject_IntegratedStronghold_common_dac55d1c3d7c43d0b24fcf81e4608720_3415319371a0be83cfe6c4f3244ac2ed779cd7573f518ebf3d404884c005522cintegrated_stronghold1141211commondevjar/PlatformMethods.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -654,6 +657,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = source.name.startswith("mcw-")
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
+                    "com/craisinlord/integrated_stronghold/IntegratedStronghold.class",
+                    "com/craisinlord/integrated_stronghold/neoforge/IntegratedStrongholdNeoforge.class",
                     "com/finndog/moogs_structures/MoogsStructuresCommon.class",
                     "com/finndog/moogs_structures/neoforge/MoogsStructuresNeoforge.class",
                     "org/betterx/betterend/registry/EndFeatures.class",
