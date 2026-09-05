@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-05
 
+Check BlossomTreesModule and CherryGroveWaterPetalsModule with their direct
+generators through the existing extractor. Provider coverage requires a
+source-backed vegetation or family disposition for these paths; names alone
+are insufficient. Do not expand into unrelated tree materials or crafting.
+
 Corundum and Permafrost have working terrain-contribution dispositions in
 4e2b6fe, with fill dispatch captured in 632fe6c. Their inspected styles decorate
 existing surfaces and replace terrain materials, without additional authored
