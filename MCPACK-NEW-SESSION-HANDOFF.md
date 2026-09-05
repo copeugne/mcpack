@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+The eleven YUNG feature families now have member-bound template lists and XYZ
+envelopes, delivered in `62b6af5`. Bridge/swamp support extensions and buried
+well placement remain explicit limitations. Twenty-two focused tests and scoped
+checks passed. Inventory SHA-256:
+`b45003452d05e67634dce0128ffda651384b12957c5eb40ea8dcf2d6519d47e6`.
+Registry groups and family membership are unchanged. Continue dimension/biome
+and content attribution for these families, and full retained-provider coverage.
+Item 8 remains incomplete; no new measurement system was added.
+
 Feature-family reconciliation in `0a17e78` assigns Extras 62 configured variants
 to ten working families and Bridges 22 variants to one. Single/double swamp arches
 are one family; bridge material/damage/length/axis remain variants. Twenty-one

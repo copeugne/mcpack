@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `0a17e78`, SHA-256
-`a582e44e1a23ee2f7701616bc1264346112745aa805bcf131232d74df0a1a585`.
+Current working inventory regenerated at `62b6af5`, SHA-256
+`b45003452d05e67634dce0128ffda651384b12957c5eb40ea8dcf2d6519d47e6`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1854,3 +1854,12 @@ height is entirely above ground. Bridge orientation can exchange X/Z.
 The existing focused command passed 22 tests, including a join from every family
 member through the preserved template links to its recorded envelope. Scoped
 Ruff/Basedpyright passed. No new capture or measurement system was needed.
+
+Regeneration at `62b6af5` changed only input identity and the eleven feature
+families template lists, envelopes and geometry limitations. Other inventory
+records remain unchanged. Reproduce in a fresh directory:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-family-geometry.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-yung-family-geometry.json
+```
