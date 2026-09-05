@@ -834,3 +834,45 @@ revision, SHA-256:
 `f51b1333d6e322ab60f9f7f051958ce683a482bf9c553faafa02efd24d2b7e97`.
 Only the affected CTOV attributes/grouping decisions and decision input hash
 change. Membership, geometry, loot and world-observation links are preserved.
+
+## CTOV canonical village relationship (2026-09-05)
+
+The 22 CTOV village design groups are consolidated into one `ctov:village`
+family, preserving all 66 registry IDs and each named design under
+`design_variants`. All exact variant definitions, missing references and tavern
+links are retained. CTOV outposts remain a separate hostile family.
+
+The family decision follows shared civilian settlement identity, not a count of
+start pools. All village roots use the same Lithostitched jigsaw contract, empty
+spawn overrides and civilian template content. Their definitions differ only in
+biomes, start pools, expansion size and start height. Fortified, canopy and
+underground designs retain their architecture/placement distinctions as variants,
+consistent with the vanilla and Towns & Towers village treatment. This is an
+Item 8 identity decision, not Item 9 tier assignment or a claim that the variants
+have identical layouts, exposure or gameplay experience.
+
+The existing size-relationship test still derives all 22 three-size design groups
+from packaged data, now requires them to partition one family, and checks common
+definition fields. The content test verifies the combined entity sources and
+per-root placement offsets. Tavern coverage still binds the same 66 affected
+roots across the stack; their family owners are now CTOV village, vanilla village
+and IDAS castle. No templates become independent families.
+
+The working total is now 431 groups for 887 registered roots. Other grouping and
+provider questions remain open, so this is not an accepted final count.
+Decision SHA-256:
+`4d545b2a01ea7d142a4fbd15f7917a836559a6fd48634c04526c44aefedf6483`.
+
+Verification and subsequent inventory regeneration:
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py tests/item8/test_integrated_suppression.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ctov-family.json
+```
+
+All 67 affected tests and scoped checks passed. The smaller decision file
+replaces duplicated family attributes with one family and explicit design/root
+relationships. Inventory regrouping is delivered separately because it is a
+large generated change produced by the existing builder.
