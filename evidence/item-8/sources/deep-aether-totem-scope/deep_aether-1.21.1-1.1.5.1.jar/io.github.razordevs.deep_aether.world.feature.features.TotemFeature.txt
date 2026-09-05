@@ -1,0 +1,192 @@
+Compiled from "TotemFeature.java"
+public class io.github.razordevs.deep_aether.world.feature.features.TotemFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> {
+  private static int excludedValue;
+
+  public io.github.razordevs.deep_aether.world.feature.features.TotemFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      14: astore        4
+      16: aload_3
+      17: iconst_2
+      18: iconst_4
+      19: invokeinterface #21,  3           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(II)I
+      24: istore        5
+      26: aload_3
+      27: invokestatic  #27                 // Method getRandomDirectionYExcluded:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/core/Direction;
+      30: astore        6
+      32: aload_0
+      33: aload_2
+      34: aload         4
+      36: invokevirtual #33                 // Method canPlace:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z
+      39: ifeq          55
+      42: aload_0
+      43: aload_2
+      44: aload         4
+      46: invokevirtual #37                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      49: invokevirtual #33                 // Method canPlace:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z
+      52: ifeq          66
+      55: aload_3
+      56: invokeinterface #42,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+      61: ifeq          66
+      64: iconst_0
+      65: ireturn
+      66: iconst_0
+      67: istore        7
+      69: iload         7
+      71: iload         5
+      73: if_icmpge     126
+      76: aload_0
+      77: aload_2
+      78: aload         4
+      80: invokevirtual #33                 // Method canPlace:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z
+      83: ifeq          120
+      86: aload_0
+      87: aload_2
+      88: aload         4
+      90: aload_0
+      91: aload_3
+      92: iconst_0
+      93: invokevirtual #46                 // Method getRandomTotem:(Lnet/minecraft/util/RandomSource;Z)Lnet/minecraft/world/level/block/Block;
+      96: invokevirtual #50                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      99: getstatic     #56                 // Field net/minecraft/world/level/block/HorizontalDirectionalBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     102: aload         6
+     104: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     107: checkcast     #63                 // class net/minecraft/world/level/block/state/BlockState
+     110: invokevirtual #68                 // Method setBlock:(Lnet/minecraft/world/level/LevelWriter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     113: aload         4
+     115: invokevirtual #72                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     118: astore        4
+     120: iinc          7, 1
+     123: goto          69
+     126: iconst_1
+     127: ireturn
+
+  public boolean canPlace(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokeinterface #75,  2           // InterfaceMethod net/minecraft/world/level/LevelReader.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       7: astore_3
+       8: aload_1
+       9: aload_2
+      10: invokevirtual #37                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      13: invokeinterface #75,  2           // InterfaceMethod net/minecraft/world/level/LevelReader.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      18: astore        4
+      20: aload_1
+      21: aload_2
+      22: invokeinterface #81,  2           // InterfaceMethod net/minecraft/world/level/LevelReader.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      27: ifne          56
+      30: aload_3
+      31: getstatic     #85                 // Field net/minecraft/tags/BlockTags.LEAVES:Lnet/minecraft/tags/TagKey;
+      34: invokevirtual #91                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      37: ifne          56
+      40: aload_3
+      41: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+      44: ifne          56
+      47: aload_3
+      48: aload_1
+      49: aload_2
+      50: invokevirtual #98                 // Method net/minecraft/world/level/block/state/BlockState.isCollisionShapeFullBlock:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Z
+      53: ifne          82
+      56: aload         4
+      58: getstatic     #102                // Field com/aetherteam/aether/block/AetherBlocks.AETHER_GRASS_BLOCK:Lnet/neoforged/neoforge/registries/DeferredBlock;
+      61: invokevirtual #108                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/core/Holder;)Z
+      64: ifne          78
+      67: aload         4
+      69: getstatic     #111                // Field io/github/razordevs/deep_aether/datagen/tags/DATags$Blocks.TOTEMS:Lnet/minecraft/tags/TagKey;
+      72: invokevirtual #91                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      75: ifeq          82
+      78: iconst_1
+      79: goto          83
+      82: iconst_0
+      83: ireturn
+
+  public net.minecraft.world.level.block.Block getRandomTotem(net.minecraft.util.RandomSource, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_4
+       3: invokevirtual #116                // Method randomNonRepeatedInteger:(Lnet/minecraft/util/RandomSource;I)I
+       6: tableswitch   { // 0 to 2
+                     0: 32
+                     1: 44
+                     2: 56
+               default: 68
+          }
+      32: getstatic     #120                // Field io/github/razordevs/deep_aether/init/DABlocks.MOA_TOTEM:Lnet/neoforged/neoforge/registries/DeferredBlock;
+      35: invokevirtual #125                // Method net/neoforged/neoforge/registries/DeferredBlock.get:()Ljava/lang/Object;
+      38: checkcast     #51                 // class net/minecraft/world/level/block/Block
+      41: goto          93
+      44: getstatic     #131                // Field io/github/razordevs/deep_aether/init/DABlocks.ZEPHYR_TOTEM:Lnet/neoforged/neoforge/registries/DeferredBlock;
+      47: invokevirtual #125                // Method net/neoforged/neoforge/registries/DeferredBlock.get:()Ljava/lang/Object;
+      50: checkcast     #51                 // class net/minecraft/world/level/block/Block
+      53: goto          93
+      56: getstatic     #134                // Field io/github/razordevs/deep_aether/init/DABlocks.AERWHALE_TOTEM:Lnet/neoforged/neoforge/registries/DeferredBlock;
+      59: invokevirtual #125                // Method net/neoforged/neoforge/registries/DeferredBlock.get:()Ljava/lang/Object;
+      62: checkcast     #51                 // class net/minecraft/world/level/block/Block
+      65: goto          93
+      68: iload_2
+      69: ifeq          84
+      72: getstatic     #137                // Field com/aetherteam/aether/block/AetherBlocks.SKYROOT_LOG:Lnet/neoforged/neoforge/registries/DeferredBlock;
+      75: invokevirtual #125                // Method net/neoforged/neoforge/registries/DeferredBlock.get:()Ljava/lang/Object;
+      78: checkcast     #51                 // class net/minecraft/world/level/block/Block
+      81: goto          93
+      84: getstatic     #131                // Field io/github/razordevs/deep_aether/init/DABlocks.ZEPHYR_TOTEM:Lnet/neoforged/neoforge/registries/DeferredBlock;
+      87: invokevirtual #125                // Method net/neoforged/neoforge/registries/DeferredBlock.get:()Ljava/lang/Object;
+      90: checkcast     #51                 // class net/minecraft/world/level/block/Block
+      93: areturn
+
+  public static net.minecraft.core.Direction getRandomDirectionYExcluded(net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: iconst_4
+       2: invokeinterface #140,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+       7: tableswitch   { // 0 to 2
+                     0: 32
+                     1: 38
+                     2: 44
+               default: 50
+          }
+      32: getstatic     #143                // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+      35: goto          53
+      38: getstatic     #149                // Field net/minecraft/core/Direction.SOUTH:Lnet/minecraft/core/Direction;
+      41: goto          53
+      44: getstatic     #152                // Field net/minecraft/core/Direction.EAST:Lnet/minecraft/core/Direction;
+      47: goto          53
+      50: getstatic     #155                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+      53: areturn
+
+  private int randomNonRepeatedInteger(net.minecraft.util.RandomSource, int);
+    Code:
+       0: aload_1
+       1: iload_2
+       2: invokeinterface #140,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+       7: istore_3
+       8: iload_3
+       9: getstatic     #158                // Field excludedValue:I
+      12: if_icmpeq     0
+      15: iload_3
+      16: putstatic     #158                // Field excludedValue:I
+      19: iload_3
+      20: ireturn
+
+  static {};
+    Code:
+       0: iconst_0
+       1: putstatic     #158                // Field excludedValue:I
+       4: return
+}
