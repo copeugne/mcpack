@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `de6b0dc`, SHA-256
-`c3afd629a6db2f0dc4e091fc08d82d241573dc951ef7757e1d75e4fbc52a7d03`.
+Current working inventory regenerated at `4e2b6fe`, SHA-256
+`198153f8c41d2d5acacf236e1bd044bb5bdffbcd7ab84d6fc17634b410e2c2e0`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,17 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 4e2b6fe increment accounts for Corundum and Permafrost as working terrain
+contributions without additional structure families. Source dispatch decorates
+existing surfaces and replaces terrain materials. Limits on broader coverage,
+effective configuration and world observation remain explicit. All 31 affected
+tests passed. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-underground-4e2b6fe.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-underground-4e2b6fe.json
+```
 
 The de6b0dc increment records both conditional Nether spike decorations and
 keeps exact runtime material UNKNOWN. Further material tracing is deferred:

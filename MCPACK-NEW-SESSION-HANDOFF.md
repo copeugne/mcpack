@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+Corundum and Permafrost have working terrain-contribution dispositions in
+4e2b6fe, with fill dispatch captured in 632fe6c. Their inspected styles decorate
+existing surfaces and replace terrain materials, without additional authored
+structure families. Do not repeat the fill chain to establish this same boundary.
+Broader coverage, effective tags/configuration and world occurrence remain
+limited as recorded. Continue other provider paths. All 31 affected tests passed.
+
 Inspect CorundumModule, PermafrostModule and their two underground styles using
 the existing extractor. These sources are needed to distinguish additional
 families from terrain contributions in Quark coverage. No new framework or
