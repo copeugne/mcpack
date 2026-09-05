@@ -6,6 +6,28 @@
 
 ### Continuation update - 2026-09-05
 
+Twenty-five non-tree, non-river Soaring designs are assigned by `1d47dc4` and
+joined in `7efb67c`. Inventory SHA-256:
+`8987fb9ff136039ca913d5f2732ede93d81b05abec850d12691cc3ce3b0ffed6`.
+Current totals: 161 working groups, 240 assigned entries and 647 unassigned.
+The test covers all singleton mss roots except the two rivers, preserves their
+definition settings and verifies disjoint reachable template sets. These are
+working design assignments; broader house/tower/landscape relationships remain
+provisional. Twenty-three focused tests and scoped quality checks passed. The
+inventory reproduced byte for byte and all earlier groups remained equal.
+
+`d764903` extends the existing disassembler to the shared Moog generator and
+enum. `2688751` preserves its full archive-scoped ten-class output and identities
+under `evidence/item-8/sources/moog-generator-code`. Extraction reproduced its
+pilot. The generator codec defaults omitted `cannot_spawn_in_liquid` to false,
+resolving Cherry River's omission against Birch River's explicit false. Their
+biome references and authored layouts still differ; river grouping and a direct
+source-bound decision remain next work. Use the generator for other Moog custom
+placement attribution as needed, without treating an option default as proof of
+full runtime behavior. Continue remaining providers, non-registry generation and
+required attributes. Item 8 still needs its final report/gate, clean review and
+verified main merge. No runtime or tuning was performed.
+
 Soaring Structures tree grouping is delivered through `91b4135`, built from
 `3006f48`. Inventory SHA-256:
 `69367cacd7678a253866695295b57e6a2c5184616952203d83b2fa4e4e855a3e`.
