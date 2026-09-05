@@ -20,3 +20,9 @@ not one family per block or iteration. The method does not construct a separate
 house or dungeon. Its feature registration binding and placed-feature/biome
 use still need reconciliation before final inventory acceptance. Do not inspect
 unrelated block economics to establish this family boundary.
+
+The dc45426 decision resolves packaged eligibility: the only biome consumer is
+sacred_lands, which is registered but outside all captured dimension memberships.
+The focused test in tests/item8/test_totem_scope.py passes, as do scoped static
+checks. Preserve this inactive candidate without adding an active family. Reopen
+only if another active generation route is demonstrated; do not repeat helpers.

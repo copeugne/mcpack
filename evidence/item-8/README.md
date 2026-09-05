@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `c3b345f`, SHA-256
-`a0c581e5b372c7f14dc997bf2a45a598b41383916b2e185c3d9ce207ad4642bf`.
+Current working inventory regenerated at `dc45426`, SHA-256
+`d0c65f0812e1b61b08a8d648276cf8b6f23af5c8c727395bce41ba3f833bee41`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -137,6 +137,19 @@ coverage has already identified every remaining family or dependency. Closing
 that coverage question is itself an outstanding deliverable in step 4.
 
 ## Historical increments
+
+The dc45426 increment records Deep Aether totem as an inactive candidate under
+the captured dimension memberships and packaged generation graph. Its only
+packaged biome consumer, sacred_lands, is absent from captured dimensions.
+The focused catalog/dimension test and scoped static checks pass. Only the
+contribution record and decision identity change; all family rows are unchanged.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-totem-eligibility-r1.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-totem-eligibility-r1.json
+uv run pytest -q tests/item8/test_totem_scope.py
+```
+
 
 The c3b345f increment integrates the tested Chef's Delight direct template
 content into its existing provider record. Only contribution content and the
