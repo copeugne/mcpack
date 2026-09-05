@@ -740,7 +740,12 @@ def test_design_groups_cover_registry_and_bind_variant_definitions(namespace: st
                     assert definition[f"{kind}_type"] == name.removeprefix(kind + "_")
                 assert traces["untraced_structures"][identifier]["type"] == definition["type"]
                 assert identifier in traces["untraced_structures"]
-                if identifier.startswith("minecraft:ruined_portal") or identifier in {
+                if identifier == "minecraft:buried_treasure":
+                    assert (
+                        variant["missing_components"] == variant["vanilla_code_template_ids"] == []
+                    )
+                    assert variant["vanilla_code_piece_class"]
+                elif identifier.startswith("minecraft:ruined_portal") or identifier in {
                     "minecraft:end_city", "minecraft:igloo", "minecraft:nether_fossil",
                     "minecraft:shipwreck", "minecraft:shipwreck_beached",
                     "minecraft:ocean_ruin_cold", "minecraft:ocean_ruin_warm"
