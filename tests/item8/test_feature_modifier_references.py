@@ -16,6 +16,34 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
+def test_blossom_selected_tree_definitions() -> None:
+    payload = Path("evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+    assert hashlib.sha256(payload).hexdigest() == (
+        "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd")
+    catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(payload)))
+    selected, _ = select_resources(
+        cast("list[JsonValue]", catalog["resources"]), "worldgen/configured_feature",
+        enabled_packs=["vanilla", "mod_data"], lithostitched_overlay=True)
+    for color, digest in {
+        "blue": "4d83d60cd633456a91c48dbb1ff8a2e4397e6146eb6c1aa1575a283f8cf3d61b",
+        "lavender": "30e12c6c6cd331bc720aa975d1788b750a6c1e6ea0ea570c59d6100d315e6990",
+        "orange": "670bae2405dc75b95971259b604e9f748aaf650f7ea8ef7356cb126f63451e27",
+        "red": "9d5caf5ce27e311f20676db48c9ced786026b862001c7518e02ef9002058f864",
+        "yellow": "b6ab51c330c3f25ad834001b1c28c97d02c5184917e27cfd374be33a58654ae5",
+    }.items():
+        row = selected[f"quark:{color}_blossom"]
+        assert row["archive"] == "Quark-4.1-480.jar"
+        assert row["sha256"] == digest
+        document = cast("dict[str, JsonValue]", row["document"])
+        assert document["type"] == "minecraft:tree"
+        config = cast("dict[str, JsonValue]", document["config"])
+        assert config["decorators"] == []
+        assert cast("dict[str, JsonValue]", config["trunk_placer"])["type"] == (
+            "minecraft:fancy_trunk_placer")
+        assert cast("dict[str, JsonValue]", config["foliage_placer"])["type"] == (
+            "minecraft:fancy_foliage_placer")
+
+
 def test_monster_box_selected_loot_sources() -> None:
     payload = Path("evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
     assert hashlib.sha256(payload).hexdigest() == (
