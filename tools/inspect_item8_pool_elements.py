@@ -43,9 +43,11 @@ ARCHIVES = frozenset(
         "YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar",
         "YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar",
         "supplementaries-neoforge-1.21.1-3.6.8.jar",
+        "bettervillage-neoforge-1.21.1-3.3.1.jar",
     }
 )
 GENERATION_PREFIXES = (
+    "com/jtorleonstudios/bettervillage/",
     "com/finndog/moogs_structures/world/structures/GenericJigsawStructure",
     "com/finndog/moogs_structures/world/structures/GenericNetherJigsawStructure",
     "com/finndog/moogs_structures/world/structures/codecs/YRangeAllowance",
