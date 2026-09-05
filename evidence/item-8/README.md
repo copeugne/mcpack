@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `189240a`, SHA-256
-`8e571bbcf2a382dd9d0a82735de2dc3e43296e8f4aaa8c4490ddfd00a7468111`.
+Current working inventory regenerated at `69d3e14`, SHA-256
+`1b1b7b3e61f6b86c2d0e0ed7f32e01ce420d6700702872b18025bdad0015fd5f`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1946,3 +1946,11 @@ Neither captured processor directly spawns entities, configures spawners or
 assigns loot tables. This is scoped to those processors, not all runtime effects.
 Twenty-six focused tests and scoped Ruff/Basedpyright passed. Configuration binding,
 mixin activation, dimensions and the remaining provider paths are still open.
+
+Regeneration at `69d3e14` changed only input identity and Better End Island
+processor attribution. All previous family records remain unchanged.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-processors.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-processors.json
+```
