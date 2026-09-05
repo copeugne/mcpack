@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `b52dfa9`, SHA-256
-`e7c1a4fefa8ba492c93cef684994c60509cf8849a44934500d6563d7413fee80`.
+Current working inventory regenerated at `8292695`, SHA-256
+`25e78dd6bbe34e3ac2c6ee60c1bda55119ae79772c2f69c6c32fc29270a48247`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1269,3 +1269,9 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-bett
 Six focused BetterEnd tests and scoped Ruff/Basedpyright pass. The lake test binds
 both preserved source manifests, both terrain-check algorithms and piece material
 references. Existing registration tests bind the five roots and their inheritance.
+
+All 74 affected tests and scoped checks passed. Inventory regenerated at
+`8292695`, SHA-256:
+`25e78dd6bbe34e3ac2c6ee60c1bda55119ae79772c2f69c6c32fc29270a48247`.
+Only lake placement/cues and their grouping decision changed. Other family rows,
+size envelopes and world observation links are unchanged.
