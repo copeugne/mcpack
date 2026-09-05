@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `ca135b3`, SHA-256
-`58190c3567996eedc16a8857cbef5bfa20dd926da264d0042c8862efac035ad5`.
+Current working inventory regenerated at `d4482a1`, SHA-256
+`bc47e4ec2d81184f0d807335e4d261f47e85fd2749076136a12ba327f764730f`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -70,6 +70,16 @@ coverage has already identified every remaining family or dependency. Closing
 that coverage question is itself an outstanding deliverable in step 4.
 
 ## Historical increments
+
+The d4482a1 increment integrates Bronze Sentry trap suppliers, the shared
+processor callback and conditional surface-clue attribution. Only the Bronze
+row and decision identity change. Focused component tests and builder static
+checks passed. Reproduction is exact:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-bronze-d4482a1.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-bronze-d4482a1.json
+```
 
 The ca135b3 increment integrates Bronze dungeon template entities, marker
 chest/mimic selection, source loot keys and scoped spawner/natural-spawn
