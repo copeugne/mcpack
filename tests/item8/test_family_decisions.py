@@ -31,6 +31,7 @@ if TYPE_CHECKING:
         "betterstrongholds:",
         "betterwitchhuts:",
         "mes:",
+        "mss:",
     ],
 )
 def test_authored_designs_bind_roots_settings_and_missing_components(
@@ -53,10 +54,11 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
     members = [member for row in groups for member in cast("list[str]", row["structure_ids"])]
     assert len(members) == len(set(members))
     expected = {key for key in registry if key.startswith(namespace)}
-    # Multi-entry Explorify and Mega Ship groups have separate coverage tests.
+    # Variant groups have separate coverage tests; Soaring rivers remain unresolved.
     excluded_prefixes = {
         "explorify:": ("explorify:supply_cache/", "explorify:watchtower/", "explorify:guide_post_"),
         "mes:": ("mes:mega_ship",),
+        "mss:": ("mss:tree_", "mss:birch_river", "mss:cherry_river"),
     }.get(namespace, ())
     expected = {key for key in expected if not key.startswith(excluded_prefixes)}
     assert members
@@ -86,7 +88,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         ),
     )
     structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
-    if namespace in ("dungeons_arise:", "mes:"):
+    if namespace in ("dungeons_arise:", "mes:", "mss:"):
         seen: set[str] = set()
         for identifier in sorted(expected):
             templates = set(cast("list[str]", structures[identifier]["templates"]))
