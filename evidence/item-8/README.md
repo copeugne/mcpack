@@ -1210,3 +1210,26 @@ at `1ee796e`, SHA-256:
 `24e6dfa796602032aedb3e97642453fa92b9ceeace619f70df51797a4b3383aa`.
 Only the mountain direct-content attributes and their grouping decision changed.
 All other family rows, observation links and geometry envelopes are unchanged.
+
+## BetterEnd mountain base placement precheck
+
+The earlier placement finding is now integrated into the existing mountain
+classification field. FeatureBaseStructure.findGenerationPoint requires its
+getGenerationHeight result to have Y >= 10 before creating the generation stub.
+That helper uses WORLD_SURFACE_WG/getFirstOccupiedHeight. The later root
+getBaseHeight samples and their Y > 5 or Y > 50 conditions remain separate.
+The two sampling stages must not be collapsed into one threshold at one position.
+This closes the demonstrated omission without changing generation or adding tools.
+
+Decision SHA-256:
+`2e7648906f19e6052298cc4a999aa591a6694756315cc6a63da0dc3ea9d6a10b`.
+The existing placement test binds the parent class, threshold, branch ordering
+and height query. All five focused BetterEnd cases and scoped checks pass.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py -k betterend
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-mountain-precheck.json
+```

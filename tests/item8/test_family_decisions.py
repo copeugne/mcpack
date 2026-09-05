@@ -628,6 +628,17 @@ def test_betterend_mountain_placement_and_visual_cues_bind_piece_sources() -> No
     attributes = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
     placement = attributes["underground_surface_classification"]
     assert placement["start_heightmap"] == "WORLD_SURFACE_WG"
+    precheck = cast("dict[str, JsonValue]", placement["base_generation_point_check"])
+    parent_source = sources[str(precheck["class"])]
+    assert precheck["method"] == "findGenerationPoint"
+    assert precheck["minimum_inclusive_sampled_y"] == 10
+    entry = parent_source.split(" findGenerationPoint(")[1].split(
+        " findVoidGenerationPoint("
+    )[0]
+    assert re.search(r"bipush\s+10\n\s+\d+: if_icmplt", entry)
+    assert entry.index("Method getGenerationHeight:") < entry.index("if_icmplt")
+    assert entry.index("if_icmplt") < entry.index("Structure$GenerationStub")
+    assert "ChunkGenerator.getFirstOccupiedHeight:" in parent_source
     thresholds = cast("dict[str, int]", placement["minimum_exclusive_start_y_by_structure"])
     assert set(thresholds) == set(variants)
     for rid, threshold in thresholds.items():

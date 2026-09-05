@@ -24503,7 +24503,14 @@
             "betterend:painted_mountain": 50
           },
           "basis": "Both root generators sample the base surface height and construct their piece at that Y only above the recorded threshold. PaintedMountainPiece builds columns upward from local surface support; CrystalMountainPiece places a mountain body and crystal formations.",
-          "scope": "Authored placement intent. Local terrain, noise and support checks affect the result; this is not proof that every generated block is exposed. The MountainPiece bounding box uses radius on Y as well as X/Z, so its saved envelope is not occupied mountain height."
+          "scope": "Authored placement intent. Local terrain, noise and support checks affect the result; this is not proof that every generated block is exposed. The MountainPiece bounding box uses radius on Y as well as X/Z, so its saved envelope is not occupied mountain height.",
+          "base_generation_point_check": {
+            "class": "org.betterx.betterend.world.structures.features.FeatureBaseStructure",
+            "method": "findGenerationPoint",
+            "minimum_inclusive_sampled_y": 10,
+            "sampling": "getGenerationHeight samples WORLD_SURFACE_WG using getFirstOccupiedHeight; this is a separate position selection from the root generatePieces getBaseHeight sample.",
+            "ordering": "The base check runs before generatePieces. Both this check and the later per-root threshold must pass; they must not be collapsed into one threshold at one position."
+          }
         },
         "visual_discoverability": {
           "authored_cues_by_structure": {
