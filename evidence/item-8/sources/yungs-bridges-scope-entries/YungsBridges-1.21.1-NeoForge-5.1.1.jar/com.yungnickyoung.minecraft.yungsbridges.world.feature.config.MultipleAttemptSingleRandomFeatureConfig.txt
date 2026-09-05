@@ -1,0 +1,65 @@
+Compiled from "MultipleAttemptSingleRandomFeatureConfig.java"
+public class com.yungnickyoung.minecraft.yungsbridges.world.feature.config.MultipleAttemptSingleRandomFeatureConfig implements net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration {
+  public static final com.mojang.serialization.Codec<com.yungnickyoung.minecraft.yungsbridges.world.feature.config.MultipleAttemptSingleRandomFeatureConfig> CODEC;
+
+  public final net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.placement.PlacedFeature> features;
+
+  public com.yungnickyoung.minecraft.yungsbridges.world.feature.config.MultipleAttemptSingleRandomFeatureConfig(net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.placement.PlacedFeature>);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field features:Lnet/minecraft/core/HolderSet;
+       9: return
+
+  public net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.placement.PlacedFeature> getPlacedFeatures();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field features:Lnet/minecraft/core/HolderSet;
+       4: areturn
+
+  public java.util.stream.Stream<net.minecraft.world.level.levelgen.feature.ConfiguredFeature<?, ?>> getFeatures();
+    Code:
+       0: aload_0
+       1: invokevirtual #13                 // Method getPlacedFeatures:()Lnet/minecraft/core/HolderSet;
+       4: invokeinterface #17,  1           // InterfaceMethod net/minecraft/core/HolderSet.stream:()Ljava/util/stream/Stream;
+       9: invokedynamic #23,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      14: invokeinterface #27,  2           // InterfaceMethod java/util/stream/Stream.flatMap:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      19: areturn
+
+  private static java.util.stream.Stream lambda$getFeatures$2(net.minecraft.core.Holder);
+    Code:
+       0: aload_0
+       1: invokeinterface #33,  1           // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+       6: checkcast     #39                 // class net/minecraft/world/level/levelgen/placement/PlacedFeature
+       9: invokevirtual #41                 // Method net/minecraft/world/level/levelgen/placement/PlacedFeature.getFeatures:()Ljava/util/stream/Stream;
+      12: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$1(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #44                 // Field net/minecraft/world/level/levelgen/placement/PlacedFeature.LIST_CODEC:Lcom/mojang/serialization/Codec;
+       4: ldc           #48                 // String features
+       6: invokeinterface #49,  2           // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #55,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      16: invokevirtual #56                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: invokevirtual #62                 // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P1;
+      22: aload_0
+      23: invokedynamic #68,  0             // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      28: invokevirtual #69                 // Method com/mojang/datafixers/Products$P1.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/Function;)Lcom/mojang/datafixers/kinds/App;
+      31: areturn
+
+  private static net.minecraft.core.HolderSet lambda$static$0(com.yungnickyoung.minecraft.yungsbridges.world.feature.config.MultipleAttemptSingleRandomFeatureConfig);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field features:Lnet/minecraft/core/HolderSet;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #74,  0             // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+       5: invokestatic  #75                 // Method com/mojang/serialization/codecs/RecordCodecBuilder.create:(Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;
+       8: putstatic     #81                 // Field CODEC:Lcom/mojang/serialization/Codec;
+      11: return
+}
