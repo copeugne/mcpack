@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+Village Taverns parent attribution is delivered in `1e7dd7c`. The existing
+family records now link 25 reachable tavern templates to 66 registry roots in
+22 working groups, including IDAS castle. Twenty-six conditioned modifiers are
+included in the preserved trace; the CTOV dark-forest tavern has no traced parent
+despite its registered target pool. Do not treat that case as a missing pool or
+count components as new families. All 63 affected tests and scoped checks pass.
+Inventory SHA: `e0fddbb286ce87c8a23285d7af33eac42563db754f8ad833d1826080d4c50327`.
+Decision SHA: `f74b70a63144b337d3483dba03e50a3193bcf82b06eeeb1112d3f6898e7c3236`.
+Commands and scope are in the final Village Taverns section of
+`evidence/item-8/README.md`. This reuses existing catalog/trace evidence and the
+builder; no new measurement system or general relationship framework was added.
+Continue remaining provider coverage and family attributes. CTOV's final family
+relationships, other non-registry content and effective generation remain open.
+Item 8 is incomplete, with final review and main merge still pending.
+
 Vanilla mineshaft normal-generation suppression is explicit for both registered
 roots in `9e8f032`. Existing configuration, binding code and required mixin
 metadata support the disposition; no vanilla piece extraction or new server
