@@ -438,3 +438,37 @@ and shared component attribution account for most of its size. Canonical
 relationships and effective gameplay attributes remain open. In particular,
 cathedral loot references `minecraft:mvs/cathedral_common` and two empty explicit
 spawner IDs in the large warped tower remain visible for disposition.
+
+Repurposed witch huts (`c5f5dd6`, joined in `fa401f2`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-witch-c5f5dd6.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-witch-c5f5dd6-repro.json
+cmp evidence/raw/item8/inventory-witch-c5f5dd6.json evidence/raw/item8/inventory-witch-c5f5dd6-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 42 focused tests and scoped Ruff/basedpyright checks passed. The reused
+variant test checks six matching definitions, template dimensions, authored
+witch/cat entities and absent loot/spawner/marker records. Packaged dimensions
+and hostile intent are recorded with limitations. There are no retained world
+observations for this family; generated population and effective processing
+remain unresolved. No new measurement system was introduced.
+
+Remaining Repurposed designs (`5022316`, joined in `0555981`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-repurposed-5022316.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-repurposed-5022316-repro.json
+cmp evidence/raw/item8/inventory-repurposed-5022316.json evidence/raw/item8/inventory-repurposed-5022316-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 43 focused tests and scoped Ruff/basedpyright checks passed. The direct
+provider check verifies 107 distinct registry entries in 17 design groups,
+complete variant definitions, nonempty direct pool traces without missing
+components, and twelve explicitly untraced mansion/monument paths. The latter
+are not converted into empty-content claims. Sixteen added groups join the
+remaining 101 roots; the earlier witch-hut group and all other prior families
+remain unchanged. Effective attributes and final canonical acceptance remain
+unresolved. No additional measurement system was needed.
