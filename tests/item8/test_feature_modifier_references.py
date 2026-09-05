@@ -734,3 +734,34 @@ def test_extras_swamp_types_share_processor_and_preserve_size_limits() -> None:
         assert "StairBlock." + property_name + ":" in processor
     assert "CandleBlock.CANDLES:" in processor
     assert "CandleBlock.LIT:" in processor
+
+
+def test_yung_module_loader_defaults_do_not_register_configuration() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    for mod, key, folders in (
+        ("yungsbridges", "yungsbridges:bridges",
+         ("yungs-bridges-module-loader", "yungs-bridges-module-default")),
+        ("yungsextras", "yungsextras:feature_entrypoints",
+         ("yungs-extras-initialization", "yungs-extras-module-default")),
+    ):
+        evidence = cast("dict[str, str]", contributions[key]["evidence"])
+        sources: dict[str, str] = {}
+        for folder in folders:
+            base = Path("evidence/item-8/sources") / folder
+            manifest = base / "identities.json"
+            raw = manifest.read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == evidence[str(manifest)]
+            for row in cast("list[dict[str, str]]", json.loads(raw)):
+                raw = (base / row["disassembly"]).read_bytes()
+                assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+                sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+        assert sources["IModulesLoader"].split("    Code:\n")[1] == "       0: return\n}\n"
+        loader = sources["NeoForgeModulesLoader"].split("  public void loadModules();")[1]
+        assert "InterfaceMethod com/yungnickyoung/minecraft/" + mod + (
+            "/services/IModulesLoader.loadModules:()V"
+        ) in loader
+        assert loader.count("invoke") == 1
