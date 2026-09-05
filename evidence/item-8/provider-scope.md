@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 32 of 136. The exact queue below has 104 open rows.
+Supported provider dispositions: 33 of 136. The exact queue below has 103 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -573,7 +573,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `Zeta-1.1-40.jar` | `quark-enablement-callers`, `zeta-biome-modifier`, `zeta-component-biomes`, `zeta-compound-biome`, `zeta-config-binding`, `zeta-config-event-fields`, `zeta-deferred-feature`, `zeta-enablement-inputs`, `zeta-generation-applicability`, `zeta-generation-spawn`, `zeta-generator-dispatch`, `zeta-horizontal-directions`, `zeta-module-assignment`, `zeta-module-name`, `zeta-module-section`, `zeta-stone-ore` | Reuse Quark module/feature dispatch captures; reconcile remaining public generation and nested entry consumers. |
 | `[Neoforge]ctov-3.6.3.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Reconcile existing roots, all components and additional feature/entry routes. |
 | `accessories-neoforge-1.1.0-beta.53+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `adorabuild-structures-2.11.0-neoforge-1.21.3.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Reconcile existing roots, all components and additional feature/entry routes. |
+| `adorabuild-structures-2.11.0-neoforge-1.21.3.jar` | `adorabuild-provider`, existing runtime/root and pool graph evidence | RESOLVED: 106 existing roots; all 110 pools and 121 templates connected; one preserved missing pool reference. See AdoraBuild provider disposition below. |
 | `aether-1.21.1-1.5.10-neoforge.jar` | `aether-bronze`, `aether-custom-entry`, `aether-piece-binding`, `aether-placement`, `aether-trap-bindings`, `aether-trapped-block` | Reconcile Bronze, Silver, Gold and terrain generation entry coverage; do not reopen Bronze helper internals. |
 | `aethersdelight-0.1.4.2-1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `alternate_current-mc1.21-1.9.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -884,3 +884,42 @@ The first new scope assertion omitted the trace's external minecraft:empty pool;
 it was corrected to preserve that reference explicitly. Type/line formatting was
 also corrected. No evidence, baseline or family decision was changed to pass.
 Provider dispositions: 32 of 136; 104 remain open.
+
+## AdoraBuild provider disposition
+
+All 106 packaged roots are already present in the preserved inventory and runtime
+coverage regression. They use vanilla jigsaw (69), End jigsaw (16), Nether jigsaw
+(14) and Overworld jigsaw (7). The latter three are implementation types registered
+by this provider, not three additional families. Existing grouping remains
+provisional until whole-stack candidate coverage and canonical reconciliation.
+
+All 110 packaged pools and 121 templates occur in the preserved root graphs.
+No disconnected packaged pool or template remains. The basalt_chambers_large_1
+root retains its missing minecraft:basalt_chambers/chambers pool reference.
+This is a component failure with assembly uncertainty, not another family or
+permission to substitute an alternate namespaced resource. Connected templates
+are potential components, not proof of observed placement.
+
+Source capture 6aac21f accounts for all seven classes and reproduces with
+6fcc20c. The entry registers three custom structure codecs. Registry wrappers
+forward supplied entries; custom generators select heights and invoke vanilla
+JigsawPlacement with configured pools/aliases. No additional independent feature,
+placement event or hardcoded authored design appears in these complete paths.
+
+The full payload is exhausted by these classes, metadata, logos/translations,
+roots/sets/pools/templates, vanilla rule processor lists, tags, loot and
+advancements. There are no mixin descriptors, functions, nested JARs, services
+or separate feature resources. Frozen Cristel Lib configuration/selection and
+effective family attributes remain separately attributable to their consumers.
+
+```sh
+uv run pytest -q tests/item8/test_adorabuild_provider_scope.py tests/item8/test_family_decisions.py -k adorabuild
+```
+
+Two cases pass, 72 unrelated cases deselected; scoped Ruff/Basedpyright pass.
+Initial scope-test corrections accounted for two packaged image assets and
+stopped strict JSON parsing of the commented end structure-set resource. The
+existing preserved graph/catalog remains the resource-processing authority;
+no alternate parser or rewritten resource was introduced. Static flow/complexity
+findings were resolved within the direct test. No new runtime or measurement.
+Provider dispositions: 33 of 136; 103 remain open.
