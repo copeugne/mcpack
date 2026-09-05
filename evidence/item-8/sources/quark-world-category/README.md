@@ -24,3 +24,21 @@ enablement analysis. This does not establish a saved-world occurrence, successfu
 entity spawning or live encounter. Those remain separate evidence questions.
 
 Scoped extractor checks passed. No new runtime or measurement system was added.
+
+## Initial enable state
+
+The existing verbose ConfigManager capture also resolves callback order.
+Its constructor inserts lambda$new$12 at index zero in the databindings list.
+onReload traverses that list before reload listeners. lambda$new$12 first
+applies categoryEnabledOptions through lambda$new$8, then overlap options,
+then moduleEnabledOptions through lambda$new$10. The bootstrap table binds
+these actual targets. Thus the world category is enabled before the true
+Monster Box option reaches setEnabled. The category has no required mod and
+the module has no overlap candidates, so the captured setEnabled logic retains
+true. This closes the initial enablement gap by source/configuration/log
+derivation, not a runtime field dump. The preserved initial-refresh return log
+and exact configuration equality are recorded in quark-monster-box-bindings.
+
+No further enablement capture is needed. Saved-world attribution and relevant
+ambient spawning remain unresolved. Existing generator and mob/reward source
+interpretations must not be repeated to address those separate gaps.
