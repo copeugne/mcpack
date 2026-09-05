@@ -1,0 +1,288 @@
+Compiled from "SwampFeatureProcessor.java"
+public class com.yungnickyoung.minecraft.yungsextras.world.processor.SwampFeatureProcessor implements com.yungnickyoung.minecraft.yungsextras.world.processor.INbtFeatureProcessor {
+  private static final com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer STONE_BRICK_SELECTOR;
+
+  private static final com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer STONE_BRICK_STAIRS_SELECTOR;
+
+  private static final java.util.List<net.minecraft.world.level.block.Block> CANDLES;
+
+  public com.yungnickyoung.minecraft.yungsextras.world.processor.SwampFeatureProcessor();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public void processTemplate(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload_1
+       1: aload         4
+       3: aload         6
+       5: getstatic     #7                  // Field net/minecraft/world/level/block/Blocks.GRAY_STAINED_GLASS:Lnet/minecraft/world/level/block/Block;
+       8: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.filterBlocks:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/world/level/block/Block;)Ljava/util/List;
+      11: invokeinterface #19,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      16: astore        7
+      18: aload         7
+      20: invokeinterface #25,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      25: ifeq          152
+      28: aload         7
+      30: invokeinterface #31,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      35: checkcast     #35                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+      38: astore        8
+      40: aload_2
+      41: aload         8
+      43: invokevirtual #37                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      46: getstatic     #41                 // Field STONE_BRICK_SELECTOR:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      49: aload_3
+      50: invokevirtual #47                 // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+      53: iconst_2
+      54: invokeinterface #53,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      59: pop
+      60: aload         8
+      62: invokevirtual #37                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      65: invokevirtual #59                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      68: getstatic     #65                 // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+      71: invokevirtual #71                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      74: astore        9
+      76: aload_2
+      77: aload         9
+      79: invokeinterface #77,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      84: astore        10
+      86: aload         10
+      88: invokevirtual #81                 // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+      91: ifne          110
+      94: aload         10
+      96: invokevirtual #86                 // Method net/minecraft/world/level/block/state/BlockState.liquid:()Z
+      99: ifne          110
+     102: aload         10
+     104: invokevirtual #89                 // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+     107: ifeq          149
+     110: aload_2
+     111: aload         9
+     113: getstatic     #41                 // Field STONE_BRICK_SELECTOR:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+     116: aload_3
+     117: invokevirtual #47                 // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+     120: iconst_2
+     121: invokeinterface #53,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     126: pop
+     127: aload         9
+     129: getstatic     #65                 // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+     132: invokevirtual #71                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     135: pop
+     136: aload_2
+     137: aload         9
+     139: invokeinterface #77,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     144: astore        10
+     146: goto          86
+     149: goto          18
+     152: aload_1
+     153: aload         4
+     155: aload         6
+     157: getstatic     #92                 // Field net/minecraft/world/level/block/Blocks.LIGHT_GRAY_STAINED_GLASS:Lnet/minecraft/world/level/block/Block;
+     160: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.filterBlocks:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/world/level/block/Block;)Ljava/util/List;
+     163: invokeinterface #19,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     168: astore        7
+     170: aload         7
+     172: invokeinterface #25,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     177: ifeq          231
+     180: aload         7
+     182: invokeinterface #31,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     187: checkcast     #35                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     190: astore        8
+     192: aload_2
+     193: aload         8
+     195: invokevirtual #37                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     198: getstatic     #95                 // Field STONE_BRICK_STAIRS_SELECTOR:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+     201: aload_3
+     202: invokevirtual #47                 // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+     205: getstatic     #98                 // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.HORIZONTAL_FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     208: getstatic     #104                // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+     211: aload_3
+     212: invokevirtual #110                // Method net/minecraft/core/Direction$Plane.getRandomDirection:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/core/Direction;
+     215: invokevirtual #114                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     218: checkcast     #82                 // class net/minecraft/world/level/block/state/BlockState
+     221: iconst_2
+     222: invokeinterface #53,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     227: pop
+     228: goto          170
+     231: aload_1
+     232: aload         4
+     234: aload         6
+     236: getstatic     #118                // Field net/minecraft/world/level/block/Blocks.STONE_BRICKS:Lnet/minecraft/world/level/block/Block;
+     239: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.filterBlocks:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/world/level/block/Block;)Ljava/util/List;
+     242: invokeinterface #19,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     247: astore        7
+     249: aload         7
+     251: invokeinterface #25,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     256: ifeq          294
+     259: aload         7
+     261: invokeinterface #31,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     266: checkcast     #35                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     269: astore        8
+     271: aload_2
+     272: aload         8
+     274: invokevirtual #37                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     277: getstatic     #41                 // Field STONE_BRICK_SELECTOR:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+     280: aload_3
+     281: invokevirtual #47                 // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+     284: iconst_2
+     285: invokeinterface #53,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     290: pop
+     291: goto          249
+     294: aload_1
+     295: aload         4
+     297: aload         6
+     299: getstatic     #121                // Field net/minecraft/world/level/block/Blocks.STONE_BRICK_STAIRS:Lnet/minecraft/world/level/block/Block;
+     302: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.filterBlocks:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/world/level/block/Block;)Ljava/util/List;
+     305: invokeinterface #19,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     310: astore        7
+     312: aload         7
+     314: invokeinterface #25,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     319: ifeq          449
+     322: aload         7
+     324: invokeinterface #31,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     329: checkcast     #35                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     332: astore        8
+     334: aload_2
+     335: aload         8
+     337: invokevirtual #37                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     340: getstatic     #95                 // Field STONE_BRICK_STAIRS_SELECTOR:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+     343: aload_3
+     344: invokevirtual #47                 // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+     347: getstatic     #124                // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     350: aload         8
+     352: invokevirtual #129                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     355: getstatic     #124                // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     358: invokevirtual #133                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     361: checkcast     #66                 // class net/minecraft/core/Direction
+     364: invokevirtual #114                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     367: checkcast     #82                 // class net/minecraft/world/level/block/state/BlockState
+     370: getstatic     #137                // Field net/minecraft/world/level/block/StairBlock.HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     373: aload         8
+     375: invokevirtual #129                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     378: getstatic     #137                // Field net/minecraft/world/level/block/StairBlock.HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     381: invokevirtual #133                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     384: checkcast     #141                // class net/minecraft/world/level/block/state/properties/Half
+     387: invokevirtual #114                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     390: checkcast     #82                 // class net/minecraft/world/level/block/state/BlockState
+     393: getstatic     #143                // Field net/minecraft/world/level/block/StairBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     396: aload         8
+     398: invokevirtual #129                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     401: getstatic     #143                // Field net/minecraft/world/level/block/StairBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     404: invokevirtual #133                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     407: checkcast     #146                // class net/minecraft/world/level/block/state/properties/StairsShape
+     410: invokevirtual #114                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     413: checkcast     #82                 // class net/minecraft/world/level/block/state/BlockState
+     416: getstatic     #148                // Field net/minecraft/world/level/block/StairBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     419: aload         8
+     421: invokevirtual #129                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     424: getstatic     #148                // Field net/minecraft/world/level/block/StairBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     427: invokevirtual #133                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     430: checkcast     #152                // class java/lang/Boolean
+     433: invokevirtual #114                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     436: checkcast     #82                 // class net/minecraft/world/level/block/state/BlockState
+     439: iconst_2
+     440: invokeinterface #53,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     445: pop
+     446: goto          312
+     449: aload_1
+     450: aload         4
+     452: aload         6
+     454: getstatic     #154                // Field net/minecraft/world/level/block/Blocks.GREEN_CANDLE:Lnet/minecraft/world/level/block/Block;
+     457: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.filterBlocks:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/world/level/block/Block;)Ljava/util/List;
+     460: invokeinterface #19,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     465: astore        7
+     467: aload         7
+     469: invokeinterface #25,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     474: ifeq          570
+     477: aload         7
+     479: invokeinterface #31,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     484: checkcast     #35                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     487: astore        8
+     489: aload_3
+     490: iconst_4
+     491: invokeinterface #157,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     496: iconst_1
+     497: iadd
+     498: istore        9
+     500: aload_3
+     501: invokeinterface #163,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     506: ldc           #167                // float 0.1f
+     508: fcmpg
+     509: ifge          516
+     512: iconst_1
+     513: goto          517
+     516: iconst_0
+     517: istore        10
+     519: aload_2
+     520: aload         8
+     522: invokevirtual #37                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     525: aload_3
+     526: invokestatic  #168                // Method getRandomCandle:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/Block;
+     529: invokevirtual #172                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     532: getstatic     #177                // Field net/minecraft/world/level/block/CandleBlock.CANDLES:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+     535: iload         9
+     537: invokestatic  #183                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     540: invokevirtual #114                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     543: checkcast     #82                 // class net/minecraft/world/level/block/state/BlockState
+     546: getstatic     #189                // Field net/minecraft/world/level/block/CandleBlock.LIT:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     549: iload         10
+     551: invokestatic  #192                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     554: invokevirtual #114                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     557: checkcast     #82                 // class net/minecraft/world/level/block/state/BlockState
+     560: iconst_2
+     561: invokeinterface #53,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     566: pop
+     567: goto          467
+     570: return
+
+  private static net.minecraft.world.level.block.Block getRandomCandle(net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: getstatic     #195                // Field CANDLES:Ljava/util/List;
+       4: invokeinterface #198,  1          // InterfaceMethod java/util/List.size:()I
+       9: invokeinterface #157,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      14: istore_1
+      15: getstatic     #195                // Field CANDLES:Ljava/util/List;
+      18: iload_1
+      19: invokeinterface #202,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      24: checkcast     #173                // class net/minecraft/world/level/block/Block
+      27: areturn
+
+  static {};
+    Code:
+       0: new           #48                 // class com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer
+       3: dup
+       4: getstatic     #118                // Field net/minecraft/world/level/block/Blocks.STONE_BRICKS:Lnet/minecraft/world/level/block/Block;
+       7: invokevirtual #172                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      10: invokespecial #205                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer."<init>":(Lnet/minecraft/world/level/block/state/BlockState;)V
+      13: getstatic     #208                // Field net/minecraft/world/level/block/Blocks.MOSSY_STONE_BRICKS:Lnet/minecraft/world/level/block/Block;
+      16: invokevirtual #172                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      19: ldc           #211                // float 0.45f
+      21: invokevirtual #212                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.addBlock:(Lnet/minecraft/world/level/block/state/BlockState;F)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      24: getstatic     #216                // Field net/minecraft/world/level/block/Blocks.CRACKED_STONE_BRICKS:Lnet/minecraft/world/level/block/Block;
+      27: invokevirtual #172                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      30: ldc           #211                // float 0.45f
+      32: invokevirtual #212                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.addBlock:(Lnet/minecraft/world/level/block/state/BlockState;F)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      35: putstatic     #41                 // Field STONE_BRICK_SELECTOR:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      38: new           #48                 // class com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer
+      41: dup
+      42: getstatic     #121                // Field net/minecraft/world/level/block/Blocks.STONE_BRICK_STAIRS:Lnet/minecraft/world/level/block/Block;
+      45: invokevirtual #172                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      48: invokespecial #205                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer."<init>":(Lnet/minecraft/world/level/block/state/BlockState;)V
+      51: getstatic     #219                // Field net/minecraft/world/level/block/Blocks.MOSSY_STONE_BRICK_STAIRS:Lnet/minecraft/world/level/block/Block;
+      54: invokevirtual #172                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      57: ldc           #222                // float 0.6f
+      59: invokevirtual #212                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.addBlock:(Lnet/minecraft/world/level/block/state/BlockState;F)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      62: putstatic     #95                 // Field STONE_BRICK_STAIRS_SELECTOR:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      65: getstatic     #223                // Field net/minecraft/world/level/block/Blocks.CANDLE:Lnet/minecraft/world/level/block/Block;
+      68: getstatic     #226                // Field net/minecraft/world/level/block/Blocks.WHITE_CANDLE:Lnet/minecraft/world/level/block/Block;
+      71: getstatic     #229                // Field net/minecraft/world/level/block/Blocks.GRAY_CANDLE:Lnet/minecraft/world/level/block/Block;
+      74: getstatic     #232                // Field net/minecraft/world/level/block/Blocks.LIGHT_GRAY_CANDLE:Lnet/minecraft/world/level/block/Block;
+      77: getstatic     #235                // Field net/minecraft/world/level/block/Blocks.BROWN_CANDLE:Lnet/minecraft/world/level/block/Block;
+      80: getstatic     #154                // Field net/minecraft/world/level/block/Blocks.GREEN_CANDLE:Lnet/minecraft/world/level/block/Block;
+      83: getstatic     #238                // Field net/minecraft/world/level/block/Blocks.PURPLE_CANDLE:Lnet/minecraft/world/level/block/Block;
+      86: getstatic     #241                // Field net/minecraft/world/level/block/Blocks.BLACK_CANDLE:Lnet/minecraft/world/level/block/Block;
+      89: invokestatic  #244                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;
+      92: putstatic     #195                // Field CANDLES:Ljava/util/List;
+      95: return
+}
