@@ -105,6 +105,17 @@ def assemble(
             index for index, row in enumerate(observations) if row["structure_id"] in members
         ]
         dimensions = sorted({str(observations[index]["dimension"]) for index in world_rows})
+        observed_sizes = [
+            cast("list[int]", observations[index]["size_xyz"])
+            for index in world_rows
+            if observations[index]["chunk_full"] is True
+        ]
+        geometry_basis = (
+            "Saved-piece envelopes from linked world_observations with chunk_full=true. "
+            "Approximate layout extents in blocks, including air and piece padding. "
+            "Full start chunks do not prove all component chunks were populated. "
+            "Observed samples only, not family-wide bounds or occupied geometry."
+        )
         loot_sources: dict[tuple[str, str], list[str]] = {}
         authored_sources: dict[str, list[str]] = {}
         for template in templates:
@@ -139,8 +150,27 @@ def assemble(
             "status": "INCOMPLETE",
             "dimension": {"observed": cast("JsonValue", dimensions), "eligibility": "UNKNOWN"},
             "biome_constraints": {member: constraints[member] for member in members},
-            "approximate_footprint": "UNKNOWN: saved piece envelopes are not occupied footprint",
-            "approximate_vertical_size": "UNKNOWN: piece envelopes can exceed occupied height",
+            "approximate_footprint": (
+                {
+                    "observed_envelope_xz_blocks": cast(
+                        "JsonValue",
+                        [list(pair) for pair in sorted({(s[0], s[2]) for s in observed_sizes})],
+                    ),
+                    "basis": geometry_basis,
+                }
+                if observed_sizes
+                else "UNKNOWN: no retained full-start-chunk envelope observation"
+            ),
+            "approximate_vertical_size": (
+                {
+                    "observed_envelope_y_blocks": cast(
+                        "JsonValue", sorted({s[1] for s in observed_sizes})
+                    ),
+                    "basis": geometry_basis,
+                }
+                if observed_sizes
+                else "UNKNOWN: no retained full-start-chunk envelope observation"
+            ),
             "intended_hostility": "UNKNOWN",
             "mob_source": {
                 **content,

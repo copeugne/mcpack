@@ -879,6 +879,54 @@ def test_working_inventory_keeps_unassigned_ids_and_rejects_double_counting() ->
         _ = assemble(("example:a",), [decision], sources, traces, bounds)
 
 
+def test_inventory_geometry_keeps_paired_extents_and_excludes_partial_starts() -> None:
+    decision: dict[str, JsonValue] = {
+        "family_id": "example:family",
+        "name": "Example",
+        "structure_ids": ["example:a"],
+    }
+    sources: dict[str, JsonValue] = {"structure_biomes": {"example:a": {}}}
+    traces: dict[str, JsonValue] = {
+        "structures": {},
+        "untraced_structures": {},
+        "template_contents": {},
+    }
+    observations = cast(
+        "list[JsonValue]",
+        [
+            {
+                "structure_id": identifier,
+                "dimension": "minecraft:overworld",
+                "chunk_full": full,
+                "size_xyz": size,
+            }
+            for identifier, full, size in [
+                ("example:a", True, [11, 14, 19]),
+                ("example:a", True, [19, 14, 11]),
+                ("example:a", True, [11, 14, 19]),
+                ("example:a", False, [100, 200, 300]),
+                ("example:other", True, [400, 500, 600]),
+            ]
+        ],
+    )
+    result = assemble(("example:a",), [decision], sources, traces, {"observations": observations})
+    row = cast("dict[str, dict[str, JsonValue]]", result["families"])["example:family"]
+    footprint = cast("dict[str, JsonValue]", row["approximate_footprint"])
+    height = cast("dict[str, JsonValue]", row["approximate_vertical_size"])
+    assert footprint["observed_envelope_xz_blocks"] == [[11, 19], [19, 11]]
+    assert height["observed_envelope_y_blocks"] == [14]
+    assert "not family-wide bounds or occupied geometry" in str(footprint["basis"])
+    assert row["status"] == "INCOMPLETE"
+    result = assemble(("example:a",), [decision], sources, traces, {"observations": []})
+    row = cast("dict[str, dict[str, JsonValue]]", result["families"])["example:family"]
+    assert str(row["approximate_footprint"]).startswith("UNKNOWN:")
+    assert str(row["approximate_vertical_size"]).startswith("UNKNOWN:")
+    decision["attributes"] = {"approximate_footprint": "explicit source assessment"}
+    result = assemble(("example:a",), [decision], sources, traces, {"observations": observations})
+    row = cast("dict[str, dict[str, JsonValue]]", result["families"])["example:family"]
+    assert row["approximate_footprint"] == "explicit source assessment"
+
+
 def test_inventory_preserves_loot_kinds_and_rejects_missing_template_content() -> None:
     references: list[JsonValue] = [
         {"path": "/block_entities/0/nbt/LootTable", "value": "example:chest"},
