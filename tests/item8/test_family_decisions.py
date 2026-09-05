@@ -30,6 +30,7 @@ if TYPE_CHECKING:
         "betteroceanmonuments:",
         "betterstrongholds:",
         "betterwitchhuts:",
+        "mes:",
     ],
 )
 def test_authored_designs_bind_roots_settings_and_missing_components(
@@ -52,15 +53,12 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
     members = [member for row in groups for member in cast("list[str]", row["structure_ids"])]
     assert len(members) == len(set(members))
     expected = {key for key in registry if key.startswith(namespace)}
-    if namespace == "explorify:":
-        # Multi-entry biome groups are covered by the Explorify variant test.
-        expected = {
-            key
-            for key in expected
-            if not key.startswith(
-                ("explorify:supply_cache/", "explorify:watchtower/", "explorify:guide_post_")
-            )
-        }
+    # Multi-entry Explorify groups have a separate test; Mega Ship is still unresolved.
+    excluded_prefixes = {
+        "explorify:": ("explorify:supply_cache/", "explorify:watchtower/", "explorify:guide_post_"),
+        "mes:": ("mes:mega_ship",),
+    }.get(namespace, ())
+    expected = {key for key in expected if not key.startswith(excluded_prefixes)}
     assert members
     assert set(members) == expected
     catalog = cast(
@@ -88,7 +86,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         ),
     )
     structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
-    if namespace == "dungeons_arise:":
+    if namespace in ("dungeons_arise:", "mes:"):
         seen: set[str] = set()
         for identifier in sorted(expected):
             templates = set(cast("list[str]", structures[identifier]["templates"]))
@@ -100,6 +98,16 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         identifier = str(row["family_id"])
         assert row["structure_ids"] == [identifier]
         definition = definitions[identifier]
+        if namespace == "mes:":
+            assert row["custom_generation_settings"] == {
+                key: definition[key]
+                for key in (
+                    "allowed_terrain_height_range",
+                    "terrain_height_radius_check",
+                    "y_allowance",
+                )
+                if key in definition
+            }
         assert row["start_pool"] == definition.get("start_pool")
         if "start_pool" in definition:
             assert row["start_pool"] == structures[identifier]["start_pool"]
