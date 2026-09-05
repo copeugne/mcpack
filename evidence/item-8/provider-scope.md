@@ -571,7 +571,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `YungsExtras-1.21.1-NeoForge-5.1.1.jar` | `yungs-extras-desert-code`, `yungs-extras-generators`, `yungs-extras-initialization`, `yungs-extras-module-default`, `yungs-extras-processor-bindings`, `yungs-extras-registration` | RESOLVED: see YUNG Extras provider disposition below. |
 | `Zeta-1.1-40.jar` | `quark-enablement-callers`, `zeta-biome-modifier`, `zeta-component-biomes`, `zeta-compound-biome`, `zeta-config-binding`, `zeta-config-event-fields`, `zeta-deferred-feature`, `zeta-enablement-inputs`, `zeta-generation-applicability`, `zeta-generation-spawn`, `zeta-generator-dispatch`, `zeta-horizontal-directions`, `zeta-module-assignment`, `zeta-module-name`, `zeta-module-section`, `zeta-stone-ore` | Reuse Quark module/feature dispatch captures; reconcile remaining public generation and nested entry consumers. |
-| `[Neoforge]ctov-3.6.3.jar` | `ctov-provider` (82ac234), existing CTOV family regressions and root graphs | Code capture complete. Reconcile bundled compatibility resources/ZIP, modifier-driven components outside root graphs, and disconnected/missing components. Bind frozen configuration to captured selection callback. Do not repeat code capture. |
+| `[Neoforge]ctov-3.6.3.jar` | `ctov-provider` (82ac234), test_ctov_provider_selection.py, existing CTOV family regressions and root graphs | Code and frozen callback/modifier selection bound. Reconcile bundled compatibility resources/ZIP, modifier-driven components outside root graphs, and disconnected/missing components. Do not repeat code capture or selection checks. |
 | `accessories-neoforge-1.1.0-beta.53+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `adorabuild-structures-2.11.0-neoforge-1.21.3.jar` | `adorabuild-provider`, existing runtime/root and pool graph evidence | RESOLVED: 106 existing roots; all 110 pools and 121 templates connected; one preserved missing pool reference. See AdoraBuild provider disposition below. |
 | `aether-1.21.1-1.5.10-neoforge.jar` | `aether-bronze`, `aether-custom-entry`, `aether-piece-binding`, `aether-placement`, `aether-trap-bindings`, `aether-trapped-block` | Reconcile Bronze, Silver, Gold and terrain generation entry coverage; do not reopen Bronze helper internals. |
@@ -923,3 +923,30 @@ existing preserved graph/catalog remains the resource-processing authority;
 no alternate parser or rewritten resource was introduced. Static flow/complexity
 findings were resolved within the direct test. No new runtime or measurement.
 Provider dispositions: 33 of 136; 103 remain open.
+
+## CTOV selection checkpoint (provider still open)
+
+The captured callback and frozen ctov-common.toml select 63 village roots
+(21 configured variants at three enabled sizes) and eleven outpost roots, with
+weights 10/4/1 for villages and 1 for outposts. All 74 are in the captured registry.
+Four of the 78 registered CTOV roots are outside this callback's selected list:
+pillager_outpost_mesa and small/medium/large village_underground. This is the
+scope of CTOV's callback, not proof that no other provider could modify eligibility.
+Do not remove registered candidates or confuse eligibility with family grouping.
+
+All 1,019 CTOV modifier JSON records in the preserved catalog are template-pool
+element additions. Exactly 63 pass the captured NeoForge mod-presence conditions:
+21 each for chefsdelight, farmersdelight and village_taverns. The other 956 fail
+those conditions. This establishes component-addition selection, not successful
+placement or completed accounting of every template. Both source catalog and
+actual mod-list log identities are bound by the focused test.
+
+```sh
+uv run pytest -q tests/item8/test_ctov_provider_selection.py
+```
+
+Two cases pass; scoped Ruff and Basedpyright pass. The test binds the preserved
+source capture and frozen config, reuses the existing condition evaluator, and
+adds no parser or measurement system. Remaining: compatibility directories/ZIP,
+full payload, disconnected/missing components and their modifier relationships.
+Provider count remains 33 resolved, 103 open.
