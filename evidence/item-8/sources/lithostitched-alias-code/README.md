@@ -45,3 +45,36 @@ before claiming the modifier has no other effect.
 The alias correction, merged tag evidence and affected regression are still
 outstanding. The current accepted trace and working inventory are unchanged
 by this source-inspection increment. Item 8 remains incomplete.
+
+## Trace correction
+
+Decoder/tag merge implementation is `749c1a2`; trace integration is `f4efdcc`.
+The existing biome-tag merge was renamed `tag_inputs` and given a resource-kind
+argument, serving both current consumers without a parallel tag implementation.
+Unsupported tag forms, competing replacements and incompatible holder-set sizes
+fail explicitly. This implementation supports the observed replacement shape;
+it does not generalize to unobserved modifier stacks.
+
+Executed commands:
+
+```sh
+uv run -m tools.trace_item8_structure_pools --output evidence/raw/item8/pool-traces-alias-pilot.json.gz
+uv run -m tools.trace_item8_structure_pools --output evidence/raw/item8/pool-traces-alias-reproduction.json.gz
+cmp evidence/raw/item8/pool-traces-alias-pilot.json.gz evidence/raw/item8/pool-traces-alias-reproduction.json.gz
+uv run pytest -q tests/item8/test_pool_links.py tests/item8/test_pool_trace.py tests/item8/test_biome_tag_inputs.py
+```
+
+The two traces matched byte-for-byte. All 22 affected tests passed, including
+the extended frozen-output regression proving ashen template reachability and
+both normal and ominous spawner entity IDs. Scoped Ruff and basedpyright passed.
+Trace SHA-256:
+`b78541655c69fbc3599a670ccc424d60dd08cbb642bd796a9b69bcb9c1f223d9`.
+
+The trace retains original aliases, the replacement document and its identity,
+and the merged tag inputs with all contributing source identities. Its target
+sets are possible content, not evidence of runtime tag order or encounter
+probabilities. The modifier report now includes one alias replacement and
+retains 37 other selected modifier types as untraced. Trial chambers remain one
+working family. Decision references are updated to the new trace hash; the
+trial-chamber rationale now records this replacement and its ashen contribution.
+Other modifier types and Item 8 closure remain outstanding.
