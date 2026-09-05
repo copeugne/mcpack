@@ -1,0 +1,44 @@
+Compiled from "LogBiomeProcessor.java"
+public class com.yungnickyoung.minecraft.yungsbridges.world.processor.LogBiomeProcessor implements com.yungnickyoung.minecraft.yungsbridges.world.processor.ITemplateFeatureProcessor {
+  public com.yungnickyoung.minecraft.yungsbridges.world.processor.LogBiomeProcessor();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public void processTemplate(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload_2
+       1: aload         4
+       3: invokeinterface #7,  2            // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBiome:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+       8: astore        7
+      10: aload_1
+      11: aload         4
+      13: aload         6
+      15: getstatic     #13                 // Field net/minecraft/world/level/block/Blocks.OAK_LOG:Lnet/minecraft/world/level/block/Block;
+      18: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.filterBlocks:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/world/level/block/Block;)Ljava/util/List;
+      21: invokeinterface #25,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      26: astore        8
+      28: aload         8
+      30: invokeinterface #31,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      35: ifeq          81
+      38: aload         8
+      40: invokeinterface #37,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      45: checkcast     #41                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+      48: astore        9
+      50: aload_2
+      51: aload         9
+      53: invokevirtual #43                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      56: aload_0
+      57: aload_0
+      58: aload         7
+      60: invokevirtual #47                 // Method getLogBiomeVariant:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/block/state/BlockState;
+      63: aload         9
+      65: invokevirtual #53                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      68: invokevirtual #57                 // Method getLogBlockWithState:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+      71: iconst_2
+      72: invokeinterface #61,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      77: pop
+      78: goto          28
+      81: return
+}

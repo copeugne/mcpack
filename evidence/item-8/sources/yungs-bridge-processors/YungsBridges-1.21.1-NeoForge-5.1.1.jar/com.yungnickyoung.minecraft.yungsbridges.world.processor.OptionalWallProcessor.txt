@@ -1,0 +1,53 @@
+Compiled from "OptionalWallProcessor.java"
+public class com.yungnickyoung.minecraft.yungsbridges.world.processor.OptionalWallProcessor implements com.yungnickyoung.minecraft.yungsbridges.world.processor.ITemplateFeatureProcessor {
+  private final com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer endStoneBrickWallReplacer;
+
+  public com.yungnickyoung.minecraft.yungsbridges.world.processor.OptionalWallProcessor();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #7                  // class com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer
+       8: dup
+       9: getstatic     #9                  // Field AIR:Lnet/minecraft/world/level/block/state/BlockState;
+      12: invokespecial #15                 // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer."<init>":(Lnet/minecraft/world/level/block/state/BlockState;)V
+      15: getstatic     #18                 // Field net/minecraft/world/level/block/Blocks.STONE_BRICK_WALL:Lnet/minecraft/world/level/block/Block;
+      18: invokevirtual #24                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      21: ldc           #30                 // float 0.5f
+      23: invokevirtual #31                 // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.addBlock:(Lnet/minecraft/world/level/block/state/BlockState;F)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      26: putfield      #35                 // Field endStoneBrickWallReplacer:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      29: return
+
+  public void processTemplate(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload_1
+       1: aload         4
+       3: aload         6
+       5: getstatic     #39                 // Field net/minecraft/world/level/block/Blocks.END_STONE_BRICK_WALL:Lnet/minecraft/world/level/block/Block;
+       8: invokevirtual #42                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.filterBlocks:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/world/level/block/Block;)Ljava/util/List;
+      11: invokeinterface #48,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      16: astore        7
+      18: aload         7
+      20: invokeinterface #54,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      25: ifeq          73
+      28: aload         7
+      30: invokeinterface #60,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      35: checkcast     #64                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+      38: astore        8
+      40: aload_2
+      41: aload         8
+      43: invokevirtual #66                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      46: aload_0
+      47: aload_0
+      48: getfield      #35                 // Field endStoneBrickWallReplacer:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      51: aload_3
+      52: invokevirtual #70                 // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+      55: aload         8
+      57: invokevirtual #74                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      60: invokevirtual #77                 // Method getWallBlockWithState:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+      63: iconst_2
+      64: invokeinterface #81,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      69: pop
+      70: goto          18
+      73: return
+}
