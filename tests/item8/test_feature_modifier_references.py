@@ -455,3 +455,49 @@ def test_yungs_extras_biome_scope_binds_additions_and_well_removal() -> None:
         )
     prefix = "yungsextras:has_structure/"
     assert recorded[prefix + "desert_decorations"] == recorded[prefix + "vanilla_desert_well"]
+
+
+def test_yungs_extras_explicit_templates_preserve_code_attribution_gaps() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    membership = cast("dict[str, JsonValue]", contributions[
+        "yungsextras:feature_entrypoints"
+    ]["template_membership"])
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ).read_bytes())))
+    links: dict[str, str] = {}
+    unresolved: dict[str, str] = {}
+    prefix = "data/yungsextras/worldgen/configured_feature/"
+    for row in catalog["resources"]:
+        path = str(row["path"])
+        if row["archive"] != "YungsExtras-1.21.1-NeoForge-5.1.1.jar" or not path.startswith(prefix):
+            continue
+        identifier = "yungsextras:" + path.removeprefix(prefix).removesuffix(".json")
+        doc = cast("dict[str, JsonValue]", row["document"])
+        config = cast("dict[str, JsonValue]", doc["config"])
+        if "location" in config:
+            links[identifier] = str(config["location"])
+        else:
+            assert config == {}
+            unresolved[identifier] = str(doc["type"])
+    assert links == membership["configured_to_template"]
+    assert unresolved == membership["configured_without_location"]
+    assert len(links) == len(set(links.values())) == 59
+    assert len(unresolved) == 3
+    templates = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/templates-redacted.json.gz"
+    ).read_bytes())))
+    sizes = {str(row["path"]).replace("data/yungsextras/structure/", "yungsextras:").removesuffix(
+        ".nbt"
+    ): cast("dict[str, JsonValue]", row["document"])["size"] for row in templates["resources"]
+        if row["archive"] == "YungsExtras-1.21.1-NeoForge-5.1.1.jar"}
+    assert {key: sizes[key] for key in links.values()} == (
+        membership["referenced_nominal_xyz_blocks"]
+    )
+    assert sorted(sizes.keys() - set(links.values())) == (
+        membership["packaged_templates_outside_explicit_links"]
+    )
