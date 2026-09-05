@@ -313,6 +313,8 @@ CLASSES = (
     "org/violetmoon/quark/content/world/module/SpiralSpiresModule.class",
     "org/violetmoon/quark/content/world/gen/ChorusVegetationGenerator.class",
     "org/violetmoon/quark/content/world/gen/SpiralSpireGenerator.class",
+    "org/violetmoon/zeta/world/generator/multichunk/MultiChunkFeatureGenerator.class",
+    "org/violetmoon/zeta/config/type/DimensionConfig.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",

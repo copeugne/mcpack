@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-05
 
+Quark generator capture is delivered in `a7af165`. Both reject source positions
+closer than 1050 to origin, but that alone does not bound generated parts.
+Resolve MultiChunkFeatureGenerator and DimensionConfig through the existing
+extractor, then reconcile frozen radii and dimensions. These are direct
+applicability dependencies, not permission to expand unrelated library tracing.
+
 Quark registrations are delivered in `c4cb9ec`; Zeta DeferredFeature execution
 link is in `de0cdac`. Inspect the directly registered ChorusVegetationGenerator
 and SpiralSpireGenerator next using the existing extractor. Their actual block
