@@ -325,6 +325,8 @@ CLASSES: tuple[str, ...] = (
     "org/violetmoon/zetaimplforge/config/ConfigEventDispatcher.class",
     "org/violetmoon/zeta/module/ZetaModule.class",
     "org/violetmoon/zeta/module/ZetaCategory.class",
+    "org/violetmoon/quark/base/proxy/CommonProxy.class",
+    "org/violetmoon/zetaimplforge/module/ModFileScanDataModuleFinder.class",
     "org/violetmoon/zeta/module/ZetaLoadModuleAnnotationData.class",
     "org/violetmoon/zeta/module/ZetaModuleManager.class",
     "org/violetmoon/zeta/module/TentativeModule.class",
@@ -426,6 +428,8 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     continue
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = "/mixin/" in name or "/mixins/" in name or name in {
+                    "org/violetmoon/quark/base/proxy/CommonProxy.class",
+                    "org/violetmoon/zetaimplforge/module/ModFileScanDataModuleFinder.class",
                     "org/violetmoon/quark/content/world/module/MonsterBoxModule.class",
                     "org/violetmoon/quark/content/world/block/MonsterBoxBlock.class",
                     "org/violetmoon/quark/content/world/block/be/MonsterBoxBlockEntity.class",
