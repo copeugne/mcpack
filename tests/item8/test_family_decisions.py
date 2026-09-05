@@ -740,10 +740,14 @@ def test_design_groups_cover_registry_and_bind_variant_definitions(namespace: st
                     assert definition[f"{kind}_type"] == name.removeprefix(kind + "_")
                 assert traces["untraced_structures"][identifier]["type"] == definition["type"]
                 assert identifier in traces["untraced_structures"]
-                assert (
-                    variant["missing_components"]
-                    == "UNKNOWN: custom generation is outside current pool trace"
-                )
+                if identifier == "minecraft:end_city":
+                    assert variant["missing_components"] == []
+                    assert variant["vanilla_code_template_ids"]
+                else:
+                    assert (
+                        variant["missing_components"]
+                        == "UNKNOWN: custom generation is outside current pool trace"
+                    )
     assert len(custom) == {"repurposed_structures": 12, "minecraft": 24}[namespace]
 
 
