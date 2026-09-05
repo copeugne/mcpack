@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+Spiral Spires generation-setting binding is resolved in `c96729d`. The inventory
+joins source mapping, frozen/captured file equality and the initial-refresh log.
+Do not repeat the configuration-name or field-binding investigation for this
+family. World occurrence, natural spawning, other Quark consumers and broader
+provider coverage remain open. Thirty focused tests passed. No new runtime or
+measurement system was used.
+
 Configuration binding sources are preserved in `sources/zeta-config-binding`,
 `sources/quark-spire-config-annotations` and `sources/zeta-config-event-fields`
 under evidence/item-8. The latter README binds the initial refresh call to the
