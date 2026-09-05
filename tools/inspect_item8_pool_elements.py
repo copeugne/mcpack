@@ -32,10 +32,13 @@ ARCHIVES = frozenset(
         "worldweaver-21.0.24.jar",
         "lithostitched-1.7.10+beta4-neoforge-21.1.jar",
         "YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar",
+        "YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar",
         "supplementaries-neoforge-1.21.1-3.6.8.jar",
     }
 )
 GENERATION_PREFIXES = (
+    "com/yungnickyoung/minecraft/betterdungeons/world/structure/spider_dungeon/",
+    "com/yungnickyoung/minecraft/betterdungeons/world/structure/SmallNetherDungeonStructure",
     "com/yungnickyoung/minecraft/bettermineshafts/world/",
     "com/yungnickyoung/minecraft/bettermineshafts/config/",
     "com/yungnickyoung/minecraft/bettermineshafts/module/ConfigModule",
