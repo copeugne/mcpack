@@ -55,6 +55,7 @@ ARCHIVES = frozenset(
         "idas-1.13.7+1.21.1-neoforge.jar",
         "BetterEnd-21.0.31.jar",
         "YungsBridges-1.21.1-NeoForge-5.1.1.jar",
+        "YungsExtras-1.21.1-NeoForge-5.1.1.jar",
     }
 )
 GENERATION_PREFIXES = (
@@ -250,6 +251,30 @@ CLASSES = (
     "com/yungnickyoung/minecraft/yungsbridges/world/processor/SlabBiomeProcessor.class",
     "com/yungnickyoung/minecraft/yungsbridges/world/processor/StairBiomeProcessor.class",
     "com/yungnickyoung/minecraft/yungsbridges/world/processor/StoneVariationProcessor.class",
+    "com/yungnickyoung/minecraft/yungsextras/module/FeatureModule.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/AbstractNbtFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/desert/ChillzoneDesertFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/desert/DesertGiantTorchFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/desert/DesertSmallRuinsFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/desert/DesertObeliskFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/desert/DesertWellFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/swamp/AbstractSwampFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/swamp/SwampArchFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/swamp/SwampChurchFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/swamp/SwampCubbyFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/swamp/SwampDoubleArchFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/swamp/SwampOgreFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/swamp/SwampPillarFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/processor/DesertWellProcessor.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/processor/INbtFeatureProcessor.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/processor/SwampFeatureProcessor.class",
+    "com/yungnickyoung/minecraft/yungsextras/module/FeatureProcessorModule.class",
+    "com/yungnickyoung/minecraft/yungsextras/YungsExtrasCommon.class",
+    "com/yungnickyoung/minecraft/yungsextras/YungsExtrasNeoForge.class",
+    "com/yungnickyoung/minecraft/yungsextras/services/NeoForgeModulesLoader.class",
+    "com/yungnickyoung/minecraft/yungsbridges/services/NeoForgeModulesLoader.class",
+    "com/yungnickyoung/minecraft/yungsextras/services/IModulesLoader.class",
+    "com/yungnickyoung/minecraft/yungsbridges/services/IModulesLoader.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -329,6 +354,7 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                 verbose = "/mixin/" in name or "/mixins/" in name or name in {
                     CLASSES[0],
                     "org/betterx/betterend/registry/EndStructures.class",
+                    "com/yungnickyoung/minecraft/yungsextras/module/FeatureModule.class",
                     "net/minecraft/world/level/levelgen/structure/structures/DesertPyramidStructure.class",
                     "net/minecraft/world/level/levelgen/structure/structures/JungleTempleStructure.class",
                     "net/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece.class",

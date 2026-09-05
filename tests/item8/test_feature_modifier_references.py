@@ -381,3 +381,514 @@ def test_yungs_bridge_placement_checks_liquid_and_both_banks() -> None:
     assert "Blocks.WATER" not in source
     assert "Stream.empty:" in source
     assert "875: areturn" in source
+
+
+def test_yungs_extras_entrypoints_cover_runtime_features_without_family_inference() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    contribution = contributions["yungsextras:feature_entrypoints"]
+    for path, digest in cast("dict[str, str]", contribution["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ).read_bytes())))
+    resources = {str(row["path"]): cast("dict[str, JsonValue]", row["document"])
+                 for row in catalog["resources"]
+                 if row["archive"] == "YungsExtras-1.21.1-NeoForge-5.1.1.jar"}
+    modifiers = {path: doc for path, doc in resources.items()
+                 if path.startswith("data/yungsextras/neoforge/biome_modifier/")}
+    assert modifiers == contribution["biome_modifiers"]
+    additions = [doc for doc in modifiers.values() if doc["type"] == "neoforge:add_features"]
+    assert sorted(len(cast("list[JsonValue]", doc["features"])) for doc in additions) == [16, 46]
+    ids = [str(item) for doc in additions for item in cast("list[JsonValue]", doc["features"])]
+    assert len(ids) == len(set(ids)) == 62
+    types: Counter[str] = Counter()
+    for identifier in ids:
+        relative = identifier.split(":", 1)[1] + ".json"
+        placed = resources["data/yungsextras/worldgen/placed_feature/" + relative]
+        assert placed["feature"] == identifier
+        configured = resources["data/yungsextras/worldgen/configured_feature/" + relative]
+        types[str(configured["type"])] += 1
+    assert dict(types) == contribution["configured_feature_type_counts"]
+    registry = Path("evidence/item-8/runtime/registry-r1/dumps/registry/minecraft")
+    for kind in ("configured_feature", "placed_feature"):
+        actual = read_registry(registry / ("worldgen_" + kind + ".txt"))
+        assert {item for item in actual if item.startswith("yungsextras:")} == set(ids)
+    assert not any(item.startswith("yungsextras:") for item in read_registry(
+        registry / "worldgen_structure.txt"
+    ))
+
+
+def test_yungs_extras_biome_scope_binds_additions_and_well_removal() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    contribution = contributions["yungsextras:feature_entrypoints"]
+    constraints = cast("dict[str, JsonValue]", contribution["biome_constraints"])
+    recorded = cast("dict[str, dict[str, JsonValue]]", constraints["tags"])
+    modifiers = cast("dict[str, dict[str, JsonValue]]", contribution["biome_modifiers"])
+    assert set(recorded) == {str(mod["biomes"]).removeprefix("#") for mod in modifiers.values()}
+    inputs = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/sources/structure-inputs.json"
+    ).read_bytes()))
+    tag_rows = cast("dict[str, dict[str, JsonValue]]", inputs["biome_tags"])
+    tags = {key: cast("list[object]", row["values"])
+            for key, row in tag_rows.items() if not row["unresolved"]}
+    registered = frozenset(read_registry(Path(
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_biome.txt"
+    )))
+    dimensions = cast("dict[str, list[str]]", json.loads(Path(
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json"
+    ).read_bytes()))
+    for key, row in recorded.items():
+        biomes, missing = resolve_biome_tag(key, tags, registered_biomes=registered)
+        assert sorted(biomes) == row["registered_biomes"]
+        assert list(missing) == row["missing_required_members"] == []
+        assert {dimension: sorted(set(values) & biomes)
+                for dimension, values in dimensions.items() if set(values) & biomes} == (
+            row["dimension_biome_overlap"]
+        )
+    prefix = "yungsextras:has_structure/"
+    assert recorded[prefix + "desert_decorations"] == recorded[prefix + "vanilla_desert_well"]
+
+
+def test_yungs_extras_explicit_templates_preserve_code_attribution_gaps() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    membership = cast("dict[str, JsonValue]", contributions[
+        "yungsextras:feature_entrypoints"
+    ]["template_membership"])
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ).read_bytes())))
+    links: dict[str, str] = {}
+    unresolved: dict[str, str] = {}
+    prefix = "data/yungsextras/worldgen/configured_feature/"
+    for row in catalog["resources"]:
+        path = str(row["path"])
+        if row["archive"] != "YungsExtras-1.21.1-NeoForge-5.1.1.jar" or not path.startswith(prefix):
+            continue
+        identifier = "yungsextras:" + path.removeprefix(prefix).removesuffix(".json")
+        doc = cast("dict[str, JsonValue]", row["document"])
+        config = cast("dict[str, JsonValue]", doc["config"])
+        if "location" in config:
+            links[identifier] = str(config["location"])
+        else:
+            assert config == {}
+            unresolved[identifier] = str(doc["type"])
+    assert links == membership["configured_to_template"]
+    assert unresolved == membership["configured_without_location"]
+    assert len(links) == len(set(links.values())) == 59
+    assert len(unresolved) == 3
+    templates = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/templates-redacted.json.gz"
+    ).read_bytes())))
+    sizes = {str(row["path"]).replace("data/yungsextras/structure/", "yungsextras:").removesuffix(
+        ".nbt"
+    ): cast("dict[str, JsonValue]", row["document"])["size"] for row in templates["resources"]
+        if row["archive"] == "YungsExtras-1.21.1-NeoForge-5.1.1.jar"}
+    assert {key: sizes[key] for key in links.values()} == (
+        membership["referenced_nominal_xyz_blocks"]
+    )
+    assert sorted(sizes.keys() - set(links.values())) == (
+        membership["packaged_templates_outside_explicit_links"]
+    )
+    code_links = cast("dict[str, str]", membership["code_configured_to_template"])
+    assert {key: sizes[key] for key in code_links.values()} == membership["code_nominal_xyz_blocks"]
+    assert set(links.values()) | set(code_links.values()) == set(sizes)
+
+
+def test_yungs_extras_packaged_entities_and_loot_sources() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    recorded = cast("dict[str, JsonValue]", contributions[
+        "yungsextras:feature_entrypoints"
+    ]["packaged_template_content"])
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/templates-redacted.json.gz"
+    ).read_bytes())))
+    templates = [row for row in catalog["resources"]
+                 if row["archive"] == "YungsExtras-1.21.1-NeoForge-5.1.1.jar"]
+    assert len(templates) == 62
+    counts: dict[str, dict[str, int]] = {}
+    loot: dict[str, list[str]] = {}
+    for row in templates:
+        doc = cast("dict[str, JsonValue]", row["document"])
+        assert doc["entities"] == recorded["authored_entities"] == []
+        identifier = str(row["path"]).replace("data/yungsextras/structure/", "yungsextras:")
+        identifier = identifier.removesuffix(".nbt")
+        blocks = cast("list[dict[str, JsonValue]]", doc["block_entities"])
+        if blocks:
+            nbts = [cast("dict[str, JsonValue]", block["nbt"]) for block in blocks]
+            counts[identifier] = dict(Counter(str(nbt["id"]) for nbt in nbts))
+            tables = [str(nbt["LootTable"]) for nbt in nbts if "LootTable" in nbt]
+            if tables:
+                loot[identifier] = tables
+    assert counts == recorded["block_entity_counts"]
+    assert loot == recorded["chest_loot_sources"]
+    resources = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ).read_bytes())))
+    wanted = cast("dict[str, str]", recorded["resolved_loot_resources"])
+    matches = [row for row in resources["resources"] if row["path"] in wanted]
+    assert len(matches) == len(wanted) == 2
+    assert {str(row["path"]): row["sha256"] for row in matches} == wanted
+    assert set(wanted) == {
+        "data/" + table.replace(":", "/loot_table/", 1) + ".json"
+        for tables in loot.values() for table in tables
+    }
+
+
+def test_extras_desert_classes_pass_fixed_ids_to_centered_placement() -> None:
+    base = Path("evidence/item-8/sources/yungs-extras-desert-code")
+    manifest = (base / "identities.json").read_bytes()
+    assert hashlib.sha256(manifest).hexdigest() == (
+        "c595f5123a71105b276884d33229e4b7da2bf9b91b70ec8e5cbf1cba069d465b"
+    )
+    rows = cast("list[dict[str, str]]", json.loads(manifest))
+    sources: dict[str, str] = {}
+    for row in rows:
+        raw = (base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    for name, location in {
+        "ChillzoneDesertFeature": "desert/misc/chillzone",
+        "DesertGiantTorchFeature": "desert/misc/giant_torch",
+        "DesertSmallRuinsFeature": "desert/misc/ruins_0",
+    }.items():
+        source = sources[name]
+        assert "// String yungsextras" in source
+        assert "// String " + location in source
+        assert "ResourceLocation.fromNamespaceAndPath:" in source
+        assert "putstatic" in source
+        assert "Field ID:" in source
+        assert "createTemplateFromCenter:" in source
+        assert ("BlockPos.above:" in source) == (name != "DesertSmallRuinsFeature")
+        assert name + '."<init>":' in sources["FeatureModule"]
+        assert " useProcessors(" not in source
+        assert "BlockTags.SAND:" in source
+        assert source.count("BlockState.isSolid:") == 4
+    default_processors = sources["AbstractNbtFeature"].split(" useProcessors();")[1]
+    default_processors = default_processors.split("  private static ")[0]
+    assert 'java/util/ArrayList."<init>":()V' in default_processors
+    assert "List.add:" not in default_processors
+    helper = sources["AbstractNbtFeature"].split("protected net.minecraft.world.level.levelgen.")
+    centered = next(part for part in helper if part.startswith(
+        "structure.templatesystem.StructureTemplate createTemplateFromCenterWithPlacement("
+    ))
+    assert centered.index("StructureTemplate.placeInWorld:") < centered.index("List.forEach:")
+    assert centered.split("StructureTemplate.placeInWorld:")[1].splitlines()[1].endswith("pop")
+    assert centered.count("ineg") == 2
+
+
+def test_extras_registration_completes_three_code_template_links() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    contribution = contributions["yungsextras:feature_entrypoints"]
+    membership = cast("dict[str, JsonValue]", contribution["template_membership"])
+    generators = cast("dict[str, JsonValue]", contribution["desert_generator_templates"])
+    types = cast("dict[str, str]", generators["feature_type_to_class"])
+    templates = cast("dict[str, str]", generators["class_to_template"])
+    configured = cast("dict[str, str]", membership["configured_without_location"])
+    assert {key: templates[types[kind]] for key, kind in configured.items()} == (
+        membership["code_configured_to_template"]
+    )
+    base = Path("evidence/item-8/sources/yungs-extras-registration")
+    raw = (base / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "07300368df9a9fe1fe8f7e6efad0bc12505ebeb2e4db2a00389150a39b9e417e"
+    )
+    rows = cast("list[dict[str, str]]", json.loads(raw))
+    assert len(rows) == 1
+    raw = (base / rows[0]["disassembly"]).read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == rows[0]["disassembly_sha256"]
+    source = raw.decode()
+    assert 'value="yungsextras"' in source.split('SourceFile: "FeatureModule.java"')[1]
+    for kind, name in types.items():
+        field = kind.split(":")[1].upper()
+        declaration = next(part for part in source.split("  public static ")
+                           if part.splitlines()[0].endswith(" " + field + ";"))
+        assert 'value="' + kind.split(":")[1] + '"' in declaration
+        assert name + '."<init>":' in source
+    code_links = cast("dict[str, str]", membership["code_configured_to_template"])
+    assert sorted(code_links.values()) == membership["packaged_templates_outside_explicit_links"]
+
+
+def test_extras_well_processor_adds_loot_missing_from_template_entities() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    contribution = contributions["yungsextras:feature_entrypoints"]
+    recorded = cast("dict[str, JsonValue]", contribution["desert_well_generation"])
+    evidence = cast("dict[str, str]", contribution["evidence"])
+    sources: dict[str, str] = {}
+    for folder in ("yungs-extras-generators", "yungs-extras-processor-bindings"):
+        base = Path("evidence/item-8/sources") / folder
+        manifest = base / "identities.json"
+        raw = manifest.read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == evidence[str(manifest)]
+        for row in cast("list[dict[str, str]]", json.loads(raw)):
+            raw = (base / row["disassembly"]).read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+            sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    binding = sources["FeatureProcessorModule"].split("      23: new")[1]
+    assert binding.index('DesertWellProcessor."<init>":') < binding.index(
+        "Field DESERT_WELL_PROCESSOR:"
+    )
+    generator = sources["DesertWellFeature"]
+    obelisk = sources["DesertObeliskFeature"]
+    assert " useProcessors(" not in obelisk
+    assert "BlockTags.SAND:" in obelisk
+    assert obelisk.count("BlockState.isSolid:") == 4
+    assert "ResourceLocationFeatureConfiguration.getLocation:" in obelisk
+    assert "BlockPos.above:" in obelisk
+    assert "FeatureProcessorModule.DESERT_WELL_PROCESSOR:" in generator
+    assert "BlockTags.SAND:" in generator
+    assert "bipush        6" in generator.split("     341: aload_0")[1]
+    processor = sources["DesertWellProcessor"]
+    assert str(recorded["brown_marker_loot"]) + ":" in processor
+    assert "// String desert/extra_archeology" in processor
+    assert "Blocks.BROWN_STAINED_GLASS:" in processor
+    assert "Blocks.YELLOW_STAINED_GLASS:" in processor
+    assert "Blocks.SUSPICIOUS_SAND:" in processor
+    assert "BrushableBlockEntity.setLootTable:" in processor
+    assert "BlockPos.asLong:" in processor
+    assert "Optional.ifPresent:" in processor
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ).read_bytes())))
+    loot = cast("dict[str, str]", recorded["extra_loot_resource"])
+    matches = [row for row in catalog["resources"] if row["path"] == loot["path"]]
+    assert len(matches) == 1
+    assert matches[0]["sha256"] == loot["sha256"]
+    document = cast("dict[str, JsonValue]", matches[0]["document"])
+    assert document["type"] == "minecraft:archaeology"
+    pools = cast("list[dict[str, JsonValue]]", document["pools"])
+    assert len(pools) == 1
+    assert pools[0]["rolls"] == 1.0
+    assert pools[0]["entries"] == [
+        {"name": "minecraft:" + name, "type": "minecraft:item"}
+        for name in ("diamond", "emerald", "gold_ingot")
+    ]
+
+
+def test_extras_swamp_types_share_processor_and_preserve_size_limits() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    contribution = contributions["yungsextras:feature_entrypoints"]
+    recorded = cast("dict[str, JsonValue]", contribution["swamp_generation"])
+    types = cast("dict[str, str]", recorded["feature_type_to_class"])
+    counts = cast("dict[str, int]", contribution["configured_feature_type_counts"])
+    assert set(types) == {kind for kind in counts if kind.startswith("yungsextras:swamp_")}
+    assert sum(counts[kind] for kind in types) == 46
+    sources: dict[str, str] = {}
+    evidence = cast("dict[str, str]", contribution["evidence"])
+    for folder in ("yungs-extras-generators", "yungs-extras-processor-bindings",
+                   "yungs-extras-registration"):
+        base = Path("evidence/item-8/sources") / folder
+        manifest = base / "identities.json"
+        raw = manifest.read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == evidence[str(manifest)]
+        for row in cast("list[dict[str, str]]", json.loads(raw)):
+            raw = (base / row["disassembly"]).read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+            sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    for kind, name in types.items():
+        assert 'value="' + kind.split(":")[1] + '"' in sources["FeatureModule"]
+        assert name + '."<init>":' in sources["FeatureModule"]
+        source = sources[name]
+        assert "extends com.yungnickyoung.minecraft.yungsextras.world.feature.swamp." in source
+        assert " useProcessors(" not in source
+        assert "createTemplateFromCenter:" in source
+        assert "BlockTags." not in source
+    assert "FeatureProcessorModule.SWAMP_FEATURE_PROCESSOR:" in sources["AbstractSwampFeature"]
+    assert 'SwampFeatureProcessor."<init>":' in sources["FeatureProcessorModule"]
+    processor = sources["SwampFeatureProcessor"]
+    support = processor.split("     152: aload_1")[0]
+    for predicate in ("isAir", "liquid", "canBeReplaced"):
+        assert "BlockState." + predicate + ":" in support
+    assert "getY:" not in support
+    assert "getMinBuildHeight:" not in support
+    assert "Blocks.GRAY_STAINED_GLASS:" in support
+    assert "Blocks.LIGHT_GRAY_STAINED_GLASS:" in processor
+    for property_name in ("FACING", "HALF", "SHAPE", "WATERLOGGED"):
+        assert "StairBlock." + property_name + ":" in processor
+    assert "CandleBlock.CANDLES:" in processor
+    assert "CandleBlock.LIT:" in processor
+
+
+def test_yung_module_loader_defaults_do_not_register_configuration() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    for mod, key, folders in (
+        ("yungsbridges", "yungsbridges:bridges",
+         ("yungs-bridges-module-loader", "yungs-bridges-module-default")),
+        ("yungsextras", "yungsextras:feature_entrypoints",
+         ("yungs-extras-initialization", "yungs-extras-module-default")),
+    ):
+        evidence = cast("dict[str, str]", contributions[key]["evidence"])
+        sources: dict[str, str] = {}
+        for folder in folders:
+            base = Path("evidence/item-8/sources") / folder
+            manifest = base / "identities.json"
+            raw = manifest.read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == evidence[str(manifest)]
+            for row in cast("list[dict[str, str]]", json.loads(raw)):
+                raw = (base / row["disassembly"]).read_bytes()
+                assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+                sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+        assert sources["IModulesLoader"].split("    Code:\n")[1] == "       0: return\n}\n"
+        loader = sources["NeoForgeModulesLoader"].split("  public void loadModules();")[1]
+        assert "InterfaceMethod com/yungnickyoung/minecraft/" + mod + (
+            "/services/IModulesLoader.loadModules:()V"
+        ) in loader
+        assert loader.count("invoke") == 1
+
+
+def test_yung_feature_families_partition_all_traced_variants() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    for key in ("yungsbridges:bridges", "yungsextras:feature_entrypoints"):
+        contribution = contributions[key]
+        families = cast("list[dict[str, JsonValue]]", contribution["families"])
+        assert len({str(row["family"]) for row in families}) == len(families)
+        members = [str(member) for row in families
+                   for member in cast("list[str]", row["configured_features"])]
+        assert len(set(members)) == len(members)
+        assert all(row["rationale"] for row in families)
+        if key.startswith("yungsbridges"):
+            links = cast("dict[str, str]", contribution["configured_to_template"])
+            assert len(families) == 1
+            assert set(members) == set(links)
+            assert len(members) == 22
+            assert len(set(links.values())) == 11
+        else:
+            membership = cast("dict[str, JsonValue]", contribution["template_membership"])
+            links = cast("dict[str, str]", membership["configured_to_template"])
+            code_links = cast("dict[str, str]", membership["code_configured_to_template"])
+            assert len(families) == 10
+            assert set(members) == set(links) | set(code_links)
+            assert len(members) == 62
+            arches = next(row for row in families if row["family"] == "yungsextras:swamp_arch")
+            arch_members = cast("list[str]", arches["configured_features"])
+            assert set(arch_members) == {
+                member for member in links
+                if "/arches/" in member or "/double_arches/" in member
+            }
+            assert len(arch_members) == 33
+
+
+def test_yung_family_geometry_uses_only_member_template_envelopes() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    for key, contribution in contributions.items():
+        if key == "yungsbridges:bridges":
+            links = cast("dict[str, str]", contribution["configured_to_template"])
+            sizes = cast("dict[str, JsonValue]", contribution["template_content"])
+            dimensions = cast("dict[str, list[int]]", sizes["referenced_nominal_xyz_blocks"])
+        else:
+            membership = cast("dict[str, JsonValue]", contribution["template_membership"])
+            links = cast("dict[str, str]", membership["configured_to_template"]) | cast(
+                "dict[str, str]", membership["code_configured_to_template"]
+            )
+            dimensions = cast(
+                "dict[str, list[int]]", membership["referenced_nominal_xyz_blocks"]
+            ) | cast("dict[str, list[int]]", membership["code_nominal_xyz_blocks"])
+        families = cast("list[dict[str, JsonValue]]", contribution["families"])
+        for family in families:
+            members = cast("list[str]", family["configured_features"])
+            templates = sorted({links[member] for member in members})
+            assert family["templates"] == templates
+            assert family["nominal_template_xyz_blocks"] == [
+                list(size) for size in sorted({tuple(dimensions[name]) for name in templates})
+            ]
+            assert "not occupied-world measurements" in str(family["geometry_scope"])
+
+
+def test_yung_family_biomes_follow_their_addition_modifiers() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    for key, contribution in contributions.items():
+        families = cast("list[dict[str, JsonValue]]", contribution["families"])
+        for family in families:
+            if key == "yungsbridges:bridges":
+                source = cast(
+                    "dict[str, JsonValue]", contribution["biome_and_modifier_constraints"]
+                )
+                assert family["biome_tag"] == source["biome_tag"]
+            else:
+                modifiers = cast("dict[str, dict[str, JsonValue]]", contribution["biome_modifiers"])
+                members = set(cast("list[str]", family["configured_features"]))
+                matches = [row for row in modifiers.values()
+                           if row["type"] == "neoforge:add_features"
+                           and members <= set(cast("list[str]", row["features"]))]
+                assert len(matches) == 1
+                tag = str(matches[0]["biomes"]).removeprefix("#")
+                assert family["biome_tag"] == tag
+                constraints = cast("dict[str, JsonValue]", contribution["biome_constraints"])
+                tags = cast("dict[str, dict[str, JsonValue]]", constraints["tags"])
+                source = tags[tag]
+            assert source["missing_required_members"] == []
+            assert family["registered_biomes"] == source["registered_biomes"]
+            assert family["dimension_biome_overlap"] == source["dimension_biome_overlap"]
+
+
+def test_yung_family_contents_keep_template_and_processor_loot_separate() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    bridge = contributions["yungsbridges:bridges"]
+    bridge_families = cast("list[dict[str, JsonValue]]", bridge["families"])
+    assert bridge_families[0]["direct_encounter_content"] == bridge["direct_encounter_content"]
+    extras = contributions["yungsextras:feature_entrypoints"]
+    source = cast("dict[str, JsonValue]", extras["packaged_template_content"])
+    families = cast("list[dict[str, JsonValue]]", extras["families"])
+    for family in families:
+        templates = cast("list[str]", family["templates"])
+        recorded = cast("dict[str, JsonValue]", family["packaged_content"])
+        assert recorded["authored_entities"] == source["authored_entities"] == []
+        assert recorded["stored_spawner_block_entities"] == []
+        for field in ("block_entity_counts", "chest_loot_sources"):
+            values = cast("dict[str, JsonValue]", source[field])
+            assert recorded[field] == {key: values[key] for key in templates if key in values}
+        if family["family"] == "yungsextras:desert_well":
+            well = cast("dict[str, JsonValue]", extras["desert_well_generation"])
+            assert recorded["chest_loot_sources"] == {}
+            assert family["processor_loot_sources"] == [
+                well["brown_marker_loot"], well["yellow_marker_loot"]
+            ]
+        else:
+            assert "processor_loot_sources" not in family

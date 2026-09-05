@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `c19f9d5`, SHA-256
-`f2497cb9bd2118ce0e1910cd2a203d9d51ea21d83636cb7f3addf2601b3c2a97`.
+Current working inventory regenerated at `532fb28`, SHA-256
+`d064a47129cf9b538ca11a9f8398bcbe33f8113f7246cec26d0d14025afd03d4`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1531,3 +1531,378 @@ Inventory regenerated at `c19f9d5`, SHA-256:
 `f2497cb9bd2118ce0e1910cd2a203d9d51ea21d83636cb7f3addf2601b3c2a97`.
 Only decision identity and bridge biome/modifier constraints with evidence changed.
 All 421 registry family rows and 887 roots remain unchanged.
+
+## YUNG Extras non-registry entry points
+
+The existing contribution map now records the retained YUNG Extras provider's
+three NeoForge biome modifiers. Two add 16 desert and 46 swamp placed features;
+each of these 62 distinct IDs has a same-ID configured feature in the captured
+runtime. There are no yungsextras structure-registry roots. Eleven configured
+feature types describe generator categories, not accepted canonical families.
+The third modifier declares vanilla desert-well removal; its effective scope
+still requires configuration/biome reconciliation. Forge-path duplicates are not
+additional NeoForge entry points. Template and generator interpretation remain
+open. This reuses existing catalogs, registry evidence and contribution fields;
+no new capture, schema or measurement system was added.
+
+Twelve affected tests and scoped Ruff/Basedpyright passed. Decision SHA-256:
+`a294b2c9219e1916ef1384acd0e4d8392133499f2b56a93a2a57e53cb5ffd92b`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-extras-entrypoints.json
+```
+
+Inventory regenerated at `fe1fb1e`, SHA-256:
+`9fcd6b648bd22c311a0d9f167c0013cb500e3817ed6c06406666e0dc719cadac`.
+Only the decision identity and new Extras entry-point contribution changed.
+All 421 registry family rows and 887 roots remain unchanged.
+
+## YUNG Extras biome scope
+
+The three modifier tags resolve through existing merged tag evidence and the
+verified biome registry without missing required members. Desert additions and
+vanilla desert-well removal share minecraft:desert, biomesoplenty:lush_desert
+and terralith:lush_desert. Swamp additions use minecraft:swamp and
+minecraft:mangrove_swamp. Only the captured overworld possible-biome list
+intersects these sets. This resolves packaged biome scope, not actual placement,
+effective registration/configuration effects or observed removal. Optional
+absent tag members are not treated as active content. No new capture or
+measurement system was added.
+
+Thirteen affected tests and scoped Ruff/Basedpyright passed. Decision SHA-256:
+`b850abc5df9278da4113694f5e01254e4cf08099a927185527f4f509840336b5`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-extras-biomes.json
+```
+
+Inventory regenerated at `397812a`, SHA-256:
+`7a1110e2734dd4f04a4084ed2ffbe9aa3be0a6af9fc61ffd5518ff40c831aba0`.
+Only decision identity and Extras biome/removal scope with evidence changed.
+All 421 registry family rows and 887 roots remain unchanged.
+
+## YUNG Extras explicit template membership
+
+Fifty-nine configured features explicitly name 59 distinct packaged templates;
+all resolve. Their unrotated nominal XYZ envelopes are now recorded. Three
+configured features have empty configs and require generator-code attribution:
+desert_chillzone, desert_giant_torch and desert_ruins_0. Three packaged templates
+remain outside the explicit links, but are not declared unused based on that
+fact. Template dimensions are not processed/occupied world geometry. Block-entity
+contents and custom generation still require attribution. Existing catalogs and
+the contribution map suffice; no new extraction or measurement system was added.
+
+Fourteen affected tests passed. Scoped Ruff/Basedpyright passed after wrapping
+one long assertion. Decision SHA-256:
+`91acf25034c7c4bde3596b7ef5c81947184d736fff3e6f1cb6ea90ad0a16f629`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-extras-templates.json
+```
+
+Inventory regenerated at `2957779`, SHA-256:
+`f66b81d0def7ecf9de36eb82f036ef646ed9b343930b92f8f030a9546ab1c060`.
+Only decision identity and Extras template membership with evidence changed.
+All 421 registry family rows and 887 roots remain unchanged.
+
+## YUNG Extras packaged entities and chest loot
+
+All 62 packaged templates have empty entity lists. Four templates contain block
+entities: chillzone has one chest, ruins_0 has two, giant_torch and swamp_pillar_2
+have four campfires each. Both referenced chest loot tables resolve uniquely in
+the existing packaged catalog. No stored spawner block entity occurs in these
+templates. These facts do not exclude custom generation effects. In particular,
+the chest-bearing desert templates still require code attribution to their
+empty-config feature generators. No observed loot or complete generated-content
+claim is made, and no new extraction or measurement system was added.
+
+Fifteen affected tests and scoped Ruff/Basedpyright passed. Decision SHA-256:
+`3ff61997f724c9f11ab624e583845082bcc27534112904187c16b0fa40e38457`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-extras-content.json
+```
+
+Inventory regenerated at `bae0ae4`, SHA-256:
+`c27dbad3867324ff9110ef5f0dfe04a5e6b3dfd4867e8af9205cb9b3c431ff3a`.
+Only decision identity and Extras packaged-template content changed.
+All 421 registry family rows and 887 roots remain unchanged.
+
+## Extras desert class-to-template calls
+
+The three captured classes pass fixed template IDs to createTemplateFromCenter:
+chillzone, giant_torch and ruins_0 respectively. The first two use ground above();
+ruins uses ground directly. The helper subtracts half template X/Z, preserves Y,
+and places with default settings before applying its processor list. It discards
+the placement boolean; the callers test non-null template loading. Full placement
+success is therefore not established by the returned boolean.
+
+This is class-to-template evidence. FeatureModule constructs these classes, but
+the current non-verbose capture omits registration annotations. Exact runtime
+feature-ID binding remains open. The JSON-explicit links are preserved separately.
+No new capture or measurement system was added for this interpretation.
+
+Sixteen affected tests and scoped quality checks passed. Decision SHA-256:
+`251c7036fc0bae5d26b0f94b9970198857887a1dc244d1fc4a80537c458f796d`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-extras-desert-calls.json
+```
+
+Inventory regenerated at `0f8e610`, SHA-256:
+`55fd39f5efd49aee91e1a922eacc763291a09dc9892ba4175c1802bd741eeb0d`.
+Only decision identity and Extras desert generator-template calls/evidence changed.
+All 421 registry family rows and 887 roots remain unchanged.
+
+## Extras code-based template links resolved
+
+The preserved class-level and field-level AutoRegister annotations bind the
+three desert feature IDs to the classes whose template calls were already
+verified. All 62 packaged templates now have a traced feature link: 59 explicit
+JSON locations and three code-based paths. The paths remain separate in the
+inventory. The earlier open-link statements are superseded; this does not close
+family grouping, terrain checks or effective generated contents.
+
+Seventeen affected tests and scoped quality checks passed. Decision SHA-256:
+`f72a460733e7d8ee465b0f7a8d0340879a5e5afb48e97d48ae2833dfd3173279`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-extras-code-links.json
+```
+
+Inventory regenerated at `4bb656f`, SHA-256:
+`6354d013331c716f3091e87ce3b49fa03a766471a7a8cd2167bfc0bf0c50e5d9`.
+Only decision identity and Extras code-link attribution/evidence changed.
+All 421 registry family rows and 887 roots remain unchanged.
+
+## Extras code-linked template envelopes
+
+The three code-linked templates now record nominal XYZ dimensions: chillzone
+3x4x4, giant_torch 4x7x4 and ruins_0 4x5x4. Together with the existing 59 explicit
+links, all 62 packaged template envelopes are accounted for. These are template
+bounds, not observed occupied dimensions or accepted family groupings.
+
+Seventeen affected tests and scoped checks passed. Decision SHA-256:
+`0a03048d57cafe7a3fc1dd156944561c56c85e5017b7a65cd54343374ec6a437`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-extras-code-sizes.json
+```
+
+Inventory regenerated at `bb970de`, SHA-256:
+`c7fa2fed220886d952ea872056cd9fcf0899719e431b70923fc21be72b4835ea`.
+Only decision identity and three code-linked template sizes changed.
+All 421 registry family rows and 887 roots remain unchanged.
+
+### Extras well processor loot and placement
+
+The preserved DesertWellFeature, DesertWellProcessor and FeatureProcessorModule
+sources now establish processor-generated archaeology loot that is absent from
+stored template block entities. Brown glass markers use the vanilla desert-well
+archaeology constant; yellow glass markers use Extras' extra_archeology table.
+The decision preserves both random selection rules, the brown-marker minimum-fill
+pass, conditional brushable block-entity assignment, and placement failure limits.
+It also records the ground checks and template origin six blocks below landing.
+These are code-derived rules, not measured reward counts or successful placements.
+
+Validation: 18 affected tests passed. Ruff initially reported a combined assertion;
+splitting it resolved the finding, and scoped Ruff/Basedpyright passed.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_feature_modifier_references.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_feature_modifier_references.py
+```
+
+Inventory regeneration at `b8c4a7e` changed only input identity and the Extras
+non-registry contribution. All registry-family rows and Bridges content remain
+unchanged. Reproduce with a fresh output directory:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-extras-well-generation.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-extras-well-generation.json
+```
+
+### Extras swamp placement and appearance
+
+The six registered swamp feature types use their configured templates through
+AbstractSwampFeature and its shared SwampFeatureProcessor. The inventory now
+records each generator's selected non-empty terrain offsets and common landing
+anchor. Ogre checks are at landing height; the other five check four blocks below.
+These checks do not establish solid ground across the entire footprint.
+
+Gray markers become masonry with downward supports through air, liquid or
+replaceable blocks. There is no explicit minimum-Y guard in that processor loop,
+and template height excludes these terrain-dependent supports. Other recorded
+effects are masonry/stair substitution and randomized candle color, count and
+lighting. These are authored appearance rules, not observed visual discoverability.
+The decision retains the limits of direct source inspection and placement success.
+
+The existing focused command above passed 19 tests, and scoped Ruff/Basedpyright
+passed. No extraction, runtime, measurement system or generalized helper was added.
+
+Inventory regeneration at `5f52351` changed only input identity and the Extras
+swamp-generation contribution. All registry-family rows and other contribution
+fields remain unchanged. Reproduce with a fresh output directory:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-extras-swamp-generation.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-extras-swamp-generation.json
+```
+
+### Extras remaining desert surface generators
+
+Chillzone, giant torch, small ruins and obelisk now record their sand landing
+requirement, four solid support offsets and template anchors. The first, second
+and fourth place one block above landing; small ruins place at landing height.
+All four inherit the empty custom processor list from AbstractNbtFeature.
+This closes their direct terrain/processor attribution, not external stack effects
+or observed discoverability. The preserved source captures were reused unchanged.
+The existing focused command passed 19 tests; scoped Ruff/Basedpyright passed.
+
+Inventory regenerated at `d06f076`; only input identity and the Extras desert
+surface-generation field changed. All registry-family rows remain unchanged.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-extras-desert-surface.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-extras-desert-surface.json
+```
+
+### Extras and Bridges initialization attribution
+
+Both contribution records now link the preserved entrypoint and module-loader
+sources. Common initialization scans the module package and calls the module
+service. The packaged NeoForge loader delegates to a default method containing
+only return. This implementation performs no configuration registration. Service
+selection, annotation-driven registration and external controls are explicitly
+outside that conclusion. Extras' top-level scope now reflects its delivered
+62 template links and direct generator rules instead of the obsolete entrypoint-only
+status. Canonical family and effective attribute completion remain open.
+
+Twenty focused tests and scoped Ruff/Basedpyright passed using the existing
+commands above. No runtime, source extraction or new validation framework added.
+
+Regeneration at `f569bde` changed only the input identity, both initialization
+records and their source links, and the Extras scope correction. Registry-family
+rows are unchanged. Reproduce with a fresh output directory:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-initialization.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-yung-initialization.json
+```
+
+### Feature-generated family reconciliation
+
+Extras' 62 configured variants now form ten working authored-form families:
+desert chillzone, giant torch, small ruins, obelisk and well; swamp arch, church,
+cubby, ogre and pillar. Single and double arches share one family: both are thin
+masonry arch designs with the same processor and landing placement, while span
+count changes width and support checks. Each other grouping records its rationale
+using the preserved design, template envelope, contents and generator distinctions.
+These are inventory grouping judgments, not Item 9 encounter classifications.
+
+Bridges' 22 configured variants form one bridge family, preserving 11 linked
+templates. Stone/wood, damage, length and orientation remain variants of the
+same selector-driven river crossing. Three templates outside the traced selector
+links are retained as packaged content, not counted as active families.
+
+The existing focused command passed 21 tests, including exact-once coverage of
+all traced configured variants. Basedpyright initially rejected a generic JSON
+value as a set key; explicit string conversion fixed that typing issue. Scoped
+Ruff/Basedpyright then passed. The 421 registry groups remain separate; these
+additional eleven feature-family records do not establish a final pack-wide total.
+Required attributes and full retained-provider coverage remain incomplete.
+
+Regeneration at `0a17e78` changed only input identity and the two contributions
+family membership/rationale records. Registry rows and prior attribute evidence
+are unchanged. Reproduce with a fresh output directory:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-feature-families.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-yung-feature-families.json
+```
+
+### Feature-family template geometry
+
+Each of the eleven feature families now lists its exact linked templates and
+distinct nominal XYZ envelopes. X/Z are approximate authored footprint and Y is
+template height. The records explicitly exclude occupied-world interpretation,
+terrain-dependent bridge/swamp supports, and any assumption that desert-well
+height is entirely above ground. Bridge orientation can exchange X/Z.
+
+The existing focused command passed 22 tests, including a join from every family
+member through the preserved template links to its recorded envelope. Scoped
+Ruff/Basedpyright passed. No new capture or measurement system was needed.
+
+Regeneration at `62b6af5` changed only input identity and the eleven feature
+families template lists, envelopes and geometry limitations. Other inventory
+records remain unchanged. Reproduce in a fresh directory:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-family-geometry.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-yung-family-geometry.json
+```
+
+### Feature-family biome and dimension scope
+
+All eleven feature families now carry their addition-modifier biome tag, resolved
+registered biomes and captured dimension overlap. Extras desert families share
+three eligible desert biomes; swamp families share swamp and mangrove swamp.
+Bridges retains six eligible river biomes. Only overworld overlaps in the captured
+live dimension lists. This is eligibility, not observed family generation.
+
+Twenty-three focused tests passed, including binding each Extras family's complete
+member set to exactly one addition modifier. The existing tag-resolution tests
+remain the underlying evidence. Ruff found one long test line; wrapping it resolved
+the finding and scoped Ruff/Basedpyright passed. No new measurement was required.
+
+Regeneration at `4b1e33a` changed only input identity and the eleven feature
+families biome/dimension fields. Other inventory records remain unchanged.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-family-biomes.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-yung-family-biomes.json
+```
+
+### Feature-family content attribution
+
+Extras family records now join their member templates to preserved authored
+entities, block entities and chest loot. Chillzone retains its one chest, small
+ruins its two chests, giant torch its four campfires, and swamp pillar its
+campfire-bearing variant. Empty stored spawner/entity lists remain explicitly
+limited to templates. Wells separately list processor-created archaeology loot,
+so their absence of template chests cannot conceal that reward source.
+
+The bridge family now carries the existing direct encounter-content findings,
+including their natural-spawning and external-modification limitations. Twenty-four
+focused tests and scoped Ruff/Basedpyright passed. No new measurement or source
+capture was needed. Effective whole-stack content remains an open requirement.
+
+Regeneration at `532fb28` changed only input identity and family content fields.
+All membership, geometry and biome records remain unchanged.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-family-content.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-yung-family-content.json
+```

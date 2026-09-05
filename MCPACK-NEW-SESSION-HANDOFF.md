@@ -6,6 +6,206 @@
 
 ### Continuation update - 2026-09-05
 
+Feature-family content attribution is delivered in `532fb28`. Extras members
+now link template entities/block entities/chest loot; wells separately record
+processor archaeology loot. Bridges carries its scoped direct encounter findings.
+Twenty-four focused tests and scoped checks passed. Inventory SHA-256:
+`d064a47129cf9b538ca11a9f8398bcbe33f8113f7246cec26d0d14025afd03d4`.
+Continue effective content, hostility/discoverability and full provider coverage.
+Item 8 remains incomplete. No new measurements or source captures were added.
+
+Feature-family biome and dimension scope is delivered in `4b1e33a`. Each
+family now links its resolved addition-modifier biomes and captured dimension
+overlap. Only overworld overlaps; this does not claim observed generation.
+Twenty-three focused tests and scoped checks passed. Inventory SHA-256:
+`759e4b2149d0fb7e2b33b8a06d9152a7c90983035761979c7e50f936379fc6dc`.
+Continue content/hostility/discoverability attribution and full provider coverage.
+Registry and feature family memberships are unchanged. Item 8 remains incomplete.
+
+The eleven YUNG feature families now have member-bound template lists and XYZ
+envelopes, delivered in `62b6af5`. Bridge/swamp support extensions and buried
+well placement remain explicit limitations. Twenty-two focused tests and scoped
+checks passed. Inventory SHA-256:
+`b45003452d05e67634dce0128ffda651384b12957c5eb40ea8dcf2d6519d47e6`.
+Registry groups and family membership are unchanged. Continue dimension/biome
+and content attribution for these families, and full retained-provider coverage.
+Item 8 remains incomplete; no new measurement system was added.
+
+Feature-family reconciliation in `0a17e78` assigns Extras 62 configured variants
+to ten working families and Bridges 22 variants to one. Single/double swamp arches
+are one family; bridge material/damage/length/axis remain variants. Twenty-one
+focused tests and scoped quality checks passed. Registry rows remain 421 groups
+and 887 roots; no final pack-wide family count is claimed. Inventory SHA-256:
+`a582e44e1a23ee2f7701616bc1264346112745aa805bcf131232d74df0a1a585`.
+Continue full provider coverage and remaining family attributes. These feature
+family records retain their separate generation path; do not count selector or
+unlinked packaged templates as families. Item 8 remains incomplete.
+
+Both YUNG initialization findings are integrated in `f569bde`; the generated
+inventory now links all corresponding source captures. Twenty focused tests and
+scoped checks passed. Inventory SHA-256:
+`c6d84d64ce8570bbe4e3a388a9d1a8a0997e29e88474233088b5ca4a75e0a4a7`.
+Extras scope now reflects completed template links and direct generator rules.
+Continue provider coverage and canonical family reconciliation; do not repeat
+empty module-loader inspection. Item 8 remains incomplete with 421 provisional
+registry groups and 887 roots. No new measurement system was added.
+
+Initialization captures in `3ff1893` show Extras/Bridges NeoForge loaders
+delegate to IModulesLoader.loadModules. The newly preserved default methods
+contain only return. This branch does not register configuration controls; do
+not repeat these captures. Auto-registration/data and wider provider coverage
+still need reconciliation. Inventory remains at `7343614` with SHA-256
+`878db7626144c928e32a1b5a6eeef52fa8cc934d3ed1a2d8dfed2ec2bcfaa318`.
+No new runtime or measurement system was added. Item 8 remains incomplete.
+
+No Extras/Bridges-named path was found in the frozen configuration tree, but
+this is not an absence-of-controls conclusion. Resolve the initialization path
+using four exact classes with the existing extractor: Extras common/NeoForge
+entrypoints and both NeoForgeModulesLoader implementations. Existing Bridges
+entrypoints delegate to the module loader and are already captured. This is a
+specific configuration attribution gap; no new measurement system is needed.
+
+Extras remaining desert terrain and empty custom processor paths are resolved
+in `d06f076`: chillzone, giant torch, small ruins and obelisk. Nineteen focused
+tests and scoped checks passed. Inventory SHA-256:
+`878db7626144c928e32a1b5a6eeef52fa8cc934d3ed1a2d8dfed2ec2bcfaa318`.
+Do not repeat these direct generator reads. Continue configuration/provider
+coverage, canonical family reconciliation and required effective attributes.
+The 421 provisional registry groups and 887 roots are unchanged. Item 8 remains
+incomplete. No runtime or new measurement system was added.
+
+Extras swamp placement and appearance rules are delivered in `5f52351`. All
+six feature types now have terrain-check offsets, processor binding, support
+column limits and masonry/candle effects recorded. These cover 46 configured
+feature variants, not 46 families. Nineteen focused tests and scoped quality
+checks passed. Inventory SHA-256:
+`a88bb2864dbbbf4af04006deece95a825a7ed41f905156f9d1b96bbacbbb371d`.
+Continue remaining desert effects, configuration/provider coverage and canonical
+family reconciliation. Swamp template height must not be used as full support
+height. No new capture or measurement system was added. Item 8 remains incomplete.
+
+Extras well archaeology and placement rules are delivered in `b8c4a7e`, with
+processor constructor evidence in `0389282`. The regenerated inventory SHA-256 is
+`8c5c53f1135cbaa6c038d1e89260c15a4fbba58ccc4bf0ad3ed0fb575300ce86`. Eighteen affected tests and scoped checks passed.
+Both marker loot paths, conditional brushable assignment and the six-block-deep
+template anchor are recorded. Registry membership remains 421 provisional groups
+and 887 roots. Continue swamp/other generator effects, configuration/provider
+coverage and canonical-family reconciliation. Do not recapture the processor
+module or repeat well interpretation. Item 8 remains incomplete.
+
+The twelve-class Extras capture is delivered in `4303da0`. DesertWellProcessor
+adds suspicious-sand loot absent from stored template block entities. The
+generator references FeatureProcessorModule.DESERT_WELL_PROCESSOR, so capture
+that exact module with the existing extractor to verify the constructor binding
+before attributing processor effects to generated wells. This resolves a specific
+loot-source gap without a new measurement system. Swamp processor interpretation
+also shows support columns can extend below the template envelope; integration
+remains pending.
+
+The remaining Extras generator capture selects twelve exact classes: the nine
+uncaptured desert/swamp generator or base classes and three processor/interface
+classes. These implement the remaining eight configured feature types. Existing
+template records cannot reveal their custom effects. Reuse the existing extractor
+and preserve this source increment; no new framework or runtime is needed.
+
+
+Extras code-linked envelopes are delivered in `bb970de`: chillzone 3x4x4,
+giant_torch 4x7x4 and ruins_0 4x5x4. All 62 packaged template envelopes now have
+verified linked records, without claiming occupied world sizes or family counts.
+Seventeen affected tests and scoped checks passed. Inventory SHA-256:
+`c7fa2fed220886d952ea872056cd9fcf0899719e431b70923fc21be72b4835ea`.
+All 421 registry family rows and 887 roots remain unchanged. Continue effective
+content/terrain, family and configuration/provider reconciliation. Item 8 remains
+incomplete. No new extraction or measurement system added.
+
+
+Extras code-based links are delivered in `4bb656f`. Registration annotations,
+constructor bindings, configured type fields and template calls resolve the
+three previously open links. All 62 packaged templates now have a traced feature
+link (59 JSON-explicit, three code-based), not 62 accepted families. Seventeen
+affected tests and scoped quality checks passed. Inventory SHA-256:
+`6354d013331c716f3091e87ce3b49fa03a766471a7a8cd2167bfc0bf0c50e5d9`.
+All 421 registry family rows and 887 roots remain unchanged. Do not repeat the
+registration capture. Continue terrain/content, family reconciliation and
+configuration/provider coverage. Item 8 remains incomplete.
+
+
+Extras FeatureModule now requires verbose javap output: the initial capture
+omitted field annotations, leaving exact feature-ID binding unproven. Enable
+verbose output for that exact existing class and preserve a separate capture;
+keep the prior raw capture intact. No generalized extraction option is needed.
+
+
+Extras desert class-to-template calls are delivered in `0f8e610`. The three
+classes pass fixed IDs through centered placement, with above-ground anchors
+for chillzone/torch and the ground anchor for ruins. Placement success is
+discarded by the shared helper. Sixteen affected tests and scoped checks passed.
+Inventory SHA-256:
+`55fd39f5efd49aee91e1a922eacc763291a09dc9892ba4175c1802bd741eeb0d`.
+All 421 registry family rows and 887 roots remain unchanged. The non-verbose
+FeatureModule capture lacks registration annotations: preserve a verbose capture
+of that exact class to finish feature-ID binding. Remaining terrain/content and
+configuration work remains open. Item 8 is incomplete; no new measurement added.
+
+
+The next Extras source capture selects five exact classes using the existing
+extractor: feature registration, AbstractNbtFeature and the three empty-config
+desert generators. JSON cannot establish their template links or custom effects.
+This is the smallest source increment needed to resolve those demonstrated gaps;
+no new evidence class, schema, validator or runtime is introduced.
+
+
+Extras packaged contents are delivered in `bae0ae4`: 62 empty entity lists,
+three chests across chillzone/ruins_0 and eight campfires across giant_torch/
+swamp_pillar_2. Both chest loot resources resolve. There are no stored spawner
+block entities; custom generator effects are not yet resolved. Fifteen affected
+tests and scoped quality checks passed. Inventory SHA-256:
+`c27dbad3867324ff9110ef5f0dfe04a5e6b3dfd4867e8af9205cb9b3c431ff3a`.
+All 421 registry family rows and 887 roots remain unchanged. Next inspect Extras
+custom generators, especially the three empty-config desert features, and
+configuration registration. Item 8 remains incomplete. No new extraction or
+measurement system was added.
+
+
+Extras explicit template membership is delivered in `2957779`. All 59 explicit
+location references resolve, with nominal XYZ sizes recorded. Three empty-config
+generators (desert_chillzone, desert_giant_torch, desert_ruins_0) require code
+attribution; similarly named packaged templates are not assumed linked or unused.
+Fourteen affected tests and scoped quality checks passed after one assertion wrap.
+Inventory SHA-256:
+`f66b81d0def7ecf9de36eb82f036ef646ed9b343930b92f8f030a9546ab1c060`.
+All 421 registry family rows and 887 roots remain unchanged. Continue Extras
+custom-generator/content attribution and configuration registration. Four
+packaged templates have block entities (chillzone, giant_torch, ruins_0 and
+swamp_pillar_2); their effective content is not yet attributed. Item 8 remains
+incomplete; no new extraction or measurement system added.
+
+
+Extras biome scope is delivered in `397812a`. Desert additions and declared
+vanilla well removal share three resolved desert biomes; swamp additions have
+two. All intersect only the captured overworld list, with no required missing
+tag members. This is packaged scope, not observed generation/removal. Thirteen
+affected tests and scoped quality checks passed. Inventory SHA-256:
+`7a1110e2734dd4f04a4084ed2ffbe9aa3be0a6af9fc61ffd5518ff40c831aba0`.
+All 421 registry family rows and 887 roots remain unchanged. Continue Extras
+template/custom-generator attribution and effective configuration registration;
+bridge configuration and wider provider coverage remain open. Item 8 remains
+incomplete, with no new capture or measurement system added.
+
+
+YUNG Extras entry points are delivered in `fe1fb1e`. Two NeoForge additions
+reference 16 desert and 46 swamp placed features, matching all 62 same-ID
+configured/placed runtime entries. There are zero yungsextras structure roots.
+The third modifier declares vanilla desert-well removal. Neither 62 features
+nor 11 generator types are accepted family counts. Twelve affected tests and
+scoped quality checks passed. Inventory SHA-256:
+`9fcd6b648bd22c311a0d9f167c0013cb500e3817ed6c06406666e0dc719cadac`.
+All 421 registry family rows and 887 roots remain unchanged. Continue Extras
+template/custom-generator attribution and configuration/biome scope. Bridge
+standalone configuration and wider provider coverage also remain open. Item 8
+is incomplete; no new capture or measurement system was added.
+
+
 Bridge biome/modifier constraints are delivered in `c19f9d5`. Existing merged
 tags resolve six registered river biomes with no required missing members;
 only the captured overworld possible-biome list overlaps. All 22 variants
