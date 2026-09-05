@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-05
 
+AdoraBuild is delivered through `d0ad289`, built from `306e678`. All 106
+registry roots are assigned exactly once across 31 working groups. Material,
+biome and size variants remain grouped with their complete definitions: 45
+standalone houses, seven watercraft and separate tree-house, frozen-shelter,
+temple, prison and other designs. The buried sand castles remain separate
+from the tiny beach castle. Library size labels are not measured dimensions.
+The basalt chamber trace retains its missing `minecraft:basalt_chambers/chambers`
+pool. Existing observations link basalt chambers, houses, Nether fortresses
+and prisons; absence of other observations does not establish disabled content.
+Forty-seven focused tests and scoped Ruff/basedpyright checks passed; two builds
+were identical and all 351 prior family records unchanged. Inventory SHA-256:
+`52ab64d7cc5c4d672c397fb3f5475fae36445a7fc1d5d44268e9cb0a41e55714`.
+Totals: 382 working groups, 792 assigned IDs, 95 unassigned. Remaining registry
+providers are vanilla, Terralith, BetterEnd, Aether, Deep Aether, Creating Space,
+Illager Invasion and Supplementaries. Continue their assignment, non-registry
+contributions, custom generation and canonical/attribute reconciliation.
+No measurement system was added. Final Item 8 gate, review and main merge remain open.
+
 IDAS is delivered through `60e419b`, built from `1a65a9e`. All 84 runtime
 registry roots are assigned exactly once across 62 working design groups.
 Nine groups retain portal, statue, den, desert camp, desert market, dig site,
