@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "251c7036fc0bae5d26b0f94b9970198857887a1dc244d1fc4a80537c458f796d",
+    "evidence/item-8/family-decisions.json": "f72a460733e7d8ee465b0f7a8d0340879a5e5afb48e97d48ae2833dfd3173279",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -159294,7 +159294,12 @@
             "DesertGiantTorchFeature": "yungsextras:desert/misc/giant_torch",
             "DesertSmallRuinsFeature": "yungsextras:desert/misc/ruins_0"
           },
-          "scope": "Verified class-to-template calls. The captured FeatureModule instantiates these classes, but its non-verbose capture does not preserve the field registration annotations. Exact feature-ID registration binding and remaining terrain/content effects are still open; the JSON-explicit mapping remains separate.",
+          "feature_type_to_class": {
+            "yungsextras:desert_chillzone": "ChillzoneDesertFeature",
+            "yungsextras:desert_giant_torch": "DesertGiantTorchFeature",
+            "yungsextras:desert_ruins_0": "DesertSmallRuinsFeature"
+          },
+          "scope": "FeatureModule class/field AutoRegister annotations bind the yungsextras namespace and feature names to constructor-bound classes. Packaged configured type fields and captured template calls complete the three code-based links. Remaining terrain/content effects are still open; the JSON-explicit mapping remains separate.",
           "success_limit": "The helper discards the placeInWorld boolean, then runs the processor list and returns the loaded template. Each of these classes returns whether the template is non-null. This is not proof that all template blocks were placed.",
           "template_call": "Each class constructs its static ID with ResourceLocation.fromNamespaceAndPath and passes that ID to inherited createTemplateFromCenter."
         },
@@ -159307,7 +159312,8 @@
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
-          "evidence/item-8/sources/yungs-extras-desert-code/identities.json": "c595f5123a71105b276884d33229e4b7da2bf9b91b70ec8e5cbf1cba069d465b"
+          "evidence/item-8/sources/yungs-extras-desert-code/identities.json": "c595f5123a71105b276884d33229e4b7da2bf9b91b70ec8e5cbf1cba069d465b",
+          "evidence/item-8/sources/yungs-extras-registration/identities.json": "07300368df9a9fe1fe8f7e6efad0bc12505ebeb2e4db2a00389150a39b9e417e"
         },
         "mechanism": "NeoForge biome modifiers add placed features, which reference configured features. No yungsextras structure-registry roots are present.",
         "packaged_template_content": {
@@ -159339,12 +159345,17 @@
             "data/yungsextras/loot_table/desert/chillzone.json": "601df9aa1ac8879d65876ea9598ff460237a55a236f9d5010b19715012f6c266",
             "data/yungsextras/loot_table/desert/ruins.json": "fa35cdb486f2bad1d002f5029faab32a187a291e96da720baedc55ff53bd110e"
           },
-          "scope": "All 62 packaged templates have empty entity lists. Only the four named templates contain block entities: three chests and eight campfires, with no stored spawner block entities. The two chest-bearing templates remain outside the 59 explicit configured location links until generator code is checked. This is packaged content, not observed loot, full generated content or absence of custom spawner/entity/loot effects."
+          "scope": "All 62 packaged templates have empty entity lists. Only the four named templates contain block entities: three chests and eight campfires, with no stored spawner block entities. The two chest-bearing templates are linked through verified generator code, separately from the 59 JSON-explicit links. This is packaged content, not observed loot, full generated content or absence of custom spawner/entity/loot effects."
         },
         "relationship": "The two addition modifiers reference 62 distinct placed features, each with a same-ID configured feature. These are contribution entry points, not 62 canonical families. The configured feature types are generator categories, not an accepted family classification.",
         "removal_scope": "The packaged removal targets minecraft:desert_well at surface_structures in the same three resolved desert biomes as desert additions. Their captured dimension overlap is overworld only. Configuration/registration effects and generated-world consequences remain to be reconciled.",
         "scope": "Runtime registry presence plus packaged root references only. Template membership, custom generators, configuration, family relationships and required attributes remain incomplete. Forge-path duplicates are not counted as additional NeoForge contributions.",
         "template_membership": {
+          "code_configured_to_template": {
+            "yungsextras:desert/misc/desert_chillzone": "yungsextras:desert/misc/chillzone",
+            "yungsextras:desert/misc/desert_giant_torch": "yungsextras:desert/misc/giant_torch",
+            "yungsextras:desert/misc/desert_ruins_0": "yungsextras:desert/misc/ruins_0"
+          },
           "configured_to_template": {
             "yungsextras:desert/obelisks/desert_obelisk": "yungsextras:desert/obelisk/obelisk",
             "yungsextras:desert/obelisks/desert_obelisk_creeper": "yungsextras:desert/obelisk/obelisk_creeper",
@@ -159713,7 +159724,7 @@
               4
             ]
           },
-          "scope": "59 explicit configured location references resolve to 59 packaged templates. Sizes are unrotated template envelopes, not occupied or processed world geometry. Three empty-config generators require code attribution; the three templates outside explicit links are not assumed inactive. Template block entities and generator/processor effects still require content attribution."
+          "scope": "59 explicit configured location links and three code-bound links cover all 62 packaged templates. JSON-explicit and code-bound paths remain separate. Sizes are unrotated template envelopes, not occupied or processed world geometry. Generated content and family reconciliation remain incomplete."
         }
       }
     },
