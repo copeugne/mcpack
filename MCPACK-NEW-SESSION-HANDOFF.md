@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-05
 
+Six additional vanilla normal-generation dispositions are resolved in `f1f4649`,
+using suppression sources delivered in `40922f3`: desert pyramid, jungle pyramid,
+fortress, ocean monument, stronghold and swamp hut. Five frozen settings enable
+their cancellation hooks; the stronghold hook is unconditional after type match.
+All 69 affected tests and scoped checks pass. Inventory SHA:
+`385100c3e7f984662e7e9eaad598d4b858553a13c5965caabb29f764b2d61816`.
+Decision SHA: `216306ee257892d8bb21d0b25a9b0ce797dbaa1fa00c9f6b6a449168783a7167`.
+Exact source selections, checks and boundaries are recorded in
+`evidence/item-8/sources/yung-suppression.md`. Do not dissect these inactive vanilla
+generators further merely to fill descriptions. Keep registry presence, compatible
+biomes and existing vanilla source descriptions separate from active generation.
+Next verify Integrated Villages' Disable Vanilla Villages=true hook and IDAS's
+Disable Vanilla Desert Pyramid=true hook. Their frozen labels were inspected,
+but cancellation behavior has not yet been bound. Continue other provider and
+attribute gaps afterward. No new runtime measurement system was added. Item 8
+remains incomplete, including final Codex review and verified main merge.
+
 Village Taverns parent attribution is delivered in `1e7dd7c`. The existing
 family records now link 25 reachable tavern templates to 66 registry roots in
 22 working groups, including IDAS castle. Twenty-six conditioned modifiers are
