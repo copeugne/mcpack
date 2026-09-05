@@ -1503,3 +1503,26 @@ Inventory regenerated at `e8503b5`, SHA-256:
 `71f820a7edd7337111c7e8b8a031e0ef11a99babdea3152b440f7a3ccd459ed5`.
 Only the decision identity and bridge placement-eligibility field changed.
 All 421 registry family rows and 887 roots remain unchanged.
+
+## Bridge biome and modifier constraints
+
+Existing merged tags resolve yungsbridges:has_structure/bridge to six registered
+biomes: vanilla river/frozen_river, Regions Unexplored cold_river/muddy_river/
+tropical_river and Terralith warm_river. No required members are missing. Only
+the captured overworld possible-biome list overlaps these members. This is not
+observed placement. Each of the 22 inline variants applies terrain placement,
+rarity_filter chance=3, then RNG initialization. The captured initializer reseeds
+the supplied random source from two odd long values, X/Z and constants, returning
+the same position. Multiple selector attempts prevent interpreting chance=3 as
+an observed per-chunk bridge probability. Configuration registration and external
+modifications still require reconciliation. No new measurement system was added.
+
+Eleven affected tests and scoped Ruff/Basedpyright passed. Decision SHA-256:
+`35b9fbabcdc6521dd3cdbbb11d7432204e9b88e571c4bdb1a94c58423f9b0cb2`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-bridge-biomes.json
+```
