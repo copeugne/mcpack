@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-05
 
+Voyager living trees are delivered through `a85bc74`, built from `7389ff9`.
+Nine roots form one working family with fifteen alternative templates. Full
+definitions retain biome differences and big oak's terrain range/radius checks;
+big oak alone has a packaged loot reference. Approximate dimensions use the
+existing template envelopes, explicitly including air/padding and rotation
+limitations, not a new measurement system. World observations 92 and 495 remain
+linked. Thirty-eight focused tests and scoped quality checks passed; two builds
+were byte-identical and prior family records unchanged. Inventory SHA-256:
+`163351577120afb31aaa850979a94cf907154a9b45875d19de9ac632fbb7d460`.
+Totals: 196 working groups, 336 assigned IDs, 551 unassigned; 87 mvs roots remain.
+Continue Voyager wells, carts and other designs, shared effective attributes,
+remaining providers and non-registry contributions. Canonical reconciliation,
+required attributes and the final Item 8 gate/review/main merge remain open.
+
 Voyager stalls and End scraps are delivered through `0f0b9e9`, built from
 `d077750`. Eight roots form two working families with their original template
 sizes and loot differences preserved. End scrap variant 2 additionally uses

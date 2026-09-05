@@ -369,3 +369,19 @@ attributed to the corresponding variants. Neither has retained world
 observations. Existing catalogs and checks suffice for this grouping increment;
 no additional measurement system was introduced. Required effective gameplay
 attributes and final inventory completeness remain unresolved.
+
+Voyager living trees (`7389ff9`, joined in `a85bc74`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-trees-7389ff9.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-trees-7389ff9-repro.json
+cmp evidence/raw/item8/inventory-trees-7389ff9.json evidence/raw/item8/inventory-trees-7389ff9-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 38 focused tests and scoped Ruff/basedpyright checks passed. Nine roots
+retain their full definitions and fifteen alternative template dimensions.
+The direct source check binds the approximate footprint and height lists to
+those dimensions and preserves big oak's exceptional loot and terrain checks.
+These are packaged envelopes, including padding and air, not measurements of
+occupied blocks. The two retained world observations remain linked separately.
