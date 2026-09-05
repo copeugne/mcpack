@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-05
 
+Initial vanilla trial-spawner attribution is now resolved conditionally.
+Lifecycle source `bb9582a`, extractor selection `2c43578` and frozen-catalog
+check `c5531da` show initialization from normal potentials before player
+detection can make these initially non-ominous spawners ominous. The five mob
+IDs are breeze, spider, cave spider, silverfish and slime. Slime has two Size
+variants (1 and 2) with weights 3 and 1; an initial one-entry test premise failed
+and was corrected to preserve those values. Ten focused tests and scoped
+Ruff/basedpyright passed. All delivered refs were verified.
+See `evidence/item-8/sources/vanilla-trial-spawner-lifecycle-code/README.md`.
+Manifest SHA:
+`658728eebd2eec80ac69ecf077c4ca305efa3102a3f4d2b2c9655ca95d962aab`.
+The current trace and inventory hashes remain unchanged. Do not repeat the
+vanilla lifecycle work: apply this conditional disposition when assembling
+effective family attributes, while retaining the boundary for mod transforms
+and arbitrary saved states. Continue broader custom-generation/provider gaps.
+
 Trial-spawner selection code is delivered in `776dcdb`, extracted with `ed49f84`.
 See `evidence/item-8/sources/vanilla-trial-spawner-code/README.md` for the exact
 command, method/offset references and limitations. Manifest SHA:
