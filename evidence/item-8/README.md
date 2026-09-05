@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `a7feb3f`, SHA-256
-`da8cecc81ca80eeb5cd3b8a894cf6547689881582205aa6b78e20d7bc6937a7e`.
+Current working inventory regenerated at `2299fd0`, SHA-256
+`9de6189328999382fae37cc1a45888422112856ebdc20c152159ae11e4469d5c`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -2093,3 +2093,11 @@ sed -n '1508p;1696p;11956p;11962p;11969p;12015p;12612p;12676p;12894p;12895p;1625
 No raw archive was regenerated and no server was launched. Twenty-nine focused
 tests and scoped builder checks passed; they do not substitute for the cited
 manual log inspection or prove generated-world outcomes.
+
+Regenerated at `2299fd0`; only input identity and Better End Island attribution
+changed. Reproduce with the existing builder in a fresh output path:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-runtime.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-runtime.json
+```
