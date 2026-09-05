@@ -273,6 +273,8 @@ CLASSES = (
     "com/yungnickyoung/minecraft/yungsextras/YungsExtrasNeoForge.class",
     "com/yungnickyoung/minecraft/yungsextras/services/NeoForgeModulesLoader.class",
     "com/yungnickyoung/minecraft/yungsbridges/services/NeoForgeModulesLoader.class",
+    "com/yungnickyoung/minecraft/yungsextras/services/IModulesLoader.class",
+    "com/yungnickyoung/minecraft/yungsbridges/services/IModulesLoader.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
