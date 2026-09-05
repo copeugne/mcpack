@@ -32,3 +32,25 @@ village attributes, and reconcile runtime pool evidence with the mutation path.
 Do not create separate families for chef/cook houses or expand into villager
 trade economics. Scoped extractor Ruff and Basedpyright passed. No new runtime
 sample or measurement system.
+
+## Packaged content of injected houses
+
+The focused catalog join binds all ten direct house templates to the retained
+Chef's Delight archive. Each has an empty authored entity list and no vanilla
+spawner block-entity entry; all explicit LootTable references use
+chefsdelight:chests/cooker, which resolves in the selected packaged loot catalog.
+This is base component content, not proof of no enemies or effective loot.
+
+The snowy cook house additionally connects to minecraft:village/snowy/villagers.
+Cook houses in plains, desert and taiga reference minecraft:village/plains/streets.
+Other entrance connectors reference minecraft:empty. Do not infer no villagers
+from empty direct entity lists or normalize the non-plains street references.
+Jigsaw expansion and the consuming village remain relevant to generated content.
+
+```sh
+uv run pytest -q tests/item8/test_chefsdelight_components.py
+```
+
+The focused test and Ruff pass. Basedpyright initially reported an unhashable
+JsonValue in the loot-reference assertion; a string type annotation corrected
+that static finding and Basedpyright now passes. No additional runtime sample.
