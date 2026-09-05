@@ -26,3 +26,23 @@ fitters, graph cells and opening pieces are components, not families. Do not
 substitute recursive jigsaw traversal for these direct custom calls or infer
 successful placement from the presence of packaged resources. Scoped extractor
 Ruff and Basedpyright passed. No new world measurement or acceptance claim.
+
+## Candidate catalog reconciliation
+
+The focused test binds 19 direct building/fitter candidate suffixes across the
+four monument variants: 76 selected pools reference 88 distinct templates.
+All candidate templates exist. Entries have positive weights and use single
+pool elements; pool fallbacks are minecraft:empty. Processor references are
+minecraft:empty plus desert_randomize, icy_randomize, jungle_randomize,
+nether_randomize and nether_openings under repurposed_structures:monuments/.
+Their effects remain to be reconciled before effective content attribution.
+
+```sh
+uv run pytest -q tests/item8/test_monument_components.py
+```
+
+The focused test and scoped Ruff/Basedpyright pass. This is candidate-resource
+coverage, not complete graph reachability, assembly geometry, generation
+success or an accepted family count. The packaged openings/wall_2 resources
+are not included in the captured direct candidate suffixes. Their existence
+does not establish an active call path or justify calling them unreachable.
