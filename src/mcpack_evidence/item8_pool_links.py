@@ -117,7 +117,7 @@ def _link_record(
     }
 
 
-def _element(  # noqa: C901 - explicit handling of the observed codec variants.
+def _element(  # noqa: C901, PLR0912 - explicit handling of the observed codec variants.
     value: JsonValue, pointer: str, edges: list[JsonValue], unknown: list[JsonValue]
 ) -> None:
     if not isinstance(value, dict):
@@ -138,6 +138,17 @@ def _element(  # noqa: C901 - explicit handling of the observed codec variants.
             edges.append(_edge("processor_list", processors, pointer + "/processors"))
         if kind == "moogs_structures:versioned_single_pool_element":
             edges.extend(_versioned_edges(value.get("locations"), pointer))
+    elif kind == "lithostitched:limited":
+        # The preserved legacy codec wraps a delegate; its limit constrains placement,
+        # not whether that delegate is a possible source of templates or processors.
+        edges.append(
+            {
+                "kind": "pool_element_constraint",
+                "pointer": pointer,
+                "document": {key: child for key, child in value.items() if key != "delegate"},
+            }
+        )
+        _element(value.get("delegate"), pointer + "/delegate", edges, unknown)
     elif kind == "minecraft:list_pool_element" and isinstance(value.get("elements"), list):
         children = value["elements"]
         assert isinstance(children, list)  # noqa: S101 - explicit validation above.
