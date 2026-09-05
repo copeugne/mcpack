@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-05
 
+Bind the frozen Better End Island TOML to its runtime fields through the exact
+BEIConfigNeoForge, ConfigModule and ConfigModuleNeoForge classes. The platform
+and gateway hooks already identify the controlling fields. Reuse the existing
+extractor for these three classes; this resolves a configuration evidence gap
+without a new runtime or measurement system.
+
 Better End Island processor effects are resolved in `69d3e14`, source capture
 `763bd43`. DragonEggProcessor preserves existing eggs; ObsidianProcessor varies
 obsidian with the clamped dragon-kill count. Twenty-six focused tests and scoped

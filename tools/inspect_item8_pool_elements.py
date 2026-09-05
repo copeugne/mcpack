@@ -282,6 +282,9 @@ CLASSES = (
     "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature.class",
     "com/yungnickyoung/minecraft/betterendisland/world/processor/ObsidianProcessor.class",
     "com/yungnickyoung/minecraft/betterendisland/world/processor/DragonEggProcessor.class",
+    "com/yungnickyoung/minecraft/betterendisland/config/BEIConfigNeoForge.class",
+    "com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.class",
+    "com/yungnickyoung/minecraft/betterendisland/module/ConfigModuleNeoForge.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
