@@ -63,7 +63,8 @@ def retained_sources(root: Path) -> tuple[ArchiveInput, ...]:
 
 
 def packaged_sources(
-    sources: tuple[ArchiveInput, ...], kind: Literal["json", "template", "metadata"] = "json"
+    sources: tuple[ArchiveInput, ...],
+    kind: Literal["json", "template", "metadata", "code"] = "json",
 ) -> dict[str, JsonValue]:
     """Preserve packaged resources without inferring runtime activation."""
     archives: list[JsonValue] = []
@@ -87,7 +88,7 @@ def _collect(
     payload: bytes,
     location: str,
     resources: list[JsonValue],
-    kind: Literal["json", "template", "metadata"],
+    kind: Literal["json", "template", "metadata", "code"],
 ) -> None:
     with ZipFile(BytesIO(payload)) as archive:
         names = archive.namelist()
@@ -101,6 +102,21 @@ def _collect(
                 raise ValueError(message)
             if name.endswith(".jar"):
                 _collect(archive.read(name), f"{location}!/{name}", resources, kind)
+            elif kind == "code" and name.endswith(".class"):
+                raw = archive.read(name)
+                references: list[JsonValue] = [
+                    term.decode("ascii") for term in (
+                        b"world/level/levelgen/", b"StructureTemplate",
+                        b"ServerAboutToStartEvent", b"WorldGenRegion",
+                        b"ChunkEvent", b"BiomeLoadingEvent",
+                    ) if term in raw
+                ]
+                if references:
+                    resources.append({
+                        "archive": location, "path": name,
+                        "sha256": hashlib.sha256(raw).hexdigest(),
+                        "references": references,
+                    })
             elif kind == "template" and name.endswith(".nbt") and "data" in path.parts:
                 raw = archive.read(name)
                 resources.append(

@@ -6,6 +6,35 @@
 
 ### Continuation update - 2026-09-05
 
+Whole-stack candidate enumeration is now delivered by d475f15 and dd8cc26;
+the existing extractor's source join is 21eaef5. Current scope reconciliation
+queue and provider counts are in evidence/item-8/provider-scope.md. This is the
+priority, superseding Farmer's Delight-first attribute work below. All retained
+archives have named candidate rows; resolve those rows and canonical alternatives
+before returning to granular attribute tracing. The scan does not itself prove
+the final family count. User explicitly requires that count to be established.
+
+
+Priority correction requested by the user: finish the whole retained-provider
+scope pass before further individual component tracing. Existing packaged
+catalogs cover every archive but do not enumerate code-only generation hooks
+across all archives. Extend the existing source extractor with a narrow code
+reference inventory, including nested JARs, to make this missing coverage pass
+reproducible. This is needed to establish the finite remaining provider list;
+packaged-data-only inspection cannot close that demonstrated gap. Reference
+matches are review candidates, not family counts or semantic absence proofs.
+No new framework, schema, measurement run or exhaustive helper tracing.
+
+
+Current progress and definition of done are reconciled in evidence/item-8/README.md
+under "Current delivery work at 934dbcb". That section supersedes older next-step
+instructions below. Chef's Delight direct content is integrated and published
+in c3b345f and 934dbcb; inventory reproduction is exact and family rows unchanged.
+Next is Farmer's Delight/provider coverage, then canonical reconciliation and
+required attributes. The user requests frequent concrete updates on completed
+work and what remains. Do not imply a known remaining-family count while coverage
+is open, or use generic INCOMPLETE rows as a progress measure.
+
 Chef's Delight provider component relationship and frozen weights are recorded
 in c51df00; source injection capture is d6e6740. It appends to runtime templates,
 not rawTemplates. Both plains additions read cookHousePlains. Do not repeat
