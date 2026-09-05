@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+Repurposed witch huts are delivered through `fa401f2`, built from `c5f5dd6`.
+Six biome/material roots share one family, common generation settings and
+7 by 8 by 9 packaged template envelopes. Authored witches/cats remain distinct
+from the piece-bounded spawn overrides; intended hostile encounter is supported
+by both sources without asserting an observed population. No retained world
+observations exist. Forty-two focused tests and scoped quality checks passed;
+two builds were identical and earlier family records unchanged. Inventory SHA:
+`5d36573d8314454c8663c139fe16c37ffdf04535eecc122787a96d989f34c7ba`.
+Totals: 264 working groups, 429 assigned IDs, 458 unassigned; 101 Repurposed
+roots remain. Continue Repurposed design variants and their custom generators,
+other providers, non-registry contributions and shared effective attributes.
+Eight Repurposed mansion definitions use custom generation without direct
+start pools; do not pretend that the existing pool trace covers them. Final
+canonical reconciliation, Item 8 attributes/gate/review/main merge remain open.
+
 Voyager's remaining 64 roots are delivered through `dd2c364`, built from
 `f4fdcc2`. All 129 runtime registry entries are assigned exactly once across
 73 working groups. This completes namespace assignment, not canonical-family
