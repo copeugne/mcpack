@@ -3,6 +3,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+import tomllib
 from collections import Counter
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
@@ -945,3 +946,39 @@ def test_better_end_island_processors_preserve_eggs_and_vary_obsidian() -> None:
         assert "StructureBlockInfo.nbt:" in source
         for excluded in ("addFreshEntity", "setLootTable", "BaseSpawner", "Blocks.SPAWNER:"):
             assert excluded not in source
+
+
+def test_better_end_island_configuration_binds_frozen_keys_to_fields() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    contribution = contributions["betterendisland:platform_gateway"]
+    config = cast("dict[str, JsonValue]", contribution["configuration"])
+    evidence = cast("dict[str, str]", contribution["evidence"])
+    path = Path(str(config["file"]))
+    raw = path.read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == evidence[str(path)]
+    values = cast("dict[str, bool]", tomllib.loads(raw.decode())[str(config["section"])])
+    assert values == config["values"]
+    assert values["Spawn Vanilla Obsidian Platform"] is False
+    assert values["Spawn Vanilla End Gateways"] is False
+    base = Path("evidence/item-8/sources/better-end-island-configuration")
+    raw = (base / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == evidence[str(base / "identities.json")]
+    sources: dict[str, str] = {}
+    for row in cast("list[dict[str, str]]", json.loads(raw)):
+        raw = (base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    binding = sources["ConfigModuleNeoForge"]
+    assert "// String " + path.name in binding
+    assert "ModConfig$Type.COMMON:" in binding
+    mapping = cast("dict[str, str]", config["key_to_field"])
+    assert set(mapping) == set(values)
+    for key, field in mapping.items():
+        definition = sources["BEIConfigNeoForge"].split("// String " + key + "\n")[1]
+        assert "Field " + field + ":" in definition.split("putstatic", 1)[1].splitlines()[0]
+        assert "BEIConfigNeoForge." + field + ":" in binding
+        assert "ConfigModule." + field + ":Z" in binding
