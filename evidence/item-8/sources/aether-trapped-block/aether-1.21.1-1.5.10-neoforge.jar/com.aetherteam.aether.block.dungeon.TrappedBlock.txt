@@ -1,0 +1,144 @@
+Compiled from "TrappedBlock.java"
+public class com.aetherteam.aether.block.dungeon.TrappedBlock extends net.minecraft.world.level.block.Block {
+  private final java.util.function.Supplier<net.minecraft.world.entity.EntityType<?>> spawnableEntityTypeSupplier;
+
+  private final java.util.function.Supplier<? extends net.minecraft.world.level.block.state.BlockState> defaultStateSupplier;
+
+  public com.aetherteam.aether.block.dungeon.TrappedBlock(java.util.function.Supplier<net.minecraft.world.entity.EntityType<?>>, java.util.function.Supplier<? extends net.minecraft.world.level.block.state.BlockState>, net.minecraft.world.level.block.state.BlockBehaviour$Properties);
+    Code:
+       0: aload_0
+       1: aload_3
+       2: invokespecial #1                  // Method net/minecraft/world/level/block/Block."<init>":(Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+       5: aload_0
+       6: aload_1
+       7: putfield      #7                  // Field spawnableEntityTypeSupplier:Ljava/util/function/Supplier;
+      10: aload_0
+      11: aload_2
+      12: putfield      #13                 // Field defaultStateSupplier:Ljava/util/function/Supplier;
+      15: return
+
+  public net.minecraft.world.level.block.state.BlockState getFacadeBlock();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field defaultStateSupplier:Ljava/util/function/Supplier;
+       4: invokeinterface #16,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       9: checkcast     #22                 // class net/minecraft/world/level/block/state/BlockState
+      12: areturn
+
+  public void stepOn(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.entity.Entity);
+    Code:
+       0: aload         4
+       2: instanceof    #24                 // class net/minecraft/world/entity/player/Player
+       5: ifeq          243
+       8: aload         4
+      10: checkcast     #24                 // class net/minecraft/world/entity/player/Player
+      13: astore        5
+      15: aload         5
+      17: aload_1
+      18: aload_2
+      19: aload_3
+      20: invokestatic  #26                 // Method com/aetherteam/aether/event/AetherEventDispatch.onTriggerTrap:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+      23: ifeq          243
+      26: aload_1
+      27: aload_2
+      28: aload_0
+      29: getfield      #13                 // Field defaultStateSupplier:Ljava/util/function/Supplier;
+      32: invokeinterface #16,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      37: checkcast     #22                 // class net/minecraft/world/level/block/state/BlockState
+      40: invokevirtual #32                 // Method net/minecraft/world/level/Level.setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+      43: pop
+      44: aload_1
+      45: instanceof    #38                 // class net/minecraft/server/level/ServerLevel
+      48: ifeq          243
+      51: aload_1
+      52: checkcast     #38                 // class net/minecraft/server/level/ServerLevel
+      55: astore        6
+      57: aload         5
+      59: invokevirtual #40                 // Method net/minecraft/world/entity/player/Player.getYRot:()F
+      62: ldc           #46                 // float 0.017453292f
+      64: fmul
+      65: fstore        7
+      67: new           #47                 // class net/minecraft/world/phys/Vec3
+      70: dup
+      71: aload_2
+      72: invokevirtual #49                 // Method net/minecraft/core/BlockPos.getX:()I
+      75: i2d
+      76: ldc2_w        #55                 // double 0.5d
+      79: dadd
+      80: fload         7
+      82: invokestatic  #57                 // Method net/minecraft/util/Mth.sin:(F)F
+      85: ldc           #61                 // float 3.0f
+      87: fmul
+      88: f2d
+      89: dsub
+      90: aload_2
+      91: invokevirtual #62                 // Method net/minecraft/core/BlockPos.getY:()I
+      94: iconst_1
+      95: iadd
+      96: i2d
+      97: aload_2
+      98: invokevirtual #65                 // Method net/minecraft/core/BlockPos.getZ:()I
+     101: i2d
+     102: ldc2_w        #55                 // double 0.5d
+     105: dadd
+     106: fload         7
+     108: invokestatic  #68                 // Method net/minecraft/util/Mth.cos:(F)F
+     111: ldc           #61                 // float 3.0f
+     113: fmul
+     114: f2d
+     115: dadd
+     116: invokespecial #71                 // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+     119: astore        8
+     121: new           #74                 // class net/minecraft/world/level/ClipContext
+     124: dup
+     125: aload         5
+     127: invokevirtual #76                 // Method net/minecraft/world/entity/player/Player.position:()Lnet/minecraft/world/phys/Vec3;
+     130: aload         8
+     132: getstatic     #80                 // Field net/minecraft/world/level/ClipContext$Block.COLLIDER:Lnet/minecraft/world/level/ClipContext$Block;
+     135: getstatic     #86                 // Field net/minecraft/world/level/ClipContext$Fluid.NONE:Lnet/minecraft/world/level/ClipContext$Fluid;
+     138: aload         5
+     140: invokespecial #92                 // Method net/minecraft/world/level/ClipContext."<init>":(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/level/ClipContext$Block;Lnet/minecraft/world/level/ClipContext$Fluid;Lnet/minecraft/world/entity/Entity;)V
+     143: astore        9
+     145: aload         6
+     147: aload         9
+     149: invokevirtual #95                 // Method net/minecraft/server/level/ServerLevel.clip:(Lnet/minecraft/world/level/ClipContext;)Lnet/minecraft/world/phys/BlockHitResult;
+     152: astore        10
+     154: aload         10
+     156: invokevirtual #99                 // Method net/minecraft/world/phys/BlockHitResult.getBlockPos:()Lnet/minecraft/core/BlockPos;
+     159: astore        11
+     161: aload         10
+     163: invokevirtual #105                // Method net/minecraft/world/phys/BlockHitResult.getType:()Lnet/minecraft/world/phys/HitResult$Type;
+     166: getstatic     #109                // Field net/minecraft/world/phys/HitResult$Type.BLOCK:Lnet/minecraft/world/phys/HitResult$Type;
+     169: if_acmpne     184
+     172: aload         11
+     174: aload         10
+     176: invokevirtual #115                // Method net/minecraft/world/phys/BlockHitResult.getDirection:()Lnet/minecraft/core/Direction;
+     179: invokevirtual #119                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     182: astore        11
+     184: aload_0
+     185: getfield      #7                  // Field spawnableEntityTypeSupplier:Ljava/util/function/Supplier;
+     188: invokeinterface #16,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     193: checkcast     #123                // class net/minecraft/world/entity/EntityType
+     196: aload         6
+     198: aload         11
+     200: getstatic     #125                // Field net/minecraft/world/entity/MobSpawnType.TRIGGERED:Lnet/minecraft/world/entity/MobSpawnType;
+     203: invokevirtual #131                // Method net/minecraft/world/entity/EntityType.spawn:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/MobSpawnType;)Lnet/minecraft/world/entity/Entity;
+     206: pop
+     207: aload         6
+     209: aconst_null
+     210: aload_2
+     211: getstatic     #135                // Field com/aetherteam/aether/client/AetherSoundEvents.BLOCK_DUNGEON_TRAP_TRIGGER:Lnet/neoforged/neoforge/registries/DeferredHolder;
+     214: invokevirtual #141                // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+     217: checkcast     #144                // class net/minecraft/sounds/SoundEvent
+     220: getstatic     #146                // Field net/minecraft/sounds/SoundSource.BLOCKS:Lnet/minecraft/sounds/SoundSource;
+     223: ldc           #152                // float 0.5f
+     225: aload_1
+     226: invokevirtual #153                // Method net/minecraft/world/level/Level.getRandom:()Lnet/minecraft/util/RandomSource;
+     229: invokeinterface #157,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     234: ldc           #162                // float 0.1f
+     236: fmul
+     237: ldc           #163                // float 0.9f
+     239: fadd
+     240: invokevirtual #164                // Method net/minecraft/server/level/ServerLevel.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+     243: return
+}
