@@ -1692,3 +1692,20 @@ Inventory regenerated at `4bb656f`, SHA-256:
 `6354d013331c716f3091e87ce3b49fa03a766471a7a8cd2167bfc0bf0c50e5d9`.
 Only decision identity and Extras code-link attribution/evidence changed.
 All 421 registry family rows and 887 roots remain unchanged.
+
+## Extras code-linked template envelopes
+
+The three code-linked templates now record nominal XYZ dimensions: chillzone
+3x4x4, giant_torch 4x7x4 and ruins_0 4x5x4. Together with the existing 59 explicit
+links, all 62 packaged template envelopes are accounted for. These are template
+bounds, not observed occupied dimensions or accepted family groupings.
+
+Seventeen affected tests and scoped checks passed. Decision SHA-256:
+`0a03048d57cafe7a3fc1dd156944561c56c85e5017b7a65cd54343374ec6a437`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-extras-code-sizes.json
+```
