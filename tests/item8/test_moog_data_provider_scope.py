@@ -20,8 +20,9 @@ if TYPE_CHECKING:
     ("MoogsEndStructures-1.21-2.0.3.jar", "mes", (25, 57, 67, 1)),
     ("MoogsSoaringStructures-1.21-2.1.2.jar", "mss", (35, 91, 99, 8)),
     ("MoogsVoyagerStructures-1.21-5.0.11.jar", "mvs", (129, 149, 327, 92)),
+    ("MoogsNetherStructures-1.21-3.0.0-alpha.2.jar", "mns", (52, 168, 459, 171)),
 ])
-def test_complete_moog_data_scope(  # noqa: PLR0915 - keep one full-archive accounting check.
+def test_complete_moog_data_scope(  # noqa: C901, PLR0912, PLR0915 - explicit archive cases.
     name: str, namespace: str, counts: tuple[int, int, int, int],
 ) -> None:
     source = next(s for s in retained_sources(Path.cwd()) if s.name == name)
@@ -39,6 +40,11 @@ def test_complete_moog_data_scope(  # noqa: PLR0915 - keep one full-archive acco
             if name_in_archive.endswith("/") or name_in_archive in metadata:
                 continue
             path = PurePosixPath(name_in_archive)
+            if namespace == "mns" and name_in_archive.startswith("data/moogs_structures/"):
+                assert name_in_archive in {
+                    "data/moogs_structures/tags/worldgen/structure/no_basalt.json",
+                    "data/moogs_structures/tags/worldgen/structure/no_delta.json"}
+                continue
             assert path.parts[:2] == ("data", namespace), name_in_archive
             if path.parts[2] == "structure":
                 assert path.suffix == ".nbt"
@@ -53,13 +59,21 @@ def test_complete_moog_data_scope(  # noqa: PLR0915 - keep one full-archive acco
                     roots.add(namespace + ":" + "/".join(path.parts[4:])[:-5])
                     assert isinstance(document["start_pool"], str)
                 if path.parts[3] == "processor_list":
-                    assert namespace == "mvs"
-                    assert all(p["processor_type"] == "minecraft:rule" for p in
+                    allowed = {"minecraft:rule"} if namespace == "mvs" else {
+                        "moogs_structures:pillar_processor",
+                        "moogs_structures:spawner_randomizing_processor",
+                        "moogs_structures:trial_spawner_randomizing_processor",
+                        "moogs_structures:vault_randomizing_processor",
+                        "moogs_structures:equip_armor_stand_processor"}
+                    assert namespace in {"mvs", "mns"}
+                    assert all(p["processor_type"] in allowed for p in
                                cast("list[dict[str, JsonValue]]", document["processors"]))
             elif path.parts[2] == "tags":
                 assert path.parts[3:5] == ("worldgen", "biome")
             else:
-                assert path.parts[2] == "loot_table"
+                assert path.parts[2] in {"loot_table", "trial_spawner"}
+                if path.parts[2] == "trial_spawner":
+                    assert namespace == "mns"
             resources.append({"archive": source.name, "path": name_in_archive,
                               "sha256": hashlib.sha256(archive.read(name_in_archive)).hexdigest(),
                               "document": document})
@@ -77,7 +91,19 @@ def test_complete_moog_data_scope(  # noqa: PLR0915 - keep one full-archive acco
                      cast("list[str]", structures[root]["pools"])}
     reached_templates = {t for root in roots for t in
                          cast("list[str]", structures[root]["templates"])}
-    assert {cast("str", link["id"]) for link in links} <= reached_pools
+    disconnected_pools: set[str] = set()
+    if namespace == "mns":
+        disconnected_pools = {"mns:" + suffix for suffix in (
+            "dragon_arena/lower_14", "mega_arenas/mobs/arena_bowman",
+            "mega_arenas/mobs/ember_sentinel", "mega_arenas/mobs/pit_vanguard",
+            "mega_fortress/crossings/small/small_crossing_2_east",
+            "mega_fortress/crossings/small/small_crossing_2_north",
+            "mega_fortress/crossings/small/small_crossing_2_south",
+            "mega_fortress/crossings/small/small_crossing_2_west",
+            "mega_fortress/mobs/blaze_sentinel", "mega_fortress/mobs/fortress_guard",
+            "mega_fortress/start/start_crossing_north", "very_small_nether_brick_start_pool",
+        )}
+    assert {cast("str", link["id"]) for link in links} - reached_pools == disconnected_pools
     excluded_by_version = {cast("str", edge["id"]) for link in links for edge in
                            cast("list[dict[str, JsonValue]]", link["edges"])
                            if edge["kind"] == "template" and edge.get("selected") is False}
@@ -102,5 +128,12 @@ def test_complete_moog_data_scope(  # noqa: PLR0915 - keep one full-archive acco
                                cast("list[dict[str, JsonValue]]", link["edges"])
                                if edge["kind"] == "template"}
         assert templates - all_pool_references == disconnected
+    if namespace == "mns":
+        disconnected = {"mns:" + suffix for suffix in (
+            "dragon_arena/lower_14", "large_arena/v1_21_4/l2", "large_arena/v1_21_4/r2",
+            "large_arena/v1_21_5/l2", "large_arena/v1_21_5/r2", "large_arena/v1_21_9/l2",
+            "large_arena/v1_21_9/r2", "mega_fortress/corridors/roofed_long_straight_2",
+            "ruins/very_small_nether_brick_1",
+        )}
     assert templates - reached_templates - excluded_by_version == disconnected
     assert (len(roots), len(links), len(templates), len(templates - reached_templates)) == counts
