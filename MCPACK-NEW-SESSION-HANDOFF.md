@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Towns and Towers scope now passes: 60 roots, 187 pools, 837 base templates;
+three disconnected pools and 23 disconnected templates explicitly accounted for.
+The optional three-template Waystones pack requires an absent captured mod ID.
+Preserve missing-reference dispositions on eight existing roots without baseline
+repair. The focused test and scoped checks pass. Counts: 26 provider dispositions,
+110 remaining. Continue remaining providers; do not repeat these wrapper captures
+or count tags as roots. Shared Cristel Lib loading remains its own provider scope.
+
 Seven Seas provider scope now passes: five roots, ten pools, 36 templates and
 its sole logging-only class are accounted for. Preserve the already recorded
 small_yacht_spawner_3 missing component; no baseline repair or new family.
