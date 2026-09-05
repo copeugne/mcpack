@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-06
 
+User again requires the actual complete family denominator, not repeated reports
+that provider coverage is open. The immediate deliverable remains the complete
+candidate list with explicit family/variant decisions and named ambiguities.
+Track closed/open providers separately; 887 registry roots and 421 provisional
+groups are not the final family denominator. Do not resume detailed attributes
+until this deliverable is established. Reuse evidence and stop at relevant
+generation boundaries rather than tracing every library helper.
+
+Moog direct helpers delivered in cd015c3 using 266938e, reproduced at
+evidence/raw/item8/moog-direct-boundaries-r1. MixinUtils reads existing tagged
+starts, DebugFlags initially defaults false, EnhancedBeardifierHelper adapts
+terrain around existing starts, and the service resolves ResourcefulRegistriesImpl.
+Do not repeat those inspections. NeoForgeResourcefulRegistry remains the direct
+registration boundary. Whole-provider reconciliation is not yet closed; counts
+remain 30 dispositions and 106 open. No family count or completion claim follows
+from this source capture alone.
+
 All sixteen declared Moog mixins delivered in a7af1d6 using c388784 and reproduced
 at evidence/raw/item8/moog-declared-mixins-r1. Ten accessors, six behavioral hooks.
 StructurePoolMixin raises a codec weight bound to 5000, not content injection;
