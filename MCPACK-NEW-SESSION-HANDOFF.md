@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-05
 
+Nether fossil source inspection and family integration are delivered in
+`fab790e` and `9e13390`. All fourteen template references resolve as alternatives
+within one family. Seven source-backed attributes are recorded and all 62 affected
+tests pass, with scoped Ruff and Basedpyright passing. Rebuilt inventory SHA:
+`d2be7cc46dd728e03729370881c10747960302a91770644fc98a8bbcc87bb573`.
+Decision SHA: `d1af44e8dd07c4ab772e223d52f16984520eb5ba6517db884bc0d06c99c69593`.
+Commands, source identities and limitations are in
+`evidence/item-8/sources/vanilla-nether-fossil-code/README.md`.
+The next bounded custom-generator candidate is vanilla ocean ruins. Preserve
+remaining effective-mod, hostility and visual-discoverability gaps. Item 8 is
+still incomplete; do not treat this family increment as the exit gate.
+
+User constraint reaffirmed: a new measurement system is allowed only when
+strictly necessary and worth its time and effort. Identify the specific Item 8
+requirement, explain why existing evidence and tools cannot resolve it, and
+weigh the expected result against implementation and execution cost before
+adding one. This increment reused existing extraction and inventory paths.
+
+
 Dimension membership is integrated: builder/tests `89b8830`, inventory `702ec5c`.
 Inventory SHA:
 `ae7f0a16a86929ad24361ab9befa80aebf5e51100c72bc9ba44a64f8f8bafba2`.
