@@ -369,3 +369,32 @@ lines. Original archive identity and the existing trace hash are bound by the
 check. Explicit provider dispositions now cover 22 of 136, with 114 remaining to
 reconcile. The data-only structure-provider batch is accounted for; continue
 remaining code providers and injection relationships before detailed attributes.
+
+## Chef's Delight component provider
+
+`chefsdelight-1.0.5-neoforge-1.21.1.jar` injects the ten already recorded chef/cook
+house components into the five vanilla village house pools. It adds professions,
+points of interest, trade offers and a component loot table. It adds no separate
+structure family. The candidate link remains chefsdelight:village_components in
+family-decisions.json, with frozen weights and existing content evidence reused.
+
+All six archive classes now have preserved source: chefsdelight-villages contains
+the entry and injection implementation; chefsdelight-provider-entries contains
+the other four classes, delivered in 23ee872. Those handle configuration loading,
+profession/POI registration, trade offers and an empty client setup callback.
+The access transformer only exposes StructureTemplatePool.templates, matching
+the inspected injection path. Full file accounting binds all six classes to
+their disassemblies and permits only the ten known templates, component loot,
+job-site tag, metadata and visual assets. No additional code, nested archive,
+service, mixin, feature definition or structure root is left unaccounted for.
+
+```sh
+uv run pytest -q tests/item8/test_chefsdelight_components.py
+```
+
+Both full-provider and existing component-content cases pass. Scoped Ruff and
+Basedpyright pass after splitting an assertion and using a named class string.
+The existing house-content test was retained without formatting changes. No
+trade-balance work or new runtime sample was added. Explicit provider dispositions
+now cover 23 of 136, with 113 remaining to reconcile. Consumer family attributes
+and shared-stack effects remain downstream of candidate completeness.

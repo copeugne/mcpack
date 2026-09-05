@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Chef's Delight now has a full-provider component-only disposition. All six
+classes are captured, with the remaining four delivered in 23ee872. Full file
+accounting and the existing component-content test pass, as do scoped static
+checks. provider-scope.md now records 23 of 136 dispositions; 113 remain to
+reconcile. Continue remaining code providers and injection relationships.
+Do not repeat Chef's Delight source or trade/house analysis.
+
 Explorify's data scope is accounted for: 23 roots, 57 pools, 165 current templates
 and 165 identical legacy copies. Thirteen disconnected pools and thirty
 disconnected templates are explicitly named in provider-scope.md. The focused
