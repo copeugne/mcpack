@@ -6,6 +6,32 @@
 
 ### Continuation update - 2026-09-05
 
+Illager Invasion, Creating Space and Supplementaries are delivered in separate
+source/output increments: `63df576`/`d30900f`, `b08ad94`/`fe209a5`, and
+`1c77ad2`/`9111d69`. Five illager designs have explicit authored hostile intent
+bound to reachable entity components; this is not an observed population.
+Four space designs preserve distinct heightmaps, offsets and reused vanilla
+bastion legs as components. Two Supplementaries designs preserve custom spawn
+boxes, climate/sea-level conditions and frozen config references. Galleon
+spawn-box markers are not ordinary block spawners. Road-sign observations 374,
+407, 754 and 787 are linked; the other ten new roots have no retained observations.
+
+The full focused family file passed 50 tests for Illager Invasion and 51 for
+Creating Space. After the Supplementaries addition, all seven affected provider
+cases passed (45 unaffected tests deselected). Scoped Ruff/basedpyright checks
+passed for each source increment. Supplementaries initially exceeded the test
+complexity limit; the unnecessary conditional around an existing shared-catalog
+missing-pool assertion was removed, preserving the assertion. Each output was
+built twice with identical bytes and unchanged earlier family records.
+Current inventory SHA-256:
+`06b6070c2b605abb48f26120ed6c7f364a8d9438f8dd8bb8c0433efcd7dd1d96`.
+Totals: 409 working groups, 831 assigned IDs, 56 unassigned. Continue vanilla
+(34), BetterEnd (14), Aether (4) and Deep Aether (4). Custom generators without
+start pools must remain explicit until inspected, not become empty-content
+claims. Non-registry contributions, canonical reconciliation and required
+attributes remain open. No measurement system was added. Item 8 is not ready
+for final gate, clean review or main merge.
+
 Terralith is delivered through `0c06094`, built from `7b386d2`. All 28
 registry roots are assigned once across 16 working groups. Shared cabin and
 witch-hut roots are not separate families. The underground-prefixed witch hut

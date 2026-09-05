@@ -563,3 +563,55 @@ The underground-prefixed witch hut has an empty resolved biome set and surface
 heightmap projection. No retained Terralith structure observations exist.
 The generated increment is isolated, and prior family records remain unchanged.
 Effective attributes and final canonical reconciliation remain open.
+
+Illager Invasion (`63df576`, joined in `d30900f`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-illagers-63df576.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-illagers-63df576-repro.json
+cmp evidence/raw/item8/inventory-illagers-63df576.json evidence/raw/item8/inventory-illagers-63df576-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 50 focused family tests passed, including explicit hostile-component attribution.
+Scoped Ruff/basedpyright checks passed. The output is byte-identical across two
+builds and all previous family records are unchanged. This uses existing
+registry, packaged, configuration and world-observation sources.
+
+Creating Space (`b08ad94`, joined in `fe209a5`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-space-b08ad94.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-space-b08ad94-repro.json
+cmp evidence/raw/item8/inventory-space-b08ad94.json evidence/raw/item8/inventory-space-b08ad94-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 51 focused family tests passed, including full nested root definitions.
+Scoped Ruff/basedpyright checks passed. The output is byte-identical across two
+builds and all previous family records are unchanged. This uses existing
+registry, packaged, configuration and world-observation sources.
+
+Supplementaries (`1c77ad2`, joined in `9111d69`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-supplementaries-1c77ad2.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-supplementaries-1c77ad2-repro.json
+cmp evidence/raw/item8/inventory-supplementaries-1c77ad2.json evidence/raw/item8/inventory-supplementaries-1c77ad2-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q -k provider_groups
+```
+
+All seven affected provider cases passed; 45 unaffected cases were deselected.
+Scoped Ruff/basedpyright checks passed. The output is byte-identical across two
+builds and all previous family records are unchanged. This uses existing
+registry, packaged, configuration and world-observation sources.
+
+Illager hostile intent is bound to packaged entity components without claiming
+live selection or population. Space outposts retain reused vanilla legs as
+components. Supplementaries binds frozen common/toggle configs and custom
+spawn-box definitions; its markers are not ordinary block spawners. The initial
+Supplementaries lint failure reported test complexity 11 above limit 10; an
+unnecessary conditional on an existing shared-catalog assertion was removed
+without removing that assertion. Road signs have observations 374, 407, 754
+and 787. The other ten roots added in these increments have none. Custom
+generation and remaining effective attributes are unresolved.
