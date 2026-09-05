@@ -27172,7 +27172,8 @@
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_biome.txt": "0970c5296980495640901e3ba7fd44fa90e97da4774900368fa924a263446713",
           "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
-          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+          "evidence/item-8/sources/yungs-extras-desert-code/identities.json": "c595f5123a71105b276884d33229e4b7da2bf9b91b70ec8e5cbf1cba069d465b"
         },
         "biome_constraints": {
           "tags": {
@@ -27623,6 +27624,18 @@
             "data/yungsextras/loot_table/desert/ruins.json": "fa35cdb486f2bad1d002f5029faab32a187a291e96da720baedc55ff53bd110e"
           },
           "scope": "All 62 packaged templates have empty entity lists. Only the four named templates contain block entities: three chests and eight campfires, with no stored spawner block entities. The two chest-bearing templates remain outside the 59 explicit configured location links until generator code is checked. This is packaged content, not observed loot, full generated content or absence of custom spawner/entity/loot effects."
+        },
+        "desert_generator_templates": {
+          "class_to_template": {
+            "ChillzoneDesertFeature": "yungsextras:desert/misc/chillzone",
+            "DesertGiantTorchFeature": "yungsextras:desert/misc/giant_torch",
+            "DesertSmallRuinsFeature": "yungsextras:desert/misc/ruins_0"
+          },
+          "template_call": "Each class constructs its static ID with ResourceLocation.fromNamespaceAndPath and passes that ID to inherited createTemplateFromCenter.",
+          "anchor": "ChillzoneDesertFeature and DesertGiantTorchFeature pass the ground anchor above(); DesertSmallRuinsFeature passes the ground anchor itself.",
+          "centering": "The helper subtracts half the template X/Z dimensions using integer division, leaves Y unchanged, and calls StructureTemplate.placeInWorld with default StructurePlaceSettings.",
+          "success_limit": "The helper discards the placeInWorld boolean, then runs the processor list and returns the loaded template. Each of these classes returns whether the template is non-null. This is not proof that all template blocks were placed.",
+          "scope": "Verified class-to-template calls. The captured FeatureModule instantiates these classes, but its non-verbose capture does not preserve the field registration annotations. Exact feature-ID registration binding and remaining terrain/content effects are still open; the JSON-explicit mapping remains separate."
         }
       }
     }
