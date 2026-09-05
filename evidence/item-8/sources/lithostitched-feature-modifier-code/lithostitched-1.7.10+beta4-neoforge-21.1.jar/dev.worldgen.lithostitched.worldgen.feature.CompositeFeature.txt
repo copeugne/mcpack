@@ -1,0 +1,74 @@
+Compiled from "CompositeFeature.java"
+public class dev.worldgen.lithostitched.worldgen.feature.CompositeFeature extends net.minecraft.world.level.levelgen.feature.Feature<dev.worldgen.lithostitched.worldgen.feature.config.CompositeConfig> {
+  public static final dev.worldgen.lithostitched.worldgen.feature.CompositeFeature FEATURE;
+
+  public dev.worldgen.lithostitched.worldgen.feature.CompositeFeature(com.mojang.serialization.Codec<dev.worldgen.lithostitched.worldgen.feature.config.CompositeConfig>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #19                 // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<dev.worldgen.lithostitched.worldgen.feature.config.CompositeConfig>);
+    Code:
+       0: aload_1
+       1: invokevirtual #32                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+       4: checkcast     #10                 // class dev/worldgen/lithostitched/worldgen/feature/config/CompositeConfig
+       7: astore_2
+       8: aload_1
+       9: invokevirtual #36                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      12: astore_3
+      13: aload_1
+      14: invokevirtual #40                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      17: astore        4
+      19: aload_1
+      20: invokevirtual #44                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      23: astore        5
+      25: aload_1
+      26: invokevirtual #48                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      29: astore        6
+      31: iconst_0
+      32: istore        7
+      34: aload_2
+      35: invokevirtual #52                 // Method dev/worldgen/lithostitched/worldgen/feature/config/CompositeConfig.features:()Lnet/minecraft/core/HolderSet;
+      38: invokeinterface #58,  1           // InterfaceMethod net/minecraft/core/HolderSet.iterator:()Ljava/util/Iterator;
+      43: astore        8
+      45: aload         8
+      47: invokeinterface #72,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      52: ifeq          115
+      55: aload         8
+      57: invokeinterface #76,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      62: checkcast     #78                 // class net/minecraft/core/Holder
+      65: astore        9
+      67: aload         9
+      69: invokeinterface #81,  1           // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      74: checkcast     #83                 // class net/minecraft/world/level/levelgen/placement/PlacedFeature
+      77: aload_3
+      78: aload         4
+      80: aload         5
+      82: aload         6
+      84: invokevirtual #86                 // Method net/minecraft/world/level/levelgen/placement/PlacedFeature.place:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Z
+      87: istore        10
+      89: iload         10
+      91: ifeq          97
+      94: iconst_1
+      95: istore        7
+      97: aload_2
+      98: invokevirtual #90                 // Method dev/worldgen/lithostitched/worldgen/feature/config/CompositeConfig.placementType:()Ldev/worldgen/lithostitched/worldgen/feature/config/CompositeConfig$Type;
+     101: iload         10
+     103: invokevirtual #94                 // Method dev/worldgen/lithostitched/worldgen/feature/config/CompositeConfig$Type.shouldContinue:(Z)Z
+     106: ifne          112
+     109: goto          115
+     112: goto          45
+     115: iload         7
+     117: ireturn
+
+  static {};
+    Code:
+       0: new           #2                  // class dev/worldgen/lithostitched/worldgen/feature/CompositeFeature
+       3: dup
+       4: getstatic     #113                // Field dev/worldgen/lithostitched/worldgen/feature/config/CompositeConfig.CODEC:Lcom/mojang/serialization/Codec;
+       7: invokespecial #114                // Method "<init>":(Lcom/mojang/serialization/Codec;)V
+      10: putstatic     #116                // Field FEATURE:Ldev/worldgen/lithostitched/worldgen/feature/CompositeFeature;
+      13: return
+}

@@ -1,0 +1,219 @@
+Compiled from "RemoveFeaturesModifier.java"
+public final class dev.worldgen.lithostitched.impl.worldgen.modifier.RemoveFeaturesModifier extends java.lang.Record implements dev.worldgen.lithostitched.api.worldgen.modifier.WorldgenModifier,dev.worldgen.lithostitched.impl.worldgen.modifier.NeoforgeModifierHolder {
+  private final java.util.Optional<dev.worldgen.lithostitched.api.predicate.LoadPredicate> predicate;
+
+  private final int priority;
+
+  private final net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome> biomes;
+
+  private final net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.placement.PlacedFeature> features;
+
+  private final net.minecraft.world.level.levelgen.GenerationStep$Decoration step;
+
+  public static final com.mojang.serialization.MapCodec<dev.worldgen.lithostitched.impl.worldgen.modifier.RemoveFeaturesModifier> CODEC;
+
+  public dev.worldgen.lithostitched.impl.worldgen.modifier.RemoveFeaturesModifier(java.util.Optional<dev.worldgen.lithostitched.api.predicate.LoadPredicate>, int, net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome>, net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.placement.PlacedFeature>, net.minecraft.world.level.levelgen.GenerationStep$Decoration);
+    Code:
+       0: aload_0
+       1: invokespecial #60                 // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #62                 // Field predicate:Ljava/util/Optional;
+       9: aload_0
+      10: iload_2
+      11: putfield      #64                 // Field priority:I
+      14: aload_0
+      15: aload_3
+      16: putfield      #66                 // Field biomes:Lnet/minecraft/core/HolderSet;
+      19: aload_0
+      20: aload         4
+      22: putfield      #68                 // Field features:Lnet/minecraft/core/HolderSet;
+      25: aload_0
+      26: aload         5
+      28: putfield      #70                 // Field step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+      31: return
+
+  public void apply(net.minecraft.core.RegistryAccess);
+    Code:
+       0: invokestatic  #81                 // Method dev/worldgen/lithostitched/impl/LithostitchedPlatform.isFabric:()Z
+       3: ifne          7
+       6: return
+       7: aload_0
+       8: invokevirtual #84                 // Method biomes:()Lnet/minecraft/core/HolderSet;
+      11: invokeinterface #88,  1           // InterfaceMethod net/minecraft/core/HolderSet.iterator:()Ljava/util/Iterator;
+      16: astore_2
+      17: aload_2
+      18: invokeinterface #93,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      23: ifeq          52
+      26: aload_2
+      27: invokeinterface #97,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      32: checkcast     #99                 // class net/minecraft/core/Holder
+      35: astore_3
+      36: aload_0
+      37: aload_3
+      38: invokeinterface #102,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      43: checkcast     #104                // class net/minecraft/world/level/biome/Biome
+      46: invokevirtual #108                // Method applyModifier:(Lnet/minecraft/world/level/biome/Biome;)V
+      49: goto          17
+      52: return
+
+  public void applyModifier(net.minecraft.world.level.biome.Biome);
+    Code:
+       0: aload_0
+       1: invokevirtual #116                // Method step:()Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+       4: invokevirtual #120                // Method net/minecraft/world/level/levelgen/GenerationStep$Decoration.ordinal:()I
+       7: istore_2
+       8: new           #122                // class java/util/ArrayList
+      11: dup
+      12: aload_1
+      13: invokevirtual #126                // Method net/minecraft/world/level/biome/Biome.getGenerationSettings:()Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+      16: invokevirtual #131                // Method net/minecraft/world/level/biome/BiomeGenerationSettings.features:()Ljava/util/List;
+      19: invokespecial #134                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+      22: astore_3
+      23: new           #122                // class java/util/ArrayList
+      26: dup
+      27: aload_3
+      28: iload_2
+      29: invokeinterface #140,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      34: checkcast     #18                 // class net/minecraft/core/HolderSet
+      37: invokeinterface #144,  1          // InterfaceMethod net/minecraft/core/HolderSet.stream:()Ljava/util/stream/Stream;
+      42: invokeinterface #149,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      47: invokespecial #134                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+      50: astore        4
+      52: aload_0
+      53: invokevirtual #151                // Method features:()Lnet/minecraft/core/HolderSet;
+      56: invokeinterface #88,  1           // InterfaceMethod net/minecraft/core/HolderSet.iterator:()Ljava/util/Iterator;
+      61: astore        5
+      63: aload         5
+      65: invokeinterface #93,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      70: ifeq          98
+      73: aload         5
+      75: invokeinterface #97,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      80: checkcast     #99                 // class net/minecraft/core/Holder
+      83: astore        6
+      85: aload         4
+      87: aload         6
+      89: invokeinterface #155,  2          // InterfaceMethod java/util/List.remove:(Ljava/lang/Object;)Z
+      94: pop
+      95: goto          63
+      98: aload_3
+      99: iload_2
+     100: aload         4
+     102: invokestatic  #159                // InterfaceMethod net/minecraft/core/HolderSet.direct:(Ljava/util/List;)Lnet/minecraft/core/HolderSet$Direct;
+     105: invokeinterface #163,  3          // InterfaceMethod java/util/List.set:(ILjava/lang/Object;)Ljava/lang/Object;
+     110: pop
+     111: aload_1
+     112: aload_3
+     113: invokestatic  #167                // Method dev/worldgen/lithostitched/impl/LithostitchedPlatform.rebuildSettings:(Lnet/minecraft/world/level/biome/Biome;Ljava/util/List;)V
+     116: return
+
+  public boolean shouldRecompileSortedFeatures();
+    Code:
+       0: iconst_1
+       1: ireturn
+
+  public com.mojang.serialization.MapCodec<? extends dev.worldgen.lithostitched.api.worldgen.modifier.WorldgenModifier> codec();
+    Code:
+       0: getstatic     #182                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+       3: areturn
+
+  public net.neoforged.neoforge.common.world.BiomeModifier createNeoforgeModifier();
+    Code:
+       0: new           #21                 // class net/neoforged/neoforge/common/world/BiomeModifiers$RemoveFeaturesBiomeModifier
+       3: dup
+       4: aload_0
+       5: getfield      #66                 // Field biomes:Lnet/minecraft/core/HolderSet;
+       8: aload_0
+       9: getfield      #68                 // Field features:Lnet/minecraft/core/HolderSet;
+      12: aload_0
+      13: getfield      #70                 // Field step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+      16: invokestatic  #190                // Method java/util/Collections.singleton:(Ljava/lang/Object;)Ljava/util/Set;
+      19: invokespecial #193                // Method net/neoforged/neoforge/common/world/BiomeModifiers$RemoveFeaturesBiomeModifier."<init>":(Lnet/minecraft/core/HolderSet;Lnet/minecraft/core/HolderSet;Ljava/util/Set;)V
+      22: areturn
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #212,  0            // InvokeDynamic #0:toString:(Ldev/worldgen/lithostitched/impl/worldgen/modifier/RemoveFeaturesModifier;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #216,  0            // InvokeDynamic #0:hashCode:(Ldev/worldgen/lithostitched/impl/worldgen/modifier/RemoveFeaturesModifier;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #221,  0            // InvokeDynamic #0:equals:(Ldev/worldgen/lithostitched/impl/worldgen/modifier/RemoveFeaturesModifier;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public java.util.Optional<dev.worldgen.lithostitched.api.predicate.LoadPredicate> predicate();
+    Code:
+       0: aload_0
+       1: getfield      #62                 // Field predicate:Ljava/util/Optional;
+       4: areturn
+
+  public int priority();
+    Code:
+       0: aload_0
+       1: getfield      #64                 // Field priority:I
+       4: ireturn
+
+  public net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome> biomes();
+    Code:
+       0: aload_0
+       1: getfield      #66                 // Field biomes:Lnet/minecraft/core/HolderSet;
+       4: areturn
+
+  public net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.placement.PlacedFeature> features();
+    Code:
+       0: aload_0
+       1: getfield      #68                 // Field features:Lnet/minecraft/core/HolderSet;
+       4: areturn
+
+  public net.minecraft.world.level.levelgen.GenerationStep$Decoration step();
+    Code:
+       0: aload_0
+       1: getfield      #70                 // Field step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+       4: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #234                // Field dev/worldgen/lithostitched/api/predicate/LoadPredicate.FIELD_CODEC:Lcom/mojang/serialization/MapCodec;
+       4: invokedynamic #251,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+       9: invokevirtual #257                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      12: getstatic     #260                // Field PRIORITY_REMOVE_CODEC:Lcom/mojang/serialization/MapCodec;
+      15: invokedynamic #266,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      20: invokevirtual #257                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      23: getstatic     #270                // Field net/minecraft/world/level/biome/Biome.LIST_CODEC:Lcom/mojang/serialization/Codec;
+      26: ldc_w         #271                // String biomes
+      29: invokeinterface #277,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      34: invokedynamic #281,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      39: invokevirtual #257                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      42: getstatic     #284                // Field net/minecraft/world/level/levelgen/placement/PlacedFeature.LIST_CODEC:Lcom/mojang/serialization/Codec;
+      45: ldc_w         #285                // String features
+      48: invokeinterface #277,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      53: invokedynamic #287,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      58: invokevirtual #257                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      61: getstatic     #289                // Field net/minecraft/world/level/levelgen/GenerationStep$Decoration.CODEC:Lcom/mojang/serialization/Codec;
+      64: ldc_w         #290                // String step
+      67: invokeinterface #277,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      72: invokedynamic #294,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+      77: invokevirtual #257                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      80: invokevirtual #298                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P5;
+      83: aload_0
+      84: invokedynamic #308,  0            // InvokeDynamic #6:apply:()Lcom/mojang/datafixers/util/Function5;
+      89: invokevirtual #311                // Method com/mojang/datafixers/Products$P5.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function5;)Lcom/mojang/datafixers/kinds/App;
+      92: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #318,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+       5: invokestatic  #322                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #182                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}
