@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Feature-family biome and dimension scope is delivered in `4b1e33a`. Each
+family now links its resolved addition-modifier biomes and captured dimension
+overlap. Only overworld overlaps; this does not claim observed generation.
+Twenty-three focused tests and scoped checks passed. Inventory SHA-256:
+`759e4b2149d0fb7e2b33b8a06d9152a7c90983035761979c7e50f936379fc6dc`.
+Continue content/hostility/discoverability attribution and full provider coverage.
+Registry and feature family memberships are unchanged. Item 8 remains incomplete.
+
 The eleven YUNG feature families now have member-bound template lists and XYZ
 envelopes, delivered in `62b6af5`. Bridge/swamp support extensions and buried
 well placement remain explicit limitations. Twenty-two focused tests and scoped

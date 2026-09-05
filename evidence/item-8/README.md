@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `62b6af5`, SHA-256
-`b45003452d05e67634dce0128ffda651384b12957c5eb40ea8dcf2d6519d47e6`.
+Current working inventory regenerated at `4b1e33a`, SHA-256
+`759e4b2149d0fb7e2b33b8a06d9152a7c90983035761979c7e50f936379fc6dc`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1876,3 +1876,11 @@ Twenty-three focused tests passed, including binding each Extras family's comple
 member set to exactly one addition modifier. The existing tag-resolution tests
 remain the underlying evidence. Ruff found one long test line; wrapping it resolved
 the finding and scoped Ruff/Basedpyright passed. No new measurement was required.
+
+Regeneration at `4b1e33a` changed only input identity and the eleven feature
+families biome/dimension fields. Other inventory records remain unchanged.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-family-biomes.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-yung-family-biomes.json
+```
