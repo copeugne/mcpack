@@ -1,10 +1,15 @@
 from __future__ import annotations
 
+import gzip
+import hashlib
+import json
+from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
 import pytest
 
 from mcpack_evidence.item8_inventory import resource_identity, size_variant_groups, structure_inputs
+from mcpack_evidence.item8_sources import retained_sources
 
 if TYPE_CHECKING:
     from pydantic import JsonValue
@@ -70,3 +75,21 @@ def test_size_grouping_requires_same_content_and_unambiguous_sources() -> None:
     assert {str(member["structure_id"]) for member in members} == {"example:small", "example:large"}
     resources.append(row("optional/data/example/worldgen/structure/small.json", {}))
     assert size_variant_groups(registry, resources) == []
+
+
+def test_packaged_catalogs_cover_frozen_archive_inputs() -> None:
+    """Archive coverage only, not proof of every generation hook or family."""
+    sources = retained_sources(Path.cwd())
+    assert len(sources) == 138  # 136 retained candidates plus Minecraft and NeoForge.
+    expected = [{"name": source.name, "sha256": source.sha256} for source in sources]
+    assert len({source.name for source in sources}) == len(sources)
+    for name, sha256 in (
+        ("packaged-json-redacted.json.gz",
+         "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd"),
+        ("templates-redacted.json.gz",
+         "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"),
+    ):
+        raw = (Path("evidence/item-8/sources") / name).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == sha256
+        catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(raw)))
+        assert catalog["archives"] == expected

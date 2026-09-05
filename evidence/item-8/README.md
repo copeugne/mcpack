@@ -2501,3 +2501,20 @@ changed. Reproduce with the existing builder in a fresh output path:
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-runtime.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-runtime.json
 ```
+
+## Retained archive coverage boundary
+
+The existing inventory-source test now compares both packaged catalog archive
+lists, including every identity, against retained_sources and its frozen
+manifest/acquisition inputs. All 136 retained candidates plus Minecraft and
+NeoForge are represented in both lists. This establishes archive-input coverage,
+not complete generation-hook or canonical-family coverage. The narrower Item 7
+provider-label catalog is contextual and cannot replace this retained boundary.
+
+```sh
+uv run pytest -q tests/item8/test_inventory_sources.py
+```
+
+Five tests pass. Scoped Ruff and Basedpyright pass after correcting one import
+spacing finding. Provider contribution reconciliation remains open; no new
+schema, measurement system or runtime sample was introduced.
