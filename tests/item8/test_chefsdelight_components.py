@@ -5,11 +5,69 @@ import hashlib
 import json
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
+from zipfile import ZipFile
 
 from mcpack_evidence.item8_resource_selection import select_resources
+from mcpack_evidence.item8_sources import retained_sources
 
 if TYPE_CHECKING:
     from pydantic import JsonValue
+
+
+def test_full_provider_archive_matches_inspected_code_and_components() -> None:
+    source = next(
+        s
+        for s in retained_sources(Path.cwd())
+        if s.name == "chefsdelight-1.0.5-neoforge-1.21.1.jar"
+    )
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    classes: set[str] = set()
+    with ZipFile(source.path) as archive:
+        for folder in ("chefsdelight-villages", "chefsdelight-provider-entries"):
+            directory = Path("evidence/item-8/sources") / folder
+            identities = cast(
+                "list[dict[str, str]]", json.loads((directory / "identities.json").read_bytes())
+            )
+            for identity in identities:
+                assert identity["archive_sha256"] == source.sha256
+                assert (
+                    hashlib.sha256(archive.read(identity["class"])).hexdigest()
+                    == (identity["class_sha256"])
+                )
+                assert (
+                    hashlib.sha256((directory / identity["disassembly"]).read_bytes()).hexdigest()
+                    == (identity["disassembly_sha256"])
+                )
+                classes.add(identity["class"])
+        names = archive.namelist()
+        assert len(names) == len(set(names))
+        assert {n for n in names if n.endswith(".class")} == classes
+        assert len(classes) == 6
+        templates = {
+            f"data/chefsdelight/structure/{v}_{role}_house.nbt"
+            for v in ("plains", "desert", "taiga", "savanna", "snowy")
+            for role in ("chef", "cook")
+        }
+        metadata = {
+            "META-INF/MANIFEST.MF",
+            "META-INF/neoforge.mods.toml",
+            "META-INF/accesstransformer.cfg",
+            "icon.png",
+            "logo.png",
+        }
+        other_data = {
+            "data/chefsdelight/loot_table/chests/cooker.json",
+            "data/minecraft/tags/point_of_interest_type/acquirable_job_site.json",
+        }
+        for name in names:
+            if name.endswith("/") or name in classes | templates | metadata | other_data:
+                continue
+            assert name.startswith("assets/chefsdelight/")
+            assert name.endswith((".png", ".json"))
+        pool_class = "net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool"
+        assert archive.read("META-INF/accesstransformer.cfg").decode().strip() == (
+            f"public {pool_class} templates  # templates"
+        )
 
 
 def test_injected_house_content() -> None:
