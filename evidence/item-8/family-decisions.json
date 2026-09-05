@@ -12508,7 +12508,7 @@
         "repurposed_structures:mansion_snowy",
         "repurposed_structures:mansion_taiga"
       ],
-      "rationale": "Eight material/biome variants use the same mansion generator with different mansion_type and foundation_block. No direct start pool exists: custom layout, entity, loot and foundation behavior remain untraced. This grouping preserves design variants without claiming effective generation or completed gameplay attributes.",
+      "rationale": "Eight material/biome variants use the same custom mansion layout generator with different mansion_type and foundation_block. Preserved layout selectors bind candidate component pools and their one-level fallback child attachment path. Rooms, child entity templates and processor lists remain components, not additional families. Candidate membership does not prove layout reachability or successful placement.",
       "variants": {
         "repurposed_structures:mansion_birch": {
           "definition": {
@@ -12529,7 +12529,7 @@
             "terrain_adaptation": "none",
             "type": "repurposed_structures:mansion_structure"
           },
-          "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+          "missing_components": "No missing catalog resources in the tested candidate set. Exact reachable layout coverage remains UNKNOWN; see custom_components."
         },
         "repurposed_structures:mansion_desert": {
           "definition": {
@@ -12547,7 +12547,7 @@
             "terrain_adaptation": "none",
             "type": "repurposed_structures:mansion_structure"
           },
-          "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+          "missing_components": "No missing catalog resources in the tested candidate set. Exact reachable layout coverage remains UNKNOWN; see custom_components."
         },
         "repurposed_structures:mansion_jungle": {
           "definition": {
@@ -12565,7 +12565,7 @@
             "terrain_adaptation": "none",
             "type": "repurposed_structures:mansion_structure"
           },
-          "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+          "missing_components": "No missing catalog resources in the tested candidate set. Exact reachable layout coverage remains UNKNOWN; see custom_components."
         },
         "repurposed_structures:mansion_mangrove": {
           "definition": {
@@ -12583,7 +12583,7 @@
             "terrain_adaptation": "none",
             "type": "repurposed_structures:mansion_structure"
           },
-          "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+          "missing_components": "No missing catalog resources in the tested candidate set. Exact reachable layout coverage remains UNKNOWN; see custom_components."
         },
         "repurposed_structures:mansion_oak": {
           "definition": {
@@ -12604,7 +12604,7 @@
             "terrain_adaptation": "none",
             "type": "repurposed_structures:mansion_structure"
           },
-          "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+          "missing_components": "No missing catalog resources in the tested candidate set. Exact reachable layout coverage remains UNKNOWN; see custom_components."
         },
         "repurposed_structures:mansion_savanna": {
           "definition": {
@@ -12625,7 +12625,7 @@
             "terrain_adaptation": "none",
             "type": "repurposed_structures:mansion_structure"
           },
-          "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+          "missing_components": "No missing catalog resources in the tested candidate set. Exact reachable layout coverage remains UNKNOWN; see custom_components."
         },
         "repurposed_structures:mansion_snowy": {
           "definition": {
@@ -12643,7 +12643,7 @@
             "terrain_adaptation": "none",
             "type": "repurposed_structures:mansion_structure"
           },
-          "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+          "missing_components": "No missing catalog resources in the tested candidate set. Exact reachable layout coverage remains UNKNOWN; see custom_components."
         },
         "repurposed_structures:mansion_taiga": {
           "definition": {
@@ -12661,13 +12661,95 @@
             "terrain_adaptation": "none",
             "type": "repurposed_structures:mansion_structure"
           },
-          "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+          "missing_components": "No missing catalog resources in the tested candidate set. Exact reachable layout coverage remains UNKNOWN; see custom_components."
         }
       },
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/repurposed-mansion/identities.json": "eea99d1b6d1808ab40ccb5113e510ab329c2a7eceaf630c56473345ec05825fd",
+        "evidence/item-8/sources/repurposed-mansion-bindings/identities.json": "e7e337973a74886d6794c31436f892c4f1c6cc68a42429344dcc8697779e14f9",
+        "evidence/item-8/sources/repurposed-mansion-processors/identities.json": "6428fc8e109a796e54586acbdbc0bc0a5526d359d5ee87bec4684f2d11653257",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/pool-codecs/identities.json": "4f1484523b4f3dea5154273eaaffea2459eb8a158af4d39dafcc0ca966a1bb98"
+      },
+      "custom_components": {
+        "candidate_pool_count": 376,
+        "candidate_parent_template_count": 592,
+        "child_template_ids": [
+          "repurposed_structures:mansions/hostile_mobs/evoker",
+          "repurposed_structures:mansions/hostile_mobs/vindicator",
+          "repurposed_structures:mansions/allays/1_allay",
+          "repurposed_structures:mansions/allays/2_allays",
+          "repurposed_structures:mansions/allays/3_allays"
+        ],
+        "binding_test": "tests/item8/test_mansion_components.py",
+        "selection": "Source-derived layout candidate pools contain positive-weight single elements. Parent jigsaws reference mob pools whose fallback is themselves. The custom generator selects fallback raw templates and attempts one-level attachment; it does not recursively expand child jigsaws.",
+        "scope": "All candidate references are present in the selected catalogs. Exact layout reachability and successful attachment remain UNKNOWN."
+      },
+      "attributes": {
+        "intended_hostility": {
+          "value": "Authored hostile mansion encounters",
+          "basis": "Candidate child templates contain evokers and vindicators; selected spawner lists specify spiders. Allay templates are also present and are not hostile encounters. This is design attribution, not observed encounter density."
+        },
+        "mob_source": {
+          "authored_child_entities": [
+            "minecraft:evoker",
+            "minecraft:vindicator",
+            "minecraft:allay"
+          ],
+          "child_template_content": "Evoker and vindicator templates each contain one persistent entity. Allay alternatives contain one, two or three persistent allays. These are template contents, not mansion population counts.",
+          "placement": "The preserved mirrored single-piece wrapper enables entity placement and finalization. Child attachment and world placement can still fail.",
+          "natural_source": "Selected definitions have empty spawn_overrides. Natural populations depend on biome spawning, conditions and retained modifications; exact effective composition remains UNKNOWN."
+        },
+        "generated_spawners": {
+          "selected_entity": "minecraft:spider",
+          "selected_lists": "repurposed_structures:mansions/{mansion_type}, each with spider weight 100",
+          "processor": "repurposed_structures:spawner_randomizing_processor",
+          "block_light_range": [
+            0,
+            7
+          ],
+          "behavior": "For spawner blocks, the processor replaces the template NBT with the manager-selected entity in SpawnData and one weight-one SpawnPotentials entry. Other blocks are unchanged.",
+          "scope": "Packaged list and processor attribution only. Listener registration, successful reload, selected room occurrence and placed spawner counts remain UNKNOWN. Missing lists and selection failures have distinct fallback paths preserved in the processor source README."
+        },
+        "loot_table_source": {
+          "candidate_chest_tables": [
+            "repurposed_structures:chests/mansions/birch",
+            "repurposed_structures:chests/mansions/birch_storage",
+            "repurposed_structures:chests/mansions/desert",
+            "repurposed_structures:chests/mansions/desert_storage",
+            "repurposed_structures:chests/mansions/jungle",
+            "repurposed_structures:chests/mansions/jungle_storage",
+            "repurposed_structures:chests/mansions/mangrove",
+            "repurposed_structures:chests/mansions/mangrove_storage",
+            "repurposed_structures:chests/mansions/oak",
+            "repurposed_structures:chests/mansions/oak_storage",
+            "repurposed_structures:chests/mansions/savanna",
+            "repurposed_structures:chests/mansions/savanna_storage",
+            "repurposed_structures:chests/mansions/snowy",
+            "repurposed_structures:chests/mansions/snowy_storage",
+            "repurposed_structures:chests/mansions/taiga",
+            "repurposed_structures:chests/mansions/taiga_storage"
+          ],
+          "basis": "LootTable NBT in source-linked candidate parent templates; all references resolve in the selected packaged loot catalog. Captured mushroom/spawner processors do not modify chest NBT.",
+          "effective_injections": "UNKNOWN: relevant retained loot and container transformations remain to be reconciled."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Candidate evoker/vindicator child templates and spider spawner data author hostile sources.",
+          "natural": "Additional natural enemies remain possible; effective biome and retained-mod contributions are UNKNOWN.",
+          "scope": "Not proof that every layout contains all three hostile sources."
+        },
+        "underground_surface_classification": {
+          "value": "Surface mansion with downward foundation supports",
+          "basis": "MansionStructure samples four rotation-dependent WORLD_SURFACE_WG heights near the chunk middle and anchors at the minimum sampled height. Its afterPlace extends foundation downward within piece X/Z bounds.",
+          "scope": "Source-derived placement intent; terrain can obscure parts. Player visual discoverability remains UNKNOWN."
+        },
+        "approximate_vertical_size": {
+          "value": "UNKNOWN: no retained full-start-chunk mansion envelope observation",
+          "limitation": "Foundation blocks can extend below saved piece bounds through replaceable terrain to the land-height/minY stopping conditions. A future piece-envelope estimate must report that excluded extension."
+        }
       }
     },
     {

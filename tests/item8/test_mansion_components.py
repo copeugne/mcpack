@@ -12,7 +12,7 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
-def test_mansion_candidate_pools_and_child_fallbacks() -> None:  # noqa: PLR0915 - one source chain.
+def test_mansion_candidate_pools_and_child_fallbacks() -> None:  # noqa: C901, PLR0915 - one source chain.
     """Bind source-derived candidate names, not simulated layout reachability."""
     raw = Path("evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
     assert hashlib.sha256(raw).hexdigest() == (
@@ -76,10 +76,13 @@ def test_mansion_candidate_pools_and_child_fallbacks() -> None:  # noqa: PLR0915
             by_id[key] = cast("dict[str, JsonValue]", row["document"])
     assert template_ids <= by_id.keys()
     child_pools: set[str] = set()
+    loot_tables: set[str] = set()
     for key in template_ids:
         assert by_id[key]["entities"] == []
         for block in cast("list[dict[str, JsonValue]]", by_id[key]["block_entities"]):
             nbt = cast("dict[str, JsonValue]", block["nbt"])
+            if "LootTable" in nbt:
+                loot_tables.add(str(nbt["LootTable"]))
             if nbt.get("id") == "minecraft:jigsaw":
                 child_pools.add(str(nbt["pool"]))
     assert child_pools == {f"repurposed_structures:mansions/{v}/mobs/{mob}"
@@ -102,6 +105,22 @@ def test_mansion_candidate_pools_and_child_fallbacks() -> None:  # noqa: PLR0915
           for n in (1, 2, 3)),
     }
     assert child_templates <= by_id.keys()
+    for key in child_templates:
+        entities = cast("list[dict[str, JsonValue]]", by_id[key]["entities"])
+        allay = "/allays/" in key
+        expected_count = int(key.rsplit("/", 1)[1][0]) if allay else 1
+        expected_id = "minecraft:allay" if allay else "minecraft:" + key.rsplit("/", 1)[1]
+        assert len(entities) == expected_count
+        for entity in entities:
+            nbt = cast("dict[str, JsonValue]", entity["nbt"])
+            assert nbt["id"] == expected_id
+            assert nbt["PersistenceRequired"] == 1
+    assert loot_tables == {f"repurposed_structures:chests/mansions/{v}{s}"
+                           for v in variants for s in ("", "_storage")}
+    selected_loot, _ = select_resources(catalog["resources"], "loot_table",
+                                       enabled_packs=["vanilla", "mod_data"],
+                                       lithostitched_overlay=True)
+    assert loot_tables <= selected_loot.keys()
 
 
 def test_mansion_spawner_lists_and_processors() -> None:

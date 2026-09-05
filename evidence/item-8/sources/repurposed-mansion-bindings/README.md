@@ -62,3 +62,20 @@ The focused test passed. Initial Ruff rejected its 53 statements against the
 source-reconciliation test without introducing a helper framework.
 Basedpyright then rejected an unhashable JsonValue set entry; the comparison
 now explicitly converts the element-type value to a string.
+
+## Candidate content attribution
+
+The same catalog-bound test now verifies each child template's entity ID,
+count and PersistenceRequired flag. Evoker/vindicator templates each store one
+entity; allay alternatives store one, two or three. Candidate parent chest NBT
+references the normal and storage mansion loot tables for all eight variants,
+and every reference resolves in the selected loot catalog. These are possible
+component contents, not an observed mansion population or guaranteed rooms.
+
+These findings and the captured processor/foundation behavior are integrated in
+the working mansion decision. Exact layout reachability, successful attachment,
+runtime spawner-list loading, effective external modifications, full geometry
+and visual discoverability remain open. No new world measurement was added.
+The expanded linear source-chain test exceeded Ruff's complexity threshold;
+its existing local statement-count exemption now also names C901. Six affected
+tests and scoped Ruff/Basedpyright pass.
