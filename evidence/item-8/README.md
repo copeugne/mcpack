@@ -1093,3 +1093,35 @@ Grouping delivered in `f90d6da`; inventory rebuilt at that revision, SHA-256:
 `620b2c61a0890bd4e2e387c4dd4f6e907682c653f752a8835a728eea6133ec2a`.
 All lake roots, biome constraints, custom-generation records and saved-start
 observation indexes remain represented. Other family rows are unchanged.
+
+## BetterEnd mountain-family reconciliation (2026-09-05)
+
+Ordinary and painted mountains are two variants of `betterend:mountain`, retaining
+both registered types, biome restrictions and generator/piece identities.
+Both extend FeatureBaseStructure, sample WORLD_SURFACE_WG and create procedural
+mountain pieces. Ordinary uses CrystalMountainPiece; painted uses
+PaintedMountainPiece and a palette of end stone, flavolite and violecite states.
+Their distinct height thresholds, shape parameters and material paths remain
+preserved in the source evidence rather than treated as identical generation.
+
+This is one natural terrain-formation identity with shape/material variants.
+Raw-generation step and empty spawn overrides do not prove that every piece is
+free of entities, loot or spawners. Piece interpretation, actual geometry and
+visual discovery remain open. The grouping test now verifies both mountain
+registration bootstrap bindings, definitions, inheritance, piece allocation and
+painted palette references using the already captured sources. No new extraction,
+measurement system or runtime was needed. Working total becomes 421 groups with
+887 registered roots; provider-wide completion remains unproven.
+
+Decision SHA-256:
+`1def4cbabbfb5bf97e5afa984144424469000aa5bfe891227610dd290b062712`.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-mountains.json
+```
+
+All 71 affected tests passed. After wrapping one overlong test assertion, the
+three affected BetterEnd cases and scoped Ruff/Basedpyright checks passed.

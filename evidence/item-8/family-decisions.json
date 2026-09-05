@@ -24457,46 +24457,41 @@
     },
     {
       "family_id": "betterend:mountain",
-      "name": "BetterEnd mountain",
+      "name": "BetterEnd Mountain Formation",
       "structure_ids": [
-        "betterend:mountain"
-      ],
-      "rationale": "Registered custom generation root with no declared start pool. This working record preserves its separate type and biome constraints without asserting an authored building, a final family count or empty content. Reconcile ordinary and painted mountain generation before deciding whether these are variants of one formation family. Required effective attributes remain unresolved.",
-      "start_pool": null,
-      "generation_settings": {
-        "type": "betterend:mountain"
-      },
-      "custom_generation_settings": {
-        "spawn_overrides": {},
-        "step": "raw_generation"
-      },
-      "missing_components": "UNKNOWN: custom generation is outside current pool trace",
-      "evidence": {
-        "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-        "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
-      }
-    },
-    {
-      "family_id": "betterend:painted_mountain",
-      "name": "BetterEnd painted mountain",
-      "structure_ids": [
+        "betterend:mountain",
         "betterend:painted_mountain"
       ],
-      "rationale": "Registered custom generation root with no declared start pool. This working record preserves its separate type and biome constraints without asserting an authored building, a final family count or empty content. Reconcile ordinary and painted mountain generation before deciding whether these are variants of one formation family. Required effective attributes remain unresolved.",
-      "start_pool": null,
-      "generation_settings": {
-        "type": "betterend:painted_mountain"
+      "rationale": "Two procedural mountain designs form one terrain-formation family. Both use the shared FeatureBaseStructure path and sample WORLD_SURFACE_WG before constructing a mountain piece. Ordinary mountain creates CrystalMountainPiece; painted mountain creates PaintedMountainPiece with an authored layer palette. Preserve differences in biome constraints, minimum terrain height, shape parameters and piece/material implementation as variants, not separate families merely because their types differ. Both definitions use raw_generation and empty spawn overrides. This grouping does not establish complete material contents, loot/mob absence, occupied dimensions or actual discoverability.",
+      "variants": {
+        "betterend:mountain": {
+          "definition": {
+            "biomes": "#betterend:has_structure/mountain",
+            "spawn_overrides": {},
+            "step": "raw_generation",
+            "type": "betterend:mountain"
+          },
+          "generator_class": "org.betterx.betterend.world.structures.features.MountainStructure",
+          "piece_class": "org.betterx.betterend.world.structures.piece.CrystalMountainPiece",
+          "missing_components": "UNKNOWN: procedural piece content is outside template-pool trace"
+        },
+        "betterend:painted_mountain": {
+          "definition": {
+            "biomes": "#betterend:has_structure/painted_mountain",
+            "spawn_overrides": {},
+            "step": "raw_generation",
+            "type": "betterend:painted_mountain"
+          },
+          "generator_class": "org.betterx.betterend.world.structures.features.PaintedMountainStructure",
+          "piece_class": "org.betterx.betterend.world.structures.piece.PaintedMountainPiece",
+          "missing_components": "UNKNOWN: procedural piece content is outside template-pool trace"
+        }
       },
-      "custom_generation_settings": {
-        "spawn_overrides": {},
-        "step": "raw_generation"
-      },
-      "missing_components": "UNKNOWN: custom generation is outside current pool trace",
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/betterend-formations-code/identities.json": "150df9fc0a941cc523bca51a782c39fcd0f08a32b11af77a64cf6f248c170961"
       }
     },
     {
