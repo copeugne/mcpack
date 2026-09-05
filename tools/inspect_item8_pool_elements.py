@@ -322,6 +322,7 @@ CLASSES = (
     "org/violetmoon/zeta/config/ConfigObjectMapper.class",
     "org/violetmoon/zeta/config/ConfigManager.class",
     "org/violetmoon/zetaimplforge/config/ForgeBackedConfig.class",
+    "org/violetmoon/zetaimplforge/config/ConfigEventDispatcher.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -413,6 +414,11 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     "org/violetmoon/quark/content/world/module/SpiralSpiresModule.class",
                     "org/violetmoon/zeta/config/ConfigObjectMapper.class",
                     "org/violetmoon/zeta/config/ConfigManager.class",
+                    "org/violetmoon/zeta/config/type/DimensionConfig.class",
+                    "org/violetmoon/zeta/config/type/CompoundBiomeConfig.class",
+                    "org/violetmoon/zeta/config/type/BiomeTagConfig.class",
+                    "org/violetmoon/zeta/config/type/StrictBiomeConfig.class",
+                    "org/violetmoon/zetaimplforge/config/ConfigEventDispatcher.class",
                     CLASSES[0],
                     "org/betterx/betterend/registry/EndStructures.class",
                     "com/yungnickyoung/minecraft/yungsextras/module/FeatureModule.class",
