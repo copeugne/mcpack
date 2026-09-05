@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-05
 
+Bronze template/marker attribution is integrated in ca135b3. Its six template
+candidates and processor inputs are bound by the focused test from 677365d;
+placement/mimic/loot source captures are in a45a37c, assembly captures in
+7489c02. Two focused tests and scoped static checks pass. Inventory changes
+only the Bronze row and decision identity. Do not repeat these captures or
+catalog joins. Next: finish builder/surface-ruins interpretation, inherited
+chest placement and processor callback binding, relevant sentry/trap behavior,
+and required geometry/placement/visibility. Silver and Gold remain afterward.
+No new world measurement or measurement system has been added.
+
 Aether cloud provider and direct content have a working terrain/cloud
 disposition in 6ab0446; entry/writer captures are in e2dd34b. Its registry row
 remains for coverage, not an accepted authored family. The focused test and
