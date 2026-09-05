@@ -398,3 +398,39 @@ The existing house-content test was retained without formatting changes. No
 trade-balance work or new runtime sample was added. Explicit provider dispositions
 now cover 23 of 136, with 113 remaining to reconcile. Consumer family attributes
 and shared-stack effects remain downstream of candidate completeness.
+
+## Village Taverns component provider
+
+`village_taverns-neoforge-1.1.5+1.21.1.jar` contributes the five already recorded
+tavern village components, their block/item, bartender profession, trades,
+schedule modification and loot data. It adds no separate structure family.
+The existing village_taverns:village_components relationship is reused.
+
+All fifteen top-level classes are captured in tavern-provider-entries,
+tavern-registration-scope and tavern-remaining-entries. The only bundled JAR is
+the hash-verified Tiny Config library. Its single annotated mod entry calls an
+empty initializer; it declares no mixins or auto-subscriber, and packages no
+generation data. Its configuration manager and the inspected Tavern caller
+account for the library's role without inferring that arbitrary caller callbacks
+are inert. Full file accounting permits only these classes, known component
+templates and modifiers, block/chest loot, recipe/job-site data and visual assets.
+
+The five packaged additions each target minecraft:village/V/houses and reference
+village_taverns:village/V/tavern, for desert, plains, savanna, snowy and taiga.
+Each has weight 5 and a Lithostitched limited delegate with limit 1. The fallback
+StructurePoolAPI path is conditional on Lithostitched absence and names the same
+five component identities; it is not an additional family route. The actual
+loader branch and effective weights remain attributable in family attributes,
+without changing this candidate boundary. No template is unexplained.
+
+```sh
+uv run pytest -q tests/item8/test_tavern_provider_scope.py
+```
+
+The focused case passes. An initial full-file assertion exposed a packaged
+jeweler.png.mcmeta asset; inspection showed villager hat metadata, and the visual
+asset accounting was corrected. Scoped Ruff and Basedpyright pass after line
+formatting. Source captures reproduced and are durably delivered. Explicit
+provider dispositions now cover 24 of 136, with 112 remaining to reconcile.
+Do not repeat Tavern block, trade or configuration-source investigation absent
+a concrete new contradictory finding.
