@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `1bb1b8e`, SHA-256
-`e51be54e048cc8147e5d08d9eb6865368848913cc4e3a0b714399ff265d7987d`.
+Current working inventory regenerated at `a7feb3f`, SHA-256
+`da8cecc81ca80eeb5cd3b8a894cf6547689881582205aa6b78e20d7bc6937a7e`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -2061,3 +2061,11 @@ for END_STONE rather than an arbitrary solid surface. Findings are direct code
 interpretation; effective runtime values, successful entity/structure placement
 and generated-world reconciliation remain open. Twenty-nine focused tests and
 scoped builder checks passed. No new measurement or test framework was added.
+
+Regenerated at `a7feb3f`; comparison changed only input identity and the Better
+End Island contribution. Reproduce in a fresh path:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-respawn.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-respawn.json
+```
