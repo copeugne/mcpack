@@ -1,0 +1,592 @@
+Compiled from "SwampHutPiece.java"
+public class net.minecraft.world.level.levelgen.structure.structures.SwampHutPiece extends net.minecraft.world.level.levelgen.structure.ScatteredFeaturePiece {
+  private boolean spawnedWitch;
+
+  private boolean spawnedCat;
+
+  public net.minecraft.world.level.levelgen.structure.structures.SwampHutPiece(net.minecraft.util.RandomSource, int, int);
+    Code:
+       0: aload_0
+       1: getstatic     #21                 // Field net/minecraft/world/level/levelgen/structure/pieces/StructurePieceType.SWAMPLAND_HUT:Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;
+       4: iload_2
+       5: bipush        64
+       7: iload_3
+       8: bipush        7
+      10: bipush        7
+      12: bipush        9
+      14: aload_1
+      15: invokestatic  #25                 // Method getRandomHorizontalDirection:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/core/Direction;
+      18: invokespecial #28                 // Method net/minecraft/world/level/levelgen/structure/ScatteredFeaturePiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;IIIIIILnet/minecraft/core/Direction;)V
+      21: return
+
+  public net.minecraft.world.level.levelgen.structure.structures.SwampHutPiece(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: getstatic     #21                 // Field net/minecraft/world/level/levelgen/structure/pieces/StructurePieceType.SWAMPLAND_HUT:Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;
+       4: aload_1
+       5: invokespecial #39                 // Method net/minecraft/world/level/levelgen/structure/ScatteredFeaturePiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;Lnet/minecraft/nbt/CompoundTag;)V
+       8: aload_0
+       9: aload_1
+      10: ldc           #41                 // String Witch
+      12: invokevirtual #47                 // Method net/minecraft/nbt/CompoundTag.getBoolean:(Ljava/lang/String;)Z
+      15: putfield      #49                 // Field spawnedWitch:Z
+      18: aload_0
+      19: aload_1
+      20: ldc           #51                 // String Cat
+      22: invokevirtual #47                 // Method net/minecraft/nbt/CompoundTag.getBoolean:(Ljava/lang/String;)Z
+      25: putfield      #53                 // Field spawnedCat:Z
+      28: return
+
+  protected void addAdditionalSaveData(net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext, net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokespecial #59                 // Method net/minecraft/world/level/levelgen/structure/ScatteredFeaturePiece.addAdditionalSaveData:(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceSerializationContext;Lnet/minecraft/nbt/CompoundTag;)V
+       6: aload_2
+       7: ldc           #41                 // String Witch
+       9: aload_0
+      10: getfield      #49                 // Field spawnedWitch:Z
+      13: invokevirtual #63                 // Method net/minecraft/nbt/CompoundTag.putBoolean:(Ljava/lang/String;Z)V
+      16: aload_2
+      17: ldc           #51                 // String Cat
+      19: aload_0
+      20: getfield      #53                 // Field spawnedCat:Z
+      23: invokevirtual #63                 // Method net/minecraft/nbt/CompoundTag.putBoolean:(Ljava/lang/String;Z)V
+      26: return
+
+  public void postProcess(net.minecraft.world.level.WorldGenLevel, net.minecraft.world.level.StructureManager, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.structure.BoundingBox, net.minecraft.world.level.ChunkPos, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload         5
+       4: iconst_0
+       5: invokevirtual #72                 // Method updateAverageGroundHeight:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;I)Z
+       8: ifne          12
+      11: return
+      12: aload_0
+      13: aload_1
+      14: aload         5
+      16: iconst_1
+      17: iconst_1
+      18: iconst_1
+      19: iconst_5
+      20: iconst_1
+      21: bipush        7
+      23: getstatic     #82                 // Field net/minecraft/world/level/block/Blocks.SPRUCE_PLANKS:Lnet/minecraft/world/level/block/Block;
+      26: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      29: getstatic     #82                 // Field net/minecraft/world/level/block/Blocks.SPRUCE_PLANKS:Lnet/minecraft/world/level/block/Block;
+      32: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      35: iconst_0
+      36: invokevirtual #92                 // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+      39: aload_0
+      40: aload_1
+      41: aload         5
+      43: iconst_1
+      44: iconst_4
+      45: iconst_2
+      46: iconst_5
+      47: iconst_4
+      48: bipush        7
+      50: getstatic     #82                 // Field net/minecraft/world/level/block/Blocks.SPRUCE_PLANKS:Lnet/minecraft/world/level/block/Block;
+      53: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      56: getstatic     #82                 // Field net/minecraft/world/level/block/Blocks.SPRUCE_PLANKS:Lnet/minecraft/world/level/block/Block;
+      59: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      62: iconst_0
+      63: invokevirtual #92                 // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+      66: aload_0
+      67: aload_1
+      68: aload         5
+      70: iconst_2
+      71: iconst_1
+      72: iconst_0
+      73: iconst_4
+      74: iconst_1
+      75: iconst_0
+      76: getstatic     #82                 // Field net/minecraft/world/level/block/Blocks.SPRUCE_PLANKS:Lnet/minecraft/world/level/block/Block;
+      79: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      82: getstatic     #82                 // Field net/minecraft/world/level/block/Blocks.SPRUCE_PLANKS:Lnet/minecraft/world/level/block/Block;
+      85: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      88: iconst_0
+      89: invokevirtual #92                 // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+      92: aload_0
+      93: aload_1
+      94: aload         5
+      96: iconst_2
+      97: iconst_2
+      98: iconst_2
+      99: iconst_3
+     100: iconst_3
+     101: iconst_2
+     102: getstatic     #82                 // Field net/minecraft/world/level/block/Blocks.SPRUCE_PLANKS:Lnet/minecraft/world/level/block/Block;
+     105: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     108: getstatic     #82                 // Field net/minecraft/world/level/block/Blocks.SPRUCE_PLANKS:Lnet/minecraft/world/level/block/Block;
+     111: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     114: iconst_0
+     115: invokevirtual #92                 // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+     118: aload_0
+     119: aload_1
+     120: aload         5
+     122: iconst_1
+     123: iconst_2
+     124: iconst_3
+     125: iconst_1
+     126: iconst_3
+     127: bipush        6
+     129: getstatic     #82                 // Field net/minecraft/world/level/block/Blocks.SPRUCE_PLANKS:Lnet/minecraft/world/level/block/Block;
+     132: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     135: getstatic     #82                 // Field net/minecraft/world/level/block/Blocks.SPRUCE_PLANKS:Lnet/minecraft/world/level/block/Block;
+     138: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     141: iconst_0
+     142: invokevirtual #92                 // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+     145: aload_0
+     146: aload_1
+     147: aload         5
+     149: iconst_5
+     150: iconst_2
+     151: iconst_3
+     152: iconst_5
+     153: iconst_3
+     154: bipush        6
+     156: getstatic     #82                 // Field net/minecraft/world/level/block/Blocks.SPRUCE_PLANKS:Lnet/minecraft/world/level/block/Block;
+     159: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     162: getstatic     #82                 // Field net/minecraft/world/level/block/Blocks.SPRUCE_PLANKS:Lnet/minecraft/world/level/block/Block;
+     165: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     168: iconst_0
+     169: invokevirtual #92                 // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+     172: aload_0
+     173: aload_1
+     174: aload         5
+     176: iconst_2
+     177: iconst_2
+     178: bipush        7
+     180: iconst_4
+     181: iconst_3
+     182: bipush        7
+     184: getstatic     #82                 // Field net/minecraft/world/level/block/Blocks.SPRUCE_PLANKS:Lnet/minecraft/world/level/block/Block;
+     187: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     190: getstatic     #82                 // Field net/minecraft/world/level/block/Blocks.SPRUCE_PLANKS:Lnet/minecraft/world/level/block/Block;
+     193: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     196: iconst_0
+     197: invokevirtual #92                 // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+     200: aload_0
+     201: aload_1
+     202: aload         5
+     204: iconst_1
+     205: iconst_0
+     206: iconst_2
+     207: iconst_1
+     208: iconst_3
+     209: iconst_2
+     210: getstatic     #95                 // Field net/minecraft/world/level/block/Blocks.OAK_LOG:Lnet/minecraft/world/level/block/Block;
+     213: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     216: getstatic     #95                 // Field net/minecraft/world/level/block/Blocks.OAK_LOG:Lnet/minecraft/world/level/block/Block;
+     219: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     222: iconst_0
+     223: invokevirtual #92                 // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+     226: aload_0
+     227: aload_1
+     228: aload         5
+     230: iconst_5
+     231: iconst_0
+     232: iconst_2
+     233: iconst_5
+     234: iconst_3
+     235: iconst_2
+     236: getstatic     #95                 // Field net/minecraft/world/level/block/Blocks.OAK_LOG:Lnet/minecraft/world/level/block/Block;
+     239: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     242: getstatic     #95                 // Field net/minecraft/world/level/block/Blocks.OAK_LOG:Lnet/minecraft/world/level/block/Block;
+     245: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     248: iconst_0
+     249: invokevirtual #92                 // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+     252: aload_0
+     253: aload_1
+     254: aload         5
+     256: iconst_1
+     257: iconst_0
+     258: bipush        7
+     260: iconst_1
+     261: iconst_3
+     262: bipush        7
+     264: getstatic     #95                 // Field net/minecraft/world/level/block/Blocks.OAK_LOG:Lnet/minecraft/world/level/block/Block;
+     267: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     270: getstatic     #95                 // Field net/minecraft/world/level/block/Blocks.OAK_LOG:Lnet/minecraft/world/level/block/Block;
+     273: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     276: iconst_0
+     277: invokevirtual #92                 // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+     280: aload_0
+     281: aload_1
+     282: aload         5
+     284: iconst_5
+     285: iconst_0
+     286: bipush        7
+     288: iconst_5
+     289: iconst_3
+     290: bipush        7
+     292: getstatic     #95                 // Field net/minecraft/world/level/block/Blocks.OAK_LOG:Lnet/minecraft/world/level/block/Block;
+     295: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     298: getstatic     #95                 // Field net/minecraft/world/level/block/Blocks.OAK_LOG:Lnet/minecraft/world/level/block/Block;
+     301: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     304: iconst_0
+     305: invokevirtual #92                 // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+     308: aload_0
+     309: aload_1
+     310: getstatic     #98                 // Field net/minecraft/world/level/block/Blocks.OAK_FENCE:Lnet/minecraft/world/level/block/Block;
+     313: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     316: iconst_2
+     317: iconst_3
+     318: iconst_2
+     319: aload         5
+     321: invokevirtual #102                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     324: aload_0
+     325: aload_1
+     326: getstatic     #98                 // Field net/minecraft/world/level/block/Blocks.OAK_FENCE:Lnet/minecraft/world/level/block/Block;
+     329: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     332: iconst_3
+     333: iconst_3
+     334: bipush        7
+     336: aload         5
+     338: invokevirtual #102                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     341: aload_0
+     342: aload_1
+     343: getstatic     #105                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+     346: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     349: iconst_1
+     350: iconst_3
+     351: iconst_4
+     352: aload         5
+     354: invokevirtual #102                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     357: aload_0
+     358: aload_1
+     359: getstatic     #105                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+     362: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     365: iconst_5
+     366: iconst_3
+     367: iconst_4
+     368: aload         5
+     370: invokevirtual #102                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     373: aload_0
+     374: aload_1
+     375: getstatic     #105                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+     378: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     381: iconst_5
+     382: iconst_3
+     383: iconst_5
+     384: aload         5
+     386: invokevirtual #102                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     389: aload_0
+     390: aload_1
+     391: getstatic     #108                // Field net/minecraft/world/level/block/Blocks.POTTED_RED_MUSHROOM:Lnet/minecraft/world/level/block/Block;
+     394: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     397: iconst_1
+     398: iconst_3
+     399: iconst_5
+     400: aload         5
+     402: invokevirtual #102                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     405: aload_0
+     406: aload_1
+     407: getstatic     #111                // Field net/minecraft/world/level/block/Blocks.CRAFTING_TABLE:Lnet/minecraft/world/level/block/Block;
+     410: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     413: iconst_3
+     414: iconst_2
+     415: bipush        6
+     417: aload         5
+     419: invokevirtual #102                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     422: aload_0
+     423: aload_1
+     424: getstatic     #114                // Field net/minecraft/world/level/block/Blocks.CAULDRON:Lnet/minecraft/world/level/block/Block;
+     427: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     430: iconst_4
+     431: iconst_2
+     432: bipush        6
+     434: aload         5
+     436: invokevirtual #102                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     439: aload_0
+     440: aload_1
+     441: getstatic     #98                 // Field net/minecraft/world/level/block/Blocks.OAK_FENCE:Lnet/minecraft/world/level/block/Block;
+     444: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     447: iconst_1
+     448: iconst_2
+     449: iconst_1
+     450: aload         5
+     452: invokevirtual #102                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     455: aload_0
+     456: aload_1
+     457: getstatic     #98                 // Field net/minecraft/world/level/block/Blocks.OAK_FENCE:Lnet/minecraft/world/level/block/Block;
+     460: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     463: iconst_5
+     464: iconst_2
+     465: iconst_1
+     466: aload         5
+     468: invokevirtual #102                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     471: getstatic     #117                // Field net/minecraft/world/level/block/Blocks.SPRUCE_STAIRS:Lnet/minecraft/world/level/block/Block;
+     474: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     477: getstatic     #123                // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     480: getstatic     #129                // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+     483: invokevirtual #135                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     486: checkcast     #131                // class net/minecraft/world/level/block/state/BlockState
+     489: astore        8
+     491: getstatic     #117                // Field net/minecraft/world/level/block/Blocks.SPRUCE_STAIRS:Lnet/minecraft/world/level/block/Block;
+     494: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     497: getstatic     #123                // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     500: getstatic     #138                // Field net/minecraft/core/Direction.EAST:Lnet/minecraft/core/Direction;
+     503: invokevirtual #135                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     506: checkcast     #131                // class net/minecraft/world/level/block/state/BlockState
+     509: astore        9
+     511: getstatic     #117                // Field net/minecraft/world/level/block/Blocks.SPRUCE_STAIRS:Lnet/minecraft/world/level/block/Block;
+     514: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     517: getstatic     #123                // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     520: getstatic     #141                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+     523: invokevirtual #135                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     526: checkcast     #131                // class net/minecraft/world/level/block/state/BlockState
+     529: astore        10
+     531: getstatic     #117                // Field net/minecraft/world/level/block/Blocks.SPRUCE_STAIRS:Lnet/minecraft/world/level/block/Block;
+     534: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     537: getstatic     #123                // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     540: getstatic     #144                // Field net/minecraft/core/Direction.SOUTH:Lnet/minecraft/core/Direction;
+     543: invokevirtual #135                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     546: checkcast     #131                // class net/minecraft/world/level/block/state/BlockState
+     549: astore        11
+     551: aload_0
+     552: aload_1
+     553: aload         5
+     555: iconst_0
+     556: iconst_4
+     557: iconst_1
+     558: bipush        6
+     560: iconst_4
+     561: iconst_1
+     562: aload         8
+     564: aload         8
+     566: iconst_0
+     567: invokevirtual #92                 // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+     570: aload_0
+     571: aload_1
+     572: aload         5
+     574: iconst_0
+     575: iconst_4
+     576: iconst_2
+     577: iconst_0
+     578: iconst_4
+     579: bipush        7
+     581: aload         9
+     583: aload         9
+     585: iconst_0
+     586: invokevirtual #92                 // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+     589: aload_0
+     590: aload_1
+     591: aload         5
+     593: bipush        6
+     595: iconst_4
+     596: iconst_2
+     597: bipush        6
+     599: iconst_4
+     600: bipush        7
+     602: aload         10
+     604: aload         10
+     606: iconst_0
+     607: invokevirtual #92                 // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+     610: aload_0
+     611: aload_1
+     612: aload         5
+     614: iconst_0
+     615: iconst_4
+     616: bipush        8
+     618: bipush        6
+     620: iconst_4
+     621: bipush        8
+     623: aload         11
+     625: aload         11
+     627: iconst_0
+     628: invokevirtual #92                 // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIILnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Z)V
+     631: aload_0
+     632: aload_1
+     633: aload         8
+     635: getstatic     #148                // Field net/minecraft/world/level/block/StairBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     638: getstatic     #154                // Field net/minecraft/world/level/block/state/properties/StairsShape.OUTER_RIGHT:Lnet/minecraft/world/level/block/state/properties/StairsShape;
+     641: invokevirtual #135                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     644: checkcast     #131                // class net/minecraft/world/level/block/state/BlockState
+     647: iconst_0
+     648: iconst_4
+     649: iconst_1
+     650: aload         5
+     652: invokevirtual #102                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     655: aload_0
+     656: aload_1
+     657: aload         8
+     659: getstatic     #148                // Field net/minecraft/world/level/block/StairBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     662: getstatic     #157                // Field net/minecraft/world/level/block/state/properties/StairsShape.OUTER_LEFT:Lnet/minecraft/world/level/block/state/properties/StairsShape;
+     665: invokevirtual #135                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     668: checkcast     #131                // class net/minecraft/world/level/block/state/BlockState
+     671: bipush        6
+     673: iconst_4
+     674: iconst_1
+     675: aload         5
+     677: invokevirtual #102                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     680: aload_0
+     681: aload_1
+     682: aload         11
+     684: getstatic     #148                // Field net/minecraft/world/level/block/StairBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     687: getstatic     #157                // Field net/minecraft/world/level/block/state/properties/StairsShape.OUTER_LEFT:Lnet/minecraft/world/level/block/state/properties/StairsShape;
+     690: invokevirtual #135                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     693: checkcast     #131                // class net/minecraft/world/level/block/state/BlockState
+     696: iconst_0
+     697: iconst_4
+     698: bipush        8
+     700: aload         5
+     702: invokevirtual #102                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     705: aload_0
+     706: aload_1
+     707: aload         11
+     709: getstatic     #148                // Field net/minecraft/world/level/block/StairBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     712: getstatic     #154                // Field net/minecraft/world/level/block/state/properties/StairsShape.OUTER_RIGHT:Lnet/minecraft/world/level/block/state/properties/StairsShape;
+     715: invokevirtual #135                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     718: checkcast     #131                // class net/minecraft/world/level/block/state/BlockState
+     721: bipush        6
+     723: iconst_4
+     724: bipush        8
+     726: aload         5
+     728: invokevirtual #102                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     731: iconst_2
+     732: istore        12
+     734: iload         12
+     736: bipush        7
+     738: if_icmpgt     780
+     741: iconst_1
+     742: istore        13
+     744: iload         13
+     746: iconst_5
+     747: if_icmpgt     774
+     750: aload_0
+     751: aload_1
+     752: getstatic     #95                 // Field net/minecraft/world/level/block/Blocks.OAK_LOG:Lnet/minecraft/world/level/block/Block;
+     755: invokevirtual #88                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     758: iload         13
+     760: iconst_m1
+     761: iload         12
+     763: aload         5
+     765: invokevirtual #160                // Method fillColumnDown:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     768: iinc          13, 4
+     771: goto          744
+     774: iinc          12, 5
+     777: goto          734
+     780: aload_0
+     781: getfield      #49                 // Field spawnedWitch:Z
+     784: ifne          898
+     787: aload_0
+     788: iconst_2
+     789: iconst_2
+     790: iconst_5
+     791: invokevirtual #164                // Method getWorldPos:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     794: astore        12
+     796: aload         5
+     798: aload         12
+     800: invokevirtual #168                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.isInside:(Lnet/minecraft/core/Vec3i;)Z
+     803: ifeq          898
+     806: aload_0
+     807: iconst_1
+     808: putfield      #49                 // Field spawnedWitch:Z
+     811: getstatic     #174                // Field net/minecraft/world/entity/EntityType.WITCH:Lnet/minecraft/world/entity/EntityType;
+     814: aload_1
+     815: invokeinterface #178,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+     820: invokevirtual #182                // Method net/minecraft/world/entity/EntityType.create:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+     823: checkcast     #184                // class net/minecraft/world/entity/monster/Witch
+     826: astore        13
+     828: aload         13
+     830: ifnull        898
+     833: aload         13
+     835: invokevirtual #188                // Method net/minecraft/world/entity/monster/Witch.setPersistenceRequired:()V
+     838: aload         13
+     840: aload         12
+     842: invokevirtual #192                // Method net/minecraft/core/BlockPos.getX:()I
+     845: i2d
+     846: ldc2_w        #193                // double 0.5d
+     849: dadd
+     850: aload         12
+     852: invokevirtual #197                // Method net/minecraft/core/BlockPos.getY:()I
+     855: i2d
+     856: aload         12
+     858: invokevirtual #200                // Method net/minecraft/core/BlockPos.getZ:()I
+     861: i2d
+     862: ldc2_w        #193                // double 0.5d
+     865: dadd
+     866: fconst_0
+     867: fconst_0
+     868: invokevirtual #204                // Method net/minecraft/world/entity/monster/Witch.moveTo:(DDDFF)V
+     871: aload         13
+     873: aload_1
+     874: aload_1
+     875: aload         12
+     877: invokeinterface #208,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getCurrentDifficultyAt:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/DifficultyInstance;
+     882: getstatic     #214                // Field net/minecraft/world/entity/MobSpawnType.STRUCTURE:Lnet/minecraft/world/entity/MobSpawnType;
+     885: aconst_null
+     886: invokevirtual #218                // Method net/minecraft/world/entity/monster/Witch.finalizeSpawn:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;)Lnet/minecraft/world/entity/SpawnGroupData;
+     889: pop
+     890: aload_1
+     891: aload         13
+     893: invokeinterface #222,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.addFreshEntityWithPassengers:(Lnet/minecraft/world/entity/Entity;)V
+     898: aload_0
+     899: aload_1
+     900: aload         5
+     902: invokevirtual #226                // Method spawnCat:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     905: return
+
+  private void spawnCat(net.minecraft.world.level.ServerLevelAccessor, net.minecraft.world.level.levelgen.structure.BoundingBox);
+    Code:
+       0: aload_0
+       1: getfield      #53                 // Field spawnedCat:Z
+       4: ifne          111
+       7: aload_0
+       8: iconst_2
+       9: iconst_2
+      10: iconst_5
+      11: invokevirtual #164                // Method getWorldPos:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      14: astore_3
+      15: aload_2
+      16: aload_3
+      17: invokevirtual #168                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.isInside:(Lnet/minecraft/core/Vec3i;)Z
+      20: ifeq          111
+      23: aload_0
+      24: iconst_1
+      25: putfield      #53                 // Field spawnedCat:Z
+      28: getstatic     #252                // Field net/minecraft/world/entity/EntityType.CAT:Lnet/minecraft/world/entity/EntityType;
+      31: aload_1
+      32: invokeinterface #255,  1          // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+      37: invokevirtual #182                // Method net/minecraft/world/entity/EntityType.create:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+      40: checkcast     #257                // class net/minecraft/world/entity/animal/Cat
+      43: astore        4
+      45: aload         4
+      47: ifnull        111
+      50: aload         4
+      52: invokevirtual #258                // Method net/minecraft/world/entity/animal/Cat.setPersistenceRequired:()V
+      55: aload         4
+      57: aload_3
+      58: invokevirtual #192                // Method net/minecraft/core/BlockPos.getX:()I
+      61: i2d
+      62: ldc2_w        #193                // double 0.5d
+      65: dadd
+      66: aload_3
+      67: invokevirtual #197                // Method net/minecraft/core/BlockPos.getY:()I
+      70: i2d
+      71: aload_3
+      72: invokevirtual #200                // Method net/minecraft/core/BlockPos.getZ:()I
+      75: i2d
+      76: ldc2_w        #193                // double 0.5d
+      79: dadd
+      80: fconst_0
+      81: fconst_0
+      82: invokevirtual #259                // Method net/minecraft/world/entity/animal/Cat.moveTo:(DDDFF)V
+      85: aload         4
+      87: aload_1
+      88: aload_1
+      89: aload_3
+      90: invokeinterface #260,  2          // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.getCurrentDifficultyAt:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/DifficultyInstance;
+      95: getstatic     #214                // Field net/minecraft/world/entity/MobSpawnType.STRUCTURE:Lnet/minecraft/world/entity/MobSpawnType;
+      98: aconst_null
+      99: invokevirtual #261                // Method net/minecraft/world/entity/animal/Cat.finalizeSpawn:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;)Lnet/minecraft/world/entity/SpawnGroupData;
+     102: pop
+     103: aload_1
+     104: aload         4
+     106: invokeinterface #262,  2          // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.addFreshEntityWithPassengers:(Lnet/minecraft/world/entity/Entity;)V
+     111: return
+}
