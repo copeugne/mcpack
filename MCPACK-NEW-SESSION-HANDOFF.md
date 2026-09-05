@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+CTOV frozen callback/modifier selection now has a focused passing regression.
+It binds 74 callback-selected roots (63 villages and eleven outposts) to the
+registry; mesa outpost and three underground-size roots remain outside that
+callback list, not deleted from the inventory. Of 1,019 catalog modifier JSON
+records, 63 pass mod conditions (21 each Chef's Delight, Farmer's Delight,
+Village Taverns); 956 fail. Reuse test_ctov_provider_selection.py and source
+82ac234. Remaining provider coverage: full payload and compatibility ZIP/directories,
+disconnected/missing components and modifier relationships. Counts unchanged:
+33 resolved, 103 open. No new parser, runtime or baseline change.
+
 CTOV twelve-class entry/component capture delivered in 82ac234 using 61663b4;
 independent extraction reproduced at evidence/raw/item8/ctov-provider-r1.
 Startup adds configured existing roots to vanilla sets through Lithostitched;
