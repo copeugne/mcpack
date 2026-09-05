@@ -6,6 +6,50 @@
 
 ### Continuation update - 2026-09-05
 
+Monument processor effects are integrated in 077fcd2 using dc9ac0a's reproduced
+captures. The inventory preserves downward support extent, state-only pillar
+writes, surface finalization and unseeded ordering as source findings with
+runtime/geometry limits. Two focused tests and scoped static checks pass;
+inventory reproduction is exact. Do not repeat these processor captures or
+candidate-content joins. Continue unresolved engine/registration dependencies
+only where required for an attribute, and the remaining provider coverage.
+
+Trace the five custom processor/predicate implementations referenced by the
+monument lists, plus RSProcessors to bind their registered identities. Pillars
+affect vertical extent, surface delegation affects archaeology loot, and the
+Y predicate affects lava placement. Noise/random replacements are current
+inputs to these same lists. Use the existing extractor and no new measurement.
+Do not infer the structure_surface_processor class from a filename: the archive
+contains CappedStructureSurfaceProcessor, so verify the registration binding.
+
+Monument packaged encounter and loot inputs are integrated in 62f005a and the
+inventory reproduces exactly. Do not repeat candidate entity/chest joins.
+Processor documents add jungle archaeology loot and downward pillar paths;
+their custom implementations remain untraced. Reuse existing catalogs and
+extractor to resolve only effects needed for content and geometry attribution.
+Six affected tests and scoped static checks pass. No world measurement or
+Item 8 completion claim.
+
+Monument fitters and their interface are delivered in 58cbbfa. The interface
+is abstract, correcting the earlier default-opening assumption. The focused
+catalog test reconciles 76 candidate pools and 88 templates; it passes with
+scoped static checks. Inspect the five referenced nonempty processor lists and
+candidate template content next. Preserve wall_2's unassigned source relationship
+and graph-reachability uncertainty; do not count components as families.
+
+Monument entry and building captures are delivered in 5fceeb4 and reproduced
+exactly. Follow the eight named Fit*Room classes and MonumentRoomFitter's
+default opening creation. Their pool references are the remaining direct
+component-selection gap. Use verbose output for concatenation recipes, then
+join existing catalogs. Do not repeat entry capture or add a layout simulator.
+
+Inspect the missing Repurposed Structures monument entry, assembly and base-piece
+paths using the existing extractor. The working monument decision explicitly
+lacks custom layout/content attribution. Select MonumentStructure, MonumentPieces
+and its MonumentBuilding/MonumentPiece classes; retain verbose pool-name bindings
+for the two piece classes. This closes a required family attribution gap without
+adding a new extractor, schema or world measurement.
+
 Mansion candidate content and source placement are integrated in 8ba362c.
 Child template entities, chest loot references and selected spider spawner
 inputs are tested; surface anchoring and the foundation envelope limitation
