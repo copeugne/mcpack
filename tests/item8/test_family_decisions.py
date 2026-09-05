@@ -259,7 +259,7 @@ def test_spider_dungeon_attributes_bind_custom_spawners_loot_and_components() ->
     ):
         assert (
             "// class com/yungnickyoung/minecraft/betterdungeons/"
-            "world/structure/spider_dungeon/piece/"
+            + "world/structure/spider_dungeon/piece/"
             + component
             in texts["SpiderDungeonBigTunnelPiece"]
         )
