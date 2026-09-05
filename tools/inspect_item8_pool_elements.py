@@ -536,6 +536,11 @@ CLASSES: tuple[str, ...] = (
     "com/finndog/moogs_structures/platform/Services.class",
     "com/finndog/moogs_structures/platform/IRegistryPlatform.class",
     "com/finndog/moogs_structures/modinit/registry/neoforge/ResourcefulRegistriesImpl.class",
+    "com/finndog/moogs_structures/modinit/registry/neoforge/NeoForgeResourcefulRegistry.class",
+    "com/finndog/moogs_structures/modinit/registry/ResourcefulRegistries.class",
+    "com/finndog/moogs_structures/utils/AsyncLocator.class",
+    "com/finndog/moogs_structures/utils/neoforge/PlatformHooksImpl.class",
+    "com/finndog/moogs_structures/datagen/StructureNbtUpdaterDatagen.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
