@@ -24186,7 +24186,7 @@
       "structure_ids": [
         "aether:large_aercloud"
       ],
-      "rationale": "One custom cloud formation generator registered in the structure registry. Its cold-aercloud block provider is preserved; registry membership does not establish an authored building or dungeon. Effective generated content and final canonical reconciliation remain open.",
+      "rationale": "The standalone registry root generates a random-walk cold-aercloud block formation through LargeAercloudChunk. It has no direct template, pool, entity, loot or spawner assignment in the captured entry/writer path. Treat it as a working terrain/cloud contribution, not an additional authored dungeon. Preserve this registry assignment for coverage while final canonical reconciliation remains open. Silver Dungeon reuses the writer for its cloud-bed component; that reuse does not make cloud chunks separate families.",
       "start_pool": null,
       "generation_settings": {
         "type": "aether:large_aercloud"
@@ -24206,11 +24206,40 @@
         "spawn_overrides": {},
         "step": "surface_structures"
       },
-      "missing_components": "UNKNOWN: custom generation is outside current pool trace",
+      "missing_components": "No template/pool dependency in the captured direct entry/writer path. Provider selection is bound by tests/item8/test_aether_cloud_source.py; effective engine and retained-mod behavior remain separate.",
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/aether-custom-entry/identities.json": "e33ddae6869cc516beafc2eff72976b2db2ee6d7602443d2af389c2778b01954"
+      },
+      "contribution_disposition": "Terrain/cloud formation. Retained as a working registered-root coverage row, not an accepted authored-structure family.",
+      "attributes": {
+        "intended_hostility": {
+          "value": "No direct authored encounter in this cloud-generation path",
+          "basis": "Captured writer places only provider-selected block states. Selected provider specifies cold_aercloud; the structure definition has empty spawn_overrides. This does not establish environmental safety."
+        },
+        "mob_source": {
+          "authored": "No direct entity creation in the captured entry/writer path.",
+          "natural": "Natural spawning and retained external effects remain UNKNOWN; empty spawn_overrides does not establish absence of enemies."
+        },
+        "loot_table_source": {
+          "authored_container_loot": "No direct container or loot-table assignment in the captured path.",
+          "scope": "Selected provider places cold_aercloud with double_drops=true. Ordinary block drops and resource renewability are not container loot attribution and are not evaluated here."
+        },
+        "generated_spawners": {
+          "direct_source": "No direct spawner assignment in the captured entry/writer path.",
+          "scope": "Source contribution only, not a global absence claim about external generation modifications."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "No authored enemy source in the captured cloud path.",
+          "natural": "Effective natural populations remain UNKNOWN."
+        },
+        "underground_surface_classification": {
+          "value": "Cloud formation with a custom vertical anchor",
+          "basis": "Although findGenerationPoint calls onTopOfChunkCenter with WORLD_SURFACE_WG, generatePieces independently starts Y at min-build-height plus nextInt(rangeY), then changes Y during the walk. Selected rangeY is 32.",
+          "scope": "The entry heightmap label cannot establish surface-relative placement or visual discoverability. Actual world placement remains unobserved here."
+        }
       }
     },
     {
