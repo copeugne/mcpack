@@ -269,6 +269,10 @@ CLASSES = (
     "com/yungnickyoung/minecraft/yungsextras/world/processor/INbtFeatureProcessor.class",
     "com/yungnickyoung/minecraft/yungsextras/world/processor/SwampFeatureProcessor.class",
     "com/yungnickyoung/minecraft/yungsextras/module/FeatureProcessorModule.class",
+    "com/yungnickyoung/minecraft/yungsextras/YungsExtrasCommon.class",
+    "com/yungnickyoung/minecraft/yungsextras/YungsExtrasNeoForge.class",
+    "com/yungnickyoung/minecraft/yungsextras/services/NeoForgeModulesLoader.class",
+    "com/yungnickyoung/minecraft/yungsbridges/services/NeoForgeModulesLoader.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
