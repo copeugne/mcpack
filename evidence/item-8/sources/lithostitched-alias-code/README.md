@@ -78,3 +78,24 @@ retains 37 other selected modifier types as untraced. Trial chambers remain one
 working family. Decision references are updated to the new trace hash; the
 trial-chamber rationale now records this replacement and its ashen contribution.
 Other modifier types and Item 8 closure remain outstanding.
+
+The three affected family checks passed (55 unrelated cases deselected), and
+the existing structure/biome source output reproduced byte-for-byte:
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py -k 'minecraft or better_village or all_runtime'
+uv run -m tools.build_item8_structure_inputs --output evidence/raw/item8/structure-inputs-tag-refactor.json
+cmp evidence/item-8/sources/structure-inputs.json evidence/raw/item8/structure-inputs-tag-refactor.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-trial-aliases.json
+```
+
+The inventory was regenerated from delivered inputs at `48df0e9`. Apart from
+required source-hash substitutions, only the trial-chamber family changed.
+It now carries the ashen template's explicit normal/ominous spawner sources and
+loot references. Other spawner configuration references still need resolution;
+this is not a complete effective encounter inventory.
+
+Decision SHA-256:
+`3fc8ed59195ee040f746b9aeef957d1d4a72293016bab2a13b5e5b37eda518bc`.
+Inventory SHA-256:
+`d5b51f2f140e2d88bf77d9f3dac5168f0b4dfacd827ae9cf1908d42abbf4d369`.
