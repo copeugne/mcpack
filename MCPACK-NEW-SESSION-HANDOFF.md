@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-06
 
+Chef's Delight now has a full-provider component-only disposition. All six
+classes are captured, with the remaining four delivered in 23ee872. Full file
+accounting and the existing component-content test pass, as do scoped static
+checks. provider-scope.md now records 23 of 136 dispositions; 113 remain to
+reconcile. Continue remaining code providers and injection relationships.
+Do not repeat Chef's Delight source or trade/house analysis.
+
+Explorify's data scope is accounted for: 23 roots, 57 pools, 165 current templates
+and 165 identical legacy copies. Thirteen disconnected pools and thirty
+disconnected templates are explicitly named in provider-scope.md. The focused
+test and scoped static checks pass after formatting. There are now 22 explicit
+provider dispositions of 136, leaving 114 to reconcile. The data-only batch is
+finished. Next: remaining code-provider roles and injection relationships,
+reusing delivered captures before adding source selections.
+
 Moog Nether data scope is now reconciled: all 52 roots, 168 pools and 459
 templates accounted for, including 12 disconnected pools, 162 unselected version
 alternatives and nine other disconnected templates. Four reused provider cases

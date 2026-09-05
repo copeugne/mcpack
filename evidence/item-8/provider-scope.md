@@ -328,3 +328,73 @@ and Basedpyright passing. Local complexity lint exceptions retain explicit
 archive cases without adding a new abstraction or framework. Explicit provider
 dispositions now cover 21 of 136; 115 remain to reconcile. Explorify is the
 remaining data-only structure-provider batch member.
+
+## Explorify data provider
+
+`Explorify v1.6.5.mod.jar` has 23 existing root candidates, 57 pools and 165
+distinct current-path templates. All 165 legacy `structures/` files are
+byte-identical copies of corresponding `structure/` files. Do not count them
+again. Full accounting covers all 477 files, including metadata, biome tags,
+loot tables, processor lists, structure sets and two Cristel Lib configuration
+declarations. The f15 overlay contains processor lists; f41 contains legacy-path
+loot tables. Neither adds a root, pool or template candidate. There is no
+executable code or separate feature-generation mechanism in this archive.
+
+All roots use minecraft:jigsaw and have existing traces without missing graph
+resources or unresolved pool elements. The disconnected pool set is
+`explorify:bastion_spiral/bridge_end`, plus base_plate, feature_plate, features
+and tower beneath each of `explorify:watchtower/plains/`, savanna/ and taiga/.
+
+The 30 disconnected templates are:
+
+- Beneath each watchtower variant above: base_plate/whole, feature_plate/whole,
+  tower/whole, features/campfire, features/coal_pile, features/hay_pile,
+  features/logs and features/resource_pile.
+- `explorify:bastion_spiral/bridge/long`, bridge/whole and bridge_end/whole.
+- `explorify:campsite/tent/09`, tent/10 and `explorify:tavern/back/06`.
+
+These are unused by the packaged root graphs, not additional independent root
+candidates. Manual placement and other providers' injections are outside that
+exclusion. Cristel Lib's two declarations target the same fourteen Explorify
+structure sets for placement settings and enable/disable settings. They configure
+existing candidates; effective configuration attribution remains part of the
+shared-library check and family attributes.
+
+```sh
+uv run pytest -q tests/item8/test_explorify_provider_scope.py
+```
+
+One case passes. Scoped Ruff and Basedpyright pass after formatting overlong
+lines. Original archive identity and the existing trace hash are bound by the
+check. Explicit provider dispositions now cover 22 of 136, with 114 remaining to
+reconcile. The data-only structure-provider batch is accounted for; continue
+remaining code providers and injection relationships before detailed attributes.
+
+## Chef's Delight component provider
+
+`chefsdelight-1.0.5-neoforge-1.21.1.jar` injects the ten already recorded chef/cook
+house components into the five vanilla village house pools. It adds professions,
+points of interest, trade offers and a component loot table. It adds no separate
+structure family. The candidate link remains chefsdelight:village_components in
+family-decisions.json, with frozen weights and existing content evidence reused.
+
+All six archive classes now have preserved source: chefsdelight-villages contains
+the entry and injection implementation; chefsdelight-provider-entries contains
+the other four classes, delivered in 23ee872. Those handle configuration loading,
+profession/POI registration, trade offers and an empty client setup callback.
+The access transformer only exposes StructureTemplatePool.templates, matching
+the inspected injection path. Full file accounting binds all six classes to
+their disassemblies and permits only the ten known templates, component loot,
+job-site tag, metadata and visual assets. No additional code, nested archive,
+service, mixin, feature definition or structure root is left unaccounted for.
+
+```sh
+uv run pytest -q tests/item8/test_chefsdelight_components.py
+```
+
+Both full-provider and existing component-content cases pass. Scoped Ruff and
+Basedpyright pass after splitting an assertion and using a named class string.
+The existing house-content test was retained without formatting changes. No
+trade-balance work or new runtime sample was added. Explicit provider dispositions
+now cover 23 of 136, with 113 remaining to reconcile. Consumer family attributes
+and shared-stack effects remain downstream of candidate completeness.
