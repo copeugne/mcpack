@@ -1,0 +1,122 @@
+Compiled from "UndergroundStyleGenerator.java"
+public class org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyleGenerator extends org.violetmoon.zeta.world.generator.multichunk.ClusterBasedGenerator {
+  public final org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyleConfig info;
+
+  public org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyleGenerator(org.violetmoon.quark.content.world.undergroundstyle.base.UndergroundStyleConfig, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: getfield      #1                  // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig.dimensions:Lorg/violetmoon/zeta/config/type/DimensionConfig;
+       5: aload_1
+       6: aload_2
+       7: invokevirtual #7                  // Method java/lang/String.hashCode:()I
+      10: i2l
+      11: invokespecial #13                 // Method org/violetmoon/zeta/world/generator/multichunk/ClusterBasedGenerator."<init>":(Lorg/violetmoon/zeta/config/type/DimensionConfig;Lorg/violetmoon/zeta/config/type/ClusterSizeConfig;J)V
+      14: aload_0
+      15: aload_1
+      16: putfield      #19                 // Field info:Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig;
+      19: return
+
+  public int getFeatureRadius();
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field info:Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig;
+       4: getfield      #25                 // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig.horizontalSize:I
+       7: aload_0
+       8: getfield      #19                 // Field info:Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig;
+      11: getfield      #29                 // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig.horizontalVariation:I
+      14: iadd
+      15: ireturn
+
+  public net.minecraft.core.BlockPos[] getSourcesInChunk(net.minecraft.server.level.WorldGenRegion, java.util.Random, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field info:Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig;
+       4: getfield      #32                 // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig.rarity:I
+       7: ifle          136
+      10: aload_2
+      11: aload_0
+      12: getfield      #19                 // Field info:Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig;
+      15: getfield      #32                 // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig.rarity:I
+      18: invokevirtual #35                 // Method java/util/Random.nextInt:(I)I
+      21: ifne          136
+      24: aload         4
+      26: invokevirtual #41                 // Method net/minecraft/core/BlockPos.getX:()I
+      29: aload_2
+      30: bipush        16
+      32: invokevirtual #35                 // Method java/util/Random.nextInt:(I)I
+      35: iadd
+      36: istore        5
+      38: aload_2
+      39: aload_0
+      40: getfield      #19                 // Field info:Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig;
+      43: getfield      #46                 // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig.minYLevel:I
+      46: aload_0
+      47: getfield      #19                 // Field info:Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig;
+      50: getfield      #49                 // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig.maxYLevel:I
+      53: invokevirtual #52                 // Method java/util/Random.nextInt:(II)I
+      56: istore        6
+      58: aload         4
+      60: invokevirtual #55                 // Method net/minecraft/core/BlockPos.getZ:()I
+      63: aload_2
+      64: bipush        16
+      66: invokevirtual #35                 // Method java/util/Random.nextInt:(I)I
+      69: iadd
+      70: istore        7
+      72: new           #42                 // class net/minecraft/core/BlockPos
+      75: dup
+      76: iload         5
+      78: iload         6
+      80: iload         7
+      82: invokespecial #58                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+      85: astore        8
+      87: aload_0
+      88: getfield      #19                 // Field info:Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig;
+      91: getfield      #61                 // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig.biomes:Lorg/violetmoon/zeta/config/type/IBiomeConfig;
+      94: aload_0
+      95: aload_1
+      96: aload         8
+      98: iconst_1
+      99: invokevirtual #65                 // Method getBiome:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Z)Lnet/minecraft/core/Holder;
+     102: invokeinterface #69,  2           // InterfaceMethod org/violetmoon/zeta/config/type/IBiomeConfig.canSpawn:(Lnet/minecraft/core/Holder;)Z
+     107: ifeq          136
+     110: aload_1
+     111: getstatic     #75                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     114: iload         5
+     116: iload         7
+     118: invokevirtual #81                 // Method net/minecraft/server/level/WorldGenRegion.getHeight:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;II)I
+     121: iload         6
+     123: if_icmplt     136
+     126: iconst_1
+     127: anewarray     #42                 // class net/minecraft/core/BlockPos
+     130: dup
+     131: iconst_0
+     132: aload         8
+     134: aastore
+     135: areturn
+     136: iconst_0
+     137: anewarray     #42                 // class net/minecraft/core/BlockPos
+     140: areturn
+
+  public org.violetmoon.zeta.world.generator.multichunk.ClusterBasedGenerator$IGenerationContext createContext(net.minecraft.core.BlockPos, net.minecraft.world.level.chunk.ChunkGenerator, java.util.Random, net.minecraft.core.BlockPos, net.minecraft.server.level.WorldGenRegion);
+    Code:
+       0: new           #87                 // class org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator$Context
+       3: dup
+       4: aload         5
+       6: aload_1
+       7: aload_2
+       8: aload_3
+       9: aload_0
+      10: getfield      #19                 // Field info:Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig;
+      13: invokespecial #89                 // Method org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator$Context."<init>":(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/chunk/ChunkGenerator;Ljava/util/Random;Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig;)V
+      16: areturn
+
+  public java.lang.String toString();
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field info:Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig;
+       4: getfield      #92                 // Field org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleConfig.style:Lorg/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyle;
+       7: invokestatic  #96                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      10: invokedynamic #100,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      15: areturn
+}
