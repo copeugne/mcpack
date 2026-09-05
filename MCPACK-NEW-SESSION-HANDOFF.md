@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+World attribution gap confirmed: Item 7 provider disposition is indirect-only
+for Better End Island, and decoded ChunkRecord omits block contents. Use a fixed
+central-End projection from the existing restored ordinary run-a world. It reuses
+Item 7 Anvil/NBT/packed readers, binds four regions to their delivered manifest,
+and emits per-section actual block counts plus block-entity type/coordinates.
+This limited offline extraction is necessary to inspect generated content not
+represented by saved structure starts; no new server, survey framework or
+archive is needed. Do not infer family identity from unused palette entries.
+
 Runtime activation is integrated in `2299fd0`, using the existing downloaded
 registry-r1 archive. Debug log records the relevant mixin applications, actual
 NeoForge service selections, both mod containers and config loading. Captured
