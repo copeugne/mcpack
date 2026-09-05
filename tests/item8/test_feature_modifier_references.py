@@ -285,3 +285,25 @@ def test_yungs_bridge_generation_binds_anchor_rotation_and_processor_order() -> 
     selector = sources["MultipleAttemptSingleRandomFeature"]
     assert selector.index("PlacedFeature.place:") < selector.index("List.remove:")
     assert "RandomSource.nextInt:" in selector
+
+
+def test_yungs_bridge_supports_stop_at_zero_or_non_air_non_liquid() -> None:
+    base = Path("evidence/item-8/sources/yungs-bridge-processors")
+    rows = cast("list[dict[str, str]]", json.loads((base / "identities.json").read_bytes()))
+    sources: dict[str, str] = {}
+    for row in rows:
+        raw = (base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    assert "generatePillarDown:" in sources["DynamicLegProcessor"]
+    helper = sources["ITemplateFeatureProcessor"]
+    pillar = helper.split("public default void generatePillarDown(")[1].split(
+        "public default net.minecraft.world.level.block.state.BlockState"
+    )[0]
+    assert "42: ifle          103" in pillar
+    assert "BlockState.isAir:" in pillar
+    assert "BlockState.liquid:" in pillar
+    assert "Direction.DOWN:" in pillar
+    assert "getMinBuildHeight" not in pillar
+    assert "BlockPos.below:" in pillar
+    assert pillar.count("WorldGenLevel.setBlock:") == 2
