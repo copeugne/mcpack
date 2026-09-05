@@ -353,7 +353,9 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                         "META-INF/neoforge.mods.toml",
                         *sorted(
                             n for n in archive.namelist()
-                            if n.startswith("META-INF/services/com.yungnickyoung.minecraft.betterendisland.")
+                            if n.startswith(
+                                "META-INF/services/com.yungnickyoung.minecraft.betterendisland."
+                            )
                         ),
                     )
                 }
