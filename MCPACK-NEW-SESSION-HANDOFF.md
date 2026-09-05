@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+All 52 mns registry entries are assigned through `d278fc7`, built from `5640516`.
+The final 22 roots have explicit settings, resolved component traces and content
+attribution. There are 28 working Nether design groups, not a final canonical
+family total. Shared arena mob templates and fortress room alternatives remain
+components. All prior family records stayed equal; reproduction was byte-identical.
+Thirty-two focused tests and scoped quality checks passed. A wording correction
+clarifies that the fortress's 196 reachable templates are alternatives, not a
+claim that each assembly uses all of them. Several arena and fortress templates
+contain spawner records with empty explicit entity IDs; those remain unresolved.
+Inventory SHA-256: `c42e514859242a327fcc501a8edca380a9347b1ff79a4c6602d4b9b6ebc2c201`.
+Totals: 190 working groups, 294 assigned registry IDs, 593 unassigned. Continue
+remaining providers, including Moog Voyager, and shared attribute resolution.
+Do not equate namespace assignment with canonical grouping, complete generation
+coverage or finished per-family attributes. No final Item 8 gate/review/merge.
+
 Ruin fragments are reconciled through `0f500c9`, built from `61d6501`.
 The former `mns:very_small_ruins` working group is now `mns:ruin_fragments`,
 covering thirteen registry IDs and twelve templates after adding six larger
