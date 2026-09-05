@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-05
 
+Bridge biome/modifier constraints are delivered in `c19f9d5`. Existing merged
+tags resolve six registered river biomes with no required missing members;
+only the captured overworld possible-biome list overlaps. All 22 variants
+have terrain, chance=3 rarity and RNG initialization in that order. This is
+not observed generation frequency. Eleven affected tests and scoped quality
+checks passed. Inventory SHA-256:
+`f2497cb9bd2118ce0e1910cd2a203d9d51ea21d83636cb7f3addf2601b3c2a97`.
+All 421 registry family rows and 887 roots remain unchanged. Next reconcile
+standalone bridge configuration registration and remaining provider coverage.
+Item 8 remains incomplete; no new capture or measurement system was added.
+
+
 Bridge terrain placement is delivered in `e8503b5`. The source now binds bank
 height/occlusion/count checks, the liquid span rectangle and first-candidate
 search. The liquid predicate is not water-specific. It supports surface-crossing
