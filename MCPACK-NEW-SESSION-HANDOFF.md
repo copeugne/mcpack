@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-05
 
+Soaring river grouping is delivered through `0c08c16`, built from `977b343`.
+Inventory SHA-256: `d6c506ffc79c56888ae7ca2caa3120c9b611908275ec9467f778f48c4db659f9`.
+All 35 mss registry entries map once to 27 working families. Birch and Cherry
+River are biome/layout variants of one river landmark; original definitions and
+template dimensions remain distinct. The source check binds the retained codec
+false default for omitted cannot_spawn_in_liquid, preserves the omitted field
+in Cherry River's definition, and verifies other definition differences are
+limited to biome and pool. Neither river has a retained world observation.
+Twenty-four focused tests and scoped quality checks passed after correcting an
+unused-call-result warning in the test. Inventory reproduction was byte-identical
+and prior groups remained equal. Current totals: 162 working groups, 242 assigned
+registry entries and 645 unassigned. Continue remaining Moog namespaces mns/mvs,
+other retained providers, non-registry relationships and required attributes.
+Broader canonical relationships, effective placement and gameplay remain open;
+no final gate, report, clean review or main merge is claimed.
+
 Twenty-five non-tree, non-river Soaring designs are assigned by `1d47dc4` and
 joined in `7efb67c`. Inventory SHA-256:
 `8987fb9ff136039ca913d5f2732ede93d81b05abec850d12691cc3ce3b0ffed6`.
