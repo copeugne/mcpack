@@ -1,0 +1,144 @@
+Compiled from "BridgeFeature.java"
+public class com.yungnickyoung.minecraft.yungsbridges.world.feature.BridgeFeature extends com.yungnickyoung.minecraft.yungsbridges.world.feature.AbstractTemplateFeature<com.yungnickyoung.minecraft.yungsbridges.world.feature.config.BridgeFeatureConfig> {
+  private static final java.util.List<com.yungnickyoung.minecraft.yungsbridges.world.processor.ITemplateFeatureProcessor> PROCESSORS;
+
+  public com.yungnickyoung.minecraft.yungsbridges.world.feature.BridgeFeature();
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field com/yungnickyoung/minecraft/yungsbridges/world/feature/config/BridgeFeatureConfig.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #7                  // Method com/yungnickyoung/minecraft/yungsbridges/world/feature/AbstractTemplateFeature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  protected java.util.List<com.yungnickyoung.minecraft.yungsbridges.world.processor.ITemplateFeatureProcessor> useProcessors();
+    Code:
+       0: getstatic     #13                 // Field PROCESSORS:Ljava/util/List;
+       3: areturn
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<com.yungnickyoung.minecraft.yungsbridges.world.feature.config.BridgeFeatureConfig>);
+    Code:
+       0: aload_1
+       1: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       4: invokevirtual #25                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       7: astore_2
+       8: aload_2
+       9: aload_1
+      10: invokevirtual #31                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      13: invokeinterface #35,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getSeaLevel:()I
+      18: invokevirtual #41                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      21: pop
+      22: new           #47                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings
+      25: dup
+      26: invokespecial #49                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings."<init>":()V
+      29: astore_3
+      30: aload_1
+      31: invokevirtual #52                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      34: checkcast     #2                  // class com/yungnickyoung/minecraft/yungsbridges/world/feature/config/BridgeFeatureConfig
+      37: getfield      #56                 // Field com/yungnickyoung/minecraft/yungsbridges/world/feature/config/BridgeFeatureConfig.isZAxis:Z
+      40: ifne          51
+      43: aload_3
+      44: getstatic     #60                 // Field net/minecraft/world/level/block/Rotation.COUNTERCLOCKWISE_90:Lnet/minecraft/world/level/block/Rotation;
+      47: invokevirtual #66                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.setRotation:(Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+      50: pop
+      51: aload_0
+      52: aload_1
+      53: invokevirtual #52                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      56: checkcast     #2                  // class com/yungnickyoung/minecraft/yungsbridges/world/feature/config/BridgeFeatureConfig
+      59: getfield      #70                 // Field com/yungnickyoung/minecraft/yungsbridges/world/feature/config/BridgeFeatureConfig.id:Lnet/minecraft/resources/ResourceLocation;
+      62: aload_1
+      63: invokevirtual #31                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      66: aload_1
+      67: invokevirtual #74                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      70: aload_2
+      71: aload_3
+      72: invokevirtual #78                 // Method createTemplateWithPlacement:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;
+      75: astore        4
+      77: getstatic     #82                 // Field com/yungnickyoung/minecraft/yungsbridges/services/Services.PLATFORM:Lcom/yungnickyoung/minecraft/yungsbridges/services/IPlatformHelper;
+      80: invokeinterface #88,  1           // InterfaceMethod com/yungnickyoung/minecraft/yungsbridges/services/IPlatformHelper.isDevelopmentEnvironment:()Z
+      85: ifeq          151
+      88: getstatic     #94                 // Field com/yungnickyoung/minecraft/yungsbridges/YungsBridgesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      91: ldc           #100                // String Bridge at {} {} {} - {}, {}
+      93: aload_1
+      94: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      97: invokevirtual #102                // Method net/minecraft/core/BlockPos.getX:()I
+     100: invokestatic  #105                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     103: aload_1
+     104: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+     107: invokevirtual #111                // Method net/minecraft/core/BlockPos.getY:()I
+     110: invokestatic  #105                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     113: aload_1
+     114: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+     117: invokevirtual #114                // Method net/minecraft/core/BlockPos.getZ:()I
+     120: invokestatic  #105                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     123: aload_1
+     124: invokevirtual #52                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     127: checkcast     #2                  // class com/yungnickyoung/minecraft/yungsbridges/world/feature/config/BridgeFeatureConfig
+     130: getfield      #70                 // Field com/yungnickyoung/minecraft/yungsbridges/world/feature/config/BridgeFeatureConfig.id:Lnet/minecraft/resources/ResourceLocation;
+     133: aload_1
+     134: invokevirtual #52                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     137: checkcast     #2                  // class com/yungnickyoung/minecraft/yungsbridges/world/feature/config/BridgeFeatureConfig
+     140: getfield      #56                 // Field com/yungnickyoung/minecraft/yungsbridges/world/feature/config/BridgeFeatureConfig.isZAxis:Z
+     143: invokestatic  #117                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     146: invokeinterface #122,  7          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+     151: aload         4
+     153: ifnull        160
+     156: iconst_1
+     157: goto          161
+     160: iconst_0
+     161: ireturn
+
+  static {};
+    Code:
+       0: bipush        12
+       2: anewarray     #128                // class com/yungnickyoung/minecraft/yungsbridges/world/processor/ITemplateFeatureProcessor
+       5: dup
+       6: iconst_0
+       7: getstatic     #130                // Field com/yungnickyoung/minecraft/yungsbridges/module/FeatureProcessorModule.LEG_PROCESSOR:Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/ITemplateFeatureProcessor;
+      10: aastore
+      11: dup
+      12: iconst_1
+      13: getstatic     #136                // Field com/yungnickyoung/minecraft/yungsbridges/module/FeatureProcessorModule.LOG_BIOME_PROCESSOR:Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/ITemplateFeatureProcessor;
+      16: aastore
+      17: dup
+      18: iconst_2
+      19: getstatic     #139                // Field com/yungnickyoung/minecraft/yungsbridges/module/FeatureProcessorModule.STAIR_BIOME_PROCESSOR:Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/ITemplateFeatureProcessor;
+      22: aastore
+      23: dup
+      24: iconst_3
+      25: getstatic     #142                // Field com/yungnickyoung/minecraft/yungsbridges/module/FeatureProcessorModule.PLANKS_BIOME_PROCESSOR:Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/ITemplateFeatureProcessor;
+      28: aastore
+      29: dup
+      30: iconst_4
+      31: getstatic     #145                // Field com/yungnickyoung/minecraft/yungsbridges/module/FeatureProcessorModule.SLAB_BIOME_PROCESSOR:Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/ITemplateFeatureProcessor;
+      34: aastore
+      35: dup
+      36: iconst_5
+      37: getstatic     #148                // Field com/yungnickyoung/minecraft/yungsbridges/module/FeatureProcessorModule.STONE_VARIATION_PROCESSOR:Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/ITemplateFeatureProcessor;
+      40: aastore
+      41: dup
+      42: bipush        6
+      44: getstatic     #151                // Field com/yungnickyoung/minecraft/yungsbridges/module/FeatureProcessorModule.LANTERN_ROT_PROCESSOR:Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/ITemplateFeatureProcessor;
+      47: aastore
+      48: dup
+      49: bipush        7
+      51: getstatic     #154                // Field com/yungnickyoung/minecraft/yungsbridges/module/FeatureProcessorModule.OPTIONAL_WALL_PROCESSOR:Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/ITemplateFeatureProcessor;
+      54: aastore
+      55: dup
+      56: bipush        8
+      58: getstatic     #157                // Field com/yungnickyoung/minecraft/yungsbridges/module/FeatureProcessorModule.OPTIONAL_STONE_BRICK_PROCESSOR:Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/ITemplateFeatureProcessor;
+      61: aastore
+      62: dup
+      63: bipush        9
+      65: getstatic     #160                // Field com/yungnickyoung/minecraft/yungsbridges/module/FeatureProcessorModule.OPTIONAL_SLAB_PROCESSOR:Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/ITemplateFeatureProcessor;
+      68: aastore
+      69: dup
+      70: bipush        10
+      72: getstatic     #163                // Field com/yungnickyoung/minecraft/yungsbridges/module/FeatureProcessorModule.OPTIONAL_STAIR_PROCESSOR:Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/ITemplateFeatureProcessor;
+      75: aastore
+      76: dup
+      77: bipush        11
+      79: getstatic     #166                // Field com/yungnickyoung/minecraft/yungsbridges/module/FeatureProcessorModule.FENCE_BIOME_PROCESSOR:Lcom/yungnickyoung/minecraft/yungsbridges/world/processor/ITemplateFeatureProcessor;
+      82: aastore
+      83: invokestatic  #169                // Method com/google/common/collect/Lists.newArrayList:([Ljava/lang/Object;)Ljava/util/ArrayList;
+      86: putstatic     #13                 // Field PROCESSORS:Ljava/util/List;
+      89: return
+}

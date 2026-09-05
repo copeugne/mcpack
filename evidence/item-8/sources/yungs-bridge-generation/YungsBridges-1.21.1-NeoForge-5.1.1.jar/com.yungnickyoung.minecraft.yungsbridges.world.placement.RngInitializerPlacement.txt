@@ -1,0 +1,77 @@
+Compiled from "RngInitializerPlacement.java"
+public class com.yungnickyoung.minecraft.yungsbridges.world.placement.RngInitializerPlacement extends net.minecraft.world.level.levelgen.placement.PlacementModifier {
+  private static final com.yungnickyoung.minecraft.yungsbridges.world.placement.RngInitializerPlacement INSTANCE;
+
+  public static final com.mojang.serialization.MapCodec<com.yungnickyoung.minecraft.yungsbridges.world.placement.RngInitializerPlacement> CODEC;
+
+  public com.yungnickyoung.minecraft.yungsbridges.world.placement.RngInitializerPlacement();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/levelgen/placement/PlacementModifier."<init>":()V
+       4: return
+
+  public static com.yungnickyoung.minecraft.yungsbridges.world.placement.RngInitializerPlacement randomized();
+    Code:
+       0: getstatic     #7                  // Field INSTANCE:Lcom/yungnickyoung/minecraft/yungsbridges/world/placement/RngInitializerPlacement;
+       3: areturn
+
+  public java.util.stream.Stream<net.minecraft.core.BlockPos> getPositions(net.minecraft.world.level.levelgen.placement.PlacementContext, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_2
+       1: invokeinterface #13,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextLong:()J
+       6: lconst_1
+       7: lor
+       8: lstore        4
+      10: aload_2
+      11: invokeinterface #13,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextLong:()J
+      16: lconst_1
+      17: lor
+      18: lstore        6
+      20: aload_2
+      21: aload_3
+      22: invokevirtual #19                 // Method net/minecraft/core/BlockPos.getX:()I
+      25: i2l
+      26: lload         4
+      28: lmul
+      29: ldc2_w        #25                 // long 951873395712l
+      32: lmul
+      33: ldc2_w        #27                 // long 12132586l
+      36: ladd
+      37: aload_3
+      38: invokevirtual #29                 // Method net/minecraft/core/BlockPos.getZ:()I
+      41: i2l
+      42: lload         6
+      44: lmul
+      45: ldc2_w        #32                 // long 132899567841l
+      48: lmul
+      49: ldc2_w        #34                 // long 9789717l
+      52: ladd
+      53: lmul
+      54: ldc2_w        #36                 // long 313281234l
+      57: lxor
+      58: invokeinterface #38,  3           // InterfaceMethod net/minecraft/util/RandomSource.setSeed:(J)V
+      63: aload_3
+      64: invokestatic  #42                 // InterfaceMethod java/util/stream/Stream.of:(Ljava/lang/Object;)Ljava/util/stream/Stream;
+      67: areturn
+
+  public net.minecraft.world.level.levelgen.placement.PlacementModifierType<?> type();
+    Code:
+       0: getstatic     #48                 // Field com/yungnickyoung/minecraft/yungsbridges/module/PlacementModifierTypeModule.RNG_INITIALIZER_PLACEMENT:Lnet/minecraft/world/level/levelgen/placement/PlacementModifierType;
+       3: areturn
+
+  private static com.yungnickyoung.minecraft.yungsbridges.world.placement.RngInitializerPlacement lambda$static$0();
+    Code:
+       0: getstatic     #7                  // Field INSTANCE:Lcom/yungnickyoung/minecraft/yungsbridges/world/placement/RngInitializerPlacement;
+       3: areturn
+
+  static {};
+    Code:
+       0: new           #8                  // class com/yungnickyoung/minecraft/yungsbridges/world/placement/RngInitializerPlacement
+       3: dup
+       4: invokespecial #54                 // Method "<init>":()V
+       7: putstatic     #7                  // Field INSTANCE:Lcom/yungnickyoung/minecraft/yungsbridges/world/placement/RngInitializerPlacement;
+      10: invokedynamic #55,  0             // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+      15: invokestatic  #59                 // Method com/mojang/serialization/MapCodec.unit:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/MapCodec;
+      18: putstatic     #65                 // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      21: return
+}
