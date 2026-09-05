@@ -461,6 +461,76 @@ def test_soaring_rivers_preserve_omitted_default_and_complete_namespace() -> Non
     assert normalized[0] == normalized[1]
 
 
+def test_nether_small_ruins_preserve_duplicate_definition_and_template_identity() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, JsonValue]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    group = next(
+        row
+        for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
+        if row["family_id"] == "mns:very_small_ruins"
+    )
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    registry = read_registry(
+        root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )
+    assert group["structure_ids"] == sorted(variants)
+    assert set(variants) == {key for key in registry if key.startswith("mns:very_small")}
+    assert len(variants) == 7
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+    catalog = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    traces = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    resources = cast("list[dict[str, JsonValue]]", catalog["resources"])
+    structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
+    contents = cast("dict[str, dict[str, JsonValue]]", traces["template_contents"])
+    definitions: dict[str, dict[str, JsonValue]] = {}
+    for identifier, variant in variants.items():
+        name = identifier.split(":")[1]
+        rows = [
+            cast("dict[str, JsonValue]", row["document"])
+            for row in resources
+            if row["path"] == f"data/mns/worldgen/structure/{name}.json"
+        ]
+        assert len(rows) == 1
+        definitions[identifier] = rows[0]
+        assert group["common_generation_definition"] == {
+            key: value for key, value in rows[0].items() if key != "start_pool"
+        }
+        assert variant["start_pool"] == rows[0]["start_pool"]
+        assert structures[identifier]["templates"] == [variant["template"]]
+        assert structures[identifier]["missing"] == []
+        assert (
+            variant["template_size_xyz"] == contents[str(variant["template"])]["template_size_xyz"]
+        )
+    assert len({str(row["template"]) for row in variants.values()}) == 6
+    assert group["duplicate_definition_ids"] == [
+        "mns:very_small_blackstone",
+        "mns:very_small_nether_brick",
+    ]
+    assert definitions["mns:very_small_blackstone"] == definitions["mns:very_small_nether_brick"]
+    assert variants["mns:very_small_blackstone"] == variants["mns:very_small_nether_brick"]
+    assert (
+        variants["mns:very_small_nether_brick"]["template"] == "mns:ruins/very_small_blackstone_1"
+    )
+
+
 def test_spider_dungeon_attributes_bind_custom_spawners_loot_and_components() -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(
