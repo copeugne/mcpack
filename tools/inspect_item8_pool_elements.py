@@ -72,6 +72,15 @@ CLASSES = (
     "net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerConfig.class",
     "net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerData.class",
     "net/minecraft/world/level/block/entity/trialspawner/TrialSpawnerState.class",
+    "net/minecraft/world/level/levelgen/structure/structures/EndCityStructure.class",
+    "net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.class",
+    "net/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece.class",
+    "net/minecraft/world/level/levelgen/structure/structures/EndCityPieces$SectionGenerator.class",
+    "net/minecraft/world/level/levelgen/structure/structures/EndCityPieces$1.class",
+    "net/minecraft/world/level/levelgen/structure/structures/EndCityPieces$2.class",
+    "net/minecraft/world/level/levelgen/structure/structures/EndCityPieces$3.class",
+    "net/minecraft/world/level/levelgen/structure/structures/EndCityPieces$4.class",
+    "net/minecraft/world/level/storage/loot/BuiltInLootTables.class",
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs.class",
     "YungJigsawSinglePoolElement.class",
     "IASinglePoolElement.class",
@@ -188,7 +197,7 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     selected_classes is not None and name not in selected_classes
                 ):
                     continue
-                if source.name == MAPPED_SERVER.name and name not in CLASSES[:8]:
+                if source.name == MAPPED_SERVER.name and name not in CLASSES[:17]:
                     continue
                 if (
                     source.name == PATCHED_SERVER.name
@@ -205,7 +214,10 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                 ):
                     continue
                 class_name = name.removesuffix(".class").replace("/", ".")
-                verbose = "/mixin/" in name or name == CLASSES[0]
+                verbose = "/mixin/" in name or name in {
+                    CLASSES[0],
+                    "net/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece.class",
+                }
                 result = subprocess.run(  # noqa: S603 - pinned javap and verified retained JAR.
                     [
                         str(javap),
