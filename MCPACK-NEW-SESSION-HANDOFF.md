@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+End city component and four content attributes are integrated in `027c263`,
+with inventory delivery `5fa7b83`. Its 19 vanilla template references resolve;
+the family record preserves the unreferenced tower_floor and the boundary for
+retained-mod transformations. Mob sources, loot sources, generated-spawner
+disposition and authored/natural attribution now reflect the marker evidence.
+Decision SHA:
+`2a9e4ceb4fab1710d405bb40ce5b91a63756f60333381ba54251c5785a26036d`.
+Inventory SHA:
+`ed35e7543958e6441e0fb73487b28722a8d5349b0589f4418850abcc55cccf16`.
+The trace is unchanged. Validation passed after narrowing one stale test that
+required every custom generator's components to remain unknown; the other 58
+checks had passed and the affected focused rerun passed. Scoped checks passed.
+End city geometry and remaining effective attributes are still open. Do not
+repeat the completed component/marker work. Delivered refs were verified.
+
 End city source extraction is delivered: tool `888f3b8`, evidence `a73fd28`,
 frozen-template check `f5348b7`. Manifest SHA:
 `ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c`.

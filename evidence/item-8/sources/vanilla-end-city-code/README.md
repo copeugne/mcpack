@@ -78,3 +78,31 @@ as a no-direct-pool distinction rather than pretending this is jigsaw tracing.
 Retained-mod transformations, effective loot modifications, final geometry and
 other unresolved family attributes still need reconciliation. The current trace,
 family decisions and inventory have not changed in this source milestone.
+
+## Delivered attribute integration
+
+`027c263` integrates the vanilla component references and four content attributes
+using the existing family overrides. `5fa7b83` delivers the rebuilt inventory.
+This supersedes the pending integration instruction above. The palette check
+now also verifies absence of ordinary/trial-spawner block types in all referenced
+templates, and the family record is compared against the source-derived template
+list and marker counts.
+
+```sh
+uv run pytest -q tests/item8/test_end_city_sources.py tests/item8/test_family_decisions.py
+uv run pytest -q tests/item8/test_end_city_sources.py
+uv run pytest -q 'tests/item8/test_family_decisions.py::test_design_groups_cover_registry_and_bind_variant_definitions[minecraft]'
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-end-city-content.json
+```
+
+The first run passed 58 checks and failed the old assertion that every custom
+generator's missing components must stay unknown. Only the verified End city
+case was updated; its focused rerun passed. The final End city check and scoped
+Ruff/basedpyright checks passed after simplifying the palette iteration.
+Decision SHA-256:
+`2a9e4ceb4fab1710d405bb40ce5b91a63756f60333381ba54251c5785a26036d`.
+Inventory SHA-256:
+`ed35e7543958e6441e0fb73487b28722a8d5349b0589f4418850abcc55cccf16`.
+Only this family's component provenance and four attributes change semantically.
+Overall Item 8 completion and this family's remaining effective attributes are
+still unproven; no runtime experiment or broader measurement system was added.
