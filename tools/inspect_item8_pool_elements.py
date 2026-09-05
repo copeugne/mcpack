@@ -77,7 +77,7 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Building",
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
-CLASSES = (
+CLASSES: tuple[str, ...] = (
     "net/minecraft/world/level/levelgen/structure/pools/SinglePoolElement.class",
     "net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement$Placer.class",
     "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager.class",
@@ -333,6 +333,8 @@ CLASSES = (
     "org/violetmoon/quark/content/world/gen/FallenLogGenerator$Decor.class",
     "org/violetmoon/quark/content/world/gen/FairyRingGenerator.class",
     "org/violetmoon/quark/content/world/gen/MonsterBoxGenerator.class",
+    "org/violetmoon/quark/content/world/block/MonsterBoxBlock.class",
+    "org/violetmoon/quark/content/world/block/be/MonsterBoxBlockEntity.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
