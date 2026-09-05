@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Spike/podium generator interpretation is integrated in `8d11e68`. Direct
+End Crystal requests, placement rules, variant selection and failure limits
+are recorded. Twenty-eight focused tests and scoped checks passed. Inventory
+SHA-256: `54b4dd382725ea6e48181b4e077feadcdc466c2b98d56221bb094ac4c2312579`.
+Next resolve exact concatenated template names and reachable spike indices,
+then podium invocation and the shared BlockReplaceProcessor. Reuse the existing
+extractor; no new measurement system is needed. Do not repeat the completed
+generator interpretation. Item 8 remains incomplete.
+
 SpikeFeatureMixin and full BetterSpikeFeature/BetterEndPodiumFeature captures
 now reproduce exactly under sources/better-end-island-spike-podium. Both spike
 hooks replace vanilla behavior without a local config condition. The place hook

@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `68169a6`, SHA-256
-`d59bdebe1e92f570af4eab73ad11fb60f01f5c4f57dbaebbbbaa524deb01c5c0`.
+Current working inventory regenerated at `8d11e68`, SHA-256
+`54b4dd382725ea6e48181b4e077feadcdc466c2b98d56221bb094ac4c2312579`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -2001,3 +2001,11 @@ spike indices, podium invocation and remaining processor effects are still open.
 Manual inspection covered both complete generator disassemblies. The existing
 28 focused feature/source tests passed, as did scoped builder Ruff/Basedpyright.
 No additional measurement system or validation framework was introduced.
+
+Regenerated at `8d11e68`. Comparison with the previous inventory changed only
+inputs and the Better End Island contribution. Reproduce in a fresh path:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-spike-podium.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-spike-podium.json
+```

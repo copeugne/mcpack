@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "70c5eb1359d86e22045d9a34d3d5816cabdfc3449d7f481b6156c590328e5d81",
+    "evidence/item-8/family-decisions.json": "22f459a7ceb753de6729adaf73e9bd70ffa7649a48b82119ec8a750563212265",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -158986,6 +158986,7 @@
           "evidence/item-8/sources/better-end-island-platform-gateway/YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar/mixin-metadata.json": "9edd653c4d2fb45318c02ff41838941b914774d87f8d799d20aa99aa8fa91813",
           "evidence/item-8/sources/better-end-island-platform-gateway/identities.json": "6d6944ae221e62182308d1ac3cdcc10a9b028d98bb0e2fa0d72e910cd366b48a",
           "evidence/item-8/sources/better-end-island-processors/identities.json": "dfeb5a2586c4b82b3e0e6eb5712149d1ab8adfc6689cc7ece108490a2b7d9b95",
+          "evidence/item-8/sources/better-end-island-spike-podium/identities.json": "edd47178444d8218268335284bbe3ae1b394d4249c22b02ad85208caa2d63c52",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
         },
         "gateway_placement": "Subtract integer half template X/Y/Z from context origin. Use context random, Rotation.NONE, pivot (1,0,1), IGNORE_WATERLOGGING and placement flag 2. After the template call, request END_GATEWAY at context origin with flag 3, regardless of the template helper result. If configuration has an exit and the block entity is an EndGateway, set its exit position/exactness and mark changed.",
@@ -159022,7 +159023,19 @@
           "scope": "Direct block substitution only. Neither processor directly spawns entities, configures spawners or assigns loot tables. This does not establish engine/API behavior, ordinary block drops, external retained-stack modifications or observed world results."
         },
         "processors": "Platform static processor list is empty; gateway static list contains DragonEggProcessor. Both then add ObsidianProcessor with dragon-kill count, read only when the supplied accessor is a ServerLevel with a non-null dragon fight, otherwise zero. Direct effects are recorded below.",
-        "scope": "Direct code and packaged template attribution only. Mixin activation, dimension applicability, family reconciliation and generated-world observations remain open. Spike and podium generation are not covered by this contribution.",
+        "scope": "Direct code and packaged template attribution, extended with partial spike/podium generator findings below. Mixin activation, dimension applicability, family reconciliation and generated-world observations remain open.",
+        "spike_podium_generators": {
+          "podium_entity_source": "When isInitialSpawn is true, after the template helper, request four EndCrystal entities, one eight blocks in each horizontal cardinal direction from origin.above(6), with X/Z centered by +0.5. Set showBottom false and invulnerable true. This branch does not check template-helper success and discards entity-add results. It establishes direct authored entity requests, not successful observed generation or hostile-mob spawning.",
+          "podium_geometry": "Use context origin and random, subtract integer half template X/Z, Rotation.NONE, and pivot (3,0,3) for bottom-only or (14,0,14) otherwise. Template envelopes remain unresolved.",
+          "podium_variants": "Constructor arguments are isInitialSpawn, isBottomOnly, isActive, in that order. Bottom-only selects betterendisland:tower_bottom_open; otherwise selection uses initial or broken in an unresolved concatenated path. Invocation and configuration-to-constructor mapping remain UNKNOWN.",
+          "processors": "Spike static order: three BlockReplaceProcessor instances (orange terracotta selector with obsidian/crying obsidian; magenta terracotta selector with air/crying obsidian/obsidian; purple concrete selector with obsidian), then DragonEggProcessor, then per-placement ObsidianProcessor. Podium: gray concrete/bedrock BlockReplaceProcessor, DragonEggProcessor, active red concrete/end portal or inactive red concrete/air BlockReplaceProcessor, then ObsidianProcessor. BlockReplaceProcessor implementation remains untraced; selector arguments are not asserted as observed frequencies.",
+          "scope": "Partial attribution from the preserved full generators. Does not establish final families, complete generated contents, absence of loot/spawners, runtime activation or world observations. Resolve only dependencies needed for those Item 8 attributes.",
+          "spike_entity_source": "After both template helpers return true, and only when the WorldGenRegion flag is false, request an END_CRYSTAL at (center X + 0.5, anchor Y + IEndSpike crystal offset, center Z + 0.5). Beam target and invulnerability come from SpikeConfiguration. Request BEDROCK one block below. Entity-add and block-write booleans are discarded. The crystal offset implementation remains unresolved; this is a direct entity request, not a spawner or observed successful spawn.",
+          "spike_geometry": "Top anchor is (spike center X, 70 when BetterEndIslandCommon.betterEnd is true, otherwise 60, spike center Z); bottom anchor is 67 blocks below. Both subtract integer half template X/Z and use the same random rotation with pivot (9,0,9). Effective betterEnd flag and template envelopes remain unresolved.",
+          "spike_hook": "SpikeFeatureMixin replaces getSpikesForLevel with the custom result. Its cancellable HEAD placeSpike hook calls BetterSpikeFeature with an accessor-is-WorldGenRegion flag, then cancels vanilla. Neither hook has a local configuration condition.",
+          "spike_variants": "chooseTemplates selects initial when the WorldGenRegion flag is true; otherwise guarded when the supplied random nextFloat is below 0.2, broken otherwise. Index is Java integer division (EndSpike.height - 73) / 3, with 10 remapped to 9. Exact concatenated template paths and reachable index range remain UNKNOWN pending bootstrap constants and SpikeCacheLoader.",
+          "success_limits": "Both template helpers warn and return false when the template is absent; otherwise they discard StructureTemplate.placeInWorld boolean and return true. Both use IGNORE_WATERLOGGING and flag 2. A false spike helper logs an error and returns before subsequent steps. Podium returns its helper boolean even though initial crystal requests can occur after helper failure."
+        },
         "success_limits": "Missing templates log a warning and return false. Loaded-template helpers discard placeInWorld boolean and return true. Platform hook cancellation does not depend on success. Gateway returns its template helper result, not whether portal-block placement or exit initialization succeeded."
       },
       "yungsbridges:bridges": {
