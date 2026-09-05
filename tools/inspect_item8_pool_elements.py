@@ -530,6 +530,12 @@ CLASSES: tuple[str, ...] = (
     "com/finndog/moogs_structures/mixins/structures/TemplateAccessor.class",
     "com/finndog/moogs_structures/mixins/terrainadaptation/BeardifierAccessor.class",
     "com/finndog/moogs_structures/mixins/terrainadaptation/BeardifierMixin.class",
+    "com/finndog/moogs_structures/utils/MixinUtils.class",
+    "com/finndog/moogs_structures/utils/DebugFlags.class",
+    "com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierHelper.class",
+    "com/finndog/moogs_structures/platform/Services.class",
+    "com/finndog/moogs_structures/platform/IRegistryPlatform.class",
+    "com/finndog/moogs_structures/modinit/registry/neoforge/ResourcefulRegistriesImpl.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
