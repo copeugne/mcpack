@@ -6,6 +6,37 @@
 
 ### Continuation update - 2026-09-05
 
+Feature implementation inputs are delivered in `78dce5f` (Regions Unexplored)
+and `cea115f` (Lithostitched), extracted by existing tool selection `d0043b6`.
+Each source directory has the executed reproduction command and scope:
+`evidence/item-8/sources/regions-unexplored-feature-code` and
+`evidence/item-8/sources/lithostitched-feature-modifier-code`.
+Identities SHA respectively:
+`d27de44a59aedb2dd41e12dcc0f35db1328207314c8cbe59dae6120de5b9953b` and
+`b7138be0cec7822f8e4fb19c6c9175e3ac1ba7ab174cb58015c34be488b9aaa1`.
+Both groups contain seven exact classes. Scoped Ruff/basedpyright, extraction
+and identity checks passed; pushed refs were verified. These are implementation
+inputs, not final modifier dispositions or a new measurement system.
+
+The giant-lily generator checks four water/air positions and can write four
+lily blocks before returning false. Preserve that source-level behavior; do
+not equate a false feature return with absent blocks, and do not repair the
+frozen mod. Weighted-selector and composite generators delegate to their
+configured placed features. Reference surface rules delegate to referenced
+rules; the Regions Unexplored config rule selects between its two rule bodies.
+
+Next follow the platform hooks: `AddFeaturesModifier.apply` runs only on
+Fabric, with a separate `createNeoforgeModifier` path, while
+`AddSurfaceRuleModifier.apply` is empty. Those methods do not prove the
+modifiers inactive on this NeoForge stack. Exact next classes located but not
+yet retained/inspected are Lithostitched's
+`mixin/common/ServerLifecycleHooksMixin`,
+`impl/worldgen/modifier/NeoforgeModifierHolder`, and
+`worldgen/surface/SurfaceRuleManager`. The tree/root-placer implementations are
+retained but their full contribution inspection and feature/rule reference
+closure remain open. The 37-entry machine report is still pending the combined
+update described below; do not represent this source acquisition as completion.
+
 Village street processor source closure is delivered in `3c19575`, with exact
 selectors in `c23bbab` and registration selection in `eb0cb28`. The six retained
 classes and reproduction commands are under
