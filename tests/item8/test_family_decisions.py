@@ -466,9 +466,11 @@ def test_mega_ship_variants_preserve_definitions_modules_and_mes_coverage() -> N
         ("mvs:rock", ["mvs:boulder", "mvs:stone_rock"], 7, set[str]()),
         ("mvs:pond", ["mvs:mushroom_pond", "mvs:small_oak_pond"], 4,
          {"mvs:mushroom_pond", "mvs:pond"}),
+        ("mvs:campsite", ["mvs:campsite", "mvs:fire_camp", "mvs:horse_campsite"], 3,
+         {"mvs:abandoned", "mvs:general", "mvs:houses_common", "mvs:houses_uncommon"}),
     ],
 )
-def test_voyager_rocks_and_ponds_preserve_variant_content(
+def test_voyager_rocks_ponds_and_camps_preserve_variant_content(
     family: str, members: list[str], template_count: int, loot: set[str]
 ) -> None:
     decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
@@ -492,8 +494,11 @@ def test_voyager_rocks_and_ponds_preserve_variant_content(
         definitions = [r["document"] for r in catalog["resources"] if r["path"] == path]
         assert definitions == [variant["definition"]]
         definition = cast("dict[str, JsonValue]", variant["definition"])
+        excluded = {"start_pool"}
+        if family == "mvs:campsite":
+            excluded.update({"size", "allowed_terrain_height_range", "terrain_height_radius_check"})
         assert group["common_generation_definition"] == {
-            k: v for k, v in definition.items() if k != "start_pool"
+            k: v for k, v in definition.items() if k not in excluded
         }
         trace = traces["structures"][identifier]
         assert trace["start_pool"] == definition["start_pool"]
@@ -513,6 +518,12 @@ def test_voyager_rocks_and_ponds_preserve_variant_content(
             ))
     assert len(templates) == template_count
     assert loot_found == loot
+    if family == "mvs:campsite":
+        mine = next(g for g in decisions["groups"] if g["family_id"] == "mvs:mine_with_campsite")
+        assert mine["structure_ids"] == ["mvs:mine_with_campsite"]
+        assert traces["template_contents"][
+            "mvs:other_decoration/mine_with_campsite_lower"
+        ]["spawner_blocks"]
 
 
 @pytest.mark.parametrize(

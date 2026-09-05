@@ -10015,27 +10015,103 @@
       "family_id": "mvs:campsite",
       "name": "Moog's Voyager Structures Campsite",
       "structure_ids": [
-        "mvs:campsite"
+        "mvs:campsite",
+        "mvs:fire_camp",
+        "mvs:horse_campsite"
       ],
-      "rationale": "Campsite layout; relationships to fire_camp, horse_campsite and mine_with_campsite remain open. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
-      "start_pool": "mvs:other_decoration/campsite/start_pool",
-      "generation_settings": {
-        "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
+      "rationale": "Campsite, fire camp and horse campsite are camp-layout variants of one family. Each reaches one template without authored entities, spawners or markers. Fire camp has no loot references, horse campsite uses abandoned loot, and campsite adds general and house loot; preserve those reward differences by template. Definitions share the same biome, surface projection and empty spawn overrides, differing in start pool, jigsaw size and terrain checks. Horse campsite does not contain an authored horse. Mine with campsite remains separate because it includes a lower mining component with a spawner and shared villager pieces rather than only a surface camp layout. This grouping does not prove successful placement, live populations or equal encounter value.",
+      "common_generation_definition": {
+        "biomes": "#c:is_overworld",
+        "cannot_spawn_in_liquid": true,
+        "project_start_to_heightmap": "WORLD_SURFACE_WG",
+        "spawn_overrides": {},
         "start_height": {
           "absolute": 0
         },
-        "project_start_to_heightmap": "WORLD_SURFACE_WG",
-        "cannot_spawn_in_liquid": true
-      },
-      "custom_generation_settings": {
-        "allowed_terrain_height_range": 2,
-        "size": 3,
-        "spawn_overrides": {},
         "step": "surface_structures",
         "terrain_adaptation": "beard_thin",
-        "terrain_height_radius_check": 1
+        "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
       },
-      "missing_components": [],
+      "variants": {
+        "mvs:campsite": {
+          "definition": {
+            "allowed_terrain_height_range": 2,
+            "biomes": "#c:is_overworld",
+            "cannot_spawn_in_liquid": true,
+            "project_start_to_heightmap": "WORLD_SURFACE_WG",
+            "size": 3,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mvs:other_decoration/campsite/start_pool",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "terrain_height_radius_check": 1,
+            "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+          },
+          "templates": {
+            "mvs:other_decoration/campsite": [
+              19,
+              8,
+              13
+            ]
+          },
+          "missing_components": []
+        },
+        "mvs:fire_camp": {
+          "definition": {
+            "allowed_terrain_height_range": 3,
+            "biomes": "#c:is_overworld",
+            "cannot_spawn_in_liquid": true,
+            "project_start_to_heightmap": "WORLD_SURFACE_WG",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mvs:other_decoration/fire_camp/start_pool",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "terrain_height_radius_check": 1,
+            "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+          },
+          "templates": {
+            "mvs:other_decoration/fire_camp": [
+              7,
+              2,
+              8
+            ]
+          },
+          "missing_components": []
+        },
+        "mvs:horse_campsite": {
+          "definition": {
+            "allowed_terrain_height_range": 4,
+            "biomes": "#c:is_overworld",
+            "cannot_spawn_in_liquid": true,
+            "project_start_to_heightmap": "WORLD_SURFACE_WG",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mvs:other_decoration/horse_campsite",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "terrain_height_radius_check": 3,
+            "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+          },
+          "templates": {
+            "mvs:other_decoration/small_horse_campsite": [
+              9,
+              3,
+              6
+            ]
+          },
+          "missing_components": []
+        }
+      },
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -10342,37 +10418,6 @@
       }
     },
     {
-      "family_id": "mvs:fire_camp",
-      "name": "Moog's Voyager Structures Fire Camp",
-      "structure_ids": [
-        "mvs:fire_camp"
-      ],
-      "rationale": "Campfire layout without packaged entities, loot or spawners; relationship to campsite remains open. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
-      "start_pool": "mvs:other_decoration/fire_camp/start_pool",
-      "generation_settings": {
-        "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
-        "start_height": {
-          "absolute": 0
-        },
-        "project_start_to_heightmap": "WORLD_SURFACE_WG",
-        "cannot_spawn_in_liquid": true
-      },
-      "custom_generation_settings": {
-        "allowed_terrain_height_range": 3,
-        "size": 1,
-        "spawn_overrides": {},
-        "step": "surface_structures",
-        "terrain_adaptation": "beard_thin",
-        "terrain_height_radius_check": 1
-      },
-      "missing_components": [],
-      "evidence": {
-        "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-        "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
-      }
-    },
-    {
       "family_id": "mvs:floating_islands",
       "name": "Moog's Voyager Structures Floating Islands",
       "structure_ids": [
@@ -10512,37 +10557,6 @@
         "spawn_overrides": {},
         "step": "surface_structures",
         "terrain_adaptation": "beard_thin"
-      },
-      "missing_components": [],
-      "evidence": {
-        "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-        "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
-      }
-    },
-    {
-      "family_id": "mvs:horse_campsite",
-      "name": "Moog's Voyager Structures Horse Campsite",
-      "structure_ids": [
-        "mvs:horse_campsite"
-      ],
-      "rationale": "Horse campsite layout with abandoned loot; its name is not evidence of authored horses. Relationship to campsite remains open. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
-      "start_pool": "mvs:other_decoration/horse_campsite",
-      "generation_settings": {
-        "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
-        "start_height": {
-          "absolute": 0
-        },
-        "project_start_to_heightmap": "WORLD_SURFACE_WG",
-        "cannot_spawn_in_liquid": true
-      },
-      "custom_generation_settings": {
-        "allowed_terrain_height_range": 4,
-        "size": 1,
-        "spawn_overrides": {},
-        "step": "surface_structures",
-        "terrain_adaptation": "beard_thin",
-        "terrain_height_radius_check": 3
       },
       "missing_components": [],
       "evidence": {
@@ -10830,7 +10844,7 @@
       "structure_ids": [
         "mvs:mine_with_campsite"
       ],
-      "rationale": "Mine and campsite with a lower spawner-bearing component and shared villager pieces. Relationship to mineshaft and campsite remains open. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
+      "rationale": "Mine with campsite remains separate from the surface campsite family: its authored lower mining component contains a spawner, and shared villager pieces supply inhabitants. These are components of one root, not extra families. Relationship to the modular MVS mineshaft remains open. This is not proof of effective placement, assembled geometry or live population.",
       "start_pool": "mvs:other_decoration/mine_with_campsite/start_pool",
       "generation_settings": {
         "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
