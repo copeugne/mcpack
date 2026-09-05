@@ -1,0 +1,107 @@
+Compiled from "SpikeCacheLoader.java"
+public class com.yungnickyoung.minecraft.betterendisland.world.SpikeCacheLoader extends com.google.common.cache.CacheLoader<java.lang.Long, java.util.List<net.minecraft.world.level.levelgen.feature.SpikeFeature$EndSpike>> {
+  public com.yungnickyoung.minecraft.betterendisland.world.SpikeCacheLoader();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method com/google/common/cache/CacheLoader."<init>":()V
+       4: return
+
+  public java.util.List<net.minecraft.world.level.levelgen.feature.SpikeFeature$EndSpike> load(java.lang.Long);
+    Code:
+       0: iconst_0
+       1: bipush        10
+       3: invokestatic  #7                  // InterfaceMethod java/util/stream/IntStream.range:(II)Ljava/util/stream/IntStream;
+       6: aload_1
+       7: invokevirtual #13                 // Method java/lang/Long.longValue:()J
+      10: invokestatic  #19                 // InterfaceMethod net/minecraft/util/RandomSource.create:(J)Lnet/minecraft/util/RandomSource;
+      13: invokestatic  #25                 // Method net/minecraft/Util.toShuffledList:(Ljava/util/stream/IntStream;Lnet/minecraft/util/RandomSource;)Lit/unimi/dsi/fastutil/ints/IntArrayList;
+      16: astore_2
+      17: invokestatic  #31                 // Method com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;
+      20: astore_3
+      21: getstatic     #37                 // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.betterEnd:Z
+      24: ifeq          33
+      27: ldc2_w        #43                 // double 42.0d
+      30: goto          36
+      33: ldc2_w        #45                 // double 54.0d
+      36: dstore        4
+      38: iconst_0
+      39: istore        6
+      41: iload         6
+      43: bipush        10
+      45: if_icmpge     174
+      48: dload         4
+      50: ldc2_w        #47                 // double 2.0d
+      53: ldc2_w        #51                 // double -3.141592653589793d
+      56: ldc2_w        #53                 // double 0.3141592653589793d
+      59: iload         6
+      61: i2d
+      62: dmul
+      63: dadd
+      64: dmul
+      65: invokestatic  #55                 // Method java/lang/Math.cos:(D)D
+      68: dmul
+      69: invokestatic  #59                 // Method net/minecraft/util/Mth.floor:(D)I
+      72: istore        7
+      74: dload         4
+      76: ldc2_w        #47                 // double 2.0d
+      79: ldc2_w        #51                 // double -3.141592653589793d
+      82: ldc2_w        #53                 // double 0.3141592653589793d
+      85: iload         6
+      87: i2d
+      88: dmul
+      89: dadd
+      90: dmul
+      91: invokestatic  #65                 // Method java/lang/Math.sin:(D)D
+      94: dmul
+      95: invokestatic  #59                 // Method net/minecraft/util/Mth.floor:(D)I
+      98: istore        8
+     100: aload_2
+     101: iload         6
+     103: invokevirtual #68                 // Method it/unimi/dsi/fastutil/ints/IntArrayList.getInt:(I)I
+     106: istore        9
+     108: iconst_2
+     109: iload         9
+     111: iconst_3
+     112: idiv
+     113: iadd
+     114: istore        10
+     116: bipush        76
+     118: iload         9
+     120: iconst_3
+     121: imul
+     122: iadd
+     123: istore        11
+     125: iload         9
+     127: iconst_1
+     128: if_icmpeq     137
+     131: iload         9
+     133: iconst_2
+     134: if_icmpne     141
+     137: iconst_1
+     138: goto          142
+     141: iconst_0
+     142: istore        12
+     144: aload_3
+     145: new           #74                 // class net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike
+     148: dup
+     149: iload         7
+     151: iload         8
+     153: iload         10
+     155: iload         11
+     157: iload         12
+     159: invokespecial #76                 // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike."<init>":(IIIIZ)V
+     162: invokeinterface #79,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     167: pop
+     168: iinc          6, 1
+     171: goto          41
+     174: aload_3
+     175: areturn
+
+  public java.lang.Object load(java.lang.Object) throws java.lang.Exception;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #14                 // class java/lang/Long
+       5: invokevirtual #85                 // Method load:(Ljava/lang/Long;)Ljava/util/List;
+       8: areturn
+}

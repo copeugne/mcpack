@@ -56,6 +56,7 @@ ARCHIVES = frozenset(
         "BetterEnd-21.0.31.jar",
         "YungsBridges-1.21.1-NeoForge-5.1.1.jar",
         "YungsExtras-1.21.1-NeoForge-5.1.1.jar",
+        "YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar",
     }
 )
 GENERATION_PREFIXES = (
@@ -275,6 +276,32 @@ CLASSES = (
     "com/yungnickyoung/minecraft/yungsbridges/services/NeoForgeModulesLoader.class",
     "com/yungnickyoung/minecraft/yungsextras/services/IModulesLoader.class",
     "com/yungnickyoung/minecraft/yungsbridges/services/IModulesLoader.class",
+    "com/yungnickyoung/minecraft/betterendisland/mixin/EndPlatformFeatureMixin.class",
+    "com/yungnickyoung/minecraft/betterendisland/mixin/EndGatewayFeatureMixin.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndSpawnPlatformFeature.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/processor/ObsidianProcessor.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/processor/DragonEggProcessor.class",
+    "com/yungnickyoung/minecraft/betterendisland/config/BEIConfigNeoForge.class",
+    "com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.class",
+    "com/yungnickyoung/minecraft/betterendisland/module/ConfigModuleNeoForge.class",
+    "com/yungnickyoung/minecraft/betterendisland/mixin/SpikeFeatureMixin.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterSpikeFeature.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature.class",
+    "com/yungnickyoung/minecraft/betterendisland/mixin/EndSpikeMixin.class",
+    "com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/SpikeCacheLoader.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/processor/BlockReplaceProcessor.class",
+    "com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/util/ExitPortalUtils.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage$3.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage$5.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/util/WorldgenUtils.class",
+    "com/yungnickyoung/minecraft/betterendisland/BetterEndIslandNeoForge.class",
+    "com/yungnickyoung/minecraft/betterendisland/services/Services.class",
+    "com/yungnickyoung/minecraft/betterendisland/services/NeoForgePlatformHelper.class",
+    "com/yungnickyoung/minecraft/betterendisland/services/NeoForgeModulesLoader.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -324,6 +351,12 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     for name in (
                         *sorted(n for n in archive.namelist() if n.endswith(".mixins.json")),
                         "META-INF/neoforge.mods.toml",
+                        *sorted(
+                            n for n in archive.namelist()
+                            if n.startswith(
+                                "META-INF/services/com.yungnickyoung.minecraft.betterendisland."
+                            )
+                        ),
                     )
                 }
                 _ = (destination / "mixin-metadata.json").write_text(
@@ -355,6 +388,8 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     CLASSES[0],
                     "org/betterx/betterend/registry/EndStructures.class",
                     "com/yungnickyoung/minecraft/yungsextras/module/FeatureModule.class",
+                    "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterSpikeFeature.class",
+                    "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature.class",
                     "net/minecraft/world/level/levelgen/structure/structures/DesertPyramidStructure.class",
                     "net/minecraft/world/level/levelgen/structure/structures/JungleTempleStructure.class",
                     "net/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece.class",

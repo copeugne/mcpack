@@ -3,6 +3,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+import tomllib
 from collections import Counter
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
@@ -809,7 +810,8 @@ def test_yung_family_geometry_uses_only_member_template_envelopes() -> None:
     ).read_bytes()))
     content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
     contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
-    for key, contribution in contributions.items():
+    for key in ("yungsbridges:bridges", "yungsextras:feature_entrypoints"):
+        contribution = contributions[key]
         if key == "yungsbridges:bridges":
             links = cast("dict[str, str]", contribution["configured_to_template"])
             sizes = cast("dict[str, JsonValue]", contribution["template_content"])
@@ -839,7 +841,8 @@ def test_yung_family_biomes_follow_their_addition_modifiers() -> None:
     ).read_bytes()))
     content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
     contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
-    for key, contribution in contributions.items():
+    for key in ("yungsbridges:bridges", "yungsextras:feature_entrypoints"):
+        contribution = contributions[key]
         families = cast("list[dict[str, JsonValue]]", contribution["families"])
         for family in families:
             if key == "yungsbridges:bridges":
@@ -892,3 +895,171 @@ def test_yung_family_contents_keep_template_and_processor_loot_separate() -> Non
             ]
         else:
             assert "processor_loot_sources" not in family
+
+
+def test_better_end_island_template_calls_and_failure_limits() -> None:
+    base = Path("evidence/item-8/sources/better-end-island-platform-gateway")
+    rows = cast("list[dict[str, str]]", json.loads((base / "identities.json").read_bytes()))
+    sources: dict[str, str] = {}
+    for row in rows:
+        raw = (base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    for name, template in (("BetterEndSpawnPlatformFeature", "spawn_platform"),
+                           ("BetterEndGatewayFeature", "gateway")):
+        source = sources[name]
+        assert "// String betterendisland" in source
+        assert "// String " + template in source
+        assert "ObsidianProcessor." in source
+        assert "LiquidSettings.IGNORE_WATERLOGGING:" in source
+        assert source.split("StructureTemplate.placeInWorld:")[1].splitlines()[1].endswith("pop")
+    gateway = sources["BetterEndGatewayFeature"]
+    place = gateway.split("  private static boolean placeTemplate")[0]
+    assert place.index("Method placeTemplate:") < place.index("Blocks.END_GATEWAY:")
+    assert "TheEndGatewayBlockEntity.setExitPosition:" in gateway
+    assert "DragonEggProcessor." in gateway
+    platform = sources["BetterEndSpawnPlatformFeature"]
+    assert "RandomSource.create:" in platform
+    assert "bipush        -14" in platform
+    assert "CallbackInfo.cancel:" in sources["EndPlatformFeatureMixin"]
+    assert "CallbackInfoReturnable.setReturnValue:" in sources["EndGatewayFeatureMixin"]
+
+
+def test_better_end_island_processors_preserve_eggs_and_vary_obsidian() -> None:
+    base = Path("evidence/item-8/sources/better-end-island-processors")
+    rows = cast("list[dict[str, str]]", json.loads((base / "identities.json").read_bytes()))
+    sources: dict[str, str] = {}
+    for row in rows:
+        raw = (base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    egg = sources["DragonEggProcessor"].split("  protected ")[0]
+    assert egg.index("LevelReader.getBlockState:") < egg.index("Blocks.DRAGON_EGG:")
+    obsidian = sources["ObsidianProcessor"].split("  protected ")[0]
+    assert obsidian.index("StructureBlockInfo.state:") < obsidian.index("Blocks.OBSIDIAN:")
+    assert "StructurePlaceSettings.getRandom:" in obsidian
+    assert "Mth.clamp:(III)I" in obsidian
+    assert "Mth.lerp:(FFF)F" in obsidian
+    assert "// float 0.5f" in obsidian
+    assert "Blocks.CRYING_OBSIDIAN:" in obsidian
+    for source in sources.values():
+        assert "StructureBlockInfo.nbt:" in source
+        for excluded in ("addFreshEntity", "setLootTable", "BaseSpawner", "Blocks.SPAWNER:"):
+            assert excluded not in source
+
+
+def test_better_end_island_configuration_binds_frozen_keys_to_fields() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    contribution = contributions["betterendisland:platform_gateway"]
+    config = cast("dict[str, JsonValue]", contribution["configuration"])
+    evidence = cast("dict[str, str]", contribution["evidence"])
+    path = Path(str(config["file"]))
+    raw = path.read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == evidence[str(path)]
+    values = cast("dict[str, bool]", tomllib.loads(raw.decode())[str(config["section"])])
+    assert values == config["values"]
+    assert values["Spawn Vanilla Obsidian Platform"] is False
+    assert values["Spawn Vanilla End Gateways"] is False
+    base = Path("evidence/item-8/sources/better-end-island-configuration")
+    raw = (base / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == evidence[str(base / "identities.json")]
+    sources: dict[str, str] = {}
+    for row in cast("list[dict[str, str]]", json.loads(raw)):
+        raw = (base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    binding = sources["ConfigModuleNeoForge"]
+    assert "// String " + path.name in binding
+    assert "ModConfig$Type.COMMON:" in binding
+    mapping = cast("dict[str, str]", config["key_to_field"])
+    assert set(mapping) == set(values)
+    for key, field in mapping.items():
+        definition = sources["BEIConfigNeoForge"].split("// String " + key + "\n")[1]
+        assert "Field " + field + ":" in definition.split("putstatic", 1)[1].splitlines()[0]
+        assert "BEIConfigNeoForge." + field + ":" in binding
+        assert "ConfigModule." + field + ":Z" in binding
+
+
+def test_better_end_island_declares_required_feature_mixins() -> None:
+    path = Path("evidence/item-8/sources/better-end-island-platform-gateway") / (
+        "YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar/mixin-metadata.json"
+    )
+    raw = path.read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "9edd653c4d2fb45318c02ff41838941b914774d87f8d799d20aa99aa8fa91813"
+    )
+    metadata = cast("dict[str, dict[str, str]]", json.loads(raw))
+    for entry in metadata.values():
+        assert hashlib.sha256(entry["text"].encode()).hexdigest() == entry["sha256"]
+    mod = tomllib.loads(metadata["META-INF/neoforge.mods.toml"]["text"])
+    assert {"config": "betterendisland.mixins.json"} in mod["mixins"]
+    config = cast(
+        "dict[str, JsonValue]", json.loads(metadata["betterendisland.mixins.json"]["text"])
+    )
+    assert config["required"] is True
+    assert config["injectors"] == {"defaultRequire": 1}
+    assert "plugin" not in config
+    assert {"EndPlatformFeatureMixin", "EndGatewayFeatureMixin"} <= set(
+        cast("list[str]", config["mixins"])
+    )
+
+
+def test_better_end_island_template_links_cover_catalog_without_counting_positions() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    contribution = contributions["betterendisland:platform_gateway"]
+    generators = cast("dict[str, JsonValue]", contribution["spike_podium_generators"])
+    templates = cast("dict[str, dict[str, JsonValue]]", generators["templates"])
+    # Preserved loader heights are 76 + 3*j; selection subtracts 73 and divides
+    # by three, then remaps 10 to 9. Ten positions therefore do not mean ten types.
+    indices = [min((76 + 3 * value - 73) // 3, 9) for value in range(10)]
+    assert Counter(indices) == Counter({**dict.fromkeys(range(1, 9), 1), 9: 2})
+    expected = {
+        f"betterendisland:pillar_{kind}_{index}"
+        for kind in ("initial", "guarded", "broken", "bottom")
+        for index in set(indices)
+    } | {"betterendisland:tower_initial", "betterendisland:tower_broken",
+         "betterendisland:tower_bottom_open"}
+    assert set(templates) == expected
+    catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/templates-redacted.json.gz"
+    ).read_bytes())))
+    rows = cast("list[dict[str, JsonValue]]", catalog["resources"])
+    provider = {
+        "betterendisland:" + Path(str(row["path"])).stem: row for row in rows
+        if row["archive"] == "YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar"
+    }
+    prior = cast("dict[str, str]", contribution["class_to_template"])
+    assert set(provider) == expected | set(prior.values())
+    families = cast("list[dict[str, JsonValue]]", contribution["families"])
+    assigned = Counter(
+        name for family in families for name in cast("list[str]", family["templates"])
+    )
+    assert assigned == Counter(dict.fromkeys(provider, 1))
+    arena = next(family for family in families
+                 if family["family"] == "betterendisland:dragon_arena")
+    assert set(cast("list[str]", arena["templates"])) == expected
+    for family in families:
+        direct = cast("dict[str, JsonValue]", family["direct_encounter_content"])
+        assert direct["stored_template_entities"] == []
+        assert direct["stored_spawner_block_entities"] == []
+        assert direct["template_loot_table_sources"] == []
+        for name in cast("list[str]", family["templates"]):
+            document = cast("dict[str, JsonValue]", provider[name]["document"])
+            assert document["entities"] == []
+            for entity in cast("list[dict[str, JsonValue]]", document["block_entities"]):
+                assert entity["nbt"] == {"id": "minecraft:bell"}
+    for name, template in templates.items():
+        row = provider[name]
+        document = cast("dict[str, JsonValue]", row["document"])
+        assert template == {
+            "sha256": row["sha256"], "nominal_xyz_blocks": document["size"],
+            "entities": document["entities"], "block_entities": document["block_entities"],
+        }

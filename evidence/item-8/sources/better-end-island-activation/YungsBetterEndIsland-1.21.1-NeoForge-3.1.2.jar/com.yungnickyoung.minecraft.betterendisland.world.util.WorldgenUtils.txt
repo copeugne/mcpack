@@ -1,0 +1,91 @@
+Compiled from "WorldgenUtils.java"
+public class com.yungnickyoung.minecraft.betterendisland.world.util.WorldgenUtils {
+  public com.yungnickyoung.minecraft.betterendisland.world.util.WorldgenUtils();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static int getLowestBlockPosAt(net.minecraft.world.level.Level, int, int);
+    Code:
+       0: new           #7                  // class net/minecraft/core/BlockPos$MutableBlockPos
+       3: dup
+       4: invokespecial #9                  // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+       7: astore_3
+       8: aload_0
+       9: invokevirtual #10                 // Method net/minecraft/world/level/Level.getMinBuildHeight:()I
+      12: istore        4
+      14: iload         4
+      16: aload_0
+      17: invokevirtual #16                 // Method net/minecraft/world/level/Level.getMaxBuildHeight:()I
+      20: if_icmpge     55
+      23: aload_3
+      24: iload_1
+      25: iload         4
+      27: iload_2
+      28: invokevirtual #19                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      31: pop
+      32: aload_0
+      33: aload_3
+      34: invokevirtual #23                 // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      37: getstatic     #27                 // Field net/minecraft/world/level/block/Blocks.END_STONE:Lnet/minecraft/world/level/block/Block;
+      40: invokevirtual #33                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      43: ifeq          49
+      46: iload         4
+      48: ireturn
+      49: iinc          4, 1
+      52: goto          14
+      55: sipush        255
+      58: ireturn
+
+  public static int getSurfacePosAt(net.minecraft.world.level.Level, int, int);
+    Code:
+       0: new           #7                  // class net/minecraft/core/BlockPos$MutableBlockPos
+       3: dup
+       4: invokespecial #9                  // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+       7: astore_3
+       8: aload_0
+       9: invokevirtual #16                 // Method net/minecraft/world/level/Level.getMaxBuildHeight:()I
+      12: istore        4
+      14: iload         4
+      16: aload_0
+      17: invokevirtual #10                 // Method net/minecraft/world/level/Level.getMinBuildHeight:()I
+      20: if_icmple     55
+      23: aload_3
+      24: iload_1
+      25: iload         4
+      27: iload_2
+      28: invokevirtual #19                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      31: pop
+      32: aload_0
+      33: aload_3
+      34: invokevirtual #23                 // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      37: getstatic     #27                 // Field net/minecraft/world/level/block/Blocks.END_STONE:Lnet/minecraft/world/level/block/Block;
+      40: invokevirtual #33                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      43: ifeq          49
+      46: iload         4
+      48: ireturn
+      49: iinc          4, -1
+      52: goto          14
+      55: iconst_m1
+      56: ireturn
+
+  public static double distSqr(double, double, double, double);
+    Code:
+       0: dload         4
+       2: dload_0
+       3: dsub
+       4: dstore        8
+       6: dload         6
+       8: dload_2
+       9: dsub
+      10: dstore        10
+      12: dload         8
+      14: dload         8
+      16: dmul
+      17: dload         10
+      19: dload         10
+      21: dmul
+      22: dadd
+      23: dreturn
+}

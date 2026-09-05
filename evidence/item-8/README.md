@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `532fb28`, SHA-256
-`d064a47129cf9b538ca11a9f8398bcbe33f8113f7246cec26d0d14025afd03d4`.
+Current working inventory regenerated at `02b5164`, SHA-256
+`150ad3eb6e494f6a851883857adc884f27a518bd98c75555bc634f8a3deed94e`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,43 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 02b5164 increment attributes direct encounter content to each Better End
+Island family. Empty stored entities, spawners and template loot sources are
+checked against the preserved catalog. The arena's code-created crystals and
+dragon remain explicit, separate from stored entities. Transport and dragon-fight
+purpose are source-derived design interpretations; natural spawning, other
+lifecycle rewards and external retained-stack effects are not resolved by these
+findings. Twenty-nine focused tests and scoped checks passed. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-end-content-02b5164.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-end-content-02b5164.json
+```
+
+The 5f73e5a increment groups Better End Island into arrival platform, gateway
+and dragon arena working families. Spikes and podium belong to the coordinated
+arena lifecycle; their pieces and state variants are not separate families.
+The existing template-catalog test now verifies that all 41 packaged templates
+are assigned exactly once and all 39 arena components stay together. Twenty-nine
+focused tests and scoped quality checks passed. Required attributes and
+cross-provider reconciliation remain open. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-end-families-5f73e5a.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-end-families-5f73e5a.json
+```
+
+The ca53b4b increment links the saved central-End block projection to Better
+End Island attribution. See world-observations/central-end/README.md for the
+manifest-bound extraction and its limitations. Exact variant attribution remains
+unknown; no new family count or successful podium generation is inferred.
+Twenty-nine focused tests and scoped builder checks passed. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-end-blocks-ca53b4b.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-end-blocks-ca53b4b.json
+```
 
 The working deliverable is `inventory.json`, initially assembled by `f2eaf2b`
 and updated through `fd9705a` using attribute support from `bf153ea`.
@@ -1905,4 +1942,199 @@ All membership, geometry and biome records remain unchanged.
 ```sh
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-family-content.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-yung-family-content.json
+```
+
+### Better End Island platform and gateway contribution
+
+A third non-registry contribution now records the conditional vanilla feature
+replacement hooks and links custom generators to spawn_platform (7x22x7) and
+gateway (3x9x3) templates. Both template entity/block-entity lists are empty;
+the gateway block is separately placed in code. Placement offsets, random-source
+selection, processor order and gateway exit initialization are preserved.
+
+Both helpers discard placeInWorld failure; platform cancellation ignores its
+custom result. Gateway still attempts its portal block after template failure.
+These limits prevent successful hook execution from being treated as successful
+structure placement. Obsidian/dragon-egg processor effects, effective configuration,
+mixin activation, dimensions, family grouping and world observations remain open.
+This contribution does not cover spikes or the central podium.
+
+Twenty-five focused tests and scoped Ruff/Basedpyright passed. The two existing
+family geometry/biome checks now explicitly select Extras/Bridges because the new
+provider contribution does not yet have reconciled family records. No acceptance
+requirement was relaxed and no new measurement system was added.
+
+Regeneration at `189240a` adds only the Better End Island contribution and input
+identity. Prior contributions and registry-family rows remain unchanged.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-features.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-features.json
+```
+
+### Better End Island direct processor effects
+
+DragonEggProcessor preserves an existing world egg at the incoming position;
+it does not create a new egg reward at an empty target. ObsidianProcessor changes
+incoming obsidian to crying obsidian according to the clamped dragon-kill count
+and position-specific settings random source. The exact threshold expression,
+pass-through rules, position and incoming-NBT preservation are recorded.
+Neither captured processor directly spawns entities, configures spawners or
+assigns loot tables. This is scoped to those processors, not all runtime effects.
+Twenty-six focused tests and scoped Ruff/Basedpyright passed. Configuration binding,
+mixin activation, dimensions and the remaining provider paths are still open.
+
+Regeneration at `69d3e14` changed only input identity and Better End Island
+processor attribution. All previous family records remain unchanged.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-processors.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-processors.json
+```
+
+### Better End Island frozen configuration
+
+The contribution now records all six frozen keys and their direct runtime-field
+bindings. The spec is registered as COMMON with the exact frozen filename, and
+bakeConfig copies its values into the fields. Both vanilla platform/gateway
+switches are false, selecting custom branches when the hooks apply. Mixin
+activation and successful world generation are not inferred from those values.
+Twenty-seven focused tests and scoped Ruff/Basedpyright passed. No new runtime
+or measurement system was added.
+
+Regeneration at `c1169fa` changed only input identity and Better End Island
+configuration attribution. Previous family records remain unchanged.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-config.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-config.json
+```
+
+### Better End Island mixin declaration
+
+The inventory now links the retained NeoForge metadata and required common mixin
+configuration to both feature hooks. This is packaged application intent; direct
+runtime transformation and world observation remain distinct. The metadata was
+already extracted and reproduced, but initially missed by staging because its
+parent directory ends in .jar. Commit e74e6b2 corrected that omission.
+Twenty-eight focused tests passed. Wrapping one long line resolved Ruff's finding;
+scoped Ruff/Basedpyright then passed. No new capture or runtime was needed.
+
+Regeneration at `68169a6` changes only input identity and Better End Island
+mixin declaration/evidence links. Previous family records remain unchanged.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-mixins.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-mixins.json
+```
+
+### Better End Island spike and podium interpretation
+
+The working decisions now attribute generator variant selection, placement,
+processor order and direct End Crystal requests to the preserved full sources
+in `sources/better-end-island-spike-podium`. These are code-level findings,
+not observed successful generation. Exact concatenated template names, reachable
+spike indices, podium invocation and remaining processor effects are still open.
+Manual inspection covered both complete generator disassemblies. The existing
+28 focused feature/source tests passed, as did scoped builder Ruff/Basedpyright.
+No additional measurement system or validation framework was introduced.
+
+Regenerated at `8d11e68`. Comparison with the previous inventory changed only
+inputs and the Better End Island contribution. Reproduce in a fresh path:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-spike-podium.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-spike-podium.json
+```
+
+### Better End Island template reconciliation
+
+The source capture in `sources/better-end-island-generator-dependencies` resolves
+concatenated names and the loader's ten-position/nine-index distinction. All 36
+spike templates and three podium templates are joined to their preserved template
+hashes, nominal XYZ envelopes and stored contents. Together with platform/gateway,
+these cover all 41 packaged templates. This is template coverage, not 41 families
+or complete provider acceptance. Crystal offsets and applicable block replacement
+behavior are also attributed. Podium invocation and effective runtime activation
+remain open. The focused catalog-coverage test reproduces the index derivation
+and exact template-content joins; 29 focused tests and scoped checks passed.
+
+Regenerated at `e8982e8`; only input identity and Better End Island contribution
+changed. Reproduce with the existing builder and a fresh output path:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-template-links.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-template-links.json
+```
+
+### Better End Island podium invocation
+
+Preserved EndDragonFightMixin and ExitPortalUtils establish the frozen tower
+switch selection and constructor argument mapping. Initial state scanning,
+missing-portal recovery, tracked-dragon death and reset calls now have explicit
+variant dispositions. Both tower switches are true, selecting the custom helper
+branch. The helper updates first-exit state without checking custom placement
+success; this limitation remains explicit. Respawn animation callers, runtime
+initialization and generated-world reconciliation remain open. Manual bytecode
+inspection supports the new attribution; 29 existing focused tests and scoped
+builder checks passed. No new measurement or validation framework was added.
+
+Regenerated at `1bb1b8e`; comparison changed only input identity and Better
+End Island attribution. Reproduce with the existing builder in a fresh path:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-podium-invocation.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-podium-invocation.json
+```
+
+### Better End Island initialization and respawn attribution
+
+The preserved activation capture connects the NeoForge constructor, common
+initialization, configuration registration and packaged service selections.
+SUMMONING_PILLARS rebuilds existing spikes; END requests dragon creation and
+full/bottom-only podium placement, then changes selected existing obsidian.
+These are arena lifecycle effects, not new families. The portal fallback scans
+for END_STONE rather than an arbitrary solid surface. Findings are direct code
+interpretation; effective runtime values, successful entity/structure placement
+and generated-world reconciliation remain open. Twenty-nine focused tests and
+scoped builder checks passed. No new measurement or test framework was added.
+
+Regenerated at `a7feb3f`; comparison changed only input identity and the Better
+End Island contribution. Reproduce in a fresh path:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-respawn.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-respawn.json
+```
+
+### Better End Island preserved runtime activation
+
+Manual inspection of the already archived registry-r1 debug log resolves the
+relevant mixin applications, actual NeoForge service selections and configuration
+loading. `family-decisions.json` records exact one-based log lines and the source
+member hash. The captured config matches the frozen file byte for byte. Combining
+the logged Better End mod/container and selected platform helper with the captured
+Common.init/ModList.isLoaded path derives betterEnd=true (spike anchor Y=70,
+loader radius 42). This is a runtime/source derivation, not a field dump or world
+geometry measurement. Hook execution and successful generation remain separate.
+
+The archive retrieval and restoration command is retained in raw-custody/README.md.
+Executed against that restored archive, these commands verify the two member
+hashes against raw-custody/registry-r1-manifest.json and expose the cited records:
+
+```sh
+sha256sum evidence/raw/item8/custody-r1/restored-download/debug.log evidence/raw/item8/custody-r1/restored-download/configuration/config/betterendisland-neoforge-1_21.toml
+sed -n '1508p;1696p;11956p;11962p;11969p;12015p;12612p;12676p;12894p;12895p;16256p;18241p;18245p' evidence/raw/item8/custody-r1/restored-download/debug.log
+```
+
+No raw archive was regenerated and no server was launched. Twenty-nine focused
+tests and scoped builder checks passed; they do not substitute for the cited
+manual log inspection or prove generated-world outcomes.
+
+Regenerated at `2299fd0`; only input identity and Better End Island attribution
+changed. Reproduce with the existing builder in a fresh output path:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-runtime.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-runtime.json
 ```

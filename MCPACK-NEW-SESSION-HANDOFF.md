@@ -6,6 +6,202 @@
 
 ### Continuation update - 2026-09-05
 
+Direct encounter content is assigned to the three Better End Island families
+in `02b5164`. Empty stored entity/spawner/loot-source lists bind to member
+templates; arena code-created crystals and dragon are recorded separately.
+Intended hostility is a source-derived design interpretation. Natural spawning,
+external retained-stack effects and other lifecycle rewards remain unresolved.
+Twenty-nine focused tests and scoped checks passed. Continue dimension/biome
+applicability and remaining placement/discoverability attributes, using preserved
+sources before adding any new extraction. Full provider coverage remains open.
+
+Better End Island working families are grouped in `5f73e5a`: arrival platform,
+gateway and dragon arena. The arena includes spike and podium components and
+their lifecycle variants. The existing catalog test verifies every packaged
+template is assigned exactly once. Twenty-nine focused tests and scoped checks
+passed. Next complete applicable family attributes from existing evidence and
+continue cross-provider coverage. Do not repeat completed source tracing or the
+bounded End extraction. These groups are not a final accepted global count.
+
+Central-End projection is delivered in `f295bec`, extractor `aff8997`, and
+linked to decisions in `ca53b4b`. Reproduction matches exactly. Actual saved
+materials are recorded, but section counts do not identify exact templates or
+prove podium generation. Do not repeat the extraction or treat this bounded
+observation as complete provider coverage. Settle Better End Island family
+boundaries from the existing generation paths, retaining observation limits,
+then continue outstanding provider coverage. Twenty-nine focused tests and
+scoped builder checks passed. Item 8 remains incomplete.
+
+World attribution gap confirmed: Item 7 provider disposition is indirect-only
+for Better End Island, and decoded ChunkRecord omits block contents. Use a fixed
+central-End projection from the existing restored ordinary run-a world. It reuses
+Item 7 Anvil/NBT/packed readers, binds four regions to their delivered manifest,
+and emits per-section actual block counts plus block-entity type/coordinates.
+This limited offline extraction is necessary to inspect generated content not
+represented by saved structure starts; no new server, survey framework or
+archive is needed. Do not infer family identity from unused palette entries.
+
+Runtime activation is integrated in `2299fd0`, using the existing downloaded
+registry-r1 archive. Debug log records the relevant mixin applications, actual
+NeoForge service selections, both mod containers and config loading. Captured
+Better End Island config exactly matches frozen bytes. Runtime/source derivation
+selects betterEnd=true, spike anchor Y=70 and loader radius 42. Exact member
+hashes and log lines are in decisions; no new server run or archive was needed.
+Twenty-nine focused tests and scoped builder checks passed. Inventory SHA-256:
+`9de6189328999382fae37cc1a45888422112856ebdc20c152159ae11e4469d5c`.
+Next reconcile generated-world observations and settle family records. Do not
+repeat activation/source tracing. Item 8 and full provider coverage remain open.
+
+Activation and respawn interpretation is integrated in `a7feb3f`. The source
+chain connects NeoForge constructor, Common/config initialization and packaged
+services. SUMMONING_PILLARS and END now carry direct spike/podium rebuild and
+dragon-source attribution. WorldgenUtils surface selection is resolved as an
+END_STONE scan. Twenty-nine focused tests and scoped builder checks passed.
+Inventory SHA-256: `da8cecc81ca80eeb5cd3b8a894cf6547689881582205aa6b78e20d7bc6937a7e`.
+Next reconcile preserved runtime loaded-mod evidence and generated-world
+observations, then settle family records. Do not repeat completed source reads
+or expand unused helper internals. Item 8 remains incomplete.
+
+Activation/respawn source capture now reproduces exactly under
+sources/better-end-island-activation (extractor fd83868). It preserves eight
+classes and the two packaged service declarations; previous mixin metadata
+entries are unchanged. NeoForge constructor calls Common.init then config init;
+platform helper delegates to ModList.isLoaded. Respawn stage 5 calls the existing
+portal helper and requests dragon creation; stage 3 invokes Feature.END_SPIKE.
+Complete their scoped interpretation next, using these captures rather than
+recapturing. Inventory remains at 1bb1b8e attribution; Item 8 is incomplete.
+
+Resolve remaining direct Better End Island activation dependencies through the
+existing extractor: respawn enum and stages 3/5 (spike/portal references), surface
+origin helper, NeoForge entrypoint, Services and its two NeoForge implementations.
+Preserve their exact META-INF service declarations in the existing metadata
+capture so implementation presence is not mistaken for ServiceLoader selection.
+These close variant invocation and frozen-config/runtime binding gaps; no new
+measurement, schema or validator is introduced.
+
+Podium invocation is integrated in `1bb1b8e`, source helper `48c6ceb`. Frozen
+true/true tower settings select the custom podium in both dragon-history states.
+Initial scan, missing-portal recovery, tracked-dragon death and reset now have
+explicit variant dispositions and placement-success limitations. Twenty-nine
+focused tests and scoped builder checks passed. Inventory SHA-256:
+`e51be54e048cc8147e5d08d9eb6865368848913cc4e3a0b714399ff265d7987d`.
+Next reconcile respawn-animation callers, initialization/runtime binding and
+generated-world observations. ExitPortalUtils and EndDragonFightMixin invocation
+interpretation are complete for their recorded scope; do not recapture them.
+WorldgenUtils surface helper remains untraced if needed for origin applicability.
+Item 8 remains incomplete; final families and full provider coverage remain open.
+
+EndDragonFightMixin reset directly invokes the initial full podium when
+spawnCentralTowerInitially is true. Initial state scanning, missing-portal
+recovery and dragon death instead delegate to ExitPortalUtils.spawnPortal.
+Capture that single exact helper with the existing extractor to resolve which
+podium variants those calls select. This directly closes a configuration and
+variant reachability gap; no new evidence framework or measurement is needed.
+
+Better End Island template reconciliation is integrated in `e8982e8`, with
+source dependency capture `46c2bf2`. All 41 packaged templates are linked
+(36 spike pieces, three podium variants, platform and gateway), not counted
+as families. Spike indices, crystal offsets and applicable block replacement
+are resolved. Twenty-nine focused tests and scoped checks passed. Inventory
+SHA-256: `fb8e1b31eca3bc8050d8103e0078ff949b12b14cc53daf8f3a0d3e63383b5c10`.
+Next interpret the already captured EndDragonFightMixin podium invocation
+and runtime/initialization applicability. Its reset method contains the direct
+podium constructor call; other portal calls may identify an exact helper. Do
+not repeat template extraction or completed processor/offset interpretation.
+Item 8 remains incomplete; no new measurement system was added.
+
+Resolve concrete spike/podium inventory gaps with the existing extractor: verbose
+bootstrap constants for the two generators, SpikeCacheLoader for variant indices,
+EndSpikeMixin for crystal offsets, BlockReplaceProcessor for generated contents,
+EndDragonFightMixin for podium invocation, and BetterEndIslandCommon for the
+betterEnd height switch. Existing nonverbose captures omit concatenated template
+paths; the selected helpers are direct unresolved dependencies. This is the
+smallest existing-path extension for those gaps, not a new measurement system.
+
+Spike/podium generator interpretation is integrated in `8d11e68`. Direct
+End Crystal requests, placement rules, variant selection and failure limits
+are recorded. Twenty-eight focused tests and scoped checks passed. Inventory
+SHA-256: `54b4dd382725ea6e48181b4e077feadcdc466c2b98d56221bb094ac4c2312579`.
+Next resolve exact concatenated template names and reachable spike indices,
+then podium invocation and the shared BlockReplaceProcessor. Reuse the existing
+extractor; no new measurement system is needed. Do not repeat the completed
+generator interpretation. Item 8 remains incomplete.
+
+SpikeFeatureMixin and full BetterSpikeFeature/BetterEndPodiumFeature captures
+now reproduce exactly under sources/better-end-island-spike-podium. Both spike
+hooks replace vanilla behavior without a local config condition. The place hook
+passes whether the accessor is a WorldGenRegion. Interpret the preserved full
+generators next; do not recapture them. Podium invocation remains untraced.
+Inventory is unchanged, and Item 8 remains incomplete.
+
+Continue Better End Island provider coverage with SpikeFeatureMixin,
+BetterSpikeFeature and BetterEndPodiumFeature. These three exact source classes
+resolve untraced generation beyond the completed platform/gateway paths. Reuse
+the existing extractor and processor captures; no new measurement system is
+needed. Podium invocation and additional helpers may require subsequent tracing
+only when these classes identify a concrete missing dependency.
+
+Better End Island packaged mixin declarations are integrated in `68169a6`.
+The previously ignored metadata artifact is durably retained by `e74e6b2`.
+Twenty-eight focused tests and scoped checks passed. Inventory SHA-256:
+`d59bdebe1e92f570af4eab73ad11fb60f01f5c4f57dbaebbbbaa524deb01c5c0`.
+Proceed to spike/podium hooks and generators. The declaration establishes
+packaged application intent, not direct runtime transformation. Item 8 remains
+incomplete; no new runtime or measurement system was added.
+
+Better End Island frozen configuration is integrated in `c1169fa`, with all
+six keys mapped to runtime fields. Both vanilla platform/gateway switches are
+false. Twenty-seven focused tests and scoped checks passed. Inventory SHA-256:
+`82b5d02452470cde6a3036624979863f2485827c9e679d703698101354618c5b`.
+Continue mixin activation and spike/podium generation coverage. Do not repeat
+configuration binding work. Item 8 remains incomplete.
+
+The three Better End Island configuration classes are now captured and
+reproduced exactly. ConfigModuleNeoForge registers the frozen COMMON filename
+and bakeConfig maps its values to the fields read by the hooks. Both vanilla
+platform/gateway toggles are false in the frozen file and constructor defaults.
+Integrate this binding from sources/better-end-island-configuration, then resolve
+mixin activation and spike/podium paths. Inventory remains at `69d3e14`; do not
+repeat configuration extraction. Item 8 remains incomplete.
+
+Bind the frozen Better End Island TOML to its runtime fields through the exact
+BEIConfigNeoForge, ConfigModule and ConfigModuleNeoForge classes. The platform
+and gateway hooks already identify the controlling fields. Reuse the existing
+extractor for these three classes; this resolves a configuration evidence gap
+without a new runtime or measurement system.
+
+Better End Island processor effects are resolved in `69d3e14`, source capture
+`763bd43`. DragonEggProcessor preserves existing eggs; ObsidianProcessor varies
+obsidian with the clamped dragon-kill count. Twenty-six focused tests and scoped
+checks passed. Inventory SHA-256:
+`1b1b7b3e61f6b86c2d0e0ed7f32e01ce420d6700702872b18025bdad0015fd5f`.
+Next resolve frozen configuration binding/mixin activation and spike/podium
+paths. Do not recapture or reinterpret the two completed processors. Item 8
+remains incomplete; prior registry and feature family records are unchanged.
+
+Resolve Better End Island platform/gateway processed contents by capturing the
+two directly invoked processors, ObsidianProcessor and DragonEggProcessor, with
+the existing exact-class extractor. Template entities alone cannot establish
+their block/reward effects. No new measurement system or generalized tooling is
+needed for this explicit content gap.
+
+Better End Island platform/gateway generator attribution is delivered in
+`189240a`. The third non-registry contribution records two template links,
+envelopes, placement offsets, processor order and failure limits. Twenty-five
+focused tests and scoped checks passed. Inventory SHA-256:
+`8e571bbcf2a382dd9d0a82735de2dc3e43296e8f4aaa8c4490ddfd00a7468111`.
+Next inspect ObsidianProcessor/DragonEggProcessor and frozen configuration
+binding, then spike/podium paths. Do not repeat platform/gateway generator reads.
+Prior family records are unchanged. Item 8 remains incomplete.
+
+Full-provider reconciliation resumes with YUNG Better End Island. Its packaged
+JSON catalog has only two block-tag resources, while the retained JAR contains
+custom platform, gateway, spike and podium code. Trace the platform/gateway
+mixins and corresponding generators using four exact classes in the existing
+extractor. Registry-only coverage cannot resolve these generation paths. This is
+a required provider gap, not a new measurement system. Keep prior YUNG family
+work intact; do not recapture the completed Extras/Bridges classes.
+
 Feature-family content attribution is delivered in `532fb28`. Extras members
 now link template entities/block entities/chest loot; wells separately record
 processor archaeology loot. Bridges carries its scoped direct encounter findings.
