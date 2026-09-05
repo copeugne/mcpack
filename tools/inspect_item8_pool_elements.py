@@ -225,6 +225,8 @@ CLASSES = (
     "org/betterx/betterend/world/structures/piece/MountainPiece.class",
     "org/betterx/betterend/world/structures/piece/CrystalMountainPiece.class",
     "org/betterx/betterend/world/structures/piece/PaintedMountainPiece.class",
+    "org/betterx/betterend/world/biome/EndBiome.class",
+    "org/betterx/betterend/util/BlockFixer.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
