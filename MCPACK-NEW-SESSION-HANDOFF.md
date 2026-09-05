@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-05
 
+Direct bridge encounter and loot attribution is delivered in `544d5de`.
+The fourteen captured processor/module/interface classes have no direct entity,
+spawner or container-loot calls; existing templates have empty entity/block-entity
+lists. This resolves direct contribution only, not natural mobs, delegated
+behavior or external retained-mod effects. Ten affected tests and scoped Ruff
+and Basedpyright passed. Inventory SHA-256:
+`53d49ef90e2b842f8b6321ef74b8fbc1e06537de934201b149c9e00533e0f08e`.
+All 421 registry family rows and 887 roots remain unchanged. Next finish bridge
+placement/configuration and other provider coverage. Item 8 remains incomplete;
+no new capture or measurement system was added.
+
+
 Bridge support geometry is delivered in `733c0cf`. Captured code places the
 marker then descends through air/liquid at fixed X/Z while Y > 0. Template
 height is the body envelope, not the terrain-dependent total support height.
