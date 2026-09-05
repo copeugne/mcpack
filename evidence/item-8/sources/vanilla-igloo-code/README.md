@@ -56,3 +56,42 @@ including its entities and block entities, before updating the igloo family.
 The inventory and decisions are unchanged at this source milestone. Effective
 retained-mod transformations and final Item 8 closure remain open. No new
 measurement system was introduced or required for these source facts.
+
+## Delivered family integration
+
+`3a102c3` records the three components and seven attributes; `ca0fa30` delivers
+the rebuilt inventory. This supersedes the pending integration instruction above.
+All three references resolve in the frozen catalog. Top and middle entity lists
+are empty. Bottom contains one villager and one zombie villager, a chest below
+its DATA marker, and one weakness splash potion in the brewing stand. No ordinary
+or trial-spawner block types occur in any of the three template palettes.
+
+Nominal template sizes (X, Y, Z) are top (7, 5, 8), middle (3, 3, 3), bottom
+(7, 6, 9). With no rotation, top spans X 0..6 and Z 0..7; bottom spans X 0..6
+and Z -2..6 after its offset. Middle fits inside that horizontal union. Adding
+each component's horizontal offset to its pivot yields (3, 5) in every case,
+so the shared rotation preserves the union dimensions or exchanges their axes.
+The footprint is therefore 7 by 8 without a basement or 7 by 10 with one.
+
+The transformed terrain reference is also shared: each piece samples five
+blocks behind the common pivot, rotated with the structure. Consequently its
+height adjustment is common to all pieces. Top spans relative Y 0..4; bottom
+minimum Y is -3 - 3n. Total nominal height is 5 without a basement or 8 + 3n
+with one, giving 20, 23, 26, 29, 32, 35, 38 or 41 blocks. These are nominal
+assembled envelopes, not exposed dimensions or observed world measurements.
+
+```sh
+uv run pytest -q tests/item8/test_igloo_sources.py tests/item8/test_family_decisions.py
+uv run ruff check tests/item8/test_igloo_sources.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_igloo_sources.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run pytest -q tests/item8/test_igloo_sources.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-igloo-content.json
+```
+
+All 59 affected tests passed. Ruff passed. Basedpyright initially identified
+an untyped regex result; an explicit list[str] cast fixed it. The affected type
+check and final focused test then passed. Only the igloo family and decision
+input hash change in the inventory; world-observation links are unchanged.
+Decision SHA: `06cff81b09d0caa84837c979acd85bfa207b9037ab27e3e9134853ba6811a89d`.
+Inventory SHA: `9f2fa36230e5520571b71f9535b3d1291527c939ec9fee4867e04bfaefc06d01`.
+Retained-mod effects and remaining effective attributes are still open.
