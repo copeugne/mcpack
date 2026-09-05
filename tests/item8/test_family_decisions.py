@@ -742,7 +742,7 @@ def test_design_groups_cover_registry_and_bind_variant_definitions(namespace: st
                 assert identifier in traces["untraced_structures"]
                 if identifier in {
                     "minecraft:buried_treasure", "minecraft:swamp_hut",
-                    "minecraft:desert_pyramid",
+                    "minecraft:desert_pyramid", "minecraft:jungle_pyramid",
                 }:
                     assert (
                         variant["missing_components"] == variant["vanilla_code_template_ids"] == []
