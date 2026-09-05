@@ -24512,6 +24512,31 @@
           },
           "basis": "CrystalMountainPiece places CRYSTAL_MOSS, END_STONE and AURORA_CRYSTAL. PaintedMountainStructure supplies the three-material palette; PaintedMountainPiece selects slices by height and noise and writes them into columns.",
           "scope": "Source-derived visual cues for surface formations. Observed visibility distance, occlusion and player discovery probability remain UNKNOWN; these cues are not an exploration-pacing measurement."
+        },
+        "intended_hostility": {
+          "classification": "Environmental terrain formation without an authored combat encounter.",
+          "basis": "The two generator/piece paths build stone, moss and crystal formations, with no direct entity, spawner or container-loot placement. Both structure definitions have empty spawn_overrides.",
+          "scope": "Source-derived intent, not a claim of safe terrain or absence of naturally spawned enemies."
+        },
+        "mob_source": {
+          "authored_entity_ids": [],
+          "mechanism": "MountainStructure and PaintedMountainStructure allocate their mountain pieces. CrystalMountainPiece and PaintedMountainPiece write block states; the inspected base pieces handle geometry, biome/height queries and serialization. No direct entity creation or insertion is present in these paths.",
+          "scope": "Direct BetterEnd generator and piece code. Natural biome spawning and external retained-mod injections are not measured by this source inspection."
+        },
+        "loot_table_source": {
+          "direct_generator_assigned_tables": [],
+          "mechanism": "The two mountain generators and their pieces do not place containers or assign container loot tables. CrystalMountainPiece writes end stone, crystal moss and aurora crystal; PaintedMountainPiece uses the supplied end stone/flavolite/violecite palette.",
+          "scope": "Authored container loot only. Harvested block drops and external retained-mod injections are separate mechanisms."
+        },
+        "generated_spawners": {
+          "direct_generator_spawner_block_types": [],
+          "mechanism": "No spawner block or spawner block-entity creation occurs in the inspected mountain generator and piece paths. Their block-writing paths use the preserved stone/moss/crystal materials.",
+          "scope": "Direct BetterEnd generation, not a live-world spawner count or blanket exclusion of external injections."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "No direct authored enemies or spawners in the inspected mountain generators and pieces.",
+          "natural": "Both packaged structure definitions have empty spawn_overrides. Enemies may arise from biome spawning or other external systems; this family does not author a structure-specific spawn list.",
+          "scope": "Generation-source attribution, not observed populations or complete retained-mod injection coverage."
         }
       }
     },
