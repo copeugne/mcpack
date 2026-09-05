@@ -6,6 +6,56 @@
 
 ### Continuation update - 2026-09-06
 
+Moog shared-library provider candidate coverage now passes. Registration and
+lifecycle boundaries delivered in ee8e2c0 using f28c96b. The full payload and
+declared entry/service/mixin routes are bound by test_moog_library_provider_scope.py;
+five focused cases and scoped checks pass. No independent family is added by
+the library. Reuse all eight capture directories and do not expand this provider
+into geometry or registry-container internals. Effective consumer attributes
+remain later work. Counts: 31 dispositions, 105 open. Continue the named provider
+queue before resuming family attributes or claiming a final family denominator.
+
+User again requires the actual complete family denominator, not repeated reports
+that provider coverage is open. The immediate deliverable remains the complete
+candidate list with explicit family/variant decisions and named ambiguities.
+Track closed/open providers separately; 887 registry roots and 421 provisional
+groups are not the final family denominator. Do not resume detailed attributes
+until this deliverable is established. Reuse evidence and stop at relevant
+generation boundaries rather than tracing every library helper.
+
+Moog direct helpers delivered in cd015c3 using 266938e, reproduced at
+evidence/raw/item8/moog-direct-boundaries-r1. MixinUtils reads existing tagged
+starts, DebugFlags initially defaults false, EnhancedBeardifierHelper adapts
+terrain around existing starts, and the service resolves ResourcefulRegistriesImpl.
+Do not repeat those inspections. NeoForgeResourcefulRegistry remains the direct
+registration boundary. Whole-provider reconciliation is not yet closed; counts
+remain 30 dispositions and 106 open. No family count or completion claim follows
+from this source capture alone.
+
+All sixteen declared Moog mixins delivered in a7af1d6 using c388784 and reproduced
+at evidence/raw/item8/moog-declared-mixins-r1. Ten accessors, six behavioral hooks.
+StructurePoolMixin raises a codec weight bound to 5000, not content injection;
+optional injection remains distinct from runtime activation. Remaining direct
+boundaries: registry/service dispatch, MixinUtils, EnhancedBeardifierHelper and
+DebugFlags. Do not repeat mixin capture or expand into geometry/noise internals.
+Count unchanged: 30 provider dispositions, 106 open. Continue candidate coverage.
+
+Moog callback/reload/command capture delivered in 5a83e4c using 6d7a961,
+reproduced byte for byte at evidence/raw/item8/moog-provider-callbacks-r1. The
+entry callback bootstrap omission is resolved. TrialSpawnerConfigManager loads
+JSON compound values, logging/skipping invalid entries. DebugCommand calls flags
+and reports status; keep-jigsaw downstream behavior remains with the pending
+mixin. Continue declared mixins and registry/service dispatch. Count unchanged:
+30 provider dispositions, 106 open. Do not repeat callback or reload inspection.
+
+Moog shared library entry/registry capture delivered in 88bafe0 using e5341ca;
+eight classes reproduced at evidence/raw/item8/moog-provider-entries-r1. Provider
+still open: declared mixins, callback bootstrap targets, registry/service dispatch,
+trial-spawner reload and debug command remain. Non-verbose callback output does
+not bind every invokedynamic target. Do not repeat the four closed Moog data
+providers or trace unrelated geometry/noise utilities. Count remains 30/136
+supported provider dispositions, 106 open. See source README for exact next scope.
+
 YUNG Extras provider coverage now passes. Remaining seven classes delivered in
 4d7edec using 04db73f; all 29 classes and full payload accounted for. All 62
 templates are assigned, 59 by JSON and three by existing code links. Nine focused
