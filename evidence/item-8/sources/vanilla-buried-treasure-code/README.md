@@ -34,3 +34,33 @@ is invoked. The container and surrounding infill are not a surface landmark.
 The one-position piece box describes the chest target, not the neighboring
 terrain edits or a guaranteed surviving chest. Natural mobs, actual cover,
 visual range and retained-mod transformations are not established here.
+
+## Family integration
+
+The decision records an empty template list as resolved absence and identifies
+the direct piece class. Seven source-backed attributes cover hostility, mobs,
+loot, spawners, enemy attribution, authored visual cues and placement. Existing
+observed geometry is preserved. The absence of a landmark is distinct from
+actual visibility, which still depends on terrain and final placement.
+
+Existing BuiltInLootTables evidence in `../vanilla-end-city-code` maps
+BURIED_TREASURE to `minecraft:chests/buried_treasure`. Its manifest SHA-256 is
+`ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c`.
+The focused test binds both source manifests and their disassemblies to the
+decision, including the direct piece and loot-reference identities.
+
+```sh
+uv run pytest -q tests/item8/test_buried_treasure_sources.py tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_buried_treasure_sources.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_buried_treasure_sources.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-buried-treasure-content.json
+```
+
+Decision SHA-256:
+`873cac500cf01735864b85e9f5db35ef99085ae3d33990b45774f1eb6d836b3c`.
+Retained-mod effects and actual generated rewards remain unresolved. This is a
+family increment, not Item 8 completion, and adds no measurement system.
+
+All 62 affected tests passed. Basedpyright passed. Ruff passed after combining
+the two empty-list assertions in the existing test and wrapping the expression,
+keeping the change within its existing statement-count limit without a new helper.
