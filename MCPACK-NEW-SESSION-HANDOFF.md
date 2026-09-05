@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+The remaining Extras generator capture selects twelve exact classes: the nine
+uncaptured desert/swamp generator or base classes and three processor/interface
+classes. These implement the remaining eight configured feature types. Existing
+template records cannot reveal their custom effects. Reuse the existing extractor
+and preserve this source increment; no new framework or runtime is needed.
+
+
 Extras code-linked envelopes are delivered in `bb970de`: chillzone 3x4x4,
 giant_torch 4x7x4 and ruins_0 4x5x4. All 62 packaged template envelopes now have
 verified linked records, without claiming occupied world sizes or family counts.

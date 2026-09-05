@@ -256,6 +256,18 @@ CLASSES = (
     "com/yungnickyoung/minecraft/yungsextras/world/feature/desert/ChillzoneDesertFeature.class",
     "com/yungnickyoung/minecraft/yungsextras/world/feature/desert/DesertGiantTorchFeature.class",
     "com/yungnickyoung/minecraft/yungsextras/world/feature/desert/DesertSmallRuinsFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/desert/DesertObeliskFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/desert/DesertWellFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/swamp/AbstractSwampFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/swamp/SwampArchFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/swamp/SwampChurchFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/swamp/SwampCubbyFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/swamp/SwampDoubleArchFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/swamp/SwampOgreFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/swamp/SwampPillarFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/processor/DesertWellProcessor.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/processor/INbtFeatureProcessor.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/processor/SwampFeatureProcessor.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
