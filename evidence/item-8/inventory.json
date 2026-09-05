@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "7a52266e59c18e533b7d80100abfaa1b86a3b40d42b8bdb1ef59fb24ec566ac4",
+    "evidence/item-8/family-decisions.json": "70c5eb1359d86e22045d9a34d3d5816cabdfc3449d7f481b6156c590328e5d81",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -158983,6 +158983,7 @@
         "evidence": {
           "evidence/item-6/frozen/config/betterendisland-neoforge-1_21.toml": "9f967435aa86ab5959ee76a215cde5176bee106fae08df3b6e440c77a823867a",
           "evidence/item-8/sources/better-end-island-configuration/identities.json": "56c0b14dfb0f0a11156acd745548cb01085bce05ed965bbc38bdbeae19fed3cb",
+          "evidence/item-8/sources/better-end-island-platform-gateway/YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar/mixin-metadata.json": "9edd653c4d2fb45318c02ff41838941b914774d87f8d799d20aa99aa8fa91813",
           "evidence/item-8/sources/better-end-island-platform-gateway/identities.json": "6d6944ae221e62182308d1ac3cdcc10a9b028d98bb0e2fa0d72e910cd366b48a",
           "evidence/item-8/sources/better-end-island-processors/identities.json": "dfeb5a2586c4b82b3e0e6eb5712149d1ab8adfc6689cc7ece108490a2b7d9b95",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
@@ -158990,6 +158991,17 @@
         "gateway_placement": "Subtract integer half template X/Y/Z from context origin. Use context random, Rotation.NONE, pivot (1,0,1), IGNORE_WATERLOGGING and placement flag 2. After the template call, request END_GATEWAY at context origin with flag 3, regardless of the template helper result. If configuration has an exit and the block entity is an EndGateway, set its exit position/exactness and mark changed.",
         "hooks": "Both inject at HEAD and are cancellable. With useVanillaSpawnPlatform false, the platform hook invokes the custom generator, discards its boolean and cancels vanilla execution. With useVanillaEndGateways false, the gateway hook returns the custom generator boolean. True leaves the respective vanilla path alone.",
         "mechanism": "Conditional mixin replacements of vanilla EndPlatformFeature.createEndPlatform and EndGatewayFeature.place, not additional structure-registry roots.",
+        "mixin_declaration": {
+          "config": "betterendisland.mixins.json",
+          "defaultRequire": 1,
+          "hooks": [
+            "EndPlatformFeatureMixin",
+            "EndGatewayFeatureMixin"
+          ],
+          "metadata": "evidence/item-8/sources/better-end-island-platform-gateway/YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar/mixin-metadata.json",
+          "required": true,
+          "scope": "NeoForge mod metadata declares this required common mixin configuration, which lists both captured hooks and has no plugin entry. This establishes packaged application intent, not direct runtime transformation or world-generation observation."
+        },
         "nominal_template_xyz_blocks": {
           "betterendisland:gateway": [
             3,

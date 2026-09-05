@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `c1169fa`, SHA-256
-`82b5d02452470cde6a3036624979863f2485827c9e679d703698101354618c5b`.
+Current working inventory regenerated at `68169a6`, SHA-256
+`d59bdebe1e92f570af4eab73ad11fb60f01f5c4f57dbaebbbbaa524deb01c5c0`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1982,3 +1982,11 @@ already extracted and reproduced, but initially missed by staging because its
 parent directory ends in .jar. Commit e74e6b2 corrected that omission.
 Twenty-eight focused tests passed. Wrapping one long line resolved Ruff's finding;
 scoped Ruff/Basedpyright then passed. No new capture or runtime was needed.
+
+Regeneration at `68169a6` changes only input identity and Better End Island
+mixin declaration/evidence links. Previous family records remain unchanged.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-mixins.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-mixins.json
+```
