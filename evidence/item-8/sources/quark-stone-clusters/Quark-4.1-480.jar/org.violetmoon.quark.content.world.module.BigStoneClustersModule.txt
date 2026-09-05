@@ -1,0 +1,371 @@
+Compiled from "BigStoneClustersModule.java"
+public class org.violetmoon.quark.content.world.module.BigStoneClustersModule extends org.violetmoon.zeta.module.ZetaModule {
+  public static org.violetmoon.quark.content.world.config.BigStoneClusterConfig calcite;
+
+  public static org.violetmoon.quark.content.world.config.BigStoneClusterConfig limestone;
+
+  public static org.violetmoon.quark.content.world.config.BigStoneClusterConfig jasper;
+
+  public static org.violetmoon.quark.content.world.config.BigStoneClusterConfig shale;
+
+  public static org.violetmoon.quark.content.world.config.AirStoneClusterConfig myalite;
+
+  public static java.util.List<java.lang.String> blocksToReplace;
+
+  public static java.util.function.BiPredicate<net.minecraft.world.level.Level, net.minecraft.world.level.block.Block> blockReplacePredicate;
+
+  public org.violetmoon.quark.content.world.module.BigStoneClustersModule();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method org/violetmoon/zeta/module/ZetaModule."<init>":()V
+       4: return
+
+  private static org.violetmoon.quark.content.world.config.BigStoneClusterConfig$Builder<?> bob(net.minecraft.tags.TagKey<net.minecraft.world.level.biome.Biome>...);
+    Code:
+       0: invokestatic  #7                  // Method org/violetmoon/quark/content/world/config/BigStoneClusterConfig.stoneBuilder:()Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder;
+       3: iconst_0
+       4: invokestatic  #13                 // Method org/violetmoon/zeta/config/type/DimensionConfig.overworld:(Z)Lorg/violetmoon/zeta/config/type/DimensionConfig;
+       7: invokevirtual #19                 // Method org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder.dimensions:(Lorg/violetmoon/zeta/config/type/DimensionConfig;)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      10: checkcast     #20                 // class org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder
+      13: bipush        14
+      15: invokevirtual #25                 // Method org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder.horizontalSize:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      18: checkcast     #20                 // class org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder
+      21: bipush        14
+      23: invokevirtual #29                 // Method org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder.verticalSize:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      26: checkcast     #20                 // class org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder
+      29: bipush        9
+      31: invokevirtual #32                 // Method org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder.horizontalVariation:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      34: checkcast     #20                 // class org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder
+      37: bipush        9
+      39: invokevirtual #35                 // Method org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder.verticalVariation:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      42: checkcast     #20                 // class org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder
+      45: iconst_4
+      46: invokevirtual #38                 // Method org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder.rarity:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      49: checkcast     #20                 // class org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder
+      52: bipush        20
+      54: invokevirtual #41                 // Method org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder.minYLevel:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      57: checkcast     #20                 // class org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder
+      60: bipush        80
+      62: invokevirtual #44                 // Method org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder.maxYLevel:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      65: checkcast     #20                 // class org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder
+      68: aload_0
+      69: invokevirtual #47                 // Method org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder.biomeAllow:([Lnet/minecraft/tags/TagKey;)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+      72: checkcast     #20                 // class org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder
+      75: areturn
+
+  public final void setup(org.violetmoon.zeta.event.load.ZCommonSetup);
+    Code:
+       0: aload_0
+       1: getstatic     #51                 // Field calcite:Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;
+       4: getstatic     #57                 // Field net/minecraft/world/level/block/Blocks.CALCITE:Lnet/minecraft/world/level/block/Block;
+       7: getstatic     #63                 // Field org/violetmoon/zeta/util/BooleanSuppliers.TRUE:Ljava/util/function/BooleanSupplier;
+      10: invokevirtual #69                 // Method add:(Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;Lnet/minecraft/world/level/block/Block;Ljava/util/function/BooleanSupplier;)V
+      13: aload_0
+      14: getstatic     #73                 // Field limestone:Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;
+      17: getstatic     #76                 // Field org/violetmoon/quark/content/world/module/NewStoneTypesModule.limestoneBlock:Lnet/minecraft/world/level/block/Block;
+      20: invokedynamic #81,  0             // InvokeDynamic #0:getAsBoolean:()Ljava/util/function/BooleanSupplier;
+      25: invokevirtual #69                 // Method add:(Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;Lnet/minecraft/world/level/block/Block;Ljava/util/function/BooleanSupplier;)V
+      28: aload_0
+      29: getstatic     #85                 // Field jasper:Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;
+      32: getstatic     #88                 // Field org/violetmoon/quark/content/world/module/NewStoneTypesModule.jasperBlock:Lnet/minecraft/world/level/block/Block;
+      35: invokedynamic #91,  0             // InvokeDynamic #1:getAsBoolean:()Ljava/util/function/BooleanSupplier;
+      40: invokevirtual #69                 // Method add:(Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;Lnet/minecraft/world/level/block/Block;Ljava/util/function/BooleanSupplier;)V
+      43: aload_0
+      44: getstatic     #92                 // Field shale:Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;
+      47: getstatic     #95                 // Field org/violetmoon/quark/content/world/module/NewStoneTypesModule.shaleBlock:Lnet/minecraft/world/level/block/Block;
+      50: invokedynamic #98,  0             // InvokeDynamic #2:getAsBoolean:()Ljava/util/function/BooleanSupplier;
+      55: invokevirtual #69                 // Method add:(Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;Lnet/minecraft/world/level/block/Block;Ljava/util/function/BooleanSupplier;)V
+      58: aload_0
+      59: getstatic     #99                 // Field myalite:Lorg/violetmoon/quark/content/world/config/AirStoneClusterConfig;
+      62: getstatic     #103                // Field org/violetmoon/quark/content/world/module/NewStoneTypesModule.myaliteBlock:Lnet/minecraft/world/level/block/Block;
+      65: invokedynamic #106,  0            // InvokeDynamic #3:getAsBoolean:()Ljava/util/function/BooleanSupplier;
+      70: invokevirtual #69                 // Method add:(Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;Lnet/minecraft/world/level/block/Block;Ljava/util/function/BooleanSupplier;)V
+      73: return
+
+  public void addAdditionalHints(org.violetmoon.zeta.event.load.ZGatherHints);
+    Code:
+       0: getstatic     #51                 // Field calcite:Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;
+       3: getfield      #107                // Field org/violetmoon/quark/content/world/config/BigStoneClusterConfig.enabled:Z
+       6: ifeq          22
+       9: aload_1
+      10: getstatic     #111                // Field net/minecraft/world/item/Items.CALCITE:Lnet/minecraft/world/item/Item;
+      13: iconst_0
+      14: anewarray     #116                // class java/lang/Object
+      17: invokeinterface #118,  3          // InterfaceMethod org/violetmoon/zeta/event/load/ZGatherHints.hintItem:(Lnet/minecraft/world/level/ItemLike;[Ljava/lang/Object;)V
+      22: return
+
+  private void add(org.violetmoon.quark.content.world.config.BigStoneClusterConfig, net.minecraft.world.level.block.Block, java.util.function.BooleanSupplier);
+    Code:
+       0: aload_0
+       1: new           #124                // class org/violetmoon/quark/content/world/gen/BigStoneClusterGenerator
+       4: dup
+       5: aload_1
+       6: aload_2
+       7: invokevirtual #126                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      10: aload_3
+      11: invokespecial #132                // Method org/violetmoon/quark/content/world/gen/BigStoneClusterGenerator."<init>":(Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;Lnet/minecraft/world/level/block/state/BlockState;Ljava/util/function/BooleanSupplier;)V
+      14: getstatic     #135                // Field net/minecraft/world/level/levelgen/GenerationStep$Decoration.UNDERGROUND_DECORATION:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+      17: iconst_0
+      18: invokestatic  #143                // Method org/violetmoon/zeta/world/WorldGenHandler.addGenerator:(Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/world/generator/Generator;Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;I)V
+      21: return
+
+  public final void configChanged(org.violetmoon.zeta.event.load.ZConfigChanged);
+    Code:
+       0: invokedynamic #149,  0            // InvokeDynamic #4:test:()Ljava/util/function/BiPredicate;
+       5: putstatic     #153                // Field blockReplacePredicate:Ljava/util/function/BiPredicate;
+       8: getstatic     #157                // Field blocksToReplace:Ljava/util/List;
+      11: invokeinterface #161,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      16: astore_2
+      17: aload_2
+      18: invokeinterface #167,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      23: ifeq          103
+      26: aload_2
+      27: invokeinterface #173,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      32: checkcast     #177                // class java/lang/String
+      35: astore_3
+      36: aload_3
+      37: astore        4
+      39: aconst_null
+      40: astore        5
+      42: aload         4
+      44: ldc           #179                // String |
+      46: invokevirtual #181                // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+      49: ifeq          73
+      52: aload         4
+      54: ldc           #185                // String \\|
+      56: invokevirtual #187                // Method java/lang/String.split:(Ljava/lang/String;)[Ljava/lang/String;
+      59: astore        6
+      61: aload         6
+      63: iconst_0
+      64: aaload
+      65: astore        4
+      67: aload         6
+      69: iconst_1
+      70: aaload
+      71: astore        5
+      73: aload         5
+      75: astore        6
+      77: getstatic     #191                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+      80: aload         4
+      82: invokestatic  #197                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      85: invokeinterface #203,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getOptional:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Optional;
+      90: aload         6
+      92: invokedynamic #209,  0            // InvokeDynamic #5:accept:(Ljava/lang/String;)Ljava/util/function/Consumer;
+      97: invokevirtual #213                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+     100: goto          17
+     103: return
+
+  private static void lambda$configChanged$8(java.lang.String, net.minecraft.world.level.block.Block);
+    Code:
+       0: aload_1
+       1: getstatic     #219                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+       4: if_acmpeq     49
+       7: aload_0
+       8: ifnonnull     31
+      11: getstatic     #153                // Field blockReplacePredicate:Ljava/util/function/BiPredicate;
+      14: aload_1
+      15: invokedynamic #222,  0            // InvokeDynamic #6:test:(Lnet/minecraft/world/level/block/Block;)Ljava/util/function/BiPredicate;
+      20: invokeinterface #225,  2          // InterfaceMethod java/util/function/BiPredicate.or:(Ljava/util/function/BiPredicate;)Ljava/util/function/BiPredicate;
+      25: putstatic     #153                // Field blockReplacePredicate:Ljava/util/function/BiPredicate;
+      28: goto          49
+      31: getstatic     #153                // Field blockReplacePredicate:Ljava/util/function/BiPredicate;
+      34: aload_1
+      35: aload_0
+      36: invokedynamic #231,  0            // InvokeDynamic #7:test:(Lnet/minecraft/world/level/block/Block;Ljava/lang/String;)Ljava/util/function/BiPredicate;
+      41: invokeinterface #225,  2          // InterfaceMethod java/util/function/BiPredicate.or:(Ljava/util/function/BiPredicate;)Ljava/util/function/BiPredicate;
+      46: putstatic     #153                // Field blockReplacePredicate:Ljava/util/function/BiPredicate;
+      49: return
+
+  private static boolean lambda$configChanged$7(net.minecraft.world.level.block.Block, java.lang.String, net.minecraft.world.level.Level, net.minecraft.world.level.block.Block);
+    Code:
+       0: aload_0
+       1: aload_3
+       2: if_acmpeq     7
+       5: iconst_0
+       6: ireturn
+       7: aload_2
+       8: ifnonnull     13
+      11: iconst_0
+      12: ireturn
+      13: aload_2
+      14: invokevirtual #234                // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+      17: invokevirtual #240                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      20: invokevirtual #246                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      23: aload_1
+      24: invokevirtual #250                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      27: ireturn
+
+  private static boolean lambda$configChanged$6(net.minecraft.world.level.block.Block, net.minecraft.world.level.Level, net.minecraft.world.level.block.Block);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: if_acmpne     9
+       5: iconst_1
+       6: goto          10
+       9: iconst_0
+      10: ireturn
+
+  private static boolean lambda$configChanged$5(net.minecraft.world.level.Level, net.minecraft.world.level.block.Block);
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  private static boolean lambda$setup$4();
+    Code:
+       0: getstatic     #254                // Field org/violetmoon/quark/content/world/module/NewStoneTypesModule.enabledWithMyalite:Z
+       3: ireturn
+
+  private static boolean lambda$setup$3();
+    Code:
+       0: getstatic     #257                // Field org/violetmoon/quark/content/world/module/NewStoneTypesModule.enabledWithShale:Z
+       3: ireturn
+
+  private static boolean lambda$setup$2();
+    Code:
+       0: getstatic     #260                // Field org/violetmoon/quark/content/world/module/NewStoneTypesModule.enabledWithJasper:Z
+       3: ireturn
+
+  private static boolean lambda$setup$1();
+    Code:
+       0: getstatic     #263                // Field org/violetmoon/quark/content/world/module/NewStoneTypesModule.enabledWithLimestone:Z
+       3: ireturn
+
+  private static boolean lambda$static$0(net.minecraft.world.level.Level, net.minecraft.world.level.block.Block);
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  static {};
+    Code:
+       0: iconst_1
+       1: anewarray     #266                // class net/minecraft/tags/TagKey
+       4: dup
+       5: iconst_0
+       6: getstatic     #268                // Field net/minecraft/tags/BiomeTags.IS_MOUNTAIN:Lnet/minecraft/tags/TagKey;
+       9: aastore
+      10: invokestatic  #274                // Method bob:([Lnet/minecraft/tags/TagKey;)Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder;
+      13: invokevirtual #278                // Method org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder.build:()Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;
+      16: putstatic     #51                 // Field calcite:Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;
+      19: iconst_2
+      20: anewarray     #266                // class net/minecraft/tags/TagKey
+      23: dup
+      24: iconst_0
+      25: getstatic     #282                // Field net/neoforged/neoforge/common/Tags$Biomes.IS_SWAMP:Lnet/minecraft/tags/TagKey;
+      28: aastore
+      29: dup
+      30: iconst_1
+      31: getstatic     #287                // Field net/minecraft/tags/BiomeTags.IS_OCEAN:Lnet/minecraft/tags/TagKey;
+      34: aastore
+      35: invokestatic  #274                // Method bob:([Lnet/minecraft/tags/TagKey;)Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder;
+      38: invokevirtual #278                // Method org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder.build:()Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;
+      41: putstatic     #73                 // Field limestone:Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;
+      44: iconst_2
+      45: anewarray     #266                // class net/minecraft/tags/TagKey
+      48: dup
+      49: iconst_0
+      50: getstatic     #290                // Field net/minecraft/tags/BiomeTags.IS_BADLANDS:Lnet/minecraft/tags/TagKey;
+      53: aastore
+      54: dup
+      55: iconst_1
+      56: getstatic     #293                // Field net/neoforged/neoforge/common/Tags$Biomes.IS_SANDY:Lnet/minecraft/tags/TagKey;
+      59: aastore
+      60: invokestatic  #274                // Method bob:([Lnet/minecraft/tags/TagKey;)Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder;
+      63: invokevirtual #278                // Method org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder.build:()Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;
+      66: putstatic     #85                 // Field jasper:Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;
+      69: iconst_2
+      70: anewarray     #266                // class net/minecraft/tags/TagKey
+      73: dup
+      74: iconst_0
+      75: getstatic     #296                // Field net/neoforged/neoforge/common/Tags$Biomes.IS_SNOWY:Lnet/minecraft/tags/TagKey;
+      78: aastore
+      79: dup
+      80: iconst_1
+      81: getstatic     #299                // Field net/neoforged/neoforge/common/Tags$Biomes.IS_COLD:Lnet/minecraft/tags/TagKey;
+      84: aastore
+      85: invokestatic  #274                // Method bob:([Lnet/minecraft/tags/TagKey;)Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder;
+      88: invokevirtual #278                // Method org/violetmoon/quark/content/world/config/BigStoneClusterConfig$Builder.build:()Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;
+      91: putstatic     #92                 // Field shale:Lorg/violetmoon/quark/content/world/config/BigStoneClusterConfig;
+      94: invokestatic  #302                // Method org/violetmoon/quark/content/world/config/AirStoneClusterConfig.airStoneBuilder:()Lorg/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder;
+      97: iconst_1
+      98: invokevirtual #308                // Method org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder.generateInAir:(Z)Lorg/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder;
+     101: iconst_0
+     102: invokestatic  #314                // Method org/violetmoon/zeta/config/type/DimensionConfig.end:(Z)Lorg/violetmoon/zeta/config/type/DimensionConfig;
+     105: invokevirtual #317                // Method org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder.dimensions:(Lorg/violetmoon/zeta/config/type/DimensionConfig;)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+     108: checkcast     #309                // class org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder
+     111: iconst_0
+     112: iconst_1
+     113: anewarray     #177                // class java/lang/String
+     116: dup
+     117: iconst_0
+     118: ldc_w         #318                // String minecraft:end_highlands
+     121: aastore
+     122: invokestatic  #320                // Method org/violetmoon/zeta/config/type/CompoundBiomeConfig.fromBiomeReslocs:(Z[Ljava/lang/String;)Lorg/violetmoon/zeta/config/type/CompoundBiomeConfig;
+     125: invokevirtual #326                // Method org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder.biomes:(Lorg/violetmoon/zeta/config/type/IBiomeConfig;)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+     128: checkcast     #309                // class org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder
+     131: bipush        20
+     133: invokevirtual #330                // Method org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder.horizontalSize:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+     136: checkcast     #309                // class org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder
+     139: bipush        40
+     141: invokevirtual #331                // Method org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder.verticalSize:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+     144: checkcast     #309                // class org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder
+     147: bipush        6
+     149: invokevirtual #332                // Method org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder.horizontalVariation:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+     152: checkcast     #309                // class org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder
+     155: bipush        10
+     157: invokevirtual #333                // Method org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder.verticalVariation:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+     160: checkcast     #309                // class org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder
+     163: bipush        100
+     165: invokevirtual #334                // Method org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder.rarity:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+     168: checkcast     #309                // class org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder
+     171: bipush        58
+     173: invokevirtual #335                // Method org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder.minYLevel:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+     176: checkcast     #309                // class org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder
+     179: bipush        62
+     181: invokevirtual #336                // Method org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder.maxYLevel:(I)Lorg/violetmoon/zeta/config/type/ClusterSizeConfig$Builder;
+     184: checkcast     #309                // class org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder
+     187: invokevirtual #337                // Method org/violetmoon/quark/content/world/config/AirStoneClusterConfig$Builder.build:()Lorg/violetmoon/quark/content/world/config/AirStoneClusterConfig;
+     190: putstatic     #99                 // Field myalite:Lorg/violetmoon/quark/content/world/config/AirStoneClusterConfig;
+     193: bipush        9
+     195: anewarray     #177                // class java/lang/String
+     198: dup
+     199: iconst_0
+     200: ldc_w         #340                // String minecraft:stone
+     203: aastore
+     204: dup
+     205: iconst_1
+     206: ldc_w         #342                // String minecraft:andesite
+     209: aastore
+     210: dup
+     211: iconst_2
+     212: ldc_w         #344                // String minecraft:diorite
+     215: aastore
+     216: dup
+     217: iconst_3
+     218: ldc_w         #346                // String minecraft:granite
+     221: aastore
+     222: dup
+     223: iconst_4
+     224: ldc_w         #348                // String minecraft:netherrack|minecraft:the_nether
+     227: aastore
+     228: dup
+     229: iconst_5
+     230: ldc_w         #350                // String minecraft:end_stone|minecraft:the_end
+     233: aastore
+     234: dup
+     235: bipush        6
+     237: ldc_w         #352                // String quark:limestone
+     240: aastore
+     241: dup
+     242: bipush        7
+     244: ldc_w         #354                // String quark:jasper
+     247: aastore
+     248: dup
+     249: bipush        8
+     251: ldc_w         #356                // String quark:slate
+     254: aastore
+     255: invokestatic  #358                // Method com/google/common/collect/Lists.newArrayList:([Ljava/lang/Object;)Ljava/util/ArrayList;
+     258: putstatic     #157                // Field blocksToReplace:Ljava/util/List;
+     261: invokedynamic #364,  0            // InvokeDynamic #8:test:()Ljava/util/function/BiPredicate;
+     266: putstatic     #153                // Field blockReplacePredicate:Ljava/util/function/BiPredicate;
+     269: return
+}
