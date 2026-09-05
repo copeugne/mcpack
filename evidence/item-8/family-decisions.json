@@ -27008,6 +27008,15 @@
             "behavior": "Replace the marker with the first supplied block state, then descend at fixed X/Z through air or liquid while Y > 0, using the second supplied state. Stop at Y <= 0 or a block that is neither air nor liquid.",
             "vertical_size": "Template Y sizes describe the bridge body only. Supports may extend below that envelope; total occupied height depends on terrain and placement success.",
             "limit": "The descent uses literal Y=0, not the dimension minimum build height. setBlock return values are discarded; this is source-derived placement intent, not an observed completed pillar."
+          },
+          "placement_eligibility": {
+            "source": "BridgePlacement.getPositions in the captured generator manifest.",
+            "sampling_plane": "Sea level minus one. The generator subsequently anchors the template at sea level.",
+            "search": "For each lateral offset from width/2 + widthOffset + 1 (inclusive) to 16 - width/2 - widthOffset (exclusive), try longitudinal offsets 0 through 15. Integer division is used. Swap X/Z roles for non-Z-axis variants. Return only the first valid candidate, or an empty stream.",
+            "banks": "Endpoint centers are length + 1 blocks apart. Both must canOcclude and have WORLD_SURFACE height <= sea level. At each endpoint, count the center plus contiguous qualifying lateral cells on each side, stopping that side at its first failure or width/2. Each endpoint count must reach numSolidBlocksNeeded.",
+            "span": "Every cell from lateral -width/2 through width/2 and longitudinal minWaterZ through maxWaterZ (inclusive) must satisfy BlockState.liquid at sea level minus one. The predicate does not specifically test water.",
+            "surface_classification": "Surface liquid-crossing placement intent, supported by the bank heightmap and sea-level checks. This is not proof of player visibility or observed generation frequency.",
+            "scope": "These are the custom terrain checks. Biome filtering, selector variants and rarity modifiers remain separate packaged constraints; no world observation is inferred."
           }
         },
         "direct_encounter_content": {

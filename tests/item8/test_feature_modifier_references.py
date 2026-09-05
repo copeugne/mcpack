@@ -328,3 +328,29 @@ def test_yungs_bridge_processors_have_no_direct_encounter_or_loot_calls() -> Non
             "Blocks.TRIAL_SPAWNER:", "Blocks.CHEST:", "Blocks.BARREL:",
         ):
             assert token not in source, (row["class"], token)
+
+
+def test_yungs_bridge_placement_checks_liquid_and_both_banks() -> None:
+    base = Path("evidence/item-8/sources/yungs-bridge-generation")
+    manifest = (base / "identities.json").read_bytes()
+    assert hashlib.sha256(manifest).hexdigest() == (
+        "2e6f68933e8b02e097901bb8db1afb3d277be7204e31574d44e66445696552da"
+    )
+    rows = cast("list[dict[str, str]]", json.loads(manifest))
+    row = next(row for row in rows if row["class"].endswith("/BridgePlacement.class"))
+    raw = (base / row["disassembly"]).read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+    source = raw.decode().split("public java.util.stream.Stream")[1].split(
+        "public net.minecraft.world.level.levelgen.placement.PlacementModifierType"
+    )[0]
+    assert "WorldGenLevel.getSeaLevel:" in source
+    assert "15: iconst_1" in source
+    assert "16: isub" in source
+    assert source.count("BlockState.canOcclude:") == 4
+    assert source.count("Heightmap$Types.WORLD_SURFACE:") == 4
+    assert source.count("Field numSolidBlocksNeeded:I") == 2
+    assert "BlockState.liquid:" in source
+    assert "FluidTags.WATER" not in source
+    assert "Blocks.WATER" not in source
+    assert "Stream.empty:" in source
+    assert "875: areturn" in source
