@@ -228,3 +228,69 @@ in separate commits, and request review again after fixes. Verify a completed
 clean review covering the final changes and the required thumbs-up reaction.
 Merge without squashing and verify the accepted head in fetched `origin/main`.
 The Item 7 user exception does not waive any Item 8 review or evidence gate.
+
+### Nether bridge and fungus grouping increments
+
+The bridge source increment is `70196ea`; the fungus source increment is
+`a49dbc8`. Each decision preserves variant membership, definitions and template
+sizes. Reproduce their focused source checks with:
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+Executed inventory commands at their corresponding source revisions:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-bridge-70196ea.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-bridge-70196ea-repro.json
+cmp evidence/raw/item8/inventory-bridge-70196ea.json evidence/raw/item8/inventory-bridge-70196ea-repro.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-fungus-a49dbc8.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-fungus-a49dbc8-repro.json
+cmp evidence/raw/item8/inventory-fungus-a49dbc8.json evidence/raw/item8/inventory-fungus-a49dbc8-repro.json
+```
+
+Use fresh output names when reproducing; the builder refuses overwrites.
+The bridge join is `d635337`; the fungus join is `541acfa`. Neither is an
+Item 8 completion claim. Effective custom placement and gameplay attributes
+remain unresolved.
+
+Nether well source increment `d320686` is checked by the same focused test
+command above. Its generated join is `2cb05ba`. Reproduction at that revision:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-well-d320686.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-well-d320686-repro.json
+cmp evidence/raw/item8/inventory-well-d320686.json evidence/raw/item8/inventory-well-d320686-repro.json
+```
+
+Circular ruin source increment `2ba75aa` uses the existing Nether variant test.
+Generated join `d62ade9` reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-circle-2ba75aa.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-circle-2ba75aa-repro.json
+cmp evidence/raw/item8/inventory-circle-2ba75aa.json evidence/raw/item8/inventory-circle-2ba75aa-repro.json
+```
+
+Medium house source `298911d` and generated join `8d778dc` used:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-medium-house-298911d.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-medium-house-298911d-repro.json
+cmp evidence/raw/item8/inventory-medium-house-298911d.json evidence/raw/item8/inventory-medium-house-298911d-repro.json
+```
+
+Nether generator source `37e0c78` and evidence `d3e8c20` used:
+
+```sh
+uv run -m tools.inspect_item8_pool_elements --archive moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar --output evidence/raw/item8/moog-nether-code-pilot1
+uv run -m tools.inspect_item8_pool_elements --archive moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar --output evidence/item-8/sources/moog-nether-generator-code
+diff -qr evidence/raw/item8/moog-nether-code-pilot1 evidence/item-8/sources/moog-nether-generator-code
+```
+
+Use new output paths when reproducing. The generator's `postLayoutAdjustments`
+selects fixed height or terrain utility results and moves the assembled pieces.
+The called terrain utilities and inherited layout path remain necessary to
+resolve effective placement. This is source evidence, not a completed runtime
+placement claim.

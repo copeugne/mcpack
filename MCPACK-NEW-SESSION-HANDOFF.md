@@ -6,6 +6,104 @@
 
 ### Continuation update - 2026-09-05
 
+Medium Nether houses are delivered through `8d778dc`, built from `298911d`.
+Inventory SHA-256:
+`0b255191173f24467ac1fe8f337372e6d0ee08b4df1fd2e3cae8400fe242b088`.
+Two roots form one working family; twelve retained observations are linked.
+The joined output preserves three empty spawner entity objects in the first
+template and two in the second as unresolved, alongside the first template's
+explicit piglin spawner. Template-authored piglin/brute entities remain distinct
+from spawner sources. Thirty focused tests and scoped quality checks passed;
+the inventory reproduced byte for byte with prior families unchanged. Totals:
+168 working groups, 266 assigned IDs, 621 unassigned; 28 mns roots remain open.
+
+`37e0c78` extends the existing extractor by two class prefixes to inspect
+GenericNetherJigsawStructure, its direction enum and YRangeAllowance.
+`d3e8c20` retains the reproducible archive-scoped output in
+`evidence/item-8/sources/moog-nether-generator-code`. The existing extractor
+emits the superclass and pool codecs too; its complete identity manifest is
+preserved without adding a filtering framework. This directly supports the
+open Item 8 placement attributes for the Nether families. Scoped quality checks
+passed and output matched the pilot. postLayoutAdjustments centers pieces,
+selects fixed height or GeneralUtils highest/lowest land, applies offsets and
+height bounds, then moves pieces. GeneralUtils terrain methods and inherited
+layout behavior still need inspection before claiming complete placement.
+Continue remaining Nether designs, provider coverage and attributes. Large and
+warped house relationships remain undecided. No final Item 8 gate, clean review
+or main merge is claimed.
+
+Circular Nether ruins are delivered through `d62ade9`, built from `2ba75aa`.
+Inventory SHA-256:
+`f24fa7c214ee95359b1b2607cb14e097152653febad7da73b8291c893195a7d6`.
+Two circle roots map to one working family with separate biome, geometry,
+spawner and loot attribution. The joined output retains wither skeleton and
+houses loot on blackstone, and piglin/brute spawners without packaged loot on
+nether brick. Four retained observations are linked. Twenty-nine focused tests
+and scoped quality checks passed; the inventory reproduced byte for byte and
+prior families remained unchanged. Totals: 167 working groups, 264 assigned IDs,
+623 unassigned; 30 mns roots remain unassigned. Continue houses, arenas and
+remaining Nether designs, then other providers and required attributes. The
+retained Moog JAR also contains GenericNetherJigsawStructure and its direction
+enum, YRangeAllowance, and PieceLimitedJigsawManager; the existing disassembler
+can be extended narrowly when resolving the already-open custom placement
+attributes. No final gate, clean review, main merge or complete attributes are
+claimed.
+
+Nether well grouping is delivered through `2cb05ba`, built from `d320686`.
+Inventory SHA-256:
+`0b16127f113e6339b3095c7aaa31b1e9899c931cecaea64cf6ade639b6a9366c`.
+Three well roots map to one working family, preserving the small lava well
+without packaged loot and two medium variants with lower loot-bearing pieces.
+The lower pieces are not counted as families. Seven retained world observations
+are linked. Twenty-eight focused tests and scoped quality checks passed after
+adding the repository-required type annotations to the new focused test.
+Inventory reproduction was byte-identical and earlier groups stayed unchanged.
+Current totals: 166 working groups, 262 assigned registry entries, 625 unassigned;
+32 mns roots remain unassigned. Continue circles, houses, arenas and other Nether
+design relationships, then remaining providers and required attributes. Circle
+source inspection found distinct spawners and loot: blackstone has a wither
+skeleton spawner and houses loot references; nether brick has piglin/brute
+spawners and no packaged loot references. Their grouping remains undecided.
+No custom generator behavior, full attribute completion, final Item 8 gate,
+review or main merge is claimed.
+
+Nether bridges and medium fungi are delivered through `541acfa`, with source
+increments `70196ea` and `a49dbc8` and generated joins `d635337` and `541acfa`.
+Current inventory SHA-256:
+`11838c9dc3feb6b53c621ef49fc90e81182d063082b0900e448aa9e5e1c50e68`.
+Six bridge shapes map to one working family. Four crimson/warped fungus shapes
+map to one working family with explicit biome variants. Source-bound tests
+verify common definitions, exact registry membership, individual template
+sizes, resolved traces and absence of template-authored entities, loot,
+spawners and generation markers. These absences do not establish effective
+natural spawning or generator behavior. Bridge world observations 117 and 517,
+and fungus observations 122 and 522, are linked from the retained bounds.
+Twenty-seven focused tests and scoped Ruff/basedpyright checks passed. Both
+joins reproduced byte for byte and preserved all prior families. Current totals:
+165 working groups, 259 assigned registry entries, 628 unassigned; 35 mns roots
+remain unassigned. Continue Nether wells, circles, houses, arenas and remaining
+design relationships, then other providers and non-registry generation.
+Canonical relationships and the required per-family attributes remain open.
+No final Item 8 gate, report, review or main merge is claimed.
+
+Very Small Nether Ruins grouping is delivered through `7e883a8`, built from
+`cfe63fe`. Inventory SHA-256:
+`53d6ea7bba9c7accdd3d4b075ad27fba5a50f3d530458555ac216d6c19ca98a6`.
+Seven registry entries map to one working ruin family with six distinct
+templates. The unnumbered `mns:very_small_nether_brick` definition exactly
+duplicates `mns:very_small_blackstone`, including its start pool, and reaches
+`mns:ruins/very_small_blackstone_1`. Both IDs remain for placement accounting;
+the duplicate does not create another family or template. The direct source
+check binds this finding, common definitions, variant dimensions and coverage.
+Fourteen retained world observations are linked. Twenty-five focused tests and
+scoped quality checks passed. The inventory reproduced byte for byte and prior
+groups remained equal. Current totals: 163 working groups, 249 assigned entries,
+638 unassigned. Forty-five mns roots remain unassigned. Continue their bridge,
+fungus, well, arena and other design/variant relationships, then other providers
+and required attributes. Relationships to larger ruins, effective custom Nether
+placement and gameplay remain unresolved. No final gate, report, review or main
+merge is claimed.
+
 Soaring river grouping is delivered through `0c08c16`, built from `977b343`.
 Inventory SHA-256: `d6c506ffc79c56888ae7ca2caa3120c9b611908275ec9467f778f48c4db659f9`.
 All 35 mss registry entries map once to 27 working families. Birch and Cherry
