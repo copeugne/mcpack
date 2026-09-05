@@ -659,6 +659,47 @@ def test_betterend_mountain_placement_and_visual_cues_bind_piece_sources() -> No
     assert isinstance(cues, dict)
     assert set(cues) == set(variants)
 
+def test_betterend_lake_placement_and_cues_preserve_both_algorithms() -> None:
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    group = next(g for g in decisions["groups"] if g["family_id"] == "betterend:end_lake")
+    attributes = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
+    placement = attributes["underground_surface_classification"]
+    roots = cast("dict[str, dict[str, JsonValue]]", placement["root_placement_by_structure"])
+    assert sorted(roots) == group["structure_ids"]
+    sources: dict[str, str] = {}
+    for directory in ("betterend-formations-code", "betterend-formation-pieces"):
+        base = Path("evidence/item-8/sources") / directory
+        rows = cast("list[dict[str, str]]", json.loads((base / "identities.json").read_bytes()))
+        for row in rows:
+            raw = (base / row["disassembly"]).read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+            sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    for rid, rule in roots.items():
+        if "end_lake" in rid:
+            assert rule["minimum_inclusive_start_y"] == 10
+        else:
+            assert rule["minimum_exclusive_start_y"] == 5
+    assert re.search(r"bipush\s+10\n\s+\d+: if_icmpge", sources["EndLakeStructure"])
+    assert "java/lang/Math.abs:" in sources["EndLakeStructure"]
+    assert "java/lang/Math.min:" in sources["EndLakeStructure"]
+    for name in ("MegaLakeStructure", "MegaLakeSmallStructure"):
+        assert re.search(r"iconst_5\n\s+\d+: if_icmple", sources[name])
+        assert re.search(r"bipush\s+6\n\s+\d+: isub\n\s+\d+: if_icmpge", sources[name])
+    for name in ("EndLakePiece", "LakePiece"):
+        assert "Blocks.WATER" in sources[name]
+        assert "EndBiome.findTopMaterial:" in sources[name]
+    assert "EndBlocks.ENDSTONE_DUST" in sources["EndLakePiece"]
+    for token in ("EndBlocks.JUNGLE_GRASS", "EndBlocks.UMBRELLA_MOSS", "BlockState.canSurvive:"):
+        assert token in sources["LakePiece"]
+    mountain = next(g for g in decisions["groups"] if g["family_id"] == "betterend:mountain")
+    mountain_attributes = cast("dict[str, dict[str, JsonValue]]", mountain["attributes"])
+    assert placement["base_generation_point_check"] == mountain_attributes[
+        "underground_surface_classification"
+    ]["base_generation_point_check"]
+
+
 def test_betterend_mountain_direct_content_has_no_encounter_or_container_path() -> None:
     decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
         Path("evidence/item-8/family-decisions.json").read_bytes()

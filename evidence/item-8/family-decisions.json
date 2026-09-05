@@ -24347,7 +24347,53 @@
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
-        "evidence/item-8/sources/betterend-formations-code/identities.json": "150df9fc0a941cc523bca51a782c39fcd0f08a32b11af77a64cf6f248c170961"
+        "evidence/item-8/sources/betterend-formations-code/identities.json": "150df9fc0a941cc523bca51a782c39fcd0f08a32b11af77a64cf6f248c170961",
+        "evidence/item-8/sources/betterend-formation-pieces/identities.json": "2ecc0877f072bee316254a4e5df4395c43e24802d923a29bd83c19c8a7718f39"
+      },
+      "attributes": {
+        "underground_surface_classification": {
+          "classification": "Surface-rooted lake basin with a submerged floor and surrounding shore.",
+          "start_heightmap": "WORLD_SURFACE_WG",
+          "base_generation_point_check": {
+            "class": "org.betterx.betterend.world.structures.features.FeatureBaseStructure",
+            "method": "findGenerationPoint",
+            "minimum_inclusive_sampled_y": 10,
+            "sampling": "getGenerationHeight samples WORLD_SURFACE_WG using getFirstOccupiedHeight; this is a separate position selection from the root generatePieces getBaseHeight sample.",
+            "ordering": "The base check runs before generatePieces. Both this check and the later per-root threshold must pass; they must not be collapsed into one threshold at one position."
+          },
+          "root_placement_by_structure": {
+            "betterend:end_lake": {
+              "minimum_inclusive_start_y": 10,
+              "neighbor_condition": "Reject if any of four cardinal samples differs from the center by more than 5 blocks; retain the minimum center/neighbor height as water level."
+            },
+            "betterend:end_lake_normal": {
+              "minimum_inclusive_start_y": 10,
+              "neighbor_condition": "Reject if any of four cardinal samples differs from the center by more than 5 blocks; retain the minimum center/neighbor height as water level."
+            },
+            "betterend:end_lake_rare": {
+              "minimum_inclusive_start_y": 10,
+              "neighbor_condition": "Reject if any of four cardinal samples differs from the center by more than 5 blocks; retain the minimum center/neighbor height as water level."
+            },
+            "betterend:megalake": {
+              "minimum_exclusive_start_y": 5,
+              "neighbor_condition": "Reject if any of four cardinal samples is below center Y minus 6; use the center height as water level."
+            },
+            "betterend:megalake_small": {
+              "minimum_exclusive_start_y": 5,
+              "neighbor_condition": "Reject if any of four cardinal samples is below center Y minus 6; use the center height as water level."
+            }
+          },
+          "basis": "EndLake normal/rare inherit the base EndLake generation. Megalake variants use their own generators and LakePiece. Both piece algorithms carve/fill a water basin and build shore/support columns.",
+          "scope": "Authored placement and shape intent. The base and root height checks sample separately. Terrain support, noise and surrounding terrain affect exposure; submerged floors are not separate underground dungeon families."
+        },
+        "visual_discoverability": {
+          "authored_cues_by_piece": {
+            "EndLakePiece": "Water basin with terrain-derived shores and endstone-dust patches.",
+            "LakePiece": "Water basin with end-stone/terrain-derived shores and conditional jungle-grass or umbrella-moss rim plants."
+          },
+          "basis": "Both pieces write water and consult EndBiome.findTopMaterial when choosing terrain materials. EndLakePiece has an endstone-dust shore path. LakePiece.placeRimPlant checks plant survival before writing either of its two rim plant states.",
+          "scope": "Source-derived visible cues, not measured sight distance or player discovery probability. Complete biome-material resolution and actual occlusion remain outside this cue attribution."
+        }
       }
     },
     {

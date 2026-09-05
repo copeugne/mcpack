@@ -1238,3 +1238,34 @@ All 73 affected tests and scoped checks passed. Inventory regenerated at
 `b52dfa9`, SHA-256:
 `e7c1a4fefa8ba492c93cef684994c60509cf8849a44934500d6563d7413fee80`.
 Only the mountain placement field and its grouping decision changed.
+
+## BetterEnd lake placement and visual cues
+
+All five lake roots now have source-backed surface/submerged placement and visual
+cue records. They inherit the independently sampled base Y >= 10 precheck.
+EndLake roots then require their center Y >= 10 and reject cardinal samples with
+absolute height difference above 5. Megalakes require center Y > 5 and reject
+cardinal samples below center minus 6. Ordinary lake water level uses the minimum
+center/neighbor height; megalakes use center height. These conditions are not
+frequency measurements, and the two sampling stages remain separate.
+
+Both piece algorithms produce water basins with terrain-derived shore materials.
+EndLakePiece has endstone-dust patches; LakePiece can place jungle grass or
+umbrella moss on the rim after a survival check. Full biome top-material resolution
+and observed visibility remain outside these source-derived cues. Existing size
+and world-observation evidence is preserved. No new extraction or runtime needed.
+
+Decision SHA-256:
+`b7802248007f4c80faabb18c925d108231ef123c2061aadbf66dde359af4d75c`.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py -k betterend
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-lake-cues.json
+```
+
+Six focused BetterEnd tests and scoped Ruff/Basedpyright pass. The lake test binds
+both preserved source manifests, both terrain-check algorithms and piece material
+references. Existing registration tests bind the five roots and their inheritance.
