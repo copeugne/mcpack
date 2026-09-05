@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Central-End projection is delivered in `f295bec`, extractor `aff8997`, and
+linked to decisions in `ca53b4b`. Reproduction matches exactly. Actual saved
+materials are recorded, but section counts do not identify exact templates or
+prove podium generation. Do not repeat the extraction or treat this bounded
+observation as complete provider coverage. Settle Better End Island family
+boundaries from the existing generation paths, retaining observation limits,
+then continue outstanding provider coverage. Twenty-nine focused tests and
+scoped builder checks passed. Item 8 remains incomplete.
+
 World attribution gap confirmed: Item 7 provider disposition is indirect-only
 for Better End Island, and decoded ChunkRecord omits block contents. Use a fixed
 central-End projection from the existing restored ordinary run-a world. It reuses
