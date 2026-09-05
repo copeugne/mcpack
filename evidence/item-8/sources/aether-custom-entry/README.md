@@ -43,3 +43,21 @@ piece content. Reuse templates, processors and existing sources. Do not count
 cloud chunks, room builders, island stubs or serialized pieces as families.
 No new world measurement or runtime acceptance claim. Scoped extractor Ruff
 and Basedpyright passed.
+
+## Standalone cloud provider
+
+The selected large_aercloud definition is now bound by
+tests/item8/test_aether_cloud_source.py: simple_state_provider supplies
+aether:cold_aercloud with double_drops=true, size 3, rangeY 32 and empty
+spawn_overrides. Its SHA-256 is
+c6590b05dabf5f822bd7447c79efe3801f1426c1437d5fde986d9b620cc43097.
+Together with the direct writer, this supports a working terrain/cloud
+disposition. The registry row remains for coverage; it is not an accepted
+authored-structure family count. Ordinary block drops, external modifications,
+world geometry and discoverability remain outside this source finding.
+
+```sh
+uv run pytest -q tests/item8/test_aether_cloud_source.py
+```
+
+The focused test and scoped test/builder Ruff and Basedpyright passed.
