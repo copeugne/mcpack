@@ -1,0 +1,303 @@
+Compiled from "TentativeModule.java"
+public final class org.violetmoon.zeta.module.TentativeModule extends java.lang.Record {
+  private final java.lang.Class<? extends org.violetmoon.zeta.module.ZetaModule> clazz;
+
+  private final java.lang.Class<? extends org.violetmoon.zeta.module.ZetaModule> keyClass;
+
+  private final org.violetmoon.zeta.module.ZetaCategory category;
+
+  private final java.lang.String displayName;
+
+  private final java.lang.String lowercaseName;
+
+  private final java.lang.String description;
+
+  private final java.util.SortedSet<java.lang.String> antiOverlap;
+
+  private final boolean enabledByDefault;
+
+  private final boolean clientReplacement;
+
+  private final int loadPhase;
+
+  public org.violetmoon.zeta.module.TentativeModule(java.lang.Class<? extends org.violetmoon.zeta.module.ZetaModule>, java.lang.Class<? extends org.violetmoon.zeta.module.ZetaModule>, org.violetmoon.zeta.module.ZetaCategory, java.lang.String, java.lang.String, java.lang.String, java.util.SortedSet<java.lang.String>, boolean, boolean, int);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field clazz:Ljava/lang/Class;
+       9: aload_0
+      10: aload_2
+      11: putfield      #13                 // Field keyClass:Ljava/lang/Class;
+      14: aload_0
+      15: aload_3
+      16: putfield      #16                 // Field category:Lorg/violetmoon/zeta/module/ZetaCategory;
+      19: aload_0
+      20: aload         4
+      22: putfield      #20                 // Field displayName:Ljava/lang/String;
+      25: aload_0
+      26: aload         5
+      28: putfield      #24                 // Field lowercaseName:Ljava/lang/String;
+      31: aload_0
+      32: aload         6
+      34: putfield      #27                 // Field description:Ljava/lang/String;
+      37: aload_0
+      38: aload         7
+      40: putfield      #30                 // Field antiOverlap:Ljava/util/SortedSet;
+      43: aload_0
+      44: iload         8
+      46: putfield      #34                 // Field enabledByDefault:Z
+      49: aload_0
+      50: iload         9
+      52: putfield      #38                 // Field clientReplacement:Z
+      55: aload_0
+      56: iload         10
+      58: putfield      #41                 // Field loadPhase:I
+      61: return
+
+  public static org.violetmoon.zeta.module.TentativeModule from(org.violetmoon.zeta.module.ZetaLoadModuleAnnotationData, java.util.function.Function<java.lang.String, org.violetmoon.zeta.module.ZetaCategory>);
+    Code:
+       0: aload_0
+       1: invokevirtual #45                 // Method org/violetmoon/zeta/module/ZetaLoadModuleAnnotationData.clazz:()Ljava/lang/Class;
+       4: astore_2
+       5: ldc           #50                 // class org/violetmoon/zeta/module/ZetaModule
+       7: aload_2
+       8: invokevirtual #52                 // Method java/lang/Class.isAssignableFrom:(Ljava/lang/Class;)Z
+      11: ifne          31
+      14: new           #58                 // class java/lang/RuntimeException
+      17: dup
+      18: aload_2
+      19: invokevirtual #60                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      22: invokedynamic #64,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      27: invokespecial #68                 // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+      30: athrow
+      31: aload_2
+      32: astore_3
+      33: aload_0
+      34: invokevirtual #71                 // Method org/violetmoon/zeta/module/ZetaLoadModuleAnnotationData.name:()Ljava/lang/String;
+      37: invokevirtual #74                 // Method java/lang/String.isEmpty:()Z
+      40: ifeq          69
+      43: aload_3
+      44: invokevirtual #80                 // Method java/lang/Class.getSimpleName:()Ljava/lang/String;
+      47: ldc           #83                 // String Module$
+      49: ldc           #85                 // String
+      51: invokevirtual #87                 // Method java/lang/String.replaceAll:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      54: ldc           #91                 // String (?<=.)([A-Z])
+      56: ldc           #93                 // String  $1
+      58: invokevirtual #87                 // Method java/lang/String.replaceAll:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      61: invokestatic  #95                 // Method org/apache/commons/lang3/text/WordUtils.capitalizeFully:(Ljava/lang/String;)Ljava/lang/String;
+      64: astore        4
+      66: goto          75
+      69: aload_0
+      70: invokevirtual #71                 // Method org/violetmoon/zeta/module/ZetaLoadModuleAnnotationData.name:()Ljava/lang/String;
+      73: astore        4
+      75: aload         4
+      77: getstatic     #100                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+      80: invokevirtual #106                // Method java/lang/String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+      83: ldc           #110                // String
+      85: ldc           #112                // String _
+      87: invokevirtual #114                // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+      90: astore        5
+      92: aload_0
+      93: invokevirtual #118                // Method org/violetmoon/zeta/module/ZetaLoadModuleAnnotationData.clientReplacement:()Z
+      96: istore        6
+      98: iload         6
+     100: ifeq          155
+     103: aload_3
+     104: invokevirtual #120                // Method java/lang/Class.getSuperclass:()Ljava/lang/Class;
+     107: astore        8
+     109: ldc           #50                 // class org/violetmoon/zeta/module/ZetaModule
+     111: aload         8
+     113: invokevirtual #52                 // Method java/lang/Class.isAssignableFrom:(Ljava/lang/Class;)Z
+     116: ifeq          135
+     119: ldc           #50                 // class org/violetmoon/zeta/module/ZetaModule
+     121: aload         8
+     123: if_acmpeq     135
+     126: aload_3
+     127: invokevirtual #120                // Method java/lang/Class.getSuperclass:()Ljava/lang/Class;
+     130: astore        7
+     132: goto          152
+     135: new           #58                 // class java/lang/RuntimeException
+     138: dup
+     139: aload_3
+     140: invokevirtual #60                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     143: invokedynamic #123,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     148: invokespecial #68                 // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     151: athrow
+     152: goto          192
+     155: aload_3
+     156: astore        7
+     158: aload_0
+     159: invokevirtual #124                // Method org/violetmoon/zeta/module/ZetaLoadModuleAnnotationData.category:()Ljava/lang/String;
+     162: ifnull        175
+     165: aload_0
+     166: invokevirtual #124                // Method org/violetmoon/zeta/module/ZetaLoadModuleAnnotationData.category:()Ljava/lang/String;
+     169: invokevirtual #74                 // Method java/lang/String.isEmpty:()Z
+     172: ifeq          192
+     175: new           #58                 // class java/lang/RuntimeException
+     178: dup
+     179: aload_3
+     180: invokevirtual #60                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     183: invokedynamic #126,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     188: invokespecial #68                 // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     191: athrow
+     192: new           #8                  // class org/violetmoon/zeta/module/TentativeModule
+     195: dup
+     196: aload_3
+     197: aload         7
+     199: aload_1
+     200: aload_0
+     201: invokevirtual #124                // Method org/violetmoon/zeta/module/ZetaLoadModuleAnnotationData.category:()Ljava/lang/String;
+     204: invokeinterface #127,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+     209: checkcast     #133                // class org/violetmoon/zeta/module/ZetaCategory
+     212: aload         4
+     214: aload         5
+     216: aload_0
+     217: invokevirtual #135                // Method org/violetmoon/zeta/module/ZetaLoadModuleAnnotationData.description:()Ljava/lang/String;
+     220: new           #137                // class java/util/TreeSet
+     223: dup
+     224: aload_0
+     225: invokevirtual #139                // Method org/violetmoon/zeta/module/ZetaLoadModuleAnnotationData.antiOverlap:()[Ljava/lang/String;
+     228: invokestatic  #142                // InterfaceMethod java/util/List.of:([Ljava/lang/Object;)Ljava/util/List;
+     231: invokespecial #148                // Method java/util/TreeSet."<init>":(Ljava/util/Collection;)V
+     234: aload_0
+     235: invokevirtual #151                // Method org/violetmoon/zeta/module/ZetaLoadModuleAnnotationData.enabledByDefault:()Z
+     238: iload         6
+     240: aload_0
+     241: invokevirtual #153                // Method org/violetmoon/zeta/module/ZetaLoadModuleAnnotationData.loadPhase:()I
+     244: invokespecial #156                // Method "<init>":(Ljava/lang/Class;Ljava/lang/Class;Lorg/violetmoon/zeta/module/ZetaCategory;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/SortedSet;ZZI)V
+     247: areturn
+
+  public org.violetmoon.zeta.module.TentativeModule replaceWith(org.violetmoon.zeta.module.TentativeModule);
+    Code:
+       0: new           #8                  // class org/violetmoon/zeta/module/TentativeModule
+       3: dup
+       4: aload_1
+       5: getfield      #7                  // Field clazz:Ljava/lang/Class;
+       8: aload_0
+       9: getfield      #13                 // Field keyClass:Ljava/lang/Class;
+      12: aload_0
+      13: getfield      #16                 // Field category:Lorg/violetmoon/zeta/module/ZetaCategory;
+      16: aload_0
+      17: getfield      #20                 // Field displayName:Ljava/lang/String;
+      20: aload_0
+      21: getfield      #24                 // Field lowercaseName:Ljava/lang/String;
+      24: aload_0
+      25: getfield      #27                 // Field description:Ljava/lang/String;
+      28: aload_0
+      29: getfield      #30                 // Field antiOverlap:Ljava/util/SortedSet;
+      32: aload_0
+      33: getfield      #34                 // Field enabledByDefault:Z
+      36: iconst_0
+      37: aload_1
+      38: getfield      #41                 // Field loadPhase:I
+      41: invokespecial #156                // Method "<init>":(Ljava/lang/Class;Ljava/lang/Class;Lorg/violetmoon/zeta/module/ZetaCategory;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/SortedSet;ZZI)V
+      44: areturn
+
+  public boolean appliesTo(org.violetmoon.zeta.util.ZetaSide);
+    Code:
+       0: getstatic     #159                // Field org/violetmoon/zeta/module/TentativeModule$1.$SwitchMap$org$violetmoon$zeta$util$ZetaSide:[I
+       3: aload_1
+       4: invokevirtual #165                // Method org/violetmoon/zeta/util/ZetaSide.ordinal:()I
+       7: iaload
+       8: lookupswitch  { // 2
+                     1: 46
+                     2: 50
+               default: 36
+          }
+      36: new           #170                // class java/lang/MatchException
+      39: dup
+      40: aconst_null
+      41: aconst_null
+      42: invokespecial #172                // Method java/lang/MatchException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+      45: athrow
+      46: iconst_1
+      47: goto          62
+      50: aload_0
+      51: getfield      #38                 // Field clientReplacement:Z
+      54: ifne          61
+      57: iconst_1
+      58: goto          62
+      61: iconst_0
+      62: ireturn
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #175,  0            // InvokeDynamic #3:toString:(Lorg/violetmoon/zeta/module/TentativeModule;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #179,  0            // InvokeDynamic #3:hashCode:(Lorg/violetmoon/zeta/module/TentativeModule;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #183,  0            // InvokeDynamic #3:equals:(Lorg/violetmoon/zeta/module/TentativeModule;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public java.lang.Class<? extends org.violetmoon.zeta.module.ZetaModule> clazz();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field clazz:Ljava/lang/Class;
+       4: areturn
+
+  public java.lang.Class<? extends org.violetmoon.zeta.module.ZetaModule> keyClass();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field keyClass:Ljava/lang/Class;
+       4: areturn
+
+  public org.violetmoon.zeta.module.ZetaCategory category();
+    Code:
+       0: aload_0
+       1: getfield      #16                 // Field category:Lorg/violetmoon/zeta/module/ZetaCategory;
+       4: areturn
+
+  public java.lang.String displayName();
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field displayName:Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String lowercaseName();
+    Code:
+       0: aload_0
+       1: getfield      #24                 // Field lowercaseName:Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String description();
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field description:Ljava/lang/String;
+       4: areturn
+
+  public java.util.SortedSet<java.lang.String> antiOverlap();
+    Code:
+       0: aload_0
+       1: getfield      #30                 // Field antiOverlap:Ljava/util/SortedSet;
+       4: areturn
+
+  public boolean enabledByDefault();
+    Code:
+       0: aload_0
+       1: getfield      #34                 // Field enabledByDefault:Z
+       4: ireturn
+
+  public boolean clientReplacement();
+    Code:
+       0: aload_0
+       1: getfield      #38                 // Field clientReplacement:Z
+       4: ireturn
+
+  public int loadPhase();
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field loadPhase:I
+       4: ireturn
+}
