@@ -97,3 +97,19 @@ probability, effective limits or new family count is inferred.
 Other modifier types, Better Village and other code-driven pool changes remain
 open. The trace still has 818 direct roots and 69 custom roots explicitly
 untraced. Item 8 remains incomplete.
+
+The working inventory was regenerated from the delivered source update
+`2d6fbfb`. Both builds matched byte-for-byte:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-modifiers.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-modifiers-reproduction.json
+cmp evidence/raw/item8/inventory-modifiers.json evidence/raw/item8/inventory-modifiers-reproduction.json
+```
+
+Inventory SHA-256:
+`35a7f81081529b34c96948ced6dc7fb3d2580788d5ea9d13f4a7ed5b3410cd4c`.
+This generated replacement carries the changed trace references throughout and
+the additional potential template/entity/loot content into CTOV villages,
+vanilla villages and IDAS Castle. It does not alter family membership or claim
+that the remaining runtime hooks are resolved.
