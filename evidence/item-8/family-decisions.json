@@ -27002,7 +27002,13 @@
           "processing_stage": "StructureTemplate.placeInWorld runs before the custom processor list is applied in order.",
           "selection": "Randomly choose from remaining inline placed features; return on first successful place result, otherwise remove that candidate and continue until exhausted.",
           "success_limit": "AbstractTemplateFeature discards the placeInWorld boolean. BridgeFeature returns true for a non-null loaded template; this does not prove all blocks were placed.",
-          "scope": "Captured generation control flow, not observed placement success, discovery frequency or final support geometry. Full processor effects and placement eligibility still require reconciliation."
+          "scope": "Captured generation control flow, not observed placement success, discovery frequency or final support geometry. Full processor effects and placement eligibility still require reconciliation.",
+          "support_geometry": {
+            "source": "DynamicLegProcessor calls ITemplateFeatureProcessor.generatePillarDown for template support markers.",
+            "behavior": "Replace the marker with the first supplied block state, then descend at fixed X/Z through air or liquid while Y > 0, using the second supplied state. Stop at Y <= 0 or a block that is neither air nor liquid.",
+            "vertical_size": "Template Y sizes describe the bridge body only. Supports may extend below that envelope; total occupied height depends on terrain and placement success.",
+            "limit": "The descent uses literal Y=0, not the dimension minimum build height. setBlock return values are discarded; this is source-derived placement intent, not an observed completed pillar."
+          }
         }
       }
     }

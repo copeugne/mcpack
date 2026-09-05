@@ -1420,3 +1420,27 @@ Inventory regenerated at `955936c`, SHA-256:
 `05295953bfbab2da42d0ef9f9feac58a4013ab14313718f59c9151fb192e1966`.
 Only the decision identity and bridge generation/evidence fields changed.
 All 421 registry family rows and 887 roots remain unchanged.
+
+## Bridge support extent
+
+DynamicLegProcessor delegates support markers to the captured interface's
+generatePillarDown method. It replaces the marker, then descends at fixed X/Z
+through air or liquid while Y > 0. It stops at Y <= 0 or non-air, non-liquid
+material. The literal zero boundary is not the world's minimum build height.
+Both block-write results are discarded. Nominal template height therefore
+describes the body; terrain-dependent supports can extend below it. This records
+source intent, not measured successful occupied height. No new source capture
+or measurement system is needed.
+
+Reproduce the focused support check and inventory with:
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-bridge-supports.json
+```
+
+Nine affected tests passed. Scoped Ruff and Basedpyright pass after splitting
+one compound test assertion. Decision SHA-256:
+`f9a58e0977649c0f6d09ade7791561bf46a069d839eadabb0145b4b1b78146cc`.
