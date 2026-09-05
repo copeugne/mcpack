@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Packaged End placed/configured feature rules are integrated in `7144dd8`.
+Return gateways use motion-blocking height plus 3..9, supporting a source-derived
+surface placement and discoverability description. Platform fixed origin
+(100,49,0) lies outside the existing block projection; do not treat that bounded
+projection as platform evidence. Thirty focused tests and scoped checks passed.
+Next verify the vanilla platform feature caller-to-hook connection and effective
+retained-stack feature modifications. Do not repeat packaged placement extraction.
+Item 8 and full provider coverage remain open.
+
 Packaged End biome entrypoints are preserved in `9025a02`. All catalog biome
 references to end_platform, end_spike and end_gateway_return are linked to
 registered biomes and captured End-only possible-biome membership. This is

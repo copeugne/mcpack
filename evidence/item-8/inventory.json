@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "26d711a8f43a1ba51b10e3c0a426b48e0cef3cda1ec667eb3f4b66db1753dfa3",
+    "evidence/item-8/family-decisions.json": "9401a55e105d748263912f9602b849b89fc283668dd0a7f0c183d9c735e5f61c",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -159033,6 +159033,7 @@
             "packaged_placed_feature_references": [
               "minecraft:end_platform"
             ],
+            "placement_interpretation": "The selected packaged placed feature fixes origin at (100,49,0) and applies a biome filter. Its configured type is minecraft:end_platform. This origin lies outside the bounded X/Z -64..63 world projection, so that projection cannot establish its generation. The connection from this vanilla feature entrypoint to the captured static createEndPlatform hook remains to be verified before treating the custom template offset as its effective worldgen geometry.",
             "rationale": "One arrival-platform design invoked by the End platform replacement. Its platform role and independent invocation distinguish it from gateways and the central dragon arena.",
             "templates": [
               "betterendisland:spawn_platform"
@@ -159076,10 +159077,12 @@
             "packaged_placed_feature_references": [
               "minecraft:end_gateway_return"
             ],
+            "placement_interpretation": "The selected return-gateway placed feature applies rarity_filter chance=700, in_square, MOTION_BLOCKING heightmap, vertical uniform offset 3..9 with zero horizontal offset, then biome filtering. Its configured end_gateway type carries exact=true and exit=(100,50,0). The custom generator subtracts half the 3x9x3 template dimensions from that origin, giving a nominal vertical envelope from heightmapY-1 through heightmapY+13 across offset alternatives. This is a terrain-relative surface/above-surface design, not a dedicated underground placement rule. Other gateway lifecycle callers need not use these modifiers.",
             "rationale": "One gateway design invoked by the End gateway replacement. Repeated gateway locations, exit destinations and dragon-history material changes are instances or state variations, not additional families.",
             "templates": [
               "betterendisland:gateway"
-            ]
+            ],
+            "visual_discoverability": "Source-derived cue: compact 3x9x3 gateway template placed around or above the motion-blocking surface on the packaged return-gateway path. Terrain and vegetation may occlude it. No visibility distance or measured discovery rate is claimed."
           },
           {
             "direct_encounter_content": {
@@ -159138,6 +159141,7 @@
             "packaged_placed_feature_references": [
               "minecraft:end_spike"
             ],
+            "placement_interpretation": "The selected end_spike placed feature has only a biome filter; configured spikes is empty and crystal_invulnerable is false. Actual custom spike layout, top/bottom offsets and respawn invocation are recorded in spike_podium_generators. The placed-feature filter does not constrain the separately captured dragon-fight lifecycle calls.",
             "rationale": "The ring of spikes and central podium form one dragon-fight arena. Initial generation, dragon death and respawn coordinate their creation or rebuilding through the captured dragon-fight lifecycle. Spike tops/bottoms and podium sections are components; initial, guarded, broken and open forms are state or design variants. Ten spike positions are instances within the arena, not ten families.",
             "templates": [
               "betterendisland:pillar_bottom_1",
@@ -159455,6 +159459,121 @@
             }
           ],
           "scope": "Exact packaged biome feature references across the preserved catalog. These biomes are registered and appear only in minecraft:the_end in the captured possible-biome membership. This is not an exhaustive runtime feature-list dump: code-added or removed features and lifecycle calls remain separate. In particular, packaged minecraft:end_platform is a reference, not proof that its complete caller path reaches the captured arrival-platform hook."
+        },
+        "packaged_feature_placement": {
+          "resources": {
+            "worldgen/configured_feature": {
+              "minecraft:end_gateway_return": {
+                "archive": "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar",
+                "document": {
+                  "config": {
+                    "exact": true,
+                    "exit": [
+                      100,
+                      50,
+                      0
+                    ]
+                  },
+                  "type": "minecraft:end_gateway"
+                },
+                "path": "data/minecraft/worldgen/configured_feature/end_gateway_return.json",
+                "sha256": "095c2998fb281c69a71e7baa09ee117552c03ebab81e6ddd3221d313de8118e8"
+              },
+              "minecraft:end_platform": {
+                "archive": "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar",
+                "document": {
+                  "config": {},
+                  "type": "minecraft:end_platform"
+                },
+                "path": "data/minecraft/worldgen/configured_feature/end_platform.json",
+                "sha256": "3bfd56e6116163a8e6ed48fe5c2370ddd1dca59923fa6ac44063ae9b00362588"
+              },
+              "minecraft:end_spike": {
+                "archive": "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar",
+                "document": {
+                  "config": {
+                    "crystal_invulnerable": false,
+                    "spikes": []
+                  },
+                  "type": "minecraft:end_spike"
+                },
+                "path": "data/minecraft/worldgen/configured_feature/end_spike.json",
+                "sha256": "17d26ec022c283d2a8d0d1ef799c74770e6ce2566ba69583c01314d507feb47a"
+              }
+            },
+            "worldgen/placed_feature": {
+              "minecraft:end_gateway_return": {
+                "archive": "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar",
+                "document": {
+                  "feature": "minecraft:end_gateway_return",
+                  "placement": [
+                    {
+                      "chance": 700,
+                      "type": "minecraft:rarity_filter"
+                    },
+                    {
+                      "type": "minecraft:in_square"
+                    },
+                    {
+                      "heightmap": "MOTION_BLOCKING",
+                      "type": "minecraft:heightmap"
+                    },
+                    {
+                      "type": "minecraft:random_offset",
+                      "xz_spread": 0,
+                      "y_spread": {
+                        "max_inclusive": 9,
+                        "min_inclusive": 3,
+                        "type": "minecraft:uniform"
+                      }
+                    },
+                    {
+                      "type": "minecraft:biome"
+                    }
+                  ]
+                },
+                "path": "data/minecraft/worldgen/placed_feature/end_gateway_return.json",
+                "sha256": "666b37da9bc5933077eb4d543cb1bf31c2202d4e71ed821e853ab10182692ef1"
+              },
+              "minecraft:end_platform": {
+                "archive": "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar",
+                "document": {
+                  "feature": "minecraft:end_platform",
+                  "placement": [
+                    {
+                      "positions": [
+                        [
+                          100,
+                          49,
+                          0
+                        ]
+                      ],
+                      "type": "minecraft:fixed_placement"
+                    },
+                    {
+                      "type": "minecraft:biome"
+                    }
+                  ]
+                },
+                "path": "data/minecraft/worldgen/placed_feature/end_platform.json",
+                "sha256": "0f39f85461ba648c6f625c72d7d14d878508ec5d6a59965849a181eaf9553d8a"
+              },
+              "minecraft:end_spike": {
+                "archive": "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar",
+                "document": {
+                  "feature": "minecraft:end_spike",
+                  "placement": [
+                    {
+                      "type": "minecraft:biome"
+                    }
+                  ]
+                },
+                "path": "data/minecraft/worldgen/placed_feature/end_spike.json",
+                "sha256": "d167c6e98faf06bcb35cf2ba2507c2b6d30c75807b8ff09c6a4c6b1e974bfdad"
+              }
+            }
+          },
+          "scope": "Selected packaged resource layers using the existing frozen vanilla/mod_data/Lithostitched selection. Registered identities and documents are verified by the focused test. This does not turn configured rarity into observed density, or cover lifecycle calls that bypass placed features."
         },
         "packaged_template_content": "Both linked templates have empty entities and block_entities. This excludes neither processor-created blocks nor the gateway block explicitly placed by code.",
         "platform_placement": "Offset the input position down 14 blocks, then subtract integer half template X/Z. Use Rotation.NONE, pivot (3,0,3), IGNORE_WATERLOGGING and placement flag 2. A fresh RandomSource.create() is used rather than a supplied seeded source. The destroyBlocks boolean is forwarded to placeTemplate but not read there.",
