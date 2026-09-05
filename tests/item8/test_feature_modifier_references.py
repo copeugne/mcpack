@@ -381,3 +381,42 @@ def test_yungs_bridge_placement_checks_liquid_and_both_banks() -> None:
     assert "Blocks.WATER" not in source
     assert "Stream.empty:" in source
     assert "875: areturn" in source
+
+
+def test_yungs_extras_entrypoints_cover_runtime_features_without_family_inference() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    contribution = contributions["yungsextras:feature_entrypoints"]
+    for path, digest in cast("dict[str, str]", contribution["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ).read_bytes())))
+    resources = {str(row["path"]): cast("dict[str, JsonValue]", row["document"])
+                 for row in catalog["resources"]
+                 if row["archive"] == "YungsExtras-1.21.1-NeoForge-5.1.1.jar"}
+    modifiers = {path: doc for path, doc in resources.items()
+                 if path.startswith("data/yungsextras/neoforge/biome_modifier/")}
+    assert modifiers == contribution["biome_modifiers"]
+    additions = [doc for doc in modifiers.values() if doc["type"] == "neoforge:add_features"]
+    assert sorted(len(cast("list[JsonValue]", doc["features"])) for doc in additions) == [16, 46]
+    ids = [str(item) for doc in additions for item in cast("list[JsonValue]", doc["features"])]
+    assert len(ids) == len(set(ids)) == 62
+    types: Counter[str] = Counter()
+    for identifier in ids:
+        relative = identifier.split(":", 1)[1] + ".json"
+        placed = resources["data/yungsextras/worldgen/placed_feature/" + relative]
+        assert placed["feature"] == identifier
+        configured = resources["data/yungsextras/worldgen/configured_feature/" + relative]
+        types[str(configured["type"])] += 1
+    assert dict(types) == contribution["configured_feature_type_counts"]
+    registry = Path("evidence/item-8/runtime/registry-r1/dumps/registry/minecraft")
+    for kind in ("configured_feature", "placed_feature"):
+        actual = read_registry(registry / ("worldgen_" + kind + ".txt"))
+        assert {item for item in actual if item.startswith("yungsextras:")} == set(ids)
+    assert not any(item.startswith("yungsextras:") for item in read_registry(
+        registry / "worldgen_structure.txt"
+    ))

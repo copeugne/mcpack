@@ -1531,3 +1531,26 @@ Inventory regenerated at `c19f9d5`, SHA-256:
 `f2497cb9bd2118ce0e1910cd2a203d9d51ea21d83636cb7f3addf2601b3c2a97`.
 Only decision identity and bridge biome/modifier constraints with evidence changed.
 All 421 registry family rows and 887 roots remain unchanged.
+
+## YUNG Extras non-registry entry points
+
+The existing contribution map now records the retained YUNG Extras provider's
+three NeoForge biome modifiers. Two add 16 desert and 46 swamp placed features;
+each of these 62 distinct IDs has a same-ID configured feature in the captured
+runtime. There are no yungsextras structure-registry roots. Eleven configured
+feature types describe generator categories, not accepted canonical families.
+The third modifier declares vanilla desert-well removal; its effective scope
+still requires configuration/biome reconciliation. Forge-path duplicates are not
+additional NeoForge entry points. Template and generator interpretation remain
+open. This reuses existing catalogs, registry evidence and contribution fields;
+no new capture, schema or measurement system was added.
+
+Twelve affected tests and scoped Ruff/Basedpyright passed. Decision SHA-256:
+`a294b2c9219e1916ef1384acd0e4d8392133499f2b56a93a2a57e53cb5ffd92b`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-extras-entrypoints.json
+```
