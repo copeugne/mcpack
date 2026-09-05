@@ -18,6 +18,61 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
+def test_tavern_components_link_to_every_reachable_parent_family() -> None:
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    trace_path = "evidence/item-8/sources/pool-traces-content.json.gz"
+    traces = cast("dict[str, JsonValue]", json.loads(gzip.decompress(
+        Path(trace_path).read_bytes()
+    )))
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ).read_bytes())))
+    resources = [r for r in catalog["resources"]
+                 if "/lithostitched/worldgen_modifier/" in str(r["path"])
+                 and (r["archive"] == "village_taverns-neoforge-1.1.5+1.21.1.jar"
+                      or "/worldgen_modifier/village_taverns/" in str(r["path"]))]
+    templates: set[str] = set()
+    dispositions = cast("dict[str, JsonValue]", traces["pool_modifiers"])
+    included = {str(r["sha256"]) for r in cast(
+        "list[dict[str, JsonValue]]", dispositions["dispositions"]
+    ) if r["status"] == "included in potential pool reachability"}
+    for resource in resources:
+        assert resource["sha256"] in included
+        document = cast("dict[str, JsonValue]", resource["document"])
+        assert document["neoforge:conditions"] == [
+            {"type": "neoforge:mod_loaded", "modid": "village_taverns"}
+        ]
+        elements = cast("list[dict[str, JsonValue]]", document["elements"])
+        assert len(elements) == 1
+        element = cast("dict[str, JsonValue]", elements[0]["element"])
+        assert element["element_type"] == "lithostitched:limited"
+        templates.add(str(cast("dict[str, JsonValue]", element["delegate"])["location"]))
+    assert len(resources) == len(templates) == 26
+    structure_traces = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
+    expected = {rid: sorted(templates & set(cast("list[str]", row["templates"])))
+                for rid, row in structure_traces.items()}
+    expected = {rid: ts for rid, ts in expected.items() if ts}
+    actual: dict[str, list[str]] = {}
+    for group in decisions["groups"]:
+        links = cast("dict[str, list[str]]", group.get("village_taverns_templates", {}))
+        assert set(links) <= set(cast("list[str]", group["structure_ids"]))
+        assert not actual.keys() & links.keys()
+        actual.update(links)
+        if links:
+            assert cast("dict[str, str]", group["evidence"])[trace_path] == (
+                hashlib.sha256(Path(trace_path).read_bytes()).hexdigest()
+            )
+    assert actual == expected
+    assert len(actual) == 66
+    assert sum("village_taverns_templates" in g for g in decisions["groups"]) == 22
+    assert templates - {t for ts in actual.values() for t in ts} == {
+        "ctov:village/dark_forest/jobsite/tavern"
+    }
+    assert actual["idas:castle"] == ["village_taverns:village/plains/tavern"]
+
+
 def test_better_village_contributes_templates_without_an_extra_family() -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
