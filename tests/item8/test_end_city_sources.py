@@ -46,6 +46,14 @@ def test_end_city_generator_templates_and_markers() -> None:
     for name in sorted(referenced):
         document = templates[name]
         assert document["entities"] == []
+        palettes = cast("list[list[dict[str, JsonValue]]]",
+                        document.get("palettes") or [document["palette"]])
+        block_types = {
+            str(palette[int(index)]["Name"])
+            for palette in palettes
+            for index, count in cast("dict[str, int]", document["state_counts"]).items() if count
+        }
+        assert block_types.isdisjoint({"minecraft:spawner", "minecraft:trial_spawner"})
         blocks = cast("list[dict[str, JsonValue]]", document["block_entities"])
         counts: Counter[str] = Counter()
         for block in blocks:
@@ -65,3 +73,17 @@ def test_end_city_generator_templates_and_markers() -> None:
         "third_floor_2": {"Sentry": 2, "Chest": 1},
         "tower_top": {"Sentry": 1},
     }
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    group = next(row for row in decisions["groups"] if row["family_id"] == "minecraft:end_city")
+    variant = cast("dict[str, dict[str, JsonValue]]", group["variants"])["minecraft:end_city"]
+    assert variant["vanilla_code_template_ids"] == [
+        "minecraft:end_city/" + name for name in sorted(referenced)
+    ]
+    assert variant["missing_components"] == []
+    attrs = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
+    assert attrs["generated_spawners"]["marker_counts_by_template"] == markers
+    assert attrs["generated_spawners"]["vanilla_template_spawner_block_types"] == []
+    for source, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256(Path(source).read_bytes()).hexdigest() == digest
