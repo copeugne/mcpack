@@ -40,9 +40,12 @@ def _spawner_sources(
             "list[dict[str, JsonValue]]", template_contents[template]["spawner_blocks"]
         ):
             nbt = cast("dict[str, JsonValue]", block["nbt"])
-            for source in spawner_entity_sources(nbt):
+            block_id = cast("str | None", block.get("block_id"))
+            for source in spawner_entity_sources(nbt, block_id=block_id):
                 if "entity_id" in source:
-                    source_key = (str(nbt["id"]), str(source["mode"]), str(source["entity_id"]))
+                    source_key = (
+                        str(nbt.get("id", block_id)), str(source["mode"]), str(source["entity_id"])
+                    )
                     spawner_sources.setdefault(source_key, set()).add(template)
                 else:
                     unresolved_spawners.setdefault(template, []).append(

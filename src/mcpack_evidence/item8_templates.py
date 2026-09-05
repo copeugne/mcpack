@@ -73,6 +73,19 @@ def template_content(document: dict[str, JsonValue]) -> dict[str, JsonValue]:
             "position": block["pos"],
             "nbt": nbt,
         }
+        if identifier is None:
+            palettes = document.get("palettes") or [document.get("palette")]
+            block_ids = {
+                cast("str", cast("dict[str, JsonValue]", palette[
+                    cast("int", block["state"])
+                ])["Name"])
+                for palette in cast("list[list[JsonValue]]", palettes)
+            }
+            if len(block_ids) != 1:
+                message = "ID-less template block has ambiguous palette identities"
+                raise ValueError(message)
+            identifier = next(iter(block_ids))
+            row["block_id"] = identifier
         if identifier in {
             "minecraft:mob_spawner",
             "minecraft:trial_spawner",
@@ -117,9 +130,11 @@ def _loot_references(value: JsonValue, path: str, result: list[JsonValue]) -> No
             _loot_references(child, f"{path}/{index}", result)
 
 
-def spawner_entity_sources(nbt: dict[str, JsonValue]) -> list[dict[str, JsonValue]]:
+def spawner_entity_sources(
+    nbt: dict[str, JsonValue], *, block_id: str | None = None
+) -> list[dict[str, JsonValue]]:
     """Read explicit base entity IDs without inventing defaults or custom-spawner semantics."""
-    identifier = nbt.get("id")
+    identifier = nbt.get("id", block_id)
     rows: list[dict[str, JsonValue]] = []
     sections: list[tuple[str, str, dict[str, JsonValue], str, str]] = []
     if identifier == "minecraft:mob_spawner":
