@@ -76,3 +76,32 @@ code identities. This grouping decision does not resolve every family attribute.
 Remaining: finish effective biome/dimension constraints,
 generated physical size and visual discoverability, and
 effective loot attribution. This source inspection does not close Item 8.
+
+## Explicit normal-generation disposition
+
+Both vanilla mineshaft variants now carry normal_generation.status=SUPPRESSED
+in family-decisions.json, with the derivation and command-placement boundary
+beside that value. Their runtime IDs and compatible biome memberships remain
+inventoried. No absence-based inference, new server run or inspection of the
+inactive vanilla piece generator is required for this disposition.
+
+The focused family test binds the frozen TOML, source manifest and disassembly
+hashes, configuration-field binding, cancellable HEAD injection, vanilla type
+predicate, false return and required loader/mixin metadata. It checks both roots.
+The already preserved metadata is now directly included in the family evidence.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-mineshaft-disposition.json
+```
+
+Decision SHA-256:
+`303874189f6806bc565d51e5cc234c2b57279cc7c621b161646de5c098400c23`.
+This resolves normal-generation availability; it does not claim the attributes
+of command-placed vanilla structures or complete Item 8.
+
+All 62 affected tests passed. Scoped Ruff and Basedpyright passed after splitting
+compound assertions and wrapping long test lines. No source or disposition data
+changed during those formatting fixes.
