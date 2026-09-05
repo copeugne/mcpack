@@ -254,3 +254,12 @@ Use fresh output names when reproducing; the builder refuses overwrites.
 The bridge join is `d635337`; the fungus join is `541acfa`. Neither is an
 Item 8 completion claim. Effective custom placement and gameplay attributes
 remain unresolved.
+
+Nether well source increment `d320686` is checked by the same focused test
+command above. Its generated join is `2cb05ba`. Reproduction at that revision:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-well-d320686.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-well-d320686-repro.json
+cmp evidence/raw/item8/inventory-well-d320686.json evidence/raw/item8/inventory-well-d320686-repro.json
+```

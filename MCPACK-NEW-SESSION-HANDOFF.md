@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-05
 
+Nether well grouping is delivered through `2cb05ba`, built from `d320686`.
+Inventory SHA-256:
+`0b16127f113e6339b3095c7aaa31b1e9899c931cecaea64cf6ade639b6a9366c`.
+Three well roots map to one working family, preserving the small lava well
+without packaged loot and two medium variants with lower loot-bearing pieces.
+The lower pieces are not counted as families. Seven retained world observations
+are linked. Twenty-eight focused tests and scoped quality checks passed after
+adding the repository-required type annotations to the new focused test.
+Inventory reproduction was byte-identical and earlier groups stayed unchanged.
+Current totals: 166 working groups, 262 assigned registry entries, 625 unassigned;
+32 mns roots remain unassigned. Continue circles, houses, arenas and other Nether
+design relationships, then remaining providers and required attributes. Circle
+source inspection found distinct spawners and loot: blackstone has a wither
+skeleton spawner and houses loot references; nether brick has piglin/brute
+spawners and no packaged loot references. Their grouping remains undecided.
+No custom generator behavior, full attribute completion, final Item 8 gate,
+review or main merge is claimed.
+
 Nether bridges and medium fungi are delivered through `541acfa`, with source
 increments `70196ea` and `a49dbc8` and generated joins `d635337` and `541acfa`.
 Current inventory SHA-256:
