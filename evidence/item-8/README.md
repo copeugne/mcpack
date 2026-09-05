@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `02b5164`, SHA-256
-`150ad3eb6e494f6a851883857adc884f27a518bd98c75555bc634f8a3deed94e`.
+Current working inventory regenerated at `6032002`, SHA-256
+`065dbbf1c6e1d25b2feec3996d574c1fd9f29c5cbc5a6dd6981ab2e74c50464c`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,42 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 6032002 increment closes the platform caller link with the preserved
+vanilla EndPlatformFeature implementation. The packaged fixed-origin path
+reaches the captured static hook and selects the custom generator under frozen
+configuration. Nominal bounds are derived, not observed occupied blocks.
+Thirty focused tests and scoped builder checks passed. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-platform-caller-6032002.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-platform-caller-6032002.json
+```
+
+The 7144dd8 increment binds the selected packaged placed/configured End feature
+records and derives the return-gateway terrain-relative placement. The platform
+fixed origin lies outside the bounded central-End projection. Its connection to
+the static platform hook still needs verification. Thirty focused tests and
+scoped quality checks passed. Configured rarity is not observed density.
+Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-end-placement-7144dd8.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-end-placement-7144dd8.json
+```
+
+The 9025a02 increment retains packaged biome references to End platform, spike
+and return-gateway placed features. The direct regression reconstructs every
+matching row from the catalog and checks runtime registration and captured
+End-only possible-biome membership. This does not establish the complete effective
+feature list after code modifications or every lifecycle caller. Thirty focused
+tests passed. Initial test typing errors were corrected; scoped Ruff/Basedpyright
+and the affected test then passed. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-end-biomes-9025a02.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-end-biomes-9025a02.json
+```
 
 The 02b5164 increment attributes direct encounter content to each Better End
 Island family. Empty stored entities, spawners and template loot sources are
