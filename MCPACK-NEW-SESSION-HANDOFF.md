@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-05
 
+IDAS is delivered through `60e419b`, built from `1a65a9e`. All 84 runtime
+registry roots are assigned exactly once across 62 working design groups.
+Nine groups retain portal, statue, den, desert camp, desert market, dig site,
+lumber camp, ship and underground camp variants. Smaller ship wreckage remains
+separate. Full definitions preserve optional dependency gates, adaptive pool
+switches, spawn overrides, height, waterlogging and terrain settings. Missing
+ancient-mine, desert-pyramid and dread-citadel pools remain explicit. Current
+traces follow declared start pools; adaptive replacement and dependency-gate
+behavior still require resolution. Authored references to absent mods are not
+proof of live entities. The existing provider test was reused, not duplicated.
+Forty-six focused tests and scoped Ruff/basedpyright checks passed; two builds
+were identical and all 289 prior family records unchanged. Inventory SHA-256:
+`ba5e3e9b1c3d476ce4ef034bafd99f7455e71a41c1e650c929000cba7cb5ebb7`.
+Totals: 351 working groups, 686 assigned IDs, 201 unassigned. Continue AdoraBuild
+and remaining providers, then non-registry contributions, canonical design
+reconciliation and required effective attributes. This assignment increment
+adds no measurement system. Final Item 8 gate, review and main merge remain open.
+
 Towns & Towers is delivered through `a0c9c6e`, built from `2177cc2`.
 All 60 registry roots are assigned exactly once across eight working groups:
 fort, tower and camp outposts, villages, ocean outposts, ocean villages, ocean
