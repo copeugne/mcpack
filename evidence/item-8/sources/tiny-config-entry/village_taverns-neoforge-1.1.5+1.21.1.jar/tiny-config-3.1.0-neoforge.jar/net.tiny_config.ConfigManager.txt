@@ -1,0 +1,404 @@
+Compiled from "ConfigManager.java"
+public class net.tiny_config.ConfigManager<Config> {
+  static final org.slf4j.Logger LOGGER;
+
+  public volatile Config value;
+
+  private volatile boolean loaded;
+
+  public java.lang.String configName;
+
+  public java.lang.String directory;
+
+  public boolean isLoggingEnabled;
+
+  public boolean sanitize;
+
+  public int requiredSchemaVersion;
+
+  public java.util.function.Function<Config, java.lang.Boolean> validator;
+
+  public java.util.function.Function<Config, Config> constraint;
+
+  private final java.lang.Object ioLock;
+
+  public net.tiny_config.ConfigManager(java.lang.String, Config);
+    Code:
+       0: aload_0
+       1: invokespecial #46                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_0
+       6: putfield      #48                 // Field loaded:Z
+       9: aload_0
+      10: iconst_0
+      11: putfield      #50                 // Field isLoggingEnabled:Z
+      14: aload_0
+      15: iconst_0
+      16: putfield      #52                 // Field sanitize:Z
+      19: aload_0
+      20: iconst_0
+      21: putfield      #54                 // Field requiredSchemaVersion:I
+      24: aload_0
+      25: new           #5                  // class java/lang/Object
+      28: dup
+      29: invokespecial #46                 // Method java/lang/Object."<init>":()V
+      32: putfield      #56                 // Field ioLock:Ljava/lang/Object;
+      35: aload_0
+      36: aload_1
+      37: putfield      #58                 // Field configName:Ljava/lang/String;
+      40: aload_0
+      41: aload_2
+      42: putfield      #60                 // Field value:Ljava/lang/Object;
+      45: return
+
+  public void refresh();
+    Code:
+       0: aload_0
+       1: invokevirtual #68                 // Method getConfigFilePath:()Ljava/nio/file/Path;
+       4: astore_1
+       5: aload_0
+       6: dup
+       7: astore_2
+       8: monitorenter
+       9: aload_0
+      10: invokevirtual #71                 // Method load:()V
+      13: aload_0
+      14: getfield      #52                 // Field sanitize:Z
+      17: ifne          38
+      20: aload_0
+      21: invokevirtual #75                 // Method isVersioned:()Z
+      24: ifne          38
+      27: aload_1
+      28: iconst_0
+      29: anewarray     #77                 // class java/nio/file/LinkOption
+      32: invokestatic  #83                 // Method java/nio/file/Files.exists:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+      35: ifne          42
+      38: aload_0
+      39: invokevirtual #88                 // Method save:()V
+      42: aload_2
+      43: monitorexit
+      44: goto          52
+      47: astore_3
+      48: aload_2
+      49: monitorexit
+      50: aload_3
+      51: athrow
+      52: return
+    Exception table:
+       from    to  target type
+           9    44    47   any
+          47    50    47   any
+
+  public Config safeValue();
+    Code:
+       0: aload_0
+       1: getfield      #48                 // Field loaded:Z
+       4: ifne          32
+       7: aload_0
+       8: dup
+       9: astore_1
+      10: monitorenter
+      11: aload_0
+      12: getfield      #48                 // Field loaded:Z
+      15: ifne          22
+      18: aload_0
+      19: invokevirtual #97                 // Method refresh:()V
+      22: aload_1
+      23: monitorexit
+      24: goto          32
+      27: astore_2
+      28: aload_1
+      29: monitorexit
+      30: aload_2
+      31: athrow
+      32: aload_0
+      33: getfield      #60                 // Field value:Ljava/lang/Object;
+      36: areturn
+    Exception table:
+       from    to  target type
+          11    24    27   any
+          27    30    27   any
+
+  public void load();
+    Code:
+       0: aload_0
+       1: getfield      #56                 // Field ioLock:Ljava/lang/Object;
+       4: dup
+       5: astore_1
+       6: monitorenter
+       7: aload_0
+       8: invokevirtual #68                 // Method getConfigFilePath:()Ljava/nio/file/Path;
+      11: astore_2
+      12: new           #101                // class com/google/gson/Gson
+      15: dup
+      16: invokespecial #102                // Method com/google/gson/Gson."<init>":()V
+      19: astore_3
+      20: aload_2
+      21: iconst_0
+      22: anewarray     #77                 // class java/nio/file/LinkOption
+      25: invokestatic  #83                 // Method java/nio/file/Files.exists:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+      28: ifeq          198
+      31: aload_2
+      32: invokestatic  #106                // Method java/nio/file/Files.newBufferedReader:(Ljava/nio/file/Path;)Ljava/io/BufferedReader;
+      35: astore        4
+      37: aload_3
+      38: aload         4
+      40: aload_0
+      41: getfield      #60                 // Field value:Ljava/lang/Object;
+      44: invokevirtual #110                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      47: invokevirtual #114                // Method com/google/gson/Gson.fromJson:(Ljava/io/Reader;Ljava/lang/Class;)Ljava/lang/Object;
+      50: astore        5
+      52: iconst_1
+      53: istore        6
+      55: aload         5
+      57: instanceof    #116                // class net/tiny_config/versioning/Versionable
+      60: ifeq          91
+      63: aload         5
+      65: checkcast     #116                // class net/tiny_config/versioning/Versionable
+      68: astore        7
+      70: aload         7
+      72: invokeinterface #120,  1          // InterfaceMethod net/tiny_config/versioning/Versionable.getSchemaVersion:()I
+      77: aload_0
+      78: getfield      #54                 // Field requiredSchemaVersion:I
+      81: if_icmplt     88
+      84: iconst_1
+      85: goto          89
+      88: iconst_0
+      89: istore        6
+      91: aload_0
+      92: getfield      #124                // Field validator:Ljava/util/function/Function;
+      95: ifnull        118
+      98: aload_0
+      99: getfield      #124                // Field validator:Ljava/util/function/Function;
+     102: aload         5
+     104: invokeinterface #130,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+     109: checkcast     #132                // class java/lang/Boolean
+     112: invokevirtual #135                // Method java/lang/Boolean.booleanValue:()Z
+     115: ifeq          127
+     118: iload         6
+     120: ifeq          127
+     123: iconst_1
+     124: goto          128
+     127: iconst_0
+     128: istore        7
+     130: iload         7
+     132: ifeq          161
+     135: aload_0
+     136: getfield      #137                // Field constraint:Ljava/util/function/Function;
+     139: ifnull        155
+     142: aload_0
+     143: getfield      #137                // Field constraint:Ljava/util/function/Function;
+     146: aload         5
+     148: invokeinterface #130,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+     153: astore        5
+     155: aload_0
+     156: aload         5
+     158: putfield      #60                 // Field value:Ljava/lang/Object;
+     161: aload_0
+     162: getfield      #60                 // Field value:Ljava/lang/Object;
+     165: astore        9
+     167: aload         9
+     169: instanceof    #116                // class net/tiny_config/versioning/Versionable
+     172: ifeq          193
+     175: aload         9
+     177: checkcast     #116                // class net/tiny_config/versioning/Versionable
+     180: astore        8
+     182: aload         8
+     184: aload_0
+     185: getfield      #54                 // Field requiredSchemaVersion:I
+     188: invokeinterface #141,  2          // InterfaceMethod net/tiny_config/versioning/Versionable.setSchemaVersion:(I)V
+     193: aload         4
+     195: invokevirtual #146                // Method java/io/Reader.close:()V
+     198: goto          230
+     201: astore_3
+     202: aload_0
+     203: getfield      #50                 // Field isLoggingEnabled:Z
+     206: ifeq          230
+     209: getstatic     #148                // Field LOGGER:Lorg/slf4j/Logger;
+     212: aload_0
+     213: getfield      #58                 // Field configName:Ljava/lang/String;
+     216: aload_3
+     217: invokevirtual #152                // Method java/lang/Exception.getMessage:()Ljava/lang/String;
+     220: invokedynamic #164,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     225: invokeinterface #170,  2          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;)V
+     230: aload_0
+     231: iconst_1
+     232: putfield      #48                 // Field loaded:Z
+     235: aload_1
+     236: monitorexit
+     237: goto          247
+     240: astore        10
+     242: aload_1
+     243: monitorexit
+     244: aload         10
+     246: athrow
+     247: return
+    Exception table:
+       from    to  target type
+          12   198   201   Class java/lang/Exception
+           7   237   240   any
+         240   244   240   any
+
+  public void save();
+    Code:
+       0: aload_0
+       1: getfield      #60                 // Field value:Ljava/lang/Object;
+       4: astore_1
+       5: aload_0
+       6: getfield      #56                 // Field ioLock:Ljava/lang/Object;
+       9: dup
+      10: astore_2
+      11: monitorenter
+      12: aload_0
+      13: invokevirtual #68                 // Method getConfigFilePath:()Ljava/nio/file/Path;
+      16: astore_3
+      17: invokestatic  #185                // Method net/tiny_config/Platform.util:()Lnet/tiny_config/Platform$Util;
+      20: invokeinterface #188,  1          // InterfaceMethod net/tiny_config/Platform$Util.getConfigDir:()Ljava/nio/file/Path;
+      25: astore        4
+      27: aload_0
+      28: getfield      #190                // Field directory:Ljava/lang/String;
+      31: ifnull        67
+      34: aload_0
+      35: getfield      #190                // Field directory:Ljava/lang/String;
+      38: invokevirtual #195                // Method java/lang/String.isEmpty:()Z
+      41: ifne          67
+      44: aload         4
+      46: aload_0
+      47: getfield      #190                // Field directory:Ljava/lang/String;
+      50: invokeinterface #199,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      55: astore        5
+      57: aload         5
+      59: iconst_0
+      60: anewarray     #201                // class java/nio/file/attribute/FileAttribute
+      63: invokestatic  #205                // Method java/nio/file/Files.createDirectories:(Ljava/nio/file/Path;[Ljava/nio/file/attribute/FileAttribute;)Ljava/nio/file/Path;
+      66: pop
+      67: new           #207                // class com/google/gson/GsonBuilder
+      70: dup
+      71: invokespecial #208                // Method com/google/gson/GsonBuilder."<init>":()V
+      74: invokevirtual #212                // Method com/google/gson/GsonBuilder.setPrettyPrinting:()Lcom/google/gson/GsonBuilder;
+      77: invokevirtual #216                // Method com/google/gson/GsonBuilder.create:()Lcom/google/gson/Gson;
+      80: astore        5
+      82: aload_3
+      83: iconst_0
+      84: anewarray     #218                // class java/nio/file/OpenOption
+      87: invokestatic  #222                // Method java/nio/file/Files.newBufferedWriter:(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Ljava/io/BufferedWriter;
+      90: astore        6
+      92: aload         6
+      94: aload         5
+      96: aload_1
+      97: invokevirtual #226                // Method com/google/gson/Gson.toJson:(Ljava/lang/Object;)Ljava/lang/String;
+     100: invokevirtual #231                // Method java/io/Writer.write:(Ljava/lang/String;)V
+     103: aload         6
+     105: invokevirtual #232                // Method java/io/Writer.close:()V
+     108: aload_0
+     109: getfield      #50                 // Field isLoggingEnabled:Z
+     112: ifeq          147
+     115: new           #101                // class com/google/gson/Gson
+     118: dup
+     119: invokespecial #102                // Method com/google/gson/Gson."<init>":()V
+     122: astore        7
+     124: getstatic     #148                // Field LOGGER:Lorg/slf4j/Logger;
+     127: aload_0
+     128: getfield      #58                 // Field configName:Ljava/lang/String;
+     131: aload         7
+     133: aload_1
+     134: invokevirtual #226                // Method com/google/gson/Gson.toJson:(Ljava/lang/Object;)Ljava/lang/String;
+     137: invokedynamic #235,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     142: invokeinterface #238,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+     147: goto          181
+     150: astore        5
+     152: aload_0
+     153: getfield      #50                 // Field isLoggingEnabled:Z
+     156: ifeq          181
+     159: getstatic     #148                // Field LOGGER:Lorg/slf4j/Logger;
+     162: aload_0
+     163: getfield      #58                 // Field configName:Ljava/lang/String;
+     166: aload         5
+     168: invokevirtual #152                // Method java/lang/Exception.getMessage:()Ljava/lang/String;
+     171: invokedynamic #243,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     176: invokeinterface #170,  2          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;)V
+     181: aload_2
+     182: monitorexit
+     183: goto          193
+     186: astore        8
+     188: aload_2
+     189: monitorexit
+     190: aload         8
+     192: athrow
+     193: return
+    Exception table:
+       from    to  target type
+          27   147   150   Class java/lang/Exception
+          12   183   186   any
+         186   190   186   any
+
+  private boolean isVersioned();
+    Code:
+       0: aload_0
+       1: getfield      #60                 // Field value:Ljava/lang/Object;
+       4: instanceof    #116                // class net/tiny_config/versioning/Versionable
+       7: ifeq          21
+      10: aload_0
+      11: getfield      #54                 // Field requiredSchemaVersion:I
+      14: ifle          21
+      17: iconst_1
+      18: goto          22
+      21: iconst_0
+      22: ireturn
+
+  private java.nio.file.Path getConfigFilePath();
+    Code:
+       0: aload_0
+       1: getfield      #58                 // Field configName:Ljava/lang/String;
+       4: invokedynamic #254,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       9: astore_1
+      10: aload_0
+      11: getfield      #190                // Field directory:Ljava/lang/String;
+      14: ifnull        38
+      17: aload_0
+      18: getfield      #190                // Field directory:Ljava/lang/String;
+      21: invokevirtual #195                // Method java/lang/String.isEmpty:()Z
+      24: ifne          38
+      27: aload_0
+      28: getfield      #190                // Field directory:Ljava/lang/String;
+      31: aload_1
+      32: invokedynamic #257,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      37: astore_1
+      38: invokestatic  #185                // Method net/tiny_config/Platform.util:()Lnet/tiny_config/Platform$Util;
+      41: invokeinterface #188,  1          // InterfaceMethod net/tiny_config/Platform$Util.getConfigDir:()Ljava/nio/file/Path;
+      46: astore_2
+      47: aload_2
+      48: aload_1
+      49: invokeinterface #199,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      54: areturn
+
+  private int schemaVersion(Config);
+    Code:
+       0: aload_1
+       1: instanceof    #116                // class net/tiny_config/versioning/Versionable
+       4: ifeq          19
+       7: aload_1
+       8: checkcast     #116                // class net/tiny_config/versioning/Versionable
+      11: astore_2
+      12: aload_2
+      13: invokeinterface #120,  1          // InterfaceMethod net/tiny_config/versioning/Versionable.getSchemaVersion:()I
+      18: ireturn
+      19: iconst_0
+      20: ireturn
+
+  public net.tiny_config.ConfigManager<Config>.Builder builder();
+    Code:
+       0: new           #8                  // class net/tiny_config/ConfigManager$Builder
+       3: dup
+       4: aload_0
+       5: aload_0
+       6: invokespecial #267                // Method net/tiny_config/ConfigManager$Builder."<init>":(Lnet/tiny_config/ConfigManager;Lnet/tiny_config/ConfigManager;)V
+       9: areturn
+
+  static {};
+    Code:
+       0: ldc_w         #270                // String tiny-config
+       3: invokestatic  #276                // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/String;)Lorg/slf4j/Logger;
+       6: putstatic     #148                // Field LOGGER:Lorg/slf4j/Logger;
+       9: return
+}
