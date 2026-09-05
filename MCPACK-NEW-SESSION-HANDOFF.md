@@ -6,6 +6,70 @@
 
 ### Continuation update - 2026-09-05
 
+Dimension membership is integrated: builder/tests `89b8830`, inventory `702ec5c`.
+Inventory SHA:
+`ae7f0a16a86929ad24361ab9befa80aebf5e51100c72bc9ba44a64f8f8bafba2`.
+Decision SHA remains
+`06cff81b09d0caa84837c979acd85bfa207b9037ab27e3e9134853ba6811a89d`.
+All 61 affected tests and scoped checks pass. Every registered root has a
+per-root biome-compatibility result; three IDAS tag gaps stay unknown and nine
+roots have no overlap. Six of those have empty resolved lists; the three Deep
+Aether roots target sacred_lands, absent from live dimension membership. No
+family-level observation conflicts with the joined dimensions. Exact cases,
+commands and boundaries are in `evidence/item-8/runtime/README.md`.
+Only dimension fields and input identities change; groupings, other attributes
+and observation links are preserved. Delivery refs verified. The pending join
+below is superseded. Do not rerun collection or repeat this join. Continue the
+remaining custom-generator content/geometry and provider gaps, with vanilla
+Nether fossils a next bounded source inspection. Biome overlap does not close
+all placement conditions or Item 8, and zero-overlap roots must remain inventoried.
+
+Live dimension membership is captured and durably delivered. `77b6eec` preserves
+rejected dimension-r1/r2 receipts and successful dimension-r3 output; `cd04324`
+binds it to the original frozen capture. Output SHA:
+`08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c`.
+All ten expected dimensions are covered; r3 preflight and all seven registry
+records exactly match registry-r1, configuration comparison passes, and the
+correlated flush/clean exit pass. The 20 lifecycle/runner tests, focused capture
+test and scoped checks pass. The probe is an optional read in the existing
+lifecycle, with no extra retained mod or class transformer. r1 lacked queued
+failure diagnostics; `d4e107d` preserves them. r2 exposed client-only subclass
+reflection, fixed in `428819f` by invoking the public BiomeSource base API.
+r3 at that revision is the successful live regression. No probe process remains.
+
+Raw custody is delivered through `e9a91c2` and `5b742a5`: archive SHA
+`29c9b189483f96f29d45a62d79556fdf10655729cf901204def50789578b5cb7`, 261 files,
+with successful local and downloaded restores. Tag
+`item-8-dimensions-raw-2026-09-05-r1` resolves to
+`cd043241a1beabaa47acd9657790af1e987e9dd0`. Runtime and custody READMEs contain
+exact commands, failure dispositions, identities and boundaries. This supersedes
+the pending collection instructions below. Next integrate membership with the
+existing per-root biome constraints in the inventory, retaining unknowns and
+placement-condition limits. Do not repeat the completed collection. The inventory
+and decision hashes below remain unchanged, and Item 8 remains incomplete.
+
+Dimension eligibility is the next shared gap. Source inspection `36f7e0b`
+establishes that Lithostitched's saved delegate omits runtime injected/replaced
+biome lists, and the manager also accepts event-supplied injectors. Manifest SHA:
+`b48129fffa046624fb15e6381edb678001d491c4be8ddcd03e2c5ec440f8afaa`.
+The existing NeoForge dump command was inspected too: it writes registry keys
+with optional numeric IDs, not values or dimension memberships. Manifest SHA:
+`fa8eff257d4a41da1edf9a092326af303160207c616ec4266c750a35a5d244d5`.
+Reproduction and boundaries are in the two source READMEs under
+`evidence/item-8/sources/lithostitched-biome-injector-code` and
+`evidence/item-8/sources/neoforge-dump-command-code`. Extraction and scoped
+checks passed; source refs were pushed and verified. No new runtime collector
+was added and inventory identities below are unchanged.
+
+Do not rerun the unchanged registry dump or infer effective dimension membership
+from saved delegate presets. Next choose the smallest runtime-object read that
+resolves possible biome membership across the frozen dimensions, reusing the
+existing materialization and lifecycle. This closes an explicit Item 8 attribute
+gap shared by families; avoid reconstructing every dynamic biome provider in a
+new static emulator. Confirm the chosen read preserves the frozen identities
+and distinguishes possible membership from successful structure generation.
+The source investigation narrows the collection method, not the completion gate.
+
 Igloo integration is delivered: `3a102c3` records three components and seven
 attributes, and `ca0fa30` delivers the inventory. All 59 affected tests passed;
 scoped checks and the final focused test passed after one explicit regex-result

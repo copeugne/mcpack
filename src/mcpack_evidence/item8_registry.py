@@ -8,6 +8,7 @@ import signal
 import subprocess
 import threading
 import time
+from contextlib import suppress
 from dataclasses import dataclass, field
 from os import killpg
 from typing import IO, TYPE_CHECKING, ClassVar
@@ -53,6 +54,8 @@ class RegistryLifecycle(BaseModel):
 
 @dataclass
 class _Capture:
+    probe_command: tuple[str, ...] = ()
+    probe_log: Path | None = None
     commands: list[str] = field(default_factory=list)
     completed: list[str] = field(default_factory=list)
     ready: bool = False
@@ -68,6 +71,15 @@ class _Capture:
         elif not self.ready:
             if "Done (" in line and '! For help, type "help"' in line:
                 self.ready = True
+                if self.probe_command:
+                    if self.probe_log is None:
+                        message = "dimension probe log is missing"
+                        raise OSError(message)
+                    with self.probe_log.open("x", encoding="utf-8") as probe_log:
+                        _ = subprocess.run(  # noqa: S603 - constructed from the pinned JVM and probe.
+                            self.probe_command, stdout=probe_log, stderr=subprocess.STDOUT,
+                            check=True, timeout=45,
+                        )
                 self._next(stdin)
         elif len(self.completed) < len(REGISTRIES):
             registry = REGISTRIES[len(self.completed)]
@@ -89,12 +101,14 @@ class _Capture:
                 self.rejection = "server console pipe failed"
 
 
-def run_registry_lifecycle(  # noqa: C901 - keep process cleanup in its lifecycle scope.
+def run_registry_lifecycle(  # noqa: C901, PLR0912, PLR0913 - retain probe and console cleanup together.
     target: Path,
     java: Path,
     console_log: Path,
     timeout_seconds: int,
     exit_timeout_seconds: int = 120,
+    *,
+    dimension_probe: Path | None = None,
 ) -> RegistryLifecycle:
     """Dump each registry after readiness, then correlate flush and require clean exit."""
     if timeout_seconds <= 0 or exit_timeout_seconds <= 0:
@@ -104,6 +118,7 @@ def run_registry_lifecycle(  # noqa: C901 - keep process cleanup in its lifecycl
     killed = False
     deadline = time.monotonic() + timeout_seconds
     reader: threading.Thread | None = None
+    lines = OutputSequence()
     with console_log.open("x", encoding="utf-8") as log:
         process = subprocess.Popen(  # noqa: S603 - pinned executable and fixed server arguments.
             [
@@ -121,10 +136,16 @@ def run_registry_lifecycle(  # noqa: C901 - keep process cleanup in its lifecycl
             start_new_session=True,
         )
         try:
+            if dimension_probe is not None:
+                state.probe_command = (
+                    str(java), "--add-modules", "jdk.attach", "-jar", str(dimension_probe),
+                    str(process.pid), str(dimension_probe),
+                    str(console_log.parent / "dimension-biomes.json"),
+                )
+                state.probe_log = console_log.parent / "dimension-probe.log"
             if process.stdin is None or process.stdout is None:
                 message = "server console pipes are unavailable"
                 raise OSError(message)  # noqa: TRY301 - cleanup must cover missing pipes.
-            lines = OutputSequence()
             reader = threading.Thread(target=read_output, args=(process.stdout, lines), daemon=True)
             reader.start()
             deadline = _drive(state, lines, process.stdin, log, deadline, exit_timeout_seconds)
@@ -133,7 +154,7 @@ def run_registry_lifecycle(  # noqa: C901 - keep process cleanup in its lifecycl
                     _ = process.wait(timeout=max(0.01, deadline - time.monotonic()))
                 except subprocess.TimeoutExpired:
                     state.rejection = "server did not exit after console EOF"
-        except OSError as error:
+        except (OSError, subprocess.SubprocessError) as error:
             state.rejection = f"registry lifecycle I/O failure: {error}"
         finally:
             if process.poll() is None:
@@ -142,6 +163,10 @@ def run_registry_lifecycle(  # noqa: C901 - keep process cleanup in its lifecycl
             return_code = process.wait()
             if reader is not None:
                 reader.join(timeout=1)
+            with suppress(queue.Empty):
+                while (tail := lines.get(timeout=0)) is not None:
+                    _ = log.write(tail)
+            log.flush()
             if process.stdin is not None:
                 try:
                     process.stdin.close()

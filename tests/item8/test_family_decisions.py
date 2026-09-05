@@ -1703,16 +1703,16 @@ def test_working_inventory_keeps_unassigned_ids_and_rejects_double_counting() ->
         "template_contents": {},
     }
     bounds: dict[str, JsonValue] = {"observations": []}
-    result = assemble(("example:a", "example:b"), [decision], sources, traces, bounds)
+    result = assemble(("example:a", "example:b"), [decision], sources, traces, bounds, {})
     assert result["status"] == "INCOMPLETE"
     assert result["unassigned_registry_ids"] == ["example:b"]
     conflicting = dict(decision, family_id="example:second")
     with pytest.raises(ValueError, match="multiply assigned"):
-        _ = assemble(("example:a",), [decision, conflicting], sources, traces, bounds)
+        _ = assemble(("example:a",), [decision, conflicting], sources, traces, bounds, {})
     with pytest.raises(ValueError, match="unregistered"):
-        _ = assemble(("example:b",), [decision], sources, traces, bounds)
+        _ = assemble(("example:b",), [decision], sources, traces, bounds, {})
     decision["attributes"] = {"intended_hostility": {"value": "hostile", "basis": "source"}}
-    result = assemble(("example:a",), [decision], sources, traces, bounds)
+    result = assemble(("example:a",), [decision], sources, traces, bounds, {})
     families = cast("dict[str, dict[str, JsonValue]]", result["families"])
     assert families["example:family"]["intended_hostility"] == {
         "value": "hostile",
@@ -1721,7 +1721,42 @@ def test_working_inventory_keeps_unassigned_ids_and_rejects_double_counting() ->
     assert families["example:family"]["status"] == "INCOMPLETE"
     decision["attributes"] = {"status": "COMPLETE"}
     with pytest.raises(ValueError, match="protected family attribute"):
-        _ = assemble(("example:a",), [decision], sources, traces, bounds)
+        _ = assemble(("example:a",), [decision], sources, traces, bounds, {})
+
+
+def test_inventory_dimension_join_keeps_variants_and_unknown_constraints_separate() -> None:
+    constraints: dict[str, JsonValue] = {
+        "example:a": {"biomes": ["example:meadow"]},
+        "example:b": {"biomes": ["example:ash"]},
+        "example:c": {"biomes": None, "missing_required": ["example:missing"]},
+        "example:d": {"biomes": ["example:meadow"], "unresolved_tags": ["example:cycle"]},
+        "example:e": {"biomes": []},
+    }
+    members = list(constraints)
+    result = assemble(
+        tuple(members),
+        [{"family_id": "example:family", "name": "Example",
+          "structure_ids": cast("JsonValue", members)}],
+        {"structure_biomes": constraints},
+        {"structures": {}, "untraced_structures": {}, "template_contents": {}},
+        {"observations": [{"structure_id": "example:a", "dimension": "observed:world",
+                           "chunk_full": False}]},
+        {"example:one": ["example:meadow"], "example:two": ["example:ash"],
+         "example:three": ["example:meadow"]},
+    )
+    family = cast("dict[str, dict[str, JsonValue]]", result["families"])["example:family"]
+    dimension = cast("dict[str, JsonValue]", family["dimension"])
+    assert dimension["observed"] == ["observed:world"]
+    assert dimension["biome_compatible_by_structure"] == {
+        "example:a": ["example:one", "example:three"],
+        "example:b": ["example:two"],
+        "example:c": "UNKNOWN: biome constraints are unresolved",
+        "example:d": "UNKNOWN: biome constraints are unresolved",
+        "example:e": [],
+    }
+    assert "Structure-set selection" in str(dimension["eligibility"])
+    assert family["biome_constraints"] == constraints
+    assert family["status"] == "INCOMPLETE"
 
 
 def test_inventory_geometry_keeps_paired_extents_and_excludes_partial_starts() -> None:
@@ -1754,7 +1789,9 @@ def test_inventory_geometry_keeps_paired_extents_and_excludes_partial_starts() -
             ]
         ],
     )
-    result = assemble(("example:a",), [decision], sources, traces, {"observations": observations})
+    result = assemble(
+        ("example:a",), [decision], sources, traces, {"observations": observations}, {}
+    )
     row = cast("dict[str, dict[str, JsonValue]]", result["families"])["example:family"]
     footprint = cast("dict[str, JsonValue]", row["approximate_footprint"])
     height = cast("dict[str, JsonValue]", row["approximate_vertical_size"])
@@ -1762,12 +1799,14 @@ def test_inventory_geometry_keeps_paired_extents_and_excludes_partial_starts() -
     assert height["observed_envelope_y_blocks"] == [14]
     assert "not family-wide bounds or occupied geometry" in str(footprint["basis"])
     assert row["status"] == "INCOMPLETE"
-    result = assemble(("example:a",), [decision], sources, traces, {"observations": []})
+    result = assemble(("example:a",), [decision], sources, traces, {"observations": []}, {})
     row = cast("dict[str, dict[str, JsonValue]]", result["families"])["example:family"]
     assert str(row["approximate_footprint"]).startswith("UNKNOWN:")
     assert str(row["approximate_vertical_size"]).startswith("UNKNOWN:")
     decision["attributes"] = {"approximate_footprint": "explicit source assessment"}
-    result = assemble(("example:a",), [decision], sources, traces, {"observations": observations})
+    result = assemble(
+        ("example:a",), [decision], sources, traces, {"observations": observations}, {}
+    )
     row = cast("dict[str, dict[str, JsonValue]]", result["families"])["example:family"]
     assert row["approximate_footprint"] == "explicit source assessment"
 
@@ -1821,7 +1860,7 @@ def test_inventory_preserves_loot_kinds_and_rejects_missing_template_content() -
         "template_contents": contents,
     }
     bounds: dict[str, JsonValue] = {"observations": []}
-    result = assemble(("example:a",), [decision], sources, traces, bounds)
+    result = assemble(("example:a",), [decision], sources, traces, bounds, {})
     families = cast("dict[str, dict[str, JsonValue]]", result["families"])
     loot = cast("dict[str, JsonValue]", families["example:family"]["loot_table_source"])
     mobs = cast("dict[str, JsonValue]", families["example:family"]["mob_source"])
@@ -1868,7 +1907,7 @@ def test_inventory_preserves_loot_kinds_and_rejects_missing_template_content() -
     assert families["example:family"]["status"] == "INCOMPLETE"
     del contents["example:room"]
     with pytest.raises(KeyError, match="example:room"):
-        _ = assemble(("example:a",), [decision], sources, traces, bounds)
+        _ = assemble(("example:a",), [decision], sources, traces, bounds, {})
 
 
 def test_seven_seas_groups_cover_registered_roots_without_counting_spawner_components() -> None:
