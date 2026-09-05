@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+AdoraBuild provider coverage now passes. Seven-class source delivered in 6aac21f
+using 6fcc20c and reproduced independently. All 106 existing roots, 110 pools
+and 121 templates accounted for; no disconnected components. Preserve missing
+minecraft:basalt_chambers/chambers on basalt_chambers_large_1. Two focused cases
+and scoped checks pass. No family grouping or baseline change. Counts: 33
+provider dispositions, 103 open. Continue the exact provider queue before
+attributes; do not repeat AdoraBuild code or introduce another resource parser.
+
 Integrated Stronghold provider coverage now passes. All nine classes delivered
 in 0bca5a4 using f70a1a0 and reproduced independently. One existing root, 44
 connected pools, three disconnected templates and two missing armory references
