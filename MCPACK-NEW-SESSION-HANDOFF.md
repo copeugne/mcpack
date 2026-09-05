@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-05
 
+YUNG's Bridges feature contribution is delivered in `6309287`. The existing
+non_registry_content field now holds verified contributions from the same pinned
+decision file. This minimal extension is necessary because structure-only groups
+cannot represent feature-based bridges with no structure IDs; no new schema,
+framework or measurement system was added. Runtime feature dumps and packaged
+NeoForge modifier/selector bind 22 configured variants to 11 template IDs. These
+are not separate accepted families. All 77 affected tests passed; bridge and
+scoped checks passed after test-only typing/import fixes. Inventory SHA-256:
+`da35ac84a7e3c198fc648088f7001b8cfad29ab311f6e3bf16d84738e0176c97`.
+All 421 structure-registry groups / 887 roots are unchanged. Next reconcile
+YUNG bridge configuration, template content and custom placement, plus other
+non-registry providers (YUNG Extras and End Island are concrete follow-ups).
+Canonical/provider coverage and remaining attributes still prevent Item 8 closure.
+Do not repeat delivered lake/mountain source work. No runtime added.
+
+
 Lake direct encounter/loot attribution is delivered in `a4548bf`, using helper
 capture `28ed678`. Eleven captured classes show no direct authored entity,
 explicit spawner configuration or container-loot assignment. BlockFixer adjusts
