@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `4233dec`, SHA-256
-`cbf135f3fe86e7e71b06758d9382261aefc81e073a0be4fe2c352e9280c283c2`.
+Current working inventory regenerated at `c96729d`, SHA-256
+`b7b7716e0b4c59e372750193d8c806c6d2ae7aeed9115f829a8b68740acb46d5`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,15 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The c96729d increment resolves Spiral Spires generation-setting binding through
+module naming, recursive field mapping, frozen-file equality and the preserved
+initial-refresh log. Thirty focused tests and scoped checks passed. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-spire-bound-reproduction.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-spire-bound-reproduction.json
+```
 
 The 4233dec increment resolves the source semantics of the compound biome
 filter used by Spiral Spires. Its constructor defaults admit End Highlands;
