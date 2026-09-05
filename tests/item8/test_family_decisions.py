@@ -645,7 +645,9 @@ def test_repurposed_design_groups_cover_registry_and_bind_variant_definitions() 
     assert len(custom) == 12
 
 
-@pytest.mark.parametrize(("namespace", "count"), [("towns_and_towers", 60), ("idas", 84)])
+@pytest.mark.parametrize(
+    ("namespace", "count"), [("towns_and_towers", 60), ("idas", 84), ("adorabuild_structures", 106)]
+)
 def test_provider_groups_bind_full_definitions_pools_and_registry(
     namespace: str,
     count: int,
@@ -713,6 +715,41 @@ def test_provider_groups_bind_full_definitions_pools_and_registry(
         expected.update(singletons)
         expected["sunken_ship/sunken_ship_ruins"] = ("idas:sunken_ship/", 1)
         assert len(expected) == 62
+    if namespace == "adorabuild_structures":
+        counts = {
+            "acacia_well": 1,
+            "ancient_palace": 3,
+            "bamboo_campfire": 1,
+            "basalt_chambers": 1,
+            "birch_beehive": 1,
+            "blackstone_bastion": 4,
+            "blackstone_temple": 1,
+            "buried_sand_castle": 2,
+            "dark_oak_mansion": 1,
+            "end_bubble": 3,
+            "end_gateway": 2,
+            "end_ship": 1,
+            "end_temple": 2,
+            "frozen_shelter": 3,
+            "house": 45,
+            "library": 2,
+            "mountain_mine": 2,
+            "mushroom": 1,
+            "nether_fortress": 3,
+            "nether_fossil": 1,
+            "nether_portal": 1,
+            "nether_temple": 1,
+            "ocean_bubble": 1,
+            "ocean_temple": 4,
+            "prison": 2,
+            "red_sand_temple": 2,
+            "sand_castle": 1,
+            "sand_pyramid": 1,
+            "tree": 3,
+            "tree_house": 3,
+            "watercraft": 7,
+        }
+        expected = {key: ("adorabuild_structures:", size) for key, size in counts.items()}
     assert {str(r["family_id"]).split(":")[1] for r in groups} == set(expected)
     for group in groups:
         kind = str(group["family_id"]).split(":")[1]
