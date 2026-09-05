@@ -6,6 +6,57 @@
 
 ### Continuation update - 2026-09-06
 
+Moog Nether data scope is now reconciled: all 52 roots, 168 pools and 459
+templates accounted for, including 12 disconnected pools, 162 unselected version
+alternatives and nine other disconnected templates. Four reused provider cases
+and scoped static checks pass. provider-scope.md records 21 of 136 dispositions;
+115 remain. Continue Explorify, then code-provider roles and injections. Do not
+repeat the four closed Moog data-provider checks without a relevant change.
+
+Voyager's data-provider boundary is now accounted for: 129 roots, 149 pools,
+327 templates; 51 unselected version alternatives and 41 named disconnected
+templates outside the root graph. The reused three-provider test passes with
+scoped static checks. provider-scope.md now records 20 of 136 explicit provider
+dispositions, with 116 to reconcile. Continue Explorify and Moog Nether unmatched
+resources, then remaining retained-provider roles; shared Moog implementation
+coverage is separate from these closed data-provider boundaries.
+
+Moog End and Soaring candidate boundaries now reuse the existing pool traces:
+all packaged roots and pools linked, and all unmatched templates explicitly
+unselected by the existing versioned-element logic. Two focused cases and scoped
+static checks pass. provider-scope.md now has 19 explicit provider dispositions,
+with 117 remaining to reconcile. Explorify, Moog Nether and Voyager still have
+unmatched resources. Do not repeat the closed End/Soaring pass or call their
+25/35 roots canonical-family counts.
+
+Candidate-boundary reconciliation now includes the RS Farmer's Delight add-on:
+all 13 templates link to 12 already registered RS village targets; 11 processor
+lists modify components rather than create roots. The focused full-archive test
+passes, with scoped static checks passing after type/string corrections.
+provider-scope.md has 17 explicit provider dispositions; 119 remain to reconcile
+with existing evidence. This is not a family count. Continue the five data-only
+structure providers and remaining code providers before detailed attributes.
+
+Construction-provider entry captures are delivered in 007ff06. The nine Macaw
+constructors and full-payload checks now support explicit no-independent-family
+dispositions in evidence/item-8/provider-scope.md. Nine focused cases and scoped
+static checks pass. Do not recapture those entry points. Continue whole-stack
+provider roles and unexplained resources before detailed family attributes;
+the 136-archive search index still does not prove candidate completeness.
+
+
+User priority correction: candidate completeness FIRST. The 136-archive keyword
+search index is not proof of a bounded candidate universe. Current gate and
+supported provider dispositions are in evidence/item-8/provider-scope.md under
+"Candidate-completeness gate and supported provider dispositions". Use existing
+evidence to give every mod supported roles and explain potentially structural
+unmatched templates, pools and hooks. Do not complete individual attributes or
+canonical grouping before this whole-stack gate. Seven loot-data-only add-ons
+now have full-payload exclusion proofs, not keyword-based exclusions.
+Totem packaged-eligibility disposition is dc45426, published in c21d68e. It is
+inactive under captured dimension memberships; no further helper tracing needed.
+
+
 Scope-pass sources are delivered: BetterEnd building lists/crashed ship in
 9695ae5, BOP anomaly/monolith/bone spine in 846bc09, Deep Aether totem in b0194ce,
 and Explorations scarecrow in ac990fd. All reproduce exactly. Their concrete

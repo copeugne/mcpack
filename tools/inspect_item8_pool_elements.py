@@ -43,6 +43,15 @@ ARCHIVES = frozenset(
         "repurposed_structures-7.5.21+1.21.1-neoforge.jar",
         "aether-1.21.1-1.5.10-neoforge.jar",
         "chefsdelight-1.0.5-neoforge-1.21.1.jar",
+        "mcw-doors-1.1.5-mc1.21.1neoforge.jar",
+        "mcw-lights-1.1.5-mc1.21.1neoforge.jar",
+        "mcw-mcwfences-1.2.1-mc1.21.1neoforge.jar",
+        "mcw-mcwpaths-1.1.1-mc1.21.1neoforge.jar",
+        "mcw-mcwstairs-1.0.2-mc1.21.1neoforge.jar",
+        "mcw-mcwwindows-2.4.2-mc1.21.1neoforge.jar",
+        "mcw-paintings-1.1.0-mc1.21.1neoforge.jar",
+        "mcw-roofs-2.3.2-mc1.21.1neoforge.jar",
+        "mcw-trapdoors-1.1.5-mc1.21.1neoforge.jar",
         "worldweaver-21.0.24.jar",
         "lithostitched-1.7.10+beta4-neoforge-21.1.jar",
         "YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar",
@@ -351,6 +360,15 @@ CLASSES: tuple[str, ...] = (
     "com/tristankechlo/explorations/worldgen/structures/SlimeCaveStructure.class",
     "com/tristankechlo/explorations/worldgen/structures/pieces/SlimeCaveStructurePiece.class",
     "com/tristankechlo/explorations/worldgen/structures/processors/DeepslateProcessor.class",
+    "com/mcwdoors/kikoz/MacawsDoors.class",
+    "com/mcwlights/kikoz/MacawsLights.class",
+    "com/mcwfences/kikoz/MacawsFences.class",
+    "com/mcwpaths/kikoz/MacawsPaths.class",
+    "com/mcwstairs/kikoz/MacawsStairs.class",
+    "com/mcwwindows/kikoz/MacawsWindows.class",
+    "com/mcwpaintings/kikoz/MacawsPaintings.class",
+    "com/mcwroofs/kikoz/MacawsRoofs.class",
+    "com/mcwtrpdoors/kikoz/MacawsTrapdoors.class",
     "org/betterx/betterend/registry/EndFeatures.class",
     "org/betterx/betterend/world/features/BuildingListFeature.class",
     "org/betterx/betterend/world/features/CrashedShipFeature.class",
@@ -521,7 +539,8 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                 ):
                     continue
                 class_name = name.removesuffix(".class").replace("/", ".")
-                verbose = "/mixin/" in name or "/mixins/" in name or name in {
+                verbose = source.name.startswith("mcw-")
+                verbose |= "/mixin/" in name or "/mixins/" in name or name in {
                     "org/betterx/betterend/registry/EndFeatures.class",
                     "net/redstonegames/chefsdelight/ChefsDelight.class",
                     "net/redstonegames/chefsdelight/worldgen/village/VillageStructures.class",
