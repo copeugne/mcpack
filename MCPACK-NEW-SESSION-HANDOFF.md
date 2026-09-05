@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+Shipwreck source work is delivered: extractor `5e750e4`, evidence `5f82e86`,
+catalog check `db53fd6`. Manifest SHA:
+`313d8031a873de27b39ca5fa8fed9ab1ea1f3694fc56db8afcd7127a3e4415b8`.
+See `evidence/item-8/sources/vanilla-shipwreck-code/README.md` for commands,
+nominal dimensions, burial semantics and chest markers. Generation selects one
+template from 11 beached or 20 ocean alternatives; all resolve. All palettes
+were checked after correcting an initial single-palette assumption. No authored
+entities or ordinary/trial-spawner blocks occur in these templates. Three chest
+loot-key mappings reuse the End city BuiltInLootTables evidence.
+Next integrate shipwreck per-root components and family attributes, including
+the source-derived single-template size envelope. Do not repeat extraction or
+add a runtime measurement for this nominal geometry. Retained-mod effects and
+other final gates remain open. Source/test/scoped checks passed and refs verified.
+The current inventory and decision hashes below remain unchanged.
+
 End city component and four content attributes are integrated in `027c263`,
 with inventory delivery `5fa7b83`. Its 19 vanilla template references resolve;
 the family record preserves the unreferenced tower_floor and the boundary for
