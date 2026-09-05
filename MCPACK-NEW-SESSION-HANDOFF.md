@@ -6,6 +6,45 @@
 
 ### Continuation update - 2026-09-05
 
+Desert pyramid content integration is delivered in `f9fe8a1`. Seven attributes
+now distinguish the TNT trap, chest-result flags, archaeology selection/clipping,
+vanilla entity/spawner absence, authored form and mixed surface/underground
+placement. All 63 affected tests and scoped checks pass. Existing geometry
+fields remain UNKNOWN because there is no retained full-start envelope observation;
+the nominal 15-block piece height is not total generated height. Both loot
+constants are bound to the existing BuiltInLootTables source. Inventory SHA:
+`960a8759842f2a0a267fba6eae526c8e59062d08e6148c33fad7d5d498b1e133`.
+Decision SHA: `78b6dcd53d7e3c855b6e64477c0773601c3b83138705ea122eb6cc48be955378`.
+Commands are in `evidence/item-8/sources/vanilla-desert-pyramid-code/README.md`.
+The pending content instructions below are superseded. Continue remaining direct
+generators and provider reconciliation, without re-extracting desert pyramid
+sources. Approximate full geometry, actual visibility and effective retained-mod
+behavior remain open. No measurement system was added. Item 8 remains incomplete.
+
+The desert pyramid constructor binding is resolved in
+`evidence/item-8/sources/vanilla-desert-pyramid-binding-code`: bootstrap entry 0
+targets DesertPyramidPiece, and SinglePieceStructure invokes that callback once
+at the chunk origin after its below-sea-level rejection check. Manifest SHA:
+`f83997815e0225442cdcd1819b3b7b1c210c8296da1b22191c7bba31df5e3b1c`.
+The focused binding test and scoped checks pass. The verbose structure's class
+and archive identities match the earlier ordinary disassembly. No new measurement
+system was added. Continue remaining cellar geometry/candidate logic and both
+loot-source paths before family integration; do not repeat the resolved binding.
+Inventory and decision hashes are unchanged. Item 8 remains incomplete.
+
+
+Desert pyramid source inspection now preserves its piece and structure-level
+archaeology path under `evidence/item-8/sources/vanilla-desert-pyramid-code`.
+Manifest SHA: `89770d3b09f15c47e801b2889bf431d3f5e823c047cc8025c1fd433932e405d9`.
+Extraction and scoped checks pass. The source distinguishes TNT/pressure-plate
+placement, chest-result flags, cellar construction and clipped archaeology
+selection. Inventory and decision hashes remain those of the swamp-hut increment.
+Next resolve the SinglePieceStructure callback using existing verbose javap
+support, inspect the remaining cellar/placement logic, and integrate the family
+with both loot paths. The source README records exact remaining work. No new
+measurement system is required; Item 8 remains incomplete.
+
+
 Swamp hut source and shared ScatteredFeaturePiece placement code are delivered
 in `ab64119`; family integration is `5498f16`. Nine attributes now record its
 7 by 9 nominal footprint, 7-block piece height excluding downward supports,
