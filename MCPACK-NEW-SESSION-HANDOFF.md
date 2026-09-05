@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-05
 
+MVS floating-island grouping is delivered in `18ecfe4`. Two roots form one
+family with distinct loot and habitation variants; the large-house layout
+retains three shared villager components. Definitions differ only by start pool,
+with surface-heightmap offset 60, size 1 and no terrain adaptation. All five
+reachable templates and original evidence links are retained. Working total:
+426 groups with 887 registered roots. All 68 affected tests and scoped checks pass.
+Inventory SHA-256:
+`87667133ab2560dfa6120872a0023dcf761217e2f81080a631925808fa9d6a34`.
+Reproduction and limitations are in the final MVS section of
+`evidence/item-8/README.md`. Continue MVS mining/design reconciliation, BetterEnd,
+non-registry provider coverage and outstanding attributes. Item 8 is not complete.
+No runtime experiment, new measurement system or downstream work was added.
+
+
 MVS surface campsite grouping is delivered in `aa01ac1`. Campsite, fire camp
 and horse campsite are one family with all three exact definitions/templates
 preserved. Mine with campsite remains separate due to its lower spawner-bearing
