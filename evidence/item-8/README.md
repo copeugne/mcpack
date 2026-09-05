@@ -330,3 +330,11 @@ cmp evidence/raw/item8/inventory-nether-5640516.json evidence/raw/item8/inventor
 The existing family-decision tests check all 52 mns registry entries exactly once
 and bind the remaining roots to their packaged settings and missing-component
 lists. Family relationships and effective gameplay attributes remain provisional.
+
+Voyager log piles and lanterns (`12d4090`, joined in `4396e1f`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-12d4090.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-12d4090-repro.json
+cmp evidence/raw/item8/inventory-voyager-12d4090.json evidence/raw/item8/inventory-voyager-12d4090-repro.json
+```
