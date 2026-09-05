@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `f569bde`, SHA-256
-`c6d84d64ce8570bbe4e3a388a9d1a8a0997e29e88474233088b5ca4a75e0a4a7`.
+Current working inventory regenerated at `0a17e78`, SHA-256
+`a582e44e1a23ee2f7701616bc1264346112745aa805bcf131232d74df0a1a585`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1833,3 +1833,12 @@ value as a set key; explicit string conversion fixed that typing issue. Scoped
 Ruff/Basedpyright then passed. The 421 registry groups remain separate; these
 additional eleven feature-family records do not establish a final pack-wide total.
 Required attributes and full retained-provider coverage remain incomplete.
+
+Regeneration at `0a17e78` changed only input identity and the two contributions
+family membership/rationale records. Registry rows and prior attribute evidence
+are unchanged. Reproduce with a fresh output directory:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-feature-families.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-yung-feature-families.json
+```

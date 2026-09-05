@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-05
 
+Feature-family reconciliation in `0a17e78` assigns Extras 62 configured variants
+to ten working families and Bridges 22 variants to one. Single/double swamp arches
+are one family; bridge material/damage/length/axis remain variants. Twenty-one
+focused tests and scoped quality checks passed. Registry rows remain 421 groups
+and 887 roots; no final pack-wide family count is claimed. Inventory SHA-256:
+`a582e44e1a23ee2f7701616bc1264346112745aa805bcf131232d74df0a1a585`.
+Continue full provider coverage and remaining family attributes. These feature
+family records retain their separate generation path; do not count selector or
+unlinked packaged templates as families. Item 8 remains incomplete.
+
 Both YUNG initialization findings are integrated in `f569bde`; the generated
 inventory now links all corresponding source captures. Twenty focused tests and
 scoped checks passed. Inventory SHA-256:
