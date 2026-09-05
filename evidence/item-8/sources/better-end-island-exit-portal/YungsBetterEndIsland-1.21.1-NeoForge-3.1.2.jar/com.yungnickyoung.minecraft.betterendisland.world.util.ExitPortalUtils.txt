@@ -1,0 +1,233 @@
+Compiled from "ExitPortalUtils.java"
+public class com.yungnickyoung.minecraft.betterendisland.world.util.ExitPortalUtils {
+  public com.yungnickyoung.minecraft.betterendisland.world.util.ExitPortalUtils();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void spawnPortal(com.yungnickyoung.minecraft.betterendisland.world.IBetterDragonFight, net.minecraft.server.level.ServerLevel, boolean, boolean, boolean);
+    Code:
+       0: aload_0
+       1: invokeinterface #7,  1            // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight.hasDragonEverSpawned:()Z
+       6: ifeq          18
+       9: getstatic     #13                 // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+      12: getfield      #19                 // Field com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.spawnCentralTowerOnResummon:Z
+      15: goto          24
+      18: getstatic     #13                 // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+      21: getfield      #25                 // Field com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.spawnCentralTowerInitially:Z
+      24: istore        5
+      26: aload_0
+      27: checkcast     #28                 // class com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor
+      30: astore        6
+      32: aload         6
+      34: aload         6
+      36: invokeinterface #30,  1           // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor.getPortalLocation:()Lnet/minecraft/core/BlockPos;
+      41: aload_1
+      42: invokestatic  #34                 // Method getAdjustedPortalPos:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/server/level/ServerLevel;)Lnet/minecraft/core/BlockPos;
+      45: invokeinterface #40,  2           // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor.setPortalLocation:(Lnet/minecraft/core/BlockPos;)V
+      50: iload         5
+      52: ifeq          110
+      55: new           #44                 // class com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature
+      58: dup
+      59: aload_0
+      60: invokeinterface #46,  1           // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight.isFirstExitPortalSpawn:()Z
+      65: iload_3
+      66: iload_2
+      67: invokespecial #49                 // Method com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature."<init>":(ZZZ)V
+      70: astore        7
+      72: aload         6
+      74: invokeinterface #30,  1           // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor.getPortalLocation:()Lnet/minecraft/core/BlockPos;
+      79: iconst_5
+      80: invokevirtual #52                 // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+      83: astore        8
+      85: aload         7
+      87: getstatic     #58                 // Field net/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration.NONE:Lnet/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration;
+      90: aload_1
+      91: aload_1
+      92: invokevirtual #64                 // Method net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+      95: invokevirtual #70                 // Method net/minecraft/server/level/ServerChunkCache.getGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      98: invokestatic  #76                 // InterfaceMethod net/minecraft/util/RandomSource.create:()Lnet/minecraft/util/RandomSource;
+     101: aload         8
+     103: invokevirtual #82                 // Method com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature.place:(Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Z
+     106: pop
+     107: goto          332
+     110: new           #86                 // class net/minecraft/world/level/levelgen/feature/EndPodiumFeature
+     113: dup
+     114: iload_2
+     115: invokespecial #88                 // Method net/minecraft/world/level/levelgen/feature/EndPodiumFeature."<init>":(Z)V
+     118: astore        7
+     120: aload         6
+     122: invokeinterface #30,  1           // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor.getPortalLocation:()Lnet/minecraft/core/BlockPos;
+     127: iconst_3
+     128: invokevirtual #52                 // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+     131: astore        8
+     133: aload_0
+     134: invokeinterface #7,  1            // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight.hasDragonEverSpawned:()Z
+     139: ifeq          151
+     142: getstatic     #13                 // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+     145: getfield      #25                 // Field com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.spawnCentralTowerInitially:Z
+     148: ifne          159
+     151: aload         8
+     153: iconst_4
+     154: invokevirtual #91                 // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+     157: astore        8
+     159: aload         7
+     161: getstatic     #58                 // Field net/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration.NONE:Lnet/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration;
+     164: aload_1
+     165: aload_1
+     166: invokevirtual #64                 // Method net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+     169: invokevirtual #70                 // Method net/minecraft/server/level/ServerChunkCache.getGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+     172: invokestatic  #76                 // InterfaceMethod net/minecraft/util/RandomSource.create:()Lnet/minecraft/util/RandomSource;
+     175: aload         8
+     177: invokevirtual #94                 // Method net/minecraft/world/level/levelgen/feature/EndPodiumFeature.place:(Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Z
+     180: ifeq          212
+     183: iconst_4
+     184: bipush        16
+     186: invokestatic  #95                 // Method net/minecraft/util/Mth.positiveCeilDiv:(II)I
+     189: istore        9
+     191: aload_1
+     192: invokevirtual #64                 // Method net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+     195: getfield      #101                // Field net/minecraft/server/level/ServerChunkCache.chunkMap:Lnet/minecraft/server/level/ChunkMap;
+     198: new           #105                // class net/minecraft/world/level/ChunkPos
+     201: dup
+     202: aload         8
+     204: invokespecial #107                // Method net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+     207: iload         9
+     209: invokevirtual #109                // Method net/minecraft/server/level/ChunkMap.waitForLightBeforeSending:(Lnet/minecraft/world/level/ChunkPos;I)V
+     212: aload_0
+     213: invokeinterface #7,  1            // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight.hasDragonEverSpawned:()Z
+     218: ifne          332
+     221: iload         4
+     223: ifne          332
+     226: aload         8
+     228: iconst_1
+     229: invokevirtual #91                 // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+     232: astore        9
+     234: getstatic     #115                // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+     237: invokevirtual #121                // Method net/minecraft/core/Direction$Plane.iterator:()Ljava/util/Iterator;
+     240: astore        10
+     242: aload         10
+     244: invokeinterface #125,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     249: ifeq          332
+     252: aload         10
+     254: invokeinterface #130,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     259: checkcast     #134                // class net/minecraft/core/Direction
+     262: astore        11
+     264: aload         9
+     266: aload         11
+     268: iconst_3
+     269: invokevirtual #136                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+     272: astore        12
+     274: new           #140                // class net/minecraft/world/entity/boss/enderdragon/EndCrystal
+     277: dup
+     278: aload_1
+     279: aload         12
+     281: invokevirtual #142                // Method net/minecraft/core/BlockPos.getX:()I
+     284: i2d
+     285: ldc2_w        #146                // double 0.5d
+     288: dadd
+     289: aload         12
+     291: invokevirtual #148                // Method net/minecraft/core/BlockPos.getY:()I
+     294: i2d
+     295: aload         12
+     297: invokevirtual #151                // Method net/minecraft/core/BlockPos.getZ:()I
+     300: i2d
+     301: ldc2_w        #146                // double 0.5d
+     304: dadd
+     305: invokespecial #154                // Method net/minecraft/world/entity/boss/enderdragon/EndCrystal."<init>":(Lnet/minecraft/world/level/Level;DDD)V
+     308: astore        13
+     310: aload         13
+     312: iconst_0
+     313: invokevirtual #157                // Method net/minecraft/world/entity/boss/enderdragon/EndCrystal.setShowBottom:(Z)V
+     316: aload         13
+     318: iconst_1
+     319: invokevirtual #160                // Method net/minecraft/world/entity/boss/enderdragon/EndCrystal.setInvulnerable:(Z)V
+     322: aload_1
+     323: aload         13
+     325: invokevirtual #163                // Method net/minecraft/server/level/ServerLevel.addFreshEntity:(Lnet/minecraft/world/entity/Entity;)Z
+     328: pop
+     329: goto          242
+     332: aload_0
+     333: iconst_0
+     334: invokeinterface #167,  2          // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight.setIsFirstExitPortalSpawn:(Z)V
+     339: return
+
+  public static void spawnPortal(com.yungnickyoung.minecraft.betterendisland.world.IBetterDragonFight, net.minecraft.server.level.ServerLevel, boolean, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: iload_3
+       4: iconst_0
+       5: invokestatic  #170                // Method spawnPortal:(Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;Lnet/minecraft/server/level/ServerLevel;ZZZ)V
+       8: return
+
+  private static net.minecraft.core.BlockPos getAdjustedPortalPos(net.minecraft.core.BlockPos, net.minecraft.server.level.ServerLevel);
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: ifnull        14
+       6: aload_2
+       7: invokevirtual #148                // Method net/minecraft/core/BlockPos.getY:()I
+      10: iconst_5
+      11: if_icmpge     127
+      14: aload_2
+      15: ifnonnull     31
+      18: getstatic     #174                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      21: ldc           #178                // String Portal location is null. Placing manually...
+      23: invokeinterface #180,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+      28: goto          48
+      31: getstatic     #174                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      34: ldc           #186                // String Portal location is too low: {}. Placing manually...
+      36: aload_2
+      37: invokevirtual #148                // Method net/minecraft/core/BlockPos.getY:()I
+      40: invokestatic  #188                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      43: invokeinterface #194,  3          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+      48: new           #53                 // class net/minecraft/core/BlockPos
+      51: dup
+      52: iconst_0
+      53: aload_1
+      54: iconst_0
+      55: iconst_0
+      56: invokestatic  #197                // Method com/yungnickyoung/minecraft/betterendisland/world/util/WorldgenUtils.getSurfacePosAt:(Lnet/minecraft/world/level/Level;II)I
+      59: iconst_0
+      60: invokespecial #203                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      63: astore_2
+      64: aload_1
+      65: aload_2
+      66: invokevirtual #206                // Method net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      69: getstatic     #210                // Field net/minecraft/world/level/block/Blocks.BEDROCK:Lnet/minecraft/world/level/block/Block;
+      72: invokevirtual #216                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      75: ifeq          97
+      78: aload_2
+      79: invokevirtual #148                // Method net/minecraft/core/BlockPos.getY:()I
+      82: aload_1
+      83: invokevirtual #222                // Method net/minecraft/server/level/ServerLevel.getSeaLevel:()I
+      86: if_icmple     97
+      89: aload_2
+      90: invokevirtual #225                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      93: astore_2
+      94: goto          64
+      97: aload_2
+      98: invokevirtual #148                // Method net/minecraft/core/BlockPos.getY:()I
+     101: iconst_5
+     102: if_icmpge     127
+     105: getstatic     #174                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     108: ldc           #227                // String Portal was still placed too low! Force placing at y=65...
+     110: invokeinterface #180,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+     115: new           #53                 // class net/minecraft/core/BlockPos
+     118: dup
+     119: iconst_0
+     120: bipush        65
+     122: iconst_0
+     123: invokespecial #203                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     126: astore_2
+     127: getstatic     #174                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     130: ldc           #229                // String Set the exit portal location to: {}
+     132: aload_2
+     133: invokeinterface #194,  3          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+     138: aload_2
+     139: areturn
+}
