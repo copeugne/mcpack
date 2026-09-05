@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `532fb28`, SHA-256
-`d064a47129cf9b538ca11a9f8398bcbe33f8113f7246cec26d0d14025afd03d4`.
+Current working inventory regenerated at `189240a`, SHA-256
+`8e571bbcf2a382dd9d0a82735de2dc3e43296e8f4aaa8c4490ddfd00a7468111`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1926,3 +1926,11 @@ Twenty-five focused tests and scoped Ruff/Basedpyright passed. The two existing
 family geometry/biome checks now explicitly select Extras/Bridges because the new
 provider contribution does not yet have reconciled family records. No acceptance
 requirement was relaxed and no new measurement system was added.
+
+Regeneration at `189240a` adds only the Better End Island contribution and input
+identity. Prior contributions and registry-family rows remain unchanged.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-features.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-features.json
+```

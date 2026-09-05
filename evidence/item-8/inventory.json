@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "118d76e8323766b5f87ab520833c4e7f1078e3b1bd34c8230ecd037fdae87239",
+    "evidence/item-8/family-decisions.json": "d6e3e766e7200a73b83afec708527e1c2c5e72429e08e2d0278d524e2fd8ca1f",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -158952,6 +158952,36 @@
   },
   "non_registry_content": {
     "contributions": {
+      "betterendisland:platform_gateway": {
+        "class_to_template": {
+          "BetterEndGatewayFeature": "betterendisland:gateway",
+          "BetterEndSpawnPlatformFeature": "betterendisland:spawn_platform"
+        },
+        "evidence": {
+          "evidence/item-8/sources/better-end-island-platform-gateway/identities.json": "6d6944ae221e62182308d1ac3cdcc10a9b028d98bb0e2fa0d72e910cd366b48a",
+          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        },
+        "gateway_placement": "Subtract integer half template X/Y/Z from context origin. Use context random, Rotation.NONE, pivot (1,0,1), IGNORE_WATERLOGGING and placement flag 2. After the template call, request END_GATEWAY at context origin with flag 3, regardless of the template helper result. If configuration has an exit and the block entity is an EndGateway, set its exit position/exactness and mark changed.",
+        "hooks": "Both inject at HEAD and are cancellable. With useVanillaSpawnPlatform false, the platform hook invokes the custom generator, discards its boolean and cancels vanilla execution. With useVanillaEndGateways false, the gateway hook returns the custom generator boolean. True leaves the respective vanilla path alone.",
+        "mechanism": "Conditional mixin replacements of vanilla EndPlatformFeature.createEndPlatform and EndGatewayFeature.place, not additional structure-registry roots.",
+        "nominal_template_xyz_blocks": {
+          "betterendisland:gateway": [
+            3,
+            9,
+            3
+          ],
+          "betterendisland:spawn_platform": [
+            7,
+            22,
+            7
+          ]
+        },
+        "packaged_template_content": "Both linked templates have empty entities and block_entities. This excludes neither processor-created blocks nor the gateway block explicitly placed by code.",
+        "platform_placement": "Offset the input position down 14 blocks, then subtract integer half template X/Z. Use Rotation.NONE, pivot (3,0,3), IGNORE_WATERLOGGING and placement flag 2. A fresh RandomSource.create() is used rather than a supplied seeded source. The destroyBlocks boolean is forwarded to placeTemplate but not read there.",
+        "processors": "Platform static processor list is empty; gateway static list contains DragonEggProcessor. Both then add ObsidianProcessor with dragon-kill count, read only when the supplied accessor is a ServerLevel with a non-null dragon fight, otherwise zero. Processor effects remain to be inspected.",
+        "scope": "Direct code and packaged template attribution only. Configuration-field binding, mixin activation, processor effects, dimension applicability, family reconciliation and generated-world observations remain open. Spike and podium generation are not covered by this contribution.",
+        "success_limits": "Missing templates log a warning and return false. Loaded-template helpers discard placeInWorld boolean and return true. Platform hook cancellation does not depend on success. Gateway returns its template helper result, not whether portal-block placement or exit initialization succeeded."
+      },
       "yungsbridges:bridges": {
         "biome_and_modifier_constraints": {
           "biome_tag": "yungsbridges:has_structure/bridge",
