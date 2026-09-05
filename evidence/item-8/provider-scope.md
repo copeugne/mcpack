@@ -466,3 +466,50 @@ during that correction was fixed before the passing run. No production decoder
 or graph behavior changed. Explicit dispositions now cover 25 of 136 providers;
 111 remain to reconcile. Towns and Towers' entry source is delivered in 1608481,
 but its optional pack and disconnected resources still need dispositions.
+
+## Towns and Towers structure provider
+
+`t_and_t-neoforge-fabric-1.13.9+1.21.1.jar` supplies 60 existing root candidates,
+187 pools and 837 base templates. Its three captured classes only initialize
+logging or return the platform name. Full archive accounting identifies data,
+metadata and those classes, without another executable generation route. The
+existing towns_and_towers roots remain the candidate list; structure tags are
+not roots. Cristel Lib declarations configure existing sets and an optional pack.
+
+The optional t_and_t_waystones_patch pack contains three template replacements:
+kaisyn:village/modded/waystones/waystone_default, waystone_desert and waystone_mossy.
+Its declared condition requires modid waystones; the hash-bound captured runtime
+mod list lacks that ID. Disposition: conditional components, ineligible under
+the declared condition in this retained stack. They are not independent roots.
+Shared Cristel Lib loading behavior remains attributable to that provider.
+
+Three base pools are disconnected from the preserved root graphs:
+kaisyn:village/grove_villager_outpost/decor and the desert/mossy Waystones pools.
+Twenty-three base templates are also disconnected. Their exact IDs are preserved
+in the pinned catalogs and enumerated by test_towns_towers_provider_scope.py:
+the savanna-plateau tower piece; badlands medium house 2_r; lighthouse master;
+Iberian terminators 04/05/06; Mediterranean corner garden/stall and bishop;
+Nilotic large house, leatherworker/shepherd and mason; piglin skul_tent_1;
+rustic empty piece; grove table; desert/mossy Waystones; Polynesian village chief;
+swamp corssroad_03/04/05 and straight_03; wooded-badlands green large hut.
+Disposition: disconnected components, unused by these packaged root graphs.
+Preserve exact misspellings and identities. Do not silently connect similarly
+named resources or turn pieces into families.
+
+Existing missing graph references affect eight roots: village_meadow,
+village_swamp, exclusives/village_nilotic, village_sparse_jungle,
+pillager_outpost_savanna_plateau, exclusives/pillager_outpost_nilotic,
+exclusives/village_mediterranean and village_beach. Their exact missing IDs remain
+in pool-traces-content.json.gz. Disposition: missing referenced components;
+retain uncertainty about assembled content for family attributes and do not
+repair the frozen baseline. All packaged resources now have candidate/component
+links or explicit disconnected/conditional dispositions for this provider.
+
+```sh
+uv run pytest -q tests/item8/test_towns_towers_provider_scope.py
+```
+
+One case and scoped Ruff/Basedpyright pass. The test binds original archive,
+entry disassemblies, preserved graph and runtime log identities. No new runtime
+sample or graph implementation. Explicit provider dispositions now cover 26 of
+136; 110 remain to reconcile. Canonical-family grouping remains separate.
