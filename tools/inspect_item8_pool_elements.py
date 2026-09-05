@@ -51,6 +51,8 @@ ARCHIVES = frozenset(
         "YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar",
         "YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar",
         "YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar",
+        "integrated_villages-1.3.3+1.21.1-neoforge.jar",
+        "idas-1.13.7+1.21.1-neoforge.jar",
     }
 )
 GENERATION_PREFIXES = (
@@ -153,6 +155,12 @@ CLASSES = (
     "com/yungnickyoung/minecraft/betterwitchhuts/module/ConfigModuleNeoForge.class",
     "com/yungnickyoung/minecraft/betterwitchhuts/config/ConfigGeneralNeoForge.class",
     "LocateVanillaMineshaftCommandMixin.class",
+    "com/craisinlord/integrated_villages/mixins/DisableVanillaVillagesMixin.class",
+    "com/craisinlord/integrated_villages/config/ConfigGeneralNeoforge.class",
+    "com/craisinlord/integrated_villages/config/ConfigModuleNeoforge.class",
+    "com/craisinlord/idas/mixins/DisableStructuresMixin.class",
+    "com/craisinlord/idas/config/ConfigGeneralNeoforge.class",
+    "com/craisinlord/idas/config/ConfigModuleNeoforge.class",
     "dev/worldgen/lithostitched/impl/worldgen/modifier/ModifierManager.class",
     "dev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier.class",
     "net/minecraft/resources/RegistryDataLoader.class",
@@ -238,7 +246,10 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
         destination = output / source.name
         destination.mkdir()
         with ZipFile(source.path) as archive:
-            if source.name.startswith("YungsBetter"):
+            if source.name.startswith("YungsBetter") or source.name in {
+                "integrated_villages-1.3.3+1.21.1-neoforge.jar",
+                "idas-1.13.7+1.21.1-neoforge.jar",
+            }:
                 metadata = {
                     name: {
                         "sha256": hashlib.sha256(archive.read(name)).hexdigest(),
@@ -274,7 +285,7 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                 ):
                     continue
                 class_name = name.removesuffix(".class").replace("/", ".")
-                verbose = "/mixin/" in name or name in {
+                verbose = "/mixin/" in name or "/mixins/" in name or name in {
                     CLASSES[0],
                     "net/minecraft/world/level/levelgen/structure/structures/DesertPyramidStructure.class",
                     "net/minecraft/world/level/levelgen/structure/structures/JungleTempleStructure.class",

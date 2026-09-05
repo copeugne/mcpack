@@ -1,0 +1,78 @@
+Compiled from "ConfigModuleNeoforge.java"
+public class com.craisinlord.idas.config.ConfigModuleNeoforge {
+  public com.craisinlord.idas.config.ConfigModuleNeoforge();
+    Code:
+       0: aload_0
+       1: invokespecial #34                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init(net.neoforged.fml.ModContainer);
+    Code:
+       0: invokestatic  #42                 // Method initCustomFiles:()V
+       3: aload_0
+       4: getstatic     #46                 // Field net/neoforged/fml/config/ModConfig$Type.COMMON:Lnet/neoforged/fml/config/ModConfig$Type;
+       7: getstatic     #52                 // Field com/craisinlord/idas/config/IDASConfigNeoforge.SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+      10: ldc           #54                 // String idas-neoforge-1_21.toml
+      12: invokevirtual #60                 // Method net/neoforged/fml/ModContainer.registerConfig:(Lnet/neoforged/fml/config/ModConfig$Type;Lnet/neoforged/fml/config/IConfigSpec;Ljava/lang/String;)V
+      15: getstatic     #66                 // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      18: invokedynamic #85,  0             // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+      23: invokeinterface #91,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      28: getstatic     #96                 // Field com/craisinlord/idas/neoforge/IDASNeoforge.modEventBusTempHolder:Lnet/neoforged/bus/api/IEventBus;
+      31: invokedynamic #103,  0            // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+      36: invokeinterface #91,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      41: return
+
+  private static void onWorldLoad(net.neoforged.neoforge.event.level.LevelEvent$Load);
+    Code:
+       0: invokestatic  #108                // Method bakeConfig:()V
+       3: invokestatic  #111                // Method loadJSON:()V
+       6: return
+
+  private static void onConfigChange(net.neoforged.fml.event.config.ModConfigEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #118                // Method net/neoforged/fml/event/config/ModConfigEvent.getConfig:()Lnet/neoforged/fml/config/ModConfig;
+       4: invokevirtual #122                // Method net/neoforged/fml/config/ModConfig.getSpec:()Lnet/neoforged/fml/config/IConfigSpec;
+       7: getstatic     #52                 // Field com/craisinlord/idas/config/IDASConfigNeoforge.SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+      10: if_acmpne     19
+      13: invokestatic  #108                // Method bakeConfig:()V
+      16: invokestatic  #111                // Method loadJSON:()V
+      19: return
+
+  private static void initCustomFiles();
+    Code:
+       0: invokestatic  #111                // Method loadJSON:()V
+       3: return
+
+  private static void loadJSON();
+    Code:
+       0: return
+
+  private static void bakeConfig();
+    Code:
+       0: getstatic     #129                // Field com/craisinlord/idas/IDAS.CONFIG:Lcom/craisinlord/idas/config/ConfigModule;
+       3: getfield      #133                // Field com/craisinlord/idas/config/ConfigModule.general:Lcom/craisinlord/idas/config/ConfigModule$General;
+       6: getstatic     #136                // Field com/craisinlord/idas/config/IDASConfigNeoforge.general:Lcom/craisinlord/idas/config/ConfigGeneralNeoforge;
+       9: getfield      #142                // Field com/craisinlord/idas/config/ConfigGeneralNeoforge.disableIaFStructures:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      12: invokevirtual #146                // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      15: checkcast     #148                // class java/lang/Boolean
+      18: invokevirtual #152                // Method java/lang/Boolean.booleanValue:()Z
+      21: putfield      #155                // Field com/craisinlord/idas/config/ConfigModule$General.disableIaFStructures:Z
+      24: getstatic     #129                // Field com/craisinlord/idas/IDAS.CONFIG:Lcom/craisinlord/idas/config/ConfigModule;
+      27: getfield      #133                // Field com/craisinlord/idas/config/ConfigModule.general:Lcom/craisinlord/idas/config/ConfigModule$General;
+      30: getstatic     #136                // Field com/craisinlord/idas/config/IDASConfigNeoforge.general:Lcom/craisinlord/idas/config/ConfigGeneralNeoforge;
+      33: getfield      #158                // Field com/craisinlord/idas/config/ConfigGeneralNeoforge.applyMiningFatigue:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      36: invokevirtual #146                // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      39: checkcast     #148                // class java/lang/Boolean
+      42: invokevirtual #152                // Method java/lang/Boolean.booleanValue:()Z
+      45: putfield      #160                // Field com/craisinlord/idas/config/ConfigModule$General.applyMiningFatigue:Z
+      48: getstatic     #129                // Field com/craisinlord/idas/IDAS.CONFIG:Lcom/craisinlord/idas/config/ConfigModule;
+      51: getfield      #133                // Field com/craisinlord/idas/config/ConfigModule.general:Lcom/craisinlord/idas/config/ConfigModule$General;
+      54: getstatic     #136                // Field com/craisinlord/idas/config/IDASConfigNeoforge.general:Lcom/craisinlord/idas/config/ConfigGeneralNeoforge;
+      57: getfield      #163                // Field com/craisinlord/idas/config/ConfigGeneralNeoforge.disableDesertPyramid:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      60: invokevirtual #146                // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      63: checkcast     #148                // class java/lang/Boolean
+      66: invokevirtual #152                // Method java/lang/Boolean.booleanValue:()Z
+      69: putfield      #165                // Field com/craisinlord/idas/config/ConfigModule$General.disableDesertPyramid:Z
+      72: return
+}
