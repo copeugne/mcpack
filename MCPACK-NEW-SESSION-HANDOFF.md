@@ -6,6 +6,40 @@
 
 ### Continuation update - 2026-09-06
 
+Village Taverns full-provider scope now passes: all fifteen top-level classes,
+bundled Tiny Config entry, parent/nested files and five component links are
+accounted for. The focused test and scoped static checks pass after recognizing
+the inspected villager-hat .png.mcmeta asset and formatting. provider-scope.md
+now records 24 dispositions of 136, leaving 112 to reconcile. Stop Tavern source
+expansion and continue other retained providers using existing evidence first.
+
+Bundled Tiny Config entry and ConfigManager captures now reproduce using 0b01353
+in sources/tiny-config-entry. NeoForge entry calls an empty common init;
+ConfigManager handles JSON I/O and optional caller callbacks, not independent
+generation registration. Do not recapture these. Finish remaining Tavern entry
+classes and full archive accounting. Counts remain 23 dispositions, 113 open.
+
+Necessary capture-path adjustment: Village Taverns bundles executable Tiny Config
+classes, while the existing javap capture only reads top-level JARs. The narrow
+Tiny Config selector retains the existing identity format, verifies both frozen
+parent and nested payload, and uses a cleaned temporary classpath. This directly
+closes an otherwise unsupported entry path in the candidate-completeness gate;
+it adds no measurement system or general recursive capture framework.
+
+Tavern Defaults and block-registration captures now reproduce using 297edcb in
+sources/tavern-registration-scope. Defaults links the same five village/tavern
+identities as packaged additions; fallback integer arguments must not replace
+the packaged Lithostitched weight. Block registration adds barrel block/item and
+a creative-tab entry. Remaining full scope includes other relevant entry classes
+and bundled tiny-config behavior. No full Tavern closure yet; counts stay 23/113.
+
+Village Taverns entry/mixin source is captured reproducibly using d8d1107 in
+sources/tavern-provider-entries. Its StructurePoolAPI injection is conditional on
+Lithostitched absence; do not double-count fallback and packaged additions.
+Mixins affect potion compatibility and bartender scheduling. Full provider
+closure still needs remaining registration helpers/defaults and bundled
+tiny-config entry accounting. Counts remain 23 dispositions and 113 to reconcile.
+
 Chef's Delight now has a full-provider component-only disposition. All six
 classes are captured, with the remaining four delivered in 23ee872. Full file
 accounting and the existing component-content test pass, as do scoped static
