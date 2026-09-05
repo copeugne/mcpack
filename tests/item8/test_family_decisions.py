@@ -700,19 +700,25 @@ def test_betterend_lake_placement_and_cues_preserve_both_algorithms() -> None:
     ]["base_generation_point_check"]
 
 
-def test_betterend_mountain_direct_content_has_no_encounter_or_container_path() -> None:
+@pytest.mark.parametrize("family", ["betterend:mountain", "betterend:end_lake"])
+def test_betterend_formation_direct_content_has_no_encounter_or_container_path(family: str) -> None:
     decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
         Path("evidence/item-8/family-decisions.json").read_bytes()
     ))
-    group = next(g for g in decisions["groups"] if g["family_id"] == "betterend:mountain")
+    group = next(g for g in decisions["groups"] if g["family_id"] == family)
     attributes = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
     assert attributes["mob_source"]["authored_entity_ids"] == []
     assert attributes["loot_table_source"]["direct_generator_assigned_tables"] == []
     assert attributes["generated_spawners"]["direct_generator_spawner_block_types"] == []
     wanted = {"BasePiece", "MountainPiece", "CrystalMountainPiece", "PaintedMountainPiece",
               "FeatureBaseStructure", "MountainStructure", "PaintedMountainStructure"}
+    if family == "betterend:end_lake":
+        wanted = {"BasePiece", "FeatureBaseStructure", "EndLakeStructure", "EndLakeNormalStructure",
+                  "EndLakeRareStructure", "MegaLakeStructure", "MegaLakeSmallStructure",
+                  "EndLakePiece", "LakePiece", "EndBiome", "BlockFixer"}
     inspected: set[str] = set()
-    for directory in ("betterend-formations-code", "betterend-formation-pieces"):
+    for directory in ("betterend-formations-code", "betterend-formation-pieces",
+                      "betterend-lake-helpers"):
         base = Path("evidence/item-8/sources") / directory
         identities = cast("list[dict[str, str]]", json.loads(
             (base / "identities.json").read_bytes()

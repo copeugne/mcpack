@@ -24348,7 +24348,8 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/betterend-formations-code/identities.json": "150df9fc0a941cc523bca51a782c39fcd0f08a32b11af77a64cf6f248c170961",
-        "evidence/item-8/sources/betterend-formation-pieces/identities.json": "2ecc0877f072bee316254a4e5df4395c43e24802d923a29bd83c19c8a7718f39"
+        "evidence/item-8/sources/betterend-formation-pieces/identities.json": "2ecc0877f072bee316254a4e5df4395c43e24802d923a29bd83c19c8a7718f39",
+        "evidence/item-8/sources/betterend-lake-helpers/identities.json": "80e48ad38d1350b83906950d68567f0d97909b1c062bea40ce50e2952a6f99c2"
       },
       "attributes": {
         "underground_surface_classification": {
@@ -24393,6 +24394,31 @@
           },
           "basis": "Both pieces write water and consult EndBiome.findTopMaterial when choosing terrain materials. EndLakePiece has an endstone-dust shore path. LakePiece.placeRimPlant checks plant survival before writing either of its two rim plant states.",
           "scope": "Source-derived visible cues, not measured sight distance or player discovery probability. Complete biome-material resolution and actual occlusion remain outside this cue attribution."
+        },
+        "intended_hostility": {
+          "classification": "Environmental lake formation without a direct authored encounter.",
+          "basis": "The lake generators and pieces carve/fill basins and shores; the inspected cleanup helper adjusts vegetation, crystals and fluids rather than defining an encounter. All five definitions have empty spawn_overrides.",
+          "scope": "Source-derived intent. This does not imply safe water/terrain, absent natural enemies or resolved biome-material effects."
+        },
+        "mob_source": {
+          "authored_entity_ids": [],
+          "mechanism": "No direct entity creation or insertion in the five lake root classes, their shared base, the two lake pieces, BasePiece, EndBiome or BlockFixer. The pieces write blocks; BlockFixer also schedules fluid ticks.",
+          "scope": "Direct captured code only. Material providers, block behavior, natural spawning and external retained-mod injections are not fully resolved by this attribution."
+        },
+        "loot_table_source": {
+          "direct_generator_assigned_tables": [],
+          "mechanism": "No direct container-loot assignment in the captured lake generators, pieces or two inspected helpers. The visible code writes basin, shore and plant states.",
+          "scope": "Direct container-loot assignment only. Biome-selected materials and their block behavior remain unresolved; harvested drops and external injections are separate."
+        },
+        "generated_spawners": {
+          "direct_generator_spawner_block_types": [],
+          "mechanism": "No explicit spawner placement or spawner block-entity configuration in the captured lake generator, piece and helper classes.",
+          "scope": "Direct explicit source path only. This does not establish that every dynamically selected surface material is non-spawner; effective biome material coverage and external injections remain unresolved."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "No direct entity or explicit spawner authoring in the captured lake paths.",
+          "natural": "All five packaged definitions have empty spawn_overrides, so these roots do not supply structure-specific natural-spawn lists. Biome spawning and external systems remain possible.",
+          "scope": "Source attribution, not observed populations; material-provider and external injection coverage remain open."
         }
       }
     },
