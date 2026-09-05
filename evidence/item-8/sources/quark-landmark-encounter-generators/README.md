@@ -84,3 +84,44 @@ The ring and associated buried deposit support one working landmark design,
 with flower and ore choices as variants. Do not split the deposit into another
 family. Final inventory integration, effective constraints and saved-world
 attribution remain open; no Item 9 tier is assigned here.
+
+## Fallen Log interpretation
+
+generateChunk samples chunk-local X/Z at Y=128, selects sparseBiomeRarity when
+the reduced-logs biome tag matches and rarity otherwise, then tests nextInt
+against zero. It uses OCEAN_FLOOR_WG height to choose the placement position.
+The module registers this generator at TOP_LAYER_MODIFICATION with weight one.
+
+getBaseLogBlockForPos collects blocks for all matching biome tags in blocksPerTag
+and chooses from that list. No match returns air and aborts placement. The module
+configChanged callback rebuilds the map from biomeTags entries split on '='.
+Configured wood choices do not become separate structure families. If
+HollowLogsModule.staticEnabled is true and the hollowChance check passes, the
+generator substitutes a non-null logMap entry; otherwise it retains the base log.
+Effective mappings and that module dependency still require attribution.
+
+Placement tries at most five random horizontal directions and independently
+chooses length three or four for each attempt. It requires every core position
+to be air, replaceable or a flower, with support matching canSpawnOnTag. A
+per-attempt onWaterChance draw additionally permits water support. The first
+valid attempt constructs one log and returns. The material axis follows the
+chosen direction. These are source attempts, not observed success rates.
+
+The core occupies one horizontal row of three or four blocks at one Y level.
+Decoration writes remain at that Y or one block above it, with neighboring
+positions beside the core and beyond its ends. Moss above a core block requires
+air and eligibility. Each of the two indexed side positions has a 3/5 attempt;
+both end positions have 4/10 attempts repeated within the core-block loop.
+Do not interpret those repeated end attempts as additional logs. Other decoration
+requires air and canSurvive; moss also requires solid support. Block-write
+booleans are discarded. Climate eligibility and enum mapping are preserved in
+`../quark-fallen-log-decor/README.md`.
+
+The captured generator directly places logs and vegetation without template,
+container-loot, physical-spawner or entity requests. Later hollow-block behavior
+and natural mobs are separate. Its source-derived visual cue is a low horizontal
+log with optional vegetation, potentially obscured by surrounding terrain.
+No observed visibility or actual occupied envelope is claimed. One working
+fallen-log design is supported; hollow form, wood, length, orientation and
+decoration are variants. Final family integration, effective configuration/tag
+membership and saved-world attribution remain open.
