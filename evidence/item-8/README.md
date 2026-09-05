@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `c8577f6`, SHA-256
-`4d2d1ec3118b8c0bc48d09de41890a307976afd7cc7f127b26670c4f1f738eaf`.
+Current working inventory regenerated at `c51df00`, SHA-256
+`88b25ca877547c94f36f8ab28c908f36804b28f9c2d47649ff05cb9633e81f4f`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -70,6 +70,16 @@ coverage has already identified every remaining family or dependency. Closing
 that coverage question is itself an outstanding deliverable in step 4.
 
 ## Historical increments
+
+The c51df00 increment records Chef's Delight's runtime village house-pool
+injection and frozen configuration inputs. It adds no standalone families.
+Only contribution records and the decision input identity change. Builder
+static checks passed; the output reproduces exactly:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-chefs-c51df00.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-chefs-c51df00.json
+```
 
 The c8577f6 increment explicitly reconciles Village Taverns as components of
 existing village and IDAS castle family relationships. It adds no family rows.
