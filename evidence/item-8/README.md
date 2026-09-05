@@ -748,3 +748,9 @@ Decision SHA-256:
 
 All 63 affected tests passed. Scoped Ruff and Basedpyright passed; the initial
 lint finding was one long test line, corrected without changing behavior.
+
+Parent attribution and its test are delivered in `1e7dd7c`. Inventory rebuilt
+at that commit with the command above, SHA-256:
+`e0fddbb286ce87c8a23285d7af33eac42563db754f8ad833d1826080d4c50327`.
+Only grouping-decision attribution/evidence and the decision input hash change.
+Family membership, content attributes and world-observation links are preserved.
