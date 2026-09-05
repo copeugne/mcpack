@@ -6,6 +6,30 @@
 
 ### Continuation update - 2026-09-05
 
+Seventeen non-Mega-Ship Moog End designs are assigned by `cf3083f` and joined
+in `dad9743`. Inventory SHA-256:
+`8a548b710b53676b3baf3850a005fa741770bd916339018dc0cb3333eeb28d5b`.
+Current coverage is 134 working groups, 199 assigned entries and 688 unassigned.
+The eight `mes:mega_ship*` roots remain unassigned pending material, layout and
+wreck variant comparison. Other mes roots have disjoint reachable templates;
+spike, scrap, monolith, prairie and pillar alternatives remain grouped.
+Custom terrain-height declarations are recorded without claiming effective
+placement. Starlight Voyager joins world observations 242 and 632; the other
+sixteen designs have no observations in the retained sample, not proof of
+absence. Twenty focused tests passed and the inventory reproduced byte for byte
+without changing previous groups. Scoped Ruff and basedpyright now pass.
+
+Quality-check correction: the prior Spider Dungeon line-length fix introduced
+implicit string concatenation rejected by basedpyright. `719aef7` changed it to
+explicit concatenation, which conflicted with Ruff. `5ee73d6` resolved both with
+a short component reference, and its direct test passed. Earlier assertions of
+all final scoped checks passing for that expression were overstated. The Moog
+coverage test also exceeded the complexity threshold initially; replacing its
+two exclusion branches with the existing local prefix mapping resolved that
+without adding a helper or framework. Continue Mega Ship grouping, remaining
+providers, non-registry relationships and attributes. Item 8 remains incomplete;
+no final report/gate, clean review or main merge is claimed.
+
 Spider Dungeon source attributes are delivered through `979b60d`, built from
 `0cb388e`. Inventory SHA-256:
 `c4c0ff970dac5e72b4a382dab3283a8925d2b344cd438ed9f5b5f0aedeaa9e4a`.
