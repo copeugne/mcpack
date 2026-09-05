@@ -52,3 +52,34 @@ cannot bound the full altered terrain. The data-marker handler returns without
 action. No direct mob or spawner creation path appears in these classes.
 Template content and effective retained-mod transformations must still be
 reconciled; no claim of observed absence of natural mobs is made.
+
+## Family integration
+
+All thirteen references resolve in the frozen catalog and are linked to each of
+the seven roots. Each template has exactly one chest with the embedded loot
+reference `minecraft:chests/ruined_portal`, and an empty entity list. No ordinary
+or trial-spawner block types occur in the palettes. The only other block entities
+are one jigsaw in each of portal_1 through portal_5. Their name, pool and target
+are all `minecraft:empty`. Their final_state is netherrack except portal_3, which
+specifies air. These metadata are not evidence of another active pool chain.
+This inspection does not claim the final generated state of those jigsaw blocks.
+
+Six attributes are now recorded: hostility interpretation, mob source, loot
+source, spawners, enemy attribution and per-root placement modes. Observed
+geometry remains intact; template dimensions do not cover terrain additions.
+Retained-mod transformations and visual discoverability remain unresolved.
+
+```sh
+uv run pytest -q tests/item8/test_ruined_portal_sources.py tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_ruined_portal_sources.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_ruined_portal_sources.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ruined-portal-content.json
+```
+
+The focused test binds the source and template hashes, all thirteen references,
+every chest, entity list, spawner palette check, five jigsaw metadata records
+and all seven placement-mode derivations. Decision SHA-256:
+`b8e7afa9e0bce110f88071c2eefdabd1f0c4500a93c0f2f1c1e6b4f4dde1f305`.
+No measurement system or additional family is introduced. Item 8 remains open.
+
+All 62 affected tests passed. Scoped Ruff and Basedpyright checks passed.
