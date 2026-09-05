@@ -3,6 +3,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+import re
 import tomllib
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
@@ -189,7 +190,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         "mss:": ("mss:tree_", "mss:birch_river", "mss:cherry_river"),
     }.get(namespace, ())
     expected = {key for key in expected if not key.startswith(excluded_prefixes)}
-    if namespace in {"mns:", "mvs:"}:
+    if namespace in {"mns:", "mvs:", "betterend:"}:
         variants = [
             member
             for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
@@ -200,7 +201,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         assert (
             len(members + variants)
             == len(set(members + variants))
-            == {"mns:": 52, "mvs:": 129}[namespace]
+            == {"mns:": 52, "mvs:": 129, "betterend:": 14}[namespace]
         )
         expected -= set(variants)
     assert members
@@ -535,6 +536,58 @@ def test_voyager_related_layouts_preserve_variant_content(
         assert traces["template_contents"][
             "mvs:other_decoration/mine_with_campsite_lower"
         ]["spawner_blocks"]
+
+
+def test_betterend_lake_variants_bind_registry_definitions_and_generator_classes() -> None:
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    group = next(g for g in decisions["groups"] if g["family_id"] == "betterend:end_lake")
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    base = Path("evidence/item-8/sources/betterend-formations-code")
+    identities = cast("list[dict[str, str]]", json.loads((base / "identities.json").read_bytes()))
+    sources: dict[str, str] = {}
+    for row in identities:
+        raw = (base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        sources[row["class"].removesuffix(".class").replace("/", ".")] = raw.decode()
+    registration = sources["org.betterx.betterend.registry.EndStructures"]
+    bootstrap = registration.split("BootstrapMethods:")[1]
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ).read_bytes())))
+    registry = read_registry(Path(
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    ))
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    assert group["structure_ids"] == sorted(variants) == sorted(
+        rid for rid in registry if rid.startswith("betterend:") and "lake" in rid
+    )
+    assert len(variants) == 5
+    for rid, variant in variants.items():
+        name = rid.split(":")[1]
+        definitions = [r["document"] for r in catalog["resources"]
+                       if r["path"] == f"data/betterend/worldgen/structure/{name}.json"]
+        assert definitions == [variant["definition"]]
+        definition = cast("dict[str, JsonValue]", variant["definition"])
+        assert definition["type"] == rid
+        assert definition["step"] == "lakes"
+        assert definition["spawn_overrides"] == {}
+        binding = re.search(r"// String " + name + r"\n.*?InvokeDynamic #(\d+):create",
+                            registration, re.DOTALL)
+        assert binding is not None
+        # Method arguments are indented further than the next numbered bootstrap entry.
+        block = re.split(r"\n  \d+:", bootstrap.split(f"\n  {binding[1]}:")[1])[0]
+        generator = str(variant["generator_class"])
+        assert "REF_newInvokeSpecial " + generator.replace(".", "/") + '."<init>"' in block
+        source = sources[generator]
+        if name in {"end_lake_normal", "end_lake_rare"}:
+            parent = "org.betterx.betterend.world.structures.features.EndLakeStructure"
+            assert "extends " + parent in source
+            assert "generatePieces(" not in source
+            source = sources["org.betterx.betterend.world.structures.features.EndLakeStructure"]
+        assert "// class " + str(variant["piece_class"]).replace(".", "/") in source
 
 
 def test_voyager_mining_families_keep_distinct_layouts_and_authored_sources() -> None:

@@ -24277,68 +24277,77 @@
     },
     {
       "family_id": "betterend:end_lake",
-      "name": "BetterEnd end lake",
+      "name": "BetterEnd Lake Formation",
       "structure_ids": [
-        "betterend:end_lake"
+        "betterend:end_lake",
+        "betterend:end_lake_normal",
+        "betterend:end_lake_rare",
+        "betterend:megalake",
+        "betterend:megalake_small"
       ],
-      "rationale": "Registered custom generation root with no declared start pool. This working record preserves its separate type and biome constraints without asserting an authored building, a final family count or empty content. Reconcile the end_lake, normal/rare lake and megalake/small-megalake types from their generation code before deciding canonical variant relationships. Required effective attributes remain unresolved.",
-      "start_pool": null,
-      "generation_settings": {
-        "type": "betterend:end_lake"
+      "rationale": "Five registered lake variants form one natural formation family. Normal and rare EndLake classes inherit the base generation implementation and only forward construction and override type(). Megalake and small megalake use LakePiece with different size parameters and terrain checks; EndLake uses EndLakePiece. Preserve both procedural algorithms, all type IDs and biome constraints as variants of the lake formation rather than counting type aliases or size variants as independent families. Their shared lakes generation step and empty spawn overrides do not establish material composition, absence of mobs/loot, actual geometry or encounter frequency. Piece-content interpretation and remaining effective attributes are still required.",
+      "variants": {
+        "betterend:end_lake": {
+          "definition": {
+            "biomes": "#betterend:has_structure/end_lake",
+            "spawn_overrides": {},
+            "step": "lakes",
+            "type": "betterend:end_lake"
+          },
+          "generator_class": "org.betterx.betterend.world.structures.features.EndLakeStructure",
+          "piece_class": "org.betterx.betterend.world.structures.piece.EndLakePiece",
+          "missing_components": "UNKNOWN: procedural piece content is outside template-pool trace"
+        },
+        "betterend:end_lake_normal": {
+          "definition": {
+            "biomes": "#betterend:has_structure/end_lake_normal",
+            "spawn_overrides": {},
+            "step": "lakes",
+            "type": "betterend:end_lake_normal"
+          },
+          "generator_class": "org.betterx.betterend.world.structures.features.EndLakeNormalStructure",
+          "piece_class": "org.betterx.betterend.world.structures.piece.EndLakePiece",
+          "missing_components": "UNKNOWN: procedural piece content is outside template-pool trace"
+        },
+        "betterend:end_lake_rare": {
+          "definition": {
+            "biomes": "#betterend:has_structure/end_lake_rare",
+            "spawn_overrides": {},
+            "step": "lakes",
+            "type": "betterend:end_lake_rare"
+          },
+          "generator_class": "org.betterx.betterend.world.structures.features.EndLakeRareStructure",
+          "piece_class": "org.betterx.betterend.world.structures.piece.EndLakePiece",
+          "missing_components": "UNKNOWN: procedural piece content is outside template-pool trace"
+        },
+        "betterend:megalake": {
+          "definition": {
+            "biomes": "#betterend:has_structure/megalake",
+            "spawn_overrides": {},
+            "step": "lakes",
+            "type": "betterend:megalake"
+          },
+          "generator_class": "org.betterx.betterend.world.structures.features.MegaLakeStructure",
+          "piece_class": "org.betterx.betterend.world.structures.piece.LakePiece",
+          "missing_components": "UNKNOWN: procedural piece content is outside template-pool trace"
+        },
+        "betterend:megalake_small": {
+          "definition": {
+            "biomes": "#betterend:has_structure/megalake_small",
+            "spawn_overrides": {},
+            "step": "lakes",
+            "type": "betterend:megalake_small"
+          },
+          "generator_class": "org.betterx.betterend.world.structures.features.MegaLakeSmallStructure",
+          "piece_class": "org.betterx.betterend.world.structures.piece.LakePiece",
+          "missing_components": "UNKNOWN: procedural piece content is outside template-pool trace"
+        }
       },
-      "custom_generation_settings": {
-        "spawn_overrides": {},
-        "step": "lakes"
-      },
-      "missing_components": "UNKNOWN: custom generation is outside current pool trace",
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
-      }
-    },
-    {
-      "family_id": "betterend:end_lake_normal",
-      "name": "BetterEnd end lake normal",
-      "structure_ids": [
-        "betterend:end_lake_normal"
-      ],
-      "rationale": "Registered custom generation root with no declared start pool. This working record preserves its separate type and biome constraints without asserting an authored building, a final family count or empty content. Reconcile the end_lake, normal/rare lake and megalake/small-megalake types from their generation code before deciding canonical variant relationships. Required effective attributes remain unresolved.",
-      "start_pool": null,
-      "generation_settings": {
-        "type": "betterend:end_lake_normal"
-      },
-      "custom_generation_settings": {
-        "spawn_overrides": {},
-        "step": "lakes"
-      },
-      "missing_components": "UNKNOWN: custom generation is outside current pool trace",
-      "evidence": {
-        "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-        "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
-      }
-    },
-    {
-      "family_id": "betterend:end_lake_rare",
-      "name": "BetterEnd end lake rare",
-      "structure_ids": [
-        "betterend:end_lake_rare"
-      ],
-      "rationale": "Registered custom generation root with no declared start pool. This working record preserves its separate type and biome constraints without asserting an authored building, a final family count or empty content. Reconcile the end_lake, normal/rare lake and megalake/small-megalake types from their generation code before deciding canonical variant relationships. Required effective attributes remain unresolved.",
-      "start_pool": null,
-      "generation_settings": {
-        "type": "betterend:end_lake_rare"
-      },
-      "custom_generation_settings": {
-        "spawn_overrides": {},
-        "step": "lakes"
-      },
-      "missing_components": "UNKNOWN: custom generation is outside current pool trace",
-      "evidence": {
-        "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-        "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/betterend-formations-code/identities.json": "150df9fc0a941cc523bca51a782c39fcd0f08a32b11af77a64cf6f248c170961"
       }
     },
     {
@@ -24438,50 +24447,6 @@
       "custom_generation_settings": {
         "spawn_overrides": {},
         "step": "surface_structures"
-      },
-      "missing_components": "UNKNOWN: custom generation is outside current pool trace",
-      "evidence": {
-        "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-        "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
-      }
-    },
-    {
-      "family_id": "betterend:megalake",
-      "name": "BetterEnd megalake",
-      "structure_ids": [
-        "betterend:megalake"
-      ],
-      "rationale": "Registered custom generation root with no declared start pool. This working record preserves its separate type and biome constraints without asserting an authored building, a final family count or empty content. Reconcile the end_lake, normal/rare lake and megalake/small-megalake types from their generation code before deciding canonical variant relationships. Required effective attributes remain unresolved.",
-      "start_pool": null,
-      "generation_settings": {
-        "type": "betterend:megalake"
-      },
-      "custom_generation_settings": {
-        "spawn_overrides": {},
-        "step": "lakes"
-      },
-      "missing_components": "UNKNOWN: custom generation is outside current pool trace",
-      "evidence": {
-        "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-        "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
-      }
-    },
-    {
-      "family_id": "betterend:megalake_small",
-      "name": "BetterEnd megalake small",
-      "structure_ids": [
-        "betterend:megalake_small"
-      ],
-      "rationale": "Registered custom generation root with no declared start pool. This working record preserves its separate type and biome constraints without asserting an authored building, a final family count or empty content. Reconcile the end_lake, normal/rare lake and megalake/small-megalake types from their generation code before deciding canonical variant relationships. Required effective attributes remain unresolved.",
-      "start_pool": null,
-      "generation_settings": {
-        "type": "betterend:megalake_small"
-      },
-      "custom_generation_settings": {
-        "spawn_overrides": {},
-        "step": "lakes"
       },
       "missing_components": "UNKNOWN: custom generation is outside current pool trace",
       "evidence": {
