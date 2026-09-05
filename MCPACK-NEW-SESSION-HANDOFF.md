@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+MVS mining relationship and encounter attribution are delivered in `7c1d6c6`.
+Compact mine-with-campsite and modular mineshaft remain separate families;
+shared villager pieces are components. Both now record packaged hostile intent
+and authored/template/spawner versus natural-source distinctions. The compact
+site has skeleton spawner content; the network has bogged/creeper/skeleton
+spawner sources plus authored bogged/evoker/skeleton entities. No live population
+is claimed. All 69 affected tests and scoped checks pass. Count remains 426.
+Inventory SHA-256:
+`bf56126ef196c73126ab1da8880b4027c5f8c98b3b2e6331df5ebbc47a182e31`.
+Commands and limitations are in the final MVS section of `evidence/item-8/README.md`.
+The explicit MVS rock/pond/camp/island/mining relationship questions are resolved;
+other design reconciliation, BetterEnd, non-registry coverage and required
+attributes still need completion. No new measurements, tuning or downstream work.
+
+
 MVS floating-island grouping is delivered in `18ecfe4`. Two roots form one
 family with distinct loot and habitation variants; the large-house layout
 retains three shared villager components. Definitions differ only by start pool,
