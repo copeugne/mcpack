@@ -1,0 +1,69 @@
+Compiled from "NeoForgeResourcefulRegistry.java"
+public class com.finndog.moogs_structures.modinit.registry.neoforge.NeoForgeResourcefulRegistry<T> implements com.finndog.moogs_structures.modinit.registry.ResourcefulRegistry<T> {
+  private final net.neoforged.neoforge.registries.DeferredRegister<T> register;
+
+  private final com.finndog.moogs_structures.modinit.registry.RegistryEntries<T> entries;
+
+  public com.finndog.moogs_structures.modinit.registry.neoforge.NeoForgeResourcefulRegistry(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>, java.lang.String);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #7                  // class com/finndog/moogs_structures/modinit/registry/RegistryEntries
+       8: dup
+       9: invokespecial #9                  // Method com/finndog/moogs_structures/modinit/registry/RegistryEntries."<init>":()V
+      12: putfield      #10                 // Field entries:Lcom/finndog/moogs_structures/modinit/registry/RegistryEntries;
+      15: aload_0
+      16: aload_1
+      17: aload_2
+      18: invokestatic  #16                 // Method net/neoforged/neoforge/registries/DeferredRegister.create:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lnet/neoforged/neoforge/registries/DeferredRegister;
+      21: putfield      #22                 // Field register:Lnet/neoforged/neoforge/registries/DeferredRegister;
+      24: return
+
+  public com.finndog.moogs_structures.modinit.registry.neoforge.NeoForgeResourcefulRegistry(net.minecraft.core.Registry<T>, java.lang.String);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #7                  // class com/finndog/moogs_structures/modinit/registry/RegistryEntries
+       8: dup
+       9: invokespecial #9                  // Method com/finndog/moogs_structures/modinit/registry/RegistryEntries."<init>":()V
+      12: putfield      #10                 // Field entries:Lcom/finndog/moogs_structures/modinit/registry/RegistryEntries;
+      15: aload_0
+      16: aload_1
+      17: invokeinterface #26,  1           // InterfaceMethod net/minecraft/core/Registry.key:()Lnet/minecraft/resources/ResourceKey;
+      22: aload_2
+      23: invokestatic  #16                 // Method net/neoforged/neoforge/registries/DeferredRegister.create:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lnet/neoforged/neoforge/registries/DeferredRegister;
+      26: putfield      #22                 // Field register:Lnet/neoforged/neoforge/registries/DeferredRegister;
+      29: return
+
+  public <I extends T> com.finndog.moogs_structures.modinit.registry.RegistryEntry<I> register(java.lang.String, java.util.function.Supplier<I>);
+    Code:
+       0: aload_0
+       1: getfield      #10                 // Field entries:Lcom/finndog/moogs_structures/modinit/registry/RegistryEntries;
+       4: new           #32                 // class com/finndog/moogs_structures/modinit/registry/neoforge/NeoForgeRegistryEntry
+       7: dup
+       8: aload_0
+       9: getfield      #22                 // Field register:Lnet/neoforged/neoforge/registries/DeferredRegister;
+      12: aload_1
+      13: aload_2
+      14: invokevirtual #34                 // Method net/neoforged/neoforge/registries/DeferredRegister.register:(Ljava/lang/String;Ljava/util/function/Supplier;)Lnet/neoforged/neoforge/registries/DeferredHolder;
+      17: invokespecial #37                 // Method com/finndog/moogs_structures/modinit/registry/neoforge/NeoForgeRegistryEntry."<init>":(Lnet/neoforged/neoforge/registries/DeferredHolder;)V
+      20: invokevirtual #40                 // Method com/finndog/moogs_structures/modinit/registry/RegistryEntries.add:(Lcom/finndog/moogs_structures/modinit/registry/RegistryEntry;)Lcom/finndog/moogs_structures/modinit/registry/RegistryEntry;
+      23: areturn
+
+  public java.util.Collection<com.finndog.moogs_structures.modinit.registry.RegistryEntry<T>> getEntries();
+    Code:
+       0: aload_0
+       1: getfield      #10                 // Field entries:Lcom/finndog/moogs_structures/modinit/registry/RegistryEntries;
+       4: invokevirtual #44                 // Method com/finndog/moogs_structures/modinit/registry/RegistryEntries.getEntries:()Ljava/util/List;
+       7: areturn
+
+  public void init();
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field register:Lnet/neoforged/neoforge/registries/DeferredRegister;
+       4: getstatic     #48                 // Field com/finndog/moogs_structures/neoforge/MoogsStructuresNeoforge.modEventBusTempHolder:Lnet/neoforged/bus/api/IEventBus;
+       7: invokevirtual #54                 // Method net/neoforged/neoforge/registries/DeferredRegister.register:(Lnet/neoforged/bus/api/IEventBus;)V
+      10: return
+}
