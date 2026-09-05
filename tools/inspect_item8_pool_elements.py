@@ -315,6 +315,7 @@ CLASSES = (
     "org/violetmoon/quark/content/world/gen/SpiralSpireGenerator.class",
     "org/violetmoon/zeta/world/generator/multichunk/MultiChunkFeatureGenerator.class",
     "org/violetmoon/zeta/config/type/DimensionConfig.class",
+    "org/violetmoon/zeta/world/generator/Generator.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
