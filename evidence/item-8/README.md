@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `c221e11`, SHA-256
-`7b47782c2e2109500c3f432044e4aa99326ac70c7ced516bcfc131b9671ac841`.
+Current working inventory regenerated at `21b40f3`, SHA-256
+`04e7f449274990758c96e3ddc1c74c0b6fed8b5a08b94fbf7de8941330c7f397`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,16 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 21b40f3 increment links Monster Box to the preserved negative 64-chunk
+Overworld sample. Positive occurrence and live encounter behavior remain
+unobserved; this is not global absence or a generation-failure claim. All 35
+affected tests passed. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-monster-sample-21b40f3.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-monster-sample-21b40f3.json
+```
 
 The c221e11 increment resolves Monster Box initial enablement from category
 construction, annotation conversion, configuration callback order and preserved

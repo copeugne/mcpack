@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "465a8d5f9cc0054aab8370a295e63125f841c90bfa015745d29955e0a2c31307",
+    "evidence/item-8/family-decisions.json": "920c86e28d48b6b6574a8a77fe9ee6506115e545d9e6c85b74f38ee3d2b20ceb",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -160327,7 +160327,7 @@
             "intended_hostility": "Authored hostile proximity encounter outside Peaceful difficulty. A non-spectator player strictly within 2.5 blocks starts activation; spawning is requested on the 41st active tick.",
             "loot_table_source": "quark:misc/monster_box_spawns selects enemies. quark:misc/monster_box adds entity drops when extra loot is enabled, the spawned marker is present, doMobLoot is true and lastHurtByPlayerTime is positive on ServerLevel. quark:blocks/monster_box declares no pools. Selected definitions and hashes are bound by test_monster_box_selected_loot_sources.",
             "mob_source": "quark:misc/monster_box_spawns selects witch, cave-spider and zombie spawn eggs with weights 1, 2 and 7. Five through eight table draws request entities with SPAWNER reason; successful mob count is not guaranteed.",
-            "observation_status": "UNKNOWN: no direct saved-world placement or encounter observation is accepted yet.",
+            "observation_status": "Observed absence in the fixed 64-chunk ordinary run-a Overworld sample, linked in world_observation. Positive saved-world attribution and live encounter behavior remain UNKNOWN.",
             "rationale": "One authored underground proximity encounter design. Random enemy selection and draw count are variants, not separate families. Working non-registry encounter-family inclusion remains subject to complete provider reconciliation.",
             "surface_underground": "Underground placement under the frozen negative-Y range, subject to terrain/support checks.",
             "templates": [],
@@ -160358,8 +160358,16 @@
         },
         "interpretation": "evidence/item-8/sources/quark-monster-box-bindings/README.md#frozen-setting-attribution",
         "mechanism": "MonsterBoxModule registers MonsterBoxGenerator through Zeta at UNDERGROUND_DECORATION. It directly places a proximity-triggered encounter block, without structure templates.",
-        "remaining": "Resolve saved-world attribution and relevant ambient spawning in the broader provider reconciliation. Initial module enablement, generation, activation, loot selection, callback targets and field binding are already interpreted; do not repeat those investigations.",
-        "scope": "Working Item 8 family identity and source-derived attributes only. No Item 9 tier, observed frequency or final global family count."
+        "remaining": "Complete broader provider reconciliation and relevant ambient-spawn attribution. Preserve the negative fixed world sample; positive occurrence and live encounter remain unobserved. Do not repeat initial enablement, generation, activation or loot source investigation, or expand sampling solely to seek a hit.",
+        "scope": "Working Item 8 family identity and source-derived attributes only. No Item 9 tier, observed frequency or final global family count.",
+        "world_observation": {
+          "artifact": "evidence/item-8/world-observations/central-overworld/blocks.json",
+          "limits": "Bounded negative observation only. Does not prove global absence, disabled generation, failed placement or encounter frequency. No live activation or enemy-spawn observation.",
+          "result": "No used quark:monster_box block states or matching block-entity IDs in this fixed sample.",
+          "scope": "Preserved Item 7 ordinary seed 42 run-a Overworld; block X/Z -64..63, Y -64..319; 64 full chunks.",
+          "sha256": "8b19e927b6b5d1a4de5f210eb301402c7f5e9dca4d4eb210b2fa31219cde4d06",
+          "validation": "tests/item8/test_end_blocks.py::test_preserved_overworld_sample_has_no_monster_boxes"
+        }
       },
       "quark:spiral_spire": {
         "evidence_reference": "betterendisland:platform_gateway.effective_biome_gap.zeta_resolution",
