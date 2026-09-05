@@ -6,6 +6,42 @@
 
 ### Continuation update - 2026-09-05
 
+Better Village attribution is delivered: tool `cd2d54f`, seven-class code
+evidence `45ab692`, family decision/test `9595c52`, working inventory `18c7466`.
+No extra family or compatibility simulator was introduced. The existing
+vanilla village decision attributes its 246 packaged replacements, 244 reachable
+selected templates, the two untraced snowy streets, disabled compatibility
+entries and the active placement hook. The four compatibility targets are all
+absent from the captured Mod List and their packaged entries are disabled.
+The decoration mixin downgrades a loading error log to debug; preserve that
+limitation when interpreting logs. Other placement modifiers remain unresolved.
+
+The focused source-bound regression passed; scoped Ruff and basedpyright
+passed after correcting test JSON annotations and line lengths. Only the
+vanilla village record and top-level decision hash changed in the generated
+inventory. Commands are in `evidence/item-8/sources/bettervillage-code/README.md`.
+Code identities SHA:
+`91e8ac8a00856a802878445dc09ad73001779602300558a472dc88444cef8020`.
+Decisions SHA:
+`ac85610fd8f09a8fd4c35cbecfe924ce1e8c01313fa64587000da6d5cd7e50e3`.
+Inventory SHA:
+`f8f649f13b19f4ed97f3c234be1346298239dc9ebc977f6eacb3ef2c1f9171ed`.
+
+Next inspect the remaining selected modifier types before claiming complete
+effective content. The current report retains 38 as untraced. In particular,
+`lithostitched:set_trial_chambers_pool_aliases` replaces aliases (`append=false`)
+using internal random entries from trial-spawner pool tags. The existing trace
+still uses structure-definition aliases, so verify that replacement and its
+tag targets rather than assuming the original aliases remain effective.
+Regions Unexplored's `processor_list/village_path_fix` appends a reference
+processor to three vanilla street processor lists. Its Overworld surface rule
+and feature modifiers need appropriately scoped dispositions. The internal
+raw-template compilation modifier also remains to inspect. Reuse existing
+decoders and source evidence. No new measurement system is currently indicated.
+Registry assignment remains 887 IDs in 452 working groups; canonical grouping,
+custom generation, all-provider coverage, required attributes, final gate,
+review and main merge remain incomplete.
+
 Village additions are integrated and delivered: trace implementation `1f7be67`,
 generated trace/reference update `2d6fbfb`, rebuilt inventory `e22c24f`.
 The trace now selects resource layers, filters NeoForge conditions and appends
