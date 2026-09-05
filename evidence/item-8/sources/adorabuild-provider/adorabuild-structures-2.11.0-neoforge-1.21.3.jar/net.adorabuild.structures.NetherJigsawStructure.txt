@@ -1,0 +1,342 @@
+Compiled from "NetherJigsawStructure.java"
+public class net.adorabuild.structures.NetherJigsawStructure extends net.minecraft.world.level.levelgen.structure.Structure {
+  public static final net.minecraft.world.level.levelgen.structure.pools.DimensionPadding DEFAULT_DIMENSION_PADDING;
+
+  public static final net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings DEFAULT_LIQUID_SETTINGS;
+
+  public static final com.mojang.serialization.MapCodec<net.adorabuild.structures.NetherJigsawStructure> CODEC;
+
+  private final net.minecraft.core.Holder<net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool> startPool;
+
+  private final java.util.Optional<net.minecraft.resources.ResourceLocation> startJigsawName;
+
+  private final int size;
+
+  private final net.minecraft.world.level.levelgen.heightproviders.HeightProvider startHeight;
+
+  private final int minAbsoluteHeight;
+
+  private final int maxAbsoluteHeight;
+
+  private final java.util.Optional<net.minecraft.world.level.levelgen.Heightmap$Types> projectStartToHeightmap;
+
+  private final int maxDistanceFromCenter;
+
+  private final java.util.List<net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBinding> poolAliases;
+
+  private final net.minecraft.world.level.levelgen.structure.pools.DimensionPadding dimensionPadding;
+
+  private final net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings liquidSettings;
+
+  public net.adorabuild.structures.NetherJigsawStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings, net.minecraft.core.Holder<net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool>, java.util.Optional<net.minecraft.resources.ResourceLocation>, int, net.minecraft.world.level.levelgen.heightproviders.HeightProvider, int, int, java.util.Optional<net.minecraft.world.level.levelgen.Heightmap$Types>, int, java.util.List<net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBinding>, net.minecraft.world.level.levelgen.structure.pools.DimensionPadding, net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/Structure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       5: aload_0
+       6: aload_2
+       7: putfield      #7                  // Field startPool:Lnet/minecraft/core/Holder;
+      10: aload_0
+      11: aload_3
+      12: putfield      #13                 // Field startJigsawName:Ljava/util/Optional;
+      15: aload_0
+      16: iload         4
+      18: putfield      #17                 // Field size:I
+      21: aload_0
+      22: aload         5
+      24: putfield      #21                 // Field startHeight:Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+      27: aload_0
+      28: iload         6
+      30: putfield      #25                 // Field minAbsoluteHeight:I
+      33: aload_0
+      34: iload         7
+      36: putfield      #28                 // Field maxAbsoluteHeight:I
+      39: aload_0
+      40: aload         8
+      42: putfield      #31                 // Field projectStartToHeightmap:Ljava/util/Optional;
+      45: aload_0
+      46: iload         9
+      48: putfield      #34                 // Field maxDistanceFromCenter:I
+      51: aload_0
+      52: aload         10
+      54: putfield      #37                 // Field poolAliases:Ljava/util/List;
+      57: aload_0
+      58: aload         11
+      60: putfield      #41                 // Field dimensionPadding:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+      63: aload_0
+      64: aload         12
+      66: putfield      #45                 // Field liquidSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+      69: return
+
+  public java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_0
+       1: getfield      #21                 // Field startHeight:Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+       4: aload_1
+       5: invokevirtual #49                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+       8: new           #55                 // class net/minecraft/world/level/levelgen/WorldGenerationContext
+      11: dup
+      12: aload_1
+      13: invokevirtual #57                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      16: aload_1
+      17: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      20: invokespecial #65                 // Method net/minecraft/world/level/levelgen/WorldGenerationContext."<init>":(Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/LevelHeightAccessor;)V
+      23: invokevirtual #68                 // Method net/minecraft/world/level/levelgen/heightproviders/HeightProvider.sample:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/WorldGenerationContext;)I
+      26: istore_2
+      27: aload_1
+      28: invokevirtual #74                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      31: astore_3
+      32: aload_1
+      33: invokevirtual #57                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      36: aload_3
+      37: invokevirtual #78                 // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+      40: aload_3
+      41: invokevirtual #84                 // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+      44: aload_1
+      45: invokevirtual #61                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      48: aload_1
+      49: invokevirtual #87                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+      52: invokevirtual #91                 // Method net/minecraft/world/level/chunk/ChunkGenerator.getBaseColumn:(IILnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)Lnet/minecraft/world/level/NoiseColumn;
+      55: astore        4
+      57: iconst_0
+      58: istore        5
+      60: aload_0
+      61: getfield      #25                 // Field minAbsoluteHeight:I
+      64: iload_2
+      65: iadd
+      66: istore        6
+      68: iload         6
+      70: aload_0
+      71: getfield      #28                 // Field maxAbsoluteHeight:I
+      74: if_icmpgt     133
+      77: aload         4
+      79: iload         6
+      81: iconst_1
+      82: isub
+      83: invokevirtual #97                 // Method net/minecraft/world/level/NoiseColumn.getBlock:(I)Lnet/minecraft/world/level/block/state/BlockState;
+      86: invokevirtual #103                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+      89: ifne          127
+      92: aload         4
+      94: iload         6
+      96: invokevirtual #97                 // Method net/minecraft/world/level/NoiseColumn.getBlock:(I)Lnet/minecraft/world/level/block/state/BlockState;
+      99: invokevirtual #103                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     102: ifeq          127
+     105: aload         4
+     107: iload         6
+     109: iconst_2
+     110: iadd
+     111: invokevirtual #97                 // Method net/minecraft/world/level/NoiseColumn.getBlock:(I)Lnet/minecraft/world/level/block/state/BlockState;
+     114: invokevirtual #103                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     117: ifeq          127
+     120: iload         6
+     122: istore        5
+     124: goto          133
+     127: iinc          6, 1
+     130: goto          68
+     133: iload         5
+     135: ifne          142
+     138: invokestatic  #109                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     141: areturn
+     142: new           #115                // class net/minecraft/core/BlockPos
+     145: dup
+     146: aload_3
+     147: invokevirtual #78                 // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+     150: iload         5
+     152: iload_2
+     153: iadd
+     154: aload_3
+     155: invokevirtual #84                 // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+     158: invokespecial #117                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     161: astore        6
+     163: aload_1
+     164: aload_0
+     165: getfield      #7                  // Field startPool:Lnet/minecraft/core/Holder;
+     168: aload_0
+     169: getfield      #13                 // Field startJigsawName:Ljava/util/Optional;
+     172: aload_0
+     173: getfield      #17                 // Field size:I
+     176: aload         6
+     178: iconst_0
+     179: aload_0
+     180: getfield      #31                 // Field projectStartToHeightmap:Ljava/util/Optional;
+     183: aload_0
+     184: getfield      #34                 // Field maxDistanceFromCenter:I
+     187: aload_0
+     188: getfield      #37                 // Field poolAliases:Ljava/util/List;
+     191: aload         6
+     193: aload_1
+     194: invokevirtual #120                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.seed:()J
+     197: invokestatic  #124                // InterfaceMethod net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup.create:(Ljava/util/List;Lnet/minecraft/core/BlockPos;J)Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;
+     200: aload_0
+     201: getfield      #41                 // Field dimensionPadding:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+     204: aload_0
+     205: getfield      #45                 // Field liquidSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+     208: invokestatic  #130                // Method net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement.addPieces:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/core/Holder;Ljava/util/Optional;ILnet/minecraft/core/BlockPos;ZLjava/util/Optional;ILnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)Ljava/util/Optional;
+     211: areturn
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<?> type();
+    Code:
+       0: getstatic     #136                // Field net/adorabuild/structures/AdorabuildStructuresMod.NETHER_JIGSAW_STRUCTURE:Lnet/adorabuild/structures/registry/RegistryEntry;
+       3: invokevirtual #142                // Method net/adorabuild/structures/registry/RegistryEntry.get:()Ljava/lang/Object;
+       6: checkcast     #148                // class net/minecraft/world/level/levelgen/structure/StructureType
+       9: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$11(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokestatic  #150                // Method settingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       5: getstatic     #154                // Field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool.CODEC:Lcom/mojang/serialization/Codec;
+       8: ldc           #160                // String start_pool
+      10: invokeinterface #162,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      15: invokedynamic #168,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      20: invokevirtual #172                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      23: getstatic     #178                // Field net/minecraft/resources/ResourceLocation.CODEC:Lcom/mojang/serialization/Codec;
+      26: ldc           #181                // String start_jigsaw_name
+      28: invokeinterface #183,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      33: invokedynamic #186,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      38: invokevirtual #172                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      41: iconst_1
+      42: sipush        128
+      45: invokestatic  #187                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+      48: ldc           #191                // String size
+      50: invokeinterface #162,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      55: invokedynamic #192,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      60: invokevirtual #172                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      63: getstatic     #193                // Field net/minecraft/world/level/levelgen/heightproviders/HeightProvider.CODEC:Lcom/mojang/serialization/Codec;
+      66: ldc           #194                // String start_height
+      68: invokeinterface #162,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      73: invokedynamic #196,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      78: invokevirtual #172                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      81: iconst_1
+      82: sipush        128
+      85: invokestatic  #187                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+      88: ldc           #197                // String min_absolute_height
+      90: invokeinterface #162,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      95: invokedynamic #199,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+     100: invokevirtual #172                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     103: iconst_1
+     104: sipush        128
+     107: invokestatic  #187                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+     110: ldc           #200                // String max_absolute_height
+     112: invokeinterface #162,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     117: invokedynamic #202,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+     122: invokevirtual #172                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     125: getstatic     #203                // Field net/minecraft/world/level/levelgen/Heightmap$Types.CODEC:Lcom/mojang/serialization/Codec;
+     128: ldc           #206                // String project_start_to_heightmap
+     130: invokeinterface #183,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     135: invokedynamic #208,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+     140: invokevirtual #172                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     143: iconst_1
+     144: sipush        128
+     147: invokestatic  #187                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+     150: ldc           #209                // String max_distance_from_center
+     152: invokeinterface #162,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     157: invokedynamic #211,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+     162: invokevirtual #172                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     165: getstatic     #212                // Field net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasBinding.CODEC:Lcom/mojang/serialization/Codec;
+     168: invokestatic  #215                // InterfaceMethod com/mojang/serialization/Codec.list:(Lcom/mojang/serialization/Codec;)Lcom/mojang/serialization/Codec;
+     171: ldc           #219                // String pool_aliases
+     173: invokestatic  #221                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+     176: invokeinterface #227,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     181: invokedynamic #230,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+     186: invokevirtual #172                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     189: getstatic     #231                // Field net/minecraft/world/level/levelgen/structure/pools/DimensionPadding.CODEC:Lcom/mojang/serialization/Codec;
+     192: ldc           #234                // String dimension_padding
+     194: getstatic     #236                // Field DEFAULT_DIMENSION_PADDING:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+     197: invokeinterface #227,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     202: invokedynamic #239,  0            // InvokeDynamic #9:apply:()Ljava/util/function/Function;
+     207: invokevirtual #172                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     210: getstatic     #240                // Field net/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings.CODEC:Lcom/mojang/serialization/Codec;
+     213: ldc           #243                // String liquid_settings
+     215: getstatic     #245                // Field DEFAULT_LIQUID_SETTINGS:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+     218: invokeinterface #227,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     223: invokedynamic #248,  0            // InvokeDynamic #10:apply:()Ljava/util/function/Function;
+     228: invokevirtual #172                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     231: invokevirtual #249                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P12;
+     234: aload_0
+     235: invokedynamic #255,  0            // InvokeDynamic #11:apply:()Lcom/mojang/datafixers/util/Function12;
+     240: invokevirtual #258                // Method com/mojang/datafixers/Products$P12.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function12;)Lcom/mojang/datafixers/kinds/App;
+     243: areturn
+
+  private static net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings lambda$static$10(net.adorabuild.structures.NetherJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #45                 // Field liquidSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+       4: areturn
+
+  private static net.minecraft.world.level.levelgen.structure.pools.DimensionPadding lambda$static$9(net.adorabuild.structures.NetherJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field dimensionPadding:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+       4: areturn
+
+  private static java.util.List lambda$static$8(net.adorabuild.structures.NetherJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #37                 // Field poolAliases:Ljava/util/List;
+       4: areturn
+
+  private static java.lang.Integer lambda$static$7(net.adorabuild.structures.NetherJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #34                 // Field maxDistanceFromCenter:I
+       4: invokestatic  #263                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.util.Optional lambda$static$6(net.adorabuild.structures.NetherJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #31                 // Field projectStartToHeightmap:Ljava/util/Optional;
+       4: areturn
+
+  private static java.lang.Integer lambda$static$5(net.adorabuild.structures.NetherJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #28                 // Field maxAbsoluteHeight:I
+       4: invokestatic  #263                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$4(net.adorabuild.structures.NetherJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #25                 // Field minAbsoluteHeight:I
+       4: invokestatic  #263                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static net.minecraft.world.level.levelgen.heightproviders.HeightProvider lambda$static$3(net.adorabuild.structures.NetherJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #21                 // Field startHeight:Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+       4: areturn
+
+  private static java.lang.Integer lambda$static$2(net.adorabuild.structures.NetherJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field size:I
+       4: invokestatic  #263                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.util.Optional lambda$static$1(net.adorabuild.structures.NetherJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field startJigsawName:Ljava/util/Optional;
+       4: areturn
+
+  private static net.minecraft.core.Holder lambda$static$0(net.adorabuild.structures.NetherJigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field startPool:Lnet/minecraft/core/Holder;
+       4: areturn
+
+  static {};
+    Code:
+       0: getstatic     #269                // Field net/minecraft/world/level/levelgen/structure/pools/DimensionPadding.ZERO:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+       3: putstatic     #236                // Field DEFAULT_DIMENSION_PADDING:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+       6: getstatic     #272                // Field net/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings.APPLY_WATERLOGGING:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+       9: putstatic     #245                // Field DEFAULT_LIQUID_SETTINGS:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+      12: invokedynamic #275,  0            // InvokeDynamic #12:apply:()Ljava/util/function/Function;
+      17: invokestatic  #276                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+      20: putstatic     #282                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      23: return
+}
