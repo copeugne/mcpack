@@ -929,3 +929,37 @@ Grouping delivered in `bdcee2c`; inventory regenerated at that revision, SHA-256
 `151e5afe848e375cfdc7ef42887ec8e43c311250a45882a52645362de1c2e9ed`.
 All other family rows are unchanged. The two merged families preserve the union
 of their roots, templates, biome constraints and saved-start observation indexes.
+
+## MVS surface camp family reconciliation (2026-09-05)
+
+Campsite, fire camp and horse campsite are three layout/reward variants of
+`mvs:campsite`. Each reaches one resolved template with no authored entities,
+spawners or generation markers. Horse campsite therefore does not establish an
+authored horse source. Fire camp has no loot references; horse campsite uses
+`mvs:abandoned`; campsite also uses general and common/uncommon house loot.
+These references stay attached to the exact source templates.
+
+The definitions share biome constraints, zero-offset surface projection, empty
+spawn overrides and generation type. Full variant definitions preserve different
+jigsaw sizes and terrain checks. Mine with campsite remains separate: its lower
+mining component contains a spawner and its trace includes shared villager
+pieces. Its relationship to the modular MVS mineshaft is still open.
+
+The existing formation-content test now covers the three camp roots and the
+mine boundary, comparing full definitions, template sizes, missing references,
+authored content and loot sources. All MVS roots remain covered by the existing
+129-root uniqueness check. No runtime experiment or additional measurement
+system was needed. Working total becomes 427 groups for 887 registered roots.
+
+Decision SHA-256:
+`94b18c93ceb35a902f74f791dee0dad8097083bb733544516eadcd097ec3eb64`.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-mvs-camps.json
+```
+
+All 67 affected tests and scoped Ruff/Basedpyright checks passed. Full variant
+records retain the terrain-check differences; no configuration was changed.
