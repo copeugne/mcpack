@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-05
 
+Mega Ship grouping is delivered through `4b4686f`, built from `2a2eeea`.
+Inventory SHA-256: `6b545d5176bbdd6a8a26c50d770924dd9f277aa1eb094c90fc26c1c7fad6e728`.
+All 25 mes registry entries now map once to 18 working families. Mega Ship is
+one modular family with eight material, attachment and wreck variants. Full
+per-variant definitions preserve distinct spawn overrides, height and terrain
+settings. Common initial/middle/end module roles and bounds support grouping;
+they do not prove identical occupied geometry or gameplay. Five airborne and
+three wreck forms remain distinguished. Entity and loot references retain
+template ownership. No Mega Ship has a retained Item 7 observation.
+Twenty-one focused tests and scoped Ruff/basedpyright checks passed. The
+inventory reproduced byte for byte and earlier groups remained unchanged.
+Current totals: 135 working groups, 207 assigned registry entries, 680 unassigned.
+Continue remaining Moog providers (mns, mss, mvs), other providers, non-registry
+generation and required attributes. Effective custom placement, occupied size,
+discoverability and gameplay attribution remain open. Item 8 has not passed its
+final gate, report, clean review or verified main merge.
+
 Seventeen non-Mega-Ship Moog End designs are assigned by `cf3083f` and joined
 in `dad9743`. Inventory SHA-256:
 `8a548b710b53676b3baf3850a005fa741770bd916339018dc0cb3333eeb28d5b`.
