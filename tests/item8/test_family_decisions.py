@@ -227,6 +227,80 @@ def test_explorify_variants_bind_definitions_templates_and_complete_namespace() 
             assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
 
 
+def test_spider_dungeon_attributes_bind_custom_spawners_loot_and_components() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, JsonValue]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    group = next(
+        row
+        for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
+        if row["family_id"] == "betterdungeons:spider_dungeon"
+    )
+    texts: dict[str, str] = {}
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        raw = (root / path).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == digest
+        if path.endswith(".txt"):
+            texts[Path(path).stem.rsplit(".", 1)[-1]] = raw.decode()
+    assert "SpiderDungeonBigTunnelPiece" in texts["SpiderDungeonStructure"]
+    assert "addChildren:" in texts["SpiderDungeonStructure"]
+    assert group["custom_components"] == [
+        "SpiderDungeonBigTunnelPiece",
+        "SpiderDungeonSmallTunnelPiece",
+        "SpiderDungeonNestPiece",
+        "SpiderDungeonEggRoomPiece",
+    ]
+    for component in (
+        "SpiderDungeonBigTunnelPiece",
+        "SpiderDungeonSmallTunnelPiece",
+        "SpiderDungeonNestPiece",
+    ):
+        assert (
+            "// class com/yungnickyoung/minecraft/betterdungeons/"
+            "world/structure/spider_dungeon/piece/"
+            + component
+            in texts["SpiderDungeonBigTunnelPiece"]
+        )
+    assert "SpiderDungeonEggRoomPiece" in texts["SpiderDungeonSmallTunnelPiece"]
+    attrs = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
+    spawners = cast("list[dict[str, str]]", attrs["generated_spawners"]["source_components"])
+    assert [(row["class"], row["entity_id"]) for row in spawners] == [
+        ("SpiderDungeonNestPiece", "minecraft:cave_spider"),
+        ("SpiderDungeonEggRoomPiece", "minecraft:spider"),
+    ]
+    for row in spawners:
+        code = texts[row["class"]]
+        assert "public void " + row["method"] + "(" in code
+        assert "Blocks.SPAWNER:" in code
+        assert "EntityType." + row["entity_id"].split(":")[1].upper() + ":" in code
+        assert "SpawnerBlockEntity.setEntityId:" in code
+    loot = str(attrs["loot_table_source"]["generated_chest_table"])
+    namespace, path = loot.split(":")
+    assert "// String " + namespace in texts["SpiderDungeonEggRoomPiece"]
+    assert "// String " + path in texts["SpiderDungeonEggRoomPiece"]
+    assert "Method createChest:" in texts["SpiderDungeonEggRoomPiece"]
+    catalog = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    resources = cast("list[dict[str, JsonValue]]", catalog["resources"])
+    definition = next(
+        cast("dict[str, JsonValue]", row["document"])
+        for row in resources
+        if row["path"] == "data/betterdungeons/worldgen/structure/spider_dungeon.json"
+    )
+    assert attrs["mob_source"]["structure_spawn_override"] == definition["spawn_overrides"]
+    assert definition["step"] == "underground_structures"
+    assert any(row["path"] == f"data/{namespace}/loot_table/{path}.json" for row in resources)
+    assert attrs["generated_spawners"]["observed_per_structure_counts"] == "UNKNOWN"
+
+
 def test_integrated_stronghold_keeps_rooms_as_components_and_binds_spawn_override() -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(
