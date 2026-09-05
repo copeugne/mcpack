@@ -12734,6 +12734,258 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "facb6f7bbafb6836e7eaa694535b975c2ee2deab1e36ab85930f1c11c7a471c8",
         "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
       }
+    },
+    {
+      "family_id": "ctov:pillager_outpost",
+      "name": "CTOV Pillager Outpost",
+      "structure_ids": [
+        "ctov:pillager_outpost_badlands",
+        "ctov:pillager_outpost_beach",
+        "ctov:pillager_outpost_dark_forest",
+        "ctov:pillager_outpost_desert",
+        "ctov:pillager_outpost_jungle",
+        "ctov:pillager_outpost_mesa",
+        "ctov:pillager_outpost_mountain",
+        "ctov:pillager_outpost_plains",
+        "ctov:pillager_outpost_savanna",
+        "ctov:pillager_outpost_snowy",
+        "ctov:pillager_outpost_swamp",
+        "ctov:pillager_outpost_taiga"
+      ],
+      "rationale": "Twelve biome outpost roots form one family. Badlands and mesa have identical full definitions and start pools; retain both registry IDs without counting two families. Other definitions differ only by biome, jigsaw size and pool. Towers, tents, cages, plates and targets are components. All roots reference the missing Savage & Ravage target template; additional missing cages, dark-forest targets and the mountain towers pool remain variant-specific gaps. Authored cage inhabitants are distinct from full-bounds pillager, evoker, vindicator and witch spawn overrides. Effective missing-resource behavior, generated populations and complete layouts remain unresolved.",
+      "common_generation_definition": {
+        "liquid_settings": "ignore_waterlogging",
+        "max_distance_from_center": 80,
+        "pool_aliases": [],
+        "project_start_to_heightmap": "WORLD_SURFACE_WG",
+        "spawn_overrides": {
+          "monster": {
+            "bounding_box": "full",
+            "spawns": [
+              {
+                "maxCount": 1,
+                "minCount": 1,
+                "type": "minecraft:pillager",
+                "weight": 1
+              },
+              {
+                "maxCount": 1,
+                "minCount": 1,
+                "type": "minecraft:evoker",
+                "weight": 1
+              },
+              {
+                "maxCount": 1,
+                "minCount": 1,
+                "type": "minecraft:vindicator",
+                "weight": 1
+              },
+              {
+                "maxCount": 1,
+                "minCount": 1,
+                "type": "minecraft:witch",
+                "weight": 1
+              }
+            ]
+          }
+        },
+        "start_height": {
+          "absolute": 0
+        },
+        "step": "surface_structures",
+        "terrain_adaptation": "beard_thin",
+        "type": "minecraft:jigsaw",
+        "use_expansion_hack": true
+      },
+      "variants": {
+        "ctov:pillager_outpost_badlands": {
+          "biomes": "#minecraft:is_badlands",
+          "size": 2,
+          "start_pool": "ctov:pillager_outpost/badlands/base_plates",
+          "missing_components": [
+            {
+              "id": "savage_and_ravage:pillager_outpost/feature_targets_arrow",
+              "kind": "template"
+            }
+          ]
+        },
+        "ctov:pillager_outpost_beach": {
+          "biomes": "#minecraft:is_beach",
+          "size": 4,
+          "start_pool": "ctov:pillager_outpost/beach/base_plates",
+          "missing_components": [
+            {
+              "id": "savage_and_ravage:pillager_outpost/feature_targets_arrow",
+              "kind": "template"
+            }
+          ]
+        },
+        "ctov:pillager_outpost_dark_forest": {
+          "biomes": "#minecraft:has_structure/woodland_mansion",
+          "size": 4,
+          "start_pool": "ctov:pillager_outpost/dark_forest/base_plates",
+          "missing_components": [
+            {
+              "id": "ctov:pillager_outpost/dark_forest/allays_cage",
+              "kind": "template"
+            },
+            {
+              "id": "ctov:pillager_outpost/dark_forest/targets",
+              "kind": "template"
+            },
+            {
+              "id": "savage_and_ravage:pillager_outpost/feature_targets_arrow",
+              "kind": "template"
+            }
+          ]
+        },
+        "ctov:pillager_outpost_desert": {
+          "biomes": "#minecraft:has_structure/village_desert",
+          "size": 4,
+          "start_pool": "ctov:pillager_outpost/desert/base_plates",
+          "missing_components": [
+            {
+              "id": "savage_and_ravage:pillager_outpost/feature_targets_arrow",
+              "kind": "template"
+            }
+          ]
+        },
+        "ctov:pillager_outpost_jungle": {
+          "biomes": "#minecraft:is_jungle",
+          "size": 4,
+          "start_pool": "ctov:pillager_outpost/jungle/base_plates",
+          "missing_components": [
+            {
+              "id": "ctov:pillager_outpost/jungle/allays_cage",
+              "kind": "template"
+            },
+            {
+              "id": "savage_and_ravage:pillager_outpost/feature_targets_arrow",
+              "kind": "template"
+            }
+          ]
+        },
+        "ctov:pillager_outpost_mesa": {
+          "biomes": "#minecraft:is_badlands",
+          "size": 2,
+          "start_pool": "ctov:pillager_outpost/badlands/base_plates",
+          "missing_components": [
+            {
+              "id": "savage_and_ravage:pillager_outpost/feature_targets_arrow",
+              "kind": "template"
+            }
+          ]
+        },
+        "ctov:pillager_outpost_mountain": {
+          "biomes": "#minecraft:is_mountain",
+          "size": 2,
+          "start_pool": "ctov:pillager_outpost/mountain/base_plates",
+          "missing_components": [
+            {
+              "id": "ctov:pillager_outpost/mountain/towers",
+              "kind": "pool"
+            },
+            {
+              "id": "ctov:pillager_outpost/mountain/allays_cage",
+              "kind": "template"
+            },
+            {
+              "id": "savage_and_ravage:pillager_outpost/feature_targets_arrow",
+              "kind": "template"
+            }
+          ]
+        },
+        "ctov:pillager_outpost_plains": {
+          "biomes": "#minecraft:has_structure/village_plains",
+          "size": 4,
+          "start_pool": "ctov:pillager_outpost/plains/base_plates",
+          "missing_components": [
+            {
+              "id": "ctov:pillager_outpost/plains/allays_cage",
+              "kind": "template"
+            },
+            {
+              "id": "savage_and_ravage:pillager_outpost/feature_targets_arrow",
+              "kind": "template"
+            }
+          ]
+        },
+        "ctov:pillager_outpost_savanna": {
+          "biomes": "#minecraft:has_structure/village_savanna",
+          "size": 4,
+          "start_pool": "ctov:pillager_outpost/savanna/base_plates",
+          "missing_components": [
+            {
+              "id": "ctov:pillager_outpost/savanna/allays_cage",
+              "kind": "template"
+            },
+            {
+              "id": "savage_and_ravage:pillager_outpost/feature_targets_arrow",
+              "kind": "template"
+            }
+          ]
+        },
+        "ctov:pillager_outpost_snowy": {
+          "biomes": "#minecraft:has_structure/village_snowy",
+          "size": 5,
+          "start_pool": "ctov:pillager_outpost/snowy/base_plates",
+          "missing_components": [
+            {
+              "id": "ctov:pillager_outpost/snowy/allays_cage",
+              "kind": "template"
+            },
+            {
+              "id": "savage_and_ravage:pillager_outpost/feature_targets_arrow",
+              "kind": "template"
+            }
+          ]
+        },
+        "ctov:pillager_outpost_swamp": {
+          "biomes": "#minecraft:has_structure/ruined_portal_swamp",
+          "size": 5,
+          "start_pool": "ctov:pillager_outpost/swamp/base_plates",
+          "missing_components": [
+            {
+              "id": "ctov:pillager_outpost/swamp/allays_cage",
+              "kind": "template"
+            },
+            {
+              "id": "savage_and_ravage:pillager_outpost/feature_targets_arrow",
+              "kind": "template"
+            }
+          ]
+        },
+        "ctov:pillager_outpost_taiga": {
+          "biomes": "#minecraft:has_structure/village_taiga",
+          "size": 2,
+          "start_pool": "ctov:pillager_outpost/taiga/base_plates",
+          "missing_components": [
+            {
+              "id": "ctov:pillager_outpost/taiga/allays_cage",
+              "kind": "template"
+            },
+            {
+              "id": "savage_and_ravage:pillager_outpost/feature_targets_arrow",
+              "kind": "template"
+            }
+          ]
+        }
+      },
+      "duplicate_definition_ids": [
+        "ctov:pillager_outpost_badlands",
+        "ctov:pillager_outpost_mesa"
+      ],
+      "attributes": {
+        "intended_hostility": {
+          "assessment": "Hostile illager and witch outpost",
+          "basis": "All twelve definitions have full-bounds monster spawn overrides for pillager, evoker, vindicator and witch. This describes intent, not observed population or successful generation of every piece."
+        }
+      },
+      "evidence": {
+        "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
+        "evidence/item-8/sources/pool-traces-content.json.gz": "facb6f7bbafb6836e7eaa694535b975c2ee2deab1e36ab85930f1c11c7a471c8",
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+      }
     }
   ]
 }
