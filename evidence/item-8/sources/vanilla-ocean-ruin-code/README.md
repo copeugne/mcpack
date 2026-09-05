@@ -59,3 +59,32 @@ a universal submerged/exposed claim.
 Template reconciliation and effective retained-mod effects remain open at this
 source milestone. Preserve observed geometry; individual template dimensions
 cannot establish the footprint or vertical extent of a terrain-adjusted cluster.
+
+## Family integration
+
+All 48 code references resolve in the frozen template catalog: 12 warm and
+36 cold. Each template has an empty entity list and only DATA structure-block
+entities with chest or drowned metadata. No ordinary or trial-spawner block
+types occur in their palettes. Small template envelopes are (6, 7, 7) blocks;
+large ones are (16, 16, 16). These are component dimensions, not cluster bounds.
+
+The decision records six source-backed attributes: intended hostility (explicitly
+inferred from authored encounters), mob source, loot source, spawners, enemy
+attribution and placement classification. Existing observed geometry remains in
+the inventory. The focused test binds code and catalog hashes, resolves the exact
+reference set per temperature and checks all template content and dimensions.
+
+```sh
+uv run pytest -q tests/item8/test_ocean_ruin_sources.py tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_ocean_ruin_sources.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_ocean_ruin_sources.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ocean-ruin-content.json
+```
+
+Decision SHA-256:
+`e0c453f708bf61c484ec379d3c3d7924733f587a109699a6dccbcb9e6bf5023b`.
+Visual discoverability and retained-mod transformations remain unresolved.
+No new family or measurement system is introduced. Item 8 remains incomplete.
+
+All 62 affected tests passed. Basedpyright passed; Ruff passed after wrapping
+one long assertion in the focused test. No behavior changed in that correction.
