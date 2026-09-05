@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Better Village provider closure reuses seven-class source 45ab692 and existing
+contribution regression. Full payload accounted for: 246 replacements, four
+disabled/absent compatibility targets, two named disconnected snowy streets.
+Both focused cases and scoped checks pass. No new family or capture. Exact queue
+updated to 28 provider dispositions and 108 open. Continue coverage before
+attributes; do not repeat this provider pass.
+
 WDA provider scope now passes with all six classes captured in 1b230be using
 f3ac5ab, reproducible at evidence/raw/item8/wda-provider-scope-r1. Forty packaged
 roots all use vanilla jigsaw; no extra root from the custom registered type.

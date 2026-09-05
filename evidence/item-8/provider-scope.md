@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 27 of 136. The exact queue below has 109 open rows.
+Supported provider dispositions: 28 of 136. The exact queue below has 108 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -519,8 +519,8 @@ sample or graph implementation. Explicit provider dispositions now cover 26 of
 
 This is the working queue, not an acceptance result. Initially, the 26 dispositions
 above and 110 queued archive names partitioned the 136-line retained manifest.
-WDA is now resolved below: 27 dispositions and 109 open providers. Its row remains
-as an explicit closure link. Platform Minecraft and NeoForge are shared consumers, not
+WDA and Better Village are now resolved below: 28 dispositions and 108 open
+providers. Their rows remain as explicit closure links. Platform Minecraft and NeoForge are shared consumers, not
 extra retained mods. Existing capture directories below are relative to
 `sources/`; their presence means evidence to reuse, not provider closure. An
 empty directory index does not mean no evidence exists in other items.
@@ -582,7 +582,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `azurelibarmor-neo-1.21.1-3.1.2.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `bclib-21.0.24.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `bettercombat-neoforge-2.3.2+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `bettervillage-neoforge-1.21.1-3.3.1.jar` | `bettervillage-code` | Reuse injection source; reconcile complete template payload with village consumers. |
+| `bettervillage-neoforge-1.21.1-3.3.1.jar` | `bettervillage-code` | RESOLVED: see Better Village provider disposition below. |
 | `bookshelf-neoforge-1.21.1-21.1.81.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `bundle-api-neoforge-1.1.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Include nested C2ME module entry/mixin paths; distinguish generation scheduling changes from content providers. |
@@ -695,3 +695,34 @@ One case passes. Scoped Basedpyright passes; Ruff passes after removing an unuse
 noqa code found in the first static run. Source reproduction is documented in
 sources/wda-provider-scope/README.md. No new graph, runtime or measurement system.
 Provider dispositions: 27 of 136; 109 remain open in the explicit queue.
+
+## Better Village provider disposition
+
+Better Village replaces components of the existing five vanilla village variants
+and modifies their placement through its captured StructureSetMixin. It adds no
+independent family. Reuse the complete seven-class source capture in 45ab692 and
+the contribution regression from 9595c52, delivered with inventory attribution in
+18c7466. No source recapture or new family decision is required.
+
+The full archive consists of those seven classes, nine metadata/documentation
+files, 246 vanilla village template replacements and four compatibility JSON
+files. Its declared mixins are exactly StructureSetMixin and
+AbstractDecorationEntityMixin; the access transformer exposes only the two
+StructureTemplatePool template fields. There are no additional resource classes,
+functions, nested archives, services or feature definitions in the payload.
+
+The existing contribution regression verifies 244 selected reachable replacements
+across desert, plains, savanna, snowy and taiga villages. The two disconnected
+components are minecraft:village/snowy/streets/crossroad_01 and straight_05. All
+four compatibility targets are absent and their metadata is disabled. Frozen
+placement configuration and the captured activation log remain bound by that
+regression. Keep the decoration mixin's suppression of error-level logging in
+mind when interpreting logs, as already documented in the source README.
+
+```sh
+uv run pytest -q tests/item8/test_bettervillage_provider_scope.py tests/item8/test_family_decisions.py -k 'bettervillage or better_village'
+```
+
+Two cases pass, 72 unrelated cases deselected. Scoped Ruff and Basedpyright pass
+after shortening two overlong access-transformer assertions. No additional runtime
+or measurement framework. Provider dispositions: 28 of 136; 108 remain open.
