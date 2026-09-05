@@ -1990,3 +1990,14 @@ mixin declaration/evidence links. Previous family records remain unchanged.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-mixins.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-mixins.json
 ```
+
+### Better End Island spike and podium interpretation
+
+The working decisions now attribute generator variant selection, placement,
+processor order and direct End Crystal requests to the preserved full sources
+in `sources/better-end-island-spike-podium`. These are code-level findings,
+not observed successful generation. Exact concatenated template names, reachable
+spike indices, podium invocation and remaining processor effects are still open.
+Manual inspection covered both complete generator disassemblies. The existing
+28 focused feature/source tests passed, as did scoped builder Ruff/Basedpyright.
+No additional measurement system or validation framework was introduced.
