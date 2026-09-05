@@ -6,6 +6,34 @@
 
 ### Continuation update - 2026-09-05
 
+Selected feature contributions are resolved in `bcacd6a`: the terminal
+configuration check covers 11 component types and 44 configured block IDs,
+with tree/root/state-provider implementation dispositions in
+`evidence/item-8/sources/regions-unexplored-feature-code/README.md`.
+The final random-block provider was extracted with `5ae4555`; it selects a
+configured block's default state (or air if empty). These 34 modifiers add or
+remove vegetation/ground cover/ash vents, not a distinct structure family.
+Placement, frequency and whole-provider coverage are not claimed.
+
+Trace integration is delivered in `1ffa075`. It binds the relevant config and
+source identities and records all 37 formerly untraced selected modifiers as
+inspected non-family contributions, retaining each complete modifier document.
+The executed pilot command was:
+`uv run -m tools.trace_item8_structure_pools --output evidence/raw/item8/pool-traces-modifier-dispositions.json.gz`.
+Pilot SHA `9bac83e23b19826a872a3d760ca44bdcf6e24b3ef9df3a2693c9737ec28f3a0d`.
+Only top-level inputs and pool_modifiers differ from the current committed
+trace. The report contains 956 condition exclusions, 68 pool additions,
+one alias replacement and 37 inspected non-family contributions. Twenty-one
+affected tests and scoped tool checks passed. Pushed refs were verified.
+
+Next reproduce that pilot from the committed tool, publish the trace, update
+the existing family-decision hash references and builder pins, and rebuild the
+inventory. Update the frozen-report regression to require the new dispositions.
+The current committed trace, family decisions and inventory still have their
+previous identities until that atomic generated-evidence migration is done.
+Do not repeat the completed modifier source inspection. Broader provider/family
+coverage, 69 custom generators, attributes and final review/merge remain open.
+
 Feature configuration binding is delivered in `48fef4a`, with source selection
 `78eca8f`. All 34 declared predicates map to enabled toggles in frozen common
 config SHA `300dda462e31f6f1bcce0d67308e4939d1b461a03c8cc92ba805f7ac9d1cb66c`.
