@@ -6,6 +6,43 @@
 
 ### Continuation update - 2026-09-05
 
+The optional spike-decoration investigation is dispositioned in de6b0dc.
+Keep both conditional materials and exact selection UNKNOWN. Do not capture
+CompressedBlocksModule merely to choose between the two decorations: the source
+branches rejoin before identical spawner/chest operations and preserve geometry.
+This does not waive required family attributes, provider coverage or world
+observations. Return to broader coverage and unresolved gameplay-relevant inputs.
+All 31 affected tests passed; no new source capture or measurement was added.
+
+Shared direction geometry is resolved in 239f150 from capture 49df38d.
+HORIZONTALS is NORTH, SOUTH, WEST, EAST. Nether spikes request a 3-by-3 footprint;
+Fallen Log side decoration is perpendicular, giving possible 5-by-3 or 6-by-3
+envelopes with end decoration. Do not repeat array or geometry analysis. Continue
+remaining decoration/configuration dependencies and broader provider coverage.
+All 35 affected tests passed. Item 8 remains incomplete.
+
+Select only Zeta MiscUtil to bind HORIZONTALS. Its actual array contents affect
+two current consumers, Nether spike footprint and Fallen Log orientation and
+decoration. Existing captures reference but do not define this array. Reuse the
+existing extractor; do not interpret unrelated utility methods or add a new
+measurement system.
+
+Nether obsidian spikes are integrated as one working family in 4151e8c, with
+ordinary and large encounter variants explicit. The large variant authors a
+blaze spawner and chest using the selected minecraft:chests/nether_bridge table,
+bound by 7455ffc. Source geometry and initial settings are captured in f566496.
+Do not repeat generator or shared Zeta mapping. Remaining direct dependencies
+are CompressedBlocksModule decoration and MiscUtil.HORIZONTALS contents, plus
+relevant global loot/ambient spawning and world attribution. Broader provider
+coverage remains incomplete. All 35 affected tests passed; no new measurement.
+
+Continue Quark provider coverage with NetherObsidianSpikesModule and
+ObsidianSpikeGenerator through the existing extractor. These direct sources are
+needed to decide landmark-family inclusion and the required placement/content
+attributes; the registry-root inventory cannot account for their direct feature
+path. Capture only these two classes, including annotations and callback targets.
+Do not repeat shared Zeta configuration or Monster Box investigations.
+
 Monster Box now links the preserved central Overworld sample in 21b40f3.
 All 64 sampled full chunks have no Monster Box block states or matching block
 entities. Keep this negative result and do not enlarge the sample just to obtain

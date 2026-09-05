@@ -41,6 +41,13 @@ def test_monster_box_selected_loot_sources() -> None:
             {"name": "minecraft:zombie_spawn_egg", "type": "minecraft:item", "weight": 7},
         ], "rolls": 1}], "random_sequence": "quark:misc/monster_box_spawns"}
 
+    # The other captured Quark encounter, large Nether spikes, uses this chest source.
+    nether = selected["minecraft:chests/nether_bridge"]
+    assert nether["archive"] == (
+        "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar")
+    assert nether["sha256"] == (
+        "56fceac267476866f2381335b4ac1b3eeab33993610d854752cd2f011c2062e6")
+
 
 def test_end_island_packaged_biome_entrypoints() -> None:
     decisions = cast("dict[str, JsonValue]", json.loads(Path(
