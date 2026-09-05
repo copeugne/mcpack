@@ -66,7 +66,7 @@ def test_tavern_components_link_to_every_reachable_parent_family() -> None:
             )
     assert actual == expected
     assert len(actual) == 66
-    assert sum("village_taverns_templates" in g for g in decisions["groups"]) == 22
+    assert sum("village_taverns_templates" in g for g in decisions["groups"]) == 3
     assert templates - {t for ts in actual.values() for t in ts} == {
         "ctov:village/dark_forest/jobsite/tavern"
     }
@@ -1690,6 +1690,9 @@ def test_ctov_size_decisions_exactly_cover_source_proven_variant_groups() -> Non
         for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
         if str(row["family_id"]).startswith("ctov:") and row["family_id"] != "ctov:pillager_outpost"
     ]
+    assert len(groups) == 1
+    assert groups[0]["family_id"] == "ctov:village"
+    designs = cast("dict[str, dict[str, JsonValue]]", groups[0]["design_variants"])
     registry = read_registry(
         root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
     )
@@ -1700,7 +1703,7 @@ def test_ctov_size_decisions_exactly_cover_source_proven_variant_groups() -> Non
         tuple(str(member["structure_id"]) for member in cast("list[dict[str, JsonValue]]", group))
         for group in proven
     }
-    actual = [tuple(cast("list[str]", row["structure_ids"])) for row in groups]
+    actual = [tuple(cast("list[str]", row["structure_ids"])) for row in designs.values()]
     assert len(actual) == len(set(actual))
     assert set(actual) == expected
     members = [identifier for group in actual for identifier in group]
@@ -1710,16 +1713,18 @@ def test_ctov_size_decisions_exactly_cover_source_proven_variant_groups() -> Non
         for identifier in registry
         if identifier.startswith(("ctov:small/", "ctov:medium/", "ctov:large/"))
     }
-    assert len(groups) == 22
+    assert len(designs) == 22
     assert len(members) == 66
+    assert sorted(members) == groups[0]["structure_ids"]
+    for design, row in designs.items():
+        assert {rid.split("/", 1)[1] for rid in cast("list[str]", row["structure_ids"])} == {
+            design.split(":", 1)[1]
+        }
     traces = cast("dict[str, dict[str, dict[str, JsonValue]]]", json.loads(gzip.decompress(
         (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
     )))
     resources = cast("list[dict[str, JsonValue]]", catalog["resources"])
     for row in groups:
-        assert {
-            identifier.split("/", 1)[1] for identifier in cast("list[str]", row["structure_ids"])
-        } == {str(row["family_id"]).split(":", 1)[1]}
         for path, digest in cast("dict[str, str]", row["evidence"]).items():
             assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
         variants = cast("dict[str, dict[str, JsonValue]]", row["variants"])
@@ -1735,6 +1740,13 @@ def test_ctov_size_decisions_exactly_cover_source_proven_variant_groups() -> Non
             assert trace["missing"] == variant["missing_components"]
             assert trace["templates"]
             assert trace["unresolved_elements"] == []
+        definitions = [cast("dict[str, JsonValue]", v["definition"]) for v in variants.values()]
+        common = [{k: v for k, v in definition.items()
+                   if k not in {"biomes", "start_pool", "size", "start_height"}}
+                  for definition in definitions]
+        assert all(definition == common[0] for definition in common)
+        assert common[0]["spawn_overrides"] == {}
+        assert common[0]["type"] == "lithostitched:jigsaw"
 
 
 def test_ctov_content_attributes_bind_templates_and_placement() -> None:
@@ -1770,13 +1782,15 @@ def test_ctov_content_attributes_bind_templates_and_placement() -> None:
                 assert contents[template][field] == []
         placement = attributes["underground_surface_classification"]
         variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
-        for variant in variants.values():
+        for identifier, variant in variants.items():
             definition = cast("dict[str, JsonValue]", variant.get(
                 "definition", group.get("common_generation_definition")
             ))
-            assert definition["start_height"] == {
-                "absolute": placement["start_height_offset_blocks"]
-            }
+            offsets = cast("dict[str, JsonValue]", placement.get(
+                "start_height_offset_blocks_by_structure", {}
+            ))
+            offset = offsets[identifier] if offsets else placement["start_height_offset_blocks"]
+            assert definition["start_height"] == {"absolute": offset}
             assert definition["project_start_to_heightmap"] == placement["heightmap"]
             assert definition["step"] == "surface_structures"
             overrides = cast("dict[str, dict[str, JsonValue]]", definition["spawn_overrides"])
