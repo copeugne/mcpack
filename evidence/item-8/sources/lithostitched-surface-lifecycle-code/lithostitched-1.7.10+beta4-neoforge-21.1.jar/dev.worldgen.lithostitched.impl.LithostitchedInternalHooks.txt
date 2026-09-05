@@ -1,0 +1,42 @@
+Compiled from "LithostitchedInternalHooks.java"
+public class dev.worldgen.lithostitched.impl.LithostitchedInternalHooks {
+  public dev.worldgen.lithostitched.impl.LithostitchedInternalHooks();
+    Code:
+       0: aload_0
+       1: invokespecial #19                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void onServerAboutToStart(net.minecraft.server.MinecraftServer);
+    Code:
+       0: aload_0
+       1: invokestatic  #29                 // Method dev/worldgen/lithostitched/impl/worldgen/modifier/ModifierManager.applyModifiers:(Lnet/minecraft/server/MinecraftServer;)V
+       4: aload_0
+       5: invokestatic  #34                 // Method dev/worldgen/lithostitched/worldgen/surface/SurfaceRuleManager.applySurfaceRules:(Lnet/minecraft/server/MinecraftServer;)V
+       8: aload_0
+       9: invokestatic  #39                 // Method dev/worldgen/lithostitched/impl/worldgen/biomeinjector/internal/BiomeInjectorManager.applyBiomeInjectors:(Lnet/minecraft/server/MinecraftServer;)V
+      12: aload_0
+      13: invokestatic  #45                 // Method dev/worldgen/lithostitched/impl/LithostitchedVersion.getSeed:(Lnet/minecraft/server/MinecraftServer;)J
+      16: lstore_1
+      17: aload_0
+      18: invokevirtual #51                 // Method net/minecraft/server/MinecraftServer.registryAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+      21: getstatic     #57                 // Field dev/worldgen/lithostitched/api/registry/LithostitchedRegistries.FAST_NOISE_CONFIG:Lnet/minecraft/resources/ResourceKey;
+      24: invokeinterface #61,  2           // InterfaceMethod net/minecraft/core/RegistryAccess$Frozen.lookupOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/HolderLookup$RegistryLookup;
+      29: invokeinterface #65,  1           // InterfaceMethod net/minecraft/core/HolderLookup$RegistryLookup.listElements:()Ljava/util/stream/Stream;
+      34: invokeinterface #71,  1           // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      39: invokeinterface #77,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      44: astore_3
+      45: aload_3
+      46: invokeinterface #83,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      51: ifeq          82
+      54: aload_3
+      55: invokeinterface #87,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      60: checkcast     #89                 // class net/minecraft/core/Holder
+      63: astore        4
+      65: aload         4
+      67: invokeinterface #92,  1           // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      72: checkcast     #94                 // class dev/worldgen/lithostitched/api/worldgen/densityfunction/fastnoise/FastNoiseConfig
+      75: lload_1
+      76: invokevirtual #98                 // Method dev/worldgen/lithostitched/api/worldgen/densityfunction/fastnoise/FastNoiseConfig.bind:(J)V
+      79: goto          45
+      82: return
+}
