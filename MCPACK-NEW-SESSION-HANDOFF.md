@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Slime Cave custom components and encounters are integrated in 0feca29, with
+processor attribution in 9f7b811. The focused test binds its single template,
+six slime markers, one spawner marker and chest loot-table selection. Existing
+world envelopes agree with the 15-by-15-by-12 template bounds. Do not repeat
+generator, marker or material-processor tracing. Continue visual-discoverability
+and relevant global-effect gaps, other custom families and provider coverage.
+Five affected tests and scoped checks passed. No new measurement; Item 8 open.
+
 Slime Cave's custom structure and piece are preserved in d3543c5. One rotated
 template supplies slime and spawner markers. Inspect its DeepslateProcessor
 before final effective-content attribution, then bind the existing template

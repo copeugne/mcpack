@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `6e61b10`, SHA-256
-`709a47844183aab2a972dd355e9824e3d9a92a83f4461b744f997ae79d1cc9b3`.
+Current working inventory regenerated at `0feca29`, SHA-256
+`daffbe7bbe8af3ff99c3a6ca3db4c3be7a39f1a7da8606d1368d9fac1797ece1`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,21 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 0feca29 increment resolves Slime Cave's single custom template component
+and attributes its six slime markers, one slime-spawner marker and chest loot
+source. The processor preserves these markers and chest NBT. Existing observed
+piece envelopes are 15 by 15 horizontally and 12 vertically, consistent with
+the template. Five affected tests and scoped static checks passed. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-slime-0feca29.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-slime-0feca29.json
+uv run pytest -q tests/item8/test_slime_cave_sources.py tests/item8/test_inventory_sources.py
+```
+
+This is source attribution, not observed live spawning. Visual discoverability,
+relevant global loot effects and broader provider/attribute coverage remain open.
 
 The 6e61b10 increment accounts for Big Stone Clusters, Vanilla Stone Clusters
 and New Stone Types as working terrain contributions. Both inspected writers
