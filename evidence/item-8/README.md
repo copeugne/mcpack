@@ -1476,3 +1476,25 @@ Inventory regenerated at `544d5de`, SHA-256:
 `53d49ef90e2b842f8b6321ef74b8fbc1e06537de934201b149c9e00533e0f08e`.
 Only the decision identity and direct bridge encounter-content field changed.
 All 421 registry family rows and 887 roots remain unchanged.
+
+## Bridge terrain placement
+
+The captured BridgePlacement.getPositions resolves the custom bank/span checks.
+It searches candidate positions at sea level minus one and returns the first
+accepted position. Both endpoint centers and enough contiguous lateral bank
+cells must occlude and have WORLD_SURFACE height no higher than sea level.
+The configured span rectangle must be liquid; despite the minWaterZ/maxWaterZ
+names, the predicate is not water-specific. The generation step later raises
+template origin to sea level. Exact loop ranges and endpoint separation are
+recorded in the contribution. This supports surface-crossing placement intent,
+not observed visibility or frequency. Biome and rarity filters are separate.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-bridge-placement.json
+```
+
+Eleven affected tests passed; scoped Ruff and Basedpyright passed. Decision SHA-256:
+`c6e3111cd30e6aa12bbb566d0691837fc217fe01ea9979cddecb57c23e016bc6`.
