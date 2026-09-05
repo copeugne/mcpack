@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-05
 
+Desert pyramid source inspection now preserves its piece and structure-level
+archaeology path under `evidence/item-8/sources/vanilla-desert-pyramid-code`.
+Manifest SHA: `89770d3b09f15c47e801b2889bf431d3f5e823c047cc8025c1fd433932e405d9`.
+Extraction and scoped checks pass. The source distinguishes TNT/pressure-plate
+placement, chest-result flags, cellar construction and clipped archaeology
+selection. Inventory and decision hashes remain those of the swamp-hut increment.
+Next resolve the SinglePieceStructure callback using existing verbose javap
+support, inspect the remaining cellar/placement logic, and integrate the family
+with both loot paths. The source README records exact remaining work. No new
+measurement system is required; Item 8 remains incomplete.
+
+
 Swamp hut source and shared ScatteredFeaturePiece placement code are delivered
 in `ab64119`; family integration is `5498f16`. Nine attributes now record its
 7 by 9 nominal footprint, 7-block piece height excluding downward supports,
