@@ -73,6 +73,7 @@ ARCHIVES = frozenset(
         "YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar",
         "integrated_villages-1.3.3+1.21.1-neoforge.jar",
         "integrated_stronghold-1.1.4+1.21.1-neoforge.jar",
+        "adorabuild-structures-2.11.0-neoforge-1.21.3.jar",
         "idas-1.13.7+1.21.1-neoforge.jar",
         "BetterEnd-21.0.31.jar",
         "BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar",
@@ -83,6 +84,7 @@ ARCHIVES = frozenset(
     }
 )
 GENERATION_PREFIXES = (
+    "net/adorabuild/structures/",
     "com/craisinlord/integrated_stronghold/",
     "com/jtorleonstudios/bettervillage/",
     "com/finndog/moogs_structures/world/structures/GenericJigsawStructure",
@@ -657,6 +659,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = source.name.startswith("mcw-")
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
+                    "net/adorabuild/structures/AdorabuildStructuresMod.class",
                     "com/craisinlord/integrated_stronghold/IntegratedStronghold.class",
                     "com/craisinlord/integrated_stronghold/neoforge/IntegratedStrongholdNeoforge.class",
                     "com/finndog/moogs_structures/MoogsStructuresCommon.class",
