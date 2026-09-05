@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+The next Extras source capture selects five exact classes using the existing
+extractor: feature registration, AbstractNbtFeature and the three empty-config
+desert generators. JSON cannot establish their template links or custom effects.
+This is the smallest source increment needed to resolve those demonstrated gaps;
+no new evidence class, schema, validator or runtime is introduced.
+
+
 Extras packaged contents are delivered in `bae0ae4`: 62 empty entity lists,
 three chests across chillzone/ruins_0 and eight campfires across giant_torch/
 swamp_pillar_2. Both chest loot resources resolve. There are no stored spawner
