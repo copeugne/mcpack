@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-05
 
+Extras code-linked envelopes are delivered in `bb970de`: chillzone 3x4x4,
+giant_torch 4x7x4 and ruins_0 4x5x4. All 62 packaged template envelopes now have
+verified linked records, without claiming occupied world sizes or family counts.
+Seventeen affected tests and scoped checks passed. Inventory SHA-256:
+`c7fa2fed220886d952ea872056cd9fcf0899719e431b70923fc21be72b4835ea`.
+All 421 registry family rows and 887 roots remain unchanged. Continue effective
+content/terrain, family and configuration/provider reconciliation. Item 8 remains
+incomplete. No new extraction or measurement system added.
+
+
 Extras code-based links are delivered in `4bb656f`. Registration annotations,
 constructor bindings, configured type fields and template calls resolve the
 three previously open links. All 62 packaged templates now have a traced feature
