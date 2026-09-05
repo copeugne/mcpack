@@ -70,3 +70,10 @@ content integration above, not Item 8 or effective retained-mod behavior.
 
 Final affected-suite rerun: all 62 tests passed. Scoped Ruff and Basedpyright
 passed, including the corrected constructor selector.
+
+Family decisions and tests are delivered in `b4c5e6f`. Inventory rebuilt at that
+commit with the command above, SHA-256:
+`055f6b523673db40380f2b670e920c1b6320c45c03e611fb29168e89700b9285`.
+The diff is confined to jungle temple content/grouping and the decision input
+identity. Existing dimension membership, biome and world-observation links are
+preserved. This source-derived record does not establish observed generation.

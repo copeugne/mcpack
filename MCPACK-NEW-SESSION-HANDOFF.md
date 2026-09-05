@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-05
 
+Jungle temple source is delivered in `8397ebc`, and nine-attribute integration
+in `b4c5e6f`. The jungle_pyramid registry root and jungle_temple generator type
+remain one family. Both chest and dispenser loot paths are recorded, with saved
+flags storing helper results. Nominal dimensions are 12 by 15 and height 10;
+the explicit Y -4 foundation lies below that nominal height. No full generated
+height or actual visibility is claimed. All 62 affected tests and scoped checks
+pass after correcting the focused test's constructor selector. Inventory SHA:
+`055f6b523673db40380f2b670e920c1b6320c45c03e611fb29168e89700b9285`.
+Decision SHA: `3650c5d8f0406b623cf85007f2c5f1351f18eeaea634f8a25a13107ce22d10e7`.
+Commands and the test failure disposition are under
+`evidence/item-8/sources/vanilla-jungle-temple-code/README.md`.
+No new measurement system was added. Continue the remaining custom generators
+(vanilla fortress, mineshafts, monument, mansion and stronghold among them),
+provider/family reconciliation and effective retained-mod gaps. Do not repeat
+the delivered jungle temple or desert pyramid source extractions. Item 8 remains
+incomplete, including its final review and main-merge gate.
+
 Desert pyramid content integration is delivered in `f9fe8a1`. Seven attributes
 now distinguish the TNT trap, chest-result flags, archaeology selection/clipping,
 vanilla entity/spawner absence, authored form and mixed surface/underground
