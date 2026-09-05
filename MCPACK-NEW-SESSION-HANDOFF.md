@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Resolve concrete spike/podium inventory gaps with the existing extractor: verbose
+bootstrap constants for the two generators, SpikeCacheLoader for variant indices,
+EndSpikeMixin for crystal offsets, BlockReplaceProcessor for generated contents,
+EndDragonFightMixin for podium invocation, and BetterEndIslandCommon for the
+betterEnd height switch. Existing nonverbose captures omit concatenated template
+paths; the selected helpers are direct unresolved dependencies. This is the
+smallest existing-path extension for those gaps, not a new measurement system.
+
 Spike/podium generator interpretation is integrated in `8d11e68`. Direct
 End Crystal requests, placement rules, variant selection and failure limits
 are recorded. Twenty-eight focused tests and scoped checks passed. Inventory
