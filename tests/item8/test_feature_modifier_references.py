@@ -7,6 +7,7 @@ from collections import Counter
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
+from mcpack_evidence.item7_restrictions import resolve_biome_tag
 from mcpack_evidence.item8_registry import read_registry
 from mcpack_evidence.item8_resource_selection import select_resources
 
@@ -211,6 +212,32 @@ def test_yungs_bridges_non_registry_path_binds_runtime_and_packaged_variants() -
     assert sorted(str(x["feature"]) for x in config["features"]) == sorted(links)
     assert len(links) == 22
     assert len(set(links.values())) == 11
+    controls = cast("dict[str, JsonValue]", contribution["biome_and_modifier_constraints"])
+    for variant in config["features"]:
+        placements = cast("list[dict[str, JsonValue]]", variant["placement"])
+        assert [p["type"] for p in placements] == controls["modifier_order"]
+        assert placements[1] == {
+            "type": "minecraft:rarity_filter", "chance": controls["rarity_filter_chance"]
+        }
+    inputs = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/sources/structure-inputs.json"
+    ).read_bytes()))
+    tag_rows = cast("dict[str, dict[str, JsonValue]]", inputs["biome_tags"])
+    tags = {key: cast("list[object]", row["values"])
+            for key, row in tag_rows.items() if not row["unresolved"]}
+    biomes, missing = resolve_biome_tag(
+        str(controls["biome_tag"]), tags,
+        registered_biomes=frozenset(read_registry(Path(
+            "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_biome.txt"
+        ))),
+    )
+    assert sorted(biomes) == controls["registered_biomes"]
+    assert list(missing) == controls["missing_required_members"] == []
+    dimensions = cast("dict[str, list[str]]", json.loads(Path(
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json"
+    ).read_bytes()))
+    assert {key: sorted(set(values) & biomes) for key, values in dimensions.items()
+            if set(values) & biomes} == controls["dimension_biome_overlap"]
     registry = Path("evidence/item-8/runtime/registry-r1/dumps/registry/minecraft")
     configured = read_registry(registry / "worldgen_configured_feature.txt")
     assert set(links) | {str(contribution["configured_feature"])} <= set(configured)
