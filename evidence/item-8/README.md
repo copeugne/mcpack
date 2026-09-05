@@ -488,3 +488,21 @@ start pool and missing-component list, the exact badlands/mesa duplicate, and
 complete distinct assignment of all 78 CTOV registry IDs. Existing village
 size checks remain intact. No retained outpost observations exist. Missing
 components are preserved rather than silently corrected or counted as families.
+
+Towns & Towers (`2177cc2`, joined in `a0c9c6e`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-towns-2177cc2.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-towns-2177cc2-repro.json
+cmp evidence/raw/item8/inventory-towns-2177cc2.json evidence/raw/item8/inventory-towns-2177cc2-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 45 focused tests and scoped Ruff/basedpyright checks passed. The provider
+check binds all 60 registry roots exactly once to eight working groups, complete
+variant definitions, `kaisyn` start pools, template traces and exact missing
+component lists. Nested exclusive resource paths are preserved. Prior family
+records are unchanged. Ocean and desert-mimic observations are linked; outpost
+fort/tower/camp and general village groups have no retained observations.
+Missing resources, effective attributes and final canonical reconciliation
+remain open. No additional measurement system was needed.
