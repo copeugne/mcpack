@@ -1,0 +1,81 @@
+Compiled from "LithostitchedTemplates.java"
+public class dev.worldgen.lithostitched.worldgen.structure.LithostitchedTemplates implements java.lang.Iterable<net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement> {
+  protected final java.util.List<dev.worldgen.lithostitched.worldgen.structure.LithostitchedTemplates$WeightedEntry> entries;
+
+  public dev.worldgen.lithostitched.worldgen.structure.LithostitchedTemplates();
+    Code:
+       0: aload_0
+       1: invokespecial #23                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: invokestatic  #29                 // Method com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;
+       8: putfield      #31                 // Field entries:Ljava/util/List;
+      11: return
+
+  public dev.worldgen.lithostitched.worldgen.structure.LithostitchedTemplates add(net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement, int);
+    Code:
+       0: aload_0
+       1: getfield      #31                 // Field entries:Ljava/util/List;
+       4: new           #10                 // class dev/worldgen/lithostitched/worldgen/structure/LithostitchedTemplates$WeightedEntry
+       7: dup
+       8: aload_1
+       9: aload_0
+      10: getfield      #31                 // Field entries:Ljava/util/List;
+      13: invokeinterface #43,  1           // InterfaceMethod java/util/List.size:()I
+      18: iload_2
+      19: invokespecial #46                 // Method dev/worldgen/lithostitched/worldgen/structure/LithostitchedTemplates$WeightedEntry."<init>":(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;II)V
+      22: invokeinterface #49,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      27: pop
+      28: aload_0
+      29: areturn
+
+  public java.util.List<net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement> shuffle(net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: getfield      #31                 // Field entries:Ljava/util/List;
+       4: invokeinterface #59,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+       9: invokedynamic #79,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      14: invokeinterface #85,  2           // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      19: invokeinterface #89,  1           // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      24: invokestatic  #92                 // Method com/google/common/collect/Lists.newArrayList:(Ljava/lang/Iterable;)Ljava/util/ArrayList;
+      27: astore_2
+      28: aload_2
+      29: aload_1
+      30: invokedynamic #105,  0            // InvokeDynamic #1:accept:(Lnet/minecraft/util/RandomSource;)Ljava/util/function/Consumer;
+      35: invokeinterface #109,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+      40: aload_2
+      41: invokedynamic #122,  0            // InvokeDynamic #2:applyAsDouble:()Ljava/util/function/ToDoubleFunction;
+      46: invokestatic  #128                // InterfaceMethod java/util/Comparator.comparingDouble:(Ljava/util/function/ToDoubleFunction;)Ljava/util/Comparator;
+      49: invokeinterface #132,  2          // InterfaceMethod java/util/List.sort:(Ljava/util/Comparator;)V
+      54: aload_2
+      55: invokeinterface #59,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+      60: invokedynamic #140,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      65: invokeinterface #85,  2           // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      70: invokeinterface #89,  1           // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      75: areturn
+
+  public java.util.stream.Stream<net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement> stream();
+    Code:
+       0: aload_0
+       1: getfield      #31                 // Field entries:Ljava/util/List;
+       4: invokeinterface #59,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+       9: invokedynamic #140,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      14: invokeinterface #85,  2           // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      19: areturn
+
+  public java.util.Iterator<net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement> iterator();
+    Code:
+       0: aload_0
+       1: getfield      #31                 // Field entries:Ljava/util/List;
+       4: invokeinterface #149,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       9: invokedynamic #152,  0            // InvokeDynamic #3:apply:()Lcom/google/common/base/Function;
+      14: invokestatic  #158                // Method com/google/common/collect/Iterators.transform:(Ljava/util/Iterator;Lcom/google/common/base/Function;)Ljava/util/Iterator;
+      17: areturn
+
+  private static void lambda$shuffle$0(net.minecraft.util.RandomSource, dev.worldgen.lithostitched.worldgen.structure.LithostitchedTemplates$WeightedEntry);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #165,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+       7: invokevirtual #169                // Method dev/worldgen/lithostitched/worldgen/structure/LithostitchedTemplates$WeightedEntry.setRandom:(F)V
+      10: return
+}
