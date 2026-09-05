@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
 from mcpack_evidence.item8_biomes import structure_biomes, supplementaries_tag_inputs
-from mcpack_evidence.item8_inventory import biome_tag_inputs, size_variant_groups, structure_inputs
+from mcpack_evidence.item8_inventory import size_variant_groups, structure_inputs, tag_inputs
 from mcpack_evidence.item8_registry import read_registry
 
 if TYPE_CHECKING:
@@ -138,7 +138,7 @@ def main() -> None:
     result["size_variant_groups"] = size_variant_groups(registry, resources)
     order = runtime_order((ROOT / RUNTIME_LOG).read_text(), inspected_archive_packs())
     result["biome_archive_order"] = order
-    tags = biome_tag_inputs(resources, tuple(cast("list[str]", order["archives"])))
+    tags = tag_inputs(resources, tuple(cast("list[str]", order["archives"])))
     config = cast(
         "dict[str, JsonValue]", tomllib.loads((ROOT / SUPPLEMENTARIES_CONFIG).read_text())
     )

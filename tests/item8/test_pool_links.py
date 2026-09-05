@@ -48,7 +48,7 @@ def test_frozen_trace_reaches_all_selected_village_additions() -> None:
     root = Path(__file__).resolve().parents[2]
     raw = (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
     assert hashlib.sha256(raw).hexdigest() == (
-        "7b0f61a66e46d78e206244271d2a1da0c846429d5a48a7e8bb05d852f6ec3632"
+        "b78541655c69fbc3599a670ccc424d60dd08cbb642bd796a9b69bcb9c1f223d9"
     )
     trace = cast("dict[str, JsonValue]", json.loads(gzip.decompress(raw)))
     report = cast("dict[str, JsonValue]", trace["pool_modifiers"])
@@ -60,7 +60,7 @@ def test_frozen_trace_reaches_all_selected_village_additions() -> None:
     assert len(selected) == 68
     excluded = sum(row["status"] == "excluded by NeoForge mod conditions" for row in dispositions)
     assert excluded == 956
-    assert sum(row["status"] == "untraced modifier type" for row in dispositions) == 38
+    assert sum(row["status"] == "untraced modifier type" for row in dispositions) == 37
     assert len(cast("list[JsonValue]", report["excluded_resource_layers"])) == 6
     structures = cast("dict[str, dict[str, JsonValue]]", trace["structures"])
     reached: set[tuple[str, str, str]] = set()
@@ -71,6 +71,26 @@ def test_frozen_trace_reaches_all_selected_village_additions() -> None:
                 source = cast("dict[str, str]", edge["source"])
                 reached.add((source["archive"], source["path"], source["sha256"]))
     assert reached == selected
+    trial = structures["minecraft:trial_chambers"]
+    assert "regions_unexplored:trial_chambers/ashen" in cast("list[str]", trial["templates"])
+    replacement = cast("dict[str, JsonValue]", trial["alias_replacement"])
+    definition = cast("dict[str, JsonValue]", replacement["document"])
+    assert definition["append"] is False
+    assert trial["pool_aliases"] == definition["pool_aliases"]
+    assert trial["packaged_pool_aliases"] != trial["pool_aliases"]
+    tags = cast("dict[str, dict[str, JsonValue]]", trace["pool_alias_tags"])
+    melee = tags["lithostitched:trial_spawner/melee"]
+    assert "regions_unexplored:trial_chambers/ashen" in cast("list[str]", melee["values"])
+    assert len(cast("list[JsonValue]", melee["sources"])) == 2
+    content = cast("dict[str, dict[str, JsonValue]]", trace["template_contents"])
+    ashen = content["regions_unexplored:trial_chambers/ashen"]
+    spawner = cast("list[dict[str, JsonValue]]", ashen["spawner_blocks"])[0]
+    nbt = cast("dict[str, JsonValue]", spawner["nbt"])
+    for mode in ("normal_config", "ominous_config"):
+        config = cast("dict[str, JsonValue]", nbt[mode])
+        potentials = cast("list[dict[str, JsonValue]]", config["spawn_potentials"])
+        data = cast("dict[str, JsonValue]", potentials[0]["data"])
+        assert data["entity"] == {"id": "regions_unexplored:ashen"}
     for biome in ("desert", "plains", "savanna", "snowy", "taiga"):
         templates = cast("list[str]", structures[f"minecraft:village_{biome}"]["templates"])
         assert f"village_taverns:village/{biome}/tavern" in templates

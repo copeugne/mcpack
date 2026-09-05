@@ -18,6 +18,7 @@ from tools.build_item8_structure_inputs import (
     SOURCE_SHA256,
 )
 
+from mcpack_evidence.item8_inventory import tag_inputs
 from mcpack_evidence.item8_pool_links import add_pool_elements, pool_links, template_links
 from mcpack_evidence.item8_pool_trace import trace_pool
 from mcpack_evidence.item8_registry import read_registry
@@ -48,6 +49,8 @@ INPUTS = {
         "6dfe814d7ed7691ed4f80d460e14c7b274881ecbfee8eb29837edf51e237ba43",
     "evidence/item-8/sources/neoforge-registry-loading-code/identities.json":
         "1bcc020827e31e893e47baf01e173e915197bd755f5034fd18ef38c1d828b1be",
+    "evidence/item-8/sources/lithostitched-alias-code/identities.json":
+        "eea3af78139809c0a2452a0027bfe83fac321380574b3a10ba3d8dcc16c1691b",
 }
 
 
@@ -79,8 +82,11 @@ def main() -> None:
         lithostitched_overlay=overlay,
     )
     pool_edges = pool_links(list(pools.values()))
-    additions, modifier_report = _pool_modifiers(resources, enabled, overlay)
-    add_pool_elements(pool_edges, additions)
+    modifiers, modifier_report = _pool_modifiers(resources, enabled, overlay)
+    add_pool_elements(pool_edges, [row for row in modifiers if
+        cast("dict[str, JsonValue]", cast("dict[str, JsonValue]", row)["document"])["type"]
+        == "lithostitched:add_template_pool_elements"])
+    replacements, alias_tags = _alias_replacements(modifiers, resources)
     template_edges = template_links(list(templates.values()))
     traces: dict[str, JsonValue] = {}
     unsupported: dict[str, JsonValue] = {}
@@ -88,10 +94,18 @@ def main() -> None:
         document = cast("dict[str, JsonValue]", structures[identifier]["document"])
         start_pool = document.get("start_pool")
         if isinstance(start_pool, str):
-            result = trace_pool(
-                start_pool, pool_edges, template_edges, document.get("pool_aliases", [])
+            replacement = replacements.get(identifier)
+            aliases = document.get("pool_aliases", []) if replacement is None else (
+                cast("dict[str, JsonValue]", replacement["document"])["pool_aliases"]
             )
-            result["pool_aliases"] = document.get("pool_aliases", [])
+            result = trace_pool(
+                start_pool, pool_edges, template_edges, aliases,
+                {key: cast("list[str]", value["values"]) for key, value in alias_tags.items()},
+            )
+            result["pool_aliases"] = aliases
+            if replacement is not None:
+                result["alias_replacement"] = replacement
+                result["packaged_pool_aliases"] = document.get("pool_aliases", [])
             traces[identifier] = result
         else:
             unsupported[identifier] = {
@@ -121,6 +135,7 @@ def main() -> None:
         "excluded_pools": excluded_pools,
         "excluded_templates": excluded_templates,
         "pool_modifiers": modifier_report,
+        "pool_alias_tags": cast("JsonValue", alias_tags),
     }
     payload = (json.dumps(result, sort_keys=True, separators=(",", ":")) + "\n").encode()
     with output.open("xb") as stream:
@@ -144,13 +159,15 @@ def _pool_modifiers(
         document = cast("dict[str, JsonValue]", resource["document"])
         kind = document.get("type")
         status = "untraced modifier type"
-        if kind == "lithostitched:add_template_pool_elements":
+        if kind in {"lithostitched:add_template_pool_elements", "lithostitched:set_pool_aliases"}:
             if "predicate" in document or "neoforge:value" in document:
                 message = f"unresolved additional pool modifier condition or wrapper: {identifier}"
                 raise ValueError(message)
             if mod_conditions_match(document.get("neoforge:conditions", []), set(mods)):
                 additions.append(resource)
                 status = "included in potential pool reachability"
+                if kind == "lithostitched:set_pool_aliases":
+                    status = "included alias replacement"
             else:
                 status = "excluded by NeoForge mod conditions"
         dispositions.append({
@@ -164,6 +181,48 @@ def _pool_modifiers(
         "excluded_resource_layers": excluded,
         "scope": "additive potential links only; other modifier types and runtime hooks untraced",
     }
+
+
+def _alias_replacements(
+    modifiers: list[JsonValue], resources: list[JsonValue]
+) -> tuple[dict[str, dict[str, JsonValue]], dict[str, dict[str, JsonValue]]]:
+    replacements: dict[str, dict[str, JsonValue]] = {}
+    required_tags: set[str] = set()
+    for raw in modifiers:
+        resource = cast("dict[str, JsonValue]", raw)
+        document = cast("dict[str, JsonValue]", resource["document"])
+        if document["type"] != "lithostitched:set_pool_aliases":
+            continue
+        target = document.get("structures")
+        if (
+            not isinstance(target, str) or document.get("append") is not False
+            or target in replacements
+        ):
+            message = "unsupported or competing alias replacement targets/append semantics"
+            raise ValueError(message)
+        replacements[target] = {
+            **{key: resource[key] for key in ("archive", "path", "sha256")},
+            "document": document,
+            "scope": "shared-index bindings retained; tag order and joint frequencies not inferred",
+        }
+        for binding in cast("list[dict[str, JsonValue]]", document["pool_aliases"]):
+            for pool in cast("list[str]", binding["pools"]):
+                if not pool.startswith("#"):
+                    message = f"unsupported alias holder-set reference: {pool}"
+                    raise ValueError(message)
+                required_tags.add(pool[1:])
+    merged = tag_inputs(resources, kind="tags/worldgen/template_pool")
+    tags: dict[str, dict[str, JsonValue]] = {}
+    for key in sorted(required_tags):
+        row = cast("dict[str, JsonValue]", merged[key])
+        values = row["values"]
+        if row["unresolved"] or not isinstance(values, list) or any(
+            not isinstance(value, str) or value.startswith("#") for value in values
+        ):
+            message = f"unresolved or unsupported alias pool tag: {key}"
+            raise ValueError(message)
+        tags[key] = row
+    return replacements, tags
 
 
 def _resources(path: str) -> list[JsonValue]:

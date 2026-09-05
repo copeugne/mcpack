@@ -6,6 +6,74 @@
 
 ### Continuation update - 2026-09-05
 
+Trial alias correction is delivered: shared tag/alias decoder `749c1a2`, trace
+integration `f4efdcc`, generated trace and decision bindings `48df0e9`, rebuilt
+inventory `073cfb3`. The existing tag merger is now named `tag_inputs` and
+accepts the current resource kind; all former biome callers were updated.
+The biome source output reproduced byte-for-byte. Eleven decoder/tag tests,
+22 affected pool/tag tests and three affected family checks passed; scoped
+Ruff and basedpyright passed. Both trace builds matched byte-for-byte.
+
+The trace now applies the selected replacement and follows the merged tags,
+including `regions_unexplored:trial_chambers/ashen`. It preserves original
+aliases, replacement aliases/document, shared-index binding groups and tag
+source identities. It makes no tag-order or joint-frequency claim. The output
+regression verifies ashen template reachability and both normal and ominous
+entity IDs. Other registered-root traces are unchanged. Trial chambers remain
+one family; only its inventory content changed beyond source-hash substitutions.
+The modifier report has one included alias replacement and 37 other selected
+modifier types still untraced.
+
+Trace SHA:
+`b78541655c69fbc3599a670ccc424d60dd08cbb642bd796a9b69bcb9c1f223d9`.
+Decisions SHA:
+`3fc8ed59195ee040f746b9aeef957d1d4a72293016bab2a13b5e5b37eda518bc`.
+Inventory SHA:
+`d5b51f2f140e2d88bf77d9f3dac5168f0b4dfacd827ae9cf1908d42abbf4d369`.
+Reproduction commands and scope are in the alias-code README under evidence.
+
+Continue the remaining modifier dispositions. The internal raw-template
+compiler delegates to `StructureTemplatePoolMixin.compileRawTemplates`; that
+class and `StructurePoolAccess` were located but not yet retained/inspected.
+Use the existing exact-class selector. Regions Unexplored's street processor
+reference and other feature/surface modifiers remain open. Also resolve vanilla
+trial-spawner configuration references: the inventory currently reports explicit
+inline ashen IDs, not all effective vanilla trial encounters. Do not mistake
+that partial source list for exhaustive mob-source closure. Broader family
+grouping, custom generation, provider coverage, attributes, final gate, clean
+review and main merge remain incomplete. No new measurement system was added.
+
+Trial alias source semantics are delivered in `fab1b99`; tool selection was
+added in `0b43dfd`/`484ff42`. The existing inspection tool now optionally selects
+exact classes so new evidence does not duplicate old disassemblies or revise
+unrelated identities. Four exact classes were retained under
+`evidence/item-8/sources/lithostitched-alias-code`. Identities SHA:
+`eea3af78139809c0a2452a0027bfe83fac321380574b3a10ba3d8dcc16c1691b`.
+All four matched the corresponding initial broad extraction; scoped Ruff and
+basedpyright passed. Reproduction and method details are in that directory's
+README. No new measurement system or runtime capture was added.
+
+The alias gap is material: Regions Unexplored adds
+`regions_unexplored:trial_chambers/ashen` to the melee pool tag. The current
+accepted trace still omits that replacement path. `SetPoolAliasesModifier`
+replaces vanilla jigsaw aliases when append=false. `RandomEntries` draws one
+index using the first holder-set size, then applies that index across the
+aliases and holder sets. Preserve this shared-index relationship, especially
+ranged/slow-ranged. Its `allTargets` method returns an empty stream and is not
+valid evidence of absent targets. The lookup mixin keeps the last duplicate
+alias entry. Do not infer ordered tag membership or joint spawn frequency from
+a sorted union of possible targets.
+
+Next correct the existing trace using the replacement and additive pool-tag
+sources, with a focused regression proving the ashen contribution and preserved
+source/correlation evidence. Existing biome tag merging is currently hardcoded
+to biome tags; reuse that logic where appropriate rather than adding a parallel
+tag framework. Raw-template compilation runs at priority 2147483647 and calls
+each pool's `compileRawTemplates`; the delegate implementation still needs
+inspection. The accepted trace, family decisions and working inventory remain
+unchanged by this source inspection. Broader Item 8 closure remains open as
+listed below.
+
 Better Village attribution is delivered: tool `cd2d54f`, seven-class code
 evidence `45ab692`, family decision/test `9595c52`, working inventory `18c7466`.
 No extra family or compatibility simulator was introduced. The existing
