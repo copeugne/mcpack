@@ -29212,7 +29212,8 @@
             },
             "packaged_placed_feature_references": [
               "minecraft:end_platform"
-            ]
+            ],
+            "placement_interpretation": "The selected packaged placed feature fixes origin at (100,49,0) and applies a biome filter. Its configured type is minecraft:end_platform. This origin lies outside the bounded X/Z -64..63 world projection, so that projection cannot establish its generation. The connection from this vanilla feature entrypoint to the captured static createEndPlatform hook remains to be verified before treating the custom template offset as its effective worldgen geometry."
           },
           {
             "family": "betterendisland:gateway",
@@ -29255,7 +29256,9 @@
             },
             "packaged_placed_feature_references": [
               "minecraft:end_gateway_return"
-            ]
+            ],
+            "placement_interpretation": "The selected return-gateway placed feature applies rarity_filter chance=700, in_square, MOTION_BLOCKING heightmap, vertical uniform offset 3..9 with zero horizontal offset, then biome filtering. Its configured end_gateway type carries exact=true and exit=(100,50,0). The custom generator subtracts half the 3x9x3 template dimensions from that origin, giving a nominal vertical envelope from heightmapY-1 through heightmapY+13 across offset alternatives. This is a terrain-relative surface/above-surface design, not a dedicated underground placement rule. Other gateway lifecycle callers need not use these modifiers.",
+            "visual_discoverability": "Source-derived cue: compact 3x9x3 gateway template placed around or above the motion-blocking surface on the packaged return-gateway path. Terrain and vegetation may occlude it. No visibility distance or measured discovery rate is claimed."
           },
           {
             "family": "betterendisland:dragon_arena",
@@ -29355,7 +29358,8 @@
             },
             "packaged_placed_feature_references": [
               "minecraft:end_spike"
-            ]
+            ],
+            "placement_interpretation": "The selected end_spike placed feature has only a biome filter; configured spikes is empty and crystal_invulnerable is false. Actual custom spike layout, top/bottom offsets and respawn invocation are recorded in spike_podium_generators. The placed-feature filter does not constrain the separately captured dragon-fight lifecycle calls."
           }
         ],
         "family_scope": "Three working authored-design families cover the linked packaged templates exactly once. This is a grouping decision from the captured invocation and lifecycle relationships, not a claim of three newly registered structures. Required attributes and cross-provider reconciliation remain incomplete.",
@@ -29590,6 +29594,121 @@
             }
           ],
           "scope": "Exact packaged biome feature references across the preserved catalog. These biomes are registered and appear only in minecraft:the_end in the captured possible-biome membership. This is not an exhaustive runtime feature-list dump: code-added or removed features and lifecycle calls remain separate. In particular, packaged minecraft:end_platform is a reference, not proof that its complete caller path reaches the captured arrival-platform hook."
+        },
+        "packaged_feature_placement": {
+          "resources": {
+            "worldgen/placed_feature": {
+              "minecraft:end_platform": {
+                "archive": "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar",
+                "path": "data/minecraft/worldgen/placed_feature/end_platform.json",
+                "sha256": "0f39f85461ba648c6f625c72d7d14d878508ec5d6a59965849a181eaf9553d8a",
+                "document": {
+                  "feature": "minecraft:end_platform",
+                  "placement": [
+                    {
+                      "positions": [
+                        [
+                          100,
+                          49,
+                          0
+                        ]
+                      ],
+                      "type": "minecraft:fixed_placement"
+                    },
+                    {
+                      "type": "minecraft:biome"
+                    }
+                  ]
+                }
+              },
+              "minecraft:end_spike": {
+                "archive": "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar",
+                "path": "data/minecraft/worldgen/placed_feature/end_spike.json",
+                "sha256": "d167c6e98faf06bcb35cf2ba2507c2b6d30c75807b8ff09c6a4c6b1e974bfdad",
+                "document": {
+                  "feature": "minecraft:end_spike",
+                  "placement": [
+                    {
+                      "type": "minecraft:biome"
+                    }
+                  ]
+                }
+              },
+              "minecraft:end_gateway_return": {
+                "archive": "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar",
+                "path": "data/minecraft/worldgen/placed_feature/end_gateway_return.json",
+                "sha256": "666b37da9bc5933077eb4d543cb1bf31c2202d4e71ed821e853ab10182692ef1",
+                "document": {
+                  "feature": "minecraft:end_gateway_return",
+                  "placement": [
+                    {
+                      "chance": 700,
+                      "type": "minecraft:rarity_filter"
+                    },
+                    {
+                      "type": "minecraft:in_square"
+                    },
+                    {
+                      "heightmap": "MOTION_BLOCKING",
+                      "type": "minecraft:heightmap"
+                    },
+                    {
+                      "type": "minecraft:random_offset",
+                      "xz_spread": 0,
+                      "y_spread": {
+                        "max_inclusive": 9,
+                        "min_inclusive": 3,
+                        "type": "minecraft:uniform"
+                      }
+                    },
+                    {
+                      "type": "minecraft:biome"
+                    }
+                  ]
+                }
+              }
+            },
+            "worldgen/configured_feature": {
+              "minecraft:end_platform": {
+                "archive": "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar",
+                "path": "data/minecraft/worldgen/configured_feature/end_platform.json",
+                "sha256": "3bfd56e6116163a8e6ed48fe5c2370ddd1dca59923fa6ac44063ae9b00362588",
+                "document": {
+                  "config": {},
+                  "type": "minecraft:end_platform"
+                }
+              },
+              "minecraft:end_spike": {
+                "archive": "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar",
+                "path": "data/minecraft/worldgen/configured_feature/end_spike.json",
+                "sha256": "17d26ec022c283d2a8d0d1ef799c74770e6ce2566ba69583c01314d507feb47a",
+                "document": {
+                  "config": {
+                    "crystal_invulnerable": false,
+                    "spikes": []
+                  },
+                  "type": "minecraft:end_spike"
+                }
+              },
+              "minecraft:end_gateway_return": {
+                "archive": "minecraft-server-1.21.1.jar!/META-INF/versions/1.21.1/server-1.21.1.jar",
+                "path": "data/minecraft/worldgen/configured_feature/end_gateway_return.json",
+                "sha256": "095c2998fb281c69a71e7baa09ee117552c03ebab81e6ddd3221d313de8118e8",
+                "document": {
+                  "config": {
+                    "exact": true,
+                    "exit": [
+                      100,
+                      50,
+                      0
+                    ]
+                  },
+                  "type": "minecraft:end_gateway"
+                }
+              }
+            }
+          },
+          "scope": "Selected packaged resource layers using the existing frozen vanilla/mod_data/Lithostitched selection. Registered identities and documents are verified by the focused test. This does not turn configured rarity into observed density, or cover lifecycle calls that bypass placed features."
         }
       }
     }

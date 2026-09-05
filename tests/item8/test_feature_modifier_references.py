@@ -42,6 +42,21 @@ def test_end_island_packaged_biome_entrypoints() -> None:
                              "biome": parts[1] + ":" + parts[-1][:-5],
                              "placed_features": cast("JsonValue", links)})
     assert entrypoints["rows"] == expected
+    placement = cast("dict[str, JsonValue]", contributions[
+        "betterendisland:platform_gateway"]["packaged_feature_placement"])
+    recorded = cast("dict[str, dict[str, JsonValue]]", placement["resources"])
+    for kind in ("worldgen/placed_feature", "worldgen/configured_feature"):
+        selected, _ = select_resources(
+            cast("list[JsonValue]", catalog["resources"]), kind,
+            enabled_packs=["vanilla", "mod_data"], lithostitched_overlay=True)
+        registry_name = kind.replace("/", "_")
+        feature_registry = read_registry(Path(
+            "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft"
+        ) / f"{registry_name}.txt")
+        for identifier, resource in recorded[kind].items():
+            assert identifier in feature_registry
+            assert resource == {key: selected[identifier][key]
+                                for key in ("archive", "path", "sha256", "document")}
     dimensions = cast("dict[str, list[str]]", json.loads(Path(
         "evidence/item-8/runtime/dimension-r3/dimension-biomes.json").read_bytes()))
     registered = read_registry(Path(
