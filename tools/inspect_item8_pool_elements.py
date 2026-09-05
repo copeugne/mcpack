@@ -461,6 +461,10 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     continue
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = "/mixin/" in name or "/mixins/" in name or name in {
+                    "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MansionPieces$LayoutGenerator.class",
+                    "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MansionPieces$FirstFloor.class",
+                    "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MansionPieces$SecondFloor.class",
+                    "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MansionPieces$ThirdFloor.class",
                     "org/violetmoon/quark/content/world/module/NetherObsidianSpikesModule.class",
                     "org/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator.class",
                     "org/violetmoon/quark/base/proxy/CommonProxy.class",

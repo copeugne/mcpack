@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-05
 
+The ordinary mansion layout capture in aaeaabc omits invokedynamic string
+recipes needed for exact pool IDs. Enable existing verbose output for the
+layout and three floor selectors. This fixes that concrete attribution gap;
+preserve the ordinary attempt. MirroringSingleJigsawPiece is already captured
+under pool-codecs and should be reused, not recaptured.
+
 Mansion entry/foundation paths are preserved in 80b4fc4. Follow the direct
 LayoutGenerator and its RoomCollection/FirstFloor/SecondFloor/ThirdFloor
 selectors to bind component pools. Existing saved-piece envelopes exclude
