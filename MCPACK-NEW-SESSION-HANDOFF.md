@@ -6,6 +6,58 @@
 
 ### Continuation update - 2026-09-05
 
+Conditional trial-chamber mob attribution is now in the machine-readable family
+attribute, delivered in `343095a` and inventory rebuild `f441595`. The existing
+attribute override was sufficient; no builder logic or new schema was added.
+All 68 affected template/family tests and scoped Ruff/basedpyright passed.
+Decision SHA:
+`fda5d5c1b1ea4a33d2a5a099fd51ecd24b760a921008107f9f89d2758de1cb75`.
+Inventory SHA:
+`2f915136cf8ff69430a4be1e099f675ea9e7a928175c7621c51f485d3020740d`.
+Trace SHA remains `703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5`.
+Only this family's grouping evidence and mob-source attribute changed beyond
+the decision input hash. Raw omitted ominous-list entries remain available and
+are explicitly cross-referenced by the conditional mob-source disposition.
+The previous instructions to incorporate this disposition are superseded.
+
+Do not interpret the trace's 69 no-direct-pool roots as 69 wholly uninspected
+generators. Current decisions already have six source-based attributes for the
+13 Better Mineshafts roots and the spider dungeon; other attributes still need
+closure. Inspect existing decisions before repeating custom-generation work.
+The next useful unresolved source paths include vanilla end cities and the
+remaining custom families. Overall canonical grouping, provider coverage, final
+attributes, review and main merge remain open. Delivered refs were verified.
+
+Initial vanilla trial-spawner attribution is now resolved conditionally.
+Lifecycle source `bb9582a`, extractor selection `2c43578` and frozen-catalog
+check `c5531da` show initialization from normal potentials before player
+detection can make these initially non-ominous spawners ominous. The five mob
+IDs are breeze, spider, cave spider, silverfish and slime. Slime has two Size
+variants (1 and 2) with weights 3 and 1; an initial one-entry test premise failed
+and was corrected to preserve those values. Ten focused tests and scoped
+Ruff/basedpyright passed. All delivered refs were verified.
+See `evidence/item-8/sources/vanilla-trial-spawner-lifecycle-code/README.md`.
+Manifest SHA:
+`658728eebd2eec80ac69ecf077c4ca305efa3102a3f4d2b2c9655ca95d962aab`.
+The current trace and inventory hashes remain unchanged. Do not repeat the
+vanilla lifecycle work: apply this conditional disposition when assembling
+effective family attributes, while retaining the boundary for mod transforms
+and arbitrary saved states. Continue broader custom-generation/provider gaps.
+
+Trial-spawner selection code is delivered in `776dcdb`, extracted with `ed49f84`.
+See `evidence/item-8/sources/vanilla-trial-spawner-code/README.md` for the exact
+command, method/offset references and limitations. Manifest SHA:
+`aa43a73247921fd7ece2e3a71d811c0bddba492a6ea04e198825fc111082449e`.
+An omitted potential list decodes empty. The ominous transition preserves
+existing next-spawn data when that list is empty; it does not copy normal-mode
+potentials into the ominous configuration. Exact entity attribution remains
+conditional on prior lifecycle state. Do not repeat these three class extractions
+or replace the five unresolved entries with unconditional normal-mode IDs.
+The current inventory and trace hashes below remain unchanged. Next finish the
+conditional attribution using the existing lifecycle/source path and move on to
+the remaining custom-generation and provider coverage gaps. No new measurement
+system was added. Extraction and scoped Ruff/basedpyright passed; refs verified.
+
 The ID-less vanilla trial-spawner omission is fixed in `74b748c`, with trace
 delivery `f539e25` and inventory rebuild `cc819fe`. All 14 affected packaged
 templates identify the trial spawner through the palette, not NBT `id`.
