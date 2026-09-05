@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Fairy Ring and associated buried ore are one working family in `79c866d`.
+The captured generator interpretation is delivered in `db36cc4`; do not repeat
+its geometry analysis or split the deposit into another family. Configuration
+callback binding, effective tags, delegated flower effects and world attribution
+remain open. Fallen Logs and Monster Box source captures are already preserved
+in sources/quark-landmark-encounter-generators under evidence/item-8. Continue
+those interpretations and broader coverage. Thirty focused tests passed.
+
 Spiral Spires generation-setting binding is resolved in `c96729d`. The inventory
 joins source mapping, frozen/captured file equality and the initial-refresh log.
 Do not repeat the configuration-name or field-binding investigation for this
