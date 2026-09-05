@@ -4248,16 +4248,71 @@
       "structure_ids": [
         "explorations:slime_cave"
       ],
-      "rationale": "A custom slime-cave structure type, with no start_pool in its packaged definition. Custom generation and component relationships remain to be inspected. Component templates and alternative pieces are not additional families. Distinct authored layouts remain separate from biome or size variants.",
+      "rationale": "One custom underground cave design using exactly one explorations:slime_cave template piece. Random rotations and the below-zero stone substitutions are variants of the same authored slime encounter, not additional families.",
       "start_pool": null,
       "generation_settings": {
         "type": "explorations:slime_cave"
       },
-      "missing_components": "UNKNOWN: custom generation is outside current pool trace",
+      "missing_components": [],
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/explorations-slime-cave/identities.json": "e2e144999feed7053855854e6dce47dc47cff68795d2972a5e8f6d42b08e1940",
+        "evidence/item-8/sources/explorations-deepslate/identities.json": "6e8660b275b3a8824afc82084b1dbd8173a1eec2263e9b20b2318069e1f87ae7",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+      },
+      "custom_template_ids": [
+        "explorations:slime_cave"
+      ],
+      "custom_generation_settings": {
+        "step": "underground_structures",
+        "terrain_adjustment": "bury",
+        "spawn_overrides": {},
+        "position": "Chunk world X/Z origin. Y = minY + 15 + nextInt(abs(seaLevel - 20 - (minY + 15))). Reject seaLevel <=30 or height span <10.",
+        "processor": "DeepslateProcessor replaces stone/mossy cobblestone below Y=0 with deepslate/tuff. Positions, slime/spawner markers and chest NBT are preserved.",
+        "interpretation": "evidence/item-8/sources/explorations-slime-cave/README.md"
+      },
+      "attributes": {
+        "intended_hostility": {
+          "value": "Authored slime encounter",
+          "basis": "Six slime markers and one slime-spawner marker interpreted by the custom piece, rather than inferred from the family name."
+        },
+        "mob_source": {
+          "authored_entity_ids": [
+            "minecraft:slime"
+          ],
+          "template_slime_marker_count": 6,
+          "direct_creation": "Each slime marker requests a slime finalized with STRUCTURE spawn reason and size nextInt(3)+1.",
+          "spawner_source": "One template spawner marker requests a vanilla slime spawner.",
+          "natural_source": "StructureSettings has no spawn overrides. Additional natural spawning depends on biome and world conditions; exact population is not claimed.",
+          "scope": "Marker requests, not guaranteed successful creation, insertion or live mob counts."
+        },
+        "loot_table_source": {
+          "base_table": "explorations:chests/slime_cave",
+          "template_chest_count": 1,
+          "selected_table_sha256": "b818aa4f22d55c2065e1eaeb8cb22cdb268e9685ccd697a4f60b22789892a9a7",
+          "basis": "Template chest NBT is preserved by the direct processor; packaged source selection is bound by test_slime_cave_sources.py.",
+          "effective_injections": "UNKNOWN: relevant retained global loot/container transformations still require reconciliation."
+        },
+        "generated_spawners": {
+          "block": "minecraft:spawner",
+          "authored_entity_ids": [
+            "minecraft:slime"
+          ],
+          "template_marker_count": 1,
+          "placement": "The spawner DATA marker places the block and loads slime SpawnData when its block entity exists. Both custom light ranges are inclusive 0..7.",
+          "scope": "Source request at one marker, not proof of successful placement or live spawning."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Direct slime creation and the slime spawner are authored by data-marker handling.",
+          "natural": "Additional natural spawning is conditional on biome and world state; no structure-specific spawn override."
+        },
+        "underground_surface_classification": {
+          "value": "Underground cave",
+          "basis": "UNDERGROUND_STRUCTURES with BURY terrain adjustment and the captured below-sea-level placement algorithm.",
+          "limitation": "Not proof of actual surface cover or absence of natural cave exposure in every world."
+        }
       }
     },
     {

@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-05
 
+Slime Cave custom components and encounters are integrated in 0feca29, with
+processor attribution in 9f7b811. The focused test binds its single template,
+six slime markers, one spawner marker and chest loot-table selection. Existing
+world envelopes agree with the 15-by-15-by-12 template bounds. Do not repeat
+generator, marker or material-processor tracing. Continue visual-discoverability
+and relevant global-effect gaps, other custom families and provider coverage.
+Five affected tests and scoped checks passed. No new measurement; Item 8 open.
+
+Slime Cave's custom structure and piece are preserved in d3543c5. One rotated
+template supplies slime and spawner markers. Inspect its DeepslateProcessor
+before final effective-content attribution, then bind the existing template
+catalog in a focused test and integrate the required attributes. Do not repeat
+generator/marker tracing or create a new measurement system.
+
+The provider review confirms Explorations Slime Cave still lacks custom
+generation/component attribution in the existing inventory. Inspect its
+SlimeCaveStructure and SlimeCaveStructurePiece using the existing extractor.
+This closes a concrete required-provider gap; no new framework or measurement.
+
 Stone-generation paths have working terrain dispositions in 6e61b10.
 The delegated ore writer is preserved in 332d9d5 and writes only the supplied
 stone state. Do not repeat cluster/ore writer tracing. Continue broader provider
