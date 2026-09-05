@@ -38,3 +38,35 @@ nextFloat is below 0.4, otherwise mossy cobblestone. This is a selector branch,
 not a measured material ratio. No direct EntityType or spawner block path appears
 in these classes. Effective retained-mod behavior remains unresolved. Family
 integration and its focused verification follow this source increment.
+
+## Family integration
+
+Nine source-backed attributes now record nominal dimensions, trap hostility,
+mob/loot/spawner sources, enemy attribution, authored form and mixed surface/
+underground placement. Nominal height 10 excludes the explicit Y -4 foundation
+and basement construction. Actual exposure and effective mod changes remain open.
+Registry root minecraft:jungle_pyramid uses generator type minecraft:jungle_temple;
+these identifiers do not create two families. Dimensions, biome constraints and
+world-observation links are preserved by the existing builder.
+
+The focused test binds source hashes, bootstrap callback, constructor dimensions,
+saved helper results and both loot mappings. Its first run incorrectly selected
+a public constant instead of the constructor, producing an empty integer list.
+The test now selects the exact constructor signature; the source and family data
+were unchanged by that correction. The corrected focused test passes.
+
+```sh
+uv run pytest -q tests/item8/test_jungle_temple_sources.py tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run pytest -q tests/item8/test_jungle_temple_sources.py
+uv run ruff check tests/item8/test_jungle_temple_sources.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_jungle_temple_sources.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-jungle-temple-content.json
+```
+
+Decision SHA-256:
+`3650c5d8f0406b623cf85007f2c5f1351f18eeaea634f8a25a13107ce22d10e7`.
+Source increment is delivered in `8397ebc`. This closes the pending vanilla
+content integration above, not Item 8 or effective retained-mod behavior.
+
+Final affected-suite rerun: all 62 tests passed. Scoped Ruff and Basedpyright
+passed, including the corrected constructor selector.
