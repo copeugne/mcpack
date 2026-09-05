@@ -6,6 +6,19 @@
 
 ### Continuation update - 2026-09-05
 
+End city source extraction is delivered: tool `888f3b8`, evidence `a73fd28`,
+frozen-template check `f5348b7`. Manifest SHA:
+`ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c`.
+See `evidence/item-8/sources/vanilla-end-city-code/README.md` for exact commands
+and dispositions. The vanilla generator references 19 of 20 packaged templates;
+`tower_floor` is unreferenced. Sentry markers create shulkers, Chest markers
+assign end-city treasure, and Elytra markers create an elytra item frame.
+Normal template entities are ignored by placement settings. The focused frozen
+catalog check and scoped Ruff/basedpyright passed. Delivered refs were verified.
+Next integrate these dispositions into the existing End city family attributes;
+do not repeat extraction or mistake template markers for observed city counts.
+The family decisions, inventory and trace hashes below remain unchanged.
+
 Conditional trial-chamber mob attribution is now in the machine-readable family
 attribute, delivered in `343095a` and inventory rebuild `f441595`. The existing
 attribute override was sufficient; no builder logic or new schema was added.
