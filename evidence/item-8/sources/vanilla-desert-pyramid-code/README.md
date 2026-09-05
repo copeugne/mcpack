@@ -99,3 +99,11 @@ Actual visibility, successful generation and effective retained-mod behavior
 remain distinct from these source-derived attributes. Item 8 remains incomplete.
 
 All 63 affected tests passed. Scoped Ruff and Basedpyright checks passed.
+
+Content decisions and tests are delivered in `f9fe8a1`. The inventory was rebuilt
+at that commit using the command above. Inventory SHA-256:
+`960a8759842f2a0a267fba6eae526c8e59062d08e6148c33fad7d5d498b1e133`.
+Changes are confined to this family's content/grouping and decision input hash.
+The unchanged footprint and vertical-size fields remain UNKNOWN: this family
+has no retained full-start envelope observation. Nominal constructor dimensions
+do not resolve its full generated vertical extent.

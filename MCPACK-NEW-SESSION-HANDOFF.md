@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+Desert pyramid content integration is delivered in `f9fe8a1`. Seven attributes
+now distinguish the TNT trap, chest-result flags, archaeology selection/clipping,
+vanilla entity/spawner absence, authored form and mixed surface/underground
+placement. All 63 affected tests and scoped checks pass. Existing geometry
+fields remain UNKNOWN because there is no retained full-start envelope observation;
+the nominal 15-block piece height is not total generated height. Both loot
+constants are bound to the existing BuiltInLootTables source. Inventory SHA:
+`960a8759842f2a0a267fba6eae526c8e59062d08e6148c33fad7d5d498b1e133`.
+Decision SHA: `78b6dcd53d7e3c855b6e64477c0773601c3b83138705ea122eb6cc48be955378`.
+Commands are in `evidence/item-8/sources/vanilla-desert-pyramid-code/README.md`.
+The pending content instructions below are superseded. Continue remaining direct
+generators and provider reconciliation, without re-extracting desert pyramid
+sources. Approximate full geometry, actual visibility and effective retained-mod
+behavior remain open. No measurement system was added. Item 8 remains incomplete.
+
 The desert pyramid constructor binding is resolved in
 `evidence/item-8/sources/vanilla-desert-pyramid-binding-code`: bootstrap entry 0
 targets DesertPyramidPiece, and SinglePieceStructure invokes that callback once
