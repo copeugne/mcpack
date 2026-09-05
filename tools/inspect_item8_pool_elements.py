@@ -268,6 +268,7 @@ CLASSES = (
     "com/yungnickyoung/minecraft/yungsextras/world/processor/DesertWellProcessor.class",
     "com/yungnickyoung/minecraft/yungsextras/world/processor/INbtFeatureProcessor.class",
     "com/yungnickyoung/minecraft/yungsextras/world/processor/SwampFeatureProcessor.class",
+    "com/yungnickyoung/minecraft/yungsextras/module/FeatureProcessorModule.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",

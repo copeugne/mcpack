@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+The twelve-class Extras capture is delivered in `4303da0`. DesertWellProcessor
+adds suspicious-sand loot absent from stored template block entities. The
+generator references FeatureProcessorModule.DESERT_WELL_PROCESSOR, so capture
+that exact module with the existing extractor to verify the constructor binding
+before attributing processor effects to generated wells. This resolves a specific
+loot-source gap without a new measurement system. Swamp processor interpretation
+also shows support columns can extend below the template envelope; integration
+remains pending.
+
 The remaining Extras generator capture selects twelve exact classes: the nine
 uncaptured desert/swamp generator or base classes and three processor/interface
 classes. These implement the remaining eight configured feature types. Existing
