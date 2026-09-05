@@ -97,6 +97,9 @@ CLASSES = (
     "dev/worldgen/lithostitched/worldgen/poolalias/RandomEntries.class",
     "dev/worldgen/lithostitched/mixin/common/PoolAliasLookupMixin.class",
     "dev/worldgen/lithostitched/worldgen/modifier/internal/CompileRawTemplatesModifier.class",
+    "dev/worldgen/lithostitched/mixin/common/StructureTemplatePoolMixin.class",
+    "dev/worldgen/lithostitched/worldgen/structure/LithostitchedTemplates.class",
+    "dev/worldgen/lithostitched/worldgen/structure/LithostitchedTemplates$WeightedEntry.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
