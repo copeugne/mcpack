@@ -34,3 +34,45 @@ prior interpretation. Effective module enablement, configuration mapping and
 world attribution remain open. Do not repeat the spawn-table extraction or
 broaden this into unrelated living-entity internals. Scoped extractor checks
 passed; no runtime or measurement system was added.
+
+## Frozen setting attribution
+
+The module's captured category annotation is world. The retained debug log at
+line 13897 records construction under display name Monster Box. The already
+captured TentativeModule and ZetaModuleManager naming/assignment path therefore
+maps it to world.monster_box. Its chancePerChunk, minY, maxY, minMobCount,
+maxMobCount, dimensions, enableExtraLootTable, activationRange and searchRange
+fields all have Config annotations. The shared ConfigObjectMapper maps their
+names and nested dimensions to the corresponding frozen settings.
+
+The loaded-file identity and initial-refresh execution are already established
+in zeta-module-section and zeta-config-event-fields. Reusing that evidence gives
+the following initial settings: chancePerChunk 0.2, minY -50, maxY 0, minMobCount
+5, maxMobCount 8, enableExtraLootTable true, activationRange 2.5, searchRange 15,
+and an Overworld dimension allowlist. The module toggle is true in the frozen
+world section; this value alone does not establish category/overlap enablement.
+
+The direct generation code has no biome filter. Its terrain/support predicate
+and flat-world rejection still apply. Initial candidate Y is in [-50,0), and
+the search checks at most 15 positions while remaining strictly above -50.
+Each qualifying placement writes one block. At chance 0.2 the loop permits at
+most one placement attempt per chunk; this is not an observed density claim.
+
+For an active ticking box outside Peaceful, the captured block-entity code
+starts on non-spectator player distance strictly below 2.5 blocks. At uninterrupted
+ticks the action occurs on the 41st active tick. This is a tick count, not a
+wall-clock timing claim. The source requests five through eight spawn-table
+draws under these settings, not five through eight guaranteed successful mobs.
+
+These are source/configuration/log-derived initial values, not a direct field
+dump. Recheck the preserved evidence without rerunning a server:
+
+```sh
+sed -n '13897p' evidence/raw/item8/custody-r1/restored-download/debug.log
+sed -n '1147,1162p' evidence/item-6/frozen/config/quark-common.toml
+cmp evidence/raw/item8/custody-r1/restored-download/configuration/config/quark-common.toml evidence/item-6/frozen/config/quark-common.toml
+```
+
+No additional source capture is needed for these field mappings. Remaining
+work is effective module enablement, family disposition/integration and world
+attribution, alongside broader provider coverage.
