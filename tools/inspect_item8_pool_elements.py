@@ -490,6 +490,13 @@ CLASSES: tuple[str, ...] = (
     "org/violetmoon/quark/content/world/block/MonsterBoxBlock.class",
     "org/violetmoon/quark/content/world/block/be/MonsterBoxBlockEntity.class",
     "org/violetmoon/quark/mixin/mixins/accessor/AccessorLivingEntity.class",
+    "com/yungnickyoung/minecraft/yungsbridges/mixin/SuppressLogMixin.class",
+    "com/yungnickyoung/minecraft/yungsbridges/module/FeatureModule.class",
+    "com/yungnickyoung/minecraft/yungsbridges/module/PlacementModifierTypeModule.class",
+    "com/yungnickyoung/minecraft/yungsbridges/services/IPlatformHelper.class",
+    "com/yungnickyoung/minecraft/yungsbridges/services/NeoForgePlatformHelper.class",
+    "com/yungnickyoung/minecraft/yungsbridges/services/Services.class",
+    "com/yungnickyoung/minecraft/yungsbridges/world/feature/config/MultipleAttemptSingleRandomFeatureConfig.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
