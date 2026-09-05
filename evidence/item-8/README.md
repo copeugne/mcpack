@@ -1586,3 +1586,25 @@ Inventory regenerated at `397812a`, SHA-256:
 `7a1110e2734dd4f04a4084ed2ffbe9aa3be0a6af9fc61ffd5518ff40c831aba0`.
 Only decision identity and Extras biome/removal scope with evidence changed.
 All 421 registry family rows and 887 roots remain unchanged.
+
+## YUNG Extras explicit template membership
+
+Fifty-nine configured features explicitly name 59 distinct packaged templates;
+all resolve. Their unrotated nominal XYZ envelopes are now recorded. Three
+configured features have empty configs and require generator-code attribution:
+desert_chillzone, desert_giant_torch and desert_ruins_0. Three packaged templates
+remain outside the explicit links, but are not declared unused based on that
+fact. Template dimensions are not processed/occupied world geometry. Block-entity
+contents and custom generation still require attribution. Existing catalogs and
+the contribution map suffice; no new extraction or measurement system was added.
+
+Fourteen affected tests passed. Scoped Ruff/Basedpyright passed after wrapping
+one long assertion. Decision SHA-256:
+`91acf25034c7c4bde3596b7ef5c81947184d736fff3e6f1cb6ea90ad0a16f629`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-extras-templates.json
+```
