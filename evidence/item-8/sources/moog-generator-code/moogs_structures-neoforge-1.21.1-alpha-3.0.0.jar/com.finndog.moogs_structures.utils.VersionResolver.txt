@@ -1,0 +1,404 @@
+Compiled from "VersionResolver.java"
+public final class com.finndog.moogs_structures.utils.VersionResolver {
+  private static final java.lang.String CURRENT_VERSION_STRING = "1.21.1";
+
+  private static final com.finndog.moogs_structures.utils.VersionResolver$VersionNumber CURRENT_VERSION;
+
+  private com.finndog.moogs_structures.utils.VersionResolver();
+    Code:
+       0: aload_0
+       1: invokespecial #3                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static com.finndog.moogs_structures.utils.VersionResolver$VersionNumber getCurrentVersion();
+    Code:
+       0: getstatic     #9                  // Field CURRENT_VERSION:Lcom/finndog/moogs_structures/utils/VersionResolver$VersionNumber;
+       3: areturn
+
+  public static java.lang.String getCurrentVersionString();
+    Code:
+       0: ldc           #15                 // String 1.21.1
+       2: areturn
+
+  public static com.mojang.serialization.DataResult<java.util.List<com.finndog.moogs_structures.utils.VersionResolver$VersionEntry>> parseVersionMap(java.util.Map<java.lang.String, net.minecraft.resources.ResourceLocation>);
+    Code:
+       0: new           #17                 // class java/util/ArrayList
+       3: dup
+       4: invokespecial #19                 // Method java/util/ArrayList."<init>":()V
+       7: astore_1
+       8: aload_0
+       9: invokeinterface #20,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      14: invokeinterface #26,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      19: astore_2
+      20: aload_2
+      21: invokeinterface #32,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      26: ifeq          135
+      29: aload_2
+      30: invokeinterface #38,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      35: checkcast     #42                 // class java/util/Map$Entry
+      38: astore_3
+      39: aload_3
+      40: invokeinterface #44,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      45: checkcast     #47                 // class java/lang/String
+      48: invokestatic  #49                 // Method parseRange:(Ljava/lang/String;)Lcom/mojang/serialization/DataResult;
+      51: aload_3
+      52: invokedynamic #53,  0             // InvokeDynamic #0:apply:(Ljava/util/Map$Entry;)Ljava/util/function/Function;
+      57: invokeinterface #57,  2           // InterfaceMethod com/mojang/serialization/DataResult.map:(Ljava/util/function/Function;)Lcom/mojang/serialization/DataResult;
+      62: astore        4
+      64: aload         4
+      66: invokeinterface #63,  1           // InterfaceMethod com/mojang/serialization/DataResult.result:()Ljava/util/Optional;
+      71: astore        5
+      73: aload         5
+      75: invokevirtual #67                 // Method java/util/Optional.isEmpty:()Z
+      78: ifeq          117
+      81: aload         4
+      83: invokeinterface #72,  1           // InterfaceMethod com/mojang/serialization/DataResult.error:()Ljava/util/Optional;
+      88: invokedynamic #75,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      93: invokevirtual #78                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      96: ldc           #81                 // String Unknown version range error
+      98: invokevirtual #83                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+     101: checkcast     #47                 // class java/lang/String
+     104: astore        6
+     106: aload         6
+     108: invokedynamic #87,  0             // InvokeDynamic #2:get:(Ljava/lang/String;)Ljava/util/function/Supplier;
+     113: invokestatic  #91                 // InterfaceMethod com/mojang/serialization/DataResult.error:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/DataResult;
+     116: areturn
+     117: aload_1
+     118: aload         5
+     120: invokevirtual #94                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     123: checkcast     #96                 // class com/finndog/moogs_structures/utils/VersionResolver$VersionEntry
+     126: invokeinterface #98,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     131: pop
+     132: goto          20
+     135: aload_1
+     136: invokestatic  #104                // InterfaceMethod java/util/List.copyOf:(Ljava/util/Collection;)Ljava/util/List;
+     139: invokestatic  #108                // InterfaceMethod com/mojang/serialization/DataResult.success:(Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+     142: areturn
+
+  public static com.mojang.serialization.DataResult<java.util.Map<java.lang.String, net.minecraft.resources.ResourceLocation>> encodeVersionEntries(java.util.List<com.finndog.moogs_structures.utils.VersionResolver$VersionEntry>);
+    Code:
+       0: new           #112                // class java/util/LinkedHashMap
+       3: dup
+       4: invokespecial #114                // Method java/util/LinkedHashMap."<init>":()V
+       7: astore_1
+       8: aload_0
+       9: invokeinterface #115,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      14: astore_2
+      15: aload_2
+      16: invokeinterface #32,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      21: ifeq          50
+      24: aload_2
+      25: invokeinterface #38,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      30: checkcast     #96                 // class com/finndog/moogs_structures/utils/VersionResolver$VersionEntry
+      33: astore_3
+      34: aload_1
+      35: aload_3
+      36: invokevirtual #116                // Method com/finndog/moogs_structures/utils/VersionResolver$VersionEntry.rawRange:()Ljava/lang/String;
+      39: aload_3
+      40: invokevirtual #120                // Method com/finndog/moogs_structures/utils/VersionResolver$VersionEntry.location:()Lnet/minecraft/resources/ResourceLocation;
+      43: invokevirtual #124                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      46: pop
+      47: goto          15
+      50: aload_1
+      51: invokestatic  #108                // InterfaceMethod com/mojang/serialization/DataResult.success:(Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      54: areturn
+
+  public static java.util.Optional<com.finndog.moogs_structures.utils.VersionResolver$VersionEntry> resolve(java.util.List<com.finndog.moogs_structures.utils.VersionResolver$VersionEntry>, com.finndog.moogs_structures.utils.VersionResolver$VersionNumber);
+    Code:
+       0: aload_0
+       1: invokeinterface #115,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       6: astore_2
+       7: aload_2
+       8: invokeinterface #32,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      13: ifeq          45
+      16: aload_2
+      17: invokeinterface #38,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      22: checkcast     #96                 // class com/finndog/moogs_structures/utils/VersionResolver$VersionEntry
+      25: astore_3
+      26: aload_3
+      27: invokevirtual #128                // Method com/finndog/moogs_structures/utils/VersionResolver$VersionEntry.range:()Lcom/finndog/moogs_structures/utils/VersionResolver$VersionRange;
+      30: aload_1
+      31: invokevirtual #132                // Method com/finndog/moogs_structures/utils/VersionResolver$VersionRange.contains:(Lcom/finndog/moogs_structures/utils/VersionResolver$VersionNumber;)Z
+      34: ifeq          42
+      37: aload_3
+      38: invokestatic  #138                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      41: areturn
+      42: goto          7
+      45: invokestatic  #142                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      48: areturn
+
+  public static com.mojang.serialization.DataResult<com.finndog.moogs_structures.utils.VersionResolver$VersionRange> parseRange(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokevirtual #145                // Method java/lang/String.trim:()Ljava/lang/String;
+       4: astore_1
+       5: aload_1
+       6: invokevirtual #148                // Method java/lang/String.isEmpty:()Z
+       9: ifeq          21
+      12: invokedynamic #149,  0            // InvokeDynamic #3:get:()Ljava/util/function/Supplier;
+      17: invokestatic  #91                 // InterfaceMethod com/mojang/serialization/DataResult.error:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/DataResult;
+      20: areturn
+      21: aload_1
+      22: ldc           #152                // String -
+      24: iconst_m1
+      25: invokevirtual #154                // Method java/lang/String.split:(Ljava/lang/String;I)[Ljava/lang/String;
+      28: astore_2
+      29: aload_2
+      30: arraylength
+      31: iconst_1
+      32: if_icmpne     52
+      35: aload_2
+      36: iconst_0
+      37: aaload
+      38: invokestatic  #158                // Method parseVersionNumber:(Ljava/lang/String;)Lcom/mojang/serialization/DataResult;
+      41: invokedynamic #161,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      46: invokeinterface #57,  2           // InterfaceMethod com/mojang/serialization/DataResult.map:(Ljava/util/function/Function;)Lcom/mojang/serialization/DataResult;
+      51: areturn
+      52: aload_2
+      53: arraylength
+      54: iconst_2
+      55: if_icmpne     272
+      58: aload_2
+      59: iconst_0
+      60: aaload
+      61: invokevirtual #148                // Method java/lang/String.isEmpty:()Z
+      64: ifne          76
+      67: aload_2
+      68: iconst_1
+      69: aaload
+      70: invokevirtual #148                // Method java/lang/String.isEmpty:()Z
+      73: ifeq          86
+      76: aload_0
+      77: invokedynamic #162,  0            // InvokeDynamic #5:get:(Ljava/lang/String;)Ljava/util/function/Supplier;
+      82: invokestatic  #91                 // InterfaceMethod com/mojang/serialization/DataResult.error:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/DataResult;
+      85: areturn
+      86: aload_2
+      87: iconst_0
+      88: aaload
+      89: invokestatic  #158                // Method parseVersionNumber:(Ljava/lang/String;)Lcom/mojang/serialization/DataResult;
+      92: astore_3
+      93: aload_2
+      94: iconst_1
+      95: aaload
+      96: invokestatic  #158                // Method parseVersionNumber:(Ljava/lang/String;)Lcom/mojang/serialization/DataResult;
+      99: astore        4
+     101: aload_3
+     102: invokeinterface #63,  1           // InterfaceMethod com/mojang/serialization/DataResult.result:()Ljava/util/Optional;
+     107: astore        5
+     109: aload         5
+     111: invokevirtual #67                 // Method java/util/Optional.isEmpty:()Z
+     114: ifeq          156
+     117: aload_3
+     118: invokeinterface #72,  1           // InterfaceMethod com/mojang/serialization/DataResult.error:()Ljava/util/Optional;
+     123: invokedynamic #75,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+     128: invokevirtual #78                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+     131: aload_0
+     132: invokedynamic #163,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     137: invokevirtual #83                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+     140: checkcast     #47                 // class java/lang/String
+     143: astore        6
+     145: aload         6
+     147: invokedynamic #167,  0            // InvokeDynamic #7:get:(Ljava/lang/String;)Ljava/util/function/Supplier;
+     152: invokestatic  #91                 // InterfaceMethod com/mojang/serialization/DataResult.error:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/DataResult;
+     155: areturn
+     156: aload         4
+     158: invokeinterface #63,  1           // InterfaceMethod com/mojang/serialization/DataResult.result:()Ljava/util/Optional;
+     163: astore        6
+     165: aload         6
+     167: invokevirtual #67                 // Method java/util/Optional.isEmpty:()Z
+     170: ifeq          213
+     173: aload         4
+     175: invokeinterface #72,  1           // InterfaceMethod com/mojang/serialization/DataResult.error:()Ljava/util/Optional;
+     180: invokedynamic #75,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+     185: invokevirtual #78                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+     188: aload_0
+     189: invokedynamic #168,  0            // InvokeDynamic #8:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     194: invokevirtual #83                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+     197: checkcast     #47                 // class java/lang/String
+     200: astore        7
+     202: aload         7
+     204: invokedynamic #169,  0            // InvokeDynamic #9:get:(Ljava/lang/String;)Ljava/util/function/Supplier;
+     209: invokestatic  #91                 // InterfaceMethod com/mojang/serialization/DataResult.error:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/DataResult;
+     212: areturn
+     213: aload         5
+     215: invokevirtual #94                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     218: checkcast     #170                // class com/finndog/moogs_structures/utils/VersionResolver$VersionNumber
+     221: aload         6
+     223: invokevirtual #94                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     226: checkcast     #170                // class com/finndog/moogs_structures/utils/VersionResolver$VersionNumber
+     229: invokevirtual #172                // Method com/finndog/moogs_structures/utils/VersionResolver$VersionNumber.compareTo:(Lcom/finndog/moogs_structures/utils/VersionResolver$VersionNumber;)I
+     232: ifle          245
+     235: aload_0
+     236: invokedynamic #176,  0            // InvokeDynamic #10:get:(Ljava/lang/String;)Ljava/util/function/Supplier;
+     241: invokestatic  #91                 // InterfaceMethod com/mojang/serialization/DataResult.error:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/DataResult;
+     244: areturn
+     245: new           #133                // class com/finndog/moogs_structures/utils/VersionResolver$VersionRange
+     248: dup
+     249: aload         5
+     251: invokevirtual #94                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     254: checkcast     #170                // class com/finndog/moogs_structures/utils/VersionResolver$VersionNumber
+     257: aload         6
+     259: invokevirtual #94                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     262: checkcast     #170                // class com/finndog/moogs_structures/utils/VersionResolver$VersionNumber
+     265: invokespecial #177                // Method com/finndog/moogs_structures/utils/VersionResolver$VersionRange."<init>":(Lcom/finndog/moogs_structures/utils/VersionResolver$VersionNumber;Lcom/finndog/moogs_structures/utils/VersionResolver$VersionNumber;)V
+     268: invokestatic  #108                // InterfaceMethod com/mojang/serialization/DataResult.success:(Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+     271: areturn
+     272: aload_0
+     273: invokedynamic #180,  0            // InvokeDynamic #11:get:(Ljava/lang/String;)Ljava/util/function/Supplier;
+     278: invokestatic  #91                 // InterfaceMethod com/mojang/serialization/DataResult.error:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/DataResult;
+     281: areturn
+
+  private static com.mojang.serialization.DataResult<com.finndog.moogs_structures.utils.VersionResolver$VersionNumber> parseVersionNumber(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokevirtual #145                // Method java/lang/String.trim:()Ljava/lang/String;
+       4: astore_1
+       5: aload_1
+       6: invokevirtual #148                // Method java/lang/String.isEmpty:()Z
+       9: ifeq          21
+      12: invokedynamic #181,  0            // InvokeDynamic #12:get:()Ljava/util/function/Supplier;
+      17: invokestatic  #91                 // InterfaceMethod com/mojang/serialization/DataResult.error:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/DataResult;
+      20: areturn
+      21: aload_1
+      22: ldc           #182                // String \\.
+      24: invokevirtual #184                // Method java/lang/String.split:(Ljava/lang/String;)[Ljava/lang/String;
+      27: astore_2
+      28: new           #17                 // class java/util/ArrayList
+      31: dup
+      32: aload_2
+      33: arraylength
+      34: invokespecial #187                // Method java/util/ArrayList."<init>":(I)V
+      37: astore_3
+      38: aload_2
+      39: astore        4
+      41: aload         4
+      43: arraylength
+      44: istore        5
+      46: iconst_0
+      47: istore        6
+      49: iload         6
+      51: iload         5
+      53: if_icmpge     119
+      56: aload         4
+      58: iload         6
+      60: aaload
+      61: astore        7
+      63: aload         7
+      65: invokevirtual #148                // Method java/lang/String.isEmpty:()Z
+      68: ifeq          81
+      71: aload_0
+      72: invokedynamic #190,  0            // InvokeDynamic #13:get:(Ljava/lang/String;)Ljava/util/function/Supplier;
+      77: invokestatic  #91                 // InterfaceMethod com/mojang/serialization/DataResult.error:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/DataResult;
+      80: areturn
+      81: aload_3
+      82: aload         7
+      84: invokestatic  #191                // Method java/lang/Integer.parseInt:(Ljava/lang/String;)I
+      87: invokestatic  #197                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      90: invokeinterface #98,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      95: pop
+      96: goto          113
+      99: astore        8
+     101: aload_0
+     102: aload         7
+     104: invokedynamic #203,  0            // InvokeDynamic #14:get:(Ljava/lang/String;Ljava/lang/String;)Ljava/util/function/Supplier;
+     109: invokestatic  #91                 // InterfaceMethod com/mojang/serialization/DataResult.error:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/DataResult;
+     112: areturn
+     113: iinc          6, 1
+     116: goto          49
+     119: new           #170                // class com/finndog/moogs_structures/utils/VersionResolver$VersionNumber
+     122: dup
+     123: aload_3
+     124: invokestatic  #104                // InterfaceMethod java/util/List.copyOf:(Ljava/util/Collection;)Ljava/util/List;
+     127: invokespecial #206                // Method com/finndog/moogs_structures/utils/VersionResolver$VersionNumber."<init>":(Ljava/util/List;)V
+     130: invokestatic  #108                // InterfaceMethod com/mojang/serialization/DataResult.success:(Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+     133: areturn
+    Exception table:
+       from    to  target type
+          81    96    99   Class java/lang/NumberFormatException
+
+  private static java.lang.String lambda$parseVersionNumber$11(java.lang.String, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #209,  0            // InvokeDynamic #15:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+       7: areturn
+
+  private static java.lang.String lambda$parseVersionNumber$10(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokedynamic #212,  0            // InvokeDynamic #16:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       6: areturn
+
+  private static java.lang.String lambda$parseVersionNumber$9();
+    Code:
+       0: ldc           #213                // String Version value cannot be empty
+       2: areturn
+
+  private static java.lang.String lambda$parseRange$8(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokedynamic #215,  0            // InvokeDynamic #17:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       6: areturn
+
+  private static java.lang.String lambda$parseRange$7(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokedynamic #216,  0            // InvokeDynamic #18:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       6: areturn
+
+  private static java.lang.String lambda$parseRange$6(java.lang.String);
+    Code:
+       0: aload_0
+       1: areturn
+
+  private static java.lang.String lambda$parseRange$5(java.lang.String);
+    Code:
+       0: aload_0
+       1: areturn
+
+  private static java.lang.String lambda$parseRange$4(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokedynamic #217,  0            // InvokeDynamic #19:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       6: areturn
+
+  private static com.finndog.moogs_structures.utils.VersionResolver$VersionRange lambda$parseRange$3(com.finndog.moogs_structures.utils.VersionResolver$VersionNumber);
+    Code:
+       0: new           #133                // class com/finndog/moogs_structures/utils/VersionResolver$VersionRange
+       3: dup
+       4: aload_0
+       5: aload_0
+       6: invokespecial #177                // Method com/finndog/moogs_structures/utils/VersionResolver$VersionRange."<init>":(Lcom/finndog/moogs_structures/utils/VersionResolver$VersionNumber;Lcom/finndog/moogs_structures/utils/VersionResolver$VersionNumber;)V
+       9: areturn
+
+  private static java.lang.String lambda$parseRange$2();
+    Code:
+       0: ldc           #218                // String Version range cannot be empty
+       2: areturn
+
+  private static java.lang.String lambda$parseVersionMap$1(java.lang.String);
+    Code:
+       0: aload_0
+       1: areturn
+
+  private static com.finndog.moogs_structures.utils.VersionResolver$VersionEntry lambda$parseVersionMap$0(java.util.Map$Entry, com.finndog.moogs_structures.utils.VersionResolver$VersionRange);
+    Code:
+       0: new           #96                 // class com/finndog/moogs_structures/utils/VersionResolver$VersionEntry
+       3: dup
+       4: aload_0
+       5: invokeinterface #44,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      10: checkcast     #47                 // class java/lang/String
+      13: aload_1
+      14: aload_0
+      15: invokeinterface #220,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      20: checkcast     #223                // class net/minecraft/resources/ResourceLocation
+      23: invokespecial #225                // Method com/finndog/moogs_structures/utils/VersionResolver$VersionEntry."<init>":(Ljava/lang/String;Lcom/finndog/moogs_structures/utils/VersionResolver$VersionRange;Lnet/minecraft/resources/ResourceLocation;)V
+      26: areturn
+
+  static {};
+    Code:
+       0: ldc           #15                 // String 1.21.1
+       2: invokestatic  #228                // Method com/finndog/moogs_structures/utils/VersionResolver$VersionNumber.parseInternal:(Ljava/lang/String;)Lcom/finndog/moogs_structures/utils/VersionResolver$VersionNumber;
+       5: putstatic     #9                  // Field CURRENT_VERSION:Lcom/finndog/moogs_structures/utils/VersionResolver$VersionNumber;
+       8: return
+}
