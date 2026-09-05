@@ -254,6 +254,36 @@ loot; generator code, natural spawning and loot injections still need inspection
 Template dimensions do not represent assembled family dimensions. Use this
 artifact for current content attribution while preserving those limitations.
 
+## Inspected packaged modifier dispositions
+
+Trace source `1ffa075` and evidence delivery `755fbd8` replace the 37 untraced
+selected modifier entries with inspected non-family contributions. The report
+retains their full packaged documents and binds the supporting implementation
+identities and Regions Unexplored config. It contains 68 pool additions,
+956 condition exclusions, one alias replacement and 37 non-family contributions,
+plus six excluded resource layers. These counts cover packaged modifiers, not
+every runtime hook or provider.
+
+Current `pool-traces-content.json.gz` SHA-256:
+`9bac83e23b19826a872a3d760ca44bdcf6e24b3ef9df3a2693c9737ec28f3a0d`.
+Size: 815,777 bytes. The original pilot and committed-source reproduction
+matched byte for byte. Executed successfully:
+
+```sh
+uv run -m tools.trace_item8_structure_pools --output evidence/raw/item8/pool-traces-modifier-dispositions-reproduction.json.gz
+cmp evidence/raw/item8/pool-traces-modifier-dispositions.json.gz evidence/raw/item8/pool-traces-modifier-dispositions-reproduction.json.gz
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-modifier-dispositions.json
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_pool_links.py tests/item8/test_feature_modifier_references.py tests/item8/test_surface_rule_contribution.py
+```
+
+All 71 checks passed. Only trace inputs and modifier-report entries changed;
+structure links, template contents and family grouping did not. The regenerated
+inventory was delivered separately in `7cd7893`; all its changes are dependent
+hash references. No world/archive revision or new runtime measurement was needed.
+The compiler, street, surface, feature, platform and config source directories
+contain the contribution rationale, preserved limitations and extraction commands.
+Overall Item 8 completion remains unproven.
+
 ## Generated-world piece bounds
 
 `world-bounds.json.gz` retains 792 saved structure starts from the eight Item 7
