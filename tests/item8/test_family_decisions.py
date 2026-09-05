@@ -438,6 +438,106 @@ def test_voyager_trees_and_wells_preserve_definitions_and_template_content(
     )
 
 
+def test_voyager_carts_and_igloos_preserve_authored_content_and_shared_pieces() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, list[dict[str, JsonValue]]]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    catalog = cast(
+        "dict[str, list[dict[str, JsonValue]]]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    traces = cast(
+        "dict[str, dict[str, dict[str, JsonValue]]]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    registry = read_registry(
+        root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )
+    selected = {
+        row["family_id"]: row
+        for row in decisions["groups"]
+        if row["family_id"] in {"mvs:cart", "mvs:igloo"}
+    }
+    all_templates: set[str] = set()
+    for family, prefixes in {
+        "mvs:cart": ("mvs:cart", "mvs:large_cart_", "mvs:medium_bamboo_cart"),
+        "mvs:igloo": ("mvs:medium_igloo_", "mvs:small_igloo"),
+    }.items():
+        group = selected[family]
+        variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+        expected = {
+            key for key in registry if key.startswith(prefixes) and key != "mvs:cartographer_tower"
+        }
+        assert group["structure_ids"] == sorted(variants) == sorted(expected)
+        for path, digest in cast("dict[str, str]", group["evidence"]).items():
+            assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+        for identifier, variant in variants.items():
+            name = identifier.split(":")[1]
+            assert [
+                row["document"]
+                for row in catalog["resources"]
+                if row["path"] == f"data/mvs/worldgen/structure/{name}.json"
+            ] == [variant["definition"]]
+            templates = cast("dict[str, list[int]]", variant["templates"])
+            trace = traces["structures"][identifier]
+            assert trace["templates"] == sorted(templates)
+            assert trace["missing"] == trace["unresolved_elements"] == []
+            all_templates.update(templates)
+            for template, dimensions in templates.items():
+                assert traces["template_contents"][template]["template_size_xyz"] == dimensions
+    assert len(all_templates) == 10
+    authored = {
+        "mvs:carts/cart": "minecraft:wandering_trader",
+        "mvs:carts/medium_bamboo_cart": "minecraft:wandering_trader",
+        **{
+            f"minecraft:village/snowy/villagers/{kind}": "minecraft:villager"
+            for kind in ("baby", "nitwit", "unemployed")
+        },
+    }
+    loot = {
+        "mvs:carts/cart": [(2, "mvs:cart")],
+        "mvs:carts/large_cart_1": [(i, "mvs:large_carts") for i in range(1, 6)],
+        "mvs:carts/large_cart_2": [(i, "mvs:large_carts") for i in range(1, 5)],
+        "mvs:houses/medium_igloo_1": [(i, "mvs:houses_common") for i in (0, 3, 9)],
+        "mvs:houses/small_igloo": [(i, "mvs:houses_uncommon") for i in (9, 11)],
+    }
+    for template in all_templates:
+        content = traces["template_contents"][template]
+        assert content["authored_entities"] == (
+            [{"id": authored[template], "path": "/entities/0/nbt"}] if template in authored else []
+        )
+        assert content["unresolved_entities"] == []
+        assert content["loot_references"] == [
+            {"path": f"/block_entities/{i}/nbt/LootTable", "value": value}
+            for i, value in loot.get(template, [])
+        ]
+        markers = cast("list[dict[str, JsonValue]]", content["generation_markers"])
+        assert len(markers) == int(template.startswith("mvs:carts/"))
+        for marker in markers:
+            nbt = cast("dict[str, JsonValue]", marker["nbt"])
+            assert (nbt["id"], nbt["mode"], nbt["metadata"]) == (
+                "minecraft:structure_block",
+                "SAVE",
+                "",
+            )
+        spawners = cast("list[dict[str, JsonValue]]", content["spawner_blocks"])
+        assert len(spawners) == int(template == "mvs:houses/small_igloo_lower")
+        for spawner in spawners:
+            nbt = cast("dict[str, JsonValue]", spawner["nbt"])
+            assert nbt["SpawnData"] == {"entity": {"id": "minecraft:stray"}}
+            assert nbt["SpawnPotentials"] == []
+
+
 def test_soaring_tree_variants_bind_common_definition_and_template_contents() -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(
