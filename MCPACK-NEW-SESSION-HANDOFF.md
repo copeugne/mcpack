@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-05
 
+Runtime activation is integrated in `2299fd0`, using the existing downloaded
+registry-r1 archive. Debug log records the relevant mixin applications, actual
+NeoForge service selections, both mod containers and config loading. Captured
+Better End Island config exactly matches frozen bytes. Runtime/source derivation
+selects betterEnd=true, spike anchor Y=70 and loader radius 42. Exact member
+hashes and log lines are in decisions; no new server run or archive was needed.
+Twenty-nine focused tests and scoped builder checks passed. Inventory SHA-256:
+`9de6189328999382fae37cc1a45888422112856ebdc20c152159ae11e4469d5c`.
+Next reconcile generated-world observations and settle family records. Do not
+repeat activation/source tracing. Item 8 and full provider coverage remain open.
+
 Activation and respawn interpretation is integrated in `a7feb3f`. The source
 chain connects NeoForge constructor, Common/config initialization and packaged
 services. SUMMONING_PILLARS and END now carry direct spike/podium rebuild and
