@@ -1,0 +1,110 @@
+Compiled from "DimensionConfig.java"
+public class org.violetmoon.zeta.config.type.DimensionConfig implements org.violetmoon.zeta.config.type.IConfigType {
+  private boolean isBlacklist;
+
+  private java.util.List<java.lang.String> dimensions;
+
+  public org.violetmoon.zeta.config.type.DimensionConfig(boolean, java.lang.String...);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iload_1
+       6: putfield      #7                  // Field isBlacklist:Z
+       9: aload_0
+      10: new           #13                 // class java/util/LinkedList
+      13: dup
+      14: invokespecial #15                 // Method java/util/LinkedList."<init>":()V
+      17: putfield      #16                 // Field dimensions:Ljava/util/List;
+      20: aload_0
+      21: getfield      #16                 // Field dimensions:Ljava/util/List;
+      24: aload_2
+      25: invokestatic  #20                 // Method java/util/Collections.addAll:(Ljava/util/Collection;[Ljava/lang/Object;)Z
+      28: pop
+      29: return
+
+  public static org.violetmoon.zeta.config.type.DimensionConfig overworld(boolean);
+    Code:
+       0: new           #8                  // class org/violetmoon/zeta/config/type/DimensionConfig
+       3: dup
+       4: iload_0
+       5: iconst_1
+       6: anewarray     #26                 // class java/lang/String
+       9: dup
+      10: iconst_0
+      11: ldc           #28                 // String minecraft:overworld
+      13: aastore
+      14: invokespecial #30                 // Method "<init>":(Z[Ljava/lang/String;)V
+      17: areturn
+
+  public static org.violetmoon.zeta.config.type.DimensionConfig nether(boolean);
+    Code:
+       0: new           #8                  // class org/violetmoon/zeta/config/type/DimensionConfig
+       3: dup
+       4: iload_0
+       5: iconst_1
+       6: anewarray     #26                 // class java/lang/String
+       9: dup
+      10: iconst_0
+      11: ldc           #33                 // String minecraft:the_nether
+      13: aastore
+      14: invokespecial #30                 // Method "<init>":(Z[Ljava/lang/String;)V
+      17: areturn
+
+  public static org.violetmoon.zeta.config.type.DimensionConfig end(boolean);
+    Code:
+       0: new           #8                  // class org/violetmoon/zeta/config/type/DimensionConfig
+       3: dup
+       4: iload_0
+       5: iconst_1
+       6: anewarray     #26                 // class java/lang/String
+       9: dup
+      10: iconst_0
+      11: ldc           #35                 // String minecraft:the_end
+      13: aastore
+      14: invokespecial #30                 // Method "<init>":(Z[Ljava/lang/String;)V
+      17: areturn
+
+  public static org.violetmoon.zeta.config.type.DimensionConfig all();
+    Code:
+       0: new           #8                  // class org/violetmoon/zeta/config/type/DimensionConfig
+       3: dup
+       4: iconst_1
+       5: iconst_0
+       6: anewarray     #26                 // class java/lang/String
+       9: invokespecial #30                 // Method "<init>":(Z[Ljava/lang/String;)V
+      12: areturn
+
+  public boolean canSpawnHere(net.minecraft.world.level.LevelAccessor);
+    Code:
+       0: aload_1
+       1: instanceof    #37                 // class net/minecraft/world/level/Level
+       4: ifeq          15
+       7: aload_1
+       8: checkcast     #37                 // class net/minecraft/world/level/Level
+      11: astore_2
+      12: goto          17
+      15: iconst_0
+      16: ireturn
+      17: aload_0
+      18: aload_2
+      19: invokevirtual #39                 // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+      22: invokevirtual #43                 // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      25: invokevirtual #49                 // Method canSpawnHere:(Lnet/minecraft/resources/ResourceLocation;)Z
+      28: ireturn
+
+  public boolean canSpawnHere(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: getfield      #16                 // Field dimensions:Ljava/util/List;
+       4: aload_1
+       5: invokevirtual #53                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+       8: invokeinterface #59,  2           // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+      13: aload_0
+      14: getfield      #7                  // Field isBlacklist:Z
+      17: if_icmpeq     24
+      20: iconst_1
+      21: goto          25
+      24: iconst_0
+      25: ireturn
+}
