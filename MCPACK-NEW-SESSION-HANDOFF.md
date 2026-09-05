@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Initialization captures in `3ff1893` show Extras/Bridges NeoForge loaders
+delegate to IModulesLoader.loadModules. The newly preserved default methods
+contain only return. This branch does not register configuration controls; do
+not repeat these captures. Auto-registration/data and wider provider coverage
+still need reconciliation. Inventory remains at `7343614` with SHA-256
+`878db7626144c928e32a1b5a6eeef52fa8cc934d3ed1a2d8dfed2ec2bcfaa318`.
+No new runtime or measurement system was added. Item 8 remains incomplete.
+
 No Extras/Bridges-named path was found in the frozen configuration tree, but
 this is not an absence-of-controls conclusion. Resolve the initialization path
 using four exact classes with the existing extractor: Extras common/NeoForge
