@@ -6,6 +6,35 @@
 
 ### Continuation update - 2026-09-05
 
+Aether/Deep Aether and BetterEnd are delivered in separate source/output
+increments: `d883abe`/`b006a3f` and `664d235`/`8e21c9f`. All eight registered
+Aether/Deep Aether roots and fourteen BetterEnd roots are assigned. The six
+packaged Aether ruined-portal definitions absent from the runtime registry are
+not added to active coverage. Five Aether/Deep Aether and thirteen BetterEnd
+custom paths remain explicitly untraced, not empty-content claims. Bronze,
+silver, gold and brass dungeon processor references remain literal source data.
+BetterEnd lakes, mountains and related formation roots need code-based variant
+reconciliation before a canonical family total can be accepted. BetterEnd's
+village preserves missing `street_decoration/work_01` and
+`terminators/stree_terminator_01` templates. No new Aether-root observations
+exist; existing BetterEnd observations are linked to bridges, normal/rare lakes,
+ice stars, mountains, painted mountains, small islands and sulphuric caves.
+
+The existing authored-root check was reused, including all custom definition
+fields and explicit untraced membership. Seventeen affected cases passed for
+Aether/Deep Aether and eighteen for BetterEnd; 37 unaffected tests were
+deselected. Scoped Ruff/basedpyright checks passed. The first Aether lint run
+reported 51 statements above limit 50; combining identical key-set assignments
+resolved it without adding a helper or weakening assertions. Each output was
+built twice with identical bytes and unchanged earlier family records.
+Current inventory SHA-256:
+`22c5dc22866931048869066a27ee046dd4e492fca4e2dcd30205b29b85c689fa`.
+Totals: 431 working groups, 853 assigned IDs, 34 unassigned, all vanilla.
+Continue vanilla packaged-definition precedence and variant assignment, then
+non-registry contributions, custom generators, canonical reconciliation and
+required attributes. No new measurement system was added. Item 8 final gate,
+review and main merge remain open.
+
 Illager Invasion, Creating Space and Supplementaries are delivered in separate
 source/output increments: `63df576`/`d30900f`, `b08ad94`/`fe209a5`, and
 `1c77ad2`/`9111d69`. Five illager designs have explicit authored hostile intent
