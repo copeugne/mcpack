@@ -42,6 +42,7 @@ ARCHIVES = frozenset(
         "IllagerInvasion-v21.1.6-1.21.1-NeoForge.jar",
         "repurposed_structures-7.5.21+1.21.1-neoforge.jar",
         "aether-1.21.1-1.5.10-neoforge.jar",
+        "chefsdelight-1.0.5-neoforge-1.21.1.jar",
         "worldweaver-21.0.24.jar",
         "lithostitched-1.7.10+beta4-neoforge-21.1.jar",
         "YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar",
@@ -348,6 +349,8 @@ CLASSES: tuple[str, ...] = (
     "com/tristankechlo/explorations/worldgen/structures/SlimeCaveStructure.class",
     "com/tristankechlo/explorations/worldgen/structures/pieces/SlimeCaveStructurePiece.class",
     "com/tristankechlo/explorations/worldgen/structures/processors/DeepslateProcessor.class",
+    "net/redstonegames/chefsdelight/ChefsDelight.class",
+    "net/redstonegames/chefsdelight/worldgen/village/VillageStructures.class",
     "com/aetherteam/aether/world/structure/BronzeDungeonStructure.class",
     "com/aetherteam/aether/world/structure/SilverDungeonStructure.class",
     "com/aetherteam/aether/world/structure/GoldDungeonStructure.class",
@@ -509,6 +512,8 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     continue
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = "/mixin/" in name or "/mixins/" in name or name in {
+                    "net/redstonegames/chefsdelight/ChefsDelight.class",
+                    "net/redstonegames/chefsdelight/worldgen/village/VillageStructures.class",
                     "com/aetherteam/aether/block/AetherBlocks.class",
                     "com/aetherteam/aether/world/structurepiece/AetherTemplateStructurePiece.class",
                     "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MonumentPieces$MonumentBuilding.class",
