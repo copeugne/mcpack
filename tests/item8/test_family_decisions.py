@@ -326,6 +326,93 @@ def test_mega_ship_variants_preserve_definitions_modules_and_mes_coverage() -> N
             assert definition["terrain_adaptation"] == "none"
 
 
+def test_voyager_living_trees_preserve_variants_and_packaged_geometry() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, list[dict[str, JsonValue]]]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    group = next(row for row in decisions["groups"] if row["family_id"] == "mvs:living_tree")
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+    catalog = cast(
+        "dict[str, list[dict[str, JsonValue]]]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    traces = cast(
+        "dict[str, dict[str, dict[str, JsonValue]]]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    registry = read_registry(
+        root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )
+    expected = sorted(
+        key
+        for key in registry
+        if key.startswith("mvs:") and key.endswith("_tree") and "dead_tree" not in key
+    )
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    assert group["structure_ids"] == sorted(variants) == expected
+    assert len(variants) == 9
+    sizes: list[list[int]] = []
+    for identifier, variant in variants.items():
+        name = identifier.split(":")[1]
+        definitions = [
+            cast("dict[str, JsonValue]", row["document"])
+            for row in catalog["resources"]
+            if row["path"] == f"data/mvs/worldgen/structure/{name}.json"
+        ]
+        assert definitions == [variant["definition"]]
+        definition = definitions[0]
+        assert group["common_generation_definition"] == {
+            k: v
+            for k, v in definition.items()
+            if k
+            not in {
+                "biomes",
+                "start_pool",
+                "allowed_terrain_height_range",
+                "terrain_height_radius_check",
+            }
+        }
+        assert (
+            definition.get("allowed_terrain_height_range"),
+            definition.get("terrain_height_radius_check"),
+        ) == ((4, 2) if name == "big_oak_tree" else (None, None))
+        trace = traces["structures"][identifier]
+        templates = cast("dict[str, list[int]]", variant["templates"])
+        assert trace["templates"] == sorted(templates)
+        assert trace["missing"] == trace["unresolved_elements"] == []
+        for template, dimensions in templates.items():
+            content = traces["template_contents"][template]
+            assert content["template_size_xyz"] == dimensions
+            sizes.append(dimensions)
+            assert content["authored_entities"] == content["unresolved_entities"] == []
+            assert content["spawner_blocks"] == content["generation_markers"] == []
+            expected_loot: list[JsonValue] = (
+                [{"path": "/block_entities/0/nbt/LootTable", "value": "mvs:general"}]
+                if name == "big_oak_tree"
+                else []
+            )
+            assert content["loot_references"] == expected_loot
+    assert len(sizes) == 15
+    attrs = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
+    assert attrs["approximate_footprint"]["packaged_template_xz_blocks"] == [
+        list(pair) for pair in sorted({(s[0], s[2]) for s in sizes})
+    ]
+    assert attrs["approximate_vertical_size"]["packaged_template_y_blocks"] == sorted(
+        {s[1] for s in sizes}
+    )
+
+
 def test_soaring_tree_variants_bind_common_definition_and_template_contents() -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(
