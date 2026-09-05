@@ -968,3 +968,37 @@ Grouping delivered in `aa01ac1`; inventory regenerated at that revision, SHA-256
 `d38983b380fedb771dbe47aefb274e287a9dfa355e37d4b9a617babac68df33e`.
 Camp root/template/biome/loot and observation coverage is preserved. The mine
 row changes only its grouping rationale; other family rows are unchanged.
+
+## MVS floating-island family reconciliation (2026-09-05)
+
+The two floating-island roots form one `mvs:floating_islands` family. Their full
+packaged definitions differ only by start pool: WORLD_SURFACE_WG projection with
+an absolute offset of 60, size 1, no terrain adaptation and empty spawn overrides.
+The nature layout is a 26 by 19 by 30 template with MVS common/uncommon/rare house
+loot and no authored entity. The large-house layout is 26 by 28 by 23 and reaches
+three shared villager components. Its loot references shipwreck treasure and
+stronghold crossing/library. The villager pieces are components, not families.
+
+All five resolved templates have no spawners or generation markers. Full variant
+records retain sizes, definitions and missing-component dispositions. These are
+layout and habitation/reward variants of an elevated island family; no claim of
+identical encounter value, actual assembled footprint or visual discovery range
+is made. The working total becomes 426 groups with 887 registered roots.
+
+The existing related-layout test now verifies this pair's definitions, template
+coverage/sizes, per-root authored entity IDs and loot sources. No additional
+measurement system or runtime was needed. Mining-family reconciliation remains
+open and is not changed by this increment.
+
+Decision SHA-256:
+`0139d328e23c57ecb52802819165db0befc25d2b352cf932e5e9f7b01dffcf2d`.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-mvs-islands.json
+```
+
+All 68 affected tests and scoped Ruff/Basedpyright checks passed. This uses the
+existing extraction and inventory paths; raw sources are unchanged.
