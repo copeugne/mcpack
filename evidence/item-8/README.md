@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `ca53b4b`, SHA-256
-`b68b3297ff617cbf45b2329898ffe80e9ae4d91c7d9bcb6a5fda4425450f90d6`.
+Current working inventory regenerated at `5f73e5a`, SHA-256
+`bc1cdc232948646e5c4b01935b500aaa645b85a219a0eb1ad17190f95fca7ea4`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,19 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 5f73e5a increment groups Better End Island into arrival platform, gateway
+and dragon arena working families. Spikes and podium belong to the coordinated
+arena lifecycle; their pieces and state variants are not separate families.
+The existing template-catalog test now verifies that all 41 packaged templates
+are assigned exactly once and all 39 arena components stay together. Twenty-nine
+focused tests and scoped quality checks passed. Required attributes and
+cross-provider reconciliation remain open. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-end-families-5f73e5a.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-end-families-5f73e5a.json
+```
 
 The ca53b4b increment links the saved central-End block projection to Better
 End Island attribution. See world-observations/central-end/README.md for the
