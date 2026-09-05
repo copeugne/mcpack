@@ -330,6 +330,7 @@ CLASSES = (
     "org/violetmoon/quark/content/world/module/FairyRingsModule.class",
     "org/violetmoon/quark/content/world/module/MonsterBoxModule.class",
     "org/violetmoon/quark/content/world/gen/FallenLogGenerator.class",
+    "org/violetmoon/quark/content/world/gen/FallenLogGenerator$Decor.class",
     "org/violetmoon/quark/content/world/gen/FairyRingGenerator.class",
     "org/violetmoon/quark/content/world/gen/MonsterBoxGenerator.class",
 )
