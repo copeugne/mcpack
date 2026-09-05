@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-05
 
+Scope reassessment following the user's expansion concern: repeated helper
+tracing has become too granular. SPECS Item 8 requires eleven inventory
+attributes, not exhaustive implementation reconstruction, measured encounter
+populations, balance or discovery-distance experiments. Preserve source limits
+without turning every possible runtime qualification into a new acceptance
+gate. Before any further capture, name the unresolved required attribute and
+why existing evidence cannot answer it. No new framework or measurement system.
+
+Bronze trap, processor callback and conditional surface-clue findings are
+integrated in d4482a1; the generated inventory reproduces exactly. Source
+captures are in 0ae8368, 4ce02d8 and 63009b4; assembly findings in 6fb0d0c.
+Do not repeat them. Next priority is retained-provider coverage using existing
+manifest, packaged catalogs and contribution records, then outstanding family
+attributes. Bronze remains incomplete; its open implementation questions must
+be assessed against the required attribute before further tracing.
+
 Bronze template/marker attribution is integrated in ca135b3. Its six template
 candidates and processor inputs are bound by the focused test from 677365d;
 placement/mimic/loot source captures are in a45a37c, assembly captures in
