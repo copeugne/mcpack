@@ -1,0 +1,204 @@
+Compiled from "SetPoolAliasesModifier.java"
+public final class dev.worldgen.lithostitched.worldgen.modifier.SetPoolAliasesModifier extends java.lang.Record implements dev.worldgen.lithostitched.api.worldgen.modifier.WorldgenModifier {
+  private final java.util.Optional<dev.worldgen.lithostitched.api.predicate.LoadPredicate> predicate;
+
+  private final int priority;
+
+  private final net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.structure.Structure> structures;
+
+  private final java.util.List<net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBinding> poolAliases;
+
+  private final boolean append;
+
+  public static final com.mojang.serialization.MapCodec<dev.worldgen.lithostitched.worldgen.modifier.SetPoolAliasesModifier> CODEC;
+
+  public dev.worldgen.lithostitched.worldgen.modifier.SetPoolAliasesModifier(java.util.Optional<dev.worldgen.lithostitched.api.predicate.LoadPredicate>, int, net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.structure.Structure>, java.util.List<net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBinding>, boolean);
+    Code:
+       0: aload_0
+       1: invokespecial #44                 // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #46                 // Field predicate:Ljava/util/Optional;
+       9: aload_0
+      10: iload_2
+      11: putfield      #48                 // Field priority:I
+      14: aload_0
+      15: aload_3
+      16: putfield      #50                 // Field structures:Lnet/minecraft/core/HolderSet;
+      19: aload_0
+      20: aload         4
+      22: putfield      #52                 // Field poolAliases:Ljava/util/List;
+      25: aload_0
+      26: iload         5
+      28: putfield      #54                 // Field append:Z
+      31: return
+
+  private static com.mojang.serialization.DataResult<dev.worldgen.lithostitched.worldgen.modifier.SetPoolAliasesModifier> validate(dev.worldgen.lithostitched.worldgen.modifier.SetPoolAliasesModifier);
+    Code:
+       0: aload_0
+       1: invokestatic  #66                 // InterfaceMethod com/mojang/serialization/DataResult.success:(Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+       4: areturn
+
+  public void apply(net.minecraft.core.RegistryAccess);
+    Code:
+       0: aload_0
+       1: getfield      #50                 // Field structures:Lnet/minecraft/core/HolderSet;
+       4: invokeinterface #75,  1           // InterfaceMethod net/minecraft/core/HolderSet.stream:()Ljava/util/stream/Stream;
+       9: invokedynamic #96,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      14: invokeinterface #102,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      19: aload_0
+      20: invokedynamic #114,  0            // InvokeDynamic #1:accept:(Ldev/worldgen/lithostitched/worldgen/modifier/SetPoolAliasesModifier;)Ljava/util/function/Consumer;
+      25: invokeinterface #118,  2          // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+      30: return
+
+  private void applyModifier(net.minecraft.world.level.levelgen.structure.Structure);
+    Code:
+       0: aload_1
+       1: instanceof    #122                // class dev/worldgen/lithostitched/worldgen/structure/DelegatingStructure
+       4: ifeq          17
+       7: aload_1
+       8: checkcast     #122                // class dev/worldgen/lithostitched/worldgen/structure/DelegatingStructure
+      11: astore_2
+      12: aload_2
+      13: invokevirtual #126                // Method dev/worldgen/lithostitched/worldgen/structure/DelegatingStructure.delegate:()Lnet/minecraft/world/level/levelgen/structure/Structure;
+      16: astore_1
+      17: aload_1
+      18: instanceof    #128                // class dev/worldgen/lithostitched/worldgen/structure/AlternateJigsawStructure
+      21: ifeq          44
+      24: aload_1
+      25: checkcast     #128                // class dev/worldgen/lithostitched/worldgen/structure/AlternateJigsawStructure
+      28: astore_2
+      29: aload_2
+      30: aload_0
+      31: getfield      #52                 // Field poolAliases:Ljava/util/List;
+      34: aload_0
+      35: getfield      #54                 // Field append:Z
+      38: invokevirtual #132                // Method dev/worldgen/lithostitched/worldgen/structure/AlternateJigsawStructure.setPoolAliases:(Ljava/util/List;Z)V
+      41: goto          112
+      44: aload_1
+      45: instanceof    #134                // class net/minecraft/world/level/levelgen/structure/structures/JigsawStructure
+      48: ifeq          112
+      51: aload_1
+      52: checkcast     #134                // class net/minecraft/world/level/levelgen/structure/structures/JigsawStructure
+      55: astore_3
+      56: new           #136                // class java/util/ArrayList
+      59: dup
+      60: invokespecial #137                // Method java/util/ArrayList."<init>":()V
+      63: astore        4
+      65: aload_0
+      66: getfield      #54                 // Field append:Z
+      69: ifeq          89
+      72: aload         4
+      74: aload_3
+      75: checkcast     #139                // class dev/worldgen/lithostitched/mixin/common/JigsawStructureAccessor
+      78: invokeinterface #143,  1          // InterfaceMethod dev/worldgen/lithostitched/mixin/common/JigsawStructureAccessor.getPoolAliases:()Ljava/util/List;
+      83: invokeinterface #149,  2          // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+      88: pop
+      89: aload         4
+      91: aload_0
+      92: getfield      #52                 // Field poolAliases:Ljava/util/List;
+      95: invokeinterface #149,  2          // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+     100: pop
+     101: aload_3
+     102: checkcast     #139                // class dev/worldgen/lithostitched/mixin/common/JigsawStructureAccessor
+     105: aload         4
+     107: invokeinterface #152,  2          // InterfaceMethod dev/worldgen/lithostitched/mixin/common/JigsawStructureAccessor.setPoolAliases:(Ljava/util/List;)V
+     112: return
+
+  public com.mojang.serialization.MapCodec<? extends dev.worldgen.lithostitched.api.worldgen.modifier.WorldgenModifier> codec();
+    Code:
+       0: getstatic     #165                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+       3: areturn
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #184,  0            // InvokeDynamic #2:toString:(Ldev/worldgen/lithostitched/worldgen/modifier/SetPoolAliasesModifier;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #189,  0            // InvokeDynamic #2:hashCode:(Ldev/worldgen/lithostitched/worldgen/modifier/SetPoolAliasesModifier;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #195,  0            // InvokeDynamic #2:equals:(Ldev/worldgen/lithostitched/worldgen/modifier/SetPoolAliasesModifier;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public java.util.Optional<dev.worldgen.lithostitched.api.predicate.LoadPredicate> predicate();
+    Code:
+       0: aload_0
+       1: getfield      #46                 // Field predicate:Ljava/util/Optional;
+       4: areturn
+
+  public int priority();
+    Code:
+       0: aload_0
+       1: getfield      #48                 // Field priority:I
+       4: ireturn
+
+  public net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.structure.Structure> structures();
+    Code:
+       0: aload_0
+       1: getfield      #50                 // Field structures:Lnet/minecraft/core/HolderSet;
+       4: areturn
+
+  public java.util.List<net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBinding> poolAliases();
+    Code:
+       0: aload_0
+       1: getfield      #52                 // Field poolAliases:Ljava/util/List;
+       4: areturn
+
+  public boolean append();
+    Code:
+       0: aload_0
+       1: getfield      #54                 // Field append:Z
+       4: ireturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #210                // Field dev/worldgen/lithostitched/api/predicate/LoadPredicate.FIELD_CODEC:Lcom/mojang/serialization/MapCodec;
+       4: invokedynamic #216,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+       9: invokevirtual #222                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      12: getstatic     #225                // Field PRIORITY_DEFAULT_CODEC:Lcom/mojang/serialization/MapCodec;
+      15: invokedynamic #231,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      20: invokevirtual #222                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      23: getstatic     #237                // Field net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+      26: ldc           #238                // String structures
+      28: invokestatic  #244                // InterfaceMethod dev/worldgen/lithostitched/worldgen/LithostitchedCodecs.registrySet:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      31: invokedynamic #250,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+      36: invokevirtual #222                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      39: getstatic     #255                // Field net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasBinding.CODEC:Lcom/mojang/serialization/Codec;
+      42: invokestatic  #261                // InterfaceMethod com/mojang/serialization/Codec.list:(Lcom/mojang/serialization/Codec;)Lcom/mojang/serialization/Codec;
+      45: ldc_w         #263                // String pool_aliases
+      48: invokeinterface #267,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      53: invokedynamic #273,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+      58: invokevirtual #222                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      61: getstatic     #277                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      64: ldc_w         #278                // String append
+      67: invokeinterface #281,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      72: iconst_1
+      73: invokestatic  #287                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      76: invokevirtual #291                // Method com/mojang/serialization/MapCodec.orElse:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      79: invokedynamic #297,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+      84: invokevirtual #222                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      87: invokevirtual #301                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P5;
+      90: aload_0
+      91: invokedynamic #311,  0            // InvokeDynamic #8:apply:()Lcom/mojang/datafixers/util/Function5;
+      96: invokevirtual #314                // Method com/mojang/datafixers/Products$P5.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function5;)Lcom/mojang/datafixers/kinds/App;
+      99: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #321,  0            // InvokeDynamic #9:apply:()Ljava/util/function/Function;
+       5: invokestatic  #325                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: invokedynamic #330,  0            // InvokeDynamic #10:apply:()Ljava/util/function/Function;
+      13: invokevirtual #332                // Method com/mojang/serialization/MapCodec.validate:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+      16: putstatic     #165                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      19: return
+}

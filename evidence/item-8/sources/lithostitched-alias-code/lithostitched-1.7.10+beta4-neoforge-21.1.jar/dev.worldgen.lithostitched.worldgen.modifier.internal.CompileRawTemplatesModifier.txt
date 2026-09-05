@@ -1,0 +1,75 @@
+Compiled from "CompileRawTemplatesModifier.java"
+public final class dev.worldgen.lithostitched.worldgen.modifier.internal.CompileRawTemplatesModifier extends java.lang.Record implements dev.worldgen.lithostitched.api.worldgen.modifier.WorldgenModifier {
+  public static final com.mojang.serialization.MapCodec<dev.worldgen.lithostitched.worldgen.modifier.internal.CompileRawTemplatesModifier> CODEC;
+
+  public dev.worldgen.lithostitched.worldgen.modifier.internal.CompileRawTemplatesModifier();
+    Code:
+       0: aload_0
+       1: invokespecial #19                 // Method java/lang/Record."<init>":()V
+       4: return
+
+  public java.util.Optional<dev.worldgen.lithostitched.api.predicate.LoadPredicate> predicate();
+    Code:
+       0: invokestatic  #29                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+       3: areturn
+
+  public void apply(net.minecraft.core.RegistryAccess);
+    Code:
+       0: aload_1
+       1: getstatic     #38                 // Field net/minecraft/core/registries/Registries.TEMPLATE_POOL:Lnet/minecraft/resources/ResourceKey;
+       4: invokestatic  #44                 // Method dev/worldgen/lithostitched/Lithostitched.registry:(Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+       7: invokeinterface #50,  1           // InterfaceMethod net/minecraft/core/Registry.stream:()Ljava/util/stream/Stream;
+      12: invokeinterface #56,  1           // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      17: astore_2
+      18: aload_2
+      19: invokeinterface #62,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      24: astore_3
+      25: aload_3
+      26: invokeinterface #68,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      31: ifeq          58
+      34: aload_3
+      35: invokeinterface #72,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      40: checkcast     #74                 // class net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool
+      43: astore        4
+      45: aload         4
+      47: checkcast     #76                 // class dev/worldgen/lithostitched/duck/StructurePoolAccess
+      50: invokeinterface #79,  1           // InterfaceMethod dev/worldgen/lithostitched/duck/StructurePoolAccess.compileRawTemplates:()V
+      55: goto          25
+      58: return
+
+  public int priority();
+    Code:
+       0: ldc           #88                 // int 2147483647
+       2: ireturn
+
+  public com.mojang.serialization.MapCodec<? extends dev.worldgen.lithostitched.api.worldgen.modifier.WorldgenModifier> codec();
+    Code:
+       0: getstatic     #93                 // Field CODEC:Lcom/mojang/serialization/MapCodec;
+       3: areturn
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #107,  0            // InvokeDynamic #0:toString:(Ldev/worldgen/lithostitched/worldgen/modifier/internal/CompileRawTemplatesModifier;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #111,  0            // InvokeDynamic #0:hashCode:(Ldev/worldgen/lithostitched/worldgen/modifier/internal/CompileRawTemplatesModifier;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #117,  0            // InvokeDynamic #0:equals:(Ldev/worldgen/lithostitched/worldgen/modifier/internal/CompileRawTemplatesModifier;Ljava/lang/Object;)Z
+       7: ireturn
+
+  static {};
+    Code:
+       0: invokedynamic #135,  0            // InvokeDynamic #1:get:()Ljava/util/function/Supplier;
+       5: invokestatic  #141                // Method com/mojang/serialization/MapCodec.unit:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #93                 // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}
