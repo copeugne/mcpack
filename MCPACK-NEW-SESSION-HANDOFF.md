@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-05
 
+Inspect CorundumModule, PermafrostModule and their two underground styles using
+the existing extractor. These sources are needed to distinguish additional
+families from terrain contributions in Quark coverage. No new framework or
+measurement is needed. Preserve uncertainty if a delegated generator remains
+unresolved; do not classify from module names alone.
+
 The optional spike-decoration investigation is dispositioned in de6b0dc.
 Keep both conditional materials and exact selection UNKNOWN. Do not capture
 CompressedBlocksModule merely to choose between the two decorations: the source
