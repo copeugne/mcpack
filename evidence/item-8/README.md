@@ -1770,3 +1770,13 @@ fields remain unchanged. Reproduce with a fresh output directory:
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-extras-swamp-generation.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-extras-swamp-generation.json
 ```
+
+### Extras remaining desert surface generators
+
+Chillzone, giant torch, small ruins and obelisk now record their sand landing
+requirement, four solid support offsets and template anchors. The first, second
+and fourth place one block above landing; small ruins place at landing height.
+All four inherit the empty custom processor list from AbstractNbtFeature.
+This closes their direct terrain/processor attribution, not external stack effects
+or observed discoverability. The preserved source captures were reused unchanged.
+The existing focused command passed 19 tests; scoped Ruff/Basedpyright passed.

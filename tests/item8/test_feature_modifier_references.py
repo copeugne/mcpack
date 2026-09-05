@@ -576,6 +576,13 @@ def test_extras_desert_classes_pass_fixed_ids_to_centered_placement() -> None:
         assert "createTemplateFromCenter:" in source
         assert ("BlockPos.above:" in source) == (name != "DesertSmallRuinsFeature")
         assert name + '."<init>":' in sources["FeatureModule"]
+        assert " useProcessors(" not in source
+        assert "BlockTags.SAND:" in source
+        assert source.count("BlockState.isSolid:") == 4
+    default_processors = sources["AbstractNbtFeature"].split(" useProcessors();")[1]
+    default_processors = default_processors.split("  private static ")[0]
+    assert 'java/util/ArrayList."<init>":()V' in default_processors
+    assert "List.add:" not in default_processors
     helper = sources["AbstractNbtFeature"].split("protected net.minecraft.world.level.levelgen.")
     centered = next(part for part in helper if part.startswith(
         "structure.templatesystem.StructureTemplate createTemplateFromCenterWithPlacement("
@@ -645,6 +652,12 @@ def test_extras_well_processor_adds_loot_missing_from_template_entities() -> Non
         "Field DESERT_WELL_PROCESSOR:"
     )
     generator = sources["DesertWellFeature"]
+    obelisk = sources["DesertObeliskFeature"]
+    assert " useProcessors(" not in obelisk
+    assert "BlockTags.SAND:" in obelisk
+    assert obelisk.count("BlockState.isSolid:") == 4
+    assert "ResourceLocationFeatureConfiguration.getLocation:" in obelisk
+    assert "BlockPos.above:" in obelisk
     assert "FeatureProcessorModule.DESERT_WELL_PROCESSOR:" in generator
     assert "BlockTags.SAND:" in generator
     assert "bipush        6" in generator.split("     341: aload_0")[1]

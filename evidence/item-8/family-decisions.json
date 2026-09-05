@@ -27813,6 +27813,92 @@
           "masonry": "Gray stained glass and existing stone bricks use STONE_BRICK_SELECTOR, initialized with stone bricks and mossy/cracked stone-brick additions. Light-gray stained glass uses STONE_BRICK_STAIRS_SELECTOR with a random horizontal facing. Existing stone-brick stairs use that selector while preserving facing, half, shape and waterlogged properties. The stair selector is initialized with stone-brick stairs and a mossy-stair addition.",
           "candles": "Green candles are replaced with a uniformly indexed choice from candle, white, gray, light_gray, brown, green, purple and black candles. Count is nextInt(4)+1 and LIT is nextFloat()<0.1. The processor writes the selected default state with those two properties, using update flag 2.",
           "scope": "Direct source-derived placement and appearance effects for six generator types, not six accepted families or observed visibility. Template contents are recorded separately. Selector-library implementation, external retained-stack effects, natural mobs and full generated-world outcomes are not established by these classes. Generator success still means a non-null template, not verified complete placement."
+        },
+        "desert_surface_generation": {
+          "classes": [
+            "ChillzoneDesertFeature",
+            "DesertGiantTorchFeature",
+            "DesertSmallRuinsFeature",
+            "DesertObeliskFeature"
+          ],
+          "landing": "All four descend through empty blocks while Y > 2. Each requires the landing block default state to match BlockTags.SAND and four selected positions at landing Y to satisfy BlockState.isSolid(). This is not a full-footprint ground check.",
+          "solid_offsets_xz": {
+            "ChillzoneDesertFeature": [
+              [
+                -1,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                -1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "DesertGiantTorchFeature": [
+              [
+                -1,
+                -1
+              ],
+              [
+                0,
+                -1
+              ],
+              [
+                -1,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "DesertSmallRuinsFeature": [
+              [
+                -2,
+                -2
+              ],
+              [
+                -2,
+                1
+              ],
+              [
+                1,
+                -2
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "DesertObeliskFeature": [
+              [
+                -2,
+                -2
+              ],
+              [
+                -2,
+                1
+              ],
+              [
+                1,
+                -2
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          },
+          "placement": "Chillzone, giant torch and obelisk center their template one block above landing. Small ruins center at landing Y. Obelisk reads the configured location; the other three fixed template links are recorded separately.",
+          "processors": "All four directly inherit AbstractNbtFeature and do not override useProcessors. The base initializes processors from useProcessors(), which returns a new empty ArrayList. These classes therefore add no custom post-placement processor through this path.",
+          "scope": "Source-derived terrain and placement rules only. Packaged chest and campfire contents remain recorded separately. This does not prove successful placement, full retained-stack content effects or observed visual discoverability."
         }
       }
     }
