@@ -1,0 +1,315 @@
+Compiled from "FairyRingGenerator.java"
+public class org.violetmoon.quark.content.world.gen.FairyRingGenerator extends org.violetmoon.zeta.world.generator.Generator {
+  public org.violetmoon.quark.content.world.gen.FairyRingGenerator(org.violetmoon.zeta.config.type.DimensionConfig);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method org/violetmoon/zeta/world/generator/Generator."<init>":(Lorg/violetmoon/zeta/config/type/DimensionConfig;)V
+       5: return
+
+  public void generateChunk(net.minecraft.server.level.WorldGenRegion, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload         4
+       2: invokevirtual #7                  // Method net/minecraft/core/BlockPos.getX:()I
+       5: aload_3
+       6: bipush        16
+       8: invokeinterface #13,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      13: iadd
+      14: istore        5
+      16: aload         4
+      18: invokevirtual #19                 // Method net/minecraft/core/BlockPos.getZ:()I
+      21: aload_3
+      22: bipush        16
+      24: invokeinterface #13,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      29: iadd
+      30: istore        6
+      32: new           #8                  // class net/minecraft/core/BlockPos
+      35: dup
+      36: iload         5
+      38: sipush        128
+      41: iload         6
+      43: invokespecial #22                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+      46: astore        7
+      48: aload_0
+      49: aload_1
+      50: aload         7
+      52: iconst_0
+      53: invokevirtual #25                 // Method getBiome:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Z)Lnet/minecraft/core/Holder;
+      56: astore        8
+      58: dconst_0
+      59: dstore        9
+      61: aload         8
+      63: getstatic     #31                 // Field net/minecraft/tags/BiomeTags.IS_FOREST:Lnet/minecraft/tags/TagKey;
+      66: invokeinterface #37,  2           // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      71: ifeq          82
+      74: getstatic     #43                 // Field org/violetmoon/quark/content/world/module/FairyRingsModule.forestChance:D
+      77: dstore        9
+      79: goto          100
+      82: aload         8
+      84: getstatic     #49                 // Field net/neoforged/neoforge/common/Tags$Biomes.IS_PLAINS:Lnet/minecraft/tags/TagKey;
+      87: invokeinterface #37,  2           // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      92: ifeq          100
+      95: getstatic     #54                 // Field org/violetmoon/quark/content/world/module/FairyRingsModule.plainsChance:D
+      98: dstore        9
+     100: aload_3
+     101: invokeinterface #57,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+     106: dload         9
+     108: dcmpg
+     109: ifge          185
+     112: aload         7
+     114: astore        11
+     116: aload_1
+     117: aload         11
+     119: invokevirtual #61                 // Method net/minecraft/server/level/WorldGenRegion.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     122: astore        12
+     124: aload         12
+     126: getstatic     #67                 // Field net/minecraft/tags/BlockTags.DIRT:Lnet/minecraft/tags/TagKey;
+     129: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     132: ifne          163
+     135: aload         11
+     137: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getY:()I
+     140: bipush        30
+     142: if_icmple     163
+     145: aload         11
+     147: invokevirtual #78                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     150: astore        11
+     152: aload_1
+     153: aload         11
+     155: invokevirtual #61                 // Method net/minecraft/server/level/WorldGenRegion.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     158: astore        12
+     160: goto          124
+     163: aload         12
+     165: getstatic     #67                 // Field net/minecraft/tags/BlockTags.DIRT:Lnet/minecraft/tags/TagKey;
+     168: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     171: ifeq          185
+     174: aload_1
+     175: aload_2
+     176: aload         11
+     178: invokevirtual #78                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     181: aload_3
+     182: invokestatic  #82                 // Method spawnFairyRing:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)V
+     185: return
+
+  public static void spawnFairyRing(net.minecraft.world.level.WorldGenLevel, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: invokeinterface #86,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBiome:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+       7: invokeinterface #91,  1           // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      12: checkcast     #95                 // class net/minecraft/world/level/biome/Biome
+      15: invokevirtual #97                 // Method net/minecraft/world/level/biome/Biome.getGenerationSettings:()Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+      18: invokevirtual #101                // Method net/minecraft/world/level/biome/BiomeGenerationSettings.getFlowerFeatures:()Ljava/util/List;
+      21: astore        4
+      23: aload         4
+      25: invokeinterface #107,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+      30: ifeq          37
+      33: aconst_null
+      34: goto          70
+      37: aload         4
+      39: aload_3
+      40: iconst_0
+      41: aload         4
+      43: invokeinterface #113,  1          // InterfaceMethod java/util/List.size:()I
+      48: invokeinterface #116,  3          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(II)I
+      53: invokeinterface #119,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      58: checkcast     #123                // class net/minecraft/world/level/levelgen/feature/ConfiguredFeature
+      61: invokevirtual #125                // Method net/minecraft/world/level/levelgen/feature/ConfiguredFeature.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      64: checkcast     #129                // class net/minecraft/world/level/levelgen/feature/configurations/RandomPatchConfiguration
+      67: invokevirtual #131                // Method net/minecraft/world/level/levelgen/feature/configurations/RandomPatchConfiguration.feature:()Lnet/minecraft/core/Holder;
+      70: astore        5
+      72: aload         5
+      74: ifnonnull     86
+      77: getstatic     #135                // Field net/minecraft/world/level/block/Blocks.OXEYE_DAISY:Lnet/minecraft/world/level/block/Block;
+      80: invokevirtual #141                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      83: goto          87
+      86: aconst_null
+      87: astore        6
+      89: bipush        -3
+      91: istore        7
+      93: iload         7
+      95: iconst_3
+      96: if_icmpgt     342
+      99: bipush        -3
+     101: istore        8
+     103: iload         8
+     105: iconst_3
+     106: if_icmpgt     336
+     109: iload         7
+     111: iload         7
+     113: imul
+     114: iload         8
+     116: iload         8
+     118: imul
+     119: iadd
+     120: i2f
+     121: fstore        9
+     123: fload         9
+     125: ldc           #147                // float 7.0f
+     127: fcmpg
+     128: iflt          139
+     131: fload         9
+     133: ldc           #148                // float 10.0f
+     135: fcmpl
+     136: ifle          211
+     139: bipush        6
+     141: istore        10
+     143: iload         10
+     145: bipush        -3
+     147: if_icmple     208
+     150: aload_2
+     151: iload         7
+     153: iload         10
+     155: iload         8
+     157: invokevirtual #149                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     160: astore        11
+     162: aload_0
+     163: aload         11
+     165: invokeinterface #153,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     170: astore        12
+     172: aload         12
+     174: getstatic     #154                // Field net/minecraft/tags/BlockTags.SMALL_FLOWERS:Lnet/minecraft/tags/TagKey;
+     177: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     180: ifeq          202
+     183: aload_0
+     184: aload         11
+     186: getstatic     #157                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+     189: invokevirtual #141                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     192: iconst_2
+     193: invokeinterface #160,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     198: pop
+     199: goto          208
+     202: iinc          10, -1
+     205: goto          143
+     208: goto          330
+     211: iconst_5
+     212: istore        10
+     214: iload         10
+     216: bipush        -4
+     218: if_icmple     330
+     221: aload_2
+     222: iload         7
+     224: iload         10
+     226: iload         8
+     228: invokevirtual #149                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     231: astore        11
+     233: aload         11
+     235: invokevirtual #164                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     238: astore        12
+     240: aload_0
+     241: aload         11
+     243: invokeinterface #153,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     248: astore        13
+     250: aload         13
+     252: getstatic     #67                 // Field net/minecraft/tags/BlockTags.DIRT:Lnet/minecraft/tags/TagKey;
+     255: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     258: ifeq          324
+     261: aload_0
+     262: aload         12
+     264: invokeinterface #167,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+     269: ifeq          324
+     272: aload         6
+     274: ifnonnull     309
+     277: aload         5
+     279: invokeinterface #91,  1           // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     284: checkcast     #171                // class net/minecraft/world/level/levelgen/placement/PlacedFeature
+     287: aload_0
+     288: aload_1
+     289: aload_3
+     290: aload         12
+     292: invokevirtual #173                // Method net/minecraft/world/level/levelgen/placement/PlacedFeature.place:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Z
+     295: pop
+     296: aload_0
+     297: aload         12
+     299: invokeinterface #153,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     304: astore        6
+     306: goto          330
+     309: aload_0
+     310: aload         12
+     312: aload         6
+     314: iconst_2
+     315: invokeinterface #160,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     320: pop
+     321: goto          330
+     324: iinc          10, -1
+     327: goto          214
+     330: iinc          8, 1
+     333: goto          103
+     336: iinc          7, 1
+     339: goto          93
+     342: aload_2
+     343: aload_3
+     344: bipush        10
+     346: invokeinterface #13,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     351: bipush        25
+     353: iadd
+     354: invokevirtual #177                // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+     357: astore        7
+     359: aload_0
+     360: aload         7
+     362: invokeinterface #153,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     367: astore        8
+     369: iconst_0
+     370: istore        9
+     372: aload         8
+     374: getstatic     #180                // Field net/neoforged/neoforge/common/Tags$Blocks.STONES:Lnet/minecraft/tags/TagKey;
+     377: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     380: ifne          413
+     383: iload         9
+     385: bipush        10
+     387: if_icmpge     413
+     390: aload         7
+     392: invokevirtual #78                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     395: astore        7
+     397: aload_0
+     398: aload         7
+     400: invokeinterface #153,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     405: astore        8
+     407: iinc          9, 1
+     410: goto          372
+     413: aload         8
+     415: getstatic     #180                // Field net/neoforged/neoforge/common/Tags$Blocks.STONES:Lnet/minecraft/tags/TagKey;
+     418: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     421: ifeq          522
+     424: getstatic     #185                // Field org/violetmoon/quark/content/world/module/FairyRingsModule.ores:Ljava/util/List;
+     427: aload_3
+     428: getstatic     #185                // Field org/violetmoon/quark/content/world/module/FairyRingsModule.ores:Ljava/util/List;
+     431: invokeinterface #113,  1          // InterfaceMethod java/util/List.size:()I
+     436: invokeinterface #13,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     441: invokeinterface #119,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     446: checkcast     #73                 // class net/minecraft/world/level/block/state/BlockState
+     449: astore        10
+     451: aload_0
+     452: aload         7
+     454: aload         10
+     456: iconst_2
+     457: invokeinterface #160,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     462: pop
+     463: invokestatic  #189                // Method net/minecraft/core/Direction.values:()[Lnet/minecraft/core/Direction;
+     466: astore        11
+     468: aload         11
+     470: arraylength
+     471: istore        12
+     473: iconst_0
+     474: istore        13
+     476: iload         13
+     478: iload         12
+     480: if_icmpge     522
+     483: aload         11
+     485: iload         13
+     487: aaload
+     488: astore        14
+     490: aload_3
+     491: invokeinterface #195,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+     496: ifeq          516
+     499: aload_0
+     500: aload         7
+     502: aload         14
+     504: invokevirtual #198                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     507: aload         10
+     509: iconst_2
+     510: invokeinterface #160,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     515: pop
+     516: iinc          13, 1
+     519: goto          476
+     522: return
+}

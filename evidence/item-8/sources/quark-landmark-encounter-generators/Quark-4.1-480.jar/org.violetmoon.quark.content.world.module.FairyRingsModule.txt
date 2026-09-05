@@ -1,0 +1,103 @@
+Compiled from "FairyRingsModule.java"
+public class org.violetmoon.quark.content.world.module.FairyRingsModule extends org.violetmoon.zeta.module.ZetaModule {
+  public static double forestChance;
+
+  public static double plainsChance;
+
+  public static org.violetmoon.zeta.config.type.DimensionConfig dimensions;
+
+  public static java.util.List<java.lang.String> oresRaw;
+
+  public static java.util.List<net.minecraft.world.level.block.state.BlockState> ores;
+
+  public org.violetmoon.quark.content.world.module.FairyRingsModule();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method org/violetmoon/zeta/module/ZetaModule."<init>":()V
+       4: return
+
+  public final void setup(org.violetmoon.zeta.event.load.ZCommonSetup);
+    Code:
+       0: aload_0
+       1: new           #7                  // class org/violetmoon/quark/content/world/gen/FairyRingGenerator
+       4: dup
+       5: getstatic     #9                  // Field dimensions:Lorg/violetmoon/zeta/config/type/DimensionConfig;
+       8: invokespecial #15                 // Method org/violetmoon/quark/content/world/gen/FairyRingGenerator."<init>":(Lorg/violetmoon/zeta/config/type/DimensionConfig;)V
+      11: getstatic     #18                 // Field net/minecraft/world/level/levelgen/GenerationStep$Decoration.TOP_LAYER_MODIFICATION:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+      14: iconst_0
+      15: invokestatic  #26                 // Method org/violetmoon/zeta/world/WorldGenHandler.addGenerator:(Lorg/violetmoon/zeta/module/ZetaModule;Lorg/violetmoon/zeta/world/generator/Generator;Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;I)V
+      18: return
+
+  public final void configChanged(org.violetmoon.zeta.event.load.ZConfigChanged);
+    Code:
+       0: getstatic     #32                 // Field ores:Ljava/util/List;
+       3: invokeinterface #36,  1           // InterfaceMethod java/util/List.clear:()V
+       8: getstatic     #41                 // Field oresRaw:Ljava/util/List;
+      11: invokeinterface #44,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      16: astore_2
+      17: aload_2
+      18: invokeinterface #48,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      23: ifeq          97
+      26: aload_2
+      27: invokeinterface #54,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      32: checkcast     #58                 // class java/lang/String
+      35: astore_3
+      36: getstatic     #60                 // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+      39: aload_3
+      40: invokestatic  #66                 // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      43: invokeinterface #72,  2           // InterfaceMethod net/minecraft/core/DefaultedRegistry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+      48: checkcast     #78                 // class net/minecraft/world/level/block/Block
+      51: astore        4
+      53: aload         4
+      55: getstatic     #80                 // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+      58: if_acmpeq     78
+      61: getstatic     #32                 // Field ores:Ljava/util/List;
+      64: aload         4
+      66: invokevirtual #86                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      69: invokeinterface #90,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      74: pop
+      75: goto          94
+      78: new           #94                 // class java/lang/IllegalArgumentException
+      81: dup
+      82: aload_3
+      83: invokedynamic #96,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      88: invokespecial #100                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+      91: invokevirtual #103                // Method java/lang/IllegalArgumentException.printStackTrace:()V
+      94: goto          17
+      97: return
+
+  static {};
+    Code:
+       0: ldc2_w        #106                // double 0.00625d
+       3: putstatic     #108                // Field forestChance:D
+       6: ldc2_w        #112                // double 0.0025d
+       9: putstatic     #114                // Field plainsChance:D
+      12: new           #117                // class org/violetmoon/zeta/config/type/DimensionConfig
+      15: dup
+      16: iconst_0
+      17: iconst_1
+      18: anewarray     #58                 // class java/lang/String
+      21: dup
+      22: iconst_0
+      23: ldc           #119                // String minecraft:overworld
+      25: aastore
+      26: invokespecial #121                // Method org/violetmoon/zeta/config/type/DimensionConfig."<init>":(Z[Ljava/lang/String;)V
+      29: putstatic     #9                  // Field dimensions:Lorg/violetmoon/zeta/config/type/DimensionConfig;
+      32: iconst_2
+      33: anewarray     #58                 // class java/lang/String
+      36: dup
+      37: iconst_0
+      38: ldc           #124                // String minecraft:emerald_ore
+      40: aastore
+      41: dup
+      42: iconst_1
+      43: ldc           #126                // String minecraft:diamond_ore
+      45: aastore
+      46: invokestatic  #128                // Method com/google/common/collect/Lists.newArrayList:([Ljava/lang/Object;)Ljava/util/ArrayList;
+      49: putstatic     #41                 // Field oresRaw:Ljava/util/List;
+      52: new           #134                // class java/util/ArrayList
+      55: dup
+      56: invokespecial #136                // Method java/util/ArrayList."<init>":()V
+      59: putstatic     #32                 // Field ores:Ljava/util/List;
+      62: return
+}
