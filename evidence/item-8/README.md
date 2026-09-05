@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `21b40f3`, SHA-256
-`04e7f449274990758c96e3ddc1c74c0b6fed8b5a08b94fbf7de8941330c7f397`.
+Current working inventory regenerated at `4151e8c`, SHA-256
+`a499e195b93ec7bc63cf278bd7518a2db2a2fd2b81205c0aff59df887cc0f165`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,18 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 4151e8c increment integrates Nether obsidian spikes as one working family
+with ordinary and large encounter variants. Large spikes author a blaze spawner
+and Nether fortress chest loot under frozen settings. Source geometry, initial
+configuration and selected loot identities are explicit. Decoration dependency,
+shared direction contents, relevant global loot/ambient spawning and world
+attribution remain open. All 35 affected tests passed. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nether-spike-4151e8c.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-nether-spike-4151e8c.json
+```
 
 The 21b40f3 increment links Monster Box to the preserved negative 64-chunk
 Overworld sample. Positive occurrence and live encounter behavior remain
