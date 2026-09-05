@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+Continue Quark provider coverage with NetherObsidianSpikesModule and
+ObsidianSpikeGenerator through the existing extractor. These direct sources are
+needed to decide landmark-family inclusion and the required placement/content
+attributes; the registry-root inventory cannot account for their direct feature
+path. Capture only these two classes, including annotations and callback targets.
+Do not repeat shared Zeta configuration or Monster Box investigations.
+
 Monster Box now links the preserved central Overworld sample in 21b40f3.
 All 64 sampled full chunks have no Monster Box block states or matching block
 entities. Keep this negative result and do not enlarge the sample just to obtain
