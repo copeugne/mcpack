@@ -6,6 +6,33 @@
 
 ### Continuation update - 2026-09-05
 
+Limited-element decoding is delivered through `06b1ae2`. The existing
+inspection tool added three exact Lithostitched classes in `4fe823b`; generated
+code evidence is in `fc6adee` under `sources/lithostitched-pool-additions-code`.
+The identities SHA-256 is
+`c20cbe69f4af335c21b228e602fc383c8fc0a15fc7130b27b083ac6c439e7b5b`.
+The pinned code shows weighted pool additions and delegate forwarding of size,
+jigsaw connectors, bounding box and placement. The limited codec retains
+positive limit and optional minimum depth. The parser follows its delegate and
+retains other wrapper fields as a terminal constraint record. Thirteen affected
+pool-link/trace tests and scoped Ruff/basedpyright checks passed. Unsupported
+nested delegates remain unresolved; missing delegates fail explicitly. The
+existing explicit-codec complexity exception now includes the branch-count
+rule rather than introducing a helper solely for that limit. Initial lint
+also required an explicit raw regex in the regression test; both were resolved.
+
+The accepted inventory and pool-trace artifact have NOT been regenerated:
+modifier application and conditions remain open. Catalog inspection found
+1,024 `lithostitched:add_template_pool_elements` resources (mostly CTOV
+conditional integrations), within 1,068 Lithostitched modifiers overall.
+Do not apply every packaged addition or patch only the five taverns silently.
+Resolve applicable mod-loaded conditions from the frozen runtime identity,
+inspect loading/application order as needed, and retain excluded or unsupported
+modifier dispositions. Extend the existing tracing path. Other modifier types
+and Better Village's code-driven changes remain explicit next work. No new
+measurement system was introduced. Registry assignment remains 887 IDs in
+452 working groups, with Item 8 final gate/review/main merge still open.
+
 Runtime registry assignment is delivered through `8dd7f9c`, built from
 `4ad283f`. All 887 captured IDs have exactly one working group; the unassigned
 list is empty. The 34 vanilla roots form 21 working groups, preserving village,
