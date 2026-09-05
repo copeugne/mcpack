@@ -6,6 +6,30 @@
 
 ### Continuation update - 2026-09-05
 
+Live dimension membership is captured and durably delivered. `77b6eec` preserves
+rejected dimension-r1/r2 receipts and successful dimension-r3 output; `cd04324`
+binds it to the original frozen capture. Output SHA:
+`08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c`.
+All ten expected dimensions are covered; r3 preflight and all seven registry
+records exactly match registry-r1, configuration comparison passes, and the
+correlated flush/clean exit pass. The 20 lifecycle/runner tests, focused capture
+test and scoped checks pass. The probe is an optional read in the existing
+lifecycle, with no extra retained mod or class transformer. r1 lacked queued
+failure diagnostics; `d4e107d` preserves them. r2 exposed client-only subclass
+reflection, fixed in `428819f` by invoking the public BiomeSource base API.
+r3 at that revision is the successful live regression. No probe process remains.
+
+Raw custody is delivered through `e9a91c2` and `5b742a5`: archive SHA
+`29c9b189483f96f29d45a62d79556fdf10655729cf901204def50789578b5cb7`, 261 files,
+with successful local and downloaded restores. Tag
+`item-8-dimensions-raw-2026-09-05-r1` resolves to
+`cd043241a1beabaa47acd9657790af1e987e9dd0`. Runtime and custody READMEs contain
+exact commands, failure dispositions, identities and boundaries. This supersedes
+the pending collection instructions below. Next integrate membership with the
+existing per-root biome constraints in the inventory, retaining unknowns and
+placement-condition limits. Do not repeat the completed collection. The inventory
+and decision hashes below remain unchanged, and Item 8 remains incomplete.
+
 Dimension eligibility is the next shared gap. Source inspection `36f7e0b`
 establishes that Lithostitched's saved delegate omits runtime injected/replaced
 biome lists, and the manager also accepts event-supplied injectors. Manifest SHA:
