@@ -105,3 +105,8 @@ of command-placed vanilla structures or complete Item 8.
 All 62 affected tests passed. Scoped Ruff and Basedpyright passed after splitting
 compound assertions and wrapping long test lines. No source or disposition data
 changed during those formatting fixes.
+
+Decision/test increment: `9e8f032`. Rebuilt inventory SHA-256:
+`3ac3368b6de3d939f9ac78d117eb0397bbe0c2092967b72e71b6d2b4223d13f3`.
+The inventory diff adds only the two variant dispositions, metadata evidence
+identity and updated decision hash. Other family fields remain unchanged.
