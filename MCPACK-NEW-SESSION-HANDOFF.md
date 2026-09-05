@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-05
 
+Bridge terrain placement is delivered in `e8503b5`. The source now binds bank
+height/occlusion/count checks, the liquid span rectangle and first-candidate
+search. The liquid predicate is not water-specific. It supports surface-crossing
+intent, not observed visibility or frequency. Eleven affected tests and scoped
+Ruff/Basedpyright passed. Inventory SHA-256:
+`71f820a7edd7337111c7e8b8a031e0ef11a99babdea3152b440f7a3ccd459ed5`.
+All 421 registry family rows and 887 roots remain unchanged. Next reconcile
+bridge configuration/biome controls and other provider coverage. Item 8 remains
+incomplete; no new source capture, runtime or measurement system was added.
+
+
 Direct bridge encounter and loot attribution is delivered in `544d5de`.
 The fourteen captured processor/module/interface classes have no direct entity,
 spawner or container-loot calls; existing templates have empty entity/block-entity
