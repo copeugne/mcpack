@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `2299fd0`, SHA-256
-`9de6189328999382fae37cc1a45888422112856ebdc20c152159ae11e4469d5c`.
+Current working inventory regenerated at `ca53b4b`, SHA-256
+`b68b3297ff617cbf45b2329898ffe80e9ae4d91c7d9bcb6a5fda4425450f90d6`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,17 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The ca53b4b increment links the saved central-End block projection to Better
+End Island attribution. See world-observations/central-end/README.md for the
+manifest-bound extraction and its limitations. Exact variant attribution remains
+unknown; no new family count or successful podium generation is inferred.
+Twenty-nine focused tests and scoped builder checks passed. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-end-blocks-ca53b4b.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-end-blocks-ca53b4b.json
+```
 
 The working deliverable is `inventory.json`, initially assembled by `f2eaf2b`
 and updated through `fd9705a` using attribute support from `bf153ea`.
