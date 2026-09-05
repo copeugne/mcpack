@@ -2009,3 +2009,15 @@ inputs and the Better End Island contribution. Reproduce in a fresh path:
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-spike-podium.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-spike-podium.json
 ```
+
+### Better End Island template reconciliation
+
+The source capture in `sources/better-end-island-generator-dependencies` resolves
+concatenated names and the loader's ten-position/nine-index distinction. All 36
+spike templates and three podium templates are joined to their preserved template
+hashes, nominal XYZ envelopes and stored contents. Together with platform/gateway,
+these cover all 41 packaged templates. This is template coverage, not 41 families
+or complete provider acceptance. Crystal offsets and applicable block replacement
+behavior are also attributed. Podium invocation and effective runtime activation
+remain open. The focused catalog-coverage test reproduces the index derivation
+and exact template-content joins; 29 focused tests and scoped checks passed.
