@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+YUNG Extras provider coverage now passes. Remaining seven classes delivered in
+4d7edec using 04db73f; all 29 classes and full payload accounted for. All 62
+templates are assigned, 59 by JSON and three by existing code links. Nine focused
+cases and scoped checks pass. No new family grouping or runtime. Queue updated:
+30 dispositions, 106 open. Continue remaining providers; do not repeat Extras
+source interpretation or mistake configured-feature counts for families.
+
 YUNG Bridges provider coverage now passes. Remaining seven classes captured in
 a20bccf using dfca574; full 31-class payload is accounted for. Existing feature,
 template and processor evidence reused. Seven focused cases and scoped checks
