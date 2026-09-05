@@ -34,6 +34,8 @@ if TYPE_CHECKING:
         "mss:",
         "mns:",
         "mvs:",
+        "aether:",
+        "deep_aether:",
     ],
 )
 def test_authored_designs_bind_roots_settings_and_missing_components(
@@ -111,7 +113,8 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
             assert templates
             assert not seen.intersection(templates)
             seen.update(templates)
-    assert len({str(row["start_pool"]) for row in groups}) == len(groups)
+    direct = [row for row in groups if row["start_pool"] is not None]
+    assert len({str(row["start_pool"]) for row in direct}) == len(direct)
     for row in groups:
         identifier = str(row["family_id"])
         assert row["structure_ids"] == [identifier]
@@ -131,7 +134,9 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
                 "biomes",
             },
         }
-        custom_keys["mvs:"] = custom_keys["mns:"]
+        custom_keys["mvs:"] = custom_keys["aether:"] = custom_keys["deep_aether:"] = custom_keys[
+            "mns:"
+        ]
         if namespace in custom_keys:
             assert row["custom_generation_settings"] == {
                 key: definition[key] for key in custom_keys[namespace] if key in definition
