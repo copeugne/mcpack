@@ -13,8 +13,8 @@ is unmeasured. All 74 affected tests and scoped checks passed. Inventory SHA-256
 `25e78dd6bbe34e3ac2c6ee60c1bda55119ae79772c2f69c6c32fc29270a48247`.
 Only lake placement/cues and grouping evidence changed; still 421 working groups
 and 887 roots. Continue remaining direct lake content, provider/canonical coverage
-and required attributes. The narrative report still contains obsolete zero-mod
-completion claims and needs explicit historical labeling. Item 8 is incomplete;
+and required attributes. The narrative report now labels its obsolete zero-mod
+completion claims as historical and links to the current incomplete inventory. Item 8 is incomplete;
 no new runtime, measurement system or downstream work was added.
 
 
