@@ -1038,6 +1038,14 @@ def test_better_end_island_template_links_cover_catalog_without_counting_positio
     }
     prior = cast("dict[str, str]", contribution["class_to_template"])
     assert set(provider) == expected | set(prior.values())
+    families = cast("list[dict[str, JsonValue]]", contribution["families"])
+    assigned = Counter(
+        name for family in families for name in cast("list[str]", family["templates"])
+    )
+    assert assigned == Counter(dict.fromkeys(provider, 1))
+    arena = next(family for family in families
+                 if family["family"] == "betterendisland:dragon_arena")
+    assert set(cast("list[str]", arena["templates"])) == expected
     for name, template in templates.items():
         row = provider[name]
         document = cast("dict[str, JsonValue]", row["document"])
