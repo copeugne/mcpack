@@ -27173,7 +27173,8 @@
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_biome.txt": "0970c5296980495640901e3ba7fd44fa90e97da4774900368fa924a263446713",
           "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
-          "evidence/item-8/sources/yungs-extras-desert-code/identities.json": "c595f5123a71105b276884d33229e4b7da2bf9b91b70ec8e5cbf1cba069d465b"
+          "evidence/item-8/sources/yungs-extras-desert-code/identities.json": "c595f5123a71105b276884d33229e4b7da2bf9b91b70ec8e5cbf1cba069d465b",
+          "evidence/item-8/sources/yungs-extras-registration/identities.json": "07300368df9a9fe1fe8f7e6efad0bc12505ebeb2e4db2a00389150a39b9e417e"
         },
         "biome_constraints": {
           "tags": {
@@ -27592,7 +27593,12 @@
             "yungsextras:desert/misc/giant_torch",
             "yungsextras:desert/misc/ruins_0"
           ],
-          "scope": "59 explicit configured location references resolve to 59 packaged templates. Sizes are unrotated template envelopes, not occupied or processed world geometry. Three empty-config generators require code attribution; the three templates outside explicit links are not assumed inactive. Template block entities and generator/processor effects still require content attribution."
+          "scope": "59 explicit configured location links and three code-bound links cover all 62 packaged templates. JSON-explicit and code-bound paths remain separate. Sizes are unrotated template envelopes, not occupied or processed world geometry. Generated content and family reconciliation remain incomplete.",
+          "code_configured_to_template": {
+            "yungsextras:desert/misc/desert_chillzone": "yungsextras:desert/misc/chillzone",
+            "yungsextras:desert/misc/desert_giant_torch": "yungsextras:desert/misc/giant_torch",
+            "yungsextras:desert/misc/desert_ruins_0": "yungsextras:desert/misc/ruins_0"
+          }
         },
         "packaged_template_content": {
           "authored_entities": [],
@@ -27623,7 +27629,7 @@
             "data/yungsextras/loot_table/desert/chillzone.json": "601df9aa1ac8879d65876ea9598ff460237a55a236f9d5010b19715012f6c266",
             "data/yungsextras/loot_table/desert/ruins.json": "fa35cdb486f2bad1d002f5029faab32a187a291e96da720baedc55ff53bd110e"
           },
-          "scope": "All 62 packaged templates have empty entity lists. Only the four named templates contain block entities: three chests and eight campfires, with no stored spawner block entities. The two chest-bearing templates remain outside the 59 explicit configured location links until generator code is checked. This is packaged content, not observed loot, full generated content or absence of custom spawner/entity/loot effects."
+          "scope": "All 62 packaged templates have empty entity lists. Only the four named templates contain block entities: three chests and eight campfires, with no stored spawner block entities. The two chest-bearing templates are linked through verified generator code, separately from the 59 JSON-explicit links. This is packaged content, not observed loot, full generated content or absence of custom spawner/entity/loot effects."
         },
         "desert_generator_templates": {
           "class_to_template": {
@@ -27635,7 +27641,12 @@
           "anchor": "ChillzoneDesertFeature and DesertGiantTorchFeature pass the ground anchor above(); DesertSmallRuinsFeature passes the ground anchor itself.",
           "centering": "The helper subtracts half the template X/Z dimensions using integer division, leaves Y unchanged, and calls StructureTemplate.placeInWorld with default StructurePlaceSettings.",
           "success_limit": "The helper discards the placeInWorld boolean, then runs the processor list and returns the loaded template. Each of these classes returns whether the template is non-null. This is not proof that all template blocks were placed.",
-          "scope": "Verified class-to-template calls. The captured FeatureModule instantiates these classes, but its non-verbose capture does not preserve the field registration annotations. Exact feature-ID registration binding and remaining terrain/content effects are still open; the JSON-explicit mapping remains separate."
+          "scope": "FeatureModule class/field AutoRegister annotations bind the yungsextras namespace and feature names to constructor-bound classes. Packaged configured type fields and captured template calls complete the three code-based links. Remaining terrain/content effects are still open; the JSON-explicit mapping remains separate.",
+          "feature_type_to_class": {
+            "yungsextras:desert_chillzone": "ChillzoneDesertFeature",
+            "yungsextras:desert_giant_torch": "DesertGiantTorchFeature",
+            "yungsextras:desert_ruins_0": "DesertSmallRuinsFeature"
+          }
         }
       }
     }

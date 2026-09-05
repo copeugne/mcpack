@@ -1668,3 +1668,22 @@ Inventory regenerated at `0f8e610`, SHA-256:
 `55fd39f5efd49aee91e1a922eacc763291a09dc9892ba4175c1802bd741eeb0d`.
 Only decision identity and Extras desert generator-template calls/evidence changed.
 All 421 registry family rows and 887 roots remain unchanged.
+
+## Extras code-based template links resolved
+
+The preserved class-level and field-level AutoRegister annotations bind the
+three desert feature IDs to the classes whose template calls were already
+verified. All 62 packaged templates now have a traced feature link: 59 explicit
+JSON locations and three code-based paths. The paths remain separate in the
+inventory. The earlier open-link statements are superseded; this does not close
+family grouping, terrain checks or effective generated contents.
+
+Seventeen affected tests and scoped quality checks passed. Decision SHA-256:
+`f72a460733e7d8ee465b0f7a8d0340879a5e5afb48e97d48ae2833dfd3173279`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-extras-code-links.json
+```

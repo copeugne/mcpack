@@ -580,3 +580,39 @@ def test_extras_desert_classes_pass_fixed_ids_to_centered_placement() -> None:
     assert centered.index("StructureTemplate.placeInWorld:") < centered.index("List.forEach:")
     assert centered.split("StructureTemplate.placeInWorld:")[1].splitlines()[1].endswith("pop")
     assert centered.count("ineg") == 2
+
+
+def test_extras_registration_completes_three_code_template_links() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    contribution = contributions["yungsextras:feature_entrypoints"]
+    membership = cast("dict[str, JsonValue]", contribution["template_membership"])
+    generators = cast("dict[str, JsonValue]", contribution["desert_generator_templates"])
+    types = cast("dict[str, str]", generators["feature_type_to_class"])
+    templates = cast("dict[str, str]", generators["class_to_template"])
+    configured = cast("dict[str, str]", membership["configured_without_location"])
+    assert {key: templates[types[kind]] for key, kind in configured.items()} == (
+        membership["code_configured_to_template"]
+    )
+    base = Path("evidence/item-8/sources/yungs-extras-registration")
+    raw = (base / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "07300368df9a9fe1fe8f7e6efad0bc12505ebeb2e4db2a00389150a39b9e417e"
+    )
+    rows = cast("list[dict[str, str]]", json.loads(raw))
+    assert len(rows) == 1
+    raw = (base / rows[0]["disassembly"]).read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == rows[0]["disassembly_sha256"]
+    source = raw.decode()
+    assert 'value="yungsextras"' in source.split('SourceFile: "FeatureModule.java"')[1]
+    for kind, name in types.items():
+        field = kind.split(":")[1].upper()
+        declaration = next(part for part in source.split("  public static ")
+                           if part.splitlines()[0].endswith(" " + field + ";"))
+        assert 'value="' + kind.split(":")[1] + '"' in declaration
+        assert name + '."<init>":' in source
+    code_links = cast("dict[str, str]", membership["code_configured_to_template"])
+    assert sorted(code_links.values()) == membership["packaged_templates_outside_explicit_links"]
