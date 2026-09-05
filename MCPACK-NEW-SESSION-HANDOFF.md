@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+CTOV canonical village reconciliation is delivered in `5bb0942`. One civilian
+village family now contains 22 named architectural/placement designs and all 66
+size/design roots; hostile outposts remain separate. Exact definitions, missing
+references, tavern links, biome/loot coverage and observed-start indexes remain
+preserved. This supersedes CTOV broader grouping being open in older checkpoints.
+Working total: 431 groups, still 887 registry roots, not final Item 8 acceptance.
+All 67 affected tests and scoped checks pass. Inventory SHA-256:
+`21481771b21790e45a616efbef2d7b958fe719302b4bcf4e0dc8683e749760e5`.
+Decision SHA-256:
+`4d545b2a01ea7d142a4fbd15f7917a836559a6fd48634c04526c44aefedf6483`.
+Commands and rationale are in the final CTOV section of `evidence/item-8/README.md`.
+Continue remaining family reconciliation (including MVS/BetterEnd), non-registry
+provider coverage and outstanding attributes. No downstream work or tuning.
+
+
 CTOV content/start-placement attributes are delivered in `f937ea9`.
 The 23 current CTOV groups now record authored entity IDs, hostile versus
 natural-override sources, resolved-template spawner absence and heightmap start
