@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+Better End Island frozen configuration is integrated in `c1169fa`, with all
+six keys mapped to runtime fields. Both vanilla platform/gateway switches are
+false. Twenty-seven focused tests and scoped checks passed. Inventory SHA-256:
+`82b5d02452470cde6a3036624979863f2485827c9e679d703698101354618c5b`.
+Continue mixin activation and spike/podium generation coverage. Do not repeat
+configuration binding work. Item 8 remains incomplete.
+
 The three Better End Island configuration classes are now captured and
 reproduced exactly. ConfigModuleNeoForge registers the frozen COMMON filename
 and bakeConfig maps its values to the fields read by the hooks. Both vanilla

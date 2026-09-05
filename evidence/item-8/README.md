@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `69d3e14`, SHA-256
-`1b1b7b3e61f6b86c2d0e0ed7f32e01ce420d6700702872b18025bdad0015fd5f`.
+Current working inventory regenerated at `c1169fa`, SHA-256
+`82b5d02452470cde6a3036624979863f2485827c9e679d703698101354618c5b`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1964,3 +1964,11 @@ switches are false, selecting custom branches when the hooks apply. Mixin
 activation and successful world generation are not inferred from those values.
 Twenty-seven focused tests and scoped Ruff/Basedpyright passed. No new runtime
 or measurement system was added.
+
+Regeneration at `c1169fa` changed only input identity and Better End Island
+configuration attribution. Previous family records remain unchanged.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-config.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-config.json
+```
