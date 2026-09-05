@@ -6,6 +6,31 @@
 
 ### Continuation update - 2026-09-05
 
+The ID-less vanilla trial-spawner omission is fixed in `74b748c`, with trace
+delivery `f539e25` and inventory rebuild `cc819fe`. All 14 affected packaged
+templates identify the trial spawner through the palette, not NBT `id`.
+The existing decoder now preserves that identity separately from unchanged NBT.
+No new measurement system or server run was necessary. The user's constraint
+is explicit: add another measurement system only when strictly necessary and
+worth its time and effort. Continue to prefer the existing evidence paths.
+
+Current trace SHA:
+`703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5`.
+Current decisions SHA:
+`8a311905415a0b0b855c39961e5f816113a3017171f02dcb85ea371a2be627fb`.
+Current inventory SHA:
+`05232e50f2e151da2ed21e6aebe5c6c589e58ab87c86020625303d5364770b42`.
+These supersede the hashes in the modifier checkpoint below. The 84 affected
+decoder/consumer checks passed, followed by 69 checks against regenerated
+evidence. Scoped Ruff and basedpyright passed. Delivered refs were verified.
+Only trial-chamber generated-spawner attributes change beyond source hashes.
+Five omitted ominous spawn-potential lists remain explicitly unresolved. Inspect
+the existing game-code path for their effective semantics before claiming closure.
+The earlier suggestion that vanilla configurations were registry references was
+not established; the affected templates contain inline configuration compounds.
+Broader provider coverage, 69 custom-generation roots, final grouping and all
+required family attributes still need closure, followed by review and main merge.
+
 Modifier evidence regeneration is delivered: trace and dependent decision/pin
 updates in `755fbd8`, inventory rebuild in `7cd7893`. The committed-source
 trace reproduction matched the pilot byte for byte. The trace changes only
