@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `4e2b6fe`, SHA-256
-`198153f8c41d2d5acacf236e1bd044bb5bdffbcd7ab84d6fc17634b410e2c2e0`.
+Current working inventory regenerated at `0c1cf13`, SHA-256
+`0b926b139e3d85d0b7cd7a98553a2197e5c907f8ce74701a49c429086c706b7e`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,16 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 0c1cf13 increment accounts for blossom trees and water petals as vegetation
+contributions without additional families. Selected tree definitions have no
+decorators; the direct petal path places surface vegetation. All 32 affected
+tests and scoped Ruff/Basedpyright checks passed. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-vegetation-0c1cf13.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-vegetation-0c1cf13.json
+```
 
 The 4e2b6fe increment accounts for Corundum and Permafrost as working terrain
 contributions without additional structure families. Source dispatch decorates
