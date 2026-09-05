@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+Voyager carts and igloos are delivered through `925a781`, built from `631cb1a`.
+Six roots form two working groups. Carts preserve authored wandering traders,
+SAVE markers and variant loot differences. Igloos preserve shared vanilla
+villager pieces and the small igloo's explicit stray spawner in its lower piece.
+These are packaged possibilities, not observed populations. Cart observations
+187, 385, 584 and 765 are linked; neither igloo has retained observations.
+Forty focused tests and scoped quality checks passed. Two builds were identical
+and every prior family record stayed equal despite Git's textual diff alignment.
+Inventory SHA-256:
+`bbf81fb86557b271d964e271a77617a98838c6386d9d1c96f0c92cf37250bede`.
+Totals: 199 working groups, 359 assigned IDs, 528 unassigned; 64 mvs roots remain.
+Continue remaining Voyager roots, shared effective attributes, other providers
+and non-registry contributions. Final canonical reconciliation, required
+attributes, Item 8 gate, clean review and main merge remain open.
+
 Voyager wells are delivered through `4f36c29`, built from `c4646fc`. Seventeen
 roots form one working family with twenty templates, including upper/lower
 components and alternative lower pieces. Full definitions preserve the Nether

@@ -402,3 +402,19 @@ twenty templates include components and alternatives. Twelve retained world
 observations remain linked. Existing observed-envelope estimates supply the
 qualified geometry fields without adding component heights or introducing a
 measurement system. Effective gameplay attributes remain unresolved.
+
+Voyager carts and igloos (`631cb1a`, joined in `925a781`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-carts-631cb1a.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-carts-631cb1a-repro.json
+cmp evidence/raw/item8/inventory-carts-631cb1a.json evidence/raw/item8/inventory-carts-631cb1a-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 40 focused tests and scoped Ruff/basedpyright checks passed. The direct
+source check binds six complete definitions, ten unique reachable templates,
+authored entity IDs, SAVE markers, loot references and the small igloo's stray
+spawner. Shared villager templates remain components. Four cart observations
+are linked; no retained igloo observations exist. Effective populations and
+marker/loot processing remain unresolved. No new measurement system was added.
