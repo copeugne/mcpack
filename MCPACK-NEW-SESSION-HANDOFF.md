@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Extras remaining desert terrain and empty custom processor paths are resolved
+in `d06f076`: chillzone, giant torch, small ruins and obelisk. Nineteen focused
+tests and scoped checks passed. Inventory SHA-256:
+`878db7626144c928e32a1b5a6eeef52fa8cc934d3ed1a2d8dfed2ec2bcfaa318`.
+Do not repeat these direct generator reads. Continue configuration/provider
+coverage, canonical family reconciliation and required effective attributes.
+The 421 provisional registry groups and 887 roots are unchanged. Item 8 remains
+incomplete. No runtime or new measurement system was added.
+
 Extras swamp placement and appearance rules are delivered in `5f52351`. All
 six feature types now have terrain-check offsets, processor binding, support
 column limits and masonry/candle effects recorded. These cover 46 configured

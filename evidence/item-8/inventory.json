@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "d7d8fd935bf4827bc22d6300fdba09af220c7e43cb194da3624d1bad85cad9d3",
+    "evidence/item-8/family-decisions.json": "f337545085418abe6be722892fd29a6fd652dac4e96ca58dbcaa763b5a84deb8",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -159302,6 +159302,92 @@
           "scope": "FeatureModule class/field AutoRegister annotations bind the yungsextras namespace and feature names to constructor-bound classes. Packaged configured type fields and captured template calls complete the three code-based links. Remaining terrain/content effects are still open; the JSON-explicit mapping remains separate.",
           "success_limit": "The helper discards the placeInWorld boolean, then runs the processor list and returns the loaded template. Each of these classes returns whether the template is non-null. This is not proof that all template blocks were placed.",
           "template_call": "Each class constructs its static ID with ResourceLocation.fromNamespaceAndPath and passes that ID to inherited createTemplateFromCenter."
+        },
+        "desert_surface_generation": {
+          "classes": [
+            "ChillzoneDesertFeature",
+            "DesertGiantTorchFeature",
+            "DesertSmallRuinsFeature",
+            "DesertObeliskFeature"
+          ],
+          "landing": "All four descend through empty blocks while Y > 2. Each requires the landing block default state to match BlockTags.SAND and four selected positions at landing Y to satisfy BlockState.isSolid(). This is not a full-footprint ground check.",
+          "placement": "Chillzone, giant torch and obelisk center their template one block above landing. Small ruins center at landing Y. Obelisk reads the configured location; the other three fixed template links are recorded separately.",
+          "processors": "All four directly inherit AbstractNbtFeature and do not override useProcessors. The base initializes processors from useProcessors(), which returns a new empty ArrayList. These classes therefore add no custom post-placement processor through this path.",
+          "scope": "Source-derived terrain and placement rules only. Packaged chest and campfire contents remain recorded separately. This does not prove successful placement, full retained-stack content effects or observed visual discoverability.",
+          "solid_offsets_xz": {
+            "ChillzoneDesertFeature": [
+              [
+                -1,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                -1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "DesertGiantTorchFeature": [
+              [
+                -1,
+                -1
+              ],
+              [
+                0,
+                -1
+              ],
+              [
+                -1,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "DesertObeliskFeature": [
+              [
+                -2,
+                -2
+              ],
+              [
+                -2,
+                1
+              ],
+              [
+                1,
+                -2
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "DesertSmallRuinsFeature": [
+              [
+                -2,
+                -2
+              ],
+              [
+                -2,
+                1
+              ],
+              [
+                1,
+                -2
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          }
         },
         "desert_well_generation": {
           "brown_marker_loot": "BuiltInLootTables.DESERT_WELL_ARCHAEOLOGY",
