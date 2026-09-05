@@ -330,3 +330,111 @@ cmp evidence/raw/item8/inventory-nether-5640516.json evidence/raw/item8/inventor
 The existing family-decision tests check all 52 mns registry entries exactly once
 and bind the remaining roots to their packaged settings and missing-component
 lists. Family relationships and effective gameplay attributes remain provisional.
+
+Voyager log piles and lanterns (`12d4090`, joined in `4396e1f`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-12d4090.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-12d4090-repro.json
+cmp evidence/raw/item8/inventory-voyager-12d4090.json evidence/raw/item8/inventory-voyager-12d4090-repro.json
+```
+
+Voyager dead trees (`0ce48c8`, joined in `7851498`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-dead-tree-0ce48c8.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-dead-tree-0ce48c8-repro.json
+cmp evidence/raw/item8/inventory-dead-tree-0ce48c8.json evidence/raw/item8/inventory-dead-tree-0ce48c8-repro.json
+uv run pytest tests/item8/test_family_decisions.py -k moog_modular -q
+```
+
+The first validation attempt failed the draft assertion that all dead-tree
+marker lists were empty (34 passed, 1 failed). Preserved template content shows
+SAVE-mode structure blocks in acacia, acacia_trunk and birch. The corrected
+rationale and test preserve those markers; both affected cases passed. No raw
+template evidence was changed, and effective marker processing remains open.
+
+Voyager stalls and End scraps (`d077750`, joined in `0f0b9e9`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-d077750.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-d077750-repro.json
+cmp evidence/raw/item8/inventory-voyager-d077750.json evidence/raw/item8/inventory-voyager-d077750-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 37 focused tests passed. Scoped Ruff and basedpyright checks passed.
+The eight roots form two working groups; their template loot references remain
+attributed to the corresponding variants. Neither has retained world
+observations. Existing catalogs and checks suffice for this grouping increment;
+no additional measurement system was introduced. Required effective gameplay
+attributes and final inventory completeness remain unresolved.
+
+Voyager living trees (`7389ff9`, joined in `a85bc74`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-trees-7389ff9.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-trees-7389ff9-repro.json
+cmp evidence/raw/item8/inventory-trees-7389ff9.json evidence/raw/item8/inventory-trees-7389ff9-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 38 focused tests and scoped Ruff/basedpyright checks passed. Nine roots
+retain their full definitions and fifteen alternative template dimensions.
+The direct source check binds the approximate footprint and height lists to
+those dimensions and preserves big oak's exceptional loot and terrain checks.
+These are packaged envelopes, including padding and air, not measurements of
+occupied blocks. The two retained world observations remain linked separately.
+
+Voyager wells (`c4646fc`, joined in `4f36c29`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-wells-c4646fc.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-wells-c4646fc-repro.json
+cmp evidence/raw/item8/inventory-wells-c4646fc.json evidence/raw/item8/inventory-wells-c4646fc-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 39 focused tests and scoped Ruff/basedpyright checks passed. The existing
+Voyager tree test now also checks wells, preserving full definitions, template
+dimensions and exact loot references. Seventeen roots form one working family;
+twenty templates include components and alternatives. Twelve retained world
+observations remain linked. Existing observed-envelope estimates supply the
+qualified geometry fields without adding component heights or introducing a
+measurement system. Effective gameplay attributes remain unresolved.
+
+Voyager carts and igloos (`631cb1a`, joined in `925a781`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-carts-631cb1a.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-carts-631cb1a-repro.json
+cmp evidence/raw/item8/inventory-carts-631cb1a.json evidence/raw/item8/inventory-carts-631cb1a-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 40 focused tests and scoped Ruff/basedpyright checks passed. The direct
+source check binds six complete definitions, ten unique reachable templates,
+authored entity IDs, SAVE markers, loot references and the small igloo's stray
+spawner. Shared villager templates remain components. Four cart observations
+are linked; no retained igloo observations exist. Effective populations and
+marker/loot processing remain unresolved. No new measurement system was added.
+
+Remaining Voyager roots (`f4fdcc2`, joined in `dd2c364`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-f4fdcc2.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-f4fdcc2-repro.json
+cmp evidence/raw/item8/inventory-voyager-f4fdcc2.json evidence/raw/item8/inventory-voyager-f4fdcc2-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 41 focused tests and scoped Ruff/basedpyright checks passed. The existing
+root/settings test now verifies all 129 Voyager registry IDs exactly once,
+including prior variant groups. The 64 new working root assignments retain
+complete generation settings, missing-component lists and joined content.
+All prior family records remain unchanged. The large generated increment is
+isolated from its source decisions and documentation; expanded biome lists
+and shared component attribution account for most of its size. Canonical
+relationships and effective gameplay attributes remain open. In particular,
+cathedral loot references `minecraft:mvs/cathedral_common` and two empty explicit
+spawner IDs in the large warped tower remain visible for disposition.

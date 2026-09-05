@@ -33,6 +33,7 @@ if TYPE_CHECKING:
         "mes:",
         "mss:",
         "mns:",
+        "mvs:",
     ],
 )
 def test_authored_designs_bind_roots_settings_and_missing_components(
@@ -62,7 +63,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         "mss:": ("mss:tree_", "mss:birch_river", "mss:cherry_river"),
     }.get(namespace, ())
     expected = {key for key in expected if not key.startswith(excluded_prefixes)}
-    if namespace == "mns:":
+    if namespace in {"mns:", "mvs:"}:
         variants = [
             member
             for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
@@ -70,7 +71,11 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
             and len(cast("list[str]", row["structure_ids"])) > 1
             for member in cast("list[str]", row["structure_ids"])
         ]
-        assert len(members + variants) == len(set(members + variants)) == 52
+        assert (
+            len(members + variants)
+            == len(set(members + variants))
+            == {"mns:": 52, "mvs:": 129}[namespace]
+        )
         expected -= set(variants)
     assert members
     assert set(members) == expected
@@ -126,6 +131,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
                 "biomes",
             },
         }
+        custom_keys["mvs:"] = custom_keys["mns:"]
         if namespace in custom_keys:
             assert row["custom_generation_settings"] == {
                 key: definition[key] for key in custom_keys[namespace] if key in definition
@@ -326,6 +332,218 @@ def test_mega_ship_variants_preserve_definitions_modules_and_mes_coverage() -> N
             assert definition["terrain_adaptation"] == "none"
 
 
+@pytest.mark.parametrize(
+    ("family", "suffix", "member_count", "template_count"),
+    [("mvs:living_tree", "_tree", 9, 15), ("mvs:well", "well", 17, 20)],
+)
+def test_voyager_trees_and_wells_preserve_definitions_and_template_content(
+    family: str, suffix: str, member_count: int, template_count: int
+) -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, list[dict[str, JsonValue]]]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    group = next(row for row in decisions["groups"] if row["family_id"] == family)
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+    catalog = cast(
+        "dict[str, list[dict[str, JsonValue]]]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    traces = cast(
+        "dict[str, dict[str, dict[str, JsonValue]]]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    registry = read_registry(
+        root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )
+    expected = sorted(
+        key
+        for key in registry
+        if key.startswith("mvs:") and key.endswith(suffix) and "dead_tree" not in key
+    )
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    assert group["structure_ids"] == sorted(variants) == expected
+    assert len(variants) == member_count
+    sizes: list[list[int]] = []
+    excluded = {
+        "biomes",
+        "start_pool",
+        "allowed_terrain_height_range",
+        "terrain_height_radius_check",
+    }
+    if family == "mvs:well":
+        excluded.update({"type", "land_search_direction"})
+    loot_by_template: dict[str, list[JsonValue]] = {
+        "mvs:nature/big_oak_tree": [
+            {"path": "/block_entities/0/nbt/LootTable", "value": "mvs:general"}
+        ],
+        "mvs:well/well_lower": [
+            {"path": "/block_entities/0/nbt/LootTable", "value": "mvs:houses_uncommon"}
+        ],
+        "mvs:well/rare_well/rare_well_lower": [
+            {"path": "/block_entities/1/nbt/LootTable", "value": "mvs:houses_rare"}
+        ],
+        "mvs:1_21_4/small_tower_well": [
+            {"path": "/block_entities/3/nbt/LootTable", "value": "mvs:empty"}
+        ],
+    }
+    for identifier, variant in variants.items():
+        name = identifier.split(":")[1]
+        definitions = [
+            cast("dict[str, JsonValue]", row["document"])
+            for row in catalog["resources"]
+            if row["path"] == f"data/mvs/worldgen/structure/{name}.json"
+        ]
+        assert definitions == [variant["definition"]]
+        definition = definitions[0]
+        assert group["common_generation_definition"] == {
+            k: v for k, v in definition.items() if k not in excluded
+        }
+        assert (
+            definition.get("allowed_terrain_height_range"),
+            definition.get("terrain_height_radius_check"),
+        ) == {"big_oak_tree": (4, 2), "rare_well": (3, 2)}.get(name, (None, None))
+        assert definition.get("land_search_direction") == (
+            "HIGHEST_LAND" if name == "nether_well" else None
+        )
+        assert definition["type"] == (
+            "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+            if name == "nether_well"
+            else "moogs_structures:moogs_structures_generic_jigsaw_structure"
+        )
+        trace = traces["structures"][identifier]
+        templates = cast("dict[str, list[int]]", variant["templates"])
+        assert trace["templates"] == sorted(templates)
+        assert trace["missing"] == trace["unresolved_elements"] == []
+        for template, dimensions in templates.items():
+            content = traces["template_contents"][template]
+            assert content["template_size_xyz"] == dimensions
+            sizes.append(dimensions)
+            assert content["authored_entities"] == content["unresolved_entities"] == []
+            assert content["spawner_blocks"] == content["generation_markers"] == []
+            assert content["loot_references"] == loot_by_template.get(template, [])
+    assert len(sizes) == template_count
+    if family == "mvs:well":
+        return
+    attrs = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
+    assert attrs["approximate_footprint"]["packaged_template_xz_blocks"] == [
+        list(pair) for pair in sorted({(s[0], s[2]) for s in sizes})
+    ]
+    assert attrs["approximate_vertical_size"]["packaged_template_y_blocks"] == sorted(
+        {s[1] for s in sizes}
+    )
+
+
+def test_voyager_carts_and_igloos_preserve_authored_content_and_shared_pieces() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, list[dict[str, JsonValue]]]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    catalog = cast(
+        "dict[str, list[dict[str, JsonValue]]]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    traces = cast(
+        "dict[str, dict[str, dict[str, JsonValue]]]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    registry = read_registry(
+        root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )
+    selected = {
+        row["family_id"]: row
+        for row in decisions["groups"]
+        if row["family_id"] in {"mvs:cart", "mvs:igloo"}
+    }
+    all_templates: set[str] = set()
+    for family, prefixes in {
+        "mvs:cart": ("mvs:cart", "mvs:large_cart_", "mvs:medium_bamboo_cart"),
+        "mvs:igloo": ("mvs:medium_igloo_", "mvs:small_igloo"),
+    }.items():
+        group = selected[family]
+        variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+        expected = {
+            key for key in registry if key.startswith(prefixes) and key != "mvs:cartographer_tower"
+        }
+        assert group["structure_ids"] == sorted(variants) == sorted(expected)
+        for path, digest in cast("dict[str, str]", group["evidence"]).items():
+            assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+        for identifier, variant in variants.items():
+            name = identifier.split(":")[1]
+            assert [
+                row["document"]
+                for row in catalog["resources"]
+                if row["path"] == f"data/mvs/worldgen/structure/{name}.json"
+            ] == [variant["definition"]]
+            templates = cast("dict[str, list[int]]", variant["templates"])
+            trace = traces["structures"][identifier]
+            assert trace["templates"] == sorted(templates)
+            assert trace["missing"] == trace["unresolved_elements"] == []
+            all_templates.update(templates)
+            for template, dimensions in templates.items():
+                assert traces["template_contents"][template]["template_size_xyz"] == dimensions
+    assert len(all_templates) == 10
+    authored = {
+        "mvs:carts/cart": "minecraft:wandering_trader",
+        "mvs:carts/medium_bamboo_cart": "minecraft:wandering_trader",
+        **{
+            f"minecraft:village/snowy/villagers/{kind}": "minecraft:villager"
+            for kind in ("baby", "nitwit", "unemployed")
+        },
+    }
+    loot = {
+        "mvs:carts/cart": [(2, "mvs:cart")],
+        "mvs:carts/large_cart_1": [(i, "mvs:large_carts") for i in range(1, 6)],
+        "mvs:carts/large_cart_2": [(i, "mvs:large_carts") for i in range(1, 5)],
+        "mvs:houses/medium_igloo_1": [(i, "mvs:houses_common") for i in (0, 3, 9)],
+        "mvs:houses/small_igloo": [(i, "mvs:houses_uncommon") for i in (9, 11)],
+    }
+    for template in all_templates:
+        content = traces["template_contents"][template]
+        assert content["authored_entities"] == (
+            [{"id": authored[template], "path": "/entities/0/nbt"}] if template in authored else []
+        )
+        assert content["unresolved_entities"] == []
+        assert content["loot_references"] == [
+            {"path": f"/block_entities/{i}/nbt/LootTable", "value": value}
+            for i, value in loot.get(template, [])
+        ]
+        markers = cast("list[dict[str, JsonValue]]", content["generation_markers"])
+        assert len(markers) == int(template.startswith("mvs:carts/"))
+        for marker in markers:
+            nbt = cast("dict[str, JsonValue]", marker["nbt"])
+            assert (nbt["id"], nbt["mode"], nbt["metadata"]) == (
+                "minecraft:structure_block",
+                "SAVE",
+                "",
+            )
+        spawners = cast("list[dict[str, JsonValue]]", content["spawner_blocks"])
+        assert len(spawners) == int(template == "mvs:houses/small_igloo_lower")
+        for spawner in spawners:
+            nbt = cast("dict[str, JsonValue]", spawner["nbt"])
+            assert nbt["SpawnData"] == {"entity": {"id": "minecraft:stray"}}
+            assert nbt["SpawnPotentials"] == []
+
+
 def test_soaring_tree_variants_bind_common_definition_and_template_contents() -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(
@@ -501,6 +719,45 @@ def test_soaring_rivers_preserve_omitted_default_and_complete_namespace() -> Non
         ("mns:circle_ruin", ("mns:circle_",), 2, 2),
         ("mns:medium_house", ("mns:medium_house",), 2, 2),
         (
+            "mvs:stall",
+            ("mvs:blue_stall", "mvs:orange_stall", "mvs:pink_stall", "mvs:red_stall"),
+            4,
+            4,
+        ),
+        ("mvs:end_scraps", ("mvs:end_scraps_",), 4, 4),
+        (
+            "mvs:log_pile",
+            tuple(
+                f"mvs:{wood}_log_pile"
+                for wood in ("acacia", "birch", "dark_oak", "jungle", "oak", "spruce")
+            ),
+            6,
+            6,
+        ),
+        (
+            "mvs:lantern",
+            (
+                "mvs:medium_oak_lantern",
+                *tuple(
+                    f"mvs:small_{kind}_lantern"
+                    for kind in (
+                        "acacia",
+                        "bamboo",
+                        "birch",
+                        "campfire",
+                        "cherry",
+                        "dark_oak",
+                        "jungle",
+                        "mangrove",
+                        "oak",
+                        "spruce",
+                    )
+                ),
+            ),
+            11,
+            11,
+        ),
+        (
             "mns:medium_fungus",
             ("mns:medium_crimson_fungus", "mns:medium_warped_fungus"),
             4,
@@ -508,7 +765,7 @@ def test_soaring_rivers_preserve_omitted_default_and_complete_namespace() -> Non
         ),
     ],
 )
-def test_nether_variants_preserve_definitions_and_template_identity(
+def test_moog_variants_preserve_definitions_and_template_identity(
     family: str,
     prefix: tuple[str, ...],
     member_count: int,
@@ -554,11 +811,11 @@ def test_nether_variants_preserve_definitions_and_template_identity(
     contents = cast("dict[str, dict[str, JsonValue]]", traces["template_contents"])
     definitions: dict[str, dict[str, JsonValue]] = {}
     for identifier, variant in variants.items():
-        name = identifier.split(":")[1]
+        namespace, name = identifier.split(":")
         rows = [
             cast("dict[str, JsonValue]", row["document"])
             for row in resources
-            if row["path"] == f"data/mns/worldgen/structure/{name}.json"
+            if row["path"] == f"data/{namespace}/worldgen/structure/{name}.json"
         ]
         assert len(rows) == 1
         definitions[identifier] = rows[0]
@@ -576,7 +833,13 @@ def test_nether_variants_preserve_definitions_and_template_identity(
             variant["template_size_xyz"] == contents[str(variant["template"])]["template_size_xyz"]
         )
     assert len({str(row["template"]) for row in variants.values()}) == template_count
-    if family in {"mns:bridge", "mns:medium_fungus", "mns:ruin_fragments"}:
+    if family in {
+        "mns:bridge",
+        "mns:medium_fungus",
+        "mns:ruin_fragments",
+        "mvs:log_pile",
+        "mvs:lantern",
+    }:
         for variant in variants.values():
             content = contents[str(variant["template"])]
             assert content["authored_entities"] == content["loot_references"] == []
@@ -594,20 +857,29 @@ def test_nether_variants_preserve_definitions_and_template_identity(
     )
 
 
-def test_nether_wells_preserve_modular_pieces_and_reward_difference() -> None:
+@pytest.mark.parametrize(
+    ("family", "namespace", "token", "members"),
+    [("mns:well", "mns", "well", 3), ("mvs:dead_tree", "mvs", "dead_tree_", 8)],
+)
+def test_moog_modular_variants_preserve_components_and_definition_differences(
+    family: str,
+    namespace: str,
+    token: str,
+    members: int,
+) -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(
         "dict[str, list[dict[str, JsonValue]]]",
         json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
     )
-    group = next(row for row in decisions["groups"] if row["family_id"] == "mns:well")
+    group = next(row for row in decisions["groups"] if row["family_id"] == family)
     registry = read_registry(
         root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
     )
     assert group["structure_ids"] == sorted(
-        key for key in registry if key.startswith("mns:") and "well" in key
+        key for key in registry if key.startswith(f"{namespace}:") and token in key
     )
-    assert len(cast("list[str]", group["structure_ids"])) == 3
+    assert len(cast("list[str]", group["structure_ids"])) == members
     for path, digest in cast("dict[str, str]", group["evidence"]).items():
         assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
     catalog = cast(
@@ -632,12 +904,16 @@ def test_nether_wells_preserve_modular_pieces_and_reward_difference() -> None:
         definitions = [
             cast("dict[str, JsonValue]", row["document"])
             for row in catalog["resources"]
-            if row["path"] == f"data/mns/worldgen/structure/{name}.json"
+            if row["path"] == f"data/{namespace}/worldgen/structure/{name}.json"
         ]
         assert definitions == [variant["definition"]]
-        normalized.append(
-            {k: v for k, v in definitions[0].items() if k not in {"biomes", "start_pool"}}
-        )
+        excluded = {"biomes", "start_pool"}
+        if namespace == "mvs":
+            excluded.add("cannot_spawn_in_liquid")
+            assert definitions[0].get("cannot_spawn_in_liquid") == (
+                None if identifier == "mvs:dead_tree_mangrove" else True
+            )
+        normalized.append({k: v for k, v in definitions[0].items() if k not in excluded})
         trace = traces["structures"][identifier]
         assert trace["missing"] == trace["unresolved_elements"] == []
         assert trace["templates"] == sorted(cast("dict[str, JsonValue]", variant["templates"]))
@@ -645,7 +921,19 @@ def test_nether_wells_preserve_modular_pieces_and_reward_difference() -> None:
             content = traces["template_contents"][template]
             assert content["template_size_xyz"] == dimensions
             assert content["authored_entities"] == content["spawner_blocks"] == []
-            assert content["generation_markers"] == []
+            markers = cast("list[dict[str, JsonValue]]", content["generation_markers"])
+            if template in {
+                "mvs:dead_tree/acacia",
+                "mvs:dead_tree/acacia_trunk",
+                "mvs:dead_tree/birch",
+            }:
+                assert len(markers) == 1
+                marker = cast("dict[str, JsonValue]", markers[0]["nbt"])
+                assert marker["id"] == "minecraft:structure_block"
+                assert marker["mode"] == "SAVE"
+                assert marker["metadata"] == ""
+            else:
+                assert markers == []
             if template.endswith("_lower"):
                 assert dimensions == [9, 8, 9]
                 assert content["loot_references"] == [
@@ -655,7 +943,7 @@ def test_nether_wells_preserve_modular_pieces_and_reward_difference() -> None:
                 assert content["loot_references"] == []
         expected_count = 1 if identifier == "mns:crimson_lava_well" else 2
         assert len(cast("dict[str, JsonValue]", variant["templates"])) == expected_count
-    assert normalized[0] == normalized[1] == normalized[2]
+    assert all(row == normalized[0] for row in normalized)
 
 
 def test_spider_dungeon_attributes_bind_custom_spawners_loot_and_components() -> None:

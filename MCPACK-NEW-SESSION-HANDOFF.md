@@ -6,6 +6,116 @@
 
 ### Continuation update - 2026-09-05
 
+Voyager's remaining 64 roots are delivered through `dd2c364`, built from
+`f4fdcc2`. All 129 runtime registry entries are assigned exactly once across
+73 working groups. This completes namespace assignment, not canonical-family
+reconciliation. Full generation settings and existing traces are bound by the
+reused source check. Forty-one focused tests and scoped quality checks passed;
+two builds were identical and all 199 earlier family records remained equal.
+The large generated JSON expansion is isolated in its own commit because it
+joins every remaining root to existing biome/template/world evidence. It adds
+no evidence framework or measurement system. Inventory SHA-256:
+`7ff1ac25e82012bd5b01b9c57a493e0930a4c669638cbc5c96aee8670ddad7d0`.
+Totals: 263 working groups, 423 assigned IDs, 464 unassigned.
+
+Reconcile the explicitly open Voyager relationships: boulder/stone_rock,
+floating islands, ponds, camps and related house/ruin designs. Cathedral retains
+`minecraft:mvs/cathedral_common` loot references requiring disposition. Large
+warped tower retains two missing explicit spawner entity IDs; do not infer them.
+Ocean tower uses OCEAN_FLOOR_WG and a maximum-Y allowance, so its generation step
+does not establish surface exposure. Continue other providers and non-registry
+contributions alongside shared effective attributes. Final canonical inventory,
+required attributes, Item 8 gate, clean review and main merge remain open.
+
+Voyager carts and igloos are delivered through `925a781`, built from `631cb1a`.
+Six roots form two working groups. Carts preserve authored wandering traders,
+SAVE markers and variant loot differences. Igloos preserve shared vanilla
+villager pieces and the small igloo's explicit stray spawner in its lower piece.
+These are packaged possibilities, not observed populations. Cart observations
+187, 385, 584 and 765 are linked; neither igloo has retained observations.
+Forty focused tests and scoped quality checks passed. Two builds were identical
+and every prior family record stayed equal despite Git's textual diff alignment.
+Inventory SHA-256:
+`bbf81fb86557b271d964e271a77617a98838c6386d9d1c96f0c92cf37250bede`.
+Totals: 199 working groups, 359 assigned IDs, 528 unassigned; 64 mvs roots remain.
+Continue remaining Voyager roots, shared effective attributes, other providers
+and non-registry contributions. Final canonical reconciliation, required
+attributes, Item 8 gate, clean review and main merge remain open.
+
+Voyager wells are delivered through `4f36c29`, built from `c4646fc`. Seventeen
+roots form one working family with twenty templates, including upper/lower
+components and alternative lower pieces. Full definitions preserve the Nether
+generator and HIGHEST_LAND, rare-well terrain checks and each biome constraint.
+Loot references remain attributed to their individual templates. The existing
+version-aware trace selects the small tower's `1_21_4` path for Minecraft 1.21.1;
+that path name is not an incompatibility finding. Twelve world observations
+are linked. Thirty-nine focused tests and scoped quality checks passed; two
+builds were byte-identical and earlier families unchanged. Inventory SHA-256:
+`9565140a4d36dc9412c8e9a8fb24ba2311308642ffbe0d84532b52de86989a7b`.
+Totals: 197 working groups, 353 assigned IDs, 534 unassigned; 70 mvs roots remain.
+Continue remaining Voyager designs, including carts and igloos, shared effective
+attributes, remaining providers and non-registry contributions. No additional
+measurement system was needed. Item 8's final gate, review and main merge remain
+open, as do canonical reconciliation and required effective attributes.
+
+Voyager living trees are delivered through `a85bc74`, built from `7389ff9`.
+Nine roots form one working family with fifteen alternative templates. Full
+definitions retain biome differences and big oak's terrain range/radius checks;
+big oak alone has a packaged loot reference. Approximate dimensions use the
+existing template envelopes, explicitly including air/padding and rotation
+limitations, not a new measurement system. World observations 92 and 495 remain
+linked. Thirty-eight focused tests and scoped quality checks passed; two builds
+were byte-identical and prior family records unchanged. Inventory SHA-256:
+`163351577120afb31aaa850979a94cf907154a9b45875d19de9ac632fbb7d460`.
+Totals: 196 working groups, 336 assigned IDs, 551 unassigned; 87 mvs roots remain.
+Continue Voyager wells, carts and other designs, shared effective attributes,
+remaining providers and non-registry contributions. Canonical reconciliation,
+required attributes and the final Item 8 gate/review/main merge remain open.
+
+Voyager stalls and End scraps are delivered through `0f0b9e9`, built from
+`d077750`. Eight roots form two working families with their original template
+sizes and loot differences preserved. End scrap variant 2 additionally uses
+the mod's scrap loot table. Neither group has retained world observations.
+Thirty-seven focused tests and scoped quality checks passed; reproduction was
+byte-identical and prior family records remained equal. Inventory SHA-256:
+`8909751d6e6079de9776ae8c866f9b04344a29ca1b9863275ce9a29df115d6e0`.
+Totals: 195 working groups, 327 assigned IDs, 560 unassigned; 96 mvs roots remain.
+Continue related Voyager designs and shared attribute resolution, then remaining
+providers and non-registry contributions. User reiterated that an additional
+measurement system is permitted only when strictly necessary and worth its
+time and effort. These groups reuse existing catalogs and tests. No final
+Item 8 gate, clean review or main merge is claimed.
+
+Voyager dead trees are delivered through `7851498`, built from `0ce48c8`.
+Eight roots form one working family with sixteen tree/trunk component templates.
+Original definitions preserve mangrove's omitted liquid restriction. Validation
+rejected the draft's no-markers claim: acacia, acacia_trunk and birch each have a
+SAVE-mode structure block with empty metadata. The claim and source check were
+corrected; processing of these markers remains unresolved. The initial focused
+file run had 34 passes and one failure; both affected modular-variant cases
+passed after the correction, with scoped quality checks clean. Reproduction was
+byte-identical and all earlier family records remained equal. Four world
+observations are linked. Inventory SHA-256:
+`8fa79003674c71660161dadcf7adc7c2481f8e4ef12793adfcfb0ca77870ad45`.
+Totals: 193 working groups, 319 assigned IDs, 568 unassigned; 104 mvs roots remain.
+Continue remaining Voyager designs and attributes, then remaining providers.
+No final Item 8 gate, review or main merge is claimed.
+
+Voyager log piles and lanterns are delivered through `4396e1f`, built from
+`12d4090`: six log-pile roots form one working family and eleven lantern roots
+form another, with biome and template-size variants preserved. The existing
+Moog variant check now serves both namespaces. Thirty-four focused tests and
+scoped quality checks passed. Inventory reproduction was byte-identical and
+prior families unchanged. Lantern observations 182, 410, 579 and 790 are linked;
+no retained log-pile observations exist. Inventory SHA-256:
+`afbf14517c724580bdeb08d7a923f7fbc273b3495f7c0ce81f83e2498e4b7bc7`.
+Totals: 192 working groups, 311 assigned IDs, 576 unassigned; 112 mvs roots remain.
+Next compare the eight dead trees and their trunk components. Mangrove omits
+cannot_spawn_in_liquid, whereas the other seven explicitly set it true; preserve
+that difference and use the already-retained generic codec evidence as needed.
+Continue remaining providers and required attributes. No final Item 8 gate,
+clean review or main merge is claimed.
+
 All 52 mns registry entries are assigned through `d278fc7`, built from `5640516`.
 The final 22 roots have explicit settings, resolved component traces and content
 attribution. There are 28 working Nether design groups, not a final canonical
