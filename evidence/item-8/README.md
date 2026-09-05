@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `4b1e33a`, SHA-256
-`759e4b2149d0fb7e2b33b8a06d9152a7c90983035761979c7e50f936379fc6dc`.
+Current working inventory regenerated at `532fb28`, SHA-256
+`d064a47129cf9b538ca11a9f8398bcbe33f8113f7246cec26d0d14025afd03d4`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1898,3 +1898,11 @@ The bridge family now carries the existing direct encounter-content findings,
 including their natural-spawning and external-modification limitations. Twenty-four
 focused tests and scoped Ruff/Basedpyright passed. No new measurement or source
 capture was needed. Effective whole-stack content remains an open requirement.
+
+Regeneration at `532fb28` changed only input identity and family content fields.
+All membership, geometry and biome records remain unchanged.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-family-content.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-yung-family-content.json
+```
