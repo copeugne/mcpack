@@ -1,0 +1,135 @@
+Compiled from "BlossomTreeGenerator.java"
+public class org.violetmoon.quark.content.world.gen.BlossomTreeGenerator extends org.violetmoon.zeta.world.generator.Generator {
+  private final org.violetmoon.quark.content.world.config.BlossomTreeConfig quarkConfig;
+
+  private final net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.feature.ConfiguredFeature<?, ?>> treeKey;
+
+  public org.violetmoon.quark.content.world.gen.BlossomTreeGenerator(org.violetmoon.quark.content.world.config.BlossomTreeConfig, net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.feature.ConfiguredFeature<?, ?>>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: getfield      #1                  // Field org/violetmoon/quark/content/world/config/BlossomTreeConfig.dimensions:Lorg/violetmoon/zeta/config/type/DimensionConfig;
+       5: invokespecial #7                  // Method org/violetmoon/zeta/world/generator/Generator."<init>":(Lorg/violetmoon/zeta/config/type/DimensionConfig;)V
+       8: aload_0
+       9: aload_1
+      10: putfield      #13                 // Field quarkConfig:Lorg/violetmoon/quark/content/world/config/BlossomTreeConfig;
+      13: aload_0
+      14: aload_2
+      15: putfield      #19                 // Field treeKey:Lnet/minecraft/resources/ResourceKey;
+      18: return
+
+  public void generateChunk(net.minecraft.server.level.WorldGenRegion, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload         4
+       2: aload_3
+       3: bipush        16
+       5: invokeinterface #23,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      10: iconst_0
+      11: aload_3
+      12: bipush        16
+      14: invokeinterface #23,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      19: invokevirtual #29                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      22: astore        5
+      24: aload_1
+      25: getstatic     #35                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      28: aload         5
+      30: invokevirtual #41                 // Method net/minecraft/server/level/WorldGenRegion.getHeightmapPos:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+      33: astore        5
+      35: aload_0
+      36: getfield      #13                 // Field quarkConfig:Lorg/violetmoon/quark/content/world/config/BlossomTreeConfig;
+      39: getfield      #47                 // Field org/violetmoon/quark/content/world/config/BlossomTreeConfig.biomeConfig:Lorg/violetmoon/zeta/config/type/CompoundBiomeConfig;
+      42: aload_0
+      43: aload_1
+      44: aload         5
+      46: iconst_0
+      47: invokevirtual #51                 // Method getBiome:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Z)Lnet/minecraft/core/Holder;
+      50: invokevirtual #55                 // Method org/violetmoon/zeta/config/type/CompoundBiomeConfig.canSpawn:(Lnet/minecraft/core/Holder;)Z
+      53: ifeq          260
+      56: aload_3
+      57: aload_0
+      58: getfield      #13                 // Field quarkConfig:Lorg/violetmoon/quark/content/world/config/BlossomTreeConfig;
+      61: getfield      #61                 // Field org/violetmoon/quark/content/world/config/BlossomTreeConfig.rarity:I
+      64: invokeinterface #23,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      69: ifne          260
+      72: aload_1
+      73: getstatic     #35                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      76: aload         5
+      78: invokevirtual #41                 // Method net/minecraft/server/level/WorldGenRegion.getHeightmapPos:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+      81: invokevirtual #65                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      84: astore        5
+      86: aload_1
+      87: aload         5
+      89: invokevirtual #69                 // Method net/minecraft/server/level/WorldGenRegion.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      92: astore        6
+      94: aload         6
+      96: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      99: aload         6
+     101: aload_1
+     102: aload         4
+     104: getstatic     #79                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     107: getstatic     #85                 // Field net/minecraft/world/level/block/Blocks.OAK_SAPLING:Lnet/minecraft/world/level/block/Block;
+     110: invokevirtual #91                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     113: invokevirtual #97                 // Method net/minecraft/world/level/block/Block.canSustainPlant:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/neoforged/neoforge/common/util/TriState;
+     116: invokevirtual #101                // Method net/neoforged/neoforge/common/util/TriState.isTrue:()Z
+     119: ifne          144
+     122: aload         6
+     124: getstatic     #107                // Field net/minecraft/tags/BlockTags.DIRT:Lnet/minecraft/tags/TagKey;
+     127: invokevirtual #113                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     130: ifne          144
+     133: aload         6
+     135: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     138: instanceof    #117                // class net/minecraft/world/level/block/FarmBlock
+     141: ifeq          260
+     144: aload         5
+     146: invokevirtual #119                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     149: astore        7
+     151: aload_1
+     152: aload         7
+     154: invokevirtual #69                 // Method net/minecraft/server/level/WorldGenRegion.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     157: astore        8
+     159: aload_1
+     160: invokevirtual #122                // Method net/minecraft/server/level/WorldGenRegion.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+     163: getstatic     #126                // Field net/minecraft/core/registries/Registries.CONFIGURED_FEATURE:Lnet/minecraft/resources/ResourceKey;
+     166: invokeinterface #131,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+     171: astore        9
+     173: aload         9
+     175: aload_0
+     176: getfield      #19                 // Field treeKey:Lnet/minecraft/resources/ResourceKey;
+     179: invokeinterface #137,  2          // InterfaceMethod net/minecraft/core/Registry.get:(Lnet/minecraft/resources/ResourceKey;)Ljava/lang/Object;
+     184: checkcast     #143                // class net/minecraft/world/level/levelgen/feature/ConfiguredFeature
+     187: astore        10
+     189: aload         10
+     191: ifnonnull     195
+     194: return
+     195: aload         10
+     197: astore        11
+     199: new           #145                // class net/minecraft/world/level/levelgen/feature/FeaturePlaceContext
+     202: dup
+     203: aload         11
+     205: invokestatic  #147                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+     208: aload_1
+     209: aload_2
+     210: aload_3
+     211: aload         7
+     213: aload         11
+     215: invokevirtual #153                // Method net/minecraft/world/level/levelgen/feature/ConfiguredFeature.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     218: checkcast     #157                // class net/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration
+     221: invokespecial #159                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext."<init>":(Ljava/util/Optional;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;)V
+     224: astore        12
+     226: aload         8
+     228: getstatic     #162                // Field net/minecraft/world/level/material/Fluids.WATER:Lnet/minecraft/world/level/material/FlowingFluid;
+     231: invokevirtual #168                // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:(Lnet/minecraft/world/level/material/Fluid;)Z
+     234: ifeq          251
+     237: aload_1
+     238: aload         7
+     240: getstatic     #172                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+     243: invokevirtual #91                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     246: iconst_0
+     247: invokevirtual #175                // Method net/minecraft/server/level/WorldGenRegion.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     250: pop
+     251: getstatic     #179                // Field net/minecraft/world/level/levelgen/feature/Feature.TREE:Lnet/minecraft/world/level/levelgen/feature/Feature;
+     254: aload         12
+     256: invokevirtual #185                // Method net/minecraft/world/level/levelgen/feature/Feature.place:(Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;)Z
+     259: pop
+     260: return
+}
