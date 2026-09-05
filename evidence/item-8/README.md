@@ -1130,3 +1130,36 @@ Grouping delivered in `8ca1e21`; inventory regenerated at that revision, SHA-256
 `d04abd3d02744ce7af0ac2ae286642ceaedca036efa603a9db08122b78280072`.
 Both roots and their biome constraints, custom-generation records and saved-start
 observation indexes remain represented. Other family rows are unchanged.
+
+## BetterEnd mountain placement and visual cues
+
+The source capture delivered in `01d4f63` supports two required attributes for
+both mountain variants. Their root generators select WORLD_SURFACE_WG height,
+requiring Y greater than 5 for ordinary mountains and greater than 50 for painted
+mountains. Piece code establishes a surface-rooted mountain body and crystals,
+or columns with noise-varied stone layers. These authored cues now replace the
+undifferentiated UNKNOWN placement and visual fields. Actual visibility distance,
+occlusion and discovery probability remain unmeasured.
+
+MountainPiece stores separate radius and height parameters but uses radius for
+all bounding-box axes. Existing saved-world envelopes remain unchanged and must
+not be relabeled occupied mountain dimensions. Mob, loot and spawner attribution
+remain open. No runtime or measurement system was added.
+
+Decision SHA-256:
+`87b4d8967824e33e6c8dbdd7dd689654b24d215390f4bbf63c26ccd74a199422`.
+Reproduction and validation:
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run pytest -q tests/item8/test_family_decisions.py -k betterend
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-mountain-cues.json
+```
+
+The initial test extension exceeded the existing lint complexity/statement limits;
+it was separated into a focused placement/cue test without a shared abstraction.
+Four focused BetterEnd cases and scoped Ruff/Basedpyright checks pass. An initial
+read-only inventory inspection assumed families was a list and raised TypeError;
+it was corrected to use the existing mapping, with no artifact mutation.
