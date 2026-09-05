@@ -135,6 +135,7 @@ def test_frozen_idless_trial_spawners_use_palette_without_changing_nbt() -> None
     catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(raw)))
     resources = cast("list[dict[str, JsonValue]]", catalog["resources"])
     found: list[str] = []
+    retained_normal: dict[str, str] = {}
     for resource in resources:
         document = cast("dict[str, JsonValue] | None", resource.get("document"))
         if document is None:
@@ -155,10 +156,41 @@ def test_frozen_idless_trial_spawners_use_palette_without_changing_nbt() -> None
         assert "id" not in nbt
         sources = spawner_entity_sources(nbt, block_id="minecraft:trial_spawner")
         assert any(source.get("entity_id") for source in sources)
+        ominous = cast("dict[str, JsonValue]", nbt["ominous_config"])
+        if "spawn_potentials" not in ominous:
+            assert "spawn_data" not in nbt
+            palette = cast("list[dict[str, JsonValue]]", document["palette"])
+            state = palette[cast("int", idless[0]["state"])]
+            assert state["Properties"] == {
+                "ominous": "false", "trial_spawner_state": "waiting_for_players"
+            }
+            normal = cast("dict[str, JsonValue]", nbt["normal_config"])
+            potentials = cast("list[dict[str, JsonValue]]", normal["spawn_potentials"])
+            assert all(cast("int", potential["weight"]) > 0 for potential in potentials)
+            entities = [
+                cast("dict[str, JsonValue]", cast("dict[str, JsonValue]", entry["data"])["entity"])
+                for entry in potentials
+            ]
+            entity_ids = {cast("str", entity["id"]) for entity in entities}
+            assert len(entity_ids) == 1
+            entity_id = next(iter(entity_ids))
+            if entity_id == "minecraft:slime":
+                assert potentials == [
+                    {"data": {"entity": {"id": entity_id, "Size": 1}}, "weight": 3},
+                    {"data": {"entity": {"id": entity_id, "Size": 2}}, "weight": 1},
+                ]
+            retained_normal[cast("str", resource["path"])] = entity_id
         found.append(cast("str", resource["path"]))
     assert len(found) == 14
     prefix = "data/minecraft/structure/trial_chambers/spawner/"
     assert all(path.startswith(prefix) for path in found)
+    assert retained_normal == {
+        prefix + "breeze/breeze.nbt": "minecraft:breeze",
+        prefix + "melee/spider.nbt": "minecraft:spider",
+        prefix + "small_melee/cave_spider.nbt": "minecraft:cave_spider",
+        prefix + "small_melee/silverfish.nbt": "minecraft:silverfish",
+        prefix + "small_melee/slime.nbt": "minecraft:slime",
+    }
 
 
 def test_idless_block_rejects_conflicting_palette_identities() -> None:
