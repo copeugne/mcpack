@@ -100,6 +100,7 @@ def test_dimension_probe_runs_after_readiness_and_failure_kills_server(
     assert len(seen) == 1
     assert result.clean_stop is not fails
     assert result.process_group_killed is fails
+    assert "Saved the game" in log.read_text()
     if fails:
         assert not result.commands
         assert result.rejection_reason
