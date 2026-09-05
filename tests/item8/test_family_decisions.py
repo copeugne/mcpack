@@ -11,9 +11,75 @@ from tools.build_item8_inventory import assemble
 
 from mcpack_evidence.item8_inventory import resource_identity, size_variant_groups
 from mcpack_evidence.item8_registry import read_registry
+from mcpack_evidence.item8_resource_selection import runtime_mod_ids
 
 if TYPE_CHECKING:
     from pydantic import JsonValue
+
+
+def test_better_village_contributes_templates_without_an_extra_family() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        (root / "evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    village = next(row for row in decisions["groups"] if row["family_id"] == "minecraft:village")
+    documents: dict[str, bytes] = {}
+    for path, digest in cast("dict[str, str]", village["evidence"]).items():
+        payload = (root / path).read_bytes()
+        assert hashlib.sha256(payload).hexdigest() == digest
+        documents[path] = payload
+    traces = cast("dict[str, JsonValue]", json.loads(gzip.decompress(documents[
+        "evidence/item-8/sources/pool-traces-content.json.gz"
+    ])))
+    templates = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(documents[
+        "evidence/item-8/sources/templates-redacted.json.gz"
+    ])))
+    structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
+    contents = cast("dict[str, dict[str, JsonValue]]", traces["template_contents"])
+    archive = "bettervillage-neoforge-1.21.1-3.3.1.jar"
+    packaged = {
+        identity[0]: row["sha256"]
+        for row in templates["resources"] if row["archive"] == archive
+        if (identity := resource_identity(str(row["path"]), "structure", ".nbt")) is not None
+    }
+    assert len(packaged) == 246
+    reached: set[str] = set()
+    counts = {"desert": 44, "plains": 55, "savanna": 54, "snowy": 47, "taiga": 44}
+    for biome, count in counts.items():
+        identifier = f"minecraft:village_{biome}"
+        assert identifier in cast("list[str]", village["structure_ids"])
+        contributed = set(cast("list[str]", structures[identifier]["templates"])) & packaged.keys()
+        assert len(contributed) == count
+        reached.update(contributed)
+        for template in contributed:
+            source = cast("dict[str, JsonValue]", contents[template]["source"])
+            assert source["archive"] == archive
+            assert source["sha256"] == packaged[template]
+    assert len(reached) == 244
+    assert set(packaged) - reached == {
+        "minecraft:village/snowy/streets/crossroad_01",
+        "minecraft:village/snowy/streets/straight_05",
+    }
+    assert not any(
+        str(row["family_id"]).startswith("bettervillage:") for row in decisions["groups"]
+    )
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(documents[
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ])))
+    compat = [cast("dict[str, JsonValue]", row["document"]) for row in catalog["resources"]
+              if "/bettervillage_compat/" in str(row["path"])]
+    log = documents["evidence/raw/item8/registry-r1/debug.log"].decode()
+    mods = runtime_mod_ids(log)
+    assert {str(row["mod_id"]) for row in compat} == {
+        "bountiful", "iceandfire", "immersiveengineering", "morevillagers"
+    }
+    assert all(row["enabled"] is False and str(row["mod_id"]) not in mods for row in compat)
+    assert "StructureSet modified for minecraft:village" in log.splitlines()[18028]
+    config = documents["evidence/item-6/frozen/config/bettervillage_1.properties"].decode()
+    assert {line for line in config.splitlines() if not line.startswith("#")} == {
+        "boolean.villages.enabled_custom_config=true", "int.villages.salt=10387312",
+        "int.villages.separation=20", "int.villages.spacing=45",
+    }
 
 
 @pytest.mark.parametrize(
