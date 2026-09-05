@@ -1312,3 +1312,40 @@ All 75 affected tests and scoped checks passed. Inventory regenerated at
 `65d6dd6270f40edae66a5401a4e3aafe3f3aba5d4adccf9f6703b0dd00c8958f`.
 Only lake direct-content fields and their grouping decision changed. Other family
 rows, size envelopes, placement/cues and observation links are unchanged.
+
+## YUNG's Bridges non-registry contribution
+
+The existing non_registry_content field now records the verified YUNG's Bridges
+feature path instead of leaving all non-registry content as one UNKNOWN string.
+This minimal extension is required because the structure-only family groups
+cannot represent a provider with no structure registry IDs. It reuses the existing
+decision file, pinned inputs, builder and feature-reference tests; no new schema,
+validator framework or measurement system is introduced.
+
+The NeoForge bridge_addition modifier targets #yungsbridges:has_structure/bridge
+and adds yungsbridges:bridge_list at surface_structures. Its placed feature uses
+the configured multiple_attempt_single_random selector, which references 22
+configured variants pointing to 11 distinct template IDs. The configured variants
+and placed root are in the preserved runtime dumps; no yungsbridges structure ID
+is in the structure dump. The Forge-directory duplicate is not another NeoForge
+contribution. Stone/wood, intact/broken and axis variants are preserved as related
+bridge layouts, not 22 or 11 accepted families.
+
+Configuration, custom placement/generator behavior, template content, generated
+observations and final family attributes still need reconciliation. The existing
+421 structure-registry groups and 887 roots do not include an accepted bridge
+family yet. This is a verified contribution path, not a completion claim.
+
+Decision SHA-256:
+`c4f5a9bbf909c60826b9331f13a6c4e92ab86de0b30e02f072325e7fd6f3ec3f`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-bridge-path.json
+```
+
+The initial focused test passed; lint then required a top-level import and typed
+JSON reads. Those test-only issues were fixed without changing the contribution.
+Scoped Ruff/Basedpyright now pass.

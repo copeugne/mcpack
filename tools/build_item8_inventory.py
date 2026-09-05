@@ -26,7 +26,7 @@ INPUTS = {
     SOURCES: "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
     TRACES: "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
     BOUNDS: "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
-    DECISIONS: "96cf175ab478a94d86edbc4c638c96c33b84f9d24ba2aa7d6fa4d01cc0d2914e",
+    DECISIONS: "c4f5a9bbf909c60826b9331f13a6c4e92ab86de0b30e02f072325e7fd6f3ec3f",
     REGISTRY: "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     DIMENSION_BIOMES: "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
 }
@@ -310,6 +310,7 @@ def main() -> None:
         documents[BOUNDS],
         cast("dict[str, list[str]]", documents[DIMENSION_BIOMES]),
     )
+    result["non_registry_content"] = documents[DECISIONS]["non_registry_content"]
     result["inputs"] = dict(INPUTS)
     with output.open("x", encoding="utf-8") as stream:
         _ = stream.write(json.dumps(result, indent=2, sort_keys=True) + "\n")
