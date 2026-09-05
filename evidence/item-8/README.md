@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `9025a02`, SHA-256
-`57f64556a10b854bcd6f384187648c920b55157858a77704fece02dea4f50a4f`.
+Current working inventory regenerated at `7144dd8`, SHA-256
+`e10333e84edb33f2ab0a6df1435e8acdafb7c1e13e4f474f23c9a808476c64db`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,18 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 7144dd8 increment binds the selected packaged placed/configured End feature
+records and derives the return-gateway terrain-relative placement. The platform
+fixed origin lies outside the bounded central-End projection. Its connection to
+the static platform hook still needs verification. Thirty focused tests and
+scoped quality checks passed. Configured rarity is not observed density.
+Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-end-placement-7144dd8.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-end-placement-7144dd8.json
+```
 
 The 9025a02 increment retains packaged biome references to End platform, spike
 and return-gateway placed features. The direct regression reconstructs every
