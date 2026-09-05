@@ -653,3 +653,26 @@ templates. Existing BetterEnd observations are linked; none exist for the eight
 Aether/Deep Aether roots. Initial Aether lint reported the existing test's
 statement count above its limit; identical key-set assignments were combined
 without introducing another helper. No new measurement system was needed.
+
+Vanilla and whole-registry assignment (`4ad283f`, joined in `8dd7f9c`):
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-vanilla-4ad283f.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-vanilla-4ad283f-repro.json
+cmp evidence/raw/item8/inventory-vanilla-4ad283f.json evidence/raw/item8/inventory-vanilla-4ad283f-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q -k 'design_groups_cover_registry or all_runtime_structure_ids'
+```
+
+Three affected checks passed (54 deselected), together with scoped Ruff and
+basedpyright. Full variant definitions bind 34 vanilla roots across 21 groups;
+24 roots lack direct pools and remain explicitly untraced. The ancient-city
+missing template remains visible. The whole-registry check compares the exact
+887-ID set with every assignment and rejects duplicates or omissions. It proves
+registry assignment only, not canonical-family or non-registry completeness.
+Both builds are byte-identical and all prior family records are unchanged.
+
+Village Taverns' five packaged Lithostitched modifiers expose the next gap:
+they add limited delegate elements to vanilla village house pools, while the
+current pool trace does not apply modifiers. The existing packaged catalog
+retains their exact conditions, target pools and definitions. Closing this
+requires modifying the existing trace, not a separate measurement system.
