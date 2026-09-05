@@ -22,6 +22,17 @@ def test_selected_feature_modifier_references() -> None:  # noqa: C901, PLR0915
     )
     catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(raw)))
     resources = cast("list[JsonValue]", catalog["resources"])
+    config_path = root / "evidence/item-6/frozen/config/regions_unexplored/common.json"
+    config_raw = config_path.read_bytes()
+    assert hashlib.sha256(config_raw).hexdigest() == (
+        "300dda462e31f6f1bcce0d67308e4939d1b461a03c8cc92ba805f7ac9d1cb66c"
+    )
+    # This exact frozen file has standalone // comment lines, not inline comments.
+    configuration = cast("dict[str, JsonValue]", json.loads("\n".join(
+        line for line in config_raw.decode().splitlines() if not line.lstrip().startswith("//")
+    )))
+    toggles = configuration["vanilla_changes"]
+    assert isinstance(toggles, dict)
     placed_sources, _ = select_resources(
         resources, "worldgen/placed_feature",
         enabled_packs=["vanilla", "mod_data"], lithostitched_overlay=True,
@@ -94,8 +105,16 @@ def test_selected_feature_modifier_references() -> None:  # noqa: C901, PLR0915
             continue
         assert isinstance(kind, str)
         assert resource["archive"] == "regions-unexplored-0.6.1-neoforge-21.1.jar"
+        predicate = document["predicate"]
+        assert isinstance(predicate, dict)
+        assert set(predicate) == {"type", "key"}
+        assert predicate["type"] == "regions_unexplored:config"
+        key = predicate["key"]
+        assert isinstance(key, str)
+        assert key.startswith("vanilla_changes/")
+        assert toggles[key.removeprefix("vanilla_changes/")] is True
         counts[kind] += 1
-        # Follow possible contents regardless of the preserved config predicate.
+        # Predicate truth does not prove successful placement in a generated world.
         features = document["features"]
         if isinstance(features, str):
             features = [features]
