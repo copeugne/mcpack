@@ -6,6 +6,28 @@
 
 ### Continuation update - 2026-09-05
 
+Dimension eligibility is the next shared gap. Source inspection `36f7e0b`
+establishes that Lithostitched's saved delegate omits runtime injected/replaced
+biome lists, and the manager also accepts event-supplied injectors. Manifest SHA:
+`b48129fffa046624fb15e6381edb678001d491c4be8ddcd03e2c5ec440f8afaa`.
+The existing NeoForge dump command was inspected too: it writes registry keys
+with optional numeric IDs, not values or dimension memberships. Manifest SHA:
+`fa8eff257d4a41da1edf9a092326af303160207c616ec4266c750a35a5d244d5`.
+Reproduction and boundaries are in the two source READMEs under
+`evidence/item-8/sources/lithostitched-biome-injector-code` and
+`evidence/item-8/sources/neoforge-dump-command-code`. Extraction and scoped
+checks passed; source refs were pushed and verified. No new runtime collector
+was added and inventory identities below are unchanged.
+
+Do not rerun the unchanged registry dump or infer effective dimension membership
+from saved delegate presets. Next choose the smallest runtime-object read that
+resolves possible biome membership across the frozen dimensions, reusing the
+existing materialization and lifecycle. This closes an explicit Item 8 attribute
+gap shared by families; avoid reconstructing every dynamic biome provider in a
+new static emulator. Confirm the chosen read preserves the frozen identities
+and distinguishes possible membership from successful structure generation.
+The source investigation narrows the collection method, not the completion gate.
+
 Igloo integration is delivered: `3a102c3` records three components and seven
 attributes, and `ca0fa30` delivers the inventory. All 59 affected tests passed;
 scoped checks and the final focused test passed after one explicit regex-result
