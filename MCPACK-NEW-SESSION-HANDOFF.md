@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Zeta/selected Quark call-chain attribution and frozen settings are integrated
+in `d961290`. Inherited Generator unwraps ServerLevel and dispatches into the
+captured multi-chunk implementation. Frozen radii are 7 and 15; effective field
+binding remains open, alongside complete spire geometry, biome predicates,
+other Quark consumers and Forgified Fabric callbacks. Thirty focused tests and
+scoped checks passed after a test typing correction. Do not repeat captured
+library tracing. Item 8 and broader provider coverage remain incomplete.
+
 Shared applicability sources are delivered in `1d6be84`. Source search uses
 ceil(radius/16) neighboring chunks; DimensionConfig's LevelAccessor overload
 requires a Level. Resolve the inherited Generator.canGenerate/generate caller

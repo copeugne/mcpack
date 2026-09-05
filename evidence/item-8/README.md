@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `bb42eb0`, SHA-256
-`54c035e0d6a59d53def2b9c57a7b6019d8b70d49d7fcce1827d86fb215edc945`.
+Current working inventory regenerated at `d961290`, SHA-256
+`3e0d8219181691ae0abfae05b7bfe82989b37a4783a6bfb0ffbb80dca1612f22`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,17 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The d961290 increment integrates the captured Zeta call chain and selected
+Quark consumer registrations, plus exact frozen consumer settings. It resolves
+region unwrapping and source-search reach, while effective configuration binding,
+other consumers and Forgified Fabric effects remain open. Thirty focused tests
+passed; scoped checks passed after a test typing correction. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-zeta-chain-d961290.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-zeta-chain-d961290.json
+```
 
 The bb42eb0 increment identifies Zeta and Forgified Fabric biome modifiers whose
 JSON delegates to code without enumerating affected features. Their effects must
