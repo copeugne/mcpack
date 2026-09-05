@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-05
 
+Nether bridges and medium fungi are delivered through `541acfa`, with source
+increments `70196ea` and `a49dbc8` and generated joins `d635337` and `541acfa`.
+Current inventory SHA-256:
+`11838c9dc3feb6b53c621ef49fc90e81182d063082b0900e448aa9e5e1c50e68`.
+Six bridge shapes map to one working family. Four crimson/warped fungus shapes
+map to one working family with explicit biome variants. Source-bound tests
+verify common definitions, exact registry membership, individual template
+sizes, resolved traces and absence of template-authored entities, loot,
+spawners and generation markers. These absences do not establish effective
+natural spawning or generator behavior. Bridge world observations 117 and 517,
+and fungus observations 122 and 522, are linked from the retained bounds.
+Twenty-seven focused tests and scoped Ruff/basedpyright checks passed. Both
+joins reproduced byte for byte and preserved all prior families. Current totals:
+165 working groups, 259 assigned registry entries, 628 unassigned; 35 mns roots
+remain unassigned. Continue Nether wells, circles, houses, arenas and remaining
+design relationships, then other providers and non-registry generation.
+Canonical relationships and the required per-family attributes remain open.
+No final Item 8 gate, report, review or main merge is claimed.
+
 Very Small Nether Ruins grouping is delivered through `7e883a8`, built from
 `cfe63fe`. Inventory SHA-256:
 `53d6ea7bba9c7accdd3d4b075ad27fba5a50f3d530458555ac216d6c19ca98a6`.

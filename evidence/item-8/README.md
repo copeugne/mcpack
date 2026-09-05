@@ -228,3 +228,29 @@ in separate commits, and request review again after fixes. Verify a completed
 clean review covering the final changes and the required thumbs-up reaction.
 Merge without squashing and verify the accepted head in fetched `origin/main`.
 The Item 7 user exception does not waive any Item 8 review or evidence gate.
+
+### Nether bridge and fungus grouping increments
+
+The bridge source increment is `70196ea`; the fungus source increment is
+`a49dbc8`. Each decision preserves variant membership, definitions and template
+sizes. Reproduce their focused source checks with:
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+Executed inventory commands at their corresponding source revisions:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-bridge-70196ea.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-bridge-70196ea-repro.json
+cmp evidence/raw/item8/inventory-bridge-70196ea.json evidence/raw/item8/inventory-bridge-70196ea-repro.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-fungus-a49dbc8.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-fungus-a49dbc8-repro.json
+cmp evidence/raw/item8/inventory-fungus-a49dbc8.json evidence/raw/item8/inventory-fungus-a49dbc8-repro.json
+```
+
+Use fresh output names when reproducing; the builder refuses overwrites.
+The bridge join is `d635337`; the fungus join is `541acfa`. Neither is an
+Item 8 completion claim. Effective custom placement and gameplay attributes
+remain unresolved.
