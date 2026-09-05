@@ -32,6 +32,7 @@ if TYPE_CHECKING:
         "betterwitchhuts:",
         "mes:",
         "mss:",
+        "mns:",
     ],
 )
 def test_authored_designs_bind_roots_settings_and_missing_components(
@@ -61,6 +62,16 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         "mss:": ("mss:tree_", "mss:birch_river", "mss:cherry_river"),
     }.get(namespace, ())
     expected = {key for key in expected if not key.startswith(excluded_prefixes)}
+    if namespace == "mns:":
+        variants = [
+            member
+            for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
+            if str(row["family_id"]).startswith(namespace)
+            and len(cast("list[str]", row["structure_ids"])) > 1
+            for member in cast("list[str]", row["structure_ids"])
+        ]
+        assert len(members + variants) == len(set(members + variants)) == 52
+        expected -= set(variants)
     assert members
     assert set(members) == expected
     catalog = cast(
@@ -100,15 +111,24 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         identifier = str(row["family_id"])
         assert row["structure_ids"] == [identifier]
         definition = definitions[identifier]
-        if namespace == "mes:":
+        custom_keys = {
+            "mes:": {"allowed_terrain_height_range", "terrain_height_radius_check", "y_allowance"},
+            "mns:": set(definition)
+            - {
+                "type",
+                "start_height",
+                "project_start_to_heightmap",
+                "required_mods",
+                "target_biomes",
+                "target_biome_radius_check_blocks",
+                "cannot_spawn_in_liquid",
+                "start_pool",
+                "biomes",
+            },
+        }
+        if namespace in custom_keys:
             assert row["custom_generation_settings"] == {
-                key: definition[key]
-                for key in (
-                    "allowed_terrain_height_range",
-                    "terrain_height_radius_check",
-                    "y_allowance",
-                )
-                if key in definition
+                key: definition[key] for key in custom_keys[namespace] if key in definition
             }
         assert row["start_pool"] == definition.get("start_pool")
         if "start_pool" in definition:
