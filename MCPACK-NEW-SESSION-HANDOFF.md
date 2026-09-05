@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Moog shared library entry/registry capture delivered in 88bafe0 using e5341ca;
+eight classes reproduced at evidence/raw/item8/moog-provider-entries-r1. Provider
+still open: declared mixins, callback bootstrap targets, registry/service dispatch,
+trial-spawner reload and debug command remain. Non-verbose callback output does
+not bind every invokedynamic target. Do not repeat the four closed Moog data
+providers or trace unrelated geometry/noise utilities. Count remains 30/136
+supported provider dispositions, 106 open. See source README for exact next scope.
+
 YUNG Extras provider coverage now passes. Remaining seven classes delivered in
 4d7edec using 04db73f; all 29 classes and full payload accounted for. All 62
 templates are assigned, 59 by JSON and three by existing code links. Nine focused
