@@ -127,6 +127,9 @@ CLASSES = (
     "net/regions_unexplored/world/level/feature/tree/SaguaroCactusFeature.class",
     "net/regions_unexplored/worldgen/rootplacer/WillowRootPlacer.class",
     "net/regions_unexplored/worldgen/rulesource/ConfigRuleSource.class",
+    "net/regions_unexplored/lithostitched/ConfigPredicate.class",
+    "net/regions_unexplored/config/state/common/RUCommonConfig.class",
+    "net/regions_unexplored/worldgen/stateprovider/RandomizedGroundCoverStateProvider.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
