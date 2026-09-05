@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+EndDragonFightMixin reset directly invokes the initial full podium when
+spawnCentralTowerInitially is true. Initial state scanning, missing-portal
+recovery and dragon death instead delegate to ExitPortalUtils.spawnPortal.
+Capture that single exact helper with the existing extractor to resolve which
+podium variants those calls select. This directly closes a configuration and
+variant reachability gap; no new evidence framework or measurement is needed.
+
 Better End Island template reconciliation is integrated in `e8982e8`, with
 source dependency capture `46c2bf2`. All 41 packaged templates are linked
 (36 spike pieces, three podium variants, platform and gateway), not counted

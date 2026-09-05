@@ -293,6 +293,7 @@ CLASSES = (
     "com/yungnickyoung/minecraft/betterendisland/world/SpikeCacheLoader.class",
     "com/yungnickyoung/minecraft/betterendisland/world/processor/BlockReplaceProcessor.class",
     "com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/util/ExitPortalUtils.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
