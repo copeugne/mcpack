@@ -110,6 +110,7 @@ CLASSES = (
     "dev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier.class",
     "net/minecraft/resources/RegistryDataLoader.class",
     "net/neoforged/neoforge/common/conditions/ConditionalOps.class",
+    "net/neoforged/neoforge/server/command/DumpCommand.class",
     "net/neoforged/neoforge/common/conditions/ConditionalOps$ConditionalDecoder.class",
     "net/neoforged/neoforge/common/conditions/ModLoadedCondition.class",
     "net/neoforged/neoforge/common/conditions/OrCondition.class",
