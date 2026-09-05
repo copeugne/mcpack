@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import gzip
+import hashlib
+import json
 import struct
-from typing import TYPE_CHECKING
+from pathlib import Path
+from typing import TYPE_CHECKING, cast
 
 import pytest
 
@@ -122,6 +125,49 @@ def test_empty_authored_entity_is_retained_as_unresolved() -> None:
     assert result["unresolved_entities"] == [
         {"path": "/entities/0/nbt", "reason": "authored entity lacks an ID"}
     ]
+
+
+def test_frozen_idless_trial_spawners_use_palette_without_changing_nbt() -> None:
+    raw = Path("evidence/item-8/sources/templates-redacted.json.gz").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+    )
+    catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(raw)))
+    resources = cast("list[dict[str, JsonValue]]", catalog["resources"])
+    found: list[str] = []
+    for resource in resources:
+        document = cast("dict[str, JsonValue] | None", resource.get("document"))
+        if document is None:
+            continue
+        blocks = cast("list[dict[str, JsonValue]]", document["block_entities"])
+        idless = [
+            block for block in blocks if "id" not in cast("dict[str, JsonValue]", block["nbt"])
+        ]
+        if not idless:
+            continue
+        content = template_content(document)
+        spawners = cast("list[dict[str, JsonValue]]", content["spawner_blocks"])
+        assert len(spawners) == len(idless) == 1
+        block = spawners[0]
+        assert block["block_id"] == "minecraft:trial_spawner"
+        assert block["nbt"] == idless[0]["nbt"]
+        nbt = cast("dict[str, JsonValue]", idless[0]["nbt"])
+        assert "id" not in nbt
+        sources = spawner_entity_sources(nbt, block_id="minecraft:trial_spawner")
+        assert any(source.get("entity_id") for source in sources)
+        found.append(cast("str", resource["path"]))
+    assert len(found) == 14
+    prefix = "data/minecraft/structure/trial_chambers/spawner/"
+    assert all(path.startswith(prefix) for path in found)
+
+
+def test_idless_block_rejects_conflicting_palette_identities() -> None:
+    with pytest.raises(ValueError, match="ambiguous palette identities"):
+        _ = template_content({
+            "block_entities": [{"state": 0, "pos": [0, 0, 0], "nbt": {}}],
+            "entities": [],
+            "palettes": [[{"Name": "minecraft:trial_spawner"}], [{"Name": "minecraft:chest"}]],
+        })
 
 
 def test_spawner_sources_distinguish_initial_and_positive_weight_potentials() -> None:
