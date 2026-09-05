@@ -6,6 +6,146 @@
 
 ### Continuation update - 2026-09-05
 
+Modifier evidence regeneration is delivered: trace and dependent decision/pin
+updates in `755fbd8`, inventory rebuild in `7cd7893`. The committed-source
+trace reproduction matched the pilot byte for byte. The trace changes only
+input identities and modifier-report entries; all structure reachability and
+template contents remain unchanged. The 429 family-decision substitutions and
+431 inventory substitutions are source hashes only. All 71 affected family,
+pool and modifier checks passed, with scoped Ruff/basedpyright passing after
+two narrow test-style corrections. Delivered refs were verified.
+
+Current trace SHA:
+`9bac83e23b19826a872a3d760ca44bdcf6e24b3ef9df3a2693c9737ec28f3a0d`.
+Current decisions SHA:
+`3ebb87bee8c663dc488b164b14a7f328d65fa17b4becb381aebc9c9db217de65`.
+Current inventory SHA:
+`9fdf722bfe1346e0747687760203281b2121cf344ae2e94fb314a83511aa7441`.
+The old instructions below to regenerate the modifier report are superseded.
+No selected packaged modifier remains marked untraced, but this does not close
+all provider hooks or family attributes. Continue the broader inventory gaps,
+including the 69 custom-generation roots and effective spawner/mob/loot sources.
+The working 452-group inventory remains incomplete; review and main merge are
+still required. Do not redo completed modifier source checks.
+
+Selected feature contributions are resolved in `bcacd6a`: the terminal
+configuration check covers 11 component types and 44 configured block IDs,
+with tree/root/state-provider implementation dispositions in
+`evidence/item-8/sources/regions-unexplored-feature-code/README.md`.
+The final random-block provider was extracted with `5ae4555`; it selects a
+configured block's default state (or air if empty). These 34 modifiers add or
+remove vegetation/ground cover/ash vents, not a distinct structure family.
+Placement, frequency and whole-provider coverage are not claimed.
+
+Trace integration is delivered in `1ffa075`. It binds the relevant config and
+source identities and records all 37 formerly untraced selected modifiers as
+inspected non-family contributions, retaining each complete modifier document.
+The executed pilot command was:
+`uv run -m tools.trace_item8_structure_pools --output evidence/raw/item8/pool-traces-modifier-dispositions.json.gz`.
+Pilot SHA `9bac83e23b19826a872a3d760ca44bdcf6e24b3ef9df3a2693c9737ec28f3a0d`.
+Only top-level inputs and pool_modifiers differ from the current committed
+trace. The report contains 956 condition exclusions, 68 pool additions,
+one alias replacement and 37 inspected non-family contributions. Twenty-one
+affected tests and scoped tool checks passed. Pushed refs were verified.
+
+Next reproduce that pilot from the committed tool, publish the trace, update
+the existing family-decision hash references and builder pins, and rebuild the
+inventory. Update the frozen-report regression to require the new dispositions.
+The current committed trace, family decisions and inventory still have their
+previous identities until that atomic generated-evidence migration is done.
+Do not repeat the completed modifier source inspection. Broader provider/family
+coverage, 69 custom generators, attributes and final review/merge remain open.
+
+Feature configuration binding is delivered in `48fef4a`, with source selection
+`78eca8f`. All 34 declared predicates map to enabled toggles in frozen common
+config SHA `300dda462e31f6f1bcce0d67308e4939d1b461a03c8cc92ba805f7ac9d1cb66c`.
+`ConfigPredicate` delegates to `RUCommonConfig.test`, which resolves the
+`vanilla_changes/` key suffix in its toggle map. The existing reference test
+now verifies every key and its true value. Focused test and scoped checks pass.
+Source identities SHA:
+`1b447725ac61174b8cf0f35ed5457291460c54938c49b9d8296809781a87ba8d`.
+See `evidence/item-8/sources/regions-unexplored-feature-config-code/README.md`.
+The retained ground-cover provider changes only AMOUNT and horizontal FACING
+on its configured block. Predicate truth does not establish world placement.
+Next reconcile tree/root/decorator and remaining state-provider content, then
+write the combined modifier dispositions. Do not repeat configuration tracing.
+Inventory generation, broader Item 8 closure and review/merge remain open.
+
+Feature reference closure is delivered in `a774424`. The focused test
+`tests/item8/test_feature_modifier_references.py` follows all 30 additions and
+four removals through 34 placed and 41 configured feature resources, including
+inline branches. Six endpoint types remain for final content disposition:
+simple block, tree, saguaro cactus, palm tree, bamboo tree and giant lily.
+The latter four code bodies are already retained under
+`regions-unexplored-feature-code`. Finish implementation/provider/decorator
+inspection and config applicability rather than repeating reference extraction.
+Ten affected tests and scoped checks passed. Commands and limitations are in
+`evidence/item-8/sources/lithostitched-feature-modifier-code/README.md`.
+The machine trace/inventory remains unchanged pending final dispositions.
+
+Surface-rule reference closure is delivered in `7b7c886`. The focused test
+`tests/item8/test_surface_rule_contribution.py` follows all 52 referenced
+Regions Unexplored Overworld rule documents in the pinned catalog and verifies
+their 42 terrain-block terminal types, including both config branches. The
+existing resource selector now accepts surface-rule resources; no runtime
+measurement or new extraction system was added. Nine affected tests and scoped
+Ruff/basedpyright passed. The evidence README under
+`lithostitched-platform-modifier-code` records the command and limits.
+The surface rule contributes terrain palette changes, not an extra family.
+Config activation is unnecessary for this limited claim because both branches
+are covered. Compiler, street processor and surface-rule source dispositions
+are now ready for the combined report update; the 34 feature addition/removal
+modifiers still need their content/config checks. The machine trace/inventory
+has not yet been regenerated. Item 8 remains incomplete.
+
+NeoForge dispatch and surface lifecycle are resolved in source evidence
+`236b3e5`, extracted with selectors `59df00e` and `643c1d4`. See
+`evidence/item-8/sources/lithostitched-platform-modifier-code/README.md` for
+commands, identities and runtime log bindings. The NeoForge lifecycle mixin
+appends converted Lithostitched biome modifiers; the dedicated-server mixin
+calls surface application before level loading. Raw log lines 13027 and 12905
+confirm the respective mixins. Surface merging preserves other generator
+settings and orders PREPEND, original, APPEND rules. No observed final surface
+tree or feature placement is claimed. Scoped checks passed and delivery was
+verified. The earlier next-hook instruction below is now superseded.
+
+Next finish the referenced feature/rule bodies and configuration predicates,
+then apply the accumulated modifier dispositions together. Do not add a new
+measurement system for this static contribution check. Broader family coverage,
+attributes, custom generators, trial-spawner config references, final gate,
+review and main merge remain incomplete; the goal remains active.
+
+Feature implementation inputs are delivered in `78dce5f` (Regions Unexplored)
+and `cea115f` (Lithostitched), extracted by existing tool selection `d0043b6`.
+Each source directory has the executed reproduction command and scope:
+`evidence/item-8/sources/regions-unexplored-feature-code` and
+`evidence/item-8/sources/lithostitched-feature-modifier-code`.
+Identities SHA respectively:
+`d27de44a59aedb2dd41e12dcc0f35db1328207314c8cbe59dae6120de5b9953b` and
+`b7138be0cec7822f8e4fb19c6c9175e3ac1ba7ab174cb58015c34be488b9aaa1`.
+Both groups contain seven exact classes. Scoped Ruff/basedpyright, extraction
+and identity checks passed; pushed refs were verified. These are implementation
+inputs, not final modifier dispositions or a new measurement system.
+
+The giant-lily generator checks four water/air positions and can write four
+lily blocks before returning false. Preserve that source-level behavior; do
+not equate a false feature return with absent blocks, and do not repair the
+frozen mod. Weighted-selector and composite generators delegate to their
+configured placed features. Reference surface rules delegate to referenced
+rules; the Regions Unexplored config rule selects between its two rule bodies.
+
+Next follow the platform hooks: `AddFeaturesModifier.apply` runs only on
+Fabric, with a separate `createNeoforgeModifier` path, while
+`AddSurfaceRuleModifier.apply` is empty. Those methods do not prove the
+modifiers inactive on this NeoForge stack. Exact next classes located but not
+yet retained/inspected are Lithostitched's
+`mixin/common/ServerLifecycleHooksMixin`,
+`impl/worldgen/modifier/NeoforgeModifierHolder`, and
+`worldgen/surface/SurfaceRuleManager`. The tree/root-placer implementations are
+retained but their full contribution inspection and feature/rule reference
+closure remain open. The 37-entry machine report is still pending the combined
+update described below; do not represent this source acquisition as completion.
+
 Village street processor source closure is delivered in `3c19575`, with exact
 selectors in `c23bbab` and registration selection in `eb0cb28`. The six retained
 classes and reproduction commands are under
