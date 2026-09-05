@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `4586c78`, SHA-256
-`7c6dfe49adc0ed0bf0264210598672a424e3d2bc0bca36175bc39386afe9eb9f`.
+Current working inventory regenerated at `0288f13`, SHA-256
+`7b7456b0e246b8f0f35ec5d8d0f0244a4985d05712eac5370d51e96ca923a31f`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,18 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 0288f13 increment retains quark:spiral_spire as one working landmark family.
+Procedural generation does not exclude a distinct landmark design; randomized
+geometry and repeated spires remain variants or instances. Chorus plant
+placements are accounted for as vegetation, not another structure family.
+Applicability and saved-world attribution remain open. Thirty focused tests and
+scoped checks passed. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-spire-family-0288f13.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-spire-family-0288f13.json
+```
 
 The 4586c78 increment interprets the already preserved SpiralSpireGenerator
 body and crystal geometry. The conservative 35x97x35 write envelope is derived
