@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Feature-family content attribution is delivered in `532fb28`. Extras members
+now link template entities/block entities/chest loot; wells separately record
+processor archaeology loot. Bridges carries its scoped direct encounter findings.
+Twenty-four focused tests and scoped checks passed. Inventory SHA-256:
+`d064a47129cf9b538ca11a9f8398bcbe33f8113f7246cec26d0d14025afd03d4`.
+Continue effective content, hostility/discoverability and full provider coverage.
+Item 8 remains incomplete. No new measurements or source captures were added.
+
 Feature-family biome and dimension scope is delivered in `4b1e33a`. Each
 family now links its resolved addition-modifier biomes and captured dimension
 overlap. Only overworld overlaps; this does not claim observed generation.
