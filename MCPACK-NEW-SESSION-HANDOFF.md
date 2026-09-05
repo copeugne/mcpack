@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-06
 
+User priority correction: candidate completeness FIRST. The 136-archive keyword
+search index is not proof of a bounded candidate universe. Current gate and
+supported provider dispositions are in evidence/item-8/provider-scope.md under
+"Candidate-completeness gate and supported provider dispositions". Use existing
+evidence to give every mod supported roles and explain potentially structural
+unmatched templates, pools and hooks. Do not complete individual attributes or
+canonical grouping before this whole-stack gate. Seven loot-data-only add-ons
+now have full-payload exclusion proofs, not keyword-based exclusions.
+Totem packaged-eligibility disposition is dc45426, published in c21d68e. It is
+inactive under captured dimension memberships; no further helper tracing needed.
+
+
 Scope-pass sources are delivered: BetterEnd building lists/crashed ship in
 9695ae5, BOP anomaly/monolith/bone spine in 846bc09, Deep Aether totem in b0194ce,
 and Explorations scarecrow in ac990fd. All reproduce exactly. Their concrete

@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
-Status: candidate enumeration delivered; semantic reconciliation in progress.
-This replaces the unbounded instruction to investigate unspecified providers.
+Status: search index delivered; candidate completeness is NOT VERIFIED.
+The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
 and NeoForge have separate platform rows. Do not count paths or classes as families.
@@ -38,7 +38,8 @@ archive provenance. A mod can affect family attributes without creating a family
 In particular Loot Integrations appearing in the last lane does not exempt its
 loot modifications from Item 8.
 
-The immediate semantic reconciliation queue is:
+Examples requiring semantic reconciliation are listed below. This list is not
+a proven exhaustive candidate queue:
 
 1. Feature-based authored-content candidates: BetterEnd building lists and
    crashed ships, Biomes O' Plenty anomaly/monolith/bone spine, Deep Aether totem,
@@ -74,4 +75,51 @@ These captures are delivered and must not be repeated. They narrow the candidate
 scope; they are not final per-family attribute acceptance. Supplementaries aliases,
 component consumers, remaining utility/terrain dispositions and canonical grouping
 within the existing provisional inventory still require reconciliation. Continue
-this finite provider queue before returning to attribute implementation.
+the whole retained-provider reconciliation before returning to attribute implementation.
+
+## Candidate-completeness gate and supported provider dispositions
+
+Priority correction relayed from the user's side conversation: establish
+candidate completeness before detailed family attributes or canonical variant
+counting. Every retained mod must have supported roles: creates families, injects
+components, modifies existing generation, or contributes no structures. Multiple
+roles are allowed. Inspect relevant registration/event/mixin entry points and
+data. Reconcile registries, features, pool injections, replacements and direct
+code generation. Every potentially structural unmatched template, pool and hook
+needs a candidate/component link or justified unused/disabled exclusion.
+
+The immediate gate passes only when all 136 retained mods have supported
+dispositions and no potentially structural entry points or resources remain
+unexplained. Publish all candidates and named ambiguities, keeping generation
+eligibility separate from canonical grouping. Zero search hits do not satisfy
+this gate. Reuse existing evidence and tools; no new measurement or review system.
+
+The following seven dispositions are supported by complete archive inspection,
+not by zero keyword matches. tests/item8/test_loot_addon_provider_scope.py verifies
+each frozen archive hash, accounts for every non-directory file, confirms
+lowcodefml metadata, and requires all payload files to be loot-integration JSON
+with the observed loot-rule fields. There are no classes, nested archives,
+services, mixins, scripts, templates or generation resource files in these JARs.
+
+| Retained mod | Supported role | Family-candidate disposition |
+| --- | --- | --- |
+| lootintegration_townsandtowers-1.3.jar | Loot-rule data for existing containers | No new structure families or generation hooks. |
+| lootintegration_wda-1.8.jar | Loot-rule data for existing containers | No new structure families or generation hooks. |
+| lootintegrations_ctov-1.4.jar | Loot-rule data for existing containers | No new structure families or generation hooks. |
+| lootintegrations_integrated-1.5.jar | Loot-rule data for existing containers | No new structure families or generation hooks. |
+| lootintegrations_moog-2.0.jar | Loot-rule data for existing containers | No new structure families or generation hooks. |
+| lootintegrations_vanilla-1.6.jar | Loot-rule data for existing containers | No new structure families or generation hooks. |
+| lootintegrations_yungs-1.5.jar | Loot-rule data for existing containers | No new structure families or generation hooks. |
+
+Their loot effects remain relevant to existing-family loot-source attribution.
+This does not classify the separate lootintegrations-1.21.1-4.7.jar implementation.
+
+```sh
+uv run pytest -q tests/item8/test_loot_addon_provider_scope.py
+```
+
+Seven focused cases pass. Ruff passes. Basedpyright initially reported untyped
+JSON values; a type annotation fixed that finding and the scoped check passes.
+Existing captures and decisions for other providers remain evidence to reconcile,
+not automatically completed rows. Continue the whole-stack role/resource pass;
+do not replace the unresolved remainder with a claim of exhaustive coverage.
