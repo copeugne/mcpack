@@ -36,3 +36,23 @@ coverage disposition is finalized. Do not turn petal counts or random tree
 instances into families, or expand into unrelated crafting/material audits.
 Effective configuration and observed occurrence are not claimed here. Scoped
 extractor Ruff and Basedpyright checks passed. No new measurement or server run.
+
+## Selected blossom definitions reconciled
+
+The selected packaged definitions now resolve the decorator gap above.
+BlossomTreesModule supplies blue_blossom, lavender_blossom, orange_blossom,
+yellow_blossom and red_blossom through registerKey and its configured-feature
+fields. All five corresponding Quark definitions select minecraft:tree,
+minecraft:fancy_trunk_placer and minecraft:fancy_foliage_placer, with empty
+decorators. The committed test binds the catalog, selected archive and each
+definition hash, then checks these properties:
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py -k blossom
+```
+
+Together with the preserved generator's explicit Feature.TREE delegation, this
+supports a working vegetation disposition for blossom trees. Water petals have
+the same no-additional-family disposition from their direct placement path.
+This resolves the selected-definition gap, not effective occurrence or complete
+provider coverage. No new measurement is needed for these family boundaries.
