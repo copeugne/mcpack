@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+Feature configuration binding is delivered in `48fef4a`, with source selection
+`78eca8f`. All 34 declared predicates map to enabled toggles in frozen common
+config SHA `300dda462e31f6f1bcce0d67308e4939d1b461a03c8cc92ba805f7ac9d1cb66c`.
+`ConfigPredicate` delegates to `RUCommonConfig.test`, which resolves the
+`vanilla_changes/` key suffix in its toggle map. The existing reference test
+now verifies every key and its true value. Focused test and scoped checks pass.
+Source identities SHA:
+`1b447725ac61174b8cf0f35ed5457291460c54938c49b9d8296809781a87ba8d`.
+See `evidence/item-8/sources/regions-unexplored-feature-config-code/README.md`.
+The retained ground-cover provider changes only AMOUNT and horizontal FACING
+on its configured block. Predicate truth does not establish world placement.
+Next reconcile tree/root/decorator and remaining state-provider content, then
+write the combined modifier dispositions. Do not repeat configuration tracing.
+Inventory generation, broader Item 8 closure and review/merge remain open.
+
 Feature reference closure is delivered in `a774424`. The focused test
 `tests/item8/test_feature_modifier_references.py` follows all 30 additions and
 four removals through 34 placed and 41 configured feature resources, including
