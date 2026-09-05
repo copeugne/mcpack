@@ -1,0 +1,578 @@
+Compiled from "EnhancedBeardifierHelper.java"
+public class com.finndog.moogs_structures.world.structures.terrainadaptation.beardifier.EnhancedBeardifierHelper {
+  public com.finndog.moogs_structures.world.structures.terrainadaptation.beardifier.EnhancedBeardifierHelper();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static net.minecraft.world.level.levelgen.Beardifier forStructuresInChunk(net.minecraft.world.level.StructureManager, net.minecraft.world.level.ChunkPos, net.minecraft.world.level.levelgen.Beardifier);
+    Code:
+       0: new           #7                  // class it/unimi/dsi/fastutil/objects/ObjectArrayList
+       3: dup
+       4: bipush        10
+       6: invokespecial #9                  // Method it/unimi/dsi/fastutil/objects/ObjectArrayList."<init>":(I)V
+       9: astore_3
+      10: new           #7                  // class it/unimi/dsi/fastutil/objects/ObjectArrayList
+      13: dup
+      14: bipush        10
+      16: invokespecial #9                  // Method it/unimi/dsi/fastutil/objects/ObjectArrayList."<init>":(I)V
+      19: astore        4
+      21: aload_1
+      22: invokevirtual #12                 // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+      25: istore        5
+      27: aload_1
+      28: invokevirtual #18                 // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+      31: istore        6
+      33: aload_0
+      34: aload_1
+      35: invokedynamic #21,  0             // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+      40: invokevirtual #25                 // Method net/minecraft/world/level/StructureManager.startsForStructure:(Lnet/minecraft/world/level/ChunkPos;Ljava/util/function/Predicate;)Ljava/util/List;
+      43: astore        7
+      45: aload         7
+      47: invokeinterface #31,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      52: astore        8
+      54: aload         8
+      56: invokeinterface #37,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      61: ifeq          575
+      64: aload         8
+      66: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      71: checkcast     #47                 // class net/minecraft/world/level/levelgen/structure/StructureStart
+      74: astore        9
+      76: aload         9
+      78: invokevirtual #49                 // Method net/minecraft/world/level/levelgen/structure/StructureStart.getStructure:()Lnet/minecraft/world/level/levelgen/structure/Structure;
+      81: checkcast     #53                 // class com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptationStructure
+      84: invokeinterface #55,  1           // InterfaceMethod com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptationStructure.getEnhancedTerrainAdaptation:()Lcom/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation;
+      89: astore        10
+      91: aload         10
+      93: invokevirtual #59                 // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.getKernelRadius:()I
+      96: istore        11
+      98: aload         9
+     100: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/structure/StructureStart.getPieces:()Ljava/util/List;
+     103: invokeinterface #31,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     108: astore        12
+     110: aload         12
+     112: invokeinterface #37,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     117: ifeq          208
+     120: aload         12
+     122: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     127: checkcast     #68                 // class net/minecraft/world/level/levelgen/structure/StructurePiece
+     130: astore        13
+     132: aload         13
+     134: instanceof    #70                 // class net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece
+     137: ifeq          205
+     140: aload         13
+     142: checkcast     #70                 // class net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece
+     145: astore        14
+     147: aload         14
+     149: invokevirtual #72                 // Method net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece.getElement:()Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;
+     152: astore        16
+     154: aload         16
+     156: instanceof    #76                 // class com/finndog/moogs_structures/world/structures/terrainadaptation/PoolElementAdaptationOverride
+     159: ifeq          205
+     162: aload         16
+     164: checkcast     #76                 // class com/finndog/moogs_structures/world/structures/terrainadaptation/PoolElementAdaptationOverride
+     167: astore        15
+     169: aload         15
+     171: invokeinterface #78,  1           // InterfaceMethod com/finndog/moogs_structures/world/structures/terrainadaptation/PoolElementAdaptationOverride.moogs_structures_getAdaptationOverride:()Ljava/util/Optional;
+     176: invokevirtual #82                 // Method java/util/Optional.isPresent:()Z
+     179: ifeq          205
+     182: iload         11
+     184: aload         15
+     186: invokeinterface #78,  1           // InterfaceMethod com/finndog/moogs_structures/world/structures/terrainadaptation/PoolElementAdaptationOverride.moogs_structures_getAdaptationOverride:()Ljava/util/Optional;
+     191: invokevirtual #87                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     194: checkcast     #60                 // class com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation
+     197: invokevirtual #59                 // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.getKernelRadius:()I
+     200: invokestatic  #90                 // Method java/lang/Math.max:(II)I
+     203: istore        11
+     205: goto          110
+     208: iload         11
+     210: istore        12
+     212: iload         12
+     214: ifgt          220
+     217: goto          54
+     220: aload         9
+     222: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/structure/StructureStart.getPieces:()Ljava/util/List;
+     225: invokeinterface #96,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+     230: aload_1
+     231: iload         12
+     233: invokedynamic #100,  0            // InvokeDynamic #1:test:(Lnet/minecraft/world/level/ChunkPos;I)Ljava/util/function/Predicate;
+     238: invokeinterface #103,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+     243: invokeinterface #109,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+     248: astore        13
+     250: aload         13
+     252: invokeinterface #31,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     257: astore        14
+     259: aload         14
+     261: invokeinterface #37,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     266: ifeq          572
+     269: aload         14
+     271: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     276: checkcast     #68                 // class net/minecraft/world/level/levelgen/structure/StructurePiece
+     279: astore        15
+     281: aload         15
+     283: instanceof    #70                 // class net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece
+     286: ifeq          536
+     289: aload         15
+     291: checkcast     #70                 // class net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece
+     294: astore        16
+     296: aload         16
+     298: invokevirtual #72                 // Method net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece.getElement:()Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;
+     301: invokevirtual #112                // Method net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement.getProjection:()Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection;
+     304: astore        17
+     306: aload         10
+     308: astore        18
+     310: aload         16
+     312: invokevirtual #72                 // Method net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece.getElement:()Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;
+     315: astore        20
+     317: aload         20
+     319: instanceof    #76                 // class com/finndog/moogs_structures/world/structures/terrainadaptation/PoolElementAdaptationOverride
+     322: ifeq          360
+     325: aload         20
+     327: checkcast     #76                 // class com/finndog/moogs_structures/world/structures/terrainadaptation/PoolElementAdaptationOverride
+     330: astore        19
+     332: aload         19
+     334: invokeinterface #78,  1           // InterfaceMethod com/finndog/moogs_structures/world/structures/terrainadaptation/PoolElementAdaptationOverride.moogs_structures_getAdaptationOverride:()Ljava/util/Optional;
+     339: invokevirtual #82                 // Method java/util/Optional.isPresent:()Z
+     342: ifeq          360
+     345: aload         19
+     347: invokeinterface #78,  1           // InterfaceMethod com/finndog/moogs_structures/world/structures/terrainadaptation/PoolElementAdaptationOverride.moogs_structures_getAdaptationOverride:()Ljava/util/Optional;
+     352: invokevirtual #87                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     355: checkcast     #60                 // class com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation
+     358: astore        18
+     360: aload         18
+     362: getstatic     #118                // Field com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.NONE:Lcom/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation;
+     365: if_acmpne     371
+     368: goto          259
+     371: aload         18
+     373: invokevirtual #59                 // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.getKernelRadius:()I
+     376: istore        19
+     378: aload         17
+     380: getstatic     #122                // Field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection.RIGID:Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection;
+     383: if_acmpne     417
+     386: aload_3
+     387: new           #128                // class com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierRigid
+     390: dup
+     391: aload         16
+     393: invokevirtual #130                // Method net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     396: aload         18
+     398: aload         16
+     400: invokevirtual #134                // Method net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece.getGroundLevelDelta:()I
+     403: aload         16
+     405: invokevirtual #137                // Method net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece.getRotation:()Lnet/minecraft/world/level/block/Rotation;
+     408: invokespecial #141                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierRigid."<init>":(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lcom/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation;ILnet/minecraft/world/level/block/Rotation;)V
+     411: invokeinterface #144,  2          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectList.add:(Ljava/lang/Object;)Z
+     416: pop
+     417: aload         16
+     419: invokevirtual #150                // Method net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece.getJunctions:()Ljava/util/List;
+     422: invokeinterface #31,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     427: astore        20
+     429: aload         20
+     431: invokeinterface #37,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     436: ifeq          533
+     439: aload         20
+     441: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     446: checkcast     #153                // class net/minecraft/world/level/levelgen/structure/pools/JigsawJunction
+     449: astore        21
+     451: aload         21
+     453: invokevirtual #155                // Method net/minecraft/world/level/levelgen/structure/pools/JigsawJunction.getSourceX:()I
+     456: istore        22
+     458: aload         21
+     460: invokevirtual #158                // Method net/minecraft/world/level/levelgen/structure/pools/JigsawJunction.getSourceZ:()I
+     463: istore        23
+     465: iload         22
+     467: iload         5
+     469: iload         19
+     471: isub
+     472: if_icmple     530
+     475: iload         23
+     477: iload         6
+     479: iload         19
+     481: isub
+     482: if_icmple     530
+     485: iload         22
+     487: iload         5
+     489: bipush        15
+     491: iadd
+     492: iload         19
+     494: iadd
+     495: if_icmpge     530
+     498: iload         23
+     500: iload         6
+     502: bipush        15
+     504: iadd
+     505: iload         19
+     507: iadd
+     508: if_icmpge     530
+     511: aload         4
+     513: new           #161                // class com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedJigsawJunction
+     516: dup
+     517: aload         21
+     519: aload         18
+     521: invokespecial #163                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedJigsawJunction."<init>":(Lnet/minecraft/world/level/levelgen/structure/pools/JigsawJunction;Lcom/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation;)V
+     524: invokeinterface #144,  2          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectList.add:(Ljava/lang/Object;)Z
+     529: pop
+     530: goto          429
+     533: goto          569
+     536: aload         10
+     538: getstatic     #118                // Field com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.NONE:Lcom/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation;
+     541: if_acmpeq     569
+     544: aload_3
+     545: new           #128                // class com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierRigid
+     548: dup
+     549: aload         15
+     551: invokevirtual #166                // Method net/minecraft/world/level/levelgen/structure/StructurePiece.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     554: aload         10
+     556: iconst_0
+     557: getstatic     #167                // Field net/minecraft/world/level/block/Rotation.NONE:Lnet/minecraft/world/level/block/Rotation;
+     560: invokespecial #141                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierRigid."<init>":(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lcom/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation;ILnet/minecraft/world/level/block/Rotation;)V
+     563: invokeinterface #144,  2          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectList.add:(Ljava/lang/Object;)Z
+     568: pop
+     569: goto          259
+     572: goto          54
+     575: new           #172                // class net/minecraft/world/level/levelgen/Beardifier
+     578: dup
+     579: aload_2
+     580: checkcast     #174                // class com/finndog/moogs_structures/mixins/terrainadaptation/BeardifierAccessor
+     583: invokeinterface #176,  1          // InterfaceMethod com/finndog/moogs_structures/mixins/terrainadaptation/BeardifierAccessor.getPieceIterator:()Lit/unimi/dsi/fastutil/objects/ObjectListIterator;
+     588: aload_2
+     589: checkcast     #174                // class com/finndog/moogs_structures/mixins/terrainadaptation/BeardifierAccessor
+     592: invokeinterface #180,  1          // InterfaceMethod com/finndog/moogs_structures/mixins/terrainadaptation/BeardifierAccessor.getJunctionIterator:()Lit/unimi/dsi/fastutil/objects/ObjectListIterator;
+     597: invokespecial #183                // Method net/minecraft/world/level/levelgen/Beardifier."<init>":(Lit/unimi/dsi/fastutil/objects/ObjectListIterator;Lit/unimi/dsi/fastutil/objects/ObjectListIterator;)V
+     600: astore        8
+     602: aload         8
+     604: checkcast     #186                // class com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierData
+     607: astore        9
+     609: aload         9
+     611: aload_3
+     612: invokeinterface #188,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectList.iterator:()Lit/unimi/dsi/fastutil/objects/ObjectListIterator;
+     617: invokeinterface #190,  2          // InterfaceMethod com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierData.setEnhancedPieceIterator:(Lit/unimi/dsi/fastutil/objects/ObjectListIterator;)V
+     622: aload         9
+     624: aload         4
+     626: invokeinterface #188,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectList.iterator:()Lit/unimi/dsi/fastutil/objects/ObjectListIterator;
+     631: invokeinterface #194,  2          // InterfaceMethod com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierData.setEnhancedJunctionIterator:(Lit/unimi/dsi/fastutil/objects/ObjectListIterator;)V
+     636: aload         8
+     638: areturn
+
+  public static double computeDensity(net.minecraft.world.level.levelgen.DensityFunction$FunctionContext, double, com.finndog.moogs_structures.world.structures.terrainadaptation.beardifier.EnhancedBeardifierData);
+    Code:
+       0: aload_0
+       1: invokeinterface #197,  1          // InterfaceMethod net/minecraft/world/level/levelgen/DensityFunction$FunctionContext.blockX:()I
+       6: istore        4
+       8: aload_0
+       9: invokeinterface #202,  1          // InterfaceMethod net/minecraft/world/level/levelgen/DensityFunction$FunctionContext.blockY:()I
+      14: istore        5
+      16: aload_0
+      17: invokeinterface #205,  1          // InterfaceMethod net/minecraft/world/level/levelgen/DensityFunction$FunctionContext.blockZ:()I
+      22: istore        6
+      24: aload_3
+      25: invokeinterface #208,  1          // InterfaceMethod com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierData.getEnhancedPieceIterator:()Lit/unimi/dsi/fastutil/objects/ObjectListIterator;
+      30: ifnull        564
+      33: aload_3
+      34: invokeinterface #208,  1          // InterfaceMethod com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierData.getEnhancedPieceIterator:()Lit/unimi/dsi/fastutil/objects/ObjectListIterator;
+      39: invokeinterface #211,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectListIterator.hasNext:()Z
+      44: ifeq          564
+      47: aload_3
+      48: invokeinterface #208,  1          // InterfaceMethod com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierData.getEnhancedPieceIterator:()Lit/unimi/dsi/fastutil/objects/ObjectListIterator;
+      53: invokeinterface #214,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectListIterator.next:()Ljava/lang/Object;
+      58: checkcast     #128                // class com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierRigid
+      61: astore        7
+      63: aload         7
+      65: invokevirtual #215                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierRigid.pieceBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      68: astore        8
+      70: aload         8
+      72: astore        9
+      74: aload         7
+      76: invokevirtual #218                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierRigid.pieceTerrainAdaptation:()Lcom/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation;
+      79: astore        10
+      81: aload         7
+      83: invokevirtual #221                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierRigid.rotation:()Lnet/minecraft/world/level/block/Rotation;
+      86: astore        11
+      88: aload         10
+      90: invokevirtual #224                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.getBand:()Ljava/util/Optional;
+      93: astore        12
+      95: aload         12
+      97: invokevirtual #82                 // Method java/util/Optional.isPresent:()Z
+     100: ifeq          156
+     103: aload         12
+     105: invokevirtual #87                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     108: checkcast     #227                // class com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Band
+     111: invokevirtual #229                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Band.pieceHeights:()Ljava/util/Optional;
+     114: invokevirtual #82                 // Method java/util/Optional.isPresent:()Z
+     117: ifeq          156
+     120: aload         12
+     122: invokevirtual #87                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     125: checkcast     #227                // class com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Band
+     128: invokevirtual #229                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Band.pieceHeights:()Ljava/util/Optional;
+     131: invokevirtual #87                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     134: checkcast     #32                 // class java/util/List
+     137: aload         8
+     139: invokevirtual #232                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getYSpan:()I
+     142: invokestatic  #237                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     145: invokeinterface #243,  2          // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+     150: ifne          156
+     153: goto          24
+     156: aload         9
+     158: iconst_0
+     159: aload         10
+     161: invokevirtual #246                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.getBottomOffset:()D
+     164: d2i
+     165: iconst_0
+     166: invokevirtual #250                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.moved:(III)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     169: astore        9
+     171: aload         11
+     173: getstatic     #254                // Field net/minecraft/core/Direction.EAST:Lnet/minecraft/core/Direction;
+     176: invokevirtual #260                // Method net/minecraft/world/level/block/Rotation.rotate:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/Direction;
+     179: invokevirtual #264                // Method net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+     182: astore        13
+     184: aload         13
+     186: getstatic     #268                // Field net/minecraft/core/Direction$Axis.X:Lnet/minecraft/core/Direction$Axis;
+     189: if_acmpne     203
+     192: aload         10
+     194: invokevirtual #274                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.getPadding:()Lcom/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Padding;
+     197: invokevirtual #278                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Padding.x:()I
+     200: goto          211
+     203: aload         10
+     205: invokevirtual #274                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.getPadding:()Lcom/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Padding;
+     208: invokevirtual #283                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Padding.z:()I
+     211: istore        14
+     213: aload         13
+     215: getstatic     #268                // Field net/minecraft/core/Direction$Axis.X:Lnet/minecraft/core/Direction$Axis;
+     218: if_acmpne     232
+     221: aload         10
+     223: invokevirtual #274                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.getPadding:()Lcom/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Padding;
+     226: invokevirtual #283                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Padding.z:()I
+     229: goto          240
+     232: aload         10
+     234: invokevirtual #274                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.getPadding:()Lcom/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Padding;
+     237: invokevirtual #278                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Padding.x:()I
+     240: istore        15
+     242: aload         9
+     244: iload         14
+     246: iconst_0
+     247: iload         15
+     249: invokevirtual #286                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.inflatedBy:(III)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     252: astore        9
+     254: aload         12
+     256: invokevirtual #82                 // Method java/util/Optional.isPresent:()Z
+     259: ifeq          334
+     262: aload         12
+     264: invokevirtual #87                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     267: checkcast     #227                // class com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Band
+     270: astore        16
+     272: aload         8
+     274: invokevirtual #289                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minY:()I
+     277: aload         10
+     279: invokevirtual #246                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.getBottomOffset:()D
+     282: d2i
+     283: iadd
+     284: istore        17
+     286: new           #233                // class net/minecraft/world/level/levelgen/structure/BoundingBox
+     289: dup
+     290: aload         9
+     292: invokevirtual #292                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+     295: iload         17
+     297: aload         16
+     299: invokevirtual #295                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Band.bottom:()I
+     302: iadd
+     303: aload         9
+     305: invokevirtual #298                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+     308: aload         9
+     310: invokevirtual #301                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxX:()I
+     313: iload         17
+     315: aload         16
+     317: invokevirtual #304                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Band.top:()I
+     320: iadd
+     321: aload         9
+     323: invokevirtual #307                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ:()I
+     326: invokespecial #310                // Method net/minecraft/world/level/levelgen/structure/BoundingBox."<init>":(IIIIII)V
+     329: astore        9
+     331: goto          452
+     334: aload         10
+     336: invokevirtual #274                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.getPadding:()Lcom/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Padding;
+     339: invokevirtual #313                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Padding.top:()I
+     342: ifeq          393
+     345: new           #233                // class net/minecraft/world/level/levelgen/structure/BoundingBox
+     348: dup
+     349: aload         9
+     351: invokevirtual #292                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+     354: aload         9
+     356: invokevirtual #289                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minY:()I
+     359: aload         9
+     361: invokevirtual #298                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+     364: aload         9
+     366: invokevirtual #301                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxX:()I
+     369: aload         9
+     371: invokevirtual #314                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxY:()I
+     374: aload         10
+     376: invokevirtual #274                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.getPadding:()Lcom/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Padding;
+     379: invokevirtual #313                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Padding.top:()I
+     382: iadd
+     383: aload         9
+     385: invokevirtual #307                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ:()I
+     388: invokespecial #310                // Method net/minecraft/world/level/levelgen/structure/BoundingBox."<init>":(IIIIII)V
+     391: astore        9
+     393: aload         10
+     395: invokevirtual #274                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.getPadding:()Lcom/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Padding;
+     398: invokevirtual #317                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Padding.bottom:()I
+     401: ifeq          452
+     404: new           #233                // class net/minecraft/world/level/levelgen/structure/BoundingBox
+     407: dup
+     408: aload         9
+     410: invokevirtual #292                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+     413: aload         9
+     415: invokevirtual #289                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minY:()I
+     418: aload         10
+     420: invokevirtual #274                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.getPadding:()Lcom/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Padding;
+     423: invokevirtual #317                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation$Padding.bottom:()I
+     426: isub
+     427: aload         9
+     429: invokevirtual #298                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+     432: aload         9
+     434: invokevirtual #301                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxX:()I
+     437: aload         9
+     439: invokevirtual #314                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxY:()I
+     442: aload         9
+     444: invokevirtual #307                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ:()I
+     447: invokespecial #310                // Method net/minecraft/world/level/levelgen/structure/BoundingBox."<init>":(IIIIII)V
+     450: astore        9
+     452: iconst_0
+     453: aload         9
+     455: invokevirtual #292                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+     458: iload         4
+     460: isub
+     461: iload         4
+     463: aload         9
+     465: invokevirtual #301                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxX:()I
+     468: isub
+     469: invokestatic  #90                 // Method java/lang/Math.max:(II)I
+     472: invokestatic  #90                 // Method java/lang/Math.max:(II)I
+     475: istore        16
+     477: iconst_0
+     478: aload         9
+     480: invokevirtual #289                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minY:()I
+     483: iload         5
+     485: isub
+     486: iload         5
+     488: aload         9
+     490: invokevirtual #314                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxY:()I
+     493: isub
+     494: invokestatic  #90                 // Method java/lang/Math.max:(II)I
+     497: invokestatic  #90                 // Method java/lang/Math.max:(II)I
+     500: istore        17
+     502: iconst_0
+     503: aload         9
+     505: invokevirtual #298                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+     508: iload         6
+     510: isub
+     511: iload         6
+     513: aload         9
+     515: invokevirtual #307                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ:()I
+     518: isub
+     519: invokestatic  #90                 // Method java/lang/Math.max:(II)I
+     522: invokestatic  #90                 // Method java/lang/Math.max:(II)I
+     525: istore        18
+     527: iload         5
+     529: aload         9
+     531: invokevirtual #289                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minY:()I
+     534: isub
+     535: istore        19
+     537: aload         10
+     539: iload         16
+     541: iload         17
+     543: iload         18
+     545: iload         19
+     547: invokevirtual #318                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.computeDensityFactor:(IIII)D
+     550: ldc2_w        #322                // double 0.8d
+     553: dmul
+     554: dstore        20
+     556: dload_1
+     557: dload         20
+     559: dadd
+     560: dstore_1
+     561: goto          24
+     564: aload_3
+     565: invokeinterface #208,  1          // InterfaceMethod com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierData.getEnhancedPieceIterator:()Lit/unimi/dsi/fastutil/objects/ObjectListIterator;
+     570: ldc_w         #324                // int 2147483647
+     573: invokeinterface #325,  2          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectListIterator.back:(I)I
+     578: pop
+     579: aload_3
+     580: invokeinterface #329,  1          // InterfaceMethod com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierData.getEnhancedJunctionIterator:()Lit/unimi/dsi/fastutil/objects/ObjectListIterator;
+     585: ifnull        714
+     588: aload_3
+     589: invokeinterface #329,  1          // InterfaceMethod com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierData.getEnhancedJunctionIterator:()Lit/unimi/dsi/fastutil/objects/ObjectListIterator;
+     594: invokeinterface #211,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectListIterator.hasNext:()Z
+     599: ifeq          714
+     602: aload_3
+     603: invokeinterface #329,  1          // InterfaceMethod com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierData.getEnhancedJunctionIterator:()Lit/unimi/dsi/fastutil/objects/ObjectListIterator;
+     608: invokeinterface #214,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectListIterator.next:()Ljava/lang/Object;
+     613: checkcast     #161                // class com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedJigsawJunction
+     616: astore        7
+     618: aload         7
+     620: invokevirtual #332                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedJigsawJunction.jigsawJunction:()Lnet/minecraft/world/level/levelgen/structure/pools/JigsawJunction;
+     623: astore        8
+     625: aload         7
+     627: invokevirtual #336                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedJigsawJunction.pieceTerrainAdaptation:()Lcom/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation;
+     630: astore        9
+     632: aload         9
+     634: invokevirtual #224                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.getBand:()Ljava/util/Optional;
+     637: invokevirtual #82                 // Method java/util/Optional.isPresent:()Z
+     640: ifeq          646
+     643: goto          579
+     646: aload         8
+     648: invokevirtual #337                // Method net/minecraft/world/level/levelgen/structure/pools/JigsawJunction.getSourceGroundY:()I
+     651: aload         9
+     653: invokevirtual #246                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.getBottomOffset:()D
+     656: d2i
+     657: iadd
+     658: istore        10
+     660: iload         4
+     662: aload         8
+     664: invokevirtual #155                // Method net/minecraft/world/level/levelgen/structure/pools/JigsawJunction.getSourceX:()I
+     667: isub
+     668: istore        11
+     670: iload         5
+     672: iload         10
+     674: isub
+     675: istore        12
+     677: iload         6
+     679: aload         8
+     681: invokevirtual #158                // Method net/minecraft/world/level/levelgen/structure/pools/JigsawJunction.getSourceZ:()I
+     684: isub
+     685: istore        13
+     687: aload         9
+     689: iload         11
+     691: iload         12
+     693: iload         13
+     695: iload         12
+     697: invokevirtual #318                // Method com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptation.computeDensityFactor:(IIII)D
+     700: ldc2_w        #340                // double 0.4d
+     703: dmul
+     704: dstore        14
+     706: dload_1
+     707: dload         14
+     709: dadd
+     710: dstore_1
+     711: goto          579
+     714: aload_3
+     715: invokeinterface #329,  1          // InterfaceMethod com/finndog/moogs_structures/world/structures/terrainadaptation/beardifier/EnhancedBeardifierData.getEnhancedJunctionIterator:()Lit/unimi/dsi/fastutil/objects/ObjectListIterator;
+     720: ldc_w         #324                // int 2147483647
+     723: invokeinterface #325,  2          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectListIterator.back:(I)I
+     728: pop
+     729: dload_1
+     730: dreturn
+
+  private static boolean lambda$forStructuresInChunk$1(net.minecraft.world.level.ChunkPos, int, net.minecraft.world.level.levelgen.structure.StructurePiece);
+    Code:
+       0: aload_2
+       1: aload_0
+       2: iload_1
+       3: invokevirtual #342                // Method net/minecraft/world/level/levelgen/structure/StructurePiece.isCloseToChunk:(Lnet/minecraft/world/level/ChunkPos;I)Z
+       6: ireturn
+
+  private static boolean lambda$forStructuresInChunk$0(net.minecraft.world.level.levelgen.structure.Structure);
+    Code:
+       0: aload_0
+       1: instanceof    #53                 // class com/finndog/moogs_structures/world/structures/terrainadaptation/EnhancedTerrainAdaptationStructure
+       4: ireturn
+}
