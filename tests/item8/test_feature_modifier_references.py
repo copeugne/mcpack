@@ -619,3 +619,57 @@ def test_extras_registration_completes_three_code_template_links() -> None:
         assert name + '."<init>":' in source
     code_links = cast("dict[str, str]", membership["code_configured_to_template"])
     assert sorted(code_links.values()) == membership["packaged_templates_outside_explicit_links"]
+
+
+def test_extras_well_processor_adds_loot_missing_from_template_entities() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    contribution = contributions["yungsextras:feature_entrypoints"]
+    recorded = cast("dict[str, JsonValue]", contribution["desert_well_generation"])
+    evidence = cast("dict[str, str]", contribution["evidence"])
+    sources: dict[str, str] = {}
+    for folder in ("yungs-extras-generators", "yungs-extras-processor-bindings"):
+        base = Path("evidence/item-8/sources") / folder
+        manifest = base / "identities.json"
+        raw = manifest.read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == evidence[str(manifest)]
+        for row in cast("list[dict[str, str]]", json.loads(raw)):
+            raw = (base / row["disassembly"]).read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+            sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    binding = sources["FeatureProcessorModule"].split("      23: new")[1]
+    assert binding.index('DesertWellProcessor."<init>":') < binding.index(
+        "Field DESERT_WELL_PROCESSOR:"
+    )
+    generator = sources["DesertWellFeature"]
+    assert "FeatureProcessorModule.DESERT_WELL_PROCESSOR:" in generator
+    assert "BlockTags.SAND:" in generator
+    assert "bipush        6" in generator.split("     341: aload_0")[1]
+    processor = sources["DesertWellProcessor"]
+    assert str(recorded["brown_marker_loot"]) + ":" in processor
+    assert "// String desert/extra_archeology" in processor
+    assert "Blocks.BROWN_STAINED_GLASS:" in processor
+    assert "Blocks.YELLOW_STAINED_GLASS:" in processor
+    assert "Blocks.SUSPICIOUS_SAND:" in processor
+    assert "BrushableBlockEntity.setLootTable:" in processor
+    assert "BlockPos.asLong:" in processor
+    assert "Optional.ifPresent:" in processor
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ).read_bytes())))
+    loot = cast("dict[str, str]", recorded["extra_loot_resource"])
+    matches = [row for row in catalog["resources"] if row["path"] == loot["path"]]
+    assert len(matches) == 1
+    assert matches[0]["sha256"] == loot["sha256"]
+    document = cast("dict[str, JsonValue]", matches[0]["document"])
+    assert document["type"] == "minecraft:archaeology"
+    pools = cast("list[dict[str, JsonValue]]", document["pools"])
+    assert len(pools) == 1
+    assert pools[0]["rolls"] == 1.0
+    assert pools[0]["entries"] == [
+        {"name": "minecraft:" + name, "type": "minecraft:item"}
+        for name in ("diamond", "emerald", "gold_ingot")
+    ]
