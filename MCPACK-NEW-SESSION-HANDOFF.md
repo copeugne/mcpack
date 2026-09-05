@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-05
 
+Repurposed design variants are delivered through `0555981`, built from `5022316`.
+All 107 registry entries are assigned exactly once across 17 design groups.
+Sixteen new groups preserve complete variant definitions, including generator,
+height, burial, liquid, spawn-override and boundary differences. Eight mansions
+and four monuments remain explicitly untraced custom paths. Namespace coverage
+does not close their content, effective attributes or the final canonical gate.
+Forty-three focused tests and scoped quality checks passed; two builds were
+identical and all prior family records unchanged. The generated expansion is
+isolated in its own commit and reuses existing evidence. Inventory SHA-256:
+`909b0b9b7873581f6f36e97cca4a847637f94d3f2c3f2a07a3a0f42893323c33`.
+Totals: 280 working groups, 530 assigned IDs, 357 unassigned. Retained observations
+link to igloos, mineshafts, outposts, pyramids, ruins, shipwrecks and temples;
+none link to the other new Repurposed groups. Continue remaining providers
+(including IDAS, AdoraBuild, Towns & Towers and CTOV outposts), non-registry
+contributions, custom generators and shared effective attributes. Preserve the
+Nether pyramid's simultaneous LOWEST_LAND and search_for_highest_land fields
+until code resolves their meaning. Final Item 8 gate/review/main merge remain open.
+
 Repurposed witch huts are delivered through `fa401f2`, built from `c5f5dd6`.
 Six biome/material roots share one family, common generation settings and
 7 by 8 by 9 packaged template envelopes. Authored witches/cats remain distinct
