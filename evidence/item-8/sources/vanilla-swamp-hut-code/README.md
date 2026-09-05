@@ -44,3 +44,27 @@ monster witch and creature cat, each weight 1 with minCount=maxCount=1. These
 candidate entries are distinct from the generation attempts and do not measure
 actual spawning or prove farm throughput. Retained-mod transformations remain
 unresolved; the source does not close Item 8 by itself.
+
+## Family integration
+
+Nine attributes are recorded from these sources: nominal footprint/height,
+hostility interpretation, mob source, loot, spawners, enemy attribution,
+authored visual form and surface placement. Dimension and biome evidence are
+preserved. The empty template list is resolved absence for the direct piece.
+The focused test binds both code manifests, derives constructor dimensions,
+checks explicit block/entity identities and reconciles the two packaged spawn
+categories with the family record. No additional measurement system is required.
+
+```sh
+uv run pytest -q tests/item8/test_swamp_hut_sources.py tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_swamp_hut_sources.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_swamp_hut_sources.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-swamp-hut-content.json
+```
+
+Decision SHA-256:
+`ce6e76b57b9b5a015cd05472a95ea23510a67c99d2c544949ef9931097d69ef1`.
+This records vanilla behavior with its limitations, not successful placement,
+actual visibility, effective retained-mod behavior or completion of Item 8.
+
+All 62 affected tests passed. Scoped Ruff and Basedpyright checks passed.
