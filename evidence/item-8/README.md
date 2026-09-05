@@ -615,3 +615,41 @@ unnecessary conditional on an existing shared-catalog assertion was removed
 without removing that assertion. Road signs have observations 374, 407, 754
 and 787. The other ten roots added in these increments have none. Custom
 generation and remaining effective attributes are unresolved.
+
+Aether and Deep Aether (`d883abe`, joined in `b006a3f`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-aether-d883abe.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-aether-d883abe-repro.json
+cmp evidence/raw/item8/inventory-aether-d883abe.json evidence/raw/item8/inventory-aether-d883abe-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q -k authored_designs
+```
+
+All 17 affected authored-root cases passed; 37 unaffected cases were deselected.
+Scoped Ruff/basedpyright checks passed. Both builds are byte-identical and all
+previous family records remain unchanged. Custom paths without start pools
+remain explicit in the generated content fields, not empty-content claims.
+
+BetterEnd (`664d235`, joined in `8e21c9f`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-664d235.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-664d235-repro.json
+cmp evidence/raw/item8/inventory-betterend-664d235.json evidence/raw/item8/inventory-betterend-664d235-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q -k authored_designs
+```
+
+All 18 affected authored-root cases passed; 37 unaffected cases were deselected.
+Scoped Ruff/basedpyright checks passed. Both builds are byte-identical and all
+previous family records remain unchanged. Custom paths without start pools
+remain explicit in the generated content fields, not empty-content claims.
+
+Aether's six unregistered ruined-portal definitions remain in the source
+catalog, outside the four registered Aether roots. Deep Aether contributes
+three direct-pool designs and one custom brass dungeon. BetterEnd contributes
+one traced village and thirteen untraced custom roots; lake and mountain
+variant relationships remain open. The village trace retains two missing
+templates. Existing BetterEnd observations are linked; none exist for the eight
+Aether/Deep Aether roots. Initial Aether lint reported the existing test's
+statement count above its limit; identical key-set assignments were combined
+without introducing another helper. No new measurement system was needed.
