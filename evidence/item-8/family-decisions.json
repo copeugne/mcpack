@@ -21544,6 +21544,113 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "facb6f7bbafb6836e7eaa694535b975c2ee2deab1e36ab85930f1c11c7a471c8",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
       }
+    },
+    {
+      "family_id": "supplementaries:galleon",
+      "name": "Supplementaries galleon",
+      "structure_ids": [
+        "supplementaries:galleon"
+      ],
+      "rationale": "One galleon design with hull-room and sail alternatives. The custom definition declares galleon_enemies spawn boxes with pillager and plunderer entries; matching moonlight:spawn_box markers are generation components, not ordinary block spawners or additional families. Sea-level requirement, biome-point constraints and y_offset are preserved. Effective custom generation and remaining attributes require resolution.",
+      "variants": {
+        "supplementaries:galleon": {
+          "definition": {
+            "biome_point": {
+              "continentalness": {
+                "max": -0.48,
+                "min": -0.92
+              },
+              "depth": {
+                "max": 2,
+                "min": -2
+              },
+              "erosion": {
+                "max": 2,
+                "min": -2
+              },
+              "humidity": {
+                "max": 2,
+                "min": -2
+              },
+              "offset": 0,
+              "temperature": {
+                "max": 2,
+                "min": -2
+              },
+              "weirdness": {
+                "max": 2,
+                "min": -2
+              }
+            },
+            "biomes": "#supplementaries:has_galleons",
+            "liquid_settings": "ignore_waterlogging",
+            "require_sea_level": true,
+            "spawn_boxes": [
+              {
+                "category": "monster",
+                "name": "galleon_enemies",
+                "spawns": [
+                  {
+                    "maxCount": 1,
+                    "minCount": 1,
+                    "type": "minecraft:pillager",
+                    "weight": 5
+                  },
+                  {
+                    "maxCount": 1,
+                    "minCount": 1,
+                    "type": "supplementaries:plunderer",
+                    "weight": 7
+                  }
+                ]
+              }
+            ],
+            "spawn_overrides": {},
+            "start_pool": "supplementaries:galleon/start_pool",
+            "step": "surface_structures",
+            "type": "supplementaries:galleon",
+            "y_offset": -3
+          },
+          "missing_components": []
+        }
+      },
+      "evidence": {
+        "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
+        "evidence/item-8/sources/pool-traces-content.json.gz": "facb6f7bbafb6836e7eaa694535b975c2ee2deab1e36ab85930f1c11c7a471c8",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-6/frozen/config/supplementaries-common.toml": "14210291891759b831951eba24c65985ed5bd27a7d09b6383aeb9fd3e8f1bc8c",
+        "evidence/item-6/frozen/config/cristellib/supplementaries/structure_toggle_config.json5": "1715fab1db080ca0bd264dce0cb2f8de8218d6e2989d085b0a3cb72b0f8c6225"
+      }
+    },
+    {
+      "family_id": "supplementaries:road_sign",
+      "name": "Supplementaries road sign",
+      "structure_ids": [
+        "supplementaries:road_sign"
+      ],
+      "rationale": "One road-sign design. The frozen common config and resolved dynamic biome tag remain relevant; the custom generator uses min_y/max_y. Its strongholds generation step does not establish that a road sign is underground. Effective custom generation and remaining attributes require resolution.",
+      "variants": {
+        "supplementaries:road_sign": {
+          "definition": {
+            "biomes": "#supplementaries:has_road_signs",
+            "max_y": 105,
+            "min_y": 40,
+            "spawn_overrides": {},
+            "start_pool": "supplementaries:road_sign/start_pool",
+            "step": "strongholds",
+            "terrain_adaptation": "beard_thin",
+            "type": "supplementaries:road_sign"
+          },
+          "missing_components": []
+        }
+      },
+      "evidence": {
+        "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
+        "evidence/item-8/sources/pool-traces-content.json.gz": "facb6f7bbafb6836e7eaa694535b975c2ee2deab1e36ab85930f1c11c7a471c8",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-6/frozen/config/supplementaries-common.toml": "14210291891759b831951eba24c65985ed5bd27a7d09b6383aeb9fd3e8f1bc8c",
+        "evidence/item-6/frozen/config/cristellib/supplementaries/structure_toggle_config.json5": "1715fab1db080ca0bd264dce0cb2f8de8218d6e2989d085b0a3cb72b0f8c6225"
+      }
     }
   ]
 }
