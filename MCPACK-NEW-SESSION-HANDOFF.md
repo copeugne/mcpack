@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Monster Box is integrated as one working encounter family in `0e582dd`.
+Generation, activation, selected mobs/rewards, callback targets and initial
+frozen settings are preserved in the existing Monster Box source directories.
+Do not repeat those investigations. Effective category/overlap enablement,
+ambient spawning and saved-world attribution remain open. All 31 focused tests
+passed. Broader provider coverage and Item 8 completion remain open; no new
+measurement system was added.
+
 Fallen Logs are integrated as one working family in `ec8a1e9`, with generator
 and decoration interpretation in `41bda20`. Do not repeat those interpretations.
 Configuration mapping, effective tags, hollow-log dependency and world
