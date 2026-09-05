@@ -55,6 +55,7 @@ ARCHIVES = frozenset(
         "idas-1.13.7+1.21.1-neoforge.jar",
         "BetterEnd-21.0.31.jar",
         "YungsBridges-1.21.1-NeoForge-5.1.1.jar",
+        "YungsExtras-1.21.1-NeoForge-5.1.1.jar",
     }
 )
 GENERATION_PREFIXES = (
@@ -250,6 +251,11 @@ CLASSES = (
     "com/yungnickyoung/minecraft/yungsbridges/world/processor/SlabBiomeProcessor.class",
     "com/yungnickyoung/minecraft/yungsbridges/world/processor/StairBiomeProcessor.class",
     "com/yungnickyoung/minecraft/yungsbridges/world/processor/StoneVariationProcessor.class",
+    "com/yungnickyoung/minecraft/yungsextras/module/FeatureModule.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/AbstractNbtFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/desert/ChillzoneDesertFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/desert/DesertGiantTorchFeature.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/feature/desert/DesertSmallRuinsFeature.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
