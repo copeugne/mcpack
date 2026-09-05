@@ -718,6 +718,7 @@ def test_soaring_rivers_preserve_omitted_default_and_complete_namespace() -> Non
         ("mns:bridge", ("mns:bridge_",), 6, 6),
         ("mns:circle_ruin", ("mns:circle_",), 2, 2),
         ("mns:medium_house", ("mns:medium_house",), 2, 2),
+        ("repurposed_structures:witch_hut", ("repurposed_structures:witch_hut_",), 6, 6),
         (
             "mvs:stall",
             ("mvs:blue_stall", "mvs:orange_stall", "mvs:pink_stall", "mvs:red_stall"),
@@ -765,7 +766,7 @@ def test_soaring_rivers_preserve_omitted_default_and_complete_namespace() -> Non
         ),
     ],
 )
-def test_moog_variants_preserve_definitions_and_template_identity(
+def test_variants_preserve_definitions_and_template_identity(
     family: str,
     prefix: tuple[str, ...],
     member_count: int,
@@ -833,6 +834,16 @@ def test_moog_variants_preserve_definitions_and_template_identity(
             variant["template_size_xyz"] == contents[str(variant["template"])]["template_size_xyz"]
         )
     assert len({str(row["template"]) for row in variants.values()}) == template_count
+    if family == "repurposed_structures:witch_hut":
+        for variant in variants.values():
+            content = contents[str(variant["template"])]
+            assert content["template_size_xyz"] == [7, 8, 9]
+            assert content["authored_entities"] == [
+                {"id": "minecraft:witch", "path": "/entities/1/nbt"},
+                {"id": "minecraft:cat", "path": "/entities/0/nbt"},
+            ]
+            assert content["loot_references"] == content["spawner_blocks"] == []
+            assert content["generation_markers"] == content["unresolved_entities"] == []
     if family in {
         "mns:bridge",
         "mns:medium_fungus",
