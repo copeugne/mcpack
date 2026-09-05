@@ -1449,3 +1449,25 @@ Inventory regenerated at `733c0cf`, SHA-256:
 `5410d6d5ae2e6e5ad584dece89db3396c70c561056de5d9e47545c97fcd3a9e7`.
 Only the decision identity and bridge support-geometry field changed. All 421
 registry family rows and 887 roots remain unchanged.
+
+## Bridge direct encounter and loot contribution
+
+The fourteen captured processor/module/interface classes contain no direct
+entity-spawning, spawner-configuration or container-loot references. Combined
+with the existing fourteen-template entity/block-entity check, this supports
+the narrowly scoped direct-content fields in the bridge contribution. The
+processor calls concern block replacement, support extension and state
+adaptation. Environmental infrastructure is a source-based interpretation,
+not a safety measurement. Natural mobs, delegated engine/API behavior and
+external retained-mod effects are not excluded. No new capture or measurement
+system was added.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-bridge-encounters.json
+```
+
+Ten affected tests passed; scoped Ruff and Basedpyright passed. Decision SHA-256:
+`d894507f6a028766e091ede35bb58de28a9489cd5d2a1f51deafe4f7e5642fb4`.
