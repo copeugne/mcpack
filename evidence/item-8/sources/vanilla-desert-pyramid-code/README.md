@@ -64,3 +64,38 @@ The constructor callback and shared wrapper are now resolved in
 frozen class/archive identity and the bootstrap link to DesertPyramidPiece.
 This supersedes the pending callback instruction above. Cellar geometry,
 content integration and loot-source reconciliation remain open.
+
+## Family integration
+
+The pending content integration above is superseded. Seven family attributes
+now record trap hostility, mob sources, both loot assignments, absence of
+vanilla spawners, enemy attribution, authored visual form and surface/underground
+placement. Existing observed geometry, dimensions and biome links are preserved.
+The direct piece uses no template or pool components. BuiltInLootTables from
+the existing vanilla-end-city-code evidence binds the chest and archaeology
+constants to minecraft:chests/desert_pyramid and minecraft:archaeology/desert_pyramid.
+
+Cellar sand candidates are collected as transformed world positions, not placed
+immediately. The room's sand box and side candidates are distinct from the
+collapsed roof. The roof first places sand/sandstone and records a positional
+randomly selected roof coordinate for the separate suspicious-sand attempt.
+The stairs remain part of this same cellar. No extra family, successful block
+count or full occupied geometry is inferred from those components.
+
+The existing binding test now also verifies preserved source hashes, the two
+loot mappings, trap block identities, empty authored entity/spawner sources and
+the saved chest-result assignment. No measurement system or server run is added.
+
+```sh
+uv run pytest -q tests/item8/test_desert_pyramid_binding.py tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_desert_pyramid_binding.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_desert_pyramid_binding.py tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-desert-pyramid-content.json
+```
+
+Decision SHA-256:
+`78b6dcd53d7e3c855b6e64477c0773601c3b83138705ea122eb6cc48be955378`.
+Actual visibility, successful generation and effective retained-mod behavior
+remain distinct from these source-derived attributes. Item 8 remains incomplete.
+
+All 63 affected tests passed. Scoped Ruff and Basedpyright checks passed.
