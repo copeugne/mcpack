@@ -1,0 +1,791 @@
+Classfile Quark-4.1-480.jar!/org/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator.class
+  Last modified May 24, 2026; size 6184 bytes
+  SHA-256 checksum 509ca413b7bdaae9659a3dae7c6e730e650a11750f53acef592a3fc63d8fc90a
+  Compiled from "ObsidianSpikeGenerator.java"
+public class org.violetmoon.quark.content.world.gen.ObsidianSpikeGenerator extends org.violetmoon.zeta.world.generator.Generator
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #56                         // org/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator
+  super_class: #2                         // org/violetmoon/zeta/world/generator/Generator
+  interfaces: 0, fields: 0, methods: 3, attributes: 1
+Constant pool:
+    #1 = Methodref          #2.#3         // org/violetmoon/zeta/world/generator/Generator."<init>":(Lorg/violetmoon/zeta/config/type/DimensionConfig;)V
+    #2 = Class              #4            // org/violetmoon/zeta/world/generator/Generator
+    #3 = NameAndType        #5:#6         // "<init>":(Lorg/violetmoon/zeta/config/type/DimensionConfig;)V
+    #4 = Utf8               org/violetmoon/zeta/world/generator/Generator
+    #5 = Utf8               <init>
+    #6 = Utf8               (Lorg/violetmoon/zeta/config/type/DimensionConfig;)V
+    #7 = InterfaceMethodref #8.#9         // net/minecraft/util/RandomSource.nextFloat:()F
+    #8 = Class              #10           // net/minecraft/util/RandomSource
+    #9 = NameAndType        #11:#12       // nextFloat:()F
+   #10 = Utf8               net/minecraft/util/RandomSource
+   #11 = Utf8               nextFloat
+   #12 = Utf8               ()F
+   #13 = Fieldref           #14.#15       // org/violetmoon/quark/content/world/module/NetherObsidianSpikesModule.chancePerChunk:D
+   #14 = Class              #16           // org/violetmoon/quark/content/world/module/NetherObsidianSpikesModule
+   #15 = NameAndType        #17:#18       // chancePerChunk:D
+   #16 = Utf8               org/violetmoon/quark/content/world/module/NetherObsidianSpikesModule
+   #17 = Utf8               chancePerChunk
+   #18 = Utf8               D
+   #19 = Fieldref           #14.#20       // org/violetmoon/quark/content/world/module/NetherObsidianSpikesModule.triesPerChunk:I
+   #20 = NameAndType        #21:#22       // triesPerChunk:I
+   #21 = Utf8               triesPerChunk
+   #22 = Utf8               I
+   #23 = InterfaceMethodref #8.#24        // net/minecraft/util/RandomSource.nextInt:(I)I
+   #24 = NameAndType        #25:#26       // nextInt:(I)I
+   #25 = Utf8               nextInt
+   #26 = Utf8               (I)I
+   #27 = Methodref          #28.#29       // net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+   #28 = Class              #30           // net/minecraft/core/BlockPos
+   #29 = NameAndType        #31:#32       // offset:(III)Lnet/minecraft/core/BlockPos;
+   #30 = Utf8               net/minecraft/core/BlockPos
+   #31 = Utf8               offset
+   #32 = Utf8               (III)Lnet/minecraft/core/BlockPos;
+   #33 = Methodref          #28.#34       // net/minecraft/core/BlockPos.getY:()I
+   #34 = NameAndType        #35:#36       // getY:()I
+   #35 = Utf8               getY
+   #36 = Utf8               ()I
+   #37 = Methodref          #38.#39       // net/minecraft/server/level/WorldGenRegion.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #38 = Class              #40           // net/minecraft/server/level/WorldGenRegion
+   #39 = NameAndType        #41:#42       // getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #40 = Utf8               net/minecraft/server/level/WorldGenRegion
+   #41 = Utf8               getBlockState
+   #42 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #43 = Methodref          #44.#45       // net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+   #44 = Class              #46           // net/minecraft/world/level/block/state/BlockState
+   #45 = NameAndType        #47:#48       // getBlock:()Lnet/minecraft/world/level/block/Block;
+   #46 = Utf8               net/minecraft/world/level/block/state/BlockState
+   #47 = Utf8               getBlock
+   #48 = Utf8               ()Lnet/minecraft/world/level/block/Block;
+   #49 = Fieldref           #50.#51       // net/minecraft/world/level/block/Blocks.LAVA:Lnet/minecraft/world/level/block/Block;
+   #50 = Class              #52           // net/minecraft/world/level/block/Blocks
+   #51 = NameAndType        #53:#54       // LAVA:Lnet/minecraft/world/level/block/Block;
+   #52 = Utf8               net/minecraft/world/level/block/Blocks
+   #53 = Utf8               LAVA
+   #54 = Utf8               Lnet/minecraft/world/level/block/Block;
+   #55 = Methodref          #56.#57       // org/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator.placeSpikeAt:(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)V
+   #56 = Class              #58           // org/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator
+   #57 = NameAndType        #59:#60       // placeSpikeAt:(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)V
+   #58 = Utf8               org/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator
+   #59 = Utf8               placeSpikeAt
+   #60 = Utf8               (Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)V
+   #61 = Methodref          #28.#62       // net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+   #62 = NameAndType        #63:#64       // below:()Lnet/minecraft/core/BlockPos;
+   #63 = Utf8               below
+   #64 = Utf8               ()Lnet/minecraft/core/BlockPos;
+   #65 = Fieldref           #14.#66       // org/violetmoon/quark/content/world/module/NetherObsidianSpikesModule.bigSpikeChance:D
+   #66 = NameAndType        #67:#18       // bigSpikeChance:D
+   #67 = Utf8               bigSpikeChance
+   #68 = Fieldref           #14.#69       // org/violetmoon/quark/content/world/module/NetherObsidianSpikesModule.bigSpikeSpawners:Z
+   #69 = NameAndType        #70:#71       // bigSpikeSpawners:Z
+   #70 = Utf8               bigSpikeSpawners
+   #71 = Utf8               Z
+   #72 = Methodref          #38.#73       // net/minecraft/server/level/WorldGenRegion.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+   #73 = NameAndType        #74:#75       // isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+   #74 = Utf8               isEmptyBlock
+   #75 = Utf8               (Lnet/minecraft/core/BlockPos;)Z
+   #76 = Methodref          #38.#77       // net/minecraft/server/level/WorldGenRegion.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+   #77 = NameAndType        #78:#79       // getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+   #78 = Utf8               getFluidState
+   #79 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+   #80 = Fieldref           #81.#82       // net/minecraft/world/level/material/Fluids.LAVA:Lnet/minecraft/world/level/material/FlowingFluid;
+   #81 = Class              #83           // net/minecraft/world/level/material/Fluids
+   #82 = NameAndType        #53:#84       // LAVA:Lnet/minecraft/world/level/material/FlowingFluid;
+   #83 = Utf8               net/minecraft/world/level/material/Fluids
+   #84 = Utf8               Lnet/minecraft/world/level/material/FlowingFluid;
+   #85 = Methodref          #86.#87       // net/minecraft/world/level/material/FluidState.is:(Lnet/minecraft/world/level/material/Fluid;)Z
+   #86 = Class              #88           // net/minecraft/world/level/material/FluidState
+   #87 = NameAndType        #89:#90       // is:(Lnet/minecraft/world/level/material/Fluid;)Z
+   #88 = Utf8               net/minecraft/world/level/material/FluidState
+   #89 = Utf8               is
+   #90 = Utf8               (Lnet/minecraft/world/level/material/Fluid;)Z
+   #91 = Fieldref           #81.#92       // net/minecraft/world/level/material/Fluids.FLOWING_LAVA:Lnet/minecraft/world/level/material/FlowingFluid;
+   #92 = NameAndType        #93:#84       // FLOWING_LAVA:Lnet/minecraft/world/level/material/FlowingFluid;
+   #93 = Utf8               FLOWING_LAVA
+   #94 = Fieldref           #50.#95       // net/minecraft/world/level/block/Blocks.OBSIDIAN:Lnet/minecraft/world/level/block/Block;
+   #95 = NameAndType        #96:#54       // OBSIDIAN:Lnet/minecraft/world/level/block/Block;
+   #96 = Utf8               OBSIDIAN
+   #97 = Methodref          #98.#99       // net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+   #98 = Class              #100          // net/minecraft/world/level/block/Block
+   #99 = NameAndType        #101:#102     // defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+  #100 = Utf8               net/minecraft/world/level/block/Block
+  #101 = Utf8               defaultBlockState
+  #102 = Utf8               ()Lnet/minecraft/world/level/block/state/BlockState;
+  #103 = Methodref          #44.#104      // net/minecraft/world/level/block/state/BlockState.getDestroySpeed:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)F
+  #104 = NameAndType        #105:#106     // getDestroySpeed:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)F
+  #105 = Utf8               getDestroySpeed
+  #106 = Utf8               (Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)F
+  #107 = Float              -1.0f
+  #108 = Methodref          #38.#109      // net/minecraft/server/level/WorldGenRegion.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+  #109 = NameAndType        #110:#111     // setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+  #110 = Utf8               setBlock
+  #111 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+  #112 = Fieldref           #113.#114     // org/violetmoon/zeta/util/MiscUtil.HORIZONTALS:[Lnet/minecraft/core/Direction;
+  #113 = Class              #115          // org/violetmoon/zeta/util/MiscUtil
+  #114 = NameAndType        #116:#117     // HORIZONTALS:[Lnet/minecraft/core/Direction;
+  #115 = Utf8               org/violetmoon/zeta/util/MiscUtil
+  #116 = Utf8               HORIZONTALS
+  #117 = Utf8               [Lnet/minecraft/core/Direction;
+  #118 = Methodref          #28.#119      // net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+  #119 = NameAndType        #120:#121     // relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+  #120 = Utf8               relative
+  #121 = Utf8               (Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+  #122 = Fieldref           #123.#124     // org/violetmoon/quark/base/Quark.ZETA:Lorg/violetmoon/zeta/Zeta;
+  #123 = Class              #125          // org/violetmoon/quark/base/Quark
+  #124 = NameAndType        #126:#127     // ZETA:Lorg/violetmoon/zeta/Zeta;
+  #125 = Utf8               org/violetmoon/quark/base/Quark
+  #126 = Utf8               ZETA
+  #127 = Utf8               Lorg/violetmoon/zeta/Zeta;
+  #128 = Fieldref           #129.#130     // org/violetmoon/zeta/Zeta.modules:Lorg/violetmoon/zeta/module/ZetaModuleManager;
+  #129 = Class              #131          // org/violetmoon/zeta/Zeta
+  #130 = NameAndType        #132:#133     // modules:Lorg/violetmoon/zeta/module/ZetaModuleManager;
+  #131 = Utf8               org/violetmoon/zeta/Zeta
+  #132 = Utf8               modules
+  #133 = Utf8               Lorg/violetmoon/zeta/module/ZetaModuleManager;
+  #134 = Class              #135          // org/violetmoon/quark/content/building/module/CompressedBlocksModule
+  #135 = Utf8               org/violetmoon/quark/content/building/module/CompressedBlocksModule
+  #136 = Methodref          #137.#138     // org/violetmoon/zeta/module/ZetaModuleManager.isEnabled:(Ljava/lang/Class;)Z
+  #137 = Class              #139          // org/violetmoon/zeta/module/ZetaModuleManager
+  #138 = NameAndType        #140:#141     // isEnabled:(Ljava/lang/Class;)Z
+  #139 = Utf8               org/violetmoon/zeta/module/ZetaModuleManager
+  #140 = Utf8               isEnabled
+  #141 = Utf8               (Ljava/lang/Class;)Z
+  #142 = Fieldref           #134.#143     // org/violetmoon/quark/content/building/module/CompressedBlocksModule.enableBlazeLantern:Z
+  #143 = NameAndType        #144:#71      // enableBlazeLantern:Z
+  #144 = Utf8               enableBlazeLantern
+  #145 = Fieldref           #134.#146     // org/violetmoon/quark/content/building/module/CompressedBlocksModule.blaze_lantern:Lnet/minecraft/world/level/block/Block;
+  #146 = NameAndType        #147:#54      // blaze_lantern:Lnet/minecraft/world/level/block/Block;
+  #147 = Utf8               blaze_lantern
+  #148 = Fieldref           #50.#149      // net/minecraft/world/level/block/Blocks.GLOWSTONE:Lnet/minecraft/world/level/block/Block;
+  #149 = NameAndType        #150:#54      // GLOWSTONE:Lnet/minecraft/world/level/block/Block;
+  #150 = Utf8               GLOWSTONE
+  #151 = Fieldref           #50.#152      // net/minecraft/world/level/block/Blocks.SPAWNER:Lnet/minecraft/world/level/block/Block;
+  #152 = NameAndType        #153:#54      // SPAWNER:Lnet/minecraft/world/level/block/Block;
+  #153 = Utf8               SPAWNER
+  #154 = Methodref          #38.#155      // net/minecraft/server/level/WorldGenRegion.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #155 = NameAndType        #156:#157     // getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #156 = Utf8               getBlockEntity
+  #157 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #158 = Class              #159          // net/minecraft/world/level/block/entity/SpawnerBlockEntity
+  #159 = Utf8               net/minecraft/world/level/block/entity/SpawnerBlockEntity
+  #160 = Methodref          #158.#161     // net/minecraft/world/level/block/entity/SpawnerBlockEntity.getSpawner:()Lnet/minecraft/world/level/BaseSpawner;
+  #161 = NameAndType        #162:#163     // getSpawner:()Lnet/minecraft/world/level/BaseSpawner;
+  #162 = Utf8               getSpawner
+  #163 = Utf8               ()Lnet/minecraft/world/level/BaseSpawner;
+  #164 = Fieldref           #165.#166     // net/minecraft/world/entity/EntityType.BLAZE:Lnet/minecraft/world/entity/EntityType;
+  #165 = Class              #167          // net/minecraft/world/entity/EntityType
+  #166 = NameAndType        #168:#169     // BLAZE:Lnet/minecraft/world/entity/EntityType;
+  #167 = Utf8               net/minecraft/world/entity/EntityType
+  #168 = Utf8               BLAZE
+  #169 = Utf8               Lnet/minecraft/world/entity/EntityType;
+  #170 = Methodref          #171.#172     // net/minecraft/world/level/BaseSpawner.setEntityId:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+  #171 = Class              #173          // net/minecraft/world/level/BaseSpawner
+  #172 = NameAndType        #174:#175     // setEntityId:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+  #173 = Utf8               net/minecraft/world/level/BaseSpawner
+  #174 = Utf8               setEntityId
+  #175 = Utf8               (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+  #176 = Fieldref           #50.#177      // net/minecraft/world/level/block/Blocks.CHEST:Lnet/minecraft/world/level/block/Block;
+  #177 = NameAndType        #178:#54      // CHEST:Lnet/minecraft/world/level/block/Block;
+  #178 = Utf8               CHEST
+  #179 = Class              #180          // net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity
+  #180 = Utf8               net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity
+  #181 = Fieldref           #182.#183     // net/minecraft/world/level/storage/loot/BuiltInLootTables.NETHER_BRIDGE:Lnet/minecraft/resources/ResourceKey;
+  #182 = Class              #184          // net/minecraft/world/level/storage/loot/BuiltInLootTables
+  #183 = NameAndType        #185:#186     // NETHER_BRIDGE:Lnet/minecraft/resources/ResourceKey;
+  #184 = Utf8               net/minecraft/world/level/storage/loot/BuiltInLootTables
+  #185 = Utf8               NETHER_BRIDGE
+  #186 = Utf8               Lnet/minecraft/resources/ResourceKey;
+  #187 = Methodref          #179.#188     // net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.setLootTable:(Lnet/minecraft/resources/ResourceKey;)V
+  #188 = NameAndType        #189:#190     // setLootTable:(Lnet/minecraft/resources/ResourceKey;)V
+  #189 = Utf8               setLootTable
+  #190 = Utf8               (Lnet/minecraft/resources/ResourceKey;)V
+  #191 = Utf8               Code
+  #192 = Utf8               LineNumberTable
+  #193 = Utf8               LocalVariableTable
+  #194 = Utf8               this
+  #195 = Utf8               Lorg/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator;
+  #196 = Utf8               dimConfig
+  #197 = Utf8               Lorg/violetmoon/zeta/config/type/DimensionConfig;
+  #198 = Utf8               generateChunk
+  #199 = Utf8               (Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+  #200 = Utf8               state
+  #201 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+  #202 = Utf8               pos
+  #203 = Utf8               Lnet/minecraft/core/BlockPos;
+  #204 = Utf8               i
+  #205 = Utf8               world
+  #206 = Utf8               Lnet/minecraft/server/level/WorldGenRegion;
+  #207 = Utf8               generator
+  #208 = Utf8               Lnet/minecraft/world/level/chunk/ChunkGenerator;
+  #209 = Utf8               rand
+  #210 = Utf8               Lnet/minecraft/util/RandomSource;
+  #211 = Utf8               chunkCorner
+  #212 = Utf8               StackMapTable
+  #213 = Utf8               checkPos
+  #214 = Utf8               k
+  #215 = Utf8               j
+  #216 = Utf8               placePos
+  #217 = Utf8               face
+  #218 = Utf8               Lnet/minecraft/core/Direction;
+  #219 = Utf8               container
+  #220 = Utf8               Lnet/minecraft/world/level/block/entity/RandomizableContainerBlockEntity;
+  #221 = Utf8               useBlazeLantern
+  #222 = Utf8               blockEntity
+  #223 = Utf8               Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #224 = Utf8               heightBelow
+  #225 = Utf8               heightBottom
+  #226 = Utf8               heightMiddle
+  #227 = Utf8               heightTop
+  #228 = Utf8               addSpawner
+  #229 = Utf8               checkHeight
+  #230 = Utf8               obsidian
+  #231 = Class              #117          // "[Lnet/minecraft/core/Direction;"
+  #232 = Utf8               SourceFile
+  #233 = Utf8               ObsidianSpikeGenerator.java
+{
+  public org.violetmoon.quark.content.world.gen.ObsidianSpikeGenerator(org.violetmoon.zeta.config.type.DimensionConfig);
+    descriptor: (Lorg/violetmoon/zeta/config/type/DimensionConfig;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokespecial #1                  // Method org/violetmoon/zeta/world/generator/Generator."<init>":(Lorg/violetmoon/zeta/config/type/DimensionConfig;)V
+         5: return
+      LineNumberTable:
+        line 27: 0
+        line 28: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lorg/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator;
+            0       6     1 dimConfig   Lorg/violetmoon/zeta/config/type/DimensionConfig;
+
+  public void generateChunk(net.minecraft.server.level.WorldGenRegion, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    descriptor: (Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=5, locals=8, args_size=5
+         0: aload_3
+         1: invokeinterface #7,  1            // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+         6: f2d
+         7: getstatic     #13                 // Field org/violetmoon/quark/content/world/module/NetherObsidianSpikesModule.chancePerChunk:D
+        10: dcmpg
+        11: ifge          105
+        14: iconst_0
+        15: istore        5
+        17: iload         5
+        19: getstatic     #19                 // Field org/violetmoon/quark/content/world/module/NetherObsidianSpikesModule.triesPerChunk:I
+        22: if_icmpge     105
+        25: aload         4
+        27: aload_3
+        28: bipush        16
+        30: invokeinterface #23,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+        35: bipush        50
+        37: aload_3
+        38: bipush        16
+        40: invokeinterface #23,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+        45: invokevirtual #27                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+        48: astore        6
+        50: aload         6
+        52: invokevirtual #33                 // Method net/minecraft/core/BlockPos.getY:()I
+        55: bipush        10
+        57: if_icmple     99
+        60: aload_1
+        61: aload         6
+        63: invokevirtual #37                 // Method net/minecraft/server/level/WorldGenRegion.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+        66: astore        7
+        68: aload         7
+        70: invokevirtual #43                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+        73: getstatic     #49                 // Field net/minecraft/world/level/block/Blocks.LAVA:Lnet/minecraft/world/level/block/Block;
+        76: if_acmpne     89
+        79: aload_1
+        80: aload         6
+        82: aload_3
+        83: invokestatic  #55                 // Method placeSpikeAt:(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)V
+        86: goto          99
+        89: aload         6
+        91: invokevirtual #61                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+        94: astore        6
+        96: goto          50
+        99: iinc          5, 1
+       102: goto          17
+       105: return
+      LineNumberTable:
+        line 32: 0
+        line 33: 14
+        line 34: 25
+        line 36: 50
+        line 37: 60
+        line 38: 68
+        line 39: 79
+        line 40: 86
+        line 42: 89
+        line 43: 96
+        line 33: 99
+        line 46: 105
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           68      28     7 state   Lnet/minecraft/world/level/block/state/BlockState;
+           50      49     6   pos   Lnet/minecraft/core/BlockPos;
+           17      88     5     i   I
+            0     106     0  this   Lorg/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator;
+            0     106     1 world   Lnet/minecraft/server/level/WorldGenRegion;
+            0     106     2 generator   Lnet/minecraft/world/level/chunk/ChunkGenerator;
+            0     106     3  rand   Lnet/minecraft/util/RandomSource;
+            0     106     4 chunkCorner   Lnet/minecraft/core/BlockPos;
+      StackMapTable: number_of_entries = 5
+        frame_type = 252 /* append */
+          offset_delta = 17
+          locals = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 32
+          locals = [ class net/minecraft/core/BlockPos ]
+        frame_type = 252 /* append */
+          offset_delta = 38
+          locals = [ class net/minecraft/world/level/block/state/BlockState ]
+        frame_type = 249 /* chop */
+          offset_delta = 9
+        frame_type = 250 /* chop */
+          offset_delta = 5
+
+  public static void placeSpikeAt(net.minecraft.server.level.WorldGenRegion, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    descriptor: (Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=5, locals=16, args_size=3
+         0: bipush        10
+         2: istore_3
+         3: iconst_3
+         4: aload_2
+         5: iconst_3
+         6: invokeinterface #23,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+        11: iadd
+        12: istore        4
+        14: iconst_2
+        15: aload_2
+        16: iconst_4
+        17: invokeinterface #23,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+        22: iadd
+        23: istore        5
+        25: iconst_2
+        26: aload_2
+        27: iconst_3
+        28: invokeinterface #23,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+        33: iadd
+        34: istore        6
+        36: iconst_0
+        37: istore        7
+        39: aload_2
+        40: invokeinterface #7,  1            // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+        45: f2d
+        46: getstatic     #65                 // Field org/violetmoon/quark/content/world/module/NetherObsidianSpikesModule.bigSpikeChance:D
+        49: dcmpg
+        50: ifge          67
+        53: iinc          4, 7
+        56: iinc          5, 8
+        59: iinc          6, 4
+        62: getstatic     #68                 // Field org/violetmoon/quark/content/world/module/NetherObsidianSpikesModule.bigSpikeSpawners:Z
+        65: istore        7
+        67: iload         4
+        69: iload         5
+        71: iadd
+        72: iload         6
+        74: iadd
+        75: iconst_2
+        76: iadd
+        77: istore        8
+        79: iconst_0
+        80: istore        9
+        82: iload         9
+        84: iconst_5
+        85: if_icmpge     181
+        88: iconst_0
+        89: istore        10
+        91: iload         10
+        93: iconst_5
+        94: if_icmpge     175
+        97: iconst_0
+        98: istore        11
+       100: iload         11
+       102: iload         8
+       104: if_icmpge     169
+       107: aload_1
+       108: iload         9
+       110: iconst_2
+       111: isub
+       112: iload         11
+       114: iload         10
+       116: iconst_2
+       117: isub
+       118: invokevirtual #27                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+       121: astore        12
+       123: aload_0
+       124: aload         12
+       126: invokevirtual #72                 // Method net/minecraft/server/level/WorldGenRegion.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+       129: ifne          163
+       132: aload_0
+       133: aload         12
+       135: invokevirtual #76                 // Method net/minecraft/server/level/WorldGenRegion.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+       138: getstatic     #80                 // Field net/minecraft/world/level/material/Fluids.LAVA:Lnet/minecraft/world/level/material/FlowingFluid;
+       141: invokevirtual #85                 // Method net/minecraft/world/level/material/FluidState.is:(Lnet/minecraft/world/level/material/Fluid;)Z
+       144: ifne          163
+       147: aload_0
+       148: aload         12
+       150: invokevirtual #76                 // Method net/minecraft/server/level/WorldGenRegion.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+       153: getstatic     #91                 // Field net/minecraft/world/level/material/Fluids.FLOWING_LAVA:Lnet/minecraft/world/level/material/FlowingFluid;
+       156: invokevirtual #85                 // Method net/minecraft/world/level/material/FluidState.is:(Lnet/minecraft/world/level/material/Fluid;)Z
+       159: ifne          163
+       162: return
+       163: iinc          11, 1
+       166: goto          100
+       169: iinc          10, 1
+       172: goto          91
+       175: iinc          9, 1
+       178: goto          82
+       181: getstatic     #94                 // Field net/minecraft/world/level/block/Blocks.OBSIDIAN:Lnet/minecraft/world/level/block/Block;
+       184: invokevirtual #97                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       187: astore        9
+       189: iconst_0
+       190: istore        10
+       192: iload         10
+       194: iconst_3
+       195: if_icmpge     283
+       198: iconst_0
+       199: istore        11
+       201: iload         11
+       203: iconst_3
+       204: if_icmpge     277
+       207: iconst_0
+       208: istore        12
+       210: iload         12
+       212: iload         4
+       214: iload_3
+       215: iadd
+       216: if_icmpge     271
+       219: aload_1
+       220: iload         10
+       222: iconst_1
+       223: isub
+       224: iload         12
+       226: iload_3
+       227: isub
+       228: iload         11
+       230: iconst_1
+       231: isub
+       232: invokevirtual #27                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+       235: astore        13
+       237: aload_0
+       238: aload         13
+       240: invokevirtual #37                 // Method net/minecraft/server/level/WorldGenRegion.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       243: aload_0
+       244: aload         13
+       246: invokevirtual #103                // Method net/minecraft/world/level/block/state/BlockState.getDestroySpeed:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)F
+       249: ldc           #107                // float -1.0f
+       251: fcmpl
+       252: ifeq          265
+       255: aload_0
+       256: aload         13
+       258: aload         9
+       260: iconst_0
+       261: invokevirtual #108                // Method net/minecraft/server/level/WorldGenRegion.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+       264: pop
+       265: iinc          12, 1
+       268: goto          210
+       271: iinc          11, 1
+       274: goto          201
+       277: iinc          10, 1
+       280: goto          192
+       283: iconst_0
+       284: istore        10
+       286: iload         10
+       288: iload         5
+       290: if_icmpge     370
+       293: aload_1
+       294: iconst_0
+       295: iload         4
+       297: iload         10
+       299: iadd
+       300: iconst_0
+       301: invokevirtual #27                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+       304: astore        11
+       306: aload_0
+       307: aload         11
+       309: aload         9
+       311: iconst_0
+       312: invokevirtual #108                // Method net/minecraft/server/level/WorldGenRegion.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+       315: pop
+       316: getstatic     #112                // Field org/violetmoon/zeta/util/MiscUtil.HORIZONTALS:[Lnet/minecraft/core/Direction;
+       319: astore        12
+       321: aload         12
+       323: arraylength
+       324: istore        13
+       326: iconst_0
+       327: istore        14
+       329: iload         14
+       331: iload         13
+       333: if_icmpge     364
+       336: aload         12
+       338: iload         14
+       340: aaload
+       341: astore        15
+       343: aload_0
+       344: aload         11
+       346: aload         15
+       348: invokevirtual #118                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+       351: aload         9
+       353: iconst_0
+       354: invokevirtual #108                // Method net/minecraft/server/level/WorldGenRegion.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+       357: pop
+       358: iinc          14, 1
+       361: goto          329
+       364: iinc          10, 1
+       367: goto          286
+       370: iconst_0
+       371: istore        10
+       373: iload         10
+       375: iload         6
+       377: if_icmpge     571
+       380: aload_1
+       381: iconst_0
+       382: iload         4
+       384: iload         5
+       386: iadd
+       387: iload         10
+       389: iadd
+       390: iconst_0
+       391: invokevirtual #27                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+       394: astore        11
+       396: aload_0
+       397: aload         11
+       399: aload         9
+       401: iconst_0
+       402: invokevirtual #108                // Method net/minecraft/server/level/WorldGenRegion.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+       405: pop
+       406: iload         7
+       408: ifeq          565
+       411: iload         10
+       413: ifne          565
+       416: getstatic     #122                // Field org/violetmoon/quark/base/Quark.ZETA:Lorg/violetmoon/zeta/Zeta;
+       419: getfield      #128                // Field org/violetmoon/zeta/Zeta.modules:Lorg/violetmoon/zeta/module/ZetaModuleManager;
+       422: ldc           #134                // class org/violetmoon/quark/content/building/module/CompressedBlocksModule
+       424: invokevirtual #136                // Method org/violetmoon/zeta/module/ZetaModuleManager.isEnabled:(Ljava/lang/Class;)Z
+       427: ifeq          440
+       430: getstatic     #142                // Field org/violetmoon/quark/content/building/module/CompressedBlocksModule.enableBlazeLantern:Z
+       433: ifeq          440
+       436: iconst_1
+       437: goto          441
+       440: iconst_0
+       441: istore        12
+       443: aload_0
+       444: aload         11
+       446: iload         12
+       448: ifeq          460
+       451: getstatic     #145                // Field org/violetmoon/quark/content/building/module/CompressedBlocksModule.blaze_lantern:Lnet/minecraft/world/level/block/Block;
+       454: invokevirtual #97                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       457: goto          466
+       460: getstatic     #148                // Field net/minecraft/world/level/block/Blocks.GLOWSTONE:Lnet/minecraft/world/level/block/Block;
+       463: invokevirtual #97                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       466: iconst_0
+       467: invokevirtual #108                // Method net/minecraft/server/level/WorldGenRegion.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+       470: pop
+       471: aload         11
+       473: invokevirtual #61                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+       476: astore        11
+       478: aload_0
+       479: aload         11
+       481: getstatic     #151                // Field net/minecraft/world/level/block/Blocks.SPAWNER:Lnet/minecraft/world/level/block/Block;
+       484: invokevirtual #97                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       487: iconst_0
+       488: invokevirtual #108                // Method net/minecraft/server/level/WorldGenRegion.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+       491: pop
+       492: aload_0
+       493: aload         11
+       495: invokevirtual #154                // Method net/minecraft/server/level/WorldGenRegion.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+       498: checkcast     #158                // class net/minecraft/world/level/block/entity/SpawnerBlockEntity
+       501: invokevirtual #160                // Method net/minecraft/world/level/block/entity/SpawnerBlockEntity.getSpawner:()Lnet/minecraft/world/level/BaseSpawner;
+       504: getstatic     #164                // Field net/minecraft/world/entity/EntityType.BLAZE:Lnet/minecraft/world/entity/EntityType;
+       507: aconst_null
+       508: aload_2
+       509: aload_1
+       510: invokevirtual #170                // Method net/minecraft/world/level/BaseSpawner.setEntityId:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+       513: aload         11
+       515: invokevirtual #61                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+       518: astore        11
+       520: aload_0
+       521: aload         11
+       523: getstatic     #176                // Field net/minecraft/world/level/block/Blocks.CHEST:Lnet/minecraft/world/level/block/Block;
+       526: invokevirtual #97                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       529: iconst_0
+       530: invokevirtual #108                // Method net/minecraft/server/level/WorldGenRegion.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+       533: pop
+       534: aload_0
+       535: aload         11
+       537: invokevirtual #154                // Method net/minecraft/server/level/WorldGenRegion.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+       540: astore        13
+       542: aload         13
+       544: instanceof    #179                // class net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity
+       547: ifeq          565
+       550: aload         13
+       552: checkcast     #179                // class net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity
+       555: astore        14
+       557: aload         14
+       559: getstatic     #181                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.NETHER_BRIDGE:Lnet/minecraft/resources/ResourceKey;
+       562: invokevirtual #187                // Method net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.setLootTable:(Lnet/minecraft/resources/ResourceKey;)V
+       565: iinc          10, 1
+       568: goto          373
+       571: return
+      LineNumberTable:
+        line 49: 0
+        line 50: 3
+        line 51: 14
+        line 52: 25
+        line 54: 36
+        line 55: 39
+        line 56: 53
+        line 57: 56
+        line 58: 59
+        line 59: 62
+        line 62: 67
+        line 63: 79
+        line 64: 88
+        line 65: 97
+        line 66: 107
+        line 68: 123
+        line 69: 162
+        line 65: 163
+        line 64: 169
+        line 63: 175
+        line 72: 181
+        line 74: 189
+        line 75: 198
+        line 76: 207
+        line 77: 219
+        line 79: 237
+        line 80: 255
+        line 76: 265
+        line 75: 271
+        line 74: 277
+        line 83: 283
+        line 84: 293
+        line 86: 306
+        line 87: 316
+        line 88: 343
+        line 87: 358
+        line 83: 364
+        line 91: 370
+        line 92: 380
+        line 93: 396
+        line 95: 406
+        line 96: 416
+        line 97: 443
+        line 99: 471
+        line 100: 478
+        line 105: 492
+        line 107: 513
+        line 108: 520
+        line 109: 534
+        line 110: 542
+        line 111: 557
+        line 91: 565
+        line 115: 571
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          123      40    12 checkPos   Lnet/minecraft/core/BlockPos;
+          100      69    11     k   I
+           91      84    10     j   I
+           82      99     9     i   I
+          237      28    13 placePos   Lnet/minecraft/core/BlockPos;
+          210      61    12     k   I
+          201      76    11     j   I
+          192      91    10     i   I
+          343      15    15  face   Lnet/minecraft/core/Direction;
+          306      58    11 placePos   Lnet/minecraft/core/BlockPos;
+          286      84    10     i   I
+          557       8    14 container   Lnet/minecraft/world/level/block/entity/RandomizableContainerBlockEntity;
+          443     122    12 useBlazeLantern   Z
+          542      23    13 blockEntity   Lnet/minecraft/world/level/block/entity/BlockEntity;
+          396     169    11 placePos   Lnet/minecraft/core/BlockPos;
+          373     198    10     i   I
+            0     572     0 world   Lnet/minecraft/server/level/WorldGenRegion;
+            0     572     1   pos   Lnet/minecraft/core/BlockPos;
+            0     572     2  rand   Lnet/minecraft/util/RandomSource;
+            3     569     3 heightBelow   I
+           14     558     4 heightBottom   I
+           25     547     5 heightMiddle   I
+           36     536     6 heightTop   I
+           39     533     7 addSpawner   Z
+           79     493     8 checkHeight   I
+          189     383     9 obsidian   Lnet/minecraft/world/level/block/state/BlockState;
+      StackMapTable: number_of_entries = 26
+        frame_type = 255 /* full_frame */
+          offset_delta = 67
+          locals = [ class net/minecraft/server/level/WorldGenRegion, class net/minecraft/core/BlockPos, class net/minecraft/util/RandomSource, int, int, int, int, int ]
+          stack = []
+        frame_type = 253 /* append */
+          offset_delta = 14
+          locals = [ int, int ]
+        frame_type = 252 /* append */
+          offset_delta = 8
+          locals = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 8
+          locals = [ int ]
+        frame_type = 62 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 5
+        frame_type = 250 /* chop */
+          offset_delta = 5
+        frame_type = 250 /* chop */
+          offset_delta = 5
+        frame_type = 253 /* append */
+          offset_delta = 10
+          locals = [ class net/minecraft/world/level/block/state/BlockState, int ]
+        frame_type = 252 /* append */
+          offset_delta = 8
+          locals = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 8
+          locals = [ int ]
+        frame_type = 54 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 5
+        frame_type = 250 /* chop */
+          offset_delta = 5
+        frame_type = 250 /* chop */
+          offset_delta = 5
+        frame_type = 252 /* append */
+          offset_delta = 2
+          locals = [ int ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 42
+          locals = [ class net/minecraft/server/level/WorldGenRegion, class net/minecraft/core/BlockPos, class net/minecraft/util/RandomSource, int, int, int, int, int, int, class net/minecraft/world/level/block/state/BlockState, int, class net/minecraft/core/BlockPos, class "[Lnet/minecraft/core/Direction;", int, int ]
+          stack = []
+        frame_type = 255 /* full_frame */
+          offset_delta = 34
+          locals = [ class net/minecraft/server/level/WorldGenRegion, class net/minecraft/core/BlockPos, class net/minecraft/util/RandomSource, int, int, int, int, int, int, class net/minecraft/world/level/block/state/BlockState, int ]
+          stack = []
+        frame_type = 250 /* chop */
+          offset_delta = 5
+        frame_type = 252 /* append */
+          offset_delta = 2
+          locals = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 66
+          locals = [ class net/minecraft/core/BlockPos ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 18
+          locals = [ class net/minecraft/server/level/WorldGenRegion, class net/minecraft/core/BlockPos, class net/minecraft/util/RandomSource, int, int, int, int, int, int, class net/minecraft/world/level/block/state/BlockState, int, class net/minecraft/core/BlockPos, int ]
+          stack = [ class net/minecraft/server/level/WorldGenRegion, class net/minecraft/core/BlockPos ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 5
+          locals = [ class net/minecraft/server/level/WorldGenRegion, class net/minecraft/core/BlockPos, class net/minecraft/util/RandomSource, int, int, int, int, int, int, class net/minecraft/world/level/block/state/BlockState, int, class net/minecraft/core/BlockPos, int ]
+          stack = [ class net/minecraft/server/level/WorldGenRegion, class net/minecraft/core/BlockPos, class net/minecraft/world/level/block/state/BlockState ]
+        frame_type = 249 /* chop */
+          offset_delta = 98
+        frame_type = 250 /* chop */
+          offset_delta = 5
+}
+SourceFile: "ObsidianSpikeGenerator.java"
