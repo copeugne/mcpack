@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-05
 
+Stone cluster captures are delivered in a17831b. The direct cluster writer
+places one configured block state. NewStoneTypes also delegates to Zeta
+OreGenerator; inspect that existing dependency before its final terrain
+disposition. No further cluster-writer tracing or new measurement is needed.
+
 Inspect BigStoneClustersModule, NewStoneTypesModule, experimental
 VanillaStoneClustersModule and BigStoneClusterGenerator (including its direct
 anonymous writer). These retained paths need terrain/family reconciliation.
