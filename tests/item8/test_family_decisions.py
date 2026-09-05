@@ -648,6 +648,44 @@ def test_betterend_mountain_placement_and_visual_cues_bind_piece_sources() -> No
     assert isinstance(cues, dict)
     assert set(cues) == set(variants)
 
+def test_betterend_mountain_direct_content_has_no_encounter_or_container_path() -> None:
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    group = next(g for g in decisions["groups"] if g["family_id"] == "betterend:mountain")
+    attributes = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
+    assert attributes["mob_source"]["authored_entity_ids"] == []
+    assert attributes["loot_table_source"]["direct_generator_assigned_tables"] == []
+    assert attributes["generated_spawners"]["direct_generator_spawner_block_types"] == []
+    wanted = {"BasePiece", "MountainPiece", "CrystalMountainPiece", "PaintedMountainPiece",
+              "FeatureBaseStructure", "MountainStructure", "PaintedMountainStructure"}
+    inspected: set[str] = set()
+    for directory in ("betterend-formations-code", "betterend-formation-pieces"):
+        base = Path("evidence/item-8/sources") / directory
+        identities = cast("list[dict[str, str]]", json.loads(
+            (base / "identities.json").read_bytes()
+        ))
+        for row in identities:
+            name = row["class"].split("/")[-1].removesuffix(".class")
+            if name not in wanted:
+                continue
+            raw = (base / row["disassembly"]).read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+            source = raw.decode()
+            # Bind the negative direct-content attribution to the complete captured
+            # generator/piece set, not empty template traces for custom generators.
+            for token in ("world/entity/", "SPAWNER", "LootTable", "createChest",
+                          "createDispenser", "addFreshEntity", "StructureTemplate",
+                          "ConfiguredFeature", "PlacedFeature"):
+                assert token not in source, (name, token)
+            inspected.add(name)
+    assert inspected == wanted
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    for variant in variants.values():
+        definition = cast("dict[str, JsonValue]", variant["definition"])
+        assert definition["spawn_overrides"] == {}
+
+
 def test_voyager_mining_families_keep_distinct_layouts_and_authored_sources() -> None:
     decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
         Path("evidence/item-8/family-decisions.json").read_bytes()

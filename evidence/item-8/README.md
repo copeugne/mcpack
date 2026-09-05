@@ -1169,3 +1169,38 @@ cases passed afterward. Inventory regenerated at `a485c80`, SHA-256:
 `175fd05691be098c8e5904482325772757cdf9185a5017b3d765429e920f67ea`.
 Only the mountain grouping evidence and its placement/visual fields changed.
 All other families, saved observation links and size envelopes are unchanged.
+
+## BetterEnd mountain direct encounter and loot attribution
+
+The preserved root generators, FeatureBaseStructure, BasePiece, MountainPiece,
+CrystalMountainPiece and PaintedMountainPiece support the direct content
+attribution. The procedural paths write stone, moss and crystal blocks. They
+contain no direct entity creation/insertion, spawner placement, container loot
+assignment, template placement or configured/placed-feature delegation. The
+family now records environmental intent, no direct authored mobs/spawners or
+container tables, and empty structure spawn overrides. Natural spawning,
+harvested block drops and external retained-mod injections remain distinct.
+This is not a live-world population or spawner count.
+
+The focused test binds the complete seven-class selection and its disassembly
+hashes, checks the direct-content references and both empty spawn overrides.
+Existing material/palette and constructor-binding tests provide positive source
+coverage. No extraction, runtime, measurement system or general validator was
+added. The saved-world size and placement/cue attributes remain unchanged.
+
+Decision SHA-256:
+`3b9163176c218891042b6caa75b4060a4ec413fa5293079fb1c4ebd3e1c6e727`.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-mountain-content.json
+```
+
+Source inspection also identifies an upstream placement condition for subsequent
+integration: FeatureBaseStructure.findGenerationPoint rejects its independently
+sampled position below Y=10 before invoking the root's generatePieces. The
+currently recorded root thresholds do not replace this earlier check. Preserve
+both sampling stages when completing placement eligibility; do not infer a
+single effective threshold from their different sample positions.
