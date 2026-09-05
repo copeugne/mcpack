@@ -115,9 +115,11 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
     parser = argparse.ArgumentParser(description=__doc__)
     _ = parser.add_argument("--output", type=Path, required=True)
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
+    _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     args = parser.parse_args()
     output = cast("Path", args.output)
     selected_archive = cast("str | None", args.archive)
+    selected_classes = cast("list[str] | None", args.class_name)
     output.mkdir(parents=True, exist_ok=False)
     javap = ROOT / "downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap"
     identities: list[dict[str, str]] = []
@@ -144,7 +146,9 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     json.dumps(metadata, indent=2) + "\n", encoding="utf-8"
                 )
             for name in sorted(archive.namelist()):
-                if not name.endswith(".class"):
+                if not name.endswith(".class") or (
+                    selected_classes is not None and name not in selected_classes
+                ):
                     continue
                 if source.name == MAPPED_SERVER.name and name not in CLASSES[:4]:
                     continue
