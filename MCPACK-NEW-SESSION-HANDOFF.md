@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Monster Box now links the preserved central Overworld sample in 21b40f3.
+All 64 sampled full chunks have no Monster Box block states or matching block
+entities. Keep this negative result and do not enlarge the sample just to obtain
+a hit. Positive occurrence and live encounter remain unobserved. No more
+Monster Box enablement, activation or loot source tracing is needed. Return to
+broader retained-provider coverage and remaining family attributes. The existing
+projection can serve other current families; do not decode the same sample again.
+All 35 affected tests passed. Item 8 remains incomplete.
+
 The existing central-block extractor now permits Overworld selection while
 preserving its End default and the same fixed X/Z survey bounds. This is needed
 because the retained End projection cannot establish Monster Box occurrence;
