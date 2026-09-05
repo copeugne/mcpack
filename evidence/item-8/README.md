@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `ec8a1e9`, SHA-256
-`fccdfc12548624499dab76279770791a9bbd9b3d4f9cb80541eb6bbd6f93b9eb`.
+Current working inventory regenerated at `21b40f3`, SHA-256
+`04e7f449274990758c96e3ddc1c74c0b6fed8b5a08b94fbf7de8941330c7f397`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,37 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 21b40f3 increment links Monster Box to the preserved negative 64-chunk
+Overworld sample. Positive occurrence and live encounter behavior remain
+unobserved; this is not global absence or a generation-failure claim. All 35
+affected tests passed. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-monster-sample-21b40f3.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-monster-sample-21b40f3.json
+```
+
+The c221e11 increment resolves Monster Box initial enablement from category
+construction, annotation conversion, configuration callback order and preserved
+initial-refresh evidence. Saved-world attribution and relevant ambient spawning
+remain open. All 31 focused tests passed. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-monster-enabled-c221e11.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-monster-enabled-c221e11.json
+```
+
+The 0e582dd increment integrates Monster Box as one working non-registry
+encounter family. It records source-derived geometry, activation, authored mob
+selection, reward sources and initial frozen settings. Effective module
+category/overlap enablement, ambient spawning and world attribution remain
+open. All 31 focused tests passed. No new measurements were added. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-monster-box-0e582dd.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-monster-box-0e582dd.json
+```
 
 The ec8a1e9 increment records Fallen Logs as one working family, with wood,
 hollow form, length and decoration as variants. Known attributes, frozen

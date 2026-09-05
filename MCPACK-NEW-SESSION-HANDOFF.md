@@ -6,6 +6,49 @@
 
 ### Continuation update - 2026-09-05
 
+Monster Box now links the preserved central Overworld sample in 21b40f3.
+All 64 sampled full chunks have no Monster Box block states or matching block
+entities. Keep this negative result and do not enlarge the sample just to obtain
+a hit. Positive occurrence and live encounter remain unobserved. No more
+Monster Box enablement, activation or loot source tracing is needed. Return to
+broader retained-provider coverage and remaining family attributes. The existing
+projection can serve other current families; do not decode the same sample again.
+All 35 affected tests passed. Item 8 remains incomplete.
+
+The existing central-block extractor now permits Overworld selection while
+preserving its End default and the same fixed X/Z survey bounds. This is needed
+because the retained End projection cannot establish Monster Box occurrence;
+the existing world-bound and context outputs also omit placed block content.
+Reuse the hash-bound ordinary run-a archive, not a new server or world. This is
+a second consumer of the existing projection, not a new measurement framework.
+An observation can establish presence in the sampled area only; absence there
+must not become a claim that the family never generates.
+
+Monster Box initial enablement is resolved in c221e11. The captured category
+has no required mod, the selected annotation converter supplies no overlap
+candidates, and ConfigManager applies enabled category settings before module
+settings during the preserved initial refresh. Both frozen toggles are true.
+Do not repeat enablement, field mapping, activation or loot investigations.
+Saved-world attribution, relevant ambient spawning and broader provider coverage
+remain open. All 31 focused tests passed; no new measurement was added.
+
+Monster Box enablement follow-up selects only ZetaCategory and
+ZetaLoadModuleAnnotationData through the existing extractor. The captured
+setEnabled path checks category requirements and overlap, but the preserved
+sources do not define those inputs. Frozen category and module toggles are true.
+These two definitions are needed to distinguish configured from effective
+enablement for Item 8 applicability; no new measurement or evidence framework
+is warranted. Scoped extractor checks pass. Capture and inspect these inputs
+before claiming effective enablement.
+
+Monster Box is integrated as one working encounter family in `0e582dd`.
+Generation, activation, selected mobs/rewards, callback targets and initial
+frozen settings are preserved in the existing Monster Box source directories.
+Do not repeat those investigations. Effective category/overlap enablement,
+ambient spawning and saved-world attribution remain open. All 31 focused tests
+passed. Broader provider coverage and Item 8 completion remain open; no new
+measurement system was added.
+
 Fallen Logs are integrated as one working family in `ec8a1e9`, with generator
 and decoration interpretation in `41bda20`. Do not repeat those interpretations.
 Configuration mapping, effective tags, hollow-log dependency and world
