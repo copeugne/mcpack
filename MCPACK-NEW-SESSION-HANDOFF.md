@@ -6,6 +6,106 @@
 
 ### Continuation update - 2026-09-05
 
+Village additions are integrated and delivered: trace implementation `1f7be67`,
+generated trace/reference update `2d6fbfb`, rebuilt inventory `e22c24f`.
+The trace now selects resource layers, filters NeoForge conditions and appends
+potential links for all 68 applicable additions using the existing decoder.
+Every addition is reachable from a registered root, verified by the new frozen
+trace regression. All five vanilla village variants reach their corresponding
+tavern template. Source identities, full modifier documents, weights, limits,
+missing templates and unsupported elements are preserved. The report accounts
+for 956 condition exclusions, 38 untraced modifier types and six excluded
+resource layers. These are potential links, not ordered assembly or probabilities.
+
+The corrected trace SHA is
+`7b0f61a66e46d78e206244271d2a1da0c846429d5a48a7e8bb05d852f6ec3632`.
+The 429 references to its old hash were updated without changing grouping
+decisions or other decision fields. Decisions SHA is
+`d642467b969b8a1cfbed8f90038684a847d13a13792a34d17da73e5c7e693996`.
+The rebuilt inventory SHA is
+`35a7f81081529b34c96948ced6dc7fb3d2580788d5ea9d13f4a7ed5b3410cd4c`.
+Both trace builds and both inventory builds matched byte-for-byte. The affected
+pool/resource suite passed 22 tests, the new frozen trace test passed, and all
+57 family-decision tests passed. Scoped Ruff and basedpyright passed. Commands
+and generated-reference migration rationale are in the existing source README
+at `evidence/item-8/sources/neoforge-condition-code/README.md`.
+
+Continue Better Village contribution attribution using existing source
+inspection. Initial inspection shows its templates already use the vanilla
+namespace, so check existing selected template provenance before adding any
+pool-replacement machinery. `Main` and `StructureSetMixin` describe a placement
+override for sets containing the five vanilla village roots. The frozen config
+enables it with spacing 45, separation 20 and salt 10387312; the captured debug
+log records its activation at line 18029. These initial code observations still
+need promotion through the existing tracked inspection tool before an acceptance
+claim. Inspect its compatibility listener/metadata path and loaded dependencies
+to determine whether further content processing applies. Do not infer from its
+absence of registry roots that it is irrelevant, or assume that it adds pools.
+Other modifier types and custom generation remain open. Canonical grouping,
+all retained-provider dispositions, required attributes, final gate, review and
+main merge remain incomplete. No new measurement system or server run was added.
+
+Modifier condition resolution is delivered in `12bd9d1`, with pinned loader
+code in `515f29b` and tool selection in `c35af5e`/`7ca24fd`. The existing resource
+selection module now reads the captured NeoForge Mod List and evaluates the
+two observed condition forms. The hash-bound log contains 212 mod IDs, including
+nested dependencies. Of 1,024 packaged pool additions, 68 pass: 26 conditioned
+on Village Taverns, 21 on Chef's Delight and 21 on Farmer's Delight. The other
+956 fail their conditions. These are additions to existing families, not new
+families or a claim of observed placement. Three affected tests passed; scoped
+Ruff and basedpyright passed. The frozen-catalog regression retains the exact
+filtering logic, counts and log/catalog identities. Restore the existing r1
+raw archive before running that test on another checkout.
+
+The patched NeoForge RegistryDataLoader wraps entry decoding in ConditionalOps;
+its condition list is AND, `neoforge:or` is OR, and `mod_loaded` queries ModList.
+Lithostitched gathers registry and event modifiers, then sorts by priority;
+addition priority defaults to 1000. Do not invent equal-priority ordering.
+Existing Lithostitched disassemblies remained byte-identical while two classes
+were added. The updated identities SHA is
+`f3aecd612d8fdfe23649887ea70032cdc4fc5b0db00276ae3c0e718bdadf0a75`.
+New condition-code and patched-loader identities are
+`6dfe814d7ed7691ed4f80d460e14c7b274881ecbfee8eb29837edf51e237ba43`
+and `1bcc020827e31e893e47baf01e173e915197bd755f5034fd18ef38c1d828b1be`.
+Commands and limitations are in `sources/neoforge-condition-code/README.md`.
+
+Next integrate the 68 condition-passing additions into the existing pool trace,
+preserving modifier source identities, limited delegates, weights and excluded
+conditions. Select resource layers before treating additions as effective.
+Potential graph reachability is not ordered assembly or placement probability.
+Keep other modifier types and Better Village's code-driven changes explicit.
+The accepted pool trace and inventory still have NOT been regenerated. Final
+family grouping, custom generation, retained-provider coverage, required
+attributes, final gate, clean review and main merge remain open. No new server
+run, archive revision or measurement system was needed for this increment.
+
+Limited-element decoding is delivered through `06b1ae2`. The existing
+inspection tool added three exact Lithostitched classes in `4fe823b`; generated
+code evidence is in `fc6adee` under `sources/lithostitched-pool-additions-code`.
+The identities SHA-256 is
+`c20cbe69f4af335c21b228e602fc383c8fc0a15fc7130b27b083ac6c439e7b5b`.
+The pinned code shows weighted pool additions and delegate forwarding of size,
+jigsaw connectors, bounding box and placement. The limited codec retains
+positive limit and optional minimum depth. The parser follows its delegate and
+retains other wrapper fields as a terminal constraint record. Thirteen affected
+pool-link/trace tests and scoped Ruff/basedpyright checks passed. Unsupported
+nested delegates remain unresolved; missing delegates fail explicitly. The
+existing explicit-codec complexity exception now includes the branch-count
+rule rather than introducing a helper solely for that limit. Initial lint
+also required an explicit raw regex in the regression test; both were resolved.
+
+The accepted inventory and pool-trace artifact have NOT been regenerated:
+modifier application and conditions remain open. Catalog inspection found
+1,024 `lithostitched:add_template_pool_elements` resources (mostly CTOV
+conditional integrations), within 1,068 Lithostitched modifiers overall.
+Do not apply every packaged addition or patch only the five taverns silently.
+Resolve applicable mod-loaded conditions from the frozen runtime identity,
+inspect loading/application order as needed, and retain excluded or unsupported
+modifier dispositions. Extend the existing tracing path. Other modifier types
+and Better Village's code-driven changes remain explicit next work. No new
+measurement system was introduced. Registry assignment remains 887 IDs in
+452 working groups, with Item 8 final gate/review/main merge still open.
+
 Runtime registry assignment is delivered through `8dd7f9c`, built from
 `4ad283f`. All 887 captured IDs have exactly one working group; the unassigned
 list is empty. The 34 vanilla roots form 21 working groups, preserving village,
