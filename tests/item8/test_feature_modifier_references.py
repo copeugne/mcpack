@@ -1006,3 +1006,42 @@ def test_better_end_island_declares_required_feature_mixins() -> None:
     assert {"EndPlatformFeatureMixin", "EndGatewayFeatureMixin"} <= set(
         cast("list[str]", config["mixins"])
     )
+
+
+def test_better_end_island_template_links_cover_catalog_without_counting_positions() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    contribution = contributions["betterendisland:platform_gateway"]
+    generators = cast("dict[str, JsonValue]", contribution["spike_podium_generators"])
+    templates = cast("dict[str, dict[str, JsonValue]]", generators["templates"])
+    # Preserved loader heights are 76 + 3*j; selection subtracts 73 and divides
+    # by three, then remaps 10 to 9. Ten positions therefore do not mean ten types.
+    indices = [min((76 + 3 * value - 73) // 3, 9) for value in range(10)]
+    assert Counter(indices) == Counter({**dict.fromkeys(range(1, 9), 1), 9: 2})
+    expected = {
+        f"betterendisland:pillar_{kind}_{index}"
+        for kind in ("initial", "guarded", "broken", "bottom")
+        for index in set(indices)
+    } | {"betterendisland:tower_initial", "betterendisland:tower_broken",
+         "betterendisland:tower_bottom_open"}
+    assert set(templates) == expected
+    catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/templates-redacted.json.gz"
+    ).read_bytes())))
+    rows = cast("list[dict[str, JsonValue]]", catalog["resources"])
+    provider = {
+        "betterendisland:" + Path(str(row["path"])).stem: row for row in rows
+        if row["archive"] == "YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar"
+    }
+    prior = cast("dict[str, str]", contribution["class_to_template"])
+    assert set(provider) == expected | set(prior.values())
+    for name, template in templates.items():
+        row = provider[name]
+        document = cast("dict[str, JsonValue]", row["document"])
+        assert template == {
+            "sha256": row["sha256"], "nominal_xyz_blocks": document["size"],
+            "entities": document["entities"], "block_entities": document["block_entities"],
+        }
