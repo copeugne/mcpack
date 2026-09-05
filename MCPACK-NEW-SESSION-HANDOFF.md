@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-05
 
+Bridge generation ordering and success limits are delivered in `955936c`.
+The contribution now binds sea-level anchoring, axis rotation and the twelve
+post-template processors. The discarded template-placement boolean means feature
+success is not proof that every block was placed. Scoped Ruff and Basedpyright
+pass; the existing eight affected tests passed before the formatting-only wrap.
+Inventory SHA-256:
+`05295953bfbab2da42d0ef9f9feac58a4013ab14313718f59c9151fb192e1966`.
+All 421 registry family rows and 887 roots remain unchanged. Continue bridge
+processor effects and configuration/placement questions, then other provider
+gaps. No new measurement system or runtime was added. Item 8 remains incomplete.
+
+
 YUNG bridge template membership is delivered in `01edbb8`. Eleven referenced
 layouts now have nominal XYZ sizes; three packaged wood layouts (13_0,
 13_0_broken, 15_0) are explicitly unreferenced by the verified selector. All
