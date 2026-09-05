@@ -8,12 +8,40 @@ from typing import TYPE_CHECKING, cast
 
 import pytest
 
-from mcpack_evidence.item8_pool_links import pool_links, template_links
+from mcpack_evidence.item8_pool_links import add_pool_elements, pool_links, template_links
 from mcpack_evidence.item8_pool_trace import trace_pool
 from tests.item8.test_inventory_sources import row
 
 if TYPE_CHECKING:
     from pydantic import JsonValue
+
+
+def test_pool_additions_preserve_delegate_provenance_and_constraints() -> None:
+    pools = pool_links([row("data/example/worldgen/template_pool/houses.json", {"elements": []})])
+    modifier = row("data/example/lithostitched/worldgen_modifier/tavern.json", {
+        "type": "lithostitched:add_template_pool_elements",
+        "template_pools": "example:houses",
+        "elements": [{"weight": 5, "element": {
+            "element_type": "lithostitched:limited", "limit": 1,
+            "delegate": {"element_type": "minecraft:single_pool_element",
+                         "location": "example:tavern", "processors": "minecraft:empty"},
+        }}],
+    })
+    add_pool_elements(pools, [modifier])
+    result = trace_pool("example:houses", pools, [])
+    assert result["missing"] == [{"kind": "template", "id": "example:tavern"}]
+    terminal = cast("list[dict[str, JsonValue]]", result["terminal_edges"])
+    edges = [cast("dict[str, JsonValue]", entry["edge"]) for entry in terminal]
+    addition = next(edge for edge in edges if edge["kind"] == "pool_addition")
+    assert addition["document"] == modifier["document"]
+    assert addition["source"] == {key: modifier[key] for key in ("archive", "path", "sha256")}
+    constraint = next(edge for edge in edges if edge["kind"] == "pool_element_constraint")
+    assert constraint["document"] == {"element_type": "lithostitched:limited", "limit": 1}
+    assert constraint["source"] == addition["source"]
+    document = cast("dict[str, JsonValue]", modifier["document"])
+    document["template_pools"] = ["example:missing"]
+    with pytest.raises(ValueError, match="unresolved pool modifier target"):
+        add_pool_elements(pools, [modifier])
 
 
 def test_pool_uses_path_identity_and_preserves_nested_links() -> None:
