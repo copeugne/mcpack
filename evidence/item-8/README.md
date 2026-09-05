@@ -883,3 +883,44 @@ that revision, SHA-256:
 The 22 prior CTOV village rows become one, retaining their union of templates,
 biome constraints, loot references and saved-start observation indexes. All other
 family rows are unchanged. Raw sources and their identities are unchanged.
+
+## MVS rock and pond family reconciliation (2026-09-05)
+
+`mvs:boulder` and `mvs:stone_rock` are retained as two roots of `mvs:rock`.
+Their full definitions differ only in start pool. One boulder and six stone-rock
+material/shape templates are alternatives of the same rock-landmark family.
+Resolved content has no authored entities, loot, spawners or generation markers.
+
+`mvs:mushroom_pond` and `mvs:small_oak_pond` are two roots of `mvs:pond`.
+Their definitions likewise differ only in start pool. Each design has upper and
+lower components, preserving vegetation/layout differences and distinct
+`mvs:mushroom_pond` and `mvs:pond` loot sources. These four templates are components,
+not four families. No authored entities, spawners or markers occur in resolved
+pond templates. All four roots have no missing or unresolved trace elements.
+
+Exact definitions and template dimensions remain in each variant. This is a
+family relationship decision, not proof of occupied/assembled dimensions,
+effective natural spawning or discovery. Other MVS relationship questions,
+including camps and floating-island designs, are not resolved by this increment.
+The working total becomes 429 groups with the same 887 registry roots.
+
+The added two cases in the existing family-decision tests compare definitions,
+common fields, pool traces, template identities/sizes, entity/spawner/marker
+absence and distinct loot sources directly with preserved catalogs. Existing
+MVS coverage requires all 129 roots to remain assigned exactly once. An initial
+read-only inspection expected a variants field on singleton rows and stopped
+with KeyError; inspecting their actual shape resolved that without changing data.
+
+Decision SHA-256:
+`4373ff8a6f7a5429f4f94907dd39a7d9d70a28d841f052c42a400e0f0790c705`.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-mvs-formations.json
+```
+
+All 66 affected tests passed. Type checking then required an explicit string
+parameter on the empty loot set; after that annotation-only fix, both formation
+cases and scoped Ruff/Basedpyright checks passed. No source behavior changed.

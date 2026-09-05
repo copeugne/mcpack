@@ -461,6 +461,61 @@ def test_mega_ship_variants_preserve_definitions_modules_and_mes_coverage() -> N
 
 
 @pytest.mark.parametrize(
+    ("family", "members", "template_count", "loot"),
+    [
+        ("mvs:rock", ["mvs:boulder", "mvs:stone_rock"], 7, set[str]()),
+        ("mvs:pond", ["mvs:mushroom_pond", "mvs:small_oak_pond"], 4,
+         {"mvs:mushroom_pond", "mvs:pond"}),
+    ],
+)
+def test_voyager_rocks_and_ponds_preserve_variant_content(
+    family: str, members: list[str], template_count: int, loot: set[str]
+) -> None:
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    group = next(g for g in decisions["groups"] if g["family_id"] == family)
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ).read_bytes())))
+    traces = cast("dict[str, dict[str, dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/pool-traces-content.json.gz"
+    ).read_bytes())))
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    assert group["structure_ids"] == sorted(variants) == members
+    templates: set[str] = set()
+    loot_found: set[str] = set()
+    for identifier, variant in variants.items():
+        path = f"data/mvs/worldgen/structure/{identifier.split(':')[1]}.json"
+        definitions = [r["document"] for r in catalog["resources"] if r["path"] == path]
+        assert definitions == [variant["definition"]]
+        definition = cast("dict[str, JsonValue]", variant["definition"])
+        assert group["common_generation_definition"] == {
+            k: v for k, v in definition.items() if k != "start_pool"
+        }
+        trace = traces["structures"][identifier]
+        assert trace["start_pool"] == definition["start_pool"]
+        assert trace["missing"] == variant["missing_components"] == []
+        assert trace["unresolved_elements"] == []
+        sizes = cast("dict[str, JsonValue]", variant["templates"])
+        assert trace["templates"] == sorted(sizes)
+        templates.update(sizes)
+        for template, size in sizes.items():
+            content = traces["template_contents"][template]
+            assert content["template_size_xyz"] == size
+            for field in ("authored_entities", "unresolved_entities", "spawner_blocks",
+                          "generation_markers"):
+                assert content[field] == []
+            loot_found.update(str(r["value"]) for r in cast(
+                "list[dict[str, JsonValue]]", content["loot_references"]
+            ))
+    assert len(templates) == template_count
+    assert loot_found == loot
+
+
+@pytest.mark.parametrize(
     ("family", "suffix", "member_count", "template_count"),
     [("mvs:living_tree", "_tree", 9, 15), ("mvs:well", "well", 17, 20)],
 )
