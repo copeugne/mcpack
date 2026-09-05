@@ -285,6 +285,9 @@ CLASSES = (
     "com/yungnickyoung/minecraft/betterendisland/config/BEIConfigNeoForge.class",
     "com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.class",
     "com/yungnickyoung/minecraft/betterendisland/module/ConfigModuleNeoForge.class",
+    "com/yungnickyoung/minecraft/betterendisland/mixin/SpikeFeatureMixin.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterSpikeFeature.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",

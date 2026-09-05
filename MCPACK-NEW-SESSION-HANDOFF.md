@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+Continue Better End Island provider coverage with SpikeFeatureMixin,
+BetterSpikeFeature and BetterEndPodiumFeature. These three exact source classes
+resolve untraced generation beyond the completed platform/gateway paths. Reuse
+the existing extractor and processor captures; no new measurement system is
+needed. Podium invocation and additional helpers may require subsequent tracing
+only when these classes identify a concrete missing dependency.
+
 Better End Island packaged mixin declarations are integrated in `68169a6`.
 The previously ignored metadata artifact is durably retained by `e74e6b2`.
 Twenty-eight focused tests and scoped checks passed. Inventory SHA-256:
