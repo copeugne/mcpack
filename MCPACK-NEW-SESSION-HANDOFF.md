@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Tavern Defaults and block-registration captures now reproduce using 297edcb in
+sources/tavern-registration-scope. Defaults links the same five village/tavern
+identities as packaged additions; fallback integer arguments must not replace
+the packaged Lithostitched weight. Block registration adds barrel block/item and
+a creative-tab entry. Remaining full scope includes other relevant entry classes
+and bundled tiny-config behavior. No full Tavern closure yet; counts stay 23/113.
+
 Village Taverns entry/mixin source is captured reproducibly using d8d1107 in
 sources/tavern-provider-entries. Its StructurePoolAPI injection is conditional on
 Lithostitched absence; do not double-count fallback and packaged additions.
