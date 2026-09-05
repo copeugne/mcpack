@@ -36,3 +36,16 @@ It checks the small-Nether-dungeon enabled configuration before continuing.
 Its effective frozen configuration and downstream assembly still require
 attribution. This extraction does not close dimensions, occupied geometry,
 discoverability, replacement behavior, loot integration or the Item 8 gate.
+
+Spider Dungeon encounter attribution was incorporated into family decisions at
+`0cb388e` and the generated inventory at `979b60d`. The direct source check is:
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k spider_dungeon -q
+```
+
+It binds source hashes, component construction references, spawner entity IDs,
+the egg-room chest table and the packaged natural-spawn override. Nineteen
+family-decision tests passed for this increment; scoped Ruff and basedpyright
+checks passed after correcting a test line-length issue. The inventory
+reproduced byte for byte. No generated counts or occupied dimensions were added.
