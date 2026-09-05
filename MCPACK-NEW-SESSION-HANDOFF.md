@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Spiral spire is one working landmark family in `0288f13`; repeated spires and
+random geometry remain instances/variants. Chorus vegetation is accounted for
+without a separate structure family. Source-derived attributes reference the
+existing captures and geometry derivation. Configuration binding, biome
+predicates and saved-world attribution remain open. Thirty focused tests and
+scoped checks passed. Do not reopen the procedural-versus-template distinction
+merely because the generator is outside the structure registry.
+
 Spiral spire geometry and direct contents are interpreted in `4586c78`, using
 existing captured code. Conservative requested-write envelope is 35x97x35,
 not an occupied measurement. Full geometry formulas and preflight limitations
