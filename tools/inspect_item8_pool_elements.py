@@ -505,6 +505,7 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     continue
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = "/mixin/" in name or "/mixins/" in name or name in {
+                    "com/aetherteam/aether/world/structurepiece/AetherTemplateStructurePiece.class",
                     "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MonumentPieces$MonumentBuilding.class",
                     "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MonumentPieces$MonumentPiece.class",
                     "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MonumentPieces$FitDoubleXYRoom.class",
