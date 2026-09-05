@@ -93,6 +93,10 @@ CLASSES = (
     "net/neoforged/neoforge/common/conditions/ConditionalOps$ConditionalDecoder.class",
     "net/neoforged/neoforge/common/conditions/ModLoadedCondition.class",
     "net/neoforged/neoforge/common/conditions/OrCondition.class",
+    "dev/worldgen/lithostitched/worldgen/modifier/SetPoolAliasesModifier.class",
+    "dev/worldgen/lithostitched/worldgen/poolalias/RandomEntries.class",
+    "dev/worldgen/lithostitched/mixin/common/PoolAliasLookupMixin.class",
+    "dev/worldgen/lithostitched/worldgen/modifier/internal/CompileRawTemplatesModifier.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
