@@ -191,6 +191,20 @@ def test_frozen_idless_trial_spawners_use_palette_without_changing_nbt() -> None
         prefix + "small_melee/silverfish.nbt": "minecraft:silverfish",
         prefix + "small_melee/slime.nbt": "minecraft:slime",
     }
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    group = next(
+        row for row in decisions["groups"] if row["family_id"] == "minecraft:trial_chambers"
+    )
+    mob_source = cast("dict[str, dict[str, JsonValue]]", group["attributes"])["mob_source"]
+    assert mob_source["conditional_ominous_sources"] == {
+        "minecraft:trial_chambers/spawner/" + path.removeprefix(prefix).removesuffix(".nbt"): entity
+        for path, entity in retained_normal.items()
+    }
+    for source in cast("list[str]", mob_source["basis"]):
+        digest = hashlib.sha256(Path(source).read_bytes()).hexdigest()
+        assert cast("dict[str, str]", group["evidence"])[source] == digest
 
 
 def test_idless_block_rejects_conflicting_palette_identities() -> None:
