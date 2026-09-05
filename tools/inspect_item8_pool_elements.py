@@ -56,6 +56,7 @@ ARCHIVES = frozenset(
         "BetterEnd-21.0.31.jar",
         "YungsBridges-1.21.1-NeoForge-5.1.1.jar",
         "YungsExtras-1.21.1-NeoForge-5.1.1.jar",
+        "YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar",
     }
 )
 GENERATION_PREFIXES = (
@@ -275,6 +276,10 @@ CLASSES = (
     "com/yungnickyoung/minecraft/yungsbridges/services/NeoForgeModulesLoader.class",
     "com/yungnickyoung/minecraft/yungsextras/services/IModulesLoader.class",
     "com/yungnickyoung/minecraft/yungsbridges/services/IModulesLoader.class",
+    "com/yungnickyoung/minecraft/betterendisland/mixin/EndPlatformFeatureMixin.class",
+    "com/yungnickyoung/minecraft/betterendisland/mixin/EndGatewayFeatureMixin.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndSpawnPlatformFeature.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
