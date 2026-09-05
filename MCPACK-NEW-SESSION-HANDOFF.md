@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Resolve remaining direct Better End Island activation dependencies through the
+existing extractor: respawn enum and stages 3/5 (spike/portal references), surface
+origin helper, NeoForge entrypoint, Services and its two NeoForge implementations.
+Preserve their exact META-INF service declarations in the existing metadata
+capture so implementation presence is not mistaken for ServiceLoader selection.
+These close variant invocation and frozen-config/runtime binding gaps; no new
+measurement, schema or validator is introduced.
+
 Podium invocation is integrated in `1bb1b8e`, source helper `48c6ceb`. Frozen
 true/true tower settings select the custom podium in both dragon-history states.
 Initial scan, missing-portal recovery, tracked-dragon death and reset now have
