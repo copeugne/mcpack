@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+Aether custom roots still lack generator attribution. Select the retained
+Aether archive's BronzeDungeonStructure, SilverDungeonStructure,
+GoldDungeonStructure, LargeAercloudStructure and LargeAercloudChunk with the
+existing extractor. The cloud writer is needed to resolve whether that registry
+root is a structure family or terrain contribution. Inspect direct dependencies
+before assigning content; do not add a new baseline or measurement system.
+
 Monument processor effects are integrated in 077fcd2 using dc9ac0a's reproduced
 captures. The inventory preserves downward support extent, state-only pillar
 writes, surface finalization and unseeded ordering as source findings with
