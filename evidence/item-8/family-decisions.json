@@ -28615,7 +28615,8 @@
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/better-end-island-processors/identities.json": "dfeb5a2586c4b82b3e0e6eb5712149d1ab8adfc6689cc7ece108490a2b7d9b95",
           "evidence/item-6/frozen/config/betterendisland-neoforge-1_21.toml": "9f967435aa86ab5959ee76a215cde5176bee106fae08df3b6e440c77a823867a",
-          "evidence/item-8/sources/better-end-island-configuration/identities.json": "56c0b14dfb0f0a11156acd745548cb01085bce05ed965bbc38bdbeae19fed3cb"
+          "evidence/item-8/sources/better-end-island-configuration/identities.json": "56c0b14dfb0f0a11156acd745548cb01085bce05ed965bbc38bdbeae19fed3cb",
+          "evidence/item-8/sources/better-end-island-platform-gateway/YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar/mixin-metadata.json": "9edd653c4d2fb45318c02ff41838941b914774d87f8d799d20aa99aa8fa91813"
         },
         "processor_effects": {
           "DragonEggProcessor": "Reads the existing world block at the incoming target position. If it is DRAGON_EGG, replaces the incoming block state with default DRAGON_EGG while preserving position and incoming NBT. Otherwise returns the incoming block unchanged. This preserves an existing egg, rather than creating an egg reward at an empty target.",
@@ -28644,6 +28645,17 @@
           "binding": "BEIConfigNeoForge defines these keys and defaults. ConfigModuleNeoForge.init registers the spec as COMMON under this filename. bakeConfig copies each ConfigValue into the corresponding BetterEndIslandCommon.CONFIG field. ConfigModule constructor defaults match the frozen values.",
           "platform_gateway_effect": "Both vanilla-generation toggles are false, selecting the custom branch in their captured hooks when those hooks apply.",
           "scope": "Verified frozen values and direct key-to-field assignment. This does not prove entrypoint invocation, effective mixin activation or successful world generation. Tower/egg/bell consumers require separate attribution."
+        },
+        "mixin_declaration": {
+          "metadata": "evidence/item-8/sources/better-end-island-platform-gateway/YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar/mixin-metadata.json",
+          "config": "betterendisland.mixins.json",
+          "required": true,
+          "defaultRequire": 1,
+          "hooks": [
+            "EndPlatformFeatureMixin",
+            "EndGatewayFeatureMixin"
+          ],
+          "scope": "NeoForge mod metadata declares this required common mixin configuration, which lists both captured hooks and has no plugin entry. This establishes packaged application intent, not direct runtime transformation or world-generation observation."
         }
       }
     }

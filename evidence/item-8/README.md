@@ -1972,3 +1972,13 @@ configuration attribution. Previous family records remain unchanged.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-config.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-config.json
 ```
+
+### Better End Island mixin declaration
+
+The inventory now links the retained NeoForge metadata and required common mixin
+configuration to both feature hooks. This is packaged application intent; direct
+runtime transformation and world observation remain distinct. The metadata was
+already extracted and reproduced, but initially missed by staging because its
+parent directory ends in .jar. Commit e74e6b2 corrected that omission.
+Twenty-eight focused tests passed. Wrapping one long line resolved Ruff's finding;
+scoped Ruff/Basedpyright then passed. No new capture or runtime was needed.
