@@ -17,7 +17,21 @@ if TYPE_CHECKING:
 
 
 @pytest.mark.parametrize(
-    "namespace", ["integrated_villages:", "dungeons_arise:", "explorations:", "explorify:"]
+    "namespace",
+    [
+        "integrated_villages:",
+        "dungeons_arise:",
+        "explorations:",
+        "explorify:",
+        "betterdeserttemples:",
+        "betterdungeons:",
+        "betterfortresses:",
+        "betterjungletemples:",
+        "betteroceanmonuments:",
+        "betterstrongholds:",
+        "betterwitchhuts:",
+        "mes:",
+    ],
 )
 def test_authored_designs_bind_roots_settings_and_missing_components(
     namespace: str,
@@ -39,15 +53,12 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
     members = [member for row in groups for member in cast("list[str]", row["structure_ids"])]
     assert len(members) == len(set(members))
     expected = {key for key in registry if key.startswith(namespace)}
-    if namespace == "explorify:":
-        # Multi-entry biome groups are covered by the Explorify variant test.
-        expected = {
-            key
-            for key in expected
-            if not key.startswith(
-                ("explorify:supply_cache/", "explorify:watchtower/", "explorify:guide_post_")
-            )
-        }
+    # Multi-entry Explorify groups have a separate test; Mega Ship is still unresolved.
+    excluded_prefixes = {
+        "explorify:": ("explorify:supply_cache/", "explorify:watchtower/", "explorify:guide_post_"),
+        "mes:": ("mes:mega_ship",),
+    }.get(namespace, ())
+    expected = {key for key in expected if not key.startswith(excluded_prefixes)}
     assert members
     assert set(members) == expected
     catalog = cast(
@@ -75,7 +86,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         ),
     )
     structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
-    if namespace == "dungeons_arise:":
+    if namespace in ("dungeons_arise:", "mes:"):
         seen: set[str] = set()
         for identifier in sorted(expected):
             templates = set(cast("list[str]", structures[identifier]["templates"]))
@@ -87,6 +98,16 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         identifier = str(row["family_id"])
         assert row["structure_ids"] == [identifier]
         definition = definitions[identifier]
+        if namespace == "mes:":
+            assert row["custom_generation_settings"] == {
+                key: definition[key]
+                for key in (
+                    "allowed_terrain_height_range",
+                    "terrain_height_radius_check",
+                    "y_allowance",
+                )
+                if key in definition
+            }
         assert row["start_pool"] == definition.get("start_pool")
         if "start_pool" in definition:
             assert row["start_pool"] == structures[identifier]["start_pool"]
@@ -212,6 +233,76 @@ def test_explorify_variants_bind_definitions_templates_and_complete_namespace() 
                 assert loot == [f"minecraft:chests/village/village_{biome}_house"]
         for path, digest in cast("dict[str, str]", group["evidence"]).items():
             assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+
+
+def test_spider_dungeon_attributes_bind_custom_spawners_loot_and_components() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, JsonValue]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    group = next(
+        row
+        for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
+        if row["family_id"] == "betterdungeons:spider_dungeon"
+    )
+    texts: dict[str, str] = {}
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        raw = (root / path).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == digest
+        if path.endswith(".txt"):
+            texts[Path(path).stem.rsplit(".", 1)[-1]] = raw.decode()
+    assert "SpiderDungeonBigTunnelPiece" in texts["SpiderDungeonStructure"]
+    assert "addChildren:" in texts["SpiderDungeonStructure"]
+    assert group["custom_components"] == [
+        "SpiderDungeonBigTunnelPiece",
+        "SpiderDungeonSmallTunnelPiece",
+        "SpiderDungeonNestPiece",
+        "SpiderDungeonEggRoomPiece",
+    ]
+    for component in (
+        "SpiderDungeonBigTunnelPiece",
+        "SpiderDungeonSmallTunnelPiece",
+        "SpiderDungeonNestPiece",
+    ):
+        reference = f"spider_dungeon/piece/{component}"
+        assert reference in texts["SpiderDungeonBigTunnelPiece"]
+    assert "SpiderDungeonEggRoomPiece" in texts["SpiderDungeonSmallTunnelPiece"]
+    attrs = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
+    spawners = cast("list[dict[str, str]]", attrs["generated_spawners"]["source_components"])
+    assert [(row["class"], row["entity_id"]) for row in spawners] == [
+        ("SpiderDungeonNestPiece", "minecraft:cave_spider"),
+        ("SpiderDungeonEggRoomPiece", "minecraft:spider"),
+    ]
+    for row in spawners:
+        code = texts[row["class"]]
+        assert "public void " + row["method"] + "(" in code
+        assert "Blocks.SPAWNER:" in code
+        assert "EntityType." + row["entity_id"].split(":")[1].upper() + ":" in code
+        assert "SpawnerBlockEntity.setEntityId:" in code
+    loot = str(attrs["loot_table_source"]["generated_chest_table"])
+    namespace, path = loot.split(":")
+    assert "// String " + namespace in texts["SpiderDungeonEggRoomPiece"]
+    assert "// String " + path in texts["SpiderDungeonEggRoomPiece"]
+    assert "Method createChest:" in texts["SpiderDungeonEggRoomPiece"]
+    catalog = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    resources = cast("list[dict[str, JsonValue]]", catalog["resources"])
+    definition = next(
+        cast("dict[str, JsonValue]", row["document"])
+        for row in resources
+        if row["path"] == "data/betterdungeons/worldgen/structure/spider_dungeon.json"
+    )
+    assert attrs["mob_source"]["structure_spawn_override"] == definition["spawn_overrides"]
+    assert definition["step"] == "underground_structures"
+    assert any(row["path"] == f"data/{namespace}/loot_table/{path}.json" for row in resources)
+    assert attrs["generated_spawners"]["observed_per_structure_counts"] == "UNKNOWN"
 
 
 def test_integrated_stronghold_keeps_rooms_as_components_and_binds_spawn_override() -> None:
