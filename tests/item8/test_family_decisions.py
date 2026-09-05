@@ -304,6 +304,88 @@ def test_mega_ship_variants_preserve_definitions_modules_and_mes_coverage() -> N
             assert definition["terrain_adaptation"] == "none"
 
 
+def test_soaring_tree_variants_bind_common_definition_and_template_contents() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, JsonValue]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    group = next(
+        row
+        for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
+        if row["family_id"] == "mss:tree"
+    )
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    registry = read_registry(
+        root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )
+    assert group["structure_ids"] == sorted(variants)
+    assert set(variants) == {key for key in registry if key.startswith("mss:tree_")}
+    assert len(variants) == 8
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+    catalog = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    resources = cast("list[dict[str, JsonValue]]", catalog["resources"])
+    traces = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
+    contents = cast("dict[str, dict[str, JsonValue]]", traces["template_contents"])
+    for identifier, variant in variants.items():
+        name = identifier.split(":")[1]
+        definitions = [
+            cast("dict[str, JsonValue]", row["document"])
+            for row in resources
+            if row["path"] == f"data/mss/worldgen/structure/{name}.json"
+        ]
+        assert len(definitions) == 1
+        assert group["common_generation_definition"] == {
+            key: value for key, value in definitions[0].items() if key != "start_pool"
+        }
+        assert variant["start_pool"] == definitions[0]["start_pool"]
+        assert variant["template"] == identifier
+        pools = [
+            row["document"]
+            for row in resources
+            if row["path"] == f"data/mss/worldgen/template_pool/{name}_start_pool.json"
+        ]
+        assert pools == [
+            {
+                "name": variant["start_pool"],
+                "fallback": "minecraft:empty",
+                "elements": [
+                    {
+                        "weight": 1,
+                        "element": {
+                            "element_type": "minecraft:single_pool_element",
+                            "location": identifier,
+                            "processors": "minecraft:empty",
+                            "projection": "rigid",
+                        },
+                    }
+                ],
+            }
+        ]
+        assert structures[identifier]["templates"] == [identifier]
+        assert structures[identifier]["missing"] == []
+        content = contents[identifier]
+        assert variant["template_size_xyz"] == content["template_size_xyz"]
+        assert content["authored_entities"] == content["loot_references"] == []
+        assert content["spawner_blocks"] == content["generation_markers"] == []
+
+
 def test_spider_dungeon_attributes_bind_custom_spawners_loot_and_components() -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(
