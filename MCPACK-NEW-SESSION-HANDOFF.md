@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+YUNG bridge template membership is delivered in `01edbb8`. Eleven referenced
+layouts now have nominal XYZ sizes; three packaged wood layouts (13_0,
+13_0_broken, 15_0) are explicitly unreferenced by the verified selector. All
+fourteen templates have empty entity/block-entity lists, which do not establish
+effective generated contents before custom marker/processor handling is checked.
+Seven affected tests passed; scoped checks pass after two test line wraps.
+Inventory SHA-256:
+`38eb038f5c04562162292988e8d55c407ea6f78cc489cdac8a0c5db9f69d3938`.
+All 421 registry family rows / 887 roots remain unchanged. Next inspect bridge
+custom generation/marker handling and configuration controls; no bridge-named
+frozen config was found, which is not proof that controls are absent. Continue
+other non-registry/provider gaps afterward. Item 8 remains incomplete. No new
+runtime, extraction or measurement system was added.
+
+
 YUNG's Bridges feature contribution is delivered in `6309287`. The existing
 non_registry_content field now holds verified contributions from the same pinned
 decision file. This minimal extension is necessary because structure-only groups

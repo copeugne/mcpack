@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `6309287`, SHA-256
-`da35ac84a7e3c198fc648088f7001b8cfad29ab311f6e3bf16d84738e0176c97`.
+Current working inventory regenerated at `01edbb8`, SHA-256
+`38eb038f5c04562162292988e8d55c407ea6f78cc489cdac8a0c5db9f69d3938`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1382,3 +1382,8 @@ uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_it
 uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-bridge-templates.json
 ```
+
+Inventory regenerated at `01edbb8`, SHA-256:
+`38eb038f5c04562162292988e8d55c407ea6f78cc489cdac8a0c5db9f69d3938`.
+Only the bridge contribution and decision identity changed; all 421 registry
+family rows and 887 roots remain unchanged.
