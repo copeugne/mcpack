@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Mansion candidate content and source placement are integrated in 8ba362c.
+Child template entities, chest loot references and selected spider spawner
+inputs are tested; surface anchoring and the foundation envelope limitation
+are explicit. The working inventory reproduces byte for byte. Do not repeat
+these catalog joins. Exact layout reachability, runtime loading, geometry,
+external effects and discoverability remain open. Continue the remaining
+custom-generation and provider-coverage work in the evidence README.
+
 The remaining delivery work is now listed in evidence/item-8/README.md, under
 "Remaining delivery work at 4a8478b". Use the existing family and contribution
 records to resolve that list; do not add a progress measurement system. Provider
