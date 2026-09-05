@@ -506,3 +506,24 @@ records are unchanged. Ocean and desert-mimic observations are linked; outpost
 fort/tower/camp and general village groups have no retained observations.
 Missing resources, effective attributes and final canonical reconciliation
 remain open. No additional measurement system was needed.
+
+IDAS (`1a65a9e`, joined in `60e419b`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-1a65a9e.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-1a65a9e-repro.json
+cmp evidence/raw/item8/inventory-idas-1a65a9e.json evidence/raw/item8/inventory-idas-1a65a9e-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 46 focused tests and scoped Ruff/basedpyright checks passed. The existing
+provider check now also verifies 84 distinct IDAS registry roots across 62
+working groups, full variant definitions and exact missing-component lists.
+Nested optional-mod identifiers remain intact. Dependencies and adaptive pool
+switches are preserved without claiming that declared start-pool traces cover
+the effective replacement. The first lint attempt caught pytest parameter-name
+formatting; it was corrected before the successful checks. A JSON key-order
+rewrite was rejected during diff inspection and removed before committing;
+prior decisions and generated family records remain unchanged. The generated
+join is isolated because it expands existing biome, template and observation
+attribution for the whole provider. No new measurement system was introduced.
