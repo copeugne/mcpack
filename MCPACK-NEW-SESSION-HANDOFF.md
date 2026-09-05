@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Better End Island platform/gateway generator attribution is delivered in
+`189240a`. The third non-registry contribution records two template links,
+envelopes, placement offsets, processor order and failure limits. Twenty-five
+focused tests and scoped checks passed. Inventory SHA-256:
+`8e571bbcf2a382dd9d0a82735de2dc3e43296e8f4aaa8c4490ddfd00a7468111`.
+Next inspect ObsidianProcessor/DragonEggProcessor and frozen configuration
+binding, then spike/podium paths. Do not repeat platform/gateway generator reads.
+Prior family records are unchanged. Item 8 remains incomplete.
+
 Full-provider reconciliation resumes with YUNG Better End Island. Its packaged
 JSON catalog has only two block-tag resources, while the retained JAR contains
 custom platform, gateway, spike and podium code. Trace the platform/gateway
