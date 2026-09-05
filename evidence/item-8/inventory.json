@@ -74988,9 +74988,38 @@
       }
     },
     "minecraft:igloo": {
-      "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "approximate_footprint": {
+        "basis": "Union of frozen template envelopes at vanilla component offsets. Middle pieces fit within this footprint. All component pivots align horizontally; rotation exchanges axes.",
+        "scope": "Nominal vanilla assembly envelope, not occupied volume, visibility or an observed world measurement.",
+        "with_basement_xz_blocks": [
+          7,
+          10
+        ],
+        "without_basement_xz_blocks": [
+          7,
+          8
+        ]
+      },
+      "approximate_vertical_size": {
+        "basis": "Top occupies relative Y 0 through 4. Basement minimum is -3 - 3n for n = nextInt(8) + 4. All pieces share the same transformed terrain reference, so their common height adjustment preserves the envelope.",
+        "scope": "Nominal vanilla assembly height including underground components, not exposed height or retained-mod behavior.",
+        "with_basement_options_blocks": [
+          20,
+          23,
+          26,
+          29,
+          32,
+          35,
+          38,
+          41
+        ],
+        "without_basement_blocks": 5
+      },
+      "authored_or_natural_enemies": {
+        "authored": "A zombie villager is authored in the optional basement template alongside a villager.",
+        "natural": "The packaged structure has empty spawn_overrides; this does not establish absence of natural biome spawning.",
+        "scope": "Authored source attribution; actual spawning and retained-mod effects remain unresolved."
+      },
       "biome_constraints": {
         "minecraft:igloo": {
           "biomes": [
@@ -75032,83 +75061,157 @@
         "observed": []
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {
-          "minecraft:igloo": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "minecraft:igloo"
-          }
-        },
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
+        "basis": [
+          "evidence/item-8/sources/templates-redacted.json.gz",
+          "evidence/item-8/sources/vanilla-igloo-code/identities.json"
         ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [],
-        "unresolved_sources": {}
+        "mechanism": "No ordinary or trial-spawner block types in the three templates; the inspected vanilla marker handler assigns chest loot and does not place spawners.",
+        "scope": "Packaged templates and vanilla code only; retained-mod injections remain unresolved.",
+        "vanilla_template_spawner_block_types": []
       },
       "grouping_decision": {
+        "attributes": {
+          "approximate_footprint": {
+            "basis": "Union of frozen template envelopes at vanilla component offsets. Middle pieces fit within this footprint. All component pivots align horizontally; rotation exchanges axes.",
+            "scope": "Nominal vanilla assembly envelope, not occupied volume, visibility or an observed world measurement.",
+            "with_basement_xz_blocks": [
+              7,
+              10
+            ],
+            "without_basement_xz_blocks": [
+              7,
+              8
+            ]
+          },
+          "approximate_vertical_size": {
+            "basis": "Top occupies relative Y 0 through 4. Basement minimum is -3 - 3n for n = nextInt(8) + 4. All pieces share the same transformed terrain reference, so their common height adjustment preserves the envelope.",
+            "scope": "Nominal vanilla assembly height including underground components, not exposed height or retained-mod behavior.",
+            "with_basement_options_blocks": [
+              20,
+              23,
+              26,
+              29,
+              32,
+              35,
+              38,
+              41
+            ],
+            "without_basement_blocks": 5
+          },
+          "authored_or_natural_enemies": {
+            "authored": "A zombie villager is authored in the optional basement template alongside a villager.",
+            "natural": "The packaged structure has empty spawn_overrides; this does not establish absence of natural biome spawning.",
+            "scope": "Authored source attribution; actual spawning and retained-mod effects remain unresolved."
+          },
+          "generated_spawners": {
+            "basis": [
+              "evidence/item-8/sources/templates-redacted.json.gz",
+              "evidence/item-8/sources/vanilla-igloo-code/identities.json"
+            ],
+            "mechanism": "No ordinary or trial-spawner block types in the three templates; the inspected vanilla marker handler assigns chest loot and does not place spawners.",
+            "scope": "Packaged templates and vanilla code only; retained-mod injections remain unresolved.",
+            "vanilla_template_spawner_block_types": []
+          },
+          "loot_table_source": {
+            "basis": [
+              "evidence/item-8/sources/vanilla-igloo-code/identities.json",
+              "evidence/item-8/sources/vanilla-end-city-code/identities.json",
+              "evidence/item-8/sources/templates-redacted.json.gz"
+            ],
+            "marker": "chest",
+            "placed_item_reward": {
+              "container": "minecraft:brewing_stand",
+              "count": 1,
+              "item": "minecraft:splash_potion",
+              "potion": "minecraft:weakness",
+              "template": "minecraft:igloo/bottom"
+            },
+            "placement": "Clear the marker and assign IGLOO_CHEST to a ChestBlockEntity immediately below, with a random loot seed.",
+            "scope": "Vanilla assignment and packaged placed item; effective retained-mod loot contents remain unresolved.",
+            "table": "minecraft:chests/igloo_chest"
+          },
+          "mob_source": {
+            "authored_entity_ids": [
+              "minecraft:villager",
+              "minecraft:zombie_villager"
+            ],
+            "count_per_template": {
+              "minecraft:villager": 1,
+              "minecraft:zombie_villager": 1
+            },
+            "mechanism": "Basement template entities; top and middle entities are empty. The chest marker handler creates no mobs.",
+            "scope": "Packaged authored entities, not observed successful placement or natural-spawn populations. Retained-mod transformations remain unresolved.",
+            "template": "minecraft:igloo/bottom"
+          },
+          "underground_surface_classification": {
+            "basis": "WORLD_SURFACE_WG height adjustment, top component at the adjusted surface reference, ladder and basement at negative vertical offsets. Basement selection is nextDouble < 0.5; n = nextInt(8) + 4 controls depth.",
+            "classification": "Surface shelter with optional underground ladder and basement.",
+            "scope": "Vanilla placement design. Code selection probability is not observed frequency, and terrain exposure is not measured."
+          }
+        },
         "evidence": {
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+          "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c",
+          "evidence/item-8/sources/vanilla-igloo-code/identities.json": "5104752aa5eb795053f75e8d62731b7ea7d79af1f9cacfdccfe2e55f9336838e"
         },
         "family_id": "minecraft:igloo",
         "name": "Vanilla igloo",
-        "rationale": "One vanilla igloo generation design. Its components and layout alternatives are not extra families. Packaged definition identity is preserved; retained-mod hooks, effective content and remaining attributes require reconciliation.",
+        "rationale": "One vanilla igloo design with a surface shelter and optional ladder/basement assembly. The three referenced templates are components, not extra families. Retained-mod effects and remaining effective attributes require reconciliation.",
         "structure_ids": [
           "minecraft:igloo"
         ],
         "variants": {
           "minecraft:igloo": {
+            "component_scope": "All three frozen vanilla generator references resolve in the template catalog. Retained-mod transformations remain unresolved.",
             "definition": {
               "biomes": "#minecraft:has_structure/igloo",
               "spawn_overrides": {},
               "step": "surface_structures",
               "type": "minecraft:igloo"
             },
-            "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+            "missing_components": [],
+            "vanilla_code_template_ids": [
+              "minecraft:igloo/bottom",
+              "minecraft:igloo/middle",
+              "minecraft:igloo/top"
+            ]
           }
         }
       },
       "intended_hostility": "UNKNOWN",
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {
-          "minecraft:igloo": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "minecraft:igloo"
-          }
-        },
-        "fields": [
-          "loot_references"
+        "basis": [
+          "evidence/item-8/sources/vanilla-igloo-code/identities.json",
+          "evidence/item-8/sources/vanilla-end-city-code/identities.json",
+          "evidence/item-8/sources/templates-redacted.json.gz"
         ],
-        "packaged_references": [],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": []
+        "marker": "chest",
+        "placed_item_reward": {
+          "container": "minecraft:brewing_stand",
+          "count": 1,
+          "item": "minecraft:splash_potion",
+          "potion": "minecraft:weakness",
+          "template": "minecraft:igloo/bottom"
+        },
+        "placement": "Clear the marker and assign IGLOO_CHEST to a ChestBlockEntity immediately below, with a random loot seed.",
+        "scope": "Vanilla assignment and packaged placed item; effective retained-mod loot contents remain unresolved.",
+        "table": "minecraft:chests/igloo_chest"
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {
-          "minecraft:igloo": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "minecraft:igloo"
-          }
-        },
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
+        "authored_entity_ids": [
+          "minecraft:villager",
+          "minecraft:zombie_villager"
         ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [],
-        "unresolved_authored_entities": {}
+        "count_per_template": {
+          "minecraft:villager": 1,
+          "minecraft:zombie_villager": 1
+        },
+        "mechanism": "Basement template entities; top and middle entities are empty. The chest marker handler creates no mobs.",
+        "scope": "Packaged authored entities, not observed successful placement or natural-spawn populations. Retained-mod transformations remain unresolved.",
+        "template": "minecraft:igloo/bottom"
       },
       "name": "Vanilla igloo",
       "pool_trace_ids": [],
@@ -75116,7 +75219,11 @@
       "structure_ids": [
         "minecraft:igloo"
       ],
-      "underground_surface_classification": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "WORLD_SURFACE_WG height adjustment, top component at the adjusted surface reference, ladder and basement at negative vertical offsets. Basement selection is nextDouble < 0.5; n = nextInt(8) + 4 controls depth.",
+        "classification": "Surface shelter with optional underground ladder and basement.",
+        "scope": "Vanilla placement design. Code selection probability is not observed frequency, and terrain exposure is not measured."
+      },
       "visual_discoverability": "UNKNOWN",
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
@@ -157800,7 +157907,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "da5faabb91380aaa6fc09b36a941ded23a633dc50888705eb0a5776e2f8a3bb3",
+    "evidence/item-8/family-decisions.json": "06cff81b09d0caa84837c979acd85bfa207b9037ab27e3e9134853ba6811a89d",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
     "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
