@@ -135720,7 +135720,10 @@
     },
     "repurposed_structures:monument": {
       "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
+      "approximate_vertical_size": {
+        "limitation": "Downward pillar processors can extend beyond template and saved-piece bounds. Actual extent depends on terrain, build bounds, configured length, region-center checks and placement; template height is not a full occupied-height estimate.",
+        "value": "UNKNOWN: no retained full-start-chunk envelope observation"
+      },
       "authored_or_natural_enemies": {
         "authored": "Candidate templates explicitly contain hostile entity IDs, with nonhostile striders additionally present in the Nether variant.",
         "natural": "Per-variant monster spawn overrides define additional natural-spawn sources within pieces.",
@@ -135879,6 +135882,10 @@
       },
       "grouping_decision": {
         "attributes": {
+          "approximate_vertical_size": {
+            "limitation": "Downward pillar processors can extend beyond template and saved-piece bounds. Actual extent depends on terrain, build bounds, configured length, region-center checks and placement; template height is not a full occupied-height estimate.",
+            "value": "UNKNOWN: no retained full-start-chunk envelope observation"
+          },
           "authored_or_natural_enemies": {
             "authored": "Candidate templates explicitly contain hostile entity IDs, with nonhostile striders additionally present in the Nether variant.",
             "natural": "Per-variant monster spawn overrides define additional natural-spawn sources within pieces.",
@@ -135902,7 +135909,8 @@
               "repurposed_structures:chests/monuments/nether"
             ],
             "processor_table": "repurposed_structures:archaeology/monument_jungle",
-            "scope": "Selected packaged inputs. Surface processor execution and relevant retained loot modifications remain UNKNOWN."
+            "scope": "Selected packaged sources and captured direct processor behavior. Effective engine finalization and relevant retained loot modifications remain UNKNOWN.",
+            "surface_execution": "The captured surface processor delegates during finalizeProcessing for eligible processed template blocks. Pillar extension calls processBlock only and writes state without delegated NBT; archaeology loot is not inferred on those extensions."
           },
           "mob_source": {
             "candidate_template_entities_by_variant": {
@@ -135930,7 +135938,7 @@
               ]
             },
             "natural_source": "Each selected structure definition supplies monster spawn overrides with piece bounding-box scope. Preserve the exact variant definitions for entity weights and group sizes; these are natural-spawn inputs, not generated entity counts.",
-            "scope": "Base authored template IDs only. Effective processor behavior, entity placement/finalization, retained spawning modifications and live populations remain UNKNOWN."
+            "scope": "Base authored template IDs and captured direct processor behavior only. The inspected custom processors do not directly spawn entities. Effective entity placement/finalization, retained spawning modifications and live populations remain UNKNOWN."
           }
         },
         "custom_components": {
@@ -135944,12 +135952,22 @@
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/repurposed-monument-processors/identities.json": "d1dc51ab4782be630633659dbea1fdc396c622d0c2076532cee86ce01fcef76d",
           "evidence/item-8/sources/repurposed-monument-rooms/identities.json": "58a0a51e3c6eec5171d450ed23b7345420230e3a71e05f608d09da4dc74059d9",
           "evidence/item-8/sources/repurposed-monument/identities.json": "3e6b74fb9b31ae3758d87b1ba365090f52962ae582deb6d55dae85db29a59379",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
         },
         "family_id": "repurposed_structures:monument",
         "name": "Repurposed Structures Monument",
+        "processor_effects": {
+          "material_replacements": "Noise and random replacement callers operate on the configured input block and preserve position/NBT, delegating compatible state-property copying to GeneralUtils. Their selected monument outputs are material changes, not additional direct entity or loot assignments. Exact patterns are not measured.",
+          "nether_lava": "Selected rules change air to lava under a 0..31 Y-position predicate. YValuePosRuleTest tests its second position argument inclusively. Effective engine argument mapping and predicate registration remain unverified; no converted-block observation is claimed.",
+          "pillar_delegation": "Extension positions invoke referenced processors through processBlock only. The direct chunk write uses returned state at the extension position and discards returned NBT. It does not invoke delegate finalizeProcessing. Thus the jungle surface archaeology delegate is not applied through this pillar path.",
+          "pillar_extension": "PillarProcessor matches the complete trigger state and extends along the configured direction within build bounds, strict length distance and its land/replaceability checks. It skips extension outside the WorldGenRegion center chunk. The default length ceiling is 1000, direction DOWN and forced_placement false; selected red-glass columns explicitly force length 2. These are source bounds, not observed heights.",
+          "remaining": "Engine processing/finalization behavior, effective registry activation, relevant retained modifications, land-helper semantics, generated-world attribution and final geometry remain unresolved.",
+          "reproducibility": "The surface finalizer uses Collections.shuffle(List) without a supplied seeded random. This establishes a source-level ordering limitation, not an observed world mismatch. Full processor seed determinism is not claimed.",
+          "surface_loot": "CappedStructureSurfaceProcessor implements finalizeProcessing, requires equal original/processed list sizes, filters to placement bounds and surface eligibility, then invokes its delegate processBlock. It keeps only nonnull changed results in the processed list. The jungle delegate can assign suspicious-gravel archaeology loot on eligible template blocks. Effective engine invocation and placed archaeology blocks remain UNKNOWN."
+        },
         "rationale": "Four material/biome variants share the custom MonumentBuilding room graph and ordered room fitters. Captured building/fitter call sites bind candidate pools and templates. Rooms, openings and body sections are components, not additional families. Nether fixes Y at 30; other variants use terrain weighting, and spawn overrides differ. Exact graph reachability and effective content remain unresolved.",
         "structure_ids": [
           "repurposed_structures:monument_desert",
@@ -135994,7 +136012,7 @@
               "type": "repurposed_structures:monument_structure",
               "valid_biome_radius_check": 3
             },
-            "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+            "missing_components": "No missing catalog resources in the tested direct candidate set. Full graph reachability remains UNKNOWN; see custom_components."
           },
           "repurposed_structures:monument_icy": {
             "definition": {
@@ -136025,7 +136043,7 @@
               "terrain_adaptation": "none",
               "type": "repurposed_structures:monument_structure"
             },
-            "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+            "missing_components": "No missing catalog resources in the tested direct candidate set. Full graph reachability remains UNKNOWN; see custom_components."
           },
           "repurposed_structures:monument_jungle": {
             "definition": {
@@ -136063,7 +136081,7 @@
               "type": "repurposed_structures:monument_structure",
               "valid_biome_radius_check": 3
             },
-            "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+            "missing_components": "No missing catalog resources in the tested direct candidate set. Full graph reachability remains UNKNOWN; see custom_components."
           },
           "repurposed_structures:monument_nether": {
             "definition": {
@@ -136100,7 +136118,7 @@
               "terrain_adaptation": "beard_box",
               "type": "repurposed_structures:monument_structure"
             },
-            "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+            "missing_components": "No missing catalog resources in the tested direct candidate set. Full graph reachability remains UNKNOWN; see custom_components."
           }
         }
       },
@@ -136117,7 +136135,8 @@
           "repurposed_structures:chests/monuments/nether"
         ],
         "processor_table": "repurposed_structures:archaeology/monument_jungle",
-        "scope": "Selected packaged inputs. Surface processor execution and relevant retained loot modifications remain UNKNOWN."
+        "scope": "Selected packaged sources and captured direct processor behavior. Effective engine finalization and relevant retained loot modifications remain UNKNOWN.",
+        "surface_execution": "The captured surface processor delegates during finalizeProcessing for eligible processed template blocks. Pillar extension calls processBlock only and writes state without delegated NBT; archaeology loot is not inferred on those extensions."
       },
       "mob_source": {
         "candidate_template_entities_by_variant": {
@@ -136145,7 +136164,7 @@
           ]
         },
         "natural_source": "Each selected structure definition supplies monster spawn overrides with piece bounding-box scope. Preserve the exact variant definitions for entity weights and group sizes; these are natural-spawn inputs, not generated entity counts.",
-        "scope": "Base authored template IDs only. Effective processor behavior, entity placement/finalization, retained spawning modifications and live populations remain UNKNOWN."
+        "scope": "Base authored template IDs and captured direct processor behavior only. The inspected custom processors do not directly spawn entities. Effective entity placement/finalization, retained spawning modifications and live populations remain UNKNOWN."
       },
       "name": "Repurposed Structures Monument",
       "pool_trace_ids": [],
@@ -159007,7 +159026,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "0fb08199b6461006cb130d46df37de838796f20d3a018edba031fcd70e77d436",
+    "evidence/item-8/family-decisions.json": "c1986aa9c41ee633e5b2e9ae3f1e366bad853a161bda93a72c7bfa3dbde86106",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
