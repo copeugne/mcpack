@@ -288,6 +288,11 @@ CLASSES = (
     "com/yungnickyoung/minecraft/betterendisland/mixin/SpikeFeatureMixin.class",
     "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterSpikeFeature.class",
     "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature.class",
+    "com/yungnickyoung/minecraft/betterendisland/mixin/EndSpikeMixin.class",
+    "com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/SpikeCacheLoader.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/processor/BlockReplaceProcessor.class",
+    "com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -368,6 +373,8 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     CLASSES[0],
                     "org/betterx/betterend/registry/EndStructures.class",
                     "com/yungnickyoung/minecraft/yungsextras/module/FeatureModule.class",
+                    "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterSpikeFeature.class",
+                    "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature.class",
                     "net/minecraft/world/level/levelgen/structure/structures/DesertPyramidStructure.class",
                     "net/minecraft/world/level/levelgen/structure/structures/JungleTempleStructure.class",
                     "net/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece.class",
