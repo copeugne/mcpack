@@ -294,6 +294,14 @@ CLASSES = (
     "com/yungnickyoung/minecraft/betterendisland/world/processor/BlockReplaceProcessor.class",
     "com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.class",
     "com/yungnickyoung/minecraft/betterendisland/world/util/ExitPortalUtils.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage$3.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage$5.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/util/WorldgenUtils.class",
+    "com/yungnickyoung/minecraft/betterendisland/BetterEndIslandNeoForge.class",
+    "com/yungnickyoung/minecraft/betterendisland/services/Services.class",
+    "com/yungnickyoung/minecraft/betterendisland/services/NeoForgePlatformHelper.class",
+    "com/yungnickyoung/minecraft/betterendisland/services/NeoForgeModulesLoader.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -343,6 +351,10 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     for name in (
                         *sorted(n for n in archive.namelist() if n.endswith(".mixins.json")),
                         "META-INF/neoforge.mods.toml",
+                        *sorted(
+                            n for n in archive.namelist()
+                            if n.startswith("META-INF/services/com.yungnickyoung.minecraft.betterendisland.")
+                        ),
                     )
                 }
                 _ = (destination / "mixin-metadata.json").write_text(
