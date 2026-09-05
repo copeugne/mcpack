@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Construction-provider entry captures are delivered in 007ff06. The nine Macaw
+constructors and full-payload checks now support explicit no-independent-family
+dispositions in evidence/item-8/provider-scope.md. Nine focused cases and scoped
+static checks pass. Do not recapture those entry points. Continue whole-stack
+provider roles and unexplained resources before detailed family attributes;
+the 136-archive search index still does not prove candidate completeness.
+
+
 User priority correction: candidate completeness FIRST. The 136-archive keyword
 search index is not proof of a bounded candidate universe. Current gate and
 supported provider dispositions are in evidence/item-8/provider-scope.md under

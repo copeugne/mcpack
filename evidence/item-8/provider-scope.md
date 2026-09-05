@@ -123,3 +123,40 @@ JSON values; a type annotation fixed that finding and the scoped check passes.
 Existing captures and decisions for other providers remain evidence to reconcile,
 not automatically completed rows. Continue the whole-stack role/resource pass;
 do not replace the unresolved remainder with a claim of exhaustive coverage.
+
+## Construction-content provider dispositions
+
+The nine Macaw entry constructors are captured in 007ff06, with exact identities
+and reproduction commands in sources/macaw-provider-entries.md. The focused
+full-payload check accounts for all files, permits only the observed construction
+and painting data categories, checks loader metadata for extra entry mechanisms,
+and binds the single annotated Mod entry to its captured class. No additional
+auto-subscribers or NeoForge global-bus references appear in these class payloads.
+This combines inspected constructor behavior with full archive accounting;
+it is not an exclusion based only on generation-keyword absence.
+
+| Retained mod | Supported role | Family-candidate disposition |
+| --- | --- | --- |
+| mcw-doors-1.1.5-mc1.21.1neoforge.jar | Construction blocks/items, sounds and creative tab | No independent structure family or generation entry point. |
+| mcw-lights-1.1.5-mc1.21.1neoforge.jar | Construction blocks/items, sounds and creative tab | No independent structure family or generation entry point. |
+| mcw-mcwfences-1.2.1-mc1.21.1neoforge.jar | Construction blocks/items and creative tab | No independent structure family or generation entry point. |
+| mcw-mcwpaths-1.1.1-mc1.21.1neoforge.jar | Construction blocks/items and creative tab | No independent structure family or generation entry point. |
+| mcw-mcwstairs-1.0.2-mc1.21.1neoforge.jar | Construction blocks/items and creative tab | No independent structure family or generation entry point. |
+| mcw-mcwwindows-2.4.2-mc1.21.1neoforge.jar | Construction blocks/items, sounds and creative tab | No independent structure family or generation entry point. |
+| mcw-paintings-1.1.0-mc1.21.1neoforge.jar | Painting variants and placeable-painting tag; empty entry constructor | No independent structure family or generation entry point. |
+| mcw-roofs-2.3.2-mc1.21.1neoforge.jar | Construction blocks/items and creative tab | No independent structure family or generation entry point. |
+| mcw-trapdoors-1.1.5-mc1.21.1neoforge.jar | Construction blocks/items and creative tab | No independent structure family or generation entry point. |
+
+Other providers can use these blocks in their own templates. Such consumption
+belongs to those component relationships and is not an independent family added
+by the construction mod. This disposition does not claim no effect on block
+interaction, salvage or existing loot/recipe data.
+
+```sh
+uv run pytest -q tests/item8/test_macaw_provider_scope.py
+```
+
+Nine cases pass. Scoped Ruff and Basedpyright pass after correcting an overlong
+assertion and splitting a compound assertion. No additional runtime measurement.
+Continue supported roles and unexplained-resource reconciliation for the other
+retained providers; the whole-stack gate remains open.
