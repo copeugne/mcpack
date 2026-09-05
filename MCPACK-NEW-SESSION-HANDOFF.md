@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Activation/respawn source capture now reproduces exactly under
+sources/better-end-island-activation (extractor fd83868). It preserves eight
+classes and the two packaged service declarations; previous mixin metadata
+entries are unchanged. NeoForge constructor calls Common.init then config init;
+platform helper delegates to ModList.isLoaded. Respawn stage 5 calls the existing
+portal helper and requests dragon creation; stage 3 invokes Feature.END_SPIKE.
+Complete their scoped interpretation next, using these captures rather than
+recapturing. Inventory remains at 1bb1b8e attribution; Item 8 is incomplete.
+
 Resolve remaining direct Better End Island activation dependencies through the
 existing extractor: respawn enum and stages 3/5 (spike/portal references), surface
 origin helper, NeoForge entrypoint, Services and its two NeoForge implementations.
