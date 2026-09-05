@@ -1,0 +1,2945 @@
+Classfile YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar!/com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.class
+  Last modified Mar 13, 2025; size 23388 bytes
+  SHA-256 checksum d9a29e926a1b6805c46c730cc86822c3c7897db2b39e1616dcb1e2b236ad682e
+  Compiled from "EndDragonFightMixin.java"
+public abstract class com.yungnickyoung.minecraft.betterendisland.mixin.EndDragonFightMixin implements com.yungnickyoung.minecraft.betterendisland.world.IBetterDragonFight
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #8                          // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 19, methods: 35, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Fieldref           #8.#9         // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.bei$isFirstExitPortalSpawn:Z
+    #8 = Class              #10           // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin
+    #9 = NameAndType        #11:#12       // bei$isFirstExitPortalSpawn:Z
+   #10 = Utf8               com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin
+   #11 = Utf8               bei$isFirstExitPortalSpawn
+   #12 = Utf8               Z
+   #13 = Fieldref           #8.#14        // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.bei$numTimesDragonKilled:I
+   #14 = NameAndType        #15:#16       // bei$numTimesDragonKilled:I
+   #15 = Utf8               bei$numTimesDragonKilled
+   #16 = Utf8               I
+   #17 = Methodref          #18.#19       // net/minecraft/world/level/dimension/end/EndDragonFight$Data.isRespawning:()Z
+   #18 = Class              #20           // net/minecraft/world/level/dimension/end/EndDragonFight$Data
+   #19 = NameAndType        #21:#22       // isRespawning:()Z
+   #20 = Utf8               net/minecraft/world/level/dimension/end/EndDragonFight$Data
+   #21 = Utf8               isRespawning
+   #22 = Utf8               ()Z
+   #23 = Fieldref           #24.#25       // com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage.START:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+   #24 = Class              #26           // com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage
+   #25 = NameAndType        #27:#28       // START:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+   #26 = Utf8               com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage
+   #27 = Utf8               START
+   #28 = Utf8               Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+   #29 = Fieldref           #8.#30        // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.bei$dragonRespawnStage:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+   #30 = NameAndType        #31:#28       // bei$dragonRespawnStage:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+   #31 = Utf8               bei$dragonRespawnStage
+   #32 = Fieldref           #8.#33        // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.dragonEvent:Lnet/minecraft/server/level/ServerBossEvent;
+   #33 = NameAndType        #34:#35       // dragonEvent:Lnet/minecraft/server/level/ServerBossEvent;
+   #34 = Utf8               dragonEvent
+   #35 = Utf8               Lnet/minecraft/server/level/ServerBossEvent;
+   #36 = Methodref          #37.#38       // net/minecraft/server/level/ServerBossEvent.setVisible:(Z)V
+   #37 = Class              #39           // net/minecraft/server/level/ServerBossEvent
+   #38 = NameAndType        #40:#41       // setVisible:(Z)V
+   #39 = Utf8               net/minecraft/server/level/ServerBossEvent
+   #40 = Utf8               setVisible
+   #41 = Utf8               (Z)V
+   #42 = Fieldref           #8.#43        // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.dragonKilled:Z
+   #43 = NameAndType        #44:#12       // dragonKilled:Z
+   #44 = Utf8               dragonKilled
+   #45 = Fieldref           #8.#46        // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.bei$hasDragonEverSpawned:Z
+   #46 = NameAndType        #47:#12       // bei$hasDragonEverSpawned:Z
+   #47 = Utf8               bei$hasDragonEverSpawned
+   #48 = Fieldref           #8.#49        // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.ticksSinceLastPlayerScan:I
+   #49 = NameAndType        #50:#16       // ticksSinceLastPlayerScan:I
+   #50 = Utf8               ticksSinceLastPlayerScan
+   #51 = Methodref          #8.#52        // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.updatePlayers:()V
+   #52 = NameAndType        #53:#6        // updatePlayers:()V
+   #53 = Utf8               updatePlayers
+   #54 = Methodref          #37.#55       // net/minecraft/server/level/ServerBossEvent.getPlayers:()Ljava/util/Collection;
+   #55 = NameAndType        #56:#57       // getPlayers:()Ljava/util/Collection;
+   #56 = Utf8               getPlayers
+   #57 = Utf8               ()Ljava/util/Collection;
+   #58 = InterfaceMethodref #59.#60       // java/util/Collection.isEmpty:()Z
+   #59 = Class              #61           // java/util/Collection
+   #60 = NameAndType        #62:#22       // isEmpty:()Z
+   #61 = Utf8               java/util/Collection
+   #62 = Utf8               isEmpty
+   #63 = Fieldref           #8.#64        // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.level:Lnet/minecraft/server/level/ServerLevel;
+   #64 = NameAndType        #65:#66       // level:Lnet/minecraft/server/level/ServerLevel;
+   #65 = Utf8               level
+   #66 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+   #67 = Methodref          #68.#69       // net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+   #68 = Class              #70           // net/minecraft/server/level/ServerLevel
+   #69 = NameAndType        #71:#72       // getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+   #70 = Utf8               net/minecraft/server/level/ServerLevel
+   #71 = Utf8               getChunkSource
+   #72 = Utf8               ()Lnet/minecraft/server/level/ServerChunkCache;
+   #73 = Fieldref           #74.#75       // net/minecraft/server/level/TicketType.DRAGON:Lnet/minecraft/server/level/TicketType;
+   #74 = Class              #76           // net/minecraft/server/level/TicketType
+   #75 = NameAndType        #77:#78       // DRAGON:Lnet/minecraft/server/level/TicketType;
+   #76 = Utf8               net/minecraft/server/level/TicketType
+   #77 = Utf8               DRAGON
+   #78 = Utf8               Lnet/minecraft/server/level/TicketType;
+   #79 = Class              #80           // net/minecraft/world/level/ChunkPos
+   #80 = Utf8               net/minecraft/world/level/ChunkPos
+   #81 = Methodref          #79.#82       // net/minecraft/world/level/ChunkPos."<init>":(II)V
+   #82 = NameAndType        #5:#83        // "<init>":(II)V
+   #83 = Utf8               (II)V
+   #84 = Fieldref           #85.#86       // net/minecraft/util/Unit.INSTANCE:Lnet/minecraft/util/Unit;
+   #85 = Class              #87           // net/minecraft/util/Unit
+   #86 = NameAndType        #88:#89       // INSTANCE:Lnet/minecraft/util/Unit;
+   #87 = Utf8               net/minecraft/util/Unit
+   #88 = Utf8               INSTANCE
+   #89 = Utf8               Lnet/minecraft/util/Unit;
+   #90 = Methodref          #91.#92       // net/minecraft/server/level/ServerChunkCache.addRegionTicket:(Lnet/minecraft/server/level/TicketType;Lnet/minecraft/world/level/ChunkPos;ILjava/lang/Object;)V
+   #91 = Class              #93           // net/minecraft/server/level/ServerChunkCache
+   #92 = NameAndType        #94:#95       // addRegionTicket:(Lnet/minecraft/server/level/TicketType;Lnet/minecraft/world/level/ChunkPos;ILjava/lang/Object;)V
+   #93 = Utf8               net/minecraft/server/level/ServerChunkCache
+   #94 = Utf8               addRegionTicket
+   #95 = Utf8               (Lnet/minecraft/server/level/TicketType;Lnet/minecraft/world/level/ChunkPos;ILjava/lang/Object;)V
+   #96 = Methodref          #8.#97        // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.isArenaLoaded:()Z
+   #97 = NameAndType        #98:#22       // isArenaLoaded:()Z
+   #98 = Utf8               isArenaLoaded
+   #99 = Fieldref           #8.#100       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.needsStateScanning:Z
+  #100 = NameAndType        #101:#12      // needsStateScanning:Z
+  #101 = Utf8               needsStateScanning
+  #102 = Methodref          #8.#103       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.scanForInitialState:()V
+  #103 = NameAndType        #104:#6       // scanForInitialState:()V
+  #104 = Utf8               scanForInitialState
+  #105 = Fieldref           #8.#106       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.respawnCrystals:Ljava/util/List;
+  #106 = NameAndType        #107:#108     // respawnCrystals:Ljava/util/List;
+  #107 = Utf8               respawnCrystals
+  #108 = Utf8               Ljava/util/List;
+  #109 = Methodref          #8.#110       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.tryRespawn:()V
+  #110 = NameAndType        #111:#6       // tryRespawn:()V
+  #111 = Utf8               tryRespawn
+  #112 = Class              #113          // net/minecraft/world/level/dimension/end/EndDragonFight
+  #113 = Utf8               net/minecraft/world/level/dimension/end/EndDragonFight
+  #114 = Fieldref           #8.#115       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.respawnTime:I
+  #115 = NameAndType        #116:#16      // respawnTime:I
+  #116 = Utf8               respawnTime
+  #117 = Methodref          #24.#118      // com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage.tick:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/dimension/end/EndDragonFight;Ljava/util/List;I)V
+  #118 = NameAndType        #119:#120     // tick:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/dimension/end/EndDragonFight;Ljava/util/List;I)V
+  #119 = Utf8               tick
+  #120 = Utf8               (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/dimension/end/EndDragonFight;Ljava/util/List;I)V
+  #121 = Fieldref           #8.#122       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.dragonUUID:Ljava/util/UUID;
+  #122 = NameAndType        #123:#124     // dragonUUID:Ljava/util/UUID;
+  #123 = Utf8               dragonUUID
+  #124 = Utf8               Ljava/util/UUID;
+  #125 = Fieldref           #8.#126       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.ticksSinceDragonSeen:I
+  #126 = NameAndType        #127:#16      // ticksSinceDragonSeen:I
+  #127 = Utf8               ticksSinceDragonSeen
+  #128 = Methodref          #8.#129       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.findOrCreateDragon:()V
+  #129 = NameAndType        #130:#6       // findOrCreateDragon:()V
+  #130 = Utf8               findOrCreateDragon
+  #131 = Fieldref           #8.#132       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.ticksSinceCrystalsScanned:I
+  #132 = NameAndType        #133:#16      // ticksSinceCrystalsScanned:I
+  #133 = Utf8               ticksSinceCrystalsScanned
+  #134 = Methodref          #8.#135       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.updateCrystalCount:()V
+  #135 = NameAndType        #136:#6       // updateCrystalCount:()V
+  #136 = Utf8               updateCrystalCount
+  #137 = Methodref          #91.#138      // net/minecraft/server/level/ServerChunkCache.removeRegionTicket:(Lnet/minecraft/server/level/TicketType;Lnet/minecraft/world/level/ChunkPos;ILjava/lang/Object;)V
+  #138 = NameAndType        #139:#95      // removeRegionTicket:(Lnet/minecraft/server/level/TicketType;Lnet/minecraft/world/level/ChunkPos;ILjava/lang/Object;)V
+  #139 = Utf8               removeRegionTicket
+  #140 = Methodref          #141.#142     // org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+  #141 = Class              #143          // org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #142 = NameAndType        #144:#6       // cancel:()V
+  #143 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #144 = Utf8               cancel
+  #145 = Methodref          #68.#146      // net/minecraft/server/level/ServerLevel.getDragons:()Ljava/util/List;
+  #146 = NameAndType        #147:#148     // getDragons:()Ljava/util/List;
+  #147 = Utf8               getDragons
+  #148 = Utf8               ()Ljava/util/List;
+  #149 = InvokeDynamic      #0:#150       // #0:accept:()Ljava/util/function/Consumer;
+  #150 = NameAndType        #151:#152     // accept:()Ljava/util/function/Consumer;
+  #151 = Utf8               accept
+  #152 = Utf8               ()Ljava/util/function/Consumer;
+  #153 = InterfaceMethodref #154.#155     // java/util/List.forEach:(Ljava/util/function/Consumer;)V
+  #154 = Class              #156          // java/util/List
+  #155 = NameAndType        #157:#158     // forEach:(Ljava/util/function/Consumer;)V
+  #156 = Utf8               java/util/List
+  #157 = Utf8               forEach
+  #158 = Utf8               (Ljava/util/function/Consumer;)V
+  #159 = Methodref          #37.#160      // net/minecraft/server/level/ServerBossEvent.setProgress:(F)V
+  #160 = NameAndType        #161:#162     // setProgress:(F)V
+  #161 = Utf8               setProgress
+  #162 = Utf8               (F)V
+  #163 = Fieldref           #8.#164       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.portalLocation:Lnet/minecraft/core/BlockPos;
+  #164 = NameAndType        #165:#166     // portalLocation:Lnet/minecraft/core/BlockPos;
+  #165 = Utf8               portalLocation
+  #166 = Utf8               Lnet/minecraft/core/BlockPos;
+  #167 = Methodref          #168.#169     // net/minecraft/core/BlockPos.getY:()I
+  #168 = Class              #170          // net/minecraft/core/BlockPos
+  #169 = NameAndType        #171:#172     // getY:()I
+  #170 = Utf8               net/minecraft/core/BlockPos
+  #171 = Utf8               getY
+  #172 = Utf8               ()I
+  #173 = Fieldref           #174.#175     // com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+  #174 = Class              #176          // com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon
+  #175 = NameAndType        #177:#178     // LOGGER:Lorg/apache/logging/log4j/Logger;
+  #176 = Utf8               com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon
+  #177 = Utf8               LOGGER
+  #178 = Utf8               Lorg/apache/logging/log4j/Logger;
+  #179 = String             #180          // Tried to reset, but need to find the portal first.
+  #180 = Utf8               Tried to reset, but need to find the portal first.
+  #181 = InterfaceMethodref #182.#183     // org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+  #182 = Class              #184          // org/apache/logging/log4j/Logger
+  #183 = NameAndType        #185:#186     // info:(Ljava/lang/String;)V
+  #184 = Utf8               org/apache/logging/log4j/Logger
+  #185 = Utf8               info
+  #186 = Utf8               (Ljava/lang/String;)V
+  #187 = String             #188          // Portal location is currently null.
+  #188 = Utf8               Portal location is currently null.
+  #189 = String             #190          // Portal location is currently too low: {}
+  #190 = Utf8               Portal location is currently too low: {}
+  #191 = Methodref          #192.#193     // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+  #192 = Class              #194          // java/lang/Integer
+  #193 = NameAndType        #195:#196     // valueOf:(I)Ljava/lang/Integer;
+  #194 = Utf8               java/lang/Integer
+  #195 = Utf8               valueOf
+  #196 = Utf8               (I)Ljava/lang/Integer;
+  #197 = InterfaceMethodref #182.#198     // org/apache/logging/log4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+  #198 = NameAndType        #185:#199     // info:(Ljava/lang/String;Ljava/lang/Object;)V
+  #199 = Utf8               (Ljava/lang/String;Ljava/lang/Object;)V
+  #200 = String             #201          // Forcing portal position reset...
+  #201 = Utf8               Forcing portal position reset...
+  #202 = Methodref          #8.#203       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.findExitPortal:()Lnet/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch;
+  #203 = NameAndType        #204:#205     // findExitPortal:()Lnet/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch;
+  #204 = Utf8               findExitPortal
+  #205 = Utf8               ()Lnet/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch;
+  #206 = String             #207          // Portal location is still null. Placing manually...
+  #207 = Utf8               Portal location is still null. Placing manually...
+  #208 = String             #209          // Portal location is still too low: {}. Placing manually...
+  #209 = Utf8               Portal location is still too low: {}. Placing manually...
+  #210 = Methodref          #211.#212     // com/yungnickyoung/minecraft/betterendisland/world/util/WorldgenUtils.getSurfacePosAt:(Lnet/minecraft/world/level/Level;II)I
+  #211 = Class              #213          // com/yungnickyoung/minecraft/betterendisland/world/util/WorldgenUtils
+  #212 = NameAndType        #214:#215     // getSurfacePosAt:(Lnet/minecraft/world/level/Level;II)I
+  #213 = Utf8               com/yungnickyoung/minecraft/betterendisland/world/util/WorldgenUtils
+  #214 = Utf8               getSurfacePosAt
+  #215 = Utf8               (Lnet/minecraft/world/level/Level;II)I
+  #216 = Methodref          #168.#217     // net/minecraft/core/BlockPos."<init>":(III)V
+  #217 = NameAndType        #5:#218       // "<init>":(III)V
+  #218 = Utf8               (III)V
+  #219 = Methodref          #68.#220      // net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #220 = NameAndType        #221:#222     // getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #221 = Utf8               getBlockState
+  #222 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #223 = Fieldref           #224.#225     // net/minecraft/world/level/block/Blocks.BEDROCK:Lnet/minecraft/world/level/block/Block;
+  #224 = Class              #226          // net/minecraft/world/level/block/Blocks
+  #225 = NameAndType        #227:#228     // BEDROCK:Lnet/minecraft/world/level/block/Block;
+  #226 = Utf8               net/minecraft/world/level/block/Blocks
+  #227 = Utf8               BEDROCK
+  #228 = Utf8               Lnet/minecraft/world/level/block/Block;
+  #229 = Methodref          #230.#231     // net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+  #230 = Class              #232          // net/minecraft/world/level/block/state/BlockState
+  #231 = NameAndType        #233:#234     // is:(Lnet/minecraft/world/level/block/Block;)Z
+  #232 = Utf8               net/minecraft/world/level/block/state/BlockState
+  #233 = Utf8               is
+  #234 = Utf8               (Lnet/minecraft/world/level/block/Block;)Z
+  #235 = Methodref          #68.#236      // net/minecraft/server/level/ServerLevel.getSeaLevel:()I
+  #236 = NameAndType        #237:#172     // getSeaLevel:()I
+  #237 = Utf8               getSeaLevel
+  #238 = Methodref          #168.#239     // net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+  #239 = NameAndType        #240:#241     // below:()Lnet/minecraft/core/BlockPos;
+  #240 = Utf8               below
+  #241 = Utf8               ()Lnet/minecraft/core/BlockPos;
+  #242 = String             #243          // Portal was still placed too low! Force placing at y=65...
+  #243 = Utf8               Portal was still placed too low! Force placing at y=65...
+  #244 = Methodref          #168.#245     // net/minecraft/core/BlockPos.getX:()I
+  #245 = NameAndType        #246:#172     // getX:()I
+  #246 = Utf8               getX
+  #247 = Methodref          #168.#248     // net/minecraft/core/BlockPos.getZ:()I
+  #248 = NameAndType        #249:#172     // getZ:()I
+  #249 = Utf8               getZ
+  #250 = Fieldref           #8.#251       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.previouslyKilled:Z
+  #251 = NameAndType        #252:#12      // previouslyKilled:Z
+  #252 = Utf8               previouslyKilled
+  #253 = Fieldref           #8.#254       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.respawnStage:Lnet/minecraft/world/level/dimension/end/DragonRespawnAnimation;
+  #254 = NameAndType        #255:#256     // respawnStage:Lnet/minecraft/world/level/dimension/end/DragonRespawnAnimation;
+  #255 = Utf8               respawnStage
+  #256 = Utf8               Lnet/minecraft/world/level/dimension/end/DragonRespawnAnimation;
+  #257 = Fieldref           #8.#258       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.crystalsAlive:I
+  #258 = NameAndType        #259:#16      // crystalsAlive:I
+  #259 = Utf8               crystalsAlive
+  #260 = InvokeDynamic      #1:#150       // #1:accept:()Ljava/util/function/Consumer;
+  #261 = Methodref          #168.#262     // net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+  #262 = NameAndType        #263:#264     // above:(I)Lnet/minecraft/core/BlockPos;
+  #263 = Utf8               above
+  #264 = Utf8               (I)Lnet/minecraft/core/BlockPos;
+  #265 = Methodref          #266.#267     // com/yungnickyoung/minecraft/betterendisland/world/util/EndCrystalUtils.checkForBEIRespawnCrystals:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+  #266 = Class              #268          // com/yungnickyoung/minecraft/betterendisland/world/util/EndCrystalUtils
+  #267 = NameAndType        #269:#270     // checkForBEIRespawnCrystals:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+  #268 = Utf8               com/yungnickyoung/minecraft/betterendisland/world/util/EndCrystalUtils
+  #269 = Utf8               checkForBEIRespawnCrystals
+  #270 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+  #271 = Methodref          #266.#272     // com/yungnickyoung/minecraft/betterendisland/world/util/EndCrystalUtils.checkForVanillaRespawnCrystals:(Lnet/minecraft/world/level/Level;Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+  #272 = NameAndType        #273:#274     // checkForVanillaRespawnCrystals:(Lnet/minecraft/world/level/Level;Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+  #273 = Utf8               checkForVanillaRespawnCrystals
+  #274 = Utf8               (Lnet/minecraft/world/level/Level;Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+  #275 = Methodref          #276.#277     // net/minecraft/world/level/levelgen/feature/SpikeFeature.getSpikesForLevel:(Lnet/minecraft/world/level/WorldGenLevel;)Ljava/util/List;
+  #276 = Class              #278          // net/minecraft/world/level/levelgen/feature/SpikeFeature
+  #277 = NameAndType        #279:#280     // getSpikesForLevel:(Lnet/minecraft/world/level/WorldGenLevel;)Ljava/util/List;
+  #278 = Utf8               net/minecraft/world/level/levelgen/feature/SpikeFeature
+  #279 = Utf8               getSpikesForLevel
+  #280 = Utf8               (Lnet/minecraft/world/level/WorldGenLevel;)Ljava/util/List;
+  #281 = InterfaceMethodref #154.#282     // java/util/List.iterator:()Ljava/util/Iterator;
+  #282 = NameAndType        #283:#284     // iterator:()Ljava/util/Iterator;
+  #283 = Utf8               iterator
+  #284 = Utf8               ()Ljava/util/Iterator;
+  #285 = InterfaceMethodref #286.#287     // java/util/Iterator.hasNext:()Z
+  #286 = Class              #288          // java/util/Iterator
+  #287 = NameAndType        #289:#22      // hasNext:()Z
+  #288 = Utf8               java/util/Iterator
+  #289 = Utf8               hasNext
+  #290 = InterfaceMethodref #286.#291     // java/util/Iterator.next:()Ljava/lang/Object;
+  #291 = NameAndType        #292:#293     // next:()Ljava/lang/Object;
+  #292 = Utf8               next
+  #293 = Utf8               ()Ljava/lang/Object;
+  #294 = Class              #295          // net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike
+  #295 = Utf8               net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike
+  #296 = Class              #297          // net/minecraft/world/entity/boss/enderdragon/EndCrystal
+  #297 = Utf8               net/minecraft/world/entity/boss/enderdragon/EndCrystal
+  #298 = Methodref          #294.#299     // net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getTopBoundingBox:()Lnet/minecraft/world/phys/AABB;
+  #299 = NameAndType        #300:#301     // getTopBoundingBox:()Lnet/minecraft/world/phys/AABB;
+  #300 = Utf8               getTopBoundingBox
+  #301 = Utf8               ()Lnet/minecraft/world/phys/AABB;
+  #302 = Methodref          #68.#303      // net/minecraft/server/level/ServerLevel.getEntitiesOfClass:(Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;
+  #303 = NameAndType        #304:#305     // getEntitiesOfClass:(Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;
+  #304 = Utf8               getEntitiesOfClass
+  #305 = Utf8               (Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;
+  #306 = Methodref          #296.#307     // net/minecraft/world/entity/boss/enderdragon/EndCrystal.discard:()V
+  #307 = NameAndType        #308:#6       // discard:()V
+  #308 = Utf8               discard
+  #309 = Fieldref           #174.#310     // com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+  #310 = NameAndType        #311:#312     // CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+  #311 = Utf8               CONFIG
+  #312 = Utf8               Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+  #313 = Fieldref           #314.#315     // com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.spawnCentralTowerInitially:Z
+  #314 = Class              #316          // com/yungnickyoung/minecraft/betterendisland/module/ConfigModule
+  #315 = NameAndType        #317:#12      // spawnCentralTowerInitially:Z
+  #316 = Utf8               com/yungnickyoung/minecraft/betterendisland/module/ConfigModule
+  #317 = Utf8               spawnCentralTowerInitially
+  #318 = Class              #319          // com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature
+  #319 = Utf8               com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature
+  #320 = Methodref          #318.#321     // com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature."<init>":(ZZZ)V
+  #321 = NameAndType        #5:#322       // "<init>":(ZZZ)V
+  #322 = Utf8               (ZZZ)V
+  #323 = Methodref          #168.#324     // net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+  #324 = NameAndType        #240:#264     // below:(I)Lnet/minecraft/core/BlockPos;
+  #325 = Fieldref           #326.#327     // net/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration.NONE:Lnet/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration;
+  #326 = Class              #328          // net/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration
+  #327 = NameAndType        #329:#330     // NONE:Lnet/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration;
+  #328 = Utf8               net/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration
+  #329 = Utf8               NONE
+  #330 = Utf8               Lnet/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration;
+  #331 = Methodref          #91.#332      // net/minecraft/server/level/ServerChunkCache.getGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+  #332 = NameAndType        #333:#334     // getGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+  #333 = Utf8               getGenerator
+  #334 = Utf8               ()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+  #335 = InterfaceMethodref #336.#337     // net/minecraft/util/RandomSource.create:()Lnet/minecraft/util/RandomSource;
+  #336 = Class              #338          // net/minecraft/util/RandomSource
+  #337 = NameAndType        #339:#340     // create:()Lnet/minecraft/util/RandomSource;
+  #338 = Utf8               net/minecraft/util/RandomSource
+  #339 = Utf8               create
+  #340 = Utf8               ()Lnet/minecraft/util/RandomSource;
+  #341 = Methodref          #318.#342     // com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature.place:(Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Z
+  #342 = NameAndType        #343:#344     // place:(Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Z
+  #343 = Utf8               place
+  #344 = Utf8               (Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Z
+  #345 = Class              #346          // net/minecraft/world/level/levelgen/feature/EndPodiumFeature
+  #346 = Utf8               net/minecraft/world/level/levelgen/feature/EndPodiumFeature
+  #347 = Methodref          #345.#348     // net/minecraft/world/level/levelgen/feature/EndPodiumFeature."<init>":(Z)V
+  #348 = NameAndType        #5:#41        // "<init>":(Z)V
+  #349 = Methodref          #345.#342     // net/minecraft/world/level/levelgen/feature/EndPodiumFeature.place:(Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Z
+  #350 = Methodref          #351.#352     // net/minecraft/util/Mth.positiveCeilDiv:(II)I
+  #351 = Class              #353          // net/minecraft/util/Mth
+  #352 = NameAndType        #354:#355     // positiveCeilDiv:(II)I
+  #353 = Utf8               net/minecraft/util/Mth
+  #354 = Utf8               positiveCeilDiv
+  #355 = Utf8               (II)I
+  #356 = Fieldref           #91.#357      // net/minecraft/server/level/ServerChunkCache.chunkMap:Lnet/minecraft/server/level/ChunkMap;
+  #357 = NameAndType        #358:#359     // chunkMap:Lnet/minecraft/server/level/ChunkMap;
+  #358 = Utf8               chunkMap
+  #359 = Utf8               Lnet/minecraft/server/level/ChunkMap;
+  #360 = Methodref          #79.#361      // net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+  #361 = NameAndType        #5:#362       // "<init>":(Lnet/minecraft/core/BlockPos;)V
+  #362 = Utf8               (Lnet/minecraft/core/BlockPos;)V
+  #363 = Methodref          #364.#365     // net/minecraft/server/level/ChunkMap.waitForLightBeforeSending:(Lnet/minecraft/world/level/ChunkPos;I)V
+  #364 = Class              #366          // net/minecraft/server/level/ChunkMap
+  #365 = NameAndType        #367:#368     // waitForLightBeforeSending:(Lnet/minecraft/world/level/ChunkPos;I)V
+  #366 = Utf8               net/minecraft/server/level/ChunkMap
+  #367 = Utf8               waitForLightBeforeSending
+  #368 = Utf8               (Lnet/minecraft/world/level/ChunkPos;I)V
+  #369 = Methodref          #370.#371     // com/yungnickyoung/minecraft/betterendisland/world/util/EndSpikeUtils.removeVanillaPillars:(Lnet/minecraft/server/level/ServerLevel;)V
+  #370 = Class              #372          // com/yungnickyoung/minecraft/betterendisland/world/util/EndSpikeUtils
+  #371 = NameAndType        #373:#374     // removeVanillaPillars:(Lnet/minecraft/server/level/ServerLevel;)V
+  #372 = Utf8               com/yungnickyoung/minecraft/betterendisland/world/util/EndSpikeUtils
+  #373 = Utf8               removeVanillaPillars
+  #374 = Utf8               (Lnet/minecraft/server/level/ServerLevel;)V
+  #375 = Methodref          #370.#376     // com/yungnickyoung/minecraft/betterendisland/world/util/EndSpikeUtils.resetSpikes:(Lnet/minecraft/server/level/ServerLevel;Ljava/util/List;)V
+  #376 = NameAndType        #377:#378     // resetSpikes:(Lnet/minecraft/server/level/ServerLevel;Ljava/util/List;)V
+  #377 = Utf8               resetSpikes
+  #378 = Utf8               (Lnet/minecraft/server/level/ServerLevel;Ljava/util/List;)V
+  #379 = Fieldref           #68.#380      // net/minecraft/server/level/ServerLevel.END_SPAWN_POINT:Lnet/minecraft/core/BlockPos;
+  #380 = NameAndType        #381:#166     // END_SPAWN_POINT:Lnet/minecraft/core/BlockPos;
+  #381 = Utf8               END_SPAWN_POINT
+  #382 = Fieldref           #314.#383     // com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.useVanillaSpawnPlatform:Z
+  #383 = NameAndType        #384:#12      // useVanillaSpawnPlatform:Z
+  #384 = Utf8               useVanillaSpawnPlatform
+  #385 = Methodref          #386.#387     // net/minecraft/world/level/levelgen/feature/EndPlatformFeature.createEndPlatform:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;Z)V
+  #386 = Class              #388          // net/minecraft/world/level/levelgen/feature/EndPlatformFeature
+  #387 = NameAndType        #389:#390     // createEndPlatform:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;Z)V
+  #388 = Utf8               net/minecraft/world/level/levelgen/feature/EndPlatformFeature
+  #389 = Utf8               createEndPlatform
+  #390 = Utf8               (Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;Z)V
+  #391 = Methodref          #392.#393     // com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndSpawnPlatformFeature.place:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;Z)Z
+  #392 = Class              #394          // com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndSpawnPlatformFeature
+  #393 = NameAndType        #343:#395     // place:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;Z)Z
+  #394 = Utf8               com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndSpawnPlatformFeature
+  #395 = Utf8               (Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;Z)Z
+  #396 = Double             96.0d
+  #398 = Double             2.0d
+  #400 = Class              #401          // java/lang/Math
+  #401 = Utf8               java/lang/Math
+  #402 = Double             -3.141592653589793d
+  #404 = Double             0.15707963267948966d
+  #406 = Methodref          #400.#407     // java/lang/Math.cos:(D)D
+  #407 = NameAndType        #408:#409     // cos:(D)D
+  #408 = Utf8               cos
+  #409 = Utf8               (D)D
+  #410 = Methodref          #351.#411     // net/minecraft/util/Mth.floor:(D)I
+  #411 = NameAndType        #412:#413     // floor:(D)I
+  #412 = Utf8               floor
+  #413 = Utf8               (D)I
+  #414 = Methodref          #400.#415     // java/lang/Math.sin:(D)D
+  #415 = NameAndType        #416:#409     // sin:(D)D
+  #416 = Utf8               sin
+  #417 = Methodref          #168.#418     // net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+  #418 = NameAndType        #419:#420     // offset:(III)Lnet/minecraft/core/BlockPos;
+  #419 = Utf8               offset
+  #420 = Utf8               (III)Lnet/minecraft/core/BlockPos;
+  #421 = Methodref          #168.#422     // net/minecraft/core/BlockPos.betweenClosed:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Ljava/lang/Iterable;
+  #422 = NameAndType        #423:#424     // betweenClosed:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Ljava/lang/Iterable;
+  #423 = Utf8               betweenClosed
+  #424 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Ljava/lang/Iterable;
+  #425 = InvokeDynamic      #2:#426       // #2:accept:(Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;)Ljava/util/function/Consumer;
+  #426 = NameAndType        #151:#427     // accept:(Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;)Ljava/util/function/Consumer;
+  #427 = Utf8               (Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;)Ljava/util/function/Consumer;
+  #428 = InterfaceMethodref #429.#155     // java/lang/Iterable.forEach:(Ljava/util/function/Consumer;)V
+  #429 = Class              #430          // java/lang/Iterable
+  #430 = Utf8               java/lang/Iterable
+  #431 = Fieldref           #8.#432       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.gateways:Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+  #432 = NameAndType        #433:#434     // gateways:Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+  #433 = Utf8               gateways
+  #434 = Utf8               Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+  #435 = Methodref          #436.#437     // it/unimi/dsi/fastutil/objects/ObjectArrayList.clear:()V
+  #436 = Class              #438          // it/unimi/dsi/fastutil/objects/ObjectArrayList
+  #437 = NameAndType        #439:#6       // clear:()V
+  #438 = Utf8               it/unimi/dsi/fastutil/objects/ObjectArrayList
+  #439 = Utf8               clear
+  #440 = Methodref          #441.#442     // com/google/common/collect/Range.closedOpen:(Ljava/lang/Comparable;Ljava/lang/Comparable;)Lcom/google/common/collect/Range;
+  #441 = Class              #443          // com/google/common/collect/Range
+  #442 = NameAndType        #444:#445     // closedOpen:(Ljava/lang/Comparable;Ljava/lang/Comparable;)Lcom/google/common/collect/Range;
+  #443 = Utf8               com/google/common/collect/Range
+  #444 = Utf8               closedOpen
+  #445 = Utf8               (Ljava/lang/Comparable;Ljava/lang/Comparable;)Lcom/google/common/collect/Range;
+  #446 = Methodref          #447.#448     // com/google/common/collect/DiscreteDomain.integers:()Lcom/google/common/collect/DiscreteDomain;
+  #447 = Class              #449          // com/google/common/collect/DiscreteDomain
+  #448 = NameAndType        #450:#451     // integers:()Lcom/google/common/collect/DiscreteDomain;
+  #449 = Utf8               com/google/common/collect/DiscreteDomain
+  #450 = Utf8               integers
+  #451 = Utf8               ()Lcom/google/common/collect/DiscreteDomain;
+  #452 = Methodref          #453.#454     // com/google/common/collect/ContiguousSet.create:(Lcom/google/common/collect/Range;Lcom/google/common/collect/DiscreteDomain;)Lcom/google/common/collect/ContiguousSet;
+  #453 = Class              #455          // com/google/common/collect/ContiguousSet
+  #454 = NameAndType        #339:#456     // create:(Lcom/google/common/collect/Range;Lcom/google/common/collect/DiscreteDomain;)Lcom/google/common/collect/ContiguousSet;
+  #455 = Utf8               com/google/common/collect/ContiguousSet
+  #456 = Utf8               (Lcom/google/common/collect/Range;Lcom/google/common/collect/DiscreteDomain;)Lcom/google/common/collect/ContiguousSet;
+  #457 = Methodref          #436.#458     // it/unimi/dsi/fastutil/objects/ObjectArrayList.addAll:(Ljava/util/Collection;)Z
+  #458 = NameAndType        #459:#460     // addAll:(Ljava/util/Collection;)Z
+  #459 = Utf8               addAll
+  #460 = Utf8               (Ljava/util/Collection;)Z
+  #461 = Methodref          #68.#462      // net/minecraft/server/level/ServerLevel.getSeed:()J
+  #462 = NameAndType        #463:#464     // getSeed:()J
+  #463 = Utf8               getSeed
+  #464 = Utf8               ()J
+  #465 = InterfaceMethodref #336.#466     // net/minecraft/util/RandomSource.create:(J)Lnet/minecraft/util/RandomSource;
+  #466 = NameAndType        #339:#467     // create:(J)Lnet/minecraft/util/RandomSource;
+  #467 = Utf8               (J)Lnet/minecraft/util/RandomSource;
+  #468 = Methodref          #469.#470     // net/minecraft/Util.shuffle:(Ljava/util/List;Lnet/minecraft/util/RandomSource;)V
+  #469 = Class              #471          // net/minecraft/Util
+  #470 = NameAndType        #472:#473     // shuffle:(Ljava/util/List;Lnet/minecraft/util/RandomSource;)V
+  #471 = Utf8               net/minecraft/Util
+  #472 = Utf8               shuffle
+  #473 = Utf8               (Ljava/util/List;Lnet/minecraft/util/RandomSource;)V
+  #474 = String             #475          // Scanning for legacy world dragon fight...
+  #475 = Utf8               Scanning for legacy world dragon fight...
+  #476 = Methodref          #8.#477       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.hasActiveExitPortal:()Z
+  #477 = NameAndType        #478:#22      // hasActiveExitPortal:()Z
+  #478 = Utf8               hasActiveExitPortal
+  #479 = String             #480          // Found that the dragon has been killed in this world already.
+  #480 = Utf8               Found that the dragon has been killed in this world already.
+  #481 = String             #482          // Found that the dragon has not yet been killed in this world.
+  #482 = Utf8               Found that the dragon has not yet been killed in this world.
+  #483 = Methodref          #484.#485     // com/yungnickyoung/minecraft/betterendisland/world/util/ExitPortalUtils.spawnPortal:(Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;Lnet/minecraft/server/level/ServerLevel;ZZ)V
+  #484 = Class              #486          // com/yungnickyoung/minecraft/betterendisland/world/util/ExitPortalUtils
+  #485 = NameAndType        #487:#488     // spawnPortal:(Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;Lnet/minecraft/server/level/ServerLevel;ZZ)V
+  #486 = Utf8               com/yungnickyoung/minecraft/betterendisland/world/util/ExitPortalUtils
+  #487 = Utf8               spawnPortal
+  #488 = Utf8               (Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;Lnet/minecraft/server/level/ServerLevel;ZZ)V
+  #489 = InterfaceMethodref #154.#60      // java/util/List.isEmpty:()Z
+  #490 = InterfaceMethodref #154.#491     // java/util/List.get:(I)Ljava/lang/Object;
+  #491 = NameAndType        #492:#493     // get:(I)Ljava/lang/Object;
+  #492 = Utf8               get
+  #493 = Utf8               (I)Ljava/lang/Object;
+  #494 = Class              #495          // net/minecraft/world/entity/boss/enderdragon/EnderDragon
+  #495 = Utf8               net/minecraft/world/entity/boss/enderdragon/EnderDragon
+  #496 = Methodref          #494.#497     // net/minecraft/world/entity/boss/enderdragon/EnderDragon.getUUID:()Ljava/util/UUID;
+  #497 = NameAndType        #498:#499     // getUUID:()Ljava/util/UUID;
+  #498 = Utf8               getUUID
+  #499 = Utf8               ()Ljava/util/UUID;
+  #500 = String             #501          // Found that there\'s a dragon still alive ({})
+  #501 = Utf8               Found that there\'s a dragon still alive ({})
+  #502 = String             #503          // But we didn\'t have a portal, so let\'s remove the dragon.
+  #503 = Utf8               But we didn\'t have a portal, so let\'s remove the dragon.
+  #504 = Methodref          #494.#307     // net/minecraft/world/entity/boss/enderdragon/EnderDragon.discard:()V
+  #505 = InterfaceMethodref #154.#506     // java/util/List.contains:(Ljava/lang/Object;)Z
+  #506 = NameAndType        #507:#508     // contains:(Ljava/lang/Object;)Z
+  #507 = Utf8               contains
+  #508 = Utf8               (Ljava/lang/Object;)Z
+  #509 = String             #510          // Aborting dragon respawn sequence
+  #510 = Utf8               Aborting dragon respawn sequence
+  #511 = Methodref          #8.#512       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.resetSpikeCrystals:()V
+  #512 = NameAndType        #513:#6       // resetSpikeCrystals:()V
+  #513 = Utf8               resetSpikeCrystals
+  #514 = Methodref          #68.#515      // net/minecraft/server/level/ServerLevel.getEntity:(Ljava/util/UUID;)Lnet/minecraft/world/entity/Entity;
+  #515 = NameAndType        #516:#517     // getEntity:(Ljava/util/UUID;)Lnet/minecraft/world/entity/Entity;
+  #516 = Utf8               getEntity
+  #517 = Utf8               (Ljava/util/UUID;)Lnet/minecraft/world/entity/Entity;
+  #518 = Methodref          #296.#519     // net/minecraft/world/entity/boss/enderdragon/EndCrystal.blockPosition:()Lnet/minecraft/core/BlockPos;
+  #519 = NameAndType        #520:#241     // blockPosition:()Lnet/minecraft/core/BlockPos;
+  #520 = Utf8               blockPosition
+  #521 = Methodref          #494.#522     // net/minecraft/world/entity/boss/enderdragon/EnderDragon.onCrystalDestroyed:(Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/damagesource/DamageSource;)V
+  #522 = NameAndType        #523:#524     // onCrystalDestroyed:(Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/damagesource/DamageSource;)V
+  #523 = Utf8               onCrystalDestroyed
+  #524 = Utf8               (Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/damagesource/DamageSource;)V
+  #525 = Methodref          #8.#526       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.spawnDragon:(Z)V
+  #526 = NameAndType        #527:#41      // spawnDragon:(Z)V
+  #527 = Utf8               spawnDragon
+  #528 = String             #529          // Starting initial dragon fight!
+  #529 = Utf8               Starting initial dragon fight!
+  #530 = String             #531          // Tried to respawn, but need to find the portal first.
+  #531 = Utf8               Tried to respawn, but need to find the portal first.
+  #532 = String             #533          // Couldn\'t find a portal, so we made one.
+  #533 = Utf8               Couldn\'t find a portal, so we made one.
+  #534 = String             #535          // Found the exit portal & saved its location for next time.
+  #535 = Utf8               Found the exit portal & saved its location for next time.
+  #536 = InterfaceMethodref #154.#537     // java/util/List.size:()I
+  #537 = NameAndType        #538:#172     // size:()I
+  #538 = Utf8               size
+  #539 = String             #540          // Unable to find all 4 summoning crystals. This shouldn\'t happen!
+  #540 = Utf8               Unable to find all 4 summoning crystals. This shouldn\'t happen!
+  #541 = String             #542          // Found all crystals, starting initial dragon spawn.
+  #542 = Utf8               Found all crystals, starting initial dragon spawn.
+  #543 = String             #544          // Found all crystals, respawning dragon.
+  #544 = Utf8               Found all crystals, respawning dragon.
+  #545 = Methodref          #8.#546       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.respawnDragon:(Ljava/util/List;)V
+  #546 = NameAndType        #547:#548     // respawnDragon:(Ljava/util/List;)V
+  #547 = Utf8               respawnDragon
+  #548 = Utf8               (Ljava/util/List;)V
+  #549 = Methodref          #296.#550     // net/minecraft/world/entity/boss/enderdragon/EndCrystal.setInvulnerable:(Z)V
+  #550 = NameAndType        #551:#41      // setInvulnerable:(Z)V
+  #551 = Utf8               setInvulnerable
+  #552 = Methodref          #296.#553     // net/minecraft/world/entity/boss/enderdragon/EndCrystal.setBeamTarget:(Lnet/minecraft/core/BlockPos;)V
+  #553 = NameAndType        #554:#362     // setBeamTarget:(Lnet/minecraft/core/BlockPos;)V
+  #554 = Utf8               setBeamTarget
+  #555 = Methodref          #556.#557     // java/util/UUID.equals:(Ljava/lang/Object;)Z
+  #556 = Class              #558          // java/util/UUID
+  #557 = NameAndType        #559:#508     // equals:(Ljava/lang/Object;)Z
+  #558 = Utf8               java/util/UUID
+  #559 = Utf8               equals
+  #560 = Fieldref           #314.#561     // com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.spawnCentralTowerOnResummon:Z
+  #561 = NameAndType        #562:#12      // spawnCentralTowerOnResummon:Z
+  #562 = Utf8               spawnCentralTowerOnResummon
+  #563 = Float              6.0f
+  #564 = Fieldref           #565.#566     // net/minecraft/world/level/Level$ExplosionInteraction.NONE:Lnet/minecraft/world/level/Level$ExplosionInteraction;
+  #565 = Class              #567          // net/minecraft/world/level/Level$ExplosionInteraction
+  #566 = NameAndType        #329:#568     // NONE:Lnet/minecraft/world/level/Level$ExplosionInteraction;
+  #567 = Utf8               net/minecraft/world/level/Level$ExplosionInteraction
+  #568 = Utf8               Lnet/minecraft/world/level/Level$ExplosionInteraction;
+  #569 = Methodref          #68.#570      // net/minecraft/server/level/ServerLevel.explode:(Lnet/minecraft/world/entity/Entity;DDDFLnet/minecraft/world/level/Level$ExplosionInteraction;)Lnet/minecraft/world/level/Explosion;
+  #570 = NameAndType        #571:#572     // explode:(Lnet/minecraft/world/entity/Entity;DDDFLnet/minecraft/world/level/Level$ExplosionInteraction;)Lnet/minecraft/world/level/Explosion;
+  #571 = Utf8               explode
+  #572 = Utf8               (Lnet/minecraft/world/entity/Entity;DDDFLnet/minecraft/world/level/Level$ExplosionInteraction;)Lnet/minecraft/world/level/Explosion;
+  #573 = Methodref          #8.#574       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.spawnNewGateway:()V
+  #574 = NameAndType        #575:#6       // spawnNewGateway:()V
+  #575 = Utf8               spawnNewGateway
+  #576 = Fieldref           #174.#577     // com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.moreDragonEggs:Z
+  #577 = NameAndType        #578:#12      // moreDragonEggs:Z
+  #578 = Utf8               moreDragonEggs
+  #579 = Fieldref           #314.#580     // com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.resummonedDragonDropsEgg:Z
+  #580 = NameAndType        #581:#12      // resummonedDragonDropsEgg:Z
+  #581 = Utf8               resummonedDragonDropsEgg
+  #582 = Methodref          #168.#583     // net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+  #583 = NameAndType        #263:#241     // above:()Lnet/minecraft/core/BlockPos;
+  #584 = Fieldref           #224.#585     // net/minecraft/world/level/block/Blocks.DRAGON_EGG:Lnet/minecraft/world/level/block/Block;
+  #585 = NameAndType        #586:#228     // DRAGON_EGG:Lnet/minecraft/world/level/block/Block;
+  #586 = Utf8               DRAGON_EGG
+  #587 = Methodref          #588.#589     // net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+  #588 = Class              #590          // net/minecraft/world/level/block/Block
+  #589 = NameAndType        #591:#592     // defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+  #590 = Utf8               net/minecraft/world/level/block/Block
+  #591 = Utf8               defaultBlockState
+  #592 = Utf8               ()Lnet/minecraft/world/level/block/state/BlockState;
+  #593 = Methodref          #68.#594      // net/minecraft/server/level/ServerLevel.setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #594 = NameAndType        #595:#596     // setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #595 = Utf8               setBlockAndUpdate
+  #596 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #597 = Fieldref           #174.#598     // com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.betterEnd:Z
+  #598 = NameAndType        #599:#12      // betterEnd:Z
+  #599 = Utf8               betterEnd
+  #600 = InvokeDynamic      #3:#601       // #3:accept:(Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;I)Ljava/util/function/Consumer;
+  #601 = NameAndType        #151:#602     // accept:(Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;I)Ljava/util/function/Consumer;
+  #602 = Utf8               (Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;I)Ljava/util/function/Consumer;
+  #603 = Class              #604          // java/lang/IllegalStateException
+  #604 = Utf8               java/lang/IllegalStateException
+  #605 = String             #606          // Better Dragon respawn isn\'t in progress, can\'t skip ahead in the respawn process.
+  #606 = Utf8               Better Dragon respawn isn\'t in progress, can\'t skip ahead in the respawn process.
+  #607 = Methodref          #603.#608     // java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+  #608 = NameAndType        #5:#186       // "<init>":(Ljava/lang/String;)V
+  #609 = Methodref          #24.#610      // com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage.onStart:(Lnet/minecraft/server/level/ServerLevel;Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;)V
+  #610 = NameAndType        #611:#612     // onStart:(Lnet/minecraft/server/level/ServerLevel;Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;)V
+  #611 = Utf8               onStart
+  #612 = Utf8               (Lnet/minecraft/server/level/ServerLevel;Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;)V
+  #613 = Fieldref           #314.#614     // com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.playBellSound:Z
+  #614 = NameAndType        #615:#12      // playBellSound:Z
+  #615 = Utf8               playBellSound
+  #616 = Methodref          #68.#617      // net/minecraft/server/level/ServerLevel.getGameTime:()J
+  #617 = NameAndType        #618:#464     // getGameTime:()J
+  #618 = Utf8               getGameTime
+  #619 = Long               100l
+  #621 = Fieldref           #622.#623     // net/minecraft/sounds/SoundEvents.BELL_BLOCK:Lnet/minecraft/sounds/SoundEvent;
+  #622 = Class              #624          // net/minecraft/sounds/SoundEvents
+  #623 = NameAndType        #625:#626     // BELL_BLOCK:Lnet/minecraft/sounds/SoundEvent;
+  #624 = Utf8               net/minecraft/sounds/SoundEvents
+  #625 = Utf8               BELL_BLOCK
+  #626 = Utf8               Lnet/minecraft/sounds/SoundEvent;
+  #627 = Fieldref           #628.#629     // net/minecraft/sounds/SoundSource.NEUTRAL:Lnet/minecraft/sounds/SoundSource;
+  #628 = Class              #630          // net/minecraft/sounds/SoundSource
+  #629 = NameAndType        #631:#632     // NEUTRAL:Lnet/minecraft/sounds/SoundSource;
+  #630 = Utf8               net/minecraft/sounds/SoundSource
+  #631 = Utf8               NEUTRAL
+  #632 = Utf8               Lnet/minecraft/sounds/SoundSource;
+  #633 = Float              24.0f
+  #634 = Float              0.5f
+  #635 = Methodref          #68.#636      // net/minecraft/server/level/ServerLevel.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+  #636 = NameAndType        #637:#638     // playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+  #637 = Utf8               playSound
+  #638 = Utf8               (Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+  #639 = Fieldref           #622.#640     // net/minecraft/sounds/SoundEvents.BELL_RESONATE:Lnet/minecraft/sounds/SoundEvent;
+  #640 = NameAndType        #641:#626     // BELL_RESONATE:Lnet/minecraft/sounds/SoundEvent;
+  #641 = Utf8               BELL_RESONATE
+  #642 = Float              4.0f
+  #643 = Float              0.9f
+  #644 = Long               300l
+  #646 = Float              0.8f
+  #647 = Class              #648          // com/yungnickyoung/minecraft/betterendisland/world/IEndSpike
+  #648 = Utf8               com/yungnickyoung/minecraft/betterendisland/world/IEndSpike
+  #649 = InterfaceMethodref #647.#650     // com/yungnickyoung/minecraft/betterendisland/world/IEndSpike.getCrystalYOffset:()I
+  #650 = NameAndType        #651:#172     // getCrystalYOffset:()I
+  #651 = Utf8               getCrystalYOffset
+  #652 = Methodref          #294.#653     // net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterX:()I
+  #653 = NameAndType        #654:#172     // getCenterX:()I
+  #654 = Utf8               getCenterX
+  #655 = Methodref          #294.#656     // net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterZ:()I
+  #656 = NameAndType        #657:#172     // getCenterZ:()I
+  #657 = Utf8               getCenterZ
+  #658 = Fieldref           #224.#659     // net/minecraft/world/level/block/Blocks.OBSIDIAN:Lnet/minecraft/world/level/block/Block;
+  #659 = NameAndType        #660:#228     // OBSIDIAN:Lnet/minecraft/world/level/block/Block;
+  #660 = Utf8               OBSIDIAN
+  #661 = Methodref          #68.#662      // net/minecraft/server/level/ServerLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+  #662 = NameAndType        #663:#664     // setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+  #663 = Utf8               setBlock
+  #664 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+  #665 = Fieldref           #224.#666     // net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+  #666 = NameAndType        #667:#228     // AIR:Lnet/minecraft/world/level/block/Block;
+  #667 = Utf8               AIR
+  #668 = Class              #669          // com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight
+  #669 = Utf8               com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight
+  #670 = Utf8               RuntimeVisibleAnnotations
+  #671 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #672 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #673 = Utf8               Signature
+  #674 = Utf8               Ljava/util/List<Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;>;
+  #675 = Utf8               Ljavax/annotation/Nullable;
+  #676 = Utf8               Lit/unimi/dsi/fastutil/objects/ObjectArrayList<Ljava/lang/Integer;>;
+  #677 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #678 = Utf8               Code
+  #679 = Utf8               LineNumberTable
+  #680 = Utf8               LocalVariableTable
+  #681 = Utf8               this
+  #682 = Utf8               Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+  #683 = Utf8               createNewDragon
+  #684 = Utf8               ()Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;
+  #685 = Utf8               (Ljava/util/List<Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;>;)V
+  #686 = Utf8               betterendisland_EndDragonFight
+  #687 = Utf8               (Lnet/minecraft/server/level/ServerLevel;JLnet/minecraft/world/level/dimension/end/EndDragonFight$Data;Lnet/minecraft/core/BlockPos;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #688 = Utf8               seed
+  #689 = Utf8               J
+  #690 = Utf8               data
+  #691 = Utf8               Lnet/minecraft/world/level/dimension/end/EndDragonFight$Data;
+  #692 = Utf8               origin
+  #693 = Utf8               ci
+  #694 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #695 = Utf8               StackMapTable
+  #696 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #697 = Utf8               method
+  #698 = Utf8               <init>(Lnet/minecraft/server/level/ServerLevel;JLnet/minecraft/world/level/dimension/end/EndDragonFight$Data;Lnet/minecraft/core/BlockPos;)V
+  #699 = Utf8               at
+  #700 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #701 = Utf8               value
+  #702 = Utf8               RETURN
+  #703 = Utf8               betterendisland_tickFight
+  #704 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #705 = Utf8               HEAD
+  #706 = Utf8               cancellable
+  #707 = Integer            1
+  #708 = Utf8               reset
+  #709 = Utf8               crystal
+  #710 = Utf8               Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;
+  #711 = Utf8               spike
+  #712 = Utf8               Lnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;
+  #713 = Utf8               endPodiumFeature
+  #714 = Utf8               Lcom/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature;
+  #715 = Utf8               spawnPos
+  #716 = Utf8               $$2
+  #717 = Utf8               Lnet/minecraft/world/level/levelgen/feature/EndPodiumFeature;
+  #718 = Utf8               x
+  #719 = Utf8               z
+  #720 = Utf8               gatePos
+  #721 = Utf8               i
+  #722 = Utf8               forcePortalPosReset
+  #723 = Utf8               dragons
+  #724 = Utf8               remainingSummoningCrystals
+  #725 = Utf8               allSpikes
+  #726 = Utf8               platformPos
+  #727 = Utf8               LocalVariableTypeTable
+  #728 = Utf8               Ljava/util/List<+Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;>;
+  #729 = Utf8               Ljava/util/List<Lnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;>;
+  #730 = Utf8               dragon
+  #731 = Utf8               Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;
+  #732 = Utf8               betterendisland_onCrystalDestroyed
+  #733 = Utf8               (Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;Lnet/minecraft/world/damagesource/DamageSource;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #734 = Utf8               dragonEntity
+  #735 = Utf8               Lnet/minecraft/world/entity/Entity;
+  #736 = Utf8               damageSource
+  #737 = Utf8               Lnet/minecraft/world/damagesource/DamageSource;
+  #738 = Utf8               betterendisland_tryRespawn
+  #739 = Utf8               doInitialDragonSpawn
+  #740 = Utf8               portalPatternMatch
+  #741 = Utf8               Lnet/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch;
+  #742 = Utf8               isInitialSpawn
+  #743 = Utf8               portalPos
+  #744 = Utf8               allCrystals
+  #745 = Class              #746          // net/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch
+  #746 = Utf8               net/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch
+  #747 = Utf8               betterendisland_respawnDragon
+  #748 = Utf8               (Ljava/util/List;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #749 = Utf8               crystals
+  #750 = Utf8               (Ljava/util/List<Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #751 = Utf8               betterendisland_resetSpikeCrystals
+  #752 = Utf8               betterendisland_setDragonKilled
+  #753 = Utf8               (Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #754 = Utf8               topY
+  #755 = Utf8               spikes
+  #756 = Utf8               setDragonKilled
+  #757 = Utf8               advanceRespawnStage
+  #758 = Utf8               (Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;)V
+  #759 = Utf8               nextStage
+  #760 = Utf8               tickBellSound
+  #761 = Utf8               gameTime
+  #762 = Utf8               soundY
+  #763 = Utf8               getDragonRespawnStage
+  #764 = Utf8               ()Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+  #765 = Utf8               isFirstExitPortalSpawn
+  #766 = Utf8               hasDragonEverSpawned
+  #767 = Utf8               getNumTimesDragonKilled
+  #768 = Utf8               setDragonRespawnStage
+  #769 = Utf8               stage
+  #770 = Utf8               setIsFirstExitPortalSpawn
+  #771 = Utf8               bl
+  #772 = Utf8               setHasDragonEverSpawned
+  #773 = Utf8               setNumTimesDragonKilled
+  #774 = Utf8               (I)V
+  #775 = Utf8               lambda$betterendisland_setDragonKilled$1
+  #776 = Utf8               (ILnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;)V
+  #777 = Utf8               crystalY
+  #778 = Utf8               lambda$reset$0
+  #779 = Utf8               pos
+  #780 = Utf8               SourceFile
+  #781 = Utf8               EndDragonFightMixin.java
+  #782 = Utf8               RuntimeInvisibleAnnotations
+  #783 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #784 = Utf8               Lnet/minecraft/world/level/dimension/end/EndDragonFight;
+  #785 = Utf8               BootstrapMethods
+  #786 = MethodType         #787          //  (Ljava/lang/Object;)V
+  #787 = Utf8               (Ljava/lang/Object;)V
+  #788 = MethodHandle       5:#789        // REF_invokeVirtual net/minecraft/world/entity/Entity.discard:()V
+  #789 = Methodref          #790.#307     // net/minecraft/world/entity/Entity.discard:()V
+  #790 = Class              #791          // net/minecraft/world/entity/Entity
+  #791 = Utf8               net/minecraft/world/entity/Entity
+  #792 = MethodType         #793          //  (Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;)V
+  #793 = Utf8               (Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;)V
+  #794 = MethodType         #795          //  (Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;)V
+  #795 = Utf8               (Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;)V
+  #796 = MethodHandle       5:#797        // REF_invokeVirtual com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.lambda$reset$0:(Lnet/minecraft/core/BlockPos;)V
+  #797 = Methodref          #8.#798       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.lambda$reset$0:(Lnet/minecraft/core/BlockPos;)V
+  #798 = NameAndType        #778:#362     // lambda$reset$0:(Lnet/minecraft/core/BlockPos;)V
+  #799 = MethodType         #362          //  (Lnet/minecraft/core/BlockPos;)V
+  #800 = MethodHandle       5:#801        // REF_invokeVirtual com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.lambda$betterendisland_setDragonKilled$1:(ILnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;)V
+  #801 = Methodref          #8.#802       // com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.lambda$betterendisland_setDragonKilled$1:(ILnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;)V
+  #802 = NameAndType        #775:#776     // lambda$betterendisland_setDragonKilled$1:(ILnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;)V
+  #803 = MethodType         #804          //  (Lnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;)V
+  #804 = Utf8               (Lnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;)V
+  #805 = MethodHandle       6:#806        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #806 = Methodref          #807.#808     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #807 = Class              #809          // java/lang/invoke/LambdaMetafactory
+  #808 = NameAndType        #810:#811     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #809 = Utf8               java/lang/invoke/LambdaMetafactory
+  #810 = Utf8               metafactory
+  #811 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #812 = Utf8               InnerClasses
+  #813 = Utf8               Data
+  #814 = Class              #815          // net/minecraft/world/level/block/state/pattern/BlockPattern
+  #815 = Utf8               net/minecraft/world/level/block/state/pattern/BlockPattern
+  #816 = Utf8               BlockPatternMatch
+  #817 = Utf8               EndSpike
+  #818 = Class              #819          // net/minecraft/world/level/Level
+  #819 = Utf8               net/minecraft/world/level/Level
+  #820 = Utf8               ExplosionInteraction
+  #821 = Class              #822          // java/lang/invoke/MethodHandles$Lookup
+  #822 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #823 = Class              #824          // java/lang/invoke/MethodHandles
+  #824 = Utf8               java/lang/invoke/MethodHandles
+  #825 = Utf8               Lookup
+{
+  private net.minecraft.server.level.ServerBossEvent dragonEvent;
+    descriptor: Lnet/minecraft/server/level/ServerBossEvent;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+      1: #672()
+        org.spongepowered.asm.mixin.Final
+
+  private boolean dragonKilled;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  private int ticksSinceLastPlayerScan;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  private net.minecraft.server.level.ServerLevel level;
+    descriptor: Lnet/minecraft/server/level/ServerLevel;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+      1: #672()
+        org.spongepowered.asm.mixin.Final
+
+  private boolean needsStateScanning;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  private java.util.List<net.minecraft.world.entity.boss.enderdragon.EndCrystal> respawnCrystals;
+    descriptor: Ljava/util/List;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #674                         // Ljava/util/List<Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;>;
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+      1: #675()
+        javax.annotation.Nullable
+
+  private int respawnTime;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  private net.minecraft.core.BlockPos portalLocation;
+    descriptor: Lnet/minecraft/core/BlockPos;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+      1: #675()
+        javax.annotation.Nullable
+
+  private java.util.UUID dragonUUID;
+    descriptor: Ljava/util/UUID;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+      1: #675()
+        javax.annotation.Nullable
+
+  private int ticksSinceDragonSeen;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  private int ticksSinceCrystalsScanned;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  private boolean previouslyKilled;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  private int crystalsAlive;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  private net.minecraft.world.level.dimension.end.DragonRespawnAnimation respawnStage;
+    descriptor: Lnet/minecraft/world/level/dimension/end/DragonRespawnAnimation;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+      1: #675()
+        javax.annotation.Nullable
+
+  private it.unimi.dsi.fastutil.objects.ObjectArrayList<java.lang.Integer> gateways;
+    descriptor: Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #676                         // Lit/unimi/dsi/fastutil/objects/ObjectArrayList<Ljava/lang/Integer;>;
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+      1: #672()
+        org.spongepowered.asm.mixin.Final
+
+  private com.yungnickyoung.minecraft.betterendisland.world.DragonRespawnStage bei$dragonRespawnStage;
+    descriptor: Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  private boolean bei$isFirstExitPortalSpawn;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  private boolean bei$hasDragonEverSpawned;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  private int bei$numTimesDragonKilled;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  public com.yungnickyoung.minecraft.betterendisland.mixin.EndDragonFightMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iconst_1
+         6: putfield      #7                  // Field bei$isFirstExitPortalSpawn:Z
+         9: aload_0
+        10: iconst_0
+        11: putfield      #13                 // Field bei$numTimesDragonKilled:I
+        14: return
+      LineNumberTable:
+        line 54: 0
+        line 85: 4
+        line 87: 9
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      15     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+
+  public abstract void resetSpikeCrystals();
+    descriptor: ()V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  public abstract void tryRespawn();
+    descriptor: ()V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  protected abstract void updatePlayers();
+    descriptor: ()V
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  protected abstract boolean isArenaLoaded();
+    descriptor: ()Z
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  protected abstract void findOrCreateDragon();
+    descriptor: ()V
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  protected abstract void updateCrystalCount();
+    descriptor: ()V
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  protected abstract net.minecraft.world.entity.boss.enderdragon.EnderDragon createNewDragon();
+    descriptor: ()Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  protected abstract net.minecraft.world.level.block.state.pattern.BlockPattern$BlockPatternMatch findExitPortal();
+    descriptor: ()Lnet/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch;
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+      1: #675()
+        javax.annotation.Nullable
+
+  protected abstract void respawnDragon(java.util.List<net.minecraft.world.entity.boss.enderdragon.EndCrystal>);
+    descriptor: (Ljava/util/List;)V
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    Signature: #685                         // (Ljava/util/List<Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;>;)V
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  protected abstract boolean hasActiveExitPortal();
+    descriptor: ()Z
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  protected abstract void spawnNewGateway();
+    descriptor: ()V
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #671()
+        org.spongepowered.asm.mixin.Shadow
+
+  public void betterendisland_EndDragonFight(net.minecraft.server.level.ServerLevel, long, net.minecraft.world.level.dimension.end.EndDragonFight$Data, net.minecraft.core.BlockPos, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/server/level/ServerLevel;JLnet/minecraft/world/level/dimension/end/EndDragonFight$Data;Lnet/minecraft/core/BlockPos;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=7, args_size=6
+         0: aload         4
+         2: invokevirtual #17                 // Method net/minecraft/world/level/dimension/end/EndDragonFight$Data.isRespawning:()Z
+         5: ifeq          15
+         8: aload_0
+         9: getstatic     #23                 // Field com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage.START:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+        12: putfield      #29                 // Field bei$dragonRespawnStage:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+        15: aload_0
+        16: getfield      #32                 // Field dragonEvent:Lnet/minecraft/server/level/ServerBossEvent;
+        19: iconst_0
+        20: invokevirtual #36                 // Method net/minecraft/server/level/ServerBossEvent.setVisible:(Z)V
+        23: return
+      LineNumberTable:
+        line 91: 0
+        line 92: 8
+        line 94: 15
+        line 95: 23
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      24     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+            0      24     1 level   Lnet/minecraft/server/level/ServerLevel;
+            0      24     2  seed   J
+            0      24     4  data   Lnet/minecraft/world/level/dimension/end/EndDragonFight$Data;
+            0      24     5 origin   Lnet/minecraft/core/BlockPos;
+            0      24     6    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 1
+        frame_type = 15 /* same */
+    RuntimeVisibleAnnotations:
+      0: #696(#697=[s#698],#699=[@#700(#701=s#702)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<init>(Lnet/minecraft/server/level/ServerLevel;JLnet/minecraft/world/level/dimension/end/EndDragonFight$Data;Lnet/minecraft/core/BlockPos;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+
+  public void betterendisland_tickFight(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=8, locals=3, args_size=2
+         0: aload_0
+         1: getfield      #32                 // Field dragonEvent:Lnet/minecraft/server/level/ServerBossEvent;
+         4: aload_0
+         5: getfield      #42                 // Field dragonKilled:Z
+         8: ifne          22
+        11: aload_0
+        12: getfield      #45                 // Field bei$hasDragonEverSpawned:Z
+        15: ifeq          22
+        18: iconst_1
+        19: goto          23
+        22: iconst_0
+        23: invokevirtual #36                 // Method net/minecraft/server/level/ServerBossEvent.setVisible:(Z)V
+        26: aload_0
+        27: dup
+        28: getfield      #48                 // Field ticksSinceLastPlayerScan:I
+        31: iconst_1
+        32: iadd
+        33: dup_x1
+        34: putfield      #48                 // Field ticksSinceLastPlayerScan:I
+        37: bipush        20
+        39: if_icmplt     51
+        42: aload_0
+        43: invokevirtual #51                 // Method updatePlayers:()V
+        46: aload_0
+        47: iconst_0
+        48: putfield      #48                 // Field ticksSinceLastPlayerScan:I
+        51: aload_0
+        52: getfield      #32                 // Field dragonEvent:Lnet/minecraft/server/level/ServerBossEvent;
+        55: invokevirtual #54                 // Method net/minecraft/server/level/ServerBossEvent.getPlayers:()Ljava/util/Collection;
+        58: invokeinterface #58,  1           // InterfaceMethod java/util/Collection.isEmpty:()Z
+        63: ifne          258
+        66: aload_0
+        67: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        70: invokevirtual #67                 // Method net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+        73: getstatic     #73                 // Field net/minecraft/server/level/TicketType.DRAGON:Lnet/minecraft/server/level/TicketType;
+        76: new           #79                 // class net/minecraft/world/level/ChunkPos
+        79: dup
+        80: iconst_0
+        81: iconst_0
+        82: invokespecial #81                 // Method net/minecraft/world/level/ChunkPos."<init>":(II)V
+        85: bipush        9
+        87: getstatic     #84                 // Field net/minecraft/util/Unit.INSTANCE:Lnet/minecraft/util/Unit;
+        90: invokevirtual #90                 // Method net/minecraft/server/level/ServerChunkCache.addRegionTicket:(Lnet/minecraft/server/level/TicketType;Lnet/minecraft/world/level/ChunkPos;ILjava/lang/Object;)V
+        93: aload_0
+        94: invokevirtual #96                 // Method isArenaLoaded:()Z
+        97: istore_2
+        98: aload_0
+        99: getfield      #99                 // Field needsStateScanning:Z
+       102: ifeq          118
+       105: iload_2
+       106: ifeq          118
+       109: aload_0
+       110: invokevirtual #102                // Method scanForInitialState:()V
+       113: aload_0
+       114: iconst_0
+       115: putfield      #99                 // Field needsStateScanning:Z
+       118: aload_0
+       119: getfield      #29                 // Field bei$dragonRespawnStage:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+       122: ifnull        175
+       125: aload_0
+       126: getfield      #105                // Field respawnCrystals:Ljava/util/List;
+       129: ifnonnull     145
+       132: iload_2
+       133: ifeq          145
+       136: aload_0
+       137: aconst_null
+       138: putfield      #29                 // Field bei$dragonRespawnStage:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+       141: aload_0
+       142: invokevirtual #109                // Method tryRespawn:()V
+       145: aload_0
+       146: getfield      #29                 // Field bei$dragonRespawnStage:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+       149: aload_0
+       150: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       153: aload_0
+       154: checkcast     #112                // class net/minecraft/world/level/dimension/end/EndDragonFight
+       157: aload_0
+       158: getfield      #105                // Field respawnCrystals:Ljava/util/List;
+       161: aload_0
+       162: dup
+       163: getfield      #114                // Field respawnTime:I
+       166: dup_x1
+       167: iconst_1
+       168: iadd
+       169: putfield      #114                // Field respawnTime:I
+       172: invokevirtual #117                // Method com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage.tick:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/dimension/end/EndDragonFight;Ljava/util/List;I)V
+       175: aload_0
+       176: getfield      #42                 // Field dragonKilled:Z
+       179: ifne          255
+       182: aload_0
+       183: getfield      #121                // Field dragonUUID:Ljava/util/UUID;
+       186: ifnull        206
+       189: aload_0
+       190: dup
+       191: getfield      #125                // Field ticksSinceDragonSeen:I
+       194: iconst_1
+       195: iadd
+       196: dup_x1
+       197: putfield      #125                // Field ticksSinceDragonSeen:I
+       200: sipush        1200
+       203: if_icmplt     226
+       206: iload_2
+       207: ifeq          226
+       210: aload_0
+       211: getfield      #45                 // Field bei$hasDragonEverSpawned:Z
+       214: ifeq          226
+       217: aload_0
+       218: invokevirtual #128                // Method findOrCreateDragon:()V
+       221: aload_0
+       222: iconst_0
+       223: putfield      #125                // Field ticksSinceDragonSeen:I
+       226: aload_0
+       227: dup
+       228: getfield      #131                // Field ticksSinceCrystalsScanned:I
+       231: iconst_1
+       232: iadd
+       233: dup_x1
+       234: putfield      #131                // Field ticksSinceCrystalsScanned:I
+       237: bipush        100
+       239: if_icmplt     255
+       242: iload_2
+       243: ifeq          255
+       246: aload_0
+       247: invokevirtual #134                // Method updateCrystalCount:()V
+       250: aload_0
+       251: iconst_0
+       252: putfield      #131                // Field ticksSinceCrystalsScanned:I
+       255: goto          285
+       258: aload_0
+       259: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       262: invokevirtual #67                 // Method net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+       265: getstatic     #73                 // Field net/minecraft/server/level/TicketType.DRAGON:Lnet/minecraft/server/level/TicketType;
+       268: new           #79                 // class net/minecraft/world/level/ChunkPos
+       271: dup
+       272: iconst_0
+       273: iconst_0
+       274: invokespecial #81                 // Method net/minecraft/world/level/ChunkPos."<init>":(II)V
+       277: bipush        9
+       279: getstatic     #84                 // Field net/minecraft/util/Unit.INSTANCE:Lnet/minecraft/util/Unit;
+       282: invokevirtual #137                // Method net/minecraft/server/level/ServerChunkCache.removeRegionTicket:(Lnet/minecraft/server/level/TicketType;Lnet/minecraft/world/level/ChunkPos;ILjava/lang/Object;)V
+       285: aload_1
+       286: invokevirtual #140                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+       289: return
+      LineNumberTable:
+        line 99: 0
+        line 100: 26
+        line 101: 42
+        line 102: 46
+        line 105: 51
+        line 106: 66
+        line 107: 93
+        line 111: 98
+        line 112: 109
+        line 113: 113
+        line 117: 118
+        line 118: 125
+        line 119: 136
+        line 120: 141
+        line 123: 145
+        line 126: 175
+        line 127: 182
+        line 128: 217
+        line 129: 221
+        line 132: 226
+        line 133: 246
+        line 134: 250
+        line 137: 255
+        line 138: 258
+        line 140: 285
+        line 141: 289
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           98     157     2 isArenaLoaded   Z
+            0     290     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+            0     290     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 11
+        frame_type = 86 /* same_locals_1_stack_item */
+          stack = [ class net/minecraft/server/level/ServerBossEvent ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo ]
+          stack = [ class net/minecraft/server/level/ServerBossEvent, int ]
+        frame_type = 27 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 66
+          locals = [ int ]
+        frame_type = 26 /* same */
+        frame_type = 29 /* same */
+        frame_type = 30 /* same */
+        frame_type = 19 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 28
+        frame_type = 2 /* same */
+        frame_type = 26 /* same */
+    RuntimeVisibleAnnotations:
+      0: #696(#697=[s#119],#699=[@#700(#701=s#705)],#706=Z#707)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["tick"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          cancellable=true
+        )
+
+  public void reset(boolean);
+    descriptor: (Z)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=10, locals=10, args_size=2
+         0: aload_0
+         1: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+         4: invokevirtual #145                // Method net/minecraft/server/level/ServerLevel.getDragons:()Ljava/util/List;
+         7: astore_2
+         8: aload_2
+         9: invokedynamic #149,  0            // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+        14: invokeinterface #153,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+        19: aload_0
+        20: getfield      #32                 // Field dragonEvent:Lnet/minecraft/server/level/ServerBossEvent;
+        23: fconst_0
+        24: invokevirtual #159                // Method net/minecraft/server/level/ServerBossEvent.setProgress:(F)V
+        27: aload_0
+        28: getfield      #32                 // Field dragonEvent:Lnet/minecraft/server/level/ServerBossEvent;
+        31: iconst_0
+        32: invokevirtual #36                 // Method net/minecraft/server/level/ServerBossEvent.setVisible:(Z)V
+        35: aload_0
+        36: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+        39: ifnull        57
+        42: aload_0
+        43: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+        46: invokevirtual #167                // Method net/minecraft/core/BlockPos.getY:()I
+        49: iconst_5
+        50: if_icmplt     57
+        53: iload_1
+        54: ifeq          330
+        57: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+        60: ldc           #179                // String Tried to reset, but need to find the portal first.
+        62: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        67: aload_0
+        68: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+        71: ifnonnull     87
+        74: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+        77: ldc           #187                // String Portal location is currently null.
+        79: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        84: goto          131
+        87: aload_0
+        88: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+        91: invokevirtual #167                // Method net/minecraft/core/BlockPos.getY:()I
+        94: iconst_5
+        95: if_icmpge     121
+        98: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+       101: ldc           #189                // String Portal location is currently too low: {}
+       103: aload_0
+       104: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       107: invokevirtual #167                // Method net/minecraft/core/BlockPos.getY:()I
+       110: invokestatic  #191                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       113: invokeinterface #197,  3          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+       118: goto          131
+       121: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+       124: ldc           #200                // String Forcing portal position reset...
+       126: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+       131: aload_0
+       132: invokevirtual #202                // Method findExitPortal:()Lnet/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch;
+       135: pop
+       136: aload_0
+       137: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       140: ifnull        158
+       143: aload_0
+       144: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       147: invokevirtual #167                // Method net/minecraft/core/BlockPos.getY:()I
+       150: iconst_5
+       151: if_icmplt     158
+       154: iload_1
+       155: ifeq          330
+       158: aload_0
+       159: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       162: ifnonnull     178
+       165: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+       168: ldc           #206                // String Portal location is still null. Placing manually...
+       170: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+       175: goto          209
+       178: aload_0
+       179: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       182: invokevirtual #167                // Method net/minecraft/core/BlockPos.getY:()I
+       185: iconst_5
+       186: if_icmpge     209
+       189: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+       192: ldc           #208                // String Portal location is still too low: {}. Placing manually...
+       194: aload_0
+       195: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       198: invokevirtual #167                // Method net/minecraft/core/BlockPos.getY:()I
+       201: invokestatic  #191                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       204: invokeinterface #197,  3          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+       209: aload_0
+       210: new           #168                // class net/minecraft/core/BlockPos
+       213: dup
+       214: iconst_0
+       215: aload_0
+       216: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       219: iconst_0
+       220: iconst_0
+       221: invokestatic  #210                // Method com/yungnickyoung/minecraft/betterendisland/world/util/WorldgenUtils.getSurfacePosAt:(Lnet/minecraft/world/level/Level;II)I
+       224: iconst_0
+       225: invokespecial #216                // Method net/minecraft/core/BlockPos."<init>":(III)V
+       228: putfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       231: aload_0
+       232: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       235: aload_0
+       236: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       239: invokevirtual #219                // Method net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       242: getstatic     #223                // Field net/minecraft/world/level/block/Blocks.BEDROCK:Lnet/minecraft/world/level/block/Block;
+       245: invokevirtual #229                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+       248: ifeq          282
+       251: aload_0
+       252: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       255: invokevirtual #167                // Method net/minecraft/core/BlockPos.getY:()I
+       258: aload_0
+       259: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       262: invokevirtual #235                // Method net/minecraft/server/level/ServerLevel.getSeaLevel:()I
+       265: if_icmple     282
+       268: aload_0
+       269: aload_0
+       270: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       273: invokevirtual #238                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+       276: putfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       279: goto          231
+       282: aload_0
+       283: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       286: invokevirtual #167                // Method net/minecraft/core/BlockPos.getY:()I
+       289: iconst_5
+       290: if_icmpge     330
+       293: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+       296: ldc           #242                // String Portal was still placed too low! Force placing at y=65...
+       298: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+       303: aload_0
+       304: new           #168                // class net/minecraft/core/BlockPos
+       307: dup
+       308: aload_0
+       309: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       312: invokevirtual #244                // Method net/minecraft/core/BlockPos.getX:()I
+       315: bipush        65
+       317: aload_0
+       318: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       321: invokevirtual #247                // Method net/minecraft/core/BlockPos.getZ:()I
+       324: invokespecial #216                // Method net/minecraft/core/BlockPos."<init>":(III)V
+       327: putfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       330: aload_0
+       331: aconst_null
+       332: putfield      #121                // Field dragonUUID:Ljava/util/UUID;
+       335: aload_0
+       336: iconst_0
+       337: putfield      #42                 // Field dragonKilled:Z
+       340: aload_0
+       341: iconst_0
+       342: putfield      #250                // Field previouslyKilled:Z
+       345: aload_0
+       346: iconst_0
+       347: putfield      #7                  // Field bei$isFirstExitPortalSpawn:Z
+       350: aload_0
+       351: iconst_0
+       352: putfield      #45                 // Field bei$hasDragonEverSpawned:Z
+       355: aload_0
+       356: iconst_0
+       357: putfield      #13                 // Field bei$numTimesDragonKilled:I
+       360: aload_0
+       361: aconst_null
+       362: putfield      #29                 // Field bei$dragonRespawnStage:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+       365: aload_0
+       366: aconst_null
+       367: putfield      #253                // Field respawnStage:Lnet/minecraft/world/level/dimension/end/DragonRespawnAnimation;
+       370: aload_0
+       371: iconst_0
+       372: putfield      #114                // Field respawnTime:I
+       375: aload_0
+       376: iconst_1
+       377: putfield      #99                 // Field needsStateScanning:Z
+       380: aload_0
+       381: iconst_0
+       382: putfield      #48                 // Field ticksSinceLastPlayerScan:I
+       385: aload_0
+       386: iconst_0
+       387: putfield      #125                // Field ticksSinceDragonSeen:I
+       390: aload_0
+       391: iconst_0
+       392: putfield      #257                // Field crystalsAlive:I
+       395: aload_0
+       396: iconst_0
+       397: putfield      #131                // Field ticksSinceCrystalsScanned:I
+       400: aload_0
+       401: getfield      #105                // Field respawnCrystals:Ljava/util/List;
+       404: ifnull        421
+       407: aload_0
+       408: getfield      #105                // Field respawnCrystals:Ljava/util/List;
+       411: invokedynamic #260,  0            // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+       416: invokeinterface #153,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+       421: aload_0
+       422: aconst_null
+       423: putfield      #105                // Field respawnCrystals:Ljava/util/List;
+       426: aload_0
+       427: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       430: aload_0
+       431: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       434: iconst_1
+       435: invokevirtual #261                // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+       438: invokestatic  #265                // Method com/yungnickyoung/minecraft/betterendisland/world/util/EndCrystalUtils.checkForBEIRespawnCrystals:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+       441: astore_3
+       442: aload_3
+       443: invokedynamic #260,  0            // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+       448: invokeinterface #153,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+       453: aload_0
+       454: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       457: aload_0
+       458: aload_0
+       459: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       462: invokestatic  #271                // Method com/yungnickyoung/minecraft/betterendisland/world/util/EndCrystalUtils.checkForVanillaRespawnCrystals:(Lnet/minecraft/world/level/Level;Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+       465: astore_3
+       466: aload_3
+       467: invokedynamic #260,  0            // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+       472: invokeinterface #153,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+       477: aload_0
+       478: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       481: invokestatic  #275                // Method net/minecraft/world/level/levelgen/feature/SpikeFeature.getSpikesForLevel:(Lnet/minecraft/world/level/WorldGenLevel;)Ljava/util/List;
+       484: astore        4
+       486: aload         4
+       488: invokeinterface #281,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       493: astore        5
+       495: aload         5
+       497: invokeinterface #285,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       502: ifeq          572
+       505: aload         5
+       507: invokeinterface #290,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       512: checkcast     #294                // class net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike
+       515: astore        6
+       517: aload_0
+       518: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       521: ldc_w         #296                // class net/minecraft/world/entity/boss/enderdragon/EndCrystal
+       524: aload         6
+       526: invokevirtual #298                // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getTopBoundingBox:()Lnet/minecraft/world/phys/AABB;
+       529: invokevirtual #302                // Method net/minecraft/server/level/ServerLevel.getEntitiesOfClass:(Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;
+       532: invokeinterface #281,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       537: astore        7
+       539: aload         7
+       541: invokeinterface #285,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       546: ifeq          569
+       549: aload         7
+       551: invokeinterface #290,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       556: checkcast     #296                // class net/minecraft/world/entity/boss/enderdragon/EndCrystal
+       559: astore        8
+       561: aload         8
+       563: invokevirtual #306                // Method net/minecraft/world/entity/boss/enderdragon/EndCrystal.discard:()V
+       566: goto          539
+       569: goto          495
+       572: getstatic     #309                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+       575: getfield      #313                // Field com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.spawnCentralTowerInitially:Z
+       578: ifeq          634
+       581: new           #318                // class com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature
+       584: dup
+       585: iconst_1
+       586: iconst_0
+       587: iconst_0
+       588: invokespecial #320                // Method com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature."<init>":(ZZZ)V
+       591: astore        5
+       593: aload_0
+       594: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       597: iconst_5
+       598: invokevirtual #323                // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+       601: astore        6
+       603: aload         5
+       605: getstatic     #325                // Field net/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration.NONE:Lnet/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration;
+       608: aload_0
+       609: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       612: aload_0
+       613: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       616: invokevirtual #67                 // Method net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+       619: invokevirtual #331                // Method net/minecraft/server/level/ServerChunkCache.getGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+       622: invokestatic  #335                // InterfaceMethod net/minecraft/util/RandomSource.create:()Lnet/minecraft/util/RandomSource;
+       625: aload         6
+       627: invokevirtual #341                // Method com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature.place:(Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Z
+       630: pop
+       631: goto          710
+       634: new           #345                // class net/minecraft/world/level/levelgen/feature/EndPodiumFeature
+       637: dup
+       638: iconst_0
+       639: invokespecial #347                // Method net/minecraft/world/level/levelgen/feature/EndPodiumFeature."<init>":(Z)V
+       642: astore        5
+       644: aload         5
+       646: getstatic     #325                // Field net/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration.NONE:Lnet/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration;
+       649: aload_0
+       650: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       653: aload_0
+       654: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       657: invokevirtual #67                 // Method net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+       660: invokevirtual #331                // Method net/minecraft/server/level/ServerChunkCache.getGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+       663: invokestatic  #335                // InterfaceMethod net/minecraft/util/RandomSource.create:()Lnet/minecraft/util/RandomSource;
+       666: aload_0
+       667: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       670: invokevirtual #349                // Method net/minecraft/world/level/levelgen/feature/EndPodiumFeature.place:(Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Z
+       673: ifeq          710
+       676: iconst_4
+       677: bipush        16
+       679: invokestatic  #350                // Method net/minecraft/util/Mth.positiveCeilDiv:(II)I
+       682: istore        6
+       684: aload_0
+       685: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       688: invokevirtual #67                 // Method net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+       691: getfield      #356                // Field net/minecraft/server/level/ServerChunkCache.chunkMap:Lnet/minecraft/server/level/ChunkMap;
+       694: new           #79                 // class net/minecraft/world/level/ChunkPos
+       697: dup
+       698: aload_0
+       699: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       702: invokespecial #360                // Method net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+       705: iload         6
+       707: invokevirtual #363                // Method net/minecraft/server/level/ChunkMap.waitForLightBeforeSending:(Lnet/minecraft/world/level/ChunkPos;I)V
+       710: aload_0
+       711: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       714: invokestatic  #369                // Method com/yungnickyoung/minecraft/betterendisland/world/util/EndSpikeUtils.removeVanillaPillars:(Lnet/minecraft/server/level/ServerLevel;)V
+       717: aload_0
+       718: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       721: aload         4
+       723: invokestatic  #375                // Method com/yungnickyoung/minecraft/betterendisland/world/util/EndSpikeUtils.resetSpikes:(Lnet/minecraft/server/level/ServerLevel;Ljava/util/List;)V
+       726: getstatic     #379                // Field net/minecraft/server/level/ServerLevel.END_SPAWN_POINT:Lnet/minecraft/core/BlockPos;
+       729: invokevirtual #238                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+       732: astore        5
+       734: getstatic     #309                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+       737: getfield      #382                // Field com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.useVanillaSpawnPlatform:Z
+       740: ifeq          756
+       743: aload_0
+       744: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       747: aload         5
+       749: iconst_0
+       750: invokestatic  #385                // Method net/minecraft/world/level/levelgen/feature/EndPlatformFeature.createEndPlatform:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;Z)V
+       753: goto          767
+       756: aload_0
+       757: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       760: aload         5
+       762: iconst_0
+       763: invokestatic  #391                // Method com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndSpawnPlatformFeature.place:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;Z)Z
+       766: pop
+       767: iconst_0
+       768: istore        6
+       770: iload         6
+       772: bipush        20
+       774: if_icmpge     883
+       777: ldc2_w        #396                // double 96.0d
+       780: ldc2_w        #398                // double 2.0d
+       783: ldc2_w        #402                // double -3.141592653589793d
+       786: ldc2_w        #404                // double 0.15707963267948966d
+       789: iload         6
+       791: i2d
+       792: dmul
+       793: dadd
+       794: dmul
+       795: invokestatic  #406                // Method java/lang/Math.cos:(D)D
+       798: dmul
+       799: invokestatic  #410                // Method net/minecraft/util/Mth.floor:(D)I
+       802: istore        7
+       804: ldc2_w        #396                // double 96.0d
+       807: ldc2_w        #398                // double 2.0d
+       810: ldc2_w        #402                // double -3.141592653589793d
+       813: ldc2_w        #404                // double 0.15707963267948966d
+       816: iload         6
+       818: i2d
+       819: dmul
+       820: dadd
+       821: dmul
+       822: invokestatic  #414                // Method java/lang/Math.sin:(D)D
+       825: dmul
+       826: invokestatic  #410                // Method net/minecraft/util/Mth.floor:(D)I
+       829: istore        8
+       831: new           #168                // class net/minecraft/core/BlockPos
+       834: dup
+       835: iload         7
+       837: bipush        75
+       839: iload         8
+       841: invokespecial #216                // Method net/minecraft/core/BlockPos."<init>":(III)V
+       844: astore        9
+       846: aload         9
+       848: iconst_m1
+       849: bipush        -4
+       851: iconst_m1
+       852: invokevirtual #417                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+       855: aload         9
+       857: iconst_1
+       858: iconst_4
+       859: iconst_1
+       860: invokevirtual #417                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+       863: invokestatic  #421                // Method net/minecraft/core/BlockPos.betweenClosed:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Ljava/lang/Iterable;
+       866: aload_0
+       867: invokedynamic #425,  0            // InvokeDynamic #2:accept:(Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;)Ljava/util/function/Consumer;
+       872: invokeinterface #428,  2          // InterfaceMethod java/lang/Iterable.forEach:(Ljava/util/function/Consumer;)V
+       877: iinc          6, 1
+       880: goto          770
+       883: aload_0
+       884: getfield      #431                // Field gateways:Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+       887: invokevirtual #435                // Method it/unimi/dsi/fastutil/objects/ObjectArrayList.clear:()V
+       890: aload_0
+       891: getfield      #431                // Field gateways:Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+       894: iconst_0
+       895: invokestatic  #191                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       898: bipush        20
+       900: invokestatic  #191                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       903: invokestatic  #440                // Method com/google/common/collect/Range.closedOpen:(Ljava/lang/Comparable;Ljava/lang/Comparable;)Lcom/google/common/collect/Range;
+       906: invokestatic  #446                // Method com/google/common/collect/DiscreteDomain.integers:()Lcom/google/common/collect/DiscreteDomain;
+       909: invokestatic  #452                // Method com/google/common/collect/ContiguousSet.create:(Lcom/google/common/collect/Range;Lcom/google/common/collect/DiscreteDomain;)Lcom/google/common/collect/ContiguousSet;
+       912: invokevirtual #457                // Method it/unimi/dsi/fastutil/objects/ObjectArrayList.addAll:(Ljava/util/Collection;)Z
+       915: pop
+       916: aload_0
+       917: getfield      #431                // Field gateways:Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+       920: aload_0
+       921: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       924: invokevirtual #461                // Method net/minecraft/server/level/ServerLevel.getSeed:()J
+       927: invokestatic  #465                // InterfaceMethod net/minecraft/util/RandomSource.create:(J)Lnet/minecraft/util/RandomSource;
+       930: invokestatic  #468                // Method net/minecraft/Util.shuffle:(Ljava/util/List;Lnet/minecraft/util/RandomSource;)V
+       933: return
+      LineNumberTable:
+        line 147: 0
+        line 148: 8
+        line 149: 19
+        line 150: 27
+        line 153: 35
+        line 154: 57
+        line 155: 67
+        line 156: 74
+        line 157: 87
+        line 158: 98
+        line 160: 121
+        line 162: 131
+        line 163: 136
+        line 164: 158
+        line 165: 165
+        line 166: 178
+        line 167: 189
+        line 169: 209
+        line 170: 231
+        line 171: 268
+        line 173: 282
+        line 174: 293
+        line 175: 303
+        line 181: 330
+        line 182: 335
+        line 183: 340
+        line 184: 345
+        line 185: 350
+        line 186: 355
+        line 187: 360
+        line 188: 365
+        line 189: 370
+        line 190: 375
+        line 191: 380
+        line 192: 385
+        line 193: 390
+        line 194: 395
+        line 197: 400
+        line 198: 407
+        line 200: 421
+        line 201: 426
+        line 202: 442
+        line 203: 453
+        line 204: 466
+        line 207: 477
+        line 208: 486
+        line 209: 517
+        line 210: 561
+        line 211: 566
+        line 212: 569
+        line 215: 572
+        line 217: 581
+        line 218: 593
+        line 219: 603
+        line 220: 631
+        line 222: 634
+        line 223: 644
+        line 224: 676
+        line 225: 684
+        line 230: 710
+        line 233: 717
+        line 236: 726
+        line 237: 734
+        line 238: 743
+        line 240: 756
+        line 244: 767
+        line 245: 777
+        line 246: 804
+        line 247: 831
+        line 248: 846
+        line 244: 877
+        line 254: 883
+        line 255: 890
+        line 256: 916
+        line 257: 933
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          561       5     8 crystal   Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;
+          517      52     6 spike   Lnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;
+          593      38     5 endPodiumFeature   Lcom/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndPodiumFeature;
+          603      28     6 spawnPos   Lnet/minecraft/core/BlockPos;
+          684      26     6   $$2   I
+          644      66     5 endPodiumFeature   Lnet/minecraft/world/level/levelgen/feature/EndPodiumFeature;
+          804      73     7     x   I
+          831      46     8     z   I
+          846      31     9 gatePos   Lnet/minecraft/core/BlockPos;
+          770     113     6     i   I
+            0     934     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+            0     934     1 forcePortalPosReset   Z
+            8     926     2 dragons   Ljava/util/List;
+          442     492     3 remainingSummoningCrystals   Ljava/util/List;
+          486     448     4 allSpikes   Ljava/util/List;
+          734     200     5 platformPos   Lnet/minecraft/core/BlockPos;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            8     926     2 dragons   Ljava/util/List<+Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;>;
+          442     492     3 remainingSummoningCrystals   Ljava/util/List<Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;>;
+          486     448     4 allSpikes   Ljava/util/List<Lnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;>;
+      StackMapTable: number_of_entries = 21
+        frame_type = 252 /* append */
+          offset_delta = 57
+          locals = [ class java/util/List ]
+        frame_type = 29 /* same */
+        frame_type = 33 /* same */
+        frame_type = 9 /* same */
+        frame_type = 26 /* same */
+        frame_type = 19 /* same */
+        frame_type = 30 /* same */
+        frame_type = 21 /* same */
+        frame_type = 50 /* same */
+        frame_type = 47 /* same */
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 90
+        frame_type = 254 /* append */
+          offset_delta = 73
+          locals = [ class java/util/List, class java/util/List, class java/util/Iterator ]
+        frame_type = 253 /* append */
+          offset_delta = 43
+          locals = [ class net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike, class java/util/Iterator ]
+        frame_type = 249 /* chop */
+          offset_delta = 29
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 61 /* same */
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 75
+        frame_type = 252 /* append */
+          offset_delta = 45
+          locals = [ class net/minecraft/core/BlockPos ]
+        frame_type = 10 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 2
+          locals = [ int ]
+        frame_type = 250 /* chop */
+          offset_delta = 112
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  private void scanForInitialState();
+    descriptor: ()V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=4, args_size=1
+         0: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+         3: ldc_w         #474                // String Scanning for legacy world dragon fight...
+         6: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        11: aload_0
+        12: invokevirtual #476                // Method hasActiveExitPortal:()Z
+        15: istore_1
+        16: iload_1
+        17: ifeq          39
+        20: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+        23: ldc_w         #479                // String Found that the dragon has been killed in this world already.
+        26: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        31: aload_0
+        32: iconst_1
+        33: putfield      #250                // Field previouslyKilled:Z
+        36: goto          72
+        39: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+        42: ldc_w         #481                // String Found that the dragon has not yet been killed in this world.
+        45: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        50: aload_0
+        51: iconst_0
+        52: putfield      #250                // Field previouslyKilled:Z
+        55: aload_0
+        56: invokevirtual #202                // Method findExitPortal:()Lnet/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch;
+        59: ifnonnull     72
+        62: aload_0
+        63: aload_0
+        64: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        67: iconst_0
+        68: iconst_0
+        69: invokestatic  #483                // Method com/yungnickyoung/minecraft/betterendisland/world/util/ExitPortalUtils.spawnPortal:(Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;Lnet/minecraft/server/level/ServerLevel;ZZ)V
+        72: aload_0
+        73: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        76: invokevirtual #145                // Method net/minecraft/server/level/ServerLevel.getDragons:()Ljava/util/List;
+        79: astore_2
+        80: aload_2
+        81: invokeinterface #489,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+        86: ifeq          97
+        89: aload_0
+        90: iconst_1
+        91: putfield      #42                 // Field dragonKilled:Z
+        94: goto          157
+        97: aload_2
+        98: iconst_0
+        99: invokeinterface #490,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+       104: checkcast     #494                // class net/minecraft/world/entity/boss/enderdragon/EnderDragon
+       107: astore_3
+       108: aload_0
+       109: aload_3
+       110: invokevirtual #496                // Method net/minecraft/world/entity/boss/enderdragon/EnderDragon.getUUID:()Ljava/util/UUID;
+       113: putfield      #121                // Field dragonUUID:Ljava/util/UUID;
+       116: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+       119: ldc_w         #500                // String Found that there\'s a dragon still alive ({})
+       122: aload_3
+       123: invokeinterface #197,  3          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+       128: aload_0
+       129: iconst_0
+       130: putfield      #42                 // Field dragonKilled:Z
+       133: iload_1
+       134: ifne          157
+       137: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+       140: ldc_w         #502                // String But we didn\'t have a portal, so let\'s remove the dragon.
+       143: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+       148: aload_3
+       149: invokevirtual #504                // Method net/minecraft/world/entity/boss/enderdragon/EnderDragon.discard:()V
+       152: aload_0
+       153: aconst_null
+       154: putfield      #121                // Field dragonUUID:Ljava/util/UUID;
+       157: aload_0
+       158: getfield      #250                // Field previouslyKilled:Z
+       161: ifne          176
+       164: aload_0
+       165: getfield      #42                 // Field dragonKilled:Z
+       168: ifeq          176
+       171: aload_0
+       172: iconst_0
+       173: putfield      #42                 // Field dragonKilled:Z
+       176: return
+      LineNumberTable:
+        line 261: 0
+        line 262: 11
+        line 263: 16
+        line 264: 20
+        line 265: 31
+        line 267: 39
+        line 268: 50
+        line 269: 55
+        line 270: 62
+        line 274: 72
+        line 275: 80
+        line 276: 89
+        line 278: 97
+        line 279: 108
+        line 280: 116
+        line 281: 128
+        line 282: 133
+        line 283: 137
+        line 284: 148
+        line 285: 152
+        line 289: 157
+        line 290: 171
+        line 292: 176
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          108      49     3 dragon   Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;
+            0     177     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+           16     161     1 hasActiveExitPortal   Z
+           80      97     2 dragons   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           80      97     2 dragons   Ljava/util/List<+Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;>;
+      StackMapTable: number_of_entries = 5
+        frame_type = 252 /* append */
+          offset_delta = 39
+          locals = [ int ]
+        frame_type = 32 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 24
+          locals = [ class java/util/List ]
+        frame_type = 59 /* same */
+        frame_type = 18 /* same */
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  public void betterendisland_onCrystalDestroyed(net.minecraft.world.entity.boss.enderdragon.EndCrystal, net.minecraft.world.damagesource.DamageSource, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;Lnet/minecraft/world/damagesource/DamageSource;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=5, args_size=4
+         0: aload_0
+         1: getfield      #29                 // Field bei$dragonRespawnStage:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+         4: ifnull        55
+         7: aload_0
+         8: getfield      #105                // Field respawnCrystals:Ljava/util/List;
+        11: ifnull        55
+        14: aload_0
+        15: getfield      #105                // Field respawnCrystals:Ljava/util/List;
+        18: aload_1
+        19: invokeinterface #505,  2          // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+        24: ifeq          55
+        27: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+        30: ldc_w         #509                // String Aborting dragon respawn sequence
+        33: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        38: aload_0
+        39: aconst_null
+        40: putfield      #29                 // Field bei$dragonRespawnStage:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+        43: aload_0
+        44: iconst_0
+        45: putfield      #114                // Field respawnTime:I
+        48: aload_0
+        49: invokevirtual #511                // Method resetSpikeCrystals:()V
+        52: goto          94
+        55: aload_0
+        56: invokevirtual #134                // Method updateCrystalCount:()V
+        59: aload_0
+        60: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        63: aload_0
+        64: getfield      #121                // Field dragonUUID:Ljava/util/UUID;
+        67: invokevirtual #514                // Method net/minecraft/server/level/ServerLevel.getEntity:(Ljava/util/UUID;)Lnet/minecraft/world/entity/Entity;
+        70: astore        4
+        72: aload         4
+        74: instanceof    #494                // class net/minecraft/world/entity/boss/enderdragon/EnderDragon
+        77: ifeq          94
+        80: aload         4
+        82: checkcast     #494                // class net/minecraft/world/entity/boss/enderdragon/EnderDragon
+        85: aload_1
+        86: aload_1
+        87: invokevirtual #518                // Method net/minecraft/world/entity/boss/enderdragon/EndCrystal.blockPosition:()Lnet/minecraft/core/BlockPos;
+        90: aload_2
+        91: invokevirtual #521                // Method net/minecraft/world/entity/boss/enderdragon/EnderDragon.onCrystalDestroyed:(Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/damagesource/DamageSource;)V
+        94: aload_3
+        95: invokevirtual #140                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+        98: return
+      LineNumberTable:
+        line 296: 0
+        line 297: 27
+        line 298: 38
+        line 299: 43
+        line 300: 48
+        line 302: 55
+        line 303: 59
+        line 304: 72
+        line 305: 80
+        line 308: 94
+        line 309: 98
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           72      22     4 dragonEntity   Lnet/minecraft/world/entity/Entity;
+            0      99     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+            0      99     1 crystal   Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;
+            0      99     2 damageSource   Lnet/minecraft/world/damagesource/DamageSource;
+            0      99     3    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 2
+        frame_type = 55 /* same */
+        frame_type = 38 /* same */
+    RuntimeVisibleAnnotations:
+      0: #696(#697=[s#523],#699=[@#700(#701=s#705)],#706=Z#707)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["onCrystalDestroyed"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          cancellable=true
+        )
+
+  public void betterendisland_tryRespawn(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #42                 // Field dragonKilled:Z
+         4: ifeq          19
+         7: aload_0
+         8: getfield      #29                 // Field bei$dragonRespawnStage:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+        11: ifnonnull     19
+        14: aload_0
+        15: iconst_0
+        16: invokevirtual #525                // Method spawnDragon:(Z)V
+        19: aload_1
+        20: invokevirtual #140                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+        23: return
+      LineNumberTable:
+        line 313: 0
+        line 314: 14
+        line 316: 19
+        line 317: 23
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      24     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+            0      24     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 1
+        frame_type = 19 /* same */
+    RuntimeVisibleAnnotations:
+      0: #696(#697=[s#111],#699=[@#700(#701=s#705)],#706=Z#707)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["tryRespawn"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          cancellable=true
+        )
+
+  public void doInitialDragonSpawn();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+         3: ldc_w         #528                // String Starting initial dragon fight!
+         6: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        11: aload_0
+        12: iconst_1
+        13: invokevirtual #525                // Method spawnDragon:(Z)V
+        16: return
+      LineNumberTable:
+        line 325: 0
+        line 326: 11
+        line 327: 16
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      17     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  private void spawnDragon(boolean);
+    descriptor: (Z)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=4, args_size=2
+         0: aload_0
+         1: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+         4: astore_2
+         5: aload_2
+         6: ifnonnull     79
+         9: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+        12: ldc_w         #530                // String Tried to respawn, but need to find the portal first.
+        15: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        20: aload_0
+        21: invokevirtual #202                // Method findExitPortal:()Lnet/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch;
+        24: astore_3
+        25: aload_3
+        26: ifnonnull     63
+        29: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+        32: ldc_w         #532                // String Couldn\'t find a portal, so we made one.
+        35: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        40: aload_0
+        41: aload_0
+        42: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        45: iconst_0
+        46: iconst_0
+        47: invokestatic  #483                // Method com/yungnickyoung/minecraft/betterendisland/world/util/ExitPortalUtils.spawnPortal:(Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;Lnet/minecraft/server/level/ServerLevel;ZZ)V
+        50: aload_0
+        51: aload_0
+        52: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        55: iconst_1
+        56: iconst_1
+        57: invokestatic  #483                // Method com/yungnickyoung/minecraft/betterendisland/world/util/ExitPortalUtils.spawnPortal:(Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;Lnet/minecraft/server/level/ServerLevel;ZZ)V
+        60: goto          74
+        63: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+        66: ldc_w         #534                // String Found the exit portal & saved its location for next time.
+        69: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        74: aload_0
+        75: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+        78: astore_2
+        79: aload_0
+        80: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        83: aload_2
+        84: iconst_1
+        85: invokevirtual #261                // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+        88: invokestatic  #265                // Method com/yungnickyoung/minecraft/betterendisland/world/util/EndCrystalUtils.checkForBEIRespawnCrystals:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+        91: astore_3
+        92: aload_3
+        93: invokeinterface #536,  1          // InterfaceMethod java/util/List.size:()I
+        98: iconst_4
+        99: if_icmpeq     138
+       102: aload_0
+       103: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       106: aload_0
+       107: aload_2
+       108: invokestatic  #271                // Method com/yungnickyoung/minecraft/betterendisland/world/util/EndCrystalUtils.checkForVanillaRespawnCrystals:(Lnet/minecraft/world/level/Level;Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+       111: astore_3
+       112: aload_3
+       113: invokeinterface #536,  1          // InterfaceMethod java/util/List.size:()I
+       118: iconst_4
+       119: if_icmpeq     138
+       122: iload_1
+       123: ifeq          137
+       126: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+       129: ldc_w         #539                // String Unable to find all 4 summoning crystals. This shouldn\'t happen!
+       132: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+       137: return
+       138: iload_1
+       139: ifeq          156
+       142: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+       145: ldc_w         #541                // String Found all crystals, starting initial dragon spawn.
+       148: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+       153: goto          167
+       156: getstatic     #173                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+       159: ldc_w         #543                // String Found all crystals, respawning dragon.
+       162: invokeinterface #181,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+       167: aload_0
+       168: aload_3
+       169: invokevirtual #545                // Method respawnDragon:(Ljava/util/List;)V
+       172: return
+      LineNumberTable:
+        line 331: 0
+        line 332: 5
+        line 333: 9
+        line 334: 20
+        line 335: 25
+        line 336: 29
+        line 337: 40
+        line 338: 50
+        line 340: 63
+        line 343: 74
+        line 347: 79
+        line 348: 92
+        line 349: 102
+        line 350: 112
+        line 351: 122
+        line 352: 126
+        line 354: 137
+        line 358: 138
+        line 359: 142
+        line 361: 156
+        line 363: 167
+        line 364: 172
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           25      54     3 portalPatternMatch   Lnet/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch;
+            0     173     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+            0     173     1 isInitialSpawn   Z
+            5     168     2 portalPos   Lnet/minecraft/core/BlockPos;
+           92      81     3 allCrystals   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           92      81     3 allCrystals   Ljava/util/List<Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;>;
+      StackMapTable: number_of_entries = 7
+        frame_type = 253 /* append */
+          offset_delta = 63
+          locals = [ class net/minecraft/core/BlockPos, class net/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch ]
+        frame_type = 10 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 4
+        frame_type = 252 /* append */
+          offset_delta = 57
+          locals = [ class java/util/List ]
+        frame_type = 0 /* same */
+        frame_type = 17 /* same */
+        frame_type = 10 /* same */
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  private void betterendisland_respawnDragon(java.util.List<net.minecraft.world.entity.boss.enderdragon.EndCrystal>, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Ljava/util/List;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #42                 // Field dragonKilled:Z
+         4: ifne          14
+         7: aload_0
+         8: getfield      #45                 // Field bei$hasDragonEverSpawned:Z
+        11: ifne          38
+        14: aload_0
+        15: getfield      #29                 // Field bei$dragonRespawnStage:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+        18: ifnonnull     38
+        21: aload_0
+        22: getstatic     #23                 // Field com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage.START:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+        25: putfield      #29                 // Field bei$dragonRespawnStage:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+        28: aload_0
+        29: iconst_0
+        30: putfield      #114                // Field respawnTime:I
+        33: aload_0
+        34: aload_1
+        35: putfield      #105                // Field respawnCrystals:Ljava/util/List;
+        38: aload_2
+        39: invokevirtual #140                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+        42: return
+      LineNumberTable:
+        line 368: 0
+        line 369: 21
+        line 370: 28
+        line 371: 33
+        line 373: 38
+        line 374: 42
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      43     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+            0      43     1 crystals   Ljava/util/List;
+            0      43     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      43     1 crystals   Ljava/util/List<Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;>;
+      StackMapTable: number_of_entries = 2
+        frame_type = 14 /* same */
+        frame_type = 23 /* same */
+    Signature: #750                         // (Ljava/util/List<Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    RuntimeVisibleAnnotations:
+      0: #696(#697=[s#547],#699=[@#700(#701=s#705)],#706=Z#707)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["respawnDragon"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          cancellable=true
+        )
+
+  public void betterendisland_resetSpikeCrystals(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=4, args_size=2
+         0: aload_0
+         1: getfield      #105                // Field respawnCrystals:Ljava/util/List;
+         4: ifnull        49
+         7: aload_0
+         8: getfield      #105                // Field respawnCrystals:Ljava/util/List;
+        11: invokeinterface #281,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        16: astore_2
+        17: aload_2
+        18: invokeinterface #285,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        23: ifeq          49
+        26: aload_2
+        27: invokeinterface #290,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        32: checkcast     #296                // class net/minecraft/world/entity/boss/enderdragon/EndCrystal
+        35: astore_3
+        36: aload_3
+        37: iconst_0
+        38: invokevirtual #549                // Method net/minecraft/world/entity/boss/enderdragon/EndCrystal.setInvulnerable:(Z)V
+        41: aload_3
+        42: aconst_null
+        43: invokevirtual #552                // Method net/minecraft/world/entity/boss/enderdragon/EndCrystal.setBeamTarget:(Lnet/minecraft/core/BlockPos;)V
+        46: goto          17
+        49: return
+      LineNumberTable:
+        line 380: 0
+        line 381: 7
+        line 382: 36
+        line 383: 41
+        line 384: 46
+        line 386: 49
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           36      10     3 crystal   Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;
+            0      50     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+            0      50     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 17
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 31
+    RuntimeVisibleAnnotations:
+      0: #696(#697=[s#513],#699=[@#700(#701=s#702)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["resetSpikeCrystals"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+
+  public void betterendisland_setDragonKilled(net.minecraft.world.entity.boss.enderdragon.EnderDragon, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=10, locals=5, args_size=3
+         0: aload_1
+         1: invokevirtual #496                // Method net/minecraft/world/entity/boss/enderdragon/EnderDragon.getUUID:()Ljava/util/UUID;
+         4: aload_0
+         5: getfield      #121                // Field dragonUUID:Ljava/util/UUID;
+         8: invokevirtual #555                // Method java/util/UUID.equals:(Ljava/lang/Object;)Z
+        11: ifeq          218
+        14: aload_0
+        15: getfield      #32                 // Field dragonEvent:Lnet/minecraft/server/level/ServerBossEvent;
+        18: fconst_0
+        19: invokevirtual #159                // Method net/minecraft/server/level/ServerBossEvent.setProgress:(F)V
+        22: aload_0
+        23: getfield      #32                 // Field dragonEvent:Lnet/minecraft/server/level/ServerBossEvent;
+        26: iconst_0
+        27: invokevirtual #36                 // Method net/minecraft/server/level/ServerBossEvent.setVisible:(Z)V
+        30: aload_0
+        31: getfield      #13                 // Field bei$numTimesDragonKilled:I
+        34: ifne          65
+        37: getstatic     #309                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+        40: getfield      #313                // Field com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.spawnCentralTowerInitially:Z
+        43: ifne          65
+        46: getstatic     #309                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+        49: getfield      #560                // Field com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.spawnCentralTowerOnResummon:Z
+        52: ifeq          65
+        55: aload_0
+        56: aload_0
+        57: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        60: iconst_0
+        61: iconst_0
+        62: invokestatic  #483                // Method com/yungnickyoung/minecraft/betterendisland/world/util/ExitPortalUtils.spawnPortal:(Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;Lnet/minecraft/server/level/ServerLevel;ZZ)V
+        65: aload_0
+        66: aload_0
+        67: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        70: iconst_1
+        71: iconst_1
+        72: invokestatic  #483                // Method com/yungnickyoung/minecraft/betterendisland/world/util/ExitPortalUtils.spawnPortal:(Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;Lnet/minecraft/server/level/ServerLevel;ZZ)V
+        75: aload_0
+        76: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        79: aconst_null
+        80: aload_0
+        81: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+        84: invokevirtual #244                // Method net/minecraft/core/BlockPos.getX:()I
+        87: i2d
+        88: aload_0
+        89: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+        92: invokevirtual #167                // Method net/minecraft/core/BlockPos.getY:()I
+        95: i2d
+        96: aload_0
+        97: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       100: invokevirtual #247                // Method net/minecraft/core/BlockPos.getZ:()I
+       103: i2d
+       104: ldc_w         #563                // float 6.0f
+       107: getstatic     #564                // Field net/minecraft/world/level/Level$ExplosionInteraction.NONE:Lnet/minecraft/world/level/Level$ExplosionInteraction;
+       110: invokevirtual #569                // Method net/minecraft/server/level/ServerLevel.explode:(Lnet/minecraft/world/entity/Entity;DDDFLnet/minecraft/world/level/Level$ExplosionInteraction;)Lnet/minecraft/world/level/Explosion;
+       113: pop
+       114: aload_0
+       115: invokevirtual #573                // Method spawnNewGateway:()V
+       118: aload_0
+       119: getfield      #250                // Field previouslyKilled:Z
+       122: ifeq          140
+       125: getstatic     #576                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.moreDragonEggs:Z
+       128: ifne          140
+       131: getstatic     #309                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+       134: getfield      #579                // Field com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.resummonedDragonDropsEgg:Z
+       137: ifeq          161
+       140: aload_0
+       141: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       144: aload_0
+       145: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+       148: invokevirtual #582                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+       151: getstatic     #584                // Field net/minecraft/world/level/block/Blocks.DRAGON_EGG:Lnet/minecraft/world/level/block/Block;
+       154: invokevirtual #587                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       157: invokevirtual #593                // Method net/minecraft/server/level/ServerLevel.setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+       160: pop
+       161: getstatic     #597                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.betterEnd:Z
+       164: ifeq          172
+       167: bipush        70
+       169: goto          174
+       172: bipush        60
+       174: istore_3
+       175: aload_0
+       176: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       179: invokestatic  #275                // Method net/minecraft/world/level/levelgen/feature/SpikeFeature.getSpikesForLevel:(Lnet/minecraft/world/level/WorldGenLevel;)Ljava/util/List;
+       182: astore        4
+       184: aload         4
+       186: aload_0
+       187: iload_3
+       188: invokedynamic #600,  0            // InvokeDynamic #3:accept:(Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;I)Ljava/util/function/Consumer;
+       193: invokeinterface #153,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+       198: aload_0
+       199: iconst_1
+       200: putfield      #250                // Field previouslyKilled:Z
+       203: aload_0
+       204: iconst_1
+       205: putfield      #42                 // Field dragonKilled:Z
+       208: aload_0
+       209: dup
+       210: getfield      #13                 // Field bei$numTimesDragonKilled:I
+       213: iconst_1
+       214: iadd
+       215: putfield      #13                 // Field bei$numTimesDragonKilled:I
+       218: aload_2
+       219: invokevirtual #140                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+       222: return
+      LineNumberTable:
+        line 390: 0
+        line 391: 14
+        line 392: 22
+        line 395: 30
+        line 398: 55
+        line 400: 65
+        line 402: 75
+        line 403: 114
+        line 404: 118
+        line 405: 140
+        line 409: 161
+        line 410: 175
+        line 411: 184
+        line 416: 198
+        line 417: 203
+        line 418: 208
+        line 420: 218
+        line 421: 222
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          175      43     3  topY   I
+          184      34     4 spikes   Ljava/util/List;
+            0     223     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+            0     223     1 dragon   Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;
+            0     223     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          184      34     4 spikes   Ljava/util/List<Lnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;>;
+      StackMapTable: number_of_entries = 6
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 65
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 74
+        frame_type = 20 /* same */
+        frame_type = 10 /* same */
+        frame_type = 65 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 43 /* same */
+    RuntimeVisibleAnnotations:
+      0: #696(#697=[s#756],#699=[@#700(#701=s#705)],#706=Z#707)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["setDragonKilled"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          cancellable=true
+        )
+
+  public void advanceRespawnStage(com.yungnickyoung.minecraft.betterendisland.world.DragonRespawnStage);
+    descriptor: (Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #29                 // Field bei$dragonRespawnStage:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+         4: ifnonnull     18
+         7: new           #603                // class java/lang/IllegalStateException
+        10: dup
+        11: ldc_w         #605                // String Better Dragon respawn isn\'t in progress, can\'t skip ahead in the respawn process.
+        14: invokespecial #607                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+        17: athrow
+        18: aload_0
+        19: iconst_0
+        20: putfield      #114                // Field respawnTime:I
+        23: aload_1
+        24: aload_0
+        25: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        28: aload_0
+        29: invokevirtual #609                // Method com/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage.onStart:(Lnet/minecraft/server/level/ServerLevel;Lcom/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight;)V
+        32: return
+      LineNumberTable:
+        line 426: 0
+        line 427: 7
+        line 429: 18
+        line 430: 23
+        line 431: 32
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      33     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+            0      33     1 nextStage   Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+      StackMapTable: number_of_entries = 1
+        frame_type = 18 /* same */
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  public void tickBellSound();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=7, locals=4, args_size=1
+         0: getstatic     #309                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+         3: getfield      #613                // Field com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.playBellSound:Z
+         6: ifne          10
+         9: return
+        10: aload_0
+        11: getfield      #45                 // Field bei$hasDragonEverSpawned:Z
+        14: ifeq          24
+        17: aload_0
+        18: getfield      #29                 // Field bei$dragonRespawnStage:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+        21: ifnull        166
+        24: aload_0
+        25: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        28: invokevirtual #616                // Method net/minecraft/server/level/ServerLevel.getGameTime:()J
+        31: lstore_1
+        32: aload_0
+        33: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+        36: ifnonnull     44
+        39: bipush        80
+        41: goto          54
+        44: aload_0
+        45: getfield      #163                // Field portalLocation:Lnet/minecraft/core/BlockPos;
+        48: invokevirtual #167                // Method net/minecraft/core/BlockPos.getY:()I
+        51: bipush        15
+        53: iadd
+        54: istore_3
+        55: lload_1
+        56: ldc2_w        #619                // long 100l
+        59: lrem
+        60: lconst_0
+        61: lcmp
+        62: ifne          125
+        65: aload_0
+        66: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        69: aconst_null
+        70: new           #168                // class net/minecraft/core/BlockPos
+        73: dup
+        74: iconst_0
+        75: iload_3
+        76: iconst_0
+        77: invokespecial #216                // Method net/minecraft/core/BlockPos."<init>":(III)V
+        80: getstatic     #621                // Field net/minecraft/sounds/SoundEvents.BELL_BLOCK:Lnet/minecraft/sounds/SoundEvent;
+        83: getstatic     #627                // Field net/minecraft/sounds/SoundSource.NEUTRAL:Lnet/minecraft/sounds/SoundSource;
+        86: ldc_w         #633                // float 24.0f
+        89: ldc_w         #634                // float 0.5f
+        92: invokevirtual #635                // Method net/minecraft/server/level/ServerLevel.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+        95: aload_0
+        96: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        99: aconst_null
+       100: new           #168                // class net/minecraft/core/BlockPos
+       103: dup
+       104: iconst_0
+       105: iload_3
+       106: iconst_0
+       107: invokespecial #216                // Method net/minecraft/core/BlockPos."<init>":(III)V
+       110: getstatic     #639                // Field net/minecraft/sounds/SoundEvents.BELL_RESONATE:Lnet/minecraft/sounds/SoundEvent;
+       113: getstatic     #627                // Field net/minecraft/sounds/SoundSource.NEUTRAL:Lnet/minecraft/sounds/SoundSource;
+       116: ldc_w         #642                // float 4.0f
+       119: ldc_w         #643                // float 0.9f
+       122: invokevirtual #635                // Method net/minecraft/server/level/ServerLevel.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+       125: lload_1
+       126: ldc2_w        #644                // long 300l
+       129: lrem
+       130: lconst_0
+       131: lcmp
+       132: ifne          166
+       135: aload_0
+       136: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       139: aconst_null
+       140: new           #168                // class net/minecraft/core/BlockPos
+       143: dup
+       144: iconst_0
+       145: bipush        80
+       147: iconst_0
+       148: invokespecial #216                // Method net/minecraft/core/BlockPos."<init>":(III)V
+       151: getstatic     #639                // Field net/minecraft/sounds/SoundEvents.BELL_RESONATE:Lnet/minecraft/sounds/SoundEvent;
+       154: getstatic     #627                // Field net/minecraft/sounds/SoundSource.NEUTRAL:Lnet/minecraft/sounds/SoundSource;
+       157: ldc_w         #633                // float 24.0f
+       160: ldc_w         #646                // float 0.8f
+       163: invokevirtual #635                // Method net/minecraft/server/level/ServerLevel.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+       166: return
+      LineNumberTable:
+        line 436: 0
+        line 438: 10
+        line 439: 24
+        line 440: 32
+        line 442: 55
+        line 444: 65
+        line 447: 95
+        line 451: 125
+        line 452: 135
+        line 455: 166
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           32     134     1 gameTime   J
+           55     111     3 soundY   I
+            0     167     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+      StackMapTable: number_of_entries = 6
+        frame_type = 10 /* same */
+        frame_type = 13 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 19
+          locals = [ long ]
+        frame_type = 73 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 70
+          locals = [ int ]
+        frame_type = 249 /* chop */
+          offset_delta = 40
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  public com.yungnickyoung.minecraft.betterendisland.world.DragonRespawnStage getDragonRespawnStage();
+    descriptor: ()Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #29                 // Field bei$dragonRespawnStage:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+         4: areturn
+      LineNumberTable:
+        line 460: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  public boolean isFirstExitPortalSpawn();
+    descriptor: ()Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #7                  // Field bei$isFirstExitPortalSpawn:Z
+         4: ireturn
+      LineNumberTable:
+        line 466: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  public boolean hasDragonEverSpawned();
+    descriptor: ()Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #45                 // Field bei$hasDragonEverSpawned:Z
+         4: ireturn
+      LineNumberTable:
+        line 472: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  public int getNumTimesDragonKilled();
+    descriptor: ()I
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #13                 // Field bei$numTimesDragonKilled:I
+         4: ireturn
+      LineNumberTable:
+        line 478: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  public void setDragonRespawnStage(com.yungnickyoung.minecraft.betterendisland.world.DragonRespawnStage);
+    descriptor: (Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #29                 // Field bei$dragonRespawnStage:Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+         5: return
+      LineNumberTable:
+        line 484: 0
+        line 485: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+            0       6     1 stage   Lcom/yungnickyoung/minecraft/betterendisland/world/DragonRespawnStage;
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  public void setIsFirstExitPortalSpawn(boolean);
+    descriptor: (Z)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: iload_1
+         2: putfield      #7                  // Field bei$isFirstExitPortalSpawn:Z
+         5: return
+      LineNumberTable:
+        line 490: 0
+        line 491: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+            0       6     1    bl   Z
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  public void setHasDragonEverSpawned(boolean);
+    descriptor: (Z)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: iload_1
+         2: putfield      #45                 // Field bei$hasDragonEverSpawned:Z
+         5: return
+      LineNumberTable:
+        line 496: 0
+        line 497: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+            0       6     1    bl   Z
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  public void setNumTimesDragonKilled(int);
+    descriptor: (I)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: iload_1
+         2: putfield      #13                 // Field bei$numTimesDragonKilled:I
+         5: return
+      LineNumberTable:
+        line 502: 0
+        line 503: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+            0       6     1     i   I
+    RuntimeVisibleAnnotations:
+      0: #677()
+        org.spongepowered.asm.mixin.Unique
+
+  private void lambda$betterendisland_setDragonKilled$1(int, net.minecraft.world.level.levelgen.feature.SpikeFeature$EndSpike);
+    descriptor: (ILnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=6, locals=4, args_size=3
+         0: iload_1
+         1: aload_2
+         2: checkcast     #647                // class com/yungnickyoung/minecraft/betterendisland/world/IEndSpike
+         5: invokeinterface #649,  1          // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/world/IEndSpike.getCrystalYOffset:()I
+        10: iadd
+        11: istore_3
+        12: aload_0
+        13: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        16: new           #168                // class net/minecraft/core/BlockPos
+        19: dup
+        20: aload_2
+        21: invokevirtual #652                // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterX:()I
+        24: iload_3
+        25: iconst_1
+        26: isub
+        27: aload_2
+        28: invokevirtual #655                // Method net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike.getCenterZ:()I
+        31: invokespecial #216                // Method net/minecraft/core/BlockPos."<init>":(III)V
+        34: getstatic     #658                // Field net/minecraft/world/level/block/Blocks.OBSIDIAN:Lnet/minecraft/world/level/block/Block;
+        37: invokevirtual #587                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+        40: iconst_3
+        41: invokevirtual #661                // Method net/minecraft/server/level/ServerLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+        44: pop
+        45: return
+      LineNumberTable:
+        line 412: 0
+        line 413: 12
+        line 414: 45
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      46     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+            0      46     1  topY   I
+            0      46     2 spike   Lnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;
+           12      34     3 crystalY   I
+
+  private void lambda$reset$0(net.minecraft.core.BlockPos);
+    descriptor: (Lnet/minecraft/core/BlockPos;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #63                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+         4: aload_1
+         5: getstatic     #665                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+         8: invokevirtual #587                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+        11: invokevirtual #593                // Method net/minecraft/server/level/ServerLevel.setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+        14: pop
+        15: return
+      LineNumberTable:
+        line 249: 0
+        line 250: 15
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lcom/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin;
+            0      16     1   pos   Lnet/minecraft/core/BlockPos;
+}
+SourceFile: "EndDragonFightMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #783(#701=[c#784])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/dimension/end/EndDragonFight;]
+    )
+BootstrapMethods:
+  0: #805 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #786 (Ljava/lang/Object;)V
+      #788 REF_invokeVirtual net/minecraft/world/entity/Entity.discard:()V
+      #792 (Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;)V
+  1: #805 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #786 (Ljava/lang/Object;)V
+      #788 REF_invokeVirtual net/minecraft/world/entity/Entity.discard:()V
+      #794 (Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;)V
+  2: #805 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #786 (Ljava/lang/Object;)V
+      #796 REF_invokeVirtual com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.lambda$reset$0:(Lnet/minecraft/core/BlockPos;)V
+      #799 (Lnet/minecraft/core/BlockPos;)V
+  3: #805 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #786 (Ljava/lang/Object;)V
+      #800 REF_invokeVirtual com/yungnickyoung/minecraft/betterendisland/mixin/EndDragonFightMixin.lambda$betterendisland_setDragonKilled$1:(ILnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;)V
+      #803 (Lnet/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike;)V
+InnerClasses:
+  public static final #813= #18 of #112;  // Data=class net/minecraft/world/level/dimension/end/EndDragonFight$Data of class net/minecraft/world/level/dimension/end/EndDragonFight
+  public static #816= #745 of #814;       // BlockPatternMatch=class net/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch of class net/minecraft/world/level/block/state/pattern/BlockPattern
+  public static #817= #294 of #276;       // EndSpike=class net/minecraft/world/level/levelgen/feature/SpikeFeature$EndSpike of class net/minecraft/world/level/levelgen/feature/SpikeFeature
+  public static final #820= #565 of #818; // ExplosionInteraction=class net/minecraft/world/level/Level$ExplosionInteraction of class net/minecraft/world/level/Level
+  public static final #825= #821 of #823; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
