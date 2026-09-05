@@ -35,3 +35,8 @@ Initial inspection finds desert/misc/chillzone, giant_torch and ruins_0 constant
 in their corresponding generators. Full registration-to-placement interpretation
 remains required before accepting the mappings or effective contents. The working
 inventory is unchanged by this capture.
+
+For exact historical reproduction of the non-verbose FeatureModule output, use
+extractor revision `9c30a04`. Revision `e151514` intentionally adds annotations
+for this class; its expanded output is preserved separately under
+`../yungs-extras-registration/`. The other four class selections are unchanged.
