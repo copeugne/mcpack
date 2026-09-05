@@ -831,3 +831,34 @@ def test_yung_family_geometry_uses_only_member_template_envelopes() -> None:
                 list(size) for size in sorted({tuple(dimensions[name]) for name in templates})
             ]
             assert "not occupied-world measurements" in str(family["geometry_scope"])
+
+
+def test_yung_family_biomes_follow_their_addition_modifiers() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    for key, contribution in contributions.items():
+        families = cast("list[dict[str, JsonValue]]", contribution["families"])
+        for family in families:
+            if key == "yungsbridges:bridges":
+                source = cast(
+                    "dict[str, JsonValue]", contribution["biome_and_modifier_constraints"]
+                )
+                assert family["biome_tag"] == source["biome_tag"]
+            else:
+                modifiers = cast("dict[str, dict[str, JsonValue]]", contribution["biome_modifiers"])
+                members = set(cast("list[str]", family["configured_features"]))
+                matches = [row for row in modifiers.values()
+                           if row["type"] == "neoforge:add_features"
+                           and members <= set(cast("list[str]", row["features"]))]
+                assert len(matches) == 1
+                tag = str(matches[0]["biomes"]).removeprefix("#")
+                assert family["biome_tag"] == tag
+                constraints = cast("dict[str, JsonValue]", contribution["biome_constraints"])
+                tags = cast("dict[str, dict[str, JsonValue]]", constraints["tags"])
+                source = tags[tag]
+            assert source["missing_required_members"] == []
+            assert family["registered_biomes"] == source["registered_biomes"]
+            assert family["dimension_biome_overlap"] == source["dimension_biome_overlap"]

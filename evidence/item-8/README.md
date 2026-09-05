@@ -1863,3 +1863,16 @@ records remain unchanged. Reproduce in a fresh directory:
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-family-geometry.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-yung-family-geometry.json
 ```
+
+### Feature-family biome and dimension scope
+
+All eleven feature families now carry their addition-modifier biome tag, resolved
+registered biomes and captured dimension overlap. Extras desert families share
+three eligible desert biomes; swamp families share swamp and mangrove swamp.
+Bridges retains six eligible river biomes. Only overworld overlaps in the captured
+live dimension lists. This is eligibility, not observed family generation.
+
+Twenty-three focused tests passed, including binding each Extras family's complete
+member set to exactly one addition modifier. The existing tag-resolution tests
+remain the underlying evidence. Ruff found one long test line; wrapping it resolved
+the finding and scoped Ruff/Basedpyright passed. No new measurement was required.
