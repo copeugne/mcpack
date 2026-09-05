@@ -1007,3 +1007,41 @@ Grouping delivered in `18ecfe4`; inventory regenerated at that revision, SHA-256
 `87667133ab2560dfa6120872a0023dcf761217e2f81080a631925808fa9d6a34`.
 Both roots and their template, biome, loot and observation coverage are retained.
 All other family rows are unchanged.
+
+## MVS mining-family relationship and encounter sources (2026-09-05)
+
+Mine with campsite and the modular mineshaft remain separate families. The former
+uses one authored site and a lower mining component, plus shared villager
+alternatives. The latter assembles entrance, corridor, intersection and stair
+pieces, has jigsaw size 17 and an overflow pool allowed outside normal boundaries.
+These are different assembly/layout identities, not biome or material substitutions.
+Shared villager components and a mining theme do not merge them. This closes the
+explicit relationship question without claiming equal or measured difficulty.
+
+Mine with campsite has a skeleton spawner in its lower template and no authored
+hostile template entity. The mineshaft has authored bogged, evokers and skeletons,
+and spawner NBT selecting bogged, creepers and skeletons. Both include potential
+villagers; the mineshaft also contains an armor stand, which is not counted as an
+enemy. Both root definitions have empty spawn overrides. Natural spawning remains
+conditional on biome/world state. Existing spawner and mob fields retain exact
+source-template attribution; two required attributes now record encounter intent
+and the authored-versus-natural distinction explicitly.
+
+The existing decoder verifies spawner assignments from preserved NBT. The added
+family-decision test checks distinct roots, definition settings, template coverage,
+entity IDs and spawner sources; generic singleton checks bind all source fields.
+This does not prove effective runtime replacements or count live mobs. Working
+family count remains 426; other design/provider and attribute gaps remain open.
+
+Decision SHA-256:
+`e0ed25faf9b0f6f8af09d7656d5fafa445287661d34641af2417e89387e21d58`.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-mvs-mining.json
+```
+
+All 69 affected tests and scoped Ruff/Basedpyright checks passed. No additional
+measurement system, runtime or configuration change was required.
