@@ -37,6 +37,7 @@ ARCHIVES = frozenset(
     }
 )
 GENERATION_PREFIXES = (
+    "com/finndog/moogs_structures/world/structures/GenericJigsawStructure",
     "com/yungnickyoung/minecraft/betterdungeons/world/structure/spider_dungeon/",
     "com/yungnickyoung/minecraft/betterdungeons/world/structure/SmallNetherDungeonStructure",
     "com/yungnickyoung/minecraft/bettermineshafts/world/",
