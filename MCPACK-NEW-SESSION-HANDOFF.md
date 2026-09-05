@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Trace the five custom processor/predicate implementations referenced by the
+monument lists, plus RSProcessors to bind their registered identities. Pillars
+affect vertical extent, surface delegation affects archaeology loot, and the
+Y predicate affects lava placement. Noise/random replacements are current
+inputs to these same lists. Use the existing extractor and no new measurement.
+Do not infer the structure_surface_processor class from a filename: the archive
+contains CappedStructureSurfaceProcessor, so verify the registration binding.
+
 Monument packaged encounter and loot inputs are integrated in 62f005a and the
 inventory reproduces exactly. Do not repeat candidate entity/chest joins.
 Processor documents add jungle archaeology loot and downward pillar paths;
