@@ -6,6 +6,38 @@
 
 ### Continuation update - 2026-09-05
 
+Runtime registry assignment is delivered through `8dd7f9c`, built from
+`4ad283f`. All 887 captured IDs have exactly one working group; the unassigned
+list is empty. The 34 vanilla roots form 21 working groups, preserving village,
+portal, shipwreck, mineshaft and ocean-ruin variants. Each vanilla root has one
+packaged structure definition in the retained catalog; this does not resolve
+runtime hooks. Twenty-four vanilla custom paths remain explicitly untraced.
+The ancient city retains its missing wall-stairs template. Vanilla mineshafts
+link the existing suppression-code identity and frozen config, not an assumed
+active vanilla generator. Trial aliases remain components of one chamber family.
+
+The reused vanilla/Repurposed source checks and the new exact-once whole-registry
+check passed (three affected tests, 54 deselected). Scoped Ruff/basedpyright
+checks passed. Two builds were byte-identical; all 431 prior family records
+remained unchanged. Inventory SHA-256:
+`3061fe38349012e43e0bc35e998cc266b7470cd41d3e1efbe3a990f27c8a92ae`.
+There are 452 WORKING groups, not an accepted canonical family count.
+
+Next close a demonstrated non-registry contribution gap in the existing trace:
+Village Taverns declares five `lithostitched:add_template_pool_elements`
+modifiers targeting vanilla desert/plains/savanna/snowy/taiga house pools.
+Each adds a weight-5 `lithostitched:limited` element, limit 1, whose delegate is
+its corresponding tavern template. Mod-loaded conditions are preserved in the
+packaged catalog. The current trace selects packaged pools but does not apply
+these modifiers or decode their delegate wrapper. Resolve effective conditions
+and modifier application, then attribute injected templates to the village
+family. Better Village has four packaged compat JSON resources and requires
+its code path to establish pool changes. Registry absence proves neither mod
+is irrelevant. Reuse the current catalog and tracing path: this concrete gap
+does not justify a new measurement system. Finish all retained-provider
+contributions, custom generators, canonical grouping and required attributes.
+Item 8 final gate, clean review and main merge remain open.
+
 Aether/Deep Aether and BetterEnd are delivered in separate source/output
 increments: `d883abe`/`b006a3f` and `664d235`/`8e21c9f`. All eight registered
 Aether/Deep Aether roots and fourteen BetterEnd roots are assigned. The six
