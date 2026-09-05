@@ -2069,3 +2069,27 @@ End Island contribution. Reproduce in a fresh path:
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-respawn.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-respawn.json
 ```
+
+### Better End Island preserved runtime activation
+
+Manual inspection of the already archived registry-r1 debug log resolves the
+relevant mixin applications, actual NeoForge service selections and configuration
+loading. `family-decisions.json` records exact one-based log lines and the source
+member hash. The captured config matches the frozen file byte for byte. Combining
+the logged Better End mod/container and selected platform helper with the captured
+Common.init/ModList.isLoaded path derives betterEnd=true (spike anchor Y=70,
+loader radius 42). This is a runtime/source derivation, not a field dump or world
+geometry measurement. Hook execution and successful generation remain separate.
+
+The archive retrieval and restoration command is retained in raw-custody/README.md.
+Executed against that restored archive, these commands verify the two member
+hashes against raw-custody/registry-r1-manifest.json and expose the cited records:
+
+```sh
+sha256sum evidence/raw/item8/custody-r1/restored-download/debug.log evidence/raw/item8/custody-r1/restored-download/configuration/config/betterendisland-neoforge-1_21.toml
+sed -n '1508p;1696p;11956p;11962p;11969p;12015p;12612p;12676p;12894p;12895p;16256p;18241p;18245p' evidence/raw/item8/custody-r1/restored-download/debug.log
+```
+
+No raw archive was regenerated and no server was launched. Twenty-nine focused
+tests and scoped builder checks passed; they do not substitute for the cited
+manual log inspection or prove generated-world outcomes.
