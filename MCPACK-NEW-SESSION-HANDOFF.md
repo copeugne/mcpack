@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-05
 
+Buried treasure source (`90eb4d4`) and family integration (`9f68b51`) resolve
+its direct piece path without inventing template or pool components. Seven
+attributes now record authored content, placement and lack of a generated
+landmark. Search failure and discarded createChest result remain explicit:
+a start record does not prove a surviving loot chest. Existing observed
+geometry, dimensions and world links are preserved. All 62 affected tests and
+scoped checks pass. Inventory SHA:
+`5e426fa4293e0a222ec010598921bac7ad8d550ee44b8571326fb47b57703efa`.
+Decision SHA: `873cac500cf01735864b85e9f5db35ef99085ae3d33990b45774f1eb6d836b3c`.
+Commands and limitations are in
+`evidence/item-8/sources/vanilla-buried-treasure-code/README.md`.
+Continue remaining direct generators, including desert pyramid, jungle temple
+and swamp hut, plus provider reconciliation and effective retained-mod gaps.
+Actual visibility is not implied by authored visual cues. Item 8 remains open.
+
+
 Ruined portal source inspection (`07dda51`) and family integration (`84faa88`)
 resolve thirteen template alternatives across all seven roots, retained as one
 family. Six attributes record authored content and per-root placement modes.

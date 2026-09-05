@@ -64,3 +64,9 @@ family increment, not Item 8 completion, and adds no measurement system.
 All 62 affected tests passed. Basedpyright passed. Ruff passed after combining
 the two empty-list assertions in the existing test and wrapping the expression,
 keeping the change within its existing statement-count limit without a new helper.
+
+Source inspection is delivered in `90eb4d4`, decisions and tests in `9f68b51`.
+The inventory was rebuilt at `9f68b51` using the command above. Inventory SHA:
+`5e426fa4293e0a222ec010598921bac7ad8d550ee44b8571326fb47b57703efa`.
+Only buried treasure content/grouping and the decision input identity change;
+existing observed geometry, dimensions and world-observation links remain.

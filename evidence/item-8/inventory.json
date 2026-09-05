@@ -76463,7 +76463,11 @@
     "minecraft:buried_treasure": {
       "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
       "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": "None in the inspected vanilla generator.",
+        "natural": "The packaged root has empty spawn_overrides; natural biome spawning is not excluded.",
+        "scope": "Source attribution, not observed population or effective retained-mod behavior."
+      },
       "biome_constraints": {
         "minecraft:buried_treasure": {
           "biomes": [
@@ -76496,83 +76500,94 @@
         "observed": []
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {
-          "minecraft:buried_treasure": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "minecraft:buried_treasure"
-          }
-        },
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [],
-        "unresolved_sources": {}
+        "mechanism": "No spawner placement or template path in the direct vanilla generator.",
+        "scope": "Vanilla code, not retained-mod injections.",
+        "vanilla_spawner_block_types": []
       },
       "grouping_decision": {
+        "attributes": {
+          "authored_or_natural_enemies": {
+            "authored": "None in the inspected vanilla generator.",
+            "natural": "The packaged root has empty spawn_overrides; natural biome spawning is not excluded.",
+            "scope": "Source attribution, not observed population or effective retained-mod behavior."
+          },
+          "generated_spawners": {
+            "mechanism": "No spawner placement or template path in the direct vanilla generator.",
+            "scope": "Vanilla code, not retained-mod injections.",
+            "vanilla_spawner_block_types": []
+          },
+          "intended_hostility": {
+            "basis": "Direct chest and neighbor-fill path without entity or spawner creation.",
+            "interpretation": "No authored guards or combat encounter in the vanilla generator.",
+            "scope": "Source-based interpretation; ambient mobs and retained-mod changes are not excluded."
+          },
+          "loot_table_source": {
+            "mechanism": "After finding a supported position, calls createChest with BURIED_TREASURE and discards its boolean result.",
+            "scope": "Assignment path only. Search may reach minimum build height without a chest; successful placement and realized loot are not proved by the start record.",
+            "vanilla_assigned_tables": [
+              "minecraft:chests/buried_treasure"
+            ]
+          },
+          "mob_source": {
+            "authored_entity_ids": [],
+            "mechanism": "The direct vanilla piece changes nearby blocks and attempts chest placement; no entity generator or template is used.",
+            "scope": "Vanilla authored content, not measured natural mobs or retained-mod injections."
+          },
+          "underground_surface_classification": {
+            "basis": "At chunk-local X/Z 9/9, selects a position above default sandstone, stone, andesite, granite or diorite; returns without placement when no match is found above minimum build height.",
+            "classification": "Buried chest target searched downward from OCEAN_FLOOR_WG.",
+            "scope": "Vanilla placement rule, not universal burial depth or guaranteed chest generation. Neighbor infill can extend outside the one-block piece box."
+          },
+          "visual_discoverability": {
+            "authored_landmark": "None. Only a chest target and immediately adjacent infill are authored.",
+            "basis": "The complete direct vanilla piece has no above-ground marker or building path.",
+            "scope": "Actual cover, exposure and visual range remain unmeasured; this is not a guarantee that every chest is invisible."
+          }
+        },
         "evidence": {
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+          "evidence/item-8/sources/vanilla-buried-treasure-code/identities.json": "a3ee21e981a4c041695e894ba4c5ef8221ac720283870f2e71f9cb41b0a5bd4f",
+          "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c"
         },
         "family_id": "minecraft:buried_treasure",
         "name": "Vanilla buried treasure",
-        "rationale": "One vanilla buried treasure generation design. Its components and layout alternatives are not extra families. Packaged definition identity is preserved; retained-mod hooks, effective content and remaining attributes require reconciliation.",
+        "rationale": "One direct buried-treasure generator attempts one chest after a downward support search. It uses no template or pool components. Failed support search or failed chest creation must not be mistaken for a delivered reward.",
         "structure_ids": [
           "minecraft:buried_treasure"
         ],
         "variants": {
           "minecraft:buried_treasure": {
+            "component_scope": "Direct single-piece block placement without templates or pools. Empty template list is resolved absence, not an unfinished trace.",
             "definition": {
               "biomes": "#minecraft:has_structure/buried_treasure",
               "spawn_overrides": {},
               "step": "underground_structures",
               "type": "minecraft:buried_treasure"
             },
-            "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+            "missing_components": [],
+            "vanilla_code_piece_class": "net/minecraft/world/level/levelgen/structure/structures/BuriedTreasurePieces$BuriedTreasurePiece.class",
+            "vanilla_code_template_ids": []
           }
         }
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Direct chest and neighbor-fill path without entity or spawner creation.",
+        "interpretation": "No authored guards or combat encounter in the vanilla generator.",
+        "scope": "Source-based interpretation; ambient mobs and retained-mod changes are not excluded."
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {
-          "minecraft:buried_treasure": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "minecraft:buried_treasure"
-          }
-        },
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": []
+        "mechanism": "After finding a supported position, calls createChest with BURIED_TREASURE and discards its boolean result.",
+        "scope": "Assignment path only. Search may reach minimum build height without a chest; successful placement and realized loot are not proved by the start record.",
+        "vanilla_assigned_tables": [
+          "minecraft:chests/buried_treasure"
+        ]
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {
-          "minecraft:buried_treasure": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "minecraft:buried_treasure"
-          }
-        },
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [],
-        "unresolved_authored_entities": {}
+        "authored_entity_ids": [],
+        "mechanism": "The direct vanilla piece changes nearby blocks and attempts chest placement; no entity generator or template is used.",
+        "scope": "Vanilla authored content, not measured natural mobs or retained-mod injections."
       },
       "name": "Vanilla buried treasure",
       "pool_trace_ids": [],
@@ -76580,8 +76595,16 @@
       "structure_ids": [
         "minecraft:buried_treasure"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "At chunk-local X/Z 9/9, selects a position above default sandstone, stone, andesite, granite or diorite; returns without placement when no match is found above minimum build height.",
+        "classification": "Buried chest target searched downward from OCEAN_FLOOR_WG.",
+        "scope": "Vanilla placement rule, not universal burial depth or guaranteed chest generation. Neighbor infill can extend outside the one-block piece box."
+      },
+      "visual_discoverability": {
+        "authored_landmark": "None. Only a chest target and immediately adjacent infill are authored.",
+        "basis": "The complete direct vanilla piece has no above-ground marker or building path.",
+        "scope": "Actual cover, exposure and visual range remain unmeasured; this is not a guarantee that every chest is invisible."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -162184,7 +162207,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "b8e7afa9e0bce110f88071c2eefdabd1f0c4500a93c0f2f1c1e6b4f4dde1f305",
+    "evidence/item-8/family-decisions.json": "873cac500cf01735864b85e9f5db35ef99085ae3d33990b45774f1eb6d836b3c",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
