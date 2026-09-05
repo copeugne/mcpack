@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Better End Island packaged mixin declarations are integrated in `68169a6`.
+The previously ignored metadata artifact is durably retained by `e74e6b2`.
+Twenty-eight focused tests and scoped checks passed. Inventory SHA-256:
+`d59bdebe1e92f570af4eab73ad11fb60f01f5c4f57dbaebbbbaa524deb01c5c0`.
+Proceed to spike/podium hooks and generators. The declaration establishes
+packaged application intent, not direct runtime transformation. Item 8 remains
+incomplete; no new runtime or measurement system was added.
+
 Better End Island frozen configuration is integrated in `c1169fa`, with all
 six keys mapped to runtime fields. Both vanilla platform/gateway switches are
 false. Twenty-seven focused tests and scoped checks passed. Inventory SHA-256:
