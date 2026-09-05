@@ -339,6 +339,8 @@ CLASSES: tuple[str, ...] = (
     "org/violetmoon/quark/content/world/module/PermafrostModule.class",
     "org/violetmoon/quark/content/world/undergroundstyle/CorundumStyle.class",
     "org/violetmoon/quark/content/world/undergroundstyle/PermafrostStyle.class",
+    "org/violetmoon/quark/content/world/undergroundstyle/base/UndergroundStyleGenerator.class",
+    "org/violetmoon/quark/content/world/undergroundstyle/base/BasicUndergroundStyle.class",
     "org/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator.class",
     "org/violetmoon/quark/content/world/gen/FallenLogGenerator.class",
     "org/violetmoon/quark/content/world/gen/FallenLogGenerator$Decor.class",
