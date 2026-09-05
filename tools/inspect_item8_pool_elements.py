@@ -497,6 +497,13 @@ CLASSES: tuple[str, ...] = (
     "com/yungnickyoung/minecraft/yungsbridges/services/NeoForgePlatformHelper.class",
     "com/yungnickyoung/minecraft/yungsbridges/services/Services.class",
     "com/yungnickyoung/minecraft/yungsbridges/world/feature/config/MultipleAttemptSingleRandomFeatureConfig.class",
+    "com/yungnickyoung/minecraft/yungsextras/module/PlacementModifierTypeModule.class",
+    "com/yungnickyoung/minecraft/yungsextras/services/IPlatformHelper.class",
+    "com/yungnickyoung/minecraft/yungsextras/services/NeoForgePlatformHelper.class",
+    "com/yungnickyoung/minecraft/yungsextras/services/Services.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/config/DesertWellFeatureConfiguration.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/config/ResourceLocationFeatureConfiguration.class",
+    "com/yungnickyoung/minecraft/yungsextras/world/placement/RngInitializerPlacement.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",

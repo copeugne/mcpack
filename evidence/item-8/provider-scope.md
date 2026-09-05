@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 29 of 136. The exact queue below has 107 open rows.
+Supported provider dispositions: 30 of 136. The exact queue below has 106 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -519,8 +519,8 @@ sample or graph implementation. Explicit provider dispositions now cover 26 of
 
 This is the working queue, not an acceptance result. Initially, the 26 dispositions
 above and 110 queued archive names partitioned the 136-line retained manifest.
-WDA, Better Village and YUNG Bridges are resolved below: 29 dispositions and
-107 open providers. Their rows remain as closure links. Minecraft and NeoForge are
+WDA, Better Village, YUNG Bridges and YUNG Extras are resolved below:
+30 dispositions and 106 open providers. Their rows remain as closure links. Minecraft and NeoForge are
 shared consumers, not
 extra retained mods. Existing capture directories below are relative to
 `sources/`; their presence means evidence to reuse, not provider closure. An
@@ -569,7 +569,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar` | `witch-hut-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBridges-1.21.1-NeoForge-5.1.1.jar` | `yungs-bridge-generation`, `yungs-bridge-processors`, `yungs-bridges-module-default`, `yungs-bridges-module-loader` | RESOLVED: see YUNG Bridges provider disposition below. |
 | `YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
-| `YungsExtras-1.21.1-NeoForge-5.1.1.jar` | `yungs-extras-desert-code`, `yungs-extras-generators`, `yungs-extras-initialization`, `yungs-extras-module-default`, `yungs-extras-processor-bindings`, `yungs-extras-registration` | Reuse feature registrations, generators and module activation; close full resource/entry coverage. |
+| `YungsExtras-1.21.1-NeoForge-5.1.1.jar` | `yungs-extras-desert-code`, `yungs-extras-generators`, `yungs-extras-initialization`, `yungs-extras-module-default`, `yungs-extras-processor-bindings`, `yungs-extras-registration` | RESOLVED: see YUNG Extras provider disposition below. |
 | `Zeta-1.1-40.jar` | `quark-enablement-callers`, `zeta-biome-modifier`, `zeta-component-biomes`, `zeta-compound-biome`, `zeta-config-binding`, `zeta-config-event-fields`, `zeta-deferred-feature`, `zeta-enablement-inputs`, `zeta-generation-applicability`, `zeta-generation-spawn`, `zeta-generator-dispatch`, `zeta-horizontal-directions`, `zeta-module-assignment`, `zeta-module-name`, `zeta-module-section`, `zeta-stone-ore` | Reuse Quark module/feature dispatch captures; reconcile remaining public generation and nested entry consumers. |
 | `[Neoforge]ctov-3.6.3.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Reconcile existing roots, all components and additional feature/entry routes. |
 | `accessories-neoforge-1.1.0-beta.53+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -763,3 +763,34 @@ uv run pytest -q tests/item8/test_yungs_bridges_provider_scope.py tests/item8/te
 Seven cases pass, 22 unrelated cases deselected. Scoped Ruff/Basedpyright pass.
 No new runtime, graph or measurement framework. Provider dispositions: 29 of 136;
 107 remain open. Family grouping and the full Item 8 gate are still incomplete.
+
+## YUNG Extras provider disposition
+
+The provider contributes the existing nonregistry feature entrypoints. Complete
+archive accounting covers 29 classes, 62 templates, 62 configured features,
+62 placed features, three tags, three loot tables and three biome-modifier
+declarations for each of the Forge and NeoForge resource paths. The remaining
+payload is known metadata and two service descriptors. No nested archive, mixin,
+function or additional unexplained resource remains.
+
+All templates are assigned: 59 through configuration location fields and three
+through already recorded desert-generator constants and registration annotations.
+The existing contribution tests bind all 62 template identities and their links,
+actual configured/placed registries, NeoForge biome additions and vanilla well
+removal, code placement, processor content and loot. The three templates outside
+explicit JSON location links are not unused; their code links resolve them.
+Do not count 62 configured entries as 62 canonical families.
+
+Existing source captures are reused. Seven remaining service, configuration and
+RNG-placement classes were delivered in 4d7edec using extractor 04db73f. Their
+behavior adds no further authored content. All 29 classes are bound by the focused
+full-payload check. The shared YUNG API annotation scanner remains attributable
+to its own provider. No baseline configuration or world was changed.
+
+```sh
+uv run pytest -q tests/item8/test_yungs_extras_provider_scope.py tests/item8/test_feature_modifier_references.py -k extras
+```
+
+Nine cases pass, 20 unrelated cases deselected. Scoped Ruff and Basedpyright pass.
+Provider dispositions: 30 of 136; 106 remain open. This resolves provider coverage,
+not canonical grouping or the final Item 8 gate.
