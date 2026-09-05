@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `0c1cf13`, SHA-256
-`0b926b139e3d85d0b7cd7a98553a2197e5c907f8ce74701a49c429086c706b7e`.
+Current working inventory regenerated at `6e61b10`, SHA-256
+`709a47844183aab2a972dd355e9824e3d9a92a83f4461b744f997ae79d1cc9b3`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,16 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 6e61b10 increment accounts for Big Stone Clusters, Vanilla Stone Clusters
+and New Stone Types as working terrain contributions. Both inspected writers
+place only the supplied stone state; no additional structure families are added.
+All 32 affected tests and scoped Ruff/Basedpyright checks passed. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-stone-6e61b10.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-stone-6e61b10.json
+```
 
 The 0c1cf13 increment accounts for blossom trees and water petals as vegetation
 contributions without additional families. Selected tree definitions have no

@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-05
 
+Stone-generation paths have working terrain dispositions in 6e61b10.
+The delegated ore writer is preserved in 332d9d5 and writes only the supplied
+stone state. Do not repeat cluster/ore writer tracing. Continue broader provider
+coverage and unresolved required family attributes. All 32 affected tests and
+scoped static checks passed. No new measurement; Item 8 remains incomplete.
+
 Stone cluster captures are delivered in a17831b. The direct cluster writer
 places one configured block state. NewStoneTypes also delegates to Zeta
 OreGenerator; inspect that existing dependency before its final terrain
