@@ -1275,3 +1275,34 @@ All 74 affected tests and scoped checks passed. Inventory regenerated at
 `25e78dd6bbe34e3ac2c6ee60c1bda55119ae79772c2f69c6c32fc29270a48247`.
 Only lake placement/cues and their grouping decision changed. Other family rows,
 size envelopes and world observation links are unchanged.
+
+## BetterEnd lake direct content attribution
+
+The helper capture delivered in `28ed678` completes the direct source set for
+this attribution: five root classes, FeatureBaseStructure, BasePiece, both lake
+pieces, EndBiome and BlockFixer. No direct entity creation, explicit spawner
+configuration or container-loot assignment occurs in these captured classes.
+BlockFixer adjusts vegetation/crystals and fluids and schedules fluid ticks.
+The five family content/intent fields now record these direct-source facts.
+
+This does not close effective material attribution. EndBiome delegates material
+selection to a SurfaceMaterialProvider, and its returned block states and later
+block behavior are not fully resolved. The spawner field explicitly preserves
+that limitation rather than claiming every dynamic surface state is non-spawner.
+Natural spawning, harvested drops and external injections remain distinct.
+
+The existing mountain direct-content test now also covers the eleven lake classes,
+using their preserved disassembly hashes and all five empty spawn overrides.
+No new validator, extraction, measurement system or runtime was added here.
+Seven focused BetterEnd tests and scoped checks pass.
+
+Decision SHA-256:
+`96cf175ab478a94d86edbc4c638c96c33b84f9d24ba2aa7d6fa4d01cc0d2914e`.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py -k betterend
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-lake-content.json
+```
