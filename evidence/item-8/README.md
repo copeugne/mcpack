@@ -2049,3 +2049,15 @@ End Island attribution. Reproduce with the existing builder in a fresh path:
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-podium-invocation.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-podium-invocation.json
 ```
+
+### Better End Island initialization and respawn attribution
+
+The preserved activation capture connects the NeoForge constructor, common
+initialization, configuration registration and packaged service selections.
+SUMMONING_PILLARS rebuilds existing spikes; END requests dragon creation and
+full/bottom-only podium placement, then changes selected existing obsidian.
+These are arena lifecycle effects, not new families. The portal fallback scans
+for END_STONE rather than an arbitrary solid surface. Findings are direct code
+interpretation; effective runtime values, successful entity/structure placement
+and generated-world reconciliation remain open. Twenty-nine focused tests and
+scoped builder checks passed. No new measurement or test framework was added.
