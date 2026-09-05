@@ -6,6 +6,37 @@
 
 ### Continuation update - 2026-09-05
 
+Igloo integration is delivered: `3a102c3` records three components and seven
+attributes, and `ca0fa30` delivers the inventory. All 59 affected tests passed;
+scoped checks and the final focused test passed after one explicit regex-result
+type annotation. Source README records geometry derivation and reproduction.
+Decision SHA:
+`06cff81b09d0caa84837c979acd85bfa207b9037ab27e3e9134853ba6811a89d`.
+Inventory SHA:
+`9f2fa36230e5520571b71f9535b3d1291527c939ec9fee4867e04bfaefc06d01`.
+Only igloo attributes/grouping and the decision input identity change; raw world
+evidence and trace are unchanged. Remote refs verified. The pending igloo
+integration below is superseded. Continue remaining custom generators and
+provider/family gaps without repeating this source work. Effective retained-mod
+effects, remaining attributes and final Item 8 closure remain open.
+
+Igloo generation source is delivered in `74efeb4`, using the existing extractor
+extended in `3a174ef`. Both remote refs were verified. Its manifest SHA is
+`5104752aa5eb795053f75e8d62731b7ea7d79af1f9cacfdccfe2e55f9336838e`.
+See `evidence/item-8/sources/vanilla-igloo-code/README.md` for reproduction,
+component selection, placement and chest assignment. Scoped Ruff/basedpyright
+passed. The next step is the existing frozen-template reconciliation and igloo
+family integration, not re-extraction. Inventory and decision hashes below are
+unchanged. Initial catalog inspection found basement villager and zombie-villager
+entities and a brewing-stand item; retain and verify those in the focused content
+check before making accepted family claims. Do not infer no authored mobs from
+the chest-only marker handler. Item 8 remains incomplete.
+
+The user permits an additional measurement system only when strictly necessary
+and worth its time and effort. Identify a specific unsatisfied exit requirement
+and why existing evidence/tools cannot prove it before adding such a system.
+This igloo source increment required none.
+
 Shipwreck integration is delivered: `4363af9` records both root-specific template
 arrays and seven source-backed attributes; `3c30ead` delivers the inventory.
 Decision SHA:
