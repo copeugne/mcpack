@@ -44,6 +44,38 @@ def test_pool_additions_preserve_delegate_provenance_and_constraints() -> None:
         add_pool_elements(pools, [modifier])
 
 
+def test_frozen_trace_reaches_all_selected_village_additions() -> None:
+    root = Path(__file__).resolve().parents[2]
+    raw = (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "7b0f61a66e46d78e206244271d2a1da0c846429d5a48a7e8bb05d852f6ec3632"
+    )
+    trace = cast("dict[str, JsonValue]", json.loads(gzip.decompress(raw)))
+    report = cast("dict[str, JsonValue]", trace["pool_modifiers"])
+    dispositions = cast("list[dict[str, JsonValue]]", report["dispositions"])
+    selected = {
+        (str(row["archive"]), str(row["path"]), str(row["sha256"]))
+        for row in dispositions if row["status"] == "included in potential pool reachability"
+    }
+    assert len(selected) == 68
+    excluded = sum(row["status"] == "excluded by NeoForge mod conditions" for row in dispositions)
+    assert excluded == 956
+    assert sum(row["status"] == "untraced modifier type" for row in dispositions) == 38
+    assert len(cast("list[JsonValue]", report["excluded_resource_layers"])) == 6
+    structures = cast("dict[str, dict[str, JsonValue]]", trace["structures"])
+    reached: set[tuple[str, str, str]] = set()
+    for structure in structures.values():
+        for terminal in cast("list[dict[str, JsonValue]]", structure["terminal_edges"]):
+            edge = cast("dict[str, JsonValue]", terminal["edge"])
+            if edge["kind"] == "pool_addition":
+                source = cast("dict[str, str]", edge["source"])
+                reached.add((source["archive"], source["path"], source["sha256"]))
+    assert reached == selected
+    for biome in ("desert", "plains", "savanna", "snowy", "taiga"):
+        templates = cast("list[str]", structures[f"minecraft:village_{biome}"]["templates"])
+        assert f"village_taverns:village/{biome}/tavern" in templates
+
+
 def test_pool_uses_path_identity_and_preserves_nested_links() -> None:
     resource = row(
         "data/example/worldgen/template_pool/start.json",

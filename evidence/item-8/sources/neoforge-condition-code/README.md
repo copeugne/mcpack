@@ -60,3 +60,40 @@ and a line-length finding in the tests.
 This result resolves mod conditions only. Resource-layer selection, applying
 the selected additions to the trace, and other runtime modifications remain
 open. It does not establish a new family count or observed spawn frequency.
+
+## Pool trace integration
+
+The condition-selected additions were integrated by `1f7be67` using the existing
+pool decoder and resource selector. Two executions produced identical bytes:
+
+```sh
+uv run -m tools.trace_item8_structure_pools --output evidence/raw/item8/pool-traces-modifier-pilot.json.gz
+uv run -m tools.trace_item8_structure_pools --output evidence/raw/item8/pool-traces-modifier-reproduction.json.gz
+cmp evidence/raw/item8/pool-traces-modifier-pilot.json.gz evidence/raw/item8/pool-traces-modifier-reproduction.json.gz
+uv run pytest -q tests/item8/test_pool_links.py tests/item8/test_pool_trace.py tests/item8/test_resource_selection.py
+uv run pytest -q tests/item8/test_family_decisions.py
+uv run pytest -q tests/item8/test_pool_links.py -k frozen_trace
+```
+
+The first test command passed 22 tests before the frozen-output regression was
+added. The family suite passed 57 tests; the new frozen-output regression passed.
+Scoped Ruff and basedpyright passed. The trace SHA-256 is
+`7b0f61a66e46d78e206244271d2a1da0c846429d5a48a7e8bb05d852f6ec3632`.
+It replaces the prior trace at `sources/pool-traces-content.json.gz`. All 429
+family-decision references to that artifact receive its new hash. No grouping
+decision or other decision field changed. This inseparable reference update
+is kept with the generated artifact and builder pins so its consumers stay
+internally consistent.
+
+After resource selection, 68 modifiers contribute potential links, 956 are
+excluded by mod conditions, 38 other modifier types remain untraced, and six
+non-root resource-layer candidates remain excluded. Every selected addition is
+reachable from at least one registered root. Vanilla villages in all five
+biome variants now reach their Village Taverns templates. Modifier documents,
+weights, limited constraints and source identities are retained on terminal
+edges; missing templates remain missing. No ordered assembly, joint placement
+probability, effective limits or new family count is inferred.
+
+Other modifier types, Better Village and other code-driven pool changes remain
+open. The trace still has 818 direct roots and 69 custom roots explicitly
+untraced. Item 8 remains incomplete.
