@@ -1,0 +1,430 @@
+Compiled from "BronzeDungeonStructure.java"
+public class com.aetherteam.aether.world.structure.BronzeDungeonStructure extends net.minecraft.world.level.levelgen.structure.Structure {
+  public static final com.mojang.serialization.MapCodec<com.aetherteam.aether.world.structure.BronzeDungeonStructure> CODEC;
+
+  private final int maxRooms;
+
+  private final int aboveBottom;
+
+  private final int belowTop;
+
+  private final com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeProcessorSettings processors;
+
+  public com.aetherteam.aether.world.structure.BronzeDungeonStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings, int, int, int, com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeProcessorSettings);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/Structure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       5: aload_0
+       6: iload_2
+       7: putfield      #7                  // Field maxRooms:I
+      10: aload_0
+      11: iload_3
+      12: putfield      #13                 // Field aboveBottom:I
+      15: aload_0
+      16: iload         4
+      18: putfield      #16                 // Field belowTop:I
+      21: aload_0
+      22: aload         5
+      24: putfield      #19                 // Field processors:Lcom/aetherteam/aether/world/structurepiece/bronzedungeon/BronzeProcessorSettings;
+      27: return
+
+  public java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_1
+       1: invokevirtual #23                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #33                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      14: astore        4
+      16: aload_1
+      17: invokevirtual #37                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+      20: astore        5
+      22: aload_1
+      23: invokevirtual #41                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.structureTemplateManager:()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+      26: astore        6
+      28: aload_3
+      29: aload         4
+      31: aload_2
+      32: aload         5
+      34: aload         6
+      36: aload_0
+      37: getfield      #13                 // Field aboveBottom:I
+      40: aload_0
+      41: getfield      #16                 // Field belowTop:I
+      44: invokestatic  #45                 // Method findStartingHeight:(Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;II)I
+      47: istore        7
+      49: iload         7
+      51: aload         4
+      53: invokeinterface #49,  1           // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getMinBuildHeight:()I
+      58: if_icmpgt     120
+      61: new           #55                 // class org/apache/commons/lang3/mutable/MutableInt
+      64: dup
+      65: iload         7
+      67: invokespecial #57                 // Method org/apache/commons/lang3/mutable/MutableInt."<init>":(I)V
+      70: astore        8
+      72: aload_2
+      73: aload         8
+      75: aload_3
+      76: aload         4
+      78: aload         5
+      80: aload         6
+      82: aload_0
+      83: getfield      #13                 // Field aboveBottom:I
+      86: aload_0
+      87: getfield      #16                 // Field belowTop:I
+      90: invokestatic  #60                 // Method searchNearbyChunks:(Lnet/minecraft/world/level/ChunkPos;Lorg/apache/commons/lang3/mutable/MutableInt;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;II)Lnet/minecraft/world/level/ChunkPos;
+      93: astore_2
+      94: aload         8
+      96: invokevirtual #64                 // Method org/apache/commons/lang3/mutable/MutableInt.getValue:()Ljava/lang/Integer;
+      99: invokevirtual #68                 // Method java/lang/Integer.intValue:()I
+     102: istore        7
+     104: iload         7
+     106: aload         4
+     108: invokeinterface #49,  1           // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getMinBuildHeight:()I
+     113: if_icmpgt     120
+     116: invokestatic  #73                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+     119: areturn
+     120: new           #79                 // class net/minecraft/core/BlockPos
+     123: dup
+     124: aload_2
+     125: invokevirtual #81                 // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+     128: iload         7
+     130: aload_2
+     131: invokevirtual #86                 // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+     134: invokespecial #89                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     137: astore        8
+     139: new           #92                 // class net/minecraft/world/level/levelgen/structure/Structure$GenerationStub
+     142: dup
+     143: aload         8
+     145: aload_0
+     146: aload_1
+     147: aload         8
+     149: invokedynamic #94,  0             // InvokeDynamic #0:accept:(Lcom/aetherteam/aether/world/structure/BronzeDungeonStructure;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/core/BlockPos;)Ljava/util/function/Consumer;
+     154: invokespecial #98                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationStub."<init>":(Lnet/minecraft/core/BlockPos;Ljava/util/function/Consumer;)V
+     157: invokestatic  #101                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+     160: areturn
+
+  private void generatePieces(net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, net.minecraft.core.BlockPos);
+    Code:
+       0: new           #105                // class com/aetherteam/aether/world/structurepiece/bronzedungeon/BronzeDungeonBuilder
+       3: dup
+       4: aload_2
+       5: aload_0
+       6: getfield      #7                  // Field maxRooms:I
+       9: aload_0
+      10: getfield      #19                 // Field processors:Lcom/aetherteam/aether/world/structurepiece/bronzedungeon/BronzeProcessorSettings;
+      13: invokespecial #107                // Method com/aetherteam/aether/world/structurepiece/bronzedungeon/BronzeDungeonBuilder."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;ILcom/aetherteam/aether/world/structurepiece/bronzedungeon/BronzeProcessorSettings;)V
+      16: astore        4
+      18: aload         4
+      20: aload_3
+      21: aload_2
+      22: aload_1
+      23: invokevirtual #110                // Method com/aetherteam/aether/world/structurepiece/bronzedungeon/BronzeDungeonBuilder.initializeDungeon:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;)V
+      26: return
+
+  private static net.minecraft.world.level.ChunkPos searchNearbyChunks(net.minecraft.world.level.ChunkPos, org.apache.commons.lang3.mutable.MutableInt, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.world.level.LevelHeightAccessor, net.minecraft.world.level.levelgen.RandomState, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager, int, int);
+    Code:
+       0: iconst_m1
+       1: istore        9
+       3: iload         9
+       5: iconst_1
+       6: if_icmpgt     100
+       9: iconst_m1
+      10: istore        10
+      12: iload         10
+      14: iconst_1
+      15: if_icmpgt     94
+      18: iload         9
+      20: ifne          28
+      23: iload         10
+      25: ifeq          88
+      28: new           #82                 // class net/minecraft/world/level/ChunkPos
+      31: dup
+      32: aload_0
+      33: getfield      #114                // Field net/minecraft/world/level/ChunkPos.x:I
+      36: iload         9
+      38: iadd
+      39: aload_0
+      40: getfield      #117                // Field net/minecraft/world/level/ChunkPos.z:I
+      43: iload         10
+      45: iadd
+      46: invokespecial #120                // Method net/minecraft/world/level/ChunkPos."<init>":(II)V
+      49: astore        11
+      51: aload_2
+      52: aload_3
+      53: aload         11
+      55: aload         4
+      57: aload         5
+      59: iload         6
+      61: iload         7
+      63: invokestatic  #45                 // Method findStartingHeight:(Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;II)I
+      66: istore        8
+      68: iload         8
+      70: aload_3
+      71: invokeinterface #49,  1           // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getMinBuildHeight:()I
+      76: if_icmple     88
+      79: aload_1
+      80: iload         8
+      82: invokevirtual #123                // Method org/apache/commons/lang3/mutable/MutableInt.setValue:(I)V
+      85: aload         11
+      87: areturn
+      88: iinc          10, 1
+      91: goto          12
+      94: iinc          9, 1
+      97: goto          3
+     100: aload_0
+     101: areturn
+
+  private static int findStartingHeight(net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.world.level.LevelHeightAccessor, net.minecraft.world.level.ChunkPos, net.minecraft.world.level.levelgen.RandomState, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager, int, int);
+    Code:
+       0: aload_2
+       1: invokevirtual #81                 // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+       4: iconst_1
+       5: isub
+       6: istore        7
+       8: aload_2
+       9: invokevirtual #86                 // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+      12: iconst_1
+      13: isub
+      14: istore        8
+      16: aload_2
+      17: invokevirtual #126                // Method net/minecraft/world/level/ChunkPos.getMaxBlockX:()I
+      20: iconst_1
+      21: iadd
+      22: istore        9
+      24: aload_2
+      25: invokevirtual #129                // Method net/minecraft/world/level/ChunkPos.getMaxBlockZ:()I
+      28: iconst_1
+      29: iadd
+      30: istore        10
+      32: iconst_4
+      33: anewarray     #132                // class net/minecraft/world/level/NoiseColumn
+      36: dup
+      37: iconst_0
+      38: aload_0
+      39: iload         7
+      41: iload         8
+      43: aload_1
+      44: aload_3
+      45: invokevirtual #134                // Method net/minecraft/world/level/chunk/ChunkGenerator.getBaseColumn:(IILnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)Lnet/minecraft/world/level/NoiseColumn;
+      48: aastore
+      49: dup
+      50: iconst_1
+      51: aload_0
+      52: iload         7
+      54: iload         10
+      56: aload_1
+      57: aload_3
+      58: invokevirtual #134                // Method net/minecraft/world/level/chunk/ChunkGenerator.getBaseColumn:(IILnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)Lnet/minecraft/world/level/NoiseColumn;
+      61: aastore
+      62: dup
+      63: iconst_2
+      64: aload_0
+      65: iload         9
+      67: iload         8
+      69: aload_1
+      70: aload_3
+      71: invokevirtual #134                // Method net/minecraft/world/level/chunk/ChunkGenerator.getBaseColumn:(IILnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)Lnet/minecraft/world/level/NoiseColumn;
+      74: aastore
+      75: dup
+      76: iconst_3
+      77: aload_0
+      78: iload         9
+      80: iload         10
+      82: aload_1
+      83: aload_3
+      84: invokevirtual #134                // Method net/minecraft/world/level/chunk/ChunkGenerator.getBaseColumn:(IILnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)Lnet/minecraft/world/level/NoiseColumn;
+      87: aastore
+      88: astore        11
+      90: aload         4
+      92: ldc           #142                // String aether
+      94: ldc           #144                // String bronze_dungeon/boss_room
+      96: invokestatic  #146                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      99: invokestatic  #152                // Method checkRoomHeight:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/resources/ResourceLocation;)I
+     102: istore        12
+     104: aload_1
+     105: invokeinterface #49,  1           // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getMinBuildHeight:()I
+     110: istore        13
+     112: aload_1
+     113: invokeinterface #156,  1          // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getMaxBuildHeight:()I
+     118: iload         6
+     120: isub
+     121: istore        14
+     123: iload         12
+     125: iconst_2
+     126: iadd
+     127: istore        15
+     129: iconst_0
+     130: istore        16
+     132: iload         13
+     134: iload         5
+     136: iadd
+     137: istore        17
+     139: iload         17
+     141: iload         14
+     143: if_icmpgt     186
+     146: aload         11
+     148: iload         17
+     150: invokestatic  #159                // Method checkEachCornerAtY:([Lnet/minecraft/world/level/NoiseColumn;I)Z
+     153: ifeq          162
+     156: iinc          16, 1
+     159: goto          180
+     162: iload         16
+     164: iload         15
+     166: if_icmple     177
+     169: iload         16
+     171: istore        15
+     173: iload         17
+     175: istore        13
+     177: iconst_0
+     178: istore        16
+     180: iinc          17, 1
+     183: goto          139
+     186: iload         15
+     188: iload         12
+     190: iadd
+     191: iconst_2
+     192: idiv
+     193: istore        17
+     195: iload         13
+     197: iload         17
+     199: isub
+     200: istore        13
+     202: iload         13
+     204: ireturn
+
+  private static int checkRoomHeight(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #163                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager.getOrCreate:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;
+       5: astore_2
+       6: aload_2
+       7: invokevirtual #169                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.getSize:()Lnet/minecraft/core/Vec3i;
+      10: invokevirtual #175                // Method net/minecraft/core/Vec3i.getY:()I
+      13: ireturn
+
+  private static boolean checkEachCornerAtY(net.minecraft.world.level.NoiseColumn[], int);
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: arraylength
+       4: istore_3
+       5: iconst_0
+       6: istore        4
+       8: iload         4
+      10: iload_3
+      11: if_icmpge     55
+      14: aload_2
+      15: iload         4
+      17: aaload
+      18: astore        5
+      20: aload         5
+      22: iload_1
+      23: invokevirtual #180                // Method net/minecraft/world/level/NoiseColumn.getBlock:(I)Lnet/minecraft/world/level/block/state/BlockState;
+      26: invokevirtual #184                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+      29: ifne          47
+      32: aload         5
+      34: iload_1
+      35: invokevirtual #180                // Method net/minecraft/world/level/NoiseColumn.getBlock:(I)Lnet/minecraft/world/level/block/state/BlockState;
+      38: getstatic     #190                // Field com/aetherteam/aether/AetherTags$Blocks.NON_BRONZE_DUNGEON_SPAWNABLE:Lnet/minecraft/tags/TagKey;
+      41: invokevirtual #196                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      44: ifeq          49
+      47: iconst_0
+      48: ireturn
+      49: iinc          4, 1
+      52: goto          8
+      55: iconst_1
+      56: ireturn
+
+  public net.minecraft.world.level.levelgen.structure.BoundingBox adjustBoundingBox(net.minecraft.world.level.levelgen.structure.BoundingBox);
+    Code:
+       0: aload_1
+       1: areturn
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<?> type();
+    Code:
+       0: getstatic     #200                // Field com/aetherteam/aether/world/structure/AetherStructureTypes.BRONZE_DUNGEON:Lnet/neoforged/neoforge/registries/DeferredHolder;
+       3: invokevirtual #206                // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+       6: checkcast     #212                // class net/minecraft/world/level/levelgen/structure/StructureType
+       9: areturn
+
+  private void lambda$findGenerationPoint$5(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder);
+    Code:
+       0: aload_0
+       1: aload_3
+       2: aload_1
+       3: aload_2
+       4: invokevirtual #214                // Method generatePieces:(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/core/BlockPos;)V
+       7: return
+
+  private static com.mojang.datafixers.kinds.App lambda$static$4(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokestatic  #218                // Method settingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       5: getstatic     #222                // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+       8: ldc           #228                // String maxrooms
+      10: invokeinterface #230,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      15: invokedynamic #236,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      20: invokevirtual #240                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      23: getstatic     #222                // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      26: ldc           #246                // String aboveBottom
+      28: invokeinterface #230,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      33: invokedynamic #247,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      38: invokevirtual #240                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      41: getstatic     #222                // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      44: ldc           #248                // String belowTop
+      46: invokeinterface #230,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      51: invokedynamic #249,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      56: invokevirtual #240                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      59: getstatic     #250                // Field com/aetherteam/aether/world/structurepiece/bronzedungeon/BronzeProcessorSettings.CODEC:Lcom/mojang/serialization/MapCodec;
+      62: ldc_w         #256                // String processor_settings
+      65: invokevirtual #258                // Method com/mojang/serialization/MapCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      68: invokedynamic #259,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      73: invokevirtual #240                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      76: invokevirtual #260                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P5;
+      79: aload_0
+      80: invokedynamic #266,  0            // InvokeDynamic #5:apply:()Lcom/mojang/datafixers/util/Function5;
+      85: invokevirtual #269                // Method com/mojang/datafixers/Products$P5.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function5;)Lcom/mojang/datafixers/kinds/App;
+      88: areturn
+
+  private static com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeProcessorSettings lambda$static$3(com.aetherteam.aether.world.structure.BronzeDungeonStructure);
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field processors:Lcom/aetherteam/aether/world/structurepiece/bronzedungeon/BronzeProcessorSettings;
+       4: areturn
+
+  private static java.lang.Integer lambda$static$2(com.aetherteam.aether.world.structure.BronzeDungeonStructure);
+    Code:
+       0: aload_0
+       1: getfield      #16                 // Field belowTop:I
+       4: invokestatic  #274                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$1(com.aetherteam.aether.world.structure.BronzeDungeonStructure);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field aboveBottom:I
+       4: invokestatic  #274                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$0(com.aetherteam.aether.world.structure.BronzeDungeonStructure);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field maxRooms:I
+       4: invokestatic  #274                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #278,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+       5: invokestatic  #279                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #285                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}

@@ -1,0 +1,384 @@
+Compiled from "LargeAercloudStructure.java"
+public class com.aetherteam.aether.world.structure.LargeAercloudStructure extends net.minecraft.world.level.levelgen.structure.Structure {
+  public static final com.mojang.serialization.MapCodec<com.aetherteam.aether.world.structure.LargeAercloudStructure> CODEC;
+
+  private final net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider blocks;
+
+  private final int size;
+
+  private final int rangeY;
+
+  public com.aetherteam.aether.world.structure.LargeAercloudStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings, net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider, int, int);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/Structure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       5: aload_0
+       6: aload_2
+       7: putfield      #7                  // Field blocks:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      10: aload_0
+      11: iload_3
+      12: putfield      #13                 // Field size:I
+      15: aload_0
+      16: iload         4
+      18: putfield      #17                 // Field rangeY:I
+      21: return
+
+  public java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_1
+       1: getstatic     #20                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+       4: aload_0
+       5: aload_1
+       6: invokedynamic #26,  0             // InvokeDynamic #0:accept:(Lcom/aetherteam/aether/world/structure/LargeAercloudStructure;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Ljava/util/function/Consumer;
+      11: invokestatic  #30                 // Method net/minecraft/world/level/levelgen/structure/Structure.onTopOfChunkCenter:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Ljava/util/function/Consumer;)Ljava/util/Optional;
+      14: areturn
+
+  private static void generatePieces(net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider, int, int);
+    Code:
+       0: new           #34                 // class java/util/LinkedHashMap
+       3: dup
+       4: invokespecial #36                 // Method java/util/LinkedHashMap."<init>":()V
+       7: astore        5
+       9: new           #39                 // class java/util/LinkedHashSet
+      12: dup
+      13: invokespecial #41                 // Method java/util/LinkedHashSet."<init>":()V
+      16: astore        6
+      18: aload_1
+      19: invokevirtual #42                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+      22: astore        7
+      24: aload         7
+      26: invokevirtual #48                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextBoolean:()Z
+      29: istore        8
+      31: aload_1
+      32: invokevirtual #54                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      35: invokeinterface #58,  1           // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getMinBuildHeight:()I
+      40: aload_1
+      41: invokevirtual #42                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+      44: iload         4
+      46: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+      49: iadd
+      50: istore        9
+      52: aload_1
+      53: invokevirtual #68                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      56: invokevirtual #72                 // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+      59: istore        10
+      61: iload         9
+      63: istore        11
+      65: aload_1
+      66: invokevirtual #68                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      69: invokevirtual #77                 // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+      72: istore        12
+      74: aload         7
+      76: iconst_3
+      77: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+      80: iconst_1
+      81: isub
+      82: istore        13
+      84: aload         7
+      86: iconst_3
+      87: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+      90: iconst_1
+      91: isub
+      92: istore        14
+      94: iconst_0
+      95: istore        15
+      97: iload         15
+      99: bipush        64
+     101: if_icmpge     359
+     104: iload         10
+     106: aload         7
+     108: iconst_3
+     109: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+     112: iconst_1
+     113: isub
+     114: iload         13
+     116: iadd
+     117: iadd
+     118: istore        10
+     120: iload         11
+     122: aload         7
+     124: bipush        10
+     126: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+     129: ifne          143
+     132: aload         7
+     134: iconst_3
+     135: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+     138: iconst_1
+     139: isub
+     140: goto          144
+     143: iconst_0
+     144: iadd
+     145: istore        11
+     147: iload         12
+     149: iload         8
+     151: ifeq          168
+     154: aload         7
+     156: iconst_3
+     157: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+     160: iconst_1
+     161: isub
+     162: iload         14
+     164: iadd
+     165: goto          180
+     168: aload         7
+     170: iconst_3
+     171: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+     174: iconst_1
+     175: isub
+     176: iload         14
+     178: iadd
+     179: ineg
+     180: iadd
+     181: istore        12
+     183: iload         10
+     185: istore        16
+     187: iload         16
+     189: iload         10
+     191: aload         7
+     193: iconst_4
+     194: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+     197: iadd
+     198: iconst_3
+     199: iload_3
+     200: imul
+     201: iadd
+     202: if_icmpge     353
+     205: iload         11
+     207: istore        17
+     209: iload         17
+     211: iload         11
+     213: aload         7
+     215: iconst_1
+     216: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+     219: iadd
+     220: iconst_2
+     221: iadd
+     222: if_icmpge     347
+     225: iload         12
+     227: istore        18
+     229: iload         18
+     231: iload         12
+     233: aload         7
+     235: iconst_4
+     236: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+     239: iadd
+     240: iconst_3
+     241: iload_3
+     242: imul
+     243: iadd
+     244: if_icmpge     341
+     247: new           #80                 // class net/minecraft/core/BlockPos
+     250: dup
+     251: iload         16
+     253: iload         17
+     255: iload         18
+     257: invokespecial #82                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     260: astore        19
+     262: iload         16
+     264: iload         10
+     266: isub
+     267: invokestatic  #85                 // Method java/lang/Math.abs:(I)I
+     270: iload         17
+     272: iload         11
+     274: isub
+     275: invokestatic  #85                 // Method java/lang/Math.abs:(I)I
+     278: iadd
+     279: iload         18
+     281: iload         12
+     283: isub
+     284: invokestatic  #85                 // Method java/lang/Math.abs:(I)I
+     287: iadd
+     288: iconst_4
+     289: iload_3
+     290: imul
+     291: aload         7
+     293: iconst_2
+     294: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+     297: iadd
+     298: if_icmpge     335
+     301: aload         6
+     303: aload         19
+     305: invokeinterface #90,  2           // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     310: pop
+     311: aload         5
+     313: new           #73                 // class net/minecraft/world/level/ChunkPos
+     316: dup
+     317: aload         19
+     319: invokespecial #96                 // Method net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+     322: new           #99                 // class java/util/HashSet
+     325: dup
+     326: invokespecial #101                // Method java/util/HashSet."<init>":()V
+     329: invokeinterface #102,  3          // InterfaceMethod java/util/Map.putIfAbsent:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     334: pop
+     335: iinc          18, 1
+     338: goto          229
+     341: iinc          17, 1
+     344: goto          209
+     347: iinc          16, 1
+     350: goto          187
+     353: iinc          15, 1
+     356: goto          97
+     359: aload         5
+     361: aload         6
+     363: invokedynamic #108,  0            // InvokeDynamic #1:accept:(Ljava/util/Set;)Ljava/util/function/BiConsumer;
+     368: invokeinterface #111,  2          // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+     373: iload         11
+     375: istore        15
+     377: getstatic     #115                // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+     380: aload_1
+     381: invokevirtual #42                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+     384: invokevirtual #121                // Method net/minecraft/core/Direction$Plane.getRandomDirection:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/core/Direction;
+     387: astore        16
+     389: aload         5
+     391: iload         9
+     393: iload         15
+     395: aload_0
+     396: aload_2
+     397: aload         16
+     399: invokedynamic #125,  0            // InvokeDynamic #2:accept:(IILnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;Lnet/minecraft/core/Direction;)Ljava/util/function/BiConsumer;
+     404: invokeinterface #111,  2          // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+     409: return
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<?> type();
+    Code:
+       0: getstatic     #128                // Field com/aetherteam/aether/world/structure/AetherStructureTypes.LARGE_AERCLOUD:Lnet/neoforged/neoforge/registries/DeferredHolder;
+       3: invokevirtual #134                // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+       6: checkcast     #140                // class net/minecraft/world/level/levelgen/structure/StructureType
+       9: areturn
+
+  private static void lambda$generatePieces$7(int, int, net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider, net.minecraft.core.Direction, net.minecraft.world.level.ChunkPos, java.util.Set);
+    Code:
+       0: aload         6
+       2: invokeinterface #142,  1          // InterfaceMethod java/util/Set.isEmpty:()Z
+       7: ifeq          11
+      10: return
+      11: new           #145                // class net/minecraft/world/level/levelgen/structure/BoundingBox
+      14: dup
+      15: aload         5
+      17: invokevirtual #72                 // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+      20: iload_0
+      21: bipush        16
+      23: isub
+      24: iconst_0
+      25: invokestatic  #147                // Method java/lang/Math.max:(II)I
+      28: aload         5
+      30: invokevirtual #77                 // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+      33: aload         5
+      35: invokevirtual #151                // Method net/minecraft/world/level/ChunkPos.getMaxBlockX:()I
+      38: iload_1
+      39: bipush        16
+      41: iadd
+      42: aload         5
+      44: invokevirtual #154                // Method net/minecraft/world/level/ChunkPos.getMaxBlockZ:()I
+      47: invokespecial #157                // Method net/minecraft/world/level/levelgen/structure/BoundingBox."<init>":(IIIIII)V
+      50: astore        7
+      52: aload_2
+      53: new           #160                // class com/aetherteam/aether/world/structurepiece/LargeAercloudChunk
+      56: dup
+      57: aload         6
+      59: aload_3
+      60: aload         7
+      62: aload         4
+      64: invokespecial #162                // Method com/aetherteam/aether/world/structurepiece/LargeAercloudChunk."<init>":(Ljava/util/Set;Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/core/Direction;)V
+      67: invokevirtual #165                // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+      70: return
+
+  private static void lambda$generatePieces$6(java.util.Set, net.minecraft.world.level.ChunkPos, java.util.Set);
+    Code:
+       0: new           #39                 // class java/util/LinkedHashSet
+       3: dup
+       4: aload_0
+       5: invokespecial #171                // Method java/util/LinkedHashSet."<init>":(Ljava/util/Collection;)V
+       8: astore_3
+       9: aload_3
+      10: aload_1
+      11: invokedynamic #174,  0            // InvokeDynamic #3:test:(Lnet/minecraft/world/level/ChunkPos;)Ljava/util/function/Predicate;
+      16: invokeinterface #178,  2          // InterfaceMethod java/util/Set.removeIf:(Ljava/util/function/Predicate;)Z
+      21: pop
+      22: aload_2
+      23: aload_3
+      24: invokeinterface #182,  2          // InterfaceMethod java/util/Set.addAll:(Ljava/util/Collection;)Z
+      29: pop
+      30: return
+
+  private static boolean lambda$generatePieces$5(net.minecraft.world.level.ChunkPos, net.minecraft.core.BlockPos);
+    Code:
+       0: new           #73                 // class net/minecraft/world/level/ChunkPos
+       3: dup
+       4: aload_1
+       5: invokespecial #96                 // Method net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+       8: aload_0
+       9: invokevirtual #186                // Method net/minecraft/world/level/ChunkPos.equals:(Ljava/lang/Object;)Z
+      12: ifne          19
+      15: iconst_1
+      16: goto          20
+      19: iconst_0
+      20: ireturn
+
+  private void lambda$findGenerationPoint$4(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder);
+    Code:
+       0: aload_2
+       1: aload_1
+       2: aload_0
+       3: getfield      #7                  // Field blocks:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+       6: aload_0
+       7: getfield      #13                 // Field size:I
+      10: aload_0
+      11: getfield      #17                 // Field rangeY:I
+      14: invokestatic  #189                // Method generatePieces:(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;II)V
+      17: return
+
+  private static com.mojang.datafixers.kinds.App lambda$static$3(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokestatic  #193                // Method settingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       5: getstatic     #197                // Field net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.CODEC:Lcom/mojang/serialization/Codec;
+       8: ldc           #203                // String blocks
+      10: invokeinterface #204,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      15: invokedynamic #210,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      20: invokevirtual #214                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      23: getstatic     #220                // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      26: ldc           #224                // String size
+      28: invokeinterface #225,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      33: invokedynamic #228,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+      38: invokevirtual #214                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      41: getstatic     #220                // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      44: ldc           #229                // String rangeY
+      46: invokeinterface #225,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      51: invokedynamic #230,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+      56: invokevirtual #214                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      59: invokevirtual #231                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P4;
+      62: aload_0
+      63: invokedynamic #237,  0            // InvokeDynamic #7:apply:()Lcom/mojang/datafixers/util/Function4;
+      68: invokevirtual #240                // Method com/mojang/datafixers/Products$P4.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function4;)Lcom/mojang/datafixers/kinds/App;
+      71: areturn
+
+  private static java.lang.Integer lambda$static$2(com.aetherteam.aether.world.structure.LargeAercloudStructure);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field rangeY:I
+       4: invokestatic  #245                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$1(com.aetherteam.aether.world.structure.LargeAercloudStructure);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field size:I
+       4: invokestatic  #245                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider lambda$static$0(com.aetherteam.aether.world.structure.LargeAercloudStructure);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field blocks:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #251,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+       5: invokestatic  #252                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #258                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}

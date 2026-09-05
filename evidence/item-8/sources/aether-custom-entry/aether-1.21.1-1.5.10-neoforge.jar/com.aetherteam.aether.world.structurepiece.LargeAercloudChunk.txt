@@ -1,0 +1,210 @@
+Compiled from "LargeAercloudChunk.java"
+public class com.aetherteam.aether.world.structurepiece.LargeAercloudChunk extends net.minecraft.world.level.levelgen.structure.StructurePiece {
+  private final java.util.Set<net.minecraft.core.BlockPos> positions;
+
+  private final net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider blocks;
+
+  public com.aetherteam.aether.world.structurepiece.LargeAercloudChunk(java.util.Set<net.minecraft.core.BlockPos>, net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider, net.minecraft.world.level.levelgen.structure.BoundingBox, net.minecraft.core.Direction);
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field com/aetherteam/aether/world/structurepiece/AetherStructurePieceTypes.LARGE_AERCLOUD:Lnet/neoforged/neoforge/registries/DeferredHolder;
+       4: invokevirtual #7                  // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+       7: checkcast     #13                 // class net/minecraft/world/level/levelgen/structure/pieces/StructurePieceType
+      10: iconst_0
+      11: aload_3
+      12: invokespecial #15                 // Method net/minecraft/world/level/levelgen/structure/StructurePiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;ILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+      15: aload_0
+      16: new           #21                 // class java/util/HashSet
+      19: dup
+      20: invokespecial #23                 // Method java/util/HashSet."<init>":()V
+      23: putfield      #26                 // Field positions:Ljava/util/Set;
+      26: aload_0
+      27: aload         4
+      29: invokevirtual #32                 // Method setOrientation:(Lnet/minecraft/core/Direction;)V
+      32: aload_0
+      33: getfield      #26                 // Field positions:Ljava/util/Set;
+      36: aload_1
+      37: invokeinterface #36,  2           // InterfaceMethod java/util/Set.addAll:(Ljava/util/Collection;)Z
+      42: pop
+      43: aload_0
+      44: aload_2
+      45: putfield      #42                 // Field blocks:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      48: return
+
+  public com.aetherteam.aether.world.structurepiece.LargeAercloudChunk(net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext, net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field com/aetherteam/aether/world/structurepiece/AetherStructurePieceTypes.LARGE_AERCLOUD:Lnet/neoforged/neoforge/registries/DeferredHolder;
+       4: invokevirtual #7                  // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+       7: checkcast     #13                 // class net/minecraft/world/level/levelgen/structure/pieces/StructurePieceType
+      10: aload_2
+      11: invokespecial #46                 // Method net/minecraft/world/level/levelgen/structure/StructurePiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;Lnet/minecraft/nbt/CompoundTag;)V
+      14: aload_0
+      15: new           #21                 // class java/util/HashSet
+      18: dup
+      19: invokespecial #23                 // Method java/util/HashSet."<init>":()V
+      22: putfield      #26                 // Field positions:Ljava/util/Set;
+      25: aload_2
+      26: ldc           #49                 // String Positions
+      28: bipush        11
+      30: invokevirtual #53                 // Method net/minecraft/nbt/CompoundTag.getList:(Ljava/lang/String;I)Lnet/minecraft/nbt/ListTag;
+      33: astore_3
+      34: aload_3
+      35: invokevirtual #59                 // Method net/minecraft/nbt/ListTag.iterator:()Ljava/util/Iterator;
+      38: astore        4
+      40: aload         4
+      42: invokeinterface #65,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      47: ifeq          104
+      50: aload         4
+      52: invokeinterface #71,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      57: checkcast     #51                 // class net/minecraft/nbt/Tag
+      60: astore        5
+      62: aload         5
+      64: checkcast     #74                 // class net/minecraft/nbt/IntArrayTag
+      67: invokevirtual #76                 // Method net/minecraft/nbt/IntArrayTag.getAsIntArray:()[I
+      70: astore        6
+      72: aload_0
+      73: getfield      #26                 // Field positions:Ljava/util/Set;
+      76: new           #80                 // class net/minecraft/core/BlockPos
+      79: dup
+      80: aload         6
+      82: iconst_0
+      83: iaload
+      84: aload         6
+      86: iconst_1
+      87: iaload
+      88: aload         6
+      90: iconst_2
+      91: iaload
+      92: invokespecial #82                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+      95: invokeinterface #85,  2           // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     100: pop
+     101: goto          40
+     104: aload_0
+     105: getstatic     #89                 // Field net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.CODEC:Lcom/mojang/serialization/Codec;
+     108: new           #95                 // class com/mojang/serialization/Dynamic
+     111: dup
+     112: getstatic     #97                 // Field net/minecraft/nbt/NbtOps.INSTANCE:Lnet/minecraft/nbt/NbtOps;
+     115: aload_2
+     116: ldc           #103                // String Blocks
+     118: invokevirtual #105                // Method net/minecraft/nbt/CompoundTag.get:(Ljava/lang/String;)Lnet/minecraft/nbt/Tag;
+     121: invokespecial #108                // Method com/mojang/serialization/Dynamic."<init>":(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)V
+     124: invokeinterface #111,  2          // InterfaceMethod com/mojang/serialization/Codec.parse:(Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/DataResult;
+     129: invokeinterface #117,  1          // InterfaceMethod com/mojang/serialization/DataResult.getPartialOrThrow:()Ljava/lang/Object;
+     134: checkcast     #90                 // class net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider
+     137: putfield      #42                 // Field blocks:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     140: return
+
+  protected void addAdditionalSaveData(net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext, net.minecraft.nbt.CompoundTag);
+    Code:
+       0: new           #60                 // class net/minecraft/nbt/ListTag
+       3: dup
+       4: invokespecial #122                // Method net/minecraft/nbt/ListTag."<init>":()V
+       7: astore_3
+       8: aload_0
+       9: getfield      #26                 // Field positions:Ljava/util/Set;
+      12: invokeinterface #123,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      17: astore        4
+      19: aload         4
+      21: invokeinterface #65,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      26: ifeq          54
+      29: aload         4
+      31: invokeinterface #71,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      36: checkcast     #80                 // class net/minecraft/core/BlockPos
+      39: astore        5
+      41: aload_3
+      42: aload         5
+      44: invokestatic  #124                // Method net/minecraft/nbt/NbtUtils.writeBlockPos:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/nbt/Tag;
+      47: invokevirtual #130                // Method net/minecraft/nbt/ListTag.add:(Ljava/lang/Object;)Z
+      50: pop
+      51: goto          19
+      54: aload_2
+      55: ldc           #49                 // String Positions
+      57: aload_3
+      58: invokevirtual #131                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+      61: pop
+      62: getstatic     #89                 // Field net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.CODEC:Lcom/mojang/serialization/Codec;
+      65: getstatic     #97                 // Field net/minecraft/nbt/NbtOps.INSTANCE:Lnet/minecraft/nbt/NbtOps;
+      68: aload_0
+      69: getfield      #42                 // Field blocks:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      72: invokeinterface #135,  3          // InterfaceMethod com/mojang/serialization/Codec.encodeStart:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      77: getstatic     #139                // Field com/aetherteam/aether/Aether.LOGGER:Lorg/slf4j/Logger;
+      80: dup
+      81: invokestatic  #145                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      84: pop
+      85: invokedynamic #151,  0            // InvokeDynamic #0:accept:(Lorg/slf4j/Logger;)Ljava/util/function/Consumer;
+      90: invokeinterface #155,  2          // InterfaceMethod com/mojang/serialization/DataResult.resultOrPartial:(Ljava/util/function/Consumer;)Ljava/util/Optional;
+      95: aload_2
+      96: invokedynamic #159,  0            // InvokeDynamic #1:accept:(Lnet/minecraft/nbt/CompoundTag;)Ljava/util/function/Consumer;
+     101: invokevirtual #162                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+     104: return
+
+  public void postProcess(net.minecraft.world.level.WorldGenLevel, net.minecraft.world.level.StructureManager, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.structure.BoundingBox, net.minecraft.world.level.ChunkPos, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: getfield      #26                 // Field positions:Ljava/util/Set;
+       4: invokeinterface #168,  1          // InterfaceMethod java/util/Set.isEmpty:()Z
+       9: ifne          33
+      12: aload_0
+      13: getfield      #26                 // Field positions:Ljava/util/Set;
+      16: aload_0
+      17: aload_1
+      18: aload         4
+      20: aload         5
+      22: invokedynamic #171,  0            // InvokeDynamic #2:test:(Lcom/aetherteam/aether/world/structurepiece/LargeAercloudChunk;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Ljava/util/function/Predicate;
+      27: invokeinterface #175,  2          // InterfaceMethod java/util/Set.removeIf:(Ljava/util/function/Predicate;)Z
+      32: pop
+      33: return
+
+  protected boolean placeBlock(net.minecraft.world.level.WorldGenLevel, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.BoundingBox);
+    Code:
+       0: aload         4
+       2: aload_3
+       3: invokevirtual #179                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.isInside:(Lnet/minecraft/core/Vec3i;)Z
+       6: ifeq          30
+       9: aload_0
+      10: aload_1
+      11: aload_3
+      12: invokevirtual #185                // Method canBeReplaced:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z
+      15: ifeq          28
+      18: aload_1
+      19: aload_3
+      20: aload_2
+      21: iconst_2
+      22: invokeinterface #189,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      27: pop
+      28: iconst_1
+      29: ireturn
+      30: iconst_0
+      31: ireturn
+
+  protected boolean canBeReplaced(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokeinterface #195,  2          // InterfaceMethod net/minecraft/world/level/LevelReader.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+       7: ireturn
+
+  private boolean lambda$postProcess$1(net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.structure.BoundingBox, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_0
+       3: getfield      #42                 // Field blocks:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+       6: aload_2
+       7: aload         4
+       9: invokevirtual #201                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      12: aload         4
+      14: aload_3
+      15: invokevirtual #205                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Z
+      18: ireturn
+
+  private static void lambda$addAdditionalSaveData$0(net.minecraft.nbt.CompoundTag, net.minecraft.nbt.Tag);
+    Code:
+       0: aload_0
+       1: ldc           #103                // String Blocks
+       3: aload_1
+       4: invokevirtual #131                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+       7: pop
+       8: return
+}
