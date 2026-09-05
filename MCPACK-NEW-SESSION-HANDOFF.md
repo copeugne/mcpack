@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+Inspect the missing Repurposed Structures monument entry, assembly and base-piece
+paths using the existing extractor. The working monument decision explicitly
+lacks custom layout/content attribution. Select MonumentStructure, MonumentPieces
+and its MonumentBuilding/MonumentPiece classes; retain verbose pool-name bindings
+for the two piece classes. This closes a required family attribution gap without
+adding a new extractor, schema or world measurement.
+
 Mansion candidate content and source placement are integrated in 8ba362c.
 Child template entities, chest loot references and selected spider spawner
 inputs are tested; surface anchoring and the foundation envelope limitation

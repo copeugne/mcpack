@@ -348,6 +348,10 @@ CLASSES: tuple[str, ...] = (
     "com/tristankechlo/explorations/worldgen/structures/pieces/SlimeCaveStructurePiece.class",
     "com/tristankechlo/explorations/worldgen/structures/processors/DeepslateProcessor.class",
     "com/telepathicgrunt/repurposedstructures/world/structures/MansionStructure.class",
+    "com/telepathicgrunt/repurposedstructures/world/structures/MonumentStructure.class",
+    "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MonumentPieces.class",
+    "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MonumentPieces$MonumentBuilding.class",
+    "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MonumentPieces$MonumentPiece.class",
     "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MansionPieces.class",
     "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MansionPieces$LayoutGenerator.class",
     "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MansionPieces$RoomCollection.class",
@@ -465,6 +469,8 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     continue
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = "/mixin/" in name or "/mixins/" in name or name in {
+                    "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MonumentPieces$MonumentBuilding.class",
+                    "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MonumentPieces$MonumentPiece.class",
                     "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MansionPieces$LayoutGenerator.class",
                     "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MansionPieces$FirstFloor.class",
                     "com/telepathicgrunt/repurposedstructures/world/structures/pieces/MansionPieces$SecondFloor.class",
