@@ -1,4 +1,4 @@
-"""Project central-End block evidence from the retained ordinary run-a world."""
+"""Project central block evidence from the retained ordinary run-a world."""
 
 from __future__ import annotations
 
@@ -48,8 +48,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     _ = parser.add_argument("--restored-run-a", type=Path, required=True)
     _ = parser.add_argument("--output", type=Path, required=True)
+    _ = parser.add_argument("--dimension", choices=("end", "overworld"), default="end")
     args = parser.parse_args()
     root, output = cast("Path", args.restored_run_a), cast("Path", args.output)
+    dimension = cast("str", args.dimension)
+    dimension_path = "DIM1/" if dimension == "end" else ""
     raw = MANIFEST.read_bytes()
     if hashlib.sha256(raw).hexdigest() != MANIFEST_SHA256:
         message = "retained run-a world manifest changed"
@@ -60,7 +63,7 @@ def main() -> None:
     inputs: list[JsonValue] = []
     chunks: list[JsonValue] = []
     for rx, rz in ((-1, -1), (-1, 0), (0, -1), (0, 0)):
-        relative = f"run-a-ordinary/world/DIM1/region/r.{rx}.{rz}.mca"
+        relative = f"run-a-ordinary/world/{dimension_path}region/r.{rx}.{rz}.mca"
         path = root / relative
         identity = identities[relative]
         if (path.stat().st_size != identity["size_bytes"]
@@ -97,7 +100,10 @@ def main() -> None:
                 })
     result = {
         "manifest": str(MANIFEST), "manifest_sha256": MANIFEST_SHA256, "inputs": inputs,
-        "scope": "central End, seed 42 run-a, X/Z -64..63; counts are not family attribution",
+        "scope": (
+            f"central {'End' if dimension == 'end' else 'Overworld'}, seed 42 run-a, "
+            "X/Z -64..63; counts are not family attribution"
+        ),
         "chunks": chunks,
     }
     with output.open("x", encoding="utf-8") as stream:

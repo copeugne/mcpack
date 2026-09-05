@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+The existing central-block extractor now permits Overworld selection while
+preserving its End default and the same fixed X/Z survey bounds. This is needed
+because the retained End projection cannot establish Monster Box occurrence;
+the existing world-bound and context outputs also omit placed block content.
+Reuse the hash-bound ordinary run-a archive, not a new server or world. This is
+a second consumer of the existing projection, not a new measurement framework.
+An observation can establish presence in the sampled area only; absence there
+must not become a claim that the family never generates.
+
 Monster Box initial enablement is resolved in c221e11. The captured category
 has no required mod, the selected annotation converter supplies no overlap
 candidates, and ConfigManager applies enabled category settings before module
