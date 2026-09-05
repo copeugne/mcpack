@@ -83,3 +83,8 @@ Decision SHA-256:
 `216306ee257892d8bb21d0b25a9b0ce797dbaa1fa00c9f6b6a449168783a7167`.
 
 All 69 affected tests passed. Scoped Ruff and Basedpyright passed.
+
+Dispositions and tests are delivered in `f1f4649`. Inventory rebuilt at that
+commit, SHA-256:
+`385100c3e7f984662e7e9eaad598d4b858553a13c5965caabb29f764b2d61816`.
+Only the six variant dispositions, their evidence and decision input hash change.
