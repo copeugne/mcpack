@@ -58,3 +58,9 @@ its bootstrap target; use the extractor's existing verbose mode to preserve that
 binding rather than infer it. Reuse the existing scattered-feature source.
 Do not repeat the extraction above or introduce a new measurement framework.
 Item 8 remains incomplete.
+
+The constructor callback and shared wrapper are now resolved in
+`../vanilla-desert-pyramid-binding-code`. Its focused test verifies the same
+frozen class/archive identity and the bootstrap link to DesertPyramidPiece.
+This supersedes the pending callback instruction above. Cellar geometry,
+content integration and loot-source reconciliation remain open.
