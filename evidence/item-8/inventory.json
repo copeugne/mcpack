@@ -2107,7 +2107,10 @@
     "betterdungeons:spider_dungeon": {
       "approximate_footprint": "UNKNOWN: saved piece envelopes are not occupied footprint",
       "approximate_vertical_size": "UNKNOWN: piece envelopes can exceed occupied height",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "limitation": "No claim of directly spawned mobs, observed populations or unconditional natural spawning.",
+        "value": "Both authored spawner sources and structure-specific natural spawning rules"
+      },
       "biome_constraints": {
         "betterdungeons:spider_dungeon": {
           "biomes": [
@@ -2299,27 +2302,103 @@
         ]
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {
-          "betterdungeons:spider_dungeon": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "betterdungeons:spider_dungeon"
+        "observed_per_structure_counts": "UNKNOWN",
+        "scope": "Source placement branches, not guaranteed placements or measured spawner counts. World and bounding-box conditions still apply.",
+        "source_components": [
+          {
+            "basis": "Places Blocks.SPAWNER and calls SpawnerBlockEntity.setEntityId with EntityType.CAVE_SPIDER.",
+            "class": "SpiderDungeonNestPiece",
+            "entity_id": "minecraft:cave_spider",
+            "method": "postProcess"
+          },
+          {
+            "basis": "Alternative to the egg-room chest branch; places Blocks.SPAWNER and calls setEntityId with EntityType.SPIDER.",
+            "class": "SpiderDungeonEggRoomPiece",
+            "entity_id": "minecraft:spider",
+            "method": "postProcess"
           }
-        },
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [],
-        "unresolved_sources": {}
+        ]
       },
       "grouping_decision": {
+        "attributes": {
+          "authored_or_natural_enemies": {
+            "limitation": "No claim of directly spawned mobs, observed populations or unconditional natural spawning.",
+            "value": "Both authored spawner sources and structure-specific natural spawning rules"
+          },
+          "generated_spawners": {
+            "observed_per_structure_counts": "UNKNOWN",
+            "scope": "Source placement branches, not guaranteed placements or measured spawner counts. World and bounding-box conditions still apply.",
+            "source_components": [
+              {
+                "basis": "Places Blocks.SPAWNER and calls SpawnerBlockEntity.setEntityId with EntityType.CAVE_SPIDER.",
+                "class": "SpiderDungeonNestPiece",
+                "entity_id": "minecraft:cave_spider",
+                "method": "postProcess"
+              },
+              {
+                "basis": "Alternative to the egg-room chest branch; places Blocks.SPAWNER and calls setEntityId with EntityType.SPIDER.",
+                "class": "SpiderDungeonEggRoomPiece",
+                "entity_id": "minecraft:spider",
+                "method": "postProcess"
+              }
+            ]
+          },
+          "intended_hostility": {
+            "basis": "Generated spider and cave-spider spawner branches plus the packaged monster spawn override. This identifies encounter intent, not observed population or difficulty.",
+            "value": "Hostile spider dungeon"
+          },
+          "loot_table_source": {
+            "basis": "The chest branch constructs this loot-table ResourceKey and passes it to createChest. The alternative branch creates a spider spawner.",
+            "effective_injections": "UNKNOWN: retained loot integrations and container transformations still require attribution.",
+            "generated_chest_table": "betterdungeons:spider_dungeon/chests/egg_room",
+            "source_component": "SpiderDungeonEggRoomPiece"
+          },
+          "mob_source": {
+            "generated_spawner_entities": [
+              "minecraft:spider",
+              "minecraft:cave_spider"
+            ],
+            "scope": "Spawner branches are authored generation. The piece-bounded monster override permits natural spider and cave-spider spawning subject to runtime conditions. It does not instantiate the listed groups during structure generation.",
+            "structure_spawn_override": {
+              "monster": {
+                "bounding_box": "piece",
+                "spawns": [
+                  {
+                    "maxCount": 15,
+                    "minCount": 4,
+                    "type": "minecraft:spider",
+                    "weight": 100
+                  },
+                  {
+                    "maxCount": 8,
+                    "minCount": 4,
+                    "type": "minecraft:cave_spider",
+                    "weight": 50
+                  }
+                ]
+              }
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "Packaged step is underground_structures. The generator samples the declared absolute initial Y range 70 through 71 before constructing BigTunnel.",
+            "limitation": "Initial Y and generation step do not establish occupied vertical extent, surface exposure or discoverability.",
+            "value": "Underground dungeon generation"
+          }
+        },
+        "custom_components": [
+          "SpiderDungeonBigTunnelPiece",
+          "SpiderDungeonSmallTunnelPiece",
+          "SpiderDungeonNestPiece",
+          "SpiderDungeonEggRoomPiece"
+        ],
         "evidence": {
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/betterdungeons-code/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar/com.yungnickyoung.minecraft.betterdungeons.world.structure.spider_dungeon.SpiderDungeonStructure.txt": "b2a469a3663a39a0342154d8b5a7cba9686ebc7bf20c610f626209d8e94fcf51",
+          "evidence/item-8/sources/betterdungeons-code/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar/com.yungnickyoung.minecraft.betterdungeons.world.structure.spider_dungeon.piece.SpiderDungeonBigTunnelPiece.txt": "860dd0fef7bad349b1e82862fd02f7f6cd77966afc42bf42bda974565dee88b7",
+          "evidence/item-8/sources/betterdungeons-code/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar/com.yungnickyoung.minecraft.betterdungeons.world.structure.spider_dungeon.piece.SpiderDungeonEggRoomPiece.txt": "65398c079b518df46b8dadbe3e732a0644f9e14b77660a93a111913a9d509790",
+          "evidence/item-8/sources/betterdungeons-code/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar/com.yungnickyoung.minecraft.betterdungeons.world.structure.spider_dungeon.piece.SpiderDungeonNestPiece.txt": "9a388699755a9be37db49e3177c2bb2f57549e4a49ccd62f4685dade515e7835",
+          "evidence/item-8/sources/betterdungeons-code/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar/com.yungnickyoung.minecraft.betterdungeons.world.structure.spider_dungeon.piece.SpiderDungeonPiece.txt": "16e179bc5e0ecf12cfbb5ea2c08d41b4fc675ae5595f9612a2b0109d4abd188d",
+          "evidence/item-8/sources/betterdungeons-code/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar/com.yungnickyoung.minecraft.betterdungeons.world.structure.spider_dungeon.piece.SpiderDungeonSmallTunnelPiece.txt": "1211ec38e2dd217971d217e795bdd44326e2249f20494e4055b30b6b58a367be",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "facb6f7bbafb6836e7eaa694535b975c2ee2deab1e36ab85930f1c11c7a471c8"
         },
@@ -2337,56 +2416,60 @@
           "type": "betterdungeons:spider_dungeon"
         },
         "missing_components": "UNKNOWN: custom generation is outside current pool trace",
-        "name": "betterdungeons Spider Dungeon",
-        "rationale": "A custom spider-dungeon generator with no direct start pool in the packaged definition. Its generation path and component relationships remain unresolved. Rooms, pieces, pools and alternative templates are not additional families. This root assignment does not establish effective placement, replacement behavior or completed gameplay attributes.",
+        "name": "YUNG's Spider Dungeon",
+        "rationale": "A custom spider-dungeon generator with no direct start pool. SpiderDungeonStructure creates a BigTunnel piece and calls addChildren. Big tunnels can add big tunnels, small tunnels and nests; small tunnels can add egg rooms. These are components of one dungeon family. Effective placement, occupied geometry and generated counts remain unresolved.",
         "start_pool": null,
         "structure_ids": [
           "betterdungeons:spider_dungeon"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Generated spider and cave-spider spawner branches plus the packaged monster spawn override. This identifies encounter intent, not observed population or difficulty.",
+        "value": "Hostile spider dungeon"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {
-          "betterdungeons:spider_dungeon": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "betterdungeons:spider_dungeon"
-          }
-        },
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": []
+        "basis": "The chest branch constructs this loot-table ResourceKey and passes it to createChest. The alternative branch creates a spider spawner.",
+        "effective_injections": "UNKNOWN: retained loot integrations and container transformations still require attribution.",
+        "generated_chest_table": "betterdungeons:spider_dungeon/chests/egg_room",
+        "source_component": "SpiderDungeonEggRoomPiece"
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {
-          "betterdungeons:spider_dungeon": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "betterdungeons:spider_dungeon"
-          }
-        },
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
+        "generated_spawner_entities": [
+          "minecraft:spider",
+          "minecraft:cave_spider"
         ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [],
-        "unresolved_authored_entities": {}
+        "scope": "Spawner branches are authored generation. The piece-bounded monster override permits natural spider and cave-spider spawning subject to runtime conditions. It does not instantiate the listed groups during structure generation.",
+        "structure_spawn_override": {
+          "monster": {
+            "bounding_box": "piece",
+            "spawns": [
+              {
+                "maxCount": 15,
+                "minCount": 4,
+                "type": "minecraft:spider",
+                "weight": 100
+              },
+              {
+                "maxCount": 8,
+                "minCount": 4,
+                "type": "minecraft:cave_spider",
+                "weight": 50
+              }
+            ]
+          }
+        }
       },
-      "name": "betterdungeons Spider Dungeon",
+      "name": "YUNG's Spider Dungeon",
       "pool_trace_ids": [],
       "status": "INCOMPLETE",
       "structure_ids": [
         "betterdungeons:spider_dungeon"
       ],
-      "underground_surface_classification": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "Packaged step is underground_structures. The generator samples the declared absolute initial Y range 70 through 71 before constructing BigTunnel.",
+        "limitation": "Initial Y and generation step do not establish occupied vertical extent, surface exposure or discoverability.",
+        "value": "Underground dungeon generation"
+      },
       "visual_discoverability": "UNKNOWN",
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
@@ -39059,7 +39142,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "5c081350b41292c1814588444de03e367410f09ce3fcf22eafec8064d9dfc5d3",
+    "evidence/item-8/family-decisions.json": "c977970584877713640715b0052b75cfee23bd903a83a120068a7a1633da05b0",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "facb6f7bbafb6836e7eaa694535b975c2ee2deab1e36ab85930f1c11c7a471c8",
     "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
