@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "0a03048d57cafe7a3fc1dd156944561c56c85e5017b7a65cd54343374ec6a437",
+    "evidence/item-8/family-decisions.json": "0a2920202c9ef5dd3853296f74f02b572a148bac7204748c24754bbafdcba17e",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -159303,6 +159303,22 @@
           "success_limit": "The helper discards the placeInWorld boolean, then runs the processor list and returns the loaded template. Each of these classes returns whether the template is non-null. This is not proof that all template blocks were placed.",
           "template_call": "Each class constructs its static ID with ResourceLocation.fromNamespaceAndPath and passes that ID to inherited createTemplateFromCenter."
         },
+        "desert_well_generation": {
+          "brown_marker_loot": "BuiltInLootTables.DESERT_WELL_ARCHAEOLOGY",
+          "brown_marker_rule": "Choose cap nextInt(3)+2. In template filter order, select each brown stained glass marker with nextFloat()<0.1 until the cap; replace other markers with sand. If fewer than two were selected, convert previously unselected markers in order until two or until exhausted.",
+          "extra_loot_contents": "One archaeology pool with one roll and diamond, emerald and gold_ingot item entries; no explicit weights or conditions. Packaged contents only, before external loot modification.",
+          "extra_loot_resource": {
+            "path": "data/yungsextras/loot_table/desert/extra_archeology.json",
+            "sha256": "f6ec71dd58f6e2e12f7990e8455f59897db939d8d657cce42e94ced9271cbb57"
+          },
+          "loot_assignment": "placeSusSand requests SUSPICIOUS_SAND with update flag 3, discards the setBlock result, and assigns the loot table with position.asLong() as seed only if a BRUSHABLE_BLOCK entity is present.",
+          "processor_binding": "DesertWellFeature.useProcessors selects only FeatureProcessorModule.DESERT_WELL_PROCESSOR. The module constructs DesertWellProcessor; its register helper returns the same instance. AbstractNbtFeature runs it after template placement.",
+          "scope": "Source-supported placement and loot creation rules, not observed successful placements or reward counts. The shared template helper does not propagate placeInWorld failure. Family grouping and effective retained-stack loot modifications remain unresolved.",
+          "template_anchor": "Pass the configured location to createTemplateFromCenter at landing position six blocks down. The unrotated template envelope is centered in X/Z by the inherited helper.",
+          "terrain": "Descend through empty blocks while Y > 7. Require the landing block default state in BlockTags.SAND. At each depth 1 through 7 below the landing position, reject an empty block at the center or any of the four diagonal corners at the configured radius. These are non-empty checks, not full-volume solid-ground checks.",
+          "yellow_marker_loot": "yungsextras:desert/extra_archeology",
+          "yellow_marker_rule": "Choose independent budget nextInt(3)+2. In template filter order, select each yellow stained glass marker with nextFloat()<0.4 while budget remains, decrementing on selection; replace others with sand. There is no minimum-fill second pass."
+        },
         "evidence": {
           "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_biome.txt": "0970c5296980495640901e3ba7fd44fa90e97da4774900368fa924a263446713",
@@ -159313,6 +159329,8 @@
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/yungs-extras-desert-code/identities.json": "c595f5123a71105b276884d33229e4b7da2bf9b91b70ec8e5cbf1cba069d465b",
+          "evidence/item-8/sources/yungs-extras-generators/identities.json": "6295b0a24fca944020cd1f489beae29c75deef061d93c411504e7aaadfe23210",
+          "evidence/item-8/sources/yungs-extras-processor-bindings/identities.json": "1b79d6b5d0afdc5a965dd1fa0f9ed732d77fe3dcaa9378e4115fa942efb1e0d6",
           "evidence/item-8/sources/yungs-extras-registration/identities.json": "07300368df9a9fe1fe8f7e6efad0bc12505ebeb2e4db2a00389150a39b9e417e"
         },
         "mechanism": "NeoForge biome modifiers add placed features, which reference configured features. No yungsextras structure-registry roots are present.",
