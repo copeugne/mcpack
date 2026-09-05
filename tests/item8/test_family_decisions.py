@@ -550,7 +550,8 @@ def test_voyager_carts_and_igloos_preserve_authored_content_and_shared_pieces() 
             assert nbt["SpawnPotentials"] == []
 
 
-def test_repurposed_design_groups_cover_registry_and_bind_variant_definitions() -> None:
+@pytest.mark.parametrize("namespace", ["repurposed_structures", "minecraft"])
+def test_design_groups_cover_registry_and_bind_variant_definitions(namespace: str) -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(
         "dict[str, list[dict[str, JsonValue]]]",
@@ -573,9 +574,7 @@ def test_repurposed_design_groups_cover_registry_and_bind_variant_definitions() 
         ),
     )
     groups = [
-        row
-        for row in decisions["groups"]
-        if str(row["family_id"]).startswith("repurposed_structures:")
+        row for row in decisions["groups"] if str(row["family_id"]).startswith(namespace + ":")
     ]
     registry = {
         key
@@ -583,10 +582,14 @@ def test_repurposed_design_groups_cover_registry_and_bind_variant_definitions() 
             root
             / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
         )
-        if key.startswith("repurposed_structures:")
+        if key.startswith(namespace + ":")
     }
     members = [key for row in groups for key in cast("list[str]", row["structure_ids"])]
-    assert len(members) == len(set(members)) == 107
+    assert (
+        len(members)
+        == len(set(members))
+        == {"repurposed_structures": 107, "minecraft": 34}[namespace]
+    )
     assert set(members) == registry
     counts = {
         "ancient_city": 3,
@@ -607,6 +610,30 @@ def test_repurposed_design_groups_cover_registry_and_bind_variant_definitions() 
         "village": 14,
         "witch_hut": 6,
     }
+    if namespace == "minecraft":
+        counts = {
+            "ancient_city": 1,
+            "bastion_remnant": 1,
+            "buried_treasure": 1,
+            "desert_pyramid": 1,
+            "end_city": 1,
+            "fortress": 1,
+            "igloo": 1,
+            "jungle_pyramid": 1,
+            "mansion": 1,
+            "mineshaft": 2,
+            "monument": 1,
+            "nether_fossil": 1,
+            "ocean_ruin": 2,
+            "pillager_outpost": 1,
+            "ruined_portal": 7,
+            "shipwreck": 2,
+            "stronghold": 1,
+            "swamp_hut": 1,
+            "trail_ruins": 1,
+            "trial_chambers": 1,
+            "village": 5,
+        }
     assert {str(row["family_id"]).split(":")[1] for row in groups} == set(counts)
     custom: set[str] = set()
     for row in groups:
@@ -616,7 +643,7 @@ def test_repurposed_design_groups_cover_registry_and_bind_variant_definitions() 
         assert (
             row["structure_ids"]
             == sorted(variants)
-            == sorted(key for key in registry if key.startswith(family + "_"))
+            == sorted(key for key in registry if key == family or key.startswith(family + "_"))
         )
         assert len(variants) == counts[kind]
         for path, digest in cast("dict[str, str]", row["evidence"]).items():
@@ -628,27 +655,30 @@ def test_repurposed_design_groups_cover_registry_and_bind_variant_definitions() 
             definitions = [
                 cast("dict[str, JsonValue]", r["document"])
                 for r in catalog["resources"]
-                if r["path"] == f"data/repurposed_structures/worldgen/structure/{name}.json"
+                if r["path"] == f"data/{namespace}/worldgen/structure/{name}.json"
             ]
             assert definitions == [variant["definition"]]
             definition = definitions[0]
             if "start_pool" in definition:
                 trace = traces["structures"][identifier]
                 assert trace["start_pool"] == definition["start_pool"]
-                assert variant["missing_components"] == trace["missing"] == []
+                assert variant["missing_components"] == trace["missing"]
+                assert not trace["missing"] or namespace == "minecraft"
                 assert trace["templates"]
                 assert trace["unresolved_elements"] == []
             else:
                 custom.add(identifier)
-                assert kind in {"mansion", "monument"}
-                assert definition["type"] == f"repurposed_structures:{kind}_structure"
-                assert definition[f"{kind}_type"] == name.removeprefix(kind + "_")
+                if namespace == "repurposed_structures":
+                    assert kind in {"mansion", "monument"}
+                    assert definition["type"] == f"repurposed_structures:{kind}_structure"
+                    assert definition[f"{kind}_type"] == name.removeprefix(kind + "_")
+                assert traces["untraced_structures"][identifier]["type"] == definition["type"]
                 assert identifier in traces["untraced_structures"]
                 assert (
                     variant["missing_components"]
                     == "UNKNOWN: custom generation is outside current pool trace"
                 )
-    assert len(custom) == 12
+    assert len(custom) == {"repurposed_structures": 12, "minecraft": 24}[namespace]
 
 
 @pytest.mark.parametrize(
@@ -1834,3 +1864,21 @@ def test_seven_seas_groups_cover_registered_roots_without_counting_spawner_compo
         ]
         for path, digest in cast("dict[str, str]", row["evidence"]).items():
             assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+
+
+def test_all_runtime_structure_ids_have_exactly_one_working_group() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, list[dict[str, JsonValue]]]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    registry = read_registry(
+        root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )
+    members = [
+        identifier
+        for group in decisions["groups"]
+        for identifier in cast("list[str]", group["structure_ids"])
+    ]
+    assert len(members) == len(set(members)) == len(registry) == 887
+    assert set(members) == set(registry)
