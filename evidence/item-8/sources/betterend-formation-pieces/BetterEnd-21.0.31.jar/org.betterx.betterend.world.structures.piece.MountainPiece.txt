@@ -1,0 +1,500 @@
+Compiled from "MountainPiece.java"
+public abstract class org.betterx.betterend.world.structures.piece.MountainPiece extends org.betterx.betterend.world.structures.piece.BasePiece {
+  protected java.util.Map<java.lang.Integer, java.lang.Integer> heightmap;
+
+  protected org.betterx.betterend.noise.OpenSimplexNoise noise1;
+
+  protected org.betterx.betterend.noise.OpenSimplexNoise noise2;
+
+  protected net.minecraft.core.BlockPos center;
+
+  protected float radius;
+
+  protected float height;
+
+  protected float r2;
+
+  protected net.minecraft.resources.ResourceKey<net.minecraft.world.level.biome.Biome> biomeID;
+
+  protected int seed1;
+
+  protected int seed2;
+
+  public org.betterx.betterend.world.structures.piece.MountainPiece(net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType, net.minecraft.core.BlockPos, float, float, net.minecraft.util.RandomSource, net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload         5
+       4: invokeinterface #1,  1            // InterfaceMethod net/minecraft/util/RandomSource.nextInt:()I
+       9: aconst_null
+      10: invokespecial #7                  // Method org/betterx/betterend/world/structures/piece/BasePiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;ILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+      13: aload_0
+      14: invokestatic  #13                 // Method com/google/common/collect/Maps.newConcurrentMap:()Ljava/util/concurrent/ConcurrentMap;
+      17: putfield      #19                 // Field heightmap:Ljava/util/Map;
+      20: aload_0
+      21: aload_2
+      22: putfield      #25                 // Field center:Lnet/minecraft/core/BlockPos;
+      25: aload_0
+      26: fload_3
+      27: putfield      #29                 // Field radius:F
+      30: aload_0
+      31: fload         4
+      33: putfield      #33                 // Field height:F
+      36: aload_0
+      37: fload_3
+      38: fload_3
+      39: fmul
+      40: putfield      #36                 // Field r2:F
+      43: aload_0
+      44: aload         5
+      46: invokeinterface #1,  1            // InterfaceMethod net/minecraft/util/RandomSource.nextInt:()I
+      51: putfield      #39                 // Field seed1:I
+      54: aload_0
+      55: aload         5
+      57: invokeinterface #1,  1            // InterfaceMethod net/minecraft/util/RandomSource.nextInt:()I
+      62: putfield      #43                 // Field seed2:I
+      65: aload_0
+      66: new           #46                 // class org/betterx/betterend/noise/OpenSimplexNoise
+      69: dup
+      70: aload_0
+      71: getfield      #39                 // Field seed1:I
+      74: i2l
+      75: invokespecial #48                 // Method org/betterx/betterend/noise/OpenSimplexNoise."<init>":(J)V
+      78: putfield      #51                 // Field noise1:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+      81: aload_0
+      82: new           #46                 // class org/betterx/betterend/noise/OpenSimplexNoise
+      85: dup
+      86: aload_0
+      87: getfield      #43                 // Field seed2:I
+      90: i2l
+      91: invokespecial #48                 // Method org/betterx/betterend/noise/OpenSimplexNoise."<init>":(J)V
+      94: putfield      #55                 // Field noise2:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+      97: aload_0
+      98: aload         6
+     100: invokeinterface #58,  1           // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+     105: aconst_null
+     106: invokevirtual #64                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+     109: checkcast     #70                 // class net/minecraft/resources/ResourceKey
+     112: putfield      #72                 // Field biomeID:Lnet/minecraft/resources/ResourceKey;
+     115: aload_0
+     116: invokevirtual #76                 // Method makeBoundingBox:()V
+     119: return
+
+  public org.betterx.betterend.world.structures.piece.MountainPiece(net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType, net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokespecial #80                 // Method org/betterx/betterend/world/structures/piece/BasePiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;Lnet/minecraft/nbt/CompoundTag;)V
+       6: aload_0
+       7: invokestatic  #13                 // Method com/google/common/collect/Maps.newConcurrentMap:()Ljava/util/concurrent/ConcurrentMap;
+      10: putfield      #19                 // Field heightmap:Ljava/util/Map;
+      13: aload_0
+      14: invokevirtual #76                 // Method makeBoundingBox:()V
+      17: return
+
+  protected void addAdditionalSaveData(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_1
+       1: ldc           #83                 // String center
+       3: aload_0
+       4: getfield      #25                 // Field center:Lnet/minecraft/core/BlockPos;
+       7: invokestatic  #84                 // Method net/minecraft/nbt/NbtUtils.writeBlockPos:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/nbt/Tag;
+      10: invokevirtual #90                 // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+      13: pop
+      14: aload_1
+      15: ldc           #96                 // String radius
+      17: aload_0
+      18: getfield      #29                 // Field radius:F
+      21: invokevirtual #97                 // Method net/minecraft/nbt/CompoundTag.putFloat:(Ljava/lang/String;F)V
+      24: aload_1
+      25: ldc           #101                // String height
+      27: aload_0
+      28: getfield      #33                 // Field height:F
+      31: invokevirtual #97                 // Method net/minecraft/nbt/CompoundTag.putFloat:(Ljava/lang/String;F)V
+      34: aload_1
+      35: ldc           #102                // String biome
+      37: aload_0
+      38: getfield      #72                 // Field biomeID:Lnet/minecraft/resources/ResourceKey;
+      41: invokevirtual #104                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      44: invokevirtual #108                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      47: invokevirtual #114                // Method net/minecraft/nbt/CompoundTag.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      50: aload_1
+      51: ldc           #118                // String seed1
+      53: aload_0
+      54: getfield      #39                 // Field seed1:I
+      57: invokevirtual #119                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      60: aload_1
+      61: ldc           #123                // String seed2
+      63: aload_0
+      64: getfield      #43                 // Field seed2:I
+      67: invokevirtual #119                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      70: return
+
+  protected void fromNbt(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: ldc           #83                 // String center
+       4: invokestatic  #124                // Method net/minecraft/nbt/NbtUtils.readBlockPos:(Lnet/minecraft/nbt/CompoundTag;Ljava/lang/String;)Ljava/util/Optional;
+       7: getstatic     #128                // Field net/minecraft/core/BlockPos.ZERO:Lnet/minecraft/core/BlockPos;
+      10: invokevirtual #64                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      13: checkcast     #129                // class net/minecraft/core/BlockPos
+      16: putfield      #25                 // Field center:Lnet/minecraft/core/BlockPos;
+      19: aload_0
+      20: aload_1
+      21: ldc           #96                 // String radius
+      23: invokevirtual #133                // Method net/minecraft/nbt/CompoundTag.getFloat:(Ljava/lang/String;)F
+      26: putfield      #29                 // Field radius:F
+      29: aload_0
+      30: aload_1
+      31: ldc           #101                // String height
+      33: invokevirtual #133                // Method net/minecraft/nbt/CompoundTag.getFloat:(Ljava/lang/String;)F
+      36: putfield      #33                 // Field height:F
+      39: aload_0
+      40: getstatic     #137                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      43: aload_1
+      44: ldc           #102                // String biome
+      46: invokevirtual #142                // Method net/minecraft/nbt/CompoundTag.getString:(Ljava/lang/String;)Ljava/lang/String;
+      49: invokestatic  #146                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      52: invokestatic  #150                // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+      55: putfield      #72                 // Field biomeID:Lnet/minecraft/resources/ResourceKey;
+      58: aload_0
+      59: aload_0
+      60: getfield      #29                 // Field radius:F
+      63: aload_0
+      64: getfield      #29                 // Field radius:F
+      67: fmul
+      68: putfield      #36                 // Field r2:F
+      71: aload_0
+      72: aload_1
+      73: ldc           #118                // String seed1
+      75: invokevirtual #154                // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      78: putfield      #39                 // Field seed1:I
+      81: aload_0
+      82: aload_1
+      83: ldc           #123                // String seed2
+      85: invokevirtual #154                // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      88: putfield      #43                 // Field seed2:I
+      91: aload_0
+      92: new           #46                 // class org/betterx/betterend/noise/OpenSimplexNoise
+      95: dup
+      96: aload_0
+      97: getfield      #39                 // Field seed1:I
+     100: i2l
+     101: invokespecial #48                 // Method org/betterx/betterend/noise/OpenSimplexNoise."<init>":(J)V
+     104: putfield      #51                 // Field noise1:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     107: aload_0
+     108: new           #46                 // class org/betterx/betterend/noise/OpenSimplexNoise
+     111: dup
+     112: aload_0
+     113: getfield      #43                 // Field seed2:I
+     116: i2l
+     117: invokespecial #48                 // Method org/betterx/betterend/noise/OpenSimplexNoise."<init>":(J)V
+     120: putfield      #55                 // Field noise2:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     123: return
+
+  private int getHeight(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_2
+       1: invokevirtual #158                // Method net/minecraft/core/BlockPos.getX:()I
+       4: sipush        2047
+       7: iand
+       8: bipush        11
+      10: ishl
+      11: aload_2
+      12: invokevirtual #161                // Method net/minecraft/core/BlockPos.getZ:()I
+      15: sipush        2047
+      18: iand
+      19: ior
+      20: istore_3
+      21: aload_0
+      22: getfield      #19                 // Field heightmap:Ljava/util/Map;
+      25: iload_3
+      26: invokestatic  #164                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      29: ldc           #170                // int -2147483648
+      31: invokestatic  #164                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      34: invokeinterface #171,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      39: checkcast     #165                // class java/lang/Integer
+      42: invokevirtual #177                // Method java/lang/Integer.intValue:()I
+      45: istore        4
+      47: iload         4
+      49: ldc           #170                // int -2147483648
+      51: if_icmple     57
+      54: iload         4
+      56: ireturn
+      57: aload_1
+      58: aload_2
+      59: invokeinterface #180,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBiome:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+      64: aload_0
+      65: getfield      #72                 // Field biomeID:Lnet/minecraft/resources/ResourceKey;
+      68: invokeinterface #186,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/resources/ResourceKey;)Z
+      73: ifne          98
+      76: aload_0
+      77: getfield      #19                 // Field heightmap:Ljava/util/Map;
+      80: iload_3
+      81: invokestatic  #164                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      84: bipush        -10
+      86: invokestatic  #164                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      89: invokeinterface #190,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      94: pop
+      95: bipush        -10
+      97: ireturn
+      98: aload_1
+      99: getstatic     #192                // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     102: aload_2
+     103: invokevirtual #158                // Method net/minecraft/core/BlockPos.getX:()I
+     106: aload_2
+     107: invokevirtual #161                // Method net/minecraft/core/BlockPos.getZ:()I
+     110: invokeinterface #198,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getHeight:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;II)I
+     115: istore        4
+     117: iload         4
+     119: aload_0
+     120: getfield      #25                 // Field center:Lnet/minecraft/core/BlockPos;
+     123: invokevirtual #202                // Method net/minecraft/core/BlockPos.getY:()I
+     126: isub
+     127: invokestatic  #205                // Method net/minecraft/util/Mth.abs:(I)I
+     130: istore        4
+     132: iload         4
+     134: iconst_4
+     135: if_icmple     166
+     138: iconst_4
+     139: iload         4
+     141: isub
+     142: istore        4
+     144: aload_0
+     145: getfield      #19                 // Field heightmap:Ljava/util/Map;
+     148: iload_3
+     149: invokestatic  #164                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     152: iload         4
+     154: invokestatic  #164                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     157: invokeinterface #190,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     162: pop
+     163: iload         4
+     165: ireturn
+     166: aload_0
+     167: getfield      #55                 // Field noise2:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     170: aload_2
+     171: invokevirtual #158                // Method net/minecraft/core/BlockPos.getX:()I
+     174: i2d
+     175: ldc2_w        #211                // double 0.01d
+     178: dmul
+     179: aload_2
+     180: invokevirtual #161                // Method net/minecraft/core/BlockPos.getZ:()I
+     183: i2d
+     184: ldc2_w        #211                // double 0.01d
+     187: dmul
+     188: invokevirtual #213                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DD)D
+     191: aload_0
+     192: getfield      #55                 // Field noise2:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     195: aload_2
+     196: invokevirtual #158                // Method net/minecraft/core/BlockPos.getX:()I
+     199: i2d
+     200: ldc2_w        #217                // double 0.002d
+     203: dmul
+     204: aload_2
+     205: invokevirtual #161                // Method net/minecraft/core/BlockPos.getZ:()I
+     208: i2d
+     209: ldc2_w        #217                // double 0.002d
+     212: dmul
+     213: invokevirtual #213                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DD)D
+     216: dmul
+     217: ldc2_w        #219                // double 8.0d
+     220: dmul
+     221: ldc2_w        #219                // double 8.0d
+     224: dadd
+     225: invokestatic  #221                // Method org/betterx/bclib/util/MHelper.floor:(D)I
+     228: istore        4
+     230: iload         4
+     232: ifge          255
+     235: aload_0
+     236: getfield      #19                 // Field heightmap:Ljava/util/Map;
+     239: iload_3
+     240: invokestatic  #164                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     243: iconst_0
+     244: invokestatic  #164                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     247: invokeinterface #190,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     252: pop
+     253: iconst_0
+     254: ireturn
+     255: aload_0
+     256: getfield      #19                 // Field heightmap:Ljava/util/Map;
+     259: iload_3
+     260: invokestatic  #164                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     263: iload         4
+     265: invokestatic  #164                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     268: invokeinterface #190,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     273: pop
+     274: iload         4
+     276: ireturn
+
+  protected float getHeightClamp(net.minecraft.world.level.WorldGenLevel, int, int, int);
+    Code:
+       0: new           #227                // class net/minecraft/core/BlockPos$MutableBlockPos
+       3: dup
+       4: invokespecial #229                // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+       7: astore        5
+       9: fconst_0
+      10: fstore        6
+      12: fconst_0
+      13: fstore        7
+      15: iload_2
+      16: ineg
+      17: istore        8
+      19: iload         8
+      21: iload_2
+      22: if_icmpgt     129
+      25: aload         5
+      27: iload_3
+      28: iload         8
+      30: iadd
+      31: invokevirtual #231                // Method net/minecraft/core/BlockPos$MutableBlockPos.setX:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      34: pop
+      35: iload         8
+      37: iload         8
+      39: imul
+      40: istore        9
+      42: iload_2
+      43: ineg
+      44: istore        10
+      46: iload         10
+      48: iload_2
+      49: if_icmpgt     123
+      52: aload         5
+      54: iload         4
+      56: iload         10
+      58: iadd
+      59: invokevirtual #235                // Method net/minecraft/core/BlockPos$MutableBlockPos.setZ:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      62: pop
+      63: iload         10
+      65: iload         10
+      67: imul
+      68: istore        11
+      70: fconst_1
+      71: iload         9
+      73: iload         11
+      75: iadd
+      76: i2d
+      77: invokestatic  #238                // Method java/lang/Math.sqrt:(D)D
+      80: d2f
+      81: iload_2
+      82: i2f
+      83: fdiv
+      84: fsub
+      85: fstore        12
+      87: fload         12
+      89: fconst_0
+      90: fcmpl
+      91: ifle          117
+      94: fload         7
+      96: fload         12
+      98: fadd
+      99: fstore        7
+     101: fload         6
+     103: aload_0
+     104: aload_1
+     105: aload         5
+     107: invokevirtual #244                // Method getHeight:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;)I
+     110: i2f
+     111: fload         12
+     113: fmul
+     114: fadd
+     115: fstore        6
+     117: iinc          10, 1
+     120: goto          46
+     123: iinc          8, 1
+     126: goto          19
+     129: fload         6
+     131: fload         7
+     133: fdiv
+     134: fstore        6
+     136: fload         6
+     138: iload_2
+     139: i2f
+     140: fdiv
+     141: fconst_0
+     142: fconst_1
+     143: invokestatic  #247                // Method net/minecraft/util/Mth.clamp:(FFF)F
+     146: freturn
+
+  private void makeBoundingBox();
+    Code:
+       0: aload_0
+       1: getfield      #25                 // Field center:Lnet/minecraft/core/BlockPos;
+       4: invokevirtual #158                // Method net/minecraft/core/BlockPos.getX:()I
+       7: i2f
+       8: aload_0
+       9: getfield      #29                 // Field radius:F
+      12: fsub
+      13: f2d
+      14: invokestatic  #221                // Method org/betterx/bclib/util/MHelper.floor:(D)I
+      17: istore_1
+      18: aload_0
+      19: getfield      #25                 // Field center:Lnet/minecraft/core/BlockPos;
+      22: invokevirtual #202                // Method net/minecraft/core/BlockPos.getY:()I
+      25: i2f
+      26: aload_0
+      27: getfield      #29                 // Field radius:F
+      30: fsub
+      31: f2d
+      32: invokestatic  #221                // Method org/betterx/bclib/util/MHelper.floor:(D)I
+      35: istore_2
+      36: aload_0
+      37: getfield      #25                 // Field center:Lnet/minecraft/core/BlockPos;
+      40: invokevirtual #161                // Method net/minecraft/core/BlockPos.getZ:()I
+      43: i2f
+      44: aload_0
+      45: getfield      #29                 // Field radius:F
+      48: fsub
+      49: f2d
+      50: invokestatic  #221                // Method org/betterx/bclib/util/MHelper.floor:(D)I
+      53: istore_3
+      54: aload_0
+      55: getfield      #25                 // Field center:Lnet/minecraft/core/BlockPos;
+      58: invokevirtual #158                // Method net/minecraft/core/BlockPos.getX:()I
+      61: i2f
+      62: aload_0
+      63: getfield      #29                 // Field radius:F
+      66: fadd
+      67: fconst_1
+      68: fadd
+      69: f2d
+      70: invokestatic  #221                // Method org/betterx/bclib/util/MHelper.floor:(D)I
+      73: istore        4
+      75: aload_0
+      76: getfield      #25                 // Field center:Lnet/minecraft/core/BlockPos;
+      79: invokevirtual #202                // Method net/minecraft/core/BlockPos.getY:()I
+      82: i2f
+      83: aload_0
+      84: getfield      #29                 // Field radius:F
+      87: fadd
+      88: fconst_1
+      89: fadd
+      90: f2d
+      91: invokestatic  #221                // Method org/betterx/bclib/util/MHelper.floor:(D)I
+      94: istore        5
+      96: aload_0
+      97: getfield      #25                 // Field center:Lnet/minecraft/core/BlockPos;
+     100: invokevirtual #161                // Method net/minecraft/core/BlockPos.getZ:()I
+     103: i2f
+     104: aload_0
+     105: getfield      #29                 // Field radius:F
+     108: fadd
+     109: fconst_1
+     110: fadd
+     111: f2d
+     112: invokestatic  #221                // Method org/betterx/bclib/util/MHelper.floor:(D)I
+     115: istore        6
+     117: aload_0
+     118: new           #251                // class net/minecraft/world/level/levelgen/structure/BoundingBox
+     121: dup
+     122: iload_1
+     123: iload_2
+     124: iload_3
+     125: iload         4
+     127: iload         5
+     129: iload         6
+     131: invokespecial #253                // Method net/minecraft/world/level/levelgen/structure/BoundingBox."<init>":(IIIIII)V
+     134: putfield      #256                // Field boundingBox:Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     137: return
+}
