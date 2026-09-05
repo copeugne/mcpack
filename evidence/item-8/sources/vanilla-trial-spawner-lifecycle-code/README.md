@@ -68,3 +68,27 @@ retained mods cannot transform this path. The existing inventory's raw
 this conditional disposition must accompany them when the final effective
 family attributes are assembled. Do not repeat this lifecycle extraction or
 build a simulator to reproduce the same source-derived attribution.
+
+## Inventory integration
+
+`343095a` records this disposition in the existing trial-chamber `mob_source`
+attribute; `f441595` delivers the rebuilt inventory. This supersedes the pending
+integration instruction above. Explicit omitted-list entries are preserved and
+cross-referenced, while `conditional_ominous_sources` records the five IDs with
+their condition, evidence and limitations. The frozen catalog test now compares
+that map against the actual template entries and checks its source hashes.
+
+Executed commands:
+
+```sh
+uv run pytest -q tests/item8/test_template_nbt.py tests/item8/test_family_decisions.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-trial-lifecycle.json
+```
+
+All 68 tests passed; scoped Ruff and basedpyright passed after one line-wrap
+correction. Decision SHA-256:
+`fda5d5c1b1ea4a33d2a5a099fd51ecd24b760a921008107f9f89d2758de1cb75`.
+Inventory SHA-256:
+`2f915136cf8ff69430a4be1e099f675ea9e7a928175c7621c51f485d3020740d`.
+The trace is unchanged. Only this family's grouping evidence and mob-source
+attribute change semantically. Overall Item 8 completion remains unproven.
