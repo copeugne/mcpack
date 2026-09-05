@@ -501,6 +501,9 @@ def test_yungs_extras_explicit_templates_preserve_code_attribution_gaps() -> Non
     assert sorted(sizes.keys() - set(links.values())) == (
         membership["packaged_templates_outside_explicit_links"]
     )
+    code_links = cast("dict[str, str]", membership["code_configured_to_template"])
+    assert {key: sizes[key] for key in code_links.values()} == membership["code_nominal_xyz_blocks"]
+    assert set(links.values()) | set(code_links.values()) == set(sizes)
 
 
 def test_yungs_extras_packaged_entities_and_loot_sources() -> None:
