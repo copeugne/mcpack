@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `5f73e5a`, SHA-256
-`bc1cdc232948646e5c4b01935b500aaa645b85a219a0eb1ad17190f95fca7ea4`.
+Current working inventory regenerated at `02b5164`, SHA-256
+`150ad3eb6e494f6a851883857adc884f27a518bd98c75555bc634f8a3deed94e`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,19 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 02b5164 increment attributes direct encounter content to each Better End
+Island family. Empty stored entities, spawners and template loot sources are
+checked against the preserved catalog. The arena's code-created crystals and
+dragon remain explicit, separate from stored entities. Transport and dragon-fight
+purpose are source-derived design interpretations; natural spawning, other
+lifecycle rewards and external retained-stack effects are not resolved by these
+findings. Twenty-nine focused tests and scoped checks passed. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-end-content-02b5164.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-end-content-02b5164.json
+```
 
 The 5f73e5a increment groups Better End Island into arrival platform, gateway
 and dragon arena working families. Spikes and podium belong to the coordinated

@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Direct encounter content is assigned to the three Better End Island families
+in `02b5164`. Empty stored entity/spawner/loot-source lists bind to member
+templates; arena code-created crystals and dragon are recorded separately.
+Intended hostility is a source-derived design interpretation. Natural spawning,
+external retained-stack effects and other lifecycle rewards remain unresolved.
+Twenty-nine focused tests and scoped checks passed. Continue dimension/biome
+applicability and remaining placement/discoverability attributes, using preserved
+sources before adding any new extraction. Full provider coverage remains open.
+
 Better End Island working families are grouped in `5f73e5a`: arrival platform,
 gateway and dragon arena. The arena includes spike and podium components and
 their lifecycle variants. The existing catalog test verifies every packaged
