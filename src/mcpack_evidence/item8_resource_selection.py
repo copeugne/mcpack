@@ -83,6 +83,7 @@ def select_resources(
         "worldgen/template_pool",
         "structure",
         "lithostitched/worldgen_modifier",
+        "lithostitched/surface_rule",
     ],
     *,
     enabled_packs: list[str],
