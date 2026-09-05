@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Better End Island working families are grouped in `5f73e5a`: arrival platform,
+gateway and dragon arena. The arena includes spike and podium components and
+their lifecycle variants. The existing catalog test verifies every packaged
+template is assigned exactly once. Twenty-nine focused tests and scoped checks
+passed. Next complete applicable family attributes from existing evidence and
+continue cross-provider coverage. Do not repeat completed source tracing or the
+bounded End extraction. These groups are not a final accepted global count.
+
 Central-End projection is delivered in `f295bec`, extractor `aff8997`, and
 linked to decisions in `ca53b4b`. Reproduction matches exactly. Actual saved
 materials are recorded, but section counts do not identify exact templates or
