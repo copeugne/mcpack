@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `7144dd8`, SHA-256
-`e10333e84edb33f2ab0a6df1435e8acdafb7c1e13e4f474f23c9a808476c64db`.
+Current working inventory regenerated at `6032002`, SHA-256
+`065dbbf1c6e1d25b2feec3996d574c1fd9f29c5cbc5a6dd6981ab2e74c50464c`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,17 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 6032002 increment closes the platform caller link with the preserved
+vanilla EndPlatformFeature implementation. The packaged fixed-origin path
+reaches the captured static hook and selects the custom generator under frozen
+configuration. Nominal bounds are derived, not observed occupied blocks.
+Thirty focused tests and scoped builder checks passed. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-platform-caller-6032002.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-platform-caller-6032002.json
+```
 
 The 7144dd8 increment binds the selected packaged placed/configured End feature
 records and derives the return-gateway terrain-relative placement. The platform
