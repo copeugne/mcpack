@@ -29742,7 +29742,9 @@
               "evidence/item-8/sources/zeta-generation-applicability/identities.json": "b1668715f596ff4149c5cd17af2e49f95d65b173db9a6d9705bb35dfca25b62a",
               "evidence/item-8/sources/zeta-generator-dispatch/identities.json": "406a4dd62827c7419ee2ff380a5f626206ed850e480c9e5b9e04862edc8606c5",
               "evidence/item-8/sources/quark-end-registration/identities.json": "ccc7e76f93036a8ec46d3add67ac29116e24205d72c14d461a511d9ee02c9581",
-              "evidence/item-8/sources/quark-end-generators/identities.json": "b780ea6da20e3207872d0aee601a859382b6f3fc30db7b9a0f0383b2c1e4480a"
+              "evidence/item-8/sources/quark-end-generators/identities.json": "b780ea6da20e3207872d0aee601a859382b6f3fc30db7b9a0f0383b2c1e4480a",
+              "evidence/item-8/sources/zeta-compound-biome/identities.json": "a65d7c83d0c1ce02d1d4526b9d199862c60cc7d6047acc96eb4d2f3b936de890",
+              "evidence/item-8/sources/zeta-component-biomes/identities.json": "16a0b7d4dc4bb3610428052193941a97a401556dfe1a60fee01c7cd020dfc922"
             },
             "modifier_effect": "During ADD, ZetaBiomeModifier appends a deferred feature at each decoration stage. The captured method does not remove the existing feature list. It separately delegates spawn configuration to ZetaSpawnModifier.",
             "execution_chain": "DeferredFeature.place calls WorldGenHandler.generateChunk with its stored stage. The handler requires WorldGenRegion, an enabled consumer module and Generator.canGenerate. That inherited method evaluates its condition and passes accessor.getLevel() to DimensionConfig, resolving the Level-versus-WorldGenRegion ambiguity. Generator.generate then dispatches to MultiChunkFeatureGenerator.generateChunk for these two Quark consumers.",
@@ -29795,7 +29797,7 @@
                 }
               }
             },
-            "remaining": "Bind frozen configuration values to effective consumer fields and resolve biome predicates. Other Quark consumers, actual spawn registrations and Forgified Fabric callbacks remain unresolved. The selected consumers do not establish complete retained-provider coverage.",
+            "remaining": "Bind frozen configuration values to effective consumer fields. Other Quark consumers, actual spawn registrations and Forgified Fabric callbacks remain unresolved. The selected consumers do not establish complete retained-provider coverage.",
             "scope": "Resolved direct source call chain and preserved frozen-file values. No runtime field dump, observed generation, new canonical family or unconditional central-island exclusion is claimed.",
             "spiral_spire_geometry": {
               "source": "evidence/item-8/sources/quark-end-generators/Quark-4.1-480.jar/org.violetmoon.quark.content.world.gen.SpiralSpireGenerator.txt",
@@ -29805,7 +29807,8 @@
               "conservative_envelope": "Body r<=7, hence body X/Z offsets are within -6..6. Since i<=1089 and radialGrowth<0.16, crystal X/Z integer offsets are within -17..17. Crystal Y<=69+round(1089*0.2/10)=91; body Y>=-5. Thus all requested makeSpike writes fit a conservative 35x97x35 XYZ box relative to the anchor, including empty space. This is an analytic upper envelope, not a typical footprint, an attained maximum or a measured world extent.",
               "content": "The captured generator directly writes Myalite-related blocks. It does not load templates, assign loot tables, configure physical spawners or request entities. Block behavior, later interactions, ordinary drops and other providers remain separate.",
               "classification_scope": "One working geological-landmark family is retained as quark:spiral_spire. Procedural construction rather than a template does not exclude a recognizable landmark design. Random height, taper, crystal winding and repeated spires remain variants or instances. This is an Item 8 identity decision, not an Item 9 tier."
-            }
+            },
+            "biome_predicate": "CompoundBiomeConfig rejects null and requires both component predicates. BiomeTagConfig passes a non-null holder when any tag matches XOR isBlacklist, so an empty blacklist passes. StrictBiomeConfig compares a registered key location string with biomeStrings XOR isBlacklist; its direct-Biome lambda returns false. SpiralSpiresModule defaults therefore admit minecraft:end_highlands only. Frozen configuration records the same empty tag blacklist and named-biome allowlist. Effective field binding remains unresolved."
           }
         }
       },
@@ -29827,7 +29830,7 @@
             "authored_or_natural": "No generator-authored enemies. Natural spawning remains unresolved.",
             "visual_discoverability": "Source-derived tall tapered body with a crystal spiral above an End Stone anchor. Terrain can obscure parts; no measured visibility distance or discovery rate.",
             "surface_underground": "Surface landmark with shallow below-anchor body layers. The generator searches downward for End Stone before construction; this is not an underground-room generator.",
-            "dimension_biome_status": "Frozen configuration names minecraft:the_end and minecraft:end_highlands. Effective field binding and the biome predicate remain unresolved; see the linked frozen settings and call chain.",
+            "dimension_biome_status": "Frozen configuration names minecraft:the_end and minecraft:end_highlands. The captured compound and component predicates establish the default End Highlands allowlist, with an unrestricted empty tag blacklist. Effective configuration field binding remains unresolved; see the linked frozen settings and call chain.",
             "observation_status": "UNKNOWN: no direct saved-world attribution to this family is accepted yet."
           }
         ],
