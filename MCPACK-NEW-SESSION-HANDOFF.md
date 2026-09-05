@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Monster Box enablement follow-up selects only ZetaCategory and
+ZetaLoadModuleAnnotationData through the existing extractor. The captured
+setEnabled path checks category requirements and overlap, but the preserved
+sources do not define those inputs. Frozen category and module toggles are true.
+These two definitions are needed to distinguish configured from effective
+enablement for Item 8 applicability; no new measurement or evidence framework
+is warranted. Scoped extractor checks pass. Capture and inspect these inputs
+before claiming effective enablement.
+
 Monster Box is integrated as one working encounter family in `0e582dd`.
 Generation, activation, selected mobs/rewards, callback targets and initial
 frozen settings are preserved in the existing Monster Box source directories.
