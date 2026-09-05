@@ -501,3 +501,47 @@ def test_yungs_extras_explicit_templates_preserve_code_attribution_gaps() -> Non
     assert sorted(sizes.keys() - set(links.values())) == (
         membership["packaged_templates_outside_explicit_links"]
     )
+
+
+def test_yungs_extras_packaged_entities_and_loot_sources() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    recorded = cast("dict[str, JsonValue]", contributions[
+        "yungsextras:feature_entrypoints"
+    ]["packaged_template_content"])
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/templates-redacted.json.gz"
+    ).read_bytes())))
+    templates = [row for row in catalog["resources"]
+                 if row["archive"] == "YungsExtras-1.21.1-NeoForge-5.1.1.jar"]
+    assert len(templates) == 62
+    counts: dict[str, dict[str, int]] = {}
+    loot: dict[str, list[str]] = {}
+    for row in templates:
+        doc = cast("dict[str, JsonValue]", row["document"])
+        assert doc["entities"] == recorded["authored_entities"] == []
+        identifier = str(row["path"]).replace("data/yungsextras/structure/", "yungsextras:")
+        identifier = identifier.removesuffix(".nbt")
+        blocks = cast("list[dict[str, JsonValue]]", doc["block_entities"])
+        if blocks:
+            nbts = [cast("dict[str, JsonValue]", block["nbt"]) for block in blocks]
+            counts[identifier] = dict(Counter(str(nbt["id"]) for nbt in nbts))
+            tables = [str(nbt["LootTable"]) for nbt in nbts if "LootTable" in nbt]
+            if tables:
+                loot[identifier] = tables
+    assert counts == recorded["block_entity_counts"]
+    assert loot == recorded["chest_loot_sources"]
+    resources = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ).read_bytes())))
+    wanted = cast("dict[str, str]", recorded["resolved_loot_resources"])
+    matches = [row for row in resources["resources"] if row["path"] in wanted]
+    assert len(matches) == len(wanted) == 2
+    assert {str(row["path"]): row["sha256"] for row in matches} == wanted
+    assert set(wanted) == {
+        "data/" + table.replace(":", "/loot_table/", 1) + ".json"
+        for tables in loot.values() for table in tables
+    }

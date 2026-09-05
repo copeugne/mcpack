@@ -1613,3 +1613,24 @@ Inventory regenerated at `2957779`, SHA-256:
 `f66b81d0def7ecf9de36eb82f036ef646ed9b343930b92f8f030a9546ab1c060`.
 Only decision identity and Extras template membership with evidence changed.
 All 421 registry family rows and 887 roots remain unchanged.
+
+## YUNG Extras packaged entities and chest loot
+
+All 62 packaged templates have empty entity lists. Four templates contain block
+entities: chillzone has one chest, ruins_0 has two, giant_torch and swamp_pillar_2
+have four campfires each. Both referenced chest loot tables resolve uniquely in
+the existing packaged catalog. No stored spawner block entity occurs in these
+templates. These facts do not exclude custom generation effects. In particular,
+the chest-bearing desert templates still require code attribution to their
+empty-config feature generators. No observed loot or complete generated-content
+claim is made, and no new extraction or measurement system was added.
+
+Fifteen affected tests and scoped Ruff/Basedpyright passed. Decision SHA-256:
+`3ff61997f724c9f11ab624e583845082bcc27534112904187c16b0fa40e38457`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-extras-content.json
+```
