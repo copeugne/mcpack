@@ -27174,7 +27174,9 @@
           "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/yungs-extras-desert-code/identities.json": "c595f5123a71105b276884d33229e4b7da2bf9b91b70ec8e5cbf1cba069d465b",
-          "evidence/item-8/sources/yungs-extras-registration/identities.json": "07300368df9a9fe1fe8f7e6efad0bc12505ebeb2e4db2a00389150a39b9e417e"
+          "evidence/item-8/sources/yungs-extras-registration/identities.json": "07300368df9a9fe1fe8f7e6efad0bc12505ebeb2e4db2a00389150a39b9e417e",
+          "evidence/item-8/sources/yungs-extras-generators/identities.json": "6295b0a24fca944020cd1f489beae29c75deef061d93c411504e7aaadfe23210",
+          "evidence/item-8/sources/yungs-extras-processor-bindings/identities.json": "1b79d6b5d0afdc5a965dd1fa0f9ed732d77fe3dcaa9378e4115fa942efb1e0d6"
         },
         "biome_constraints": {
           "tags": {
@@ -27664,6 +27666,22 @@
             "yungsextras:desert_giant_torch": "DesertGiantTorchFeature",
             "yungsextras:desert_ruins_0": "DesertSmallRuinsFeature"
           }
+        },
+        "desert_well_generation": {
+          "processor_binding": "DesertWellFeature.useProcessors selects only FeatureProcessorModule.DESERT_WELL_PROCESSOR. The module constructs DesertWellProcessor; its register helper returns the same instance. AbstractNbtFeature runs it after template placement.",
+          "terrain": "Descend through empty blocks while Y > 7. Require the landing block default state in BlockTags.SAND. At each depth 1 through 7 below the landing position, reject an empty block at the center or any of the four diagonal corners at the configured radius. These are non-empty checks, not full-volume solid-ground checks.",
+          "template_anchor": "Pass the configured location to createTemplateFromCenter at landing position six blocks down. The unrotated template envelope is centered in X/Z by the inherited helper.",
+          "brown_marker_loot": "BuiltInLootTables.DESERT_WELL_ARCHAEOLOGY",
+          "brown_marker_rule": "Choose cap nextInt(3)+2. In template filter order, select each brown stained glass marker with nextFloat()<0.1 until the cap; replace other markers with sand. If fewer than two were selected, convert previously unselected markers in order until two or until exhausted.",
+          "yellow_marker_loot": "yungsextras:desert/extra_archeology",
+          "yellow_marker_rule": "Choose independent budget nextInt(3)+2. In template filter order, select each yellow stained glass marker with nextFloat()<0.4 while budget remains, decrementing on selection; replace others with sand. There is no minimum-fill second pass.",
+          "loot_assignment": "placeSusSand requests SUSPICIOUS_SAND with update flag 3, discards the setBlock result, and assigns the loot table with position.asLong() as seed only if a BRUSHABLE_BLOCK entity is present.",
+          "extra_loot_resource": {
+            "path": "data/yungsextras/loot_table/desert/extra_archeology.json",
+            "sha256": "f6ec71dd58f6e2e12f7990e8455f59897db939d8d657cce42e94ced9271cbb57"
+          },
+          "extra_loot_contents": "One archaeology pool with one roll and diamond, emerald and gold_ingot item entries; no explicit weights or conditions. Packaged contents only, before external loot modification.",
+          "scope": "Source-supported placement and loot creation rules, not observed successful placements or reward counts. The shared template helper does not propagate placeInWorld failure. Family grouping and effective retained-stack loot modifications remain unresolved."
         }
       }
     }

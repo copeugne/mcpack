@@ -1714,3 +1714,23 @@ Inventory regenerated at `bb970de`, SHA-256:
 `c7fa2fed220886d952ea872056cd9fcf0899719e431b70923fc21be72b4835ea`.
 Only decision identity and three code-linked template sizes changed.
 All 421 registry family rows and 887 roots remain unchanged.
+
+### Extras well processor loot and placement
+
+The preserved DesertWellFeature, DesertWellProcessor and FeatureProcessorModule
+sources now establish processor-generated archaeology loot that is absent from
+stored template block entities. Brown glass markers use the vanilla desert-well
+archaeology constant; yellow glass markers use Extras' extra_archeology table.
+The decision preserves both random selection rules, the brown-marker minimum-fill
+pass, conditional brushable block-entity assignment, and placement failure limits.
+It also records the ground checks and template origin six blocks below landing.
+These are code-derived rules, not measured reward counts or successful placements.
+
+Validation: 18 affected tests passed. Ruff initially reported a combined assertion;
+splitting it resolved the finding, and scoped Ruff/Basedpyright passed.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_feature_modifier_references.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_feature_modifier_references.py
+```
