@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-05
 
+Inspect BigStoneClustersModule, NewStoneTypesModule, experimental
+VanillaStoneClustersModule and BigStoneClusterGenerator (including its direct
+anonymous writer). These retained paths need terrain/family reconciliation.
+Reuse the existing extractor; no new measurement or infrastructure is required.
+
 Blossom trees and water petals have working vegetation dispositions in
 0c1cf13. Selected blossom definitions are vanilla trees with no decorators,
 verified by the test delivered in 22a27c0. Do not repeat this boundary or trace
