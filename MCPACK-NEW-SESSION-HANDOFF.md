@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Voyager's data-provider boundary is now accounted for: 129 roots, 149 pools,
+327 templates; 51 unselected version alternatives and 41 named disconnected
+templates outside the root graph. The reused three-provider test passes with
+scoped static checks. provider-scope.md now records 20 of 136 explicit provider
+dispositions, with 116 to reconcile. Continue Explorify and Moog Nether unmatched
+resources, then remaining retained-provider roles; shared Moog implementation
+coverage is separate from these closed data-provider boundaries.
+
 Moog End and Soaring candidate boundaries now reuse the existing pool traces:
 all packaged roots and pools linked, and all unmatched templates explicitly
 unselected by the existing versioned-element logic. Two focused cases and scoped
