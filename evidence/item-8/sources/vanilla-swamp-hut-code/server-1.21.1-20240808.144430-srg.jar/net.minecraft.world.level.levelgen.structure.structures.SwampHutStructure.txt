@@ -1,0 +1,56 @@
+Compiled from "SwampHutStructure.java"
+public class net.minecraft.world.level.levelgen.structure.structures.SwampHutStructure extends net.minecraft.world.level.levelgen.structure.Structure {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.world.level.levelgen.structure.structures.SwampHutStructure> CODEC;
+
+  public net.minecraft.world.level.levelgen.structure.structures.SwampHutStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #31                 // Method net/minecraft/world/level/levelgen/structure/Structure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       5: return
+
+  public java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_1
+       1: getstatic     #42                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+       4: aload_1
+       5: invokedynamic #62,  0             // InvokeDynamic #0:accept:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Ljava/util/function/Consumer;
+      10: invokestatic  #66                 // Method onTopOfChunkCenter:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Ljava/util/function/Consumer;)Ljava/util/Optional;
+      13: areturn
+
+  private static void generatePieces(net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_0
+       1: new           #72                 // class net/minecraft/world/level/levelgen/structure/structures/SwampHutPiece
+       4: dup
+       5: aload_1
+       6: invokevirtual #76                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+       9: aload_1
+      10: invokevirtual #80                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      13: invokevirtual #86                 // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+      16: aload_1
+      17: invokevirtual #80                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      20: invokevirtual #89                 // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+      23: invokespecial #92                 // Method net/minecraft/world/level/levelgen/structure/structures/SwampHutPiece."<init>":(Lnet/minecraft/util/RandomSource;II)V
+      26: invokevirtual #98                 // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+      29: return
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<?> type();
+    Code:
+       0: getstatic     #110                // Field net/minecraft/world/level/levelgen/structure/StructureType.SWAMP_HUT:Lnet/minecraft/world/level/levelgen/structure/StructureType;
+       3: areturn
+
+  private static void lambda$findGenerationPoint$0(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokestatic  #112                // Method generatePieces:(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)V
+       5: return
+
+  static {};
+    Code:
+       0: invokedynamic #126,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+       5: invokestatic  #130                // Method simpleCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #132                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}
