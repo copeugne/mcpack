@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Platform caller attribution is integrated in `6032002`, source `ccc5c2f`.
+EndPlatformFeature.place forwards level/origin/false to the static hooked method.
+Frozen configuration selects the custom generator. Nominal bounds for the
+packaged fixed origin are X=97..103, Y=35..56, Z=-3..3, including air. No saved
+placement is inferred. Thirty focused tests and scoped checks passed. The caller
+gap is closed; do not recapture it. Continue effective retained-stack feature
+modifications and remaining attributes, then broader provider coverage.
+
 Resolve the concrete platform caller gap with the exact vanilla
 EndPlatformFeature class using the existing extractor. The class is in the
 pinned mapped server archive and absent from the pinned patched server archive.
