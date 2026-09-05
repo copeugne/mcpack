@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-05
 
+Igloo generation source is delivered in `74efeb4`, using the existing extractor
+extended in `3a174ef`. Both remote refs were verified. Its manifest SHA is
+`5104752aa5eb795053f75e8d62731b7ea7d79af1f9cacfdccfe2e55f9336838e`.
+See `evidence/item-8/sources/vanilla-igloo-code/README.md` for reproduction,
+component selection, placement and chest assignment. Scoped Ruff/basedpyright
+passed. The next step is the existing frozen-template reconciliation and igloo
+family integration, not re-extraction. Inventory and decision hashes below are
+unchanged. Initial catalog inspection found basement villager and zombie-villager
+entities and a brewing-stand item; retain and verify those in the focused content
+check before making accepted family claims. Do not infer no authored mobs from
+the chest-only marker handler. Item 8 remains incomplete.
+
+The user permits an additional measurement system only when strictly necessary
+and worth its time and effort. Identify a specific unsatisfied exit requirement
+and why existing evidence/tools cannot prove it before adding such a system.
+This igloo source increment required none.
+
 Shipwreck integration is delivered: `4363af9` records both root-specific template
 arrays and seven source-backed attributes; `3c30ead` delivers the inventory.
 Decision SHA:
