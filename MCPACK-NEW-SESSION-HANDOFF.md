@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-05
 
+Voyager stalls and End scraps are delivered through `0f0b9e9`, built from
+`d077750`. Eight roots form two working families with their original template
+sizes and loot differences preserved. End scrap variant 2 additionally uses
+the mod's scrap loot table. Neither group has retained world observations.
+Thirty-seven focused tests and scoped quality checks passed; reproduction was
+byte-identical and prior family records remained equal. Inventory SHA-256:
+`8909751d6e6079de9776ae8c866f9b04344a29ca1b9863275ce9a29df115d6e0`.
+Totals: 195 working groups, 327 assigned IDs, 560 unassigned; 96 mvs roots remain.
+Continue related Voyager designs and shared attribute resolution, then remaining
+providers and non-registry contributions. User reiterated that an additional
+measurement system is permitted only when strictly necessary and worth its
+time and effort. These groups reuse existing catalogs and tests. No final
+Item 8 gate, clean review or main merge is claimed.
+
 Voyager dead trees are delivered through `7851498`, built from `0ce48c8`.
 Eight roots form one working family with sixteen tree/trunk component templates.
 Original definitions preserve mangrove's omitted liquid restriction. Validation
