@@ -10,6 +10,65 @@ root's biome constraints to captured live dimension memberships. Three unresolve
 IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
+## Remaining delivery work at 4a8478b
+
+This is the current work order, not a new acceptance framework or a percentage
+estimate. The existing inventory rows and contribution records remain the
+locations for family-specific findings. An assigned registry root is not a
+completed family. Generic INCOMPLETE fields do not measure remaining effort.
+
+1. Integrate the Repurposed Structures mansion source findings into its decision
+   and regenerate the inventory. The layout, child-pool and processor captures
+   are delivered, and the spawner input check passes. Its current rationale still
+   says those paths are untraced. Resolve component content, loot references and
+   geometry without treating candidate pools as observed or invariably reachable
+   rooms. Preserve the foundation extension below saved piece bounds.
+2. Resolve the other custom-generation gaps already named in the decisions:
+   Repurposed Structures monuments; Aether bronze, silver and gold dungeons and
+   large aercloud disposition; Deep Aether brass dungeon; vanilla mansion and
+   monument behavior under retained hooks; and remaining YUNG custom content.
+   Reuse preserved sources before capturing a missing direct dependency.
+3. Finish canonical reconciliation across the working groups, including Moog
+   and village-related designs. Compare actual definitions and component links.
+   Retain materials, rotations and layout alternatives as variants where the
+   evidence supports that relationship. Do not merge by name or count shared
+   pieces, pools and templates as new families.
+4. Close provider coverage against the retained manifest. Account for registered
+   structures, feature-based generation, village injections and code-driven
+   hooks, including providers with no structure-registry roots. Existing Quark,
+   YUNG's Bridges, YUNG's Extras and Better End Island contributions are partial
+   coverage, not proof that the remaining providers add nothing. Give each
+   relevant contribution a family/component relationship or a supported
+   non-structure disposition in the existing decisions. The registered-root
+   inventory alone cannot prove completeness.
+5. Complete the eleven required attributes for every resulting family. Reconcile
+   dimension and biome eligibility; approximate horizontal and vertical size;
+   intended hostility, mob sources, loot sources, spawners and authored/natural
+   enemies; visual discoverability and underground/surface placement. Specific
+   current gaps include unresolved IDAS biome constraints, absent world envelopes,
+   effective processors and relevant retained loot/spawn modifications. Resolve
+   the competing village bamboo crop processor definitions for their own
+   consumers; the scoped mansion test did not resolve that conflict.
+6. Reconcile all claims with frozen configuration, logs and existing generated
+   worlds. A negative sample does not establish absence, a template envelope is
+   not an assembled footprint, and source intent does not prove successful
+   placement. Add observation work only for a concrete required attribute that
+   existing evidence cannot establish. Encounter frequency, balance tuning and
+   blind-client testing belong to later items and are not added here.
+7. Produce the final Item 8 report and requirement-by-requirement exit decision
+   from the inventory and retained evidence. Reproduce affected outputs, verify
+   identities and durable raw-evidence restoration, reconcile narrative and
+   machine-readable records, then run the applicable final quality checks.
+   Do not add another schema, validator or measurement system merely to restate
+   the same proof.
+8. Open the final pull request, complete the required Codex review/fix/review
+   cycle, merge the clean accepted result into main and verify the delivered ref.
+   Item 7's recorded review exception does not apply to Item 8.
+
+This list bounds the required work categories. It does not claim that provider
+coverage has already identified every remaining family or dependency. Closing
+that coverage question is itself an outstanding deliverable in step 4.
+
 ## Historical increments
 
 The 0feca29 increment resolves Slime Cave's single custom template component
