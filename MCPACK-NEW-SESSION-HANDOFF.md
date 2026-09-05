@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Full-provider reconciliation resumes with YUNG Better End Island. Its packaged
+JSON catalog has only two block-tag resources, while the retained JAR contains
+custom platform, gateway, spike and podium code. Trace the platform/gateway
+mixins and corresponding generators using four exact classes in the existing
+extractor. Registry-only coverage cannot resolve these generation paths. This is
+a required provider gap, not a new measurement system. Keep prior YUNG family
+work intact; do not recapture the completed Extras/Bridges classes.
+
 Feature-family content attribution is delivered in `532fb28`. Extras members
 now link template entities/block entities/chest loot; wells separately record
 processor archaeology loot. Bridges carries its scoped direct encounter findings.
