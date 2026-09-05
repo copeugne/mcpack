@@ -1710,12 +1710,31 @@ def test_ctov_size_decisions_exactly_cover_source_proven_variant_groups() -> Non
         for identifier in registry
         if identifier.startswith(("ctov:small/", "ctov:medium/", "ctov:large/"))
     }
+    assert len(groups) == 22
+    assert len(members) == 66
+    traces = cast("dict[str, dict[str, dict[str, JsonValue]]]", json.loads(gzip.decompress(
+        (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+    )))
+    resources = cast("list[dict[str, JsonValue]]", catalog["resources"])
     for row in groups:
         assert {
             identifier.split("/", 1)[1] for identifier in cast("list[str]", row["structure_ids"])
         } == {str(row["family_id"]).split(":", 1)[1]}
         for path, digest in cast("dict[str, str]", row["evidence"]).items():
             assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+        variants = cast("dict[str, dict[str, JsonValue]]", row["variants"])
+        assert sorted(variants) == row["structure_ids"]
+        for identifier, variant in variants.items():
+            name = identifier.split(":", 1)[1]
+            definitions = [r["document"] for r in resources
+                           if r["path"] == f"data/ctov/worldgen/structure/{name}.json"]
+            assert definitions == [variant["definition"]]
+            definition = cast("dict[str, JsonValue]", variant["definition"])
+            trace = traces["structures"][identifier]
+            assert trace["start_pool"] == definition["start_pool"]
+            assert trace["missing"] == variant["missing_components"]
+            assert trace["templates"]
+            assert trace["unresolved_elements"] == []
 
 
 def test_ctov_outposts_preserve_duplicate_roots_and_missing_components() -> None:

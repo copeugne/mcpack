@@ -754,3 +754,34 @@ at that commit with the command above, SHA-256:
 `e0fddbb286ce87c8a23285d7af33eac42563db754f8ad833d1826080d4c50327`.
 Only grouping-decision attribution/evidence and the decision input hash change.
 Family membership, content attributes and world-observation links are preserved.
+
+## CTOV village definition reconciliation (2026-09-05)
+
+All 66 village roots in the existing 22 CTOV working design groups now retain
+full packaged definitions and exact missing-component dispositions from the
+existing pool traces. Together with the already reconciled 12 outpost roots,
+the CTOV assignments cover all 78 runtime structure IDs exactly once. This does
+not finalize relationships between village designs or establish provider-wide
+non-registry completeness. No family count changes in this increment.
+
+The existing CTOV size-group test independently reconstructs the groups from
+packaged definitions, verifies exact runtime coverage, compares every definition
+and pool start, and requires the stored missing references to equal the trace.
+Missing components remain potential-path defects, not measured generation
+failure rates. Tavern component relationships are preserved.
+
+Verification:
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+```
+
+All 63 affected tests and both scoped checks passed. The data increment preserves
+all 66 definitions directly rather than introducing another schema or generator;
+the existing test verifies the full addition against the preserved catalog and
+traces. Decision SHA-256:
+`5f49f674fbadd6f86decc6b97623526150ba97b0d919ad8da63e751fe5f392e9`.
+Inventory regeneration uses `uv run -m tools.build_item8_inventory --output
+evidence/raw/item8/inventory-ctov-definitions.json` and is delivered separately.
