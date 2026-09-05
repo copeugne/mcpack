@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+BetterEnd mountain direct encounter/loot attribution is delivered in `1ee796e`.
+The seven preserved generator/base/piece classes contain no direct authored mob,
+spawner or container-loot path; both definitions have empty spawn overrides.
+Five content/intent fields now record this scoped attribution. Natural spawning,
+block drops and external injections remain distinct, not disproven. All 73
+affected tests and scoped checks passed. Inventory SHA-256:
+`24e6dfa796602032aedb3e97642453fa92b9ceeace619f70df51797a4b3383aa`.
+Only mountain content fields and their grouping decision changed; still 421
+working groups and 887 roots. Next integrate the inspected FeatureBaseStructure
+precheck (sampled Y >= 10) alongside the separately sampled root thresholds,
+then continue lake/custom content and provider/canonical coverage. The existing
+README records the precheck finding and exact reproduction. Item 8 is incomplete;
+no new runtime, measurement system or downstream work was added.
+
+
 BetterEnd mountain placement and visual cues are delivered in `a485c80`, using
 piece source capture `01d4f63`. Both variants now record surface height selection,
 distinct minimum Y thresholds and source-derived crystal/layered-stone cues.

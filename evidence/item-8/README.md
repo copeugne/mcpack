@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `a485c80`, SHA-256
-`175fd05691be098c8e5904482325772757cdf9185a5017b3d765429e920f67ea`.
+Current working inventory regenerated at `1ee796e`, SHA-256
+`24e6dfa796602032aedb3e97642453fa92b9ceeace619f70df51797a4b3383aa`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1204,3 +1204,9 @@ sampled position below Y=10 before invoking the root's generatePieces. The
 currently recorded root thresholds do not replace this earlier check. Preserve
 both sampling stages when completing placement eligibility; do not infer a
 single effective threshold from their different sample positions.
+
+All 73 affected tests and scoped Ruff/Basedpyright passed. Inventory regenerated
+at `1ee796e`, SHA-256:
+`24e6dfa796602032aedb3e97642453fa92b9ceeace619f70df51797a4b3383aa`.
+Only the mountain direct-content attributes and their grouping decision changed.
+All other family rows, observation links and geometry envelopes are unchanged.
