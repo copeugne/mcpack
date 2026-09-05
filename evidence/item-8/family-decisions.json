@@ -22988,7 +22988,7 @@
       "structure_ids": [
         "minecraft:jungle_pyramid"
       ],
-      "rationale": "One vanilla jungle pyramid generation design. Its components and layout alternatives are not extra families. Packaged definition identity is preserved; retained-mod hooks, effective content and remaining attributes require reconciliation.",
+      "rationale": "One jungle temple direct piece containing a main chest, hidden chest, dispenser traps and lever/piston mechanism. The registry root jungle_pyramid and generator type jungle_temple are distinct identifiers for this same family, not additional families.",
       "variants": {
         "minecraft:jungle_pyramid": {
           "definition": {
@@ -22997,13 +22997,76 @@
             "step": "surface_structures",
             "type": "minecraft:jungle_temple"
           },
-          "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+          "missing_components": [],
+          "vanilla_code_template_ids": [],
+          "vanilla_code_piece_class": "net/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece.class",
+          "component_scope": "SinglePieceStructure invokes the bound JungleTemplePiece constructor once. MossStoneSelector varies stone material inside this piece; no template or pool components are used."
         }
       },
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/vanilla-jungle-temple-code/identities.json": "cafcf426ad4a03e2c80939033ac90bb72aac90ffa359ec03e802dbda84a131d1",
+        "evidence/item-8/sources/vanilla-desert-pyramid-binding-code/identities.json": "f83997815e0225442cdcd1819b3b7b1c210c8296da1b22191c7bba31df5e3b1c",
+        "evidence/item-8/sources/vanilla-scattered-feature-code/identities.json": "62d64cfdb219f8424e9cbac0b6bb3aa683c773a8969ecf93fd558f6195a3b8e7",
+        "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c"
+      },
+      "attributes": {
+        "approximate_footprint": {
+          "nominal_piece_xz_blocks": [
+            12,
+            15
+          ],
+          "basis": "JungleTemplePiece constructor width 12 and depth 15, with random horizontal orientation.",
+          "scope": "Nominal vanilla piece envelope; orientation exchanges axes. Not measured exposure or effective retained-mod geometry."
+        },
+        "approximate_vertical_size": {
+          "nominal_piece_height_blocks": 10,
+          "underground_construction": "The first stone-selector box spans local Y -4 through 0 across the nominal footprint, below the constructor envelope.",
+          "basis": "ScatteredFeaturePiece constructor height 10 and explicit initial generateBox call.",
+          "scope": "Constructor height excludes underground construction and is not total generated or exposed height. Retained-mod geometry remains unresolved."
+        },
+        "intended_hostility": {
+          "interpretation": "Loot structure with authored tripwire/dispenser traps and lever/piston mechanism, without direct authored mob spawning.",
+          "basis": "Direct tripwire, hooks, redstone, dispenser creation, lever and piston paths.",
+          "scope": "Source-based hazard interpretation, not observed functionality, measured difficulty or Item 9 classification."
+        },
+        "mob_source": {
+          "authored_entity_ids": [],
+          "natural_spawn_overrides": {},
+          "mechanism": "No direct EntityType creation, spawner block or template path in the inspected generator.",
+          "scope": "Empty structure overrides do not disable ordinary biome spawning. Effective retained-mod hooks remain unresolved."
+        },
+        "loot_table_source": {
+          "vanilla_assigned_tables": [
+            "minecraft:chests/jungle_temple",
+            "minecraft:chests/jungle_temple_dispenser"
+          ],
+          "chest_mechanism": "Main chest at local (8,-3,3) and hidden chest at (9,-3,10) each use JUNGLE_TEMPLE. placedMainChest and placedHiddenChest store the returned createChest boolean.",
+          "dispenser_mechanism": "Trap targets at local (3,-2,1), facing NORTH, and (9,-2,3), facing WEST, use JUNGLE_TEMPLE_DISPENSER. placedTrap1 and placedTrap2 store the returned createDispenser boolean.",
+          "scope": "All four saved flags guard their respective attempts. Coordinates and facing are local before piece transformation. These are assignment attempts, not surviving container or realized loot counts; retained-mod loot changes remain unresolved."
+        },
+        "generated_spawners": {
+          "vanilla_spawner_block_types": [],
+          "mechanism": "Dispenser traps are block mechanisms, not mob spawners. The inspected piece and selector have no spawner block path.",
+          "scope": "Vanilla generation source only; retained-mod injections remain unresolved."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "No direct authored entity spawn path; authored hazards use tripwire and dispensers.",
+          "natural": "The packaged root has empty spawn_overrides; ordinary biome spawning remains separate.",
+          "scope": "No observed population or effective retained-mod behavior is inferred."
+        },
+        "visual_discoverability": {
+          "authored_form": "Cobblestone and mossy-cobblestone temple with stone stairs, chiseled stone bricks and vines, including underground mechanisms.",
+          "basis": "Explicit block-placement paths and MossStoneSelector, which selects cobblestone when nextFloat < 0.4 and mossy cobblestone otherwise.",
+          "scope": "Authored form only. Selector threshold is not a measured material ratio; vegetation occlusion, burial, visibility distance and actual exposure are not measured."
+        },
+        "underground_surface_classification": {
+          "classification": "Surface temple with underground trap and hidden-chest mechanisms.",
+          "basis": "Shared SinglePieceStructure below-sea-level rejection and WORLD_SURFACE_WG generation stub; updateAverageGroundHeight with offset 0 uses MOTION_BLOCKING_NO_LEAVES samples within the active clipping box.",
+          "scope": "Initial Y 64 is not final height. No eligible samples cause early return. Actual terrain intersections and retained-mod changes remain unresolved."
+        }
       }
     },
     {
