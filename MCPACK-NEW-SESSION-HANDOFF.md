@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Blossom trees and water petals have working vegetation dispositions in
+0c1cf13. Selected blossom definitions are vanilla trees with no decorators,
+verified by the test delivered in 22a27c0. Do not repeat this boundary or trace
+unrelated tree materials. Continue other provider paths, including the still
+unreconciled stone-cluster contributions, and required family attributes.
+All 32 affected tests and scoped static checks passed. No new measurement.
+Item 8 remains incomplete; no final review or merge is claimed.
+
 Check BlossomTreesModule and CherryGroveWaterPetalsModule with their direct
 generators through the existing extractor. Provider coverage requires a
 source-backed vegetation or family disposition for these paths; names alone
