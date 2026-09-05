@@ -280,6 +280,8 @@ CLASSES = (
     "com/yungnickyoung/minecraft/betterendisland/mixin/EndGatewayFeatureMixin.class",
     "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndSpawnPlatformFeature.class",
     "com/yungnickyoung/minecraft/betterendisland/world/feature/BetterEndGatewayFeature.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/processor/ObsidianProcessor.class",
+    "com/yungnickyoung/minecraft/betterendisland/world/processor/DragonEggProcessor.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",

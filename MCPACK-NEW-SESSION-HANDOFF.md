@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-05
 
+Resolve Better End Island platform/gateway processed contents by capturing the
+two directly invoked processors, ObsidianProcessor and DragonEggProcessor, with
+the existing exact-class extractor. Template entities alone cannot establish
+their block/reward effects. No new measurement system or generalized tooling is
+needed for this explicit content gap.
+
 Better End Island platform/gateway generator attribution is delivered in
 `189240a`. The third non-registry contribution records two template links,
 envelopes, placement offsets, processor order and failure limits. Twenty-five
