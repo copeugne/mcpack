@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-05
 
+Spider Dungeon source attributes are delivered through `979b60d`, built from
+`0cb388e`. Inventory SHA-256:
+`c4c0ff970dac5e72b4a382dab3283a8925d2b344cd438ed9f5b5f0aedeaa9e4a`.
+The family now records tunnel/nest/egg-room component relationships, authored
+spider and cave-spider spawner sources, the egg-room chest table, the separate
+natural-spawn override, hostile intent and underground generation designation.
+Source identities and direct checks bind these claims. Nineteen focused tests
+and scoped quality checks passed; the inventory reproduced byte for byte with
+only the Spider Dungeon family changed. Counts, occupied dimensions, visual
+discoverability and effective loot integration remain unresolved. Registry
+coverage is unchanged at 117 working groups, 182 assigned entries and 705
+unassigned entries. Continue remaining providers, non-registry generation and
+required attributes; final gate, report, clean review and main merge remain open.
+
 Remaining registered YUNG roots are assigned by `d8a3b93` and joined in
 `548e338`. Inventory SHA-256:
 `62d3eeb923216554112386152a174abfa5a71c132b01a6839ece0a09175db620`.
