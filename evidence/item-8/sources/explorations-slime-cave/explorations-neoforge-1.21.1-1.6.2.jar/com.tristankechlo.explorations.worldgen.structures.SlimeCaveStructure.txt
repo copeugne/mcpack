@@ -1,0 +1,152 @@
+Compiled from "SlimeCaveStructure.java"
+public final class com.tristankechlo.explorations.worldgen.structures.SlimeCaveStructure extends net.minecraft.world.level.levelgen.structure.Structure {
+  public static final com.mojang.serialization.MapCodec<com.tristankechlo.explorations.worldgen.structures.SlimeCaveStructure> CODEC;
+
+  private static final net.minecraft.resources.ResourceLocation ID;
+
+  private final net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome> biomes;
+
+  public com.tristankechlo.explorations.worldgen.structures.SlimeCaveStructure(net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1                  // Method makeSettings:(Lnet/minecraft/core/HolderSet;)Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;
+       5: invokespecial #7                  // Method net/minecraft/world/level/levelgen/structure/Structure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       8: aload_0
+       9: aload_1
+      10: putfield      #13                 // Field biomes:Lnet/minecraft/core/HolderSet;
+      13: return
+
+  public static net.minecraft.world.level.levelgen.structure.Structure$StructureSettings makeSettings(net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: new           #17                 // class net/minecraft/world/level/levelgen/structure/Structure$StructureSettings
+       3: dup
+       4: aload_0
+       5: invokestatic  #19                 // InterfaceMethod java/util/Map.of:()Ljava/util/Map;
+       8: getstatic     #25                 // Field net/minecraft/world/level/levelgen/GenerationStep$Decoration.UNDERGROUND_STRUCTURES:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+      11: getstatic     #31                 // Field net/minecraft/world/level/levelgen/structure/TerrainAdjustment.BURY:Lnet/minecraft/world/level/levelgen/structure/TerrainAdjustment;
+      14: invokespecial #37                 // Method net/minecraft/world/level/levelgen/structure/Structure$StructureSettings."<init>":(Lnet/minecraft/core/HolderSet;Ljava/util/Map;Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;Lnet/minecraft/world/level/levelgen/structure/TerrainAdjustment;)V
+      17: areturn
+
+  protected java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_1
+       1: invokevirtual #40                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #46                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+       9: invokevirtual #50                 // Method net/minecraft/world/level/chunk/ChunkGenerator.getSeaLevel:()I
+      12: istore_3
+      13: iload_3
+      14: bipush        30
+      16: if_icmpgt     23
+      19: invokestatic  #56                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+      22: areturn
+      23: iinc          3, -20
+      26: aload_1
+      27: invokevirtual #46                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      30: invokevirtual #62                 // Method net/minecraft/world/level/chunk/ChunkGenerator.getMinY:()I
+      33: bipush        15
+      35: iadd
+      36: istore        4
+      38: iload_3
+      39: iload         4
+      41: isub
+      42: invokestatic  #65                 // Method java/lang/Math.abs:(I)I
+      45: istore        5
+      47: iload         5
+      49: bipush        10
+      51: if_icmpge     58
+      54: invokestatic  #56                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+      57: areturn
+      58: iload         4
+      60: aload_2
+      61: iload         5
+      63: invokevirtual #71                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+      66: iadd
+      67: istore        6
+      69: aload_1
+      70: invokevirtual #76                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      73: invokevirtual #80                 // Method net/minecraft/world/level/ChunkPos.getWorldPosition:()Lnet/minecraft/core/BlockPos;
+      76: iload         6
+      78: invokevirtual #86                 // Method net/minecraft/core/BlockPos.atY:(I)Lnet/minecraft/core/BlockPos;
+      81: astore        7
+      83: new           #92                 // class net/minecraft/world/level/levelgen/structure/Structure$GenerationStub
+      86: dup
+      87: aload         7
+      89: aload_0
+      90: aload_1
+      91: aload         7
+      93: invokedynamic #94,  0             // InvokeDynamic #0:accept:(Lcom/tristankechlo/explorations/worldgen/structures/SlimeCaveStructure;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/core/BlockPos;)Ljava/util/function/Consumer;
+      98: invokespecial #98                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationStub."<init>":(Lnet/minecraft/core/BlockPos;Ljava/util/function/Consumer;)V
+     101: invokestatic  #101                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+     104: areturn
+
+  private void generatePieces(net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_2
+       1: invokevirtual #104                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.structureTemplateManager:()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+       4: astore        4
+       6: aload_2
+       7: invokevirtual #40                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+      10: invokestatic  #108                // Method net/minecraft/world/level/block/Rotation.getRandom:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/Rotation;
+      13: astore        5
+      15: aload_1
+      16: new           #114                // class com/tristankechlo/explorations/worldgen/structures/pieces/SlimeCaveStructurePiece
+      19: dup
+      20: aload         4
+      22: getstatic     #116                // Field ID:Lnet/minecraft/resources/ResourceLocation;
+      25: aload_3
+      26: aload         5
+      28: invokespecial #120                // Method com/tristankechlo/explorations/worldgen/structures/pieces/SlimeCaveStructurePiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;)V
+      31: invokevirtual #123                // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+      34: return
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<?> type();
+    Code:
+       0: getstatic     #129                // Field com/tristankechlo/explorations/init/ModRegistry.SLIME_CAVE_STRUCTURE:Lcom/tristankechlo/explorations/registration/RegistryObject;
+       3: invokeinterface #135,  1          // InterfaceMethod com/tristankechlo/explorations/registration/RegistryObject.get:()Ljava/lang/Object;
+       8: checkcast     #141                // class net/minecraft/world/level/levelgen/structure/StructureType
+      11: areturn
+
+  private void lambda$findGenerationPoint$2(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder);
+    Code:
+       0: aload_0
+       1: aload_3
+       2: aload_1
+       3: aload_2
+       4: invokevirtual #143                // Method generatePieces:(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/core/BlockPos;)V
+       7: return
+
+  private static com.mojang.datafixers.kinds.App lambda$static$1(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #147                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+       4: invokestatic  #153                // Method net/minecraft/core/RegistryCodecs.homogeneousList:(Lnet/minecraft/resources/ResourceKey;)Lcom/mojang/serialization/Codec;
+       7: ldc           #159                // String biomes
+       9: invokeinterface #160,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      14: invokedynamic #166,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      19: invokevirtual #170                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      22: invokevirtual #176                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P1;
+      25: aload_0
+      26: invokedynamic #182,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      31: invokevirtual #183                // Method com/mojang/datafixers/Products$P1.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/Function;)Lcom/mojang/datafixers/kinds/App;
+      34: areturn
+
+  private static net.minecraft.core.HolderSet lambda$static$0(com.tristankechlo.explorations.worldgen.structures.SlimeCaveStructure);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field biomes:Lnet/minecraft/core/HolderSet;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #188,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+       5: invokestatic  #189                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #195                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: ldc           #201                // String explorations
+      13: ldc           #203                // String slime_cave
+      15: invokestatic  #205                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      18: putstatic     #116                // Field ID:Lnet/minecraft/resources/ResourceLocation;
+      21: return
+}
