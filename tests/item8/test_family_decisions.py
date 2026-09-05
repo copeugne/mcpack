@@ -54,7 +54,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
     members = [member for row in groups for member in cast("list[str]", row["structure_ids"])]
     assert len(members) == len(set(members))
     expected = {key for key in registry if key.startswith(namespace)}
-    # Variant groups have separate coverage tests; Soaring rivers remain unresolved.
+    # Variant groups have separate coverage tests.
     excluded_prefixes = {
         "explorify:": ("explorify:supply_cache/", "explorify:watchtower/", "explorify:guide_post_"),
         "mes:": ("mes:mega_ship",),
@@ -386,6 +386,79 @@ def test_soaring_tree_variants_bind_common_definition_and_template_contents() ->
         assert variant["template_size_xyz"] == content["template_size_xyz"]
         assert content["authored_entities"] == content["loot_references"] == []
         assert content["spawner_blocks"] == content["generation_markers"] == []
+
+
+def test_soaring_rivers_preserve_omitted_default_and_complete_namespace() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, JsonValue]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    groups = [
+        row
+        for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
+        if str(row["family_id"]).startswith("mss:")
+    ]
+    members = [member for row in groups for member in cast("list[str]", row["structure_ids"])]
+    registry = read_registry(
+        root / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    )
+    assert len(members) == len(set(members)) == 35
+    assert set(members) == {key for key in registry if key.startswith("mss:")}
+    group = next(row for row in groups if row["family_id"] == "mss:river")
+    assert group["structure_ids"] == ["mss:birch_river", "mss:cherry_river"]
+    code = ""
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        raw = (root / path).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == digest
+        if path.endswith("GenericJigsawStructure.txt"):
+            code = raw.decode()
+    default = code.split("// String cannot_spawn_in_liquid\n", 1)[1].split("InvokeDynamic", 1)[0]
+    assert "PrimitiveCodec.fieldOf:" in default
+    assert "iconst_0" in default
+    assert "Boolean.valueOf:" in default
+    assert "MapCodec.orElse:" in default
+    assert group["effective_cannot_spawn_in_liquid"] is False
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    catalog = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    traces = cast(
+        "dict[str, JsonValue]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    resources = cast("list[dict[str, JsonValue]]", catalog["resources"])
+    contents = cast("dict[str, dict[str, JsonValue]]", traces["template_contents"])
+    normalized: list[dict[str, JsonValue]] = []
+    for identifier, variant in variants.items():
+        name = identifier.split(":")[1]
+        definitions = [
+            row["document"]
+            for row in resources
+            if row["path"] == f"data/mss/worldgen/structure/{name}.json"
+        ]
+        assert definitions == [variant["definition"]]
+        definition = dict(cast("dict[str, JsonValue]", variant["definition"]))
+        if name == "cherry_river":
+            assert "cannot_spawn_in_liquid" not in definition
+        else:
+            assert definition["cannot_spawn_in_liquid"] is False
+        _ = definition.setdefault("cannot_spawn_in_liquid", False)
+        normalized.append(
+            {key: value for key, value in definition.items() if key not in ("biomes", "start_pool")}
+        )
+        assert variant["template"] == identifier
+        assert variant["template_size_xyz"] == contents[identifier]["template_size_xyz"]
+    assert normalized[0] == normalized[1]
 
 
 def test_spider_dungeon_attributes_bind_custom_spawners_loot_and_components() -> None:
