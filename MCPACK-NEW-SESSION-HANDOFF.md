@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-05
 
+Feature reference closure is delivered in `a774424`. The focused test
+`tests/item8/test_feature_modifier_references.py` follows all 30 additions and
+four removals through 34 placed and 41 configured feature resources, including
+inline branches. Six endpoint types remain for final content disposition:
+simple block, tree, saguaro cactus, palm tree, bamboo tree and giant lily.
+The latter four code bodies are already retained under
+`regions-unexplored-feature-code`. Finish implementation/provider/decorator
+inspection and config applicability rather than repeating reference extraction.
+Ten affected tests and scoped checks passed. Commands and limitations are in
+`evidence/item-8/sources/lithostitched-feature-modifier-code/README.md`.
+The machine trace/inventory remains unchanged pending final dispositions.
+
 Surface-rule reference closure is delivered in `7b7c886`. The focused test
 `tests/item8/test_surface_rule_contribution.py` follows all 52 referenced
 Regions Unexplored Overworld rule documents in the pinned catalog and verifies

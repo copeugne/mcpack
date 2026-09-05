@@ -35,3 +35,37 @@ Next implementation references located in the same frozen archive are
 `impl/worldgen/modifier/NeoforgeModifierHolder`, and
 `worldgen/surface/SurfaceRuleManager`. They have not yet been retained or
 inspected here. The current machine-readable modifier entries remain open.
+
+## Packaged feature reference closure
+
+Source check `a774424` follows all 30 selected feature additions and four
+removals, using the existing resource selector on the pinned packaged catalog.
+All are Regions Unexplored modifiers. Their references resolve to 34 named
+placed features and 41 named configured features, with inline features also
+traversed. Patch/flower, weighted-selector, composite and random-selector
+branches are followed, including weighted entries and selector defaults.
+The six implementation endpoints are `minecraft:simple_block`, `minecraft:tree`,
+`regions_unexplored:saguaro_cactus`, `regions_unexplored:palm_tree`,
+`regions_unexplored:bamboo_tree`, and `regions_unexplored:giant_lily`.
+
+Executed successfully:
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_surface_rule_contribution.py tests/item8/test_resource_selection.py
+uv run ruff check src/mcpack_evidence/item8_resource_selection.py tests/item8/test_feature_modifier_references.py
+uv run basedpyright src/mcpack_evidence/item8_resource_selection.py tests/item8/test_feature_modifier_references.py
+```
+
+Ten tests and scoped checks passed. Ruff's initial complexity/statement findings
+were resolved by documenting a local exemption for the single frozen-grammar
+proof, avoiding a new traversal framework. No behavior was changed for that
+exemption. The trace covers potential references regardless of configuration
+activation. Counts describe referenced resources, not families or placements.
+The implementation endpoints, their state providers/decorators and effective
+config predicates still need final contribution dispositions. This check does
+not establish absent enemies or loot merely from generator names.
+
+The platform follow-up above is superseded by the delivered source under
+`../lithostitched-platform-modifier-code` and
+`../lithostitched-surface-lifecycle-code`; its README records dispatch and
+surface-rule closure. No further platform recapture is needed.
