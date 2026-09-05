@@ -83,3 +83,9 @@ and all seven placement-mode derivations. Decision SHA-256:
 No measurement system or additional family is introduced. Item 8 remains open.
 
 All 62 affected tests passed. Scoped Ruff and Basedpyright checks passed.
+
+Source inspection is delivered in `07dda51`, decisions and tests in `84faa88`.
+The inventory was rebuilt at `84faa88` with the command above. Inventory SHA:
+`fdd49f9bb42cd4169fa57f946bae28f43b7045a67f44bbc91d292d9874c1c3e7`.
+Changes are confined to the ruined portal content/grouping record and decision
+input identity. Existing observed geometry, dimensions and world links remain.
