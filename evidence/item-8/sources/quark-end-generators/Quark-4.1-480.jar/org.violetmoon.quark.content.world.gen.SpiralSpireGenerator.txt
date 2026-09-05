@@ -1,0 +1,427 @@
+Compiled from "SpiralSpireGenerator.java"
+public class org.violetmoon.quark.content.world.gen.SpiralSpireGenerator extends org.violetmoon.zeta.world.generator.multichunk.MultiChunkFeatureGenerator {
+  public org.violetmoon.quark.content.world.gen.SpiralSpireGenerator(org.violetmoon.zeta.config.type.DimensionConfig);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: getstatic     #1                  // Field org/violetmoon/zeta/util/BooleanSuppliers.TRUE:Ljava/util/function/BooleanSupplier;
+       5: ldc2_w        #7                  // long 1892l
+       8: invokespecial #9                  // Method org/violetmoon/zeta/world/generator/multichunk/MultiChunkFeatureGenerator."<init>":(Lorg/violetmoon/zeta/config/type/DimensionConfig;Ljava/util/function/BooleanSupplier;J)V
+      11: return
+
+  public int getFeatureRadius();
+    Code:
+       0: getstatic     #15                 // Field org/violetmoon/quark/content/world/module/SpiralSpiresModule.radius:I
+       3: ireturn
+
+  public void generateChunkPart(net.minecraft.core.BlockPos, net.minecraft.world.level.chunk.ChunkGenerator, java.util.Random, net.minecraft.core.BlockPos, net.minecraft.server.level.WorldGenRegion);
+    Code:
+       0: aload         4
+       2: aload_1
+       3: invokevirtual #21                 // Method net/minecraft/core/BlockPos.distSqr:(Lnet/minecraft/core/Vec3i;)D
+       6: bipush        16
+       8: getstatic     #15                 // Field org/violetmoon/quark/content/world/module/SpiralSpiresModule.radius:I
+      11: imul
+      12: bipush        16
+      14: getstatic     #15                 // Field org/violetmoon/quark/content/world/module/SpiralSpiresModule.radius:I
+      17: imul
+      18: imul
+      19: i2d
+      20: ddiv
+      21: dstore        6
+      23: dload         6
+      25: ldc2_w        #27                 // double 0.5d
+      28: dcmpl
+      29: ifle          47
+      32: aload_3
+      33: invokevirtual #29                 // Method java/util/Random.nextDouble:()D
+      36: ldc2_w        #35                 // double 1.5d
+      39: dload         6
+      41: dsub
+      42: dcmpg
+      43: ifge          47
+      46: return
+      47: aload         4
+      49: aload_3
+      50: bipush        16
+      52: invokevirtual #37                 // Method java/util/Random.nextInt:(I)I
+      55: sipush        256
+      58: aload_3
+      59: bipush        16
+      61: invokevirtual #37                 // Method java/util/Random.nextInt:(I)I
+      64: invokevirtual #41                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      67: astore        8
+      69: aload_0
+      70: aload         5
+      72: aload         8
+      74: iconst_0
+      75: invokevirtual #45                 // Method getBiome:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Z)Lnet/minecraft/core/Holder;
+      78: astore        9
+      80: getstatic     #51                 // Field org/violetmoon/quark/content/world/module/SpiralSpiresModule.biomes:Lorg/violetmoon/zeta/config/type/CompoundBiomeConfig;
+      83: aload         9
+      85: invokevirtual #55                 // Method org/violetmoon/zeta/config/type/CompoundBiomeConfig.canSpawn:(Lnet/minecraft/core/Holder;)Z
+      88: ifne          92
+      91: return
+      92: aload         5
+      94: aload         8
+      96: invokevirtual #61                 // Method net/minecraft/server/level/WorldGenRegion.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      99: invokevirtual #67                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     102: getstatic     #73                 // Field net/minecraft/world/level/block/Blocks.END_STONE:Lnet/minecraft/world/level/block/Block;
+     105: if_acmpeq     126
+     108: aload         8
+     110: invokevirtual #79                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     113: astore        8
+     115: aload         8
+     117: invokevirtual #83                 // Method net/minecraft/core/BlockPos.getY:()I
+     120: bipush        10
+     122: if_icmpge     92
+     125: return
+     126: aload_0
+     127: aload         5
+     129: aload_2
+     130: aload_3
+     131: aload         8
+     133: invokevirtual #87                 // Method makeSpike:(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/world/level/chunk/ChunkGenerator;Ljava/util/Random;Lnet/minecraft/core/BlockPos;)V
+     136: return
+
+  public net.minecraft.core.BlockPos[] getSourcesInChunk(net.minecraft.server.level.WorldGenRegion, java.util.Random, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.core.BlockPos);
+    Code:
+       0: aload         4
+       2: getstatic     #91                 // Field net/minecraft/core/Vec3i.ZERO:Lnet/minecraft/core/Vec3i;
+       5: ldc2_w        #97                 // double 1050.0d
+       8: invokevirtual #99                 // Method net/minecraft/core/BlockPos.closerThan:(Lnet/minecraft/core/Vec3i;D)Z
+      11: ifne          40
+      14: getstatic     #103                // Field org/violetmoon/quark/content/world/module/SpiralSpiresModule.rarity:I
+      17: ifle          40
+      20: aload_2
+      21: getstatic     #103                // Field org/violetmoon/quark/content/world/module/SpiralSpiresModule.rarity:I
+      24: invokevirtual #37                 // Method java/util/Random.nextInt:(I)I
+      27: ifne          40
+      30: iconst_1
+      31: anewarray     #22                 // class net/minecraft/core/BlockPos
+      34: dup
+      35: iconst_0
+      36: aload         4
+      38: aastore
+      39: areturn
+      40: iconst_0
+      41: anewarray     #22                 // class net/minecraft/core/BlockPos
+      44: areturn
+
+  public void makeSpike(net.minecraft.server.level.WorldGenRegion, net.minecraft.world.level.chunk.ChunkGenerator, java.util.Random, net.minecraft.core.BlockPos);
+    Code:
+       0: bipush        50
+       2: aload_3
+       3: bipush        20
+       5: invokevirtual #37                 // Method java/util/Random.nextInt:(I)I
+       8: iadd
+       9: istore        5
+      11: ldc2_w        #106                // double 5.0d
+      14: aload_3
+      15: invokevirtual #29                 // Method java/util/Random.nextDouble:()D
+      18: dconst_1
+      19: dmul
+      20: dadd
+      21: dstore        6
+      23: bipush        -5
+      25: istore        8
+      27: iload         8
+      29: istore        9
+      31: iload         9
+      33: iload         5
+      35: if_icmpge     114
+      38: aload         4
+      40: iload         9
+      42: invokevirtual #108                // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+      45: astore        10
+      47: aload_1
+      48: aload         10
+      50: invokevirtual #61                 // Method net/minecraft/server/level/WorldGenRegion.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      53: astore        11
+      55: aload         11
+      57: invokevirtual #112                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+      60: ifne          108
+      63: aload         11
+      65: invokevirtual #67                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      68: getstatic     #73                 // Field net/minecraft/world/level/block/Blocks.END_STONE:Lnet/minecraft/world/level/block/Block;
+      71: if_acmpeq     108
+      74: aload         11
+      76: invokevirtual #67                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      79: getstatic     #116                // Field net/minecraft/world/level/block/Blocks.CRYING_OBSIDIAN:Lnet/minecraft/world/level/block/Block;
+      82: if_acmpeq     108
+      85: aload         11
+      87: invokevirtual #67                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      90: getstatic     #119                // Field net/minecraft/world/level/block/Blocks.OBSIDIAN:Lnet/minecraft/world/level/block/Block;
+      93: if_acmpeq     108
+      96: aload         11
+      98: invokevirtual #67                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     101: getstatic     #122                // Field org/violetmoon/quark/content/world/module/SpiralSpiresModule.myalite_crystal:Lnet/minecraft/world/level/block/Block;
+     104: if_acmpeq     108
+     107: return
+     108: iinc          9, 1
+     111: goto          31
+     114: iload         8
+     116: istore        9
+     118: iload         9
+     120: iload         5
+     122: if_icmpge     352
+     125: iload         9
+     127: ifge          150
+     130: aload_1
+     131: aload         4
+     133: iload         9
+     135: invokevirtual #108                // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+     138: invokevirtual #61                 // Method net/minecraft/server/level/WorldGenRegion.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     141: invokevirtual #125                // Method net/minecraft/world/level/block/state/BlockState.canOcclude:()Z
+     144: ifne          150
+     147: goto          346
+     150: ldc2_w        #130                // double 1.5707963267948966d
+     153: iconst_0
+     154: iload         9
+     156: invokestatic  #132                // Method java/lang/Math.max:(II)I
+     159: i2d
+     160: ldc2_w        #27                 // double 0.5d
+     163: dadd
+     164: iload         5
+     166: i2d
+     167: dload         6
+     169: ddiv
+     170: ddiv
+     171: invokestatic  #136                // Method java/lang/Math.atan:(D)D
+     174: dsub
+     175: ldc2_w        #140                // double 4.0d
+     178: dmul
+     179: invokestatic  #142                // Method java/lang/Math.abs:(D)D
+     182: dstore        10
+     184: dload         10
+     186: invokestatic  #145                // Method java/lang/Math.ceil:(D)D
+     189: d2i
+     190: istore        12
+     192: iload         12
+     194: ineg
+     195: iconst_1
+     196: iadd
+     197: istore        13
+     199: iload         13
+     201: iload         12
+     203: if_icmpge     346
+     206: iload         12
+     208: ineg
+     209: iconst_1
+     210: iadd
+     211: istore        14
+     213: iload         14
+     215: iload         12
+     217: if_icmpge     340
+     220: iload         13
+     222: iload         13
+     224: imul
+     225: iload         14
+     227: iload         14
+     229: imul
+     230: iadd
+     231: iload         12
+     233: iload         12
+     235: imul
+     236: if_icmpgt     334
+     239: iload         13
+     241: iload         12
+     243: ineg
+     244: iconst_1
+     245: iadd
+     246: if_icmpeq     277
+     249: iload         13
+     251: iload         12
+     253: iconst_1
+     254: isub
+     255: if_icmpeq     277
+     258: iload         14
+     260: iload         12
+     262: ineg
+     263: iconst_1
+     264: iadd
+     265: if_icmpeq     277
+     268: iload         14
+     270: iload         12
+     272: iconst_1
+     273: isub
+     274: if_icmpne     281
+     277: iconst_1
+     278: goto          282
+     281: iconst_0
+     282: istore        15
+     284: iload         15
+     286: ifeq          307
+     289: aload_3
+     290: invokevirtual #148                // Method java/util/Random.nextFloat:()F
+     293: f2d
+     294: ldc2_w        #152                // double 0.2d
+     297: dcmpg
+     298: ifge          307
+     301: getstatic     #154                // Field org/violetmoon/quark/content/world/module/NewStoneTypesModule.myaliteBlock:Lnet/minecraft/world/level/block/Block;
+     304: goto          310
+     307: getstatic     #159                // Field org/violetmoon/quark/content/world/module/SpiralSpiresModule.dusky_myalite:Lnet/minecraft/world/level/block/Block;
+     310: invokevirtual #162                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     313: astore        16
+     315: aload_1
+     316: aload         4
+     318: iload         13
+     320: iload         9
+     322: iload         14
+     324: invokevirtual #41                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     327: aload         16
+     329: iconst_2
+     330: invokevirtual #168                // Method net/minecraft/server/level/WorldGenRegion.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     333: pop
+     334: iinc          14, 1
+     337: goto          213
+     340: iinc          13, 1
+     343: goto          199
+     346: iinc          9, 1
+     349: goto          118
+     352: bipush        80
+     354: aload_3
+     355: bipush        30
+     357: invokevirtual #37                 // Method java/util/Random.nextInt:(I)I
+     360: iadd
+     361: istore        10
+     363: bipush        10
+     365: istore        11
+     367: iload         10
+     369: iload         11
+     371: imul
+     372: istore        12
+     374: ldc2_w        #27                 // double 0.5d
+     377: aload_3
+     378: invokevirtual #29                 // Method java/util/Random.nextDouble:()D
+     381: ldc2_w        #172                // double 0.3d
+     384: dmul
+     385: dadd
+     386: iload         12
+     388: i2d
+     389: dmul
+     390: d2i
+     391: istore        13
+     393: ldc2_w        #174                // double 0.12d
+     396: aload_3
+     397: invokevirtual #29                 // Method java/util/Random.nextDouble:()D
+     400: ldc2_w        #176                // double 0.16d
+     403: dmul
+     404: dadd
+     405: dstore        14
+     407: ldc2_w        #174                // double 0.12d
+     410: aload_3
+     411: invokevirtual #29                 // Method java/util/Random.nextDouble:()D
+     414: ldc2_w        #178                // double 0.04d
+     417: dmul
+     418: dadd
+     419: dstore        16
+     421: aload_3
+     422: invokevirtual #29                 // Method java/util/Random.nextDouble:()D
+     425: ldc2_w        #152                // double 0.2d
+     428: dmul
+     429: dstore        18
+     431: aload_3
+     432: invokevirtual #180                // Method java/util/Random.nextBoolean:()Z
+     435: ifeq          446
+     438: dload         14
+     440: ldc2_w        #183                // double -1.0d
+     443: dmul
+     444: dstore        14
+     446: getstatic     #122                // Field org/violetmoon/quark/content/world/module/SpiralSpiresModule.myalite_crystal:Lnet/minecraft/world/level/block/Block;
+     449: invokevirtual #162                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     452: astore        20
+     454: iconst_0
+     455: istore        21
+     457: iload         21
+     459: iload         12
+     461: if_icmpge     612
+     464: iload         21
+     466: i2d
+     467: dload         14
+     469: dmul
+     470: dstore        22
+     472: dload         22
+     474: iload         11
+     476: i2d
+     477: ddiv
+     478: invokestatic  #185                // Method java/lang/Math.sin:(D)D
+     481: iload         21
+     483: i2d
+     484: dmul
+     485: dload         16
+     487: dmul
+     488: iload         11
+     490: i2d
+     491: ddiv
+     492: d2i
+     493: istore        24
+     495: dload         22
+     497: iload         11
+     499: i2d
+     500: ddiv
+     501: invokestatic  #188                // Method java/lang/Math.cos:(D)D
+     504: iload         21
+     506: i2d
+     507: dmul
+     508: dload         16
+     510: dmul
+     511: iload         11
+     513: i2d
+     514: ddiv
+     515: d2i
+     516: istore        25
+     518: iload         9
+     520: iload         21
+     522: i2d
+     523: iload         11
+     525: i2d
+     526: ddiv
+     527: dload         18
+     529: dmul
+     530: invokestatic  #191                // Method java/lang/Math.round:(D)J
+     533: l2i
+     534: iadd
+     535: istore        26
+     537: aload         4
+     539: iload         24
+     541: iload         26
+     543: iload         25
+     545: invokevirtual #41                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     548: astore        27
+     550: fconst_1
+     551: fstore        28
+     553: iload         21
+     555: iload         13
+     557: if_icmple     586
+     560: iload         21
+     562: iload         13
+     564: isub
+     565: istore        29
+     567: iload         12
+     569: iload         13
+     571: isub
+     572: istore        30
+     574: fload         28
+     576: iload         29
+     578: i2f
+     579: iload         30
+     581: i2f
+     582: fdiv
+     583: fsub
+     584: fstore        28
+     586: aload_3
+     587: invokevirtual #148                // Method java/util/Random.nextFloat:()F
+     590: fload         28
+     592: fcmpg
+     593: ifge          606
+     596: aload_1
+     597: aload         27
+     599: aload         20
+     601: iconst_2
+     602: invokevirtual #168                // Method net/minecraft/server/level/WorldGenRegion.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     605: pop
+     606: iinc          21, 1
+     609: goto          457
+     612: return
+}

@@ -1,0 +1,207 @@
+Compiled from "ChorusVegetationGenerator.java"
+public class org.violetmoon.quark.content.world.gen.ChorusVegetationGenerator extends org.violetmoon.zeta.world.generator.multichunk.MultiChunkFeatureGenerator {
+  public org.violetmoon.quark.content.world.gen.ChorusVegetationGenerator();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokestatic  #1                  // Method org/violetmoon/zeta/config/type/DimensionConfig.end:(Z)Lorg/violetmoon/zeta/config/type/DimensionConfig;
+       5: getstatic     #7                  // Field org/violetmoon/zeta/util/BooleanSuppliers.TRUE:Ljava/util/function/BooleanSupplier;
+       8: ldc2_w        #13                 // long 2093l
+      11: invokespecial #15                 // Method org/violetmoon/zeta/world/generator/multichunk/MultiChunkFeatureGenerator."<init>":(Lorg/violetmoon/zeta/config/type/DimensionConfig;Ljava/util/function/BooleanSupplier;J)V
+      14: return
+
+  public int getFeatureRadius();
+    Code:
+       0: getstatic     #21                 // Field org/violetmoon/quark/content/world/module/ChorusVegetationModule.radius:I
+       3: ireturn
+
+  public net.minecraft.core.BlockPos[] getSourcesInChunk(net.minecraft.server.level.WorldGenRegion, java.util.Random, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.core.BlockPos);
+    Code:
+       0: aload         4
+       2: getstatic     #27                 // Field net/minecraft/core/Vec3i.ZERO:Lnet/minecraft/core/Vec3i;
+       5: ldc2_w        #33                 // double 1050.0d
+       8: invokevirtual #35                 // Method net/minecraft/core/BlockPos.closerThan:(Lnet/minecraft/core/Vec3i;D)Z
+      11: ifne          66
+      14: getstatic     #41                 // Field org/violetmoon/quark/content/world/module/ChorusVegetationModule.rarity:I
+      17: ifle          66
+      20: aload_2
+      21: getstatic     #41                 // Field org/violetmoon/quark/content/world/module/ChorusVegetationModule.rarity:I
+      24: invokevirtual #44                 // Method java/util/Random.nextInt:(I)I
+      27: ifne          66
+      30: aload_0
+      31: aload_1
+      32: aload         4
+      34: iconst_1
+      35: invokevirtual #50                 // Method getBiome:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Z)Lnet/minecraft/core/Holder;
+      38: astore        5
+      40: aload         5
+      42: getstatic     #56                 // Field net/minecraft/world/level/biome/Biomes.END_HIGHLANDS:Lnet/minecraft/resources/ResourceKey;
+      45: invokevirtual #62                 // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      48: invokeinterface #68,  2           // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/resources/ResourceLocation;)Z
+      53: ifeq          66
+      56: iconst_1
+      57: anewarray     #36                 // class net/minecraft/core/BlockPos
+      60: dup
+      61: iconst_0
+      62: aload         4
+      64: aastore
+      65: areturn
+      66: iconst_0
+      67: anewarray     #36                 // class net/minecraft/core/BlockPos
+      70: areturn
+
+  public void generateChunkPart(net.minecraft.core.BlockPos, net.minecraft.world.level.chunk.ChunkGenerator, java.util.Random, net.minecraft.core.BlockPos, net.minecraft.server.level.WorldGenRegion);
+    Code:
+       0: iconst_0
+       1: istore        6
+       3: iload         6
+       5: getstatic     #74                 // Field org/violetmoon/quark/content/world/module/ChorusVegetationModule.chunkAttempts:I
+       8: if_icmpge     278
+      11: aload         4
+      13: aload_3
+      14: bipush        16
+      16: invokevirtual #44                 // Method java/util/Random.nextInt:(I)I
+      19: bipush        100
+      21: aload_3
+      22: bipush        16
+      24: invokevirtual #44                 // Method java/util/Random.nextInt:(I)I
+      27: invokevirtual #77                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      30: astore        7
+      32: aload_0
+      33: aload         5
+      35: aload         7
+      37: iconst_1
+      38: invokevirtual #50                 // Method getBiome:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Z)Lnet/minecraft/core/Holder;
+      41: astore        8
+      43: aload_0
+      44: aload         8
+      46: invokevirtual #81                 // Method getChance:(Lnet/minecraft/core/Holder;)D
+      49: dstore        9
+      51: aload         7
+      53: invokevirtual #85                 // Method net/minecraft/core/BlockPos.getX:()I
+      56: aload_1
+      57: invokevirtual #85                 // Method net/minecraft/core/BlockPos.getX:()I
+      60: isub
+      61: aload         7
+      63: invokevirtual #85                 // Method net/minecraft/core/BlockPos.getX:()I
+      66: aload_1
+      67: invokevirtual #85                 // Method net/minecraft/core/BlockPos.getX:()I
+      70: isub
+      71: imul
+      72: aload         7
+      74: invokevirtual #89                 // Method net/minecraft/core/BlockPos.getZ:()I
+      77: aload_1
+      78: invokevirtual #89                 // Method net/minecraft/core/BlockPos.getZ:()I
+      81: isub
+      82: aload         7
+      84: invokevirtual #89                 // Method net/minecraft/core/BlockPos.getZ:()I
+      87: aload_1
+      88: invokevirtual #89                 // Method net/minecraft/core/BlockPos.getZ:()I
+      91: isub
+      92: imul
+      93: iadd
+      94: i2d
+      95: dstore        11
+      97: bipush        6
+      99: istore        13
+     101: iload         13
+     103: iload         13
+     105: imul
+     106: istore        13
+     108: dload         11
+     110: iload         13
+     112: i2d
+     113: dcmpl
+     114: ifle          141
+     117: dload         9
+     119: dconst_1
+     120: dload         11
+     122: iload         13
+     124: i2d
+     125: dsub
+     126: ldc2_w        #92                 // double 50.0d
+     129: ddiv
+     130: invokestatic  #94                 // Method java/lang/Math.atan:(D)D
+     133: ldc2_w        #100                // double 1.5707963267948966d
+     136: ddiv
+     137: dsub
+     138: dmul
+     139: dstore        9
+     141: dload         9
+     143: dconst_0
+     144: dcmpl
+     145: ifle          272
+     148: aload_3
+     149: invokevirtual #102                // Method java/util/Random.nextDouble:()D
+     152: dload         9
+     154: dcmpg
+     155: ifge          272
+     158: aload         7
+     160: invokevirtual #106                // Method net/minecraft/core/BlockPos.getY:()I
+     163: bipush        40
+     165: if_icmple     201
+     168: aload         5
+     170: aload         7
+     172: invokevirtual #109                // Method net/minecraft/server/level/WorldGenRegion.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     175: astore        14
+     177: aload         14
+     179: invokevirtual #115                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     182: getstatic     #121                // Field net/minecraft/world/level/block/Blocks.END_STONE:Lnet/minecraft/world/level/block/Block;
+     185: if_acmpne     191
+     188: goto          201
+     191: aload         7
+     193: invokevirtual #127                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     196: astore        7
+     198: goto          158
+     201: aload         5
+     203: aload         7
+     205: invokevirtual #109                // Method net/minecraft/server/level/WorldGenRegion.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     208: invokevirtual #115                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     211: getstatic     #121                // Field net/minecraft/world/level/block/Blocks.END_STONE:Lnet/minecraft/world/level/block/Block;
+     214: if_acmpne     272
+     217: aload         5
+     219: aload         7
+     221: invokevirtual #131                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     224: invokevirtual #109                // Method net/minecraft/server/level/WorldGenRegion.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     227: invokevirtual #134                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     230: ifeq          272
+     233: aload_3
+     234: invokevirtual #102                // Method java/util/Random.nextDouble:()D
+     237: ldc2_w        #138                // double 0.1d
+     240: dcmpg
+     241: ifge          250
+     244: getstatic     #140                // Field org/violetmoon/quark/content/world/module/ChorusVegetationModule.chorus_twist:Lnet/minecraft/world/level/block/Block;
+     247: goto          253
+     250: getstatic     #143                // Field org/violetmoon/quark/content/world/module/ChorusVegetationModule.chorus_weeds:Lnet/minecraft/world/level/block/Block;
+     253: astore        14
+     255: aload         5
+     257: aload         7
+     259: invokevirtual #131                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     262: aload         14
+     264: invokevirtual #146                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     267: iconst_2
+     268: invokevirtual #152                // Method net/minecraft/server/level/WorldGenRegion.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     271: pop
+     272: iinc          6, 1
+     275: goto          3
+     278: return
+
+  private double getChance(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: aload_1
+       1: getstatic     #56                 // Field net/minecraft/world/level/biome/Biomes.END_HIGHLANDS:Lnet/minecraft/resources/ResourceKey;
+       4: invokevirtual #62                 // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       7: invokeinterface #68,  2           // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/resources/ResourceLocation;)Z
+      12: ifeq          19
+      15: getstatic     #156                // Field org/violetmoon/quark/content/world/module/ChorusVegetationModule.highlandsChance:D
+      18: dreturn
+      19: aload_1
+      20: getstatic     #160                // Field net/minecraft/world/level/biome/Biomes.END_MIDLANDS:Lnet/minecraft/resources/ResourceKey;
+      23: invokevirtual #62                 // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      26: invokeinterface #68,  2           // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/resources/ResourceLocation;)Z
+      31: ifeq          38
+      34: getstatic     #163                // Field org/violetmoon/quark/content/world/module/ChorusVegetationModule.midlandsChance:D
+      37: dreturn
+      38: getstatic     #166                // Field org/violetmoon/quark/content/world/module/ChorusVegetationModule.otherEndBiomesChance:D
+      41: dreturn
+}
