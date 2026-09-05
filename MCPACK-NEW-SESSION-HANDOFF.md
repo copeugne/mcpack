@@ -6,6 +6,40 @@
 
 ### Continuation update - 2026-09-05
 
+Modifier condition resolution is delivered in `12bd9d1`, with pinned loader
+code in `515f29b` and tool selection in `c35af5e`/`7ca24fd`. The existing resource
+selection module now reads the captured NeoForge Mod List and evaluates the
+two observed condition forms. The hash-bound log contains 212 mod IDs, including
+nested dependencies. Of 1,024 packaged pool additions, 68 pass: 26 conditioned
+on Village Taverns, 21 on Chef's Delight and 21 on Farmer's Delight. The other
+956 fail their conditions. These are additions to existing families, not new
+families or a claim of observed placement. Three affected tests passed; scoped
+Ruff and basedpyright passed. The frozen-catalog regression retains the exact
+filtering logic, counts and log/catalog identities. Restore the existing r1
+raw archive before running that test on another checkout.
+
+The patched NeoForge RegistryDataLoader wraps entry decoding in ConditionalOps;
+its condition list is AND, `neoforge:or` is OR, and `mod_loaded` queries ModList.
+Lithostitched gathers registry and event modifiers, then sorts by priority;
+addition priority defaults to 1000. Do not invent equal-priority ordering.
+Existing Lithostitched disassemblies remained byte-identical while two classes
+were added. The updated identities SHA is
+`f3aecd612d8fdfe23649887ea70032cdc4fc5b0db00276ae3c0e718bdadf0a75`.
+New condition-code and patched-loader identities are
+`6dfe814d7ed7691ed4f80d460e14c7b274881ecbfee8eb29837edf51e237ba43`
+and `1bcc020827e31e893e47baf01e173e915197bd755f5034fd18ef38c1d828b1be`.
+Commands and limitations are in `sources/neoforge-condition-code/README.md`.
+
+Next integrate the 68 condition-passing additions into the existing pool trace,
+preserving modifier source identities, limited delegates, weights and excluded
+conditions. Select resource layers before treating additions as effective.
+Potential graph reachability is not ordered assembly or placement probability.
+Keep other modifier types and Better Village's code-driven changes explicit.
+The accepted pool trace and inventory still have NOT been regenerated. Final
+family grouping, custom generation, retained-provider coverage, required
+attributes, final gate, clean review and main merge remain open. No new server
+run, archive revision or measurement system was needed for this increment.
+
 Limited-element decoding is delivered through `06b1ae2`. The existing
 inspection tool added three exact Lithostitched classes in `4fe823b`; generated
 code evidence is in `fc6adee` under `sources/lithostitched-pool-additions-code`.
