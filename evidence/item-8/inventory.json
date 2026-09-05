@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "56dad96c1af917b9211862e2f1a332f1117ed24c7f973e00f22ff78c4a39a776",
+    "evidence/item-8/family-decisions.json": "8c9ea2f0f72e632e6c2f8ad978288d888fea42fd21099d84b9a724179842690e",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -159064,7 +159064,16 @@
               "ChorusVegetationModule": "Registers ChorusVegetationGenerator at VEGETAL_DECORATION with weight zero. Its source query excludes positions closer than 1050 to origin and requires END_HIGHLANDS at maxBuildHeight-1. It places chorus vegetation rather than authored template structures.",
               "SpiralSpiresModule": "Registers SpiralSpireGenerator at SURFACE_STRUCTURES with weight zero, supplying its dimension configuration. Its source query excludes positions closer than 1050 to origin. Chunk-part generation checks the configured biome predicate and searches for End Stone before block-level spire construction."
             },
-            "source_reach": "MultiChunkFeatureGenerator searches source chunks within ceil(radius/16) of the target on both axes, using source chunk minimum X/Z and Y=0. This is source search reach, not occupied-block geometry. At radii 7 and 15, both search one neighboring chunk per axis."
+            "source_reach": "MultiChunkFeatureGenerator searches source chunks within ceil(radius/16) of the target on both axes, using source chunk minimum X/Z and Y=0. This is source search reach, not occupied-block geometry. At radii 7 and 15, both search one neighboring chunk per axis.",
+            "spiral_spire_geometry": {
+              "body": "For y=-5 through H-1, skip a negative layer when its central block cannot occlude. Otherwise r=ceil(abs((pi/2-atan((max(0,y)+0.5)/(H/a)))*4)). Iterate X/Z offsets -r+1 through r-1, retaining offsets with x*x+z*z<=r*r. At the square-edge offsets, nextFloat()<0.2 selects NewStoneTypesModule.myaliteBlock; all other body positions use dusky_myalite. Writes use flag 2 and discard success.",
+              "classification_scope": "Procedural geological-form generation. Whether it belongs in the canonical structure-family inventory or a provider exclusion disposition remains to be settled with the common family boundary rules; this record does not add a family.",
+              "conservative_envelope": "Body r<=7, hence body X/Z offsets are within -6..6. Since i<=1089 and radialGrowth<0.16, crystal X/Z integer offsets are within -17..17. Crystal Y<=69+round(1089*0.2/10)=91; body Y>=-5. Thus all requested makeSpike writes fit a conservative 35x97x35 XYZ box relative to the anchor, including empty space. This is an analytic upper envelope, not a typical footprint, an attained maximum or a measured world extent.",
+              "content": "The captured generator directly writes Myalite-related blocks. It does not load templates, assign loot tables, configure physical spawners or request entities. Block behavior, later interactions, ordinary drops and other providers remain separate.",
+              "crystal_spiral": "Choose N=(80+nextInt(30))*10, angle magnitude 0.12+nextDouble()*0.16 with random sign, radial growth 0.12+nextDouble()*0.04, and vertical growth nextDouble()*0.2. For i=0..N-1, X/Z are Java-truncated sin/cos(i*angle/10)*i*radialGrowth/10; Y is H+round(i*verticalGrowth/10). Request myalite_crystal at those offsets. Placement probability is one until a chosen cutoff in [0.5*N,0.8*N), then decreases linearly. Repeated rounded positions and discarded write results prevent treating iteration count as occupied blocks.",
+              "preflight": "makeSpike chooses H=50+nextInt(20), so H is 50..69, and taper parameter a=5+nextDouble(). It checks the central column from originY-5 through originY+H-1, accepting only air, End Stone, crying obsidian, obsidian or the module myalite_crystal block. Any other central-column block returns before construction. This is not a clearance check of the entire footprint.",
+              "source": "evidence/item-8/sources/quark-end-generators/Quark-4.1-480.jar/org.violetmoon.quark.content.world.gen.SpiralSpireGenerator.txt"
+            }
           }
         },
         "evidence": {
