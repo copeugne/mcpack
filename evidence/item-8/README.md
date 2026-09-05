@@ -438,3 +438,19 @@ and shared component attribution account for most of its size. Canonical
 relationships and effective gameplay attributes remain open. In particular,
 cathedral loot references `minecraft:mvs/cathedral_common` and two empty explicit
 spawner IDs in the large warped tower remain visible for disposition.
+
+Repurposed witch huts (`c5f5dd6`, joined in `fa401f2`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-witch-c5f5dd6.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-witch-c5f5dd6-repro.json
+cmp evidence/raw/item8/inventory-witch-c5f5dd6.json evidence/raw/item8/inventory-witch-c5f5dd6-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 42 focused tests and scoped Ruff/basedpyright checks passed. The reused
+variant test checks six matching definitions, template dimensions, authored
+witch/cat entities and absent loot/spawner/marker records. Packaged dimensions
+and hostile intent are recorded with limitations. There are no retained world
+observations for this family; generated population and effective processing
+remain unresolved. No new measurement system was introduced.
