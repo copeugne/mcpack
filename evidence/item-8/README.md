@@ -2,9 +2,9 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `f90d6da`, SHA-256
-`620b2c61a0890bd4e2e387c4dd4f6e907682c653f752a8835a728eea6133ec2a`.
-All 887 registered roots are assigned once in 422 working groups. This is not
+Current working inventory regenerated at `8ca1e21`, SHA-256
+`d04abd3d02744ce7af0ac2ae286642ceaedca036efa603a9db08122b78280072`.
+All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
 IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
@@ -1125,3 +1125,8 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-bett
 
 All 71 affected tests passed. After wrapping one overlong test assertion, the
 three affected BetterEnd cases and scoped Ruff/Basedpyright checks passed.
+
+Grouping delivered in `8ca1e21`; inventory regenerated at that revision, SHA-256:
+`d04abd3d02744ce7af0ac2ae286642ceaedca036efa603a9db08122b78280072`.
+Both roots and their biome constraints, custom-generation records and saved-start
+observation indexes remain represented. Other family rows are unchanged.

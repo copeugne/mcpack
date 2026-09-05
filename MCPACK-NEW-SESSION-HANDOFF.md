@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-05
 
+BetterEnd mountain grouping is delivered in `8ca1e21`. Ordinary and painted
+mountains are variants of one formation family. Separate generator/piece types,
+biome restrictions, height thresholds and material paths remain preserved in
+source evidence. All 71 affected tests passed; after an assertion line wrap,
+three focused BetterEnd cases and scoped checks pass. Working total: 421 groups
+with 887 registered roots. Inventory SHA-256:
+`d04abd3d02744ce7af0ac2ae286642ceaedca036efa603a9db08122b78280072`.
+Reproduction and limitations are in the final BetterEnd section of
+`evidence/item-8/README.md`. Lake/mountain grouping questions are resolved, but
+piece contents, actual geometry and other required attributes remain open.
+Continue provider/canonical coverage and attribute completion. No new extraction,
+measurement system, runtime or downstream work was added. Item 8 is incomplete.
+
+
 BetterEnd lake grouping is delivered in `f90d6da`. Five registered lake types
 are variants of one lake-formation family. Normal/rare EndLake classes share
 base generation; megalake/small-megalake use LakePiece with distinct parameters.
