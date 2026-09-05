@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "0a2920202c9ef5dd3853296f74f02b572a148bac7204748c24754bbafdcba17e",
+    "evidence/item-8/family-decisions.json": "d7d8fd935bf4827bc22d6300fdba09af220c7e43cb194da3624d1bad85cad9d3",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -159368,6 +159368,137 @@
         "relationship": "The two addition modifiers reference 62 distinct placed features, each with a same-ID configured feature. These are contribution entry points, not 62 canonical families. The configured feature types are generator categories, not an accepted family classification.",
         "removal_scope": "The packaged removal targets minecraft:desert_well at surface_structures in the same three resolved desert biomes as desert additions. Their captured dimension overlap is overworld only. Configuration/registration effects and generated-world consequences remain to be reconciled.",
         "scope": "Runtime registry presence plus packaged root references only. Template membership, custom generators, configuration, family relationships and required attributes remain incomplete. Forge-path duplicates are not counted as additional NeoForge contributions.",
+        "swamp_generation": {
+          "anchor": "All six descend through empty blocks while Y > 2 and pass the resulting position directly to createTemplateFromCenter with the configured location. The helper centers X/Z by integer half-size, leaves Y unchanged and uses default StructurePlaceSettings.",
+          "candles": "Green candles are replaced with a uniformly indexed choice from candle, white, gray, light_gray, brown, green, purple and black candles. Count is nextInt(4)+1 and LIT is nextFloat()<0.1. The processor writes the selected default state with those two properties, using update flag 2.",
+          "feature_type_to_class": {
+            "yungsextras:swamp_arch": "SwampArchFeature",
+            "yungsextras:swamp_church": "SwampChurchFeature",
+            "yungsextras:swamp_cubby": "SwampCubbyFeature",
+            "yungsextras:swamp_double_arch": "SwampDoubleArchFeature",
+            "yungsextras:swamp_ogre": "SwampOgreFeature",
+            "yungsextras:swamp_pillar": "SwampPillarFeature"
+          },
+          "masonry": "Gray stained glass and existing stone bricks use STONE_BRICK_SELECTOR, initialized with stone bricks and mossy/cracked stone-brick additions. Light-gray stained glass uses STONE_BRICK_STAIRS_SELECTOR with a random horizontal facing. Existing stone-brick stairs use that selector while preserving facing, half, shape and waterlogged properties. The stair selector is initialized with stone-brick stairs and a mossy-stair addition.",
+          "processor_binding": "All six concrete classes inherit AbstractSwampFeature.useProcessors without overriding it. This selects only SWAMP_FEATURE_PROCESSOR, constructed as SwampFeatureProcessor by FeatureProcessorModule. The inherited template helper runs it after placement.",
+          "required_nonempty_offsets_xyz": {
+            "SwampArchFeature": [
+              [
+                -2,
+                -4,
+                0
+              ],
+              [
+                2,
+                -4,
+                0
+              ]
+            ],
+            "SwampChurchFeature": [
+              [
+                -6,
+                -4,
+                -2
+              ],
+              [
+                -6,
+                -4,
+                2
+              ],
+              [
+                6,
+                -4,
+                -2
+              ],
+              [
+                6,
+                -4,
+                2
+              ]
+            ],
+            "SwampCubbyFeature": [
+              [
+                -2,
+                -4,
+                -1
+              ],
+              [
+                -2,
+                -4,
+                2
+              ],
+              [
+                1,
+                -4,
+                -1
+              ],
+              [
+                1,
+                -4,
+                2
+              ]
+            ],
+            "SwampDoubleArchFeature": [
+              [
+                -4,
+                -4,
+                0
+              ],
+              [
+                4,
+                -4,
+                0
+              ]
+            ],
+            "SwampOgreFeature": [
+              [
+                -2,
+                0,
+                -2
+              ],
+              [
+                -2,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                -2
+              ],
+              [
+                1,
+                0,
+                1
+              ]
+            ],
+            "SwampPillarFeature": [
+              [
+                -2,
+                -4,
+                -2
+              ],
+              [
+                -2,
+                -4,
+                1
+              ],
+              [
+                1,
+                -4,
+                -2
+              ],
+              [
+                1,
+                -4,
+                1
+              ]
+            ]
+          },
+          "scope": "Direct source-derived placement and appearance effects for six generator types, not six accepted families or observed visibility. Template contents are recorded separately. Selector-library implementation, external retained-stack effects, natural mobs and full generated-world outcomes are not established by these classes. Generator success still means a non-null template, not verified complete placement.",
+          "support_columns": "Each gray stained glass marker is replaced with a stone-brick selector result. Starting one block below it, continue downward replacing air, liquid or replaceable blocks until encountering a state satisfying none of those predicates. This loop has no explicit minimum-Y guard and discards setBlock results. Support depth is terrain-dependent and is not bounded by the packaged template height.",
+          "terrain_checks": "Reject if any listed XYZ offset from the landing position is empty. These are selected-point non-empty checks, not full-footprint solidity checks, and contain no biome/block-tag test in these six classes."
+        },
         "template_membership": {
           "code_configured_to_template": {
             "yungsextras:desert/misc/desert_chillzone": "yungsextras:desert/misc/chillzone",
