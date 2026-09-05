@@ -801,3 +801,33 @@ def test_yung_feature_families_partition_all_traced_variants() -> None:
                 if "/arches/" in member or "/double_arches/" in member
             }
             assert len(arch_members) == 33
+
+
+def test_yung_family_geometry_uses_only_member_template_envelopes() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    for key, contribution in contributions.items():
+        if key == "yungsbridges:bridges":
+            links = cast("dict[str, str]", contribution["configured_to_template"])
+            sizes = cast("dict[str, JsonValue]", contribution["template_content"])
+            dimensions = cast("dict[str, list[int]]", sizes["referenced_nominal_xyz_blocks"])
+        else:
+            membership = cast("dict[str, JsonValue]", contribution["template_membership"])
+            links = cast("dict[str, str]", membership["configured_to_template"]) | cast(
+                "dict[str, str]", membership["code_configured_to_template"]
+            )
+            dimensions = cast(
+                "dict[str, list[int]]", membership["referenced_nominal_xyz_blocks"]
+            ) | cast("dict[str, list[int]]", membership["code_nominal_xyz_blocks"])
+        families = cast("list[dict[str, JsonValue]]", contribution["families"])
+        for family in families:
+            members = cast("list[str]", family["configured_features"])
+            templates = sorted({links[member] for member in members})
+            assert family["templates"] == templates
+            assert family["nominal_template_xyz_blocks"] == [
+                list(size) for size in sorted({tuple(dimensions[name]) for name in templates})
+            ]
+            assert "not occupied-world measurements" in str(family["geometry_scope"])

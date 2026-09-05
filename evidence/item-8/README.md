@@ -1842,3 +1842,15 @@ are unchanged. Reproduce with a fresh output directory:
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-feature-families.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-yung-feature-families.json
 ```
+
+### Feature-family template geometry
+
+Each of the eleven feature families now lists its exact linked templates and
+distinct nominal XYZ envelopes. X/Z are approximate authored footprint and Y is
+template height. The records explicitly exclude occupied-world interpretation,
+terrain-dependent bridge/swamp supports, and any assumption that desert-well
+height is entirely above ground. Bridge orientation can exchange X/Z.
+
+The existing focused command passed 22 tests, including a join from every family
+member through the preserved template links to its recorded envelope. Scoped
+Ruff/Basedpyright passed. No new capture or measurement system was needed.
