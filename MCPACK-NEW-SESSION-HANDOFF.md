@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-05
 
+Extras swamp placement and appearance rules are delivered in `5f52351`. All
+six feature types now have terrain-check offsets, processor binding, support
+column limits and masonry/candle effects recorded. These cover 46 configured
+feature variants, not 46 families. Nineteen focused tests and scoped quality
+checks passed. Inventory SHA-256:
+`a88bb2864dbbbf4af04006deece95a825a7ed41f905156f9d1b96bbacbbb371d`.
+Continue remaining desert effects, configuration/provider coverage and canonical
+family reconciliation. Swamp template height must not be used as full support
+height. No new capture or measurement system was added. Item 8 remains incomplete.
+
 Extras well archaeology and placement rules are delivered in `b8c4a7e`, with
 processor constructor evidence in `0389282`. The regenerated inventory SHA-256 is
 `8c5c53f1135cbaa6c038d1e89260c15a4fbba58ccc4bf0ad3ed0fb575300ce86`. Eighteen affected tests and scoped checks passed.

@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `b8c4a7e`, SHA-256
-`8c5c53f1135cbaa6c038d1e89260c15a4fbba58ccc4bf0ad3ed0fb575300ce86`.
+Current working inventory regenerated at `5f52351`, SHA-256
+`a88bb2864dbbbf4af04006deece95a825a7ed41f905156f9d1b96bbacbbb371d`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1761,3 +1761,12 @@ The decision retains the limits of direct source inspection and placement succes
 
 The existing focused command above passed 19 tests, and scoped Ruff/Basedpyright
 passed. No extraction, runtime, measurement system or generalized helper was added.
+
+Inventory regeneration at `5f52351` changed only input identity and the Extras
+swamp-generation contribution. All registry-family rows and other contribution
+fields remain unchanged. Reproduce with a fresh output directory:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-extras-swamp-generation.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-extras-swamp-generation.json
+```
