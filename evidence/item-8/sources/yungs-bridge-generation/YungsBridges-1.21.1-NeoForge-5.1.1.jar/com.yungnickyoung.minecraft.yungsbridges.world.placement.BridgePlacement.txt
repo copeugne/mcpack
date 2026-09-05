@@ -1,0 +1,583 @@
+Compiled from "BridgePlacement.java"
+public class com.yungnickyoung.minecraft.yungsbridges.world.placement.BridgePlacement extends net.minecraft.world.level.levelgen.placement.PlacementModifier {
+  public static final com.mojang.serialization.MapCodec<com.yungnickyoung.minecraft.yungsbridges.world.placement.BridgePlacement> CODEC;
+
+  public final int length;
+
+  public final int width;
+
+  public final int minWaterZ;
+
+  public final int maxWaterZ;
+
+  public int widthOffset;
+
+  public int numSolidBlocksNeeded;
+
+  public boolean isZAxis;
+
+  private com.yungnickyoung.minecraft.yungsbridges.world.placement.BridgePlacement(int, int, int, int, int, int, boolean);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/levelgen/placement/PlacementModifier."<init>":()V
+       4: aload_0
+       5: iload_1
+       6: putfield      #7                  // Field length:I
+       9: aload_0
+      10: iload_2
+      11: putfield      #13                 // Field width:I
+      14: aload_0
+      15: iload_3
+      16: putfield      #16                 // Field minWaterZ:I
+      19: aload_0
+      20: iload         4
+      22: putfield      #19                 // Field maxWaterZ:I
+      25: aload_0
+      26: iload         5
+      28: putfield      #22                 // Field widthOffset:I
+      31: aload_0
+      32: iload         6
+      34: putfield      #25                 // Field numSolidBlocksNeeded:I
+      37: aload_0
+      38: iload         7
+      40: putfield      #28                 // Field isZAxis:Z
+      43: return
+
+  public java.util.stream.Stream<net.minecraft.core.BlockPos> getPositions(net.minecraft.world.level.levelgen.placement.PlacementContext, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_3
+       1: invokevirtual #32                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       4: astore        4
+       6: aload_1
+       7: invokevirtual #38                 // Method net/minecraft/world/level/levelgen/placement/PlacementContext.getLevel:()Lnet/minecraft/world/level/WorldGenLevel;
+      10: invokeinterface #44,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getSeaLevel:()I
+      15: iconst_1
+      16: isub
+      17: istore        5
+      19: aload         4
+      21: iload         5
+      23: invokevirtual #50                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      26: pop
+      27: aload_0
+      28: getfield      #13                 // Field width:I
+      31: iconst_2
+      32: idiv
+      33: aload_0
+      34: getfield      #22                 // Field widthOffset:I
+      37: iadd
+      38: iconst_1
+      39: iadd
+      40: istore        6
+      42: iload         6
+      44: bipush        16
+      46: aload_0
+      47: getfield      #13                 // Field width:I
+      50: iconst_2
+      51: idiv
+      52: isub
+      53: aload_0
+      54: getfield      #22                 // Field widthOffset:I
+      57: isub
+      58: if_icmpge     888
+      61: iconst_0
+      62: istore        7
+      64: iload         7
+      66: bipush        16
+      68: if_icmpge     882
+      71: aload_0
+      72: getfield      #28                 // Field isZAxis:Z
+      75: ifeq          104
+      78: new           #33                 // class net/minecraft/core/BlockPos
+      81: dup
+      82: aload_3
+      83: invokevirtual #56                 // Method net/minecraft/core/BlockPos.getX:()I
+      86: iload         6
+      88: iadd
+      89: iload         5
+      91: aload_3
+      92: invokevirtual #59                 // Method net/minecraft/core/BlockPos.getZ:()I
+      95: iload         7
+      97: iadd
+      98: invokespecial #62                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     101: goto          127
+     104: new           #33                 // class net/minecraft/core/BlockPos
+     107: dup
+     108: aload_3
+     109: invokevirtual #56                 // Method net/minecraft/core/BlockPos.getX:()I
+     112: iload         7
+     114: iadd
+     115: iload         5
+     117: aload_3
+     118: invokevirtual #59                 // Method net/minecraft/core/BlockPos.getZ:()I
+     121: iload         6
+     123: iadd
+     124: invokespecial #62                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     127: astore        8
+     129: aload_0
+     130: getfield      #28                 // Field isZAxis:Z
+     133: ifeq          169
+     136: new           #33                 // class net/minecraft/core/BlockPos
+     139: dup
+     140: aload_3
+     141: invokevirtual #56                 // Method net/minecraft/core/BlockPos.getX:()I
+     144: iload         6
+     146: iadd
+     147: iload         5
+     149: aload_3
+     150: invokevirtual #59                 // Method net/minecraft/core/BlockPos.getZ:()I
+     153: iload         7
+     155: iadd
+     156: aload_0
+     157: getfield      #7                  // Field length:I
+     160: iadd
+     161: iconst_1
+     162: iadd
+     163: invokespecial #62                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     166: goto          199
+     169: new           #33                 // class net/minecraft/core/BlockPos
+     172: dup
+     173: aload_3
+     174: invokevirtual #56                 // Method net/minecraft/core/BlockPos.getX:()I
+     177: iload         7
+     179: iadd
+     180: aload_0
+     181: getfield      #7                  // Field length:I
+     184: iadd
+     185: iconst_1
+     186: iadd
+     187: iload         5
+     189: aload_3
+     190: invokevirtual #59                 // Method net/minecraft/core/BlockPos.getZ:()I
+     193: iload         6
+     195: iadd
+     196: invokespecial #62                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     199: astore        9
+     201: aload_1
+     202: aload         8
+     204: invokevirtual #65                 // Method net/minecraft/world/level/levelgen/placement/PlacementContext.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     207: invokevirtual #69                 // Method net/minecraft/world/level/block/state/BlockState.canOcclude:()Z
+     210: ifeq          876
+     213: aload_1
+     214: aload         9
+     216: invokevirtual #65                 // Method net/minecraft/world/level/levelgen/placement/PlacementContext.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     219: invokevirtual #69                 // Method net/minecraft/world/level/block/state/BlockState.canOcclude:()Z
+     222: ifeq          876
+     225: aload_1
+     226: getstatic     #75                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     229: aload         8
+     231: invokevirtual #56                 // Method net/minecraft/core/BlockPos.getX:()I
+     234: aload         8
+     236: invokevirtual #59                 // Method net/minecraft/core/BlockPos.getZ:()I
+     239: invokevirtual #81                 // Method net/minecraft/world/level/levelgen/placement/PlacementContext.getHeight:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;II)I
+     242: iload         5
+     244: iconst_1
+     245: iadd
+     246: if_icmpgt     876
+     249: aload_1
+     250: getstatic     #75                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     253: aload         9
+     255: invokevirtual #56                 // Method net/minecraft/core/BlockPos.getX:()I
+     258: aload         9
+     260: invokevirtual #59                 // Method net/minecraft/core/BlockPos.getZ:()I
+     263: invokevirtual #81                 // Method net/minecraft/world/level/levelgen/placement/PlacementContext.getHeight:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;II)I
+     266: iload         5
+     268: iconst_1
+     269: iadd
+     270: if_icmple     276
+     273: goto          876
+     276: iconst_1
+     277: istore        10
+     279: iconst_2
+     280: anewarray     #85                 // class java/lang/Integer
+     283: dup
+     284: iconst_0
+     285: iconst_m1
+     286: invokestatic  #87                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     289: aastore
+     290: dup
+     291: iconst_1
+     292: iconst_1
+     293: invokestatic  #87                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     296: aastore
+     297: invokestatic  #91                 // Method com/google/common/collect/Lists.newArrayList:([Ljava/lang/Object;)Ljava/util/ArrayList;
+     300: invokevirtual #97                 // Method java/util/ArrayList.iterator:()Ljava/util/Iterator;
+     303: astore        11
+     305: aload         11
+     307: invokeinterface #103,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     312: ifeq          457
+     315: aload         11
+     317: invokeinterface #108,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     322: checkcast     #85                 // class java/lang/Integer
+     325: invokevirtual #112                // Method java/lang/Integer.intValue:()I
+     328: istore        12
+     330: iconst_1
+     331: istore        13
+     333: iload         13
+     335: aload_0
+     336: getfield      #13                 // Field width:I
+     339: iconst_2
+     340: idiv
+     341: if_icmpgt     454
+     344: iload         12
+     346: iload         13
+     348: imul
+     349: istore        14
+     351: aload_0
+     352: getfield      #28                 // Field isZAxis:Z
+     355: ifeq          385
+     358: aload         4
+     360: aload         8
+     362: invokevirtual #56                 // Method net/minecraft/core/BlockPos.getX:()I
+     365: iload         14
+     367: iadd
+     368: aload         8
+     370: invokevirtual #115                // Method net/minecraft/core/BlockPos.getY:()I
+     373: aload         8
+     375: invokevirtual #59                 // Method net/minecraft/core/BlockPos.getZ:()I
+     378: invokevirtual #118                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     381: pop
+     382: goto          409
+     385: aload         4
+     387: aload         8
+     389: invokevirtual #56                 // Method net/minecraft/core/BlockPos.getX:()I
+     392: aload         8
+     394: invokevirtual #115                // Method net/minecraft/core/BlockPos.getY:()I
+     397: aload         8
+     399: invokevirtual #59                 // Method net/minecraft/core/BlockPos.getZ:()I
+     402: iload         14
+     404: iadd
+     405: invokevirtual #118                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     408: pop
+     409: aload_1
+     410: aload         4
+     412: invokevirtual #65                 // Method net/minecraft/world/level/levelgen/placement/PlacementContext.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     415: invokevirtual #69                 // Method net/minecraft/world/level/block/state/BlockState.canOcclude:()Z
+     418: ifeq          454
+     421: aload_1
+     422: getstatic     #75                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     425: aload         4
+     427: invokevirtual #122                // Method net/minecraft/core/BlockPos$MutableBlockPos.getX:()I
+     430: aload         4
+     432: invokevirtual #123                // Method net/minecraft/core/BlockPos$MutableBlockPos.getZ:()I
+     435: invokevirtual #81                 // Method net/minecraft/world/level/levelgen/placement/PlacementContext.getHeight:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;II)I
+     438: iload         5
+     440: iconst_1
+     441: iadd
+     442: if_icmpgt     454
+     445: iinc          10, 1
+     448: iinc          13, 1
+     451: goto          333
+     454: goto          305
+     457: iload         10
+     459: aload_0
+     460: getfield      #25                 // Field numSolidBlocksNeeded:I
+     463: if_icmpge     469
+     466: goto          876
+     469: iconst_1
+     470: istore        10
+     472: iconst_2
+     473: anewarray     #85                 // class java/lang/Integer
+     476: dup
+     477: iconst_0
+     478: iconst_m1
+     479: invokestatic  #87                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     482: aastore
+     483: dup
+     484: iconst_1
+     485: iconst_1
+     486: invokestatic  #87                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     489: aastore
+     490: invokestatic  #91                 // Method com/google/common/collect/Lists.newArrayList:([Ljava/lang/Object;)Ljava/util/ArrayList;
+     493: invokevirtual #97                 // Method java/util/ArrayList.iterator:()Ljava/util/Iterator;
+     496: astore        11
+     498: aload         11
+     500: invokeinterface #103,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     505: ifeq          650
+     508: aload         11
+     510: invokeinterface #108,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     515: checkcast     #85                 // class java/lang/Integer
+     518: invokevirtual #112                // Method java/lang/Integer.intValue:()I
+     521: istore        12
+     523: iconst_1
+     524: istore        13
+     526: iload         13
+     528: aload_0
+     529: getfield      #13                 // Field width:I
+     532: iconst_2
+     533: idiv
+     534: if_icmpgt     647
+     537: iload         12
+     539: iload         13
+     541: imul
+     542: istore        14
+     544: aload_0
+     545: getfield      #28                 // Field isZAxis:Z
+     548: ifeq          578
+     551: aload         4
+     553: aload         9
+     555: invokevirtual #56                 // Method net/minecraft/core/BlockPos.getX:()I
+     558: iload         14
+     560: iadd
+     561: aload         9
+     563: invokevirtual #115                // Method net/minecraft/core/BlockPos.getY:()I
+     566: aload         9
+     568: invokevirtual #59                 // Method net/minecraft/core/BlockPos.getZ:()I
+     571: invokevirtual #118                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     574: pop
+     575: goto          602
+     578: aload         4
+     580: aload         9
+     582: invokevirtual #56                 // Method net/minecraft/core/BlockPos.getX:()I
+     585: aload         9
+     587: invokevirtual #115                // Method net/minecraft/core/BlockPos.getY:()I
+     590: aload         9
+     592: invokevirtual #59                 // Method net/minecraft/core/BlockPos.getZ:()I
+     595: iload         14
+     597: iadd
+     598: invokevirtual #118                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     601: pop
+     602: aload_1
+     603: aload         4
+     605: invokevirtual #65                 // Method net/minecraft/world/level/levelgen/placement/PlacementContext.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     608: invokevirtual #69                 // Method net/minecraft/world/level/block/state/BlockState.canOcclude:()Z
+     611: ifeq          647
+     614: aload_1
+     615: getstatic     #75                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     618: aload         4
+     620: invokevirtual #122                // Method net/minecraft/core/BlockPos$MutableBlockPos.getX:()I
+     623: aload         4
+     625: invokevirtual #123                // Method net/minecraft/core/BlockPos$MutableBlockPos.getZ:()I
+     628: invokevirtual #81                 // Method net/minecraft/world/level/levelgen/placement/PlacementContext.getHeight:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;II)I
+     631: iload         5
+     633: iconst_1
+     634: iadd
+     635: if_icmpgt     647
+     638: iinc          10, 1
+     641: iinc          13, 1
+     644: goto          526
+     647: goto          498
+     650: iload         10
+     652: aload_0
+     653: getfield      #25                 // Field numSolidBlocksNeeded:I
+     656: if_icmpge     662
+     659: goto          876
+     662: iconst_1
+     663: istore        11
+     665: aload_0
+     666: getfield      #13                 // Field width:I
+     669: ineg
+     670: iconst_2
+     671: idiv
+     672: istore        12
+     674: iload         12
+     676: aload_0
+     677: getfield      #13                 // Field width:I
+     680: iconst_2
+     681: idiv
+     682: if_icmpgt     788
+     685: aload_0
+     686: getfield      #16                 // Field minWaterZ:I
+     689: istore        13
+     691: iload         13
+     693: aload_0
+     694: getfield      #19                 // Field maxWaterZ:I
+     697: if_icmpgt     782
+     700: aload_0
+     701: getfield      #28                 // Field isZAxis:Z
+     704: ifeq          734
+     707: aload         4
+     709: aload         8
+     711: invokevirtual #56                 // Method net/minecraft/core/BlockPos.getX:()I
+     714: iload         12
+     716: iadd
+     717: iload         5
+     719: aload         8
+     721: invokevirtual #59                 // Method net/minecraft/core/BlockPos.getZ:()I
+     724: iload         13
+     726: iadd
+     727: invokevirtual #118                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     730: pop
+     731: goto          758
+     734: aload         4
+     736: aload         8
+     738: invokevirtual #56                 // Method net/minecraft/core/BlockPos.getX:()I
+     741: iload         13
+     743: iadd
+     744: iload         5
+     746: aload         8
+     748: invokevirtual #59                 // Method net/minecraft/core/BlockPos.getZ:()I
+     751: iload         12
+     753: iadd
+     754: invokevirtual #118                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     757: pop
+     758: aload_1
+     759: aload         4
+     761: invokevirtual #65                 // Method net/minecraft/world/level/levelgen/placement/PlacementContext.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     764: invokevirtual #124                // Method net/minecraft/world/level/block/state/BlockState.liquid:()Z
+     767: ifne          776
+     770: iconst_0
+     771: istore        11
+     773: goto          782
+     776: iinc          13, 1
+     779: goto          691
+     782: iinc          12, 1
+     785: goto          674
+     788: iload         11
+     790: ifeq          876
+     793: aload_0
+     794: getfield      #28                 // Field isZAxis:Z
+     797: ifeq          839
+     800: new           #33                 // class net/minecraft/core/BlockPos
+     803: dup
+     804: aload         8
+     806: invokevirtual #56                 // Method net/minecraft/core/BlockPos.getX:()I
+     809: aload_0
+     810: getfield      #13                 // Field width:I
+     813: iconst_2
+     814: idiv
+     815: isub
+     816: aload_0
+     817: getfield      #22                 // Field widthOffset:I
+     820: isub
+     821: iload         5
+     823: aload         8
+     825: invokevirtual #59                 // Method net/minecraft/core/BlockPos.getZ:()I
+     828: iconst_1
+     829: iadd
+     830: invokespecial #62                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     833: invokestatic  #127                // InterfaceMethod java/util/stream/Stream.of:(Ljava/lang/Object;)Ljava/util/stream/Stream;
+     836: goto          875
+     839: new           #33                 // class net/minecraft/core/BlockPos
+     842: dup
+     843: aload         8
+     845: invokevirtual #56                 // Method net/minecraft/core/BlockPos.getX:()I
+     848: iconst_1
+     849: iadd
+     850: iload         5
+     852: aload         8
+     854: invokevirtual #59                 // Method net/minecraft/core/BlockPos.getZ:()I
+     857: aload_0
+     858: getfield      #13                 // Field width:I
+     861: iconst_2
+     862: idiv
+     863: iadd
+     864: aload_0
+     865: getfield      #22                 // Field widthOffset:I
+     868: iadd
+     869: invokespecial #62                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     872: invokestatic  #127                // InterfaceMethod java/util/stream/Stream.of:(Ljava/lang/Object;)Ljava/util/stream/Stream;
+     875: areturn
+     876: iinc          7, 1
+     879: goto          64
+     882: iinc          6, 1
+     885: goto          42
+     888: invokestatic  #133                // InterfaceMethod java/util/stream/Stream.empty:()Ljava/util/stream/Stream;
+     891: areturn
+
+  public net.minecraft.world.level.levelgen.placement.PlacementModifierType<?> type();
+    Code:
+       0: getstatic     #137                // Field com/yungnickyoung/minecraft/yungsbridges/module/PlacementModifierTypeModule.BRIDGE_PLACEMENT:Lnet/minecraft/world/level/levelgen/placement/PlacementModifierType;
+       3: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$7(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #143                // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+       4: ldc           #149                // String length
+       6: invokeinterface #150,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #156,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      16: invokevirtual #160                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: getstatic     #143                // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      22: ldc           #166                // String width
+      24: invokeinterface #150,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      29: invokedynamic #167,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      34: invokevirtual #160                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      37: getstatic     #143                // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      40: ldc           #168                // String min_water_z
+      42: invokeinterface #150,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      47: invokedynamic #170,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      52: invokevirtual #160                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      55: getstatic     #143                // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      58: ldc           #171                // String max_water_z
+      60: invokeinterface #150,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      65: invokedynamic #173,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      70: invokevirtual #160                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      73: getstatic     #143                // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      76: ldc           #174                // String width_offset
+      78: invokeinterface #150,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      83: invokedynamic #176,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      88: invokevirtual #160                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      91: getstatic     #143                // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      94: ldc           #177                // String num_solid_blocks_needed
+      96: invokeinterface #150,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     101: invokedynamic #179,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+     106: invokevirtual #160                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     109: getstatic     #180                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+     112: ldc           #183                // String is_z_axis
+     114: iconst_1
+     115: invokestatic  #185                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     118: invokeinterface #190,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     123: invokedynamic #194,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+     128: invokevirtual #160                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     131: invokevirtual #195                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P7;
+     134: aload_0
+     135: invokedynamic #201,  0            // InvokeDynamic #7:apply:()Lcom/mojang/datafixers/util/Function7;
+     140: invokevirtual #204                // Method com/mojang/datafixers/Products$P7.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function7;)Lcom/mojang/datafixers/kinds/App;
+     143: areturn
+
+  private static java.lang.Boolean lambda$static$6(com.yungnickyoung.minecraft.yungsbridges.world.placement.BridgePlacement);
+    Code:
+       0: aload_0
+       1: getfield      #28                 // Field isZAxis:Z
+       4: invokestatic  #185                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$5(com.yungnickyoung.minecraft.yungsbridges.world.placement.BridgePlacement);
+    Code:
+       0: aload_0
+       1: getfield      #25                 // Field numSolidBlocksNeeded:I
+       4: invokestatic  #87                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$4(com.yungnickyoung.minecraft.yungsbridges.world.placement.BridgePlacement);
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field widthOffset:I
+       4: invokestatic  #87                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$3(com.yungnickyoung.minecraft.yungsbridges.world.placement.BridgePlacement);
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field maxWaterZ:I
+       4: invokestatic  #87                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$2(com.yungnickyoung.minecraft.yungsbridges.world.placement.BridgePlacement);
+    Code:
+       0: aload_0
+       1: getfield      #16                 // Field minWaterZ:I
+       4: invokestatic  #87                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$1(com.yungnickyoung.minecraft.yungsbridges.world.placement.BridgePlacement);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field width:I
+       4: invokestatic  #87                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$0(com.yungnickyoung.minecraft.yungsbridges.world.placement.BridgePlacement);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field length:I
+       4: invokestatic  #87                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #209,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+       5: invokestatic  #210                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #216                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}
