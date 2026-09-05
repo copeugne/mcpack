@@ -1355,3 +1355,30 @@ the test-only typing/import fixes. Inventory regenerated at `6309287`, SHA-256:
 `da35ac84a7e3c198fc648088f7001b8cfad29ab311f6e3bf16d84738e0176c97`.
 Only non_registry_content and the pinned decision identity changed. All 421
 structure-registry family rows remain unchanged.
+
+## YUNG bridge template membership and nominal sizes
+
+The contribution now preserves the eleven selector-referenced template XYZ
+sizes, along with three packaged templates absent from that selector:
+wood/13_0, wood/13_0_broken and wood/15_0. None is silently dropped or counted as
+active solely because it is packaged. All fourteen templates have empty entity
+and block-entity lists. Generator transformations and marker-block interpretation
+remain open; empty block-entity lists are not proof of effective loot/spawner
+absence. Nominal dimensions are template envelopes, not observed occupied bounds.
+
+A focused test binds membership, dimensions and empty lists to the existing
+redacted template catalog. No extraction, runtime or measurement system added.
+Seven affected feature-reference/inventory-source tests passed. Two overlong test
+lines were wrapped; scoped Ruff and Basedpyright pass. Searching the frozen
+configuration paths and manifest for a bridge-named file found none; this is not
+proof of absent code/configuration controls, which remain to be inspected.
+
+Decision SHA-256:
+`ded939c069ee1071dc317bb1426e0def3d0d86f0266433c132ba507afb515900`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-bridge-templates.json
+```

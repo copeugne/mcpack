@@ -222,3 +222,35 @@ def test_yungs_bridges_non_registry_path_binds_runtime_and_packaged_variants() -
         definition = resources[prefix + "configured_feature/" + rid.split(":")[1] + ".json"]
         assert definition["type"] == "yungsbridges:bridge"
         assert cast("dict[str, JsonValue]", definition["config"])["location"] == template
+
+
+def test_yungs_bridge_templates_keep_unreferenced_layouts_separate() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    non_registry = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", non_registry["contributions"])
+    bridge = contributions["yungsbridges:bridges"]
+    content = cast("dict[str, JsonValue]", bridge["template_content"])
+    links = cast("dict[str, str]", bridge["configured_to_template"])
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/templates-redacted.json.gz"
+    ).read_bytes())))
+    templates = {
+        str(r["path"]).replace(
+            "data/yungsbridges/structure/", "yungsbridges:"
+        ).removesuffix(".nbt"):
+        cast("dict[str, JsonValue]", r["document"])
+        for r in catalog["resources"] if r["archive"] == "YungsBridges-1.21.1-NeoForge-5.1.1.jar"
+    }
+    assert len(templates) == 14
+    assert content["referenced_nominal_xyz_blocks"] == {
+        template: templates[template]["size"] for template in sorted(set(links.values()))
+    }
+    assert content["unreferenced_packaged_templates"] == sorted(
+        set(templates) - set(links.values())
+    )
+    assert len(cast("list[str]", content["unreferenced_packaged_templates"])) == 3
+    for document in templates.values():
+        assert document["entities"] == content["authored_entity_ids"] == []
+        assert document["block_entities"] == content["block_entities"] == []
