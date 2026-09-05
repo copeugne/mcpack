@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-05
 
+Priority correction requested by the user: finish the whole retained-provider
+scope pass before further individual component tracing. Existing packaged
+catalogs cover every archive but do not enumerate code-only generation hooks
+across all archives. Extend the existing source extractor with a narrow code
+reference inventory, including nested JARs, to make this missing coverage pass
+reproducible. This is needed to establish the finite remaining provider list;
+packaged-data-only inspection cannot close that demonstrated gap. Reference
+matches are review candidates, not family counts or semantic absence proofs.
+No new framework, schema, measurement run or exhaustive helper tracing.
+
+
 Current progress and definition of done are reconciled in evidence/item-8/README.md
 under "Current delivery work at 934dbcb". That section supersedes older next-step
 instructions below. Chef's Delight direct content is integrated and published
