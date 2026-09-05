@@ -26911,7 +26911,9 @@
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_configured_feature.txt": "7522f8d6f1bcd1f3c5d9211c89f3fcf2e201c80cee88dab52d4e2274b0fbc844",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_placed_feature.txt": "20d3a7d932b6e5c8f417ff07060a1fa63e95294f35ef78d92651efc221a4a48f",
-          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+          "evidence/item-8/sources/yungs-bridge-generation/identities.json": "2e6f68933e8b02e097901bb8db1afb3d277be7204e31574d44e66445696552da",
+          "evidence/item-8/sources/yungs-bridge-processors/identities.json": "97da8471a115645afe18fee88f98407410097d244ed1d43d2a25ae4a6ad0bfaf"
         },
         "template_content": {
           "referenced_nominal_xyz_blocks": {
@@ -26979,6 +26981,28 @@
           "authored_entity_ids": [],
           "block_entities": [],
           "scope": "All fourteen packaged templates have empty entities and block_entities. Eleven are referenced by the verified bridge selector. Dimensions are unrotated template envelopes, not observed assembled/occupied geometry. Generator transformations and marker-block handling remain unresolved; unreferenced templates are not assumed active."
+        },
+        "generation": {
+          "vertical_anchor": "WorldGenLevel.getSeaLevel() replaces the incoming origin Y before template placement.",
+          "rotation": "isZAxis=false uses COUNTERCLOCKWISE_90; true retains default rotation.",
+          "processor_order": [
+            "LEG_PROCESSOR",
+            "LOG_BIOME_PROCESSOR",
+            "STAIR_BIOME_PROCESSOR",
+            "PLANKS_BIOME_PROCESSOR",
+            "SLAB_BIOME_PROCESSOR",
+            "STONE_VARIATION_PROCESSOR",
+            "LANTERN_ROT_PROCESSOR",
+            "OPTIONAL_WALL_PROCESSOR",
+            "OPTIONAL_STONE_BRICK_PROCESSOR",
+            "OPTIONAL_SLAB_PROCESSOR",
+            "OPTIONAL_STAIR_PROCESSOR",
+            "FENCE_BIOME_PROCESSOR"
+          ],
+          "processing_stage": "StructureTemplate.placeInWorld runs before the custom processor list is applied in order.",
+          "selection": "Randomly choose from remaining inline placed features; return on first successful place result, otherwise remove that candidate and continue until exhausted.",
+          "success_limit": "AbstractTemplateFeature discards the placeInWorld boolean. BridgeFeature returns true for a non-null loaded template; this does not prove all blocks were placed.",
+          "scope": "Captured generation control flow, not observed placement success, discovery frequency or final support geometry. Full processor effects and placement eligibility still require reconciliation."
         }
       }
     }
