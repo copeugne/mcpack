@@ -645,6 +645,79 @@ def test_repurposed_design_groups_cover_registry_and_bind_variant_definitions() 
     assert len(custom) == 12
 
 
+def test_towns_and_towers_groups_bind_kaisyn_roots_and_full_registry() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, list[dict[str, JsonValue]]]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    catalog = cast(
+        "dict[str, list[dict[str, JsonValue]]]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+            )
+        ),
+    )
+    traces = cast(
+        "dict[str, dict[str, dict[str, JsonValue]]]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    groups = [r for r in decisions["groups"] if str(r["family_id"]).startswith("towns_and_towers:")]
+    registry = {
+        k
+        for k in read_registry(
+            root
+            / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+        )
+        if k.startswith("towns_and_towers:")
+    }
+    members = [k for r in groups for k in cast("list[str]", r["structure_ids"])]
+    assert len(members) == len(set(members)) == 60
+    assert set(members) == registry
+    expected = {
+        "outpost_fort": ("kaisyn:outpost/forts/", 9),
+        "outpost_tower": ("kaisyn:outpost/towers/", 16),
+        "outpost_camp": ("kaisyn:outpost/camps/", 5),
+        "village": ("kaisyn:village/", 26),
+        "ocean_outpost": ("kaisyn:ships/pillager_outpost_ocean/", 1),
+        "ocean_village": ("kaisyn:ships/village_ocean/", 1),
+        "ocean_wreckage": ("kaisyn:ships/wreckage_ocean/", 1),
+        "desert_mimic": ("kaisyn:other/desert_temple_mimic/", 1),
+    }
+    assert {str(r["family_id"]).split(":")[1] for r in groups} == set(expected)
+    for group in groups:
+        kind = str(group["family_id"]).split(":")[1]
+        prefix, count = expected[kind]
+        variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+        assert group["structure_ids"] == sorted(variants)
+        assert len(variants) == count
+        for path, digest in cast("dict[str, str]", group["evidence"]).items():
+            assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
+        for identifier, variant in variants.items():
+            name = identifier.split(":")[1]
+            rows = [
+                cast("dict[str, JsonValue]", r["document"])
+                for r in catalog["resources"]
+                if r["path"] == f"data/towns_and_towers/worldgen/structure/{name}.json"
+            ]
+            assert rows == [variant["definition"]]
+            assert str(rows[0]["start_pool"]).startswith(prefix)
+            trace = traces["structures"][identifier]
+            assert trace["start_pool"] == rows[0]["start_pool"]
+            assert trace["templates"]
+            assert trace["unresolved_elements"] == []
+            assert trace["missing"] == variant["missing_components"]
+    assert {"id": "minecraft:emptY", "kind": "pool"} in cast(
+        "list[JsonValue]",
+        traces["structures"]["towns_and_towers:exclusives/pillager_outpost_nilotic"]["missing"],
+    )
+
+
 def test_soaring_tree_variants_bind_common_definition_and_template_contents() -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(
