@@ -1,0 +1,561 @@
+Compiled from "TavernVillagers.java"
+public class net.village_taverns.TavernVillagers {
+  public static final java.lang.String BARTENDER = "bartender";
+
+  public static final java.lang.String ALWAYS_WORK = "always_work";
+
+  public static final net.minecraft.world.entity.schedule.Schedule ALWAYS_WORK_SCHEDULE;
+
+  public static final net.minecraft.resources.ResourceLocation PROFESSION_ID;
+
+  public static net.minecraft.world.entity.npc.VillagerProfession BAR_TENDER_PROFESSION;
+
+  private static final int POTION_PRICE_T1 = 16;
+
+  private static final int POTION_PRICE_T2 = 24;
+
+  private static final int POTION_PRICE_T3 = 32;
+
+  private static final int POTION_PRICE_T4 = 40;
+
+  public static java.util.LinkedHashMap<java.lang.Integer, java.util.List<net.minecraft.world.entity.npc.VillagerTrades$ItemListing>> TRADES;
+
+  public static java.lang.String CRIT_MOD_ID;
+
+  public static net.minecraft.resources.ResourceLocation CRIT_CHANCE_POTION_ID;
+
+  public static net.minecraft.resources.ResourceLocation CRIT_DAMAGE_POTION_ID;
+
+  public net.village_taverns.TavernVillagers();
+    Code:
+       0: aload_0
+       1: invokespecial #65                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static net.minecraft.world.entity.npc.VillagerProfession createProfession(java.lang.String, net.minecraft.resources.ResourceKey<net.minecraft.world.entity.ai.village.poi.PoiType>);
+    Code:
+       0: ldc           #74                 // String village_taverns
+       2: aload_0
+       3: invokestatic  #80                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       6: astore_2
+       7: new           #82                 // class net/minecraft/world/entity/npc/VillagerProfession
+      10: dup
+      11: aload_2
+      12: invokevirtual #86                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      15: aload_1
+      16: invokedynamic #106,  0            // InvokeDynamic #0:test:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/function/Predicate;
+      21: aload_1
+      22: invokedynamic #111,  0            // InvokeDynamic #1:test:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/function/Predicate;
+      27: invokestatic  #117                // Method com/google/common/collect/ImmutableSet.of:()Lcom/google/common/collect/ImmutableSet;
+      30: invokestatic  #117                // Method com/google/common/collect/ImmutableSet.of:()Lcom/google/common/collect/ImmutableSet;
+      33: getstatic     #123                // Field net/minecraft/sounds/SoundEvents.BOTTLE_FILL:Lnet/minecraft/sounds/SoundEvent;
+      36: invokespecial #126                // Method net/minecraft/world/entity/npc/VillagerProfession."<init>":(Ljava/lang/String;Ljava/util/function/Predicate;Ljava/util/function/Predicate;Lcom/google/common/collect/ImmutableSet;Lcom/google/common/collect/ImmutableSet;Lnet/minecraft/sounds/SoundEvent;)V
+      39: areturn
+
+  public static void registerPOI();
+    Code:
+       0: getstatic     #134                // Field net/village_taverns/block/TavernBlocks.BARREL:Lnet/village_taverns/block/TavernBlocks$Entry;
+       3: invokevirtual #138                // Method net/village_taverns/block/TavernBlocks$Entry.block:()Lnet/minecraft/world/level/block/Block;
+       6: invokevirtual #144                // Method net/minecraft/world/level/block/Block.getStateDefinition:()Lnet/minecraft/world/level/block/state/StateDefinition;
+       9: invokevirtual #150                // Method net/minecraft/world/level/block/state/StateDefinition.getPossibleStates:()Lcom/google/common/collect/ImmutableList;
+      12: invokestatic  #154                // Method com/google/common/collect/ImmutableSet.copyOf:(Ljava/util/Collection;)Lcom/google/common/collect/ImmutableSet;
+      15: astore_0
+      16: getstatic     #156                // Field PROFESSION_ID:Lnet/minecraft/resources/ResourceLocation;
+      19: iconst_1
+      20: bipush        12
+      22: aload_0
+      23: invokestatic  #162                // Method net/fabricmc/fabric/api/object/builder/v1/world/poi/PointOfInterestHelper.register:(Lnet/minecraft/resources/ResourceLocation;IILjava/lang/Iterable;)Lnet/minecraft/world/entity/ai/village/poi/PoiType;
+      26: pop
+      27: getstatic     #168                // Field net/minecraft/core/registries/BuiltInRegistries.SCHEDULE:Lnet/minecraft/core/Registry;
+      30: ldc           #74                 // String village_taverns
+      32: ldc           #39                 // String always_work
+      34: invokestatic  #80                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      37: getstatic     #170                // Field ALWAYS_WORK_SCHEDULE:Lnet/minecraft/world/entity/schedule/Schedule;
+      40: invokestatic  #175                // InterfaceMethod net/minecraft/core/Registry.register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Object;)Ljava/lang/Object;
+      43: pop
+      44: return
+
+  public static void registerVillagers();
+    Code:
+       0: ldc           #36                 // String bartender
+       2: getstatic     #182                // Field net/minecraft/core/registries/BuiltInRegistries.POINT_OF_INTEREST_TYPE:Lnet/minecraft/core/Registry;
+       5: invokeinterface #186,  1          // InterfaceMethod net/minecraft/core/Registry.key:()Lnet/minecraft/resources/ResourceKey;
+      10: getstatic     #156                // Field PROFESSION_ID:Lnet/minecraft/resources/ResourceLocation;
+      13: invokestatic  #192                // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+      16: invokestatic  #194                // Method createProfession:(Ljava/lang/String;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/entity/npc/VillagerProfession;
+      19: astore_0
+      20: getstatic     #198                // Field net/minecraft/core/registries/BuiltInRegistries.VILLAGER_PROFESSION:Lnet/minecraft/core/DefaultedRegistry;
+      23: getstatic     #156                // Field PROFESSION_ID:Lnet/minecraft/resources/ResourceLocation;
+      26: aload_0
+      27: invokestatic  #175                // InterfaceMethod net/minecraft/core/Registry.register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Object;)Ljava/lang/Object;
+      30: pop
+      31: aload_0
+      32: putstatic     #200                // Field BAR_TENDER_PROFESSION:Lnet/minecraft/world/entity/npc/VillagerProfession;
+      35: invokestatic  #203                // Method setupTrades:()V
+      38: getstatic     #205                // Field TRADES:Ljava/util/LinkedHashMap;
+      41: invokevirtual #211                // Method java/util/LinkedHashMap.entrySet:()Ljava/util/Set;
+      44: invokeinterface #217,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      49: astore_1
+      50: aload_1
+      51: invokeinterface #223,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      56: ifeq          94
+      59: aload_1
+      60: invokeinterface #227,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      65: checkcast     #12                 // class java/util/Map$Entry
+      68: astore_2
+      69: aload_0
+      70: aload_2
+      71: invokeinterface #230,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      76: checkcast     #232                // class java/lang/Integer
+      79: invokevirtual #236                // Method java/lang/Integer.intValue:()I
+      82: aload_2
+      83: invokedynamic #249,  0            // InvokeDynamic #2:accept:(Ljava/util/Map$Entry;)Ljava/util/function/Consumer;
+      88: invokestatic  #255                // Method net/fabricmc/fabric/api/object/builder/v1/trade/TradeOfferHelper.registerVillagerOffers:(Lnet/minecraft/world/entity/npc/VillagerProfession;ILjava/util/function/Consumer;)V
+      91: goto          50
+      94: return
+
+  public static void setupTrades();
+    Code:
+       0: new           #261                // class java/util/ArrayList
+       3: dup
+       4: invokespecial #262                // Method java/util/ArrayList."<init>":()V
+       7: astore_0
+       8: aload_0
+       9: new           #16                 // class net/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds
+      12: dup
+      13: getstatic     #268                // Field net/minecraft/world/item/Items.COOKED_CHICKEN:Lnet/minecraft/world/item/Item;
+      16: iconst_2
+      17: iconst_1
+      18: bipush        12
+      20: bipush        10
+      22: invokespecial #271                // Method net/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds."<init>":(Lnet/minecraft/world/item/Item;IIII)V
+      25: invokevirtual #274                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+      28: pop
+      29: aload_0
+      30: new           #16                 // class net/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds
+      33: dup
+      34: getstatic     #277                // Field net/minecraft/world/item/Items.COOKED_BEEF:Lnet/minecraft/world/item/Item;
+      37: iconst_4
+      38: iconst_1
+      39: bipush        12
+      41: bipush        10
+      43: invokespecial #271                // Method net/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds."<init>":(Lnet/minecraft/world/item/Item;IIII)V
+      46: invokevirtual #274                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+      49: pop
+      50: aload_0
+      51: new           #16                 // class net/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds
+      54: dup
+      55: getstatic     #280                // Field net/minecraft/world/item/Items.BREAD:Lnet/minecraft/world/item/Item;
+      58: iconst_4
+      59: iconst_1
+      60: bipush        12
+      62: bipush        10
+      64: invokespecial #271                // Method net/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds."<init>":(Lnet/minecraft/world/item/Item;IIII)V
+      67: invokevirtual #274                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+      70: pop
+      71: aload_0
+      72: new           #16                 // class net/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds
+      75: dup
+      76: getstatic     #283                // Field net/minecraft/world/item/Items.COOKED_RABBIT:Lnet/minecraft/world/item/Item;
+      79: bipush        6
+      81: iconst_1
+      82: bipush        12
+      84: bipush        10
+      86: invokespecial #271                // Method net/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds."<init>":(Lnet/minecraft/world/item/Item;IIII)V
+      89: invokevirtual #274                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+      92: pop
+      93: getstatic     #205                // Field TRADES:Ljava/util/LinkedHashMap;
+      96: iconst_1
+      97: invokestatic  #287                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     100: aload_0
+     101: invokevirtual #291                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     104: pop
+     105: new           #261                // class java/util/ArrayList
+     108: dup
+     109: invokespecial #262                // Method java/util/ArrayList."<init>":()V
+     112: astore_1
+     113: aload_1
+     114: getstatic     #297                // Field net/minecraft/world/item/alchemy/Potions.STRENGTH:Lnet/minecraft/core/Holder;
+     117: bipush        16
+     119: iconst_1
+     120: iconst_3
+     121: bipush        20
+     123: invokestatic  #301                // Method potionOffer:(Lnet/minecraft/core/Holder;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     126: invokevirtual #274                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+     129: pop
+     130: aload_1
+     131: getstatic     #304                // Field net/minecraft/world/item/alchemy/Potions.REGENERATION:Lnet/minecraft/core/Holder;
+     134: bipush        16
+     136: iconst_1
+     137: iconst_3
+     138: bipush        20
+     140: invokestatic  #301                // Method potionOffer:(Lnet/minecraft/core/Holder;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     143: invokevirtual #274                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+     146: pop
+     147: aload_1
+     148: getstatic     #307                // Field net/minecraft/world/item/alchemy/Potions.SWIFTNESS:Lnet/minecraft/core/Holder;
+     151: bipush        16
+     153: iconst_1
+     154: iconst_3
+     155: bipush        20
+     157: invokestatic  #301                // Method potionOffer:(Lnet/minecraft/core/Holder;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     160: invokevirtual #274                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+     163: pop
+     164: aload_1
+     165: getstatic     #310                // Field net/minecraft/world/item/alchemy/Potions.FIRE_RESISTANCE:Lnet/minecraft/core/Holder;
+     168: bipush        16
+     170: iconst_1
+     171: iconst_3
+     172: bipush        20
+     174: invokestatic  #301                // Method potionOffer:(Lnet/minecraft/core/Holder;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     177: invokevirtual #274                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+     180: pop
+     181: getstatic     #205                // Field TRADES:Ljava/util/LinkedHashMap;
+     184: iconst_2
+     185: invokestatic  #287                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     188: aload_1
+     189: invokevirtual #291                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     192: pop
+     193: new           #261                // class java/util/ArrayList
+     196: dup
+     197: invokespecial #262                // Method java/util/ArrayList."<init>":()V
+     200: astore_2
+     201: aload_2
+     202: ldc_w         #312                // String spell_power:spell_power.arcane
+     205: bipush        24
+     207: iconst_1
+     208: iconst_3
+     209: bipush        30
+     211: invokestatic  #315                // Method potionOffer:(Ljava/lang/String;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     214: invokestatic  #319                // Method addIfNotNull:(Ljava/util/List;Ljava/lang/Object;)V
+     217: aload_2
+     218: ldc_w         #321                // String spell_power:spell_power.fire
+     221: bipush        24
+     223: iconst_1
+     224: iconst_3
+     225: bipush        30
+     227: invokestatic  #315                // Method potionOffer:(Ljava/lang/String;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     230: invokestatic  #319                // Method addIfNotNull:(Ljava/util/List;Ljava/lang/Object;)V
+     233: aload_2
+     234: ldc_w         #323                // String spell_power:spell_power.frost
+     237: bipush        24
+     239: iconst_1
+     240: iconst_3
+     241: bipush        30
+     243: invokestatic  #315                // Method potionOffer:(Ljava/lang/String;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     246: invokestatic  #319                // Method addIfNotNull:(Ljava/util/List;Ljava/lang/Object;)V
+     249: aload_2
+     250: ldc_w         #325                // String spell_power:spell_power.healing
+     253: bipush        24
+     255: iconst_1
+     256: iconst_3
+     257: bipush        30
+     259: invokestatic  #315                // Method potionOffer:(Ljava/lang/String;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     262: invokestatic  #319                // Method addIfNotNull:(Ljava/util/List;Ljava/lang/Object;)V
+     265: aload_2
+     266: ldc_w         #327                // String ranged_weapon:ranged_weapon.damage
+     269: bipush        24
+     271: iconst_1
+     272: iconst_3
+     273: bipush        30
+     275: invokestatic  #315                // Method potionOffer:(Ljava/lang/String;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     278: invokestatic  #319                // Method addIfNotNull:(Ljava/util/List;Ljava/lang/Object;)V
+     281: aload_2
+     282: invokevirtual #330                // Method java/util/ArrayList.isEmpty:()Z
+     285: ifeq          339
+     288: aload_2
+     289: getstatic     #333                // Field net/minecraft/world/item/alchemy/Potions.HARMING:Lnet/minecraft/core/Holder;
+     292: bipush        24
+     294: iconst_1
+     295: iconst_3
+     296: bipush        30
+     298: invokestatic  #301                // Method potionOffer:(Lnet/minecraft/core/Holder;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     301: invokevirtual #274                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+     304: pop
+     305: aload_2
+     306: getstatic     #336                // Field net/minecraft/world/item/alchemy/Potions.NIGHT_VISION:Lnet/minecraft/core/Holder;
+     309: bipush        24
+     311: iconst_1
+     312: iconst_3
+     313: bipush        30
+     315: invokestatic  #301                // Method potionOffer:(Lnet/minecraft/core/Holder;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     318: invokevirtual #274                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+     321: pop
+     322: aload_2
+     323: getstatic     #339                // Field net/minecraft/world/item/alchemy/Potions.WEAKNESS:Lnet/minecraft/core/Holder;
+     326: bipush        24
+     328: iconst_1
+     329: iconst_3
+     330: bipush        30
+     332: invokestatic  #301                // Method potionOffer:(Lnet/minecraft/core/Holder;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     335: invokevirtual #274                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+     338: pop
+     339: getstatic     #205                // Field TRADES:Ljava/util/LinkedHashMap;
+     342: iconst_3
+     343: invokestatic  #287                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     346: aload_2
+     347: invokevirtual #291                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     350: pop
+     351: new           #261                // class java/util/ArrayList
+     354: dup
+     355: invokespecial #262                // Method java/util/ArrayList."<init>":()V
+     358: astore_3
+     359: aload_3
+     360: ldc_w         #341                // String spell_power:spell_power.critical_chance
+     363: bipush        32
+     365: iconst_1
+     366: iconst_3
+     367: bipush        30
+     369: invokestatic  #315                // Method potionOffer:(Ljava/lang/String;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     372: invokestatic  #319                // Method addIfNotNull:(Ljava/util/List;Ljava/lang/Object;)V
+     375: aload_3
+     376: ldc_w         #343                // String spell_power:spell_power.critical_damage
+     379: bipush        32
+     381: iconst_1
+     382: iconst_3
+     383: bipush        30
+     385: invokestatic  #315                // Method potionOffer:(Ljava/lang/String;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     388: invokestatic  #319                // Method addIfNotNull:(Ljava/util/List;Ljava/lang/Object;)V
+     391: invokestatic  #349                // InterfaceMethod net/fabricmc/loader/api/FabricLoader.getInstance:()Lnet/fabricmc/loader/api/FabricLoader;
+     394: ldc_w         #351                // String critical_strike
+     397: invokeinterface #355,  2          // InterfaceMethod net/fabricmc/loader/api/FabricLoader.isModLoaded:(Ljava/lang/String;)Z
+     402: ifeq          443
+     405: aload_3
+     406: getstatic     #357                // Field CRIT_CHANCE_POTION_ID:Lnet/minecraft/resources/ResourceLocation;
+     409: invokevirtual #86                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+     412: bipush        32
+     414: iconst_1
+     415: iconst_3
+     416: bipush        30
+     418: invokestatic  #315                // Method potionOffer:(Ljava/lang/String;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     421: invokestatic  #319                // Method addIfNotNull:(Ljava/util/List;Ljava/lang/Object;)V
+     424: aload_3
+     425: getstatic     #359                // Field CRIT_DAMAGE_POTION_ID:Lnet/minecraft/resources/ResourceLocation;
+     428: invokevirtual #86                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+     431: bipush        32
+     433: iconst_1
+     434: iconst_3
+     435: bipush        30
+     437: invokestatic  #315                // Method potionOffer:(Ljava/lang/String;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     440: invokestatic  #319                // Method addIfNotNull:(Ljava/util/List;Ljava/lang/Object;)V
+     443: aload_3
+     444: invokevirtual #330                // Method java/util/ArrayList.isEmpty:()Z
+     447: ifeq          501
+     450: aload_3
+     451: getstatic     #362                // Field net/minecraft/world/item/alchemy/Potions.LONG_REGENERATION:Lnet/minecraft/core/Holder;
+     454: bipush        32
+     456: iconst_1
+     457: iconst_3
+     458: bipush        30
+     460: invokestatic  #301                // Method potionOffer:(Lnet/minecraft/core/Holder;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     463: invokevirtual #274                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+     466: pop
+     467: aload_3
+     468: getstatic     #365                // Field net/minecraft/world/item/alchemy/Potions.LONG_LEAPING:Lnet/minecraft/core/Holder;
+     471: bipush        32
+     473: iconst_1
+     474: iconst_3
+     475: bipush        30
+     477: invokestatic  #301                // Method potionOffer:(Lnet/minecraft/core/Holder;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     480: invokevirtual #274                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+     483: pop
+     484: aload_3
+     485: getstatic     #368                // Field net/minecraft/world/item/alchemy/Potions.WATER_BREATHING:Lnet/minecraft/core/Holder;
+     488: bipush        32
+     490: iconst_1
+     491: iconst_3
+     492: bipush        30
+     494: invokestatic  #301                // Method potionOffer:(Lnet/minecraft/core/Holder;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     497: invokevirtual #274                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+     500: pop
+     501: getstatic     #205                // Field TRADES:Ljava/util/LinkedHashMap;
+     504: iconst_4
+     505: invokestatic  #287                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     508: aload_3
+     509: invokevirtual #291                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     512: pop
+     513: new           #261                // class java/util/ArrayList
+     516: dup
+     517: invokespecial #262                // Method java/util/ArrayList."<init>":()V
+     520: astore        4
+     522: aload         4
+     524: ldc_w         #370                // String spell_power:spell_power.haste
+     527: bipush        40
+     529: iconst_1
+     530: iconst_3
+     531: bipush        30
+     533: invokestatic  #315                // Method potionOffer:(Ljava/lang/String;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     536: invokestatic  #319                // Method addIfNotNull:(Ljava/util/List;Ljava/lang/Object;)V
+     539: aload         4
+     541: ldc_w         #372                // String ranged_weapon:ranged_weapon.haste
+     544: bipush        40
+     546: iconst_1
+     547: iconst_3
+     548: bipush        30
+     550: invokestatic  #315                // Method potionOffer:(Ljava/lang/String;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     553: invokestatic  #319                // Method addIfNotNull:(Ljava/util/List;Ljava/lang/Object;)V
+     556: aload         4
+     558: new           #16                 // class net/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds
+     561: dup
+     562: getstatic     #375                // Field net/minecraft/world/item/Items.OMINOUS_BOTTLE:Lnet/minecraft/world/item/Item;
+     565: bipush        60
+     567: iconst_1
+     568: iconst_1
+     569: bipush        40
+     571: invokespecial #271                // Method net/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds."<init>":(Lnet/minecraft/world/item/Item;IIII)V
+     574: invokevirtual #274                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+     577: pop
+     578: aload         4
+     580: getstatic     #378                // Field net/minecraft/world/item/alchemy/Potions.LONG_FIRE_RESISTANCE:Lnet/minecraft/core/Holder;
+     583: bipush        40
+     585: iconst_1
+     586: iconst_3
+     587: bipush        40
+     589: invokestatic  #301                // Method potionOffer:(Lnet/minecraft/core/Holder;IIII)Lnet/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds;
+     592: invokevirtual #274                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+     595: pop
+     596: getstatic     #205                // Field TRADES:Ljava/util/LinkedHashMap;
+     599: iconst_5
+     600: invokestatic  #287                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     603: aload         4
+     605: invokevirtual #291                // Method java/util/LinkedHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     608: pop
+     609: return
+
+  private static <T> void addIfNotNull(java.util.List<T>, T);
+    Code:
+       0: aload_1
+       1: ifnull        12
+       4: aload_0
+       5: aload_1
+       6: invokeinterface #391,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      11: pop
+      12: return
+
+  private static net.minecraft.world.entity.npc.VillagerTrades$ItemsForEmeralds potionOffer(java.lang.String, int, int, int, int);
+    Code:
+       0: aload_0
+       1: invokestatic  #404                // Method createPotionStack:(Ljava/lang/String;)Lnet/minecraft/world/item/ItemStack;
+       4: astore        5
+       6: aload         5
+       8: ifnull        26
+      11: new           #16                 // class net/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds
+      14: dup
+      15: aload         5
+      17: iload_1
+      18: iload_2
+      19: iload_3
+      20: iload         4
+      22: invokespecial #407                // Method net/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds."<init>":(Lnet/minecraft/world/item/ItemStack;IIII)V
+      25: areturn
+      26: aconst_null
+      27: areturn
+
+  private static net.minecraft.world.entity.npc.VillagerTrades$ItemsForEmeralds potionOffer(net.minecraft.core.Holder<net.minecraft.world.item.alchemy.Potion>, int, int, int, int);
+    Code:
+       0: aload_0
+       1: invokestatic  #416                // Method createPotionStack:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/item/ItemStack;
+       4: astore        5
+       6: new           #16                 // class net/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds
+       9: dup
+      10: aload         5
+      12: iload_1
+      13: iload_2
+      14: iload_3
+      15: iload         4
+      17: invokespecial #407                // Method net/minecraft/world/entity/npc/VillagerTrades$ItemsForEmeralds."<init>":(Lnet/minecraft/world/item/ItemStack;IIII)V
+      20: areturn
+
+  private static net.minecraft.world.item.ItemStack createPotionStack(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokestatic  #421                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       4: astore_1
+       5: getstatic     #424                // Field net/minecraft/core/registries/BuiltInRegistries.POTION:Lnet/minecraft/core/Registry;
+       8: aload_1
+       9: invokeinterface #428,  2          // InterfaceMethod net/minecraft/core/Registry.getHolder:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Optional;
+      14: astore_2
+      15: aload_2
+      16: invokedynamic #440,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      21: invokevirtual #446                // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      24: aconst_null
+      25: invokevirtual #449                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      28: checkcast     #409                // class net/minecraft/world/item/ItemStack
+      31: areturn
+
+  private static net.minecraft.world.item.ItemStack createPotionStack(net.minecraft.core.Holder<net.minecraft.world.item.alchemy.Potion>);
+    Code:
+       0: getstatic     #454                // Field net/minecraft/world/item/Items.POTION:Lnet/minecraft/world/item/Item;
+       3: aload_0
+       4: invokestatic  #460                // Method net/minecraft/world/item/alchemy/PotionContents.createItemStack:(Lnet/minecraft/world/item/Item;Lnet/minecraft/core/Holder;)Lnet/minecraft/world/item/ItemStack;
+       7: areturn
+
+  private static net.minecraft.world.item.ItemStack lambda$createPotionStack$3(net.minecraft.core.Holder$Reference);
+    Code:
+       0: getstatic     #454                // Field net/minecraft/world/item/Items.POTION:Lnet/minecraft/world/item/Item;
+       3: aload_0
+       4: invokestatic  #460                // Method net/minecraft/world/item/alchemy/PotionContents.createItemStack:(Lnet/minecraft/world/item/Item;Lnet/minecraft/core/Holder;)Lnet/minecraft/world/item/ItemStack;
+       7: areturn
+
+  private static void lambda$registerVillagers$2(java.util.Map$Entry, java.util.List);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #466,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       7: checkcast     #468                // class java/util/Collection
+      10: invokeinterface #472,  2          // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+      15: pop
+      16: return
+
+  private static boolean lambda$createProfession$1(net.minecraft.resources.ResourceKey, net.minecraft.core.Holder);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #476,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/resources/ResourceKey;)Z
+       7: ireturn
+
+  private static boolean lambda$createProfession$0(net.minecraft.resources.ResourceKey, net.minecraft.core.Holder);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #476,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/resources/ResourceKey;)Z
+       7: ireturn
+
+  static {};
+    Code:
+       0: new           #479                // class net/minecraft/world/entity/schedule/ScheduleBuilder
+       3: dup
+       4: new           #481                // class net/minecraft/world/entity/schedule/Schedule
+       7: dup
+       8: invokespecial #482                // Method net/minecraft/world/entity/schedule/Schedule."<init>":()V
+      11: invokespecial #485                // Method net/minecraft/world/entity/schedule/ScheduleBuilder."<init>":(Lnet/minecraft/world/entity/schedule/Schedule;)V
+      14: bipush        50
+      16: getstatic     #491                // Field net/minecraft/world/entity/schedule/Activity.WORK:Lnet/minecraft/world/entity/schedule/Activity;
+      19: invokevirtual #495                // Method net/minecraft/world/entity/schedule/ScheduleBuilder.changeActivityAt:(ILnet/minecraft/world/entity/schedule/Activity;)Lnet/minecraft/world/entity/schedule/ScheduleBuilder;
+      22: sipush        23950
+      25: getstatic     #498                // Field net/minecraft/world/entity/schedule/Activity.REST:Lnet/minecraft/world/entity/schedule/Activity;
+      28: invokevirtual #495                // Method net/minecraft/world/entity/schedule/ScheduleBuilder.changeActivityAt:(ILnet/minecraft/world/entity/schedule/Activity;)Lnet/minecraft/world/entity/schedule/ScheduleBuilder;
+      31: invokevirtual #502                // Method net/minecraft/world/entity/schedule/ScheduleBuilder.build:()Lnet/minecraft/world/entity/schedule/Schedule;
+      34: putstatic     #170                // Field ALWAYS_WORK_SCHEDULE:Lnet/minecraft/world/entity/schedule/Schedule;
+      37: ldc           #74                 // String village_taverns
+      39: ldc           #36                 // String bartender
+      41: invokestatic  #80                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      44: putstatic     #156                // Field PROFESSION_ID:Lnet/minecraft/resources/ResourceLocation;
+      47: new           #207                // class java/util/LinkedHashMap
+      50: dup
+      51: invokespecial #503                // Method java/util/LinkedHashMap."<init>":()V
+      54: putstatic     #205                // Field TRADES:Ljava/util/LinkedHashMap;
+      57: ldc_w         #351                // String critical_strike
+      60: putstatic     #505                // Field CRIT_MOD_ID:Ljava/lang/String;
+      63: getstatic     #505                // Field CRIT_MOD_ID:Ljava/lang/String;
+      66: getstatic     #505                // Field CRIT_MOD_ID:Ljava/lang/String;
+      69: invokedynamic #517,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      74: invokestatic  #80                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      77: putstatic     #357                // Field CRIT_CHANCE_POTION_ID:Lnet/minecraft/resources/ResourceLocation;
+      80: getstatic     #505                // Field CRIT_MOD_ID:Ljava/lang/String;
+      83: getstatic     #505                // Field CRIT_MOD_ID:Ljava/lang/String;
+      86: invokedynamic #520,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      91: invokestatic  #80                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      94: putstatic     #359                // Field CRIT_DAMAGE_POTION_ID:Lnet/minecraft/resources/ResourceLocation;
+      97: return
+}
