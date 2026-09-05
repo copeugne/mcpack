@@ -1,0 +1,161 @@
+Compiled from "FenceBiomeProcessor.java"
+public class com.yungnickyoung.minecraft.yungsbridges.world.processor.FenceBiomeProcessor implements com.yungnickyoung.minecraft.yungsbridges.world.processor.ITemplateFeatureProcessor {
+  public com.yungnickyoung.minecraft.yungsbridges.world.processor.FenceBiomeProcessor();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public void processTemplate(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload_2
+       1: aload         4
+       3: invokeinterface #7,  2            // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBiome:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+       8: astore        7
+      10: aload_1
+      11: aload         4
+      13: aload         6
+      15: getstatic     #13                 // Field net/minecraft/world/level/block/Blocks.OAK_FENCE:Lnet/minecraft/world/level/block/Block;
+      18: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.filterBlocks:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/world/level/block/Block;)Ljava/util/List;
+      21: invokeinterface #25,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      26: astore        8
+      28: aload         8
+      30: invokeinterface #31,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      35: ifeq          387
+      38: aload         8
+      40: invokeinterface #37,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      45: checkcast     #41                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+      48: astore        9
+      50: aload_3
+      51: invokeinterface #43,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      56: ldc           #49                 // float 0.75f
+      58: fcmpg
+      59: iflt          82
+      62: aload_2
+      63: aload         9
+      65: invokevirtual #50                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      68: invokevirtual #54                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      71: invokeinterface #59,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      76: invokevirtual #63                 // Method net/minecraft/world/level/block/state/BlockState.canOcclude:()Z
+      79: ifeq          197
+      82: aload_0
+      83: aload_0
+      84: aload         7
+      86: invokevirtual #68                 // Method getFenceBiomeVariant:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/block/state/BlockState;
+      89: aload         9
+      91: invokevirtual #74                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      94: invokevirtual #78                 // Method getFenceBlockWithState:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+      97: astore        10
+      99: aload_2
+     100: aload         9
+     102: invokevirtual #50                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     105: getstatic     #82                 // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+     108: invokevirtual #88                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     111: invokeinterface #59,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     116: invokevirtual #63                 // Method net/minecraft/world/level/block/state/BlockState.canOcclude:()Z
+     119: ifne          139
+     122: aload         10
+     124: getstatic     #92                 // Field net/minecraft/world/level/block/FenceBlock.NORTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     127: iconst_0
+     128: invokestatic  #97                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     131: invokevirtual #103                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     134: checkcast     #64                 // class net/minecraft/world/level/block/state/BlockState
+     137: astore        10
+     139: aload_2
+     140: aload         9
+     142: invokevirtual #50                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     145: getstatic     #107                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+     148: invokevirtual #88                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     151: invokeinterface #59,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     156: invokevirtual #63                 // Method net/minecraft/world/level/block/state/BlockState.canOcclude:()Z
+     159: ifne          179
+     162: aload         10
+     164: getstatic     #110                // Field net/minecraft/world/level/block/FenceBlock.WEST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     167: iconst_0
+     168: invokestatic  #97                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     171: invokevirtual #103                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     174: checkcast     #64                 // class net/minecraft/world/level/block/state/BlockState
+     177: astore        10
+     179: aload_2
+     180: aload         9
+     182: invokevirtual #50                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     185: aload         10
+     187: iconst_2
+     188: invokeinterface #112,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     193: pop
+     194: goto          384
+     197: aload_2
+     198: aload         9
+     200: invokevirtual #50                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     203: getstatic     #116                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+     206: invokevirtual #119                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     209: iconst_2
+     210: invokeinterface #112,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     215: pop
+     216: aload         9
+     218: invokevirtual #50                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     221: getstatic     #82                 // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+     224: invokevirtual #88                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     227: astore        10
+     229: aload_2
+     230: aload         10
+     232: invokeinterface #59,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     237: getstatic     #124                // Field net/minecraft/world/level/block/FenceBlock.SOUTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     240: invokevirtual #127                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     243: ifeq          300
+     246: aload_2
+     247: aload         10
+     249: invokeinterface #59,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     254: getstatic     #124                // Field net/minecraft/world/level/block/FenceBlock.SOUTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     257: invokevirtual #131                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     260: checkcast     #98                 // class java/lang/Boolean
+     263: invokevirtual #135                // Method java/lang/Boolean.booleanValue:()Z
+     266: ifeq          300
+     269: aload_2
+     270: aload         10
+     272: aload_2
+     273: aload         10
+     275: invokeinterface #59,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     280: getstatic     #124                // Field net/minecraft/world/level/block/FenceBlock.SOUTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     283: iconst_0
+     284: invokestatic  #97                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     287: invokevirtual #103                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     290: checkcast     #64                 // class net/minecraft/world/level/block/state/BlockState
+     293: iconst_2
+     294: invokeinterface #112,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     299: pop
+     300: aload         9
+     302: invokevirtual #50                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     305: getstatic     #107                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+     308: invokevirtual #88                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     311: astore        10
+     313: aload_2
+     314: aload         10
+     316: invokeinterface #59,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     321: getstatic     #138                // Field net/minecraft/world/level/block/FenceBlock.EAST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     324: invokevirtual #127                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     327: ifeq          384
+     330: aload_2
+     331: aload         10
+     333: invokeinterface #59,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     338: getstatic     #138                // Field net/minecraft/world/level/block/FenceBlock.EAST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     341: invokevirtual #131                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     344: checkcast     #98                 // class java/lang/Boolean
+     347: invokevirtual #135                // Method java/lang/Boolean.booleanValue:()Z
+     350: ifeq          384
+     353: aload_2
+     354: aload         10
+     356: aload_2
+     357: aload         10
+     359: invokeinterface #59,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     364: getstatic     #138                // Field net/minecraft/world/level/block/FenceBlock.EAST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     367: iconst_0
+     368: invokestatic  #97                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     371: invokevirtual #103                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     374: checkcast     #64                 // class net/minecraft/world/level/block/state/BlockState
+     377: iconst_2
+     378: invokeinterface #112,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     383: pop
+     384: goto          28
+     387: return
+}

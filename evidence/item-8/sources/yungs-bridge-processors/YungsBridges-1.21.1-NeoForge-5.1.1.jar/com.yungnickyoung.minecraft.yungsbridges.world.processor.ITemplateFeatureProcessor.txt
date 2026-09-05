@@ -1,0 +1,602 @@
+Compiled from "ITemplateFeatureProcessor.java"
+public interface com.yungnickyoung.minecraft.yungsbridges.world.processor.ITemplateFeatureProcessor {
+  public static final net.minecraft.world.level.block.state.BlockState AIR;
+
+  public static final net.minecraft.tags.TagKey<net.minecraft.world.level.biome.Biome> BADLANDS_TAG;
+
+  public static final net.minecraft.tags.TagKey<net.minecraft.world.level.biome.Biome> TAIGA_TAG;
+
+  public static final net.minecraft.tags.TagKey<net.minecraft.world.level.biome.Biome> SAVANNA_TAG;
+
+  public static final net.minecraft.tags.TagKey<net.minecraft.world.level.biome.Biome> JUNGLE_TAG;
+
+  public abstract void processTemplate(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+
+  public default void generatePillarDown(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos, java.util.function.Supplier<net.minecraft.world.level.block.state.BlockState>, java.util.function.Supplier<net.minecraft.world.level.block.state.BlockState>);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_3
+       3: invokeinterface #1,  1            // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       8: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+      11: iconst_2
+      12: invokeinterface #9,  4            // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      17: pop
+      18: aload_2
+      19: invokevirtual #15                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      22: invokevirtual #21                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      25: astore        5
+      27: aload_1
+      28: aload         5
+      30: invokeinterface #25,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      35: astore        6
+      37: aload         5
+      39: invokevirtual #29                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+      42: ifle          103
+      45: aload         6
+      47: invokevirtual #35                 // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+      50: ifne          61
+      53: aload         6
+      55: invokevirtual #39                 // Method net/minecraft/world/level/block/state/BlockState.liquid:()Z
+      58: ifeq          103
+      61: aload_1
+      62: aload         5
+      64: aload         4
+      66: invokeinterface #1,  1            // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      71: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+      74: iconst_2
+      75: invokeinterface #9,  4            // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      80: pop
+      81: aload         5
+      83: getstatic     #42                 // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+      86: invokevirtual #48                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      89: pop
+      90: aload_1
+      91: aload         5
+      93: invokeinterface #25,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      98: astore        6
+     100: goto          37
+     103: return
+
+  public default net.minecraft.world.level.block.state.BlockState getStairsBlockWithState(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_1
+       1: invokevirtual #52                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       4: instanceof    #56                 // class net/minecraft/world/level/block/StairBlock
+       7: ifeq          153
+      10: aload_1
+      11: getstatic     #58                 // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      14: aload_2
+      15: getstatic     #58                 // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      18: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      21: ifeq          37
+      24: aload_2
+      25: getstatic     #58                 // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      28: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      31: checkcast     #43                 // class net/minecraft/core/Direction
+      34: goto          40
+      37: getstatic     #70                 // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+      40: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      43: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+      46: getstatic     #77                 // Field net/minecraft/world/level/block/StairBlock.HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      49: aload_2
+      50: getstatic     #77                 // Field net/minecraft/world/level/block/StairBlock.HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      53: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      56: ifeq          72
+      59: aload_2
+      60: getstatic     #77                 // Field net/minecraft/world/level/block/StairBlock.HALF:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      63: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      66: checkcast     #81                 // class net/minecraft/world/level/block/state/properties/Half
+      69: goto          75
+      72: getstatic     #83                 // Field net/minecraft/world/level/block/state/properties/Half.BOTTOM:Lnet/minecraft/world/level/block/state/properties/Half;
+      75: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      78: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+      81: getstatic     #87                 // Field net/minecraft/world/level/block/StairBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      84: aload_2
+      85: getstatic     #87                 // Field net/minecraft/world/level/block/StairBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      88: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      91: ifeq          107
+      94: aload_2
+      95: getstatic     #87                 // Field net/minecraft/world/level/block/StairBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      98: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     101: checkcast     #90                 // class net/minecraft/world/level/block/state/properties/StairsShape
+     104: goto          110
+     107: getstatic     #92                 // Field net/minecraft/world/level/block/state/properties/StairsShape.STRAIGHT:Lnet/minecraft/world/level/block/state/properties/StairsShape;
+     110: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     113: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+     116: getstatic     #96                 // Field net/minecraft/world/level/block/StairBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     119: aload_2
+     120: getstatic     #96                 // Field net/minecraft/world/level/block/StairBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     123: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     126: ifeq          142
+     129: aload_2
+     130: getstatic     #96                 // Field net/minecraft/world/level/block/StairBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     133: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     136: checkcast     #100                // class java/lang/Boolean
+     139: goto          146
+     142: iconst_0
+     143: invokestatic  #102                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     146: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     149: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+     152: areturn
+     153: aload_1
+     154: areturn
+
+  public default net.minecraft.world.level.block.state.BlockState getSlabBlockWithState(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_1
+       1: invokevirtual #52                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       4: instanceof    #106                // class net/minecraft/world/level/block/SlabBlock
+       7: ifeq          83
+      10: aload_1
+      11: getstatic     #108                // Field net/minecraft/world/level/block/SlabBlock.TYPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      14: aload_2
+      15: getstatic     #108                // Field net/minecraft/world/level/block/SlabBlock.TYPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      18: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      21: ifeq          37
+      24: aload_2
+      25: getstatic     #108                // Field net/minecraft/world/level/block/SlabBlock.TYPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      28: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      31: checkcast     #111                // class net/minecraft/world/level/block/state/properties/SlabType
+      34: goto          40
+      37: getstatic     #113                // Field net/minecraft/world/level/block/state/properties/SlabType.BOTTOM:Lnet/minecraft/world/level/block/state/properties/SlabType;
+      40: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      43: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+      46: getstatic     #116                // Field net/minecraft/world/level/block/SlabBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      49: aload_2
+      50: getstatic     #116                // Field net/minecraft/world/level/block/SlabBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      53: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      56: ifeq          72
+      59: aload_2
+      60: getstatic     #116                // Field net/minecraft/world/level/block/SlabBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      63: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      66: checkcast     #100                // class java/lang/Boolean
+      69: goto          76
+      72: iconst_0
+      73: invokestatic  #102                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      76: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      79: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+      82: areturn
+      83: aload_1
+      84: areturn
+
+  public default net.minecraft.world.level.block.state.BlockState getWallBlockWithState(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_1
+       1: invokevirtual #52                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       4: instanceof    #117                // class net/minecraft/world/level/block/WallBlock
+       7: ifeq          234
+      10: aload_2
+      11: invokevirtual #52                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      14: instanceof    #117                // class net/minecraft/world/level/block/WallBlock
+      17: ifeq          234
+      20: aload_1
+      21: getstatic     #119                // Field net/minecraft/world/level/block/WallBlock.NORTH_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      24: aload_2
+      25: getstatic     #119                // Field net/minecraft/world/level/block/WallBlock.NORTH_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      28: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      31: ifeq          47
+      34: aload_2
+      35: getstatic     #119                // Field net/minecraft/world/level/block/WallBlock.NORTH_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      38: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      41: checkcast     #122                // class net/minecraft/world/level/block/state/properties/WallSide
+      44: goto          50
+      47: getstatic     #124                // Field net/minecraft/world/level/block/state/properties/WallSide.NONE:Lnet/minecraft/world/level/block/state/properties/WallSide;
+      50: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      53: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+      56: getstatic     #128                // Field net/minecraft/world/level/block/WallBlock.EAST_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      59: aload_2
+      60: getstatic     #128                // Field net/minecraft/world/level/block/WallBlock.EAST_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      63: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      66: ifeq          82
+      69: aload_2
+      70: getstatic     #128                // Field net/minecraft/world/level/block/WallBlock.EAST_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      73: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      76: checkcast     #122                // class net/minecraft/world/level/block/state/properties/WallSide
+      79: goto          85
+      82: getstatic     #124                // Field net/minecraft/world/level/block/state/properties/WallSide.NONE:Lnet/minecraft/world/level/block/state/properties/WallSide;
+      85: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      88: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+      91: getstatic     #131                // Field net/minecraft/world/level/block/WallBlock.SOUTH_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      94: aload_2
+      95: getstatic     #131                // Field net/minecraft/world/level/block/WallBlock.SOUTH_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      98: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     101: ifeq          117
+     104: aload_2
+     105: getstatic     #131                // Field net/minecraft/world/level/block/WallBlock.SOUTH_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     108: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     111: checkcast     #122                // class net/minecraft/world/level/block/state/properties/WallSide
+     114: goto          120
+     117: getstatic     #124                // Field net/minecraft/world/level/block/state/properties/WallSide.NONE:Lnet/minecraft/world/level/block/state/properties/WallSide;
+     120: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     123: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+     126: getstatic     #134                // Field net/minecraft/world/level/block/WallBlock.WEST_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     129: aload_2
+     130: getstatic     #134                // Field net/minecraft/world/level/block/WallBlock.WEST_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     133: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     136: ifeq          152
+     139: aload_2
+     140: getstatic     #134                // Field net/minecraft/world/level/block/WallBlock.WEST_WALL:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     143: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     146: checkcast     #122                // class net/minecraft/world/level/block/state/properties/WallSide
+     149: goto          155
+     152: getstatic     #124                // Field net/minecraft/world/level/block/state/properties/WallSide.NONE:Lnet/minecraft/world/level/block/state/properties/WallSide;
+     155: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     158: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+     161: getstatic     #137                // Field net/minecraft/world/level/block/WallBlock.UP:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     164: aload_2
+     165: getstatic     #137                // Field net/minecraft/world/level/block/WallBlock.UP:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     168: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     171: ifeq          187
+     174: aload_2
+     175: getstatic     #137                // Field net/minecraft/world/level/block/WallBlock.UP:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     178: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     181: checkcast     #100                // class java/lang/Boolean
+     184: goto          191
+     187: iconst_1
+     188: invokestatic  #102                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     191: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     194: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+     197: getstatic     #140                // Field net/minecraft/world/level/block/WallBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     200: aload_2
+     201: getstatic     #140                // Field net/minecraft/world/level/block/WallBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     204: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     207: ifeq          223
+     210: aload_2
+     211: getstatic     #140                // Field net/minecraft/world/level/block/WallBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     214: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     217: checkcast     #100                // class java/lang/Boolean
+     220: goto          227
+     223: iconst_0
+     224: invokestatic  #102                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     227: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     230: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+     233: areturn
+     234: aload_1
+     235: areturn
+
+  public default net.minecraft.world.level.block.state.BlockState getFenceBlockWithState(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_1
+       1: invokevirtual #52                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       4: instanceof    #141                // class net/minecraft/world/level/block/FenceBlock
+       7: ifeq          192
+      10: aload_1
+      11: getstatic     #143                // Field net/minecraft/world/level/block/FenceBlock.NORTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      14: aload_2
+      15: getstatic     #143                // Field net/minecraft/world/level/block/FenceBlock.NORTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      18: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      21: ifeq          37
+      24: aload_2
+      25: getstatic     #143                // Field net/minecraft/world/level/block/FenceBlock.NORTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      28: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      31: checkcast     #100                // class java/lang/Boolean
+      34: goto          41
+      37: iconst_0
+      38: invokestatic  #102                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      41: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      44: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+      47: getstatic     #145                // Field net/minecraft/world/level/block/FenceBlock.EAST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      50: aload_2
+      51: getstatic     #145                // Field net/minecraft/world/level/block/FenceBlock.EAST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      54: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      57: ifeq          73
+      60: aload_2
+      61: getstatic     #145                // Field net/minecraft/world/level/block/FenceBlock.EAST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      64: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      67: checkcast     #100                // class java/lang/Boolean
+      70: goto          77
+      73: iconst_0
+      74: invokestatic  #102                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      77: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      80: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+      83: getstatic     #148                // Field net/minecraft/world/level/block/FenceBlock.SOUTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      86: aload_2
+      87: getstatic     #148                // Field net/minecraft/world/level/block/FenceBlock.SOUTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      90: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      93: ifeq          109
+      96: aload_2
+      97: getstatic     #148                // Field net/minecraft/world/level/block/FenceBlock.SOUTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     100: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     103: checkcast     #100                // class java/lang/Boolean
+     106: goto          113
+     109: iconst_0
+     110: invokestatic  #102                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     113: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     116: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+     119: getstatic     #151                // Field net/minecraft/world/level/block/FenceBlock.WEST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     122: aload_2
+     123: getstatic     #151                // Field net/minecraft/world/level/block/FenceBlock.WEST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     126: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     129: ifeq          145
+     132: aload_2
+     133: getstatic     #151                // Field net/minecraft/world/level/block/FenceBlock.WEST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     136: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     139: checkcast     #100                // class java/lang/Boolean
+     142: goto          149
+     145: iconst_0
+     146: invokestatic  #102                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     149: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     152: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+     155: getstatic     #154                // Field net/minecraft/world/level/block/FenceBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     158: aload_2
+     159: getstatic     #154                // Field net/minecraft/world/level/block/FenceBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     162: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     165: ifeq          181
+     168: aload_2
+     169: getstatic     #154                // Field net/minecraft/world/level/block/FenceBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     172: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     175: checkcast     #100                // class java/lang/Boolean
+     178: goto          185
+     181: iconst_0
+     182: invokestatic  #102                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     185: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     188: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+     191: areturn
+     192: aload_1
+     193: areturn
+
+  public default net.minecraft.world.level.block.state.BlockState getLogBlockWithState(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_1
+       1: invokevirtual #52                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       4: instanceof    #155                // class net/minecraft/world/level/block/RotatedPillarBlock
+       7: ifeq          47
+      10: aload_1
+      11: getstatic     #157                // Field net/minecraft/world/level/block/RotatedPillarBlock.AXIS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      14: aload_2
+      15: getstatic     #157                // Field net/minecraft/world/level/block/RotatedPillarBlock.AXIS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      18: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      21: ifeq          37
+      24: aload_2
+      25: getstatic     #157                // Field net/minecraft/world/level/block/RotatedPillarBlock.AXIS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      28: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      31: checkcast     #160                // class net/minecraft/core/Direction$Axis
+      34: goto          40
+      37: getstatic     #162                // Field net/minecraft/core/Direction$Axis.Y:Lnet/minecraft/core/Direction$Axis;
+      40: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      43: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+      46: areturn
+      47: aload_1
+      48: areturn
+
+  public default net.minecraft.world.level.block.state.BlockState getLanternBlockWithState(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_1
+       1: invokevirtual #52                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       4: instanceof    #166                // class net/minecraft/world/level/block/LanternBlock
+       7: ifeq          84
+      10: aload_1
+      11: getstatic     #168                // Field net/minecraft/world/level/block/LanternBlock.HANGING:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      14: aload_2
+      15: getstatic     #168                // Field net/minecraft/world/level/block/LanternBlock.HANGING:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      18: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      21: ifeq          37
+      24: aload_2
+      25: getstatic     #168                // Field net/minecraft/world/level/block/LanternBlock.HANGING:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      28: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      31: checkcast     #100                // class java/lang/Boolean
+      34: goto          41
+      37: iconst_1
+      38: invokestatic  #102                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      41: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      44: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+      47: getstatic     #171                // Field net/minecraft/world/level/block/LanternBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      50: aload_2
+      51: getstatic     #171                // Field net/minecraft/world/level/block/LanternBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      54: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      57: ifeq          73
+      60: aload_2
+      61: getstatic     #171                // Field net/minecraft/world/level/block/LanternBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      64: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      67: checkcast     #100                // class java/lang/Boolean
+      70: goto          77
+      73: iconst_1
+      74: invokestatic  #102                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      77: invokevirtual #73                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      80: checkcast     #7                  // class net/minecraft/world/level/block/state/BlockState
+      83: areturn
+      84: aload_1
+      85: areturn
+
+  public default net.minecraft.world.level.block.state.BlockState getFenceBiomeVariant(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: aload_1
+       1: getstatic     #172                // Field BADLANDS_TAG:Lnet/minecraft/tags/TagKey;
+       4: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+       9: ifeq          19
+      12: getstatic     #184                // Field net/minecraft/world/level/block/Blocks.DARK_OAK_FENCE:Lnet/minecraft/world/level/block/Block;
+      15: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      18: areturn
+      19: aload_1
+      20: getstatic     #196                // Field TAIGA_TAG:Lnet/minecraft/tags/TagKey;
+      23: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      28: ifeq          38
+      31: getstatic     #199                // Field net/minecraft/world/level/block/Blocks.SPRUCE_FENCE:Lnet/minecraft/world/level/block/Block;
+      34: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      37: areturn
+      38: aload_1
+      39: getstatic     #202                // Field JUNGLE_TAG:Lnet/minecraft/tags/TagKey;
+      42: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      47: ifeq          57
+      50: getstatic     #205                // Field net/minecraft/world/level/block/Blocks.JUNGLE_FENCE:Lnet/minecraft/world/level/block/Block;
+      53: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      56: areturn
+      57: aload_1
+      58: getstatic     #208                // Field SAVANNA_TAG:Lnet/minecraft/tags/TagKey;
+      61: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      66: ifeq          76
+      69: getstatic     #211                // Field net/minecraft/world/level/block/Blocks.ACACIA_FENCE:Lnet/minecraft/world/level/block/Block;
+      72: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      75: areturn
+      76: getstatic     #214                // Field net/minecraft/world/level/block/Blocks.OAK_FENCE:Lnet/minecraft/world/level/block/Block;
+      79: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      82: areturn
+
+  public default net.minecraft.world.level.block.state.BlockState getLogBiomeVariant(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: aload_1
+       1: getstatic     #172                // Field BADLANDS_TAG:Lnet/minecraft/tags/TagKey;
+       4: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+       9: ifeq          19
+      12: getstatic     #217                // Field net/minecraft/world/level/block/Blocks.DARK_OAK_LOG:Lnet/minecraft/world/level/block/Block;
+      15: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      18: areturn
+      19: aload_1
+      20: getstatic     #196                // Field TAIGA_TAG:Lnet/minecraft/tags/TagKey;
+      23: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      28: ifeq          38
+      31: getstatic     #220                // Field net/minecraft/world/level/block/Blocks.SPRUCE_LOG:Lnet/minecraft/world/level/block/Block;
+      34: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      37: areturn
+      38: aload_1
+      39: getstatic     #202                // Field JUNGLE_TAG:Lnet/minecraft/tags/TagKey;
+      42: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      47: ifeq          57
+      50: getstatic     #223                // Field net/minecraft/world/level/block/Blocks.JUNGLE_LOG:Lnet/minecraft/world/level/block/Block;
+      53: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      56: areturn
+      57: aload_1
+      58: getstatic     #208                // Field SAVANNA_TAG:Lnet/minecraft/tags/TagKey;
+      61: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      66: ifeq          76
+      69: getstatic     #226                // Field net/minecraft/world/level/block/Blocks.ACACIA_LOG:Lnet/minecraft/world/level/block/Block;
+      72: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      75: areturn
+      76: getstatic     #229                // Field net/minecraft/world/level/block/Blocks.OAK_LOG:Lnet/minecraft/world/level/block/Block;
+      79: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      82: areturn
+
+  public default net.minecraft.world.level.block.state.BlockState getPlanksBiomeVariant(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: aload_1
+       1: getstatic     #172                // Field BADLANDS_TAG:Lnet/minecraft/tags/TagKey;
+       4: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+       9: ifeq          19
+      12: getstatic     #232                // Field net/minecraft/world/level/block/Blocks.DARK_OAK_PLANKS:Lnet/minecraft/world/level/block/Block;
+      15: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      18: areturn
+      19: aload_1
+      20: getstatic     #196                // Field TAIGA_TAG:Lnet/minecraft/tags/TagKey;
+      23: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      28: ifeq          38
+      31: getstatic     #235                // Field net/minecraft/world/level/block/Blocks.SPRUCE_PLANKS:Lnet/minecraft/world/level/block/Block;
+      34: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      37: areturn
+      38: aload_1
+      39: getstatic     #202                // Field JUNGLE_TAG:Lnet/minecraft/tags/TagKey;
+      42: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      47: ifeq          57
+      50: getstatic     #238                // Field net/minecraft/world/level/block/Blocks.JUNGLE_PLANKS:Lnet/minecraft/world/level/block/Block;
+      53: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      56: areturn
+      57: aload_1
+      58: getstatic     #208                // Field SAVANNA_TAG:Lnet/minecraft/tags/TagKey;
+      61: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      66: ifeq          76
+      69: getstatic     #241                // Field net/minecraft/world/level/block/Blocks.ACACIA_PLANKS:Lnet/minecraft/world/level/block/Block;
+      72: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      75: areturn
+      76: getstatic     #244                // Field net/minecraft/world/level/block/Blocks.OAK_PLANKS:Lnet/minecraft/world/level/block/Block;
+      79: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      82: areturn
+
+  public default net.minecraft.world.level.block.state.BlockState getSlabBiomeVariant(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: aload_1
+       1: getstatic     #172                // Field BADLANDS_TAG:Lnet/minecraft/tags/TagKey;
+       4: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+       9: ifeq          19
+      12: getstatic     #247                // Field net/minecraft/world/level/block/Blocks.DARK_OAK_SLAB:Lnet/minecraft/world/level/block/Block;
+      15: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      18: areturn
+      19: aload_1
+      20: getstatic     #196                // Field TAIGA_TAG:Lnet/minecraft/tags/TagKey;
+      23: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      28: ifeq          38
+      31: getstatic     #250                // Field net/minecraft/world/level/block/Blocks.SPRUCE_SLAB:Lnet/minecraft/world/level/block/Block;
+      34: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      37: areturn
+      38: aload_1
+      39: getstatic     #202                // Field JUNGLE_TAG:Lnet/minecraft/tags/TagKey;
+      42: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      47: ifeq          57
+      50: getstatic     #253                // Field net/minecraft/world/level/block/Blocks.JUNGLE_SLAB:Lnet/minecraft/world/level/block/Block;
+      53: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      56: areturn
+      57: aload_1
+      58: getstatic     #208                // Field SAVANNA_TAG:Lnet/minecraft/tags/TagKey;
+      61: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      66: ifeq          76
+      69: getstatic     #256                // Field net/minecraft/world/level/block/Blocks.ACACIA_SLAB:Lnet/minecraft/world/level/block/Block;
+      72: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      75: areturn
+      76: getstatic     #259                // Field net/minecraft/world/level/block/Blocks.OAK_SLAB:Lnet/minecraft/world/level/block/Block;
+      79: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      82: areturn
+
+  public default net.minecraft.world.level.block.state.BlockState getStairsBiomeVariant(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: aload_1
+       1: getstatic     #172                // Field BADLANDS_TAG:Lnet/minecraft/tags/TagKey;
+       4: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+       9: ifeq          19
+      12: getstatic     #262                // Field net/minecraft/world/level/block/Blocks.DARK_OAK_STAIRS:Lnet/minecraft/world/level/block/Block;
+      15: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      18: areturn
+      19: aload_1
+      20: getstatic     #196                // Field TAIGA_TAG:Lnet/minecraft/tags/TagKey;
+      23: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      28: ifeq          38
+      31: getstatic     #265                // Field net/minecraft/world/level/block/Blocks.SPRUCE_STAIRS:Lnet/minecraft/world/level/block/Block;
+      34: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      37: areturn
+      38: aload_1
+      39: getstatic     #202                // Field JUNGLE_TAG:Lnet/minecraft/tags/TagKey;
+      42: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      47: ifeq          57
+      50: getstatic     #268                // Field net/minecraft/world/level/block/Blocks.JUNGLE_STAIRS:Lnet/minecraft/world/level/block/Block;
+      53: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      56: areturn
+      57: aload_1
+      58: getstatic     #208                // Field SAVANNA_TAG:Lnet/minecraft/tags/TagKey;
+      61: invokeinterface #178,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      66: ifeq          76
+      69: getstatic     #271                // Field net/minecraft/world/level/block/Blocks.ACACIA_STAIRS:Lnet/minecraft/world/level/block/Block;
+      72: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      75: areturn
+      76: getstatic     #274                // Field net/minecraft/world/level/block/Blocks.OAK_STAIRS:Lnet/minecraft/world/level/block/Block;
+      79: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      82: areturn
+
+  static {};
+    Code:
+       0: getstatic     #277                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+       3: invokevirtual #190                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       6: putstatic     #280                // Field AIR:Lnet/minecraft/world/level/block/state/BlockState;
+       9: getstatic     #283                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      12: ldc_w         #291                // String yungsbridges
+      15: ldc_w         #293                // String collections/badlands
+      18: invokestatic  #295                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      21: invokestatic  #301                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+      24: putstatic     #172                // Field BADLANDS_TAG:Lnet/minecraft/tags/TagKey;
+      27: getstatic     #283                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      30: ldc_w         #291                // String yungsbridges
+      33: ldc_w         #307                // String collections/taiga
+      36: invokestatic  #295                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      39: invokestatic  #301                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+      42: putstatic     #196                // Field TAIGA_TAG:Lnet/minecraft/tags/TagKey;
+      45: getstatic     #283                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      48: ldc_w         #291                // String yungsbridges
+      51: ldc_w         #309                // String collections/savanna
+      54: invokestatic  #295                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      57: invokestatic  #301                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+      60: putstatic     #208                // Field SAVANNA_TAG:Lnet/minecraft/tags/TagKey;
+      63: getstatic     #283                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      66: ldc_w         #291                // String yungsbridges
+      69: ldc_w         #311                // String collections/jungle
+      72: invokestatic  #295                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      75: invokestatic  #301                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+      78: putstatic     #202                // Field JUNGLE_TAG:Lnet/minecraft/tags/TagKey;
+      81: return
+}
