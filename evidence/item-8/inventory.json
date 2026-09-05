@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "59a6d7d18eb9b560825eeed494b532cfbe5a21426bbfa69817a5b096cbf89bba",
+    "evidence/item-8/family-decisions.json": "f9a58e0977649c0f6d09ade7791561bf46a069d839eadabb0145b4b1b78146cc",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -159009,6 +159009,12 @@
           "scope": "Captured generation control flow, not observed placement success, discovery frequency or final support geometry. Full processor effects and placement eligibility still require reconciliation.",
           "selection": "Randomly choose from remaining inline placed features; return on first successful place result, otherwise remove that candidate and continue until exhausted.",
           "success_limit": "AbstractTemplateFeature discards the placeInWorld boolean. BridgeFeature returns true for a non-null loaded template; this does not prove all blocks were placed.",
+          "support_geometry": {
+            "behavior": "Replace the marker with the first supplied block state, then descend at fixed X/Z through air or liquid while Y > 0, using the second supplied state. Stop at Y <= 0 or a block that is neither air nor liquid.",
+            "limit": "The descent uses literal Y=0, not the dimension minimum build height. setBlock return values are discarded; this is source-derived placement intent, not an observed completed pillar.",
+            "source": "DynamicLegProcessor calls ITemplateFeatureProcessor.generatePillarDown for template support markers.",
+            "vertical_size": "Template Y sizes describe the bridge body only. Supports may extend below that envelope; total occupied height depends on terrain and placement success."
+          },
           "vertical_anchor": "WorldGenLevel.getSeaLevel() replaces the incoming origin Y before template placement."
         },
         "generation_step": "surface_structures",

@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `955936c`, SHA-256
-`05295953bfbab2da42d0ef9f9feac58a4013ab14313718f59c9151fb192e1966`.
+Current working inventory regenerated at `733c0cf`, SHA-256
+`5410d6d5ae2e6e5ad584dece89db3396c70c561056de5d9e47545c97fcd3a9e7`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1444,3 +1444,8 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung
 Nine affected tests passed. Scoped Ruff and Basedpyright pass after splitting
 one compound test assertion. Decision SHA-256:
 `f9a58e0977649c0f6d09ade7791561bf46a069d839eadabb0145b4b1b78146cc`.
+
+Inventory regenerated at `733c0cf`, SHA-256:
+`5410d6d5ae2e6e5ad584dece89db3396c70c561056de5d9e47545c97fcd3a9e7`.
+Only the decision identity and bridge support-geometry field changed. All 421
+registry family rows and 887 roots remain unchanged.
