@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-05
 
+Mansion entry/foundation paths are preserved in 80b4fc4. Follow the direct
+LayoutGenerator and its RoomCollection/FirstFloor/SecondFloor/ThirdFloor
+selectors to bind component pools. Existing saved-piece envelopes exclude
+possible foundation extension. Reuse existing catalogs and tracing tools.
+
 Continue Repurposed Structures mansion custom-generation attribution with
 MansionStructure, MansionPieces and MansionStructurePiece. Existing pool traces
 do not resolve this custom path. Reuse the extractor and template catalogs;
