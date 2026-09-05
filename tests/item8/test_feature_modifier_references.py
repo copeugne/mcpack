@@ -16,6 +16,42 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
+def test_end_island_packaged_biome_entrypoints() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    entrypoints = cast("dict[str, JsonValue]", contributions[
+        "betterendisland:platform_gateway"]["packaged_biome_entrypoints"])
+    catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(
+        Path(str(entrypoints["catalog"])).read_bytes())))
+    expected: list[dict[str, JsonValue]] = []
+    for row in cast("list[dict[str, JsonValue]]", catalog["resources"]):
+        if "/worldgen/biome/" not in str(row["path"]) or not isinstance(row["document"], dict):
+            continue
+        document = cast("dict[str, JsonValue]", row["document"])
+        groups = cast("list[list[JsonValue]]", document.get("features", []))
+        links = sorted({value for group in groups
+                        for value in group if isinstance(value, str)} & {
+                            "minecraft:end_spike", "minecraft:end_platform",
+                            "minecraft:end_gateway_return"})
+        if links:
+            parts = str(row["path"]).split("/")
+            expected.append({"archive": row["archive"], "path": row["path"],
+                             "sha256": row["sha256"],
+                             "biome": parts[1] + ":" + parts[-1][:-5],
+                             "placed_features": cast("JsonValue", links)})
+    assert entrypoints["rows"] == expected
+    dimensions = cast("dict[str, list[str]]", json.loads(Path(
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json").read_bytes()))
+    registered = read_registry(Path(
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_biome.txt"))
+    for row in expected:
+        assert str(row["biome"]) in registered
+        assert [name for name, biomes in dimensions.items()
+                if row["biome"] in biomes] == ["minecraft:the_end"]
+
+
 # Keep the observed feature grammar in one proof, without a new traversal framework.
 def test_selected_feature_modifier_references() -> None:  # noqa: C901, PLR0915
     root = Path(__file__).resolve().parents[2]
