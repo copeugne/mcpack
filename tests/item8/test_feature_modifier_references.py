@@ -307,3 +307,24 @@ def test_yungs_bridge_supports_stop_at_zero_or_non_air_non_liquid() -> None:
     assert "getMinBuildHeight" not in pillar
     assert "BlockPos.below:" in pillar
     assert pillar.count("WorldGenLevel.setBlock:") == 2
+
+
+def test_yungs_bridge_processors_have_no_direct_encounter_or_loot_calls() -> None:
+    base = Path("evidence/item-8/sources/yungs-bridge-processors")
+    manifest = (base / "identities.json").read_bytes()
+    assert hashlib.sha256(manifest).hexdigest() == (
+        "97da8471a115645afe18fee88f98407410097d244ed1d43d2a25ae4a6ad0bfaf"
+    )
+    rows = cast("list[dict[str, str]]", json.loads(manifest))
+    assert len(rows) == 14
+    for row in rows:
+        raw = (base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        source = raw.decode()
+        # A scoped direct-reference check, not proof about delegated or external code.
+        for token in (
+            "world/entity/", "addFreshEntity", "setLootTable", "LootTable",
+            "BaseSpawner", "SpawnerBlockEntity", "Blocks.SPAWNER:",
+            "Blocks.TRIAL_SPAWNER:", "Blocks.CHEST:", "Blocks.BARREL:",
+        ):
+            assert token not in source, (row["class"], token)
