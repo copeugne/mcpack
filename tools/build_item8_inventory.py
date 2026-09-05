@@ -21,12 +21,14 @@ TRACES = "evidence/item-8/sources/pool-traces-content.json.gz"
 BOUNDS = "evidence/item-8/sources/world-bounds.json.gz"
 DECISIONS = "evidence/item-8/family-decisions.json"
 REGISTRY = "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+DIMENSION_BIOMES = "evidence/item-8/runtime/dimension-r3/dimension-biomes.json"
 INPUTS = {
     SOURCES: "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
     TRACES: "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
     BOUNDS: "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
     DECISIONS: "06cff81b09d0caa84837c979acd85bfa207b9037ab27e3e9134853ba6811a89d",
     REGISTRY: "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+    DIMENSION_BIOMES: "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
 }
 
 
@@ -71,12 +73,13 @@ def _spawner_sources(
     }
 
 
-def assemble(
+def assemble(  # noqa: C901, PLR0913, PLR0917 - keep explicit evidence joins in one assembly pass.
     registry: tuple[str, ...],
     decisions: list[dict[str, JsonValue]],
     sources: dict[str, JsonValue],
     traces: dict[str, JsonValue],
     bounds: dict[str, JsonValue],
+    dimension_biomes: dict[str, list[str]],
 ) -> dict[str, JsonValue]:
     """Join resolved groups without treating unassigned IDs or unknown attributes as complete."""
     families: dict[str, JsonValue] = {}
@@ -108,6 +111,23 @@ def assemble(
             index for index, row in enumerate(observations) if row["structure_id"] in members
         ]
         dimensions = sorted({str(observations[index]["dimension"]) for index in world_rows})
+        compatible_dimensions: dict[str, JsonValue] = {}
+        for member in members:
+            constraint = cast("dict[str, JsonValue]", constraints[member])
+            biomes = cast("list[str] | None", constraint.get("biomes"))
+            if (
+                biomes is None
+                or constraint.get("missing_required")
+                or constraint.get("unresolved_tags")
+            ):
+                compatible_dimensions[member] = "UNKNOWN: biome constraints are unresolved"
+            else:
+                compatible_dimensions[member] = cast(
+                    "JsonValue", sorted(
+                        dimension for dimension, possible in dimension_biomes.items()
+                        if set(biomes).intersection(possible)
+                    )
+                )
         observed_sizes = [
             cast("list[int]", observations[index]["size_xyz"])
             for index in world_rows
@@ -151,7 +171,16 @@ def assemble(
             "structure_ids": cast("JsonValue", members),
             "grouping_decision": decision,
             "status": "INCOMPLETE",
-            "dimension": {"observed": cast("JsonValue", dimensions), "eligibility": "UNKNOWN"},
+            "dimension": {
+                "observed": cast("JsonValue", dimensions),
+                "biome_compatible_by_structure": compatible_dimensions,
+                "artifact": DIMENSION_BIOMES,
+                "eligibility": (
+                    "Biome overlap only. Structure-set selection, custom-generator "
+                    "conditions and effective structure constraints remain to be reconciled. "
+                    "An empty match is not an observed generation failure."
+                ),
+            },
             "biome_constraints": {member: constraints[member] for member in members},
             "approximate_footprint": (
                 {
@@ -279,6 +308,7 @@ def main() -> None:
         documents[SOURCES],
         documents[TRACES],
         documents[BOUNDS],
+        cast("dict[str, list[str]]", documents[DIMENSION_BIOMES]),
     )
     result["inputs"] = dict(INPUTS)
     with output.open("x", encoding="utf-8") as stream:
