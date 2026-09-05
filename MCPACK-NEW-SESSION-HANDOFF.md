@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+The three Better End Island configuration classes are now captured and
+reproduced exactly. ConfigModuleNeoForge registers the frozen COMMON filename
+and bakeConfig maps its values to the fields read by the hooks. Both vanilla
+platform/gateway toggles are false in the frozen file and constructor defaults.
+Integrate this binding from sources/better-end-island-configuration, then resolve
+mixin activation and spike/podium paths. Inventory remains at `69d3e14`; do not
+repeat configuration extraction. Item 8 remains incomplete.
+
 Bind the frozen Better End Island TOML to its runtime fields through the exact
 BEIConfigNeoForge, ConfigModule and ConfigModuleNeoForge classes. The platform
 and gateway hooks already identify the controlling fields. Reuse the existing
