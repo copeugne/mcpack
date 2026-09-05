@@ -325,6 +325,7 @@ CLASSES: tuple[str, ...] = (
     "org/violetmoon/zetaimplforge/config/ConfigEventDispatcher.class",
     "org/violetmoon/zeta/module/ZetaModule.class",
     "org/violetmoon/zeta/module/ZetaCategory.class",
+    "org/violetmoon/zeta/util/MiscUtil.class",
     "org/violetmoon/quark/base/proxy/CommonProxy.class",
     "org/violetmoon/zetaimplforge/module/ModFileScanDataModuleFinder.class",
     "org/violetmoon/zeta/module/ZetaLoadModuleAnnotationData.class",

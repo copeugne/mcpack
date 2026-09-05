@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-05
 
+Select only Zeta MiscUtil to bind HORIZONTALS. Its actual array contents affect
+two current consumers, Nether spike footprint and Fallen Log orientation and
+decoration. Existing captures reference but do not define this array. Reuse the
+existing extractor; do not interpret unrelated utility methods or add a new
+measurement system.
+
 Nether obsidian spikes are integrated as one working family in 4151e8c, with
 ordinary and large encounter variants explicit. The large variant authors a
 blaze spawner and chest using the selected minecraft:chests/nether_bridge table,
