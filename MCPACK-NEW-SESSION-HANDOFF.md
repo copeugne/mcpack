@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-05
 
+Igloo integration is delivered: `3a102c3` records three components and seven
+attributes, and `ca0fa30` delivers the inventory. All 59 affected tests passed;
+scoped checks and the final focused test passed after one explicit regex-result
+type annotation. Source README records geometry derivation and reproduction.
+Decision SHA:
+`06cff81b09d0caa84837c979acd85bfa207b9037ab27e3e9134853ba6811a89d`.
+Inventory SHA:
+`9f2fa36230e5520571b71f9535b3d1291527c939ec9fee4867e04bfaefc06d01`.
+Only igloo attributes/grouping and the decision input identity change; raw world
+evidence and trace are unchanged. Remote refs verified. The pending igloo
+integration below is superseded. Continue remaining custom generators and
+provider/family gaps without repeating this source work. Effective retained-mod
+effects, remaining attributes and final Item 8 closure remain open.
+
 Igloo generation source is delivered in `74efeb4`, using the existing extractor
 extended in `3a174ef`. Both remote refs were verified. Its manifest SHA is
 `5104752aa5eb795053f75e8d62731b7ea7d79af1f9cacfdccfe2e55f9336838e`.
