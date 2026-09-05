@@ -158943,14 +158943,207 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "96cf175ab478a94d86edbc4c638c96c33b84f9d24ba2aa7d6fa4d01cc0d2914e",
+    "evidence/item-8/family-decisions.json": "35b9fbabcdc6521dd3cdbbb11d7432204e9b88e571c4bdb1a94c58423f9b0cb2",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
     "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
     "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
   },
-  "non_registry_content": "UNKNOWN: feature structures and injected village buildings need explicit relationships",
+  "non_registry_content": {
+    "contributions": {
+      "yungsbridges:bridges": {
+        "biome_and_modifier_constraints": {
+          "biome_tag": "yungsbridges:has_structure/bridge",
+          "dimension_biome_overlap": {
+            "minecraft:overworld": [
+              "minecraft:frozen_river",
+              "minecraft:river",
+              "regions_unexplored:cold_river",
+              "regions_unexplored:muddy_river",
+              "regions_unexplored:tropical_river",
+              "terralith:warm_river"
+            ]
+          },
+          "missing_required_members": [],
+          "modifier_order": [
+            "yungsbridges:bridge",
+            "minecraft:rarity_filter",
+            "yungsbridges:rng_initializer"
+          ],
+          "rarity_filter_chance": 3,
+          "rarity_scope": "All 22 inline variants specify chance=3 after their terrain filter. This is not an observed bridge frequency or an independent one-in-three chance per chunk; the selector can try multiple candidates.",
+          "registered_biomes": [
+            "minecraft:frozen_river",
+            "minecraft:river",
+            "regions_unexplored:cold_river",
+            "regions_unexplored:muddy_river",
+            "regions_unexplored:tropical_river",
+            "terralith:warm_river"
+          ],
+          "rng_initializer": "Consumes two nextLong values, forces their low bits to one, combines them with candidate X/Z and constants to reseed the supplied random source, then returns the same position. No additional position or eligibility test.",
+          "scope": "Biome resolution uses existing merged packaged tags and the verified biome registry. Dimension overlap uses the captured live possible-biome lists, not observed successful bridge placement. Standalone configuration registration and external modifications remain unresolved."
+        },
+        "biome_modifier": "data/yungsbridges/neoforge/biome_modifier/bridge_addition.json",
+        "biome_tag": "#yungsbridges:has_structure/bridge",
+        "configured_feature": "yungsbridges:bridge_list",
+        "configured_to_template": {
+          "yungsbridges:bridge/stone/15_1": "yungsbridges:bridge/stone/15_1",
+          "yungsbridges:bridge/stone/15_1_rotated": "yungsbridges:bridge/stone/15_1",
+          "yungsbridges:bridge/stone/16_0": "yungsbridges:bridge/stone/16_0",
+          "yungsbridges:bridge/stone/16_0_broken": "yungsbridges:bridge/stone/16_0_broken",
+          "yungsbridges:bridge/stone/16_0_broken_rotated": "yungsbridges:bridge/stone/16_0_broken",
+          "yungsbridges:bridge/stone/16_0_rotated": "yungsbridges:bridge/stone/16_0",
+          "yungsbridges:bridge/stone/22_0": "yungsbridges:bridge/stone/22_0",
+          "yungsbridges:bridge/stone/22_0_broken": "yungsbridges:bridge/stone/22_0_broken",
+          "yungsbridges:bridge/stone/22_0_broken_rotated": "yungsbridges:bridge/stone/22_0_broken",
+          "yungsbridges:bridge/stone/22_0_rotated": "yungsbridges:bridge/stone/22_0",
+          "yungsbridges:bridge/stone/24_0": "yungsbridges:bridge/stone/24_0",
+          "yungsbridges:bridge/stone/24_0_broken": "yungsbridges:bridge/stone/24_0_broken",
+          "yungsbridges:bridge/stone/24_0_broken_rotated": "yungsbridges:bridge/stone/24_0_broken",
+          "yungsbridges:bridge/stone/24_0_rotated": "yungsbridges:bridge/stone/24_0",
+          "yungsbridges:bridge/stone/31_0": "yungsbridges:bridge/stone/31_0",
+          "yungsbridges:bridge/stone/31_0_rotated": "yungsbridges:bridge/stone/31_0",
+          "yungsbridges:bridge/wood/17_0": "yungsbridges:bridge/wood/17_0",
+          "yungsbridges:bridge/wood/17_0_broken": "yungsbridges:bridge/wood/17_0_broken",
+          "yungsbridges:bridge/wood/17_0_broken_rotated": "yungsbridges:bridge/wood/17_0_broken",
+          "yungsbridges:bridge/wood/17_0_rotated": "yungsbridges:bridge/wood/17_0",
+          "yungsbridges:bridge/wood/27_0": "yungsbridges:bridge/wood/27_0",
+          "yungsbridges:bridge/wood/27_0_rotated": "yungsbridges:bridge/wood/27_0"
+        },
+        "direct_encounter_content": {
+          "authored_or_natural": "No authored template entities or direct processor-spawned enemies identified. Any natural enemies require biome/runtime attribution, which is still unresolved.",
+          "generated_spawners": "No direct spawner block reference or spawner configuration in the captured processors; no spawner block entity in the packaged templates. External generation modifications remain outside this finding.",
+          "intended_hostility": "Environmental bridge infrastructure; no authored encounter is present in the verified template entities or direct processor calls. This is a source-based interpretation, not observed safety.",
+          "loot_table_source": "No direct container-loot assignment in the captured processors; packaged bridge templates have empty block-entity lists. This is not a statement about ordinary block drops or external loot injection.",
+          "mob_source": "No direct entity-spawning call in the fourteen captured processor/module/interface classes; all fourteen packaged templates have empty entity lists. Natural biome spawning and external retained-mod effects are not excluded.",
+          "scope": "Direct template/processor contribution only. The captured processors perform block replacement, support extension and state adaptation. Delegated engine/API behavior and whole-stack modifications are not proven absent by this source scan."
+        },
+        "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+          "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_biome.txt": "0970c5296980495640901e3ba7fd44fa90e97da4774900368fa924a263446713",
+          "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_configured_feature.txt": "7522f8d6f1bcd1f3c5d9211c89f3fcf2e201c80cee88dab52d4e2274b0fbc844",
+          "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_placed_feature.txt": "20d3a7d932b6e5c8f417ff07060a1fa63e95294f35ef78d92651efc221a4a48f",
+          "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+          "evidence/item-8/sources/yungs-bridge-generation/identities.json": "2e6f68933e8b02e097901bb8db1afb3d277be7204e31574d44e66445696552da",
+          "evidence/item-8/sources/yungs-bridge-processors/identities.json": "97da8471a115645afe18fee88f98407410097d244ed1d43d2a25ae4a6ad0bfaf"
+        },
+        "generation": {
+          "placement_eligibility": {
+            "banks": "Endpoint centers are length + 1 blocks apart. Both must canOcclude and have WORLD_SURFACE height <= sea level. At each endpoint, count the center plus contiguous qualifying lateral cells on each side, stopping that side at its first failure or width/2. Each endpoint count must reach numSolidBlocksNeeded.",
+            "sampling_plane": "Sea level minus one. The generator subsequently anchors the template at sea level.",
+            "scope": "These are the custom terrain checks. Biome filtering, selector variants and rarity modifiers remain separate packaged constraints; no world observation is inferred.",
+            "search": "For each lateral offset from width/2 + widthOffset + 1 (inclusive) to 16 - width/2 - widthOffset (exclusive), try longitudinal offsets 0 through 15. Integer division is used. Swap X/Z roles for non-Z-axis variants. Return only the first valid candidate, or an empty stream.",
+            "source": "BridgePlacement.getPositions in the captured generator manifest.",
+            "span": "Every cell from lateral -width/2 through width/2 and longitudinal minWaterZ through maxWaterZ (inclusive) must satisfy BlockState.liquid at sea level minus one. The predicate does not specifically test water.",
+            "surface_classification": "Surface liquid-crossing placement intent, supported by the bank heightmap and sea-level checks. This is not proof of player visibility or observed generation frequency."
+          },
+          "processing_stage": "StructureTemplate.placeInWorld runs before the custom processor list is applied in order.",
+          "processor_order": [
+            "LEG_PROCESSOR",
+            "LOG_BIOME_PROCESSOR",
+            "STAIR_BIOME_PROCESSOR",
+            "PLANKS_BIOME_PROCESSOR",
+            "SLAB_BIOME_PROCESSOR",
+            "STONE_VARIATION_PROCESSOR",
+            "LANTERN_ROT_PROCESSOR",
+            "OPTIONAL_WALL_PROCESSOR",
+            "OPTIONAL_STONE_BRICK_PROCESSOR",
+            "OPTIONAL_SLAB_PROCESSOR",
+            "OPTIONAL_STAIR_PROCESSOR",
+            "FENCE_BIOME_PROCESSOR"
+          ],
+          "rotation": "isZAxis=false uses COUNTERCLOCKWISE_90; true retains default rotation.",
+          "scope": "Captured generation control flow, not observed placement success, discovery frequency or final support geometry. Full processor effects and placement eligibility still require reconciliation.",
+          "selection": "Randomly choose from remaining inline placed features; return on first successful place result, otherwise remove that candidate and continue until exhausted.",
+          "success_limit": "AbstractTemplateFeature discards the placeInWorld boolean. BridgeFeature returns true for a non-null loaded template; this does not prove all blocks were placed.",
+          "support_geometry": {
+            "behavior": "Replace the marker with the first supplied block state, then descend at fixed X/Z through air or liquid while Y > 0, using the second supplied state. Stop at Y <= 0 or a block that is neither air nor liquid.",
+            "limit": "The descent uses literal Y=0, not the dimension minimum build height. setBlock return values are discarded; this is source-derived placement intent, not an observed completed pillar.",
+            "source": "DynamicLegProcessor calls ITemplateFeatureProcessor.generatePillarDown for template support markers.",
+            "vertical_size": "Template Y sizes describe the bridge body only. Supports may extend below that envelope; total occupied height depends on terrain and placement success."
+          },
+          "vertical_anchor": "WorldGenLevel.getSeaLevel() replaces the incoming origin Y before template placement."
+        },
+        "generation_step": "surface_structures",
+        "mechanism": "NeoForge add_features biome modifier to placed bridge_list, then configured multiple_attempt_single_random with inline placed bridge variants.",
+        "placed_feature": "yungsbridges:bridge_list",
+        "relationship": "Stone/wood, intact/broken and axis variants contribute bridge layouts. Template and rotation entries are not separate canonical families; final family attribution and effective generation remain open.",
+        "template_content": {
+          "authored_entity_ids": [],
+          "block_entities": [],
+          "referenced_nominal_xyz_blocks": {
+            "yungsbridges:bridge/stone/15_1": [
+              7,
+              4,
+              15
+            ],
+            "yungsbridges:bridge/stone/16_0": [
+              5,
+              4,
+              16
+            ],
+            "yungsbridges:bridge/stone/16_0_broken": [
+              5,
+              4,
+              16
+            ],
+            "yungsbridges:bridge/stone/22_0": [
+              5,
+              6,
+              22
+            ],
+            "yungsbridges:bridge/stone/22_0_broken": [
+              5,
+              6,
+              22
+            ],
+            "yungsbridges:bridge/stone/24_0": [
+              5,
+              8,
+              24
+            ],
+            "yungsbridges:bridge/stone/24_0_broken": [
+              5,
+              8,
+              24
+            ],
+            "yungsbridges:bridge/stone/31_0": [
+              9,
+              9,
+              31
+            ],
+            "yungsbridges:bridge/wood/17_0": [
+              4,
+              5,
+              17
+            ],
+            "yungsbridges:bridge/wood/17_0_broken": [
+              4,
+              5,
+              17
+            ],
+            "yungsbridges:bridge/wood/27_0": [
+              5,
+              7,
+              27
+            ]
+          },
+          "scope": "All fourteen packaged templates have empty entities and block_entities. Eleven are referenced by the verified bridge selector. Dimensions are unrotated template envelopes, not observed assembled/occupied geometry. Generator transformations and marker-block handling remain unresolved; unreferenced templates are not assumed active.",
+          "unreferenced_packaged_templates": [
+            "yungsbridges:bridge/wood/13_0",
+            "yungsbridges:bridge/wood/13_0_broken",
+            "yungsbridges:bridge/wood/15_0"
+          ]
+        }
+      }
+    },
+    "scope": "Verified contribution paths only; remaining providers, family attributes, configuration and generated-world observations still require reconciliation. Not an accepted canonical family count.",
+    "status": "INCOMPLETE"
+  },
   "scope": "Working family inventory. Group relationships, provider coverage and attributes remain unresolved. Not a canonical total or exit-gate pass.",
   "status": "INCOMPLETE",
   "unassigned_registry_ids": []

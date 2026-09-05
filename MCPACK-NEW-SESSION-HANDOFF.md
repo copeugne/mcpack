@@ -6,6 +6,96 @@
 
 ### Continuation update - 2026-09-05
 
+Bridge biome/modifier constraints are delivered in `c19f9d5`. Existing merged
+tags resolve six registered river biomes with no required missing members;
+only the captured overworld possible-biome list overlaps. All 22 variants
+have terrain, chance=3 rarity and RNG initialization in that order. This is
+not observed generation frequency. Eleven affected tests and scoped quality
+checks passed. Inventory SHA-256:
+`f2497cb9bd2118ce0e1910cd2a203d9d51ea21d83636cb7f3addf2601b3c2a97`.
+All 421 registry family rows and 887 roots remain unchanged. Next reconcile
+standalone bridge configuration registration and remaining provider coverage.
+Item 8 remains incomplete; no new capture or measurement system was added.
+
+
+Bridge terrain placement is delivered in `e8503b5`. The source now binds bank
+height/occlusion/count checks, the liquid span rectangle and first-candidate
+search. The liquid predicate is not water-specific. It supports surface-crossing
+intent, not observed visibility or frequency. Eleven affected tests and scoped
+Ruff/Basedpyright passed. Inventory SHA-256:
+`71f820a7edd7337111c7e8b8a031e0ef11a99babdea3152b440f7a3ccd459ed5`.
+All 421 registry family rows and 887 roots remain unchanged. Next reconcile
+bridge configuration/biome controls and other provider coverage. Item 8 remains
+incomplete; no new source capture, runtime or measurement system was added.
+
+
+Direct bridge encounter and loot attribution is delivered in `544d5de`.
+The fourteen captured processor/module/interface classes have no direct entity,
+spawner or container-loot calls; existing templates have empty entity/block-entity
+lists. This resolves direct contribution only, not natural mobs, delegated
+behavior or external retained-mod effects. Ten affected tests and scoped Ruff
+and Basedpyright passed. Inventory SHA-256:
+`53d49ef90e2b842f8b6321ef74b8fbc1e06537de934201b149c9e00533e0f08e`.
+All 421 registry family rows and 887 roots remain unchanged. Next finish bridge
+placement/configuration and other provider coverage. Item 8 remains incomplete;
+no new capture or measurement system was added.
+
+
+Bridge support geometry is delivered in `733c0cf`. Captured code places the
+marker then descends through air/liquid at fixed X/Z while Y > 0. Template
+height is the body envelope, not the terrain-dependent total support height.
+Block-write success is not checked by this helper. Nine affected tests passed;
+scoped Ruff and Basedpyright pass after splitting one compound assertion.
+Inventory SHA-256:
+`5410d6d5ae2e6e5ad584dece89db3396c70c561056de5d9e47545c97fcd3a9e7`.
+All 421 registry family rows and 887 roots remain unchanged. Continue other
+bridge processor effects, placement/configuration and provider coverage. Item 8
+is incomplete. No new runtime, source capture or measurement system added.
+
+
+Bridge generation ordering and success limits are delivered in `955936c`.
+The contribution now binds sea-level anchoring, axis rotation and the twelve
+post-template processors. The discarded template-placement boolean means feature
+success is not proof that every block was placed. Scoped Ruff and Basedpyright
+pass; the existing eight affected tests passed before the formatting-only wrap.
+Inventory SHA-256:
+`05295953bfbab2da42d0ef9f9feac58a4013ab14313718f59c9151fb192e1966`.
+All 421 registry family rows and 887 roots remain unchanged. Continue bridge
+processor effects and configuration/placement questions, then other provider
+gaps. No new measurement system or runtime was added. Item 8 remains incomplete.
+
+
+YUNG bridge template membership is delivered in `01edbb8`. Eleven referenced
+layouts now have nominal XYZ sizes; three packaged wood layouts (13_0,
+13_0_broken, 15_0) are explicitly unreferenced by the verified selector. All
+fourteen templates have empty entity/block-entity lists, which do not establish
+effective generated contents before custom marker/processor handling is checked.
+Seven affected tests passed; scoped checks pass after two test line wraps.
+Inventory SHA-256:
+`38eb038f5c04562162292988e8d55c407ea6f78cc489cdac8a0c5db9f69d3938`.
+All 421 registry family rows / 887 roots remain unchanged. Next inspect bridge
+custom generation/marker handling and configuration controls; no bridge-named
+frozen config was found, which is not proof that controls are absent. Continue
+other non-registry/provider gaps afterward. Item 8 remains incomplete. No new
+runtime, extraction or measurement system was added.
+
+
+YUNG's Bridges feature contribution is delivered in `6309287`. The existing
+non_registry_content field now holds verified contributions from the same pinned
+decision file. This minimal extension is necessary because structure-only groups
+cannot represent feature-based bridges with no structure IDs; no new schema,
+framework or measurement system was added. Runtime feature dumps and packaged
+NeoForge modifier/selector bind 22 configured variants to 11 template IDs. These
+are not separate accepted families. All 77 affected tests passed; bridge and
+scoped checks passed after test-only typing/import fixes. Inventory SHA-256:
+`da35ac84a7e3c198fc648088f7001b8cfad29ab311f6e3bf16d84738e0176c97`.
+All 421 structure-registry groups / 887 roots are unchanged. Next reconcile
+YUNG bridge configuration, template content and custom placement, plus other
+non-registry providers (YUNG Extras and End Island are concrete follow-ups).
+Canonical/provider coverage and remaining attributes still prevent Item 8 closure.
+Do not repeat delivered lake/mountain source work. No runtime added.
+
+
 Lake direct encounter/loot attribution is delivered in `a4548bf`, using helper
 capture `28ed678`. Eleven captured classes show no direct authored entity,
 explicit spawner configuration or container-loot assignment. BlockFixer adjusts

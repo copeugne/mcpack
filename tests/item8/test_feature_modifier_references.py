@@ -7,6 +7,8 @@ from collections import Counter
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
+from mcpack_evidence.item7_restrictions import resolve_biome_tag
+from mcpack_evidence.item8_registry import read_registry
 from mcpack_evidence.item8_resource_selection import select_resources
 
 if TYPE_CHECKING:
@@ -178,3 +180,204 @@ def test_selected_feature_modifier_references() -> None:  # noqa: C901, PLR0915
             "tassel", "willow_leaves", "willow_log",
         )),
     }
+
+
+def test_yungs_bridges_non_registry_path_binds_runtime_and_packaged_variants() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    contribution = contributions["yungsbridges:bridges"]
+    for path, digest in cast("dict[str, str]", contribution["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ).read_bytes())))
+    resources = {str(r["path"]): cast("dict[str, JsonValue]", r["document"])
+                 for r in catalog["resources"]
+                 if r["archive"] == "YungsBridges-1.21.1-NeoForge-5.1.1.jar"}
+    modifier = resources[str(contribution["biome_modifier"])]
+    assert modifier == {"type": "neoforge:add_features", "biomes": contribution["biome_tag"],
+                        "features": [contribution["placed_feature"]],
+                        "step": contribution["generation_step"]}
+    prefix = "data/yungsbridges/worldgen/"
+    assert resources[prefix + "placed_feature/bridge_list.json"] == {
+        "feature": contribution["configured_feature"], "placement": [{"type": "minecraft:biome"}]
+    }
+    selector = resources[prefix + "configured_feature/bridge_list.json"]
+    assert selector["type"] == "yungsbridges:multiple_attempt_single_random"
+    links = cast("dict[str, str]", contribution["configured_to_template"])
+    config = cast("dict[str, list[dict[str, JsonValue]]]", selector["config"])
+    assert sorted(str(x["feature"]) for x in config["features"]) == sorted(links)
+    assert len(links) == 22
+    assert len(set(links.values())) == 11
+    controls = cast("dict[str, JsonValue]", contribution["biome_and_modifier_constraints"])
+    for variant in config["features"]:
+        placements = cast("list[dict[str, JsonValue]]", variant["placement"])
+        assert [p["type"] for p in placements] == controls["modifier_order"]
+        assert placements[1] == {
+            "type": "minecraft:rarity_filter", "chance": controls["rarity_filter_chance"]
+        }
+    inputs = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/sources/structure-inputs.json"
+    ).read_bytes()))
+    tag_rows = cast("dict[str, dict[str, JsonValue]]", inputs["biome_tags"])
+    tags = {key: cast("list[object]", row["values"])
+            for key, row in tag_rows.items() if not row["unresolved"]}
+    biomes, missing = resolve_biome_tag(
+        str(controls["biome_tag"]), tags,
+        registered_biomes=frozenset(read_registry(Path(
+            "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_biome.txt"
+        ))),
+    )
+    assert sorted(biomes) == controls["registered_biomes"]
+    assert list(missing) == controls["missing_required_members"] == []
+    dimensions = cast("dict[str, list[str]]", json.loads(Path(
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json"
+    ).read_bytes()))
+    assert {key: sorted(set(values) & biomes) for key, values in dimensions.items()
+            if set(values) & biomes} == controls["dimension_biome_overlap"]
+    registry = Path("evidence/item-8/runtime/registry-r1/dumps/registry/minecraft")
+    configured = read_registry(registry / "worldgen_configured_feature.txt")
+    assert set(links) | {str(contribution["configured_feature"])} <= set(configured)
+    assert contribution["placed_feature"] in read_registry(registry / "worldgen_placed_feature.txt")
+    assert not any(r.startswith("yungsbridges:") for r in read_registry(
+        registry / "worldgen_structure.txt"
+    ))
+    for rid, template in links.items():
+        definition = resources[prefix + "configured_feature/" + rid.split(":")[1] + ".json"]
+        assert definition["type"] == "yungsbridges:bridge"
+        assert cast("dict[str, JsonValue]", definition["config"])["location"] == template
+
+
+def test_yungs_bridge_templates_keep_unreferenced_layouts_separate() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    non_registry = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", non_registry["contributions"])
+    bridge = contributions["yungsbridges:bridges"]
+    content = cast("dict[str, JsonValue]", bridge["template_content"])
+    links = cast("dict[str, str]", bridge["configured_to_template"])
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/templates-redacted.json.gz"
+    ).read_bytes())))
+    templates = {
+        str(r["path"]).replace(
+            "data/yungsbridges/structure/", "yungsbridges:"
+        ).removesuffix(".nbt"):
+        cast("dict[str, JsonValue]", r["document"])
+        for r in catalog["resources"] if r["archive"] == "YungsBridges-1.21.1-NeoForge-5.1.1.jar"
+    }
+    assert len(templates) == 14
+    assert content["referenced_nominal_xyz_blocks"] == {
+        template: templates[template]["size"] for template in sorted(set(links.values()))
+    }
+    assert content["unreferenced_packaged_templates"] == sorted(
+        set(templates) - set(links.values())
+    )
+    assert len(cast("list[str]", content["unreferenced_packaged_templates"])) == 3
+    for document in templates.values():
+        assert document["entities"] == content["authored_entity_ids"] == []
+        assert document["block_entities"] == content["block_entities"] == []
+
+
+def test_yungs_bridge_generation_binds_anchor_rotation_and_processor_order() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    generation = cast("dict[str, JsonValue]", contributions["yungsbridges:bridges"]["generation"])
+    base = Path("evidence/item-8/sources/yungs-bridge-generation")
+    rows = cast("list[dict[str, str]]", json.loads((base / "identities.json").read_bytes()))
+    sources: dict[str, str] = {}
+    for row in rows:
+        raw = (base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    bridge = sources["BridgeFeature"]
+    assert bridge.index("WorldGenLevel.getSeaLevel:") < bridge.index("createTemplateWithPlacement:")
+    assert "Rotation.COUNTERCLOCKWISE_90" in bridge
+    order = [line.split("FeatureProcessorModule.")[1].split(":")[0]
+             for line in bridge.splitlines()
+             if "// Field " in line and "FeatureProcessorModule." in line]
+    assert order == generation["processor_order"]
+    assert len(order) == 12
+    template = sources["AbstractTemplateFeature"]
+    assert template.index("StructureTemplate.placeInWorld:") < template.index("List.forEach:")
+    following = template.split("StructureTemplate.placeInWorld:")[1].splitlines()[1]
+    assert following.strip().endswith("pop")
+    selector = sources["MultipleAttemptSingleRandomFeature"]
+    assert selector.index("PlacedFeature.place:") < selector.index("List.remove:")
+    assert "RandomSource.nextInt:" in selector
+
+
+def test_yungs_bridge_supports_stop_at_zero_or_non_air_non_liquid() -> None:
+    base = Path("evidence/item-8/sources/yungs-bridge-processors")
+    rows = cast("list[dict[str, str]]", json.loads((base / "identities.json").read_bytes()))
+    sources: dict[str, str] = {}
+    for row in rows:
+        raw = (base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    assert "generatePillarDown:" in sources["DynamicLegProcessor"]
+    helper = sources["ITemplateFeatureProcessor"]
+    pillar = helper.split("public default void generatePillarDown(")[1].split(
+        "public default net.minecraft.world.level.block.state.BlockState"
+    )[0]
+    assert "42: ifle          103" in pillar
+    assert "BlockState.isAir:" in pillar
+    assert "BlockState.liquid:" in pillar
+    assert "Direction.DOWN:" in pillar
+    assert "getMinBuildHeight" not in pillar
+    assert "BlockPos.below:" in pillar
+    assert pillar.count("WorldGenLevel.setBlock:") == 2
+
+
+def test_yungs_bridge_processors_have_no_direct_encounter_or_loot_calls() -> None:
+    base = Path("evidence/item-8/sources/yungs-bridge-processors")
+    manifest = (base / "identities.json").read_bytes()
+    assert hashlib.sha256(manifest).hexdigest() == (
+        "97da8471a115645afe18fee88f98407410097d244ed1d43d2a25ae4a6ad0bfaf"
+    )
+    rows = cast("list[dict[str, str]]", json.loads(manifest))
+    assert len(rows) == 14
+    for row in rows:
+        raw = (base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        source = raw.decode()
+        # A scoped direct-reference check, not proof about delegated or external code.
+        for token in (
+            "world/entity/", "addFreshEntity", "setLootTable", "LootTable",
+            "BaseSpawner", "SpawnerBlockEntity", "Blocks.SPAWNER:",
+            "Blocks.TRIAL_SPAWNER:", "Blocks.CHEST:", "Blocks.BARREL:",
+        ):
+            assert token not in source, (row["class"], token)
+
+
+def test_yungs_bridge_placement_checks_liquid_and_both_banks() -> None:
+    base = Path("evidence/item-8/sources/yungs-bridge-generation")
+    manifest = (base / "identities.json").read_bytes()
+    assert hashlib.sha256(manifest).hexdigest() == (
+        "2e6f68933e8b02e097901bb8db1afb3d277be7204e31574d44e66445696552da"
+    )
+    rows = cast("list[dict[str, str]]", json.loads(manifest))
+    row = next(row for row in rows if row["class"].endswith("/BridgePlacement.class"))
+    raw = (base / row["disassembly"]).read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+    source = raw.decode().split("public java.util.stream.Stream")[1].split(
+        "public net.minecraft.world.level.levelgen.placement.PlacementModifierType"
+    )[0]
+    assert "WorldGenLevel.getSeaLevel:" in source
+    assert "15: iconst_1" in source
+    assert "16: isub" in source
+    assert source.count("BlockState.canOcclude:") == 4
+    assert source.count("Heightmap$Types.WORLD_SURFACE:") == 4
+    assert source.count("Field numSolidBlocksNeeded:I") == 2
+    assert "BlockState.liquid:" in source
+    assert "FluidTags.WATER" not in source
+    assert "Blocks.WATER" not in source
+    assert "Stream.empty:" in source
+    assert "875: areturn" in source

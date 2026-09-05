@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `a4548bf`, SHA-256
-`65d6dd6270f40edae66a5401a4e3aafe3f3aba5d4adccf9f6703b0dd00c8958f`.
+Current working inventory regenerated at `c19f9d5`, SHA-256
+`f2497cb9bd2118ce0e1910cd2a203d9d51ea21d83636cb7f3addf2601b3c2a97`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1312,3 +1312,222 @@ All 75 affected tests and scoped checks passed. Inventory regenerated at
 `65d6dd6270f40edae66a5401a4e3aafe3f3aba5d4adccf9f6703b0dd00c8958f`.
 Only lake direct-content fields and their grouping decision changed. Other family
 rows, size envelopes, placement/cues and observation links are unchanged.
+
+## YUNG's Bridges non-registry contribution
+
+The existing non_registry_content field now records the verified YUNG's Bridges
+feature path instead of leaving all non-registry content as one UNKNOWN string.
+This minimal extension is required because the structure-only family groups
+cannot represent a provider with no structure registry IDs. It reuses the existing
+decision file, pinned inputs, builder and feature-reference tests; no new schema,
+validator framework or measurement system is introduced.
+
+The NeoForge bridge_addition modifier targets #yungsbridges:has_structure/bridge
+and adds yungsbridges:bridge_list at surface_structures. Its placed feature uses
+the configured multiple_attempt_single_random selector, which references 22
+configured variants pointing to 11 distinct template IDs. The configured variants
+and placed root are in the preserved runtime dumps; no yungsbridges structure ID
+is in the structure dump. The Forge-directory duplicate is not another NeoForge
+contribution. Stone/wood, intact/broken and axis variants are preserved as related
+bridge layouts, not 22 or 11 accepted families.
+
+Configuration, custom placement/generator behavior, template content, generated
+observations and final family attributes still need reconciliation. The existing
+421 structure-registry groups and 887 roots do not include an accepted bridge
+family yet. This is a verified contribution path, not a completion claim.
+
+Decision SHA-256:
+`c4f5a9bbf909c60826b9331f13a6c4e92ab86de0b30e02f072325e7fd6f3ec3f`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-bridge-path.json
+```
+
+The initial focused test passed; lint then required a top-level import and typed
+JSON reads. Those test-only issues were fixed without changing the contribution.
+Scoped Ruff/Basedpyright now pass.
+
+All 77 affected tests passed; the bridge test and scoped checks passed after
+the test-only typing/import fixes. Inventory regenerated at `6309287`, SHA-256:
+`da35ac84a7e3c198fc648088f7001b8cfad29ab311f6e3bf16d84738e0176c97`.
+Only non_registry_content and the pinned decision identity changed. All 421
+structure-registry family rows remain unchanged.
+
+## YUNG bridge template membership and nominal sizes
+
+The contribution now preserves the eleven selector-referenced template XYZ
+sizes, along with three packaged templates absent from that selector:
+wood/13_0, wood/13_0_broken and wood/15_0. None is silently dropped or counted as
+active solely because it is packaged. All fourteen templates have empty entity
+and block-entity lists. Generator transformations and marker-block interpretation
+remain open; empty block-entity lists are not proof of effective loot/spawner
+absence. Nominal dimensions are template envelopes, not observed occupied bounds.
+
+A focused test binds membership, dimensions and empty lists to the existing
+redacted template catalog. No extraction, runtime or measurement system added.
+Seven affected feature-reference/inventory-source tests passed. Two overlong test
+lines were wrapped; scoped Ruff and Basedpyright pass. Searching the frozen
+configuration paths and manifest for a bridge-named file found none; this is not
+proof of absent code/configuration controls, which remain to be inspected.
+
+Decision SHA-256:
+`ded939c069ee1071dc317bb1426e0def3d0d86f0266433c132ba507afb515900`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-bridge-templates.json
+```
+
+Inventory regenerated at `01edbb8`, SHA-256:
+`38eb038f5c04562162292988e8d55c407ea6f78cc489cdac8a0c5db9f69d3938`.
+Only the bridge contribution and decision identity changed; all 421 registry
+family rows and 887 roots remain unchanged.
+
+## YUNG bridge generation ordering and success limitation
+
+The bridge contribution now records the source-bound generation flow: set origin
+Y to world sea level; rotate counterclockwise 90 degrees for non-Z-axis variants;
+place the template; then execute the twelve recorded custom processors in order.
+The selector randomly tries remaining placed-feature candidates, removes failed
+candidates and stops at the first successful return or exhaustion. This is not
+an observed frequency or pacing result.
+
+AbstractTemplateFeature discards StructureTemplate.placeInWorld's boolean.
+BridgeFeature returns true when template loading returned non-null. Accordingly,
+feature success alone cannot prove all template blocks were placed. This source
+limitation is preserved without modifying the retained mod or treating it as an
+observed world failure. Processor effects, support geometry and placement
+eligibility remain open. No new extraction or measurement system was added.
+
+Eight affected feature-reference/inventory-source tests passed. After wrapping
+one long test line, scoped Ruff and Basedpyright passed.
+Decision SHA-256:
+`59a6d7d18eb9b560825eeed494b532cfbe5a21426bbfa69817a5b096cbf89bba`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-bridge-generation.json
+```
+
+Inventory regenerated at `955936c`, SHA-256:
+`05295953bfbab2da42d0ef9f9feac58a4013ab14313718f59c9151fb192e1966`.
+Only the decision identity and bridge generation/evidence fields changed.
+All 421 registry family rows and 887 roots remain unchanged.
+
+## Bridge support extent
+
+DynamicLegProcessor delegates support markers to the captured interface's
+generatePillarDown method. It replaces the marker, then descends at fixed X/Z
+through air or liquid while Y > 0. It stops at Y <= 0 or non-air, non-liquid
+material. The literal zero boundary is not the world's minimum build height.
+Both block-write results are discarded. Nominal template height therefore
+describes the body; terrain-dependent supports can extend below it. This records
+source intent, not measured successful occupied height. No new source capture
+or measurement system is needed.
+
+Reproduce the focused support check and inventory with:
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-bridge-supports.json
+```
+
+Nine affected tests passed. Scoped Ruff and Basedpyright pass after splitting
+one compound test assertion. Decision SHA-256:
+`f9a58e0977649c0f6d09ade7791561bf46a069d839eadabb0145b4b1b78146cc`.
+
+Inventory regenerated at `733c0cf`, SHA-256:
+`5410d6d5ae2e6e5ad584dece89db3396c70c561056de5d9e47545c97fcd3a9e7`.
+Only the decision identity and bridge support-geometry field changed. All 421
+registry family rows and 887 roots remain unchanged.
+
+## Bridge direct encounter and loot contribution
+
+The fourteen captured processor/module/interface classes contain no direct
+entity-spawning, spawner-configuration or container-loot references. Combined
+with the existing fourteen-template entity/block-entity check, this supports
+the narrowly scoped direct-content fields in the bridge contribution. The
+processor calls concern block replacement, support extension and state
+adaptation. Environmental infrastructure is a source-based interpretation,
+not a safety measurement. Natural mobs, delegated engine/API behavior and
+external retained-mod effects are not excluded. No new capture or measurement
+system was added.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-bridge-encounters.json
+```
+
+Ten affected tests passed; scoped Ruff and Basedpyright passed. Decision SHA-256:
+`d894507f6a028766e091ede35bb58de28a9489cd5d2a1f51deafe4f7e5642fb4`.
+
+Inventory regenerated at `544d5de`, SHA-256:
+`53d49ef90e2b842f8b6321ef74b8fbc1e06537de934201b149c9e00533e0f08e`.
+Only the decision identity and direct bridge encounter-content field changed.
+All 421 registry family rows and 887 roots remain unchanged.
+
+## Bridge terrain placement
+
+The captured BridgePlacement.getPositions resolves the custom bank/span checks.
+It searches candidate positions at sea level minus one and returns the first
+accepted position. Both endpoint centers and enough contiguous lateral bank
+cells must occlude and have WORLD_SURFACE height no higher than sea level.
+The configured span rectangle must be liquid; despite the minWaterZ/maxWaterZ
+names, the predicate is not water-specific. The generation step later raises
+template origin to sea level. Exact loop ranges and endpoint separation are
+recorded in the contribution. This supports surface-crossing placement intent,
+not observed visibility or frequency. Biome and rarity filters are separate.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-bridge-placement.json
+```
+
+Eleven affected tests passed; scoped Ruff and Basedpyright passed. Decision SHA-256:
+`c6e3111cd30e6aa12bbb566d0691837fc217fe01ea9979cddecb57c23e016bc6`.
+
+Inventory regenerated at `e8503b5`, SHA-256:
+`71f820a7edd7337111c7e8b8a031e0ef11a99babdea3152b440f7a3ccd459ed5`.
+Only the decision identity and bridge placement-eligibility field changed.
+All 421 registry family rows and 887 roots remain unchanged.
+
+## Bridge biome and modifier constraints
+
+Existing merged tags resolve yungsbridges:has_structure/bridge to six registered
+biomes: vanilla river/frozen_river, Regions Unexplored cold_river/muddy_river/
+tropical_river and Terralith warm_river. No required members are missing. Only
+the captured overworld possible-biome list overlaps these members. This is not
+observed placement. Each of the 22 inline variants applies terrain placement,
+rarity_filter chance=3, then RNG initialization. The captured initializer reseeds
+the supplied random source from two odd long values, X/Z and constants, returning
+the same position. Multiple selector attempts prevent interpreting chance=3 as
+an observed per-chunk bridge probability. Configuration registration and external
+modifications still require reconciliation. No new measurement system was added.
+
+Eleven affected tests and scoped Ruff/Basedpyright passed. Decision SHA-256:
+`35b9fbabcdc6521dd3cdbbb11d7432204e9b88e571c4bdb1a94c58423f9b0cb2`.
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py tests/item8/test_inventory_sources.py
+uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-bridge-biomes.json
+```
+
+Inventory regenerated at `c19f9d5`, SHA-256:
+`f2497cb9bd2118ce0e1910cd2a203d9d51ea21d83636cb7f3addf2601b3c2a97`.
+Only decision identity and bridge biome/modifier constraints with evidence changed.
+All 421 registry family rows and 887 roots remain unchanged.
