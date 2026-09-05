@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-05
 
+Spiral spire geometry and direct contents are interpreted in `4586c78`, using
+existing captured code. Conservative requested-write envelope is 35x97x35,
+not an occupied measurement. Full geometry formulas and preflight limitations
+are in spiral_spire_geometry. This resolves the geometry portion of the older
+zeta_resolution.remaining note. Configuration binding, biome predicates,
+provider/family boundary disposition and other consumers remain open. Thirty
+focused tests and scoped checks passed; no new measurement was added.
+
 Zeta/selected Quark call-chain attribution and frozen settings are integrated
 in `d961290`. Inherited Generator unwraps ServerLevel and dispatches into the
 captured multi-chunk implementation. Frozen radii are 7 and 15; effective field

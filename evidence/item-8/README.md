@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `d961290`, SHA-256
-`3e0d8219181691ae0abfae05b7bfe82989b37a4783a6bfb0ffbb80dca1612f22`.
+Current working inventory regenerated at `4586c78`, SHA-256
+`7c6dfe49adc0ed0bf0264210598672a424e3d2bc0bca36175bc39386afe9eb9f`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,18 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 4586c78 increment interprets the already preserved SpiralSpireGenerator
+body and crystal geometry. The conservative 35x97x35 write envelope is derived
+from the recorded formulas, not a measured typical structure size. Central-column
+preflight is not whole-footprint clearance. Direct generator content has no
+entity, loot-table or physical-spawner requests; later block behavior remains
+separate. Thirty focused tests and scoped checks passed. Reproduce with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-spire-geometry-4586c78.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-spire-geometry-4586c78.json
+```
 
 The d961290 increment integrates the captured Zeta call chain and selected
 Quark consumer registrations, plus exact frozen consumer settings. It resolves
