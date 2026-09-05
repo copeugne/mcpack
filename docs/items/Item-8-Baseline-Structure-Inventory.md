@@ -1,8 +1,29 @@
-# Item 8 — Pristine Baseline Structure-Family Inventory
+# Item 8: Baseline Structure-Family Inventory
 
-**Status:** `COMPLETE`
-**Baseline:** Minecraft 1.21.1 / NeoForge 21.1.249 / zero third-party mods
-**Machine inventory:** `structure-inventory/vanilla-1.21.1-structure-families.json`
+**Current status:** `IN PROGRESS`. Item 8 is not complete.
+
+The active baseline contains the exact 136 retained candidates frozen by Items
+3 and 6. The current [working inventory](../../evidence/item-8/inventory.json)
+accounts for 887 registered structure roots in 421 provisional groups. These
+are not an accepted final family count. See the
+[evidence record](../../evidence/item-8/README.md) for input identities,
+reproduction commands, source limitations and the latest delivered increments.
+
+Remaining work includes canonical family reconciliation, non-registry provider
+coverage, required family attributes, final narrative/evidence reconciliation,
+the clean PR review cycle and verified delivery to main. Item 9 is not authorized
+by this report. Successful registry coverage alone does not close Item 8.
+
+## Historical zero-mod report, superseded
+
+The following report was introduced in `38ec6d9` for a zero-third-party-mod
+baseline. Its completion decision and absent-mod claims do not describe the
+current retained stack. They are preserved as historical context, not current
+acceptance evidence or permission to advance downstream.
+
+**Historical status claim:** `COMPLETE` (superseded)
+**Historical baseline:** Minecraft 1.21.1 / NeoForge 21.1.249 / zero third-party mods
+**Historical machine inventory:** `structure-inventory/vanilla-1.21.1-structure-families.json`
 
 ## Registry proof
 
@@ -61,7 +82,6 @@ WDA, Seven Seas, YUNG replacements/additions, IDAS, Integrated Stronghold/Villag
 
 These are inputs, not final tier decisions. Item 9 owns classification and redundancy flags.
 
-## Exit decision
+## Historical exit decision, superseded
 
 All structures actually present in the baseline are enumerated exactly once at registry level and grouped into clear gameplay families with every requested attribute. Candidate-only families remain explicitly absent. Item 9 may now classify the 21 baseline families provisionally.
-

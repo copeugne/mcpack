@@ -1,0 +1,226 @@
+Compiled from "EndBiome.java"
+public class org.betterx.betterend.world.biome.EndBiome extends org.betterx.wover.generator.api.biomesource.WoverBiomeData implements org.betterx.bclib.interfaces.SurfaceMaterialProvider {
+  public static final com.mojang.serialization.MapCodec<org.betterx.betterend.world.biome.EndBiome> CODEC;
+
+  public static final net.minecraft.util.KeyDispatchDataCodec<org.betterx.betterend.world.biome.EndBiome> KEY_CODEC;
+
+  private boolean hasCaves;
+
+  protected org.betterx.bclib.interfaces.SurfaceMaterialProvider surfMatProv;
+
+  public org.betterx.betterend.world.biome.EndBiome(float, net.minecraft.resources.ResourceKey<net.minecraft.world.level.biome.Biome>, org.betterx.wover.biome.api.data.BiomeGenerationDataContainer, float, float, int, boolean, net.minecraft.resources.ResourceKey<net.minecraft.world.level.biome.Biome>, net.minecraft.resources.ResourceKey<net.minecraft.world.level.biome.Biome>, boolean, org.betterx.bclib.interfaces.SurfaceMaterialProvider);
+    Code:
+       0: aload_0
+       1: fload_1
+       2: aload_2
+       3: aload_3
+       4: fload         4
+       6: fload         5
+       8: iload         6
+      10: iload         7
+      12: aload         8
+      14: aload         9
+      16: invokespecial #1                  // Method org/betterx/wover/generator/api/biomesource/WoverBiomeData."<init>":(FLnet/minecraft/resources/ResourceKey;Lorg/betterx/wover/biome/api/data/BiomeGenerationDataContainer;FFIZLnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceKey;)V
+      19: aload_0
+      20: iconst_1
+      21: putfield      #7                  // Field hasCaves:Z
+      24: aload_0
+      25: getstatic     #13                 // Field org/betterx/betterend/world/biome/EndBiome$Config.DEFAULT_MATERIAL:Lorg/betterx/bclib/interfaces/SurfaceMaterialProvider;
+      28: putfield      #19                 // Field surfMatProv:Lorg/betterx/bclib/interfaces/SurfaceMaterialProvider;
+      31: aload_0
+      32: iload         10
+      34: putfield      #7                  // Field hasCaves:Z
+      37: aload_0
+      38: aload         11
+      40: putfield      #19                 // Field surfMatProv:Lorg/betterx/bclib/interfaces/SurfaceMaterialProvider;
+      43: return
+
+  public void datagenSetup(net.minecraft.data.worldgen.BootstrapContext<org.betterx.wover.biome.api.data.BiomeData>);
+    Code:
+       0: return
+
+  public net.minecraft.util.KeyDispatchDataCodec<? extends org.betterx.wover.generator.api.biomesource.WoverBiomeData> codec();
+    Code:
+       0: getstatic     #22                 // Field KEY_CODEC:Lnet/minecraft/util/KeyDispatchDataCodec;
+       3: areturn
+
+  public boolean isEnabled();
+    Code:
+       0: getstatic     #26                 // Field org/betterx/betterend/config/Configs.BIOMES_TOGGLE:Lorg/betterx/betterend/config/BiomeToggleConfig;
+       3: aload_0
+       4: getfield      #32                 // Field biomeKey:Lnet/minecraft/resources/ResourceKey;
+       7: invokevirtual #36                 // Method org/betterx/betterend/config/BiomeToggleConfig.isEnabled:(Lnet/minecraft/resources/ResourceKey;)Z
+      10: ireturn
+
+  public boolean isPickable();
+    Code:
+       0: aload_0
+       1: invokevirtual #42                 // Method isEnabled:()Z
+       4: ifeq          18
+       7: aload_0
+       8: invokespecial #45                 // Method org/betterx/wover/generator/api/biomesource/WoverBiomeData.isPickable:()Z
+      11: ifeq          18
+      14: iconst_1
+      15: goto          19
+      18: iconst_0
+      19: ireturn
+
+  void setHasCaves(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #7                  // Field hasCaves:Z
+       5: return
+
+  public boolean hasCaves();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field hasCaves:Z
+       4: ireturn
+
+  public net.minecraft.world.level.block.state.BlockState getTopMaterial();
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field surfMatProv:Lorg/betterx/bclib/interfaces/SurfaceMaterialProvider;
+       4: invokeinterface #48,  1           // InterfaceMethod org/betterx/bclib/interfaces/SurfaceMaterialProvider.getTopMaterial:()Lnet/minecraft/world/level/block/state/BlockState;
+       9: areturn
+
+  public net.minecraft.world.level.block.state.BlockState getUnderMaterial();
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field surfMatProv:Lorg/betterx/bclib/interfaces/SurfaceMaterialProvider;
+       4: invokeinterface #54,  1           // InterfaceMethod org/betterx/bclib/interfaces/SurfaceMaterialProvider.getUnderMaterial:()Lnet/minecraft/world/level/block/state/BlockState;
+       9: areturn
+
+  public net.minecraft.world.level.block.state.BlockState getAltTopMaterial();
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field surfMatProv:Lorg/betterx/bclib/interfaces/SurfaceMaterialProvider;
+       4: invokeinterface #57,  1           // InterfaceMethod org/betterx/bclib/interfaces/SurfaceMaterialProvider.getAltTopMaterial:()Lnet/minecraft/world/level/block/state/BlockState;
+       9: areturn
+
+  public boolean generateFloorRule();
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field surfMatProv:Lorg/betterx/bclib/interfaces/SurfaceMaterialProvider;
+       4: invokeinterface #60,  1           // InterfaceMethod org/betterx/bclib/interfaces/SurfaceMaterialProvider.generateFloorRule:()Z
+       9: ireturn
+
+  public org.betterx.wover.surface.api.SurfaceRuleBuilder surface();
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field surfMatProv:Lorg/betterx/bclib/interfaces/SurfaceMaterialProvider;
+       4: invokeinterface #63,  1           // InterfaceMethod org/betterx/bclib/interfaces/SurfaceMaterialProvider.surface:()Lorg/betterx/wover/surface/api/SurfaceRuleBuilder;
+       9: areturn
+
+  public static net.minecraft.world.level.block.state.BlockState findTopMaterial(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: aload_0
+       1: invokestatic  #67                 // InterfaceMethod org/betterx/bclib/interfaces/SurfaceMaterialProvider.findSurfaceMaterialProvider:(Lnet/minecraft/core/Holder;)Ljava/util/Optional;
+       4: invokedynamic #71,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+       9: invokevirtual #75                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      12: getstatic     #13                 // Field org/betterx/betterend/world/biome/EndBiome$Config.DEFAULT_MATERIAL:Lorg/betterx/bclib/interfaces/SurfaceMaterialProvider;
+      15: invokeinterface #48,  1           // InterfaceMethod org/betterx/bclib/interfaces/SurfaceMaterialProvider.getTopMaterial:()Lnet/minecraft/world/level/block/state/BlockState;
+      20: invokevirtual #81                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      23: checkcast     #85                 // class net/minecraft/world/level/block/state/BlockState
+      26: areturn
+
+  public static net.minecraft.world.level.block.state.BlockState findTopMaterial(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #87                 // Method org/betterx/wover/generator/api/biomesource/WoverBiomePicker.getBiomeAt:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+       5: invokestatic  #67                 // InterfaceMethod org/betterx/bclib/interfaces/SurfaceMaterialProvider.findSurfaceMaterialProvider:(Lnet/minecraft/core/Holder;)Ljava/util/Optional;
+       8: invokedynamic #71,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      13: invokevirtual #75                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      16: getstatic     #13                 // Field org/betterx/betterend/world/biome/EndBiome$Config.DEFAULT_MATERIAL:Lorg/betterx/bclib/interfaces/SurfaceMaterialProvider;
+      19: invokeinterface #48,  1           // InterfaceMethod org/betterx/bclib/interfaces/SurfaceMaterialProvider.getTopMaterial:()Lnet/minecraft/world/level/block/state/BlockState;
+      24: invokevirtual #81                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      27: checkcast     #85                 // class net/minecraft/world/level/block/state/BlockState
+      30: areturn
+
+  public static net.minecraft.world.level.block.state.BlockState sampleTopMaterial(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokeinterface #93,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       7: astore_2
+       8: aload_2
+       9: getstatic     #99                 // Field org/betterx/wover/tag/api/predefined/CommonBlockTags.TERRAIN:Lnet/minecraft/tags/TagKey;
+      12: invokevirtual #105                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      15: ifeq          30
+      18: aload_2
+      19: getstatic     #109                // Field net/minecraft/world/level/block/Blocks.END_STONE:Lnet/minecraft/world/level/block/Block;
+      22: invokevirtual #115                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      25: ifne          30
+      28: aload_2
+      29: areturn
+      30: aload_0
+      31: aload_1
+      32: invokestatic  #118                // Method findTopMaterial:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      35: areturn
+
+  public static net.minecraft.world.level.block.state.BlockState findUnderMaterial(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: aload_0
+       1: invokestatic  #67                 // InterfaceMethod org/betterx/bclib/interfaces/SurfaceMaterialProvider.findSurfaceMaterialProvider:(Lnet/minecraft/core/Holder;)Ljava/util/Optional;
+       4: invokedynamic #122,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+       9: invokevirtual #75                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      12: getstatic     #13                 // Field org/betterx/betterend/world/biome/EndBiome$Config.DEFAULT_MATERIAL:Lorg/betterx/bclib/interfaces/SurfaceMaterialProvider;
+      15: invokeinterface #54,  1           // InterfaceMethod org/betterx/bclib/interfaces/SurfaceMaterialProvider.getUnderMaterial:()Lnet/minecraft/world/level/block/state/BlockState;
+      20: invokevirtual #81                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      23: checkcast     #85                 // class net/minecraft/world/level/block/state/BlockState
+      26: areturn
+
+  public static net.minecraft.world.level.block.state.BlockState findUnderMaterial(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #87                 // Method org/betterx/wover/generator/api/biomesource/WoverBiomePicker.getBiomeAt:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+       5: invokestatic  #67                 // InterfaceMethod org/betterx/bclib/interfaces/SurfaceMaterialProvider.findSurfaceMaterialProvider:(Lnet/minecraft/core/Holder;)Ljava/util/Optional;
+       8: invokedynamic #122,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      13: invokevirtual #75                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      16: getstatic     #13                 // Field org/betterx/betterend/world/biome/EndBiome$Config.DEFAULT_MATERIAL:Lorg/betterx/bclib/interfaces/SurfaceMaterialProvider;
+      19: invokeinterface #54,  1           // InterfaceMethod org/betterx/bclib/interfaces/SurfaceMaterialProvider.getUnderMaterial:()Lnet/minecraft/world/level/block/state/BlockState;
+      24: invokevirtual #81                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      27: checkcast     #85                 // class net/minecraft/world/level/block/state/BlockState
+      30: areturn
+
+  private static org.betterx.bclib.interfaces.SurfaceMaterialProvider lambda$static$1(org.betterx.betterend.world.biome.EndBiome);
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field surfMatProv:Lorg/betterx/bclib/interfaces/SurfaceMaterialProvider;
+       4: areturn
+
+  private static java.lang.Boolean lambda$static$0(org.betterx.betterend.world.biome.EndBiome);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field hasCaves:Z
+       4: invokestatic  #123                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       7: areturn
+
+  static {};
+    Code:
+       0: getstatic     #129                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+       3: ldc           #135                // String has_caves
+       5: invokeinterface #137,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      10: iconst_1
+      11: invokestatic  #123                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      14: invokevirtual #143                // Method com/mojang/serialization/MapCodec.orElse:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      17: invokedynamic #148,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      22: invokevirtual #149                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      25: getstatic     #153                // Field org/betterx/bclib/interfaces/SurfaceMaterialProvider.CODEC:Lcom/mojang/serialization/MapCodec;
+      28: ldc           #157                // String surface
+      30: invokevirtual #158                // Method com/mojang/serialization/MapCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      33: getstatic     #13                 // Field org/betterx/betterend/world/biome/EndBiome$Config.DEFAULT_MATERIAL:Lorg/betterx/bclib/interfaces/SurfaceMaterialProvider;
+      36: invokevirtual #143                // Method com/mojang/serialization/MapCodec.orElse:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      39: invokedynamic #159,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      44: invokevirtual #149                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      47: invokedynamic #160,  0            // InvokeDynamic #4:apply:()Lcom/mojang/datafixers/util/Function11;
+      52: invokestatic  #163                // Method codec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder;Lcom/mojang/serialization/codecs/RecordCodecBuilder;Lcom/mojang/datafixers/util/Function11;)Lcom/mojang/serialization/MapCodec;
+      55: putstatic     #167                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      58: getstatic     #167                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      61: invokestatic  #168                // Method net/minecraft/util/KeyDispatchDataCodec.of:(Lcom/mojang/serialization/MapCodec;)Lnet/minecraft/util/KeyDispatchDataCodec;
+      64: putstatic     #22                 // Field KEY_CODEC:Lnet/minecraft/util/KeyDispatchDataCodec;
+      67: return
+}

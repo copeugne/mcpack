@@ -3,6 +3,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+import re
 import tomllib
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
@@ -189,7 +190,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         "mss:": ("mss:tree_", "mss:birch_river", "mss:cherry_river"),
     }.get(namespace, ())
     expected = {key for key in expected if not key.startswith(excluded_prefixes)}
-    if namespace in {"mns:", "mvs:"}:
+    if namespace in {"mns:", "mvs:", "betterend:"}:
         variants = [
             member
             for row in cast("list[dict[str, JsonValue]]", decisions["groups"])
@@ -200,7 +201,7 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
         assert (
             len(members + variants)
             == len(set(members + variants))
-            == {"mns:": 52, "mvs:": 129}[namespace]
+            == {"mns:": 52, "mvs:": 129, "betterend:": 14}[namespace]
         )
         expected -= set(variants)
     assert members
@@ -535,6 +536,212 @@ def test_voyager_related_layouts_preserve_variant_content(
         assert traces["template_contents"][
             "mvs:other_decoration/mine_with_campsite_lower"
         ]["spawner_blocks"]
+
+
+@pytest.mark.parametrize(
+    ("family", "suffix", "count", "step"),
+    [("betterend:end_lake", "lake", 5, "lakes"),
+     ("betterend:mountain", "mountain", 2, "raw_generation")],
+)
+def test_betterend_formation_variants_bind_registry_definitions_and_generator_classes(
+    family: str, suffix: str, count: int, step: str
+) -> None:
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    group = next(g for g in decisions["groups"] if g["family_id"] == family)
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    base = Path("evidence/item-8/sources/betterend-formations-code")
+    identities = cast("list[dict[str, str]]", json.loads((base / "identities.json").read_bytes()))
+    sources: dict[str, str] = {}
+    for row in identities:
+        raw = (base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        sources[row["class"].removesuffix(".class").replace("/", ".")] = raw.decode()
+    registration = sources["org.betterx.betterend.registry.EndStructures"]
+    bootstrap = registration.split("BootstrapMethods:")[1]
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ).read_bytes())))
+    registry = read_registry(Path(
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    ))
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    assert group["structure_ids"] == sorted(variants) == sorted(
+        rid for rid in registry if rid.startswith("betterend:") and suffix in rid
+    )
+    assert len(variants) == count
+    for rid, variant in variants.items():
+        name = rid.split(":")[1]
+        definitions = [r["document"] for r in catalog["resources"]
+                       if r["path"] == f"data/betterend/worldgen/structure/{name}.json"]
+        assert definitions == [variant["definition"]]
+        definition = cast("dict[str, JsonValue]", variant["definition"])
+        assert definition["type"] == rid
+        assert definition["step"] == step
+        assert definition["spawn_overrides"] == {}
+        binding = re.search(r"// String " + name + r"\n.*?InvokeDynamic #(\d+):create",
+                            registration, re.DOTALL)
+        assert binding is not None
+        # Method arguments are indented further than the next numbered bootstrap entry.
+        block = re.split(r"\n  \d+:", bootstrap.split(f"\n  {binding[1]}:")[1])[0]
+        generator = str(variant["generator_class"])
+        assert "REF_newInvokeSpecial " + generator.replace(".", "/") + '."<init>"' in block
+        source = sources[generator]
+        if name in {"end_lake_normal", "end_lake_rare"}:
+            parent = "org.betterx.betterend.world.structures.features.EndLakeStructure"
+            assert "extends " + parent in source
+            assert "generatePieces(" not in source
+            source = sources["org.betterx.betterend.world.structures.features.EndLakeStructure"]
+        assert "// class " + str(variant["piece_class"]).replace(".", "/") in source
+        if suffix == "mountain":
+            assert "Heightmap$Types.WORLD_SURFACE_WG" in source
+            parent = "org.betterx.betterend.world.structures.features.FeatureBaseStructure"
+            assert "extends " + parent in source
+            if name == "painted_mountain":
+                assert "EndBlocks.FLAVOLITE" in source
+                assert "EndBlocks.VIOLECITE" in source
+                assert "Blocks.END_STONE" in source
+
+
+
+def test_betterend_mountain_placement_and_visual_cues_bind_piece_sources() -> None:
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    group = next(g for g in decisions["groups"] if g["family_id"] == "betterend:mountain")
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    base = Path("evidence/item-8/sources/betterend-formations-code")
+    identities = cast("list[dict[str, str]]", json.loads((base / "identities.json").read_bytes()))
+    sources = {row["class"].removesuffix(".class").replace("/", "."):
+               (base / row["disassembly"]).read_text() for row in identities}
+    piece_base = Path("evidence/item-8/sources/betterend-formation-pieces")
+    piece_rows = cast("list[dict[str, str]]", json.loads(
+        (piece_base / "identities.json").read_bytes()
+    ))
+    pieces: dict[str, str] = {}
+    for row in piece_rows:
+        raw = (piece_base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        pieces[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    attributes = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
+    placement = attributes["underground_surface_classification"]
+    assert placement["start_heightmap"] == "WORLD_SURFACE_WG"
+    precheck = cast("dict[str, JsonValue]", placement["base_generation_point_check"])
+    parent_source = sources[str(precheck["class"])]
+    assert precheck["method"] == "findGenerationPoint"
+    assert precheck["minimum_inclusive_sampled_y"] == 10
+    entry = parent_source.split(" findGenerationPoint(")[1].split(
+        " findVoidGenerationPoint("
+    )[0]
+    assert re.search(r"bipush\s+10\n\s+\d+: if_icmplt", entry)
+    assert entry.index("Method getGenerationHeight:") < entry.index("if_icmplt")
+    assert entry.index("if_icmplt") < entry.index("Structure$GenerationStub")
+    assert "ChunkGenerator.getFirstOccupiedHeight:" in parent_source
+    thresholds = cast("dict[str, int]", placement["minimum_exclusive_start_y_by_structure"])
+    assert set(thresholds) == set(variants)
+    for rid, threshold in thresholds.items():
+        source = sources[str(variants[rid]["generator_class"])]
+        instruction = "iconst_5" if threshold == 5 else f"bipush        {threshold}"
+        assert re.search(re.escape(instruction) + r"\n\s+\d+: if_icmple", source)
+    crystal = pieces["CrystalMountainPiece"]
+    for field in ("EndBlocks.CRYSTAL_MOSS", "EndBlocks.AURORA_CRYSTAL", "Blocks.END_STONE"):
+        assert field in crystal
+    painted = pieces["PaintedMountainPiece"]
+    assert "Field slices:" in painted
+    assert "ChunkAccess.setBlockState:" in painted
+    assert "OpenSimplexNoise.eval:" in painted
+    bounds = pieces["MountainPiece"].split("private void makeBoundingBox();")[1]
+    assert bounds.count("Field radius:F") == 6
+    assert "Field height:F" not in bounds
+    cues = attributes["visual_discoverability"]["authored_cues_by_structure"]
+    assert isinstance(cues, dict)
+    assert set(cues) == set(variants)
+
+def test_betterend_lake_placement_and_cues_preserve_both_algorithms() -> None:
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    group = next(g for g in decisions["groups"] if g["family_id"] == "betterend:end_lake")
+    attributes = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
+    placement = attributes["underground_surface_classification"]
+    roots = cast("dict[str, dict[str, JsonValue]]", placement["root_placement_by_structure"])
+    assert sorted(roots) == group["structure_ids"]
+    sources: dict[str, str] = {}
+    for directory in ("betterend-formations-code", "betterend-formation-pieces"):
+        base = Path("evidence/item-8/sources") / directory
+        rows = cast("list[dict[str, str]]", json.loads((base / "identities.json").read_bytes()))
+        for row in rows:
+            raw = (base / row["disassembly"]).read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+            sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    for rid, rule in roots.items():
+        if "end_lake" in rid:
+            assert rule["minimum_inclusive_start_y"] == 10
+        else:
+            assert rule["minimum_exclusive_start_y"] == 5
+    assert re.search(r"bipush\s+10\n\s+\d+: if_icmpge", sources["EndLakeStructure"])
+    assert "java/lang/Math.abs:" in sources["EndLakeStructure"]
+    assert "java/lang/Math.min:" in sources["EndLakeStructure"]
+    for name in ("MegaLakeStructure", "MegaLakeSmallStructure"):
+        assert re.search(r"iconst_5\n\s+\d+: if_icmple", sources[name])
+        assert re.search(r"bipush\s+6\n\s+\d+: isub\n\s+\d+: if_icmpge", sources[name])
+    for name in ("EndLakePiece", "LakePiece"):
+        assert "Blocks.WATER" in sources[name]
+        assert "EndBiome.findTopMaterial:" in sources[name]
+    assert "EndBlocks.ENDSTONE_DUST" in sources["EndLakePiece"]
+    for token in ("EndBlocks.JUNGLE_GRASS", "EndBlocks.UMBRELLA_MOSS", "BlockState.canSurvive:"):
+        assert token in sources["LakePiece"]
+    mountain = next(g for g in decisions["groups"] if g["family_id"] == "betterend:mountain")
+    mountain_attributes = cast("dict[str, dict[str, JsonValue]]", mountain["attributes"])
+    assert placement["base_generation_point_check"] == mountain_attributes[
+        "underground_surface_classification"
+    ]["base_generation_point_check"]
+
+
+@pytest.mark.parametrize("family", ["betterend:mountain", "betterend:end_lake"])
+def test_betterend_formation_direct_content_has_no_encounter_or_container_path(family: str) -> None:
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    group = next(g for g in decisions["groups"] if g["family_id"] == family)
+    attributes = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
+    assert attributes["mob_source"]["authored_entity_ids"] == []
+    assert attributes["loot_table_source"]["direct_generator_assigned_tables"] == []
+    assert attributes["generated_spawners"]["direct_generator_spawner_block_types"] == []
+    wanted = {"BasePiece", "MountainPiece", "CrystalMountainPiece", "PaintedMountainPiece",
+              "FeatureBaseStructure", "MountainStructure", "PaintedMountainStructure"}
+    if family == "betterend:end_lake":
+        wanted = {"BasePiece", "FeatureBaseStructure", "EndLakeStructure", "EndLakeNormalStructure",
+                  "EndLakeRareStructure", "MegaLakeStructure", "MegaLakeSmallStructure",
+                  "EndLakePiece", "LakePiece", "EndBiome", "BlockFixer"}
+    inspected: set[str] = set()
+    for directory in ("betterend-formations-code", "betterend-formation-pieces",
+                      "betterend-lake-helpers"):
+        base = Path("evidence/item-8/sources") / directory
+        identities = cast("list[dict[str, str]]", json.loads(
+            (base / "identities.json").read_bytes()
+        ))
+        for row in identities:
+            name = row["class"].split("/")[-1].removesuffix(".class")
+            if name not in wanted:
+                continue
+            raw = (base / row["disassembly"]).read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+            source = raw.decode()
+            # Bind the negative direct-content attribution to the complete captured
+            # generator/piece set, not empty template traces for custom generators.
+            for token in ("world/entity/", "SPAWNER", "LootTable", "createChest",
+                          "createDispenser", "addFreshEntity", "StructureTemplate",
+                          "ConfiguredFeature", "PlacedFeature"):
+                assert token not in source, (name, token)
+            inspected.add(name)
+    assert inspected == wanted
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    for variant in variants.values():
+        definition = cast("dict[str, JsonValue]", variant["definition"])
+        assert definition["spawn_overrides"] == {}
 
 
 def test_voyager_mining_families_keep_distinct_layouts_and_authored_sources() -> None:

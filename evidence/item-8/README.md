@@ -2,9 +2,9 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `7c1d6c6`, SHA-256
-`bf56126ef196c73126ab1da8880b4027c5f8c98b3b2e6331df5ebbc47a182e31`.
-All 887 registered roots are assigned once in 426 working groups. This is not
+Current working inventory regenerated at `a4548bf`, SHA-256
+`65d6dd6270f40edae66a5401a4e3aafe3f3aba5d4adccf9f6703b0dd00c8958f`.
+All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
 IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
@@ -1051,3 +1051,264 @@ revision, SHA-256:
 `bf56126ef196c73126ab1da8880b4027c5f8c98b3b2e6331df5ebbc47a182e31`.
 Only both mining families' grouping decisions, intended hostility and enemy
 attribution change, plus the decision input hash. All other fields are preserved.
+
+## BetterEnd lake-family reconciliation (2026-09-05)
+
+Five registered lake roots now belong to `betterend:end_lake`, with all types,
+biome constraints and procedural implementations retained as variants. Normal
+and rare lake classes inherit EndLakeStructure and only forward construction and
+return their own type. The base generator creates EndLakePiece. Both megalake
+classes create LakePiece with different size parameters and terrain checks.
+They remain different generation algorithms inside one lake-formation family,
+not five independent families merely because five types are registered.
+
+Registration constructor handles are bound through the preserved verbose
+EndStructures bootstrap table. The existing family-decision test now checks
+those handles, all five packaged definitions, source hashes, inheritance and
+piece allocation. BetterEnd coverage also checks all 14 roots exactly once
+across singleton and grouped records. No new extraction or runtime is needed.
+
+This family relationship does not establish material composition, mob/loot
+absence, effective placement, actual dimensions or frequency. Piece-content
+interpretation and remaining attributes stay open. Normal/rare names are not
+observed frequency measurements. The working total becomes 422 groups with
+887 registered roots. Mountain relationships remain unresolved.
+
+Decision SHA-256:
+`55477e77db70a5504032cd850757f77eec038789e41df0a9d126edad54b27692`.
+The initial two focused BetterEnd cases passed; lint requested assertion/quote
+formatting and one line wrap, corrected without changing behavior.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-lakes.json
+```
+
+All 70 affected tests and scoped Ruff/Basedpyright checks passed. The source
+capture remains the already delivered `1f7f8fe` increment.
+
+Grouping delivered in `f90d6da`; inventory rebuilt at that revision, SHA-256:
+`620b2c61a0890bd4e2e387c4dd4f6e907682c653f752a8835a728eea6133ec2a`.
+All lake roots, biome constraints, custom-generation records and saved-start
+observation indexes remain represented. Other family rows are unchanged.
+
+## BetterEnd mountain-family reconciliation (2026-09-05)
+
+Ordinary and painted mountains are two variants of `betterend:mountain`, retaining
+both registered types, biome restrictions and generator/piece identities.
+Both extend FeatureBaseStructure, sample WORLD_SURFACE_WG and create procedural
+mountain pieces. Ordinary uses CrystalMountainPiece; painted uses
+PaintedMountainPiece and a palette of end stone, flavolite and violecite states.
+Their distinct height thresholds, shape parameters and material paths remain
+preserved in the source evidence rather than treated as identical generation.
+
+This is one natural terrain-formation identity with shape/material variants.
+Raw-generation step and empty spawn overrides do not prove that every piece is
+free of entities, loot or spawners. Piece interpretation, actual geometry and
+visual discovery remain open. The grouping test now verifies both mountain
+registration bootstrap bindings, definitions, inheritance, piece allocation and
+painted palette references using the already captured sources. No new extraction,
+measurement system or runtime was needed. Working total becomes 421 groups with
+887 registered roots; provider-wide completion remains unproven.
+
+Decision SHA-256:
+`1def4cbabbfb5bf97e5afa984144424469000aa5bfe891227610dd290b062712`.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-mountains.json
+```
+
+All 71 affected tests passed. After wrapping one overlong test assertion, the
+three affected BetterEnd cases and scoped Ruff/Basedpyright checks passed.
+
+Grouping delivered in `8ca1e21`; inventory regenerated at that revision, SHA-256:
+`d04abd3d02744ce7af0ac2ae286642ceaedca036efa603a9db08122b78280072`.
+Both roots and their biome constraints, custom-generation records and saved-start
+observation indexes remain represented. Other family rows are unchanged.
+
+## BetterEnd mountain placement and visual cues
+
+The source capture delivered in `01d4f63` supports two required attributes for
+both mountain variants. Their root generators select WORLD_SURFACE_WG height,
+requiring Y greater than 5 for ordinary mountains and greater than 50 for painted
+mountains. Piece code establishes a surface-rooted mountain body and crystals,
+or columns with noise-varied stone layers. These authored cues now replace the
+undifferentiated UNKNOWN placement and visual fields. Actual visibility distance,
+occlusion and discovery probability remain unmeasured.
+
+MountainPiece stores separate radius and height parameters but uses radius for
+all bounding-box axes. Existing saved-world envelopes remain unchanged and must
+not be relabeled occupied mountain dimensions. Mob, loot and spawner attribution
+remain open. No runtime or measurement system was added.
+
+Decision SHA-256:
+`87b4d8967824e33e6c8dbdd7dd689654b24d215390f4bbf63c26ccd74a199422`.
+Reproduction and validation:
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run pytest -q tests/item8/test_family_decisions.py -k betterend
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-mountain-cues.json
+```
+
+The initial test extension exceeded the existing lint complexity/statement limits;
+it was separated into a focused placement/cue test without a shared abstraction.
+Four focused BetterEnd cases and scoped Ruff/Basedpyright checks pass. An initial
+read-only inventory inspection assumed families was a list and raised TypeError;
+it was corrected to use the existing mapping, with no artifact mutation.
+
+The affected suite passed 71 tests before the test-only split; all four BetterEnd
+cases passed afterward. Inventory regenerated at `a485c80`, SHA-256:
+`175fd05691be098c8e5904482325772757cdf9185a5017b3d765429e920f67ea`.
+Only the mountain grouping evidence and its placement/visual fields changed.
+All other families, saved observation links and size envelopes are unchanged.
+
+## BetterEnd mountain direct encounter and loot attribution
+
+The preserved root generators, FeatureBaseStructure, BasePiece, MountainPiece,
+CrystalMountainPiece and PaintedMountainPiece support the direct content
+attribution. The procedural paths write stone, moss and crystal blocks. They
+contain no direct entity creation/insertion, spawner placement, container loot
+assignment, template placement or configured/placed-feature delegation. The
+family now records environmental intent, no direct authored mobs/spawners or
+container tables, and empty structure spawn overrides. Natural spawning,
+harvested block drops and external retained-mod injections remain distinct.
+This is not a live-world population or spawner count.
+
+The focused test binds the complete seven-class selection and its disassembly
+hashes, checks the direct-content references and both empty spawn overrides.
+Existing material/palette and constructor-binding tests provide positive source
+coverage. No extraction, runtime, measurement system or general validator was
+added. The saved-world size and placement/cue attributes remain unchanged.
+
+Decision SHA-256:
+`3b9163176c218891042b6caa75b4060a4ec413fa5293079fb1c4ebd3e1c6e727`.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-mountain-content.json
+```
+
+Source inspection also identifies an upstream placement condition for subsequent
+integration: FeatureBaseStructure.findGenerationPoint rejects its independently
+sampled position below Y=10 before invoking the root's generatePieces. The
+currently recorded root thresholds do not replace this earlier check. Preserve
+both sampling stages when completing placement eligibility; do not infer a
+single effective threshold from their different sample positions.
+
+All 73 affected tests and scoped Ruff/Basedpyright passed. Inventory regenerated
+at `1ee796e`, SHA-256:
+`24e6dfa796602032aedb3e97642453fa92b9ceeace619f70df51797a4b3383aa`.
+Only the mountain direct-content attributes and their grouping decision changed.
+All other family rows, observation links and geometry envelopes are unchanged.
+
+## BetterEnd mountain base placement precheck
+
+The earlier placement finding is now integrated into the existing mountain
+classification field. FeatureBaseStructure.findGenerationPoint requires its
+getGenerationHeight result to have Y >= 10 before creating the generation stub.
+That helper uses WORLD_SURFACE_WG/getFirstOccupiedHeight. The later root
+getBaseHeight samples and their Y > 5 or Y > 50 conditions remain separate.
+The two sampling stages must not be collapsed into one threshold at one position.
+This closes the demonstrated omission without changing generation or adding tools.
+
+Decision SHA-256:
+`2e7648906f19e6052298cc4a999aa591a6694756315cc6a63da0dc3ea9d6a10b`.
+The existing placement test binds the parent class, threshold, branch ordering
+and height query. All five focused BetterEnd cases and scoped checks pass.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py -k betterend
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-mountain-precheck.json
+```
+
+All 73 affected tests and scoped checks passed. Inventory regenerated at
+`b52dfa9`, SHA-256:
+`e7c1a4fefa8ba492c93cef684994c60509cf8849a44934500d6563d7413fee80`.
+Only the mountain placement field and its grouping decision changed.
+
+## BetterEnd lake placement and visual cues
+
+All five lake roots now have source-backed surface/submerged placement and visual
+cue records. They inherit the independently sampled base Y >= 10 precheck.
+EndLake roots then require their center Y >= 10 and reject cardinal samples with
+absolute height difference above 5. Megalakes require center Y > 5 and reject
+cardinal samples below center minus 6. Ordinary lake water level uses the minimum
+center/neighbor height; megalakes use center height. These conditions are not
+frequency measurements, and the two sampling stages remain separate.
+
+Both piece algorithms produce water basins with terrain-derived shore materials.
+EndLakePiece has endstone-dust patches; LakePiece can place jungle grass or
+umbrella moss on the rim after a survival check. Full biome top-material resolution
+and observed visibility remain outside these source-derived cues. Existing size
+and world-observation evidence is preserved. No new extraction or runtime needed.
+
+Decision SHA-256:
+`b7802248007f4c80faabb18c925d108231ef123c2061aadbf66dde359af4d75c`.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py -k betterend
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-lake-cues.json
+```
+
+Six focused BetterEnd tests and scoped Ruff/Basedpyright pass. The lake test binds
+both preserved source manifests, both terrain-check algorithms and piece material
+references. Existing registration tests bind the five roots and their inheritance.
+
+All 74 affected tests and scoped checks passed. Inventory regenerated at
+`8292695`, SHA-256:
+`25e78dd6bbe34e3ac2c6ee60c1bda55119ae79772c2f69c6c32fc29270a48247`.
+Only lake placement/cues and their grouping decision changed. Other family rows,
+size envelopes and world observation links are unchanged.
+
+## BetterEnd lake direct content attribution
+
+The helper capture delivered in `28ed678` completes the direct source set for
+this attribution: five root classes, FeatureBaseStructure, BasePiece, both lake
+pieces, EndBiome and BlockFixer. No direct entity creation, explicit spawner
+configuration or container-loot assignment occurs in these captured classes.
+BlockFixer adjusts vegetation/crystals and fluids and schedules fluid ticks.
+The five family content/intent fields now record these direct-source facts.
+
+This does not close effective material attribution. EndBiome delegates material
+selection to a SurfaceMaterialProvider, and its returned block states and later
+block behavior are not fully resolved. The spawner field explicitly preserves
+that limitation rather than claiming every dynamic surface state is non-spawner.
+Natural spawning, harvested drops and external injections remain distinct.
+
+The existing mountain direct-content test now also covers the eleven lake classes,
+using their preserved disassembly hashes and all five empty spawn overrides.
+No new validator, extraction, measurement system or runtime was added here.
+Seven focused BetterEnd tests and scoped checks pass.
+
+Decision SHA-256:
+`96cf175ab478a94d86edbc4c638c96c33b84f9d24ba2aa7d6fa4d01cc0d2914e`.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py -k betterend
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-lake-content.json
+```
+
+All 75 affected tests and scoped checks passed. Inventory regenerated at
+`a4548bf`, SHA-256:
+`65d6dd6270f40edae66a5401a4e3aafe3f3aba5d4adccf9f6703b0dd00c8958f`.
+Only lake direct-content fields and their grouping decision changed. Other family
+rows, size envelopes, placement/cues and observation links are unchanged.

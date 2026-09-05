@@ -1,0 +1,165 @@
+Compiled from "PaintedMountainStructure.java"
+public class org.betterx.betterend.world.structures.features.PaintedMountainStructure extends org.betterx.betterend.world.structures.features.FeatureBaseStructure {
+  public static final net.minecraft.world.level.block.state.BlockState[] VARIANTS;
+
+  public org.betterx.betterend.world.structures.features.PaintedMountainStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method org/betterx/betterend/world/structures/features/FeatureBaseStructure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       5: return
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<org.betterx.betterend.world.structures.features.PaintedMountainStructure> type();
+    Code:
+       0: getstatic     #7                  // Field org/betterx/betterend/registry/EndStructures.PAINTED_MOUNTAIN:Lorg/betterx/wover/structure/api/StructureKey$Simple;
+       3: invokeinterface #13,  1           // InterfaceMethod org/betterx/wover/structure/api/StructureKey$Simple.type:()Lnet/minecraft/world/level/levelgen/structure/StructureType;
+       8: areturn
+
+  protected void generatePieces(net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_2
+       1: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+       4: astore_3
+       5: aload_2
+       6: invokevirtual #25                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+       9: astore        4
+      11: aload_2
+      12: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      15: astore        5
+      17: aload_2
+      18: invokevirtual #33                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      21: astore        6
+      23: aload_2
+      24: invokevirtual #37                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+      27: astore        7
+      29: aload         4
+      31: iconst_4
+      32: bipush        12
+      34: aload_3
+      35: invokestatic  #41                 // Method org/betterx/bclib/util/MHelper.randRange:(IILnet/minecraft/util/RandomSource;)I
+      38: invokevirtual #47                 // Method net/minecraft/world/level/ChunkPos.getBlockX:(I)I
+      41: istore        8
+      43: aload         4
+      45: iconst_4
+      46: bipush        12
+      48: aload_3
+      49: invokestatic  #41                 // Method org/betterx/bclib/util/MHelper.randRange:(IILnet/minecraft/util/RandomSource;)I
+      52: invokevirtual #53                 // Method net/minecraft/world/level/ChunkPos.getBlockZ:(I)I
+      55: istore        9
+      57: aload         5
+      59: iload         8
+      61: iload         9
+      63: getstatic     #56                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      66: aload         6
+      68: aload         7
+      70: invokevirtual #62                 // Method net/minecraft/world/level/chunk/ChunkGenerator.getBaseHeight:(IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+      73: istore        10
+      75: iload         10
+      77: bipush        50
+      79: if_icmple     242
+      82: aload_0
+      83: aload         5
+      85: aload         7
+      87: iload         8
+      89: iconst_2
+      90: ishr
+      91: iload         10
+      93: iconst_2
+      94: ishr
+      95: iload         9
+      97: iconst_2
+      98: ishr
+      99: invokevirtual #68                 // Method getNoiseBiome:(Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/levelgen/RandomState;III)Lnet/minecraft/core/Holder;
+     102: astore        11
+     104: bipush        50
+     106: bipush        100
+     108: aload_3
+     109: invokestatic  #41                 // Method org/betterx/bclib/util/MHelper.randRange:(IILnet/minecraft/util/RandomSource;)I
+     112: i2f
+     113: fstore        12
+     115: fload         12
+     117: ldc           #74                 // float 0.4f
+     119: ldc           #75                 // float 0.6f
+     121: aload_3
+     122: invokestatic  #76                 // Method org/betterx/bclib/util/MHelper.randRange:(FFLnet/minecraft/util/RandomSource;)F
+     125: fmul
+     126: fstore        13
+     128: fload         13
+     130: ldc           #79                 // float 0.1f
+     132: ldc           #80                 // float 0.35f
+     134: aload_3
+     135: invokestatic  #76                 // Method org/betterx/bclib/util/MHelper.randRange:(FFLnet/minecraft/util/RandomSource;)F
+     138: fmul
+     139: fconst_1
+     140: fadd
+     141: f2d
+     142: invokestatic  #81                 // Method org/betterx/bclib/util/MHelper.floor:(D)I
+     145: istore        14
+     147: iload         14
+     149: anewarray     #85                 // class net/minecraft/world/level/block/state/BlockState
+     152: astore        15
+     154: iconst_0
+     155: istore        16
+     157: iload         16
+     159: iload         14
+     161: if_icmpge     189
+     164: aload         15
+     166: iload         16
+     168: getstatic     #87                 // Field VARIANTS:[Lnet/minecraft/world/level/block/state/BlockState;
+     171: aload_3
+     172: getstatic     #87                 // Field VARIANTS:[Lnet/minecraft/world/level/block/state/BlockState;
+     175: arraylength
+     176: invokeinterface #91,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     181: aaload
+     182: aastore
+     183: iinc          16, 1
+     186: goto          157
+     189: aload_2
+     190: invokevirtual #96                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+     193: getstatic     #100                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+     196: invokeinterface #106,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.lookup:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+     201: invokevirtual #112                // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+     204: checkcast     #118                // class net/minecraft/core/HolderLookup
+     207: astore        16
+     209: aload_1
+     210: new           #120                // class org/betterx/betterend/world/structures/piece/PaintedMountainPiece
+     213: dup
+     214: new           #122                // class net/minecraft/core/BlockPos
+     217: dup
+     218: iload         8
+     220: iload         10
+     222: iload         9
+     224: invokespecial #124                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     227: fload         12
+     229: fload         13
+     231: aload_3
+     232: aload         11
+     234: aload         15
+     236: invokespecial #127                // Method org/betterx/betterend/world/structures/piece/PaintedMountainPiece."<init>":(Lnet/minecraft/core/BlockPos;FFLnet/minecraft/util/RandomSource;Lnet/minecraft/core/Holder;[Lnet/minecraft/world/level/block/state/BlockState;)V
+     239: invokevirtual #130                // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     242: return
+
+  static {};
+    Code:
+       0: iconst_3
+       1: anewarray     #85                 // class net/minecraft/world/level/block/state/BlockState
+       4: dup
+       5: iconst_0
+       6: getstatic     #136                // Field net/minecraft/world/level/block/Blocks.END_STONE:Lnet/minecraft/world/level/block/Block;
+       9: invokevirtual #142                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      12: aastore
+      13: dup
+      14: iconst_1
+      15: getstatic     #148                // Field org/betterx/betterend/registry/EndBlocks.FLAVOLITE:Lorg/betterx/betterend/complexmaterials/StoneMaterial;
+      18: getfield      #154                // Field org/betterx/betterend/complexmaterials/StoneMaterial.stone:Lnet/minecraft/world/level/block/Block;
+      21: invokevirtual #142                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      24: aastore
+      25: dup
+      26: iconst_2
+      27: getstatic     #159                // Field org/betterx/betterend/registry/EndBlocks.VIOLECITE:Lorg/betterx/betterend/complexmaterials/StoneMaterial;
+      30: getfield      #154                // Field org/betterx/betterend/complexmaterials/StoneMaterial.stone:Lnet/minecraft/world/level/block/Block;
+      33: invokevirtual #142                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      36: aastore
+      37: putstatic     #87                 // Field VARIANTS:[Lnet/minecraft/world/level/block/state/BlockState;
+      40: return
+}

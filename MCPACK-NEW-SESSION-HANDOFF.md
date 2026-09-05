@@ -6,6 +6,116 @@
 
 ### Continuation update - 2026-09-05
 
+Lake direct encounter/loot attribution is delivered in `a4548bf`, using helper
+capture `28ed678`. Eleven captured classes show no direct authored entity,
+explicit spawner configuration or container-loot assignment. BlockFixer adjusts
+vegetation/crystals/fluids and schedules fluid ticks. The five content fields
+explicitly preserve unresolved dynamic material-provider and external effects;
+this is not proof of zero effective spawners or mobs. All 75 affected tests and
+scoped checks passed. Inventory SHA-256:
+`65d6dd6270f40edae66a5401a4e3aafe3f3aba5d4adccf9f6703b0dd00c8958f`.
+Only lake direct-content fields and grouping evidence changed. Still 421 working
+groups / 887 roots. Continue material/provider coverage and remaining canonical
+families/attributes. Do not repeat unchanged lake/mountain source captures or
+checks. Item 8 remains incomplete; no runtime or measurement system added.
+
+
+Lake placement and visual shore cues are delivered in `8292695`. All five roots
+preserve the base precheck and their distinct center/neighbor conditions. The
+two piece algorithms retain different shore/dust/plant cues; actual visibility
+is unmeasured. All 74 affected tests and scoped checks passed. Inventory SHA-256:
+`25e78dd6bbe34e3ac2c6ee60c1bda55119ae79772c2f69c6c32fc29270a48247`.
+Only lake placement/cues and grouping evidence changed; still 421 working groups
+and 887 roots. Continue remaining direct lake content, provider/canonical coverage
+and required attributes. The narrative report now labels its obsolete zero-mod
+completion claims as historical and links to the current incomplete inventory. Item 8 is incomplete;
+no new runtime, measurement system or downstream work was added.
+
+
+Mountain base placement precheck is integrated in `b52dfa9`. The independent
+FeatureBaseStructure Y >= 10 check precedes the root-specific Y > 5 / Y > 50
+checks. Both sampling stages remain explicit. All 73 affected tests and scoped
+checks passed. Inventory SHA-256:
+`e7c1a4fefa8ba492c93cef684994c60509cf8849a44934500d6563d7413fee80`.
+Only mountain placement and its grouping decision changed. Still 421 working
+groups / 887 roots. Continue lake/custom content and canonical/provider coverage;
+Item 8 remains incomplete. LakePiece inspection shows biome top-material lookup
+via EndBiome.findTopMaterial and direct jungle-grass/umbrella-moss rim placement;
+these are leads for the remaining lake attribution, not accepted full contents.
+No new measurement system, runtime or downstream work was added.
+
+
+BetterEnd mountain direct encounter/loot attribution is delivered in `1ee796e`.
+The seven preserved generator/base/piece classes contain no direct authored mob,
+spawner or container-loot path; both definitions have empty spawn overrides.
+Five content/intent fields now record this scoped attribution. Natural spawning,
+block drops and external injections remain distinct, not disproven. All 73
+affected tests and scoped checks passed. Inventory SHA-256:
+`24e6dfa796602032aedb3e97642453fa92b9ceeace619f70df51797a4b3383aa`.
+Only mountain content fields and their grouping decision changed; still 421
+working groups and 887 roots. Next integrate the inspected FeatureBaseStructure
+precheck (sampled Y >= 10) alongside the separately sampled root thresholds,
+then continue lake/custom content and provider/canonical coverage. The existing
+README records the precheck finding and exact reproduction. Item 8 is incomplete;
+no new runtime, measurement system or downstream work was added.
+
+
+BetterEnd mountain placement and visual cues are delivered in `a485c80`, using
+piece source capture `01d4f63`. Both variants now record surface height selection,
+distinct minimum Y thresholds and source-derived crystal/layered-stone cues.
+Observed visibility remains unmeasured. MountainPiece uses radius for its Y
+bounding box; saved envelopes are not occupied height. Existing size evidence
+and all other family rows are unchanged. The affected suite passed 71 tests;
+after separating the new test to satisfy lint, four BetterEnd cases and scoped
+Ruff/Basedpyright passed. Inventory SHA-256:
+`175fd05691be098c8e5904482325772757cdf9185a5017b3d765429e920f67ea`.
+Still 421 working groups and 887 roots. Continue required content attribution,
+remaining canonical/provider coverage and attributes. Item 8 remains incomplete;
+no new runtime, measurement system or downstream work was added.
+
+
+BetterEnd mountain grouping is delivered in `8ca1e21`. Ordinary and painted
+mountains are variants of one formation family. Separate generator/piece types,
+biome restrictions, height thresholds and material paths remain preserved in
+source evidence. All 71 affected tests passed; after an assertion line wrap,
+three focused BetterEnd cases and scoped checks pass. Working total: 421 groups
+with 887 registered roots. Inventory SHA-256:
+`d04abd3d02744ce7af0ac2ae286642ceaedca036efa603a9db08122b78280072`.
+Reproduction and limitations are in the final BetterEnd section of
+`evidence/item-8/README.md`. Lake/mountain grouping questions are resolved, but
+piece contents, actual geometry and other required attributes remain open.
+Continue provider/canonical coverage and attribute completion. No new extraction,
+measurement system, runtime or downstream work was added. Item 8 is incomplete.
+
+
+BetterEnd lake grouping is delivered in `f90d6da`. Five registered lake types
+are variants of one lake-formation family. Normal/rare EndLake classes share
+base generation; megalake/small-megalake use LakePiece with distinct parameters.
+Both algorithms, all definitions, biome constraints and original observation
+links are retained. Piece content and effective attributes remain open, as do
+mountain relationships. All 70 affected tests and scoped checks pass. Current
+working total: 422 groups with 887 registered roots. Inventory SHA-256:
+`620b2c61a0890bd4e2e387c4dd4f6e907682c653f752a8835a728eea6133ec2a`.
+Reproduction is in the final BetterEnd section of `evidence/item-8/README.md`.
+Continue remaining canonical/provider reconciliation and required attributes.
+Item 8 is incomplete; no runtime, measurement framework or downstream work added.
+
+
+BetterEnd lake/mountain registration and generator sources are captured under
+`evidence/item-8/sources/betterend-formations-code`. The existing extractor now
+selects nine exact classes from retained BetterEnd, including verbose registration
+bootstrap bindings. Identity manifest SHA-256:
+`150df9fc0a941cc523bca51a782c39fcd0f08a32b11af77a64cf6f248c170961`.
+Initial source inspection: normal/rare EndLake subclasses only forward construction
+and override type(); MegaLakeSmall has its own generatePieces. Mountain and
+painted mountain use separate piece classes. Integrate relationships only after
+comparing these preserved implementations and settings. No new measurement system
+was added: packaged definitions do not expose the code needed for these open
+family decisions, so the existing source extraction path supplies it. Extraction
+and scoped checks pass. Inventory and its 426 working groups remain unchanged.
+Commands and limitations are in the source directory README.
+
+
 MVS mining relationship and encounter attribution are delivered in `7c1d6c6`.
 Compact mine-with-campsite and modular mineshaft remain separate families;
 shared villager pieces are components. Both now record packaged hostile intent
