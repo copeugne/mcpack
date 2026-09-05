@@ -29733,7 +29733,71 @@
           ],
           "finding": "These retained NeoForge biome-modifier documents name code-backed modifier types without declaring target biomes or feature changes. Their documents cannot prove either removal or preservation of the packaged End feature lists.",
           "required_followup": "Resolve relevant registrations and callbacks for these two implementations before asserting that the packaged biome feature membership is effective. Reuse existing source extraction; do not infer modifications from provider names alone.",
-          "scope": "Concrete unresolved code-delegation paths found in the packaged catalog. This is not a claim that these modifiers alter End features or an exhaustive list of all cross-provider effects."
+          "scope": "Concrete unresolved code-delegation paths found in the packaged catalog. This is not a claim that these modifiers alter End features or an exhaustive list of all cross-provider effects.",
+          "zeta_resolution": {
+            "evidence": {
+              "evidence/item-8/sources/zeta-biome-modifier/identities.json": "4f0d0886dc653d4ba70c935a66fb2bbd17488286b6ee8462dffe4a428f41ddd3",
+              "evidence/item-8/sources/zeta-generation-spawn/identities.json": "ace51ef9a5c0f9a983ed951fac529bc0a662e5c9cb286dcd1828eee4f39789f3",
+              "evidence/item-8/sources/zeta-deferred-feature/identities.json": "809590b4bbe55e382e7dc391d846cd6eb71183846b9aa200ebd90eccf394bd2e",
+              "evidence/item-8/sources/zeta-generation-applicability/identities.json": "b1668715f596ff4149c5cd17af2e49f95d65b173db9a6d9705bb35dfca25b62a",
+              "evidence/item-8/sources/zeta-generator-dispatch/identities.json": "406a4dd62827c7419ee2ff380a5f626206ed850e480c9e5b9e04862edc8606c5",
+              "evidence/item-8/sources/quark-end-registration/identities.json": "ccc7e76f93036a8ec46d3add67ac29116e24205d72c14d461a511d9ee02c9581",
+              "evidence/item-8/sources/quark-end-generators/identities.json": "b780ea6da20e3207872d0aee601a859382b6f3fc30db7b9a0f0383b2c1e4480a"
+            },
+            "modifier_effect": "During ADD, ZetaBiomeModifier appends a deferred feature at each decoration stage. The captured method does not remove the existing feature list. It separately delegates spawn configuration to ZetaSpawnModifier.",
+            "execution_chain": "DeferredFeature.place calls WorldGenHandler.generateChunk with its stored stage. The handler requires WorldGenRegion, an enabled consumer module and Generator.canGenerate. That inherited method evaluates its condition and passes accessor.getLevel() to DimensionConfig, resolving the Level-versus-WorldGenRegion ambiguity. Generator.generate then dispatches to MultiChunkFeatureGenerator.generateChunk for these two Quark consumers.",
+            "selected_consumers": {
+              "ChorusVegetationModule": "Registers ChorusVegetationGenerator at VEGETAL_DECORATION with weight zero. Its source query excludes positions closer than 1050 to origin and requires END_HIGHLANDS at maxBuildHeight-1. It places chorus vegetation rather than authored template structures.",
+              "SpiralSpiresModule": "Registers SpiralSpireGenerator at SURFACE_STRUCTURES with weight zero, supplying its dimension configuration. Its source query excludes positions closer than 1050 to origin. Chunk-part generation checks the configured biome predicate and searches for End Stone before block-level spire construction."
+            },
+            "source_reach": "MultiChunkFeatureGenerator searches source chunks within ceil(radius/16) of the target on both axes, using source chunk minimum X/Z and Y=0. This is source search reach, not occupied-block geometry. At radii 7 and 15, both search one neighboring chunk per axis.",
+            "frozen_configuration": {
+              "file": "evidence/item-6/frozen/config/quark-common.toml",
+              "sha256": "94bfff490eea33f9bb105fae298606c4708ddb8af2f3df8630cc0f0ac7e85327",
+              "module_toggles": {
+                "Chorus Vegetation": true,
+                "Spiral Spires": true
+              },
+              "chorus_vegetation": {
+                "Rarity": 150,
+                "Radius": 7,
+                "Chunk Attempts": 120,
+                "Highlands Chance": 1.0,
+                "Midlands Chance": 0.2,
+                "Other End Biomes Chance": 0.0,
+                "Passive Teleport Chance": 0.2,
+                "Endermite Spawn Chance": 0.01,
+                "Teleport Duplication Chance": 0.01
+              },
+              "spiral_spires": {
+                "Rarity": 200,
+                "Radius": 15,
+                "Enable Myalite Viaducts": true,
+                "Myalite Conduit Distance": 24,
+                "Renewable Myalite": true,
+                "dimensions": {
+                  "Is Blacklist": false,
+                  "Dimensions": [
+                    "minecraft:the_end"
+                  ]
+                },
+                "biomes": {
+                  "tags": {
+                    "Biome Tags": [],
+                    "Is Blacklist": true
+                  },
+                  "biomes": {
+                    "Biomes": [
+                      "minecraft:end_highlands"
+                    ],
+                    "Is Blacklist": false
+                  }
+                }
+              }
+            },
+            "remaining": "Bind frozen configuration values to effective consumer fields and finish relevant spire geometry/biome predicates. Other Quark consumers, actual spawn registrations and Forgified Fabric callbacks remain unresolved. The selected consumers do not establish complete retained-provider coverage.",
+            "scope": "Resolved direct source call chain and preserved frozen-file values. No runtime field dump, observed generation, new canonical family or unconditional central-island exclusion is claimed."
+          }
         }
       }
     }
