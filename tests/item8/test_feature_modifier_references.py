@@ -982,3 +982,27 @@ def test_better_end_island_configuration_binds_frozen_keys_to_fields() -> None:
         assert "Field " + field + ":" in definition.split("putstatic", 1)[1].splitlines()[0]
         assert "BEIConfigNeoForge." + field + ":" in binding
         assert "ConfigModule." + field + ":Z" in binding
+
+
+def test_better_end_island_declares_required_feature_mixins() -> None:
+    path = Path("evidence/item-8/sources/better-end-island-platform-gateway") / (
+        "YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar/mixin-metadata.json"
+    )
+    raw = path.read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "9edd653c4d2fb45318c02ff41838941b914774d87f8d799d20aa99aa8fa91813"
+    )
+    metadata = cast("dict[str, dict[str, str]]", json.loads(raw))
+    for entry in metadata.values():
+        assert hashlib.sha256(entry["text"].encode()).hexdigest() == entry["sha256"]
+    mod = tomllib.loads(metadata["META-INF/neoforge.mods.toml"]["text"])
+    assert {"config": "betterendisland.mixins.json"} in mod["mixins"]
+    config = cast(
+        "dict[str, JsonValue]", json.loads(metadata["betterendisland.mixins.json"]["text"])
+    )
+    assert config["required"] is True
+    assert config["injectors"] == {"defaultRequire": 1}
+    assert "plugin" not in config
+    assert {"EndPlatformFeatureMixin", "EndGatewayFeatureMixin"} <= set(
+        cast("list[str]", config["mixins"])
+    )
