@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-05
 
+Voyager wells are delivered through `4f36c29`, built from `c4646fc`. Seventeen
+roots form one working family with twenty templates, including upper/lower
+components and alternative lower pieces. Full definitions preserve the Nether
+generator and HIGHEST_LAND, rare-well terrain checks and each biome constraint.
+Loot references remain attributed to their individual templates. The existing
+version-aware trace selects the small tower's `1_21_4` path for Minecraft 1.21.1;
+that path name is not an incompatibility finding. Twelve world observations
+are linked. Thirty-nine focused tests and scoped quality checks passed; two
+builds were byte-identical and earlier families unchanged. Inventory SHA-256:
+`9565140a4d36dc9412c8e9a8fb24ba2311308642ffbe0d84532b52de86989a7b`.
+Totals: 197 working groups, 353 assigned IDs, 534 unassigned; 70 mvs roots remain.
+Continue remaining Voyager designs, including carts and igloos, shared effective
+attributes, remaining providers and non-registry contributions. No additional
+measurement system was needed. Item 8's final gate, review and main merge remain
+open, as do canonical reconciliation and required effective attributes.
+
 Voyager living trees are delivered through `a85bc74`, built from `7389ff9`.
 Nine roots form one working family with fifteen alternative templates. Full
 definitions retain biome differences and big oak's terrain range/radius checks;

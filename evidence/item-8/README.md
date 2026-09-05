@@ -385,3 +385,20 @@ The direct source check binds the approximate footprint and height lists to
 those dimensions and preserves big oak's exceptional loot and terrain checks.
 These are packaged envelopes, including padding and air, not measurements of
 occupied blocks. The two retained world observations remain linked separately.
+
+Voyager wells (`c4646fc`, joined in `4f36c29`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-wells-c4646fc.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-wells-c4646fc-repro.json
+cmp evidence/raw/item8/inventory-wells-c4646fc.json evidence/raw/item8/inventory-wells-c4646fc-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 39 focused tests and scoped Ruff/basedpyright checks passed. The existing
+Voyager tree test now also checks wells, preserving full definitions, template
+dimensions and exact loot references. Seventeen roots form one working family;
+twenty templates include components and alternatives. Twelve retained world
+observations remain linked. Existing observed-envelope estimates supply the
+qualified geometry fields without adding component heights or introducing a
+measurement system. Effective gameplay attributes remain unresolved.
