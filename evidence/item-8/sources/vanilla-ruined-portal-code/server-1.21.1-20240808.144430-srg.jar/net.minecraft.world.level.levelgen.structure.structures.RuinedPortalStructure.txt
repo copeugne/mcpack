@@ -1,0 +1,627 @@
+Compiled from "RuinedPortalStructure.java"
+public class net.minecraft.world.level.levelgen.structure.structures.RuinedPortalStructure extends net.minecraft.world.level.levelgen.structure.Structure {
+  private static final java.lang.String[] STRUCTURE_LOCATION_PORTALS;
+
+  private static final java.lang.String[] STRUCTURE_LOCATION_GIANT_PORTALS;
+
+  private static final float PROBABILITY_OF_GIANT_PORTAL = 0.05f;
+
+  private static final int MIN_Y_INDEX = 15;
+
+  private final java.util.List<net.minecraft.world.level.levelgen.structure.structures.RuinedPortalStructure$Setup> setups;
+
+  public static final com.mojang.serialization.MapCodec<net.minecraft.world.level.levelgen.structure.structures.RuinedPortalStructure> CODEC;
+
+  public net.minecraft.world.level.levelgen.structure.structures.RuinedPortalStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings, java.util.List<net.minecraft.world.level.levelgen.structure.structures.RuinedPortalStructure$Setup>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #71                 // Method net/minecraft/world/level/levelgen/structure/Structure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       5: aload_0
+       6: aload_2
+       7: putfield      #73                 // Field setups:Ljava/util/List;
+      10: return
+
+  public net.minecraft.world.level.levelgen.structure.structures.RuinedPortalStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings, net.minecraft.world.level.levelgen.structure.structures.RuinedPortalStructure$Setup);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokestatic  #85                 // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+       6: invokespecial #87                 // Method "<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;Ljava/util/List;)V
+       9: return
+
+  public java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: new           #12                 // class net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$Properties
+       3: dup
+       4: invokespecial #96                 // Method net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$Properties."<init>":()V
+       7: astore_2
+       8: aload_1
+       9: invokevirtual #100                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+      12: astore_3
+      13: aconst_null
+      14: astore        4
+      16: aload_0
+      17: getfield      #73                 // Field setups:Ljava/util/List;
+      20: invokeinterface #104,  1          // InterfaceMethod java/util/List.size:()I
+      25: iconst_1
+      26: if_icmple     150
+      29: fconst_0
+      30: fstore        5
+      32: aload_0
+      33: getfield      #73                 // Field setups:Ljava/util/List;
+      36: invokeinterface #108,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      41: astore        6
+      43: aload         6
+      45: invokeinterface #116,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      50: ifeq          78
+      53: aload         6
+      55: invokeinterface #120,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      60: checkcast     #7                  // class net/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure$Setup
+      63: astore        7
+      65: fload         5
+      67: aload         7
+      69: invokevirtual #124                // Method net/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure$Setup.weight:()F
+      72: fadd
+      73: fstore        5
+      75: goto          43
+      78: aload_3
+      79: invokevirtual #127                // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextFloat:()F
+      82: fstore        6
+      84: aload_0
+      85: getfield      #73                 // Field setups:Ljava/util/List;
+      88: invokeinterface #108,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      93: astore        7
+      95: aload         7
+      97: invokeinterface #116,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     102: ifeq          147
+     105: aload         7
+     107: invokeinterface #120,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     112: checkcast     #7                  // class net/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure$Setup
+     115: astore        8
+     117: fload         6
+     119: aload         8
+     121: invokevirtual #124                // Method net/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure$Setup.weight:()F
+     124: fload         5
+     126: fdiv
+     127: fsub
+     128: fstore        6
+     130: fload         6
+     132: fconst_0
+     133: fcmpg
+     134: ifge          144
+     137: aload         8
+     139: astore        4
+     141: goto          147
+     144: goto          95
+     147: goto          165
+     150: aload_0
+     151: getfield      #73                 // Field setups:Ljava/util/List;
+     154: iconst_0
+     155: invokeinterface #131,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     160: checkcast     #7                  // class net/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure$Setup
+     163: astore        4
+     165: aload         4
+     167: ifnonnull     178
+     170: new           #133                // class java/lang/IllegalStateException
+     173: dup
+     174: invokespecial #134                // Method java/lang/IllegalStateException."<init>":()V
+     177: athrow
+     178: aload         4
+     180: astore        5
+     182: aload_2
+     183: aload_3
+     184: aload         5
+     186: invokevirtual #137                // Method net/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure$Setup.airPocketProbability:()F
+     189: invokestatic  #141                // Method sample:(Lnet/minecraft/world/level/levelgen/WorldgenRandom;F)Z
+     192: putfield      #145                // Field net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$Properties.airPocket:Z
+     195: aload_2
+     196: aload         5
+     198: invokevirtual #148                // Method net/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure$Setup.mossiness:()F
+     201: putfield      #150                // Field net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$Properties.mossiness:F
+     204: aload_2
+     205: aload         5
+     207: invokevirtual #153                // Method net/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure$Setup.overgrown:()Z
+     210: putfield      #155                // Field net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$Properties.overgrown:Z
+     213: aload_2
+     214: aload         5
+     216: invokevirtual #158                // Method net/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure$Setup.vines:()Z
+     219: putfield      #160                // Field net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$Properties.vines:Z
+     222: aload_2
+     223: aload         5
+     225: invokevirtual #163                // Method net/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure$Setup.replaceWithBlackstone:()Z
+     228: putfield      #165                // Field net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$Properties.replaceWithBlackstone:Z
+     231: aload_3
+     232: invokevirtual #127                // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextFloat:()F
+     235: ldc           #56                 // float 0.05f
+     237: fcmpg
+     238: ifge          261
+     241: getstatic     #167                // Field STRUCTURE_LOCATION_GIANT_PORTALS:[Ljava/lang/String;
+     244: aload_3
+     245: getstatic     #167                // Field STRUCTURE_LOCATION_GIANT_PORTALS:[Ljava/lang/String;
+     248: arraylength
+     249: invokevirtual #171                // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+     252: aaload
+     253: invokestatic  #177                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     256: astore        6
+     258: goto          278
+     261: getstatic     #179                // Field STRUCTURE_LOCATION_PORTALS:[Ljava/lang/String;
+     264: aload_3
+     265: getstatic     #179                // Field STRUCTURE_LOCATION_PORTALS:[Ljava/lang/String;
+     268: arraylength
+     269: invokevirtual #171                // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+     272: aaload
+     273: invokestatic  #177                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     276: astore        6
+     278: aload_1
+     279: invokevirtual #183                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.structureTemplateManager:()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+     282: aload         6
+     284: invokevirtual #189                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager.getOrCreate:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;
+     287: astore        7
+     289: invokestatic  #195                // Method net/minecraft/world/level/block/Rotation.values:()[Lnet/minecraft/world/level/block/Rotation;
+     292: aload_3
+     293: invokestatic  #201                // Method net/minecraft/Util.getRandom:([Ljava/lang/Object;Lnet/minecraft/util/RandomSource;)Ljava/lang/Object;
+     296: checkcast     #191                // class net/minecraft/world/level/block/Rotation
+     299: astore        8
+     301: aload_3
+     302: invokevirtual #127                // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextFloat:()F
+     305: ldc           #202                // float 0.5f
+     307: fcmpg
+     308: ifge          317
+     311: getstatic     #208                // Field net/minecraft/world/level/block/Mirror.NONE:Lnet/minecraft/world/level/block/Mirror;
+     314: goto          320
+     317: getstatic     #213                // Field net/minecraft/world/level/block/Mirror.FRONT_BACK:Lnet/minecraft/world/level/block/Mirror;
+     320: astore        9
+     322: new           #215                // class net/minecraft/core/BlockPos
+     325: dup
+     326: aload         7
+     328: invokevirtual #219                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.getSize:()Lnet/minecraft/core/Vec3i;
+     331: invokevirtual #224                // Method net/minecraft/core/Vec3i.getX:()I
+     334: iconst_2
+     335: idiv
+     336: iconst_0
+     337: aload         7
+     339: invokevirtual #219                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.getSize:()Lnet/minecraft/core/Vec3i;
+     342: invokevirtual #227                // Method net/minecraft/core/Vec3i.getZ:()I
+     345: iconst_2
+     346: idiv
+     347: invokespecial #230                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     350: astore        10
+     352: aload_1
+     353: invokevirtual #234                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+     356: astore        11
+     358: aload_1
+     359: invokevirtual #238                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+     362: astore        12
+     364: aload_1
+     365: invokevirtual #242                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+     368: astore        13
+     370: aload_1
+     371: invokevirtual #246                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+     374: invokevirtual #252                // Method net/minecraft/world/level/ChunkPos.getWorldPosition:()Lnet/minecraft/core/BlockPos;
+     377: astore        14
+     379: aload         7
+     381: aload         14
+     383: aload         8
+     385: aload         10
+     387: aload         9
+     389: invokevirtual #256                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.getBoundingBox:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Mirror;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     392: astore        15
+     394: aload         15
+     396: invokevirtual #261                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getCenter:()Lnet/minecraft/core/BlockPos;
+     399: astore        16
+     401: aload         11
+     403: aload         16
+     405: invokevirtual #262                // Method net/minecraft/core/BlockPos.getX:()I
+     408: aload         16
+     410: invokevirtual #263                // Method net/minecraft/core/BlockPos.getZ:()I
+     413: aload         5
+     415: invokevirtual #267                // Method net/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure$Setup.placement:()Lnet/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$VerticalPlacement;
+     418: invokestatic  #271                // Method net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece.getHeightMapType:(Lnet/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$VerticalPlacement;)Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     421: aload         12
+     423: aload         13
+     425: invokevirtual #277                // Method net/minecraft/world/level/chunk/ChunkGenerator.getBaseHeight:(IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+     428: iconst_1
+     429: isub
+     430: istore        17
+     432: aload_3
+     433: aload         11
+     435: aload         5
+     437: invokevirtual #267                // Method net/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure$Setup.placement:()Lnet/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$VerticalPlacement;
+     440: aload_2
+     441: getfield      #145                // Field net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$Properties.airPocket:Z
+     444: iload         17
+     446: aload         15
+     448: invokevirtual #280                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getYSpan:()I
+     451: aload         15
+     453: aload         12
+     455: aload         13
+     457: invokestatic  #284                // Method findSuitableY:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$VerticalPlacement;ZIILnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+     460: istore        18
+     462: new           #215                // class net/minecraft/core/BlockPos
+     465: dup
+     466: aload         14
+     468: invokevirtual #262                // Method net/minecraft/core/BlockPos.getX:()I
+     471: iload         18
+     473: aload         14
+     475: invokevirtual #263                // Method net/minecraft/core/BlockPos.getZ:()I
+     478: invokespecial #230                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     481: astore        19
+     483: new           #29                 // class net/minecraft/world/level/levelgen/structure/Structure$GenerationStub
+     486: dup
+     487: aload         19
+     489: aload         5
+     491: aload_2
+     492: aload         19
+     494: aload_1
+     495: aload         13
+     497: aload         6
+     499: aload         7
+     501: aload         8
+     503: aload         9
+     505: aload         10
+     507: invokedynamic #304,  0            // InvokeDynamic #0:accept:(Lnet/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure$Setup;Lnet/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$Properties;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/world/level/block/Mirror;Lnet/minecraft/core/BlockPos;)Ljava/util/function/Consumer;
+     512: invokespecial #307                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationStub."<init>":(Lnet/minecraft/core/BlockPos;Ljava/util/function/Consumer;)V
+     515: invokestatic  #312                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+     518: areturn
+
+  private static boolean sample(net.minecraft.world.level.levelgen.WorldgenRandom, float);
+    Code:
+       0: fload_1
+       1: fconst_0
+       2: fcmpl
+       3: ifne          8
+       6: iconst_0
+       7: ireturn
+       8: fload_1
+       9: fconst_1
+      10: fcmpl
+      11: ifne          16
+      14: iconst_1
+      15: ireturn
+      16: aload_0
+      17: invokevirtual #127                // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextFloat:()F
+      20: fload_1
+      21: fcmpg
+      22: ifge          29
+      25: iconst_1
+      26: goto          30
+      29: iconst_0
+      30: ireturn
+
+  private static boolean isCold(net.minecraft.core.BlockPos, net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: aload_1
+       1: invokeinterface #357,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+       6: checkcast     #359                // class net/minecraft/world/level/biome/Biome
+       9: aload_0
+      10: invokevirtual #363                // Method net/minecraft/world/level/biome/Biome.coldEnoughToSnow:(Lnet/minecraft/core/BlockPos;)Z
+      13: ireturn
+
+  private static int findSuitableY(net.minecraft.util.RandomSource, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.world.level.levelgen.structure.structures.RuinedPortalPiece$VerticalPlacement, boolean, int, int, net.minecraft.world.level.levelgen.structure.BoundingBox, net.minecraft.world.level.LevelHeightAccessor, net.minecraft.world.level.levelgen.RandomState);
+    Code:
+       0: aload         7
+       2: invokeinterface #372,  1          // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getMinBuildHeight:()I
+       7: bipush        15
+       9: iadd
+      10: istore        10
+      12: aload_2
+      13: getstatic     #376                // Field net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$VerticalPlacement.IN_NETHER:Lnet/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$VerticalPlacement;
+      16: if_acmpne     74
+      19: iload_3
+      20: ifeq          36
+      23: aload_0
+      24: bipush        32
+      26: bipush        100
+      28: invokestatic  #382                // Method net/minecraft/util/Mth.randomBetweenInclusive:(Lnet/minecraft/util/RandomSource;II)I
+      31: istore        9
+      33: goto          157
+      36: aload_0
+      37: invokeinterface #387,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      42: ldc           #202                // float 0.5f
+      44: fcmpg
+      45: ifge          61
+      48: aload_0
+      49: bipush        27
+      51: bipush        29
+      53: invokestatic  #382                // Method net/minecraft/util/Mth.randomBetweenInclusive:(Lnet/minecraft/util/RandomSource;II)I
+      56: istore        9
+      58: goto          157
+      61: aload_0
+      62: bipush        29
+      64: bipush        100
+      66: invokestatic  #382                // Method net/minecraft/util/Mth.randomBetweenInclusive:(Lnet/minecraft/util/RandomSource;II)I
+      69: istore        9
+      71: goto          157
+      74: aload_2
+      75: getstatic     #390                // Field net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$VerticalPlacement.IN_MOUNTAIN:Lnet/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$VerticalPlacement;
+      78: if_acmpne     101
+      81: iload         4
+      83: iload         5
+      85: isub
+      86: istore        11
+      88: aload_0
+      89: bipush        70
+      91: iload         11
+      93: invokestatic  #393                // Method getRandomWithinInterval:(Lnet/minecraft/util/RandomSource;II)I
+      96: istore        9
+      98: goto          157
+     101: aload_2
+     102: getstatic     #396                // Field net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$VerticalPlacement.UNDERGROUND:Lnet/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$VerticalPlacement;
+     105: if_acmpne     128
+     108: iload         4
+     110: iload         5
+     112: isub
+     113: istore        11
+     115: aload_0
+     116: iload         10
+     118: iload         11
+     120: invokestatic  #393                // Method getRandomWithinInterval:(Lnet/minecraft/util/RandomSource;II)I
+     123: istore        9
+     125: goto          157
+     128: aload_2
+     129: getstatic     #399                // Field net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$VerticalPlacement.PARTLY_BURIED:Lnet/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$VerticalPlacement;
+     132: if_acmpne     153
+     135: iload         4
+     137: iload         5
+     139: isub
+     140: aload_0
+     141: iconst_2
+     142: bipush        8
+     144: invokestatic  #382                // Method net/minecraft/util/Mth.randomBetweenInclusive:(Lnet/minecraft/util/RandomSource;II)I
+     147: iadd
+     148: istore        9
+     150: goto          157
+     153: iload         4
+     155: istore        9
+     157: new           #215                // class net/minecraft/core/BlockPos
+     160: dup
+     161: aload         6
+     163: invokevirtual #402                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+     166: iconst_0
+     167: aload         6
+     169: invokevirtual #405                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+     172: invokespecial #230                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     175: new           #215                // class net/minecraft/core/BlockPos
+     178: dup
+     179: aload         6
+     181: invokevirtual #408                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxX:()I
+     184: iconst_0
+     185: aload         6
+     187: invokevirtual #405                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+     190: invokespecial #230                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     193: new           #215                // class net/minecraft/core/BlockPos
+     196: dup
+     197: aload         6
+     199: invokevirtual #402                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+     202: iconst_0
+     203: aload         6
+     205: invokevirtual #411                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ:()I
+     208: invokespecial #230                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     211: new           #215                // class net/minecraft/core/BlockPos
+     214: dup
+     215: aload         6
+     217: invokevirtual #408                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxX:()I
+     220: iconst_0
+     221: aload         6
+     223: invokevirtual #411                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ:()I
+     226: invokespecial #230                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     229: invokestatic  #416                // Method com/google/common/collect/ImmutableList.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList;
+     232: astore        11
+     234: aload         11
+     236: invokeinterface #420,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+     241: aload_1
+     242: aload         7
+     244: aload         8
+     246: invokedynamic #433,  0            // InvokeDynamic #1:apply:(Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)Ljava/util/function/Function;
+     251: invokeinterface #439,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+     256: invokestatic  #445                // Method java/util/stream/Collectors.toList:()Ljava/util/stream/Collector;
+     259: invokeinterface #449,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+     264: checkcast     #81                 // class java/util/List
+     267: astore        12
+     269: aload_2
+     270: getstatic     #452                // Field net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$VerticalPlacement.ON_OCEAN_FLOOR:Lnet/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$VerticalPlacement;
+     273: if_acmpne     282
+     276: getstatic     #456                // Field net/minecraft/world/level/levelgen/Heightmap$Types.OCEAN_FLOOR_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     279: goto          285
+     282: getstatic     #459                // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     285: astore        13
+     287: iload         9
+     289: istore        14
+     291: iload         14
+     293: iload         10
+     295: if_icmple     377
+     298: iconst_0
+     299: istore        15
+     301: aload         12
+     303: invokeinterface #108,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     308: astore        16
+     310: aload         16
+     312: invokeinterface #116,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     317: ifeq          371
+     320: aload         16
+     322: invokeinterface #120,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     327: checkcast     #461                // class net/minecraft/world/level/NoiseColumn
+     330: astore        17
+     332: aload         17
+     334: iload         14
+     336: invokevirtual #465                // Method net/minecraft/world/level/NoiseColumn.getBlock:(I)Lnet/minecraft/world/level/block/state/BlockState;
+     339: astore        18
+     341: aload         13
+     343: invokevirtual #469                // Method net/minecraft/world/level/levelgen/Heightmap$Types.isOpaque:()Ljava/util/function/Predicate;
+     346: aload         18
+     348: invokeinterface #475,  2          // InterfaceMethod java/util/function/Predicate.test:(Ljava/lang/Object;)Z
+     353: ifeq          368
+     356: iinc          15, 1
+     359: iload         15
+     361: iconst_3
+     362: if_icmpne     368
+     365: goto          377
+     368: goto          310
+     371: iinc          14, -1
+     374: goto          291
+     377: iload         14
+     379: ireturn
+
+  private static int getRandomWithinInterval(net.minecraft.util.RandomSource, int, int);
+    Code:
+       0: iload_1
+       1: iload_2
+       2: if_icmpge     12
+       5: aload_0
+       6: iload_1
+       7: iload_2
+       8: invokestatic  #382                // Method net/minecraft/util/Mth.randomBetweenInclusive:(Lnet/minecraft/util/RandomSource;II)I
+      11: ireturn
+      12: iload_2
+      13: ireturn
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<?> type();
+    Code:
+       0: getstatic     #503                // Field net/minecraft/world/level/levelgen/structure/StructureType.RUINED_PORTAL:Lnet/minecraft/world/level/levelgen/structure/StructureType;
+       3: areturn
+
+  private static net.minecraft.world.level.NoiseColumn lambda$findSuitableY$3(net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.world.level.LevelHeightAccessor, net.minecraft.world.level.levelgen.RandomState, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_3
+       2: invokevirtual #262                // Method net/minecraft/core/BlockPos.getX:()I
+       5: aload_3
+       6: invokevirtual #263                // Method net/minecraft/core/BlockPos.getZ:()I
+       9: aload_1
+      10: aload_2
+      11: invokevirtual #507                // Method net/minecraft/world/level/chunk/ChunkGenerator.getBaseColumn:(IILnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)Lnet/minecraft/world/level/NoiseColumn;
+      14: areturn
+
+  private static void lambda$findGenerationPoint$2(net.minecraft.world.level.levelgen.structure.structures.RuinedPortalStructure$Setup, net.minecraft.world.level.levelgen.structure.structures.RuinedPortalPiece$Properties, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, net.minecraft.world.level.levelgen.RandomState, net.minecraft.resources.ResourceLocation, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate, net.minecraft.world.level.block.Rotation, net.minecraft.world.level.block.Mirror, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder);
+    Code:
+       0: aload_0
+       1: invokevirtual #514                // Method net/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure$Setup.canBeCold:()Z
+       4: ifeq          51
+       7: aload_1
+       8: aload_2
+       9: aload_3
+      10: invokevirtual #234                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      13: invokevirtual #518                // Method net/minecraft/world/level/chunk/ChunkGenerator.getBiomeSource:()Lnet/minecraft/world/level/biome/BiomeSource;
+      16: aload_2
+      17: invokevirtual #262                // Method net/minecraft/core/BlockPos.getX:()I
+      20: invokestatic  #523                // Method net/minecraft/core/QuartPos.fromBlock:(I)I
+      23: aload_2
+      24: invokevirtual #526                // Method net/minecraft/core/BlockPos.getY:()I
+      27: invokestatic  #523                // Method net/minecraft/core/QuartPos.fromBlock:(I)I
+      30: aload_2
+      31: invokevirtual #263                // Method net/minecraft/core/BlockPos.getZ:()I
+      34: invokestatic  #523                // Method net/minecraft/core/QuartPos.fromBlock:(I)I
+      37: aload         4
+      39: invokevirtual #530                // Method net/minecraft/world/level/levelgen/RandomState.sampler:()Lnet/minecraft/world/level/biome/Climate$Sampler;
+      42: invokevirtual #536                // Method net/minecraft/world/level/biome/BiomeSource.getNoiseBiome:(IIILnet/minecraft/world/level/biome/Climate$Sampler;)Lnet/minecraft/core/Holder;
+      45: invokestatic  #538                // Method isCold:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Holder;)Z
+      48: putfield      #541                // Field net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$Properties.cold:Z
+      51: aload         10
+      53: new           #14                 // class net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece
+      56: dup
+      57: aload_3
+      58: invokevirtual #183                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.structureTemplateManager:()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+      61: aload_2
+      62: aload_0
+      63: invokevirtual #267                // Method net/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure$Setup.placement:()Lnet/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$VerticalPlacement;
+      66: aload_1
+      67: aload         5
+      69: aload         6
+      71: aload         7
+      73: aload         8
+      75: aload         9
+      77: invokespecial #546                // Method net/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$VerticalPlacement;Lnet/minecraft/world/level/levelgen/structure/structures/RuinedPortalPiece$Properties;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/world/level/block/Mirror;Lnet/minecraft/core/BlockPos;)V
+      80: invokevirtual #550                // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+      83: return
+
+  private static com.mojang.datafixers.kinds.App lambda$static$1(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokestatic  #568                // Method settingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       5: getstatic     #571                // Field net/minecraft/world/level/levelgen/structure/structures/RuinedPortalStructure$Setup.CODEC:Lcom/mojang/serialization/Codec;
+       8: invokeinterface #577,  1          // InterfaceMethod com/mojang/serialization/Codec.listOf:()Lcom/mojang/serialization/Codec;
+      13: invokestatic  #583                // Method net/minecraft/util/ExtraCodecs.nonEmptyList:(Lcom/mojang/serialization/Codec;)Lcom/mojang/serialization/Codec;
+      16: ldc_w         #584                // String setups
+      19: invokeinterface #588,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      24: invokedynamic #597,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      29: invokevirtual #603                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      32: invokevirtual #607                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P2;
+      35: aload_0
+      36: invokedynamic #615,  0            // InvokeDynamic #3:apply:()Ljava/util/function/BiFunction;
+      41: invokevirtual #618                // Method com/mojang/datafixers/Products$P2.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/BiFunction;)Lcom/mojang/datafixers/kinds/App;
+      44: areturn
+
+  private static java.util.List lambda$static$0(net.minecraft.world.level.levelgen.structure.structures.RuinedPortalStructure);
+    Code:
+       0: aload_0
+       1: getfield      #73                 // Field setups:Ljava/util/List;
+       4: areturn
+
+  static {};
+    Code:
+       0: bipush        10
+       2: anewarray     #624                // class java/lang/String
+       5: dup
+       6: iconst_0
+       7: ldc_w         #626                // String ruined_portal/portal_1
+      10: aastore
+      11: dup
+      12: iconst_1
+      13: ldc_w         #628                // String ruined_portal/portal_2
+      16: aastore
+      17: dup
+      18: iconst_2
+      19: ldc_w         #630                // String ruined_portal/portal_3
+      22: aastore
+      23: dup
+      24: iconst_3
+      25: ldc_w         #632                // String ruined_portal/portal_4
+      28: aastore
+      29: dup
+      30: iconst_4
+      31: ldc_w         #634                // String ruined_portal/portal_5
+      34: aastore
+      35: dup
+      36: iconst_5
+      37: ldc_w         #636                // String ruined_portal/portal_6
+      40: aastore
+      41: dup
+      42: bipush        6
+      44: ldc_w         #638                // String ruined_portal/portal_7
+      47: aastore
+      48: dup
+      49: bipush        7
+      51: ldc_w         #640                // String ruined_portal/portal_8
+      54: aastore
+      55: dup
+      56: bipush        8
+      58: ldc_w         #642                // String ruined_portal/portal_9
+      61: aastore
+      62: dup
+      63: bipush        9
+      65: ldc_w         #644                // String ruined_portal/portal_10
+      68: aastore
+      69: putstatic     #179                // Field STRUCTURE_LOCATION_PORTALS:[Ljava/lang/String;
+      72: iconst_3
+      73: anewarray     #624                // class java/lang/String
+      76: dup
+      77: iconst_0
+      78: ldc_w         #646                // String ruined_portal/giant_portal_1
+      81: aastore
+      82: dup
+      83: iconst_1
+      84: ldc_w         #648                // String ruined_portal/giant_portal_2
+      87: aastore
+      88: dup
+      89: iconst_2
+      90: ldc_w         #650                // String ruined_portal/giant_portal_3
+      93: aastore
+      94: putstatic     #167                // Field STRUCTURE_LOCATION_GIANT_PORTALS:[Ljava/lang/String;
+      97: invokedynamic #655,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+     102: invokestatic  #659                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+     105: putstatic     #661                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+     108: return
+}
