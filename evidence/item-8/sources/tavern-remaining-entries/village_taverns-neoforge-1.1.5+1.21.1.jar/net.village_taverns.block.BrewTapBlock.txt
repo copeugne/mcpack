@@ -1,0 +1,160 @@
+Compiled from "BrewTapBlock.java"
+public class net.village_taverns.block.BrewTapBlock extends net.minecraft.world.level.block.Block {
+  public static final java.lang.String NAME = "barrel";
+
+  public static final net.minecraft.resources.ResourceLocation ID;
+
+  private static net.minecraft.world.level.block.state.properties.DirectionProperty FACING;
+
+  public static final net.minecraft.world.phys.shapes.VoxelShape SHAPE;
+
+  public static final net.minecraft.world.phys.shapes.VoxelShape SHAPE_R;
+
+  public net.village_taverns.block.BrewTapBlock(net.minecraft.world.level.block.state.BlockBehaviour$Properties);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #43                 // Method net/minecraft/world/level/block/Block."<init>":(Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+       5: aload_0
+       6: aload_0
+       7: invokevirtual #47                 // Method defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      10: getstatic     #52                 // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.HORIZONTAL_FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      13: getstatic     #58                 // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+      16: invokevirtual #64                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      19: checkcast     #60                 // class net/minecraft/world/level/block/state/BlockState
+      22: invokevirtual #68                 // Method registerDefaultState:(Lnet/minecraft/world/level/block/state/BlockState;)V
+      25: return
+
+  public void appendHoverText(net.minecraft.world.item.ItemStack, net.minecraft.world.item.Item$TooltipContext, java.util.List<net.minecraft.network.chat.Component>, net.minecraft.world.item.TooltipFlag);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aload         4
+       6: invokespecial #80                 // Method net/minecraft/world/level/block/Block.appendHoverText:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/Item$TooltipContext;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V
+       9: aload_3
+      10: getstatic     #82                 // Field ID:Lnet/minecraft/resources/ResourceLocation;
+      13: invokevirtual #88                 // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+      16: getstatic     #82                 // Field ID:Lnet/minecraft/resources/ResourceLocation;
+      19: invokevirtual #91                 // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      22: invokedynamic #103,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      27: invokestatic  #109                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      30: iconst_2
+      31: anewarray     #111                // class net/minecraft/ChatFormatting
+      34: dup
+      35: iconst_0
+      36: getstatic     #115                // Field net/minecraft/ChatFormatting.GRAY:Lnet/minecraft/ChatFormatting;
+      39: aastore
+      40: dup
+      41: iconst_1
+      42: getstatic     #118                // Field net/minecraft/ChatFormatting.ITALIC:Lnet/minecraft/ChatFormatting;
+      45: aastore
+      46: invokevirtual #124                // Method net/minecraft/network/chat/MutableComponent.withStyle:([Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      49: invokeinterface #130,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      54: pop
+      55: return
+
+  public net.minecraft.world.level.block.state.BlockState getStateForPlacement(net.minecraft.world.item.context.BlockPlaceContext);
+    Code:
+       0: aload_0
+       1: invokevirtual #47                 // Method defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       4: getstatic     #141                // Field FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+       7: aload_1
+       8: invokevirtual #147                // Method net/minecraft/world/item/context/BlockPlaceContext.getHorizontalDirection:()Lnet/minecraft/core/Direction;
+      11: invokevirtual #150                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+      14: invokevirtual #64                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      17: checkcast     #60                 // class net/minecraft/world/level/block/state/BlockState
+      20: areturn
+
+  protected void createBlockStateDefinition(net.minecraft.world.level.block.state.StateDefinition$Builder<net.minecraft.world.level.block.Block, net.minecraft.world.level.block.state.BlockState>);
+    Code:
+       0: getstatic     #52                 // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.HORIZONTAL_FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+       3: putstatic     #141                // Field FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+       6: aload_1
+       7: iconst_1
+       8: anewarray     #157                // class net/minecraft/world/level/block/state/properties/Property
+      11: dup
+      12: iconst_0
+      13: getstatic     #141                // Field FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      16: aastore
+      17: invokevirtual #160                // Method net/minecraft/world/level/block/state/StateDefinition$Builder.add:([Lnet/minecraft/world/level/block/state/properties/Property;)Lnet/minecraft/world/level/block/state/StateDefinition$Builder;
+      20: pop
+      21: return
+
+  protected net.minecraft.world.level.block.state.BlockState rotate(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.Rotation);
+    Code:
+       0: aload_1
+       1: getstatic     #141                // Field FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+       4: aload_2
+       5: aload_1
+       6: getstatic     #141                // Field FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+       9: invokevirtual #170                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      12: checkcast     #54                 // class net/minecraft/core/Direction
+      15: invokevirtual #175                // Method net/minecraft/world/level/block/Rotation.rotate:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/Direction;
+      18: invokevirtual #64                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      21: checkcast     #60                 // class net/minecraft/world/level/block/state/BlockState
+      24: areturn
+
+  protected net.minecraft.world.level.block.state.BlockState mirror(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.Mirror);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_1
+       3: getstatic     #141                // Field FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+       6: invokevirtual #170                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+       9: checkcast     #54                 // class net/minecraft/core/Direction
+      12: invokevirtual #185                // Method net/minecraft/world/level/block/Mirror.getRotation:(Lnet/minecraft/core/Direction;)Lnet/minecraft/world/level/block/Rotation;
+      15: invokevirtual #188                // Method net/minecraft/world/level/block/state/BlockState.rotate:(Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/state/BlockState;
+      18: areturn
+
+  public boolean isTranslucent(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos);
+    Code:
+       0: iconst_1
+       1: ireturn
+
+  public net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext);
+    Code:
+       0: getstatic     #201                // Field net/village_taverns/block/BrewTapBlock$1.$SwitchMap$net$minecraft$util$math$Direction:[I
+       3: aload_1
+       4: getstatic     #141                // Field FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+       7: invokevirtual #170                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      10: checkcast     #54                 // class net/minecraft/core/Direction
+      13: invokevirtual #205                // Method net/minecraft/core/Direction.ordinal:()I
+      16: iaload
+      17: lookupswitch  { // 2
+                     1: 44
+                     2: 44
+               default: 50
+          }
+      44: getstatic     #207                // Field SHAPE_R:Lnet/minecraft/world/phys/shapes/VoxelShape;
+      47: goto          53
+      50: getstatic     #209                // Field SHAPE:Lnet/minecraft/world/phys/shapes/VoxelShape;
+      53: areturn
+
+  static {};
+    Code:
+       0: ldc           #216                // String village_taverns
+       2: ldc           #31                 // String barrel
+       4: invokestatic  #220                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       7: putstatic     #82                 // Field ID:Lnet/minecraft/resources/ResourceLocation;
+      10: getstatic     #52                 // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.HORIZONTAL_FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      13: putstatic     #141                // Field FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      16: dconst_0
+      17: dconst_0
+      18: ldc2_w        #221                // double 2.0d
+      21: ldc2_w        #223                // double 16.0d
+      24: ldc2_w        #225                // double 14.0d
+      27: ldc2_w        #225                // double 14.0d
+      30: invokestatic  #230                // Method net/minecraft/world/level/block/Block.box:(DDDDDD)Lnet/minecraft/world/phys/shapes/VoxelShape;
+      33: putstatic     #209                // Field SHAPE:Lnet/minecraft/world/phys/shapes/VoxelShape;
+      36: ldc2_w        #221                // double 2.0d
+      39: dconst_0
+      40: dconst_0
+      41: ldc2_w        #225                // double 14.0d
+      44: ldc2_w        #225                // double 14.0d
+      47: ldc2_w        #223                // double 16.0d
+      50: invokestatic  #230                // Method net/minecraft/world/level/block/Block.box:(DDDDDD)Lnet/minecraft/world/phys/shapes/VoxelShape;
+      53: putstatic     #207                // Field SHAPE_R:Lnet/minecraft/world/phys/shapes/VoxelShape;
+      56: return
+}
