@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-05
 
+Extras code-based links are delivered in `4bb656f`. Registration annotations,
+constructor bindings, configured type fields and template calls resolve the
+three previously open links. All 62 packaged templates now have a traced feature
+link (59 JSON-explicit, three code-based), not 62 accepted families. Seventeen
+affected tests and scoped quality checks passed. Inventory SHA-256:
+`6354d013331c716f3091e87ce3b49fa03a766471a7a8cd2167bfc0bf0c50e5d9`.
+All 421 registry family rows and 887 roots remain unchanged. Do not repeat the
+registration capture. Continue terrain/content, family reconciliation and
+configuration/provider coverage. Item 8 remains incomplete.
+
+
 Extras FeatureModule now requires verbose javap output: the initial capture
 omitted field annotations, leaving exact feature-ID binding unproven. Enable
 verbose output for that exact existing class and preserve a separate capture;
