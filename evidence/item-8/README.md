@@ -1811,3 +1811,25 @@ rows are unchanged. Reproduce with a fresh output directory:
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-initialization.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-yung-initialization.json
 ```
+
+### Feature-generated family reconciliation
+
+Extras' 62 configured variants now form ten working authored-form families:
+desert chillzone, giant torch, small ruins, obelisk and well; swamp arch, church,
+cubby, ogre and pillar. Single and double arches share one family: both are thin
+masonry arch designs with the same processor and landing placement, while span
+count changes width and support checks. Each other grouping records its rationale
+using the preserved design, template envelope, contents and generator distinctions.
+These are inventory grouping judgments, not Item 9 encounter classifications.
+
+Bridges' 22 configured variants form one bridge family, preserving 11 linked
+templates. Stone/wood, damage, length and orientation remain variants of the
+same selector-driven river crossing. Three templates outside the traced selector
+links are retained as packaged content, not counted as active families.
+
+The existing focused command passed 21 tests, including exact-once coverage of
+all traced configured variants. Basedpyright initially rejected a generic JSON
+value as a set key; explicit string conversion fixed that typing issue. Scoped
+Ruff/Basedpyright then passed. The 421 registry groups remain separate; these
+additional eleven feature-family records do not establish a final pack-wide total.
+Required attributes and full retained-provider coverage remain incomplete.

@@ -765,3 +765,39 @@ def test_yung_module_loader_defaults_do_not_register_configuration() -> None:
             "/services/IModulesLoader.loadModules:()V"
         ) in loader
         assert loader.count("invoke") == 1
+
+
+def test_yung_feature_families_partition_all_traced_variants() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    for key in ("yungsbridges:bridges", "yungsextras:feature_entrypoints"):
+        contribution = contributions[key]
+        families = cast("list[dict[str, JsonValue]]", contribution["families"])
+        assert len({str(row["family"]) for row in families}) == len(families)
+        members = [str(member) for row in families
+                   for member in cast("list[str]", row["configured_features"])]
+        assert len(set(members)) == len(members)
+        assert all(row["rationale"] for row in families)
+        if key.startswith("yungsbridges"):
+            links = cast("dict[str, str]", contribution["configured_to_template"])
+            assert len(families) == 1
+            assert set(members) == set(links)
+            assert len(members) == 22
+            assert len(set(links.values())) == 11
+        else:
+            membership = cast("dict[str, JsonValue]", contribution["template_membership"])
+            links = cast("dict[str, str]", membership["configured_to_template"])
+            code_links = cast("dict[str, str]", membership["code_configured_to_template"])
+            assert len(families) == 10
+            assert set(members) == set(links) | set(code_links)
+            assert len(members) == 62
+            arches = next(row for row in families if row["family"] == "yungsextras:swamp_arch")
+            arch_members = cast("list[str]", arches["configured_features"])
+            assert set(arch_members) == {
+                member for member in links
+                if "/arches/" in member or "/double_arches/" in member
+            }
+            assert len(arch_members) == 33
