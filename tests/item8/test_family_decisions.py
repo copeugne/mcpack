@@ -464,7 +464,19 @@ def test_soaring_rivers_preserve_omitted_default_and_complete_namespace() -> Non
 @pytest.mark.parametrize(
     ("family", "prefix", "member_count", "template_count"),
     [
-        ("mns:very_small_ruins", ("mns:very_small",), 7, 6),
+        (
+            "mns:ruin_fragments",
+            (
+                "mns:very_small",
+                "mns:large_blackstone_",
+                "mns:large_nether_brick",
+                "mns:leafy_rubble",
+                "mns:medium_blackstone",
+                "mns:small_nether_brick",
+            ),
+            13,
+            12,
+        ),
         ("mns:bridge", ("mns:bridge_",), 6, 6),
         ("mns:circle_ruin", ("mns:circle_",), 2, 2),
         ("mns:medium_house", ("mns:medium_house",), 2, 2),
@@ -544,12 +556,12 @@ def test_nether_variants_preserve_definitions_and_template_identity(
             variant["template_size_xyz"] == contents[str(variant["template"])]["template_size_xyz"]
         )
     assert len({str(row["template"]) for row in variants.values()}) == template_count
-    if family in {"mns:bridge", "mns:medium_fungus"}:
+    if family in {"mns:bridge", "mns:medium_fungus", "mns:ruin_fragments"}:
         for variant in variants.values():
             content = contents[str(variant["template"])]
             assert content["authored_entities"] == content["loot_references"] == []
             assert content["spawner_blocks"] == content["generation_markers"] == []
-    if family != "mns:very_small_ruins":
+    if family != "mns:ruin_fragments":
         return
     assert group["duplicate_definition_ids"] == [
         "mns:very_small_blackstone",
