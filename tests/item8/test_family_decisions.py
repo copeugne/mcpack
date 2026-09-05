@@ -645,7 +645,11 @@ def test_repurposed_design_groups_cover_registry_and_bind_variant_definitions() 
     assert len(custom) == 12
 
 
-def test_towns_and_towers_groups_bind_kaisyn_roots_and_full_registry() -> None:
+@pytest.mark.parametrize(("namespace", "count"), [("towns_and_towers", 60), ("idas", 84)])
+def test_provider_groups_bind_full_definitions_pools_and_registry(
+    namespace: str,
+    count: int,
+) -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(
         "dict[str, list[dict[str, JsonValue]]]",
@@ -667,17 +671,17 @@ def test_towns_and_towers_groups_bind_kaisyn_roots_and_full_registry() -> None:
             )
         ),
     )
-    groups = [r for r in decisions["groups"] if str(r["family_id"]).startswith("towns_and_towers:")]
+    groups = [r for r in decisions["groups"] if str(r["family_id"]).startswith(namespace + ":")]
     registry = {
         k
         for k in read_registry(
             root
             / "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
         )
-        if k.startswith("towns_and_towers:")
+        if k.startswith(namespace + ":")
     }
     members = [k for r in groups for k in cast("list[str]", r["structure_ids"])]
-    assert len(members) == len(set(members)) == 60
+    assert len(members) == len(set(members)) == count
     assert set(members) == registry
     expected = {
         "outpost_fort": ("kaisyn:outpost/forts/", 9),
@@ -689,6 +693,26 @@ def test_towns_and_towers_groups_bind_kaisyn_roots_and_full_registry() -> None:
         "ocean_wreckage": ("kaisyn:ships/wreckage_ocean/", 1),
         "desert_mimic": ("kaisyn:other/desert_temple_mimic/", 1),
     }
+    if namespace == "idas":
+        expected = {
+            "ancient_portal": ("idas:ancient_portal/", 2),
+            "ancient_statue": ("idas:ancient_statue/", 3),
+            "animal_den": ("idas:animal_den/", 3),
+            "desert_camp": ("idas:desert_camp/", 4),
+            "desert_market": ("idas:desert_market/", 3),
+            "dig_site": ("idas:dig_site/", 2),
+            "lumber_camp": ("idas:lumber_camp/", 10),
+            "sunken_ship": ("idas:sunken_ship/", 2),
+            "underground_camp": ("idas:underground_camp/", 2),
+        }
+        singletons = {
+            k.split(":")[1]: ("idas:", 1)
+            for k in registry
+            if k.split(":")[1].split("/")[0] not in expected
+        }
+        expected.update(singletons)
+        expected["sunken_ship/sunken_ship_ruins"] = ("idas:sunken_ship/", 1)
+        assert len(expected) == 62
     assert {str(r["family_id"]).split(":")[1] for r in groups} == set(expected)
     for group in groups:
         kind = str(group["family_id"]).split(":")[1]
@@ -703,7 +727,7 @@ def test_towns_and_towers_groups_bind_kaisyn_roots_and_full_registry() -> None:
             rows = [
                 cast("dict[str, JsonValue]", r["document"])
                 for r in catalog["resources"]
-                if r["path"] == f"data/towns_and_towers/worldgen/structure/{name}.json"
+                if r["path"] == f"data/{namespace}/worldgen/structure/{name}.json"
             ]
             assert rows == [variant["definition"]]
             assert str(rows[0]["start_pool"]).startswith(prefix)
@@ -712,10 +736,11 @@ def test_towns_and_towers_groups_bind_kaisyn_roots_and_full_registry() -> None:
             assert trace["templates"]
             assert trace["unresolved_elements"] == []
             assert trace["missing"] == variant["missing_components"]
-    assert {"id": "minecraft:emptY", "kind": "pool"} in cast(
-        "list[JsonValue]",
-        traces["structures"]["towns_and_towers:exclusives/pillager_outpost_nilotic"]["missing"],
-    )
+    if namespace == "towns_and_towers":
+        assert {"id": "minecraft:emptY", "kind": "pool"} in cast(
+            "list[JsonValue]",
+            traces["structures"]["towns_and_towers:exclusives/pillager_outpost_nilotic"]["missing"],
+        )
 
 
 def test_soaring_tree_variants_bind_common_definition_and_template_contents() -> None:
