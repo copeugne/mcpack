@@ -2,6 +2,16 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
+Current working inventory: `702ec5c`, SHA-256
+`ae7f0a16a86929ad24361ab9befa80aebf5e51100c72bc9ba44a64f8f8bafba2`.
+All 887 registered roots are assigned once in 452 working groups. This is not
+the final accepted canonical family count. The dimension field now joins each
+root's biome constraints to captured live dimension memberships. Three unresolved
+IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
+attributes, provider reconciliation and the final review/delivery gate are open.
+
+## Historical increments
+
 The working deliverable is `inventory.json`, initially assembled by `f2eaf2b`
 and updated through `fd9705a` using attribute support from `bf153ea`.
 SHA-256: `83f56c9ecaa8f76f853ffd0081a12537849489e4a30dea3edae099caf298250d`.

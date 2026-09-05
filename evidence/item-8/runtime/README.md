@@ -115,3 +115,40 @@ download-tested remote custody in `../raw-custody/README.md`.
 Next join this membership evidence to existing per-root biome constraints in the
 inventory. Keep unresolved constraints and placement conditions explicit. Do not
 repeat this successful capture solely for reassurance or mark Item 8 complete.
+
+## Inventory integration
+
+`89b8830` binds the dimension output as the builder's sixth input and joins it
+to each root's resolved biome constraints. `702ec5c` delivers the regenerated
+inventory, SHA `ae7f0a16a86929ad24361ab9befa80aebf5e51100c72bc9ba44a64f8f8bafba2`.
+Only dimension fields and the input-identity map change. Family membership,
+other attributes and world-observation links remain unchanged. This supersedes
+the pending join instruction above.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-dimension-membership-delivery.json
+```
+
+All 61 affected tests and scoped checks passed after narrow typing and line-wrap
+fixes. The synthetic join test distinguishes per-root variants, partial/unknown
+constraints, known empty constraints and observed dimensions. The frozen-input
+test exercises the builder entry point, covers every registry root exactly once,
+and checks the explicit unknown/empty cases and family-level observation agreement.
+The delivered output matched the earlier generated candidate byte for byte.
+
+The three known IDAS lumber-camp tag gaps remain unknown. No-overlap roots are:
+Deep Aether altar_camp, campfire and combiner_corridor; WDA mining_system;
+IDAS desert_camp_bygwindswept; Terralith underground/witch_hut; and Towns & Towers
+exclusives pillager_outpost_nilotic, village_nilotic and village_piglin.
+The Deep Aether roots target sacred_lands, absent from the captured possible
+memberships. The other six have empty resolved biome lists. Exact names and
+constraints remain in the inventory and focused test. No family-level retained
+world observation lies outside the joined possible dimensions.
+
+An overlap establishes biome compatibility only. Structure-set selection,
+custom-generator conditions and effective structure constraints remain separate
+requirements. No-overlap roots remain inventoried; this result is not an observed
+generation failure and does not justify deleting a registered family.

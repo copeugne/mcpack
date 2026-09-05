@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-05
 
+Dimension membership is integrated: builder/tests `89b8830`, inventory `702ec5c`.
+Inventory SHA:
+`ae7f0a16a86929ad24361ab9befa80aebf5e51100c72bc9ba44a64f8f8bafba2`.
+Decision SHA remains
+`06cff81b09d0caa84837c979acd85bfa207b9037ab27e3e9134853ba6811a89d`.
+All 61 affected tests and scoped checks pass. Every registered root has a
+per-root biome-compatibility result; three IDAS tag gaps stay unknown and nine
+roots have no overlap. Six of those have empty resolved lists; the three Deep
+Aether roots target sacred_lands, absent from live dimension membership. No
+family-level observation conflicts with the joined dimensions. Exact cases,
+commands and boundaries are in `evidence/item-8/runtime/README.md`.
+Only dimension fields and input identities change; groupings, other attributes
+and observation links are preserved. Delivery refs verified. The pending join
+below is superseded. Do not rerun collection or repeat this join. Continue the
+remaining custom-generator content/geometry and provider gaps, with vanilla
+Nether fossils a next bounded source inspection. Biome overlap does not close
+all placement conditions or Item 8, and zero-overlap roots must remain inventoried.
+
 Live dimension membership is captured and durably delivered. `77b6eec` preserves
 rejected dimension-r1/r2 receipts and successful dimension-r3 output; `cd04324`
 binds it to the original frozen capture. Output SHA:
