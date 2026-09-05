@@ -862,3 +862,33 @@ def test_yung_family_biomes_follow_their_addition_modifiers() -> None:
             assert source["missing_required_members"] == []
             assert family["registered_biomes"] == source["registered_biomes"]
             assert family["dimension_biome_overlap"] == source["dimension_biome_overlap"]
+
+
+def test_yung_family_contents_keep_template_and_processor_loot_separate() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    bridge = contributions["yungsbridges:bridges"]
+    bridge_families = cast("list[dict[str, JsonValue]]", bridge["families"])
+    assert bridge_families[0]["direct_encounter_content"] == bridge["direct_encounter_content"]
+    extras = contributions["yungsextras:feature_entrypoints"]
+    source = cast("dict[str, JsonValue]", extras["packaged_template_content"])
+    families = cast("list[dict[str, JsonValue]]", extras["families"])
+    for family in families:
+        templates = cast("list[str]", family["templates"])
+        recorded = cast("dict[str, JsonValue]", family["packaged_content"])
+        assert recorded["authored_entities"] == source["authored_entities"] == []
+        assert recorded["stored_spawner_block_entities"] == []
+        for field in ("block_entity_counts", "chest_loot_sources"):
+            values = cast("dict[str, JsonValue]", source[field])
+            assert recorded[field] == {key: values[key] for key in templates if key in values}
+        if family["family"] == "yungsextras:desert_well":
+            well = cast("dict[str, JsonValue]", extras["desert_well_generation"])
+            assert recorded["chest_loot_sources"] == {}
+            assert family["processor_loot_sources"] == [
+                well["brown_marker_loot"], well["yellow_marker_loot"]
+            ]
+        else:
+            assert "processor_loot_sources" not in family

@@ -1884,3 +1884,17 @@ families biome/dimension fields. Other inventory records remain unchanged.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-family-biomes.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-yung-family-biomes.json
 ```
+
+### Feature-family content attribution
+
+Extras family records now join their member templates to preserved authored
+entities, block entities and chest loot. Chillzone retains its one chest, small
+ruins its two chests, giant torch its four campfires, and swamp pillar its
+campfire-bearing variant. Empty stored spawner/entity lists remain explicitly
+limited to templates. Wells separately list processor-created archaeology loot,
+so their absence of template chests cannot conceal that reward source.
+
+The bridge family now carries the existing direct encounter-content findings,
+including their natural-spawning and external-modification limitations. Twenty-four
+focused tests and scoped Ruff/Basedpyright passed. No new measurement or source
+capture was needed. Effective whole-stack content remains an open requirement.
