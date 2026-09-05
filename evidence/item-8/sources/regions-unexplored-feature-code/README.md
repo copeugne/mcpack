@@ -29,7 +29,55 @@ of absent generated blocks. No frozen artifact was modified to repair it.
 `RUCommonConfig.test(key)` and delegates to that rule. This does not itself
 establish the effective setting or close referenced rule bodies.
 
-The tree and root-placer bodies are retained for continued content inspection.
-Their inclusion is not yet an accepted absence-of-structures claim. Complete
-the placed/configured feature references, custom implementation attribution and
-platform hook checks before resolving the machine-readable modifier entries.
+## Selected feature-modifier contribution disposition
+
+The existing reference test now checks the terminal configuration components
+and block identifiers as well as the complete feature graph and enabled config
+predicates. It binds all 34 modifiers to 34 placed and 41 configured features.
+Terminal configurations contain 11 component types and 44 configured block
+identifiers, explicitly listed in `tests/item8/test_feature_modifier_references.py`.
+This count excludes additional blocks selected directly in generator code and
+does not describe observed placements, structure families or the whole mod.
+
+The vanilla tree configurations use straight trunks, blob/pine foliage,
+ordinary dirt/log/leaf providers, and only `minecraft:leave_vine` decoration.
+The custom willow root placer checks candidate positions and delegates root
+placement using the configured block provider. The palm, bamboo and saguaro
+implementations build their geometry through block-state reads and writes,
+replaceability checks and their local placement methods. Their configured
+providers supply plant/log/leaf blocks. Additional fixed block references are
+soil variants, podzol, hanging roots and saguaro cactus. There is no template,
+structure pool, entity-spawn, spawner-NBT or loot-table generation in these
+implementation paths. Palm branch-mode checks constrain branch placement;
+they do not introduce a separate content source. Some methods construct
+`java.util.Random`, so this inspection makes no reproducibility or frequency
+claim about their placement geometry.
+
+Simple-block features cover grasses, flowers, shrubs, lilies, bioshrooms and
+ash vents. The custom ground-cover provider, retained under
+`../regions-unexplored-feature-config-code`, varies the configured block's
+amount and facing. The random-block provider under
+`../lithostitched-random-block-code` chooses a configured block's default state.
+Neither adds an authored entity, spawner or loot reference. The giant-lily
+return-value limitation described above remains part of this disposition.
+
+Together, these 30 additions and four removals contribute vegetation and
+ground-cover/ash-vent features to existing biomes. They add no canonical
+structure family: these paths place individual plants or tree geometry rather
+than a distinct structure layout. They must remain attributed to Regions
+Unexplored as non-family content rather than silently omitted or counted as
+34 families. The disposition covers these selected modifiers only; other mod
+hooks, providers and the broader Item 8 inventory remain separate work.
+
+Executed successfully:
+
+```sh
+uv run pytest -q tests/item8/test_feature_modifier_references.py
+uv run ruff check tests/item8/test_feature_modifier_references.py
+uv run basedpyright tests/item8/test_feature_modifier_references.py
+```
+
+The focused test and scoped checks passed. Apply these feature dispositions
+with the completed compiler, street-processor and surface-rule checks in the
+combined machine-readable update. No placement simulator is needed for this
+source contribution claim.

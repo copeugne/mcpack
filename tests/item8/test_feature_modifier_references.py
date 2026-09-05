@@ -47,7 +47,32 @@ def test_selected_feature_modifier_references() -> None:  # noqa: C901, PLR0915
     )
     seen: set[tuple[str, str]] = set()
     terminals: set[str] = set()
+    component_types: set[str] = set()
+    configured_blocks: set[str] = set()
     counts: Counter[str] = Counter()
+
+    def inspect_terminal(value: JsonValue) -> None:
+        if isinstance(value, dict):
+            kind = value.get("type")
+            if kind is not None:
+                assert isinstance(kind, str)
+                component_types.add(kind)
+            for key in ("Name", "block"):
+                if key in value:
+                    block = value[key]
+                    assert isinstance(block, str)
+                    configured_blocks.add(block)
+            if "blocks" in value:
+                blocks = value["blocks"]
+                assert isinstance(blocks, list)
+                for block in blocks:
+                    assert isinstance(block, str)
+                    configured_blocks.add(block)
+            for child in value.values():
+                inspect_terminal(child)
+        elif isinstance(value, list):
+            for child in value:
+                inspect_terminal(child)
 
     def placed(value: JsonValue) -> None:
         if isinstance(value, str):
@@ -96,6 +121,7 @@ def test_selected_feature_modifier_references() -> None:  # noqa: C901, PLR0915
         else:
             # These are implementation endpoints, not absence-of-content claims.
             terminals.add(kind)
+            inspect_terminal(config)
 
     for resource in modifiers.values():
         document = resource["document"]
@@ -127,4 +153,28 @@ def test_selected_feature_modifier_references() -> None:  # noqa: C901, PLR0915
         "minecraft:simple_block", "minecraft:tree", "regions_unexplored:saguaro_cactus",
         "regions_unexplored:palm_tree", "regions_unexplored:bamboo_tree",
         "regions_unexplored:giant_lily",
+    }
+    assert component_types == {
+        "lithostitched:random_block", "minecraft:blob_foliage_placer",
+        "minecraft:leave_vine", "minecraft:pine_foliage_placer",
+        "minecraft:simple_state_provider", "minecraft:straight_trunk_placer",
+        "minecraft:two_layers_feature_size", "minecraft:uniform",
+        "minecraft:weighted_state_provider", "regions_unexplored:randomized_ground_cover",
+        "regions_unexplored:willow",
+    }
+    assert configured_blocks == {
+        *("minecraft:" + name for name in (
+            "acacia_leaves", "acacia_log", "dirt", "fern", "lily_pad", "oak_leaves",
+            "oak_log", "short_grass",
+        )),
+        *("regions_unexplored:" + name for name in (
+            "ash_vent", "bamboo_leaves", "bamboo_log", "birch_shrub", "blue_bioshroom",
+            "cattail", "cherry_shrub", "dark_oak_shrub", "day_lily", "dead_steppe_shrub",
+            "elephant_ear", "flowering_lily_pad", "flowering_shrub", "frozen_grass",
+            "green_bioshroom", "hibiscus", "jungle_shrub", "mangrove_shrub", "meadow_sage",
+            "oak_branch", "oak_shrub", "orange_coneflower", "palm_beard", "palm_leaves",
+            "palm_log", "pine_shrub", "purple_coneflower", "redwood_branch", "saguaro_cactus",
+            "saguaro_cactus_flower", "sandy_grass", "small_desert_shrub", "spruce_shrub",
+            "tassel", "willow_leaves", "willow_log",
+        )),
     }
