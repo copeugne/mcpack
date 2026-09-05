@@ -247,3 +247,40 @@ implementation was added. Explicit provider dispositions now cover 19 of 136;
 Nether and Moog Voyager are not included in this closure: their unmatched
 resources still require named dispositions. Canonical design grouping remains
 separate from this provider candidate-boundary result.
+
+## Moog Voyager data provider
+
+`MoogsVoyagerStructures-1.21-5.0.11.jar` supplies 129 root candidates, 149 pools,
+327 templates and six block-rule processor lists. Its full archive has the same
+data-only boundary as the End/Soaring providers, additionally permitting those
+processor lists. There are no separate feature definitions or executable entry
+points in this archive. All roots and pools are accounted for in the preserved
+generation graph, without missing graph resources or unresolved pool elements.
+
+Of the 92 templates outside that graph, 51 are explicitly unselected alternatives
+of versioned pool elements. The other 41 have no template reference from any
+packaged Voyager pool, including unselected alternatives. Their disposition is
+disconnected components, unused by this provider's packaged root/pool graph:
+
+- `mvs:animals/`: cat_black, cat_british_shorthair, cat_calico, cat_jellie,
+  cat_persian, cat_ragdoll, cat_red, cat_siamese, cat_tabby, cat_tuxedo, cat_white,
+  cows_1, horses_1, horses_2, horses_3, horses_4, horses_5, mule, pigs_1, sheep_1,
+  sheep_2.
+- `mvs:armor_stand/`: armor_stand_1, armor_stand_2, armor_stand_3, armor_stand_4.
+- `mvs:cathedral/`: cathedral_start, corridors/corridor_8.
+- `mvs:houses/`: medium_igloo_2, medium_igloo_2_lower.
+- `mvs:mineshaft/`: barrels_1, barrels_2, barrels_3, barrels_4, cart_1, cart_2,
+  cart_3, dead_end_1, logs_1, logs_2, round_staircase_3, stable.
+
+The exact sets are checked in test_moog_data_provider_scope.py, using the original
+archive and existing version-selection and graph evidence. The candidate list
+remains the existing `mvs:` roots; these disconnected components do not add
+independent roots. This does not assert that manual placement is impossible or
+that another provider cannot inject resources. Shared Moog implementation scope
+and other providers' injections remain separate responsibilities in this gate.
+
+The existing three-case command for End, Soaring and Voyager passes. Scoped Ruff
+and Basedpyright pass; the statement-count lint exception keeps the direct
+archive-accounting check together instead of introducing an unnecessary helper.
+Explicit provider dispositions now cover 20 of 136, with 116 still to reconcile.
+Canonical grouping and effective family attributes remain deferred.
