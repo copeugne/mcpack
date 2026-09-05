@@ -35,6 +35,7 @@ ARCHIVES = frozenset(
         "neoforge-21.1.249-universal.jar",
         "YungsApi-1.21.1-NeoForge-5.1.6.jar",
         "Zeta-1.1-40.jar",
+        "Quark-4.1-480.jar",
         "integrated_api-1.7.3+1.21.1-neoforge.jar",
         "moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar",
         "IllagerInvasion-v21.1.6-1.21.1-NeoForge.jar",
@@ -307,6 +308,9 @@ CLASSES = (
     "org/violetmoon/zetaimplforge/world/ZetaBiomeModifier.class",
     "org/violetmoon/zeta/world/WorldGenHandler.class",
     "org/violetmoon/zetaimplforge/world/ZetaSpawnModifier.class",
+    "org/violetmoon/zeta/world/DeferredFeature.class",
+    "org/violetmoon/quark/content/world/module/ChorusVegetationModule.class",
+    "org/violetmoon/quark/content/world/module/SpiralSpiresModule.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
