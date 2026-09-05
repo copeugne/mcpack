@@ -1,0 +1,207 @@
+Compiled from "ForgeBackedConfig.java"
+public class org.violetmoon.zetaimplforge.config.ForgeBackedConfig implements org.violetmoon.zeta.config.IZetaConfigInternals {
+  private final java.util.Map<org.violetmoon.zeta.config.ValueDefinition<?>, net.neoforged.neoforge.common.ModConfigSpec$ConfigValue<?>> definitionsToValues;
+
+  private long debounceTime;
+
+  private net.neoforged.fml.config.ModConfig config;
+
+  public org.violetmoon.zetaimplforge.config.ForgeBackedConfig(org.violetmoon.zeta.config.SectionDefinition, net.neoforged.neoforge.common.ModConfigSpec$Builder);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #7                  // class java/util/HashMap
+       8: dup
+       9: invokespecial #9                  // Method java/util/HashMap."<init>":()V
+      12: putfield      #10                 // Field definitionsToValues:Ljava/util/Map;
+      15: aload_0
+      16: invokestatic  #16                 // Method java/lang/System.currentTimeMillis:()J
+      19: putfield      #22                 // Field debounceTime:J
+      22: aload_0
+      23: aconst_null
+      24: putfield      #26                 // Field config:Lnet/neoforged/fml/config/ModConfig;
+      27: aload_0
+      28: aload_1
+      29: aload_2
+      30: iconst_1
+      31: invokevirtual #30                 // Method walkSection:(Lorg/violetmoon/zeta/config/SectionDefinition;Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Z)V
+      34: return
+
+  private void walkSection(org.violetmoon.zeta.config.SectionDefinition, net.neoforged.neoforge.common.ModConfigSpec$Builder, boolean);
+    Code:
+       0: iload_3
+       1: ifne          22
+       4: aload_2
+       5: aload_1
+       6: invokevirtual #34                 // Method org/violetmoon/zeta/config/SectionDefinition.commentToArray:()[Ljava/lang/String;
+       9: invokevirtual #40                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:([Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+      12: pop
+      13: aload_2
+      14: aload_1
+      15: getfield      #46                 // Field org/violetmoon/zeta/config/SectionDefinition.name:Ljava/lang/String;
+      18: invokevirtual #50                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.push:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+      21: pop
+      22: aload_1
+      23: invokevirtual #54                 // Method org/violetmoon/zeta/config/SectionDefinition.getValues:()Ljava/util/Collection;
+      26: invokeinterface #58,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      31: astore        4
+      33: aload         4
+      35: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      40: ifeq          65
+      43: aload         4
+      45: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      50: checkcast     #74                 // class org/violetmoon/zeta/config/ValueDefinition
+      53: astore        5
+      55: aload_0
+      56: aload         5
+      58: aload_2
+      59: invokevirtual #76                 // Method addValue:(Lorg/violetmoon/zeta/config/ValueDefinition;Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;)V
+      62: goto          33
+      65: aload_1
+      66: invokevirtual #80                 // Method org/violetmoon/zeta/config/SectionDefinition.getSubsections:()Ljava/util/Collection;
+      69: invokeinterface #58,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      74: astore        4
+      76: aload         4
+      78: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      83: ifeq          109
+      86: aload         4
+      88: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      93: checkcast     #35                 // class org/violetmoon/zeta/config/SectionDefinition
+      96: astore        5
+      98: aload_0
+      99: aload         5
+     101: aload_2
+     102: iconst_0
+     103: invokevirtual #30                 // Method walkSection:(Lorg/violetmoon/zeta/config/SectionDefinition;Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Z)V
+     106: goto          76
+     109: iload_3
+     110: ifne          118
+     113: aload_2
+     114: invokevirtual #83                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.pop:()Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+     117: pop
+     118: return
+
+  private <T> void addValue(org.violetmoon.zeta.config.ValueDefinition<T>, net.neoforged.neoforge.common.ModConfigSpec$Builder);
+    Code:
+       0: aload_2
+       1: aload_1
+       2: invokevirtual #87                 // Method org/violetmoon/zeta/config/ValueDefinition.commentToArray:()[Ljava/lang/String;
+       5: invokevirtual #40                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:([Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       8: pop
+       9: aload_1
+      10: getfield      #88                 // Field org/violetmoon/zeta/config/ValueDefinition.defaultValue:Ljava/lang/Object;
+      13: astore        5
+      15: aload         5
+      17: instanceof    #92                 // class java/util/List
+      20: ifeq          55
+      23: aload         5
+      25: checkcast     #92                 // class java/util/List
+      28: astore        4
+      30: aload_2
+      31: aload_1
+      32: getfield      #94                 // Field org/violetmoon/zeta/config/ValueDefinition.name:Ljava/lang/String;
+      35: aload         4
+      37: aload_1
+      38: dup
+      39: invokestatic  #95                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      42: pop
+      43: invokedynamic #101,  0            // InvokeDynamic #0:test:(Lorg/violetmoon/zeta/config/ValueDefinition;)Ljava/util/function/Predicate;
+      48: invokevirtual #105                // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.defineList:(Ljava/lang/String;Ljava/util/List;Ljava/util/function/Predicate;)Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      51: astore_3
+      52: goto          91
+      55: aload_2
+      56: aload_1
+      57: getfield      #94                 // Field org/violetmoon/zeta/config/ValueDefinition.name:Ljava/lang/String;
+      60: invokestatic  #109                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+      63: aload_1
+      64: invokedynamic #113,  0            // InvokeDynamic #1:get:(Lorg/violetmoon/zeta/config/ValueDefinition;)Ljava/util/function/Supplier;
+      69: aload_1
+      70: dup
+      71: invokestatic  #95                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      74: pop
+      75: invokedynamic #101,  0            // InvokeDynamic #0:test:(Lorg/violetmoon/zeta/config/ValueDefinition;)Ljava/util/function/Predicate;
+      80: aload_1
+      81: getfield      #88                 // Field org/violetmoon/zeta/config/ValueDefinition.defaultValue:Ljava/lang/Object;
+      84: invokevirtual #117                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      87: invokevirtual #121                // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/util/List;Ljava/util/function/Supplier;Ljava/util/function/Predicate;Ljava/lang/Class;)Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      90: astore_3
+      91: aload_0
+      92: getfield      #10                 // Field definitionsToValues:Ljava/util/Map;
+      95: aload_1
+      96: aload_3
+      97: invokeinterface #125,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     102: pop
+     103: return
+
+  public <T> T get(org.violetmoon.zeta.config.ValueDefinition<T>);
+    Code:
+       0: aload_0
+       1: getfield      #10                 // Field definitionsToValues:Ljava/util/Map;
+       4: aload_1
+       5: invokeinterface #131,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #133                // class net/neoforged/neoforge/common/ModConfigSpec$ConfigValue
+      13: astore_2
+      14: aload_2
+      15: invokevirtual #135                // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      18: areturn
+
+  public <T> void set(org.violetmoon.zeta.config.ValueDefinition<T>, T);
+    Code:
+       0: aload_0
+       1: getfield      #10                 // Field definitionsToValues:Ljava/util/Map;
+       4: aload_1
+       5: invokeinterface #131,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #133                // class net/neoforged/neoforge/common/ModConfigSpec$ConfigValue
+      13: astore_3
+      14: aload_0
+      15: invokestatic  #16                 // Method java/lang/System.currentTimeMillis:()J
+      18: putfield      #22                 // Field debounceTime:J
+      21: aload_3
+      22: aload_2
+      23: invokevirtual #137                // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.set:(Ljava/lang/Object;)V
+      26: return
+
+  public void setModConfig(net.neoforged.fml.config.ModConfig);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #26                 // Field config:Lnet/neoforged/fml/config/ModConfig;
+       5: return
+
+  public void flush();
+    Code:
+       0: invokestatic  #141                // Method com/electronwill/nightconfig/core/file/FileWatcher.defaultInstance:()Lcom/electronwill/nightconfig/core/file/FileWatcher;
+       3: aload_0
+       4: getfield      #26                 // Field config:Lnet/neoforged/fml/config/ModConfig;
+       7: invokevirtual #147                // Method net/neoforged/fml/config/ModConfig.getFullPath:()Ljava/nio/file/Path;
+      10: invokevirtual #153                // Method com/electronwill/nightconfig/core/file/FileWatcher.removeWatch:(Ljava/nio/file/Path;)V
+      13: aload_0
+      14: getfield      #10                 // Field definitionsToValues:Ljava/util/Map;
+      17: invokeinterface #157,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      22: invokeinterface #58,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      27: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      32: checkcast     #133                // class net/neoforged/neoforge/common/ModConfigSpec$ConfigValue
+      35: invokevirtual #160                // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.save:()V
+      38: invokestatic  #141                // Method com/electronwill/nightconfig/core/file/FileWatcher.defaultInstance:()Lcom/electronwill/nightconfig/core/file/FileWatcher;
+      41: aload_0
+      42: getfield      #26                 // Field config:Lnet/neoforged/fml/config/ModConfig;
+      45: invokevirtual #147                // Method net/neoforged/fml/config/ModConfig.getFullPath:()Ljava/nio/file/Path;
+      48: new           #163                // class org/violetmoon/zetaimplforge/config/ForgeBackedConfig$SuspiciouslyConfigWatcherShapedClazz
+      51: dup
+      52: aload_0
+      53: getfield      #26                 // Field config:Lnet/neoforged/fml/config/ModConfig;
+      56: aload_0
+      57: getfield      #26                 // Field config:Lnet/neoforged/fml/config/ModConfig;
+      60: invokevirtual #147                // Method net/neoforged/fml/config/ModConfig.getFullPath:()Ljava/nio/file/Path;
+      63: invokespecial #165                // Method org/violetmoon/zetaimplforge/config/ForgeBackedConfig$SuspiciouslyConfigWatcherShapedClazz."<init>":(Lnet/neoforged/fml/config/ModConfig;Ljava/nio/file/Path;)V
+      66: invokevirtual #168                // Method com/electronwill/nightconfig/core/file/FileWatcher.addWatchFuture:(Ljava/nio/file/Path;Ljava/lang/Runnable;)Ljava/util/concurrent/CompletableFuture;
+      69: pop
+      70: return
+
+  private static java.lang.Object lambda$addValue$0(org.violetmoon.zeta.config.ValueDefinition);
+    Code:
+       0: aload_0
+       1: getfield      #88                 // Field org/violetmoon/zeta/config/ValueDefinition.defaultValue:Ljava/lang/Object;
+       4: areturn
+}
