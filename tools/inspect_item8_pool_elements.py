@@ -342,6 +342,7 @@ CLASSES: tuple[str, ...] = (
     "org/violetmoon/quark/content/world/module/NewStoneTypesModule.class",
     "org/violetmoon/quark/content/experimental/module/VanillaStoneClustersModule.class",
     "org/violetmoon/quark/content/world/gen/BigStoneClusterGenerator.class",
+    "org/violetmoon/zeta/world/generator/OreGenerator.class",
     "org/violetmoon/quark/content/world/gen/BigStoneClusterGenerator$1.class",
     "org/violetmoon/quark/content/world/module/CherryGroveWaterPetalsModule.class",
     "org/violetmoon/quark/content/world/gen/BlossomTreeGenerator.class",
