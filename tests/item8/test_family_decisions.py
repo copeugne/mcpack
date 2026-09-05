@@ -647,7 +647,15 @@ def test_repurposed_design_groups_cover_registry_and_bind_variant_definitions() 
 
 @pytest.mark.parametrize(
     ("namespace", "count"),
-    [("towns_and_towers", 60), ("idas", 84), ("adorabuild_structures", 106), ("terralith", 28)],
+    [
+        ("towns_and_towers", 60),
+        ("idas", 84),
+        ("adorabuild_structures", 106),
+        ("terralith", 28),
+        ("illagerinvasion", 5),
+        ("creatingspace", 4),
+        ("supplementaries", 2),
+    ],
 )
 def test_provider_groups_bind_full_definitions_pools_and_registry(
     namespace: str,
@@ -770,6 +778,29 @@ def test_provider_groups_bind_full_definitions_pools_and_registry(
             "valley_lodge": ("terralith:regular/valley_lodge", 1),
             "witch_hut": ("terralith:regular/witch_hut", 2),
         }
+    if namespace == "illagerinvasion":
+        expected = {
+            "firecaller_hut": ("illagerinvasion:firecaller_hut/base_plates", 1),
+            "illager_fort": ("illagerinvasion:illager_fort/illager_fort", 1),
+            "illusioner_tower": ("illagerinvasion:illusioner_tower/illusioner_tower", 1),
+            "labyrinth": ("illagerinvasion:labyrinth/towers", 1),
+            "sorcerer_hut": ("illagerinvasion:sorcerer_hut/sorcerer_hut", 1),
+        }
+    if namespace == "creatingspace":
+        expected = {
+            "mars/underground_outpost_1": (
+                "creatingspace:mars/underground_outpost_1/start_pool",
+                1,
+            ),
+            "moon/abandoned_outpost": ("creatingspace:moon/abandoned_outpost/start_pool", 1),
+            "moon/crashed_rocket": ("creatingspace:moon/crashed_rocket/start_pool", 1),
+            "moon/crashed_ship": ("creatingspace:moon/crashed_ship/start_pool", 1),
+        }
+    if namespace == "supplementaries":
+        expected = {
+            "galleon": ("supplementaries:galleon/start_pool", 1),
+            "road_sign": ("supplementaries:road_sign/start_pool", 1),
+        }
     assert {str(r["family_id"]).split(":")[1] for r in groups} == set(expected)
     for group in groups:
         kind = str(group["family_id"]).split(":")[1]
@@ -793,11 +824,47 @@ def test_provider_groups_bind_full_definitions_pools_and_registry(
             assert trace["templates"]
             assert trace["unresolved_elements"] == []
             assert trace["missing"] == variant["missing_components"]
-    if namespace == "towns_and_towers":
-        assert {"id": "minecraft:emptY", "kind": "pool"} in cast(
-            "list[JsonValue]",
-            traces["structures"]["towns_and_towers:exclusives/pillager_outpost_nilotic"]["missing"],
-        )
+    assert {"id": "minecraft:emptY", "kind": "pool"} in cast(
+        "list[JsonValue]",
+        traces["structures"]["towns_and_towers:exclusives/pillager_outpost_nilotic"]["missing"],
+    )
+
+
+def test_illager_invasion_hostile_intent_binds_authored_component_entities() -> None:
+    root = Path(__file__).resolve().parents[2]
+    decisions = cast(
+        "dict[str, list[dict[str, JsonValue]]]",
+        json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
+    )
+    traces = cast(
+        "dict[str, dict[str, dict[str, JsonValue]]]",
+        json.loads(
+            gzip.decompress(
+                (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+            )
+        ),
+    )
+    groups = [r for r in decisions["groups"] if str(r["family_id"]).startswith("illagerinvasion:")]
+    assert len(groups) == 5
+    for group in groups:
+        templates = cast("list[str]", traces["structures"][str(group["family_id"])]["templates"])
+        entities = {
+            str(entity["id"])
+            for template in templates
+            for entity in cast(
+                "list[dict[str, JsonValue]]",
+                traces["template_contents"][template]["authored_entities"],
+            )
+        }
+        hostile = {
+            entity
+            for entity in entities
+            if entity.startswith("illagerinvasion:")
+            or entity in {"minecraft:evoker", "minecraft:vindicator", "minecraft:illusioner"}
+        }
+        assert hostile
+        attributes = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
+        assert attributes["intended_hostility"]["authored_hostile_entity_ids"] == sorted(hostile)
 
 
 def test_soaring_tree_variants_bind_common_definition_and_template_contents() -> None:
