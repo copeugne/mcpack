@@ -466,6 +466,7 @@ def test_soaring_rivers_preserve_omitted_default_and_complete_namespace() -> Non
     [
         ("mns:very_small_ruins", ("mns:very_small",), 7, 6),
         ("mns:bridge", ("mns:bridge_",), 6, 6),
+        ("mns:circle_ruin", ("mns:circle_",), 2, 2),
         (
             "mns:medium_fungus",
             ("mns:medium_crimson_fungus", "mns:medium_warped_fungus"),
@@ -547,6 +548,7 @@ def test_nether_variants_preserve_definitions_and_template_identity(
             content = contents[str(variant["template"])]
             assert content["authored_entities"] == content["loot_references"] == []
             assert content["spawner_blocks"] == content["generation_markers"] == []
+    if family != "mns:very_small_ruins":
         return
     assert group["duplicate_definition_ids"] == [
         "mns:very_small_blackstone",
