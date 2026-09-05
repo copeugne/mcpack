@@ -1,0 +1,94 @@
+Compiled from "YValuePosRuleTest.java"
+public class com.telepathicgrunt.repurposedstructures.world.predicates.YValuePosRuleTest extends net.minecraft.world.level.levelgen.structure.templatesystem.PosRuleTest {
+  public static final com.mojang.serialization.MapCodec<com.telepathicgrunt.repurposedstructures.world.predicates.YValuePosRuleTest> CODEC;
+
+  private final int minYValue;
+
+  private final int maxYValue;
+
+  public com.telepathicgrunt.repurposedstructures.world.predicates.YValuePosRuleTest(int, int);
+    Code:
+       0: aload_0
+       1: invokespecial #31                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/PosRuleTest."<init>":()V
+       4: iload_1
+       5: iload_2
+       6: if_icmple     24
+       9: new           #33                 // class java/lang/IllegalArgumentException
+      12: dup
+      13: iload_1
+      14: iload_2
+      15: invokedynamic #45,  0             // InvokeDynamic #0:makeConcatWithConstants:(II)Ljava/lang/String;
+      20: invokespecial #48                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+      23: athrow
+      24: aload_0
+      25: iload_1
+      26: putfield      #50                 // Field minYValue:I
+      29: aload_0
+      30: iload_2
+      31: putfield      #52                 // Field maxYValue:I
+      34: return
+
+  public boolean test(net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    Code:
+       0: aload_2
+       1: invokevirtual #66                 // Method net/minecraft/core/BlockPos.getY:()I
+       4: aload_0
+       5: getfield      #50                 // Field minYValue:I
+       8: if_icmplt     26
+      11: aload_2
+      12: invokevirtual #66                 // Method net/minecraft/core/BlockPos.getY:()I
+      15: aload_0
+      16: getfield      #52                 // Field maxYValue:I
+      19: if_icmpgt     26
+      22: iconst_1
+      23: goto          27
+      26: iconst_0
+      27: ireturn
+
+  protected net.minecraft.world.level.levelgen.structure.templatesystem.PosRuleTestType<?> getType();
+    Code:
+       0: getstatic     #77                 // Field com/telepathicgrunt/repurposedstructures/modinit/RSPredicates.Y_VALUE_POS_RULE_TEST:Lcom/telepathicgrunt/repurposedstructures/modinit/registry/RegistryEntry;
+       3: invokeinterface #83,  1           // InterfaceMethod com/telepathicgrunt/repurposedstructures/modinit/registry/RegistryEntry.get:()Ljava/lang/Object;
+       8: checkcast     #85                 // class net/minecraft/world/level/levelgen/structure/templatesystem/PosRuleTestType
+      11: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$2(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #94                 // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+       4: ldc           #96                 // String min_y_value
+       6: invokeinterface #102,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #121,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      16: invokevirtual #127                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: getstatic     #94                 // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      22: ldc           #129                // String max_y_value
+      24: invokeinterface #102,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      29: invokedynamic #134,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      34: invokevirtual #127                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      37: invokevirtual #138                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P2;
+      40: aload_0
+      41: invokedynamic #148,  0            // InvokeDynamic #3:apply:()Ljava/util/function/BiFunction;
+      46: invokevirtual #151                // Method com/mojang/datafixers/Products$P2.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/BiFunction;)Lcom/mojang/datafixers/kinds/App;
+      49: areturn
+
+  private static java.lang.Integer lambda$static$1(com.telepathicgrunt.repurposedstructures.world.predicates.YValuePosRuleTest);
+    Code:
+       0: aload_0
+       1: getfield      #52                 // Field maxYValue:I
+       4: invokestatic  #159                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$0(com.telepathicgrunt.repurposedstructures.world.predicates.YValuePosRuleTest);
+    Code:
+       0: aload_0
+       1: getfield      #50                 // Field minYValue:I
+       4: invokestatic  #159                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #165,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+       5: invokestatic  #169                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #171                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}
