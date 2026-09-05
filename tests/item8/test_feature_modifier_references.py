@@ -7,6 +7,7 @@ from collections import Counter
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
+from mcpack_evidence.item8_registry import read_registry
 from mcpack_evidence.item8_resource_selection import select_resources
 
 if TYPE_CHECKING:
@@ -178,3 +179,46 @@ def test_selected_feature_modifier_references() -> None:  # noqa: C901, PLR0915
             "tassel", "willow_leaves", "willow_log",
         )),
     }
+
+
+def test_yungs_bridges_non_registry_path_binds_runtime_and_packaged_variants() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    contribution = contributions["yungsbridges:bridges"]
+    for path, digest in cast("dict[str, str]", contribution["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ).read_bytes())))
+    resources = {str(r["path"]): cast("dict[str, JsonValue]", r["document"])
+                 for r in catalog["resources"]
+                 if r["archive"] == "YungsBridges-1.21.1-NeoForge-5.1.1.jar"}
+    modifier = resources[str(contribution["biome_modifier"])]
+    assert modifier == {"type": "neoforge:add_features", "biomes": contribution["biome_tag"],
+                        "features": [contribution["placed_feature"]],
+                        "step": contribution["generation_step"]}
+    prefix = "data/yungsbridges/worldgen/"
+    assert resources[prefix + "placed_feature/bridge_list.json"] == {
+        "feature": contribution["configured_feature"], "placement": [{"type": "minecraft:biome"}]
+    }
+    selector = resources[prefix + "configured_feature/bridge_list.json"]
+    assert selector["type"] == "yungsbridges:multiple_attempt_single_random"
+    links = cast("dict[str, str]", contribution["configured_to_template"])
+    config = cast("dict[str, list[dict[str, JsonValue]]]", selector["config"])
+    assert sorted(str(x["feature"]) for x in config["features"]) == sorted(links)
+    assert len(links) == 22
+    assert len(set(links.values())) == 11
+    registry = Path("evidence/item-8/runtime/registry-r1/dumps/registry/minecraft")
+    configured = read_registry(registry / "worldgen_configured_feature.txt")
+    assert set(links) | {str(contribution["configured_feature"])} <= set(configured)
+    assert contribution["placed_feature"] in read_registry(registry / "worldgen_placed_feature.txt")
+    assert not any(r.startswith("yungsbridges:") for r in read_registry(
+        registry / "worldgen_structure.txt"
+    ))
+    for rid, template in links.items():
+        definition = resources[prefix + "configured_feature/" + rid.split(":")[1] + ".json"]
+        assert definition["type"] == "yungsbridges:bridge"
+        assert cast("dict[str, JsonValue]", definition["config"])["location"] == template
