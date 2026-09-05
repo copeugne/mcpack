@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-05
 
+Continue Repurposed Structures mansion custom-generation attribution with
+MansionStructure, MansionPieces and MansionStructurePiece. Existing pool traces
+do not resolve this custom path. Reuse the extractor and template catalogs;
+inspect delegated layout code only as needed for component/content attribution.
+
 Slime Cave custom components and encounters are integrated in 0feca29, with
 processor attribution in 9f7b811. The focused test binds its single template,
 six slime markers, one spawner marker and chest loot-table selection. Existing
