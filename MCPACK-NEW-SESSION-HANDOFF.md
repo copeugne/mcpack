@@ -6,6 +6,43 @@
 
 ### Continuation update - 2026-09-05
 
+Trial alias correction is delivered: shared tag/alias decoder `749c1a2`, trace
+integration `f4efdcc`, generated trace and decision bindings `48df0e9`, rebuilt
+inventory `073cfb3`. The existing tag merger is now named `tag_inputs` and
+accepts the current resource kind; all former biome callers were updated.
+The biome source output reproduced byte-for-byte. Eleven decoder/tag tests,
+22 affected pool/tag tests and three affected family checks passed; scoped
+Ruff and basedpyright passed. Both trace builds matched byte-for-byte.
+
+The trace now applies the selected replacement and follows the merged tags,
+including `regions_unexplored:trial_chambers/ashen`. It preserves original
+aliases, replacement aliases/document, shared-index binding groups and tag
+source identities. It makes no tag-order or joint-frequency claim. The output
+regression verifies ashen template reachability and both normal and ominous
+entity IDs. Other registered-root traces are unchanged. Trial chambers remain
+one family; only its inventory content changed beyond source-hash substitutions.
+The modifier report has one included alias replacement and 37 other selected
+modifier types still untraced.
+
+Trace SHA:
+`b78541655c69fbc3599a670ccc424d60dd08cbb642bd796a9b69bcb9c1f223d9`.
+Decisions SHA:
+`3fc8ed59195ee040f746b9aeef957d1d4a72293016bab2a13b5e5b37eda518bc`.
+Inventory SHA:
+`d5b51f2f140e2d88bf77d9f3dac5168f0b4dfacd827ae9cf1908d42abbf4d369`.
+Reproduction commands and scope are in the alias-code README under evidence.
+
+Continue the remaining modifier dispositions. The internal raw-template
+compiler delegates to `StructureTemplatePoolMixin.compileRawTemplates`; that
+class and `StructurePoolAccess` were located but not yet retained/inspected.
+Use the existing exact-class selector. Regions Unexplored's street processor
+reference and other feature/surface modifiers remain open. Also resolve vanilla
+trial-spawner configuration references: the inventory currently reports explicit
+inline ashen IDs, not all effective vanilla trial encounters. Do not mistake
+that partial source list for exhaustive mob-source closure. Broader family
+grouping, custom generation, provider coverage, attributes, final gate, clean
+review and main merge remain incomplete. No new measurement system was added.
+
 Trial alias source semantics are delivered in `fab1b99`; tool selection was
 added in `0b43dfd`/`484ff42`. The existing inspection tool now optionally selects
 exact classes so new evidence does not duplicate old disassemblies or revise
