@@ -653,6 +653,7 @@ def test_repurposed_design_groups_cover_registry_and_bind_variant_definitions() 
         ("adorabuild_structures", 106),
         ("terralith", 28),
         ("illagerinvasion", 5),
+        ("creatingspace", 4),
     ],
 )
 def test_provider_groups_bind_full_definitions_pools_and_registry(
@@ -783,6 +784,16 @@ def test_provider_groups_bind_full_definitions_pools_and_registry(
             "illusioner_tower": ("illagerinvasion:illusioner_tower/illusioner_tower", 1),
             "labyrinth": ("illagerinvasion:labyrinth/towers", 1),
             "sorcerer_hut": ("illagerinvasion:sorcerer_hut/sorcerer_hut", 1),
+        }
+    if namespace == "creatingspace":
+        expected = {
+            "mars/underground_outpost_1": (
+                "creatingspace:mars/underground_outpost_1/start_pool",
+                1,
+            ),
+            "moon/abandoned_outpost": ("creatingspace:moon/abandoned_outpost/start_pool", 1),
+            "moon/crashed_rocket": ("creatingspace:moon/crashed_rocket/start_pool", 1),
+            "moon/crashed_ship": ("creatingspace:moon/crashed_ship/start_pool", 1),
         }
     assert {str(r["family_id"]).split(":")[1] for r in groups} == set(expected)
     for group in groups:
