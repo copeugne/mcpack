@@ -318,3 +318,15 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ruin
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ruins-61d6501-repro.json
 cmp evidence/raw/item8/inventory-ruins-61d6501.json evidence/raw/item8/inventory-ruins-61d6501-repro.json
 ```
+
+The remaining Nether roots (`5640516`, joined in `d278fc7`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nether-5640516.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nether-5640516-repro.json
+cmp evidence/raw/item8/inventory-nether-5640516.json evidence/raw/item8/inventory-nether-5640516-repro.json
+```
+
+The existing family-decision tests check all 52 mns registry entries exactly once
+and bind the remaining roots to their packaged settings and missing-component
+lists. Family relationships and effective gameplay attributes remain provisional.
