@@ -70,6 +70,9 @@ CLASSES = (
     "LegacyOceanBottomSinglePoolElement.class",
     "SingleEndPoolElement.class",
     "BreaksSeedParityCondition.class",
+    "dev/worldgen/lithostitched/worldgen/poolelement/legacy/LimitedPoolElement.class",
+    "dev/worldgen/lithostitched/worldgen/poolelement/DelegatingPoolElement.class",
+    "dev/worldgen/lithostitched/worldgen/modifier/AddTemplatePoolElementsModifier.class",
     "DisableVanillaMineshaftsMixin.class",
     "LocateVanillaMineshaftCommandMixin.class",
 )
