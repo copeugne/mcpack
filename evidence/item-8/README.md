@@ -2,9 +2,9 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `5bb0942`, SHA-256
-`21481771b21790e45a616efbef2d7b958fe719302b4bcf4e0dc8683e749760e5`.
-All 887 registered roots are assigned once in 431 working groups. This is not
+Current working inventory regenerated at `7c1d6c6`, SHA-256
+`bf56126ef196c73126ab1da8880b4027c5f8c98b3b2e6331df5ebbc47a182e31`.
+All 887 registered roots are assigned once in 426 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
 IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
@@ -883,3 +883,171 @@ that revision, SHA-256:
 The 22 prior CTOV village rows become one, retaining their union of templates,
 biome constraints, loot references and saved-start observation indexes. All other
 family rows are unchanged. Raw sources and their identities are unchanged.
+
+## MVS rock and pond family reconciliation (2026-09-05)
+
+`mvs:boulder` and `mvs:stone_rock` are retained as two roots of `mvs:rock`.
+Their full definitions differ only in start pool. One boulder and six stone-rock
+material/shape templates are alternatives of the same rock-landmark family.
+Resolved content has no authored entities, loot, spawners or generation markers.
+
+`mvs:mushroom_pond` and `mvs:small_oak_pond` are two roots of `mvs:pond`.
+Their definitions likewise differ only in start pool. Each design has upper and
+lower components, preserving vegetation/layout differences and distinct
+`mvs:mushroom_pond` and `mvs:pond` loot sources. These four templates are components,
+not four families. No authored entities, spawners or markers occur in resolved
+pond templates. All four roots have no missing or unresolved trace elements.
+
+Exact definitions and template dimensions remain in each variant. This is a
+family relationship decision, not proof of occupied/assembled dimensions,
+effective natural spawning or discovery. Other MVS relationship questions,
+including camps and floating-island designs, are not resolved by this increment.
+The working total becomes 429 groups with the same 887 registry roots.
+
+The added two cases in the existing family-decision tests compare definitions,
+common fields, pool traces, template identities/sizes, entity/spawner/marker
+absence and distinct loot sources directly with preserved catalogs. Existing
+MVS coverage requires all 129 roots to remain assigned exactly once. An initial
+read-only inspection expected a variants field on singleton rows and stopped
+with KeyError; inspecting their actual shape resolved that without changing data.
+
+Decision SHA-256:
+`4373ff8a6f7a5429f4f94907dd39a7d9d70a28d841f052c42a400e0f0790c705`.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-mvs-formations.json
+```
+
+All 66 affected tests passed. Type checking then required an explicit string
+parameter on the empty loot set; after that annotation-only fix, both formation
+cases and scoped Ruff/Basedpyright checks passed. No source behavior changed.
+
+Grouping delivered in `bdcee2c`; inventory regenerated at that revision, SHA-256:
+`151e5afe848e375cfdc7ef42887ec8e43c311250a45882a52645362de1c2e9ed`.
+All other family rows are unchanged. The two merged families preserve the union
+of their roots, templates, biome constraints and saved-start observation indexes.
+
+## MVS surface camp family reconciliation (2026-09-05)
+
+Campsite, fire camp and horse campsite are three layout/reward variants of
+`mvs:campsite`. Each reaches one resolved template with no authored entities,
+spawners or generation markers. Horse campsite therefore does not establish an
+authored horse source. Fire camp has no loot references; horse campsite uses
+`mvs:abandoned`; campsite also uses general and common/uncommon house loot.
+These references stay attached to the exact source templates.
+
+The definitions share biome constraints, zero-offset surface projection, empty
+spawn overrides and generation type. Full variant definitions preserve different
+jigsaw sizes and terrain checks. Mine with campsite remains separate: its lower
+mining component contains a spawner and its trace includes shared villager
+pieces. Its relationship to the modular MVS mineshaft is still open.
+
+The existing formation-content test now covers the three camp roots and the
+mine boundary, comparing full definitions, template sizes, missing references,
+authored content and loot sources. All MVS roots remain covered by the existing
+129-root uniqueness check. No runtime experiment or additional measurement
+system was needed. Working total becomes 427 groups for 887 registered roots.
+
+Decision SHA-256:
+`94b18c93ceb35a902f74f791dee0dad8097083bb733544516eadcd097ec3eb64`.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-mvs-camps.json
+```
+
+All 67 affected tests and scoped Ruff/Basedpyright checks passed. Full variant
+records retain the terrain-check differences; no configuration was changed.
+
+Grouping delivered in `aa01ac1`; inventory regenerated at that revision, SHA-256:
+`d38983b380fedb771dbe47aefb274e287a9dfa355e37d4b9a617babac68df33e`.
+Camp root/template/biome/loot and observation coverage is preserved. The mine
+row changes only its grouping rationale; other family rows are unchanged.
+
+## MVS floating-island family reconciliation (2026-09-05)
+
+The two floating-island roots form one `mvs:floating_islands` family. Their full
+packaged definitions differ only by start pool: WORLD_SURFACE_WG projection with
+an absolute offset of 60, size 1, no terrain adaptation and empty spawn overrides.
+The nature layout is a 26 by 19 by 30 template with MVS common/uncommon/rare house
+loot and no authored entity. The large-house layout is 26 by 28 by 23 and reaches
+three shared villager components. Its loot references shipwreck treasure and
+stronghold crossing/library. The villager pieces are components, not families.
+
+All five resolved templates have no spawners or generation markers. Full variant
+records retain sizes, definitions and missing-component dispositions. These are
+layout and habitation/reward variants of an elevated island family; no claim of
+identical encounter value, actual assembled footprint or visual discovery range
+is made. The working total becomes 426 groups with 887 registered roots.
+
+The existing related-layout test now verifies this pair's definitions, template
+coverage/sizes, per-root authored entity IDs and loot sources. No additional
+measurement system or runtime was needed. Mining-family reconciliation remains
+open and is not changed by this increment.
+
+Decision SHA-256:
+`0139d328e23c57ecb52802819165db0befc25d2b352cf932e5e9f7b01dffcf2d`.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-mvs-islands.json
+```
+
+All 68 affected tests and scoped Ruff/Basedpyright checks passed. This uses the
+existing extraction and inventory paths; raw sources are unchanged.
+
+Grouping delivered in `18ecfe4`; inventory regenerated at that revision, SHA-256:
+`87667133ab2560dfa6120872a0023dcf761217e2f81080a631925808fa9d6a34`.
+Both roots and their template, biome, loot and observation coverage are retained.
+All other family rows are unchanged.
+
+## MVS mining-family relationship and encounter sources (2026-09-05)
+
+Mine with campsite and the modular mineshaft remain separate families. The former
+uses one authored site and a lower mining component, plus shared villager
+alternatives. The latter assembles entrance, corridor, intersection and stair
+pieces, has jigsaw size 17 and an overflow pool allowed outside normal boundaries.
+These are different assembly/layout identities, not biome or material substitutions.
+Shared villager components and a mining theme do not merge them. This closes the
+explicit relationship question without claiming equal or measured difficulty.
+
+Mine with campsite has a skeleton spawner in its lower template and no authored
+hostile template entity. The mineshaft has authored bogged, evokers and skeletons,
+and spawner NBT selecting bogged, creepers and skeletons. Both include potential
+villagers; the mineshaft also contains an armor stand, which is not counted as an
+enemy. Both root definitions have empty spawn overrides. Natural spawning remains
+conditional on biome/world state. Existing spawner and mob fields retain exact
+source-template attribution; two required attributes now record encounter intent
+and the authored-versus-natural distinction explicitly.
+
+The existing decoder verifies spawner assignments from preserved NBT. The added
+family-decision test checks distinct roots, definition settings, template coverage,
+entity IDs and spawner sources; generic singleton checks bind all source fields.
+This does not prove effective runtime replacements or count live mobs. Working
+family count remains 426; other design/provider and attribute gaps remain open.
+
+Decision SHA-256:
+`e0ed25faf9b0f6f8af09d7656d5fafa445287661d34641af2417e89387e21d58`.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_dimension_capture.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-mvs-mining.json
+```
+
+All 69 affected tests and scoped Ruff/Basedpyright checks passed. No additional
+measurement system, runtime or configuration change was required.
+
+Decisions and attributes delivered in `7c1d6c6`; inventory rebuilt at that
+revision, SHA-256:
+`bf56126ef196c73126ab1da8880b4027c5f8c98b3b2e6331df5ebbc47a182e31`.
+Only both mining families' grouping decisions, intended hostility and enemy
+attribution change, plus the decision input hash. All other fields are preserved.

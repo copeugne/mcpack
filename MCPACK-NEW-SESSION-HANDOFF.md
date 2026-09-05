@@ -6,6 +6,62 @@
 
 ### Continuation update - 2026-09-05
 
+MVS mining relationship and encounter attribution are delivered in `7c1d6c6`.
+Compact mine-with-campsite and modular mineshaft remain separate families;
+shared villager pieces are components. Both now record packaged hostile intent
+and authored/template/spawner versus natural-source distinctions. The compact
+site has skeleton spawner content; the network has bogged/creeper/skeleton
+spawner sources plus authored bogged/evoker/skeleton entities. No live population
+is claimed. All 69 affected tests and scoped checks pass. Count remains 426.
+Inventory SHA-256:
+`bf56126ef196c73126ab1da8880b4027c5f8c98b3b2e6331df5ebbc47a182e31`.
+Commands and limitations are in the final MVS section of `evidence/item-8/README.md`.
+The explicit MVS rock/pond/camp/island/mining relationship questions are resolved;
+other design reconciliation, BetterEnd, non-registry coverage and required
+attributes still need completion. No new measurements, tuning or downstream work.
+
+
+MVS floating-island grouping is delivered in `18ecfe4`. Two roots form one
+family with distinct loot and habitation variants; the large-house layout
+retains three shared villager components. Definitions differ only by start pool,
+with surface-heightmap offset 60, size 1 and no terrain adaptation. All five
+reachable templates and original evidence links are retained. Working total:
+426 groups with 887 registered roots. All 68 affected tests and scoped checks pass.
+Inventory SHA-256:
+`87667133ab2560dfa6120872a0023dcf761217e2f81080a631925808fa9d6a34`.
+Reproduction and limitations are in the final MVS section of
+`evidence/item-8/README.md`. Continue MVS mining/design reconciliation, BetterEnd,
+non-registry provider coverage and outstanding attributes. Item 8 is not complete.
+No runtime experiment, new measurement system or downstream work was added.
+
+
+MVS surface campsite grouping is delivered in `aa01ac1`. Campsite, fire camp
+and horse campsite are one family with all three exact definitions/templates
+preserved. Mine with campsite remains separate due to its lower spawner-bearing
+mining component and shared villager pieces. The modular mineshaft relationship
+is still open. Working total: 427 groups with 887 registered roots.
+All 67 affected tests and scoped checks pass. Inventory SHA-256:
+`d38983b380fedb771dbe47aefb274e287a9dfa355e37d4b9a617babac68df33e`.
+Reproduction and limitations are in the final MVS section of
+`evidence/item-8/README.md`. Continue unresolved MVS island/mining relationships,
+BetterEnd, non-registry coverage and required attributes. Item 8 remains active;
+no configuration changes, new measurement system or downstream work.
+
+
+MVS rock/pond grouping decisions are delivered in `bdcee2c`. Boulder and
+stone-rock roots become one rock family; mushroom and oak pond roots become
+one pond family. Exact definitions, seven rock template alternatives, four pond
+components and distinct pond loot references are preserved. Working total is
+429 groups with 887 registered roots. All 66 affected tests passed; after an
+annotation-only fix the two affected cases and scoped checks also pass.
+Inventory SHA-256:
+`151e5afe848e375cfdc7ef42887ec8e43c311250a45882a52645362de1c2e9ed`.
+Reproduction is in the final MVS section of `evidence/item-8/README.md`.
+Remaining MVS camps/island relationships, BetterEnd, provider coverage and
+required attributes are still open. Item 8 remains incomplete; no tuning or
+downstream work. No additional measurement system was introduced.
+
+
 CTOV canonical village reconciliation is delivered in `5bb0942`. One civilian
 village family now contains 22 named architectural/placement designs and all 66
 size/design roots; hostile outposts remain separate. Exact definitions, missing
