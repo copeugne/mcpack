@@ -1,0 +1,78 @@
+Compiled from "ConfigModuleNeoForge.java"
+public class com.yungnickyoung.minecraft.betterendisland.module.ConfigModuleNeoForge {
+  public com.yungnickyoung.minecraft.betterendisland.module.ConfigModuleNeoForge();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init(net.neoforged.fml.ModContainer);
+    Code:
+       0: aload_0
+       1: getstatic     #7                  // Field net/neoforged/fml/config/ModConfig$Type.COMMON:Lnet/neoforged/fml/config/ModConfig$Type;
+       4: getstatic     #13                 // Field com/yungnickyoung/minecraft/betterendisland/config/BEIConfigNeoForge.SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+       7: ldc           #19                 // String betterendisland-neoforge-1_21.toml
+       9: invokevirtual #21                 // Method net/neoforged/fml/ModContainer.registerConfig:(Lnet/neoforged/fml/config/ModConfig$Type;Lnet/neoforged/fml/config/IConfigSpec;Ljava/lang/String;)V
+      12: getstatic     #27                 // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      15: invokedynamic #33,  0             // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+      20: invokeinterface #37,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      25: getstatic     #43                 // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandNeoForge.loadingContextEventBus:Lnet/neoforged/bus/api/IEventBus;
+      28: invokedynamic #48,  0             // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+      33: invokeinterface #37,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      38: return
+
+  private static void onWorldLoad(net.neoforged.neoforge.event.level.LevelEvent$Load);
+    Code:
+       0: invokestatic  #49                 // Method bakeConfig:()V
+       3: return
+
+  private static void onConfigChange(net.neoforged.fml.event.config.ModConfigEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #54                 // Method net/neoforged/fml/event/config/ModConfigEvent.getConfig:()Lnet/neoforged/fml/config/ModConfig;
+       4: invokevirtual #60                 // Method net/neoforged/fml/config/ModConfig.getSpec:()Lnet/neoforged/fml/config/IConfigSpec;
+       7: getstatic     #13                 // Field com/yungnickyoung/minecraft/betterendisland/config/BEIConfigNeoForge.SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+      10: if_acmpne     16
+      13: invokestatic  #49                 // Method bakeConfig:()V
+      16: return
+
+  private static void bakeConfig();
+    Code:
+       0: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+       3: getstatic     #72                 // Field com/yungnickyoung/minecraft/betterendisland/config/BEIConfigNeoForge.resummonedDragonDropsEgg:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+       6: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+       9: checkcast     #82                 // class java/lang/Boolean
+      12: invokevirtual #84                 // Method java/lang/Boolean.booleanValue:()Z
+      15: putfield      #88                 // Field com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.resummonedDragonDropsEgg:Z
+      18: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+      21: getstatic     #93                 // Field com/yungnickyoung/minecraft/betterendisland/config/BEIConfigNeoForge.useVanillaSpawnPlatform:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      24: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      27: checkcast     #82                 // class java/lang/Boolean
+      30: invokevirtual #84                 // Method java/lang/Boolean.booleanValue:()Z
+      33: putfield      #96                 // Field com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.useVanillaSpawnPlatform:Z
+      36: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+      39: getstatic     #98                 // Field com/yungnickyoung/minecraft/betterendisland/config/BEIConfigNeoForge.useVanillaEndGateways:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      42: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      45: checkcast     #82                 // class java/lang/Boolean
+      48: invokevirtual #84                 // Method java/lang/Boolean.booleanValue:()Z
+      51: putfield      #101                // Field com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.useVanillaEndGateways:Z
+      54: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+      57: getstatic     #103                // Field com/yungnickyoung/minecraft/betterendisland/config/BEIConfigNeoForge.playBellSound:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      60: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      63: checkcast     #82                 // class java/lang/Boolean
+      66: invokevirtual #84                 // Method java/lang/Boolean.booleanValue:()Z
+      69: putfield      #106                // Field com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.playBellSound:Z
+      72: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+      75: getstatic     #108                // Field com/yungnickyoung/minecraft/betterendisland/config/BEIConfigNeoForge.spawnCentralTowerInitially:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      78: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      81: checkcast     #82                 // class java/lang/Boolean
+      84: invokevirtual #84                 // Method java/lang/Boolean.booleanValue:()Z
+      87: putfield      #111                // Field com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.spawnCentralTowerInitially:Z
+      90: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterendisland/module/ConfigModule;
+      93: getstatic     #113                // Field com/yungnickyoung/minecraft/betterendisland/config/BEIConfigNeoForge.spawnCentralTowerOnResummon:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      96: invokevirtual #76                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      99: checkcast     #82                 // class java/lang/Boolean
+     102: invokevirtual #84                 // Method java/lang/Boolean.booleanValue:()Z
+     105: putfield      #116                // Field com/yungnickyoung/minecraft/betterendisland/module/ConfigModule.spawnCentralTowerOnResummon:Z
+     108: return
+}
