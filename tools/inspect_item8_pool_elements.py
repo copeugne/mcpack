@@ -54,6 +54,7 @@ ARCHIVES = frozenset(
         "integrated_villages-1.3.3+1.21.1-neoforge.jar",
         "idas-1.13.7+1.21.1-neoforge.jar",
         "BetterEnd-21.0.31.jar",
+        "YungsBridges-1.21.1-NeoForge-5.1.1.jar",
     }
 )
 GENERATION_PREFIXES = (
@@ -227,6 +228,14 @@ CLASSES = (
     "org/betterx/betterend/world/structures/piece/PaintedMountainPiece.class",
     "org/betterx/betterend/world/biome/EndBiome.class",
     "org/betterx/betterend/util/BlockFixer.class",
+    "com/yungnickyoung/minecraft/yungsbridges/world/feature/AbstractTemplateFeature.class",
+    "com/yungnickyoung/minecraft/yungsbridges/world/feature/BridgeFeature.class",
+    "com/yungnickyoung/minecraft/yungsbridges/world/feature/MultipleAttemptSingleRandomFeature.class",
+    "com/yungnickyoung/minecraft/yungsbridges/world/feature/config/BridgeFeatureConfig.class",
+    "com/yungnickyoung/minecraft/yungsbridges/world/placement/BridgePlacement.class",
+    "com/yungnickyoung/minecraft/yungsbridges/world/placement/RngInitializerPlacement.class",
+    "com/yungnickyoung/minecraft/yungsbridges/YungsBridgesCommon.class",
+    "com/yungnickyoung/minecraft/yungsbridges/YungsBridgesNeoForge.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
