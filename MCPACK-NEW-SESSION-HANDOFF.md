@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-06
 
+CTOV twelve-class entry/component capture delivered in 82ac234 using 61663b4;
+independent extraction reproduced at evidence/raw/item8/ctov-provider-r1.
+Startup adds configured existing roots to vanilla sets through Lithostitched;
+the compatibility processor transforms existing blocks. Outpost selection uses
+the callback's own list, not enabledpillageroutpost. Preserve the unused helper
+return-descriptor mismatch without claiming a reproduced runtime failure.
+Remaining coverage: bundled compatibility directories/ZIP, modifier-driven
+components outside root graphs, explicit disconnected/missing dispositions,
+and frozen configuration binding. Both packaged mixin lists are empty. Reuse
+this source and existing CTOV regressions. Counts unchanged: 33 resolved,
+103 open. No new parser, measurement framework or baseline change.
+
 AdoraBuild provider coverage now passes. Seven-class source delivered in 6aac21f
 using 6fcc20c and reproduced independently. All 106 existing roots, 110 pools
 and 121 templates accounted for; no disconnected components. Preserve missing
