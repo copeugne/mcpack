@@ -353,3 +353,19 @@ marker lists were empty (34 passed, 1 failed). Preserved template content shows
 SAVE-mode structure blocks in acacia, acacia_trunk and birch. The corrected
 rationale and test preserve those markers; both affected cases passed. No raw
 template evidence was changed, and effective marker processing remains open.
+
+Voyager stalls and End scraps (`d077750`, joined in `0f0b9e9`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-d077750.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-d077750-repro.json
+cmp evidence/raw/item8/inventory-voyager-d077750.json evidence/raw/item8/inventory-voyager-d077750-repro.json
+uv run pytest tests/item8/test_family_decisions.py -q
+```
+
+All 37 focused tests passed. Scoped Ruff and basedpyright checks passed.
+The eight roots form two working groups; their template loot references remain
+attributed to the corresponding variants. Neither has retained world
+observations. Existing catalogs and checks suffice for this grouping increment;
+no additional measurement system was introduced. Required effective gameplay
+attributes and final inventory completeness remain unresolved.
