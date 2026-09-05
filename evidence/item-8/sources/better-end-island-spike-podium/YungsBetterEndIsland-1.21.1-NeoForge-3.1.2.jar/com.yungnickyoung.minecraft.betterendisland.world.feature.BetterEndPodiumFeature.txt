@@ -1,0 +1,307 @@
+Compiled from "BetterEndPodiumFeature.java"
+public class com.yungnickyoung.minecraft.betterendisland.world.feature.BetterEndPodiumFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> {
+  private static final java.util.List<net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor> PROCESSORS;
+
+  private static final net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor ACTIVE_PORTAL_PROCESSOR;
+
+  private static final net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor INACTIVE_PORTAL_PROCESSOR;
+
+  private final boolean isInitialSpawn;
+
+  private final boolean isBottomOnly;
+
+  private final boolean isActive;
+
+  public com.yungnickyoung.minecraft.betterendisland.world.feature.BetterEndPodiumFeature(boolean, boolean, boolean);
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field net/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #7                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: aload_0
+       8: iload_1
+       9: putfield      #13                 // Field isInitialSpawn:Z
+      12: aload_0
+      13: iload_2
+      14: putfield      #19                 // Field isBottomOnly:Z
+      17: aload_0
+      18: iload_3
+      19: putfield      #22                 // Field isActive:Z
+      22: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #25                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #31                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #35                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      14: astore        4
+      16: iconst_0
+      17: istore        5
+      19: aload_2
+      20: instanceof    #39                 // class net/minecraft/server/level/ServerLevel
+      23: ifeq          55
+      26: aload_2
+      27: checkcast     #39                 // class net/minecraft/server/level/ServerLevel
+      30: astore        6
+      32: aload         6
+      34: invokevirtual #41                 // Method net/minecraft/server/level/ServerLevel.getDragonFight:()Lnet/minecraft/world/level/dimension/end/EndDragonFight;
+      37: ifnull        55
+      40: aload         6
+      42: invokevirtual #41                 // Method net/minecraft/server/level/ServerLevel.getDragonFight:()Lnet/minecraft/world/level/dimension/end/EndDragonFight;
+      45: checkcast     #45                 // class com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight
+      48: invokeinterface #47,  1           // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight.getNumTimesDragonKilled:()I
+      53: istore        5
+      55: aload_0
+      56: invokevirtual #51                 // Method chooseTemplate:()Lnet/minecraft/resources/ResourceLocation;
+      59: astore        6
+      61: aload_0
+      62: aload_2
+      63: aload_3
+      64: aload         4
+      66: getstatic     #55                 // Field net/minecraft/world/level/block/Rotation.NONE:Lnet/minecraft/world/level/block/Rotation;
+      69: aload         6
+      71: iload         5
+      73: invokevirtual #61                 // Method placeTemplate:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/resources/ResourceLocation;I)Z
+      76: istore        7
+      78: aload_0
+      79: getfield      #13                 // Field isInitialSpawn:Z
+      82: ifeq          198
+      85: aload         4
+      87: bipush        6
+      89: invokevirtual #65                 // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+      92: astore        8
+      94: getstatic     #71                 // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+      97: invokevirtual #77                 // Method net/minecraft/core/Direction$Plane.iterator:()Ljava/util/Iterator;
+     100: astore        9
+     102: aload         9
+     104: invokeinterface #81,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     109: ifeq          198
+     112: aload         9
+     114: invokeinterface #87,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     119: checkcast     #91                 // class net/minecraft/core/Direction
+     122: astore        10
+     124: aload         8
+     126: aload         10
+     128: bipush        8
+     130: invokevirtual #93                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+     133: astore        11
+     135: new           #97                 // class net/minecraft/world/entity/boss/enderdragon/EndCrystal
+     138: dup
+     139: aload_2
+     140: checkcast     #99                 // class net/minecraft/world/level/Level
+     143: aload         11
+     145: invokevirtual #101                // Method net/minecraft/core/BlockPos.getX:()I
+     148: i2d
+     149: ldc2_w        #104                // double 0.5d
+     152: dadd
+     153: aload         11
+     155: invokevirtual #106                // Method net/minecraft/core/BlockPos.getY:()I
+     158: i2d
+     159: aload         11
+     161: invokevirtual #109                // Method net/minecraft/core/BlockPos.getZ:()I
+     164: i2d
+     165: ldc2_w        #104                // double 0.5d
+     168: dadd
+     169: invokespecial #112                // Method net/minecraft/world/entity/boss/enderdragon/EndCrystal."<init>":(Lnet/minecraft/world/level/Level;DDD)V
+     172: astore        12
+     174: aload         12
+     176: iconst_0
+     177: invokevirtual #115                // Method net/minecraft/world/entity/boss/enderdragon/EndCrystal.setShowBottom:(Z)V
+     180: aload         12
+     182: iconst_1
+     183: invokevirtual #119                // Method net/minecraft/world/entity/boss/enderdragon/EndCrystal.setInvulnerable:(Z)V
+     186: aload_2
+     187: aload         12
+     189: invokeinterface #122,  2          // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.addFreshEntity:(Lnet/minecraft/world/entity/Entity;)Z
+     194: pop
+     195: goto          102
+     198: iload         7
+     200: ireturn
+
+  private net.minecraft.resources.ResourceLocation chooseTemplate();
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field isBottomOnly:Z
+       4: ifeq          15
+       7: ldc           #130                // String betterendisland
+       9: ldc           #132                // String tower_bottom_open
+      11: invokestatic  #134                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      14: areturn
+      15: aload_0
+      16: getfield      #13                 // Field isInitialSpawn:Z
+      19: ifeq          27
+      22: ldc           #140                // String initial
+      24: goto          29
+      27: ldc           #142                // String broken
+      29: astore_1
+      30: aload_1
+      31: invokedynamic #144,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      36: astore_2
+      37: ldc           #130                // String betterendisland
+      39: aload_2
+      40: invokestatic  #134                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      43: areturn
+
+  private boolean placeTemplate(net.minecraft.world.level.ServerLevelAccessor, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.world.level.block.Rotation, net.minecraft.resources.ResourceLocation, int);
+    Code:
+       0: aload_1
+       1: invokeinterface #148,  1          // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+       6: invokevirtual #152                // Method net/minecraft/server/level/ServerLevel.getStructureManager:()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+       9: aload         5
+      11: invokevirtual #156                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Optional;
+      14: astore        7
+      16: aload         7
+      18: invokevirtual #162                // Method java/util/Optional.isEmpty:()Z
+      21: ifeq          38
+      24: getstatic     #167                // Field com/yungnickyoung/minecraft/betterendisland/BetterEndIslandCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      27: ldc           #171                // String Failed to create invalid feature {}
+      29: aload         5
+      31: invokeinterface #173,  3          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+      36: iconst_0
+      37: ireturn
+      38: aload         7
+      40: invokevirtual #179                // Method java/util/Optional.get:()Ljava/lang/Object;
+      43: checkcast     #181                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+      46: astore        8
+      48: aload_3
+      49: aload         8
+      51: invokevirtual #183                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.getSize:()Lnet/minecraft/core/Vec3i;
+      54: invokevirtual #187                // Method net/minecraft/core/Vec3i.getX:()I
+      57: ineg
+      58: iconst_2
+      59: idiv
+      60: iconst_0
+      61: aload         8
+      63: invokevirtual #183                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.getSize:()Lnet/minecraft/core/Vec3i;
+      66: invokevirtual #190                // Method net/minecraft/core/Vec3i.getZ:()I
+      69: ineg
+      70: iconst_2
+      71: idiv
+      72: invokevirtual #191                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      75: astore        9
+      77: new           #195                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings
+      80: dup
+      81: invokespecial #197                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings."<init>":()V
+      84: astore        10
+      86: getstatic     #200                // Field PROCESSORS:Ljava/util/List;
+      89: aload         10
+      91: dup
+      92: invokestatic  #204                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      95: pop
+      96: invokedynamic #210,  0            // InvokeDynamic #1:accept:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;)Ljava/util/function/Consumer;
+     101: invokeinterface #214,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+     106: aload_0
+     107: getfield      #22                 // Field isActive:Z
+     110: ifeq          125
+     113: aload         10
+     115: getstatic     #220                // Field ACTIVE_PORTAL_PROCESSOR:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor;
+     118: invokevirtual #224                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.addProcessor:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+     121: pop
+     122: goto          134
+     125: aload         10
+     127: getstatic     #228                // Field INACTIVE_PORTAL_PROCESSOR:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor;
+     130: invokevirtual #224                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.addProcessor:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+     133: pop
+     134: aload         10
+     136: new           #231                // class com/yungnickyoung/minecraft/betterendisland/world/processor/ObsidianProcessor
+     139: dup
+     140: iload         6
+     142: invokespecial #233                // Method com/yungnickyoung/minecraft/betterendisland/world/processor/ObsidianProcessor."<init>":(I)V
+     145: invokevirtual #224                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.addProcessor:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+     148: pop
+     149: aload         10
+     151: aload         4
+     153: invokevirtual #236                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.setRotation:(Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+     156: pop
+     157: aload         10
+     159: aload_0
+     160: getfield      #19                 // Field isBottomOnly:Z
+     163: ifeq          179
+     166: new           #66                 // class net/minecraft/core/BlockPos
+     169: dup
+     170: iconst_3
+     171: iconst_0
+     172: iconst_3
+     173: invokespecial #240                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     176: goto          191
+     179: new           #66                 // class net/minecraft/core/BlockPos
+     182: dup
+     183: bipush        14
+     185: iconst_0
+     186: bipush        14
+     188: invokespecial #240                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     191: invokevirtual #243                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.setRotationPivot:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+     194: pop
+     195: aload         10
+     197: getstatic     #247                // Field net/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings.IGNORE_WATERLOGGING:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+     200: invokevirtual #253                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.setLiquidSettings:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+     203: pop
+     204: aload         8
+     206: aload_1
+     207: aload         9
+     209: aload_3
+     210: aload         10
+     212: aload_2
+     213: iconst_2
+     214: invokevirtual #257                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.placeInWorld:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/util/RandomSource;I)Z
+     217: pop
+     218: iconst_1
+     219: ireturn
+
+  static {};
+    Code:
+       0: new           #261                // class com/yungnickyoung/minecraft/betterendisland/world/processor/BlockReplaceProcessor
+       3: dup
+       4: getstatic     #263                // Field net/minecraft/world/level/block/Blocks.GRAY_CONCRETE:Lnet/minecraft/world/level/block/Block;
+       7: invokevirtual #269                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      10: new           #275                // class com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer
+      13: dup
+      14: getstatic     #277                // Field net/minecraft/world/level/block/Blocks.BEDROCK:Lnet/minecraft/world/level/block/Block;
+      17: invokevirtual #269                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      20: invokespecial #280                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer."<init>":(Lnet/minecraft/world/level/block/state/BlockState;)V
+      23: iconst_0
+      24: iconst_0
+      25: iconst_0
+      26: iconst_0
+      27: invokespecial #283                // Method com/yungnickyoung/minecraft/betterendisland/world/processor/BlockReplaceProcessor."<init>":(Lnet/minecraft/world/level/block/state/BlockState;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;ZZZZ)V
+      30: new           #286                // class com/yungnickyoung/minecraft/betterendisland/world/processor/DragonEggProcessor
+      33: dup
+      34: invokespecial #288                // Method com/yungnickyoung/minecraft/betterendisland/world/processor/DragonEggProcessor."<init>":()V
+      37: invokestatic  #289                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;
+      40: putstatic     #200                // Field PROCESSORS:Ljava/util/List;
+      43: new           #261                // class com/yungnickyoung/minecraft/betterendisland/world/processor/BlockReplaceProcessor
+      46: dup
+      47: getstatic     #293                // Field net/minecraft/world/level/block/Blocks.RED_CONCRETE:Lnet/minecraft/world/level/block/Block;
+      50: invokevirtual #269                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      53: new           #275                // class com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer
+      56: dup
+      57: getstatic     #296                // Field net/minecraft/world/level/block/Blocks.END_PORTAL:Lnet/minecraft/world/level/block/Block;
+      60: invokevirtual #269                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      63: invokespecial #280                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer."<init>":(Lnet/minecraft/world/level/block/state/BlockState;)V
+      66: iconst_0
+      67: iconst_0
+      68: iconst_0
+      69: iconst_0
+      70: invokespecial #283                // Method com/yungnickyoung/minecraft/betterendisland/world/processor/BlockReplaceProcessor."<init>":(Lnet/minecraft/world/level/block/state/BlockState;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;ZZZZ)V
+      73: putstatic     #220                // Field ACTIVE_PORTAL_PROCESSOR:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor;
+      76: new           #261                // class com/yungnickyoung/minecraft/betterendisland/world/processor/BlockReplaceProcessor
+      79: dup
+      80: getstatic     #293                // Field net/minecraft/world/level/block/Blocks.RED_CONCRETE:Lnet/minecraft/world/level/block/Block;
+      83: invokevirtual #269                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      86: new           #275                // class com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer
+      89: dup
+      90: getstatic     #299                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+      93: invokevirtual #269                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      96: invokespecial #280                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer."<init>":(Lnet/minecraft/world/level/block/state/BlockState;)V
+      99: iconst_0
+     100: iconst_0
+     101: iconst_0
+     102: iconst_0
+     103: invokespecial #283                // Method com/yungnickyoung/minecraft/betterendisland/world/processor/BlockReplaceProcessor."<init>":(Lnet/minecraft/world/level/block/state/BlockState;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;ZZZZ)V
+     106: putstatic     #228                // Field INACTIVE_PORTAL_PROCESSOR:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor;
+     109: return
+}
