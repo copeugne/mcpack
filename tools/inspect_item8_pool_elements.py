@@ -21,9 +21,18 @@ MAPPED_SERVER = ArchiveInput(
     / "1.21.1-20240808.144430/server-1.21.1-20240808.144430-srg.jar",
     "26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71",
 )
+PATCHED_SERVER = ArchiveInput(
+    "neoforge-21.1.249-server.jar",
+    ROOT
+    / "instances/pristine-baseline-v0/libraries/net/neoforged/neoforge"
+    / "21.1.249/neoforge-21.1.249-server.jar",
+    "1808fab692dc44b2d474295d1cdd9f1fe8a7dceab4f594210873646fafdf1359",
+)
 ARCHIVES = frozenset(
     {
         MAPPED_SERVER.name,
+        PATCHED_SERVER.name,
+        "neoforge-21.1.249-universal.jar",
         "YungsApi-1.21.1-NeoForge-5.1.6.jar",
         "integrated_api-1.7.3+1.21.1-neoforge.jar",
         "moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar",
@@ -75,6 +84,13 @@ CLASSES = (
     "dev/worldgen/lithostitched/worldgen/modifier/AddTemplatePoolElementsModifier.class",
     "DisableVanillaMineshaftsMixin.class",
     "LocateVanillaMineshaftCommandMixin.class",
+    "dev/worldgen/lithostitched/impl/worldgen/modifier/ModifierManager.class",
+    "dev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier.class",
+    "net/minecraft/resources/RegistryDataLoader.class",
+    "net/neoforged/neoforge/common/conditions/ConditionalOps.class",
+    "net/neoforged/neoforge/common/conditions/ConditionalOps$ConditionalDecoder.class",
+    "net/neoforged/neoforge/common/conditions/ModLoadedCondition.class",
+    "net/neoforged/neoforge/common/conditions/OrCondition.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -99,7 +115,7 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
     output.mkdir(parents=True, exist_ok=False)
     javap = ROOT / "downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap"
     identities: list[dict[str, str]] = []
-    for source in (*retained_sources(ROOT), MAPPED_SERVER):
+    for source in (*retained_sources(ROOT), MAPPED_SERVER, PATCHED_SERVER):
         if source.name not in ARCHIVES:
             continue
         if selected_archive is not None and source.name != selected_archive:
@@ -125,6 +141,10 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                 if not name.endswith(".class"):
                     continue
                 if source.name == MAPPED_SERVER.name and name not in CLASSES[:4]:
+                    continue
+                if source.name in {
+                    PATCHED_SERVER.name, "neoforge-21.1.249-universal.jar"
+                } and name not in CLASSES:
                     continue
                 payload = archive.read(name)
                 if (
