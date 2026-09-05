@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `d06f076`, SHA-256
-`878db7626144c928e32a1b5a6eeef52fa8cc934d3ed1a2d8dfed2ec2bcfaa318`.
+Current working inventory regenerated at `f569bde`, SHA-256
+`c6d84d64ce8570bbe4e3a388a9d1a8a0997e29e88474233088b5ca4a75e0a4a7`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1802,3 +1802,12 @@ status. Canonical family and effective attribute completion remain open.
 
 Twenty focused tests and scoped Ruff/Basedpyright passed using the existing
 commands above. No runtime, source extraction or new validation framework added.
+
+Regeneration at `f569bde` changed only the input identity, both initialization
+records and their source links, and the Extras scope correction. Registry-family
+rows are unchanged. Reproduce with a fresh output directory:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yung-initialization.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-yung-initialization.json
+```

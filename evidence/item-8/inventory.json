@@ -158943,7 +158943,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "f337545085418abe6be722892fd29a6fd652dac4e96ca58dbcaa763b5a84deb8",
+    "evidence/item-8/family-decisions.json": "952b4a70490d507500941748b2ad4c2e2fee26e6679e5ca95c8f2c14650a1956",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -159029,7 +159029,9 @@
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/yungs-bridge-generation/identities.json": "2e6f68933e8b02e097901bb8db1afb3d277be7204e31574d44e66445696552da",
-          "evidence/item-8/sources/yungs-bridge-processors/identities.json": "97da8471a115645afe18fee88f98407410097d244ed1d43d2a25ae4a6ad0bfaf"
+          "evidence/item-8/sources/yungs-bridge-processors/identities.json": "97da8471a115645afe18fee88f98407410097d244ed1d43d2a25ae4a6ad0bfaf",
+          "evidence/item-8/sources/yungs-bridges-module-default/identities.json": "a88c07b516b2ee1692c6629ab8db0a4f4a63c8455265ce3aa7c061679e67a581",
+          "evidence/item-8/sources/yungs-bridges-module-loader/identities.json": "9bed9e79b9acc13472a27c341058a7f38d23fd072c0433847e2f7b4b8c600595"
         },
         "generation": {
           "placement_eligibility": {
@@ -159069,6 +159071,11 @@
           "vertical_anchor": "WorldGenLevel.getSeaLevel() replaces the incoming origin Y before template placement."
         },
         "generation_step": "surface_structures",
+        "initialization": {
+          "entrypoint": "The NeoForge constructor calls the common init method. Common init scans the mod module package with YungAutoRegister.scanPackageForAnnotations, then calls Services.MODULES.loadModules().",
+          "neoforge_module_loader": "The packaged NeoForgeModulesLoader delegates directly to IModulesLoader.loadModules. That default method contains only return, so this module-loader implementation performs no configuration registration.",
+          "scope": "Verified direct entrypoint and module-loader implementation. Service selection and annotation-driven registration remain separate from this finding. This does not establish absence of all configuration, data-driven or external generation controls."
+        },
         "mechanism": "NeoForge add_features biome modifier to placed bridge_list, then configured multiple_attempt_single_random with inline placed bridge variants.",
         "placed_feature": "yungsbridges:bridge_list",
         "relationship": "Stone/wood, intact/broken and axis variants contribute bridge layouts. Template and rotation entries are not separate canonical families; final family attribution and effective generation remain open.",
@@ -159416,8 +159423,15 @@
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/yungs-extras-desert-code/identities.json": "c595f5123a71105b276884d33229e4b7da2bf9b91b70ec8e5cbf1cba069d465b",
           "evidence/item-8/sources/yungs-extras-generators/identities.json": "6295b0a24fca944020cd1f489beae29c75deef061d93c411504e7aaadfe23210",
+          "evidence/item-8/sources/yungs-extras-initialization/identities.json": "9a3c1a412e4ddc0e2ac21911776e5fc251fd36a51deb441f50e8df56c9e83675",
+          "evidence/item-8/sources/yungs-extras-module-default/identities.json": "7c82ad69ee51b4a1157d8bdccdb7910899b999f49d94f30a1cd377e064a56507",
           "evidence/item-8/sources/yungs-extras-processor-bindings/identities.json": "1b79d6b5d0afdc5a965dd1fa0f9ed732d77fe3dcaa9378e4115fa942efb1e0d6",
           "evidence/item-8/sources/yungs-extras-registration/identities.json": "07300368df9a9fe1fe8f7e6efad0bc12505ebeb2e4db2a00389150a39b9e417e"
+        },
+        "initialization": {
+          "entrypoint": "The NeoForge constructor calls the common init method. Common init scans the mod module package with YungAutoRegister.scanPackageForAnnotations, then calls Services.MODULES.loadModules().",
+          "neoforge_module_loader": "The packaged NeoForgeModulesLoader delegates directly to IModulesLoader.loadModules. That default method contains only return, so this module-loader implementation performs no configuration registration.",
+          "scope": "Verified direct entrypoint and module-loader implementation. Service selection and annotation-driven registration remain separate from this finding. This does not establish absence of all configuration, data-driven or external generation controls."
         },
         "mechanism": "NeoForge biome modifiers add placed features, which reference configured features. No yungsextras structure-registry roots are present.",
         "packaged_template_content": {
@@ -159453,7 +159467,7 @@
         },
         "relationship": "The two addition modifiers reference 62 distinct placed features, each with a same-ID configured feature. These are contribution entry points, not 62 canonical families. The configured feature types are generator categories, not an accepted family classification.",
         "removal_scope": "The packaged removal targets minecraft:desert_well at surface_structures in the same three resolved desert biomes as desert additions. Their captured dimension overlap is overworld only. Configuration/registration effects and generated-world consequences remain to be reconciled.",
-        "scope": "Runtime registry presence plus packaged root references only. Template membership, custom generators, configuration, family relationships and required attributes remain incomplete. Forge-path duplicates are not counted as additional NeoForge contributions.",
+        "scope": "Runtime registry and packaged biome-modifier entrypoints, all 62 template links/envelopes, packaged contents and direct generator/processor rules are recorded below. Canonical families, effective retained-stack effects, configuration/provider coverage and remaining required attributes are incomplete. Forge-path duplicates are not additional NeoForge contributions.",
         "swamp_generation": {
           "anchor": "All six descend through empty blocks while Y > 2 and pass the resulting position directly to createTemplateFromCenter with the configured location. The helper centers X/Z by integer half-size, leaves Y unchanged and uses default StructurePlaceSettings.",
           "candles": "Green candles are replaced with a uniformly indexed choice from candle, white, gray, light_gray, brown, green, purple and black candles. Count is nextInt(4)+1 and LIT is nextFloat()<0.1. The processor writes the selected default state with those two properties, using update flag 2.",
