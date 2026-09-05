@@ -538,11 +538,18 @@ def test_voyager_related_layouts_preserve_variant_content(
         ]["spawner_blocks"]
 
 
-def test_betterend_lake_variants_bind_registry_definitions_and_generator_classes() -> None:
+@pytest.mark.parametrize(
+    ("family", "suffix", "count", "step"),
+    [("betterend:end_lake", "lake", 5, "lakes"),
+     ("betterend:mountain", "mountain", 2, "raw_generation")],
+)
+def test_betterend_formation_variants_bind_registry_definitions_and_generator_classes(
+    family: str, suffix: str, count: int, step: str
+) -> None:
     decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
         Path("evidence/item-8/family-decisions.json").read_bytes()
     ))
-    group = next(g for g in decisions["groups"] if g["family_id"] == "betterend:end_lake")
+    group = next(g for g in decisions["groups"] if g["family_id"] == family)
     for path, digest in cast("dict[str, str]", group["evidence"]).items():
         assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
     base = Path("evidence/item-8/sources/betterend-formations-code")
@@ -562,9 +569,9 @@ def test_betterend_lake_variants_bind_registry_definitions_and_generator_classes
     ))
     variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
     assert group["structure_ids"] == sorted(variants) == sorted(
-        rid for rid in registry if rid.startswith("betterend:") and "lake" in rid
+        rid for rid in registry if rid.startswith("betterend:") and suffix in rid
     )
-    assert len(variants) == 5
+    assert len(variants) == count
     for rid, variant in variants.items():
         name = rid.split(":")[1]
         definitions = [r["document"] for r in catalog["resources"]
@@ -572,7 +579,7 @@ def test_betterend_lake_variants_bind_registry_definitions_and_generator_classes
         assert definitions == [variant["definition"]]
         definition = cast("dict[str, JsonValue]", variant["definition"])
         assert definition["type"] == rid
-        assert definition["step"] == "lakes"
+        assert definition["step"] == step
         assert definition["spawn_overrides"] == {}
         binding = re.search(r"// String " + name + r"\n.*?InvokeDynamic #(\d+):create",
                             registration, re.DOTALL)
@@ -588,6 +595,14 @@ def test_betterend_lake_variants_bind_registry_definitions_and_generator_classes
             assert "generatePieces(" not in source
             source = sources["org.betterx.betterend.world.structures.features.EndLakeStructure"]
         assert "// class " + str(variant["piece_class"]).replace(".", "/") in source
+        if suffix == "mountain":
+            assert "Heightmap$Types.WORLD_SURFACE_WG" in source
+            parent = "org.betterx.betterend.world.structures.features.FeatureBaseStructure"
+            assert "extends " + parent in source
+            if name == "painted_mountain":
+                assert "EndBlocks.FLAVOLITE" in source
+                assert "EndBlocks.VIOLECITE" in source
+                assert "Blocks.END_STONE" in source
 
 
 def test_voyager_mining_families_keep_distinct_layouts_and_authored_sources() -> None:
