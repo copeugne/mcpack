@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+Voyager log piles and lanterns are delivered through `4396e1f`, built from
+`12d4090`: six log-pile roots form one working family and eleven lantern roots
+form another, with biome and template-size variants preserved. The existing
+Moog variant check now serves both namespaces. Thirty-four focused tests and
+scoped quality checks passed. Inventory reproduction was byte-identical and
+prior families unchanged. Lantern observations 182, 410, 579 and 790 are linked;
+no retained log-pile observations exist. Inventory SHA-256:
+`afbf14517c724580bdeb08d7a923f7fbc273b3495f7c0ce81f83e2498e4b7bc7`.
+Totals: 192 working groups, 311 assigned IDs, 576 unassigned; 112 mvs roots remain.
+Next compare the eight dead trees and their trunk components. Mangrove omits
+cannot_spawn_in_liquid, whereas the other seven explicitly set it true; preserve
+that difference and use the already-retained generic codec evidence as needed.
+Continue remaining providers and required attributes. No final Item 8 gate,
+clean review or main merge is claimed.
+
 All 52 mns registry entries are assigned through `d278fc7`, built from `5640516`.
 The final 22 roots have explicit settings, resolved component traces and content
 attribution. There are 28 working Nether design groups, not a final canonical
