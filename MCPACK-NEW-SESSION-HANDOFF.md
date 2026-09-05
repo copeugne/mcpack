@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-05
 
+Extras packaged contents are delivered in `bae0ae4`: 62 empty entity lists,
+three chests across chillzone/ruins_0 and eight campfires across giant_torch/
+swamp_pillar_2. Both chest loot resources resolve. There are no stored spawner
+block entities; custom generator effects are not yet resolved. Fifteen affected
+tests and scoped quality checks passed. Inventory SHA-256:
+`c27dbad3867324ff9110ef5f0dfe04a5e6b3dfd4867e8af9205cb9b3c431ff3a`.
+All 421 registry family rows and 887 roots remain unchanged. Next inspect Extras
+custom generators, especially the three empty-config desert features, and
+configuration registration. Item 8 remains incomplete. No new extraction or
+measurement system was added.
+
+
 Extras explicit template membership is delivered in `2957779`. All 59 explicit
 location references resolve, with nominal XYZ sizes recorded. Three empty-config
 generators (desert_chillzone, desert_giant_torch, desert_ruins_0) require code

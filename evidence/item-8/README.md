@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `2957779`, SHA-256
-`f66b81d0def7ecf9de36eb82f036ef646ed9b343930b92f8f030a9546ab1c060`.
+Current working inventory regenerated at `bae0ae4`, SHA-256
+`c27dbad3867324ff9110ef5f0dfe04a5e6b3dfd4867e8af9205cb9b3c431ff3a`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -1634,3 +1634,8 @@ uv run ruff check tests/item8/test_feature_modifier_references.py tools/build_it
 uv run basedpyright tests/item8/test_feature_modifier_references.py tools/build_item8_inventory.py
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-extras-content.json
 ```
+
+Inventory regenerated at `bae0ae4`, SHA-256:
+`c27dbad3867324ff9110ef5f0dfe04a5e6b3dfd4867e8af9205cb9b3c431ff3a`.
+Only decision identity and Extras packaged-template content changed.
+All 421 registry family rows and 887 roots remain unchanged.
