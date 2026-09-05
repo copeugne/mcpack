@@ -325,6 +325,7 @@ CLASSES = (
     "org/violetmoon/zetaimplforge/config/ConfigEventDispatcher.class",
     "org/violetmoon/zeta/module/ZetaModule.class",
     "org/violetmoon/zeta/module/ZetaModuleManager.class",
+    "org/violetmoon/zeta/module/TentativeModule.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
