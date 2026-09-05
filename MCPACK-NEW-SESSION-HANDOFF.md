@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-05
 
+Voyager dead trees are delivered through `7851498`, built from `0ce48c8`.
+Eight roots form one working family with sixteen tree/trunk component templates.
+Original definitions preserve mangrove's omitted liquid restriction. Validation
+rejected the draft's no-markers claim: acacia, acacia_trunk and birch each have a
+SAVE-mode structure block with empty metadata. The claim and source check were
+corrected; processing of these markers remains unresolved. The initial focused
+file run had 34 passes and one failure; both affected modular-variant cases
+passed after the correction, with scoped quality checks clean. Reproduction was
+byte-identical and all earlier family records remained equal. Four world
+observations are linked. Inventory SHA-256:
+`8fa79003674c71660161dadcf7adc7c2481f8e4ef12793adfcfb0ca77870ad45`.
+Totals: 193 working groups, 319 assigned IDs, 568 unassigned; 104 mvs roots remain.
+Continue remaining Voyager designs and attributes, then remaining providers.
+No final Item 8 gate, review or main merge is claimed.
+
 Voyager log piles and lanterns are delivered through `4396e1f`, built from
 `12d4090`: six log-pile roots form one working family and eleven lantern roots
 form another, with biome and template-size variants preserved. The existing

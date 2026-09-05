@@ -338,3 +338,18 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voya
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-12d4090-repro.json
 cmp evidence/raw/item8/inventory-voyager-12d4090.json evidence/raw/item8/inventory-voyager-12d4090-repro.json
 ```
+
+Voyager dead trees (`0ce48c8`, joined in `7851498`) reproduced with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-dead-tree-0ce48c8.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-dead-tree-0ce48c8-repro.json
+cmp evidence/raw/item8/inventory-dead-tree-0ce48c8.json evidence/raw/item8/inventory-dead-tree-0ce48c8-repro.json
+uv run pytest tests/item8/test_family_decisions.py -k moog_modular -q
+```
+
+The first validation attempt failed the draft assertion that all dead-tree
+marker lists were empty (34 passed, 1 failed). Preserved template content shows
+SAVE-mode structure blocks in acacia, acacia_trunk and birch. The corrected
+rationale and test preserve those markers; both affected cases passed. No raw
+template evidence was changed, and effective marker processing remains open.
