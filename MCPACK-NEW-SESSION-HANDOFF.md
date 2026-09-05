@@ -6,6 +6,45 @@
 
 ### Continuation update - 2026-09-05
 
+Village additions are integrated and delivered: trace implementation `1f7be67`,
+generated trace/reference update `2d6fbfb`, rebuilt inventory `e22c24f`.
+The trace now selects resource layers, filters NeoForge conditions and appends
+potential links for all 68 applicable additions using the existing decoder.
+Every addition is reachable from a registered root, verified by the new frozen
+trace regression. All five vanilla village variants reach their corresponding
+tavern template. Source identities, full modifier documents, weights, limits,
+missing templates and unsupported elements are preserved. The report accounts
+for 956 condition exclusions, 38 untraced modifier types and six excluded
+resource layers. These are potential links, not ordered assembly or probabilities.
+
+The corrected trace SHA is
+`7b0f61a66e46d78e206244271d2a1da0c846429d5a48a7e8bb05d852f6ec3632`.
+The 429 references to its old hash were updated without changing grouping
+decisions or other decision fields. Decisions SHA is
+`d642467b969b8a1cfbed8f90038684a847d13a13792a34d17da73e5c7e693996`.
+The rebuilt inventory SHA is
+`35a7f81081529b34c96948ced6dc7fb3d2580788d5ea9d13f4a7ed5b3410cd4c`.
+Both trace builds and both inventory builds matched byte-for-byte. The affected
+pool/resource suite passed 22 tests, the new frozen trace test passed, and all
+57 family-decision tests passed. Scoped Ruff and basedpyright passed. Commands
+and generated-reference migration rationale are in the existing source README
+at `evidence/item-8/sources/neoforge-condition-code/README.md`.
+
+Continue Better Village contribution attribution using existing source
+inspection. Initial inspection shows its templates already use the vanilla
+namespace, so check existing selected template provenance before adding any
+pool-replacement machinery. `Main` and `StructureSetMixin` describe a placement
+override for sets containing the five vanilla village roots. The frozen config
+enables it with spacing 45, separation 20 and salt 10387312; the captured debug
+log records its activation at line 18029. These initial code observations still
+need promotion through the existing tracked inspection tool before an acceptance
+claim. Inspect its compatibility listener/metadata path and loaded dependencies
+to determine whether further content processing applies. Do not infer from its
+absence of registry roots that it is irrelevant, or assume that it adds pools.
+Other modifier types and custom generation remain open. Canonical grouping,
+all retained-provider dispositions, required attributes, final gate, review and
+main merge remain incomplete. No new measurement system or server run was added.
+
 Modifier condition resolution is delivered in `12bd9d1`, with pinned loader
 code in `515f29b` and tool selection in `c35af5e`/`7ca24fd`. The existing resource
 selection module now reads the captured NeoForge Mod List and evaluates the
