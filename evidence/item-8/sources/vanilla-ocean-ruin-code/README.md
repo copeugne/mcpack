@@ -88,3 +88,9 @@ No new family or measurement system is introduced. Item 8 remains incomplete.
 
 All 62 affected tests passed. Basedpyright passed; Ruff passed after wrapping
 one long assertion in the focused test. No behavior changed in that correction.
+
+Source inspection is delivered in `9cdff83`, decisions and tests in `ddecb9b`.
+The inventory was rebuilt at `ddecb9b` using the command above. Inventory SHA:
+`bcc6a0988f1abf235b2f1b5f6eab4b6cc793e24bf02c4a1adabc4201eb45317c`.
+Only the ocean ruin content/grouping record and decision input identity change.
+Observed geometry, dimensions and world-observation links are preserved.
