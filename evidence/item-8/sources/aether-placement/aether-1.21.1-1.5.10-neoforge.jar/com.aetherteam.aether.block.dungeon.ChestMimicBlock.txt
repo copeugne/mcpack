@@ -1,0 +1,296 @@
+Compiled from "ChestMimicBlock.java"
+public class com.aetherteam.aether.block.dungeon.ChestMimicBlock extends net.minecraft.world.level.block.BaseEntityBlock implements net.minecraft.world.level.block.SimpleWaterloggedBlock {
+  public static final com.mojang.serialization.MapCodec<com.aetherteam.aether.block.dungeon.ChestMimicBlock> CODEC;
+
+  public static final net.minecraft.world.level.block.state.properties.DirectionProperty FACING;
+
+  public static final net.minecraft.world.level.block.state.properties.BooleanProperty WATERLOGGED;
+
+  protected static final net.minecraft.world.phys.shapes.VoxelShape SHAPE;
+
+  public com.aetherteam.aether.block.dungeon.ChestMimicBlock(net.minecraft.world.level.block.state.BlockBehaviour$Properties);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/block/BaseEntityBlock."<init>":(Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+       5: aload_0
+       6: aload_0
+       7: invokevirtual #7                  // Method getStateDefinition:()Lnet/minecraft/world/level/block/state/StateDefinition;
+      10: invokevirtual #13                 // Method net/minecraft/world/level/block/state/StateDefinition.any:()Lnet/minecraft/world/level/block/state/StateHolder;
+      13: checkcast     #19                 // class net/minecraft/world/level/block/state/BlockState
+      16: getstatic     #21                 // Field FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      19: getstatic     #25                 // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+      22: invokevirtual #31                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      25: checkcast     #19                 // class net/minecraft/world/level/block/state/BlockState
+      28: getstatic     #35                 // Field WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      31: iconst_0
+      32: invokestatic  #39                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      35: invokevirtual #31                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      38: checkcast     #19                 // class net/minecraft/world/level/block/state/BlockState
+      41: invokevirtual #45                 // Method registerDefaultState:(Lnet/minecraft/world/level/block/state/BlockState;)V
+      44: return
+
+  protected com.mojang.serialization.MapCodec<? extends net.minecraft.world.level.block.BaseEntityBlock> codec();
+    Code:
+       0: getstatic     #49                 // Field CODEC:Lcom/mojang/serialization/MapCodec;
+       3: areturn
+
+  protected void createBlockStateDefinition(net.minecraft.world.level.block.state.StateDefinition$Builder<net.minecraft.world.level.block.Block, net.minecraft.world.level.block.state.BlockState>);
+    Code:
+       0: aload_1
+       1: iconst_2
+       2: anewarray     #53                 // class net/minecraft/world/level/block/state/properties/Property
+       5: dup
+       6: iconst_0
+       7: getstatic     #21                 // Field FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      10: aastore
+      11: dup
+      12: iconst_1
+      13: getstatic     #35                 // Field WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      16: aastore
+      17: invokevirtual #55                 // Method net/minecraft/world/level/block/state/StateDefinition$Builder.add:([Lnet/minecraft/world/level/block/state/properties/Property;)Lnet/minecraft/world/level/block/state/StateDefinition$Builder;
+      20: pop
+      21: return
+
+  public net.minecraft.world.level.material.FluidState getFluidState(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_1
+       1: getstatic     #35                 // Field WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+       4: invokevirtual #61                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+       7: checkcast     #40                 // class java/lang/Boolean
+      10: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+      13: ifeq          26
+      16: getstatic     #69                 // Field net/minecraft/world/level/material/Fluids.WATER:Lnet/minecraft/world/level/material/FlowingFluid;
+      19: iconst_0
+      20: invokevirtual #75                 // Method net/minecraft/world/level/material/FlowingFluid.getSource:(Z)Lnet/minecraft/world/level/material/FluidState;
+      23: goto          31
+      26: aload_0
+      27: aload_1
+      28: invokespecial #81                 // Method net/minecraft/world/level/block/BaseEntityBlock.getFluidState:(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/material/FluidState;
+      31: areturn
+
+  public net.minecraft.world.level.block.entity.BlockEntity newBlockEntity(net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: new           #85                 // class com/aetherteam/aether/blockentity/ChestMimicBlockEntity
+       3: dup
+       4: aload_1
+       5: aload_2
+       6: invokespecial #87                 // Method com/aetherteam/aether/blockentity/ChestMimicBlockEntity."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+       9: areturn
+
+  public net.minecraft.world.InteractionResult useWithoutItem(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.entity.player.Player, net.minecraft.world.phys.BlockHitResult);
+    Code:
+       0: aload_2
+       1: aload_3
+       2: invokestatic  #90                 // Method net/minecraft/world/level/block/ChestBlock.isChestBlockedAt:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+       5: ifne          26
+       8: aload_2
+       9: invokevirtual #96                 // Method net/minecraft/world/level/Level.isClientSide:()Z
+      12: ifne          26
+      15: aload_0
+      16: aload_1
+      17: aload_2
+      18: aload_3
+      19: invokevirtual #101                // Method spawnMimic:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V
+      22: getstatic     #105                // Field net/minecraft/world/InteractionResult.SUCCESS:Lnet/minecraft/world/InteractionResult;
+      25: areturn
+      26: getstatic     #105                // Field net/minecraft/world/InteractionResult.SUCCESS:Lnet/minecraft/world/InteractionResult;
+      29: areturn
+
+  public void spawnAfterBreak(net.minecraft.world.level.block.state.BlockState, net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.world.item.ItemStack, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aload         4
+       6: iload         5
+       8: invokespecial #111                // Method net/minecraft/world/level/block/BaseEntityBlock.spawnAfterBreak:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/item/ItemStack;Z)V
+      11: aload_0
+      12: aload_1
+      13: aload_2
+      14: aload_3
+      15: invokevirtual #101                // Method spawnMimic:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V
+      18: return
+
+  private void spawnMimic(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.Level, net.minecraft.core.BlockPos);
+    Code:
+       0: getstatic     #115                // Field com/aetherteam/aether/entity/AetherEntityTypes.MIMIC:Lnet/neoforged/neoforge/registries/DeferredHolder;
+       3: invokevirtual #121                // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+       6: checkcast     #127                // class net/minecraft/world/entity/EntityType
+       9: aload_2
+      10: invokevirtual #129                // Method net/minecraft/world/entity/EntityType.create:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+      13: checkcast     #133                // class com/aetherteam/aether/entity/monster/dungeon/Mimic
+      16: astore        4
+      18: aload         4
+      20: ifnull        139
+      23: aload_1
+      24: getstatic     #21                 // Field FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      27: invokevirtual #61                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      30: checkcast     #26                 // class net/minecraft/core/Direction
+      33: astore        5
+      35: aload         5
+      37: invokevirtual #135                // Method net/minecraft/core/Direction.toYRot:()F
+      40: fstore        6
+      42: aload         4
+      44: aload_3
+      45: invokevirtual #139                // Method net/minecraft/core/BlockPos.getX:()I
+      48: i2d
+      49: ldc2_w        #145                // double 0.5d
+      52: dadd
+      53: aload_3
+      54: invokevirtual #147                // Method net/minecraft/core/BlockPos.getY:()I
+      57: i2d
+      58: aload_3
+      59: invokevirtual #150                // Method net/minecraft/core/BlockPos.getZ:()I
+      62: i2d
+      63: ldc2_w        #145                // double 0.5d
+      66: dadd
+      67: fload         6
+      69: fconst_0
+      70: invokevirtual #153                // Method com/aetherteam/aether/entity/monster/dungeon/Mimic.absMoveTo:(DDDFF)V
+      73: aload         4
+      75: fload         6
+      77: invokevirtual #157                // Method com/aetherteam/aether/entity/monster/dungeon/Mimic.setYHeadRot:(F)V
+      80: aload_2
+      81: aload         4
+      83: invokevirtual #161                // Method net/minecraft/world/level/Level.addFreshEntity:(Lnet/minecraft/world/entity/Entity;)Z
+      86: pop
+      87: aload_2
+      88: aload_3
+      89: getstatic     #165                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+      92: invokevirtual #171                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      95: invokevirtual #177                // Method net/minecraft/world/level/Level.setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+      98: pop
+      99: aload_2
+     100: aconst_null
+     101: aload_3
+     102: getstatic     #181                // Field com/aetherteam/aether/client/AetherSoundEvents.BLOCK_CHEST_MIMIC_OPEN:Lnet/neoforged/neoforge/registries/DeferredHolder;
+     105: invokevirtual #121                // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+     108: checkcast     #186                // class net/minecraft/sounds/SoundEvent
+     111: getstatic     #188                // Field net/minecraft/sounds/SoundSource.BLOCKS:Lnet/minecraft/sounds/SoundSource;
+     114: ldc           #194                // float 0.5f
+     116: aload_2
+     117: getfield      #195                // Field net/minecraft/world/level/Level.random:Lnet/minecraft/util/RandomSource;
+     120: invokeinterface #199,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     125: ldc           #204                // float 0.1f
+     127: fmul
+     128: ldc           #205                // float 0.9f
+     130: fadd
+     131: invokevirtual #206                // Method net/minecraft/world/level/Level.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+     134: aload         4
+     136: invokevirtual #210                // Method com/aetherteam/aether/entity/monster/dungeon/Mimic.spawnAnim:()V
+     139: return
+
+  public net.minecraft.world.level.block.state.BlockState getStateForPlacement(net.minecraft.world.item.context.BlockPlaceContext);
+    Code:
+       0: aload_1
+       1: invokevirtual #214                // Method net/minecraft/world/item/context/BlockPlaceContext.getHorizontalDirection:()Lnet/minecraft/core/Direction;
+       4: invokevirtual #220                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+       7: astore_2
+       8: aload_1
+       9: invokevirtual #223                // Method net/minecraft/world/item/context/BlockPlaceContext.getLevel:()Lnet/minecraft/world/level/Level;
+      12: aload_1
+      13: invokevirtual #227                // Method net/minecraft/world/item/context/BlockPlaceContext.getClickedPos:()Lnet/minecraft/core/BlockPos;
+      16: invokevirtual #231                // Method net/minecraft/world/level/Level.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+      19: astore_3
+      20: aload_0
+      21: invokevirtual #234                // Method defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      24: getstatic     #21                 // Field FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      27: aload_2
+      28: invokevirtual #31                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      31: checkcast     #19                 // class net/minecraft/world/level/block/state/BlockState
+      34: getstatic     #35                 // Field WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      37: aload_3
+      38: getstatic     #69                 // Field net/minecraft/world/level/material/Fluids.WATER:Lnet/minecraft/world/level/material/FlowingFluid;
+      41: invokevirtual #235                // Method net/minecraft/world/level/material/FluidState.is:(Lnet/minecraft/world/level/material/Fluid;)Z
+      44: invokestatic  #39                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      47: invokevirtual #31                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      50: checkcast     #19                 // class net/minecraft/world/level/block/state/BlockState
+      53: areturn
+
+  public net.minecraft.world.level.block.state.BlockState mirror(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.Mirror);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_1
+       3: getstatic     #21                 // Field FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+       6: invokevirtual #61                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+       9: checkcast     #26                 // class net/minecraft/core/Direction
+      12: invokevirtual #241                // Method net/minecraft/world/level/block/Mirror.getRotation:(Lnet/minecraft/core/Direction;)Lnet/minecraft/world/level/block/Rotation;
+      15: invokevirtual #247                // Method net/minecraft/world/level/block/state/BlockState.rotate:(Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/state/BlockState;
+      18: areturn
+
+  public net.minecraft.world.level.block.state.BlockState rotate(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.Rotation);
+    Code:
+       0: aload_1
+       1: getstatic     #21                 // Field FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+       4: aload_2
+       5: aload_1
+       6: getstatic     #21                 // Field FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+       9: invokevirtual #61                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      12: checkcast     #26                 // class net/minecraft/core/Direction
+      15: invokevirtual #251                // Method net/minecraft/world/level/block/Rotation.rotate:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/Direction;
+      18: invokevirtual #31                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      21: checkcast     #19                 // class net/minecraft/world/level/block/state/BlockState
+      24: areturn
+
+  protected boolean isPathfindable(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.pathfinder.PathComputationType);
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  public net.minecraft.world.phys.shapes.VoxelShape getShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.phys.shapes.CollisionContext);
+    Code:
+       0: getstatic     #256                // Field SHAPE:Lnet/minecraft/world/phys/shapes/VoxelShape;
+       3: areturn
+
+  public net.minecraft.world.level.block.RenderShape getRenderShape(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: getstatic     #260                // Field net/minecraft/world/level/block/RenderShape.ENTITYBLOCK_ANIMATED:Lnet/minecraft/world/level/block/RenderShape;
+       3: areturn
+
+  public net.minecraft.world.level.block.state.BlockState updateShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.core.Direction, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: getstatic     #35                 // Field WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+       4: invokevirtual #61                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+       7: checkcast     #40                 // class java/lang/Boolean
+      10: invokevirtual #65                 // Method java/lang/Boolean.booleanValue:()Z
+      13: ifeq          36
+      16: aload         4
+      18: aload         5
+      20: getstatic     #69                 // Field net/minecraft/world/level/material/Fluids.WATER:Lnet/minecraft/world/level/material/FlowingFluid;
+      23: getstatic     #69                 // Field net/minecraft/world/level/material/Fluids.WATER:Lnet/minecraft/world/level/material/FlowingFluid;
+      26: aload         4
+      28: invokevirtual #266                // Method net/minecraft/world/level/material/FlowingFluid.getTickDelay:(Lnet/minecraft/world/level/LevelReader;)I
+      31: invokeinterface #270,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.scheduleTick:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/material/Fluid;I)V
+      36: aload_0
+      37: aload_1
+      38: aload_2
+      39: aload_3
+      40: aload         4
+      42: aload         5
+      44: aload         6
+      46: invokespecial #276                // Method net/minecraft/world/level/block/BaseEntityBlock.updateShape:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      49: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #280,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+       5: invokestatic  #284                // Method simpleCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #49                 // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: getstatic     #288                // Field net/minecraft/world/level/block/HorizontalDirectionalBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      14: putstatic     #21                 // Field FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      17: getstatic     #291                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      20: putstatic     #35                 // Field WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      23: dconst_1
+      24: dconst_0
+      25: dconst_1
+      26: ldc2_w        #294                // double 15.0d
+      29: ldc2_w        #296                // double 14.0d
+      32: ldc2_w        #294                // double 15.0d
+      35: invokestatic  #298                // Method net/minecraft/world/level/block/Block.box:(DDDDDD)Lnet/minecraft/world/phys/shapes/VoxelShape;
+      38: putstatic     #256                // Field SHAPE:Lnet/minecraft/world/phys/shapes/VoxelShape;
+      41: return
+}

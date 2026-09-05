@@ -1,0 +1,91 @@
+Compiled from "BossRoomProcessor.java"
+public class com.aetherteam.aether.world.processor.BossRoomProcessor extends net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor {
+  public static final com.aetherteam.aether.world.processor.BossRoomProcessor INSTANCE;
+
+  public static final com.mojang.serialization.MapCodec<com.aetherteam.aether.world.processor.BossRoomProcessor> CODEC;
+
+  public com.aetherteam.aether.world.processor.BossRoomProcessor();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor."<init>":()V
+       4: return
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureEntityInfo processEntity(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureEntityInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureEntityInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate);
+    Code:
+       0: aload         6
+       2: aload         5
+       4: aload_2
+       5: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.getBoundingBox:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       8: astore        7
+      10: new           #13                 // class com/aetherteam/nitrogen/entity/BossRoomTracker
+      13: dup
+      14: aconst_null
+      15: aload         4
+      17: getfield      #15                 // Field net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureEntityInfo.pos:Lnet/minecraft/world/phys/Vec3;
+      20: new           #21                 // class net/minecraft/world/phys/AABB
+      23: dup
+      24: aload         7
+      26: invokevirtual #23                 // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+      29: i2d
+      30: aload         7
+      32: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minY:()I
+      35: i2d
+      36: aload         7
+      38: invokevirtual #32                 // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+      41: i2d
+      42: aload         7
+      44: invokevirtual #35                 // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxX:()I
+      47: iconst_1
+      48: iadd
+      49: i2d
+      50: aload         7
+      52: invokevirtual #38                 // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxY:()I
+      55: iconst_1
+      56: iadd
+      57: i2d
+      58: aload         7
+      60: invokevirtual #41                 // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ:()I
+      63: iconst_1
+      64: iadd
+      65: i2d
+      66: invokespecial #44                 // Method net/minecraft/world/phys/AABB."<init>":(DDDDDD)V
+      69: new           #47                 // class java/util/ArrayList
+      72: dup
+      73: invokespecial #49                 // Method java/util/ArrayList."<init>":()V
+      76: invokespecial #50                 // Method com/aetherteam/nitrogen/entity/BossRoomTracker."<init>":(Lnet/minecraft/world/entity/Mob;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/AABB;Ljava/util/List;)V
+      79: astore        8
+      81: aload         4
+      83: getfield      #53                 // Field net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureEntityInfo.nbt:Lnet/minecraft/nbt/CompoundTag;
+      86: ldc           #57                 // String Dungeon
+      88: aload         8
+      90: invokevirtual #59                 // Method com/aetherteam/nitrogen/entity/BossRoomTracker.addAdditionalSaveData:()Lnet/minecraft/nbt/CompoundTag;
+      93: invokevirtual #63                 // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+      96: pop
+      97: aload_0
+      98: aload_1
+      99: aload_2
+     100: aload_3
+     101: aload         4
+     103: aload         5
+     105: aload         6
+     107: invokespecial #69                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor.processEntity:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureEntityInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureEntityInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureEntityInfo;
+     110: areturn
+
+  protected net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType<?> getType();
+    Code:
+       0: getstatic     #73                 // Field com/aetherteam/aether/world/processor/AetherStructureProcessors.BOSS_ROOM:Lnet/neoforged/neoforge/registries/DeferredHolder;
+       3: invokevirtual #79                 // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+       6: checkcast     #85                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType
+       9: areturn
+
+  static {};
+    Code:
+       0: new           #87                 // class com/aetherteam/aether/world/processor/BossRoomProcessor
+       3: dup
+       4: invokespecial #89                 // Method "<init>":()V
+       7: putstatic     #90                 // Field INSTANCE:Lcom/aetherteam/aether/world/processor/BossRoomProcessor;
+      10: getstatic     #90                 // Field INSTANCE:Lcom/aetherteam/aether/world/processor/BossRoomProcessor;
+      13: invokestatic  #94                 // Method com/mojang/serialization/MapCodec.unit:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      16: putstatic     #100                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      19: return
+}
