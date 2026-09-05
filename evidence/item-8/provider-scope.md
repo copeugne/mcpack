@@ -1,6 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
+Supported provider dispositions: 27 of 136. The exact queue below has 109 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -514,11 +515,12 @@ entry disassemblies, preserved graph and runtime log identities. No new runtime
 sample or graph implementation. Explicit provider dispositions now cover 26 of
 136; 110 remain to reconcile. Canonical-family grouping remains separate.
 
-## Exact open provider queue at 05ce184
+## Exact provider queue, initialized at 05ce184
 
-This is the working queue, not an acceptance result. The 26 dispositions above
-and these 110 exact retained archive names partition the 136-line retained
-manifest. Platform Minecraft and NeoForge are additional shared consumers, not
+This is the working queue, not an acceptance result. Initially, the 26 dispositions
+above and 110 queued archive names partitioned the 136-line retained manifest.
+WDA is now resolved below: 27 dispositions and 109 open providers. Its row remains
+as an explicit closure link. Platform Minecraft and NeoForge are shared consumers, not
 extra retained mods. Existing capture directories below are relative to
 `sources/`; their presence means evidence to reuse, not provider closure. An
 empty directory index does not mean no evidence exists in other items.
@@ -535,7 +537,7 @@ nonregistry contributions into canonical designs, publishing any named grouping
 alternatives. Only then report the final family denominator and finish the eleven
 attributes. This separates unknown membership from incomplete attributes.
 
-| Open retained archive | Existing Item 8 captures to reuse | Next scope check |
+| Retained archive | Existing Item 8 captures to reuse | Next scope check or closure |
 | --- | --- | --- |
 | `AI-Improvements-1.21-0.5.3.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `Almanac-1.21.1-2-neoforge-1.5.2.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -543,7 +545,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar` | `bop-feature-scope` | Bind anomaly, monolith and bone-spine placement; settle landmark versus terrain disposition; reconcile remaining features. |
 | `CreateDragonsPlus-1.11.2b.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `CreeperOverhaul-neoforge-1.21.1-4.0.6.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
-| `DungeonsArise-1.21.1-2.1.68-release.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect six classes and six packaged functions; reconcile 40 roots and unmatched templates/pools. |
+| `DungeonsArise-1.21.1-2.1.68-release.jar` | `wda-provider-scope` | RESOLVED: see WDA structure-provider disposition below. |
 | `FarmersDelight-1.21.1-1.3.2.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `GlitchCore-neoforge-1.21.1-2.1.0.2.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `IllagerInvasion-v21.1.6-1.21.1-NeoForge.jar` | `pool-codecs` | Reconcile existing roots, all components and additional feature/entry routes. |
@@ -647,3 +649,49 @@ attributes. This separates unknown membership from incomplete attributes.
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+
+## WDA structure-provider disposition
+
+DungeonsArise-1.21.1-2.1.68-release.jar contributes 40 existing packaged roots,
+166 pools and 877 templates. Every packaged root uses minecraft:jigsaw. The
+captured six-class executable path registers dungeons_arise:generic_structures,
+but none of this archive's 40 root definitions uses that type. It is not another
+family. Source capture 1b230be records the mod entry, registration, pool-driven
+assembly and caller-supplied placement overload. No independent feature entry or
+additional root is supplied by these classes.
+
+The full-payload check accounts for all files, including the six functions.
+Their commands create particles/sounds, modify projectile NoGravity and summon
+combat evoker fangs; they do not place another structure. Seven processor lists
+use minecraft:rule for component block/loot changes. Other data is tags,
+advancements, enchantments, loot and predicates; visual assets are translations.
+There are no nested archives, service files or mixin entry files in this payload.
+
+Twelve pools and 54 templates are disconnected from the preserved root graphs.
+The exact sets are enumerated in test_wda_provider_scope.py and bound to the
+preserved archive and graph identities. They include illager castle/hall and old
+mushroom-village components, the jungle-tree-house start pool, no-effects wishing
+well components, and individual unused pieces from otherwise existing designs.
+Disposition: disconnected components, not independently registered families.
+This is packaged-graph coverage, not proof that every connected piece generates.
+
+Preserve missing references on four existing roots:
+
+- foundry: missing pool underworld/foundry/foundry_corridor_gears.
+- thornborn_towers: missing template thornborn_towers_hanging_bridge_2_medium_terminator.
+- bandit_village: missing template bandit_village_deco_3.
+- mechanical_nest: missing pool mechanical_nest_decoration and templates
+  mechanical_nest_bridge_terminator_6_ and mechanical_nest_spawner_6.
+
+Exact namespaced paths remain in pool-traces-content.json.gz. These are component
+failures with assembly uncertainty for later attributes. Do not repair the frozen
+baseline or count similarly named unused components as replacements.
+
+```sh
+uv run pytest -q tests/item8/test_wda_provider_scope.py
+```
+
+One case passes. Scoped Basedpyright passes; Ruff passes after removing an unused
+noqa code found in the first static run. Source reproduction is documented in
+sources/wda-provider-scope/README.md. No new graph, runtime or measurement system.
+Provider dispositions: 27 of 136; 109 remain open in the explicit queue.
