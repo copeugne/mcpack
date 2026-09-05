@@ -3,6 +3,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+from collections import Counter
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
@@ -48,7 +49,7 @@ def test_frozen_trace_reaches_all_selected_village_additions() -> None:
     root = Path(__file__).resolve().parents[2]
     raw = (root / "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
     assert hashlib.sha256(raw).hexdigest() == (
-        "b78541655c69fbc3599a670ccc424d60dd08cbb642bd796a9b69bcb9c1f223d9"
+        "9bac83e23b19826a872a3d760ca44bdcf6e24b3ef9df3a2693c9737ec28f3a0d"
     )
     trace = cast("dict[str, JsonValue]", json.loads(gzip.decompress(raw)))
     report = cast("dict[str, JsonValue]", trace["pool_modifiers"])
@@ -60,7 +61,18 @@ def test_frozen_trace_reaches_all_selected_village_additions() -> None:
     assert len(selected) == 68
     excluded = sum(row["status"] == "excluded by NeoForge mod conditions" for row in dispositions)
     assert excluded == 956
-    assert sum(row["status"] == "untraced modifier type" for row in dispositions) == 37
+    assert all(row["status"] != "untraced modifier type" for row in dispositions)
+    inspected = [entry for entry in dispositions
+                 if entry["status"] == "inspected non-family contribution"]
+    assert Counter(str(row["type"]) for row in inspected) == {
+        "lithostitched:add_features": 30, "lithostitched:remove_features": 4,
+        "lithostitched:add_processor_list_processors": 1,
+        "lithostitched:add_surface_rule": 1,
+        "lithostitched:internal/compile_raw_templates": 1,
+    }
+    for entry in inspected:
+        assert cast("dict[str, JsonValue]", entry["document"])["type"] == entry["type"]
+        assert entry["contribution"]
     assert len(cast("list[JsonValue]", report["excluded_resource_layers"])) == 6
     structures = cast("dict[str, dict[str, JsonValue]]", trace["structures"])
     reached: set[tuple[str, str, str]] = set()
