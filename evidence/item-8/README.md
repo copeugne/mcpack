@@ -1954,3 +1954,13 @@ processor attribution. All previous family records remain unchanged.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-better-end-island-processors.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-better-end-island-processors.json
 ```
+
+### Better End Island frozen configuration
+
+The contribution now records all six frozen keys and their direct runtime-field
+bindings. The spec is registered as COMMON with the exact frozen filename, and
+bakeConfig copies its values into the fields. Both vanilla platform/gateway
+switches are false, selecting custom branches when the hooks apply. Mixin
+activation and successful world generation are not inferred from those values.
+Twenty-seven focused tests and scoped Ruff/Basedpyright passed. No new runtime
+or measurement system was added.

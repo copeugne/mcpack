@@ -28609,16 +28609,41 @@
         "gateway_placement": "Subtract integer half template X/Y/Z from context origin. Use context random, Rotation.NONE, pivot (1,0,1), IGNORE_WATERLOGGING and placement flag 2. After the template call, request END_GATEWAY at context origin with flag 3, regardless of the template helper result. If configuration has an exit and the block entity is an EndGateway, set its exit position/exactness and mark changed.",
         "processors": "Platform static processor list is empty; gateway static list contains DragonEggProcessor. Both then add ObsidianProcessor with dragon-kill count, read only when the supplied accessor is a ServerLevel with a non-null dragon fight, otherwise zero. Direct effects are recorded below.",
         "success_limits": "Missing templates log a warning and return false. Loaded-template helpers discard placeInWorld boolean and return true. Platform hook cancellation does not depend on success. Gateway returns its template helper result, not whether portal-block placement or exit initialization succeeded.",
-        "scope": "Direct code and packaged template attribution only. Configuration-field binding, mixin activation, dimension applicability, family reconciliation and generated-world observations remain open. Spike and podium generation are not covered by this contribution.",
+        "scope": "Direct code and packaged template attribution only. Mixin activation, dimension applicability, family reconciliation and generated-world observations remain open. Spike and podium generation are not covered by this contribution.",
         "evidence": {
           "evidence/item-8/sources/better-end-island-platform-gateway/identities.json": "6d6944ae221e62182308d1ac3cdcc10a9b028d98bb0e2fa0d72e910cd366b48a",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
-          "evidence/item-8/sources/better-end-island-processors/identities.json": "dfeb5a2586c4b82b3e0e6eb5712149d1ab8adfc6689cc7ece108490a2b7d9b95"
+          "evidence/item-8/sources/better-end-island-processors/identities.json": "dfeb5a2586c4b82b3e0e6eb5712149d1ab8adfc6689cc7ece108490a2b7d9b95",
+          "evidence/item-6/frozen/config/betterendisland-neoforge-1_21.toml": "9f967435aa86ab5959ee76a215cde5176bee106fae08df3b6e440c77a823867a",
+          "evidence/item-8/sources/better-end-island-configuration/identities.json": "56c0b14dfb0f0a11156acd745548cb01085bce05ed965bbc38bdbeae19fed3cb"
         },
         "processor_effects": {
           "DragonEggProcessor": "Reads the existing world block at the incoming target position. If it is DRAGON_EGG, replaces the incoming block state with default DRAGON_EGG while preserving position and incoming NBT. Otherwise returns the incoming block unchanged. This preserves an existing egg, rather than creating an egg reward at an empty target.",
           "ObsidianProcessor": "Only incoming OBSIDIAN is transformed. Obtain random from StructurePlaceSettings.getRandom(target position); clamp dragon kills to 0..10; use lerp(clampedKills/10.0, 0, 0.5) as the nextFloat threshold for CRYING_OBSIDIAN, otherwise default OBSIDIAN. Preserve position and incoming NBT. Non-obsidian input passes through unchanged.",
           "scope": "Direct block substitution only. Neither processor directly spawns entities, configures spawners or assigns loot tables. This does not establish engine/API behavior, ordinary block drops, external retained-stack modifications or observed world results."
+        },
+        "configuration": {
+          "file": "evidence/item-6/frozen/config/betterendisland-neoforge-1_21.toml",
+          "section": "YUNG's Better End Island",
+          "values": {
+            "Resummoned Dragon Drops Egg": false,
+            "Spawn Vanilla Obsidian Platform": false,
+            "Spawn Vanilla End Gateways": false,
+            "Play Bell Sound": true,
+            "Spawn Central Tower Initially": true,
+            "Respawn Central Tower on Resummon": true
+          },
+          "key_to_field": {
+            "Resummoned Dragon Drops Egg": "resummonedDragonDropsEgg",
+            "Spawn Vanilla Obsidian Platform": "useVanillaSpawnPlatform",
+            "Spawn Vanilla End Gateways": "useVanillaEndGateways",
+            "Play Bell Sound": "playBellSound",
+            "Spawn Central Tower Initially": "spawnCentralTowerInitially",
+            "Respawn Central Tower on Resummon": "spawnCentralTowerOnResummon"
+          },
+          "binding": "BEIConfigNeoForge defines these keys and defaults. ConfigModuleNeoForge.init registers the spec as COMMON under this filename. bakeConfig copies each ConfigValue into the corresponding BetterEndIslandCommon.CONFIG field. ConfigModule constructor defaults match the frozen values.",
+          "platform_gateway_effect": "Both vanilla-generation toggles are false, selecting the custom branch in their captured hooks when those hooks apply.",
+          "scope": "Verified frozen values and direct key-to-field assignment. This does not prove entrypoint invocation, effective mixin activation or successful world generation. Tower/egg/bell consumers require separate attribution."
         }
       }
     }
