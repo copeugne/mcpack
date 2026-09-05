@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-05
 
+Terralith is delivered through `0c06094`, built from `7b386d2`. All 28
+registry roots are assigned once across 16 working groups. Shared cabin and
+witch-hut roots are not separate families. The underground-prefixed witch hut
+uses surface heightmap projection and an empty resolved biome tag. Seasonal
+towers and biome rubble remain variants. Missing fortified-desert village
+farmer and toolsmith templates remain explicit. No retained world observations
+exist for these Terralith roots; this does not prove general non-generation.
+Forty-eight focused tests and scoped Ruff/basedpyright checks passed; two builds
+were identical and all 382 prior family records unchanged. Inventory SHA-256:
+`1d4e2b8911051d33fa2d32b4c1996605502843ff40311133c3180e43ca63b59b`.
+Totals: 398 working groups, 820 assigned IDs, 67 unassigned. Continue vanilla
+(34), BetterEnd (14), Illager Invasion (5), Aether (4), Deep Aether (4), Creating
+Space (4) and Supplementaries (2). Several remaining roots are custom terrain
+or dungeon generators without start pools; do not invent empty traces for them.
+Non-registry contributions, canonical reconciliation and required effective
+attributes remain open. No new measurement system was added. Final Item 8 gate,
+review and main merge remain open.
+
 AdoraBuild is delivered through `d0ad289`, built from `306e678`. All 106
 registry roots are assigned exactly once across 31 working groups. Material,
 biome and size variants remain grouped with their complete definitions: 45
