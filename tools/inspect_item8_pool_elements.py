@@ -142,9 +142,12 @@ def main() -> None:  # noqa: C901 - explicit archive selection and portable verb
                     continue
                 if source.name == MAPPED_SERVER.name and name not in CLASSES[:4]:
                     continue
-                if source.name in {
-                    PATCHED_SERVER.name, "neoforge-21.1.249-universal.jar"
-                } and name not in CLASSES:
+                if (
+                    source.name == PATCHED_SERVER.name
+                    and name != "net/minecraft/resources/RegistryDataLoader.class"
+                ) or (
+                    source.name == "neoforge-21.1.249-universal.jar" and name not in CLASSES
+                ):
                     continue
                 payload = archive.read(name)
                 if (
