@@ -1046,6 +1046,16 @@ def test_better_end_island_template_links_cover_catalog_without_counting_positio
     arena = next(family for family in families
                  if family["family"] == "betterendisland:dragon_arena")
     assert set(cast("list[str]", arena["templates"])) == expected
+    for family in families:
+        direct = cast("dict[str, JsonValue]", family["direct_encounter_content"])
+        assert direct["stored_template_entities"] == []
+        assert direct["stored_spawner_block_entities"] == []
+        assert direct["template_loot_table_sources"] == []
+        for name in cast("list[str]", family["templates"]):
+            document = cast("dict[str, JsonValue]", provider[name]["document"])
+            assert document["entities"] == []
+            for entity in cast("list[dict[str, JsonValue]]", document["block_entities"]):
+                assert entity["nbt"] == {"id": "minecraft:bell"}
     for name, template in templates.items():
         row = provider[name]
         document = cast("dict[str, JsonValue]", row["document"])
