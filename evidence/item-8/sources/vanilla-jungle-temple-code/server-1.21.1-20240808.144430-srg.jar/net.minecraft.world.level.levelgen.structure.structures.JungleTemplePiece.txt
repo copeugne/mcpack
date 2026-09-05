@@ -1,0 +1,1784 @@
+Compiled from "JungleTemplePiece.java"
+public class net.minecraft.world.level.levelgen.structure.structures.JungleTemplePiece extends net.minecraft.world.level.levelgen.structure.ScatteredFeaturePiece {
+  public static final int WIDTH = 12;
+
+  public static final int DEPTH = 15;
+
+  private boolean placedMainChest;
+
+  private boolean placedHiddenChest;
+
+  private boolean placedTrap1;
+
+  private boolean placedTrap2;
+
+  private static final net.minecraft.world.level.levelgen.structure.structures.JungleTemplePiece$MossStoneSelector STONE_SELECTOR;
+
+  public net.minecraft.world.level.levelgen.structure.structures.JungleTemplePiece(net.minecraft.util.RandomSource, int, int);
+    Code:
+       0: aload_0
+       1: getstatic     #33                 // Field net/minecraft/world/level/levelgen/structure/pieces/StructurePieceType.JUNGLE_PYRAMID_PIECE:Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;
+       4: iload_2
+       5: bipush        64
+       7: iload_3
+       8: bipush        12
+      10: bipush        10
+      12: bipush        15
+      14: aload_1
+      15: invokestatic  #37                 // Method getRandomHorizontalDirection:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/core/Direction;
+      18: invokespecial #40                 // Method net/minecraft/world/level/levelgen/structure/ScatteredFeaturePiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;IIIIIILnet/minecraft/core/Direction;)V
+      21: return
+
+  public net.minecraft.world.level.levelgen.structure.structures.JungleTemplePiece(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: getstatic     #33                 // Field net/minecraft/world/level/levelgen/structure/pieces/StructurePieceType.JUNGLE_PYRAMID_PIECE:Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;
+       4: aload_1
+       5: invokespecial #50                 // Method net/minecraft/world/level/levelgen/structure/ScatteredFeaturePiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;Lnet/minecraft/nbt/CompoundTag;)V
+       8: aload_0
+       9: aload_1
+      10: ldc           #51                 // String placedMainChest
+      12: invokevirtual #57                 // Method net/minecraft/nbt/CompoundTag.getBoolean:(Ljava/lang/String;)Z
+      15: putfield      #59                 // Field placedMainChest:Z
+      18: aload_0
+      19: aload_1
+      20: ldc           #60                 // String placedHiddenChest
+      22: invokevirtual #57                 // Method net/minecraft/nbt/CompoundTag.getBoolean:(Ljava/lang/String;)Z
+      25: putfield      #62                 // Field placedHiddenChest:Z
+      28: aload_0
+      29: aload_1
+      30: ldc           #63                 // String placedTrap1
+      32: invokevirtual #57                 // Method net/minecraft/nbt/CompoundTag.getBoolean:(Ljava/lang/String;)Z
+      35: putfield      #65                 // Field placedTrap1:Z
+      38: aload_0
+      39: aload_1
+      40: ldc           #66                 // String placedTrap2
+      42: invokevirtual #57                 // Method net/minecraft/nbt/CompoundTag.getBoolean:(Ljava/lang/String;)Z
+      45: putfield      #68                 // Field placedTrap2:Z
+      48: return
+
+  protected void addAdditionalSaveData(net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext, net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokespecial #74                 // Method net/minecraft/world/level/levelgen/structure/ScatteredFeaturePiece.addAdditionalSaveData:(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceSerializationContext;Lnet/minecraft/nbt/CompoundTag;)V
+       6: aload_2
+       7: ldc           #51                 // String placedMainChest
+       9: aload_0
+      10: getfield      #59                 // Field placedMainChest:Z
+      13: invokevirtual #78                 // Method net/minecraft/nbt/CompoundTag.putBoolean:(Ljava/lang/String;Z)V
+      16: aload_2
+      17: ldc           #60                 // String placedHiddenChest
+      19: aload_0
+      20: getfield      #62                 // Field placedHiddenChest:Z
+      23: invokevirtual #78                 // Method net/minecraft/nbt/CompoundTag.putBoolean:(Ljava/lang/String;Z)V
+      26: aload_2
+      27: ldc           #63                 // String placedTrap1
+      29: aload_0
+      30: getfield      #65                 // Field placedTrap1:Z
+      33: invokevirtual #78                 // Method net/minecraft/nbt/CompoundTag.putBoolean:(Ljava/lang/String;Z)V
+      36: aload_2
+      37: ldc           #66                 // String placedTrap2
+      39: aload_0
+      40: getfield      #68                 // Field placedTrap2:Z
+      43: invokevirtual #78                 // Method net/minecraft/nbt/CompoundTag.putBoolean:(Ljava/lang/String;Z)V
+      46: return
+
+  public void postProcess(net.minecraft.world.level.WorldGenLevel, net.minecraft.world.level.StructureManager, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.structure.BoundingBox, net.minecraft.world.level.ChunkPos, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload         5
+       4: iconst_0
+       5: invokevirtual #87                 // Method updateAverageGroundHeight:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;I)Z
+       8: ifne          12
+      11: return
+      12: aload_0
+      13: aload_1
+      14: aload         5
+      16: iconst_0
+      17: bipush        -4
+      19: iconst_0
+      20: aload_0
+      21: getfield      #96                 // Field width:I
+      24: iconst_1
+      25: isub
+      26: iconst_0
+      27: aload_0
+      28: getfield      #99                 // Field depth:I
+      31: iconst_1
+      32: isub
+      33: iconst_0
+      34: aload         4
+      36: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+      39: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+      42: aload_0
+      43: aload_1
+      44: aload         5
+      46: iconst_2
+      47: iconst_1
+      48: iconst_2
+      49: bipush        9
+      51: iconst_2
+      52: iconst_2
+      53: iconst_0
+      54: aload         4
+      56: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+      59: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+      62: aload_0
+      63: aload_1
+      64: aload         5
+      66: iconst_2
+      67: iconst_1
+      68: bipush        12
+      70: bipush        9
+      72: iconst_2
+      73: bipush        12
+      75: iconst_0
+      76: aload         4
+      78: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+      81: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+      84: aload_0
+      85: aload_1
+      86: aload         5
+      88: iconst_2
+      89: iconst_1
+      90: iconst_3
+      91: iconst_2
+      92: iconst_2
+      93: bipush        11
+      95: iconst_0
+      96: aload         4
+      98: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     101: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     104: aload_0
+     105: aload_1
+     106: aload         5
+     108: bipush        9
+     110: iconst_1
+     111: iconst_3
+     112: bipush        9
+     114: iconst_2
+     115: bipush        11
+     117: iconst_0
+     118: aload         4
+     120: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     123: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     126: aload_0
+     127: aload_1
+     128: aload         5
+     130: iconst_1
+     131: iconst_3
+     132: iconst_1
+     133: bipush        10
+     135: bipush        6
+     137: iconst_1
+     138: iconst_0
+     139: aload         4
+     141: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     144: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     147: aload_0
+     148: aload_1
+     149: aload         5
+     151: iconst_1
+     152: iconst_3
+     153: bipush        13
+     155: bipush        10
+     157: bipush        6
+     159: bipush        13
+     161: iconst_0
+     162: aload         4
+     164: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     167: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     170: aload_0
+     171: aload_1
+     172: aload         5
+     174: iconst_1
+     175: iconst_3
+     176: iconst_2
+     177: iconst_1
+     178: bipush        6
+     180: bipush        12
+     182: iconst_0
+     183: aload         4
+     185: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     188: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     191: aload_0
+     192: aload_1
+     193: aload         5
+     195: bipush        10
+     197: iconst_3
+     198: iconst_2
+     199: bipush        10
+     201: bipush        6
+     203: bipush        12
+     205: iconst_0
+     206: aload         4
+     208: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     211: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     214: aload_0
+     215: aload_1
+     216: aload         5
+     218: iconst_2
+     219: iconst_3
+     220: iconst_2
+     221: bipush        9
+     223: iconst_3
+     224: bipush        12
+     226: iconst_0
+     227: aload         4
+     229: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     232: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     235: aload_0
+     236: aload_1
+     237: aload         5
+     239: iconst_2
+     240: bipush        6
+     242: iconst_2
+     243: bipush        9
+     245: bipush        6
+     247: bipush        12
+     249: iconst_0
+     250: aload         4
+     252: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     255: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     258: aload_0
+     259: aload_1
+     260: aload         5
+     262: iconst_3
+     263: bipush        7
+     265: iconst_3
+     266: bipush        8
+     268: bipush        7
+     270: bipush        11
+     272: iconst_0
+     273: aload         4
+     275: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     278: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     281: aload_0
+     282: aload_1
+     283: aload         5
+     285: iconst_4
+     286: bipush        8
+     288: iconst_4
+     289: bipush        7
+     291: bipush        8
+     293: bipush        10
+     295: iconst_0
+     296: aload         4
+     298: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     301: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     304: aload_0
+     305: aload_1
+     306: aload         5
+     308: iconst_3
+     309: iconst_1
+     310: iconst_3
+     311: bipush        8
+     313: iconst_2
+     314: bipush        11
+     316: invokevirtual #109                // Method generateAirBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIII)V
+     319: aload_0
+     320: aload_1
+     321: aload         5
+     323: iconst_4
+     324: iconst_3
+     325: bipush        6
+     327: bipush        7
+     329: iconst_3
+     330: bipush        9
+     332: invokevirtual #109                // Method generateAirBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIII)V
+     335: aload_0
+     336: aload_1
+     337: aload         5
+     339: iconst_2
+     340: iconst_4
+     341: iconst_2
+     342: bipush        9
+     344: iconst_5
+     345: bipush        12
+     347: invokevirtual #109                // Method generateAirBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIII)V
+     350: aload_0
+     351: aload_1
+     352: aload         5
+     354: iconst_4
+     355: bipush        6
+     357: iconst_5
+     358: bipush        7
+     360: bipush        6
+     362: bipush        9
+     364: invokevirtual #109                // Method generateAirBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIII)V
+     367: aload_0
+     368: aload_1
+     369: aload         5
+     371: iconst_5
+     372: bipush        7
+     374: bipush        6
+     376: bipush        6
+     378: bipush        7
+     380: bipush        8
+     382: invokevirtual #109                // Method generateAirBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIII)V
+     385: aload_0
+     386: aload_1
+     387: aload         5
+     389: iconst_5
+     390: iconst_1
+     391: iconst_2
+     392: bipush        6
+     394: iconst_2
+     395: iconst_2
+     396: invokevirtual #109                // Method generateAirBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIII)V
+     399: aload_0
+     400: aload_1
+     401: aload         5
+     403: iconst_5
+     404: iconst_2
+     405: bipush        12
+     407: bipush        6
+     409: iconst_2
+     410: bipush        12
+     412: invokevirtual #109                // Method generateAirBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIII)V
+     415: aload_0
+     416: aload_1
+     417: aload         5
+     419: iconst_5
+     420: iconst_5
+     421: iconst_1
+     422: bipush        6
+     424: iconst_5
+     425: iconst_1
+     426: invokevirtual #109                // Method generateAirBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIII)V
+     429: aload_0
+     430: aload_1
+     431: aload         5
+     433: iconst_5
+     434: iconst_5
+     435: bipush        13
+     437: bipush        6
+     439: iconst_5
+     440: bipush        13
+     442: invokevirtual #109                // Method generateAirBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIII)V
+     445: aload_0
+     446: aload_1
+     447: getstatic     #115                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+     450: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     453: iconst_1
+     454: iconst_5
+     455: iconst_5
+     456: aload         5
+     458: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     461: aload_0
+     462: aload_1
+     463: getstatic     #115                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+     466: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     469: bipush        10
+     471: iconst_5
+     472: iconst_5
+     473: aload         5
+     475: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     478: aload_0
+     479: aload_1
+     480: getstatic     #115                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+     483: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     486: iconst_1
+     487: iconst_5
+     488: bipush        9
+     490: aload         5
+     492: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     495: aload_0
+     496: aload_1
+     497: getstatic     #115                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+     500: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     503: bipush        10
+     505: iconst_5
+     506: bipush        9
+     508: aload         5
+     510: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+     513: iconst_0
+     514: istore        8
+     516: iload         8
+     518: bipush        14
+     520: if_icmpgt     617
+     523: aload_0
+     524: aload_1
+     525: aload         5
+     527: iconst_2
+     528: iconst_4
+     529: iload         8
+     531: iconst_2
+     532: iconst_5
+     533: iload         8
+     535: iconst_0
+     536: aload         4
+     538: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     541: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     544: aload_0
+     545: aload_1
+     546: aload         5
+     548: iconst_4
+     549: iconst_4
+     550: iload         8
+     552: iconst_4
+     553: iconst_5
+     554: iload         8
+     556: iconst_0
+     557: aload         4
+     559: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     562: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     565: aload_0
+     566: aload_1
+     567: aload         5
+     569: bipush        7
+     571: iconst_4
+     572: iload         8
+     574: bipush        7
+     576: iconst_5
+     577: iload         8
+     579: iconst_0
+     580: aload         4
+     582: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     585: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     588: aload_0
+     589: aload_1
+     590: aload         5
+     592: bipush        9
+     594: iconst_4
+     595: iload         8
+     597: bipush        9
+     599: iconst_5
+     600: iload         8
+     602: iconst_0
+     603: aload         4
+     605: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     608: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     611: iinc          8, 14
+     614: goto          516
+     617: aload_0
+     618: aload_1
+     619: aload         5
+     621: iconst_5
+     622: bipush        6
+     624: iconst_0
+     625: bipush        6
+     627: bipush        6
+     629: iconst_0
+     630: iconst_0
+     631: aload         4
+     633: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     636: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     639: iconst_0
+     640: istore        8
+     642: iload         8
+     644: bipush        11
+     646: if_icmpgt     742
+     649: iconst_2
+     650: istore        9
+     652: iload         9
+     654: bipush        12
+     656: if_icmpgt     688
+     659: aload_0
+     660: aload_1
+     661: aload         5
+     663: iload         8
+     665: iconst_4
+     666: iload         9
+     668: iload         8
+     670: iconst_5
+     671: iload         9
+     673: iconst_0
+     674: aload         4
+     676: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     679: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     682: iinc          9, 2
+     685: goto          652
+     688: aload_0
+     689: aload_1
+     690: aload         5
+     692: iload         8
+     694: bipush        6
+     696: iconst_5
+     697: iload         8
+     699: bipush        6
+     701: iconst_5
+     702: iconst_0
+     703: aload         4
+     705: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     708: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     711: aload_0
+     712: aload_1
+     713: aload         5
+     715: iload         8
+     717: bipush        6
+     719: bipush        9
+     721: iload         8
+     723: bipush        6
+     725: bipush        9
+     727: iconst_0
+     728: aload         4
+     730: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     733: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     736: iinc          8, 11
+     739: goto          642
+     742: aload_0
+     743: aload_1
+     744: aload         5
+     746: iconst_2
+     747: bipush        7
+     749: iconst_2
+     750: iconst_2
+     751: bipush        9
+     753: iconst_2
+     754: iconst_0
+     755: aload         4
+     757: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     760: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     763: aload_0
+     764: aload_1
+     765: aload         5
+     767: bipush        9
+     769: bipush        7
+     771: iconst_2
+     772: bipush        9
+     774: bipush        9
+     776: iconst_2
+     777: iconst_0
+     778: aload         4
+     780: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     783: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     786: aload_0
+     787: aload_1
+     788: aload         5
+     790: iconst_2
+     791: bipush        7
+     793: bipush        12
+     795: iconst_2
+     796: bipush        9
+     798: bipush        12
+     800: iconst_0
+     801: aload         4
+     803: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     806: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     809: aload_0
+     810: aload_1
+     811: aload         5
+     813: bipush        9
+     815: bipush        7
+     817: bipush        12
+     819: bipush        9
+     821: bipush        9
+     823: bipush        12
+     825: iconst_0
+     826: aload         4
+     828: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     831: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     834: aload_0
+     835: aload_1
+     836: aload         5
+     838: iconst_4
+     839: bipush        9
+     841: iconst_4
+     842: iconst_4
+     843: bipush        9
+     845: iconst_4
+     846: iconst_0
+     847: aload         4
+     849: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     852: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     855: aload_0
+     856: aload_1
+     857: aload         5
+     859: bipush        7
+     861: bipush        9
+     863: iconst_4
+     864: bipush        7
+     866: bipush        9
+     868: iconst_4
+     869: iconst_0
+     870: aload         4
+     872: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     875: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     878: aload_0
+     879: aload_1
+     880: aload         5
+     882: iconst_4
+     883: bipush        9
+     885: bipush        10
+     887: iconst_4
+     888: bipush        9
+     890: bipush        10
+     892: iconst_0
+     893: aload         4
+     895: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     898: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     901: aload_0
+     902: aload_1
+     903: aload         5
+     905: bipush        7
+     907: bipush        9
+     909: bipush        10
+     911: bipush        7
+     913: bipush        9
+     915: bipush        10
+     917: iconst_0
+     918: aload         4
+     920: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     923: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     926: aload_0
+     927: aload_1
+     928: aload         5
+     930: iconst_5
+     931: bipush        9
+     933: bipush        7
+     935: bipush        6
+     937: bipush        9
+     939: bipush        7
+     941: iconst_0
+     942: aload         4
+     944: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+     947: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+     950: getstatic     #128                // Field net/minecraft/world/level/block/Blocks.COBBLESTONE_STAIRS:Lnet/minecraft/world/level/block/Block;
+     953: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     956: getstatic     #134                // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     959: getstatic     #140                // Field net/minecraft/core/Direction.EAST:Lnet/minecraft/core/Direction;
+     962: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     965: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+     968: astore        8
+     970: getstatic     #128                // Field net/minecraft/world/level/block/Blocks.COBBLESTONE_STAIRS:Lnet/minecraft/world/level/block/Block;
+     973: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     976: getstatic     #134                // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     979: getstatic     #149                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+     982: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     985: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+     988: astore        9
+     990: getstatic     #128                // Field net/minecraft/world/level/block/Blocks.COBBLESTONE_STAIRS:Lnet/minecraft/world/level/block/Block;
+     993: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     996: getstatic     #134                // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     999: getstatic     #152                // Field net/minecraft/core/Direction.SOUTH:Lnet/minecraft/core/Direction;
+    1002: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1005: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1008: astore        10
+    1010: getstatic     #128                // Field net/minecraft/world/level/block/Blocks.COBBLESTONE_STAIRS:Lnet/minecraft/world/level/block/Block;
+    1013: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1016: getstatic     #134                // Field net/minecraft/world/level/block/StairBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+    1019: getstatic     #155                // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+    1022: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1025: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1028: astore        11
+    1030: aload_0
+    1031: aload_1
+    1032: aload         11
+    1034: iconst_5
+    1035: bipush        9
+    1037: bipush        6
+    1039: aload         5
+    1041: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1044: aload_0
+    1045: aload_1
+    1046: aload         11
+    1048: bipush        6
+    1050: bipush        9
+    1052: bipush        6
+    1054: aload         5
+    1056: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1059: aload_0
+    1060: aload_1
+    1061: aload         10
+    1063: iconst_5
+    1064: bipush        9
+    1066: bipush        8
+    1068: aload         5
+    1070: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1073: aload_0
+    1074: aload_1
+    1075: aload         10
+    1077: bipush        6
+    1079: bipush        9
+    1081: bipush        8
+    1083: aload         5
+    1085: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1088: aload_0
+    1089: aload_1
+    1090: aload         11
+    1092: iconst_4
+    1093: iconst_0
+    1094: iconst_0
+    1095: aload         5
+    1097: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1100: aload_0
+    1101: aload_1
+    1102: aload         11
+    1104: iconst_5
+    1105: iconst_0
+    1106: iconst_0
+    1107: aload         5
+    1109: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1112: aload_0
+    1113: aload_1
+    1114: aload         11
+    1116: bipush        6
+    1118: iconst_0
+    1119: iconst_0
+    1120: aload         5
+    1122: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1125: aload_0
+    1126: aload_1
+    1127: aload         11
+    1129: bipush        7
+    1131: iconst_0
+    1132: iconst_0
+    1133: aload         5
+    1135: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1138: aload_0
+    1139: aload_1
+    1140: aload         11
+    1142: iconst_4
+    1143: iconst_1
+    1144: bipush        8
+    1146: aload         5
+    1148: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1151: aload_0
+    1152: aload_1
+    1153: aload         11
+    1155: iconst_4
+    1156: iconst_2
+    1157: bipush        9
+    1159: aload         5
+    1161: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1164: aload_0
+    1165: aload_1
+    1166: aload         11
+    1168: iconst_4
+    1169: iconst_3
+    1170: bipush        10
+    1172: aload         5
+    1174: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1177: aload_0
+    1178: aload_1
+    1179: aload         11
+    1181: bipush        7
+    1183: iconst_1
+    1184: bipush        8
+    1186: aload         5
+    1188: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1191: aload_0
+    1192: aload_1
+    1193: aload         11
+    1195: bipush        7
+    1197: iconst_2
+    1198: bipush        9
+    1200: aload         5
+    1202: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1205: aload_0
+    1206: aload_1
+    1207: aload         11
+    1209: bipush        7
+    1211: iconst_3
+    1212: bipush        10
+    1214: aload         5
+    1216: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1219: aload_0
+    1220: aload_1
+    1221: aload         5
+    1223: iconst_4
+    1224: iconst_1
+    1225: bipush        9
+    1227: iconst_4
+    1228: iconst_1
+    1229: bipush        9
+    1231: iconst_0
+    1232: aload         4
+    1234: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+    1237: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+    1240: aload_0
+    1241: aload_1
+    1242: aload         5
+    1244: bipush        7
+    1246: iconst_1
+    1247: bipush        9
+    1249: bipush        7
+    1251: iconst_1
+    1252: bipush        9
+    1254: iconst_0
+    1255: aload         4
+    1257: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+    1260: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+    1263: aload_0
+    1264: aload_1
+    1265: aload         5
+    1267: iconst_4
+    1268: iconst_1
+    1269: bipush        10
+    1271: bipush        7
+    1273: iconst_2
+    1274: bipush        10
+    1276: iconst_0
+    1277: aload         4
+    1279: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+    1282: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+    1285: aload_0
+    1286: aload_1
+    1287: aload         5
+    1289: iconst_5
+    1290: iconst_4
+    1291: iconst_5
+    1292: bipush        6
+    1294: iconst_4
+    1295: iconst_5
+    1296: iconst_0
+    1297: aload         4
+    1299: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+    1302: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+    1305: aload_0
+    1306: aload_1
+    1307: aload         8
+    1309: iconst_4
+    1310: iconst_4
+    1311: iconst_5
+    1312: aload         5
+    1314: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1317: aload_0
+    1318: aload_1
+    1319: aload         9
+    1321: bipush        7
+    1323: iconst_4
+    1324: iconst_5
+    1325: aload         5
+    1327: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1330: iconst_0
+    1331: istore        12
+    1333: iload         12
+    1335: iconst_4
+    1336: if_icmpge     1412
+    1339: aload_0
+    1340: aload_1
+    1341: aload         10
+    1343: iconst_5
+    1344: iconst_0
+    1345: iload         12
+    1347: isub
+    1348: bipush        6
+    1350: iload         12
+    1352: iadd
+    1353: aload         5
+    1355: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1358: aload_0
+    1359: aload_1
+    1360: aload         10
+    1362: bipush        6
+    1364: iconst_0
+    1365: iload         12
+    1367: isub
+    1368: bipush        6
+    1370: iload         12
+    1372: iadd
+    1373: aload         5
+    1375: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1378: aload_0
+    1379: aload_1
+    1380: aload         5
+    1382: iconst_5
+    1383: iconst_0
+    1384: iload         12
+    1386: isub
+    1387: bipush        7
+    1389: iload         12
+    1391: iadd
+    1392: bipush        6
+    1394: iconst_0
+    1395: iload         12
+    1397: isub
+    1398: bipush        9
+    1400: iload         12
+    1402: iadd
+    1403: invokevirtual #109                // Method generateAirBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIII)V
+    1406: iinc          12, 1
+    1409: goto          1333
+    1412: aload_0
+    1413: aload_1
+    1414: aload         5
+    1416: iconst_1
+    1417: bipush        -3
+    1419: bipush        12
+    1421: bipush        10
+    1423: iconst_m1
+    1424: bipush        13
+    1426: invokevirtual #109                // Method generateAirBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIII)V
+    1429: aload_0
+    1430: aload_1
+    1431: aload         5
+    1433: iconst_1
+    1434: bipush        -3
+    1436: iconst_1
+    1437: iconst_3
+    1438: iconst_m1
+    1439: bipush        13
+    1441: invokevirtual #109                // Method generateAirBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIII)V
+    1444: aload_0
+    1445: aload_1
+    1446: aload         5
+    1448: iconst_1
+    1449: bipush        -3
+    1451: iconst_1
+    1452: bipush        9
+    1454: iconst_m1
+    1455: iconst_5
+    1456: invokevirtual #109                // Method generateAirBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIII)V
+    1459: iconst_1
+    1460: istore        12
+    1462: iload         12
+    1464: bipush        13
+    1466: if_icmpgt     1498
+    1469: aload_0
+    1470: aload_1
+    1471: aload         5
+    1473: iconst_1
+    1474: bipush        -3
+    1476: iload         12
+    1478: iconst_1
+    1479: bipush        -2
+    1481: iload         12
+    1483: iconst_0
+    1484: aload         4
+    1486: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+    1489: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+    1492: iinc          12, 2
+    1495: goto          1462
+    1498: iconst_2
+    1499: istore        12
+    1501: iload         12
+    1503: bipush        12
+    1505: if_icmpgt     1535
+    1508: aload_0
+    1509: aload_1
+    1510: aload         5
+    1512: iconst_1
+    1513: iconst_m1
+    1514: iload         12
+    1516: iconst_3
+    1517: iconst_m1
+    1518: iload         12
+    1520: iconst_0
+    1521: aload         4
+    1523: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+    1526: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+    1529: iinc          12, 2
+    1532: goto          1501
+    1535: aload_0
+    1536: aload_1
+    1537: aload         5
+    1539: iconst_2
+    1540: bipush        -2
+    1542: iconst_1
+    1543: iconst_5
+    1544: bipush        -2
+    1546: iconst_1
+    1547: iconst_0
+    1548: aload         4
+    1550: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+    1553: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+    1556: aload_0
+    1557: aload_1
+    1558: aload         5
+    1560: bipush        7
+    1562: bipush        -2
+    1564: iconst_1
+    1565: bipush        9
+    1567: bipush        -2
+    1569: iconst_1
+    1570: iconst_0
+    1571: aload         4
+    1573: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+    1576: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+    1579: aload_0
+    1580: aload_1
+    1581: aload         5
+    1583: bipush        6
+    1585: bipush        -3
+    1587: iconst_1
+    1588: bipush        6
+    1590: bipush        -3
+    1592: iconst_1
+    1593: iconst_0
+    1594: aload         4
+    1596: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+    1599: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+    1602: aload_0
+    1603: aload_1
+    1604: aload         5
+    1606: bipush        6
+    1608: iconst_m1
+    1609: iconst_1
+    1610: bipush        6
+    1612: iconst_m1
+    1613: iconst_1
+    1614: iconst_0
+    1615: aload         4
+    1617: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+    1620: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+    1623: aload_0
+    1624: aload_1
+    1625: getstatic     #158                // Field net/minecraft/world/level/block/Blocks.TRIPWIRE_HOOK:Lnet/minecraft/world/level/block/Block;
+    1628: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1631: getstatic     #161                // Field net/minecraft/world/level/block/TripWireHookBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+    1634: getstatic     #140                // Field net/minecraft/core/Direction.EAST:Lnet/minecraft/core/Direction;
+    1637: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1640: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1643: getstatic     #165                // Field net/minecraft/world/level/block/TripWireHookBlock.ATTACHED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    1646: iconst_1
+    1647: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    1650: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1653: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1656: iconst_1
+    1657: bipush        -3
+    1659: bipush        8
+    1661: aload         5
+    1663: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1666: aload_0
+    1667: aload_1
+    1668: getstatic     #158                // Field net/minecraft/world/level/block/Blocks.TRIPWIRE_HOOK:Lnet/minecraft/world/level/block/Block;
+    1671: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1674: getstatic     #161                // Field net/minecraft/world/level/block/TripWireHookBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+    1677: getstatic     #149                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+    1680: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1683: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1686: getstatic     #165                // Field net/minecraft/world/level/block/TripWireHookBlock.ATTACHED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    1689: iconst_1
+    1690: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    1693: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1696: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1699: iconst_4
+    1700: bipush        -3
+    1702: bipush        8
+    1704: aload         5
+    1706: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1709: aload_0
+    1710: aload_1
+    1711: getstatic     #174                // Field net/minecraft/world/level/block/Blocks.TRIPWIRE:Lnet/minecraft/world/level/block/Block;
+    1714: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1717: getstatic     #178                // Field net/minecraft/world/level/block/TripWireBlock.EAST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    1720: iconst_1
+    1721: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    1724: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1727: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1730: getstatic     #180                // Field net/minecraft/world/level/block/TripWireBlock.WEST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    1733: iconst_1
+    1734: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    1737: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1740: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1743: getstatic     #181                // Field net/minecraft/world/level/block/TripWireBlock.ATTACHED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    1746: iconst_1
+    1747: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    1750: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1753: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1756: iconst_2
+    1757: bipush        -3
+    1759: bipush        8
+    1761: aload         5
+    1763: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1766: aload_0
+    1767: aload_1
+    1768: getstatic     #174                // Field net/minecraft/world/level/block/Blocks.TRIPWIRE:Lnet/minecraft/world/level/block/Block;
+    1771: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1774: getstatic     #178                // Field net/minecraft/world/level/block/TripWireBlock.EAST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    1777: iconst_1
+    1778: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    1781: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1784: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1787: getstatic     #180                // Field net/minecraft/world/level/block/TripWireBlock.WEST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    1790: iconst_1
+    1791: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    1794: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1797: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1800: getstatic     #181                // Field net/minecraft/world/level/block/TripWireBlock.ATTACHED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    1803: iconst_1
+    1804: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    1807: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1810: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1813: iconst_3
+    1814: bipush        -3
+    1816: bipush        8
+    1818: aload         5
+    1820: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1823: getstatic     #184                // Field net/minecraft/world/level/block/Blocks.REDSTONE_WIRE:Lnet/minecraft/world/level/block/Block;
+    1826: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1829: getstatic     #189                // Field net/minecraft/world/level/block/RedStoneWireBlock.NORTH:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    1832: getstatic     #195                // Field net/minecraft/world/level/block/state/properties/RedstoneSide.SIDE:Lnet/minecraft/world/level/block/state/properties/RedstoneSide;
+    1835: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1838: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1841: getstatic     #197                // Field net/minecraft/world/level/block/RedStoneWireBlock.SOUTH:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    1844: getstatic     #195                // Field net/minecraft/world/level/block/state/properties/RedstoneSide.SIDE:Lnet/minecraft/world/level/block/state/properties/RedstoneSide;
+    1847: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1850: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1853: astore        12
+    1855: aload_0
+    1856: aload_1
+    1857: aload         12
+    1859: iconst_5
+    1860: bipush        -3
+    1862: bipush        7
+    1864: aload         5
+    1866: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1869: aload_0
+    1870: aload_1
+    1871: aload         12
+    1873: iconst_5
+    1874: bipush        -3
+    1876: bipush        6
+    1878: aload         5
+    1880: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1883: aload_0
+    1884: aload_1
+    1885: aload         12
+    1887: iconst_5
+    1888: bipush        -3
+    1890: iconst_5
+    1891: aload         5
+    1893: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1896: aload_0
+    1897: aload_1
+    1898: aload         12
+    1900: iconst_5
+    1901: bipush        -3
+    1903: iconst_4
+    1904: aload         5
+    1906: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1909: aload_0
+    1910: aload_1
+    1911: aload         12
+    1913: iconst_5
+    1914: bipush        -3
+    1916: iconst_3
+    1917: aload         5
+    1919: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1922: aload_0
+    1923: aload_1
+    1924: aload         12
+    1926: iconst_5
+    1927: bipush        -3
+    1929: iconst_2
+    1930: aload         5
+    1932: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1935: aload_0
+    1936: aload_1
+    1937: getstatic     #184                // Field net/minecraft/world/level/block/Blocks.REDSTONE_WIRE:Lnet/minecraft/world/level/block/Block;
+    1940: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1943: getstatic     #189                // Field net/minecraft/world/level/block/RedStoneWireBlock.NORTH:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    1946: getstatic     #195                // Field net/minecraft/world/level/block/state/properties/RedstoneSide.SIDE:Lnet/minecraft/world/level/block/state/properties/RedstoneSide;
+    1949: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1952: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1955: getstatic     #199                // Field net/minecraft/world/level/block/RedStoneWireBlock.WEST:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    1958: getstatic     #195                // Field net/minecraft/world/level/block/state/properties/RedstoneSide.SIDE:Lnet/minecraft/world/level/block/state/properties/RedstoneSide;
+    1961: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1964: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1967: iconst_5
+    1968: bipush        -3
+    1970: iconst_1
+    1971: aload         5
+    1973: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    1976: aload_0
+    1977: aload_1
+    1978: getstatic     #184                // Field net/minecraft/world/level/block/Blocks.REDSTONE_WIRE:Lnet/minecraft/world/level/block/Block;
+    1981: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1984: getstatic     #201                // Field net/minecraft/world/level/block/RedStoneWireBlock.EAST:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    1987: getstatic     #195                // Field net/minecraft/world/level/block/state/properties/RedstoneSide.SIDE:Lnet/minecraft/world/level/block/state/properties/RedstoneSide;
+    1990: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1993: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    1996: getstatic     #199                // Field net/minecraft/world/level/block/RedStoneWireBlock.WEST:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    1999: getstatic     #195                // Field net/minecraft/world/level/block/state/properties/RedstoneSide.SIDE:Lnet/minecraft/world/level/block/state/properties/RedstoneSide;
+    2002: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2005: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2008: iconst_4
+    2009: bipush        -3
+    2011: iconst_1
+    2012: aload         5
+    2014: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2017: aload_0
+    2018: aload_1
+    2019: getstatic     #204                // Field net/minecraft/world/level/block/Blocks.MOSSY_COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+    2022: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2025: iconst_3
+    2026: bipush        -3
+    2028: iconst_1
+    2029: aload         5
+    2031: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2034: aload_0
+    2035: getfield      #65                 // Field placedTrap1:Z
+    2038: ifne          2064
+    2041: aload_0
+    2042: aload_0
+    2043: aload_1
+    2044: aload         5
+    2046: aload         4
+    2048: iconst_3
+    2049: bipush        -2
+    2051: iconst_1
+    2052: getstatic     #155                // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+    2055: getstatic     #210                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.JUNGLE_TEMPLE_DISPENSER:Lnet/minecraft/resources/ResourceKey;
+    2058: invokevirtual #214                // Method createDispenser:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;Lnet/minecraft/resources/ResourceKey;)Z
+    2061: putfield      #65                 // Field placedTrap1:Z
+    2064: aload_0
+    2065: aload_1
+    2066: getstatic     #217                // Field net/minecraft/world/level/block/Blocks.VINE:Lnet/minecraft/world/level/block/Block;
+    2069: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2072: getstatic     #221                // Field net/minecraft/world/level/block/VineBlock.SOUTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    2075: iconst_1
+    2076: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    2079: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2082: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2085: iconst_3
+    2086: bipush        -2
+    2088: iconst_2
+    2089: aload         5
+    2091: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2094: aload_0
+    2095: aload_1
+    2096: getstatic     #158                // Field net/minecraft/world/level/block/Blocks.TRIPWIRE_HOOK:Lnet/minecraft/world/level/block/Block;
+    2099: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2102: getstatic     #161                // Field net/minecraft/world/level/block/TripWireHookBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+    2105: getstatic     #155                // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+    2108: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2111: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2114: getstatic     #165                // Field net/minecraft/world/level/block/TripWireHookBlock.ATTACHED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    2117: iconst_1
+    2118: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    2121: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2124: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2127: bipush        7
+    2129: bipush        -3
+    2131: iconst_1
+    2132: aload         5
+    2134: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2137: aload_0
+    2138: aload_1
+    2139: getstatic     #158                // Field net/minecraft/world/level/block/Blocks.TRIPWIRE_HOOK:Lnet/minecraft/world/level/block/Block;
+    2142: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2145: getstatic     #161                // Field net/minecraft/world/level/block/TripWireHookBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+    2148: getstatic     #152                // Field net/minecraft/core/Direction.SOUTH:Lnet/minecraft/core/Direction;
+    2151: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2154: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2157: getstatic     #165                // Field net/minecraft/world/level/block/TripWireHookBlock.ATTACHED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    2160: iconst_1
+    2161: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    2164: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2167: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2170: bipush        7
+    2172: bipush        -3
+    2174: iconst_5
+    2175: aload         5
+    2177: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2180: aload_0
+    2181: aload_1
+    2182: getstatic     #174                // Field net/minecraft/world/level/block/Blocks.TRIPWIRE:Lnet/minecraft/world/level/block/Block;
+    2185: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2188: getstatic     #223                // Field net/minecraft/world/level/block/TripWireBlock.NORTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    2191: iconst_1
+    2192: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    2195: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2198: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2201: getstatic     #224                // Field net/minecraft/world/level/block/TripWireBlock.SOUTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    2204: iconst_1
+    2205: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    2208: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2211: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2214: getstatic     #181                // Field net/minecraft/world/level/block/TripWireBlock.ATTACHED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    2217: iconst_1
+    2218: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    2221: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2224: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2227: bipush        7
+    2229: bipush        -3
+    2231: iconst_2
+    2232: aload         5
+    2234: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2237: aload_0
+    2238: aload_1
+    2239: getstatic     #174                // Field net/minecraft/world/level/block/Blocks.TRIPWIRE:Lnet/minecraft/world/level/block/Block;
+    2242: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2245: getstatic     #223                // Field net/minecraft/world/level/block/TripWireBlock.NORTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    2248: iconst_1
+    2249: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    2252: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2255: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2258: getstatic     #224                // Field net/minecraft/world/level/block/TripWireBlock.SOUTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    2261: iconst_1
+    2262: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    2265: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2268: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2271: getstatic     #181                // Field net/minecraft/world/level/block/TripWireBlock.ATTACHED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    2274: iconst_1
+    2275: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    2278: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2281: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2284: bipush        7
+    2286: bipush        -3
+    2288: iconst_3
+    2289: aload         5
+    2291: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2294: aload_0
+    2295: aload_1
+    2296: getstatic     #174                // Field net/minecraft/world/level/block/Blocks.TRIPWIRE:Lnet/minecraft/world/level/block/Block;
+    2299: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2302: getstatic     #223                // Field net/minecraft/world/level/block/TripWireBlock.NORTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    2305: iconst_1
+    2306: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    2309: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2312: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2315: getstatic     #224                // Field net/minecraft/world/level/block/TripWireBlock.SOUTH:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    2318: iconst_1
+    2319: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    2322: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2325: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2328: getstatic     #181                // Field net/minecraft/world/level/block/TripWireBlock.ATTACHED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    2331: iconst_1
+    2332: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    2335: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2338: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2341: bipush        7
+    2343: bipush        -3
+    2345: iconst_4
+    2346: aload         5
+    2348: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2351: aload_0
+    2352: aload_1
+    2353: getstatic     #184                // Field net/minecraft/world/level/block/Blocks.REDSTONE_WIRE:Lnet/minecraft/world/level/block/Block;
+    2356: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2359: getstatic     #201                // Field net/minecraft/world/level/block/RedStoneWireBlock.EAST:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    2362: getstatic     #195                // Field net/minecraft/world/level/block/state/properties/RedstoneSide.SIDE:Lnet/minecraft/world/level/block/state/properties/RedstoneSide;
+    2365: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2368: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2371: getstatic     #199                // Field net/minecraft/world/level/block/RedStoneWireBlock.WEST:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    2374: getstatic     #195                // Field net/minecraft/world/level/block/state/properties/RedstoneSide.SIDE:Lnet/minecraft/world/level/block/state/properties/RedstoneSide;
+    2377: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2380: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2383: bipush        8
+    2385: bipush        -3
+    2387: bipush        6
+    2389: aload         5
+    2391: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2394: aload_0
+    2395: aload_1
+    2396: getstatic     #184                // Field net/minecraft/world/level/block/Blocks.REDSTONE_WIRE:Lnet/minecraft/world/level/block/Block;
+    2399: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2402: getstatic     #199                // Field net/minecraft/world/level/block/RedStoneWireBlock.WEST:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    2405: getstatic     #195                // Field net/minecraft/world/level/block/state/properties/RedstoneSide.SIDE:Lnet/minecraft/world/level/block/state/properties/RedstoneSide;
+    2408: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2411: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2414: getstatic     #197                // Field net/minecraft/world/level/block/RedStoneWireBlock.SOUTH:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    2417: getstatic     #195                // Field net/minecraft/world/level/block/state/properties/RedstoneSide.SIDE:Lnet/minecraft/world/level/block/state/properties/RedstoneSide;
+    2420: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2423: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2426: bipush        9
+    2428: bipush        -3
+    2430: bipush        6
+    2432: aload         5
+    2434: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2437: aload_0
+    2438: aload_1
+    2439: getstatic     #184                // Field net/minecraft/world/level/block/Blocks.REDSTONE_WIRE:Lnet/minecraft/world/level/block/Block;
+    2442: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2445: getstatic     #189                // Field net/minecraft/world/level/block/RedStoneWireBlock.NORTH:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    2448: getstatic     #195                // Field net/minecraft/world/level/block/state/properties/RedstoneSide.SIDE:Lnet/minecraft/world/level/block/state/properties/RedstoneSide;
+    2451: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2454: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2457: getstatic     #197                // Field net/minecraft/world/level/block/RedStoneWireBlock.SOUTH:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    2460: getstatic     #227                // Field net/minecraft/world/level/block/state/properties/RedstoneSide.UP:Lnet/minecraft/world/level/block/state/properties/RedstoneSide;
+    2463: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2466: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2469: bipush        9
+    2471: bipush        -3
+    2473: iconst_5
+    2474: aload         5
+    2476: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2479: aload_0
+    2480: aload_1
+    2481: getstatic     #204                // Field net/minecraft/world/level/block/Blocks.MOSSY_COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+    2484: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2487: bipush        9
+    2489: bipush        -3
+    2491: iconst_4
+    2492: aload         5
+    2494: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2497: aload_0
+    2498: aload_1
+    2499: aload         12
+    2501: bipush        9
+    2503: bipush        -2
+    2505: iconst_4
+    2506: aload         5
+    2508: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2511: aload_0
+    2512: getfield      #68                 // Field placedTrap2:Z
+    2515: ifne          2542
+    2518: aload_0
+    2519: aload_0
+    2520: aload_1
+    2521: aload         5
+    2523: aload         4
+    2525: bipush        9
+    2527: bipush        -2
+    2529: iconst_3
+    2530: getstatic     #149                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+    2533: getstatic     #210                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.JUNGLE_TEMPLE_DISPENSER:Lnet/minecraft/resources/ResourceKey;
+    2536: invokevirtual #214                // Method createDispenser:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;Lnet/minecraft/resources/ResourceKey;)Z
+    2539: putfield      #68                 // Field placedTrap2:Z
+    2542: aload_0
+    2543: aload_1
+    2544: getstatic     #217                // Field net/minecraft/world/level/block/Blocks.VINE:Lnet/minecraft/world/level/block/Block;
+    2547: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2550: getstatic     #228                // Field net/minecraft/world/level/block/VineBlock.EAST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    2553: iconst_1
+    2554: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    2557: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2560: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2563: bipush        8
+    2565: iconst_m1
+    2566: iconst_3
+    2567: aload         5
+    2569: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2572: aload_0
+    2573: aload_1
+    2574: getstatic     #217                // Field net/minecraft/world/level/block/Blocks.VINE:Lnet/minecraft/world/level/block/Block;
+    2577: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2580: getstatic     #228                // Field net/minecraft/world/level/block/VineBlock.EAST:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+    2583: iconst_1
+    2584: invokestatic  #171                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+    2587: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2590: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2593: bipush        8
+    2595: bipush        -2
+    2597: iconst_3
+    2598: aload         5
+    2600: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2603: aload_0
+    2604: getfield      #59                 // Field placedMainChest:Z
+    2607: ifne          2631
+    2610: aload_0
+    2611: aload_0
+    2612: aload_1
+    2613: aload         5
+    2615: aload         4
+    2617: bipush        8
+    2619: bipush        -3
+    2621: iconst_3
+    2622: getstatic     #231                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.JUNGLE_TEMPLE:Lnet/minecraft/resources/ResourceKey;
+    2625: invokevirtual #235                // Method createChest:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/resources/ResourceKey;)Z
+    2628: putfield      #59                 // Field placedMainChest:Z
+    2631: aload_0
+    2632: aload_1
+    2633: getstatic     #204                // Field net/minecraft/world/level/block/Blocks.MOSSY_COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+    2636: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2639: bipush        9
+    2641: bipush        -3
+    2643: iconst_2
+    2644: aload         5
+    2646: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2649: aload_0
+    2650: aload_1
+    2651: getstatic     #204                // Field net/minecraft/world/level/block/Blocks.MOSSY_COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+    2654: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2657: bipush        8
+    2659: bipush        -3
+    2661: iconst_1
+    2662: aload         5
+    2664: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2667: aload_0
+    2668: aload_1
+    2669: getstatic     #204                // Field net/minecraft/world/level/block/Blocks.MOSSY_COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+    2672: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2675: iconst_4
+    2676: bipush        -3
+    2678: iconst_5
+    2679: aload         5
+    2681: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2684: aload_0
+    2685: aload_1
+    2686: getstatic     #204                // Field net/minecraft/world/level/block/Blocks.MOSSY_COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+    2689: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2692: iconst_5
+    2693: bipush        -2
+    2695: iconst_5
+    2696: aload         5
+    2698: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2701: aload_0
+    2702: aload_1
+    2703: getstatic     #204                // Field net/minecraft/world/level/block/Blocks.MOSSY_COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+    2706: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2709: iconst_5
+    2710: iconst_m1
+    2711: iconst_5
+    2712: aload         5
+    2714: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2717: aload_0
+    2718: aload_1
+    2719: getstatic     #204                // Field net/minecraft/world/level/block/Blocks.MOSSY_COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+    2722: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2725: bipush        6
+    2727: bipush        -3
+    2729: iconst_5
+    2730: aload         5
+    2732: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2735: aload_0
+    2736: aload_1
+    2737: getstatic     #204                // Field net/minecraft/world/level/block/Blocks.MOSSY_COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+    2740: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2743: bipush        7
+    2745: bipush        -2
+    2747: iconst_5
+    2748: aload         5
+    2750: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2753: aload_0
+    2754: aload_1
+    2755: getstatic     #204                // Field net/minecraft/world/level/block/Blocks.MOSSY_COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+    2758: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2761: bipush        7
+    2763: iconst_m1
+    2764: iconst_5
+    2765: aload         5
+    2767: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2770: aload_0
+    2771: aload_1
+    2772: getstatic     #204                // Field net/minecraft/world/level/block/Blocks.MOSSY_COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+    2775: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2778: bipush        8
+    2780: bipush        -3
+    2782: iconst_5
+    2783: aload         5
+    2785: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2788: aload_0
+    2789: aload_1
+    2790: aload         5
+    2792: bipush        9
+    2794: iconst_m1
+    2795: iconst_1
+    2796: bipush        9
+    2798: iconst_m1
+    2799: iconst_5
+    2800: iconst_0
+    2801: aload         4
+    2803: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+    2806: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+    2809: aload_0
+    2810: aload_1
+    2811: aload         5
+    2813: bipush        8
+    2815: bipush        -3
+    2817: bipush        8
+    2819: bipush        10
+    2821: iconst_m1
+    2822: bipush        10
+    2824: invokevirtual #109                // Method generateAirBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIII)V
+    2827: aload_0
+    2828: aload_1
+    2829: getstatic     #238                // Field net/minecraft/world/level/block/Blocks.CHISELED_STONE_BRICKS:Lnet/minecraft/world/level/block/Block;
+    2832: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2835: bipush        8
+    2837: bipush        -2
+    2839: bipush        11
+    2841: aload         5
+    2843: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2846: aload_0
+    2847: aload_1
+    2848: getstatic     #238                // Field net/minecraft/world/level/block/Blocks.CHISELED_STONE_BRICKS:Lnet/minecraft/world/level/block/Block;
+    2851: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2854: bipush        9
+    2856: bipush        -2
+    2858: bipush        11
+    2860: aload         5
+    2862: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2865: aload_0
+    2866: aload_1
+    2867: getstatic     #238                // Field net/minecraft/world/level/block/Blocks.CHISELED_STONE_BRICKS:Lnet/minecraft/world/level/block/Block;
+    2870: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2873: bipush        10
+    2875: bipush        -2
+    2877: bipush        11
+    2879: aload         5
+    2881: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2884: getstatic     #241                // Field net/minecraft/world/level/block/Blocks.LEVER:Lnet/minecraft/world/level/block/Block;
+    2887: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    2890: getstatic     #244                // Field net/minecraft/world/level/block/LeverBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+    2893: getstatic     #155                // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+    2896: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2899: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2902: getstatic     #247                // Field net/minecraft/world/level/block/LeverBlock.FACE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    2905: getstatic     #253                // Field net/minecraft/world/level/block/state/properties/AttachFace.WALL:Lnet/minecraft/world/level/block/state/properties/AttachFace;
+    2908: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    2911: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    2914: astore        13
+    2916: aload_0
+    2917: aload_1
+    2918: aload         13
+    2920: bipush        8
+    2922: bipush        -2
+    2924: bipush        12
+    2926: aload         5
+    2928: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2931: aload_0
+    2932: aload_1
+    2933: aload         13
+    2935: bipush        9
+    2937: bipush        -2
+    2939: bipush        12
+    2941: aload         5
+    2943: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2946: aload_0
+    2947: aload_1
+    2948: aload         13
+    2950: bipush        10
+    2952: bipush        -2
+    2954: bipush        12
+    2956: aload         5
+    2958: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    2961: aload_0
+    2962: aload_1
+    2963: aload         5
+    2965: bipush        8
+    2967: bipush        -3
+    2969: bipush        8
+    2971: bipush        8
+    2973: bipush        -3
+    2975: bipush        10
+    2977: iconst_0
+    2978: aload         4
+    2980: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+    2983: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+    2986: aload_0
+    2987: aload_1
+    2988: aload         5
+    2990: bipush        10
+    2992: bipush        -3
+    2994: bipush        8
+    2996: bipush        10
+    2998: bipush        -3
+    3000: bipush        10
+    3002: iconst_0
+    3003: aload         4
+    3005: getstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+    3008: invokevirtual #105                // Method generateBox:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;IIIIIIZLnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/StructurePiece$BlockSelector;)V
+    3011: aload_0
+    3012: aload_1
+    3013: getstatic     #204                // Field net/minecraft/world/level/block/Blocks.MOSSY_COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+    3016: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    3019: bipush        10
+    3021: bipush        -2
+    3023: bipush        9
+    3025: aload         5
+    3027: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    3030: aload_0
+    3031: aload_1
+    3032: aload         12
+    3034: bipush        8
+    3036: bipush        -2
+    3038: bipush        9
+    3040: aload         5
+    3042: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    3045: aload_0
+    3046: aload_1
+    3047: aload         12
+    3049: bipush        8
+    3051: bipush        -2
+    3053: bipush        10
+    3055: aload         5
+    3057: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    3060: aload_0
+    3061: aload_1
+    3062: getstatic     #184                // Field net/minecraft/world/level/block/Blocks.REDSTONE_WIRE:Lnet/minecraft/world/level/block/Block;
+    3065: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    3068: getstatic     #189                // Field net/minecraft/world/level/block/RedStoneWireBlock.NORTH:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    3071: getstatic     #195                // Field net/minecraft/world/level/block/state/properties/RedstoneSide.SIDE:Lnet/minecraft/world/level/block/state/properties/RedstoneSide;
+    3074: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    3077: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    3080: getstatic     #197                // Field net/minecraft/world/level/block/RedStoneWireBlock.SOUTH:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    3083: getstatic     #195                // Field net/minecraft/world/level/block/state/properties/RedstoneSide.SIDE:Lnet/minecraft/world/level/block/state/properties/RedstoneSide;
+    3086: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    3089: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    3092: getstatic     #201                // Field net/minecraft/world/level/block/RedStoneWireBlock.EAST:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    3095: getstatic     #195                // Field net/minecraft/world/level/block/state/properties/RedstoneSide.SIDE:Lnet/minecraft/world/level/block/state/properties/RedstoneSide;
+    3098: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    3101: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    3104: getstatic     #199                // Field net/minecraft/world/level/block/RedStoneWireBlock.WEST:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+    3107: getstatic     #195                // Field net/minecraft/world/level/block/state/properties/RedstoneSide.SIDE:Lnet/minecraft/world/level/block/state/properties/RedstoneSide;
+    3110: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    3113: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    3116: bipush        10
+    3118: iconst_m1
+    3119: bipush        9
+    3121: aload         5
+    3123: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    3126: aload_0
+    3127: aload_1
+    3128: getstatic     #256                // Field net/minecraft/world/level/block/Blocks.STICKY_PISTON:Lnet/minecraft/world/level/block/Block;
+    3131: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    3134: getstatic     #259                // Field net/minecraft/world/level/block/piston/PistonBaseBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+    3137: getstatic     #261                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+    3140: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    3143: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    3146: bipush        9
+    3148: bipush        -2
+    3150: bipush        8
+    3152: aload         5
+    3154: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    3157: aload_0
+    3158: aload_1
+    3159: getstatic     #256                // Field net/minecraft/world/level/block/Blocks.STICKY_PISTON:Lnet/minecraft/world/level/block/Block;
+    3162: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    3165: getstatic     #259                // Field net/minecraft/world/level/block/piston/PistonBaseBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+    3168: getstatic     #149                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+    3171: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    3174: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    3177: bipush        10
+    3179: bipush        -2
+    3181: bipush        8
+    3183: aload         5
+    3185: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    3188: aload_0
+    3189: aload_1
+    3190: getstatic     #256                // Field net/minecraft/world/level/block/Blocks.STICKY_PISTON:Lnet/minecraft/world/level/block/Block;
+    3193: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    3196: getstatic     #259                // Field net/minecraft/world/level/block/piston/PistonBaseBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+    3199: getstatic     #149                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+    3202: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    3205: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    3208: bipush        10
+    3210: iconst_m1
+    3211: bipush        8
+    3213: aload         5
+    3215: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    3218: aload_0
+    3219: aload_1
+    3220: getstatic     #264                // Field net/minecraft/world/level/block/Blocks.REPEATER:Lnet/minecraft/world/level/block/Block;
+    3223: invokevirtual #121                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    3226: getstatic     #267                // Field net/minecraft/world/level/block/RepeaterBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+    3229: getstatic     #155                // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+    3232: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    3235: checkcast     #142                // class net/minecraft/world/level/block/state/BlockState
+    3238: bipush        10
+    3240: bipush        -2
+    3242: bipush        10
+    3244: aload         5
+    3246: invokevirtual #125                // Method placeBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    3249: aload_0
+    3250: getfield      #62                 // Field placedHiddenChest:Z
+    3253: ifne          3278
+    3256: aload_0
+    3257: aload_0
+    3258: aload_1
+    3259: aload         5
+    3261: aload         4
+    3263: bipush        9
+    3265: bipush        -3
+    3267: bipush        10
+    3269: getstatic     #231                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.JUNGLE_TEMPLE:Lnet/minecraft/resources/ResourceKey;
+    3272: invokevirtual #235                // Method createChest:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/resources/ResourceKey;)Z
+    3275: putfield      #62                 // Field placedHiddenChest:Z
+    3278: return
+
+  static {};
+    Code:
+       0: new           #7                  // class net/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector
+       3: dup
+       4: invokespecial #297                // Method net/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector."<init>":()V
+       7: putstatic     #101                // Field STONE_SELECTOR:Lnet/minecraft/world/level/levelgen/structure/structures/JungleTemplePiece$MossStoneSelector;
+      10: return
+}
