@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-05
 
+The provider review confirms Explorations Slime Cave still lacks custom
+generation/component attribution in the existing inventory. Inspect its
+SlimeCaveStructure and SlimeCaveStructurePiece using the existing extractor.
+This closes a concrete required-provider gap; no new framework or measurement.
+
 Stone-generation paths have working terrain dispositions in 6e61b10.
 The delegated ore writer is preserved in 332d9d5 and writes only the supplied
 stone state. Do not repeat cluster/ore writer tracing. Continue broader provider
