@@ -1,0 +1,202 @@
+Compiled from "RandomReplaceWithPropertiesProcessor.java"
+public class com.telepathicgrunt.repurposedstructures.world.processors.RandomReplaceWithPropertiesProcessor extends net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor {
+  public static final com.mojang.serialization.MapCodec<com.telepathicgrunt.repurposedstructures.world.processors.RandomReplaceWithPropertiesProcessor> CODEC;
+
+  private final net.minecraft.world.level.block.Block inputBlock;
+
+  private final java.util.Optional<net.minecraft.world.level.block.Block> outputBlock;
+
+  private final java.util.List<net.minecraft.world.level.block.Block> outputBlocks;
+
+  private final float probability;
+
+  public com.telepathicgrunt.repurposedstructures.world.processors.RandomReplaceWithPropertiesProcessor(net.minecraft.world.level.block.Block, java.util.Optional<net.minecraft.world.level.block.Block>, java.util.List<net.minecraft.world.level.block.Block>, float);
+    Code:
+       0: aload_0
+       1: invokespecial #44                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #46                 // Field inputBlock:Lnet/minecraft/world/level/block/Block;
+       9: aload_0
+      10: aload_2
+      11: putfield      #48                 // Field outputBlock:Ljava/util/Optional;
+      14: aload_0
+      15: aload_3
+      16: putfield      #50                 // Field outputBlocks:Ljava/util/List;
+      19: aload_0
+      20: fload         4
+      22: putfield      #52                 // Field probability:F
+      25: return
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo processBlock(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload         5
+       2: invokevirtual #66                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+       5: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       8: aload_0
+       9: getfield      #46                 // Field inputBlock:Lnet/minecraft/world/level/block/Block;
+      12: if_acmpne     223
+      15: aload         5
+      17: invokevirtual #75                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      20: astore        7
+      22: invokestatic  #81                 // InterfaceMethod net/minecraft/util/RandomSource.create:()Lnet/minecraft/util/RandomSource;
+      25: astore        8
+      27: aload         6
+      29: invokevirtual #87                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.getProcessors:()Ljava/util/List;
+      32: aload_0
+      33: invokeinterface #93,  2           // InterfaceMethod java/util/List.indexOf:(Ljava/lang/Object;)I
+      38: iconst_1
+      39: iadd
+      40: istore        9
+      42: aload         8
+      44: aload         7
+      46: invokevirtual #99                 // Method net/minecraft/core/BlockPos.asLong:()J
+      49: aload         7
+      51: invokevirtual #99                 // Method net/minecraft/core/BlockPos.asLong:()J
+      54: lmul
+      55: iload         9
+      57: i2l
+      58: lmul
+      59: invokeinterface #103,  3          // InterfaceMethod net/minecraft/util/RandomSource.setSeed:(J)V
+      64: aload         8
+      66: invokeinterface #107,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      71: aload_0
+      72: getfield      #52                 // Field probability:F
+      75: fcmpg
+      76: ifge          223
+      79: aload_0
+      80: getfield      #48                 // Field outputBlock:Ljava/util/Optional;
+      83: invokevirtual #113                // Method java/util/Optional.isPresent:()Z
+      86: ifeq          136
+      89: aload_0
+      90: getfield      #48                 // Field outputBlock:Ljava/util/Optional;
+      93: invokevirtual #117                // Method java/util/Optional.get:()Ljava/lang/Object;
+      96: checkcast     #119                // class net/minecraft/world/level/block/Block
+      99: invokevirtual #122                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     102: astore        10
+     104: aload         5
+     106: invokevirtual #66                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     109: aload         10
+     111: invokestatic  #128                // Method com/telepathicgrunt/repurposedstructures/utils/GeneralUtils.copyBlockProperties:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+     114: astore        10
+     116: new           #7                  // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     119: dup
+     120: aload         5
+     122: invokevirtual #75                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     125: aload         10
+     127: aload         5
+     129: invokevirtual #132                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.nbt:()Lnet/minecraft/nbt/CompoundTag;
+     132: invokespecial #135                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+     135: areturn
+     136: aload_0
+     137: getfield      #50                 // Field outputBlocks:Ljava/util/List;
+     140: invokeinterface #138,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+     145: ifne          213
+     148: aload_0
+     149: getfield      #50                 // Field outputBlocks:Ljava/util/List;
+     152: aload         8
+     154: aload_0
+     155: getfield      #50                 // Field outputBlocks:Ljava/util/List;
+     158: invokeinterface #142,  1          // InterfaceMethod java/util/List.size:()I
+     163: invokeinterface #146,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     168: invokeinterface #149,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     173: checkcast     #119                // class net/minecraft/world/level/block/Block
+     176: invokevirtual #122                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     179: astore        10
+     181: aload         5
+     183: invokevirtual #66                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     186: aload         10
+     188: invokestatic  #128                // Method com/telepathicgrunt/repurposedstructures/utils/GeneralUtils.copyBlockProperties:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+     191: astore        10
+     193: new           #7                  // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     196: dup
+     197: aload         5
+     199: invokevirtual #75                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     202: aload         10
+     204: aload         5
+     206: invokevirtual #132                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.nbt:()Lnet/minecraft/nbt/CompoundTag;
+     209: invokespecial #135                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+     212: areturn
+     213: getstatic     #155                // Field com/telepathicgrunt/repurposedstructures/RepurposedStructures.LOGGER:Lorg/apache/logging/log4j/Logger;
+     216: ldc           #157                // String Repurposed Structures: repurposed_structures:random_replace_with_properties_processor in a processor file has no replacement block of any kind.
+     218: invokeinterface #163,  2          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+     223: aload         5
+     225: areturn
+
+  protected net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType<?> getType();
+    Code:
+       0: getstatic     #183                // Field com/telepathicgrunt/repurposedstructures/modinit/RSProcessors.RANDOM_REPLACE_WITH_PROPERTIES_PROCESSOR:Lcom/telepathicgrunt/repurposedstructures/modinit/registry/RegistryEntry;
+       3: invokeinterface #186,  1          // InterfaceMethod com/telepathicgrunt/repurposedstructures/modinit/registry/RegistryEntry.get:()Ljava/lang/Object;
+       8: checkcast     #188                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType
+      11: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$4(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #197                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+       4: invokeinterface #203,  1          // InterfaceMethod net/minecraft/core/DefaultedRegistry.byNameCodec:()Lcom/mojang/serialization/Codec;
+       9: ldc           #205                // String input_block
+      11: invokeinterface #211,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      16: invokedynamic #230,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      21: invokevirtual #236                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      24: getstatic     #197                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+      27: invokeinterface #203,  1          // InterfaceMethod net/minecraft/core/DefaultedRegistry.byNameCodec:()Lcom/mojang/serialization/Codec;
+      32: ldc           #238                // String output_block
+      34: invokeinterface #241,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      39: invokedynamic #248,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      44: invokevirtual #236                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      47: getstatic     #197                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+      50: invokeinterface #203,  1          // InterfaceMethod net/minecraft/core/DefaultedRegistry.byNameCodec:()Lcom/mojang/serialization/Codec;
+      55: invokeinterface #251,  1          // InterfaceMethod com/mojang/serialization/Codec.listOf:()Lcom/mojang/serialization/Codec;
+      60: ldc           #253                // String output_blocks
+      62: invokestatic  #259                // Method com/google/common/collect/ImmutableList.of:()Lcom/google/common/collect/ImmutableList;
+      65: invokeinterface #262,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      70: invokedynamic #269,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      75: invokevirtual #236                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      78: fconst_0
+      79: fconst_1
+      80: invokestatic  #273                // InterfaceMethod com/mojang/serialization/Codec.floatRange:(FF)Lcom/mojang/serialization/Codec;
+      83: ldc_w         #274                // String probability
+      86: invokeinterface #211,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      91: invokedynamic #281,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      96: invokevirtual #236                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      99: invokevirtual #285                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P4;
+     102: aload_0
+     103: aload_0
+     104: invokedynamic #295,  0            // InvokeDynamic #4:apply:()Lcom/mojang/datafixers/util/Function4;
+     109: invokevirtual #299                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.stable:(Ljava/lang/Object;)Lcom/mojang/datafixers/kinds/App;
+     112: invokevirtual #302                // Method com/mojang/datafixers/Products$P4.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/kinds/App;
+     115: areturn
+
+  private static java.lang.Float lambda$static$3(com.telepathicgrunt.repurposedstructures.world.processors.RandomReplaceWithPropertiesProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #52                 // Field probability:F
+       4: invokestatic  #310                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+       7: areturn
+
+  private static java.util.List lambda$static$2(com.telepathicgrunt.repurposedstructures.world.processors.RandomReplaceWithPropertiesProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #50                 // Field outputBlocks:Ljava/util/List;
+       4: areturn
+
+  private static java.util.Optional lambda$static$1(com.telepathicgrunt.repurposedstructures.world.processors.RandomReplaceWithPropertiesProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #48                 // Field outputBlock:Ljava/util/Optional;
+       4: areturn
+
+  private static net.minecraft.world.level.block.Block lambda$static$0(com.telepathicgrunt.repurposedstructures.world.processors.RandomReplaceWithPropertiesProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #46                 // Field inputBlock:Lnet/minecraft/world/level/block/Block;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #316,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+       5: invokestatic  #320                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #322                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}

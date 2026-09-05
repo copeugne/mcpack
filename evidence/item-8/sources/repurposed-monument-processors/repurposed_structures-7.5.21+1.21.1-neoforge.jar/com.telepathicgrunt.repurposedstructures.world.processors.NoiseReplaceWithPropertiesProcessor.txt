@@ -1,0 +1,227 @@
+Compiled from "NoiseReplaceWithPropertiesProcessor.java"
+public class com.telepathicgrunt.repurposedstructures.world.processors.NoiseReplaceWithPropertiesProcessor extends net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor {
+  public static final com.mojang.serialization.MapCodec<com.telepathicgrunt.repurposedstructures.world.processors.NoiseReplaceWithPropertiesProcessor> CODEC;
+
+  private final net.minecraft.world.level.block.Block inputBlock;
+
+  private final net.minecraft.world.level.block.Block outputBlock;
+
+  private final float threshold;
+
+  private final float xzScale;
+
+  private final float yScale;
+
+  protected long seed;
+
+  private com.telepathicgrunt.repurposedstructures.utils.OpenSimplex2F noiseGenerator;
+
+  public com.telepathicgrunt.repurposedstructures.world.processors.NoiseReplaceWithPropertiesProcessor(net.minecraft.world.level.block.Block, net.minecraft.world.level.block.Block, float, float, float);
+    Code:
+       0: aload_0
+       1: invokespecial #44                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor."<init>":()V
+       4: aload_0
+       5: aconst_null
+       6: putfield      #46                 // Field noiseGenerator:Lcom/telepathicgrunt/repurposedstructures/utils/OpenSimplex2F;
+       9: aload_0
+      10: aload_1
+      11: putfield      #48                 // Field inputBlock:Lnet/minecraft/world/level/block/Block;
+      14: aload_0
+      15: aload_2
+      16: putfield      #50                 // Field outputBlock:Lnet/minecraft/world/level/block/Block;
+      19: aload_0
+      20: fload_3
+      21: putfield      #52                 // Field threshold:F
+      24: aload_0
+      25: fload         4
+      27: putfield      #54                 // Field xzScale:F
+      30: aload_0
+      31: fload         5
+      33: putfield      #56                 // Field yScale:F
+      36: return
+
+  public void setSeed(long);
+    Code:
+       0: aload_0
+       1: getfield      #62                 // Field seed:J
+       4: lload_1
+       5: lcmp
+       6: ifne          16
+       9: aload_0
+      10: getfield      #46                 // Field noiseGenerator:Lcom/telepathicgrunt/repurposedstructures/utils/OpenSimplex2F;
+      13: ifnonnull     33
+      16: aload_0
+      17: new           #64                 // class com/telepathicgrunt/repurposedstructures/utils/OpenSimplex2F
+      20: dup
+      21: lload_1
+      22: invokespecial #66                 // Method com/telepathicgrunt/repurposedstructures/utils/OpenSimplex2F."<init>":(J)V
+      25: putfield      #46                 // Field noiseGenerator:Lcom/telepathicgrunt/repurposedstructures/utils/OpenSimplex2F;
+      28: aload_0
+      29: lload_1
+      30: putfield      #62                 // Field seed:J
+      33: return
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo processBlock(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: instanceof    #76                 // class net/minecraft/server/level/WorldGenRegion
+       5: ifeq          18
+       8: aload_1
+       9: checkcast     #76                 // class net/minecraft/server/level/WorldGenRegion
+      12: invokevirtual #80                 // Method net/minecraft/server/level/WorldGenRegion.getSeed:()J
+      15: goto          19
+      18: lconst_0
+      19: invokevirtual #88                 // Method setSeed:(J)V
+      22: aload         5
+      24: invokevirtual #92                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      27: invokevirtual #98                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      30: aload_0
+      31: getfield      #48                 // Field inputBlock:Lnet/minecraft/world/level/block/Block;
+      34: if_acmpne     149
+      37: aload         5
+      39: invokevirtual #101                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      42: astore        7
+      44: aload_0
+      45: getfield      #46                 // Field noiseGenerator:Lcom/telepathicgrunt/repurposedstructures/utils/OpenSimplex2F;
+      48: aload         7
+      50: invokevirtual #105                // Method net/minecraft/core/BlockPos.getX:()I
+      53: i2f
+      54: aload_0
+      55: getfield      #54                 // Field xzScale:F
+      58: fmul
+      59: f2d
+      60: aload         7
+      62: invokevirtual #108                // Method net/minecraft/core/BlockPos.getY:()I
+      65: i2f
+      66: aload_0
+      67: getfield      #56                 // Field yScale:F
+      70: fmul
+      71: f2d
+      72: aload         7
+      74: invokevirtual #111                // Method net/minecraft/core/BlockPos.getZ:()I
+      77: i2f
+      78: aload_0
+      79: getfield      #54                 // Field xzScale:F
+      82: fmul
+      83: f2d
+      84: invokevirtual #115                // Method com/telepathicgrunt/repurposedstructures/utils/OpenSimplex2F.noise3_Classic:(DDD)D
+      87: dstore        8
+      89: dload         8
+      91: ldc2_w        #116                // double 2.0d
+      94: ddiv
+      95: ldc2_w        #118                // double 0.5d
+      98: dadd
+      99: aload_0
+     100: getfield      #52                 // Field threshold:F
+     103: f2d
+     104: dcmpg
+     105: ifge          149
+     108: aload_0
+     109: getfield      #50                 // Field outputBlock:Lnet/minecraft/world/level/block/Block;
+     112: invokevirtual #124                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     115: astore        10
+     117: aload         5
+     119: invokevirtual #92                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     122: aload         10
+     124: invokestatic  #130                // Method com/telepathicgrunt/repurposedstructures/utils/GeneralUtils.copyBlockProperties:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+     127: astore        10
+     129: new           #7                  // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     132: dup
+     133: aload         5
+     135: invokevirtual #101                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     138: aload         10
+     140: aload         5
+     142: invokevirtual #134                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.nbt:()Lnet/minecraft/nbt/CompoundTag;
+     145: invokespecial #137                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+     148: areturn
+     149: aload         5
+     151: areturn
+
+  protected net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType<?> getType();
+    Code:
+       0: getstatic     #155                // Field com/telepathicgrunt/repurposedstructures/modinit/RSProcessors.NOISE_REPLACE_WITH_PROPERTIES_PROCESSOR:Lcom/telepathicgrunt/repurposedstructures/modinit/registry/RegistryEntry;
+       3: invokeinterface #161,  1          // InterfaceMethod com/telepathicgrunt/repurposedstructures/modinit/registry/RegistryEntry.get:()Ljava/lang/Object;
+       8: checkcast     #163                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType
+      11: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$5(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #172                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+       4: invokeinterface #178,  1          // InterfaceMethod net/minecraft/core/DefaultedRegistry.byNameCodec:()Lcom/mojang/serialization/Codec;
+       9: ldc           #180                // String input_block
+      11: invokeinterface #186,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      16: invokedynamic #205,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      21: invokevirtual #211                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      24: getstatic     #172                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+      27: invokeinterface #178,  1          // InterfaceMethod net/minecraft/core/DefaultedRegistry.byNameCodec:()Lcom/mojang/serialization/Codec;
+      32: ldc           #213                // String output_block
+      34: invokeinterface #186,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      39: invokedynamic #218,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      44: invokevirtual #211                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      47: fconst_0
+      48: fconst_1
+      49: invokestatic  #222                // InterfaceMethod com/mojang/serialization/Codec.floatRange:(FF)Lcom/mojang/serialization/Codec;
+      52: ldc           #223                // String threshold
+      54: invokeinterface #186,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      59: invokedynamic #230,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      64: invokevirtual #211                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      67: getstatic     #234                // Field com/mojang/serialization/Codec.FLOAT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      70: ldc           #236                // String xz_scale
+      72: invokeinterface #239,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      77: invokedynamic #244,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      82: invokevirtual #211                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      85: getstatic     #234                // Field com/mojang/serialization/Codec.FLOAT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      88: ldc           #246                // String y_scale
+      90: invokeinterface #239,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      95: invokedynamic #251,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+     100: invokevirtual #211                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     103: invokevirtual #255                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P5;
+     106: aload_0
+     107: aload_0
+     108: invokedynamic #265,  0            // InvokeDynamic #5:apply:()Lcom/mojang/datafixers/util/Function5;
+     113: invokevirtual #269                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.stable:(Ljava/lang/Object;)Lcom/mojang/datafixers/kinds/App;
+     116: invokevirtual #272                // Method com/mojang/datafixers/Products$P5.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/kinds/App;
+     119: areturn
+
+  private static java.lang.Float lambda$static$4(com.telepathicgrunt.repurposedstructures.world.processors.NoiseReplaceWithPropertiesProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #56                 // Field yScale:F
+       4: invokestatic  #280                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+       7: areturn
+
+  private static java.lang.Float lambda$static$3(com.telepathicgrunt.repurposedstructures.world.processors.NoiseReplaceWithPropertiesProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #54                 // Field xzScale:F
+       4: invokestatic  #280                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+       7: areturn
+
+  private static java.lang.Float lambda$static$2(com.telepathicgrunt.repurposedstructures.world.processors.NoiseReplaceWithPropertiesProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #52                 // Field threshold:F
+       4: invokestatic  #280                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+       7: areturn
+
+  private static net.minecraft.world.level.block.Block lambda$static$1(com.telepathicgrunt.repurposedstructures.world.processors.NoiseReplaceWithPropertiesProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #50                 // Field outputBlock:Lnet/minecraft/world/level/block/Block;
+       4: areturn
+
+  private static net.minecraft.world.level.block.Block lambda$static$0(com.telepathicgrunt.repurposedstructures.world.processors.NoiseReplaceWithPropertiesProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #48                 // Field inputBlock:Lnet/minecraft/world/level/block/Block;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #286,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+       5: invokestatic  #290                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #292                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}
