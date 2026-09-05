@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 31 of 136. The exact queue below has 105 open rows.
+Supported provider dispositions: 32 of 136. The exact queue below has 104 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -613,7 +613,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `geckolib-neoforge-1.21.1-4.8.4.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `idas-1.13.7+1.21.1-neoforge.jar` | `idas-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `integrated_api-1.7.3+1.21.1-neoforge.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `integrated_stronghold-1.1.4+1.21.1-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect both declared stronghold mixins and registration; bind 44 pools and templates to the existing root. |
+| `integrated_stronghold-1.1.4+1.21.1-neoforge.jar` | `integrated-stronghold-provider`, existing root/graph and family-decision regression | RESOLVED: one existing root, both modification mixins, all components and disconnected/missing templates accounted for. See Integrated Stronghold provider disposition below. |
 | `integrated_villages-1.3.3+1.21.1-neoforge.jar` | `integrated-village-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `kotlinforforge-5.11.0-all.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `letmedespawn-1.21.x-neoforge-1.5.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -842,3 +842,45 @@ string formatting corrections; no behavioral failure was hidden. Eight existing
 capture directories are hash-bound to the frozen archive. Latest five-class
 capture ee8e2c0 reproduced using f28c96b. No new runtime or measurement framework.
 Provider dispositions: 31 of 136; 105 remain open.
+
+## Integrated Stronghold provider disposition
+
+The provider contributes the existing integrated_stronghold:stronghold root,
+using integrated_api:generic_structure and integrated_api:stronghold placement.
+All 44 packaged pools are connected to that root. The trace also reaches the
+vanilla minecraft:empty pool. Of 61 packaged templates, three are disconnected:
+
+- integrated_stronghold:portal_room/portal_room_endrem.
+- integrated_stronghold:small_room/armory_left.
+- integrated_stronghold:small_room/armory_right.
+
+The root references missing small_room/small_armory_left and small_armory_right
+templates in the same namespace. These are preserved component failures.
+Do not substitute the similarly named packaged armories or count the alternate
+portal room as a separate active family. The existing root/family regression
+already binds its runtime registry identity, start pool and spawn override.
+
+All nine classes are captured in 0bca5a4 using f70a1a0 and reproduced independently.
+The NeoForge entry registers sounds, disc items and a creative tab. Common entry
+and the generated platform bridge introduce no additional generation. Both
+declared mixins modify vanilla stronghold generation/locating, as described in
+the source README. The artificial far-away locate result is not a structure
+observation. The packaged eye_of_ender_located tag replaces its values with the
+Integrated Stronghold root; effective stack tag selection remains separate.
+
+The complete archive payload contains only these classes, metadata/refmap,
+visual/audio assets, the known root/set/pools/templates/processors, loot,
+spawner configuration, tags, music, recipe and advancement resources. No extra
+feature, function, service or nested archive remains unexplained. Shared
+Integrated API processors and placement are attributed to that provider; this
+closure does not certify effective loot/spawner behavior or every attribute.
+
+```sh
+uv run pytest -q tests/item8/test_integrated_stronghold_provider_scope.py tests/item8/test_family_decisions.py -k integrated_stronghold
+```
+
+Two cases pass, 72 unrelated cases deselected; scoped Ruff/Basedpyright pass.
+The first new scope assertion omitted the trace's external minecraft:empty pool;
+it was corrected to preserve that reference explicitly. Type/line formatting was
+also corrected. No evidence, baseline or family decision was changed to pass.
+Provider dispositions: 32 of 136; 104 remain open.

@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Integrated Stronghold provider coverage now passes. All nine classes delivered
+in 0bca5a4 using f70a1a0 and reproduced independently. One existing root, 44
+connected pools, three disconnected templates and two missing armory references
+are accounted for. Both suppression/locate mixins have explicit dispositions;
+do not treat their artificial locate position as an observation. Two focused
+cases and scoped checks pass after accounting for the external minecraft:empty
+pool. Counts: 32 provider dispositions, 104 open. Continue the named queue before
+family attributes; do not repeat this provider capture or repair the baseline.
+
 Moog shared-library provider candidate coverage now passes. Registration and
 lifecycle boundaries delivered in ee8e2c0 using f28c96b. The full payload and
 declared entry/service/mixin routes are bound by test_moog_library_provider_scope.py;
