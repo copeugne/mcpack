@@ -740,7 +740,7 @@ def test_design_groups_cover_registry_and_bind_variant_definitions(namespace: st
                     assert definition[f"{kind}_type"] == name.removeprefix(kind + "_")
                 assert traces["untraced_structures"][identifier]["type"] == definition["type"]
                 assert identifier in traces["untraced_structures"]
-                if identifier in {
+                if identifier.startswith("minecraft:ruined_portal") or identifier in {
                     "minecraft:end_city", "minecraft:igloo", "minecraft:nether_fossil",
                     "minecraft:shipwreck", "minecraft:shipwreck_beached",
                     "minecraft:ocean_ruin_cold", "minecraft:ocean_ruin_warm"
