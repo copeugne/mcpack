@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `d4482a1`, SHA-256
-`bc47e4ec2d81184f0d807335e4d261f47e85fd2749076136a12ba327f764730f`.
+Current working inventory regenerated at `c8577f6`, SHA-256
+`4d2d1ec3118b8c0bc48d09de41890a307976afd7cc7f127b26670c4f1f738eaf`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -70,6 +70,16 @@ coverage has already identified every remaining family or dependency. Closing
 that coverage question is itself an outstanding deliverable in step 4.
 
 ## Historical increments
+
+The c8577f6 increment explicitly reconciles Village Taverns as components of
+existing village and IDAS castle family relationships. It adds no family rows.
+CTOV's similarly named tavern field does not itself establish asset provenance.
+The existing packaged modifiers provide the source relationship. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-taverns-c8577f6.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-taverns-c8577f6.json
+```
 
 The d4482a1 increment integrates Bronze Sentry trap suppliers, the shared
 processor callback and conditional surface-clue attribution. Only the Bronze
