@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Configuration binding sources are preserved in `sources/zeta-config-binding`,
+`sources/quark-spire-config-annotations` and `sources/zeta-config-event-fields`
+under evidence/item-8. The latter README binds the initial refresh call to the
+existing registry-r1 debug log and resolves nested leaf annotation names.
+Do not repeat event execution or leaf predicate tracing. Reconcile parent
+section naming and frozen-file provenance using existing artifacts, then update
+the inventory's configuration attribution. No runtime field dump or spire
+observation is claimed. Broader provider coverage remains open.
+
 Spire biome filter semantics are integrated in `4233dec`, using compound and
 component captures delivered in `fb71580` and `e0792bc`. The default empty tag
 blacklist passes and the explicit allowlist admits End Highlands only. Do not
