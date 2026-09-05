@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-06
 
+WDA provider scope now passes with all six classes captured in 1b230be using
+f3ac5ab, reproducible at evidence/raw/item8/wda-provider-scope-r1. Forty packaged
+roots all use vanilla jigsaw; no extra root from the custom registered type.
+Twelve disconnected pools, 54 disconnected templates, six non-structure functions
+and missing references on four roots have explicit dispositions. Focused test
+passes; scoped checks pass after an unused noqa correction. Queue updated:
+27 supported provider dispositions, 109 open. Do not recapture WDA or repair its
+baseline components. Continue provider coverage before detailed attributes.
+
+User requires resolution of the unknown candidate denominator. The exact open
+provider queue in evidence/item-8/provider-scope.md now names all 110 remaining
+archives, existing capture directories and next checks. Together with 26 closed
+dispositions it reconciles the retained manifest. This is a work queue, not
+acceptance evidence. Resolve it before detailed attributes; stop helper tracing
+once the candidate boundary is supported. No new measurement system is needed.
+
 Towns and Towers scope now passes: 60 roots, 187 pools, 837 base templates;
 three disconnected pools and 23 disconnected templates explicitly accounted for.
 The optional three-template Waystones pack requires an absent captured mod ID.
