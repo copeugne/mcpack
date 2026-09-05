@@ -4,6 +4,17 @@
 
 ## Current continuation checkpoint - 2026-09-04
 
+### Continuation update - 2026-09-06
+
+Scope-pass sources are delivered: BetterEnd building lists/crashed ship in
+9695ae5, BOP anomaly/monolith/bone spine in 846bc09, Deep Aether totem in b0194ce,
+and Explorations scarecrow in ac990fd. All reproduce exactly. Their concrete
+results and remaining scope decisions are in evidence/item-8/provider-scope.md,
+under "Reconciliation checkpoint at ac990fd". Do not recapture these classes or
+resume detailed helper tracing. Next bind the existing configured/placed and
+biome relationships, reconcile mixed BetterEnd designs, and finish the provider
+queue and Moog/village canonical boundaries. No final family count is accepted.
+
 ### Continuation update - 2026-09-05
 
 Whole-stack candidate enumeration is now delivered by d475f15 and dd8cc26;
