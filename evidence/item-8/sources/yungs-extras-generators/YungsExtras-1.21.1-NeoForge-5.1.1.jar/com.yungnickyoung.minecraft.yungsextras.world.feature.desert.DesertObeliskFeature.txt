@@ -1,0 +1,133 @@
+Compiled from "DesertObeliskFeature.java"
+public class com.yungnickyoung.minecraft.yungsextras.world.feature.desert.DesertObeliskFeature extends com.yungnickyoung.minecraft.yungsextras.world.feature.AbstractNbtFeature<com.yungnickyoung.minecraft.yungsextras.world.config.ResourceLocationFeatureConfiguration> {
+  public com.yungnickyoung.minecraft.yungsextras.world.feature.desert.DesertObeliskFeature();
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field com/yungnickyoung/minecraft/yungsextras/world/config/ResourceLocationFeatureConfiguration.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #7                  // Method com/yungnickyoung/minecraft/yungsextras/world/feature/AbstractNbtFeature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<com.yungnickyoung.minecraft.yungsextras.world.config.ResourceLocationFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #23                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      14: astore        4
+      16: aload_1
+      17: invokevirtual #27                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      20: checkcast     #2                  // class com/yungnickyoung/minecraft/yungsextras/world/config/ResourceLocationFeatureConfiguration
+      23: invokevirtual #31                 // Method com/yungnickyoung/minecraft/yungsextras/world/config/ResourceLocationFeatureConfiguration.getLocation:()Lnet/minecraft/resources/ResourceLocation;
+      26: astore        5
+      28: aload         4
+      30: invokevirtual #35                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      33: astore        6
+      35: aload_2
+      36: aload         6
+      38: invokeinterface #41,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      43: ifeq          67
+      46: aload         6
+      48: invokevirtual #47                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+      51: iconst_2
+      52: if_icmple     67
+      55: aload         6
+      57: getstatic     #53                 // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+      60: invokevirtual #59                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      63: pop
+      64: goto          35
+      67: aload         6
+      69: invokevirtual #63                 // Method net/minecraft/core/BlockPos$MutableBlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+      72: astore        7
+      74: aload         7
+      76: bipush        -2
+      78: iconst_0
+      79: bipush        -2
+      81: invokevirtual #66                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      84: astore        8
+      86: aload_2
+      87: aload         7
+      89: invokeinterface #70,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      94: invokevirtual #74                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      97: astore        9
+      99: aload         9
+     101: invokevirtual #80                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     104: getstatic     #86                 // Field net/minecraft/tags/BlockTags.SAND:Lnet/minecraft/tags/TagKey;
+     107: invokevirtual #92                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     110: ifne          115
+     113: iconst_0
+     114: ireturn
+     115: aload         6
+     117: aload         8
+     119: invokevirtual #96                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     122: pop
+     123: aload_2
+     124: aload         6
+     126: invokeinterface #70,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     131: invokevirtual #100                // Method net/minecraft/world/level/block/state/BlockState.isSolid:()Z
+     134: ifne          139
+     137: iconst_0
+     138: ireturn
+     139: aload         6
+     141: aload         8
+     143: invokevirtual #96                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     146: getstatic     #104                // Field net/minecraft/core/Direction.SOUTH:Lnet/minecraft/core/Direction;
+     149: iconst_3
+     150: invokevirtual #107                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     153: pop
+     154: aload_2
+     155: aload         6
+     157: invokeinterface #70,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     162: invokevirtual #100                // Method net/minecraft/world/level/block/state/BlockState.isSolid:()Z
+     165: ifne          170
+     168: iconst_0
+     169: ireturn
+     170: aload         6
+     172: aload         8
+     174: invokevirtual #96                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     177: getstatic     #110                // Field net/minecraft/core/Direction.EAST:Lnet/minecraft/core/Direction;
+     180: iconst_3
+     181: invokevirtual #107                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     184: pop
+     185: aload_2
+     186: aload         6
+     188: invokeinterface #70,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     193: invokevirtual #100                // Method net/minecraft/world/level/block/state/BlockState.isSolid:()Z
+     196: ifne          201
+     199: iconst_0
+     200: ireturn
+     201: aload         6
+     203: aload         8
+     205: invokevirtual #96                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     208: getstatic     #104                // Field net/minecraft/core/Direction.SOUTH:Lnet/minecraft/core/Direction;
+     211: iconst_3
+     212: invokevirtual #107                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     215: getstatic     #110                // Field net/minecraft/core/Direction.EAST:Lnet/minecraft/core/Direction;
+     218: iconst_3
+     219: invokevirtual #107                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     222: pop
+     223: aload_2
+     224: aload         6
+     226: invokeinterface #70,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     231: invokevirtual #100                // Method net/minecraft/world/level/block/state/BlockState.isSolid:()Z
+     234: ifne          239
+     237: iconst_0
+     238: ireturn
+     239: aload_0
+     240: aload         5
+     242: aload_2
+     243: aload_3
+     244: aload         7
+     246: invokevirtual #113                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     249: invokevirtual #116                // Method createTemplateFromCenter:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;
+     252: astore        10
+     254: aload         10
+     256: ifnull        263
+     259: iconst_1
+     260: goto          264
+     263: iconst_0
+     264: ireturn
+}
