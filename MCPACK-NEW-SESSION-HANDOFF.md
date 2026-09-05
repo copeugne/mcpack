@@ -6,6 +6,36 @@
 
 ### Continuation update - 2026-09-05
 
+Shipwreck integration is delivered: `4363af9` records both root-specific template
+arrays and seven source-backed attributes; `3c30ead` delivers the inventory.
+Decision SHA:
+`da5faabb91380aaa6fc09b36a941ded23a633dc50888705eb0a5776e2f8a3bb3`.
+Inventory SHA:
+`7f15e3abd77c380cfccfc836f677027f65d94782fac7ebf2ed033af010f1dcee`.
+The trace is unchanged. All 59 affected checks passed; the final focused check
+and scoped Ruff/basedpyright passed after narrow type/iteration cleanup.
+Nominal dimensions now cover the template alternatives rather than only observed
+sample sizes. Original world_observations links and raw bounds remain unchanged.
+The earlier instruction to integrate shipwreck content is superseded. Continue
+the remaining family/provider gaps; retained-mod effects, hostility, visual
+discoverability and final cross-source closure are not inferred from this work.
+Delivered refs were verified.
+
+Shipwreck source work is delivered: extractor `5e750e4`, evidence `5f82e86`,
+catalog check `db53fd6`. Manifest SHA:
+`313d8031a873de27b39ca5fa8fed9ab1ea1f3694fc56db8afcd7127a3e4415b8`.
+See `evidence/item-8/sources/vanilla-shipwreck-code/README.md` for commands,
+nominal dimensions, burial semantics and chest markers. Generation selects one
+template from 11 beached or 20 ocean alternatives; all resolve. All palettes
+were checked after correcting an initial single-palette assumption. No authored
+entities or ordinary/trial-spawner blocks occur in these templates. Three chest
+loot-key mappings reuse the End city BuiltInLootTables evidence.
+Next integrate shipwreck per-root components and family attributes, including
+the source-derived single-template size envelope. Do not repeat extraction or
+add a runtime measurement for this nominal geometry. Retained-mod effects and
+other final gates remain open. Source/test/scoped checks passed and refs verified.
+The current inventory and decision hashes below remain unchanged.
+
 End city component and four content attributes are integrated in `027c263`,
 with inventory delivery `5fa7b83`. Its 19 vanilla template references resolve;
 the family record preserves the unreferenced tower_floor and the boundary for
