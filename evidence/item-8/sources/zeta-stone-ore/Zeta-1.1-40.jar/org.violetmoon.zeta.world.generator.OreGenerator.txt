@@ -1,0 +1,769 @@
+Compiled from "OreGenerator.java"
+public class org.violetmoon.zeta.world.generator.OreGenerator extends org.violetmoon.zeta.world.generator.Generator {
+  public static final java.util.function.Predicate<net.minecraft.world.level.block.state.BlockState> STONE_MATCHER;
+
+  public static final java.util.function.Predicate<net.minecraft.world.level.block.state.BlockState> NETHERRACK_MATCHER;
+
+  public static final java.util.function.Predicate<net.minecraft.world.level.block.state.BlockState> ENDSTONE_MATCHER;
+
+  public static final java.util.function.Predicate<net.minecraft.world.level.block.state.BlockState> ALL_DIMS_STONE_MATCHER;
+
+  private final org.violetmoon.zeta.config.type.OrePocketConfig oreConfig;
+
+  private final net.minecraft.world.level.block.state.BlockState placeState;
+
+  private final java.util.function.Predicate<net.minecraft.world.level.block.state.BlockState> matcher;
+
+  public org.violetmoon.zeta.world.generator.OreGenerator(org.violetmoon.zeta.config.type.DimensionConfig, org.violetmoon.zeta.config.type.OrePocketConfig, net.minecraft.world.level.block.state.BlockState, java.util.function.Predicate<net.minecraft.world.level.block.state.BlockState>, java.util.function.BooleanSupplier);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload         5
+       4: invokespecial #1                  // Method org/violetmoon/zeta/world/generator/Generator."<init>":(Lorg/violetmoon/zeta/config/type/DimensionConfig;Ljava/util/function/BooleanSupplier;)V
+       7: aload_0
+       8: aload_2
+       9: putfield      #7                  // Field oreConfig:Lorg/violetmoon/zeta/config/type/OrePocketConfig;
+      12: aload_0
+      13: aload_3
+      14: putfield      #13                 // Field placeState:Lnet/minecraft/world/level/block/state/BlockState;
+      17: aload_0
+      18: aload         4
+      20: putfield      #17                 // Field matcher:Ljava/util/function/Predicate;
+      23: return
+
+  public void generateChunk(net.minecraft.server.level.WorldGenRegion, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field oreConfig:Lorg/violetmoon/zeta/config/type/OrePocketConfig;
+       4: aload         4
+       6: aload_3
+       7: aload_0
+       8: aload_1
+       9: aload_3
+      10: invokedynamic #21,  0             // InvokeDynamic #0:accept:(Lorg/violetmoon/zeta/world/generator/OreGenerator;Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/util/RandomSource;)Ljava/util/function/Consumer;
+      15: invokevirtual #25                 // Method org/violetmoon/zeta/config/type/OrePocketConfig.forEach:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Ljava/util/function/Consumer;)V
+      18: return
+
+  public boolean place(net.minecraft.world.level.LevelAccessor, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_2
+       1: invokeinterface #31,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+       6: ldc           #39                 // float 3.1415927f
+       8: fmul
+       9: fstore        4
+      11: aload_0
+      12: getfield      #7                  // Field oreConfig:Lorg/violetmoon/zeta/config/type/OrePocketConfig;
+      15: getfield      #40                 // Field org/violetmoon/zeta/config/type/OrePocketConfig.clusterSize:I
+      18: i2f
+      19: ldc           #44                 // float 8.0f
+      21: fdiv
+      22: fstore        5
+      24: aload_0
+      25: getfield      #7                  // Field oreConfig:Lorg/violetmoon/zeta/config/type/OrePocketConfig;
+      28: getfield      #40                 // Field org/violetmoon/zeta/config/type/OrePocketConfig.clusterSize:I
+      31: i2f
+      32: ldc           #45                 // float 16.0f
+      34: fdiv
+      35: fconst_2
+      36: fmul
+      37: fconst_1
+      38: fadd
+      39: fconst_2
+      40: fdiv
+      41: invokestatic  #46                 // Method net/minecraft/util/Mth.ceil:(F)I
+      44: istore        6
+      46: aload_3
+      47: invokevirtual #52                 // Method net/minecraft/core/BlockPos.getX:()I
+      50: i2f
+      51: fload         4
+      53: invokestatic  #58                 // Method net/minecraft/util/Mth.sin:(F)F
+      56: fload         5
+      58: fmul
+      59: fadd
+      60: f2d
+      61: dstore        7
+      63: aload_3
+      64: invokevirtual #52                 // Method net/minecraft/core/BlockPos.getX:()I
+      67: i2f
+      68: fload         4
+      70: invokestatic  #58                 // Method net/minecraft/util/Mth.sin:(F)F
+      73: fload         5
+      75: fmul
+      76: fsub
+      77: f2d
+      78: dstore        9
+      80: aload_3
+      81: invokevirtual #62                 // Method net/minecraft/core/BlockPos.getZ:()I
+      84: i2f
+      85: fload         4
+      87: invokestatic  #65                 // Method net/minecraft/util/Mth.cos:(F)F
+      90: fload         5
+      92: fmul
+      93: fadd
+      94: f2d
+      95: dstore        11
+      97: aload_3
+      98: invokevirtual #62                 // Method net/minecraft/core/BlockPos.getZ:()I
+     101: i2f
+     102: fload         4
+     104: invokestatic  #65                 // Method net/minecraft/util/Mth.cos:(F)F
+     107: fload         5
+     109: fmul
+     110: fsub
+     111: f2d
+     112: dstore        13
+     114: aload_3
+     115: invokevirtual #68                 // Method net/minecraft/core/BlockPos.getY:()I
+     118: aload_2
+     119: iconst_3
+     120: invokeinterface #71,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     125: iadd
+     126: iconst_2
+     127: isub
+     128: i2d
+     129: dstore        15
+     131: aload_3
+     132: invokevirtual #68                 // Method net/minecraft/core/BlockPos.getY:()I
+     135: aload_2
+     136: iconst_3
+     137: invokeinterface #71,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     142: iadd
+     143: iconst_2
+     144: isub
+     145: i2d
+     146: dstore        17
+     148: aload_3
+     149: invokevirtual #52                 // Method net/minecraft/core/BlockPos.getX:()I
+     152: fload         5
+     154: invokestatic  #46                 // Method net/minecraft/util/Mth.ceil:(F)I
+     157: isub
+     158: iload         6
+     160: isub
+     161: istore        19
+     163: aload_3
+     164: invokevirtual #68                 // Method net/minecraft/core/BlockPos.getY:()I
+     167: iconst_2
+     168: isub
+     169: iload         6
+     171: isub
+     172: istore        20
+     174: aload_3
+     175: invokevirtual #62                 // Method net/minecraft/core/BlockPos.getZ:()I
+     178: fload         5
+     180: invokestatic  #46                 // Method net/minecraft/util/Mth.ceil:(F)I
+     183: isub
+     184: iload         6
+     186: isub
+     187: istore        21
+     189: iconst_2
+     190: fload         5
+     192: invokestatic  #46                 // Method net/minecraft/util/Mth.ceil:(F)I
+     195: iload         6
+     197: iadd
+     198: imul
+     199: istore        22
+     201: iconst_2
+     202: iconst_2
+     203: iload         6
+     205: iadd
+     206: imul
+     207: istore        23
+     209: aload_1
+     210: instanceof    #75                 // class net/minecraft/server/level/WorldGenRegion
+     213: ifeq          222
+     216: getstatic     #77                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.OCEAN_FLOOR_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     219: goto          225
+     222: getstatic     #83                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     225: astore        24
+     227: iload         19
+     229: istore        25
+     231: iload         25
+     233: iload         19
+     235: iload         22
+     237: iadd
+     238: if_icmpgt     313
+     241: iload         21
+     243: istore        26
+     245: iload         26
+     247: iload         21
+     249: iload         22
+     251: iadd
+     252: if_icmpgt     307
+     255: iload         20
+     257: aload_1
+     258: aload         24
+     260: iload         25
+     262: iload         26
+     264: invokeinterface #86,  4           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getHeight:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;II)I
+     269: if_icmpgt     301
+     272: aload_0
+     273: aload_1
+     274: aload_2
+     275: dload         7
+     277: dload         9
+     279: dload         11
+     281: dload         13
+     283: dload         15
+     285: dload         17
+     287: iload         19
+     289: iload         20
+     291: iload         21
+     293: iload         22
+     295: iload         23
+     297: invokevirtual #92                 // Method doPlace:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;DDDDDDIIIII)Z
+     300: ireturn
+     301: iinc          26, 1
+     304: goto          245
+     307: iinc          25, 1
+     310: goto          231
+     313: iconst_0
+     314: ireturn
+
+  protected boolean doPlace(net.minecraft.world.level.LevelAccessor, net.minecraft.util.RandomSource, double, double, double, double, double, double, int, int, int, int, int);
+    Code:
+       0: iconst_0
+       1: istore        20
+       3: new           #96                 // class java/util/BitSet
+       6: dup
+       7: iload         18
+       9: iload         19
+      11: imul
+      12: iload         18
+      14: imul
+      15: invokespecial #98                 // Method java/util/BitSet."<init>":(I)V
+      18: astore        21
+      20: new           #101                // class net/minecraft/core/BlockPos$MutableBlockPos
+      23: dup
+      24: invokespecial #103                // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+      27: astore        22
+      29: aload_0
+      30: getfield      #7                  // Field oreConfig:Lorg/violetmoon/zeta/config/type/OrePocketConfig;
+      33: getfield      #40                 // Field org/violetmoon/zeta/config/type/OrePocketConfig.clusterSize:I
+      36: iconst_4
+      37: imul
+      38: newarray       double
+      40: astore        23
+      42: iconst_0
+      43: istore        24
+      45: iload         24
+      47: aload_0
+      48: getfield      #7                  // Field oreConfig:Lorg/violetmoon/zeta/config/type/OrePocketConfig;
+      51: getfield      #40                 // Field org/violetmoon/zeta/config/type/OrePocketConfig.clusterSize:I
+      54: if_icmpge     197
+      57: iload         24
+      59: i2f
+      60: aload_0
+      61: getfield      #7                  // Field oreConfig:Lorg/violetmoon/zeta/config/type/OrePocketConfig;
+      64: getfield      #40                 // Field org/violetmoon/zeta/config/type/OrePocketConfig.clusterSize:I
+      67: i2f
+      68: fdiv
+      69: fstore        25
+      71: fload         25
+      73: f2d
+      74: dload_3
+      75: dload         5
+      77: invokestatic  #106                // Method net/minecraft/util/Mth.lerp:(DDD)D
+      80: dstore        26
+      82: fload         25
+      84: f2d
+      85: dload         11
+      87: dload         13
+      89: invokestatic  #106                // Method net/minecraft/util/Mth.lerp:(DDD)D
+      92: dstore        28
+      94: fload         25
+      96: f2d
+      97: dload         7
+      99: dload         9
+     101: invokestatic  #106                // Method net/minecraft/util/Mth.lerp:(DDD)D
+     104: dstore        30
+     106: aload_2
+     107: invokeinterface #110,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+     112: aload_0
+     113: getfield      #7                  // Field oreConfig:Lorg/violetmoon/zeta/config/type/OrePocketConfig;
+     116: getfield      #40                 // Field org/violetmoon/zeta/config/type/OrePocketConfig.clusterSize:I
+     119: i2d
+     120: dmul
+     121: ldc2_w        #114                // double 16.0d
+     124: ddiv
+     125: dstore        32
+     127: ldc           #39                 // float 3.1415927f
+     129: fload         25
+     131: fmul
+     132: invokestatic  #58                 // Method net/minecraft/util/Mth.sin:(F)F
+     135: fconst_1
+     136: fadd
+     137: f2d
+     138: dload         32
+     140: dmul
+     141: dconst_1
+     142: dadd
+     143: ldc2_w        #116                // double 2.0d
+     146: ddiv
+     147: dstore        34
+     149: aload         23
+     151: iload         24
+     153: iconst_4
+     154: imul
+     155: dload         26
+     157: dastore
+     158: aload         23
+     160: iload         24
+     162: iconst_4
+     163: imul
+     164: iconst_1
+     165: iadd
+     166: dload         28
+     168: dastore
+     169: aload         23
+     171: iload         24
+     173: iconst_4
+     174: imul
+     175: iconst_2
+     176: iadd
+     177: dload         30
+     179: dastore
+     180: aload         23
+     182: iload         24
+     184: iconst_4
+     185: imul
+     186: iconst_3
+     187: iadd
+     188: dload         34
+     190: dastore
+     191: iinc          24, 1
+     194: goto          45
+     197: iconst_0
+     198: istore        24
+     200: iload         24
+     202: aload_0
+     203: getfield      #7                  // Field oreConfig:Lorg/violetmoon/zeta/config/type/OrePocketConfig;
+     206: getfield      #40                 // Field org/violetmoon/zeta/config/type/OrePocketConfig.clusterSize:I
+     209: iconst_1
+     210: isub
+     211: if_icmpge     412
+     214: aload         23
+     216: iload         24
+     218: iconst_4
+     219: imul
+     220: iconst_3
+     221: iadd
+     222: daload
+     223: dconst_0
+     224: dcmpg
+     225: ifle          406
+     228: iload         24
+     230: iconst_1
+     231: iadd
+     232: istore        25
+     234: iload         25
+     236: aload_0
+     237: getfield      #7                  // Field oreConfig:Lorg/violetmoon/zeta/config/type/OrePocketConfig;
+     240: getfield      #40                 // Field org/violetmoon/zeta/config/type/OrePocketConfig.clusterSize:I
+     243: if_icmpge     406
+     246: aload         23
+     248: iload         25
+     250: iconst_4
+     251: imul
+     252: iconst_3
+     253: iadd
+     254: daload
+     255: dconst_0
+     256: dcmpg
+     257: ifle          400
+     260: aload         23
+     262: iload         24
+     264: iconst_4
+     265: imul
+     266: daload
+     267: aload         23
+     269: iload         25
+     271: iconst_4
+     272: imul
+     273: daload
+     274: dsub
+     275: dstore        26
+     277: aload         23
+     279: iload         24
+     281: iconst_4
+     282: imul
+     283: iconst_1
+     284: iadd
+     285: daload
+     286: aload         23
+     288: iload         25
+     290: iconst_4
+     291: imul
+     292: iconst_1
+     293: iadd
+     294: daload
+     295: dsub
+     296: dstore        28
+     298: aload         23
+     300: iload         24
+     302: iconst_4
+     303: imul
+     304: iconst_2
+     305: iadd
+     306: daload
+     307: aload         23
+     309: iload         25
+     311: iconst_4
+     312: imul
+     313: iconst_2
+     314: iadd
+     315: daload
+     316: dsub
+     317: dstore        30
+     319: aload         23
+     321: iload         24
+     323: iconst_4
+     324: imul
+     325: iconst_3
+     326: iadd
+     327: daload
+     328: aload         23
+     330: iload         25
+     332: iconst_4
+     333: imul
+     334: iconst_3
+     335: iadd
+     336: daload
+     337: dsub
+     338: dstore        32
+     340: dload         32
+     342: dload         32
+     344: dmul
+     345: dload         26
+     347: dload         26
+     349: dmul
+     350: dload         28
+     352: dload         28
+     354: dmul
+     355: dadd
+     356: dload         30
+     358: dload         30
+     360: dmul
+     361: dadd
+     362: dcmpl
+     363: ifle          400
+     366: dload         32
+     368: dconst_0
+     369: dcmpl
+     370: ifle          388
+     373: aload         23
+     375: iload         25
+     377: iconst_4
+     378: imul
+     379: iconst_3
+     380: iadd
+     381: ldc2_w        #118                // double -1.0d
+     384: dastore
+     385: goto          400
+     388: aload         23
+     390: iload         24
+     392: iconst_4
+     393: imul
+     394: iconst_3
+     395: iadd
+     396: ldc2_w        #118                // double -1.0d
+     399: dastore
+     400: iinc          25, 1
+     403: goto          234
+     406: iinc          24, 1
+     409: goto          200
+     412: iconst_0
+     413: istore        24
+     415: iload         24
+     417: aload_0
+     418: getfield      #7                  // Field oreConfig:Lorg/violetmoon/zeta/config/type/OrePocketConfig;
+     421: getfield      #40                 // Field org/violetmoon/zeta/config/type/OrePocketConfig.clusterSize:I
+     424: if_icmpge     810
+     427: aload         23
+     429: iload         24
+     431: iconst_4
+     432: imul
+     433: iconst_3
+     434: iadd
+     435: daload
+     436: dstore        25
+     438: dload         25
+     440: dconst_0
+     441: dcmpl
+     442: iflt          804
+     445: aload         23
+     447: iload         24
+     449: iconst_4
+     450: imul
+     451: daload
+     452: dstore        27
+     454: aload         23
+     456: iload         24
+     458: iconst_4
+     459: imul
+     460: iconst_1
+     461: iadd
+     462: daload
+     463: dstore        29
+     465: aload         23
+     467: iload         24
+     469: iconst_4
+     470: imul
+     471: iconst_2
+     472: iadd
+     473: daload
+     474: dstore        31
+     476: dload         27
+     478: dload         25
+     480: dsub
+     481: invokestatic  #120                // Method net/minecraft/util/Mth.floor:(D)I
+     484: iload         15
+     486: invokestatic  #124                // Method java/lang/Math.max:(II)I
+     489: istore        33
+     491: dload         29
+     493: dload         25
+     495: dsub
+     496: invokestatic  #120                // Method net/minecraft/util/Mth.floor:(D)I
+     499: iload         16
+     501: invokestatic  #124                // Method java/lang/Math.max:(II)I
+     504: istore        34
+     506: dload         31
+     508: dload         25
+     510: dsub
+     511: invokestatic  #120                // Method net/minecraft/util/Mth.floor:(D)I
+     514: iload         17
+     516: invokestatic  #124                // Method java/lang/Math.max:(II)I
+     519: istore        35
+     521: dload         27
+     523: dload         25
+     525: dadd
+     526: invokestatic  #120                // Method net/minecraft/util/Mth.floor:(D)I
+     529: iload         33
+     531: invokestatic  #124                // Method java/lang/Math.max:(II)I
+     534: istore        36
+     536: dload         29
+     538: dload         25
+     540: dadd
+     541: invokestatic  #120                // Method net/minecraft/util/Mth.floor:(D)I
+     544: iload         34
+     546: invokestatic  #124                // Method java/lang/Math.max:(II)I
+     549: istore        37
+     551: dload         31
+     553: dload         25
+     555: dadd
+     556: invokestatic  #120                // Method net/minecraft/util/Mth.floor:(D)I
+     559: iload         35
+     561: invokestatic  #124                // Method java/lang/Math.max:(II)I
+     564: istore        38
+     566: iload         33
+     568: istore        39
+     570: iload         39
+     572: iload         36
+     574: if_icmpgt     804
+     577: iload         39
+     579: i2d
+     580: ldc2_w        #128                // double 0.5d
+     583: dadd
+     584: dload         27
+     586: dsub
+     587: dload         25
+     589: ddiv
+     590: dstore        40
+     592: dload         40
+     594: dload         40
+     596: dmul
+     597: dconst_1
+     598: dcmpg
+     599: ifge          798
+     602: iload         34
+     604: istore        42
+     606: iload         42
+     608: iload         37
+     610: if_icmpgt     798
+     613: iload         42
+     615: i2d
+     616: ldc2_w        #128                // double 0.5d
+     619: dadd
+     620: dload         29
+     622: dsub
+     623: dload         25
+     625: ddiv
+     626: dstore        43
+     628: dload         40
+     630: dload         40
+     632: dmul
+     633: dload         43
+     635: dload         43
+     637: dmul
+     638: dadd
+     639: dconst_1
+     640: dcmpg
+     641: ifge          792
+     644: iload         35
+     646: istore        45
+     648: iload         45
+     650: iload         38
+     652: if_icmpgt     792
+     655: iload         45
+     657: i2d
+     658: ldc2_w        #128                // double 0.5d
+     661: dadd
+     662: dload         31
+     664: dsub
+     665: dload         25
+     667: ddiv
+     668: dstore        46
+     670: dload         40
+     672: dload         40
+     674: dmul
+     675: dload         43
+     677: dload         43
+     679: dmul
+     680: dadd
+     681: dload         46
+     683: dload         46
+     685: dmul
+     686: dadd
+     687: dconst_1
+     688: dcmpg
+     689: ifge          786
+     692: iload         39
+     694: iload         15
+     696: isub
+     697: iload         42
+     699: iload         16
+     701: isub
+     702: iload         18
+     704: imul
+     705: iadd
+     706: iload         45
+     708: iload         17
+     710: isub
+     711: iload         18
+     713: imul
+     714: iload         19
+     716: imul
+     717: iadd
+     718: istore        48
+     720: aload         21
+     722: iload         48
+     724: invokevirtual #130                // Method java/util/BitSet.get:(I)Z
+     727: ifne          786
+     730: aload         21
+     732: iload         48
+     734: invokevirtual #134                // Method java/util/BitSet.set:(I)V
+     737: aload         22
+     739: iload         39
+     741: iload         42
+     743: iload         45
+     745: invokevirtual #137                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     748: pop
+     749: aload_0
+     750: getfield      #17                 // Field matcher:Ljava/util/function/Predicate;
+     753: aload_1
+     754: aload         22
+     756: invokeinterface #140,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     761: invokeinterface #144,  2          // InterfaceMethod java/util/function/Predicate.test:(Ljava/lang/Object;)Z
+     766: ifeq          786
+     769: aload_1
+     770: aload         22
+     772: aload_0
+     773: getfield      #13                 // Field placeState:Lnet/minecraft/world/level/block/state/BlockState;
+     776: iconst_2
+     777: invokeinterface #150,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     782: pop
+     783: iinc          20, 1
+     786: iinc          45, 1
+     789: goto          648
+     792: iinc          42, 1
+     795: goto          606
+     798: iinc          39, 1
+     801: goto          570
+     804: iinc          24, 1
+     807: goto          415
+     810: iload         20
+     812: ifle          819
+     815: iconst_1
+     816: goto          820
+     819: iconst_0
+     820: ireturn
+
+  private void lambda$generateChunk$3(net.minecraft.server.level.WorldGenRegion, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: invokevirtual #154                // Method place:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Z
+       7: pop
+       8: return
+
+  private static boolean lambda$static$2(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: ifnonnull     6
+       4: iconst_0
+       5: ireturn
+       6: aload_0
+       7: invokevirtual #158                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      10: astore_1
+      11: aload_1
+      12: getstatic     #164                // Field net/minecraft/world/level/block/Blocks.END_STONE:Lnet/minecraft/world/level/block/Block;
+      15: if_acmpne     22
+      18: iconst_1
+      19: goto          23
+      22: iconst_0
+      23: ireturn
+
+  private static boolean lambda$static$1(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: ifnonnull     6
+       4: iconst_0
+       5: ireturn
+       6: aload_0
+       7: invokevirtual #158                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      10: astore_1
+      11: aload_1
+      12: getstatic     #170                // Field net/minecraft/world/level/block/Blocks.NETHERRACK:Lnet/minecraft/world/level/block/Block;
+      15: if_acmpne     22
+      18: iconst_1
+      19: goto          23
+      22: iconst_0
+      23: ireturn
+
+  private static boolean lambda$static$0(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: ifnonnull     6
+       4: iconst_0
+       5: ireturn
+       6: aload_0
+       7: invokevirtual #158                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      10: astore_1
+      11: aload_1
+      12: getstatic     #173                // Field net/minecraft/world/level/block/Blocks.STONE:Lnet/minecraft/world/level/block/Block;
+      15: if_acmpeq     25
+      18: aload_1
+      19: getstatic     #176                // Field net/minecraft/world/level/block/Blocks.DEEPSLATE:Lnet/minecraft/world/level/block/Block;
+      22: if_acmpne     29
+      25: iconst_1
+      26: goto          30
+      29: iconst_0
+      30: ireturn
+
+  static {};
+    Code:
+       0: invokedynamic #179,  0            // InvokeDynamic #1:test:()Ljava/util/function/Predicate;
+       5: putstatic     #182                // Field STONE_MATCHER:Ljava/util/function/Predicate;
+       8: invokedynamic #185,  0            // InvokeDynamic #2:test:()Ljava/util/function/Predicate;
+      13: putstatic     #186                // Field NETHERRACK_MATCHER:Ljava/util/function/Predicate;
+      16: invokedynamic #189,  0            // InvokeDynamic #3:test:()Ljava/util/function/Predicate;
+      21: putstatic     #190                // Field ENDSTONE_MATCHER:Ljava/util/function/Predicate;
+      24: getstatic     #182                // Field STONE_MATCHER:Ljava/util/function/Predicate;
+      27: getstatic     #186                // Field NETHERRACK_MATCHER:Ljava/util/function/Predicate;
+      30: invokeinterface #193,  2          // InterfaceMethod java/util/function/Predicate.or:(Ljava/util/function/Predicate;)Ljava/util/function/Predicate;
+      35: getstatic     #190                // Field ENDSTONE_MATCHER:Ljava/util/function/Predicate;
+      38: invokeinterface #193,  2          // InterfaceMethod java/util/function/Predicate.or:(Ljava/util/function/Predicate;)Ljava/util/function/Predicate;
+      43: putstatic     #197                // Field ALL_DIMS_STONE_MATCHER:Ljava/util/function/Predicate;
+      46: return
+}
