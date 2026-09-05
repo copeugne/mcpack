@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-05
 
+Whole-stack candidate enumeration is now delivered by d475f15 and dd8cc26;
+the existing extractor's source join is 21eaef5. Current scope reconciliation
+queue and provider counts are in evidence/item-8/provider-scope.md. This is the
+priority, superseding Farmer's Delight-first attribute work below. All retained
+archives have named candidate rows; resolve those rows and canonical alternatives
+before returning to granular attribute tracing. The scan does not itself prove
+the final family count. User explicitly requires that count to be established.
+
+
 Priority correction requested by the user: finish the whole retained-provider
 scope pass before further individual component tracing. Existing packaged
 catalogs cover every archive but do not enumerate code-only generation hooks
