@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `4151e8c`, SHA-256
-`a499e195b93ec7bc63cf278bd7518a2db2a2fd2b81205c0aff59df887cc0f165`.
+Current working inventory regenerated at `239f150`, SHA-256
+`62da55305669bfd9bb3ad9092d80359b685644d5e07fa627c51e0f0189724f62`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -11,6 +11,16 @@ IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
 attributes, provider reconciliation and the final review/delivery gate are open.
 
 ## Historical increments
+
+The 239f150 increment binds the shared direction array for Nether spikes and
+Fallen Logs. Spikes request a 3-by-3 footprint; logs with optional decoration
+have possible 5-by-3 or 6-by-3 envelopes. These are source bounds, not occupied
+measurements. All 35 affected tests passed. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-directions-239f150.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-directions-239f150.json
+```
 
 The 4151e8c increment integrates Nether obsidian spikes as one working family
 with ordinary and large encounter variants. Large spikes author a blaze spawner

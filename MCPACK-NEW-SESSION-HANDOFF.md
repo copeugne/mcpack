@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-05
 
+Shared direction geometry is resolved in 239f150 from capture 49df38d.
+HORIZONTALS is NORTH, SOUTH, WEST, EAST. Nether spikes request a 3-by-3 footprint;
+Fallen Log side decoration is perpendicular, giving possible 5-by-3 or 6-by-3
+envelopes with end decoration. Do not repeat array or geometry analysis. Continue
+remaining decoration/configuration dependencies and broader provider coverage.
+All 35 affected tests passed. Item 8 remains incomplete.
+
 Select only Zeta MiscUtil to bind HORIZONTALS. Its actual array contents affect
 two current consumers, Nether spike footprint and Fallen Log orientation and
 decoration. Existing captures reference but do not define this array. Reuse the
