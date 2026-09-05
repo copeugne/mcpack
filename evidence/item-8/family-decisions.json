@@ -27682,6 +27682,137 @@
           },
           "extra_loot_contents": "One archaeology pool with one roll and diamond, emerald and gold_ingot item entries; no explicit weights or conditions. Packaged contents only, before external loot modification.",
           "scope": "Source-supported placement and loot creation rules, not observed successful placements or reward counts. The shared template helper does not propagate placeInWorld failure. Family grouping and effective retained-stack loot modifications remain unresolved."
+        },
+        "swamp_generation": {
+          "feature_type_to_class": {
+            "yungsextras:swamp_arch": "SwampArchFeature",
+            "yungsextras:swamp_double_arch": "SwampDoubleArchFeature",
+            "yungsextras:swamp_church": "SwampChurchFeature",
+            "yungsextras:swamp_cubby": "SwampCubbyFeature",
+            "yungsextras:swamp_ogre": "SwampOgreFeature",
+            "yungsextras:swamp_pillar": "SwampPillarFeature"
+          },
+          "processor_binding": "All six concrete classes inherit AbstractSwampFeature.useProcessors without overriding it. This selects only SWAMP_FEATURE_PROCESSOR, constructed as SwampFeatureProcessor by FeatureProcessorModule. The inherited template helper runs it after placement.",
+          "anchor": "All six descend through empty blocks while Y > 2 and pass the resulting position directly to createTemplateFromCenter with the configured location. The helper centers X/Z by integer half-size, leaves Y unchanged and uses default StructurePlaceSettings.",
+          "terrain_checks": "Reject if any listed XYZ offset from the landing position is empty. These are selected-point non-empty checks, not full-footprint solidity checks, and contain no biome/block-tag test in these six classes.",
+          "required_nonempty_offsets_xyz": {
+            "SwampArchFeature": [
+              [
+                -2,
+                -4,
+                0
+              ],
+              [
+                2,
+                -4,
+                0
+              ]
+            ],
+            "SwampDoubleArchFeature": [
+              [
+                -4,
+                -4,
+                0
+              ],
+              [
+                4,
+                -4,
+                0
+              ]
+            ],
+            "SwampChurchFeature": [
+              [
+                -6,
+                -4,
+                -2
+              ],
+              [
+                -6,
+                -4,
+                2
+              ],
+              [
+                6,
+                -4,
+                -2
+              ],
+              [
+                6,
+                -4,
+                2
+              ]
+            ],
+            "SwampCubbyFeature": [
+              [
+                -2,
+                -4,
+                -1
+              ],
+              [
+                -2,
+                -4,
+                2
+              ],
+              [
+                1,
+                -4,
+                -1
+              ],
+              [
+                1,
+                -4,
+                2
+              ]
+            ],
+            "SwampOgreFeature": [
+              [
+                -2,
+                0,
+                -2
+              ],
+              [
+                -2,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                -2
+              ],
+              [
+                1,
+                0,
+                1
+              ]
+            ],
+            "SwampPillarFeature": [
+              [
+                -2,
+                -4,
+                -2
+              ],
+              [
+                -2,
+                -4,
+                1
+              ],
+              [
+                1,
+                -4,
+                -2
+              ],
+              [
+                1,
+                -4,
+                1
+              ]
+            ]
+          },
+          "support_columns": "Each gray stained glass marker is replaced with a stone-brick selector result. Starting one block below it, continue downward replacing air, liquid or replaceable blocks until encountering a state satisfying none of those predicates. This loop has no explicit minimum-Y guard and discards setBlock results. Support depth is terrain-dependent and is not bounded by the packaged template height.",
+          "masonry": "Gray stained glass and existing stone bricks use STONE_BRICK_SELECTOR, initialized with stone bricks and mossy/cracked stone-brick additions. Light-gray stained glass uses STONE_BRICK_STAIRS_SELECTOR with a random horizontal facing. Existing stone-brick stairs use that selector while preserving facing, half, shape and waterlogged properties. The stair selector is initialized with stone-brick stairs and a mossy-stair addition.",
+          "candles": "Green candles are replaced with a uniformly indexed choice from candle, white, gray, light_gray, brown, green, purple and black candles. Count is nextInt(4)+1 and LIT is nextFloat()<0.1. The processor writes the selected default state with those two properties, using update flag 2.",
+          "scope": "Direct source-derived placement and appearance effects for six generator types, not six accepted families or observed visibility. Template contents are recorded separately. Selector-library implementation, external retained-stack effects, natural mobs and full generated-world outcomes are not established by these classes. Generator success still means a non-null template, not verified complete placement."
         }
       }
     }

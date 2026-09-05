@@ -673,3 +673,51 @@ def test_extras_well_processor_adds_loot_missing_from_template_entities() -> Non
         {"name": "minecraft:" + name, "type": "minecraft:item"}
         for name in ("diamond", "emerald", "gold_ingot")
     ]
+
+
+def test_extras_swamp_types_share_processor_and_preserve_size_limits() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    contribution = contributions["yungsextras:feature_entrypoints"]
+    recorded = cast("dict[str, JsonValue]", contribution["swamp_generation"])
+    types = cast("dict[str, str]", recorded["feature_type_to_class"])
+    counts = cast("dict[str, int]", contribution["configured_feature_type_counts"])
+    assert set(types) == {kind for kind in counts if kind.startswith("yungsextras:swamp_")}
+    assert sum(counts[kind] for kind in types) == 46
+    sources: dict[str, str] = {}
+    evidence = cast("dict[str, str]", contribution["evidence"])
+    for folder in ("yungs-extras-generators", "yungs-extras-processor-bindings",
+                   "yungs-extras-registration"):
+        base = Path("evidence/item-8/sources") / folder
+        manifest = base / "identities.json"
+        raw = manifest.read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == evidence[str(manifest)]
+        for row in cast("list[dict[str, str]]", json.loads(raw)):
+            raw = (base / row["disassembly"]).read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+            sources[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    for kind, name in types.items():
+        assert 'value="' + kind.split(":")[1] + '"' in sources["FeatureModule"]
+        assert name + '."<init>":' in sources["FeatureModule"]
+        source = sources[name]
+        assert "extends com.yungnickyoung.minecraft.yungsextras.world.feature.swamp." in source
+        assert " useProcessors(" not in source
+        assert "createTemplateFromCenter:" in source
+        assert "BlockTags." not in source
+    assert "FeatureProcessorModule.SWAMP_FEATURE_PROCESSOR:" in sources["AbstractSwampFeature"]
+    assert 'SwampFeatureProcessor."<init>":' in sources["FeatureProcessorModule"]
+    processor = sources["SwampFeatureProcessor"]
+    support = processor.split("     152: aload_1")[0]
+    for predicate in ("isAir", "liquid", "canBeReplaced"):
+        assert "BlockState." + predicate + ":" in support
+    assert "getY:" not in support
+    assert "getMinBuildHeight:" not in support
+    assert "Blocks.GRAY_STAINED_GLASS:" in support
+    assert "Blocks.LIGHT_GRAY_STAINED_GLASS:" in processor
+    for property_name in ("FACING", "HALF", "SHAPE", "WATERLOGGED"):
+        assert "StairBlock." + property_name + ":" in processor
+    assert "CandleBlock.CANDLES:" in processor
+    assert "CandleBlock.LIT:" in processor
