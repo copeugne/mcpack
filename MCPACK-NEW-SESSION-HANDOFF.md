@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-05
 
+Trace Zeta's exact org/violetmoon/zetaimplforge/world/ZetaBiomeModifier class
+with the existing extractor. Its retained JSON names a code-backed modifier
+without feature targets, so this class directly addresses the effective-biome
+gap. Add only the retained archive and exact class selection; no new extraction
+framework or runtime measurement is needed.
+
 Effective biome follow-up is now concrete in `bb42eb0`: retained Zeta and
 Forgified Fabric biome-modifier documents delegate to code without declaring
 feature targets. Their exact identities are in effective_biome_gap. Resolve

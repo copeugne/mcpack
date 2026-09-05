@@ -34,6 +34,7 @@ ARCHIVES = frozenset(
         PATCHED_SERVER.name,
         "neoforge-21.1.249-universal.jar",
         "YungsApi-1.21.1-NeoForge-5.1.6.jar",
+        "Zeta-1.1-40.jar",
         "integrated_api-1.7.3+1.21.1-neoforge.jar",
         "moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar",
         "IllagerInvasion-v21.1.6-1.21.1-NeoForge.jar",
@@ -303,6 +304,7 @@ CLASSES = (
     "com/yungnickyoung/minecraft/betterendisland/services/NeoForgePlatformHelper.class",
     "com/yungnickyoung/minecraft/betterendisland/services/NeoForgeModulesLoader.class",
     "net/minecraft/world/level/levelgen/feature/EndPlatformFeature.class",
+    "org/violetmoon/zetaimplforge/world/ZetaBiomeModifier.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
