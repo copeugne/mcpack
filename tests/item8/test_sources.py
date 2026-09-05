@@ -94,3 +94,20 @@ def test_metadata_preserves_root_and_optional_pack_conditions(tmp_path: Path) ->
     rows = cast("list[dict[str, JsonValue]]", packaged_sources((item,), "metadata")["resources"])
     assert [row["path"] for row in rows] == ["optional/pack.mcmeta", "pack.mcmeta"]
     assert rows[1]["document"] == {"pack": {"pack_format": 48}}
+
+
+def test_code_references_include_nested_archives_without_data_files(tmp_path: Path) -> None:
+    payload = b"net/minecraft/world/level/levelgen/feature/Feature"
+    item = source(tmp_path, "mod.jar", {
+        "Unrelated.class": b"java/lang/String",
+        "Listener.class": b"ServerAboutToStartEvent",
+        "nested.jar": zip_bytes({"Generator.class": payload}),
+    })
+    result = packaged_sources((item,), "code")
+    rows = cast("list[dict[str, JsonValue]]", result["resources"])
+    assert [(row["archive"], row["path"]) for row in rows] == [
+        ("mod.jar", "Listener.class"), ("mod.jar!/nested.jar", "Generator.class"),
+    ]
+    assert rows[1]["sha256"] == hashlib.sha256(payload).hexdigest()
+    assert rows[1]["references"] == ["world/level/levelgen/"]
+    assert result["archives"] == [{"name": "mod.jar", "sha256": item.sha256}]
