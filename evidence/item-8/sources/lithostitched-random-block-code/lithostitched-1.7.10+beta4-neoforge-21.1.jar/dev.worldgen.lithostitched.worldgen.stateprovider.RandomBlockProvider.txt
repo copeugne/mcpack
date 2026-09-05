@@ -1,0 +1,72 @@
+Compiled from "RandomBlockProvider.java"
+public final class dev.worldgen.lithostitched.worldgen.stateprovider.RandomBlockProvider extends net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider {
+  public static final com.mojang.serialization.MapCodec<dev.worldgen.lithostitched.worldgen.stateprovider.RandomBlockProvider> CODEC;
+
+  public static final net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType<dev.worldgen.lithostitched.worldgen.stateprovider.RandomBlockProvider> TYPE;
+
+  private final net.minecraft.core.HolderSet<net.minecraft.world.level.block.Block> blocks;
+
+  public dev.worldgen.lithostitched.worldgen.stateprovider.RandomBlockProvider(net.minecraft.core.HolderSet<net.minecraft.world.level.block.Block>);
+    Code:
+       0: aload_0
+       1: invokespecial #25                 // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #27                 // Field blocks:Lnet/minecraft/core/HolderSet;
+       9: return
+
+  public net.minecraft.core.HolderSet<net.minecraft.world.level.block.Block> blocks();
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field blocks:Lnet/minecraft/core/HolderSet;
+       4: areturn
+
+  protected net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType<?> type();
+    Code:
+       0: getstatic     #37                 // Field TYPE:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProviderType;
+       3: areturn
+
+  public net.minecraft.world.level.block.state.BlockState getState(net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field blocks:Lnet/minecraft/core/HolderSet;
+       4: aload_1
+       5: invokeinterface #47,  2           // InterfaceMethod net/minecraft/core/HolderSet.getRandomElement:(Lnet/minecraft/util/RandomSource;)Ljava/util/Optional;
+      10: invokedynamic #69,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      15: invokevirtual #75                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      18: getstatic     #81                 // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+      21: invokevirtual #84                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      24: checkcast     #86                 // class net/minecraft/world/level/block/Block
+      27: invokevirtual #90                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      30: areturn
+
+  public net.minecraft.world.level.block.state.BlockState getState(net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field blocks:Lnet/minecraft/core/HolderSet;
+       4: aload_2
+       5: invokeinterface #47,  2           // InterfaceMethod net/minecraft/core/HolderSet.getRandomElement:(Lnet/minecraft/util/RandomSource;)Ljava/util/Optional;
+      10: invokedynamic #69,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      15: invokevirtual #75                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      18: getstatic     #81                 // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+      21: invokevirtual #84                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      24: checkcast     #86                 // class net/minecraft/world/level/block/Block
+      27: invokevirtual #90                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      30: areturn
+
+  static {};
+    Code:
+       0: getstatic     #102                // Field dev/worldgen/lithostitched/worldgen/LithostitchedCodecs.BLOCK_SET:Lcom/mojang/serialization/Codec;
+       3: ldc           #103                // String blocks
+       5: invokeinterface #109,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      10: invokedynamic #115,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      15: invokedynamic #121,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      20: invokevirtual #127                // Method com/mojang/serialization/MapCodec.xmap:(Ljava/util/function/Function;Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+      23: putstatic     #129                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      26: new           #131                // class net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProviderType
+      29: dup
+      30: getstatic     #129                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      33: invokespecial #134                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProviderType."<init>":(Lcom/mojang/serialization/MapCodec;)V
+      36: putstatic     #37                 // Field TYPE:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProviderType;
+      39: return
+}
