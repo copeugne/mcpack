@@ -284,3 +284,47 @@ and Basedpyright pass; the statement-count lint exception keeps the direct
 archive-accounting check together instead of introducing an unnecessary helper.
 Explicit provider dispositions now cover 20 of 136, with 116 still to reconcile.
 Canonical grouping and effective family attributes remain deferred.
+
+## Moog Nether data provider
+
+`MoogsNetherStructures-1.21-3.0.0-alpha.2.jar` supplies 52 existing root candidates,
+168 pools and 459 templates. Complete archive accounting also identifies eight
+processor lists, four trial-spawner configurations, biome tags, loot tables and
+two shared-namespace structure tags: moogs_structures:no_basalt and no_delta.
+These are generation/component and encounter modifications for existing roots.
+The archive contains no executable entry points or separate feature definitions.
+Processor types are pillar, spawner randomization, trial-spawner randomization,
+vault randomization and armor-stand equipment; exact implementation attribution
+remains with the shared Moog provider and subsequent family attributes.
+
+All 52 roots have preserved traces without missing resources or unresolved pool
+elements. Twelve pools lie outside their root graphs. Their exact IDs, prefixed
+with `mns:`, are:
+
+- dragon_arena/lower_14.
+- mega_arenas/mobs/arena_bowman, mega_arenas/mobs/ember_sentinel,
+  mega_arenas/mobs/pit_vanguard.
+- mega_fortress/crossings/small/small_crossing_2_east,
+  mega_fortress/crossings/small/small_crossing_2_north,
+  mega_fortress/crossings/small/small_crossing_2_south,
+  mega_fortress/crossings/small/small_crossing_2_west.
+- mega_fortress/mobs/blaze_sentinel, mega_fortress/mobs/fortress_guard,
+  mega_fortress/start/start_crossing_north.
+- very_small_nether_brick_start_pool.
+
+Of 171 templates outside those graphs, 162 are unselected version alternatives.
+The remaining nine disconnected template IDs, also prefixed with `mns:`, are
+dragon_arena/lower_14; large_arena/v1_21_4/l2 and r2;
+large_arena/v1_21_5/l2 and r2; large_arena/v1_21_9/l2 and r2;
+mega_fortress/corridors/roofed_long_straight_2; ruins/very_small_nether_brick_1.
+These resources are unused by this provider's packaged root graph. Their explicit
+disposition does not assert global impossibility of placement or preempt the
+separate shared-code and injection-provider checks. They add no independent
+packaged root candidate. Root identity remains separate from canonical grouping.
+
+The reused test_moog_data_provider_scope.py now checks all four Moog data
+providers, including exact disconnected sets. Four cases pass, with scoped Ruff
+and Basedpyright passing. Local complexity lint exceptions retain explicit
+archive cases without adding a new abstraction or framework. Explicit provider
+dispositions now cover 21 of 136; 115 remain to reconcile. Explorify is the
+remaining data-only structure-provider batch member.

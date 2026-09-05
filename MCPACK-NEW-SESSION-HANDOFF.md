@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Moog Nether data scope is now reconciled: all 52 roots, 168 pools and 459
+templates accounted for, including 12 disconnected pools, 162 unselected version
+alternatives and nine other disconnected templates. Four reused provider cases
+and scoped static checks pass. provider-scope.md records 21 of 136 dispositions;
+115 remain. Continue Explorify, then code-provider roles and injections. Do not
+repeat the four closed Moog data-provider checks without a relevant change.
+
 Voyager's data-provider boundary is now accounted for: 129 roots, 149 pools,
 327 templates; 51 unselected version alternatives and 41 named disconnected
 templates outside the root graph. The reused three-provider test passes with
