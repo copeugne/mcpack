@@ -1,0 +1,232 @@
+Compiled from "SurfaceRuleManager.java"
+public class dev.worldgen.lithostitched.worldgen.surface.SurfaceRuleManager {
+  public dev.worldgen.lithostitched.worldgen.surface.SurfaceRuleManager();
+    Code:
+       0: aload_0
+       1: invokespecial #29                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void applySurfaceRules(net.minecraft.server.MinecraftServer);
+    Code:
+       0: aload_0
+       1: invokevirtual #40                 // Method net/minecraft/server/MinecraftServer.registryAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+       4: astore_1
+       5: aload_1
+       6: getstatic     #46                 // Field dev/worldgen/lithostitched/worldgen/modifier/AddSurfaceRuleModifier.CODEC:Lcom/mojang/serialization/MapCodec;
+       9: invokestatic  #52                 // Method dev/worldgen/lithostitched/impl/worldgen/modifier/ModifierManager.getModifiersOfType:(Lnet/minecraft/core/RegistryAccess;Lcom/mojang/serialization/MapCodec;)Ljava/util/List;
+      12: astore_2
+      13: aload_2
+      14: invokeinterface #58,  1           // InterfaceMethod java/util/List.isEmpty:()Z
+      19: ifeq          23
+      22: return
+      23: new           #60                 // class java/util/HashMap
+      26: dup
+      27: invokespecial #61                 // Method java/util/HashMap."<init>":()V
+      30: astore_3
+      31: aload_2
+      32: invokeinterface #65,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      37: astore        4
+      39: aload         4
+      41: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      46: ifeq          90
+      49: aload         4
+      51: invokeinterface #74,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      56: checkcast     #12                 // class java/util/Map$Entry
+      59: astore        5
+      61: aload         5
+      63: invokeinterface #77,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      68: checkcast     #42                 // class dev/worldgen/lithostitched/worldgen/modifier/AddSurfaceRuleModifier
+      71: invokevirtual #81                 // Method dev/worldgen/lithostitched/worldgen/modifier/AddSurfaceRuleModifier.levels:()Ljava/util/List;
+      74: aload_3
+      75: aload         5
+      77: invokedynamic #101,  0            // InvokeDynamic #0:accept:(Ljava/util/HashMap;Ljava/util/Map$Entry;)Ljava/util/function/Consumer;
+      82: invokeinterface #105,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+      87: goto          39
+      90: aload_1
+      91: getstatic     #111                // Field net/minecraft/core/registries/Registries.LEVEL_STEM:Lnet/minecraft/resources/ResourceKey;
+      94: invokestatic  #117                // Method dev/worldgen/lithostitched/Lithostitched.registry:(Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+      97: astore        4
+      99: aload         4
+     101: invokeinterface #123,  1          // InterfaceMethod net/minecraft/core/Registry.entrySet:()Ljava/util/Set;
+     106: invokeinterface #126,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     111: astore        5
+     113: aload         5
+     115: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     120: ifeq          323
+     123: aload         5
+     125: invokeinterface #74,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     130: checkcast     #12                 // class java/util/Map$Entry
+     133: astore        6
+     135: aload         6
+     137: invokeinterface #129,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     142: checkcast     #131                // class net/minecraft/resources/ResourceKey
+     145: invokevirtual #135                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     148: astore        7
+     150: aload_3
+     151: aload         7
+     153: invokevirtual #139                // Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     156: checkcast     #141                // class java/util/ArrayList
+     159: astore        8
+     161: aload         8
+     163: ifnull        320
+     166: aload         6
+     168: invokeinterface #77,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     173: checkcast     #143                // class net/minecraft/world/level/dimension/LevelStem
+     176: invokevirtual #147                // Method net/minecraft/world/level/dimension/LevelStem.generator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+     179: astore        10
+     181: aload         10
+     183: instanceof    #149                // class net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator
+     186: ifeq          113
+     189: aload         10
+     191: checkcast     #149                // class net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator
+     194: astore        9
+     196: aload         9
+     198: invokevirtual #153                // Method net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator.generatorSettings:()Lnet/minecraft/core/Holder;
+     201: invokeinterface #158,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     206: checkcast     #160                // class net/minecraft/world/level/levelgen/NoiseGeneratorSettings
+     209: astore        10
+     211: aload         10
+     213: invokevirtual #164                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.surfaceRule:()Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;
+     216: astore        11
+     218: aload         9
+     220: checkcast     #166                // class dev/worldgen/lithostitched/mixin/common/NoiseBasedChunkGeneratorAccessor
+     223: new           #160                // class net/minecraft/world/level/levelgen/NoiseGeneratorSettings
+     226: dup
+     227: aload         10
+     229: invokevirtual #170                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.noiseSettings:()Lnet/minecraft/world/level/levelgen/NoiseSettings;
+     232: aload         10
+     234: invokevirtual #174                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.defaultBlock:()Lnet/minecraft/world/level/block/state/BlockState;
+     237: aload         10
+     239: invokevirtual #177                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.defaultFluid:()Lnet/minecraft/world/level/block/state/BlockState;
+     242: aload         10
+     244: invokevirtual #181                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.noiseRouter:()Lnet/minecraft/world/level/levelgen/NoiseRouter;
+     247: aload         8
+     249: aload         11
+     251: invokestatic  #185                // Method buildModdedSurfaceRules:(Ljava/util/ArrayList;Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;)Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;
+     254: aload         10
+     256: invokevirtual #188                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.spawnTarget:()Ljava/util/List;
+     259: aload         10
+     261: invokevirtual #192                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.seaLevel:()I
+     264: aload         10
+     266: invokevirtual #195                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.disableMobGeneration:()Z
+     269: aload         10
+     271: invokevirtual #198                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.isAquifersEnabled:()Z
+     274: aload         10
+     276: invokevirtual #201                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.oreVeinsEnabled:()Z
+     279: aload         10
+     281: invokevirtual #204                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.useLegacyRandomSource:()Z
+     284: invokespecial #207                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings."<init>":(Lnet/minecraft/world/level/levelgen/NoiseSettings;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/levelgen/NoiseRouter;Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;Ljava/util/List;IZZZZ)V
+     287: invokestatic  #211                // InterfaceMethod net/minecraft/core/Holder.direct:(Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+     290: invokeinterface #215,  2          // InterfaceMethod dev/worldgen/lithostitched/mixin/common/NoiseBasedChunkGeneratorAccessor.setSettings:(Lnet/minecraft/core/Holder;)V
+     295: ldc           #217                // String Applied {} surface rule additions for \'{}\' dimension
+     297: iconst_2
+     298: anewarray     #4                  // class java/lang/Object
+     301: dup
+     302: iconst_0
+     303: aload         8
+     305: invokevirtual #220                // Method java/util/ArrayList.size:()I
+     308: invokestatic  #226                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     311: aastore
+     312: dup
+     313: iconst_1
+     314: aload         7
+     316: aastore
+     317: invokestatic  #230                // Method dev/worldgen/lithostitched/Lithostitched.debug:(Ljava/lang/String;[Ljava/lang/Object;)V
+     320: goto          113
+     323: return
+
+  private static net.minecraft.world.level.levelgen.SurfaceRules$RuleSource buildModdedSurfaceRules(java.util.ArrayList<com.mojang.datafixers.util.Pair<net.minecraft.resources.ResourceLocation, dev.worldgen.lithostitched.worldgen.modifier.AddSurfaceRuleModifier>>, net.minecraft.world.level.levelgen.SurfaceRules$RuleSource);
+    Code:
+       0: new           #141                // class java/util/ArrayList
+       3: dup
+       4: invokespecial #259                // Method java/util/ArrayList."<init>":()V
+       7: astore_2
+       8: aload_0
+       9: invokedynamic #271,  0            // InvokeDynamic #1:applyAsInt:()Ljava/util/function/ToIntFunction;
+      14: invokestatic  #277                // InterfaceMethod java/util/Comparator.comparingInt:(Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+      17: invokevirtual #281                // Method java/util/ArrayList.sort:(Ljava/util/Comparator;)V
+      20: aload_0
+      21: aload_2
+      22: invokedynamic #291,  0            // InvokeDynamic #2:accept:(Ljava/util/List;)Ljava/util/function/Consumer;
+      27: invokevirtual #292                // Method java/util/ArrayList.forEach:(Ljava/util/function/Consumer;)V
+      30: aload_2
+      31: aload_1
+      32: invokeinterface #296,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      37: pop
+      38: aload_0
+      39: aload_2
+      40: invokedynamic #301,  0            // InvokeDynamic #3:accept:(Ljava/util/List;)Ljava/util/function/Consumer;
+      45: invokevirtual #292                // Method java/util/ArrayList.forEach:(Ljava/util/function/Consumer;)V
+      48: aload_1
+      49: aload_2
+      50: invokestatic  #307                // Method dev/worldgen/lithostitched/impl/LithostitchedVersion.handleRuleMerging:(Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;Ljava/util/List;)Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;
+      53: areturn
+
+  private static void lambda$buildModdedSurfaceRules$2(java.util.List, com.mojang.datafixers.util.Pair);
+    Code:
+       0: aload_1
+       1: invokevirtual #315                // Method com/mojang/datafixers/util/Pair.getSecond:()Ljava/lang/Object;
+       4: checkcast     #42                 // class dev/worldgen/lithostitched/worldgen/modifier/AddSurfaceRuleModifier
+       7: invokevirtual #319                // Method dev/worldgen/lithostitched/worldgen/modifier/AddSurfaceRuleModifier.injectionType:()Ldev/worldgen/lithostitched/api/util/InjectionType;
+      10: getstatic     #325                // Field dev/worldgen/lithostitched/api/util/InjectionType.APPEND:Ldev/worldgen/lithostitched/api/util/InjectionType;
+      13: if_acmpne     33
+      16: aload_0
+      17: aload_1
+      18: invokevirtual #315                // Method com/mojang/datafixers/util/Pair.getSecond:()Ljava/lang/Object;
+      21: checkcast     #42                 // class dev/worldgen/lithostitched/worldgen/modifier/AddSurfaceRuleModifier
+      24: invokevirtual #326                // Method dev/worldgen/lithostitched/worldgen/modifier/AddSurfaceRuleModifier.surfaceRule:()Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;
+      27: invokeinterface #296,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      32: pop
+      33: return
+
+  private static void lambda$buildModdedSurfaceRules$1(java.util.List, com.mojang.datafixers.util.Pair);
+    Code:
+       0: aload_1
+       1: invokevirtual #315                // Method com/mojang/datafixers/util/Pair.getSecond:()Ljava/lang/Object;
+       4: checkcast     #42                 // class dev/worldgen/lithostitched/worldgen/modifier/AddSurfaceRuleModifier
+       7: invokevirtual #319                // Method dev/worldgen/lithostitched/worldgen/modifier/AddSurfaceRuleModifier.injectionType:()Ldev/worldgen/lithostitched/api/util/InjectionType;
+      10: getstatic     #330                // Field dev/worldgen/lithostitched/api/util/InjectionType.PREPEND:Ldev/worldgen/lithostitched/api/util/InjectionType;
+      13: if_acmpne     33
+      16: aload_0
+      17: aload_1
+      18: invokevirtual #315                // Method com/mojang/datafixers/util/Pair.getSecond:()Ljava/lang/Object;
+      21: checkcast     #42                 // class dev/worldgen/lithostitched/worldgen/modifier/AddSurfaceRuleModifier
+      24: invokevirtual #326                // Method dev/worldgen/lithostitched/worldgen/modifier/AddSurfaceRuleModifier.surfaceRule:()Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;
+      27: invokeinterface #296,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      32: pop
+      33: return
+
+  private static int lambda$buildModdedSurfaceRules$0(com.mojang.datafixers.util.Pair);
+    Code:
+       0: aload_0
+       1: invokevirtual #315                // Method com/mojang/datafixers/util/Pair.getSecond:()Ljava/lang/Object;
+       4: checkcast     #42                 // class dev/worldgen/lithostitched/worldgen/modifier/AddSurfaceRuleModifier
+       7: invokevirtual #333                // Method dev/worldgen/lithostitched/worldgen/modifier/AddSurfaceRuleModifier.priority:()I
+      10: ireturn
+
+  private static void lambda$applySurfaceRules$0(java.util.HashMap, java.util.Map$Entry, net.minecraft.resources.ResourceKey);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: invokevirtual #135                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       5: invokedynamic #345,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      10: invokevirtual #349                // Method java/util/HashMap.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      13: checkcast     #141                // class java/util/ArrayList
+      16: aload_1
+      17: invokeinterface #129,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      22: checkcast     #351                // class net/minecraft/resources/ResourceLocation
+      25: aload_1
+      26: invokeinterface #77,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      31: checkcast     #42                 // class dev/worldgen/lithostitched/worldgen/modifier/AddSurfaceRuleModifier
+      34: invokestatic  #355                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+      37: invokevirtual #356                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+      40: pop
+      41: return
+
+  private static java.util.ArrayList lambda$applySurfaceRules$1(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: new           #141                // class java/util/ArrayList
+       3: dup
+       4: invokespecial #259                // Method java/util/ArrayList."<init>":()V
+       7: areturn
+}
