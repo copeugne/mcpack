@@ -605,6 +605,49 @@ def test_betterend_formation_variants_bind_registry_definitions_and_generator_cl
                 assert "Blocks.END_STONE" in source
 
 
+
+def test_betterend_mountain_placement_and_visual_cues_bind_piece_sources() -> None:
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()
+    ))
+    group = next(g for g in decisions["groups"] if g["family_id"] == "betterend:mountain")
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    base = Path("evidence/item-8/sources/betterend-formations-code")
+    identities = cast("list[dict[str, str]]", json.loads((base / "identities.json").read_bytes()))
+    sources = {row["class"].removesuffix(".class").replace("/", "."):
+               (base / row["disassembly"]).read_text() for row in identities}
+    piece_base = Path("evidence/item-8/sources/betterend-formation-pieces")
+    piece_rows = cast("list[dict[str, str]]", json.loads(
+        (piece_base / "identities.json").read_bytes()
+    ))
+    pieces: dict[str, str] = {}
+    for row in piece_rows:
+        raw = (piece_base / row["disassembly"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        pieces[row["class"].split("/")[-1].removesuffix(".class")] = raw.decode()
+    attributes = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
+    placement = attributes["underground_surface_classification"]
+    assert placement["start_heightmap"] == "WORLD_SURFACE_WG"
+    thresholds = cast("dict[str, int]", placement["minimum_exclusive_start_y_by_structure"])
+    assert set(thresholds) == set(variants)
+    for rid, threshold in thresholds.items():
+        source = sources[str(variants[rid]["generator_class"])]
+        instruction = "iconst_5" if threshold == 5 else f"bipush        {threshold}"
+        assert re.search(re.escape(instruction) + r"\n\s+\d+: if_icmple", source)
+    crystal = pieces["CrystalMountainPiece"]
+    for field in ("EndBlocks.CRYSTAL_MOSS", "EndBlocks.AURORA_CRYSTAL", "Blocks.END_STONE"):
+        assert field in crystal
+    painted = pieces["PaintedMountainPiece"]
+    assert "Field slices:" in painted
+    assert "ChunkAccess.setBlockState:" in painted
+    assert "OpenSimplexNoise.eval:" in painted
+    bounds = pieces["MountainPiece"].split("private void makeBoundingBox();")[1]
+    assert bounds.count("Field radius:F") == 6
+    assert "Field height:F" not in bounds
+    cues = attributes["visual_discoverability"]["authored_cues_by_structure"]
+    assert isinstance(cues, dict)
+    assert set(cues) == set(variants)
+
 def test_voyager_mining_families_keep_distinct_layouts_and_authored_sources() -> None:
     decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(
         Path("evidence/item-8/family-decisions.json").read_bytes()
