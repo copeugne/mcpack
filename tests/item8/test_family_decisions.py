@@ -326,13 +326,19 @@ def test_mega_ship_variants_preserve_definitions_modules_and_mes_coverage() -> N
             assert definition["terrain_adaptation"] == "none"
 
 
-def test_voyager_living_trees_preserve_variants_and_packaged_geometry() -> None:
+@pytest.mark.parametrize(
+    ("family", "suffix", "member_count", "template_count"),
+    [("mvs:living_tree", "_tree", 9, 15), ("mvs:well", "well", 17, 20)],
+)
+def test_voyager_trees_and_wells_preserve_definitions_and_template_content(
+    family: str, suffix: str, member_count: int, template_count: int
+) -> None:
     root = Path(__file__).resolve().parents[2]
     decisions = cast(
         "dict[str, list[dict[str, JsonValue]]]",
         json.loads((root / "evidence/item-8/family-decisions.json").read_bytes()),
     )
-    group = next(row for row in decisions["groups"] if row["family_id"] == "mvs:living_tree")
+    group = next(row for row in decisions["groups"] if row["family_id"] == family)
     for path, digest in cast("dict[str, str]", group["evidence"]).items():
         assert hashlib.sha256((root / path).read_bytes()).hexdigest() == digest
     catalog = cast(
@@ -357,12 +363,34 @@ def test_voyager_living_trees_preserve_variants_and_packaged_geometry() -> None:
     expected = sorted(
         key
         for key in registry
-        if key.startswith("mvs:") and key.endswith("_tree") and "dead_tree" not in key
+        if key.startswith("mvs:") and key.endswith(suffix) and "dead_tree" not in key
     )
     variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
     assert group["structure_ids"] == sorted(variants) == expected
-    assert len(variants) == 9
+    assert len(variants) == member_count
     sizes: list[list[int]] = []
+    excluded = {
+        "biomes",
+        "start_pool",
+        "allowed_terrain_height_range",
+        "terrain_height_radius_check",
+    }
+    if family == "mvs:well":
+        excluded.update({"type", "land_search_direction"})
+    loot_by_template: dict[str, list[JsonValue]] = {
+        "mvs:nature/big_oak_tree": [
+            {"path": "/block_entities/0/nbt/LootTable", "value": "mvs:general"}
+        ],
+        "mvs:well/well_lower": [
+            {"path": "/block_entities/0/nbt/LootTable", "value": "mvs:houses_uncommon"}
+        ],
+        "mvs:well/rare_well/rare_well_lower": [
+            {"path": "/block_entities/1/nbt/LootTable", "value": "mvs:houses_rare"}
+        ],
+        "mvs:1_21_4/small_tower_well": [
+            {"path": "/block_entities/3/nbt/LootTable", "value": "mvs:empty"}
+        ],
+    }
     for identifier, variant in variants.items():
         name = identifier.split(":")[1]
         definitions = [
@@ -373,20 +401,20 @@ def test_voyager_living_trees_preserve_variants_and_packaged_geometry() -> None:
         assert definitions == [variant["definition"]]
         definition = definitions[0]
         assert group["common_generation_definition"] == {
-            k: v
-            for k, v in definition.items()
-            if k
-            not in {
-                "biomes",
-                "start_pool",
-                "allowed_terrain_height_range",
-                "terrain_height_radius_check",
-            }
+            k: v for k, v in definition.items() if k not in excluded
         }
         assert (
             definition.get("allowed_terrain_height_range"),
             definition.get("terrain_height_radius_check"),
-        ) == ((4, 2) if name == "big_oak_tree" else (None, None))
+        ) == {"big_oak_tree": (4, 2), "rare_well": (3, 2)}.get(name, (None, None))
+        assert definition.get("land_search_direction") == (
+            "HIGHEST_LAND" if name == "nether_well" else None
+        )
+        assert definition["type"] == (
+            "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+            if name == "nether_well"
+            else "moogs_structures:moogs_structures_generic_jigsaw_structure"
+        )
         trace = traces["structures"][identifier]
         templates = cast("dict[str, list[int]]", variant["templates"])
         assert trace["templates"] == sorted(templates)
@@ -397,13 +425,10 @@ def test_voyager_living_trees_preserve_variants_and_packaged_geometry() -> None:
             sizes.append(dimensions)
             assert content["authored_entities"] == content["unresolved_entities"] == []
             assert content["spawner_blocks"] == content["generation_markers"] == []
-            expected_loot: list[JsonValue] = (
-                [{"path": "/block_entities/0/nbt/LootTable", "value": "mvs:general"}]
-                if name == "big_oak_tree"
-                else []
-            )
-            assert content["loot_references"] == expected_loot
-    assert len(sizes) == 15
+            assert content["loot_references"] == loot_by_template.get(template, [])
+    assert len(sizes) == template_count
+    if family == "mvs:well":
+        return
     attrs = cast("dict[str, dict[str, JsonValue]]", group["attributes"])
     assert attrs["approximate_footprint"]["packaged_template_xz_blocks"] == [
         list(pair) for pair in sorted({(s[0], s[2]) for s in sizes})
