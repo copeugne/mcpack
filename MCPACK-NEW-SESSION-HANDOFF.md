@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Moog End and Soaring candidate boundaries now reuse the existing pool traces:
+all packaged roots and pools linked, and all unmatched templates explicitly
+unselected by the existing versioned-element logic. Two focused cases and scoped
+static checks pass. provider-scope.md now has 19 explicit provider dispositions,
+with 117 remaining to reconcile. Explorify, Moog Nether and Voyager still have
+unmatched resources. Do not repeat the closed End/Soaring pass or call their
+25/35 roots canonical-family counts.
+
 Candidate-boundary reconciliation now includes the RS Farmer's Delight add-on:
 all 13 templates link to 12 already registered RS village targets; 11 processor
 lists modify components rather than create roots. The focused full-archive test
