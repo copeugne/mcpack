@@ -2,8 +2,8 @@
 
 Status: IN PROGRESS. No family count or completion claim is accepted yet.
 
-Current working inventory regenerated at `0feca29`, SHA-256
-`daffbe7bbe8af3ff99c3a6ca3db4c3be7a39f1a7da8606d1368d9fac1797ece1`.
+Current working inventory regenerated at `8ba362c`, SHA-256
+`741729ef5b76783ad16534db906b29f08baa03fbe0a96a086cb04d1504f6c12e`.
 All 887 registered roots are assigned once in 421 working groups. This is not
 the final accepted canonical family count. The dimension field now joins each
 root's biome constraints to captured live dimension memberships. Three unresolved
@@ -70,6 +70,19 @@ coverage has already identified every remaining family or dependency. Closing
 that coverage question is itself an outstanding deliverable in step 4.
 
 ## Historical increments
+
+The 8ba362c increment integrates mansion candidate components, persistent child
+entity templates, chest loot references, selected spider spawner inputs and
+surface/foundation placement behavior. It changes only the mansion family and
+the decision input identity. It does not establish room reachability, successful
+placement, effective external modifications, full geometry or discoverability.
+Six affected tests and scoped static checks passed. Reproduce:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-mansion-8ba362c.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-mansion-8ba362c.json
+uv run pytest -q tests/item8/test_mansion_components.py tests/item8/test_inventory_sources.py
+```
 
 The 0feca29 increment resolves Slime Cave's single custom template component
 and attributes its six slime markers, one slime-spawner marker and chest loot
