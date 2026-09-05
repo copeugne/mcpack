@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-05
 
+CTOV outposts are delivered through `c5c8c7a`, built from `07bcde5`. Twelve
+biome roots form one outpost family; badlands and mesa definitions are exact
+duplicates with the same start pool. All 78 CTOV registry entries are assigned
+exactly once, across the prior 22 village groups and this outpost group. Missing
+Savage & Ravage targets, several allay cages, dark-forest targets and mountain
+towers pool remain attached to their variants. No retained outpost observations
+exist. Forty-four focused tests and scoped quality checks passed; two builds
+were identical and prior family records unchanged. Inventory SHA-256:
+`bf3591f06e0c51ad963910d4ea75560d33a9fc33601e83e0b05c6f1744379722`.
+Totals: 281 working groups, 542 assigned IDs, 345 unassigned. Continue remaining
+providers, non-registry contributions, custom generators and required attributes.
+CTOV registry assignment does not close missing-resource behavior, broader
+village-family reconciliation or Item 8's final gate/review/main merge.
+
 Repurposed design variants are delivered through `0555981`, built from `5022316`.
 All 107 registry entries are assigned exactly once across 17 design groups.
 Sixteen new groups preserve complete variant definitions, including generator,
