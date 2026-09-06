@@ -34,6 +34,7 @@ PATCHED_SERVER = ArchiveInput(
 ARCHIVES = frozenset(
     {
         "Patchouli-1.21.1-93-NEOFORGE.jar",
+        "cloth-config-15.0.140-neoforge.jar",
         MAPPED_SERVER.name,
         PATCHED_SERVER.name,
         "chipped-neoforge-1.21.1-4.0.2.jar",
@@ -203,6 +204,7 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "me/shedaniel/clothconfig/ClothConfigForge.class",
     "vazkii/patchouli/common/book/BookRegistry.class",
     "vazkii/patchouli/common/multiblock/MultiblockRegistry.class",
     "vazkii/patchouli/common/multiblock/AbstractMultiblock.class",
