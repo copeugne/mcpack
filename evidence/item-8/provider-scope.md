@@ -5503,3 +5503,29 @@ whole provider membership. Remaining: bundled entry/mixin contribution roles,
 including biome selection and resource/test consumers. Do not repeat the
 modifier capture or expand generic callback internals without an unresolved
 site contribution. No new family candidate; census stays 90 resolved, 46 open.
+
+### Fabric biome selection hooks
+
+Source d052da5 (extractor 2426342) independently reproduces all six declared
+biome mixins and the NetherBiomeData/TheEndBiomeData consumers. The existing
+provider test binds the complete declared mixin set and exact source identities.
+
+| Hook | Membership role |
+| --- | --- |
+| BiomeSourceMixin | Passes possible biome sets through the extension hook. |
+| ChunkNoiseSamplerMixin, NoiseConfigMixin | Propagate the world seed to climate samplers. |
+| MultiNoiseUtilMultiNoiseSamplerMixin | Retains that seed and constructs the End biome noise sampler. |
+| NetherBiomePresetMixin | Appends caller-registered biome/noise-point pairs to the Nether preset. NetherBiomeData's map starts empty. |
+| TheEndBiomeSourceMixin | Retains the biome registry lookup, selects a returned biome through overrides and includes registered custom biomes in the possible set. |
+
+TheEndBiomeData's built-in choices reference vanilla End, highlands, small
+islands, midlands and barrens biomes. Its public methods accept replacement
+biome keys and weights from consumers. These are biome-selection contributions,
+not additional authored sites. Do not recursively audit the weighted-selection
+algorithm or generic codec behavior for family membership.
+
+Two focused Fabric cases and scoped Ruff/Basedpyright pass using the commands
+above. No new family candidate. Whole provider membership remains open for the
+other bundled entry/mixin roles, particularly resource loading and GameTest
+consumers. Census remains 90 resolved, 46 open; these completed biome roles must
+not be recaptured or reinterpreted on continuation.

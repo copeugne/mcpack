@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric biome selection roles are resolved from source d052da5 (extractor
+2426342): six declared mixins and Nether/End registration data, independently
+reproduced. Seed propagation and consumer-supplied biome selection add no site
+candidate. Two focused Fabric cases and scoped checks pass. Remaining Fabric:
+other bundled entry/mixin roles, particularly resource loading and GameTest
+consumers. Do not repeat packaged-data, modifier or biome-selection checks.
+Census remains 90 resolved, 46 open. No live runtime or capture process.
+
 Forgified Fabric API packaged-data boundary is resolved by source 6eb28e4
 (extractor bbdf6f3), independently reproduced. Its biome modifier dispatches
 consumer callbacks from an initially empty list. All 43 nested archives contain

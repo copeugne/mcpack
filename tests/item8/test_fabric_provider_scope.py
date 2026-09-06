@@ -77,3 +77,43 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
             "META-INF/jars/fabric-convention-tags-v2-2.11.1+87e5848019.jar": 491,
             "META-INF/jars/fabric-gametest-api-v1-2.0.5+29f188ce19.jar": 1,
         }
+
+
+def test_fabric_biome_selection_sources_cover_declared_mixins() -> None:
+    source = next(
+        s
+        for s in retained_sources(Path.cwd())
+        if s.name == "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar"
+    )
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    member = "META-INF/jars/fabric-biome-api-v1-13.0.31+1e62d33c19.jar"
+    directory = Path("evidence/item-8/sources/fabric-biome-selection")
+    raw = (directory / "identities.json").read_bytes()
+    assert (
+        hashlib.sha256(raw).hexdigest()
+        == "de014a8e4cb7983f0b7dee3f690487f1d7a0fe016dea4855f91d42202331cd73"
+    )
+    rows = cast("list[dict[str, str]]", json.loads(raw))
+    with ZipFile(source.path) as parent:
+        payload = parent.read(member)
+        with ZipFile(BytesIO(payload)) as archive:
+            config = cast(
+                "dict[str, object]", json.loads(archive.read("fabric-biome-api-v1.mixins.json"))
+            )
+            prefix = cast("str", config["package"]).replace(".", "/") + "/"
+            declared = {prefix + name + ".class" for name in cast("list[str]", config["mixins"])}
+            assert len(declared) == 6
+            assert not config.get("plugin")
+            assert not config.get("server")
+            assert {r["class"] for r in rows} == declared | {
+                "net/fabricmc/fabric/impl/biome/NetherBiomeData.class",
+                "net/fabricmc/fabric/impl/biome/TheEndBiomeData.class",
+            }
+            for row in rows:
+                assert row["archive"] == source.name + "!/" + member
+                assert row["archive_sha256"] == hashlib.sha256(payload).hexdigest()
+                assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+                assert (
+                    row["disassembly_sha256"]
+                    == hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
+                )
