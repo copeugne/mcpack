@@ -214,6 +214,7 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "org/betterx/bclib/api/v2/PostInitAPI.class",
     "org/betterx/bclib/api/v2/dataexchange/handler/DataExchange.class",
     "org/betterx/bclib/api/v2/dataexchange/handler/DataExchangeClientEvents.class",
     "org/betterx/bclib/api/v2/spawning/SpawnRuleBuilder.class",
