@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 53 of 136. The exact queue below has 83 open rows.
+Supported provider dispositions: 54 of 136. The exact queue below has 82 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -542,7 +542,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | --- | --- | --- |
 | `AI-Improvements-1.21-0.5.3.jar` | `ai-improvements-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing-entity AI goals and look control; no structure contribution. See small utility provider dispositions below. |
 | `Almanac-1.21.1-2-neoforge-1.5.2.jar` | `almanac-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Configuration/command support and existing item/entity behavior. No independent family. See additional shared provider dispositions below. |
-| `BetterEnd-21.0.31.jar` | `betterend-feature-scope`, `betterend-formation-pieces`, `betterend-formations-code`, `betterend-lake-helpers`; test_betterend_feature_candidates.py | Six building lists and crashed-ship packaged routes reconciled below. Remaining: other generation entries/resources, existing roots and shared modifiers; canonical grouping follows the census. |
+| `BetterEnd-21.0.31.jar` | BetterEnd source captures and shared BCLib/Wover consumers; test_betterend_feature_candidates.py | RESOLVED: Fourteen existing roots, the complete 128-template partition, feature candidates, common hooks and modifier consumers accounted for below. Named architectural and landmark grouping decisions remain open for canonical reconciliation. |
 | `BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar` | `bop-feature-scope` | Bind anomaly, monolith and bone-spine placement; settle landmark versus terrain disposition; reconcile remaining features. |
 | `CreateDragonsPlus-1.11.2b.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `CreeperOverhaul-neoforge-1.21.1-4.0.6.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
@@ -1884,3 +1884,35 @@ and its pack metadata, not additional generation data. Preserve this inspection
 with the final payload accounting. Do not recapture or reclassify the 94 feature
 classes. Overall provider counts remain 53 resolved and 83 open until that final
 join is accepted; canonical family grouping and attributes remain separate.
+
+### BetterEnd provider census closure
+
+The final payload join now passes. The frozen archive's 9,639 non-directory
+entries are accounted for by exact data categories, client assets, 668 classes,
+ten packaged datagen-cache files and nine metadata/license files. The complete
+253-entry worldgen partition includes the two configured carvers, independently
+captured in 50dd10e. They carve terrain and coat cave surfaces with cave-biome
+materials; neither introduces an authored family. The only embedded datapack
+contains four Nourish food tags and pack metadata. The sole NeoForge Mod
+annotation belongs to the already inspected BetterEnd common entry class.
+
+Together with the preceding dispositions, this closes provider candidate
+coverage: fourteen runtime roots, all 128 templates, 94 feature-package classes,
+all 63 configured custom feature types, all 32 declared common mixins, the two
+Wover modifiers, cave dispatch, retained plugin and conditional compatibility
+inputs have supported roles. This does not assert that every declared hook ran
+or that every eligible placement succeeded. Missing/disconnected templates,
+the loot callback identity mismatch and the portal modifier's lack of an End
+dimension predicate retain their recorded dispositions. No frozen data was fixed.
+
+Canonical decisions still include grouping the architectural template choices,
+the disconnected blossoming-spires house, and the fallen-pillar and obsidian
+basement landmark boundaries. Existing village, bridge, portal and crashed-ship
+routes must be reconciled with the provisional inventory, not counted again.
+These are named grouping questions, not unidentified provider contributions.
+
+Validation: thirteen focused cases, scoped Ruff and Basedpyright pass using the
+commands above. The final payload/carver case binds the exact archive contents
+and preserved source identities. Its initial overlong line was corrected before
+acceptance. Current census: 54 supported provider dispositions and 82 open rows.
+Item 8, final canonical grouping and eleven-attribute completion remain open.
