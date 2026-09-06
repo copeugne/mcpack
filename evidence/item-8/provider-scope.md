@@ -9439,3 +9439,26 @@ SHA-256: d86bac33950fd68da7afc7939df4543ecb868fa22b50273228408d4279a96cf5.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-terralith-rubble-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-terralith-rubble-r2.json
 ```
+
+### Terralith building design reconciliation, 2026-09-07
+
+The ten remaining records bind the delivered comparison sheets at 7adf45b5 and
+existing templates/graphs. Surface buildings preserve the open desert compound,
+extended valley lodge, compact igloo and glacial residence alternatives.
+Underground designs distinguish broken-roof cabins, framed mining shelters,
+elongated refinery and narrow sunken tower. Shared cabin roots and size alternatives
+remain within their respective families. The five mage tower variants share their
+tower form; the complex adds connected roads, barracks and houses and remains a
+separate assembly. Shared mob pieces are components. Full root settings remain.
+
+The existing affected definition/registry/evidence case and scoped checks pass.
+Canonical-note backlog: 90, down from 100, comprising IDAS 59 and AdoraBuild 31.
+Coverage groups remain 405. View limitations remain recorded in the source README;
+these decisions do not prove generated geometry, exposure or effective gameplay.
+Required attributes and reconciliation of 33 nonregistry contributions remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k terralith
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```

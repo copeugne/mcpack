@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+The ten remaining Terralith building relationships are resolved against delivered
+views and existing template/graph evidence. The affected definition/registry case
+and scoped checks pass. Canonical-note backlog: 90 (IDAS 59, AdoraBuild 31).
+Coverage groups remain 405. Inventory refresh follows. Required attributes and
+33 nonregistry contributions remain open; this is not full Item 8 completion.
+
 Terralith building views from selector 308b0df2 reproduce exactly. All four sheets
 were inspected; bottom clipping limits are recorded in their README. The ten
 remaining Terralith design decisions can now use these views with existing graph
