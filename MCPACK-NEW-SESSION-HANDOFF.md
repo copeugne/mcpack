@@ -6,6 +6,80 @@
 
 ### Continuation update - 2026-09-06
 
+Create membership is RESOLVED. Ponder source 0177383 (extractor 28badcf)
+and the final complete parent partition close the last gaps. Ponder templates
+are client guide scenes, GameTest templates are fixtures, and generation is
+three ore chains. No independent family added. Six focused cases, Ruff and
+Basedpyright pass. Census: 90 resolved, 46 open providers. Next: Forgified Fabric
+API, then 24 code-only and 21 unmatched rows, followed by canonical grouping.
+The 887 runtime entries and 421 provisional groups are not final family counts.
+Reuse all closed Create roles. No runtime or capture process is live.
+
+Create embedded Flywheel and Registrate membership is resolved. Flywheel
+source 4a7f244 (extractor f61db3a) is independently reproduced and client-only;
+Registrate is a consumer-driven library with no automatic entry or data payload.
+Five focused cases and scoped checks pass. Remaining Create work: Ponder
+entries/services/common accessors and template consumers, then final complete
+parent payload reconciliation. Reuse all closed roles. Census remains
+89 resolved, 47 open. No runtime or capture process is live.
+
+Create remaining 32 annotated-entry roles are now resolved from source 05d472d.
+No new capture or family candidate. All top-level annotated and declared common
+mixin roles are accounted for; do not restart them. Remaining Create work:
+embedded Flywheel/Ponder/Registrate roles, Ponder content consumers and final
+complete payload reconciliation. Existing four passing focused cases bind the
+source. Census: 89 resolved, 47 open. No runtime or source capture is live.
+
+Create remaining annotated entry source 05d472d (extractor 6fdfb9e) is
+delivered and independently reproduced. Eighteen client-only entries and four
+registry/configuration/alias entries are dispositioned; CreateBuiltInRegistries
+also resolves the common-mixin initialization question. Thirty-two captured
+annotated entries remain to interpret, followed by Ponder and the three embedded
+libraries. Do not recapture the 55-class batch. Four focused cases and scoped
+checks pass. Census: 89 resolved, 47 open. No runtime or capture process is live.
+
+Create common-mixin batch is delivered: all 43 classes in source 9ad30e0
+(extractor 969a3d9), independent repeat exact, roles in provider-scope.md.
+Four focused checks and scoped quality checks pass. Do not recapture these
+hooks. Remaining: 54 annotated entry classes, including registry reconciliation
+and the concrete CreateBuiltInRegistries.init delegate, plus Ponder consumers
+and embedded Flywheel/Ponder/Registrate roles. No new family candidate added.
+Census remains 89 resolved, 47 open. No runtime or capture process is live.
+
+Create dynamic-pack membership is resolved: StandardBuilder source 23fbee3
+(extractor 346e42e) writes recipe JSON; parent writes item tags. No family added.
+Four focused checks and scoped quality checks pass. Remaining top-level entry
+surface is explicit: 54 uncaptured annotated classes and 43 common mixins;
+client-only exclusions require annotation inspection, not gameplay audits.
+Ponder template consumers and the three embedded libraries (Flywheel, Ponder,
+Registrate) also remain. Reuse all resolved Create roles. Census: 89 resolved,
+47 open. No runtime or capture process is live.
+
+Create common dispatch and schematic construction roles are now recorded.
+Sources 65cb9b2 and b546705 independently reproduce; three focused cases and
+scoped quality checks pass. A concrete dynamic datapack call was found in
+ModBusEvents: RuntimeDataGenerator emits recipe/tag inputs, with serialization
+in RuntimeDataGenerator$StandardBuilder still to inspect. Other Create work:
+remaining annotated/common mixin roles, Ponder and embedded-library roles.
+Do not repeat common dispatch, schematic or ore interpretation. Census remains
+89 resolved, 47 open. No runtime or capture process is live.
+
+Create main entry, GameTest template construction, schematic processor
+registration and mixin plugin are captured in 9dcbd3c (extractor cd1fefb),
+independently reproduced and bound by two passing focused cases. GameTest loader
+role is resolved; per-fixture references are not claimed. Remaining Create work:
+common-event/mixin roles, schematic/Ponder consumers and embedded libraries.
+Reuse the delivered ore and GameTest loader checks. Census: 89 resolved, 47 open.
+No runtime or source capture is live.
+
+Create ore-source and packaged-data checks are delivered. Source 1fa2306
+(extractor cb34d9e) reproduces independently. Three ore chains introduce no
+additional site candidate; 67 GameTest and 178 Ponder NBT paths are partitioned.
+One focused test and scoped quality checks pass. Remaining Create membership
+work: common entry hooks, embedded-library roles and exact template consumers.
+Do not repeat the ore-writer or data-category pass. Census remains 89 resolved,
+47 open. No runtime or capture process is live.
+
 Regions Unexplored membership is RESOLVED. Final common-entry interpretation
 and root/processor source f4ad223 close the outstanding gap. All 23 packaged tree
 component classes (including roots) are bound, correcting the earlier 21-class

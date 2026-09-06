@@ -1,0 +1,545 @@
+Compiled from "RuntimeDataGenerator.java"
+public class com.simibubi.create.foundation.data.RuntimeDataGenerator {
+  private static final java.util.regex.Pattern STRIPPED_WOODS_PREFIX_REGEX;
+
+  private static final java.util.regex.Pattern STRIPPED_WOOD_SUFFIX_REGEX;
+
+  private static final java.util.regex.Pattern NON_STRIPPED_WOODS_REGEX;
+
+  private static final com.google.common.collect.Multimap<net.minecraft.resources.ResourceLocation, net.minecraft.tags.TagEntry> TAGS;
+
+  private static final it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap<net.minecraft.resources.ResourceLocation, com.google.gson.JsonElement> JSON_FILES;
+
+  private static final java.util.Map<net.minecraft.resources.ResourceLocation, net.minecraft.resources.ResourceLocation> MISMATCHED_WOOD_NAMES;
+
+  public com.simibubi.create.foundation.data.RuntimeDataGenerator();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void insertIntoPack(com.simibubi.create.foundation.pack.DynamicPack);
+    Code:
+       0: getstatic     #7                  // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+       3: invokeinterface #13,  1           // InterfaceMethod net/minecraft/core/DefaultedRegistry.keySet:()Ljava/util/Set;
+       8: invokeinterface #19,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      13: astore_1
+      14: aload_1
+      15: invokeinterface #25,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      20: ifeq          44
+      23: aload_1
+      24: invokeinterface #31,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      29: checkcast     #35                 // class net/minecraft/resources/ResourceLocation
+      32: astore_2
+      33: aload_2
+      34: invokestatic  #37                 // Method cuttingRecipes:(Lnet/minecraft/resources/ResourceLocation;)V
+      37: aload_2
+      38: invokestatic  #43                 // Method washingRecipes:(Lnet/minecraft/resources/ResourceLocation;)V
+      41: goto          14
+      44: getstatic     #46                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+      47: ldc           #52                 // String Created {} recipes which will be injected into the game
+      49: getstatic     #54                 // Field JSON_FILES:Lit/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap;
+      52: invokevirtual #58                 // Method it/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap.size:()I
+      55: invokestatic  #64                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      58: invokeinterface #70,  3           // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+      63: getstatic     #54                 // Field JSON_FILES:Lit/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap;
+      66: aload_0
+      67: dup
+      68: invokestatic  #76                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      71: pop
+      72: invokedynamic #82,  0             // InvokeDynamic #0:accept:(Lcom/simibubi/create/foundation/pack/DynamicPack;)Ljava/util/function/BiConsumer;
+      77: invokevirtual #86                 // Method it/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap.forEach:(Ljava/util/function/BiConsumer;)V
+      80: getstatic     #46                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+      83: ldc           #90                 // String Created {} tags which will be injected into the game
+      85: getstatic     #92                 // Field TAGS:Lcom/google/common/collect/Multimap;
+      88: invokeinterface #96,  1           // InterfaceMethod com/google/common/collect/Multimap.size:()I
+      93: invokestatic  #64                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      96: invokeinterface #70,  3           // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+     101: getstatic     #92                 // Field TAGS:Lcom/google/common/collect/Multimap;
+     104: invokeinterface #99,  1           // InterfaceMethod com/google/common/collect/Multimap.asMap:()Ljava/util/Map;
+     109: invokeinterface #103,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+     114: invokeinterface #19,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     119: astore_1
+     120: aload_1
+     121: invokeinterface #25,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     126: ifeq          209
+     129: aload_1
+     130: invokeinterface #31,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     135: checkcast     #108                // class java/util/Map$Entry
+     138: astore_2
+     139: new           #110                // class net/minecraft/tags/TagFile
+     142: dup
+     143: new           #112                // class java/util/ArrayList
+     146: dup
+     147: aload_2
+     148: invokeinterface #114,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     153: checkcast     #117                // class java/util/Collection
+     156: invokespecial #119                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+     159: iconst_0
+     160: invokespecial #122                // Method net/minecraft/tags/TagFile."<init>":(Ljava/util/List;Z)V
+     163: astore_3
+     164: aload_0
+     165: aload_2
+     166: invokeinterface #125,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     171: checkcast     #35                 // class net/minecraft/resources/ResourceLocation
+     174: ldc           #128                // String tags/item/
+     176: invokevirtual #130                // Method net/minecraft/resources/ResourceLocation.withPrefix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     179: getstatic     #134                // Field net/minecraft/tags/TagFile.CODEC:Lcom/mojang/serialization/Codec;
+     182: getstatic     #138                // Field com/mojang/serialization/JsonOps.INSTANCE:Lcom/mojang/serialization/JsonOps;
+     185: aload_3
+     186: invokeinterface #144,  3          // InterfaceMethod com/mojang/serialization/Codec.encodeStart:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+     191: invokeinterface #150,  1          // InterfaceMethod com/mojang/serialization/DataResult.result:()Ljava/util/Optional;
+     196: invokevirtual #156                // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+     199: checkcast     #161                // class com/google/gson/JsonElement
+     202: invokevirtual #163                // Method com/simibubi/create/foundation/pack/DynamicPack.put:(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;)Lcom/simibubi/create/foundation/pack/DynamicPack;
+     205: pop
+     206: goto          120
+     209: getstatic     #54                 // Field JSON_FILES:Lit/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap;
+     212: invokevirtual #169                // Method it/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap.clear:()V
+     215: getstatic     #54                 // Field JSON_FILES:Lit/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap;
+     218: invokevirtual #172                // Method it/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap.trim:()Z
+     221: pop
+     222: getstatic     #92                 // Field TAGS:Lcom/google/common/collect/Multimap;
+     225: invokeinterface #175,  1          // InterfaceMethod com/google/common/collect/Multimap.clear:()V
+     230: return
+
+  private static void cuttingRecipes(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: invokevirtual #176                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+       4: astore_1
+       5: getstatic     #180                // Field STRIPPED_WOODS_PREFIX_REGEX:Ljava/util/regex/Pattern;
+       8: aload_1
+       9: invokevirtual #184                // Method java/util/regex/Pattern.matcher:(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+      12: astore_2
+      13: aload_2
+      14: invokevirtual #190                // Method java/util/regex/Matcher.find:()Z
+      17: istore_3
+      18: iload_3
+      19: istore        4
+      21: iload_3
+      22: ifne          38
+      25: getstatic     #195                // Field STRIPPED_WOOD_SUFFIX_REGEX:Ljava/util/regex/Pattern;
+      28: aload_1
+      29: invokevirtual #184                // Method java/util/regex/Pattern.matcher:(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+      32: astore_2
+      33: aload_2
+      34: invokevirtual #190                // Method java/util/regex/Matcher.find:()Z
+      37: istore_3
+      38: iconst_0
+      39: istore        5
+      41: iload_3
+      42: ifne          95
+      45: getstatic     #7                  // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+      48: aload_0
+      49: ldc           #198                // String stripped_
+      51: invokevirtual #130                // Method net/minecraft/resources/ResourceLocation.withPrefix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      54: invokeinterface #200,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.containsKey:(Lnet/minecraft/resources/ResourceLocation;)Z
+      59: ifne          95
+      62: getstatic     #7                  // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+      65: aload_0
+      66: ldc           #204                // String _stripped
+      68: invokevirtual #206                // Method net/minecraft/resources/ResourceLocation.withSuffix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      71: invokeinterface #200,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.containsKey:(Lnet/minecraft/resources/ResourceLocation;)Z
+      76: ifne          95
+      79: getstatic     #209                // Field NON_STRIPPED_WOODS_REGEX:Ljava/util/regex/Pattern;
+      82: aload_1
+      83: invokevirtual #184                // Method java/util/regex/Pattern.matcher:(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+      86: astore_2
+      87: aload_2
+      88: invokevirtual #190                // Method java/util/regex/Matcher.find:()Z
+      91: istore_3
+      92: iconst_1
+      93: istore        5
+      95: iload_3
+      96: ifeq          600
+      99: iload         4
+     101: ifeq          120
+     104: aload_2
+     105: iconst_1
+     106: invokevirtual #212                // Method java/util/regex/Matcher.group:(I)Ljava/lang/String;
+     109: ifnull        120
+     112: aload_2
+     113: iconst_1
+     114: invokevirtual #212                // Method java/util/regex/Matcher.group:(I)Ljava/lang/String;
+     117: goto          122
+     120: ldc           #216                // String
+     122: astore        6
+     124: iload         4
+     126: ifne          152
+     129: iload         5
+     131: ifne          152
+     134: aload_2
+     135: iconst_3
+     136: invokevirtual #212                // Method java/util/regex/Matcher.group:(I)Ljava/lang/String;
+     139: aload_2
+     140: iconst_4
+     141: invokevirtual #212                // Method java/util/regex/Matcher.group:(I)Ljava/lang/String;
+     144: invokedynamic #218,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     149: goto          154
+     152: ldc           #216                // String
+     154: astore        7
+     156: aload_2
+     157: iload         4
+     159: ifeq          166
+     162: iconst_3
+     163: goto          167
+     166: iconst_2
+     167: invokevirtual #212                // Method java/util/regex/Matcher.group:(I)Ljava/lang/String;
+     170: astore        8
+     172: aload_0
+     173: aload_2
+     174: iload         4
+     176: ifeq          183
+     179: iconst_2
+     180: goto          184
+     183: iconst_1
+     184: invokevirtual #212                // Method java/util/regex/Matcher.group:(I)Ljava/lang/String;
+     187: invokevirtual #222                // Method net/minecraft/resources/ResourceLocation.withPath:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     190: astore        9
+     192: aload         9
+     194: aload         8
+     196: ldc           #225                // String wood
+     198: invokevirtual #227                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     201: ifeq          209
+     204: ldc           #225                // String wood
+     206: goto          211
+     209: ldc           #216                // String
+     211: invokevirtual #206                // Method net/minecraft/resources/ResourceLocation.withSuffix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     214: astore        10
+     216: getstatic     #233                // Field MISMATCHED_WOOD_NAMES:Ljava/util/Map;
+     219: aload         10
+     221: aload         10
+     223: invokeinterface #237,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     228: checkcast     #35                 // class net/minecraft/resources/ResourceLocation
+     231: astore        10
+     233: aload         9
+     235: aload         8
+     237: invokevirtual #206                // Method net/minecraft/resources/ResourceLocation.withSuffix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     240: aload         6
+     242: invokevirtual #130                // Method net/minecraft/resources/ResourceLocation.withPrefix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     245: aload         7
+     247: invokevirtual #206                // Method net/minecraft/resources/ResourceLocation.withSuffix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     250: astore        11
+     252: aload         10
+     254: ldc           #241                // String _planks
+     256: invokevirtual #206                // Method net/minecraft/resources/ResourceLocation.withSuffix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     259: astore        12
+     261: aload         10
+     263: aload         10
+     265: invokevirtual #243                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+     268: getstatic     #246                // Field com/simibubi/create/foundation/data/recipe/Mods.BTN:Lcom/simibubi/create/foundation/data/recipe/Mods;
+     271: invokevirtual #252                // Method com/simibubi/create/foundation/data/recipe/Mods.getId:()Ljava/lang/String;
+     274: invokevirtual #227                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     277: ifeq          285
+     280: ldc           #255                // String _planks_stairs
+     282: goto          288
+     285: ldc_w         #257                // String _stairs
+     288: invokevirtual #206                // Method net/minecraft/resources/ResourceLocation.withSuffix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     291: astore        13
+     293: aload         10
+     295: aload         10
+     297: invokevirtual #243                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+     300: getstatic     #246                // Field com/simibubi/create/foundation/data/recipe/Mods.BTN:Lcom/simibubi/create/foundation/data/recipe/Mods;
+     303: invokevirtual #252                // Method com/simibubi/create/foundation/data/recipe/Mods.getId:()Ljava/lang/String;
+     306: invokevirtual #227                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     309: ifeq          318
+     312: ldc_w         #259                // String _planks_slab
+     315: goto          321
+     318: ldc_w         #261                // String _slab
+     321: invokevirtual #206                // Method net/minecraft/resources/ResourceLocation.withSuffix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     324: astore        14
+     326: aload         10
+     328: ldc_w         #263                // String _fence
+     331: invokevirtual #206                // Method net/minecraft/resources/ResourceLocation.withSuffix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     334: astore        15
+     336: aload         10
+     338: ldc_w         #265                // String _fence_gate
+     341: invokevirtual #206                // Method net/minecraft/resources/ResourceLocation.withSuffix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     344: astore        16
+     346: aload         10
+     348: ldc_w         #267                // String _door
+     351: invokevirtual #206                // Method net/minecraft/resources/ResourceLocation.withSuffix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     354: astore        17
+     356: aload         10
+     358: ldc_w         #269                // String _trapdoor
+     361: invokevirtual #206                // Method net/minecraft/resources/ResourceLocation.withSuffix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     364: astore        18
+     366: aload         10
+     368: ldc_w         #271                // String _pressure_plate
+     371: invokevirtual #206                // Method net/minecraft/resources/ResourceLocation.withSuffix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     374: astore        19
+     376: aload         10
+     378: ldc_w         #273                // String _button
+     381: invokevirtual #206                // Method net/minecraft/resources/ResourceLocation.withSuffix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     384: astore        20
+     386: aload         10
+     388: ldc_w         #275                // String _sign
+     391: invokevirtual #206                // Method net/minecraft/resources/ResourceLocation.withSuffix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     394: astore        21
+     396: aload         8
+     398: ldc_w         #277                // String block
+     401: invokevirtual #279                // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     404: ifeq          411
+     407: iconst_3
+     408: goto          413
+     411: bipush        6
+     413: istore        22
+     415: iload         5
+     417: ifne          450
+     420: getstatic     #7                  // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+     423: aload         11
+     425: invokeinterface #200,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.containsKey:(Lnet/minecraft/resources/ResourceLocation;)Z
+     430: ifeq          439
+     433: aload         11
+     435: aload_0
+     436: invokestatic  #283                // Method simpleWoodRecipe:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;)V
+     439: aload_0
+     440: aload         12
+     442: iload         22
+     444: invokestatic  #287                // Method simpleWoodRecipe:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;I)V
+     447: goto          503
+     450: getstatic     #7                  // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+     453: aload         12
+     455: invokeinterface #200,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.containsKey:(Lnet/minecraft/resources/ResourceLocation;)Z
+     460: ifeq          503
+     463: aload_0
+     464: invokevirtual #243                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+     467: aload         10
+     469: invokevirtual #176                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+     472: invokedynamic #290,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     477: invokestatic  #291                // Method com/simibubi/create/Create.asResource:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     480: astore        23
+     482: aload         23
+     484: aload_0
+     485: invokestatic  #294                // Method insertIntoTag:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;)V
+     488: getstatic     #297                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+     491: aload         23
+     493: invokestatic  #302                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+     496: aload         12
+     498: iload         22
+     500: invokestatic  #308                // Method simpleWoodRecipe:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/resources/ResourceLocation;I)V
+     503: aload_1
+     504: ldc_w         #311                // String _wood
+     507: invokevirtual #279                // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     510: ifne          600
+     513: aload_1
+     514: ldc_w         #313                // String _hyphae
+     517: invokevirtual #279                // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     520: ifne          600
+     523: getstatic     #7                  // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+     526: aload         12
+     528: invokeinterface #200,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.containsKey:(Lnet/minecraft/resources/ResourceLocation;)Z
+     533: ifeq          600
+     536: aload         12
+     538: aload         13
+     540: invokestatic  #283                // Method simpleWoodRecipe:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;)V
+     543: aload         12
+     545: aload         14
+     547: iconst_2
+     548: invokestatic  #287                // Method simpleWoodRecipe:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;I)V
+     551: aload         12
+     553: aload         15
+     555: invokestatic  #283                // Method simpleWoodRecipe:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;)V
+     558: aload         12
+     560: aload         16
+     562: invokestatic  #283                // Method simpleWoodRecipe:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;)V
+     565: aload         12
+     567: aload         17
+     569: invokestatic  #283                // Method simpleWoodRecipe:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;)V
+     572: aload         12
+     574: aload         18
+     576: invokestatic  #283                // Method simpleWoodRecipe:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;)V
+     579: aload         12
+     581: aload         19
+     583: invokestatic  #283                // Method simpleWoodRecipe:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;)V
+     586: aload         12
+     588: aload         20
+     590: invokestatic  #283                // Method simpleWoodRecipe:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;)V
+     593: aload         12
+     595: aload         21
+     597: invokestatic  #283                // Method simpleWoodRecipe:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;)V
+     600: return
+
+  private static void washingRecipes(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: getstatic     #315                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+       3: aload_0
+       4: invokeinterface #318,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+       9: checkcast     #322                // class net/minecraft/world/level/block/Block
+      12: astore_1
+      13: aload_1
+      14: instanceof    #324                // class net/minecraft/world/level/block/ConcretePowderBlock
+      17: ifeq          48
+      20: aload_1
+      21: checkcast     #324                // class net/minecraft/world/level/block/ConcretePowderBlock
+      24: astore_2
+      25: aload_2
+      26: checkcast     #326                // class com/simibubi/create/foundation/mixin/accessor/ConcretePowderBlockAccessor
+      29: invokeinterface #328,  1          // InterfaceMethod com/simibubi/create/foundation/mixin/accessor/ConcretePowderBlockAccessor.create$getConcrete:()Lnet/minecraft/world/level/block/Block;
+      34: astore_3
+      35: aload_0
+      36: getstatic     #315                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+      39: aload_3
+      40: invokeinterface #332,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+      45: invokestatic  #335                // Method simpleSplashingRecipe:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;)V
+      48: return
+
+  private static void insertIntoTag(net.minecraft.resources.ResourceLocation, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: getstatic     #7                  // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+       3: aload_1
+       4: invokeinterface #200,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.containsKey:(Lnet/minecraft/resources/ResourceLocation;)Z
+       9: ifeq          26
+      12: getstatic     #92                 // Field TAGS:Lcom/google/common/collect/Multimap;
+      15: aload_0
+      16: aload_1
+      17: invokestatic  #338                // Method net/minecraft/tags/TagEntry.optionalElement:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagEntry;
+      20: invokeinterface #344,  3          // InterfaceMethod com/google/common/collect/Multimap.put:(Ljava/lang/Object;Ljava/lang/Object;)Z
+      25: pop
+      26: return
+
+  private static void simpleWoodRecipe(net.minecraft.resources.ResourceLocation, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_1
+       3: invokestatic  #287                // Method simpleWoodRecipe:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;I)V
+       6: return
+
+  private static void simpleWoodRecipe(net.minecraft.resources.ResourceLocation, net.minecraft.resources.ResourceLocation, int);
+    Code:
+       0: getstatic     #7                  // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+       3: aload_1
+       4: invokeinterface #200,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.containsKey:(Lnet/minecraft/resources/ResourceLocation;)Z
+       9: ifeq          85
+      12: new           #347                // class com/simibubi/create/foundation/data/RuntimeDataGenerator$StandardBuilder
+      15: dup
+      16: aload_0
+      17: invokevirtual #243                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+      20: invokedynamic #349,  0            // InvokeDynamic #3:create:()Lcom/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Factory;
+      25: aload_0
+      26: invokevirtual #176                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      29: aload_1
+      30: invokevirtual #176                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      33: invokespecial #352                // Method com/simibubi/create/foundation/data/RuntimeDataGenerator$StandardBuilder."<init>":(Ljava/lang/String;Lcom/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Factory;Ljava/lang/String;Ljava/lang/String;)V
+      36: getstatic     #7                  // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+      39: aload_0
+      40: invokeinterface #318,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+      45: checkcast     #355                // class net/minecraft/world/level/ItemLike
+      48: invokevirtual #357                // Method com/simibubi/create/foundation/data/RuntimeDataGenerator$StandardBuilder.require:(Lnet/minecraft/world/level/ItemLike;)Lcom/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder;
+      51: checkcast     #361                // class com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder
+      54: getstatic     #7                  // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+      57: aload_1
+      58: invokeinterface #318,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+      63: checkcast     #355                // class net/minecraft/world/level/ItemLike
+      66: iload_2
+      67: invokevirtual #363                // Method com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder.output:(Lnet/minecraft/world/level/ItemLike;I)Lcom/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder;
+      70: checkcast     #361                // class com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder
+      73: bipush        50
+      75: invokevirtual #367                // Method com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder.duration:(I)Lcom/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder;
+      78: checkcast     #361                // class com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder
+      81: invokevirtual #371                // Method com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder.build:()Lcom/simibubi/create/content/processing/recipe/ProcessingRecipe;
+      84: pop
+      85: return
+
+  private static void simpleWoodRecipe(net.minecraft.tags.TagKey<net.minecraft.world.item.Item>, net.minecraft.resources.ResourceLocation, int);
+    Code:
+       0: getstatic     #7                  // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+       3: aload_1
+       4: invokeinterface #200,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.containsKey:(Lnet/minecraft/resources/ResourceLocation;)Z
+       9: ifeq          85
+      12: new           #347                // class com/simibubi/create/foundation/data/RuntimeDataGenerator$StandardBuilder
+      15: dup
+      16: aload_0
+      17: invokevirtual #375                // Method net/minecraft/tags/TagKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      20: invokevirtual #243                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+      23: invokedynamic #349,  0            // InvokeDynamic #3:create:()Lcom/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Factory;
+      28: aload_0
+      29: invokevirtual #375                // Method net/minecraft/tags/TagKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      32: invokevirtual #176                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      35: invokedynamic #379,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      40: aload_1
+      41: invokevirtual #176                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      44: invokespecial #352                // Method com/simibubi/create/foundation/data/RuntimeDataGenerator$StandardBuilder."<init>":(Ljava/lang/String;Lcom/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Factory;Ljava/lang/String;Ljava/lang/String;)V
+      47: aload_0
+      48: invokevirtual #382                // Method com/simibubi/create/foundation/data/RuntimeDataGenerator$StandardBuilder.require:(Lnet/minecraft/tags/TagKey;)Lcom/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder;
+      51: checkcast     #361                // class com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder
+      54: getstatic     #7                  // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+      57: aload_1
+      58: invokeinterface #318,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+      63: checkcast     #355                // class net/minecraft/world/level/ItemLike
+      66: iload_2
+      67: invokevirtual #363                // Method com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder.output:(Lnet/minecraft/world/level/ItemLike;I)Lcom/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder;
+      70: checkcast     #361                // class com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder
+      73: bipush        50
+      75: invokevirtual #367                // Method com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder.duration:(I)Lcom/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder;
+      78: checkcast     #361                // class com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder
+      81: invokevirtual #371                // Method com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder.build:()Lcom/simibubi/create/content/processing/recipe/ProcessingRecipe;
+      84: pop
+      85: return
+
+  private static void simpleSplashingRecipe(net.minecraft.resources.ResourceLocation, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: new           #347                // class com/simibubi/create/foundation/data/RuntimeDataGenerator$StandardBuilder
+       3: dup
+       4: aload_0
+       5: invokevirtual #243                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+       8: invokedynamic #385,  0            // InvokeDynamic #5:create:()Lcom/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Factory;
+      13: aload_0
+      14: invokevirtual #176                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      17: aload_1
+      18: invokevirtual #176                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      21: invokespecial #352                // Method com/simibubi/create/foundation/data/RuntimeDataGenerator$StandardBuilder."<init>":(Ljava/lang/String;Lcom/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Factory;Ljava/lang/String;Ljava/lang/String;)V
+      24: getstatic     #315                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+      27: aload_0
+      28: invokeinterface #318,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+      33: checkcast     #355                // class net/minecraft/world/level/ItemLike
+      36: invokevirtual #357                // Method com/simibubi/create/foundation/data/RuntimeDataGenerator$StandardBuilder.require:(Lnet/minecraft/world/level/ItemLike;)Lcom/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder;
+      39: checkcast     #361                // class com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder
+      42: getstatic     #315                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+      45: aload_1
+      46: invokeinterface #318,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+      51: checkcast     #355                // class net/minecraft/world/level/ItemLike
+      54: invokevirtual #386                // Method com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder.output:(Lnet/minecraft/world/level/ItemLike;)Lcom/simibubi/create/content/processing/recipe/ProcessingRecipeBuilder;
+      57: checkcast     #361                // class com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder
+      60: invokevirtual #371                // Method com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder.build:()Lcom/simibubi/create/content/processing/recipe/ProcessingRecipe;
+      63: pop
+      64: return
+
+  static {};
+    Code:
+       0: ldc_w         #388                // String (\\w*)??stripped_(\\w*)(_log|_wood|_stem|_hyphae|_block|(?<!_)wood)()$
+       3: invokestatic  #390                // Method java/util/regex/Pattern.compile:(Ljava/lang/String;)Ljava/util/regex/Pattern;
+       6: putstatic     #180                // Field STRIPPED_WOODS_PREFIX_REGEX:Ljava/util/regex/Pattern;
+       9: ldc_w         #394                // String (\\w*)(_log|_wood|_stem|_hyphae|_block|(?<!_)wood)(\\w*)_stripped(\\w*)
+      12: invokestatic  #390                // Method java/util/regex/Pattern.compile:(Ljava/lang/String;)Ljava/util/regex/Pattern;
+      15: putstatic     #195                // Field STRIPPED_WOOD_SUFFIX_REGEX:Ljava/util/regex/Pattern;
+      18: ldc_w         #396                // String ^(?!stripped_)([a-z_]+)(_log|_wood|_stem|_hyphae|(?<!bioshroom)_block)(([a-z_]+)(?<!_stripped))?$
+      21: invokestatic  #390                // Method java/util/regex/Pattern.compile:(Ljava/lang/String;)Ljava/util/regex/Pattern;
+      24: putstatic     #209                // Field NON_STRIPPED_WOODS_REGEX:Ljava/util/regex/Pattern;
+      27: invokestatic  #398                // Method com/google/common/collect/HashMultimap.create:()Lcom/google/common/collect/HashMultimap;
+      30: putstatic     #92                 // Field TAGS:Lcom/google/common/collect/Multimap;
+      33: new           #59                 // class it/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap
+      36: dup
+      37: invokespecial #403                // Method it/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap."<init>":()V
+      40: putstatic     #54                 // Field JSON_FILES:Lit/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap;
+      43: invokestatic  #404                // Method com/google/common/collect/ImmutableMap.builder:()Lcom/google/common/collect/ImmutableMap$Builder;
+      46: getstatic     #410                // Field com/simibubi/create/foundation/data/recipe/Mods.ARS_N:Lcom/simibubi/create/foundation/data/recipe/Mods;
+      49: ldc_w         #413                // String blue_archwood
+      52: invokevirtual #415                // Method com/simibubi/create/foundation/data/recipe/Mods.asResource:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      55: getstatic     #410                // Field com/simibubi/create/foundation/data/recipe/Mods.ARS_N:Lcom/simibubi/create/foundation/data/recipe/Mods;
+      58: ldc_w         #416                // String archwood
+      61: invokevirtual #415                // Method com/simibubi/create/foundation/data/recipe/Mods.asResource:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      64: invokevirtual #418                // Method com/google/common/collect/ImmutableMap$Builder.put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+      67: getstatic     #423                // Field com/simibubi/create/foundation/data/recipe/Mods.DD:Lcom/simibubi/create/foundation/data/recipe/Mods;
+      70: ldc_w         #426                // String blooming
+      73: invokevirtual #415                // Method com/simibubi/create/foundation/data/recipe/Mods.asResource:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      76: getstatic     #423                // Field com/simibubi/create/foundation/data/recipe/Mods.DD:Lcom/simibubi/create/foundation/data/recipe/Mods;
+      79: ldc_w         #428                // String bloom
+      82: invokevirtual #415                // Method com/simibubi/create/foundation/data/recipe/Mods.asResource:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      85: invokevirtual #418                // Method com/google/common/collect/ImmutableMap$Builder.put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+      88: invokevirtual #430                // Method com/google/common/collect/ImmutableMap$Builder.build:()Lcom/google/common/collect/ImmutableMap;
+      91: putstatic     #233                // Field MISMATCHED_WOOD_NAMES:Ljava/util/Map;
+      94: return
+}

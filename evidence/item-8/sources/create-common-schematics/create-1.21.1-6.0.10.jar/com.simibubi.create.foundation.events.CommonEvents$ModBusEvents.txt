@@ -1,0 +1,131 @@
+Compiled from "CommonEvents.java"
+public class com.simibubi.create.foundation.events.CommonEvents$ModBusEvents {
+  public com.simibubi.create.foundation.events.CommonEvents$ModBusEvents();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void addPackFinders(net.neoforged.neoforge.event.AddPackFindersEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #7                  // Method net/neoforged/neoforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+       4: getstatic     #13                 // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+       7: if_acmpne     47
+      10: new           #19                 // class com/simibubi/create/foundation/pack/DynamicPack
+      13: dup
+      14: ldc           #21                 // String create:dynamic_data
+      16: getstatic     #13                 // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+      19: invokespecial #23                 // Method com/simibubi/create/foundation/pack/DynamicPack."<init>":(Ljava/lang/String;Lnet/minecraft/server/packs/PackType;)V
+      22: astore_1
+      23: aload_1
+      24: invokestatic  #26                 // Method com/simibubi/create/foundation/data/RuntimeDataGenerator.insertIntoPack:(Lcom/simibubi/create/foundation/pack/DynamicPack;)V
+      27: aload_0
+      28: new           #32                 // class com/simibubi/create/foundation/pack/DynamicPackSource
+      31: dup
+      32: ldc           #21                 // String create:dynamic_data
+      34: getstatic     #13                 // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+      37: getstatic     #34                 // Field net/minecraft/server/packs/repository/Pack$Position.BOTTOM:Lnet/minecraft/server/packs/repository/Pack$Position;
+      40: aload_1
+      41: invokespecial #40                 // Method com/simibubi/create/foundation/pack/DynamicPackSource."<init>":(Ljava/lang/String;Lnet/minecraft/server/packs/PackType;Lnet/minecraft/server/packs/repository/Pack$Position;Lnet/minecraft/server/packs/PackResources;)V
+      44: invokevirtual #43                 // Method net/neoforged/neoforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+      47: return
+
+  public static void onRegisterMapDecorationRenderers(net.neoforged.neoforge.client.gui.map.RegisterMapDecorationRenderersEvent);
+    Code:
+       0: aload_0
+       1: getstatic     #47                 // Field com/simibubi/create/AllMapDecorationTypes.STATION_MAP_DECORATION:Lnet/minecraft/core/Holder;
+       4: invokeinterface #53,  1           // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+       9: checkcast     #59                 // class net/minecraft/world/level/saveddata/maps/MapDecorationType
+      12: new           #61                 // class com/simibubi/create/foundation/map/StationMapDecorationRenderer
+      15: dup
+      16: invokespecial #63                 // Method com/simibubi/create/foundation/map/StationMapDecorationRenderer."<init>":()V
+      19: invokevirtual #64                 // Method net/neoforged/neoforge/client/gui/map/RegisterMapDecorationRenderersEvent.register:(Lnet/minecraft/world/level/saveddata/maps/MapDecorationType;Lnet/neoforged/neoforge/client/gui/map/IMapDecorationRenderer;)V
+      22: return
+
+  public static void registerCapabilities(net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent);
+    Code:
+       0: aload_0
+       1: invokestatic  #70                 // Method com/simibubi/create/content/logistics/chute/ChuteBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+       4: aload_0
+       5: invokestatic  #76                 // Method com/simibubi/create/content/logistics/chute/SmartChuteBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+       8: aload_0
+       9: invokestatic  #79                 // Method com/simibubi/create/content/kinetics/belt/BeltBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      12: aload_0
+      13: invokestatic  #82                 // Method com/simibubi/create/content/processing/basin/BasinBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      16: aload_0
+      17: invokestatic  #85                 // Method com/simibubi/create/content/logistics/tunnel/BeltTunnelBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      20: aload_0
+      21: invokestatic  #88                 // Method com/simibubi/create/content/logistics/tunnel/BrassTunnelBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      24: aload_0
+      25: invokestatic  #91                 // Method com/simibubi/create/content/logistics/crate/CreativeCrateBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      28: aload_0
+      29: invokestatic  #94                 // Method com/simibubi/create/content/kinetics/crusher/CrushingWheelControllerBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      32: aload_0
+      33: invokestatic  #97                 // Method com/simibubi/create/content/equipment/toolbox/ToolboxBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      36: aload_0
+      37: invokestatic  #100                // Method com/simibubi/create/content/kinetics/deployer/DeployerBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      40: aload_0
+      41: invokestatic  #103                // Method com/simibubi/create/content/logistics/depot/DepotBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      44: aload_0
+      45: invokestatic  #106                // Method com/simibubi/create/content/contraptions/actors/psi/PortableFluidInterfaceBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      48: aload_0
+      49: invokestatic  #109                // Method com/simibubi/create/content/fluids/spout/SpoutBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      52: aload_0
+      53: invokestatic  #112                // Method com/simibubi/create/content/contraptions/actors/psi/PortableItemInterfaceBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      56: aload_0
+      57: invokestatic  #115                // Method com/simibubi/create/content/kinetics/saw/SawBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      60: aload_0
+      61: invokestatic  #118                // Method com/simibubi/create/content/logistics/depot/EjectorBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      64: aload_0
+      65: invokestatic  #121                // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      68: aload_0
+      69: invokestatic  #124                // Method com/simibubi/create/content/fluids/tank/CreativeFluidTankBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      72: aload_0
+      73: invokestatic  #127                // Method com/simibubi/create/content/fluids/hosePulley/HosePulleyBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      76: aload_0
+      77: invokestatic  #130                // Method com/simibubi/create/content/fluids/drain/ItemDrainBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      80: aload_0
+      81: invokestatic  #133                // Method com/simibubi/create/content/logistics/vault/ItemVaultBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      84: aload_0
+      85: invokestatic  #136                // Method com/simibubi/create/content/kinetics/crafter/MechanicalCrafterBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      88: aload_0
+      89: invokestatic  #139                // Method com/simibubi/create/content/kinetics/millstone/MillstoneBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      92: aload_0
+      93: invokestatic  #142                // Method com/simibubi/create/content/kinetics/gauge/StressGaugeBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+      96: aload_0
+      97: invokestatic  #145                // Method com/simibubi/create/content/kinetics/gauge/SpeedGaugeBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     100: aload_0
+     101: invokestatic  #148                // Method com/simibubi/create/content/trains/station/StationBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     104: aload_0
+     105: invokestatic  #151                // Method com/simibubi/create/content/kinetics/speedController/SpeedControllerBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     108: aload_0
+     109: invokestatic  #154                // Method com/simibubi/create/content/kinetics/transmission/sequencer/SequencedGearshiftBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     112: aload_0
+     113: invokestatic  #157                // Method com/simibubi/create/content/redstone/displayLink/DisplayLinkBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     116: aload_0
+     117: invokestatic  #160                // Method com/simibubi/create/content/logistics/stockTicker/StockTickerBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     120: aload_0
+     121: invokestatic  #163                // Method com/simibubi/create/content/logistics/packager/PackagerBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     124: aload_0
+     125: invokestatic  #166                // Method com/simibubi/create/content/logistics/packager/repackager/RepackagerBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     128: aload_0
+     129: invokestatic  #169                // Method com/simibubi/create/content/logistics/packagePort/postbox/PostboxBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     132: aload_0
+     133: invokestatic  #172                // Method com/simibubi/create/content/logistics/packagePort/frogport/FrogportBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     136: aload_0
+     137: invokestatic  #175                // Method com/simibubi/create/content/logistics/redstoneRequester/RedstoneRequesterBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     140: aload_0
+     141: invokestatic  #178                // Method com/simibubi/create/content/logistics/tableCloth/TableClothBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     144: aload_0
+     145: invokestatic  #181                // Method com/simibubi/create/content/trains/signal/SignalBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     148: aload_0
+     149: invokestatic  #184                // Method com/simibubi/create/content/kinetics/motor/CreativeMotorBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     152: aload_0
+     153: invokestatic  #187                // Method com/simibubi/create/content/trains/observer/TrackObserverBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     156: aload_0
+     157: invokestatic  #190                // Method com/simibubi/create/content/redstone/nixieTube/NixieTubeBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     160: aload_0
+     161: invokestatic  #193                // Method com/simibubi/create/content/contraptions/chassis/StickerBlockEntity.registerCapabilities:(Lnet/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent;)V
+     164: return
+}

@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 89 of 136. The exact queue below has 47 open rows.
+Supported provider dispositions: 90 of 136. The exact queue below has 46 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -644,7 +644,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `coffee_delight-1.4.1.jar` | `coffee-delight-provider` (49445ab), test_coffee_delight_provider_scope.py | RESOLVED: Vanilla coffee-bush patch and food/item content, with no independent structure family. Full disposition below. |
 | `collective-1.21.1-8.25.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `comforts-neoforge-9.0.5+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `create-1.21.1-6.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
+| `create-1.21.1-6.0.10.jar` | Create captures and test_create_provider_scope.py; final disposition below. | RESOLVED: Ore generation, player construction, machine behavior, GameTest fixtures and client Ponder scenes. All three embedded libraries accounted for. No independent natural structure family. |
 | `create-enchantment-industry-2.4.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `createbigcannons-5.11.6+mc.1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `createdieselgenerators-1.21.1-1.3.15.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -5177,3 +5177,301 @@ hashes and compares every packaged tree-component class against the captured
 set. Final RU common-entry interpretation and provider closure remain open;
 archive, overlay, feature and tree-component coverage need no repetition.
 Census remains 88 resolved providers, 48 open.
+
+### Create packaged generation boundary
+
+Source 1fa2306, extractor cb34d9e, preserves AllFeatures, LayeredOreFeature,
+ConfigPlacementFilter and CreateGameTests. Independent capture reproduces
+byte-for-byte; identities SHA-256 is
+7fb69a735eb1ffd0ada39ca9d1950120cf5fa87b142dc3e9814fab7ab9b5a5fe.
+
+The hash-bound packaged data contains exactly three configured/placed/modifier
+chains: zinc_ore, striated_ores_overworld and striated_ores_nether. Zinc uses
+vanilla ore; the other two use the registered layered_ore feature. The captured
+writer selects supplied layer states and replaces matching terrain, respecting
+write eligibility and air exposure. It does not create another site candidate.
+ConfigPlacementFilter reads the common world-generation disable flag. Effective
+activation is separate from this contribution-role disposition.
+
+All 245 top-level NBT resources partition into 67 data/create/structure/gametest
+paths and 178 assets/create/ponder paths. CreateGameTests registers the six test
+classes with RegisterGameTestsEvent and delegates test construction to
+CreateTestFunction. Exact template-consumer reconciliation remains required;
+this resource-path partition alone does not prove reachability or exclusion.
+No packaged structure definitions or template pools occur in the full data
+category partition. Embedded archive contents remain outside this partial check.
+
+```sh
+uv run pytest -q tests/item8/test_create_provider_scope.py
+uv run ruff check tests/item8/test_create_provider_scope.py
+uv run basedpyright tests/item8/test_create_provider_scope.py
+```
+
+One focused case passes (0.13s); scoped checks pass. Initial formatting and
+untyped JSON findings were corrected. Create remains OPEN for common entry,
+embedded-library roles and remaining template consumers. Census remains
+89 resolved and 47 open. Reuse these ore-source and packaged-data checks.
+
+### Create main entry and test-template consumer
+
+Source 9dcbd3c (extractor cd1fefb) retains four additional entry/consumer classes;
+independent capture matches. Identities SHA-256:
+151d5db9de69c37bd56cb596da59fe227f4f750b77a873cae8c0459b7d4738d5.
+The existing Create provider test binds every captured byte to its frozen JAR.
+
+CreateTestFunction.of accepts GameTest-annotated methods, requires a nonempty
+template and a GameTestGroup, constructs %s:gametest/%s/%s from namespace, group
+path and template, and builds a Minecraft TestFunction. Together with the prior
+CreateGameTests registration this resolves the test-loader role. It does not
+claim that every packaged fixture is currently referenced by a test annotation.
+Unused fixtures would still require an explicit disconnected disposition.
+
+Create.onCtor registers the already resolved ore feature and placement types,
+content/recipe/entity systems and one structure processor registration.
+AllStructureProcessorTypes registers only create:schematic, using
+SchematicProcessor.CODEC. Its consuming construction path remains to be bound.
+The common setup initializes fluid, NBT and construction interaction handlers.
+The declared CreateMixinPlugin supplies no additional mixin list and only filters
+Xaero compatibility classes according to mod availability. Other common mixin
+and event bodies remain outstanding; the constructor alone is not their proof.
+
+Two focused cases pass (0.16s), with scoped Ruff and Basedpyright passing using
+the commands in the preceding checkpoint. Create remains OPEN. Continue its
+common-event/mixin membership roles, schematic/Ponder consumers and embedded
+library entries. Do not repeat the ore or GameTest loader interpretation.
+Census remains 89 resolved, 47 open. No runtime or capture process is live.
+
+### Create common dispatch and schematic construction
+
+Source 65cb9b2 (extractor 76ac38c) preserves CommonEvents, ModBusEvents and
+three schematic consumers; source b546705 (extractor 6c26595) preserves the
+observed RuntimeDataGenerator. Both independent captures reproduce exactly.
+Their identities hashes are bound in test_create_provider_scope.py.
+
+CommonEvents dispatches existing contraption, minecart, train, logistics,
+redstone and toolbox state updates, player synchronization, command registration,
+recipe/belt reload listeners and lifecycle cleanup. These dispatch roles do not
+add another authored-site candidate. Do not expand into ordinary machine or
+vehicle simulation internals without a concrete membership question.
+
+ServerSchematicLoader accepts a ServerPlayer upload into the uploaded-schematic
+area and associates it with a schematic table. SchematicPrinter requires a
+deployed schematic ItemStack and anchor; it loads the supplied template into a
+SchematicLevel, prepares transformed block/entity targets and material requirements.
+SchematicProcessor handles supplied template NBT and entity filtering. This is
+player construction, not an additional natural-generation family. This scope
+finding is not a security or correctness audit of schematic upload/printing.
+
+ModBusEvents also adds create:dynamic_data through RuntimeDataGenerator. That
+concrete call requires inspection beyond the packaged JSON catalog, using the
+existing extractor rather than a new measurement system. The captured writer
+iterates registered items, constructs cutting/washing recipes and item tags,
+then inserts them into the dynamic pack. Recipe serialization is delegated to
+RuntimeDataGenerator$StandardBuilder and remains the exact uninspected output
+boundary. Preserve that outstanding check; do not claim whole dynamic-pack closure.
+
+Three focused cases pass (0.22s), with scoped Ruff/Basedpyright passing using
+the existing commands above. Create remains OPEN for the dynamic recipe output
+boundary, other annotated/common mixin entry roles, Ponder and embedded-library
+roles. Reuse completed common dispatch and schematic interpretation. Census is
+89 resolved and 47 open. No runtime or source capture process is live.
+
+### Create dynamic-data output resolved
+
+Source 23fbee3, extractor 346e42e, preserves StandardBuilder. Its independent
+capture matches; identities SHA-256 is
+3bfb8d0f3a362eec0930be85992d6ee2470bf3aa40b1621748ec7c78061b7292.
+The builder encodes a processing recipe with Recipe.CONDITIONAL_CODEC and inserts
+successful JSON results into JSON_FILES with the recipe/ prefix. Together with
+RuntimeDataGenerator's item-tag writer, this closes the observed dynamic-pack
+membership question: recipe and item-tag content, no additional family candidate.
+No recursive inspection of generic recipe codecs is required for membership.
+
+The same focused test file now inventories the declared top-level entry surface:
+58 classes contain Mod/EventBusSubscriber annotation descriptors, and 43 distinct
+classes are declared in the common mixin list. These sets are disjoint. At this
+checkpoint four annotated entries are already captured (Create, CommonEvents,
+ModBusEvents and CreateGameTests), leaving 54 annotated classes and 43 common
+mixins to disposition. Client-only annotations can justify exclusion once
+inspected; these are entry checks, not 97 new families or a requirement to audit
+all gameplay helpers. The three embedded libraries remain Flywheel, Ponder and
+Registrate. Ponder template-consumer roles remain outstanding.
+
+Four focused cases pass (0.47s); scoped Ruff/Basedpyright pass. Provider census
+remains 89 resolved and 47 open. Continue the finite entry and embedded-library
+checks without reopening the resolved dynamic pack, ore or schematic roles.
+
+### Create declared common-mixin roles
+
+Source 9ad30e0 (extractor 969a3d9) retains all 43 declared common mixins with
+annotations. Independent capture matches; identities SHA-256:
+e7941906291f7bfe6f15b3989e4db734cb57c0aec9e2ac55f370bd4cd2be7193.
+The focused test requires exact equality between captured classes and the
+common declaration list, in addition to every source and disassembly hash.
+
+| Declared hooks | Membership role |
+| --- | --- |
+| ArmorTrimMixin, CustomItemUseEffectsMixin, SmithingMenuMixin | Cardboard trim textures, custom use effects, trim advancement and backtank enchantment handling. |
+| BeehiveBlockMixin, BlockItemMixin, BlockMixin | Deployer hive interaction, placement and captured block drops. Existing machine interactions. |
+| EnchantedCountIncreaseFunctionMixin | Loot count adjustment for crush damage. Existing entity loot behavior, not a generation route. |
+| EntityMixin, LavaSwimmingMixin, MobMixin, PlayerMixin, ProjectileUtilMixin | Fire-immunity metadata, seats, diving boots, contraption collision/attack/pickup and rider interaction. |
+| MapItemSavedDataMixin | Existing station marker persistence, placement on a map and removal/update when stations change. |
+| WaterWheelFluidSpreadMixin | Fluid passage around an existing waterwheel and its structural blocks. |
+| ItemStackMixin and the three datafixer mixins | Clipboard component migration, stored block-position renames, item-component migration and schema registration for existing data. |
+| BuiltInRegistriesMixin | Initializes CreateBuiltInRegistries and skips the validation callback for Create-owned registries. The initialization delegate remains part of the pending registry-entry check; do not infer registry content from skipped validation. |
+| Twenty-four accessor mixins | Expose existing block shape/state, loot predicate, concrete conversion, crop age, dispenser, falling block, fluid, test, item-frame/model/inventory, entity particle, registry, minecart fuel, effect, NBT accounting, potion, projectile, entity-tick, recipe, system-report and hit-result data or methods. These accessors do not initiate generation. |
+
+This closes interpretation of the declared common-hook bodies. No named family
+candidate was added. Do not recursively audit ordinary machine, movement, loot
+or migration helpers on the strength of these hooks alone. The precise
+CreateBuiltInRegistries initialization boundary remains to reconcile with the
+54 outstanding annotated entries. Ponder consumers and the three embedded
+libraries also remain. The common-hook batch must not be recaptured.
+
+Four focused cases pass (0.47s); scoped Ruff/Basedpyright pass. Census remains
+89 resolved providers and 47 open. No runtime or capture process is live.
+
+### Create remaining entry capture, client exclusions and registry roles
+
+Source 05d472d (extractor 6fdfb9e) retains the remaining 54 annotated entries
+and CreateBuiltInRegistries. Independent capture reproduces exactly; identities
+SHA-256 is 3428176fa46ad9d0a07e89f9f7c1748b8bea6154e793ad07bc7e251dbf8fbafb.
+The test binds all bytes and requires exact equality with the annotated class
+set minus the four previously captured entries, plus the registry initializer.
+Do not recapture this batch. Full methods and annotations are already delivered.
+
+Seventeen subscribers explicitly declare Dist.CLIENT, and CreateClient declares
+a client-only Mod entry. These eighteen entries are excluded from dedicated
+server generation on their loader metadata. They are rendering/input/UI helpers;
+client class names alone were not used as exclusion evidence. Ponder's supplied
+assets and embedded library still need their separate content-role disposition.
+
+Four additional annotated entries have resolved non-family roles:
+
+- CreateRegistriesImpl registers the potato projectile datapack registry.
+- CreateDataMapsImpl registers regular and superheated blaze-burner fuel maps.
+- RemapHelper aliases legacy block, item, fluid and block-entity identifiers.
+- AllConfigs registers client/common/server configuration, stress-value providers
+  and load/reload dispatch.
+
+CreateBuiltInRegistries defines twelve typed registries for mechanical arms,
+fan processing, item attributes, displays, mounted storage, contraptions,
+package-port targets and potato-projectile render/hit actions. This resolves
+the specific registry-initialization question left by BuiltInRegistriesMixin.
+It introduces no independent structure-family registry.
+
+Thirty-two of the captured annotated entries still need their final contribution
+role recorded. Their captures must be reused; ordinary gameplay helper tracing
+is not required absent a specific unresolved site boundary. The three embedded
+libraries and Ponder consumers also remain. No new family candidate was added.
+Four focused cases pass (0.51s); scoped checks pass after fixing Ruff's regex
+flag spelling. Census remains 89 resolved, 47 open. No capture or runtime is live.
+
+### Create remaining 32 annotated entry roles resolved
+
+Reuse full source 05d472d and its exact source binding in the four passing
+Create focused cases recorded above. This increment interprets existing evidence;
+no new capture, runtime, measurement system or test framework was needed.
+The following groups account for all 32 entries left after the eighteen client
+exclusions and four registry/configuration dispositions.
+
+| Entries | Contribution role |
+| --- | --- |
+| SuperGlueHandler, SuperGlueItem | Player block placement and glue-item interaction, creating glue attachments/effects around placed blocks. |
+| CouplingHandler, MinecartCouplingItem, MinecartContraptionItem | Existing minecart occupancy/coupling and wrench-driven pickup of a supplied contraption into an item. |
+| CardboardArmorHandler, DivingBootsItem, DivingHelmetItem, NetheriteDivingHandler, ExtendoGripItem, CardboardSwordItem | Equipped-item effects on hitbox, targeting, breathing, movement, fire protection, reach, durability, sound, knockback and attack handling. |
+| HauntedBellPulser | A player holding the bell triggers a client pulse packet. No site writer. |
+| ClipboardValueSettingsHandler, ZapperInteractionHandler, WrenchEventHandler | Player-triggered settings copy/paste, block selection and wrench callbacks on existing blocks. |
+| SymmetryHandler | Player place/break events with the symmetry wand invoke matching construction/removal; other hooks render its mirror and particles. Player construction is not a naturally generated family. |
+| FluidBottleItemHook, FluidReactions | Bottle interaction and block-state outcomes of colliding pipe fluids/spills. Existing pipe operation, not independent site generation. |
+| ValveHandleBlock, CrushingWheelBlockEntity, DeployerFakePlayer, ManualApplicationRecipe | Player valve interaction, crushed-mob drop motion, deployer drop/XP/retaliation rules, and right-click application recipes replacing the clicked block. |
+| FunnelItem, ItemHatchHandler, StockTickerInteractionHandler, BlazeBurnerHandler, ClickToLinkBlockItem, LinkHandler, ScheduleItemEntityInteraction | Player item/block/entity interactions, logistics manager UI, burner egg/splash impact, link frequencies and train conductor schedules. |
+| ItemUseOverrides, ValueSettingsInputHandler, EdgeInteractionHandler | Player-triggered block use, settings and connection callbacks on existing block entities. |
+
+These entry triggers and bodies are bounded to existing entities/items/blocks or
+explicit player construction. No independent authored-site candidate emerged.
+Do not expand this membership check into generic machine simulation, permission,
+recipe, combat or network correctness audits. The exact source remains available
+for later required family attributes where applicable.
+
+All top-level annotated-entry and declared common-mixin roles are now accounted
+for. Create remains OPEN for embedded Flywheel/Ponder/Registrate roles, Ponder
+content consumers and final complete payload reconciliation. The 32-entry batch
+must not be restarted. Census remains 89 resolved and 47 open.
+
+### Create embedded Flywheel and Registrate resolved
+
+Flywheel source 4a7f244 (extractor f61db3a) independently reproduces exactly.
+The focused test binds its nested archive and disassembly identity. Its only
+annotated entry, FlywheelNeoForge, explicitly declares Mod dist=CLIENT. All
+three declared mixin configurations contain client lists only, with no common,
+server or plugin entries. Its 636 files partition into 555 classes, 71 assets,
+three metadata files and seven root mixin/refmap/image/pack files. No data,
+service loader or deeper nested archive is present. This rendering library
+contributes no dedicated-server structure family. No render-backend audit is
+required to reach that membership disposition.
+
+Registrate's immutable nested archive contains 88 com/tterrag/registrate classes
+and a manifest declaring FMLModType: GAMELIBRARY. There are no annotated Mod or
+EventBusSubscriber entries, services, mixins, packaged data or deeper archives.
+Its consumer-driven registration role is already shown by Create.onCtor calling
+CreateRegistrate.registerEventListeners. It has no independent family payload or
+automatic generation entry. Do not inspect all generic builder internals absent
+a concrete unresolved consumer contribution.
+
+Both full nested-file partitions and exact hashes are checked by
+ test_create_flywheel_and_registrate_membership in the existing provider test.
+Five focused cases pass (0.61s); scoped Ruff and Basedpyright pass using the
+existing commands above. The Flywheel source has no UUID-literal matches.
+
+Two of Create's three embedded libraries are now resolved. Remaining Create
+membership work is Ponder's entries/services, common accessors and content
+consumers, followed by final complete parent payload reconciliation. Reuse all
+closed top-level and nested roles. Census remains 89 resolved, 47 open.
+
+### Create final membership disposition
+
+Ponder source 0177383 (extractor 28badcf) retains all six annotated entries,
+five service implementations, three common accessors and the Ponder, PonderClient
+and PonderSceneRegistry consumers. Independent capture reproduced exactly.
+Common startup registers configuration, packets and commands. Client entries
+manage guide rendering, resources, input and configuration UI. Services wrap
+platform metadata, packet transport, rendering, fluid properties and player
+block placement. Common accessors expose biome seed, entity level and server
+storage; they do not create authored sites.
+
+PonderSceneRegistry compiles storyboards by loading a template through Minecraft's
+client resource manager and placing it in a PonderLevel based on the current
+client level. This accounts for the parent's 178 assets/create/ponder templates
+as client guide scenes. The 67 data/create/structure/gametest templates are test
+fixtures under the already resolved GameTest consumer. Neither set adds natural
+structure families. Ponder's complete 531-file partition contains 470 classes,
+47 assets, nine metadata files and five root files. Its five services and three
+common accessors are bound to the captured source. No server mixin, mixin plugin,
+data directory or deeper nested archive is present.
+
+The final parent accounting covers all 11753 files: 2692 classes, 5076 assets,
+3974 data files, seven metadata files and four root files. The metadata contains
+only the manifest, loader declaration, access transformer, three already
+resolved nested libraries and their jarjar metadata. The 25 custom Create data
+files are potato-projectile definitions for the previously inspected registry.
+The existing exact worldgen partition is three ore chains; all template paths,
+58 annotated entries and 43 common mixins have retained contribution roles.
+Reuse their earlier source interpretation, including dynamic recipe/tag output,
+rather than reopening generic machine or library behavior.
+
+Create membership is RESOLVED with no independent natural structure family.
+This does not claim its machines, projectiles or loot have no relevance to later
+family attributes. No candidate was added or removed by this final closure.
+Six focused cases pass, with scoped Ruff and Basedpyright passing:
+
+```sh
+uv run ruff check tests/item8/test_create_provider_scope.py
+uv run basedpyright tests/item8/test_create_provider_scope.py
+uv run pytest -q tests/item8/test_create_provider_scope.py
+```
+
+Current census: 90 resolved, 46 open providers. Forgified Fabric API is the last
+open packaged-generation lane provider; 24 code-only and 21 unmatched rows also
+remain. Resolve those membership rows, then named canonical merge/split decisions
+before resuming the eleven attributes. These provider counts are not family counts.
