@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "simplyswords-neoforge-1.63.0-1.21.1.jar",
         "servercore-neoforge-1.5.17+1.21.1.jar",
         "owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar",
         "kotlinforforge-5.11.0-all.jar",
@@ -230,6 +231,12 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "net/sweenus/simplyswords/neoforge/SimplySwordsForge.class",
+    "net/sweenus/simplyswords/neoforge/client/SimplySwordsClientForge.class",
+    "net/sweenus/simplyswords/mixin/LivingEntityMixin.class",
+    "net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin.class",
+    "net/sweenus/simplyswords/mixin/PlayerEntityMixin.class",
+    "net/sweenus/simplyswords/mixin/AnimalEntityMixin.class",
     "me/wesley1808/servercore/common/dynamic/DynamicManager.class",
     "me/wesley1808/servercore/common/dynamic/DynamicSetting.class",
     "me/wesley1808/servercore/common/ServerCore.class",
@@ -4495,6 +4502,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 verbose |= name.startswith("me/fzzyhmstrs/fzzy_config/")
                 verbose |= name.startswith("thedarkcolour/kotlinforforge/")
                 verbose |= name.startswith("io/wispforest/owo/")
+                verbose |= name.startswith("net/sweenus/simplyswords/")
                 verbose |= name.startswith("me/wesley1808/servercore/")
                 verbose |= name.startswith("servercore_libs/")
                 verbose |= name.startswith("net/mehvahdjukaar/moonlight/")
