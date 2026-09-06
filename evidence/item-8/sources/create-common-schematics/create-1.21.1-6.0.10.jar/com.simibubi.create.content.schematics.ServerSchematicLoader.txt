@@ -1,0 +1,778 @@
+Compiled from "ServerSchematicLoader.java"
+public class com.simibubi.create.content.schematics.ServerSchematicLoader {
+  private final java.util.Map<java.lang.String, com.simibubi.create.content.schematics.ServerSchematicLoader$SchematicUploadEntry> activeUploads;
+
+  private final it.unimi.dsi.fastutil.objects.ObjectArrayList<java.lang.String> deadEntries;
+
+  public com.simibubi.create.content.schematics.ServerSchematicLoader();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: invokestatic  #7                  // Method it/unimi/dsi/fastutil/objects/ObjectArrayList.of:()Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+       8: putfield      #13                 // Field deadEntries:Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+      11: aload_0
+      12: new           #19                 // class java/util/HashMap
+      15: dup
+      16: invokespecial #21                 // Method java/util/HashMap."<init>":()V
+      19: putfield      #22                 // Field activeUploads:Ljava/util/Map;
+      22: return
+
+  public void tick();
+    Code:
+       0: aload_0
+       1: invokevirtual #26                 // Method getConfig:()Lcom/simibubi/create/infrastructure/config/CSchematics;
+       4: getfield      #30                 // Field com/simibubi/create/infrastructure/config/CSchematics.schematicIdleTimeout:Lnet/createmod/catnip/config/ConfigBase$ConfigInt;
+       7: invokevirtual #36                 // Method net/createmod/catnip/config/ConfigBase$ConfigInt.get:()Ljava/lang/Object;
+      10: checkcast     #42                 // class java/lang/Integer
+      13: invokevirtual #44                 // Method java/lang/Integer.intValue:()I
+      16: istore_1
+      17: aload_0
+      18: getfield      #22                 // Field activeUploads:Ljava/util/Map;
+      21: invokeinterface #48,  1           // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+      26: invokeinterface #54,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      31: astore_2
+      32: aload_2
+      33: invokeinterface #60,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      38: ifeq          108
+      41: aload_2
+      42: invokeinterface #66,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      47: checkcast     #69                 // class java/lang/String
+      50: astore_3
+      51: aload_0
+      52: getfield      #22                 // Field activeUploads:Ljava/util/Map;
+      55: aload_3
+      56: invokeinterface #71,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      61: checkcast     #74                 // class com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry
+      64: astore        4
+      66: aload         4
+      68: dup
+      69: getfield      #76                 // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.idleTime:I
+      72: dup_x1
+      73: iconst_1
+      74: iadd
+      75: putfield      #76                 // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.idleTime:I
+      78: iload_1
+      79: if_icmple     105
+      82: getstatic     #80                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+      85: aload_3
+      86: invokedynamic #86,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      91: invokeinterface #90,  2           // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+      96: aload_0
+      97: getfield      #13                 // Field deadEntries:Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+     100: aload_3
+     101: invokevirtual #96                 // Method it/unimi/dsi/fastutil/objects/ObjectArrayList.add:(Ljava/lang/Object;)Z
+     104: pop
+     105: goto          32
+     108: aload_0
+     109: getfield      #13                 // Field deadEntries:Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+     112: invokevirtual #100                // Method it/unimi/dsi/fastutil/objects/ObjectArrayList.iterator:()Lit/unimi/dsi/fastutil/objects/ObjectListIterator;
+     115: astore_2
+     116: aload_2
+     117: invokeinterface #60,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     122: ifeq          143
+     125: aload_2
+     126: invokeinterface #66,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     131: checkcast     #69                 // class java/lang/String
+     134: astore_3
+     135: aload_0
+     136: aload_3
+     137: invokevirtual #103                // Method cancelUpload:(Ljava/lang/String;)V
+     140: goto          116
+     143: aload_0
+     144: getfield      #13                 // Field deadEntries:Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+     147: invokevirtual #106                // Method it/unimi/dsi/fastutil/objects/ObjectArrayList.clear:()V
+     150: return
+
+  public void shutdown();
+    Code:
+       0: new           #109                // class java/util/HashSet
+       3: dup
+       4: aload_0
+       5: getfield      #22                 // Field activeUploads:Ljava/util/Map;
+       8: invokeinterface #48,  1           // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+      13: invokespecial #111                // Method java/util/HashSet."<init>":(Ljava/util/Collection;)V
+      16: aload_0
+      17: invokedynamic #114,  0            // InvokeDynamic #1:accept:(Lcom/simibubi/create/content/schematics/ServerSchematicLoader;)Ljava/util/function/Consumer;
+      22: invokevirtual #118                // Method java/util/HashSet.forEach:(Ljava/util/function/Consumer;)V
+      25: return
+
+  public void handleNewUpload(net.minecraft.server.level.ServerPlayer, java.lang.String, long, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: invokevirtual #122                // Method net/minecraft/server/level/ServerPlayer.getGameProfile:()Lcom/mojang/authlib/GameProfile;
+       4: invokevirtual #128                // Method com/mojang/authlib/GameProfile.getName:()Ljava/lang/String;
+       7: astore        6
+       9: getstatic     #134                // Field com/simibubi/create/foundation/utility/CreatePaths.UPLOADED_SCHEMATICS_DIR:Ljava/nio/file/Path;
+      12: astore        7
+      14: aload         7
+      16: aload         6
+      18: invokeinterface #140,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      23: invokeinterface #146,  1          // InterfaceMethod java/nio/file/Path.normalize:()Ljava/nio/file/Path;
+      28: astore        8
+      30: aload         8
+      32: aload_2
+      33: invokeinterface #140,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      38: invokeinterface #146,  1          // InterfaceMethod java/nio/file/Path.normalize:()Ljava/nio/file/Path;
+      43: astore        9
+      45: aload         6
+      47: aload_2
+      48: invokedynamic #150,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      53: astore        10
+      55: aload         8
+      57: aload         7
+      59: invokeinterface #153,  2          // InterfaceMethod java/nio/file/Path.startsWith:(Ljava/nio/file/Path;)Z
+      64: ifeq          87
+      67: aload         9
+      69: aload         8
+      71: invokeinterface #153,  2          // InterfaceMethod java/nio/file/Path.startsWith:(Ljava/nio/file/Path;)Z
+      76: ifeq          87
+      79: aload         8
+      81: invokestatic  #157                // Method com/simibubi/create/foundation/utility/FilesHelper.createFolderIfMissing:(Ljava/nio/file/Path;)V
+      84: goto          100
+      87: getstatic     #80                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+      90: ldc           #163                // String Attempted Schematic Upload with path traversal: {}
+      92: aload         10
+      94: invokeinterface #165,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+      99: return
+     100: aload_2
+     101: ldc           #168                // String .nbt
+     103: invokevirtual #170                // Method java/lang/String.endsWith:(Ljava/lang/String;)Z
+     106: ifne          122
+     109: getstatic     #80                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+     112: ldc           #174                // String Attempted Schematic Upload with non-supported Format: {}
+     114: aload         10
+     116: invokeinterface #165,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+     121: return
+     122: aload_0
+     123: aload_1
+     124: lload_3
+     125: invokevirtual #176                // Method validateSchematicSizeOnServer:(Lnet/minecraft/server/level/ServerPlayer;J)Z
+     128: ifne          132
+     131: return
+     132: aload_0
+     133: getfield      #22                 // Field activeUploads:Ljava/util/Map;
+     136: aload         10
+     138: invokeinterface #180,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+     143: ifeq          147
+     146: return
+     147: aload_0
+     148: aload_1
+     149: invokevirtual #183                // Method net/minecraft/server/level/ServerPlayer.getCommandSenderWorld:()Lnet/minecraft/world/level/Level;
+     152: aload         5
+     154: invokevirtual #187                // Method getTable:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lcom/simibubi/create/content/schematics/table/SchematicTableBlockEntity;
+     157: astore        11
+     159: aload         11
+     161: ifnonnull     165
+     164: return
+     165: aload         9
+     167: invokestatic  #191                // Method java/nio/file/Files.deleteIfExists:(Ljava/nio/file/Path;)Z
+     170: pop
+     171: aload         8
+     173: invokestatic  #196                // Method java/nio/file/Files.list:(Ljava/nio/file/Path;)Ljava/util/stream/Stream;
+     176: astore        14
+     178: aload         14
+     180: invokeinterface #200,  1          // InterfaceMethod java/util/stream/Stream.count:()J
+     185: lstore        12
+     187: aload         14
+     189: ifnull        231
+     192: aload         14
+     194: invokeinterface #206,  1          // InterfaceMethod java/util/stream/Stream.close:()V
+     199: goto          231
+     202: astore        15
+     204: aload         14
+     206: ifnull        228
+     209: aload         14
+     211: invokeinterface #206,  1          // InterfaceMethod java/util/stream/Stream.close:()V
+     216: goto          228
+     219: astore        16
+     221: aload         15
+     223: aload         16
+     225: invokevirtual #211                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     228: aload         15
+     230: athrow
+     231: lload         12
+     233: aload_0
+     234: invokevirtual #26                 // Method getConfig:()Lcom/simibubi/create/infrastructure/config/CSchematics;
+     237: getfield      #215                // Field com/simibubi/create/infrastructure/config/CSchematics.maxSchematics:Lnet/createmod/catnip/config/ConfigBase$ConfigInt;
+     240: invokevirtual #36                 // Method net/createmod/catnip/config/ConfigBase$ConfigInt.get:()Ljava/lang/Object;
+     243: checkcast     #42                 // class java/lang/Integer
+     246: invokevirtual #44                 // Method java/lang/Integer.intValue:()I
+     249: i2l
+     250: lcmp
+     251: iflt          315
+     254: aload         8
+     256: invokestatic  #196                // Method java/nio/file/Files.list:(Ljava/nio/file/Path;)Ljava/util/stream/Stream;
+     259: astore        14
+     261: aload         14
+     263: invokedynamic #218,  0            // InvokeDynamic #3:test:()Ljava/util/function/Predicate;
+     268: invokeinterface #222,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+     273: invokedynamic #226,  0            // InvokeDynamic #4:applyAsLong:()Ljava/util/function/ToLongFunction;
+     278: invokestatic  #230                // InterfaceMethod java/util/Comparator.comparingLong:(Ljava/util/function/ToLongFunction;)Ljava/util/Comparator;
+     281: invokeinterface #236,  2          // InterfaceMethod java/util/stream/Stream.min:(Ljava/util/Comparator;)Ljava/util/Optional;
+     286: astore        15
+     288: aload         14
+     290: invokeinterface #206,  1          // InterfaceMethod java/util/stream/Stream.close:()V
+     295: aload         15
+     297: invokevirtual #240                // Method java/util/Optional.isPresent:()Z
+     300: ifeq          315
+     303: aload         15
+     305: invokevirtual #245                // Method java/util/Optional.get:()Ljava/lang/Object;
+     308: checkcast     #141                // class java/nio/file/Path
+     311: invokestatic  #191                // Method java/nio/file/Files.deleteIfExists:(Ljava/nio/file/Path;)Z
+     314: pop
+     315: aload         9
+     317: iconst_0
+     318: anewarray     #246                // class java/nio/file/OpenOption
+     321: invokestatic  #248                // Method java/nio/file/Files.newOutputStream:(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Ljava/io/OutputStream;
+     324: astore        14
+     326: aload_0
+     327: getfield      #22                 // Field activeUploads:Ljava/util/Map;
+     330: aload         10
+     332: new           #74                 // class com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry
+     335: dup
+     336: aload         14
+     338: lload_3
+     339: aload_1
+     340: invokevirtual #252                // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+     343: aload         5
+     345: invokespecial #255                // Method com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry."<init>":(Ljava/io/OutputStream;JLnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V
+     348: invokeinterface #258,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     353: pop
+     354: aload         11
+     356: aload_2
+     357: invokevirtual #262                // Method com/simibubi/create/content/schematics/table/SchematicTableBlockEntity.startUpload:(Ljava/lang/String;)V
+     360: goto          380
+     363: astore        11
+     365: getstatic     #80                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+     368: ldc_w         #269                // String Exception Thrown when starting Upload: {}
+     371: aload         10
+     373: aload         11
+     375: invokeinterface #271,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     380: return
+    Exception table:
+       from    to  target type
+         178   187   202   Class java/lang/Throwable
+         209   216   219   Class java/lang/Throwable
+         147   164   363   Class java/io/IOException
+         165   360   363   Class java/io/IOException
+
+  protected boolean validateSchematicSizeOnServer(net.minecraft.server.level.ServerPlayer, long);
+    Code:
+       0: aload_0
+       1: invokevirtual #26                 // Method getConfig:()Lcom/simibubi/create/infrastructure/config/CSchematics;
+       4: getfield      #275                // Field com/simibubi/create/infrastructure/config/CSchematics.maxTotalSchematicSize:Lnet/createmod/catnip/config/ConfigBase$ConfigInt;
+       7: invokevirtual #36                 // Method net/createmod/catnip/config/ConfigBase$ConfigInt.get:()Ljava/lang/Object;
+      10: checkcast     #42                 // class java/lang/Integer
+      13: invokevirtual #44                 // Method java/lang/Integer.intValue:()I
+      16: i2l
+      17: lstore        4
+      19: lload_2
+      20: lload         4
+      22: ldc2_w        #278                // long 1000l
+      25: lmul
+      26: lcmp
+      27: ifle          89
+      30: aload_1
+      31: ldc_w         #280                // String schematics.uploadTooLarge
+      34: iconst_0
+      35: anewarray     #2                  // class java/lang/Object
+      38: invokestatic  #282                // Method com/simibubi/create/foundation/utility/CreateLang.translateDirect:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      41: lload_2
+      42: ldc2_w        #278                // long 1000l
+      45: ldiv
+      46: invokedynamic #288,  0            // InvokeDynamic #5:makeConcatWithConstants:(J)Ljava/lang/String;
+      51: invokestatic  #291                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      54: invokevirtual #297                // Method net/minecraft/network/chat/MutableComponent.append:(Lnet/minecraft/network/chat/Component;)Lnet/minecraft/network/chat/MutableComponent;
+      57: invokevirtual #303                // Method net/minecraft/server/level/ServerPlayer.sendSystemMessage:(Lnet/minecraft/network/chat/Component;)V
+      60: aload_1
+      61: ldc_w         #307                // String schematics.maxAllowedSize
+      64: iconst_0
+      65: anewarray     #2                  // class java/lang/Object
+      68: invokestatic  #282                // Method com/simibubi/create/foundation/utility/CreateLang.translateDirect:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      71: lload         4
+      73: invokedynamic #309,  0            // InvokeDynamic #6:makeConcatWithConstants:(J)Ljava/lang/String;
+      78: invokestatic  #291                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      81: invokevirtual #297                // Method net/minecraft/network/chat/MutableComponent.append:(Lnet/minecraft/network/chat/Component;)Lnet/minecraft/network/chat/MutableComponent;
+      84: invokevirtual #303                // Method net/minecraft/server/level/ServerPlayer.sendSystemMessage:(Lnet/minecraft/network/chat/Component;)V
+      87: iconst_0
+      88: ireturn
+      89: iconst_1
+      90: ireturn
+
+  public com.simibubi.create.infrastructure.config.CSchematics getConfig();
+    Code:
+       0: invokestatic  #310                // Method com/simibubi/create/infrastructure/config/AllConfigs.server:()Lcom/simibubi/create/infrastructure/config/CServer;
+       3: getfield      #316                // Field com/simibubi/create/infrastructure/config/CServer.schematics:Lcom/simibubi/create/infrastructure/config/CSchematics;
+       6: areturn
+
+  public void handleWriteRequest(net.minecraft.server.level.ServerPlayer, java.lang.String, byte[]);
+    Code:
+       0: aload_1
+       1: invokevirtual #122                // Method net/minecraft/server/level/ServerPlayer.getGameProfile:()Lcom/mojang/authlib/GameProfile;
+       4: invokevirtual #128                // Method com/mojang/authlib/GameProfile.getName:()Ljava/lang/String;
+       7: aload_2
+       8: invokedynamic #150,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      13: astore        4
+      15: aload_0
+      16: getfield      #22                 // Field activeUploads:Ljava/util/Map;
+      19: aload         4
+      21: invokeinterface #180,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      26: ifeq          221
+      29: aload_0
+      30: getfield      #22                 // Field activeUploads:Ljava/util/Map;
+      33: aload         4
+      35: invokeinterface #71,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      40: checkcast     #74                 // class com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry
+      43: astore        5
+      45: aload         5
+      47: dup
+      48: getfield      #322                // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.bytesUploaded:J
+      51: aload_3
+      52: arraylength
+      53: i2l
+      54: ladd
+      55: putfield      #322                // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.bytesUploaded:J
+      58: aload_3
+      59: arraylength
+      60: aload_0
+      61: invokevirtual #26                 // Method getConfig:()Lcom/simibubi/create/infrastructure/config/CSchematics;
+      64: getfield      #326                // Field com/simibubi/create/infrastructure/config/CSchematics.maxSchematicPacketSize:Lnet/createmod/catnip/config/ConfigBase$ConfigInt;
+      67: invokevirtual #36                 // Method net/createmod/catnip/config/ConfigBase$ConfigInt.get:()Ljava/lang/Object;
+      70: checkcast     #42                 // class java/lang/Integer
+      73: invokevirtual #44                 // Method java/lang/Integer.intValue:()I
+      76: if_icmple     99
+      79: getstatic     #80                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+      82: ldc_w         #329                // String Oversized Upload Packet received: {}
+      85: aload         4
+      87: invokeinterface #165,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+      92: aload_0
+      93: aload         4
+      95: invokevirtual #103                // Method cancelUpload:(Ljava/lang/String;)V
+      98: return
+      99: aload         5
+     101: getfield      #322                // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.bytesUploaded:J
+     104: aload         5
+     106: getfield      #331                // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.totalBytes:J
+     109: lcmp
+     110: ifle          133
+     113: getstatic     #80                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+     116: ldc_w         #334                // String Received more data than Expected: {}
+     119: aload         4
+     121: invokeinterface #165,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+     126: aload_0
+     127: aload         4
+     129: invokevirtual #103                // Method cancelUpload:(Ljava/lang/String;)V
+     132: return
+     133: aload         5
+     135: getfield      #336                // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.stream:Ljava/io/OutputStream;
+     138: aload_3
+     139: invokevirtual #340                // Method java/io/OutputStream.write:([B)V
+     142: aload         5
+     144: iconst_0
+     145: putfield      #76                 // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.idleTime:I
+     148: aload_0
+     149: aload         5
+     151: getfield      #346                // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.world:Lnet/minecraft/world/level/Level;
+     154: aload         5
+     156: getfield      #350                // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.tablePos:Lnet/minecraft/core/BlockPos;
+     159: invokevirtual #187                // Method getTable:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lcom/simibubi/create/content/schematics/table/SchematicTableBlockEntity;
+     162: astore        6
+     164: aload         6
+     166: ifnonnull     170
+     169: return
+     170: aload         6
+     172: aload         5
+     174: getfield      #322                // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.bytesUploaded:J
+     177: l2d
+     178: aload         5
+     180: getfield      #331                // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.totalBytes:J
+     183: l2d
+     184: ddiv
+     185: d2f
+     186: putfield      #354                // Field com/simibubi/create/content/schematics/table/SchematicTableBlockEntity.uploadingProgress:F
+     189: aload         6
+     191: iconst_1
+     192: putfield      #358                // Field com/simibubi/create/content/schematics/table/SchematicTableBlockEntity.sendUpdate:Z
+     195: goto          221
+     198: astore        6
+     200: getstatic     #80                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+     203: ldc_w         #362                // String Exception Thrown when uploading Schematic: {}
+     206: aload         4
+     208: aload         6
+     210: invokeinterface #271,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     215: aload_0
+     216: aload         4
+     218: invokevirtual #103                // Method cancelUpload:(Ljava/lang/String;)V
+     221: return
+    Exception table:
+       from    to  target type
+         133   169   198   Class java/io/IOException
+         170   195   198   Class java/io/IOException
+
+  protected void cancelUpload(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field activeUploads:Ljava/util/Map;
+       4: aload_1
+       5: invokeinterface #180,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      10: ifne          14
+      13: return
+      14: aload_0
+      15: getfield      #22                 // Field activeUploads:Ljava/util/Map;
+      18: aload_1
+      19: invokeinterface #364,  2          // InterfaceMethod java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+      24: checkcast     #74                 // class com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry
+      27: astore_2
+      28: aload_2
+      29: getfield      #336                // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.stream:Ljava/io/OutputStream;
+      32: invokevirtual #367                // Method java/io/OutputStream.close:()V
+      35: getstatic     #134                // Field com/simibubi/create/foundation/utility/CreatePaths.UPLOADED_SCHEMATICS_DIR:Ljava/nio/file/Path;
+      38: aload_1
+      39: invokeinterface #140,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      44: invokestatic  #191                // Method java/nio/file/Files.deleteIfExists:(Ljava/nio/file/Path;)Z
+      47: pop
+      48: getstatic     #80                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+      51: ldc_w         #368                // String Cancelled Schematic Upload: {}
+      54: aload_1
+      55: invokeinterface #165,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+      60: goto          77
+      63: astore_3
+      64: getstatic     #80                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+      67: ldc_w         #370                // String Exception Thrown when cancelling Upload: {}
+      70: aload_1
+      71: aload_3
+      72: invokeinterface #271,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      77: aload_2
+      78: getfield      #350                // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.tablePos:Lnet/minecraft/core/BlockPos;
+      81: astore_3
+      82: aload_3
+      83: ifnonnull     87
+      86: return
+      87: aload_0
+      88: aload_2
+      89: getfield      #346                // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.world:Lnet/minecraft/world/level/Level;
+      92: aload_3
+      93: invokevirtual #187                // Method getTable:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lcom/simibubi/create/content/schematics/table/SchematicTableBlockEntity;
+      96: astore        4
+      98: aload         4
+     100: ifnull        108
+     103: aload         4
+     105: invokevirtual #372                // Method com/simibubi/create/content/schematics/table/SchematicTableBlockEntity.finishUpload:()V
+     108: return
+    Exception table:
+       from    to  target type
+          28    60    63   Class java/io/IOException
+
+  public com.simibubi.create.content.schematics.table.SchematicTableBlockEntity getTable(net.minecraft.world.level.Level, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokevirtual #375                // Method net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+       5: astore_3
+       6: aload_3
+       7: instanceof    #263                // class com/simibubi/create/content/schematics/table/SchematicTableBlockEntity
+      10: ifeq          22
+      13: aload_3
+      14: checkcast     #263                // class com/simibubi/create/content/schematics/table/SchematicTableBlockEntity
+      17: astore        4
+      19: goto          24
+      22: aconst_null
+      23: areturn
+      24: aload         4
+      26: areturn
+
+  public void handleFinishedUpload(net.minecraft.server.level.ServerPlayer, java.lang.String);
+    Code:
+       0: aload_1
+       1: invokevirtual #122                // Method net/minecraft/server/level/ServerPlayer.getGameProfile:()Lcom/mojang/authlib/GameProfile;
+       4: invokevirtual #128                // Method com/mojang/authlib/GameProfile.getName:()Ljava/lang/String;
+       7: aload_2
+       8: invokedynamic #150,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      13: astore_3
+      14: aload_0
+      15: getfield      #22                 // Field activeUploads:Ljava/util/Map;
+      18: aload_3
+      19: invokeinterface #180,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      24: ifeq          181
+      27: aload_0
+      28: getfield      #22                 // Field activeUploads:Ljava/util/Map;
+      31: aload_3
+      32: invokeinterface #71,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      37: checkcast     #74                 // class com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry
+      40: getfield      #336                // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.stream:Ljava/io/OutputStream;
+      43: invokevirtual #367                // Method java/io/OutputStream.close:()V
+      46: aload_0
+      47: getfield      #22                 // Field activeUploads:Ljava/util/Map;
+      50: aload_3
+      51: invokeinterface #364,  2          // InterfaceMethod java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+      56: checkcast     #74                 // class com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry
+      59: astore        4
+      61: aload         4
+      63: getfield      #346                // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.world:Lnet/minecraft/world/level/Level;
+      66: astore        5
+      68: aload         4
+      70: getfield      #350                // Field com/simibubi/create/content/schematics/ServerSchematicLoader$SchematicUploadEntry.tablePos:Lnet/minecraft/core/BlockPos;
+      73: astore        6
+      75: getstatic     #80                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+      78: aload_3
+      79: invokedynamic #381,  0            // InvokeDynamic #7:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      84: invokeinterface #382,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+      89: aload         6
+      91: ifnonnull     95
+      94: return
+      95: aload         5
+      97: aload         6
+      99: invokevirtual #385                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     102: astore        7
+     104: getstatic     #389                // Field com/simibubi/create/AllBlocks.SCHEMATIC_TABLE:Lcom/tterrag/registrate/util/entry/BlockEntry;
+     107: invokevirtual #395                // Method com/tterrag/registrate/util/entry/BlockEntry.get:()Ljava/lang/Object;
+     110: aload         7
+     112: invokevirtual #398                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     115: if_acmpeq     119
+     118: return
+     119: aload_0
+     120: aload         5
+     122: aload         6
+     124: invokevirtual #187                // Method getTable:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lcom/simibubi/create/content/schematics/table/SchematicTableBlockEntity;
+     127: astore        8
+     129: aload         8
+     131: ifnonnull     135
+     134: return
+     135: aload         8
+     137: invokevirtual #372                // Method com/simibubi/create/content/schematics/table/SchematicTableBlockEntity.finishUpload:()V
+     140: aload         8
+     142: getfield      #404                // Field com/simibubi/create/content/schematics/table/SchematicTableBlockEntity.inventory:Lcom/simibubi/create/content/schematics/table/SchematicTableBlockEntity$SchematicTableInventory;
+     145: iconst_1
+     146: aload         5
+     148: aload_2
+     149: aload_1
+     150: invokevirtual #122                // Method net/minecraft/server/level/ServerPlayer.getGameProfile:()Lcom/mojang/authlib/GameProfile;
+     153: invokevirtual #128                // Method com/mojang/authlib/GameProfile.getName:()Ljava/lang/String;
+     156: invokestatic  #408                // Method com/simibubi/create/content/schematics/SchematicItem.create:(Lnet/minecraft/world/level/Level;Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/world/item/ItemStack;
+     159: invokevirtual #414                // Method com/simibubi/create/content/schematics/table/SchematicTableBlockEntity$SchematicTableInventory.setStackInSlot:(ILnet/minecraft/world/item/ItemStack;)V
+     162: goto          181
+     165: astore        4
+     167: getstatic     #80                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+     170: ldc_w         #420                // String Exception Thrown when finishing Upload: {}
+     173: aload_3
+     174: aload         4
+     176: invokeinterface #271,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     181: return
+    Exception table:
+       from    to  target type
+          27    94   165   Class java/io/IOException
+          95   118   165   Class java/io/IOException
+         119   134   165   Class java/io/IOException
+         135   162   165   Class java/io/IOException
+
+  public void handleInstantSchematic(net.minecraft.server.level.ServerPlayer, java.lang.String, net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: invokevirtual #122                // Method net/minecraft/server/level/ServerPlayer.getGameProfile:()Lcom/mojang/authlib/GameProfile;
+       4: invokevirtual #128                // Method com/mojang/authlib/GameProfile.getName:()Ljava/lang/String;
+       7: astore        6
+       9: getstatic     #134                // Field com/simibubi/create/foundation/utility/CreatePaths.UPLOADED_SCHEMATICS_DIR:Ljava/nio/file/Path;
+      12: astore        7
+      14: aload         7
+      16: aload         6
+      18: invokeinterface #140,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      23: invokeinterface #146,  1          // InterfaceMethod java/nio/file/Path.normalize:()Ljava/nio/file/Path;
+      28: astore        8
+      30: aload         8
+      32: aload_2
+      33: invokeinterface #140,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      38: invokeinterface #146,  1          // InterfaceMethod java/nio/file/Path.normalize:()Ljava/nio/file/Path;
+      43: astore        9
+      45: aload         6
+      47: aload_2
+      48: invokedynamic #150,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      53: astore        10
+      55: aload         8
+      57: aload         7
+      59: invokeinterface #153,  2          // InterfaceMethod java/nio/file/Path.startsWith:(Ljava/nio/file/Path;)Z
+      64: ifeq          87
+      67: aload         9
+      69: aload         8
+      71: invokeinterface #153,  2          // InterfaceMethod java/nio/file/Path.startsWith:(Ljava/nio/file/Path;)Z
+      76: ifeq          87
+      79: aload         8
+      81: invokestatic  #157                // Method com/simibubi/create/foundation/utility/FilesHelper.createFolderIfMissing:(Ljava/nio/file/Path;)V
+      84: goto          100
+      87: getstatic     #80                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+      90: ldc           #163                // String Attempted Schematic Upload with path traversal: {}
+      92: aload         10
+      94: invokeinterface #165,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+      99: return
+     100: aload_2
+     101: ldc           #168                // String .nbt
+     103: invokevirtual #170                // Method java/lang/String.endsWith:(Ljava/lang/String;)Z
+     106: ifne          122
+     109: getstatic     #80                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+     112: ldc           #174                // String Attempted Schematic Upload with non-supported Format: {}
+     114: aload         10
+     116: invokeinterface #165,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+     121: return
+     122: getstatic     #422                // Field com/simibubi/create/AllItems.SCHEMATIC_AND_QUILL:Lcom/tterrag/registrate/util/entry/ItemEntry;
+     125: aload_1
+     126: invokevirtual #428                // Method net/minecraft/server/level/ServerPlayer.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+     129: invokevirtual #432                // Method com/tterrag/registrate/util/entry/ItemEntry.isIn:(Lnet/minecraft/world/item/ItemStack;)Z
+     132: ifne          136
+     135: return
+     136: aload_0
+     137: aload         8
+     139: invokevirtual #438                // Method tryDeleteOldestSchematic:(Ljava/nio/file/Path;)Z
+     142: ifne          146
+     145: return
+     146: aload         8
+     148: aload_2
+     149: iconst_1
+     150: aload_3
+     151: aload         4
+     153: aload         4
+     155: aload         5
+     157: invokevirtual #441                // Method net/minecraft/core/BlockPos.offset:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+     160: iconst_m1
+     161: iconst_m1
+     162: iconst_m1
+     163: invokevirtual #447                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     166: invokestatic  #450                // Method com/simibubi/create/content/schematics/SchematicExport.saveSchematic:(Ljava/nio/file/Path;Ljava/lang/String;ZLnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Lcom/simibubi/create/content/schematics/SchematicExport$SchematicExportResult;
+     169: astore        11
+     171: aload         11
+     173: ifnull        193
+     176: aload_1
+     177: getstatic     #456                // Field net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+     180: aload_3
+     181: aload_2
+     182: aload         6
+     184: invokestatic  #408                // Method com/simibubi/create/content/schematics/SchematicItem.create:(Lnet/minecraft/world/level/Level;Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/world/item/ItemStack;
+     187: invokevirtual #462                // Method net/minecraft/server/level/ServerPlayer.setItemInHand:(Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/item/ItemStack;)V
+     190: goto          213
+     193: ldc_w         #466                // String schematicAndQuill.instant_failed
+     196: iconst_0
+     197: anewarray     #2                  // class java/lang/Object
+     200: invokestatic  #468                // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     203: getstatic     #472                // Field net/minecraft/ChatFormatting.RED:Lnet/minecraft/ChatFormatting;
+     206: invokevirtual #478                // Method net/createmod/catnip/lang/LangBuilder.style:(Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+     209: aload_1
+     210: invokevirtual #484                // Method net/createmod/catnip/lang/LangBuilder.sendStatus:(Lnet/minecraft/world/entity/player/Player;)V
+     213: return
+
+  private boolean tryDeleteOldestSchematic(java.nio.file.Path);
+    Code:
+       0: aload_1
+       1: invokestatic  #196                // Method java/nio/file/Files.list:(Ljava/nio/file/Path;)Ljava/util/stream/Stream;
+       4: astore_2
+       5: aload_2
+       6: invokeinterface #488,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      11: astore_3
+      12: aload_3
+      13: invokeinterface #492,  1          // InterfaceMethod java/util/List.size:()I
+      18: aload_0
+      19: invokevirtual #26                 // Method getConfig:()Lcom/simibubi/create/infrastructure/config/CSchematics;
+      22: getfield      #215                // Field com/simibubi/create/infrastructure/config/CSchematics.maxSchematics:Lnet/createmod/catnip/config/ConfigBase$ConfigInt;
+      25: invokevirtual #36                 // Method net/createmod/catnip/config/ConfigBase$ConfigInt.get:()Ljava/lang/Object;
+      28: checkcast     #42                 // class java/lang/Integer
+      31: invokevirtual #44                 // Method java/lang/Integer.intValue:()I
+      34: if_icmpge     53
+      37: iconst_1
+      38: istore        4
+      40: aload_2
+      41: ifnull        50
+      44: aload_2
+      45: invokeinterface #206,  1          // InterfaceMethod java/util/stream/Stream.close:()V
+      50: iload         4
+      52: ireturn
+      53: aload_3
+      54: invokeinterface #497,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+      59: aload_0
+      60: invokedynamic #500,  0            // InvokeDynamic #8:applyAsLong:(Lcom/simibubi/create/content/schematics/ServerSchematicLoader;)Ljava/util/function/ToLongFunction;
+      65: invokestatic  #230                // InterfaceMethod java/util/Comparator.comparingLong:(Ljava/util/function/ToLongFunction;)Ljava/util/Comparator;
+      68: invokeinterface #236,  2          // InterfaceMethod java/util/stream/Stream.min:(Ljava/util/Comparator;)Ljava/util/Optional;
+      73: astore        4
+      75: aload         4
+      77: invokevirtual #503                // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+      80: checkcast     #141                // class java/nio/file/Path
+      83: invokestatic  #506                // Method java/nio/file/Files.delete:(Ljava/nio/file/Path;)V
+      86: iconst_1
+      87: istore        5
+      89: aload_2
+      90: ifnull        99
+      93: aload_2
+      94: invokeinterface #206,  1          // InterfaceMethod java/util/stream/Stream.close:()V
+      99: iload         5
+     101: ireturn
+     102: astore_3
+     103: aload_2
+     104: ifnull        124
+     107: aload_2
+     108: invokeinterface #206,  1          // InterfaceMethod java/util/stream/Stream.close:()V
+     113: goto          124
+     116: astore        4
+     118: aload_3
+     119: aload         4
+     121: invokevirtual #211                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     124: aload_3
+     125: athrow
+     126: astore_2
+     127: getstatic     #80                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+     130: ldc_w         #511                // String Error deleting oldest schematic
+     133: aload_2
+     134: invokeinterface #513,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+     139: iconst_0
+     140: ireturn
+    Exception table:
+       from    to  target type
+           5    40   102   Class java/lang/Throwable
+          53    89   102   Class java/lang/Throwable
+         107   113   116   Class java/lang/Throwable
+           0    50   126   Class java/io/IOException
+           0    50   126   Class java/lang/IllegalStateException
+          53    99   126   Class java/io/IOException
+          53    99   126   Class java/lang/IllegalStateException
+         102   126   126   Class java/io/IOException
+         102   126   126   Class java/lang/IllegalStateException
+
+  private long getLastModifiedTime(java.nio.file.Path);
+    Code:
+       0: aload_1
+       1: iconst_0
+       2: anewarray     #516                // class java/nio/file/LinkOption
+       5: invokestatic  #518                // Method java/nio/file/Files.getLastModifiedTime:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Ljava/nio/file/attribute/FileTime;
+       8: invokevirtual #522                // Method java/nio/file/attribute/FileTime.toMillis:()J
+      11: lreturn
+      12: astore_2
+      13: getstatic     #80                 // Field com/simibubi/create/Create.LOGGER:Lorg/slf4j/Logger;
+      16: ldc_w         #527                // String Error getting modification time of file {}
+      19: aload_1
+      20: invokeinterface #529,  1          // InterfaceMethod java/nio/file/Path.getFileName:()Ljava/nio/file/Path;
+      25: aload_2
+      26: invokeinterface #271,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      31: new           #509                // class java/lang/IllegalStateException
+      34: dup
+      35: aload_2
+      36: invokespecial #532                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/Throwable;)V
+      39: athrow
+    Exception table:
+       from    to  target type
+           0    11    12   Class java/io/IOException
+
+  private static long lambda$handleNewUpload$1(java.nio.file.Path);
+    Code:
+       0: aload_0
+       1: invokeinterface #534,  1          // InterfaceMethod java/nio/file/Path.toFile:()Ljava/io/File;
+       6: invokevirtual #538                // Method java/io/File.lastModified:()J
+       9: lreturn
+
+  private static boolean lambda$handleNewUpload$0(java.nio.file.Path);
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: anewarray     #516                // class java/nio/file/LinkOption
+       5: invokestatic  #543                // Method java/nio/file/Files.isDirectory:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+       8: ifne          15
+      11: iconst_1
+      12: goto          16
+      15: iconst_0
+      16: ireturn
+}

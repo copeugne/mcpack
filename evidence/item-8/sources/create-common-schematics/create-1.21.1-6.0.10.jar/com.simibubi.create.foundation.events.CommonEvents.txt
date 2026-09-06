@@ -1,0 +1,227 @@
+Compiled from "CommonEvents.java"
+public class com.simibubi.create.foundation.events.CommonEvents {
+  public com.simibubi.create.foundation.events.CommonEvents();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void onServerTick(net.neoforged.neoforge.event.tick.ServerTickEvent$Post);
+    Code:
+       0: getstatic     #7                  // Field com/simibubi/create/Create.SCHEMATIC_RECEIVER:Lcom/simibubi/create/content/schematics/ServerSchematicLoader;
+       3: invokevirtual #13                 // Method com/simibubi/create/content/schematics/ServerSchematicLoader.tick:()V
+       6: getstatic     #18                 // Field com/simibubi/create/Create.LAGGER:Lcom/simibubi/create/infrastructure/command/ServerLagger;
+       9: invokevirtual #22                 // Method com/simibubi/create/infrastructure/command/ServerLagger.tick:()V
+      12: invokestatic  #25                 // Method com/simibubi/create/foundation/utility/ServerSpeedProvider.serverTick:()V
+      15: getstatic     #30                 // Field com/simibubi/create/Create.RAILWAYS:Lcom/simibubi/create/content/trains/GlobalRailwayManager;
+      18: getfield      #34                 // Field com/simibubi/create/content/trains/GlobalRailwayManager.sync:Lcom/simibubi/create/content/trains/graph/TrackGraphSync;
+      21: invokevirtual #40                 // Method com/simibubi/create/content/trains/graph/TrackGraphSync.serverTick:()V
+      24: aload_0
+      25: invokestatic  #43                 // Method com/simibubi/create/compat/trainmap/TrainMapSync.serverTick:(Lnet/neoforged/neoforge/event/tick/ServerTickEvent;)V
+      28: invokestatic  #48                 // Method com/simibubi/create/content/kinetics/chainConveyor/ServerChainConveyorHandler.tick:()V
+      31: invokestatic  #51                 // Method com/simibubi/create/foundation/utility/TickBasedCache.tick:()V
+      34: return
+
+  public static void onChunkUnloaded(net.neoforged.neoforge.event.level.ChunkEvent$Unload);
+    Code:
+       0: aload_0
+       1: invokestatic  #54                 // Method com/simibubi/create/content/contraptions/minecart/capability/CapabilityMinecartController.onChunkUnloaded:(Lnet/neoforged/neoforge/event/level/ChunkEvent$Unload;)V
+       4: return
+
+  public static void playerLoggedIn(net.neoforged.neoforge.event.entity.player.PlayerEvent$PlayerLoggedInEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #60                 // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$PlayerLoggedInEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+       4: astore_1
+       5: aload_1
+       6: invokestatic  #66                 // Method com/simibubi/create/content/equipment/toolbox/ToolboxHandler.playerLogin:(Lnet/minecraft/world/entity/player/Player;)V
+       9: getstatic     #30                 // Field com/simibubi/create/Create.RAILWAYS:Lcom/simibubi/create/content/trains/GlobalRailwayManager;
+      12: aload_1
+      13: invokevirtual #72                 // Method com/simibubi/create/content/trains/GlobalRailwayManager.playerLogin:(Lnet/minecraft/world/entity/player/Player;)V
+      16: return
+
+  public static void playerLoggedOut(net.neoforged.neoforge.event.entity.player.PlayerEvent$PlayerLoggedOutEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #73                 // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$PlayerLoggedOutEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+       4: astore_1
+       5: getstatic     #30                 // Field com/simibubi/create/Create.RAILWAYS:Lcom/simibubi/create/content/trains/GlobalRailwayManager;
+       8: aload_1
+       9: invokevirtual #76                 // Method com/simibubi/create/content/trains/GlobalRailwayManager.playerLogout:(Lnet/minecraft/world/entity/player/Player;)V
+      12: return
+
+  public static void onServerWorldTick(net.neoforged.neoforge.event.tick.LevelTickEvent$Post);
+    Code:
+       0: aload_0
+       1: invokevirtual #79                 // Method net/neoforged/neoforge/event/tick/LevelTickEvent$Post.getLevel:()Lnet/minecraft/world/level/Level;
+       4: astore_1
+       5: aload_1
+       6: invokevirtual #85                 // Method net/minecraft/world/level/Level.isClientSide:()Z
+       9: ifeq          13
+      12: return
+      13: aload_1
+      14: invokestatic  #91                 // Method com/simibubi/create/content/contraptions/ContraptionHandler.tick:(Lnet/minecraft/world/level/Level;)V
+      17: aload_1
+      18: invokestatic  #96                 // Method com/simibubi/create/content/contraptions/minecart/capability/CapabilityMinecartController.tick:(Lnet/minecraft/world/level/Level;)V
+      21: aload_1
+      22: invokestatic  #97                 // Method com/simibubi/create/content/contraptions/minecart/CouplingPhysics.tick:(Lnet/minecraft/world/level/Level;)V
+      25: aload_1
+      26: invokestatic  #100                // Method com/simibubi/create/content/redstone/link/controller/LinkedControllerServerHandler.tick:(Lnet/minecraft/world/level/LevelAccessor;)V
+      29: aload_1
+      30: invokestatic  #105                // Method com/simibubi/create/content/contraptions/actors/trainControls/ControlsServerHandler.tick:(Lnet/minecraft/world/level/LevelAccessor;)V
+      33: getstatic     #30                 // Field com/simibubi/create/Create.RAILWAYS:Lcom/simibubi/create/content/trains/GlobalRailwayManager;
+      36: aload_1
+      37: invokevirtual #108                // Method com/simibubi/create/content/trains/GlobalRailwayManager.tick:(Lnet/minecraft/world/level/Level;)V
+      40: getstatic     #109                // Field com/simibubi/create/Create.LOGISTICS:Lcom/simibubi/create/content/logistics/packagerLink/GlobalLogisticsManager;
+      43: aload_1
+      44: invokevirtual #113                // Method com/simibubi/create/content/logistics/packagerLink/GlobalLogisticsManager.tick:(Lnet/minecraft/world/level/Level;)V
+      47: return
+
+  public static void onEntityTick(net.neoforged.neoforge.event.tick.EntityTickEvent$Pre);
+    Code:
+       0: aload_0
+       1: invokestatic  #116                // Method com/simibubi/create/content/contraptions/minecart/capability/CapabilityMinecartController.entityTick:(Lnet/neoforged/neoforge/event/tick/EntityTickEvent;)V
+       4: aload_0
+       5: invokevirtual #120                // Method net/neoforged/neoforge/event/tick/EntityTickEvent$Pre.getEntity:()Lnet/minecraft/world/entity/Entity;
+       8: astore_2
+       9: aload_2
+      10: instanceof    #125                // class net/minecraft/world/entity/LivingEntity
+      13: ifeq          36
+      16: aload_2
+      17: checkcast     #125                // class net/minecraft/world/entity/LivingEntity
+      20: astore_1
+      21: aload_1
+      22: invokevirtual #127                // Method net/minecraft/world/entity/LivingEntity.level:()Lnet/minecraft/world/level/Level;
+      25: astore_2
+      26: aload_1
+      27: aload_2
+      28: invokestatic  #130                // Method com/simibubi/create/content/contraptions/ContraptionHandler.entitiesWhoJustDismountedGetSentToTheRightLocation:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/level/Level;)V
+      31: aload_1
+      32: aload_2
+      33: invokestatic  #134                // Method com/simibubi/create/content/equipment/toolbox/ToolboxHandler.entityTick:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/Level;)V
+      36: return
+
+  public static void onEntityAdded(net.neoforged.neoforge.event.entity.EntityJoinLevelEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #137                // Method net/neoforged/neoforge/event/entity/EntityJoinLevelEvent.getEntity:()Lnet/minecraft/world/entity/Entity;
+       4: astore_1
+       5: aload_0
+       6: invokevirtual #140                // Method net/neoforged/neoforge/event/entity/EntityJoinLevelEvent.getLevel:()Lnet/minecraft/world/level/Level;
+       9: astore_2
+      10: aload_1
+      11: aload_2
+      12: invokestatic  #141                // Method com/simibubi/create/content/contraptions/ContraptionHandler.addSpawnedContraptionsToCollisionList:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/Level;)V
+      15: return
+
+  public static void onEntityAttackedByPlayer(net.neoforged.neoforge.event.entity.player.AttackEntityEvent);
+    Code:
+       0: aload_0
+       1: invokestatic  #144                // Method com/simibubi/create/content/equipment/wrench/WrenchItem.wrenchInstaKillsMinecarts:(Lnet/neoforged/neoforge/event/entity/player/AttackEntityEvent;)V
+       4: return
+
+  public static void registerCommands(net.neoforged.neoforge.event.RegisterCommandsEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #150                // Method net/neoforged/neoforge/event/RegisterCommandsEvent.getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+       4: invokestatic  #156                // Method com/simibubi/create/infrastructure/command/AllCommands.register:(Lcom/mojang/brigadier/CommandDispatcher;)V
+       7: return
+
+  public static void onEntityEnterSection(net.neoforged.neoforge.event.entity.EntityEvent$EnteringSection);
+    Code:
+       0: aload_0
+       1: invokestatic  #162                // Method com/simibubi/create/content/trains/entity/CarriageEntityHandler.onEntityEnterSection:(Lnet/neoforged/neoforge/event/entity/EntityEvent$EnteringSection;)V
+       4: return
+
+  public static void addReloadListeners(net.neoforged.neoforge.event.AddReloadListenerEvent);
+    Code:
+       0: aload_0
+       1: getstatic     #168                // Field com/simibubi/create/foundation/recipe/RecipeFinder.LISTENER:Lnet/minecraft/server/packs/resources/ResourceManagerReloadListener;
+       4: invokevirtual #174                // Method net/neoforged/neoforge/event/AddReloadListenerEvent.addListener:(Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+       7: aload_0
+       8: getstatic     #180                // Field com/simibubi/create/foundation/recipe/trie/RecipeTrieFinder.LISTENER:Lnet/minecraft/server/packs/resources/ResourceManagerReloadListener;
+      11: invokevirtual #174                // Method net/neoforged/neoforge/event/AddReloadListenerEvent.addListener:(Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+      14: aload_0
+      15: getstatic     #183                // Field com/simibubi/create/content/kinetics/belt/BeltHelper.LISTENER:Lnet/minecraft/server/packs/resources/ResourceManagerReloadListener;
+      18: invokevirtual #174                // Method net/neoforged/neoforge/event/AddReloadListenerEvent.addListener:(Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+      21: return
+
+  public static void serverStopping(net.neoforged.neoforge.event.server.ServerStoppingEvent);
+    Code:
+       0: getstatic     #7                  // Field com/simibubi/create/Create.SCHEMATIC_RECEIVER:Lcom/simibubi/create/content/schematics/ServerSchematicLoader;
+       3: invokevirtual #186                // Method com/simibubi/create/content/schematics/ServerSchematicLoader.shutdown:()V
+       6: return
+
+  public static void onLoadWorld(net.neoforged.neoforge.event.level.LevelEvent$Load);
+    Code:
+       0: aload_0
+       1: invokevirtual #189                // Method net/neoforged/neoforge/event/level/LevelEvent$Load.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+       4: astore_1
+       5: getstatic     #194                // Field com/simibubi/create/Create.REDSTONE_LINK_NETWORK_HANDLER:Lcom/simibubi/create/content/redstone/link/RedstoneLinkNetworkHandler;
+       8: aload_1
+       9: invokevirtual #198                // Method com/simibubi/create/content/redstone/link/RedstoneLinkNetworkHandler.onLoadWorld:(Lnet/minecraft/world/level/LevelAccessor;)V
+      12: getstatic     #203                // Field com/simibubi/create/Create.TORQUE_PROPAGATOR:Lcom/simibubi/create/content/kinetics/TorquePropagator;
+      15: aload_1
+      16: invokevirtual #207                // Method com/simibubi/create/content/kinetics/TorquePropagator.onLoadWorld:(Lnet/minecraft/world/level/LevelAccessor;)V
+      19: getstatic     #30                 // Field com/simibubi/create/Create.RAILWAYS:Lcom/simibubi/create/content/trains/GlobalRailwayManager;
+      22: aload_1
+      23: invokevirtual #210                // Method com/simibubi/create/content/trains/GlobalRailwayManager.levelLoaded:(Lnet/minecraft/world/level/LevelAccessor;)V
+      26: getstatic     #109                // Field com/simibubi/create/Create.LOGISTICS:Lcom/simibubi/create/content/logistics/packagerLink/GlobalLogisticsManager;
+      29: aload_1
+      30: invokevirtual #213                // Method com/simibubi/create/content/logistics/packagerLink/GlobalLogisticsManager.levelLoaded:(Lnet/minecraft/world/level/LevelAccessor;)V
+      33: return
+
+  public static void onUnloadWorld(net.neoforged.neoforge.event.level.LevelEvent$Unload);
+    Code:
+       0: aload_0
+       1: invokevirtual #214                // Method net/neoforged/neoforge/event/level/LevelEvent$Unload.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+       4: astore_1
+       5: getstatic     #194                // Field com/simibubi/create/Create.REDSTONE_LINK_NETWORK_HANDLER:Lcom/simibubi/create/content/redstone/link/RedstoneLinkNetworkHandler;
+       8: aload_1
+       9: invokevirtual #217                // Method com/simibubi/create/content/redstone/link/RedstoneLinkNetworkHandler.onUnloadWorld:(Lnet/minecraft/world/level/LevelAccessor;)V
+      12: getstatic     #203                // Field com/simibubi/create/Create.TORQUE_PROPAGATOR:Lcom/simibubi/create/content/kinetics/TorquePropagator;
+      15: aload_1
+      16: invokevirtual #220                // Method com/simibubi/create/content/kinetics/TorquePropagator.onUnloadWorld:(Lnet/minecraft/world/level/LevelAccessor;)V
+      19: aload_1
+      20: invokestatic  #221                // Method net/createmod/catnip/data/WorldAttached.invalidateWorld:(Lnet/minecraft/world/level/LevelAccessor;)V
+      23: aload_1
+      24: invokestatic  #226                // Method com/simibubi/create/content/kinetics/drill/CobbleGenOptimisation.invalidateWorld:(Lnet/minecraft/world/level/LevelAccessor;)V
+      27: return
+
+  public static void attachData(net.neoforged.neoforge.event.entity.EntityJoinLevelEvent);
+    Code:
+       0: aload_0
+       1: invokestatic  #229                // Method com/simibubi/create/content/contraptions/minecart/capability/CapabilityMinecartController.attach:(Lnet/neoforged/neoforge/event/entity/EntityJoinLevelEvent;)V
+       4: return
+
+  public static void onEntityLeaveLevel(net.neoforged.neoforge.event.entity.EntityLeaveLevelEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #233                // Method net/neoforged/neoforge/event/entity/EntityLeaveLevelEvent.getEntity:()Lnet/minecraft/world/entity/Entity;
+       4: invokevirtual #236                // Method net/minecraft/world/entity/Entity.isAlive:()Z
+       7: ifne          14
+      10: aload_0
+      11: invokestatic  #241                // Method com/simibubi/create/content/contraptions/minecart/capability/CapabilityMinecartController.onEntityDeath:(Lnet/neoforged/neoforge/event/entity/EntityLeaveLevelEvent;)V
+      14: return
+
+  public static void startTracking(net.neoforged.neoforge.event.entity.player.PlayerEvent$StartTracking);
+    Code:
+       0: aload_0
+       1: invokestatic  #245                // Method com/simibubi/create/content/contraptions/minecart/capability/CapabilityMinecartController.startTracking:(Lnet/neoforged/neoforge/event/entity/player/PlayerEvent$StartTracking;)V
+       4: return
+
+  public static void leftClickEmpty(net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: aload_0
+       1: invokevirtual #249                // Method net/minecraft/server/level/ServerPlayer.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+       4: astore_1
+       5: aload_1
+       6: invokevirtual #255                // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+       9: instanceof    #261                // class com/simibubi/create/content/equipment/zapper/ZapperItem
+      12: ifeq          21
+      15: aload_1
+      16: aload_0
+      17: invokestatic  #263                // Method com/simibubi/create/content/equipment/zapper/ZapperInteractionHandler.trySelect:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;)Z
+      20: pop
+      21: return
+}

@@ -1,0 +1,115 @@
+Compiled from "SchematicProcessor.java"
+public class com.simibubi.create.content.schematics.SchematicProcessor extends net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor {
+  public static final com.simibubi.create.content.schematics.SchematicProcessor INSTANCE;
+
+  public static final com.mojang.serialization.MapCodec<com.simibubi.create.content.schematics.SchematicProcessor> CODEC;
+
+  private com.simibubi.create.content.schematics.SchematicProcessor();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor."<init>":()V
+       4: return
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo process(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate);
+    Code:
+       0: aload         5
+       2: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.nbt:()Lnet/minecraft/nbt/CompoundTag;
+       5: ifnull        100
+       8: aload         5
+      10: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      13: invokevirtual #17                 // Method net/minecraft/world/level/block/state/BlockState.hasBlockEntity:()Z
+      16: ifeq          100
+      19: aload         5
+      21: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      24: invokevirtual #23                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      27: checkcast     #27                 // class net/minecraft/world/level/block/EntityBlock
+      30: aload         5
+      32: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      35: aload         5
+      37: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      40: invokeinterface #33,  3           // InterfaceMethod net/minecraft/world/level/block/EntityBlock.newBlockEntity:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+      45: astore        8
+      47: aload         8
+      49: ifnull        100
+      52: aload         5
+      54: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      57: aload         8
+      59: aload         5
+      61: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.nbt:()Lnet/minecraft/nbt/CompoundTag;
+      64: iconst_0
+      65: invokestatic  #37                 // Method net/createmod/catnip/nbt/NBTProcessors.process:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/nbt/CompoundTag;Z)Lnet/minecraft/nbt/CompoundTag;
+      68: astore        9
+      70: aload         9
+      72: aload         5
+      74: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.nbt:()Lnet/minecraft/nbt/CompoundTag;
+      77: if_acmpeq     100
+      80: new           #8                  // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+      83: dup
+      84: aload         5
+      86: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      89: aload         5
+      91: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      94: aload         9
+      96: invokespecial #43                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+      99: areturn
+     100: aload         5
+     102: areturn
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureEntityInfo processEntity(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureEntityInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureEntityInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate);
+    Code:
+       0: aload         4
+       2: getfield      #46                 // Field net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureEntityInfo.nbt:Lnet/minecraft/nbt/CompoundTag;
+       5: invokestatic  #51                 // Method net/minecraft/world/entity/EntityType.by:(Lnet/minecraft/nbt/CompoundTag;)Ljava/util/Optional;
+       8: aload_1
+       9: aload         4
+      11: invokedynamic #57,  0             // InvokeDynamic #0:apply:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureEntityInfo;)Ljava/util/function/Function;
+      16: invokevirtual #61                 // Method java/util/Optional.flatMap:(Ljava/util/function/Function;)Ljava/util/Optional;
+      19: aconst_null
+      20: invokevirtual #67                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      23: checkcast     #47                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureEntityInfo
+      26: areturn
+
+  protected net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType<?> getType();
+    Code:
+       0: getstatic     #71                 // Field com/simibubi/create/AllStructureProcessorTypes.SCHEMATIC:Lnet/neoforged/neoforge/registries/DeferredHolder;
+       3: invokevirtual #77                 // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+       6: checkcast     #83                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType
+       9: areturn
+
+  private static java.util.Optional lambda$processEntity$1(net.minecraft.world.level.LevelReader, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureEntityInfo, net.minecraft.world.entity.EntityType);
+    Code:
+       0: aload_0
+       1: instanceof    #85                 // class net/minecraft/world/level/Level
+       4: ifeq          32
+       7: aload_2
+       8: aload_0
+       9: checkcast     #85                 // class net/minecraft/world/level/Level
+      12: invokevirtual #87                 // Method net/minecraft/world/entity/EntityType.create:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+      15: astore_3
+      16: aload_3
+      17: ifnull        32
+      20: aload_3
+      21: invokevirtual #91                 // Method net/minecraft/world/entity/Entity.onlyOpCanSetNbt:()Z
+      24: ifne          32
+      27: aload_1
+      28: invokestatic  #96                 // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      31: areturn
+      32: invokestatic  #100                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      35: areturn
+
+  private static com.simibubi.create.content.schematics.SchematicProcessor lambda$static$0();
+    Code:
+       0: getstatic     #104                // Field INSTANCE:Lcom/simibubi/create/content/schematics/SchematicProcessor;
+       3: areturn
+
+  static {};
+    Code:
+       0: new           #105                // class com/simibubi/create/content/schematics/SchematicProcessor
+       3: dup
+       4: invokespecial #110                // Method "<init>":()V
+       7: putstatic     #104                // Field INSTANCE:Lcom/simibubi/create/content/schematics/SchematicProcessor;
+      10: invokedynamic #111,  0            // InvokeDynamic #1:get:()Ljava/util/function/Supplier;
+      15: invokestatic  #114                // Method com/mojang/serialization/MapCodec.unit:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/MapCodec;
+      18: putstatic     #120                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      21: return
+}
