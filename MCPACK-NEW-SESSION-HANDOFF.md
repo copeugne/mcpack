@@ -6,6 +6,9 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory refresh matches decisions delivered at 784d6923 and reproduces exactly.
+Working groups: 407. Next: remaining 49 explicit Voyager decisions.
+
 Voyager bench/path decisions and the harvest-heap merge resolve four explicit
 provisionals. Haystack and pile retain both roots and full definitions in one
 family with five material/layout alternatives. Thirteen affected tests and scoped

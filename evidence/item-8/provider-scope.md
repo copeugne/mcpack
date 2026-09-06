@@ -8978,3 +8978,11 @@ uv run pytest tests/item8/test_family_decisions.py -q -k 'mvs or voyager_harvest
 uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
 uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
 ```
+
+Inventory regenerated from 784d6923 and independently reproduced exactly.
+SHA-256: ba90f9bc4a827236676bd6fd061574d149b9a3d72a74aa93dc6cc23f6b3351b2.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-small-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-voyager-small-r2.json
+```
