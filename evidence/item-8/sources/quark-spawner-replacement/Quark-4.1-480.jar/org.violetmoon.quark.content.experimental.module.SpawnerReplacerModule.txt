@@ -1,0 +1,120 @@
+Compiled from "SpawnerReplacerModule.java"
+public class org.violetmoon.quark.content.experimental.module.SpawnerReplacerModule extends org.violetmoon.zeta.module.ZetaModule {
+  public static java.util.List<java.lang.String> replaceMobs;
+
+  private static boolean staticEnabled;
+
+  private static final java.util.Map<net.minecraft.world.entity.EntityType<?>, net.minecraft.world.entity.EntityType<?>> spawnerReplacements;
+
+  public org.violetmoon.quark.content.experimental.module.SpawnerReplacerModule();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method org/violetmoon/zeta/module/ZetaModule."<init>":()V
+       4: return
+
+  public final void configChanged(org.violetmoon.zeta.event.load.ZConfigChanged);
+    Code:
+       0: aload_0
+       1: invokevirtual #7                  // Method isEnabled:()Z
+       4: putstatic     #13                 // Field staticEnabled:Z
+       7: getstatic     #17                 // Field spawnerReplacements:Ljava/util/Map;
+      10: invokeinterface #21,  1           // InterfaceMethod java/util/Map.clear:()V
+      15: getstatic     #26                 // Field replaceMobs:Ljava/util/List;
+      18: invokeinterface #30,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      23: astore_2
+      24: aload_2
+      25: invokeinterface #36,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      30: ifeq          120
+      33: aload_2
+      34: invokeinterface #41,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      39: checkcast     #45                 // class java/lang/String
+      42: astore_3
+      43: aload_3
+      44: ldc           #47                 // String ,
+      46: invokevirtual #49                 // Method java/lang/String.split:(Ljava/lang/String;)[Ljava/lang/String;
+      49: astore        4
+      51: aload         4
+      53: arraylength
+      54: iconst_2
+      55: if_icmpne     117
+      58: aload         4
+      60: iconst_0
+      61: aaload
+      62: invokestatic  #53                 // Method net/minecraft/world/entity/EntityType.byString:(Ljava/lang/String;)Ljava/util/Optional;
+      65: astore        5
+      67: aload         4
+      69: iconst_1
+      70: aaload
+      71: invokestatic  #53                 // Method net/minecraft/world/entity/EntityType.byString:(Ljava/lang/String;)Ljava/util/Optional;
+      74: astore        6
+      76: aload         5
+      78: invokevirtual #59                 // Method java/util/Optional.isPresent:()Z
+      81: ifeq          117
+      84: aload         6
+      86: invokevirtual #59                 // Method java/util/Optional.isPresent:()Z
+      89: ifeq          117
+      92: getstatic     #17                 // Field spawnerReplacements:Ljava/util/Map;
+      95: aload         5
+      97: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     100: checkcast     #54                 // class net/minecraft/world/entity/EntityType
+     103: aload         6
+     105: invokevirtual #64                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     108: checkcast     #54                 // class net/minecraft/world/entity/EntityType
+     111: invokeinterface #67,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     116: pop
+     117: goto          24
+     120: return
+
+  public static void spawnerUpdate(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.entity.SpawnerBlockEntity);
+    Code:
+       0: getstatic     #13                 // Field staticEnabled:Z
+       3: ifeq          13
+       6: aload_0
+       7: invokevirtual #71                 // Method net/minecraft/world/level/Level.isClientSide:()Z
+      10: ifeq          14
+      13: return
+      14: aload_3
+      15: invokevirtual #76                 // Method net/minecraft/world/level/block/entity/SpawnerBlockEntity.getSpawner:()Lnet/minecraft/world/level/BaseSpawner;
+      18: astore        4
+      20: aload         4
+      22: aload_0
+      23: aload_1
+      24: invokevirtual #82                 // Method net/minecraft/world/level/BaseSpawner.getOrCreateDisplayEntity:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/entity/Entity;
+      27: astore        5
+      29: aload         5
+      31: ifnull        90
+      34: aload         5
+      36: invokevirtual #88                 // Method net/minecraft/world/entity/Entity.getType:()Lnet/minecraft/world/entity/EntityType;
+      39: astore        6
+      41: getstatic     #17                 // Field spawnerReplacements:Ljava/util/Map;
+      44: aload         6
+      46: invokeinterface #94,  2           // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      51: ifeq          90
+      54: aload         4
+      56: getstatic     #17                 // Field spawnerReplacements:Ljava/util/Map;
+      59: aload         6
+      61: invokeinterface #98,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      66: checkcast     #54                 // class net/minecraft/world/entity/EntityType
+      69: aload_0
+      70: aload_0
+      71: invokevirtual #101                // Method net/minecraft/world/level/Level.getRandom:()Lnet/minecraft/util/RandomSource;
+      74: aload_1
+      75: invokevirtual #105                // Method net/minecraft/world/level/BaseSpawner.setEntityId:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+      78: aload_3
+      79: invokevirtual #109                // Method net/minecraft/world/level/block/entity/SpawnerBlockEntity.setChanged:()V
+      82: aload_0
+      83: aload_1
+      84: aload_2
+      85: aload_2
+      86: iconst_3
+      87: invokevirtual #112                // Method net/minecraft/world/level/Level.sendBlockUpdated:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;I)V
+      90: return
+
+  static {};
+    Code:
+       0: invokestatic  #116                // Method com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;
+       3: putstatic     #26                 // Field replaceMobs:Ljava/util/List;
+       6: invokestatic  #122                // Method com/google/common/collect/Maps.newHashMap:()Ljava/util/HashMap;
+       9: putstatic     #17                 // Field spawnerReplacements:Ljava/util/Map;
+      12: return
+}
