@@ -215,6 +215,12 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "me/fallenbreath/conditionalmixin/ConditionalMixinMod.class",
+    "me/fallenbreath/conditionalmixin/neoforge/ConditionalMixinNeoForge.class",
+    "me/fallenbreath/conditionalmixin/api/mixin/RestrictiveMixinConfigPlugin.class",
+    "plus/dragons/createdragonsplus/common/registry/CDPBlockFreezers.class",
+    "plus/dragons/createdragonsplus/integration/CDPCompatFix.class",
+    "plus/dragons/createdragonsplus/integration/CDPIntegrationContributions.class",
     "plus/dragons/createdragonsplus/client/CDPClient.class",
     "plus/dragons/createdragonsplus/common/CDPCommon.class",
     "plus/dragons/createdragonsplus/common/recipe/RecipeConverter.class",
@@ -3204,6 +3210,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jarjar/conditional-mixin-neoforge-0.6.4.jar",
         "META-INF/jarjar/mixinextras-neoforge-0.5.0.jar",
         "META-INF/jars/forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar",
         "META-INF/jars/fabric-transfer-api-v1-5.4.3+a25cb45619.jar",
@@ -3265,6 +3272,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jarjar/conditional-mixin-neoforge-0.6.4.jar": (
+            "CreateDragonsPlus-1.11.2b.jar",
+            "0ae7b346d87879e81f276e6a590a6af1e723193e6eb3e94c1f71f7ab5b54d59f",
+        ),
         "META-INF/jarjar/mixinextras-neoforge-0.5.0.jar": (
             "bclib-21.0.24.jar",
             "9c617719248f8b89847348fc7ea5e705739c147ae5e172551264d225bc9f2507",
