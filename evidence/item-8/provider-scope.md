@@ -3504,3 +3504,26 @@ Four focused cases and scoped Ruff/Basedpyright pass using the commands above.
 Brass and jigsaw component reconciliation are now resolved. Remaining provider
 work is custom feature/common-entry roles, optional packs and AeroBlender,
 followed by the whole-provider check. Census remains 76 resolved and 60 open.
+
+### Deep Aether fallen-tree candidate boundary
+
+Retain the fallen Aerglow tree as a named candidate for canonical reconciliation,
+with ordinary and rotten-log configuration variants. FallenTreeFeature writes
+supplied log states along a horizontal direction and can add supplied decoration
+blocks around the logs where placement tests permit. Its supplied configurations
+are fallen_aerglow_tree (roseroot_log) and empty_fallen_aerglow_tree
+(rotten_roseroot_log); both use lightcap_mushrooms decoration. Do not count each
+log, mushroom, orientation or length as an independent family.
+
+The existing candidate test binds both configurations, their placed features
+fallen_aerglow_forest and empty_fallen_aerglow_forest, and the packaged biome
+references in aerglow_forest, blue_aerglow_forest and mystic_aerglow_forest.
+Configured bounds are inputs, not a guarantee of generated dimensions.
+This preserves a membership/grouping boundary, not a claim of observed placement,
+an accepted final family count or a later gameplay classification.
+
+Four focused cases and scoped checks pass with the commands above. The first
+read-only method lookup assumed addDecorators was private; the captured method
+is public, and its body was inspected under that actual signature. No capture
+was changed or regenerated. Remaining provider work is the other custom-feature
+roles, common entries/mixins, optional packs and AeroBlender's contribution.

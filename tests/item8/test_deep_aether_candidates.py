@@ -68,6 +68,29 @@ def test_deep_aether_packaged_candidate_partition() -> None:
             "fallback": "minecraft:empty",
         }
     assert roots["brass_dungeon"]["type"] == "deep_aether:brass_dungeon"
+    for name, block, maximum in (
+        ("fallen_aerglow", "roseroot_log", 12),
+        ("empty_fallen_aerglow", "rotten_roseroot_log", 9),
+    ):
+        feature = rows[prefix + "configured_feature/" + name + "_tree.json"]
+        assert feature["type"] == "deep_aether:fallen_tree"
+        config = cast("dict[str, JsonValue]", feature["config"])
+        assert config["min"] == 2
+        assert config["max"] == maximum
+        provider = cast("dict[str, JsonValue]", config["block"])
+        assert cast("dict[str, JsonValue]", provider["state"])["Name"] == "deep_aether:" + block
+        decorator = cast("dict[str, JsonValue]", config["decorators"])
+        assert decorator == {"type": "minecraft:simple_state_provider", "state": {
+            "Name": "deep_aether:lightcap_mushrooms",
+        }}
+        placed = rows[prefix + "placed_feature/" + name + "_forest.json"]
+        assert placed["feature"] == "deep_aether:" + name + "_tree"
+    placed_ids = {"deep_aether:fallen_aerglow_forest", "deep_aether:empty_fallen_aerglow_forest"}
+    assert {p for p, d in rows.items() if p.startswith(prefix + "biome/")
+            and any(n in json.dumps(d) for n in placed_ids)} == {
+        prefix + "biome/" + n + ".json"
+        for n in ("aerglow_forest", "blue_aerglow_forest", "mystic_aerglow_forest")
+    }
     assert Counter(str(d["type"]) for p, d in rows.items()
                    if p.startswith(prefix + "configured_feature/")) == {
         "minecraft:tree": 11, "minecraft:flower": 10, "minecraft:random_selector": 9,
