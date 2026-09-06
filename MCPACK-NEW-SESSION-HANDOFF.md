@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Quark membership is settled: four families (spiral spire, fairy ring with buried
+ore, monster-box encounter, Nether obsidian spike). The previous fallen-log
+family inclusion is corrected to decorated vegetation, preserving source-derived
+details under excluded_design. Existing terrain/vegetation exclusions stand.
+Two focused cases, scoped checks and inventory reproduction pass. Provider
+census stays 90 resolved, 46 open. Next: Supplementaries cave-urn cache, then
+remaining registry design grouping and provider closures. Attributes remain open.
+
 Three tree-related membership boundaries are settled: Aether holiday tree, Deep
 Aether fallen trees (two configured variants), and Regions Unexplored fallen
 trees (six configured, eight placed variants) add no structure family. Preserve
