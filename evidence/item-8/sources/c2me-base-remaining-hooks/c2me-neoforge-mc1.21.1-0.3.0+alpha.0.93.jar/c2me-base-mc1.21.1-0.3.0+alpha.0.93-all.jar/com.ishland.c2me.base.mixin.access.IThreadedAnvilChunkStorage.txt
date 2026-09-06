@@ -1,0 +1,183 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-base-mc1.21.1-0.3.0+alpha.0.93-all.jar!/com/ishland/c2me/base/mixin/access/IThreadedAnvilChunkStorage.class
+  Last modified Jan 1, 1980; size 2302 bytes
+  SHA-256 checksum 02c4dcdd30c9497c8dc49bd469159d0996fbed685190f5bee42cd0d53b4e6401
+  Compiled from "IThreadedAnvilChunkStorage.java"
+public interface com.ishland.c2me.base.mixin.access.IThreadedAnvilChunkStorage
+  minor version: 0
+  major version: 65
+  flags: (0x0601) ACC_PUBLIC, ACC_INTERFACE, ACC_ABSTRACT
+  this_class: #2                          // com/ishland/c2me/base/mixin/access/IThreadedAnvilChunkStorage
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 16, attributes: 2
+Constant pool:
+   #1 = Utf8               com/ishland/c2me/base/mixin/access/IThreadedAnvilChunkStorage
+   #2 = Class              #1             // com/ishland/c2me/base/mixin/access/IThreadedAnvilChunkStorage
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               IThreadedAnvilChunkStorage.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/server/level/ChunkMap;
+   #9 = Utf8               getWorld
+  #10 = Utf8               ()Lnet/minecraft/server/level/ServerLevel;
+  #11 = Utf8               Lorg/spongepowered/asm/mixin/gen/Accessor;
+  #12 = Utf8               invokeUpdateHolderMap
+  #13 = Utf8               ()Z
+  #14 = Utf8               Lorg/spongepowered/asm/mixin/gen/Invoker;
+  #15 = Utf8               invokeSave
+  #16 = Utf8               (Lnet/minecraft/world/level/chunk/ChunkAccess;)Z
+  #17 = Utf8               getMainThreadExecutor
+  #18 = Utf8               ()Lnet/minecraft/util/thread/BlockableEventLoop;
+  #19 = Utf8               ()Lnet/minecraft/util/thread/BlockableEventLoop<Ljava/lang/Runnable;>;
+  #20 = Utf8               getLightingProvider
+  #21 = Utf8               ()Lnet/minecraft/server/level/ThreadedLevelLightEngine;
+  #22 = Utf8               getGenerationContext
+  #23 = Utf8               ()Lnet/minecraft/world/level/chunk/status/WorldGenContext;
+  #24 = Utf8               invokeSendToPlayers
+  #25 = Utf8               (Lnet/minecraft/world/level/chunk/LevelChunk;)V
+  #26 = Utf8               getWorldGenerationProgressListener
+  #27 = Utf8               ()Lnet/minecraft/server/level/progress/ChunkProgressListener;
+  #28 = Utf8               getTotalChunksLoadedCount
+  #29 = Utf8               ()Ljava/util/concurrent/atomic/AtomicInteger;
+  #30 = Utf8               invokeGetChunkHolder
+  #31 = Utf8               (J)Lnet/minecraft/server/level/ChunkHolder;
+  #32 = Utf8               invokeOnChunkStatusChange
+  #33 = Utf8               (Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/server/level/FullChunkStatus;)V
+  #34 = Utf8               getChunkToNextSaveTimeMs
+  #35 = Utf8               ()Lit/unimi/dsi/fastutil/longs/Long2LongMap;
+  #36 = Utf8               getCurrentChunkHolders
+  #37 = Utf8               ()Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+  #38 = Utf8               ()Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap<Lnet/minecraft/server/level/ChunkHolder;>;
+  #39 = Utf8               setChunkHolderListDirty
+  #40 = Utf8               (Z)V
+  #41 = Utf8               invokeGetUpdatedChunkNbt
+  #42 = Utf8               (Lnet/minecraft/world/level/ChunkPos;)Ljava/util/concurrent/CompletableFuture;
+  #43 = Utf8               (Lnet/minecraft/world/level/ChunkPos;)Ljava/util/concurrent/CompletableFuture<Ljava/util/Optional<Lnet/minecraft/nbt/CompoundTag;>;>;
+  #44 = Utf8               getPointOfInterestStorage
+  #45 = Utf8               ()Lnet/minecraft/world/entity/ai/village/poi/PoiManager;
+  #46 = Utf8               RuntimeVisibleAnnotations
+  #47 = Utf8               Signature
+  #48 = Utf8               SourceFile
+  #49 = Utf8               RuntimeInvisibleAnnotations
+{
+  public abstract net.minecraft.server.level.ServerLevel getWorld();
+    descriptor: ()Lnet/minecraft/server/level/ServerLevel;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.gen.Accessor
+
+  public abstract boolean invokeUpdateHolderMap();
+    descriptor: ()Z
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #14()
+        org.spongepowered.asm.mixin.gen.Invoker
+
+  public abstract boolean invokeSave(net.minecraft.world.level.chunk.ChunkAccess);
+    descriptor: (Lnet/minecraft/world/level/chunk/ChunkAccess;)Z
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #14()
+        org.spongepowered.asm.mixin.gen.Invoker
+
+  public abstract net.minecraft.util.thread.BlockableEventLoop<java.lang.Runnable> getMainThreadExecutor();
+    descriptor: ()Lnet/minecraft/util/thread/BlockableEventLoop;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    Signature: #19                          // ()Lnet/minecraft/util/thread/BlockableEventLoop<Ljava/lang/Runnable;>;
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.gen.Accessor
+
+  public abstract net.minecraft.server.level.ThreadedLevelLightEngine getLightingProvider();
+    descriptor: ()Lnet/minecraft/server/level/ThreadedLevelLightEngine;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.gen.Accessor
+
+  public abstract net.minecraft.world.level.chunk.status.WorldGenContext getGenerationContext();
+    descriptor: ()Lnet/minecraft/world/level/chunk/status/WorldGenContext;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.gen.Accessor
+
+  public abstract void invokeSendToPlayers(net.minecraft.world.level.chunk.LevelChunk);
+    descriptor: (Lnet/minecraft/world/level/chunk/LevelChunk;)V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #14()
+        org.spongepowered.asm.mixin.gen.Invoker
+
+  public abstract net.minecraft.server.level.progress.ChunkProgressListener getWorldGenerationProgressListener();
+    descriptor: ()Lnet/minecraft/server/level/progress/ChunkProgressListener;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.gen.Accessor
+
+  public abstract java.util.concurrent.atomic.AtomicInteger getTotalChunksLoadedCount();
+    descriptor: ()Ljava/util/concurrent/atomic/AtomicInteger;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.gen.Accessor
+
+  public abstract net.minecraft.server.level.ChunkHolder invokeGetChunkHolder(long);
+    descriptor: (J)Lnet/minecraft/server/level/ChunkHolder;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #14()
+        org.spongepowered.asm.mixin.gen.Invoker
+
+  public abstract void invokeOnChunkStatusChange(net.minecraft.world.level.ChunkPos, net.minecraft.server.level.FullChunkStatus);
+    descriptor: (Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/server/level/FullChunkStatus;)V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #14()
+        org.spongepowered.asm.mixin.gen.Invoker
+
+  public abstract it.unimi.dsi.fastutil.longs.Long2LongMap getChunkToNextSaveTimeMs();
+    descriptor: ()Lit/unimi/dsi/fastutil/longs/Long2LongMap;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.gen.Accessor
+
+  public abstract it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap<net.minecraft.server.level.ChunkHolder> getCurrentChunkHolders();
+    descriptor: ()Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    Signature: #38                          // ()Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap<Lnet/minecraft/server/level/ChunkHolder;>;
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.gen.Accessor
+
+  public abstract void setChunkHolderListDirty(boolean);
+    descriptor: (Z)V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.gen.Accessor
+
+  public abstract java.util.concurrent.CompletableFuture<java.util.Optional<net.minecraft.nbt.CompoundTag>> invokeGetUpdatedChunkNbt(net.minecraft.world.level.ChunkPos);
+    descriptor: (Lnet/minecraft/world/level/ChunkPos;)Ljava/util/concurrent/CompletableFuture;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    Signature: #43                          // (Lnet/minecraft/world/level/ChunkPos;)Ljava/util/concurrent/CompletableFuture<Ljava/util/Optional<Lnet/minecraft/nbt/CompoundTag;>;>;
+    RuntimeVisibleAnnotations:
+      0: #14()
+        org.spongepowered.asm.mixin.gen.Invoker
+
+  public abstract net.minecraft.world.entity.ai.village.poi.PoiManager getPointOfInterestStorage();
+    descriptor: ()Lnet/minecraft/world/entity/ai/village/poi/PoiManager;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.gen.Accessor
+}
+SourceFile: "IThreadedAnvilChunkStorage.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ChunkMap;]
+    )
