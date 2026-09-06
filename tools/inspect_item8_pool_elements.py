@@ -221,6 +221,8 @@ GENERATION_PREFIXES = (
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
     "dan200/computercraft/ComputerCraft.class",
+    "dan200/computercraft/client/ForgeClientHooks.class",
+    "dan200/computercraft/client/ForgeClientRegistry.class",
     "dan200/computercraft/shared/ModRegistry$Blocks.class",
     "dan200/computercraft/shared/ModRegistry$BlockEntities.class",
     "dan200/computercraft/shared/ModRegistry$DataComponents.class",
