@@ -5598,8 +5598,8 @@ remains 90 resolved, 46 open providers; no family candidate was added.
 
 ### Exact Fabric module queue
 
-The frozen parent contains 43 modules. Four membership roles are resolved below;
-39 remain open. These are internal modules of one retained provider, not added
+The frozen parent contains 43 modules. Five membership roles are resolved below;
+38 remain open. These are internal modules of one retained provider, not added
 providers or families. All packaged data is already partitioned by the existing
 Fabric check. Open rows require contribution-role inspection, not an audit of
 every implementation method. Reuse existing captures and stop at the content
@@ -5607,7 +5607,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 
 | Fabric module | Membership disposition |
 | --- | --- |
-| `fabric-api-base-0.4.42+d1308ded19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-api-base-0.4.42+d1308ded19.jar` | RESOLVED: empty loader entry and consumer-driven event/utility library; see below. |
 | `fabric-api-lookup-api-v1-1.6.71+c290471319.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-biome-api-v1-13.0.31+1e62d33c19.jar` | RESOLVED: biome selection and consumer callbacks; see above. |
 | `fabric-block-api-v1-1.1.0+b0c22bb819.jar` | OPEN: inspect entry and declared hook contribution roles. |
@@ -5655,3 +5655,18 @@ The transitive-access-wideners module has exactly five files: manifest, lowcodef
 metadata, access transformer, icon and nesting metadata. There are no class,
 service, mixin or data files. It changes member accessibility and supplies no
 independent site. The focused packaged-data test binds this complete partition.
+
+### Fabric API Base membership resolved
+
+Source da5dce0 (extractor 77dc50e) independently reproduces its only annotated
+entry. The constructor calls Object's constructor and returns, with no registration
+or static initializer. The complete module contains 17 classes and four metadata/
+icon files. No mixin, service, packaged data or nested archive is present. Other
+classes implement consumer-driven events, ordering and utility types; no automatic
+content contribution remains to follow. No independent family is added.
+
+The existing provider test binds the full partition, sole annotated entry and
+source identities. Six focused Fabric cases and scoped Ruff/Basedpyright pass
+using the commands above. Fabric module queue: five resolved, 38 open. Whole
+provider count stays 90 resolved, 46 open. Next: remaining named module entries,
+starting with conventional tag registration; do not repeat API Base internals.
