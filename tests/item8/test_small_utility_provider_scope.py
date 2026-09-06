@@ -449,3 +449,64 @@ def test_player_animation_membership_payload() -> None:
             assert row["disassembly_sha256"] == hashlib.sha256(disassembly).hexdigest()
             if row["class"] == entry:
                 assert b"dist=[Lnet/neoforged/api/distmarker/Dist;.CLIENT]" in disassembly
+
+
+def test_azurelib_armor_membership_payload() -> None:
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name == "azurelibarmor-neo-1.21.1-3.1.2.jar")
+    assert source.sha256 == "229348d20b5c57a2b1ca2d0400e33b490aed3eb8daabf9605416005a872939d0"
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    prefix = "mod/azure/azurelibarmor/"
+    entry = prefix + "neoforge/NeoForgeAzureLibMod.class"
+    with ZipFile(source.path) as archive:
+        files = {n for n in archive.namelist() if not n.endswith("/")}
+        classes = {n for n in files if n.endswith(".class")}
+        assert len(classes) == 343
+        services = {"META-INF/services/mod.azure.azurelibarmor.common.platform.services." + n
+                    for n in ("AzureLibInitializer", "AzureLibNetwork", "IPlatformHelper")}
+        configs = {"azurelibarmor.mixins.json": (0, 0),
+                   "azurelibarmor.neo.mixins.json": (2, 3),
+                   "azurelibarmor.neo2.mixins.json": (0, 2)}
+        assert files - classes == services | set(configs) | {
+            "META-INF/MANIFEST.MF", "META-INF/accesstransformer.cfg",
+            "META-INF/neoforge.mods.toml", "azurelibarmor.accesswidener",
+            "azurelibarmor.png", "pack.mcmeta", "LICENSE_AzureLib Armor"}
+        metadata = tomllib.loads(archive.read("META-INF/neoforge.mods.toml").decode())
+        assert metadata["modLoader"] == "javafml"
+        declarations = cast("list[dict[str, str]]", metadata["mixins"])
+        assert {r["config"] for r in declarations} == set(configs)
+        expected = {entry} | {prefix + n + ".class" for n in (
+            "AzureLib", "AzureLibMod", "common/network/packet/AzItemStackDispatchCommandPacket",
+            "common/render/armor/compat/ShoulderSurfingCompat")}
+        for name in services:
+            expected.add(archive.read(name).decode().strip().replace(".", "/") + ".class")
+        for name, (common, client) in configs.items():
+            config = cast("dict[str, JsonValue]", json.loads(archive.read(name)))
+            assert not any(config.get(k) for k in ("plugin", "server"))
+            hooks = cast("list[str]", config.get("mixins", []))
+            assert len(hooks) == common
+            assert len(cast("list[str]", config.get("client", []))) == client
+            package = cast("str", config["package"]).replace(".", "/")
+            expected.update(package + "/" + n.replace(".", "/") + ".class" for n in hooks)
+        assert {n for n in classes if any(marker in archive.read(n) for marker in (
+            b"Lnet/neoforged/fml/common/Mod;", b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+        ))} == {entry}
+        captured: set[str] = set()
+        for label, digest in (
+            ("azurelib-armor-provider",
+             "ae7ea280aed8ac0998e60626314df2d78c7048224c11c9104bb7d8fb42d06a22"),
+            ("azurelib-armor-delegates",
+             "5b79eb326a3e94d744a3f0e9df66028670dab506f8f0a132a40167a868391c07"),
+        ):
+            directory = Path("evidence/item-8/sources") / label
+            raw = (directory / "identities.json").read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == digest
+            rows = cast("list[dict[str, str]]", json.loads(raw))
+            for row in rows:
+                captured.add(row["class"])
+                assert row["archive"] == source.name
+                assert row["archive_sha256"] == source.sha256
+                assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+                assert row["disassembly_sha256"] == hashlib.sha256(
+                    (directory / row["disassembly"]).read_bytes()).hexdigest()
+        assert captured == expected

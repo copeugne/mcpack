@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+AzureLib Armor membership is resolved from a37e5b08 and 57ea6b5c. It supplies
+item animation identity, synchronization and rendering support; no independent
+family. Complete payload/source binding, 23 utility cases and scoped quality
+checks pass. Whole providers: 102 resolved, 34 open. Player Animator was closed
+in 7a873511. Do not continue generic animation helper tracing. Finish remaining
+provider contributions and Moog grouping before detailed attributes. No change
+to the provisional family denominator occurred in these two closures.
+
+
 Player Animator membership is resolved from d1d22f75. Its only mod entry is
 explicitly client-only, its seventeen hooks are client-only, and its plugin
 adds no further hooks. Full archive/source binding, 22 utility cases and scoped
