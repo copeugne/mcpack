@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 43 of 136. The exact queue below has 93 open rows.
+Supported provider dispositions: 44 of 136. The exact queue below has 92 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -624,7 +624,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar` | Eight capture directories bound by test_moog_library_provider_scope.py; latest registration boundaries ee8e2c0. | RESOLVED: shared generation and modification library; no independent authored family or packaged generation resources. See Moog library provider disposition below. |
 | `moonlight-neoforge-1.21.1-3.0.17.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `naturalist-1.0.2-neoforge-1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
-| `oceansdelight-neoforge-1.0.4-1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `oceansdelight-neoforge-1.0.4-1.21.1.jar` | `oceansdelight-provider` (2b575d8), test_oceansdelight_provider_scope.py | RESOLVED: Food content and four existing aquatic-mob loot declarations; no independent family. See Ocean's Delight disposition below. |
 | `owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `player-animation-lib-forge-2.0.4+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `polymorph-neoforge-1.1.0+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -1095,3 +1095,35 @@ All nine cases pass, including the previous six. Ruff and Basedpyright pass.
 No new measurement, framework, baseline configuration or family grouping change.
 Provider dispositions now cover 43 of 136; 93 remain in the exact queue. Continue
 whole-provider candidate reconciliation before detailed family attributes.
+
+## Ocean's Delight provider disposition
+
+All 15 classes are captured in 2b575d8 using selector 75232ba and independently
+reproduced. The mod entry registers food blocks, items and a creative tab, plus
+client setup. The only auto-subscriber installs build-time recipe/model/tag/language
+providers. It does not introduce an authored generation path. Full archive
+accounting covers 67 visual assets, 31 recipes, 27 recipe-unlock advancements,
+five tags, four loot modifiers, their global list, five packaged build caches,
+two metadata files and the logo. No root, pool, template, nested archive, service
+or mixin is unexplained.
+
+The four packaged farmersdelight:add_item declarations target elder guardian,
+guardian, squid and glow squid. Their added items are respectively
+`oceansdelight:elder_guardian_slab`, `oceansdelight:guardian` and
+`oceansdelight:tentacles` for both squid types. The elder-guardian and squid cut
+modifiers require an attacker holding a Farmer's Delight knife; guardian_drop
+has only the guardian entity condition. The global list has replace=false and
+names these four declarations. This is loot provenance for existing mobs,
+including those in existing structures, not four new families. Effective combined
+loot still depends on resource selection and the Farmer's Delight implementation.
+
+```sh
+uv run pytest -q tests/item8/test_oceansdelight_provider_scope.py
+uv run ruff check tests/item8/test_oceansdelight_provider_scope.py
+uv run basedpyright tests/item8/test_oceansdelight_provider_scope.py
+```
+
+One focused case passes. Initial lint/type findings were three long lines and
+two untyped JSON values; formatting and JsonValue casts resolve them. Ruff and
+Basedpyright pass. No new measurement, production behavior, baseline configuration
+or family grouping changed. Provider dispositions: 44 of 136, with 92 open.

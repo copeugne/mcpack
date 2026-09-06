@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Ocean's Delight provider coverage now passes. Its complete 15-class source is
+delivered in 2b575d8 using 75232ba and independently reproduced. Full payload and
+four existing aquatic-mob loot declarations are bound by the focused scope test;
+scoped checks pass. No independent structure family added. Retain loot provenance
+for elder guardian, guardian, squid and glow squid in later attributes. Counts:
+44 resolved providers, 92 open. Continue candidate completeness before attributes;
+do not expand this provider into food balance or unrelated gameplay tests.
+
+
 Almanac, Library Ferret and Structure Layout Optimizer provider coverage now
 passes. Their complete 38-class capture is delivered in 8c60e03 using 4f65e40;
 all three independently reproduced. The reused small-utility test has nine passing
