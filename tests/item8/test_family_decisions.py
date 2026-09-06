@@ -2631,3 +2631,75 @@ def test_nether_arena_variants_preserve_placement_and_component_ownership() -> N
     assert all(n.startswith("mns:mega_arenas/mobs/1.21/") for n in shared)
     for path, digest in cast("dict[str, str]", group["evidence"]).items():
         assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+
+
+@pytest.mark.parametrize(("family", "expected"), [
+    ("mvs:harvest_heap", {
+        "mvs:haystack": ["haystack", "small_haystack"],
+        "mvs:pile": ["mixed_pile", "pumpkin_pile", "small_pumpkin_pile"],
+    }),
+    ("mvs:animal_hut", {
+        "mvs:fox_hut": ["fox_hut"], "mvs:snowy_dog_hut": ["snowy_dog_hut"],
+    }),
+])
+def test_voyager_small_variants_preserve_roots(
+    family: str, expected: dict[str, list[str]],
+) -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()))
+    groups = cast("list[dict[str, JsonValue]]", decisions["groups"])
+    group = next(g for g in groups if g["family_id"] == family)
+    ids = list(expected)
+    assert group["structure_ids"] == ids
+    assert [m for g in groups for m in cast("list[str]", g["structure_ids"])
+            if m in ids] == ids
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    assert set(variants) == set(ids)
+    catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes())))
+    for rid in ids:
+        name = rid.split(":")[1]
+        definition = next(r["document"] for r in cast(
+            "list[dict[str, JsonValue]]", catalog["resources"])
+            if r["path"] == f"data/mvs/worldgen/structure/{name}.json")
+        assert variants[rid] == {
+            "definition": definition,
+            "templates": [f"mvs:other_decoration/{n}" for n in expected[rid]],
+        }
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+
+
+def test_voyager_tiered_towers_preserve_placement_and_components() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()))
+    groups = cast("list[dict[str, JsonValue]]", decisions["groups"])
+    group = next(g for g in groups if g["family_id"] == "mvs:tiered_tower")
+    ids = ["mvs:jungle_tower", "mvs:red_tower"]
+    assert group["structure_ids"] == ids
+    assert [m for g in groups for m in cast("list[str]", g["structure_ids"])
+            if m in ids] == ids
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    assert set(variants) == set(ids)
+    catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes())))
+    expected = {
+        "mvs:jungle_tower": ["jungle_tower/base", "jungle_tower/bottom", "jungle_tower/top"],
+        "mvs:red_tower": ["houses/red_tower", "houses/red_tower_top"],
+    }
+    for rid in ids:
+        name = rid.split(":")[1]
+        definition = next(r["document"] for r in cast(
+            "list[dict[str, JsonValue]]", catalog["resources"])
+            if r["path"] == f"data/mvs/worldgen/structure/{name}.json")
+        assert variants[rid] == {
+            "definition": definition, "templates": [f"mvs:{n}" for n in expected[rid]],
+        }
+    jungle = cast("dict[str, JsonValue]", variants[ids[0]]["definition"])
+    red = cast("dict[str, JsonValue]", variants[ids[1]]["definition"])
+    assert jungle["biomes"] == "#c:is_jungle"
+    assert red["biomes"] == "#c:is_taiga"
+    assert (jungle["size"], red["size"]) == (4, 1)
+    assert (jungle["allowed_terrain_height_range"], red["allowed_terrain_height_range"]) == (7, 2)
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest

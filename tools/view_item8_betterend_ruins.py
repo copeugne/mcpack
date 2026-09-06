@@ -54,25 +54,33 @@ def diagram(raw: bytes, title: str, origin_x: int, origin_y: int, *, exposed: bo
     return "\n".join(result)
 
 
-def main() -> None:
-    """Render fixed comparison sets from their frozen archive."""
+def parse_args() -> argparse.Namespace:
+    """Select one existing comparison set and a fresh output directory."""
     parser = argparse.ArgumentParser(description=__doc__)
     _ = parser.add_argument("--output", type=Path, required=True)
     selection = parser.add_mutually_exclusive_group()
-    _ = selection.add_argument("--soaring", action="store_true")
-    _ = selection.add_argument("--nether", action="store_true")
-    _ = selection.add_argument("--nether-houses", action="store_true")
-    _ = selection.add_argument("--nether-arenas", action="store_true")
-    _ = selection.add_argument("--nether-landmarks", action="store_true")
-    args = parser.parse_args()
+    for flag in ("--soaring", "--nether", "--nether-houses", "--nether-arenas",
+                 "--nether-landmarks", "--voyager-small", "--voyager-buildings",
+                 "--voyager-landmarks"):
+        _ = selection.add_argument(flag, action="store_true")
+    return parser.parse_args()
+
+
+def main() -> None:
+    """Render fixed comparison sets from their frozen archive."""
+    args = parse_args()
     output = cast("Path", args.output)
     soaring = cast("bool", args.soaring)
+    voyager = (cast("bool", args.voyager_small) or cast("bool", args.voyager_buildings)
+               or cast("bool", args.voyager_landmarks))
     nether_houses = cast("bool", args.nether_houses)
     nether_arenas = cast("bool", args.nether_arenas)
     nether_landmarks = cast("bool", args.nether_landmarks)
     nether = cast("bool", args.nether) or nether_houses or nether_arenas or nether_landmarks
     archive_name = "MoogsSoaringStructures-1.21-2.1.2.jar" if soaring else "BetterEnd-21.0.31.jar"
     archive_name = "MoogsNetherStructures-1.21-3.0.0-alpha.2.jar" if nether else archive_name
+    archive_name = "MoogsVoyagerStructures-1.21-5.0.11.jar" if voyager else archive_name
+    compressed = soaring or nether or voyager
     source = next(s for s in retained_sources(Path.cwd()) if s.name == archive_name)
     if hashlib.sha256(source.path.read_bytes()).hexdigest() != source.sha256:
         message = f"Archive identity mismatch: {archive_name}"
@@ -129,24 +137,62 @@ def main() -> None:
                                         "wells/medium_warped_well_lower",
                                         "ruins/circle_blackstone", "ruins/circle_nether_brick"],
             }
+        if voyager:
+            namespace = "mvs"
+            sheets = {
+                "benches": [f"other_decoration/{n}" for n in
+                            ("large_bench", "medium_bench", "small_bench_1",
+                             "small_bench_2", "small_bench_3")],
+                "harvest_heaps": [f"other_decoration/{n}" for n in
+                                  ("haystack", "small_haystack", "mixed_pile",
+                                   "pumpkin_pile", "small_pumpkin_pile")],
+                "paths": ["nature/long_oak_pathway", "nature/short_oak_pathway"],
+            } if cast("bool", args.voyager_small) else {
+                "houses": [f"houses/{n}" for n in
+                           ("azelea_house", "deepslate_house", "desert_house", "flower_hole",
+                            "house", "small_swamp_house", "tall_house", "warped_house")],
+                "outbuildings": ["houses/barn", "shed", "out_house/out_house",
+                                 "out_house/out_house_lower"],
+                "towers": ["cartographer_tower/base", "cartographer_tower/top",
+                           "jungle_tower/base", "jungle_tower/bottom", "jungle_tower/top",
+                           "ocean_tower", "small_pillager_tower"],
+                "nether_towers": ["houses/large_warped_tower", "houses/large_warped_tower_top",
+                                  "houses/red_tower", "houses/red_tower_top"],
+            } if cast("bool", args.voyager_buildings) else {
+                "facilities": ["beach_bar", "other_decoration/crimson_enchanting_table",
+                               "other_decoration/desert_pump", "horse_pen",
+                               "other_decoration/lamp_chest", "other_decoration/lecturn_garden",
+                               "other_decoration/wheat_grain_bin",
+                               "other_decoration/wooden_wheat_farm"],
+                "ruins": [f"ruins/{n}" for n in
+                          ("castle_ruins", "log_ruin", "ruined_beacon", "small_ruin",
+                           "statue_ruins", "stone_pillars", "tree_monument")],
+                "sculptures": [f"other_decoration/{n}" for n in
+                               ("duck", "mushroom_statue", "nether_devil", "snowy_medium_fossil",
+                                "villager_statue")],
+                "shelters": ["other_decoration/bee_dome", "other_decoration/fox_hut",
+                             "other_decoration/snowy_dog_hut", "nature/large_mushroom"],
+                "landmarks": ["crystal/base", "crystal/lower", "gallows", "railway",
+                              "small_ship", "stone_fountain", "sunzi_gate",
+                              "other_decoration/small_windmill"],
+            }
         for biome, names in sheets.items():
             count = len(names)
             pieces: list[str] = []
             for index, name in enumerate(names):
                 raw = archive.read(f"data/{namespace}/structure/{name}.nbt")
-                title = name if soaring or nether else name.rsplit("/", 1)[1]
+                title = name if compressed else name.rsplit("/", 1)[1]
                 pieces.append(diagram(raw, title, 20 + index % 2 * 300,
-                                      35 + index // 2 * 300, exposed=soaring or nether))
+                                      35 + index // 2 * 300, exposed=compressed))
             height = ((count + 1) // 2) * 300
             svg = "".join((
                 f'<svg xmlns="http://www.w3.org/2000/svg" width="620" height="{height}">',
                    '<rect width="100%" height="100%" fill="white"/>',
                    "\n".join(pieces), "</svg>"))
-            if soaring or nether:
-                _ = (output / f"{biome}.svg.gz").write_bytes(
-                    gzip.compress((svg + "\n").encode(), mtime=0))
-            else:
-                _ = (output / f"{biome}.svg").write_text(svg + "\n")
+            payload = (svg + "\n").encode()
+            payload = gzip.compress(payload, mtime=0) if compressed else payload
+            suffix = ".svg.gz" if compressed else ".svg"
+            _ = (output / f"{biome}{suffix}").write_bytes(payload)
 
 
 if __name__ == "__main__":

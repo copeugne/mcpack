@@ -8956,3 +8956,206 @@ SHA-256: f119b21e5b24961e14a1614af19f27c9c7dd8f4d1b352dcf5a496c10be15fbc3.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nether-landmarks-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-nether-landmarks-r2.json
 ```
+
+### Voyager benches, paths and harvest heaps, 2026-09-07
+
+Views delivered at 77146722 and preserved template contents resolve four
+provisional decisions. Benches retain five seating/accessory alternatives; paths
+retain two landscaped route alternatives. Haystack and pile become one harvest
+heap family with five material/layout alternatives across both retained roots.
+The shared heap motif, rather than a common root or loot table alone, supports
+the merge. Full definitions and template ownership remain in the variants map.
+No functional seating, transport, observed generation or reward equality is
+inferred from these source interpretations. Diagram limitations remain explicit.
+
+Thirteen affected cases pass, including direct root/definition preservation for
+the merge. Scoped Ruff/Basedpyright pass. Working groups: 407. Explicit provisional
+remainder: 49, all Voyager. Nonregistry reconciliation, eleven required attributes
+and final review/merge remain incomplete. Inventory refresh follows.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mvs or voyager_harvest'
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+```
+
+Inventory regenerated from 784d6923 and independently reproduced exactly.
+SHA-256: ba90f9bc4a827236676bd6fd061574d149b9a3d72a74aa93dc6cc23f6b3351b2.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-small-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-voyager-small-r2.json
+```
+
+### Voyager tower and outbuilding relationships, 2026-09-07
+
+Views delivered at b580a10f resolve six tower roots and three outbuilding roots.
+Red and jungle towers share a broad tiered, buttressed and tapering composition;
+they merge into one family with material, vegetation, layout and encounter
+variants. Both full root definitions and all five component identities remain.
+Jungle/taiga biome constraints, different size limits and terrain checks are
+preserved. The comparison filename nether_towers does not establish a dimension.
+
+Cartographer, large warped, ocean and small pillager towers retain distinct
+shaft/crown, side-turret, cylindrical and open stacked-platform compositions.
+Barn, shed and out-house remain distinct hall, shallow enclosure and narrow
+shelter designs. Tops, lower pieces and shared villager templates are components.
+Empty spawner entity objects remain unresolved. These decisions establish source
+design relationships, not observed gameplay or natural spawning.
+
+Sixteen affected cases pass, including direct merged-root definition and component
+preservation. Scoped Ruff/Basedpyright pass. Working groups: 406. Explicit
+provisional remainder: 40, including eight houses whose views are already inspected.
+Attribute completion, nonregistry reconciliation and final review remain open.
+Inventory refresh follows.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mvs or voyager'
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+```
+
+Inventory regenerated from 0eea8158 and independently reproduced exactly.
+SHA-256: 22b251c84c08e77652ab4066842cbf1102e57c936a060712b299805126be52d2.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-towers-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-voyager-towers-r2.json
+```
+
+### Voyager house relationships, 2026-09-07
+
+Eight house designs retain separate families after comparison of the existing
+house/outbuilding sheets and preserved template contents. The decisions describe
+roof, enclosure, frontage and support arrangements rather than relying on material
+or size names. Shared villager templates remain component options. No architecture
+template in this comparison has packaged spawners; the standard house's authored
+item entities are not hostile inhabitants. Warped-house Overworld constraints and
+the swamp-house omission of cannot_spawn_in_liquid remain preserved.
+
+Sixteen affected cases and scoped Ruff/Basedpyright pass. No new source capture or
+test machinery was needed. Working groups remain 406. Explicit provisional queue:
+32, all Voyager, with its exact names in the active handoff. Nonregistry reconciliation,
+required attributes and final review remain incomplete. Inventory refresh follows.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mvs or voyager'
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory regenerated from cf877811 and independently reproduced exactly.
+SHA-256: 4ed633922ed26ff99ff681f08730e98098c1f84e0b89e0f6195f7d121d2b06c7.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-houses-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-voyager-houses-r2.json
+```
+
+### Voyager cathedral and facility decisions, 2026-09-07
+
+The connected cathedral graph establishes one modular family; 29 reachable
+templates are alternatives/components, not 29 structures per instance. Packaged
+cathedral_start and ordinary corridor_8 are not selected by that graph. The
+minecraft:mvs/cathedral_common references remain preserved and require effective
+loot disposition during attribute completion. No namespace correction is inferred.
+
+Eight facility layouts remain distinct after inspection of views delivered at
+6178f004 and their contents: beach bar, enchanting installation, pump depiction,
+horse pen, lamp cache, lectern garden, raised grain bin and wheat plot. Their
+functional blocks and loot references remain attributed to their templates; no
+observed animal presence, machinery throughput or production loop is inferred.
+
+Sixteen affected cases and scoped Ruff/Basedpyright pass. Working groups remain
+406; the explicit provisional remainder is 23 and all remaining views are already
+inspected. Nonregistry reconciliation, required attributes and final review remain
+open. Inventory refresh follows.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mvs or voyager'
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory regenerated from f7a27e9a and independently reproduced exactly.
+SHA-256: 8119e9753a9fcbf79e581851738d0c7a8e3e797f0c6bfd325cb1d8868007dda9.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-facilities-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-voyager-facilities-r2.json
+```
+
+### Voyager shelter and sculpture decisions, 2026-09-07
+
+Fox and snowy dog huts share one small shelter motif with biome, roof, ground and
+accessory variants. Both complete definitions and root-specific templates remain
+in animal_hut. The existing small-variant preservation test now also covers this
+merge. Neither template authors an animal. Bee dome remains a distinct glazed
+apiary enclosure, with hive block entities rather than an inferred bee count.
+
+Large mushroom remains an authored constructed landmark based on its crafted
+materials and broad cap/stalk layout. It is distinct from the narrow pedestal
+mushroom figure. Duck, horned devil, villager and skeletal-arch fossil designs
+retain their different sculptural compositions. No authored mob is inferred from
+any sculpture name. The existing source views and template contents suffice.
+
+Seventeen affected cases and scoped Ruff/Basedpyright pass. Working groups: 405.
+Explicit provisional remainder: 14. Attribute completion, nonregistry reconciliation
+and final review remain open. Inventory refresh follows.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mvs or voyager'
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+```
+
+Inventory regenerated from dee267e2 and independently reproduced exactly.
+SHA-256: be6481c55cce473a269696c513fa580e699ff9b93530ff9231bcb8f06a31307d.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-sculptures-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-voyager-sculptures-r2.json
+```
+
+### Final Voyager provisional decisions and broader backlog correction, 2026-09-07
+
+Fourteen remaining Voyager ruins and landmarks retain distinct inspected design
+compositions. Root assignments are unchanged. Crystal lower and shared ship
+villager templates remain components. Ruined beacon has no packaged beacon block;
+railway contains actual rail blocks; neither a working network nor moving ship or
+windmill is inferred. Seventeen affected cases and scoped quality checks pass.
+Working groups remain 405. Explicit Voyager provisionals: zero.
+
+This does not close canonical reconciliation. Manual inspection of rationale
+sentences mentioning canonical, related-design or replacement relationships that
+remain open or require reconciliation identifies 128 existing records below.
+The earlier explicit-provisional queue was incomplete as an overall progress
+measure. These are records to reconcile, not 128 newly discovered families. Some
+contain dependency, replacement or exclusion questions rather than layout questions.
+Use the existing evidence and resolve each actual note; do not mechanically erase
+boilerplate or assume registry membership proves generation. Nonregistry records
+and required attributes also remain open.
+
+- adorabuild_structures (31): acacia_well, ancient_palace, bamboo_campfire, basalt_chambers, birch_beehive, blackstone_bastion, blackstone_temple, buried_sand_castle, dark_oak_mansion, end_bubble, end_gateway, end_ship, end_temple, frozen_shelter, house, library, mountain_mine, mushroom, nether_fortress, nether_fossil, nether_portal, nether_temple, ocean_bubble, ocean_temple, prison, red_sand_temple, sand_castle, sand_pyramid, tree, tree_house, watercraft
+- aether (4): bronze_dungeon, gold_dungeon, large_aercloud, silver_dungeon
+- creatingspace (4): mars/underground_outpost_1, moon/abandoned_outpost, moon/crashed_rocket, moon/crashed_ship
+- deep_aether (4): altar_camp, brass_dungeon, campfire, combiner_corridor
+- idas (62): abandoned_lighthouse, abandoned_vineyard, abandonedhouse, ancient_mines, ancient_portal, ancient_statue, animal_den, apothecary_abode, ars_nouveau/archmages_tower, bazaar, bearclaw_inn, beekeepers_house, botanist, brickhouse, castle, collectors_museum, cottage, desert_camp, desert_market, desert_pyramid, desert_ruins, dig_site, enchantingtower, farmhouse, fishermans_lodge, frozen_crypt, haunted_manor, hermits_hollow, hunters_cabin, iceandfire/dread_citadel, iceandfire/sirens_cove, labyrinth, lumber_camp, mason_house, necromancers_spire, nether_pump_camp, nexus, pillager_camp, pillager_fortress, pumpkin_cafe, redhorn_guild, ruined_church, ruined_fort, ruined_well, ruins_of_the_deep, snifferhenge, sunken_ship, sunken_ship/sunken_ship_ruins, the_log, tinkers_citadel, tinkers_workshop, train_ruins, tree_of_wisdom, treetop_tavern, tudor_pub, underground_camp, wacky_wares, washing_camp, windswept_shrine, winter_wagon, witches_treestump, wizard_tower
+- illagerinvasion (5): firecaller_hut, illager_fort, illusioner_tower, labyrinth, sorcerer_hut
+- integrated_stronghold (1): stronghold
+- terralith (16): desert_outpost, fortified_village, glacial_hut, igloo, mage_complex, mage_tower, rubble, spire, underground/frosted_dungeon, underground/giant_bee_hive, underground/mining_outpost, underground/old_refinery, underground/sunken_tower, underground_cabin, valley_lodge, witch_hut
+- towns_and_towers (1): village
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mvs or voyager'
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory regenerated from cb74b266 and independently reproduced exactly.
+SHA-256: 047dc079c1a85e503cf313d9accc1cf3cd7b18e44c0a345e6557615fe3af33db.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-final-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-voyager-final-r2.json
+```

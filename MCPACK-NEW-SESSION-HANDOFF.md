@@ -4,7 +4,180 @@
 
 ## Current continuation checkpoint - 2026-09-04
 
+### Continuation update - 2026-09-07
+
+Inventory matches cb74b266 and reproduces exactly. Working groups: 405. Voyager
+explicit provisionals: zero. The real broader backlog is the 128 named records
+below, plus nonregistry reconciliation and required attributes. Next work must
+resolve those records rather than reporting the former Voyager-only count.
+
+The last fourteen explicit Voyager provisionals are resolved, with seventeen
+affected cases and scoped quality checks passing. Working groups remain 405.
+IMPORTANT: this is not the full remaining canonical backlog. A broader inspection
+found 128 existing records explicitly leaving canonical/related-design/replacement
+reconciliation open. The earlier explicit-provisional count underreported that
+backlog. Resolve the named records below against existing evidence before claiming
+canonical completion; do not reopen provider discovery or invent new families.
+Nonregistry contribution reconciliation (33 records) and required attributes remain
+separate open tasks. Inventory refresh follows the Voyager decision increment.
+
+- adorabuild_structures (31): acacia_well, ancient_palace, bamboo_campfire, basalt_chambers, birch_beehive, blackstone_bastion, blackstone_temple, buried_sand_castle, dark_oak_mansion, end_bubble, end_gateway, end_ship, end_temple, frozen_shelter, house, library, mountain_mine, mushroom, nether_fortress, nether_fossil, nether_portal, nether_temple, ocean_bubble, ocean_temple, prison, red_sand_temple, sand_castle, sand_pyramid, tree, tree_house, watercraft
+- aether (4): bronze_dungeon, gold_dungeon, large_aercloud, silver_dungeon
+- creatingspace (4): mars/underground_outpost_1, moon/abandoned_outpost, moon/crashed_rocket, moon/crashed_ship
+- deep_aether (4): altar_camp, brass_dungeon, campfire, combiner_corridor
+- idas (62): abandoned_lighthouse, abandoned_vineyard, abandonedhouse, ancient_mines, ancient_portal, ancient_statue, animal_den, apothecary_abode, ars_nouveau/archmages_tower, bazaar, bearclaw_inn, beekeepers_house, botanist, brickhouse, castle, collectors_museum, cottage, desert_camp, desert_market, desert_pyramid, desert_ruins, dig_site, enchantingtower, farmhouse, fishermans_lodge, frozen_crypt, haunted_manor, hermits_hollow, hunters_cabin, iceandfire/dread_citadel, iceandfire/sirens_cove, labyrinth, lumber_camp, mason_house, necromancers_spire, nether_pump_camp, nexus, pillager_camp, pillager_fortress, pumpkin_cafe, redhorn_guild, ruined_church, ruined_fort, ruined_well, ruins_of_the_deep, snifferhenge, sunken_ship, sunken_ship/sunken_ship_ruins, the_log, tinkers_citadel, tinkers_workshop, train_ruins, tree_of_wisdom, treetop_tavern, tudor_pub, underground_camp, wacky_wares, washing_camp, windswept_shrine, winter_wagon, witches_treestump, wizard_tower
+- illagerinvasion (5): firecaller_hut, illager_fort, illusioner_tower, labyrinth, sorcerer_hut
+- integrated_stronghold (1): stronghold
+- terralith (16): desert_outpost, fortified_village, glacial_hut, igloo, mage_complex, mage_tower, rubble, spire, underground/frosted_dungeon, underground/giant_bee_hive, underground/mining_outpost, underground/old_refinery, underground/sunken_tower, underground_cabin, valley_lodge, witch_hut
+- towns_and_towers (1): village
+
+
+Inventory matches decisions delivered at dee267e2 and reproduces exactly.
+Working groups: 405. Explicit provisional remainder: the 14 Voyager names below.
+All their comparison views are already delivered and inspected.
+
+Shelter/sculpture decisions resolve nine explicit provisionals. Fox and dog huts
+merge as animal-hut variants with both full definitions retained. Seven other
+designs remain distinct; large_mushroom is authored construction, not a vegetation
+exclusion. Seventeen affected cases and scoped checks pass. Working groups: 405.
+Explicit remainder: 14, listed below. Existing views suffice; inventory refresh
+follows. Required attributes and nonregistry reconciliation remain open.
+
+- mvs:castle_ruins
+- mvs:crystal
+- mvs:gallows
+- mvs:log_ruin
+- mvs:railway
+- mvs:ruined_beacon
+- mvs:small_ruin
+- mvs:small_ship
+- mvs:statue_ruins
+- mvs:stone_fountain
+- mvs:stone_pillars
+- mvs:sunzi_gate
+- mvs:tree_monument
+- mvs:windmill
+
+
+Inventory matches decisions delivered at f7a27e9a and reproduces exactly.
+Working groups: 406. Explicit provisional remainder: the 23 Voyager names below.
+All their comparison views are already delivered and inspected.
+
+Cathedral and eight facility decisions now resolve nine explicit provisionals.
+Working groups remain 406. Explicit remainder: 23. All their layout views are
+already inspected and delivered at 6178f004; no recapture is needed. Sixteen affected
+cases and scoped quality checks pass. Cathedral loot namespace disposition remains
+an attribute task. Inventory refresh follows.
+
+- mvs:bee_dome
+- mvs:castle_ruins
+- mvs:crystal
+- mvs:duck
+- mvs:fox_hut
+- mvs:gallows
+- mvs:large_mushroom
+- mvs:log_ruin
+- mvs:mushroom_statue
+- mvs:nether_devil
+- mvs:railway
+- mvs:ruined_beacon
+- mvs:small_ruin
+- mvs:small_ship
+- mvs:snowy_dog_hut
+- mvs:snowy_fossil
+- mvs:statue_ruins
+- mvs:stone_fountain
+- mvs:stone_pillars
+- mvs:sunzi_gate
+- mvs:tree_monument
+- mvs:villager_statue
+- mvs:windmill
+
+
+The final pending Voyager landmark comparison selects exactly 32 architecture
+templates for the 31 non-cathedral decisions. Five fixed sheets reuse the existing
+renderer; the selected-path pilot and scoped checks pass. No broader provider
+survey or measurement system is added. Cathedral membership can use its existing
+connected component graph; loot-reference disposition remains an attribute task.
+
+Inventory matches house decisions delivered at cf877811 and reproduces exactly.
+Working groups: 406. Explicit provisional remainder: the 32 Voyager names below.
+
+Eight Voyager house decisions now retain distinct inspected layouts with component
+and content ownership preserved. Source views already delivered at b580a10f were
+reused. Working groups remain 406. Explicit provisional remainder: 32, listed below.
+Inventory refresh follows. Required attributes and nonregistry reconciliation remain
+open independently of this queue.
+
+- mvs:beach_bar
+- mvs:bee_dome
+- mvs:castle_ruins
+- mvs:cathedral
+- mvs:crimson_enchanting_table
+- mvs:crystal
+- mvs:desert_pump
+- mvs:duck
+- mvs:fox_hut
+- mvs:gallows
+- mvs:horse_pen
+- mvs:lamp_chest
+- mvs:large_mushroom
+- mvs:lecturn_garden
+- mvs:log_ruin
+- mvs:mushroom_statue
+- mvs:nether_devil
+- mvs:railway
+- mvs:ruined_beacon
+- mvs:small_ruin
+- mvs:small_ship
+- mvs:snowy_dog_hut
+- mvs:snowy_fossil
+- mvs:statue_ruins
+- mvs:stone_fountain
+- mvs:stone_pillars
+- mvs:sunzi_gate
+- mvs:tree_monument
+- mvs:villager_statue
+- mvs:wheat_grain_bin
+- mvs:windmill
+- mvs:wooden_wheat_farm
+
+
+Inventory now matches decisions delivered at 0eea8158 and reproduces exactly.
+Working groups: 406. Explicit provisional remainder: 40, all Voyager. Next are
+the eight houses already rendered and inspected in voyager-building-views.
+
+Voyager tower/outbuilding decisions resolve nine explicit provisionals. Red and
+jungle towers merge as tiered-tower variants with full definitions/components;
+other four towers and three outbuildings remain distinct. Sixteen affected cases
+and scoped quality checks pass. Working groups: 406. Explicit remainder: 40.
+Eight house decisions have inspected views already; no recapture is needed.
+The comparison filename nether_towers is not a dimension claim; red uses taiga.
+Inventory refresh follows this decision increment.
+
+Voyager buildings comparison selects 23 architecture templates for the 17 pending
+house, outbuilding and tower decisions. Shared vanilla villager templates remain
+component references in the existing graph. The existing renderer and archive
+identity check are reused; the selected-path pilot and scoped quality checks pass.
+No additional rendering or measurement system is introduced.
+
+Inventory refresh matches decisions delivered at 784d6923 and reproduces exactly.
+Working groups: 407. Next: remaining 49 explicit Voyager decisions.
+
+Voyager bench/path decisions and the harvest-heap merge resolve four explicit
+provisionals. Haystack and pile retain both roots and full definitions in one
+family with five material/layout alternatives. Thirteen affected tests and scoped
+quality checks pass. Source views delivered at 77146722. Working groups: 407.
+Explicit provisional remainder: 49, all Voyager. Inventory refresh follows.
+
 ### Continuation update - 2026-09-06
+
+Voyager small-design comparison selects twelve existing templates to test the
+haystack/pumpkin-pile overlap and bench/path variants. Reuses the existing cube
+renderer, with no new measurement class. Adding the selector exceeded the existing
+main-function statement/complexity limits; CLI parsing is separated narrowly and
+output serialization is shared. Scoped checks pass; Nether landmark outputs remain
+byte-identical. Membership decisions follow visual inspection, not selector names.
 
 Inventory now reproduces the Nether decisions delivered at a9637207 exactly.
 Next: 53 explicit Voyager decisions. Working groups remain 408.
