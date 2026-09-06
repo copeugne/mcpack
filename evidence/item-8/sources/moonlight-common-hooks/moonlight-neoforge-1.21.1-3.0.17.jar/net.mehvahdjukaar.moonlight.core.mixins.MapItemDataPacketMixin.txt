@@ -1,0 +1,1217 @@
+Classfile moonlight-neoforge-1.21.1-3.0.17.jar!/net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.class
+  Last modified Feb 1, 1980; size 14343 bytes
+  SHA-256 checksum 93cd2f74f47ded67f7beaa56b8bd0a6f257f2fd5ad139a1ff01e59219cfc0dcc
+  Compiled from "MapItemDataPacketMixin.java"
+public abstract class net.mehvahdjukaar.moonlight.core.mixins.MapItemDataPacketMixin implements net.mehvahdjukaar.moonlight.core.misc.IMapDataPacketExtension
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #8                          // net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 6, methods: 19, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Fieldref           #8.#9         // net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.moonlight$customDecorations:Ljava/util/List;
+    #8 = Class              #10           // net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin
+    #9 = NameAndType        #11:#12       // moonlight$customDecorations:Ljava/util/List;
+   #10 = Utf8               net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin
+   #11 = Utf8               moonlight$customDecorations
+   #12 = Utf8               Ljava/util/List;
+   #13 = Fieldref           #8.#14        // net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.moonlight$customDataPatches:Ljava/util/List;
+   #14 = NameAndType        #15:#12       // moonlight$customDataPatches:Ljava/util/List;
+   #15 = Utf8               moonlight$customDataPatches
+   #16 = Fieldref           #8.#17        // net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.moonlight$mapCenterX:I
+   #17 = NameAndType        #18:#19       // moonlight$mapCenterX:I
+   #18 = Utf8               moonlight$mapCenterX
+   #19 = Utf8               I
+   #20 = Fieldref           #8.#21        // net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.moonlight$mapCenterZ:I
+   #21 = NameAndType        #22:#19       // moonlight$mapCenterZ:I
+   #22 = Utf8               moonlight$mapCenterZ
+   #23 = Fieldref           #24.#25       // net/minecraft/world/level/Level.OVERWORLD:Lnet/minecraft/resources/ResourceKey;
+   #24 = Class              #26           // net/minecraft/world/level/Level
+   #25 = NameAndType        #27:#28       // OVERWORLD:Lnet/minecraft/resources/ResourceKey;
+   #26 = Utf8               net/minecraft/world/level/Level
+   #27 = Utf8               OVERWORLD
+   #28 = Utf8               Lnet/minecraft/resources/ResourceKey;
+   #29 = Methodref          #30.#31       // net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+   #30 = Class              #32           // net/minecraft/resources/ResourceKey
+   #31 = NameAndType        #33:#34       // location:()Lnet/minecraft/resources/ResourceLocation;
+   #32 = Utf8               net/minecraft/resources/ResourceKey
+   #33 = Utf8               location
+   #34 = Utf8               ()Lnet/minecraft/resources/ResourceLocation;
+   #35 = Fieldref           #8.#36        // net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.moonlight$dimension:Lnet/minecraft/resources/ResourceLocation;
+   #36 = NameAndType        #37:#38       // moonlight$dimension:Lnet/minecraft/resources/ResourceLocation;
+   #37 = Utf8               moonlight$dimension
+   #38 = Utf8               Lnet/minecraft/resources/ResourceLocation;
+   #39 = Methodref          #40.#41       // net/mehvahdjukaar/moonlight/api/platform/PlatHelper.getCurrentServer:()Lnet/minecraft/server/MinecraftServer;
+   #40 = Class              #42           // net/mehvahdjukaar/moonlight/api/platform/PlatHelper
+   #41 = NameAndType        #43:#44       // getCurrentServer:()Lnet/minecraft/server/MinecraftServer;
+   #42 = Utf8               net/mehvahdjukaar/moonlight/api/platform/PlatHelper
+   #43 = Utf8               getCurrentServer
+   #44 = Utf8               ()Lnet/minecraft/server/MinecraftServer;
+   #45 = Methodref          #46.#47       // net/minecraft/server/MinecraftServer.overworld:()Lnet/minecraft/server/level/ServerLevel;
+   #46 = Class              #48           // net/minecraft/server/MinecraftServer
+   #47 = NameAndType        #49:#50       // overworld:()Lnet/minecraft/server/level/ServerLevel;
+   #48 = Utf8               net/minecraft/server/MinecraftServer
+   #49 = Utf8               overworld
+   #50 = Utf8               ()Lnet/minecraft/server/level/ServerLevel;
+   #51 = Class              #52           // net/minecraft/server/level/ServerLevel
+   #52 = Utf8               net/minecraft/server/level/ServerLevel
+   #53 = Methodref          #51.#54       // net/minecraft/server/level/ServerLevel.getMapData:(Lnet/minecraft/world/level/saveddata/maps/MapId;)Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;
+   #54 = NameAndType        #55:#56       // getMapData:(Lnet/minecraft/world/level/saveddata/maps/MapId;)Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;
+   #55 = Utf8               getMapData
+   #56 = Utf8               (Lnet/minecraft/world/level/saveddata/maps/MapId;)Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;
+   #57 = Fieldref           #58.#59       // net/minecraft/world/level/saveddata/maps/MapItemSavedData.centerX:I
+   #58 = Class              #60           // net/minecraft/world/level/saveddata/maps/MapItemSavedData
+   #59 = NameAndType        #61:#19       // centerX:I
+   #60 = Utf8               net/minecraft/world/level/saveddata/maps/MapItemSavedData
+   #61 = Utf8               centerX
+   #62 = Fieldref           #58.#63       // net/minecraft/world/level/saveddata/maps/MapItemSavedData.centerZ:I
+   #63 = NameAndType        #64:#19       // centerZ:I
+   #64 = Utf8               centerZ
+   #65 = Fieldref           #58.#66       // net/minecraft/world/level/saveddata/maps/MapItemSavedData.dimension:Lnet/minecraft/resources/ResourceKey;
+   #66 = NameAndType        #67:#28       // dimension:Lnet/minecraft/resources/ResourceKey;
+   #67 = Utf8               dimension
+   #68 = InterfaceMethodref #69.#70       // java/util/function/Function.identity:()Ljava/util/function/Function;
+   #69 = Class              #71           // java/util/function/Function
+   #70 = NameAndType        #72:#73       // identity:()Ljava/util/function/Function;
+   #71 = Utf8               java/util/function/Function
+   #72 = Utf8               identity
+   #73 = Utf8               ()Ljava/util/function/Function;
+   #74 = Fieldref           #75.#76       // net/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration.CODEC:Lnet/minecraft/network/codec/StreamCodec;
+   #75 = Class              #77           // net/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration
+   #76 = NameAndType        #78:#79       // CODEC:Lnet/minecraft/network/codec/StreamCodec;
+   #77 = Utf8               net/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration
+   #78 = Utf8               CODEC
+   #79 = Utf8               Lnet/minecraft/network/codec/StreamCodec;
+   #80 = InterfaceMethodref #81.#82       // net/minecraft/network/codec/ByteBufCodecs.list:()Lnet/minecraft/network/codec/StreamCodec$CodecOperation;
+   #81 = Class              #83           // net/minecraft/network/codec/ByteBufCodecs
+   #82 = NameAndType        #84:#85       // list:()Lnet/minecraft/network/codec/StreamCodec$CodecOperation;
+   #83 = Utf8               net/minecraft/network/codec/ByteBufCodecs
+   #84 = Utf8               list
+   #85 = Utf8               ()Lnet/minecraft/network/codec/StreamCodec$CodecOperation;
+   #86 = InterfaceMethodref #87.#88       // net/minecraft/network/codec/StreamCodec.apply:(Lnet/minecraft/network/codec/StreamCodec$CodecOperation;)Lnet/minecraft/network/codec/StreamCodec;
+   #87 = Class              #89           // net/minecraft/network/codec/StreamCodec
+   #88 = NameAndType        #90:#91       // apply:(Lnet/minecraft/network/codec/StreamCodec$CodecOperation;)Lnet/minecraft/network/codec/StreamCodec;
+   #89 = Utf8               net/minecraft/network/codec/StreamCodec
+   #90 = Utf8               apply
+   #91 = Utf8               (Lnet/minecraft/network/codec/StreamCodec$CodecOperation;)Lnet/minecraft/network/codec/StreamCodec;
+   #92 = InvokeDynamic      #0:#93        // #0:apply:()Lnet/minecraft/network/codec/StreamCodec$CodecOperation;
+   #93 = NameAndType        #90:#85       // apply:()Lnet/minecraft/network/codec/StreamCodec$CodecOperation;
+   #94 = InvokeDynamic      #1:#95        // #1:apply:()Ljava/util/function/Function;
+   #95 = NameAndType        #90:#73       // apply:()Ljava/util/function/Function;
+   #96 = Fieldref           #97.#98       // net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+   #97 = Class              #99           // net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch
+   #98 = NameAndType        #100:#79      // STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+   #99 = Utf8               net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch
+  #100 = Utf8               STREAM_CODEC
+  #101 = InvokeDynamic      #2:#95        // #2:apply:()Ljava/util/function/Function;
+  #102 = Fieldref           #103.#98      // net/minecraft/resources/ResourceLocation.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+  #103 = Class              #104          // net/minecraft/resources/ResourceLocation
+  #104 = Utf8               net/minecraft/resources/ResourceLocation
+  #105 = InvokeDynamic      #3:#95        // #3:apply:()Ljava/util/function/Function;
+  #106 = Fieldref           #81.#107      // net/minecraft/network/codec/ByteBufCodecs.INT:Lnet/minecraft/network/codec/StreamCodec;
+  #107 = NameAndType        #108:#79      // INT:Lnet/minecraft/network/codec/StreamCodec;
+  #108 = Utf8               INT
+  #109 = InvokeDynamic      #4:#95        // #4:apply:()Ljava/util/function/Function;
+  #110 = InvokeDynamic      #5:#95        // #5:apply:()Ljava/util/function/Function;
+  #111 = InvokeDynamic      #6:#112       // #6:apply:()Lcom/mojang/datafixers/util/Function6;
+  #112 = NameAndType        #90:#113      // apply:()Lcom/mojang/datafixers/util/Function6;
+  #113 = Utf8               ()Lcom/mojang/datafixers/util/Function6;
+  #114 = InterfaceMethodref #87.#115      // net/minecraft/network/codec/StreamCodec.composite:(Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lcom/mojang/datafixers/util/Function6;)Lnet/minecraft/network/codec/StreamCodec;
+  #115 = NameAndType        #116:#117     // composite:(Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lcom/mojang/datafixers/util/Function6;)Lnet/minecraft/network/codec/StreamCodec;
+  #116 = Utf8               composite
+  #117 = Utf8               (Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lcom/mojang/datafixers/util/Function6;)Lnet/minecraft/network/codec/StreamCodec;
+  #118 = Methodref          #119.#120     // java/util/Optional.ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+  #119 = Class              #121          // java/util/Optional
+  #120 = NameAndType        #122:#123     // ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+  #121 = Utf8               java/util/Optional
+  #122 = Utf8               ofNullable
+  #123 = Utf8               (Ljava/lang/Object;)Ljava/util/Optional;
+  #124 = InvokeDynamic      #7:#95        // #7:apply:()Ljava/util/function/Function;
+  #125 = Methodref          #119.#126     // java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+  #126 = NameAndType        #127:#128     // map:(Ljava/util/function/Function;)Ljava/util/Optional;
+  #127 = Utf8               map
+  #128 = Utf8               (Ljava/util/function/Function;)Ljava/util/Optional;
+  #129 = Methodref          #119.#130     // java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+  #130 = NameAndType        #131:#132     // orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+  #131 = Utf8               orElse
+  #132 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #133 = Class              #134          // java/util/List
+  #134 = Utf8               java/util/List
+  #135 = Fieldref           #136.#137     // net/minecraft/core/registries/Registries.DIMENSION:Lnet/minecraft/resources/ResourceKey;
+  #136 = Class              #138          // net/minecraft/core/registries/Registries
+  #137 = NameAndType        #139:#28      // DIMENSION:Lnet/minecraft/resources/ResourceKey;
+  #138 = Utf8               net/minecraft/core/registries/Registries
+  #139 = Utf8               DIMENSION
+  #140 = Methodref          #30.#141      // net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+  #141 = NameAndType        #142:#143     // create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+  #142 = Utf8               create
+  #143 = Utf8               (Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+  #144 = Class              #145          // net/mehvahdjukaar/moonlight/api/map/ExpandedMapData
+  #145 = Utf8               net/mehvahdjukaar/moonlight/api/map/ExpandedMapData
+  #146 = InterfaceMethodref #144.#147     // net/mehvahdjukaar/moonlight/api/map/ExpandedMapData.ml$getCustomDecorations:()Ljava/util/Map;
+  #147 = NameAndType        #148:#149     // ml$getCustomDecorations:()Ljava/util/Map;
+  #148 = Utf8               ml$getCustomDecorations
+  #149 = Utf8               ()Ljava/util/Map;
+  #150 = InterfaceMethodref #151.#152     // java/util/Map.clear:()V
+  #151 = Class              #153          // java/util/Map
+  #152 = NameAndType        #154:#6       // clear:()V
+  #153 = Utf8               java/util/Map
+  #154 = Utf8               clear
+  #155 = InterfaceMethodref #133.#156     // java/util/List.size:()I
+  #156 = NameAndType        #157:#158     // size:()I
+  #157 = Utf8               size
+  #158 = Utf8               ()I
+  #159 = InterfaceMethodref #133.#160     // java/util/List.get:(I)Ljava/lang/Object;
+  #160 = NameAndType        #161:#162     // get:(I)Ljava/lang/Object;
+  #161 = Utf8               get
+  #162 = Utf8               (I)Ljava/lang/Object;
+  #163 = InvokeDynamic      #8:#164       // #8:makeConcatWithConstants:(I)Ljava/lang/String;
+  #164 = NameAndType        #165:#166     // makeConcatWithConstants:(I)Ljava/lang/String;
+  #165 = Utf8               makeConcatWithConstants
+  #166 = Utf8               (I)Ljava/lang/String;
+  #167 = InterfaceMethodref #151.#168     // java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #168 = NameAndType        #169:#170     // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #169 = Utf8               put
+  #170 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #171 = Fieldref           #172.#173     // net/mehvahdjukaar/moonlight/core/Moonlight.LOGGER:Lorg/apache/logging/log4j/Logger;
+  #172 = Class              #174          // net/mehvahdjukaar/moonlight/core/Moonlight
+  #173 = NameAndType        #175:#176     // LOGGER:Lorg/apache/logging/log4j/Logger;
+  #174 = Utf8               net/mehvahdjukaar/moonlight/core/Moonlight
+  #175 = Utf8               LOGGER
+  #176 = Utf8               Lorg/apache/logging/log4j/Logger;
+  #177 = String             #178          // Failed to load custom map decoration, skipping
+  #178 = Utf8               Failed to load custom map decoration, skipping
+  #179 = InterfaceMethodref #180.#181     // org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+  #180 = Class              #182          // org/apache/logging/log4j/Logger
+  #181 = NameAndType        #183:#184     // warn:(Ljava/lang/String;)V
+  #182 = Utf8               org/apache/logging/log4j/Logger
+  #183 = Utf8               warn
+  #184 = Utf8               (Ljava/lang/String;)V
+  #185 = InterfaceMethodref #133.#186     // java/util/List.iterator:()Ljava/util/Iterator;
+  #186 = NameAndType        #187:#188     // iterator:()Ljava/util/Iterator;
+  #187 = Utf8               iterator
+  #188 = Utf8               ()Ljava/util/Iterator;
+  #189 = InterfaceMethodref #190.#191     // java/util/Iterator.hasNext:()Z
+  #190 = Class              #192          // java/util/Iterator
+  #191 = NameAndType        #193:#194     // hasNext:()Z
+  #192 = Utf8               java/util/Iterator
+  #193 = Utf8               hasNext
+  #194 = Utf8               ()Z
+  #195 = InterfaceMethodref #190.#196     // java/util/Iterator.next:()Ljava/lang/Object;
+  #196 = NameAndType        #197:#198     // next:()Ljava/lang/Object;
+  #197 = Utf8               next
+  #198 = Utf8               ()Ljava/lang/Object;
+  #199 = InterfaceMethodref #144.#200     // net/mehvahdjukaar/moonlight/api/map/ExpandedMapData.ml$getCustomData:()Ljava/util/Map;
+  #200 = NameAndType        #201:#149     // ml$getCustomData:()Ljava/util/Map;
+  #201 = Utf8               ml$getCustomData
+  #202 = Methodref          #97.#203      // net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch.apply:(Ljava/util/Map;)V
+  #203 = NameAndType        #90:#204      // apply:(Ljava/util/Map;)V
+  #204 = Utf8               (Ljava/util/Map;)V
+  #205 = Fieldref           #8.#206       // net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.mapId:Lnet/minecraft/world/level/saveddata/maps/MapId;
+  #206 = NameAndType        #207:#208     // mapId:Lnet/minecraft/world/level/saveddata/maps/MapId;
+  #207 = Utf8               mapId
+  #208 = Utf8               Lnet/minecraft/world/level/saveddata/maps/MapId;
+  #209 = Methodref          #210.#211     // net/mehvahdjukaar/moonlight/core/map/MapDataInternal.getDynamicClient:(Lnet/minecraft/world/level/saveddata/maps/MapId;Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)Ljava/util/Set;
+  #210 = Class              #212          // net/mehvahdjukaar/moonlight/core/map/MapDataInternal
+  #211 = NameAndType        #213:#214     // getDynamicClient:(Lnet/minecraft/world/level/saveddata/maps/MapId;Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)Ljava/util/Set;
+  #212 = Utf8               net/mehvahdjukaar/moonlight/core/map/MapDataInternal
+  #213 = Utf8               getDynamicClient
+  #214 = Utf8               (Lnet/minecraft/world/level/saveddata/maps/MapId;Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)Ljava/util/Set;
+  #215 = InterfaceMethodref #216.#186     // java/util/Set.iterator:()Ljava/util/Iterator;
+  #216 = Class              #217          // java/util/Set
+  #217 = Utf8               java/util/Set
+  #218 = Class              #219          // net/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker
+  #219 = Utf8               net/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker
+  #220 = Methodref          #218.#221     // net/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker.createDecorationFromMarker:(Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;
+  #221 = NameAndType        #222:#223     // createDecorationFromMarker:(Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;
+  #222 = Utf8               createDecorationFromMarker
+  #223 = Utf8               (Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;
+  #224 = Methodref          #218.#225     // net/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker.getMarkerUniqueId:()Ljava/lang/String;
+  #225 = NameAndType        #226:#227     // getMarkerUniqueId:()Ljava/lang/String;
+  #226 = Utf8               getMarkerUniqueId
+  #227 = Utf8               ()Ljava/lang/String;
+  #228 = Class              #229          // net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension
+  #229 = Utf8               net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension
+  #230 = InterfaceMethodref #228.#231     // net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$setCustomDecorations:(Ljava/util/Optional;)V
+  #231 = NameAndType        #232:#233     // moonlight$setCustomDecorations:(Ljava/util/Optional;)V
+  #232 = Utf8               moonlight$setCustomDecorations
+  #233 = Utf8               (Ljava/util/Optional;)V
+  #234 = InterfaceMethodref #228.#235     // net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$setDirtyCustomData:(Ljava/util/Optional;)V
+  #235 = NameAndType        #236:#233     // moonlight$setDirtyCustomData:(Ljava/util/Optional;)V
+  #236 = Utf8               moonlight$setDirtyCustomData
+  #237 = InterfaceMethodref #228.#238     // net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$setDimension:(Lnet/minecraft/resources/ResourceLocation;)V
+  #238 = NameAndType        #239:#240     // moonlight$setDimension:(Lnet/minecraft/resources/ResourceLocation;)V
+  #239 = Utf8               moonlight$setDimension
+  #240 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)V
+  #241 = Methodref          #242.#243     // java/lang/Integer.intValue:()I
+  #242 = Class              #244          // java/lang/Integer
+  #243 = NameAndType        #245:#158     // intValue:()I
+  #244 = Utf8               java/lang/Integer
+  #245 = Utf8               intValue
+  #246 = InterfaceMethodref #228.#247     // net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$setMapCenter:(II)V
+  #247 = NameAndType        #248:#249     // moonlight$setMapCenter:(II)V
+  #248 = Utf8               moonlight$setMapCenter
+  #249 = Utf8               (II)V
+  #250 = InterfaceMethodref #228.#251     // net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$getMapCenterZ:()I
+  #251 = NameAndType        #252:#158     // moonlight$getMapCenterZ:()I
+  #252 = Utf8               moonlight$getMapCenterZ
+  #253 = Methodref          #242.#254     // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+  #254 = NameAndType        #255:#256     // valueOf:(I)Ljava/lang/Integer;
+  #255 = Utf8               valueOf
+  #256 = Utf8               (I)Ljava/lang/Integer;
+  #257 = InterfaceMethodref #228.#258     // net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$getMapCenterX:()I
+  #258 = NameAndType        #259:#158     // moonlight$getMapCenterX:()I
+  #259 = Utf8               moonlight$getMapCenterX
+  #260 = InterfaceMethodref #228.#261     // net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$getDimension:()Lnet/minecraft/resources/ResourceLocation;
+  #261 = NameAndType        #262:#34      // moonlight$getDimension:()Lnet/minecraft/resources/ResourceLocation;
+  #262 = Utf8               moonlight$getDimension
+  #263 = InterfaceMethodref #228.#264     // net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$getDirtyCustomData:()Ljava/util/Optional;
+  #264 = NameAndType        #265:#266     // moonlight$getDirtyCustomData:()Ljava/util/Optional;
+  #265 = Utf8               moonlight$getDirtyCustomData
+  #266 = Utf8               ()Ljava/util/Optional;
+  #267 = InterfaceMethodref #228.#268     // net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$getCustomDecorations:()Ljava/util/Optional;
+  #268 = NameAndType        #269:#266     // moonlight$getCustomDecorations:()Ljava/util/Optional;
+  #269 = Utf8               moonlight$getCustomDecorations
+  #270 = Utf8               RuntimeVisibleAnnotations
+  #271 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #272 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #273 = Utf8               Signature
+  #274 = Utf8               Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;>;
+  #275 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #276 = Utf8               RuntimeInvisibleAnnotations
+  #277 = Utf8               Lorg/jetbrains/annotations/Nullable;
+  #278 = Utf8               RuntimeInvisibleTypeAnnotations
+  #279 = Utf8               Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch<**>;>;
+  #280 = Utf8               Code
+  #281 = Utf8               LineNumberTable
+  #282 = Utf8               LocalVariableTable
+  #283 = Utf8               this
+  #284 = Utf8               Lnet/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin;
+  #285 = Utf8               moonlight$addExtraCenterAndDimension
+  #286 = Utf8               (Lnet/minecraft/world/level/saveddata/maps/MapId;BZLjava/util/Optional;Ljava/util/Optional;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #287 = Utf8               data
+  #288 = Utf8               Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;
+  #289 = Utf8               sl
+  #290 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+  #291 = Utf8               b
+  #292 = Utf8               B
+  #293 = Utf8               bl
+  #294 = Utf8               Z
+  #295 = Utf8               optional
+  #296 = Utf8               Ljava/util/Optional;
+  #297 = Utf8               optional2
+  #298 = Utf8               ci
+  #299 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #300 = Utf8               server
+  #301 = Utf8               Lnet/minecraft/server/MinecraftServer;
+  #302 = Utf8               StackMapTable
+  #303 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #304 = Utf8               method
+  #305 = Utf8               <init>(Lnet/minecraft/world/level/saveddata/maps/MapId;BZLjava/util/Optional;Ljava/util/Optional;)V
+  #306 = Utf8               at
+  #307 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #308 = Utf8               value
+  #309 = Utf8               RETURN
+  #310 = Utf8               moonlight$modifyMapPacketCodec
+  #311 = Utf8               (Lnet/minecraft/network/codec/StreamCodec;)Lnet/minecraft/network/codec/StreamCodec;
+  #312 = Utf8               original
+  #313 = Utf8               LocalVariableTypeTable
+  #314 = Utf8               Lnet/minecraft/network/codec/StreamCodec<Lnet/minecraft/network/RegistryFriendlyByteBuf;Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;>;
+  #315 = Utf8               (Lnet/minecraft/network/codec/StreamCodec<Lnet/minecraft/network/RegistryFriendlyByteBuf;Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;>;)Lnet/minecraft/network/codec/StreamCodec<Lnet/minecraft/network/RegistryFriendlyByteBuf;Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;>;
+  #316 = Utf8               Lcom/llamalad7/mixinextras/injector/ModifyExpressionValue;
+  #317 = Utf8               <clinit>
+  #318 = Utf8               INVOKE
+  #319 = Utf8               target
+  #320 = Utf8               Lnet/minecraft/network/codec/StreamCodec;composite(Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lcom/mojang/datafixers/util/Function5;)Lnet/minecraft/network/codec/StreamCodec;
+  #321 = Utf8               ()Ljava/util/Optional<Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch<**>;>;>;
+  #322 = Utf8               ()Ljava/util/Optional<Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;>;>;
+  #323 = Utf8               deco
+  #324 = Utf8               Ljava/util/Optional<Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;>;>;
+  #325 = Utf8               (Ljava/util/Optional<Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;>;>;)V
+  #326 = Utf8               tag
+  #327 = Utf8               Ljava/util/Optional<Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch<**>;>;>;
+  #328 = Utf8               (Ljava/util/Optional<Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch<**>;>;>;)V
+  #329 = Utf8               Lorg/jetbrains/annotations/NotNull;
+  #330 = Utf8               dim
+  #331 = Utf8               x
+  #332 = Utf8               z
+  #333 = Utf8               handleExtraData
+  #334 = Utf8               (Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #335 = Utf8               customDecoration
+  #336 = Utf8               Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;
+  #337 = Utf8               i
+  #338 = Utf8               customData
+  #339 = Utf8               Ljava/util/Map;
+  #340 = Utf8               p
+  #341 = Utf8               Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch;
+  #342 = Utf8               d
+  #343 = Utf8               m
+  #344 = Utf8               Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker;
+  #345 = Utf8               decorations
+  #346 = Utf8               ed
+  #347 = Utf8               Lnet/mehvahdjukaar/moonlight/api/map/ExpandedMapData;
+  #348 = Utf8               mapData
+  #349 = Utf8               serverDeco
+  #350 = Utf8               serverDataPatches
+  #351 = Utf8               Ljava/util/Map<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<**>;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData<**>;>;
+  #352 = Utf8               Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch<**>;
+  #353 = Utf8               Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker<*>;
+  #354 = Utf8               Ljava/util/Map<Ljava/lang/String;Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;>;
+  #355 = Class              #356          // org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #356 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #357 = Utf8               applyToMap
+  #358 = Utf8               HEAD
+  #359 = Utf8               lambda$moonlight$modifyMapPacketCodec$5
+  #360 = Utf8               (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;Ljava/lang/Integer;)Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;
+  #361 = Utf8               old
+  #362 = Utf8               Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;
+  #363 = Utf8               dataPatch
+  #364 = Utf8               res
+  #365 = Utf8               Ljava/lang/Integer;
+  #366 = Utf8               ext
+  #367 = Utf8               Lnet/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension;
+  #368 = Utf8               lambda$moonlight$modifyMapPacketCodec$4
+  #369 = Utf8               (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/lang/Integer;
+  #370 = Utf8               lambda$moonlight$modifyMapPacketCodec$3
+  #371 = Utf8               lambda$moonlight$modifyMapPacketCodec$2
+  #372 = Utf8               (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Lnet/minecraft/resources/ResourceLocation;
+  #373 = Utf8               lambda$moonlight$modifyMapPacketCodec$1
+  #374 = Utf8               (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/util/Optional;
+  #375 = Utf8               lambda$moonlight$modifyMapPacketCodec$0
+  #376 = Utf8               SourceFile
+  #377 = Utf8               MapItemDataPacketMixin.java
+  #378 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #379 = Utf8               BootstrapMethods
+  #380 = MethodType         #311          //  (Lnet/minecraft/network/codec/StreamCodec;)Lnet/minecraft/network/codec/StreamCodec;
+  #381 = MethodHandle       6:#382        // REF_invokeStatic net/minecraft/network/codec/ByteBufCodecs.optional:(Lnet/minecraft/network/codec/StreamCodec;)Lnet/minecraft/network/codec/StreamCodec;
+  #382 = InterfaceMethodref #81.#383      // net/minecraft/network/codec/ByteBufCodecs.optional:(Lnet/minecraft/network/codec/StreamCodec;)Lnet/minecraft/network/codec/StreamCodec;
+  #383 = NameAndType        #295:#311     // optional:(Lnet/minecraft/network/codec/StreamCodec;)Lnet/minecraft/network/codec/StreamCodec;
+  #384 = MethodType         #132          //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #385 = MethodHandle       6:#386        // REF_invokeStatic net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$0:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/util/Optional;
+  #386 = Methodref          #8.#387       // net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$0:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/util/Optional;
+  #387 = NameAndType        #375:#374     // lambda$moonlight$modifyMapPacketCodec$0:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/util/Optional;
+  #388 = MethodType         #374          //  (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/util/Optional;
+  #389 = MethodHandle       6:#390        // REF_invokeStatic net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$1:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/util/Optional;
+  #390 = Methodref          #8.#391       // net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$1:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/util/Optional;
+  #391 = NameAndType        #373:#374     // lambda$moonlight$modifyMapPacketCodec$1:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/util/Optional;
+  #392 = MethodHandle       6:#393        // REF_invokeStatic net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$2:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Lnet/minecraft/resources/ResourceLocation;
+  #393 = Methodref          #8.#394       // net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$2:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Lnet/minecraft/resources/ResourceLocation;
+  #394 = NameAndType        #371:#372     // lambda$moonlight$modifyMapPacketCodec$2:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Lnet/minecraft/resources/ResourceLocation;
+  #395 = MethodType         #372          //  (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Lnet/minecraft/resources/ResourceLocation;
+  #396 = MethodHandle       6:#397        // REF_invokeStatic net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$3:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/lang/Integer;
+  #397 = Methodref          #8.#398       // net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$3:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/lang/Integer;
+  #398 = NameAndType        #370:#369     // lambda$moonlight$modifyMapPacketCodec$3:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/lang/Integer;
+  #399 = MethodType         #369          //  (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/lang/Integer;
+  #400 = MethodHandle       6:#401        // REF_invokeStatic net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$4:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/lang/Integer;
+  #401 = Methodref          #8.#402       // net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$4:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/lang/Integer;
+  #402 = NameAndType        #368:#369     // lambda$moonlight$modifyMapPacketCodec$4:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/lang/Integer;
+  #403 = MethodType         #404          //  (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #404 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #405 = MethodHandle       6:#406        // REF_invokeStatic net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$5:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;Ljava/lang/Integer;)Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;
+  #406 = Methodref          #8.#407       // net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$5:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;Ljava/lang/Integer;)Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;
+  #407 = NameAndType        #359:#360     // lambda$moonlight$modifyMapPacketCodec$5:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;Ljava/lang/Integer;)Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;
+  #408 = MethodType         #360          //  (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;Ljava/lang/Integer;)Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;
+  #409 = MethodHandle       6:#410        // REF_invokeStatic java/util/List.copyOf:(Ljava/util/Collection;)Ljava/util/List;
+  #410 = InterfaceMethodref #133.#411     // java/util/List.copyOf:(Ljava/util/Collection;)Ljava/util/List;
+  #411 = NameAndType        #412:#413     // copyOf:(Ljava/util/Collection;)Ljava/util/List;
+  #412 = Utf8               copyOf
+  #413 = Utf8               (Ljava/util/Collection;)Ljava/util/List;
+  #414 = MethodType         #415          //  (Ljava/util/List;)Ljava/util/List;
+  #415 = Utf8               (Ljava/util/List;)Ljava/util/List;
+  #416 = String             #417          // icon-\u0001
+  #417 = Utf8               icon-\u0001
+  #418 = MethodHandle       6:#419        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #419 = Methodref          #420.#421     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #420 = Class              #422          // java/lang/invoke/LambdaMetafactory
+  #421 = NameAndType        #423:#424     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #422 = Utf8               java/lang/invoke/LambdaMetafactory
+  #423 = Utf8               metafactory
+  #424 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #425 = MethodHandle       6:#426        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #426 = Methodref          #427.#428     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #427 = Class              #429          // java/lang/invoke/StringConcatFactory
+  #428 = NameAndType        #165:#430     // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #429 = Utf8               java/lang/invoke/StringConcatFactory
+  #430 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #431 = Utf8               InnerClasses
+  #432 = Class              #433          // net/minecraft/network/codec/StreamCodec$CodecOperation
+  #433 = Utf8               net/minecraft/network/codec/StreamCodec$CodecOperation
+  #434 = Utf8               CodecOperation
+  #435 = Class              #436          // net/mehvahdjukaar/moonlight/api/map/CustomMapData
+  #436 = Utf8               net/mehvahdjukaar/moonlight/api/map/CustomMapData
+  #437 = Utf8               DirtyDataPatch
+  #438 = Class              #439          // net/mehvahdjukaar/moonlight/api/map/CustomMapData$Type
+  #439 = Utf8               net/mehvahdjukaar/moonlight/api/map/CustomMapData$Type
+  #440 = Utf8               Type
+  #441 = Class              #442          // java/lang/invoke/MethodHandles$Lookup
+  #442 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #443 = Class              #444          // java/lang/invoke/MethodHandles
+  #444 = Utf8               java/lang/invoke/MethodHandles
+  #445 = Utf8               Lookup
+{
+  private net.minecraft.world.level.saveddata.maps.MapId mapId;
+    descriptor: Lnet/minecraft/world/level/saveddata/maps/MapId;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #271()
+        org.spongepowered.asm.mixin.Shadow
+      1: #272()
+        org.spongepowered.asm.mixin.Final
+
+  private java.util.List<net.mehvahdjukaar.moonlight.api.map.decoration.MLMapDecoration> moonlight$customDecorations;
+    descriptor: Ljava/util/List;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #274                         // Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;>;
+    RuntimeVisibleAnnotations:
+      0: #275()
+        org.spongepowered.asm.mixin.Unique
+    RuntimeInvisibleAnnotations:
+      0: #277()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #277(): FIELD
+        org.jetbrains.annotations.Nullable
+
+  private java.util.List<net.mehvahdjukaar.moonlight.api.map.CustomMapData$DirtyDataPatch<?, ?>> moonlight$customDataPatches;
+    descriptor: Ljava/util/List;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #279                         // Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch<**>;>;
+    RuntimeVisibleAnnotations:
+      0: #275()
+        org.spongepowered.asm.mixin.Unique
+    RuntimeInvisibleAnnotations:
+      0: #277()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #277(): FIELD
+        org.jetbrains.annotations.Nullable
+
+  private int moonlight$mapCenterX;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #275()
+        org.spongepowered.asm.mixin.Unique
+
+  private int moonlight$mapCenterZ;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #275()
+        org.spongepowered.asm.mixin.Unique
+
+  private net.minecraft.resources.ResourceLocation moonlight$dimension;
+    descriptor: Lnet/minecraft/resources/ResourceLocation;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #275()
+        org.spongepowered.asm.mixin.Unique
+
+  public net.mehvahdjukaar.moonlight.core.mixins.MapItemDataPacketMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aconst_null
+         6: putfield      #7                  // Field moonlight$customDecorations:Ljava/util/List;
+         9: aload_0
+        10: aconst_null
+        11: putfield      #13                 // Field moonlight$customDataPatches:Ljava/util/List;
+        14: aload_0
+        15: iconst_0
+        16: putfield      #16                 // Field moonlight$mapCenterX:I
+        19: aload_0
+        20: iconst_0
+        21: putfield      #20                 // Field moonlight$mapCenterZ:I
+        24: aload_0
+        25: getstatic     #23                 // Field net/minecraft/world/level/Level.OVERWORLD:Lnet/minecraft/resources/ResourceKey;
+        28: invokevirtual #29                 // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+        31: putfield      #35                 // Field moonlight$dimension:Lnet/minecraft/resources/ResourceLocation;
+        34: return
+      LineNumberTable:
+        line 40: 0
+        line 46: 4
+        line 49: 9
+        line 52: 14
+        line 54: 19
+        line 56: 24
+        line 57: 28
+        line 56: 34
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      35     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin;
+
+  private void moonlight$addExtraCenterAndDimension(net.minecraft.world.level.saveddata.maps.MapId, byte, boolean, java.util.Optional, java.util.Optional, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/level/saveddata/maps/MapId;BZLjava/util/Optional;Ljava/util/Optional;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=10, args_size=7
+         0: invokestatic  #39                 // Method net/mehvahdjukaar/moonlight/api/platform/PlatHelper.getCurrentServer:()Lnet/minecraft/server/MinecraftServer;
+         3: astore        7
+         5: aload         7
+         7: ifnull        72
+        10: aload         7
+        12: invokevirtual #45                 // Method net/minecraft/server/MinecraftServer.overworld:()Lnet/minecraft/server/level/ServerLevel;
+        15: astore        9
+        17: aload         9
+        19: instanceof    #51                 // class net/minecraft/server/level/ServerLevel
+        22: ifeq          72
+        25: aload         9
+        27: astore        8
+        29: aload         8
+        31: aload_1
+        32: invokevirtual #53                 // Method net/minecraft/server/level/ServerLevel.getMapData:(Lnet/minecraft/world/level/saveddata/maps/MapId;)Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;
+        35: astore        9
+        37: aload         9
+        39: ifnull        72
+        42: aload_0
+        43: aload         9
+        45: getfield      #57                 // Field net/minecraft/world/level/saveddata/maps/MapItemSavedData.centerX:I
+        48: putfield      #16                 // Field moonlight$mapCenterX:I
+        51: aload_0
+        52: aload         9
+        54: getfield      #62                 // Field net/minecraft/world/level/saveddata/maps/MapItemSavedData.centerZ:I
+        57: putfield      #20                 // Field moonlight$mapCenterZ:I
+        60: aload_0
+        61: aload         9
+        63: getfield      #65                 // Field net/minecraft/world/level/saveddata/maps/MapItemSavedData.dimension:Lnet/minecraft/resources/ResourceKey;
+        66: invokevirtual #29                 // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+        69: putfield      #35                 // Field moonlight$dimension:Lnet/minecraft/resources/ResourceLocation;
+        72: return
+      LineNumberTable:
+        line 63: 0
+        line 65: 5
+        line 66: 29
+        line 68: 37
+        line 69: 42
+        line 70: 51
+        line 71: 60
+        line 74: 72
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           37      35     9  data   Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;
+           29      43     8    sl   Lnet/minecraft/server/level/ServerLevel;
+            0      73     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin;
+            0      73     1 mapId   Lnet/minecraft/world/level/saveddata/maps/MapId;
+            0      73     2     b   B
+            0      73     3    bl   Z
+            0      73     4 optional   Ljava/util/Optional;
+            0      73     5 optional2   Ljava/util/Optional;
+            0      73     6    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+            5      68     7 server   Lnet/minecraft/server/MinecraftServer;
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 72
+          locals = [ class net/minecraft/server/MinecraftServer ]
+    RuntimeVisibleAnnotations:
+      0: #303(#304=[s#305],#306=[@#307(#308=s#309)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<init>(Lnet/minecraft/world/level/saveddata/maps/MapId;BZLjava/util/Optional;Ljava/util/Optional;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+
+  private static net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, net.minecraft.network.protocol.game.ClientboundMapItemDataPacket> moonlight$modifyMapPacketCodec(net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, net.minecraft.network.protocol.game.ClientboundMapItemDataPacket>);
+    descriptor: (Lnet/minecraft/network/codec/StreamCodec;)Lnet/minecraft/network/codec/StreamCodec;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=13, locals=1, args_size=1
+         0: aload_0
+         1: invokestatic  #68                 // InterfaceMethod java/util/function/Function.identity:()Ljava/util/function/Function;
+         4: getstatic     #74                 // Field net/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration.CODEC:Lnet/minecraft/network/codec/StreamCodec;
+         7: invokestatic  #80                 // InterfaceMethod net/minecraft/network/codec/ByteBufCodecs.list:()Lnet/minecraft/network/codec/StreamCodec$CodecOperation;
+        10: invokeinterface #86,  2           // InterfaceMethod net/minecraft/network/codec/StreamCodec.apply:(Lnet/minecraft/network/codec/StreamCodec$CodecOperation;)Lnet/minecraft/network/codec/StreamCodec;
+        15: invokedynamic #92,  0             // InvokeDynamic #0:apply:()Lnet/minecraft/network/codec/StreamCodec$CodecOperation;
+        20: invokeinterface #86,  2           // InterfaceMethod net/minecraft/network/codec/StreamCodec.apply:(Lnet/minecraft/network/codec/StreamCodec$CodecOperation;)Lnet/minecraft/network/codec/StreamCodec;
+        25: invokedynamic #94,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+        30: getstatic     #96                 // Field net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+        33: invokestatic  #80                 // InterfaceMethod net/minecraft/network/codec/ByteBufCodecs.list:()Lnet/minecraft/network/codec/StreamCodec$CodecOperation;
+        36: invokeinterface #86,  2           // InterfaceMethod net/minecraft/network/codec/StreamCodec.apply:(Lnet/minecraft/network/codec/StreamCodec$CodecOperation;)Lnet/minecraft/network/codec/StreamCodec;
+        41: invokedynamic #92,  0             // InvokeDynamic #0:apply:()Lnet/minecraft/network/codec/StreamCodec$CodecOperation;
+        46: invokeinterface #86,  2           // InterfaceMethod net/minecraft/network/codec/StreamCodec.apply:(Lnet/minecraft/network/codec/StreamCodec$CodecOperation;)Lnet/minecraft/network/codec/StreamCodec;
+        51: invokedynamic #101,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+        56: getstatic     #102                // Field net/minecraft/resources/ResourceLocation.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+        59: invokedynamic #105,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+        64: getstatic     #106                // Field net/minecraft/network/codec/ByteBufCodecs.INT:Lnet/minecraft/network/codec/StreamCodec;
+        67: invokedynamic #109,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+        72: getstatic     #106                // Field net/minecraft/network/codec/ByteBufCodecs.INT:Lnet/minecraft/network/codec/StreamCodec;
+        75: invokedynamic #110,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+        80: invokedynamic #111,  0            // InvokeDynamic #6:apply:()Lcom/mojang/datafixers/util/Function6;
+        85: invokestatic  #114                // InterfaceMethod net/minecraft/network/codec/StreamCodec.composite:(Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lcom/mojang/datafixers/util/Function6;)Lnet/minecraft/network/codec/StreamCodec;
+        88: areturn
+      LineNumberTable:
+        line 80: 0
+        line 81: 7
+        line 83: 33
+        line 80: 85
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      89     0 original   Lnet/minecraft/network/codec/StreamCodec;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      89     0 original   Lnet/minecraft/network/codec/StreamCodec<Lnet/minecraft/network/RegistryFriendlyByteBuf;Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;>;
+    Signature: #315                         // (Lnet/minecraft/network/codec/StreamCodec<Lnet/minecraft/network/RegistryFriendlyByteBuf;Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;>;)Lnet/minecraft/network/codec/StreamCodec<Lnet/minecraft/network/RegistryFriendlyByteBuf;Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;>;
+    RuntimeVisibleAnnotations:
+      0: #316(#304=[s#317],#306=[@#307(#308=s#318,#319=s#320)])
+        com.llamalad7.mixinextras.injector.ModifyExpressionValue(
+          method=["<clinit>"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/network/codec/StreamCodec;composite(Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lcom/mojang/datafixers/util/Function5;)Lnet/minecraft/network/codec/StreamCodec;"
+          )]
+        )
+
+  public java.util.Optional<java.util.List<net.mehvahdjukaar.moonlight.api.map.CustomMapData$DirtyDataPatch<?, ?>>> moonlight$getDirtyCustomData();
+    descriptor: ()Ljava/util/Optional;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #13                 // Field moonlight$customDataPatches:Ljava/util/List;
+         4: invokestatic  #118                // Method java/util/Optional.ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+         7: areturn
+      LineNumberTable:
+        line 104: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin;
+    Signature: #321                         // ()Ljava/util/Optional<Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch<**>;>;>;
+
+  public java.util.Optional<java.util.List<net.mehvahdjukaar.moonlight.api.map.decoration.MLMapDecoration>> moonlight$getCustomDecorations();
+    descriptor: ()Ljava/util/Optional;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #7                  // Field moonlight$customDecorations:Ljava/util/List;
+         4: invokestatic  #118                // Method java/util/Optional.ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+         7: areturn
+      LineNumberTable:
+        line 109: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin;
+    Signature: #322                         // ()Ljava/util/Optional<Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;>;>;
+
+  public void moonlight$setCustomDecorations(java.util.Optional<java.util.List<net.mehvahdjukaar.moonlight.api.map.decoration.MLMapDecoration>>);
+    descriptor: (Ljava/util/Optional;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokedynamic #124,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+         7: invokevirtual #125                // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+        10: aconst_null
+        11: invokevirtual #129                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+        14: checkcast     #133                // class java/util/List
+        17: putfield      #7                  // Field moonlight$customDecorations:Ljava/util/List;
+        20: return
+      LineNumberTable:
+        line 114: 0
+        line 115: 20
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      21     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin;
+            0      21     1  deco   Ljava/util/Optional;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      21     1  deco   Ljava/util/Optional<Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;>;>;
+    Signature: #325                         // (Ljava/util/Optional<Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;>;>;)V
+
+  public void moonlight$setDirtyCustomData(java.util.Optional<java.util.List<net.mehvahdjukaar.moonlight.api.map.CustomMapData$DirtyDataPatch<?, ?>>>);
+    descriptor: (Ljava/util/Optional;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokedynamic #124,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+         7: invokevirtual #125                // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+        10: aconst_null
+        11: invokevirtual #129                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+        14: checkcast     #133                // class java/util/List
+        17: putfield      #13                 // Field moonlight$customDataPatches:Ljava/util/List;
+        20: return
+      LineNumberTable:
+        line 119: 0
+        line 120: 20
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      21     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin;
+            0      21     1   tag   Ljava/util/Optional;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      21     1   tag   Ljava/util/Optional<Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch<**>;>;>;
+    Signature: #328                         // (Ljava/util/Optional<Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch<**>;>;>;)V
+
+  public net.minecraft.resources.ResourceLocation moonlight$getDimension();
+    descriptor: ()Lnet/minecraft/resources/ResourceLocation;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #35                 // Field moonlight$dimension:Lnet/minecraft/resources/ResourceLocation;
+         4: areturn
+      LineNumberTable:
+        line 125: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin;
+    RuntimeInvisibleAnnotations:
+      0: #329()
+        org.jetbrains.annotations.NotNull
+    RuntimeInvisibleTypeAnnotations:
+      0: #329(): METHOD_RETURN
+        org.jetbrains.annotations.NotNull
+
+  public void moonlight$setDimension(net.minecraft.resources.ResourceLocation);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #35                 // Field moonlight$dimension:Lnet/minecraft/resources/ResourceLocation;
+         5: return
+      LineNumberTable:
+        line 130: 0
+        line 131: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin;
+            0       6     1   dim   Lnet/minecraft/resources/ResourceLocation;
+
+  public int moonlight$getMapCenterX();
+    descriptor: ()I
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #16                 // Field moonlight$mapCenterX:I
+         4: ireturn
+      LineNumberTable:
+        line 135: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin;
+
+  public int moonlight$getMapCenterZ();
+    descriptor: ()I
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #20                 // Field moonlight$mapCenterZ:I
+         4: ireturn
+      LineNumberTable:
+        line 140: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin;
+
+  public void moonlight$setMapCenter(int, int);
+    descriptor: (II)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_0
+         1: iload_1
+         2: putfield      #16                 // Field moonlight$mapCenterX:I
+         5: aload_0
+         6: iload_2
+         7: putfield      #20                 // Field moonlight$mapCenterZ:I
+        10: return
+      LineNumberTable:
+        line 145: 0
+        line 146: 5
+        line 147: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin;
+            0      11     1     x   I
+            0      11     2     z   I
+
+  private void handleExtraData(net.minecraft.world.level.saveddata.maps.MapItemSavedData, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=10, args_size=3
+         0: aload_0
+         1: getfield      #7                  // Field moonlight$customDecorations:Ljava/util/List;
+         4: astore_3
+         5: aload_0
+         6: getfield      #13                 // Field moonlight$customDataPatches:Ljava/util/List;
+         9: astore        4
+        11: aload_1
+        12: aload_0
+        13: getfield      #16                 // Field moonlight$mapCenterX:I
+        16: putfield      #57                 // Field net/minecraft/world/level/saveddata/maps/MapItemSavedData.centerX:I
+        19: aload_1
+        20: aload_0
+        21: getfield      #20                 // Field moonlight$mapCenterZ:I
+        24: putfield      #62                 // Field net/minecraft/world/level/saveddata/maps/MapItemSavedData.centerZ:I
+        27: aload_1
+        28: getstatic     #135                // Field net/minecraft/core/registries/Registries.DIMENSION:Lnet/minecraft/resources/ResourceKey;
+        31: aload_0
+        32: getfield      #35                 // Field moonlight$dimension:Lnet/minecraft/resources/ResourceLocation;
+        35: invokestatic  #140                // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+        38: putfield      #65                 // Field net/minecraft/world/level/saveddata/maps/MapItemSavedData.dimension:Lnet/minecraft/resources/ResourceKey;
+        41: aload_1
+        42: instanceof    #144                // class net/mehvahdjukaar/moonlight/api/map/ExpandedMapData
+        45: ifeq          265
+        48: aload_1
+        49: checkcast     #144                // class net/mehvahdjukaar/moonlight/api/map/ExpandedMapData
+        52: astore        5
+        54: aload         5
+        56: invokeinterface #146,  1          // InterfaceMethod net/mehvahdjukaar/moonlight/api/map/ExpandedMapData.ml$getCustomDecorations:()Ljava/util/Map;
+        61: astore        6
+        63: aload_3
+        64: ifnull        142
+        67: aload         6
+        69: invokeinterface #150,  1          // InterfaceMethod java/util/Map.clear:()V
+        74: iconst_0
+        75: istore        7
+        77: iload         7
+        79: aload_3
+        80: invokeinterface #155,  1          // InterfaceMethod java/util/List.size:()I
+        85: if_icmpge     142
+        88: aload_3
+        89: iload         7
+        91: invokeinterface #159,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+        96: checkcast     #75                 // class net/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration
+        99: astore        8
+       101: aload         8
+       103: ifnull        126
+       106: aload         6
+       108: iload         7
+       110: invokedynamic #163,  0            // InvokeDynamic #8:makeConcatWithConstants:(I)Ljava/lang/String;
+       115: aload         8
+       117: invokeinterface #167,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       122: pop
+       123: goto          136
+       126: getstatic     #171                // Field net/mehvahdjukaar/moonlight/core/Moonlight.LOGGER:Lorg/apache/logging/log4j/Logger;
+       129: ldc           #177                // String Failed to load custom map decoration, skipping
+       131: invokeinterface #179,  2          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+       136: iinc          7, 1
+       139: goto          77
+       142: aload         4
+       144: ifnull        197
+       147: aload         4
+       149: invokeinterface #185,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       154: astore        7
+       156: aload         7
+       158: invokeinterface #189,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       163: ifeq          197
+       166: aload         7
+       168: invokeinterface #195,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       173: checkcast     #97                 // class net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch
+       176: astore        8
+       178: aload         5
+       180: invokeinterface #199,  1          // InterfaceMethod net/mehvahdjukaar/moonlight/api/map/ExpandedMapData.ml$getCustomData:()Ljava/util/Map;
+       185: astore        9
+       187: aload         8
+       189: aload         9
+       191: invokevirtual #202                // Method net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch.apply:(Ljava/util/Map;)V
+       194: goto          156
+       197: aload_0
+       198: getfield      #205                // Field mapId:Lnet/minecraft/world/level/saveddata/maps/MapId;
+       201: aload_1
+       202: invokestatic  #209                // Method net/mehvahdjukaar/moonlight/core/map/MapDataInternal.getDynamicClient:(Lnet/minecraft/world/level/saveddata/maps/MapId;Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)Ljava/util/Set;
+       205: invokeinterface #215,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       210: astore        7
+       212: aload         7
+       214: invokeinterface #189,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       219: ifeq          265
+       222: aload         7
+       224: invokeinterface #195,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       229: checkcast     #218                // class net/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker
+       232: astore        8
+       234: aload         8
+       236: aload_1
+       237: invokevirtual #220                // Method net/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker.createDecorationFromMarker:(Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;
+       240: astore        9
+       242: aload         9
+       244: ifnull        262
+       247: aload         6
+       249: aload         8
+       251: invokevirtual #224                // Method net/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker.getMarkerUniqueId:()Ljava/lang/String;
+       254: aload         9
+       256: invokeinterface #167,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       261: pop
+       262: goto          212
+       265: return
+      LineNumberTable:
+        line 151: 0
+        line 152: 5
+        line 154: 11
+        line 155: 19
+        line 156: 27
+        line 159: 41
+        line 160: 54
+        line 166: 63
+        line 167: 67
+        line 169: 74
+        line 170: 88
+        line 171: 101
+        line 173: 126
+        line 169: 136
+        line 178: 142
+        line 179: 147
+        line 180: 178
+        line 181: 187
+        line 182: 194
+        line 189: 197
+        line 190: 234
+        line 191: 242
+        line 192: 247
+        line 194: 262
+        line 196: 265
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          101      35     8 customDecoration   Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;
+           77      65     7     i   I
+          187       7     9 customData   Ljava/util/Map;
+          178      16     8     p   Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch;
+          242      20     9     d   Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;
+          234      28     8     m   Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker;
+           63     202     6 decorations   Ljava/util/Map;
+           54     211     5    ed   Lnet/mehvahdjukaar/moonlight/api/map/ExpandedMapData;
+            0     266     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin;
+            0     266     1 mapData   Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;
+            0     266     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+            5     261     3 serverDeco   Ljava/util/List;
+           11     255     4 serverDataPatches   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          187       7     9 customData   Ljava/util/Map<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<**>;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData<**>;>;
+          178      16     8     p   Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch<**>;
+          234      28     8     m   Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker<*>;
+           63     202     6 decorations   Ljava/util/Map<Ljava/lang/String;Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;>;
+            5     261     3 serverDeco   Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;>;
+           11     255     4 serverDataPatches   Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch<**>;>;
+      StackMapTable: number_of_entries = 9
+        frame_type = 255 /* full_frame */
+          offset_delta = 77
+          locals = [ class net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin, class net/minecraft/world/level/saveddata/maps/MapItemSavedData, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo, class java/util/List, class java/util/List, class net/mehvahdjukaar/moonlight/api/map/ExpandedMapData, class java/util/Map, int ]
+          stack = []
+        frame_type = 252 /* append */
+          offset_delta = 48
+          locals = [ class net/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration ]
+        frame_type = 250 /* chop */
+          offset_delta = 9
+        frame_type = 250 /* chop */
+          offset_delta = 5
+        frame_type = 252 /* append */
+          offset_delta = 13
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 40
+        frame_type = 252 /* append */
+          offset_delta = 14
+          locals = [ class java/util/Iterator ]
+        frame_type = 49 /* same */
+        frame_type = 248 /* chop */
+          offset_delta = 2
+    RuntimeVisibleAnnotations:
+      0: #303(#304=[s#357],#306=[@#307(#308=s#358)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["applyToMap"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+
+  private static net.minecraft.network.protocol.game.ClientboundMapItemDataPacket lambda$moonlight$modifyMapPacketCodec$5(net.minecraft.network.protocol.game.ClientboundMapItemDataPacket, java.util.Optional, java.util.Optional, net.minecraft.resources.ResourceLocation, java.lang.Integer, java.lang.Integer);
+    descriptor: (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;Ljava/lang/Integer;)Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=7, args_size=6
+         0: aload_0
+         1: ifnonnull     6
+         4: aconst_null
+         5: areturn
+         6: aload_0
+         7: checkcast     #228                // class net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension
+        10: astore        6
+        12: aload         6
+        14: aload_1
+        15: invokeinterface #230,  2          // InterfaceMethod net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$setCustomDecorations:(Ljava/util/Optional;)V
+        20: aload         6
+        22: aload_2
+        23: invokeinterface #234,  2          // InterfaceMethod net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$setDirtyCustomData:(Ljava/util/Optional;)V
+        28: aload         6
+        30: aload_3
+        31: invokeinterface #237,  2          // InterfaceMethod net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$setDimension:(Lnet/minecraft/resources/ResourceLocation;)V
+        36: aload         6
+        38: aload         4
+        40: invokevirtual #241                // Method java/lang/Integer.intValue:()I
+        43: aload         5
+        45: invokevirtual #241                // Method java/lang/Integer.intValue:()I
+        48: invokeinterface #246,  3          // InterfaceMethod net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$setMapCenter:(II)V
+        53: aload_0
+        54: areturn
+      LineNumberTable:
+        line 89: 0
+        line 90: 4
+        line 92: 6
+        line 93: 12
+        line 94: 20
+        line 95: 28
+        line 96: 36
+        line 97: 53
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      55     0   old   Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;
+            0      55     1  deco   Ljava/util/Optional;
+            0      55     2 dataPatch   Ljava/util/Optional;
+            0      55     3   res   Lnet/minecraft/resources/ResourceLocation;
+            0      55     4     x   Ljava/lang/Integer;
+            0      55     5     z   Ljava/lang/Integer;
+           12      43     6   ext   Lnet/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension;
+      StackMapTable: number_of_entries = 1
+        frame_type = 6 /* same */
+
+  private static java.lang.Integer lambda$moonlight$modifyMapPacketCodec$4(net.minecraft.network.protocol.game.ClientboundMapItemDataPacket);
+    descriptor: (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/lang/Integer;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: checkcast     #228                // class net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension
+         4: invokeinterface #250,  1          // InterfaceMethod net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$getMapCenterZ:()I
+         9: invokestatic  #253                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        12: areturn
+      LineNumberTable:
+        line 87: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0     p   Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;
+
+  private static java.lang.Integer lambda$moonlight$modifyMapPacketCodec$3(net.minecraft.network.protocol.game.ClientboundMapItemDataPacket);
+    descriptor: (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/lang/Integer;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: checkcast     #228                // class net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension
+         4: invokeinterface #257,  1          // InterfaceMethod net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$getMapCenterX:()I
+         9: invokestatic  #253                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        12: areturn
+      LineNumberTable:
+        line 86: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0     p   Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;
+
+  private static net.minecraft.resources.ResourceLocation lambda$moonlight$modifyMapPacketCodec$2(net.minecraft.network.protocol.game.ClientboundMapItemDataPacket);
+    descriptor: (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Lnet/minecraft/resources/ResourceLocation;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: checkcast     #228                // class net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension
+         4: invokeinterface #260,  1          // InterfaceMethod net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$getDimension:()Lnet/minecraft/resources/ResourceLocation;
+         9: areturn
+      LineNumberTable:
+        line 85: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0     p   Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;
+
+  private static java.util.Optional lambda$moonlight$modifyMapPacketCodec$1(net.minecraft.network.protocol.game.ClientboundMapItemDataPacket);
+    descriptor: (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/util/Optional;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: checkcast     #228                // class net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension
+         4: invokeinterface #263,  1          // InterfaceMethod net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$getDirtyCustomData:()Ljava/util/Optional;
+         9: areturn
+      LineNumberTable:
+        line 84: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0     p   Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;
+
+  private static java.util.Optional lambda$moonlight$modifyMapPacketCodec$0(net.minecraft.network.protocol.game.ClientboundMapItemDataPacket);
+    descriptor: (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/util/Optional;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: checkcast     #228                // class net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension
+         4: invokeinterface #267,  1          // InterfaceMethod net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$getCustomDecorations:()Ljava/util/Optional;
+         9: areturn
+      LineNumberTable:
+        line 82: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0     p   Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;
+}
+SourceFile: "MapItemDataPacketMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #378(#308=[c#362])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;]
+    )
+BootstrapMethods:
+  0: #418 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #380 (Lnet/minecraft/network/codec/StreamCodec;)Lnet/minecraft/network/codec/StreamCodec;
+      #381 REF_invokeStatic net/minecraft/network/codec/ByteBufCodecs.optional:(Lnet/minecraft/network/codec/StreamCodec;)Lnet/minecraft/network/codec/StreamCodec;
+      #380 (Lnet/minecraft/network/codec/StreamCodec;)Lnet/minecraft/network/codec/StreamCodec;
+  1: #418 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #384 (Ljava/lang/Object;)Ljava/lang/Object;
+      #385 REF_invokeStatic net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$0:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/util/Optional;
+      #388 (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/util/Optional;
+  2: #418 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #384 (Ljava/lang/Object;)Ljava/lang/Object;
+      #389 REF_invokeStatic net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$1:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/util/Optional;
+      #388 (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/util/Optional;
+  3: #418 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #384 (Ljava/lang/Object;)Ljava/lang/Object;
+      #392 REF_invokeStatic net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$2:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Lnet/minecraft/resources/ResourceLocation;
+      #395 (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Lnet/minecraft/resources/ResourceLocation;
+  4: #418 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #384 (Ljava/lang/Object;)Ljava/lang/Object;
+      #396 REF_invokeStatic net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$3:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/lang/Integer;
+      #399 (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/lang/Integer;
+  5: #418 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #384 (Ljava/lang/Object;)Ljava/lang/Object;
+      #400 REF_invokeStatic net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$4:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/lang/Integer;
+      #399 (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;)Ljava/lang/Integer;
+  6: #418 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #403 (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      #405 REF_invokeStatic net/mehvahdjukaar/moonlight/core/mixins/MapItemDataPacketMixin.lambda$moonlight$modifyMapPacketCodec$5:(Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;Ljava/lang/Integer;)Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;
+      #408 (Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;Ljava/lang/Integer;)Lnet/minecraft/network/protocol/game/ClientboundMapItemDataPacket;
+  7: #418 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #384 (Ljava/lang/Object;)Ljava/lang/Object;
+      #409 REF_invokeStatic java/util/List.copyOf:(Ljava/util/Collection;)Ljava/util/List;
+      #414 (Ljava/util/List;)Ljava/util/List;
+  8: #425 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #416 icon-\u0001
+InnerClasses:
+  public static #434= #432 of #87;        // CodecOperation=class net/minecraft/network/codec/StreamCodec$CodecOperation of class net/minecraft/network/codec/StreamCodec
+  public static final #437= #97 of #435;  // DirtyDataPatch=class net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch of class net/mehvahdjukaar/moonlight/api/map/CustomMapData
+  public static final #440= #438 of #435; // Type=class net/mehvahdjukaar/moonlight/api/map/CustomMapData$Type of class net/mehvahdjukaar/moonlight/api/map/CustomMapData
+  public static final #445= #441 of #443; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
