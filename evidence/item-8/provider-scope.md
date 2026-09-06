@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 60 of 136. The exact queue below has 76 open rows.
+Supported provider dispositions: 61 of 136. The exact queue below has 75 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -566,7 +566,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar` | `fortress-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar` | `monument-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar` | `stronghold-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
-| `YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar` | `witch-hut-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
+| `YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar` | `witch-hut-provider` (04b6ab5), prior suppression capture, test_witch_hut_provider_scope.py | RESOLVED: Two existing roots, three pools, six connected templates and five component processors. Packaged services and entry roles are accounted for below. |
 | `YungsBridges-1.21.1-NeoForge-5.1.1.jar` | `yungs-bridge-generation`, `yungs-bridge-processors`, `yungs-bridges-module-default`, `yungs-bridges-module-loader` | RESOLVED: see YUNG Bridges provider disposition below. |
 | `YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `YungsExtras-1.21.1-NeoForge-5.1.1.jar` | `yungs-extras-desert-code`, `yungs-extras-generators`, `yungs-extras-initialization`, `yungs-extras-module-default`, `yungs-extras-processor-bindings`, `yungs-extras-registration` | RESOLVED: see YUNG Extras provider disposition below. |
@@ -2180,3 +2180,48 @@ also matched a structure tag and raised KeyError; the tracked check uses the
 existing resource_identity function and cannot mistake tags for roots. No raw
 input was changed. Current provider census: 60 resolved and 76 open. Family
 canonicalization, eleven attributes and the final Item 8 delivery gate remain open.
+
+## Better Witch Huts provider disposition
+
+Source 04b6ab5 and the prior witch-hut-suppression capture cover all twenty
+packaged classes. The focused test binds source and archive hashes and accounts
+for all 54 files in YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar. The two
+packaged service declarations select the captured NeoForge modules/platform
+implementations. Common initialization scans the module package for YUNG API
+registration annotations; its modules service delegates to an empty default.
+There is no additional independent generator in these entry paths. Configuration
+and direct vanilla locate/suppression behavior reuse existing evidence.
+
+The two roots, betterwitchhuts:witch_hut and betterwitchhuts:witch_circle, exactly
+match the runtime registry. All three pools and six templates are connected in
+the preserved graphs. The hut has small, large and double template alternatives;
+the circle has its own template; witch and cat are shared mob components. There
+are no disconnected components, missing references or unresolved pool elements.
+Do not count the mob templates or layout alternatives as additional families.
+
+The sole main processor list binds all five captured custom processors. Log and
+fence supports extend down from template markers; circle masonry is varied and
+supported; brewing-stand item NBT and potted plants are populated/varied. These
+are existing-component modifications. Source README preserves the relevant roles,
+including support extension outside original template bounds and the distinction
+between written item NBT and runtime acceptance. Detailed vertical size, effective
+content and final family attributes remain open. Shared YUNG API registration
+and randomizer semantics are still attributed under its separate provider row.
+
+Other payload resources are structure sets, tags, loot, translations, logos and
+metadata. No additional nested archive, script, feature/carver data or unexplained
+resource class is present. This disposition accounts for provider candidates;
+it does not assert gameplay completion or change the frozen baseline.
+
+```sh
+uv run pytest -q tests/item8/test_witch_hut_provider_scope.py tests/item8/test_yung_suppression.py
+uv run ruff check tests/item8/test_witch_hut_provider_scope.py
+uv run basedpyright tests/item8/test_witch_hut_provider_scope.py
+```
+
+The new payload case and six existing suppression cases pass. Scoped Ruff and
+Basedpyright pass. Initial line-length and statement-count findings were resolved
+with a wrapped assertion and a local exemption keeping the single archive/graph
+assertion together. The source capture independently reproduces exactly. Current
+census: 61 resolved providers, 75 open. Canonical family grouping and Item 8's
+remaining attribute and final delivery gates are unchanged.
