@@ -704,6 +704,17 @@ attributes. This separates unknown membership from incomplete attributes.
 
 ## Supplementaries packaged component checkpoint
 
+The Trinkets fallback is now resolved. The existing provider test checks the
+exact dev/emi/trinkets/api/TrinketsApi.class path, including prefixed copies,
+in every hash-verified retained and platform archive and recursively embedded
+JAR. None supplies that class. Together with the already bound runtime absence
+of the trinkets mod ID and the captured dispatcher condition, this excludes the
+Trinkets initialization branch for the frozen inputs. No extra source capture
+or general scanning framework was needed. Four focused cases pass (2.10s);
+scoped Ruff and Basedpyright pass. This supersedes the open Trinkets instructions
+below. MixinSquared, remaining common/mixin roles and parent payload accounting
+remain open; census stays 78 resolved and 58 open.
+
 Retained integration entries are captured in 11b6396 (extractor 5355d74),
 manifest 1ec5f3694856a3a56bf280d1ceb4bf980a741f63fe7ad1fddba78ea6c7d2b1d3.
 All eight class/disassembly identities and the existing runtime log are bound by
