@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "createdieselgenerators-1.21.1-1.3.15.jar",
         "createbigcannons-5.11.6+mc.1.21.1.jar",
         "create-enchantment-industry-2.4.0.jar",
         "resourcefullib-neoforge-1.21-3.0.12.jar",
@@ -224,6 +225,21 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "com/jesz/createdieselgenerators/mixins/BasinRecipeMixin.class",
+    "com/jesz/createdieselgenerators/mixins/ContraptionMixin.class",
+    "com/jesz/createdieselgenerators/mixins/CopycatBlockMixin.class",
+    "com/jesz/createdieselgenerators/mixins/CreeperMixin.class",
+    "com/jesz/createdieselgenerators/mixins/EntityMixin.class",
+    "com/jesz/createdieselgenerators/mixins/LootItemAccessor.class",
+    "com/jesz/createdieselgenerators/mixins/LootPoolAccessor.class",
+    "com/jesz/createdieselgenerators/mixins/LootTableAccessor.class",
+    "com/jesz/createdieselgenerators/mixins/MechanicalPressBlockEntityMixin.class",
+    "com/jesz/createdieselgenerators/mixins/ShaftBlockMixin.class",
+    "com/jesz/createdieselgenerators/mixins/UseOnContextInvoker.class",
+    "com/jesz/createdieselgenerators/mixins/SableAssemblyMixin.class",
+    "com/jesz/createdieselgenerators/CreateDieselGenerators.class",
+    "com/jesz/createdieselgenerators/events/GameEvents.class",
+    "com/jesz/createdieselgenerators/events/ModEvents.class",
     "rbasamoyai/createbigcannons/ModGroup.class",
     "rbasamoyai/createbigcannons/cannon_control/cannon_types/CBCCannonContraptionTypes.class",
     "rbasamoyai/createbigcannons/cannon_loading/CBCModifiedContraptionRegistry.class",
@@ -4229,6 +4245,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 verbose |= name.startswith("plus/dragons/createdragonsplus/")
                 verbose |= name.startswith("plus/dragons/createenchantmentindustry/")
                 verbose |= name.startswith("rbasamoyai/createbigcannons/")
+                verbose |= name.startswith("com/jesz/createdieselgenerators/")
                 verbose |= name.startswith("com/teamresourceful/resourcefullib/")
                 verbose |= name.startswith("com/illusivesoulworks/")
                 verbose |= name.startswith("dan200/computercraft/")
