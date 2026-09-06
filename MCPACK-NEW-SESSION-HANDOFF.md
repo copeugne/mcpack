@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Scope check for the remaining 35 BetterEnd ruins: palette counts and template
+boxes do not establish layout equivalence. Use a fixed-purpose SVG view of the
+existing decoded block coordinates to resolve those design boundaries. Existing
+summary extraction omits ordinary block positions; changing the global catalog
+would be broader than this direct inspection tool. Reuse the decoder, frozen
+archive and existing image converter. Add no dependency, runtime experiment,
+measurement protocol or generic rendering framework. Views are voxel diagrams,
+not textured Minecraft observations or proof of successful world placement.
+
+
 Six BetterEnd furnished building families are integrated: mushroom library,
 mushroom tree house, Lantern Woods cabin, Shadow Forest mansion, Umbrella Jungle
 workshop house and raised house. Actual form/furnishing differences support
