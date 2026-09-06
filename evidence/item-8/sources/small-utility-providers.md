@@ -241,3 +241,45 @@ silently relabeling it. This is not a newly reproduced server failure or a reaso
 to change the frozen stack. There are no roots, templates, features, pool injections
 or independent authored structure families in either provider. Inventory/combat
 behavior and consumer loot remain relevant separately from family membership.
+
+## Save and structure utility boundaries
+
+Selector 2498f47 captures all six Fast Async World Save classes and all 26
+Structure Essentials classes. Independent captures reproduced exactly.
+
+| Archive | Archive SHA-256 | Capture directory | Identity manifest SHA-256 |
+| --- | --- | --- | --- |
+| fastasyncworldsave-1.21-2.6.jar | 099316ee212ff44bcd7aea853f0153cd28432e0297676d21f61e8b000089714f | fastasyncworldsave-provider | 4b60ee73ab2950958e58b4d5cede24ab5055d75693f3434ddec4e6438fd5d9a2 |
+| structureessentials-1.21.1-5.0.jar | 7ecb6c9d04e20a6803ba6e51dd226eaa289ba2c2c095248f3645222a8bfc1c8d | structureessentials-provider | 2cb92ed499c3a7fa07688426be09e5a59b0939adb21ce7151a102982a203a6a5 |
+
+```sh
+uv run -m tools.inspect_item8_pool_elements --archive fastasyncworldsave-1.21-2.6.jar --output evidence/raw/item8/fastasyncworldsave-provider-r1
+uv run -m tools.inspect_item8_pool_elements --archive structureessentials-1.21.1-5.0.jar --output evidence/raw/item8/structureessentials-provider-r1
+```
+
+Fast Async World Save initializes a single-thread executor. Its two mixins route
+saved-data and level-data writes through it; saved-data filenames also receive
+platform-specific colon replacement. Client initialization is separate. The
+packaged CommonConfiguration describes a sleep/weather option, not a generation
+entry; do not infer an active configuration consumer from its presence. No
+authored generation resource, template or layout-writing route is supplied.
+This disposition does not establish save correctness or measured performance.
+
+Structure Essentials registers configuration and inspection/timing commands.
+Its generation hooks operate on existing registry entries, jigsaw inputs,
+structure settings, lookup operations and starts. They provide configurable
+biome compatibility, spacing/separation, nearby-start exclusion, search limits,
+timings, logs and error handling. They supply no independent authored geometry,
+root, pool or template. The mixin plugin only rejects LegacyRandomSourceMixin
+when disableLegacyRandomCrashes is false; other declared mixins pass its filter.
+Its pre/post-apply callbacks do not introduce additional class transformations.
+
+The frozen structureessentials.json (SHA-256
+54826c1ce55156e6a3d19a22949d733668806c7ed4a77218cc1d26bb6c5fa7bd)
+has automatic biome compatibility and minimum-distance exclusion disabled,
+spacingSeparationModifier=1.0, and disableLegacyRandomCrashes=true. Search settings
+and error-handling changes remain relevant to interpreting observed lookups.
+PlacedFeatureErrorMixin catches placement exceptions and reports warnings;
+successful startup or continued generation must not be substituted for successful
+placement of every feature. Preserve the existing raw logs and failures. No
+runtime experiment, baseline configuration or family grouping was changed here.

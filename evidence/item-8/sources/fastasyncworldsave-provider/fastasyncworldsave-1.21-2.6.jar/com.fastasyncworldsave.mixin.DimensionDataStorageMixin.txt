@@ -1,0 +1,718 @@
+Classfile fastasyncworldsave-1.21-2.6.jar!/com/fastasyncworldsave/mixin/DimensionDataStorageMixin.class
+  Last modified Aug 27, 2025; size 6965 bytes
+  SHA-256 checksum c169bc08639d7ed73eec5857d15aa773dc4ffab1fade5ebf67fc71bda3198f25
+  Compiled from "DimensionDataStorageMixin.java"
+public abstract class com.fastasyncworldsave.mixin.DimensionDataStorageMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #76                         // com/fastasyncworldsave/mixin/DimensionDataStorageMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 5, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = String             #8            // os.name
+    #8 = Utf8               os.name
+    #9 = Methodref          #10.#11       // java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
+   #10 = Class              #12           // java/lang/System
+   #11 = NameAndType        #13:#14       // getProperty:(Ljava/lang/String;)Ljava/lang/String;
+   #12 = Utf8               java/lang/System
+   #13 = Utf8               getProperty
+   #14 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+   #15 = Methodref          #16.#17       // java/lang/String.toLowerCase:()Ljava/lang/String;
+   #16 = Class              #18           // java/lang/String
+   #17 = NameAndType        #19:#20       // toLowerCase:()Ljava/lang/String;
+   #18 = Utf8               java/lang/String
+   #19 = Utf8               toLowerCase
+   #20 = Utf8               ()Ljava/lang/String;
+   #21 = String             #22           // :
+   #22 = Utf8               :
+   #23 = Methodref          #16.#24       // java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+   #24 = NameAndType        #25:#26       // contains:(Ljava/lang/CharSequence;)Z
+   #25 = Utf8               contains
+   #26 = Utf8               (Ljava/lang/CharSequence;)Z
+   #27 = String             #28           // win
+   #28 = Utf8               win
+   #29 = String             #30           // mac
+   #30 = Utf8               mac
+   #31 = String             #32           // _
+   #32 = Utf8               _
+   #33 = Methodref          #16.#34       // java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+   #34 = NameAndType        #35:#36       // replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+   #35 = Utf8               replace
+   #36 = Utf8               (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+   #37 = InterfaceMethodref #38.#39       // java/util/Map.entrySet:()Ljava/util/Set;
+   #38 = Class              #40           // java/util/Map
+   #39 = NameAndType        #41:#42       // entrySet:()Ljava/util/Set;
+   #40 = Utf8               java/util/Map
+   #41 = Utf8               entrySet
+   #42 = Utf8               ()Ljava/util/Set;
+   #43 = InterfaceMethodref #44.#45       // java/util/Set.iterator:()Ljava/util/Iterator;
+   #44 = Class              #46           // java/util/Set
+   #45 = NameAndType        #47:#48       // iterator:()Ljava/util/Iterator;
+   #46 = Utf8               java/util/Set
+   #47 = Utf8               iterator
+   #48 = Utf8               ()Ljava/util/Iterator;
+   #49 = InterfaceMethodref #50.#51       // java/util/Iterator.hasNext:()Z
+   #50 = Class              #52           // java/util/Iterator
+   #51 = NameAndType        #53:#54       // hasNext:()Z
+   #52 = Utf8               java/util/Iterator
+   #53 = Utf8               hasNext
+   #54 = Utf8               ()Z
+   #55 = InterfaceMethodref #50.#56       // java/util/Iterator.next:()Ljava/lang/Object;
+   #56 = NameAndType        #57:#58       // next:()Ljava/lang/Object;
+   #57 = Utf8               next
+   #58 = Utf8               ()Ljava/lang/Object;
+   #59 = Class              #60           // java/util/Map$Entry
+   #60 = Utf8               java/util/Map$Entry
+   #61 = InterfaceMethodref #59.#62       // java/util/Map$Entry.getKey:()Ljava/lang/Object;
+   #62 = NameAndType        #63:#58       // getKey:()Ljava/lang/Object;
+   #63 = Utf8               getKey
+   #64 = InterfaceMethodref #59.#65       // java/util/Map$Entry.getValue:()Ljava/lang/Object;
+   #65 = NameAndType        #66:#58       // getValue:()Ljava/lang/Object;
+   #66 = Utf8               getValue
+   #67 = Class              #68           // net/minecraft/world/level/saveddata/SavedData
+   #68 = Utf8               net/minecraft/world/level/saveddata/SavedData
+   #69 = Methodref          #67.#70       // net/minecraft/world/level/saveddata/SavedData.isDirty:()Z
+   #70 = NameAndType        #71:#54       // isDirty:()Z
+   #71 = Utf8               isDirty
+   #72 = Class              #73           // net/minecraft/nbt/CompoundTag
+   #73 = Utf8               net/minecraft/nbt/CompoundTag
+   #74 = Methodref          #72.#3        // net/minecraft/nbt/CompoundTag."<init>":()V
+   #75 = Fieldref           #76.#77       // com/fastasyncworldsave/mixin/DimensionDataStorageMixin.registries:Lnet/minecraft/core/HolderLookup$Provider;
+   #76 = Class              #78           // com/fastasyncworldsave/mixin/DimensionDataStorageMixin
+   #77 = NameAndType        #79:#80       // registries:Lnet/minecraft/core/HolderLookup$Provider;
+   #78 = Utf8               com/fastasyncworldsave/mixin/DimensionDataStorageMixin
+   #79 = Utf8               registries
+   #80 = Utf8               Lnet/minecraft/core/HolderLookup$Provider;
+   #81 = Methodref          #67.#82       // net/minecraft/world/level/saveddata/SavedData.save:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/nbt/CompoundTag;
+   #82 = NameAndType        #83:#84       // save:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/nbt/CompoundTag;
+   #83 = Utf8               save
+   #84 = Utf8               (Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/nbt/CompoundTag;
+   #85 = Class              #86           // java/lang/Exception
+   #86 = Utf8               java/lang/Exception
+   #87 = Fieldref           #88.#89       // com/fastasyncworldsave/FastAsyncWorldSave.LOGGER:Lorg/apache/logging/log4j/Logger;
+   #88 = Class              #90           // com/fastasyncworldsave/FastAsyncWorldSave
+   #89 = NameAndType        #91:#92       // LOGGER:Lorg/apache/logging/log4j/Logger;
+   #90 = Utf8               com/fastasyncworldsave/FastAsyncWorldSave
+   #91 = Utf8               LOGGER
+   #92 = Utf8               Lorg/apache/logging/log4j/Logger;
+   #93 = InvokeDynamic      #0:#94        // #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+   #94 = NameAndType        #95:#14       // makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+   #95 = Utf8               makeConcatWithConstants
+   #96 = InterfaceMethodref #97.#98       // org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+   #97 = Class              #99           // org/apache/logging/log4j/Logger
+   #98 = NameAndType        #100:#101     // error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+   #99 = Utf8               org/apache/logging/log4j/Logger
+  #100 = Utf8               error
+  #101 = Utf8               (Ljava/lang/String;Ljava/lang/Throwable;)V
+  #102 = Class              #103          // java/util/HashMap
+  #103 = Utf8               java/util/HashMap
+  #104 = Methodref          #102.#3       // java/util/HashMap."<init>":()V
+  #105 = Methodref          #67.#106      // net/minecraft/world/level/saveddata/SavedData.setDirty:(Z)V
+  #106 = NameAndType        #107:#108     // setDirty:(Z)V
+  #107 = Utf8               setDirty
+  #108 = Utf8               (Z)V
+  #109 = InterfaceMethodref #38.#110      // java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #110 = NameAndType        #111:#112     // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #111 = Utf8               put
+  #112 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #113 = Fieldref           #88.#114      // com/fastasyncworldsave/FastAsyncWorldSave.threadPool:Ljava/util/concurrent/ExecutorService;
+  #114 = NameAndType        #115:#116     // threadPool:Ljava/util/concurrent/ExecutorService;
+  #115 = Utf8               threadPool
+  #116 = Utf8               Ljava/util/concurrent/ExecutorService;
+  #117 = InvokeDynamic      #1:#118       // #1:run:(Lcom/fastasyncworldsave/mixin/DimensionDataStorageMixin;Ljava/util/Map;)Ljava/lang/Runnable;
+  #118 = NameAndType        #119:#120     // run:(Lcom/fastasyncworldsave/mixin/DimensionDataStorageMixin;Ljava/util/Map;)Ljava/lang/Runnable;
+  #119 = Utf8               run
+  #120 = Utf8               (Lcom/fastasyncworldsave/mixin/DimensionDataStorageMixin;Ljava/util/Map;)Ljava/lang/Runnable;
+  #121 = InterfaceMethodref #122.#123     // java/util/concurrent/ExecutorService.submit:(Ljava/lang/Runnable;)Ljava/util/concurrent/Future;
+  #122 = Class              #124          // java/util/concurrent/ExecutorService
+  #123 = NameAndType        #125:#126     // submit:(Ljava/lang/Runnable;)Ljava/util/concurrent/Future;
+  #124 = Utf8               java/util/concurrent/ExecutorService
+  #125 = Utf8               submit
+  #126 = Utf8               (Ljava/lang/Runnable;)Ljava/util/concurrent/Future;
+  #127 = String             #128          // data
+  #128 = Utf8               data
+  #129 = Class              #130          // net/minecraft/nbt/Tag
+  #130 = Utf8               net/minecraft/nbt/Tag
+  #131 = Methodref          #72.#132      // net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+  #132 = NameAndType        #111:#133     // put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+  #133 = Utf8               (Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+  #134 = Methodref          #135.#136     // net/minecraft/nbt/NbtUtils.addCurrentDataVersion:(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/nbt/CompoundTag;
+  #135 = Class              #137          // net/minecraft/nbt/NbtUtils
+  #136 = NameAndType        #138:#139     // addCurrentDataVersion:(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/nbt/CompoundTag;
+  #137 = Utf8               net/minecraft/nbt/NbtUtils
+  #138 = Utf8               addCurrentDataVersion
+  #139 = Utf8               (Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/nbt/CompoundTag;
+  #140 = Methodref          #76.#141      // com/fastasyncworldsave/mixin/DimensionDataStorageMixin.getDataFile:(Ljava/lang/String;)Ljava/io/File;
+  #141 = NameAndType        #142:#143     // getDataFile:(Ljava/lang/String;)Ljava/io/File;
+  #142 = Utf8               getDataFile
+  #143 = Utf8               (Ljava/lang/String;)Ljava/io/File;
+  #144 = Methodref          #145.#146     // java/io/File.toPath:()Ljava/nio/file/Path;
+  #145 = Class              #147          // java/io/File
+  #146 = NameAndType        #148:#149     // toPath:()Ljava/nio/file/Path;
+  #147 = Utf8               java/io/File
+  #148 = Utf8               toPath
+  #149 = Utf8               ()Ljava/nio/file/Path;
+  #150 = InterfaceMethodref #151.#152     // java/nio/file/Path.getParent:()Ljava/nio/file/Path;
+  #151 = Class              #153          // java/nio/file/Path
+  #152 = NameAndType        #154:#149     // getParent:()Ljava/nio/file/Path;
+  #153 = Utf8               java/nio/file/Path
+  #154 = Utf8               getParent
+  #155 = Methodref          #145.#156     // java/io/File.getName:()Ljava/lang/String;
+  #156 = NameAndType        #157:#20      // getName:()Ljava/lang/String;
+  #157 = Utf8               getName
+  #158 = InvokeDynamic      #2:#94        // #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #159 = InterfaceMethodref #151.#160     // java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+  #160 = NameAndType        #161:#162     // resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+  #161 = Utf8               resolve
+  #162 = Utf8               (Ljava/lang/String;)Ljava/nio/file/Path;
+  #163 = InterfaceMethodref #151.#164     // java/nio/file/Path.toFile:()Ljava/io/File;
+  #164 = NameAndType        #165:#166     // toFile:()Ljava/io/File;
+  #165 = Utf8               toFile
+  #166 = Utf8               ()Ljava/io/File;
+  #167 = Methodref          #145.#168     // java/io/File.getParentFile:()Ljava/io/File;
+  #168 = NameAndType        #169:#166     // getParentFile:()Ljava/io/File;
+  #169 = Utf8               getParentFile
+  #170 = Methodref          #145.#171     // java/io/File.mkdirs:()Z
+  #171 = NameAndType        #172:#54      // mkdirs:()Z
+  #172 = Utf8               mkdirs
+  #173 = Methodref          #174.#175     // net/minecraft/nbt/NbtIo.writeCompressed:(Lnet/minecraft/nbt/CompoundTag;Ljava/nio/file/Path;)V
+  #174 = Class              #176          // net/minecraft/nbt/NbtIo
+  #175 = NameAndType        #177:#178     // writeCompressed:(Lnet/minecraft/nbt/CompoundTag;Ljava/nio/file/Path;)V
+  #176 = Utf8               net/minecraft/nbt/NbtIo
+  #177 = Utf8               writeCompressed
+  #178 = Utf8               (Lnet/minecraft/nbt/CompoundTag;Ljava/nio/file/Path;)V
+  #179 = Class              #180          // java/nio/file/CopyOption
+  #180 = Utf8               java/nio/file/CopyOption
+  #181 = Fieldref           #182.#183     // java/nio/file/StandardCopyOption.ATOMIC_MOVE:Ljava/nio/file/StandardCopyOption;
+  #182 = Class              #184          // java/nio/file/StandardCopyOption
+  #183 = NameAndType        #185:#186     // ATOMIC_MOVE:Ljava/nio/file/StandardCopyOption;
+  #184 = Utf8               java/nio/file/StandardCopyOption
+  #185 = Utf8               ATOMIC_MOVE
+  #186 = Utf8               Ljava/nio/file/StandardCopyOption;
+  #187 = Methodref          #188.#189     // java/nio/file/Files.move:(Ljava/nio/file/Path;Ljava/nio/file/Path;[Ljava/nio/file/CopyOption;)Ljava/nio/file/Path;
+  #188 = Class              #190          // java/nio/file/Files
+  #189 = NameAndType        #191:#192     // move:(Ljava/nio/file/Path;Ljava/nio/file/Path;[Ljava/nio/file/CopyOption;)Ljava/nio/file/Path;
+  #190 = Utf8               java/nio/file/Files
+  #191 = Utf8               move
+  #192 = Utf8               (Ljava/nio/file/Path;Ljava/nio/file/Path;[Ljava/nio/file/CopyOption;)Ljava/nio/file/Path;
+  #193 = Fieldref           #182.#194     // java/nio/file/StandardCopyOption.REPLACE_EXISTING:Ljava/nio/file/StandardCopyOption;
+  #194 = NameAndType        #195:#186     // REPLACE_EXISTING:Ljava/nio/file/StandardCopyOption;
+  #195 = Utf8               REPLACE_EXISTING
+  #196 = Methodref          #72.#197      // net/minecraft/nbt/CompoundTag.toString:()Ljava/lang/String;
+  #197 = NameAndType        #198:#20      // toString:()Ljava/lang/String;
+  #198 = Utf8               toString
+  #199 = InvokeDynamic      #3:#94        // #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #200 = Utf8               RuntimeVisibleAnnotations
+  #201 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #202 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #203 = Utf8               Code
+  #204 = Utf8               LineNumberTable
+  #205 = Utf8               LocalVariableTable
+  #206 = Utf8               this
+  #207 = Utf8               Lcom/fastasyncworldsave/mixin/DimensionDataStorageMixin;
+  #208 = Utf8               fixName
+  #209 = Utf8               value
+  #210 = Utf8               Ljava/lang/String;
+  #211 = Utf8               os
+  #212 = Utf8               StackMapTable
+  #213 = Utf8               Lorg/spongepowered/asm/mixin/injection/ModifyVariable;
+  #214 = Utf8               method
+  #215 = Utf8               at
+  #216 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #217 = Utf8               HEAD
+  #218 = Utf8               argsOnly
+  #219 = Integer            1
+  #220 = Utf8               fastasyncworldsave$saveOffthread
+  #221 = Utf8               (Ljava/util/Map;Ljava/util/function/BiConsumer;)V
+  #222 = Utf8               compound
+  #223 = Utf8               Lnet/minecraft/nbt/CompoundTag;
+  #224 = Utf8               e
+  #225 = Utf8               Ljava/lang/Exception;
+  #226 = Utf8               id
+  #227 = Utf8               savedData
+  #228 = Utf8               Lnet/minecraft/world/level/saveddata/SavedData;
+  #229 = Utf8               mapEntry
+  #230 = Utf8               Ljava/util/Map$Entry;
+  #231 = Utf8               saveData
+  #232 = Utf8               Ljava/util/Map;
+  #233 = Utf8               instance
+  #234 = Utf8               entry
+  #235 = Utf8               Ljava/util/function/BiConsumer;
+  #236 = Utf8               toSave
+  #237 = Utf8               LocalVariableTypeTable
+  #238 = Utf8               Ljava/util/Map$Entry<Ljava/lang/String;Lnet/minecraft/world/level/saveddata/SavedData;>;
+  #239 = Utf8               Ljava/util/Map<Ljava/lang/String;Lnet/minecraft/nbt/CompoundTag;>;
+  #240 = Utf8               Ljava/util/Map<Ljava/lang/String;Lnet/minecraft/world/level/saveddata/SavedData;>;
+  #241 = Utf8               Ljava/util/function/BiConsumer<Ljava/lang/String;Lnet/minecraft/world/level/saveddata/SavedData;>;
+  #242 = Class              #243          // java/util/function/BiConsumer
+  #243 = Utf8               java/util/function/BiConsumer
+  #244 = Utf8               Signature
+  #245 = Utf8               (Ljava/util/Map<Ljava/lang/String;Lnet/minecraft/world/level/saveddata/SavedData;>;Ljava/util/function/BiConsumer<Ljava/lang/String;Lnet/minecraft/world/level/saveddata/SavedData;>;)V
+  #246 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+  #247 = Utf8               INVOKE
+  #248 = Utf8               target
+  #249 = Utf8               Ljava/util/Map;forEach(Ljava/util/function/BiConsumer;)V
+  #250 = Utf8               lambda$fastasyncworldsave$saveOffthread$0
+  #251 = Utf8               (Ljava/util/Map;)V
+  #252 = Utf8               compoundtag
+  #253 = Utf8               file
+  #254 = Utf8               Ljava/io/File;
+  #255 = Utf8               temp
+  #256 = Utf8               toSaveEntry
+  #257 = Utf8               Ljava/util/Map$Entry<Ljava/lang/String;Lnet/minecraft/nbt/CompoundTag;>;
+  #258 = Utf8               SourceFile
+  #259 = Utf8               DimensionDataStorageMixin.java
+  #260 = Utf8               RuntimeInvisibleAnnotations
+  #261 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #262 = Utf8               Lnet/minecraft/world/level/storage/DimensionDataStorage;
+  #263 = Utf8               BootstrapMethods
+  #264 = String             #265          // Level data failed to save for: \u0001 report to the respective mod
+  #265 = Utf8               Level data failed to save for: \u0001 report to the respective mod
+  #266 = MethodType         #6            //  ()V
+  #267 = MethodHandle       5:#268        // REF_invokeVirtual com/fastasyncworldsave/mixin/DimensionDataStorageMixin.lambda$fastasyncworldsave$saveOffthread$0:(Ljava/util/Map;)V
+  #268 = Methodref          #76.#269      // com/fastasyncworldsave/mixin/DimensionDataStorageMixin.lambda$fastasyncworldsave$saveOffthread$0:(Ljava/util/Map;)V
+  #269 = NameAndType        #250:#251     // lambda$fastasyncworldsave$saveOffthread$0:(Ljava/util/Map;)V
+  #270 = String             #271          // tmp_\u0001
+  #271 = Utf8               tmp_\u0001
+  #272 = String             #273          // Could not save data \u0001
+  #273 = Utf8               Could not save data \u0001
+  #274 = MethodHandle       6:#275        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #275 = Methodref          #276.#277     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #276 = Class              #278          // java/lang/invoke/StringConcatFactory
+  #277 = NameAndType        #95:#279      // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #278 = Utf8               java/lang/invoke/StringConcatFactory
+  #279 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #280 = MethodHandle       6:#281        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #281 = Methodref          #282.#283     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #282 = Class              #284          // java/lang/invoke/LambdaMetafactory
+  #283 = NameAndType        #285:#286     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #284 = Utf8               java/lang/invoke/LambdaMetafactory
+  #285 = Utf8               metafactory
+  #286 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #287 = Utf8               InnerClasses
+  #288 = Utf8               Entry
+  #289 = Class              #290          // net/minecraft/core/HolderLookup$Provider
+  #290 = Utf8               net/minecraft/core/HolderLookup$Provider
+  #291 = Class              #292          // net/minecraft/core/HolderLookup
+  #292 = Utf8               net/minecraft/core/HolderLookup
+  #293 = Utf8               Provider
+  #294 = Class              #295          // java/lang/invoke/MethodHandles$Lookup
+  #295 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #296 = Class              #297          // java/lang/invoke/MethodHandles
+  #297 = Utf8               java/lang/invoke/MethodHandles
+  #298 = Utf8               Lookup
+{
+  private net.minecraft.core.HolderLookup$Provider registries;
+    descriptor: Lnet/minecraft/core/HolderLookup$Provider;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #201()
+        org.spongepowered.asm.mixin.Shadow
+      1: #202()
+        org.spongepowered.asm.mixin.Final
+
+  public com.fastasyncworldsave.mixin.DimensionDataStorageMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 25: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/fastasyncworldsave/mixin/DimensionDataStorageMixin;
+
+  protected abstract java.io.File getDataFile(java.lang.String);
+    descriptor: (Ljava/lang/String;)Ljava/io/File;
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #201()
+        org.spongepowered.asm.mixin.Shadow
+
+  private java.lang.String fixName(java.lang.String);
+    descriptor: (Ljava/lang/String;)Ljava/lang/String;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=3, args_size=2
+         0: ldc           #7                  // String os.name
+         2: invokestatic  #9                  // Method java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
+         5: invokevirtual #15                 // Method java/lang/String.toLowerCase:()Ljava/lang/String;
+         8: astore_2
+         9: aload_1
+        10: ldc           #21                 // String :
+        12: invokevirtual #23                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+        15: ifeq          45
+        18: aload_2
+        19: ldc           #27                 // String win
+        21: invokevirtual #23                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+        24: ifne          36
+        27: aload_2
+        28: ldc           #29                 // String mac
+        30: invokevirtual #23                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+        33: ifeq          45
+        36: aload_1
+        37: ldc           #21                 // String :
+        39: ldc           #31                 // String _
+        41: invokevirtual #33                 // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+        44: areturn
+        45: aload_1
+        46: areturn
+      LineNumberTable:
+        line 37: 0
+        line 39: 9
+        line 41: 36
+        line 44: 45
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      47     0  this   Lcom/fastasyncworldsave/mixin/DimensionDataStorageMixin;
+            0      47     1 value   Ljava/lang/String;
+            9      38     2    os   Ljava/lang/String;
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 36
+          locals = [ class java/lang/String ]
+        frame_type = 8 /* same */
+    RuntimeVisibleAnnotations:
+      0: #213(#214=[s#142],#215=@#216(#209=s#217),#218=Z#219)
+        org.spongepowered.asm.mixin.injection.ModifyVariable(
+          method=["getDataFile"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )
+          argsOnly=true
+        )
+
+  private void fastasyncworldsave$saveOffthread(java.util.Map<java.lang.String, net.minecraft.world.level.saveddata.SavedData>, java.util.function.BiConsumer<java.lang.String, net.minecraft.world.level.saveddata.SavedData>);
+    descriptor: (Ljava/util/Map;Ljava/util/function/BiConsumer;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=10, args_size=3
+         0: aconst_null
+         1: astore_3
+         2: aload_1
+         3: invokeinterface #37,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+         8: invokeinterface #43,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        13: astore        4
+        15: aload         4
+        17: invokeinterface #49,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        22: ifeq          160
+        25: aload         4
+        27: invokeinterface #55,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        32: checkcast     #59                 // class java/util/Map$Entry
+        35: astore        5
+        37: aload         5
+        39: invokeinterface #61,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+        44: checkcast     #16                 // class java/lang/String
+        47: astore        6
+        49: aload         5
+        51: invokeinterface #64,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+        56: checkcast     #67                 // class net/minecraft/world/level/saveddata/SavedData
+        59: astore        7
+        61: aload         7
+        63: ifnull        157
+        66: aload         7
+        68: invokevirtual #69                 // Method net/minecraft/world/level/saveddata/SavedData.isDirty:()Z
+        71: ifne          77
+        74: goto          15
+        77: aload         7
+        79: new           #72                 // class net/minecraft/nbt/CompoundTag
+        82: dup
+        83: invokespecial #74                 // Method net/minecraft/nbt/CompoundTag."<init>":()V
+        86: aload_0
+        87: getfield      #75                 // Field registries:Lnet/minecraft/core/HolderLookup$Provider;
+        90: invokevirtual #81                 // Method net/minecraft/world/level/saveddata/SavedData.save:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/nbt/CompoundTag;
+        93: astore        8
+        95: goto          120
+        98: astore        9
+       100: getstatic     #87                 // Field com/fastasyncworldsave/FastAsyncWorldSave.LOGGER:Lorg/apache/logging/log4j/Logger;
+       103: aload         6
+       105: invokedynamic #93,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       110: aload         9
+       112: invokeinterface #96,  3           // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+       117: goto          15
+       120: aload         8
+       122: ifnonnull     128
+       125: goto          15
+       128: aload_3
+       129: ifnonnull     140
+       132: new           #102                // class java/util/HashMap
+       135: dup
+       136: invokespecial #104                // Method java/util/HashMap."<init>":()V
+       139: astore_3
+       140: aload         7
+       142: iconst_0
+       143: invokevirtual #105                // Method net/minecraft/world/level/saveddata/SavedData.setDirty:(Z)V
+       146: aload_3
+       147: aload         6
+       149: aload         8
+       151: invokeinterface #109,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       156: pop
+       157: goto          15
+       160: aload_3
+       161: ifnull        184
+       164: aload_3
+       165: astore        4
+       167: getstatic     #113                // Field com/fastasyncworldsave/FastAsyncWorldSave.threadPool:Ljava/util/concurrent/ExecutorService;
+       170: aload_0
+       171: aload         4
+       173: invokedynamic #117,  0            // InvokeDynamic #1:run:(Lcom/fastasyncworldsave/mixin/DimensionDataStorageMixin;Ljava/util/Map;)Ljava/lang/Runnable;
+       178: invokeinterface #121,  2          // InterfaceMethod java/util/concurrent/ExecutorService.submit:(Ljava/lang/Runnable;)Ljava/util/concurrent/Future;
+       183: pop
+       184: return
+      Exception table:
+         from    to  target type
+            77    95    98   Class java/lang/Exception
+      LineNumberTable:
+        line 50: 0
+        line 51: 2
+        line 53: 37
+        line 54: 49
+        line 55: 61
+        line 57: 66
+        line 59: 74
+        line 65: 77
+        line 71: 95
+        line 67: 98
+        line 69: 100
+        line 70: 117
+        line 73: 120
+        line 75: 125
+        line 78: 128
+        line 80: 132
+        line 83: 140
+        line 84: 146
+        line 86: 157
+        line 88: 160
+        line 90: 164
+        line 91: 167
+        line 121: 184
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           95       3     8 compound   Lnet/minecraft/nbt/CompoundTag;
+          100      20     9     e   Ljava/lang/Exception;
+          120      37     8 compound   Lnet/minecraft/nbt/CompoundTag;
+           49     108     6    id   Ljava/lang/String;
+           61      96     7 savedData   Lnet/minecraft/world/level/saveddata/SavedData;
+           37     120     5 mapEntry   Ljava/util/Map$Entry;
+          167      17     4 saveData   Ljava/util/Map;
+            0     185     0  this   Lcom/fastasyncworldsave/mixin/DimensionDataStorageMixin;
+            0     185     1 instance   Ljava/util/Map;
+            0     185     2 entry   Ljava/util/function/BiConsumer;
+            2     183     3 toSave   Ljava/util/Map;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           37     120     5 mapEntry   Ljava/util/Map$Entry<Ljava/lang/String;Lnet/minecraft/world/level/saveddata/SavedData;>;
+          167      17     4 saveData   Ljava/util/Map<Ljava/lang/String;Lnet/minecraft/nbt/CompoundTag;>;
+            0     185     1 instance   Ljava/util/Map<Ljava/lang/String;Lnet/minecraft/world/level/saveddata/SavedData;>;
+            0     185     2 entry   Ljava/util/function/BiConsumer<Ljava/lang/String;Lnet/minecraft/world/level/saveddata/SavedData;>;
+            2     183     3 toSave   Ljava/util/Map<Ljava/lang/String;Lnet/minecraft/nbt/CompoundTag;>;
+      StackMapTable: number_of_entries = 9
+        frame_type = 253 /* append */
+          offset_delta = 15
+          locals = [ class java/util/Map, class java/util/Iterator ]
+        frame_type = 254 /* append */
+          offset_delta = 61
+          locals = [ class java/util/Map$Entry, class java/lang/String, class net/minecraft/world/level/saveddata/SavedData ]
+        frame_type = 84 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Exception ]
+        frame_type = 252 /* append */
+          offset_delta = 21
+          locals = [ class net/minecraft/nbt/CompoundTag ]
+        frame_type = 7 /* same */
+        frame_type = 11 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 16
+          locals = [ class com/fastasyncworldsave/mixin/DimensionDataStorageMixin, class java/util/Map, class java/util/function/BiConsumer, class java/util/Map, class java/util/Iterator ]
+          stack = []
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 23 /* same */
+    Signature: #245                         // (Ljava/util/Map<Ljava/lang/String;Lnet/minecraft/world/level/saveddata/SavedData;>;Ljava/util/function/BiConsumer<Ljava/lang/String;Lnet/minecraft/world/level/saveddata/SavedData;>;)V
+    RuntimeVisibleAnnotations:
+      0: #246(#214=[s#83],#215=@#216(#209=s#247,#248=s#249))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["save"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Ljava/util/Map;forEach(Ljava/util/function/BiConsumer;)V"
+          )
+        )
+
+  private void lambda$fastasyncworldsave$saveOffthread$0(java.util.Map);
+    descriptor: (Ljava/util/Map;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=6, locals=8, args_size=2
+         0: aload_1
+         1: invokeinterface #37,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+         6: invokeinterface #43,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        11: astore_2
+        12: aload_2
+        13: invokeinterface #49,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        18: ifeq          217
+        21: aload_2
+        22: invokeinterface #55,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        27: checkcast     #59                 // class java/util/Map$Entry
+        30: astore_3
+        31: new           #72                 // class net/minecraft/nbt/CompoundTag
+        34: dup
+        35: invokespecial #74                 // Method net/minecraft/nbt/CompoundTag."<init>":()V
+        38: astore        4
+        40: aload         4
+        42: ldc           #127                // String data
+        44: aload_3
+        45: invokeinterface #64,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+        50: checkcast     #129                // class net/minecraft/nbt/Tag
+        53: invokevirtual #131                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+        56: pop
+        57: aload         4
+        59: invokestatic  #134                // Method net/minecraft/nbt/NbtUtils.addCurrentDataVersion:(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/nbt/CompoundTag;
+        62: pop
+        63: aload_0
+        64: aload_3
+        65: invokeinterface #61,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+        70: checkcast     #16                 // class java/lang/String
+        73: invokevirtual #140                // Method getDataFile:(Ljava/lang/String;)Ljava/io/File;
+        76: astore        5
+        78: aload         5
+        80: invokevirtual #144                // Method java/io/File.toPath:()Ljava/nio/file/Path;
+        83: invokeinterface #150,  1          // InterfaceMethod java/nio/file/Path.getParent:()Ljava/nio/file/Path;
+        88: aload         5
+        90: invokevirtual #155                // Method java/io/File.getName:()Ljava/lang/String;
+        93: invokedynamic #158,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        98: invokeinterface #159,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+       103: invokeinterface #163,  1          // InterfaceMethod java/nio/file/Path.toFile:()Ljava/io/File;
+       108: astore        6
+       110: aload         6
+       112: invokevirtual #167                // Method java/io/File.getParentFile:()Ljava/io/File;
+       115: invokevirtual #170                // Method java/io/File.mkdirs:()Z
+       118: pop
+       119: aload         4
+       121: aload         6
+       123: invokevirtual #144                // Method java/io/File.toPath:()Ljava/nio/file/Path;
+       126: invokestatic  #173                // Method net/minecraft/nbt/NbtIo.writeCompressed:(Lnet/minecraft/nbt/CompoundTag;Ljava/nio/file/Path;)V
+       129: aload         6
+       131: invokevirtual #144                // Method java/io/File.toPath:()Ljava/nio/file/Path;
+       134: aload         5
+       136: invokevirtual #144                // Method java/io/File.toPath:()Ljava/nio/file/Path;
+       139: iconst_1
+       140: anewarray     #179                // class java/nio/file/CopyOption
+       143: dup
+       144: iconst_0
+       145: getstatic     #181                // Field java/nio/file/StandardCopyOption.ATOMIC_MOVE:Ljava/nio/file/StandardCopyOption;
+       148: aastore
+       149: invokestatic  #187                // Method java/nio/file/Files.move:(Ljava/nio/file/Path;Ljava/nio/file/Path;[Ljava/nio/file/CopyOption;)Ljava/nio/file/Path;
+       152: pop
+       153: goto          182
+       156: astore        7
+       158: aload         6
+       160: invokevirtual #144                // Method java/io/File.toPath:()Ljava/nio/file/Path;
+       163: aload         5
+       165: invokevirtual #144                // Method java/io/File.toPath:()Ljava/nio/file/Path;
+       168: iconst_1
+       169: anewarray     #179                // class java/nio/file/CopyOption
+       172: dup
+       173: iconst_0
+       174: getstatic     #193                // Field java/nio/file/StandardCopyOption.REPLACE_EXISTING:Ljava/nio/file/StandardCopyOption;
+       177: aastore
+       178: invokestatic  #187                // Method java/nio/file/Files.move:(Ljava/nio/file/Path;Ljava/nio/file/Path;[Ljava/nio/file/CopyOption;)Ljava/nio/file/Path;
+       181: pop
+       182: goto          214
+       185: astore        4
+       187: getstatic     #87                 // Field com/fastasyncworldsave/FastAsyncWorldSave.LOGGER:Lorg/apache/logging/log4j/Logger;
+       190: aload_3
+       191: invokeinterface #64,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       196: checkcast     #72                 // class net/minecraft/nbt/CompoundTag
+       199: invokevirtual #196                // Method net/minecraft/nbt/CompoundTag.toString:()Ljava/lang/String;
+       202: invokedynamic #199,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       207: aload         4
+       209: invokeinterface #96,  3           // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+       214: goto          12
+       217: return
+      Exception table:
+         from    to  target type
+           129   153   156   Class java/lang/Exception
+            31   182   185   Class java/lang/Exception
+      LineNumberTable:
+        line 92: 0
+        line 96: 31
+        line 97: 40
+        line 98: 57
+        line 100: 63
+        line 101: 78
+        line 103: 110
+        line 104: 119
+        line 107: 129
+        line 112: 153
+        line 109: 156
+        line 111: 158
+        line 117: 182
+        line 114: 185
+        line 116: 187
+        line 118: 214
+        line 119: 217
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          158      24     7     e   Ljava/lang/Exception;
+           40     142     4 compoundtag   Lnet/minecraft/nbt/CompoundTag;
+           78     104     5  file   Ljava/io/File;
+          110      72     6  temp   Ljava/io/File;
+          187      27     4     e   Ljava/lang/Exception;
+           31     183     3 toSaveEntry   Ljava/util/Map$Entry;
+            0     218     0  this   Lcom/fastasyncworldsave/mixin/DimensionDataStorageMixin;
+            0     218     1 saveData   Ljava/util/Map;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           31     183     3 toSaveEntry   Ljava/util/Map$Entry<Ljava/lang/String;Lnet/minecraft/nbt/CompoundTag;>;
+      StackMapTable: number_of_entries = 6
+        frame_type = 252 /* append */
+          offset_delta = 12
+          locals = [ class java/util/Iterator ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 143
+          locals = [ class com/fastasyncworldsave/mixin/DimensionDataStorageMixin, class java/util/Map, class java/util/Iterator, class java/util/Map$Entry, class net/minecraft/nbt/CompoundTag, class java/io/File, class java/io/File ]
+          stack = [ class java/lang/Exception ]
+        frame_type = 248 /* chop */
+          offset_delta = 25
+        frame_type = 66 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Exception ]
+        frame_type = 250 /* chop */
+          offset_delta = 28
+        frame_type = 250 /* chop */
+          offset_delta = 2
+}
+SourceFile: "DimensionDataStorageMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #261(#209=[c#262])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/storage/DimensionDataStorage;]
+    )
+BootstrapMethods:
+  0: #274 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #264 Level data failed to save for: \u0001 report to the respective mod
+  1: #280 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #266 ()V
+      #267 REF_invokeVirtual com/fastasyncworldsave/mixin/DimensionDataStorageMixin.lambda$fastasyncworldsave$saveOffthread$0:(Ljava/util/Map;)V
+      #266 ()V
+  2: #274 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #270 tmp_\u0001
+  3: #274 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #272 Could not save data \u0001
+InnerClasses:
+  public static #288= #59 of #38;         // Entry=class java/util/Map$Entry of class java/util/Map
+  public static #293= #289 of #291;       // Provider=class net/minecraft/core/HolderLookup$Provider of class net/minecraft/core/HolderLookup
+  public static final #298= #294 of #296; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles

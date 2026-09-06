@@ -1,0 +1,298 @@
+Classfile fastasyncworldsave-1.21-2.6.jar!/com/fastasyncworldsave/mixin/LevelStorageSourceMixin.class
+  Last modified Aug 27, 2025; size 3660 bytes
+  SHA-256 checksum da60be83ddd69c0f8bff53a108896d0c2a1fa7207f518641af6d23583e263abc
+  Compiled from "LevelStorageSourceMixin.java"
+public class com.fastasyncworldsave.mixin.LevelStorageSourceMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #24                         // com/fastasyncworldsave/mixin/LevelStorageSourceMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 3, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Fieldref           #8.#9         // com/fastasyncworldsave/FastAsyncWorldSave.threadPool:Ljava/util/concurrent/ExecutorService;
+    #8 = Class              #10           // com/fastasyncworldsave/FastAsyncWorldSave
+    #9 = NameAndType        #11:#12       // threadPool:Ljava/util/concurrent/ExecutorService;
+   #10 = Utf8               com/fastasyncworldsave/FastAsyncWorldSave
+   #11 = Utf8               threadPool
+   #12 = Utf8               Ljava/util/concurrent/ExecutorService;
+   #13 = InvokeDynamic      #0:#14        // #0:run:(Lcom/fastasyncworldsave/mixin/LevelStorageSourceMixin;Lnet/minecraft/nbt/CompoundTag;)Ljava/lang/Runnable;
+   #14 = NameAndType        #15:#16       // run:(Lcom/fastasyncworldsave/mixin/LevelStorageSourceMixin;Lnet/minecraft/nbt/CompoundTag;)Ljava/lang/Runnable;
+   #15 = Utf8               run
+   #16 = Utf8               (Lcom/fastasyncworldsave/mixin/LevelStorageSourceMixin;Lnet/minecraft/nbt/CompoundTag;)Ljava/lang/Runnable;
+   #17 = InterfaceMethodref #18.#19       // java/util/concurrent/ExecutorService.submit:(Ljava/lang/Runnable;)Ljava/util/concurrent/Future;
+   #18 = Class              #20           // java/util/concurrent/ExecutorService
+   #19 = NameAndType        #21:#22       // submit:(Ljava/lang/Runnable;)Ljava/util/concurrent/Future;
+   #20 = Utf8               java/util/concurrent/ExecutorService
+   #21 = Utf8               submit
+   #22 = Utf8               (Ljava/lang/Runnable;)Ljava/util/concurrent/Future;
+   #23 = Fieldref           #24.#25       // com/fastasyncworldsave/mixin/LevelStorageSourceMixin.levelDirectory:Lnet/minecraft/world/level/storage/LevelStorageSource$LevelDirectory;
+   #24 = Class              #26           // com/fastasyncworldsave/mixin/LevelStorageSourceMixin
+   #25 = NameAndType        #27:#28       // levelDirectory:Lnet/minecraft/world/level/storage/LevelStorageSource$LevelDirectory;
+   #26 = Utf8               com/fastasyncworldsave/mixin/LevelStorageSourceMixin
+   #27 = Utf8               levelDirectory
+   #28 = Utf8               Lnet/minecraft/world/level/storage/LevelStorageSource$LevelDirectory;
+   #29 = Methodref          #30.#31       // net/minecraft/world/level/storage/LevelStorageSource$LevelDirectory.path:()Ljava/nio/file/Path;
+   #30 = Class              #32           // net/minecraft/world/level/storage/LevelStorageSource$LevelDirectory
+   #31 = NameAndType        #33:#34       // path:()Ljava/nio/file/Path;
+   #32 = Utf8               net/minecraft/world/level/storage/LevelStorageSource$LevelDirectory
+   #33 = Utf8               path
+   #34 = Utf8               ()Ljava/nio/file/Path;
+   #35 = String             #36           // level
+   #36 = Utf8               level
+   #37 = String             #38           // .dat
+   #38 = Utf8               .dat
+   #39 = Class              #40           // java/nio/file/attribute/FileAttribute
+   #40 = Utf8               java/nio/file/attribute/FileAttribute
+   #41 = Methodref          #42.#43       // java/nio/file/Files.createTempFile:(Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/String;[Ljava/nio/file/attribute/FileAttribute;)Ljava/nio/file/Path;
+   #42 = Class              #44           // java/nio/file/Files
+   #43 = NameAndType        #45:#46       // createTempFile:(Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/String;[Ljava/nio/file/attribute/FileAttribute;)Ljava/nio/file/Path;
+   #44 = Utf8               java/nio/file/Files
+   #45 = Utf8               createTempFile
+   #46 = Utf8               (Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/String;[Ljava/nio/file/attribute/FileAttribute;)Ljava/nio/file/Path;
+   #47 = Methodref          #48.#49       // net/minecraft/nbt/NbtIo.writeCompressed:(Lnet/minecraft/nbt/CompoundTag;Ljava/nio/file/Path;)V
+   #48 = Class              #50           // net/minecraft/nbt/NbtIo
+   #49 = NameAndType        #51:#52       // writeCompressed:(Lnet/minecraft/nbt/CompoundTag;Ljava/nio/file/Path;)V
+   #50 = Utf8               net/minecraft/nbt/NbtIo
+   #51 = Utf8               writeCompressed
+   #52 = Utf8               (Lnet/minecraft/nbt/CompoundTag;Ljava/nio/file/Path;)V
+   #53 = Methodref          #30.#54       // net/minecraft/world/level/storage/LevelStorageSource$LevelDirectory.oldDataFile:()Ljava/nio/file/Path;
+   #54 = NameAndType        #55:#34       // oldDataFile:()Ljava/nio/file/Path;
+   #55 = Utf8               oldDataFile
+   #56 = Methodref          #30.#57       // net/minecraft/world/level/storage/LevelStorageSource$LevelDirectory.dataFile:()Ljava/nio/file/Path;
+   #57 = NameAndType        #58:#34       // dataFile:()Ljava/nio/file/Path;
+   #58 = Utf8               dataFile
+   #59 = Methodref          #60.#61       // net/minecraft/Util.safeReplaceFile:(Ljava/nio/file/Path;Ljava/nio/file/Path;Ljava/nio/file/Path;)V
+   #60 = Class              #62           // net/minecraft/Util
+   #61 = NameAndType        #63:#64       // safeReplaceFile:(Ljava/nio/file/Path;Ljava/nio/file/Path;Ljava/nio/file/Path;)V
+   #62 = Utf8               net/minecraft/Util
+   #63 = Utf8               safeReplaceFile
+   #64 = Utf8               (Ljava/nio/file/Path;Ljava/nio/file/Path;Ljava/nio/file/Path;)V
+   #65 = Class              #66           // java/lang/Exception
+   #66 = Utf8               java/lang/Exception
+   #67 = Fieldref           #8.#68        // com/fastasyncworldsave/FastAsyncWorldSave.LOGGER:Lorg/apache/logging/log4j/Logger;
+   #68 = NameAndType        #69:#70       // LOGGER:Lorg/apache/logging/log4j/Logger;
+   #69 = Utf8               LOGGER
+   #70 = Utf8               Lorg/apache/logging/log4j/Logger;
+   #71 = Methodref          #72.#73       // java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+   #72 = Class              #74           // java/lang/String
+   #73 = NameAndType        #75:#76       // valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+   #74 = Utf8               java/lang/String
+   #75 = Utf8               valueOf
+   #76 = Utf8               (Ljava/lang/Object;)Ljava/lang/String;
+   #77 = InvokeDynamic      #1:#78        // #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+   #78 = NameAndType        #79:#80       // makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+   #79 = Utf8               makeConcatWithConstants
+   #80 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+   #81 = InterfaceMethodref #82.#83       // org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+   #82 = Class              #84           // org/apache/logging/log4j/Logger
+   #83 = NameAndType        #85:#86       // error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+   #84 = Utf8               org/apache/logging/log4j/Logger
+   #85 = Utf8               error
+   #86 = Utf8               (Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+   #87 = Utf8               RuntimeVisibleAnnotations
+   #88 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #89 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+   #90 = Utf8               Code
+   #91 = Utf8               LineNumberTable
+   #92 = Utf8               LocalVariableTable
+   #93 = Utf8               this
+   #94 = Utf8               Lcom/fastasyncworldsave/mixin/LevelStorageSourceMixin;
+   #95 = Utf8               saveLevelData
+   #96 = Utf8               (Lnet/minecraft/nbt/CompoundTag;)V
+   #97 = Utf8               compoundtag1
+   #98 = Utf8               Lnet/minecraft/nbt/CompoundTag;
+   #99 = Utf8               Lorg/spongepowered/asm/mixin/Overwrite;
+  #100 = Utf8               lambda$saveLevelData$0
+  #101 = Utf8               path1
+  #102 = Utf8               Ljava/nio/file/Path;
+  #103 = Utf8               path2
+  #104 = Utf8               path3
+  #105 = Utf8               e
+  #106 = Utf8               Ljava/lang/Exception;
+  #107 = Utf8               StackMapTable
+  #108 = Class              #109          // net/minecraft/nbt/CompoundTag
+  #109 = Utf8               net/minecraft/nbt/CompoundTag
+  #110 = Class              #111          // java/nio/file/Path
+  #111 = Utf8               java/nio/file/Path
+  #112 = Utf8               SourceFile
+  #113 = Utf8               LevelStorageSourceMixin.java
+  #114 = Utf8               RuntimeInvisibleAnnotations
+  #115 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #116 = Utf8               value
+  #117 = Utf8               Lnet/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess;
+  #118 = Utf8               BootstrapMethods
+  #119 = MethodType         #6            //  ()V
+  #120 = MethodHandle       5:#121        // REF_invokeVirtual com/fastasyncworldsave/mixin/LevelStorageSourceMixin.lambda$saveLevelData$0:(Lnet/minecraft/nbt/CompoundTag;)V
+  #121 = Methodref          #24.#122      // com/fastasyncworldsave/mixin/LevelStorageSourceMixin.lambda$saveLevelData$0:(Lnet/minecraft/nbt/CompoundTag;)V
+  #122 = NameAndType        #100:#96      // lambda$saveLevelData$0:(Lnet/minecraft/nbt/CompoundTag;)V
+  #123 = String             #124          // Failed to save level {} data:\u0001
+  #124 = Utf8               Failed to save level {} data:\u0001
+  #125 = MethodHandle       6:#126        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #126 = Methodref          #127.#128     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #127 = Class              #129          // java/lang/invoke/LambdaMetafactory
+  #128 = NameAndType        #130:#131     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #129 = Utf8               java/lang/invoke/LambdaMetafactory
+  #130 = Utf8               metafactory
+  #131 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #132 = MethodHandle       6:#133        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #133 = Methodref          #134.#135     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #134 = Class              #136          // java/lang/invoke/StringConcatFactory
+  #135 = NameAndType        #79:#137      // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #136 = Utf8               java/lang/invoke/StringConcatFactory
+  #137 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #138 = Utf8               InnerClasses
+  #139 = Class              #140          // net/minecraft/world/level/storage/LevelStorageSource
+  #140 = Utf8               net/minecraft/world/level/storage/LevelStorageSource
+  #141 = Utf8               LevelDirectory
+  #142 = Class              #143          // net/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess
+  #143 = Utf8               net/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess
+  #144 = Utf8               LevelStorageAccess
+  #145 = Class              #146          // java/lang/invoke/MethodHandles$Lookup
+  #146 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #147 = Class              #148          // java/lang/invoke/MethodHandles
+  #148 = Utf8               java/lang/invoke/MethodHandles
+  #149 = Utf8               Lookup
+{
+  public net.minecraft.world.level.storage.LevelStorageSource$LevelDirectory levelDirectory;
+    descriptor: Lnet/minecraft/world/level/storage/LevelStorageSource$LevelDirectory;
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #88()
+        org.spongepowered.asm.mixin.Shadow
+      1: #89()
+        org.spongepowered.asm.mixin.Final
+
+  public com.fastasyncworldsave.mixin.LevelStorageSourceMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 17: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/fastasyncworldsave/mixin/LevelStorageSourceMixin;
+
+  private void saveLevelData(net.minecraft.nbt.CompoundTag);
+    descriptor: (Lnet/minecraft/nbt/CompoundTag;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=2, args_size=2
+         0: getstatic     #7                  // Field com/fastasyncworldsave/FastAsyncWorldSave.threadPool:Ljava/util/concurrent/ExecutorService;
+         3: aload_0
+         4: aload_1
+         5: invokedynamic #13,  0             // InvokeDynamic #0:run:(Lcom/fastasyncworldsave/mixin/LevelStorageSourceMixin;Lnet/minecraft/nbt/CompoundTag;)Ljava/lang/Runnable;
+        10: invokeinterface #17,  2           // InterfaceMethod java/util/concurrent/ExecutorService.submit:(Ljava/lang/Runnable;)Ljava/util/concurrent/Future;
+        15: pop
+        16: return
+      LineNumberTable:
+        line 30: 0
+        line 46: 16
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      17     0  this   Lcom/fastasyncworldsave/mixin/LevelStorageSourceMixin;
+            0      17     1 compoundtag1   Lnet/minecraft/nbt/CompoundTag;
+    RuntimeVisibleAnnotations:
+      0: #99()
+        org.spongepowered.asm.mixin.Overwrite
+
+  private void lambda$saveLevelData$0(net.minecraft.nbt.CompoundTag);
+    descriptor: (Lnet/minecraft/nbt/CompoundTag;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=6, args_size=2
+         0: aload_0
+         1: getfield      #23                 // Field levelDirectory:Lnet/minecraft/world/level/storage/LevelStorageSource$LevelDirectory;
+         4: invokevirtual #29                 // Method net/minecraft/world/level/storage/LevelStorageSource$LevelDirectory.path:()Ljava/nio/file/Path;
+         7: astore_2
+         8: aload_2
+         9: ldc           #35                 // String level
+        11: ldc           #37                 // String .dat
+        13: iconst_0
+        14: anewarray     #39                 // class java/nio/file/attribute/FileAttribute
+        17: invokestatic  #41                 // Method java/nio/file/Files.createTempFile:(Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/String;[Ljava/nio/file/attribute/FileAttribute;)Ljava/nio/file/Path;
+        20: astore_3
+        21: aload_1
+        22: aload_3
+        23: invokestatic  #47                 // Method net/minecraft/nbt/NbtIo.writeCompressed:(Lnet/minecraft/nbt/CompoundTag;Ljava/nio/file/Path;)V
+        26: aload_0
+        27: getfield      #23                 // Field levelDirectory:Lnet/minecraft/world/level/storage/LevelStorageSource$LevelDirectory;
+        30: invokevirtual #53                 // Method net/minecraft/world/level/storage/LevelStorageSource$LevelDirectory.oldDataFile:()Ljava/nio/file/Path;
+        33: astore        4
+        35: aload_0
+        36: getfield      #23                 // Field levelDirectory:Lnet/minecraft/world/level/storage/LevelStorageSource$LevelDirectory;
+        39: invokevirtual #56                 // Method net/minecraft/world/level/storage/LevelStorageSource$LevelDirectory.dataFile:()Ljava/nio/file/Path;
+        42: astore        5
+        44: aload         5
+        46: aload_3
+        47: aload         4
+        49: invokestatic  #59                 // Method net/minecraft/Util.safeReplaceFile:(Ljava/nio/file/Path;Ljava/nio/file/Path;Ljava/nio/file/Path;)V
+        52: goto          75
+        55: astore_3
+        56: getstatic     #67                 // Field com/fastasyncworldsave/FastAsyncWorldSave.LOGGER:Lorg/apache/logging/log4j/Logger;
+        59: aload_1
+        60: invokestatic  #71                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        63: invokedynamic #77,  0             // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        68: aload_2
+        69: aload_3
+        70: invokeinterface #81,  4           // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+        75: return
+      Exception table:
+         from    to  target type
+             8    52    55   Class java/lang/Exception
+      LineNumberTable:
+        line 31: 0
+        line 35: 8
+        line 36: 21
+        line 37: 26
+        line 38: 35
+        line 39: 44
+        line 44: 52
+        line 41: 55
+        line 43: 56
+        line 45: 75
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           21      31     3 path1   Ljava/nio/file/Path;
+           35      17     4 path2   Ljava/nio/file/Path;
+           44       8     5 path3   Ljava/nio/file/Path;
+           56      19     3     e   Ljava/lang/Exception;
+            0      76     0  this   Lcom/fastasyncworldsave/mixin/LevelStorageSourceMixin;
+            0      76     1 compoundtag1   Lnet/minecraft/nbt/CompoundTag;
+            8      68     2  path   Ljava/nio/file/Path;
+      StackMapTable: number_of_entries = 2
+        frame_type = 255 /* full_frame */
+          offset_delta = 55
+          locals = [ class com/fastasyncworldsave/mixin/LevelStorageSourceMixin, class net/minecraft/nbt/CompoundTag, class java/nio/file/Path ]
+          stack = [ class java/lang/Exception ]
+        frame_type = 19 /* same */
+}
+SourceFile: "LevelStorageSourceMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #115(#116=[c#117])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess;]
+    )
+BootstrapMethods:
+  0: #125 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #119 ()V
+      #120 REF_invokeVirtual com/fastasyncworldsave/mixin/LevelStorageSourceMixin.lambda$saveLevelData$0:(Lnet/minecraft/nbt/CompoundTag;)V
+      #119 ()V
+  1: #132 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #123 Failed to save level {} data:\u0001
+InnerClasses:
+  public static final #141= #30 of #139;  // LevelDirectory=class net/minecraft/world/level/storage/LevelStorageSource$LevelDirectory of class net/minecraft/world/level/storage/LevelStorageSource
+  public #144= #142 of #139;              // LevelStorageAccess=class net/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess of class net/minecraft/world/level/storage/LevelStorageSource
+  public static final #149= #145 of #147; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
