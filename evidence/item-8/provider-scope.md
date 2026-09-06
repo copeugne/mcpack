@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 131 of 136. The exact queue below has 5 open rows.
+Supported provider dispositions: 132 of 136. The exact queue below has 4 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -673,7 +673,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `lootintegrations-1.21.1-4.7.jar` | `lootintegrations-provider` (47047d6), test_small_utility_provider_scope.py | RESOLVED: Core integration loader and loot-list modifier, 43 definitions and seven chest-table targets. No independent family; remains a required loot-attribute input. See disposition below. |
 | `mca-neoforge-7.7.11+1.21.1.jar` | Sources 28273db and bd25ce8; test_mca_provider_scope.py | RESOLVED: Existing-village recognition, villager replacement, entity/interaction behavior and structure location. No independent family. See MCA disposition below. |
 | `moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar` | Eight capture directories bound by test_moog_library_provider_scope.py; latest registration boundaries ee8e2c0. | RESOLVED: shared generation and modification library; no independent authored family or packaged generation resources. See Moog library provider disposition below. |
-| `moonlight-neoforge-1.21.1-3.0.17.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `moonlight-neoforge-1.21.1-3.0.17.jar` | Six Moonlight source increments and reused supplementaries-shared-plugin | RESOLVED: consumer APIs and existing-structure spawn-box components; no independent family. See Moonlight closure below. |
 | `naturalist-1.0.2-neoforge-1.21.1.jar` | `naturalist-provider` (9682cb0), test_naturalist_provider_scope.py | RESOLVED: Mob spawning, existing entity/item/crop behavior and client spawn-egg resources. No independent structure family. Full disposition below. |
 | `oceansdelight-neoforge-1.0.4-1.21.1.jar` | `oceansdelight-provider` (2b575d8), test_oceansdelight_provider_scope.py | RESOLVED: Food content and four existing aquatic-mob loot declarations; no independent family. See Ocean's Delight disposition below. |
 | `owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -8300,3 +8300,64 @@ Both focused cases pass. Ruff first flagged one long assertion; it was wrapped,
 and scoped Ruff and Basedpyright pass. Whole providers: 131 resolved, 5 open.
 Working groups remain 410 and explicit provisional Moog decisions remain 100.
 Final canonical reconciliation, attributes and Item 8 acceptance remain open.
+
+## Moonlight provider closure
+
+The retained archive SHA-256 is
+41bbe274c689ef4229892b6e46da57d27dce34a40fe7e2de0c230cd0e2bc0e98.
+Its 684 classes include two automatic entries. Both mixin configurations are
+accounted for: 43 common/platform hooks, 18 client hooks, and one plugin inheriting
+already-preserved SimpleMixinPlugin. No nested archives, NBT templates or services
+are packaged. Data contains 17 soft-fluid descriptions, one empty generic map
+marker definition, one reload token, five color sets and five tag files. None is
+an independent structure definition or template.
+
+Sources 10f33521, 7ef8cd70, 582434ee, 96d6605e, 944483ae and 06fe6e74 preserve
+55 classes. Reuse supplementaries-shared-plugin for the inherited plugin instead
+of recapturing it. The focused binding covers all 56 captured classes together.
+
+MoonlightRegistry registers consumer placement filters, loot entry/condition
+types, trades and saved-data registries, items, data components and a schedule.
+Its spawn-box block, block entity, pool element and piece are one component path.
+JigsawPlacementMixin obtains those pieces from marker blocks in an existing
+single template (or the first single element of a list) and appends their bounds.
+SpawnBoxStructurePiece.place immediately returns without placing blocks.
+JigsawCodecWithExtra adds spawn-box settings to an existing jigsaw definition;
+ChunkGeneratorMixin asks an existing ISpecialSpawnsStructure for its spawn list.
+Template and jigsaw replacement hooks replace authored marker blocks with their
+final states. These pieces and settings must not be counted as extra families.
+Their effects belong to consuming families' mob/spawn attributes.
+
+The dynamic resource wrapper posts an early reload event. DynamicResourcesInternals
+starts with empty provider/generator collections and runs consumer registrations;
+RegHelperImpl likewise drains a caller-populated initialization queue. Moonlight's
+common initialization installs config, trade, color, fluid, map, network and
+consumer event facilities. Its global datapack folder is an external pack source,
+not bundled authored content or evidence that an extra pack was selected.
+ModLootModifiers registers add/replace-item codec types, not a populated loot
+modifier payload. External consumers remain attributed through their own providers.
+
+The other hooks handle existing blocks and entities: optional block entities,
+item placement, grindstone triggers, inventory death events, lightning/fire,
+piston movement, bee pollination, shearing, extinguishing, fake-level support,
+villager AI callbacks, teleport history, configuration/resource conditions and
+map/debug data. The place-structure command hook only sends debug information
+about the structure already placed. Map data and packet hooks manage markers and
+synchronization, not site generation. Client hooks and the client fluid helper
+support rendering and resource handling. No independent Moonlight family is added.
+Stop generic map, network, recipe, trade and helper tracing here. This does not
+claim general compatibility, correctness of every utility, or gameplay acceptance.
+
+All six new captures reproduce exactly in their independent r1 directories.
+Their READMEs retain extraction commands and identity hashes. Focused validation:
+
+```sh
+uv run pytest -q tests/item8/test_moonlight_provider_scope.py
+uv run ruff check tests/item8/test_moonlight_provider_scope.py tools/inspect_item8_pool_elements.py
+uv run basedpyright tests/item8/test_moonlight_provider_scope.py tools/inspect_item8_pool_elements.py
+```
+
+One focused case and scoped Ruff/Basedpyright pass. Whole providers: 132 resolved,
+4 open. Working groups remain 410 and explicit provisional Moog decisions remain
+100. Canonical reconciliation, required attributes and final Item 8 acceptance
+remain incomplete.
