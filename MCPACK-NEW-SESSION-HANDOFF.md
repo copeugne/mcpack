@@ -6,6 +6,34 @@
 
 ### Continuation update - 2026-09-06
 
+Big Cannons membership is resolved with no independent generated family. Reuse
+seven captures ending at 38af6929 and b67e8d0b (62 classes). Shared world-load
+and tick paths operate existing partial-block damage; registrations and hooks
+supply player equipment, cannon assembly and projectile effects. All captures
+reproduce exactly; the focused binding test and scoped quality checks pass.
+Whole providers: 127 resolved, 9 open. Working groups remain 410 and explicit
+provisional Moog decisions remain 100. Stop generic cannon/network/physics/
+serializer tracing. Next remaining provider is Create Diesel Generators.
+Canonical reconciliation precedes detailed attributes; Item 8 final acceptance,
+clean review and main merge remain open.
+
+
+Big Cannons membership inspection is in progress, not resolved. Reuse delivered
+cbc-entries at 5c75167e (five classes) and cbc-hooks at 6444274f (32 common and
+conditional mixins), plus cbc-startup from extractor 09d40238 (three classes).
+All captures reproduce exactly. The archive has 855 classes, no nested JARs,
+and 29 NBT assets under its Ponder tutorial directory. Direct startup names
+machine/item/fluid/entity/recipe registries and common event registration.
+Next inspect CBCCommonEvents, particularly level-load/tick and reload listeners,
+and account for the named registration targets. Do not restart captured entry
+or hook extraction. Preserve the distinction between cannon contraption assembly
+and independently generated authored families. Whole providers remain 126
+resolved, 10 open; working groups 410; explicit provisional Moog decisions 100.
+The final canonical list, attributes, final gate, review and main merge remain
+incomplete. An initial ref lookup mistyped codex as codexex; the corrected lookup
+confirmed the branch and upstream matched before changes.
+
+
 Create Enchantment Industry membership is resolved with no independent family.
 Reuse source increments 7f3f848b, 75fd1607, c4e39444 and f02b44f4 (47 classes)
 and the existing Create Dragons Plus plugin/library evidence. All captures
