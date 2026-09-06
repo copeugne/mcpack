@@ -5786,7 +5786,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-message-api-v1-6.0.14+6a754fce19.jar` | RESOLVED: Empty initializer and chat callbacks; source 1e30004. No independent family. |
 | `fabric-model-loading-api-v1-2.1.0+6e8f52c719.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
 | `fabric-networking-api-v1-4.3.0+30a980d919.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-object-builder-api-v1-15.2.1+cc242efd19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-object-builder-api-v1-15.2.1+cc242efd19.jar` | RESOLVED: Empty initializer and supplied object/type support. Source 0fa369a; no independent family. |
 | `fabric-particles-v1-4.0.2+824f924c19.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
 | `fabric-recipe-api-v1-5.0.15+59440bcc19.jar` | RESOLVED: Ingredient serializer registration and NeoForge ingredient-wrapper codecs; no independent family. See final loot/recipe/rule disposition below. |
 | `fabric-registry-sync-v0-5.3.1+f9aace1619.jar` | OPEN: inspect entry and declared hook contribution roles. |
@@ -6531,3 +6531,26 @@ family's eligibility evidence; this membership disposition does not assert they
 pass. Fabric now has 36 resolved modules and seven open. Whole providers remain
 90 resolved and 46 open. No family-list change. Continue the remaining named
 module/provider checks and canonical grouping before detailed attributes.
+
+### Fabric object-builder membership resolved
+
+Source 0fa369a preserves the empty initializer and eleven common hooks. They
+expose block properties, extend supplied entity/block-entity builders and type
+collections, copy existing attribute maps, forward comparator calculations for
+existing minecarts, handle nullable saved-data fix types and suppress empty
+trade results. These hooks and the caller-facing builder APIs do not introduce
+an independent authored layout. The module contains no packaged generation data.
+
+The existing test binds all 44 classes, the sole automatic entry, eleven hooks,
+access transformer and exact metadata/icon payload. Its declared mixin filename
+is fabric-object-builder-v1.mixins.json, without the archive name's api segment;
+that exact difference is now accounted for in the existing path. All 38 focused
+Fabric cases and scoped Ruff/Basedpyright pass using the commands above.
+Fabric: 37 resolved modules, six open. Whole providers: 90 resolved, 46 open.
+No family-list change.
+
+Interaction source e030cd8 and item source 4ddacfa are delivered and independently
+reproduce byte for byte. They remain open at InteractionEventsRouter.onInitialize
+and the item RegistryLoaderMixin's EnchantmentUtil delegate respectively. Reuse
+their other entry/hook captures. These are named remaining calls, not completed
+provider dispositions or permission to audit unrelated gameplay internals.
