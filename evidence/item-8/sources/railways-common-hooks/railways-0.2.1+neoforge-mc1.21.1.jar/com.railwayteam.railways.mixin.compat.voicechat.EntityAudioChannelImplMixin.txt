@@ -1,0 +1,251 @@
+Classfile railways-0.2.1+neoforge-mc1.21.1.jar!/com/railwayteam/railways/mixin/compat/voicechat/EntityAudioChannelImplMixin.class
+  Last modified Jun 1, 2026; size 3364 bytes
+  SHA-256 checksum 8c385d78b38cfe175d930118ee7381d34b2b5949d9cda3bd9da4d576634bd54b
+  Compiled from "EntityAudioChannelImplMixin.java"
+public class com.railwayteam.railways.mixin.compat.voicechat.EntityAudioChannelImplMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #45                         // com/railwayteam/railways/mixin/compat/voicechat/EntityAudioChannelImplMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 3, attributes: 3
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Class              #8             // net/minecraft/server/level/ServerPlayer
+   #8 = Utf8               net/minecraft/server/level/ServerPlayer
+   #9 = Methodref          #10.#11        // com/railwayteam/railways/content/conductor/ConductorPossessionController.isPossessingConductor:(Lnet/minecraft/world/entity/Entity;)Z
+  #10 = Class              #12            // com/railwayteam/railways/content/conductor/ConductorPossessionController
+  #11 = NameAndType        #13:#14        // isPossessingConductor:(Lnet/minecraft/world/entity/Entity;)Z
+  #12 = Utf8               com/railwayteam/railways/content/conductor/ConductorPossessionController
+  #13 = Utf8               isPossessingConductor
+  #14 = Utf8               (Lnet/minecraft/world/entity/Entity;)Z
+  #15 = Methodref          #7.#16         // net/minecraft/server/level/ServerPlayer.getCamera:()Lnet/minecraft/world/entity/Entity;
+  #16 = NameAndType        #17:#18        // getCamera:()Lnet/minecraft/world/entity/Entity;
+  #17 = Utf8               getCamera
+  #18 = Utf8               ()Lnet/minecraft/world/entity/Entity;
+  #19 = Methodref          #20.#21        // net/minecraft/world/entity/Entity.getEyePosition:()Lnet/minecraft/world/phys/Vec3;
+  #20 = Class              #22            // net/minecraft/world/entity/Entity
+  #21 = NameAndType        #23:#24        // getEyePosition:()Lnet/minecraft/world/phys/Vec3;
+  #22 = Utf8               net/minecraft/world/entity/Entity
+  #23 = Utf8               getEyePosition
+  #24 = Utf8               ()Lnet/minecraft/world/phys/Vec3;
+  #25 = InterfaceMethodref #26.#27        // com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+  #26 = Class              #28            // com/llamalad7/mixinextras/injector/wrapoperation/Operation
+  #27 = NameAndType        #29:#30        // call:([Ljava/lang/Object;)Ljava/lang/Object;
+  #28 = Utf8               com/llamalad7/mixinextras/injector/wrapoperation/Operation
+  #29 = Utf8               call
+  #30 = Utf8               ([Ljava/lang/Object;)Ljava/lang/Object;
+  #31 = Class              #32            // net/minecraft/world/phys/Vec3
+  #32 = Utf8               net/minecraft/world/phys/Vec3
+  #33 = InterfaceMethodref #34.#35        // de/maxhenkel/voicechat/api/Entity.getEntity:()Ljava/lang/Object;
+  #34 = Class              #36            // de/maxhenkel/voicechat/api/Entity
+  #35 = NameAndType        #37:#38        // getEntity:()Ljava/lang/Object;
+  #36 = Utf8               de/maxhenkel/voicechat/api/Entity
+  #37 = Utf8               getEntity
+  #38 = Utf8               ()Ljava/lang/Object;
+  #39 = Methodref          #20.#40        // net/minecraft/world/entity/Entity.getUUID:()Ljava/util/UUID;
+  #40 = NameAndType        #41:#42        // getUUID:()Ljava/util/UUID;
+  #41 = Utf8               getUUID
+  #42 = Utf8               ()Ljava/util/UUID;
+  #43 = Class              #44            // java/util/UUID
+  #44 = Utf8               java/util/UUID
+  #45 = Class              #46            // com/railwayteam/railways/mixin/compat/voicechat/EntityAudioChannelImplMixin
+  #46 = Utf8               com/railwayteam/railways/mixin/compat/voicechat/EntityAudioChannelImplMixin
+  #47 = Utf8               Code
+  #48 = Utf8               LineNumberTable
+  #49 = Utf8               LocalVariableTable
+  #50 = Utf8               this
+  #51 = Utf8               Lcom/railwayteam/railways/mixin/compat/voicechat/EntityAudioChannelImplMixin;
+  #52 = Utf8               useConductorSpyPosition
+  #53 = Utf8               (Lnet/minecraft/world/entity/Entity;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Lnet/minecraft/world/phys/Vec3;
+  #54 = Utf8               serverPlayer
+  #55 = Utf8               Lnet/minecraft/server/level/ServerPlayer;
+  #56 = Utf8               instance
+  #57 = Utf8               Lnet/minecraft/world/entity/Entity;
+  #58 = Utf8               original
+  #59 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+  #60 = Utf8               LocalVariableTypeTable
+  #61 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/phys/Vec3;>;
+  #62 = Utf8               StackMapTable
+  #63 = Utf8               Signature
+  #64 = Utf8               (Lnet/minecraft/world/entity/Entity;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/phys/Vec3;>;)Lnet/minecraft/world/phys/Vec3;
+  #65 = Utf8               RuntimeVisibleAnnotations
+  #66 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/WrapOperation;
+  #67 = Utf8               method
+  #68 = Utf8               broadcast
+  #69 = Utf8               at
+  #70 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #71 = Utf8               value
+  #72 = Utf8               INVOKE
+  #73 = Utf8               target
+  #74 = Utf8               Lnet/minecraft/world/entity/Entity;getEyePosition()Lnet/minecraft/world/phys/Vec3;
+  #75 = Utf8               useConductorSpyUUID
+  #76 = Utf8               (Lde/maxhenkel/voicechat/api/Entity;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Ljava/util/UUID;
+  #77 = Utf8               Lde/maxhenkel/voicechat/api/Entity;
+  #78 = Utf8               entityObj
+  #79 = Utf8               Ljava/lang/Object;
+  #80 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/util/UUID;>;
+  #81 = Utf8               (Lde/maxhenkel/voicechat/api/Entity;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/util/UUID;>;)Ljava/util/UUID;
+  #82 = Utf8               send([B)V
+  #83 = Utf8               send(Lde/maxhenkel/voicechat/api/packets/MicrophonePacket;)V
+  #84 = Utf8               flush
+  #85 = Utf8               Lde/maxhenkel/voicechat/api/Entity;getUuid()Ljava/util/UUID;
+  #86 = Utf8               remap
+  #87 = Integer            0
+  #88 = Utf8               SourceFile
+  #89 = Utf8               EntityAudioChannelImplMixin.java
+  #90 = Utf8               Lcom/railwayteam/railways/annotation/mixin/ConditionalMixin;
+  #91 = Utf8               mods
+  #92 = Utf8               Lcom/railwayteam/railways/compat/Mods;
+  #93 = Utf8               VOICECHAT
+  #94 = Utf8               RuntimeInvisibleAnnotations
+  #95 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #96 = Utf8               targets
+  #97 = Utf8               de.maxhenkel.voicechat.plugins.impl.audiochannel.EntityAudioChannelImpl
+{
+  public com.railwayteam.railways.mixin.compat.voicechat.EntityAudioChannelImplMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 36: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/railwayteam/railways/mixin/compat/voicechat/EntityAudioChannelImplMixin;
+
+  private net.minecraft.world.phys.Vec3 useConductorSpyPosition(net.minecraft.world.entity.Entity, com.llamalad7.mixinextras.injector.wrapoperation.Operation<net.minecraft.world.phys.Vec3>);
+    descriptor: (Lnet/minecraft/world/entity/Entity;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Lnet/minecraft/world/phys/Vec3;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=4, args_size=3
+         0: aload_1
+         1: instanceof    #7                  // class net/minecraft/server/level/ServerPlayer
+         4: ifeq          27
+         7: aload_1
+         8: checkcast     #7                  // class net/minecraft/server/level/ServerPlayer
+        11: astore_3
+        12: aload_1
+        13: invokestatic  #9                  // Method com/railwayteam/railways/content/conductor/ConductorPossessionController.isPossessingConductor:(Lnet/minecraft/world/entity/Entity;)Z
+        16: ifeq          27
+        19: aload_3
+        20: invokevirtual #15                 // Method net/minecraft/server/level/ServerPlayer.getCamera:()Lnet/minecraft/world/entity/Entity;
+        23: invokevirtual #19                 // Method net/minecraft/world/entity/Entity.getEyePosition:()Lnet/minecraft/world/phys/Vec3;
+        26: areturn
+        27: aload_2
+        28: iconst_1
+        29: anewarray     #2                  // class java/lang/Object
+        32: dup
+        33: iconst_0
+        34: aload_1
+        35: aastore
+        36: invokeinterface #25,  2           // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        41: checkcast     #31                 // class net/minecraft/world/phys/Vec3
+        44: areturn
+      LineNumberTable:
+        line 39: 0
+        line 40: 19
+        line 42: 27
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           12      15     3 serverPlayer   Lnet/minecraft/server/level/ServerPlayer;
+            0      45     0  this   Lcom/railwayteam/railways/mixin/compat/voicechat/EntityAudioChannelImplMixin;
+            0      45     1 instance   Lnet/minecraft/world/entity/Entity;
+            0      45     2 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      45     2 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/phys/Vec3;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 27 /* same */
+    Signature: #64                          // (Lnet/minecraft/world/entity/Entity;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/phys/Vec3;>;)Lnet/minecraft/world/phys/Vec3;
+    RuntimeVisibleAnnotations:
+      0: #66(#67=[s#68],#69=[@#70(#71=s#72,#73=s#74)])
+        com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation(
+          method=["broadcast"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/entity/Entity;getEyePosition()Lnet/minecraft/world/phys/Vec3;"
+          )]
+        )
+
+  private java.util.UUID useConductorSpyUUID(de.maxhenkel.voicechat.api.Entity, com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.util.UUID>);
+    descriptor: (Lde/maxhenkel/voicechat/api/Entity;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Ljava/util/UUID;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=5, args_size=3
+         0: aload_1
+         1: invokeinterface #33,  1           // InterfaceMethod de/maxhenkel/voicechat/api/Entity.getEntity:()Ljava/lang/Object;
+         6: astore_3
+         7: aload_3
+         8: instanceof    #7                  // class net/minecraft/server/level/ServerPlayer
+        11: ifeq          37
+        14: aload_3
+        15: checkcast     #7                  // class net/minecraft/server/level/ServerPlayer
+        18: astore        4
+        20: aload         4
+        22: invokestatic  #9                  // Method com/railwayteam/railways/content/conductor/ConductorPossessionController.isPossessingConductor:(Lnet/minecraft/world/entity/Entity;)Z
+        25: ifeq          37
+        28: aload         4
+        30: invokevirtual #15                 // Method net/minecraft/server/level/ServerPlayer.getCamera:()Lnet/minecraft/world/entity/Entity;
+        33: invokevirtual #39                 // Method net/minecraft/world/entity/Entity.getUUID:()Ljava/util/UUID;
+        36: areturn
+        37: aload_2
+        38: iconst_1
+        39: anewarray     #2                  // class java/lang/Object
+        42: dup
+        43: iconst_0
+        44: aload_1
+        45: aastore
+        46: invokeinterface #25,  2           // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        51: checkcast     #43                 // class java/util/UUID
+        54: areturn
+      LineNumberTable:
+        line 52: 0
+        line 53: 7
+        line 54: 28
+        line 56: 37
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           20      17     4 serverPlayer   Lnet/minecraft/server/level/ServerPlayer;
+            0      55     0  this   Lcom/railwayteam/railways/mixin/compat/voicechat/EntityAudioChannelImplMixin;
+            0      55     1 instance   Lde/maxhenkel/voicechat/api/Entity;
+            0      55     2 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+            7      48     3 entityObj   Ljava/lang/Object;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      55     2 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/util/UUID;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 37
+          locals = [ class java/lang/Object ]
+    Signature: #81                          // (Lde/maxhenkel/voicechat/api/Entity;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/util/UUID;>;)Ljava/util/UUID;
+    RuntimeVisibleAnnotations:
+      0: #66(#67=[s#82,s#83,s#84],#69=[@#70(#71=s#72,#73=s#85)],#86=Z#87)
+        com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation(
+          method=["send([B)V","send(Lde/maxhenkel/voicechat/api/packets/MicrophonePacket;)V","flush"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lde/maxhenkel/voicechat/api/Entity;getUuid()Ljava/util/UUID;"
+          )]
+          remap=false
+        )
+}
+SourceFile: "EntityAudioChannelImplMixin.java"
+RuntimeVisibleAnnotations:
+  0: #90(#91=[e#92.#93])
+    com.railwayteam.railways.annotation.mixin.ConditionalMixin(
+      mods=[Lcom/railwayteam/railways/compat/Mods;.VOICECHAT]
+    )
+RuntimeInvisibleAnnotations:
+  0: #95(#96=[s#97])
+    org.spongepowered.asm.mixin.Mixin(
+      targets=["de.maxhenkel.voicechat.plugins.impl.audiochannel.EntityAudioChannelImpl"]
+    )

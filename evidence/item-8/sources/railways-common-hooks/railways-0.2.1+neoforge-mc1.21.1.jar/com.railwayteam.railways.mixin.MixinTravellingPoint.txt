@@ -1,0 +1,231 @@
+Classfile railways-0.2.1+neoforge-mc1.21.1.jar!/com/railwayteam/railways/mixin/MixinTravellingPoint.class
+  Last modified Jun 1, 2026; size 4310 bytes
+  SHA-256 checksum 4f8fb8dddde3d84d1c0e0f6e8468df8a06883f19ddc88bdaf09b9c0d862db21b
+  Compiled from "MixinTravellingPoint.java"
+public class com.railwayteam.railways.mixin.MixinTravellingPoint
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #17                         // com/railwayteam/railways/mixin/MixinTravellingPoint
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 3, attributes: 3
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Fieldref           #8.#9          // com/railwayteam/railways/util/MixinVariables.trackEdgeTemporarilyFlipped:Z
+   #8 = Class              #10            // com/railwayteam/railways/util/MixinVariables
+   #9 = NameAndType        #11:#12        // trackEdgeTemporarilyFlipped:Z
+  #10 = Utf8               com/railwayteam/railways/util/MixinVariables
+  #11 = Utf8               trackEdgeTemporarilyFlipped
+  #12 = Utf8               Z
+  #13 = Fieldref           #8.#14         // com/railwayteam/railways/util/MixinVariables.trackEdgeCarriageTravelling:Z
+  #14 = NameAndType        #15:#12        // trackEdgeCarriageTravelling:Z
+  #15 = Utf8               trackEdgeCarriageTravelling
+  #16 = Fieldref           #17.#18        // com/railwayteam/railways/mixin/MixinTravellingPoint.edge:Lcom/simibubi/create/content/trains/graph/TrackEdge;
+  #17 = Class              #19            // com/railwayteam/railways/mixin/MixinTravellingPoint
+  #18 = NameAndType        #20:#21        // edge:Lcom/simibubi/create/content/trains/graph/TrackEdge;
+  #19 = Utf8               com/railwayteam/railways/mixin/MixinTravellingPoint
+  #20 = Utf8               edge
+  #21 = Utf8               Lcom/simibubi/create/content/trains/graph/TrackEdge;
+  #22 = InterfaceMethodref #23.#24        // com/railwayteam/railways/mixin_interfaces/ISwitchDisabledEdge.isAutomatic:(Lcom/simibubi/create/content/trains/graph/TrackEdge;)Z
+  #23 = Class              #25            // com/railwayteam/railways/mixin_interfaces/ISwitchDisabledEdge
+  #24 = NameAndType        #26:#27        // isAutomatic:(Lcom/simibubi/create/content/trains/graph/TrackEdge;)Z
+  #25 = Utf8               com/railwayteam/railways/mixin_interfaces/ISwitchDisabledEdge
+  #26 = Utf8               isAutomatic
+  #27 = Utf8               (Lcom/simibubi/create/content/trains/graph/TrackEdge;)Z
+  #28 = InterfaceMethodref #23.#29        // com/railwayteam/railways/mixin_interfaces/ISwitchDisabledEdge.isDisabled:(Lcom/simibubi/create/content/trains/graph/TrackEdge;)Z
+  #29 = NameAndType        #30:#27        // isDisabled:(Lcom/simibubi/create/content/trains/graph/TrackEdge;)Z
+  #30 = Utf8               isDisabled
+  #31 = InterfaceMethodref #23.#32        // com/railwayteam/railways/mixin_interfaces/ISwitchDisabledEdge.automaticallySelect:(Lcom/simibubi/create/content/trains/graph/TrackEdge;)V
+  #32 = NameAndType        #33:#34        // automaticallySelect:(Lcom/simibubi/create/content/trains/graph/TrackEdge;)V
+  #33 = Utf8               automaticallySelect
+  #34 = Utf8               (Lcom/simibubi/create/content/trains/graph/TrackEdge;)V
+  #35 = Utf8               RuntimeVisibleAnnotations
+  #36 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #37 = Utf8               Code
+  #38 = Utf8               LineNumberTable
+  #39 = Utf8               LocalVariableTable
+  #40 = Utf8               this
+  #41 = Utf8               Lcom/railwayteam/railways/mixin/MixinTravellingPoint;
+  #42 = Utf8               railways$flipEdgeCheck
+  #43 = Utf8               (Lcom/simibubi/create/content/trains/graph/TrackGraph;DLcom/simibubi/create/content/trains/entity/TravellingPoint$ITrackSelector;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IEdgePointListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$ITurnListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IPortalListener;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+  #44 = Utf8               graph
+  #45 = Utf8               Lcom/simibubi/create/content/trains/graph/TrackGraph;
+  #46 = Utf8               distance
+  #47 = Utf8               D
+  #48 = Utf8               trackSelector
+  #49 = Utf8               Lcom/simibubi/create/content/trains/entity/TravellingPoint$ITrackSelector;
+  #50 = Utf8               signalListener
+  #51 = Utf8               Lcom/simibubi/create/content/trains/entity/TravellingPoint$IEdgePointListener;
+  #52 = Utf8               turnListener
+  #53 = Utf8               Lcom/simibubi/create/content/trains/entity/TravellingPoint$ITurnListener;
+  #54 = Utf8               portalListener
+  #55 = Utf8               Lcom/simibubi/create/content/trains/entity/TravellingPoint$IPortalListener;
+  #56 = Utf8               cir
+  #57 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #58 = Utf8               LocalVariableTypeTable
+  #59 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Double;>;
+  #60 = Utf8               Signature
+  #61 = Utf8               (Lcom/simibubi/create/content/trains/graph/TrackGraph;DLcom/simibubi/create/content/trains/entity/TravellingPoint$ITrackSelector;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IEdgePointListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$ITurnListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IPortalListener;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Double;>;)V
+  #62 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #63 = Utf8               method
+  #64 = Utf8               travel(Lcom/simibubi/create/content/trains/graph/TrackGraph;DLcom/simibubi/create/content/trains/entity/TravellingPoint$ITrackSelector;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IEdgePointListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$ITurnListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IPortalListener;)D
+  #65 = Utf8               at
+  #66 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #67 = Utf8               value
+  #68 = Utf8               INVOKE
+  #69 = Utf8               target
+  #70 = Utf8               Lcom/simibubi/create/content/trains/graph/TrackGraph;getConnectionsFrom(Lcom/simibubi/create/content/trains/graph/TrackNode;)Ljava/util/Map;
+  #71 = Utf8               ordinal
+  #72 = Integer            2
+  #73 = Utf8               railways$selectEdge
+  #74 = Utf8               StackMapTable
+  #75 = Utf8               RETURN
+  #76 = Utf8               SourceFile
+  #77 = Utf8               MixinTravellingPoint.java
+  #78 = Utf8               RuntimeInvisibleAnnotations
+  #79 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #80 = Utf8               Lcom/simibubi/create/content/trains/entity/TravellingPoint;
+  #81 = Utf8               remap
+  #82 = Integer            0
+  #83 = Utf8               InnerClasses
+  #84 = Class              #85            // com/simibubi/create/content/trains/entity/TravellingPoint$ITrackSelector
+  #85 = Utf8               com/simibubi/create/content/trains/entity/TravellingPoint$ITrackSelector
+  #86 = Class              #87            // com/simibubi/create/content/trains/entity/TravellingPoint
+  #87 = Utf8               com/simibubi/create/content/trains/entity/TravellingPoint
+  #88 = Utf8               ITrackSelector
+  #89 = Class              #90            // com/simibubi/create/content/trains/entity/TravellingPoint$IEdgePointListener
+  #90 = Utf8               com/simibubi/create/content/trains/entity/TravellingPoint$IEdgePointListener
+  #91 = Utf8               IEdgePointListener
+  #92 = Class              #93            // com/simibubi/create/content/trains/entity/TravellingPoint$ITurnListener
+  #93 = Utf8               com/simibubi/create/content/trains/entity/TravellingPoint$ITurnListener
+  #94 = Utf8               ITurnListener
+  #95 = Class              #96            // com/simibubi/create/content/trains/entity/TravellingPoint$IPortalListener
+  #96 = Utf8               com/simibubi/create/content/trains/entity/TravellingPoint$IPortalListener
+  #97 = Utf8               IPortalListener
+{
+  public com.simibubi.create.content.trains.graph.TrackEdge edge;
+    descriptor: Lcom/simibubi/create/content/trains/graph/TrackEdge;
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #36()
+        org.spongepowered.asm.mixin.Shadow
+
+  public com.railwayteam.railways.mixin.MixinTravellingPoint();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 33: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/railwayteam/railways/mixin/MixinTravellingPoint;
+
+  private void railways$flipEdgeCheck(com.simibubi.create.content.trains.graph.TrackGraph, double, com.simibubi.create.content.trains.entity.TravellingPoint$ITrackSelector, com.simibubi.create.content.trains.entity.TravellingPoint$IEdgePointListener, com.simibubi.create.content.trains.entity.TravellingPoint$ITurnListener, com.simibubi.create.content.trains.entity.TravellingPoint$IPortalListener, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Double>);
+    descriptor: (Lcom/simibubi/create/content/trains/graph/TrackGraph;DLcom/simibubi/create/content/trains/entity/TravellingPoint$ITrackSelector;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IEdgePointListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$ITurnListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IPortalListener;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=9, args_size=8
+         0: iconst_1
+         1: putstatic     #7                  // Field com/railwayteam/railways/util/MixinVariables.trackEdgeTemporarilyFlipped:Z
+         4: return
+      LineNumberTable:
+        line 40: 0
+        line 41: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/railwayteam/railways/mixin/MixinTravellingPoint;
+            0       5     1 graph   Lcom/simibubi/create/content/trains/graph/TrackGraph;
+            0       5     2 distance   D
+            0       5     4 trackSelector   Lcom/simibubi/create/content/trains/entity/TravellingPoint$ITrackSelector;
+            0       5     5 signalListener   Lcom/simibubi/create/content/trains/entity/TravellingPoint$IEdgePointListener;
+            0       5     6 turnListener   Lcom/simibubi/create/content/trains/entity/TravellingPoint$ITurnListener;
+            0       5     7 portalListener   Lcom/simibubi/create/content/trains/entity/TravellingPoint$IPortalListener;
+            0       5     8   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       5     8   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Double;>;
+    Signature: #61                          // (Lcom/simibubi/create/content/trains/graph/TrackGraph;DLcom/simibubi/create/content/trains/entity/TravellingPoint$ITrackSelector;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IEdgePointListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$ITurnListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IPortalListener;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Double;>;)V
+    RuntimeVisibleAnnotations:
+      0: #62(#63=[s#64],#65=[@#66(#67=s#68,#69=s#70,#71=I#72)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["travel(Lcom/simibubi/create/content/trains/graph/TrackGraph;DLcom/simibubi/create/content/trains/entity/TravellingPoint$ITrackSelector;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IEdgePointListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$ITurnListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IPortalListener;)D"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lcom/simibubi/create/content/trains/graph/TrackGraph;getConnectionsFrom(Lcom/simibubi/create/content/trains/graph/TrackNode;)Ljava/util/Map;"
+            ordinal=2
+          )]
+        )
+
+  private void railways$selectEdge(com.simibubi.create.content.trains.graph.TrackGraph, double, com.simibubi.create.content.trains.entity.TravellingPoint$ITrackSelector, com.simibubi.create.content.trains.entity.TravellingPoint$IEdgePointListener, com.simibubi.create.content.trains.entity.TravellingPoint$ITurnListener, com.simibubi.create.content.trains.entity.TravellingPoint$IPortalListener, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Double>);
+    descriptor: (Lcom/simibubi/create/content/trains/graph/TrackGraph;DLcom/simibubi/create/content/trains/entity/TravellingPoint$ITrackSelector;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IEdgePointListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$ITurnListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IPortalListener;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=9, args_size=8
+         0: getstatic     #13                 // Field com/railwayteam/railways/util/MixinVariables.trackEdgeCarriageTravelling:Z
+         3: ifeq          40
+         6: aload_0
+         7: getfield      #16                 // Field edge:Lcom/simibubi/create/content/trains/graph/TrackEdge;
+        10: ifnull        40
+        13: aload_0
+        14: getfield      #16                 // Field edge:Lcom/simibubi/create/content/trains/graph/TrackEdge;
+        17: invokestatic  #22                 // InterfaceMethod com/railwayteam/railways/mixin_interfaces/ISwitchDisabledEdge.isAutomatic:(Lcom/simibubi/create/content/trains/graph/TrackEdge;)Z
+        20: ifeq          40
+        23: aload_0
+        24: getfield      #16                 // Field edge:Lcom/simibubi/create/content/trains/graph/TrackEdge;
+        27: invokestatic  #28                 // InterfaceMethod com/railwayteam/railways/mixin_interfaces/ISwitchDisabledEdge.isDisabled:(Lcom/simibubi/create/content/trains/graph/TrackEdge;)Z
+        30: ifeq          40
+        33: aload_0
+        34: getfield      #16                 // Field edge:Lcom/simibubi/create/content/trains/graph/TrackEdge;
+        37: invokestatic  #31                 // InterfaceMethod com/railwayteam/railways/mixin_interfaces/ISwitchDisabledEdge.automaticallySelect:(Lcom/simibubi/create/content/trains/graph/TrackEdge;)V
+        40: return
+      LineNumberTable:
+        line 48: 0
+        line 49: 13
+        line 50: 33
+        line 53: 40
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      41     0  this   Lcom/railwayteam/railways/mixin/MixinTravellingPoint;
+            0      41     1 graph   Lcom/simibubi/create/content/trains/graph/TrackGraph;
+            0      41     2 distance   D
+            0      41     4 trackSelector   Lcom/simibubi/create/content/trains/entity/TravellingPoint$ITrackSelector;
+            0      41     5 signalListener   Lcom/simibubi/create/content/trains/entity/TravellingPoint$IEdgePointListener;
+            0      41     6 turnListener   Lcom/simibubi/create/content/trains/entity/TravellingPoint$ITurnListener;
+            0      41     7 portalListener   Lcom/simibubi/create/content/trains/entity/TravellingPoint$IPortalListener;
+            0      41     8   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      41     8   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Double;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 40 /* same */
+    Signature: #61                          // (Lcom/simibubi/create/content/trains/graph/TrackGraph;DLcom/simibubi/create/content/trains/entity/TravellingPoint$ITrackSelector;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IEdgePointListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$ITurnListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IPortalListener;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Double;>;)V
+    RuntimeVisibleAnnotations:
+      0: #62(#63=[s#64],#65=[@#66(#67=s#75)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["travel(Lcom/simibubi/create/content/trains/graph/TrackGraph;DLcom/simibubi/create/content/trains/entity/TravellingPoint$ITrackSelector;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IEdgePointListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$ITurnListener;Lcom/simibubi/create/content/trains/entity/TravellingPoint$IPortalListener;)D"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+}
+SourceFile: "MixinTravellingPoint.java"
+RuntimeInvisibleAnnotations:
+  0: #79(#67=[c#80],#81=Z#82)
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lcom/simibubi/create/content/trains/entity/TravellingPoint;]
+      remap=false
+    )
+InnerClasses:
+  public static #88= #84 of #86;          // ITrackSelector=class com/simibubi/create/content/trains/entity/TravellingPoint$ITrackSelector of class com/simibubi/create/content/trains/entity/TravellingPoint
+  public static #91= #89 of #86;          // IEdgePointListener=class com/simibubi/create/content/trains/entity/TravellingPoint$IEdgePointListener of class com/simibubi/create/content/trains/entity/TravellingPoint
+  public static #94= #92 of #86;          // ITurnListener=class com/simibubi/create/content/trains/entity/TravellingPoint$ITurnListener of class com/simibubi/create/content/trains/entity/TravellingPoint
+  public static #97= #95 of #86;          // IPortalListener=class com/simibubi/create/content/trains/entity/TravellingPoint$IPortalListener of class com/simibubi/create/content/trains/entity/TravellingPoint
