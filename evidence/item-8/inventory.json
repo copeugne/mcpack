@@ -159051,7 +159051,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "0922e1d51ff3bfc577c6cf62c5b3022e93a6c73d8e847ee5807040cbfd935c44",
+    "evidence/item-8/family-decisions.json": "356d3291ca715d193faa866526d0791cc352f2c634de29383b010c7a615a225e",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -159078,6 +159078,31 @@
         "relationship": "One independent crashed-ship family. It reuses the vanilla End-city ship template, but its own placement and erosion generate a standalone wreck. The ship attached to minecraft:end_city remains a component of that city family. Rotation, erosion and biome occurrences do not create additional crashed-ship families.",
         "scope": "Family membership resolved from existing source and active placement eligibility. Complete provider coverage and required family attributes remain open. Shared biome modifiers may extend eligibility but do not add a second family for this same generator.",
         "verification": "tests/item8/test_betterend_feature_candidates.py::test_betterend_crashed_ship_inline_configuration_and_biome_routes"
+      },
+      "betterend:ruined_obsidian_pillar": {
+        "configured_feature": "Each placed definition contains an inline configuration of its corresponding custom feature type.",
+        "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+          "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_placed_feature.txt": "20d3a7d932b6e5c8f417ff07060a1fa63e95294f35ef78d92651efc221a4a48f",
+          "evidence/item-8/sources/betterend-pillar-end-hooks/identities.json": "f39ee57a16f67349f29e98bfdd3fe2acf567b39b9d56f737f9d8d3655f860e04",
+          "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd"
+        },
+        "families": [
+          "betterend:ruined_obsidian_pillar"
+        ],
+        "mechanism": "Two independently placed feature writers construct weathered obsidian columns using equal-radius capped cones, shape transforms and mossy-obsidian postprocessing. Neither selects the central End pillar component templates.",
+        "packaged_biome_consumer": "betterend:dragon_graveyards",
+        "placed_features": [
+          "betterend:fallen_pillar",
+          "betterend:obsidian_pillar_basement"
+        ],
+        "relationship": "One ruined-obsidian-pillar landmark family with two damage/form variants. Both construct the same basic column motif; the changed remnant shape is a variant rather than a second site design. These are independently placed landmarks, not terrain-material patches or components attached to central End spikes. Random dimensions, transforms and moss do not add families.",
+        "scope": "Canonical grouping based on preserved generator geometry and packaged placement relationships. The placed IDs are registered and Dragon Graveyards is in the captured End biome source. This does not assert successful world placement, a measured orientation or footprint, or completion of all required attributes. Central spike components and the BOP rectilinear monolith remain distinct contributions.",
+        "variants": {
+          "betterend:fallen_pillar": "Displaced column with randomized transform, dimensions and surface weathering.",
+          "betterend:obsidian_pillar_basement": "Column remainder shaped by subtraction of a displaced plane, with randomized dimensions, tilt and surface weathering."
+        },
+        "verification": "tests/item8/test_betterend_feature_candidates.py::test_betterend_pillar_candidates_and_existing_end_components"
       },
       "betterendisland:platform_gateway": {
         "class_to_template": {

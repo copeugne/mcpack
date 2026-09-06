@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+BetterEnd fallen pillar and pillar basement are one ruined-obsidian-pillar
+family with two form/damage variants. Existing source and registered placement
+routes are bound to the decision, including captured Dragon Graveyards End
+membership. Thirteen focused cases, scoped checks and reproduction pass.
+Next: BetterEnd architectural choices and disconnected house. Also reconcile
+terrain/vegetation entries already in the 421 provisional registry groups;
+nonregistry additions alone cannot establish the canonical total. No new
+measurement or helper audit was added.
+
+
 BOP canonical membership is settled: two landmark families (anomaly, monolith);
 bone-spine and both pumpkin forms are excluded decoration. Pumpkin decisions
 reuse captured writers and placement routes; five focused cases, scoped checks

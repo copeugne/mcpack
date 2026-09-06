@@ -6048,3 +6048,32 @@ uv run basedpyright tests/item8/test_bop_feature_candidates.py tools/build_item8
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-bop-pumpkins-r1.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-bop-pumpkins-r1.json
 ```
+
+### BetterEnd ruined-pillar canonical grouping
+
+The two named feature candidates now form one explicit nonregistry family,
+betterend:ruined_obsidian_pillar. FallenPillarFeature and
+ObsidianPillarBasementFeature use the same column motif with different remnant
+shapes, transforms and weathering. These are two variants, not two independently
+composed site designs. Their independent Dragon Graveyards placement keeps the
+family separate from central End spike components. Neither material nor a
+shared generic shape helper is by itself the grouping rationale.
+
+The existing eight-class source capture, both inline configured/placed routes
+and captured End biome membership are bound to the decision. Thirteen focused
+cases, scoped checks and inventory reproduction pass. No new source or geometry
+measurement was added. Exact placement orientation and the eleven attributes
+remain separate from this membership decision.
+
+Next reconcile BetterEnd architectural choices and its disconnected house.
+The existing registry groups also include terrain/vegetation entries (including
+BetterEnd mountains and lakes); their canonical dispositions must be resolved
+before treating the working group count as a family total.
+
+```sh
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py
+uv run ruff check tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-pillars-r1.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-betterend-pillars-r1.json
+```
