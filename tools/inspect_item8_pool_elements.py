@@ -189,6 +189,38 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/fabricmc/fabric/mixin/object/builder/AbstractBlockAccessor.class",
+    "net/fabricmc/fabric/mixin/object/builder/AbstractBlockSettingsAccessor.class",
+    "net/fabricmc/fabric/mixin/object/builder/BlockEntityTypeBuilderMixin.class",
+    "net/fabricmc/fabric/mixin/object/builder/BlockEntityTypeMixin.class",
+    "net/fabricmc/fabric/mixin/object/builder/DefaultAttributeRegistryAccessor.class",
+    "net/fabricmc/fabric/mixin/object/builder/DefaultAttributeRegistryMixin.class",
+    "net/fabricmc/fabric/mixin/object/builder/DetectorRailBlockMixin.class",
+    "net/fabricmc/fabric/mixin/object/builder/EntityTypeBuilderMixin.class",
+    "net/fabricmc/fabric/mixin/object/builder/EntityTypeMixin.class",
+    "net/fabricmc/fabric/mixin/object/builder/PersistentStateManagerMixin.class",
+    "net/fabricmc/fabric/mixin/object/builder/TradeOffersTypeAwareBuyForOneEmeraldFactoryMixin.class",
+    "org/sinytra/fabric/object_builder_api/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/impl/client/item/ClientItemEventHooks.class",
+    "net/fabricmc/fabric/impl/item/DefaultItemComponentImpl.class",
+    "net/fabricmc/fabric/mixin/item/AnvilScreenHandlerMixin.class",
+    "net/fabricmc/fabric/mixin/item/ComponentMapBuilderMixin.class",
+    "net/fabricmc/fabric/mixin/item/EnchantCommandMixin.class",
+    "net/fabricmc/fabric/mixin/item/EnchantRandomlyLootFunctionMixin.class",
+    "net/fabricmc/fabric/mixin/item/EnchantmentBuilderAccessor.class",
+    "net/fabricmc/fabric/mixin/item/EnchantmentHelperMixin.class",
+    "net/fabricmc/fabric/mixin/item/IItemExtensionMixin.class",
+    "net/fabricmc/fabric/mixin/item/ItemAccessor.class",
+    "net/fabricmc/fabric/mixin/item/ItemMixin.class",
+    "net/fabricmc/fabric/mixin/item/ItemSettingsMixin.class",
+    "net/fabricmc/fabric/mixin/item/ItemStackMixin.class",
+    "net/fabricmc/fabric/mixin/item/LivingEntityMixin.class",
+    "net/fabricmc/fabric/mixin/item/RegistryLoaderMixin.class",
+    "org/sinytra/fabric/item_api/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/impl/event/interaction/InteractionEventHooks.class",
+    "net/fabricmc/fabric/mixin/event/interaction/PlayerAdvancementTrackerMixin.class",
+    "net/fabricmc/fabric/mixin/event/interaction/ServerPlayerInteractionManagerMixin.class",
+    "org/sinytra/fabric/events_interaction/generated/GeneratedEntryPoint.class",
     "net/fabricmc/fabric/impl/resource/conditions/ResourceConditionsImpl.class",
     "net/fabricmc/fabric/impl/resource/conditions/OverlayConditionsMetadata.class",
     "net/fabricmc/fabric/mixin/screenhandler/NamedScreenHandlerFactoryMixin.class",
@@ -2452,6 +2484,9 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/fabric-object-builder-api-v1-15.2.1+cc242efd19.jar",
+        "META-INF/jars/fabric-item-api-v1-11.2.0+0c57911319.jar",
+        "META-INF/jars/fabric-events-interaction-v0-0.7.13+86e0887119.jar",
         "META-INF/jars/fabric-screen-handler-api-v1-1.3.90+8dbc56dd19.jar",
         "META-INF/jars/fabric-resource-conditions-api-v1-4.3.0+5bdd099819.jar",
         "META-INF/jars/fabric-rendering-v1-5.1.0+1a09bd5a19.jar",
@@ -2505,6 +2540,18 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/fabric-object-builder-api-v1-15.2.1+cc242efd19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "9217c882c6bb8abe8044af9420d3905ab1aa206f8705e390943d272673e57b2d",
+        ),
+        "META-INF/jars/fabric-item-api-v1-11.2.0+0c57911319.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "d0393be4da5482e6a5d7506b94062194ee1c788cfdae58adbc97804a4b3d4372",
+        ),
+        "META-INF/jars/fabric-events-interaction-v0-0.7.13+86e0887119.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "e83316f4d605a94d90b9792e7efdca5d2635e55997c23e6d8a092d6a78959ed6",
+        ),
         "META-INF/jars/fabric-screen-handler-api-v1-1.3.90+8dbc56dd19.jar": (
             "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
             "21a6d73340380446112f3b1bf4712937bc7251c857d75545c1b2d7386102f35f",
