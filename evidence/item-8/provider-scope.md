@@ -8557,3 +8557,170 @@ The required attributes and final Item 8 acceptance also remain incomplete.
 
 The focused grave provider test passes. Ruff reported one long assertion, which
 was wrapped; scoped Ruff and Basedpyright pass after that formatting correction.
+
+## Finite canonical reconciliation queue after provider closure
+
+Checkpoint: provider closure 7a7e1b5f. The exact source is family-decisions.json,
+SHA-256 f27120a993441bfcd3ab8716022f8dc8a0cf547e161dd766471edf1498156ccb.
+The following 100 group records explicitly say either "provisional" or
+"not a final canonical-family decision" in their rationale. This is a grouping
+review queue, not 100 missing families. It does not automatically certify the
+other 310 groups: final reconciliation must account for every one of the 887
+runtime roots exactly once, distinguish variants and components, and incorporate
+the recorded nonregistry family decisions without duplicate membership.
+
+### Moog's Soaring Structures: 25 decisions
+
+- `mss:arena`
+- `mss:calcite_house`
+- `mss:castle_ruin`
+- `mss:castle_tower`
+- `mss:desert_pyramid`
+- `mss:desert_well`
+- `mss:diorite_house`
+- `mss:frozen_pond`
+- `mss:jungle`
+- `mss:large_tower`
+- `mss:leaf_hollow`
+- `mss:mangrove`
+- `mss:muddy_water_hole`
+- `mss:mushroom`
+- `mss:nether_portal`
+- `mss:palm_island`
+- `mss:red_sand`
+- `mss:small_deepslate_house`
+- `mss:small_oak_house`
+- `mss:small_pond`
+- `mss:small_tower`
+- `mss:spruce_huts`
+- `mss:taiga`
+- `mss:volcano`
+- `mss:white_house`
+
+### Moog's Nether Structures: 22 decisions
+
+- `mns:copper_tower`
+- `mns:crimson_forge`
+- `mns:dragon_arena`
+- `mns:giant_skull`
+- `mns:grave_yard`
+- `mns:large_arena`
+- `mns:large_house_1`
+- `mns:lava_pool`
+- `mns:mega_fortress`
+- `mns:nether_tower`
+- `mns:nether_wart_farm`
+- `mns:ruined_portal`
+- `mns:sandy_skull`
+- `mns:shrine`
+- `mns:small_arena`
+- `mns:smoking_shrine`
+- `mns:soul_fire`
+- `mns:sword`
+- `mns:train`
+- `mns:warped_dome`
+- `mns:warped_house`
+- `mns:warped_pool`
+
+### Moog's Voyager Structures: 53 decisions
+
+- `mvs:azelea_house`
+- `mvs:barn`
+- `mvs:beach_bar`
+- `mvs:bee_dome`
+- `mvs:bench`
+- `mvs:cartographer_tower`
+- `mvs:castle_ruins`
+- `mvs:cathedral`
+- `mvs:crimson_enchanting_table`
+- `mvs:crystal`
+- `mvs:deepslate_house`
+- `mvs:desert_house`
+- `mvs:desert_pump`
+- `mvs:duck`
+- `mvs:flower_hole`
+- `mvs:fox_hut`
+- `mvs:gallows`
+- `mvs:haystack`
+- `mvs:horse_pen`
+- `mvs:house`
+- `mvs:jungle_tower`
+- `mvs:lamp_chest`
+- `mvs:large_mushroom`
+- `mvs:large_warped_tower`
+- `mvs:lecturn_garden`
+- `mvs:log_ruin`
+- `mvs:mushroom_statue`
+- `mvs:nether_devil`
+- `mvs:ocean_tower`
+- `mvs:out_house`
+- `mvs:paths`
+- `mvs:pile`
+- `mvs:railway`
+- `mvs:red_tower`
+- `mvs:ruined_beacon`
+- `mvs:shed`
+- `mvs:small_pillager_tower`
+- `mvs:small_ruin`
+- `mvs:small_ship`
+- `mvs:small_swamp_house`
+- `mvs:snowy_dog_hut`
+- `mvs:snowy_fossil`
+- `mvs:statue_ruins`
+- `mvs:stone_fountain`
+- `mvs:stone_pillars`
+- `mvs:sunzi_gate`
+- `mvs:tall_house`
+- `mvs:tree_monument`
+- `mvs:villager_statue`
+- `mvs:warped_house`
+- `mvs:wheat_grain_bin`
+- `mvs:windmill`
+- `mvs:wooden_wheat_farm`
+
+### Nonregistry reconciliation input
+
+There are 33 existing contribution records in non_registry_content.contributions.
+These include accepted families, components and explicit exclusions. They are not
+33 open providers or 33 additional families. Reuse their recorded dispositions;
+resolve their representation in the canonical list and any membership conflicts.
+The exact contribution keys are:
+
+- `yungsbridges:bridges`
+- `yungsextras:feature_entrypoints`
+- `betterendisland:platform_gateway`
+- `quark:spiral_spire`
+- `quark:fairy_ring`
+- `quark:fallen_log`
+- `quark:monster_box`
+- `quark:nether_obsidian_spike`
+- `quark:underground_styles`
+- `quark:vegetation`
+- `quark:stone_generation`
+- `village_taverns:village_components`
+- `chefsdelight:village_components`
+- `deep_aether:totem`
+- `betterend:crashed_ship`
+- `explorations:scarecrow`
+- `tectonic:underground_river/lanterns`
+- `terralith:cave/frostfire/frostfire_ceiling`
+- `explorations:large_mushroom`
+- `biomesoplenty:anomaly`
+- `biomesoplenty:monolith`
+- `biomesoplenty:bone_spine`
+- `biomesoplenty:big_pumpkin`
+- `biomesoplenty:pumpkin_patch`
+- `betterend:ruined_obsidian_pillar`
+- `betterend:lantern_woods/light_1`
+- `betterend:blossoming_spires/house`
+- `betterend:biome_buildings`
+- `betterend:biome_ruins`
+- `aether:holiday_tree`
+- `deep_aether:fallen_tree`
+- `regions_unexplored:fallen_tree`
+- `supplementaries:cave_urn_cache`
+
+This reconciliation is done when the named canonical list accounts for all runtime
+roots and these contributions, with no unresolved membership decision or duplicate
+family. Attribute completion is a separate remaining Item 8 requirement. Do not
+resume generic provider audits or add another measurement system for this queue.
