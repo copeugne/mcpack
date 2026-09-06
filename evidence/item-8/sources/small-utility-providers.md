@@ -122,3 +122,72 @@ META-INF/services/ only. No partial probe output supports an acceptance claim.
 Git's whitespace check reports the original extra EOF blank line in javap's
 StructurePoolAPI$SpawnPerk output. It is retained verbatim and reproduces exactly;
 normalizing it would change the preserved raw capture.
+
+## Additional shared boundaries, selector 4f65e40
+
+The following isolated generated increment captures 38 classes from three more
+retained providers. Each repeated capture matches byte for byte. It resolves
+candidate boundaries, not the correctness or performance of their algorithms.
+
+### Almanac
+
+Archive `Almanac-1.21.1-2-neoforge-1.5.2.jar`, SHA-256 `379893246c33aaa6dd8e4a8711e349cd6835e08c2bd5b8bd7b7e81be9822aacb`.
+All 13 classes captured. Identity manifest SHA-256 `846bc2adbd79f5625a83d1fd71ea8be43843b42b3ce16e7b001035f0c9fe6bb1`.
+
+```sh
+uv run -m tools.inspect_item8_pool_elements --archive 'Almanac-1.21.1-2-neoforge-1.5.2.jar' --output evidence/raw/item8/almanac-provider-r1
+diff -qr evidence/item-8/sources/almanac-provider evidence/raw/item8/almanac-provider-r1
+```
+
+### Library Ferret
+
+Archive `libraryferret-neoforge-1.21.1-4.0.0.jar`, SHA-256 `fcc7cbe7ec7d2e5bce6a9d24c14d94bc27a577c293311077476e5f43937be1a2`.
+All 9 classes captured. Identity manifest SHA-256 `818982bd379cd4f31dc2ece2b16bd22cdbc1332cac40de8a56c87f34b4b60e65`.
+
+```sh
+uv run -m tools.inspect_item8_pool_elements --archive 'libraryferret-neoforge-1.21.1-4.0.0.jar' --output evidence/raw/item8/libraryferret-provider-r1
+diff -qr evidence/item-8/sources/libraryferret-provider evidence/raw/item8/libraryferret-provider-r1
+```
+
+### Structure Layout Optimizer
+
+Archive `structure_layout_optimizer-neoforge-1.0.12.jar`, SHA-256 `ef8eb29c5c4f111c74a49d379843e4c2f51d11b28c8116a49be13636c83f4385`.
+All 16 classes captured. Identity manifest SHA-256 `3a24a425f1eae35abdb77547922cedf22f9212c09a69043b4f6baf95b1e5d197`.
+
+```sh
+uv run -m tools.inspect_item8_pool_elements --archive 'structure_layout_optimizer-neoforge-1.0.12.jar' --output evidence/raw/item8/structure-layout-optimizer-provider-r1
+diff -qr evidence/item-8/sources/structure-layout-optimizer-provider evidence/raw/item8/structure-layout-optimizer-provider-r1
+```
+
+Almanac's entry registers common configuration and initializes configuration and
+command support. Its config subscriber's load/reload bodies make no changes.
+CommandsMixin dispatches registered command callbacks; EntityMixin handles the
+picked-item marker; ItemStackMixin and SlotMixin invoke empty custom-data cleanup.
+ItemNBTUtil applies configured item exclusions and caches. ReloadCommand manages
+configuration, and the platform helper reads the NeoForge configuration. The
+public equipment-drop helper operates on existing entities and is already linked
+to Let Me Despawn. No template, root, feature or direct structure-generation path.
+
+Library Ferret's entry registers coin items, an optional creative tab and a common
+setup callback that queues an empty body. Configuration/Props and Color support
+settings and presentation. AwesomeStructure and AwesomePlacementRndSpread are
+abstract consumer-facing bases, with no packaged concrete subclass. The former
+passes constructor-supplied pools and dimensions to vanilla JigsawPlacement after
+its abstract canGenerate predicate. The latter supplies random-spread and
+exclusion-zone behavior with abstract configuration bindings. The nested exclusion
+record checks other supplied structure sets; AwesomeStructureConfiguration holds
+consumer-specified enable/spacing/separation/salt settings. The public registration
+helper registers the caller-supplied placement type. None supplies an independent
+authored layout. Non-code content is coin recipes and visual assets, not generation
+resources. Existing Better Village coverage is reused, not rerun or reclassified.
+
+Structure Layout Optimizer's entry initializes Resourceful Config. Its five
+mixins replace jigsaw collision/connection checks, filter shuffled candidates and
+rotations, change jigsaw shuffle/prioritization, and filter template blocks by
+placement bounds, with one pool accessor. Helpers manipulate existing bounding
+boxes, candidate lists, rotations and palette contents. PlatformService resolves
+the NeoForge finalization method name for processor inspection. No helper creates
+an independent root or hard-coded authored layout, and there is no packaged data
+pack or template. Preserve its modifying role for existing jigsaw families; this
+inspection does not establish equivalent layouts, better performance, or safety
+of enabling/disabling its configuration. No configuration or algorithm is changed.
