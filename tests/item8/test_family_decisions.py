@@ -2590,3 +2590,44 @@ def test_soaring_pond_variants_preserve_distinct_placement_inputs() -> None:
     assert temperate["size"] == 1
     for path, digest in cast("dict[str, str]", group["evidence"]).items():
         assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+
+
+def test_nether_arena_variants_preserve_placement_and_component_ownership() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()))
+    groups = cast("list[dict[str, JsonValue]]", decisions["groups"])
+    group = next(g for g in groups if g["family_id"] == "mns:arena")
+    ids = ["mns:small_arena", "mns:large_arena"]
+    assert group["structure_ids"] == ids
+    assert [m for g in groups for m in cast("list[str]", g["structure_ids"])
+            if m in ids] == ids
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    assert set(variants) == set(ids)
+    catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes())))
+    traces = cast("dict[str, JsonValue]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/pool-traces-content.json.gz").read_bytes())))
+    structures = cast("dict[str, dict[str, JsonValue]]", traces["structures"])
+    for rid in ids:
+        name = rid.split(":")[1]
+        definition = next(r["document"] for r in cast(
+            "list[dict[str, JsonValue]]", catalog["resources"])
+            if r["path"] == f"data/mns/worldgen/structure/{name}.json")
+        assert variants[rid] == {
+            "definition": definition, "templates": structures[rid]["templates"]}
+        assert structures[rid]["missing"] == []
+    small = cast("dict[str, JsonValue]", variants[ids[0]]["definition"])
+    large = cast("dict[str, JsonValue]", variants[ids[1]]["definition"])
+    assert small["land_search_direction"] == "LOWEST_LAND"
+    assert large["land_search_direction"] == "FIXED_HEIGHT"
+    assert small["start_height"] != large["start_height"]
+    assert small["cannot_spawn_in_liquid"] is True
+    assert large["cannot_spawn_in_liquid"] is False
+    assert "enhanced_terrain_adaptation" not in small
+    assert "enhanced_terrain_adaptation" in large
+    shared = set(cast("list[str]", variants[ids[0]]["templates"])) & set(
+        cast("list[str]", variants[ids[1]]["templates"]))
+    assert shared
+    assert all(n.startswith("mns:mega_arenas/mobs/1.21/") for n in shared)
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
