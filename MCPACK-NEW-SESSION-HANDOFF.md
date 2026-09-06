@@ -6,6 +6,54 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 2eb64661 and reproduces exactly. Canonical-note backlog: 119.
+Coverage groups: 405, including inactive candidates. Next: remaining design
+relationships against preserved templates and source graphs. Nonregistry and
+required-attribute work remain open.
+
+Stronghold replacement and Terralith fortified-village dispositions now agree with
+existing suppression evidence. Both custom stronghold types remain distinct from
+vanilla STRONGHOLD; both fortified-village roots remain suppressed candidates.
+Thirteen affected cases and scoped checks pass. Canonical-note backlog: 119.
+Coverage groups remain 405. No new capture was needed. Inventory refresh follows.
+
+Inventory matches b296565c and reproduces exactly. Canonical-note backlog: 121.
+Coverage groups remain 405. Optional IDAS roots are inactive; adaptive default
+pool selection is resolved, but their design reconciliation remains open.
+
+Three IDAS optional roots are now inactive candidates: archmages_tower, dread_citadel
+and sirens_cove. The exact dependency consumer, inherited caller and NeoForge lookup
+are delivered at b9d76078/82b5f4ec; the frozen runtime log excludes Ars Nouveau and
+Ice and Fire. Adaptive enchantingtower, haunted_manor and labyrinth retain default
+pools, but their broader design notes remain open. Four affected cases and scoped
+quality checks pass. Canonical-note backlog: 121. Coverage groups: 405. Inventory
+refresh follows; no new world experiment was needed.
+
+Dependency-selection source is delivered at b9d76078. Select only its three
+remaining direct boundaries: JigsawStructure generation caller, PlatformHooks
+lookup and NeoForge PlatformHooksImpl. Existing extractor and scoped checks are
+reused. Backlog remains 124 until the full path and frozen loaded mods are bound.
+
+IDAS optional-dependency dispositions need the actual OptionalDependencyStructure
+consumer, which is absent from prior captures. ModAdaptiveStructure also governs
+three existing alternate-pool notes. Select these two exact retained classes with
+the existing extractor. This source gap cannot be resolved from field names alone;
+no new framework, provider survey or measurement is justified. Backlog stays 124
+until the consumer and frozen dependency identities establish dispositions.
+
+Inventory matches b325116a and reproduces exactly. Canonical-note backlog: 124.
+Coverage groups: 405, including excluded/inactive roots. Nonregistry reconciliation
+and required attributes remain open. Next: unresolved dependency and replacement
+notes using the existing provider evidence, before more layout comparisons.
+
+Four canonical dispositions now agree with previously verified provider evidence:
+Aether large_aercloud is terrain; Deep Aether altar_camp, campfire and
+combiner_corridor are registered but biome-ineligible in the captured baseline.
+All four remain coverage rows. Ten existing source/eligibility cases and scoped
+quality checks pass. The 128-name backlog is now 124: remove these four names
+from the dated list below. Working coverage groups remain 405, not a final active
+family count. No new capture or measurement was needed. Inventory refresh follows.
+
 Inventory matches cb74b266 and reproduces exactly. Working groups: 405. Voyager
 explicit provisionals: zero. The real broader backlog is the 128 named records
 below, plus nonregistry reconciliation and required attributes. Next work must

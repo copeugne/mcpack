@@ -10,6 +10,7 @@ from zipfile import ZipFile
 
 from mcpack_evidence.item8_inventory import resource_identity
 from mcpack_evidence.item8_registry import read_registry
+from mcpack_evidence.item8_resource_selection import runtime_mod_ids
 from mcpack_evidence.item8_sources import retained_sources
 
 if TYPE_CHECKING:
@@ -246,3 +247,34 @@ def test_idas_labyrinth_existing_encounter_hooks() -> None:
     assert "IDASTags.APPLIES_MINING_FATIGUE:" in death
     assert "getDimensionPath:" in level
     assert "class com/craisinlord/idas/state/stateCache" in level
+
+
+def test_optional_dependencies_bind_frozen_mods_and_consumers() -> None:
+    log = Path("evidence/raw/item8/registry-r1/debug.log").read_bytes()
+    assert hashlib.sha256(log).hexdigest() == (
+        "e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b")
+    mods = runtime_mod_ids(log.decode())
+    assert {"idas", "integrated_api"} <= set(mods)
+    assert not {"ars_nouveau", "iceandfire"} & set(mods)
+    for directory, digest in (
+        ("integrated-api-dependency-selection",
+         "32a23f9fe7a1ae8dbf99532a070147dd857956b401e50d04ea29da31ba99b8a3"),
+        ("integrated-api-dependency-caller",
+         "d48afad5e1c7a3ca12a455587d1a9b8da139d1ab479a9aaf2bae2a25c5f74a3a"),
+    ):
+        base = Path("evidence/item-8/sources") / directory
+        raw = (base / "identities.json").read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == digest
+        for row in cast("list[dict[str, str]]", json.loads(raw)):
+            assert hashlib.sha256((base / row["disassembly"]).read_bytes()).hexdigest() == (
+                row["disassembly_sha256"])
+    decisions = cast("dict[str, JsonValue]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()))
+    groups = cast("list[dict[str, JsonValue]]", decisions["groups"])
+    for rid in ("idas:ars_nouveau/archmages_tower", "idas:iceandfire/dread_citadel",
+                "idas:iceandfire/sirens_cove"):
+        group = next(g for g in groups if g["family_id"] == rid)
+        assert group["structure_ids"] == [rid]
+        assert group["contribution_disposition"] == (
+            "Registered but inactive because its required mod is absent from the frozen runtime. "
+            "Retained as an inactive candidate for root and component coverage.")

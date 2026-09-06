@@ -9159,3 +9159,101 @@ SHA-256: 047dc079c1a85e503cf313d9accc1cf3cd7b18e44c0a345e6557615fe3af33db.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-final-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-voyager-final-r2.json
 ```
+
+### Canonical exclusion and eligibility reconciliation, 2026-09-07
+
+Four family records now agree with the existing source and eligibility evidence.
+Aether large_aercloud is a provider-selected cold-aercloud block formation and is
+excluded from authored families. Its reuse as Silver Dungeon cloud bedding does
+not make another dungeon family. The record and source attributes remain retained.
+
+Deep Aether altar_camp, campfire and combiner_corridor each select one same-named
+Sacred Lands template, but their required biome is absent from every captured
+dimension. The captured jigsaw consumer follows the supplied pool. They remain
+registered inactive candidates, excluded from active families in this frozen
+baseline. Changed packs/dimensions or a demonstrated independent route reopen this
+disposition. No root was deleted and no broad generation claim was inferred.
+
+Ten existing source/eligibility cases and scoped quality checks pass. No new
+capture, renderer or measurement was added. The named canonical backlog decreases
+from 128 to 124. Working coverage groups remain 405; this is not the final authored
+family count. Nonregistry reconciliation and required attributes remain open.
+
+```sh
+uv run pytest tests/item8/test_aether_cloud_source.py tests/item8/test_totem_scope.py tests/item8/test_deep_aether_candidates.py -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory regenerated from b325116a and independently reproduced exactly.
+SHA-256: 0f3970e1c9d3310e3c4b0de48c3a6c5b5032bc8dadfae2a32b03aab0fd44a7e7.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-cloud-sacred-lands-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-cloud-sacred-lands-r2.json
+```
+
+### IDAS optional dependencies and adaptive pools, 2026-09-07
+
+Captures b9d76078 and 82b5f4ec bind OptionalDependencyStructure's rejection branch,
+its inherited JigsawStructure caller and the PlatformHooks to NeoForge ModList
+lookup. The existing parser and hash-verified registry-run debug log show neither
+ars_nouveau nor iceandfire loaded. Archmages tower, dread citadel and sirens cove
+remain registered inactive candidates, excluded from active canonical families.
+Their roots and missing-component evidence remain preserved.
+
+ModAdaptiveStructure changes pools only when every named change mod is loaded.
+The three IDAS adaptive roots therefore retain default pools; their alternate
+compatibility pieces are not new families. Their broader design reconciliation
+remains open, so this does not reduce that portion of the backlog.
+
+Four affected cases and scoped Ruff/Basedpyright pass. The source captures reproduce
+exactly. Canonical-note backlog: 121, down from 124. Coverage groups remain 405.
+No world experiment or new measurement system was added. Inventory refresh follows.
+
+```sh
+uv run pytest tests/item8/test_idas_provider_scope.py tests/item8/test_family_decisions.py -q -k 'idas or optional_dependencies'
+uv run ruff check tests/item8/test_idas_provider_scope.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_idas_provider_scope.py tools/build_item8_inventory.py
+```
+
+Inventory regenerated from b296565c and independently reproduced exactly.
+SHA-256: 9c4475699659ebec70769cb33202dea7679a4657f09cfc56c3808e60743396fe.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-dependencies-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-dependencies-r2.json
+```
+
+### Stronghold replacement and fortified-village reconciliation, 2026-09-07
+
+Integrated Stronghold and Better Strongholds each reject vanilla STRONGHOLD normal
+generation. Their own roots use integrated_api:generic_structure and
+yungsapi:yung_jigsaw respectively, so neither matches these vanilla-type filters.
+The two custom assemblies remain separate families; vanilla remains a suppressed
+candidate. The artificial locate position and effective Eye of Ender tag selection
+are not structure observations or proofs of generation. Missing components remain.
+
+Both Terralith fortified-village roots are suppressed by the already bound frozen
+Integrated Villages setting and exact-key hook. Their family record now records
+that inactive disposition while preserving both variants and missing pieces.
+Command placement and pre-existing structures remain outside the normal-generation
+claim. No new source capture or experiment was required.
+
+Thirteen affected cases and scoped quality checks pass. Named canonical backlog:
+119, down from 121. Coverage groups remain 405, including inactive candidates.
+Nonregistry reconciliation and required attributes remain open.
+
+```sh
+uv run pytest tests/item8/test_integrated_suppression.py tests/item8/test_yung_suppression.py tests/item8/test_integrated_stronghold_provider_scope.py tests/item8/test_family_decisions.py -q -k 'suppression or stronghold'
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory regenerated from 2eb64661 and independently reproduced exactly.
+SHA-256: 400b5d2608332439e6dcf1e738d335f7f23f72cae9364cda5d33573657549e42.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-replacement-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-replacement-r2.json
+```

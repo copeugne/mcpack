@@ -1598,6 +1598,11 @@ CLASSES: tuple[str, ...] = (
     "glitchcore/neoforge/mixin/impl/MixinRenderHelper.class",
 
     "com/craisinlord/integrated_api/IntegratedAPI.class",
+    "com/craisinlord/integrated_api/world/structures/OptionalDependencyStructure.class",
+    "com/craisinlord/integrated_api/world/structures/ModAdaptiveStructure.class",
+    "com/craisinlord/integrated_api/world/structures/JigsawStructure.class",
+    "com/craisinlord/integrated_api/utils/PlatformHooks.class",
+    "com/craisinlord/integrated_api/utils/neoforge/PlatformHooksImpl.class",
     "com/craisinlord/integrated_api/datagen/StructureNbtUpdaterDatagen.class",
     "com/craisinlord/integrated_api/mixins/blocks/StructureBlockUnlimit.class",
     "com/craisinlord/integrated_api/mixins/blocks/UpdateStructureBlockUnlimit.class",

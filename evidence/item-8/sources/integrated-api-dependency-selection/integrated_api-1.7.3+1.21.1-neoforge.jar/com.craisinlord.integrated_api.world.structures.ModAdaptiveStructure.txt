@@ -1,0 +1,469 @@
+Compiled from "ModAdaptiveStructure.java"
+public class com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure extends com.craisinlord.integrated_api.world.structures.JigsawStructure {
+  public static final com.mojang.serialization.MapCodec<com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure> CODEC;
+
+  public final java.lang.String changePoolMod;
+
+  public final net.minecraft.core.Holder<net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool> newPool;
+
+  public com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings, net.minecraft.core.Holder<net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool>, int, java.util.Optional<com.craisinlord.integrated_api.world.structures.codecs.YRangeAllowance>, net.minecraft.world.level.levelgen.heightproviders.HeightProvider, java.util.Optional<net.minecraft.world.level.levelgen.Heightmap$Types>, boolean, java.util.Optional<java.lang.Integer>, java.util.Optional<java.lang.Integer>, java.util.Optional<java.lang.Integer>, java.util.Optional<java.lang.Integer>, boolean, com.craisinlord.integrated_api.world.terrainadaptation.EnhancedTerrainAdaptation, net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings, java.lang.String, net.minecraft.core.Holder<net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: iload_3
+       4: aload         4
+       6: aload         5
+       8: aload         6
+      10: iload         7
+      12: aload         8
+      14: aload         9
+      16: aload         10
+      18: aload         11
+      20: invokestatic  #67                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+      23: iload         12
+      25: aload         13
+      27: aload         14
+      29: invokespecial #70                 // Method com/craisinlord/integrated_api/world/structures/JigsawStructure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;Lnet/minecraft/core/Holder;ILjava/util/Optional;Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;Ljava/util/Optional;ZLjava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;ZLcom/craisinlord/integrated_api/world/terrainadaptation/EnhancedTerrainAdaptation;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V
+      32: aload_0
+      33: aload         15
+      35: putfield      #72                 // Field changePoolMod:Ljava/lang/String;
+      38: aload_0
+      39: aload         16
+      41: putfield      #74                 // Field newPool:Lnet/minecraft/core/Holder;
+      44: return
+
+  private java.util.ArrayList<java.lang.String> convertModList(java.lang.String);
+    Code:
+       0: iconst_0
+       1: istore_2
+       2: new           #92                 // class java/util/ArrayList
+       5: dup
+       6: invokespecial #95                 // Method java/util/ArrayList."<init>":()V
+       9: astore_3
+      10: iconst_0
+      11: istore        4
+      13: iload         4
+      15: aload_1
+      16: invokevirtual #101                // Method java/lang/String.length:()I
+      19: if_icmpge     56
+      22: aload_1
+      23: iload         4
+      25: invokevirtual #105                // Method java/lang/String.charAt:(I)C
+      28: bipush        44
+      30: if_icmpne     50
+      33: aload_3
+      34: aload_1
+      35: iload_2
+      36: iload         4
+      38: invokevirtual #109                // Method java/lang/String.substring:(II)Ljava/lang/String;
+      41: invokevirtual #113                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+      44: pop
+      45: iload         4
+      47: iconst_1
+      48: iadd
+      49: istore_2
+      50: iinc          4, 1
+      53: goto          13
+      56: aload_3
+      57: aload_1
+      58: iload_2
+      59: invokevirtual #116                // Method java/lang/String.substring:(I)Ljava/lang/String;
+      62: invokevirtual #113                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+      65: pop
+      66: aload_3
+      67: areturn
+
+  public boolean allModsPresent(java.util.ArrayList<java.lang.String>);
+    Code:
+       0: aload_1
+       1: invokevirtual #128                // Method java/util/ArrayList.iterator:()Ljava/util/Iterator;
+       4: astore_2
+       5: aload_2
+       6: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      11: ifeq          36
+      14: aload_2
+      15: invokeinterface #138,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      20: checkcast     #97                 // class java/lang/String
+      23: astore_3
+      24: aload_3
+      25: invokestatic  #142                // Method isLoaded:(Ljava/lang/String;)Z
+      28: ifne          33
+      31: iconst_0
+      32: ireturn
+      33: goto          5
+      36: iconst_1
+      37: ireturn
+
+  public java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_0
+       1: getfield      #149                // Field startHeight:Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+       4: aload_1
+       5: invokevirtual #153                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+       8: new           #155                // class net/minecraft/world/level/levelgen/WorldGenerationContext
+      11: dup
+      12: aload_1
+      13: invokevirtual #159                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      16: aload_1
+      17: invokevirtual #163                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      20: invokespecial #166                // Method net/minecraft/world/level/levelgen/WorldGenerationContext."<init>":(Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/LevelHeightAccessor;)V
+      23: invokevirtual #172                // Method net/minecraft/world/level/levelgen/heightproviders/HeightProvider.sample:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/WorldGenerationContext;)I
+      26: istore_2
+      27: new           #174                // class net/minecraft/core/BlockPos
+      30: dup
+      31: aload_1
+      32: invokevirtual #178                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      35: invokevirtual #183                // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+      38: iload_2
+      39: aload_1
+      40: invokevirtual #178                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      43: invokevirtual #186                // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+      46: invokespecial #189                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      49: astore_3
+      50: aload_0
+      51: aload_1
+      52: aload_3
+      53: invokevirtual #193                // Method extraSpawningChecks:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/core/BlockPos;)Z
+      56: ifne          63
+      59: invokestatic  #67                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+      62: areturn
+      63: aload_0
+      64: getfield      #195                // Field startPool:Lnet/minecraft/core/Holder;
+      67: astore        4
+      69: aload_0
+      70: getfield      #72                 // Field changePoolMod:Ljava/lang/String;
+      73: invokevirtual #198                // Method java/lang/String.isEmpty:()Z
+      76: ifne          104
+      79: aload_0
+      80: aload_0
+      81: getfield      #72                 // Field changePoolMod:Ljava/lang/String;
+      84: invokevirtual #200                // Method convertModList:(Ljava/lang/String;)Ljava/util/ArrayList;
+      87: astore        5
+      89: aload_0
+      90: aload         5
+      92: invokevirtual #202                // Method allModsPresent:(Ljava/util/ArrayList;)Z
+      95: ifeq          104
+      98: aload_0
+      99: getfield      #74                 // Field newPool:Lnet/minecraft/core/Holder;
+     102: astore        4
+     104: ldc           #205                // int 2147483647
+     106: istore        5
+     108: ldc           #206                // int -2147483648
+     110: istore        6
+     112: aload_0
+     113: getfield      #208                // Field yAllowance:Ljava/util/Optional;
+     116: invokevirtual #211                // Method java/util/Optional.isPresent:()Z
+     119: ifeq          218
+     122: aload_0
+     123: getfield      #208                // Field yAllowance:Ljava/util/Optional;
+     126: invokevirtual #214                // Method java/util/Optional.get:()Ljava/lang/Object;
+     129: checkcast     #216                // class com/craisinlord/integrated_api/world/structures/codecs/YRangeAllowance
+     132: getfield      #219                // Field com/craisinlord/integrated_api/world/structures/codecs/YRangeAllowance.maxYAllowed:Ljava/util/Optional;
+     135: invokevirtual #211                // Method java/util/Optional.isPresent:()Z
+     138: ifeq          170
+     141: iload         5
+     143: aload_0
+     144: getfield      #208                // Field yAllowance:Ljava/util/Optional;
+     147: invokevirtual #214                // Method java/util/Optional.get:()Ljava/lang/Object;
+     150: checkcast     #216                // class com/craisinlord/integrated_api/world/structures/codecs/YRangeAllowance
+     153: getfield      #219                // Field com/craisinlord/integrated_api/world/structures/codecs/YRangeAllowance.maxYAllowed:Ljava/util/Optional;
+     156: invokevirtual #214                // Method java/util/Optional.get:()Ljava/lang/Object;
+     159: checkcast     #221                // class java/lang/Integer
+     162: invokevirtual #224                // Method java/lang/Integer.intValue:()I
+     165: invokestatic  #230                // Method java/lang/Math.min:(II)I
+     168: istore        5
+     170: aload_0
+     171: getfield      #208                // Field yAllowance:Ljava/util/Optional;
+     174: invokevirtual #214                // Method java/util/Optional.get:()Ljava/lang/Object;
+     177: checkcast     #216                // class com/craisinlord/integrated_api/world/structures/codecs/YRangeAllowance
+     180: getfield      #233                // Field com/craisinlord/integrated_api/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+     183: invokevirtual #211                // Method java/util/Optional.isPresent:()Z
+     186: ifeq          218
+     189: iload         6
+     191: aload_0
+     192: getfield      #208                // Field yAllowance:Ljava/util/Optional;
+     195: invokevirtual #214                // Method java/util/Optional.get:()Ljava/lang/Object;
+     198: checkcast     #216                // class com/craisinlord/integrated_api/world/structures/codecs/YRangeAllowance
+     201: getfield      #233                // Field com/craisinlord/integrated_api/world/structures/codecs/YRangeAllowance.minYAllowed:Ljava/util/Optional;
+     204: invokevirtual #214                // Method java/util/Optional.get:()Ljava/lang/Object;
+     207: checkcast     #221                // class java/lang/Integer
+     210: invokevirtual #224                // Method java/lang/Integer.intValue:()I
+     213: invokestatic  #236                // Method java/lang/Math.max:(II)I
+     216: istore        6
+     218: aload_0
+     219: getfield      #238                // Field rotationFixed:Z
+     222: ifeq          232
+     225: ldc           #240                // String NONE
+     227: astore        7
+     229: goto          236
+     232: ldc           #242                // String RANDOM
+     234: astore        7
+     236: iload         5
+     238: istore        8
+     240: iload         6
+     242: istore        9
+     244: aload_1
+     245: aload         4
+     247: aload_0
+     248: getfield      #244                // Field size:I
+     251: aload_1
+     252: invokevirtual #248                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+     255: getstatic     #254                // Field net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+     258: invokeinterface #260,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+     263: aload_0
+     264: invokeinterface #266,  2          // InterfaceMethod net/minecraft/core/Registry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+     269: aload_3
+     270: iconst_0
+     271: aload_0
+     272: getfield      #268                // Field projectStartToHeightmap:Ljava/util/Optional;
+     275: iload         5
+     277: iload         6
+     279: aconst_null
+     280: aload_0
+     281: getfield      #270                // Field maxDistanceFromCenter:Ljava/util/Optional;
+     284: aload         7
+     286: aload_0
+     287: getfield      #273                // Field buryingType:Ljava/util/Optional;
+     290: aload_0
+     291: getfield      #275                // Field liquidSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+     294: aload_0
+     295: aload_1
+     296: iload_2
+     297: aload_3
+     298: iload         8
+     300: iload         9
+     302: invokedynamic #295,  0            // InvokeDynamic #0:accept:(Lcom/craisinlord/integrated_api/world/structures/ModAdaptiveStructure;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;ILnet/minecraft/core/BlockPos;II)Ljava/util/function/BiConsumer;
+     307: invokestatic  #301                // Method com/craisinlord/integrated_api/world/structures/pieces/manager/PieceLimitedJigsawManager.assembleJigsawStructure:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/core/Holder;ILnet/minecraft/resources/ResourceLocation;Lnet/minecraft/core/BlockPos;ZLjava/util/Optional;IILjava/util/Set;Ljava/util/Optional;Ljava/lang/String;Ljava/util/Optional;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;Ljava/util/function/BiConsumer;)Ljava/util/Optional;
+     310: areturn
+
+  public static boolean isLoaded(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokestatic  #318                // Method com/craisinlord/integrated_api/utils/PlatformHooks.isModLoaded:(Ljava/lang/String;)Z
+       4: ireturn
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<?> type();
+    Code:
+       0: getstatic     #327                // Field com/craisinlord/integrated_api/modinit/IAStructures.MOD_ADAPTIVE_STRUCTURE:Lcom/craisinlord/integrated_api/modinit/registry/RegistryEntry;
+       3: invokeinterface #330,  1          // InterfaceMethod com/craisinlord/integrated_api/modinit/registry/RegistryEntry.get:()Ljava/lang/Object;
+       8: checkcast     #332                // class net/minecraft/world/level/levelgen/structure/StructureType
+      11: areturn
+
+  private void lambda$findGenerationPoint$16(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, int, net.minecraft.core.BlockPos, int, int, net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, java.util.List);
+    Code:
+       0: aload_0
+       1: aload         6
+       3: aload_1
+       4: iload_2
+       5: aload_3
+       6: iload         4
+       8: iload         5
+      10: aload         7
+      12: invokevirtual #338                // Method postLayoutAdjustments:(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;ILnet/minecraft/core/BlockPos;IILjava/util/List;)V
+      15: return
+
+  private static com.mojang.datafixers.kinds.App lambda$static$15(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokestatic  #347                // Method settingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       5: getstatic     #352                // Field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool.CODEC:Lcom/mojang/serialization/Codec;
+       8: ldc_w         #354                // String start_pool
+      11: invokeinterface #360,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      16: invokedynamic #372,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      21: invokevirtual #378                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      24: iconst_0
+      25: bipush        30
+      27: invokestatic  #382                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+      30: ldc_w         #383                // String size
+      33: invokeinterface #360,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      38: invokedynamic #390,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      43: invokevirtual #378                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      46: getstatic     #391                // Field com/craisinlord/integrated_api/world/structures/codecs/YRangeAllowance.CODEC:Lcom/mojang/serialization/Codec;
+      49: ldc_w         #393                // String y_allowance
+      52: invokeinterface #396,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      57: invokedynamic #403,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      62: invokevirtual #378                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      65: getstatic     #404                // Field net/minecraft/world/level/levelgen/heightproviders/HeightProvider.CODEC:Lcom/mojang/serialization/Codec;
+      68: ldc_w         #406                // String start_height
+      71: invokeinterface #360,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      76: invokedynamic #413,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      81: invokevirtual #378                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      84: getstatic     #414                // Field net/minecraft/world/level/levelgen/Heightmap$Types.CODEC:Lcom/mojang/serialization/Codec;
+      87: ldc_w         #416                // String project_start_to_heightmap
+      90: invokeinterface #396,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      95: invokedynamic #421,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+     100: invokevirtual #378                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     103: getstatic     #425                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+     106: ldc_w         #427                // String cannot_spawn_in_liquid
+     109: invokeinterface #430,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     114: iconst_0
+     115: invokestatic  #436                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     118: invokevirtual #440                // Method com/mojang/serialization/MapCodec.orElse:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     121: invokedynamic #447,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+     126: invokevirtual #378                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     129: iconst_1
+     130: bipush        100
+     132: invokestatic  #382                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+     135: ldc_w         #449                // String terrain_height_radius_check
+     138: invokeinterface #396,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     143: invokedynamic #454,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+     148: invokevirtual #378                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     151: iconst_1
+     152: sipush        1000
+     155: invokestatic  #382                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+     158: ldc_w         #456                // String allowed_terrain_height_range
+     161: invokeinterface #396,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     166: invokedynamic #461,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+     171: invokevirtual #378                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     174: iconst_1
+     175: bipush        100
+     177: invokestatic  #382                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+     180: ldc_w         #463                // String valid_biome_radius_check
+     183: invokeinterface #396,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     188: invokedynamic #468,  0            // InvokeDynamic #9:apply:()Ljava/util/function/Function;
+     193: invokevirtual #378                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     196: iconst_1
+     197: sipush        512
+     200: invokestatic  #382                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+     203: ldc_w         #470                // String max_distance_from_center
+     206: invokeinterface #396,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     211: invokedynamic #475,  0            // InvokeDynamic #10:apply:()Ljava/util/function/Function;
+     216: invokevirtual #378                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     219: getstatic     #425                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+     222: ldc_w         #477                // String rotation_fixed
+     225: invokeinterface #430,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     230: iconst_0
+     231: invokestatic  #436                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     234: invokevirtual #440                // Method com/mojang/serialization/MapCodec.orElse:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     237: invokedynamic #482,  0            // InvokeDynamic #11:apply:()Ljava/util/function/Function;
+     242: invokevirtual #378                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     245: getstatic     #487                // Field com/craisinlord/integrated_api/world/terrainadaptation/EnhancedTerrainAdaptationType.ADAPTATION_CODEC:Lcom/mojang/serialization/Codec;
+     248: ldc_w         #489                // String enhanced_terrain_adaptation
+     251: getstatic     #493                // Field com/craisinlord/integrated_api/world/terrainadaptation/EnhancedTerrainAdaptation.NONE:Lcom/craisinlord/integrated_api/world/terrainadaptation/EnhancedTerrainAdaptation;
+     254: invokeinterface #496,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     259: invokedynamic #503,  0            // InvokeDynamic #12:apply:()Ljava/util/function/Function;
+     264: invokevirtual #378                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     267: getstatic     #506                // Field net/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings.CODEC:Lcom/mojang/serialization/Codec;
+     270: ldc_w         #508                // String liquid_settings
+     273: getstatic     #513                // Field net/minecraft/world/level/levelgen/structure/structures/JigsawStructure.DEFAULT_LIQUID_SETTINGS:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+     276: invokeinterface #496,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     281: invokedynamic #520,  0            // InvokeDynamic #13:apply:()Ljava/util/function/Function;
+     286: invokevirtual #378                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     289: getstatic     #523                // Field com/mojang/serialization/Codec.STRING:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+     292: ldc_w         #525                // String change_pool_mods
+     295: invokeinterface #430,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     300: invokedynamic #532,  0            // InvokeDynamic #14:apply:()Ljava/util/function/Function;
+     305: invokevirtual #378                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     308: getstatic     #352                // Field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool.CODEC:Lcom/mojang/serialization/Codec;
+     311: ldc_w         #534                // String new_pool
+     314: invokeinterface #360,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     319: invokedynamic #539,  0            // InvokeDynamic #15:apply:()Ljava/util/function/Function;
+     324: invokevirtual #378                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     327: invokevirtual #543                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P16;
+     330: aload_0
+     331: invokedynamic #553,  0            // InvokeDynamic #16:apply:()Lcom/mojang/datafixers/util/Function16;
+     336: invokevirtual #556                // Method com/mojang/datafixers/Products$P16.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function16;)Lcom/mojang/datafixers/kinds/App;
+     339: areturn
+
+  private static net.minecraft.core.Holder lambda$static$14(com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure);
+    Code:
+       0: aload_0
+       1: getfield      #74                 // Field newPool:Lnet/minecraft/core/Holder;
+       4: areturn
+
+  private static java.lang.String lambda$static$13(com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure);
+    Code:
+       0: aload_0
+       1: getfield      #72                 // Field changePoolMod:Ljava/lang/String;
+       4: areturn
+
+  private static net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings lambda$static$12(com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure);
+    Code:
+       0: aload_0
+       1: getfield      #275                // Field liquidSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+       4: areturn
+
+  private static com.craisinlord.integrated_api.world.terrainadaptation.EnhancedTerrainAdaptation lambda$static$11(com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure);
+    Code:
+       0: aload_0
+       1: getfield      #560                // Field enhancedTerrainAdaptation:Lcom/craisinlord/integrated_api/world/terrainadaptation/EnhancedTerrainAdaptation;
+       4: areturn
+
+  private static java.lang.Boolean lambda$static$10(com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure);
+    Code:
+       0: aload_0
+       1: getfield      #238                // Field rotationFixed:Z
+       4: invokestatic  #436                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       7: areturn
+
+  private static java.util.Optional lambda$static$9(com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure);
+    Code:
+       0: aload_0
+       1: getfield      #270                // Field maxDistanceFromCenter:Ljava/util/Optional;
+       4: areturn
+
+  private static java.util.Optional lambda$static$8(com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure);
+    Code:
+       0: aload_0
+       1: getfield      #562                // Field biomeRadius:Ljava/util/Optional;
+       4: areturn
+
+  private static java.util.Optional lambda$static$7(com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure);
+    Code:
+       0: aload_0
+       1: getfield      #564                // Field allowedTerrainHeightRange:Ljava/util/Optional;
+       4: areturn
+
+  private static java.util.Optional lambda$static$6(com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure);
+    Code:
+       0: aload_0
+       1: getfield      #566                // Field terrainHeightCheckRadius:Ljava/util/Optional;
+       4: areturn
+
+  private static java.lang.Boolean lambda$static$5(com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure);
+    Code:
+       0: aload_0
+       1: getfield      #568                // Field cannotSpawnInLiquid:Z
+       4: invokestatic  #436                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       7: areturn
+
+  private static java.util.Optional lambda$static$4(com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure);
+    Code:
+       0: aload_0
+       1: getfield      #268                // Field projectStartToHeightmap:Ljava/util/Optional;
+       4: areturn
+
+  private static net.minecraft.world.level.levelgen.heightproviders.HeightProvider lambda$static$3(com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure);
+    Code:
+       0: aload_0
+       1: getfield      #149                // Field startHeight:Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+       4: areturn
+
+  private static java.util.Optional lambda$static$2(com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure);
+    Code:
+       0: aload_0
+       1: getfield      #208                // Field yAllowance:Ljava/util/Optional;
+       4: areturn
+
+  private static java.lang.Integer lambda$static$1(com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure);
+    Code:
+       0: aload_0
+       1: getfield      #244                // Field size:I
+       4: invokestatic  #571                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static net.minecraft.core.Holder lambda$static$0(com.craisinlord.integrated_api.world.structures.ModAdaptiveStructure);
+    Code:
+       0: aload_0
+       1: getfield      #195                // Field startPool:Lnet/minecraft/core/Holder;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #577,  0            // InvokeDynamic #17:apply:()Ljava/util/function/Function;
+       5: invokestatic  #581                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #583                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}
