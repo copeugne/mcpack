@@ -1,0 +1,130 @@
+Compiled from "ConfigModuleNeoForge.java"
+public class com.yungnickyoung.minecraft.betterdungeons.module.ConfigModuleNeoForge {
+  public com.yungnickyoung.minecraft.betterdungeons.module.ConfigModuleNeoForge();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init(net.neoforged.fml.ModContainer);
+    Code:
+       0: aload_0
+       1: getstatic     #7                  // Field net/neoforged/fml/config/ModConfig$Type.COMMON:Lnet/neoforged/fml/config/ModConfig$Type;
+       4: getstatic     #13                 // Field com/yungnickyoung/minecraft/betterdungeons/config/BDConfigNeoForge.SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+       7: ldc           #19                 // String betterdungeons-neoforge-1_21.toml
+       9: invokevirtual #21                 // Method net/neoforged/fml/ModContainer.registerConfig:(Lnet/neoforged/fml/config/ModConfig$Type;Lnet/neoforged/fml/config/IConfigSpec;Ljava/lang/String;)V
+      12: getstatic     #27                 // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      15: invokedynamic #33,  0             // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+      20: invokeinterface #37,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      25: getstatic     #43                 // Field com/yungnickyoung/minecraft/betterdungeons/BetterDungeonsNeoForge.loadingContextEventBus:Lnet/neoforged/bus/api/IEventBus;
+      28: invokedynamic #48,  0             // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+      33: invokeinterface #37,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      38: return
+
+  private static void onWorldLoad(net.neoforged.neoforge.event.level.LevelEvent$Load);
+    Code:
+       0: invokestatic  #49                 // Method bakeConfig:()V
+       3: return
+
+  private static void onConfigChange(net.neoforged.fml.event.config.ModConfigEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #54                 // Method net/neoforged/fml/event/config/ModConfigEvent.getConfig:()Lnet/neoforged/fml/config/ModConfig;
+       4: invokevirtual #60                 // Method net/neoforged/fml/config/ModConfig.getSpec:()Lnet/neoforged/fml/config/IConfigSpec;
+       7: getstatic     #13                 // Field com/yungnickyoung/minecraft/betterdungeons/config/BDConfigNeoForge.SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+      10: if_acmpne     16
+      13: invokestatic  #49                 // Method bakeConfig:()V
+      16: return
+
+  private static void bakeConfig();
+    Code:
+       0: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterdungeons/BetterDungeonsCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule;
+       3: getfield      #72                 // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule.general:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$General;
+       6: getstatic     #78                 // Field com/yungnickyoung/minecraft/betterdungeons/config/BDConfigNeoForge.general:Lcom/yungnickyoung/minecraft/betterdungeons/config/ConfigGeneralNeoForge;
+       9: getfield      #81                 // Field com/yungnickyoung/minecraft/betterdungeons/config/ConfigGeneralNeoForge.enableHeads:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      12: invokevirtual #87                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      15: checkcast     #93                 // class java/lang/Boolean
+      18: invokevirtual #95                 // Method java/lang/Boolean.booleanValue:()Z
+      21: putfield      #99                 // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$General.enableHeads:Z
+      24: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterdungeons/BetterDungeonsCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule;
+      27: getfield      #72                 // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule.general:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$General;
+      30: getstatic     #78                 // Field com/yungnickyoung/minecraft/betterdungeons/config/BDConfigNeoForge.general:Lcom/yungnickyoung/minecraft/betterdungeons/config/ConfigGeneralNeoForge;
+      33: getfield      #104                // Field com/yungnickyoung/minecraft/betterdungeons/config/ConfigGeneralNeoForge.enableNetherBlocks:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      36: invokevirtual #87                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      39: checkcast     #93                 // class java/lang/Boolean
+      42: invokevirtual #95                 // Method java/lang/Boolean.booleanValue:()Z
+      45: putfield      #107                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$General.enableNetherBlocks:Z
+      48: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterdungeons/BetterDungeonsCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule;
+      51: getfield      #109                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule.zombieDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$ZombieDungeon;
+      54: getstatic     #113                // Field com/yungnickyoung/minecraft/betterdungeons/config/BDConfigNeoForge.zombieDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/config/ConfigZombieDungeonNeoForge;
+      57: getfield      #116                // Field com/yungnickyoung/minecraft/betterdungeons/config/ConfigZombieDungeonNeoForge.zombieDungeonMaxSurfaceStaircaseLength:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      60: invokevirtual #87                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      63: checkcast     #121                // class java/lang/Integer
+      66: invokevirtual #123                // Method java/lang/Integer.intValue:()I
+      69: putfield      #127                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$ZombieDungeon.zombieDungeonMaxSurfaceStaircaseLength:I
+      72: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterdungeons/BetterDungeonsCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule;
+      75: getfield      #132                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule.smallDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$SmallDungeon;
+      78: getstatic     #136                // Field com/yungnickyoung/minecraft/betterdungeons/config/BDConfigNeoForge.smallDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallDungeonsNeoForge;
+      81: getfield      #139                // Field com/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallDungeonsNeoForge.bannerMaxCount:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      84: invokevirtual #87                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      87: checkcast     #121                // class java/lang/Integer
+      90: invokevirtual #123                // Method java/lang/Integer.intValue:()I
+      93: putfield      #144                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$SmallDungeon.bannerMaxCount:I
+      96: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterdungeons/BetterDungeonsCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule;
+      99: getfield      #132                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule.smallDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$SmallDungeon;
+     102: getstatic     #136                // Field com/yungnickyoung/minecraft/betterdungeons/config/BDConfigNeoForge.smallDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallDungeonsNeoForge;
+     105: getfield      #148                // Field com/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallDungeonsNeoForge.chestMinCount:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     108: invokevirtual #87                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     111: checkcast     #121                // class java/lang/Integer
+     114: invokevirtual #123                // Method java/lang/Integer.intValue:()I
+     117: putfield      #151                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$SmallDungeon.chestMinCount:I
+     120: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterdungeons/BetterDungeonsCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule;
+     123: getfield      #132                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule.smallDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$SmallDungeon;
+     126: getstatic     #136                // Field com/yungnickyoung/minecraft/betterdungeons/config/BDConfigNeoForge.smallDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallDungeonsNeoForge;
+     129: getfield      #153                // Field com/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallDungeonsNeoForge.chestMaxCount:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     132: invokevirtual #87                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     135: checkcast     #121                // class java/lang/Integer
+     138: invokevirtual #123                // Method java/lang/Integer.intValue:()I
+     141: putfield      #156                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$SmallDungeon.chestMaxCount:I
+     144: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterdungeons/BetterDungeonsCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule;
+     147: getfield      #132                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule.smallDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$SmallDungeon;
+     150: getstatic     #136                // Field com/yungnickyoung/minecraft/betterdungeons/config/BDConfigNeoForge.smallDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallDungeonsNeoForge;
+     153: getfield      #158                // Field com/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallDungeonsNeoForge.enableOreProps:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     156: invokevirtual #87                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     159: checkcast     #93                 // class java/lang/Boolean
+     162: invokevirtual #95                 // Method java/lang/Boolean.booleanValue:()Z
+     165: putfield      #161                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$SmallDungeon.enableOreProps:Z
+     168: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterdungeons/BetterDungeonsCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule;
+     171: getfield      #163                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule.smallNetherDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$SmallNetherDungeon;
+     174: getstatic     #167                // Field com/yungnickyoung/minecraft/betterdungeons/config/BDConfigNeoForge.smallNetherDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallNetherDungeonsNeoForge;
+     177: getfield      #170                // Field com/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallNetherDungeonsNeoForge.enabled:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     180: invokevirtual #87                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     183: checkcast     #93                 // class java/lang/Boolean
+     186: invokevirtual #95                 // Method java/lang/Boolean.booleanValue:()Z
+     189: putfield      #175                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$SmallNetherDungeon.enabled:Z
+     192: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterdungeons/BetterDungeonsCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule;
+     195: getfield      #163                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule.smallNetherDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$SmallNetherDungeon;
+     198: getstatic     #167                // Field com/yungnickyoung/minecraft/betterdungeons/config/BDConfigNeoForge.smallNetherDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallNetherDungeonsNeoForge;
+     201: getfield      #179                // Field com/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallNetherDungeonsNeoForge.witherSkeletonsDropWitherSkulls:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     204: invokevirtual #87                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     207: checkcast     #93                 // class java/lang/Boolean
+     210: invokevirtual #95                 // Method java/lang/Boolean.booleanValue:()Z
+     213: putfield      #182                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$SmallNetherDungeon.witherSkeletonsDropWitherSkulls:Z
+     216: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterdungeons/BetterDungeonsCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule;
+     219: getfield      #163                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule.smallNetherDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$SmallNetherDungeon;
+     222: getstatic     #167                // Field com/yungnickyoung/minecraft/betterdungeons/config/BDConfigNeoForge.smallNetherDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallNetherDungeonsNeoForge;
+     225: getfield      #184                // Field com/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallNetherDungeonsNeoForge.blazesDropBlazeRods:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     228: invokevirtual #87                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     231: checkcast     #93                 // class java/lang/Boolean
+     234: invokevirtual #95                 // Method java/lang/Boolean.booleanValue:()Z
+     237: putfield      #187                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$SmallNetherDungeon.blazesDropBlazeRods:Z
+     240: getstatic     #66                 // Field com/yungnickyoung/minecraft/betterdungeons/BetterDungeonsCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule;
+     243: getfield      #163                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule.smallNetherDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$SmallNetherDungeon;
+     246: getstatic     #167                // Field com/yungnickyoung/minecraft/betterdungeons/config/BDConfigNeoForge.smallNetherDungeons:Lcom/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallNetherDungeonsNeoForge;
+     249: getfield      #189                // Field com/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallNetherDungeonsNeoForge.bannerMaxCount:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     252: invokevirtual #87                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     255: checkcast     #121                // class java/lang/Integer
+     258: invokevirtual #123                // Method java/lang/Integer.intValue:()I
+     261: putfield      #190                // Field com/yungnickyoung/minecraft/betterdungeons/module/ConfigModule$SmallNetherDungeon.bannerMaxCount:I
+     264: return
+}
