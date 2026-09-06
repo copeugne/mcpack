@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 123 of 136. The exact queue below has 13 open rows.
+Supported provider dispositions: 124 of 136. The exact queue below has 12 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -643,7 +643,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `cloth-config-15.0.140-neoforge.jar` | `cloth-config-provider` (6e7567c7), complete payload/source binding. | RESOLVED: config-screen API; sole automatic initialization is client-guarded. No independent family. |
 | `coffee_delight-1.4.1.jar` | `coffee-delight-provider` (49445ab), test_coffee_delight_provider_scope.py | RESOLVED: Vanilla coffee-bush patch and food/item content, with no independent structure family. Full disposition below. |
 | `collective-1.21.1-8.25.jar` | `collective-provider`, `collective-services`, `collective-init`, existing `collective-mixin-plugin`; full payload/source binding. | RESOLVED: shared data, consumer entity/callback/network APIs and platform services. No independent family. |
-| `comforts-neoforge-9.0.5+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `comforts-neoforge-9.0.5+1.21.1.jar` | comforts-provider and comforts-spectrelib; focused provider test | RESOLVED: player sleeping equipment, sleep events and config support, no independent family. See Comforts membership closure below. |
 | `create-1.21.1-6.0.10.jar` | Create captures and test_create_provider_scope.py; final disposition below. | RESOLVED: Ore generation, player construction, machine behavior, GameTest fixtures and client Ponder scenes. All three embedded libraries accounted for. No independent natural structure family. |
 | `create-enchantment-industry-2.4.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `createbigcannons-5.11.6+mc.1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -7929,3 +7929,45 @@ from this source-membership check.
 Whole providers: 123 resolved, 13 open. Working groups remain 410; 100
 explicitly provisional Moog grouping decisions remain. Final canonical
 membership, family attributes, final gate and review/main delivery remain open.
+
+## Comforts membership closure
+
+Comforts membership is RESOLVED with no independent generated family.
+Archive comforts-neoforge-9.0.5+1.21.1.jar has SHA-256
+6b0fd35a1349107e08a45539adbde9683bb203febc43a3305f6fc4ac73e59615.
+The payload has 64 classes, 66 recipes, 66 advancements, 33 block loot tables
+and five tags. It contains no structure definitions or NBT templates.
+Nested SpectreLib has 53 classes, no generation data or templates, one mod
+entry and one configuration service. Its exact bytes are pinned by the parent
+and the nested SHA-256 in the source manifest and focused test.
+
+Source increments 431d2335 and 55948d4a retain 14 classes. They cover both
+automatic entries, all four Comforts services, the SpectreLib config service,
+all three common mixins, registration and the direct sleep-event handlers.
+Both captures reproduce byte-for-byte using their committed README commands.
+Comforts registers blocks, items, block entities, sleep-data attachments and
+recipe conditions. Client initialization is guarded by Dist.CLIENT. Common
+events operate player sleep, spawn-setting, wake time, effects and existing
+sleeping equipment. The mixins change sleep status and expose player sleep
+state. SpectreLib supplies config lifecycle, paths and client synchronization.
+These are player construction and utility roles, not authored world generation.
+Stop at these established roles; no generic config, networking or sleep-system
+correctness audit is needed for family membership. No runtime experiment or
+new measurement system was added.
+
+```sh
+uv run pytest -q tests/item8/test_comforts_provider_scope.py
+uv run ruff check tests/item8/test_comforts_provider_scope.py
+uv run basedpyright tests/item8/test_comforts_provider_scope.py
+```
+
+The focused case and quality checks pass. The test binds archive identities,
+payload categories, automatic entries, services, mixins and captured class and
+source hashes, rejecting escaped paths and unexplained capture files. The
+fixed two-archive test exceeded the statement style limit by two statements;
+a narrow suppression avoids introducing a helper solely for that style limit.
+Source membership does not prove gameplay compatibility or observed generation.
+
+Whole providers: 124 resolved, 12 open. Working groups remain 410 and explicit
+provisional Moog decisions remain 100. Canonical reconciliation, all required
+attributes, the final gate, review and main delivery remain incomplete.

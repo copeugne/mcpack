@@ -1,0 +1,176 @@
+Classfile comforts-neoforge-9.0.5+1.21.1.jar!/com/illusivesoulworks/comforts/mixin/MixinServerSleepStatus.class
+  Last modified Jan 24, 2026; size 1860 bytes
+  SHA-256 checksum 70f6f51538ecd03303d373cf94c9a3ba9b3e34595f8e2583af4fcc8c38edb9c1
+  Compiled from "MixinServerSleepStatus.java"
+public class com.illusivesoulworks.comforts.mixin.MixinServerSleepStatus
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // com/illusivesoulworks/comforts/mixin/MixinServerSleepStatus
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 3, attributes: 2
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Fieldref           #8.#9          // com/illusivesoulworks/comforts/mixin/MixinServerSleepStatus.sleepStatus:Lnet/minecraft/server/players/SleepStatus;
+   #8 = Class              #10            // com/illusivesoulworks/comforts/mixin/MixinServerSleepStatus
+   #9 = NameAndType        #11:#12        // sleepStatus:Lnet/minecraft/server/players/SleepStatus;
+  #10 = Utf8               com/illusivesoulworks/comforts/mixin/MixinServerSleepStatus
+  #11 = Utf8               sleepStatus
+  #12 = Utf8               Lnet/minecraft/server/players/SleepStatus;
+  #13 = Class              #14            // com/illusivesoulworks/comforts/common/util/ServerAware
+  #14 = Utf8               com/illusivesoulworks/comforts/common/util/ServerAware
+  #15 = Class              #16            // net/minecraft/server/level/ServerLevel
+  #16 = Utf8               net/minecraft/server/level/ServerLevel
+  #17 = InterfaceMethodref #13.#18        // com/illusivesoulworks/comforts/common/util/ServerAware.comforts$setServer:(Lnet/minecraft/server/level/ServerLevel;)V
+  #18 = NameAndType        #19:#20        // comforts$setServer:(Lnet/minecraft/server/level/ServerLevel;)V
+  #19 = Utf8               comforts$setServer
+  #20 = Utf8               (Lnet/minecraft/server/level/ServerLevel;)V
+  #21 = Methodref          #22.#23        // com/illusivesoulworks/comforts/common/ComfortsEvents.announceSleepStatus:(Lnet/minecraft/server/players/SleepStatus;Lnet/minecraft/server/level/ServerLevel;)Z
+  #22 = Class              #24            // com/illusivesoulworks/comforts/common/ComfortsEvents
+  #23 = NameAndType        #25:#26        // announceSleepStatus:(Lnet/minecraft/server/players/SleepStatus;Lnet/minecraft/server/level/ServerLevel;)Z
+  #24 = Utf8               com/illusivesoulworks/comforts/common/ComfortsEvents
+  #25 = Utf8               announceSleepStatus
+  #26 = Utf8               (Lnet/minecraft/server/players/SleepStatus;Lnet/minecraft/server/level/ServerLevel;)Z
+  #27 = Methodref          #28.#29        // org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+  #28 = Class              #30            // org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #29 = NameAndType        #31:#6         // cancel:()V
+  #30 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #31 = Utf8               cancel
+  #32 = Utf8               RuntimeVisibleAnnotations
+  #33 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #34 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #35 = Utf8               Code
+  #36 = Utf8               LineNumberTable
+  #37 = Utf8               LocalVariableTable
+  #38 = Utf8               this
+  #39 = Utf8               Lcom/illusivesoulworks/comforts/mixin/MixinServerSleepStatus;
+  #40 = Utf8               comforts$onInit
+  #41 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #42 = Utf8               serverAware
+  #43 = Utf8               Lcom/illusivesoulworks/comforts/common/util/ServerAware;
+  #44 = Utf8               ci
+  #45 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #46 = Utf8               StackMapTable
+  #47 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #48 = Utf8               at
+  #49 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #50 = Utf8               value
+  #51 = Utf8               TAIL
+  #52 = Utf8               method
+  #53 = Utf8               comforts$onAnnounceSleepStatus
+  #54 = Utf8               HEAD
+  #55 = Utf8               cancellable
+  #56 = Integer            1
+  #57 = Utf8               SourceFile
+  #58 = Utf8               MixinServerSleepStatus.java
+  #59 = Utf8               RuntimeInvisibleAnnotations
+  #60 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #61 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+{
+  private net.minecraft.server.players.SleepStatus sleepStatus;
+    descriptor: Lnet/minecraft/server/players/SleepStatus;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #33()
+        org.spongepowered.asm.mixin.Shadow
+      1: #34()
+        org.spongepowered.asm.mixin.Final
+
+  public com.illusivesoulworks.comforts.mixin.MixinServerSleepStatus();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 15: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/illusivesoulworks/comforts/mixin/MixinServerSleepStatus;
+
+  private void comforts$onInit(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=4, args_size=2
+         0: aload_0
+         1: getfield      #7                  // Field sleepStatus:Lnet/minecraft/server/players/SleepStatus;
+         4: astore_3
+         5: aload_3
+         6: instanceof    #13                 // class com/illusivesoulworks/comforts/common/util/ServerAware
+         9: ifeq          27
+        12: aload_3
+        13: checkcast     #13                 // class com/illusivesoulworks/comforts/common/util/ServerAware
+        16: astore_2
+        17: aload_2
+        18: aload_0
+        19: checkcast     #15                 // class net/minecraft/server/level/ServerLevel
+        22: invokeinterface #17,  2           // InterfaceMethod com/illusivesoulworks/comforts/common/util/ServerAware.comforts$setServer:(Lnet/minecraft/server/level/ServerLevel;)V
+        27: return
+      LineNumberTable:
+        line 27: 0
+        line 28: 17
+        line 30: 27
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           17      10     2 serverAware   Lcom/illusivesoulworks/comforts/common/util/ServerAware;
+            0      28     0  this   Lcom/illusivesoulworks/comforts/mixin/MixinServerSleepStatus;
+            0      28     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 1
+        frame_type = 27 /* same */
+    RuntimeVisibleAnnotations:
+      0: #47(#48=[@#49(#50=s#51)],#52=[s#5])
+        org.spongepowered.asm.mixin.injection.Inject(
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="TAIL"
+          )]
+          method=["<init>"]
+        )
+
+  private void comforts$onAnnounceSleepStatus(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #7                  // Field sleepStatus:Lnet/minecraft/server/players/SleepStatus;
+         4: aload_0
+         5: checkcast     #15                 // class net/minecraft/server/level/ServerLevel
+         8: invokestatic  #21                 // Method com/illusivesoulworks/comforts/common/ComfortsEvents.announceSleepStatus:(Lnet/minecraft/server/players/SleepStatus;Lnet/minecraft/server/level/ServerLevel;)Z
+        11: ifeq          18
+        14: aload_1
+        15: invokevirtual #27                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+        18: return
+      LineNumberTable:
+        line 39: 0
+        line 40: 14
+        line 42: 18
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      19     0  this   Lcom/illusivesoulworks/comforts/mixin/MixinServerSleepStatus;
+            0      19     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 1
+        frame_type = 18 /* same */
+    RuntimeVisibleAnnotations:
+      0: #47(#48=[@#49(#50=s#54)],#52=[s#25],#55=Z#56)
+        org.spongepowered.asm.mixin.injection.Inject(
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          method=["announceSleepStatus"]
+          cancellable=true
+        )
+}
+SourceFile: "MixinServerSleepStatus.java"
+RuntimeInvisibleAnnotations:
+  0: #60(#50=[c#61])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ServerLevel;]
+    )

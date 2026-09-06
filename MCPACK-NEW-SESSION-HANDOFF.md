@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Comforts membership is resolved with no independent family. Source increments
+431d2335 and 55948d4a bind sleeping-equipment registration, sleep events and
+nested SpectreLib config entries. All captures reproduce exactly; the focused
+test and quality checks pass. Whole providers: 124 resolved, 12 open. Working
+groups remain 410 and explicit provisional Moog decisions remain 100. Continue
+provider membership and canonical reconciliation before detailed attributes.
+Stop generic Comforts sleep/config/network tracing. Final Item 8 acceptance,
+clean review and main merge remain open.
+
+
 CC:Tweaked membership is resolved with no independent family. Reuse source
 increments 602c594a, 67708b9f, 8d0af4df and a66abd1c (31 classes). Retain
 the treasure-disk pool additions to ten existing vanilla loot tables as
