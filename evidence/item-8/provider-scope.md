@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 50 of 136. The exact queue below has 86 open rows.
+Supported provider dispositions: 51 of 136. The exact queue below has 85 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -549,7 +549,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `DungeonsArise-1.21.1-2.1.68-release.jar` | `wda-provider-scope` | RESOLVED: see WDA structure-provider disposition below. |
 | `FarmersDelight-1.21.1-1.3.2.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `GlitchCore-neoforge-1.21.1-2.1.0.2.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `IllagerInvasion-v21.1.6-1.21.1-NeoForge.jar` | `pool-codecs` | Reconcile existing roots, all components and additional feature/entry routes. |
+| `IllagerInvasion-v21.1.6-1.21.1-NeoForge.jar` | `illagerinvasion-provider`, `illagerinvasion-extensible-enums` (e0f2c9a), existing pool codecs, test_illagerinvasion_provider_scope.py | RESOLVED: Five existing roots, thirteen mansion replacement components and encounter/loot modifications. Bundled enum library has no independent family; disconnected pillager pool/template preserved below. |
 | `LeavesBeGone-v21.1.1-1.21.1-NeoForge.jar` | `leavesbegone-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Leaf ticking and chunk tick persistence; no authored structure contribution. See small utility provider dispositions below. |
 | `Patchouli-1.21.1-93-NEOFORGE.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `PuzzlesLib-v21.1.52-1.21.1-NeoForge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -1356,3 +1356,54 @@ this parent/path. The smallest necessary extension is a second exact pinned
 parent/path/hash case in that existing path. This resolves a concrete uncovered
 entry boundary, not a new measurement framework or audit of enum internals.
 Provider count remains 50 resolved, 86 open until the parent disposition passes.
+
+## Illager Invasion provider candidate disposition
+
+Source e0f2c9a preserves the directly relevant parent entry, registry, callback,
+configuration, mixin and generator classes, plus all sixteen nested Extensible
+Enums classes. Both captures reproduce exactly. The focused check binds both
+annotated entries in each archive, every declared mixin, all source identities,
+and the exact nested archive identity. It accounts for every parent file and
+every nested file; no unexplained data category, service or nested executable
+remains. The parent has 499 files, including 137 classes and 203 visual assets.
+
+Five packaged roots match the captured runtime registry: firecaller_hut,
+illager_fort, illusioner_tower, labyrinth and sorcerer_hut. Four use vanilla
+jigsaw; Labyrinth delegates to vanilla jigsaw assembly and requires the resulting
+stub Y to be at most 47. This is an existing root's placement condition, not a
+new family. The no-liquid pool element implementations are reused from the
+existing pool-codec evidence.
+
+Of 25 packaged pools, 24 occur in these root graphs. The disconnected pool is
+illagerinvasion:mobs/pillager. Of 63 packaged templates, 49 occur in the graphs;
+the remainder is the corresponding pillager template and thirteen vanilla-
+namespace woodland-mansion replacements. The exact replacement IDs are preserved
+in the focused check. All five graphs have no missing resources or unresolved
+pool-element codecs. These facts describe potential component relationships,
+not successful world generation.
+
+| Contribution | Candidate disposition |
+| --- | --- |
+| Five existing roots | Existing authored candidate families; retain their component graphs and placement conditions. |
+| Thirteen woodland-mansion templates | Replacement components of the existing mansion family. Do not count them as thirteen independent structures. Effective whole-stack resource selection remains an attribute/input reconciliation task. |
+| WoodlandMansionPieceMixin | Handles custom mob markers within existing mansion pieces. Entity creation, persistence and insertion requests are authored encounter provenance; no new layout. |
+| Disconnected pillager pool/template | Component unused by the inspected provider routes. Preserve it without promoting an entity template to a family or asserting that external consumers cannot use it. |
+| Mob, raid, patrol, villager-goal and loot callbacks | Modifications and encounter/loot sources for existing content. No separate authored layout or feature-based structure route. |
+| Bundled Extensible Enums | Caller-supplied enum extension, used here for raid member registration. No generation resources, templates or independent family; both declared mixin lists are empty. |
+
+Other packaged data is loot, recipes/unlock advancements, tags and trim material.
+No configured feature, placed feature, script, additional root mechanism or
+unassigned structure component is present. Remaining gameplay classes implement
+entities, AI, items, block/menu behavior, rendering and data generation consumed
+by the inspected entries. This candidate pass does not audit unrelated combat or
+enum mutation internals or certify shared-library correctness.
+
+```sh
+uv run pytest -q tests/item8/test_illagerinvasion_provider_scope.py
+uv run ruff check tests/item8/test_illagerinvasion_provider_scope.py
+uv run basedpyright tests/item8/test_illagerinvasion_provider_scope.py
+```
+
+Two focused cases pass; Ruff and Basedpyright pass. No runtime measurement or
+baseline change. Provider dispositions: 51 of 136 resolved, 85 open. Continue
+candidate completeness before canonical grouping and detailed attributes.
