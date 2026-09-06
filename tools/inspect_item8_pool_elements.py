@@ -1485,6 +1485,17 @@ CLASSES: tuple[str, ...] = (
     "com/aetherteam/cumulus/mixin/mixins/client/LevelStorageSourceMixin.class",
     "com/aetherteam/nitrogen/Nitrogen.class",
     "com/aetherteam/nitrogen/event/listeners/TooltipListeners.class",
+    "com/aetherteam/aether/data/ReloadListeners$RecipeReloadListener.class",
+    "com/aetherteam/aether/data/ReloadListeners$BannerReloadListener.class",
+    "com/aetherteam/cumulus/platform/NeoForgePlatformHelper.class",
+    "com/aetherteam/nitrogen/world/trunkplacer/NitrogenTrunkPlacerTypes.class",
+    "com/aetherteam/nitrogen/world/trunkplacer/BaseHookedTrunkPlacer.class",
+    "com/aetherteam/nitrogen/world/trunkplacer/HookedTrunkPlacer.class",
+    "com/aetherteam/nitrogen/world/biomemodifier/NitrogenBiomeModifierSerializers.class",
+    "com/aetherteam/nitrogen/world/biomemodifier/AddMobChargeBiomeModifier.class",
+    "com/aetherteam/nitrogen/world/foliageplacer/AetherPineFoliagePlacer.class",
+    "com/aetherteam/nitrogen/world/foliageplacer/HookedFoliagePlacer.class",
+    "com/aetherteam/nitrogen/world/foliageplacer/NitrogenFoliagePlacerTypes.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
