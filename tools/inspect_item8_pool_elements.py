@@ -205,6 +205,8 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "de/cristelknight/cristellib/StructureConfigToggle.class",
+    "de/cristelknight/cristellib/StructureConfigPlacement.class",
     "de/cristelknight/cristellib/StructureConfig.class",
     "de/cristelknight/cristellib/util/Util.class",
     "de/cristelknight/cristellib/data/ReadData.class",
