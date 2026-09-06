@@ -75,6 +75,7 @@ ARCHIVES = frozenset(
         "integrated_stronghold-1.1.4+1.21.1-neoforge.jar",
         "adorabuild-structures-2.11.0-neoforge-1.21.3.jar",
         "[Neoforge]ctov-3.6.3.jar",
+        "Terralith_1.21.1_v2.6.2_Neoforge.jar",
         "AI-Improvements-1.21-0.5.3.jar",
         "Almanac-1.21.1-2-neoforge-1.5.2.jar",
         "libraryferret-neoforge-1.21.1-4.0.0.jar",
@@ -98,6 +99,7 @@ ARCHIVES = frozenset(
     }
 )
 GENERATION_PREFIXES = (
+    "net/stardustlabs/terralith/",
     "rbasamoyai/ritchiesprojectilelib/",
     "architectury_inject_RitchiesProjectileLib_",
     "com/github/theredbrain/bundleapi/",
@@ -702,6 +704,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 ))
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
                     "com/scouter/oceansdelight/OceansDelight.class",
+                    "net/stardustlabs/terralith/TerralithNeoforge.class",
+                    "net/stardustlabs/terralith/TerralithNeoforgeClient.class",
                     "rbasamoyai/ritchiesprojectilelib/neoforge/RitchiesProjectileLibNeoForge.class",
                     "rbasamoyai/ritchiesprojectilelib/neoforge/RPLNeoForgeClient.class",
                     "rbasamoyai/ritchiesprojectilelib/network/neoforge/RPLNetworkImpl.class",
