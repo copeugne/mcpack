@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+The three family-decision test failures found after the crashed-ship increment
+are resolved narrowly: absence from the pool trace no longer forces obsolete
+generic UNKNOWN prose for custom generators with separate component evidence.
+All 87 affected family and source/component cases pass; scoped checks pass.
+No inventory finding or remaining uncertainty was changed. Continue the named
+family/provider membership work, with 90 providers resolved and 46 open.
+
 BetterEnd crashed-ship family membership is now recorded in family-decisions.json
 and the rebuilt working inventory. Its independent placement and erosion make it
 one standalone wreck family despite reuse of the vanilla End-city ship template.

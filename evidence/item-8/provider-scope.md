@@ -2729,6 +2729,25 @@ tests/item8/test_family_decisions.py --lf --tb=short`; raw output is retained at
 `evidence/raw/item8/crashed-ship-family-regressions.log`. This is not a claim
 that the full family-decision gate passes.
 
+The follow-up correction removes only the two blanket assertions that an
+untraced custom generator must retain the original generic UNKNOWN prose.
+Pool tracing cannot establish that claim. The registry membership, definition,
+pool-backed missing-component comparisons and evidence-hash assertions remain.
+No family decision, missing-resource finding or uncertainty was changed. Existing
+Explorations, Bronze dungeon, cloud, mansion and monument source/component tests
+cover the independent evidence; they are included in the affected validation:
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_explorations_provider_scope.py tests/item8/test_aether_bronze_components.py tests/item8/test_aether_cloud_source.py tests/item8/test_mansion_components.py tests/item8/test_monument_components.py --tb=short
+uv run ruff check tests/item8/test_family_decisions.py
+uv run basedpyright tests/item8/test_family_decisions.py
+```
+
+All 87 affected cases pass, with zero scoped Ruff or Basedpyright findings.
+The preceding three failures are preserved as the rejected pre-fix result.
+This resolves the assertion defect only; provider coverage and Item 8 completion
+remain open.
+
 The earlier crashed-ship uncertainty is narrowed by existing packaged evidence,
 without another source capture or world run. Its configured feature is embedded
 inside `data/betterend/worldgen/placed_feature/crashed_ship.json`; absence of a
