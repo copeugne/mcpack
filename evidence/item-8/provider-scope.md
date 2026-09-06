@@ -1834,3 +1834,53 @@ BetterEnd's remaining census area is other feature consumers. Root, template,
 common-mixin, compatibility and these modifier contribution checks stay closed.
 Overall provider counts remain 53 resolved and 83 open. Whole Wover provider
 coverage and Item 8 completion are not claimed by this consumer-specific result.
+
+### BetterEnd remaining feature-type reconciliation
+
+Source 936f990 captures the remaining 84 feature-package classes; together with
+the existing captures, all 94 classes in world/features are preserved exactly
+once. Source 7431ddd binds the seven delegated plant growth implementations,
+their base and EndBlocks registration. Both new captures reproduce exactly.
+Their manifests are respectively
+8ff7d86a2ca142e9a4fc4eac7bfee020c9e5301be3cb894ad7b42015578d0254 and
+2252cf72f8e265ab1b314a98677c758eb0735264a09707e1d5595a8b1e908d16.
+These are source-class counts, not family counts.
+
+All 63 custom types referenced by the packaged configured features and inline
+placed-feature definitions have one explicit role in
+test_betterend_remaining_feature_types_have_explicit_roles. Every type is also
+present in the preserved EndFeatures registration body. The exhaustive partition
+is four previously recorded authored/landmark candidate routes, 22 terrain or
+cave consumers, and 37 vegetation/ecological-nest routes. Four additional vanilla
+types are ore, random_patch, vegetation_patch and multiface_growth.
+
+| Feature group | Disposition |
+| --- | --- |
+| building_list_feature, crashed_ship | Existing architectural choices and crashed-ship candidate. Reuse the earlier template and placement accounting. |
+| fallen_pillar, obsidian_pillar_basement | Existing named landmark-versus-terrain candidates. Final canonical grouping remains open. |
+| Arches, spires, crystals, obsidian boulder, ore layers, ponds/lakes, sulphur formations and vents | Terrain/mineral placement. Configurations and placement implementations supply the materials and shape, not another authored building/encounter family. |
+| Round/tunnel caves, cave populator and stalactite features | Cave terrain and the previously bound cave-biome decoration consumers. |
+| Trees, fungi, shrubs, vines, aquatic and scatter plants | Vegetation placement and growth. Configuration/base/inner classes are component consumers, not families. |
+| glow_pillar_feature | Registered GlowingPillarSeedBlock grows roots, leaves and luminophor. Vegetation, distinct from the obsidian-pillar candidates. |
+| menger_sponge_feature | Places wet sponge blocks in its underwater placement path. Ecological resource, not a constructed sponge-shaped dungeon. |
+| silk_moth_nest | Places the nest block beneath appropriate foliage. Ecological nest, not an authored encounter structure. |
+| dragon_bone_ore | Inline vanilla ore placement replacing end stone with dragon-bone blocks. A mineral deposit, not a separately assembled skeleton structure. |
+
+The new delegated-plant source binds BlueVine, EndLily, EndLotus, GlowingPillar,
+Hydralux, Lanceleaf and NeonCactus fields to their concrete growth consumers.
+No assumption about vegetation rests solely on a seed/sapling filename.
+NBTFeature configuration and BuildingListFeature/CrashedShip inner classes remain
+components of their already enumerated routes; they do not add template choices.
+
+Twelve focused BetterEnd cases pass, including complete feature-package identity
+coverage, the exhaustive configured-type partition and registration bindings.
+Ruff and Basedpyright pass after correcting a path-expression formatting conflict.
+The source reproduction commands are in the two new source READMEs; use the
+existing focused test commands above.
+
+The final packaged-resource join remains before whole-provider closure. The five
+files under data/betterend/datapacks contain only the Nourish food-tag extension
+and its pack metadata, not additional generation data. Preserve this inspection
+with the final payload accounting. Do not recapture or reclassify the 94 feature
+classes. Overall provider counts remain 53 resolved and 83 open until that final
+join is accepted; canonical family grouping and attributes remain separate.

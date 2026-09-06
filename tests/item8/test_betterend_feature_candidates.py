@@ -3,6 +3,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+import re
 from collections import Counter
 from io import BytesIO
 from pathlib import Path
@@ -16,6 +17,102 @@ from mcpack_evidence.item8_templates import template_summary
 
 if TYPE_CHECKING:
     from pydantic import JsonValue
+
+
+def test_betterend_remaining_feature_types_have_explicit_roles() -> None:
+    roles = {
+        "existing_authored_candidates": {
+            "building_list_feature", "crashed_ship", "fallen_pillar", "obsidian_pillar_basement",
+        },
+        "terrain_and_cave_consumers": {
+            "arch_feature", "big_aurora_crystal", "cave_chunk_populator", "desert_lake",
+            "floating_spire", "geyser", "ice_star", "obsidian_boulder", "ore_layer",
+            "overworld_island", "pond_with_waterfall", "round_cave", "single_block_feature",
+            "smaragdant_crystal", "spire", "stalactite_cluster", "stalactite_feature",
+            "sulphur_hill", "sulphuric_lake", "surface_vent", "thin_arch_feature", "tunel_cave",
+        },
+        "vegetation_and_ecological_nest": {
+            "amaranita_patch", "blue_vine_feature", "bush_feature", "bush_with_outer_feature",
+            "cave_pumpkin", "charnia_feature", "double_plant_feature", "dragon_helix_tree",
+            "dragon_tree", "end_lily_feature", "end_lotus_feature", "end_lotus_leaf_feature",
+            "filalux_feature", "gigantic_amaranita", "glow_pillar_feature", "helix_tree",
+            "hydralux_feature", "jellyshroom", "lacugrove", "lanceleaf_feature",
+            "large_amaranita", "lucernia", "lumecorn", "menger_sponge_feature",
+            "mossy_glowshroom", "neon_cactus", "pythadendron_tree", "silk_moth_nest",
+            "single_inverted_scatter_feature", "single_plant_feature", "tenanea", "tenanea_bush",
+            "umbrella_tree", "underwater_plant_feature", "vine_feature", "wall_plant_feature",
+            "wall_plant_on_log_feature",
+        },
+    }
+    assigned = [name for names in roles.values() for name in names]
+    assert len(assigned) == len(set(assigned)) == 63
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    types: set[str] = set()
+    with ZipFile(source.path) as archive:
+        for name in archive.namelist():
+            if not name.endswith(".json"):
+                continue
+            if name.startswith("data/betterend/worldgen/configured_feature/"):
+                definition = cast("dict[str, JsonValue]", json.loads(archive.read(name)))
+                types.add(str(definition["type"]))
+            elif name.startswith("data/betterend/worldgen/placed_feature/"):
+                definition = cast("dict[str, JsonValue]", json.loads(archive.read(name)))
+                feature = definition["feature"]
+                if isinstance(feature, dict):
+                    types.add(str(feature["type"]))
+    assert types == {"betterend:" + name for name in assigned} | {
+        "minecraft:ore", "minecraft:random_patch", "minecraft:vegetation_patch",
+        "minecraft:multiface_growth",
+    }
+    directory = Path("evidence/item-8/sources/betterend-feature-scope/BetterEnd-21.0.31.jar")
+    registration = (directory / "org.betterx.betterend.registry.EndFeatures.txt").read_text()
+    body = registration.split("  public static void register(", 1)[1].split(
+        "  public static void onRegister(", 1)[0]
+    registered = set(re.findall(r"// String ([a-z0-9_]+)", body))
+    assert set(assigned) <= registered
+
+
+def test_betterend_complete_feature_package_and_delegated_growth_are_preserved() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    directories = {
+        "betterend-feature-scope":
+            "7a3fe03fddacad093573ad808d94b41463643acf11df321dc2b7a6fdeb5dd30d",
+        "betterend-entry-template-consumers":
+            "22dee10074c502f7026b266335c5d2966a47374504ae836d2f1da17e79a895d8",
+        "betterend-pillar-end-hooks":
+            "f39ee57a16f67349f29e98bfdd3fe2acf567b39b9d56f737f9d8d3655f860e04",
+        "betterend-platform-portal-consumers":
+            "816d2f16a1da5e6778d7d4f1f5a00104444dc94403d430c752c141926b0f8f0c",
+        "betterend-remaining-root-consumers":
+            "eb0d8ea37b2766dc0081c0e84035d9c37168758023bb33400d3028ef73363dbd",
+        "betterend-remaining-features":
+            "8ff7d86a2ca142e9a4fc4eac7bfee020c9e5301be3cb894ad7b42015578d0254",
+        "betterend-delegated-plants":
+            "2252cf72f8e265ab1b314a98677c758eb0735264a09707e1d5595a8b1e908d16",
+    }
+    captured: set[str] = set()
+    prefix = "org/betterx/betterend/world/features/"
+    with ZipFile(source.path) as archive:
+        for name, digest in directories.items():
+            directory = Path("evidence/item-8/sources") / name
+            raw = (directory / "identities.json").read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == digest
+            for row in cast("list[dict[str, str]]", json.loads(raw)):
+                assert row["archive"] == source.name
+                assert row["archive_sha256"] == source.sha256
+                assert hashlib.sha256(archive.read(row["class"])).hexdigest() == (
+                    row["class_sha256"]
+                )
+                raw = (directory / row["disassembly"]).read_bytes()
+                assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+                if row["class"].startswith(prefix):
+                    assert row["class"] not in captured
+                    captured.add(row["class"])
+        assert len(captured) == 94
+        assert captured == {n for n in archive.namelist()
+                            if n.startswith(prefix) and n.endswith(".class")}
 
 
 def test_betterend_biome_modifiers_bind_existing_candidate_consumers() -> None:
