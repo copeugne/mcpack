@@ -8956,3 +8956,25 @@ SHA-256: f119b21e5b24961e14a1614af19f27c9c7dd8f4d1b352dcf5a496c10be15fbc3.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nether-landmarks-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-nether-landmarks-r2.json
 ```
+
+### Voyager benches, paths and harvest heaps, 2026-09-07
+
+Views delivered at 77146722 and preserved template contents resolve four
+provisional decisions. Benches retain five seating/accessory alternatives; paths
+retain two landscaped route alternatives. Haystack and pile become one harvest
+heap family with five material/layout alternatives across both retained roots.
+The shared heap motif, rather than a common root or loot table alone, supports
+the merge. Full definitions and template ownership remain in the variants map.
+No functional seating, transport, observed generation or reward equality is
+inferred from these source interpretations. Diagram limitations remain explicit.
+
+Thirteen affected cases pass, including direct root/definition preservation for
+the merge. Scoped Ruff/Basedpyright pass. Working groups: 407. Explicit provisional
+remainder: 49, all Voyager. Nonregistry reconciliation, eleven required attributes
+and final review/merge remain incomplete. Inventory refresh follows.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mvs or voyager_harvest'
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+```
