@@ -1556,6 +1556,21 @@ CLASSES: tuple[str, ...] = (
     "io/github/razordevs/deep_aether/world/biomes/DARegion.class",
     "io/github/razordevs/deep_aether/world/biomes/DARareRegion.class",
     "io/github/razordevs/deep_aether/world/biomes/DASurfaceData.class",
+    "net/regions_unexplored/RegionsUnexplored.class",
+    "net/regions_unexplored/RegionsUnexploredNeo.class",
+    "net/regions_unexplored/RegionsUnexploredNeoClient.class",
+    "net/regions_unexplored/client/ParticleRegistration.class",
+    "net/regions_unexplored/RUConfigCondition.class",
+    "net/regions_unexplored/lithostitched/RULithostitched.class",
+    "net/regions_unexplored/mixin/BiomeMixin.class",
+    "net/regions_unexplored/mixin/CropPlacerMixin.class",
+    "net/regions_unexplored/mixin/EatBlockGoalMixin.class",
+    "net/regions_unexplored/mixin/NetherrackBlockMixin.class",
+    "net/regions_unexplored/mixin/TrunkPlacerDirtMixin.class",
+    "net/regions_unexplored/mixin/VillagerProfessionAccessor.class",
+    "net/regions_unexplored/mixin/WorldCarverMixin.class",
+    "net/regions_unexplored/mixin/removals/BiomeListMixin.class",
+    "net/regions_unexplored/mixin/removals/HolderLookupMixin.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1730,6 +1745,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     and not name.endswith("ConfigModuleNeoForge.class")
                 )
                 verbose |= source.name == "deep_aether-1.21.1-1.1.5.1.jar"
+                verbose |= name.startswith(("net/regions_unexplored/mixin/",
+                                            "net/regions_unexplored/RegionsUnexplored"))
                 verbose |= name == "com/aetherteam/aether/Aether.class"
                 verbose |= name.startswith("com/aetherteam/aether/event/listeners/")
                 verbose |= name.startswith(("com/aetherteam/cumulus/", "com/aetherteam/nitrogen/"))
