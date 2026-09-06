@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 115 of 136. The exact queue below has 21 open rows.
+Supported provider dispositions: 116 of 136. The exact queue below has 20 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -678,7 +678,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `oceansdelight-neoforge-1.0.4-1.21.1.jar` | `oceansdelight-provider` (2b575d8), test_oceansdelight_provider_scope.py | RESOLVED: Food content and four existing aquatic-mob loot declarations; no independent family. See Ocean's Delight disposition below. |
 | `owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `player-animation-lib-forge-2.0.4+1.21.1.jar` | Source d1d22f75; test_small_utility_provider_scope.py | RESOLVED: Client-only animation entry and client mixins; no independent family. See Player Animator disposition below. |
-| `polymorph-neoforge-1.1.0+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `polymorph-neoforge-1.1.0+1.21.1.jar` | 0b9f0152 entries; 562005f3 startup; 48f73c41 events; e4e27ae2 ticker. | RESOLVED: existing-container recipe selection and recipe data, no independent generated family. See Polymorph membership closure. |
 | `prickle-neoforge-1.21.1-21.1.11.jar` | Sources eb9670dc and 4e7468fb; test_config_library_provider_scope.py | RESOLVED: Configuration adapters, platform lookup and initialization; no independent family. See configuration library disposition below. |
 | `quickrightclick-1.21.1-1.9.jar` | `quick-right-click-provider`, `quick-right-click-placement`, `collective-mixin-plugin`; full payload/source binding. | RESOLVED: player-operated tables/storage and temporary beds/shulkers. No independent family. |
 | `railways-0.2.1+neoforge-mc1.21.1.jar` | Provider entry eaa7a6b, player assembly 0e7edb0, common hooks d17d854; test_railways_provider_scope.py | RESOLVED: Construction, player vehicles, existing-block/entity behavior, data migration and visual/network support. No independent structure family. See final Railways disposition below. |
@@ -7463,3 +7463,37 @@ nested equivalence assertion into its own focused case. All 20 new captured
 classes reproduce exactly using the three source README commands. Whole providers:
 115 resolved, 21 open. Working groups remain 410 and 100 explicitly provisional
 Moog records still require canonical decisions. Item 8 is not complete.
+
+
+## Polymorph membership closure
+
+Exact archive polymorph-neoforge-1.1.0+1.21.1.jar, SHA-256
+bec8118978adeb052de9c4eaf9a595830621d82515a764f32f9c8a4dd52ab94b.
+Full payload: 98 classes, 16 translations, six GUI sprites, three services and
+12 other metadata/documentation files. No data, templates or nested archives.
+
+Sources 0b9f0152, 562005f3, 48f73c41 and e4e27ae2 bind the sole automatic
+entry, all three services, 15 core common hooks, five declared integration
+hooks, their plugin and startup/runtime delegates. Initialization registers
+recipe-data attachments, five client-bound and three server-bound packet
+handlers, furnace/crafter recipe-data factories and existing-menu associations.
+Chunk and server-level hooks supply recipe context around existing block ticks.
+Other hooks support recipe caches, crafting/smithing selection and recipe-viewer
+transfers. These are not structure-generation paths.
+
+Common events handle container/disconnect state and periodic watched-block
+updates. BlockEntityTicker starts with an empty map, removes invalid entries
+and ticks recipe data for registered existing block entities. FastBench support
+updates the selected crafting result and synchronizes it. The NeoForge integration
+service offers FastBench conditionally on mod presence. Integration hooks are
+conditional; their plugin may log and disable failed modules with warnings.
+Preserve that limitation instead of treating readiness as compatibility proof.
+
+No independent generated family. Do not expand membership into generic recipe
+implementation, inventory/network safety or widget internals.
+`uv run pytest -q tests/item8/test_polymorph_provider_scope.py` passes, binding
+the full payload, entry/hook/service coverage and all 33 source identities.
+Scoped Ruff/Basedpyright pass after wrapping one long assertion. Four captures
+reproduce exactly using their README commands. Whole providers: 116 resolved,
+20 open. Working groups remain 410; 100 explicitly provisional Moog records
+still require canonical decisions. Item 8 is not complete.

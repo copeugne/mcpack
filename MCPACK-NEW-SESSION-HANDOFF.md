@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Polymorph membership is resolved from 0b9f0152, 562005f3, 48f73c41 and e4e27ae2:
+existing-container recipe selection and recipe data, no independent generated
+family. Full payload/entry/hook/service/source binding and scoped checks pass.
+Whole providers: 116 resolved, 20 open. Working groups remain 410 and 100
+explicitly provisional Moog records require canonical decisions. Continue
+provider membership and grouping before detailed attributes. Preserve warning
+dispositions; do not trace generic Polymorph recipes, widgets or network internals.
+
+
 Better Combat membership is resolved from aea34a1e, c6a937e0 and 60b953d3:
 player combat/weapon attributes, no independent generated family. Reuse Tiny
 Config captures: every nested member byte matches Village Taverns despite
