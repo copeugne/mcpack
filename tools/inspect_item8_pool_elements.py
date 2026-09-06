@@ -35,6 +35,7 @@ ARCHIVES = frozenset(
     {
         MAPPED_SERVER.name,
         PATCHED_SERVER.name,
+        "player-animation-lib-forge-2.0.4+1.21.1.jar",
         "emi_ores-1.2+1.21.1+neoforge.jar",
         "dummmmmmy-1.21-2.0.12-neoforge.jar",
         "prickle-neoforge-1.21.1-21.1.11.jar",
@@ -198,6 +199,8 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "dev/kosmx/playerAnim/forge/ForgeClientEvent.class",
+    "dev/kosmx/playerAnim/impl/mixin/MixinConfig.class",
     "cc/abbie/emi_ores/EmiOres.class",
     "cc/abbie/emi_ores/mixin/accessor/BlockMatchTestAccessor.class",
     "cc/abbie/emi_ores/mixin/accessor/BlockStateMatchTestAccessor.class",
