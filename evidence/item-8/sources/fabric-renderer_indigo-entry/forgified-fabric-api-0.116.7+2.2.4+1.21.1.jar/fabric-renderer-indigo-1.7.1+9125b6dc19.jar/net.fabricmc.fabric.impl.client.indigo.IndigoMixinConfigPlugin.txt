@@ -1,0 +1,107 @@
+Compiled from "IndigoMixinConfigPlugin.java"
+public class net.fabricmc.fabric.impl.client.indigo.IndigoMixinConfigPlugin implements org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin {
+  private static final java.lang.String JSON_KEY_DISABLE_INDIGO = "fabric-renderer-api-v1:contains_renderer";
+
+  private static final java.lang.String JSON_KEY_FORCE_COMPATIBILITY = "fabric-renderer-indigo:force_compatibility";
+
+  private static boolean needsLoad;
+
+  private static boolean indigoApplicable;
+
+  private static boolean forceCompatibility;
+
+  public net.fabricmc.fabric.impl.client.indigo.IndigoMixinConfigPlugin();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  private static void loadIfNeeded();
+    Code:
+       0: getstatic     #7                  // Field needsLoad:Z
+       3: ifeq          84
+       6: invokestatic  #13                 // Method net/neoforged/fml/loading/LoadingModList.get:()Lnet/neoforged/fml/loading/LoadingModList;
+       9: invokevirtual #19                 // Method net/neoforged/fml/loading/LoadingModList.getMods:()Ljava/util/List;
+      12: invokeinterface #23,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      17: astore_0
+      18: aload_0
+      19: invokeinterface #29,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      24: ifeq          80
+      27: aload_0
+      28: invokeinterface #35,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      33: checkcast     #39                 // class net/neoforged/neoforgespi/language/IModInfo
+      36: astore_1
+      37: aload_1
+      38: invokeinterface #41,  1           // InterfaceMethod net/neoforged/neoforgespi/language/IModInfo.getModProperties:()Ljava/util/Map;
+      43: astore_2
+      44: aload_2
+      45: ldc           #45                 // String fabric-renderer-api-v1:contains_renderer
+      47: invokeinterface #47,  2           // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      52: ifeq          62
+      55: iconst_0
+      56: putstatic     #53                 // Field indigoApplicable:Z
+      59: goto          77
+      62: aload_2
+      63: ldc           #56                 // String fabric-renderer-indigo:force_compatibility
+      65: invokeinterface #47,  2           // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      70: ifeq          77
+      73: iconst_1
+      74: putstatic     #58                 // Field forceCompatibility:Z
+      77: goto          18
+      80: iconst_0
+      81: putstatic     #7                  // Field needsLoad:Z
+      84: return
+
+  static boolean shouldApplyIndigo();
+    Code:
+       0: invokestatic  #61                 // Method loadIfNeeded:()V
+       3: getstatic     #53                 // Field indigoApplicable:Z
+       6: ireturn
+
+  static boolean shouldForceCompatibility();
+    Code:
+       0: invokestatic  #61                 // Method loadIfNeeded:()V
+       3: getstatic     #58                 // Field forceCompatibility:Z
+       6: ireturn
+
+  public void onLoad(java.lang.String);
+    Code:
+       0: return
+
+  public java.lang.String getRefMapperConfig();
+    Code:
+       0: aconst_null
+       1: areturn
+
+  public boolean shouldApplyMixin(java.lang.String, java.lang.String);
+    Code:
+       0: invokestatic  #64                 // Method shouldApplyIndigo:()Z
+       3: ireturn
+
+  public void acceptTargets(java.util.Set<java.lang.String>, java.util.Set<java.lang.String>);
+    Code:
+       0: return
+
+  public java.util.List<java.lang.String> getMixins();
+    Code:
+       0: aconst_null
+       1: areturn
+
+  public void preApply(java.lang.String, org.objectweb.asm.tree.ClassNode, java.lang.String, org.spongepowered.asm.mixin.extensibility.IMixinInfo);
+    Code:
+       0: return
+
+  public void postApply(java.lang.String, org.objectweb.asm.tree.ClassNode, java.lang.String, org.spongepowered.asm.mixin.extensibility.IMixinInfo);
+    Code:
+       0: return
+
+  static {};
+    Code:
+       0: iconst_1
+       1: putstatic     #7                  // Field needsLoad:Z
+       4: iconst_1
+       5: putstatic     #53                 // Field indigoApplicable:Z
+       8: iconst_0
+       9: putstatic     #58                 // Field forceCompatibility:Z
+      12: return
+}
