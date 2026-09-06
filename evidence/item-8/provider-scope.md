@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 105 of 136. The exact queue below has 31 open rows.
+Supported provider dispositions: 106 of 136. The exact queue below has 30 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -640,7 +640,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Include nested C2ME module entry/mixin paths; distinguish generation scheduling changes from content providers. |
 | `cc-tweaked-1.21.1-forge-1.119.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `chipped-neoforge-1.21.1-4.0.2.jar` | `chipped-provider`, `chipped-crafting`; complete payload binding. | RESOLVED: building blocks, recipes, player workbench crafting and block behavior. No independent structure family. |
-| `cloth-config-15.0.140-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `cloth-config-15.0.140-neoforge.jar` | `cloth-config-provider` (6e7567c7), complete payload/source binding. | RESOLVED: config-screen API; sole automatic initialization is client-guarded. No independent family. |
 | `coffee_delight-1.4.1.jar` | `coffee-delight-provider` (49445ab), test_coffee_delight_provider_scope.py | RESOLVED: Vanilla coffee-bush patch and food/item content, with no independent structure family. Full disposition below. |
 | `collective-1.21.1-8.25.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `comforts-neoforge-9.0.5+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -7124,3 +7124,28 @@ uv run basedpyright tests/item8/test_small_utility_provider_scope.py tools/inspe
 26 utility cases and scoped quality checks pass. Whole providers: 105 resolved,
 31 open. No family added. Finish remaining provider contributions and canonical
 Moog grouping before detailed attributes.
+
+
+### Cloth Config membership resolved
+
+Source 6e7567c7 binds the sole automatic entry. Its constructor calls the demo
+mods-page registration only under Dist.isClient; the dedicated-server path
+returns without registration. There are no mixin declarations, services or
+nested archives. Access transformation exposes three client GUI members.
+No independent generated family. Consumer config APIs do not define sites.
+
+The focused case accounts for 633 classes, exactly 23 language files, three
+GUI textures and ten metadata/license/icon/access-transformer files, including
+shaded TOML/YAML library metadata. There are no data resources or structure
+templates. It checks every automatic entry and binds the preserved disassembly
+to the frozen archive. Independent r1 reproduction matches byte for byte.
+
+```sh
+uv run pytest -q tests/item8/test_small_utility_provider_scope.py
+uv run ruff check tests/item8/test_small_utility_provider_scope.py tools/inspect_item8_pool_elements.py
+uv run basedpyright tests/item8/test_small_utility_provider_scope.py tools/inspect_item8_pool_elements.py
+```
+
+27 utility cases and scoped quality checks pass. Whole providers: 106 resolved,
+30 open. No family added. Do not trace further config-screen helpers; continue
+remaining provider dispositions and canonical Moog grouping before attributes.
