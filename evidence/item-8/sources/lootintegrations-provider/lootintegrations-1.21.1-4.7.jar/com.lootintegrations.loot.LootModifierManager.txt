@@ -1,0 +1,634 @@
+Classfile lootintegrations-1.21.1-4.7.jar!/com/lootintegrations/loot/LootModifierManager.class
+  Last modified Jun 11, 2025; size 7138 bytes
+  SHA-256 checksum 90143e9734a74a937fc72df7b8b98ffc4a732fad8dbab322e962a4b5f9ae8dfc
+  Compiled from "LootModifierManager.java"
+public class com.lootintegrations.loot.LootModifierManager extends net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/lootintegrations/loot/LootModifierManager
+  super_class: #10                        // net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener
+  interfaces: 0, fields: 4, methods: 6, attributes: 3
+Constant pool:
+    #1 = Fieldref           #2.#3         // com/lootintegrations/loot/LootModifierManager.GSON:Lcom/google/gson/Gson;
+    #2 = Class              #4            // com/lootintegrations/loot/LootModifierManager
+    #3 = NameAndType        #5:#6         // GSON:Lcom/google/gson/Gson;
+    #4 = Utf8               com/lootintegrations/loot/LootModifierManager
+    #5 = Utf8               GSON
+    #6 = Utf8               Lcom/google/gson/Gson;
+    #7 = String             #8            // loot
+    #8 = Utf8               loot
+    #9 = Methodref          #10.#11       // net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener."<init>":(Lcom/google/gson/Gson;Ljava/lang/String;)V
+   #10 = Class              #12           // net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener
+   #11 = NameAndType        #13:#14       // "<init>":(Lcom/google/gson/Gson;Ljava/lang/String;)V
+   #12 = Utf8               net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener
+   #13 = Utf8               <init>
+   #14 = Utf8               (Lcom/google/gson/Gson;Ljava/lang/String;)V
+   #15 = Methodref          #16.#17       // net/minecraft/world/level/storage/loot/LootContext.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+   #16 = Class              #18           // net/minecraft/world/level/storage/loot/LootContext
+   #17 = NameAndType        #19:#20       // getLevel:()Lnet/minecraft/server/level/ServerLevel;
+   #18 = Utf8               net/minecraft/world/level/storage/loot/LootContext
+   #19 = Utf8               getLevel
+   #20 = Utf8               ()Lnet/minecraft/server/level/ServerLevel;
+   #21 = Methodref          #22.#23       // net/minecraft/server/level/ServerLevel.getServer:()Lnet/minecraft/server/MinecraftServer;
+   #22 = Class              #24           // net/minecraft/server/level/ServerLevel
+   #23 = NameAndType        #25:#26       // getServer:()Lnet/minecraft/server/MinecraftServer;
+   #24 = Utf8               net/minecraft/server/level/ServerLevel
+   #25 = Utf8               getServer
+   #26 = Utf8               ()Lnet/minecraft/server/MinecraftServer;
+   #27 = Methodref          #28.#29       // com/lootintegrations/LootintegrationsMod.getLootTableId:(Lnet/minecraft/world/level/storage/loot/LootTable;Lnet/minecraft/server/MinecraftServer;)Lnet/minecraft/resources/ResourceLocation;
+   #28 = Class              #30           // com/lootintegrations/LootintegrationsMod
+   #29 = NameAndType        #31:#32       // getLootTableId:(Lnet/minecraft/world/level/storage/loot/LootTable;Lnet/minecraft/server/MinecraftServer;)Lnet/minecraft/resources/ResourceLocation;
+   #30 = Utf8               com/lootintegrations/LootintegrationsMod
+   #31 = Utf8               getLootTableId
+   #32 = Utf8               (Lnet/minecraft/world/level/storage/loot/LootTable;Lnet/minecraft/server/MinecraftServer;)Lnet/minecraft/resources/ResourceLocation;
+   #33 = Fieldref           #2.#34        // com/lootintegrations/loot/LootModifierManager.applying:Ljava/util/Set;
+   #34 = NameAndType        #35:#36       // applying:Ljava/util/Set;
+   #35 = Utf8               applying
+   #36 = Utf8               Ljava/util/Set;
+   #37 = InterfaceMethodref #38.#39       // java/util/Set.contains:(Ljava/lang/Object;)Z
+   #38 = Class              #40           // java/util/Set
+   #39 = NameAndType        #41:#42       // contains:(Ljava/lang/Object;)Z
+   #40 = Utf8               java/util/Set
+   #41 = Utf8               contains
+   #42 = Utf8               (Ljava/lang/Object;)Z
+   #43 = Fieldref           #2.#44        // com/lootintegrations/loot/LootModifierManager.lootOptionsMap:Ljava/util/Map;
+   #44 = NameAndType        #45:#46       // lootOptionsMap:Ljava/util/Map;
+   #45 = Utf8               lootOptionsMap
+   #46 = Utf8               Ljava/util/Map;
+   #47 = InterfaceMethodref #48.#49       // java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+   #48 = Class              #50           // java/util/Map
+   #49 = NameAndType        #51:#52       // get:(Ljava/lang/Object;)Ljava/lang/Object;
+   #50 = Utf8               java/util/Map
+   #51 = Utf8               get
+   #52 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #53 = Class              #54           // java/util/List
+   #54 = Utf8               java/util/List
+   #55 = InterfaceMethodref #53.#56       // java/util/List.isEmpty:()Z
+   #56 = NameAndType        #57:#58       // isEmpty:()Z
+   #57 = Utf8               isEmpty
+   #58 = Utf8               ()Z
+   #59 = InterfaceMethodref #38.#60       // java/util/Set.add:(Ljava/lang/Object;)Z
+   #60 = NameAndType        #61:#42       // add:(Ljava/lang/Object;)Z
+   #61 = Utf8               add
+   #62 = InterfaceMethodref #53.#63       // java/util/List.iterator:()Ljava/util/Iterator;
+   #63 = NameAndType        #64:#65       // iterator:()Ljava/util/Iterator;
+   #64 = Utf8               iterator
+   #65 = Utf8               ()Ljava/util/Iterator;
+   #66 = InterfaceMethodref #67.#68       // java/util/Iterator.hasNext:()Z
+   #67 = Class              #69           // java/util/Iterator
+   #68 = NameAndType        #70:#58       // hasNext:()Z
+   #69 = Utf8               java/util/Iterator
+   #70 = Utf8               hasNext
+   #71 = InterfaceMethodref #67.#72       // java/util/Iterator.next:()Ljava/lang/Object;
+   #72 = NameAndType        #73:#74       // next:()Ljava/lang/Object;
+   #73 = Utf8               next
+   #74 = Utf8               ()Ljava/lang/Object;
+   #75 = Class              #76           // com/lootintegrations/loot/GlobalLootModifierIntegration
+   #76 = Utf8               com/lootintegrations/loot/GlobalLootModifierIntegration
+   #77 = Methodref          #75.#78       // com/lootintegrations/loot/GlobalLootModifierIntegration.doApply:(Ljava/util/List;Lnet/minecraft/world/level/storage/loot/LootContext;Lnet/minecraft/world/level/storage/loot/LootTable;)V
+   #78 = NameAndType        #79:#80       // doApply:(Ljava/util/List;Lnet/minecraft/world/level/storage/loot/LootContext;Lnet/minecraft/world/level/storage/loot/LootTable;)V
+   #79 = Utf8               doApply
+   #80 = Utf8               (Ljava/util/List;Lnet/minecraft/world/level/storage/loot/LootContext;Lnet/minecraft/world/level/storage/loot/LootTable;)V
+   #81 = InterfaceMethodref #38.#82       // java/util/Set.remove:(Ljava/lang/Object;)Z
+   #82 = NameAndType        #83:#42       // remove:(Ljava/lang/Object;)Z
+   #83 = Utf8               remove
+   #84 = InterfaceMethodref #48.#85       // java/util/Map.clear:()V
+   #85 = NameAndType        #86:#87       // clear:()V
+   #86 = Utf8               clear
+   #87 = Utf8               ()V
+   #88 = InterfaceMethodref #48.#89       // java/util/Map.entrySet:()Ljava/util/Set;
+   #89 = NameAndType        #90:#91       // entrySet:()Ljava/util/Set;
+   #90 = Utf8               entrySet
+   #91 = Utf8               ()Ljava/util/Set;
+   #92 = InterfaceMethodref #38.#63       // java/util/Set.iterator:()Ljava/util/Iterator;
+   #93 = Class              #94           // java/util/Map$Entry
+   #94 = Utf8               java/util/Map$Entry
+   #95 = InterfaceMethodref #93.#96       // java/util/Map$Entry.getKey:()Ljava/lang/Object;
+   #96 = NameAndType        #97:#74       // getKey:()Ljava/lang/Object;
+   #97 = Utf8               getKey
+   #98 = Class              #99           // net/minecraft/resources/ResourceLocation
+   #99 = Utf8               net/minecraft/resources/ResourceLocation
+  #100 = Methodref          #98.#101      // net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+  #101 = NameAndType        #102:#103     // getNamespace:()Ljava/lang/String;
+  #102 = Utf8               getNamespace
+  #103 = Utf8               ()Ljava/lang/String;
+  #104 = String             #105          // lootintegrations
+  #105 = Utf8               lootintegrations
+  #106 = Methodref          #107.#108     // java/lang/String.equals:(Ljava/lang/Object;)Z
+  #107 = Class              #109          // java/lang/String
+  #108 = NameAndType        #110:#42      // equals:(Ljava/lang/Object;)Z
+  #109 = Utf8               java/lang/String
+  #110 = Utf8               equals
+  #111 = Fieldref           #28.#112      // com/lootintegrations/LootintegrationsMod.LOGGER:Lorg/apache/logging/log4j/Logger;
+  #112 = NameAndType        #113:#114     // LOGGER:Lorg/apache/logging/log4j/Logger;
+  #113 = Utf8               LOGGER
+  #114 = Utf8               Lorg/apache/logging/log4j/Logger;
+  #115 = Methodref          #107.#116     // java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+  #116 = NameAndType        #117:#118     // valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+  #117 = Utf8               valueOf
+  #118 = Utf8               (Ljava/lang/Object;)Ljava/lang/String;
+  #119 = InvokeDynamic      #0:#120       // #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #120 = NameAndType        #121:#122     // makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #121 = Utf8               makeConcatWithConstants
+  #122 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+  #123 = InterfaceMethodref #124.#125     // org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+  #124 = Class              #126          // org/apache/logging/log4j/Logger
+  #125 = NameAndType        #127:#128     // warn:(Ljava/lang/String;)V
+  #126 = Utf8               org/apache/logging/log4j/Logger
+  #127 = Utf8               warn
+  #128 = Utf8               (Ljava/lang/String;)V
+  #129 = InterfaceMethodref #93.#130      // java/util/Map$Entry.getValue:()Ljava/lang/Object;
+  #130 = NameAndType        #131:#74      // getValue:()Ljava/lang/Object;
+  #131 = Utf8               getValue
+  #132 = Class              #133          // com/google/gson/JsonElement
+  #133 = Utf8               com/google/gson/JsonElement
+  #134 = Methodref          #75.#135      // com/lootintegrations/loot/GlobalLootModifierIntegration.read:(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;)Lcom/lootintegrations/loot/GlobalLootModifierIntegration;
+  #135 = NameAndType        #136:#137     // read:(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;)Lcom/lootintegrations/loot/GlobalLootModifierIntegration;
+  #136 = Utf8               read
+  #137 = Utf8               (Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;)Lcom/lootintegrations/loot/GlobalLootModifierIntegration;
+  #138 = Fieldref           #75.#139      // com/lootintegrations/loot/GlobalLootModifierIntegration.integratedTables:Ljava/util/Map;
+  #139 = NameAndType        #140:#46      // integratedTables:Ljava/util/Map;
+  #140 = Utf8               integratedTables
+  #141 = InterfaceMethodref #48.#142      // java/util/Map.keySet:()Ljava/util/Set;
+  #142 = NameAndType        #143:#91      // keySet:()Ljava/util/Set;
+  #143 = Utf8               keySet
+  #144 = InvokeDynamic      #1:#145       // #1:apply:()Ljava/util/function/Function;
+  #145 = NameAndType        #146:#147     // apply:()Ljava/util/function/Function;
+  #146 = Utf8               apply
+  #147 = Utf8               ()Ljava/util/function/Function;
+  #148 = InterfaceMethodref #48.#149      // java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+  #149 = NameAndType        #150:#151     // computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+  #150 = Utf8               computeIfAbsent
+  #151 = Utf8               (Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+  #152 = InterfaceMethodref #53.#60       // java/util/List.add:(Ljava/lang/Object;)Z
+  #153 = Class              #154          // java/lang/Error
+  #154 = Utf8               java/lang/Error
+  #155 = InvokeDynamic      #2:#120       // #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #156 = InterfaceMethodref #124.#157     // org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Throwable;)V
+  #157 = NameAndType        #127:#158     // warn:(Ljava/lang/String;Ljava/lang/Throwable;)V
+  #158 = Utf8               (Ljava/lang/String;Ljava/lang/Throwable;)V
+  #159 = Methodref          #2.#160       // com/lootintegrations/loot/LootModifierManager.apply:(Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #160 = NameAndType        #146:#161     // apply:(Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #161 = Utf8               (Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #162 = Class              #163          // java/util/ArrayList
+  #163 = Utf8               java/util/ArrayList
+  #164 = Methodref          #162.#165     // java/util/ArrayList."<init>":()V
+  #165 = NameAndType        #13:#87       // "<init>":()V
+  #166 = Class              #167          // java/util/HashMap
+  #167 = Utf8               java/util/HashMap
+  #168 = Methodref          #166.#165     // java/util/HashMap."<init>":()V
+  #169 = Class              #170          // com/google/gson/GsonBuilder
+  #170 = Utf8               com/google/gson/GsonBuilder
+  #171 = Methodref          #169.#165     // com/google/gson/GsonBuilder."<init>":()V
+  #172 = Methodref          #169.#173     // com/google/gson/GsonBuilder.setPrettyPrinting:()Lcom/google/gson/GsonBuilder;
+  #173 = NameAndType        #174:#175     // setPrettyPrinting:()Lcom/google/gson/GsonBuilder;
+  #174 = Utf8               setPrettyPrinting
+  #175 = Utf8               ()Lcom/google/gson/GsonBuilder;
+  #176 = Methodref          #169.#177     // com/google/gson/GsonBuilder.disableHtmlEscaping:()Lcom/google/gson/GsonBuilder;
+  #177 = NameAndType        #178:#175     // disableHtmlEscaping:()Lcom/google/gson/GsonBuilder;
+  #178 = Utf8               disableHtmlEscaping
+  #179 = Methodref          #169.#180     // com/google/gson/GsonBuilder.create:()Lcom/google/gson/Gson;
+  #180 = NameAndType        #181:#182     // create:()Lcom/google/gson/Gson;
+  #181 = Utf8               create
+  #182 = Utf8               ()Lcom/google/gson/Gson;
+  #183 = String             #184          // lootintegrations:ignored
+  #184 = Utf8               lootintegrations:ignored
+  #185 = Methodref          #98.#186      // net/minecraft/resources/ResourceLocation.tryParse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #186 = NameAndType        #187:#188     // tryParse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #187 = Utf8               tryParse
+  #188 = Utf8               (Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #189 = Methodref          #190.#191     // net/minecraft/tags/ItemTags.create:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+  #190 = Class              #192          // net/minecraft/tags/ItemTags
+  #191 = NameAndType        #181:#193     // create:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+  #192 = Utf8               net/minecraft/tags/ItemTags
+  #193 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+  #194 = Fieldref           #2.#195       // com/lootintegrations/loot/LootModifierManager.IGNORED_FOR_LOOT:Lnet/minecraft/tags/TagKey;
+  #195 = NameAndType        #196:#197     // IGNORED_FOR_LOOT:Lnet/minecraft/tags/TagKey;
+  #196 = Utf8               IGNORED_FOR_LOOT
+  #197 = Utf8               Lnet/minecraft/tags/TagKey;
+  #198 = Class              #199          // java/util/HashSet
+  #199 = Utf8               java/util/HashSet
+  #200 = Methodref          #198.#165     // java/util/HashSet."<init>":()V
+  #201 = Utf8               Signature
+  #202 = Utf8               Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Ljava/util/List<Lcom/lootintegrations/loot/GlobalLootModifierIntegration;>;>;
+  #203 = Utf8               Lnet/minecraft/tags/TagKey<Lnet/minecraft/world/item/Item;>;
+  #204 = Utf8               Ljava/util/Set<Lnet/minecraft/resources/ResourceLocation;>;
+  #205 = Utf8               Code
+  #206 = Utf8               LineNumberTable
+  #207 = Utf8               LocalVariableTable
+  #208 = Utf8               this
+  #209 = Utf8               Lcom/lootintegrations/loot/LootModifierManager;
+  #210 = Utf8               applyTo
+  #211 = Utf8               (Lnet/minecraft/world/level/storage/loot/LootContext;Ljava/util/List;Lnet/minecraft/world/level/storage/loot/LootTable;)V
+  #212 = Utf8               modifier
+  #213 = Utf8               Lcom/lootintegrations/loot/GlobalLootModifierIntegration;
+  #214 = Utf8               context
+  #215 = Utf8               Lnet/minecraft/world/level/storage/loot/LootContext;
+  #216 = Utf8               items
+  #217 = Utf8               Ljava/util/List;
+  #218 = Utf8               lootTable
+  #219 = Utf8               Lnet/minecraft/world/level/storage/loot/LootTable;
+  #220 = Utf8               lootTableID
+  #221 = Utf8               Lnet/minecraft/resources/ResourceLocation;
+  #222 = Utf8               modifiers
+  #223 = Utf8               LocalVariableTypeTable
+  #224 = Utf8               Ljava/util/List<Lnet/minecraft/world/item/ItemStack;>;
+  #225 = Utf8               Ljava/util/List<Lcom/lootintegrations/loot/GlobalLootModifierIntegration;>;
+  #226 = Utf8               StackMapTable
+  #227 = Utf8               (Lnet/minecraft/world/level/storage/loot/LootContext;Ljava/util/List<Lnet/minecraft/world/item/ItemStack;>;Lnet/minecraft/world/level/storage/loot/LootTable;)V
+  #228 = Utf8               integratedTable
+  #229 = Utf8               e
+  #230 = Utf8               Ljava/lang/Error;
+  #231 = Utf8               entry
+  #232 = Utf8               Ljava/util/Map$Entry;
+  #233 = Utf8               resourceLocationJsonElementMap
+  #234 = Utf8               iResourceManager
+  #235 = Utf8               Lnet/minecraft/server/packs/resources/ResourceManager;
+  #236 = Utf8               iProfiler
+  #237 = Utf8               Lnet/minecraft/util/profiling/ProfilerFiller;
+  #238 = Utf8               Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+  #239 = Utf8               Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+  #240 = Utf8               (Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #241 = Utf8               (Ljava/lang/Object;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #242 = Utf8               MethodParameters
+  #243 = Utf8               lambda$apply$0
+  #244 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Ljava/util/List;
+  #245 = Utf8               <clinit>
+  #246 = Utf8               SourceFile
+  #247 = Utf8               LootModifierManager.java
+  #248 = Utf8               BootstrapMethods
+  #249 = String             #250          // Ignoring loot modifiers for:\u0001 use this folder name:lootintegrations
+  #250 = Utf8               Ignoring loot modifiers for:\u0001 use this folder name:lootintegrations
+  #251 = MethodType         #52           //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #252 = MethodHandle       6:#253        // REF_invokeStatic com/lootintegrations/loot/LootModifierManager.lambda$apply$0:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/List;
+  #253 = Methodref          #2.#254       // com/lootintegrations/loot/LootModifierManager.lambda$apply$0:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/List;
+  #254 = NameAndType        #243:#244     // lambda$apply$0:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/List;
+  #255 = MethodType         #244          //  (Lnet/minecraft/resources/ResourceLocation;)Ljava/util/List;
+  #256 = String             #257          // Failed to load loot modifier file:\u0001
+  #257 = Utf8               Failed to load loot modifier file:\u0001
+  #258 = MethodHandle       6:#259        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #259 = Methodref          #260.#261     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #260 = Class              #262          // java/lang/invoke/StringConcatFactory
+  #261 = NameAndType        #121:#263     // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #262 = Utf8               java/lang/invoke/StringConcatFactory
+  #263 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #264 = MethodHandle       6:#265        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #265 = Methodref          #266.#267     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #266 = Class              #268          // java/lang/invoke/LambdaMetafactory
+  #267 = NameAndType        #269:#270     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #268 = Utf8               java/lang/invoke/LambdaMetafactory
+  #269 = Utf8               metafactory
+  #270 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #271 = Utf8               InnerClasses
+  #272 = Utf8               Entry
+  #273 = Class              #274          // java/lang/invoke/MethodHandles$Lookup
+  #274 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #275 = Class              #276          // java/lang/invoke/MethodHandles
+  #276 = Utf8               java/lang/invoke/MethodHandles
+  #277 = Utf8               Lookup
+{
+  public static final java.util.Map<net.minecraft.resources.ResourceLocation, java.util.List<com.lootintegrations.loot.GlobalLootModifierIntegration>> lootOptionsMap;
+    descriptor: Ljava/util/Map;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    Signature: #202                         // Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Ljava/util/List<Lcom/lootintegrations/loot/GlobalLootModifierIntegration;>;>;
+
+  private static final com.google.gson.Gson GSON;
+    descriptor: Lcom/google/gson/Gson;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+
+  public static final net.minecraft.tags.TagKey<net.minecraft.world.item.Item> IGNORED_FOR_LOOT;
+    descriptor: Lnet/minecraft/tags/TagKey;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    Signature: #203                         // Lnet/minecraft/tags/TagKey<Lnet/minecraft/world/item/Item;>;
+
+  private static java.util.Set<net.minecraft.resources.ResourceLocation> applying;
+    descriptor: Ljava/util/Set;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Signature: #204                         // Ljava/util/Set<Lnet/minecraft/resources/ResourceLocation;>;
+
+  public com.lootintegrations.loot.LootModifierManager();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: getstatic     #1                  // Field GSON:Lcom/google/gson/Gson;
+         4: ldc           #7                  // String loot
+         6: invokespecial #9                  // Method net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener."<init>":(Lcom/google/gson/Gson;Ljava/lang/String;)V
+         9: return
+      LineNumberTable:
+        line 28: 0
+        line 29: 9
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Lcom/lootintegrations/loot/LootModifierManager;
+
+  public static void applyTo(net.minecraft.world.level.storage.loot.LootContext, java.util.List<net.minecraft.world.item.ItemStack>, net.minecraft.world.level.storage.loot.LootTable);
+    descriptor: (Lnet/minecraft/world/level/storage/loot/LootContext;Ljava/util/List;Lnet/minecraft/world/level/storage/loot/LootTable;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=7, args_size=3
+         0: aload_2
+         1: ifnonnull     5
+         4: return
+         5: aload_2
+         6: aload_0
+         7: invokevirtual #15                 // Method net/minecraft/world/level/storage/loot/LootContext.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+        10: invokevirtual #21                 // Method net/minecraft/server/level/ServerLevel.getServer:()Lnet/minecraft/server/MinecraftServer;
+        13: invokestatic  #27                 // Method com/lootintegrations/LootintegrationsMod.getLootTableId:(Lnet/minecraft/world/level/storage/loot/LootTable;Lnet/minecraft/server/MinecraftServer;)Lnet/minecraft/resources/ResourceLocation;
+        16: astore_3
+        17: aload_3
+        18: ifnonnull     22
+        21: return
+        22: getstatic     #33                 // Field applying:Ljava/util/Set;
+        25: aload_3
+        26: invokeinterface #37,  2           // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+        31: ifeq          35
+        34: return
+        35: getstatic     #43                 // Field lootOptionsMap:Ljava/util/Map;
+        38: aload_3
+        39: invokeinterface #47,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        44: checkcast     #53                 // class java/util/List
+        47: astore        4
+        49: aload         4
+        51: ifnull        126
+        54: aload         4
+        56: invokeinterface #55,  1           // InterfaceMethod java/util/List.isEmpty:()Z
+        61: ifne          126
+        64: getstatic     #33                 // Field applying:Ljava/util/Set;
+        67: aload_3
+        68: invokeinterface #59,  2           // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+        73: pop
+        74: aload         4
+        76: invokeinterface #62,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        81: astore        5
+        83: aload         5
+        85: invokeinterface #66,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        90: ifeq          116
+        93: aload         5
+        95: invokeinterface #71,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       100: checkcast     #75                 // class com/lootintegrations/loot/GlobalLootModifierIntegration
+       103: astore        6
+       105: aload         6
+       107: aload_1
+       108: aload_0
+       109: aload_2
+       110: invokevirtual #77                 // Method com/lootintegrations/loot/GlobalLootModifierIntegration.doApply:(Ljava/util/List;Lnet/minecraft/world/level/storage/loot/LootContext;Lnet/minecraft/world/level/storage/loot/LootTable;)V
+       113: goto          83
+       116: getstatic     #33                 // Field applying:Ljava/util/Set;
+       119: aload_3
+       120: invokeinterface #81,  2           // InterfaceMethod java/util/Set.remove:(Ljava/lang/Object;)Z
+       125: pop
+       126: return
+      LineNumberTable:
+        line 42: 0
+        line 44: 4
+        line 47: 5
+        line 48: 17
+        line 50: 21
+        line 53: 22
+        line 55: 34
+        line 59: 35
+        line 60: 49
+        line 62: 64
+        line 63: 74
+        line 65: 105
+        line 66: 113
+        line 67: 116
+        line 69: 126
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          105       8     6 modifier   Lcom/lootintegrations/loot/GlobalLootModifierIntegration;
+            0     127     0 context   Lnet/minecraft/world/level/storage/loot/LootContext;
+            0     127     1 items   Ljava/util/List;
+            0     127     2 lootTable   Lnet/minecraft/world/level/storage/loot/LootTable;
+           17     110     3 lootTableID   Lnet/minecraft/resources/ResourceLocation;
+           49      78     4 modifiers   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0     127     1 items   Ljava/util/List<Lnet/minecraft/world/item/ItemStack;>;
+           49      78     4 modifiers   Ljava/util/List<Lcom/lootintegrations/loot/GlobalLootModifierIntegration;>;
+      StackMapTable: number_of_entries = 6
+        frame_type = 5 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 16
+          locals = [ class net/minecraft/resources/ResourceLocation ]
+        frame_type = 12 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 47
+          locals = [ class java/util/List, class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 32
+        frame_type = 9 /* same */
+    Signature: #227                         // (Lnet/minecraft/world/level/storage/loot/LootContext;Ljava/util/List<Lnet/minecraft/world/item/ItemStack;>;Lnet/minecraft/world/level/storage/loot/LootTable;)V
+
+  protected void apply(java.util.Map<net.minecraft.resources.ResourceLocation, com.google.gson.JsonElement>, net.minecraft.server.packs.resources.ResourceManager, net.minecraft.util.profiling.ProfilerFiller);
+    descriptor: (Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=3, locals=9, args_size=4
+         0: getstatic     #43                 // Field lootOptionsMap:Ljava/util/Map;
+         3: invokeinterface #84,  1           // InterfaceMethod java/util/Map.clear:()V
+         8: aload_1
+         9: invokeinterface #88,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+        14: invokeinterface #92,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        19: astore        4
+        21: aload         4
+        23: invokeinterface #66,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        28: ifeq          216
+        31: aload         4
+        33: invokeinterface #71,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        38: checkcast     #93                 // class java/util/Map$Entry
+        41: astore        5
+        43: aload         5
+        45: invokeinterface #95,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+        50: checkcast     #98                 // class net/minecraft/resources/ResourceLocation
+        53: invokevirtual #100                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+        56: ldc           #104                // String lootintegrations
+        58: invokevirtual #106                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        61: ifne          90
+        64: getstatic     #111                // Field com/lootintegrations/LootintegrationsMod.LOGGER:Lorg/apache/logging/log4j/Logger;
+        67: aload         5
+        69: invokeinterface #95,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+        74: invokestatic  #115                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        77: invokedynamic #119,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        82: invokeinterface #123,  2          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+        87: goto          21
+        90: aload         5
+        92: invokeinterface #95,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+        97: checkcast     #98                 // class net/minecraft/resources/ResourceLocation
+       100: aload         5
+       102: invokeinterface #129,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       107: checkcast     #132                // class com/google/gson/JsonElement
+       110: invokestatic  #134                // Method com/lootintegrations/loot/GlobalLootModifierIntegration.read:(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;)Lcom/lootintegrations/loot/GlobalLootModifierIntegration;
+       113: astore        6
+       115: aload         6
+       117: getfield      #138                // Field com/lootintegrations/loot/GlobalLootModifierIntegration.integratedTables:Ljava/util/Map;
+       120: invokeinterface #141,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+       125: invokeinterface #92,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       130: astore        7
+       132: aload         7
+       134: invokeinterface #66,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       139: ifeq          183
+       142: aload         7
+       144: invokeinterface #71,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       149: checkcast     #98                 // class net/minecraft/resources/ResourceLocation
+       152: astore        8
+       154: getstatic     #43                 // Field lootOptionsMap:Ljava/util/Map;
+       157: aload         8
+       159: invokedynamic #144,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+       164: invokeinterface #148,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+       169: checkcast     #53                 // class java/util/List
+       172: aload         6
+       174: invokeinterface #152,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       179: pop
+       180: goto          132
+       183: goto          213
+       186: astore        6
+       188: getstatic     #111                // Field com/lootintegrations/LootintegrationsMod.LOGGER:Lorg/apache/logging/log4j/Logger;
+       191: aload         5
+       193: invokeinterface #95,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       198: invokestatic  #115                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       201: invokedynamic #155,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       206: aload         6
+       208: invokeinterface #156,  3          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Throwable;)V
+       213: goto          21
+       216: return
+      Exception table:
+         from    to  target type
+            90   183   186   Class java/lang/Error
+      LineNumberTable:
+        line 75: 0
+        line 76: 8
+        line 78: 43
+        line 80: 64
+        line 81: 87
+        line 86: 90
+        line 87: 115
+        line 89: 154
+        line 90: 180
+        line 95: 183
+        line 92: 186
+        line 94: 188
+        line 96: 213
+        line 97: 216
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          154      26     8 integratedTable   Lnet/minecraft/resources/ResourceLocation;
+          115      68     6 modifier   Lcom/lootintegrations/loot/GlobalLootModifierIntegration;
+          188      25     6     e   Ljava/lang/Error;
+           43     170     5 entry   Ljava/util/Map$Entry;
+            0     217     0  this   Lcom/lootintegrations/loot/LootModifierManager;
+            0     217     1 resourceLocationJsonElementMap   Ljava/util/Map;
+            0     217     2 iResourceManager   Lnet/minecraft/server/packs/resources/ResourceManager;
+            0     217     3 iProfiler   Lnet/minecraft/util/profiling/ProfilerFiller;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           43     170     5 entry   Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+            0     217     1 resourceLocationJsonElementMap   Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+      StackMapTable: number_of_entries = 7
+        frame_type = 252 /* append */
+          offset_delta = 21
+          locals = [ class java/util/Iterator ]
+        frame_type = 252 /* append */
+          offset_delta = 68
+          locals = [ class java/util/Map$Entry ]
+        frame_type = 253 /* append */
+          offset_delta = 41
+          locals = [ class com/lootintegrations/loot/GlobalLootModifierIntegration, class java/util/Iterator ]
+        frame_type = 249 /* chop */
+          offset_delta = 50
+        frame_type = 66 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Error ]
+        frame_type = 250 /* chop */
+          offset_delta = 26
+        frame_type = 250 /* chop */
+          offset_delta = 2
+    Signature: #240                         // (Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+
+  protected void apply(java.lang.Object, net.minecraft.server.packs.resources.ResourceManager, net.minecraft.util.profiling.ProfilerFiller);
+    descriptor: (Ljava/lang/Object;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+    flags: (0x1044) ACC_PROTECTED, ACC_BRIDGE, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=4, args_size=4
+         0: aload_0
+         1: aload_1
+         2: checkcast     #48                 // class java/util/Map
+         5: aload_2
+         6: aload_3
+         7: invokevirtual #159                // Method apply:(Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+        10: return
+      LineNumberTable:
+        line 20: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lcom/lootintegrations/loot/LootModifierManager;
+    MethodParameters:
+      Name                           Flags
+      <no name>                      final synthetic
+      <no name>                      final synthetic
+      <no name>                      final synthetic
+
+  private static java.util.List lambda$apply$0(net.minecraft.resources.ResourceLocation);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;)Ljava/util/List;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: new           #162                // class java/util/ArrayList
+         3: dup
+         4: invokespecial #164                // Method java/util/ArrayList."<init>":()V
+         7: areturn
+      LineNumberTable:
+        line 89: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0     e   Lnet/minecraft/resources/ResourceLocation;
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: new           #166                // class java/util/HashMap
+         3: dup
+         4: invokespecial #168                // Method java/util/HashMap."<init>":()V
+         7: putstatic     #43                 // Field lootOptionsMap:Ljava/util/Map;
+        10: new           #169                // class com/google/gson/GsonBuilder
+        13: dup
+        14: invokespecial #171                // Method com/google/gson/GsonBuilder."<init>":()V
+        17: invokevirtual #172                // Method com/google/gson/GsonBuilder.setPrettyPrinting:()Lcom/google/gson/GsonBuilder;
+        20: invokevirtual #176                // Method com/google/gson/GsonBuilder.disableHtmlEscaping:()Lcom/google/gson/GsonBuilder;
+        23: invokevirtual #179                // Method com/google/gson/GsonBuilder.create:()Lcom/google/gson/Gson;
+        26: putstatic     #1                  // Field GSON:Lcom/google/gson/Gson;
+        29: ldc           #183                // String lootintegrations:ignored
+        31: invokestatic  #185                // Method net/minecraft/resources/ResourceLocation.tryParse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+        34: invokestatic  #189                // Method net/minecraft/tags/ItemTags.create:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+        37: putstatic     #194                // Field IGNORED_FOR_LOOT:Lnet/minecraft/tags/TagKey;
+        40: new           #198                // class java/util/HashSet
+        43: dup
+        44: invokespecial #200                // Method java/util/HashSet."<init>":()V
+        47: putstatic     #33                 // Field applying:Ljava/util/Set;
+        50: return
+      LineNumberTable:
+        line 22: 0
+        line 23: 10
+        line 24: 29
+        line 31: 40
+}
+SourceFile: "LootModifierManager.java"
+BootstrapMethods:
+  0: #258 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #249 Ignoring loot modifiers for:\u0001 use this folder name:lootintegrations
+  1: #264 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #251 (Ljava/lang/Object;)Ljava/lang/Object;
+      #252 REF_invokeStatic com/lootintegrations/loot/LootModifierManager.lambda$apply$0:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/List;
+      #255 (Lnet/minecraft/resources/ResourceLocation;)Ljava/util/List;
+  2: #258 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #256 Failed to load loot modifier file:\u0001
+InnerClasses:
+  public static #272= #93 of #48;         // Entry=class java/util/Map$Entry of class java/util/Map
+  public static final #277= #273 of #275; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
