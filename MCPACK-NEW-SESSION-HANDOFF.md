@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Quick Right Click membership is resolved from 458fa978, 74487ac1 and shared
+Collective plugin 55d1c0ea. It handles player-operated tables/storage and
+temporary beds/shulkers, no independent generated family. Full payload/source
+binding and scoped checks pass. Whole providers: 109 resolved, 27 open.
+Collective itself remains open; reuse its plugin capture instead of repeating
+it. Continue remaining provider roles and canonical Moog grouping before
+attributes. No further generic Quick Right Click menu/helper inspection.
+
+
 Ranged Weapon API membership is resolved from ac503af9. It supplies ranged
 combat attributes, effects, item-use and projectile behavior, no independent
 family. Preserve combat effects for later attribution. Full payload/source

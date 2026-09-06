@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 108 of 136. The exact queue below has 28 open rows.
+Supported provider dispositions: 109 of 136. The exact queue below has 27 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -680,7 +680,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `player-animation-lib-forge-2.0.4+1.21.1.jar` | Source d1d22f75; test_small_utility_provider_scope.py | RESOLVED: Client-only animation entry and client mixins; no independent family. See Player Animator disposition below. |
 | `polymorph-neoforge-1.1.0+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `prickle-neoforge-1.21.1-21.1.11.jar` | Sources eb9670dc and 4e7468fb; test_config_library_provider_scope.py | RESOLVED: Configuration adapters, platform lookup and initialization; no independent family. See configuration library disposition below. |
-| `quickrightclick-1.21.1-1.9.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `quickrightclick-1.21.1-1.9.jar` | `quick-right-click-provider`, `quick-right-click-placement`, `collective-mixin-plugin`; full payload/source binding. | RESOLVED: player-operated tables/storage and temporary beds/shulkers. No independent family. |
 | `railways-0.2.1+neoforge-mc1.21.1.jar` | Provider entry eaa7a6b, player assembly 0e7edb0, common hooks d17d854; test_railways_provider_scope.py | RESOLVED: Construction, player vehicles, existing-block/entity behavior, data migration and visual/network support. No independent structure family. See final Railways disposition below. |
 | `ranged_weapon_api-neoforge-2.3.3+1.21.1.jar` | `ranged-weapon-provider` (ac503af9), full payload/source binding. | RESOLVED: ranged combat attributes, effects, item use and projectile mechanics. No independent family. |
 | `regions-unexplored-0.6.1-neoforge-21.1.jar` | Existing feature, component and entry captures; tree source 0f263ed, root/condition source f4ad223; focused candidate/provider tests | RESOLVED: Fallen-log candidate, Ashen trial-chamber component, terrain/vegetation, full payload and common-entry roles accounted for. Fallen-log canonical boundary remains open. See final RU disposition below. |
@@ -7225,3 +7225,35 @@ explicit accounting was corrected. No archive or raw source was changed.
 Whole providers: 108 resolved, 28 open. No family added. Do not continue generic
 weapon mechanics or damage-balance inspection; continue remaining providers
 and canonical Moog grouping before detailed attributes.
+
+
+### Quick Right Click membership resolved
+
+Sources 458fa978 and 74487ac1 bind the active NeoForge entry/event path, three
+common hooks and temporary placement. Item right-click dispatches held beds,
+tables and storage. Temporary bed/shulker placement serves immediate player
+interaction; hooks handle wake, respawn and closing storage. These operations
+can write world blocks, but are not independent generated structure families.
+This is membership evidence, not a proof of duplication safety or permissions.
+
+Source 55d1c0ea binds the external Collective mixin plugin. It filters declared
+hooks by loader/bundle eligibility, returns no additional mixins and has empty
+load/target/pre/post callbacks. Collective's full provider remains open; reuse
+this source when closing that provider. Do not duplicate shared helper tracing.
+
+All 79 Quick Right Click classes and ten other files are accounted for. The
+NeoForge metadata selects its three common hooks. Forge/Fabric descriptors and
+counterpart code are packaged alternatives, not the selected NeoForge entry.
+No data, assets, templates, services or nested archives are present. The focused
+case binds ten Quick Right Click classes and the Collective plugin to their
+frozen archives. Independent r1 captures reproduce byte for byte.
+
+```sh
+uv run pytest -q tests/item8/test_quick_right_click_provider_scope.py
+uv run ruff check tests/item8/test_quick_right_click_provider_scope.py tools/inspect_item8_pool_elements.py
+uv run basedpyright tests/item8/test_quick_right_click_provider_scope.py tools/inspect_item8_pool_elements.py
+```
+
+The focused case and scoped quality checks pass. Whole providers: 109 resolved,
+27 open. No family added. Continue remaining provider roles and canonical Moog
+grouping before detailed attributes; no further generic quick-access menu audit.
