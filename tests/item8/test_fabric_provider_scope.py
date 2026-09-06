@@ -106,6 +106,20 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
     ("module", "label", "digest", "count", "consumers"),
     [
         (
+            "fabric-message-api-v1-6.0.14+6a754fce19",
+            "fabric-message-api-v1-entry",
+            "9222255dfc0fe5fdf7b15eab08a4d6c45db376e76a6299bcc4629a08ca9a7f96",
+            2,
+            {"org/sinytra/fabric/message_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-screen-handler-api-v1-1.3.90+8dbc56dd19",
+            "fabric-screen-handler-api-v1-entry",
+            "9bf373c6282c1559ecaa14733d3b04568f1d5460e4131b7fb0c84b23601f9eb0",
+            2,
+            {"org/sinytra/fabric/screen_handler_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
             "fabric-data-attachment-api-v1-1.4.5+26d408aa19",
             "fabric-data-attachment-entry",
             "bee13b060b3c64abbb8d20e4da62404f7b4d1ee1d2e12b21e7dce2bd490daf9d",
@@ -353,6 +367,8 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert row["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / row["disassembly"]).read_bytes()).hexdigest()
             block_modules = {
+                "fabric-message-api-v1": (32, 2),
+                "fabric-screen-handler-api-v1": (9, 0),
                 "fabric-data-attachment-api-v1": (20, 1),
                 "fabric-content-registries-v0": (39, 0),
                 "fabric-data-generation-api-v1": (53, 0),
@@ -386,7 +402,8 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                 if name in {"fabric-block-view-api-v2", "fabric-game-rule-api-v1",
                             "fabric-recipe-api-v1", "fabric-command-api-v2",
                             "fabric-lifecycle-events-v1", "fabric-item-group-api-v1",
-                            "fabric-content-registries-v0", "fabric-data-generation-api-v1"}:
+                            "fabric-content-registries-v0", "fabric-data-generation-api-v1",
+                            "fabric-screen-handler-api-v1"}:
                     extras.add("META-INF/accesstransformer.cfg")
                 extras.update({
                     "fabric-data-attachment-api-v1": {
@@ -589,6 +606,13 @@ def test_fabric_v2_tag_membership() -> None:
 @pytest.mark.parametrize(
     ("module", "label", "digest", "class_count", "client_count"),
     [
+        (
+            "fabric-rendering-v1-5.1.0+1a09bd5a19",
+            "fabric-rendering-v1-entry",
+            "adb9d93ad3ff1cf27a2299424fe89e188fd41e24d8bede1957c9bb4db9b5f4e7",
+            73,
+            15,
+        ),
         (
             "fabric-model-loading-api-v1-2.1.0+6e8f52c719",
             "fabric-model_loading_api-entry",

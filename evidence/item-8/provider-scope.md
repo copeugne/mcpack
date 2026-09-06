@@ -5783,7 +5783,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar` | RESOLVED: Entry and seven common/server hooks 4de41d1, initializer 353d68f. Existing lifecycle callbacks and loaded-chunk bookkeeping; no independent family. |
 | `fabric-loot-api-v2-3.0.15+a3ee712d19.jar` | RESOLVED: Legacy loot interfaces and v3-to-v2 consumer callback forwarding; no independent family. See final loot/recipe/rule disposition below. |
 | `fabric-loot-api-v3-1.0.3+333dfad919.jar` | RESOLVED: Loot provenance, consumer reload callbacks and builder/accessor support; no independent family. See final loot/recipe/rule disposition below. |
-| `fabric-message-api-v1-6.0.14+6a754fce19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-message-api-v1-6.0.14+6a754fce19.jar` | RESOLVED: Empty initializer and chat callbacks; source 1e30004. No independent family. |
 | `fabric-model-loading-api-v1-2.1.0+6e8f52c719.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
 | `fabric-networking-api-v1-4.3.0+30a980d919.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-object-builder-api-v1-15.2.1+cc242efd19.jar` | OPEN: inspect entry and declared hook contribution roles. |
@@ -5794,11 +5794,11 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-renderer-indigo-1.7.1+9125b6dc19.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
 | `fabric-rendering-data-attachment-v1-0.3.49+73761d2e19.jar` | RESOLVED: block interface, read/accessor or climbing roles; no independent family. See below. |
 | `fabric-rendering-fluids-v1-3.1.6+a51883b219.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
-| `fabric-rendering-v1-5.1.0+1a09bd5a19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-rendering-v1-5.1.0+1a09bd5a19.jar` | RESOLVED: Client-guarded initialization and fifteen client-only hooks; source 2e5d280. No independent family. |
 | `fabric-resource-conditions-api-v1-4.3.0+5bdd099819.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-resource-loader-v0-1.3.1+4ea8954419.jar` | RESOLVED: consumer pack loading; see above. |
 | `fabric-screen-api-v1-2.0.25+0ae1214819.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
-| `fabric-screen-handler-api-v1-1.3.90+8dbc56dd19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-screen-handler-api-v1-1.3.90+8dbc56dd19.jar` | RESOLVED: Empty initializer and menu-opening support; source c5ebd6e. No independent family. |
 | `fabric-sound-api-v1-1.0.23+10b84f8419.jar` | RESOLVED: client utility, no independent server family; see below. |
 | `fabric-transfer-api-v1-5.4.3+a25cb45619.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-transitive-access-wideners-v1-6.2.0+6c854b6f19.jar` | RESOLVED: access declarations only; no code or data payload. |
@@ -6487,3 +6487,26 @@ validator was introduced. Fabric: 32 resolved modules, 11 open. Whole providers:
 90 resolved, 46 open. No family-list change. Continue remaining named modules
 and provider membership; do not reopen attachment internals without a concrete
 contradiction or resume detailed family attributes before membership is frozen.
+
+### Fabric message, screen handler and rendering membership resolved
+
+Sources 1e30004 and c5ebd6e preserve empty message/screen-handler initializers
+and both common hooks per module. Message hooks decorate chat and forward
+allow/notification callbacks for chat, game and command messages. Screen hooks
+expose menu-close policy and encode supplied extended menu-opening data. Neither
+provides a generated site. Source 2e5d280 shows rendering initialization guarded
+by Dist.isClient; all fifteen declared rendering hooks are client-only.
+
+The existing tests bind the exact archives, class/disassembly identities, full
+payloads and automatic entries: message has 32 classes and two client hooks;
+screen handler has nine classes and an access transformer; rendering has 73
+classes and fifteen client hooks. Other resources are exact loader metadata,
+icons and hook declarations. There is no generation-data payload. All 36 focused
+Fabric cases, scoped Ruff and Basedpyright pass using the commands above.
+Fabric: 35 resolved modules, eight open. Whole providers: 90 resolved, 46 open.
+No family-list change.
+
+Resource-condition source 969f1bb is delivered with independent byte-identical
+reproduction. Its initializer and ten data-loading hooks still require semantic
+reconciliation. Keep that module open; the other three dispositions do not prove
+resource-condition behavior. Reuse the delivered capture instead of recapturing.

@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric message, screen-handler and rendering membership are resolved. Sources:
+1e30004, c5ebd6e, 2e5d280. All 36 focused cases and scoped checks pass. Fabric:
+35 resolved, eight open. Whole providers: 90 resolved, 46 open. No family added.
+Resource-condition entry and ten hooks are delivered at 969f1bb but remain open
+for semantic reconciliation. Inspect that existing capture next; do not repeat
+message, screen or client rendering internals. Then continue the other named
+modules/providers and canonical grouping before detailed attributes.
+
+
 Fabric data attachment membership is resolved. Source e6aa022 exposes the
 registration callback; it consumes caller attachment types from an initially
 empty map. Existing entry and transfer captures are reused. All 33 focused
