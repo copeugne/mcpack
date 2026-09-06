@@ -1,0 +1,97 @@
+Compiled from "HyacinthPlantsFeature.java"
+public class net.regions_unexplored.world.level.feature.HyacinthPlantsFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration> {
+  public net.regions_unexplored.world.level.feature.HyacinthPlantsFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #17                 // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #31                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #35                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #39                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      14: astore        4
+      16: getstatic     #45                 // Field net/minecraft/world/level/block/Blocks.SEAGRASS:Lnet/minecraft/world/level/block/Block;
+      19: invokevirtual #51                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      22: astore        5
+      24: aload_2
+      25: bipush        8
+      27: invokeinterface #57,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      32: aload_2
+      33: bipush        8
+      35: invokeinterface #57,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      40: isub
+      41: istore        6
+      43: aload_2
+      44: bipush        8
+      46: invokeinterface #57,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      51: aload_2
+      52: bipush        8
+      54: invokeinterface #57,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      59: isub
+      60: istore        7
+      62: aload_3
+      63: getstatic     #61                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.OCEAN_FLOOR:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      66: aload         4
+      68: invokevirtual #67                 // Method net/minecraft/core/BlockPos.getX:()I
+      71: iload         6
+      73: iadd
+      74: aload         4
+      76: invokevirtual #70                 // Method net/minecraft/core/BlockPos.getZ:()I
+      79: iload         7
+      81: iadd
+      82: invokeinterface #76,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getHeight:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;II)I
+      87: istore        8
+      89: new           #63                 // class net/minecraft/core/BlockPos
+      92: dup
+      93: aload         4
+      95: invokevirtual #67                 // Method net/minecraft/core/BlockPos.getX:()I
+      98: iload         6
+     100: iadd
+     101: iload         8
+     103: aload         4
+     105: invokevirtual #70                 // Method net/minecraft/core/BlockPos.getZ:()I
+     108: iload         7
+     110: iadd
+     111: invokespecial #79                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     114: astore        9
+     116: aload_3
+     117: aload         9
+     119: invokeinterface #83,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     124: getstatic     #86                 // Field net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+     127: invokevirtual #92                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     130: ifeq          194
+     133: aload         5
+     135: aload_3
+     136: aload         9
+     138: invokevirtual #96                 // Method net/minecraft/world/level/block/state/BlockState.canSurvive:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z
+     141: ifeq          194
+     144: aload_2
+     145: bipush        7
+     147: invokeinterface #57,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     152: ifne          174
+     155: getstatic     #102                // Field net/regions_unexplored/registry/RUBlocks.HYACINTH_BLOOM:Ljava/util/function/Supplier;
+     158: invokeinterface #108,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     163: checkcast     #47                 // class net/minecraft/world/level/block/Block
+     166: invokevirtual #51                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     169: astore        5
+     171: goto          182
+     174: getstatic     #45                 // Field net/minecraft/world/level/block/Blocks.SEAGRASS:Lnet/minecraft/world/level/block/Block;
+     177: invokevirtual #51                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     180: astore        5
+     182: aload_3
+     183: aload         9
+     185: aload         5
+     187: iconst_2
+     188: invokeinterface #112,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     193: pop
+     194: iconst_1
+     195: ireturn
+}

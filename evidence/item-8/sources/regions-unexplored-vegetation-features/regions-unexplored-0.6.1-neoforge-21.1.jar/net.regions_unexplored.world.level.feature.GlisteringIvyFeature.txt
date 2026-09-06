@@ -1,0 +1,312 @@
+Compiled from "GlisteringIvyFeature.java"
+public class net.regions_unexplored.world.level.feature.GlisteringIvyFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> {
+  private static final net.minecraft.core.Direction[] DIRECTIONS;
+
+  public net.regions_unexplored.world.level.feature.GlisteringIvyFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #19                 // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #33                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #37                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #41                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      14: astore        4
+      16: aload_2
+      17: aload_3
+      18: invokeinterface #47,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      23: ifne          28
+      26: iconst_0
+      27: ireturn
+      28: aload_2
+      29: aload_3
+      30: invokevirtual #52                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      33: invokeinterface #56,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      38: astore        5
+      40: aload         5
+      42: getstatic     #62                 // Field net/minecraft/world/level/block/Blocks.NETHERRACK:Lnet/minecraft/world/level/block/Block;
+      45: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      48: ifne          72
+      51: aload         5
+      53: getstatic     #74                 // Field net/regions_unexplored/registry/RUBlocks.GLISTERING_WART:Ljava/util/function/Supplier;
+      56: invokeinterface #80,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      61: checkcast     #82                 // class net/minecraft/world/level/block/Block
+      64: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      67: ifne          72
+      70: iconst_0
+      71: ireturn
+      72: aload_0
+      73: aload_2
+      74: aload         4
+      76: aload_3
+      77: invokevirtual #86                 // Method placeRoofGlisteringWart:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+      80: aload_0
+      81: aload_2
+      82: aload         4
+      84: aload_3
+      85: invokevirtual #89                 // Method placeRoofGlisteringIvy:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+      88: iconst_1
+      89: ireturn
+
+  private void placeRoofGlisteringWart(net.minecraft.world.level.LevelAccessor, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: aload_3
+       2: getstatic     #74                 // Field net/regions_unexplored/registry/RUBlocks.GLISTERING_WART:Ljava/util/function/Supplier;
+       5: invokeinterface #80,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      10: checkcast     #82                 // class net/minecraft/world/level/block/Block
+      13: invokevirtual #103                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      16: iconst_2
+      17: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      22: pop
+      23: new           #8                  // class net/minecraft/core/BlockPos$MutableBlockPos
+      26: dup
+      27: invokespecial #112                // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+      30: astore        4
+      32: new           #8                  // class net/minecraft/core/BlockPos$MutableBlockPos
+      35: dup
+      36: invokespecial #112                // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+      39: astore        5
+      41: iconst_0
+      42: istore        6
+      44: iload         6
+      46: sipush        200
+      49: if_icmpge     250
+      52: aload         4
+      54: aload_3
+      55: aload_2
+      56: bipush        6
+      58: invokeinterface #116,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      63: aload_2
+      64: bipush        6
+      66: invokeinterface #116,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      71: isub
+      72: aload_2
+      73: iconst_2
+      74: invokeinterface #116,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      79: aload_2
+      80: iconst_5
+      81: invokeinterface #116,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      86: isub
+      87: aload_2
+      88: bipush        6
+      90: invokeinterface #116,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      95: aload_2
+      96: bipush        6
+      98: invokeinterface #116,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     103: isub
+     104: invokevirtual #120                // Method net/minecraft/core/BlockPos$MutableBlockPos.setWithOffset:(Lnet/minecraft/core/Vec3i;III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     107: pop
+     108: aload_1
+     109: aload         4
+     111: invokeinterface #121,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+     116: ifeq          244
+     119: iconst_0
+     120: istore        7
+     122: getstatic     #123                // Field DIRECTIONS:[Lnet/minecraft/core/Direction;
+     125: astore        8
+     127: aload         8
+     129: arraylength
+     130: istore        9
+     132: iconst_0
+     133: istore        10
+     135: iload         10
+     137: iload         9
+     139: if_icmpge     214
+     142: aload         8
+     144: iload         10
+     146: aaload
+     147: astore        11
+     149: aload_1
+     150: aload         5
+     152: aload         4
+     154: aload         11
+     156: invokevirtual #127                // Method net/minecraft/core/BlockPos$MutableBlockPos.setWithOffset:(Lnet/minecraft/core/Vec3i;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     159: invokeinterface #128,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     164: astore        12
+     166: aload         12
+     168: getstatic     #62                 // Field net/minecraft/world/level/block/Blocks.NETHERRACK:Lnet/minecraft/world/level/block/Block;
+     171: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     174: ifne          196
+     177: aload         12
+     179: getstatic     #74                 // Field net/regions_unexplored/registry/RUBlocks.GLISTERING_WART:Ljava/util/function/Supplier;
+     182: invokeinterface #80,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     187: checkcast     #82                 // class net/minecraft/world/level/block/Block
+     190: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     193: ifeq          199
+     196: iinc          7, 1
+     199: iload         7
+     201: iconst_1
+     202: if_icmple     208
+     205: goto          214
+     208: iinc          10, 1
+     211: goto          135
+     214: iload         7
+     216: iconst_1
+     217: if_icmpne     244
+     220: aload_1
+     221: aload         4
+     223: getstatic     #74                 // Field net/regions_unexplored/registry/RUBlocks.GLISTERING_WART:Ljava/util/function/Supplier;
+     226: invokeinterface #80,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     231: checkcast     #82                 // class net/minecraft/world/level/block/Block
+     234: invokevirtual #103                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     237: iconst_2
+     238: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     243: pop
+     244: iinc          6, 1
+     247: goto          44
+     250: return
+
+  private void placeRoofGlisteringIvy(net.minecraft.world.level.LevelAccessor, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: new           #8                  // class net/minecraft/core/BlockPos$MutableBlockPos
+       3: dup
+       4: invokespecial #112                // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+       7: astore        4
+       9: iconst_0
+      10: istore        5
+      12: iload         5
+      14: bipush        100
+      16: if_icmpge     188
+      19: aload         4
+      21: aload_3
+      22: aload_2
+      23: bipush        8
+      25: invokeinterface #116,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      30: aload_2
+      31: bipush        8
+      33: invokeinterface #116,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      38: isub
+      39: aload_2
+      40: iconst_2
+      41: invokeinterface #116,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      46: aload_2
+      47: bipush        7
+      49: invokeinterface #116,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      54: isub
+      55: aload_2
+      56: bipush        8
+      58: invokeinterface #116,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      63: aload_2
+      64: bipush        8
+      66: invokeinterface #116,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      71: isub
+      72: invokevirtual #120                // Method net/minecraft/core/BlockPos$MutableBlockPos.setWithOffset:(Lnet/minecraft/core/Vec3i;III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      75: pop
+      76: aload_1
+      77: aload         4
+      79: invokeinterface #121,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      84: ifeq          182
+      87: aload_1
+      88: aload         4
+      90: invokevirtual #140                // Method net/minecraft/core/BlockPos$MutableBlockPos.above:()Lnet/minecraft/core/BlockPos;
+      93: invokeinterface #128,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      98: astore        6
+     100: aload         6
+     102: getstatic     #62                 // Field net/minecraft/world/level/block/Blocks.NETHERRACK:Lnet/minecraft/world/level/block/Block;
+     105: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     108: ifne          130
+     111: aload         6
+     113: getstatic     #74                 // Field net/regions_unexplored/registry/RUBlocks.GLISTERING_WART:Ljava/util/function/Supplier;
+     116: invokeinterface #80,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     121: checkcast     #82                 // class net/minecraft/world/level/block/Block
+     124: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     127: ifeq          182
+     130: aload_2
+     131: iconst_1
+     132: bipush        25
+     134: invokestatic  #145                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+     137: istore        7
+     139: aload_2
+     140: bipush        6
+     142: invokeinterface #116,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     147: ifne          156
+     150: iload         7
+     152: iconst_2
+     153: imul
+     154: istore        7
+     156: aload_2
+     157: iconst_5
+     158: invokeinterface #116,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     163: ifne          169
+     166: iconst_1
+     167: istore        7
+     169: aload_1
+     170: aload_2
+     171: aload         4
+     173: iload         7
+     175: bipush        17
+     177: bipush        25
+     179: invokestatic  #149                // Method placeGlisteringIvyColumn:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos$MutableBlockPos;III)V
+     182: iinc          5, 1
+     185: goto          12
+     188: return
+
+  public static void placeGlisteringIvyColumn(net.minecraft.world.level.LevelAccessor, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos$MutableBlockPos, int, int, int);
+    Code:
+       0: iconst_0
+       1: istore        6
+       3: iload         6
+       5: iload_3
+       6: if_icmpgt     121
+       9: aload_0
+      10: aload_2
+      11: invokeinterface #121,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      16: ifeq          107
+      19: iload         6
+      21: iload_3
+      22: if_icmpeq     38
+      25: aload_0
+      26: aload_2
+      27: invokevirtual #155                // Method net/minecraft/core/BlockPos$MutableBlockPos.below:()Lnet/minecraft/core/BlockPos;
+      30: invokeinterface #121,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      35: ifne          84
+      38: aload_0
+      39: aload_2
+      40: getstatic     #158                // Field net/regions_unexplored/registry/RUBlocks.GLISTERING_IVY:Ljava/util/function/Supplier;
+      43: invokeinterface #80,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      48: checkcast     #82                 // class net/minecraft/world/level/block/Block
+      51: invokevirtual #103                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      54: getstatic     #164                // Field net/minecraft/world/level/block/GrowingPlantHeadBlock.AGE:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+      57: aload_1
+      58: iload         4
+      60: iload         5
+      62: invokestatic  #145                // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+      65: invokestatic  #170                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      68: invokevirtual #174                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      71: checkcast     #64                 // class net/minecraft/world/level/block/state/BlockState
+      74: iconst_2
+      75: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      80: pop
+      81: goto          121
+      84: aload_0
+      85: aload_2
+      86: getstatic     #177                // Field net/regions_unexplored/registry/RUBlocks.GLISTERING_IVY_PLANT:Ljava/util/function/Supplier;
+      89: invokeinterface #80,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      94: checkcast     #82                 // class net/minecraft/world/level/block/Block
+      97: invokevirtual #103                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     100: iconst_2
+     101: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     106: pop
+     107: aload_2
+     108: getstatic     #180                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+     111: invokevirtual #184                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     114: pop
+     115: iinc          6, 1
+     118: goto          3
+     121: return
+
+  static {};
+    Code:
+       0: invokestatic  #189                // Method net/minecraft/core/Direction.values:()[Lnet/minecraft/core/Direction;
+       3: putstatic     #123                // Field DIRECTIONS:[Lnet/minecraft/core/Direction;
+       6: return
+}

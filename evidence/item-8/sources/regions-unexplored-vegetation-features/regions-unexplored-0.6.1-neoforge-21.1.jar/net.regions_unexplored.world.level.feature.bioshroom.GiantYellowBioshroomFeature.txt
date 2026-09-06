@@ -1,0 +1,1345 @@
+Compiled from "GiantYellowBioshroomFeature.java"
+public class net.regions_unexplored.world.level.feature.bioshroom.GiantYellowBioshroomFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.regions_unexplored.world.level.feature.configuration.GiantBioshroomConfiguration> {
+  public net.regions_unexplored.world.level.feature.bioshroom.GiantYellowBioshroomFeature(com.mojang.serialization.Codec<net.regions_unexplored.world.level.feature.configuration.GiantBioshroomConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #22                 // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.regions_unexplored.world.level.feature.configuration.GiantBioshroomConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #36                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+       4: checkcast     #38                 // class net/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration
+       7: astore_2
+       8: aload_1
+       9: invokevirtual #42                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      12: astore_3
+      13: aload_1
+      14: invokevirtual #46                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      17: astore        4
+      19: aload_1
+      20: invokevirtual #50                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      23: astore        5
+      25: aload_1
+      26: invokevirtual #46                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      29: bipush        12
+      31: invokeinterface #56,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      36: istore        6
+      38: aload_1
+      39: invokevirtual #46                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      42: aload_2
+      43: getfield      #60                 // Field net/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration.sizeVariation:I
+      46: invokeinterface #56,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      51: aload_2
+      52: getfield      #63                 // Field net/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration.minimumSize:I
+      55: iadd
+      56: istore        7
+      58: aload         5
+      60: aload_3
+      61: invokeinterface #69,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      66: invokevirtual #75                 // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+      69: ifne          74
+      72: iconst_0
+      73: ireturn
+      74: iconst_0
+      75: istore        8
+      77: aload_3
+      78: invokevirtual #79                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      81: astore        9
+      83: iload         8
+      85: iload         7
+      87: if_icmpgt     173
+      90: iload         8
+      92: ifne          119
+      95: aload_0
+      96: aload         5
+      98: aload         9
+     100: aload         4
+     102: aload_2
+     103: invokevirtual #83                 // Method placeBase:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     106: aload_0
+     107: aload         5
+     109: aload         9
+     111: aload         4
+     113: aload_2
+     114: iload         7
+     116: invokevirtual #87                 // Method placeGlowingCaps:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;I)V
+     119: iload         8
+     121: iload         7
+     123: if_icmpne     137
+     126: aload_0
+     127: aload         5
+     129: aload         9
+     131: aload         4
+     133: aload_2
+     134: invokevirtual #90                 // Method placeCap:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     137: iload         8
+     139: iload         7
+     141: if_icmpeq     155
+     144: aload_0
+     145: aload         5
+     147: aload         9
+     149: aload         4
+     151: aload_2
+     152: invokevirtual #93                 // Method placeStemBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     155: aload         9
+     157: getstatic     #99                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     160: invokevirtual #103                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     163: pop
+     164: iload         8
+     166: iconst_1
+     167: iadd
+     168: istore        8
+     170: goto          83
+     173: iconst_1
+     174: ireturn
+
+  public void placeBase(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource, net.regions_unexplored.world.level.feature.configuration.GiantBioshroomConfiguration);
+    Code:
+       0: new           #119                // class java/util/Random
+       3: dup
+       4: invokespecial #122                // Method java/util/Random."<init>":()V
+       7: astore        5
+       9: aload         5
+      11: iconst_5
+      12: invokevirtual #123                // Method java/util/Random.nextInt:(I)I
+      15: istore        6
+      17: aload         5
+      19: iconst_5
+      20: invokevirtual #123                // Method java/util/Random.nextInt:(I)I
+      23: istore        7
+      25: aload         5
+      27: iconst_5
+      28: invokevirtual #123                // Method java/util/Random.nextInt:(I)I
+      31: istore        8
+      33: aload         5
+      35: iconst_5
+      36: invokevirtual #123                // Method java/util/Random.nextInt:(I)I
+      39: istore        9
+      41: iload         6
+      43: ifne          58
+      46: aload_0
+      47: aload_1
+      48: aload_2
+      49: invokevirtual #126                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+      52: aload_3
+      53: aload         4
+      55: invokevirtual #129                // Method placeRoot:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+      58: iload         7
+      60: ifne          75
+      63: aload_0
+      64: aload_1
+      65: aload_2
+      66: invokevirtual #134                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+      69: aload_3
+      70: aload         4
+      72: invokevirtual #129                // Method placeRoot:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+      75: iload         8
+      77: ifne          92
+      80: aload_0
+      81: aload_1
+      82: aload_2
+      83: invokevirtual #137                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+      86: aload_3
+      87: aload         4
+      89: invokevirtual #129                // Method placeRoot:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+      92: iload         9
+      94: ifne          109
+      97: aload_0
+      98: aload_1
+      99: aload_2
+     100: invokevirtual #140                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     103: aload_3
+     104: aload         4
+     106: invokevirtual #129                // Method placeRoot:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     109: return
+
+  public void placeStemBlock(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource, net.regions_unexplored.world.level.feature.configuration.GiantBioshroomConfiguration);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokeinterface #150,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.isOutsideBuildHeight:(Lnet/minecraft/core/BlockPos;)Z
+       7: ifeq          11
+      10: return
+      11: aload_1
+      12: aload_2
+      13: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      18: getstatic     #157                // Field net/regions_unexplored/registry/RUBlocks.PEAT_GRASS_BLOCK:Ljava/util/function/Supplier;
+      21: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      26: checkcast     #165                // class net/minecraft/world/level/block/Block
+      29: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      32: ifeq          61
+      35: aload_1
+      36: aload_2
+      37: getstatic     #172                // Field net/regions_unexplored/registry/RUBlocks.PEAT_DIRT:Ljava/util/function/Supplier;
+      40: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      45: checkcast     #165                // class net/minecraft/world/level/block/Block
+      48: invokevirtual #176                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      51: iconst_2
+      52: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      57: pop
+      58: goto          536
+      61: aload_1
+      62: aload_2
+      63: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      68: getstatic     #183                // Field net/regions_unexplored/registry/RUBlocks.SILT_GRASS_BLOCK:Ljava/util/function/Supplier;
+      71: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      76: checkcast     #165                // class net/minecraft/world/level/block/Block
+      79: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      82: ifeq          111
+      85: aload_1
+      86: aload_2
+      87: getstatic     #186                // Field net/regions_unexplored/registry/RUBlocks.SILT_DIRT:Ljava/util/function/Supplier;
+      90: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      95: checkcast     #165                // class net/minecraft/world/level/block/Block
+      98: invokevirtual #176                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     101: iconst_2
+     102: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     107: pop
+     108: goto          536
+     111: aload_1
+     112: aload_2
+     113: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     118: getstatic     #189                // Field net/regions_unexplored/registry/RUBlocks.ALPHA_GRASS_BLOCK:Ljava/util/function/Supplier;
+     121: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     126: checkcast     #165                // class net/minecraft/world/level/block/Block
+     129: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     132: ifne          167
+     135: aload_1
+     136: aload_2
+     137: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     142: getstatic     #195                // Field net/minecraft/world/level/block/Blocks.GRASS_BLOCK:Lnet/minecraft/world/level/block/Block;
+     145: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     148: ifne          167
+     151: aload_1
+     152: aload_2
+     153: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     158: getstatic     #198                // Field net/minecraft/world/level/block/Blocks.MYCELIUM:Lnet/minecraft/world/level/block/Block;
+     161: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     164: ifeq          185
+     167: aload_1
+     168: aload_2
+     169: getstatic     #201                // Field net/minecraft/world/level/block/Blocks.DIRT:Lnet/minecraft/world/level/block/Block;
+     172: invokevirtual #176                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     175: iconst_2
+     176: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     181: pop
+     182: goto          536
+     185: aload_1
+     186: aload_2
+     187: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     192: getstatic     #204                // Field net/regions_unexplored/registry/RUBlocks.MYCOTOXIC_NYLIUM:Ljava/util/function/Supplier;
+     195: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     200: checkcast     #165                // class net/minecraft/world/level/block/Block
+     203: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     206: ifne          265
+     209: aload_1
+     210: aload_2
+     211: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     216: getstatic     #207                // Field net/regions_unexplored/registry/RUBlocks.GLISTERING_NYLIUM:Ljava/util/function/Supplier;
+     219: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     224: checkcast     #165                // class net/minecraft/world/level/block/Block
+     227: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     230: ifne          265
+     233: aload_1
+     234: aload_2
+     235: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     240: getstatic     #210                // Field net/minecraft/world/level/block/Blocks.CRIMSON_NYLIUM:Lnet/minecraft/world/level/block/Block;
+     243: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     246: ifne          265
+     249: aload_1
+     250: aload_2
+     251: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     256: getstatic     #213                // Field net/minecraft/world/level/block/Blocks.WARPED_NYLIUM:Lnet/minecraft/world/level/block/Block;
+     259: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     262: ifeq          283
+     265: aload_1
+     266: aload_2
+     267: getstatic     #216                // Field net/minecraft/world/level/block/Blocks.NETHERRACK:Lnet/minecraft/world/level/block/Block;
+     270: invokevirtual #176                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     273: iconst_2
+     274: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     279: pop
+     280: goto          536
+     283: aload_1
+     284: aload_2
+     285: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     290: getstatic     #219                // Field net/regions_unexplored/registry/RUBlocks.COBALT_NYLIUM:Ljava/util/function/Supplier;
+     293: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     298: checkcast     #165                // class net/minecraft/world/level/block/Block
+     301: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     304: ifeq          325
+     307: aload_1
+     308: aload_2
+     309: getstatic     #222                // Field net/minecraft/world/level/block/Blocks.BLACKSTONE:Lnet/minecraft/world/level/block/Block;
+     312: invokevirtual #176                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     315: iconst_2
+     316: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     321: pop
+     322: goto          536
+     325: aload_1
+     326: aload_2
+     327: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     332: getstatic     #225                // Field net/regions_unexplored/registry/RUBlocks.PRISMOSS:Ljava/util/function/Supplier;
+     335: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     340: checkcast     #165                // class net/minecraft/world/level/block/Block
+     343: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     346: ifne          397
+     349: aload_1
+     350: aload_2
+     351: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     356: getstatic     #228                // Field net/regions_unexplored/registry/RUBlocks.VIRIDESCENT_NYLIUM:Ljava/util/function/Supplier;
+     359: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     364: checkcast     #165                // class net/minecraft/world/level/block/Block
+     367: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     370: ifne          397
+     373: aload_1
+     374: aload_2
+     375: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     380: getstatic     #231                // Field net/regions_unexplored/registry/RUBlocks.STONE_GRASS_BLOCK:Ljava/util/function/Supplier;
+     383: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     388: checkcast     #165                // class net/minecraft/world/level/block/Block
+     391: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     394: ifeq          415
+     397: aload_1
+     398: aload_2
+     399: getstatic     #234                // Field net/minecraft/world/level/block/Blocks.STONE:Lnet/minecraft/world/level/block/Block;
+     402: invokevirtual #176                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     405: iconst_2
+     406: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     411: pop
+     412: goto          536
+     415: aload_1
+     416: aload_2
+     417: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     422: getstatic     #237                // Field net/regions_unexplored/registry/RUBlocks.DEEPSLATE_PRISMOSS:Ljava/util/function/Supplier;
+     425: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     430: checkcast     #165                // class net/minecraft/world/level/block/Block
+     433: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     436: ifne          487
+     439: aload_1
+     440: aload_2
+     441: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     446: getstatic     #240                // Field net/regions_unexplored/registry/RUBlocks.DEEPSLATE_VIRIDESCENT_NYLIUM:Ljava/util/function/Supplier;
+     449: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     454: checkcast     #165                // class net/minecraft/world/level/block/Block
+     457: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     460: ifne          487
+     463: aload_1
+     464: aload_2
+     465: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     470: getstatic     #243                // Field net/regions_unexplored/registry/RUBlocks.DEEPSLATE_GRASS_BLOCK:Ljava/util/function/Supplier;
+     473: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     478: checkcast     #165                // class net/minecraft/world/level/block/Block
+     481: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     484: ifeq          505
+     487: aload_1
+     488: aload_2
+     489: getstatic     #246                // Field net/minecraft/world/level/block/Blocks.DEEPSLATE:Lnet/minecraft/world/level/block/Block;
+     492: invokevirtual #176                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     495: iconst_2
+     496: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     501: pop
+     502: goto          536
+     505: aload_1
+     506: aload_2
+     507: invokestatic  #250                // Method isReplaceable:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/core/BlockPos;)Z
+     510: ifeq          535
+     513: aload_1
+     514: aload_2
+     515: aload         4
+     517: getfield      #254                // Field net/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration.stemProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     520: aload_3
+     521: aload_2
+     522: invokevirtual #260                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     525: iconst_2
+     526: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     531: pop
+     532: goto          536
+     535: return
+     536: aload_1
+     537: aload_2
+     538: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     541: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     546: getstatic     #157                // Field net/regions_unexplored/registry/RUBlocks.PEAT_GRASS_BLOCK:Ljava/util/function/Supplier;
+     549: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     554: checkcast     #165                // class net/minecraft/world/level/block/Block
+     557: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     560: ifeq          592
+     563: aload_1
+     564: aload_2
+     565: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     568: getstatic     #172                // Field net/regions_unexplored/registry/RUBlocks.PEAT_DIRT:Ljava/util/function/Supplier;
+     571: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     576: checkcast     #165                // class net/minecraft/world/level/block/Block
+     579: invokevirtual #176                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     582: iconst_2
+     583: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     588: pop
+     589: goto          1096
+     592: aload_1
+     593: aload_2
+     594: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     597: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     602: getstatic     #183                // Field net/regions_unexplored/registry/RUBlocks.SILT_GRASS_BLOCK:Ljava/util/function/Supplier;
+     605: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     610: checkcast     #165                // class net/minecraft/world/level/block/Block
+     613: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     616: ifeq          648
+     619: aload_1
+     620: aload_2
+     621: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     624: getstatic     #186                // Field net/regions_unexplored/registry/RUBlocks.SILT_DIRT:Ljava/util/function/Supplier;
+     627: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     632: checkcast     #165                // class net/minecraft/world/level/block/Block
+     635: invokevirtual #176                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     638: iconst_2
+     639: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     644: pop
+     645: goto          1096
+     648: aload_1
+     649: aload_2
+     650: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     653: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     658: getstatic     #189                // Field net/regions_unexplored/registry/RUBlocks.ALPHA_GRASS_BLOCK:Ljava/util/function/Supplier;
+     661: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     666: checkcast     #165                // class net/minecraft/world/level/block/Block
+     669: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     672: ifne          713
+     675: aload_1
+     676: aload_2
+     677: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     680: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     685: getstatic     #195                // Field net/minecraft/world/level/block/Blocks.GRASS_BLOCK:Lnet/minecraft/world/level/block/Block;
+     688: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     691: ifne          713
+     694: aload_1
+     695: aload_2
+     696: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     699: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     704: getstatic     #198                // Field net/minecraft/world/level/block/Blocks.MYCELIUM:Lnet/minecraft/world/level/block/Block;
+     707: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     710: ifeq          734
+     713: aload_1
+     714: aload_2
+     715: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     718: getstatic     #201                // Field net/minecraft/world/level/block/Blocks.DIRT:Lnet/minecraft/world/level/block/Block;
+     721: invokevirtual #176                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     724: iconst_2
+     725: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     730: pop
+     731: goto          1096
+     734: aload_1
+     735: aload_2
+     736: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     739: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     744: getstatic     #204                // Field net/regions_unexplored/registry/RUBlocks.MYCOTOXIC_NYLIUM:Ljava/util/function/Supplier;
+     747: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     752: checkcast     #165                // class net/minecraft/world/level/block/Block
+     755: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     758: ifne          826
+     761: aload_1
+     762: aload_2
+     763: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     766: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     771: getstatic     #207                // Field net/regions_unexplored/registry/RUBlocks.GLISTERING_NYLIUM:Ljava/util/function/Supplier;
+     774: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     779: checkcast     #165                // class net/minecraft/world/level/block/Block
+     782: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     785: ifne          826
+     788: aload_1
+     789: aload_2
+     790: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     793: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     798: getstatic     #210                // Field net/minecraft/world/level/block/Blocks.CRIMSON_NYLIUM:Lnet/minecraft/world/level/block/Block;
+     801: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     804: ifne          826
+     807: aload_1
+     808: aload_2
+     809: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     812: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     817: getstatic     #213                // Field net/minecraft/world/level/block/Blocks.WARPED_NYLIUM:Lnet/minecraft/world/level/block/Block;
+     820: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     823: ifeq          847
+     826: aload_1
+     827: aload_2
+     828: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     831: getstatic     #216                // Field net/minecraft/world/level/block/Blocks.NETHERRACK:Lnet/minecraft/world/level/block/Block;
+     834: invokevirtual #176                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     837: iconst_2
+     838: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     843: pop
+     844: goto          1096
+     847: aload_1
+     848: aload_2
+     849: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     852: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     857: getstatic     #219                // Field net/regions_unexplored/registry/RUBlocks.COBALT_NYLIUM:Ljava/util/function/Supplier;
+     860: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     865: checkcast     #165                // class net/minecraft/world/level/block/Block
+     868: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     871: ifeq          895
+     874: aload_1
+     875: aload_2
+     876: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     879: getstatic     #222                // Field net/minecraft/world/level/block/Blocks.BLACKSTONE:Lnet/minecraft/world/level/block/Block;
+     882: invokevirtual #176                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     885: iconst_2
+     886: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     891: pop
+     892: goto          1096
+     895: aload_1
+     896: aload_2
+     897: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     900: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     905: getstatic     #225                // Field net/regions_unexplored/registry/RUBlocks.PRISMOSS:Ljava/util/function/Supplier;
+     908: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     913: checkcast     #165                // class net/minecraft/world/level/block/Block
+     916: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     919: ifne          976
+     922: aload_1
+     923: aload_2
+     924: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     927: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     932: getstatic     #228                // Field net/regions_unexplored/registry/RUBlocks.VIRIDESCENT_NYLIUM:Ljava/util/function/Supplier;
+     935: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     940: checkcast     #165                // class net/minecraft/world/level/block/Block
+     943: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     946: ifne          976
+     949: aload_1
+     950: aload_2
+     951: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     954: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     959: getstatic     #231                // Field net/regions_unexplored/registry/RUBlocks.STONE_GRASS_BLOCK:Ljava/util/function/Supplier;
+     962: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     967: checkcast     #165                // class net/minecraft/world/level/block/Block
+     970: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     973: ifeq          997
+     976: aload_1
+     977: aload_2
+     978: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     981: getstatic     #234                // Field net/minecraft/world/level/block/Blocks.STONE:Lnet/minecraft/world/level/block/Block;
+     984: invokevirtual #176                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     987: iconst_2
+     988: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     993: pop
+     994: goto          1096
+     997: aload_1
+     998: aload_2
+     999: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+    1002: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+    1007: getstatic     #237                // Field net/regions_unexplored/registry/RUBlocks.DEEPSLATE_PRISMOSS:Ljava/util/function/Supplier;
+    1010: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+    1015: checkcast     #165                // class net/minecraft/world/level/block/Block
+    1018: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+    1021: ifne          1078
+    1024: aload_1
+    1025: aload_2
+    1026: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+    1029: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+    1034: getstatic     #240                // Field net/regions_unexplored/registry/RUBlocks.DEEPSLATE_VIRIDESCENT_NYLIUM:Ljava/util/function/Supplier;
+    1037: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+    1042: checkcast     #165                // class net/minecraft/world/level/block/Block
+    1045: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+    1048: ifne          1078
+    1051: aload_1
+    1052: aload_2
+    1053: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+    1056: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+    1061: getstatic     #243                // Field net/regions_unexplored/registry/RUBlocks.DEEPSLATE_GRASS_BLOCK:Ljava/util/function/Supplier;
+    1064: invokeinterface #163,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+    1069: checkcast     #165                // class net/minecraft/world/level/block/Block
+    1072: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+    1075: ifeq          1096
+    1078: aload_1
+    1079: aload_2
+    1080: invokevirtual #263                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+    1083: getstatic     #246                // Field net/minecraft/world/level/block/Blocks.DEEPSLATE:Lnet/minecraft/world/level/block/Block;
+    1086: invokevirtual #176                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+    1089: iconst_2
+    1090: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+    1095: pop
+    1096: return
+
+  public void placeRoot(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource, net.regions_unexplored.world.level.feature.configuration.GiantBioshroomConfiguration);
+    Code:
+       0: iconst_2
+       1: istore        5
+       3: iconst_0
+       4: istore        6
+       6: aload_2
+       7: invokevirtual #79                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      10: astore        7
+      12: iload         6
+      14: iload         5
+      16: if_icmpgt     98
+      19: iload         6
+      21: ifle          73
+      24: aload_1
+      25: aload         7
+      27: invokevirtual #266                // Method net/minecraft/core/BlockPos$MutableBlockPos.above:()Lnet/minecraft/core/BlockPos;
+      30: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      35: aload         4
+      37: getfield      #254                // Field net/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration.stemProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      40: aload_3
+      41: aload         7
+      43: invokevirtual #266                // Method net/minecraft/core/BlockPos$MutableBlockPos.above:()Lnet/minecraft/core/BlockPos;
+      46: invokevirtual #260                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      49: invokevirtual #270                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      52: invokevirtual #169                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      55: ifne          73
+      58: aload_1
+      59: aload         7
+      61: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      66: invokevirtual #75                 // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+      69: ifeq          73
+      72: return
+      73: aload_0
+      74: aload_1
+      75: aload         7
+      77: aload_3
+      78: aload         4
+      80: invokevirtual #93                 // Method placeStemBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+      83: aload         7
+      85: getstatic     #273                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+      88: invokevirtual #103                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      91: pop
+      92: iinc          6, 1
+      95: goto          12
+      98: return
+
+  public void placeCap(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource, net.regions_unexplored.world.level.feature.configuration.GiantBioshroomConfiguration);
+    Code:
+       0: new           #119                // class java/util/Random
+       3: dup
+       4: invokespecial #122                // Method java/util/Random."<init>":()V
+       7: astore        5
+       9: aload_0
+      10: aload_1
+      11: aload_2
+      12: aload_3
+      13: aload         4
+      15: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+      18: aload_0
+      19: aload_1
+      20: aload_2
+      21: invokevirtual #126                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+      24: aload_3
+      25: aload         4
+      27: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+      30: aload_0
+      31: aload_1
+      32: aload_2
+      33: invokevirtual #134                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+      36: aload_3
+      37: aload         4
+      39: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+      42: aload_0
+      43: aload_1
+      44: aload_2
+      45: invokevirtual #137                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+      48: aload_3
+      49: aload         4
+      51: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+      54: aload_0
+      55: aload_1
+      56: aload_2
+      57: invokevirtual #140                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+      60: aload_3
+      61: aload         4
+      63: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+      66: aload_0
+      67: aload_1
+      68: aload_2
+      69: invokevirtual #126                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+      72: invokevirtual #137                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+      75: aload_3
+      76: aload         4
+      78: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+      81: aload_0
+      82: aload_1
+      83: aload_2
+      84: invokevirtual #126                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+      87: invokevirtual #140                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+      90: aload_3
+      91: aload         4
+      93: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+      96: aload_0
+      97: aload_1
+      98: aload_2
+      99: invokevirtual #134                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     102: invokevirtual #137                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     105: aload_3
+     106: aload         4
+     108: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     111: aload_0
+     112: aload_1
+     113: aload_2
+     114: invokevirtual #134                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     117: invokevirtual #140                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     120: aload_3
+     121: aload         4
+     123: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     126: aload_0
+     127: aload_1
+     128: aload_2
+     129: iconst_2
+     130: invokevirtual #281                // Method net/minecraft/core/BlockPos.north:(I)Lnet/minecraft/core/BlockPos;
+     133: aload_3
+     134: aload         4
+     136: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     139: aload_0
+     140: aload_1
+     141: aload_2
+     142: iconst_2
+     143: invokevirtual #281                // Method net/minecraft/core/BlockPos.north:(I)Lnet/minecraft/core/BlockPos;
+     146: invokevirtual #137                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     149: aload_3
+     150: aload         4
+     152: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     155: aload_0
+     156: aload_1
+     157: aload_2
+     158: iconst_2
+     159: invokevirtual #281                // Method net/minecraft/core/BlockPos.north:(I)Lnet/minecraft/core/BlockPos;
+     162: invokevirtual #140                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     165: aload_3
+     166: aload         4
+     168: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     171: aload_0
+     172: aload_1
+     173: aload_2
+     174: iconst_2
+     175: invokevirtual #283                // Method net/minecraft/core/BlockPos.south:(I)Lnet/minecraft/core/BlockPos;
+     178: aload_3
+     179: aload         4
+     181: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     184: aload_0
+     185: aload_1
+     186: aload_2
+     187: iconst_2
+     188: invokevirtual #283                // Method net/minecraft/core/BlockPos.south:(I)Lnet/minecraft/core/BlockPos;
+     191: invokevirtual #137                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     194: aload_3
+     195: aload         4
+     197: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     200: aload_0
+     201: aload_1
+     202: aload_2
+     203: iconst_2
+     204: invokevirtual #283                // Method net/minecraft/core/BlockPos.south:(I)Lnet/minecraft/core/BlockPos;
+     207: invokevirtual #140                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     210: aload_3
+     211: aload         4
+     213: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     216: aload_0
+     217: aload_1
+     218: aload_2
+     219: iconst_2
+     220: invokevirtual #285                // Method net/minecraft/core/BlockPos.east:(I)Lnet/minecraft/core/BlockPos;
+     223: aload_3
+     224: aload         4
+     226: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     229: aload_0
+     230: aload_1
+     231: aload_2
+     232: iconst_2
+     233: invokevirtual #285                // Method net/minecraft/core/BlockPos.east:(I)Lnet/minecraft/core/BlockPos;
+     236: invokevirtual #126                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     239: aload_3
+     240: aload         4
+     242: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     245: aload_0
+     246: aload_1
+     247: aload_2
+     248: iconst_2
+     249: invokevirtual #285                // Method net/minecraft/core/BlockPos.east:(I)Lnet/minecraft/core/BlockPos;
+     252: invokevirtual #134                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     255: aload_3
+     256: aload         4
+     258: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     261: aload_0
+     262: aload_1
+     263: aload_2
+     264: iconst_2
+     265: invokevirtual #287                // Method net/minecraft/core/BlockPos.west:(I)Lnet/minecraft/core/BlockPos;
+     268: aload_3
+     269: aload         4
+     271: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     274: aload_0
+     275: aload_1
+     276: aload_2
+     277: iconst_2
+     278: invokevirtual #287                // Method net/minecraft/core/BlockPos.west:(I)Lnet/minecraft/core/BlockPos;
+     281: invokevirtual #126                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     284: aload_3
+     285: aload         4
+     287: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     290: aload_0
+     291: aload_1
+     292: aload_2
+     293: iconst_2
+     294: invokevirtual #287                // Method net/minecraft/core/BlockPos.west:(I)Lnet/minecraft/core/BlockPos;
+     297: invokevirtual #134                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     300: aload_3
+     301: aload         4
+     303: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     306: aload_3
+     307: iconst_2
+     308: invokeinterface #56,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     313: ifne          700
+     316: aload_0
+     317: aload_1
+     318: aload_2
+     319: iconst_2
+     320: invokevirtual #281                // Method net/minecraft/core/BlockPos.north:(I)Lnet/minecraft/core/BlockPos;
+     323: iconst_2
+     324: invokevirtual #285                // Method net/minecraft/core/BlockPos.east:(I)Lnet/minecraft/core/BlockPos;
+     327: aload_3
+     328: aload         4
+     330: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     333: aload_0
+     334: aload_1
+     335: aload_2
+     336: iconst_2
+     337: invokevirtual #281                // Method net/minecraft/core/BlockPos.north:(I)Lnet/minecraft/core/BlockPos;
+     340: iconst_2
+     341: invokevirtual #287                // Method net/minecraft/core/BlockPos.west:(I)Lnet/minecraft/core/BlockPos;
+     344: aload_3
+     345: aload         4
+     347: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     350: aload_0
+     351: aload_1
+     352: aload_2
+     353: iconst_2
+     354: invokevirtual #283                // Method net/minecraft/core/BlockPos.south:(I)Lnet/minecraft/core/BlockPos;
+     357: iconst_2
+     358: invokevirtual #285                // Method net/minecraft/core/BlockPos.east:(I)Lnet/minecraft/core/BlockPos;
+     361: aload_3
+     362: aload         4
+     364: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     367: aload_0
+     368: aload_1
+     369: aload_2
+     370: iconst_2
+     371: invokevirtual #283                // Method net/minecraft/core/BlockPos.south:(I)Lnet/minecraft/core/BlockPos;
+     374: iconst_2
+     375: invokevirtual #287                // Method net/minecraft/core/BlockPos.west:(I)Lnet/minecraft/core/BlockPos;
+     378: aload_3
+     379: aload         4
+     381: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     384: aload_0
+     385: aload_1
+     386: aload_2
+     387: iconst_3
+     388: invokevirtual #281                // Method net/minecraft/core/BlockPos.north:(I)Lnet/minecraft/core/BlockPos;
+     391: aload_3
+     392: aload         4
+     394: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     397: aload_0
+     398: aload_1
+     399: aload_2
+     400: iconst_3
+     401: invokevirtual #281                // Method net/minecraft/core/BlockPos.north:(I)Lnet/minecraft/core/BlockPos;
+     404: invokevirtual #137                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     407: aload_3
+     408: aload         4
+     410: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     413: aload_0
+     414: aload_1
+     415: aload_2
+     416: iconst_3
+     417: invokevirtual #281                // Method net/minecraft/core/BlockPos.north:(I)Lnet/minecraft/core/BlockPos;
+     420: invokevirtual #140                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     423: aload_3
+     424: aload         4
+     426: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     429: aload_0
+     430: aload_1
+     431: aload_2
+     432: iconst_3
+     433: invokevirtual #281                // Method net/minecraft/core/BlockPos.north:(I)Lnet/minecraft/core/BlockPos;
+     436: iconst_2
+     437: invokevirtual #285                // Method net/minecraft/core/BlockPos.east:(I)Lnet/minecraft/core/BlockPos;
+     440: aload_3
+     441: aload         4
+     443: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     446: aload_0
+     447: aload_1
+     448: aload_2
+     449: iconst_3
+     450: invokevirtual #281                // Method net/minecraft/core/BlockPos.north:(I)Lnet/minecraft/core/BlockPos;
+     453: iconst_2
+     454: invokevirtual #287                // Method net/minecraft/core/BlockPos.west:(I)Lnet/minecraft/core/BlockPos;
+     457: aload_3
+     458: aload         4
+     460: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     463: aload_0
+     464: aload_1
+     465: aload_2
+     466: iconst_3
+     467: invokevirtual #283                // Method net/minecraft/core/BlockPos.south:(I)Lnet/minecraft/core/BlockPos;
+     470: aload_3
+     471: aload         4
+     473: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     476: aload_0
+     477: aload_1
+     478: aload_2
+     479: iconst_3
+     480: invokevirtual #283                // Method net/minecraft/core/BlockPos.south:(I)Lnet/minecraft/core/BlockPos;
+     483: invokevirtual #137                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     486: aload_3
+     487: aload         4
+     489: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     492: aload_0
+     493: aload_1
+     494: aload_2
+     495: iconst_3
+     496: invokevirtual #283                // Method net/minecraft/core/BlockPos.south:(I)Lnet/minecraft/core/BlockPos;
+     499: invokevirtual #140                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     502: aload_3
+     503: aload         4
+     505: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     508: aload_0
+     509: aload_1
+     510: aload_2
+     511: iconst_3
+     512: invokevirtual #283                // Method net/minecraft/core/BlockPos.south:(I)Lnet/minecraft/core/BlockPos;
+     515: iconst_2
+     516: invokevirtual #285                // Method net/minecraft/core/BlockPos.east:(I)Lnet/minecraft/core/BlockPos;
+     519: aload_3
+     520: aload         4
+     522: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     525: aload_0
+     526: aload_1
+     527: aload_2
+     528: iconst_3
+     529: invokevirtual #283                // Method net/minecraft/core/BlockPos.south:(I)Lnet/minecraft/core/BlockPos;
+     532: iconst_2
+     533: invokevirtual #287                // Method net/minecraft/core/BlockPos.west:(I)Lnet/minecraft/core/BlockPos;
+     536: aload_3
+     537: aload         4
+     539: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     542: aload_0
+     543: aload_1
+     544: aload_2
+     545: iconst_3
+     546: invokevirtual #285                // Method net/minecraft/core/BlockPos.east:(I)Lnet/minecraft/core/BlockPos;
+     549: aload_3
+     550: aload         4
+     552: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     555: aload_0
+     556: aload_1
+     557: aload_2
+     558: iconst_3
+     559: invokevirtual #285                // Method net/minecraft/core/BlockPos.east:(I)Lnet/minecraft/core/BlockPos;
+     562: invokevirtual #126                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     565: aload_3
+     566: aload         4
+     568: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     571: aload_0
+     572: aload_1
+     573: aload_2
+     574: iconst_3
+     575: invokevirtual #285                // Method net/minecraft/core/BlockPos.east:(I)Lnet/minecraft/core/BlockPos;
+     578: invokevirtual #134                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     581: aload_3
+     582: aload         4
+     584: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     587: aload_0
+     588: aload_1
+     589: aload_2
+     590: iconst_3
+     591: invokevirtual #285                // Method net/minecraft/core/BlockPos.east:(I)Lnet/minecraft/core/BlockPos;
+     594: iconst_2
+     595: invokevirtual #281                // Method net/minecraft/core/BlockPos.north:(I)Lnet/minecraft/core/BlockPos;
+     598: aload_3
+     599: aload         4
+     601: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     604: aload_0
+     605: aload_1
+     606: aload_2
+     607: iconst_3
+     608: invokevirtual #285                // Method net/minecraft/core/BlockPos.east:(I)Lnet/minecraft/core/BlockPos;
+     611: iconst_2
+     612: invokevirtual #283                // Method net/minecraft/core/BlockPos.south:(I)Lnet/minecraft/core/BlockPos;
+     615: aload_3
+     616: aload         4
+     618: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     621: aload_0
+     622: aload_1
+     623: aload_2
+     624: iconst_3
+     625: invokevirtual #287                // Method net/minecraft/core/BlockPos.west:(I)Lnet/minecraft/core/BlockPos;
+     628: aload_3
+     629: aload         4
+     631: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     634: aload_0
+     635: aload_1
+     636: aload_2
+     637: iconst_3
+     638: invokevirtual #287                // Method net/minecraft/core/BlockPos.west:(I)Lnet/minecraft/core/BlockPos;
+     641: invokevirtual #126                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     644: aload_3
+     645: aload         4
+     647: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     650: aload_0
+     651: aload_1
+     652: aload_2
+     653: iconst_3
+     654: invokevirtual #287                // Method net/minecraft/core/BlockPos.west:(I)Lnet/minecraft/core/BlockPos;
+     657: invokevirtual #134                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     660: aload_3
+     661: aload         4
+     663: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     666: aload_0
+     667: aload_1
+     668: aload_2
+     669: iconst_3
+     670: invokevirtual #287                // Method net/minecraft/core/BlockPos.west:(I)Lnet/minecraft/core/BlockPos;
+     673: iconst_2
+     674: invokevirtual #281                // Method net/minecraft/core/BlockPos.north:(I)Lnet/minecraft/core/BlockPos;
+     677: aload_3
+     678: aload         4
+     680: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     683: aload_0
+     684: aload_1
+     685: aload_2
+     686: iconst_3
+     687: invokevirtual #287                // Method net/minecraft/core/BlockPos.west:(I)Lnet/minecraft/core/BlockPos;
+     690: iconst_2
+     691: invokevirtual #283                // Method net/minecraft/core/BlockPos.south:(I)Lnet/minecraft/core/BlockPos;
+     694: aload_3
+     695: aload         4
+     697: invokevirtual #278                // Method placeCapBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     700: return
+
+  public void placeGlowingCaps(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource, net.regions_unexplored.world.level.feature.configuration.GiantBioshroomConfiguration, int);
+    Code:
+       0: aload_3
+       1: iconst_3
+       2: invokeinterface #56,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+       7: istore        6
+       9: aload_3
+      10: iload         5
+      12: iconst_4
+      13: isub
+      14: invokeinterface #56,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      19: iconst_3
+      20: iadd
+      21: istore        7
+      23: new           #10                 // class net/minecraft/core/BlockPos
+      26: dup
+      27: aload_2
+      28: invokevirtual #291                // Method net/minecraft/core/BlockPos.getX:()I
+      31: aload_2
+      32: invokevirtual #294                // Method net/minecraft/core/BlockPos.getY:()I
+      35: iload         7
+      37: iadd
+      38: aload_2
+      39: invokevirtual #297                // Method net/minecraft/core/BlockPos.getZ:()I
+      42: invokespecial #300                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      45: astore        8
+      47: aload_3
+      48: iload         5
+      50: iconst_4
+      51: isub
+      52: invokeinterface #56,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      57: iconst_3
+      58: iadd
+      59: istore        9
+      61: new           #10                 // class net/minecraft/core/BlockPos
+      64: dup
+      65: aload_2
+      66: invokevirtual #291                // Method net/minecraft/core/BlockPos.getX:()I
+      69: aload_2
+      70: invokevirtual #294                // Method net/minecraft/core/BlockPos.getY:()I
+      73: iload         9
+      75: iadd
+      76: aload_2
+      77: invokevirtual #297                // Method net/minecraft/core/BlockPos.getZ:()I
+      80: invokespecial #300                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      83: astore        10
+      85: aload_3
+      86: iconst_2
+      87: invokeinterface #56,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      92: istore        11
+      94: iload         11
+      96: ifne          288
+      99: iload         6
+     101: iconst_1
+     102: if_icmpne     150
+     105: aload_0
+     106: aload_1
+     107: aload         8
+     109: invokevirtual #126                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     112: aload_3
+     113: aload         4
+     115: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     118: aload_0
+     119: aload_1
+     120: aload         8
+     122: invokevirtual #137                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     125: aload_3
+     126: aload         4
+     128: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     131: aload_0
+     132: aload_1
+     133: aload         8
+     135: invokevirtual #126                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     138: invokevirtual #137                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     141: aload_3
+     142: aload         4
+     144: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     147: goto          480
+     150: iload         6
+     152: iconst_2
+     153: if_icmpne     201
+     156: aload_0
+     157: aload_1
+     158: aload         10
+     160: invokevirtual #134                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     163: aload_3
+     164: aload         4
+     166: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     169: aload_0
+     170: aload_1
+     171: aload         10
+     173: invokevirtual #140                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     176: aload_3
+     177: aload         4
+     179: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     182: aload_0
+     183: aload_1
+     184: aload         10
+     186: invokevirtual #134                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     189: invokevirtual #140                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     192: aload_3
+     193: aload         4
+     195: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     198: goto          480
+     201: aload_0
+     202: aload_1
+     203: aload         8
+     205: invokevirtual #126                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     208: aload_3
+     209: aload         4
+     211: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     214: aload_0
+     215: aload_1
+     216: aload         8
+     218: invokevirtual #137                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     221: aload_3
+     222: aload         4
+     224: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     227: aload_0
+     228: aload_1
+     229: aload         8
+     231: invokevirtual #126                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     234: invokevirtual #137                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     237: aload_3
+     238: aload         4
+     240: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     243: aload_0
+     244: aload_1
+     245: aload         10
+     247: invokevirtual #134                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     250: aload_3
+     251: aload         4
+     253: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     256: aload_0
+     257: aload_1
+     258: aload         10
+     260: invokevirtual #140                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     263: aload_3
+     264: aload         4
+     266: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     269: aload_0
+     270: aload_1
+     271: aload         10
+     273: invokevirtual #134                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     276: invokevirtual #140                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     279: aload_3
+     280: aload         4
+     282: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     285: goto          480
+     288: iload         11
+     290: iconst_1
+     291: if_icmpne     480
+     294: iload         6
+     296: iconst_1
+     297: if_icmpne     345
+     300: aload_0
+     301: aload_1
+     302: aload         8
+     304: invokevirtual #126                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     307: aload_3
+     308: aload         4
+     310: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     313: aload_0
+     314: aload_1
+     315: aload         8
+     317: invokevirtual #140                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     320: aload_3
+     321: aload         4
+     323: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     326: aload_0
+     327: aload_1
+     328: aload         8
+     330: invokevirtual #126                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     333: invokevirtual #140                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     336: aload_3
+     337: aload         4
+     339: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     342: goto          480
+     345: iload         6
+     347: iconst_2
+     348: if_icmpne     396
+     351: aload_0
+     352: aload_1
+     353: aload         10
+     355: invokevirtual #134                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     358: aload_3
+     359: aload         4
+     361: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     364: aload_0
+     365: aload_1
+     366: aload         10
+     368: invokevirtual #137                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     371: aload_3
+     372: aload         4
+     374: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     377: aload_0
+     378: aload_1
+     379: aload         10
+     381: invokevirtual #134                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     384: invokevirtual #137                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     387: aload_3
+     388: aload         4
+     390: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     393: goto          480
+     396: aload_0
+     397: aload_1
+     398: aload         8
+     400: invokevirtual #126                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     403: aload_3
+     404: aload         4
+     406: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     409: aload_0
+     410: aload_1
+     411: aload         8
+     413: invokevirtual #140                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     416: aload_3
+     417: aload         4
+     419: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     422: aload_0
+     423: aload_1
+     424: aload         8
+     426: invokevirtual #126                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     429: invokevirtual #140                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     432: aload_3
+     433: aload         4
+     435: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     438: aload_0
+     439: aload_1
+     440: aload         10
+     442: invokevirtual #134                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     445: aload_3
+     446: aload         4
+     448: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     451: aload_0
+     452: aload_1
+     453: aload         10
+     455: invokevirtual #137                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     458: aload_3
+     459: aload         4
+     461: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     464: aload_0
+     465: aload_1
+     466: aload         10
+     468: invokevirtual #134                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     471: invokevirtual #137                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     474: aload_3
+     475: aload         4
+     477: invokevirtual #303                // Method placeGlowingBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration;)V
+     480: return
+
+  public void placeCapBlock(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource, net.regions_unexplored.world.level.feature.configuration.GiantBioshroomConfiguration);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokeinterface #150,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.isOutsideBuildHeight:(Lnet/minecraft/core/BlockPos;)Z
+       7: ifeq          11
+      10: return
+      11: aload_1
+      12: aload_2
+      13: invokestatic  #250                // Method isReplaceable:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/core/BlockPos;)Z
+      16: ifeq          38
+      19: aload_1
+      20: aload_2
+      21: aload         4
+      23: getfield      #312                // Field net/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration.capProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      26: aload_3
+      27: aload_2
+      28: invokevirtual #260                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      31: iconst_2
+      32: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      37: pop
+      38: return
+
+  public void placeGlowingBlock(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource, net.regions_unexplored.world.level.feature.configuration.GiantBioshroomConfiguration);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokeinterface #150,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.isOutsideBuildHeight:(Lnet/minecraft/core/BlockPos;)Z
+       7: ifeq          11
+      10: return
+      11: aload_1
+      12: aload_2
+      13: invokeinterface #151,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      18: invokevirtual #75                 // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+      21: ifeq          43
+      24: aload_1
+      25: aload_2
+      26: aload         4
+      28: getfield      #315                // Field net/regions_unexplored/world/level/feature/configuration/GiantBioshroomConfiguration.glowBlockProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      31: aload_3
+      32: aload_2
+      33: invokevirtual #260                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      36: iconst_2
+      37: invokeinterface #180,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      42: pop
+      43: return
+
+  public static boolean isReplaceableDirtBlock(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getstatic     #324                // Field net/regions_unexplored/registry/tag/RUBlockTags.TREE_GRASS_REPLACEABLES:Lnet/minecraft/tags/TagKey;
+       4: invokevirtual #327                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+       7: ireturn
+
+  public static boolean isReplaceableDirt(net.minecraft.world.level.LevelSimulatedReader, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #347,  0            // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+       7: invokeinterface #353,  3          // InterfaceMethod net/minecraft/world/level/LevelSimulatedReader.isStateAtPosition:(Lnet/minecraft/core/BlockPos;Ljava/util/function/Predicate;)Z
+      12: ireturn
+
+  public static boolean isReplaceableBlock(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getstatic     #358                // Field net/regions_unexplored/registry/tag/RUBlockTags.REPLACEABLE_BLOCKS:Lnet/minecraft/tags/TagKey;
+       4: invokevirtual #327                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+       7: ireturn
+
+  public static boolean isReplaceable(net.minecraft.world.level.LevelSimulatedReader, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #362,  0            // InvokeDynamic #1:test:()Ljava/util/function/Predicate;
+       7: invokeinterface #353,  3          // InterfaceMethod net/minecraft/world/level/LevelSimulatedReader.isStateAtPosition:(Lnet/minecraft/core/BlockPos;Ljava/util/function/Predicate;)Z
+      12: ireturn
+}

@@ -1,0 +1,302 @@
+Compiled from "HyacinthStockFeature.java"
+public class net.regions_unexplored.world.level.feature.HyacinthStockFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.regions_unexplored.world.level.feature.configuration.HyacinthStockConfiguration> {
+  public net.regions_unexplored.world.level.feature.HyacinthStockFeature(com.mojang.serialization.Codec<net.regions_unexplored.world.level.feature.configuration.HyacinthStockConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #22                 // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.regions_unexplored.world.level.feature.configuration.HyacinthStockConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #36                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+       4: checkcast     #38                 // class net/regions_unexplored/world/level/feature/configuration/HyacinthStockConfiguration
+       7: astore_2
+       8: aload_1
+       9: invokevirtual #42                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      12: astore_3
+      13: aload_1
+      14: invokevirtual #46                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      17: astore        4
+      19: aload_1
+      20: invokevirtual #50                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      23: astore        5
+      25: aload_1
+      26: invokevirtual #46                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      29: aload_2
+      30: getfield      #54                 // Field net/regions_unexplored/world/level/feature/configuration/HyacinthStockConfiguration.sizeVariation:I
+      33: invokeinterface #60,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      38: aload_2
+      39: getfield      #63                 // Field net/regions_unexplored/world/level/feature/configuration/HyacinthStockConfiguration.minimumSize:I
+      42: iadd
+      43: istore        6
+      45: aload         5
+      47: aload_3
+      48: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      51: invokeinterface #72,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      56: aload         5
+      58: aload_3
+      59: getstatic     #78                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+      62: invokevirtual #84                 // Method net/minecraft/world/level/block/state/BlockState.isFaceSturdy:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Z
+      65: ifne          70
+      68: iconst_0
+      69: ireturn
+      70: iconst_0
+      71: istore        7
+      73: aload_3
+      74: invokevirtual #88                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      77: astore        8
+      79: iload         7
+      81: iload         6
+      83: if_icmpgt     134
+      86: aload         5
+      88: aload         8
+      90: invokeinterface #72,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      95: getstatic     #94                 // Field net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+      98: invokevirtual #98                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     101: ifeq          134
+     104: aload_0
+     105: aload         5
+     107: aload         8
+     109: aload         4
+     111: aload_2
+     112: invokevirtual #102                // Method placePlant:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;Lnet/regions_unexplored/world/level/feature/configuration/HyacinthStockConfiguration;)Z
+     115: pop
+     116: aload         8
+     118: getstatic     #78                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     121: invokevirtual #106                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     124: pop
+     125: iload         7
+     127: iconst_1
+     128: iadd
+     129: istore        7
+     131: goto          79
+     134: iconst_1
+     135: ireturn
+
+  public boolean placePlant(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource, net.regions_unexplored.world.level.feature.configuration.HyacinthStockConfiguration);
+    Code:
+       0: new           #121                // class java/util/Random
+       3: dup
+       4: invokespecial #124                // Method java/util/Random."<init>":()V
+       7: astore        5
+       9: aload_1
+      10: aload_2
+      11: invokeinterface #130,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.isOutsideBuildHeight:(Lnet/minecraft/core/BlockPos;)Z
+      16: ifeq          21
+      19: iconst_1
+      20: ireturn
+      21: aload_1
+      22: aload_2
+      23: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      26: invokeinterface #131,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      31: getstatic     #137                // Field net/regions_unexplored/registry/RUBlocks.TALL_HYACINTH_STOCK:Ljava/util/function/Supplier;
+      34: invokeinterface #143,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      39: checkcast     #145                // class net/minecraft/world/level/block/Block
+      42: invokevirtual #98                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      45: ifne          67
+      48: aload_1
+      49: aload_2
+      50: aload         4
+      52: getfield      #149                // Field net/regions_unexplored/world/level/feature/configuration/HyacinthStockConfiguration.stockProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      55: aload_3
+      56: aload_2
+      57: invokevirtual #155                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      60: iconst_2
+      61: invokeinterface #159,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      66: pop
+      67: aload_1
+      68: aload_2
+      69: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      72: invokeinterface #131,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      77: getstatic     #137                // Field net/regions_unexplored/registry/RUBlocks.TALL_HYACINTH_STOCK:Ljava/util/function/Supplier;
+      80: invokeinterface #143,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      85: checkcast     #145                // class net/minecraft/world/level/block/Block
+      88: invokevirtual #163                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      91: if_acmpne     162
+      94: aload_1
+      95: aload_2
+      96: aload         4
+      98: getfield      #149                // Field net/regions_unexplored/world/level/feature/configuration/HyacinthStockConfiguration.stockProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     101: aload_3
+     102: aload_2
+     103: invokevirtual #155                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     106: getstatic     #169                // Field net/regions_unexplored/world/level/block/plant/aquatic/TallHyacinthStockBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     109: getstatic     #175                // Field net/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape.TIP:Lnet/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape;
+     112: invokevirtual #179                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     115: checkcast     #80                 // class net/minecraft/world/level/block/state/BlockState
+     118: iconst_2
+     119: invokeinterface #159,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     124: pop
+     125: aload_1
+     126: aload_2
+     127: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     130: aload         4
+     132: getfield      #149                // Field net/regions_unexplored/world/level/feature/configuration/HyacinthStockConfiguration.stockProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     135: aload_3
+     136: aload_2
+     137: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     140: invokevirtual #155                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     143: getstatic     #169                // Field net/regions_unexplored/world/level/block/plant/aquatic/TallHyacinthStockBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     146: getstatic     #182                // Field net/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape.BASE_FRUSTUM:Lnet/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape;
+     149: invokevirtual #179                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     152: checkcast     #80                 // class net/minecraft/world/level/block/state/BlockState
+     155: iconst_2
+     156: invokeinterface #159,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     161: pop
+     162: aload_1
+     163: aload_2
+     164: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     167: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     170: invokeinterface #131,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     175: getstatic     #137                // Field net/regions_unexplored/registry/RUBlocks.TALL_HYACINTH_STOCK:Ljava/util/function/Supplier;
+     178: invokeinterface #143,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     183: checkcast     #145                // class net/minecraft/world/level/block/Block
+     186: invokevirtual #163                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     189: getstatic     #169                // Field net/regions_unexplored/world/level/block/plant/aquatic/TallHyacinthStockBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     192: getstatic     #182                // Field net/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape.BASE_FRUSTUM:Lnet/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape;
+     195: invokevirtual #179                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     198: if_acmpne     312
+     201: aload_1
+     202: aload_2
+     203: aload         4
+     205: getfield      #149                // Field net/regions_unexplored/world/level/feature/configuration/HyacinthStockConfiguration.stockProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     208: aload_3
+     209: aload_2
+     210: invokevirtual #155                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     213: getstatic     #169                // Field net/regions_unexplored/world/level/block/plant/aquatic/TallHyacinthStockBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     216: getstatic     #175                // Field net/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape.TIP:Lnet/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape;
+     219: invokevirtual #179                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     222: checkcast     #80                 // class net/minecraft/world/level/block/state/BlockState
+     225: iconst_2
+     226: invokeinterface #159,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     231: pop
+     232: aload_1
+     233: aload_2
+     234: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     237: aload         4
+     239: getfield      #149                // Field net/regions_unexplored/world/level/feature/configuration/HyacinthStockConfiguration.stockProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     242: aload_3
+     243: aload_2
+     244: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     247: invokevirtual #155                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     250: getstatic     #169                // Field net/regions_unexplored/world/level/block/plant/aquatic/TallHyacinthStockBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     253: getstatic     #185                // Field net/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape.FRUSTUM:Lnet/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape;
+     256: invokevirtual #179                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     259: checkcast     #80                 // class net/minecraft/world/level/block/state/BlockState
+     262: iconst_2
+     263: invokeinterface #159,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     268: pop
+     269: aload_1
+     270: aload_2
+     271: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     274: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     277: aload         4
+     279: getfield      #149                // Field net/regions_unexplored/world/level/feature/configuration/HyacinthStockConfiguration.stockProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     282: aload_3
+     283: aload_2
+     284: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     287: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     290: invokevirtual #155                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     293: getstatic     #169                // Field net/regions_unexplored/world/level/block/plant/aquatic/TallHyacinthStockBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     296: getstatic     #188                // Field net/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape.BASE:Lnet/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape;
+     299: invokevirtual #179                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     302: checkcast     #80                 // class net/minecraft/world/level/block/state/BlockState
+     305: iconst_2
+     306: invokeinterface #159,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     311: pop
+     312: aload_1
+     313: aload_2
+     314: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     317: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     320: invokeinterface #131,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     325: getstatic     #137                // Field net/regions_unexplored/registry/RUBlocks.TALL_HYACINTH_STOCK:Ljava/util/function/Supplier;
+     328: invokeinterface #143,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     333: checkcast     #145                // class net/minecraft/world/level/block/Block
+     336: invokevirtual #163                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     339: getstatic     #169                // Field net/regions_unexplored/world/level/block/plant/aquatic/TallHyacinthStockBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     342: getstatic     #185                // Field net/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape.FRUSTUM:Lnet/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape;
+     345: invokevirtual #179                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     348: if_acmpne     462
+     351: aload_1
+     352: aload_2
+     353: aload         4
+     355: getfield      #149                // Field net/regions_unexplored/world/level/feature/configuration/HyacinthStockConfiguration.stockProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     358: aload_3
+     359: aload_2
+     360: invokevirtual #155                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     363: getstatic     #169                // Field net/regions_unexplored/world/level/block/plant/aquatic/TallHyacinthStockBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     366: getstatic     #175                // Field net/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape.TIP:Lnet/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape;
+     369: invokevirtual #179                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     372: checkcast     #80                 // class net/minecraft/world/level/block/state/BlockState
+     375: iconst_2
+     376: invokeinterface #159,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     381: pop
+     382: aload_1
+     383: aload_2
+     384: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     387: aload         4
+     389: getfield      #149                // Field net/regions_unexplored/world/level/feature/configuration/HyacinthStockConfiguration.stockProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     392: aload_3
+     393: aload_2
+     394: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     397: invokevirtual #155                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     400: getstatic     #169                // Field net/regions_unexplored/world/level/block/plant/aquatic/TallHyacinthStockBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     403: getstatic     #185                // Field net/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape.FRUSTUM:Lnet/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape;
+     406: invokevirtual #179                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     409: checkcast     #80                 // class net/minecraft/world/level/block/state/BlockState
+     412: iconst_2
+     413: invokeinterface #159,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     418: pop
+     419: aload_1
+     420: aload_2
+     421: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     424: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     427: aload         4
+     429: getfield      #149                // Field net/regions_unexplored/world/level/feature/configuration/HyacinthStockConfiguration.stockProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     432: aload_3
+     433: aload_2
+     434: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     437: invokevirtual #66                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     440: invokevirtual #155                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     443: getstatic     #169                // Field net/regions_unexplored/world/level/block/plant/aquatic/TallHyacinthStockBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     446: getstatic     #191                // Field net/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape.MIDDLE:Lnet/regions_unexplored/world/level/block/state/properties/TallHyacinthStockShape;
+     449: invokevirtual #179                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     452: checkcast     #80                 // class net/minecraft/world/level/block/state/BlockState
+     455: iconst_2
+     456: invokeinterface #159,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     461: pop
+     462: iconst_1
+     463: ireturn
+
+  public static boolean isReplaceableDirtBlock(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getstatic     #202                // Field net/regions_unexplored/registry/tag/RUBlockTags.TREE_GRASS_REPLACEABLES:Lnet/minecraft/tags/TagKey;
+       4: invokevirtual #205                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+       7: ireturn
+
+  public static boolean isReplaceableDirt(net.minecraft.world.level.LevelSimulatedReader, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #226,  0            // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+       7: invokeinterface #232,  3          // InterfaceMethod net/minecraft/world/level/LevelSimulatedReader.isStateAtPosition:(Lnet/minecraft/core/BlockPos;Ljava/util/function/Predicate;)Z
+      12: ireturn
+
+  public static boolean isReplaceableBlock(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getstatic     #237                // Field net/regions_unexplored/registry/tag/RUBlockTags.REPLACEABLE_BLOCKS:Lnet/minecraft/tags/TagKey;
+       4: invokevirtual #205                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+       7: ireturn
+
+  public static boolean isReplaceable(net.minecraft.world.level.LevelSimulatedReader, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #242,  0            // InvokeDynamic #1:test:()Ljava/util/function/Predicate;
+       7: invokeinterface #232,  3          // InterfaceMethod net/minecraft/world/level/LevelSimulatedReader.isStateAtPosition:(Lnet/minecraft/core/BlockPos;Ljava/util/function/Predicate;)Z
+      12: ireturn
+}
