@@ -2999,3 +2999,46 @@ uv run basedpyright tests/item8/test_repurposed_feature_candidates.py
 
 Three focused cases pass. Initial formatting, unused suppression and JSON typing
 findings were corrected in the focused check. Raw catalogs remain unchanged.
+
+### Repurposed complete feature partition
+
+Source 762b6f9 preserves the remaining 31 feature classes with exact independent
+reproduction. Manifest SHA-256:
+4e90a8ed5ea83a2db56830de2cd50d5dc2c5ed1149eb0d0ad06477eed7409230.
+Together with the two existing NBT feature captures, this accounts for every
+implementation class in the archive's world/features package outside configs.
+The fourth focused case binds that exact class set, source hashes and the full
+136 configured-feature partition across 37 types. The types and per-type counts
+are explicit in the test, so additions or omissions fail the check.
+
+| Feature implementation group | Contribution role |
+| --- | --- |
+| NbtDungeon and NbtFeature | Previously recorded sixteen dungeon and seven well configurations. Reuse their candidate/template links; do not count configurations as canonical families. |
+| MinecartFeature | Reads the configured nbtPath, checks supporting block and fluid conditions, obtains that template and places it with entities enabled. The sixteen configured templates were checked above. A missing template logs a warning and returns false. No independent building design. |
+| DrownedWithArmor, ShulkerMob, Skeletons, SkeletonHorseman, WitherSkeletonWithBow | Entity construction, equipment, persistence and placement at the supplied feature origin. These are authored encounter components. Equipment/enchantment helpers do not define another structure candidate. |
+| MineshaftSupport | Reads surrounding arch/fence material and supplied configuration, extends supports, handles water-based openings and updates connected blocks. These are mineshaft component writes, not separate authored sites. |
+| ConfigurableCoral and its claw, mushroom and tree implementations | Coral block placement and geometry using supplied coral materials. Vegetation components. |
+| OceanTemperatureRandomSelector | Chooses a supplied placed feature using biome names and temperature. Its sole packaged configuration chooses three living or three dead coral forms for an ocean village. It introduces no separate authored site. |
+| SimpleBlockWithFluidTick and UnderwaterBlockPileFeature | Supplied block-state placement, plant/fluid handling and underwater piles. Packaged piles use cobblestone, kelp, hay, melon or pumpkin material. These are block/vegetation decorations. |
+| StructureChorus, StructureCrimsonPlants, StructureWarpedPlants, StructureFlowers, StructureGrass, StructureNetherwart, StructureSeagrass, StructureVine, StructureVineAndLeaves | Plant placement or overgrowth around the supplied origin and target blocks. No independent authored site. |
+| StructureBreakage and StructureVineBreakage | Carving/replacement of existing blocks, with air, water and vines as applicable. These alter component condition rather than define a new structure family. |
+| StructureChains, StructureEndRodChains, StructureFire and its map initializer, StructurePowderSnow, StructurePostProcessConnectiveBlocks | Chain/rod/fire/snow placement and connection-state updates on existing components. The noise helper supplies snow variation, not an additional content provider. |
+| Packaged vanilla feature types | Trees, coral, flowers, patches and block piles. Their full type counts are included in the 136-row partition. |
+
+The inspected feature methods write these blocks/entities, place the already
+enumerated NBT choices, or delegate to the configured coral selector choices.
+No additional independent family candidate was found in this feature pass.
+This does not accept every invocation's success, exact gameplay effects or
+effective placement eligibility. The shared entry, non-feature generation and
+injection review still precedes whole-provider closure.
+
+```sh
+uv run pytest -q tests/item8/test_repurposed_feature_candidates.py
+uv run ruff check tests/item8/test_repurposed_feature_candidates.py
+uv run basedpyright tests/item8/test_repurposed_feature_candidates.py
+```
+
+Four focused cases pass. A read-only configuration probe initially included a
+ZIP directory entry; filtering for JSON files corrected the probe. One overlong
+test line was corrected. No raw evidence changed. Census remains 74 resolved
+providers and 62 open; canonical counting remains downstream of provider closure.
