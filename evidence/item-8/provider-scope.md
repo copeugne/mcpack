@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 132 of 136. The exact queue below has 4 open rows.
+Supported provider dispositions: 133 of 136. The exact queue below has 3 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -676,7 +676,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `moonlight-neoforge-1.21.1-3.0.17.jar` | Six Moonlight source increments and reused supplementaries-shared-plugin | RESOLVED: consumer APIs and existing-structure spawn-box components; no independent family. See Moonlight closure below. |
 | `naturalist-1.0.2-neoforge-1.21.1.jar` | `naturalist-provider` (9682cb0), test_naturalist_provider_scope.py | RESOLVED: Mob spawning, existing entity/item/crop behavior and client spawn-egg resources. No independent structure family. Full disposition below. |
 | `oceansdelight-neoforge-1.0.4-1.21.1.jar` | `oceansdelight-provider` (2b575d8), test_oceansdelight_provider_scope.py | RESOLVED: Food content and four existing aquatic-mob loot declarations; no independent family. See Ocean's Delight disposition below. |
-| `owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar` | owo-entries, owo-common-hooks, owo-delegates and byte-identical Fabric base classes | RESOLVED: consumer APIs and ore placement behavior; no independent family. See owo-lib closure below. |
 | `player-animation-lib-forge-2.0.4+1.21.1.jar` | Source d1d22f75; test_small_utility_provider_scope.py | RESOLVED: Client-only animation entry and client mixins; no independent family. See Player Animator disposition below. |
 | `polymorph-neoforge-1.1.0+1.21.1.jar` | 0b9f0152 entries; 562005f3 startup; 48f73c41 events; e4e27ae2 ticker. | RESOLVED: existing-container recipe selection and recipe data, no independent generated family. See Polymorph membership closure. |
 | `prickle-neoforge-1.21.1-21.1.11.jar` | Sources eb9670dc and 4e7468fb; test_config_library_provider_scope.py | RESOLVED: Configuration adapters, platform lookup and initialization; no independent family. See configuration library disposition below. |
@@ -8361,3 +8361,56 @@ One focused case and scoped Ruff/Basedpyright pass. Whole providers: 132 resolve
 4 open. Working groups remain 410 and explicit provisional Moog decisions remain
 100. Canonical reconciliation, required attributes and final Item 8 acceptance
 remain incomplete.
+
+## owo-lib provider closure
+
+The retained archive SHA-256 is
+de6ed336bd80154b7241a7b3276694befc1c94550add8bcdfe7f82e5172fd13d.
+It has 492 classes, no packaged data or NBT templates, two automatic mod entries
+and one annotation-processor service. The mixin config declares 40 common hooks,
+one server hook and 45 client entries, with no plugin. The networking mixin also
+appears in the client list; this is not a separate content provider.
+
+Source increments 37dfc1f7, bcfb3b59 and c34ff986 preserve 50 classes. The main
+entry installs LootOps callbacks and networking; the client entry installs screen,
+config, item-group, UI and shader support. ConfigAP processes Java configuration
+annotations to generate wrapper source at compile time, not world generation.
+LootOps.ADDITIONS and TagInjector.ADDITIONS start empty and are populated through
+caller-supplied item/table/tag inputs. Registry mutation methods similarly act on
+supplied entries. These are shared APIs, not independent structure registrations.
+
+Copenhagen hooks existing ore placement. It records selected ore positions and
+reapplies their block states after the ore pass. Maldenhagen's selected-block set
+starts empty and is filled by callers. This is an ore behavior, not an authored
+site family. Do not mistake world-level block writes alone for site generation.
+Other common hooks cover serialization and codec errors, item components, creative
+groups, inventory/screen synchronization, recipe remainders, player-data and
+advancement save callbacks, text codecs, usage statistics and slot access.
+The level-info tweak guards development game-rule changes; the EULA hook handles
+console agreement. Neither establishes world-generation content or substitutes
+for the frozen runtime lifecycle evidence. Debug commands and wisdom logging do
+not register generated families. Stop generic network, debug and utility tracing.
+
+Six nested libraries have no data, templates or deeper archives. Five are Endec,
+Gson/Jankson adapters, Jankson and Netty serialization support, with no Minecraft
+class references or automatic entries. The sixth is Fabric API base. Its archive
+hash differs from the prior retained Fabric bundle, but all 17 class paths and
+bytes match that already-audited module exactly, including its generated entry.
+Reuse fabric-base-entry and the Fabric provider disposition. Do not recapture or
+infer which archive wins resolution from byte equivalence. The focused test binds
+this comparison to both retained parent identities. No independent family is added.
+
+All three captures reproduce exactly in independent r1 directories. Their README
+commands retain the extractor and manifest identities. Reproducible checks:
+
+```sh
+uv run pytest -q tests/item8/test_owo_provider_scope.py
+uv run ruff check tests/item8/test_owo_provider_scope.py tools/inspect_item8_pool_elements.py
+uv run basedpyright tests/item8/test_owo_provider_scope.py tools/inspect_item8_pool_elements.py
+```
+
+Two focused cases pass. Ruff requested iterable unpacking in one test expression;
+that style correction was applied and scoped Ruff/Basedpyright pass. Provider
+membership is resolved, not general library or gameplay correctness. Whole
+providers: 133 resolved, 3 open. Working groups remain 410 and explicit provisional
+Moog decisions remain 100. Final canonical membership and attributes remain open.
