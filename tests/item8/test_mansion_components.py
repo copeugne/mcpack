@@ -12,7 +12,8 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
-def test_mansion_candidate_pools_and_child_fallbacks() -> None:  # noqa: C901, PLR0915 - one source chain.
+def test_mansion_candidate_pools_and_child_fallbacks(  # noqa: C901, PLR0912, PLR0915
+) -> None:
     """Bind source-derived candidate names, not simulated layout reachability."""
     raw = Path("evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
     assert hashlib.sha256(raw).hexdigest() == (
@@ -98,6 +99,20 @@ def test_mansion_candidate_pools_and_child_fallbacks() -> None:  # noqa: C901, P
             assert element["element_type"] == "minecraft:single_pool_element"
             assert element["processors"] == "minecraft:empty"
             child_templates.add(str(element["location"]))
+    mansion_pools = {k for k in pools if k.startswith("repurposed_structures:mansions/")}
+    extra_pools = mansion_pools - roots - child_pools
+    assert extra_pools == {f"repurposed_structures:mansions/{v}/1x2_{side}_stairs"
+                           for v in variants for side in ("front", "side")}
+    assert {k for k in by_id if k.startswith("repurposed_structures:mansions/")} == (
+        template_ids | child_templates
+    )
+    for key in extra_pools:
+        document = cast("dict[str, JsonValue]", pools[key]["document"])
+        assert document["fallback"] == "minecraft:empty"
+        for row in cast("list[dict[str, JsonValue]]", document["elements"]):
+            element = cast("dict[str, JsonValue]", row["element"])
+            assert element["element_type"] == "minecraft:single_pool_element"
+            assert str(element["location"]) in template_ids
     assert child_templates == {
         "repurposed_structures:mansions/hostile_mobs/evoker",
         "repurposed_structures:mansions/hostile_mobs/vindicator",

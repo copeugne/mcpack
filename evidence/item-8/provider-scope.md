@@ -2937,3 +2937,32 @@ checks pass. Early read-only probes used the wrong catalog path, then compared
 resource_identity tuples against string IDs and omitted the NBT extension.
 Those outputs were rejected. The tracked check uses the actual sources path,
 identity[0] and explicit extensions. No accepted source data was changed.
+
+### Repurposed custom component partition
+
+The existing mansion selector and child-pool check now accounts for all 597
+packaged mansion templates: 592 parent choices and five shared mob templates.
+Of 416 pools, 376 are selector candidates and 24 are child mob pools. The other
+16 are the front/side stair pools for the eight variants. Their single-template
+entries reference templates already in the parent set, with empty fallbacks.
+They introduce no additional authored site candidate.
+
+The monument selectors account for 76 pools and 88 templates. The remaining four
+pools and four templates are openings/wall_2, one per variant. Each template is
+a 4 by 3 by 1 air-only volume without entities or block entities. These are
+opening components, not independent sites. This closes the custom resource
+partition for candidate membership; it does not prove runtime selection or
+successful placement of every component.
+
+```sh
+uv run pytest -q tests/item8/test_mansion_components.py tests/item8/test_monument_components.py
+uv run ruff check tests/item8/test_mansion_components.py tests/item8/test_monument_components.py
+uv run basedpyright tests/item8/test_mansion_components.py tests/item8/test_monument_components.py
+```
+
+Remaining Repurposed scope: the seven other pools and 53 other templates listed
+above, remaining feature roles and entry/hook dispositions. Provider scope is
+still OPEN. These checks reuse the existing evidence and tests.
+Four focused cases, scoped Ruff and Basedpyright pass. An initial lint failure
+placed the existing complexity suppression on the wrong line of the multiline
+function declaration; moving it to the declaration line resolved that failure.

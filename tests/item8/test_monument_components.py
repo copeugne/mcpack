@@ -58,6 +58,25 @@ def test_monument_candidate_component_resources() -> None:
                                   enabled_packs=["vanilla", "mod_data"],
                                   lithostitched_overlay=True)
     assert template_ids <= selected.keys()
+    extra_pools = {k for k in pools if k.startswith("repurposed_structures:monuments/")} - keys
+    assert extra_pools == {f"repurposed_structures:monuments/{v}/openings/wall_2"
+                           for v in ("desert", "icy", "jungle", "nether")}
+    assert {k for k in selected if k.startswith("repurposed_structures:monuments/")} == (
+        template_ids | extra_pools
+    )
+    for key in extra_pools:
+        pool = cast("dict[str, JsonValue]", pools[key]["document"])
+        assert pool["fallback"] == "minecraft:empty"
+        rows = cast("list[dict[str, JsonValue]]", pool["elements"])
+        assert len(rows) == 1
+        element = cast("dict[str, JsonValue]", rows[0]["element"])
+        assert element["element_type"] == "minecraft:single_pool_element"
+        assert element["location"] == key
+        assert selected[key]["document"] == {
+            "block_entities": [], "data_version": 3953, "entities": [],
+            "palette": [{"Name": "minecraft:air"}], "palettes": None,
+            "size": [4, 3, 1], "state_counts": {"0": 12},
+        }
     expected_entities = {
         "desert": {"minecraft:skeleton", "minecraft:creeper", "minecraft:husk",
                    "minecraft:guardian"},
