@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+BetterEnd membership subtotal is now explicit and checked: 27 groups, comprising
+21 authored structure families and six natural-formation registry groups. All
+14 registry IDs remain assigned once in nine groups; eighteen nonregistry
+families are disjoint from them. Do not silently discard natural registry
+formations or present them as authored buildings. Broad checks passed 89 cases;
+the final subtotal binding passed sixteen BetterEnd cases and scoped checks.
+Continue remaining named provider boundaries (Quark, Supplementaries cave urns,
+Aether holiday tree, Deep Aether and RU fallen-tree forms) and Moog/village
+reconciliation, alongside remaining provider coverage. Attributes remain open.
+
+
 BetterEnd selected biome-template membership is settled: the 35 ruins comprise
 ten families represented by thirty templates and five excluded light fixtures.
 With six furnished buildings and the earlier light_1 exclusion, all 42 selected

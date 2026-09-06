@@ -6187,3 +6187,35 @@ uv run basedpyright tests/item8/test_betterend_feature_candidates.py tools/build
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-ruins-r1.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-betterend-ruins-r1.json
 ```
+
+### BetterEnd registry roles and reconciled membership subtotal
+
+All fourteen BetterEnd structure-registry IDs remain accounted for exactly once
+in nine groups. Three are authored structures: bridge, village and eternal
+portal. Six are explicitly natural formations: lakes, mountains, giant ice star,
+giant mossy glowshroom, small island and sulphuric cave. The captured writers
+establish these roles. Natural formations remain inventoried rather than being
+silently dropped from the registered structure universe or presented as buildings.
+
+The independent feature/template routes add eighteen distinct families: sixteen
+biome architecture families, one crashed ship and one ruined obsidian pillar.
+The ship's already accepted singleton membership is now explicit as a families
+list. The test verifies disjoint membership and a subtotal of 27 BetterEnd groups:
+21 authored structure families and six natural-formation groups. Fixture,
+vegetation and disconnected-template exclusions remain explicit. This is a
+provider membership subtotal, not the final pack count or completed attributes.
+
+The broad family-decision and BetterEnd checks passed 89 cases. A subsequent
+explicit subtotal binding passed all sixteen BetterEnd cases. Initial typing
+and formatting findings were corrected; scoped checks and reproduction pass.
+No new source, world experiment or measurement was needed. Continue remaining
+provider/family boundaries; do not re-inventory these BetterEnd inputs.
+
+```sh
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py tests/item8/test_family_decisions.py
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py
+uv run ruff check tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-registry-roles-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-betterend-registry-roles-r2.json
+```
