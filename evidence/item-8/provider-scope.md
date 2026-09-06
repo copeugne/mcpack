@@ -2862,3 +2862,40 @@ seven math/fast classes and the assertion was corrected to the measured exact
 partition. Formatting findings were also corrected. No raw source was changed.
 Census: 74 resolved providers and 62 open. Next reconcile Repurposed Structures,
 reusing its existing mansion, monument, processor and pool-codec evidence.
+
+## Repurposed Structures nonregistry candidate increment
+
+Provider scope remains OPEN. Source 452e33e preserves the relevant registration,
+NBT feature, modifier and common hook implementations with exact reproduction.
+The frozen archive SHA-256 is
+aeb473f0a0a0632cea089377cdd9f66c42cf6f97557fd32c368ac40635285dd2.
+
+The configured NBT feature set includes sixteen dungeon configurations and
+seven well configurations outside the current non_registry_content contribution
+list. These must be reconciled before canonical counting. All twenty-three have
+matching named placed-feature and biome-modifier references, and every selected
+NBT template exists in the frozen archive. This is packaged reachability, not
+observed placement, effective eligibility or twenty-three canonical families.
+
+| Candidate path under repurposed_structures | Configurations requiring reconciliation |
+| --- | --- |
+| dungeons/ | badlands, dark_forest, deep, desert, end, icy, jungle, mushroom, nether, ocean_cold, ocean_frozen, ocean_lukewarm, ocean_neutral, ocean_warm, snow, swamp |
+| wells/ | badlands, cherry, forest, mossy_stone, mushroom, nether, snow |
+
+The dungeon entries use nbt_dungeon; wells use nbt_feature. Ocean-temperature
+configurations share template choices, so configuration count must not become a
+family count. Preserve template/design, material and placement variants during
+canonical reconciliation. Keep these candidates in the finite provider work list;
+do not defer them behind detailed attributes or exclude them for lacking a
+structure-registry root. The existing mansion/monument evidence is separate and
+must be reused rather than recaptured.
+
+```sh
+uv run pytest -q tests/item8/test_repurposed_feature_candidates.py
+uv run ruff check tests/item8/test_repurposed_feature_candidates.py
+uv run basedpyright tests/item8/test_repurposed_feature_candidates.py
+```
+
+One focused case and scoped quality checks pass. Remaining Repurposed scope is
+full feature roles, pool/template component reconciliation, entry/hook roles and
+supported exclusions. Census is unchanged: 74 resolved providers, 62 open.
