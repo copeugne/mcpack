@@ -5024,3 +5024,48 @@ Basedpyright passing, using the commands in the preceding checkpoint. No source
 was recaptured and no new measurement system was introduced. Regions Unexplored
 remains OPEN for its remaining common-entry, tree-placer/decorator and complete
 payload/overlay/JSON5 roles. Current census is still 88 resolved, 48 open.
+
+### Regions Unexplored full payload and overlay boundary
+
+The focused provider test now accounts for all 8077 non-directory files in the
+frozen archive and each root data category. This closes the file-accounting gap,
+while semantic entry/configuration and custom tree-component checks remain open.
+The only embedded archive is META-INF/jars/json5-java-3.0.0.jar, SHA-256
+2e0f73784e6bc4c755e52d485f628d110d397f079d58b118658b903be9aa0533.
+Its complete payload is 28 JSON5 classes plus a manifest, with no loader metadata,
+services, scripts, Minecraft references or NeoForge entry annotations. Parent
+class references are limited to RUConfigHandler and the four Json5Ops classes.
+It supplies configuration parsing/serialization; no independent mod entry or
+packaged world-generation data exists in the nested archive. Do not audit its
+parser internals as a structure-family requirement. The parent's configuration
+behavior remains part of the pending common-entry interpretation.
+
+All thirty overlay files have explicit roles:
+
+| Overlay | Files | Contribution |
+| --- | ---: | --- |
+| painted_planks | 16 | Shaped crafting recipes. |
+| birch_aspen_trees | 6 | Vanilla tree definitions using birch/aspen components. |
+| oak_taller_trees | 4 | Vanilla oak tree configurations. |
+| taiga_pine_trees | 2 | Vanilla pine/mega-pine tree configurations. |
+| common_grass_sprouts | 1 | A random plant patch. |
+| forest_fancy_oaks | 1 | A selector among existing birch, oak and fancy-oak vegetation. |
+
+NeoForge's pack metadata declares all six directories with regions_unexplored:config
+conditions. Painted planks uses key painted_planks; the other five use their
+vanilla_changes/<overlay> keys. Preserve conditional activation separately from
+membership. These declarations do not create another structure root or authored
+site. The tree-component implementations still require their pending dispositions.
+
+```sh
+uv run pytest -q tests/item8/test_regions_unexplored_provider_scope.py
+uv run ruff check tests/item8/test_regions_unexplored_provider_scope.py
+uv run basedpyright tests/item8/test_regions_unexplored_provider_scope.py
+```
+
+Both focused cases pass (0.16s); scoped Ruff and Basedpyright pass. This uses the
+existing pinned archives and test infrastructure. No new runtime experiment or
+measurement system was added. RU remains OPEN for common/configuration entry
+roles and the remaining registered tree placers/decorators. Census: 88 resolved,
+48 open. Earlier full-payload/overlay/JSON5 inventory gaps are now resolved and
+must not restart.
