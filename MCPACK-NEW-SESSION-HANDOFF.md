@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-06
 
+The derived inventory now matches all delivered Soaring decisions at cc8343cb.
+Two independent regenerations match. Working groups: 409. Explicit provisional
+queue: 75 (Nether 22, Voyager 53). Continue Nether membership reconciliation.
+
+
 Soaring membership decisions are settled: 26 groups cover its 35 runtime roots.
 The remaining explicit provisional queue is 75, consisting of Nether 22 and
 Voyager 53. Overall source group count is 409 after the pond merge. Reuse the
