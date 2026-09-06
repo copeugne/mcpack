@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-06
 
+Latest closure at 6e765f5 is pushed and remote-ref verified. Census:
+73 resolved providers, 63 open. Quark provider scope is closed. The existing
+five named site candidates remain spire, fairy ring, fallen log, Monster Box
+and Nether obsidian spike; terrain/vegetation contributions are not extra
+families. Canonical whole-stack grouping remains separate and incomplete.
+
+One focused case in tests/item8/test_quark_provider_scope.py passes, with scoped
+Ruff and Basedpyright clean. It binds eighteen source manifests, exact outer and
+nested payloads, all world generators/top-level world modules/feature classes,
+packaged worldgen categories and frozen configuration. The detailed disposition
+is at the end of provider-scope.md. Do not recapture or repeat completed Quark
+and Biolith sources or reinterpret provider closure as observed placement.
+
+Next close shared Zeta using the existing captures listed in its queue row.
+Inspect remaining entry/plugin roles and complete packaged payload accounting;
+reuse module/config/biome/generator dispatch evidence. Do not expand generic
+math or unrelated gameplay internals. All remaining providers precede final
+canonical grouping and detailed family attributes. Item 8, clean review and
+main merge remain open. This turn delivered a provider closure; no blocker.
+
 Latest source checkpoints b9670f9 and 4e4a158 are pushed and remote-ref
 verified. Census remains 72 resolved providers and 64 open. Quark remains open.
 The specific spawner callback is resolved: configChanged copies isEnabled to
