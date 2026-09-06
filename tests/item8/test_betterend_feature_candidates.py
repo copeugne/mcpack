@@ -444,6 +444,110 @@ def test_betterend_building_lists_partition_exact_template_candidates() -> None:
         assert len(vegetation_paths) == 21  # explicit vegetation partition.
 
 
+def test_betterend_registry_groups_distinguish_authored_and_natural_content() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    groups = {str(group["family_id"]): group
+              for group in cast("list[dict[str, JsonValue]]", decisions["groups"])
+              if str(group["family_id"]).startswith("betterend:")}
+    authored = {"betterend:end_bridge", "betterend:end_village", "betterend:eternal_portal"}
+    natural = {"betterend:" + name for name in (
+        "end_lake", "mountain", "giant_ice_star", "giant_mossy_glowshroom",
+        "small_island", "sulphuric_cave",
+    )}
+    assert set(groups) == authored | natural
+    members: list[str] = []
+    for family, group in groups.items():
+        assert group["content_role"] == (
+            "AUTHORED_STRUCTURE" if family in authored else "NATURAL_FORMATION")
+        members.extend(cast("list[str]", group["structure_ids"]))
+        for path, digest in cast("dict[str, str]", group["evidence"]).items():
+            assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    registry = read_registry(Path(
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"))
+    assert len(members) == len(set(members)) == 14
+    assert set(members) == {name for name in registry if name.startswith("betterend:")}
+
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    nonregistry = [family for key, row in contributions.items() if key.startswith("betterend:")
+                   for family in cast("list[str]", row["families"])]
+    assert len(nonregistry) == len(set(nonregistry)) == 18
+    assert not set(nonregistry) & set(groups)
+    assert len(nonregistry) + len(groups) == 27
+
+
+def test_betterend_ruin_decisions_partition_selected_templates() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    decision = contributions["betterend:biome_ruins"]
+    designs = cast("dict[str, dict[str, JsonValue]]", decision["designs"])
+    families = cast("list[str]", decision["families"])
+    assert len(families) == len(designs) == 10
+    assert set(families) == set(designs)
+    included = [path for row in designs.values() for path in cast("list[str]", row["templates"])]
+    excluded = [path for row in cast("list[dict[str, JsonValue]]", decision["dispositions"])
+                for path in cast("list[str]", row["templates"])]
+    assert len(included) == len(set(included)) == 30
+    assert len(excluded) == len(set(excluded)) == 5
+    assert not set(included) & set(excluded)
+    for path, digest in cast("dict[str, str]", decision["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    with ZipFile(source.path) as archive:
+        ruins = {name for name in archive.namelist()
+                 if name.startswith("data/betterend/structure/biome/")
+                 and "/ruins_" in name and name.endswith(".nbt")}
+        assert set(included) | set(excluded) == ruins
+        for path in ruins:
+            biome = path.split("/")[4]
+            configured = cast("dict[str, dict[str, list[dict[str, str]]]]", json.loads(
+                archive.read(f"data/betterend/worldgen/configured_feature/{biome}_structures.json")))
+            assert "/" + path in {row["path"] for row in configured["config"]["structures"]}
+            assert template_summary(archive.read(path))["size"]
+
+
+def test_betterend_furnished_building_decisions_bind_distinct_content() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    decision = contributions["betterend:biome_buildings"]
+    designs = cast("dict[str, dict[str, JsonValue]]", decision["designs"])
+    assert set(cast("list[str]", decision["families"])) == set(designs)
+    expected = {
+        "mushroom_library": ("foggy_mushroomland/library", "betterend:mossy_glowshroom_bookshelf"),
+        "mushroom_tree_house": ("foggy_mushroomland/tree_house", "betterend:mossy_glowshroom_door"),
+        "lantern_woods_cabin": ("lantern_woods/cabin", "betterend:lucernia_crafting_table"),
+        "shadow_forest_mansion": ("shadow_forest/small_mansion", "betterend:end_stone_smelter"),
+        "umbrella_jungle_workshop_house": ("umbrella_jungle/house_1", "minecraft:enchanting_table"),
+        "umbrella_jungle_raised_house": ("umbrella_jungle/house_2", "betterend:jellyshroom_ladder"),
+    }
+    assert set(designs) == {"betterend:" + name for name in expected}
+    for path, digest in cast("dict[str, str]", decision["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    with ZipFile(source.path) as archive:
+        for family, (relative, furnishing) in expected.items():
+            design = designs["betterend:" + family]
+            path = "data/betterend/structure/biome/" + relative + ".nbt"
+            assert design["template"] == path
+            template = template_summary(archive.read(path))
+            assert design["packaged_size"] == template["size"]
+            palette = cast("list[dict[str, str]]", template["palette"])
+            counts = cast("dict[str, int]", template["state_counts"])
+            assert furnishing in {state["Name"] for i, state in enumerate(palette)
+                                  if counts.get(str(i), 0)}
+            biome = relative.split("/")[0]
+            configured = cast("dict[str, dict[str, list[dict[str, str]]]]", json.loads(
+                archive.read(f"data/betterend/worldgen/configured_feature/{biome}_structures.json")))
+            assert "/" + path in {row["path"] for row in configured["config"]["structures"]}
+
+
 def test_betterend_crashed_ship_inline_configuration_and_biome_routes() -> None:
     decisions = cast("dict[str, JsonValue]", json.loads(Path(
         "evidence/item-8/family-decisions.json").read_bytes()))
@@ -506,6 +610,16 @@ def test_betterend_crashed_ship_inline_configuration_and_biome_routes() -> None:
 
 
 def test_betterend_extra_biome_templates_and_direct_list_consumer() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    for name in ("lantern_woods/light_1", "blossoming_spires/house"):
+        decision = contributions["betterend:" + name]
+        assert decision["families"] == []
+        assert decision["template"] == f"data/betterend/structure/biome/{name}.nbt"
+        for path, digest in cast("dict[str, str]", decision["evidence"]).items():
+            assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
     source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
     assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
     directory = Path("evidence/item-8/sources/betterend-entry-template-consumers")
@@ -537,6 +651,14 @@ def test_betterend_extra_biome_templates_and_direct_list_consumer() -> None:
             for kind in ("fallen_tree", "tree_stump") for i in range(1, 4)
         }
         assert templates - selected == extra
+        light = prefix + "lantern_woods/light_1.nbt"
+        assert light in selected
+        fixture = template_summary(archive.read(light))
+        assert fixture["size"] == [1, 5, 3]
+        assert {state["Name"] for state in cast("list[dict[str, str]]", fixture["palette"])} == {
+            "betterend:filalux", "betterend:flavolite_pedestal", "betterend:flavolite_wall",
+            "betterend:lucernia_fence", "betterend:thallasium_chain",
+        }
         legacy = {n for n in archive.namelist() if n.startswith(prefix) and n.endswith(".json")}
         assert legacy == {prefix + biome + "/structures.json" for biome in (
             "blossoming_spires", "chorus_forest", "foggy_mushroomland", "lantern_woods",
@@ -563,6 +685,22 @@ def test_betterend_extra_biome_templates_and_direct_list_consumer() -> None:
 
 
 def test_betterend_pillar_candidates_and_existing_end_components() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    decision = contributions["betterend:ruined_obsidian_pillar"]
+    assert decision["families"] == ["betterend:ruined_obsidian_pillar"]
+    assert set(cast("dict[str, JsonValue]", decision["variants"])) == {
+        "betterend:fallen_pillar", "betterend:obsidian_pillar_basement",
+    }
+    assert decision["placed_features"] == sorted(cast("dict[str, JsonValue]", decision["variants"]))
+    assert decision["packaged_biome_consumer"] == "betterend:dragon_graveyards"
+    for path, digest in cast("dict[str, str]", decision["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    dimensions = cast("dict[str, list[str]]", json.loads(Path(
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json").read_bytes()))
+    assert decision["packaged_biome_consumer"] in dimensions["minecraft:the_end"]
     source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
     assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
     directory = Path("evidence/item-8/sources/betterend-pillar-end-hooks")

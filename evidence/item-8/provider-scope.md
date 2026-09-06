@@ -594,7 +594,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `AI-Improvements-1.21-0.5.3.jar` | `ai-improvements-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing-entity AI goals and look control; no structure contribution. See small utility provider dispositions below. |
 | `Almanac-1.21.1-2-neoforge-1.5.2.jar` | `almanac-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Configuration/command support and existing item/entity behavior. No independent family. See additional shared provider dispositions below. |
 | `BetterEnd-21.0.31.jar` | BetterEnd source captures and shared BCLib/Wover consumers; test_betterend_feature_candidates.py | RESOLVED: Fourteen existing roots, the complete 128-template partition, feature candidates, common hooks and modifier consumers accounted for below. Named architectural and landmark grouping decisions remain open for canonical reconciliation. |
-| `BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar` | BOP entry, feature and delegated-material captures; test_bop_feature_candidates.py | RESOLVED: All registered features and packaged resources have contribution roles. Anomaly and monolith are landmark candidates; giant pumpkin and carved-pumpkin patches retain named decoration boundaries for canonical grouping. No structure roots, templates or pools. See final BOP disposition below. |
+| `BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar` | BOP entry, feature and delegated-material captures; test_bop_feature_candidates.py | RESOLVED: All registered features and packaged resources have contribution roles. Anomaly and monolith are two accepted landmark families; both pumpkin forms and bone-spine IDs are excluded decorations. Canonical membership decisions are integrated below. No structure roots, templates or pools. See final BOP disposition below. |
 | `CreateDragonsPlus-1.11.2b.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `CreeperOverhaul-neoforge-1.21.1-4.0.6.jar` | `creeper-overhaul-provider` (e8d3713), `creeper-overhaul-login` (d21ca8f), test_creeper_overhaul_provider_scope.py | RESOLVED: Biome mob spawning, entity behavior/loot and cosmetic synchronization; no independent structure family. Full payload and bundled-library boundary below. |
 | `DungeonsArise-1.21.1-2.1.68-release.jar` | `wda-provider-scope` | RESOLVED: see WDA structure-provider disposition below. |
@@ -6001,3 +6001,319 @@ The initial lint finding was corrected before acceptance. Fabric queue:
 twenty-one resolved, twenty-two open modules. Whole-provider census remains
 90 resolved, 46 open. Reuse all lookup sources; no remaining lookup membership
 question requires further helper tracing.
+
+### BOP landmark family integration
+
+The existing named decisions are now integrated in family-decisions.json and
+the reproduced inventory: biomesoplenty:anomaly and biomesoplenty:monolith each
+contribute one independent landmark family. State and size variation do not
+create additional families. Both bone-spine configured IDs share one natural
+column writer and contribute no family. Existing source, registration, packaged
+placement and captured dimension-biome evidence are reused and hash-bound.
+The two pumpkin boundaries remain the next BOP canonical decisions.
+
+Five focused cases and scoped quality checks pass. No source capture, world run
+or measurement framework was added. The 421 registry groups are unchanged; the
+two landmarks are outside that registry, and the global family total remains
+unaccepted pending the remaining provider and grouping decisions.
+
+```sh
+uv run pytest -q tests/item8/test_bop_feature_candidates.py
+uv run ruff check tests/item8/test_bop_feature_candidates.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_bop_feature_candidates.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-bop-landmarks-r1.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-bop-landmarks-r1.json
+```
+
+### BOP pumpkin boundaries closed
+
+Both big_pumpkin and pumpkin_patch are now explicit decorated-vegetation
+exclusions in family-decisions.json and the reproduced inventory. The former
+writes a giant plant with a stem and leaves; its carved/light block references
+are replacement predicates. The latter scatters plants and individual light
+fixtures without assembling an independent site. Neither contributes a family.
+The preserved writers and already-bound registered/packaged biome routes
+suffice; no recapture or helper expansion was needed.
+
+BOP canonical membership is now settled: two independent landmark families,
+anomaly and monolith. Bone-spine and both pumpkin boundaries are closed. Other
+provider roles retain the prior complete partition. Required attributes and
+generated-world reconciliation remain Item 8 work. Five focused cases and
+scoped quality checks pass. The registry groups remain unchanged.
+
+```sh
+uv run pytest -q tests/item8/test_bop_feature_candidates.py
+uv run ruff check tests/item8/test_bop_feature_candidates.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_bop_feature_candidates.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-bop-pumpkins-r1.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-bop-pumpkins-r1.json
+```
+
+### BetterEnd ruined-pillar canonical grouping
+
+The two named feature candidates now form one explicit nonregistry family,
+betterend:ruined_obsidian_pillar. FallenPillarFeature and
+ObsidianPillarBasementFeature use the same column motif with different remnant
+shapes, transforms and weathering. These are two variants, not two independently
+composed site designs. Their independent Dragon Graveyards placement keeps the
+family separate from central End spike components. Neither material nor a
+shared generic shape helper is by itself the grouping rationale.
+
+The existing eight-class source capture, both inline configured/placed routes
+and captured End biome membership are bound to the decision. Thirteen focused
+cases, scoped checks and inventory reproduction pass. No new source or geometry
+measurement was added. Exact placement orientation and the eleven attributes
+remain separate from this membership decision.
+
+Next reconcile BetterEnd architectural choices and its disconnected house.
+The existing registry groups also include terrain/vegetation entries (including
+BetterEnd mountains and lakes); their canonical dispositions must be resolved
+before treating the working group count as a family total.
+
+```sh
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py
+uv run ruff check tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-pillars-r1.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-betterend-pillars-r1.json
+```
+
+### BetterEnd fixture and disconnected-house dispositions
+
+lantern_woods/light_1 is now an explicit ambient-fixture exclusion. Its narrow
+pedestal/wall/fence, chain and filalux content forms a light, not an independent
+site. It remains a selected and attributable generation contribution.
+blossoming_spires/house is preserved as a disconnected architectural candidate,
+not an additional active family: the current configured lists omit it and the
+direct consumer does not scan adjacent files. A demonstrated additional consumer
+would reopen that eligibility decision. Existing legacy-list evidence is reused.
+
+This settles two named template questions. Of the original 42 selected
+architectural candidates, 41 remain for design grouping after the fixture
+exclusion. Those are template candidates, not 41 accepted families. Existing
+21 vegetation exclusions and the six extra old-Bulbis vegetation templates
+remain unchanged. No renderer, measurement or new source capture was added.
+
+Thirteen focused cases, scoped quality checks and inventory reproduction pass.
+The test binds the exact fixture palette/size/selection and both decisions to
+the existing source and template catalogs.
+
+```sh
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py
+uv run ruff check tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-template-exclusions-r1.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-betterend-template-exclusions-r1.json
+```
+
+### BetterEnd furnished-building family decisions
+
+Six complete building designs are integrated under betterend:biome_buildings:
+mushroom library, mushroom tree house, Lantern Woods cabin, Shadow Forest
+mansion, Umbrella Jungle workshop house and Umbrella Jungle raised house.
+The decision records each exact template, packaged box and design rationale.
+The two Umbrella Jungle houses are not merged by name: broad workstation
+construction differs from the narrow tall ladder/chest design. The mushroom
+library and dwelling likewise differ in built form and furnished function.
+
+These independently selected biome templates are outside the existing village
+component graph. Rotation, terrain merging, offsets and recurring biome
+placements do not add families. Packaged boxes are not accepted assembled-world
+footprint measurements. Existing source, catalogs and active-list checks are
+reused; no renderer or measurement system was added.
+
+Fourteen focused cases and scoped checks pass. The new direct binding checks
+join all six named templates, their used furnishing blocks and packaged sizes
+to their active configured lists. The remaining BetterEnd selected architectural
+queue is 35 ruin templates; grouping them remains open.
+
+```sh
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py
+uv run ruff check tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-buildings-r1.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-betterend-buildings-r1.json
+```
+
+### BetterEnd ruin layout inspection
+
+Source tool 3b14c8d renders the existing 35 ruin templates in six fixed sheets,
+retained under sources/betterend-ruin-views. All six were manually inspected,
+and every SVG reproduces byte for byte. The README records hashes, commands,
+the rejected small-scale pilot and diagram limitations. No new dependency or
+runtime measurement was introduced. Palette summaries did not preserve the
+ordinary block arrangements needed for these remaining canonical comparisons.
+
+The views distinguish low floor remnants, light fixtures, column/pedestal
+forms, gateways and roofed construction within the ruin-named files. Family
+assignments still require the material/content join and cross-biome comparison;
+this capture alone closes no family decision. Do not repeat the rendering or
+expand its fidelity without a concrete unresolved layout boundary.
+
+### BetterEnd selected ruin grouping closed
+
+All 35 ruin-named templates now have an explicit disposition in
+family-decisions.json: thirty templates in ten design families, plus five
+ambient light-fixture exclusions. The families are timber building remnants,
+stone column remnants, masonry foundations, pedestal courts, central pedestal
+altars, gateway remnants, a tiered purpur ruin, a crystal spire, an overgrown
+fountain and an enclosed masonry ruin. Every group's exact template paths and
+architectural rationale are recorded.
+
+The grouping compares preserved layouts across biomes, with the exact palette
+and stored-content evidence. Material, orientation, differing survival and
+furnishings may vary within a design. This does not assert transformed-copy
+equivalence or reconstruct an unknown original intact building. Individual
+light supports remain fixtures despite their ruin filenames.
+
+Together with the six furnished building families and the earlier light_1
+exclusion, the 42 selected architectural candidates now comprise sixteen
+design families represented by 36 templates and six excluded fixtures. All
+21 selected vegetation templates remain excluded. The disconnected house is
+still a separately preserved inactive candidate. No selected BetterEnd biome
+template remains without a membership disposition. This is not a total for
+BetterEnd's registry roots, independent pillar/ship routes or the whole pack.
+
+Fifteen focused cases, scoped checks and inventory reproduction pass. The new
+check reconciles all 35 exact archive paths to a disjoint exhaustive assignment
+and active configured-list selection, with source/view hashes bound. Next
+resolve terrain/vegetation entries in the provisional registry groups and
+continue the other named providers' canonical boundaries.
+
+```sh
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py
+uv run ruff check tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-ruins-r1.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-betterend-ruins-r1.json
+```
+
+### BetterEnd registry roles and reconciled membership subtotal
+
+All fourteen BetterEnd structure-registry IDs remain accounted for exactly once
+in nine groups. Three are authored structures: bridge, village and eternal
+portal. Six are explicitly natural formations: lakes, mountains, giant ice star,
+giant mossy glowshroom, small island and sulphuric cave. The captured writers
+establish these roles. Natural formations remain inventoried rather than being
+silently dropped from the registered structure universe or presented as buildings.
+
+The independent feature/template routes add eighteen distinct families: sixteen
+biome architecture families, one crashed ship and one ruined obsidian pillar.
+The ship's already accepted singleton membership is now explicit as a families
+list. The test verifies disjoint membership and a subtotal of 27 BetterEnd groups:
+21 authored structure families and six natural-formation groups. Fixture,
+vegetation and disconnected-template exclusions remain explicit. This is a
+provider membership subtotal, not the final pack count or completed attributes.
+
+The broad family-decision and BetterEnd checks passed 89 cases. A subsequent
+explicit subtotal binding passed all sixteen BetterEnd cases. Initial typing
+and formatting findings were corrected; scoped checks and reproduction pass.
+No new source, world experiment or measurement was needed. Continue remaining
+provider/family boundaries; do not re-inventory these BetterEnd inputs.
+
+```sh
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py tests/item8/test_family_decisions.py
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py
+uv run ruff check tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-registry-roles-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-betterend-registry-roles-r2.json
+```
+
+
+## Tree membership decisions, 2026-09-06
+
+The three previously named tree boundaries are now resolved in
+family-decisions.json and reproduced in inventory.json. Aether holiday_tree is
+vegetation with scattered snow/presents. Deep Aether fallen_tree has two
+log/mushroom configurations. Regions Unexplored fallen_tree has six configured
+variants and eight placed variants. Each contribution has an empty additional
+family list with its rationale and preserved source identities. These are
+membership decisions based on complete supplied forms, not exclusions based
+only on feature type or file names.
+
+Aether seasonal eligibility and present reward relevance remain explicit.
+Regions Unexplored can produce a stump without the full fallen log. Neither
+exclusion claims disabled generation or successful observed placement. No
+registry root was removed. The Ashen template remains a trial-chamber component.
+These decisions supersede the open tree membership boundaries in earlier dated
+entries. Provider coverage stays 90 resolved and 46 open.
+
+Validation uses the existing three candidate test files and source bindings:
+
+```sh
+uv run pytest -q tests/item8/test_aether_cloud_source.py tests/item8/test_deep_aether_candidates.py tests/item8/test_regions_unexplored_candidates.py
+uv run ruff check tests/item8/test_aether_cloud_source.py tests/item8/test_deep_aether_candidates.py tests/item8/test_regions_unexplored_candidates.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_aether_cloud_source.py tests/item8/test_deep_aether_candidates.py tests/item8/test_regions_unexplored_candidates.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-tree-boundaries-r1.json
+cmp evidence/raw/item8/inventory-tree-boundaries-r1.json evidence/item-8/inventory.json
+```
+
+Eleven focused cases and scoped quality checks pass. The initial test assertions
+had redundant sorting and incomplete typing; these were corrected without
+changing the membership decisions or source captures. Inventory status remains
+INCOMPLETE. No additional evidence class or measurement system was introduced.
+
+
+## Quark canonical membership, 2026-09-06
+
+Quark contributes four canonical families: spiral_spire, fairy_ring,
+monster_box and nether_obsidian_spike. The spire is one recognizable landmark;
+the ring and associated buried ore are one marker/reward design; the monster box
+is one authored proximity encounter; ordinary and large Nether spikes are one
+shape family with the large spawner/chest encounter variant preserved explicitly.
+No Quark runtime structure root duplicates these nonregistry contributions.
+
+The prior fallen_log family inclusion is corrected to decorated vegetation,
+consistent with the other fallen-tree decisions. Its generated form is a short
+trunk with optional moss, vines and ferns. Hollow block substitution does not
+compose a separate site. The previous geometry, conditions and uncertainty are
+preserved under excluded_design. This corrects membership without erasing the
+original source-derived details. Terrain styles, stone generation and other
+vegetation remain excluded contributions. Their source evidence is reused.
+
+This resolves the five previously named Quark candidate boundaries as four
+families and one excluded vegetation candidate. Provider coverage stays 90 of
+136. Detailed effective attributes and observations remain open. The earlier
+provider-wide open scope strings do not override this membership decision.
+No source capture, runtime experiment or measurement system was added.
+
+```sh
+uv run pytest -q tests/item8/test_quark_provider_scope.py
+uv run ruff check tests/item8/test_quark_provider_scope.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_quark_provider_scope.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-quark-membership-r1.json
+cmp evidence/raw/item8/inventory-quark-membership-r1.json evidence/item-8/inventory.json
+```
+
+Two focused cases, scoped quality checks and inventory reproduction pass.
+
+
+## Supplementaries cave-cache membership, 2026-09-06
+
+The freestanding cave urn patch is one canonical family,
+supplementaries:cave_urn_cache. Its form is a group of authored treasure vessels,
+generated independently of a building or vegetation feature. Random positions,
+partial placement and repeated urn blocks are variants of the same cache design.
+The existing galleon urn pool consumes that same urns_patch as a ship component;
+it does not add another family. Road-sign feature/root reconciliation remains
+unchanged. This settles the named cache-versus-decoration membership question.
+
+The existing packaged-data test now binds the galleon reuse and both membership
+dispositions as well as the freestanding modifier/placed/configured chain.
+Configured tries and repetitions are not observed urn counts. The treasure=true
+state is not proof of actual rewards or placement success. Effective eligibility,
+reward behavior and other required attributes remain open. Provider coverage
+stays 90 resolved, 46 open. No source recapture or runtime measurement was added.
+
+```sh
+uv run pytest -q tests/item8/test_supplementaries_provider_scope.py
+uv run ruff check tests/item8/test_supplementaries_provider_scope.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_supplementaries_provider_scope.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-cave-urn-membership-r1.json
+cmp evidence/raw/item8/inventory-cave-urn-membership-r1.json evidence/item-8/inventory.json
+```
+
+Eight focused cases and scoped checks pass. The initial lint pass flagged the
+expanded single component-chain test's statement count. A local PLR0915 waiver
+keeps the related artifact join together without introducing a test helper.

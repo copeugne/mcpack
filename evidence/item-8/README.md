@@ -2629,3 +2629,43 @@ uv run pytest -q tests/item8/test_inventory_sources.py
 Five tests pass. Scoped Ruff and Basedpyright pass after correcting one import
 spacing finding. Provider contribution reconciliation remains open; no new
 schema, measurement system or runtime sample was introduced.
+
+
+## Integrated Villages canonical relationship (2026-09-06)
+
+The twelve Integrated Villages roots form one settlement family,
+`integrated_villages:village`, with twelve explicit design variants. This applies
+the same settlement identity rule used for CTOV. Every root has empty spawn
+overrides and reachable authored villager content. Different buildings,
+professions, start pools and shared pieces remain components. Airship elevation,
+coastal facing, optional Quark selection, liquid rules and expansion sizes stay
+in the exact per-root definitions and preserved design settings. Grouping does
+not claim equal layouts, accessibility, hostility or observed population.
+
+The Mossy Mounds armorer-bottom component includes a physical spawner with empty
+SpawnData.entity and empty SpawnPotentials. Its enemy source remains unresolved;
+do not infer a mob identity or describe all twelve variants as spawner-free.
+Packaged references to optional mod entities also remain declarations rather
+than proof of successful creation in the retained runtime.
+
+All original root IDs, design names, placement settings, start pools and missing
+component lists are retained under design_variants; full packaged definitions
+are bound under variants. The former single-root test is replaced for this
+namespace by a twelve-root partition and source/content check. Other providers
+and nonregistry contributions remain unchanged. The provisional registry total
+becomes 410 groups for the same 887 roots, not a final canonical pack count.
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_integrated_villages_provider_scope.py
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-integrated-village-family-r1.json
+cmp evidence/raw/item8/inventory-integrated-village-family-r1.json evidence/item-8/inventory.json
+```
+
+Seventy-five affected cases and scoped checks pass. Deliver the regenerated
+inventory separately from the source decision: combining twelve formerly
+separate output rows is an irreducible generated migration, with no unrelated
+content changes. This uses the existing assembler, not a new measurement system.
+Remaining membership work includes Moog design reconciliation and 46 provider
+closures. Effective family attributes and final review/delivery remain open.

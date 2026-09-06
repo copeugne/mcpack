@@ -6,6 +6,118 @@
 
 ### Continuation update - 2026-09-06
 
+Integrated Villages canonical grouping is settled: one settlement family with
+twelve preserved design/root variants, consistent with CTOV. Full definitions,
+placement differences and missing components are retained. The Mossy Mounds
+empty-data spawner remains unresolved. Seventy-five affected tests and scoped
+checks pass. Source decision and generated inventory are delivered separately
+because the latter consolidates twelve large output rows. Provisional registry
+grouping becomes 410 for 887 roots. Continue Moog membership and 46 provider
+closures; detailed attributes and the final pack count remain open.
+
+Supplementaries cave-urn membership is settled: one freestanding cache family.
+Galleon use of the same patch remains a ship component. Eight focused cases,
+scoped checks and inventory reproduction pass. Effective urn eligibility and
+reward attributes remain open. Next: remaining registry design grouping
+(including Moog/villages) and 46 provider closures. Quark and the three tree
+boundaries below need no further membership collection absent contrary evidence.
+
+Quark membership is settled: four families (spiral spire, fairy ring with buried
+ore, monster-box encounter, Nether obsidian spike). The previous fallen-log
+family inclusion is corrected to decorated vegetation, preserving source-derived
+details under excluded_design. Existing terrain/vegetation exclusions stand.
+Two focused cases, scoped checks and inventory reproduction pass. Provider
+census stays 90 resolved, 46 open. Next: Supplementaries cave-urn cache, then
+remaining registry design grouping and provider closures. Attributes remain open.
+
+Three tree-related membership boundaries are settled: Aether holiday tree, Deep
+Aether fallen trees (two configured variants), and Regions Unexplored fallen
+trees (six configured, eight placed variants) add no structure family. Preserve
+their decorated-vegetation dispositions, seasonal/present relevance and RU
+stump-only outcome. Existing source and packaged-input checks are reused; no
+new capture or measurement system. Provider census remains 90 resolved, 46 open.
+Next resolve Quark, Supplementaries cave urns and Moog/village grouping while
+closing the finite remaining provider queue. Detailed attributes remain open.
+
+
+BetterEnd membership subtotal is now explicit and checked: 27 groups, comprising
+21 authored structure families and six natural-formation registry groups. All
+14 registry IDs remain assigned once in nine groups; eighteen nonregistry
+families are disjoint from them. Do not silently discard natural registry
+formations or present them as authored buildings. Broad checks passed 89 cases;
+the final subtotal binding passed sixteen BetterEnd cases and scoped checks.
+Continue remaining named provider boundaries (Quark, Supplementaries cave urns,
+Aether holiday tree, Deep Aether and RU fallen-tree forms) and Moog/village
+reconciliation, alongside remaining provider coverage. Attributes remain open.
+
+
+BetterEnd selected biome-template membership is settled: the 35 ruins comprise
+ten families represented by thirty templates and five excluded light fixtures.
+With six furnished buildings and the earlier light_1 exclusion, all 42 selected
+architectural candidates are assigned: sixteen families, six fixtures. Existing
+21 vegetation exclusions remain. Fifteen focused cases, scoped checks and
+inventory reproduction pass. Do not re-render or reopen these groups without
+contradictory evidence. Next resolve provisional registry terrain/vegetation
+groups and the remaining other-provider canonical boundaries. Whole-provider
+coverage and all required attributes still prevent Item 8 completion.
+
+
+Scope check for the remaining 35 BetterEnd ruins: palette counts and template
+boxes do not establish layout equivalence. Use a fixed-purpose SVG view of the
+existing decoded block coordinates to resolve those design boundaries. Existing
+summary extraction omits ordinary block positions; changing the global catalog
+would be broader than this direct inspection tool. Reuse the decoder, frozen
+archive and existing image converter. Add no dependency, runtime experiment,
+measurement protocol or generic rendering framework. Views are voxel diagrams,
+not textured Minecraft observations or proof of successful world placement.
+
+
+Six BetterEnd furnished building families are integrated: mushroom library,
+mushroom tree house, Lantern Woods cabin, Shadow Forest mansion, Umbrella Jungle
+workshop house and raised house. Actual form/furnishing differences support
+the decisions, with active configured selections and source identities bound.
+Fourteen focused cases, scoped checks and reproduction pass. Thirty-five ruin
+templates remain to group in the selected BetterEnd architectural set.
+Continue those decisions before detailed attributes or further library tracing.
+
+
+BetterEnd light_1 is excluded as an ambient fixture. The disconnected Blossoming
+Spires house remains a named inactive candidate outside the active building
+lists, with explicit reopening if another consumer is demonstrated. Both
+dispositions are integrated and reproduced; thirteen focused cases and scoped
+checks pass. Forty-one of the original 42 selected architectural templates
+remain for design grouping. These are not family counts. Continue comparing
+actual layouts; do not group the six biome lists or count files as families.
+
+
+BetterEnd fallen pillar and pillar basement are one ruined-obsidian-pillar
+family with two form/damage variants. Existing source and registered placement
+routes are bound to the decision, including captured Dragon Graveyards End
+membership. Thirteen focused cases, scoped checks and reproduction pass.
+Next: BetterEnd architectural choices and disconnected house. Also reconcile
+terrain/vegetation entries already in the 421 provisional registry groups;
+nonregistry additions alone cannot establish the canonical total. No new
+measurement or helper audit was added.
+
+
+BOP canonical membership is settled: two landmark families (anomaly, monolith);
+bone-spine and both pumpkin forms are excluded decoration. Pumpkin decisions
+reuse captured writers and placement routes; five focused cases, scoped checks
+and inventory reproduction pass. Continue remaining named groups, starting
+with BetterEnd architectural choices and landmark boundaries. No BOP membership
+recapture is needed. Detailed attributes and the whole inventory remain open.
+
+
+Priority correction: finish actual family membership decisions before further
+library detail or attributes. BOP anomaly and monolith are now two explicit
+nonregistry families; both bone-spine IDs are excluded natural decoration.
+Five focused cases, scoped checks and inventory reproduction pass. Next settle
+BOP giant-pumpkin and pumpkin-patch boundaries from existing captured writers,
+then the remaining named architecture/landmark groups. Provider census stays
+90 resolved and 46 open; do not substitute it for a final family count.
+The uncommitted Fabric loot/recipe initializer captures are preserved locally;
+they have not closed the four pending module rows.
+
 Fabric lookup is resolved. Source 6a7858d (extractor 65b700e) shows its startup
 callback validates caller-supplied entity types by constructing an instance and
 checking API compatibility, without adding it to the world or registering a
