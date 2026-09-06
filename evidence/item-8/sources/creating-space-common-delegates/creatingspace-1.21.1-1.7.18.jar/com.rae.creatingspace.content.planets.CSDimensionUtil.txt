@@ -1,0 +1,1373 @@
+Classfile creatingspace-1.21.1-1.7.18.jar!/com/rae/creatingspace/content/planets/CSDimensionUtil.class
+  Last modified May 2, 2026; size 12458 bytes
+  SHA-256 checksum 35c0609def7d236ce448d757e1bcc262d439a8d625e18e6fa9aa2e4a581277a1
+  Compiled from "CSDimensionUtil.java"
+public class com.rae.creatingspace.content.planets.CSDimensionUtil
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // com/rae/creatingspace/content/planets/CSDimensionUtil
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 4, methods: 22, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Fieldref           #8.#9         // com/rae/creatingspace/content/planets/CSDimensionUtil.travelMap:Ljava/util/Map;
+    #8 = Class              #10           // com/rae/creatingspace/content/planets/CSDimensionUtil
+    #9 = NameAndType        #11:#12       // travelMap:Ljava/util/Map;
+   #10 = Utf8               com/rae/creatingspace/content/planets/CSDimensionUtil
+   #11 = Utf8               travelMap
+   #12 = Utf8               Ljava/util/Map;
+   #13 = Fieldref           #8.#14        // com/rae/creatingspace/content/planets/CSDimensionUtil.LOGGER:Lorg/apache/logging/log4j/Logger;
+   #14 = NameAndType        #15:#16       // LOGGER:Lorg/apache/logging/log4j/Logger;
+   #15 = Utf8               LOGGER
+   #16 = Utf8               Lorg/apache/logging/log4j/Logger;
+   #17 = String             #18           // updating the travel map
+   #18 = Utf8               updating the travel map
+   #19 = InterfaceMethodref #20.#21       // org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+   #20 = Class              #22           // org/apache/logging/log4j/Logger
+   #21 = NameAndType        #23:#24       // info:(Ljava/lang/String;)V
+   #22 = Utf8               org/apache/logging/log4j/Logger
+   #23 = Utf8               info
+   #24 = Utf8               (Ljava/lang/String;)V
+   #25 = Methodref          #26.#27       // net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+   #26 = Class              #28           // net/minecraft/client/Minecraft
+   #27 = NameAndType        #29:#30       // getInstance:()Lnet/minecraft/client/Minecraft;
+   #28 = Utf8               net/minecraft/client/Minecraft
+   #29 = Utf8               getInstance
+   #30 = Utf8               ()Lnet/minecraft/client/Minecraft;
+   #31 = Methodref          #26.#32       // net/minecraft/client/Minecraft.getConnection:()Lnet/minecraft/client/multiplayer/ClientPacketListener;
+   #32 = NameAndType        #33:#34       // getConnection:()Lnet/minecraft/client/multiplayer/ClientPacketListener;
+   #33 = Utf8               getConnection
+   #34 = Utf8               ()Lnet/minecraft/client/multiplayer/ClientPacketListener;
+   #35 = Methodref          #36.#37       // java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+   #36 = Class              #38           // java/util/Objects
+   #37 = NameAndType        #39:#40       // requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+   #38 = Utf8               java/util/Objects
+   #39 = Utf8               requireNonNull
+   #40 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #41 = Class              #42           // net/minecraft/client/multiplayer/ClientPacketListener
+   #42 = Utf8               net/minecraft/client/multiplayer/ClientPacketListener
+   #43 = Methodref          #41.#44       // net/minecraft/client/multiplayer/ClientPacketListener.registryAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+   #44 = NameAndType        #45:#46       // registryAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+   #45 = Utf8               registryAccess
+   #46 = Utf8               ()Lnet/minecraft/core/RegistryAccess$Frozen;
+   #47 = Fieldref           #48.#49       // com/rae/creatingspace/api/planets/RocketAccessibleDimension.REGISTRY_KEY:Lnet/minecraft/resources/ResourceKey;
+   #48 = Class              #50           // com/rae/creatingspace/api/planets/RocketAccessibleDimension
+   #49 = NameAndType        #51:#52       // REGISTRY_KEY:Lnet/minecraft/resources/ResourceKey;
+   #50 = Utf8               com/rae/creatingspace/api/planets/RocketAccessibleDimension
+   #51 = Utf8               REGISTRY_KEY
+   #52 = Utf8               Lnet/minecraft/resources/ResourceKey;
+   #53 = InterfaceMethodref #54.#55       // net/minecraft/core/RegistryAccess$Frozen.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+   #54 = Class              #56           // net/minecraft/core/RegistryAccess$Frozen
+   #55 = NameAndType        #57:#58       // registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+   #56 = Utf8               net/minecraft/core/RegistryAccess$Frozen
+   #57 = Utf8               registry
+   #58 = Utf8               (Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+   #59 = Methodref          #60.#61       // java/util/Optional.orElseThrow:()Ljava/lang/Object;
+   #60 = Class              #62           // java/util/Optional
+   #61 = NameAndType        #63:#64       // orElseThrow:()Ljava/lang/Object;
+   #62 = Utf8               java/util/Optional
+   #63 = Utf8               orElseThrow
+   #64 = Utf8               ()Ljava/lang/Object;
+   #65 = Class              #66           // net/minecraft/core/Registry
+   #66 = Utf8               net/minecraft/core/Registry
+   #67 = Methodref          #8.#68        // com/rae/creatingspace/content/planets/CSDimensionUtil.updatePlanetsFromRegistry:(Lnet/minecraft/core/Registry;)V
+   #68 = NameAndType        #69:#70       // updatePlanetsFromRegistry:(Lnet/minecraft/core/Registry;)V
+   #69 = Utf8               updatePlanetsFromRegistry
+   #70 = Utf8               (Lnet/minecraft/core/Registry;)V
+   #71 = String             #72           // updating the space travel cost map
+   #72 = Utf8               updating the space travel cost map
+   #73 = Methodref          #8.#74        // com/rae/creatingspace/content/planets/CSDimensionUtil.updateCostMap:()V
+   #74 = NameAndType        #75:#6        // updateCostMap:()V
+   #75 = Utf8               updateCostMap
+   #76 = Methodref          #8.#77        // com/rae/creatingspace/content/planets/CSDimensionUtil.removeUnreachableDimensions:()V
+   #77 = NameAndType        #78:#6        // removeUnreachableDimensions:()V
+   #78 = Utf8               removeUnreachableDimensions
+   #79 = Fieldref           #8.#80        // com/rae/creatingspace/content/planets/CSDimensionUtil.planets:Ljava/util/List;
+   #80 = NameAndType        #81:#82       // planets:Ljava/util/List;
+   #81 = Utf8               planets
+   #82 = Utf8               Ljava/util/List;
+   #83 = InterfaceMethodref #84.#85       // java/util/List.stream:()Ljava/util/stream/Stream;
+   #84 = Class              #86           // java/util/List
+   #85 = NameAndType        #87:#88       // stream:()Ljava/util/stream/Stream;
+   #86 = Utf8               java/util/List
+   #87 = Utf8               stream
+   #88 = Utf8               ()Ljava/util/stream/Stream;
+   #89 = InvokeDynamic      #0:#90        // #0:test:()Ljava/util/function/Predicate;
+   #90 = NameAndType        #91:#92       // test:()Ljava/util/function/Predicate;
+   #91 = Utf8               test
+   #92 = Utf8               ()Ljava/util/function/Predicate;
+   #93 = InterfaceMethodref #94.#95       // java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+   #94 = Class              #96           // java/util/stream/Stream
+   #95 = NameAndType        #97:#98       // filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+   #96 = Utf8               java/util/stream/Stream
+   #97 = Utf8               filter
+   #98 = Utf8               (Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+   #99 = InterfaceMethodref #94.#100      // java/util/stream/Stream.toList:()Ljava/util/List;
+  #100 = NameAndType        #101:#102     // toList:()Ljava/util/List;
+  #101 = Utf8               toList
+  #102 = Utf8               ()Ljava/util/List;
+  #103 = Class              #104          // java/util/HashMap
+  #104 = Utf8               java/util/HashMap
+  #105 = Methodref          #103.#3       // java/util/HashMap."<init>":()V
+  #106 = InterfaceMethodref #65.#107      // net/minecraft/core/Registry.registryKeySet:()Ljava/util/Set;
+  #107 = NameAndType        #108:#109     // registryKeySet:()Ljava/util/Set;
+  #108 = Utf8               registryKeySet
+  #109 = Utf8               ()Ljava/util/Set;
+  #110 = InvokeDynamic      #1:#111       // #1:accept:(Ljava/util/Map;Lnet/minecraft/core/Registry;)Ljava/util/function/Consumer;
+  #111 = NameAndType        #112:#113     // accept:(Ljava/util/Map;Lnet/minecraft/core/Registry;)Ljava/util/function/Consumer;
+  #112 = Utf8               accept
+  #113 = Utf8               (Ljava/util/Map;Lnet/minecraft/core/Registry;)Ljava/util/function/Consumer;
+  #114 = InterfaceMethodref #115.#116     // java/util/Set.forEach:(Ljava/util/function/Consumer;)V
+  #115 = Class              #117          // java/util/Set
+  #116 = NameAndType        #118:#119     // forEach:(Ljava/util/function/Consumer;)V
+  #117 = Utf8               java/util/Set
+  #118 = Utf8               forEach
+  #119 = Utf8               (Ljava/util/function/Consumer;)V
+  #120 = InterfaceMethodref #121.#122     // java/util/Map.copyOf:(Ljava/util/Map;)Ljava/util/Map;
+  #121 = Class              #123          // java/util/Map
+  #122 = NameAndType        #124:#125     // copyOf:(Ljava/util/Map;)Ljava/util/Map;
+  #123 = Utf8               java/util/Map
+  #124 = Utf8               copyOf
+  #125 = Utf8               (Ljava/util/Map;)Ljava/util/Map;
+  #126 = InterfaceMethodref #121.#127     // java/util/Map.keySet:()Ljava/util/Set;
+  #127 = NameAndType        #128:#109     // keySet:()Ljava/util/Set;
+  #128 = Utf8               keySet
+  #129 = InterfaceMethodref #115.#85      // java/util/Set.stream:()Ljava/util/stream/Stream;
+  #130 = Methodref          #131.#132     // net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+  #131 = Class              #133          // net/minecraft/resources/ResourceKey
+  #132 = NameAndType        #134:#135     // location:()Lnet/minecraft/resources/ResourceLocation;
+  #133 = Utf8               net/minecraft/resources/ResourceKey
+  #134 = Utf8               location
+  #135 = Utf8               ()Lnet/minecraft/resources/ResourceLocation;
+  #136 = Methodref          #8.#137       // com/rae/creatingspace/content/planets/CSDimensionUtil.gravity:(Lnet/minecraft/resources/ResourceLocation;)F
+  #137 = NameAndType        #138:#139     // gravity:(Lnet/minecraft/resources/ResourceLocation;)F
+  #138 = Utf8               gravity
+  #139 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)F
+  #140 = Methodref          #8.#141       // com/rae/creatingspace/content/planets/CSDimensionUtil.getTravelMap:()Ljava/util/Map;
+  #141 = NameAndType        #142:#143     // getTravelMap:()Ljava/util/Map;
+  #142 = Utf8               getTravelMap
+  #143 = Utf8               ()Ljava/util/Map;
+  #144 = InterfaceMethodref #121.#145     // java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #145 = NameAndType        #146:#40      // get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #146 = Utf8               get
+  #147 = Methodref          #48.#148      // com/rae/creatingspace/api/planets/RocketAccessibleDimension.gravity:()F
+  #148 = NameAndType        #138:#149     // gravity:()F
+  #149 = Utf8               ()F
+  #150 = Float              9.81f
+  #151 = Methodref          #152.#153     // net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+  #152 = Class              #154          // net/minecraft/resources/ResourceLocation
+  #153 = NameAndType        #155:#156     // getNamespace:()Ljava/lang/String;
+  #154 = Utf8               net/minecraft/resources/ResourceLocation
+  #155 = Utf8               getNamespace
+  #156 = Utf8               ()Ljava/lang/String;
+  #157 = String             #158          // ad_astra
+  #158 = Utf8               ad_astra
+  #159 = Methodref          #160.#161     // java/lang/String.equals:(Ljava/lang/Object;)Z
+  #160 = Class              #162          // java/lang/String
+  #161 = NameAndType        #163:#164     // equals:(Ljava/lang/Object;)Z
+  #162 = Utf8               java/lang/String
+  #163 = Utf8               equals
+  #164 = Utf8               (Ljava/lang/Object;)Z
+  #165 = String             #166          // ad_extendra
+  #166 = Utf8               ad_extendra
+  #167 = Methodref          #8.#168       // com/rae/creatingspace/content/planets/CSDimensionUtil.arrivalHeight:(Lnet/minecraft/resources/ResourceLocation;)I
+  #168 = NameAndType        #169:#170     // arrivalHeight:(Lnet/minecraft/resources/ResourceLocation;)I
+  #169 = Utf8               arrivalHeight
+  #170 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)I
+  #171 = Methodref          #48.#172      // com/rae/creatingspace/api/planets/RocketAccessibleDimension.arrivalHeight:()I
+  #172 = NameAndType        #169:#173     // arrivalHeight:()I
+  #173 = Utf8               ()I
+  #174 = InterfaceMethodref #121.#175     // java/util/Map.containsKey:(Ljava/lang/Object;)Z
+  #175 = NameAndType        #176:#164     // containsKey:(Ljava/lang/Object;)Z
+  #176 = Utf8               containsKey
+  #177 = Methodref          #48.#178      // com/rae/creatingspace/api/planets/RocketAccessibleDimension.adjacentDimensions:()Ljava/util/Map;
+  #178 = NameAndType        #179:#143     // adjacentDimensions:()Ljava/util/Map;
+  #179 = Utf8               adjacentDimensions
+  #180 = Fieldref           #181.#182     // com/rae/creatingspace/init/TagsInit$CustomBiomeTags.NO_OXYGEN:Lcom/rae/creatingspace/init/TagsInit$CustomBiomeTags;
+  #181 = Class              #183          // com/rae/creatingspace/init/TagsInit$CustomBiomeTags
+  #182 = NameAndType        #184:#185     // NO_OXYGEN:Lcom/rae/creatingspace/init/TagsInit$CustomBiomeTags;
+  #183 = Utf8               com/rae/creatingspace/init/TagsInit$CustomBiomeTags
+  #184 = Utf8               NO_OXYGEN
+  #185 = Utf8               Lcom/rae/creatingspace/init/TagsInit$CustomBiomeTags;
+  #186 = Methodref          #181.#187     // com/rae/creatingspace/init/TagsInit$CustomBiomeTags.matches:(Lnet/minecraft/resources/ResourceLocation;)Z
+  #187 = NameAndType        #188:#189     // matches:(Lnet/minecraft/resources/ResourceLocation;)Z
+  #188 = Utf8               matches
+  #189 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Z
+  #190 = Methodref          #181.#191     // com/rae/creatingspace/init/TagsInit$CustomBiomeTags.matches:(Lnet/minecraft/core/Holder;)Z
+  #191 = NameAndType        #188:#192     // matches:(Lnet/minecraft/core/Holder;)Z
+  #192 = Utf8               (Lnet/minecraft/core/Holder;)Z
+  #193 = Methodref          #8.#194       // com/rae/creatingspace/content/planets/CSDimensionUtil.isOrbit:(Lnet/minecraft/resources/ResourceLocation;)Z
+  #194 = NameAndType        #195:#189     // isOrbit:(Lnet/minecraft/resources/ResourceLocation;)Z
+  #195 = Utf8               isOrbit
+  #196 = Fieldref           #197.#198     // net/minecraft/core/registries/Registries.DIMENSION:Lnet/minecraft/resources/ResourceKey;
+  #197 = Class              #199          // net/minecraft/core/registries/Registries
+  #198 = NameAndType        #200:#52      // DIMENSION:Lnet/minecraft/resources/ResourceKey;
+  #199 = Utf8               net/minecraft/core/registries/Registries
+  #200 = Utf8               DIMENSION
+  #201 = Methodref          #48.#202      // com/rae/creatingspace/api/planets/RocketAccessibleDimension.orbitedBody:()Lnet/minecraft/resources/ResourceLocation;
+  #202 = NameAndType        #203:#135     // orbitedBody:()Lnet/minecraft/resources/ResourceLocation;
+  #203 = Utf8               orbitedBody
+  #204 = Methodref          #131.#205     // net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+  #205 = NameAndType        #206:#207     // create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+  #206 = Utf8               create
+  #207 = Utf8               (Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+  #208 = InterfaceMethodref #115.#209     // java/util/Set.iterator:()Ljava/util/Iterator;
+  #209 = NameAndType        #210:#211     // iterator:()Ljava/util/Iterator;
+  #210 = Utf8               iterator
+  #211 = Utf8               ()Ljava/util/Iterator;
+  #212 = InterfaceMethodref #213.#214     // java/util/Iterator.hasNext:()Z
+  #213 = Class              #215          // java/util/Iterator
+  #214 = NameAndType        #216:#217     // hasNext:()Z
+  #215 = Utf8               java/util/Iterator
+  #216 = Utf8               hasNext
+  #217 = Utf8               ()Z
+  #218 = InterfaceMethodref #213.#219     // java/util/Iterator.next:()Ljava/lang/Object;
+  #219 = NameAndType        #220:#64      // next:()Ljava/lang/Object;
+  #220 = Utf8               next
+  #221 = Class              #222          // java/lang/Integer
+  #222 = Utf8               java/lang/Integer
+  #223 = Integer            2147483647
+  #224 = Methodref          #221.#225     // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+  #225 = NameAndType        #226:#227     // valueOf:(I)Ljava/lang/Integer;
+  #226 = Utf8               valueOf
+  #227 = Utf8               (I)Ljava/lang/Integer;
+  #228 = InterfaceMethodref #121.#229     // java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #229 = NameAndType        #230:#231     // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #230 = Utf8               put
+  #231 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #232 = Methodref          #233.#234     // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+  #233 = Class              #235          // java/lang/Boolean
+  #234 = NameAndType        #226:#236     // valueOf:(Z)Ljava/lang/Boolean;
+  #235 = Utf8               java/lang/Boolean
+  #236 = Utf8               (Z)Ljava/lang/Boolean;
+  #237 = Class              #238          // java/util/PriorityQueue
+  #238 = Utf8               java/util/PriorityQueue
+  #239 = InterfaceMethodref #240.#241     // java/util/Map$Entry.comparingByValue:()Ljava/util/Comparator;
+  #240 = Class              #242          // java/util/Map$Entry
+  #241 = NameAndType        #243:#244     // comparingByValue:()Ljava/util/Comparator;
+  #242 = Utf8               java/util/Map$Entry
+  #243 = Utf8               comparingByValue
+  #244 = Utf8               ()Ljava/util/Comparator;
+  #245 = Methodref          #237.#246     // java/util/PriorityQueue."<init>":(Ljava/util/Comparator;)V
+  #246 = NameAndType        #5:#247       // "<init>":(Ljava/util/Comparator;)V
+  #247 = Utf8               (Ljava/util/Comparator;)V
+  #248 = Class              #249          // java/util/AbstractMap$SimpleEntry
+  #249 = Utf8               java/util/AbstractMap$SimpleEntry
+  #250 = Methodref          #248.#251     // java/util/AbstractMap$SimpleEntry."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+  #251 = NameAndType        #5:#252       // "<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+  #252 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)V
+  #253 = Methodref          #237.#254     // java/util/PriorityQueue.add:(Ljava/lang/Object;)Z
+  #254 = NameAndType        #255:#164     // add:(Ljava/lang/Object;)Z
+  #255 = Utf8               add
+  #256 = Methodref          #237.#257     // java/util/PriorityQueue.isEmpty:()Z
+  #257 = NameAndType        #258:#217     // isEmpty:()Z
+  #258 = Utf8               isEmpty
+  #259 = Methodref          #237.#260     // java/util/PriorityQueue.poll:()Ljava/lang/Object;
+  #260 = NameAndType        #261:#64      // poll:()Ljava/lang/Object;
+  #261 = Utf8               poll
+  #262 = InterfaceMethodref #240.#263     // java/util/Map$Entry.getKey:()Ljava/lang/Object;
+  #263 = NameAndType        #264:#64      // getKey:()Ljava/lang/Object;
+  #264 = Utf8               getKey
+  #265 = Methodref          #233.#266     // java/lang/Boolean.booleanValue:()Z
+  #266 = NameAndType        #267:#217     // booleanValue:()Z
+  #267 = Utf8               booleanValue
+  #268 = InterfaceMethodref #121.#269     // java/util/Map.entrySet:()Ljava/util/Set;
+  #269 = NameAndType        #270:#109     // entrySet:()Ljava/util/Set;
+  #270 = Utf8               entrySet
+  #271 = InterfaceMethodref #240.#272     // java/util/Map$Entry.getValue:()Ljava/lang/Object;
+  #272 = NameAndType        #273:#64      // getValue:()Ljava/lang/Object;
+  #273 = Utf8               getValue
+  #274 = Class              #275          // com/rae/creatingspace/api/planets/RocketAccessibleDimension$AccessibilityParameter
+  #275 = Utf8               com/rae/creatingspace/api/planets/RocketAccessibleDimension$AccessibilityParameter
+  #276 = Methodref          #274.#277     // com/rae/creatingspace/api/planets/RocketAccessibleDimension$AccessibilityParameter.deltaV:()I
+  #277 = NameAndType        #278:#173     // deltaV:()I
+  #278 = Utf8               deltaV
+  #279 = Methodref          #221.#280     // java/lang/Integer.intValue:()I
+  #280 = NameAndType        #281:#173     // intValue:()I
+  #281 = Utf8               intValue
+  #282 = Methodref          #160.#283     // java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+  #283 = NameAndType        #226:#284     // valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+  #284 = Utf8               (Ljava/lang/Object;)Ljava/lang/String;
+  #285 = InvokeDynamic      #2:#286       // #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #286 = NameAndType        #287:#288     // makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #287 = Utf8               makeConcatWithConstants
+  #288 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #289 = InterfaceMethodref #20.#290      // org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+  #290 = NameAndType        #291:#24      // warn:(Ljava/lang/String;)V
+  #291 = Utf8               warn
+  #292 = Fieldref           #8.#293       // com/rae/creatingspace/content/planets/CSDimensionUtil.costAdjacentMap:Ljava/util/Map;
+  #293 = NameAndType        #294:#12      // costAdjacentMap:Ljava/util/Map;
+  #294 = Utf8               costAdjacentMap
+  #295 = Methodref          #8.#296       // com/rae/creatingspace/content/planets/CSDimensionUtil.dijkstra:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map;
+  #296 = NameAndType        #297:#298     // dijkstra:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map;
+  #297 = Utf8               dijkstra
+  #298 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map;
+  #299 = String             #300          // unexpected null value for space travel cost map, reloading
+  #300 = Utf8               unexpected null value for space travel cost map, reloading
+  #301 = InterfaceMethodref #121.#302     // java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #302 = NameAndType        #303:#231     // getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #303 = Utf8               getOrDefault
+  #304 = InterfaceMethodref #65.#305      // net/minecraft/core/Registry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+  #305 = NameAndType        #146:#306     // get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+  #306 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+  #307 = Methodref          #308.#309     // org/apache/logging/log4j/LogManager.getLogger:()Lorg/apache/logging/log4j/Logger;
+  #308 = Class              #310          // org/apache/logging/log4j/LogManager
+  #309 = NameAndType        #311:#312     // getLogger:()Lorg/apache/logging/log4j/Logger;
+  #310 = Utf8               org/apache/logging/log4j/LogManager
+  #311 = Utf8               getLogger
+  #312 = Utf8               ()Lorg/apache/logging/log4j/Logger;
+  #313 = Utf8               Signature
+  #314 = Utf8               Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension;>;
+  #315 = Utf8               Ljava/util/List<Lnet/minecraft/resources/ResourceLocation;>;
+  #316 = Utf8               Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;>;
+  #317 = Utf8               Code
+  #318 = Utf8               LineNumberTable
+  #319 = Utf8               LocalVariableTable
+  #320 = Utf8               this
+  #321 = Utf8               Lcom/rae/creatingspace/content/planets/CSDimensionUtil;
+  #322 = Utf8               StackMapTable
+  #323 = Utf8               ()Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension;>;
+  #324 = Utf8               getPlanets
+  #325 = Utf8               ()Ljava/util/List<Lnet/minecraft/resources/ResourceLocation;>;
+  #326 = Utf8               Lnet/minecraft/core/Registry;
+  #327 = Utf8               collector
+  #328 = Utf8               LocalVariableTypeTable
+  #329 = Utf8               Lnet/minecraft/core/Registry<Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension;>;
+  #330 = Utf8               (Lnet/minecraft/core/Registry<Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension;>;)V
+  #331 = Utf8               (Lnet/minecraft/resources/ResourceKey;)F
+  #332 = Utf8               dimensionType
+  #333 = Utf8               Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/dimension/DimensionType;>;
+  #334 = Utf8               Deprecated
+  #335 = Utf8               (Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/dimension/DimensionType;>;)F
+  #336 = Utf8               RuntimeVisibleAnnotations
+  #337 = Utf8               Ljava/lang/Deprecated;
+  #338 = Utf8               forRemoval
+  #339 = Integer            1
+  #340 = Utf8               dimensionParameter
+  #341 = Utf8               Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension;
+  #342 = Utf8               Lnet/minecraft/resources/ResourceLocation;
+  #343 = Utf8               shouldHandleGravity
+  #344 = Utf8               (Lnet/minecraft/resources/ResourceKey;)I
+  #345 = Utf8               (Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/dimension/DimensionType;>;)I
+  #346 = Utf8               accessibleFrom
+  #347 = Utf8               currentDimension
+  #348 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension$AccessibilityParameter;>;
+  #349 = Utf8               hasO2Atmosphere
+  #350 = Utf8               biome
+  #351 = Utf8               Lnet/minecraft/core/Holder;
+  #352 = Utf8               Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;
+  #353 = Utf8               (Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;)Z
+  #354 = Utf8               (Lnet/minecraft/resources/ResourceKey;)Z
+  #355 = Utf8               (Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/dimension/DimensionType;>;)Z
+  #356 = Utf8               dimension
+  #357 = Utf8               planetUnder
+  #358 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+  #359 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/Level;>;
+  #360 = Utf8               RuntimeInvisibleAnnotations
+  #361 = Utf8               Lorg/jetbrains/annotations/Nullable;
+  #362 = Utf8               RuntimeInvisibleTypeAnnotations
+  #363 = Utf8               target
+  #364 = Utf8               I
+  #365 = Utf8               newDist
+  #366 = Utf8               adjacent
+  #367 = Utf8               Ljava/util/Map$Entry;
+  #368 = Utf8               entry
+  #369 = Utf8               current
+  #370 = Utf8               start
+  #371 = Utf8               distances
+  #372 = Utf8               visited
+  #373 = Utf8               priorityQueue
+  #374 = Utf8               Ljava/util/PriorityQueue;
+  #375 = Utf8               Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension$AccessibilityParameter;>;
+  #376 = Utf8               Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;
+  #377 = Utf8               Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;
+  #378 = Utf8               Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Boolean;>;
+  #379 = Utf8               Ljava/util/PriorityQueue<Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;>;
+  #380 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;
+  #381 = Utf8               cost
+  #382 = Utf8               (Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;)I
+  #383 = Utf8               from
+  #384 = Utf8               to
+  #385 = Utf8               lambda$updatePlanetsFromRegistry$1
+  #386 = Utf8               (Ljava/util/Map;Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceKey;)V
+  #387 = Utf8               resourceKey
+  #388 = Utf8               lambda$removeUnreachableDimensions$0
+  #389 = Utf8               entries
+  #390 = Utf8               l
+  #391 = Utf8               <clinit>
+  #392 = Utf8               SourceFile
+  #393 = Utf8               CSDimensionUtil.java
+  #394 = Utf8               BootstrapMethods
+  #395 = MethodType         #164          //  (Ljava/lang/Object;)Z
+  #396 = MethodHandle       6:#397        // REF_invokeStatic com/rae/creatingspace/content/planets/CSDimensionUtil.lambda$removeUnreachableDimensions$0:(Lnet/minecraft/resources/ResourceLocation;)Z
+  #397 = Methodref          #8.#398       // com/rae/creatingspace/content/planets/CSDimensionUtil.lambda$removeUnreachableDimensions$0:(Lnet/minecraft/resources/ResourceLocation;)Z
+  #398 = NameAndType        #388:#189     // lambda$removeUnreachableDimensions$0:(Lnet/minecraft/resources/ResourceLocation;)Z
+  #399 = MethodType         #189          //  (Lnet/minecraft/resources/ResourceLocation;)Z
+  #400 = MethodType         #401          //  (Ljava/lang/Object;)V
+  #401 = Utf8               (Ljava/lang/Object;)V
+  #402 = MethodHandle       6:#403        // REF_invokeStatic com/rae/creatingspace/content/planets/CSDimensionUtil.lambda$updatePlanetsFromRegistry$1:(Ljava/util/Map;Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceKey;)V
+  #403 = Methodref          #8.#404       // com/rae/creatingspace/content/planets/CSDimensionUtil.lambda$updatePlanetsFromRegistry$1:(Ljava/util/Map;Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceKey;)V
+  #404 = NameAndType        #385:#386     // lambda$updatePlanetsFromRegistry$1:(Ljava/util/Map;Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceKey;)V
+  #405 = MethodType         #406          //  (Lnet/minecraft/resources/ResourceKey;)V
+  #406 = Utf8               (Lnet/minecraft/resources/ResourceKey;)V
+  #407 = String             #408          // unexpected null value loading route from : \u0001 to \u0001
+  #408 = Utf8               unexpected null value loading route from : \u0001 to \u0001
+  #409 = MethodHandle       6:#410        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #410 = Methodref          #411.#412     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #411 = Class              #413          // java/lang/invoke/LambdaMetafactory
+  #412 = NameAndType        #414:#415     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #413 = Utf8               java/lang/invoke/LambdaMetafactory
+  #414 = Utf8               metafactory
+  #415 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #416 = MethodHandle       6:#417        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #417 = Methodref          #418.#419     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #418 = Class              #420          // java/lang/invoke/StringConcatFactory
+  #419 = NameAndType        #287:#421     // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #420 = Utf8               java/lang/invoke/StringConcatFactory
+  #421 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #422 = Utf8               InnerClasses
+  #423 = Class              #424          // net/minecraft/core/RegistryAccess
+  #424 = Utf8               net/minecraft/core/RegistryAccess
+  #425 = Utf8               Frozen
+  #426 = Class              #427          // com/rae/creatingspace/init/TagsInit
+  #427 = Utf8               com/rae/creatingspace/init/TagsInit
+  #428 = Utf8               CustomBiomeTags
+  #429 = Utf8               Entry
+  #430 = Class              #431          // java/util/AbstractMap
+  #431 = Utf8               java/util/AbstractMap
+  #432 = Utf8               SimpleEntry
+  #433 = Utf8               AccessibilityParameter
+  #434 = Class              #435          // java/lang/invoke/MethodHandles$Lookup
+  #435 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #436 = Class              #437          // java/lang/invoke/MethodHandles
+  #437 = Utf8               java/lang/invoke/MethodHandles
+  #438 = Utf8               Lookup
+{
+  private static final org.apache.logging.log4j.Logger LOGGER;
+    descriptor: Lorg/apache/logging/log4j/Logger;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+
+  private static java.util.Map<net.minecraft.resources.ResourceLocation, com.rae.creatingspace.api.planets.RocketAccessibleDimension> travelMap;
+    descriptor: Ljava/util/Map;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Signature: #314                         // Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension;>;
+
+  private static java.util.List<net.minecraft.resources.ResourceLocation> planets;
+    descriptor: Ljava/util/List;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Signature: #315                         // Ljava/util/List<Lnet/minecraft/resources/ResourceLocation;>;
+
+  private static java.util.Map<net.minecraft.resources.ResourceLocation, java.util.Map<net.minecraft.resources.ResourceLocation, java.lang.Integer>> costAdjacentMap;
+    descriptor: Ljava/util/Map;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Signature: #316                         // Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;>;
+
+  public com.rae.creatingspace.content.planets.CSDimensionUtil();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 20: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/rae/creatingspace/content/planets/CSDimensionUtil;
+
+  public static java.util.Map<net.minecraft.resources.ResourceLocation, com.rae.creatingspace.api.planets.RocketAccessibleDimension> getTravelMap();
+    descriptor: ()Ljava/util/Map;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: getstatic     #7                  // Field travelMap:Ljava/util/Map;
+         3: ifnonnull     64
+         6: getstatic     #13                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+         9: ldc           #17                 // String updating the travel map
+        11: invokeinterface #19,  2           // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        16: invokestatic  #25                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+        19: invokevirtual #31                 // Method net/minecraft/client/Minecraft.getConnection:()Lnet/minecraft/client/multiplayer/ClientPacketListener;
+        22: invokestatic  #35                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+        25: checkcast     #41                 // class net/minecraft/client/multiplayer/ClientPacketListener
+        28: invokevirtual #43                 // Method net/minecraft/client/multiplayer/ClientPacketListener.registryAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+        31: getstatic     #47                 // Field com/rae/creatingspace/api/planets/RocketAccessibleDimension.REGISTRY_KEY:Lnet/minecraft/resources/ResourceKey;
+        34: invokeinterface #53,  2           // InterfaceMethod net/minecraft/core/RegistryAccess$Frozen.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+        39: invokevirtual #59                 // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+        42: checkcast     #65                 // class net/minecraft/core/Registry
+        45: invokestatic  #67                 // Method updatePlanetsFromRegistry:(Lnet/minecraft/core/Registry;)V
+        48: getstatic     #13                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+        51: ldc           #71                 // String updating the space travel cost map
+        53: invokeinterface #19,  2           // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        58: invokestatic  #73                 // Method updateCostMap:()V
+        61: invokestatic  #76                 // Method removeUnreachableDimensions:()V
+        64: getstatic     #7                  // Field travelMap:Ljava/util/Map;
+        67: areturn
+      LineNumberTable:
+        line 25: 0
+        line 26: 6
+        line 28: 16
+        line 29: 28
+        line 30: 39
+        line 28: 45
+        line 31: 48
+        line 32: 58
+        line 33: 61
+        line 35: 64
+      StackMapTable: number_of_entries = 1
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 64
+    Signature: #323                         // ()Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension;>;
+
+  public static java.util.List<net.minecraft.resources.ResourceLocation> getPlanets();
+    descriptor: ()Ljava/util/List;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: getstatic     #79                 // Field planets:Ljava/util/List;
+         3: ifnonnull     64
+         6: getstatic     #13                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+         9: ldc           #17                 // String updating the travel map
+        11: invokeinterface #19,  2           // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        16: invokestatic  #25                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+        19: invokevirtual #31                 // Method net/minecraft/client/Minecraft.getConnection:()Lnet/minecraft/client/multiplayer/ClientPacketListener;
+        22: invokestatic  #35                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+        25: checkcast     #41                 // class net/minecraft/client/multiplayer/ClientPacketListener
+        28: invokevirtual #43                 // Method net/minecraft/client/multiplayer/ClientPacketListener.registryAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+        31: getstatic     #47                 // Field com/rae/creatingspace/api/planets/RocketAccessibleDimension.REGISTRY_KEY:Lnet/minecraft/resources/ResourceKey;
+        34: invokeinterface #53,  2           // InterfaceMethod net/minecraft/core/RegistryAccess$Frozen.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+        39: invokevirtual #59                 // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+        42: checkcast     #65                 // class net/minecraft/core/Registry
+        45: invokestatic  #67                 // Method updatePlanetsFromRegistry:(Lnet/minecraft/core/Registry;)V
+        48: getstatic     #13                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+        51: ldc           #71                 // String updating the space travel cost map
+        53: invokeinterface #19,  2           // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        58: invokestatic  #73                 // Method updateCostMap:()V
+        61: invokestatic  #76                 // Method removeUnreachableDimensions:()V
+        64: getstatic     #79                 // Field planets:Ljava/util/List;
+        67: areturn
+      LineNumberTable:
+        line 39: 0
+        line 40: 6
+        line 41: 16
+        line 42: 28
+        line 43: 39
+        line 41: 45
+        line 44: 48
+        line 45: 58
+        line 46: 61
+        line 48: 64
+      StackMapTable: number_of_entries = 1
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 64
+    Signature: #325                         // ()Ljava/util/List<Lnet/minecraft/resources/ResourceLocation;>;
+
+  public static void removeUnreachableDimensions();
+    descriptor: ()V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: getstatic     #79                 // Field planets:Ljava/util/List;
+         3: invokeinterface #83,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+         8: invokedynamic #89,  0             // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+        13: invokeinterface #93,  2           // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+        18: invokeinterface #99,  1           // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+        23: putstatic     #79                 // Field planets:Ljava/util/List;
+        26: return
+      LineNumberTable:
+        line 52: 0
+        line 63: 18
+        line 64: 26
+
+  public static void updatePlanetsFromRegistry(net.minecraft.core.Registry<com.rae.creatingspace.api.planets.RocketAccessibleDimension>);
+    descriptor: (Lnet/minecraft/core/Registry;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=2, args_size=1
+         0: new           #103                // class java/util/HashMap
+         3: dup
+         4: invokespecial #105                // Method java/util/HashMap."<init>":()V
+         7: astore_1
+         8: aload_0
+         9: invokeinterface #106,  1          // InterfaceMethod net/minecraft/core/Registry.registryKeySet:()Ljava/util/Set;
+        14: aload_1
+        15: aload_0
+        16: invokedynamic #110,  0            // InvokeDynamic #1:accept:(Ljava/util/Map;Lnet/minecraft/core/Registry;)Ljava/util/function/Consumer;
+        21: invokeinterface #114,  2          // InterfaceMethod java/util/Set.forEach:(Ljava/util/function/Consumer;)V
+        26: aload_1
+        27: invokestatic  #120                // InterfaceMethod java/util/Map.copyOf:(Ljava/util/Map;)Ljava/util/Map;
+        30: putstatic     #7                  // Field travelMap:Ljava/util/Map;
+        33: aload_1
+        34: invokeinterface #126,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+        39: invokeinterface #129,  1          // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+        44: invokeinterface #99,  1           // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+        49: putstatic     #79                 // Field planets:Ljava/util/List;
+        52: return
+      LineNumberTable:
+        line 71: 0
+        line 72: 8
+        line 76: 26
+        line 77: 33
+        line 78: 52
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      53     0 registry   Lnet/minecraft/core/Registry;
+            8      45     1 collector   Ljava/util/Map;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      53     0 registry   Lnet/minecraft/core/Registry<Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension;>;
+            8      45     1 collector   Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension;>;
+    Signature: #330                         // (Lnet/minecraft/core/Registry<Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension;>;)V
+
+  public static float gravity(net.minecraft.resources.ResourceKey<net.minecraft.world.level.dimension.DimensionType>);
+    descriptor: (Lnet/minecraft/resources/ResourceKey;)F
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #130                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+         4: invokestatic  #136                // Method gravity:(Lnet/minecraft/resources/ResourceLocation;)F
+         7: freturn
+      LineNumberTable:
+        line 83: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 dimensionType   Lnet/minecraft/resources/ResourceKey;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 dimensionType   Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/dimension/DimensionType;>;
+    Deprecated: true
+    Signature: #335                         // (Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/dimension/DimensionType;>;)F
+    RuntimeVisibleAnnotations:
+      0: #337(#338=Z#339)
+        java.lang.Deprecated(
+          forRemoval=true
+        )
+
+  public static float gravity(net.minecraft.resources.ResourceLocation);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;)F
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: invokestatic  #140                // Method getTravelMap:()Ljava/util/Map;
+         3: pop
+         4: getstatic     #7                  // Field travelMap:Ljava/util/Map;
+         7: ifnull        32
+        10: getstatic     #7                  // Field travelMap:Ljava/util/Map;
+        13: aload_0
+        14: invokeinterface #144,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        19: checkcast     #48                 // class com/rae/creatingspace/api/planets/RocketAccessibleDimension
+        22: astore_1
+        23: aload_1
+        24: ifnull        32
+        27: aload_1
+        28: invokevirtual #147                // Method com/rae/creatingspace/api/planets/RocketAccessibleDimension.gravity:()F
+        31: freturn
+        32: ldc           #150                // float 9.81f
+        34: freturn
+      LineNumberTable:
+        line 87: 0
+        line 88: 4
+        line 89: 10
+        line 90: 23
+        line 91: 27
+        line 94: 32
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           23       9     1 dimensionParameter   Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension;
+            0      35     0 location   Lnet/minecraft/resources/ResourceLocation;
+      StackMapTable: number_of_entries = 1
+        frame_type = 32 /* same */
+
+  public static boolean shouldHandleGravity(net.minecraft.resources.ResourceLocation);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;)Z
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #151                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+         4: ldc           #157                // String ad_astra
+         6: invokevirtual #159                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+         9: ifne          28
+        12: aload_0
+        13: invokevirtual #151                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+        16: ldc           #165                // String ad_extendra
+        18: invokevirtual #159                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        21: ifne          28
+        24: iconst_1
+        25: goto          29
+        28: iconst_0
+        29: ireturn
+      LineNumberTable:
+        line 98: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      30     0 location   Lnet/minecraft/resources/ResourceLocation;
+      StackMapTable: number_of_entries = 2
+        frame_type = 28 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+  public static int arrivalHeight(net.minecraft.resources.ResourceKey<net.minecraft.world.level.dimension.DimensionType>);
+    descriptor: (Lnet/minecraft/resources/ResourceKey;)I
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #130                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+         4: invokestatic  #167                // Method arrivalHeight:(Lnet/minecraft/resources/ResourceLocation;)I
+         7: ireturn
+      LineNumberTable:
+        line 103: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 dimensionType   Lnet/minecraft/resources/ResourceKey;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 dimensionType   Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/dimension/DimensionType;>;
+    Deprecated: true
+    Signature: #345                         // (Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/dimension/DimensionType;>;)I
+    RuntimeVisibleAnnotations:
+      0: #337(#338=Z#339)
+        java.lang.Deprecated(
+          forRemoval=true
+        )
+
+  public static int arrivalHeight(net.minecraft.resources.ResourceLocation);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;)I
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: getstatic     #7                  // Field travelMap:Ljava/util/Map;
+         3: ifnull        28
+         6: getstatic     #7                  // Field travelMap:Ljava/util/Map;
+         9: aload_0
+        10: invokeinterface #144,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        15: checkcast     #48                 // class com/rae/creatingspace/api/planets/RocketAccessibleDimension
+        18: astore_1
+        19: aload_1
+        20: ifnull        28
+        23: aload_1
+        24: invokevirtual #171                // Method com/rae/creatingspace/api/planets/RocketAccessibleDimension.arrivalHeight:()I
+        27: ireturn
+        28: bipush        64
+        30: ireturn
+      LineNumberTable:
+        line 107: 0
+        line 108: 6
+        line 109: 19
+        line 110: 23
+        line 113: 28
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           19       9     1 dimensionParameter   Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension;
+            0      31     0 location   Lnet/minecraft/resources/ResourceLocation;
+      StackMapTable: number_of_entries = 1
+        frame_type = 28 /* same */
+
+  public static java.util.Map<net.minecraft.resources.ResourceLocation, com.rae.creatingspace.api.planets.RocketAccessibleDimension$AccessibilityParameter> accessibleFrom(net.minecraft.resources.ResourceLocation);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: getstatic     #7                  // Field travelMap:Ljava/util/Map;
+         3: ifnull        34
+         6: getstatic     #7                  // Field travelMap:Ljava/util/Map;
+         9: aload_0
+        10: invokeinterface #174,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+        15: ifeq          34
+        18: getstatic     #7                  // Field travelMap:Ljava/util/Map;
+        21: aload_0
+        22: invokeinterface #144,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        27: checkcast     #48                 // class com/rae/creatingspace/api/planets/RocketAccessibleDimension
+        30: invokevirtual #177                // Method com/rae/creatingspace/api/planets/RocketAccessibleDimension.adjacentDimensions:()Ljava/util/Map;
+        33: areturn
+        34: new           #103                // class java/util/HashMap
+        37: dup
+        38: invokespecial #105                // Method java/util/HashMap."<init>":()V
+        41: areturn
+      LineNumberTable:
+        line 116: 0
+        line 117: 6
+        line 118: 18
+        line 121: 34
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      42     0 currentDimension   Lnet/minecraft/resources/ResourceLocation;
+      StackMapTable: number_of_entries = 1
+        frame_type = 34 /* same */
+    Signature: #348                         // (Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension$AccessibilityParameter;>;
+
+  public static boolean hasO2Atmosphere(net.minecraft.resources.ResourceLocation);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;)Z
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: getstatic     #180                // Field com/rae/creatingspace/init/TagsInit$CustomBiomeTags.NO_OXYGEN:Lcom/rae/creatingspace/init/TagsInit$CustomBiomeTags;
+         3: aload_0
+         4: invokevirtual #186                // Method com/rae/creatingspace/init/TagsInit$CustomBiomeTags.matches:(Lnet/minecraft/resources/ResourceLocation;)Z
+         7: ifne          14
+        10: iconst_1
+        11: goto          15
+        14: iconst_0
+        15: ireturn
+      LineNumberTable:
+        line 125: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0 biome   Lnet/minecraft/resources/ResourceLocation;
+      StackMapTable: number_of_entries = 2
+        frame_type = 14 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+  public static boolean hasO2Atmosphere(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>);
+    descriptor: (Lnet/minecraft/core/Holder;)Z
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: getstatic     #180                // Field com/rae/creatingspace/init/TagsInit$CustomBiomeTags.NO_OXYGEN:Lcom/rae/creatingspace/init/TagsInit$CustomBiomeTags;
+         3: aload_0
+         4: invokevirtual #190                // Method com/rae/creatingspace/init/TagsInit$CustomBiomeTags.matches:(Lnet/minecraft/core/Holder;)Z
+         7: ifne          14
+        10: iconst_1
+        11: goto          15
+        14: iconst_0
+        15: ireturn
+      LineNumberTable:
+        line 129: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0 biome   Lnet/minecraft/core/Holder;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0 biome   Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;
+      StackMapTable: number_of_entries = 2
+        frame_type = 14 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+    Signature: #353                         // (Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;)Z
+
+  public static boolean isOrbit(net.minecraft.resources.ResourceKey<net.minecraft.world.level.dimension.DimensionType>);
+    descriptor: (Lnet/minecraft/resources/ResourceKey;)Z
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #130                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+         4: invokestatic  #193                // Method isOrbit:(Lnet/minecraft/resources/ResourceLocation;)Z
+         7: ireturn
+      LineNumberTable:
+        line 132: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 dimensionType   Lnet/minecraft/resources/ResourceKey;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 dimensionType   Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/dimension/DimensionType;>;
+    Signature: #355                         // (Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/dimension/DimensionType;>;)Z
+
+  public static boolean isOrbit(net.minecraft.resources.ResourceLocation);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;)Z
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokestatic  #136                // Method gravity:(Lnet/minecraft/resources/ResourceLocation;)F
+         4: fconst_0
+         5: fcmpl
+         6: ifne          13
+         9: iconst_1
+        10: goto          14
+        13: iconst_0
+        14: ireturn
+      LineNumberTable:
+        line 136: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      15     0 dimension   Lnet/minecraft/resources/ResourceLocation;
+      StackMapTable: number_of_entries = 2
+        frame_type = 13 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+  public static net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> planetUnder(net.minecraft.resources.ResourceLocation);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: getstatic     #7                  // Field travelMap:Ljava/util/Map;
+         3: ifnull        40
+         6: getstatic     #7                  // Field travelMap:Ljava/util/Map;
+         9: aload_0
+        10: invokeinterface #174,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+        15: ifeq          40
+        18: getstatic     #196                // Field net/minecraft/core/registries/Registries.DIMENSION:Lnet/minecraft/resources/ResourceKey;
+        21: getstatic     #7                  // Field travelMap:Ljava/util/Map;
+        24: aload_0
+        25: invokeinterface #144,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        30: checkcast     #48                 // class com/rae/creatingspace/api/planets/RocketAccessibleDimension
+        33: invokevirtual #201                // Method com/rae/creatingspace/api/planets/RocketAccessibleDimension.orbitedBody:()Lnet/minecraft/resources/ResourceLocation;
+        36: invokestatic  #204                // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+        39: areturn
+        40: aconst_null
+        41: areturn
+      LineNumberTable:
+        line 139: 0
+        line 140: 6
+        line 141: 18
+        line 144: 40
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      42     0 dimension   Lnet/minecraft/resources/ResourceLocation;
+      StackMapTable: number_of_entries = 1
+        frame_type = 40 /* same */
+    Signature: #359                         // (Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/Level;>;
+    RuntimeInvisibleAnnotations:
+      0: #361()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #361(): METHOD_RETURN
+        org.jetbrains.annotations.Nullable
+
+  private static java.util.Map<net.minecraft.resources.ResourceLocation, java.lang.Integer> dijkstra(net.minecraft.resources.ResourceLocation);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=5, locals=12, args_size=1
+         0: new           #103                // class java/util/HashMap
+         3: dup
+         4: invokespecial #105                // Method java/util/HashMap."<init>":()V
+         7: astore_1
+         8: new           #103                // class java/util/HashMap
+        11: dup
+        12: invokespecial #105                // Method java/util/HashMap."<init>":()V
+        15: astore_2
+        16: getstatic     #7                  // Field travelMap:Ljava/util/Map;
+        19: invokeinterface #126,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+        24: invokeinterface #208,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        29: astore_3
+        30: aload_3
+        31: invokeinterface #212,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        36: ifeq          80
+        39: aload_3
+        40: invokeinterface #218,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        45: checkcast     #152                // class net/minecraft/resources/ResourceLocation
+        48: astore        4
+        50: aload_1
+        51: aload         4
+        53: ldc           #223                // int 2147483647
+        55: invokestatic  #224                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        58: invokeinterface #228,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        63: pop
+        64: aload_2
+        65: aload         4
+        67: iconst_0
+        68: invokestatic  #232                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        71: invokeinterface #228,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        76: pop
+        77: goto          30
+        80: aload_1
+        81: aload_0
+        82: iconst_0
+        83: invokestatic  #224                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        86: invokeinterface #228,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        91: pop
+        92: new           #237                // class java/util/PriorityQueue
+        95: dup
+        96: invokestatic  #239                // InterfaceMethod java/util/Map$Entry.comparingByValue:()Ljava/util/Comparator;
+        99: invokespecial #245                // Method java/util/PriorityQueue."<init>":(Ljava/util/Comparator;)V
+       102: astore_3
+       103: aload_3
+       104: new           #248                // class java/util/AbstractMap$SimpleEntry
+       107: dup
+       108: aload_0
+       109: iconst_0
+       110: invokestatic  #224                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       113: invokespecial #250                // Method java/util/AbstractMap$SimpleEntry."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+       116: invokevirtual #253                // Method java/util/PriorityQueue.add:(Ljava/lang/Object;)Z
+       119: pop
+       120: aload_3
+       121: invokevirtual #256                // Method java/util/PriorityQueue.isEmpty:()Z
+       124: ifne          381
+       127: aload_3
+       128: invokevirtual #259                // Method java/util/PriorityQueue.poll:()Ljava/lang/Object;
+       131: checkcast     #240                // class java/util/Map$Entry
+       134: astore        4
+       136: aload         4
+       138: invokeinterface #262,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       143: checkcast     #152                // class net/minecraft/resources/ResourceLocation
+       146: astore        5
+       148: aload_2
+       149: aload         5
+       151: invokeinterface #144,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       156: checkcast     #233                // class java/lang/Boolean
+       159: invokevirtual #265                // Method java/lang/Boolean.booleanValue:()Z
+       162: ifeq          168
+       165: goto          120
+       168: aload_2
+       169: aload         5
+       171: iconst_1
+       172: invokestatic  #232                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       175: invokeinterface #228,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       180: pop
+       181: getstatic     #7                  // Field travelMap:Ljava/util/Map;
+       184: aload         5
+       186: invokeinterface #144,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       191: checkcast     #48                 // class com/rae/creatingspace/api/planets/RocketAccessibleDimension
+       194: astore        6
+       196: aload         6
+       198: ifnull        378
+       201: aload         6
+       203: invokevirtual #177                // Method com/rae/creatingspace/api/planets/RocketAccessibleDimension.adjacentDimensions:()Ljava/util/Map;
+       206: invokeinterface #268,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+       211: invokeinterface #208,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       216: astore        7
+       218: aload         7
+       220: invokeinterface #212,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       225: ifeq          378
+       228: aload         7
+       230: invokeinterface #218,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       235: checkcast     #240                // class java/util/Map$Entry
+       238: astore        8
+       240: aload         8
+       242: invokeinterface #262,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       247: checkcast     #152                // class net/minecraft/resources/ResourceLocation
+       250: astore        9
+       252: aload         8
+       254: invokeinterface #271,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       259: checkcast     #274                // class com/rae/creatingspace/api/planets/RocketAccessibleDimension$AccessibilityParameter
+       262: invokevirtual #276                // Method com/rae/creatingspace/api/planets/RocketAccessibleDimension$AccessibilityParameter.deltaV:()I
+       265: istore        10
+       267: aload_1
+       268: aload         5
+       270: invokeinterface #144,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       275: checkcast     #221                // class java/lang/Integer
+       278: invokevirtual #279                // Method java/lang/Integer.intValue:()I
+       281: iload         10
+       283: iadd
+       284: istore        11
+       286: aload_1
+       287: aload         9
+       289: invokeinterface #144,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       294: ifnull        352
+       297: iload         11
+       299: aload_1
+       300: aload         9
+       302: invokeinterface #144,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       307: checkcast     #221                // class java/lang/Integer
+       310: invokevirtual #279                // Method java/lang/Integer.intValue:()I
+       313: if_icmpge     375
+       316: aload_1
+       317: aload         9
+       319: iload         11
+       321: invokestatic  #224                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       324: invokeinterface #228,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       329: pop
+       330: aload_3
+       331: new           #248                // class java/util/AbstractMap$SimpleEntry
+       334: dup
+       335: aload         9
+       337: iload         11
+       339: invokestatic  #224                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       342: invokespecial #250                // Method java/util/AbstractMap$SimpleEntry."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+       345: invokevirtual #253                // Method java/util/PriorityQueue.add:(Ljava/lang/Object;)Z
+       348: pop
+       349: goto          375
+       352: getstatic     #13                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+       355: aload         5
+       357: invokestatic  #282                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       360: aload         9
+       362: invokestatic  #282                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       365: invokedynamic #285,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+       370: invokeinterface #289,  2          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+       375: goto          218
+       378: goto          120
+       381: aload_1
+       382: areturn
+      LineNumberTable:
+        line 150: 0
+        line 151: 8
+        line 153: 16
+        line 154: 50
+        line 155: 64
+        line 156: 77
+        line 157: 80
+        line 160: 92
+        line 161: 103
+        line 163: 120
+        line 164: 127
+        line 165: 136
+        line 167: 148
+        line 169: 168
+        line 171: 181
+        line 172: 196
+        line 173: 201
+        line 174: 240
+        line 175: 252
+        line 176: 267
+        line 177: 286
+        line 178: 297
+        line 179: 316
+        line 180: 330
+        line 183: 352
+        line 185: 375
+        line 187: 378
+        line 188: 381
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           50      27     4 location   Lnet/minecraft/resources/ResourceLocation;
+          252     123     9 target   Lnet/minecraft/resources/ResourceLocation;
+          267     108    10 deltaV   I
+          286      89    11 newDist   I
+          240     135     8 adjacent   Ljava/util/Map$Entry;
+          136     242     4 entry   Ljava/util/Map$Entry;
+          148     230     5 current   Lnet/minecraft/resources/ResourceLocation;
+          196     182     6 currentDimension   Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension;
+            0     383     0 start   Lnet/minecraft/resources/ResourceLocation;
+            8     375     1 distances   Ljava/util/Map;
+           16     367     2 visited   Ljava/util/Map;
+          103     280     3 priorityQueue   Ljava/util/PriorityQueue;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          240     135     8 adjacent   Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lcom/rae/creatingspace/api/planets/RocketAccessibleDimension$AccessibilityParameter;>;
+          136     242     4 entry   Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;
+            8     375     1 distances   Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;
+           16     367     2 visited   Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Boolean;>;
+          103     280     3 priorityQueue   Ljava/util/PriorityQueue<Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;>;
+      StackMapTable: number_of_entries = 9
+        frame_type = 254 /* append */
+          offset_delta = 30
+          locals = [ class java/util/Map, class java/util/Map, class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 49
+        frame_type = 252 /* append */
+          offset_delta = 39
+          locals = [ class java/util/PriorityQueue ]
+        frame_type = 253 /* append */
+          offset_delta = 47
+          locals = [ class java/util/Map$Entry, class net/minecraft/resources/ResourceLocation ]
+        frame_type = 253 /* append */
+          offset_delta = 49
+          locals = [ class com/rae/creatingspace/api/planets/RocketAccessibleDimension, class java/util/Iterator ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 133
+          locals = [ class net/minecraft/resources/ResourceLocation, class java/util/Map, class java/util/Map, class java/util/PriorityQueue, class java/util/Map$Entry, class net/minecraft/resources/ResourceLocation, class com/rae/creatingspace/api/planets/RocketAccessibleDimension, class java/util/Iterator, class java/util/Map$Entry, class net/minecraft/resources/ResourceLocation, int, int ]
+          stack = []
+        frame_type = 255 /* full_frame */
+          offset_delta = 22
+          locals = [ class net/minecraft/resources/ResourceLocation, class java/util/Map, class java/util/Map, class java/util/PriorityQueue, class java/util/Map$Entry, class net/minecraft/resources/ResourceLocation, class com/rae/creatingspace/api/planets/RocketAccessibleDimension, class java/util/Iterator ]
+          stack = []
+        frame_type = 255 /* full_frame */
+          offset_delta = 2
+          locals = [ class net/minecraft/resources/ResourceLocation, class java/util/Map, class java/util/Map, class java/util/PriorityQueue ]
+          stack = []
+        frame_type = 2 /* same */
+    Signature: #380                         // (Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;
+
+  public static void updateCostMap();
+    descriptor: ()V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=2, args_size=0
+         0: new           #103                // class java/util/HashMap
+         3: dup
+         4: invokespecial #105                // Method java/util/HashMap."<init>":()V
+         7: putstatic     #292                // Field costAdjacentMap:Ljava/util/Map;
+        10: invokestatic  #140                // Method getTravelMap:()Ljava/util/Map;
+        13: invokeinterface #126,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+        18: invokeinterface #208,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        23: astore_0
+        24: aload_0
+        25: invokeinterface #212,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        30: ifeq          60
+        33: aload_0
+        34: invokeinterface #218,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        39: checkcast     #152                // class net/minecraft/resources/ResourceLocation
+        42: astore_1
+        43: getstatic     #292                // Field costAdjacentMap:Ljava/util/Map;
+        46: aload_1
+        47: aload_1
+        48: invokestatic  #295                // Method dijkstra:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map;
+        51: invokeinterface #228,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        56: pop
+        57: goto          24
+        60: return
+      LineNumberTable:
+        line 192: 0
+        line 193: 10
+        line 194: 43
+        line 195: 57
+        line 196: 60
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           43      14     1 location   Lnet/minecraft/resources/ResourceLocation;
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 24
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 35
+
+  public static int cost(net.minecraft.resources.ResourceLocation, net.minecraft.resources.ResourceLocation);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;)I
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=2, args_size=2
+         0: getstatic     #292                // Field costAdjacentMap:Ljava/util/Map;
+         3: ifnonnull     20
+         6: invokestatic  #73                 // Method updateCostMap:()V
+         9: getstatic     #13                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+        12: ldc_w         #299                // String unexpected null value for space travel cost map, reloading
+        15: invokeinterface #289,  2          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+        20: getstatic     #292                // Field costAdjacentMap:Ljava/util/Map;
+        23: aload_0
+        24: new           #103                // class java/util/HashMap
+        27: dup
+        28: invokespecial #105                // Method java/util/HashMap."<init>":()V
+        31: invokeinterface #301,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        36: checkcast     #121                // class java/util/Map
+        39: aload_1
+        40: iconst_m1
+        41: invokestatic  #224                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        44: invokeinterface #301,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        49: checkcast     #221                // class java/lang/Integer
+        52: invokevirtual #279                // Method java/lang/Integer.intValue:()I
+        55: ireturn
+      LineNumberTable:
+        line 202: 0
+        line 203: 6
+        line 204: 9
+        line 206: 20
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      56     0  from   Lnet/minecraft/resources/ResourceLocation;
+            0      56     1    to   Lnet/minecraft/resources/ResourceLocation;
+      StackMapTable: number_of_entries = 1
+        frame_type = 20 /* same */
+
+  private static void lambda$updatePlanetsFromRegistry$1(java.util.Map, net.minecraft.core.Registry, net.minecraft.resources.ResourceKey);
+    descriptor: (Ljava/util/Map;Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceKey;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=3, args_size=3
+         0: aload_0
+         1: aload_2
+         2: invokevirtual #130                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+         5: aload_1
+         6: aload_2
+         7: invokevirtual #130                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+        10: invokeinterface #304,  2          // InterfaceMethod net/minecraft/core/Registry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+        15: checkcast     #48                 // class com/rae/creatingspace/api/planets/RocketAccessibleDimension
+        18: invokeinterface #228,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        23: pop
+        24: return
+      LineNumberTable:
+        line 73: 0
+        line 74: 24
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      25     0 collector   Ljava/util/Map;
+            0      25     1 registry   Lnet/minecraft/core/Registry;
+            0      25     2 resourceKey   Lnet/minecraft/resources/ResourceKey;
+
+  private static boolean lambda$removeUnreachableDimensions$0(net.minecraft.resources.ResourceLocation);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=4, args_size=1
+         0: getstatic     #292                // Field costAdjacentMap:Ljava/util/Map;
+         3: aload_0
+         4: invokeinterface #144,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+         9: checkcast     #121                // class java/util/Map
+        12: astore_1
+        13: aload_1
+        14: invokeinterface #268,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+        19: invokeinterface #208,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        24: astore_2
+        25: aload_2
+        26: invokeinterface #212,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        31: ifeq          81
+        34: aload_2
+        35: invokeinterface #218,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        40: checkcast     #240                // class java/util/Map$Entry
+        43: astore_3
+        44: aload_3
+        45: invokeinterface #271,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+        50: checkcast     #221                // class java/lang/Integer
+        53: invokevirtual #279                // Method java/lang/Integer.intValue:()I
+        56: ifle          78
+        59: aload_3
+        60: invokeinterface #271,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+        65: checkcast     #221                // class java/lang/Integer
+        68: invokevirtual #279                // Method java/lang/Integer.intValue:()I
+        71: ldc           #223                // int 2147483647
+        73: if_icmpge     78
+        76: iconst_1
+        77: ireturn
+        78: goto          25
+        81: iconst_0
+        82: ireturn
+      LineNumberTable:
+        line 54: 0
+        line 56: 13
+        line 57: 44
+        line 58: 76
+        line 60: 78
+        line 61: 81
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           44      34     3 entries   Ljava/util/Map$Entry;
+            0      83     0     l   Lnet/minecraft/resources/ResourceLocation;
+           13      70     1  cost   Ljava/util/Map;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           44      34     3 entries   Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;
+           13      70     1  cost   Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;
+      StackMapTable: number_of_entries = 3
+        frame_type = 253 /* append */
+          offset_delta = 25
+          locals = [ class java/util/Map, class java/util/Iterator ]
+        frame_type = 52 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 2
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: invokestatic  #307                // Method org/apache/logging/log4j/LogManager.getLogger:()Lorg/apache/logging/log4j/Logger;
+         3: putstatic     #13                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+         6: return
+      LineNumberTable:
+        line 22: 0
+}
+SourceFile: "CSDimensionUtil.java"
+BootstrapMethods:
+  0: #409 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #395 (Ljava/lang/Object;)Z
+      #396 REF_invokeStatic com/rae/creatingspace/content/planets/CSDimensionUtil.lambda$removeUnreachableDimensions$0:(Lnet/minecraft/resources/ResourceLocation;)Z
+      #399 (Lnet/minecraft/resources/ResourceLocation;)Z
+  1: #409 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #400 (Ljava/lang/Object;)V
+      #402 REF_invokeStatic com/rae/creatingspace/content/planets/CSDimensionUtil.lambda$updatePlanetsFromRegistry$1:(Ljava/util/Map;Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceKey;)V
+      #405 (Lnet/minecraft/resources/ResourceKey;)V
+  2: #416 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #407 unexpected null value loading route from : \u0001 to \u0001
+InnerClasses:
+  public static #425= #54 of #423;        // Frozen=class net/minecraft/core/RegistryAccess$Frozen of class net/minecraft/core/RegistryAccess
+  public static final #428= #181 of #426; // CustomBiomeTags=class com/rae/creatingspace/init/TagsInit$CustomBiomeTags of class com/rae/creatingspace/init/TagsInit
+  public static #429= #240 of #121;       // Entry=class java/util/Map$Entry of class java/util/Map
+  public static #432= #248 of #430;       // SimpleEntry=class java/util/AbstractMap$SimpleEntry of class java/util/AbstractMap
+  public static final #433= #274 of #48;  // AccessibilityParameter=class com/rae/creatingspace/api/planets/RocketAccessibleDimension$AccessibilityParameter of class com/rae/creatingspace/api/planets/RocketAccessibleDimension
+  public static final #438= #434 of #436; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
