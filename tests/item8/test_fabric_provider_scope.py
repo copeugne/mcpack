@@ -106,6 +106,14 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
     ("module", "label", "digest", "count", "consumers"),
     [
         (
+            "fabric-entity-events-v1-1.8.0+5ede667619",
+            "fabric-entity-events-entry",
+            "f856b1bc1999cd9d480f5d8142b5561d05e62796bc6febf77d22588847531798",
+            9,
+            {"org/sinytra/fabric/entity_events/generated/GeneratedEntryPoint.class",
+             "net/fabricmc/fabric/impl/entity/event/EntityEventHooks.class"},
+        ),
+        (
             "fabric-game-rule-api-v1-1.0.53+36d727be19",
             "fabric-game_rule_api-entry",
             "e4413cde1f7946aaabaedd73db4fcbe27ab5c7285cb3eb9d2017071e2ca7702d",
@@ -273,6 +281,7 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert row["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / row["disassembly"]).read_bytes()).hexdigest()
             block_modules = {
+                "fabric-entity-events-v1": (47, 0),
                 "fabric-game-rule-api-v1": (27, 3),
                 "fabric-loot-api-v2": (14, 0),
                 "fabric-loot-api-v3": (17, 0),
