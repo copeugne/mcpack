@@ -5211,3 +5211,32 @@ One focused case passes (0.13s); scoped checks pass. Initial formatting and
 untyped JSON findings were corrected. Create remains OPEN for common entry,
 embedded-library roles and remaining template consumers. Census remains
 89 resolved and 47 open. Reuse these ore-source and packaged-data checks.
+
+### Create main entry and test-template consumer
+
+Source 9dcbd3c (extractor cd1fefb) retains four additional entry/consumer classes;
+independent capture matches. Identities SHA-256:
+151d5db9de69c37bd56cb596da59fe227f4f750b77a873cae8c0459b7d4738d5.
+The existing Create provider test binds every captured byte to its frozen JAR.
+
+CreateTestFunction.of accepts GameTest-annotated methods, requires a nonempty
+template and a GameTestGroup, constructs %s:gametest/%s/%s from namespace, group
+path and template, and builds a Minecraft TestFunction. Together with the prior
+CreateGameTests registration this resolves the test-loader role. It does not
+claim that every packaged fixture is currently referenced by a test annotation.
+Unused fixtures would still require an explicit disconnected disposition.
+
+Create.onCtor registers the already resolved ore feature and placement types,
+content/recipe/entity systems and one structure processor registration.
+AllStructureProcessorTypes registers only create:schematic, using
+SchematicProcessor.CODEC. Its consuming construction path remains to be bound.
+The common setup initializes fluid, NBT and construction interaction handlers.
+The declared CreateMixinPlugin supplies no additional mixin list and only filters
+Xaero compatibility classes according to mod availability. Other common mixin
+and event bodies remain outstanding; the constructor alone is not their proof.
+
+Two focused cases pass (0.16s), with scoped Ruff and Basedpyright passing using
+the commands in the preceding checkpoint. Create remains OPEN. Continue its
+common-event/mixin membership roles, schematic/Ponder consumers and embedded
+library entries. Do not repeat the ore or GameTest loader interpretation.
+Census remains 89 resolved, 47 open. No runtime or capture process is live.
