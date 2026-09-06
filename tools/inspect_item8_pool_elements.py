@@ -230,6 +230,8 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "me/wesley1808/servercore/common/dynamic/DynamicManager.class",
+    "me/wesley1808/servercore/common/dynamic/DynamicSetting.class",
     "me/wesley1808/servercore/common/ServerCore.class",
     "me/wesley1808/servercore/common/services/Events.class",
     "me/wesley1808/servercore/neoforge/common/ServerCoreNeoForge.class",
