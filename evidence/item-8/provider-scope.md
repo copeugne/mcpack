@@ -704,6 +704,34 @@ attributes. This separates unknown membership from incomplete attributes.
 
 ## Supplementaries packaged component checkpoint
 
+Generation source d6221a7, extractor 24f0a75, captures eleven identified classes
+with manifest 0eb64c666c0db4bd45091038bb2b3d622a1e57f896d31fe0df1279f2ff357e5d.
+Independent r1 matches, and the focused test binds every source to the archive.
+ModWorldgen registers two structure types, four feature types, the elevator
+piece, a placement type and a block-removal processor. The two roots and four
+feature implementations are captured; remaining processor/placement semantics
+must reuse existing evidence where available before adding source captures.
+
+The elevator membership boundary is resolved: MineshaftPiecesMixin injects at
+the head of vanilla MineshaftPieces.createRandomShaftPiece and substitutes the
+result of MineshaftElevatorPiece.getElevator when non-null. This is a component
+of existing mineshafts, not a separate structure-family root. The corridor mixin
+can replace chain supports with the selected rope under its cutout condition.
+Both mixins occur in supplementaries-common.mixins.json.
+
+The elevator method rejects Y greater than 48 and checks a random draw against
+MINESHAFT_ELEVATOR, plus PULLEY_ENABLED, ROPE_ENABLED and TURN_TABLE_ENABLED.
+The frozen common config records pulley/rope/turntable enabled and an elevator
+setting of 0.035. This is a configured input, not an observed occurrence rate;
+the actual selected mineshaft implementation and placement constraints still
+matter. Do not infer that elevators were observed in the clean worlds.
+
+Two focused cases pass in 0.80s, with scoped Ruff and Basedpyright passing.
+Continue the captured custom-generation implementation roles, then remaining
+loader/event/mixin and payload coverage. The complete provider remains open;
+the census is still 78 resolved and 58 open. Do not recapture these eleven
+classes or count elevator pieces as new families.
+
 The exact retained archive SHA-256 is
 0dd0445af35aa15ad012833c4b8024d2ed70320d1ace0316d2f5b684b06a997d.
 Existing family-decision checks account for galleon and road_sign roots. The new

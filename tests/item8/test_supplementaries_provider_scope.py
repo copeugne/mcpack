@@ -3,6 +3,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+import tomllib
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 from zipfile import ZipFile
@@ -72,3 +73,36 @@ def test_supplementaries_components_and_road_sign_feature_chain() -> None:
     assert resources[prefix + "configured_feature/road_sign.json"]["type"] == (
         "supplementaries:road_sign"
     )
+
+
+def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name.startswith("supplementaries-"))
+    directory = Path("evidence/item-8/sources/supplementaries-generation")
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "0eb64c666c0db4bd45091038bb2b3d622a1e57f896d31fe0df1279f2ff357e5d"
+    )
+    identities = cast("list[dict[str, str]]", json.loads(raw))
+    assert len(identities) == len({row["class"] for row in identities}) == 11
+    with ZipFile(source.path) as archive:
+        mixins = cast(
+            "dict[str, JsonValue]", json.loads(archive.read("supplementaries-common.mixins.json"))
+        )
+        assert mixins["package"] == "net.mehvahdjukaar.supplementaries.mixins"
+        assert {"MineshaftCorridorMixin", "MineshaftPiecesMixin"} <= set(
+            cast("list[str]", mixins["mixins"])
+        )
+        for row in identities:
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+            raw = (directory / row["disassembly"]).read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+    raw = Path("evidence/item-6/frozen/config/supplementaries-common.toml").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "14210291891759b831951eba24c65985ed5bd27a7d09b6383aeb9fd3e8f1bc8c"
+    )
+    config = cast("dict[str, dict[str, dict[str, JsonValue]]]", tomllib.loads(raw.decode()))
+    assert config["redstone"]["pulley_block"] == {"enabled": True, "mineshaft_elevator": 0.035}
+    assert config["redstone"]["turn_table"]["enabled"] is True
+    assert config["functional"]["rope"]["enabled"] is True
