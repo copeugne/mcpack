@@ -1,0 +1,207 @@
+Compiled from "StructureBlockReplacementHandler.java"
+public class org.violetmoon.zeta.util.handler.StructureBlockReplacementHandler {
+  private static java.util.Set<org.violetmoon.zeta.util.handler.StructureBlockReplacementHandler$StructureFunction> functions;
+
+  private static final java.lang.ThreadLocal<org.violetmoon.zeta.util.handler.StructureBlockReplacementHandler$StructureHolder> structureHolder;
+
+  public org.violetmoon.zeta.util.handler.StructureBlockReplacementHandler();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void addReplacement(org.violetmoon.zeta.util.handler.StructureBlockReplacementHandler$StructureFunction);
+    Code:
+       0: getstatic     #7                  // Field functions:Ljava/util/Set;
+       3: aload_0
+       4: invokeinterface #13,  2           // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+       9: pop
+      10: return
+
+  public static net.minecraft.core.Holder<net.minecraft.world.level.levelgen.structure.Structure> getStructure(net.minecraft.world.level.ServerLevelAccessor, org.violetmoon.zeta.util.handler.StructureBlockReplacementHandler$StructureHolder);
+    Code:
+       0: aload_0
+       1: invokeinterface #19,  1           // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+       6: getstatic     #25                 // Field net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+       9: invokeinterface #31,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      14: astore_2
+      15: aload_2
+      16: aload_1
+      17: invokedynamic #37,  0             // InvokeDynamic #0:apply:(Lorg/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureHolder;)Ljava/util/function/Function;
+      22: invokevirtual #41                 // Method java/util/Optional.flatMap:(Ljava/util/function/Function;)Ljava/util/Optional;
+      25: astore_3
+      26: aload_3
+      27: invokevirtual #47                 // Method java/util/Optional.isEmpty:()Z
+      30: ifeq          37
+      33: aconst_null
+      34: goto          44
+      37: aload_3
+      38: invokevirtual #51                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      41: checkcast     #55                 // class net/minecraft/core/Holder
+      44: areturn
+
+  public static net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.structure.Structure> getStructureKey(net.minecraft.world.level.ServerLevelAccessor, org.violetmoon.zeta.util.handler.StructureBlockReplacementHandler$StructureHolder);
+    Code:
+       0: aload_0
+       1: invokeinterface #19,  1           // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+       6: getstatic     #25                 // Field net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+       9: invokeinterface #31,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      14: aload_1
+      15: invokedynamic #57,  0             // InvokeDynamic #1:apply:(Lorg/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureHolder;)Ljava/util/function/Function;
+      20: invokevirtual #41                 // Method java/util/Optional.flatMap:(Ljava/util/function/Function;)Ljava/util/Optional;
+      23: astore_2
+      24: aload_2
+      25: invokevirtual #47                 // Method java/util/Optional.isEmpty:()Z
+      28: ifeq          35
+      31: aconst_null
+      32: goto          42
+      35: aload_2
+      36: invokevirtual #51                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      39: checkcast     #58                 // class net/minecraft/resources/ResourceKey
+      42: areturn
+
+  public static net.minecraft.resources.ResourceLocation getStructureRes(net.minecraft.world.level.ServerLevelAccessor, org.violetmoon.zeta.util.handler.StructureBlockReplacementHandler$StructureHolder);
+    Code:
+       0: aload_0
+       1: invokeinterface #19,  1           // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+       6: getstatic     #25                 // Field net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+       9: invokeinterface #31,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      14: aload_1
+      15: invokedynamic #60,  0             // InvokeDynamic #2:apply:(Lorg/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureHolder;)Ljava/util/function/Function;
+      20: invokevirtual #61                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      23: astore_2
+      24: aload_2
+      25: invokevirtual #47                 // Method java/util/Optional.isEmpty:()Z
+      28: ifeq          35
+      31: aconst_null
+      32: goto          42
+      35: aload_2
+      36: invokevirtual #51                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      39: checkcast     #64                 // class net/minecraft/resources/ResourceLocation
+      42: areturn
+
+  public static boolean isStructure(net.minecraft.world.level.ServerLevelAccessor, org.violetmoon.zeta.util.handler.StructureBlockReplacementHandler$StructureHolder, net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.structure.Structure>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #66                 // Method getStructureKey:(Lnet/minecraft/world/level/ServerLevelAccessor;Lorg/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureHolder;)Lnet/minecraft/resources/ResourceKey;
+       5: astore_3
+       6: aload_3
+       7: ifnull        22
+      10: aload_3
+      11: aload_2
+      12: invokevirtual #70                 // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+      15: ifeq          22
+      18: iconst_1
+      19: goto          23
+      22: iconst_0
+      23: ireturn
+
+  public static net.minecraft.world.level.block.state.BlockState getResultingBlockState(net.minecraft.world.level.ServerLevelAccessor, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: invokestatic  #73                 // Method getCurrentStructureHolder:()Lorg/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureHolder;
+       3: astore_2
+       4: aload_2
+       5: ifnull        67
+       8: aload_2
+       9: getfield      #77                 // Field org/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureHolder.currentStructure:Lnet/minecraft/world/level/levelgen/structure/Structure;
+      12: ifnull        67
+      15: getstatic     #7                  // Field functions:Ljava/util/Set;
+      18: invokeinterface #83,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      23: astore_3
+      24: aload_3
+      25: invokeinterface #87,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      30: ifeq          67
+      33: aload_3
+      34: invokeinterface #92,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      39: checkcast     #95                 // class org/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureFunction
+      42: astore        4
+      44: aload         4
+      46: aload_0
+      47: aload_1
+      48: aload_2
+      49: invokeinterface #97,  4           // InterfaceMethod org/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureFunction.transformBlockstate:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/level/block/state/BlockState;Lorg/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureHolder;)Lnet/minecraft/world/level/block/state/BlockState;
+      54: astore        5
+      56: aload         5
+      58: ifnull        64
+      61: aload         5
+      63: areturn
+      64: goto          24
+      67: aload_1
+      68: areturn
+
+  private static org.violetmoon.zeta.util.handler.StructureBlockReplacementHandler$StructureHolder getCurrentStructureHolder();
+    Code:
+       0: getstatic     #101                // Field structureHolder:Ljava/lang/ThreadLocal;
+       3: invokevirtual #105                // Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
+       6: checkcast     #78                 // class org/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureHolder
+       9: areturn
+
+  public static void setActiveStructure(net.minecraft.world.level.levelgen.structure.Structure, net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer);
+    Code:
+       0: invokestatic  #73                 // Method getCurrentStructureHolder:()Lorg/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureHolder;
+       3: astore_2
+       4: aload_2
+       5: ifnonnull     23
+       8: new           #78                 // class org/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureHolder
+      11: dup
+      12: invokespecial #108                // Method org/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureHolder."<init>":()V
+      15: astore_2
+      16: getstatic     #101                // Field structureHolder:Ljava/lang/ThreadLocal;
+      19: aload_2
+      20: invokevirtual #109                // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+      23: aload_2
+      24: aload_0
+      25: putfield      #77                 // Field org/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureHolder.currentStructure:Lnet/minecraft/world/level/levelgen/structure/Structure;
+      28: aload_2
+      29: aload_1
+      30: ifnonnull     37
+      33: aconst_null
+      34: goto          41
+      37: aload_1
+      38: invokevirtual #113                // Method net/minecraft/world/level/levelgen/structure/pieces/PiecesContainer.pieces:()Ljava/util/List;
+      41: putfield      #119                // Field org/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureHolder.currentComponents:Ljava/util/List;
+      44: return
+
+  private static net.minecraft.resources.ResourceLocation lambda$getStructureRes$2(org.violetmoon.zeta.util.handler.StructureBlockReplacementHandler$StructureHolder, net.minecraft.core.Registry);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #77                 // Field org/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureHolder.currentStructure:Lnet/minecraft/world/level/levelgen/structure/Structure;
+       5: invokeinterface #123,  2          // InterfaceMethod net/minecraft/core/Registry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+      10: areturn
+
+  private static java.util.Optional lambda$getStructureKey$1(org.violetmoon.zeta.util.handler.StructureBlockReplacementHandler$StructureHolder, net.minecraft.core.Registry);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #77                 // Field org/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureHolder.currentStructure:Lnet/minecraft/world/level/levelgen/structure/Structure;
+       5: invokeinterface #129,  2          // InterfaceMethod net/minecraft/core/Registry.getResourceKey:(Ljava/lang/Object;)Ljava/util/Optional;
+      10: areturn
+
+  private static java.util.Optional lambda$getStructure$0(org.violetmoon.zeta.util.handler.StructureBlockReplacementHandler$StructureHolder, net.minecraft.core.Registry);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #77                 // Field org/violetmoon/zeta/util/handler/StructureBlockReplacementHandler$StructureHolder.currentStructure:Lnet/minecraft/world/level/levelgen/structure/Structure;
+       5: invokeinterface #129,  2          // InterfaceMethod net/minecraft/core/Registry.getResourceKey:(Ljava/lang/Object;)Ljava/util/Optional;
+      10: aload_1
+      11: dup
+      12: invokestatic  #133                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      15: pop
+      16: invokedynamic #139,  0            // InvokeDynamic #3:apply:(Lnet/minecraft/core/Registry;)Ljava/util/function/Function;
+      21: invokevirtual #41                 // Method java/util/Optional.flatMap:(Ljava/util/function/Function;)Ljava/util/Optional;
+      24: areturn
+
+  static {};
+    Code:
+       0: new           #142                // class java/util/HashSet
+       3: dup
+       4: invokespecial #144                // Method java/util/HashSet."<init>":()V
+       7: putstatic     #7                  // Field functions:Ljava/util/Set;
+      10: new           #106                // class java/lang/ThreadLocal
+      13: dup
+      14: invokespecial #145                // Method java/lang/ThreadLocal."<init>":()V
+      17: putstatic     #101                // Field structureHolder:Ljava/lang/ThreadLocal;
+      20: return
+}
