@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 59 of 136. The exact queue below has 77 open rows.
+Supported provider dispositions: 60 of 136. The exact queue below has 76 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -611,7 +611,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `fzzy_config-0.7.6+1.21+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `geckolib-neoforge-1.21.1-4.8.4.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `idas-1.13.7+1.21.1-neoforge.jar` | `idas-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
+| `idas-1.13.7+1.21.1-neoforge.jar` | `idas-provider` (afb3cee), prior suppression evidence, test_idas_provider_scope.py | RESOLVED: 84 existing roots, complete component partition, compatibility pool declarations and Labyrinth encounter hooks. See IDAS disposition below; shared Integrated API and final attributes remain open. |
 | `integrated_api-1.7.3+1.21.1-neoforge.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `integrated_stronghold-1.1.4+1.21.1-neoforge.jar` | `integrated-stronghold-provider`, existing root/graph and family-decision regression | RESOLVED: one existing root, both modification mixins, all components and disconnected/missing templates accounted for. See Integrated Stronghold provider disposition below. |
 | `integrated_villages-1.3.3+1.21.1-neoforge.jar` | `integrated-villages-provider` (97000f2), prior suppression evidence, test_integrated_villages_provider_scope.py | RESOLVED: Twelve existing roots, full component partition, four incompatible legacy addition declarations and existing village suppression. See Integrated Villages disposition below. Shared Integrated API remains open. |
@@ -2109,3 +2109,74 @@ enclosing AdditionalStructureTemplatePool. Correcting the asserted source file
 resolved the test failure without changing raw evidence. Initial formatting
 findings were corrected. Provider dispositions now cover 59 of 136, leaving
 77 open. Canonical family grouping and the final Item 8 gate remain open.
+
+## IDAS provider disposition
+
+Source afb3cee and the prior idas-suppression capture cover all 21 packaged
+classes in idas-1.13.7+1.21.1-neoforge.jar. The focused test binds their manifests,
+class bytes and disassemblies to the frozen archive, accounts for all 967 files,
+and matches all 84 packaged roots to the captured runtime registry. Other than
+roots, pools, processors and structure sets, this payload contains loot, tags,
+advancements, encounter-spawner definitions, music, a recipe and visual/audio
+assets. There are no nested archives, service entry files, functions or additional
+feature/carver definitions. The NeoForge entry registers ordinary disc/fragment
+items, sound events and a creative tab, configures IDAS, and initializes the
+mining-fatigue structure tag. Its common server-start callback is empty.
+
+All 214 pools and 259 templates have a component disposition against the existing
+root graphs. The exact 21 disconnected pools and 23 disconnected templates are
+listed in test_idas_provider_scope.py. They include alternate compatibility
+rooms and entrances, old house pools, desert camp/pyramid pieces, a bear den,
+a Labyrinth test template and a pillager-camp variant. They do not have independent
+root registrations. Do not count them as standalone families.
+
+The disconnected-default-graph label is not an assertion of unconditional
+inactivity: enchantingtower, haunted_manor and labyrinth explicitly declare
+alternate start pools for Ars Nouveau or Ice and Fire through
+integrated_api:mod_adaptive_structure. Preserve those alternate component links.
+Three other roots declare optional dependencies: archmages_tower requires
+Ars Nouveau; dread_citadel and sirens_cove require Ice and Fire. Shared Integrated
+API selection behavior is still an open provider dependency. Root registration,
+compatibility declarations and successful placement are different claims.
+
+Preserve all missing pool references: ancient_mines/ancient_mines_entrance2,
+desert_pyramid/desert_pyramid_villager, dread_citadel/dread_citadel12 and
+dread_citadel/dread_citadel5. Their root membership and exact IDs are bound to the
+preserved graph. All 84 traces have no unresolved pool elements. A similarly named
+template does not replace a missing pool. The existing unresolved biome-constraint
+and dimension-attribute questions are not resolved by this provider disposition.
+
+Five packaged mixins modify existing structures and encounter behavior.
+DisableStructuresMixin and LocateStructuresCommandMixin address existing
+vanilla/Ice and Fire generation and direct locate requests. Reuse the prior
+suppression check. ServerLevelMixin attaches dimension-local Labyrinth cleared
+state. ServerPlayerTickMixin checks survival players every 100 ticks, requiring
+a loaded valid piece in the applies_mining_fatigue tag, the enabled setting and
+an uncleared structure. It applies or refreshes mining fatigue subject to the
+existing effect's amplifier/duration. The frozen Apply Mining Fatigue setting is
+true; the packaged tag names idas:labyrinth. This is an existing-encounter input,
+not an independent generation route or a runtime gameplay acceptance claim.
+
+LabyrinthBossKilledMixin identifies a qualifying boss, finds a tagged structure
+piece and records cleared state using the structure start chunk's world position.
+Its recognition includes the named Pharaoh Husk, its packaged head-texture
+alternative and the Gorgon identifier. The stateCache/stateRegion classes store
+and retrieve cleared flags. These hooks do not create independent structures.
+Preserve their exact behavior for later encounter attribution; do not infer that
+all boss, effect-removal or persistence behavior has been tested in game. Eighteen
+integrated_structure_spawners resources declare weighted mob lists for shared
+consumers, likewise component inputs rather than additional families.
+
+```sh
+uv run pytest -q tests/item8/test_idas_provider_scope.py tests/item8/test_integrated_suppression.py
+uv run ruff check tests/item8/test_idas_provider_scope.py
+uv run basedpyright tests/item8/test_idas_provider_scope.py
+```
+
+Five cases pass; scoped Ruff and Basedpyright pass. The payload test keeps one
+explicit archive/graph assertion with a local complexity exemption, avoiding a
+new helper solely to divide that assertion. An initial exploratory path substring
+also matched a structure tag and raised KeyError; the tracked check uses the
+existing resource_identity function and cannot mistake tags for roots. No raw
+input was changed. Current provider census: 60 resolved and 76 open. Family
+canonicalization, eleven attributes and the final Item 8 delivery gate remain open.
