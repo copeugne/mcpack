@@ -114,6 +114,7 @@ ARCHIVES = frozenset(
         "naturalist-1.0.2-neoforge-1.21.1.jar",
         "railways-0.2.1+neoforge-mc1.21.1.jar",
         "create-1.21.1-6.0.10.jar",
+        "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
         "YungsBridges-1.21.1-NeoForge-5.1.1.jar",
         "YungsExtras-1.21.1-NeoForge-5.1.1.jar",
         "YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar",
@@ -188,6 +189,11 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "org/sinytra/fabric/biome_api/generated/GeneratedEntryPoint.class",
+    "org/sinytra/fabric/biome_api/FabricBiomeApiV1.class",
+    "net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl.class",
+    "net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl$FabricBiomeModifier.class",
+    "net/fabricmc/fabric/api/biome/v1/BiomeModifications.class",
     "net/minecraft/world/level/levelgen/structure/pools/SinglePoolElement.class",
     "net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement$Placer.class",
     "net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager.class",
@@ -2271,6 +2277,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/fabric-biome-api-v1-13.0.31+1e62d33c19.jar",
         "META-INF/jarjar/ponder-neoforge-1.0.82+mc1.21.1.jar",
         "META-INF/jarjar/flywheel-neoforge-1.21.1-1.0.6.jar",
         "META-INF/jars/midnightlib-1.9.2+1.21.1-neoforge.jar",
@@ -2289,6 +2296,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/fabric-biome-api-v1-13.0.31+1e62d33c19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "56d6766d23085e881cb55737f94498843f4fecd940f7660a18213d0995fff3a6",
+        ),
         "META-INF/jarjar/ponder-neoforge-1.0.82+mc1.21.1.jar": (
             "create-1.21.1-6.0.10.jar",
             "0cf4611ad853042b689ac386184c5bbe02950efcffddb49e5f604e82baddb0dc",
