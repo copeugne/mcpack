@@ -189,6 +189,10 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "org/sinytra/fabric/convention_tags/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/mixin/tag/TagKeyMixin.class",
+    "net/fabricmc/fabric/impl/tag/convention/v2/TagRegistration.class",
+    "net/fabricmc/fabric/impl/tag/convention/v2/TranslationConventionLogWarnings.class",
     "org/sinytra/fabric/convention_tags_v1/generated/GeneratedEntryPoint.class",
     "net/fabricmc/fabric/impl/tag/convention/TagRegistration.class",
     "net/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings.class",
@@ -2317,6 +2321,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/fabric-convention-tags-v2-2.11.1+87e5848019.jar",
         "META-INF/jars/fabric-convention-tags-v1-2.1.5+7f945d5b19.jar",
         "META-INF/jars/fabric-api-base-0.4.42+d1308ded19.jar",
         "META-INF/jars/fabric-resource-loader-v0-1.3.1+4ea8954419.jar",
@@ -2340,6 +2345,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/fabric-convention-tags-v2-2.11.1+87e5848019.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "d2fc680934db74478bce016639372880507e1a2680bbb84a10d1b0c37339367e",
+        ),
         "META-INF/jars/fabric-convention-tags-v1-2.1.5+7f945d5b19.jar": (
             "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
             "55cbef9556be5806dbc0db128fbc59c895335dd2776ebacd5d12398197bc0b5a",
