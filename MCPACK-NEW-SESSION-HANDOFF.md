@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches edd0bf75 and reproduces exactly. Canonical-note backlog: 110.
+Coverage groups: 405. Next: four Aether/Deep Aether dungeon design records against
+existing custom-generator evidence. Required attributes and nonregistry work remain.
+
+Five Illager Invasion design relationships are resolved from existing source
+components. Three affected cases and scoped checks pass. Canonical-note backlog:
+110. Coverage groups: 405. Inventory refresh follows. No new capture was needed.
+Required attributes and nonregistry reconciliation remain open.
+
+Inventory matches 9f172cf6 and reproduces exactly. Canonical-note backlog: 115.
+Coverage groups: 405. Next: Illager Invasion design relationships against existing
+pools and templates. Nonregistry reconciliation and required attributes remain.
+
+Creating Space design relationships are resolved from existing component graphs
+and template contents. Four distinct installation/wreck designs remain; reused
+bastion legs and the Moon top/basement are components. The existing affected case
+and scoped quality checks pass. Canonical-note backlog: 115. Coverage groups: 405.
+Placement, inhabitants and equipment operation are not resolved by these source
+contents. Inventory refresh follows; no new capture or measurement was added.
+
 Inventory matches 2eb64661 and reproduces exactly. Canonical-note backlog: 119.
 Coverage groups: 405, including inactive candidates. Next: remaining design
 relationships against preserved templates and source graphs. Nonregistry and

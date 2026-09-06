@@ -9257,3 +9257,63 @@ SHA-256: 400b5d2608332439e6dcf1e738d335f7f23f72cae9364cda5d33573657549e42.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-replacement-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-replacement-r2.json
 ```
+
+### Creating Space design reconciliation, 2026-09-07
+
+Existing template contents and root graphs distinguish the Mars drill-and-pulley
+installation, Moon upper-building/fluid-machinery basement installation, compact
+engine-and-flight-recorder rocket wreck, and broad sliding-door ship wreck.
+Bastion legs are reused components; the Moon installation top and basement are
+connected pieces. These four records retain separate design identities. Source
+machinery does not prove operation, occupants or effective placement. No new
+capture, rendering pass or measurement was needed.
+
+The existing affected case and scoped checks pass. Canonical-note backlog: 115,
+down from 119. Coverage groups remain 405. Remaining named records by provider:
+IDAS 59, AdoraBuild 31, Terralith 15, Illager Invasion 5, Aether 3, Deep Aether 1,
+and Towns and Towers 1. Nonregistry reconciliation and required attributes remain.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k creatingspace
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory regenerated from 9f172cf6 and independently reproduced exactly.
+Only the four Creating Space grouping decisions and the decision input identity
+changed. SHA-256: 37a685b6856bbb9fd5161b5db855639eec30d01493222d3de968d6b45fd6361c.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-creatingspace-designs-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-creatingspace-designs-r2.json
+```
+
+### Illager Invasion design reconciliation, 2026-09-07
+
+Five design records retain their distinct boundaries. Firecaller is a base-plate
+farm compound; sorcerer is a standalone hut. The fort has one architectural root;
+illusioner has three equal-weight tower alternatives with common dimensions,
+principal construction materials and stacked encounter elevations. Labyrinth
+connects its tower to halls and room alternatives. Shared mob templates remain
+components. Existing graphs and template contents suffice; no new source capture,
+rendering or measurement was added. Provider replacement-component dispositions
+remain unchanged. Effective gameplay and placement attributes remain open.
+
+Three affected cases and scoped checks pass. Canonical-note backlog: 110, down
+from 115. Coverage groups remain 405. The remaining named records are IDAS 59,
+AdoraBuild 31, Terralith 15, Aether 3, Deep Aether 1 and Towns and Towers 1.
+
+```sh
+uv run pytest tests/item8/test_illagerinvasion_provider_scope.py tests/item8/test_family_decisions.py -q -k illagerinvasion
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory regenerated from edd0bf75 and independently reproduced exactly.
+Only the five Illager Invasion grouping decisions and the decision input identity
+changed. SHA-256: 8a68f25b473a8e8e2b6cee131886202efdb2e1035b56bb64cd09a46c215c7257.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-illager-designs-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-illager-designs-r2.json
+```
