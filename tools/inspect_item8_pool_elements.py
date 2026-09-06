@@ -214,6 +214,10 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "com/illusivesoulworks/polymorph/common/PolymorphNeoForgeCapabilities.class",
+    "com/illusivesoulworks/polymorph/common/CommonEventsListener.class",
+    "com/illusivesoulworks/polymorph/common/network/ServerPayloadHandler.class",
+    "com/illusivesoulworks/polymorph/common/integration/PolymorphIntegrations.class",
     "com/illusivesoulworks/polymorph/PolymorphCommonMod.class",
     "com/illusivesoulworks/polymorph/PolymorphNeoForgeMod.class",
     "com/illusivesoulworks/polymorph/mixin/IntegratedMixinPlugin.class",
