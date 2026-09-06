@@ -1,0 +1,43 @@
+Compiled from "NeoForgeEvents.java"
+public class net.bettercombat.neoforge.NeoForgeEvents {
+  public net.bettercombat.neoforge.NeoForgeEvents();
+    Code:
+       0: aload_0
+       1: invokespecial #25                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void register(net.neoforged.neoforge.event.server.ServerAboutToStartEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #37                 // Method net/neoforged/neoforge/event/server/ServerAboutToStartEvent.getServer:()Lnet/minecraft/server/MinecraftServer;
+       4: invokestatic  #43                 // Method net/bettercombat/BetterCombatMod.loadWeaponAttributes:(Lnet/minecraft/server/MinecraftServer;)V
+       7: return
+
+  public static void onHandSwap(net.neoforged.neoforge.event.entity.living.LivingSwapItemsEvent$Hands);
+    Code:
+       0: aload_0
+       1: invokevirtual #50                 // Method net/neoforged/neoforge/event/entity/living/LivingSwapItemsEvent$Hands.getEntity:()Lnet/minecraft/world/entity/LivingEntity;
+       4: astore_2
+       5: aload_2
+       6: instanceof    #52                 // class net/minecraft/world/entity/player/Player
+       9: ifeq          50
+      12: aload_2
+      13: checkcast     #52                 // class net/minecraft/world/entity/player/Player
+      16: astore_1
+      17: aload_1
+      18: checkcast     #54                 // class net/bettercombat/mixin/player/PlayerEntityAccessor
+      21: invokeinterface #58,  1           // InterfaceMethod net/bettercombat/mixin/player/PlayerEntityAccessor.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+      26: getfield      #64                 // Field net/minecraft/world/entity/player/Inventory.offhand:Lnet/minecraft/core/NonNullList;
+      29: iconst_0
+      30: invokevirtual #70                 // Method net/minecraft/core/NonNullList.get:(I)Ljava/lang/Object;
+      33: checkcast     #72                 // class net/minecraft/world/item/ItemStack
+      36: astore_2
+      37: aload_0
+      38: aload_1
+      39: invokevirtual #76                 // Method net/minecraft/world/entity/player/Player.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+      42: invokevirtual #80                 // Method net/neoforged/neoforge/event/entity/living/LivingSwapItemsEvent$Hands.setItemSwappedToOffHand:(Lnet/minecraft/world/item/ItemStack;)V
+      45: aload_0
+      46: aload_2
+      47: invokevirtual #83                 // Method net/neoforged/neoforge/event/entity/living/LivingSwapItemsEvent$Hands.setItemSwappedToMainHand:(Lnet/minecraft/world/item/ItemStack;)V
+      50: return
+}
