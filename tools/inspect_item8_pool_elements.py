@@ -189,6 +189,8 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/fabricmc/fabric/impl/registry/sync/FabricRegistryInit.class",
+    "net/fabricmc/loader/impl/bootstrap/FabricLoaderBootstrap.class",
     "net/fabricmc/loader/impl/bootstrap/FabricLoaderHackyInjector.class",
     "net/fabricmc/fabric/mixin/transfer/AbstractFurnaceBlockEntityMixin.class",
     "net/fabricmc/fabric/mixin/transfer/BucketItemMixin.class",
