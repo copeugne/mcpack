@@ -95,6 +95,19 @@ def test_bop_named_candidates_bind_packaged_routes_and_live_biomes() -> None:
 
 
 def test_bop_plain_bone_spine_has_no_packaged_selector_reference() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    for name in ("anomaly", "monolith", "bone_spine"):
+        key = "biomesoplenty:" + name
+        decision = contributions[key]
+        assert decision["families"] == ([] if name == "bone_spine" else [key])
+        if name != "bone_spine":
+            assert decision["configured_feature"] == decision["placed_feature"] == key
+            assert decision["packaged_biome_consumer"] == "biomesoplenty:end_corruption"
+        for path, digest in cast("dict[str, str]", decision["evidence"]).items():
+            assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
     source = next(s for s in retained_sources(Path.cwd()) if s.name.startswith("BiomesOPlenty-"))
     assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
     with ZipFile(source.path) as archive:

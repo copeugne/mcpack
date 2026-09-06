@@ -6001,3 +6001,26 @@ The initial lint finding was corrected before acceptance. Fabric queue:
 twenty-one resolved, twenty-two open modules. Whole-provider census remains
 90 resolved, 46 open. Reuse all lookup sources; no remaining lookup membership
 question requires further helper tracing.
+
+### BOP landmark family integration
+
+The existing named decisions are now integrated in family-decisions.json and
+the reproduced inventory: biomesoplenty:anomaly and biomesoplenty:monolith each
+contribute one independent landmark family. State and size variation do not
+create additional families. Both bone-spine configured IDs share one natural
+column writer and contribute no family. Existing source, registration, packaged
+placement and captured dimension-biome evidence are reused and hash-bound.
+The two pumpkin boundaries remain the next BOP canonical decisions.
+
+Five focused cases and scoped quality checks pass. No source capture, world run
+or measurement framework was added. The 421 registry groups are unchanged; the
+two landmarks are outside that registry, and the global family total remains
+unaccepted pending the remaining provider and grouping decisions.
+
+```sh
+uv run pytest -q tests/item8/test_bop_feature_candidates.py
+uv run ruff check tests/item8/test_bop_feature_candidates.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_bop_feature_candidates.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-bop-landmarks-r1.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-bop-landmarks-r1.json
+```
