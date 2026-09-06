@@ -1476,6 +1476,15 @@ CLASSES: tuple[str, ...] = (
     "com/aetherteam/aether/Aether$2.class",
     "com/aetherteam/aether/world/structure/GlowstoneRuinedPortalStructure.class",
     "com/aetherteam/aether/world/structurepiece/GlowstoneRuinedPortalPiece.class",
+    "com/aetherteam/aether/event/hooks/DimensionHooks.class",
+    "com/aetherteam/aether/command/AetherCommands.class",
+    "com/aetherteam/aether/data/ReloadListeners.class",
+    "com/aetherteam/cumulus/CumulusNeoForge.class",
+    "com/aetherteam/cumulus/client/event/listeners/WorldPreviewListener.class",
+    "com/aetherteam/cumulus/client/event/listeners/MenuListener.class",
+    "com/aetherteam/cumulus/mixin/mixins/client/LevelStorageSourceMixin.class",
+    "com/aetherteam/nitrogen/Nitrogen.class",
+    "com/aetherteam/nitrogen/event/listeners/TooltipListeners.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1498,13 +1507,23 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--nested-archive", choices=[
         "META-INF/jars/tiny-config-3.1.0-neoforge.jar",
         "META-INF/jars/extensibleenums-neoforge-21.1.1.jar",
-        "META-INF/jarjar/biolith-neoforge-3.0.10.jar"])
+        "META-INF/jarjar/biolith-neoforge-3.0.10.jar",
+        "META-INF/jarjar/cumulus_menus-1.21.1-2.0.7-neoforge.jar",
+        "META-INF/jarjar/nitrogen_internals-1.21.1-1.1.25-neoforge.jar"])
     args = parser.parse_args()
     output = cast("Path", args.output)
     selected_archive = cast("str | None", args.archive)
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jarjar/cumulus_menus-1.21.1-2.0.7-neoforge.jar": (
+            "aether-1.21.1-1.5.10-neoforge.jar",
+            "2518abccb1a012bb63b5b3ea14b8ed93c82fb5002105c86afadadf518bf149a1",
+        ),
+        "META-INF/jarjar/nitrogen_internals-1.21.1-1.1.25-neoforge.jar": (
+            "aether-1.21.1-1.5.10-neoforge.jar",
+            "00cf0e032076f1220c4a8c760a392e12aacb52e4d8e779b9aaf63cd561b40341",
+        ),
         "META-INF/jars/tiny-config-3.1.0-neoforge.jar": (
             "village_taverns-neoforge-1.1.5+1.21.1.jar",
             "1587ed9848881e7b677da5b8c85e0f35719315eb5f6571592d31840cf1421f63",
@@ -1636,6 +1655,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 )
                 verbose |= name == "com/aetherteam/aether/Aether.class"
                 verbose |= name.startswith("com/aetherteam/aether/event/listeners/")
+                verbose |= name.startswith(("com/aetherteam/cumulus/", "com/aetherteam/nitrogen/"))
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
                     "biomesoplenty/core/BiomesOPlenty.class",
                     "biomesoplenty/neoforge/core/BiomesOPlentyNeoForge.class",
