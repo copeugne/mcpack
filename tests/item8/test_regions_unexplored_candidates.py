@@ -88,6 +88,32 @@ def test_regions_unexplored_fallen_tree_variants_and_source() -> None:
                 for p, d in rows.items() if "/configured_feature/" in p
                 and d.get("type") == "regions_unexplored:fallen_tree"}
     assert set(variants) == {"larch", "maple", "oak", "pine", "silver_birch", "snow_pine"}
+    placed = {p.rsplit("/", 1)[1].removesuffix(".json"): d["feature"]
+              for p, d in rows.items()
+              if p.startswith("data/regions_unexplored/worldgen/placed_feature/tree/fallen/")}
+    assert placed == {name: "regions_unexplored:tree/fallen/" + config for name, config in (
+        ("larch", "larch"), ("maple", "maple"), ("oak_dense", "oak"), ("oak_sparse", "oak"),
+        ("pine", "pine"), ("pine_on_dirt", "pine"), ("pine_on_snow", "snow_pine"),
+        ("silver_birch", "silver_birch"),
+    )}
+    consumers = {
+        p.rsplit("/", 1)[1].removesuffix(".json"): [n for group in
+            cast("list[list[str]]", d["features"]) for n in group if ":tree/fallen/" in n]
+        for p, d in rows.items() if p.startswith("data/regions_unexplored/worldgen/biome/")
+    }
+    assert {k: v for k, v in consumers.items() if v} == {
+        biome: ["regions_unexplored:tree/fallen/" + name]
+        for name, biomes in (
+            ("larch", ("boreal_taiga", "cold_boreal_taiga", "golden_boreal_taiga",
+                       "old_growth_boreal_taiga", "old_growth_golden_boreal_taiga")),
+            ("oak_sparse", ("cold_deciduous_forest",)),
+            ("oak_dense", ("deciduous_forest", "fen", "old_growth_forest")),
+            ("pine_on_dirt", ("frozen_pine_taiga", "mountains", "pine_slopes", "pine_taiga")),
+            ("pine_on_snow", ("icy_heights",)),
+            ("maple", ("maple_forest", "temperate_grove", "windswept_maple_forest")),
+            ("silver_birch", ("silver_birch_forest",)), ("pine", ("towering_cliffs",)),
+        ) for biome in biomes
+    }
     for name, minimum, maximum, log in (
         ("larch", 7, 12, "regions_unexplored:larch_log"),
         ("maple", 6, 8, "regions_unexplored:maple_log"),
@@ -109,16 +135,20 @@ def test_regions_unexplored_fallen_tree_variants_and_source() -> None:
     source = next(s for s in retained_sources(Path.cwd())
                   if s.name == "regions-unexplored-0.6.1-neoforge-21.1.jar")
     assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
-    base = Path("evidence/item-8/sources/regions-unexplored-generation-delegates")
-    raw = (base / "identities.json").read_bytes()
-    assert hashlib.sha256(raw).hexdigest() == (
-        "b779daaf84f5a04384246079c6ada082941188e6319cb4c8835bfe6dad089770"
-    )
     with ZipFile(source.path) as archive:
-        for row in cast("list[dict[str, str]]", json.loads(raw)):
-            assert row["archive"] == source.name
-            assert row["archive_sha256"] == source.sha256
-            assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
-            assert hashlib.sha256((base / row["disassembly"]).read_bytes()).hexdigest() == (
-                row["disassembly_sha256"]
-            )
+        for directory, digest in (
+            ("regions-unexplored-generation-delegates",
+             "b779daaf84f5a04384246079c6ada082941188e6319cb4c8835bfe6dad089770"),
+            ("regions-unexplored-log-decorator",
+             "7656c29c7f0b77b5827cbb01b082d2509f800a7cac87e342ec47bc6785bdc77d"),
+        ):
+            base = Path("evidence/item-8/sources") / directory
+            raw = (base / "identities.json").read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == digest
+            for row in cast("list[dict[str, str]]", json.loads(raw)):
+                assert row["archive"] == source.name
+                assert row["archive_sha256"] == source.sha256
+                assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+                assert hashlib.sha256((base / row["disassembly"]).read_bytes()).hexdigest() == (
+                    row["disassembly_sha256"]
+                )

@@ -3721,3 +3721,30 @@ The source identities are bound by the passing candidate checks above. This
 resolves contribution roles only. Frozen effective settings and observed
 placement remain distinct evidence. The provider is still OPEN pending the
 remaining feature, entry and payload dispositions.
+
+### Regions Unexplored fallen-tree placement and decoration links
+
+The eight packaged placed-feature definitions map to the six configurations:
+larch, maple and silver_birch map directly; oak_dense and oak_sparse share oak;
+pine and pine_on_dirt share pine; pine_on_snow uses snow_pine. Nineteen packaged
+biomes reference these placements. The exact mapping is now bound by the existing
+candidate test. This proves packaged consumer links, not observed placements or
+effective biome frequency in every captured dimension.
+
+AttachedToLogsDecorator is retained in source 1c53b0f, extracted with 947a0fa.
+Its manifest SHA-256 is
+7656c29c7f0b77b5827cbb01b082d2509f800a7cac87e342ec47bc6785bdc77d.
+Independent r1 matches. The decorator shuffles the supplied log positions,
+checks all configured directions or a random one, applies its probability test,
+and places the supplied block state only in air with non-air below. The six
+configurations supply moss carpet, mushrooms or snow. These decorate the
+existing candidate rather than introducing another structural layout.
+The previously inspected Lithostitched random-block provider supplies the
+configured mushroom states and does not require another capture.
+
+Both candidate cases and scoped Ruff/Basedpyright pass using the commands above.
+The test also binds the decorator's original class and preserved disassembly.
+Fallen-tree implementation, variants, packaged placement links and decorator
+roles are resolved for this scope pass. Preserve the stump-only limitation.
+Remaining provider work is other features, common entry roles and remaining
+payload/overlay/JSON5 coverage. Census remains 77 resolved and 59 open.
