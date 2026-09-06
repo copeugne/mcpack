@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Terralith rubble is reconciled as one archaeological ruin family with six roots
+and their size alternatives. Existing template loot bindings support the design
+and terrain distinction. The affected case and scoped checks pass. Canonical-note
+backlog: 100 (IDAS 59, AdoraBuild 31, Terralith 10). Inventory refresh follows.
+
 Inventory matches d2213481 and reproduces exactly. Canonical-note backlog: 101
 (IDAS 59, AdoraBuild 31, Terralith 11). Coverage groups: 405. Next: remaining
 Terralith building/rubble comparisons. Attributes and nonregistry work remain.
