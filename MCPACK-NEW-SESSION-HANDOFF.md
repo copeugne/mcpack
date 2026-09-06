@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+The eight remaining non-house AdoraBuild records contain sixteen standalone
+templates with no missing trace components. Existing content shows different
+loot, inhabitants and building envelopes; compare their complete layouts with
+the existing renderer before deciding variants. This fixed selection adds no
+measurement system. Backlog remains 68 until decisions are verified.
+
 Inventory matches aad4e79f and reproduces byte-for-byte independently. All 887
 roots remain covered once in 411 working groups. Canonical-note backlog: 68
 (IDAS 59, AdoraBuild 9). Next: the remaining AdoraBuild buildings listed below.
