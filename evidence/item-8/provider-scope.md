@@ -5366,3 +5366,35 @@ is not required absent a specific unresolved site boundary. The three embedded
 libraries and Ponder consumers also remain. No new family candidate was added.
 Four focused cases pass (0.51s); scoped checks pass after fixing Ruff's regex
 flag spelling. Census remains 89 resolved, 47 open. No capture or runtime is live.
+
+### Create remaining 32 annotated entry roles resolved
+
+Reuse full source 05d472d and its exact source binding in the four passing
+Create focused cases recorded above. This increment interprets existing evidence;
+no new capture, runtime, measurement system or test framework was needed.
+The following groups account for all 32 entries left after the eighteen client
+exclusions and four registry/configuration dispositions.
+
+| Entries | Contribution role |
+| --- | --- |
+| SuperGlueHandler, SuperGlueItem | Player block placement and glue-item interaction, creating glue attachments/effects around placed blocks. |
+| CouplingHandler, MinecartCouplingItem, MinecartContraptionItem | Existing minecart occupancy/coupling and wrench-driven pickup of a supplied contraption into an item. |
+| CardboardArmorHandler, DivingBootsItem, DivingHelmetItem, NetheriteDivingHandler, ExtendoGripItem, CardboardSwordItem | Equipped-item effects on hitbox, targeting, breathing, movement, fire protection, reach, durability, sound, knockback and attack handling. |
+| HauntedBellPulser | A player holding the bell triggers a client pulse packet. No site writer. |
+| ClipboardValueSettingsHandler, ZapperInteractionHandler, WrenchEventHandler | Player-triggered settings copy/paste, block selection and wrench callbacks on existing blocks. |
+| SymmetryHandler | Player place/break events with the symmetry wand invoke matching construction/removal; other hooks render its mirror and particles. Player construction is not a naturally generated family. |
+| FluidBottleItemHook, FluidReactions | Bottle interaction and block-state outcomes of colliding pipe fluids/spills. Existing pipe operation, not independent site generation. |
+| ValveHandleBlock, CrushingWheelBlockEntity, DeployerFakePlayer, ManualApplicationRecipe | Player valve interaction, crushed-mob drop motion, deployer drop/XP/retaliation rules, and right-click application recipes replacing the clicked block. |
+| FunnelItem, ItemHatchHandler, StockTickerInteractionHandler, BlazeBurnerHandler, ClickToLinkBlockItem, LinkHandler, ScheduleItemEntityInteraction | Player item/block/entity interactions, logistics manager UI, burner egg/splash impact, link frequencies and train conductor schedules. |
+| ItemUseOverrides, ValueSettingsInputHandler, EdgeInteractionHandler | Player-triggered block use, settings and connection callbacks on existing block entities. |
+
+These entry triggers and bodies are bounded to existing entities/items/blocks or
+explicit player construction. No independent authored-site candidate emerged.
+Do not expand this membership check into generic machine simulation, permission,
+recipe, combat or network correctness audits. The exact source remains available
+for later required family attributes where applicable.
+
+All top-level annotated-entry and declared common-mixin roles are now accounted
+for. Create remains OPEN for embedded Flywheel/Ponder/Registrate roles, Ponder
+content consumers and final complete payload reconciliation. The 32-entry batch
+must not be restarted. Census remains 89 resolved and 47 open.
