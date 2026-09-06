@@ -1842,6 +1842,7 @@ CLASSES: tuple[str, ...] = (
     "vectorwing/farmersdelight/common/mixin/datafix/V1460Mixin.class",
     "vectorwing/farmersdelight/common/mixin/datafix/V3818_3Mixin.class",
     "vectorwing/farmersdelight/common/network/ModNetworking.class",
+    "vectorwing/farmersdelight/common/network/ModNetworking$ServerPayloadHandler.class",
     "vectorwing/farmersdelight/common/registry/ModBiomeFeatures.class",
     "vectorwing/farmersdelight/common/registry/ModBiomeModifiers.class",
     "vectorwing/farmersdelight/common/registry/ModPlacementModifiers.class",
