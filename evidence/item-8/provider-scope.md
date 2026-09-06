@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 75 of 136. The exact queue below has 61 open rows.
+Supported provider dispositions: 76 of 136. The exact queue below has 60 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -574,7 +574,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `[Neoforge]ctov-3.6.3.jar` | `ctov-provider` (82ac234), test_ctov_provider_scope.py, selection/bundle checks, existing CTOV regressions/graphs | RESOLVED: 78 existing roots, village/outpost components, compatibility injections and processors. Disconnected and missing components accounted for below. |
 | `accessories-neoforge-1.1.0-beta.53+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `adorabuild-structures-2.11.0-neoforge-1.21.3.jar` | `adorabuild-provider`, existing runtime/root and pool graph evidence | RESOLVED: 106 existing roots; all 110 pools and 121 templates connected; one preserved missing pool reference. See AdoraBuild provider disposition below. |
-| `aether-1.21.1-1.5.10-neoforge.jar` | `aether-bronze`, `aether-custom-entry`, `aether-piece-binding`, `aether-placement`, `aether-trap-bindings`, `aether-trapped-block` | Reconcile Bronze, Silver, Gold and terrain generation entry coverage; do not reopen Bronze helper internals. |
+| `aether-1.21.1-1.5.10-neoforge.jar` | Existing Aether source captures, test_aether_provider_scope.py and focused candidate/component checks | RESOLVED: Three dungeon candidates, cloud terrain, conditional holiday-tree boundary, inactive portal components, common hooks and selected-library roles accounted for below. Canonical grouping and attributes remain open. |
 | `aethersdelight-0.1.4.2-1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `alternate_current-mc1.21-1.9.0.jar` | `alternate-current-provider` (4b722aa), test_small_utility_provider_scope.py | RESOLVED: Existing redstone-wire updates, configuration and profiling; no independent family. See redstone, configuration and loot provider dispositions below. |
 | `amendments-1.21-2.0.15-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -3337,3 +3337,61 @@ matching r1 output in their READMEs. This closes the reload-handler and selected
 library role questions using the existing source path, without a new validator
 or runtime sample. Aether's remaining common-hook reconciliation and final
 whole-provider check are still required. Census remains 75 resolved and 61 open.
+
+
+### Aether provider scope resolved
+
+The frozen archive's entry, declared common mixins and complete packaged payload
+are reconciled with the existing candidate/component evidence. Provider coverage
+is RESOLVED. This is not Item 8 completion or a final canonical-family count.
+
+The common hooks modify existing entities, equipment, combat, riding, time,
+dimension travel and player attachments. AbstractArrow handles arrow effects and
+synchronization; ArmorStand and Mob handle equipment; DimensionType handles time;
+Entity and LivingEntity handle travel/damage; Player handles riding/equipment and
+appearance; ServerPlayer removes its attached Aerbunny on disconnect. EventHooks
+modifies accessories on an existing mob's spawn. ModelBuilder handles model
+textures, and accessor mixins expose existing fields/methods. These are not
+independent structure starts. DimensionHooks initializes level data and manages
+time or portal interaction/travel; its callbacks do not select another authored
+world-generation design. The two reload cache handlers and library roles have
+separate resolved dispositions immediately above. Do not audit unrelated combat
+or attachment internals to repeat this provider census.
+
+The complete data partition adds no unassigned structure resources beyond the
+previously recorded roots, templates and feature boundary. Remaining data is
+recipes, advancements, tags, loot, damage types, songs, item fuel/composting maps,
+Moa types, trims and the Aether dimension/terrain definitions. The three developer
+functions only teleport, set spectator/night vision or replace dirt/stone with
+air. Their exact contents are bound by the provider test; they do not place sites.
+
+Optional classic, tips, CTM, colorblind and tooltip packs provide presentation
+resources; Accessories packs provide equipment slots/tags and temporary freezing
+provides recipes. The ruined-portal pack is accounted for above. The six
+Immersive Portals definitions convert conventional portals or respond to water
+bucket use between the Overworld and Aether. setupImmersivePortalsPack requires
+immersive_portals_core, absent from the hash-bound runtime mod list. These are
+inactive compatibility definitions, not additional active authored families.
+
+The inventory therefore retains Bronze, Silver and Gold dungeon candidates,
+large-aercloud terrain, and the explicitly named conditional holiday-tree
+boundary. Portal templates remain components of inactive optional roots. Preserve
+all earlier component/eligibility limitations; provider closure does not prove
+observed placement, dimensions, rewards or visual discoverability.
+
+The focused provider check reuses the established provider-test pattern. It
+binds the original archive, all fifteen existing source manifests and their
+class/disassembly identities, the complete payload partition, annotated entry,
+common mixins and exact function contents. Together with the candidate, nested
+selection and Bronze checks it is the bounded proof for this provider. Initial
+string-format lint findings were corrected without changing expected commands.
+
+```sh
+uv run pytest -q tests/item8/test_aether_bronze_components.py tests/item8/test_aether_provider_scope.py tests/item8/test_aether_cloud_source.py
+uv run ruff check tests/item8/test_aether_provider_scope.py tests/item8/test_aether_cloud_source.py
+uv run basedpyright tests/item8/test_aether_provider_scope.py tests/item8/test_aether_cloud_source.py
+```
+
+Scoped checks pass. Census is 76 resolved providers and 60 open. Continue the
+remaining provider queue before canonical reconciliation and the eleven family
+attributes. No final Item 8 gate, review or merge is claimed.
