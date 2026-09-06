@@ -1,0 +1,278 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-fixes-worldgen-threading-issues-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinNetherFortressGeneratorPieceData.class
+  Last modified Jan 1, 1980; size 3178 bytes
+  SHA-256 checksum 75718590cd735101e304561d79e81e4b4989a744739460ec9365fa04834383a8
+  Compiled from "MixinNetherFortressGeneratorPieceData.java"
+public class com.ishland.c2me.fixes.worldgen.threading_issues.mixin.threading.MixinNetherFortressGeneratorPieceData implements com.ishland.c2me.fixes.worldgen.threading_issues.common.XPieceDataExtension
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinNetherFortressGeneratorPieceData
+  super_class: #4                         // java/lang/Object
+  interfaces: 1, fields: 1, methods: 5, attributes: 4
+Constant pool:
+    #1 = Utf8               com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinNetherFortressGeneratorPieceData
+    #2 = Class              #1            // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinNetherFortressGeneratorPieceData
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               com/ishland/c2me/fixes/worldgen/threading_issues/common/XPieceDataExtension
+    #6 = Class              #5            // com/ishland/c2me/fixes/worldgen/threading_issues/common/XPieceDataExtension
+    #7 = Utf8               MixinNetherFortressGeneratorPieceData.java
+    #8 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #9 = Utf8               value
+   #10 = Utf8               Lnet/minecraft/world/level/levelgen/structure/structures/NetherFortressPieces$PieceWeight;
+   #11 = Utf8               net/minecraft/world/level/levelgen/structure/structures/NetherFortressPieces$PieceWeight
+   #12 = Class              #11           // net/minecraft/world/level/levelgen/structure/structures/NetherFortressPieces$PieceWeight
+   #13 = Utf8               net/minecraft/world/level/levelgen/structure/structures/NetherFortressPieces
+   #14 = Class              #13           // net/minecraft/world/level/levelgen/structure/structures/NetherFortressPieces
+   #15 = Utf8               PieceWeight
+   #16 = Utf8               java/lang/invoke/MethodHandles$Lookup
+   #17 = Class              #16           // java/lang/invoke/MethodHandles$Lookup
+   #18 = Utf8               java/lang/invoke/MethodHandles
+   #19 = Class              #18           // java/lang/invoke/MethodHandles
+   #20 = Utf8               Lookup
+   #21 = Utf8               generatedCountThreadLocal
+   #22 = Utf8               Ljava/lang/ThreadLocal;
+   #23 = Utf8               Ljava/lang/ThreadLocal<Ljava/lang/Integer;>;
+   #24 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+   #25 = Utf8               <init>
+   #26 = Utf8               ()V
+   #27 = NameAndType        #25:#26       // "<init>":()V
+   #28 = Methodref          #4.#27        // java/lang/Object."<init>":()V
+   #29 = Utf8               ()Ljava/lang/Object;
+   #30 = MethodType         #29           //  ()Ljava/lang/Object;
+   #31 = Utf8               lambda$new$0
+   #32 = Utf8               ()Ljava/lang/Integer;
+   #33 = NameAndType        #31:#32       // lambda$new$0:()Ljava/lang/Integer;
+   #34 = Methodref          #2.#33        // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinNetherFortressGeneratorPieceData.lambda$new$0:()Ljava/lang/Integer;
+   #35 = MethodHandle       6:#34         // REF_invokeStatic com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinNetherFortressGeneratorPieceData.lambda$new$0:()Ljava/lang/Integer;
+   #36 = MethodType         #32           //  ()Ljava/lang/Integer;
+   #37 = Utf8               java/lang/invoke/LambdaMetafactory
+   #38 = Class              #37           // java/lang/invoke/LambdaMetafactory
+   #39 = Utf8               metafactory
+   #40 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #41 = NameAndType        #39:#40       // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #42 = Methodref          #38.#41       // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #43 = MethodHandle       6:#42         // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #44 = Utf8               get
+   #45 = Utf8               ()Ljava/util/function/Supplier;
+   #46 = NameAndType        #44:#45       // get:()Ljava/util/function/Supplier;
+   #47 = InvokeDynamic      #0:#46        // #0:get:()Ljava/util/function/Supplier;
+   #48 = Utf8               java/lang/ThreadLocal
+   #49 = Class              #48           // java/lang/ThreadLocal
+   #50 = Utf8               withInitial
+   #51 = Utf8               (Ljava/util/function/Supplier;)Ljava/lang/ThreadLocal;
+   #52 = NameAndType        #50:#51       // withInitial:(Ljava/util/function/Supplier;)Ljava/lang/ThreadLocal;
+   #53 = Methodref          #49.#52       // java/lang/ThreadLocal.withInitial:(Ljava/util/function/Supplier;)Ljava/lang/ThreadLocal;
+   #54 = NameAndType        #21:#22       // generatedCountThreadLocal:Ljava/lang/ThreadLocal;
+   #55 = Fieldref           #2.#54        // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinNetherFortressGeneratorPieceData.generatedCountThreadLocal:Ljava/lang/ThreadLocal;
+   #56 = Utf8               this
+   #57 = Utf8               Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinNetherFortressGeneratorPieceData;
+   #58 = Utf8               redirectGetGeneratedCount
+   #59 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/structures/NetherFortressPieces$PieceWeight;)I
+   #60 = Utf8               pieceData
+   #61 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+   #62 = Utf8               method
+   #63 = Utf8               *
+   #64 = Utf8               at
+   #65 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #66 = Utf8               FIELD
+   #67 = Utf8               target
+   #68 = Utf8               Lnet/minecraft/structure/NetherFortressGenerator$PieceData;generatedCount:I
+   #69 = Utf8               opcode
+   #70 = Integer            180
+   #71 = Utf8               Lorg/spongepowered/asm/mixin/Dynamic;
+   #72 = NameAndType        #44:#29       // get:()Ljava/lang/Object;
+   #73 = Methodref          #49.#72       // java/lang/ThreadLocal.get:()Ljava/lang/Object;
+   #74 = Utf8               java/lang/Integer
+   #75 = Class              #74           // java/lang/Integer
+   #76 = Utf8               intValue
+   #77 = Utf8               ()I
+   #78 = NameAndType        #76:#77       // intValue:()I
+   #79 = Methodref          #75.#78       // java/lang/Integer.intValue:()I
+   #80 = Utf8               redirectSetGeneratedCount
+   #81 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/structures/NetherFortressPieces$PieceWeight;I)V
+   #82 = Integer            181
+   #83 = Utf8               require
+   #84 = Integer            0
+   #85 = Utf8               expect
+   #86 = Utf8               remove
+   #87 = NameAndType        #86:#26       // remove:()V
+   #88 = Methodref          #49.#87       // java/lang/ThreadLocal.remove:()V
+   #89 = Utf8               valueOf
+   #90 = Utf8               (I)Ljava/lang/Integer;
+   #91 = NameAndType        #89:#90       // valueOf:(I)Ljava/lang/Integer;
+   #92 = Methodref          #75.#91       // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+   #93 = Utf8               set
+   #94 = Utf8               (Ljava/lang/Object;)V
+   #95 = NameAndType        #93:#94       // set:(Ljava/lang/Object;)V
+   #96 = Methodref          #49.#95       // java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+   #97 = Utf8               I
+   #98 = Utf8               c2me$getGeneratedCountThreadLocal
+   #99 = Utf8               ()Ljava/lang/ThreadLocal;
+  #100 = Utf8               ()Ljava/lang/ThreadLocal<Ljava/lang/Integer;>;
+  #101 = Utf8               Signature
+  #102 = Utf8               RuntimeVisibleAnnotations
+  #103 = Utf8               Code
+  #104 = Utf8               LineNumberTable
+  #105 = Utf8               LocalVariableTable
+  #106 = Utf8               RuntimeInvisibleAnnotations
+  #107 = Utf8               MethodParameters
+  #108 = Utf8               StackMapTable
+  #109 = Utf8               InnerClasses
+  #110 = Utf8               SourceFile
+  #111 = Utf8               BootstrapMethods
+{
+  private final java.lang.ThreadLocal<java.lang.Integer> generatedCountThreadLocal;
+    descriptor: Ljava/lang/ThreadLocal;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #23                          // Ljava/lang/ThreadLocal<Ljava/lang/Integer;>;
+    RuntimeVisibleAnnotations:
+      0: #24()
+        org.spongepowered.asm.mixin.Unique
+
+  public com.ishland.c2me.fixes.worldgen.threading_issues.mixin.threading.MixinNetherFortressGeneratorPieceData();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #28                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: invokedynamic #47,  0             // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+        10: invokestatic  #53                 // Method java/lang/ThreadLocal.withInitial:(Ljava/util/function/Supplier;)Ljava/lang/ThreadLocal;
+        13: putfield      #55                 // Field generatedCountThreadLocal:Ljava/lang/ThreadLocal;
+        16: return
+      LineNumberTable:
+        line 13: 0
+        line 15: 4
+        line 16: 10
+        line 15: 16
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      17     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinNetherFortressGeneratorPieceData;
+
+  private int redirectGetGeneratedCount(net.minecraft.world.level.levelgen.structure.structures.NetherFortressPieces$PieceWeight);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/structures/NetherFortressPieces$PieceWeight;)I
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #55                 // Field generatedCountThreadLocal:Ljava/lang/ThreadLocal;
+         4: invokevirtual #73                 // Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
+         7: checkcast     #75                 // class java/lang/Integer
+        10: invokevirtual #79                 // Method java/lang/Integer.intValue:()I
+        13: ireturn
+      LineNumberTable:
+        line 21: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinNetherFortressGeneratorPieceData;
+            0      14     1 pieceData   Lnet/minecraft/world/level/levelgen/structure/structures/NetherFortressPieces$PieceWeight;
+    RuntimeVisibleAnnotations:
+      0: #61(#62=[s#63],#64=@#65(#9=s#66,#67=s#68,#69=I#70))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["*"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lnet/minecraft/structure/NetherFortressGenerator$PieceData;generatedCount:I"
+            opcode=180
+          )
+        )
+    RuntimeInvisibleAnnotations:
+      0: #71()
+        org.spongepowered.asm.mixin.Dynamic
+    MethodParameters:
+      Name                           Flags
+      pieceData
+
+  private void redirectSetGeneratedCount(net.minecraft.world.level.levelgen.structure.structures.NetherFortressPieces$PieceWeight, int);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/structures/NetherFortressPieces$PieceWeight;I)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=3, args_size=3
+         0: iload_2
+         1: ifne          14
+         4: aload_0
+         5: getfield      #55                 // Field generatedCountThreadLocal:Ljava/lang/ThreadLocal;
+         8: invokevirtual #88                 // Method java/lang/ThreadLocal.remove:()V
+        11: goto          25
+        14: aload_0
+        15: getfield      #55                 // Field generatedCountThreadLocal:Ljava/lang/ThreadLocal;
+        18: iload_2
+        19: invokestatic  #92                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        22: invokevirtual #96                 // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+        25: return
+      StackMapTable: number_of_entries = 2
+        frame_type = 14 /* same */
+        frame_type = 10 /* same */
+      LineNumberTable:
+        line 28: 0
+        line 29: 4
+        line 31: 14
+        line 33: 25
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      26     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinNetherFortressGeneratorPieceData;
+            0      26     1 pieceData   Lnet/minecraft/world/level/levelgen/structure/structures/NetherFortressPieces$PieceWeight;
+            0      26     2 value   I
+    RuntimeVisibleAnnotations:
+      0: #61(#62=[s#63],#64=@#65(#9=s#66,#67=s#68,#69=I#82),#83=I#84,#85=I#84)
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["*"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lnet/minecraft/structure/NetherFortressGenerator$PieceData;generatedCount:I"
+            opcode=181
+          )
+          require=0
+          expect=0
+        )
+    RuntimeInvisibleAnnotations:
+      0: #71()
+        org.spongepowered.asm.mixin.Dynamic
+    MethodParameters:
+      Name                           Flags
+      pieceData
+      value
+
+  public java.lang.ThreadLocal<java.lang.Integer> c2me$getGeneratedCountThreadLocal();
+    descriptor: ()Ljava/lang/ThreadLocal;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #55                 // Field generatedCountThreadLocal:Ljava/lang/ThreadLocal;
+         4: areturn
+      LineNumberTable:
+        line 37: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinNetherFortressGeneratorPieceData;
+    Signature: #100                         // ()Ljava/lang/ThreadLocal<Ljava/lang/Integer;>;
+
+  private static java.lang.Integer lambda$new$0();
+    descriptor: ()Ljava/lang/Integer;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: iconst_0
+         1: invokestatic  #92                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+         4: areturn
+      LineNumberTable:
+        line 16: 0
+}
+InnerClasses:
+  public static #15= #12 of #14;          // PieceWeight=class net/minecraft/world/level/levelgen/structure/structures/NetherFortressPieces$PieceWeight of class net/minecraft/world/level/levelgen/structure/structures/NetherFortressPieces
+  public static final #20= #17 of #19;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+SourceFile: "MixinNetherFortressGeneratorPieceData.java"
+RuntimeInvisibleAnnotations:
+  0: #8(#9=[c#10])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/levelgen/structure/structures/NetherFortressPieces$PieceWeight;]
+    )
+BootstrapMethods:
+  0: #43 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #30 ()Ljava/lang/Object;
+      #35 REF_invokeStatic com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinNetherFortressGeneratorPieceData.lambda$new$0:()Ljava/lang/Integer;
+      #36 ()Ljava/lang/Integer;

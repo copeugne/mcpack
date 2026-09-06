@@ -1,0 +1,315 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-fixes-worldgen-threading-issues-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading_detections/readonly_protection/MixinChunkRegion.class
+  Last modified Jan 1, 1980; size 3761 bytes
+  SHA-256 checksum ea11069323d81635aa49f34e77d43bc9b0406eb01d44c8162a8d1c721778df1c
+  Compiled from "MixinChunkRegion.java"
+public abstract class com.ishland.c2me.fixes.worldgen.threading_issues.mixin.threading_detections.readonly_protection.MixinChunkRegion
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading_detections/readonly_protection/MixinChunkRegion
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 3, methods: 4, attributes: 2
+Constant pool:
+   #1 = Utf8               com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading_detections/readonly_protection/MixinChunkRegion
+   #2 = Class              #1             // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading_detections/readonly_protection/MixinChunkRegion
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               MixinChunkRegion.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/server/level/WorldGenRegion;
+   #9 = Utf8               LOGGER
+  #10 = Utf8               Lorg/slf4j/Logger;
+  #11 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #12 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #13 = Utf8               generatingStep
+  #14 = Utf8               Lnet/minecraft/world/level/chunk/status/ChunkStep;
+  #15 = Utf8               center
+  #16 = Utf8               Lnet/minecraft/world/level/chunk/ChunkAccess;
+  #17 = Utf8               <init>
+  #18 = Utf8               ()V
+  #19 = NameAndType        #17:#18        // "<init>":()V
+  #20 = Methodref          #4.#19         // java/lang/Object."<init>":()V
+  #21 = Utf8               this
+  #22 = Utf8               Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading_detections/readonly_protection/MixinChunkRegion;
+  #23 = Utf8               ensureCanWrite
+  #24 = Utf8               (Lnet/minecraft/core/BlockPos;)Z
+  #25 = Utf8               wrapBlockScheduledTick
+  #26 = Utf8               (Lnet/minecraft/core/BlockPos;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Lnet/minecraft/world/ticks/TickContainerAccess;
+  #27 = Utf8               (Lnet/minecraft/core/BlockPos;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/ticks/TickContainerAccess<Lnet/minecraft/core/BlockPos;>;>;)Lnet/minecraft/world/ticks/TickContainerAccess<Lnet/minecraft/core/BlockPos;>;
+  #28 = Utf8               pos
+  #29 = Utf8               original
+  #30 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapmethod/WrapMethod;
+  #31 = Utf8               method
+  #32 = Utf8               method_14340
+  #33 = NameAndType        #23:#24        // ensureCanWrite:(Lnet/minecraft/core/BlockPos;)Z
+  #34 = Methodref          #2.#33         // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading_detections/readonly_protection/MixinChunkRegion.ensureCanWrite:(Lnet/minecraft/core/BlockPos;)Z
+  #35 = Utf8               com/llamalad7/mixinextras/injector/wrapoperation/Operation
+  #36 = Class              #35            // com/llamalad7/mixinextras/injector/wrapoperation/Operation
+  #37 = Utf8               call
+  #38 = Utf8               ([Ljava/lang/Object;)Ljava/lang/Object;
+  #39 = NameAndType        #37:#38        // call:([Ljava/lang/Object;)Ljava/lang/Object;
+  #40 = InterfaceMethodref #36.#39        // com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+  #41 = Utf8               net/minecraft/world/ticks/TickContainerAccess
+  #42 = Class              #41            // net/minecraft/world/ticks/TickContainerAccess
+  #43 = NameAndType        #9:#10         // LOGGER:Lorg/slf4j/Logger;
+  #44 = Fieldref           #2.#43         // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading_detections/readonly_protection/MixinChunkRegion.LOGGER:Lorg/slf4j/Logger;
+  #45 = Utf8               Detected block scheduled tick access in a far chunk {}, pos: {}, status: {}, currently generating: {}
+  #46 = String             #45            // Detected block scheduled tick access in a far chunk {}, pos: {}, status: {}, currently generating: {}
+  #47 = Utf8               net/minecraft/world/level/ChunkPos
+  #48 = Class              #47            // net/minecraft/world/level/ChunkPos
+  #49 = Utf8               (Lnet/minecraft/core/BlockPos;)V
+  #50 = NameAndType        #17:#49        // "<init>":(Lnet/minecraft/core/BlockPos;)V
+  #51 = Methodref          #48.#50        // net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+  #52 = NameAndType        #13:#14        // generatingStep:Lnet/minecraft/world/level/chunk/status/ChunkStep;
+  #53 = Fieldref           #2.#52         // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading_detections/readonly_protection/MixinChunkRegion.generatingStep:Lnet/minecraft/world/level/chunk/status/ChunkStep;
+  #54 = Utf8               net/minecraft/world/level/chunk/status/ChunkStep
+  #55 = Class              #54            // net/minecraft/world/level/chunk/status/ChunkStep
+  #56 = Utf8               targetStatus
+  #57 = Utf8               ()Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+  #58 = NameAndType        #56:#57        // targetStatus:()Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+  #59 = Methodref          #55.#58        // net/minecraft/world/level/chunk/status/ChunkStep.targetStatus:()Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+  #60 = NameAndType        #15:#16        // center:Lnet/minecraft/world/level/chunk/ChunkAccess;
+  #61 = Fieldref           #2.#60         // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading_detections/readonly_protection/MixinChunkRegion.center:Lnet/minecraft/world/level/chunk/ChunkAccess;
+  #62 = Utf8               net/minecraft/world/level/chunk/ChunkAccess
+  #63 = Class              #62            // net/minecraft/world/level/chunk/ChunkAccess
+  #64 = Utf8               getPos
+  #65 = Utf8               ()Lnet/minecraft/world/level/ChunkPos;
+  #66 = NameAndType        #64:#65        // getPos:()Lnet/minecraft/world/level/ChunkPos;
+  #67 = Methodref          #63.#66        // net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+  #68 = Utf8               org/slf4j/Logger
+  #69 = Class              #68            // org/slf4j/Logger
+  #70 = Utf8               warn
+  #71 = Utf8               (Ljava/lang/String;[Ljava/lang/Object;)V
+  #72 = NameAndType        #70:#71        // warn:(Ljava/lang/String;[Ljava/lang/Object;)V
+  #73 = InterfaceMethodref #69.#72        // org/slf4j/Logger.warn:(Ljava/lang/String;[Ljava/lang/Object;)V
+  #74 = Utf8               net/minecraft/world/ticks/BlackholeTickAccess
+  #75 = Class              #74            // net/minecraft/world/ticks/BlackholeTickAccess
+  #76 = Utf8               emptyContainer
+  #77 = Utf8               ()Lnet/minecraft/world/ticks/TickContainerAccess;
+  #78 = NameAndType        #76:#77        // emptyContainer:()Lnet/minecraft/world/ticks/TickContainerAccess;
+  #79 = Methodref          #75.#78        // net/minecraft/world/ticks/BlackholeTickAccess.emptyContainer:()Lnet/minecraft/world/ticks/TickContainerAccess;
+  #80 = Utf8               Lnet/minecraft/core/BlockPos;
+  #81 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/ticks/TickContainerAccess<Lnet/minecraft/core/BlockPos;>;>;
+  #82 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+  #83 = Utf8               wrapFluidScheduledTick
+  #84 = Utf8               (Lnet/minecraft/core/BlockPos;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/ticks/TickContainerAccess<Lnet/minecraft/world/level/material/Fluid;>;>;)Lnet/minecraft/world/ticks/TickContainerAccess<Lnet/minecraft/world/level/material/Fluid;>;
+  #85 = Utf8               method_14337
+  #86 = Utf8               Detected fluid scheduled tick access in a far chunk {}, pos: {}, status: {}, currently generating: {}
+  #87 = String             #86            // Detected fluid scheduled tick access in a far chunk {}, pos: {}, status: {}, currently generating: {}
+  #88 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/ticks/TickContainerAccess<Lnet/minecraft/world/level/material/Fluid;>;>;
+  #89 = Utf8               RuntimeVisibleAnnotations
+  #90 = Utf8               Code
+  #91 = Utf8               LineNumberTable
+  #92 = Utf8               LocalVariableTable
+  #93 = Utf8               StackMapTable
+  #94 = Utf8               LocalVariableTypeTable
+  #95 = Utf8               Signature
+  #96 = Utf8               MethodParameters
+  #97 = Utf8               SourceFile
+  #98 = Utf8               RuntimeInvisibleAnnotations
+{
+  private static org.slf4j.Logger LOGGER;
+    descriptor: Lorg/slf4j/Logger;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.Shadow
+      1: #12()
+        org.spongepowered.asm.mixin.Final
+
+  private net.minecraft.world.level.chunk.status.ChunkStep generatingStep;
+    descriptor: Lnet/minecraft/world/level/chunk/status/ChunkStep;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.Shadow
+      1: #12()
+        org.spongepowered.asm.mixin.Final
+
+  private net.minecraft.world.level.chunk.ChunkAccess center;
+    descriptor: Lnet/minecraft/world/level/chunk/ChunkAccess;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.Shadow
+      1: #12()
+        org.spongepowered.asm.mixin.Final
+
+  public com.ishland.c2me.fixes.worldgen.threading_issues.mixin.threading_detections.readonly_protection.MixinChunkRegion();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #20                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 19: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading_detections/readonly_protection/MixinChunkRegion;
+
+  public abstract boolean ensureCanWrite(net.minecraft.core.BlockPos);
+    descriptor: (Lnet/minecraft/core/BlockPos;)Z
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.Shadow
+
+  private net.minecraft.world.ticks.TickContainerAccess<net.minecraft.core.BlockPos> wrapBlockScheduledTick(net.minecraft.core.BlockPos, com.llamalad7.mixinextras.injector.wrapoperation.Operation<net.minecraft.world.ticks.TickContainerAccess<net.minecraft.core.BlockPos>>);
+    descriptor: (Lnet/minecraft/core/BlockPos;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Lnet/minecraft/world/ticks/TickContainerAccess;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=8, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #34                 // Method ensureCanWrite:(Lnet/minecraft/core/BlockPos;)Z
+         5: ifeq          26
+         8: aload_2
+         9: iconst_1
+        10: anewarray     #4                  // class java/lang/Object
+        13: dup
+        14: iconst_0
+        15: aload_1
+        16: aastore
+        17: invokeinterface #40,  2           // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        22: checkcast     #42                 // class net/minecraft/world/ticks/TickContainerAccess
+        25: areturn
+        26: getstatic     #44                 // Field LOGGER:Lorg/slf4j/Logger;
+        29: ldc           #46                 // String Detected block scheduled tick access in a far chunk {}, pos: {}, status: {}, currently generating: {}
+        31: iconst_4
+        32: anewarray     #4                  // class java/lang/Object
+        35: dup
+        36: iconst_0
+        37: new           #48                 // class net/minecraft/world/level/ChunkPos
+        40: dup
+        41: aload_1
+        42: invokespecial #51                 // Method net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+        45: aastore
+        46: dup
+        47: iconst_1
+        48: aload_1
+        49: aastore
+        50: dup
+        51: iconst_2
+        52: aload_0
+        53: getfield      #53                 // Field generatingStep:Lnet/minecraft/world/level/chunk/status/ChunkStep;
+        56: invokevirtual #59                 // Method net/minecraft/world/level/chunk/status/ChunkStep.targetStatus:()Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+        59: aastore
+        60: dup
+        61: iconst_3
+        62: aload_0
+        63: getfield      #61                 // Field center:Lnet/minecraft/world/level/chunk/ChunkAccess;
+        66: invokevirtual #67                 // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+        69: aastore
+        70: invokeinterface #73,  3           // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;[Ljava/lang/Object;)V
+        75: invokestatic  #79                 // Method net/minecraft/world/ticks/BlackholeTickAccess.emptyContainer:()Lnet/minecraft/world/ticks/TickContainerAccess;
+        78: areturn
+      StackMapTable: number_of_entries = 1
+        frame_type = 26 /* same */
+      LineNumberTable:
+        line 31: 0
+        line 32: 8
+        line 34: 26
+        line 35: 75
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      79     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading_detections/readonly_protection/MixinChunkRegion;
+            0      79     1   pos   Lnet/minecraft/core/BlockPos;
+            0      79     2 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      79     2 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/ticks/TickContainerAccess<Lnet/minecraft/core/BlockPos;>;>;
+    Signature: #27                          // (Lnet/minecraft/core/BlockPos;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/ticks/TickContainerAccess<Lnet/minecraft/core/BlockPos;>;>;)Lnet/minecraft/world/ticks/TickContainerAccess<Lnet/minecraft/core/BlockPos;>;
+    RuntimeVisibleAnnotations:
+      0: #30(#31=[s#32])
+        com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod(
+          method=["method_14340"]
+        )
+    MethodParameters:
+      Name                           Flags
+      pos
+      original
+
+  private net.minecraft.world.ticks.TickContainerAccess<net.minecraft.world.level.material.Fluid> wrapFluidScheduledTick(net.minecraft.core.BlockPos, com.llamalad7.mixinextras.injector.wrapoperation.Operation<net.minecraft.world.ticks.TickContainerAccess<net.minecraft.world.level.material.Fluid>>);
+    descriptor: (Lnet/minecraft/core/BlockPos;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Lnet/minecraft/world/ticks/TickContainerAccess;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=8, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #34                 // Method ensureCanWrite:(Lnet/minecraft/core/BlockPos;)Z
+         5: ifeq          26
+         8: aload_2
+         9: iconst_1
+        10: anewarray     #4                  // class java/lang/Object
+        13: dup
+        14: iconst_0
+        15: aload_1
+        16: aastore
+        17: invokeinterface #40,  2           // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        22: checkcast     #42                 // class net/minecraft/world/ticks/TickContainerAccess
+        25: areturn
+        26: getstatic     #44                 // Field LOGGER:Lorg/slf4j/Logger;
+        29: ldc           #87                 // String Detected fluid scheduled tick access in a far chunk {}, pos: {}, status: {}, currently generating: {}
+        31: iconst_4
+        32: anewarray     #4                  // class java/lang/Object
+        35: dup
+        36: iconst_0
+        37: new           #48                 // class net/minecraft/world/level/ChunkPos
+        40: dup
+        41: aload_1
+        42: invokespecial #51                 // Method net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+        45: aastore
+        46: dup
+        47: iconst_1
+        48: aload_1
+        49: aastore
+        50: dup
+        51: iconst_2
+        52: aload_0
+        53: getfield      #53                 // Field generatingStep:Lnet/minecraft/world/level/chunk/status/ChunkStep;
+        56: invokevirtual #59                 // Method net/minecraft/world/level/chunk/status/ChunkStep.targetStatus:()Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+        59: aastore
+        60: dup
+        61: iconst_3
+        62: aload_0
+        63: getfield      #61                 // Field center:Lnet/minecraft/world/level/chunk/ChunkAccess;
+        66: invokevirtual #67                 // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+        69: aastore
+        70: invokeinterface #73,  3           // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;[Ljava/lang/Object;)V
+        75: invokestatic  #79                 // Method net/minecraft/world/ticks/BlackholeTickAccess.emptyContainer:()Lnet/minecraft/world/ticks/TickContainerAccess;
+        78: areturn
+      StackMapTable: number_of_entries = 1
+        frame_type = 26 /* same */
+      LineNumberTable:
+        line 41: 0
+        line 42: 8
+        line 44: 26
+        line 45: 75
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      79     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading_detections/readonly_protection/MixinChunkRegion;
+            0      79     1   pos   Lnet/minecraft/core/BlockPos;
+            0      79     2 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      79     2 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/ticks/TickContainerAccess<Lnet/minecraft/world/level/material/Fluid;>;>;
+    Signature: #84                          // (Lnet/minecraft/core/BlockPos;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/ticks/TickContainerAccess<Lnet/minecraft/world/level/material/Fluid;>;>;)Lnet/minecraft/world/ticks/TickContainerAccess<Lnet/minecraft/world/level/material/Fluid;>;
+    RuntimeVisibleAnnotations:
+      0: #30(#31=[s#85])
+        com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod(
+          method=["method_14337"]
+        )
+    MethodParameters:
+      Name                           Flags
+      pos
+      original
+}
+SourceFile: "MixinChunkRegion.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/WorldGenRegion;]
+    )

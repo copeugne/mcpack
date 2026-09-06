@@ -1,0 +1,120 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-fixes-worldgen-threading-issues-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructurePlacementData.class
+  Last modified Jan 1, 1980; size 1457 bytes
+  SHA-256 checksum e332df2857594a29765041d7246c53ddd1d34257734c5d0d7f82de0cd2603581
+  Compiled from "MixinStructurePlacementData.java"
+public class com.ishland.c2me.fixes.worldgen.threading_issues.mixin.threading.MixinStructurePlacementData
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructurePlacementData
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 2, attributes: 2
+Constant pool:
+   #1 = Utf8               com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructurePlacementData
+   #2 = Class              #1             // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructurePlacementData
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               MixinStructurePlacementData.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+   #9 = Utf8               processors
+  #10 = Utf8               Ljava/util/List;
+  #11 = Utf8               Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor;>;
+  #12 = Utf8               Lorg/spongepowered/asm/mixin/Mutable;
+  #13 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #14 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #15 = Utf8               <init>
+  #16 = Utf8               ()V
+  #17 = NameAndType        #15:#16        // "<init>":()V
+  #18 = Methodref          #4.#17         // java/lang/Object."<init>":()V
+  #19 = Utf8               this
+  #20 = Utf8               Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructurePlacementData;
+  #21 = Utf8               onInit
+  #22 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #23 = Utf8               ci
+  #24 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #25 = Utf8               method
+  #26 = Utf8               at
+  #27 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #28 = Utf8               RETURN
+  #29 = NameAndType        #9:#10         // processors:Ljava/util/List;
+  #30 = Fieldref           #2.#29         // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructurePlacementData.processors:Ljava/util/List;
+  #31 = Utf8               java/util/Collections
+  #32 = Class              #31            // java/util/Collections
+  #33 = Utf8               synchronizedList
+  #34 = Utf8               (Ljava/util/List;)Ljava/util/List;
+  #35 = NameAndType        #33:#34        // synchronizedList:(Ljava/util/List;)Ljava/util/List;
+  #36 = Methodref          #32.#35        // java/util/Collections.synchronizedList:(Ljava/util/List;)Ljava/util/List;
+  #37 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #38 = Utf8               Signature
+  #39 = Utf8               RuntimeVisibleAnnotations
+  #40 = Utf8               Code
+  #41 = Utf8               LineNumberTable
+  #42 = Utf8               LocalVariableTable
+  #43 = Utf8               MethodParameters
+  #44 = Utf8               SourceFile
+  #45 = Utf8               RuntimeInvisibleAnnotations
+{
+  private java.util.List<net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor> processors;
+    descriptor: Ljava/util/List;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #11                          // Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor;>;
+    RuntimeVisibleAnnotations:
+      0: #12()
+        org.spongepowered.asm.mixin.Mutable
+      1: #13()
+        org.spongepowered.asm.mixin.Shadow
+      2: #14()
+        org.spongepowered.asm.mixin.Final
+
+  public com.ishland.c2me.fixes.worldgen.threading_issues.mixin.threading.MixinStructurePlacementData();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #18                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 17: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructurePlacementData;
+
+  private void onInit(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_0
+         2: getfield      #30                 // Field processors:Ljava/util/List;
+         5: invokestatic  #36                 // Method java/util/Collections.synchronizedList:(Ljava/util/List;)Ljava/util/List;
+         8: putfield      #30                 // Field processors:Ljava/util/List;
+        11: return
+      LineNumberTable:
+        line 24: 0
+        line 25: 11
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructurePlacementData;
+            0      12     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #24(#25=[s#15],#26=[@#27(#7=s#28)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<init>"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      ci
+}
+SourceFile: "MixinStructurePlacementData.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;]
+    )
