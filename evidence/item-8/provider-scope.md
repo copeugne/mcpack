@@ -9638,3 +9638,31 @@ uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
 uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
 uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
 ```
+# AdoraBuild palace and sand design reconciliation (2026-09-07)
+
+Decisions at fa28c80a resolve seven records using all sixteen comparison templates
+preserved at ee31d68f, with packaged contents and full placement definitions.
+Separate palace, hall and pavilion layouts and the trapped red sandstone shrine
+from the roofed hall. Keep buried castle and End temple design variants with their
+content differences. Ocean temples remain unresolved because water obscures their
+architecture in the existing view; houses still require all 45 template comparisons.
+
+The affected AdoraBuild source-binding case and scoped Ruff/Basedpyright checks
+pass. All original root IDs and complete variants are preserved. The derived
+inventory changes only the seven records, three new designs and decision hash.
+Two fresh runs match byte-for-byte. Coverage: 887 roots once, 414 working groups.
+Canonical-note backlog: 61 (IDAS 59, AdoraBuild 2). Attributes and nonregistry
+reconciliation remain open, along with final validation, review and main delivery.
+
+Inventory SHA-256:
+d84271bae0af5abacfe048e3a64ace84ea39817335f9494c53ae0ccd566159a6.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-monuments-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-monuments-r2.json
+cmp evidence/raw/item8/inventory-adora-monuments-r1.json evidence/raw/item8/inventory-adora-monuments-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-monuments-r2.json
+```

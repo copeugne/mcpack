@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches fa28c80a and independently reproduces exactly. All 887 roots
+remain assigned once in 414 working groups. Canonical-note backlog: 61 (IDAS 59,
+AdoraBuild ocean_temple and house). Next: resolve ocean layouts obscured by water,
+then all 45 house templates. Required attributes, nonregistry and delivery remain.
+
 Seven AdoraBuild records are reconciled using ee31d68f views and packaged content.
 Palace, hall and pavilion are separated, as are red sandstone hall and trapped
 shrine. Buried castle and End temple variants retain their full differences.
