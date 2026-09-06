@@ -1,0 +1,89 @@
+Compiled from "CristelLibNeoForgeClient.java"
+public class de.cristelknight.cristellib.neoforge.client.CristelLibNeoForgeClient {
+  public de.cristelknight.cristellib.neoforge.client.CristelLibNeoForgeClient();
+    Code:
+       0: aload_0
+       1: invokespecial #20                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void registerMainConfigScreen();
+    Code:
+       0: invokestatic  #29                 // Method net/neoforged/fml/ModLoadingContext.get:()Lnet/neoforged/fml/ModLoadingContext;
+       3: ldc           #31                 // class net/neoforged/neoforge/client/gui/IConfigScreenFactory
+       5: invokedynamic #49,  0             // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+      10: invokevirtual #53                 // Method net/neoforged/fml/ModLoadingContext.registerExtensionPoint:(Ljava/lang/Class;Ljava/util/function/Supplier;)V
+      13: return
+
+  public static void addOtherConfigScreens();
+    Code:
+       0: invokestatic  #60                 // Method de/cristelknight/cristellib/config/client/ScreenBuilder.allModsWithScreen:()Ljava/util/Set;
+       3: invokeinterface #66,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       8: astore_0
+       9: aload_0
+      10: invokeinterface #72,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      15: ifeq          85
+      18: aload_0
+      19: invokeinterface #75,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      24: checkcast     #77                 // class java/lang/String
+      27: astore_1
+      28: invokestatic  #82                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      31: aload_1
+      32: invokevirtual #86                 // Method net/neoforged/fml/ModList.getModContainerById:(Ljava/lang/String;)Ljava/util/Optional;
+      35: astore_2
+      36: aload_2
+      37: invokevirtual #91                 // Method java/util/Optional.isEmpty:()Z
+      40: ifne          9
+      43: aload_2
+      44: invokevirtual #93                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      47: checkcast     #95                 // class net/neoforged/fml/ModContainer
+      50: ldc           #31                 // class net/neoforged/neoforge/client/gui/IConfigScreenFactory
+      52: invokevirtual #99                 // Method net/neoforged/fml/ModContainer.getCustomExtension:(Ljava/lang/Class;)Ljava/util/Optional;
+      55: invokevirtual #102                // Method java/util/Optional.isPresent:()Z
+      58: ifeq          64
+      61: goto          9
+      64: aload_2
+      65: invokevirtual #93                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      68: checkcast     #95                 // class net/neoforged/fml/ModContainer
+      71: ldc           #31                 // class net/neoforged/neoforge/client/gui/IConfigScreenFactory
+      73: aload_1
+      74: invokedynamic #113,  0            // InvokeDynamic #1:createScreen:(Ljava/lang/String;)Lnet/neoforged/neoforge/client/gui/IConfigScreenFactory;
+      79: invokevirtual #116                // Method net/neoforged/fml/ModContainer.registerExtensionPoint:(Ljava/lang/Class;Lnet/neoforged/fml/IExtensionPoint;)V
+      82: goto          9
+      85: return
+
+  public static void onLoadComplete(net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent);
+    Code:
+       0: invokestatic  #130                // Method de/cristelknight/cristellib/util/Util.isClothConfigLoaded:()Z
+       3: ifne          7
+       6: return
+       7: aload_0
+       8: invokedynamic #138,  0            // InvokeDynamic #2:run:()Ljava/lang/Runnable;
+      13: invokevirtual #144                // Method net/neoforged/fml/event/lifecycle/FMLLoadCompleteEvent.enqueueWork:(Ljava/lang/Runnable;)Ljava/util/concurrent/CompletableFuture;
+      16: pop
+      17: return
+
+  private static net.minecraft.client.gui.screens.Screen lambda$addOtherConfigScreens$2(java.lang.String, net.neoforged.fml.ModContainer, net.minecraft.client.gui.screens.Screen);
+    Code:
+       0: new           #56                 // class de/cristelknight/cristellib/config/client/ScreenBuilder
+       3: dup
+       4: aload_0
+       5: invokespecial #150                // Method de/cristelknight/cristellib/config/client/ScreenBuilder."<init>":(Ljava/lang/String;)V
+       8: aload_2
+       9: invokevirtual #154                // Method de/cristelknight/cristellib/config/client/ScreenBuilder.create:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/minecraft/client/gui/screens/Screen;
+      12: areturn
+
+  private static net.neoforged.neoforge.client.gui.IConfigScreenFactory lambda$registerMainConfigScreen$1();
+    Code:
+       0: invokedynamic #162,  0            // InvokeDynamic #3:createScreen:()Lnet/neoforged/neoforge/client/gui/IConfigScreenFactory;
+       5: areturn
+
+  private static net.minecraft.client.gui.screens.Screen lambda$registerMainConfigScreen$0(net.neoforged.fml.ModContainer, net.minecraft.client.gui.screens.Screen);
+    Code:
+       0: new           #56                 // class de/cristelknight/cristellib/config/client/ScreenBuilder
+       3: dup
+       4: ldc           #163                // String cristellib
+       6: invokespecial #150                // Method de/cristelknight/cristellib/config/client/ScreenBuilder."<init>":(Ljava/lang/String;)V
+       9: aload_1
+      10: invokevirtual #154                // Method de/cristelknight/cristellib/config/client/ScreenBuilder.create:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/minecraft/client/gui/screens/Screen;
+      13: areturn
+}

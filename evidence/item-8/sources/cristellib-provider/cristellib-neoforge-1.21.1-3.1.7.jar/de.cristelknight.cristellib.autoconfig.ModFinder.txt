@@ -1,0 +1,269 @@
+Compiled from "ModFinder.java"
+public class de.cristelknight.cristellib.autoconfig.ModFinder {
+  public de.cristelknight.cristellib.autoconfig.ModFinder();
+    Code:
+       0: aload_0
+       1: invokespecial #14                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void addAutoConfigs(java.lang.String, java.util.Set<java.lang.String>, java.util.Map<java.lang.String, java.util.Set<de.cristelknight.cristellib.StructureConfig>>, de.cristelknight.cristellib.CristelLibRegistry);
+    Code:
+       0: new           #25                 // class java/util/HashSet
+       3: dup
+       4: invokespecial #26                 // Method java/util/HashSet."<init>":()V
+       7: astore        4
+       9: getstatic     #32                 // Field de/cristelknight/cristellib/autoconfig/ACInfoData.currentData:Ljava/util/Map;
+      12: aload_0
+      13: invokeinterface #38,  2           // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      18: ifeq          46
+      21: getstatic     #32                 // Field de/cristelknight/cristellib/autoconfig/ACInfoData.currentData:Ljava/util/Map;
+      24: aload_0
+      25: invokeinterface #42,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      30: checkcast     #28                 // class de/cristelknight/cristellib/autoconfig/ACInfoData
+      33: invokevirtual #46                 // Method de/cristelknight/cristellib/autoconfig/ACInfoData.autoConfigPath:()Ljava/lang/String;
+      36: invokevirtual #52                 // Method java/lang/String.isEmpty:()Z
+      39: ifne          46
+      42: iconst_1
+      43: goto          47
+      46: iconst_0
+      47: istore        5
+      49: ldc           #54                 // class de/cristelknight/cristellib/autoconfig/ACConfig
+      51: invokestatic  #59                 // Method de/cristelknight/cristellib/config/simple/ConfigRegistry.get:(Ljava/lang/Class;)Ljava/lang/Object;
+      54: checkcast     #54                 // class de/cristelknight/cristellib/autoconfig/ACConfig
+      57: invokevirtual #62                 // Method de/cristelknight/cristellib/autoconfig/ACConfig.autoConfigSubPath:()Ljava/lang/String;
+      60: astore        6
+      62: iload         5
+      64: ifeq          85
+      67: getstatic     #32                 // Field de/cristelknight/cristellib/autoconfig/ACInfoData.currentData:Ljava/util/Map;
+      70: aload_0
+      71: invokeinterface #42,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      76: checkcast     #28                 // class de/cristelknight/cristellib/autoconfig/ACInfoData
+      79: invokevirtual #46                 // Method de/cristelknight/cristellib/autoconfig/ACInfoData.autoConfigPath:()Ljava/lang/String;
+      82: goto          93
+      85: aload         6
+      87: aload_0
+      88: invokedynamic #74,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      93: ldc           #76                 // String structure_toggle_config
+      95: getstatic     #82                 // Field de/cristelknight/cristellib/config/ConfigType.TOGGLE:Lde/cristelknight/cristellib/config/ConfigType;
+      98: invokestatic  #88                 // Method de/cristelknight/cristellib/StructureConfig.createWithDefaultConfigPath:(Ljava/lang/String;Ljava/lang/String;Lde/cristelknight/cristellib/config/ConfigType;)Lde/cristelknight/cristellib/StructureConfig;
+     101: astore        7
+     103: iload         5
+     105: ifeq          126
+     108: getstatic     #32                 // Field de/cristelknight/cristellib/autoconfig/ACInfoData.currentData:Ljava/util/Map;
+     111: aload_0
+     112: invokeinterface #42,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     117: checkcast     #28                 // class de/cristelknight/cristellib/autoconfig/ACInfoData
+     120: invokevirtual #46                 // Method de/cristelknight/cristellib/autoconfig/ACInfoData.autoConfigPath:()Ljava/lang/String;
+     123: goto          134
+     126: aload         6
+     128: aload_0
+     129: invokedynamic #74,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     134: ldc           #90                 // String structure_placement_config
+     136: getstatic     #93                 // Field de/cristelknight/cristellib/config/ConfigType.PLACEMENT:Lde/cristelknight/cristellib/config/ConfigType;
+     139: invokestatic  #88                 // Method de/cristelknight/cristellib/StructureConfig.createWithDefaultConfigPath:(Ljava/lang/String;Ljava/lang/String;Lde/cristelknight/cristellib/config/ConfigType;)Lde/cristelknight/cristellib/StructureConfig;
+     142: astore        8
+     144: aload_1
+     145: aload_0
+     146: aload_3
+     147: aload         7
+     149: aload         8
+     151: invokedynamic #113,  0            // InvokeDynamic #1:accept:(Ljava/lang/String;Lde/cristelknight/cristellib/CristelLibRegistry;Lde/cristelknight/cristellib/StructureConfig;Lde/cristelknight/cristellib/StructureConfig;)Ljava/util/function/Consumer;
+     156: invokeinterface #119,  2          // InterfaceMethod java/util/Set.forEach:(Ljava/util/function/Consumer;)V
+     161: aload         8
+     163: invokevirtual #122                // Method de/cristelknight/cristellib/StructureConfig.setsNotEmpty:()Z
+     166: ifeq          179
+     169: aload         4
+     171: aload         8
+     173: invokeinterface #125,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     178: pop
+     179: aload         7
+     181: invokevirtual #122                // Method de/cristelknight/cristellib/StructureConfig.setsNotEmpty:()Z
+     184: ifeq          197
+     187: aload         4
+     189: aload         7
+     191: invokeinterface #125,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     196: pop
+     197: aload         4
+     199: invokeinterface #126,  1          // InterfaceMethod java/util/Set.isEmpty:()Z
+     204: ifne          229
+     207: aload         4
+     209: invokedynamic #135,  0            // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+     214: invokeinterface #119,  2          // InterfaceMethod java/util/Set.forEach:(Ljava/util/function/Consumer;)V
+     219: aload_2
+     220: aload_0
+     221: aload         4
+     223: invokeinterface #139,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     228: pop
+     229: return
+
+  private static net.minecraft.resources.ResourceLocation getLocation(java.nio.file.Path);
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokeinterface #161,  2          // InterfaceMethod java/nio/file/Path.getName:(I)Ljava/nio/file/Path;
+       7: invokeinterface #164,  1          // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      12: astore_1
+      13: aload_0
+      14: iconst_4
+      15: aload_0
+      16: invokeinterface #168,  1          // InterfaceMethod java/nio/file/Path.getNameCount:()I
+      21: invokeinterface #172,  3          // InterfaceMethod java/nio/file/Path.subpath:(II)Ljava/nio/file/Path;
+      26: invokestatic  #178                // Method de/cristelknight/cristellib/util/FileHelper.cutFileType:(Ljava/nio/file/Path;)Ljava/lang/String;
+      29: astore_2
+      30: aload_2
+      31: invokestatic  #182                // Method de/cristelknight/cristellib/util/FileHelper.normalizeResourcePath:(Ljava/lang/String;)Ljava/lang/String;
+      34: astore_3
+      35: aload_1
+      36: ldc           #184                // String minecraft
+      38: invokevirtual #187                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      41: ifeq          49
+      44: aload_3
+      45: invokestatic  #193                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      48: areturn
+      49: aload_1
+      50: aload_3
+      51: invokestatic  #197                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      54: areturn
+
+  public static boolean shouldSkipModForACPre(java.lang.String, java.util.Set<java.lang.String>);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #208,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+       7: ifne          19
+      10: aload_0
+      11: ldc           #184                // String minecraft
+      13: invokevirtual #187                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      16: ifeq          23
+      19: iconst_1
+      20: goto          24
+      23: iconst_0
+      24: ireturn
+
+  public static boolean shouldSkipModForACAfter(java.lang.String, java.util.Set<java.lang.String>);
+    Code:
+       0: ldc           #54                 // class de/cristelknight/cristellib/autoconfig/ACConfig
+       2: invokestatic  #59                 // Method de/cristelknight/cristellib/config/simple/ConfigRegistry.get:(Ljava/lang/Class;)Ljava/lang/Object;
+       5: checkcast     #54                 // class de/cristelknight/cristellib/autoconfig/ACConfig
+       8: astore_2
+       9: aload_2
+      10: invokevirtual #212                // Method de/cristelknight/cristellib/autoconfig/ACConfig.disableAutoConfig:()Z
+      13: ifne          39
+      16: aload_2
+      17: invokevirtual #216                // Method de/cristelknight/cristellib/autoconfig/ACConfig.blacklistedMods:()Ljava/util/List;
+      20: aload_0
+      21: invokeinterface #219,  2          // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+      26: ifne          39
+      29: aload_1
+      30: aload_0
+      31: invokeinterface #208,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+      36: ifeq          43
+      39: iconst_1
+      40: goto          44
+      43: iconst_0
+      44: ireturn
+
+  private static void lambda$addAutoConfigs$1(de.cristelknight.cristellib.StructureConfig);
+    Code:
+       0: aload_0
+       1: invokevirtual #225                // Method de/cristelknight/cristellib/StructureConfig.setDefaultNamespace:()V
+       4: aload_0
+       5: invokevirtual #228                // Method de/cristelknight/cristellib/StructureConfig.setAutoGenerated:()V
+       8: return
+
+  private static void lambda$addAutoConfigs$0(java.lang.String, de.cristelknight.cristellib.CristelLibRegistry, de.cristelknight.cristellib.StructureConfig, de.cristelknight.cristellib.StructureConfig, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload         4
+       3: invokestatic  #234                // Method de/cristelknight/cristellib/util/JsonHelper.getElement:(Ljava/lang/String;Ljava/lang/String;)Lcom/google/gson/JsonElement;
+       6: astore        5
+       8: aload         5
+      10: ifnull        189
+      13: aload         5
+      15: aload         4
+      17: aload_0
+      18: invokedynamic #237,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      23: invokestatic  #243                // Method net/minecraft/util/GsonHelper.convertToJsonObject:(Lcom/google/gson/JsonElement;Ljava/lang/String;)Lcom/google/gson/JsonObject;
+      26: astore        6
+      28: aload         6
+      30: ldc           #245                // String structures
+      32: invokevirtual #251                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+      35: istore        7
+      37: aload         6
+      39: ldc           #253                // String placement
+      41: invokevirtual #251                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+      44: istore        8
+      46: iload         8
+      48: ifeq          100
+      51: aload         6
+      53: ldc           #253                // String placement
+      55: invokevirtual #257                // Method com/google/gson/JsonObject.getAsJsonObject:(Ljava/lang/String;)Lcom/google/gson/JsonObject;
+      58: astore        9
+      60: aload         9
+      62: ldc_w         #259                // String salt
+      65: invokevirtual #251                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+      68: ifeq          97
+      71: aload         9
+      73: ldc_w         #261                // String spacing
+      76: invokevirtual #251                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+      79: ifeq          97
+      82: aload         9
+      84: ldc_w         #263                // String separation
+      87: invokevirtual #251                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+      90: ifeq          97
+      93: iconst_1
+      94: goto          98
+      97: iconst_0
+      98: istore        8
+     100: aload         4
+     102: iconst_0
+     103: anewarray     #48                 // class java/lang/String
+     106: invokestatic  #271                // InterfaceMethod java/nio/file/Path.of:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+     109: invokestatic  #273                // Method getLocation:(Ljava/nio/file/Path;)Lnet/minecraft/resources/ResourceLocation;
+     112: astore        9
+     114: iload         7
+     116: ifeq          146
+     119: iload         8
+     121: ifeq          146
+     124: aload_1
+     125: aload_0
+     126: aload         9
+     128: iconst_2
+     129: anewarray     #84                 // class de/cristelknight/cristellib/StructureConfig
+     132: dup
+     133: iconst_0
+     134: aload_2
+     135: aastore
+     136: dup
+     137: iconst_1
+     138: aload_3
+     139: aastore
+     140: invokevirtual #277                // Method de/cristelknight/cristellib/CristelLibRegistry.registerSetToConfig:(Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;[Lde/cristelknight/cristellib/StructureConfig;)V
+     143: goto          189
+     146: iload         7
+     148: ifeq          169
+     151: aload_1
+     152: aload_0
+     153: aload         9
+     155: iconst_1
+     156: anewarray     #84                 // class de/cristelknight/cristellib/StructureConfig
+     159: dup
+     160: iconst_0
+     161: aload_2
+     162: aastore
+     163: invokevirtual #277                // Method de/cristelknight/cristellib/CristelLibRegistry.registerSetToConfig:(Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;[Lde/cristelknight/cristellib/StructureConfig;)V
+     166: goto          189
+     169: iload         8
+     171: ifeq          189
+     174: aload_1
+     175: aload_0
+     176: aload         9
+     178: iconst_1
+     179: anewarray     #84                 // class de/cristelknight/cristellib/StructureConfig
+     182: dup
+     183: iconst_0
+     184: aload_3
+     185: aastore
+     186: invokevirtual #277                // Method de/cristelknight/cristellib/CristelLibRegistry.registerSetToConfig:(Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;[Lde/cristelknight/cristellib/StructureConfig;)V
+     189: return
+}
