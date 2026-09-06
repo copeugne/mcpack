@@ -1,0 +1,201 @@
+Compiled from "Util.java"
+public class de.cristelknight.cristellib.util.Util {
+  public static final java.lang.String CLOTH_ID;
+
+  private static final java.util.Set<java.lang.String> SKIP_MODS;
+
+  public de.cristelknight.cristellib.util.Util();
+    Code:
+       0: aload_0
+       1: invokespecial #19                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static boolean isClothConfigLoaded();
+    Code:
+       0: getstatic     #25                 // Field CLOTH_ID:Ljava/lang/String;
+       3: invokestatic  #31                 // Method de/cristelknight/cristellib/ModLoadingUtil.isModLoaded:(Ljava/lang/String;)Z
+       6: ireturn
+
+  public static <V> V getFirst(java.util.Collection<V>);
+    Code:
+       0: aload_0
+       1: invokeinterface #41,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+       6: astore_1
+       7: aload_1
+       8: invokeinterface #46,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      13: ifeq          25
+      16: aload_1
+      17: invokeinterface #50,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      22: goto          26
+      25: aconst_null
+      26: areturn
+
+  public static <T extends java.lang.Comparable<T>> java.util.List<T> sortedKeyList(java.util.Map<T, ?>);
+    Code:
+       0: aload_0
+       1: invokeinterface #65,  1           // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+       6: invokeinterface #71,  1           // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+      11: invokeinterface #76,  1           // InterfaceMethod java/util/stream/Stream.sorted:()Ljava/util/stream/Stream;
+      16: invokeinterface #80,  1           // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      21: areturn
+
+  public static void readData(java.util.Map<java.lang.String, java.util.Set<de.cristelknight.cristellib.StructureConfig>>, de.cristelknight.cristellib.CristelLibRegistry);
+    Code:
+       0: invokestatic  #90                 // Method updateOldFiles:()V
+       3: new           #92                 // class java/util/HashMap
+       6: dup
+       7: invokespecial #93                 // Method java/util/HashMap."<init>":()V
+      10: astore_2
+      11: new           #92                 // class java/util/HashMap
+      14: dup
+      15: invokespecial #93                 // Method java/util/HashMap."<init>":()V
+      18: astore_3
+      19: invokestatic  #96                 // Method de/cristelknight/cristellib/ModLoadingUtil.getModIds:()Ljava/util/List;
+      22: invokeinterface #99,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      27: astore        4
+      29: aload         4
+      31: invokeinterface #46,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      36: ifeq          78
+      39: aload         4
+      41: invokeinterface #50,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      46: checkcast     #101                // class java/lang/String
+      49: astore        5
+      51: getstatic     #103                // Field SKIP_MODS:Ljava/util/Set;
+      54: aload         5
+      56: invokeinterface #107,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+      61: ifeq          67
+      64: goto          29
+      67: aload         5
+      69: aload_3
+      70: aload_0
+      71: aload_2
+      72: invokestatic  #112                // Method de/cristelknight/cristellib/data/ReadData.readData:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)V
+      75: goto          29
+      78: aload_3
+      79: putstatic     #117                // Field de/cristelknight/cristellib/autoconfig/ACInfoData.currentData:Ljava/util/Map;
+      82: invokestatic  #122                // Method de/cristelknight/cristellib/autoconfig/ACConfig.update:()V
+      85: aload_2
+      86: invokeinterface #65,  1           // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+      91: invokeinterface #123,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      96: astore        4
+      98: aload         4
+     100: invokeinterface #46,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     105: ifeq          158
+     108: aload         4
+     110: invokeinterface #50,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     115: checkcast     #101                // class java/lang/String
+     118: astore        5
+     120: aload         5
+     122: aload_0
+     123: invokeinterface #65,  1           // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+     128: invokestatic  #129                // Method de/cristelknight/cristellib/autoconfig/ModFinder.shouldSkipModForACAfter:(Ljava/lang/String;Ljava/util/Set;)Z
+     131: ifeq          137
+     134: goto          98
+     137: aload         5
+     139: aload_2
+     140: aload         5
+     142: invokeinterface #133,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     147: checkcast     #67                 // class java/util/Set
+     150: aload_0
+     151: aload_1
+     152: invokestatic  #137                // Method de/cristelknight/cristellib/autoconfig/ModFinder.addAutoConfigs:(Ljava/lang/String;Ljava/util/Set;Ljava/util/Map;Lde/cristelknight/cristellib/CristelLibRegistry;)V
+     155: goto          98
+     158: return
+
+  private static void updateOldFiles();
+    Code:
+       0: getstatic     #152                // Field de/cristelknight/cristellib/config/ConfigManager.CONFIG_LIB:Ljava/nio/file/Path;
+       3: ldc           #154                // String data
+       5: invokeinterface #160,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      10: astore_0
+      11: ldc           #162                // String structure_config
+      13: aload_0
+      14: invokestatic  #166                // Method updateDirectories:(Ljava/lang/String;Ljava/nio/file/Path;)V
+      17: ldc           #168                // String data_pack
+      19: aload_0
+      20: invokestatic  #166                // Method updateDirectories:(Ljava/lang/String;Ljava/nio/file/Path;)V
+      23: ldc           #170                // String copy_file
+      25: aload_0
+      26: invokestatic  #166                // Method updateDirectories:(Ljava/lang/String;Ljava/nio/file/Path;)V
+      29: aload_0
+      30: iconst_0
+      31: anewarray     #172                // class java/nio/file/LinkOption
+      34: invokestatic  #178                // Method java/nio/file/Files.exists:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+      37: ifeq          59
+      40: aload_0
+      41: getstatic     #152                // Field de/cristelknight/cristellib/config/ConfigManager.CONFIG_LIB:Ljava/nio/file/Path;
+      44: ldc           #180                // String ~OUTDATED DIRECTORY~ data
+      46: invokeinterface #160,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      51: iconst_0
+      52: anewarray     #182                // class java/nio/file/CopyOption
+      55: invokestatic  #186                // Method java/nio/file/Files.move:(Ljava/nio/file/Path;Ljava/nio/file/Path;[Ljava/nio/file/CopyOption;)Ljava/nio/file/Path;
+      58: pop
+      59: goto          74
+      62: astore_0
+      63: getstatic     #192                // Field de/cristelknight/cristellib/Constants.LOG:Lorg/apache/logging/log4j/Logger;
+      66: ldc           #194                // String Failed to update custom configs in <instance>/config/cristellib/data/
+      68: aload_0
+      69: invokeinterface #200,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+      74: return
+    Exception table:
+       from    to  target type
+           0    59    62   Class java/io/IOException
+
+  private static void updateDirectories(java.lang.String, java.nio.file.Path) throws java.io.IOException;
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #160,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+       7: astore_2
+       8: aload_1
+       9: aload_0
+      10: invokedynamic #216,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      15: invokeinterface #160,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      20: astore_3
+      21: aload_2
+      22: iconst_0
+      23: anewarray     #172                // class java/nio/file/LinkOption
+      26: invokestatic  #178                // Method java/nio/file/Files.exists:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+      29: ifeq          58
+      32: aload_2
+      33: invokeinterface #220,  1          // InterfaceMethod java/nio/file/Path.toFile:()Ljava/io/File;
+      38: getstatic     #152                // Field de/cristelknight/cristellib/config/ConfigManager.CONFIG_LIB:Ljava/nio/file/Path;
+      41: aload_0
+      42: invokeinterface #160,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      47: invokeinterface #220,  1          // InterfaceMethod java/nio/file/Path.toFile:()Ljava/io/File;
+      52: invokestatic  #226                // Method org/apache/commons/io/FileUtils.copyDirectory:(Ljava/io/File;Ljava/io/File;)V
+      55: goto          92
+      58: aload_3
+      59: iconst_0
+      60: anewarray     #172                // class java/nio/file/LinkOption
+      63: invokestatic  #178                // Method java/nio/file/Files.exists:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+      66: ifeq          92
+      69: aload_3
+      70: invokeinterface #220,  1          // InterfaceMethod java/nio/file/Path.toFile:()Ljava/io/File;
+      75: getstatic     #152                // Field de/cristelknight/cristellib/config/ConfigManager.CONFIG_LIB:Ljava/nio/file/Path;
+      78: aload_0
+      79: invokeinterface #160,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      84: invokeinterface #220,  1          // InterfaceMethod java/nio/file/Path.toFile:()Ljava/io/File;
+      89: invokestatic  #226                // Method org/apache/commons/io/FileUtils.copyDirectory:(Ljava/io/File;Ljava/io/File;)V
+      92: return
+
+  static {};
+    Code:
+       0: invokestatic  #235                // Method de/cristelknight/cristellib/PlatformHelper.getPlatform:()Lde/cristelknight/cristellib/util/Platform;
+       3: getstatic     #241                // Field de/cristelknight/cristellib/util/Platform.FABRIC:Lde/cristelknight/cristellib/util/Platform;
+       6: invokevirtual #244                // Method de/cristelknight/cristellib/util/Platform.equals:(Ljava/lang/Object;)Z
+       9: ifeq          17
+      12: ldc           #246                // String cloth-config
+      14: goto          19
+      17: ldc           #248                // String cloth_config
+      19: putstatic     #25                 // Field CLOTH_ID:Ljava/lang/String;
+      22: ldc           #250                // String neoforge
+      24: ldc           #252                // String java
+      26: ldc           #254                // String cristellib
+      28: ldc_w         #256                // String modmenu
+      31: getstatic     #25                 // Field CLOTH_ID:Ljava/lang/String;
+      34: ldc_w         #258                // String cloth-basic-math
+      37: invokestatic  #262                // InterfaceMethod java/util/Set.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Set;
+      40: putstatic     #103                // Field SKIP_MODS:Ljava/util/Set;
+      43: return
+}
