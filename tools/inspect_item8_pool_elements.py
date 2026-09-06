@@ -784,6 +784,15 @@ CLASSES: tuple[str, ...] = (
     "org/betterx/betterend/world/features/trees/TenaneaFeature.class",
     "org/betterx/betterend/world/features/trees/UmbrellaTreeFeature$Center.class",
     "org/betterx/betterend/world/features/trees/UmbrellaTreeFeature.class",
+    "org/betterx/betterend/registry/EndBlocks.class",
+    "org/betterx/betterend/blocks/basis/EndPlantWithAgeBlock.class",
+    "org/betterx/betterend/blocks/BlueVineSeedBlock.class",
+    "org/betterx/betterend/blocks/EndLilySeedBlock.class",
+    "org/betterx/betterend/blocks/EndLotusSeedBlock.class",
+    "org/betterx/betterend/blocks/GlowingPillarSeedBlock.class",
+    "org/betterx/betterend/blocks/HydraluxSaplingBlock.class",
+    "org/betterx/betterend/blocks/LanceleafSeedBlock.class",
+    "org/betterx/betterend/blocks/NeonCactusPlantBlock.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
