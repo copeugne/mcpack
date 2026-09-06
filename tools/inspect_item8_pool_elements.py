@@ -1716,6 +1716,8 @@ CLASSES: tuple[str, ...] = (
     "com/bawnorton/mixinsquared/ext/ExtensionRegistrar.class",
     "com/bawnorton/mixinsquared/canceller/MixinCancellerRegistrar.class",
     "com/bawnorton/mixinsquared/adjuster/MixinAnnotationAdjusterRegistrar.class",
+    "net/mehvahdjukaar/supplementaries/platform/SupplementariesForgeClient.class",
+    "net/mehvahdjukaar/supplementaries/client/renderers/platform/PicklePlayer.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1884,6 +1886,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/integration/")
                 verbose |= name.startswith("com/bawnorton/mixinsquared/")
+                verbose |= name in {
+                    "net/mehvahdjukaar/supplementaries/platform/SupplementariesForgeClient.class",
+                    "net/mehvahdjukaar/supplementaries/client/renderers/platform/PicklePlayer.class",
+                }
                 verbose |= name in {
                     "net/mehvahdjukaar/supplementaries/reg/ModSetup.class",
                     "net/mehvahdjukaar/supplementaries/reg/RegUtils.class",
