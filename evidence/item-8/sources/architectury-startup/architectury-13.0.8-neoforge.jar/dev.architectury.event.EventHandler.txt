@@ -1,0 +1,186 @@
+Classfile architectury-13.0.8-neoforge.jar!/dev/architectury/event/EventHandler.class
+  Last modified Jan 1, 1980; size 1359 bytes
+  SHA-256 checksum 2cde47592bb15a6121f09636e8e2b33aa5d4662e1023c5b5ac13ea5d13c8d9eb
+  Compiled from "EventHandler.java"
+public final class dev.architectury.event.EventHandler
+  minor version: 0
+  major version: 65
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #2                          // dev/architectury/event/EventHandler
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 6, attributes: 1
+Constant pool:
+   #1 = Utf8               dev/architectury/event/EventHandler
+   #2 = Class              #1             // dev/architectury/event/EventHandler
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               EventHandler.java
+   #6 = Utf8               initialized
+   #7 = Utf8               Z
+   #8 = Utf8               <init>
+   #9 = Utf8               ()V
+  #10 = NameAndType        #8:#9          // "<init>":()V
+  #11 = Methodref          #4.#10         // java/lang/Object."<init>":()V
+  #12 = Utf8               this
+  #13 = Utf8               Ldev/architectury/event/EventHandler;
+  #14 = Utf8               init
+  #15 = NameAndType        #6:#7          // initialized:Z
+  #16 = Fieldref           #2.#15         // dev/architectury/event/EventHandler.initialized:Z
+  #17 = Utf8               dev/architectury/platform/Platform
+  #18 = Class              #17            // dev/architectury/platform/Platform
+  #19 = Utf8               getEnvironment
+  #20 = Utf8               ()Ldev/architectury/utils/Env;
+  #21 = NameAndType        #19:#20        // getEnvironment:()Ldev/architectury/utils/Env;
+  #22 = Methodref          #18.#21        // dev/architectury/platform/Platform.getEnvironment:()Ldev/architectury/utils/Env;
+  #23 = Utf8               dev/architectury/utils/Env
+  #24 = Class              #23            // dev/architectury/utils/Env
+  #25 = Utf8               CLIENT
+  #26 = Utf8               Ldev/architectury/utils/Env;
+  #27 = NameAndType        #25:#26        // CLIENT:Ldev/architectury/utils/Env;
+  #28 = Fieldref           #24.#27        // dev/architectury/utils/Env.CLIENT:Ldev/architectury/utils/Env;
+  #29 = Utf8               registerClient
+  #30 = NameAndType        #29:#9         // registerClient:()V
+  #31 = Methodref          #2.#30         // dev/architectury/event/EventHandler.registerClient:()V
+  #32 = Utf8               registerCommon
+  #33 = NameAndType        #32:#9         // registerCommon:()V
+  #34 = Methodref          #2.#33         // dev/architectury/event/EventHandler.registerCommon:()V
+  #35 = Utf8               SERVER
+  #36 = NameAndType        #35:#26        // SERVER:Ldev/architectury/utils/Env;
+  #37 = Fieldref           #24.#36        // dev/architectury/utils/Env.SERVER:Ldev/architectury/utils/Env;
+  #38 = Utf8               registerServer
+  #39 = NameAndType        #38:#9         // registerServer:()V
+  #40 = Methodref          #2.#39         // dev/architectury/event/EventHandler.registerServer:()V
+  #41 = Utf8               Lnet/neoforged/api/distmarker/OnlyIn;
+  #42 = Utf8               value
+  #43 = Utf8               Lnet/neoforged/api/distmarker/Dist;
+  #44 = Utf8               Ldev/architectury/injectables/annotations/ExpectPlatform;
+  #45 = Utf8               Ldev/architectury/injectables/annotations/ExpectPlatform$Transformed;
+  #46 = Utf8               dev/architectury/event/forge/EventHandlerImpl
+  #47 = Class              #46            // dev/architectury/event/forge/EventHandlerImpl
+  #48 = Methodref          #47.#30        // dev/architectury/event/forge/EventHandlerImpl.registerClient:()V
+  #49 = Methodref          #47.#33        // dev/architectury/event/forge/EventHandlerImpl.registerCommon:()V
+  #50 = Utf8               DEDICATED_SERVER
+  #51 = Methodref          #47.#39        // dev/architectury/event/forge/EventHandlerImpl.registerServer:()V
+  #52 = Utf8               <clinit>
+  #53 = Utf8               Code
+  #54 = Utf8               LineNumberTable
+  #55 = Utf8               LocalVariableTable
+  #56 = Utf8               StackMapTable
+  #57 = Utf8               RuntimeVisibleAnnotations
+  #58 = Utf8               RuntimeInvisibleAnnotations
+  #59 = Utf8               SourceFile
+{
+  private static boolean initialized;
+    descriptor: Z
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+
+  private dev.architectury.event.EventHandler();
+    descriptor: ()V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #11                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 29: 0
+        line 30: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Ldev/architectury/event/EventHandler;
+
+  public static void init();
+    descriptor: ()V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: getstatic     #16                 // Field initialized:Z
+         3: ifeq          7
+         6: return
+         7: iconst_1
+         8: putstatic     #16                 // Field initialized:Z
+        11: invokestatic  #22                 // Method dev/architectury/platform/Platform.getEnvironment:()Ldev/architectury/utils/Env;
+        14: getstatic     #28                 // Field dev/architectury/utils/Env.CLIENT:Ldev/architectury/utils/Env;
+        17: if_acmpne     23
+        20: invokestatic  #31                 // Method registerClient:()V
+        23: invokestatic  #34                 // Method registerCommon:()V
+        26: invokestatic  #22                 // Method dev/architectury/platform/Platform.getEnvironment:()Ldev/architectury/utils/Env;
+        29: getstatic     #37                 // Field dev/architectury/utils/Env.SERVER:Ldev/architectury/utils/Env;
+        32: if_acmpne     38
+        35: invokestatic  #40                 // Method registerServer:()V
+        38: return
+      StackMapTable: number_of_entries = 3
+        frame_type = 7 /* same */
+        frame_type = 15 /* same */
+        frame_type = 14 /* same */
+      LineNumberTable:
+        line 35: 0
+        line 36: 7
+        line 37: 11
+        line 38: 20
+        line 39: 23
+        line 40: 26
+        line 41: 35
+        line 42: 38
+
+  private static void registerClient();
+    descriptor: ()V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=0, locals=0, args_size=0
+         0: invokestatic  #48                 // Method dev/architectury/event/forge/EventHandlerImpl.registerClient:()V
+         3: return
+    RuntimeVisibleAnnotations:
+      0: #41(#42=e#43.#25)
+        net.neoforged.api.distmarker.OnlyIn(
+          value=Lnet/neoforged/api/distmarker/Dist;.CLIENT
+        )
+    RuntimeInvisibleAnnotations:
+      0: #44()
+        dev.architectury.injectables.annotations.ExpectPlatform
+      1: #45()
+        dev.architectury.injectables.annotations.ExpectPlatform$Transformed
+
+  private static void registerCommon();
+    descriptor: ()V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=0, locals=0, args_size=0
+         0: invokestatic  #49                 // Method dev/architectury/event/forge/EventHandlerImpl.registerCommon:()V
+         3: return
+    RuntimeInvisibleAnnotations:
+      0: #44()
+        dev.architectury.injectables.annotations.ExpectPlatform
+      1: #45()
+        dev.architectury.injectables.annotations.ExpectPlatform$Transformed
+
+  private static void registerServer();
+    descriptor: ()V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=0, locals=0, args_size=0
+         0: invokestatic  #51                 // Method dev/architectury/event/forge/EventHandlerImpl.registerServer:()V
+         3: return
+    RuntimeVisibleAnnotations:
+      0: #41(#42=e#43.#50)
+        net.neoforged.api.distmarker.OnlyIn(
+          value=Lnet/neoforged/api/distmarker/Dist;.DEDICATED_SERVER
+        )
+    RuntimeInvisibleAnnotations:
+      0: #44()
+        dev.architectury.injectables.annotations.ExpectPlatform
+      1: #45()
+        dev.architectury.injectables.annotations.ExpectPlatform$Transformed
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: iconst_0
+         1: putstatic     #16                 // Field initialized:Z
+         4: return
+      LineNumberTable:
+        line 32: 0
+}
+SourceFile: "EventHandler.java"

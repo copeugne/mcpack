@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Architectury membership is resolved from d943fcbb, 8ed7b7ec and 4a879ad8:
+consumer event/extension/biome APIs and existing-entity synchronization, no
+independent generated family. Full payload/entry/hook/source binding and scoped
+checks pass. Whole providers: 113 resolved, 23 open. Working groups remain 410
+and the 100 explicitly provisional Moog records still require decisions. Finish
+provider membership and canonical grouping before detailed attributes. Do not
+trace more generic Architectury event, wrapper or network internals.
+
+
 Puzzles Lib membership is resolved from 875c52c6 and a97ac77c: shared consumer
 event/registry/behavior APIs, no independent generated family. Full payload,
 entry/hook/service/source binding and scoped checks pass. Whole providers:
