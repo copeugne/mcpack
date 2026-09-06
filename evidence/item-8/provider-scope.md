@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 121 of 136. The exact queue below has 15 open rows.
+Supported provider dispositions: 122 of 136. The exact queue below has 14 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -637,7 +637,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `bettervillage-neoforge-1.21.1-3.3.1.jar` | `bettervillage-code` | RESOLVED: see Better Village provider disposition below. |
 | `bookshelf-neoforge-1.21.1-21.1.81.jar` | 3a315ed2 provider entries; 17cdf0d7 common initialization. | RESOLVED: utility codecs, commands and consumer gameplay/loot APIs, no independent generated family. See Bookshelf membership closure. |
 | `bundle-api-neoforge-1.1.0.jar` | `bundle-api-provider` (a14b5e0), test_small_utility_provider_scope.py | RESOLVED: Custom bundle data components, item interaction and rendering; no independent family. See bundle and shield dispositions below. |
-| `c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar` | c2me-entry, c2me-base-entry, c2me-worldgen-threading, c2me-threading-boundaries | OPEN: outer startup, base dispatch and worldgen-threading module accounted for below. Finish remaining module entries and generation-related hooks; reuse these captures. |
+| `c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar` | 52 C2ME source captures; test_c2me_provider_scope.py | RESOLVED: existing generation, scheduling, persistence and view-distance modifications; no independent family. See final C2ME membership closure below. |
 | `cc-tweaked-1.21.1-forge-1.119.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `chipped-neoforge-1.21.1-4.0.2.jar` | `chipped-provider`, `chipped-crafting`; complete payload binding. | RESOLVED: building blocks, recipes, player workbench crafting and block behavior. No independent structure family. |
 | `cloth-config-15.0.140-neoforge.jar` | `cloth-config-provider` (6e7567c7), complete payload/source binding. | RESOLVED: config-screen API; sole automatic initialization is client-guarded. No independent family. |
@@ -7823,3 +7823,56 @@ configuration parsers merely because the provider index references them.
 The scheduling mixin declaration contains a null entry; retain it as packaged,
 with no invented class target. It is not a family candidate. Bundled-library
 entry roles remain to reconcile. Whole providers remain 121 resolved, 15 open.
+
+## Final C2ME membership closure
+
+C2ME membership is RESOLVED, with no independent generated family. The exact
+parent is c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar, SHA-256
+2735b16e136e51c03c9a8211fbecaf9d571a28475981223c60662465664f5322.
+The parent contains 20 C2ME modules and six bundled libraries. MixinSquared
+contains one additional nested archive. All are covered by the fixed-parent
+payload and source-identity test. They contain no data resources or NBT
+templates. The lighting module's Fabric metadata declares no entrypoint and
+references its already covered mixin configuration.
+
+All declared common/server hooks, NeoForge automatic entries, module startup
+paths and mixin plugins have source dispositions. Existing generation state,
+random and terrain computation, chunk lifecycle/I-O, serialization, lighting,
+view distance and diagnostics are their roles. The command reports pending
+no-tick chunk loads; it does not generate structures. Fifty-two existing
+capture directories retain 259 disassemblies with exact parent/nested/class
+identities and independent byte-identical reproduction commands. The final
+remaining-hook increments are 7afc4e46 through 241de3bd; 56cbfb4f closes the
+command and bundled plugin boundaries. Earlier C2ME captures remain required.
+
+Asyncutil, exp4j, JCTools, Reactive Streams and RxJava have no Minecraft class
+references, data/templates or runtime entry declarations. They are used as
+asynchronous, expression and collection utilities by the inspected consumers.
+MixinSquared's plugin initializes target-selector and mixin extension support
+and loads annotation-adjuster/canceller services. Its nested annotation
+processor is a compilation service, not a runtime generation entry. No further
+generic helper, scheduler, compiler or network audit is needed for membership.
+
+Preserve the recorded generation and lifecycle modifications as attribute and
+identity context. This closure does not assert every optional hook activates,
+numerical equivalence, concurrency correctness or persistence safety. Preserve
+the null scheduling declaration without an invented target. The source capture
+is not an operational test. No fresh server experiment or measurement system
+was required.
+
+```sh
+uv run pytest -q tests/item8/test_c2me_provider_scope.py tests/item8/test_c2me_threading_scope.py
+uv run ruff check tests/item8/test_c2me_provider_scope.py
+uv run basedpyright tests/item8/test_c2me_provider_scope.py
+```
+
+Both focused cases pass. The provider test binds the complete nested archive
+topology, missing data/templates, declared entry/hook coverage and every
+retained source manifest/hash, and rejects unexplained capture files. Scoped
+quality checks pass. An initial long nested-archive dictionary key was wrapped
+without changing its value. The direct topology test has narrowly documented
+complexity suppressions to avoid adding a helper framework.
+
+Whole providers: 122 resolved, 14 open. Working groups remain 410 and 100
+explicitly provisional Moog grouping decisions remain. Item 8's canonical
+family list, attributes, final gate and review/main delivery remain incomplete.
