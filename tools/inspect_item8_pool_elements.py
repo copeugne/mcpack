@@ -241,6 +241,7 @@ CLASSES: tuple[str, ...] = (
     "com/jesz/createdieselgenerators/content/molds/MoldType.class",
     "com/jesz/createdieselgenerators/packets/CDGPackets.class",
     "com/jesz/createdieselgenerators/commands/CDGCommands.class",
+    "com/jesz/createdieselgenerators/world/OilChunksSavedData.class",
     "com/jesz/createdieselgenerators/mixins/BasinRecipeMixin.class",
     "com/jesz/createdieselgenerators/mixins/ContraptionMixin.class",
     "com/jesz/createdieselgenerators/mixins/CopycatBlockMixin.class",
