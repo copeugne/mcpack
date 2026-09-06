@@ -35,6 +35,30 @@ def test_create_generation_payload_and_captured_boundaries() -> None:
             )
         names = [n for n in archive.namelist() if not n.endswith("/")]
         assert len(names) == len(set(names)) == 11753
+        assert Counter("classes" if n.endswith(".class") else n.split("/")[0] for n in names) == {
+            "assets": 5076,
+            "data": 3974,
+            "classes": 2692,
+            "META-INF": 7,
+            "create.mixins.json": 1,
+            "pack.mcmeta": 1,
+            "icon.png": 1,
+            "LICENSE.md_create-1.21.1": 1,
+        }
+        assert {n for n in names if n.startswith("META-INF/")} == {
+            "META-INF/MANIFEST.MF",
+            "META-INF/accesstransformer.cfg",
+            "META-INF/neoforge.mods.toml",
+            "META-INF/jarjar/metadata.json",
+            "META-INF/jarjar/flywheel-neoforge-1.21.1-1.0.6.jar",
+            "META-INF/jarjar/ponder-neoforge-1.0.82+mc1.21.1.jar",
+            "META-INF/jarjar/Registrate-MC1.21-1.3.0+67.jar",
+        }
+        assert Counter(
+            "/".join(n.split("/")[:4])
+            for n in names
+            if n.startswith("data/") and n.split("/")[2] == "create"
+        ) == {"data/create/create/potato_projectile": 25}
         assert Counter(n.split("/")[2] for n in names if n.startswith("data/")) == {
             "recipe": 1884,
             "advancement": 1150,
@@ -314,3 +338,85 @@ def test_create_flywheel_and_registrate_membership() -> None:
                 disassembly = (directory / row["disassembly"]).read_bytes()
                 assert hashlib.sha256(disassembly).hexdigest() == row["disassembly_sha256"]
                 assert "dist=[Lnet/neoforged/api/distmarker/Dist;.CLIENT]" in disassembly.decode()
+
+
+def test_create_ponder_membership_boundaries() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "create-1.21.1-6.0.10.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    member = "META-INF/jarjar/ponder-neoforge-1.0.82+mc1.21.1.jar"
+    digest = "0cf4611ad853042b689ac386184c5bbe02950efcffddb49e5f604e82baddb0dc"
+    directory = Path("evidence/item-8/sources/create-ponder-boundaries")
+    raw = (directory / "identities.json").read_bytes()
+    assert (
+        hashlib.sha256(raw).hexdigest()
+        == "ab81d9acb5bafaf275ec9cb2c1624f514f8ef05d7f90ebe4a5e2c598c0ee965b"
+    )
+    rows = cast("list[dict[str, str]]", json.loads(raw))
+    assert len(rows) == 17
+    captured = {r["class"] for r in rows}
+    with ZipFile(source.path) as parent:
+        payload = parent.read(member)
+        assert hashlib.sha256(payload).hexdigest() == digest
+        with ZipFile(BytesIO(payload)) as archive:
+            names = [n for n in archive.namelist() if not n.endswith("/")]
+            assert len(names) == len(set(names)) == 531
+            assert Counter(
+                "classes" if n.endswith(".class") else n.split("/")[0] for n in names
+            ) == {
+                "classes": 470,
+                "assets": 47,
+                "META-INF": 9,
+                "logo.png": 1,
+                "ponder.mixins.json": 1,
+                "ponder-common.mixins.json": 1,
+                "pack.mcmeta": 1,
+                "LICENSE_Ponder": 1,
+            }
+            for row in rows:
+                assert row["archive"] == source.name + "!/" + member
+                assert row["archive_sha256"] == digest
+                assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+                assert (
+                    hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
+                    == row["disassembly_sha256"]
+                )
+            annotated = {
+                n
+                for n in names
+                if n.endswith(".class")
+                and any(
+                    t in archive.read(n)
+                    for t in (
+                        b"Lnet/neoforged/fml/common/Mod;",
+                        b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+                    )
+                )
+            }
+            assert len(annotated) == 6
+            assert annotated <= captured
+            services = {n for n in names if n.startswith("META-INF/services/")}
+            assert len(services) == 5
+            assert {
+                archive.read(n).decode().strip().replace(".", "/") + ".class" for n in services
+            } <= captured
+            assert {n for n in names if n.startswith("META-INF/")} == services | {
+                "META-INF/MANIFEST.MF",
+                "META-INF/neoforge.mods.toml",
+                "META-INF/accesstransformer.cfg",
+                "META-INF/ponder.accesswidener",
+            }
+            common: set[str] = set()
+            for filename in ("ponder.mixins.json", "ponder-common.mixins.json"):
+                config = cast("dict[str, object]", json.loads(archive.read(filename)))
+                prefix = cast("str", config["package"]).replace(".", "/") + "/"
+                common.update(
+                    prefix + n.replace(".", "/") + ".class"
+                    for n in cast("list[str]", config["mixins"])
+                )
+                assert not config.get("server")
+                assert not config.get("plugin")
+            assert common == {
+                "net/createmod/ponder/mixin/accessor/" + n + ".class"
+                for n in ("BiomeManagerAccessor", "EntityAccessor", "MinecraftServerAccessor")
+            }
+            assert common <= captured

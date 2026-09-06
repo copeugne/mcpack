@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 89 of 136. The exact queue below has 47 open rows.
+Supported provider dispositions: 90 of 136. The exact queue below has 46 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -644,7 +644,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `coffee_delight-1.4.1.jar` | `coffee-delight-provider` (49445ab), test_coffee_delight_provider_scope.py | RESOLVED: Vanilla coffee-bush patch and food/item content, with no independent structure family. Full disposition below. |
 | `collective-1.21.1-8.25.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `comforts-neoforge-9.0.5+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `create-1.21.1-6.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
+| `create-1.21.1-6.0.10.jar` | Create captures and test_create_provider_scope.py; final disposition below. | RESOLVED: Ore generation, player construction, machine behavior, GameTest fixtures and client Ponder scenes. All three embedded libraries accounted for. No independent natural structure family. |
 | `create-enchantment-industry-2.4.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `createbigcannons-5.11.6+mc.1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `createdieselgenerators-1.21.1-1.3.15.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -5428,3 +5428,50 @@ Two of Create's three embedded libraries are now resolved. Remaining Create
 membership work is Ponder's entries/services, common accessors and content
 consumers, followed by final complete parent payload reconciliation. Reuse all
 closed top-level and nested roles. Census remains 89 resolved, 47 open.
+
+### Create final membership disposition
+
+Ponder source 0177383 (extractor 28badcf) retains all six annotated entries,
+five service implementations, three common accessors and the Ponder, PonderClient
+and PonderSceneRegistry consumers. Independent capture reproduced exactly.
+Common startup registers configuration, packets and commands. Client entries
+manage guide rendering, resources, input and configuration UI. Services wrap
+platform metadata, packet transport, rendering, fluid properties and player
+block placement. Common accessors expose biome seed, entity level and server
+storage; they do not create authored sites.
+
+PonderSceneRegistry compiles storyboards by loading a template through Minecraft's
+client resource manager and placing it in a PonderLevel based on the current
+client level. This accounts for the parent's 178 assets/create/ponder templates
+as client guide scenes. The 67 data/create/structure/gametest templates are test
+fixtures under the already resolved GameTest consumer. Neither set adds natural
+structure families. Ponder's complete 531-file partition contains 470 classes,
+47 assets, nine metadata files and five root files. Its five services and three
+common accessors are bound to the captured source. No server mixin, mixin plugin,
+data directory or deeper nested archive is present.
+
+The final parent accounting covers all 11753 files: 2692 classes, 5076 assets,
+3974 data files, seven metadata files and four root files. The metadata contains
+only the manifest, loader declaration, access transformer, three already
+resolved nested libraries and their jarjar metadata. The 25 custom Create data
+files are potato-projectile definitions for the previously inspected registry.
+The existing exact worldgen partition is three ore chains; all template paths,
+58 annotated entries and 43 common mixins have retained contribution roles.
+Reuse their earlier source interpretation, including dynamic recipe/tag output,
+rather than reopening generic machine or library behavior.
+
+Create membership is RESOLVED with no independent natural structure family.
+This does not claim its machines, projectiles or loot have no relevance to later
+family attributes. No candidate was added or removed by this final closure.
+Six focused cases pass, with scoped Ruff and Basedpyright passing:
+
+```sh
+uv run ruff check tests/item8/test_create_provider_scope.py
+uv run basedpyright tests/item8/test_create_provider_scope.py
+uv run pytest -q tests/item8/test_create_provider_scope.py
+```
+
+Current census: 90 resolved, 46 open providers. Forgified Fabric API is the last
+open packaged-generation lane provider; 24 code-only and 21 unmatched rows also
+remain. Resolve those membership rows, then named canonical merge/split decisions
+before resuming the eleven attributes. These provider counts are not family counts.
