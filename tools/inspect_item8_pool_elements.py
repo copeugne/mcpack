@@ -1427,6 +1427,7 @@ CLASSES: tuple[str, ...] = (
     "com/aetherteam/aether/world/structurepiece/silverdungeon/SilverFloorPiece.class",
     "com/aetherteam/aether/world/structurepiece/silverdungeon/SilverProcessorSettings.class",
     "com/aetherteam/aether/world/structurepiece/silverdungeon/SilverTemplePiece.class",
+    "com/aetherteam/aether/world/placementmodifier/HolidayFilter.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
