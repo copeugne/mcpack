@@ -223,33 +223,50 @@ def test_fabric_pack_discovery_consumer_sources() -> None:
                     )
 
 
-def test_fabric_base_module_membership() -> None:
+@pytest.mark.parametrize(
+    ("module", "label", "digest", "class_count", "source_count"),
+    [
+        (
+            "fabric-api-base-0.4.42+d1308ded19",
+            "fabric-base-entry",
+            "d587a46473ff9c81c44c1567e4bc236bf01cd2f5e7afeaec02dc34275290384e",
+            17,
+            1,
+        ),
+        (
+            "fabric-convention-tags-v1-2.1.5+7f945d5b19",
+            "fabric-v1-tags",
+            "989e88abd8f912faef93b28c7172fdc6766dc109f747f3a50c6be653e1f8ab93",
+            12,
+            3,
+        ),
+    ],
+)
+def test_fabric_small_library_membership(
+    module: str, label: str, digest: str, class_count: int, source_count: int
+) -> None:
     source = next(
         s
         for s in retained_sources(Path.cwd())
         if s.name == "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar"
     )
     assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
-    member = "META-INF/jars/fabric-api-base-0.4.42+d1308ded19.jar"
-    directory = Path("evidence/item-8/sources/fabric-base-entry")
+    member = f"META-INF/jars/{module}.jar"
+    directory = Path("evidence/item-8/sources") / label
     raw = (directory / "identities.json").read_bytes()
-    assert (
-        hashlib.sha256(raw).hexdigest()
-        == "d587a46473ff9c81c44c1567e4bc236bf01cd2f5e7afeaec02dc34275290384e"
-    )
+    assert hashlib.sha256(raw).hexdigest() == digest
     rows = cast("list[dict[str, str]]", json.loads(raw))
-    assert len(rows) == 1
-    row = rows[0]
+    assert len(rows) == source_count
     with ZipFile(source.path) as parent:
         payload = parent.read(member)
         with ZipFile(BytesIO(payload)) as archive:
             files = {n for n in archive.namelist() if not n.endswith("/")}
             classes = {n for n in files if n.endswith(".class")}
-            assert len(classes) == 17
+            assert len(classes) == class_count
             assert files - classes == {
                 "META-INF/MANIFEST.MF",
                 "META-INF/neoforge.mods.toml",
-                "assets/fabric-api-base/icon.png",
+                f"assets/{module.rsplit('-', 1)[0]}/icon.png",
                 "META-INF/architectury-loom-nesting-metadata.json",
             }
             assert {
@@ -262,11 +279,12 @@ def test_fabric_base_module_membership() -> None:
                         b"Lnet/neoforged/fml/common/EventBusSubscriber;",
                     )
                 )
-            } == {row["class"]}
-            assert row["archive"] == source.name + "!/" + member
-            assert row["archive_sha256"] == hashlib.sha256(payload).hexdigest()
-            assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
-            assert (
-                row["disassembly_sha256"]
-                == hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
-            )
+            } == {r["class"] for r in rows if r["class"].endswith("/GeneratedEntryPoint.class")}
+            for row in rows:
+                assert row["archive"] == source.name + "!/" + member
+                assert row["archive_sha256"] == hashlib.sha256(payload).hexdigest()
+                assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+                assert (
+                    row["disassembly_sha256"]
+                    == hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
+                )

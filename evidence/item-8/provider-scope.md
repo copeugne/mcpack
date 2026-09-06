@@ -5598,8 +5598,8 @@ remains 90 resolved, 46 open providers; no family candidate was added.
 
 ### Exact Fabric module queue
 
-The frozen parent contains 43 modules. Five membership roles are resolved below;
-38 remain open. These are internal modules of one retained provider, not added
+The frozen parent contains 43 modules. Six membership roles are resolved below;
+37 remain open. These are internal modules of one retained provider, not added
 providers or families. All packaged data is already partitioned by the existing
 Fabric check. Open rows require contribution-role inspection, not an audit of
 every implementation method. Reuse existing captures and stop at the content
@@ -5616,7 +5616,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-client-tags-api-v1-1.1.15+e053909619.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-command-api-v2-2.2.28+36d727be19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-content-registries-v0-8.0.19+5e0d320019.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-convention-tags-v1-2.1.5+7f945d5b19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-convention-tags-v1-2.1.5+7f945d5b19.jar` | RESOLVED: tag keys and legacy-tag warning callback; no independent family. |
 | `fabric-convention-tags-v2-2.11.1+87e5848019.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-data-attachment-api-v1-1.4.5+26d408aa19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-data-generation-api-v1-20.2.34+a4c3605619.jar` | OPEN: inspect entry and declared hook contribution roles. |
@@ -5670,3 +5670,17 @@ source identities. Six focused Fabric cases and scoped Ruff/Basedpyright pass
 using the commands above. Fabric module queue: five resolved, 38 open. Whole
 provider count stays 90 resolved, 46 open. Next: remaining named module entries,
 starting with conventional tag registration; do not repeat API Base internals.
+
+### Fabric v1 conventional tags resolved
+
+Source 73efd5b (extractor ff7e104) independently reproduces the entry,
+TagRegistration and ConventionLogWarnings. The entry installs a server-start
+warning callback, which reads registry tags and logs migration warnings.
+TagRegistration creates tag keys rather than registered structures or resources.
+The module contains twelve classes and four metadata/icon files, with no mixins,
+services or data. The focused check binds this full partition, sole annotated
+entry and all three source identities. No independent family is added.
+
+Seven focused Fabric cases and scoped checks pass using the existing commands.
+Module queue: six resolved, 37 open. Whole-provider census: 90 resolved, 46 open.
+Next: v2 conventional tags, then the remaining named module roles.
