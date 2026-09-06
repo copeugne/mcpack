@@ -1715,3 +1715,44 @@ declared common generation mixins, shared integration and Wover modifier
 activation. Keep packaged template and root enumeration closed unless new
 evidence contradicts them. Provider counts remain 53 resolved and 83 open;
 family grouping and detailed attributes are not complete.
+
+### BetterEnd retained compatibility and plugin boundary
+
+The frozen runtime mod list contains betterend and bclib, but not byg,
+flamboyant or dye_depot. BCLib source aa14b93 establishes that registerAll calls
+an integration's normal init only when modIsInstalled succeeds; that check
+delegates to the integration's ModCore.isLoaded. BetterEnd's previously captured
+entry initializes the corresponding ModCore objects with these exact mod IDs.
+Therefore the three compatibility initializers do not add a generation route
+through this normal dispatch in the retained runtime. Preserve the separate
+datagen branch without claiming that datagen ran. No absent compatibility tree
+needs a geometry audit for this census.
+
+All 136 hash-verified retained archives and their recursively nested JARs were
+checked for the exact BetterEndPlugin service declaration. None provides it.
+Their module-info.class entries also contain no reference to that service
+interface. This is an explicit ServiceLoader declaration boundary, not keyword
+absence used to infer that a whole mod has no structures. It closes this named
+plugin entry question for the retained candidate inputs; it does not waive
+remaining generation/modifier consumers or cover unretained external plugins.
+
+The logic is preserved in test_betterend_retained_plugin_and_compatibility_inputs.
+It binds the debug log SHA-256
+e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b
+and the BCLib source manifest SHA-256
+d085183016dd793119d9f8bbab449fbbc791851dce4ea8244e18da2e9aa4af2c.
+All eight BetterEnd cases and scoped Ruff/Basedpyright pass:
+
+```sh
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py
+uv run ruff check tests/item8/test_betterend_feature_candidates.py
+uv run basedpyright tests/item8/test_betterend_feature_candidates.py
+```
+
+An exploratory follow-up tried an incorrect BCLib filename after its service
+scan and failed with FileNotFoundError. The retained manifest supplied the
+correct bclib-21.0.24.jar identity; accepted source and tests use that identity.
+Remaining BetterEnd census work is its other feature registration consumers,
+declared common generation mixins and shared Wover modifiers. The compatibility
+initializers and retained service declarations are now resolved. Provider counts
+remain 53 resolved and 83 open. BCLib's whole-provider row remains open.
