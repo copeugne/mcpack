@@ -1,0 +1,106 @@
+Compiled from "MatchingBiomesCondition.java"
+public final class net.regions_unexplored.worldgen.processorcondition.MatchingBiomesCondition extends java.lang.Record implements dev.worldgen.lithostitched.api.worldgen.processorcondition.ProcessorCondition {
+  private final net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome> biomes;
+
+  public static final com.mojang.serialization.MapCodec<net.regions_unexplored.worldgen.processorcondition.MatchingBiomesCondition> CODEC;
+
+  public net.regions_unexplored.worldgen.processorcondition.MatchingBiomesCondition(net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: aload_0
+       1: invokespecial #42                 // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #44                 // Field biomes:Lnet/minecraft/core/HolderSet;
+       9: return
+
+  public boolean test(net.minecraft.world.level.WorldGenLevel, dev.worldgen.lithostitched.api.worldgen.processorcondition.ProcessorCondition$Data, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings, net.minecraft.util.RandomSource);
+    Code:
+       0: aload_1
+       1: invokeinterface #58,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getChunkSource:()Lnet/minecraft/world/level/chunk/ChunkSource;
+       6: astore        6
+       8: aload         6
+      10: instanceof    #60                 // class net/minecraft/server/level/ServerChunkCache
+      13: ifeq          26
+      16: aload         6
+      18: checkcast     #60                 // class net/minecraft/server/level/ServerChunkCache
+      21: astore        5
+      23: goto          28
+      26: iconst_0
+      27: ireturn
+      28: aload_2
+      29: invokevirtual #64                 // Method dev/worldgen/lithostitched/api/worldgen/processorcondition/ProcessorCondition$Data.pos:()Lnet/minecraft/core/BlockPos;
+      32: astore        6
+      34: aload         5
+      36: invokevirtual #68                 // Method net/minecraft/server/level/ServerChunkCache.getGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      39: invokevirtual #74                 // Method net/minecraft/world/level/chunk/ChunkGenerator.getBiomeSource:()Lnet/minecraft/world/level/biome/BiomeSource;
+      42: aload         6
+      44: invokevirtual #80                 // Method net/minecraft/core/BlockPos.getX:()I
+      47: invokestatic  #86                 // Method net/minecraft/core/QuartPos.fromBlock:(I)I
+      50: aload         6
+      52: invokevirtual #89                 // Method net/minecraft/core/BlockPos.getY:()I
+      55: invokestatic  #86                 // Method net/minecraft/core/QuartPos.fromBlock:(I)I
+      58: aload         6
+      60: invokevirtual #92                 // Method net/minecraft/core/BlockPos.getZ:()I
+      63: invokestatic  #86                 // Method net/minecraft/core/QuartPos.fromBlock:(I)I
+      66: aload         5
+      68: invokevirtual #96                 // Method net/minecraft/server/level/ServerChunkCache.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+      71: invokevirtual #102                // Method net/minecraft/world/level/levelgen/RandomState.sampler:()Lnet/minecraft/world/level/biome/Climate$Sampler;
+      74: invokevirtual #108                // Method net/minecraft/world/level/biome/BiomeSource.getNoiseBiome:(IIILnet/minecraft/world/level/biome/Climate$Sampler;)Lnet/minecraft/core/Holder;
+      77: astore        7
+      79: aload_0
+      80: getfield      #44                 // Field biomes:Lnet/minecraft/core/HolderSet;
+      83: aload         7
+      85: invokeinterface #114,  2          // InterfaceMethod net/minecraft/core/HolderSet.contains:(Lnet/minecraft/core/Holder;)Z
+      90: ireturn
+
+  public com.mojang.serialization.MapCodec<? extends dev.worldgen.lithostitched.api.worldgen.processorcondition.ProcessorCondition> codec();
+    Code:
+       0: getstatic     #129                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+       3: areturn
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #143,  0            // InvokeDynamic #0:toString:(Lnet/regions_unexplored/worldgen/processorcondition/MatchingBiomesCondition;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #147,  0            // InvokeDynamic #0:hashCode:(Lnet/regions_unexplored/worldgen/processorcondition/MatchingBiomesCondition;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #153,  0            // InvokeDynamic #0:equals:(Lnet/regions_unexplored/worldgen/processorcondition/MatchingBiomesCondition;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome> biomes();
+    Code:
+       0: aload_0
+       1: getfield      #44                 // Field biomes:Lnet/minecraft/core/HolderSet;
+       4: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #165                // Field net/minecraft/world/level/biome/Biome.LIST_CODEC:Lcom/mojang/serialization/Codec;
+       4: ldc           #132                // String biomes
+       6: invokeinterface #171,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #189,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      16: invokevirtual #195                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: invokevirtual #199                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P1;
+      22: aload_0
+      23: invokedynamic #205,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      28: invokevirtual #208                // Method com/mojang/datafixers/Products$P1.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/Function;)Lcom/mojang/datafixers/kinds/App;
+      31: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #215,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+       5: invokestatic  #219                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #129                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}
