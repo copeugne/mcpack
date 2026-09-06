@@ -1,0 +1,834 @@
+Classfile structure_pool_api-neoforge-1.2.1+1.21.1.jar!/net/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin.class
+  Last modified Jan 1, 1980; size 10777 bytes
+  SHA-256 checksum 06bfd488a52106fb6b669b1ac5e7da2ab0473ac0c831f4aec7e014c575d9ad29
+  Compiled from "StructurePoolBasedGenerator_StructurePoolGeneratorMixin.java"
+public class net.fabric_extras.structure_pool.mixin.StructurePoolBasedGenerator_StructurePoolGeneratorMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // net/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 3, methods: 8, attributes: 4
+Constant pool:
+    #1 = Utf8               net/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin
+    #2 = Class              #1            // net/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               StructurePoolBasedGenerator_StructurePoolGeneratorMixin.java
+    #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #7 = Utf8               value
+    #8 = Utf8               Lnet/minecraft/world/level/levelgen/structure/pools/JigsawPlacement$Placer;
+    #9 = Utf8               java/util/Map$Entry
+   #10 = Class              #9            // java/util/Map$Entry
+   #11 = Utf8               java/util/Map
+   #12 = Class              #11           // java/util/Map
+   #13 = Utf8               Entry
+   #14 = Utf8               net/fabric_extras/structure_pool/api/StructurePoolAPI$SpawnPerk
+   #15 = Class              #14           // net/fabric_extras/structure_pool/api/StructurePoolAPI$SpawnPerk
+   #16 = Utf8               net/fabric_extras/structure_pool/api/StructurePoolAPI
+   #17 = Class              #16           // net/fabric_extras/structure_pool/api/StructurePoolAPI
+   #18 = Utf8               SpawnPerk
+   #19 = Utf8               net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+   #20 = Class              #19           // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+   #21 = Utf8               net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+   #22 = Class              #21           // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+   #23 = Utf8               StructureBlockInfo
+   #24 = Utf8               net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement$Placer
+   #25 = Class              #24           // net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement$Placer
+   #26 = Utf8               net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement
+   #27 = Class              #26           // net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement
+   #28 = Utf8               Placer
+   #29 = Utf8               java/lang/invoke/MethodHandles$Lookup
+   #30 = Class              #29           // java/lang/invoke/MethodHandles$Lookup
+   #31 = Utf8               java/lang/invoke/MethodHandles
+   #32 = Class              #31           // java/lang/invoke/MethodHandles
+   #33 = Utf8               Lookup
+   #34 = Utf8               pools
+   #35 = Utf8               Lnet/minecraft/core/Registry;
+   #36 = Utf8               Lnet/minecraft/core/Registry<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;
+   #37 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #38 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+   #39 = Utf8               limitedSpawns
+   #40 = Utf8               Ljava/util/HashMap;
+   #41 = Utf8               Ljava/util/HashMap<Lnet/minecraft/resources/ResourceLocation;Ljava/util/HashMap<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;>;
+   #42 = Utf8               currentPoolId
+   #43 = Utf8               Lnet/minecraft/resources/ResourceLocation;
+   #44 = Utf8               Lorg/jetbrains/annotations/Nullable;
+   #45 = Utf8               <init>
+   #46 = Utf8               ()V
+   #47 = NameAndType        #45:#46       // "<init>":()V
+   #48 = Methodref          #4.#47        // java/lang/Object."<init>":()V
+   #49 = Utf8               java/util/HashMap
+   #50 = Class              #49           // java/util/HashMap
+   #51 = Methodref          #50.#47       // java/util/HashMap."<init>":()V
+   #52 = NameAndType        #39:#40       // limitedSpawns:Ljava/util/HashMap;
+   #53 = Fieldref           #2.#52        // net/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin.limitedSpawns:Ljava/util/HashMap;
+   #54 = Utf8               this
+   #55 = Utf8               Lnet/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin;
+   #56 = Utf8               getPoolKey_Wrapped
+   #57 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Lnet/minecraft/resources/ResourceKey;
+   #58 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;>;)Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;
+   #59 = Utf8               structureBlockInfo
+   #60 = Utf8               aliasLookup
+   #61 = Utf8               original
+   #62 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/WrapOperation;
+   #63 = Utf8               method
+   #64 = Utf8               tryPlacingChildren(Lnet/minecraft/world/level/levelgen/structure/PoolElementStructurePiece;Lorg/apache/commons/lang3/mutable/MutableObject;IZLnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V
+   #65 = Utf8               at
+   #66 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #67 = Utf8               INVOKE
+   #68 = Utf8               target
+   #69 = Utf8               Lnet/minecraft/world/level/levelgen/structure/pools/JigsawPlacement$Placer;readPoolKey(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;)Lnet/minecraft/resources/ResourceKey;
+   #70 = Utf8               com/llamalad7/mixinextras/injector/wrapoperation/Operation
+   #71 = Class              #70           // com/llamalad7/mixinextras/injector/wrapoperation/Operation
+   #72 = Utf8               call
+   #73 = Utf8               ([Ljava/lang/Object;)Ljava/lang/Object;
+   #74 = NameAndType        #72:#73       // call:([Ljava/lang/Object;)Ljava/lang/Object;
+   #75 = InterfaceMethodref #71.#74       // com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+   #76 = Utf8               net/minecraft/resources/ResourceKey
+   #77 = Class              #76           // net/minecraft/resources/ResourceKey
+   #78 = Utf8               location
+   #79 = Utf8               ()Lnet/minecraft/resources/ResourceLocation;
+   #80 = NameAndType        #78:#79       // location:()Lnet/minecraft/resources/ResourceLocation;
+   #81 = Methodref          #77.#80       // net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+   #82 = Utf8               containsKey
+   #83 = Utf8               (Ljava/lang/Object;)Z
+   #84 = NameAndType        #82:#83       // containsKey:(Ljava/lang/Object;)Z
+   #85 = Methodref          #50.#84       // java/util/HashMap.containsKey:(Ljava/lang/Object;)Z
+   #86 = Utf8               spawnLimitations
+   #87 = NameAndType        #86:#40       // spawnLimitations:Ljava/util/HashMap;
+   #88 = Fieldref           #17.#87       // net/fabric_extras/structure_pool/api/StructurePoolAPI.spawnLimitations:Ljava/util/HashMap;
+   #89 = Utf8               get
+   #90 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #91 = NameAndType        #89:#90       // get:(Ljava/lang/Object;)Ljava/lang/Object;
+   #92 = Methodref          #50.#91       // java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+   #93 = Utf8               entrySet
+   #94 = Utf8               ()Ljava/util/Set;
+   #95 = NameAndType        #93:#94       // entrySet:()Ljava/util/Set;
+   #96 = Methodref          #50.#95       // java/util/HashMap.entrySet:()Ljava/util/Set;
+   #97 = Utf8               java/util/Set
+   #98 = Class              #97           // java/util/Set
+   #99 = Utf8               iterator
+  #100 = Utf8               ()Ljava/util/Iterator;
+  #101 = NameAndType        #99:#100      // iterator:()Ljava/util/Iterator;
+  #102 = InterfaceMethodref #98.#101      // java/util/Set.iterator:()Ljava/util/Iterator;
+  #103 = Utf8               net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup
+  #104 = Class              #103          // net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup
+  #105 = Utf8               net/minecraft/resources/ResourceLocation
+  #106 = Class              #105          // net/minecraft/resources/ResourceLocation
+  #107 = Utf8               java/util/Iterator
+  #108 = Class              #107          // java/util/Iterator
+  #109 = Utf8               hasNext
+  #110 = Utf8               ()Z
+  #111 = NameAndType        #109:#110     // hasNext:()Z
+  #112 = InterfaceMethodref #108.#111     // java/util/Iterator.hasNext:()Z
+  #113 = Utf8               next
+  #114 = Utf8               ()Ljava/lang/Object;
+  #115 = NameAndType        #113:#114     // next:()Ljava/lang/Object;
+  #116 = InterfaceMethodref #108.#115     // java/util/Iterator.next:()Ljava/lang/Object;
+  #117 = Utf8               getKey
+  #118 = NameAndType        #117:#114     // getKey:()Ljava/lang/Object;
+  #119 = InterfaceMethodref #10.#118      // java/util/Map$Entry.getKey:()Ljava/lang/Object;
+  #120 = Utf8               getValue
+  #121 = NameAndType        #120:#114     // getValue:()Ljava/lang/Object;
+  #122 = InterfaceMethodref #10.#121      // java/util/Map$Entry.getValue:()Ljava/lang/Object;
+  #123 = Utf8               limit
+  #124 = Utf8               ()I
+  #125 = NameAndType        #123:#124     // limit:()I
+  #126 = Methodref          #15.#125      // net/fabric_extras/structure_pool/api/StructurePoolAPI$SpawnPerk.limit:()I
+  #127 = Utf8               java/lang/Integer
+  #128 = Class              #127          // java/lang/Integer
+  #129 = Utf8               valueOf
+  #130 = Utf8               (I)Ljava/lang/Integer;
+  #131 = NameAndType        #129:#130     // valueOf:(I)Ljava/lang/Integer;
+  #132 = Methodref          #128.#131     // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+  #133 = Utf8               put
+  #134 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #135 = NameAndType        #133:#134     // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #136 = Methodref          #50.#135      // java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #137 = NameAndType        #42:#43       // currentPoolId:Lnet/minecraft/resources/ResourceLocation;
+  #138 = Fieldref           #2.#137       // net/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin.currentPoolId:Lnet/minecraft/resources/ResourceLocation;
+  #139 = Utf8               structureId
+  #140 = Utf8               spawnPerk
+  #141 = Utf8               Lnet/fabric_extras/structure_pool/api/StructurePoolAPI$SpawnPerk;
+  #142 = Utf8               spawnLimit
+  #143 = Utf8               I
+  #144 = Utf8               entry
+  #145 = Utf8               Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lnet/fabric_extras/structure_pool/api/StructurePoolAPI$SpawnPerk;>;
+  #146 = Utf8               Ljava/util/Map$Entry;
+  #147 = Utf8               freshLimitations
+  #148 = Utf8               Ljava/util/HashMap<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;
+  #149 = Utf8               Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+  #150 = Utf8               Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;
+  #151 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;>;
+  #152 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+  #153 = Utf8               key
+  #154 = Utf8               Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;
+  #155 = Utf8               Lnet/minecraft/resources/ResourceKey;
+  #156 = Utf8               poolId
+  #157 = Utf8               getElementIndicesInRandomOrder_Wrapped
+  #158 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;Lnet/minecraft/util/RandomSource;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Ljava/util/List;
+  #159 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;Lnet/minecraft/util/RandomSource;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;>;)Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+  #160 = Utf8               pool
+  #161 = Utf8               random
+  #162 = Utf8               Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;getShuffledTemplates(Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+  #163 = Utf8               java/util/List
+  #164 = Class              #163          // java/util/List
+  #165 = MethodType         #83           //  (Ljava/lang/Object;)Z
+  #166 = Utf8               lambda$getElementIndicesInRandomOrder_Wrapped$0
+  #167 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Z
+  #168 = NameAndType        #166:#167     // lambda$getElementIndicesInRandomOrder_Wrapped$0:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Z
+  #169 = Methodref          #2.#168       // net/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin.lambda$getElementIndicesInRandomOrder_Wrapped$0:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Z
+  #170 = MethodHandle       5:#169        // REF_invokeVirtual net/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin.lambda$getElementIndicesInRandomOrder_Wrapped$0:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Z
+  #171 = MethodType         #167          //  (Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Z
+  #172 = Utf8               java/lang/invoke/LambdaMetafactory
+  #173 = Class              #172          // java/lang/invoke/LambdaMetafactory
+  #174 = Utf8               metafactory
+  #175 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #176 = NameAndType        #174:#175     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #177 = Methodref          #173.#176     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #178 = MethodHandle       6:#177        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #179 = Utf8               test
+  #180 = Utf8               (Lnet/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin;)Ljava/util/function/Predicate;
+  #181 = NameAndType        #179:#180     // test:(Lnet/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin;)Ljava/util/function/Predicate;
+  #182 = InvokeDynamic      #0:#181       // #0:test:(Lnet/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin;)Ljava/util/function/Predicate;
+  #183 = Utf8               removeIf
+  #184 = Utf8               (Ljava/util/function/Predicate;)Z
+  #185 = NameAndType        #183:#184     // removeIf:(Ljava/util/function/Predicate;)Z
+  #186 = InterfaceMethodref #164.#185     // java/util/List.removeIf:(Ljava/util/function/Predicate;)Z
+  #187 = Utf8               Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;
+  #188 = Utf8               Lnet/minecraft/util/RandomSource;
+  #189 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;>;
+  #190 = Utf8               result
+  #191 = Utf8               Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+  #192 = Utf8               Ljava/util/List;
+  #193 = Utf8               children_Wrapped
+  #194 = Utf8               (Ljava/util/List;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Z
+  #195 = Utf8               (Ljava/util/List;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Boolean;>;)Z
+  #196 = Utf8               list
+  #197 = Utf8               object
+  #198 = Utf8               Ljava/util/List;add(Ljava/lang/Object;)Z
+  #199 = Utf8               net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece
+  #200 = Class              #199          // net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece
+  #201 = Utf8               getElement
+  #202 = Utf8               ()Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;
+  #203 = NameAndType        #201:#202     // getElement:()Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;
+  #204 = Methodref          #200.#203     // net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece.getElement:()Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;
+  #205 = Utf8               consumeLimit
+  #206 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)V
+  #207 = NameAndType        #205:#206     // consumeLimit:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)V
+  #208 = Methodref          #2.#207       // net/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin.consumeLimit:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)V
+  #209 = Utf8               java/lang/Boolean
+  #210 = Class              #209          // java/lang/Boolean
+  #211 = Utf8               booleanValue
+  #212 = NameAndType        #211:#110     // booleanValue:()Z
+  #213 = Methodref          #210.#212     // java/lang/Boolean.booleanValue:()Z
+  #214 = Utf8               piece
+  #215 = Utf8               Lnet/minecraft/world/level/levelgen/structure/PoolElementStructurePiece;
+  #216 = Utf8               Ljava/lang/Object;
+  #217 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Boolean;>;
+  #218 = Utf8               resolveStructureElementId
+  #219 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Lnet/minecraft/resources/ResourceLocation;
+  #220 = Utf8               element
+  #221 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #222 = NameAndType        #34:#35       // pools:Lnet/minecraft/core/Registry;
+  #223 = Fieldref           #2.#222       // net/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin.pools:Lnet/minecraft/core/Registry;
+  #224 = Utf8               net/minecraft/core/Registry
+  #225 = Class              #224          // net/minecraft/core/Registry
+  #226 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+  #227 = NameAndType        #89:#226      // get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+  #228 = InterfaceMethodref #225.#227     // net/minecraft/core/Registry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+  #229 = Utf8               net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool
+  #230 = Class              #229          // net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool
+  #231 = Utf8               net/fabric_extras/structure_pool/internal/StructurePoolExtension
+  #232 = Class              #231          // net/fabric_extras/structure_pool/internal/StructurePoolExtension
+  #233 = Utf8               identify
+  #234 = NameAndType        #233:#219     // identify:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Lnet/minecraft/resources/ResourceLocation;
+  #235 = InterfaceMethodref #232.#234     // net/fabric_extras/structure_pool/internal/StructurePoolExtension.identify:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Lnet/minecraft/resources/ResourceLocation;
+  #236 = Utf8               Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;
+  #237 = Utf8               limitAllowsSpawn
+  #238 = NameAndType        #218:#219     // resolveStructureElementId:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Lnet/minecraft/resources/ResourceLocation;
+  #239 = Methodref          #2.#238       // net/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin.resolveStructureElementId:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Lnet/minecraft/resources/ResourceLocation;
+  #240 = Utf8               intValue
+  #241 = NameAndType        #240:#124     // intValue:()I
+  #242 = Methodref          #128.#241     // java/lang/Integer.intValue:()I
+  #243 = Utf8               Ljava/lang/Integer;
+  #244 = Utf8               poolSpecificLimits
+  #245 = NameAndType        #237:#167     // limitAllowsSpawn:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Z
+  #246 = Methodref          #2.#245       // net/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin.limitAllowsSpawn:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Z
+  #247 = Utf8               Signature
+  #248 = Utf8               RuntimeVisibleAnnotations
+  #249 = Utf8               RuntimeInvisibleAnnotations
+  #250 = Utf8               RuntimeInvisibleTypeAnnotations
+  #251 = Utf8               Code
+  #252 = Utf8               LineNumberTable
+  #253 = Utf8               LocalVariableTable
+  #254 = Utf8               StackMapTable
+  #255 = Utf8               LocalVariableTypeTable
+  #256 = Utf8               MethodParameters
+  #257 = Utf8               InnerClasses
+  #258 = Utf8               SourceFile
+  #259 = Utf8               BootstrapMethods
+{
+  private net.minecraft.core.Registry<net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool> pools;
+    descriptor: Lnet/minecraft/core/Registry;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #36                          // Lnet/minecraft/core/Registry<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;
+    RuntimeVisibleAnnotations:
+      0: #37()
+        org.spongepowered.asm.mixin.Shadow
+      1: #38()
+        org.spongepowered.asm.mixin.Final
+
+  private java.util.HashMap<net.minecraft.resources.ResourceLocation, java.util.HashMap<net.minecraft.resources.ResourceLocation, java.lang.Integer>> limitedSpawns;
+    descriptor: Ljava/util/HashMap;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #41                          // Ljava/util/HashMap<Lnet/minecraft/resources/ResourceLocation;Ljava/util/HashMap<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;>;
+
+  private net.minecraft.resources.ResourceLocation currentPoolId;
+    descriptor: Lnet/minecraft/resources/ResourceLocation;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeInvisibleAnnotations:
+      0: #44()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #44(): FIELD
+        org.jetbrains.annotations.Nullable
+
+  public net.fabric_extras.structure_pool.mixin.StructurePoolBasedGenerator_StructurePoolGeneratorMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #48                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #50                 // class java/util/HashMap
+         8: dup
+         9: invokespecial #51                 // Method java/util/HashMap."<init>":()V
+        12: putfield      #53                 // Field limitedSpawns:Ljava/util/HashMap;
+        15: return
+      LineNumberTable:
+        line 28: 0
+        line 30: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lnet/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin;
+
+  private net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool> getPoolKey_Wrapped(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup, com.llamalad7.mixinextras.injector.wrapoperation.Operation<net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool>>);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Lnet/minecraft/resources/ResourceKey;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=12, args_size=4
+         0: aload_3
+         1: iconst_2
+         2: anewarray     #4                  // class java/lang/Object
+         5: dup
+         6: iconst_0
+         7: aload_1
+         8: aastore
+         9: dup
+        10: iconst_1
+        11: aload_2
+        12: aastore
+        13: invokeinterface #75,  2           // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        18: checkcast     #77                 // class net/minecraft/resources/ResourceKey
+        21: astore        4
+        23: aload         4
+        25: invokevirtual #81                 // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+        28: astore        5
+        30: aload_0
+        31: getfield      #53                 // Field limitedSpawns:Ljava/util/HashMap;
+        34: aload         5
+        36: invokevirtual #85                 // Method java/util/HashMap.containsKey:(Ljava/lang/Object;)Z
+        39: ifne          164
+        42: getstatic     #88                 // Field net/fabric_extras/structure_pool/api/StructurePoolAPI.spawnLimitations:Ljava/util/HashMap;
+        45: aload         5
+        47: invokevirtual #85                 // Method java/util/HashMap.containsKey:(Ljava/lang/Object;)Z
+        50: ifeq          164
+        53: new           #50                 // class java/util/HashMap
+        56: dup
+        57: invokespecial #51                 // Method java/util/HashMap."<init>":()V
+        60: astore        6
+        62: getstatic     #88                 // Field net/fabric_extras/structure_pool/api/StructurePoolAPI.spawnLimitations:Ljava/util/HashMap;
+        65: aload         5
+        67: invokevirtual #92                 // Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        70: checkcast     #50                 // class java/util/HashMap
+        73: invokevirtual #96                 // Method java/util/HashMap.entrySet:()Ljava/util/Set;
+        76: invokeinterface #102,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        81: astore        7
+        83: aload         7
+        85: invokeinterface #112,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        90: ifeq          152
+        93: aload         7
+        95: invokeinterface #116,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       100: checkcast     #10                 // class java/util/Map$Entry
+       103: astore        8
+       105: aload         8
+       107: invokeinterface #119,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       112: checkcast     #106                // class net/minecraft/resources/ResourceLocation
+       115: astore        9
+       117: aload         8
+       119: invokeinterface #122,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       124: checkcast     #15                 // class net/fabric_extras/structure_pool/api/StructurePoolAPI$SpawnPerk
+       127: astore        10
+       129: aload         10
+       131: invokevirtual #126                // Method net/fabric_extras/structure_pool/api/StructurePoolAPI$SpawnPerk.limit:()I
+       134: istore        11
+       136: aload         6
+       138: aload         9
+       140: iload         11
+       142: invokestatic  #132                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       145: invokevirtual #136                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       148: pop
+       149: goto          83
+       152: aload_0
+       153: getfield      #53                 // Field limitedSpawns:Ljava/util/HashMap;
+       156: aload         5
+       158: aload         6
+       160: invokevirtual #136                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       163: pop
+       164: aload_0
+       165: aload         4
+       167: invokevirtual #81                 // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       170: putfield      #138                // Field currentPoolId:Lnet/minecraft/resources/ResourceLocation;
+       173: aload         4
+       175: areturn
+      StackMapTable: number_of_entries = 3
+        frame_type = 255 /* full_frame */
+          offset_delta = 83
+          locals = [ class net/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin, class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo, class net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup, class com/llamalad7/mixinextras/injector/wrapoperation/Operation, class net/minecraft/resources/ResourceKey, class net/minecraft/resources/ResourceLocation, class java/util/HashMap, class java/util/Iterator ]
+          stack = []
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 68
+        frame_type = 249 /* chop */
+          offset_delta = 11
+      LineNumberTable:
+        line 40: 0
+        line 41: 23
+        line 43: 30
+        line 44: 53
+        line 45: 62
+        line 46: 105
+        line 47: 117
+        line 48: 129
+        line 49: 136
+        line 50: 149
+        line 51: 152
+        line 55: 164
+        line 56: 173
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          117      32     9 structureId   Lnet/minecraft/resources/ResourceLocation;
+          129      20    10 spawnPerk   Lnet/fabric_extras/structure_pool/api/StructurePoolAPI$SpawnPerk;
+          136      13    11 spawnLimit   I
+          105      44     8 entry   Ljava/util/Map$Entry;
+           62     102     6 freshLimitations   Ljava/util/HashMap;
+            0     176     0  this   Lnet/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin;
+            0     176     1 structureBlockInfo   Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+            0     176     2 aliasLookup   Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;
+            0     176     3 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+           23     153     4   key   Lnet/minecraft/resources/ResourceKey;
+           30     146     5 poolId   Lnet/minecraft/resources/ResourceLocation;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          105      44     8 entry   Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lnet/fabric_extras/structure_pool/api/StructurePoolAPI$SpawnPerk;>;
+           62     102     6 freshLimitations   Ljava/util/HashMap<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;
+            0     176     3 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;>;
+           23     153     4   key   Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;
+    Signature: #58                          // (Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;>;)Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;
+    RuntimeVisibleAnnotations:
+      0: #62(#63=[s#64],#65=[@#66(#7=s#67,#68=s#69)])
+        com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation(
+          method=["tryPlacingChildren(Lnet/minecraft/world/level/levelgen/structure/PoolElementStructurePiece;Lorg/apache/commons/lang3/mutable/MutableObject;IZLnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/level/levelgen/structure/pools/JigsawPlacement$Placer;readPoolKey(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;)Lnet/minecraft/resources/ResourceKey;"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      structureBlockInfo
+      aliasLookup
+      original
+
+  private java.util.List<net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement> getElementIndicesInRandomOrder_Wrapped(net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool, net.minecraft.util.RandomSource, com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.util.List<net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement>>);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;Lnet/minecraft/util/RandomSource;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Ljava/util/List;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=5, args_size=4
+         0: aload_3
+         1: iconst_2
+         2: anewarray     #4                  // class java/lang/Object
+         5: dup
+         6: iconst_0
+         7: aload_1
+         8: aastore
+         9: dup
+        10: iconst_1
+        11: aload_2
+        12: aastore
+        13: invokeinterface #75,  2           // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        18: checkcast     #164                // class java/util/List
+        21: astore        4
+        23: aload         4
+        25: aload_0
+        26: invokedynamic #182,  0            // InvokeDynamic #0:test:(Lnet/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin;)Ljava/util/function/Predicate;
+        31: invokeinterface #186,  2          // InterfaceMethod java/util/List.removeIf:(Ljava/util/function/Predicate;)Z
+        36: pop
+        37: aload         4
+        39: areturn
+      LineNumberTable:
+        line 65: 0
+        line 66: 23
+        line 67: 37
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      40     0  this   Lnet/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin;
+            0      40     1  pool   Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;
+            0      40     2 random   Lnet/minecraft/util/RandomSource;
+            0      40     3 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+           23      17     4 result   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      40     3 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;>;
+           23      17     4 result   Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+    Signature: #159                         // (Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;Lnet/minecraft/util/RandomSource;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;>;)Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+    RuntimeVisibleAnnotations:
+      0: #62(#63=[s#64],#65=[@#66(#7=s#67,#68=s#162)])
+        com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation(
+          method=["tryPlacingChildren(Lnet/minecraft/world/level/levelgen/structure/PoolElementStructurePiece;Lorg/apache/commons/lang3/mutable/MutableObject;IZLnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;getShuffledTemplates(Lnet/minecraft/util/RandomSource;)Ljava/util/List;"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      pool
+      random
+      original
+
+  private boolean children_Wrapped(java.util.List, java.lang.Object, com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.lang.Boolean>);
+    descriptor: (Ljava/util/List;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=5, args_size=4
+         0: aload_2
+         1: instanceof    #200                // class net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece
+         4: ifeq          22
+         7: aload_2
+         8: checkcast     #200                // class net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece
+        11: astore        4
+        13: aload_0
+        14: aload         4
+        16: invokevirtual #204                // Method net/minecraft/world/level/levelgen/structure/PoolElementStructurePiece.getElement:()Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;
+        19: invokevirtual #208                // Method consumeLimit:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)V
+        22: aload_3
+        23: iconst_2
+        24: anewarray     #4                  // class java/lang/Object
+        27: dup
+        28: iconst_0
+        29: aload_1
+        30: aastore
+        31: dup
+        32: iconst_1
+        33: aload_2
+        34: aastore
+        35: invokeinterface #75,  2           // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        40: checkcast     #210                // class java/lang/Boolean
+        43: invokevirtual #213                // Method java/lang/Boolean.booleanValue:()Z
+        46: ireturn
+      StackMapTable: number_of_entries = 1
+        frame_type = 22 /* same */
+      LineNumberTable:
+        line 77: 0
+        line 78: 13
+        line 80: 22
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           13       9     4 piece   Lnet/minecraft/world/level/levelgen/structure/PoolElementStructurePiece;
+            0      47     0  this   Lnet/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin;
+            0      47     1  list   Ljava/util/List;
+            0      47     2 object   Ljava/lang/Object;
+            0      47     3 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      47     3 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Boolean;>;
+    Signature: #195                         // (Ljava/util/List;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Boolean;>;)Z
+    RuntimeVisibleAnnotations:
+      0: #62(#63=[s#64],#65=[@#66(#7=s#67,#68=s#198)])
+        com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation(
+          method=["tryPlacingChildren(Lnet/minecraft/world/level/levelgen/structure/PoolElementStructurePiece;Lorg/apache/commons/lang3/mutable/MutableObject;IZLnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Ljava/util/List;add(Ljava/lang/Object;)Z"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      list
+      object
+      original
+
+  private net.minecraft.resources.ResourceLocation resolveStructureElementId(net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Lnet/minecraft/resources/ResourceLocation;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=3, args_size=2
+         0: aload_0
+         1: getfield      #138                // Field currentPoolId:Lnet/minecraft/resources/ResourceLocation;
+         4: ifnonnull     9
+         7: aconst_null
+         8: areturn
+         9: aload_0
+        10: getfield      #223                // Field pools:Lnet/minecraft/core/Registry;
+        13: aload_0
+        14: getfield      #138                // Field currentPoolId:Lnet/minecraft/resources/ResourceLocation;
+        17: invokeinterface #228,  2          // InterfaceMethod net/minecraft/core/Registry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+        22: checkcast     #230                // class net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool
+        25: astore_2
+        26: aload_2
+        27: ifnonnull     32
+        30: aconst_null
+        31: areturn
+        32: aload_2
+        33: checkcast     #232                // class net/fabric_extras/structure_pool/internal/StructurePoolExtension
+        36: aload_1
+        37: invokeinterface #235,  2          // InterfaceMethod net/fabric_extras/structure_pool/internal/StructurePoolExtension.identify:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Lnet/minecraft/resources/ResourceLocation;
+        42: areturn
+      StackMapTable: number_of_entries = 2
+        frame_type = 9 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 22
+          locals = [ class net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool ]
+      LineNumberTable:
+        line 85: 0
+        line 86: 7
+        line 88: 9
+        line 89: 26
+        line 90: 30
+        line 92: 32
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      43     0  this   Lnet/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin;
+            0      43     1 element   Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;
+           26      17     2  pool   Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;
+    RuntimeVisibleAnnotations:
+      0: #221()
+        org.spongepowered.asm.mixin.Unique
+    RuntimeInvisibleAnnotations:
+      0: #44()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #44(): METHOD_RETURN
+        org.jetbrains.annotations.Nullable
+    MethodParameters:
+      Name                           Flags
+      element
+
+  private boolean limitAllowsSpawn(net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=4, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #239                // Method resolveStructureElementId:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Lnet/minecraft/resources/ResourceLocation;
+         5: astore_2
+         6: aload_2
+         7: ifnonnull     12
+        10: iconst_1
+        11: ireturn
+        12: aload_0
+        13: getfield      #53                 // Field limitedSpawns:Ljava/util/HashMap;
+        16: aload_0
+        17: getfield      #138                // Field currentPoolId:Lnet/minecraft/resources/ResourceLocation;
+        20: invokevirtual #85                 // Method java/util/HashMap.containsKey:(Ljava/lang/Object;)Z
+        23: ifne          28
+        26: iconst_1
+        27: ireturn
+        28: aload_0
+        29: getfield      #53                 // Field limitedSpawns:Ljava/util/HashMap;
+        32: aload_0
+        33: getfield      #138                // Field currentPoolId:Lnet/minecraft/resources/ResourceLocation;
+        36: invokevirtual #92                 // Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        39: checkcast     #50                 // class java/util/HashMap
+        42: aload_2
+        43: invokevirtual #85                 // Method java/util/HashMap.containsKey:(Ljava/lang/Object;)Z
+        46: ifne          51
+        49: iconst_1
+        50: ireturn
+        51: aload_0
+        52: getfield      #53                 // Field limitedSpawns:Ljava/util/HashMap;
+        55: aload_0
+        56: getfield      #138                // Field currentPoolId:Lnet/minecraft/resources/ResourceLocation;
+        59: invokevirtual #92                 // Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        62: checkcast     #50                 // class java/util/HashMap
+        65: aload_2
+        66: invokevirtual #92                 // Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        69: checkcast     #128                // class java/lang/Integer
+        72: astore_3
+        73: aload_3
+        74: invokevirtual #242                // Method java/lang/Integer.intValue:()I
+        77: ifle          84
+        80: iconst_1
+        81: goto          85
+        84: iconst_0
+        85: ireturn
+      StackMapTable: number_of_entries = 5
+        frame_type = 252 /* append */
+          offset_delta = 12
+          locals = [ class net/minecraft/resources/ResourceLocation ]
+        frame_type = 15 /* same */
+        frame_type = 22 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 32
+          locals = [ class java/lang/Integer ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+      LineNumberTable:
+        line 96: 0
+        line 97: 6
+        line 98: 10
+        line 100: 12
+        line 101: 26
+        line 103: 28
+        line 104: 49
+        line 106: 51
+        line 108: 73
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      86     0  this   Lnet/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin;
+            0      86     1 element   Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;
+            6      80     2 structureId   Lnet/minecraft/resources/ResourceLocation;
+           73      13     3 limit   Ljava/lang/Integer;
+    MethodParameters:
+      Name                           Flags
+      element
+
+  private void consumeLimit(net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=5, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #239                // Method resolveStructureElementId:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Lnet/minecraft/resources/ResourceLocation;
+         5: astore_2
+         6: aload_2
+         7: ifnonnull     11
+        10: return
+        11: aload_0
+        12: getfield      #53                 // Field limitedSpawns:Ljava/util/HashMap;
+        15: aload_0
+        16: getfield      #138                // Field currentPoolId:Lnet/minecraft/resources/ResourceLocation;
+        19: invokevirtual #92                 // Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        22: checkcast     #50                 // class java/util/HashMap
+        25: astore_3
+        26: aload_3
+        27: ifnonnull     31
+        30: return
+        31: aload_3
+        32: aload_2
+        33: invokevirtual #85                 // Method java/util/HashMap.containsKey:(Ljava/lang/Object;)Z
+        36: ifne          40
+        39: return
+        40: aload_3
+        41: aload_2
+        42: invokevirtual #92                 // Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        45: checkcast     #128                // class java/lang/Integer
+        48: astore        4
+        50: aload         4
+        52: invokevirtual #242                // Method java/lang/Integer.intValue:()I
+        55: ifle          74
+        58: aload_3
+        59: aload_2
+        60: aload         4
+        62: invokevirtual #242                // Method java/lang/Integer.intValue:()I
+        65: iconst_1
+        66: isub
+        67: invokestatic  #132                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        70: invokevirtual #136                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        73: pop
+        74: return
+      StackMapTable: number_of_entries = 4
+        frame_type = 252 /* append */
+          offset_delta = 11
+          locals = [ class net/minecraft/resources/ResourceLocation ]
+        frame_type = 252 /* append */
+          offset_delta = 19
+          locals = [ class java/util/HashMap ]
+        frame_type = 8 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 33
+          locals = [ class java/lang/Integer ]
+      LineNumberTable:
+        line 112: 0
+        line 113: 6
+        line 114: 11
+        line 115: 26
+        line 116: 31
+        line 117: 40
+        line 119: 50
+        line 120: 58
+        line 122: 74
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      75     0  this   Lnet/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin;
+            0      75     1 element   Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;
+            6      69     2 structureId   Lnet/minecraft/resources/ResourceLocation;
+           26      49     3 poolSpecificLimits   Ljava/util/HashMap;
+           50      25     4 limit   Ljava/lang/Integer;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           26      49     3 poolSpecificLimits   Ljava/util/HashMap<Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;>;
+    MethodParameters:
+      Name                           Flags
+      element
+
+  private boolean lambda$getElementIndicesInRandomOrder_Wrapped$0(net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Z
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #246                // Method limitAllowsSpawn:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Z
+         5: ifne          12
+         8: iconst_1
+         9: goto          13
+        12: iconst_0
+        13: ireturn
+      StackMapTable: number_of_entries = 2
+        frame_type = 12 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+      LineNumberTable:
+        line 66: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0  this   Lnet/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin;
+            0      14     1 element   Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;
+    MethodParameters:
+      Name                           Flags
+      element
+}
+InnerClasses:
+  public static #13= #10 of #12;          // Entry=class java/util/Map$Entry of class java/util/Map
+  public static final #18= #15 of #17;    // SpawnPerk=class net/fabric_extras/structure_pool/api/StructurePoolAPI$SpawnPerk of class net/fabric_extras/structure_pool/api/StructurePoolAPI
+  public static final #23= #20 of #22;    // StructureBlockInfo=class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo of class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+  public static final #28= #25 of #27;    // Placer=class net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement$Placer of class net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement
+  public static final #33= #30 of #32;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+SourceFile: "StructurePoolBasedGenerator_StructurePoolGeneratorMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/levelgen/structure/pools/JigsawPlacement$Placer;]
+    )
+BootstrapMethods:
+  0: #178 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #165 (Ljava/lang/Object;)Z
+      #170 REF_invokeVirtual net/fabric_extras/structure_pool/mixin/StructurePoolBasedGenerator_StructurePoolGeneratorMixin.lambda$getElementIndicesInRandomOrder_Wrapped$0:(Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Z
+      #171 (Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Z
