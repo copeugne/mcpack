@@ -9594,3 +9594,14 @@ uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
 uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
 uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
 ```
+
+Inventory regenerated from 7e14281a and independently reproduced exactly.
+Only the six original design records, the two new vessel groups and the decision
+input identity changed. Root-specific fields separate with their roots; all 887
+roots remain covered once and full watercraft variants are preserved.
+SHA-256: 025824a16a5c7180f67b76304a518e1953c55d77751b8b0c6b9df50ac3ca0783.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-facilities-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-facilities-r2.json
+```

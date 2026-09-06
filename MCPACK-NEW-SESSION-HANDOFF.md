@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 7e14281a and reproduces exactly. All 887 roots remain covered
+once; full watercraft variants are preserved after the split. Coverage groups:
+408. Canonical-note backlog: 73 (IDAS 59, AdoraBuild 14). Next: remaining AdoraBuild
+architecture. Required attributes and nonregistry reconciliation remain open.
+
 Six AdoraBuild vessel/facility records are resolved against views 03112db3 and
 source contents. Watercraft separates into sailing ships, rafts and covered
 riverboat with full variants retained. The affected definition/root/evidence case
