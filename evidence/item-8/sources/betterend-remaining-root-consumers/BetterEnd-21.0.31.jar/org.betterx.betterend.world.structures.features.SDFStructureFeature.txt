@@ -1,0 +1,83 @@
+Compiled from "SDFStructureFeature.java"
+public abstract class org.betterx.betterend.world.structures.features.SDFStructureFeature extends org.betterx.betterend.world.structures.features.FeatureBaseStructure {
+  public org.betterx.betterend.world.structures.features.SDFStructureFeature(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method org/betterx/betterend/world/structures/features/FeatureBaseStructure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       5: return
+
+  public static void generatePieces(net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, net.minecraft.world.level.levelgen.structure.Structure$GenerationContext, java.util.function.BiFunction<net.minecraft.core.BlockPos, net.minecraft.util.RandomSource, org.betterx.bclib.sdf.SDF>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+       4: astore_3
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+       9: astore        4
+      11: aload_1
+      12: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      15: astore        5
+      17: aload_1
+      18: invokevirtual #21                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      21: astore        6
+      23: aload         4
+      25: iconst_4
+      26: bipush        12
+      28: aload_3
+      29: invokestatic  #25                 // Method org/betterx/bclib/util/MHelper.randRange:(IILnet/minecraft/util/RandomSource;)I
+      32: invokevirtual #31                 // Method net/minecraft/world/level/ChunkPos.getBlockX:(I)I
+      35: istore        7
+      37: aload         4
+      39: iconst_4
+      40: bipush        12
+      42: aload_3
+      43: invokestatic  #25                 // Method org/betterx/bclib/util/MHelper.randRange:(IILnet/minecraft/util/RandomSource;)I
+      46: invokevirtual #37                 // Method net/minecraft/world/level/ChunkPos.getBlockZ:(I)I
+      49: istore        8
+      51: aload         5
+      53: iload         7
+      55: iload         8
+      57: getstatic     #40                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      60: aload         6
+      62: aload_1
+      63: invokevirtual #46                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+      66: invokevirtual #50                 // Method net/minecraft/world/level/chunk/ChunkGenerator.getBaseHeight:(IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+      69: istore        9
+      71: iload         9
+      73: iconst_5
+      74: if_icmple     122
+      77: new           #56                 // class net/minecraft/core/BlockPos
+      80: dup
+      81: iload         7
+      83: iload         9
+      85: iload         8
+      87: invokespecial #58                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+      90: astore        10
+      92: new           #61                 // class org/betterx/betterend/world/structures/piece/VoxelPiece
+      95: dup
+      96: aload_2
+      97: aload         10
+      99: aload_3
+     100: invokedynamic #63,  0             // InvokeDynamic #0:accept:(Ljava/util/function/BiFunction;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)Ljava/util/function/Consumer;
+     105: aload_3
+     106: invokeinterface #67,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:()I
+     111: invokespecial #73                 // Method org/betterx/betterend/world/structures/piece/VoxelPiece."<init>":(Ljava/util/function/Consumer;I)V
+     114: astore        11
+     116: aload_0
+     117: aload         11
+     119: invokevirtual #76                 // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     122: return
+
+  private static void lambda$generatePieces$0(java.util.function.BiFunction, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource, org.betterx.bclib.api.v2.levelgen.structures.StructureWorld);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokeinterface #82,  3           // InterfaceMethod java/util/function/BiFunction.apply:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       8: checkcast     #88                 // class org/betterx/bclib/sdf/SDF
+      11: aload_3
+      12: aload_1
+      13: invokevirtual #90                 // Method org/betterx/bclib/sdf/SDF.fillRecursive:(Lorg/betterx/bclib/api/v2/levelgen/structures/StructureWorld;Lnet/minecraft/core/BlockPos;)V
+      16: return
+}
