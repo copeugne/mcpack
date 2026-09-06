@@ -217,6 +217,10 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "net/mehvahdjukaar/amendments/common/block/StructureCauldronHack.class",
+    "net/mehvahdjukaar/amendments/integration/neoforge/BlueprintIntegration$BlockStateRepaletter.class",
+    "net/mehvahdjukaar/amendments/integration/SuppCompat.class",
     "net/mehvahdjukaar/amendments/Amendments.class",
     "net/mehvahdjukaar/amendments/events/ModEvents.class",
     "net/mehvahdjukaar/amendments/integration/neoforge/BlueprintIntegration.class",
