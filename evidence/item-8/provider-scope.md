@@ -9400,3 +9400,12 @@ uv run pytest tests/item8/test_family_decisions.py -q -k terralith
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+Inventory regenerated from d2213481 and independently reproduced exactly.
+Only the four Terralith grouping decisions and the decision input identity changed.
+SHA-256: 555f07790ee25963ece0b361fe1ca49cf29fec08b1d2bb99284d4597c8b5f4da.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-terralith-encounters-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-terralith-encounters-r2.json
+```

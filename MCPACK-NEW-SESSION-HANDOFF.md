@@ -6,6 +6,10 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches d2213481 and reproduces exactly. Canonical-note backlog: 101
+(IDAS 59, AdoraBuild 31, Terralith 11). Coverage groups: 405. Next: remaining
+Terralith building/rubble comparisons. Attributes and nonregistry work remain.
+
 Four Terralith design relationships are resolved: spire, frosted dungeon, hive
 cache and witch hut. Existing template/graph evidence and the affected case pass;
 scoped checks pass. Canonical-note backlog: 101 (IDAS 59, AdoraBuild 31, Terralith
