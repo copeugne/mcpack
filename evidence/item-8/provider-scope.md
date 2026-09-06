@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 93 of 136. The exact queue below has 43 open rows.
+Supported provider dispositions: 94 of 136. The exact queue below has 42 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -663,7 +663,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `fzzy_config-0.7.6+1.21+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `geckolib-neoforge-1.21.1-4.8.4.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `idas-1.13.7+1.21.1-neoforge.jar` | `idas-provider` (afb3cee), prior suppression evidence, test_idas_provider_scope.py | RESOLVED: 84 existing roots, complete component partition, compatibility pool declarations and Labyrinth encounter hooks. See IDAS disposition below; shared Integrated API and final attributes remain open. |
-| `integrated_api-1.7.3+1.21.1-neoforge.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `integrated_api-1.7.3+1.21.1-neoforge.jar` | Existing pool-codecs and source 88a0f54; test_integrated_api_provider_scope.py | RESOLVED: Shared generation codecs, existing structure modifiers, tags and consumer data loaders. No independent family. See Integrated API disposition below. |
 | `integrated_stronghold-1.1.4+1.21.1-neoforge.jar` | `integrated-stronghold-provider`, existing root/graph and family-decision regression | RESOLVED: one existing root, both modification mixins, all components and disconnected/missing templates accounted for. See Integrated Stronghold provider disposition below. |
 | `integrated_villages-1.3.3+1.21.1-neoforge.jar` | `integrated-villages-provider` (97000f2), prior suppression evidence, test_integrated_villages_provider_scope.py | RESOLVED: Twelve existing roots, full component partition, four incompatible legacy addition declarations and existing village suppression. See Integrated Villages disposition below. Shared Integrated API remains open. |
 | `kotlinforforge-5.11.0-all.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -6742,3 +6742,48 @@ uv run basedpyright tests/item8/test_mca_provider_scope.py
 One focused case and both scoped quality checks pass. Whole providers: 93
 resolved, 43 open (22 code-reference and 21 unmatched-search rows). No family
 added. Continue the remaining providers and canonical Moog grouping.
+
+### Integrated API membership resolved
+
+Source 88a0f54 retains initialization, the datagen entry and all 27 common
+hooks. The common initializer registers rule-test, position-test, structure-type,
+placement-modifier, processor, piece, pool-element, structure-placement and
+condition registries. These are consumer codecs/types, not independent authored
+structure definitions. Existing pool-codecs evidence for IAStructurePieces and
+IASinglePoolElement is reused. The setup callback is empty. Server lifecycle
+callbacks set the server reference and manage existing-structure lookup services.
+
+The actual common hooks have bounded roles: structure-block and jigsaw size
+limits, pool weight-codec range, terrain blending for supplied structure starts,
+tag-based suppression, feature suppression inside existing starts, lookup radius
+and disabled-tag handling, accessors and logging for block-attached entities.
+StructurePoolMixin raises the permitted weight range; it is not a pool-content
+injection. The datagen entry writes converted consumer NBT during data generation.
+Neither is an independent family. Other shared placement, processor and jigsaw
+implementations serve consuming registered definitions and their components.
+
+Reload listeners consume spawner definitions, map trades, piece-count limits and
+workstation rules. Those inputs remain part of family mob, loot, placement and
+component attribution. The membership disposition does not close effective
+consumer configuration, missing components or runtime attribute uncertainties.
+
+The complete packaged data is 48 biome collection tags and three empty control
+tags (skippable_features, disabled_structures and unskippable_structures). Other
+packs may extend those tags, so their packaged emptiness is not an effective
+runtime suppression claim. No structure definitions, templates, configured
+features or independent layouts are packaged. The complete payload comprises
+206 classes, 51 tag files, one icon and seven metadata/configuration files.
+There are no nested archives or services. The focused check binds the original
+archive, all 30 captured classes, both automatic entries, both mixin declarations,
+all 27 common hooks and two declared client hooks. Source reproduction is exact.
+
+```sh
+uv run pytest -q tests/item8/test_integrated_api_provider_scope.py
+uv run ruff check tests/item8/test_integrated_api_provider_scope.py
+uv run basedpyright tests/item8/test_integrated_api_provider_scope.py
+```
+
+One focused case and both scoped quality checks pass. Whole providers: 94
+resolved, 42 open (21 code-reference and 21 unmatched-search rows). No canonical
+family added or grouping changed. Continue those providers and Moog grouping;
+do not audit clean generic codec helpers without a concrete family boundary.

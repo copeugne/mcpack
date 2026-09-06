@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Integrated API membership is resolved from 88a0f54 plus existing pool-codecs.
+It registers shared types/codecs and modifies consuming structures; packaged
+data is only 51 tags. Full payload/source binding and scoped checks pass.
+Whole providers: 94 resolved, 42 open (21 code-reference, 21 unmatched-search).
+No family added. Keep consumer spawner, map, piece-count, workstation and
+placement effects for family attributes after membership is frozen. Continue
+the remaining provider queue and canonical Moog grouping; do not repeat MCA,
+Fabric, WunderLib or Integrated API membership inspection without new evidence.
+
+
 MCA membership is resolved using 28273db and bd25ce8. Its 26 building labels
 classify existing blocks, rather than defining generated families. Structure
 references locate existing roots or manage village records. Full payload/source
