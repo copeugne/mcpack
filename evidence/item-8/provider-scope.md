@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 118 of 136. The exact queue below has 18 open rows.
+Supported provider dispositions: 119 of 136. The exact queue below has 17 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -595,7 +595,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `Almanac-1.21.1-2-neoforge-1.5.2.jar` | `almanac-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Configuration/command support and existing item/entity behavior. No independent family. See additional shared provider dispositions below. |
 | `BetterEnd-21.0.31.jar` | BetterEnd source captures and shared BCLib/Wover consumers; test_betterend_feature_candidates.py | RESOLVED: Fourteen existing roots, the complete 128-template partition, feature candidates, common hooks and modifier consumers accounted for below. Named architectural and landmark grouping decisions remain open for canonical reconciliation. |
 | `BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar` | BOP entry, feature and delegated-material captures; test_bop_feature_candidates.py | RESOLVED: All registered features and packaged resources have contribution roles. Anomaly and monolith are two accepted landmark families; both pumpkin forms and bone-spine IDs are excluded decorations. Canonical membership decisions are integrated below. No structure roots, templates or pools. See final BOP disposition below. |
-| `CreateDragonsPlus-1.11.2b.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `CreateDragonsPlus-1.11.2b.jar` | create-dragons-plus-provider, startup and conditional captures | RESOLVED: Machine/fluid/dye/recipe and existing-loot support, no independent family. Preserve loot and processing effects below. |
 | `CreeperOverhaul-neoforge-1.21.1-4.0.6.jar` | `creeper-overhaul-provider` (e8d3713), `creeper-overhaul-login` (d21ca8f), test_creeper_overhaul_provider_scope.py | RESOLVED: Biome mob spawning, entity behavior/loot and cosmetic synchronization; no independent structure family. Full payload and bundled-library boundary below. |
 | `DungeonsArise-1.21.1-2.1.68-release.jar` | `wda-provider-scope` | RESOLVED: see WDA structure-provider disposition below. |
 | `FarmersDelight-1.21.1-1.3.2.jar` | `farmers-delight-provider` (555d912), common setup 15cb251, server packet 6678ec9; test_farmers_delight_provider_scope.py | RESOLVED: Five vanilla village components, farm-processor crop changes, vegetation and food/item interactions. No independent structure family. Full disposition below. |
@@ -7615,3 +7615,50 @@ Disposition: shared consumer generation/terrain APIs, no independent family.
 Whole providers: 118 resolved, 18 open. Working groups remain 410; the 100
 explicitly provisional Moog grouping decisions remain open. Detailed family
 attributes and final Item 8 review/main delivery have not passed.
+
+## Create Dragons Plus whole-provider membership closure
+
+Frozen CreateDragonsPlus-1.11.2b.jar SHA-256:
+`9b15e464465a639de9ef5a935ae9fd94ea545904517d1428bc784a4012e0a1e2`.
+Full payload inspection binds 352 classes; data consists of recipes, loot tables,
+advancements, tags, data maps and physics/floating-material definitions. Assets
+contain models, blockstates, languages, textures, an atlas and nine Ponder
+resources. There are no packaged server structure roots, pools or templates.
+Client tutorial assets are not independent generated-world families.
+
+332870dc retains fourteen automatic entries, all 34 common hooks and their
+shared plugin. fb5716dd adds three direct startup delegates and three nested
+library classes. The 52 outer classes cover those entry/hook/delegate boundaries.
+All five mixin configurations share CDPMixinConfigPlugin; the only client hook
+is airflow-particle behavior. Optional integration code was inspected without
+activating absent mods or changing the frozen retained stack.
+
+The common entry registers block/item/fluid/recipe, fan-processing and data-map
+support. Its SERVER_DATA pack installs CDPRuntimeRecipeProvider. Fluid reaction
+and open-pipe hooks operate on existing machinery/fluids. Existing loot tables
+receive blaze-upgrade smithing-template rewards. Dye/fan contribution callbacks,
+block-freezing providers and conditional fluid-hatch compatibility are consumer
+processing support, not independent generated families. Preserve those loot
+and block/entity effects for later attributes; this is not a no-gameplay-impact
+or general compatibility claim.
+
+The nested conditional-mixin-neoforge-0.6.4.jar SHA-256 is
+`0ae7b346d87879e81f276e6a590a6af1e723193e6eb3e94c1f71f7ab5b54d59f`.
+Its 19 classes and five metadata/license/icon files provide conditional mixin
+selection and annotation cleanup. Its NeoForge and common entry initialization
+is empty. It has no packaged generation content. No broader restriction-checker
+or integration-implementation audit is required for family membership.
+
+Reproduce the three captures with their README commands. dfb52035 corrected
+shell quoting for dollar signs in nested class names; the original captures
+and r1 reproduction used argument lists and were unaffected. Raw source and
+identity manifests reproduce byte for byte. Verification:
+`uv run pytest -q tests/item8/test_create_dragons_plus_provider_scope.py`
+passes two cases binding the parent/nested payloads, entries, hooks, plugin and
+preserved source bytes. Scoped Ruff and Basedpyright pass after wrapping two
+long test lines. No new measurement system was added.
+
+Disposition: no independent generated family. Whole providers: 119 resolved,
+17 open. Working groups remain 410 and 100 explicitly provisional Moog decisions
+remain. Canonical grouping, attributes and final Item 8 review/main delivery
+are still incomplete. Stop tracing generic CDP recipe/network/processing code.
