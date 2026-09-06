@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 70 of 136. The exact queue below has 66 open rows.
+Supported provider dispositions: 71 of 136. The exact queue below has 65 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -568,7 +568,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar` | `stronghold-provider` (41964b5), prior suppression source, test_stronghold_provider_scope.py | RESOLVED: One existing root, 12 pools and 97 templates with thirteen disconnected components and one missing pool. Custom placement and component consumers accounted for below. |
 | `YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar` | `witch-hut-provider` (04b6ab5), prior suppression capture, test_witch_hut_provider_scope.py | RESOLVED: Two existing roots, three pools, six connected templates and five component processors. Packaged services and entry roles are accounted for below. |
 | `YungsBridges-1.21.1-NeoForge-5.1.1.jar` | `yungs-bridge-generation`, `yungs-bridge-processors`, `yungs-bridges-module-default`, `yungs-bridges-module-loader` | RESOLVED: see YUNG Bridges provider disposition below. |
-| `YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
+| `YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar` | `cave-biomes-provider` (7f76013); test_cave_biomes_provider_scope.py | RESOLVED: Cave terrain, vegetation, existing-family biome eligibility and ambient encounters. All 38 worldgen resources and common hooks accounted for below; no independent family. |
 | `YungsExtras-1.21.1-NeoForge-5.1.1.jar` | `yungs-extras-desert-code`, `yungs-extras-generators`, `yungs-extras-initialization`, `yungs-extras-module-default`, `yungs-extras-processor-bindings`, `yungs-extras-registration` | RESOLVED: see YUNG Extras provider disposition below. |
 | `Zeta-1.1-40.jar` | `quark-enablement-callers`, `zeta-biome-modifier`, `zeta-component-biomes`, `zeta-compound-biome`, `zeta-config-binding`, `zeta-config-event-fields`, `zeta-deferred-feature`, `zeta-enablement-inputs`, `zeta-generation-applicability`, `zeta-generation-spawn`, `zeta-generator-dispatch`, `zeta-horizontal-directions`, `zeta-module-assignment`, `zeta-module-name`, `zeta-module-section`, `zeta-stone-ore` | Reuse Quark module/feature dispatch captures; reconcile remaining public generation and nested entry consumers. |
 | `[Neoforge]ctov-3.6.3.jar` | `ctov-provider` (82ac234), test_ctov_provider_scope.py, selection/bundle checks, existing CTOV regressions/graphs | RESOLVED: 78 existing roots, village/outpost components, compatibility injections and processors. Disconnected and missing components accounted for below. |
@@ -2655,3 +2655,54 @@ One focused case passes. An unused lint exemption and one long line were removed
 JSON types were made explicit. Scoped Ruff and Basedpyright pass. The source
 capture reproduces exactly. Census: 70 resolved providers, 66 open. Continue
 Cave Biomes and shared API scope before whole-stack canonical reconciliation.
+
+## Cave Biomes provider disposition
+
+The frozen YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar has 581 files and 187
+classes. Source 7f76013 preserves 55 entry, feature, module, service and common
+mixin classes; its independent reproduction matches exactly. The focused check
+binds archive and disassembly hashes, full payload categories, entry annotations,
+service selection, all declared common mixins and every worldgen resource.
+
+Role: cave terrain and vegetation, biome eligibility for existing structures,
+and biome encounters. No independent authored structure family is added.
+There are no packaged structure definitions, structure sets, pools, templates,
+functions, nested archives or separate biome-modifier resources. The runtime
+structure registry has no yungscavebiomes root. This negative registry result
+is only one input; the feature and hook dispositions below address other paths.
+
+| Path | Supported disposition |
+| --- | --- |
+| Two biomes, sixteen configured features and twenty placed features | Every configured feature has a placed consumer; every placed feature is referenced by Frosted Caves or Lost Caves. The extra dead-bush placement uses vanilla patch_dead_bush. Repeated placements do not create families. |
+| Twelve custom Feature implementations | Cactus patches, prickly-peach cactus patches, ice sheets, icicle clusters and large icicles, water-surface ice fragments, noisy sphere/floor/ceiling/surface replacement and sandstone pillars. These write vegetation or geological materials using positions, noise and cave surfaces. They do not assemble independent buildings or encounter layouts. The three generic sphere/floor replacement types without packaged configured instances remain code capabilities, not extra candidates. |
+| PillarRockFeature and large-icicle variants | Noisy sandstone columns and cave-constrained ice/dripstone formations. Pillar uses the supplied simple block provider, whose packaged value is layered_ancient_sandstone. Large, tilted and small icicles use the same feature with different parameters and rare-ice probabilities. These are terrain/resource formations, not additional landmark designs. |
+| Existing-family consumers | Both biomes include vanilla monster_room and monster_room_deep features. Minecraft mineshaft and stronghold biome tags add the cave_biomes tag. These extend existing contributions and must be reconciled with already recorded vanilla/YUNG suppression; they are not unconditional runtime placement claims. |
+| Biome registration and noise hooks | TerraBlender region registration and the cave region select cave biomes and modify vanilla climate parameters. Common noise mixins attach biome registry/source/sampler/seed context. Frosted aquifer hook changes fluid handling. The two marble mixin classes contain no injected methods. |
+| Remaining common mixins | Accessors expose existing state; debug hooks send goal/path packets. Frosted hooks handle icicle projectiles, potion ice, cauldron drips, ice friction/rendering, frost-effect state and skeleton conversion. Lost Caves hooks handle brushing, cactus/dead-bush eligibility, sandstorm effects and server sandstorm state/ticks. These modify terrain, blocks or existing entities, not independent authored generation. |
+| Commands and services | Sandstorm control and player-join synchronization. Both armor-trim debug registration callbacks require a development environment; the custom command produces armor-stand displays. These are command behavior, not naturally generated families. The sole platform service selects NeoForgePlatformHelper. |
+| Remaining classes and resources | Block/item/entity behavior, mob goals, criteria/effects, configuration, networking, sandstorm state, client rendering/particles/sounds/JEI, registration modules, feature configuration/math/noise helpers. Modules register blocks, items, entities, loot keys, effects, potions, sounds, particles, criteria, decorative patterns and networking. Nine declared client mixins concern rendering, textures and client sandstorm state. No separate event-subscriber entry is present; the only mod entries are the captured common NeoForge entry and client entry. |
+
+Biome mob lists include ice_cube and sand_snapper along with vanilla mobs. These
+are natural spawning inputs, not authored room spawners. Loot tables, rare ice,
+brushable sand and mob loot remain attribution inputs if relevant to the later
+family attributes. This scope closure does not accept their gameplay behavior,
+prove every hook executed or repeat Item 7 observations.
+
+Frozen configuration is evidence/item-6/frozen/config/yungscavebiomes-neoforge-1_21_1.toml,
+SHA-256 3be6874eada8f1920b8dc30f9345c07afc7d5a7d4621f642f78c57cbe1756b27.
+It preserves cave climate parameters, vanilla Dripstone Caves climate changes
+and enabled sandstorms. Shared YUNG API and TerraBlender remain separate open
+provider rows; this closure does not assert their full-stack compatibility.
+
+```sh
+uv run pytest -q tests/item8/test_cave_biomes_provider_scope.py
+uv run ruff check tests/item8/test_cave_biomes_provider_scope.py
+uv run basedpyright tests/item8/test_cave_biomes_provider_scope.py
+```
+
+One focused case and scoped quality checks pass. Early read-only probes first
+used raw JSON parsing on commented biome data, then confused biome tags with
+biome definitions by matching a path substring. Neither result was accepted.
+The tracked check reuses the existing comment-aware decoder and restricts the
+resource root to data/yungscavebiomes/worldgen/. Initial lint/type findings were
+corrected before acceptance. Census: 71 resolved providers and 65 open.
