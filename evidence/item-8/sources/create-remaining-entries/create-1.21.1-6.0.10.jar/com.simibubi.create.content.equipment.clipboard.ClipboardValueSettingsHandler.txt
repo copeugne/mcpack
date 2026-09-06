@@ -1,0 +1,2119 @@
+Classfile create-1.21.1-6.0.10.jar!/com/simibubi/create/content/equipment/clipboard/ClipboardValueSettingsHandler.class
+  Last modified Apr 21, 2026; size 18568 bytes
+  SHA-256 checksum 9cf2073cfcc95a7a0890307e7c2b07c6e702dc2574094630a13646890e567c9c
+  Compiled from "ClipboardValueSettingsHandler.java"
+public class com.simibubi.create.content.equipment.clipboard.ClipboardValueSettingsHandler
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #302                        // com/simibubi/create/content/equipment/clipboard/ClipboardValueSettingsHandler
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 9, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+    #8 = Class              #10           // net/minecraft/client/Minecraft
+    #9 = NameAndType        #11:#12       // getInstance:()Lnet/minecraft/client/Minecraft;
+   #10 = Utf8               net/minecraft/client/Minecraft
+   #11 = Utf8               getInstance
+   #12 = Utf8               ()Lnet/minecraft/client/Minecraft;
+   #13 = Methodref          #14.#15       // net/neoforged/neoforge/client/event/RenderHighlightEvent$Block.getTarget:()Lnet/minecraft/world/phys/BlockHitResult;
+   #14 = Class              #16           // net/neoforged/neoforge/client/event/RenderHighlightEvent$Block
+   #15 = NameAndType        #17:#18       // getTarget:()Lnet/minecraft/world/phys/BlockHitResult;
+   #16 = Utf8               net/neoforged/neoforge/client/event/RenderHighlightEvent$Block
+   #17 = Utf8               getTarget
+   #18 = Utf8               ()Lnet/minecraft/world/phys/BlockHitResult;
+   #19 = Methodref          #20.#21       // net/minecraft/world/phys/BlockHitResult.getBlockPos:()Lnet/minecraft/core/BlockPos;
+   #20 = Class              #22           // net/minecraft/world/phys/BlockHitResult
+   #21 = NameAndType        #23:#24       // getBlockPos:()Lnet/minecraft/core/BlockPos;
+   #22 = Utf8               net/minecraft/world/phys/BlockHitResult
+   #23 = Utf8               getBlockPos
+   #24 = Utf8               ()Lnet/minecraft/core/BlockPos;
+   #25 = Fieldref           #8.#26        // net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+   #26 = NameAndType        #27:#28       // level:Lnet/minecraft/client/multiplayer/ClientLevel;
+   #27 = Utf8               level
+   #28 = Utf8               Lnet/minecraft/client/multiplayer/ClientLevel;
+   #29 = Methodref          #30.#31       // net/minecraft/client/multiplayer/ClientLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #30 = Class              #32           // net/minecraft/client/multiplayer/ClientLevel
+   #31 = NameAndType        #33:#34       // getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #32 = Utf8               net/minecraft/client/multiplayer/ClientLevel
+   #33 = Utf8               getBlockState
+   #34 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #35 = Fieldref           #8.#36        // net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+   #36 = NameAndType        #37:#38       // player:Lnet/minecraft/client/player/LocalPlayer;
+   #37 = Utf8               player
+   #38 = Utf8               Lnet/minecraft/client/player/LocalPlayer;
+   #39 = Methodref          #40.#41       // net/minecraft/client/player/LocalPlayer.isSpectator:()Z
+   #40 = Class              #42           // net/minecraft/client/player/LocalPlayer
+   #41 = NameAndType        #43:#44       // isSpectator:()Z
+   #42 = Utf8               net/minecraft/client/player/LocalPlayer
+   #43 = Utf8               isSpectator
+   #44 = Utf8               ()Z
+   #45 = Methodref          #30.#46       // net/minecraft/client/multiplayer/ClientLevel.getWorldBorder:()Lnet/minecraft/world/level/border/WorldBorder;
+   #46 = NameAndType        #47:#48       // getWorldBorder:()Lnet/minecraft/world/level/border/WorldBorder;
+   #47 = Utf8               getWorldBorder
+   #48 = Utf8               ()Lnet/minecraft/world/level/border/WorldBorder;
+   #49 = Methodref          #50.#51       // net/minecraft/world/level/border/WorldBorder.isWithinBounds:(Lnet/minecraft/core/BlockPos;)Z
+   #50 = Class              #52           // net/minecraft/world/level/border/WorldBorder
+   #51 = NameAndType        #53:#54       // isWithinBounds:(Lnet/minecraft/core/BlockPos;)Z
+   #52 = Utf8               net/minecraft/world/level/border/WorldBorder
+   #53 = Utf8               isWithinBounds
+   #54 = Utf8               (Lnet/minecraft/core/BlockPos;)Z
+   #55 = Fieldref           #56.#57       // com/simibubi/create/AllBlocks.CLIPBOARD:Lcom/tterrag/registrate/util/entry/BlockEntry;
+   #56 = Class              #58           // com/simibubi/create/AllBlocks
+   #57 = NameAndType        #59:#60       // CLIPBOARD:Lcom/tterrag/registrate/util/entry/BlockEntry;
+   #58 = Utf8               com/simibubi/create/AllBlocks
+   #59 = Utf8               CLIPBOARD
+   #60 = Utf8               Lcom/tterrag/registrate/util/entry/BlockEntry;
+   #61 = Methodref          #40.#62       // net/minecraft/client/player/LocalPlayer.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+   #62 = NameAndType        #63:#64       // getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+   #63 = Utf8               getMainHandItem
+   #64 = Utf8               ()Lnet/minecraft/world/item/ItemStack;
+   #65 = Methodref          #66.#67       // com/tterrag/registrate/util/entry/BlockEntry.isIn:(Lnet/minecraft/world/item/ItemStack;)Z
+   #66 = Class              #68           // com/tterrag/registrate/util/entry/BlockEntry
+   #67 = NameAndType        #69:#70       // isIn:(Lnet/minecraft/world/item/ItemStack;)Z
+   #68 = Utf8               com/tterrag/registrate/util/entry/BlockEntry
+   #69 = Utf8               isIn
+   #70 = Utf8               (Lnet/minecraft/world/item/ItemStack;)Z
+   #71 = Methodref          #30.#72       // net/minecraft/client/multiplayer/ClientLevel.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+   #72 = NameAndType        #73:#74       // getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+   #73 = Utf8               getBlockEntity
+   #74 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+   #75 = Class              #76           // com/simibubi/create/foundation/blockEntity/SmartBlockEntity
+   #76 = Utf8               com/simibubi/create/foundation/blockEntity/SmartBlockEntity
+   #77 = Class              #78           // com/simibubi/create/content/equipment/clipboard/ClipboardBlockEntity
+   #78 = Utf8               com/simibubi/create/content/equipment/clipboard/ClipboardBlockEntity
+   #79 = Methodref          #75.#80       // com/simibubi/create/foundation/blockEntity/SmartBlockEntity.getAllBehaviours:()Ljava/util/Collection;
+   #80 = NameAndType        #81:#82       // getAllBehaviours:()Ljava/util/Collection;
+   #81 = Utf8               getAllBehaviours
+   #82 = Utf8               ()Ljava/util/Collection;
+   #83 = InterfaceMethodref #84.#85       // java/util/Collection.stream:()Ljava/util/stream/Stream;
+   #84 = Class              #86           // java/util/Collection
+   #85 = NameAndType        #87:#88       // stream:()Ljava/util/stream/Stream;
+   #86 = Utf8               java/util/Collection
+   #87 = Utf8               stream
+   #88 = Utf8               ()Ljava/util/stream/Stream;
+   #89 = InvokeDynamic      #0:#90        // #0:test:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;)Ljava/util/function/Predicate;
+   #90 = NameAndType        #91:#92       // test:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;)Ljava/util/function/Predicate;
+   #91 = Utf8               test
+   #92 = Utf8               (Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;)Ljava/util/function/Predicate;
+   #93 = InterfaceMethodref #94.#95       // java/util/stream/Stream.noneMatch:(Ljava/util/function/Predicate;)Z
+   #94 = Class              #96           // java/util/stream/Stream
+   #95 = NameAndType        #97:#98       // noneMatch:(Ljava/util/function/Predicate;)Z
+   #96 = Utf8               java/util/stream/Stream
+   #97 = Utf8               noneMatch
+   #98 = Utf8               (Ljava/util/function/Predicate;)Z
+   #99 = Class              #100          // com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+  #100 = Utf8               com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+  #101 = Methodref          #102.#103     // net/minecraft/world/level/block/state/BlockState.getShape:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/phys/shapes/VoxelShape;
+  #102 = Class              #104          // net/minecraft/world/level/block/state/BlockState
+  #103 = NameAndType        #105:#106     // getShape:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/phys/shapes/VoxelShape;
+  #104 = Utf8               net/minecraft/world/level/block/state/BlockState
+  #105 = Utf8               getShape
+  #106 = Utf8               (Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/phys/shapes/VoxelShape;
+  #107 = Methodref          #108.#109     // net/minecraft/world/phys/shapes/VoxelShape.isEmpty:()Z
+  #108 = Class              #110          // net/minecraft/world/phys/shapes/VoxelShape
+  #109 = NameAndType        #111:#44      // isEmpty:()Z
+  #110 = Utf8               net/minecraft/world/phys/shapes/VoxelShape
+  #111 = Utf8               isEmpty
+  #112 = Methodref          #14.#113      // net/neoforged/neoforge/client/event/RenderHighlightEvent$Block.getMultiBufferSource:()Lnet/minecraft/client/renderer/MultiBufferSource;
+  #113 = NameAndType        #114:#115     // getMultiBufferSource:()Lnet/minecraft/client/renderer/MultiBufferSource;
+  #114 = Utf8               getMultiBufferSource
+  #115 = Utf8               ()Lnet/minecraft/client/renderer/MultiBufferSource;
+  #116 = Methodref          #117.#118     // net/minecraft/client/renderer/RenderType.lines:()Lnet/minecraft/client/renderer/RenderType;
+  #117 = Class              #119          // net/minecraft/client/renderer/RenderType
+  #118 = NameAndType        #120:#121     // lines:()Lnet/minecraft/client/renderer/RenderType;
+  #119 = Utf8               net/minecraft/client/renderer/RenderType
+  #120 = Utf8               lines
+  #121 = Utf8               ()Lnet/minecraft/client/renderer/RenderType;
+  #122 = InterfaceMethodref #123.#124     // net/minecraft/client/renderer/MultiBufferSource.getBuffer:(Lnet/minecraft/client/renderer/RenderType;)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+  #123 = Class              #125          // net/minecraft/client/renderer/MultiBufferSource
+  #124 = NameAndType        #126:#127     // getBuffer:(Lnet/minecraft/client/renderer/RenderType;)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+  #125 = Utf8               net/minecraft/client/renderer/MultiBufferSource
+  #126 = Utf8               getBuffer
+  #127 = Utf8               (Lnet/minecraft/client/renderer/RenderType;)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+  #128 = Methodref          #14.#129      // net/neoforged/neoforge/client/event/RenderHighlightEvent$Block.getCamera:()Lnet/minecraft/client/Camera;
+  #129 = NameAndType        #130:#131     // getCamera:()Lnet/minecraft/client/Camera;
+  #130 = Utf8               getCamera
+  #131 = Utf8               ()Lnet/minecraft/client/Camera;
+  #132 = Methodref          #133.#134     // net/minecraft/client/Camera.getPosition:()Lnet/minecraft/world/phys/Vec3;
+  #133 = Class              #135          // net/minecraft/client/Camera
+  #134 = NameAndType        #136:#137     // getPosition:()Lnet/minecraft/world/phys/Vec3;
+  #135 = Utf8               net/minecraft/client/Camera
+  #136 = Utf8               getPosition
+  #137 = Utf8               ()Lnet/minecraft/world/phys/Vec3;
+  #138 = Methodref          #14.#139      // net/neoforged/neoforge/client/event/RenderHighlightEvent$Block.getPoseStack:()Lcom/mojang/blaze3d/vertex/PoseStack;
+  #139 = NameAndType        #140:#141     // getPoseStack:()Lcom/mojang/blaze3d/vertex/PoseStack;
+  #140 = Utf8               getPoseStack
+  #141 = Utf8               ()Lcom/mojang/blaze3d/vertex/PoseStack;
+  #142 = Methodref          #143.#144     // com/mojang/blaze3d/vertex/PoseStack.pushPose:()V
+  #143 = Class              #145          // com/mojang/blaze3d/vertex/PoseStack
+  #144 = NameAndType        #146:#6       // pushPose:()V
+  #145 = Utf8               com/mojang/blaze3d/vertex/PoseStack
+  #146 = Utf8               pushPose
+  #147 = Methodref          #148.#149     // net/minecraft/core/BlockPos.getX:()I
+  #148 = Class              #150          // net/minecraft/core/BlockPos
+  #149 = NameAndType        #151:#152     // getX:()I
+  #150 = Utf8               net/minecraft/core/BlockPos
+  #151 = Utf8               getX
+  #152 = Utf8               ()I
+  #153 = Fieldref           #154.#155     // net/minecraft/world/phys/Vec3.x:D
+  #154 = Class              #156          // net/minecraft/world/phys/Vec3
+  #155 = NameAndType        #157:#158     // x:D
+  #156 = Utf8               net/minecraft/world/phys/Vec3
+  #157 = Utf8               x
+  #158 = Utf8               D
+  #159 = Methodref          #148.#160     // net/minecraft/core/BlockPos.getY:()I
+  #160 = NameAndType        #161:#152     // getY:()I
+  #161 = Utf8               getY
+  #162 = Fieldref           #154.#163     // net/minecraft/world/phys/Vec3.y:D
+  #163 = NameAndType        #164:#158     // y:D
+  #164 = Utf8               y
+  #165 = Methodref          #148.#166     // net/minecraft/core/BlockPos.getZ:()I
+  #166 = NameAndType        #167:#152     // getZ:()I
+  #167 = Utf8               getZ
+  #168 = Fieldref           #154.#169     // net/minecraft/world/phys/Vec3.z:D
+  #169 = NameAndType        #170:#158     // z:D
+  #170 = Utf8               z
+  #171 = Methodref          #143.#172     // com/mojang/blaze3d/vertex/PoseStack.translate:(DDD)V
+  #172 = NameAndType        #173:#174     // translate:(DDD)V
+  #173 = Utf8               translate
+  #174 = Utf8               (DDD)V
+  #175 = Methodref          #176.#177     // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+  #176 = Class              #178          // java/lang/Boolean
+  #177 = NameAndType        #179:#180     // valueOf:(Z)Ljava/lang/Boolean;
+  #178 = Utf8               java/lang/Boolean
+  #179 = Utf8               valueOf
+  #180 = Utf8               (Z)Ljava/lang/Boolean;
+  #181 = Methodref          #182.#183     // com/simibubi/create/content/trains/track/TrackBlockOutline.renderShape:(Lnet/minecraft/world/phys/shapes/VoxelShape;Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;Ljava/lang/Boolean;)V
+  #182 = Class              #184          // com/simibubi/create/content/trains/track/TrackBlockOutline
+  #183 = NameAndType        #185:#186     // renderShape:(Lnet/minecraft/world/phys/shapes/VoxelShape;Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;Ljava/lang/Boolean;)V
+  #184 = Utf8               com/simibubi/create/content/trains/track/TrackBlockOutline
+  #185 = Utf8               renderShape
+  #186 = Utf8               (Lnet/minecraft/world/phys/shapes/VoxelShape;Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;Ljava/lang/Boolean;)V
+  #187 = Methodref          #14.#188      // net/neoforged/neoforge/client/event/RenderHighlightEvent$Block.setCanceled:(Z)V
+  #188 = NameAndType        #189:#190     // setCanceled:(Z)V
+  #189 = Utf8               setCanceled
+  #190 = Utf8               (Z)V
+  #191 = Methodref          #143.#192     // com/mojang/blaze3d/vertex/PoseStack.popPose:()V
+  #192 = NameAndType        #193:#6       // popPose:()V
+  #193 = Utf8               popPose
+  #194 = Fieldref           #8.#195       // net/minecraft/client/Minecraft.hitResult:Lnet/minecraft/world/phys/HitResult;
+  #195 = NameAndType        #196:#197     // hitResult:Lnet/minecraft/world/phys/HitResult;
+  #196 = Utf8               hitResult
+  #197 = Utf8               Lnet/minecraft/world/phys/HitResult;
+  #198 = Class              #199          // java/util/ArrayList
+  #199 = Utf8               java/util/ArrayList
+  #200 = Methodref          #198.#3       // java/util/ArrayList."<init>":()V
+  #201 = String             #202          // clipboard.actions
+  #202 = Utf8               clipboard.actions
+  #203 = Methodref          #204.#205     // com/simibubi/create/foundation/utility/CreateLang.translateDirect:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+  #204 = Class              #206          // com/simibubi/create/foundation/utility/CreateLang
+  #205 = NameAndType        #207:#208     // translateDirect:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+  #206 = Utf8               com/simibubi/create/foundation/utility/CreateLang
+  #207 = Utf8               translateDirect
+  #208 = Utf8               (Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+  #209 = InterfaceMethodref #210.#211     // java/util/List.add:(Ljava/lang/Object;)Z
+  #210 = Class              #212          // java/util/List
+  #211 = NameAndType        #213:#214     // add:(Ljava/lang/Object;)Z
+  #212 = Utf8               java/util/List
+  #213 = Utf8               add
+  #214 = Utf8               (Ljava/lang/Object;)Z
+  #215 = String             #216          // clipboard.copy_other_clipboard
+  #216 = Utf8               clipboard.copy_other_clipboard
+  #217 = String             #218          // key.use
+  #218 = Utf8               key.use
+  #219 = InterfaceMethodref #220.#221     // net/minecraft/network/chat/Component.keybind:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+  #220 = Class              #222          // net/minecraft/network/chat/Component
+  #221 = NameAndType        #223:#224     // keybind:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+  #222 = Utf8               net/minecraft/network/chat/Component
+  #223 = Utf8               keybind
+  #224 = Utf8               (Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+  #225 = Fieldref           #226.#227     // com/simibubi/create/CreateClient.VALUE_SETTINGS_HANDLER:Lcom/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsClient;
+  #226 = Class              #228          // com/simibubi/create/CreateClient
+  #227 = NameAndType        #229:#230     // VALUE_SETTINGS_HANDLER:Lcom/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsClient;
+  #228 = Utf8               com/simibubi/create/CreateClient
+  #229 = Utf8               VALUE_SETTINGS_HANDLER
+  #230 = Utf8               Lcom/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsClient;
+  #231 = Methodref          #232.#233     // com/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsClient.showHoverTip:(Ljava/util/List;)V
+  #232 = Class              #234          // com/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsClient
+  #233 = NameAndType        #235:#236     // showHoverTip:(Ljava/util/List;)V
+  #234 = Utf8               com/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsClient
+  #235 = Utf8               showHoverTip
+  #236 = Utf8               (Ljava/util/List;)V
+  #237 = Fieldref           #238.#239     // com/simibubi/create/AllDataComponents.CLIPBOARD_CONTENT:Lnet/minecraft/core/component/DataComponentType;
+  #238 = Class              #240          // com/simibubi/create/AllDataComponents
+  #239 = NameAndType        #241:#242     // CLIPBOARD_CONTENT:Lnet/minecraft/core/component/DataComponentType;
+  #240 = Utf8               com/simibubi/create/AllDataComponents
+  #241 = Utf8               CLIPBOARD_CONTENT
+  #242 = Utf8               Lnet/minecraft/core/component/DataComponentType;
+  #243 = Methodref          #244.#245     // net/minecraft/world/item/ItemStack.get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #244 = Class              #246          // net/minecraft/world/item/ItemStack
+  #245 = NameAndType        #247:#248     // get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #246 = Utf8               net/minecraft/world/item/ItemStack
+  #247 = Utf8               get
+  #248 = Utf8               (Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #249 = Class              #250          // com/simibubi/create/content/equipment/clipboard/ClipboardContent
+  #250 = Utf8               com/simibubi/create/content/equipment/clipboard/ClipboardContent
+  #251 = Methodref          #249.#252     // com/simibubi/create/content/equipment/clipboard/ClipboardContent.copiedValues:()Ljava/util/Optional;
+  #252 = NameAndType        #253:#254     // copiedValues:()Ljava/util/Optional;
+  #253 = Utf8               copiedValues
+  #254 = Utf8               ()Ljava/util/Optional;
+  #255 = Methodref          #256.#257     // java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+  #256 = Class              #258          // java/util/Optional
+  #257 = NameAndType        #259:#260     // orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+  #258 = Utf8               java/util/Optional
+  #259 = Utf8               orElse
+  #260 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #261 = Class              #262          // net/minecraft/nbt/CompoundTag
+  #262 = Utf8               net/minecraft/nbt/CompoundTag
+  #263 = InvokeDynamic      #1:#90        // #1:test:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;)Ljava/util/function/Predicate;
+  #264 = InterfaceMethodref #94.#265      // java/util/stream/Stream.anyMatch:(Ljava/util/function/Predicate;)Z
+  #265 = NameAndType        #266:#98      // anyMatch:(Ljava/util/function/Predicate;)Z
+  #266 = Utf8               anyMatch
+  #267 = Methodref          #30.#268      // net/minecraft/client/multiplayer/ClientLevel.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+  #268 = NameAndType        #269:#270     // registryAccess:()Lnet/minecraft/core/RegistryAccess;
+  #269 = Utf8               registryAccess
+  #270 = Utf8               ()Lnet/minecraft/core/RegistryAccess;
+  #271 = Methodref          #261.#3       // net/minecraft/nbt/CompoundTag."<init>":()V
+  #272 = Methodref          #20.#273      // net/minecraft/world/phys/BlockHitResult.getDirection:()Lnet/minecraft/core/Direction;
+  #273 = NameAndType        #274:#275     // getDirection:()Lnet/minecraft/core/Direction;
+  #274 = Utf8               getDirection
+  #275 = Utf8               ()Lnet/minecraft/core/Direction;
+  #276 = InterfaceMethodref #99.#277      // com/simibubi/create/content/equipment/clipboard/ClipboardCloneable.writeToClipboard:(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/Direction;)Z
+  #277 = NameAndType        #278:#279     // writeToClipboard:(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/Direction;)Z
+  #278 = Utf8               writeToClipboard
+  #279 = Utf8               (Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/Direction;)Z
+  #280 = InvokeDynamic      #2:#281       // #2:test:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/phys/BlockHitResult;)Ljava/util/function/Predicate;
+  #281 = NameAndType        #91:#282      // test:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/phys/BlockHitResult;)Ljava/util/function/Predicate;
+  #282 = Utf8               (Lnet/minecraft/client/Minecraft;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/phys/BlockHitResult;)Ljava/util/function/Predicate;
+  #283 = InterfaceMethodref #99.#284      // com/simibubi/create/content/equipment/clipboard/ClipboardCloneable.getClipboardKey:()Ljava/lang/String;
+  #284 = NameAndType        #285:#286     // getClipboardKey:()Ljava/lang/String;
+  #285 = Utf8               getClipboardKey
+  #286 = Utf8               ()Ljava/lang/String;
+  #287 = Methodref          #261.#288     // net/minecraft/nbt/CompoundTag.getCompound:(Ljava/lang/String;)Lnet/minecraft/nbt/CompoundTag;
+  #288 = NameAndType        #289:#290     // getCompound:(Ljava/lang/String;)Lnet/minecraft/nbt/CompoundTag;
+  #289 = Utf8               getCompound
+  #290 = Utf8               (Ljava/lang/String;)Lnet/minecraft/nbt/CompoundTag;
+  #291 = InterfaceMethodref #99.#292      // com/simibubi/create/content/equipment/clipboard/ClipboardCloneable.readFromClipboard:(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/Direction;Z)Z
+  #292 = NameAndType        #293:#294     // readFromClipboard:(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/Direction;Z)Z
+  #293 = Utf8               readFromClipboard
+  #294 = Utf8               (Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/Direction;Z)Z
+  #295 = String             #296          // clipboard.to_copy
+  #296 = Utf8               clipboard.to_copy
+  #297 = String             #298          // clipboard.to_paste
+  #298 = Utf8               clipboard.to_paste
+  #299 = String             #300          // key.attack
+  #300 = Utf8               key.attack
+  #301 = Methodref          #302.#303     // com/simibubi/create/content/equipment/clipboard/ClipboardValueSettingsHandler.interact:(Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent;Z)V
+  #302 = Class              #304          // com/simibubi/create/content/equipment/clipboard/ClipboardValueSettingsHandler
+  #303 = NameAndType        #305:#306     // interact:(Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent;Z)V
+  #304 = Utf8               com/simibubi/create/content/equipment/clipboard/ClipboardValueSettingsHandler
+  #305 = Utf8               interact
+  #306 = Utf8               (Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent;Z)V
+  #307 = Methodref          #308.#309     // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent.getItemStack:()Lnet/minecraft/world/item/ItemStack;
+  #308 = Class              #310          // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent
+  #309 = NameAndType        #311:#64      // getItemStack:()Lnet/minecraft/world/item/ItemStack;
+  #310 = Utf8               net/neoforged/neoforge/event/entity/player/PlayerInteractEvent
+  #311 = Utf8               getItemStack
+  #312 = Methodref          #308.#313     // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent.getPos:()Lnet/minecraft/core/BlockPos;
+  #313 = NameAndType        #314:#24      // getPos:()Lnet/minecraft/core/BlockPos;
+  #314 = Utf8               getPos
+  #315 = Methodref          #308.#316     // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent.getLevel:()Lnet/minecraft/world/level/Level;
+  #316 = NameAndType        #317:#318     // getLevel:()Lnet/minecraft/world/level/Level;
+  #317 = Utf8               getLevel
+  #318 = Utf8               ()Lnet/minecraft/world/level/Level;
+  #319 = Methodref          #308.#320     // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+  #320 = NameAndType        #321:#322     // getEntity:()Lnet/minecraft/world/entity/player/Player;
+  #321 = Utf8               getEntity
+  #322 = Utf8               ()Lnet/minecraft/world/entity/player/Player;
+  #323 = Methodref          #324.#41      // net/minecraft/world/entity/player/Player.isSpectator:()Z
+  #324 = Class              #325          // net/minecraft/world/entity/player/Player
+  #325 = Utf8               net/minecraft/world/entity/player/Player
+  #326 = Methodref          #324.#327     // net/minecraft/world/entity/player/Player.isShiftKeyDown:()Z
+  #327 = NameAndType        #328:#44      // isShiftKeyDown:()Z
+  #328 = Utf8               isShiftKeyDown
+  #329 = Methodref          #330.#72      // net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #330 = Class              #331          // net/minecraft/world/level/Level
+  #331 = Utf8               net/minecraft/world/level/Level
+  #332 = Fieldref           #249.#333     // com/simibubi/create/content/equipment/clipboard/ClipboardContent.EMPTY:Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+  #333 = NameAndType        #334:#335     // EMPTY:Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+  #334 = Utf8               EMPTY
+  #335 = Utf8               Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+  #336 = Methodref          #244.#337     // net/minecraft/world/item/ItemStack.getOrDefault:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+  #337 = NameAndType        #338:#339     // getOrDefault:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+  #338 = Utf8               getOrDefault
+  #339 = Utf8               (Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+  #340 = Class              #341          // net/neoforged/bus/api/ICancellableEvent
+  #341 = Utf8               net/neoforged/bus/api/ICancellableEvent
+  #342 = InterfaceMethodref #340.#188     // net/neoforged/bus/api/ICancellableEvent.setCanceled:(Z)V
+  #343 = Methodref          #344.#345     // java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+  #344 = Class              #346          // java/util/Objects
+  #345 = NameAndType        #347:#260     // requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+  #346 = Utf8               java/util/Objects
+  #347 = Utf8               requireNonNull
+  #348 = InvokeDynamic      #3:#349       // #3:typeSwitch:(Ljava/lang/Object;I)I
+  #349 = NameAndType        #350:#351     // typeSwitch:(Ljava/lang/Object;I)I
+  #350 = Utf8               typeSwitch
+  #351 = Utf8               (Ljava/lang/Object;I)I
+  #352 = Class              #353          // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteractSpecific
+  #353 = Utf8               net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteractSpecific
+  #354 = Fieldref           #355.#356     // net/minecraft/world/InteractionResult.SUCCESS:Lnet/minecraft/world/InteractionResult;
+  #355 = Class              #357          // net/minecraft/world/InteractionResult
+  #356 = NameAndType        #358:#359     // SUCCESS:Lnet/minecraft/world/InteractionResult;
+  #357 = Utf8               net/minecraft/world/InteractionResult
+  #358 = Utf8               SUCCESS
+  #359 = Utf8               Lnet/minecraft/world/InteractionResult;
+  #360 = Methodref          #352.#361     // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteractSpecific.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+  #361 = NameAndType        #362:#363     // setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+  #362 = Utf8               setCancellationResult
+  #363 = Utf8               (Lnet/minecraft/world/InteractionResult;)V
+  #364 = Class              #365          // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract
+  #365 = Utf8               net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract
+  #366 = Methodref          #364.#361     // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+  #367 = Class              #368          // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock
+  #368 = Utf8               net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock
+  #369 = Methodref          #367.#361     // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+  #370 = Class              #371          // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem
+  #371 = Utf8               net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem
+  #372 = Methodref          #370.#361     // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+  #373 = Methodref          #330.#374     // net/minecraft/world/level/Level.isClientSide:()Z
+  #374 = NameAndType        #375:#44      // isClientSide:()Z
+  #375 = Utf8               isClientSide
+  #376 = Methodref          #377.#378     // com/simibubi/create/content/equipment/clipboard/ClipboardEntry.readAll:(Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;)Ljava/util/List;
+  #377 = Class              #379          // com/simibubi/create/content/equipment/clipboard/ClipboardEntry
+  #378 = NameAndType        #380:#381     // readAll:(Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;)Ljava/util/List;
+  #379 = Utf8               com/simibubi/create/content/equipment/clipboard/ClipboardEntry
+  #380 = Utf8               readAll
+  #381 = Utf8               (Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;)Ljava/util/List;
+  #382 = Methodref          #77.#383      // com/simibubi/create/content/equipment/clipboard/ClipboardBlockEntity.components:()Lnet/minecraft/core/component/DataComponentMap;
+  #383 = NameAndType        #384:#385     // components:()Lnet/minecraft/core/component/DataComponentMap;
+  #384 = Utf8               components
+  #385 = Utf8               ()Lnet/minecraft/core/component/DataComponentMap;
+  #386 = Methodref          #377.#387     // com/simibubi/create/content/equipment/clipboard/ClipboardEntry.readAll:(Lnet/minecraft/core/component/DataComponentMap;)Ljava/util/List;
+  #387 = NameAndType        #380:#388     // readAll:(Lnet/minecraft/core/component/DataComponentMap;)Ljava/util/List;
+  #388 = Utf8               (Lnet/minecraft/core/component/DataComponentMap;)Ljava/util/List;
+  #389 = InterfaceMethodref #210.#390     // java/util/List.iterator:()Ljava/util/Iterator;
+  #390 = NameAndType        #391:#392     // iterator:()Ljava/util/Iterator;
+  #391 = Utf8               iterator
+  #392 = Utf8               ()Ljava/util/Iterator;
+  #393 = InterfaceMethodref #394.#395     // java/util/Iterator.hasNext:()Z
+  #394 = Class              #396          // java/util/Iterator
+  #395 = NameAndType        #397:#44      // hasNext:()Z
+  #396 = Utf8               java/util/Iterator
+  #397 = Utf8               hasNext
+  #398 = InterfaceMethodref #394.#399     // java/util/Iterator.next:()Ljava/lang/Object;
+  #399 = NameAndType        #400:#401     // next:()Ljava/lang/Object;
+  #400 = Utf8               next
+  #401 = Utf8               ()Ljava/lang/Object;
+  #402 = Fieldref           #377.#403     // com/simibubi/create/content/equipment/clipboard/ClipboardEntry.text:Lnet/minecraft/network/chat/MutableComponent;
+  #403 = NameAndType        #404:#405     // text:Lnet/minecraft/network/chat/MutableComponent;
+  #404 = Utf8               text
+  #405 = Utf8               Lnet/minecraft/network/chat/MutableComponent;
+  #406 = Methodref          #407.#408     // net/minecraft/network/chat/MutableComponent.getString:()Ljava/lang/String;
+  #407 = Class              #409          // net/minecraft/network/chat/MutableComponent
+  #408 = NameAndType        #410:#286     // getString:()Ljava/lang/String;
+  #409 = Utf8               net/minecraft/network/chat/MutableComponent
+  #410 = Utf8               getString
+  #411 = Methodref          #412.#413     // java/lang/String.equals:(Ljava/lang/Object;)Z
+  #412 = Class              #414          // java/lang/String
+  #413 = NameAndType        #415:#214     // equals:(Ljava/lang/Object;)Z
+  #414 = Utf8               java/lang/String
+  #415 = Utf8               equals
+  #416 = Fieldref           #377.#417     // com/simibubi/create/content/equipment/clipboard/ClipboardEntry.checked:Z
+  #417 = NameAndType        #418:#419     // checked:Z
+  #418 = Utf8               checked
+  #419 = Utf8               Z
+  #420 = Methodref          #377.#421     // com/simibubi/create/content/equipment/clipboard/ClipboardEntry."<init>":(ZLnet/minecraft/network/chat/MutableComponent;)V
+  #421 = NameAndType        #5:#422       // "<init>":(ZLnet/minecraft/network/chat/MutableComponent;)V
+  #422 = Utf8               (ZLnet/minecraft/network/chat/MutableComponent;)V
+  #423 = InterfaceMethodref #210.#424     // java/util/List.size:()I
+  #424 = NameAndType        #425:#152     // size:()I
+  #425 = Utf8               size
+  #426 = Fieldref           #427.#428     // com/simibubi/create/content/equipment/clipboard/ClipboardOverrides$ClipboardType.WRITTEN:Lcom/simibubi/create/content/equipment/clipboard/ClipboardOverrides$ClipboardType;
+  #427 = Class              #429          // com/simibubi/create/content/equipment/clipboard/ClipboardOverrides$ClipboardType
+  #428 = NameAndType        #430:#431     // WRITTEN:Lcom/simibubi/create/content/equipment/clipboard/ClipboardOverrides$ClipboardType;
+  #429 = Utf8               com/simibubi/create/content/equipment/clipboard/ClipboardOverrides$ClipboardType
+  #430 = Utf8               WRITTEN
+  #431 = Utf8               Lcom/simibubi/create/content/equipment/clipboard/ClipboardOverrides$ClipboardType;
+  #432 = Methodref          #249.#433     // com/simibubi/create/content/equipment/clipboard/ClipboardContent.setType:(Lcom/simibubi/create/content/equipment/clipboard/ClipboardOverrides$ClipboardType;)Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+  #433 = NameAndType        #434:#435     // setType:(Lcom/simibubi/create/content/equipment/clipboard/ClipboardOverrides$ClipboardType;)Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+  #434 = Utf8               setType
+  #435 = Utf8               (Lcom/simibubi/create/content/equipment/clipboard/ClipboardOverrides$ClipboardType;)Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+  #436 = Methodref          #244.#437     // net/minecraft/world/item/ItemStack.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+  #437 = NameAndType        #438:#339     // set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+  #438 = Utf8               set
+  #439 = Methodref          #249.#440     // com/simibubi/create/content/equipment/clipboard/ClipboardContent.setPages:(Ljava/util/List;)Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+  #440 = NameAndType        #441:#442     // setPages:(Ljava/util/List;)Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+  #441 = Utf8               setPages
+  #442 = Utf8               (Ljava/util/List;)Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+  #443 = String             #444          // clipboard.copied_from_clipboard
+  #444 = Utf8               clipboard.copied_from_clipboard
+  #445 = Methodref          #330.#31      // net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #446 = Methodref          #102.#447     // net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+  #447 = NameAndType        #448:#449     // getBlock:()Lnet/minecraft/world/level/block/Block;
+  #448 = Utf8               getBlock
+  #449 = Utf8               ()Lnet/minecraft/world/level/block/Block;
+  #450 = Methodref          #451.#452     // net/minecraft/world/level/block/Block.getName:()Lnet/minecraft/network/chat/MutableComponent;
+  #451 = Class              #453          // net/minecraft/world/level/block/Block
+  #452 = NameAndType        #454:#455     // getName:()Lnet/minecraft/network/chat/MutableComponent;
+  #453 = Utf8               net/minecraft/world/level/block/Block
+  #454 = Utf8               getName
+  #455 = Utf8               ()Lnet/minecraft/network/chat/MutableComponent;
+  #456 = Fieldref           #457.#458     // net/minecraft/ChatFormatting.WHITE:Lnet/minecraft/ChatFormatting;
+  #457 = Class              #459          // net/minecraft/ChatFormatting
+  #458 = NameAndType        #460:#461     // WHITE:Lnet/minecraft/ChatFormatting;
+  #459 = Utf8               net/minecraft/ChatFormatting
+  #460 = Utf8               WHITE
+  #461 = Utf8               Lnet/minecraft/ChatFormatting;
+  #462 = Methodref          #407.#463     // net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+  #463 = NameAndType        #464:#465     // withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+  #464 = Utf8               withStyle
+  #465 = Utf8               (Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+  #466 = Methodref          #204.#467     // com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+  #467 = NameAndType        #173:#468     // translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+  #468 = Utf8               (Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+  #469 = Fieldref           #457.#470     // net/minecraft/ChatFormatting.GREEN:Lnet/minecraft/ChatFormatting;
+  #470 = NameAndType        #471:#461     // GREEN:Lnet/minecraft/ChatFormatting;
+  #471 = Utf8               GREEN
+  #472 = Methodref          #473.#474     // net/createmod/catnip/lang/LangBuilder.style:(Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+  #473 = Class              #475          // net/createmod/catnip/lang/LangBuilder
+  #474 = NameAndType        #476:#477     // style:(Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+  #475 = Utf8               net/createmod/catnip/lang/LangBuilder
+  #476 = Utf8               style
+  #477 = Utf8               (Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+  #478 = Methodref          #473.#479     // net/createmod/catnip/lang/LangBuilder.component:()Lnet/minecraft/network/chat/MutableComponent;
+  #479 = NameAndType        #480:#455     // component:()Lnet/minecraft/network/chat/MutableComponent;
+  #480 = Utf8               component
+  #481 = Methodref          #324.#482     // net/minecraft/world/entity/player/Player.displayClientMessage:(Lnet/minecraft/network/chat/Component;Z)V
+  #482 = NameAndType        #483:#484     // displayClientMessage:(Lnet/minecraft/network/chat/Component;Z)V
+  #483 = Utf8               displayClientMessage
+  #484 = Utf8               (Lnet/minecraft/network/chat/Component;Z)V
+  #485 = InterfaceMethodref #84.#390      // java/util/Collection.iterator:()Ljava/util/Iterator;
+  #486 = Class              #487          // com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour
+  #487 = Utf8               com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour
+  #488 = Methodref          #330.#268     // net/minecraft/world/level/Level.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+  #489 = Methodref          #308.#490     // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent.getFace:()Lnet/minecraft/core/Direction;
+  #490 = NameAndType        #491:#275     // getFace:()Lnet/minecraft/core/Direction;
+  #491 = Utf8               getFace
+  #492 = Methodref          #261.#493     // net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+  #493 = NameAndType        #494:#495     // put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+  #494 = Utf8               put
+  #495 = Utf8               (Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+  #496 = String             #497          // clipboard.pasted_to
+  #497 = Utf8               clipboard.pasted_to
+  #498 = String             #499          // clipboard.copied_from
+  #499 = Utf8               clipboard.copied_from
+  #500 = Methodref          #249.#501     // com/simibubi/create/content/equipment/clipboard/ClipboardContent.setCopiedValues:(Lnet/minecraft/nbt/CompoundTag;)Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+  #501 = NameAndType        #502:#503     // setCopiedValues:(Lnet/minecraft/nbt/CompoundTag;)Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+  #502 = Utf8               setCopiedValues
+  #503 = Utf8               (Lnet/minecraft/nbt/CompoundTag;)Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+  #504 = Utf8               Code
+  #505 = Utf8               LineNumberTable
+  #506 = Utf8               LocalVariableTable
+  #507 = Utf8               this
+  #508 = Utf8               Lcom/simibubi/create/content/equipment/clipboard/ClipboardValueSettingsHandler;
+  #509 = Utf8               drawCustomBlockSelection
+  #510 = Utf8               (Lnet/neoforged/neoforge/client/event/RenderHighlightEvent$Block;)V
+  #511 = Utf8               smartBE
+  #512 = Utf8               Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+  #513 = Utf8               event
+  #514 = Utf8               Lnet/neoforged/neoforge/client/event/RenderHighlightEvent$Block;
+  #515 = Utf8               mc
+  #516 = Utf8               Lnet/minecraft/client/Minecraft;
+  #517 = Utf8               target
+  #518 = Utf8               Lnet/minecraft/world/phys/BlockHitResult;
+  #519 = Utf8               pos
+  #520 = Utf8               Lnet/minecraft/core/BlockPos;
+  #521 = Utf8               blockstate
+  #522 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+  #523 = Utf8               shape
+  #524 = Utf8               Lnet/minecraft/world/phys/shapes/VoxelShape;
+  #525 = Utf8               vb
+  #526 = Utf8               Lcom/mojang/blaze3d/vertex/VertexConsumer;
+  #527 = Utf8               camPos
+  #528 = Utf8               Lnet/minecraft/world/phys/Vec3;
+  #529 = Utf8               ms
+  #530 = Utf8               Lcom/mojang/blaze3d/vertex/PoseStack;
+  #531 = Utf8               StackMapTable
+  #532 = Utf8               RuntimeVisibleAnnotations
+  #533 = Utf8               Lnet/neoforged/bus/api/SubscribeEvent;
+  #534 = Utf8               Lnet/neoforged/api/distmarker/OnlyIn;
+  #535 = Utf8               value
+  #536 = Utf8               Lnet/neoforged/api/distmarker/Dist;
+  #537 = Utf8               CLIENT
+  #538 = Utf8               clientTick
+  #539 = Utf8               tip
+  #540 = Utf8               Ljava/util/List;
+  #541 = Utf8               ccbe
+  #542 = Utf8               Lcom/simibubi/create/content/equipment/clipboard/ClipboardCloneable;
+  #543 = Utf8               content
+  #544 = Utf8               tagElement
+  #545 = Utf8               Lnet/minecraft/nbt/CompoundTag;
+  #546 = Utf8               canCopy
+  #547 = Utf8               canPaste
+  #548 = Utf8               LocalVariableTypeTable
+  #549 = Utf8               Ljava/util/List<Lnet/minecraft/network/chat/MutableComponent;>;
+  #550 = Utf8               rightClickToCopy
+  #551 = Utf8               (Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock;)V
+  #552 = Utf8               Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock;
+  #553 = Utf8               leftClickToPaste
+  #554 = Utf8               (Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock;)V
+  #555 = Utf8               Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock;
+  #556 = Utf8               e
+  #557 = Utf8               Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteractSpecific;
+  #558 = Utf8               Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract;
+  #559 = Utf8               Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem;
+  #560 = Utf8               cancellableEvent
+  #561 = Utf8               Lnet/neoforged/bus/api/ICancellableEvent;
+  #562 = Utf8               existing
+  #563 = Utf8               Lcom/simibubi/create/content/equipment/clipboard/ClipboardEntry;
+  #564 = Utf8               pageTo
+  #565 = Utf8               entryToAdd
+  #566 = Utf8               Ljava/lang/String;
+  #567 = Utf8               entry
+  #568 = Utf8               page
+  #569 = Utf8               freePage
+  #570 = Utf8               listTo
+  #571 = Utf8               listFrom
+  #572 = Utf8               toAdd
+  #573 = Utf8               cbe
+  #574 = Utf8               Lcom/simibubi/create/content/equipment/clipboard/ClipboardBlockEntity;
+  #575 = Utf8               cc
+  #576 = Utf8               clipboardKey
+  #577 = Utf8               compoundTag
+  #578 = Utf8               success
+  #579 = Utf8               behaviour
+  #580 = Utf8               Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;
+  #581 = Utf8               rightClickBlock
+  #582 = Utf8               Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent;
+  #583 = Utf8               paste
+  #584 = Utf8               itemStack
+  #585 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #586 = Utf8               world
+  #587 = Utf8               Lnet/minecraft/world/level/Level;
+  #588 = Utf8               Lnet/minecraft/world/entity/player/Player;
+  #589 = Utf8               clipboardContent
+  #590 = Utf8               tag
+  #591 = Utf8               anySuccess
+  #592 = Utf8               anyValid
+  #593 = Utf8               Ljava/util/List<Lcom/simibubi/create/content/equipment/clipboard/ClipboardEntry;>;
+  #594 = Utf8               Ljava/util/List<Ljava/util/List<Lcom/simibubi/create/content/equipment/clipboard/ClipboardEntry;>;>;
+  #595 = Utf8               lambda$clientTick$2
+  #596 = Utf8               (Lnet/minecraft/client/Minecraft;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+  #597 = Utf8               b
+  #598 = Utf8               lambda$clientTick$1
+  #599 = Utf8               (Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+  #600 = Utf8               lambda$drawCustomBlockSelection$0
+  #601 = Utf8               SourceFile
+  #602 = Utf8               ClipboardValueSettingsHandler.java
+  #603 = Utf8               Lnet/neoforged/fml/common/EventBusSubscriber;
+  #604 = Utf8               BootstrapMethods
+  #605 = MethodType         #214          //  (Ljava/lang/Object;)Z
+  #606 = MethodHandle       6:#607        // REF_invokeStatic com/simibubi/create/content/equipment/clipboard/ClipboardValueSettingsHandler.lambda$drawCustomBlockSelection$0:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+  #607 = Methodref          #302.#608     // com/simibubi/create/content/equipment/clipboard/ClipboardValueSettingsHandler.lambda$drawCustomBlockSelection$0:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+  #608 = NameAndType        #600:#599     // lambda$drawCustomBlockSelection$0:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+  #609 = MethodType         #610          //  (Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+  #610 = Utf8               (Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+  #611 = MethodHandle       6:#612        // REF_invokeStatic com/simibubi/create/content/equipment/clipboard/ClipboardValueSettingsHandler.lambda$clientTick$1:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+  #612 = Methodref          #302.#613     // com/simibubi/create/content/equipment/clipboard/ClipboardValueSettingsHandler.lambda$clientTick$1:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+  #613 = NameAndType        #598:#599     // lambda$clientTick$1:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+  #614 = MethodHandle       6:#615        // REF_invokeStatic com/simibubi/create/content/equipment/clipboard/ClipboardValueSettingsHandler.lambda$clientTick$2:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+  #615 = Methodref          #302.#616     // com/simibubi/create/content/equipment/clipboard/ClipboardValueSettingsHandler.lambda$clientTick$2:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+  #616 = NameAndType        #595:#596     // lambda$clientTick$2:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+  #617 = MethodHandle       6:#618        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #618 = Methodref          #619.#620     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #619 = Class              #621          // java/lang/invoke/LambdaMetafactory
+  #620 = NameAndType        #622:#623     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #621 = Utf8               java/lang/invoke/LambdaMetafactory
+  #622 = Utf8               metafactory
+  #623 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #624 = MethodHandle       6:#625        // REF_invokeStatic java/lang/runtime/SwitchBootstraps.typeSwitch:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #625 = Methodref          #626.#627     // java/lang/runtime/SwitchBootstraps.typeSwitch:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #626 = Class              #628          // java/lang/runtime/SwitchBootstraps
+  #627 = NameAndType        #350:#629     // typeSwitch:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #628 = Utf8               java/lang/runtime/SwitchBootstraps
+  #629 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #630 = Utf8               InnerClasses
+  #631 = Class              #632          // net/neoforged/neoforge/client/event/RenderHighlightEvent
+  #632 = Utf8               net/neoforged/neoforge/client/event/RenderHighlightEvent
+  #633 = Utf8               Block
+  #634 = Class              #635          // net/minecraft/core/HolderLookup$Provider
+  #635 = Utf8               net/minecraft/core/HolderLookup$Provider
+  #636 = Class              #637          // net/minecraft/core/HolderLookup
+  #637 = Utf8               net/minecraft/core/HolderLookup
+  #638 = Utf8               Provider
+  #639 = Utf8               EntityInteractSpecific
+  #640 = Utf8               EntityInteract
+  #641 = Utf8               RightClickBlock
+  #642 = Utf8               RightClickItem
+  #643 = Class              #644          // com/simibubi/create/content/equipment/clipboard/ClipboardOverrides
+  #644 = Utf8               com/simibubi/create/content/equipment/clipboard/ClipboardOverrides
+  #645 = Utf8               ClipboardType
+  #646 = Class              #647          // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock
+  #647 = Utf8               net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock
+  #648 = Utf8               LeftClickBlock
+  #649 = Class              #650          // java/lang/invoke/MethodHandles$Lookup
+  #650 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #651 = Class              #652          // java/lang/invoke/MethodHandles
+  #652 = Utf8               java/lang/invoke/MethodHandles
+  #653 = Utf8               Lookup
+{
+  public com.simibubi.create.content.equipment.clipboard.ClipboardValueSettingsHandler();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 47: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/simibubi/create/content/equipment/clipboard/ClipboardValueSettingsHandler;
+
+  public static void drawCustomBlockSelection(net.neoforged.neoforge.client.event.RenderHighlightEvent$Block);
+    descriptor: (Lnet/neoforged/neoforge/client/event/RenderHighlightEvent$Block;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=9, locals=10, args_size=1
+         0: invokestatic  #7                  // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         3: astore_1
+         4: aload_0
+         5: invokevirtual #13                 // Method net/neoforged/neoforge/client/event/RenderHighlightEvent$Block.getTarget:()Lnet/minecraft/world/phys/BlockHitResult;
+         8: astore_2
+         9: aload_2
+        10: invokevirtual #19                 // Method net/minecraft/world/phys/BlockHitResult.getBlockPos:()Lnet/minecraft/core/BlockPos;
+        13: astore_3
+        14: aload_1
+        15: getfield      #25                 // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+        18: aload_3
+        19: invokevirtual #29                 // Method net/minecraft/client/multiplayer/ClientLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+        22: astore        4
+        24: aload_1
+        25: getfield      #35                 // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+        28: ifnull        41
+        31: aload_1
+        32: getfield      #35                 // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+        35: invokevirtual #39                 // Method net/minecraft/client/player/LocalPlayer.isSpectator:()Z
+        38: ifeq          42
+        41: return
+        42: aload_1
+        43: getfield      #25                 // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+        46: invokevirtual #45                 // Method net/minecraft/client/multiplayer/ClientLevel.getWorldBorder:()Lnet/minecraft/world/level/border/WorldBorder;
+        49: aload_3
+        50: invokevirtual #49                 // Method net/minecraft/world/level/border/WorldBorder.isWithinBounds:(Lnet/minecraft/core/BlockPos;)Z
+        53: ifne          57
+        56: return
+        57: getstatic     #55                 // Field com/simibubi/create/AllBlocks.CLIPBOARD:Lcom/tterrag/registrate/util/entry/BlockEntry;
+        60: aload_1
+        61: getfield      #35                 // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+        64: invokevirtual #61                 // Method net/minecraft/client/player/LocalPlayer.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+        67: invokevirtual #65                 // Method com/tterrag/registrate/util/entry/BlockEntry.isIn:(Lnet/minecraft/world/item/ItemStack;)Z
+        70: ifne          74
+        73: return
+        74: aload_1
+        75: getfield      #25                 // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+        78: aload_3
+        79: invokevirtual #71                 // Method net/minecraft/client/multiplayer/ClientLevel.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+        82: astore        6
+        84: aload         6
+        86: instanceof    #75                 // class com/simibubi/create/foundation/blockEntity/SmartBlockEntity
+        89: ifeq          102
+        92: aload         6
+        94: checkcast     #75                 // class com/simibubi/create/foundation/blockEntity/SmartBlockEntity
+        97: astore        5
+        99: goto          103
+       102: return
+       103: aload         5
+       105: instanceof    #77                 // class com/simibubi/create/content/equipment/clipboard/ClipboardBlockEntity
+       108: ifne          145
+       111: aload         5
+       113: invokevirtual #79                 // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.getAllBehaviours:()Ljava/util/Collection;
+       116: invokeinterface #83,  1           // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+       121: aload_1
+       122: aload_2
+       123: invokedynamic #89,  0             // InvokeDynamic #0:test:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;)Ljava/util/function/Predicate;
+       128: invokeinterface #93,  2           // InterfaceMethod java/util/stream/Stream.noneMatch:(Ljava/util/function/Predicate;)Z
+       133: ifeq          145
+       136: aload         5
+       138: instanceof    #99                 // class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+       141: ifne          145
+       144: return
+       145: aload         4
+       147: aload_1
+       148: getfield      #25                 // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+       151: aload_3
+       152: invokevirtual #101                // Method net/minecraft/world/level/block/state/BlockState.getShape:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/phys/shapes/VoxelShape;
+       155: astore        6
+       157: aload         6
+       159: invokevirtual #107                // Method net/minecraft/world/phys/shapes/VoxelShape.isEmpty:()Z
+       162: ifeq          166
+       165: return
+       166: aload_0
+       167: invokevirtual #112                // Method net/neoforged/neoforge/client/event/RenderHighlightEvent$Block.getMultiBufferSource:()Lnet/minecraft/client/renderer/MultiBufferSource;
+       170: invokestatic  #116                // Method net/minecraft/client/renderer/RenderType.lines:()Lnet/minecraft/client/renderer/RenderType;
+       173: invokeinterface #122,  2          // InterfaceMethod net/minecraft/client/renderer/MultiBufferSource.getBuffer:(Lnet/minecraft/client/renderer/RenderType;)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       178: astore        7
+       180: aload_0
+       181: invokevirtual #128                // Method net/neoforged/neoforge/client/event/RenderHighlightEvent$Block.getCamera:()Lnet/minecraft/client/Camera;
+       184: invokevirtual #132                // Method net/minecraft/client/Camera.getPosition:()Lnet/minecraft/world/phys/Vec3;
+       187: astore        8
+       189: aload_0
+       190: invokevirtual #138                // Method net/neoforged/neoforge/client/event/RenderHighlightEvent$Block.getPoseStack:()Lcom/mojang/blaze3d/vertex/PoseStack;
+       193: astore        9
+       195: aload         9
+       197: invokevirtual #142                // Method com/mojang/blaze3d/vertex/PoseStack.pushPose:()V
+       200: aload         9
+       202: aload_3
+       203: invokevirtual #147                // Method net/minecraft/core/BlockPos.getX:()I
+       206: i2d
+       207: aload         8
+       209: getfield      #153                // Field net/minecraft/world/phys/Vec3.x:D
+       212: dsub
+       213: aload_3
+       214: invokevirtual #159                // Method net/minecraft/core/BlockPos.getY:()I
+       217: i2d
+       218: aload         8
+       220: getfield      #162                // Field net/minecraft/world/phys/Vec3.y:D
+       223: dsub
+       224: aload_3
+       225: invokevirtual #165                // Method net/minecraft/core/BlockPos.getZ:()I
+       228: i2d
+       229: aload         8
+       231: getfield      #168                // Field net/minecraft/world/phys/Vec3.z:D
+       234: dsub
+       235: invokevirtual #171                // Method com/mojang/blaze3d/vertex/PoseStack.translate:(DDD)V
+       238: aload         6
+       240: aload         9
+       242: aload         7
+       244: iconst_1
+       245: invokestatic  #175                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       248: invokestatic  #181                // Method com/simibubi/create/content/trains/track/TrackBlockOutline.renderShape:(Lnet/minecraft/world/phys/shapes/VoxelShape;Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;Ljava/lang/Boolean;)V
+       251: aload_0
+       252: iconst_1
+       253: invokevirtual #187                // Method net/neoforged/neoforge/client/event/RenderHighlightEvent$Block.setCanceled:(Z)V
+       256: aload         9
+       258: invokevirtual #191                // Method com/mojang/blaze3d/vertex/PoseStack.popPose:()V
+       261: return
+      LineNumberTable:
+        line 52: 0
+        line 53: 4
+        line 54: 9
+        line 55: 14
+        line 57: 24
+        line 58: 41
+        line 59: 42
+        line 60: 50
+        line 61: 56
+        line 62: 57
+        line 63: 73
+        line 64: 74
+        line 65: 102
+        line 66: 103
+        line 67: 116
+        line 68: 128
+        line 71: 144
+        line 73: 145
+        line 74: 157
+        line 75: 165
+        line 77: 166
+        line 78: 170
+        line 79: 180
+        line 80: 184
+        line 82: 189
+        line 84: 195
+        line 85: 200
+        line 86: 238
+        line 87: 251
+        line 89: 256
+        line 90: 261
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           99       3     5 smartBE   Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+            0     262     0 event   Lnet/neoforged/neoforge/client/event/RenderHighlightEvent$Block;
+            4     258     1    mc   Lnet/minecraft/client/Minecraft;
+            9     253     2 target   Lnet/minecraft/world/phys/BlockHitResult;
+           14     248     3   pos   Lnet/minecraft/core/BlockPos;
+           24     238     4 blockstate   Lnet/minecraft/world/level/block/state/BlockState;
+          103     159     5 smartBE   Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+          157     105     6 shape   Lnet/minecraft/world/phys/shapes/VoxelShape;
+          180      82     7    vb   Lcom/mojang/blaze3d/vertex/VertexConsumer;
+          189      73     8 camPos   Lnet/minecraft/world/phys/Vec3;
+          195      67     9    ms   Lcom/mojang/blaze3d/vertex/PoseStack;
+      StackMapTable: number_of_entries = 8
+        frame_type = 255 /* full_frame */
+          offset_delta = 41
+          locals = [ class net/neoforged/neoforge/client/event/RenderHighlightEvent$Block, class net/minecraft/client/Minecraft, class net/minecraft/world/phys/BlockHitResult, class net/minecraft/core/BlockPos, class net/minecraft/world/level/block/state/BlockState ]
+          stack = []
+        frame_type = 0 /* same */
+        frame_type = 14 /* same */
+        frame_type = 16 /* same */
+        frame_type = 27 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 0
+          locals = [ class com/simibubi/create/foundation/blockEntity/SmartBlockEntity ]
+        frame_type = 41 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 20
+          locals = [ class net/minecraft/world/phys/shapes/VoxelShape ]
+    RuntimeVisibleAnnotations:
+      0: #533()
+        net.neoforged.bus.api.SubscribeEvent
+      1: #534(#535=e#536.#537)
+        net.neoforged.api.distmarker.OnlyIn(
+          value=Lnet/neoforged/api/distmarker/Dist;.CLIENT
+        )
+
+  public static void clientTick();
+    descriptor: ()V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=6, locals=9, args_size=0
+         0: invokestatic  #7                  // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         3: astore_0
+         4: aload_0
+         5: getfield      #194                // Field net/minecraft/client/Minecraft.hitResult:Lnet/minecraft/world/phys/HitResult;
+         8: astore_2
+         9: aload_2
+        10: instanceof    #20                 // class net/minecraft/world/phys/BlockHitResult
+        13: ifeq          24
+        16: aload_2
+        17: checkcast     #20                 // class net/minecraft/world/phys/BlockHitResult
+        20: astore_1
+        21: goto          25
+        24: return
+        25: getstatic     #55                 // Field com/simibubi/create/AllBlocks.CLIPBOARD:Lcom/tterrag/registrate/util/entry/BlockEntry;
+        28: aload_0
+        29: getfield      #35                 // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+        32: invokevirtual #61                 // Method net/minecraft/client/player/LocalPlayer.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+        35: invokevirtual #65                 // Method com/tterrag/registrate/util/entry/BlockEntry.isIn:(Lnet/minecraft/world/item/ItemStack;)Z
+        38: ifne          42
+        41: return
+        42: aload_1
+        43: invokevirtual #19                 // Method net/minecraft/world/phys/BlockHitResult.getBlockPos:()Lnet/minecraft/core/BlockPos;
+        46: astore_2
+        47: aload_0
+        48: getfield      #25                 // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+        51: aload_2
+        52: invokevirtual #71                 // Method net/minecraft/client/multiplayer/ClientLevel.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+        55: astore        4
+        57: aload         4
+        59: instanceof    #75                 // class com/simibubi/create/foundation/blockEntity/SmartBlockEntity
+        62: ifeq          74
+        65: aload         4
+        67: checkcast     #75                 // class com/simibubi/create/foundation/blockEntity/SmartBlockEntity
+        70: astore_3
+        71: goto          75
+        74: return
+        75: aload_3
+        76: instanceof    #77                 // class com/simibubi/create/content/equipment/clipboard/ClipboardBlockEntity
+        79: ifeq          142
+        82: new           #198                // class java/util/ArrayList
+        85: dup
+        86: invokespecial #200                // Method java/util/ArrayList."<init>":()V
+        89: astore        4
+        91: aload         4
+        93: ldc           #201                // String clipboard.actions
+        95: iconst_0
+        96: anewarray     #2                  // class java/lang/Object
+        99: invokestatic  #203                // Method com/simibubi/create/foundation/utility/CreateLang.translateDirect:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+       102: invokeinterface #209,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       107: pop
+       108: aload         4
+       110: ldc           #215                // String clipboard.copy_other_clipboard
+       112: iconst_1
+       113: anewarray     #2                  // class java/lang/Object
+       116: dup
+       117: iconst_0
+       118: ldc           #217                // String key.use
+       120: invokestatic  #219                // InterfaceMethod net/minecraft/network/chat/Component.keybind:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       123: aastore
+       124: invokestatic  #203                // Method com/simibubi/create/foundation/utility/CreateLang.translateDirect:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+       127: invokeinterface #209,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       132: pop
+       133: getstatic     #225                // Field com/simibubi/create/CreateClient.VALUE_SETTINGS_HANDLER:Lcom/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsClient;
+       136: aload         4
+       138: invokevirtual #231                // Method com/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsClient.showHoverTip:(Ljava/util/List;)V
+       141: return
+       142: aload_0
+       143: getfield      #35                 // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+       146: invokevirtual #61                 // Method net/minecraft/client/player/LocalPlayer.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+       149: getstatic     #237                // Field com/simibubi/create/AllDataComponents.CLIPBOARD_CONTENT:Lnet/minecraft/core/component/DataComponentType;
+       152: invokevirtual #243                // Method net/minecraft/world/item/ItemStack.get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+       155: checkcast     #249                // class com/simibubi/create/content/equipment/clipboard/ClipboardContent
+       158: astore        4
+       160: aload         4
+       162: ifnonnull     166
+       165: return
+       166: aload         4
+       168: invokevirtual #251                // Method com/simibubi/create/content/equipment/clipboard/ClipboardContent.copiedValues:()Ljava/util/Optional;
+       171: aconst_null
+       172: invokevirtual #255                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+       175: checkcast     #261                // class net/minecraft/nbt/CompoundTag
+       178: astore        5
+       180: aload_3
+       181: invokevirtual #79                 // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.getAllBehaviours:()Ljava/util/Collection;
+       184: invokeinterface #83,  1           // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+       189: aload_0
+       190: aload_1
+       191: invokedynamic #263,  0            // InvokeDynamic #1:test:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;)Ljava/util/function/Predicate;
+       196: invokeinterface #264,  2          // InterfaceMethod java/util/stream/Stream.anyMatch:(Ljava/util/function/Predicate;)Z
+       201: ifne          245
+       204: aload_3
+       205: instanceof    #99                 // class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+       208: ifeq          249
+       211: aload_3
+       212: checkcast     #99                 // class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+       215: astore        7
+       217: aload         7
+       219: aload_0
+       220: getfield      #25                 // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+       223: invokevirtual #267                // Method net/minecraft/client/multiplayer/ClientLevel.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+       226: new           #261                // class net/minecraft/nbt/CompoundTag
+       229: dup
+       230: invokespecial #271                // Method net/minecraft/nbt/CompoundTag."<init>":()V
+       233: aload_1
+       234: invokevirtual #272                // Method net/minecraft/world/phys/BlockHitResult.getDirection:()Lnet/minecraft/core/Direction;
+       237: invokeinterface #276,  4          // InterfaceMethod com/simibubi/create/content/equipment/clipboard/ClipboardCloneable.writeToClipboard:(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/Direction;)Z
+       242: ifeq          249
+       245: iconst_1
+       246: goto          250
+       249: iconst_0
+       250: istore        6
+       252: aload         5
+       254: ifnull        338
+       257: aload_3
+       258: invokevirtual #79                 // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.getAllBehaviours:()Ljava/util/Collection;
+       261: invokeinterface #83,  1           // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+       266: aload_0
+       267: aload         5
+       269: aload_1
+       270: invokedynamic #280,  0            // InvokeDynamic #2:test:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/phys/BlockHitResult;)Ljava/util/function/Predicate;
+       275: invokeinterface #264,  2          // InterfaceMethod java/util/stream/Stream.anyMatch:(Ljava/util/function/Predicate;)Z
+       280: ifne          334
+       283: aload_3
+       284: instanceof    #99                 // class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+       287: ifeq          338
+       290: aload_3
+       291: checkcast     #99                 // class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+       294: astore        8
+       296: aload         8
+       298: aload_0
+       299: getfield      #25                 // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+       302: invokevirtual #267                // Method net/minecraft/client/multiplayer/ClientLevel.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+       305: aload         5
+       307: aload         8
+       309: invokeinterface #283,  1          // InterfaceMethod com/simibubi/create/content/equipment/clipboard/ClipboardCloneable.getClipboardKey:()Ljava/lang/String;
+       314: invokevirtual #287                // Method net/minecraft/nbt/CompoundTag.getCompound:(Ljava/lang/String;)Lnet/minecraft/nbt/CompoundTag;
+       317: aload_0
+       318: getfield      #35                 // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+       321: aload_1
+       322: invokevirtual #272                // Method net/minecraft/world/phys/BlockHitResult.getDirection:()Lnet/minecraft/core/Direction;
+       325: iconst_1
+       326: invokeinterface #291,  6          // InterfaceMethod com/simibubi/create/content/equipment/clipboard/ClipboardCloneable.readFromClipboard:(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/Direction;Z)Z
+       331: ifeq          338
+       334: iconst_1
+       335: goto          339
+       338: iconst_0
+       339: istore        7
+       341: iload         6
+       343: ifne          352
+       346: iload         7
+       348: ifne          352
+       351: return
+       352: new           #198                // class java/util/ArrayList
+       355: dup
+       356: invokespecial #200                // Method java/util/ArrayList."<init>":()V
+       359: astore        8
+       361: aload         8
+       363: ldc           #201                // String clipboard.actions
+       365: iconst_0
+       366: anewarray     #2                  // class java/lang/Object
+       369: invokestatic  #203                // Method com/simibubi/create/foundation/utility/CreateLang.translateDirect:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+       372: invokeinterface #209,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       377: pop
+       378: iload         6
+       380: ifeq          409
+       383: aload         8
+       385: ldc_w         #295                // String clipboard.to_copy
+       388: iconst_1
+       389: anewarray     #2                  // class java/lang/Object
+       392: dup
+       393: iconst_0
+       394: ldc           #217                // String key.use
+       396: invokestatic  #219                // InterfaceMethod net/minecraft/network/chat/Component.keybind:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       399: aastore
+       400: invokestatic  #203                // Method com/simibubi/create/foundation/utility/CreateLang.translateDirect:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+       403: invokeinterface #209,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       408: pop
+       409: iload         7
+       411: ifeq          441
+       414: aload         8
+       416: ldc_w         #297                // String clipboard.to_paste
+       419: iconst_1
+       420: anewarray     #2                  // class java/lang/Object
+       423: dup
+       424: iconst_0
+       425: ldc_w         #299                // String key.attack
+       428: invokestatic  #219                // InterfaceMethod net/minecraft/network/chat/Component.keybind:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       431: aastore
+       432: invokestatic  #203                // Method com/simibubi/create/foundation/utility/CreateLang.translateDirect:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+       435: invokeinterface #209,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       440: pop
+       441: getstatic     #225                // Field com/simibubi/create/CreateClient.VALUE_SETTINGS_HANDLER:Lcom/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsClient;
+       444: aload         8
+       446: invokevirtual #231                // Method com/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsClient.showHoverTip:(Ljava/util/List;)V
+       449: return
+      LineNumberTable:
+        line 94: 0
+        line 95: 4
+        line 96: 24
+        line 97: 25
+        line 98: 41
+        line 99: 42
+        line 100: 47
+        line 101: 74
+        line 103: 75
+        line 104: 82
+        line 105: 91
+        line 106: 108
+        line 107: 133
+        line 108: 141
+        line 111: 142
+        line 112: 152
+        line 113: 160
+        line 114: 165
+        line 116: 166
+        line 122: 180
+        line 118: 181
+        line 119: 184
+        line 120: 196
+        line 122: 211
+        line 123: 223
+        line 125: 252
+        line 126: 261
+        line 127: 275
+        line 129: 290
+        line 130: 309
+        line 129: 326
+        line 132: 341
+        line 133: 351
+        line 135: 352
+        line 136: 361
+        line 137: 378
+        line 138: 383
+        line 139: 409
+        line 140: 414
+        line 142: 441
+        line 143: 449
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           21       3     1 target   Lnet/minecraft/world/phys/BlockHitResult;
+           71       3     3 smartBE   Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+           91      51     4   tip   Ljava/util/List;
+          217      28     7  ccbe   Lcom/simibubi/create/content/equipment/clipboard/ClipboardCloneable;
+          296      38     8  ccbe   Lcom/simibubi/create/content/equipment/clipboard/ClipboardCloneable;
+            4     446     0    mc   Lnet/minecraft/client/Minecraft;
+           25     425     1 target   Lnet/minecraft/world/phys/BlockHitResult;
+           47     403     2   pos   Lnet/minecraft/core/BlockPos;
+           75     375     3 smartBE   Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+          160     290     4 content   Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+          180     270     5 tagElement   Lnet/minecraft/nbt/CompoundTag;
+          252     198     6 canCopy   Z
+          341     109     7 canPaste   Z
+          361      89     8   tip   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           91      51     4   tip   Ljava/util/List<Lnet/minecraft/network/chat/MutableComponent;>;
+          361      89     8   tip   Ljava/util/List<Lnet/minecraft/network/chat/MutableComponent;>;
+      StackMapTable: number_of_entries = 16
+        frame_type = 252 /* append */
+          offset_delta = 24
+          locals = [ class net/minecraft/client/Minecraft ]
+        frame_type = 252 /* append */
+          offset_delta = 0
+          locals = [ class net/minecraft/world/phys/BlockHitResult ]
+        frame_type = 16 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 31
+          locals = [ class net/minecraft/core/BlockPos ]
+        frame_type = 252 /* append */
+          offset_delta = 0
+          locals = [ class com/simibubi/create/foundation/blockEntity/SmartBlockEntity ]
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 66
+        frame_type = 252 /* append */
+          offset_delta = 23
+          locals = [ class com/simibubi/create/content/equipment/clipboard/ClipboardContent ]
+        frame_type = 252 /* append */
+          offset_delta = 78
+          locals = [ class net/minecraft/nbt/CompoundTag ]
+        frame_type = 3 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 83
+          locals = [ int ]
+        frame_type = 3 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 12
+          locals = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 56
+          locals = [ class java/util/List ]
+        frame_type = 31 /* same */
+    RuntimeVisibleAnnotations:
+      0: #534(#535=e#536.#537)
+        net.neoforged.api.distmarker.OnlyIn(
+          value=Lnet/neoforged/api/distmarker/Dist;.CLIENT
+        )
+
+  public static void rightClickToCopy(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$RightClickBlock);
+    descriptor: (Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: iconst_0
+         2: invokestatic  #301                // Method interact:(Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent;Z)V
+         5: return
+      LineNumberTable:
+        line 147: 0
+        line 148: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0 event   Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock;
+    RuntimeVisibleAnnotations:
+      0: #533()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static void leftClickToPaste(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$LeftClickBlock);
+    descriptor: (Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: iconst_1
+         2: invokestatic  #301                // Method interact:(Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent;Z)V
+         5: return
+      LineNumberTable:
+        line 152: 0
+        line 153: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0 event   Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock;
+    RuntimeVisibleAnnotations:
+      0: #533()
+        net.neoforged.bus.api.SubscribeEvent
+
+  private static void interact(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent, boolean);
+    descriptor: (Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent;Z)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=7, locals=21, args_size=2
+         0: aload_0
+         1: invokevirtual #307                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent.getItemStack:()Lnet/minecraft/world/item/ItemStack;
+         4: astore_2
+         5: getstatic     #55                 // Field com/simibubi/create/AllBlocks.CLIPBOARD:Lcom/tterrag/registrate/util/entry/BlockEntry;
+         8: aload_2
+         9: invokevirtual #65                 // Method com/tterrag/registrate/util/entry/BlockEntry.isIn:(Lnet/minecraft/world/item/ItemStack;)Z
+        12: ifne          16
+        15: return
+        16: aload_0
+        17: invokevirtual #312                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent.getPos:()Lnet/minecraft/core/BlockPos;
+        20: astore_3
+        21: aload_0
+        22: invokevirtual #315                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent.getLevel:()Lnet/minecraft/world/level/Level;
+        25: astore        4
+        27: aload_0
+        28: invokevirtual #319                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+        31: astore        5
+        33: aload         5
+        35: ifnull        47
+        38: aload         5
+        40: invokevirtual #323                // Method net/minecraft/world/entity/player/Player.isSpectator:()Z
+        43: ifeq          47
+        46: return
+        47: aload         5
+        49: invokevirtual #326                // Method net/minecraft/world/entity/player/Player.isShiftKeyDown:()Z
+        52: ifeq          56
+        55: return
+        56: aload         4
+        58: aload_3
+        59: invokevirtual #329                // Method net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+        62: astore        7
+        64: aload         7
+        66: instanceof    #75                 // class com/simibubi/create/foundation/blockEntity/SmartBlockEntity
+        69: ifeq          82
+        72: aload         7
+        74: checkcast     #75                 // class com/simibubi/create/foundation/blockEntity/SmartBlockEntity
+        77: astore        6
+        79: goto          83
+        82: return
+        83: aload_2
+        84: getstatic     #237                // Field com/simibubi/create/AllDataComponents.CLIPBOARD_CONTENT:Lnet/minecraft/core/component/DataComponentType;
+        87: getstatic     #332                // Field com/simibubi/create/content/equipment/clipboard/ClipboardContent.EMPTY:Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+        90: invokevirtual #336                // Method net/minecraft/world/item/ItemStack.getOrDefault:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+        93: checkcast     #249                // class com/simibubi/create/content/equipment/clipboard/ClipboardContent
+        96: astore        7
+        98: aload         6
+       100: instanceof    #77                 // class com/simibubi/create/content/equipment/clipboard/ClipboardBlockEntity
+       103: ifeq          690
+       106: aload         6
+       108: checkcast     #77                 // class com/simibubi/create/content/equipment/clipboard/ClipboardBlockEntity
+       111: astore        8
+       113: aload_0
+       114: instanceof    #340                // class net/neoforged/bus/api/ICancellableEvent
+       117: ifeq          256
+       120: aload_0
+       121: checkcast     #340                // class net/neoforged/bus/api/ICancellableEvent
+       124: astore        9
+       126: aload         9
+       128: iconst_1
+       129: invokeinterface #342,  2          // InterfaceMethod net/neoforged/bus/api/ICancellableEvent.setCanceled:(Z)V
+       134: aload_0
+       135: dup
+       136: invokestatic  #343                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+       139: pop
+       140: astore        10
+       142: iconst_0
+       143: istore        11
+       145: aload         10
+       147: iload         11
+       149: invokedynamic #348,  0            // InvokeDynamic #3:typeSwitch:(Ljava/lang/Object;I)I
+       154: tableswitch   { // 0 to 3
+                       0: 184
+                       1: 202
+                       2: 220
+                       3: 238
+                 default: 256
+            }
+       184: aload         10
+       186: checkcast     #352                // class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteractSpecific
+       189: astore        12
+       191: aload         12
+       193: getstatic     #354                // Field net/minecraft/world/InteractionResult.SUCCESS:Lnet/minecraft/world/InteractionResult;
+       196: invokevirtual #360                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteractSpecific.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+       199: goto          256
+       202: aload         10
+       204: checkcast     #364                // class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract
+       207: astore        13
+       209: aload         13
+       211: getstatic     #354                // Field net/minecraft/world/InteractionResult.SUCCESS:Lnet/minecraft/world/InteractionResult;
+       214: invokevirtual #366                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+       217: goto          256
+       220: aload         10
+       222: checkcast     #367                // class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock
+       225: astore        14
+       227: aload         14
+       229: getstatic     #354                // Field net/minecraft/world/InteractionResult.SUCCESS:Lnet/minecraft/world/InteractionResult;
+       232: invokevirtual #369                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+       235: goto          256
+       238: aload         10
+       240: checkcast     #370                // class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem
+       243: astore        15
+       245: aload         15
+       247: getstatic     #354                // Field net/minecraft/world/InteractionResult.SUCCESS:Lnet/minecraft/world/InteractionResult;
+       250: invokevirtual #372                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+       253: goto          256
+       256: aload         4
+       258: invokevirtual #373                // Method net/minecraft/world/level/Level.isClientSide:()Z
+       261: ifne          643
+       264: aload         7
+       266: invokestatic  #376                // Method com/simibubi/create/content/equipment/clipboard/ClipboardEntry.readAll:(Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;)Ljava/util/List;
+       269: astore        9
+       271: aload         8
+       273: invokevirtual #382                // Method com/simibubi/create/content/equipment/clipboard/ClipboardBlockEntity.components:()Lnet/minecraft/core/component/DataComponentMap;
+       276: invokestatic  #386                // Method com/simibubi/create/content/equipment/clipboard/ClipboardEntry.readAll:(Lnet/minecraft/core/component/DataComponentMap;)Ljava/util/List;
+       279: astore        10
+       281: new           #198                // class java/util/ArrayList
+       284: dup
+       285: invokespecial #200                // Method java/util/ArrayList."<init>":()V
+       288: astore        11
+       290: aload         10
+       292: invokeinterface #389,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       297: astore        12
+       299: aload         12
+       301: invokeinterface #393,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       306: ifeq          480
+       309: aload         12
+       311: invokeinterface #398,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       316: checkcast     #210                // class java/util/List
+       319: astore        13
+       321: aload         13
+       323: invokeinterface #389,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       328: astore        14
+       330: aload         14
+       332: invokeinterface #393,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       337: ifeq          477
+       340: aload         14
+       342: invokeinterface #398,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       347: checkcast     #377                // class com/simibubi/create/content/equipment/clipboard/ClipboardEntry
+       350: astore        15
+       352: aload         15
+       354: getfield      #402                // Field com/simibubi/create/content/equipment/clipboard/ClipboardEntry.text:Lnet/minecraft/network/chat/MutableComponent;
+       357: invokevirtual #406                // Method net/minecraft/network/chat/MutableComponent.getString:()Ljava/lang/String;
+       360: astore        16
+       362: aload         9
+       364: invokeinterface #389,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       369: astore        17
+       371: aload         17
+       373: invokeinterface #393,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       378: ifeq          449
+       381: aload         17
+       383: invokeinterface #398,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       388: checkcast     #210                // class java/util/List
+       391: astore        18
+       393: aload         18
+       395: invokeinterface #389,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       400: astore        19
+       402: aload         19
+       404: invokeinterface #393,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       409: ifeq          446
+       412: aload         19
+       414: invokeinterface #398,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       419: checkcast     #377                // class com/simibubi/create/content/equipment/clipboard/ClipboardEntry
+       422: astore        20
+       424: aload         16
+       426: aload         20
+       428: getfield      #402                // Field com/simibubi/create/content/equipment/clipboard/ClipboardEntry.text:Lnet/minecraft/network/chat/MutableComponent;
+       431: invokevirtual #406                // Method net/minecraft/network/chat/MutableComponent.getString:()Ljava/lang/String;
+       434: invokevirtual #411                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       437: ifeq          443
+       440: goto          330
+       443: goto          402
+       446: goto          371
+       449: aload         11
+       451: new           #377                // class com/simibubi/create/content/equipment/clipboard/ClipboardEntry
+       454: dup
+       455: aload         15
+       457: getfield      #416                // Field com/simibubi/create/content/equipment/clipboard/ClipboardEntry.checked:Z
+       460: aload         15
+       462: getfield      #402                // Field com/simibubi/create/content/equipment/clipboard/ClipboardEntry.text:Lnet/minecraft/network/chat/MutableComponent;
+       465: invokespecial #420                // Method com/simibubi/create/content/equipment/clipboard/ClipboardEntry."<init>":(ZLnet/minecraft/network/chat/MutableComponent;)V
+       468: invokeinterface #209,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       473: pop
+       474: goto          330
+       477: goto          299
+       480: aload         11
+       482: invokeinterface #389,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       487: astore        12
+       489: aload         12
+       491: invokeinterface #393,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       496: ifeq          624
+       499: aload         12
+       501: invokeinterface #398,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       506: checkcast     #377                // class com/simibubi/create/content/equipment/clipboard/ClipboardEntry
+       509: astore        13
+       511: aconst_null
+       512: astore        14
+       514: aload         9
+       516: invokeinterface #389,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       521: astore        15
+       523: aload         15
+       525: invokeinterface #393,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       530: ifeq          567
+       533: aload         15
+       535: invokeinterface #398,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       540: checkcast     #210                // class java/util/List
+       543: astore        16
+       545: aload         16
+       547: invokeinterface #423,  1          // InterfaceMethod java/util/List.size:()I
+       552: bipush        11
+       554: if_icmple     560
+       557: goto          523
+       560: aload         16
+       562: astore        14
+       564: goto          567
+       567: aload         14
+       569: ifnonnull     591
+       572: new           #198                // class java/util/ArrayList
+       575: dup
+       576: invokespecial #200                // Method java/util/ArrayList."<init>":()V
+       579: astore        14
+       581: aload         9
+       583: aload         14
+       585: invokeinterface #209,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       590: pop
+       591: aload         14
+       593: aload         13
+       595: invokeinterface #209,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       600: pop
+       601: aload         7
+       603: getstatic     #426                // Field com/simibubi/create/content/equipment/clipboard/ClipboardOverrides$ClipboardType.WRITTEN:Lcom/simibubi/create/content/equipment/clipboard/ClipboardOverrides$ClipboardType;
+       606: invokevirtual #432                // Method com/simibubi/create/content/equipment/clipboard/ClipboardContent.setType:(Lcom/simibubi/create/content/equipment/clipboard/ClipboardOverrides$ClipboardType;)Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+       609: astore        7
+       611: aload_2
+       612: getstatic     #237                // Field com/simibubi/create/AllDataComponents.CLIPBOARD_CONTENT:Lnet/minecraft/core/component/DataComponentType;
+       615: aload         7
+       617: invokevirtual #436                // Method net/minecraft/world/item/ItemStack.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+       620: pop
+       621: goto          489
+       624: aload         7
+       626: aload         9
+       628: invokevirtual #439                // Method com/simibubi/create/content/equipment/clipboard/ClipboardContent.setPages:(Ljava/util/List;)Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+       631: astore        7
+       633: aload_2
+       634: getstatic     #237                // Field com/simibubi/create/AllDataComponents.CLIPBOARD_CONTENT:Lnet/minecraft/core/component/DataComponentType;
+       637: aload         7
+       639: invokevirtual #436                // Method net/minecraft/world/item/ItemStack.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+       642: pop
+       643: aload         5
+       645: ldc_w         #443                // String clipboard.copied_from_clipboard
+       648: iconst_1
+       649: anewarray     #2                  // class java/lang/Object
+       652: dup
+       653: iconst_0
+       654: aload         4
+       656: aload_3
+       657: invokevirtual #445                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       660: invokevirtual #446                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       663: invokevirtual #450                // Method net/minecraft/world/level/block/Block.getName:()Lnet/minecraft/network/chat/MutableComponent;
+       666: getstatic     #456                // Field net/minecraft/ChatFormatting.WHITE:Lnet/minecraft/ChatFormatting;
+       669: invokevirtual #462                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+       672: aastore
+       673: invokestatic  #466                // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+       676: getstatic     #469                // Field net/minecraft/ChatFormatting.GREEN:Lnet/minecraft/ChatFormatting;
+       679: invokevirtual #472                // Method net/createmod/catnip/lang/LangBuilder.style:(Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+       682: invokevirtual #478                // Method net/createmod/catnip/lang/LangBuilder.component:()Lnet/minecraft/network/chat/MutableComponent;
+       685: iconst_1
+       686: invokevirtual #481                // Method net/minecraft/world/entity/player/Player.displayClientMessage:(Lnet/minecraft/network/chat/Component;Z)V
+       689: return
+       690: aload         7
+       692: invokevirtual #251                // Method com/simibubi/create/content/equipment/clipboard/ClipboardContent.copiedValues:()Ljava/util/Optional;
+       695: aconst_null
+       696: invokevirtual #255                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+       699: checkcast     #261                // class net/minecraft/nbt/CompoundTag
+       702: astore        8
+       704: iload_1
+       705: ifeq          714
+       708: aload         8
+       710: ifnonnull     714
+       713: return
+       714: iload_1
+       715: ifne          727
+       718: new           #261                // class net/minecraft/nbt/CompoundTag
+       721: dup
+       722: invokespecial #271                // Method net/minecraft/nbt/CompoundTag."<init>":()V
+       725: astore        8
+       727: iconst_0
+       728: istore        9
+       730: iconst_0
+       731: istore        10
+       733: aload         6
+       735: invokevirtual #79                 // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.getAllBehaviours:()Ljava/util/Collection;
+       738: invokeinterface #485,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+       743: astore        11
+       745: aload         11
+       747: invokeinterface #393,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       752: ifeq          890
+       755: aload         11
+       757: invokeinterface #398,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       762: checkcast     #486                // class com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour
+       765: astore        12
+       767: aload         12
+       769: instanceof    #99                 // class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+       772: ifeq          745
+       775: aload         12
+       777: checkcast     #99                 // class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+       780: astore        13
+       782: iconst_1
+       783: istore        10
+       785: aload         13
+       787: invokeinterface #283,  1          // InterfaceMethod com/simibubi/create/content/equipment/clipboard/ClipboardCloneable.getClipboardKey:()Ljava/lang/String;
+       792: astore        14
+       794: iload_1
+       795: ifeq          836
+       798: iload         9
+       800: aload         13
+       802: aload         4
+       804: invokevirtual #488                // Method net/minecraft/world/level/Level.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+       807: aload         8
+       809: aload         14
+       811: invokevirtual #287                // Method net/minecraft/nbt/CompoundTag.getCompound:(Ljava/lang/String;)Lnet/minecraft/nbt/CompoundTag;
+       814: aload         5
+       816: aload_0
+       817: invokevirtual #489                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent.getFace:()Lnet/minecraft/core/Direction;
+       820: aload         4
+       822: invokevirtual #373                // Method net/minecraft/world/level/Level.isClientSide:()Z
+       825: invokeinterface #291,  6          // InterfaceMethod com/simibubi/create/content/equipment/clipboard/ClipboardCloneable.readFromClipboard:(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/Direction;Z)Z
+       830: ior
+       831: istore        9
+       833: goto          745
+       836: new           #261                // class net/minecraft/nbt/CompoundTag
+       839: dup
+       840: invokespecial #271                // Method net/minecraft/nbt/CompoundTag."<init>":()V
+       843: astore        15
+       845: aload         13
+       847: aload         4
+       849: invokevirtual #488                // Method net/minecraft/world/level/Level.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+       852: aload         15
+       854: aload_0
+       855: invokevirtual #489                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent.getFace:()Lnet/minecraft/core/Direction;
+       858: invokeinterface #276,  4          // InterfaceMethod com/simibubi/create/content/equipment/clipboard/ClipboardCloneable.writeToClipboard:(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/Direction;)Z
+       863: istore        16
+       865: iload         9
+       867: iload         16
+       869: ior
+       870: istore        9
+       872: iload         16
+       874: ifeq          887
+       877: aload         8
+       879: aload         14
+       881: aload         15
+       883: invokevirtual #492                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+       886: pop
+       887: goto          745
+       890: aload         6
+       892: instanceof    #99                 // class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+       895: ifeq          1010
+       898: aload         6
+       900: checkcast     #99                 // class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+       903: astore        11
+       905: iconst_1
+       906: istore        10
+       908: aload         11
+       910: invokeinterface #283,  1          // InterfaceMethod com/simibubi/create/content/equipment/clipboard/ClipboardCloneable.getClipboardKey:()Ljava/lang/String;
+       915: astore        12
+       917: iload_1
+       918: ifeq          959
+       921: iload         9
+       923: aload         11
+       925: aload         4
+       927: invokevirtual #488                // Method net/minecraft/world/level/Level.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+       930: aload         8
+       932: aload         12
+       934: invokevirtual #287                // Method net/minecraft/nbt/CompoundTag.getCompound:(Ljava/lang/String;)Lnet/minecraft/nbt/CompoundTag;
+       937: aload         5
+       939: aload_0
+       940: invokevirtual #489                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent.getFace:()Lnet/minecraft/core/Direction;
+       943: aload         4
+       945: invokevirtual #373                // Method net/minecraft/world/level/Level.isClientSide:()Z
+       948: invokeinterface #291,  6          // InterfaceMethod com/simibubi/create/content/equipment/clipboard/ClipboardCloneable.readFromClipboard:(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/Direction;Z)Z
+       953: ior
+       954: istore        9
+       956: goto          1010
+       959: new           #261                // class net/minecraft/nbt/CompoundTag
+       962: dup
+       963: invokespecial #271                // Method net/minecraft/nbt/CompoundTag."<init>":()V
+       966: astore        13
+       968: aload         11
+       970: aload         4
+       972: invokevirtual #488                // Method net/minecraft/world/level/Level.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+       975: aload         13
+       977: aload_0
+       978: invokevirtual #489                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent.getFace:()Lnet/minecraft/core/Direction;
+       981: invokeinterface #276,  4          // InterfaceMethod com/simibubi/create/content/equipment/clipboard/ClipboardCloneable.writeToClipboard:(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/Direction;)Z
+       986: istore        14
+       988: iload         9
+       990: iload         14
+       992: ior
+       993: istore        9
+       995: iload         14
+       997: ifeq          1010
+      1000: aload         8
+      1002: aload         12
+      1004: aload         13
+      1006: invokevirtual #492                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+      1009: pop
+      1010: iload         10
+      1012: ifne          1016
+      1015: return
+      1016: aload_0
+      1017: checkcast     #340                // class net/neoforged/bus/api/ICancellableEvent
+      1020: iconst_1
+      1021: invokeinterface #342,  2          // InterfaceMethod net/neoforged/bus/api/ICancellableEvent.setCanceled:(Z)V
+      1026: aload_0
+      1027: instanceof    #367                // class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock
+      1030: ifeq          1047
+      1033: aload_0
+      1034: checkcast     #367                // class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock
+      1037: astore        11
+      1039: aload         11
+      1041: getstatic     #354                // Field net/minecraft/world/InteractionResult.SUCCESS:Lnet/minecraft/world/InteractionResult;
+      1044: invokevirtual #369                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+      1047: aload         4
+      1049: invokevirtual #373                // Method net/minecraft/world/level/Level.isClientSide:()Z
+      1052: ifeq          1056
+      1055: return
+      1056: iload         9
+      1058: ifne          1062
+      1061: return
+      1062: aload         5
+      1064: iload_1
+      1065: ifeq          1074
+      1068: ldc_w         #496                // String clipboard.pasted_to
+      1071: goto          1077
+      1074: ldc_w         #498                // String clipboard.copied_from
+      1077: iconst_1
+      1078: anewarray     #2                  // class java/lang/Object
+      1081: dup
+      1082: iconst_0
+      1083: aload         4
+      1085: aload_3
+      1086: invokevirtual #445                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      1089: invokevirtual #446                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      1092: invokevirtual #450                // Method net/minecraft/world/level/block/Block.getName:()Lnet/minecraft/network/chat/MutableComponent;
+      1095: getstatic     #456                // Field net/minecraft/ChatFormatting.WHITE:Lnet/minecraft/ChatFormatting;
+      1098: invokevirtual #462                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      1101: aastore
+      1102: invokestatic  #466                // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+      1105: getstatic     #469                // Field net/minecraft/ChatFormatting.GREEN:Lnet/minecraft/ChatFormatting;
+      1108: invokevirtual #472                // Method net/createmod/catnip/lang/LangBuilder.style:(Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+      1111: invokevirtual #478                // Method net/createmod/catnip/lang/LangBuilder.component:()Lnet/minecraft/network/chat/MutableComponent;
+      1114: iconst_1
+      1115: invokevirtual #481                // Method net/minecraft/world/entity/player/Player.displayClientMessage:(Lnet/minecraft/network/chat/Component;Z)V
+      1118: iload_1
+      1119: ifne          1151
+      1122: aload         7
+      1124: getstatic     #426                // Field com/simibubi/create/content/equipment/clipboard/ClipboardOverrides$ClipboardType.WRITTEN:Lcom/simibubi/create/content/equipment/clipboard/ClipboardOverrides$ClipboardType;
+      1127: invokevirtual #432                // Method com/simibubi/create/content/equipment/clipboard/ClipboardContent.setType:(Lcom/simibubi/create/content/equipment/clipboard/ClipboardOverrides$ClipboardType;)Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+      1130: astore        7
+      1132: aload         7
+      1134: aload         8
+      1136: invokevirtual #500                // Method com/simibubi/create/content/equipment/clipboard/ClipboardContent.setCopiedValues:(Lnet/minecraft/nbt/CompoundTag;)Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+      1139: astore        7
+      1141: aload_2
+      1142: getstatic     #237                // Field com/simibubi/create/AllDataComponents.CLIPBOARD_CONTENT:Lnet/minecraft/core/component/DataComponentType;
+      1145: aload         7
+      1147: invokevirtual #436                // Method net/minecraft/world/item/ItemStack.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+      1150: pop
+      1151: return
+      LineNumberTable:
+        line 156: 0
+        line 157: 5
+        line 158: 15
+        line 160: 16
+        line 161: 21
+        line 162: 27
+        line 163: 33
+        line 164: 46
+        line 165: 47
+        line 166: 55
+        line 167: 56
+        line 168: 82
+        line 170: 83
+        line 172: 98
+        line 173: 113
+        line 174: 126
+        line 176: 134
+        line 177: 184
+        line 178: 202
+        line 179: 220
+        line 180: 238
+        line 185: 256
+        line 186: 264
+        line 187: 271
+        line 188: 281
+        line 190: 290
+        line 191: 321
+        line 192: 352
+        line 193: 362
+        line 194: 393
+        line 195: 424
+        line 196: 440
+        line 195: 443
+        line 194: 446
+        line 197: 449
+        line 198: 474
+        line 199: 477
+        line 201: 480
+        line 202: 511
+        line 203: 514
+        line 204: 545
+        line 205: 557
+        line 206: 560
+        line 207: 564
+        line 209: 567
+        line 210: 572
+        line 211: 581
+        line 213: 591
+        line 215: 601
+        line 216: 611
+        line 217: 621
+        line 219: 624
+        line 220: 633
+        line 223: 643
+        line 224: 660
+        line 225: 663
+        line 226: 669
+        line 223: 673
+        line 227: 679
+        line 228: 682
+        line 223: 686
+        line 229: 689
+        line 232: 690
+        line 233: 704
+        line 234: 713
+        line 235: 714
+        line 236: 718
+        line 238: 727
+        line 239: 730
+        line 240: 733
+        line 241: 767
+        line 243: 782
+        line 244: 785
+        line 245: 794
+        line 246: 798
+        line 247: 804
+        line 248: 833
+        line 250: 836
+        line 251: 845
+        line 252: 865
+        line 253: 872
+        line 254: 877
+        line 255: 887
+        line 257: 890
+        line 258: 905
+        line 259: 908
+        line 260: 917
+        line 261: 921
+        line 262: 945
+        line 261: 948
+        line 264: 959
+        line 265: 968
+        line 266: 988
+        line 267: 995
+        line 268: 1000
+        line 272: 1010
+        line 273: 1015
+        line 275: 1016
+        line 276: 1026
+        line 277: 1039
+        line 279: 1047
+        line 280: 1055
+        line 281: 1056
+        line 282: 1061
+        line 284: 1062
+        line 285: 1064
+        line 286: 1089
+        line 287: 1092
+        line 288: 1098
+        line 285: 1102
+        line 289: 1108
+        line 290: 1111
+        line 284: 1115
+        line 292: 1118
+        line 293: 1122
+        line 294: 1132
+        line 295: 1141
+        line 297: 1151
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           79       3     6 smartBE   Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+          191      11    12     e   Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteractSpecific;
+          209      11    13     e   Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract;
+          227      11    14     e   Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock;
+          245      11    15     e   Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem;
+          126     130     9 cancellableEvent   Lnet/neoforged/bus/api/ICancellableEvent;
+          424      19    20 existing   Lcom/simibubi/create/content/equipment/clipboard/ClipboardEntry;
+          393      53    18 pageTo   Ljava/util/List;
+          362     112    16 entryToAdd   Ljava/lang/String;
+          352     122    15 entry   Lcom/simibubi/create/content/equipment/clipboard/ClipboardEntry;
+          321     156    13  page   Ljava/util/List;
+          545      22    16 freePage   Ljava/util/List;
+          514     107    14  page   Ljava/util/List;
+          511     110    13 entry   Lcom/simibubi/create/content/equipment/clipboard/ClipboardEntry;
+          271     372     9 listTo   Ljava/util/List;
+          281     362    10 listFrom   Ljava/util/List;
+          290     353    11 toAdd   Ljava/util/List;
+          113     577     8   cbe   Lcom/simibubi/create/content/equipment/clipboard/ClipboardBlockEntity;
+          782     105    13    cc   Lcom/simibubi/create/content/equipment/clipboard/ClipboardCloneable;
+          794      93    14 clipboardKey   Ljava/lang/String;
+          845      42    15 compoundTag   Lnet/minecraft/nbt/CompoundTag;
+          865      22    16 success   Z
+          767     120    12 behaviour   Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;
+          968      42    13 compoundTag   Lnet/minecraft/nbt/CompoundTag;
+          988      22    14 success   Z
+          917      93    12 clipboardKey   Ljava/lang/String;
+          905     105    11  ccbe   Lcom/simibubi/create/content/equipment/clipboard/ClipboardCloneable;
+         1039       8    11 rightClickBlock   Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock;
+            0    1152     0 event   Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent;
+            0    1152     1 paste   Z
+            5    1147     2 itemStack   Lnet/minecraft/world/item/ItemStack;
+           21    1131     3   pos   Lnet/minecraft/core/BlockPos;
+           27    1125     4 world   Lnet/minecraft/world/level/Level;
+           33    1119     5 player   Lnet/minecraft/world/entity/player/Player;
+           83    1069     6 smartBE   Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+           98    1054     7 clipboardContent   Lcom/simibubi/create/content/equipment/clipboard/ClipboardContent;
+          704     448     8   tag   Lnet/minecraft/nbt/CompoundTag;
+          730     422     9 anySuccess   Z
+          733     419    10 anyValid   Z
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          393      53    18 pageTo   Ljava/util/List<Lcom/simibubi/create/content/equipment/clipboard/ClipboardEntry;>;
+          321     156    13  page   Ljava/util/List<Lcom/simibubi/create/content/equipment/clipboard/ClipboardEntry;>;
+          545      22    16 freePage   Ljava/util/List<Lcom/simibubi/create/content/equipment/clipboard/ClipboardEntry;>;
+          514     107    14  page   Ljava/util/List<Lcom/simibubi/create/content/equipment/clipboard/ClipboardEntry;>;
+          271     372     9 listTo   Ljava/util/List<Ljava/util/List<Lcom/simibubi/create/content/equipment/clipboard/ClipboardEntry;>;>;
+          281     362    10 listFrom   Ljava/util/List<Ljava/util/List<Lcom/simibubi/create/content/equipment/clipboard/ClipboardEntry;>;>;
+          290     353    11 toAdd   Ljava/util/List<Lcom/simibubi/create/content/equipment/clipboard/ClipboardEntry;>;
+      StackMapTable: number_of_entries = 43
+        frame_type = 252 /* append */
+          offset_delta = 16
+          locals = [ class net/minecraft/world/item/ItemStack ]
+        frame_type = 254 /* append */
+          offset_delta = 30
+          locals = [ class net/minecraft/core/BlockPos, class net/minecraft/world/level/Level, class net/minecraft/world/entity/player/Player ]
+        frame_type = 8 /* same */
+        frame_type = 25 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 0
+          locals = [ class com/simibubi/create/foundation/blockEntity/SmartBlockEntity ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 61
+          locals = [ class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent, int, class net/minecraft/world/item/ItemStack, class net/minecraft/core/BlockPos, class net/minecraft/world/level/Level, class net/minecraft/world/entity/player/Player, class com/simibubi/create/foundation/blockEntity/SmartBlockEntity, class com/simibubi/create/content/equipment/clipboard/ClipboardContent, class com/simibubi/create/content/equipment/clipboard/ClipboardBlockEntity, class net/neoforged/bus/api/ICancellableEvent, class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent, int ]
+          stack = []
+        frame_type = 38 /* same */
+        frame_type = 17 /* same */
+        frame_type = 17 /* same */
+        frame_type = 17 /* same */
+        frame_type = 248 /* chop */
+          offset_delta = 17
+        frame_type = 255 /* full_frame */
+          offset_delta = 42
+          locals = [ class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent, int, class net/minecraft/world/item/ItemStack, class net/minecraft/core/BlockPos, class net/minecraft/world/level/Level, class net/minecraft/world/entity/player/Player, class com/simibubi/create/foundation/blockEntity/SmartBlockEntity, class com/simibubi/create/content/equipment/clipboard/ClipboardContent, class com/simibubi/create/content/equipment/clipboard/ClipboardBlockEntity, class java/util/List, class java/util/List, class java/util/List, class java/util/Iterator ]
+          stack = []
+        frame_type = 253 /* append */
+          offset_delta = 30
+          locals = [ class java/util/List, class java/util/Iterator ]
+        frame_type = 254 /* append */
+          offset_delta = 40
+          locals = [ class com/simibubi/create/content/equipment/clipboard/ClipboardEntry, class java/lang/String, class java/util/Iterator ]
+        frame_type = 253 /* append */
+          offset_delta = 30
+          locals = [ class java/util/List, class java/util/Iterator ]
+        frame_type = 40 /* same */
+        frame_type = 249 /* chop */
+          offset_delta = 2
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 255 /* full_frame */
+          offset_delta = 27
+          locals = [ class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent, int, class net/minecraft/world/item/ItemStack, class net/minecraft/core/BlockPos, class net/minecraft/world/level/Level, class net/minecraft/world/entity/player/Player, class com/simibubi/create/foundation/blockEntity/SmartBlockEntity, class com/simibubi/create/content/equipment/clipboard/ClipboardContent, class com/simibubi/create/content/equipment/clipboard/ClipboardBlockEntity, class java/util/List, class java/util/List, class java/util/List, class java/util/Iterator ]
+          stack = []
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 252 /* append */
+          offset_delta = 8
+          locals = [ class java/util/Iterator ]
+        frame_type = 254 /* append */
+          offset_delta = 33
+          locals = [ class com/simibubi/create/content/equipment/clipboard/ClipboardEntry, class java/util/List, class java/util/Iterator ]
+        frame_type = 252 /* append */
+          offset_delta = 36
+          locals = [ class java/util/List ]
+        frame_type = 249 /* chop */
+          offset_delta = 6
+        frame_type = 23 /* same */
+        frame_type = 248 /* chop */
+          offset_delta = 32
+        frame_type = 248 /* chop */
+          offset_delta = 18
+        frame_type = 250 /* chop */
+          offset_delta = 46
+        frame_type = 252 /* append */
+          offset_delta = 23
+          locals = [ class net/minecraft/nbt/CompoundTag ]
+        frame_type = 12 /* same */
+        frame_type = 254 /* append */
+          offset_delta = 17
+          locals = [ int, int, class java/util/Iterator ]
+        frame_type = 254 /* append */
+          offset_delta = 90
+          locals = [ class com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour, class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable, class java/lang/String ]
+        frame_type = 248 /* chop */
+          offset_delta = 50
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 253 /* append */
+          offset_delta = 68
+          locals = [ class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable, class java/lang/String ]
+        frame_type = 249 /* chop */
+          offset_delta = 50
+        frame_type = 5 /* same */
+        frame_type = 30 /* same */
+        frame_type = 8 /* same */
+        frame_type = 5 /* same */
+        frame_type = 75 /* same_locals_1_stack_item */
+          stack = [ class net/minecraft/world/entity/player/Player ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 2
+          locals = [ class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent, int, class net/minecraft/world/item/ItemStack, class net/minecraft/core/BlockPos, class net/minecraft/world/level/Level, class net/minecraft/world/entity/player/Player, class com/simibubi/create/foundation/blockEntity/SmartBlockEntity, class com/simibubi/create/content/equipment/clipboard/ClipboardContent, class net/minecraft/nbt/CompoundTag, int, int ]
+          stack = [ class net/minecraft/world/entity/player/Player, class java/lang/String ]
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 73
+
+  private static boolean lambda$clientTick$2(net.minecraft.client.Minecraft, net.minecraft.nbt.CompoundTag, net.minecraft.world.phys.BlockHitResult, com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour);
+    descriptor: (Lnet/minecraft/client/Minecraft;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=6, locals=5, args_size=4
+         0: aload_3
+         1: instanceof    #99                 // class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+         4: ifeq          54
+         7: aload_3
+         8: checkcast     #99                 // class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+        11: astore        4
+        13: aload         4
+        15: aload_0
+        16: getfield      #25                 // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+        19: invokevirtual #267                // Method net/minecraft/client/multiplayer/ClientLevel.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+        22: aload_1
+        23: aload         4
+        25: invokeinterface #283,  1          // InterfaceMethod com/simibubi/create/content/equipment/clipboard/ClipboardCloneable.getClipboardKey:()Ljava/lang/String;
+        30: invokevirtual #287                // Method net/minecraft/nbt/CompoundTag.getCompound:(Ljava/lang/String;)Lnet/minecraft/nbt/CompoundTag;
+        33: aload_0
+        34: getfield      #35                 // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+        37: aload_2
+        38: invokevirtual #272                // Method net/minecraft/world/phys/BlockHitResult.getDirection:()Lnet/minecraft/core/Direction;
+        41: iconst_1
+        42: invokeinterface #291,  6          // InterfaceMethod com/simibubi/create/content/equipment/clipboard/ClipboardCloneable.readFromClipboard:(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/Direction;Z)Z
+        47: ifeq          54
+        50: iconst_1
+        51: goto          55
+        54: iconst_0
+        55: ireturn
+      LineNumberTable:
+        line 127: 0
+        line 128: 25
+        line 127: 42
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           13      41     4    cc   Lcom/simibubi/create/content/equipment/clipboard/ClipboardCloneable;
+            0      56     0    mc   Lnet/minecraft/client/Minecraft;
+            0      56     1 tagElement   Lnet/minecraft/nbt/CompoundTag;
+            0      56     2 target   Lnet/minecraft/world/phys/BlockHitResult;
+            0      56     3     b   Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;
+      StackMapTable: number_of_entries = 2
+        frame_type = 54 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+  private static boolean lambda$clientTick$1(net.minecraft.client.Minecraft, net.minecraft.world.phys.BlockHitResult, com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour);
+    descriptor: (Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=4, args_size=3
+         0: aload_2
+         1: instanceof    #99                 // class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+         4: ifeq          43
+         7: aload_2
+         8: checkcast     #99                 // class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+        11: astore_3
+        12: aload_3
+        13: aload_0
+        14: getfield      #25                 // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+        17: invokevirtual #267                // Method net/minecraft/client/multiplayer/ClientLevel.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+        20: new           #261                // class net/minecraft/nbt/CompoundTag
+        23: dup
+        24: invokespecial #271                // Method net/minecraft/nbt/CompoundTag."<init>":()V
+        27: aload_1
+        28: invokevirtual #272                // Method net/minecraft/world/phys/BlockHitResult.getDirection:()Lnet/minecraft/core/Direction;
+        31: invokeinterface #276,  4          // InterfaceMethod com/simibubi/create/content/equipment/clipboard/ClipboardCloneable.writeToClipboard:(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/Direction;)Z
+        36: ifeq          43
+        39: iconst_1
+        40: goto          44
+        43: iconst_0
+        44: ireturn
+      LineNumberTable:
+        line 121: 0
+        line 120: 7
+        line 121: 17
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           12      31     3    cc   Lcom/simibubi/create/content/equipment/clipboard/ClipboardCloneable;
+            0      45     0    mc   Lnet/minecraft/client/Minecraft;
+            0      45     1 target   Lnet/minecraft/world/phys/BlockHitResult;
+            0      45     2     b   Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;
+      StackMapTable: number_of_entries = 2
+        frame_type = 43 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+  private static boolean lambda$drawCustomBlockSelection$0(net.minecraft.client.Minecraft, net.minecraft.world.phys.BlockHitResult, com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour);
+    descriptor: (Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=4, args_size=3
+         0: aload_2
+         1: instanceof    #99                 // class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+         4: ifeq          43
+         7: aload_2
+         8: checkcast     #99                 // class com/simibubi/create/content/equipment/clipboard/ClipboardCloneable
+        11: astore_3
+        12: aload_3
+        13: aload_0
+        14: getfield      #25                 // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+        17: invokevirtual #267                // Method net/minecraft/client/multiplayer/ClientLevel.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+        20: new           #261                // class net/minecraft/nbt/CompoundTag
+        23: dup
+        24: invokespecial #271                // Method net/minecraft/nbt/CompoundTag."<init>":()V
+        27: aload_1
+        28: invokevirtual #272                // Method net/minecraft/world/phys/BlockHitResult.getDirection:()Lnet/minecraft/core/Direction;
+        31: invokeinterface #276,  4          // InterfaceMethod com/simibubi/create/content/equipment/clipboard/ClipboardCloneable.writeToClipboard:(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/Direction;)Z
+        36: ifeq          43
+        39: iconst_1
+        40: goto          44
+        43: iconst_0
+        44: ireturn
+      LineNumberTable:
+        line 69: 0
+        line 68: 7
+        line 69: 17
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           12      31     3    cc   Lcom/simibubi/create/content/equipment/clipboard/ClipboardCloneable;
+            0      45     0    mc   Lnet/minecraft/client/Minecraft;
+            0      45     1 target   Lnet/minecraft/world/phys/BlockHitResult;
+            0      45     2     b   Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;
+      StackMapTable: number_of_entries = 2
+        frame_type = 43 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+}
+SourceFile: "ClipboardValueSettingsHandler.java"
+RuntimeVisibleAnnotations:
+  0: #603()
+    net.neoforged.fml.common.EventBusSubscriber
+BootstrapMethods:
+  0: #617 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #605 (Ljava/lang/Object;)Z
+      #606 REF_invokeStatic com/simibubi/create/content/equipment/clipboard/ClipboardValueSettingsHandler.lambda$drawCustomBlockSelection$0:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+      #609 (Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+  1: #617 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #605 (Ljava/lang/Object;)Z
+      #611 REF_invokeStatic com/simibubi/create/content/equipment/clipboard/ClipboardValueSettingsHandler.lambda$clientTick$1:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+      #609 (Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+  2: #617 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #605 (Ljava/lang/Object;)Z
+      #614 REF_invokeStatic com/simibubi/create/content/equipment/clipboard/ClipboardValueSettingsHandler.lambda$clientTick$2:(Lnet/minecraft/client/Minecraft;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/phys/BlockHitResult;Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+      #609 (Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)Z
+  3: #624 REF_invokeStatic java/lang/runtime/SwitchBootstraps.typeSwitch:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #352 net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteractSpecific
+      #364 net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract
+      #367 net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock
+      #370 net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem
+InnerClasses:
+  public static #633= #14 of #631;        // Block=class net/neoforged/neoforge/client/event/RenderHighlightEvent$Block of class net/neoforged/neoforge/client/event/RenderHighlightEvent
+  public static #638= #634 of #636;       // Provider=class net/minecraft/core/HolderLookup$Provider of class net/minecraft/core/HolderLookup
+  public static #639= #352 of #308;       // EntityInteractSpecific=class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteractSpecific of class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent
+  public static #640= #364 of #308;       // EntityInteract=class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract of class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent
+  public static #641= #367 of #308;       // RightClickBlock=class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock of class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent
+  public static #642= #370 of #308;       // RightClickItem=class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem of class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent
+  public static final #645= #427 of #643; // ClipboardType=class com/simibubi/create/content/equipment/clipboard/ClipboardOverrides$ClipboardType of class com/simibubi/create/content/equipment/clipboard/ClipboardOverrides
+  public static #648= #646 of #308;       // LeftClickBlock=class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock of class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent
+  public static final #653= #649 of #651; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
