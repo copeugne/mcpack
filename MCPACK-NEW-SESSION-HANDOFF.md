@@ -6,6 +6,28 @@
 
 ### Continuation update - 2026-09-06
 
+Latest Aether increments 93dbd29 and f3a2b1b are pushed and remote-ref verified.
+Silver's ten selected component names and Gold's four account for their template
+sets except Silver test_door, which has no literal reference in archive classes.
+Do not repeat this component reconciliation. Four focused Aether cloud/candidate
+cases and scoped quality checks pass.
+
+Retain aether:holiday_tree as a named decoration/family-boundary candidate, not
+an accepted additional canonical family. Its decorator selects snow/present
+blocks; all four packaged Skyroot biomes reference its placed feature. Frozen
+config has always=false and seasonally=true, hash
+578abca7702fcecdb39845a7043f6ec1c504f153f6d3b4af45daedb29df931de.
+HolidayFilter still needs inspection before effective eligibility is accepted.
+Present reward mechanics remain later attributes. The new candidate is recorded
+at the end of provider-scope.md and must survive canonical reconciliation.
+
+Next resolve the four captured custom feature roles, main-entry/common hooks,
+optional portal consumers and the three nested-library selection/roles. Initial
+CrystalIslandFeature reading shows a crystal-tree placement followed by ground
+formation, and ShelfFeature delegates supplied-block disk placement. Do not turn
+those initial reads into accepted provider exclusions without finishing the
+bounded role reconciliation. Census remains 75 resolved and 61 open. No blocker.
+
 Latest Aether source cb00a94 is pushed and remote-ref verified. Extractor 8976b7a
 captures 23 entry/plugin, custom feature, holiday-decoration and Silver/Gold
 assembly classes in sources/aether-provider. Manifest SHA-256:
