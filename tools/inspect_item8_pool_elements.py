@@ -2111,6 +2111,14 @@ CLASSES: tuple[str, ...] = (
     "net/regions_unexplored/worldgen/trunkplacer/RUTrunkPlacer.class",
     "net/regions_unexplored/worldgen/trunkplacer/RedwoodTrunkPlacer.class",
     "net/regions_unexplored/config/RUConfigHandler.class",
+    "net/regions_unexplored/registry/RUBlockStateProviderTypes.class",
+    "net/regions_unexplored/registry/RULoadPredicateTypes.class",
+    "net/regions_unexplored/registry/RUProcessorConditionTypes.class",
+    "net/regions_unexplored/registry/RURootPlacerTypes.class",
+    "net/regions_unexplored/registry/RURuleSources.class",
+    "net/regions_unexplored/worldgen/processorcondition/ConfigCondition.class",
+    "net/regions_unexplored/worldgen/processorcondition/MatchingBiomesCondition.class",
+    "net/regions_unexplored/worldgen/rootplacer/MagnoliaRootPlacer.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
