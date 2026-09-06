@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric content registries and data generation membership are resolved using
+2cbd452, e5c769a and 36951e9. Thirty-two focused cases and scoped checks pass.
+Fabric: 31 resolved, 12 open. Whole providers: 90 resolved, 46 open. No new family.
+Data attachment initializer db84f92 is delivered and copies existing holder data;
+AttachmentModImpl registration callback is the next unresolved boundary. Its
+existing a17da36 entry source is nonverbose and does not show that invokedynamic
+method target. Resolve the callback, then bind the complete payload (20 classes,
+one client hook, one en_us translation, no access transformer). Reuse delivered
+entry and transfer sources. Continue the named provider queue and grouping work.
+
+
 Fabric item-group membership is resolved using source 07cd09b. Thirty focused
 cases and scoped checks pass; no family added. Fabric: 29 resolved, 14 open.
 Whole providers: 90 resolved, 46 open. Three further entry captures are delivered:
