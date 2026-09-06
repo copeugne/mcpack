@@ -110,6 +110,7 @@ ARCHIVES = frozenset(
         "coffee_delight-1.4.1.jar",
         "ends_delight-2.6+neoforge.1.21.1.jar",
         "aethersdelight-0.1.4.2-1.21.1.jar",
+        "ubesdelight-neoforge-1.21.1-0.4.13.jar",
         "YungsBridges-1.21.1-NeoForge-5.1.1.jar",
         "YungsExtras-1.21.1-NeoForge-5.1.1.jar",
         "YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar",
@@ -1862,6 +1863,30 @@ CLASSES: tuple[str, ...] = (
     "net/zjjohn121110/aethersdelight/datagen/DataGenerators.class",
     "net/zjjohn121110/aethersdelight/event/ClientEvents.class",
     "net/zjjohn121110/aethersdelight/registry/ADCreativeTabs.class",
+    "com/chefmooon/ubesdelight/UbesDelight.class",
+    "com/chefmooon/ubesdelight/neoforge/UbesDelightImpl.class",
+    "com/chefmooon/ubesdelight/client/event/neoforge/ClientSetupEventsImpl.class",
+    "com/chefmooon/ubesdelight/common/block/entity/neoforge/BakingMatBlockEntityImpl.class",
+    "com/chefmooon/ubesdelight/common/event/neoforge/VillagerEventsImpl.class",
+    "com/chefmooon/ubesdelight/common/CommonSetup.class",
+    "com/chefmooon/ubesdelight/common/neoforge/CommonSetupImpl.class",
+    "com/chefmooon/ubesdelight/common/registry/neoforge/UbesDelightBiomeFeaturesImpl.class",
+    "com/chefmooon/ubesdelight/common/registry/neoforge/UbesDelightBiomeModifiersImpl.class",
+    "com/chefmooon/ubesdelight/common/registry/neoforge/UbesDelightPlacementModifiersImpl.class",
+    "com/chefmooon/ubesdelight/common/world/configuration/WildTertiaryCropConfiguration.class",
+    "com/chefmooon/ubesdelight/common/world/feature/WildTertiaryCropFeature.class",
+    "com/chefmooon/ubesdelight/common/world/modifier/neoforge/AddFeaturesByFilterModifier.class",
+    "com/chefmooon/ubesdelight/common/world/placement/neoforge/BiomeIsOverworldPlacementModifierImpl.class",
+    "com/chefmooon/ubesdelight/integration/wthit/UbesDelightWailaPlugin.class",
+    "com/chefmooon/ubesdelight/integration/emi/neoforge/EMIPluginImpl.class",
+    "com/chefmooon/ubesdelight/integration/rei/neoforge/ServerREIPluginImpl.class",
+    "eu/midnightdust/core/MidnightLib.class",
+    "eu/midnightdust/core/MidnightLib$MidnightLibBusEvents.class",
+    "eu/midnightdust/core/MidnightLib$MidnightLibEvents.class",
+    "eu/midnightdust/core/config/MidnightLibConfig.class",
+    "eu/midnightdust/lib/config/AutoCommand.class",
+    "com/chefmooon/ubesdelight/common/Configuration.class",
+    "com/chefmooon/ubesdelight/common/neoforge/ConfigurationImpl.class",
     "vectorwing/farmersdelight/common/registry/ModBiomeFeatures.class",
     "vectorwing/farmersdelight/common/registry/ModBiomeModifiers.class",
     "vectorwing/farmersdelight/common/registry/ModPlacementModifiers.class",
@@ -1894,6 +1919,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/midnightlib-1.9.2+1.21.1-neoforge.jar",
         "META-INF/jars/tiny-config-3.1.0-neoforge.jar",
         "META-INF/jars/extensibleenums-neoforge-21.1.1.jar",
         "META-INF/jarjar/biolith-neoforge-3.0.10.jar",
@@ -1909,6 +1935,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/midnightlib-1.9.2+1.21.1-neoforge.jar": (
+            "ubesdelight-neoforge-1.21.1-0.4.13.jar",
+            "5dc6cc72e507c3fb5b5bac59e79da2aee74a9d1345dbc48e0ccecd608ac9286a",
+        ),
         "META-INF/jarjar/mixinsquared-forge-0.3.3.jar": (
             "supplementaries-neoforge-1.21.1-3.6.8.jar",
             "e5f1afc19c38005b03615d7c3af65df6b9150cb25150ac5267b587a116f425e3",
@@ -2036,7 +2066,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 verbose = source.name.startswith((
                     "alternate_current-", "cupboard-", "lootintegrations-", "creatingspace-",
                     "CreeperOverhaul-", "FarmersDelight-", "coffee_delight-", "ends_delight-",
-                    "aethersdelight-",
+                    "aethersdelight-", "ubesdelight-",
                     "mcw-", "AI-Improvements-", "attributefix-", "LeavesBeGone-",
                     "Almanac-", "libraryferret-", "structure_layout_optimizer-",
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
