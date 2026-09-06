@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 33 of 136. The exact queue below has 103 open rows.
+Supported provider dispositions: 34 of 136. The exact queue below has 102 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -571,7 +571,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `YungsExtras-1.21.1-NeoForge-5.1.1.jar` | `yungs-extras-desert-code`, `yungs-extras-generators`, `yungs-extras-initialization`, `yungs-extras-module-default`, `yungs-extras-processor-bindings`, `yungs-extras-registration` | RESOLVED: see YUNG Extras provider disposition below. |
 | `Zeta-1.1-40.jar` | `quark-enablement-callers`, `zeta-biome-modifier`, `zeta-component-biomes`, `zeta-compound-biome`, `zeta-config-binding`, `zeta-config-event-fields`, `zeta-deferred-feature`, `zeta-enablement-inputs`, `zeta-generation-applicability`, `zeta-generation-spawn`, `zeta-generator-dispatch`, `zeta-horizontal-directions`, `zeta-module-assignment`, `zeta-module-name`, `zeta-module-section`, `zeta-stone-ore` | Reuse Quark module/feature dispatch captures; reconcile remaining public generation and nested entry consumers. |
-| `[Neoforge]ctov-3.6.3.jar` | `ctov-provider` (82ac234), test_ctov_provider_selection.py, test_ctov_bundled_resources.py, existing CTOV regressions/graphs | Code, selection and bundled compatibility payloads accounted for. Remaining: full ordinary payload and disconnected/missing components with modifier relationships. Do not repeat completed captures/checks. |
+| `[Neoforge]ctov-3.6.3.jar` | `ctov-provider` (82ac234), test_ctov_provider_scope.py, selection/bundle checks, existing CTOV regressions/graphs | RESOLVED: 78 existing roots, village/outpost components, compatibility injections and processors. Disconnected and missing components accounted for below. |
 | `accessories-neoforge-1.1.0-beta.53+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `adorabuild-structures-2.11.0-neoforge-1.21.3.jar` | `adorabuild-provider`, existing runtime/root and pool graph evidence | RESOLVED: 106 existing roots; all 110 pools and 121 templates connected; one preserved missing pool reference. See AdoraBuild provider disposition below. |
 | `aether-1.21.1-1.5.10-neoforge.jar` | `aether-bronze`, `aether-custom-entry`, `aether-piece-binding`, `aether-placement`, `aether-trap-bindings`, `aether-trapped-block` | Reconcile Bronze, Silver, Gold and terrain generation entry coverage; do not reopen Bronze helper internals. |
@@ -980,3 +980,48 @@ processor-type set was corrected after inspecting the four block_swap documents;
 no source resource was changed. Remaining CTOV coverage is ordinary full-payload
 accounting and disconnected/missing component relationships. Counts remain
 33 resolved, 103 open.
+
+
+## CTOV provider candidate coverage
+
+The complete frozen archive is accounted for by test_ctov_provider_scope.py,
+using the already delivered twelve-class source, callback selection and bundle
+checks. CTOV contributes 78 existing root candidates and modifies their component
+pools and processors. Its only placed feature references vanilla forest flowers,
+not another authored structure. The underground structure-set declaration has a
+.txt extension; preserve its references to the three existing underground roots
+without treating it as an active JSON set. Legacy Monobank templates and Monobank
+and Wares loot are compatibility components, not independent roots.
+
+Of 181 packaged current-path pools, 19 are outside CTOV root graphs: eleven
+common village pools (bees, flowers, pet, pet_aquatic, five villager and two
+waystone variants), mesa_fortified/tree, and seven Monobank village pools.
+The focused check preserves their exact IDs. Of 2,093 current-path templates,
+960 occur in the captured CTOV root graphs and 1,133 do not. Of the latter,
+1,005 have references in compatibility modifiers whose mod conditions fail in
+the frozen runtime. None is referenced by a condition-passing CTOV modifier.
+The remaining 128 are disconnected components: 44 animal templates, 56 jobsites,
+three decorations, eight allay cages, five trees, one target, seven road pieces,
+three houses and one bee component. These are unused by the inspected provider
+routes, not a claim that other providers or manual commands cannot place them.
+No disconnected component adds an independent root or family merely by existing.
+
+Twenty-seven CTOV root traces retain missing-resource records; none has an
+unresolved pool-element codec. Existing CTOV family regressions retain the
+missing-component and mesa/badlands alias findings. Do not repair the baseline
+or infer actual placement from these potential graphs. Whole-stack overrides
+and final village/outpost family grouping remain separate inventory work.
+
+```sh
+uv run pytest -q tests/item8/test_ctov_provider_scope.py tests/item8/test_ctov_provider_selection.py tests/item8/test_ctov_bundled_resources.py tests/item8/test_family_decisions.py -k ctov
+uv run ruff check tests/item8/test_ctov_provider_scope.py
+uv run basedpyright tests/item8/test_ctov_provider_scope.py
+```
+
+Seven focused cases pass. Basedpyright passes; three initial line-length findings
+were formatted and Ruff then passed. An exploratory count that unwrapped only
+limited elements was incomplete: accounting for guaranteed delegates changes
+inactive references from 985 to 1,005 and residual components from 148 to 128.
+Only the complete tracked check supports the accepted partition above. No new
+runtime experiment, parser, production graph behavior or family decision changed.
+Provider dispositions now cover 34 of 136; 102 remain in the exact queue.
