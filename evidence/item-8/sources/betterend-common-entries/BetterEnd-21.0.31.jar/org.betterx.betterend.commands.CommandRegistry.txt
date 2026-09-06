@@ -1,0 +1,465 @@
+Compiled from "CommandRegistry.java"
+public class org.betterx.betterend.commands.CommandRegistry {
+  private static int biomeIndex;
+
+  private static final int MAX_SEARCH_RADIUS = 12800;
+
+  private static final int SAMPLE_RESOLUTION_HORIZONTAL = 32;
+
+  private static final int SAMPLE_RESOLUTION_VERTICAL = 64;
+
+  private static final com.mojang.brigadier.exceptions.DynamicCommandExceptionType ERROR_BIOME_NOT_FOUND;
+
+  public org.betterx.betterend.commands.CommandRegistry();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void register();
+    Code:
+       0: getstatic     #7                  // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+       3: invokedynamic #13,  0             // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+       8: invokeinterface #17,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      13: return
+
+  private static void onRegisterCommands(net.neoforged.neoforge.event.RegisterCommandsEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #23                 // Method net/neoforged/neoforge/event/RegisterCommandsEvent.getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+       4: aload_0
+       5: invokevirtual #29                 // Method net/neoforged/neoforge/event/RegisterCommandsEvent.getBuildContext:()Lnet/minecraft/commands/CommandBuildContext;
+       8: aload_0
+       9: invokevirtual #33                 // Method net/neoforged/neoforge/event/RegisterCommandsEvent.getCommandSelection:()Lnet/minecraft/commands/Commands$CommandSelection;
+      12: invokestatic  #37                 // Method register:(Lcom/mojang/brigadier/CommandDispatcher;Lnet/minecraft/commands/CommandBuildContext;Lnet/minecraft/commands/Commands$CommandSelection;)V
+      15: return
+
+  private static void register(com.mojang.brigadier.CommandDispatcher<net.minecraft.commands.CommandSourceStack>, net.minecraft.commands.CommandBuildContext, net.minecraft.commands.Commands$CommandSelection);
+    Code:
+       0: aload_0
+       1: ldc           #43                 // String be
+       3: invokestatic  #45                 // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+       6: invokedynamic #51,  0             // InvokeDynamic #1:test:()Ljava/util/function/Predicate;
+      11: invokevirtual #55                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.requires:(Ljava/util/function/Predicate;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      14: checkcast     #56                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      17: ldc           #61                 // String locate_portal
+      19: invokestatic  #45                 // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+      22: invokedynamic #63,  0             // InvokeDynamic #2:test:()Ljava/util/function/Predicate;
+      27: invokevirtual #55                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.requires:(Ljava/util/function/Predicate;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      30: checkcast     #56                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      33: invokedynamic #64,  0             // InvokeDynamic #3:run:()Lcom/mojang/brigadier/Command;
+      38: invokevirtual #68                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.executes:(Lcom/mojang/brigadier/Command;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      41: invokevirtual #72                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      44: checkcast     #56                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      47: ldc           #76                 // String locate_portal_frame
+      49: invokestatic  #45                 // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+      52: invokedynamic #78,  0             // InvokeDynamic #4:test:()Ljava/util/function/Predicate;
+      57: invokevirtual #55                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.requires:(Ljava/util/function/Predicate;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      60: checkcast     #56                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      63: invokedynamic #79,  0             // InvokeDynamic #5:run:()Lcom/mojang/brigadier/Command;
+      68: invokevirtual #68                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.executes:(Lcom/mojang/brigadier/Command;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      71: invokevirtual #72                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      74: checkcast     #56                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      77: ldc           #80                 // String tpnext
+      79: invokestatic  #45                 // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+      82: invokedynamic #82,  0             // InvokeDynamic #6:test:()Ljava/util/function/Predicate;
+      87: invokevirtual #55                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.requires:(Ljava/util/function/Predicate;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      90: checkcast     #56                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      93: invokedynamic #83,  0             // InvokeDynamic #7:run:()Lcom/mojang/brigadier/Command;
+      98: invokevirtual #68                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.executes:(Lcom/mojang/brigadier/Command;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+     101: invokevirtual #72                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+     104: checkcast     #56                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+     107: invokevirtual #84                 // Method com/mojang/brigadier/CommandDispatcher.register:(Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;)Lcom/mojang/brigadier/tree/LiteralCommandNode;
+     110: pop
+     111: return
+
+  private static int find_poi(com.mojang.brigadier.context.CommandContext<net.minecraft.commands.CommandSourceStack>, org.betterx.wover.poi.api.WoverPoiType) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: aload_0
+       1: invokevirtual #89                 // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+       4: checkcast     #95                 // class net/minecraft/commands/CommandSourceStack
+       7: astore_2
+       8: aload_2
+       9: invokevirtual #97                 // Method net/minecraft/commands/CommandSourceStack.getPlayerOrException:()Lnet/minecraft/server/level/ServerPlayer;
+      12: astore_3
+      13: aload_2
+      14: invokevirtual #101                // Method net/minecraft/commands/CommandSourceStack.getPosition:()Lnet/minecraft/world/phys/Vec3;
+      17: astore        4
+      19: aload_2
+      20: invokevirtual #105                // Method net/minecraft/commands/CommandSourceStack.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+      23: astore        5
+      25: new           #109                // class net/minecraft/core/BlockPos
+      28: dup
+      29: aload         4
+      31: getfield      #111                // Field net/minecraft/world/phys/Vec3.x:D
+      34: d2i
+      35: aload         4
+      37: getfield      #117                // Field net/minecraft/world/phys/Vec3.y:D
+      40: d2i
+      41: aload         4
+      43: getfield      #120                // Field net/minecraft/world/phys/Vec3.z:D
+      46: d2i
+      47: invokespecial #123                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      50: invokevirtual #126                // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      53: astore        6
+      55: getstatic     #130                // Field java/lang/System.out:Ljava/io/PrintStream;
+      58: aload_1
+      59: getfield      #136                // Field org/betterx/wover/poi/api/WoverPoiType.key:Lnet/minecraft/resources/ResourceKey;
+      62: invokestatic  #142                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      65: invokedynamic #148,  0            // InvokeDynamic #8:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      70: invokevirtual #152                // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      73: aload_1
+      74: aload         5
+      76: aload         6
+      78: iconst_0
+      79: aload         5
+      81: invokevirtual #158                // Method net/minecraft/server/level/ServerLevel.getWorldBorder:()Lnet/minecraft/world/level/border/WorldBorder;
+      84: invokevirtual #164                // Method org/betterx/wover/poi/api/WoverPoiType.findPoiAround:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;ZLnet/minecraft/world/level/border/WorldBorder;)Ljava/util/Optional;
+      87: astore        7
+      89: getstatic     #130                // Field java/lang/System.out:Ljava/io/PrintStream;
+      92: aload         7
+      94: aconst_null
+      95: invokevirtual #168                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      98: invokestatic  #142                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     101: invokedynamic #174,  0            // InvokeDynamic #9:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     106: invokevirtual #152                // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+     109: aload         7
+     111: invokevirtual #175                // Method java/util/Optional.isPresent:()Z
+     114: ifeq          146
+     117: aload         5
+     119: aload         7
+     121: invokevirtual #179                // Method java/util/Optional.get:()Ljava/lang/Object;
+     124: checkcast     #109                // class net/minecraft/core/BlockPos
+     127: getstatic     #182                // Field net/minecraft/world/level/block/Blocks.YELLOW_CONCRETE:Lnet/minecraft/world/level/block/Block;
+     130: invokestatic  #188                // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;)V
+     133: aload         5
+     135: aload         6
+     137: getstatic     #194                // Field net/minecraft/world/level/block/Blocks.LIGHT_BLUE_CONCRETE:Lnet/minecraft/world/level/block/Block;
+     140: invokestatic  #188                // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;)V
+     143: goto          156
+     146: aload         5
+     148: aload         6
+     150: getstatic     #197                // Field net/minecraft/world/level/block/Blocks.RED_CONCRETE:Lnet/minecraft/world/level/block/Block;
+     153: invokestatic  #188                // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;)V
+     156: iconst_1
+     157: ireturn
+
+  private static int teleportToNextBiome(com.mojang.brigadier.context.CommandContext<net.minecraft.commands.CommandSourceStack>) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: aload_0
+       1: invokevirtual #89                 // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+       4: checkcast     #95                 // class net/minecraft/commands/CommandSourceStack
+       7: astore_1
+       8: invokestatic  #202                // Method org/betterx/wover/state/api/WorldState.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+      11: getstatic     #208                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      14: invokeinterface #213,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      19: invokevirtual #219                // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+      22: checkcast     #222                // class net/minecraft/core/Registry
+      25: getstatic     #224                // Field net/minecraft/tags/BiomeTags.IS_END:Lnet/minecraft/tags/TagKey;
+      28: invokeinterface #230,  2          // InterfaceMethod net/minecraft/core/Registry.getTagOrEmpty:(Lnet/minecraft/tags/TagKey;)Ljava/lang/Iterable;
+      33: astore_2
+      34: new           #234                // class java/util/LinkedList
+      37: dup
+      38: invokespecial #236                // Method java/util/LinkedList."<init>":()V
+      41: astore_3
+      42: aload_2
+      43: invokeinterface #237,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+      48: astore        4
+      50: aload         4
+      52: invokeinterface #243,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      57: ifeq          84
+      60: aload         4
+      62: invokeinterface #248,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      67: checkcast     #251                // class net/minecraft/core/Holder
+      70: astore        5
+      72: aload_3
+      73: aload         5
+      75: invokeinterface #253,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      80: pop
+      81: goto          50
+      84: getstatic     #259                // Field biomeIndex:I
+      87: iflt          102
+      90: getstatic     #259                // Field biomeIndex:I
+      93: aload_3
+      94: invokeinterface #263,  1          // InterfaceMethod java/util/List.size:()I
+      99: if_icmplt     126
+     102: aload_1
+     103: ldc_w         #267                // String Failed to find the next Biome...
+     106: invokestatic  #269                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     109: getstatic     #274                // Field net/minecraft/network/chat/Style.EMPTY:Lnet/minecraft/network/chat/Style;
+     112: getstatic     #280                // Field net/minecraft/ChatFormatting.RED:Lnet/minecraft/ChatFormatting;
+     115: invokevirtual #286                // Method net/minecraft/network/chat/Style.withColor:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/Style;
+     118: invokevirtual #290                // Method net/minecraft/network/chat/MutableComponent.setStyle:(Lnet/minecraft/network/chat/Style;)Lnet/minecraft/network/chat/MutableComponent;
+     121: invokevirtual #296                // Method net/minecraft/commands/CommandSourceStack.sendFailure:(Lnet/minecraft/network/chat/Component;)V
+     124: iconst_0
+     125: ireturn
+     126: aload_3
+     127: getstatic     #259                // Field biomeIndex:I
+     130: invokeinterface #300,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     135: checkcast     #251                // class net/minecraft/core/Holder
+     138: astore        4
+     140: aload_1
+     141: aload         4
+     143: invokedynamic #303,  0            // InvokeDynamic #10:get:(Lnet/minecraft/core/Holder;)Ljava/util/function/Supplier;
+     148: iconst_0
+     149: invokevirtual #306                // Method net/minecraft/commands/CommandSourceStack.sendSuccess:(Ljava/util/function/Supplier;Z)V
+     152: getstatic     #259                // Field biomeIndex:I
+     155: iconst_1
+     156: iadd
+     157: aload_3
+     158: invokeinterface #263,  1          // InterfaceMethod java/util/List.size:()I
+     163: irem
+     164: putstatic     #259                // Field biomeIndex:I
+     167: new           #109                // class net/minecraft/core/BlockPos
+     170: dup
+     171: aload_1
+     172: invokevirtual #101                // Method net/minecraft/commands/CommandSourceStack.getPosition:()Lnet/minecraft/world/phys/Vec3;
+     175: getfield      #111                // Field net/minecraft/world/phys/Vec3.x:D
+     178: d2i
+     179: aload_1
+     180: invokevirtual #101                // Method net/minecraft/commands/CommandSourceStack.getPosition:()Lnet/minecraft/world/phys/Vec3;
+     183: getfield      #117                // Field net/minecraft/world/phys/Vec3.y:D
+     186: d2i
+     187: aload_1
+     188: invokevirtual #101                // Method net/minecraft/commands/CommandSourceStack.getPosition:()Lnet/minecraft/world/phys/Vec3;
+     191: getfield      #120                // Field net/minecraft/world/phys/Vec3.z:D
+     194: d2i
+     195: invokespecial #123                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     198: astore        5
+     200: aload_1
+     201: invokevirtual #105                // Method net/minecraft/commands/CommandSourceStack.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+     204: aload         4
+     206: invokedynamic #310,  0            // InvokeDynamic #11:test:(Lnet/minecraft/core/Holder;)Ljava/util/function/Predicate;
+     211: aload         5
+     213: sipush        12800
+     216: bipush        32
+     218: bipush        64
+     220: invokevirtual #313                // Method net/minecraft/server/level/ServerLevel.findClosestBiome3d:(Ljava/util/function/Predicate;Lnet/minecraft/core/BlockPos;III)Lcom/mojang/datafixers/util/Pair;
+     223: invokevirtual #317                // Method com/mojang/datafixers/util/Pair.getFirst:()Ljava/lang/Object;
+     226: checkcast     #109                // class net/minecraft/core/BlockPos
+     229: astore        6
+     231: aload         4
+     233: invokeinterface #322,  1          // InterfaceMethod net/minecraft/core/Holder.toString:()Ljava/lang/String;
+     238: astore        7
+     240: aload         6
+     242: ifnonnull     254
+     245: getstatic     #326                // Field ERROR_BIOME_NOT_FOUND:Lcom/mojang/brigadier/exceptions/DynamicCommandExceptionType;
+     248: aload         7
+     250: invokevirtual #330                // Method com/mojang/brigadier/exceptions/DynamicCommandExceptionType.create:(Ljava/lang/Object;)Lcom/mojang/brigadier/exceptions/CommandSyntaxException;
+     253: athrow
+     254: aload_1
+     255: invokevirtual #97                 // Method net/minecraft/commands/CommandSourceStack.getPlayerOrException:()Lnet/minecraft/server/level/ServerPlayer;
+     258: astore        8
+     260: aload_1
+     261: invokevirtual #101                // Method net/minecraft/commands/CommandSourceStack.getPosition:()Lnet/minecraft/world/phys/Vec3;
+     264: invokevirtual #336                // Method net/minecraft/world/phys/Vec3.y:()D
+     267: dstore        11
+     269: iconst_0
+     270: istore        13
+     272: new           #109                // class net/minecraft/core/BlockPos
+     275: dup
+     276: aload         6
+     278: invokevirtual #339                // Method net/minecraft/core/BlockPos.getX:()I
+     281: dload         11
+     283: d2i
+     284: aload         6
+     286: invokevirtual #342                // Method net/minecraft/core/BlockPos.getZ:()I
+     289: invokespecial #123                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     292: astore        10
+     294: aload         8
+     296: invokevirtual #345                // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+     299: aload         10
+     301: invokevirtual #351                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     304: astore        9
+     306: dload         11
+     308: dconst_1
+     309: dsub
+     310: dstore        11
+     312: dload         11
+     314: aload         8
+     316: invokevirtual #345                // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+     319: invokevirtual #357                // Method net/minecraft/world/level/Level.getMinBuildHeight:()I
+     322: iconst_1
+     323: iadd
+     324: i2d
+     325: dcmpg
+     326: ifgt          345
+     329: iload         13
+     331: ifeq          337
+     334: goto          383
+     337: ldc2_w        #360                // double 127.0d
+     340: dstore        11
+     342: iconst_1
+     343: istore        13
+     345: aload         9
+     347: invokevirtual #362                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     350: ifne          383
+     353: dload         11
+     355: aload         8
+     357: invokevirtual #345                // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+     360: invokevirtual #357                // Method net/minecraft/world/level/Level.getMinBuildHeight:()I
+     363: i2d
+     364: dcmpl
+     365: ifle          383
+     368: dload         11
+     370: aload         8
+     372: invokevirtual #345                // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+     375: invokevirtual #367                // Method net/minecraft/world/level/Level.getMaxBuildHeight:()I
+     378: i2d
+     379: dcmpg
+     380: iflt          272
+     383: new           #370                // class org/joml/Vector3d
+     386: dup
+     387: aload         10
+     389: invokevirtual #339                // Method net/minecraft/core/BlockPos.getX:()I
+     392: i2d
+     393: ldc2_w        #372                // double 0.5d
+     396: dadd
+     397: aload         10
+     399: invokevirtual #374                // Method net/minecraft/core/BlockPos.getY:()I
+     402: iconst_1
+     403: isub
+     404: i2d
+     405: aload         10
+     407: invokevirtual #342                // Method net/minecraft/core/BlockPos.getZ:()I
+     410: i2d
+     411: ldc2_w        #372                // double 0.5d
+     414: dadd
+     415: invokespecial #377                // Method org/joml/Vector3d."<init>":(DDD)V
+     418: astore        14
+     420: aload         8
+     422: getfield      #380                // Field net/minecraft/server/level/ServerPlayer.connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+     425: aload         14
+     427: getfield      #384                // Field org/joml/Vector3d.x:D
+     430: aload         14
+     432: getfield      #385                // Field org/joml/Vector3d.y:D
+     435: aload         14
+     437: getfield      #386                // Field org/joml/Vector3d.z:D
+     440: fconst_0
+     441: fconst_0
+     442: getstatic     #387                // Field java/util/Collections.EMPTY_SET:Ljava/util/Set;
+     445: invokevirtual #393                // Method net/minecraft/server/network/ServerGamePacketListenerImpl.teleport:(DDDFFLjava/util/Set;)V
+     448: new           #399                // class org/betterx/betterend/commands/CommandRegistry$1
+     451: dup
+     452: aload         4
+     454: aload         7
+     456: invokespecial #401                // Method org/betterx/betterend/commands/CommandRegistry$1."<init>":(Lnet/minecraft/core/Holder;Ljava/lang/String;)V
+     459: astore        15
+     461: aload         4
+     463: invokeinterface #404,  1          // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+     468: invokevirtual #219                // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+     471: checkcast     #408                // class net/minecraft/resources/ResourceKey
+     474: astore        16
+     476: invokestatic  #410                // Method org/betterx/wover/state/api/WorldState.allStageRegistryAccess:()Lnet/minecraft/core/RegistryAccess;
+     479: ifnull        551
+     482: getstatic     #413                // Field net/minecraft/Util.TICKER:Lcom/google/common/base/Ticker;
+     485: invokestatic  #419                // Method com/google/common/base/Stopwatch.createStarted:(Lcom/google/common/base/Ticker;)Lcom/google/common/base/Stopwatch;
+     488: astore        17
+     490: invokestatic  #410                // Method org/betterx/wover/state/api/WorldState.allStageRegistryAccess:()Lnet/minecraft/core/RegistryAccess;
+     493: getstatic     #208                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+     496: invokeinterface #425,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+     501: aload         16
+     503: invokeinterface #429,  2          // InterfaceMethod net/minecraft/core/Registry.getHolder:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+     508: invokevirtual #219                // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+     511: checkcast     #251                // class net/minecraft/core/Holder
+     514: astore        18
+     516: aload         17
+     518: invokevirtual #432                // Method com/google/common/base/Stopwatch.stop:()Lcom/google/common/base/Stopwatch;
+     521: pop
+     522: aload_1
+     523: aload         15
+     525: aload         5
+     527: new           #318                // class com/mojang/datafixers/util/Pair
+     530: dup
+     531: aload         6
+     533: aload         18
+     535: invokespecial #436                // Method com/mojang/datafixers/util/Pair."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+     538: ldc_w         #439                // String commands.locatebiome.success
+     541: iconst_0
+     542: aload         17
+     544: invokevirtual #441                // Method com/google/common/base/Stopwatch.elapsed:()Ljava/time/Duration;
+     547: invokestatic  #445                // Method net/minecraft/server/commands/LocateCommand.showLocateResult:(Lnet/minecraft/commands/CommandSourceStack;Lnet/minecraft/commands/arguments/ResourceOrTagKeyArgument$Result;Lnet/minecraft/core/BlockPos;Lcom/mojang/datafixers/util/Pair;Ljava/lang/String;ZLjava/time/Duration;)I
+     550: ireturn
+     551: iconst_1
+     552: ireturn
+
+  private static boolean lambda$teleportToNextBiome$8(net.minecraft.core.Holder, net.minecraft.core.Holder);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #451,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/core/Holder;)Z
+       7: ireturn
+
+  private static net.minecraft.network.chat.Component lambda$teleportToNextBiome$7(net.minecraft.core.Holder);
+    Code:
+       0: aload_0
+       1: invokestatic  #142                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       4: invokedynamic #455,  0            // InvokeDynamic #12:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       9: invokestatic  #269                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      12: getstatic     #274                // Field net/minecraft/network/chat/Style.EMPTY:Lnet/minecraft/network/chat/Style;
+      15: getstatic     #456                // Field net/minecraft/ChatFormatting.DARK_GREEN:Lnet/minecraft/ChatFormatting;
+      18: invokevirtual #286                // Method net/minecraft/network/chat/Style.withColor:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/Style;
+      21: invokevirtual #290                // Method net/minecraft/network/chat/MutableComponent.setStyle:(Lnet/minecraft/network/chat/Style;)Lnet/minecraft/network/chat/MutableComponent;
+      24: areturn
+
+  private static com.mojang.brigadier.Message lambda$static$6(java.lang.Object);
+    Code:
+       0: aload_0
+       1: invokestatic  #142                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       4: invokedynamic #459,  0            // InvokeDynamic #13:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       9: invokestatic  #269                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      12: areturn
+
+  private static boolean lambda$register$5(net.minecraft.commands.CommandSourceStack);
+    Code:
+       0: aload_0
+       1: iconst_4
+       2: invokevirtual #460                // Method net/minecraft/commands/CommandSourceStack.hasPermission:(I)Z
+       5: ireturn
+
+  private static int lambda$register$4(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: aload_0
+       1: getstatic     #464                // Field org/betterx/betterend/registry/EndPoiTypes.ETERNAL_PORTAL_FRAME:Lorg/betterx/wover/poi/api/WoverPoiType;
+       4: invokestatic  #470                // Method find_poi:(Lcom/mojang/brigadier/context/CommandContext;Lorg/betterx/wover/poi/api/WoverPoiType;)I
+       7: ireturn
+
+  private static boolean lambda$register$3(net.minecraft.commands.CommandSourceStack);
+    Code:
+       0: aload_0
+       1: iconst_4
+       2: invokevirtual #460                // Method net/minecraft/commands/CommandSourceStack.hasPermission:(I)Z
+       5: ireturn
+
+  private static int lambda$register$2(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: aload_0
+       1: getstatic     #474                // Field org/betterx/betterend/registry/EndPoiTypes.ETERNAL_PORTAL:Lorg/betterx/wover/poi/api/WoverPoiType;
+       4: invokestatic  #470                // Method find_poi:(Lcom/mojang/brigadier/context/CommandContext;Lorg/betterx/wover/poi/api/WoverPoiType;)I
+       7: ireturn
+
+  private static boolean lambda$register$1(net.minecraft.commands.CommandSourceStack);
+    Code:
+       0: aload_0
+       1: iconst_4
+       2: invokevirtual #460                // Method net/minecraft/commands/CommandSourceStack.hasPermission:(I)Z
+       5: ireturn
+
+  private static boolean lambda$register$0(net.minecraft.commands.CommandSourceStack);
+    Code:
+       0: aload_0
+       1: iconst_4
+       2: invokevirtual #460                // Method net/minecraft/commands/CommandSourceStack.hasPermission:(I)Z
+       5: ireturn
+
+  static {};
+    Code:
+       0: iconst_0
+       1: putstatic     #259                // Field biomeIndex:I
+       4: new           #331                // class com/mojang/brigadier/exceptions/DynamicCommandExceptionType
+       7: dup
+       8: invokedynamic #477,  0            // InvokeDynamic #14:apply:()Ljava/util/function/Function;
+      13: invokespecial #481                // Method com/mojang/brigadier/exceptions/DynamicCommandExceptionType."<init>":(Ljava/util/function/Function;)V
+      16: putstatic     #326                // Field ERROR_BIOME_NOT_FOUND:Lcom/mojang/brigadier/exceptions/DynamicCommandExceptionType;
+      19: return
+}
