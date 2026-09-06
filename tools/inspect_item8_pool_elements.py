@@ -81,6 +81,7 @@ ARCHIVES = frozenset(
         "oceansdelight-neoforge-1.0.4-1.21.1.jar",
         "bundle-api-neoforge-1.1.0.jar",
         "shield_api-neoforge-2.2.0.jar",
+        "ritchiesprojectilelib-2.1.2+mc.1.21.1-neoforge.jar",
         "structure_layout_optimizer-neoforge-1.0.12.jar",
         "attributefix-neoforge-1.21.1-21.1.3.jar",
         "LeavesBeGone-v21.1.1-1.21.1-NeoForge.jar",
@@ -97,6 +98,8 @@ ARCHIVES = frozenset(
     }
 )
 GENERATION_PREFIXES = (
+    "rbasamoyai/ritchiesprojectilelib/",
+    "architectury_inject_RitchiesProjectileLib_",
     "com/github/theredbrain/bundleapi/",
     "com/github/theredbrain/neoforge/",
     "architectury_inject_bundleapi_",
@@ -699,6 +702,9 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 ))
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
                     "com/scouter/oceansdelight/OceansDelight.class",
+                    "rbasamoyai/ritchiesprojectilelib/neoforge/RitchiesProjectileLibNeoForge.class",
+                    "rbasamoyai/ritchiesprojectilelib/neoforge/RPLNeoForgeClient.class",
+                    "rbasamoyai/ritchiesprojectilelib/network/neoforge/RPLNetworkImpl.class",
                     "com/github/theredbrain/neoforge/NeoForgeMod.class",
                     "com/github/theredbrain/neoforge/client/NeoForgeClientMod.class",
                     "net/fabric_extras/neoforge/NeoForgeMod.class",
