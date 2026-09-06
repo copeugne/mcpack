@@ -6219,3 +6219,37 @@ uv run basedpyright tests/item8/test_betterend_feature_candidates.py tools/build
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-registry-roles-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-betterend-registry-roles-r2.json
 ```
+
+
+## Tree membership decisions, 2026-09-06
+
+The three previously named tree boundaries are now resolved in
+family-decisions.json and reproduced in inventory.json. Aether holiday_tree is
+vegetation with scattered snow/presents. Deep Aether fallen_tree has two
+log/mushroom configurations. Regions Unexplored fallen_tree has six configured
+variants and eight placed variants. Each contribution has an empty additional
+family list with its rationale and preserved source identities. These are
+membership decisions based on complete supplied forms, not exclusions based
+only on feature type or file names.
+
+Aether seasonal eligibility and present reward relevance remain explicit.
+Regions Unexplored can produce a stump without the full fallen log. Neither
+exclusion claims disabled generation or successful observed placement. No
+registry root was removed. The Ashen template remains a trial-chamber component.
+These decisions supersede the open tree membership boundaries in earlier dated
+entries. Provider coverage stays 90 resolved and 46 open.
+
+Validation uses the existing three candidate test files and source bindings:
+
+```sh
+uv run pytest -q tests/item8/test_aether_cloud_source.py tests/item8/test_deep_aether_candidates.py tests/item8/test_regions_unexplored_candidates.py
+uv run ruff check tests/item8/test_aether_cloud_source.py tests/item8/test_deep_aether_candidates.py tests/item8/test_regions_unexplored_candidates.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_aether_cloud_source.py tests/item8/test_deep_aether_candidates.py tests/item8/test_regions_unexplored_candidates.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-tree-boundaries-r1.json
+cmp evidence/raw/item8/inventory-tree-boundaries-r1.json evidence/item-8/inventory.json
+```
+
+Eleven focused cases and scoped quality checks pass. The initial test assertions
+had redundant sorting and incomplete typing; these were corrected without
+changing the membership decisions or source captures. Inventory status remains
+INCOMPLETE. No additional evidence class or measurement system was introduced.
