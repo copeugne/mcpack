@@ -5330,3 +5330,39 @@ libraries also remain. The common-hook batch must not be recaptured.
 
 Four focused cases pass (0.47s); scoped Ruff/Basedpyright pass. Census remains
 89 resolved providers and 47 open. No runtime or capture process is live.
+
+### Create remaining entry capture, client exclusions and registry roles
+
+Source 05d472d (extractor 6fdfb9e) retains the remaining 54 annotated entries
+and CreateBuiltInRegistries. Independent capture reproduces exactly; identities
+SHA-256 is 3428176fa46ad9d0a07e89f9f7c1748b8bea6154e793ad07bc7e251dbf8fbafb.
+The test binds all bytes and requires exact equality with the annotated class
+set minus the four previously captured entries, plus the registry initializer.
+Do not recapture this batch. Full methods and annotations are already delivered.
+
+Seventeen subscribers explicitly declare Dist.CLIENT, and CreateClient declares
+a client-only Mod entry. These eighteen entries are excluded from dedicated
+server generation on their loader metadata. They are rendering/input/UI helpers;
+client class names alone were not used as exclusion evidence. Ponder's supplied
+assets and embedded library still need their separate content-role disposition.
+
+Four additional annotated entries have resolved non-family roles:
+
+- CreateRegistriesImpl registers the potato projectile datapack registry.
+- CreateDataMapsImpl registers regular and superheated blaze-burner fuel maps.
+- RemapHelper aliases legacy block, item, fluid and block-entity identifiers.
+- AllConfigs registers client/common/server configuration, stress-value providers
+  and load/reload dispatch.
+
+CreateBuiltInRegistries defines twelve typed registries for mechanical arms,
+fan processing, item attributes, displays, mounted storage, contraptions,
+package-port targets and potato-projectile render/hit actions. This resolves
+the specific registry-initialization question left by BuiltInRegistriesMixin.
+It introduces no independent structure-family registry.
+
+Thirty-two of the captured annotated entries still need their final contribution
+role recorded. Their captures must be reused; ordinary gameplay helper tracing
+is not required absent a specific unresolved site boundary. The three embedded
+libraries and Ponder consumers also remain. No new family candidate was added.
+Four focused cases pass (0.51s); scoped checks pass after fixing Ruff's regex
+flag spelling. Census remains 89 resolved, 47 open. No capture or runtime is live.
