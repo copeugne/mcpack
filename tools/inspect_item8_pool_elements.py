@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "fzzy_config-0.7.6+1.21+neoforge.jar",
         "curios-neoforge-9.5.1+1.21.1.jar",
         "createdieselgenerators-1.21.1-1.3.15.jar",
         "createbigcannons-5.11.6+mc.1.21.1.jar",
@@ -226,6 +227,8 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "me/fzzyhmstrs/fzzy_config/FzzyConfigNeoForge.class",
+    "me/fzzyhmstrs/fzzy_config/FzzyConfigNeoForgeClient.class",
     "top/theillusivec4/curios/Curios.class",
     "top/theillusivec4/curios/Curios$1.class",
     "top/theillusivec4/curios/common/CuriosRegistry.class",
@@ -4289,6 +4292,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 verbose |= name.startswith("rbasamoyai/createbigcannons/")
                 verbose |= name.startswith("com/jesz/createdieselgenerators/")
                 verbose |= name.startswith("top/theillusivec4/curios/")
+                verbose |= name.startswith("me/fzzyhmstrs/fzzy_config/")
                 verbose |= name.startswith("com/teamresourceful/resourcefullib/")
                 verbose |= name.startswith("com/illusivesoulworks/")
                 verbose |= name.startswith("dan200/computercraft/")
