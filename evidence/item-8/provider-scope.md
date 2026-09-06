@@ -3698,3 +3698,26 @@ uv run basedpyright tests/item8/test_regions_unexplored_candidates.py
 Both cases and scoped quality checks pass. Provider coverage remains OPEN:
 77 resolved, 59 open. Continue the other feature/entry and payload roles rather
 than repeating this candidate's implementation capture.
+
+### Regions Unexplored region and terrain integration
+
+The captured RULithostitched entry registers three integration callbacks:
+worldgen modifiers, regions and biome injectors. Its modifier callback adds
+Nether surface rules, removes water springs in Inferno, and wraps Overworld
+fluid-level floodedness using inferno_weight. These alter terrain generation;
+they do not create a structure start, pool or template.
+
+RUSurfaceRuleBuilder.nether composes vanilla surface conditions and supplied
+block states, including nylium, netherrack, gravel, lava and bedrock. Its remaining
+helpers return block/air rules or noise conditions. BiomeTarget supplies biome
+replacement parameters and target holders. Its special injector branches add
+climate points for Prismachasm and Redstone Caves, force Inferno using depth and
+density conditions, and force Chalk Cliffs using climate conditions. Other
+special cases return null. No architectural content is selected by these
+methods. These direct delegates are now reconciled; do not expand their census
+into a terrain-quality experiment or general climate-mapping audit.
+
+The source identities are bound by the passing candidate checks above. This
+resolves contribution roles only. Frozen effective settings and observed
+placement remain distinct evidence. The provider is still OPEN pending the
+remaining feature, entry and payload dispositions.
