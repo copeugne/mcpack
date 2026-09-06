@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-06
 
+Latest checkpoint at 97b5249: Better Jungle Temples provider scope is closed,
+pushed and remote-ref verified. Census: 65 resolved providers, 71 open. Seven
+focused cases, Ruff and Basedpyright pass. Source e4bb5e3 is reused; one existing
+root, 17 connected pools and 127 templates are accounted for, including two
+disconnected table props. No additional independent candidate was found.
+
+The user's latest correction is that explaining the unknown count is insufficient:
+finish finding it. The missing count is unfinished audit work, not a request for
+user input. The next deliverable remains the complete named canonical family list
+and its denominator, followed by exact outstanding attribute gaps. Provider closure
+counts cannot substitute for that deliverable. Continue the 71 named open rows in
+evidence/item-8/provider-scope.md using existing evidence first. Limit new source
+inspection to generation entry paths and concrete unresolved contributions; do not
+capture every class merely to close a provider. Resolve remaining named family
+boundaries before resuming detailed attributes. No new measurement system, broader
+review framework or downstream work is authorized by this clarification.
+
 Latest checkpoint at 920c24e: Better Strongholds provider scope is closed,
 pushed and remote-ref verified. Census: 64 resolved providers, 72 open. Seven
 affected cases and scoped quality checks pass. Source 41964b5 reproduces exactly.
