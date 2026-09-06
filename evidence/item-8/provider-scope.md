@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 71 of 136. The exact queue below has 65 open rows.
+Supported provider dispositions: 72 of 136. The exact queue below has 64 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -556,7 +556,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `Quark-4.1-480.jar` | `quark-end-generators`, `quark-end-registration`, `quark-fallen-log-decor`, `quark-landmark-encounter-generators`, `quark-monster-box-behavior`, `quark-monster-box-bindings`, `quark-nether-spikes`, `quark-spire-config-annotations`, `quark-stone-clusters`, `quark-underground-base`, `quark-underground-context`, `quark-underground-fill`, `quark-underground-styles`, `quark-vegetation`, `quark-world-category` | Reuse recorded nonregistry contributions and module activation; reconcile remaining generation entries and packaged resources. |
 | `TerraBlender-neoforge-1.21.1-4.1.0.8.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `Terralith_1.21.1_v2.6.2_Neoforge.jar` | `terralith-provider` (b87f3bb), test_terralith_provider_scope.py | RESOLVED: 28 existing roots, terrain/vegetation and one named Frostfire ornament candidate. Overlay, disconnected and missing component dispositions below; canonical ornament grouping remains open. |
-| `YungsApi-1.21.1-NeoForge-5.1.6.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `YungsApi-1.21.1-NeoForge-5.1.6.jar` | Existing `pool-codecs`; `yungs-api-provider` (a796af9); test_yungs_api_provider_scope.py | RESOLVED: Shared registration, placement/pool codecs and existing-structure terrain/feature hooks. No independent family. See disposition below. |
 | `YungsBetterCaves-1.21.1-NeoForge-3.1.4.jar` | `better-caves-provider` (d9e30ff); test_better_caves_provider_scope.py | RESOLVED: Cave/cavern carving and liquid-region/aquifer terrain support. No independent structure family. See disposition below. |
 | `YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar` | Existing suppression source; `desert-temple-provider` (02ae27e); test_desert_temple_provider_scope.py | RESOLVED: One existing root, 28 connected pools, 198 templates and one disconnected crushing corridor. Placement, Pharaoh/state hooks and component registrations accounted for below. |
 | `YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar` | Existing `betterdungeons-code`; `dungeons-provider` (f9696df); test_dungeons_provider_scope.py | RESOLVED: Five existing roots, 33 pools, 227 templates, one disconnected bridge and one missing zombie stair. Remaining registration/context/modifier paths are accounted for below. |
@@ -2706,3 +2706,49 @@ biome definitions by matching a path substring. Neither result was accepted.
 The tracked check reuses the existing comment-aware decoder and restricts the
 resource root to data/yungscavebiomes/worldgen/. Initial lint/type findings were
 corrected before acceptance. Census: 71 resolved providers and 65 open.
+
+## YUNG API provider disposition
+
+The frozen YungsApi-1.21.1-NeoForge-5.1.6.jar has 197 files and 179 classes.
+Source a796af9 preserves 43 entry, registration, service, plugin and mixin
+classes. Existing pool-codecs preserves the pool element module and Yung single
+pool element; do not recapture it. The focused check binds both manifests and
+all 45 disassemblies to the frozen archive, whose SHA-256 is
+08e1d21690d3213a4c62de6b6cf79f3527afb2e72e0cad0e1848d46eb8f682ca.
+
+Role: shared registration and structure-generation infrastructure, with
+modifications to existing structures. No independent authored family. Its sole
+packaged data consists of four initially empty structure tags. There are no
+structure definitions, sets, templates, pools, features, biome modifiers,
+functions, nested archives or separate event-subscriber entries. Its runtime
+structure namespace is empty; codec types are not structure roots.
+
+| Mechanism | Supported scope disposition |
+| --- | --- |
+| Common/NeoForge entry, annotation scanner and field router | Initializes the API module package and dispatches supplied fields by type into registration queues. NeoForge registry events consume the queued objects with their supplied resource names. Consumer mods retain ownership of content. |
+| Generation modules | Register the generic Yung jigsaw structure type, enhanced random-spread placement type and pool-element codecs, plus queued consumer feature, placement-modifier, piece and processor types. These are reusable implementations, not new configured family instances. |
+| Post-load dispatch and four services | Enqueues supplied static methods for common setup and registers supplied compostable blocks. NeoForge services implement annotation scanning, block-entity/particle construction and platform lookup. Remaining registration wrappers/modules concern supplied blocks, items, entities, creative tabs, commands, criteria, effects, potions, particles and sounds. |
+| Four feature-suppression mixins and MixinUtils | Basalt columns, deltas, magma and vines consult their corresponding structure tags. The helper uses generated structure references, valid starts and bounding-box containment. These restrict features inside existing tagged structures; the API's own empty tag files do not imply the effective tags are empty. Consuming YUNG provider tag declarations are retained in their earlier dispositions. |
+| Beardifier and NoiseChunk hooks | Apply enhanced terrain-density and aquifer overrides around existing structures. Remaining adaptation, mask, noise and geometry classes support this path; no standalone authored layout is registered by these hooks. |
+| Eight accessors, jukebox hook and weight hook | Expose existing pool/terrain/potion state, cancel jukebox record handling when its level is null, and wrap the structure weight codec with an upper bound of 5000. The weight injection has require=0, so its declaration is not proof it executed. |
+| Mixin plugin | getMixins returns null and pre/post hooks do nothing. shouldApplyMixin permits declared common mixins. Its sole special development-environment condition names MinecraftServerMixin, which is absent from both the archive and declarations. There is no additional plugin-supplied generation entry. |
+| Remaining implementation classes | Consumer-driven jigsaw assembly, conditions, actions, modifiers, selectors, exclusions, randomizers, banner/spawner data, codecs, JSON, geometry and noise helpers. They implement the already registered types and consumer APIs. Their capability names and piece classes are not additional family candidates. |
+
+The fifteen common mixins and one NeoForge mixin are all captured. All payload
+files are accounted for as classes, the four tags, four service declarations,
+loader/pack/mixin metadata, license and four icon/catalogue assets. No new
+configuration or runtime experiment is introduced. This does not prove gameplay
+compatibility, every optional injection, placement success or final family
+attributes. It closes the shared provider's candidate contribution scope.
+
+```sh
+uv run pytest -q tests/item8/test_yungs_api_provider_scope.py
+uv run ruff check tests/item8/test_yungs_api_provider_scope.py
+uv run basedpyright tests/item8/test_yungs_api_provider_scope.py
+```
+
+One focused case and scoped quality checks pass. An initial long test line was
+wrapped before acceptance. The source r1 reproduction matches every generated
+file. Census: 72 resolved providers and 64 open. Continue with Quark's existing
+generator/module evidence and remaining provider resources; do not restart the
+completed YUNG provider work or detailed family attributes.
