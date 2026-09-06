@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-06
 
+Big Cannons membership inspection is in progress, not resolved. Reuse delivered
+cbc-entries at 5c75167e (five classes) and cbc-hooks at 6444274f (32 common and
+conditional mixins), plus cbc-startup from extractor 09d40238 (three classes).
+All captures reproduce exactly. The archive has 855 classes, no nested JARs,
+and 29 NBT assets under its Ponder tutorial directory. Direct startup names
+machine/item/fluid/entity/recipe registries and common event registration.
+Next inspect CBCCommonEvents, particularly level-load/tick and reload listeners,
+and account for the named registration targets. Do not restart captured entry
+or hook extraction. Preserve the distinction between cannon contraption assembly
+and independently generated authored families. Whole providers remain 126
+resolved, 10 open; working groups 410; explicit provisional Moog decisions 100.
+The final canonical list, attributes, final gate, review and main merge remain
+incomplete. An initial ref lookup mistyped codex as codexex; the corrected lookup
+confirmed the branch and upstream matched before changes.
+
+
 Create Enchantment Industry membership is resolved with no independent family.
 Reuse source increments 7f3f848b, 75fd1607, c4e39444 and f02b44f4 (47 classes)
 and the existing Create Dragons Plus plugin/library evidence. All captures
