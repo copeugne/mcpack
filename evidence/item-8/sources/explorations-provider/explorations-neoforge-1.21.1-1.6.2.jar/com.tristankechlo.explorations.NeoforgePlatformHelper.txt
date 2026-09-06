@@ -1,0 +1,41 @@
+Compiled from "NeoforgePlatformHelper.java"
+public final class com.tristankechlo.explorations.NeoforgePlatformHelper implements com.tristankechlo.explorations.platform.IPlatformHelper {
+  public com.tristankechlo.explorations.NeoforgePlatformHelper();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public java.lang.String getPlatformName();
+    Code:
+       0: ldc           #7                  // String Neoforge
+       2: areturn
+
+  public boolean isModLoaded(java.lang.String);
+    Code:
+       0: invokestatic  #9                  // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: aload_1
+       4: invokevirtual #15                 // Method net/neoforged/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+       7: ireturn
+
+  public boolean isDevelopmentEnvironment();
+    Code:
+       0: invokestatic  #19                 // Method net/neoforged/fml/loading/FMLLoader.isProduction:()Z
+       3: ifne          10
+       6: iconst_1
+       7: goto          11
+      10: iconst_0
+      11: ireturn
+
+  public java.nio.file.Path getConfigDirectory();
+    Code:
+       0: getstatic     #25                 // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #31                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: areturn
+
+  public <P extends net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator> net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType<P> getTreeDecorator(com.mojang.serialization.MapCodec<P>);
+    Code:
+       0: aload_1
+       1: invokestatic  #34                 // InterfaceMethod com/tristankechlo/explorations/mixin/TreeDecoratorTypeAccessor.callNew:(Lcom/mojang/serialization/MapCodec;)Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecoratorType;
+       4: areturn
+}

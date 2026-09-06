@@ -1,0 +1,94 @@
+Compiled from "JigsawStructure.java"
+public abstract class com.tristankechlo.explorations.worldgen.structures.JigsawStructure extends net.minecraft.world.level.levelgen.structure.Structure {
+  protected final com.tristankechlo.explorations.worldgen.structures.JigsawStructure$JigsawStructureSettings settings;
+
+  public com.tristankechlo.explorations.worldgen.structures.JigsawStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings, com.tristankechlo.explorations.worldgen.structures.JigsawStructure$JigsawStructureSettings);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/Structure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       5: aload_0
+       6: aload_2
+       7: putfield      #7                  // Field settings:Lcom/tristankechlo/explorations/worldgen/structures/JigsawStructure$JigsawStructureSettings;
+      10: return
+
+  public static <S extends com.tristankechlo.explorations.worldgen.structures.JigsawStructure> com.mojang.serialization.Codec<S> createCodec(java.util.function.BiFunction<net.minecraft.world.level.levelgen.structure.Structure$StructureSettings, com.tristankechlo.explorations.worldgen.structures.JigsawStructure$JigsawStructureSettings, S>);
+    Code:
+       0: aload_0
+       1: invokedynamic #13,  0             // InvokeDynamic #0:apply:(Ljava/util/function/BiFunction;)Ljava/util/function/Function;
+       6: invokestatic  #17                 // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       9: invokevirtual #23                 // Method com/mojang/serialization/MapCodec.codec:()Lcom/mojang/serialization/Codec;
+      12: areturn
+
+  public static <S extends com.tristankechlo.explorations.worldgen.structures.JigsawStructure> com.mojang.serialization.codecs.RecordCodecBuilder<S, com.tristankechlo.explorations.worldgen.structures.JigsawStructure$JigsawStructureSettings> jigsawSettingsCodec(com.mojang.serialization.codecs.RecordCodecBuilder$Instance<S>);
+    Code:
+       0: getstatic     #29                 // Field com/tristankechlo/explorations/worldgen/structures/JigsawStructure$JigsawStructureSettings.CODEC:Lcom/mojang/serialization/MapCodec;
+       3: invokedynamic #35,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+       8: invokevirtual #38                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      11: areturn
+
+  protected java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #42                 // Method isFeatureChunk:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Z
+       5: ifne          12
+       8: invokestatic  #46                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+      11: areturn
+      12: aload_0
+      13: aload_1
+      14: invokevirtual #52                 // Method generateStartPos:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Lnet/minecraft/core/BlockPos;
+      17: astore_2
+      18: aload_2
+      19: ifnonnull     26
+      22: invokestatic  #46                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+      25: areturn
+      26: aload_1
+      27: aload_0
+      28: getfield      #7                  // Field settings:Lcom/tristankechlo/explorations/worldgen/structures/JigsawStructure$JigsawStructureSettings;
+      31: invokevirtual #56                 // Method com/tristankechlo/explorations/worldgen/structures/JigsawStructure$JigsawStructureSettings.startPool:()Lnet/minecraft/core/Holder;
+      34: aload_0
+      35: getfield      #7                  // Field settings:Lcom/tristankechlo/explorations/worldgen/structures/JigsawStructure$JigsawStructureSettings;
+      38: invokevirtual #60                 // Method com/tristankechlo/explorations/worldgen/structures/JigsawStructure$JigsawStructureSettings.startJigsawName:()Ljava/util/Optional;
+      41: aload_0
+      42: getfield      #7                  // Field settings:Lcom/tristankechlo/explorations/worldgen/structures/JigsawStructure$JigsawStructureSettings;
+      45: invokevirtual #63                 // Method com/tristankechlo/explorations/worldgen/structures/JigsawStructure$JigsawStructureSettings.size:()I
+      48: aload_2
+      49: iconst_0
+      50: invokestatic  #46                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+      53: aload_0
+      54: getfield      #7                  // Field settings:Lcom/tristankechlo/explorations/worldgen/structures/JigsawStructure$JigsawStructureSettings;
+      57: invokevirtual #67                 // Method com/tristankechlo/explorations/worldgen/structures/JigsawStructure$JigsawStructureSettings.maxDistanceFromCenter:()I
+      60: invokestatic  #70                 // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      63: aload_2
+      64: aload_1
+      65: invokevirtual #76                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.seed:()J
+      68: invokestatic  #82                 // InterfaceMethod net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup.create:(Ljava/util/List;Lnet/minecraft/core/BlockPos;J)Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;
+      71: getstatic     #88                 // Field net/minecraft/world/level/levelgen/structure/structures/JigsawStructure.DEFAULT_DIMENSION_PADDING:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+      74: getstatic     #94                 // Field net/minecraft/world/level/levelgen/structure/structures/JigsawStructure.DEFAULT_LIQUID_SETTINGS:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+      77: invokestatic  #98                 // Method net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement.addPieces:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/core/Holder;Ljava/util/Optional;ILnet/minecraft/core/BlockPos;ZLjava/util/Optional;ILnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)Ljava/util/Optional;
+      80: areturn
+
+  protected abstract net.minecraft.core.BlockPos generateStartPos(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+
+  protected abstract boolean isFeatureChunk(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+
+  private static com.tristankechlo.explorations.worldgen.structures.JigsawStructure$JigsawStructureSettings lambda$jigsawSettingsCodec$1(com.tristankechlo.explorations.worldgen.structures.JigsawStructure);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field settings:Lcom/tristankechlo/explorations/worldgen/structures/JigsawStructure$JigsawStructureSettings;
+       4: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$createCodec$0(java.util.function.BiFunction, com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_1
+       1: aload_1
+       2: invokestatic  #104                // Method net/minecraft/world/level/levelgen/structure/Structure.settingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       5: aload_1
+       6: invokestatic  #108                // Method jigsawSettingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       9: invokevirtual #111                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P2;
+      12: aload_1
+      13: aload_0
+      14: invokevirtual #117                // Method com/mojang/datafixers/Products$P2.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/BiFunction;)Lcom/mojang/datafixers/kinds/App;
+      17: areturn
+}
