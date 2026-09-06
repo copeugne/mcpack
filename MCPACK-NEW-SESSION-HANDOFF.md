@@ -6,6 +6,31 @@
 
 ### Continuation update - 2026-09-06
 
+Latest aac294c and dc5cda4 are pushed and verified. Six focused Aether cases
+and scoped checks pass. Optional portal activation/components are resolved:
+frozen common config disables automatic activation, six roots are absent from
+the runtime registry, and the captured generator selects exactly the thirteen
+packaged portal templates. Do not repeat that boundary.
+
+Extractor eb16438 and source increments 8c792b0 (aether-entry-delegates),
+62defac (aether-cumulus-entry), 9c29cff (aether-nitrogen-entry) are delivered.
+Each exact command and manifest hash is in its README; independent r1 matches.
+Cumulus's mod entry is CLIENT restricted, but its common storage mixin and
+IPlatformHelper service must be accounted for. The storage wrapper only changes
+the lock predicate while loading summaries; inspect NeoForgePlatformHelper's
+role before final closure. The first no-services test failed correctly and now
+binds that exact service. Nitrogen's constructor registers biome modifiers and
+tree placers as well as loot support, beyond its user-info hooks. Resolve those
+serializers and consumers; do not infer no contribution from no packaged data.
+
+DimensionHooks is captured; world-load initializes Aether level data, time hooks
+manage time, and portal interaction paths delegate portal-frame activation.
+Finish bounded role interpretation. ReloadListeners registers RecipeReloadListener
+and BannerReloadListener; those inner handlers are not yet captured. Keep any
+necessary follow-up tied to those concrete entry boundaries. A read-only catalog
+search found a Deep Aether loot modifier mentioning nitrogen; it is exploratory,
+not a complete consumer proof. Census stays 75 resolved and 61 open. No blocker.
+
 Latest delivered increments: 75ad62e records the four custom feature roles and
 resolves HolidayFilter; 5bf0795 binds actual nested-library selection to the
 preserved runtime log. Five focused Aether cases and scoped checks pass.
