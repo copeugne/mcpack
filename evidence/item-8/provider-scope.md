@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 74 of 136. The exact queue below has 62 open rows.
+Supported provider dispositions: 75 of 136. The exact queue below has 61 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -633,7 +633,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `railways-0.2.1+neoforge-mc1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `ranged_weapon_api-neoforge-2.3.3+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `regions-unexplored-0.6.1-neoforge-21.1.jar` | `regions-unexplored-feature-code`, `regions-unexplored-feature-config-code` | Reuse feature/config captures; bind modifiers and template-pool component consumers; exclude terrain with rationale. |
-| `repurposed_structures-7.5.21+1.21.1-neoforge.jar` | `pool-codecs`, `repurposed-mansion`, `repurposed-mansion-bindings`, `repurposed-mansion-layout`, `repurposed-mansion-processors`, `repurposed-monument`, `repurposed-monument-processors`, `repurposed-monument-rooms` | Reuse mansion/monument and codec captures; reconcile all feature/injection entries and unmatched components. |
+| `repurposed_structures-7.5.21+1.21.1-neoforge.jar` | Existing mansion/monument/pool evidence, `repurposed-provider`, `repurposed-feature-roles`, `repurposed-assembly`, `repurposed-datagen-entry`; focused provider and component checks. | RESOLVED: 107 existing roots, 23 dungeon/well configuration candidates, all feature and component roles, common hooks and data-generation entry accounted for below. Canonical grouping and effective eligibility remain separate. |
 | `resourcefulconfig-neoforge-1.21-3.0.11.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `resourcefullib-neoforge-1.21-3.0.12.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `ritchiesprojectilelib-2.1.2+mc.1.21.1-neoforge.jar` | `projectile-library-provider` (50bc747), test_small_utility_provider_scope.py | RESOLVED: Projectile entity, chunk-loading and synchronization support; no authored structure family. Packaged mixin files lack loader declarations. See disposition below. |
@@ -2862,3 +2862,240 @@ seven math/fast classes and the assertion was corrected to the measured exact
 partition. Formatting findings were also corrected. No raw source was changed.
 Census: 74 resolved providers and 62 open. Next reconcile Repurposed Structures,
 reusing its existing mansion, monument, processor and pool-codec evidence.
+
+## Repurposed Structures nonregistry candidate increment
+
+Provider scope remains OPEN. Source 452e33e preserves the relevant registration,
+NBT feature, modifier and common hook implementations with exact reproduction.
+The frozen archive SHA-256 is
+aeb473f0a0a0632cea089377cdd9f66c42cf6f97557fd32c368ac40635285dd2.
+
+The configured NBT feature set includes sixteen dungeon configurations and
+seven well configurations outside the current non_registry_content contribution
+list. These must be reconciled before canonical counting. All twenty-three have
+matching named placed-feature and biome-modifier references, and every selected
+NBT template exists in the frozen archive. This is packaged reachability, not
+observed placement, effective eligibility or twenty-three canonical families.
+
+| Candidate path under repurposed_structures | Configurations requiring reconciliation |
+| --- | --- |
+| dungeons/ | badlands, dark_forest, deep, desert, end, icy, jungle, mushroom, nether, ocean_cold, ocean_frozen, ocean_lukewarm, ocean_neutral, ocean_warm, snow, swamp |
+| wells/ | badlands, cherry, forest, mossy_stone, mushroom, nether, snow |
+
+The dungeon entries use nbt_dungeon; wells use nbt_feature. Ocean-temperature
+configurations share template choices, so configuration count must not become a
+family count. Preserve template/design, material and placement variants during
+canonical reconciliation. Keep these candidates in the finite provider work list;
+do not defer them behind detailed attributes or exclude them for lacking a
+structure-registry root. The existing mansion/monument evidence is separate and
+must be reused rather than recaptured.
+
+```sh
+uv run pytest -q tests/item8/test_repurposed_feature_candidates.py
+uv run ruff check tests/item8/test_repurposed_feature_candidates.py
+uv run basedpyright tests/item8/test_repurposed_feature_candidates.py
+```
+
+One focused case and scoped quality checks pass. Remaining Repurposed scope is
+full feature roles, pool/template component reconciliation, entry/hook roles and
+supported exclusions. Census is unchanged: 74 resolved providers, 62 open.
+
+### Repurposed existing-graph partition
+
+The existing pool-traces-content catalog covers 95 of the 107 packaged roots.
+The twelve other roots are mansion_birch/desert/jungle/mangrove/oak/savanna/
+snowy/taiga and monument_desert/icy/jungle/nether. Their custom assembly source
+already exists; absence from the generic pool graph is not an exclusion.
+
+| Resource partition | Pools outside generic root traces | Templates outside generic root traces |
+| --- | ---: | ---: |
+| Mansion paths | 416 | 597 |
+| Monument paths | 80 | 92 |
+| Dungeon NBT feature paths | 0 | 36 |
+| Well NBT feature paths | 0 | 7 |
+| Other paths requiring individual disposition | 7 | 53 |
+| Total outside generic root traces | 503 | 785 |
+
+The full packaged denominators are 1099 pools and 3162 templates. The 95 traces
+have no missing or unresolved-element entries. This statement covers those
+traces only, not custom assemblies, all feature consumers or the whole provider.
+The table groups exact resource namespaces; it does not prove every grouped
+resource is selected by its custom generator. Reconcile the retained mansion
+and monument selectors before accepting that stronger claim.
+
+The seven other pools are cities/nether/no_stair_room,
+cities/overworld/no_stair_room, villages/cherry/trees, villages/giant_taiga/trees,
+villages/giant_taiga/zombie/terminators, villages/mountains/trees and
+villages/swamp/trees, all under repurposed_structures. The other 53 templates
+partition into ancient_cities (3), bastions (5), mineshafts (16), strongholds (2)
+and villages (27). Exact paths remain in the preserved template catalog and
+are reproducibly selected by the new graph-partition test. These are component
+questions, not 60 new families and not yet supported unused exclusions.
+
+The two cases in test_repurposed_feature_candidates.py and scoped quality
+checks pass. Early read-only probes used the wrong catalog path, then compared
+resource_identity tuples against string IDs and omitted the NBT extension.
+Those outputs were rejected. The tracked check uses the actual sources path,
+identity[0] and explicit extensions. No accepted source data was changed.
+
+### Repurposed custom component partition
+
+The existing mansion selector and child-pool check now accounts for all 597
+packaged mansion templates: 592 parent choices and five shared mob templates.
+Of 416 pools, 376 are selector candidates and 24 are child mob pools. The other
+16 are the front/side stair pools for the eight variants. Their single-template
+entries reference templates already in the parent set, with empty fallbacks.
+They introduce no additional authored site candidate.
+
+The monument selectors account for 76 pools and 88 templates. The remaining four
+pools and four templates are openings/wall_2, one per variant. Each template is
+a 4 by 3 by 1 air-only volume without entities or block entities. These are
+opening components, not independent sites. This closes the custom resource
+partition for candidate membership; it does not prove runtime selection or
+successful placement of every component.
+
+```sh
+uv run pytest -q tests/item8/test_mansion_components.py tests/item8/test_monument_components.py
+uv run ruff check tests/item8/test_mansion_components.py tests/item8/test_monument_components.py
+uv run basedpyright tests/item8/test_mansion_components.py tests/item8/test_monument_components.py
+```
+
+Remaining Repurposed scope: the seven other pools and 53 other templates listed
+above, remaining feature roles and entry/hook dispositions. Provider scope is
+still OPEN. These checks reuse the existing evidence and tests.
+Four focused cases, scoped Ruff and Basedpyright pass. An initial lint failure
+placed the existing complexity suppression on the wrong line of the multiline
+function declaration; moving it to the declaration line resolved that failure.
+
+### Repurposed residual resource roles
+
+The third case in test_repurposed_feature_candidates.py binds the seven residual
+pools to their actual contents. The two city no_stair_room pools contain existing
+large, medium and tiny rooms plus bridge ends. Four village trees pools select
+cherry, mega pine, pine and swamp tree features. The giant-taiga zombie terminator
+pool selects four normal road-end templates. These are component alternatives,
+not independent authored family candidates. Their absence from generic traces
+remains recorded; this check does not establish actual selection.
+
+| Residual templates | Count | Supported resource disposition |
+| --- | ---: | --- |
+| Mineshaft minecarts | 16 | Each matching mineshaft_minecarts configuration selects a 1 by 1 by 1 template with one chest minecart. These are encounter/loot components of mineshafts. |
+| Ancient-city bottom_right_corner | 3 | No single-pool location selects the exact name. Pools select the corresponding _1 and _2 corner variants instead. Preserve these extra wall components. The initial substring search incorrectly appeared to find exact references and was rejected. |
+| Stronghold crossing | 2 | No single-pool location selects the exact template. Piece-count data imposes a maximum of seven, without a required minimum. A same-named pool reference in start stairs targets a pool, not this NBT file. Preserve the extra crossing components without claiming activation. |
+| Underground bastion mob templates | 5 | Air/jigsaw-only templates with one skeleton or skeleton horse each. No single-pool location selects these exact NBT files. The horse name also appears as a pool reference, which is a different resource kind. |
+| Village components | 27 | Houses, streets, villagers and mobs under variants with existing village root definitions. None is selected by a single-pool location in this archive. Preserve the disconnected component alternatives; do not turn these paths into independent village families. |
+| Total | 53 | All residual template resource roles accounted for; this is not runtime reachability proof. |
+
+This closes the residual resource-role partition. Source entry/feature/hook
+reconciliation must still determine whether additional code consumers affect
+these dispositions before the provider row closes. Census remains 74 resolved
+and 62 open. No new measurement or evidence format was added.
+
+```sh
+uv run pytest -q tests/item8/test_repurposed_feature_candidates.py
+uv run ruff check tests/item8/test_repurposed_feature_candidates.py
+uv run basedpyright tests/item8/test_repurposed_feature_candidates.py
+```
+
+Three focused cases pass. Initial formatting, unused suppression and JSON typing
+findings were corrected in the focused check. Raw catalogs remain unchanged.
+
+### Repurposed complete feature partition
+
+Source 762b6f9 preserves the remaining 31 feature classes with exact independent
+reproduction. Manifest SHA-256:
+4e90a8ed5ea83a2db56830de2cd50d5dc2c5ed1149eb0d0ad06477eed7409230.
+Together with the two existing NBT feature captures, this accounts for every
+implementation class in the archive's world/features package outside configs.
+The fourth focused case binds that exact class set, source hashes and the full
+136 configured-feature partition across 37 types. The types and per-type counts
+are explicit in the test, so additions or omissions fail the check.
+
+| Feature implementation group | Contribution role |
+| --- | --- |
+| NbtDungeon and NbtFeature | Previously recorded sixteen dungeon and seven well configurations. Reuse their candidate/template links; do not count configurations as canonical families. |
+| MinecartFeature | Reads the configured nbtPath, checks supporting block and fluid conditions, obtains that template and places it with entities enabled. The sixteen configured templates were checked above. A missing template logs a warning and returns false. No independent building design. |
+| DrownedWithArmor, ShulkerMob, Skeletons, SkeletonHorseman, WitherSkeletonWithBow | Entity construction, equipment, persistence and placement at the supplied feature origin. These are authored encounter components. Equipment/enchantment helpers do not define another structure candidate. |
+| MineshaftSupport | Reads surrounding arch/fence material and supplied configuration, extends supports, handles water-based openings and updates connected blocks. These are mineshaft component writes, not separate authored sites. |
+| ConfigurableCoral and its claw, mushroom and tree implementations | Coral block placement and geometry using supplied coral materials. Vegetation components. |
+| OceanTemperatureRandomSelector | Chooses a supplied placed feature using biome names and temperature. Its sole packaged configuration chooses three living or three dead coral forms for an ocean village. It introduces no separate authored site. |
+| SimpleBlockWithFluidTick and UnderwaterBlockPileFeature | Supplied block-state placement, plant/fluid handling and underwater piles. Packaged piles use cobblestone, kelp, hay, melon or pumpkin material. These are block/vegetation decorations. |
+| StructureChorus, StructureCrimsonPlants, StructureWarpedPlants, StructureFlowers, StructureGrass, StructureNetherwart, StructureSeagrass, StructureVine, StructureVineAndLeaves | Plant placement or overgrowth around the supplied origin and target blocks. No independent authored site. |
+| StructureBreakage and StructureVineBreakage | Carving/replacement of existing blocks, with air, water and vines as applicable. These alter component condition rather than define a new structure family. |
+| StructureChains, StructureEndRodChains, StructureFire and its map initializer, StructurePowderSnow, StructurePostProcessConnectiveBlocks | Chain/rod/fire/snow placement and connection-state updates on existing components. The noise helper supplies snow variation, not an additional content provider. |
+| Packaged vanilla feature types | Trees, coral, flowers, patches and block piles. Their full type counts are included in the 136-row partition. |
+
+The inspected feature methods write these blocks/entities, place the already
+enumerated NBT choices, or delegate to the configured coral selector choices.
+No additional independent family candidate was found in this feature pass.
+This does not accept every invocation's success, exact gameplay effects or
+effective placement eligibility. The shared entry, non-feature generation and
+injection review still precedes whole-provider closure.
+
+```sh
+uv run pytest -q tests/item8/test_repurposed_feature_candidates.py
+uv run ruff check tests/item8/test_repurposed_feature_candidates.py
+uv run basedpyright tests/item8/test_repurposed_feature_candidates.py
+```
+
+Four focused cases pass. A read-only configuration probe initially included a
+ZIP directory entry; filtering for JSON files corrected the probe. One overlong
+test line was corrected. No raw evidence changed. Census remains 74 resolved
+providers and 62 open; canonical counting remains downstream of provider closure.
+
+## Repurposed Structures provider disposition
+
+The complete frozen archive and its contribution boundaries are accounted for.
+The provider contributes the 107 packaged roots that exactly match its captured
+runtime structure registry, plus the already recorded sixteen dungeon and seven
+well feature configurations. Canonical designs and variants must still be
+reconciled; neither 107 nor 23 is a canonical-family count. Reuse all component
+and feature dispositions above when doing that reconciliation.
+
+Source 015f351 captures the seven remaining structure generators, common jigsaw
+manager/assembler and piece-count manager. Its manifest SHA-256 is
+10a3a2a15d647c5c52c171034c84be9c2fc68e1fe42dd571e8a6c725a6de6746.
+Source 6fed290 captures the additional annotated data-generation entry, manifest
+0d2237b825ac55da59a8908beb120e562b67a58ccc3a5de1c151e1bbd980d9bf.
+Both independently reproduce exactly. The focused provider check binds all twelve
+existing source manifests to the exact archive and disassembly hashes.
+
+| Boundary | Supported contribution disposition |
+| --- | --- |
+| GenericJigsawStructure and subclasses | Consume configured start pools, size, height, biome/terrain checks, liquid settings and placement bounds. City, Nether, mineshaft, shipwreck and End stronghold implementations specialize placement of their supplied root candidates. They do not declare an additional independent root outside the packaged/runtime set. |
+| MineshaftEndStructure | Uses the supplied start pool and common piece-limited assembly with its End placement/bounds handling. Keep it within the existing End mineshaft candidate. |
+| PieceLimitedJigsawManager and Assembler | Start from the supplied pool, use its raw weighted elements, follow the jigsaw NBT pool field through the pool registry, and consider fallback pools. Required-piece selection, maximum counts, bounds, collision and attachment checks constrain these candidates. They do not treat a pool identifier as a same-named template identifier. Empty/missing pools and exhausted required-piece attempts have explicit log paths; this scope disposition does not claim every attempt succeeds. |
+| StructurePieceCountsManager | Loads conditions, required counts and maxima for a target structure. A null alwaysSpawnThisMany produces no required-piece entry. The crossing maximum-only records therefore do not independently add those extra templates to the candidate set. |
+| PoolAdditionMergerManager | Loads supplied rs_pool_additions data, parses the target pool and entries, then adds entries to existing pool lists. Reuse the already reconciled Farmer's Delight add-on component targets; the loader is not another family. Parsing failures remain explicit. |
+| Common and NeoForge entries | Initialize registries and forward setup, start/stop, reload and trade events. Reload inputs are mob-spawner rules, structure-map trades, piece counts and pool additions. Loot-import and map-trade consumers affect existing families' attributes or discovery rather than define sites. |
+| Declared feature mixins | Adjust existing bamboo, jungle bush, basalt/delta, falls, geodes, lakes, vines and snow placement using tagged structure context. These are generation modifications, not new authored designs. |
+| Other declared common mixins | Access existing entity, map, loot, structure, pool and world state; adjust block-attached-entity logging, locate behavior and pool weight codec limits. No independent authored site. Their presence does not prove every injection executed. |
+| Data-generation entry | StructureNbtUpdaterDatagen handles GatherDataEvent and registers a data provider when includeServer is true. This is build-time data generation, not a runtime family entry. The sole client-only mixin concerns the structure-block screen. |
+| Remaining packaged implementation | Configuration, registry/event adapters, predicates, block processors, map/loot/spawner consumers, placement support, codecs, geometry/noise and data holders support the above entries. No extra service, nested archive, script or function payload exists. Do not expand this boundary review into unrelated helper correctness. |
+
+Complete archive accounting covers 5842 files and 248 classes. Data categories
+include all 3162 templates, 1099 pools, 327 processor lists, 136 configured
+features, 157 placed features, 107 roots and 37 structure sets. The non-worldgen
+data consists of the preserved tags, loot, spawner rules, piece counts, biome
+modifiers, advancement and map-trade inputs. There is no unexplained additional
+packaged content category. Both annotated entries and all 30 declared common
+mixins are bound to captured source. This complements the semantic review;
+absence of a keyword alone is not the exclusion criterion.
+
+The resource-role and assembly checks support retaining the residual templates
+as components of their existing candidate groups, with their disconnected or
+non-selected status as qualified above. No additional standalone family follows
+from them. Preserve effective eligibility, custom-layout reachability, generated
+occurrences, downstream attributes and named variant/grouping decisions as
+separate unfinished Item 8 work. In particular this closure neither proves all
+107 roots generate nor counts biome variants as separate families.
+
+```sh
+uv run pytest -q tests/item8/test_repurposed_provider_scope.py tests/item8/test_repurposed_feature_candidates.py tests/item8/test_mansion_components.py tests/item8/test_monument_components.py
+uv run ruff check tests/item8/test_repurposed_provider_scope.py tests/item8/test_repurposed_feature_candidates.py tests/item8/test_mansion_components.py tests/item8/test_monument_components.py
+uv run basedpyright tests/item8/test_repurposed_provider_scope.py tests/item8/test_repurposed_feature_candidates.py tests/item8/test_mansion_components.py tests/item8/test_monument_components.py
+```
+
+Census: 75 resolved providers and 61 open. Next reconcile Aether, reusing its
+existing Bronze, piece, placement and trap evidence. Do not repeat Repurposed's
+source capture, component partition or feature inventory during that work.

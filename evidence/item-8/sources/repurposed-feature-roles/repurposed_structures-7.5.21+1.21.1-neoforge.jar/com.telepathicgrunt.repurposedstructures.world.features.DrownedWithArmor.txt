@@ -1,0 +1,199 @@
+Compiled from "DrownedWithArmor.java"
+public class com.telepathicgrunt.repurposedstructures.world.features.DrownedWithArmor extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> {
+  public com.telepathicgrunt.repurposedstructures.world.features.DrownedWithArmor();
+    Code:
+       0: aload_0
+       1: getstatic     #14                 // Field net/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #17                 // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: aload_1
+       5: invokevirtual #33                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       8: invokeinterface #39,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      13: invokevirtual #45                 // Method net/minecraft/world/level/block/state/BlockState.getFluidState:()Lnet/minecraft/world/level/material/FluidState;
+      16: getstatic     #51                 // Field net/minecraft/tags/FluidTags.WATER:Lnet/minecraft/tags/TagKey;
+      19: invokevirtual #57                 // Method net/minecraft/world/level/material/FluidState.is:(Lnet/minecraft/tags/TagKey;)Z
+      22: ifne          27
+      25: iconst_0
+      26: ireturn
+      27: aload_1
+      28: invokevirtual #33                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      31: invokevirtual #62                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      34: astore_2
+      35: getstatic     #68                 // Field net/minecraft/world/entity/EntityType.DROWNED:Lnet/minecraft/world/entity/EntityType;
+      38: aload_1
+      39: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      42: invokeinterface #72,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+      47: invokevirtual #76                 // Method net/minecraft/world/entity/EntityType.create:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+      50: checkcast     #78                 // class net/minecraft/world/entity/monster/Drowned
+      53: astore_3
+      54: aload_3
+      55: ifnonnull     60
+      58: iconst_0
+      59: ireturn
+      60: aload_1
+      61: invokevirtual #82                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      64: invokeinterface #88,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      69: ldc           #89                 // float 0.45f
+      71: fcmpg
+      72: ifge          147
+      75: new           #91                 // class net/minecraft/world/item/ItemStack
+      78: dup
+      79: getstatic     #97                 // Field net/minecraft/world/item/Items.STONE_SWORD:Lnet/minecraft/world/item/Item;
+      82: invokespecial #100                // Method net/minecraft/world/item/ItemStack."<init>":(Lnet/minecraft/world/level/ItemLike;)V
+      85: astore        4
+      87: aload_3
+      88: getstatic     #106                // Field net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+      91: aload_1
+      92: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      95: invokeinterface #110,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+     100: aload_1
+     101: invokevirtual #82                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+     104: aload         4
+     106: ldc           #111                // float 0.25f
+     108: invokestatic  #117                // Method com/telepathicgrunt/repurposedstructures/utils/GeneralUtils.enchantRandomly:(Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/item/ItemStack;F)Lnet/minecraft/world/item/ItemStack;
+     111: invokevirtual #121                // Method net/minecraft/world/entity/monster/Drowned.setItemInHand:(Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/item/ItemStack;)V
+     114: aload_3
+     115: getstatic     #127                // Field net/minecraft/world/entity/EquipmentSlot.MAINHAND:Lnet/minecraft/world/entity/EquipmentSlot;
+     118: ldc           #128                // float 0.4f
+     120: invokevirtual #132                // Method net/minecraft/world/entity/monster/Drowned.setDropChance:(Lnet/minecraft/world/entity/EquipmentSlot;F)V
+     123: aload_3
+     124: aload_1
+     125: invokevirtual #82                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+     128: invokeinterface #88,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     133: ldc           #133                // float 0.05f
+     135: fcmpg
+     136: ifge          143
+     139: iconst_1
+     140: goto          144
+     143: iconst_0
+     144: invokevirtual #137                // Method net/minecraft/world/entity/monster/Drowned.setLeftHanded:(Z)V
+     147: aload_1
+     148: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     151: invokeinterface #140,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getRandom:()Lnet/minecraft/util/RandomSource;
+     156: invokeinterface #88,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     161: ldc           #128                // float 0.4f
+     163: fcmpg
+     164: ifge          209
+     167: aload_3
+     168: getstatic     #143                // Field net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+     171: aload_1
+     172: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     175: invokeinterface #140,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getRandom:()Lnet/minecraft/util/RandomSource;
+     180: invokeinterface #88,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     185: ldc           #144                // float 0.2f
+     187: fcmpg
+     188: ifge          200
+     191: getstatic     #147                // Field net/minecraft/world/item/Items.IRON_HELMET:Lnet/minecraft/world/item/Item;
+     194: invokevirtual #153                // Method net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+     197: goto          206
+     200: getstatic     #156                // Field net/minecraft/world/item/Items.CHAINMAIL_HELMET:Lnet/minecraft/world/item/Item;
+     203: invokevirtual #153                // Method net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+     206: invokevirtual #160                // Method net/minecraft/world/entity/monster/Drowned.setItemSlot:(Lnet/minecraft/world/entity/EquipmentSlot;Lnet/minecraft/world/item/ItemStack;)V
+     209: aload_1
+     210: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     213: invokeinterface #140,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getRandom:()Lnet/minecraft/util/RandomSource;
+     218: invokeinterface #88,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     223: ldc           #128                // float 0.4f
+     225: fcmpg
+     226: ifge          271
+     229: aload_3
+     230: getstatic     #163                // Field net/minecraft/world/entity/EquipmentSlot.CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+     233: aload_1
+     234: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     237: invokeinterface #140,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getRandom:()Lnet/minecraft/util/RandomSource;
+     242: invokeinterface #88,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     247: ldc           #144                // float 0.2f
+     249: fcmpg
+     250: ifge          262
+     253: getstatic     #166                // Field net/minecraft/world/item/Items.IRON_CHESTPLATE:Lnet/minecraft/world/item/Item;
+     256: invokevirtual #153                // Method net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+     259: goto          268
+     262: getstatic     #169                // Field net/minecraft/world/item/Items.CHAINMAIL_CHESTPLATE:Lnet/minecraft/world/item/Item;
+     265: invokevirtual #153                // Method net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+     268: invokevirtual #160                // Method net/minecraft/world/entity/monster/Drowned.setItemSlot:(Lnet/minecraft/world/entity/EquipmentSlot;Lnet/minecraft/world/item/ItemStack;)V
+     271: aload_1
+     272: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     275: invokeinterface #140,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getRandom:()Lnet/minecraft/util/RandomSource;
+     280: invokeinterface #88,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     285: ldc           #128                // float 0.4f
+     287: fcmpg
+     288: ifge          333
+     291: aload_3
+     292: getstatic     #172                // Field net/minecraft/world/entity/EquipmentSlot.LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+     295: aload_1
+     296: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     299: invokeinterface #140,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getRandom:()Lnet/minecraft/util/RandomSource;
+     304: invokeinterface #88,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     309: ldc           #144                // float 0.2f
+     311: fcmpg
+     312: ifge          324
+     315: getstatic     #175                // Field net/minecraft/world/item/Items.IRON_LEGGINGS:Lnet/minecraft/world/item/Item;
+     318: invokevirtual #153                // Method net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+     321: goto          330
+     324: getstatic     #178                // Field net/minecraft/world/item/Items.CHAINMAIL_LEGGINGS:Lnet/minecraft/world/item/Item;
+     327: invokevirtual #153                // Method net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+     330: invokevirtual #160                // Method net/minecraft/world/entity/monster/Drowned.setItemSlot:(Lnet/minecraft/world/entity/EquipmentSlot;Lnet/minecraft/world/item/ItemStack;)V
+     333: aload_1
+     334: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     337: invokeinterface #140,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getRandom:()Lnet/minecraft/util/RandomSource;
+     342: invokeinterface #88,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     347: ldc           #128                // float 0.4f
+     349: fcmpg
+     350: ifge          395
+     353: aload_3
+     354: getstatic     #181                // Field net/minecraft/world/entity/EquipmentSlot.FEET:Lnet/minecraft/world/entity/EquipmentSlot;
+     357: aload_1
+     358: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     361: invokeinterface #140,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getRandom:()Lnet/minecraft/util/RandomSource;
+     366: invokeinterface #88,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     371: ldc           #144                // float 0.2f
+     373: fcmpg
+     374: ifge          386
+     377: getstatic     #184                // Field net/minecraft/world/item/Items.IRON_BOOTS:Lnet/minecraft/world/item/Item;
+     380: invokevirtual #153                // Method net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+     383: goto          392
+     386: getstatic     #187                // Field net/minecraft/world/item/Items.CHAINMAIL_BOOTS:Lnet/minecraft/world/item/Item;
+     389: invokevirtual #153                // Method net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+     392: invokevirtual #160                // Method net/minecraft/world/entity/monster/Drowned.setItemSlot:(Lnet/minecraft/world/entity/EquipmentSlot;Lnet/minecraft/world/item/ItemStack;)V
+     395: aload_3
+     396: invokevirtual #190                // Method net/minecraft/world/entity/monster/Drowned.setPersistenceRequired:()V
+     399: aload_3
+     400: aload_2
+     401: invokevirtual #194                // Method net/minecraft/core/BlockPos.getX:()I
+     404: i2d
+     405: ldc2_w        #195                // double 0.5d
+     408: dadd
+     409: aload_2
+     410: invokevirtual #199                // Method net/minecraft/core/BlockPos.getY:()I
+     413: i2d
+     414: aload_2
+     415: invokevirtual #202                // Method net/minecraft/core/BlockPos.getZ:()I
+     418: i2d
+     419: ldc2_w        #195                // double 0.5d
+     422: dadd
+     423: fconst_0
+     424: fconst_0
+     425: invokevirtual #206                // Method net/minecraft/world/entity/monster/Drowned.moveTo:(DDDFF)V
+     428: aload_3
+     429: aload_1
+     430: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     433: aload_1
+     434: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     437: aload_2
+     438: invokeinterface #210,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getCurrentDifficultyAt:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/DifficultyInstance;
+     443: getstatic     #216                // Field net/minecraft/world/entity/MobSpawnType.STRUCTURE:Lnet/minecraft/world/entity/MobSpawnType;
+     446: aconst_null
+     447: invokevirtual #220                // Method net/minecraft/world/entity/monster/Drowned.finalizeSpawn:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;)Lnet/minecraft/world/entity/SpawnGroupData;
+     450: pop
+     451: aload_1
+     452: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     455: aload_3
+     456: invokeinterface #224,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.addFreshEntityWithPassengers:(Lnet/minecraft/world/entity/Entity;)V
+     461: iconst_1
+     462: ireturn
+}

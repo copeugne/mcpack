@@ -1,0 +1,179 @@
+Compiled from "ConfigurableCoralClaw.java"
+public class com.telepathicgrunt.repurposedstructures.world.features.ConfigurableCoralClaw extends com.telepathicgrunt.repurposedstructures.world.features.ConfigurableCoral {
+  public com.telepathicgrunt.repurposedstructures.world.features.ConfigurableCoralClaw(com.mojang.serialization.Codec<com.telepathicgrunt.repurposedstructures.world.features.configs.ConfigurableCoralConfig>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #21                 // Method com/telepathicgrunt/repurposedstructures/world/features/ConfigurableCoral."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  protected boolean placeFeature(net.minecraft.world.level.LevelAccessor, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<com.telepathicgrunt.repurposedstructures.world.features.configs.ConfigurableCoralConfig>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aload         4
+       6: aload         5
+       8: invokevirtual #36                 // Method placeCoralBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;)Z
+      11: ifne          16
+      14: iconst_0
+      15: ireturn
+      16: getstatic     #40                 // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+      19: aload_2
+      20: invokevirtual #44                 // Method net/minecraft/core/Direction$Plane.getRandomDirection:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/core/Direction;
+      23: astore        6
+      25: aload_2
+      26: iconst_2
+      27: invokeinterface #50,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      32: iconst_2
+      33: iadd
+      34: istore        7
+      36: iconst_3
+      37: anewarray     #9                  // class net/minecraft/core/Direction
+      40: dup
+      41: iconst_0
+      42: aload         6
+      44: aastore
+      45: dup
+      46: iconst_1
+      47: aload         6
+      49: invokevirtual #54                 // Method net/minecraft/core/Direction.getClockWise:()Lnet/minecraft/core/Direction;
+      52: aastore
+      53: dup
+      54: iconst_2
+      55: aload         6
+      57: invokevirtual #57                 // Method net/minecraft/core/Direction.getCounterClockWise:()Lnet/minecraft/core/Direction;
+      60: aastore
+      61: invokestatic  #63                 // InterfaceMethod java/util/stream/Stream.of:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+      64: aload_2
+      65: invokestatic  #69                 // Method net/minecraft/Util.toShuffledList:(Ljava/util/stream/Stream;Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+      68: astore        8
+      70: aload         8
+      72: iconst_0
+      73: iload         7
+      75: invokeinterface #75,  3           // InterfaceMethod java/util/List.subList:(II)Ljava/util/List;
+      80: astore        9
+      82: aload         9
+      84: invokeinterface #79,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      89: astore        10
+      91: aload         10
+      93: invokeinterface #91,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      98: ifeq          339
+     101: aload         10
+     103: invokeinterface #95,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     108: checkcast     #9                  // class net/minecraft/core/Direction
+     111: astore        11
+     113: aload_3
+     114: invokevirtual #99                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     117: astore        15
+     119: aload_2
+     120: iconst_2
+     121: invokeinterface #50,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     126: iconst_1
+     127: iadd
+     128: istore        16
+     130: aload         15
+     132: aload         11
+     134: invokevirtual #103                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     137: pop
+     138: aload         11
+     140: aload         6
+     142: if_acmpne     163
+     145: aload         6
+     147: astore        14
+     149: aload_2
+     150: iconst_3
+     151: invokeinterface #50,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     156: iconst_2
+     157: iadd
+     158: istore        13
+     160: goto          211
+     163: aload         15
+     165: getstatic     #107                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     168: invokevirtual #103                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     171: pop
+     172: iconst_2
+     173: anewarray     #9                  // class net/minecraft/core/Direction
+     176: dup
+     177: iconst_0
+     178: aload         11
+     180: aastore
+     181: dup
+     182: iconst_1
+     183: getstatic     #107                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     186: aastore
+     187: astore        17
+     189: aload         17
+     191: aload_2
+     192: invokestatic  #111                // Method net/minecraft/Util.getRandom:([Ljava/lang/Object;Lnet/minecraft/util/RandomSource;)Ljava/lang/Object;
+     195: checkcast     #9                  // class net/minecraft/core/Direction
+     198: astore        14
+     200: aload_2
+     201: iconst_3
+     202: invokeinterface #50,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     207: iconst_3
+     208: iadd
+     209: istore        13
+     211: iconst_0
+     212: istore        12
+     214: iload         12
+     216: iload         16
+     218: if_icmpge     250
+     221: aload_0
+     222: aload_1
+     223: aload_2
+     224: aload         15
+     226: aload         4
+     228: aload         5
+     230: invokevirtual #36                 // Method placeCoralBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;)Z
+     233: ifeq          250
+     236: aload         15
+     238: aload         14
+     240: invokevirtual #103                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     243: pop
+     244: iinc          12, 1
+     247: goto          214
+     250: aload         15
+     252: aload         14
+     254: invokevirtual #114                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+     257: invokevirtual #103                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     260: pop
+     261: aload         15
+     263: getstatic     #107                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     266: invokevirtual #103                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     269: pop
+     270: iconst_0
+     271: istore        12
+     273: iload         12
+     275: iload         13
+     277: if_icmpge     336
+     280: aload         15
+     282: aload         6
+     284: invokevirtual #103                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     287: pop
+     288: aload_0
+     289: aload_1
+     290: aload_2
+     291: aload         15
+     293: aload         4
+     295: aload         5
+     297: invokevirtual #36                 // Method placeCoralBlock:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;)Z
+     300: ifne          306
+     303: goto          91
+     306: aload_2
+     307: invokeinterface #118,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     312: ldc           #119                // float 0.25f
+     314: fcmpg
+     315: iflt          321
+     318: goto          330
+     321: aload         15
+     323: getstatic     #107                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     326: invokevirtual #103                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     329: pop
+     330: iinc          12, 1
+     333: goto          273
+     336: goto          91
+     339: iconst_1
+     340: ireturn
+}

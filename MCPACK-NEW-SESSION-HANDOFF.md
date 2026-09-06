@@ -6,6 +6,115 @@
 
 ### Continuation update - 2026-09-06
 
+Latest closure 716fadb is pushed and remote-ref verified. Repurposed Structures
+provider coverage is RESOLVED. Census is now 75 resolved providers and 61 open.
+Nine focused cases and scoped Ruff/Basedpyright pass. The full disposition is
+at the end of provider-scope.md; its exact queue row and current count are updated.
+
+Delivered source increments: 015f351 covers the ten assembly boundaries with
+manifest 10a3a2a15d647c5c52c171034c84be9c2fc68e1fe42dd571e8a6c725a6de6746;
+6fed290 covers the data-generation entry with manifest
+0d2237b825ac55da59a8908beb120e562b67a58ccc3a5de1c151e1bbd980d9bf.
+Both independently reproduced exactly. The provider check binds twelve existing
+source manifests, 5842 files, 248 classes, both annotated entries, thirty common
+mixins and the exact equality of 107 packaged/runtime roots. Its family boundary
+also includes the existing dungeon/well configuration candidates. Canonical
+grouping, effective eligibility and attributes remain separate unfinished work.
+
+Next is Aether. Reuse aether-custom-entry, aether-bronze, aether-piece-binding,
+aether-placement, aether-trap-bindings and aether-trapped-block. The cloud entry
+README already contains a later tested terrain/provider disposition; do not
+restart its superseded initial follow-up. Reconcile remaining provider entries,
+Silver/Gold consumers and full resource roles without reopening Bronze helper
+internals. No blocker exists. Final Item 8 review/main merge remains mandatory.
+
+Latest feature-role increment fbc383b is pushed and remote-ref verified.
+Source 762b6f9 captures the remaining 31 feature implementations with exact r1
+reproduction; the two earlier NBT features are reused. All 136 configured
+features across 37 types now have recorded roles at the end of provider-scope.md.
+Four focused cases and scoped quality checks pass. No additional independent
+candidate was found beyond the already recorded dungeon/well candidates.
+Census remains 74 resolved and 62 open. Do not repeat the feature pass.
+
+Next close Repurposed's non-feature generation/injection and lifecycle roles.
+Existing common/NeoForge entries register codecs, lifecycle/reload dispatch,
+map trades and pool additions. The seven uncaptured top-level generation
+implementations are CityNetherStructure, GenericJigsawStructure,
+GenericNetherJigsawStructure, MineshaftEndStructure, MineshaftStructure,
+ShipwreckNetherStructure and StrongholdEndStructure. Their concrete common
+assembly consumer is PieceLimitedJigsawManager (including Assembler); the
+piece-count reload path is StructurePieceCountsManager. Inspect those boundaries
+only where they can change the already enumerated candidate/component links.
+Do not treat every uncaptured utility, config, processor or data-holder class as
+a new mandatory work item. Reuse mansion/monument and residual resource roles.
+No blocker exists; final canonical count, attributes and review/main merge remain.
+
+Latest resource-role increment 9a1a30d is pushed and remote-ref verified.
+The preceding b1e0fa7 closes the custom mansion/monument resource partition.
+Repurposed's seven residual pools and 53 templates now have component roles
+recorded at the end of provider-scope.md. Three Repurposed focused cases and
+scoped quality checks pass; the mansion/monument increment passed four cases.
+Census remains 74 resolved providers and 62 open. This is concrete progress,
+not whole-provider closure or a final family count.
+
+Next finish Repurposed feature and entry/hook reconciliation, using existing
+452e33e captures. Common/NeoForge entry review has begun: registry initialization,
+reload listeners, pool additions, lifecycle dispatch and map trades. Do not
+repeat resource partition work or disassembly captures already delivered.
+The 16 minecart templates are configuration-selected components; two crossing
+templates have count limits but no direct pool location. Same-named jigsaw pool
+references are not NBT template references. Three ancient-city corner templates
+are distinct from selected _1/_2 variants. Five bastion mob templates and 27
+village components have no direct pool locations in this archive. Code consumer
+review still precedes any whole-provider inactive/reachability claim.
+After provider closure continue the exact existing queue, then canonical
+grouping and eleven attributes. Final review and main merge remain mandatory.
+
+Latest Repurposed graph-partition increment 683a9ef is pushed and remote-ref
+verified. Census remains 74 resolved providers, 62 open. Two focused cases
+and scoped quality checks pass. Repurposed provider scope remains OPEN.
+
+The preserved generic graph covers 95 of 107 roots, with no missing or unresolved
+element entries in those 95 traces. The other roots are eight mansion and four
+monument variants with custom assembly source already captured. Outside the
+generic graph: 503 pools (416 mansion, 80 monument, seven other) and 785 templates
+(597 mansion, 92 monument, 36 dungeon, seven well, 53 other). Full denominators:
+1099 pools and 3162 templates. These namespace partitions are not proof that
+every custom resource is selected. No family count follows from them.
+
+Next bind retained mansion/monument selector code to these custom pools and
+resolve the seven other pools plus 53 other templates. Exact residual pool
+names and template category counts are at the end of provider-scope.md;
+test_repurposed_feature_candidates.py reproduces the partitions. Do not repeat
+captures or mislabel untraced resources as unused. Keep the 23 dungeon/well
+configured candidates from 5d51d25 in the finite candidate reconciliation.
+Remaining feature roles and entry/hook dispositions still precede provider
+closure. Final canonical count, attributes and review/main merge remain open.
+This turn delivered a verified evidence partition; no blocker exists.
+
+Latest Repurposed candidate increment 5d51d25 is pushed and remote-ref
+verified. Census remains 74 resolved providers, 62 open. Repurposed Structures
+is OPEN. Source 452e33e preserves 45 entry, NBT feature/configuration, modifier,
+pool-addition and common mixin classes with exact r1 reproduction. Earlier
+34 mansion/monument/processor/pool classes remain reusable evidence.
+
+Important candidate omission found and recorded at the end of provider-scope.md:
+sixteen dungeon NBT feature configurations and seven well configurations were
+absent from the current nonregistry contribution list. The focused test binds
+all 23 to matching placed features, biome modifiers and existing templates.
+One case and scoped quality checks pass. These are configurations/candidates,
+not 23 canonical families; ocean temperature variants share template choices.
+Do not lose this candidate list or postpone it behind attributes.
+
+Next reconcile remaining Repurposed feature roles and the complete pool/template
+partition, plus entry/hook roles and supported exclusions. Initial archive
+counts: 5842 files, 248 classes, 107 structure definitions, 37 structure sets,
+1099 pools, 327 processor lists, 136 configured features, 157 placed features
+and 3162 templates. These are resource counts, not family counts or scope closure.
+Do not recapture delivered NBT, mansion or monument sources. Final canonical
+count, eleven attributes and review/main merge remain open. This turn delivered
+source and a verified candidate increment; no blocker is present.
+
 Latest closure at 6e9da02 is pushed and remote-ref verified. Census:
 74 resolved providers, 62 open. Zeta provider scope is closed. Its one packaged
 biome modifier, registration/module/configuration/generator dispatch and
