@@ -128,3 +128,52 @@ def test_regions_unexplored_overlay_resource_roles() -> None:
                 }
             ]
             assert entry["formats"] == [1, 999]
+
+
+def test_regions_unexplored_registered_tree_component_sources() -> None:
+    source = next(
+        s for s in retained_sources(Path.cwd()) if s.name.startswith("regions-unexplored-")
+    )
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    captured: set[str] = set()
+    with ZipFile(source.path) as archive:
+        for label, digest in (
+            (
+                "regions-unexplored-tree-components",
+                "c0e8750b46dd656807e33cc3906aa98fd736da650cc01cdd0754cc94ec63f243",
+            ),
+            (
+                "regions-unexplored-log-decorator",
+                "7656c29c7f0b77b5827cbb01b082d2509f800a7cac87e342ec47bc6785bdc77d",
+            ),
+            (
+                "regions-unexplored-ground-decorator",
+                "2b459bc6975a0ddffe6826ea332312ef7f78e0d31354d165d455f3d127f03544",
+            ),
+        ):
+            directory = Path("evidence/item-8/sources") / label
+            raw = (directory / "identities.json").read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == digest
+            for row in cast("list[dict[str, str]]", json.loads(raw)):
+                assert row["archive"] == source.name
+                assert row["archive_sha256"] == source.sha256
+                assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+                assert (
+                    hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
+                    == (row["disassembly_sha256"])
+                )
+                captured.add(row["class"])
+        tree_classes = {
+            n
+            for n in archive.namelist()
+            if n.endswith(".class")
+            and n.startswith("net/regions_unexplored/worldgen/")
+            and any(part in n for part in ("/trunkplacer/", "/foliageplacer/", "/treedecorator/"))
+        }
+        assert len(tree_classes) == 21
+        assert tree_classes <= captured
+        neoforge = cast(
+            "dict[str, object]", json.loads(archive.read("regions_unexplored.neoforge.mixins.json"))
+        )
+        assert all(neoforge[k] == [] for k in ("mixins", "client", "server"))
+        assert "plugin" not in neoforge

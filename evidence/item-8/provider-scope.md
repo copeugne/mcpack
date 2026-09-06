@@ -5069,3 +5069,43 @@ measurement system was added. RU remains OPEN for common/configuration entry
 roles and the remaining registered tree placers/decorators. Census: 88 resolved,
 48 open. Earlier full-payload/overlay/JSON5 inventory gaps are now resolved and
 must not restart.
+
+### Regions Unexplored custom tree-component closure
+
+Source 0f263ed, extractor 16127c9, retains the remaining 24 tree/configuration
+classes. Manifest SHA-256:
+c0e8750b46dd656807e33cc3906aa98fd736da650cc01cdd0754cc94ec63f243.
+The independent capture matches every file. The existing two decorator captures
+complete all 21 classes in the packaged trunkplacer, foliageplacer and
+treedecorator directories. Their roles are now resolved:
+
+- Nine foliage placers produce canopy or mushroom-cap layers. Their shared
+  context and utility write supplied foliage states through FoliageSetter,
+  checking valid tree positions, persistent leaves and waterlogging.
+- Aspen, Magnolia and Redwood trunk placers write configured logs, branch
+  geometry and foliage attachment positions. RUTrunkPlacer supplies height,
+  dirt-below and axis handling. These four classes are tree components.
+- GroupBranchDecorator and RandomBranchDecorator place supplied branches and
+  leaves around an existing log set. HangingVinesDecorator places supplied
+  vine states. WillowTrunkDecorator adds configured wood roots. AttachedToLogs
+  and PlaceOnGround retain their previously accepted decoration roles.
+- The three type registries register nine foliage types, three trunk types and
+  six decorators. Registration and component types are not independent families.
+  TrunkPlacerDirtUtil distinguishes peat, silt and alpha-grass substrates.
+
+These implementations use the already-inspected supplied tree materials and
+add no independent authored-site candidate. No recursive parser, branch-mode,
+shuffle or general tree-gameplay audit is needed for this disposition.
+RUConfigHandler reads/writes client/common JSON5 configuration via their codecs;
+it creates missing defaults and attempts cleanup of named legacy configuration
+files. It is configuration I/O, not an independent generation callback. The
+common-condition caller still selects effective settings separately from family
+membership. The NeoForge-specific mixin file is explicitly empty on all three
+sides and has no plugin.
+
+Three focused provider cases pass (0.19s), with scoped Ruff and Basedpyright
+passing, using the commands above. The test binds the new and reused source
+hashes and compares every packaged tree-component class against the captured
+set. Final RU common-entry interpretation and provider closure remain open;
+archive, overlay, feature and tree-component coverage need no repetition.
+Census remains 88 resolved providers, 48 open.

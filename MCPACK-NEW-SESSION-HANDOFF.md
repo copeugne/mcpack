@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+RU tree-component roles are now resolved. Source 0f263ed (extractor 16127c9)
+retains 24 missing tree/configuration classes; independent capture matches.
+The provider test binds these and the two reused decorators, covering all 21
+packaged tree-component classes. Three cases pass (0.19s), with scoped quality
+checks passing. The configuration loader is JSON5 I/O; NeoForge's own mixin file
+is empty. Next: finish interpretation of the already-captured common entry and
+nine common mixins, then assemble RU's final provider disposition. Do not repeat
+feature, tree-component, full-payload or overlay inspections. Census stays
+88 resolved, 48 open. No runtime or capture process is live.
+
 RU full payload, six overlay directories and embedded JSON5 archive boundaries
 are now checked in test_regions_unexplored_provider_scope.py. Both cases pass
 (0.16s), with scoped Ruff/Basedpyright passing. The thirty overlay files are
