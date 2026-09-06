@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+MCA membership is resolved using 28273db and bd25ce8. Its 26 building labels
+classify existing blocks, rather than defining generated families. Structure
+references locate existing roots or manage village records. Full payload/source
+binding and scoped quality checks pass. Whole providers: 93 resolved, 43 open
+(22 code-reference, 21 unmatched-search). No family added. Keep MCA villager,
+encounter and loot effects for later family attributes; do not repeat membership
+inspection. Continue the remaining provider queue and Moog canonical grouping
+before attributes. The final family count remains unproven.
+
+
 WunderLib is resolved from source 185b55c: networking entry roles and supplied
 bounding-box geometry, with complete payload binding. Nineteen utility cases
 and scoped checks pass. Whole providers: 92 resolved, 44 open (23 code-reference,

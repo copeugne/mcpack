@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 92 of 136. The exact queue below has 44 open rows.
+Supported provider dispositions: 93 of 136. The exact queue below has 43 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -671,7 +671,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `libraryferret-neoforge-1.21.1-4.0.0.jar` | `libraryferret-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Abstract consumer-supplied jigsaw/placement support and coin content. No independent family. See additional shared provider dispositions below. |
 | `lithostitched-1.7.10+beta4-neoforge-21.1.jar` | Existing pool/alias/modifier sources; provider entry 4fbbe70 and remaining hooks 37c3259; test_lithostitched_provider_scope.py | RESOLVED: Shared generation codecs, terrain/biome changes and existing vanilla template/processor/alias components. No independent family. See Lithostitched provider disposition below. |
 | `lootintegrations-1.21.1-4.7.jar` | `lootintegrations-provider` (47047d6), test_small_utility_provider_scope.py | RESOLVED: Core integration loader and loot-list modifier, 43 definitions and seven chest-table targets. No independent family; remains a required loot-attribute input. See disposition below. |
-| `mca-neoforge-7.7.11+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `mca-neoforge-7.7.11+1.21.1.jar` | Sources 28273db and bd25ce8; test_mca_provider_scope.py | RESOLVED: Existing-village recognition, villager replacement, entity/interaction behavior and structure location. No independent family. See MCA disposition below. |
 | `moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar` | Eight capture directories bound by test_moog_library_provider_scope.py; latest registration boundaries ee8e2c0. | RESOLVED: shared generation and modification library; no independent authored family or packaged generation resources. See Moog library provider disposition below. |
 | `moonlight-neoforge-1.21.1-3.0.17.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `naturalist-1.0.2-neoforge-1.21.1.jar` | `naturalist-provider` (9682cb0), test_naturalist_provider_scope.py | RESOLVED: Mob spawning, existing entity/item/crop behavior and client spawn-egg resources. No independent structure family. Full disposition below. |
@@ -6690,3 +6690,55 @@ The source independently reproduces byte for byte.
 Whole providers: 92 resolved, 44 open (23 code-reference and 21 unmatched-search
 rows). No family added or grouping changed. Continue remaining contribution
 boundaries and Moog grouping before attributes.
+
+### MCA membership resolved
+
+Source 28273db retains the two automatic NeoForge entries, all 21 common
+mixins and all six indexed structure-reference classes (MixinProtoChunk is
+both a common hook and an indexed reference). Registration targets items,
+blocks, sounds, particles, entities, AI types, professions, components,
+advancement triggers, block entities and the creative tab. Reload listeners
+consume dialogue, names, gifts, appearance, tasks and building-type rules.
+No independent structure or feature registration occurs in these entry paths.
+
+WorldUtils looks up supplied IDs/tags in the existing structure registry and
+calls findNearestMapStructure. DestinyMessage locates such an existing site,
+loads its destination chunk and changes player/spawn position. BlockBoxExtended
+is geometry. Village and VillageManager maintain saved village membership,
+bounds, population, building records and reputation. Their world tick processes
+reported buildings and entity encounters, including bounty hunters and Reaper
+state. These records are not new world-generation roots.
+
+Source bd25ce8 resolves the concrete building question. All 26 building_types
+JSON documents are recognition rules: block/tag counts, priority, map display,
+boundary margin and grouping properties. BuildingTypes loads those rules;
+Building validates existing block states and records coordinates. Its addBlock
+method updates the recorded map, not the world. No template, authored layout or
+placement is encoded by those documents. Thus inn, graveyard, library and the
+other recognition labels must not be counted as independently generated families.
+
+The remaining common hooks adapt existing villager/zombie types and professions,
+entity insertion, chat, riding, milk effects, baby-item handling, furnace
+advancements, translation and particle/AI constructors. Flint-and-steel/Reaper
+and goat-triggered entity behavior remain encounter inputs, not independent
+generated structures. Villager replacements, bounty hunters, loot and other
+MCA effects still require attribution in relevant family attributes; this
+membership disposition does not claim those effects are absent or fully audited.
+
+The focused test binds the archive and both source manifests, accounts for all
+543 classes, 2,034 assets, 770 data resources and seven remaining metadata/icon/
+license files, and checks every recognition definition against its observed
+fields and positive block counts. It binds both automatic entries, all 21 common
+hooks and eight declared client hooks. There are no nested JARs or NBT templates;
+the complete data categories contain no generation definitions. Both source
+captures independently reproduce byte for byte.
+
+```sh
+uv run pytest -q tests/item8/test_mca_provider_scope.py
+uv run ruff check tests/item8/test_mca_provider_scope.py
+uv run basedpyright tests/item8/test_mca_provider_scope.py
+```
+
+One focused case and both scoped quality checks pass. Whole providers: 93
+resolved, 43 open (22 code-reference and 21 unmatched-search rows). No family
+added. Continue the remaining providers and canonical Moog grouping.
