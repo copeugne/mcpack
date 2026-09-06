@@ -1,0 +1,175 @@
+Classfile Zeta-1.1-40.jar!/org/violetmoon/zeta/mixin/mixins/StructureStartMixin.class
+  Last modified Apr 24, 2026; size 2330 bytes
+  SHA-256 checksum acf140c21c7046a50f44a4c8be9df5039eed048b6a6cd527e0a5c4b23bc7f27c
+  Compiled from "StructureStartMixin.java"
+public class org.violetmoon.zeta.mixin.mixins.StructureStartMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // org/violetmoon/zeta/mixin/mixins/StructureStartMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 2, methods: 3, attributes: 2
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Fieldref           #8.#9          // org/violetmoon/zeta/mixin/mixins/StructureStartMixin.structure:Lnet/minecraft/world/level/levelgen/structure/Structure;
+   #8 = Class              #10            // org/violetmoon/zeta/mixin/mixins/StructureStartMixin
+   #9 = NameAndType        #11:#12        // structure:Lnet/minecraft/world/level/levelgen/structure/Structure;
+  #10 = Utf8               org/violetmoon/zeta/mixin/mixins/StructureStartMixin
+  #11 = Utf8               structure
+  #12 = Utf8               Lnet/minecraft/world/level/levelgen/structure/Structure;
+  #13 = Fieldref           #8.#14         // org/violetmoon/zeta/mixin/mixins/StructureStartMixin.pieceContainer:Lnet/minecraft/world/level/levelgen/structure/pieces/PiecesContainer;
+  #14 = NameAndType        #15:#16        // pieceContainer:Lnet/minecraft/world/level/levelgen/structure/pieces/PiecesContainer;
+  #15 = Utf8               pieceContainer
+  #16 = Utf8               Lnet/minecraft/world/level/levelgen/structure/pieces/PiecesContainer;
+  #17 = Methodref          #18.#19        // org/violetmoon/zeta/util/handler/StructureBlockReplacementHandler.setActiveStructure:(Lnet/minecraft/world/level/levelgen/structure/Structure;Lnet/minecraft/world/level/levelgen/structure/pieces/PiecesContainer;)V
+  #18 = Class              #20            // org/violetmoon/zeta/util/handler/StructureBlockReplacementHandler
+  #19 = NameAndType        #21:#22        // setActiveStructure:(Lnet/minecraft/world/level/levelgen/structure/Structure;Lnet/minecraft/world/level/levelgen/structure/pieces/PiecesContainer;)V
+  #20 = Utf8               org/violetmoon/zeta/util/handler/StructureBlockReplacementHandler
+  #21 = Utf8               setActiveStructure
+  #22 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/Structure;Lnet/minecraft/world/level/levelgen/structure/pieces/PiecesContainer;)V
+  #23 = Utf8               RuntimeVisibleAnnotations
+  #24 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #25 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #26 = Utf8               Code
+  #27 = Utf8               LineNumberTable
+  #28 = Utf8               LocalVariableTable
+  #29 = Utf8               this
+  #30 = Utf8               Lorg/violetmoon/zeta/mixin/mixins/StructureStartMixin;
+  #31 = Utf8               injectReference
+  #32 = Utf8               (Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/StructureManager;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/world/level/ChunkPos;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #33 = Utf8               level
+  #34 = Utf8               Lnet/minecraft/world/level/WorldGenLevel;
+  #35 = Utf8               manager
+  #36 = Utf8               Lnet/minecraft/world/level/StructureManager;
+  #37 = Utf8               generator
+  #38 = Utf8               Lnet/minecraft/world/level/chunk/ChunkGenerator;
+  #39 = Utf8               random
+  #40 = Utf8               Lnet/minecraft/util/RandomSource;
+  #41 = Utf8               bounds
+  #42 = Utf8               Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+  #43 = Utf8               pos
+  #44 = Utf8               Lnet/minecraft/world/level/ChunkPos;
+  #45 = Utf8               callback
+  #46 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #47 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #48 = Utf8               method
+  #49 = Utf8               placeInChunk
+  #50 = Utf8               at
+  #51 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #52 = Utf8               value
+  #53 = Utf8               HEAD
+  #54 = Utf8               resetReference
+  #55 = Utf8               RETURN
+  #56 = Utf8               SourceFile
+  #57 = Utf8               StructureStartMixin.java
+  #58 = Utf8               RuntimeInvisibleAnnotations
+  #59 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #60 = Utf8               Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+{
+  private net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer pieceContainer;
+    descriptor: Lnet/minecraft/world/level/levelgen/structure/pieces/PiecesContainer;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #24()
+        org.spongepowered.asm.mixin.Shadow
+      1: #25()
+        org.spongepowered.asm.mixin.Final
+
+  private net.minecraft.world.level.levelgen.structure.Structure structure;
+    descriptor: Lnet/minecraft/world/level/levelgen/structure/Structure;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #24()
+        org.spongepowered.asm.mixin.Shadow
+      1: #25()
+        org.spongepowered.asm.mixin.Final
+
+  public org.violetmoon.zeta.mixin.mixins.StructureStartMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 22: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lorg/violetmoon/zeta/mixin/mixins/StructureStartMixin;
+
+  public void injectReference(net.minecraft.world.level.WorldGenLevel, net.minecraft.world.level.StructureManager, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.structure.BoundingBox, net.minecraft.world.level.ChunkPos, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/StructureManager;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/world/level/ChunkPos;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=8, args_size=8
+         0: aload_0
+         1: getfield      #7                  // Field structure:Lnet/minecraft/world/level/levelgen/structure/Structure;
+         4: aload_0
+         5: getfield      #13                 // Field pieceContainer:Lnet/minecraft/world/level/levelgen/structure/pieces/PiecesContainer;
+         8: invokestatic  #17                 // Method org/violetmoon/zeta/util/handler/StructureBlockReplacementHandler.setActiveStructure:(Lnet/minecraft/world/level/levelgen/structure/Structure;Lnet/minecraft/world/level/levelgen/structure/pieces/PiecesContainer;)V
+        11: return
+      LineNumberTable:
+        line 34: 0
+        line 35: 11
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0  this   Lorg/violetmoon/zeta/mixin/mixins/StructureStartMixin;
+            0      12     1 level   Lnet/minecraft/world/level/WorldGenLevel;
+            0      12     2 manager   Lnet/minecraft/world/level/StructureManager;
+            0      12     3 generator   Lnet/minecraft/world/level/chunk/ChunkGenerator;
+            0      12     4 random   Lnet/minecraft/util/RandomSource;
+            0      12     5 bounds   Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+            0      12     6   pos   Lnet/minecraft/world/level/ChunkPos;
+            0      12     7 callback   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #47(#48=[s#49],#50=[@#51(#52=s#53)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["placeInChunk"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+
+  public void resetReference(net.minecraft.world.level.WorldGenLevel, net.minecraft.world.level.StructureManager, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.structure.BoundingBox, net.minecraft.world.level.ChunkPos, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/StructureManager;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/world/level/ChunkPos;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=8, args_size=8
+         0: aconst_null
+         1: aconst_null
+         2: invokestatic  #17                 // Method org/violetmoon/zeta/util/handler/StructureBlockReplacementHandler.setActiveStructure:(Lnet/minecraft/world/level/levelgen/structure/Structure;Lnet/minecraft/world/level/levelgen/structure/pieces/PiecesContainer;)V
+         5: return
+      LineNumberTable:
+        line 39: 0
+        line 40: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lorg/violetmoon/zeta/mixin/mixins/StructureStartMixin;
+            0       6     1 level   Lnet/minecraft/world/level/WorldGenLevel;
+            0       6     2 manager   Lnet/minecraft/world/level/StructureManager;
+            0       6     3 generator   Lnet/minecraft/world/level/chunk/ChunkGenerator;
+            0       6     4 random   Lnet/minecraft/util/RandomSource;
+            0       6     5 bounds   Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+            0       6     6   pos   Lnet/minecraft/world/level/ChunkPos;
+            0       6     7 callback   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #47(#48=[s#49],#50=[@#51(#52=s#55)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["placeInChunk"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+}
+SourceFile: "StructureStartMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #59(#52=[c#60])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/levelgen/structure/StructureStart;]
+    )
