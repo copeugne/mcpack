@@ -1,0 +1,295 @@
+Classfile creatingspace-1.21.1-1.7.18.jar!/com/rae/creatingspace/mixin/recipe/ProcessingRecipeMixin.class
+  Last modified May 2, 2026; size 2323 bytes
+  SHA-256 checksum 29e65f8f65e604aee84c54294674a282f60b90077767e3104a64ae55a3044b35
+  Compiled from "ProcessingRecipeMixin.java"
+public class com.rae.creatingspace.mixin.recipe.ProcessingRecipeMixin implements com.rae.creatingspace.content.recipes.IMoreNbtConditions
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #11                         // com/rae/creatingspace/mixin/recipe/ProcessingRecipeMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 3, methods: 8, attributes: 3
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Class              #8             // java/util/ArrayList
+   #8 = Utf8               java/util/ArrayList
+   #9 = Methodref          #7.#3          // java/util/ArrayList."<init>":()V
+  #10 = Fieldref           #11.#12        // com/rae/creatingspace/mixin/recipe/ProcessingRecipeMixin.nbtKeys:Ljava/util/ArrayList;
+  #11 = Class              #13            // com/rae/creatingspace/mixin/recipe/ProcessingRecipeMixin
+  #12 = NameAndType        #14:#15        // nbtKeys:Ljava/util/ArrayList;
+  #13 = Utf8               com/rae/creatingspace/mixin/recipe/ProcessingRecipeMixin
+  #14 = Utf8               nbtKeys
+  #15 = Utf8               Ljava/util/ArrayList;
+  #16 = Fieldref           #11.#17        // com/rae/creatingspace/mixin/recipe/ProcessingRecipeMixin.matchNbtList:Ljava/util/ArrayList;
+  #17 = NameAndType        #18:#15        // matchNbtList:Ljava/util/ArrayList;
+  #18 = Utf8               matchNbtList
+  #19 = Fieldref           #11.#20        // com/rae/creatingspace/mixin/recipe/ProcessingRecipeMixin.params:Lcom/simibubi/create/content/processing/recipe/ProcessingRecipeParams;
+  #20 = NameAndType        #21:#22        // params:Lcom/simibubi/create/content/processing/recipe/ProcessingRecipeParams;
+  #21 = Utf8               params
+  #22 = Utf8               Lcom/simibubi/create/content/processing/recipe/ProcessingRecipeParams;
+  #23 = Class              #24            // com/rae/creatingspace/content/recipes/IMoreNbtConditions
+  #24 = Utf8               com/rae/creatingspace/content/recipes/IMoreNbtConditions
+  #25 = InterfaceMethodref #23.#26        // com/rae/creatingspace/content/recipes/IMoreNbtConditions.getKeepNbt:()Ljava/util/ArrayList;
+  #26 = NameAndType        #27:#28        // getKeepNbt:()Ljava/util/ArrayList;
+  #27 = Utf8               getKeepNbt
+  #28 = Utf8               ()Ljava/util/ArrayList;
+  #29 = InterfaceMethodref #23.#30        // com/rae/creatingspace/content/recipes/IMoreNbtConditions.getMachNbt:()Ljava/util/ArrayList;
+  #30 = NameAndType        #31:#28        // getMachNbt:()Ljava/util/ArrayList;
+  #31 = Utf8               getMachNbt
+  #32 = Methodref          #7.#33         // java/util/ArrayList.isEmpty:()Z
+  #33 = NameAndType        #34:#35        // isEmpty:()Z
+  #34 = Utf8               isEmpty
+  #35 = Utf8               ()Z
+  #36 = Utf8               RuntimeVisibleAnnotations
+  #37 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #38 = Utf8               Signature
+  #39 = Utf8               Ljava/util/ArrayList<Ljava/lang/String;>;
+  #40 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #41 = Utf8               Code
+  #42 = Utf8               LineNumberTable
+  #43 = Utf8               LocalVariableTable
+  #44 = Utf8               this
+  #45 = Utf8               Lcom/rae/creatingspace/mixin/recipe/ProcessingRecipeMixin;
+  #46 = Utf8               ctor
+  #47 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #48 = Utf8               ci
+  #49 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #50 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #51 = Utf8               method
+  #52 = Utf8               at
+  #53 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #54 = Utf8               value
+  #55 = Utf8               TAIL
+  #56 = Utf8               setKeepNbt
+  #57 = Utf8               (Ljava/util/ArrayList;)V
+  #58 = Utf8               LocalVariableTypeTable
+  #59 = Utf8               (Ljava/util/ArrayList<Ljava/lang/String;>;)V
+  #60 = Utf8               ()Ljava/util/ArrayList<Ljava/lang/String;>;
+  #61 = Utf8               setMachNbt
+  #62 = Utf8               machNbtList
+  #63 = Utf8               isKeepNbt
+  #64 = Utf8               StackMapTable
+  #65 = Utf8               isMachNbt
+  #66 = Utf8               SourceFile
+  #67 = Utf8               ProcessingRecipeMixin.java
+  #68 = Utf8               Lorg/lwjgl/system/NonnullDefault;
+  #69 = Utf8               RuntimeInvisibleAnnotations
+  #70 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #71 = Utf8               Lcom/simibubi/create/content/processing/recipe/ProcessingRecipe;
+{
+  protected com.simibubi.create.content.processing.recipe.ProcessingRecipeParams params;
+    descriptor: Lcom/simibubi/create/content/processing/recipe/ProcessingRecipeParams;
+    flags: (0x0004) ACC_PROTECTED
+    RuntimeVisibleAnnotations:
+      0: #37()
+        org.spongepowered.asm.mixin.Shadow
+
+  public java.util.ArrayList<java.lang.String> nbtKeys;
+    descriptor: Ljava/util/ArrayList;
+    flags: (0x0001) ACC_PUBLIC
+    Signature: #39                          // Ljava/util/ArrayList<Ljava/lang/String;>;
+    RuntimeVisibleAnnotations:
+      0: #40()
+        org.spongepowered.asm.mixin.Unique
+
+  public java.util.ArrayList<java.lang.String> matchNbtList;
+    descriptor: Ljava/util/ArrayList;
+    flags: (0x0001) ACC_PUBLIC
+    Signature: #39                          // Ljava/util/ArrayList<Ljava/lang/String;>;
+    RuntimeVisibleAnnotations:
+      0: #40()
+        org.spongepowered.asm.mixin.Unique
+
+  public com.rae.creatingspace.mixin.recipe.ProcessingRecipeMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #7                  // class java/util/ArrayList
+         8: dup
+         9: invokespecial #9                  // Method java/util/ArrayList."<init>":()V
+        12: putfield      #10                 // Field nbtKeys:Ljava/util/ArrayList;
+        15: aload_0
+        16: new           #7                  // class java/util/ArrayList
+        19: dup
+        20: invokespecial #9                  // Method java/util/ArrayList."<init>":()V
+        23: putfield      #16                 // Field matchNbtList:Ljava/util/ArrayList;
+        26: return
+      LineNumberTable:
+        line 18: 0
+        line 20: 4
+        line 22: 15
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      27     0  this   Lcom/rae/creatingspace/mixin/recipe/ProcessingRecipeMixin;
+
+  public void ctor(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_0
+         2: getfield      #19                 // Field params:Lcom/simibubi/create/content/processing/recipe/ProcessingRecipeParams;
+         5: checkcast     #23                 // class com/rae/creatingspace/content/recipes/IMoreNbtConditions
+         8: invokeinterface #25,  1           // InterfaceMethod com/rae/creatingspace/content/recipes/IMoreNbtConditions.getKeepNbt:()Ljava/util/ArrayList;
+        13: putfield      #10                 // Field nbtKeys:Ljava/util/ArrayList;
+        16: aload_0
+        17: aload_0
+        18: getfield      #19                 // Field params:Lcom/simibubi/create/content/processing/recipe/ProcessingRecipeParams;
+        21: checkcast     #23                 // class com/rae/creatingspace/content/recipes/IMoreNbtConditions
+        24: invokeinterface #29,  1           // InterfaceMethod com/rae/creatingspace/content/recipes/IMoreNbtConditions.getMachNbt:()Ljava/util/ArrayList;
+        29: putfield      #16                 // Field matchNbtList:Ljava/util/ArrayList;
+        32: return
+      LineNumberTable:
+        line 27: 0
+        line 28: 16
+        line 29: 32
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      33     0  this   Lcom/rae/creatingspace/mixin/recipe/ProcessingRecipeMixin;
+            0      33     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #50(#51=[s#5],#52=[@#53(#54=s#55)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<init>"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="TAIL"
+          )]
+        )
+
+  public void setKeepNbt(java.util.ArrayList<java.lang.String>);
+    descriptor: (Ljava/util/ArrayList;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #10                 // Field nbtKeys:Ljava/util/ArrayList;
+         5: return
+      LineNumberTable:
+        line 32: 0
+        line 33: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/rae/creatingspace/mixin/recipe/ProcessingRecipeMixin;
+            0       6     1 nbtKeys   Ljava/util/ArrayList;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       6     1 nbtKeys   Ljava/util/ArrayList<Ljava/lang/String;>;
+    Signature: #59                          // (Ljava/util/ArrayList<Ljava/lang/String;>;)V
+
+  public java.util.ArrayList<java.lang.String> getKeepNbt();
+    descriptor: ()Ljava/util/ArrayList;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #10                 // Field nbtKeys:Ljava/util/ArrayList;
+         4: areturn
+      LineNumberTable:
+        line 37: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/rae/creatingspace/mixin/recipe/ProcessingRecipeMixin;
+    Signature: #60                          // ()Ljava/util/ArrayList<Ljava/lang/String;>;
+
+  public void setMachNbt(java.util.ArrayList<java.lang.String>);
+    descriptor: (Ljava/util/ArrayList;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #16                 // Field matchNbtList:Ljava/util/ArrayList;
+         5: return
+      LineNumberTable:
+        line 42: 0
+        line 43: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/rae/creatingspace/mixin/recipe/ProcessingRecipeMixin;
+            0       6     1 machNbtList   Ljava/util/ArrayList;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       6     1 machNbtList   Ljava/util/ArrayList<Ljava/lang/String;>;
+    Signature: #59                          // (Ljava/util/ArrayList<Ljava/lang/String;>;)V
+
+  public java.util.ArrayList<java.lang.String> getMachNbt();
+    descriptor: ()Ljava/util/ArrayList;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #16                 // Field matchNbtList:Ljava/util/ArrayList;
+         4: areturn
+      LineNumberTable:
+        line 47: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/rae/creatingspace/mixin/recipe/ProcessingRecipeMixin;
+    Signature: #60                          // ()Ljava/util/ArrayList<Ljava/lang/String;>;
+
+  public boolean isKeepNbt();
+    descriptor: ()Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #10                 // Field nbtKeys:Ljava/util/ArrayList;
+         4: invokevirtual #32                 // Method java/util/ArrayList.isEmpty:()Z
+         7: ifne          14
+        10: iconst_1
+        11: goto          15
+        14: iconst_0
+        15: ireturn
+      LineNumberTable:
+        line 52: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lcom/rae/creatingspace/mixin/recipe/ProcessingRecipeMixin;
+      StackMapTable: number_of_entries = 2
+        frame_type = 14 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+  public boolean isMachNbt();
+    descriptor: ()Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #16                 // Field matchNbtList:Ljava/util/ArrayList;
+         4: invokevirtual #32                 // Method java/util/ArrayList.isEmpty:()Z
+         7: ifne          14
+        10: iconst_1
+        11: goto          15
+        14: iconst_0
+        15: ireturn
+      LineNumberTable:
+        line 57: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lcom/rae/creatingspace/mixin/recipe/ProcessingRecipeMixin;
+      StackMapTable: number_of_entries = 2
+        frame_type = 14 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+}
+SourceFile: "ProcessingRecipeMixin.java"
+RuntimeVisibleAnnotations:
+  0: #68()
+    org.lwjgl.system.NonnullDefault
+RuntimeInvisibleAnnotations:
+  0: #70(#54=[c#71])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lcom/simibubi/create/content/processing/recipe/ProcessingRecipe;]
+    )

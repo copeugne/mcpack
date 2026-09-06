@@ -1,0 +1,1183 @@
+Classfile creatingspace-1.21.1-1.7.18.jar!/com/rae/creatingspace/content/event/CSEventHandler.class
+  Last modified May 3, 2026; size 10476 bytes
+  SHA-256 checksum 36e4cb212878c107253b5d47011f4e18f67131aef07631a45b3687c7f10595ff
+  Compiled from "CSEventHandler.java"
+public class com.rae.creatingspace.content.event.CSEventHandler
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #78                         // com/rae/creatingspace/content/event/CSEventHandler
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 9, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // net/neoforged/neoforge/event/tick/EntityTickEvent$Pre.getEntity:()Lnet/minecraft/world/entity/Entity;
+    #8 = Class              #10           // net/neoforged/neoforge/event/tick/EntityTickEvent$Pre
+    #9 = NameAndType        #11:#12       // getEntity:()Lnet/minecraft/world/entity/Entity;
+   #10 = Utf8               net/neoforged/neoforge/event/tick/EntityTickEvent$Pre
+   #11 = Utf8               getEntity
+   #12 = Utf8               ()Lnet/minecraft/world/entity/Entity;
+   #13 = Class              #14           // net/minecraft/world/entity/LivingEntity
+   #14 = Utf8               net/minecraft/world/entity/LivingEntity
+   #15 = Methodref          #13.#16       // net/minecraft/world/entity/LivingEntity.level:()Lnet/minecraft/world/level/Level;
+   #16 = NameAndType        #17:#18       // level:()Lnet/minecraft/world/level/Level;
+   #17 = Utf8               level
+   #18 = Utf8               ()Lnet/minecraft/world/level/Level;
+   #19 = Methodref          #20.#21       // net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+   #20 = Class              #22           // net/minecraft/world/level/Level
+   #21 = NameAndType        #23:#24       // dimension:()Lnet/minecraft/resources/ResourceKey;
+   #22 = Utf8               net/minecraft/world/level/Level
+   #23 = Utf8               dimension
+   #24 = Utf8               ()Lnet/minecraft/resources/ResourceKey;
+   #25 = Methodref          #26.#27       // net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+   #26 = Class              #28           // net/minecraft/resources/ResourceKey
+   #27 = NameAndType        #29:#30       // location:()Lnet/minecraft/resources/ResourceLocation;
+   #28 = Utf8               net/minecraft/resources/ResourceKey
+   #29 = Utf8               location
+   #30 = Utf8               ()Lnet/minecraft/resources/ResourceLocation;
+   #31 = Methodref          #32.#33       // com/rae/creatingspace/content/planets/CSDimensionUtil.isOrbit:(Lnet/minecraft/resources/ResourceLocation;)Z
+   #32 = Class              #34           // com/rae/creatingspace/content/planets/CSDimensionUtil
+   #33 = NameAndType        #35:#36       // isOrbit:(Lnet/minecraft/resources/ResourceLocation;)Z
+   #34 = Utf8               com/rae/creatingspace/content/planets/CSDimensionUtil
+   #35 = Utf8               isOrbit
+   #36 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Z
+   #37 = Fieldref           #20.#38       // net/minecraft/world/level/Level.isClientSide:Z
+   #38 = NameAndType        #39:#40       // isClientSide:Z
+   #39 = Utf8               isClientSide
+   #40 = Utf8               Z
+   #41 = Class              #42           // net/minecraft/server/level/ServerPlayer
+   #42 = Utf8               net/minecraft/server/level/ServerPlayer
+   #43 = Methodref          #41.#44       // net/minecraft/server/level/ServerPlayer.getY:()D
+   #44 = NameAndType        #45:#46       // getY:()D
+   #45 = Utf8               getY
+   #46 = Utf8               ()D
+   #47 = Methodref          #20.#48       // net/minecraft/world/level/Level.dimensionType:()Lnet/minecraft/world/level/dimension/DimensionType;
+   #48 = NameAndType        #49:#50       // dimensionType:()Lnet/minecraft/world/level/dimension/DimensionType;
+   #49 = Utf8               dimensionType
+   #50 = Utf8               ()Lnet/minecraft/world/level/dimension/DimensionType;
+   #51 = Methodref          #52.#53       // net/minecraft/world/level/dimension/DimensionType.minY:()I
+   #52 = Class              #54           // net/minecraft/world/level/dimension/DimensionType
+   #53 = NameAndType        #55:#56       // minY:()I
+   #54 = Utf8               net/minecraft/world/level/dimension/DimensionType
+   #55 = Utf8               minY
+   #56 = Utf8               ()I
+   #57 = Methodref          #32.#58       // com/rae/creatingspace/content/planets/CSDimensionUtil.planetUnder:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+   #58 = NameAndType        #59:#60       // planetUnder:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+   #59 = Utf8               planetUnder
+   #60 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+   #61 = Methodref          #20.#62       // net/minecraft/world/level/Level.getServer:()Lnet/minecraft/server/MinecraftServer;
+   #62 = NameAndType        #63:#64       // getServer:()Lnet/minecraft/server/MinecraftServer;
+   #63 = Utf8               getServer
+   #64 = Utf8               ()Lnet/minecraft/server/MinecraftServer;
+   #65 = Methodref          #66.#67       // java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+   #66 = Class              #68           // java/util/Objects
+   #67 = NameAndType        #69:#70       // requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+   #68 = Utf8               java/util/Objects
+   #69 = Utf8               requireNonNull
+   #70 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #71 = Class              #72           // net/minecraft/server/MinecraftServer
+   #72 = Utf8               net/minecraft/server/MinecraftServer
+   #73 = Methodref          #71.#74       // net/minecraft/server/MinecraftServer.getLevel:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/server/level/ServerLevel;
+   #74 = NameAndType        #75:#76       // getLevel:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/server/level/ServerLevel;
+   #75 = Utf8               getLevel
+   #76 = Utf8               (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/server/level/ServerLevel;
+   #77 = Fieldref           #78.#79       // com/rae/creatingspace/content/event/CSEventHandler.$assertionsDisabled:Z
+   #78 = Class              #80           // com/rae/creatingspace/content/event/CSEventHandler
+   #79 = NameAndType        #81:#40       // $assertionsDisabled:Z
+   #80 = Utf8               com/rae/creatingspace/content/event/CSEventHandler
+   #81 = Utf8               $assertionsDisabled
+   #82 = Class              #83           // java/lang/AssertionError
+   #83 = Utf8               java/lang/AssertionError
+   #84 = Methodref          #82.#3        // java/lang/AssertionError."<init>":()V
+   #85 = Methodref          #41.#86       // net/minecraft/server/level/ServerPlayer.isPassenger:()Z
+   #86 = NameAndType        #87:#88       // isPassenger:()Z
+   #87 = Utf8               isPassenger
+   #88 = Utf8               ()Z
+   #89 = Methodref          #41.#90       // net/minecraft/server/level/ServerPlayer.getVehicle:()Lnet/minecraft/world/entity/Entity;
+   #90 = NameAndType        #91:#12       // getVehicle:()Lnet/minecraft/world/entity/Entity;
+   #91 = Utf8               getVehicle
+   #92 = Methodref          #93.#94       // net/minecraft/world/entity/Entity.ejectPassengers:()V
+   #93 = Class              #95           // net/minecraft/world/entity/Entity
+   #94 = NameAndType        #96:#6        // ejectPassengers:()V
+   #95 = Utf8               net/minecraft/world/entity/Entity
+   #96 = Utf8               ejectPassengers
+   #97 = Methodref          #98.#99       // com/rae/creatingspace/content/rocket/CustomTeleporter.getTransition:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/server/level/ServerLevel;)Lnet/minecraft/world/level/portal/DimensionTransition;
+   #98 = Class              #100          // com/rae/creatingspace/content/rocket/CustomTeleporter
+   #99 = NameAndType        #101:#102     // getTransition:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/server/level/ServerLevel;)Lnet/minecraft/world/level/portal/DimensionTransition;
+  #100 = Utf8               com/rae/creatingspace/content/rocket/CustomTeleporter
+  #101 = Utf8               getTransition
+  #102 = Utf8               (Lnet/minecraft/world/entity/Entity;Lnet/minecraft/server/level/ServerLevel;)Lnet/minecraft/world/level/portal/DimensionTransition;
+  #103 = Methodref          #93.#104      // net/minecraft/world/entity/Entity.changeDimension:(Lnet/minecraft/world/level/portal/DimensionTransition;)Lnet/minecraft/world/entity/Entity;
+  #104 = NameAndType        #105:#106     // changeDimension:(Lnet/minecraft/world/level/portal/DimensionTransition;)Lnet/minecraft/world/entity/Entity;
+  #105 = Utf8               changeDimension
+  #106 = Utf8               (Lnet/minecraft/world/level/portal/DimensionTransition;)Lnet/minecraft/world/entity/Entity;
+  #107 = Methodref          #41.#104      // net/minecraft/server/level/ServerPlayer.changeDimension:(Lnet/minecraft/world/level/portal/DimensionTransition;)Lnet/minecraft/world/entity/Entity;
+  #108 = Methodref          #41.#109      // net/minecraft/server/level/ServerPlayer.startRiding:(Lnet/minecraft/world/entity/Entity;Z)Z
+  #109 = NameAndType        #110:#111     // startRiding:(Lnet/minecraft/world/entity/Entity;Z)Z
+  #110 = Utf8               startRiding
+  #111 = Utf8               (Lnet/minecraft/world/entity/Entity;Z)Z
+  #112 = Fieldref           #13.#113      // net/minecraft/world/entity/LivingEntity.tickCount:I
+  #113 = NameAndType        #114:#115     // tickCount:I
+  #114 = Utf8               tickCount
+  #115 = Utf8               I
+  #116 = Methodref          #78.#117      // com/rae/creatingspace/content/event/CSEventHandler.inO2:(Lnet/minecraft/world/entity/LivingEntity;)Z
+  #117 = NameAndType        #118:#119     // inO2:(Lnet/minecraft/world/entity/LivingEntity;)Z
+  #118 = Utf8               inO2
+  #119 = Utf8               (Lnet/minecraft/world/entity/LivingEntity;)Z
+  #120 = Methodref          #13.#121      // net/minecraft/world/entity/LivingEntity.isAttackable:()Z
+  #121 = NameAndType        #122:#88      // isAttackable:()Z
+  #122 = Utf8               isAttackable
+  #123 = Methodref          #78.#124      // com/rae/creatingspace/content/event/CSEventHandler.playerNeedEquipment:(Lnet/minecraft/server/level/ServerPlayer;)Z
+  #124 = NameAndType        #125:#126     // playerNeedEquipment:(Lnet/minecraft/server/level/ServerPlayer;)Z
+  #125 = Utf8               playerNeedEquipment
+  #126 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;)Z
+  #127 = Methodref          #78.#128      // com/rae/creatingspace/content/event/CSEventHandler.checkPlayerO2Equipment:(Lnet/minecraft/server/level/ServerPlayer;)Z
+  #128 = NameAndType        #129:#126     // checkPlayerO2Equipment:(Lnet/minecraft/server/level/ServerPlayer;)Z
+  #129 = Utf8               checkPlayerO2Equipment
+  #130 = Fieldref           #131.#132     // net/minecraft/world/entity/EquipmentSlot.CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+  #131 = Class              #133          // net/minecraft/world/entity/EquipmentSlot
+  #132 = NameAndType        #134:#135     // CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+  #133 = Utf8               net/minecraft/world/entity/EquipmentSlot
+  #134 = Utf8               CHEST
+  #135 = Utf8               Lnet/minecraft/world/entity/EquipmentSlot;
+  #136 = Methodref          #41.#137      // net/minecraft/server/level/ServerPlayer.getItemBySlot:(Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;
+  #137 = NameAndType        #138:#139     // getItemBySlot:(Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;
+  #138 = Utf8               getItemBySlot
+  #139 = Utf8               (Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;
+  #140 = Methodref          #141.#142     // com/rae/creatingspace/content/life_support/spacesuit/OxygenBacktankUtil.consumeOxygen:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;I)V
+  #141 = Class              #143          // com/rae/creatingspace/content/life_support/spacesuit/OxygenBacktankUtil
+  #142 = NameAndType        #144:#145     // consumeOxygen:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;I)V
+  #143 = Utf8               com/rae/creatingspace/content/life_support/spacesuit/OxygenBacktankUtil
+  #144 = Utf8               consumeOxygen
+  #145 = Utf8               (Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;I)V
+  #146 = Methodref          #147.#148     // com/rae/creatingspace/init/CSDamageSources.no_oxygen:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/damagesource/DamageSource;
+  #147 = Class              #149          // com/rae/creatingspace/init/CSDamageSources
+  #148 = NameAndType        #150:#151     // no_oxygen:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/damagesource/DamageSource;
+  #149 = Utf8               com/rae/creatingspace/init/CSDamageSources
+  #150 = Utf8               no_oxygen
+  #151 = Utf8               (Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/damagesource/DamageSource;
+  #152 = Methodref          #41.#153      // net/minecraft/server/level/ServerPlayer.hurt:(Lnet/minecraft/world/damagesource/DamageSource;F)Z
+  #153 = NameAndType        #154:#155     // hurt:(Lnet/minecraft/world/damagesource/DamageSource;F)Z
+  #154 = Utf8               hurt
+  #155 = Utf8               (Lnet/minecraft/world/damagesource/DamageSource;F)Z
+  #156 = Fieldref           #157.#158     // com/rae/creatingspace/init/TagsInit$CustomEntityTag.SPACE_CREATURES:Lcom/rae/creatingspace/init/TagsInit$CustomEntityTag;
+  #157 = Class              #159          // com/rae/creatingspace/init/TagsInit$CustomEntityTag
+  #158 = NameAndType        #160:#161     // SPACE_CREATURES:Lcom/rae/creatingspace/init/TagsInit$CustomEntityTag;
+  #159 = Utf8               com/rae/creatingspace/init/TagsInit$CustomEntityTag
+  #160 = Utf8               SPACE_CREATURES
+  #161 = Utf8               Lcom/rae/creatingspace/init/TagsInit$CustomEntityTag;
+  #162 = Methodref          #157.#163     // com/rae/creatingspace/init/TagsInit$CustomEntityTag.matches:(Lnet/minecraft/world/entity/Entity;)Z
+  #163 = NameAndType        #164:#165     // matches:(Lnet/minecraft/world/entity/Entity;)Z
+  #164 = Utf8               matches
+  #165 = Utf8               (Lnet/minecraft/world/entity/Entity;)Z
+  #166 = Methodref          #13.#153      // net/minecraft/world/entity/LivingEntity.hurt:(Lnet/minecraft/world/damagesource/DamageSource;F)Z
+  #167 = Methodref          #41.#16       // net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+  #168 = Methodref          #169.#170     // net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+  #169 = Class              #171          // net/minecraft/resources/ResourceLocation
+  #170 = NameAndType        #172:#173     // toString:()Ljava/lang/String;
+  #171 = Utf8               net/minecraft/resources/ResourceLocation
+  #172 = Utf8               toString
+  #173 = Utf8               ()Ljava/lang/String;
+  #174 = String             #175          // creatingspace:venus
+  #175 = Utf8               creatingspace:venus
+  #176 = Methodref          #177.#178     // java/lang/String.equals:(Ljava/lang/Object;)Z
+  #177 = Class              #179          // java/lang/String
+  #178 = NameAndType        #180:#181     // equals:(Ljava/lang/Object;)Z
+  #179 = Utf8               java/lang/String
+  #180 = Utf8               equals
+  #181 = Utf8               (Ljava/lang/Object;)Z
+  #182 = Methodref          #147.#183     // com/rae/creatingspace/init/CSDamageSources.over_heat:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/damagesource/DamageSource;
+  #183 = NameAndType        #184:#151     // over_heat:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/damagesource/DamageSource;
+  #184 = Utf8               over_heat
+  #185 = Float              0.5f
+  #186 = Methodref          #187.#188     // net/neoforged/neoforge/event/level/SleepFinishedTimeEvent.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+  #187 = Class              #189          // net/neoforged/neoforge/event/level/SleepFinishedTimeEvent
+  #188 = NameAndType        #75:#190      // getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+  #189 = Utf8               net/neoforged/neoforge/event/level/SleepFinishedTimeEvent
+  #190 = Utf8               ()Lnet/minecraft/world/level/LevelAccessor;
+  #191 = InterfaceMethodref #192.#62      // net/minecraft/world/level/LevelAccessor.getServer:()Lnet/minecraft/server/MinecraftServer;
+  #192 = Class              #193          // net/minecraft/world/level/LevelAccessor
+  #193 = Utf8               net/minecraft/world/level/LevelAccessor
+  #194 = Fieldref           #20.#195      // net/minecraft/world/level/Level.OVERWORLD:Lnet/minecraft/resources/ResourceKey;
+  #195 = NameAndType        #196:#197     // OVERWORLD:Lnet/minecraft/resources/ResourceKey;
+  #196 = Utf8               OVERWORLD
+  #197 = Utf8               Lnet/minecraft/resources/ResourceKey;
+  #198 = Methodref          #187.#199     // net/neoforged/neoforge/event/level/SleepFinishedTimeEvent.getNewTime:()J
+  #199 = NameAndType        #200:#201     // getNewTime:()J
+  #200 = Utf8               getNewTime
+  #201 = Utf8               ()J
+  #202 = Methodref          #203.#204     // net/minecraft/server/level/ServerLevel.setDayTime:(J)V
+  #203 = Class              #205          // net/minecraft/server/level/ServerLevel
+  #204 = NameAndType        #206:#207     // setDayTime:(J)V
+  #205 = Utf8               net/minecraft/server/level/ServerLevel
+  #206 = Utf8               setDayTime
+  #207 = Utf8               (J)V
+  #208 = Fieldref           #131.#209     // net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+  #209 = NameAndType        #210:#135     // HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+  #210 = Utf8               HEAD
+  #211 = Fieldref           #131.#212     // net/minecraft/world/entity/EquipmentSlot.LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+  #212 = NameAndType        #213:#135     // LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+  #213 = Utf8               LEGS
+  #214 = Fieldref           #131.#215     // net/minecraft/world/entity/EquipmentSlot.FEET:Lnet/minecraft/world/entity/EquipmentSlot;
+  #215 = NameAndType        #216:#135     // FEET:Lnet/minecraft/world/entity/EquipmentSlot;
+  #216 = Utf8               FEET
+  #217 = Fieldref           #218.#219     // com/rae/creatingspace/init/TagsInit$CustomItemTags.OXYGEN_SOURCES:Lcom/rae/creatingspace/init/TagsInit$CustomItemTags;
+  #218 = Class              #220          // com/rae/creatingspace/init/TagsInit$CustomItemTags
+  #219 = NameAndType        #221:#222     // OXYGEN_SOURCES:Lcom/rae/creatingspace/init/TagsInit$CustomItemTags;
+  #220 = Utf8               com/rae/creatingspace/init/TagsInit$CustomItemTags
+  #221 = Utf8               OXYGEN_SOURCES
+  #222 = Utf8               Lcom/rae/creatingspace/init/TagsInit$CustomItemTags;
+  #223 = Methodref          #218.#224     // com/rae/creatingspace/init/TagsInit$CustomItemTags.matches:(Lnet/minecraft/world/item/ItemStack;)Z
+  #224 = NameAndType        #164:#225     // matches:(Lnet/minecraft/world/item/ItemStack;)Z
+  #225 = Utf8               (Lnet/minecraft/world/item/ItemStack;)Z
+  #226 = Methodref          #141.#227     // com/rae/creatingspace/content/life_support/spacesuit/OxygenBacktankUtil.hasOxygenRemaining:(Lnet/minecraft/world/item/ItemStack;)Z
+  #227 = NameAndType        #228:#225     // hasOxygenRemaining:(Lnet/minecraft/world/item/ItemStack;)Z
+  #228 = Utf8               hasOxygenRemaining
+  #229 = Fieldref           #218.#230     // com/rae/creatingspace/init/TagsInit$CustomItemTags.SPACESUIT:Lcom/rae/creatingspace/init/TagsInit$CustomItemTags;
+  #230 = NameAndType        #231:#222     // SPACESUIT:Lcom/rae/creatingspace/init/TagsInit$CustomItemTags;
+  #231 = Utf8               SPACESUIT
+  #232 = Methodref          #41.#233      // net/minecraft/server/level/ServerPlayer.isCreative:()Z
+  #233 = NameAndType        #234:#88      // isCreative:()Z
+  #234 = Utf8               isCreative
+  #235 = Methodref          #13.#236      // net/minecraft/world/entity/LivingEntity.getOnPos:()Lnet/minecraft/core/BlockPos;
+  #236 = NameAndType        #237:#238     // getOnPos:()Lnet/minecraft/core/BlockPos;
+  #237 = Utf8               getOnPos
+  #238 = Utf8               ()Lnet/minecraft/core/BlockPos;
+  #239 = Methodref          #20.#240      // net/minecraft/world/level/Level.getBiome:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+  #240 = NameAndType        #241:#242     // getBiome:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+  #241 = Utf8               getBiome
+  #242 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+  #243 = Methodref          #32.#244      // com/rae/creatingspace/content/planets/CSDimensionUtil.hasO2Atmosphere:(Lnet/minecraft/core/Holder;)Z
+  #244 = NameAndType        #245:#246     // hasO2Atmosphere:(Lnet/minecraft/core/Holder;)Z
+  #245 = Utf8               hasO2Atmosphere
+  #246 = Utf8               (Lnet/minecraft/core/Holder;)Z
+  #247 = Class              #248          // com/rae/creatingspace/content/life_support/INeedOxygen
+  #248 = Utf8               com/rae/creatingspace/content/life_support/INeedOxygen
+  #249 = InterfaceMethodref #247.#250     // com/rae/creatingspace/content/life_support/INeedOxygen.insideOxygenRoom:()Z
+  #250 = NameAndType        #251:#88      // insideOxygenRoom:()Z
+  #251 = Utf8               insideOxygenRoom
+  #252 = InterfaceMethodref #247.#253     // com/rae/creatingspace/content/life_support/INeedOxygen.setInsideOxygenRoom:(Z)V
+  #253 = NameAndType        #254:#255     // setInsideOxygenRoom:(Z)V
+  #254 = Utf8               setInsideOxygenRoom
+  #255 = Utf8               (Z)V
+  #256 = Methodref          #257.#258     // net/neoforged/neoforge/event/RegisterCommandsEvent.getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+  #257 = Class              #259          // net/neoforged/neoforge/event/RegisterCommandsEvent
+  #258 = NameAndType        #260:#261     // getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+  #259 = Utf8               net/neoforged/neoforge/event/RegisterCommandsEvent
+  #260 = Utf8               getDispatcher
+  #261 = Utf8               ()Lcom/mojang/brigadier/CommandDispatcher;
+  #262 = Methodref          #263.#264     // com/rae/creatingspace/init/CommandsInit.register:(Lcom/mojang/brigadier/CommandDispatcher;)V
+  #263 = Class              #265          // com/rae/creatingspace/init/CommandsInit
+  #264 = NameAndType        #266:#267     // register:(Lcom/mojang/brigadier/CommandDispatcher;)V
+  #265 = Utf8               com/rae/creatingspace/init/CommandsInit
+  #266 = Utf8               register
+  #267 = Utf8               (Lcom/mojang/brigadier/CommandDispatcher;)V
+  #268 = Methodref          #269.#188     // net/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+  #269 = Class              #270          // net/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent
+  #270 = Utf8               net/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent
+  #271 = Class              #272          // net/minecraft/world/phys/AABB
+  #272 = Utf8               net/minecraft/world/phys/AABB
+  #273 = Methodref          #269.#274     // net/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent.getPos:()Lnet/minecraft/core/BlockPos;
+  #274 = NameAndType        #275:#238     // getPos:()Lnet/minecraft/core/BlockPos;
+  #275 = Utf8               getPos
+  #276 = Methodref          #271.#277     // net/minecraft/world/phys/AABB."<init>":(Lnet/minecraft/core/BlockPos;)V
+  #277 = NameAndType        #5:#278       // "<init>":(Lnet/minecraft/core/BlockPos;)V
+  #278 = Utf8               (Lnet/minecraft/core/BlockPos;)V
+  #279 = Class              #280          // com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere
+  #280 = Utf8               com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere
+  #281 = Methodref          #20.#282      // net/minecraft/world/level/Level.getEntitiesOfClass:(Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;
+  #282 = NameAndType        #283:#284     // getEntitiesOfClass:(Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;
+  #283 = Utf8               getEntitiesOfClass
+  #284 = Utf8               (Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;
+  #285 = InterfaceMethodref #286.#287     // java/util/List.iterator:()Ljava/util/Iterator;
+  #286 = Class              #288          // java/util/List
+  #287 = NameAndType        #289:#290     // iterator:()Ljava/util/Iterator;
+  #288 = Utf8               java/util/List
+  #289 = Utf8               iterator
+  #290 = Utf8               ()Ljava/util/Iterator;
+  #291 = InterfaceMethodref #292.#293     // java/util/Iterator.hasNext:()Z
+  #292 = Class              #294          // java/util/Iterator
+  #293 = NameAndType        #295:#88      // hasNext:()Z
+  #294 = Utf8               java/util/Iterator
+  #295 = Utf8               hasNext
+  #296 = InterfaceMethodref #292.#297     // java/util/Iterator.next:()Ljava/lang/Object;
+  #297 = NameAndType        #298:#299     // next:()Ljava/lang/Object;
+  #298 = Utf8               next
+  #299 = Utf8               ()Ljava/lang/Object;
+  #300 = Methodref          #279.#301     // com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere.getShape:()Lcom/rae/creatingspace/content/life_support/sealer/RoomShape;
+  #301 = NameAndType        #302:#303     // getShape:()Lcom/rae/creatingspace/content/life_support/sealer/RoomShape;
+  #302 = Utf8               getShape
+  #303 = Utf8               ()Lcom/rae/creatingspace/content/life_support/sealer/RoomShape;
+  #304 = Methodref          #305.#306     // com/rae/creatingspace/content/life_support/sealer/RoomShape.inside:(Lnet/minecraft/world/phys/AABB;)Z
+  #305 = Class              #307          // com/rae/creatingspace/content/life_support/sealer/RoomShape
+  #306 = NameAndType        #308:#309     // inside:(Lnet/minecraft/world/phys/AABB;)Z
+  #307 = Utf8               com/rae/creatingspace/content/life_support/sealer/RoomShape
+  #308 = Utf8               inside
+  #309 = Utf8               (Lnet/minecraft/world/phys/AABB;)Z
+  #310 = Fieldref           #311.#312     // com/rae/creatingspace/configs/CSConfigs.SERVER:Lcom/rae/creatingspace/configs/CSCfgServer;
+  #311 = Class              #313          // com/rae/creatingspace/configs/CSConfigs
+  #312 = NameAndType        #314:#315     // SERVER:Lcom/rae/creatingspace/configs/CSCfgServer;
+  #313 = Utf8               com/rae/creatingspace/configs/CSConfigs
+  #314 = Utf8               SERVER
+  #315 = Utf8               Lcom/rae/creatingspace/configs/CSCfgServer;
+  #316 = Fieldref           #317.#318     // com/rae/creatingspace/configs/CSCfgServer.smarterSearch:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+  #317 = Class              #319          // com/rae/creatingspace/configs/CSCfgServer
+  #318 = NameAndType        #320:#321     // smarterSearch:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+  #319 = Utf8               com/rae/creatingspace/configs/CSCfgServer
+  #320 = Utf8               smarterSearch
+  #321 = Utf8               Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+  #322 = Methodref          #323.#324     // net/createmod/catnip/config/ConfigBase$ConfigBool.get:()Ljava/lang/Object;
+  #323 = Class              #325          // net/createmod/catnip/config/ConfigBase$ConfigBool
+  #324 = NameAndType        #326:#299     // get:()Ljava/lang/Object;
+  #325 = Utf8               net/createmod/catnip/config/ConfigBase$ConfigBool
+  #326 = Utf8               get
+  #327 = Class              #328          // java/lang/Boolean
+  #328 = Utf8               java/lang/Boolean
+  #329 = Methodref          #327.#330     // java/lang/Boolean.booleanValue:()Z
+  #330 = NameAndType        #331:#88      // booleanValue:()Z
+  #331 = Utf8               booleanValue
+  #332 = Methodref          #279.#333     // com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere.regenerateRoom:(Lnet/minecraft/core/BlockPos;)V
+  #333 = NameAndType        #334:#278     // regenerateRoom:(Lnet/minecraft/core/BlockPos;)V
+  #334 = Utf8               regenerateRoom
+  #335 = Methodref          #279.#336     // com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere.resetShape:()V
+  #336 = NameAndType        #337:#6       // resetShape:()V
+  #337 = Utf8               resetShape
+  #338 = Methodref          #279.#236     // com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere.getOnPos:()Lnet/minecraft/core/BlockPos;
+  #339 = Methodref          #269.#340     // net/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent.getNotifiedSides:()Ljava/util/EnumSet;
+  #340 = NameAndType        #341:#342     // getNotifiedSides:()Ljava/util/EnumSet;
+  #341 = Utf8               getNotifiedSides
+  #342 = Utf8               ()Ljava/util/EnumSet;
+  #343 = Methodref          #344.#287     // java/util/EnumSet.iterator:()Ljava/util/Iterator;
+  #344 = Class              #345          // java/util/EnumSet
+  #345 = Utf8               java/util/EnumSet
+  #346 = Class              #347          // net/minecraft/core/Direction
+  #347 = Utf8               net/minecraft/core/Direction
+  #348 = Methodref          #349.#350     // net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+  #349 = Class              #351          // net/minecraft/core/BlockPos
+  #350 = NameAndType        #352:#353     // relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+  #351 = Utf8               net/minecraft/core/BlockPos
+  #352 = Utf8               relative
+  #353 = Utf8               (Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+  #354 = Methodref          #355.#356     // java/lang/Class.desiredAssertionStatus:()Z
+  #355 = Class              #357          // java/lang/Class
+  #356 = NameAndType        #358:#88      // desiredAssertionStatus:()Z
+  #357 = Utf8               java/lang/Class
+  #358 = Utf8               desiredAssertionStatus
+  #359 = Utf8               Code
+  #360 = Utf8               LineNumberTable
+  #361 = Utf8               LocalVariableTable
+  #362 = Utf8               this
+  #363 = Utf8               Lcom/rae/creatingspace/content/event/CSEventHandler;
+  #364 = Utf8               entityLivingEvent
+  #365 = Utf8               (Lnet/neoforged/neoforge/event/tick/EntityTickEvent$Pre;)V
+  #366 = Utf8               vehicle
+  #367 = Utf8               Lnet/minecraft/world/entity/Entity;
+  #368 = Utf8               destServerLevel
+  #369 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+  #370 = Utf8               dimensionToTeleport
+  #371 = Utf8               player
+  #372 = Utf8               Lnet/minecraft/server/level/ServerPlayer;
+  #373 = Utf8               tank
+  #374 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #375 = Utf8               Lnet/minecraft/world/level/Level;
+  #376 = Utf8               Lnet/minecraft/resources/ResourceLocation;
+  #377 = Utf8               entityLiving
+  #378 = Utf8               Lnet/minecraft/world/entity/LivingEntity;
+  #379 = Utf8               livingTickEvent
+  #380 = Utf8               Lnet/neoforged/neoforge/event/tick/EntityTickEvent$Pre;
+  #381 = Utf8               LocalVariableTypeTable
+  #382 = Utf8               Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/Level;>;
+  #383 = Utf8               StackMapTable
+  #384 = Utf8               RuntimeVisibleAnnotations
+  #385 = Utf8               Lnet/neoforged/bus/api/SubscribeEvent;
+  #386 = Utf8               playerSleeping
+  #387 = Utf8               (Lnet/neoforged/neoforge/event/level/SleepFinishedTimeEvent;)V
+  #388 = Utf8               sleepFinishedEvent
+  #389 = Utf8               Lnet/neoforged/neoforge/event/level/SleepFinishedTimeEvent;
+  #390 = Utf8               chestPlate
+  #391 = Utf8               helmet
+  #392 = Utf8               leggings
+  #393 = Utf8               boots
+  #394 = Class              #395          // net/minecraft/world/item/ItemStack
+  #395 = Utf8               net/minecraft/world/item/ItemStack
+  #396 = Utf8               entity
+  #397 = Utf8               flag
+  #398 = Utf8               registerCommands
+  #399 = Utf8               (Lnet/neoforged/neoforge/event/RegisterCommandsEvent;)V
+  #400 = Utf8               event
+  #401 = Utf8               Lnet/neoforged/neoforge/event/RegisterCommandsEvent;
+  #402 = Utf8               onBlockPlaced
+  #403 = Utf8               (Lnet/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent;)V
+  #404 = Utf8               atmosphere
+  #405 = Utf8               Lcom/rae/creatingspace/content/life_support/sealer/RoomAtmosphere;
+  #406 = Utf8               colBoxOutside
+  #407 = Utf8               Lnet/minecraft/world/phys/AABB;
+  #408 = Utf8               direction
+  #409 = Utf8               Lnet/minecraft/core/Direction;
+  #410 = Utf8               Lnet/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent;
+  #411 = Utf8               blockPlaced
+  #412 = Utf8               colBoxInside
+  #413 = Utf8               entityStream
+  #414 = Utf8               Ljava/util/List;
+  #415 = Utf8               Ljava/util/List<Lcom/rae/creatingspace/content/life_support/sealer/RoomAtmosphere;>;
+  #416 = Utf8               <clinit>
+  #417 = Utf8               SourceFile
+  #418 = Utf8               CSEventHandler.java
+  #419 = Utf8               Lnet/neoforged/fml/common/EventBusSubscriber;
+  #420 = Utf8               modid
+  #421 = Utf8               creatingspace
+  #422 = Utf8               NestMembers
+  #423 = Class              #424          // com/rae/creatingspace/content/event/CSEventHandler$ModBusEvents
+  #424 = Utf8               com/rae/creatingspace/content/event/CSEventHandler$ModBusEvents
+  #425 = Utf8               InnerClasses
+  #426 = Class              #427          // net/neoforged/neoforge/event/tick/EntityTickEvent
+  #427 = Utf8               net/neoforged/neoforge/event/tick/EntityTickEvent
+  #428 = Utf8               Pre
+  #429 = Class              #430          // com/rae/creatingspace/init/TagsInit
+  #430 = Utf8               com/rae/creatingspace/init/TagsInit
+  #431 = Utf8               CustomEntityTag
+  #432 = Utf8               CustomItemTags
+  #433 = Class              #434          // net/neoforged/neoforge/event/level/BlockEvent
+  #434 = Utf8               net/neoforged/neoforge/event/level/BlockEvent
+  #435 = Utf8               NeighborNotifyEvent
+  #436 = Class              #437          // net/createmod/catnip/config/ConfigBase
+  #437 = Utf8               net/createmod/catnip/config/ConfigBase
+  #438 = Utf8               ConfigBool
+  #439 = Utf8               ModBusEvents
+{
+  static final boolean $assertionsDisabled;
+    descriptor: Z
+    flags: (0x1018) ACC_STATIC, ACC_FINAL, ACC_SYNTHETIC
+
+  public com.rae.creatingspace.content.event.CSEventHandler();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 44: 0
+        line 45: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/rae/creatingspace/content/event/CSEventHandler;
+
+  public static void entityLivingEvent(net.neoforged.neoforge.event.tick.EntityTickEvent$Pre);
+    descriptor: (Lnet/neoforged/neoforge/event/tick/EntityTickEvent$Pre;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=8, args_size=1
+         0: aload_0
+         1: invokevirtual #7                  // Method net/neoforged/neoforge/event/tick/EntityTickEvent$Pre.getEntity:()Lnet/minecraft/world/entity/Entity;
+         4: astore_2
+         5: aload_2
+         6: instanceof    #13                 // class net/minecraft/world/entity/LivingEntity
+         9: ifeq          439
+        12: aload_2
+        13: checkcast     #13                 // class net/minecraft/world/entity/LivingEntity
+        16: astore_1
+        17: aload_1
+        18: invokevirtual #15                 // Method net/minecraft/world/entity/LivingEntity.level:()Lnet/minecraft/world/level/Level;
+        21: astore_2
+        22: aload_2
+        23: invokevirtual #19                 // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+        26: invokevirtual #25                 // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+        29: astore_3
+        30: aload_2
+        31: invokevirtual #19                 // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+        34: invokevirtual #25                 // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+        37: invokestatic  #31                 // Method com/rae/creatingspace/content/planets/CSDimensionUtil.isOrbit:(Lnet/minecraft/resources/ResourceLocation;)Z
+        40: ifeq          220
+        43: aload_2
+        44: getfield      #37                 // Field net/minecraft/world/level/Level.isClientSide:Z
+        47: ifne          220
+        50: aload_1
+        51: instanceof    #41                 // class net/minecraft/server/level/ServerPlayer
+        54: ifeq          220
+        57: aload_1
+        58: checkcast     #41                 // class net/minecraft/server/level/ServerPlayer
+        61: astore        4
+        63: aload         4
+        65: invokevirtual #43                 // Method net/minecraft/server/level/ServerPlayer.getY:()D
+        68: aload_2
+        69: invokevirtual #47                 // Method net/minecraft/world/level/Level.dimensionType:()Lnet/minecraft/world/level/dimension/DimensionType;
+        72: invokevirtual #51                 // Method net/minecraft/world/level/dimension/DimensionType.minY:()I
+        75: bipush        10
+        77: iadd
+        78: i2d
+        79: dcmpg
+        80: ifge          220
+        83: aload_3
+        84: invokestatic  #57                 // Method com/rae/creatingspace/content/planets/CSDimensionUtil.planetUnder:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+        87: astore        5
+        89: aload         5
+        91: ifnull        220
+        94: aload_2
+        95: invokevirtual #61                 // Method net/minecraft/world/level/Level.getServer:()Lnet/minecraft/server/MinecraftServer;
+        98: invokestatic  #65                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+       101: checkcast     #71                 // class net/minecraft/server/MinecraftServer
+       104: aload         5
+       106: invokevirtual #73                 // Method net/minecraft/server/MinecraftServer.getLevel:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/server/level/ServerLevel;
+       109: astore        6
+       111: getstatic     #77                 // Field $assertionsDisabled:Z
+       114: ifne          130
+       117: aload         6
+       119: ifnonnull     130
+       122: new           #82                 // class java/lang/AssertionError
+       125: dup
+       126: invokespecial #84                 // Method java/lang/AssertionError."<init>":()V
+       129: athrow
+       130: aload         4
+       132: invokevirtual #85                 // Method net/minecraft/server/level/ServerPlayer.isPassenger:()Z
+       135: ifeq          207
+       138: aload         4
+       140: invokevirtual #89                 // Method net/minecraft/server/level/ServerPlayer.getVehicle:()Lnet/minecraft/world/entity/Entity;
+       143: astore        7
+       145: getstatic     #77                 // Field $assertionsDisabled:Z
+       148: ifne          164
+       151: aload         7
+       153: ifnonnull     164
+       156: new           #82                 // class java/lang/AssertionError
+       159: dup
+       160: invokespecial #84                 // Method java/lang/AssertionError."<init>":()V
+       163: athrow
+       164: aload         7
+       166: invokevirtual #92                 // Method net/minecraft/world/entity/Entity.ejectPassengers:()V
+       169: aload         7
+       171: aload         7
+       173: aload         6
+       175: invokestatic  #97                 // Method com/rae/creatingspace/content/rocket/CustomTeleporter.getTransition:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/server/level/ServerLevel;)Lnet/minecraft/world/level/portal/DimensionTransition;
+       178: invokevirtual #103                // Method net/minecraft/world/entity/Entity.changeDimension:(Lnet/minecraft/world/level/portal/DimensionTransition;)Lnet/minecraft/world/entity/Entity;
+       181: pop
+       182: aload         4
+       184: aload         4
+       186: aload         6
+       188: invokestatic  #97                 // Method com/rae/creatingspace/content/rocket/CustomTeleporter.getTransition:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/server/level/ServerLevel;)Lnet/minecraft/world/level/portal/DimensionTransition;
+       191: invokevirtual #107                // Method net/minecraft/server/level/ServerPlayer.changeDimension:(Lnet/minecraft/world/level/portal/DimensionTransition;)Lnet/minecraft/world/entity/Entity;
+       194: pop
+       195: aload         4
+       197: aload         7
+       199: iconst_1
+       200: invokevirtual #108                // Method net/minecraft/server/level/ServerPlayer.startRiding:(Lnet/minecraft/world/entity/Entity;Z)Z
+       203: pop
+       204: goto          220
+       207: aload         4
+       209: aload         4
+       211: aload         6
+       213: invokestatic  #97                 // Method com/rae/creatingspace/content/rocket/CustomTeleporter.getTransition:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/server/level/ServerLevel;)Lnet/minecraft/world/level/portal/DimensionTransition;
+       216: invokevirtual #107                // Method net/minecraft/server/level/ServerPlayer.changeDimension:(Lnet/minecraft/world/level/portal/DimensionTransition;)Lnet/minecraft/world/entity/Entity;
+       219: pop
+       220: aload_1
+       221: getfield      #112                // Field net/minecraft/world/entity/LivingEntity.tickCount:I
+       224: bipush        20
+       226: irem
+       227: ifne          328
+       230: aload_1
+       231: invokestatic  #116                // Method inO2:(Lnet/minecraft/world/entity/LivingEntity;)Z
+       234: ifne          328
+       237: aload_1
+       238: invokevirtual #120                // Method net/minecraft/world/entity/LivingEntity.isAttackable:()Z
+       241: ifeq          328
+       244: aload_1
+       245: instanceof    #41                 // class net/minecraft/server/level/ServerPlayer
+       248: ifeq          308
+       251: aload_1
+       252: checkcast     #41                 // class net/minecraft/server/level/ServerPlayer
+       255: astore        4
+       257: aload         4
+       259: invokestatic  #123                // Method playerNeedEquipment:(Lnet/minecraft/server/level/ServerPlayer;)Z
+       262: ifeq          328
+       265: aload         4
+       267: invokestatic  #127                // Method checkPlayerO2Equipment:(Lnet/minecraft/server/level/ServerPlayer;)Z
+       270: ifeq          294
+       273: aload         4
+       275: getstatic     #130                // Field net/minecraft/world/entity/EquipmentSlot.CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+       278: invokevirtual #136                // Method net/minecraft/server/level/ServerPlayer.getItemBySlot:(Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;
+       281: astore        5
+       283: aload         4
+       285: aload         5
+       287: iconst_1
+       288: invokestatic  #140                // Method com/rae/creatingspace/content/life_support/spacesuit/OxygenBacktankUtil.consumeOxygen:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;I)V
+       291: goto          328
+       294: aload         4
+       296: aload_2
+       297: invokestatic  #146                // Method com/rae/creatingspace/init/CSDamageSources.no_oxygen:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/damagesource/DamageSource;
+       300: fconst_2
+       301: invokevirtual #152                // Method net/minecraft/server/level/ServerPlayer.hurt:(Lnet/minecraft/world/damagesource/DamageSource;F)Z
+       304: pop
+       305: goto          328
+       308: getstatic     #156                // Field com/rae/creatingspace/init/TagsInit$CustomEntityTag.SPACE_CREATURES:Lcom/rae/creatingspace/init/TagsInit$CustomEntityTag;
+       311: aload_1
+       312: invokevirtual #162                // Method com/rae/creatingspace/init/TagsInit$CustomEntityTag.matches:(Lnet/minecraft/world/entity/Entity;)Z
+       315: ifne          328
+       318: aload_1
+       319: aload_2
+       320: invokestatic  #146                // Method com/rae/creatingspace/init/CSDamageSources.no_oxygen:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/damagesource/DamageSource;
+       323: fconst_2
+       324: invokevirtual #166                // Method net/minecraft/world/entity/LivingEntity.hurt:(Lnet/minecraft/world/damagesource/DamageSource;F)Z
+       327: pop
+       328: aload_1
+       329: getfield      #112                // Field net/minecraft/world/entity/LivingEntity.tickCount:I
+       332: bipush        20
+       334: irem
+       335: ifne          439
+       338: aload_1
+       339: invokestatic  #116                // Method inO2:(Lnet/minecraft/world/entity/LivingEntity;)Z
+       342: ifne          439
+       345: aload_1
+       346: invokevirtual #120                // Method net/minecraft/world/entity/LivingEntity.isAttackable:()Z
+       349: ifeq          439
+       352: aload_1
+       353: instanceof    #41                 // class net/minecraft/server/level/ServerPlayer
+       356: ifeq          418
+       359: aload_1
+       360: checkcast     #41                 // class net/minecraft/server/level/ServerPlayer
+       363: astore        4
+       365: aload         4
+       367: invokestatic  #123                // Method playerNeedEquipment:(Lnet/minecraft/server/level/ServerPlayer;)Z
+       370: ifeq          439
+       373: aload         4
+       375: invokevirtual #167                // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+       378: invokevirtual #19                 // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+       381: invokevirtual #25                 // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       384: invokevirtual #168                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+       387: ldc           #174                // String creatingspace:venus
+       389: invokevirtual #176                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       392: ifeq          439
+       395: aload         4
+       397: invokestatic  #127                // Method checkPlayerO2Equipment:(Lnet/minecraft/server/level/ServerPlayer;)Z
+       400: ifne          439
+       403: aload         4
+       405: aload_2
+       406: invokestatic  #182                // Method com/rae/creatingspace/init/CSDamageSources.over_heat:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/damagesource/DamageSource;
+       409: ldc           #185                // float 0.5f
+       411: invokevirtual #152                // Method net/minecraft/server/level/ServerPlayer.hurt:(Lnet/minecraft/world/damagesource/DamageSource;F)Z
+       414: pop
+       415: goto          439
+       418: getstatic     #156                // Field com/rae/creatingspace/init/TagsInit$CustomEntityTag.SPACE_CREATURES:Lcom/rae/creatingspace/init/TagsInit$CustomEntityTag;
+       421: aload_1
+       422: invokevirtual #162                // Method com/rae/creatingspace/init/TagsInit$CustomEntityTag.matches:(Lnet/minecraft/world/entity/Entity;)Z
+       425: ifne          439
+       428: aload_1
+       429: aload_2
+       430: invokestatic  #182                // Method com/rae/creatingspace/init/CSDamageSources.over_heat:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/damagesource/DamageSource;
+       433: ldc           #185                // float 0.5f
+       435: invokevirtual #166                // Method net/minecraft/world/entity/LivingEntity.hurt:(Lnet/minecraft/world/damagesource/DamageSource;F)Z
+       438: pop
+       439: return
+      LineNumberTable:
+        line 49: 0
+        line 50: 17
+        line 51: 22
+        line 53: 30
+        line 54: 43
+        line 55: 50
+        line 56: 63
+        line 57: 83
+        line 59: 89
+        line 60: 94
+        line 62: 111
+        line 63: 130
+        line 64: 138
+        line 65: 145
+        line 66: 164
+        line 67: 169
+        line 68: 182
+        line 69: 195
+        line 70: 204
+        line 71: 207
+        line 80: 220
+        line 81: 230
+        line 82: 244
+        line 83: 257
+        line 84: 265
+        line 85: 273
+        line 86: 283
+        line 87: 291
+        line 88: 294
+        line 92: 308
+        line 93: 318
+        line 98: 328
+        line 99: 352
+        line 100: 365
+        line 101: 403
+        line 103: 418
+        line 104: 428
+        line 108: 439
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          145      59     7 vehicle   Lnet/minecraft/world/entity/Entity;
+          111     109     6 destServerLevel   Lnet/minecraft/server/level/ServerLevel;
+           89     131     5 dimensionToTeleport   Lnet/minecraft/resources/ResourceKey;
+           63     157     4 player   Lnet/minecraft/server/level/ServerPlayer;
+          283       8     5  tank   Lnet/minecraft/world/item/ItemStack;
+          257      51     4 player   Lnet/minecraft/server/level/ServerPlayer;
+          365      53     4 player   Lnet/minecraft/server/level/ServerPlayer;
+           22     417     2 level   Lnet/minecraft/world/level/Level;
+           30     409     3 dimension   Lnet/minecraft/resources/ResourceLocation;
+           17     422     1 entityLiving   Lnet/minecraft/world/entity/LivingEntity;
+            0     440     0 livingTickEvent   Lnet/neoforged/neoforge/event/tick/EntityTickEvent$Pre;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           89     131     5 dimensionToTeleport   Lnet/minecraft/resources/ResourceKey<Lnet/minecraft/world/level/Level;>;
+      StackMapTable: number_of_entries = 9
+        frame_type = 255 /* full_frame */
+          offset_delta = 130
+          locals = [ class net/neoforged/neoforge/event/tick/EntityTickEvent$Pre, class net/minecraft/world/entity/LivingEntity, class net/minecraft/world/level/Level, class net/minecraft/resources/ResourceLocation, class net/minecraft/server/level/ServerPlayer, class net/minecraft/resources/ResourceKey, class net/minecraft/server/level/ServerLevel ]
+          stack = []
+        frame_type = 252 /* append */
+          offset_delta = 33
+          locals = [ class net/minecraft/world/entity/Entity ]
+        frame_type = 250 /* chop */
+          offset_delta = 42
+        frame_type = 248 /* chop */
+          offset_delta = 12
+        frame_type = 252 /* append */
+          offset_delta = 73
+          locals = [ class net/minecraft/server/level/ServerPlayer ]
+        frame_type = 250 /* chop */
+          offset_delta = 13
+        frame_type = 19 /* same */
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 89
+        frame_type = 248 /* chop */
+          offset_delta = 20
+    RuntimeVisibleAnnotations:
+      0: #385()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static void playerSleeping(net.neoforged.neoforge.event.level.SleepFinishedTimeEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/level/SleepFinishedTimeEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #186                // Method net/neoforged/neoforge/event/level/SleepFinishedTimeEvent.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+         4: invokeinterface #191,  1          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getServer:()Lnet/minecraft/server/MinecraftServer;
+         9: getstatic     #194                // Field net/minecraft/world/level/Level.OVERWORLD:Lnet/minecraft/resources/ResourceKey;
+        12: invokevirtual #73                 // Method net/minecraft/server/MinecraftServer.getLevel:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/server/level/ServerLevel;
+        15: aload_0
+        16: invokevirtual #198                // Method net/neoforged/neoforge/event/level/SleepFinishedTimeEvent.getNewTime:()J
+        19: invokevirtual #202                // Method net/minecraft/server/level/ServerLevel.setDayTime:(J)V
+        22: return
+      LineNumberTable:
+        line 111: 0
+        line 115: 22
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      23     0 sleepFinishedEvent   Lnet/neoforged/neoforge/event/level/SleepFinishedTimeEvent;
+    RuntimeVisibleAnnotations:
+      0: #385()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static boolean checkPlayerO2Equipment(net.minecraft.server.level.ServerPlayer);
+    descriptor: (Lnet/minecraft/server/level/ServerPlayer;)Z
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=5, args_size=1
+         0: aload_0
+         1: getstatic     #130                // Field net/minecraft/world/entity/EquipmentSlot.CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+         4: invokevirtual #136                // Method net/minecraft/server/level/ServerPlayer.getItemBySlot:(Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;
+         7: astore_1
+         8: aload_0
+         9: getstatic     #208                // Field net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+        12: invokevirtual #136                // Method net/minecraft/server/level/ServerPlayer.getItemBySlot:(Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;
+        15: astore_2
+        16: aload_0
+        17: getstatic     #211                // Field net/minecraft/world/entity/EquipmentSlot.LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+        20: invokevirtual #136                // Method net/minecraft/server/level/ServerPlayer.getItemBySlot:(Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;
+        23: astore_3
+        24: aload_0
+        25: getstatic     #214                // Field net/minecraft/world/entity/EquipmentSlot.FEET:Lnet/minecraft/world/entity/EquipmentSlot;
+        28: invokevirtual #136                // Method net/minecraft/server/level/ServerPlayer.getItemBySlot:(Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;
+        31: astore        4
+        33: getstatic     #217                // Field com/rae/creatingspace/init/TagsInit$CustomItemTags.OXYGEN_SOURCES:Lcom/rae/creatingspace/init/TagsInit$CustomItemTags;
+        36: aload_1
+        37: invokevirtual #223                // Method com/rae/creatingspace/init/TagsInit$CustomItemTags.matches:(Lnet/minecraft/world/item/ItemStack;)Z
+        40: ifeq          97
+        43: aload_1
+        44: invokestatic  #226                // Method com/rae/creatingspace/content/life_support/spacesuit/OxygenBacktankUtil.hasOxygenRemaining:(Lnet/minecraft/world/item/ItemStack;)Z
+        47: ifeq          97
+        50: getstatic     #229                // Field com/rae/creatingspace/init/TagsInit$CustomItemTags.SPACESUIT:Lcom/rae/creatingspace/init/TagsInit$CustomItemTags;
+        53: aload_1
+        54: invokevirtual #223                // Method com/rae/creatingspace/init/TagsInit$CustomItemTags.matches:(Lnet/minecraft/world/item/ItemStack;)Z
+        57: ifeq          95
+        60: getstatic     #229                // Field com/rae/creatingspace/init/TagsInit$CustomItemTags.SPACESUIT:Lcom/rae/creatingspace/init/TagsInit$CustomItemTags;
+        63: aload_2
+        64: invokevirtual #223                // Method com/rae/creatingspace/init/TagsInit$CustomItemTags.matches:(Lnet/minecraft/world/item/ItemStack;)Z
+        67: ifeq          95
+        70: getstatic     #229                // Field com/rae/creatingspace/init/TagsInit$CustomItemTags.SPACESUIT:Lcom/rae/creatingspace/init/TagsInit$CustomItemTags;
+        73: aload_3
+        74: invokevirtual #223                // Method com/rae/creatingspace/init/TagsInit$CustomItemTags.matches:(Lnet/minecraft/world/item/ItemStack;)Z
+        77: ifeq          95
+        80: getstatic     #229                // Field com/rae/creatingspace/init/TagsInit$CustomItemTags.SPACESUIT:Lcom/rae/creatingspace/init/TagsInit$CustomItemTags;
+        83: aload         4
+        85: invokevirtual #223                // Method com/rae/creatingspace/init/TagsInit$CustomItemTags.matches:(Lnet/minecraft/world/item/ItemStack;)Z
+        88: ifeq          95
+        91: iconst_1
+        92: goto          96
+        95: iconst_0
+        96: ireturn
+        97: iconst_0
+        98: ireturn
+      LineNumberTable:
+        line 119: 0
+        line 120: 8
+        line 121: 16
+        line 122: 24
+        line 124: 33
+        line 125: 50
+        line 126: 64
+        line 127: 74
+        line 128: 85
+        line 125: 96
+        line 131: 97
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      99     0 player   Lnet/minecraft/server/level/ServerPlayer;
+            8      91     1 chestPlate   Lnet/minecraft/world/item/ItemStack;
+           16      83     2 helmet   Lnet/minecraft/world/item/ItemStack;
+           24      75     3 leggings   Lnet/minecraft/world/item/ItemStack;
+           33      66     4 boots   Lnet/minecraft/world/item/ItemStack;
+      StackMapTable: number_of_entries = 3
+        frame_type = 255 /* full_frame */
+          offset_delta = 95
+          locals = [ class net/minecraft/server/level/ServerPlayer, class net/minecraft/world/item/ItemStack, class net/minecraft/world/item/ItemStack, class net/minecraft/world/item/ItemStack, class net/minecraft/world/item/ItemStack ]
+          stack = []
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 0 /* same */
+
+  public static boolean playerNeedEquipment(net.minecraft.server.level.ServerPlayer);
+    descriptor: (Lnet/minecraft/server/level/ServerPlayer;)Z
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #232                // Method net/minecraft/server/level/ServerPlayer.isCreative:()Z
+         4: ifne          11
+         7: iconst_1
+         8: goto          12
+        11: iconst_0
+        12: ireturn
+      LineNumberTable:
+        line 135: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0 player   Lnet/minecraft/server/level/ServerPlayer;
+      StackMapTable: number_of_entries = 2
+        frame_type = 11 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+  public static boolean inO2(net.minecraft.world.entity.LivingEntity);
+    descriptor: (Lnet/minecraft/world/entity/LivingEntity;)Z
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=3, args_size=1
+         0: aload_0
+         1: invokevirtual #15                 // Method net/minecraft/world/entity/LivingEntity.level:()Lnet/minecraft/world/level/Level;
+         4: astore_1
+         5: aload_1
+         6: aload_0
+         7: invokevirtual #235                // Method net/minecraft/world/entity/LivingEntity.getOnPos:()Lnet/minecraft/core/BlockPos;
+        10: invokevirtual #239                // Method net/minecraft/world/level/Level.getBiome:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+        13: invokestatic  #243                // Method com/rae/creatingspace/content/planets/CSDimensionUtil.hasO2Atmosphere:(Lnet/minecraft/core/Holder;)Z
+        16: ifeq          21
+        19: iconst_1
+        20: ireturn
+        21: aload_0
+        22: checkcast     #247                // class com/rae/creatingspace/content/life_support/INeedOxygen
+        25: invokeinterface #249,  1          // InterfaceMethod com/rae/creatingspace/content/life_support/INeedOxygen.insideOxygenRoom:()Z
+        30: istore_2
+        31: aload_0
+        32: checkcast     #247                // class com/rae/creatingspace/content/life_support/INeedOxygen
+        35: iconst_0
+        36: invokeinterface #252,  2          // InterfaceMethod com/rae/creatingspace/content/life_support/INeedOxygen.setInsideOxygenRoom:(Z)V
+        41: iload_2
+        42: ireturn
+      LineNumberTable:
+        line 139: 0
+        line 142: 5
+        line 143: 19
+        line 159: 21
+        line 160: 31
+        line 161: 41
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      43     0 entity   Lnet/minecraft/world/entity/LivingEntity;
+            5      38     1 level   Lnet/minecraft/world/level/Level;
+           31      12     2  flag   Z
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 21
+          locals = [ class net/minecraft/world/level/Level ]
+
+  public static void registerCommands(net.neoforged.neoforge.event.RegisterCommandsEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/RegisterCommandsEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #256                // Method net/neoforged/neoforge/event/RegisterCommandsEvent.getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+         4: invokestatic  #262                // Method com/rae/creatingspace/init/CommandsInit.register:(Lcom/mojang/brigadier/CommandDispatcher;)V
+         7: return
+      LineNumberTable:
+        line 166: 0
+        line 167: 7
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 event   Lnet/neoforged/neoforge/event/RegisterCommandsEvent;
+    RuntimeVisibleAnnotations:
+      0: #385()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static void onBlockPlaced(net.neoforged.neoforge.event.level.BlockEvent$NeighborNotifyEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=10, args_size=1
+         0: iconst_0
+         1: istore_1
+         2: aload_0
+         3: invokevirtual #268                // Method net/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+         6: checkcast     #20                 // class net/minecraft/world/level/Level
+         9: astore_2
+        10: new           #271                // class net/minecraft/world/phys/AABB
+        13: dup
+        14: aload_0
+        15: invokevirtual #273                // Method net/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent.getPos:()Lnet/minecraft/core/BlockPos;
+        18: invokespecial #276                // Method net/minecraft/world/phys/AABB."<init>":(Lnet/minecraft/core/BlockPos;)V
+        21: astore_3
+        22: aload_2
+        23: ldc_w         #279                // class com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere
+        26: aload_3
+        27: invokevirtual #281                // Method net/minecraft/world/level/Level.getEntitiesOfClass:(Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;
+        30: astore        4
+        32: aload         4
+        34: invokeinterface #285,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        39: astore        5
+        41: aload         5
+        43: invokeinterface #291,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        48: ifeq          80
+        51: aload         5
+        53: invokeinterface #296,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        58: checkcast     #279                // class com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere
+        61: astore        6
+        63: aload         6
+        65: invokevirtual #300                // Method com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere.getShape:()Lcom/rae/creatingspace/content/life_support/sealer/RoomShape;
+        68: aload_3
+        69: invokevirtual #304                // Method com/rae/creatingspace/content/life_support/sealer/RoomShape.inside:(Lnet/minecraft/world/phys/AABB;)Z
+        72: ifeq          77
+        75: iconst_1
+        76: istore_1
+        77: goto          41
+        80: iload_1
+        81: ifeq          166
+        84: aload         4
+        86: invokeinterface #285,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        91: astore        5
+        93: aload         5
+        95: invokeinterface #291,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       100: ifeq          163
+       103: aload         5
+       105: invokeinterface #296,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       110: checkcast     #279                // class com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere
+       113: astore        6
+       115: getstatic     #310                // Field com/rae/creatingspace/configs/CSConfigs.SERVER:Lcom/rae/creatingspace/configs/CSCfgServer;
+       118: getfield      #316                // Field com/rae/creatingspace/configs/CSCfgServer.smarterSearch:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+       121: invokevirtual #322                // Method net/createmod/catnip/config/ConfigBase$ConfigBool.get:()Ljava/lang/Object;
+       124: checkcast     #327                // class java/lang/Boolean
+       127: invokevirtual #329                // Method java/lang/Boolean.booleanValue:()Z
+       130: ifeq          145
+       133: aload         6
+       135: aload_0
+       136: invokevirtual #273                // Method net/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent.getPos:()Lnet/minecraft/core/BlockPos;
+       139: invokevirtual #332                // Method com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere.regenerateRoom:(Lnet/minecraft/core/BlockPos;)V
+       142: goto          160
+       145: aload         6
+       147: invokevirtual #335                // Method com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere.resetShape:()V
+       150: aload         6
+       152: aload         6
+       154: invokevirtual #338                // Method com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere.getOnPos:()Lnet/minecraft/core/BlockPos;
+       157: invokevirtual #332                // Method com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere.regenerateRoom:(Lnet/minecraft/core/BlockPos;)V
+       160: goto          93
+       163: goto          313
+       166: aload_0
+       167: invokevirtual #339                // Method net/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent.getNotifiedSides:()Ljava/util/EnumSet;
+       170: invokevirtual #343                // Method java/util/EnumSet.iterator:()Ljava/util/Iterator;
+       173: astore        5
+       175: aload         5
+       177: invokeinterface #291,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       182: ifeq          313
+       185: aload         5
+       187: invokeinterface #296,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       192: checkcast     #346                // class net/minecraft/core/Direction
+       195: astore        6
+       197: new           #271                // class net/minecraft/world/phys/AABB
+       200: dup
+       201: aload_0
+       202: invokevirtual #273                // Method net/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent.getPos:()Lnet/minecraft/core/BlockPos;
+       205: aload         6
+       207: invokevirtual #348                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+       210: invokespecial #276                // Method net/minecraft/world/phys/AABB."<init>":(Lnet/minecraft/core/BlockPos;)V
+       213: astore        7
+       215: aload_2
+       216: ldc_w         #279                // class com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere
+       219: aload         7
+       221: invokevirtual #281                // Method net/minecraft/world/level/Level.getEntitiesOfClass:(Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;
+       224: astore        4
+       226: aload         4
+       228: invokeinterface #285,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       233: astore        8
+       235: aload         8
+       237: invokeinterface #291,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       242: ifeq          310
+       245: aload         8
+       247: invokeinterface #296,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       252: checkcast     #279                // class com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere
+       255: astore        9
+       257: getstatic     #310                // Field com/rae/creatingspace/configs/CSConfigs.SERVER:Lcom/rae/creatingspace/configs/CSCfgServer;
+       260: getfield      #316                // Field com/rae/creatingspace/configs/CSCfgServer.smarterSearch:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+       263: invokevirtual #322                // Method net/createmod/catnip/config/ConfigBase$ConfigBool.get:()Ljava/lang/Object;
+       266: checkcast     #327                // class java/lang/Boolean
+       269: invokevirtual #329                // Method java/lang/Boolean.booleanValue:()Z
+       272: ifeq          292
+       275: aload         9
+       277: aload_0
+       278: invokevirtual #273                // Method net/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent.getPos:()Lnet/minecraft/core/BlockPos;
+       281: aload         6
+       283: invokevirtual #348                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+       286: invokevirtual #332                // Method com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere.regenerateRoom:(Lnet/minecraft/core/BlockPos;)V
+       289: goto          307
+       292: aload         9
+       294: invokevirtual #335                // Method com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere.resetShape:()V
+       297: aload         9
+       299: aload         9
+       301: invokevirtual #338                // Method com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere.getOnPos:()Lnet/minecraft/core/BlockPos;
+       304: invokevirtual #332                // Method com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere.regenerateRoom:(Lnet/minecraft/core/BlockPos;)V
+       307: goto          235
+       310: goto          175
+       313: return
+      LineNumberTable:
+        line 171: 0
+        line 172: 2
+        line 173: 10
+        line 175: 22
+        line 176: 32
+        line 177: 63
+        line 178: 75
+        line 180: 77
+        line 181: 80
+        line 182: 84
+        line 183: 115
+        line 184: 133
+        line 186: 145
+        line 187: 150
+        line 189: 160
+        line 193: 166
+        line 194: 197
+        line 195: 215
+        line 197: 226
+        line 198: 257
+        line 199: 275
+        line 201: 292
+        line 202: 297
+        line 204: 307
+        line 205: 310
+        line 207: 313
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           63      14     6 atmosphere   Lcom/rae/creatingspace/content/life_support/sealer/RoomAtmosphere;
+          115      45     6 atmosphere   Lcom/rae/creatingspace/content/life_support/sealer/RoomAtmosphere;
+          257      50     9 atmosphere   Lcom/rae/creatingspace/content/life_support/sealer/RoomAtmosphere;
+          215      95     7 colBoxOutside   Lnet/minecraft/world/phys/AABB;
+          197     113     6 direction   Lnet/minecraft/core/Direction;
+            0     314     0 event   Lnet/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent;
+            2     312     1 blockPlaced   Z
+           10     304     2 level   Lnet/minecraft/world/level/Level;
+           22     292     3 colBoxInside   Lnet/minecraft/world/phys/AABB;
+           32     282     4 entityStream   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           32     282     4 entityStream   Ljava/util/List<Lcom/rae/creatingspace/content/life_support/sealer/RoomAtmosphere;>;
+      StackMapTable: number_of_entries = 14
+        frame_type = 255 /* full_frame */
+          offset_delta = 41
+          locals = [ class net/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent, int, class net/minecraft/world/level/Level, class net/minecraft/world/phys/AABB, class java/util/List, class java/util/Iterator ]
+          stack = []
+        frame_type = 35 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 252 /* append */
+          offset_delta = 12
+          locals = [ class java/util/Iterator ]
+        frame_type = 252 /* append */
+          offset_delta = 51
+          locals = [ class com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere ]
+        frame_type = 250 /* chop */
+          offset_delta = 14
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 2 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 8
+          locals = [ class java/util/Iterator ]
+        frame_type = 254 /* append */
+          offset_delta = 59
+          locals = [ class net/minecraft/core/Direction, class net/minecraft/world/phys/AABB, class java/util/Iterator ]
+        frame_type = 252 /* append */
+          offset_delta = 56
+          locals = [ class com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere ]
+        frame_type = 250 /* chop */
+          offset_delta = 14
+        frame_type = 248 /* chop */
+          offset_delta = 2
+        frame_type = 250 /* chop */
+          offset_delta = 2
+    RuntimeVisibleAnnotations:
+      0: #385()
+        net.neoforged.bus.api.SubscribeEvent
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: ldc           #78                 // class com/rae/creatingspace/content/event/CSEventHandler
+         2: invokevirtual #354                // Method java/lang/Class.desiredAssertionStatus:()Z
+         5: ifne          12
+         8: iconst_1
+         9: goto          13
+        12: iconst_0
+        13: putstatic     #77                 // Field $assertionsDisabled:Z
+        16: return
+      LineNumberTable:
+        line 42: 0
+      StackMapTable: number_of_entries = 2
+        frame_type = 12 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+}
+SourceFile: "CSEventHandler.java"
+RuntimeVisibleAnnotations:
+  0: #419(#420=s#421)
+    net.neoforged.fml.common.EventBusSubscriber(
+      modid="creatingspace"
+    )
+NestMembers:
+  com/rae/creatingspace/content/event/CSEventHandler$ModBusEvents
+InnerClasses:
+  public static #428= #8 of #426;         // Pre=class net/neoforged/neoforge/event/tick/EntityTickEvent$Pre of class net/neoforged/neoforge/event/tick/EntityTickEvent
+  public static final #431= #157 of #429; // CustomEntityTag=class com/rae/creatingspace/init/TagsInit$CustomEntityTag of class com/rae/creatingspace/init/TagsInit
+  public static final #432= #218 of #429; // CustomItemTags=class com/rae/creatingspace/init/TagsInit$CustomItemTags of class com/rae/creatingspace/init/TagsInit
+  public static #435= #269 of #433;       // NeighborNotifyEvent=class net/neoforged/neoforge/event/level/BlockEvent$NeighborNotifyEvent of class net/neoforged/neoforge/event/level/BlockEvent
+  public #438= #323 of #436;              // ConfigBool=class net/createmod/catnip/config/ConfigBase$ConfigBool of class net/createmod/catnip/config/ConfigBase
+  public static #439= #423 of #78;        // ModBusEvents=class com/rae/creatingspace/content/event/CSEventHandler$ModBusEvents of class com/rae/creatingspace/content/event/CSEventHandler
