@@ -1,0 +1,104 @@
+Compiled from "EndIslandCommand.java"
+public class com.yungnickyoung.minecraft.betterendisland.command.EndIslandCommand {
+  public com.yungnickyoung.minecraft.betterendisland.command.EndIslandCommand();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void register(com.mojang.brigadier.CommandDispatcher<net.minecraft.commands.CommandSourceStack>, net.minecraft.commands.CommandBuildContext, net.minecraft.commands.Commands$CommandSelection);
+    Code:
+       0: aload_0
+       1: ldc           #7                  // String end_island
+       3: invokestatic  #9                  // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+       6: invokedynamic #15,  0             // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+      11: invokevirtual #19                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.requires:(Ljava/util/function/Predicate;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      14: checkcast     #20                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      17: ldc           #25                 // String reset
+      19: invokestatic  #9                  // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+      22: invokedynamic #27,  0             // InvokeDynamic #1:run:()Lcom/mojang/brigadier/Command;
+      27: invokevirtual #31                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.executes:(Lcom/mojang/brigadier/Command;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      30: checkcast     #20                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      33: ldc           #35                 // String forceNewPortalPos
+      35: invokestatic  #37                 // Method com/mojang/brigadier/arguments/BoolArgumentType.bool:()Lcom/mojang/brigadier/arguments/BoolArgumentType;
+      38: invokestatic  #43                 // Method net/minecraft/commands/Commands.argument:(Ljava/lang/String;Lcom/mojang/brigadier/arguments/ArgumentType;)Lcom/mojang/brigadier/builder/RequiredArgumentBuilder;
+      41: invokedynamic #47,  0             // InvokeDynamic #2:run:()Lcom/mojang/brigadier/Command;
+      46: invokevirtual #48                 // Method com/mojang/brigadier/builder/RequiredArgumentBuilder.executes:(Lcom/mojang/brigadier/Command;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      49: invokevirtual #51                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      52: invokevirtual #51                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      55: checkcast     #20                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      58: invokevirtual #55                 // Method com/mojang/brigadier/CommandDispatcher.register:(Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;)Lcom/mojang/brigadier/tree/LiteralCommandNode;
+      61: pop
+      62: return
+
+  public static int executeReset(net.minecraft.commands.CommandSourceStack, boolean);
+    Code:
+       0: aload_0
+       1: invokevirtual #61                 // Method net/minecraft/commands/CommandSourceStack.getServer:()Lnet/minecraft/server/MinecraftServer;
+       4: getstatic     #67                 // Field net/minecraft/world/level/Level.END:Lnet/minecraft/resources/ResourceKey;
+       7: invokevirtual #73                 // Method net/minecraft/server/MinecraftServer.getLevel:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/server/level/ServerLevel;
+      10: astore_2
+      11: aload_2
+      12: ifnonnull     26
+      15: aload_0
+      16: ldc           #79                 // String Could not find the End dimension.
+      18: invokestatic  #81                 // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      21: invokevirtual #86                 // Method net/minecraft/commands/CommandSourceStack.sendFailure:(Lnet/minecraft/network/chat/Component;)V
+      24: iconst_m1
+      25: ireturn
+      26: aload_2
+      27: invokevirtual #90                 // Method net/minecraft/server/level/ServerLevel.getDragonFight:()Lnet/minecraft/world/level/dimension/end/EndDragonFight;
+      30: ifnonnull     44
+      33: aload_0
+      34: ldc           #96                 // String Could not find the dragon fight.
+      36: invokestatic  #81                 // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      39: invokevirtual #86                 // Method net/minecraft/commands/CommandSourceStack.sendFailure:(Lnet/minecraft/network/chat/Component;)V
+      42: iconst_m1
+      43: ireturn
+      44: aload_2
+      45: invokevirtual #90                 // Method net/minecraft/server/level/ServerLevel.getDragonFight:()Lnet/minecraft/world/level/dimension/end/EndDragonFight;
+      48: checkcast     #98                 // class com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight
+      51: astore_3
+      52: aload_3
+      53: iload_1
+      54: invokeinterface #100,  2          // InterfaceMethod com/yungnickyoung/minecraft/betterendisland/world/IBetterDragonFight.reset:(Z)V
+      59: aload_0
+      60: invokedynamic #103,  0            // InvokeDynamic #3:get:()Ljava/util/function/Supplier;
+      65: iconst_0
+      66: invokevirtual #107                // Method net/minecraft/commands/CommandSourceStack.sendSuccess:(Ljava/util/function/Supplier;Z)V
+      69: iconst_1
+      70: ireturn
+
+  private static net.minecraft.network.chat.Component lambda$executeReset$3();
+    Code:
+       0: ldc           #111                // String Ender Dragon fight has been reset.
+       2: invokestatic  #81                 // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       5: areturn
+
+  private static int lambda$register$2(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: aload_0
+       1: invokevirtual #113                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+       4: checkcast     #62                 // class net/minecraft/commands/CommandSourceStack
+       7: aload_0
+       8: ldc           #35                 // String forceNewPortalPos
+      10: invokestatic  #119                // Method com/mojang/brigadier/arguments/BoolArgumentType.getBool:(Lcom/mojang/brigadier/context/CommandContext;Ljava/lang/String;)Z
+      13: invokestatic  #123                // Method executeReset:(Lnet/minecraft/commands/CommandSourceStack;Z)I
+      16: ireturn
+
+  private static int lambda$register$1(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: aload_0
+       1: invokevirtual #113                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+       4: checkcast     #62                 // class net/minecraft/commands/CommandSourceStack
+       7: iconst_0
+       8: invokestatic  #123                // Method executeReset:(Lnet/minecraft/commands/CommandSourceStack;Z)I
+      11: ireturn
+
+  private static boolean lambda$register$0(net.minecraft.commands.CommandSourceStack);
+    Code:
+       0: aload_0
+       1: iconst_2
+       2: invokevirtual #129                // Method net/minecraft/commands/CommandSourceStack.hasPermission:(I)Z
+       5: ireturn
+}
