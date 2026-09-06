@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Create remaining annotated entry source 05d472d (extractor 6fdfb9e) is
+delivered and independently reproduced. Eighteen client-only entries and four
+registry/configuration/alias entries are dispositioned; CreateBuiltInRegistries
+also resolves the common-mixin initialization question. Thirty-two captured
+annotated entries remain to interpret, followed by Ponder and the three embedded
+libraries. Do not recapture the 55-class batch. Four focused cases and scoped
+checks pass. Census: 89 resolved, 47 open. No runtime or capture process is live.
+
 Create common-mixin batch is delivered: all 43 classes in source 9ad30e0
 (extractor 969a3d9), independent repeat exact, roles in provider-scope.md.
 Four focused checks and scoped quality checks pass. Do not recapture these

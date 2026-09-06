@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from collections import Counter
 from pathlib import Path
 from typing import cast
@@ -144,6 +145,11 @@ def test_create_common_schematic_and_dynamic_data_sources() -> None:
                 "e7941906291f7bfe6f15b3989e4db734cb57c0aec9e2ac55f370bd4cd2be7193",
                 43,
             ),
+            (
+                "create-remaining-entries",
+                "3428176fa46ad9d0a07e89f9f7c1748b8bea6154e793ad07bc7e251dbf8fbafb",
+                55,
+            ),
         ):
             directory = Path("evidence/item-8/sources") / label
             raw = (directory / "identities.json").read_bytes()
@@ -192,3 +198,27 @@ def test_create_remaining_declared_entry_inventory() -> None:
             ),
         )
         assert {row["class"] for row in rows} == common
+        directory = Path("evidence/item-8/sources/create-remaining-entries")
+        entries = cast(
+            "list[dict[str, str]]", json.loads((directory / "identities.json").read_text())
+        )
+        previously_captured = {
+            "com/simibubi/create/Create.class",
+            "com/simibubi/create/foundation/events/CommonEvents.class",
+            "com/simibubi/create/foundation/events/CommonEvents$ModBusEvents.class",
+            "com/simibubi/create/infrastructure/gametest/CreateGameTests.class",
+        }
+        assert {row["class"] for row in entries} == (annotated - previously_captured) | {
+            "com/simibubi/create/api/registry/CreateBuiltInRegistries.class"
+        }
+        client_subscribers: set[str] = set()
+        for row in entries:
+            text = (directory / row["disassembly"]).read_text()
+            annotation = re.search(
+                r"net.neoforged.fml.common.EventBusSubscriber\(\n(.*?)\n    \)", text, re.DOTALL
+            )
+            if annotation and "Dist;.CLIENT" in annotation[1]:
+                client_subscribers.add(row["class"])
+        assert len(client_subscribers) == 17
+        client = (directory / source.name / "com.simibubi.create.CreateClient.txt").read_text()
+        assert 'value="create"\n      dist=[Lnet/neoforged/api/distmarker/Dist;.CLIENT]' in client
