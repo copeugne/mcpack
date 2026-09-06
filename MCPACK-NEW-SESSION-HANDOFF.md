@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+Latest checkpoint at 4d72e0f: Better Dungeons provider scope is closed,
+pushed and remote-ref verified. Census: 68 resolved providers, 68 open. Two
+focused cases and scoped quality checks pass. Source f9696df reproduces exactly.
+Five roots, all 33 pools and 227 templates are accounted for. Preserve the one
+disconnected skeleton bridge and missing zombie stair. Six mob-theme labels and
+29 processor codecs are component inputs, not additional families. Detailed
+processor attributes remain deferred. Next reconcile Better Desert Temples using
+the existing desert-temple-suppression source, then remaining YUNG/shared and
+other provider rows. Do not repeat Dungeons or earlier closures. Final family
+count, canonical boundaries, attributes and review/main merge remain open.
+
 Latest checkpoint at 32b2d46: Better Mineshafts provider scope is closed,
 pushed and remote-ref verified. Census: 67 resolved providers, 69 open. Three
 focused cases and scoped quality checks pass. New source 26d2a97 reproduces
