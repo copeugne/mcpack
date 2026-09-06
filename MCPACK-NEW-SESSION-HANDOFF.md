@@ -6,6 +6,37 @@
 
 ### Continuation update - 2026-09-06
 
+Latest source checkpoints b9670f9 and 4e4a158 are pushed and remote-ref
+verified. Census remains 72 resolved providers and 64 open. Quark remains open.
+The specific spawner callback is resolved: configChanged copies isEnabled to
+staticEnabled; spawnerUpdate immediately returns when false or client-side.
+Frozen experimental."Spawner Replacer" is false. Enabled behavior only changes
+an existing spawner's entity type. Reuse quark-spawner-replacement (one class)
+and prior Zeta binding evidence; do not recapture or run a new experiment.
+
+quark-biolith-provider captures 26 bundled Biolith entry/API/service/loader/
+plugin/mixin classes through existing nested extraction support added at
+1ee9b51. Both captures reproduce exactly; scoped extractor checks passed.
+The Biolith loaders read biolith/biome_placement.json and
+biolith/surface_generation.json resources. Quark supplies neither resource;
+Glimmering Weald uses the captured direct BiomePlacement API. Biolith initializes
+configuration, compat, commands and criteria, and its hooks connect supplied
+biome/surface rules to generation. Complete its bounded role reconciliation
+with final Quark payload/entry accounting; do not expand unrelated math helpers.
+
+Remaining Quark closure work is the focused full-payload/source check and
+supported narrative disposition, including optional datapacks, declared hooks,
+existing generator candidates, bundled Biolith roles and frozen configuration.
+The full outer payload partition observed is 903 org classes, 64 tween-engine
+classes, 4479 assets, 3580 data files, 285 resource-pack files, 44 datapack files,
+seven META-INF files and five root metadata/icon files. This sums to 9367 and
+is an inspection lead to bind in the focused check, not a provider closure.
+No generation-class name outside the known world/mixin paths was found except
+datagen QuarkTags$Structures; name search alone is not absence evidence.
+Preserve existing candidate and variant distinctions. Final canonical family
+count, attributes and review/main merge remain open. This turn delivered source
+evidence and resolved a concrete callback; no blocker is present.
+
 Latest source checkpoint at 174dba6 is pushed and remote-ref verified.
 Census remains 72 resolved providers and 64 open; Quark is not closed.
 quark-provider-entries preserves 26 previously uncaptured entry/module/feature/
