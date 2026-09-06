@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Three Fabric client utility modules resolved: block render layers, key bindings,
+and sound. Source 1c35ebe (extractor 5624e8a) independently reproduces the entries;
+client initialization guards/client-only mixins and full partitions are bound.
+Eleven focused Fabric cases and scoped checks pass. Module queue: ten resolved,
+33 open. Continue named open modules, reusing all closed roles. Whole census:
+90 resolved, 46 open. No new family candidate or live process.
+
 Fabric v2 conventional tags resolved: source e1c7c24, extractor 27f6181,
 independently reproduced. Conventional tag keys, tag interface and translation
 warnings add no family. Full partition and source binding pass in eight focused
