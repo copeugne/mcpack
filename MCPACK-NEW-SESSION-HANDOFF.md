@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-06
 
+Kotlin for Forge membership is resolved with no independent family. Source
+increments 5dc5e092 and a93663c8 preserve six language/mod entry classes. All 11
+nested archives have no generation payload; the mod entries only log activation,
+and the NeoForge loader constructs consumer mods and registers their subscribers.
+Captures reproduce exactly; two focused cases and scoped quality checks pass.
+Whole providers: 131 resolved, 5 open. Working groups remain 410 and explicit
+provisional Moog decisions remain 100. Stop generic Kotlin runtime/API tracing.
+Next: Moonlight, owo-lib, ServerCore, Simply Swords and You're in Grave Danger.
+Canonical reconciliation precedes detailed attributes. Item 8 final acceptance,
+clean review and main merge remain incomplete.
+
+
 Fzzy Config membership is resolved with no independent family. Source increments
 574fadb2, 0f4f3dc3 and dafcbafd preserve eight entry, event and consumer registry
 classes. Packaged content has no generated structure payload. Registry lists

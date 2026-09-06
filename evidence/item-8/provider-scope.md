@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 130 of 136. The exact queue below has 6 open rows.
+Supported provider dispositions: 131 of 136. The exact queue below has 5 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -666,7 +666,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `integrated_api-1.7.3+1.21.1-neoforge.jar` | Existing pool-codecs and source 88a0f54; test_integrated_api_provider_scope.py | RESOLVED: Shared generation codecs, existing structure modifiers, tags and consumer data loaders. No independent family. See Integrated API disposition below. |
 | `integrated_stronghold-1.1.4+1.21.1-neoforge.jar` | `integrated-stronghold-provider`, existing root/graph and family-decision regression | RESOLVED: one existing root, both modification mixins, all components and disconnected/missing templates accounted for. See Integrated Stronghold provider disposition below. |
 | `integrated_villages-1.3.3+1.21.1-neoforge.jar` | `integrated-villages-provider` (97000f2), prior suppression evidence, test_integrated_villages_provider_scope.py | RESOLVED: Twelve existing roots, full component partition, four incompatible legacy addition declarations and existing village suppression. See Integrated Villages disposition below. Shared Integrated API remains open. |
-| `kotlinforforge-5.11.0-all.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `kotlinforforge-5.11.0-all.jar` | `kff-language`, `kff-mod` | RESOLVED: language loading and consumer APIs; no independent family. See Kotlin for Forge closure below. |
 | `letmedespawn-1.21.x-neoforge-1.5.0.jar` | `letmedespawn-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing mob persistence/discard behavior; no independent family. See small utility provider dispositions below. |
 | `libraryferret-neoforge-1.21.1-4.0.0.jar` | `libraryferret-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Abstract consumer-supplied jigsaw/placement support and coin content. No independent family. See additional shared provider dispositions below. |
 | `lithostitched-1.7.10+beta4-neoforge-21.1.jar` | Existing pool/alias/modifier sources; provider entry 4fbbe70 and remaining hooks 37c3259; test_lithostitched_provider_scope.py | RESOLVED: Shared generation codecs, terrain/biome changes and existing vanilla template/processor/alias components. No independent family. See Lithostitched provider disposition below. |
@@ -8258,3 +8258,45 @@ The focused test passes (one case), as do scoped Ruff and Basedpyright.
 Whole-provider dispositions are now 130 resolved and 6 open. The 410 working
 groups and 100 explicit provisional Moog decisions are unchanged. These are not
 a final family count. Final canonical reconciliation and attributes remain open.
+
+## Kotlin for Forge provider closure
+
+The retained outer archive SHA-256 is
+ac827b62ce8fe71760208671b4a694e3ccd35049075f9406a751cffb5a5c9779.
+It contains no classes, only metadata and 11 nested archives. The focused test
+checks the exact member list and all nested archives for generation payloads.
+None contains data resources, NBT templates, deeper archives or mixin configs.
+Eight Kotlin runtime libraries have no Minecraft class references. Kotlin Reflect
+has three Kotlin reflection service declarations; the other seven have none.
+These do not provide structure content.
+
+The three remaining modules are kfflang (19 classes), kfflib (46), and kffmod (2).
+The helper library has no NeoForge automatic entries or services; its non-class
+files are metadata. Its Minecraft references concern capability, profiler, deferred
+holder and vector utility APIs. It does not independently install content.
+
+Source increments 5dc5e092 and a93663c8 preserve six classes, including both
+language services and both mod entry classes. The NeoForge language loader reads
+consumer mod annotations, applies distribution selection and creates their mod
+containers. The container instantiates consumer entry classes and injects their
+event subscribers. AutoKotlinEventBusSubscriber registers consumer annotated
+classes and methods. The Forge language provider separately reads Forge mod
+annotations and assigns language targets; this does not activate Forge on the
+frozen NeoForge platform. Both packaged mod entries only initialize a logger and
+log that Kotlin for Forge is enabled. No independent family is added.
+
+Stop generic language runtime, reflection, coroutine and utility implementation
+tracing. This disposition is about provider membership, not general loader
+compatibility. Source captures reproduce exactly into independent r1 directories;
+their READMEs preserve commands and manifest identities. Validation:
+
+```sh
+uv run pytest -q tests/item8/test_kff_provider_scope.py
+uv run ruff check tests/item8/test_kff_provider_scope.py tools/inspect_item8_pool_elements.py
+uv run basedpyright tests/item8/test_kff_provider_scope.py tools/inspect_item8_pool_elements.py
+```
+
+Both focused cases pass. Ruff first flagged one long assertion; it was wrapped,
+and scoped Ruff and Basedpyright pass. Whole providers: 131 resolved, 5 open.
+Working groups remain 410 and explicit provisional Moog decisions remain 100.
+Final canonical reconciliation, attributes and Item 8 acceptance remain open.
