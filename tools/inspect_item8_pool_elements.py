@@ -75,6 +75,12 @@ ARCHIVES = frozenset(
         "integrated_stronghold-1.1.4+1.21.1-neoforge.jar",
         "adorabuild-structures-2.11.0-neoforge-1.21.3.jar",
         "[Neoforge]ctov-3.6.3.jar",
+        "AI-Improvements-1.21-0.5.3.jar",
+        "attributefix-neoforge-1.21.1-21.1.3.jar",
+        "LeavesBeGone-v21.1.1-1.21.1-NeoForge.jar",
+        "letmedespawn-1.21.x-neoforge-1.5.0.jar",
+        "sparsestructures-neoforge-1.21.1-3.0.jar",
+        "structure_pool_api-neoforge-1.2.1+1.21.1.jar",
         "idas-1.13.7+1.21.1-neoforge.jar",
         "BetterEnd-21.0.31.jar",
         "BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar",
@@ -85,6 +91,15 @@ ARCHIVES = frozenset(
     }
 )
 GENERATION_PREFIXES = (
+    "com/builtbroken/ai/improvements/",
+    "net/darkhax/attributefix/",
+    "fuzs/leavesbegone/",
+    "architectury_inject_LeavesBeGone",
+    "com/frikinjay/letmedespawn/",
+    "architectury_inject_letmedespawn_",
+    "io/github/maxencedc/sparsestructures/",
+    "net/fabric_extras/structure_pool/",
+    "architectury_inject_structure_pool_api_",
     "net/choicetheorem/ctov/",
     "architectury_inject_ChoiceTheoremsoverhauledvillage_common_",
     "net/adorabuild/structures/",
@@ -660,7 +675,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 ):
                     continue
                 class_name = name.removesuffix(".class").replace("/", ".")
-                verbose = source.name.startswith("mcw-")
+                verbose = source.name.startswith((
+                    "mcw-", "AI-Improvements-", "attributefix-", "LeavesBeGone-",
+                    "letmedespawn-", "sparsestructures-", "structure_pool_api-",
+                ))
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
                     "net/choicetheorem/ctov/CTOV.class",
                     "net/choicetheorem/ctov/neoforge/ctovNeo.class",
