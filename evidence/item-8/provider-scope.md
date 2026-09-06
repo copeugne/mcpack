@@ -704,6 +704,42 @@ attributes. This separates unknown membership from incomplete attributes.
 
 ## Supplementaries packaged component checkpoint
 
+Custom-generation role follow-up: BarnaclesMultifaceGrowthFeature uses the
+configured multiface block's placement and spread operations; BasaltAshFeature
+scans a matching surface and writes the configured top and optional lower block.
+These are natural growth and terrain decoration. SpawnEntityWithPassengersFeature
+creates the configured entities/passengers, handles boat variants/container loot
+and supplies the existing galleon component pools. It is not another site family.
+RoadSignStructure and GalleonStructure select suitable positions and call vanilla
+JigsawPlacement.addPieces with their start pools. Their configuration-dependent
+eligibility and assembled attributes remain separate from membership.
+
+RoadSignFeature includes deferred construction. It places a generator block and
+stores its configuration. Source ccbfda7 (extractor dabd675) captures that block
+entity callback; manifest a6a99e646dd7b65793defda3168306b20e1a70a901b7d37e024d4aea3f6f5194
+is independently reproduced and bound by the focused test. The first tick starts
+an asynchronous ROAD_SIGN_DESTINATIONS lookup; completion invokes the already
+captured applyPostProcess to finish sign blocks, text, lighting and optional
+notice-board content. Failure paths log and/or remove the generator. A feature
+placement returning true is therefore not proof that a finished sign was observed.
+This remains the same root/component design chain, not another family.
+
+Preserve one named nonregistry grouping question: the freestanding cave-urn
+cache candidate. The cave_urns biome modifier selects the cave_urns placed feature,
+which selects urns_patch: a vanilla random patch of simple urn blocks marked
+treasure=true. The galleon urn pool also consumes urns_patch as a component.
+Do not count that component again as a galleon family, and do not silently exclude
+the freestanding treasure-bearing patch as vegetation. Its cache-versus-decoration
+family boundary is for explicit canonical reconciliation; no new family total is
+claimed here. The other four biome modifiers select basalt ash, ocean/shore
+barnacles and wild flax. All five modifier references are bound by the existing
+focused component test, as is the urn patch's treasure-bearing block definition.
+
+Two focused cases pass in 0.79s; scoped Ruff and Basedpyright pass. No new runtime
+measurement or graph was added. Remaining provider work: shared processor and
+placement roles, loader/event/mixin entry coverage and full payload reconciliation.
+Reuse these resolved generation paths. Census remains 78 resolved, 58 open.
+
 Generation source d6221a7, extractor 24f0a75, captures eleven identified classes
 with manifest 0eb64c666c0db4bd45091038bb2b3d622a1e57f896d31fe0df1279f2ff357e5d.
 Independent r1 matches, and the focused test binds every source to the archive.

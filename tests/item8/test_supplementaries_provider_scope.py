@@ -73,6 +73,32 @@ def test_supplementaries_components_and_road_sign_feature_chain() -> None:
     assert resources[prefix + "configured_feature/road_sign.json"]["type"] == (
         "supplementaries:road_sign"
     )
+    assert resources[prefix + "placed_feature/cave_urns.json"]["feature"] == (
+        "supplementaries:urns_patch"
+    )
+    urn_patch = resources[prefix + "configured_feature/urns_patch.json"]
+    assert urn_patch["type"] == "minecraft:random_patch"
+    patch_config = cast("dict[str, JsonValue]", urn_patch["config"])
+    feature = cast("dict[str, JsonValue]", patch_config["feature"])
+    assert feature["feature"] == {
+        "type": "minecraft:simple_block", "config": {"to_place": {
+            "type": "minecraft:simple_state_provider", "state": {
+                "Name": "supplementaries:urn",
+                "Properties": {"treasure": "true", "waterlogged": "false"},
+            },
+        }},
+    }
+    modifier_prefix = "data/supplementaries/neoforge/biome_modifier/"
+    assert {
+        path.removeprefix(modifier_prefix): row["features"]
+        for path, row in resources.items() if path.startswith(modifier_prefix)
+    } == {
+        "basalt_ash.json": "supplementaries:basalt_ash",
+        "cave_urns.json": "supplementaries:cave_urns",
+        "ocean_barnacles.json": "supplementaries:ocean_barnacles",
+        "shore_barnacles.json": "supplementaries:shore_barnacles",
+        "wild_flax.json": "supplementaries:wild_flax",
+    }
 
 
 def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
@@ -84,6 +110,13 @@ def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
     )
     identities = cast("list[dict[str, str]]", json.loads(raw))
     assert len(identities) == len({row["class"] for row in identities}) == 11
+    callback_directory = Path("evidence/item-8/sources/supplementaries-road-sign-callback")
+    raw = (callback_directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "a6a99e646dd7b65793defda3168306b20e1a70a901b7d37e024d4aea3f6f5194"
+    )
+    callback = cast("list[dict[str, str]]", json.loads(raw))
+    assert len(callback) == 1
     with ZipFile(source.path) as archive:
         mixins = cast(
             "dict[str, JsonValue]", json.loads(archive.read("supplementaries-common.mixins.json"))
@@ -92,12 +125,13 @@ def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
         assert {"MineshaftCorridorMixin", "MineshaftPiecesMixin"} <= set(
             cast("list[str]", mixins["mixins"])
         )
-        for row in identities:
-            assert row["archive"] == source.name
-            assert row["archive_sha256"] == source.sha256
-            assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
-            raw = (directory / row["disassembly"]).read_bytes()
-            assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        for capture_directory, rows in ((directory, identities), (callback_directory, callback)):
+            for row in rows:
+                assert row["archive"] == source.name
+                assert row["archive_sha256"] == source.sha256
+                assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+                raw = (capture_directory / row["disassembly"]).read_bytes()
+                assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
     raw = Path("evidence/item-6/frozen/config/supplementaries-common.toml").read_bytes()
     assert hashlib.sha256(raw).hexdigest() == (
         "14210291891759b831951eba24c65985ed5bd27a7d09b6383aeb9fd3e8f1bc8c"
