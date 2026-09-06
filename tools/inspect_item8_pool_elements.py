@@ -213,6 +213,7 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/bettercombat/compat/FTBTeamsCompat.class",
     "net/bettercombat/logic/WeaponRegistry.class",
     "net/bettercombat/compat/CompatFeatures.class",
     "net/bettercombat/BetterCombatMod.class",
