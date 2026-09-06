@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+RU full payload, six overlay directories and embedded JSON5 archive boundaries
+are now checked in test_regions_unexplored_provider_scope.py. Both cases pass
+(0.16s), with scoped Ruff/Basedpyright passing. The thirty overlay files are
+sixteen recipes and fourteen vegetation definitions. JSON5 has no independent
+Minecraft entry and only configuration consumers in the parent. Remaining RU
+work is common/configuration entry interpretation and registered tree placers/
+decorators. Do not repeat feature or archive inventories. Census: 88 resolved,
+48 open. No runtime or capture process is live.
+
 Regions Unexplored is current. The remaining 35 captured feature implementations
 now have explicit plant/mineral/tree contribution dispositions in provider-scope.md;
 none adds another named authored-site candidate. The ground-decorator source
