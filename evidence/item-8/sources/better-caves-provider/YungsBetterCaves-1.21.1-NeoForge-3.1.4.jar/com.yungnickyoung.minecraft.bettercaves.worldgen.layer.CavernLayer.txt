@@ -1,0 +1,484 @@
+Compiled from "CavernLayer.java"
+public class com.yungnickyoung.minecraft.bettercaves.worldgen.layer.CavernLayer {
+  private final com.yungnickyoung.minecraft.yungsapi.noise.FastNoise cavernRegionSampler;
+
+  private final java.util.List<com.yungnickyoung.minecraft.bettercaves.worldgen.carver.CarverNoiseRange> noiseRanges;
+
+  private final com.yungnickyoung.minecraft.bettercaves.worldgen.BetterCavesWorldCarverConfig config;
+
+  private final boolean isDebugViewEnabled;
+
+  private final boolean isOverrideSurfaceDetectionEnabled;
+
+  public com.yungnickyoung.minecraft.bettercaves.worldgen.layer.CavernLayer(net.minecraft.server.level.ServerLevel, com.yungnickyoung.minecraft.bettercaves.worldgen.BetterCavesWorldCarverConfig, com.yungnickyoung.minecraft.bettercaves.worldgen.BetterCavesWorldCarverConfig$CavernLayerSettings);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #7                  // class java/util/ArrayList
+       8: dup
+       9: invokespecial #9                  // Method java/util/ArrayList."<init>":()V
+      12: putfield      #10                 // Field noiseRanges:Ljava/util/List;
+      15: aload_0
+      16: aload_2
+      17: putfield      #16                 // Field config:Lcom/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig;
+      20: aload_0
+      21: aload_2
+      22: getfield      #20                 // Field com/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig.debugSettings:Lcom/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig$DebugSettings;
+      25: invokevirtual #26                 // Method com/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig$DebugSettings.enabled:()Z
+      28: putfield      #32                 // Field isDebugViewEnabled:Z
+      31: aload_0
+      32: aload_2
+      33: getfield      #36                 // Field com/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig.misc:Lcom/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig$MiscSettings;
+      36: invokevirtual #40                 // Method com/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig$MiscSettings.overrideSurfaceDetection:()Z
+      39: putfield      #45                 // Field isOverrideSurfaceDetectionEnabled:Z
+      42: aload_3
+      43: invokevirtual #48                 // Method com/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig$CavernLayerSettings.cavernRegionSizeFrequency:()D
+      46: dstore        4
+      48: aload_0
+      49: new           #54                 // class com/yungnickyoung/minecraft/yungsapi/noise/FastNoise
+      52: dup
+      53: invokespecial #56                 // Method com/yungnickyoung/minecraft/yungsapi/noise/FastNoise."<init>":()V
+      56: putfield      #57                 // Field cavernRegionSampler:Lcom/yungnickyoung/minecraft/yungsapi/noise/FastNoise;
+      59: aload_0
+      60: getfield      #57                 // Field cavernRegionSampler:Lcom/yungnickyoung/minecraft/yungsapi/noise/FastNoise;
+      63: aload_1
+      64: invokevirtual #61                 // Method net/minecraft/server/level/ServerLevel.getSeed:()J
+      67: l2i
+      68: sipush        333
+      71: iadd
+      72: invokevirtual #67                 // Method com/yungnickyoung/minecraft/yungsapi/noise/FastNoise.SetSeed:(I)V
+      75: aload_0
+      76: getfield      #57                 // Field cavernRegionSampler:Lcom/yungnickyoung/minecraft/yungsapi/noise/FastNoise;
+      79: dload         4
+      81: d2f
+      82: invokevirtual #71                 // Method com/yungnickyoung/minecraft/yungsapi/noise/FastNoise.SetFrequency:(F)V
+      85: aload_1
+      86: aload_2
+      87: aload_3
+      88: invokestatic  #75                 // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CavernCarver.createCarversFromConfig:(Lnet/minecraft/server/level/ServerLevel;Lcom/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig;Lcom/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig$CavernLayerSettings;)Ljava/util/List;
+      91: astore        6
+      93: aload_3
+      94: invokevirtual #81                 // Method com/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig$CavernLayerSettings.cavernSpawnChance:()D
+      97: ldc2_w        #84                 // double 100.0d
+     100: ddiv
+     101: d2f
+     102: fstore        7
+     104: aload         6
+     106: invokeinterface #86,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+     111: invokedynamic #92,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+     116: invokeinterface #96,  2           // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+     121: iconst_0
+     122: invokestatic  #102                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     125: invokedynamic #108,  0            // InvokeDynamic #1:apply:()Ljava/util/function/BinaryOperator;
+     130: invokeinterface #111,  3          // InterfaceMethod java/util/stream/Stream.reduce:(Ljava/lang/Object;Ljava/util/function/BinaryOperator;)Ljava/lang/Object;
+     135: checkcast     #103                // class java/lang/Integer
+     138: invokevirtual #115                // Method java/lang/Integer.intValue:()I
+     141: istore        8
+     143: getstatic     #119                // Field com/yungnickyoung/minecraft/bettercaves/BetterCavesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     146: ldc           #125                // String CAVERN INFORMATION
+     148: invokeinterface #127,  2          // InterfaceMethod org/apache/logging/log4j/Logger.debug:(Ljava/lang/String;)V
+     153: getstatic     #119                // Field com/yungnickyoung/minecraft/bettercaves/BetterCavesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     156: ldc           #133                // String --> SPAWN CHANCE SET TO: {}
+     158: fload         7
+     160: invokestatic  #135                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+     163: invokeinterface #140,  3          // InterfaceMethod org/apache/logging/log4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;)V
+     168: getstatic     #119                // Field com/yungnickyoung/minecraft/bettercaves/BetterCavesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     171: ldc           #143                // String --> TOTAL SPAWN WEIGHT: {}
+     173: iload         8
+     175: invokestatic  #102                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     178: invokeinterface #140,  3          // InterfaceMethod org/apache/logging/log4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;)V
+     183: aload         6
+     185: invokedynamic #145,  0            // InvokeDynamic #2:test:()Ljava/util/function/Predicate;
+     190: invokeinterface #149,  2          // InterfaceMethod java/util/List.removeIf:(Ljava/util/function/Predicate;)Z
+     195: pop
+     196: fconst_1
+     197: fload         7
+     199: fsub
+     200: fstore        9
+     202: aload         6
+     204: invokeinterface #153,  1          // InterfaceMethod java/util/List.size:()I
+     209: iconst_1
+     210: if_icmple     229
+     213: fload         9
+     215: aload         6
+     217: invokeinterface #153,  1          // InterfaceMethod java/util/List.size:()I
+     222: iconst_1
+     223: isub
+     224: i2f
+     225: fdiv
+     226: goto          231
+     229: fload         9
+     231: fstore        10
+     233: getstatic     #119                // Field com/yungnickyoung/minecraft/bettercaves/BetterCavesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     236: ldc           #156                // String --> DEADZONE PERCENT: {}({} TOTAL)
+     238: fload         10
+     240: invokestatic  #135                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+     243: fload         9
+     245: invokestatic  #135                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+     248: invokeinterface #158,  4          // InterfaceMethod org/apache/logging/log4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     253: ldc           #161                // float -1.0f
+     255: fstore        11
+     257: aload         6
+     259: invokeinterface #162,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     264: astore        12
+     266: aload         12
+     268: invokeinterface #166,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     273: ifeq          388
+     276: aload         12
+     278: invokeinterface #171,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     283: checkcast     #175                // class com/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver
+     286: astore        13
+     288: getstatic     #119                // Field com/yungnickyoung/minecraft/bettercaves/BetterCavesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     291: ldc           #177                // String --> CARVER
+     293: invokeinterface #127,  2          // InterfaceMethod org/apache/logging/log4j/Logger.debug:(Ljava/lang/String;)V
+     298: aload         13
+     300: invokevirtual #179                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver.getSpawnWeight:()I
+     303: i2f
+     304: iload         8
+     306: i2f
+     307: fdiv
+     308: fload         7
+     310: fmul
+     311: fstore        14
+     313: fload         11
+     315: fload         14
+     317: invokestatic  #182                // Method com/yungnickyoung/minecraft/bettercaves/noise/NoiseUtils.simplexNoiseOffsetByPercent:(FF)F
+     320: fstore        15
+     322: new           #188                // class com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverNoiseRange
+     325: dup
+     326: fload         11
+     328: fload         15
+     330: aload         13
+     332: invokespecial #190                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverNoiseRange."<init>":(FFLcom/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver;)V
+     335: astore        16
+     337: aload_0
+     338: getfield      #10                 // Field noiseRanges:Ljava/util/List;
+     341: aload         16
+     343: invokeinterface #193,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     348: pop
+     349: fload         15
+     351: fload         10
+     353: invokestatic  #182                // Method com/yungnickyoung/minecraft/bettercaves/noise/NoiseUtils.simplexNoiseOffsetByPercent:(FF)F
+     356: fstore        11
+     358: getstatic     #119                // Field com/yungnickyoung/minecraft/bettercaves/BetterCavesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     361: ldc           #197                // String     --> RANGE PERCENT LENGTH WANTED: {}
+     363: fload         14
+     365: invokestatic  #135                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+     368: invokeinterface #140,  3          // InterfaceMethod org/apache/logging/log4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;)V
+     373: getstatic     #119                // Field com/yungnickyoung/minecraft/bettercaves/BetterCavesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     376: ldc           #199                // String     --> RANGE FOUND: {}
+     378: aload         16
+     380: invokeinterface #140,  3          // InterfaceMethod org/apache/logging/log4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;)V
+     385: goto          266
+     388: return
+
+  public void carveChunk(net.minecraft.world.level.chunk.ChunkAccess, int[][], net.minecraft.world.level.block.state.BlockState[][], java.util.function.Function<net.minecraft.core.BlockPos, net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>>, net.minecraft.world.level.chunk.CarvingMask, net.minecraft.world.level.levelgen.Aquifer);
+    Code:
+       0: aload_0
+       1: getfield      #10                 // Field noiseRanges:Ljava/util/List;
+       4: invokeinterface #201,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+       9: ifeq          13
+      12: return
+      13: iconst_0
+      14: istore        7
+      16: iload         7
+      18: iconst_4
+      19: if_icmpge     657
+      22: iconst_0
+      23: istore        8
+      25: iload         8
+      27: iconst_4
+      28: if_icmpge     651
+      31: iload         7
+      33: iconst_4
+      34: imul
+      35: istore        9
+      37: iload         8
+      39: iconst_4
+      40: imul
+      41: istore        10
+      43: iload         9
+      45: iconst_4
+      46: iadd
+      47: iconst_1
+      48: isub
+      49: istore        11
+      51: iload         10
+      53: iconst_4
+      54: iadd
+      55: iconst_1
+      56: isub
+      57: istore        12
+      59: new           #206                // class net/minecraft/core/BlockPos
+      62: dup
+      63: aload_1
+      64: invokevirtual #208                // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+      67: getfield      #214                // Field net/minecraft/world/level/ChunkPos.x:I
+      70: bipush        16
+      72: imul
+      73: iload         9
+      75: iadd
+      76: iconst_1
+      77: aload_1
+      78: invokevirtual #208                // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+      81: getfield      #220                // Field net/minecraft/world/level/ChunkPos.z:I
+      84: bipush        16
+      86: imul
+      87: iload         10
+      89: iadd
+      90: invokespecial #223                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      93: astore        13
+      95: new           #206                // class net/minecraft/core/BlockPos
+      98: dup
+      99: aload_1
+     100: invokevirtual #208                // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+     103: getfield      #214                // Field net/minecraft/world/level/ChunkPos.x:I
+     106: bipush        16
+     108: imul
+     109: iload         11
+     111: iadd
+     112: iconst_1
+     113: aload_1
+     114: invokevirtual #208                // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+     117: getfield      #220                // Field net/minecraft/world/level/ChunkPos.z:I
+     120: bipush        16
+     122: imul
+     123: iload         12
+     125: iadd
+     126: invokespecial #223                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     129: astore        14
+     131: ldc           #226                // int -2147483648
+     133: istore        15
+     135: aload_0
+     136: getfield      #45                 // Field isOverrideSurfaceDetectionEnabled:Z
+     139: ifne          244
+     142: iload         9
+     144: istore        16
+     146: iload         16
+     148: iload         11
+     150: if_icmpgt     190
+     153: iload         10
+     155: istore        17
+     157: iload         17
+     159: iload         12
+     161: if_icmpgt     184
+     164: iload         15
+     166: aload_2
+     167: iload         16
+     169: aaload
+     170: iload         17
+     172: iaload
+     173: invokestatic  #227                // Method java/lang/Math.max:(II)I
+     176: istore        15
+     178: iinc          17, 1
+     181: goto          157
+     184: iinc          16, 1
+     187: goto          146
+     190: aload_0
+     191: getfield      #10                 // Field noiseRanges:Ljava/util/List;
+     194: invokeinterface #162,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     199: astore        16
+     201: aload         16
+     203: invokeinterface #166,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     208: ifeq          241
+     211: aload         16
+     213: invokeinterface #171,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     218: checkcast     #188                // class com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverNoiseRange
+     221: astore        17
+     223: iload         15
+     225: aload         17
+     227: invokevirtual #233                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverNoiseRange.getCarver:()Lcom/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver;
+     230: invokevirtual #237                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver.getTopY:()I
+     233: invokestatic  #227                // Method java/lang/Math.max:(II)I
+     236: istore        15
+     238: goto          201
+     241: goto          295
+     244: aload_0
+     245: getfield      #10                 // Field noiseRanges:Ljava/util/List;
+     248: invokeinterface #162,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     253: astore        16
+     255: aload         16
+     257: invokeinterface #166,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     262: ifeq          295
+     265: aload         16
+     267: invokeinterface #171,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     272: checkcast     #188                // class com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverNoiseRange
+     275: astore        17
+     277: iload         15
+     279: aload         17
+     281: invokevirtual #233                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverNoiseRange.getCarver:()Lcom/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver;
+     284: invokevirtual #237                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver.getTopY:()I
+     287: invokestatic  #227                // Method java/lang/Math.max:(II)I
+     290: istore        15
+     292: goto          255
+     295: new           #240                // class java/util/HashMap
+     298: dup
+     299: invokespecial #242                // Method java/util/HashMap."<init>":()V
+     302: astore        16
+     304: aload_0
+     305: getfield      #10                 // Field noiseRanges:Ljava/util/List;
+     308: invokeinterface #162,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     313: astore        17
+     315: aload         17
+     317: invokeinterface #166,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     322: ifeq          379
+     325: aload         17
+     327: invokeinterface #171,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     332: checkcast     #188                // class com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverNoiseRange
+     335: astore        18
+     337: aload         18
+     339: invokevirtual #233                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverNoiseRange.getCarver:()Lcom/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver;
+     342: invokevirtual #243                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver.getNoiseGen:()Lcom/yungnickyoung/minecraft/bettercaves/noise/NoiseGen;
+     345: aload         13
+     347: aload         14
+     349: aload         18
+     351: invokevirtual #233                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverNoiseRange.getCarver:()Lcom/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver;
+     354: invokevirtual #247                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver.getBottomY:()I
+     357: iload         15
+     359: invokevirtual #250                // Method com/yungnickyoung/minecraft/bettercaves/noise/NoiseGen.interpolateNoiseCube:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;II)[[[[D
+     362: astore        19
+     364: aload         16
+     366: aload         18
+     368: aload         19
+     370: invokeinterface #256,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     375: pop
+     376: goto          315
+     379: iconst_0
+     380: istore        17
+     382: iload         17
+     384: iconst_4
+     385: if_icmpge     645
+     388: iconst_0
+     389: istore        18
+     391: iload         18
+     393: iconst_4
+     394: if_icmpge     639
+     397: iload         9
+     399: iload         17
+     401: iadd
+     402: istore        19
+     404: iload         10
+     406: iload         18
+     408: iadd
+     409: istore        20
+     411: new           #262                // class com/yungnickyoung/minecraft/yungsapi/math/ColPos
+     414: dup
+     415: aload_1
+     416: invokevirtual #208                // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+     419: getfield      #214                // Field net/minecraft/world/level/ChunkPos.x:I
+     422: bipush        16
+     424: imul
+     425: iload         19
+     427: iadd
+     428: aload_1
+     429: invokevirtual #208                // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+     432: getfield      #220                // Field net/minecraft/world/level/ChunkPos.z:I
+     435: bipush        16
+     437: imul
+     438: iload         20
+     440: iadd
+     441: invokespecial #264                // Method com/yungnickyoung/minecraft/yungsapi/math/ColPos."<init>":(II)V
+     444: astore        21
+     446: aload_2
+     447: iload         19
+     449: aaload
+     450: iload         20
+     452: iaload
+     453: istore        22
+     455: aload_3
+     456: iload         19
+     458: aaload
+     459: iload         20
+     461: aaload
+     462: astore        23
+     464: aload_0
+     465: getfield      #57                 // Field cavernRegionSampler:Lcom/yungnickyoung/minecraft/yungsapi/noise/FastNoise;
+     468: aload         21
+     470: invokevirtual #267                // Method com/yungnickyoung/minecraft/yungsapi/math/ColPos.getX:()I
+     473: i2f
+     474: aload         21
+     476: invokevirtual #270                // Method com/yungnickyoung/minecraft/yungsapi/math/ColPos.getZ:()I
+     479: i2f
+     480: invokevirtual #273                // Method com/yungnickyoung/minecraft/yungsapi/noise/FastNoise.GetNoise:(FF)F
+     483: fstore        24
+     485: aload_0
+     486: getfield      #10                 // Field noiseRanges:Ljava/util/List;
+     489: invokeinterface #162,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     494: astore        25
+     496: aload         25
+     498: invokeinterface #166,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     503: ifeq          633
+     506: aload         25
+     508: invokeinterface #171,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     513: checkcast     #188                // class com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverNoiseRange
+     516: astore        26
+     518: aload         26
+     520: fload         24
+     522: invokevirtual #276                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverNoiseRange.contains:(F)Z
+     525: ifne          531
+     528: goto          496
+     531: aload_0
+     532: getfield      #32                 // Field isDebugViewEnabled:Z
+     535: ifne          545
+     538: aload_0
+     539: getfield      #45                 // Field isOverrideSurfaceDetectionEnabled:Z
+     542: ifeq          556
+     545: aload         26
+     547: invokevirtual #233                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverNoiseRange.getCarver:()Lcom/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver;
+     550: invokevirtual #237                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver.getTopY:()I
+     553: goto          569
+     556: iload         22
+     558: aload         26
+     560: invokevirtual #233                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverNoiseRange.getCarver:()Lcom/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver;
+     563: invokevirtual #237                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver.getTopY:()I
+     566: invokestatic  #280                // Method java/lang/Math.min:(II)I
+     569: istore        27
+     571: aload         26
+     573: fload         24
+     575: invokevirtual #283                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverNoiseRange.getSmoothAmp:(F)F
+     578: fstore        28
+     580: aload         16
+     582: aload         26
+     584: invokeinterface #287,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     589: checkcast     #291                // class "[[[[D"
+     592: iload         17
+     594: aaload
+     595: iload         18
+     597: aaload
+     598: astore        29
+     600: aload         26
+     602: invokevirtual #233                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverNoiseRange.getCarver:()Lcom/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver;
+     605: checkcast     #76                 // class com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CavernCarver
+     608: aload_0
+     609: getfield      #16                 // Field config:Lcom/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig;
+     612: aload_1
+     613: aload         21
+     615: iload         27
+     617: fload         28
+     619: aload         29
+     621: aload         23
+     623: aload         5
+     625: aload         6
+     627: invokevirtual #293                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CavernCarver.carveColumn:(Lcom/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig;Lnet/minecraft/world/level/chunk/ChunkAccess;Lcom/yungnickyoung/minecraft/yungsapi/math/ColPos;IF[[DLnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/chunk/CarvingMask;Lnet/minecraft/world/level/levelgen/Aquifer;)V
+     630: goto          633
+     633: iinc          18, 1
+     636: goto          391
+     639: iinc          17, 1
+     642: goto          382
+     645: iinc          8, 1
+     648: goto          25
+     651: iinc          7, 1
+     654: goto          16
+     657: return
+
+  private static boolean lambda$new$0(com.yungnickyoung.minecraft.bettercaves.worldgen.carver.AbstractCarver);
+    Code:
+       0: aload_0
+       1: invokevirtual #179                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/AbstractCarver.getSpawnWeight:()I
+       4: ifne          11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: ireturn
+}

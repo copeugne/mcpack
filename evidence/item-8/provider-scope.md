@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 69 of 136. The exact queue below has 67 open rows.
+Supported provider dispositions: 70 of 136. The exact queue below has 66 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -557,7 +557,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `TerraBlender-neoforge-1.21.1-4.1.0.8.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `Terralith_1.21.1_v2.6.2_Neoforge.jar` | `terralith-provider` (b87f3bb), test_terralith_provider_scope.py | RESOLVED: 28 existing roots, terrain/vegetation and one named Frostfire ornament candidate. Overlay, disconnected and missing component dispositions below; canonical ornament grouping remains open. |
 | `YungsApi-1.21.1-NeoForge-5.1.6.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `YungsBetterCaves-1.21.1-NeoForge-3.1.4.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
+| `YungsBetterCaves-1.21.1-NeoForge-3.1.4.jar` | `better-caves-provider` (d9e30ff); test_better_caves_provider_scope.py | RESOLVED: Cave/cavern carving and liquid-region/aquifer terrain support. No independent structure family. See disposition below. |
 | `YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar` | Existing suppression source; `desert-temple-provider` (02ae27e); test_desert_temple_provider_scope.py | RESOLVED: One existing root, 28 connected pools, 198 templates and one disconnected crushing corridor. Placement, Pharaoh/state hooks and component registrations accounted for below. |
 | `YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar` | Existing `betterdungeons-code`; `dungeons-provider` (f9696df); test_dungeons_provider_scope.py | RESOLVED: Five existing roots, 33 pools, 227 templates, one disconnected bridge and one missing zombie stair. Remaining registration/context/modifier paths are accounted for below. |
 | `YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar` | Existing platform/gateway, configuration and generator captures; `end-island-provider` (6e1f551); test_end_island_provider_scope.py | RESOLVED: All 41 templates belong to the existing arrival platform, gateway and dragon arena groups. Remaining entry hooks modify these contributions; see disposition below. |
@@ -2606,3 +2606,52 @@ and produced no test file; the corrected attempt passed the cases. One overlong
 line was then corrected, and scoped Ruff/Basedpyright pass. Source reproduction
 matches exactly. Census: 69 resolved providers, 67 open. Whole-stack family
 count, canonical decisions, attributes and final review/main merge remain open.
+
+## Better Caves provider disposition
+
+Source d9e30ff preserves 23 entry, carver, layer, context and mixin classes. The
+focused check binds exact archive/class/source hashes and accounts for all 64
+files and 49 classes. Remaining types are configuration, data/interface, noise,
+carver-builder and liquid-region support; none declares another loader,
+subscriber, mixin or YUNG-module entry annotation. All seven declared mixins
+and the single platform service are bound to their captured implementations.
+
+The provider contributes terrain carving, not an independent structure family.
+Its complete data payload consists of two configured carvers and two NeoForge
+biome modifiers. better_cave uses the single registered custom WorldCarver;
+surface_cave uses minecraft:cave. The add modifier selects both for Overworld
+biomes at the air carving step, while the remove modifier targets vanilla cave
+and cave_extra_underground. There are no structure roots, templates, pools,
+functions, nested archives or other generation resource types in this archive.
+The captured live structure registry contains no bettercaves root.
+
+The custom carver resolves server context and invokes MasterController, which
+selects cave/cavern layers. Layers sample noise and invoke column carvers;
+AbstractCarver writes carving block states and schedules fluid postprocessing.
+Debug materials visualize carving. The packaged better_cave configuration has
+debug_settings.enabled false, so its listed plank/brick/metal debug materials
+are not authored building candidates. This is source/data interpretation, not
+an observation that every carve attempt succeeds.
+
+Mixins attach server/carving contexts and substitute configured liquid-region
+results during aquifer processing. The configuration loader reads liquidregions
+settings and preserves its logged error/default paths. The exact frozen JSON
+has one dimension entry, minecraft:overworld, with region size 0.001, water
+chance 40.0 and liquid altitude -55. These are terrain inputs, not family counts
+or measured density. Configuration bakeConfig is empty. Shared YUNG API noise
+and registration support remains separately open.
+
+Remaining payload is loader metadata, one translation file and visual assets.
+This bounded census conclusion does not reopen or replace Item 7's accepted
+world evidence, prove runtime equivalence, or establish all family attributes.
+
+```sh
+uv run pytest -q tests/item8/test_better_caves_provider_scope.py
+uv run ruff check tests/item8/test_better_caves_provider_scope.py
+uv run basedpyright tests/item8/test_better_caves_provider_scope.py
+```
+
+One focused case passes. An unused lint exemption and one long line were removed;
+JSON types were made explicit. Scoped Ruff and Basedpyright pass. The source
+capture reproduces exactly. Census: 70 resolved providers, 66 open. Continue
+Cave Biomes and shared API scope before whole-stack canonical reconciliation.
