@@ -1,0 +1,66 @@
+Compiled from "NeoForgeGameplayHelper.java"
+public class net.darkhax.bookshelf.neoforge.impl.util.NeoForgeGameplayHelper implements net.darkhax.bookshelf.common.api.util.IGameplayHelper {
+  public net.darkhax.bookshelf.neoforge.impl.util.NeoForgeGameplayHelper();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public net.minecraft.world.item.ItemStack getCraftingRemainder(net.minecraft.world.item.ItemStack);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+       4: astore_2
+       5: aload_2
+       6: aload_1
+       7: invokevirtual #13                 // Method net/minecraft/world/item/Item.hasCraftingRemainingItem:(Lnet/minecraft/world/item/ItemStack;)Z
+      10: ifeq          21
+      13: aload_2
+      14: aload_1
+      15: invokevirtual #19                 // Method net/minecraft/world/item/Item.getCraftingRemainingItem:(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/item/ItemStack;
+      18: goto          24
+      21: getstatic     #23                 // Field net/minecraft/world/item/ItemStack.EMPTY:Lnet/minecraft/world/item/ItemStack;
+      24: areturn
+
+  public net.minecraft.world.item.ItemStack inventoryInsert(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.core.Direction, net.minecraft.world.item.ItemStack);
+    Code:
+       0: aload_1
+       1: getstatic     #27                 // Field net/neoforged/neoforge/capabilities/Capabilities$ItemHandler.BLOCK:Lnet/neoforged/neoforge/capabilities/BlockCapability;
+       4: aload_2
+       5: aload_3
+       6: invokevirtual #33                 // Method net/minecraft/server/level/ServerLevel.getCapability:(Lnet/neoforged/neoforge/capabilities/BlockCapability;Lnet/minecraft/core/BlockPos;Ljava/lang/Object;)Ljava/lang/Object;
+       9: checkcast     #39                 // class net/neoforged/neoforge/items/IItemHandler
+      12: astore        5
+      14: aload         5
+      16: ifnull        30
+      19: aload         5
+      21: aload         4
+      23: iconst_0
+      24: invokestatic  #41                 // Method net/neoforged/neoforge/items/ItemHandlerHelper.insertItemStacked:(Lnet/neoforged/neoforge/items/IItemHandler;Lnet/minecraft/world/item/ItemStack;Z)Lnet/minecraft/world/item/ItemStack;
+      27: goto          39
+      30: aload_0
+      31: aload_1
+      32: aload_2
+      33: aload_3
+      34: aload         4
+      36: invokespecial #47                 // InterfaceMethod net/darkhax/bookshelf/common/api/util/IGameplayHelper.inventoryInsert:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/item/ItemStack;
+      39: areturn
+
+  public <T extends net.minecraft.world.level.block.entity.BlockEntity> net.minecraft.world.level.block.entity.BlockEntityType$Builder<T> blockEntityBuilder(java.util.function.BiFunction<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, T>, net.minecraft.world.level.block.Block...);
+    Code:
+       0: aload_1
+       1: dup
+       2: invokestatic  #53                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+       5: pop
+       6: invokedynamic #59,  0             // InvokeDynamic #0:create:(Ljava/util/function/BiFunction;)Lnet/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier;
+      11: astore_3
+      12: aload_3
+      13: aload_2
+      14: invokestatic  #63                 // Method net/minecraft/world/level/block/entity/BlockEntityType$Builder.of:(Lnet/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier;[Lnet/minecraft/world/level/block/Block;)Lnet/minecraft/world/level/block/entity/BlockEntityType$Builder;
+      17: areturn
+
+  public net.minecraft.world.item.CreativeModeTab$Builder tabBuilder();
+    Code:
+       0: invokestatic  #69                 // Method net/minecraft/world/item/CreativeModeTab.builder:()Lnet/minecraft/world/item/CreativeModeTab$Builder;
+       3: areturn
+}
