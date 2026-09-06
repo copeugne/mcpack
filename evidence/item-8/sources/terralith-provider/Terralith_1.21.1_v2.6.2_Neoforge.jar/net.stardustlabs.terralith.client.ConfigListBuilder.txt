@@ -1,0 +1,63 @@
+Compiled from "ConfigListBuilder.java"
+public interface net.stardustlabs.terralith.client.ConfigListBuilder {
+  public abstract void addCategory(java.lang.String, net.minecraft.client.gui.Font);
+
+  public abstract void addText(java.lang.String, net.minecraft.client.gui.Font);
+
+  public abstract void addBoolean(java.lang.String, java.util.function.Consumer<java.lang.Boolean>, boolean, boolean);
+
+  public default void build(net.minecraft.client.gui.Font);
+    Code:
+       0: invokestatic  #39                 // Method net/stardustlabs/terralith/config/ConfigHandler.getState:()Lnet/stardustlabs/terralith/config/ConfigState;
+       3: astore_2
+       4: aload_0
+       5: ldc           #41                 // String warning
+       7: aload_1
+       8: invokeinterface #43,  3           // InterfaceMethod addText:(Ljava/lang/String;Lnet/minecraft/client/gui/Font;)V
+      13: aload_0
+      14: ldc           #45                 // String modules
+      16: aload_1
+      17: invokeinterface #47,  3           // InterfaceMethod addCategory:(Ljava/lang/String;Lnet/minecraft/client/gui/Font;)V
+      22: getstatic     #51                 // Field net/stardustlabs/terralith/config/ConfigState.DEFAULT_MODULES:Lnet/stardustlabs/terralith/config/ConfigState$Modules;
+      25: getfield      #54                 // Field net/stardustlabs/terralith/config/ConfigState$Modules.modules:Ljava/util/Map;
+      28: invokeinterface #58,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      33: invokeinterface #64,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      38: astore_3
+      39: aload_3
+      40: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      45: ifeq          112
+      48: aload_3
+      49: invokeinterface #74,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      54: checkcast     #12                 // class java/util/Map$Entry
+      57: astore        4
+      59: aload         4
+      61: invokeinterface #77,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      66: checkcast     #79                 // class java/lang/String
+      69: astore        5
+      71: aload_0
+      72: aload         5
+      74: aload_2
+      75: aload         5
+      77: invokedynamic #99,  0             // InvokeDynamic #0:accept:(Lnet/stardustlabs/terralith/config/ConfigState;Ljava/lang/String;)Ljava/util/function/Consumer;
+      82: aload_2
+      83: getfield      #101                // Field net/stardustlabs/terralith/config/ConfigState.modules:Lnet/stardustlabs/terralith/config/ConfigState$Modules;
+      86: aload         5
+      88: invokevirtual #105                // Method net/stardustlabs/terralith/config/ConfigState$Modules.getModule:(Ljava/lang/String;)Z
+      91: aload         4
+      93: invokeinterface #108,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      98: checkcast     #110                // class java/lang/Boolean
+     101: invokevirtual #113                // Method java/lang/Boolean.booleanValue:()Z
+     104: invokeinterface #115,  5          // InterfaceMethod addBoolean:(Ljava/lang/String;Ljava/util/function/Consumer;ZZ)V
+     109: goto          39
+     112: return
+
+  private static void lambda$build$0(net.stardustlabs.terralith.config.ConfigState, java.lang.String, java.lang.Boolean);
+    Code:
+       0: aload_0
+       1: getfield      #101                // Field net/stardustlabs/terralith/config/ConfigState.modules:Lnet/stardustlabs/terralith/config/ConfigState$Modules;
+       4: aload_1
+       5: aload_2
+       6: invokevirtual #113                // Method java/lang/Boolean.booleanValue:()Z
+       9: invokevirtual #130                // Method net/stardustlabs/terralith/config/ConfigState$Modules.setModule:(Ljava/lang/String;Z)V
+      12: return
+}
