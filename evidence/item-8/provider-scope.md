@@ -5595,3 +5595,63 @@ Five focused Fabric cases and scoped Ruff/Basedpyright pass using the existing
 commands. Reuse the resolved biome, GameTest and resource-loading roles. Other
 bundled module entry/mixin roles remain before whole-provider closure. Census
 remains 90 resolved, 46 open providers; no family candidate was added.
+
+### Exact Fabric module queue
+
+The frozen parent contains 43 modules. Four membership roles are resolved below;
+39 remain open. These are internal modules of one retained provider, not added
+providers or families. All packaged data is already partitioned by the existing
+Fabric check. Open rows require contribution-role inspection, not an audit of
+every implementation method. Reuse existing captures and stop at the content
+boundary. This queue replaces the unspecified phrase "other Fabric modules".
+
+| Fabric module | Membership disposition |
+| --- | --- |
+| `fabric-api-base-0.4.42+d1308ded19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-api-lookup-api-v1-1.6.71+c290471319.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-biome-api-v1-13.0.31+1e62d33c19.jar` | RESOLVED: biome selection and consumer callbacks; see above. |
+| `fabric-block-api-v1-1.1.0+b0c22bb819.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-block-view-api-v2-1.0.11+e9036fd419.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-blockrenderlayer-v1-1.1.52+c290471319.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-client-tags-api-v1-1.1.15+e053909619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-command-api-v2-2.2.28+36d727be19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-content-registries-v0-8.0.19+5e0d320019.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-convention-tags-v1-2.1.5+7f945d5b19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-convention-tags-v2-2.11.1+87e5848019.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-data-attachment-api-v1-1.4.5+26d408aa19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-data-generation-api-v1-20.2.34+a4c3605619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-entity-events-v1-1.8.0+5ede667619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-events-interaction-v0-0.7.13+86e0887119.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-game-rule-api-v1-1.0.53+36d727be19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-gametest-api-v1-2.0.5+29f188ce19.jar` | RESOLVED: test registration and SNBT loading; see above. |
+| `fabric-item-api-v1-11.2.0+0c57911319.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-item-group-api-v1-4.1.7+e324903319.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-key-binding-api-v1-1.0.47+62cc7ce119.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-loot-api-v2-3.0.15+a3ee712d19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-loot-api-v3-1.0.3+333dfad919.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-message-api-v1-6.0.14+6a754fce19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-model-loading-api-v1-2.1.0+6e8f52c719.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-networking-api-v1-4.3.0+30a980d919.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-object-builder-api-v1-15.2.1+cc242efd19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-particles-v1-4.0.2+824f924c19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-recipe-api-v1-5.0.15+59440bcc19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-registry-sync-v0-5.3.1+f9aace1619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-renderer-api-v1-3.4.1+9125b6dc19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-renderer-indigo-1.7.1+9125b6dc19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-rendering-data-attachment-v1-0.3.49+73761d2e19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-rendering-fluids-v1-3.1.6+a51883b219.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-rendering-v1-5.1.0+1a09bd5a19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-resource-conditions-api-v1-4.3.0+5bdd099819.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-resource-loader-v0-1.3.1+4ea8954419.jar` | RESOLVED: consumer pack loading; see above. |
+| `fabric-screen-api-v1-2.0.25+0ae1214819.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-screen-handler-api-v1-1.3.90+8dbc56dd19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-sound-api-v1-1.0.23+10b84f8419.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-transfer-api-v1-5.4.3+a25cb45619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-transitive-access-wideners-v1-6.2.0+6c854b6f19.jar` | RESOLVED: access declarations only; no code or data payload. |
+| `forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar` | OPEN: inspect entry and declared hook contribution roles. |
+
+The transitive-access-wideners module has exactly five files: manifest, lowcodefml
+metadata, access transformer, icon and nesting metadata. There are no class,
+service, mixin or data files. It changes member accessibility and supplies no
+independent site. The focused packaged-data test binds this complete partition.
