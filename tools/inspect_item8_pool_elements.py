@@ -196,6 +196,7 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/darkhax/pricklemc/common/impl/PrickleMod.class",
     "com/teamresourceful/resourcefulconfig/common/loader/JavaConfigParser.class",
     "com/teamresourceful/resourcefulconfig/mixins/common/DedicatedServerAccessor.class",
     "com/teamresourceful/resourcefulconfig/mixins/common/PlayerListAccessor.class",
