@@ -697,3 +697,46 @@ def test_patchouli_membership_payload() -> None:
                 assert row["disassembly_sha256"] == hashlib.sha256(
                     (directory / row["disassembly"]).read_bytes()).hexdigest()
         assert captured == expected
+
+
+def test_cloth_config_membership_payload() -> None:
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name == "cloth-config-15.0.140-neoforge.jar")
+    assert source.sha256 == "65e722e0d98431a07c45f8bdd8d529a217cc8c175fde1740248bd5c1b4f3c0d4"
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    entry = "me/shedaniel/clothconfig/ClothConfigForge.class"
+    with ZipFile(source.path) as archive:
+        files = {n for n in archive.namelist() if not n.endswith("/")}
+        classes = {n for n in files if n.endswith(".class")}
+        assets = {f"assets/cloth-config2/lang/{lang}.json" for lang in (
+            "bg_bg", "de_de", "en_ud", "en_us", "es_es", "es_mx", "et_ee", "fr_fr",
+            "hu_hu", "it_it", "ja_jp", "kk_kz", "ko_kr", "lol_us", "lzh", "pt_br",
+            "ru_ru", "sv_se", "tt_ru", "uk_ua", "zh_cn", "zh_hk", "zh_tw")}
+        assets.update(f"assets/cloth-config2/textures/gui/{n}.png" for n in (
+            "cloth_config", "vertical_footer_separator", "vertical_header_separator"))
+        assert len(classes) == 633
+        assert files - classes == assets | {
+            "META-INF/MANIFEST.MF", "META-INF/neoforge.mods.toml", "LICENSE.md",
+            "META-INF/accesstransformer.cfg", "icon.png", "pack.mcmeta",
+            *(f"META-INF/maven/{lib}/pom.{ext}"
+              for lib in ("com.moandjiezana.toml/toml4j", "org.yaml/snakeyaml")
+              for ext in ("properties", "xml"))}
+        metadata = tomllib.loads(archive.read("META-INF/neoforge.mods.toml").decode())
+        assert metadata["modLoader"] == "javafml"
+        assert not metadata.get("mixins")
+        assert {n for n in classes if any(marker in archive.read(n) for marker in (
+            b"Lnet/neoforged/fml/common/Mod;", b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+        ))} == {entry}
+        directory = Path("evidence/item-8/sources/cloth-config-provider")
+        raw = (directory / "identities.json").read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == (
+            "9315320632f2c0a1dfefe98525b2b6c25fe90d1949a63579421be3ad5bd281df")
+        rows = cast("list[dict[str, str]]", json.loads(raw))
+        assert len(rows) == 1
+        row = rows[0]
+        assert row["class"] == entry
+        assert row["archive"] == source.name
+        assert row["archive_sha256"] == source.sha256
+        assert row["class_sha256"] == hashlib.sha256(archive.read(entry)).hexdigest()
+        assert row["disassembly_sha256"] == hashlib.sha256(
+            (directory / row["disassembly"]).read_bytes()).hexdigest()

@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Cloth Config membership is resolved from 6e7567c7. Its sole entry only registers
+a client config page; no independent family. Full payload/source binding,
+27 utility cases and scoped checks pass. Whole providers: 106 resolved, 30 open.
+Do not trace further Cloth Config helpers. Continue remaining provider roles
+and canonical Moog grouping before detailed attributes. CristelLib preliminary
+inspection found two entries, one common PathPackResourcesAccessor, a client
+pack-selection hook and nested Jankson; its contribution is still unresolved.
+
+
 Patchouli membership is resolved from c73260ac and 212a5402: documentation books,
 existing lectern interaction and consumer multiblock APIs, no independent family.
 The explicit multiblock place API can write blocks; it is not registered as an
