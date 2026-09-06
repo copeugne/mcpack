@@ -261,3 +261,39 @@ def test_cupboard_and_loot_integrations_frozen_roles() -> None:
         assert json.loads(archive.read("data/lootintegrations/tags/item/ignored.json")) == {
             "values": ["minecraft:barrier"],
         }
+
+
+def test_wunderlib_membership_payload() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "wunderlib-21.0.10.jar")
+    assert source.sha256 == "b49c7a040f87ade1e3f73bd7335e8d68ff7a328919c192a6d2c022bae6786a2f"
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    directory = Path("evidence/item-8/sources/wunderlib-provider")
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "a9790a69dcedb09289d08c302863b4503d5979fa64942117e17bfa55adb80c5c")
+    rows = cast("list[dict[str, str]]", json.loads(raw))
+    entries = {"de/ambertation/wunderlib/WunderLib.class",
+               "de/ambertation/wunderlib/WunderLibClient.class"}
+    assert {row["class"] for row in rows} == entries | {
+        "de/ambertation/wunderlib/math/Bounds.class"}
+    with ZipFile(source.path) as archive:
+        files = {n for n in archive.namelist() if not n.endswith("/")}
+        classes = {n for n in files if n.endswith(".class")}
+        assert len(classes) == 142
+        assert files - classes == {
+            "META-INF/MANIFEST.MF", "META-INF/neoforge.mods.toml",
+            "assets/wunderlib/icon.png", "LICENSE_wunderlib",
+        }
+        assert {n for n in classes if any(marker in archive.read(n) for marker in (
+            b"Lnet/neoforged/fml/common/Mod;", b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+        ))} == entries
+        metadata = tomllib.loads(archive.read("META-INF/neoforge.mods.toml").decode())
+        assert metadata["modLoader"] == "javafml"
+        assert not metadata.get("mixins")
+        assert archive.read("META-INF/MANIFEST.MF") == b"Manifest-Version: 1.0\r\n\r\n"
+        for row in rows:
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+            assert row["disassembly_sha256"] == hashlib.sha256(
+                (directory / row["disassembly"]).read_bytes()).hexdigest()
