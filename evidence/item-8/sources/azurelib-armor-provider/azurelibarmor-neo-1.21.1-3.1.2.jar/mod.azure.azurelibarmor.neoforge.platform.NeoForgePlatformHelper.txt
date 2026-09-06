@@ -1,0 +1,54 @@
+Compiled from "NeoForgePlatformHelper.java"
+public class mod.azure.azurelibarmor.neoforge.platform.NeoForgePlatformHelper implements mod.azure.azurelibarmor.common.platform.services.IPlatformHelper {
+  public mod.azure.azurelibarmor.neoforge.platform.NeoForgePlatformHelper();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public java.lang.String getPlatformName();
+    Code:
+       0: ldc           #7                  // String Forge
+       2: areturn
+
+  public boolean isDevelopmentEnvironment();
+    Code:
+       0: invokestatic  #9                  // Method net/neoforged/fml/loading/FMLLoader.isProduction:()Z
+       3: ifne          10
+       6: iconst_1
+       7: goto          11
+      10: iconst_0
+      11: ireturn
+
+  public boolean isModLoaded(java.lang.String);
+    Code:
+       0: invokestatic  #15                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: aload_1
+       4: invokevirtual #21                 // Method net/neoforged/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+       7: ireturn
+
+  public java.nio.file.Path getGameDir();
+    Code:
+       0: invokestatic  #25                 // Method net/neoforged/fml/loading/FMLLoader.getGamePath:()Ljava/nio/file/Path;
+       3: areturn
+
+  public boolean isServerEnvironment();
+    Code:
+       0: getstatic     #29                 // Field net/neoforged/fml/loading/FMLEnvironment.dist:Lnet/neoforged/api/distmarker/Dist;
+       3: invokevirtual #35                 // Method net/neoforged/api/distmarker/Dist.isDedicatedServer:()Z
+       6: ireturn
+
+  public boolean isEnvironmentClient();
+    Code:
+       0: getstatic     #29                 // Field net/neoforged/fml/loading/FMLEnvironment.dist:Lnet/neoforged/api/distmarker/Dist;
+       3: invokevirtual #40                 // Method net/neoforged/api/distmarker/Dist.isClient:()Z
+       6: ireturn
+
+  public <T> java.util.function.Supplier<net.minecraft.core.component.DataComponentType<T>> registerDataComponent(java.lang.String, java.util.function.UnaryOperator<net.minecraft.core.component.DataComponentType$Builder<T>>);
+    Code:
+       0: getstatic     #43                 // Field mod/azure/azurelibarmor/neoforge/NeoForgeAzureLibMod.DATA_COMPONENTS_REGISTER:Lnet/neoforged/neoforge/registries/DeferredRegister$DataComponents;
+       3: aload_1
+       4: aload_2
+       5: invokevirtual #49                 // Method net/neoforged/neoforge/registries/DeferredRegister$DataComponents.registerComponentType:(Ljava/lang/String;Ljava/util/function/UnaryOperator;)Lnet/neoforged/neoforge/registries/DeferredHolder;
+       8: areturn
+}

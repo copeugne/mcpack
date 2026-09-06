@@ -1,0 +1,45 @@
+Compiled from "NeoForgeAzureLibMod.java"
+public final class mod.azure.azurelibarmor.neoforge.NeoForgeAzureLibMod {
+  public static final net.neoforged.neoforge.registries.DeferredRegister$DataComponents DATA_COMPONENTS_REGISTER;
+
+  public mod.azure.azurelibarmor.neoforge.NeoForgeAzureLibMod(net.neoforged.bus.api.IEventBus);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: invokestatic  #7                  // Method mod/azure/azurelibarmor/AzureLib.initialize:()V
+       7: getstatic     #12                 // Field DATA_COMPONENTS_REGISTER:Lnet/neoforged/neoforge/registries/DeferredRegister$DataComponents;
+      10: aload_1
+      11: invokevirtual #18                 // Method net/neoforged/neoforge/registries/DeferredRegister$DataComponents.register:(Lnet/neoforged/bus/api/IEventBus;)V
+      14: aload_1
+      15: aload_0
+      16: invokedynamic #24,  0             // InvokeDynamic #0:accept:(Lmod/azure/azurelibarmor/neoforge/NeoForgeAzureLibMod;)Ljava/util/function/Consumer;
+      21: invokeinterface #28,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      26: return
+
+  public void registerMessages(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent);
+    Code:
+       0: aload_1
+       1: ldc           #34                 // String azurelibarmor
+       3: invokevirtual #36                 // Method net/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent.registrar:(Ljava/lang/String;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+       6: astore_2
+       7: aload_2
+       8: getstatic     #42                 // Field mod/azure/azurelibarmor/common/network/packet/AzItemStackDispatchCommandPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      11: getstatic     #48                 // Field mod/azure/azurelibarmor/common/network/packet/AzItemStackDispatchCommandPacket.CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      14: invokedynamic #52,  0             // InvokeDynamic #1:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      19: invokevirtual #56                 // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playBidirectional:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      22: pop
+      23: return
+
+  private static void lambda$registerMessages$0(mod.azure.azurelibarmor.common.network.packet.AzItemStackDispatchCommandPacket, net.neoforged.neoforge.network.handling.IPayloadContext);
+    Code:
+       0: aload_0
+       1: invokevirtual #62                 // Method mod/azure/azurelibarmor/common/network/packet/AzItemStackDispatchCommandPacket.handle:()V
+       4: return
+
+  static {};
+    Code:
+       0: ldc           #34                 // String azurelibarmor
+       2: invokestatic  #64                 // Method net/neoforged/neoforge/registries/DeferredRegister.createDataComponents:(Ljava/lang/String;)Lnet/neoforged/neoforge/registries/DeferredRegister$DataComponents;
+       5: putstatic     #12                 // Field DATA_COMPONENTS_REGISTER:Lnet/neoforged/neoforge/registries/DeferredRegister$DataComponents;
+       8: return
+}
