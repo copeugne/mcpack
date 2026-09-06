@@ -1,0 +1,485 @@
+Classfile amendments-1.21-2.0.15-neoforge.jar!/net/mehvahdjukaar/amendments/mixins/FireChargeMixin.class
+  Last modified Jan 1, 1980; size 5478 bytes
+  SHA-256 checksum 84455e4dc3750b1112c7605e834c564af80c0f965a4136b8884cd6a7150c892f
+  Compiled from "FireChargeMixin.java"
+public abstract class net.mehvahdjukaar.amendments.mixins.FireChargeMixin extends net.minecraft.world.item.Item implements net.minecraft.world.item.ProjectileItem
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // net/mehvahdjukaar/amendments/mixins/FireChargeMixin
+  super_class: #4                         // net/minecraft/world/item/Item
+  interfaces: 1, fields: 0, methods: 5, attributes: 4
+Constant pool:
+    #1 = Utf8               net/mehvahdjukaar/amendments/mixins/FireChargeMixin
+    #2 = Class              #1            // net/mehvahdjukaar/amendments/mixins/FireChargeMixin
+    #3 = Utf8               net/minecraft/world/item/Item
+    #4 = Class              #3            // net/minecraft/world/item/Item
+    #5 = Utf8               net/minecraft/world/item/ProjectileItem
+    #6 = Class              #5            // net/minecraft/world/item/ProjectileItem
+    #7 = Utf8               FireChargeMixin.java
+    #8 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #9 = Utf8               value
+   #10 = Utf8               Lnet/minecraft/world/item/FireChargeItem;
+   #11 = Utf8               net/minecraft/world/item/Item$Properties
+   #12 = Class              #11           // net/minecraft/world/item/Item$Properties
+   #13 = Utf8               Properties
+   #14 = Utf8               net/minecraft/world/item/ProjectileItem$DispenseConfig
+   #15 = Class              #14           // net/minecraft/world/item/ProjectileItem$DispenseConfig
+   #16 = Utf8               DispenseConfig
+   #17 = Utf8               net/minecraft/world/item/ProjectileItem$DispenseConfig$Builder
+   #18 = Class              #17           // net/minecraft/world/item/ProjectileItem$DispenseConfig$Builder
+   #19 = Utf8               Builder
+   #20 = Utf8               net/minecraft/world/item/ProjectileItem$PositionFunction
+   #21 = Class              #20           // net/minecraft/world/item/ProjectileItem$PositionFunction
+   #22 = Utf8               PositionFunction
+   #23 = Utf8               java/lang/invoke/MethodHandles$Lookup
+   #24 = Class              #23           // java/lang/invoke/MethodHandles$Lookup
+   #25 = Utf8               java/lang/invoke/MethodHandles
+   #26 = Class              #25           // java/lang/invoke/MethodHandles
+   #27 = Utf8               Lookup
+   #28 = Utf8               <init>
+   #29 = Utf8               (Lnet/minecraft/world/item/Item$Properties;)V
+   #30 = Utf8               properties
+   #31 = NameAndType        #28:#29       // "<init>":(Lnet/minecraft/world/item/Item$Properties;)V
+   #32 = Methodref          #4.#31        // net/minecraft/world/item/Item."<init>":(Lnet/minecraft/world/item/Item$Properties;)V
+   #33 = Utf8               this
+   #34 = Utf8               Lnet/mehvahdjukaar/amendments/mixins/FireChargeMixin;
+   #35 = Utf8               Lnet/minecraft/world/item/Item$Properties;
+   #36 = Utf8               asProjectile
+   #37 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/Position;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/entity/projectile/Projectile;
+   #38 = Utf8               level
+   #39 = Utf8               pos
+   #40 = Utf8               stack
+   #41 = Utf8               direction
+   #42 = Utf8               net/mehvahdjukaar/amendments/configs/CommonConfigs
+   #43 = Class              #42           // net/mehvahdjukaar/amendments/configs/CommonConfigs
+   #44 = Utf8               THROWABLE_FIRE_CHARGES
+   #45 = Utf8               Ljava/util/function/Supplier;
+   #46 = NameAndType        #44:#45       // THROWABLE_FIRE_CHARGES:Ljava/util/function/Supplier;
+   #47 = Fieldref           #43.#46       // net/mehvahdjukaar/amendments/configs/CommonConfigs.THROWABLE_FIRE_CHARGES:Ljava/util/function/Supplier;
+   #48 = Utf8               java/util/function/Supplier
+   #49 = Class              #48           // java/util/function/Supplier
+   #50 = Utf8               get
+   #51 = Utf8               ()Ljava/lang/Object;
+   #52 = NameAndType        #50:#51       // get:()Ljava/lang/Object;
+   #53 = InterfaceMethodref #49.#52       // java/util/function/Supplier.get:()Ljava/lang/Object;
+   #54 = Utf8               java/lang/Boolean
+   #55 = Class              #54           // java/lang/Boolean
+   #56 = Utf8               booleanValue
+   #57 = Utf8               ()Z
+   #58 = NameAndType        #56:#57       // booleanValue:()Z
+   #59 = Methodref          #55.#58       // java/lang/Boolean.booleanValue:()Z
+   #60 = Utf8               net/minecraft/world/level/Level
+   #61 = Class              #60           // net/minecraft/world/level/Level
+   #62 = Utf8               getRandom
+   #63 = Utf8               ()Lnet/minecraft/util/RandomSource;
+   #64 = NameAndType        #62:#63       // getRandom:()Lnet/minecraft/util/RandomSource;
+   #65 = Methodref          #61.#64       // net/minecraft/world/level/Level.getRandom:()Lnet/minecraft/util/RandomSource;
+   #66 = Utf8               net/minecraft/core/Direction
+   #67 = Class              #66           // net/minecraft/core/Direction
+   #68 = Utf8               getStepX
+   #69 = Utf8               ()I
+   #70 = NameAndType        #68:#69       // getStepX:()I
+   #71 = Methodref          #67.#70       // net/minecraft/core/Direction.getStepX:()I
+   #72 = Double             0.11485000000000001d
+   #74 = Utf8               net/minecraft/util/RandomSource
+   #75 = Class              #74           // net/minecraft/util/RandomSource
+   #76 = Utf8               triangle
+   #77 = Utf8               (DD)D
+   #78 = NameAndType        #76:#77       // triangle:(DD)D
+   #79 = InterfaceMethodref #75.#78       // net/minecraft/util/RandomSource.triangle:(DD)D
+   #80 = Utf8               getStepY
+   #81 = NameAndType        #80:#69       // getStepY:()I
+   #82 = Methodref          #67.#81       // net/minecraft/core/Direction.getStepY:()I
+   #83 = Utf8               getStepZ
+   #84 = NameAndType        #83:#69       // getStepZ:()I
+   #85 = Methodref          #67.#84       // net/minecraft/core/Direction.getStepZ:()I
+   #86 = Utf8               net/minecraft/world/phys/Vec3
+   #87 = Class              #86           // net/minecraft/world/phys/Vec3
+   #88 = Utf8               (DDD)V
+   #89 = NameAndType        #28:#88       // "<init>":(DDD)V
+   #90 = Methodref          #87.#89       // net/minecraft/world/phys/Vec3."<init>":(DDD)V
+   #91 = Utf8               net/minecraft/world/entity/projectile/SmallFireball
+   #92 = Class              #91           // net/minecraft/world/entity/projectile/SmallFireball
+   #93 = Utf8               net/minecraft/core/Position
+   #94 = Class              #93           // net/minecraft/core/Position
+   #95 = Utf8               x
+   #96 = Utf8               ()D
+   #97 = NameAndType        #95:#96       // x:()D
+   #98 = InterfaceMethodref #94.#97       // net/minecraft/core/Position.x:()D
+   #99 = Utf8               y
+  #100 = NameAndType        #99:#96       // y:()D
+  #101 = InterfaceMethodref #94.#100      // net/minecraft/core/Position.y:()D
+  #102 = Utf8               z
+  #103 = NameAndType        #102:#96      // z:()D
+  #104 = InterfaceMethodref #94.#103      // net/minecraft/core/Position.z:()D
+  #105 = Utf8               normalize
+  #106 = Utf8               ()Lnet/minecraft/world/phys/Vec3;
+  #107 = NameAndType        #105:#106     // normalize:()Lnet/minecraft/world/phys/Vec3;
+  #108 = Methodref          #87.#107      // net/minecraft/world/phys/Vec3.normalize:()Lnet/minecraft/world/phys/Vec3;
+  #109 = Utf8               (Lnet/minecraft/world/level/Level;DDDLnet/minecraft/world/phys/Vec3;)V
+  #110 = NameAndType        #28:#109      // "<init>":(Lnet/minecraft/world/level/Level;DDDLnet/minecraft/world/phys/Vec3;)V
+  #111 = Methodref          #92.#110      // net/minecraft/world/entity/projectile/SmallFireball."<init>":(Lnet/minecraft/world/level/Level;DDDLnet/minecraft/world/phys/Vec3;)V
+  #112 = Utf8               setItem
+  #113 = Utf8               (Lnet/minecraft/world/item/ItemStack;)V
+  #114 = NameAndType        #112:#113     // setItem:(Lnet/minecraft/world/item/ItemStack;)V
+  #115 = Methodref          #92.#114      // net/minecraft/world/entity/projectile/SmallFireball.setItem:(Lnet/minecraft/world/item/ItemStack;)V
+  #116 = Utf8               net/mehvahdjukaar/amendments/common/entity/MediumFireball
+  #117 = Class              #116          // net/mehvahdjukaar/amendments/common/entity/MediumFireball
+  #118 = Utf8               (Lnet/minecraft/world/level/Level;DDD)V
+  #119 = NameAndType        #28:#118      // "<init>":(Lnet/minecraft/world/level/Level;DDD)V
+  #120 = Methodref          #117.#119     // net/mehvahdjukaar/amendments/common/entity/MediumFireball."<init>":(Lnet/minecraft/world/level/Level;DDD)V
+  #121 = Methodref          #117.#114     // net/mehvahdjukaar/amendments/common/entity/MediumFireball.setItem:(Lnet/minecraft/world/item/ItemStack;)V
+  #122 = Utf8               randomSource
+  #123 = Utf8               Lnet/minecraft/util/RandomSource;
+  #124 = Utf8               d
+  #125 = Utf8               D
+  #126 = Utf8               e
+  #127 = Utf8               f
+  #128 = Utf8               vec3
+  #129 = Utf8               Lnet/minecraft/world/phys/Vec3;
+  #130 = Utf8               smallFireball
+  #131 = Utf8               Lnet/minecraft/world/entity/projectile/SmallFireball;
+  #132 = Utf8               Lnet/minecraft/world/level/Level;
+  #133 = Utf8               Lnet/minecraft/core/Position;
+  #134 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #135 = Utf8               Lnet/minecraft/core/Direction;
+  #136 = Utf8               snowball
+  #137 = Utf8               Lnet/mehvahdjukaar/amendments/common/entity/MediumFireball;
+  #138 = Utf8               shoot
+  #139 = Utf8               (Lnet/minecraft/world/entity/projectile/Projectile;DDDFF)V
+  #140 = Utf8               projectile
+  #141 = Utf8               velocity
+  #142 = Utf8               inaccuracy
+  #143 = Utf8               net/minecraft/world/entity/projectile/Projectile
+  #144 = Class              #143          // net/minecraft/world/entity/projectile/Projectile
+  #145 = Utf8               (DDDFF)V
+  #146 = NameAndType        #138:#145     // shoot:(DDDFF)V
+  #147 = Methodref          #144.#146     // net/minecraft/world/entity/projectile/Projectile.shoot:(DDDFF)V
+  #148 = Utf8               Lnet/minecraft/world/entity/projectile/Projectile;
+  #149 = Utf8               F
+  #150 = Utf8               createDispenseConfig
+  #151 = Utf8               ()Lnet/minecraft/world/item/ProjectileItem$DispenseConfig;
+  #152 = Utf8               net/mehvahdjukaar/amendments/Dummy
+  #153 = Class              #152          // net/mehvahdjukaar/amendments/Dummy
+  #154 = Utf8               MOD_LOADED
+  #155 = Utf8               Z
+  #156 = NameAndType        #154:#155     // MOD_LOADED:Z
+  #157 = Fieldref           #153.#156     // net/mehvahdjukaar/amendments/Dummy.MOD_LOADED:Z
+  #158 = Utf8               builder
+  #159 = Utf8               ()Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+  #160 = NameAndType        #158:#159     // builder:()Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+  #161 = Methodref          #15.#160      // net/minecraft/world/item/ProjectileItem$DispenseConfig.builder:()Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+  #162 = Utf8               (Lnet/minecraft/core/dispenser/BlockSource;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/Position;
+  #163 = MethodType         #162          //  (Lnet/minecraft/core/dispenser/BlockSource;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/Position;
+  #164 = Utf8               lambda$createDispenseConfig$0
+  #165 = NameAndType        #164:#162     // lambda$createDispenseConfig$0:(Lnet/minecraft/core/dispenser/BlockSource;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/Position;
+  #166 = Methodref          #2.#165       // net/mehvahdjukaar/amendments/mixins/FireChargeMixin.lambda$createDispenseConfig$0:(Lnet/minecraft/core/dispenser/BlockSource;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/Position;
+  #167 = MethodHandle       6:#166        // REF_invokeStatic net/mehvahdjukaar/amendments/mixins/FireChargeMixin.lambda$createDispenseConfig$0:(Lnet/minecraft/core/dispenser/BlockSource;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/Position;
+  #168 = Utf8               java/lang/invoke/LambdaMetafactory
+  #169 = Class              #168          // java/lang/invoke/LambdaMetafactory
+  #170 = Utf8               metafactory
+  #171 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #172 = NameAndType        #170:#171     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #173 = Methodref          #169.#172     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #174 = MethodHandle       6:#173        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #175 = Utf8               getDispensePosition
+  #176 = Utf8               ()Lnet/minecraft/world/item/ProjectileItem$PositionFunction;
+  #177 = NameAndType        #175:#176     // getDispensePosition:()Lnet/minecraft/world/item/ProjectileItem$PositionFunction;
+  #178 = InvokeDynamic      #0:#177       // #0:getDispensePosition:()Lnet/minecraft/world/item/ProjectileItem$PositionFunction;
+  #179 = Utf8               positionFunction
+  #180 = Utf8               (Lnet/minecraft/world/item/ProjectileItem$PositionFunction;)Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+  #181 = NameAndType        #179:#180     // positionFunction:(Lnet/minecraft/world/item/ProjectileItem$PositionFunction;)Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+  #182 = Methodref          #18.#181      // net/minecraft/world/item/ProjectileItem$DispenseConfig$Builder.positionFunction:(Lnet/minecraft/world/item/ProjectileItem$PositionFunction;)Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+  #183 = Float              6.6666665f
+  #184 = Utf8               uncertainty
+  #185 = Utf8               (F)Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+  #186 = NameAndType        #184:#185     // uncertainty:(F)Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+  #187 = Methodref          #18.#186      // net/minecraft/world/item/ProjectileItem$DispenseConfig$Builder.uncertainty:(F)Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+  #188 = Utf8               power
+  #189 = NameAndType        #188:#185     // power:(F)Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+  #190 = Methodref          #18.#189      // net/minecraft/world/item/ProjectileItem$DispenseConfig$Builder.power:(F)Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+  #191 = Utf8               overrideDispenseEvent
+  #192 = Utf8               (I)Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+  #193 = NameAndType        #191:#192     // overrideDispenseEvent:(I)Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+  #194 = Methodref          #18.#193      // net/minecraft/world/item/ProjectileItem$DispenseConfig$Builder.overrideDispenseEvent:(I)Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+  #195 = Utf8               build
+  #196 = NameAndType        #195:#151     // build:()Lnet/minecraft/world/item/ProjectileItem$DispenseConfig;
+  #197 = Methodref          #18.#196      // net/minecraft/world/item/ProjectileItem$DispenseConfig$Builder.build:()Lnet/minecraft/world/item/ProjectileItem$DispenseConfig;
+  #198 = Utf8               net/mehvahdjukaar/amendments/common/ProjectileStats
+  #199 = Class              #198          // net/mehvahdjukaar/amendments/common/ProjectileStats
+  #200 = Utf8               DISPENSER_CONFIG
+  #201 = Utf8               Lnet/minecraft/world/item/ProjectileItem$DispenseConfig;
+  #202 = NameAndType        #200:#201     // DISPENSER_CONFIG:Lnet/minecraft/world/item/ProjectileItem$DispenseConfig;
+  #203 = Fieldref           #199.#202     // net/mehvahdjukaar/amendments/common/ProjectileStats.DISPENSER_CONFIG:Lnet/minecraft/world/item/ProjectileItem$DispenseConfig;
+  #204 = Utf8               blockSource
+  #205 = Utf8               ZERO
+  #206 = NameAndType        #205:#129     // ZERO:Lnet/minecraft/world/phys/Vec3;
+  #207 = Fieldref           #87.#206      // net/minecraft/world/phys/Vec3.ZERO:Lnet/minecraft/world/phys/Vec3;
+  #208 = Utf8               net/minecraft/world/level/block/DispenserBlock
+  #209 = Class              #208          // net/minecraft/world/level/block/DispenserBlock
+  #210 = Utf8               (Lnet/minecraft/core/dispenser/BlockSource;DLnet/minecraft/world/phys/Vec3;)Lnet/minecraft/core/Position;
+  #211 = NameAndType        #175:#210     // getDispensePosition:(Lnet/minecraft/core/dispenser/BlockSource;DLnet/minecraft/world/phys/Vec3;)Lnet/minecraft/core/Position;
+  #212 = Methodref          #209.#211     // net/minecraft/world/level/block/DispenserBlock.getDispensePosition:(Lnet/minecraft/core/dispenser/BlockSource;DLnet/minecraft/world/phys/Vec3;)Lnet/minecraft/core/Position;
+  #213 = Utf8               Lnet/minecraft/core/dispenser/BlockSource;
+  #214 = Utf8               Code
+  #215 = Utf8               LineNumberTable
+  #216 = Utf8               LocalVariableTable
+  #217 = Utf8               MethodParameters
+  #218 = Utf8               StackMapTable
+  #219 = Utf8               InnerClasses
+  #220 = Utf8               SourceFile
+  #221 = Utf8               RuntimeInvisibleAnnotations
+  #222 = Utf8               BootstrapMethods
+{
+  public net.mehvahdjukaar.amendments.mixins.FireChargeMixin(net.minecraft.world.item.Item$Properties);
+    descriptor: (Lnet/minecraft/world/item/Item$Properties;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokespecial #32                 // Method net/minecraft/world/item/Item."<init>":(Lnet/minecraft/world/item/Item$Properties;)V
+         5: return
+      LineNumberTable:
+        line 25: 0
+        line 26: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lnet/mehvahdjukaar/amendments/mixins/FireChargeMixin;
+            0       6     1 properties   Lnet/minecraft/world/item/Item$Properties;
+    MethodParameters:
+      Name                           Flags
+      properties
+
+  public net.minecraft.world.entity.projectile.Projectile asProjectile(net.minecraft.world.level.Level, net.minecraft.core.Position, net.minecraft.world.item.ItemStack, net.minecraft.core.Direction);
+    descriptor: (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/Position;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/entity/projectile/Projectile;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=10, locals=14, args_size=5
+         0: getstatic     #47                 // Field net/mehvahdjukaar/amendments/configs/CommonConfigs.THROWABLE_FIRE_CHARGES:Ljava/util/function/Supplier;
+         3: invokeinterface #53,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+         8: checkcast     #55                 // class java/lang/Boolean
+        11: invokevirtual #59                 // Method java/lang/Boolean.booleanValue:()Z
+        14: ifne          134
+        17: aload_1
+        18: invokevirtual #65                 // Method net/minecraft/world/level/Level.getRandom:()Lnet/minecraft/util/RandomSource;
+        21: astore        5
+        23: aload         5
+        25: aload         4
+        27: invokevirtual #71                 // Method net/minecraft/core/Direction.getStepX:()I
+        30: i2d
+        31: ldc2_w        #72                 // double 0.11485000000000001d
+        34: invokeinterface #79,  5           // InterfaceMethod net/minecraft/util/RandomSource.triangle:(DD)D
+        39: dstore        6
+        41: aload         5
+        43: aload         4
+        45: invokevirtual #82                 // Method net/minecraft/core/Direction.getStepY:()I
+        48: i2d
+        49: ldc2_w        #72                 // double 0.11485000000000001d
+        52: invokeinterface #79,  5           // InterfaceMethod net/minecraft/util/RandomSource.triangle:(DD)D
+        57: dstore        8
+        59: aload         5
+        61: aload         4
+        63: invokevirtual #85                 // Method net/minecraft/core/Direction.getStepZ:()I
+        66: i2d
+        67: ldc2_w        #72                 // double 0.11485000000000001d
+        70: invokeinterface #79,  5           // InterfaceMethod net/minecraft/util/RandomSource.triangle:(DD)D
+        75: dstore        10
+        77: new           #87                 // class net/minecraft/world/phys/Vec3
+        80: dup
+        81: dload         6
+        83: dload         8
+        85: dload         10
+        87: invokespecial #90                 // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+        90: astore        12
+        92: new           #92                 // class net/minecraft/world/entity/projectile/SmallFireball
+        95: dup
+        96: aload_1
+        97: aload_2
+        98: invokeinterface #98,  1           // InterfaceMethod net/minecraft/core/Position.x:()D
+       103: aload_2
+       104: invokeinterface #101,  1          // InterfaceMethod net/minecraft/core/Position.y:()D
+       109: aload_2
+       110: invokeinterface #104,  1          // InterfaceMethod net/minecraft/core/Position.z:()D
+       115: aload         12
+       117: invokevirtual #108                // Method net/minecraft/world/phys/Vec3.normalize:()Lnet/minecraft/world/phys/Vec3;
+       120: invokespecial #111                // Method net/minecraft/world/entity/projectile/SmallFireball."<init>":(Lnet/minecraft/world/level/Level;DDDLnet/minecraft/world/phys/Vec3;)V
+       123: astore        13
+       125: aload         13
+       127: aload_3
+       128: invokevirtual #115                // Method net/minecraft/world/entity/projectile/SmallFireball.setItem:(Lnet/minecraft/world/item/ItemStack;)V
+       131: aload         13
+       133: areturn
+       134: new           #117                // class net/mehvahdjukaar/amendments/common/entity/MediumFireball
+       137: dup
+       138: aload_1
+       139: aload_2
+       140: invokeinterface #98,  1           // InterfaceMethod net/minecraft/core/Position.x:()D
+       145: aload_2
+       146: invokeinterface #101,  1          // InterfaceMethod net/minecraft/core/Position.y:()D
+       151: aload_2
+       152: invokeinterface #104,  1          // InterfaceMethod net/minecraft/core/Position.z:()D
+       157: invokespecial #120                // Method net/mehvahdjukaar/amendments/common/entity/MediumFireball."<init>":(Lnet/minecraft/world/level/Level;DDD)V
+       160: astore        5
+       162: aload         5
+       164: aload_3
+       165: invokevirtual #121                // Method net/mehvahdjukaar/amendments/common/entity/MediumFireball.setItem:(Lnet/minecraft/world/item/ItemStack;)V
+       168: aload         5
+       170: areturn
+      StackMapTable: number_of_entries = 1
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 134
+      LineNumberTable:
+        line 30: 0
+        line 32: 17
+        line 33: 23
+        line 34: 41
+        line 35: 59
+        line 36: 77
+        line 37: 92
+        line 38: 125
+        line 39: 131
+        line 41: 134
+        line 42: 162
+        line 43: 168
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           23     111     5 randomSource   Lnet/minecraft/util/RandomSource;
+           41      93     6     d   D
+           59      75     8     e   D
+           77      57    10     f   D
+           92      42    12  vec3   Lnet/minecraft/world/phys/Vec3;
+          125       9    13 smallFireball   Lnet/minecraft/world/entity/projectile/SmallFireball;
+            0     171     0  this   Lnet/mehvahdjukaar/amendments/mixins/FireChargeMixin;
+            0     171     1 level   Lnet/minecraft/world/level/Level;
+            0     171     2   pos   Lnet/minecraft/core/Position;
+            0     171     3 stack   Lnet/minecraft/world/item/ItemStack;
+            0     171     4 direction   Lnet/minecraft/core/Direction;
+          162       9     5 snowball   Lnet/mehvahdjukaar/amendments/common/entity/MediumFireball;
+    MethodParameters:
+      Name                           Flags
+      level
+      pos
+      stack
+      direction
+
+  public void shoot(net.minecraft.world.entity.projectile.Projectile, double, double, double, float, float);
+    descriptor: (Lnet/minecraft/world/entity/projectile/Projectile;DDDFF)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=9, locals=10, args_size=7
+         0: getstatic     #47                 // Field net/mehvahdjukaar/amendments/configs/CommonConfigs.THROWABLE_FIRE_CHARGES:Ljava/util/function/Supplier;
+         3: invokeinterface #53,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+         8: checkcast     #55                 // class java/lang/Boolean
+        11: invokevirtual #59                 // Method java/lang/Boolean.booleanValue:()Z
+        14: ifeq          30
+        17: aload_1
+        18: dload_2
+        19: dload         4
+        21: dload         6
+        23: fload         8
+        25: fload         9
+        27: invokevirtual #147                // Method net/minecraft/world/entity/projectile/Projectile.shoot:(DDDFF)V
+        30: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 30 /* same */
+      LineNumberTable:
+        line 48: 0
+        line 49: 17
+        line 51: 30
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      31     0  this   Lnet/mehvahdjukaar/amendments/mixins/FireChargeMixin;
+            0      31     1 projectile   Lnet/minecraft/world/entity/projectile/Projectile;
+            0      31     2     x   D
+            0      31     4     y   D
+            0      31     6     z   D
+            0      31     8 velocity   F
+            0      31     9 inaccuracy   F
+    MethodParameters:
+      Name                           Flags
+      projectile
+      x
+      y
+      z
+      velocity
+      inaccuracy
+
+  public net.minecraft.world.item.ProjectileItem$DispenseConfig createDispenseConfig();
+    descriptor: ()Lnet/minecraft/world/item/ProjectileItem$DispenseConfig;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: getstatic     #157                // Field net/mehvahdjukaar/amendments/Dummy.MOD_LOADED:Z
+         3: ifeq          23
+         6: getstatic     #47                 // Field net/mehvahdjukaar/amendments/configs/CommonConfigs.THROWABLE_FIRE_CHARGES:Ljava/util/function/Supplier;
+         9: invokeinterface #53,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+        14: checkcast     #55                 // class java/lang/Boolean
+        17: invokevirtual #59                 // Method java/lang/Boolean.booleanValue:()Z
+        20: ifne          53
+        23: invokestatic  #161                // Method net/minecraft/world/item/ProjectileItem$DispenseConfig.builder:()Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+        26: invokedynamic #178,  0            // InvokeDynamic #0:getDispensePosition:()Lnet/minecraft/world/item/ProjectileItem$PositionFunction;
+        31: invokevirtual #182                // Method net/minecraft/world/item/ProjectileItem$DispenseConfig$Builder.positionFunction:(Lnet/minecraft/world/item/ProjectileItem$PositionFunction;)Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+        34: ldc           #183                // float 6.6666665f
+        36: invokevirtual #187                // Method net/minecraft/world/item/ProjectileItem$DispenseConfig$Builder.uncertainty:(F)Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+        39: fconst_1
+        40: invokevirtual #190                // Method net/minecraft/world/item/ProjectileItem$DispenseConfig$Builder.power:(F)Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+        43: sipush        1018
+        46: invokevirtual #194                // Method net/minecraft/world/item/ProjectileItem$DispenseConfig$Builder.overrideDispenseEvent:(I)Lnet/minecraft/world/item/ProjectileItem$DispenseConfig$Builder;
+        49: invokevirtual #197                // Method net/minecraft/world/item/ProjectileItem$DispenseConfig$Builder.build:()Lnet/minecraft/world/item/ProjectileItem$DispenseConfig;
+        52: areturn
+        53: getstatic     #203                // Field net/mehvahdjukaar/amendments/common/ProjectileStats.DISPENSER_CONFIG:Lnet/minecraft/world/item/ProjectileItem$DispenseConfig;
+        56: areturn
+      StackMapTable: number_of_entries = 2
+        frame_type = 23 /* same */
+        frame_type = 29 /* same */
+      LineNumberTable:
+        line 55: 0
+        line 56: 23
+        line 58: 36
+        line 56: 52
+        line 60: 53
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      57     0  this   Lnet/mehvahdjukaar/amendments/mixins/FireChargeMixin;
+
+  private static net.minecraft.core.Position lambda$createDispenseConfig$0(net.minecraft.core.dispenser.BlockSource, net.minecraft.core.Direction);
+    descriptor: (Lnet/minecraft/core/dispenser/BlockSource;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/Position;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=2, args_size=2
+         0: aload_0
+         1: dconst_1
+         2: getstatic     #207                // Field net/minecraft/world/phys/Vec3.ZERO:Lnet/minecraft/world/phys/Vec3;
+         5: invokestatic  #212                // Method net/minecraft/world/level/block/DispenserBlock.getDispensePosition:(Lnet/minecraft/core/dispenser/BlockSource;DLnet/minecraft/world/phys/Vec3;)Lnet/minecraft/core/Position;
+         8: areturn
+      LineNumberTable:
+        line 57: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0 blockSource   Lnet/minecraft/core/dispenser/BlockSource;
+            0       9     1 direction   Lnet/minecraft/core/Direction;
+    MethodParameters:
+      Name                           Flags
+      blockSource
+      direction
+}
+InnerClasses:
+  public static #13= #12 of #4;           // Properties=class net/minecraft/world/item/Item$Properties of class net/minecraft/world/item/Item
+  public static final #16= #15 of #6;     // DispenseConfig=class net/minecraft/world/item/ProjectileItem$DispenseConfig of class net/minecraft/world/item/ProjectileItem
+  public static #19= #18 of #15;          // Builder=class net/minecraft/world/item/ProjectileItem$DispenseConfig$Builder of class net/minecraft/world/item/ProjectileItem$DispenseConfig
+  public static #22= #21 of #6;           // PositionFunction=class net/minecraft/world/item/ProjectileItem$PositionFunction of class net/minecraft/world/item/ProjectileItem
+  public static final #27= #24 of #26;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+SourceFile: "FireChargeMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #8(#9=[c#10])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/item/FireChargeItem;]
+    )
+BootstrapMethods:
+  0: #174 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #163 (Lnet/minecraft/core/dispenser/BlockSource;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/Position;
+      #167 REF_invokeStatic net/mehvahdjukaar/amendments/mixins/FireChargeMixin.lambda$createDispenseConfig$0:(Lnet/minecraft/core/dispenser/BlockSource;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/Position;
+      #163 (Lnet/minecraft/core/dispenser/BlockSource;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/Position;

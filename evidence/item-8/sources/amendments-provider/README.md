@@ -1,0 +1,21 @@
+# Amendments provider boundaries
+
+Extractor b307c50c2a91d8fcd4895fe7000a38bae204ba8b. Independent r1 reproduction
+matches all 41 disassemblies and the identity manifest. Manifest SHA-256:
+84c1363924e5567df372406b5fb56053e327b690d7a11a243a58d8e3c0b72b6b
+
+```sh
+uv run -m tools.inspect_item8_pool_elements --archive amendments-1.21-2.0.15-neoforge.jar --class-name net/mehvahdjukaar/amendments/mixins/AbstractCauldronBlockMixin.class --class-name net/mehvahdjukaar/amendments/mixins/AbstractSkullBlockMixin.class --class-name net/mehvahdjukaar/amendments/mixins/BellMixin.class --class-name net/mehvahdjukaar/amendments/mixins/BellTileEntityMixin.class --class-name net/mehvahdjukaar/amendments/mixins/BlocksMixin.class --class-name net/mehvahdjukaar/amendments/mixins/BrewingMixin.class --class-name net/mehvahdjukaar/amendments/mixins/BrewingStandMixin.class --class-name net/mehvahdjukaar/amendments/mixins/CampfireBlockEntityMixin.class --class-name net/mehvahdjukaar/amendments/mixins/CauldronBlockMixin.class --class-name net/mehvahdjukaar/amendments/mixins/CeilingHangingSignBlockMixin.class --class-name net/mehvahdjukaar/amendments/mixins/CompatQuarkSelfCandleSkullMixin.class --class-name net/mehvahdjukaar/amendments/mixins/DragonFireballMixin.class --class-name net/mehvahdjukaar/amendments/mixins/ExplosionMixin.class --class-name net/mehvahdjukaar/amendments/mixins/FenceBlockMixin.class --class-name net/mehvahdjukaar/amendments/mixins/FireChargeMixin.class --class-name net/mehvahdjukaar/amendments/mixins/FireballMixin.class --class-name net/mehvahdjukaar/amendments/mixins/FlowerPotBlockMixin.class --class-name net/mehvahdjukaar/amendments/mixins/HangingSignBlockEntityMixin.class --class-name net/mehvahdjukaar/amendments/mixins/JukeboxBlockEntityMixin.class --class-name net/mehvahdjukaar/amendments/mixins/JukeboxBlockMixin.class --class-name net/mehvahdjukaar/amendments/mixins/LanternBlockPlacementMixin.class --class-name net/mehvahdjukaar/amendments/mixins/LargeFireballMixin.class --class-name net/mehvahdjukaar/amendments/mixins/LavaCauldronMixin.class --class-name net/mehvahdjukaar/amendments/mixins/LecternBlockEntityMixin.class --class-name net/mehvahdjukaar/amendments/mixins/LecternBlockEntityUpdateMixin.class --class-name net/mehvahdjukaar/amendments/mixins/LecternBlockMixin.class --class-name net/mehvahdjukaar/amendments/mixins/MixinPlugin.class --class-name net/mehvahdjukaar/amendments/mixins/PotionTooltipMixin.class --class-name net/mehvahdjukaar/amendments/mixins/SignBlockEntityMixin.class --class-name net/mehvahdjukaar/amendments/mixins/SignBlockMixin.class --class-name net/mehvahdjukaar/amendments/mixins/SkullBlockMixin.class --class-name net/mehvahdjukaar/amendments/mixins/SlimeBallMixin.class --class-name net/mehvahdjukaar/amendments/mixins/SmallFireballMixin.class --class-name net/mehvahdjukaar/amendments/mixins/SnowballMixin.class --class-name net/mehvahdjukaar/amendments/mixins/VineMixin.class --class-name net/mehvahdjukaar/amendments/mixins/WallHangingSignBlockMixin.class --class-name net/mehvahdjukaar/amendments/mixins/WallSignBlockMixin.class --class-name net/mehvahdjukaar/amendments/mixins/WaterLilyMixin.class --class-name net/mehvahdjukaar/amendments/mixins/neoforge/CompatFDSignBlockEntityMixin.class --class-name net/mehvahdjukaar/amendments/mixins/neoforge/CompatFDWallSignBlockEntityMixin.class --class-name net/mehvahdjukaar/amendments/neoforge/AmendmentsForge.class --output evidence/raw/item8/amendments-provider-r1
+```
+
+The capture covers the automatic NeoForge entry, all 39 common hooks and their
+shared plugin. Hooks extend existing cauldrons, signs, skulls, bells, brewing,
+campfires, jukeboxes, lecterns, projectiles/explosions and block interactions.
+These are real gameplay effects, not a no-impact claim.
+
+The entry invokes Amendments.init, player-interaction ModEvents and conditional
+BlueprintIntegration.init. Its plugin extends Moonlight's SimpleMixinPlugin.
+The packaged Blueprint repaletters target cauldrons in existing structure tags;
+they must be preserved as content modifiers rather than counted as new roots.
+Direct startup/integration delegates still need reconciliation before closing
+provider membership. No family or provider-count change is claimed here.
