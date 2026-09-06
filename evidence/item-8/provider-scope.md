@@ -3395,3 +3395,42 @@ uv run basedpyright tests/item8/test_aether_provider_scope.py tests/item8/test_a
 Scoped checks pass. Census is 76 resolved providers and 60 open. Continue the
 remaining provider queue before canonical reconciliation and the eleven family
 attributes. No final Item 8 gate, review or merge is claimed.
+
+### Deep Aether candidate partition
+
+test_deep_aether_candidates.py binds the frozen archive and existing parsed
+catalog. Four packaged roots exactly match the captured runtime registry:
+altar_camp, brass_dungeon, campfire and combiner_corridor. The three non-Brass
+roots use deep_aether_jigsaw and target sacred_lands. Reuse test_totem_scope.py's
+existing dimension-membership result; registry presence is not active biome
+eligibility. The totem's earlier inactive disposition remains in force.
+
+All fifteen templates partition into twelve Brass components (five numbered
+rooms, five boss counterparts, door and room_part_up) and three Sacred Lands
+components named after the three jigsaw roots. Their actual executable consumers
+still need reconciliation; template count is not family count.
+
+The sixty configured features contain seven Deep Aether implementation types:
+aercloud_cloud, rain_aercloud_cloud, aercloud_roots, fallen_tree,
+improved_mushroom_feature, poison_lake and totem. Reuse the totem capture and
+accepted Aether cloud/lake/shelf roles, then inspect the remaining custom
+implementations and registration for contributions outside packaged definitions.
+DAFeatures and the Brass/jigsaw entry consumers are the next source boundaries.
+The original strict-JSON probe failed on packaged comments; the existing parsed,
+hash-bound catalog supplies these definitions without changing the archive.
+
+Two bundled archives are hash-bound: Aeroblender 1.0.0 and TerraBlender 4.1.0.3.
+Resolve effective selection against the retained top-level TerraBlender 4.1.0.8,
+and account for Aeroblender's entry role. Do not audit both TerraBlender versions
+as running merely because both are packaged.
+
+```sh
+uv run pytest -q tests/item8/test_deep_aether_candidates.py tests/item8/test_totem_scope.py
+uv run ruff check tests/item8/test_deep_aether_candidates.py
+uv run basedpyright tests/item8/test_deep_aether_candidates.py
+```
+
+Two focused cases and scoped checks pass. Deep Aether remains OPEN. Remaining
+work is the named structure/feature consumers, annotated/common mixin entries,
+optional-pack roles and nested-library selection/contribution roles. Census
+remains 76 resolved and 60 open; no new measurement system is required.
