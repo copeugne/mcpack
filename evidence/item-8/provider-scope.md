@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 73 of 136. The exact queue below has 63 open rows.
+Supported provider dispositions: 74 of 136. The exact queue below has 62 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -570,7 +570,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `YungsBridges-1.21.1-NeoForge-5.1.1.jar` | `yungs-bridge-generation`, `yungs-bridge-processors`, `yungs-bridges-module-default`, `yungs-bridges-module-loader` | RESOLVED: see YUNG Bridges provider disposition below. |
 | `YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar` | `cave-biomes-provider` (7f76013); test_cave_biomes_provider_scope.py | RESOLVED: Cave terrain, vegetation, existing-family biome eligibility and ambient encounters. All 38 worldgen resources and common hooks accounted for below; no independent family. |
 | `YungsExtras-1.21.1-NeoForge-5.1.1.jar` | `yungs-extras-desert-code`, `yungs-extras-generators`, `yungs-extras-initialization`, `yungs-extras-module-default`, `yungs-extras-processor-bindings`, `yungs-extras-registration` | RESOLVED: see YUNG Extras provider disposition below. |
-| `Zeta-1.1-40.jar` | `quark-enablement-callers`, `zeta-biome-modifier`, `zeta-component-biomes`, `zeta-compound-biome`, `zeta-config-binding`, `zeta-config-event-fields`, `zeta-deferred-feature`, `zeta-enablement-inputs`, `zeta-generation-applicability`, `zeta-generation-spawn`, `zeta-generator-dispatch`, `zeta-horizontal-directions`, `zeta-module-assignment`, `zeta-module-name`, `zeta-module-section`, `zeta-stone-ore` | Reuse Quark module/feature dispatch captures; reconcile remaining public generation and nested entry consumers. |
+| `Zeta-1.1-40.jar` | `quark-enablement-callers`, `zeta-biome-modifier`, `zeta-component-biomes`, `zeta-compound-biome`, `zeta-config-binding`, `zeta-config-event-fields`, `zeta-deferred-feature`, `zeta-enablement-inputs`, `zeta-generation-applicability`, `zeta-generation-spawn`, `zeta-generator-dispatch`, `zeta-horizontal-directions`, `zeta-module-assignment`, `zeta-module-name`, `zeta-module-section`, `zeta-stone-ore` | RESOLVED: Consumer module/configuration, registry, biome/generator and structure-replacement dispatch. No independent family. See Zeta disposition below. |
 | `[Neoforge]ctov-3.6.3.jar` | `ctov-provider` (82ac234), test_ctov_provider_scope.py, selection/bundle checks, existing CTOV regressions/graphs | RESOLVED: 78 existing roots, village/outpost components, compatibility injections and processors. Disconnected and missing components accounted for below. |
 | `accessories-neoforge-1.1.0-beta.53+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `adorabuild-structures-2.11.0-neoforge-1.21.3.jar` | `adorabuild-provider`, existing runtime/root and pool graph evidence | RESOLVED: 106 existing roots; all 110 pools and 121 templates connected; one preserved missing pool reference. See AdoraBuild provider disposition below. |
@@ -2814,3 +2814,51 @@ The focused case and scoped quality checks pass. Initial test formatting/type
 findings were corrected before acceptance. No new runtime measurement, helper
 framework or generator capture was added for this closure. Census: 73 resolved
 providers and 63 open. Next reconcile shared Zeta using its existing captures.
+
+## Zeta provider disposition
+
+The frozen Zeta-1.1-40.jar has SHA-256
+4f17d1a2b9fd6d18ddb7697aa451db7fb154053b8648f79de279ae0d7e68a2fa.
+All 627 files are accounted for: 609 org/violetmoon classes, seven bundled
+math/fast classes, four assets, loader/access-transformer/pack/mixin metadata,
+and one biome-modifier definition. No nested archives, services, templates,
+structure roots/sets, pools, functions or separate authored generation data
+are packaged. The preserved runtime structure registry has no zeta root.
+
+Role: shared module, configuration, registry and generation infrastructure.
+No independent authored family. Nineteen existing source manifests bind 49
+distinct captured classes to the archive. The recent c79f551 and a6d0b5b sources
+complement earlier configuration/generator captures; they do not replace them.
+
+| Mechanism | Supported contribution disposition |
+| --- | --- |
+| ZetaModForge, ZetaMod, ForgeZeta and common proxy | Creates the shared instance, starts registration/event infrastructure and loads general configuration with null categories and module finder for Zeta itself. The proxy bridges loader and play events. Consumer module definitions retain content ownership. |
+| Existing module/configuration path | Reuse category/module assignment, name/section binding, initial configuration refresh and enabled-state propagation captured for Quark. These choose consumer behavior; they are not new families or evidence of actual placement. |
+| Single packaged biome modifier | data/zeta/neoforge/biome_modifier/biome_modifier.json declares zeta:biome_modifier. Its registered implementation dispatches existing consumer biome/features/spawn modifications. Earlier component/compound-biome, deferred-feature and generator captures remain the implementation evidence. |
+| RegistryDataLoader hook and dynamic registration | RegisterDynamicUtil notifies signed-up Zeta instances. ZetaRegistry selects the queued entries for the supplied registry key, returns if absent/empty, evaluates consumer-supplied creators and registers their supplied IDs. Static/dynamic registry wrappers provide reusable registration, not authored default structures. |
+| StructureStart, StructurePiece and StructureTemplate hooks | Set/clear current structure context and apply registered block-state replacement functions to existing content. The replacement handler stores supplied functions; Quark's gold-bar/chest consumers are already accounted for. This does not create another structure layout. |
+| InterfaceDelegateMixinPlugin | Handles declared annotated interface-method and return-value transformations. It is shared by Zeta and Quark. This is bytecode dispatch for their declared hooks, not an additional packaged generation definition. Preserve its actual transformation/error behavior; this scope closure does not accept every transformed method's gameplay correctness. |
+| Other common and client hooks | Accessors expose block, item, loot, predicate, potion and spawn-placement state. Creative-tab filtering checks enablement, piston hooks select the shared resolver, and Forge block/item/weathering interfaces adapt existing behavior. Three client declarations concern block/item colors and rendering. None supplies an independent authored site. |
+| Remaining implementation roles | Event wrappers/buses, registries, module/configuration metadata, client UI/rendering, block/item/entity interfaces, networking, recipes, advancement/loot conditions, piston handling, utility/math and supplied biome/generator support. The sole mod annotation is ZetaModForge; no separate event-subscriber entry or nested executable payload exists. Do not turn every interface/helper into a new provider or family. |
+
+Fourteen common mixins and four Forge-side common mixins are all captured;
+the plugin and client declarations are included in the focused metadata check.
+The complete packaged-data and loader inventory complements source semantics;
+zero registry roots alone is not the basis for exclusion. Shared behavior can
+still affect biome constraints, loot, spawning and structure blocks, so its
+consumer links remain inputs to the eleven attributes. This disposition does
+not prove every hook executed, world occurrences, pacing, compatibility or final
+canonical boundaries. Those separate requirements remain open as recorded.
+
+```sh
+uv run pytest -q tests/item8/test_zeta_provider_scope.py
+uv run ruff check tests/item8/test_zeta_provider_scope.py
+uv run basedpyright tests/item8/test_zeta_provider_scope.py
+```
+
+One focused case and scoped quality checks pass. An initial test incorrectly
+assumed a bundled-library package prefix; actual full archive inspection showed
+seven math/fast classes and the assertion was corrected to the measured exact
+partition. Formatting findings were also corrected. No raw source was changed.
+Census: 74 resolved providers and 62 open. Next reconcile Repurposed Structures,
+reusing its existing mansion, monument, processor and pool-codec evidence.
