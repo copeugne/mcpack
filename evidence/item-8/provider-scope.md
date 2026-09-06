@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 47 of 136. The exact queue below has 89 open rows.
+Supported provider dispositions: 48 of 136. The exact queue below has 88 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -555,7 +555,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `PuzzlesLib-v21.1.52-1.21.1-NeoForge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `Quark-4.1-480.jar` | `quark-end-generators`, `quark-end-registration`, `quark-fallen-log-decor`, `quark-landmark-encounter-generators`, `quark-monster-box-behavior`, `quark-monster-box-bindings`, `quark-nether-spikes`, `quark-spire-config-annotations`, `quark-stone-clusters`, `quark-underground-base`, `quark-underground-context`, `quark-underground-fill`, `quark-underground-styles`, `quark-vegetation`, `quark-world-category` | Reuse recorded nonregistry contributions and module activation; reconcile remaining generation entries and packaged resources. |
 | `TerraBlender-neoforge-1.21.1-4.1.0.8.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `Terralith_1.21.1_v2.6.2_Neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect config-conditioned overlays, function entry tags and feature definitions; reconcile 28 packaged roots and unused templates. |
+| `Terralith_1.21.1_v2.6.2_Neoforge.jar` | `terralith-provider` (b87f3bb), test_terralith_provider_scope.py | RESOLVED: 28 existing roots, terrain/vegetation and one named Frostfire ornament candidate. Overlay, disconnected and missing component dispositions below; canonical ornament grouping remains open. |
 | `YungsApi-1.21.1-NeoForge-5.1.6.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `YungsBetterCaves-1.21.1-NeoForge-3.1.4.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar` | `desert-temple-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
@@ -1188,3 +1188,63 @@ exception, retaining the existing direct test instead of a new metadata framewor
 Ruff and Basedpyright pass. No additional measurement or family grouping change.
 Provider dispositions: 47 of 136 resolved, 89 open. Continue candidate completeness
 before detailed attributes.
+
+## Terralith provider candidate disposition
+
+Source b87f3bb preserves all eleven classes and reproduces exactly. The entry
+loads configuration and registers its resource-condition codec; client classes
+provide configuration UI. The declared mixin list and access transformer are
+empty. No separate code-authored generator, nested executable or service is
+present. The focused check accounts for every one of the archive's 2,075 files.
+Visual assets, biome/structure icon metadata, recipes, advancement/loot data,
+tags, biome definitions and terrain resources are not additional structure roots.
+
+All 28 packaged roots use minecraft:jigsaw and have existing captured root
+graphs. Of 49 pools, nothing, spire and village/baby_villager are outside those
+graphs. Of 173 templates, 126 are connected and 47 are disconnected. Their exact
+IDs are preserved in the focused check. The disconnected content includes old
+ruins, decorative components, village houses and a dungeon template. No inspected
+provider route places these as independent families; this does not assert that
+other providers or manual commands cannot reference them. The fortified desert
+village retains missing templates village/desert/houses/farmer and toolsmith1.
+Do not substitute the packaged farm1 template. No root has an unresolved pool
+element codec. These are potential component graphs, not observed placement.
+
+All six NeoForge overlay conditions evaluate false under the frozen Terralith
+configuration. In particular custom_structures=true prevents the disabling
+overlay from replacing the seven ordinary structure sets. The remaining disabled
+overlays concern intro text, skylands, terrain slabs, recipes and stone generation.
+The parallel Fabric declarations are not six more contributions in this NeoForge
+stack. Ordinary functions initialize scoreboards, schedule welcome text, mark
+bundle recipe detection and provide a manual spreadplayers testing command.
+None places authored layouts. The testing command was inspected, not executed.
+
+The 492 packaged configured-feature documents, including overlay copies, use
+vanilla feature codecs for trees, vegetation, terrain, ores and compositions.
+Their nested types also use vanilla codecs. That fact alone is not an exclusion
+of authored designs. Inspection retains the following explicit dispositions:
+
+| Candidate or contribution | Disposition |
+| --- | --- |
+| Existing 28 Terralith structure roots | Retain existing root candidates; canonical design/variant reconciliation is still separate. |
+| terralith:cave/frostfire/frostfire_ceiling hanging ornament | Named nonregistry candidate. The ceiling vegetation selector has a 0.07 branch constructing a downward chain column with a hanging soul lantern. Its placed feature is referenced by frostfire_caves. Whether this recurring ornament warrants an independent family or an ambient-decoration exclusion remains a named canonical grouping decision, not unknown candidate membership. |
+| terralith:yellowstone/vents | Terrain effect. A simple-block feature places campfires below magma and water, with a downward environment scan. Caldera and Yellowstone reference the placed feature. This is not an authored campsite layout. |
+| Remaining tree, plant, ore, cave and surface features | Terrain/vegetation contributions, including feature compositions. No independent authored template placement or custom generator is hidden behind their vanilla feature types. |
+| Disconnected pools/templates | Inactive through the inspected provider routes; retained as components with exact IDs, not promoted to families by file count. |
+
+The new named ornament question does not resume detailed attributes or settle
+the final family denominator. Whole-stack resource selection and canonical
+grouping remain required. No baseline configuration or production code changed.
+
+```sh
+uv run pytest -q tests/item8/test_terralith_provider_scope.py
+uv run ruff check tests/item8/test_terralith_provider_scope.py
+uv run basedpyright tests/item8/test_terralith_provider_scope.py
+```
+
+Two focused cases pass; scoped Ruff and Basedpyright pass. Initial type findings
+were resolved with explicit JSON type casts. A local statement-count exception
+keeps the complete payload check together without introducing a helper framework.
+Provider dispositions: 48 of 136 resolved, 88 open. Candidate completeness remains
+the immediate task, followed by named canonical grouping decisions, all eleven
+attributes, the applicable final gate and the required PR review/merge workflow.
