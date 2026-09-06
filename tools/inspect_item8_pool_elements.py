@@ -595,6 +595,7 @@ CLASSES: tuple[str, ...] = (
     "com/finndog/moogs_structures/utils/neoforge/PlatformHooksImpl.class",
     "com/finndog/moogs_structures/datagen/StructureNbtUpdaterDatagen.class",
     "architectury_inject_IntegratedStronghold_common_dac55d1c3d7c43d0b24fcf81e4608720_3415319371a0be83cfe6c4f3244ac2ed779cd7573f518ebf3d404884c005522cintegrated_stronghold1141211commondevjar/PlatformMethods.class",
+    "dev/worldgen/tectonic/config/state/ConfigState.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
