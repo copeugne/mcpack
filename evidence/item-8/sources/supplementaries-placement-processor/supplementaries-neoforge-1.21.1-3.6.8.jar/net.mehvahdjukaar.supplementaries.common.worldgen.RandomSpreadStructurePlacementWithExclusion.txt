@@ -1,0 +1,187 @@
+Compiled from "RandomSpreadStructurePlacementWithExclusion.java"
+public class net.mehvahdjukaar.supplementaries.common.worldgen.RandomSpreadStructurePlacementWithExclusion extends net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement {
+  public static final com.mojang.serialization.MapCodec<net.mehvahdjukaar.supplementaries.common.worldgen.RandomSpreadStructurePlacementWithExclusion> CODEC;
+
+  private final java.util.List<net.minecraft.world.level.levelgen.structure.placement.StructurePlacement$ExclusionZone> exclusionZones;
+
+  public net.mehvahdjukaar.supplementaries.common.worldgen.RandomSpreadStructurePlacementWithExclusion(net.minecraft.core.Vec3i, net.minecraft.world.level.levelgen.structure.placement.StructurePlacement$FrequencyReductionMethod, float, int, java.util.List<net.minecraft.world.level.levelgen.structure.placement.StructurePlacement$ExclusionZone>, int, int, net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: fload_3
+       4: iload         4
+       6: invokestatic  #1                  // Method java/util/Optional.empty:()Ljava/util/Optional;
+       9: iload         6
+      11: iload         7
+      13: aload         8
+      15: invokespecial #7                  // Method net/minecraft/world/level/levelgen/structure/placement/RandomSpreadStructurePlacement."<init>":(Lnet/minecraft/core/Vec3i;Lnet/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod;FILjava/util/Optional;IILnet/minecraft/world/level/levelgen/structure/placement/RandomSpreadType;)V
+      18: aload_0
+      19: aload         5
+      21: putfield      #13                 // Field exclusionZones:Ljava/util/List;
+      24: return
+
+  static boolean isPlacementForbidden(net.minecraft.world.level.levelgen.structure.placement.StructurePlacement$ExclusionZone, net.minecraft.world.level.chunk.ChunkGeneratorStructureState, int, int);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/structure/placement/StructurePlacement$ExclusionZone.otherSet:()Lnet/minecraft/core/Holder;
+       5: iload_2
+       6: iload_3
+       7: aload_0
+       8: invokevirtual #25                 // Method net/minecraft/world/level/levelgen/structure/placement/StructurePlacement$ExclusionZone.chunkCount:()I
+      11: invokevirtual #29                 // Method net/minecraft/world/level/chunk/ChunkGeneratorStructureState.hasStructureChunkInRange:(Lnet/minecraft/core/Holder;III)Z
+      14: ireturn
+
+  private static com.mojang.serialization.DataResult<net.mehvahdjukaar.supplementaries.common.worldgen.RandomSpreadStructurePlacementWithExclusion> validate(net.mehvahdjukaar.supplementaries.common.worldgen.RandomSpreadStructurePlacementWithExclusion);
+    Code:
+       0: aload_0
+       1: invokevirtual #35                 // Method spacing:()I
+       4: aload_0
+       5: invokevirtual #38                 // Method separation:()I
+       8: if_icmpgt     22
+      11: invokedynamic #41,  0             // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+      16: invokestatic  #45                 // InterfaceMethod com/mojang/serialization/DataResult.error:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/DataResult;
+      19: goto          26
+      22: aload_0
+      23: invokestatic  #51                 // InterfaceMethod com/mojang/serialization/DataResult.success:(Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      26: areturn
+
+  public boolean applyInteractionsWithOtherStructures(net.minecraft.world.level.chunk.ChunkGeneratorStructureState, int, int);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field exclusionZones:Ljava/util/List;
+       4: invokeinterface #55,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       9: astore        4
+      11: aload         4
+      13: invokeinterface #61,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      18: ifeq          49
+      21: aload         4
+      23: invokeinterface #67,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      28: checkcast     #20                 // class net/minecraft/world/level/levelgen/structure/placement/StructurePlacement$ExclusionZone
+      31: astore        5
+      33: aload         5
+      35: aload_1
+      36: iload_2
+      37: iload_3
+      38: invokestatic  #71                 // Method isPlacementForbidden:(Lnet/minecraft/world/level/levelgen/structure/placement/StructurePlacement$ExclusionZone;Lnet/minecraft/world/level/chunk/ChunkGeneratorStructureState;II)Z
+      41: ifeq          46
+      44: iconst_0
+      45: ireturn
+      46: goto          11
+      49: iconst_1
+      50: ireturn
+
+  public java.util.List<net.minecraft.world.level.levelgen.structure.placement.StructurePlacement$ExclusionZone> exclusionZones();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field exclusionZones:Ljava/util/List;
+       4: areturn
+
+  private static java.lang.String lambda$validate$5();
+    Code:
+       0: ldc           #75                 // String Spacing has to be larger than separation
+       2: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$4(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: bipush        16
+       3: invokestatic  #77                 // Method net/minecraft/core/Vec3i.offsetCodec:(I)Lcom/mojang/serialization/Codec;
+       6: ldc           #83                 // String locate_offset
+       8: getstatic     #85                 // Field net/minecraft/core/Vec3i.ZERO:Lnet/minecraft/core/Vec3i;
+      11: invokeinterface #89,  3           // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      16: invokedynamic #95,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      21: invokevirtual #99                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      24: getstatic     #105                // Field net/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod.CODEC:Lcom/mojang/serialization/Codec;
+      27: ldc           #111                // String frequency_reduction_method
+      29: getstatic     #113                // Field net/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod.DEFAULT:Lnet/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod;
+      32: invokeinterface #89,  3           // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      37: invokedynamic #117,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      42: invokevirtual #99                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      45: fconst_0
+      46: fconst_1
+      47: invokestatic  #118                // InterfaceMethod com/mojang/serialization/Codec.floatRange:(FF)Lcom/mojang/serialization/Codec;
+      50: ldc           #122                // String frequency
+      52: fconst_1
+      53: invokestatic  #124                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+      56: invokeinterface #89,  3           // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      61: invokedynamic #130,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      66: invokevirtual #99                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      69: getstatic     #131                // Field net/minecraft/util/ExtraCodecs.NON_NEGATIVE_INT:Lcom/mojang/serialization/Codec;
+      72: ldc           #136                // String salt
+      74: invokeinterface #138,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      79: invokedynamic #142,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      84: invokevirtual #99                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      87: getstatic     #143                // Field net/minecraft/world/level/levelgen/structure/placement/StructurePlacement$ExclusionZone.CODEC:Lcom/mojang/serialization/Codec;
+      90: invokeinterface #144,  1          // InterfaceMethod com/mojang/serialization/Codec.listOf:()Lcom/mojang/serialization/Codec;
+      95: ldc           #148                // String exclusion_zones
+      97: invokestatic  #150                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+     100: invokeinterface #89,  3           // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     105: invokedynamic #154,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+     110: invokevirtual #99                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     113: iconst_0
+     114: sipush        4096
+     117: invokestatic  #155                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+     120: ldc           #159                // String spacing
+     122: invokeinterface #138,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     127: invokedynamic #160,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+     132: invokevirtual #99                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     135: iconst_0
+     136: sipush        4096
+     139: invokestatic  #155                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+     142: ldc           #161                // String separation
+     144: invokeinterface #138,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     149: invokedynamic #162,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+     154: invokevirtual #99                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     157: getstatic     #163                // Field net/minecraft/world/level/levelgen/structure/placement/RandomSpreadType.CODEC:Lcom/mojang/serialization/Codec;
+     160: ldc           #166                // String spread_type
+     162: getstatic     #168                // Field net/minecraft/world/level/levelgen/structure/placement/RandomSpreadType.LINEAR:Lnet/minecraft/world/level/levelgen/structure/placement/RandomSpreadType;
+     165: invokeinterface #89,  3           // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     170: invokedynamic #172,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+     175: invokevirtual #99                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     178: invokevirtual #173                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P8;
+     181: aload_0
+     182: invokedynamic #179,  0            // InvokeDynamic #9:apply:()Lcom/mojang/datafixers/util/Function8;
+     187: invokevirtual #182                // Method com/mojang/datafixers/Products$P8.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function8;)Lcom/mojang/datafixers/kinds/App;
+     190: areturn
+
+  private static java.lang.Integer lambda$static$3(java.lang.Object);
+    Code:
+       0: aload_0
+       1: checkcast     #14                 // class net/mehvahdjukaar/supplementaries/common/worldgen/RandomSpreadStructurePlacementWithExclusion
+       4: invokevirtual #187                // Method salt:()I
+       7: invokestatic  #189                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      10: areturn
+
+  private static java.lang.Float lambda$static$2(java.lang.Object);
+    Code:
+       0: aload_0
+       1: checkcast     #14                 // class net/mehvahdjukaar/supplementaries/common/worldgen/RandomSpreadStructurePlacementWithExclusion
+       4: invokevirtual #194                // Method frequency:()F
+       7: invokestatic  #124                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+      10: areturn
+
+  private static net.minecraft.world.level.levelgen.structure.placement.StructurePlacement$FrequencyReductionMethod lambda$static$1(java.lang.Object);
+    Code:
+       0: aload_0
+       1: checkcast     #14                 // class net/mehvahdjukaar/supplementaries/common/worldgen/RandomSpreadStructurePlacementWithExclusion
+       4: invokevirtual #197                // Method frequencyReductionMethod:()Lnet/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod;
+       7: areturn
+
+  private static net.minecraft.core.Vec3i lambda$static$0(java.lang.Object);
+    Code:
+       0: aload_0
+       1: checkcast     #14                 // class net/mehvahdjukaar/supplementaries/common/worldgen/RandomSpreadStructurePlacementWithExclusion
+       4: invokevirtual #201                // Method locateOffset:()Lnet/minecraft/core/Vec3i;
+       7: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #205,  0            // InvokeDynamic #10:apply:()Ljava/util/function/Function;
+       5: invokestatic  #206                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: invokedynamic #212,  0            // InvokeDynamic #11:apply:()Ljava/util/function/Function;
+      13: invokevirtual #213                // Method com/mojang/serialization/MapCodec.validate:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+      16: putstatic     #216                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      19: return
+}
