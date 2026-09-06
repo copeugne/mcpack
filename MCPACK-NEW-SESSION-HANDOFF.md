@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Naturalist membership is RESOLVED. Source 9682cb0 captures its entry, seven
+common mixins and mob-spawn modifier. Two focused cases pass (0.13s); scoped
+Ruff/Basedpyright pass. No independent family added. Census: 86 resolved,
+50 open. Remaining packaged-generation providers are Create, Forgified Fabric
+API, Lithostitched, Railways and Regions Unexplored. The 24 code-only and
+21 unmatched rows also remain. Next: Lithostitched's supplied generation
+modifications, reusing existing pool-codec captures and consumer dispositions.
+Do not resume family attributes before membership and named grouping decisions.
+
 Ube's Delight membership is RESOLVED. Source b6ef5a0, bundled entry ca67c60 and
 configuration delegates e40ea32 cover crop generation, common entries and the
 MidnightLib boundary. Three focused cases pass (0.13s); scoped Ruff/Basedpyright

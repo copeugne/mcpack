@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 85 of 136. The exact queue below has 51 open rows.
+Supported provider dispositions: 86 of 136. The exact queue below has 50 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -674,7 +674,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `mca-neoforge-7.7.11+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar` | Eight capture directories bound by test_moog_library_provider_scope.py; latest registration boundaries ee8e2c0. | RESOLVED: shared generation and modification library; no independent authored family or packaged generation resources. See Moog library provider disposition below. |
 | `moonlight-neoforge-1.21.1-3.0.17.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `naturalist-1.0.2-neoforge-1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
+| `naturalist-1.0.2-neoforge-1.21.1.jar` | `naturalist-provider` (9682cb0), test_naturalist_provider_scope.py | RESOLVED: Mob spawning, existing entity/item/crop behavior and client spawn-egg resources. No independent structure family. Full disposition below. |
 | `oceansdelight-neoforge-1.0.4-1.21.1.jar` | `oceansdelight-provider` (2b575d8), test_oceansdelight_provider_scope.py | RESOLVED: Food content and four existing aquatic-mob loot declarations; no independent family. See Ocean's Delight disposition below. |
 | `owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `player-animation-lib-forge-2.0.4+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -701,6 +701,64 @@ attributes. This separates unknown membership from incomplete attributes.
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+
+## Naturalist provider disposition
+
+naturalist-1.0.2-neoforge-1.21.1.jar is RESOLVED as a mob-spawn and existing
+entity/item behavior provider, with no independent structure family. SHA-256:
+04616a9f136c7a8fd6f9f75e83be80af33bc54924b3ca16b0f33d19273c25e95.
+Its full 1347-file payload has 211 classes, 779 assets, 265 data files, 79
+client resource-pack files, eight packaged generator-cache files, two metadata
+files and three other root files. There are no templates, nested archives,
+services, scripts or configured/placed feature definitions. The sole resource
+pack contains 31 spawn-egg model JSON files, 47 textures and pack metadata.
+Its registration explicitly selects client resources. The optional
+LambDynamicLights initializer is declared as a client dependency/integration.
+
+NaturalistBiomeModifiers registers add_animals with AddAnimalsBiomeModifier.
+The implementation filters biome membership and appends MobSpawnSettings
+SpawnerData through addSpawn. It does not place blocks or structures. The
+complete biome-modifier data contains that one custom modifier and three
+vanilla remove_spawns declarations: farm animals in savanna/swamp biomes and
+pigs in forest biomes. The other neoforge-path document maps compostable items.
+All other root data consists of tags, recipes, loot tables and advancements.
+These can affect encounters/loot in existing families, but do not add a family.
+
+The sole annotated entry is Naturalist. Its preserved constructor and callbacks
+register content, configuration, entity attributes and spawn predicates,
+brewing recipes, dispenser behavior, client renderers/resource packs and
+development data generation. FinalizeSpawnEvent initializes dragonfly variants;
+MobEffectEvent.Applicable modifies effect applicability. These operate on
+existing entities/items. Seven declared common mixins are fully retained:
+
+| Mixin | Membership role |
+| --- | --- |
+| BottleItemMixin | Player bottling of an existing dragonfly-owned effect cloud. |
+| CreeperMixin | Existing creeper avoidance goals for lions and catfish. |
+| CropBlockMixin | Existing crop ticking affected by nearby snails. |
+| MapItemMixin | Existing map use while riding a giraffe. |
+| MobMixin | Existing mob effects and configured Naturalist entity enablement. |
+| MonsterMixin | Existing player-held teddy-bear check. |
+| ZombieMixin | Existing zombie goals targeting animal eggs. |
+
+The two other declared mixins are client-only. No mixin plugin is declared.
+No authored-site route is introduced by these hooks. This disposition does
+not audit every animal AI helper or claim gameplay compatibility, spawn
+abundance, final encounter composition or effective configuration values.
+
+Source 9682cb0 retains the ten inspected classes, with exact archive/class
+identities and reproduction in sources/naturalist-provider/README.md. Existing
+accepted packaged JSON supplies the data. No runtime measurement was added.
+
+```sh
+uv run pytest -q tests/item8/test_naturalist_provider_scope.py
+uv run ruff check tests/item8/test_naturalist_provider_scope.py
+uv run basedpyright tests/item8/test_naturalist_provider_scope.py
+```
+
+Two focused cases pass (0.13s). Scoped Ruff/Basedpyright pass after two line-length
+corrections. Census: 86 resolved, 50 open. Five packaged-generation providers,
+24 code-only and 21 unmatched rows remain. No canonical family is added.
 
 ## Ubes Delight provider disposition
 
