@@ -217,6 +217,9 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/mehvahdjukaar/amendments/Amendments.class",
+    "net/mehvahdjukaar/amendments/events/ModEvents.class",
+    "net/mehvahdjukaar/amendments/integration/neoforge/BlueprintIntegration.class",
     "net/mehvahdjukaar/amendments/mixins/AbstractCauldronBlockMixin.class",
     "net/mehvahdjukaar/amendments/mixins/AbstractSkullBlockMixin.class",
     "net/mehvahdjukaar/amendments/mixins/BellMixin.class",
