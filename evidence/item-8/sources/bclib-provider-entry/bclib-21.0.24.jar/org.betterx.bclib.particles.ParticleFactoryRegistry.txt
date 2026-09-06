@@ -1,0 +1,73 @@
+Compiled from "ParticleFactoryRegistry.java"
+public final class org.betterx.bclib.particles.ParticleFactoryRegistry {
+  private static final org.betterx.bclib.particles.ParticleFactoryRegistry INSTANCE;
+
+  private final java.util.Map<net.minecraft.core.particles.ParticleType<?>, org.betterx.bclib.particles.ParticleFactoryRegistry$PendingParticleFactory<?>> factories;
+
+  private org.betterx.bclib.particles.ParticleFactoryRegistry();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #7                  // class java/util/IdentityHashMap
+       8: dup
+       9: invokespecial #9                  // Method java/util/IdentityHashMap."<init>":()V
+      12: putfield      #10                 // Field factories:Ljava/util/Map;
+      15: return
+
+  public static org.betterx.bclib.particles.ParticleFactoryRegistry getInstance();
+    Code:
+       0: getstatic     #16                 // Field INSTANCE:Lorg/betterx/bclib/particles/ParticleFactoryRegistry;
+       3: areturn
+
+  public <T extends net.minecraft.core.particles.ParticleOptions> void register(net.minecraft.core.particles.ParticleType<T>, org.betterx.bclib.particles.ParticleFactoryRegistry$PendingParticleFactory<T>);
+    Code:
+       0: aload_0
+       1: getfield      #10                 // Field factories:Ljava/util/Map;
+       4: aload_1
+       5: aload_2
+       6: invokeinterface #20,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      11: pop
+      12: return
+
+  public static void onRegisterParticleProviders(net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent);
+    Code:
+       0: getstatic     #16                 // Field INSTANCE:Lorg/betterx/bclib/particles/ParticleFactoryRegistry;
+       3: getfield      #10                 // Field factories:Ljava/util/Map;
+       6: aload_0
+       7: invokedynamic #26,  0             // InvokeDynamic #0:accept:(Lnet/neoforged/neoforge/client/event/RegisterParticleProvidersEvent;)Ljava/util/function/BiConsumer;
+      12: invokeinterface #30,  2           // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+      17: return
+
+  private static void registerFactory(net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent, net.minecraft.core.particles.ParticleType<?>, org.betterx.bclib.particles.ParticleFactoryRegistry$PendingParticleFactory<?>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokedynamic #34,  0             // InvokeDynamic #1:create:(Lorg/betterx/bclib/particles/ParticleFactoryRegistry$PendingParticleFactory;)Lnet/minecraft/client/particle/ParticleEngine$SpriteParticleRegistration;
+       8: invokevirtual #38                 // Method net/neoforged/neoforge/client/event/RegisterParticleProvidersEvent.registerSpriteSet:(Lnet/minecraft/core/particles/ParticleType;Lnet/minecraft/client/particle/ParticleEngine$SpriteParticleRegistration;)V
+      11: return
+
+  private static net.minecraft.client.particle.ParticleProvider lambda$registerFactory$1(org.betterx.bclib.particles.ParticleFactoryRegistry$PendingParticleFactory, net.minecraft.client.particle.SpriteSet);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokeinterface #44,  2           // InterfaceMethod org/betterx/bclib/particles/ParticleFactoryRegistry$PendingParticleFactory.create:(Lnet/minecraft/client/particle/SpriteSet;)Lnet/minecraft/client/particle/ParticleProvider;
+       7: areturn
+
+  private static void lambda$onRegisterParticleProviders$0(net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent, net.minecraft.core.particles.ParticleType, org.betterx.bclib.particles.ParticleFactoryRegistry$PendingParticleFactory);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokestatic  #49                 // Method registerFactory:(Lnet/neoforged/neoforge/client/event/RegisterParticleProvidersEvent;Lnet/minecraft/core/particles/ParticleType;Lorg/betterx/bclib/particles/ParticleFactoryRegistry$PendingParticleFactory;)V
+       6: return
+
+  static {};
+    Code:
+       0: new           #11                 // class org/betterx/bclib/particles/ParticleFactoryRegistry
+       3: dup
+       4: invokespecial #53                 // Method "<init>":()V
+       7: putstatic     #16                 // Field INSTANCE:Lorg/betterx/bclib/particles/ParticleFactoryRegistry;
+      10: return
+}

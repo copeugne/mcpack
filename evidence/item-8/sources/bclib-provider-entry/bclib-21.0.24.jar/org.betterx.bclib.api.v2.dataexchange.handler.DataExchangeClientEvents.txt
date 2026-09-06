@@ -1,0 +1,56 @@
+Compiled from "DataExchangeClientEvents.java"
+public final class org.betterx.bclib.api.v2.dataexchange.handler.DataExchangeClientEvents {
+  private static net.minecraft.client.multiplayer.ClientPacketListener lastClientConnection;
+
+  private org.betterx.bclib.api.v2.dataexchange.handler.DataExchangeClientEvents();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void onClientTick(net.neoforged.neoforge.client.event.ClientTickEvent$Post);
+    Code:
+       0: invokestatic  #7                  // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+       3: astore_1
+       4: aload_1
+       5: invokevirtual #13                 // Method net/minecraft/client/Minecraft.getConnection:()Lnet/minecraft/client/multiplayer/ClientPacketListener;
+       8: astore_2
+       9: aload_2
+      10: getstatic     #17                 // Field lastClientConnection:Lnet/minecraft/client/multiplayer/ClientPacketListener;
+      13: if_acmpne     17
+      16: return
+      17: invokestatic  #23                 // Method org/betterx/bclib/api/v2/dataexchange/handler/DataExchange.getInstance:()Lorg/betterx/bclib/api/v2/dataexchange/DataExchangeAPI;
+      20: astore_3
+      21: aload_2
+      22: ifnull        55
+      25: aload_3
+      26: invokevirtual #28                 // Method org/betterx/bclib/api/v2/dataexchange/handler/DataExchange.initClientside:()V
+      29: aload_3
+      30: getfield      #31                 // Field org/betterx/bclib/api/v2/dataexchange/handler/DataExchange.client:Lorg/betterx/bclib/api/v2/dataexchange/Connector;
+      33: checkcast     #35                 // class org/betterx/bclib/api/v2/dataexchange/ConnectorClientside
+      36: astore        4
+      38: aload         4
+      40: aload_2
+      41: aload_1
+      42: invokevirtual #37                 // Method org/betterx/bclib/api/v2/dataexchange/ConnectorClientside.onPlayInit:(Lnet/minecraft/client/multiplayer/ClientPacketListener;Lnet/minecraft/client/Minecraft;)V
+      45: aload         4
+      47: aload_2
+      48: aload_1
+      49: invokevirtual #41                 // Method org/betterx/bclib/api/v2/dataexchange/ConnectorClientside.onPlayReady:(Lnet/minecraft/client/multiplayer/ClientPacketListener;Lnet/minecraft/client/Minecraft;)V
+      52: goto          84
+      55: getstatic     #17                 // Field lastClientConnection:Lnet/minecraft/client/multiplayer/ClientPacketListener;
+      58: ifnull        84
+      61: aload_3
+      62: getfield      #31                 // Field org/betterx/bclib/api/v2/dataexchange/handler/DataExchange.client:Lorg/betterx/bclib/api/v2/dataexchange/Connector;
+      65: checkcast     #35                 // class org/betterx/bclib/api/v2/dataexchange/ConnectorClientside
+      68: astore        4
+      70: aload         4
+      72: ifnull        84
+      75: aload         4
+      77: getstatic     #17                 // Field lastClientConnection:Lnet/minecraft/client/multiplayer/ClientPacketListener;
+      80: aload_1
+      81: invokevirtual #44                 // Method org/betterx/bclib/api/v2/dataexchange/ConnectorClientside.onPlayDisconnect:(Lnet/minecraft/client/multiplayer/ClientPacketListener;Lnet/minecraft/client/Minecraft;)V
+      84: aload_2
+      85: putstatic     #17                 // Field lastClientConnection:Lnet/minecraft/client/multiplayer/ClientPacketListener;
+      88: return
+}

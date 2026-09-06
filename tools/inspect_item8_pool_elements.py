@@ -214,6 +214,56 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "com/llamalad7/mixinextras/platform/neoforge/MixinExtrasConfigPlugin.class",
+    "org/betterx/bclib/mixin/common/AnvilBlockMixin.class",
+    "org/betterx/bclib/mixin/common/AnvilMenuMixin.class",
+    "org/betterx/bclib/mixin/common/ComposterBlockAccessor.class",
+    "org/betterx/bclib/mixin/common/CraftingMenuMixin.class",
+    "org/betterx/bclib/mixin/common/EnchantingTableBlockMixin.class",
+    "org/betterx/bclib/mixin/common/IdMapperAccessor.class",
+    "org/betterx/bclib/mixin/common/IdMapperDebugMixin.class",
+    "org/betterx/bclib/mixin/common/LayerLightSectionStorageMixin.class",
+    "org/betterx/bclib/mixin/common/LootPoolMixin.class",
+    "org/betterx/bclib/mixin/common/PistonBaseBlockMixin.class",
+    "org/betterx/bclib/mixin/common/PortalShapeMixin.class",
+    "org/betterx/bclib/mixin/common/RecipeManagerMixin.class",
+    "org/betterx/bclib/mixin/common/RecipeMixin.class",
+    "org/betterx/bclib/mixin/common/ShovelItemAccessor.class",
+    "org/betterx/bclib/mixin/common/SurfaceRulesContextAccessor.class",
+    "org/betterx/bclib/mixin/common/boat/BoatItemMixin.class",
+    "org/betterx/bclib/mixin/common/boat/BoatMixin.class",
+    "org/betterx/bclib/mixin/common/boat/ChestBoatMixin.class",
+    "org/betterx/bclib/mixin/common/elytra/LivingEntityMixin.class",
+    "org/betterx/bclib/mixin/common/shears/BeehiveBlockMixin.class",
+    "org/betterx/bclib/mixin/common/shears/MatchToolMixin.class",
+    "org/betterx/bclib/mixin/common/shears/MushroomCowMixin.class",
+    "org/betterx/bclib/mixin/common/shears/PumpkinBlockMixin.class",
+    "org/betterx/bclib/mixin/common/shears/SheepMixin.class",
+    "org/betterx/bclib/mixin/common/shears/SnowGolemMixin.class",
+    "org/betterx/bclib/mixin/common/shears/TripWireBlockMixin.class",
+    "org/betterx/bclib/mixin/common/signs/BlockEntityTypeMixin.class",
+
+    "org/betterx/bclib/api/v2/PostInitAPI.class",
+    "org/betterx/bclib/api/v2/dataexchange/handler/DataExchange.class",
+    "org/betterx/bclib/api/v2/dataexchange/handler/DataExchangeClientEvents.class",
+    "org/betterx/bclib/api/v2/spawning/SpawnRuleBuilder.class",
+    "org/betterx/bclib/client/BCLibClient.class",
+    "org/betterx/bclib/particles/ParticleFactoryRegistry.class",
+    "org/betterx/bclib/registry/BaseBlockEntityRenders.class",
+    "org/betterx/bclib/registry/FuelRegistry.class",
+    "org/betterx/bclib/server/BCLibServer.class",
+    "org/betterx/bclib/mixin/common/BiomeGenerationSettingsAccessor.class",
+    "org/betterx/bclib/mixin/common/BiomeMixin.class",
+    "org/betterx/bclib/mixin/common/BoneMealItemMixin.class",
+    "org/betterx/bclib/mixin/common/ChunkGeneratorMixin.class",
+    "org/betterx/bclib/mixin/common/MobSpawnSettingsAccessor.class",
+    "org/betterx/bclib/mixin/common/RegistryDataLoaderMixin.class",
+    "org/betterx/bclib/mixin/common/ServerLevelMixin.class",
+    "org/betterx/bclib/mixin/common/WorldGenRegionMixin.class",
+
+    "org/betterx/bclib/api/v2/levelgen/LevelGenEvents.class",
+    "org/betterx/bclib/api/v2/levelgen/structures/TemplatePiece.class",
+    "org/betterx/bclib/BCLibPatch.class",
     "com/illusivesoulworks/polymorph/common/util/BlockEntityTicker.class",
     "com/illusivesoulworks/polymorph/common/PolymorphCommonEvents.class",
     "com/illusivesoulworks/polymorph/common/integration/fastbench/FastBenchModule.class",
@@ -3007,6 +3057,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jarjar/mixinextras-neoforge-0.5.0.jar",
         "META-INF/jars/forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar",
         "META-INF/jars/fabric-transfer-api-v1-5.4.3+a25cb45619.jar",
         "META-INF/jars/fabric-registry-sync-v0-5.3.1+f9aace1619.jar",
@@ -3067,6 +3118,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jarjar/mixinextras-neoforge-0.5.0.jar": (
+            "bclib-21.0.24.jar",
+            "9c617719248f8b89847348fc7ea5e705739c147ae5e172551264d225bc9f2507",
+        ),
         "META-INF/jars/forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar": (
             "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
             "fe0b6b5e95917ab26fd1271e8d72fc714283a4c2542c5a732fb1261a69f18c43",
