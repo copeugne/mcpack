@@ -9116,3 +9116,38 @@ SHA-256: be6481c55cce473a269696c513fa580e699ff9b93530ff9231bcb8f06a31307d.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-sculptures-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-voyager-sculptures-r2.json
 ```
+
+### Final Voyager provisional decisions and broader backlog correction, 2026-09-07
+
+Fourteen remaining Voyager ruins and landmarks retain distinct inspected design
+compositions. Root assignments are unchanged. Crystal lower and shared ship
+villager templates remain components. Ruined beacon has no packaged beacon block;
+railway contains actual rail blocks; neither a working network nor moving ship or
+windmill is inferred. Seventeen affected cases and scoped quality checks pass.
+Working groups remain 405. Explicit Voyager provisionals: zero.
+
+This does not close canonical reconciliation. Manual inspection of rationale
+sentences mentioning canonical, related-design or replacement relationships that
+remain open or require reconciliation identifies 128 existing records below.
+The earlier explicit-provisional queue was incomplete as an overall progress
+measure. These are records to reconcile, not 128 newly discovered families. Some
+contain dependency, replacement or exclusion questions rather than layout questions.
+Use the existing evidence and resolve each actual note; do not mechanically erase
+boilerplate or assume registry membership proves generation. Nonregistry records
+and required attributes also remain open.
+
+- adorabuild_structures (31): acacia_well, ancient_palace, bamboo_campfire, basalt_chambers, birch_beehive, blackstone_bastion, blackstone_temple, buried_sand_castle, dark_oak_mansion, end_bubble, end_gateway, end_ship, end_temple, frozen_shelter, house, library, mountain_mine, mushroom, nether_fortress, nether_fossil, nether_portal, nether_temple, ocean_bubble, ocean_temple, prison, red_sand_temple, sand_castle, sand_pyramid, tree, tree_house, watercraft
+- aether (4): bronze_dungeon, gold_dungeon, large_aercloud, silver_dungeon
+- creatingspace (4): mars/underground_outpost_1, moon/abandoned_outpost, moon/crashed_rocket, moon/crashed_ship
+- deep_aether (4): altar_camp, brass_dungeon, campfire, combiner_corridor
+- idas (62): abandoned_lighthouse, abandoned_vineyard, abandonedhouse, ancient_mines, ancient_portal, ancient_statue, animal_den, apothecary_abode, ars_nouveau/archmages_tower, bazaar, bearclaw_inn, beekeepers_house, botanist, brickhouse, castle, collectors_museum, cottage, desert_camp, desert_market, desert_pyramid, desert_ruins, dig_site, enchantingtower, farmhouse, fishermans_lodge, frozen_crypt, haunted_manor, hermits_hollow, hunters_cabin, iceandfire/dread_citadel, iceandfire/sirens_cove, labyrinth, lumber_camp, mason_house, necromancers_spire, nether_pump_camp, nexus, pillager_camp, pillager_fortress, pumpkin_cafe, redhorn_guild, ruined_church, ruined_fort, ruined_well, ruins_of_the_deep, snifferhenge, sunken_ship, sunken_ship/sunken_ship_ruins, the_log, tinkers_citadel, tinkers_workshop, train_ruins, tree_of_wisdom, treetop_tavern, tudor_pub, underground_camp, wacky_wares, washing_camp, windswept_shrine, winter_wagon, witches_treestump, wizard_tower
+- illagerinvasion (5): firecaller_hut, illager_fort, illusioner_tower, labyrinth, sorcerer_hut
+- integrated_stronghold (1): stronghold
+- terralith (16): desert_outpost, fortified_village, glacial_hut, igloo, mage_complex, mage_tower, rubble, spire, underground/frosted_dungeon, underground/giant_bee_hive, underground/mining_outpost, underground/old_refinery, underground/sunken_tower, underground_cabin, valley_lodge, witch_hut
+- towns_and_towers (1): village
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mvs or voyager'
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
