@@ -6134,3 +6134,18 @@ uv run basedpyright tests/item8/test_betterend_feature_candidates.py tools/build
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-buildings-r1.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-betterend-buildings-r1.json
 ```
+
+### BetterEnd ruin layout inspection
+
+Source tool 3b14c8d renders the existing 35 ruin templates in six fixed sheets,
+retained under sources/betterend-ruin-views. All six were manually inspected,
+and every SVG reproduces byte for byte. The README records hashes, commands,
+the rejected small-scale pilot and diagram limitations. No new dependency or
+runtime measurement was introduced. Palette summaries did not preserve the
+ordinary block arrangements needed for these remaining canonical comparisons.
+
+The views distinguish low floor remnants, light fixtures, column/pedestal
+forms, gateways and roofed construction within the ruin-named files. Family
+assignments still require the material/content join and cross-biome comparison;
+this capture alone closes no family decision. Do not repeat the rendering or
+expand its fidelity without a concrete unresolved layout boundary.
