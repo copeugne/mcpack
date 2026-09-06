@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Six AdoraBuild vessel/facility records are resolved against views 03112db3 and
+source contents. Watercraft separates into sailing ships, rafts and covered
+riverboat with full variants retained. The affected definition/root/evidence case
+and scoped checks pass. Backlog: 73 (IDAS 59, AdoraBuild 14). Coverage groups: 408.
+Inventory refresh follows. Required attributes and nonregistry work remain open.
+
 AdoraBuild vessels and facilities require comparison of their complete seventeen
 templates (watercraft, End ship, frozen shelters, libraries, mines and prisons).
 Use the existing renderer to distinguish design variants; no new measurement
