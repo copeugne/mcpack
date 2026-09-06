@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Six BetterEnd furnished building families are integrated: mushroom library,
+mushroom tree house, Lantern Woods cabin, Shadow Forest mansion, Umbrella Jungle
+workshop house and raised house. Actual form/furnishing differences support
+the decisions, with active configured selections and source identities bound.
+Fourteen focused cases, scoped checks and reproduction pass. Thirty-five ruin
+templates remain to group in the selected BetterEnd architectural set.
+Continue those decisions before detailed attributes or further library tracing.
+
+
 BetterEnd light_1 is excluded as an ambient fixture. The disconnected Blossoming
 Spires house remains a named inactive candidate outside the active building
 lists, with explicit reopening if another consumer is demonstrated. Both
