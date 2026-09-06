@@ -3099,3 +3099,36 @@ uv run basedpyright tests/item8/test_repurposed_provider_scope.py tests/item8/te
 Census: 75 resolved providers and 61 open. Next reconcile Aether, reusing its
 existing Bronze, piece, placement and trap evidence. Do not repeat Repurposed's
 source capture, component partition or feature inventory during that work.
+
+## Aether candidate partition in progress
+
+Provider scope remains OPEN. The frozen archive is
+`aether-1.21.1-1.5.10-neoforge.jar`, SHA-256
+a999a9265eb550a46a0f8eedfee7c3c75371d7f6cf34b7c09ff800e48633e9f8.
+The existing cloud-provider test now binds the full packaged candidate partition:
+
+| Resource group | Count | Current disposition |
+| --- | ---: | --- |
+| Base structure roots | 4 | Bronze, Silver, Gold and large aercloud exactly match the captured Aether runtime registry. Reuse the existing cloud terrain disposition. |
+| Optional ruined-portal roots | 6 | Packaged under packs/ruined_portal, absent from the captured runtime registry. Preserve optional provenance; do not count them as active families. |
+| Bronze templates | 6 | Previously captured and linked to Bronze assembly. Do not reopen Bronze helper internals for provider coverage. |
+| Silver templates | 11 | Reconcile existing Silver entry with its builder and components, including test_door. |
+| Gold templates | 4 | Reconcile existing Gold entry with island, boss room, tunnel and stub components. |
+| Ruined-portal templates | 13 | Preserve their optional-pack relationship and check loader/entry consumers before final inactive disposition. |
+| Configured features | 25 | Eleven types. Four custom implementations are aercloud, lake, crystal island and shelf; the others are vanilla ore/tree/plant/spring/selector types with supplied configurations. Custom behavior and special tree decorations still need roles. |
+| Bundled JARs | 3 | Cumulus Menus 2.0.7, Accessories beta.48 and Nitrogen Internals 1.1.25, exact hashes bound by the test. Reconcile effective loader selection and shared roles; embedded filenames alone do not prove which version runs. |
+
+All 34 NBT templates are under these four component namespaces. This is a
+resource partition, not a canonical-family count or completed provider review.
+Reuse the existing Aether source directories and tested cloud/Bronze bindings.
+Remaining work is the named component consumers, custom feature/tree roles,
+loader/event/mixin entry coverage and bundled-library disposition.
+
+```sh
+uv run pytest -q tests/item8/test_aether_cloud_source.py
+uv run ruff check tests/item8/test_aether_cloud_source.py
+uv run basedpyright tests/item8/test_aether_cloud_source.py
+```
+
+Two focused cases and scoped quality checks pass. No new measurement or capture
+was needed for this resource partition. Census remains 75 resolved and 61 open.
