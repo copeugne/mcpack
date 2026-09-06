@@ -1,0 +1,166 @@
+Compiled from "PlatinumTrimHandler.java"
+public class fuzs.illagerinvasion.handler.PlatinumTrimHandler {
+  public static final java.lang.String INSIGHT_TRANSLATION_KEY = "trim_material.illagerinvasion.platinum.effect.insight";
+
+  public static final java.lang.String AGILITY_TRANSLATION_KEY = "trim_material.illagerinvasion.platinum.effect.agility";
+
+  public static final java.lang.String ENDURANCE_TRANSLATION_KEY = "trim_material.illagerinvasion.platinum.effect.endurance";
+
+  public static final java.lang.String FEATHERWEIGHT_TRANSLATION_KEY = "trim_material.illagerinvasion.platinum.effect.featherweight";
+
+  public static final java.util.Map<net.minecraft.world.item.ArmorItem$Type, java.lang.String> PLATINUM_TRIM_TRANSLATION_KEYS;
+
+  public fuzs.illagerinvasion.handler.PlatinumTrimHandler();
+    Code:
+       0: aload_0
+       1: invokespecial #35                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static fuzs.puzzleslib.api.event.v1.core.EventResult onBreakSpeed(net.minecraft.world.entity.player.Player, net.minecraft.world.level.block.state.BlockState, fuzs.puzzleslib.api.event.v1.data.DefaultedFloat);
+    Code:
+       0: aload_0
+       1: invokevirtual #48                 // Method net/minecraft/world/entity/player/Player.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+       4: aload_1
+       5: invokevirtual #54                 // Method net/minecraft/world/entity/player/Inventory.getDestroySpeed:(Lnet/minecraft/world/level/block/state/BlockState;)F
+       8: fconst_1
+       9: fcmpl
+      10: ifne          34
+      13: aload_0
+      14: getstatic     #60                 // Field net/minecraft/world/entity/EquipmentSlot.CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+      17: invokestatic  #64                 // Method hasPlatinumTrim:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/EquipmentSlot;)Z
+      20: ifeq          34
+      23: aload_2
+      24: invokedynamic #83,  0             // InvokeDynamic #0:apply:()Ljava/util/function/UnaryOperator;
+      29: invokeinterface #89,  2           // InterfaceMethod fuzs/puzzleslib/api/event/v1/data/DefaultedFloat.mapFloat:(Ljava/util/function/UnaryOperator;)V
+      34: getstatic     #95                 // Field fuzs/puzzleslib/api/event/v1/core/EventResult.PASS:Lfuzs/puzzleslib/api/event/v1/core/EventResult;
+      37: areturn
+
+  public static fuzs.puzzleslib.api.event.v1.core.EventResult onLivingExperienceDrop(net.minecraft.world.entity.LivingEntity, net.minecraft.world.entity.player.Player, fuzs.puzzleslib.api.event.v1.data.DefaultedInt);
+    Code:
+       0: aload_1
+       1: ifnull        25
+       4: aload_1
+       5: getstatic     #107                // Field net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+       8: invokestatic  #64                 // Method hasPlatinumTrim:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/EquipmentSlot;)Z
+      11: ifeq          25
+      14: aload_2
+      15: invokedynamic #117,  0            // InvokeDynamic #1:applyAsInt:()Ljava/util/function/IntUnaryOperator;
+      20: invokeinterface #123,  2          // InterfaceMethod fuzs/puzzleslib/api/event/v1/data/DefaultedInt.mapDefaultInt:(Ljava/util/function/IntUnaryOperator;)V
+      25: getstatic     #95                 // Field fuzs/puzzleslib/api/event/v1/core/EventResult.PASS:Lfuzs/puzzleslib/api/event/v1/core/EventResult;
+      28: areturn
+
+  public static fuzs.puzzleslib.api.event.v1.core.EventResult onFarmlandTrample(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, float, net.minecraft.world.entity.Entity);
+    Code:
+       0: aload         4
+       2: instanceof    #44                 // class net/minecraft/world/entity/player/Player
+       5: ifeq          32
+       8: aload         4
+      10: checkcast     #44                 // class net/minecraft/world/entity/player/Player
+      13: astore        5
+      15: aload         5
+      17: getstatic     #133                // Field net/minecraft/world/entity/EquipmentSlot.FEET:Lnet/minecraft/world/entity/EquipmentSlot;
+      20: invokestatic  #64                 // Method hasPlatinumTrim:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/EquipmentSlot;)Z
+      23: ifeq          32
+      26: getstatic     #136                // Field fuzs/puzzleslib/api/event/v1/core/EventResult.INTERRUPT:Lfuzs/puzzleslib/api/event/v1/core/EventResult;
+      29: goto          35
+      32: getstatic     #95                 // Field fuzs/puzzleslib/api/event/v1/core/EventResult.PASS:Lfuzs/puzzleslib/api/event/v1/core/EventResult;
+      35: areturn
+
+  public static boolean hasPlatinumTrim(net.minecraft.world.entity.player.Player, net.minecraft.world.entity.EquipmentSlot);
+    Code:
+       0: aload_0
+       1: invokevirtual #144                // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+       4: aload_0
+       5: aload_1
+       6: invokevirtual #148                // Method net/minecraft/world/entity/player/Player.getItemBySlot:(Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;
+       9: invokestatic  #152                // Method getPlatinumTrim:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/item/ItemStack;)Ljava/util/Optional;
+      12: invokevirtual #158                // Method java/util/Optional.isPresent:()Z
+      15: ireturn
+
+  public static java.util.Optional<net.minecraft.world.item.armortrim.ArmorTrim> getPlatinumTrim(net.minecraft.world.level.Level, net.minecraft.world.item.ItemStack);
+    Code:
+       0: getstatic     #166                // Field fuzs/illagerinvasion/IllagerInvasion.CONFIG:Lfuzs/puzzleslib/api/config/v3/ConfigHolder;
+       3: ldc           #168                // class fuzs/illagerinvasion/config/ServerConfig
+       5: invokeinterface #174,  2          // InterfaceMethod fuzs/puzzleslib/api/config/v3/ConfigHolder.get:(Ljava/lang/Class;)Lfuzs/puzzleslib/api/config/v3/ConfigCore;
+      10: checkcast     #168                // class fuzs/illagerinvasion/config/ServerConfig
+      13: getfield      #178                // Field fuzs/illagerinvasion/config/ServerConfig.platinumTrimEffects:Z
+      16: ifne          23
+      19: invokestatic  #182                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      22: areturn
+      23: aload_1
+      24: getstatic     #188                // Field net/minecraft/core/component/DataComponents.TRIM:Lnet/minecraft/core/component/DataComponentType;
+      27: invokevirtual #193                // Method net/minecraft/world/item/ItemStack.get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+      30: checkcast     #195                // class net/minecraft/world/item/armortrim/ArmorTrim
+      33: astore_2
+      34: aload_2
+      35: ifnull        60
+      38: aload_2
+      39: invokevirtual #199                // Method net/minecraft/world/item/armortrim/ArmorTrim.material:()Lnet/minecraft/core/Holder;
+      42: getstatic     #205                // Field fuzs/illagerinvasion/init/ModRegistry.PLATINUM_TRIM_MATERIAL:Lnet/minecraft/resources/ResourceKey;
+      45: invokeinterface #211,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/resources/ResourceKey;)Z
+      50: ifeq          60
+      53: aload_2
+      54: invokestatic  #215                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      57: goto          63
+      60: invokestatic  #182                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      63: areturn
+
+  private static int lambda$onLivingExperienceDrop$2(int);
+    Code:
+       0: iload_0
+       1: fconst_1
+       2: iload_0
+       3: i2f
+       4: ldc           #220                // float 0.2f
+       6: fmul
+       7: invokestatic  #226                // Method java/lang/Math.max:(FF)F
+      10: f2i
+      11: iadd
+      12: ireturn
+
+  private static java.lang.Float lambda$onBreakSpeed$1(java.lang.Float);
+    Code:
+       0: aload_0
+       1: invokevirtual #234                // Method java/lang/Float.floatValue:()F
+       4: ldc           #235                // float 1.5f
+       6: fmul
+       7: invokestatic  #239                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+      10: areturn
+
+  private static void lambda$static$0(java.util.EnumMap);
+    Code:
+       0: aload_0
+       1: getstatic     #247                // Field net/minecraft/world/item/ArmorItem$Type.BOOTS:Lnet/minecraft/world/item/ArmorItem$Type;
+       4: ldc           #28                 // String trim_material.illagerinvasion.platinum.effect.featherweight
+       6: invokevirtual #253                // Method java/util/EnumMap.put:(Ljava/lang/Enum;Ljava/lang/Object;)Ljava/lang/Object;
+       9: pop
+      10: aload_0
+      11: getstatic     #256                // Field net/minecraft/world/item/ArmorItem$Type.LEGGINGS:Lnet/minecraft/world/item/ArmorItem$Type;
+      14: ldc           #25                 // String trim_material.illagerinvasion.platinum.effect.endurance
+      16: invokevirtual #253                // Method java/util/EnumMap.put:(Ljava/lang/Enum;Ljava/lang/Object;)Ljava/lang/Object;
+      19: pop
+      20: aload_0
+      21: getstatic     #259                // Field net/minecraft/world/item/ArmorItem$Type.CHESTPLATE:Lnet/minecraft/world/item/ArmorItem$Type;
+      24: ldc           #22                 // String trim_material.illagerinvasion.platinum.effect.agility
+      26: invokevirtual #253                // Method java/util/EnumMap.put:(Ljava/lang/Enum;Ljava/lang/Object;)Ljava/lang/Object;
+      29: pop
+      30: aload_0
+      31: getstatic     #262                // Field net/minecraft/world/item/ArmorItem$Type.HELMET:Lnet/minecraft/world/item/ArmorItem$Type;
+      34: ldc           #19                 // String trim_material.illagerinvasion.platinum.effect.insight
+      36: invokevirtual #253                // Method java/util/EnumMap.put:(Ljava/lang/Enum;Ljava/lang/Object;)Ljava/lang/Object;
+      39: pop
+      40: return
+
+  static {};
+    Code:
+       0: new           #249                // class java/util/EnumMap
+       3: dup
+       4: ldc           #7                  // class net/minecraft/world/item/ArmorItem$Type
+       6: invokespecial #267                // Method java/util/EnumMap."<init>":(Ljava/lang/Class;)V
+       9: invokedynamic #277,  0            // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+      14: invokestatic  #283                // Method net/minecraft/Util.make:(Ljava/lang/Object;Ljava/util/function/Consumer;)Ljava/lang/Object;
+      17: checkcast     #285                // class java/util/Map
+      20: invokestatic  #291                // Method java/util/Collections.unmodifiableMap:(Ljava/util/Map;)Ljava/util/Map;
+      23: putstatic     #293                // Field PLATINUM_TRIM_TRANSLATION_KEYS:Ljava/util/Map;
+      26: return
+}

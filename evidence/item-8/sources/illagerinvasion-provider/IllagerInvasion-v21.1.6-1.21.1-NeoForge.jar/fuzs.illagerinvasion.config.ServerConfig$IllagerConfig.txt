@@ -1,0 +1,46 @@
+Compiled from "ServerConfig.java"
+public class fuzs.illagerinvasion.config.ServerConfig$IllagerConfig implements fuzs.puzzleslib.api.config.v3.ConfigCore {
+  private final int[] raidWaves;
+
+  private final java.util.function.Supplier<int[]> raidWavesSupplier;
+
+  public boolean participateInRaids;
+
+  public fuzs.illagerinvasion.config.ServerConfig$IllagerConfig(int[], java.util.function.Supplier<int[]>);
+    Code:
+       0: aload_0
+       1: invokespecial #26                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_1
+       6: putfield      #28                 // Field participateInRaids:Z
+       9: aload_0
+      10: aload_1
+      11: putfield      #30                 // Field raidWaves:[I
+      14: aload_0
+      15: aload_2
+      16: putfield      #32                 // Field raidWavesSupplier:Ljava/util/function/Supplier;
+      19: return
+
+  public void afterConfigReload();
+    Code:
+       0: aload_0
+       1: getfield      #28                 // Field participateInRaids:Z
+       4: ifeq          22
+       7: aload_0
+       8: getfield      #32                 // Field raidWavesSupplier:Ljava/util/function/Supplier;
+      11: invokeinterface #41,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      16: checkcast     #42                 // class "[I"
+      19: goto          25
+      22: invokestatic  #48                 // Method fuzs/illagerinvasion/config/RaidWavesConfigHelper.getEmptyRaidWaves:()[I
+      25: astore_1
+      26: aload_1
+      27: iconst_0
+      28: aload_0
+      29: getfield      #30                 // Field raidWaves:[I
+      32: iconst_0
+      33: aload_0
+      34: getfield      #30                 // Field raidWaves:[I
+      37: arraylength
+      38: invokestatic  #54                 // Method java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+      41: return
+}

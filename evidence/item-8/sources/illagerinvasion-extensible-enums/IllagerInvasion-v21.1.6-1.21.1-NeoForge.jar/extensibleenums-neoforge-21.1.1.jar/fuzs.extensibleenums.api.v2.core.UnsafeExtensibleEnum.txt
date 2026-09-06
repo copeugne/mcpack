@@ -1,0 +1,611 @@
+Compiled from "UnsafeExtensibleEnum.java"
+public final class fuzs.extensibleenums.api.v2.core.UnsafeExtensibleEnum {
+  private static final sun.misc.Unsafe UNSAFE;
+
+  private fuzs.extensibleenums.api.v2.core.UnsafeExtensibleEnum();
+    Code:
+       0: aload_0
+       1: invokespecial #16                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static <T extends java.lang.Enum<T>> T invokeEnumConstructor(java.lang.Class<T>, java.lang.String) throws java.lang.Throwable;
+    Code:
+       0: aload_0
+       1: aload_0
+       2: aload_1
+       3: invokestatic  #28                 // Method invokeEnumConstructor:(Ljava/lang/Class;Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+       6: areturn
+
+  public static <T extends java.lang.Enum<T>> T invokeEnumConstructor(java.lang.Class<T>, java.lang.String, int) throws java.lang.Throwable;
+    Code:
+       0: aload_0
+       1: aload_0
+       2: aload_1
+       3: iload_2
+       4: invokestatic  #37                 // Method invokeEnumConstructor:(Ljava/lang/Class;Ljava/lang/Class;Ljava/lang/String;I)Ljava/lang/Enum;
+       7: areturn
+
+  public static <T extends java.lang.Enum<T>> T invokeEnumConstructor(java.lang.Class<T>, java.lang.Class<? extends T>, java.lang.String) throws java.lang.Throwable;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: iconst_m1
+       4: invokestatic  #37                 // Method invokeEnumConstructor:(Ljava/lang/Class;Ljava/lang/Class;Ljava/lang/String;I)Ljava/lang/Enum;
+       7: areturn
+
+  public static <T extends java.lang.Enum<T>> T invokeEnumConstructor(java.lang.Class<T>, java.lang.Class<? extends T>, java.lang.String, int) throws java.lang.Throwable;
+    Code:
+       0: aload_0
+       1: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+       4: aload_1
+       5: invokevirtual #50                 // Method sun/misc/Unsafe.allocateInstance:(Ljava/lang/Class;)Ljava/lang/Object;
+       8: invokevirtual #56                 // Method java/lang/Class.cast:(Ljava/lang/Object;)Ljava/lang/Object;
+      11: checkcast     #58                 // class java/lang/Enum
+      14: astore        4
+      16: iload_3
+      17: iconst_m1
+      18: if_icmpne     25
+      21: iconst_1
+      22: goto          26
+      25: iconst_0
+      26: istore        5
+      28: iload         5
+      30: ifeq          41
+      33: aload_0
+      34: aload         4
+      36: aload_2
+      37: invokestatic  #62                 // Method addToEnumValues:(Ljava/lang/Class;Ljava/lang/Enum;Ljava/lang/String;)I
+      40: istore_3
+      41: aload         4
+      43: aload_2
+      44: iload_3
+      45: invokestatic  #66                 // Method initEnumFields:(Ljava/lang/Enum;Ljava/lang/String;I)V
+      48: iload         5
+      50: ifeq          57
+      53: aload_0
+      54: invokestatic  #70                 // Method cleanEnumCache:(Ljava/lang/Class;)V
+      57: aload         4
+      59: areturn
+
+  private static <T extends java.lang.Enum<T>> int addToEnumValues(java.lang.Class<T>, T, java.lang.String) throws java.lang.ReflectiveOperationException;
+    Code:
+       0: sipush        4104
+       3: istore_3
+       4: aload_0
+       5: invokevirtual #81                 // Method java/lang/Class.getDeclaredFields:()[Ljava/lang/reflect/Field;
+       8: astore        4
+      10: aload         4
+      12: arraylength
+      13: istore        5
+      15: iconst_0
+      16: istore        6
+      18: iload         6
+      20: iload         5
+      22: if_icmpge     188
+      25: aload         4
+      27: iload         6
+      29: aaload
+      30: astore        7
+      32: aload         7
+      34: invokevirtual #91                 // Method java/lang/reflect/Field.getType:()Ljava/lang/Class;
+      37: invokevirtual #95                 // Method java/lang/Class.isArray:()Z
+      40: ifeq          182
+      43: aload         7
+      45: invokevirtual #99                 // Method java/lang/reflect/Field.getModifiers:()I
+      48: sipush        4104
+      51: iand
+      52: sipush        4104
+      55: if_icmpne     182
+      58: aload         7
+      60: iconst_1
+      61: invokevirtual #103                // Method java/lang/reflect/Field.setAccessible:(Z)V
+      64: aload         7
+      66: aconst_null
+      67: invokevirtual #106                // Method java/lang/reflect/Field.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      70: checkcast     #108                // class "[Ljava/lang/Enum;"
+      73: astore        8
+      75: aload         8
+      77: astore        9
+      79: aload         9
+      81: arraylength
+      82: istore        10
+      84: iconst_0
+      85: istore        11
+      87: iload         11
+      89: iload         10
+      91: if_icmpge     147
+      94: aload         9
+      96: iload         11
+      98: aaload
+      99: astore        12
+     101: aload         12
+     103: invokevirtual #112                // Method java/lang/Enum.name:()Ljava/lang/String;
+     106: aload_2
+     107: invokevirtual #116                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     110: ifeq          141
+     113: new           #118                // class java/lang/IllegalArgumentException
+     116: dup
+     117: ldc           #120                // String %s already exists in enum class %s
+     119: iconst_2
+     120: anewarray     #4                  // class java/lang/Object
+     123: dup
+     124: iconst_0
+     125: aload_2
+     126: aastore
+     127: dup
+     128: iconst_1
+     129: aload_0
+     130: invokevirtual #123                // Method java/lang/Class.getName:()Ljava/lang/String;
+     133: aastore
+     134: invokestatic  #127                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+     137: invokespecial #130                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+     140: athrow
+     141: iinc          11, 1
+     144: goto          87
+     147: aload         8
+     149: aload         8
+     151: arraylength
+     152: iconst_1
+     153: iadd
+     154: invokestatic  #136                // Method java/util/Arrays.copyOf:([Ljava/lang/Object;I)[Ljava/lang/Object;
+     157: checkcast     #108                // class "[Ljava/lang/Enum;"
+     160: astore        9
+     162: aload         9
+     164: aload         9
+     166: arraylength
+     167: iconst_1
+     168: isub
+     169: aload_1
+     170: aastore
+     171: aload         7
+     173: aload         9
+     175: invokestatic  #140                // Method setStaticObjectField:(Ljava/lang/reflect/Field;Ljava/lang/Object;)V
+     178: aload         8
+     180: arraylength
+     181: ireturn
+     182: iinc          6, 1
+     185: goto          18
+     188: new           #142                // class java/lang/IllegalAccessException
+     191: dup
+     192: ldc           #144                // String Could not find enum values field
+     194: invokespecial #145                // Method java/lang/IllegalAccessException."<init>":(Ljava/lang/String;)V
+     197: athrow
+
+  private static void initEnumFields(java.lang.Enum<?>, java.lang.String, int) throws java.lang.ReflectiveOperationException;
+    Code:
+       0: ldc           #58                 // class java/lang/Enum
+       2: ldc           #155                // String ordinal
+       4: invokevirtual #159                // Method java/lang/Class.getDeclaredField:(Ljava/lang/String;)Ljava/lang/reflect/Field;
+       7: astore_3
+       8: aload_3
+       9: aload_0
+      10: iload_2
+      11: invokestatic  #163                // Method setIntField:(Ljava/lang/reflect/Field;Ljava/lang/Object;I)V
+      14: ldc           #58                 // class java/lang/Enum
+      16: ldc           #164                // String name
+      18: invokevirtual #159                // Method java/lang/Class.getDeclaredField:(Ljava/lang/String;)Ljava/lang/reflect/Field;
+      21: astore        4
+      23: aload         4
+      25: aload_0
+      26: aload_1
+      27: invokestatic  #168                // Method setObjectField:(Ljava/lang/reflect/Field;Ljava/lang/Object;Ljava/lang/Object;)V
+      30: return
+
+  public static void setObjectField(java.lang.reflect.Field, java.lang.Object, java.lang.Object);
+    Code:
+       0: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+       3: aload_0
+       4: invokevirtual #177                // Method sun/misc/Unsafe.objectFieldOffset:(Ljava/lang/reflect/Field;)J
+       7: lstore_3
+       8: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+      11: aload_1
+      12: lload_3
+      13: aload_2
+      14: invokevirtual #181                // Method sun/misc/Unsafe.putObject:(Ljava/lang/Object;JLjava/lang/Object;)V
+      17: return
+
+  public static void setIntField(java.lang.reflect.Field, java.lang.Object, int);
+    Code:
+       0: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+       3: aload_0
+       4: invokevirtual #177                // Method sun/misc/Unsafe.objectFieldOffset:(Ljava/lang/reflect/Field;)J
+       7: lstore_3
+       8: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+      11: aload_1
+      12: lload_3
+      13: iload_2
+      14: invokevirtual #187                // Method sun/misc/Unsafe.putInt:(Ljava/lang/Object;JI)V
+      17: return
+
+  public static void setBooleanField(java.lang.reflect.Field, java.lang.Object, boolean);
+    Code:
+       0: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+       3: aload_0
+       4: invokevirtual #177                // Method sun/misc/Unsafe.objectFieldOffset:(Ljava/lang/reflect/Field;)J
+       7: lstore_3
+       8: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+      11: aload_1
+      12: lload_3
+      13: iload_2
+      14: invokevirtual #193                // Method sun/misc/Unsafe.putBoolean:(Ljava/lang/Object;JZ)V
+      17: return
+
+  public static void setByteField(java.lang.reflect.Field, java.lang.Object, byte);
+    Code:
+       0: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+       3: aload_0
+       4: invokevirtual #177                // Method sun/misc/Unsafe.objectFieldOffset:(Ljava/lang/reflect/Field;)J
+       7: lstore_3
+       8: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+      11: aload_1
+      12: lload_3
+      13: iload_2
+      14: invokevirtual #199                // Method sun/misc/Unsafe.putByte:(Ljava/lang/Object;JB)V
+      17: return
+
+  public static void setShortField(java.lang.reflect.Field, java.lang.Object, short);
+    Code:
+       0: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+       3: aload_0
+       4: invokevirtual #177                // Method sun/misc/Unsafe.objectFieldOffset:(Ljava/lang/reflect/Field;)J
+       7: lstore_3
+       8: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+      11: aload_1
+      12: lload_3
+      13: iload_2
+      14: invokevirtual #206                // Method sun/misc/Unsafe.putShort:(Ljava/lang/Object;JS)V
+      17: return
+
+  public static void setCharField(java.lang.reflect.Field, java.lang.Object, char);
+    Code:
+       0: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+       3: aload_0
+       4: invokevirtual #177                // Method sun/misc/Unsafe.objectFieldOffset:(Ljava/lang/reflect/Field;)J
+       7: lstore_3
+       8: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+      11: aload_1
+      12: lload_3
+      13: iload_2
+      14: invokevirtual #213                // Method sun/misc/Unsafe.putChar:(Ljava/lang/Object;JC)V
+      17: return
+
+  public static void setLongField(java.lang.reflect.Field, java.lang.Object, long);
+    Code:
+       0: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+       3: aload_0
+       4: invokevirtual #177                // Method sun/misc/Unsafe.objectFieldOffset:(Ljava/lang/reflect/Field;)J
+       7: lstore        4
+       9: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+      12: aload_1
+      13: lload         4
+      15: lload_2
+      16: invokevirtual #220                // Method sun/misc/Unsafe.putLong:(Ljava/lang/Object;JJ)V
+      19: return
+
+  public static void setFloatField(java.lang.reflect.Field, java.lang.Object, float);
+    Code:
+       0: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+       3: aload_0
+       4: invokevirtual #177                // Method sun/misc/Unsafe.objectFieldOffset:(Ljava/lang/reflect/Field;)J
+       7: lstore_3
+       8: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+      11: aload_1
+      12: lload_3
+      13: fload_2
+      14: invokevirtual #226                // Method sun/misc/Unsafe.putFloat:(Ljava/lang/Object;JF)V
+      17: return
+
+  public static void setDoubleField(java.lang.reflect.Field, java.lang.Object, double);
+    Code:
+       0: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+       3: aload_0
+       4: invokevirtual #177                // Method sun/misc/Unsafe.objectFieldOffset:(Ljava/lang/reflect/Field;)J
+       7: lstore        4
+       9: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+      12: aload_1
+      13: lload         4
+      15: dload_2
+      16: invokevirtual #233                // Method sun/misc/Unsafe.putDouble:(Ljava/lang/Object;JD)V
+      19: return
+
+  public static void setStaticObjectField(java.lang.reflect.Field, java.lang.Object);
+    Code:
+       0: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+       3: aload_0
+       4: invokevirtual #238                // Method sun/misc/Unsafe.staticFieldBase:(Ljava/lang/reflect/Field;)Ljava/lang/Object;
+       7: astore_2
+       8: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+      11: aload_0
+      12: invokevirtual #241                // Method sun/misc/Unsafe.staticFieldOffset:(Ljava/lang/reflect/Field;)J
+      15: lstore_3
+      16: getstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+      19: aload_2
+      20: lload_3
+      21: aload_1
+      22: invokevirtual #181                // Method sun/misc/Unsafe.putObject:(Ljava/lang/Object;JLjava/lang/Object;)V
+      25: return
+
+  private static void cleanEnumCache(java.lang.Class<? extends java.lang.Enum<?>>);
+    Code:
+       0: ldc           #52                 // class java/lang/Class
+       2: ldc           #245                // String enumConstantDirectory
+       4: invokestatic  #249                // Method findField:(Ljava/lang/Class;Ljava/lang/String;)Ljava/util/Optional;
+       7: aload_0
+       8: invokedynamic #269,  0            // InvokeDynamic #0:accept:(Ljava/lang/Class;)Ljava/util/function/Consumer;
+      13: invokevirtual #275                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+      16: ldc           #52                 // class java/lang/Class
+      18: ldc_w         #277                // String enumConstants
+      21: invokestatic  #249                // Method findField:(Ljava/lang/Class;Ljava/lang/String;)Ljava/util/Optional;
+      24: aload_0
+      25: invokedynamic #282,  0            // InvokeDynamic #1:accept:(Ljava/lang/Class;)Ljava/util/function/Consumer;
+      30: invokevirtual #275                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+      33: return
+
+  private static java.util.Optional<java.lang.reflect.Field> findField(java.lang.Class<?>, java.lang.String);
+    Code:
+       0: aload_0
+       1: invokevirtual #81                 // Method java/lang/Class.getDeclaredFields:()[Ljava/lang/reflect/Field;
+       4: astore_2
+       5: aload_2
+       6: arraylength
+       7: istore_3
+       8: iconst_0
+       9: istore        4
+      11: iload         4
+      13: iload_3
+      14: if_icmpge     47
+      17: aload_2
+      18: iload         4
+      20: aaload
+      21: astore        5
+      23: aload         5
+      25: invokevirtual #287                // Method java/lang/reflect/Field.getName:()Ljava/lang/String;
+      28: aload_1
+      29: invokevirtual #116                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      32: ifeq          41
+      35: aload         5
+      37: invokestatic  #291                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      40: areturn
+      41: iinc          4, 1
+      44: goto          11
+      47: invokestatic  #295                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      50: areturn
+
+  public static void updateRelatedSwitchStatements(java.lang.Class<? extends java.lang.Enum<?>>, java.lang.Class<?>[]) throws java.lang.ReflectiveOperationException;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #304                // Method findRelatedSwitchFields:(Ljava/lang/Class;[Ljava/lang/Class;)Ljava/util/Collection;
+       5: invokestatic  #308                // Method addSwitchCase:(Ljava/util/Collection;)V
+       8: return
+
+  private static java.util.Collection<java.lang.reflect.Field> findRelatedSwitchFields(java.lang.Class<? extends java.lang.Enum<?>>, java.lang.Class<?>[]);
+    Code:
+       0: new           #313                // class java/util/ArrayList
+       3: dup
+       4: invokespecial #314                // Method java/util/ArrayList."<init>":()V
+       7: astore_2
+       8: aload_1
+       9: astore_3
+      10: aload_3
+      11: arraylength
+      12: istore        4
+      14: iconst_0
+      15: istore        5
+      17: iload         5
+      19: iload         4
+      21: if_icmpge     158
+      24: aload_3
+      25: iload         5
+      27: aaload
+      28: astore        6
+      30: aload         6
+      32: invokestatic  #319                // Method getAnonymousClasses:(Ljava/lang/Class;)[Ljava/lang/Class;
+      35: astore        7
+      37: aload         7
+      39: astore        8
+      41: aload         8
+      43: arraylength
+      44: istore        9
+      46: iconst_0
+      47: istore        10
+      49: iload         10
+      51: iload         9
+      53: if_icmpge     152
+      56: aload         8
+      58: iload         10
+      60: aaload
+      61: astore        11
+      63: aload         11
+      65: invokevirtual #81                 // Method java/lang/Class.getDeclaredFields:()[Ljava/lang/reflect/Field;
+      68: astore        12
+      70: aload         12
+      72: astore        13
+      74: aload         13
+      76: arraylength
+      77: istore        14
+      79: iconst_0
+      80: istore        15
+      82: iload         15
+      84: iload         14
+      86: if_icmpge     146
+      89: aload         13
+      91: iload         15
+      93: aaload
+      94: astore        16
+      96: aload         16
+      98: invokevirtual #287                // Method java/lang/reflect/Field.getName:()Ljava/lang/String;
+     101: aload_0
+     102: invokevirtual #123                // Method java/lang/Class.getName:()Ljava/lang/String;
+     105: ldc_w         #321                // String .
+     108: ldc_w         #323                // String $
+     111: invokevirtual #327                // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+     114: invokedynamic #339,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     119: invokevirtual #343                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+     122: ifeq          140
+     125: aload         16
+     127: iconst_1
+     128: invokevirtual #103                // Method java/lang/reflect/Field.setAccessible:(Z)V
+     131: aload_2
+     132: aload         16
+     134: invokeinterface #348,  2          // InterfaceMethod java/util/Collection.add:(Ljava/lang/Object;)Z
+     139: pop
+     140: iinc          15, 1
+     143: goto          82
+     146: iinc          10, 1
+     149: goto          49
+     152: iinc          5, 1
+     155: goto          17
+     158: aload_2
+     159: areturn
+
+  private static java.lang.Class<?>[] getAnonymousClasses(java.lang.Class<?>);
+    Code:
+       0: new           #313                // class java/util/ArrayList
+       3: dup
+       4: invokespecial #314                // Method java/util/ArrayList."<init>":()V
+       7: astore_1
+       8: iconst_1
+       9: istore_2
+      10: aload_1
+      11: aload_0
+      12: invokevirtual #123                // Method java/lang/Class.getName:()Ljava/lang/String;
+      15: iload_2
+      16: invokedynamic #363,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;I)Ljava/lang/String;
+      21: iconst_0
+      22: invokestatic  #369                // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      25: invokevirtual #373                // Method java/lang/Thread.getContextClassLoader:()Ljava/lang/ClassLoader;
+      28: invokestatic  #377                // Method java/lang/Class.forName:(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class;
+      31: invokeinterface #348,  2          // InterfaceMethod java/util/Collection.add:(Ljava/lang/Object;)Z
+      36: pop
+      37: goto          44
+      40: astore_3
+      41: goto          50
+      44: iinc          2, 1
+      47: goto          10
+      50: aload_0
+      51: invokevirtual #381                // Method java/lang/Class.getDeclaredClasses:()[Ljava/lang/Class;
+      54: astore_2
+      55: aload_2
+      56: arraylength
+      57: istore_3
+      58: iconst_0
+      59: istore        4
+      61: iload         4
+      63: iload_3
+      64: if_icmpge     89
+      67: aload_2
+      68: iload         4
+      70: aaload
+      71: astore        5
+      73: aload_1
+      74: aload         5
+      76: invokestatic  #319                // Method getAnonymousClasses:(Ljava/lang/Class;)[Ljava/lang/Class;
+      79: invokestatic  #387                // Method java/util/Collections.addAll:(Ljava/util/Collection;[Ljava/lang/Object;)Z
+      82: pop
+      83: iinc          4, 1
+      86: goto          61
+      89: new           #313                // class java/util/ArrayList
+      92: dup
+      93: aload_1
+      94: invokespecial #389                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+      97: invokevirtual #393                // Method java/util/ArrayList.iterator:()Ljava/util/Iterator;
+     100: astore_2
+     101: aload_2
+     102: invokeinterface #398,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     107: ifeq          132
+     110: aload_2
+     111: invokeinterface #402,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     116: checkcast     #52                 // class java/lang/Class
+     119: astore_3
+     120: aload_1
+     121: aload_3
+     122: invokestatic  #319                // Method getAnonymousClasses:(Ljava/lang/Class;)[Ljava/lang/Class;
+     125: invokestatic  #387                // Method java/util/Collections.addAll:(Ljava/util/Collection;[Ljava/lang/Object;)Z
+     128: pop
+     129: goto          101
+     132: aload_1
+     133: iconst_0
+     134: anewarray     #52                 // class java/lang/Class
+     137: invokeinterface #406,  2          // InterfaceMethod java/util/Collection.toArray:([Ljava/lang/Object;)[Ljava/lang/Object;
+     142: checkcast     #315                // class "[Ljava/lang/Class;"
+     145: areturn
+    Exception table:
+       from    to  target type
+          10    37    40   Class java/lang/ClassNotFoundException
+
+  private static void addSwitchCase(java.util.Collection<java.lang.reflect.Field>) throws java.lang.ReflectiveOperationException;
+    Code:
+       0: aload_0
+       1: invokeinterface #416,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+       6: astore_1
+       7: aload_1
+       8: invokeinterface #398,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      13: ifeq          52
+      16: aload_1
+      17: invokeinterface #402,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      22: checkcast     #87                 // class java/lang/reflect/Field
+      25: astore_2
+      26: aload_2
+      27: aconst_null
+      28: invokevirtual #106                // Method java/lang/reflect/Field.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      31: checkcast     #418                // class "[I"
+      34: astore_3
+      35: aload_3
+      36: aload_3
+      37: arraylength
+      38: iconst_1
+      39: iadd
+      40: invokestatic  #421                // Method java/util/Arrays.copyOf:([II)[I
+      43: astore_3
+      44: aload_2
+      45: aload_3
+      46: invokestatic  #140                // Method setStaticObjectField:(Ljava/lang/reflect/Field;Ljava/lang/Object;)V
+      49: goto          7
+      52: return
+
+  private static void lambda$cleanEnumCache$1(java.lang.Class, java.lang.reflect.Field);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: aconst_null
+       3: invokestatic  #168                // Method setObjectField:(Ljava/lang/reflect/Field;Ljava/lang/Object;Ljava/lang/Object;)V
+       6: return
+
+  private static void lambda$cleanEnumCache$0(java.lang.Class, java.lang.reflect.Field);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: aconst_null
+       3: invokestatic  #168                // Method setObjectField:(Ljava/lang/reflect/Field;Ljava/lang/Object;Ljava/lang/Object;)V
+       6: return
+
+  static {};
+    Code:
+       0: ldc           #46                 // class sun/misc/Unsafe
+       2: invokevirtual #428                // Method java/lang/Class.getDeclaredConstructors:()[Ljava/lang/reflect/Constructor;
+       5: iconst_0
+       6: aaload
+       7: astore_0
+       8: aload_0
+       9: iconst_1
+      10: invokevirtual #431                // Method java/lang/reflect/Constructor.setAccessible:(Z)V
+      13: aload_0
+      14: iconst_0
+      15: anewarray     #4                  // class java/lang/Object
+      18: invokevirtual #435                // Method java/lang/reflect/Constructor.newInstance:([Ljava/lang/Object;)Ljava/lang/Object;
+      21: checkcast     #46                 // class sun/misc/Unsafe
+      24: putstatic     #44                 // Field UNSAFE:Lsun/misc/Unsafe;
+      27: goto          40
+      30: astore_0
+      31: new           #437                // class java/lang/RuntimeException
+      34: dup
+      35: aload_0
+      36: invokespecial #440                // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+      39: athrow
+      40: return
+    Exception table:
+       from    to  target type
+           0    27    30   Class java/lang/Throwable
+}
