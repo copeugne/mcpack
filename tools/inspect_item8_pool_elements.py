@@ -35,6 +35,9 @@ ARCHIVES = frozenset(
     {
         MAPPED_SERVER.name,
         PATCHED_SERVER.name,
+        "prickle-neoforge-1.21.1-21.1.11.jar",
+        "resourcefulconfig-neoforge-1.21-3.0.11.jar",
+
         "TerraBlender-neoforge-1.21.1-4.1.0.8.jar",
         "GlitchCore-neoforge-1.21.1-2.1.0.2.jar",
         "mca-neoforge-7.7.11+1.21.1.jar",
@@ -193,6 +196,15 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "com/teamresourceful/resourcefulconfig/common/loader/JavaConfigParser.class",
+    "com/teamresourceful/resourcefulconfig/mixins/common/DedicatedServerAccessor.class",
+    "com/teamresourceful/resourcefulconfig/mixins/common/PlayerListAccessor.class",
+    "com/teamresourceful/resourcefulconfig/mixins/common/SettingsAccessor.class",
+    "com/teamresourceful/resourcefulconfig/neoforge/ResourcefulConfigNeoForge.class",
+    "net/darkhax/pricklemc/common/impl/config/property/MinecraftPropertyPlugin.class",
+    "net/darkhax/pricklemc/neoforge/impl/NeoForgeMod.class",
+    "net/darkhax/pricklemc/neoforge/impl/util/NeoForgePlatformHelper.class",
+
     "terrablender/util/LevelUtils.class",
     "terrablender/core/TerraBlender.class",
     "terrablender/core/TerraBlenderNeoForge.class",
