@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Terralith building views from selector 308b0df2 reproduce exactly. All four sheets
+were inspected; bottom clipping limits are recorded in their README. The ten
+remaining Terralith design decisions can now use these views with existing graph
+and template contents. Canonical-note backlog remains 100 until decisions land.
+
 Inventory matches 79ed59c4 and reproduces exactly. Canonical-note backlog: 100
 (IDAS 59, AdoraBuild 31, Terralith 10). Coverage groups: 405. Remaining Terralith
 building relationships need bounded layout comparison using the existing renderer;
