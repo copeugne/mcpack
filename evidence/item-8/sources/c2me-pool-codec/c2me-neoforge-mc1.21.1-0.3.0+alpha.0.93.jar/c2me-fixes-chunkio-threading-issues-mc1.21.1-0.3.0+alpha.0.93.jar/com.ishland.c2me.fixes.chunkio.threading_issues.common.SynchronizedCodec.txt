@@ -1,0 +1,320 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-fixes-chunkio-threading-issues-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec.class
+  Last modified Jan 1, 1980; size 2899 bytes
+  SHA-256 checksum 716a4f77fb7817dde7b3f4bcf61b2eaaebf465b88ff4063dc69709a3359e1e80
+  Compiled from "SynchronizedCodec.java"
+public class com.ishland.c2me.fixes.chunkio.threading_issues.common.SynchronizedCodec<A extends java.lang.Object> extends java.lang.Object implements com.mojang.serialization.Codec<A>
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec
+  super_class: #5                         // java/lang/Object
+  interfaces: 1, fields: 2, methods: 3, attributes: 4
+Constant pool:
+   #1 = Utf8               com/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec
+   #2 = Class              #1             // com/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec
+   #3 = Utf8               <A:Ljava/lang/Object;>Ljava/lang/Object;Lcom/mojang/serialization/Codec<TA;>;
+   #4 = Utf8               java/lang/Object
+   #5 = Class              #4             // java/lang/Object
+   #6 = Utf8               com/mojang/serialization/Codec
+   #7 = Class              #6             // com/mojang/serialization/Codec
+   #8 = Utf8               SynchronizedCodec.java
+   #9 = Utf8               com/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec$ManagedLocker
+  #10 = Class              #9             // com/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec$ManagedLocker
+  #11 = Utf8               ManagedLocker
+  #12 = Utf8               lock
+  #13 = Utf8               Ljava/util/concurrent/locks/ReentrantLock;
+  #14 = Utf8               delegate
+  #15 = Utf8               Lcom/mojang/serialization/Codec;
+  #16 = Utf8               Lcom/mojang/serialization/Codec<TA;>;
+  #17 = Utf8               <init>
+  #18 = Utf8               (Lcom/mojang/serialization/Codec;)V
+  #19 = Utf8               (Lcom/mojang/serialization/Codec<TA;>;)V
+  #20 = Utf8               ()V
+  #21 = NameAndType        #17:#20        // "<init>":()V
+  #22 = Methodref          #5.#21         // java/lang/Object."<init>":()V
+  #23 = Utf8               java/util/concurrent/locks/ReentrantLock
+  #24 = Class              #23            // java/util/concurrent/locks/ReentrantLock
+  #25 = Utf8               (Z)V
+  #26 = NameAndType        #17:#25        // "<init>":(Z)V
+  #27 = Methodref          #24.#26        // java/util/concurrent/locks/ReentrantLock."<init>":(Z)V
+  #28 = NameAndType        #12:#13        // lock:Ljava/util/concurrent/locks/ReentrantLock;
+  #29 = Fieldref           #2.#28         // com/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec.lock:Ljava/util/concurrent/locks/ReentrantLock;
+  #30 = NameAndType        #14:#15        // delegate:Lcom/mojang/serialization/Codec;
+  #31 = Fieldref           #2.#30         // com/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec.delegate:Lcom/mojang/serialization/Codec;
+  #32 = Utf8               this
+  #33 = Utf8               Lcom/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec<TA;>;
+  #34 = Utf8               Lcom/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec;
+  #35 = Utf8               decode
+  #36 = Utf8               (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+  #37 = Utf8               <T:Ljava/lang/Object;>(Lcom/mojang/serialization/DynamicOps<TT;>;TT;)Lcom/mojang/serialization/DataResult<Lcom/mojang/datafixers/util/Pair<TA;TT;>;>;
+  #38 = Utf8               ops
+  #39 = Utf8               input
+  #40 = Utf8               java/lang/InterruptedException
+  #41 = Class              #40            // java/lang/InterruptedException
+  #42 = Utf8               lockInterruptibly
+  #43 = NameAndType        #42:#20        // lockInterruptibly:()V
+  #44 = Methodref          #24.#43        // java/util/concurrent/locks/ReentrantLock.lockInterruptibly:()V
+  #45 = NameAndType        #35:#36        // decode:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+  #46 = InterfaceMethodref #7.#45         // com/mojang/serialization/Codec.decode:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+  #47 = Utf8               isHeldByCurrentThread
+  #48 = Utf8               ()Z
+  #49 = NameAndType        #47:#48        // isHeldByCurrentThread:()Z
+  #50 = Methodref          #24.#49        // java/util/concurrent/locks/ReentrantLock.isHeldByCurrentThread:()Z
+  #51 = Utf8               unlock
+  #52 = NameAndType        #51:#20        // unlock:()V
+  #53 = Methodref          #24.#52        // java/util/concurrent/locks/ReentrantLock.unlock:()V
+  #54 = Utf8               com/mojang/serialization/DataResult
+  #55 = Class              #54            // com/mojang/serialization/DataResult
+  #56 = Utf8               com/mojang/serialization/DynamicOps
+  #57 = Class              #56            // com/mojang/serialization/DynamicOps
+  #58 = Utf8               java/lang/RuntimeException
+  #59 = Class              #58            // java/lang/RuntimeException
+  #60 = Utf8               (Ljava/lang/Throwable;)V
+  #61 = NameAndType        #17:#60        // "<init>":(Ljava/lang/Throwable;)V
+  #62 = Methodref          #59.#61        // java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+  #63 = Utf8               java/lang/Throwable
+  #64 = Class              #63            // java/lang/Throwable
+  #65 = Utf8               e
+  #66 = Utf8               Ljava/lang/InterruptedException;
+  #67 = Utf8               Lcom/mojang/serialization/DynamicOps<TT;>;
+  #68 = Utf8               Lcom/mojang/serialization/DynamicOps;
+  #69 = Utf8               TT;
+  #70 = Utf8               Ljava/lang/Object;
+  #71 = Utf8               encode
+  #72 = Utf8               (Ljava/lang/Object;Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+  #73 = Utf8               <T:Ljava/lang/Object;>(TA;Lcom/mojang/serialization/DynamicOps<TT;>;TT;)Lcom/mojang/serialization/DataResult<TT;>;
+  #74 = Utf8               prefix
+  #75 = NameAndType        #71:#72        // encode:(Ljava/lang/Object;Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+  #76 = InterfaceMethodref #7.#75         // com/mojang/serialization/Codec.encode:(Ljava/lang/Object;Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+  #77 = Utf8               TA;
+  #78 = Utf8               Signature
+  #79 = Utf8               Code
+  #80 = Utf8               LineNumberTable
+  #81 = Utf8               LocalVariableTable
+  #82 = Utf8               LocalVariableTypeTable
+  #83 = Utf8               MethodParameters
+  #84 = Utf8               StackMapTable
+  #85 = Utf8               InnerClasses
+  #86 = Utf8               SourceFile
+  #87 = Utf8               NestMembers
+{
+  private final java.util.concurrent.locks.ReentrantLock lock;
+    descriptor: Ljava/util/concurrent/locks/ReentrantLock;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  private final com.mojang.serialization.Codec<A> delegate;
+    descriptor: Lcom/mojang/serialization/Codec;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #16                          // Lcom/mojang/serialization/Codec<TA;>;
+
+  public com.ishland.c2me.fixes.chunkio.threading_issues.common.SynchronizedCodec(com.mojang.serialization.Codec<A>);
+    descriptor: (Lcom/mojang/serialization/Codec;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=2, args_size=2
+         0: aload_0
+         1: invokespecial #22                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #24                 // class java/util/concurrent/locks/ReentrantLock
+         8: dup
+         9: iconst_0
+        10: invokespecial #27                 // Method java/util/concurrent/locks/ReentrantLock."<init>":(Z)V
+        13: putfield      #29                 // Field lock:Ljava/util/concurrent/locks/ReentrantLock;
+        16: aload_0
+        17: aload_1
+        18: putfield      #31                 // Field delegate:Lcom/mojang/serialization/Codec;
+        21: return
+      LineNumberTable:
+        line 16: 0
+        line 13: 4
+        line 17: 16
+        line 18: 21
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      22     0  this   Lcom/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec;
+            0      22     1 delegate   Lcom/mojang/serialization/Codec;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      22     0  this   Lcom/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec<TA;>;
+            0      22     1 delegate   Lcom/mojang/serialization/Codec<TA;>;
+    Signature: #19                          // (Lcom/mojang/serialization/Codec<TA;>;)V
+    MethodParameters:
+      Name                           Flags
+      delegate
+
+  public <T extends java.lang.Object> com.mojang.serialization.DataResult<com.mojang.datafixers.util.Pair<A, T>> decode(com.mojang.serialization.DynamicOps<T>, T);
+    descriptor: (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=5, args_size=3
+         0: aload_0
+         1: getfield      #29                 // Field lock:Ljava/util/concurrent/locks/ReentrantLock;
+         4: invokevirtual #44                 // Method java/util/concurrent/locks/ReentrantLock.lockInterruptibly:()V
+         7: aload_0
+         8: getfield      #31                 // Field delegate:Lcom/mojang/serialization/Codec;
+        11: aload_1
+        12: aload_2
+        13: invokeinterface #46,  3           // InterfaceMethod com/mojang/serialization/Codec.decode:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+        18: astore_3
+        19: aload_0
+        20: getfield      #29                 // Field lock:Ljava/util/concurrent/locks/ReentrantLock;
+        23: invokevirtual #50                 // Method java/util/concurrent/locks/ReentrantLock.isHeldByCurrentThread:()Z
+        26: ifeq          36
+        29: aload_0
+        30: getfield      #29                 // Field lock:Ljava/util/concurrent/locks/ReentrantLock;
+        33: invokevirtual #53                 // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+        36: aload_3
+        37: areturn
+        38: astore_3
+        39: new           #59                 // class java/lang/RuntimeException
+        42: dup
+        43: aload_3
+        44: invokespecial #62                 // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+        47: athrow
+        48: astore        4
+        50: aload_0
+        51: getfield      #29                 // Field lock:Ljava/util/concurrent/locks/ReentrantLock;
+        54: invokevirtual #50                 // Method java/util/concurrent/locks/ReentrantLock.isHeldByCurrentThread:()Z
+        57: ifeq          67
+        60: aload_0
+        61: getfield      #29                 // Field lock:Ljava/util/concurrent/locks/ReentrantLock;
+        64: invokevirtual #53                 // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+        67: aload         4
+        69: athrow
+      Exception table:
+         from    to  target type
+             0    19    38   Class java/lang/InterruptedException
+             0    19    48   any
+            38    50    48   any
+      StackMapTable: number_of_entries = 4
+        frame_type = 252 /* append */
+          offset_delta = 36
+          locals = [ class com/mojang/serialization/DataResult ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 1
+          locals = [ class com/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec, class com/mojang/serialization/DynamicOps, class java/lang/Object ]
+          stack = [ class java/lang/InterruptedException ]
+        frame_type = 73 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Throwable ]
+        frame_type = 253 /* append */
+          offset_delta = 18
+          locals = [ top, class java/lang/Throwable ]
+      LineNumberTable:
+        line 23: 0
+        line 24: 7
+        line 28: 19
+        line 24: 36
+        line 25: 38
+        line 26: 39
+        line 28: 48
+        line 29: 67
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           39       9     3     e   Ljava/lang/InterruptedException;
+            0      70     0  this   Lcom/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec;
+            0      70     1   ops   Lcom/mojang/serialization/DynamicOps;
+            0      70     2 input   Ljava/lang/Object;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      70     0  this   Lcom/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec<TA;>;
+            0      70     1   ops   Lcom/mojang/serialization/DynamicOps<TT;>;
+            0      70     2 input   TT;
+    Signature: #37                          // <T:Ljava/lang/Object;>(Lcom/mojang/serialization/DynamicOps<TT;>;TT;)Lcom/mojang/serialization/DataResult<Lcom/mojang/datafixers/util/Pair<TA;TT;>;>;
+    MethodParameters:
+      Name                           Flags
+      ops
+      input
+
+  public <T extends java.lang.Object> com.mojang.serialization.DataResult<T> encode(A, com.mojang.serialization.DynamicOps<T>, T);
+    descriptor: (Ljava/lang/Object;Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=6, args_size=4
+         0: aload_0
+         1: getfield      #29                 // Field lock:Ljava/util/concurrent/locks/ReentrantLock;
+         4: invokevirtual #44                 // Method java/util/concurrent/locks/ReentrantLock.lockInterruptibly:()V
+         7: aload_0
+         8: getfield      #31                 // Field delegate:Lcom/mojang/serialization/Codec;
+        11: aload_1
+        12: aload_2
+        13: aload_3
+        14: invokeinterface #76,  4           // InterfaceMethod com/mojang/serialization/Codec.encode:(Ljava/lang/Object;Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+        19: astore        4
+        21: aload_0
+        22: getfield      #29                 // Field lock:Ljava/util/concurrent/locks/ReentrantLock;
+        25: invokevirtual #50                 // Method java/util/concurrent/locks/ReentrantLock.isHeldByCurrentThread:()Z
+        28: ifeq          38
+        31: aload_0
+        32: getfield      #29                 // Field lock:Ljava/util/concurrent/locks/ReentrantLock;
+        35: invokevirtual #53                 // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+        38: aload         4
+        40: areturn
+        41: astore        4
+        43: new           #59                 // class java/lang/RuntimeException
+        46: dup
+        47: aload         4
+        49: invokespecial #62                 // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+        52: athrow
+        53: astore        5
+        55: aload_0
+        56: getfield      #29                 // Field lock:Ljava/util/concurrent/locks/ReentrantLock;
+        59: invokevirtual #50                 // Method java/util/concurrent/locks/ReentrantLock.isHeldByCurrentThread:()Z
+        62: ifeq          72
+        65: aload_0
+        66: getfield      #29                 // Field lock:Ljava/util/concurrent/locks/ReentrantLock;
+        69: invokevirtual #53                 // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+        72: aload         5
+        74: athrow
+      Exception table:
+         from    to  target type
+             0    21    41   Class java/lang/InterruptedException
+             0    21    53   any
+            41    55    53   any
+      StackMapTable: number_of_entries = 4
+        frame_type = 252 /* append */
+          offset_delta = 38
+          locals = [ class com/mojang/serialization/DataResult ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 2
+          locals = [ class com/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec, class java/lang/Object, class com/mojang/serialization/DynamicOps, class java/lang/Object ]
+          stack = [ class java/lang/InterruptedException ]
+        frame_type = 75 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Throwable ]
+        frame_type = 253 /* append */
+          offset_delta = 18
+          locals = [ top, class java/lang/Throwable ]
+      LineNumberTable:
+        line 35: 0
+        line 36: 7
+        line 40: 21
+        line 36: 38
+        line 37: 41
+        line 38: 43
+        line 40: 53
+        line 41: 72
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           43      10     4     e   Ljava/lang/InterruptedException;
+            0      75     0  this   Lcom/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec;
+            0      75     1 input   Ljava/lang/Object;
+            0      75     2   ops   Lcom/mojang/serialization/DynamicOps;
+            0      75     3 prefix   Ljava/lang/Object;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      75     0  this   Lcom/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec<TA;>;
+            0      75     1 input   TA;
+            0      75     2   ops   Lcom/mojang/serialization/DynamicOps<TT;>;
+            0      75     3 prefix   TT;
+    Signature: #73                          // <T:Ljava/lang/Object;>(TA;Lcom/mojang/serialization/DynamicOps<TT;>;TT;)Lcom/mojang/serialization/DataResult<TT;>;
+    MethodParameters:
+      Name                           Flags
+      input
+      ops
+      prefix
+}
+InnerClasses:
+  #11= #10 of #2;                         // ManagedLocker=class com/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec$ManagedLocker of class com/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec
+Signature: #3                           // <A:Ljava/lang/Object;>Ljava/lang/Object;Lcom/mojang/serialization/Codec<TA;>;
+SourceFile: "SynchronizedCodec.java"
+NestMembers:
+  com/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec$ManagedLocker
