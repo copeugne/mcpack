@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Bundle API and Shield API provider coverage now passes. Complete 30-class capture
+a14b5e0 using 49dd5dd reproduced exactly. The reused small-utility test has eleven
+passing cases. Its initial added cases confused client subscribers with @Mod
+entries; test and prose now distinguish them. Both providers handle player items,
+rendering and combat/inventory support, with no independent structure family.
+Keep Shield API's actual common/client mixin declaration without repairing it.
+Counts: 46 resolved providers, 90 open. Continue provider candidate completeness
+before canonical grouping and detailed attributes. No additional measurement.
+
+
 Ocean's Delight provider coverage now passes. Its complete 15-class source is
 delivered in 2b575d8 using 75232ba and independently reproduced. Full payload and
 four existing aquatic-mob loot declarations are bound by the focused scope test;
