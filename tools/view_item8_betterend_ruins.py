@@ -63,15 +63,16 @@ def main() -> None:
     _ = selection.add_argument("--nether", action="store_true")
     _ = selection.add_argument("--nether-houses", action="store_true")
     _ = selection.add_argument("--nether-arenas", action="store_true")
+    _ = selection.add_argument("--nether-landmarks", action="store_true")
     args = parser.parse_args()
     output = cast("Path", args.output)
     soaring = cast("bool", args.soaring)
     nether_houses = cast("bool", args.nether_houses)
     nether_arenas = cast("bool", args.nether_arenas)
-    nether = cast("bool", args.nether) or nether_houses or nether_arenas
+    nether_landmarks = cast("bool", args.nether_landmarks)
+    nether = cast("bool", args.nether) or nether_houses or nether_arenas or nether_landmarks
     archive_name = "MoogsSoaringStructures-1.21-2.1.2.jar" if soaring else "BetterEnd-21.0.31.jar"
-    if nether:
-        archive_name = "MoogsNetherStructures-1.21-3.0.0-alpha.2.jar"
+    archive_name = "MoogsNetherStructures-1.21-3.0.0-alpha.2.jar" if nether else archive_name
     source = next(s for s in retained_sources(Path.cwd()) if s.name == archive_name)
     if hashlib.sha256(source.path.read_bytes()).hexdigest() != source.sha256:
         message = f"Archive identity mismatch: {archive_name}"
@@ -117,6 +118,16 @@ def main() -> None:
                 "dragon_upper": [f"dragon_arena/{n}" for n in
                                  ("head", "c1", "c2", "l1", "l2", "r1", "r2")],
                 "dragon_lower": [f"dragon_arena/lower_{i}" for i in range(1, 14)],
+            }
+        if nether_landmarks:
+            sheets = {
+                "landmarks": ["grave_yard", "nether_wart_farm", "ruins/ruined_portal", "soul_fire",
+                              "sword", "train", "warped_dome"],
+                "well_ruin_comparison": ["wells/crimson_lava_well", "wells/medium_crimson_well",
+                                        "wells/medium_crimson_well_lower",
+                                        "wells/medium_warped_well",
+                                        "wells/medium_warped_well_lower",
+                                        "ruins/circle_blackstone", "ruins/circle_nether_brick"],
             }
         for biome, names in sheets.items():
             count = len(names)

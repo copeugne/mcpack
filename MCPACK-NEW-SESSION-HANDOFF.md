@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Nether's final seven landmark comparisons reuse the existing renderer. Include
+five existing well pieces and two circular-ruin templates as reference layouts
+because those records leave cross-design relationships open. These are existing
+members, not extra candidate providers. Fourteen selected templates resolve the
+remaining specific boundaries without another measurement or rendering system.
+
+
 Inventory now agrees with arena/fortress decisions delivered at 5e5cb5e2 and
 reproduces exactly. Working groups: 408. Explicit provisional queue: 60, with
 seven Nether landmarks and 53 Voyager decisions next. No live process remains.
