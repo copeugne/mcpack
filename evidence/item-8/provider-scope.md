@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 127 of 136. The exact queue below has 9 open rows.
+Supported provider dispositions: 128 of 136. The exact queue below has 8 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -647,7 +647,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `create-1.21.1-6.0.10.jar` | Create captures and test_create_provider_scope.py; final disposition below. | RESOLVED: Ore generation, player construction, machine behavior, GameTest fixtures and client Ponder scenes. All three embedded libraries accounted for. No independent natural structure family. |
 | `create-enchantment-industry-2.4.0.jar` | cei-entries, hooks, registrations and world-interaction; focused provider test | RESOLVED: player machines, experience processing, existing-block lightning transformation and client tutorials, no independent family. See Enchantment Industry membership closure below. |
 | `createbigcannons-5.11.6+mc.1.21.1.jar` | Seven cbc source increments and test_cbc_provider_scope.py | RESOLVED: player-built cannon equipment, contraption assembly, projectile effects and tutorials, no independent family. See Big Cannons membership closure below. |
-| `createdieselgenerators-1.21.1-1.3.15.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `createdieselgenerators-1.21.1-1.3.15.jar` | diesel-provider, registrations, commands and oil-data; reused Sable Companion | RESOLVED: player machines, virtual oil resources, fuel effects and tutorials, no independent family. See Diesel Generators membership closure below. |
 | `creatingspace-1.21.1-1.7.18.jar` | Existing root decisions, creating-space-provider, creating-space-arrival, creating-space-common-delegates and test_creating_space_provider_scope.py | RESOLVED: Four existing roots, five connected pools, six templates partitioned, terrain and common-hook roles accounted for. Disconnected outpost retained below. Canonical grouping and attributes remain separate. |
 | `cristellib-neoforge-1.21.1-3.1.7.jar` | `cristellib-provider`, `cristellib-writers`, `cristellib-set-writers`, `cristellib-conditions`, `cristellib-builtin`; full payload/source binding. | RESOLVED: consumer pack loading and existing structure-set configuration. No independent family; Waystones replacement condition fails in the frozen runtime. |
 | `cupboard-1.21-3.7.jar` | `cupboard-provider` (77dd750), test_small_utility_provider_scope.py | RESOLVED: Shared configuration, lookups, diagnostics and existing-entity handling; no independent family. Frozen error-suppression setting and limitations below. |
@@ -8122,3 +8122,58 @@ measurement or evidence framework was needed for the membership decision.
 Whole providers: 127 resolved, 9 open. Working groups remain 410 and explicit
 provisional Moog decisions remain 100. Canonical reconciliation, attributes,
 final acceptance, clean review and main delivery remain incomplete.
+
+## Diesel Generators membership closure
+
+Create Diesel Generators membership is RESOLVED with no independent generated
+structure family. Archive createdieselgenerators-1.21.1-1.3.15.jar has SHA-256
+56ef1d574278fc311f1ffa223dbd613077b899354a18d01ae8dca2578a4e2990.
+Its 239 classes, complete packaged data categories and ten Ponder NBT assets
+are bound by test_diesel_provider_scope.py. Data contains recipes, loot, tags,
+an advancement and five fuel definitions, with no worldgen structure definitions.
+The templates are client tutorial assets. No independent authored family is
+provided by this payload or the inspected initialization and common hooks.
+
+Reuse source increments 9dd6ae20, 44ae9c8a, c8adfcaa and 07de7794. Their 32
+classes reproduce exactly and cover all three automatic entries, twelve common
+mixins, direct registration targets, commands and oil data. Registrations supply
+machine blocks, items, fluids, block entities, entity types, recipes, menus,
+sounds, storage, data components and display sources. ModEvents registers Ponder
+on client setup and machine capabilities/common processing handlers. Common
+hooks operate existing machines, contraption coordinates, turret entity data,
+player tools and fuel explosions. Three additional mixins are client-only.
+
+GameEvents.loadLootTable reads entity loot into ReverseLootTable.ALL for item
+to entity lookup. It does not insert loot or create another family. Oil commands
+read or modify chunk resource amounts. OilChunksSavedData stores integer values
+and derives defaults from seed, biome and configuration through noise sampling;
+it does not place a structure or template. This is a virtual extraction resource,
+not another canonical authored family. No resource balance or persistence claim
+is made by this membership inspection.
+
+The nested Sable Companion is byte-identical to the already resolved
+Supplementaries library, SHA-256
+873633e35046e3761b277ff8a1ecad0d55d9a3014fa81a0b084c9aecba1f3bed.
+Reuse source 53c2374 and its four-class service binding; do not recapture it.
+Neither this library nor the packaged Sable hook re-enables excluded Sable.
+The unnecessary duplicate selector e2b1e848 was removed completely by revert
+89b07d38 after Ruff found the duplicate key. The failure and correction remain
+in history; the corrected extractor passes scoped checks. No new measurement
+system or evidence framework was needed. Stop generic machine, network, recipe,
+compatibility-library and resource-economy tracing for this membership decision.
+
+```sh
+uv run pytest -q tests/item8/test_diesel_provider_scope.py
+uv run pytest -q tests/item8/test_supplementaries_provider_scope.py::test_supplementaries_bundled_companion_service
+uv run ruff check tests/item8/test_diesel_provider_scope.py
+uv run basedpyright tests/item8/test_diesel_provider_scope.py
+```
+
+Both focused cases and scoped quality checks pass. The new test binds the
+archive, complete data categories, tutorial NBT partition, nested identity,
+automatic entry/common mixin set and every captured class/source hash. Escaped
+paths and unexplained capture files fail. One test line was wrapped for style.
+
+Whole providers: 128 resolved, 8 open. Working groups remain 410 and explicit
+provisional Moog decisions remain 100. Final canonical membership, attributes,
+acceptance, clean review and main delivery remain incomplete.
