@@ -93,6 +93,9 @@ ARCHIVES = frozenset(
         "structure_pool_api-neoforge-1.2.1+1.21.1.jar",
         "fastasyncworldsave-1.21-2.6.jar",
         "structureessentials-1.21.1-5.0.jar",
+        "alternate_current-mc1.21-1.9.0.jar",
+        "cupboard-1.21-3.7.jar",
+        "lootintegrations-1.21.1-4.7.jar",
         "idas-1.13.7+1.21.1-neoforge.jar",
         "BetterEnd-21.0.31.jar",
         "BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar",
@@ -103,6 +106,9 @@ ARCHIVES = frozenset(
     }
 )
 GENERATION_PREFIXES = (
+    "alternate/current/",
+    "com/cupboard/",
+    "com/lootintegrations/",
     "com/fastasyncworldsave/",
     "com/structureessentials/",
     "fuzs/extensibleenums/",
@@ -1012,6 +1018,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     continue
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = source.name.startswith((
+                    "alternate_current-", "cupboard-", "lootintegrations-",
                     "mcw-", "AI-Improvements-", "attributefix-", "LeavesBeGone-",
                     "Almanac-", "libraryferret-", "structure_layout_optimizer-",
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",

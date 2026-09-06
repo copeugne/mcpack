@@ -94,6 +94,36 @@ if TYPE_CHECKING:
      {"structureessentials.mixins.json", "META-INF/accesstransformer.cfg",
       "assets/modid/icon.png", "pack.mcmeta"},
      {"com/structureessentials/StructureEssentials.class"}),
+    ("cupboard", 18,
+     "f8d8e32b71dd0c3bc4c112b4a11c074563d2368e59b2cfe12ee755bbfb9bd022",
+     {"cupboard.mixins.json", "META-INF/accesstransformer.cfg", "pack.mcmeta"},
+     {"com/cupboard/Cupboard.class"}),
+    ("alternate-current", 30,
+     "8838261bd796edf444cfbf312d9f6bd8f779d09deae3472b68ed510a4c78ec7f",
+     {"alternate-current.mixins.json", "assets/alternate/current/icon.png"},
+     {"alternate/current/AlternateCurrentMod.class"}),
+    ("lootintegrations", 9,
+     "0f49a269c6f23ed70f832752833a5c8c0d00a18f33737d147644015c5fe0c137",
+     {"lootintegrations.mixins.json", "META-INF/accesstransformer.cfg", "pack.mcmeta",
+      "data/lootintegrations/tags/item/ignored.json",
+      "data/lootintegrations/loot/dungeonloot_no_overflow.json",
+      *("data/lootintegrations/loot/lootintegrations_" + name + ".json" for name in (
+          "easy_dungeon", "easy_mineshaft", "easy_pillager", "easy_pyramid",
+          "hard_ancientcity", "hard_endcity", "hard_mansion", "hard_stronghold",
+          "medium_jungletemple", "medium_mansion", "medium_pyramid",
+          "medium_strongholdcorridor", "medium_strongholdcrossing", "medium_strongholdlibrary",
+          "nether_bastion_bridge", "nether_bastion_hoglin_stable", "nether_bastion_other",
+          "nether_bastion_treasure", "nether_bridge", "nether_portal", "village_armorer",
+          "village_butcher", "village_cartographer", "village_desert_house", "village_fisher",
+          "village_fletcher", "village_mason", "village_plains_house", "village_savanna_house",
+          "village_sheperd", "village_snowy_house", "village_taiga_house", "village_tannery",
+          "village_temple", "village_toolsmith", "village_weaponsmith", "water_buried_treasure",
+          "water_ruin_big", "water_ruin_small", "water_shipwreck_map", "water_shipwreck_supply",
+          "water_shipwreck_treasure",
+      )),
+      *("data/lootintegrations/loot_table/chests/" + name + ".json" for name in (
+          "easy", "empty", "hard", "medium", "nether", "village", "water"))},
+     {"com/lootintegrations/LootintegrationsMod.class"}),
 ])
 def test_complete_small_utility_payload_and_entry_binding(  # noqa: C901, PLR0912, PLR0915
     name: str, count: int, manifest: str, other_files: set[str], entry_classes: set[str],
@@ -139,6 +169,8 @@ def test_complete_small_utility_payload_and_entry_binding(  # noqa: C901, PLR091
             expected = {"com/frikinjay/almanac/config/neoforge/AlmanacConfigNeoforge.class"}
         elif name in {"bundle-api", "shield-api"}:
             expected = {c for c in classes if c.endswith("/client/NeoForgeClientMod.class")}
+        elif name == "alternate-current":
+            expected = {"alternate/current/AlternateCurrentMod$ModEvents.class"}
         elif name == "projectile-library":
             expected = {
                 "rbasamoyai/ritchiesprojectilelib/neoforge/RPLNeoForgeClient.class",
@@ -182,3 +214,50 @@ def test_complete_small_utility_payload_and_entry_binding(  # noqa: C901, PLR091
             assert config["minimumStructureDistance"]["enabled"] is False
             assert config["spacingSeparationModifier"]["spacingSeparationModifier"] == 1.0
             assert config["disableLegacyRandomCrashes"]["disableLegacyRandomCrashes"] is True
+
+
+def test_cupboard_and_loot_integrations_frozen_roles() -> None:
+    for name, digest, expected in (
+        ("cupboard", "937698438af081495eebab187013f66570218e1443f35db8a2ca0b4cb6d9638b", {
+            "skipErrorOnEntityLoad": False, "debugChunkloadAttempts": False,
+            "logOffthreadEntityAdd": True, "forceHeapDumpOnOOM": False,
+        }),
+        ("lootintegrations", "898873bac11398a75f7faddeb31410246d43be578868ba58d390b58667b44d31", {
+            "skipMapItems": True, "skipExistingItems": False, "moddedItemWeight": 3,
+            "showcontainerloottable": False, "debugOutput": False,
+        }),
+    ):
+        raw = Path("evidence/item-6/frozen/config", name + ".json").read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == digest
+        config = cast("dict[str, dict[str, JsonValue]]", json.loads(raw))
+        for key, value in expected.items():
+            assert config[key][key] == value
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name == "lootintegrations-1.21.1-4.7.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    with ZipFile(source.path) as archive:
+        definitions = {
+            n: cast("dict[str, JsonValue]", json.loads(archive.read(n)))
+            for n in archive.namelist()
+            if n.startswith("data/lootintegrations/loot/") and n.endswith(".json")
+        }
+        assert len(definitions) == 43
+        for definition in definitions.values():
+            assert set(definition) == {
+                "loot_table", "integrated_loot_tables", "max_result_itemcount",
+            }
+            assert isinstance(definition["loot_table"], str)
+            assert isinstance(definition["integrated_loot_tables"], dict)
+        for name, weight in {
+            "easy": 1, "empty": 1, "hard": 1, "medium": 5, "nether": 1, "village": 10, "water": 2,
+        }.items():
+            path = "data/lootintegrations/loot_table/chests/" + name + ".json"
+            entry: dict[str, JsonValue] = {"type": "minecraft:empty", "weight": weight}
+            if name == "empty":
+                entry = {"type": "minecraft:item", "name": "minecraft:bone", "weight": 1}
+            assert json.loads(archive.read(path)) == {
+                "pools": [{"rolls": 1, "entries": [entry]}],
+            }
+        assert json.loads(archive.read("data/lootintegrations/tags/item/ignored.json")) == {
+            "values": ["minecraft:barrier"],
+        }

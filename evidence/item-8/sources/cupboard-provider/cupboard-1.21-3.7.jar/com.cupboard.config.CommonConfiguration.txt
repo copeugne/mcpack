@@ -1,0 +1,409 @@
+Classfile cupboard-1.21-3.7.jar!/com/cupboard/config/CommonConfiguration.class
+  Last modified Jun 8, 2026; size 2859 bytes
+  SHA-256 checksum 0aae2f82a5d4550cff41dec5c39ef285081abd24883d5699405aca754d13d776
+  Compiled from "CommonConfiguration.java"
+public class com.cupboard.config.CommonConfiguration implements com.cupboard.config.ICommonConfig
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // com/cupboard/config/CommonConfiguration
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 6, methods: 3, attributes: 1
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Fieldref           #8.#9         // com/cupboard/config/CommonConfiguration.showCommandExecutionErrors:Z
+    #8 = Class              #10           // com/cupboard/config/CommonConfiguration
+    #9 = NameAndType        #11:#12       // showCommandExecutionErrors:Z
+   #10 = Utf8               com/cupboard/config/CommonConfiguration
+   #11 = Utf8               showCommandExecutionErrors
+   #12 = Utf8               Z
+   #13 = Fieldref           #8.#14        // com/cupboard/config/CommonConfiguration.displayConfigReload:Z
+   #14 = NameAndType        #15:#12       // displayConfigReload:Z
+   #15 = Utf8               displayConfigReload
+   #16 = Fieldref           #8.#17        // com/cupboard/config/CommonConfiguration.debugChunkloadAttempts:Z
+   #17 = NameAndType        #18:#12       // debugChunkloadAttempts:Z
+   #18 = Utf8               debugChunkloadAttempts
+   #19 = Fieldref           #8.#20        // com/cupboard/config/CommonConfiguration.logOffthreadEntityAdd:Z
+   #20 = NameAndType        #21:#12       // logOffthreadEntityAdd:Z
+   #21 = Utf8               logOffthreadEntityAdd
+   #22 = Fieldref           #8.#23        // com/cupboard/config/CommonConfiguration.skipErrorOnEntityLoad:Z
+   #23 = NameAndType        #24:#12       // skipErrorOnEntityLoad:Z
+   #24 = Utf8               skipErrorOnEntityLoad
+   #25 = Fieldref           #8.#26        // com/cupboard/config/CommonConfiguration.forceHeapDumpOnOOM:Z
+   #26 = NameAndType        #27:#12       // forceHeapDumpOnOOM:Z
+   #27 = Utf8               forceHeapDumpOnOOM
+   #28 = Class              #29           // com/google/gson/JsonObject
+   #29 = Utf8               com/google/gson/JsonObject
+   #30 = Methodref          #28.#3        // com/google/gson/JsonObject."<init>":()V
+   #31 = String             #32           // desc:
+   #32 = Utf8               desc:
+   #33 = String             #34           // Whether to display errors during command execution: default:true
+   #34 = Utf8               Whether to display errors during command execution: default:true
+   #35 = Methodref          #28.#36       // com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+   #36 = NameAndType        #37:#38       // addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+   #37 = Utf8               addProperty
+   #38 = Utf8               (Ljava/lang/String;Ljava/lang/String;)V
+   #39 = String             #11           // showCommandExecutionErrors
+   #40 = Methodref          #41.#42       // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+   #41 = Class              #43           // java/lang/Boolean
+   #42 = NameAndType        #44:#45       // valueOf:(Z)Ljava/lang/Boolean;
+   #43 = Utf8               java/lang/Boolean
+   #44 = Utf8               valueOf
+   #45 = Utf8               (Z)Ljava/lang/Boolean;
+   #46 = Methodref          #28.#47       // com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+   #47 = NameAndType        #37:#48       // addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+   #48 = Utf8               (Ljava/lang/String;Ljava/lang/Boolean;)V
+   #49 = Methodref          #28.#50       // com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+   #50 = NameAndType        #51:#52       // add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+   #51 = Utf8               add
+   #52 = Utf8               (Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+   #53 = String             #54           // Enables debug logging of chunks being forceloaded on serverthread by directly accessing an unloaded chunk, which stalls the server until the chunk finishes loading, incompatible with lithium and its forks: default:false
+   #54 = Utf8               Enables debug logging of chunks being forceloaded on serverthread by directly accessing an unloaded chunk, which stalls the server until the chunk finishes loading, incompatible with lithium and its forks: default:false
+   #55 = String             #18           // debugChunkloadAttempts
+   #56 = String             #57           // Prevent crashes on entity loading: default:false
+   #57 = Utf8               Prevent crashes on entity loading: default:false
+   #58 = String             #24           // skipErrorOnEntityLoad
+   #59 = String             #60           // Entities should only be added on the server thread itself, cupboard fixes the crashes caused by mods violating that, this option enables the logging of those: default:true
+   #60 = Utf8               Entities should only be added on the server thread itself, cupboard fixes the crashes caused by mods violating that, this option enables the logging of those: default:true
+   #61 = String             #21           // logOffthreadEntityAdd
+   #62 = String             #63           // Enables creating a heap dump automatically once the game crashes with an out of memory issue, use with care heapdumps take a lot of space. default:false
+   #63 = Utf8               Enables creating a heap dump automatically once the game crashes with an out of memory issue, use with care heapdumps take a lot of space. default:false
+   #64 = String             #27           // forceHeapDumpOnOOM
+   #65 = String             #66           // Displays a chat message on the client on reloading a config file after changes were detected to the clients config file. default:true
+   #66 = Utf8               Displays a chat message on the client on reloading a config file after changes were detected to the clients config file. default:true
+   #67 = String             #15           // displayConfigReload
+   #68 = Methodref          #28.#69       // com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+   #69 = NameAndType        #70:#71       // get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+   #70 = Utf8               get
+   #71 = Utf8               (Ljava/lang/String;)Lcom/google/gson/JsonElement;
+   #72 = Methodref          #73.#74       // com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+   #73 = Class              #75           // com/google/gson/JsonElement
+   #74 = NameAndType        #76:#77       // getAsJsonObject:()Lcom/google/gson/JsonObject;
+   #75 = Utf8               com/google/gson/JsonElement
+   #76 = Utf8               getAsJsonObject
+   #77 = Utf8               ()Lcom/google/gson/JsonObject;
+   #78 = Methodref          #73.#79       // com/google/gson/JsonElement.getAsBoolean:()Z
+   #79 = NameAndType        #80:#81       // getAsBoolean:()Z
+   #80 = Utf8               getAsBoolean
+   #81 = Utf8               ()Z
+   #82 = Class              #83           // com/cupboard/config/ICommonConfig
+   #83 = Utf8               com/cupboard/config/ICommonConfig
+   #84 = Utf8               Code
+   #85 = Utf8               LineNumberTable
+   #86 = Utf8               LocalVariableTable
+   #87 = Utf8               this
+   #88 = Utf8               Lcom/cupboard/config/CommonConfiguration;
+   #89 = Utf8               serialize
+   #90 = Utf8               root
+   #91 = Utf8               Lcom/google/gson/JsonObject;
+   #92 = Utf8               entry
+   #93 = Utf8               entry2
+   #94 = Utf8               entry5
+   #95 = Utf8               entry3
+   #96 = Utf8               entry4
+   #97 = Utf8               entry6
+   #98 = Utf8               deserialize
+   #99 = Utf8               (Lcom/google/gson/JsonObject;)V
+  #100 = Utf8               data
+  #101 = Utf8               SourceFile
+  #102 = Utf8               CommonConfiguration.java
+{
+  public boolean showCommandExecutionErrors;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean displayConfigReload;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean debugChunkloadAttempts;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean logOffthreadEntityAdd;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean skipErrorOnEntityLoad;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean forceHeapDumpOnOOM;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public com.cupboard.config.CommonConfiguration();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iconst_1
+         6: putfield      #7                  // Field showCommandExecutionErrors:Z
+         9: aload_0
+        10: iconst_1
+        11: putfield      #13                 // Field displayConfigReload:Z
+        14: aload_0
+        15: iconst_0
+        16: putfield      #16                 // Field debugChunkloadAttempts:Z
+        19: aload_0
+        20: iconst_1
+        21: putfield      #19                 // Field logOffthreadEntityAdd:Z
+        24: aload_0
+        25: iconst_0
+        26: putfield      #22                 // Field skipErrorOnEntityLoad:Z
+        29: aload_0
+        30: iconst_0
+        31: putfield      #25                 // Field forceHeapDumpOnOOM:Z
+        34: return
+      LineNumberTable:
+        line 15: 0
+        line 7: 4
+        line 8: 9
+        line 9: 14
+        line 10: 19
+        line 11: 24
+        line 12: 29
+        line 16: 34
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      35     0  this   Lcom/cupboard/config/CommonConfiguration;
+
+  public com.google.gson.JsonObject serialize();
+    descriptor: ()Lcom/google/gson/JsonObject;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=8, args_size=1
+         0: new           #28                 // class com/google/gson/JsonObject
+         3: dup
+         4: invokespecial #30                 // Method com/google/gson/JsonObject."<init>":()V
+         7: astore_1
+         8: new           #28                 // class com/google/gson/JsonObject
+        11: dup
+        12: invokespecial #30                 // Method com/google/gson/JsonObject."<init>":()V
+        15: astore_2
+        16: aload_2
+        17: ldc           #31                 // String desc:
+        19: ldc           #33                 // String Whether to display errors during command execution: default:true
+        21: invokevirtual #35                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+        24: aload_2
+        25: ldc           #39                 // String showCommandExecutionErrors
+        27: aload_0
+        28: getfield      #7                  // Field showCommandExecutionErrors:Z
+        31: invokestatic  #40                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        34: invokevirtual #46                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+        37: aload_1
+        38: ldc           #39                 // String showCommandExecutionErrors
+        40: aload_2
+        41: invokevirtual #49                 // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+        44: new           #28                 // class com/google/gson/JsonObject
+        47: dup
+        48: invokespecial #30                 // Method com/google/gson/JsonObject."<init>":()V
+        51: astore_3
+        52: aload_3
+        53: ldc           #31                 // String desc:
+        55: ldc           #53                 // String Enables debug logging of chunks being forceloaded on serverthread by directly accessing an unloaded chunk, which stalls the server until the chunk finishes loading, incompatible with lithium and its forks: default:false
+        57: invokevirtual #35                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+        60: aload_3
+        61: ldc           #55                 // String debugChunkloadAttempts
+        63: aload_0
+        64: getfield      #16                 // Field debugChunkloadAttempts:Z
+        67: invokestatic  #40                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        70: invokevirtual #46                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+        73: aload_1
+        74: ldc           #55                 // String debugChunkloadAttempts
+        76: aload_3
+        77: invokevirtual #49                 // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+        80: new           #28                 // class com/google/gson/JsonObject
+        83: dup
+        84: invokespecial #30                 // Method com/google/gson/JsonObject."<init>":()V
+        87: astore        4
+        89: aload         4
+        91: ldc           #31                 // String desc:
+        93: ldc           #56                 // String Prevent crashes on entity loading: default:false
+        95: invokevirtual #35                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+        98: aload         4
+       100: ldc           #58                 // String skipErrorOnEntityLoad
+       102: aload_0
+       103: getfield      #22                 // Field skipErrorOnEntityLoad:Z
+       106: invokestatic  #40                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       109: invokevirtual #46                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+       112: aload_1
+       113: ldc           #58                 // String skipErrorOnEntityLoad
+       115: aload         4
+       117: invokevirtual #49                 // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+       120: new           #28                 // class com/google/gson/JsonObject
+       123: dup
+       124: invokespecial #30                 // Method com/google/gson/JsonObject."<init>":()V
+       127: astore        5
+       129: aload         5
+       131: ldc           #31                 // String desc:
+       133: ldc           #59                 // String Entities should only be added on the server thread itself, cupboard fixes the crashes caused by mods violating that, this option enables the logging of those: default:true
+       135: invokevirtual #35                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+       138: aload         5
+       140: ldc           #61                 // String logOffthreadEntityAdd
+       142: aload_0
+       143: getfield      #19                 // Field logOffthreadEntityAdd:Z
+       146: invokestatic  #40                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       149: invokevirtual #46                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+       152: aload_1
+       153: ldc           #61                 // String logOffthreadEntityAdd
+       155: aload         5
+       157: invokevirtual #49                 // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+       160: new           #28                 // class com/google/gson/JsonObject
+       163: dup
+       164: invokespecial #30                 // Method com/google/gson/JsonObject."<init>":()V
+       167: astore        6
+       169: aload         6
+       171: ldc           #31                 // String desc:
+       173: ldc           #62                 // String Enables creating a heap dump automatically once the game crashes with an out of memory issue, use with care heapdumps take a lot of space. default:false
+       175: invokevirtual #35                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+       178: aload         6
+       180: ldc           #64                 // String forceHeapDumpOnOOM
+       182: aload_0
+       183: getfield      #25                 // Field forceHeapDumpOnOOM:Z
+       186: invokestatic  #40                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       189: invokevirtual #46                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+       192: aload_1
+       193: ldc           #64                 // String forceHeapDumpOnOOM
+       195: aload         6
+       197: invokevirtual #49                 // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+       200: new           #28                 // class com/google/gson/JsonObject
+       203: dup
+       204: invokespecial #30                 // Method com/google/gson/JsonObject."<init>":()V
+       207: astore        7
+       209: aload         7
+       211: ldc           #31                 // String desc:
+       213: ldc           #65                 // String Displays a chat message on the client on reloading a config file after changes were detected to the clients config file. default:true
+       215: invokevirtual #35                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+       218: aload         7
+       220: ldc           #67                 // String displayConfigReload
+       222: aload_0
+       223: getfield      #13                 // Field displayConfigReload:Z
+       226: invokestatic  #40                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       229: invokevirtual #46                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+       232: aload_1
+       233: ldc           #67                 // String displayConfigReload
+       235: aload         7
+       237: invokevirtual #49                 // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+       240: aload_1
+       241: areturn
+      LineNumberTable:
+        line 20: 0
+        line 22: 8
+        line 23: 16
+        line 24: 24
+        line 25: 37
+        line 27: 44
+        line 28: 52
+        line 30: 60
+        line 31: 73
+        line 33: 80
+        line 34: 89
+        line 36: 98
+        line 37: 112
+        line 39: 120
+        line 40: 129
+        line 42: 138
+        line 43: 152
+        line 45: 160
+        line 46: 169
+        line 48: 178
+        line 49: 192
+        line 51: 200
+        line 52: 209
+        line 54: 218
+        line 55: 232
+        line 57: 240
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     242     0  this   Lcom/cupboard/config/CommonConfiguration;
+            8     234     1  root   Lcom/google/gson/JsonObject;
+           16     226     2 entry   Lcom/google/gson/JsonObject;
+           52     190     3 entry2   Lcom/google/gson/JsonObject;
+           89     153     4 entry5   Lcom/google/gson/JsonObject;
+          129     113     5 entry3   Lcom/google/gson/JsonObject;
+          169      73     6 entry4   Lcom/google/gson/JsonObject;
+          209      33     7 entry6   Lcom/google/gson/JsonObject;
+
+  public void deserialize(com.google.gson.JsonObject);
+    descriptor: (Lcom/google/gson/JsonObject;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: ldc           #39                 // String showCommandExecutionErrors
+         4: invokevirtual #68                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+         7: invokevirtual #72                 // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+        10: ldc           #39                 // String showCommandExecutionErrors
+        12: invokevirtual #68                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+        15: invokevirtual #78                 // Method com/google/gson/JsonElement.getAsBoolean:()Z
+        18: putfield      #7                  // Field showCommandExecutionErrors:Z
+        21: aload_0
+        22: aload_1
+        23: ldc           #58                 // String skipErrorOnEntityLoad
+        25: invokevirtual #68                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+        28: invokevirtual #72                 // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+        31: ldc           #58                 // String skipErrorOnEntityLoad
+        33: invokevirtual #68                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+        36: invokevirtual #78                 // Method com/google/gson/JsonElement.getAsBoolean:()Z
+        39: putfield      #22                 // Field skipErrorOnEntityLoad:Z
+        42: aload_0
+        43: aload_1
+        44: ldc           #55                 // String debugChunkloadAttempts
+        46: invokevirtual #68                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+        49: invokevirtual #72                 // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+        52: ldc           #55                 // String debugChunkloadAttempts
+        54: invokevirtual #68                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+        57: invokevirtual #78                 // Method com/google/gson/JsonElement.getAsBoolean:()Z
+        60: putfield      #16                 // Field debugChunkloadAttempts:Z
+        63: aload_0
+        64: aload_1
+        65: ldc           #61                 // String logOffthreadEntityAdd
+        67: invokevirtual #68                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+        70: invokevirtual #72                 // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+        73: ldc           #61                 // String logOffthreadEntityAdd
+        75: invokevirtual #68                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+        78: invokevirtual #78                 // Method com/google/gson/JsonElement.getAsBoolean:()Z
+        81: putfield      #19                 // Field logOffthreadEntityAdd:Z
+        84: aload_0
+        85: aload_1
+        86: ldc           #64                 // String forceHeapDumpOnOOM
+        88: invokevirtual #68                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+        91: invokevirtual #72                 // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+        94: ldc           #64                 // String forceHeapDumpOnOOM
+        96: invokevirtual #68                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+        99: invokevirtual #78                 // Method com/google/gson/JsonElement.getAsBoolean:()Z
+       102: putfield      #25                 // Field forceHeapDumpOnOOM:Z
+       105: aload_0
+       106: aload_1
+       107: ldc           #67                 // String displayConfigReload
+       109: invokevirtual #68                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+       112: invokevirtual #72                 // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+       115: ldc           #67                 // String displayConfigReload
+       117: invokevirtual #68                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+       120: invokevirtual #78                 // Method com/google/gson/JsonElement.getAsBoolean:()Z
+       123: putfield      #13                 // Field displayConfigReload:Z
+       126: return
+      LineNumberTable:
+        line 62: 0
+        line 63: 21
+        line 64: 42
+        line 65: 63
+        line 66: 84
+        line 67: 105
+        line 68: 126
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     127     0  this   Lcom/cupboard/config/CommonConfiguration;
+            0     127     1  data   Lcom/google/gson/JsonObject;
+}
+SourceFile: "CommonConfiguration.java"
