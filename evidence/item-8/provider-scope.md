@@ -1756,3 +1756,35 @@ Remaining BetterEnd census work is its other feature registration consumers,
 declared common generation mixins and shared Wover modifiers. The compatibility
 initializers and retained service declarations are now resolved. Provider counts
 remain 53 resolved and 83 open. BCLib's whole-provider row remains open.
+
+### BetterEnd declared common mixin coverage
+
+Source 5726bc8 preserves the remaining 26 common mixins, using selector e1bffd9.
+The capture reproduces exactly. Manifest SHA-256:
+5dd3d155fcd660a11f2950742cffce16b67fba212735daa59ef83c8948d7d9a1.
+Together with the six previously preserved End hooks, it covers all 32 names in
+betterend.mixins.common.json exactly once. Source roles and the exact reproduction
+command are in sources/betterend-common-mixins/README.md.
+
+The remaining hooks modify existing terrain generation, chorus vegetation,
+entity/player behavior, recipe support, advancement callbacks and initialization.
+No separate authored family is supplied by these hook bodies. Terrain hooks use
+the previously captured TerrainGenerator; their accessors and target flags are
+not new generation candidates. The empty portal.EntityMixin body adds nothing.
+
+Preserve two explicit placement effects. StructureMixin resolves the existing
+structure registry key through the configured toggle and returns INVALID_START
+when disabled. WorldGenRegionMixin replaces ensureCanWrite with a check requiring
+each chunk-axis distance from the center to be less than two. That changes the
+write boundary of existing generation, not the candidate list. No baseline fix,
+new geometry experiment or performance audit follows from these observations.
+Declared-hook coverage is not a claim that every injection ran or that competing
+providers cannot affect final behavior.
+
+Nine focused BetterEnd cases pass, including exact declared/captured mixin
+equality and archive/class/disassembly identity binding. Scoped Ruff and
+Basedpyright pass; one overlong assertion line was corrected during validation.
+Use the commands recorded in the preceding section. BetterEnd's remaining census
+areas are other feature consumers and shared Wover modifiers. Root, template,
+compatibility and declared common-mixin checks stay closed. Overall provider
+counts remain 53 resolved and 83 open; Item 8 is not complete.

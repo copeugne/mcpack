@@ -18,6 +18,40 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
+def test_betterend_all_declared_common_mixin_consumers_are_preserved() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    directories = {
+        "betterend-pillar-end-hooks":
+            "f39ee57a16f67349f29e98bfdd3fe2acf567b39b9d56f737f9d8d3655f860e04",
+        "betterend-common-mixins":
+            "5dd3d155fcd660a11f2950742cffce16b67fba212735daa59ef83c8948d7d9a1",
+    }
+    captured: set[str] = set()
+    with ZipFile(source.path) as archive:
+        for name, digest in directories.items():
+            directory = Path("evidence/item-8/sources") / name
+            raw = (directory / "identities.json").read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == digest
+            for row in cast("list[dict[str, str]]", json.loads(raw)):
+                assert row["archive"] == source.name
+                assert row["archive_sha256"] == source.sha256
+                assert hashlib.sha256(archive.read(row["class"])).hexdigest() == (
+                    row["class_sha256"]
+                )
+                disassembly = (directory / row["disassembly"]).read_bytes()
+                assert hashlib.sha256(disassembly).hexdigest() == row["disassembly_sha256"]
+                if "/mixin/common/" in row["class"]:
+                    assert row["class"] not in captured
+                    captured.add(row["class"])
+        declared = cast("dict[str, JsonValue]", json.loads(
+            archive.read("betterend.mixins.common.json")))
+        prefix = str(declared["package"]).replace(".", "/") + "/"
+        names = cast("list[str]", declared["mixins"])
+        assert len(names) == len(set(names)) == 32
+        assert captured == {prefix + name.replace(".", "/") + ".class" for name in names}
+
+
 def test_betterend_retained_plugin_and_compatibility_inputs() -> None:
     log = Path("evidence/raw/item8/registry-r1/debug.log").read_bytes()
     assert hashlib.sha256(log).hexdigest() == (
