@@ -1,0 +1,527 @@
+Compiled from "CaveSurfaceCoater.java"
+final class org.betterx.betterend.world.carvers.CaveSurfaceCoater {
+  private static final net.minecraft.core.Direction[] NEIGHBORS;
+
+  private static final net.minecraft.core.Vec3i[] SPHERE;
+
+  private org.betterx.betterend.world.carvers.CaveSurfaceCoater();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  static void coat(net.minecraft.world.level.levelgen.carver.CarvingContext, net.minecraft.world.level.chunk.ChunkAccess, java.util.function.Function<net.minecraft.core.BlockPos, net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>>, net.minecraft.util.RandomSource, it.unimi.dsi.fastutil.longs.LongList);
+    Code:
+       0: aload         4
+       2: invokeinterface #7,  1            // InterfaceMethod it/unimi/dsi/fastutil/longs/LongList.isEmpty:()Z
+       7: ifeq          11
+      10: return
+      11: aload_1
+      12: invokevirtual #13                 // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+      15: astore        5
+      17: aload         5
+      19: invokevirtual #19                 // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+      22: istore        6
+      24: aload         5
+      26: invokevirtual #25                 // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+      29: istore        7
+      31: aload_0
+      32: invokevirtual #28                 // Method net/minecraft/world/level/levelgen/carver/CarvingContext.getMinGenY:()I
+      35: bipush        8
+      37: iadd
+      38: istore        8
+      40: sipush        256
+      43: anewarray     #33                 // class org/betterx/betterend/world/biome/cave/EndCaveBiome
+      46: astore        9
+      48: sipush        256
+      51: newarray       boolean
+      53: astore        10
+      55: new           #35                 // class java/util/IdentityHashMap
+      58: dup
+      59: invokespecial #37                 // Method java/util/IdentityHashMap."<init>":()V
+      62: astore        11
+      64: new           #38                 // class org/betterx/betterend/world/carvers/CaveSurfaceCoater$ColumnResolver
+      67: dup
+      68: aload_2
+      69: iload         6
+      71: iload         7
+      73: iload         8
+      75: aload         9
+      77: aload         10
+      79: aload         11
+      81: invokespecial #40                 // Method org/betterx/betterend/world/carvers/CaveSurfaceCoater$ColumnResolver."<init>":(Ljava/util/function/Function;III[Lorg/betterx/betterend/world/biome/cave/EndCaveBiome;[ZLjava/util/IdentityHashMap;)V
+      84: astore        12
+      86: new           #43                 // class net/minecraft/core/BlockPos$MutableBlockPos
+      89: dup
+      90: invokespecial #45                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+      93: astore        13
+      95: new           #43                 // class net/minecraft/core/BlockPos$MutableBlockPos
+      98: dup
+      99: invokespecial #45                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+     102: astore        14
+     104: new           #46                 // class it/unimi/dsi/fastutil/longs/LongArrayList
+     107: dup
+     108: invokespecial #48                 // Method it/unimi/dsi/fastutil/longs/LongArrayList."<init>":()V
+     111: astore        15
+     113: new           #46                 // class it/unimi/dsi/fastutil/longs/LongArrayList
+     116: dup
+     117: invokespecial #48                 // Method it/unimi/dsi/fastutil/longs/LongArrayList."<init>":()V
+     120: astore        16
+     122: new           #46                 // class it/unimi/dsi/fastutil/longs/LongArrayList
+     125: dup
+     126: invokespecial #48                 // Method it/unimi/dsi/fastutil/longs/LongArrayList."<init>":()V
+     129: astore        17
+     131: iconst_0
+     132: istore        18
+     134: iload         18
+     136: aload         4
+     138: invokeinterface #49,  1           // InterfaceMethod it/unimi/dsi/fastutil/longs/LongList.size:()I
+     143: if_icmpge     480
+     146: aload         4
+     148: iload         18
+     150: invokeinterface #52,  2           // InterfaceMethod it/unimi/dsi/fastutil/longs/LongList.getLong:(I)J
+     155: lstore        19
+     157: aload         13
+     159: lload         19
+     161: invokevirtual #56                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(J)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     164: pop
+     165: aload         13
+     167: invokevirtual #60                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getX:()I
+     170: iload         6
+     172: isub
+     173: istore        21
+     175: aload         13
+     177: invokevirtual #63                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getZ:()I
+     180: iload         7
+     182: isub
+     183: istore        22
+     185: aload         12
+     187: iload         21
+     189: iload         22
+     191: invokevirtual #66                 // Method org/betterx/betterend/world/carvers/CaveSurfaceCoater$ColumnResolver.at:(II)Lorg/betterx/betterend/world/biome/cave/EndCaveBiome;
+     194: ifnonnull     200
+     197: goto          474
+     200: aload         13
+     202: invokevirtual #60                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getX:()I
+     205: istore        23
+     207: aload         13
+     209: invokevirtual #70                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+     212: istore        24
+     214: aload         13
+     216: invokevirtual #63                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getZ:()I
+     219: istore        25
+     221: iconst_0
+     222: istore        26
+     224: aload         14
+     226: iload         23
+     228: iload         24
+     230: iconst_1
+     231: isub
+     232: iload         25
+     234: invokevirtual #73                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     237: pop
+     238: aload_1
+     239: aload         14
+     241: invokevirtual #76                 // Method net/minecraft/world/level/chunk/ChunkAccess.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     244: getstatic     #80                 // Field org/betterx/wover/tag/api/predefined/CommonBlockTags.END_STONES:Lnet/minecraft/tags/TagKey;
+     247: invokevirtual #86                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     250: ifeq          273
+     253: aload         16
+     255: iload         23
+     257: iload         24
+     259: iconst_1
+     260: isub
+     261: iload         25
+     263: invokestatic  #92                 // Method net/minecraft/core/BlockPos.asLong:(III)J
+     266: invokevirtual #98                 // Method it/unimi/dsi/fastutil/longs/LongArrayList.add:(J)Z
+     269: pop
+     270: iconst_1
+     271: istore        26
+     273: aload         14
+     275: iload         23
+     277: iload         24
+     279: iconst_1
+     280: iadd
+     281: iload         25
+     283: invokevirtual #73                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     286: pop
+     287: aload_1
+     288: aload         14
+     290: invokevirtual #76                 // Method net/minecraft/world/level/chunk/ChunkAccess.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     293: getstatic     #80                 // Field org/betterx/wover/tag/api/predefined/CommonBlockTags.END_STONES:Lnet/minecraft/tags/TagKey;
+     296: invokevirtual #86                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     299: ifeq          322
+     302: aload         17
+     304: iload         23
+     306: iload         24
+     308: iconst_1
+     309: iadd
+     310: iload         25
+     312: invokestatic  #92                 // Method net/minecraft/core/BlockPos.asLong:(III)J
+     315: invokevirtual #98                 // Method it/unimi/dsi/fastutil/longs/LongArrayList.add:(J)Z
+     318: pop
+     319: iconst_1
+     320: istore        26
+     322: iload         26
+     324: ifne          461
+     327: getstatic     #102                // Field NEIGHBORS:[Lnet/minecraft/core/Direction;
+     330: astore        27
+     332: aload         27
+     334: arraylength
+     335: istore        28
+     337: iconst_0
+     338: istore        29
+     340: iload         29
+     342: iload         28
+     344: if_icmpge     461
+     347: aload         27
+     349: iload         29
+     351: aaload
+     352: astore        30
+     354: aload         30
+     356: invokevirtual #108                // Method net/minecraft/core/Direction.getStepY:()I
+     359: ifeq          365
+     362: goto          455
+     365: iload         23
+     367: aload         30
+     369: invokevirtual #113                // Method net/minecraft/core/Direction.getStepX:()I
+     372: iadd
+     373: istore        31
+     375: iload         25
+     377: aload         30
+     379: invokevirtual #116                // Method net/minecraft/core/Direction.getStepZ:()I
+     382: iadd
+     383: istore        32
+     385: iload         31
+     387: iload         6
+     389: if_icmplt     455
+     392: iload         31
+     394: iload         6
+     396: bipush        15
+     398: iadd
+     399: if_icmpgt     455
+     402: iload         32
+     404: iload         7
+     406: if_icmplt     455
+     409: iload         32
+     411: iload         7
+     413: bipush        15
+     415: iadd
+     416: if_icmple     422
+     419: goto          455
+     422: aload         14
+     424: iload         31
+     426: iload         24
+     428: iload         32
+     430: invokevirtual #73                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     433: pop
+     434: aload_1
+     435: aload         14
+     437: invokevirtual #76                 // Method net/minecraft/world/level/chunk/ChunkAccess.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     440: getstatic     #80                 // Field org/betterx/wover/tag/api/predefined/CommonBlockTags.END_STONES:Lnet/minecraft/tags/TagKey;
+     443: invokevirtual #86                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     446: ifeq          455
+     449: iconst_1
+     450: istore        26
+     452: goto          461
+     455: iinc          29, 1
+     458: goto          340
+     461: iload         26
+     463: ifeq          474
+     466: aload         15
+     468: lload         19
+     470: invokevirtual #98                 // Method it/unimi/dsi/fastutil/longs/LongArrayList.add:(J)Z
+     473: pop
+     474: iinc          18, 1
+     477: goto          134
+     480: new           #119                // class it/unimi/dsi/fastutil/longs/LongOpenHashSet
+     483: dup
+     484: invokespecial #121                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet."<init>":()V
+     487: astore        18
+     489: new           #43                 // class net/minecraft/core/BlockPos$MutableBlockPos
+     492: dup
+     493: invokespecial #45                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+     496: astore        19
+     498: iconst_0
+     499: istore        20
+     501: iload         20
+     503: aload         15
+     505: invokevirtual #122                // Method it/unimi/dsi/fastutil/longs/LongArrayList.size:()I
+     508: if_icmpge     788
+     511: aload_3
+     512: iconst_4
+     513: invokeinterface #123,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     518: ifeq          524
+     521: goto          782
+     524: aload         13
+     526: aload         15
+     528: iload         20
+     530: invokevirtual #129                // Method it/unimi/dsi/fastutil/longs/LongArrayList.getLong:(I)J
+     533: invokevirtual #56                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(J)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     536: pop
+     537: aload         12
+     539: aload         13
+     541: invokevirtual #60                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getX:()I
+     544: iload         6
+     546: isub
+     547: aload         13
+     549: invokevirtual #63                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getZ:()I
+     552: iload         7
+     554: isub
+     555: invokevirtual #66                 // Method org/betterx/betterend/world/carvers/CaveSurfaceCoater$ColumnResolver.at:(II)Lorg/betterx/betterend/world/biome/cave/EndCaveBiome;
+     558: astore        21
+     560: aload         21
+     562: ifnull        782
+     565: aload         21
+     567: aload         13
+     569: invokevirtual #130                // Method org/betterx/betterend/world/biome/cave/EndCaveBiome.getWall:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     572: ifnonnull     578
+     575: goto          782
+     578: getstatic     #133                // Field SPHERE:[Lnet/minecraft/core/Vec3i;
+     581: astore        22
+     583: aload         22
+     585: arraylength
+     586: istore        23
+     588: iconst_0
+     589: istore        24
+     591: iload         24
+     593: iload         23
+     595: if_icmpge     782
+     598: aload         22
+     600: iload         24
+     602: aaload
+     603: astore        25
+     605: aload         13
+     607: invokevirtual #60                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getX:()I
+     610: aload         25
+     612: invokevirtual #137                // Method net/minecraft/core/Vec3i.getX:()I
+     615: iadd
+     616: istore        26
+     618: aload         13
+     620: invokevirtual #70                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+     623: aload         25
+     625: invokevirtual #140                // Method net/minecraft/core/Vec3i.getY:()I
+     628: iadd
+     629: istore        27
+     631: aload         13
+     633: invokevirtual #63                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getZ:()I
+     636: aload         25
+     638: invokevirtual #141                // Method net/minecraft/core/Vec3i.getZ:()I
+     641: iadd
+     642: istore        28
+     644: iload         26
+     646: iload         6
+     648: if_icmplt     776
+     651: iload         26
+     653: iload         6
+     655: bipush        15
+     657: iadd
+     658: if_icmpgt     776
+     661: iload         28
+     663: iload         7
+     665: if_icmplt     776
+     668: iload         28
+     670: iload         7
+     672: bipush        15
+     674: iadd
+     675: if_icmple     681
+     678: goto          776
+     681: aload         12
+     683: iload         26
+     685: iload         6
+     687: isub
+     688: iload         28
+     690: iload         7
+     692: isub
+     693: invokevirtual #66                 // Method org/betterx/betterend/world/carvers/CaveSurfaceCoater$ColumnResolver.at:(II)Lorg/betterx/betterend/world/biome/cave/EndCaveBiome;
+     696: ifnonnull     702
+     699: goto          776
+     702: aload         19
+     704: iload         26
+     706: iload         27
+     708: iload         28
+     710: invokevirtual #73                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     713: pop
+     714: aload_1
+     715: aload         19
+     717: invokevirtual #76                 // Method net/minecraft/world/level/chunk/ChunkAccess.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     720: getstatic     #80                 // Field org/betterx/wover/tag/api/predefined/CommonBlockTags.END_STONES:Lnet/minecraft/tags/TagKey;
+     723: invokevirtual #86                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     726: ifne          732
+     729: goto          776
+     732: aload         18
+     734: iload         26
+     736: iload         27
+     738: iload         28
+     740: invokestatic  #92                 // Method net/minecraft/core/BlockPos.asLong:(III)J
+     743: invokevirtual #142                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet.add:(J)Z
+     746: ifne          752
+     749: goto          776
+     752: aload         21
+     754: aload         19
+     756: invokevirtual #130                // Method org/betterx/betterend/world/biome/cave/EndCaveBiome.getWall:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     759: astore        29
+     761: aload         29
+     763: ifnull        776
+     766: aload_1
+     767: aload         19
+     769: aload         29
+     771: iconst_0
+     772: invokevirtual #143                // Method net/minecraft/world/level/chunk/ChunkAccess.setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+     775: pop
+     776: iinc          24, 1
+     779: goto          591
+     782: iinc          20, 1
+     785: goto          501
+     788: iconst_0
+     789: istore        20
+     791: iload         20
+     793: aload         16
+     795: invokevirtual #122                // Method it/unimi/dsi/fastutil/longs/LongArrayList.size:()I
+     798: if_icmpge     884
+     801: aload         13
+     803: aload         16
+     805: iload         20
+     807: invokevirtual #129                // Method it/unimi/dsi/fastutil/longs/LongArrayList.getLong:(I)J
+     810: invokevirtual #56                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(J)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     813: pop
+     814: aload         12
+     816: aload         13
+     818: invokevirtual #60                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getX:()I
+     821: iload         6
+     823: isub
+     824: aload         13
+     826: invokevirtual #63                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getZ:()I
+     829: iload         7
+     831: isub
+     832: invokevirtual #66                 // Method org/betterx/betterend/world/carvers/CaveSurfaceCoater$ColumnResolver.at:(II)Lorg/betterx/betterend/world/biome/cave/EndCaveBiome;
+     835: astore        21
+     837: aload         21
+     839: ifnonnull     845
+     842: goto          878
+     845: aload         21
+     847: invokevirtual #147                // Method org/betterx/betterend/world/biome/cave/EndCaveBiome.getTopMaterial:()Lnet/minecraft/world/level/block/state/BlockState;
+     850: astore        22
+     852: aload         22
+     854: ifnull        878
+     857: aload         22
+     859: getstatic     #151                // Field net/minecraft/world/level/block/Blocks.END_STONE:Lnet/minecraft/world/level/block/Block;
+     862: invokevirtual #157                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     865: ifne          878
+     868: aload_1
+     869: aload         13
+     871: aload         22
+     873: iconst_0
+     874: invokevirtual #143                // Method net/minecraft/world/level/chunk/ChunkAccess.setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+     877: pop
+     878: iinc          20, 1
+     881: goto          791
+     884: iconst_0
+     885: istore        20
+     887: iload         20
+     889: aload         17
+     891: invokevirtual #122                // Method it/unimi/dsi/fastutil/longs/LongArrayList.size:()I
+     894: if_icmpge     971
+     897: aload         13
+     899: aload         17
+     901: iload         20
+     903: invokevirtual #129                // Method it/unimi/dsi/fastutil/longs/LongArrayList.getLong:(I)J
+     906: invokevirtual #56                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(J)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     909: pop
+     910: aload         12
+     912: aload         13
+     914: invokevirtual #60                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getX:()I
+     917: iload         6
+     919: isub
+     920: aload         13
+     922: invokevirtual #63                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getZ:()I
+     925: iload         7
+     927: isub
+     928: invokevirtual #66                 // Method org/betterx/betterend/world/carvers/CaveSurfaceCoater$ColumnResolver.at:(II)Lorg/betterx/betterend/world/biome/cave/EndCaveBiome;
+     931: astore        21
+     933: aload         21
+     935: ifnonnull     941
+     938: goto          965
+     941: aload         21
+     943: aload         13
+     945: invokevirtual #160                // Method org/betterx/betterend/world/biome/cave/EndCaveBiome.getCeil:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     948: astore        22
+     950: aload         22
+     952: ifnull        965
+     955: aload_1
+     956: aload         13
+     958: aload         22
+     960: iconst_0
+     961: invokevirtual #143                // Method net/minecraft/world/level/chunk/ChunkAccess.setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+     964: pop
+     965: iinc          20, 1
+     968: goto          887
+     971: return
+
+  static {};
+    Code:
+       0: invokestatic  #163                // Method net/minecraft/core/Direction.values:()[Lnet/minecraft/core/Direction;
+       3: putstatic     #102                // Field NEIGHBORS:[Lnet/minecraft/core/Direction;
+       6: invokestatic  #167                // Method com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;
+       9: astore_0
+      10: iconst_5
+      11: istore_1
+      12: bipush        25
+      14: istore_2
+      15: bipush        -5
+      17: istore_3
+      18: iload_3
+      19: iconst_5
+      20: if_icmpgt     112
+      23: iload_3
+      24: iload_3
+      25: imul
+      26: istore        4
+      28: bipush        -5
+      30: istore        5
+      32: iload         5
+      34: iconst_5
+      35: if_icmpgt     106
+      38: iload         5
+      40: iload         5
+      42: imul
+      43: istore        6
+      45: bipush        -5
+      47: istore        7
+      49: iload         7
+      51: iconst_5
+      52: if_icmpgt     100
+      55: iload         7
+      57: iload         7
+      59: imul
+      60: istore        8
+      62: iload         4
+      64: iload         6
+      66: iadd
+      67: iload         8
+      69: iadd
+      70: bipush        25
+      72: if_icmpge     94
+      75: aload_0
+      76: new           #138                // class net/minecraft/core/Vec3i
+      79: dup
+      80: iload_3
+      81: iload         5
+      83: iload         7
+      85: invokespecial #173                // Method net/minecraft/core/Vec3i."<init>":(III)V
+      88: invokeinterface #176,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      93: pop
+      94: iinc          7, 1
+      97: goto          49
+     100: iinc          5, 1
+     103: goto          32
+     106: iinc          3, 1
+     109: goto          18
+     112: aload_0
+     113: iconst_0
+     114: anewarray     #138                // class net/minecraft/core/Vec3i
+     117: invokeinterface #181,  2          // InterfaceMethod java/util/List.toArray:([Ljava/lang/Object;)[Ljava/lang/Object;
+     122: checkcast     #185                // class "[Lnet/minecraft/core/Vec3i;"
+     125: putstatic     #133                // Field SPHERE:[Lnet/minecraft/core/Vec3i;
+     128: return
+}
