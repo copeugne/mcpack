@@ -189,6 +189,7 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "org/sinytra/fabric/api_base/generated/GeneratedEntryPoint.class",
     "net/fabricmc/fabric/impl/resource/loader/PlaceholderResourcePack.class",
     "net/fabricmc/fabric/impl/resource/loader/PlaceholderResourcePack$Factory.class",
     "net/fabricmc/fabric/impl/resource/loader/ModResourcePackCreator.class",
@@ -2313,6 +2314,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/fabric-api-base-0.4.42+d1308ded19.jar",
         "META-INF/jars/fabric-resource-loader-v0-1.3.1+4ea8954419.jar",
         "META-INF/jars/fabric-gametest-api-v1-2.0.5+29f188ce19.jar",
         "META-INF/jars/fabric-biome-api-v1-13.0.31+1e62d33c19.jar",
@@ -2334,6 +2336,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/fabric-api-base-0.4.42+d1308ded19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "4999d5adf589d1efd9a1cb43f5e24097fd375b16e5baa788be2dded61d6f6a5d",
+        ),
         "META-INF/jars/fabric-resource-loader-v0-1.3.1+4ea8954419.jar": (
             "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
             "8db86bb10c87f97b4450aed6236ad7611ddbadb32e6e5fa00f47781bc99e1244",
