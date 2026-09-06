@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Collective membership is resolved from 71c6534b, f59d9219, 9f1bd61d and reused
+plugin 55d1c0ea. Shared data, consumer entity/callback/network APIs and platform
+services, no independent family. Preserve entity/spawner/callback effects and
+conditional warning handling for later attribution. Full payload/source binding,
+Quick Right Click dependency regression and scoped checks pass. Whole providers:
+110 resolved, 26 open. Do not trace more generic Collective internals. Continue
+remaining providers and canonical Moog grouping before detailed attributes.
+
+
 Quick Right Click membership is resolved from 458fa978, 74487ac1 and shared
 Collective plugin 55d1c0ea. It handles player-operated tables/storage and
 temporary beds/shulkers, no independent generated family. Full payload/source

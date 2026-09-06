@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 109 of 136. The exact queue below has 27 open rows.
+Supported provider dispositions: 110 of 136. The exact queue below has 26 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -642,7 +642,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `chipped-neoforge-1.21.1-4.0.2.jar` | `chipped-provider`, `chipped-crafting`; complete payload binding. | RESOLVED: building blocks, recipes, player workbench crafting and block behavior. No independent structure family. |
 | `cloth-config-15.0.140-neoforge.jar` | `cloth-config-provider` (6e7567c7), complete payload/source binding. | RESOLVED: config-screen API; sole automatic initialization is client-guarded. No independent family. |
 | `coffee_delight-1.4.1.jar` | `coffee-delight-provider` (49445ab), test_coffee_delight_provider_scope.py | RESOLVED: Vanilla coffee-bush patch and food/item content, with no independent structure family. Full disposition below. |
-| `collective-1.21.1-8.25.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `collective-1.21.1-8.25.jar` | `collective-provider`, `collective-services`, `collective-init`, existing `collective-mixin-plugin`; full payload/source binding. | RESOLVED: shared data, consumer entity/callback/network APIs and platform services. No independent family. |
 | `comforts-neoforge-9.0.5+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `create-1.21.1-6.0.10.jar` | Create captures and test_create_provider_scope.py; final disposition below. | RESOLVED: Ore generation, player construction, machine behavior, GameTest fixtures and client Ponder scenes. All three embedded libraries accounted for. No independent natural structure family. |
 | `create-enchantment-industry-2.4.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -7257,3 +7257,41 @@ uv run basedpyright tests/item8/test_quick_right_click_provider_scope.py tools/i
 The focused case and scoped quality checks pass. Whole providers: 109 resolved,
 27 open. No family added. Continue remaining provider roles and canonical Moog
 grouping before detailed attributes; no further generic quick-access menu audit.
+
+
+### Collective membership resolved
+
+Sources 71c6534b, f59d9219, 9f1bd61d and reused plugin 55d1c0ea bind twenty-five
+classes: active entries/events, four common hooks, nine active services and
+initialization delegates. Collective initializes shared data/name lists and
+configuration JSON, item/enchantment constants and consumer networking. Its
+entity-replacement lists start empty; event handling applies supplied replacement
+rules and queued entity/runnable actions. Services register supplied blocks/items,
+forward portal events, query loader/tool/tag properties and teleport existing
+entities. None defines an independent authored structure family.
+
+Preserve effects on existing spawners, entity replacement, player-head caching,
+block-entity and bonemeal callbacks for later attribution. Experimental-world
+warning handling is conditional on development mode or hideexperimentalwarning;
+it is not compatibility proof. RegisterMod includes update checking. Membership
+closure does not claim networking, permissions or consumer-handler safety.
+
+The complete payload is 567 classes, 27 service descriptors (nine per packaged
+loader), three JSON name/message lists, one translation and thirteen other
+metadata/icon/access/mixin files. The NeoForge metadata selects four common and
+five client hooks. The reused plugin adds no additional mixins. Forge/Fabric
+code and service descriptors are packaged alternatives. There are no nested
+archives, templates or generation data. The focused case validates all payload
+files, data shapes, selected hooks, services and preserved source identities.
+
+```sh
+uv run pytest -q tests/item8/test_collective_provider_scope.py tests/item8/test_quick_right_click_provider_scope.py
+uv run ruff check tests/item8/test_collective_provider_scope.py tools/inspect_item8_pool_elements.py
+uv run basedpyright tests/item8/test_collective_provider_scope.py tools/inspect_item8_pool_elements.py
+```
+
+Two focused cases and scoped quality checks pass. One overlong test line was
+wrapped after the initial Ruff finding. All captures reproduce byte for byte.
+Whole providers: 110 resolved, 26 open. No family added. Do not continue generic
+Collective service, event or networking internals; continue remaining provider
+roles and canonical Moog grouping before detailed attributes.
