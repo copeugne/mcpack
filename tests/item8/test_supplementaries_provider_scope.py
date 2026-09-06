@@ -142,6 +142,8 @@ def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
          "3a14ffe0a11a67a2cb31b7825dce2fe1bdef83b644754f89816a63558144b58a"),
         ("supplementaries-integrations", 8,
          "1ec5f3694856a3a56bf280d1ceb4bf980a741f63fe7ad1fddba78ea6c7d2b1d3"),
+        ("supplementaries-client-entries", 2,
+         "b0e1d475ee276f5923a241dcc90190b1c369119fd784f0963ffe67c65cd623c9"),
     ):
         capture_directory = Path("evidence/item-8/sources") / name
         raw = (capture_directory / "identities.json").read_bytes()
