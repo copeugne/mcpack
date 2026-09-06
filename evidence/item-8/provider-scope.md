@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 117 of 136. The exact queue below has 19 open rows.
+Supported provider dispositions: 118 of 136. The exact queue below has 18 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -698,7 +698,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `supplementaries-neoforge-1.21.1-3.6.8.jar` | Existing generation, data, common-entry and integration captures; final server hooks 46127c7 and map delegate 3660300; test_supplementaries_provider_scope.py | RESOLVED: Galleon and road-sign roots, cave-urn cache candidate, all pools/templates, component injections, full payload and executable contribution roles accounted for below. Cave-urn canonical boundary and effective family attributes remain separate. |
 | `tectonic-3.0.22-neoforge-21.1.jar` | `tectonic-provider`, `tectonic-config-selection` (fba027c), test_tectonic_provider_scope.py | RESOLVED: Terrain, placement modifications and the named underground-river lantern candidate. No packaged structure roots, pools or templates. See Tectonic disposition below. |
 | `ubesdelight-neoforge-1.21.1-0.4.13.jar` | `ubes-delight-provider` (b6ef5a0), MidnightLib ca67c60, config delegates e40ea32; test_ubes_delight_provider_scope.py | RESOLVED: Four crop chains, food/item interactions and bundled configuration support. No independent structure family. Full disposition below. |
-| `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `worldweaver-21.0.24.jar` | Six wover provider captures, existing pool-codecs and biome modifier captures | RESOLVED: Shared consumer generation/registry/terrain APIs and presets, no independent family. Preserve terrain and pack-loading effects below. |
 | `wunderlib-21.0.10.jar` | Source 185b55c; test_small_utility_provider_scope.py | RESOLVED: Networking entries and supplied-coordinate geometry; no independent family. See WunderLib disposition below. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 
@@ -7555,3 +7555,63 @@ Disposition: no independent generated family. Whole providers: 117 resolved,
 19 open. The 410 working groups and 100 explicitly provisional Moog decisions
 are unchanged. Canonical grouping, required attributes and final Item 8
 review/delivery remain open.
+
+## WorldWeaver whole-provider membership closure
+
+Frozen worldweaver-21.0.24.jar SHA-256:
+`cd1a1c247a4870479a64a5ad837a0f42ebfadfcd1507131284eec05a4a6af51e`.
+The complete archive contains 794 classes, 21 client assets, 25 mixin
+configurations, one service file, five other metadata/license files and one
+data file. No nested archives or packaged structure/pool/template definitions
+are present. The data file is
+`data/wover/worldgen/noise_settings/amplified_nether.json`, a terrain setting.
+Assets are languages, one model and icons. Ten client-only hooks are declared;
+no mixin configuration declares a plugin or separate server hook list.
+
+The provider evidence comprises 372669cb (seven automatic entries and six
+registry services), 46c52394 (seventeen direct module initializers), 3b2c7fd9
+(listener targets), f632c8bd (ten registration targets), 55320bc3 (all 45 common
+hooks) and 1717ee10 (six direct bootstrap boundaries). These contain 91 distinct
+classes. Earlier nonverbose captures remain partial evidence; 3b2c7fd9 fills
+the demonstrated listener-target omission. Reproduce each with the extractor
+commit and exact command in its README, not with a later changed extractor.
+
+Generation registrations supply reusable feature types (block placement,
+postprocessing, sequence, condition, pillar and template), placement codecs,
+structure/piece types, material rules, biome sources and chunk generators.
+Legacy aliases are not new families. Reuse StructurePoolElementTypeManagerImpl
+and SingleEndPoolElement in pool-codecs and the existing biome-modifier
+captures accepted with BetterEnd. Consumers remain attributed to their actual
+frozen registry entries, packaged/configured content and observed worlds.
+Do not count shared codecs, pieces or registration events as extra families.
+
+Configured/placed feature, pool, set and surface bootstraps dispatch consumer
+events. ModCore's supplied datapack list starts empty and its listener loads
+registered pack roots from their owning mod. It warns and skips missing or
+invalid pack metadata. WorldWeaver's archive supplies no such independent
+architectural content. Preset options are normal, large, amplified, superflat
+and legacy_17; available options do not prove the frozen world's selected
+preset. Existing runtime and frozen configuration identities remain authority.
+
+Preserve actual effects: biome feature-step rebuilding, consumer Nether/End
+biome selection, surface-rule injection, registry/lifecycle events and preset
+selection support. NoiseGeneratorSettingsMixin warns when overwriting an
+already overwritten surface-rule set; its getter named getOriginalSurfaceRules
+returns the current field. Recipe/advancement/item-stack/potion/POI/tag hooks
+are consumer gameplay APIs. This membership disposition is not an unchanged
+behavior or general compatibility claim, and does not justify expanding Item 8
+into generic event, recipe, networking or terrain-tuning audits.
+
+Focused verification is
+`uv run pytest -q tests/item8/test_wover_provider_scope.py`.
+It binds archive identity, full payload categories, automatic/service entries,
+all common hooks, client-only declarations and preserved source bytes.
+Scoped Ruff and Basedpyright pass. Capture r1 reproductions match bytes.
+The combined provider and BetterEnd feature-candidate check passed 17 cases:
+`uv run pytest -q tests/item8/test_wover_provider_scope.py tests/item8/test_betterend_feature_candidates.py`.
+No new measurement system or evidence framework was added.
+
+Disposition: shared consumer generation/terrain APIs, no independent family.
+Whole providers: 118 resolved, 18 open. Working groups remain 410; the 100
+explicitly provisional Moog grouping decisions remain open. Detailed family
+attributes and final Item 8 review/main delivery have not passed.

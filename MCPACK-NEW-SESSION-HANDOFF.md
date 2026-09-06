@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+WorldWeaver membership is resolved from its six provider captures through
+1717ee10, with existing pool/biome captures reused. All entries/services and
+45 common hooks are bound; 91 distinct classes cover the inspected boundaries.
+No independent family. Preserve terrain/preset/pack-loading effects; stop
+tracing generic WorldWeaver APIs. Whole providers: 118 resolved, 18 open.
+Working groups remain 410 and 100 explicitly provisional Moog decisions remain.
+Continue remaining provider membership and grouping before attributes. Final
+Item 8 gate, clean review and main merge remain open.
+
+
 WorldWeaver listener targets are now retained in 3b2c7fd9 (extractor 2dec51db
 adds verbose entrypoint disassembly). f632c8bd retains ten direct registration
 targets; reuse the eleventh in pool-codecs. Both r1 reproductions match bytes.
