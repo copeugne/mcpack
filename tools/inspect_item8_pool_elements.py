@@ -1553,6 +1553,9 @@ CLASSES: tuple[str, ...] = (
     "io/github/razordevs/aeroblender/mixin/RuleCategoryMixin.class",
     "io/github/razordevs/aeroblender/mixin/SurfaceRuleManagerAccessor.class",
     "io/github/razordevs/aeroblender/mixin/SurfaceRuleManagerMixin.class",
+    "io/github/razordevs/deep_aether/world/biomes/DARegion.class",
+    "io/github/razordevs/deep_aether/world/biomes/DARareRegion.class",
+    "io/github/razordevs/deep_aether/world/biomes/DASurfaceData.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
