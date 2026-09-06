@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 84 of 136. The exact queue below has 52 open rows.
+Supported provider dispositions: 85 of 136. The exact queue below has 51 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -697,10 +697,79 @@ attributes. This separates unknown membership from incomplete attributes.
 | `structureessentials-1.21.1-5.0.jar` | `structureessentials-provider` (7a82503), test_small_utility_provider_scope.py | RESOLVED: Existing structure lookup, placement, biome compatibility and diagnostic modifications; no independent family. Frozen activation settings bound below. |
 | `supplementaries-neoforge-1.21.1-3.6.8.jar` | Existing generation, data, common-entry and integration captures; final server hooks 46127c7 and map delegate 3660300; test_supplementaries_provider_scope.py | RESOLVED: Galleon and road-sign roots, cave-urn cache candidate, all pools/templates, component injections, full payload and executable contribution roles accounted for below. Cave-urn canonical boundary and effective family attributes remain separate. |
 | `tectonic-3.0.22-neoforge-21.1.jar` | `tectonic-provider`, `tectonic-config-selection` (fba027c), test_tectonic_provider_scope.py | RESOLVED: Terrain, placement modifications and the named underground-river lantern candidate. No packaged structure roots, pools or templates. See Tectonic disposition below. |
-| `ubesdelight-neoforge-1.21.1-0.4.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
+| `ubesdelight-neoforge-1.21.1-0.4.13.jar` | `ubes-delight-provider` (b6ef5a0), MidnightLib ca67c60, config delegates e40ea32; test_ubes_delight_provider_scope.py | RESOLVED: Four crop chains, food/item interactions and bundled configuration support. No independent structure family. Full disposition below. |
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+
+## Ubes Delight provider disposition
+
+ubesdelight-neoforge-1.21.1-0.4.13.jar is RESOLVED as a crop, food/item and
+configuration provider, with no independent structure family. Archive SHA-256:
+abbdf3927b17aef8a44a418c6f292e584a61d1fab4115d33a71c3d0a35b1e2b4.
+The full 1336-file payload comprises 140 classes, 729 assets, 448 data files,
+seven packaged generator-cache files, four META-INF files, three resource-pack
+files and five other root files. Full payload accounting excludes templates,
+extra nested libraries, scripts and services. Both packaged Ube mixin lists are
+empty and declare no plugin. The only resource pack contains Presence Footsteps
+block-sound mapping, metadata and an icon, with no server generation data.
+
+The four configured crop patches (garlic, ginger, lemongrass and ube) all use
+WildTertiaryCropFeature. The writer delegates floor/primary/secondary/tertiary
+placements in randomized patches. The complete supplied state sets contain only
+the corresponding wild crop, tall grass and respectively pink tulip, lily of
+the valley, azure bluet or cornflower. Every inline writer is vanilla simple_block.
+All four placed resources reference the corresponding configured ID; all four
+biome modifiers reference those placed IDs at vegetal_decoration. The modifiers
+allow jungle biomes and deny underground biomes. BiomeIsOverworldPlacementModifier
+checks the biome tag, and AddFeaturesByFilterModifier appends supplied features
+during the ADD phase. Neither generates a separate layout. There are no pools,
+structure roots or disconnected templates to reconcile in this provider.
+
+Source b6ef5a0 and configuration delegates e40ea32 establish these entry roles:
+
+| Entry group | Membership role |
+| --- | --- |
+| UbesDelightImpl, UbesDelight, CommonSetupImpl, CommonSetup | Register content, configuration, common setup, dispenser interactions, composting and villager food/item sets. Client setup and built-in client pack registration are behind the client-side branch. |
+| ClientSetupEventsImpl | Client block-entity renderers. |
+| BakingMatBlockEntityImpl capability subscriber | Exposes the existing baking-mat inventory capability. |
+| VillagerEventsImpl | Existing farmer and wandering-trader item trades. |
+| Configuration, ConfigurationImpl | Forward/read annotated settings and initialize MidnightConfig. No generation callback. |
+| EMIPluginImpl, ServerREIPluginImpl, UbesDelightWailaPlugin | Recipe/workstation display, recipe-display serialization and tooltip configuration/components. No independent site. |
+
+All four annotated parent entry candidates are included in the captured set.
+Other item/block recipes, loot changes and food mechanics remain relevant to
+existing-family attributes where applicable. This membership disposition does
+not expand into a full audit of those gameplay implementations.
+
+The sole bundled archive is midnightlib-1.9.2+1.21.1-neoforge.jar, SHA-256
+5dc6cc72e507c3fb5b5bac59e79da2aee74a9d1345dbc48e0ccecd608ac9286a.
+Its complete 45-file payload has 24 classes, sixteen assets, three metadata
+files, one client-only mixin configuration and an icon. There is no generation
+data or further nested archive. All three annotated entries are retained in
+ca67c60. They initialize configuration/client presentation and register config
+screens and commands. Direct delegates in e40ea32 show that AutoCommand builds
+commands to read/set configuration fields and write configuration; MidnightLibConfig
+declares library UI options. Its sole declared mixin targets the client options
+screen. These routes supply configuration support, not another family.
+
+The accepted JSON catalog retains the data. Every captured class, including the
+bundled classes, is hash-bound to its exact archive and preserved disassembly.
+Each source directory records its extractor and exact reproduction command.
+Two javap record-class outputs contain an emitted blank line at EOF. The raw
+bytes were preserved and independently reproduced, rather than normalized to
+satisfy git's blank-at-EOF warning. No runtime measurement was added.
+
+```sh
+uv run pytest -q tests/item8/test_ubes_delight_provider_scope.py
+uv run ruff check tests/item8/test_ubes_delight_provider_scope.py
+uv run basedpyright tests/item8/test_ubes_delight_provider_scope.py
+```
+
+Three focused cases pass (0.13s); scoped Ruff/Basedpyright pass after two
+line-length corrections. Census: 85 resolved, 51 open. Six packaged-generation
+providers, 24 code-only and 21 unmatched rows remain. No canonical family is
+added by this disposition.
 
 ## Aethers Delight provider disposition
 

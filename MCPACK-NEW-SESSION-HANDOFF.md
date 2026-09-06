@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Ube's Delight membership is RESOLVED. Source b6ef5a0, bundled entry ca67c60 and
+configuration delegates e40ea32 cover crop generation, common entries and the
+MidnightLib boundary. Three focused cases pass (0.13s); scoped Ruff/Basedpyright
+pass. Census: 85 resolved, 51 open. No independent family added. Remaining
+packaged-generation providers: Create, Forgified Fabric API, Lithostitched,
+Naturalist, Railways and Regions Unexplored; 24 code-only and 21 unmatched rows
+also remain. Next: Naturalist's spawn/content boundary, then the remaining
+generation providers and their shared dependencies. Reuse all five closed
+Delight-provider dispositions and the RU checkpoint; do not restart them.
+
 Aether's Delight membership is RESOLVED. Source 13d2013 covers all six annotated
 entries; three focused cases (0.12s) cover the full payload, five ore/plant chains
 and both packaged compatibility data packs. Scoped Ruff/Basedpyright pass.
