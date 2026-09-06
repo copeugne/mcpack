@@ -35,6 +35,7 @@ ARCHIVES = frozenset(
     {
         MAPPED_SERVER.name,
         PATCHED_SERVER.name,
+        "geckolib-neoforge-1.21.1-4.8.4.jar",
         "azurelibarmor-neo-1.21.1-3.1.2.jar",
         "player-animation-lib-forge-2.0.4+1.21.1.jar",
         "emi_ores-1.2+1.21.1+neoforge.jar",
@@ -200,6 +201,14 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "software/bernie/geckolib/GeckoLib.class",
+    "software/bernie/geckolib/platform/GeckoLibClientNeoForge.class",
+    "software/bernie/geckolib/event/GeckoLibEventsNeoForge.class",
+    "software/bernie/geckolib/network/GeckoLibNetworkingNeoForge.class",
+    "software/bernie/geckolib/platform/GeckoLibNeoForge.class",
+    "software/bernie/geckolib/mixin/common/AbstractContainerMenuMixin.class",
+    "software/bernie/geckolib/mixin/common/ItemStackMixin.class",
+    "software/bernie/geckolib/mixin/common/LivingEntityMixin.class",
     "mod/azure/azurelibarmor/common/network/packet/AzItemStackDispatchCommandPacket.class",
     "mod/azure/azurelibarmor/common/render/armor/compat/ShoulderSurfingCompat.class",
     "mod/azure/azurelibarmor/AzureLib.class",
