@@ -1559,3 +1559,41 @@ entries. Full provider coverage remains open, with 53 resolved and 83 open rows.
 
 The same three validation commands in the preceding section now pass three
 focused cases, Ruff and Basedpyright. No new measurement or evidence format.
+
+### BetterEnd pillar features and vanilla End components
+
+Source ced7655, selected by d6f6c51, preserves the two pillar-feature bodies and
+six declared End-content mixins. The capture reproduces exactly. Commands and
+interpretation are in sources/betterend-pillar-end-hooks/README.md. The fourth
+case in test_betterend_feature_candidates.py binds all eight classes, their
+mixin declarations, packaged feature routes and the component template sets.
+
+`betterend:fallen_pillar` and `betterend:obsidian_pillar_basement` are named
+nonregistry candidates. Both have live placed-feature IDs, inline configured
+features and direct references from the packaged dragon_graveyards biome.
+Their rarity filters declare 20 and 8 respectively, followed by in-square and
+biome filters. They generate weathered obsidian forms in code through BCLib SDF
+operations. They do not consume the central-pillar templates. Keep their
+landmark-versus-terrain decision explicit; a terrain package name is not an
+exclusion rationale. No footprint experiment is needed to establish these paths.
+
+SpikeFeatureMixin selects every packaged pillar component: pillar_base_1 through
+4, pillar_top_1 through 4, and the four corresponding _cage tops. The index is
+radius minus one for radius 2 through 5. These twelve files are variants and
+components of the existing central End pillars, not additional independent
+families. EndSpikeMixin reads their persisted height state. EndPodiumFeatureMixin
+selects end_portal_active or end_portal_inactive according to portal state;
+those two templates are alternatives for the existing exit portal. Both template
+sets exist and decode successfully. This resolves fourteen component references.
+
+The related EndDragonFight hook changes existing portal/crystal respawn handling.
+EndCityFeatureMixin modifies the existing city's generation eligibility rather
+than introducing another city layout. EndPlatformFeatureMixin delegates platform
+creation to TerrainGenerator, which remains to be reconciled. Configuration
+binding and interaction with YUNG's End Island remain explicit downstream
+interpretation work within this census. Do not assume that a captured declared
+mixin wins over another provider or that a template request proves placement.
+
+Four focused cases, Ruff and Basedpyright pass using the commands above. The
+provider remains open: these are candidate and component resolutions, not whole
+BetterEnd closure. Overall provider coverage remains 53 resolved and 83 open.
