@@ -1,0 +1,620 @@
+Classfile FarmersDelight-1.21.1-1.3.2.jar!/vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.class
+  Last modified Apr 29, 2026; size 7772 bytes
+  SHA-256 checksum 88d2be287119ab1944d3ddd0ab523e85ca44de4e100798ed531692dbb714e4ab
+  Compiled from "AddFeaturesByFilterBiomeModifier.java"
+public final class vectorwing.farmersdelight.common.world.modifier.AddFeaturesByFilterBiomeModifier extends java.lang.Record implements net.neoforged.neoforge.common.world.BiomeModifier
+  minor version: 0
+  major version: 65
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #8                          // vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier
+  super_class: #2                         // java/lang/Record
+  interfaces: 1, fields: 6, methods: 13, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Record."<init>":()V
+    #2 = Class              #4            // java/lang/Record
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Record
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Fieldref           #8.#9         // vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.allowedBiomes:Lnet/minecraft/core/HolderSet;
+    #8 = Class              #10           // vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier
+    #9 = NameAndType        #11:#12       // allowedBiomes:Lnet/minecraft/core/HolderSet;
+   #10 = Utf8               vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier
+   #11 = Utf8               allowedBiomes
+   #12 = Utf8               Lnet/minecraft/core/HolderSet;
+   #13 = Fieldref           #8.#14        // vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.deniedBiomes:Ljava/util/Optional;
+   #14 = NameAndType        #15:#16       // deniedBiomes:Ljava/util/Optional;
+   #15 = Utf8               deniedBiomes
+   #16 = Utf8               Ljava/util/Optional;
+   #17 = Fieldref           #8.#18        // vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.minimumTemperature:Ljava/util/Optional;
+   #18 = NameAndType        #19:#16       // minimumTemperature:Ljava/util/Optional;
+   #19 = Utf8               minimumTemperature
+   #20 = Fieldref           #8.#21        // vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.maximumTemperature:Ljava/util/Optional;
+   #21 = NameAndType        #22:#16       // maximumTemperature:Ljava/util/Optional;
+   #22 = Utf8               maximumTemperature
+   #23 = Fieldref           #8.#24        // vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.features:Lnet/minecraft/core/HolderSet;
+   #24 = NameAndType        #25:#12       // features:Lnet/minecraft/core/HolderSet;
+   #25 = Utf8               features
+   #26 = Fieldref           #8.#27        // vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+   #27 = NameAndType        #28:#29       // step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+   #28 = Utf8               step
+   #29 = Utf8               Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+   #30 = Fieldref           #31.#32       // net/neoforged/neoforge/common/world/BiomeModifier$Phase.ADD:Lnet/neoforged/neoforge/common/world/BiomeModifier$Phase;
+   #31 = Class              #33           // net/neoforged/neoforge/common/world/BiomeModifier$Phase
+   #32 = NameAndType        #34:#35       // ADD:Lnet/neoforged/neoforge/common/world/BiomeModifier$Phase;
+   #33 = Utf8               net/neoforged/neoforge/common/world/BiomeModifier$Phase
+   #34 = Utf8               ADD
+   #35 = Utf8               Lnet/neoforged/neoforge/common/world/BiomeModifier$Phase;
+   #36 = InterfaceMethodref #37.#38       // net/minecraft/core/HolderSet.contains:(Lnet/minecraft/core/Holder;)Z
+   #37 = Class              #39           // net/minecraft/core/HolderSet
+   #38 = NameAndType        #40:#41       // contains:(Lnet/minecraft/core/Holder;)Z
+   #39 = Utf8               net/minecraft/core/HolderSet
+   #40 = Utf8               contains
+   #41 = Utf8               (Lnet/minecraft/core/Holder;)Z
+   #42 = Methodref          #43.#44       // java/util/Optional.isPresent:()Z
+   #43 = Class              #45           // java/util/Optional
+   #44 = NameAndType        #46:#47       // isPresent:()Z
+   #45 = Utf8               java/util/Optional
+   #46 = Utf8               isPresent
+   #47 = Utf8               ()Z
+   #48 = Methodref          #43.#49       // java/util/Optional.get:()Ljava/lang/Object;
+   #49 = NameAndType        #50:#51       // get:()Ljava/lang/Object;
+   #50 = Utf8               get
+   #51 = Utf8               ()Ljava/lang/Object;
+   #52 = InterfaceMethodref #53.#54       // net/minecraft/core/Holder.value:()Ljava/lang/Object;
+   #53 = Class              #55           // net/minecraft/core/Holder
+   #54 = NameAndType        #56:#51       // value:()Ljava/lang/Object;
+   #55 = Utf8               net/minecraft/core/Holder
+   #56 = Utf8               value
+   #57 = Class              #58           // net/minecraft/world/level/biome/Biome
+   #58 = Utf8               net/minecraft/world/level/biome/Biome
+   #59 = Methodref          #57.#60       // net/minecraft/world/level/biome/Biome.getBaseTemperature:()F
+   #60 = NameAndType        #61:#62       // getBaseTemperature:()F
+   #61 = Utf8               getBaseTemperature
+   #62 = Utf8               ()F
+   #63 = Class              #64           // java/lang/Float
+   #64 = Utf8               java/lang/Float
+   #65 = Methodref          #63.#66       // java/lang/Float.floatValue:()F
+   #66 = NameAndType        #67:#62       // floatValue:()F
+   #67 = Utf8               floatValue
+   #68 = Methodref          #69.#70       // net/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder.getGenerationSettings:()Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;
+   #69 = Class              #71           // net/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder
+   #70 = NameAndType        #72:#73       // getGenerationSettings:()Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;
+   #71 = Utf8               net/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder
+   #72 = Utf8               getGenerationSettings
+   #73 = Utf8               ()Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;
+   #74 = InvokeDynamic      #0:#75        // #0:accept:(Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;)Ljava/util/function/Consumer;
+   #75 = NameAndType        #76:#77       // accept:(Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;)Ljava/util/function/Consumer;
+   #76 = Utf8               accept
+   #77 = Utf8               (Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;)Ljava/util/function/Consumer;
+   #78 = InterfaceMethodref #37.#79       // net/minecraft/core/HolderSet.forEach:(Ljava/util/function/Consumer;)V
+   #79 = NameAndType        #80:#81       // forEach:(Ljava/util/function/Consumer;)V
+   #80 = Utf8               forEach
+   #81 = Utf8               (Ljava/util/function/Consumer;)V
+   #82 = Fieldref           #83.#84       // vectorwing/farmersdelight/common/registry/ModBiomeModifiers.ADD_FEATURES_BY_FILTER:Ljava/util/function/Supplier;
+   #83 = Class              #85           // vectorwing/farmersdelight/common/registry/ModBiomeModifiers
+   #84 = NameAndType        #86:#87       // ADD_FEATURES_BY_FILTER:Ljava/util/function/Supplier;
+   #85 = Utf8               vectorwing/farmersdelight/common/registry/ModBiomeModifiers
+   #86 = Utf8               ADD_FEATURES_BY_FILTER
+   #87 = Utf8               Ljava/util/function/Supplier;
+   #88 = InterfaceMethodref #89.#49       // java/util/function/Supplier.get:()Ljava/lang/Object;
+   #89 = Class              #90           // java/util/function/Supplier
+   #90 = Utf8               java/util/function/Supplier
+   #91 = Class              #92           // com/mojang/serialization/MapCodec
+   #92 = Utf8               com/mojang/serialization/MapCodec
+   #93 = Methodref          #94.#95       // net/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder.addFeature:(Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/biome/BiomeGenerationSettings$PlainBuilder;
+   #94 = Class              #96           // net/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder
+   #95 = NameAndType        #97:#98       // addFeature:(Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/biome/BiomeGenerationSettings$PlainBuilder;
+   #96 = Utf8               net/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder
+   #97 = Utf8               addFeature
+   #98 = Utf8               (Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/biome/BiomeGenerationSettings$PlainBuilder;
+   #99 = InvokeDynamic      #1:#100       // #1:toString:(Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;)Ljava/lang/String;
+  #100 = NameAndType        #101:#102     // toString:(Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;)Ljava/lang/String;
+  #101 = Utf8               toString
+  #102 = Utf8               (Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;)Ljava/lang/String;
+  #103 = InvokeDynamic      #1:#104       // #1:hashCode:(Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;)I
+  #104 = NameAndType        #105:#106     // hashCode:(Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;)I
+  #105 = Utf8               hashCode
+  #106 = Utf8               (Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;)I
+  #107 = InvokeDynamic      #1:#108       // #1:equals:(Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;Ljava/lang/Object;)Z
+  #108 = NameAndType        #109:#110     // equals:(Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;Ljava/lang/Object;)Z
+  #109 = Utf8               equals
+  #110 = Utf8               (Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;Ljava/lang/Object;)Z
+  #111 = Class              #112          // net/neoforged/neoforge/common/world/BiomeModifier
+  #112 = Utf8               net/neoforged/neoforge/common/world/BiomeModifier
+  #113 = Utf8               Signature
+  #114 = Utf8               Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/biome/Biome;>;
+  #115 = Utf8               Ljava/util/Optional<Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/biome/Biome;>;>;
+  #116 = Utf8               Ljava/util/Optional<Ljava/lang/Float;>;
+  #117 = Utf8               Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/levelgen/placement/PlacedFeature;>;
+  #118 = Utf8               (Lnet/minecraft/core/HolderSet;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/core/HolderSet;Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;)V
+  #119 = Utf8               Code
+  #120 = Utf8               LineNumberTable
+  #121 = Utf8               LocalVariableTable
+  #122 = Utf8               this
+  #123 = Utf8               Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;
+  #124 = Utf8               LocalVariableTypeTable
+  #125 = Utf8               MethodParameters
+  #126 = Utf8               (Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/biome/Biome;>;Ljava/util/Optional<Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/biome/Biome;>;>;Ljava/util/Optional<Ljava/lang/Float;>;Ljava/util/Optional<Ljava/lang/Float;>;Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/levelgen/placement/PlacedFeature;>;Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;)V
+  #127 = Utf8               modify
+  #128 = Utf8               (Lnet/minecraft/core/Holder;Lnet/neoforged/neoforge/common/world/BiomeModifier$Phase;Lnet/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder;)V
+  #129 = Utf8               generationSettings
+  #130 = Utf8               Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;
+  #131 = Utf8               biome
+  #132 = Utf8               Lnet/minecraft/core/Holder;
+  #133 = Utf8               phase
+  #134 = Utf8               builder
+  #135 = Utf8               Lnet/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder;
+  #136 = Utf8               Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;
+  #137 = Utf8               StackMapTable
+  #138 = Utf8               (Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;Lnet/neoforged/neoforge/common/world/BiomeModifier$Phase;Lnet/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder;)V
+  #139 = Utf8               codec
+  #140 = Utf8               ()Lcom/mojang/serialization/MapCodec;
+  #141 = Utf8               ()Lcom/mojang/serialization/MapCodec<+Lnet/neoforged/neoforge/common/world/BiomeModifier;>;
+  #142 = Utf8               ()Ljava/lang/String;
+  #143 = Utf8               ()I
+  #144 = Utf8               (Ljava/lang/Object;)Z
+  #145 = Utf8               o
+  #146 = Utf8               Ljava/lang/Object;
+  #147 = Utf8               ()Lnet/minecraft/core/HolderSet;
+  #148 = Utf8               ()Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/biome/Biome;>;
+  #149 = Utf8               ()Ljava/util/Optional;
+  #150 = Utf8               ()Ljava/util/Optional<Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/biome/Biome;>;>;
+  #151 = Utf8               ()Ljava/util/Optional<Ljava/lang/Float;>;
+  #152 = Utf8               ()Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/levelgen/placement/PlacedFeature;>;
+  #153 = Utf8               ()Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+  #154 = Utf8               lambda$modify$0
+  #155 = Utf8               (Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;Lnet/minecraft/core/Holder;)V
+  #156 = Utf8               holder
+  #157 = Utf8               SourceFile
+  #158 = Utf8               AddFeaturesByFilterBiomeModifier.java
+  #159 = Utf8               Record
+  #160 = Utf8               BootstrapMethods
+  #161 = MethodType         #162          //  (Ljava/lang/Object;)V
+  #162 = Utf8               (Ljava/lang/Object;)V
+  #163 = MethodHandle       5:#164        // REF_invokeVirtual vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.lambda$modify$0:(Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;Lnet/minecraft/core/Holder;)V
+  #164 = Methodref          #8.#165       // vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.lambda$modify$0:(Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;Lnet/minecraft/core/Holder;)V
+  #165 = NameAndType        #154:#155     // lambda$modify$0:(Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;Lnet/minecraft/core/Holder;)V
+  #166 = MethodType         #167          //  (Lnet/minecraft/core/Holder;)V
+  #167 = Utf8               (Lnet/minecraft/core/Holder;)V
+  #168 = String             #169          // allowedBiomes;deniedBiomes;minimumTemperature;maximumTemperature;features;step
+  #169 = Utf8               allowedBiomes;deniedBiomes;minimumTemperature;maximumTemperature;features;step
+  #170 = MethodHandle       1:#7          // REF_getField vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.allowedBiomes:Lnet/minecraft/core/HolderSet;
+  #171 = MethodHandle       1:#13         // REF_getField vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.deniedBiomes:Ljava/util/Optional;
+  #172 = MethodHandle       1:#17         // REF_getField vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.minimumTemperature:Ljava/util/Optional;
+  #173 = MethodHandle       1:#20         // REF_getField vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.maximumTemperature:Ljava/util/Optional;
+  #174 = MethodHandle       1:#23         // REF_getField vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.features:Lnet/minecraft/core/HolderSet;
+  #175 = MethodHandle       1:#26         // REF_getField vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+  #176 = MethodHandle       6:#177        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #177 = Methodref          #178.#179     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #178 = Class              #180          // java/lang/invoke/LambdaMetafactory
+  #179 = NameAndType        #181:#182     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #180 = Utf8               java/lang/invoke/LambdaMetafactory
+  #181 = Utf8               metafactory
+  #182 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #183 = MethodHandle       6:#184        // REF_invokeStatic java/lang/runtime/ObjectMethods.bootstrap:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object;
+  #184 = Methodref          #185.#186     // java/lang/runtime/ObjectMethods.bootstrap:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object;
+  #185 = Class              #187          // java/lang/runtime/ObjectMethods
+  #186 = NameAndType        #188:#189     // bootstrap:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object;
+  #187 = Utf8               java/lang/runtime/ObjectMethods
+  #188 = Utf8               bootstrap
+  #189 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object;
+  #190 = Utf8               InnerClasses
+  #191 = Class              #192          // net/minecraft/world/level/levelgen/GenerationStep$Decoration
+  #192 = Utf8               net/minecraft/world/level/levelgen/GenerationStep$Decoration
+  #193 = Class              #194          // net/minecraft/world/level/levelgen/GenerationStep
+  #194 = Utf8               net/minecraft/world/level/levelgen/GenerationStep
+  #195 = Utf8               Decoration
+  #196 = Utf8               Phase
+  #197 = Class              #198          // net/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo
+  #198 = Utf8               net/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo
+  #199 = Class              #200          // net/neoforged/neoforge/common/world/ModifiableBiomeInfo
+  #200 = Utf8               net/neoforged/neoforge/common/world/ModifiableBiomeInfo
+  #201 = Utf8               BiomeInfo
+  #202 = Utf8               Builder
+  #203 = Class              #204          // net/minecraft/world/level/biome/BiomeGenerationSettings$PlainBuilder
+  #204 = Utf8               net/minecraft/world/level/biome/BiomeGenerationSettings$PlainBuilder
+  #205 = Class              #206          // net/minecraft/world/level/biome/BiomeGenerationSettings
+  #206 = Utf8               net/minecraft/world/level/biome/BiomeGenerationSettings
+  #207 = Utf8               PlainBuilder
+  #208 = Class              #209          // java/lang/invoke/MethodHandles$Lookup
+  #209 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #210 = Class              #211          // java/lang/invoke/MethodHandles
+  #211 = Utf8               java/lang/invoke/MethodHandles
+  #212 = Utf8               Lookup
+{
+  private final net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome> allowedBiomes;
+    descriptor: Lnet/minecraft/core/HolderSet;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #114                         // Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/biome/Biome;>;
+
+  private final java.util.Optional<net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome>> deniedBiomes;
+    descriptor: Ljava/util/Optional;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #115                         // Ljava/util/Optional<Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/biome/Biome;>;>;
+
+  private final java.util.Optional<java.lang.Float> minimumTemperature;
+    descriptor: Ljava/util/Optional;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #116                         // Ljava/util/Optional<Ljava/lang/Float;>;
+
+  private final java.util.Optional<java.lang.Float> maximumTemperature;
+    descriptor: Ljava/util/Optional;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #116                         // Ljava/util/Optional<Ljava/lang/Float;>;
+
+  private final net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.placement.PlacedFeature> features;
+    descriptor: Lnet/minecraft/core/HolderSet;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #117                         // Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/levelgen/placement/PlacedFeature;>;
+
+  private final net.minecraft.world.level.levelgen.GenerationStep$Decoration step;
+    descriptor: Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  public vectorwing.farmersdelight.common.world.modifier.AddFeaturesByFilterBiomeModifier(net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome>, java.util.Optional<net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome>>, java.util.Optional<java.lang.Float>, java.util.Optional<java.lang.Float>, net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.placement.PlacedFeature>, net.minecraft.world.level.levelgen.GenerationStep$Decoration);
+    descriptor: (Lnet/minecraft/core/HolderSet;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;Lnet/minecraft/core/HolderSet;Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=7, args_size=7
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Record."<init>":()V
+         4: aload_0
+         5: aload_1
+         6: putfield      #7                  // Field allowedBiomes:Lnet/minecraft/core/HolderSet;
+         9: aload_0
+        10: aload_2
+        11: putfield      #13                 // Field deniedBiomes:Ljava/util/Optional;
+        14: aload_0
+        15: aload_3
+        16: putfield      #17                 // Field minimumTemperature:Ljava/util/Optional;
+        19: aload_0
+        20: aload         4
+        22: putfield      #20                 // Field maximumTemperature:Ljava/util/Optional;
+        25: aload_0
+        26: aload         5
+        28: putfield      #23                 // Field features:Lnet/minecraft/core/HolderSet;
+        31: aload_0
+        32: aload         6
+        34: putfield      #26                 // Field step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+        37: return
+      LineNumberTable:
+        line 16: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      38     0  this   Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;
+            0      38     1 allowedBiomes   Lnet/minecraft/core/HolderSet;
+            0      38     2 deniedBiomes   Ljava/util/Optional;
+            0      38     3 minimumTemperature   Ljava/util/Optional;
+            0      38     4 maximumTemperature   Ljava/util/Optional;
+            0      38     5 features   Lnet/minecraft/core/HolderSet;
+            0      38     6  step   Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      38     1 allowedBiomes   Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/biome/Biome;>;
+            0      38     2 deniedBiomes   Ljava/util/Optional<Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/biome/Biome;>;>;
+            0      38     3 minimumTemperature   Ljava/util/Optional<Ljava/lang/Float;>;
+            0      38     4 maximumTemperature   Ljava/util/Optional<Ljava/lang/Float;>;
+            0      38     5 features   Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/levelgen/placement/PlacedFeature;>;
+    MethodParameters:
+      Name                           Flags
+      allowedBiomes
+      deniedBiomes
+      minimumTemperature
+      maximumTemperature
+      features
+      step
+    Signature: #126                         // (Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/biome/Biome;>;Ljava/util/Optional<Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/biome/Biome;>;>;Ljava/util/Optional<Ljava/lang/Float;>;Ljava/util/Optional<Ljava/lang/Float;>;Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/levelgen/placement/PlacedFeature;>;Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;)V
+
+  public void modify(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>, net.neoforged.neoforge.common.world.BiomeModifier$Phase, net.neoforged.neoforge.common.world.ModifiableBiomeInfo$BiomeInfo$Builder);
+    descriptor: (Lnet/minecraft/core/Holder;Lnet/neoforged/neoforge/common/world/BiomeModifier$Phase;Lnet/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=5, args_size=4
+         0: aload_2
+         1: getstatic     #30                 // Field net/neoforged/neoforge/common/world/BiomeModifier$Phase.ADD:Lnet/neoforged/neoforge/common/world/BiomeModifier$Phase;
+         4: if_acmpne     153
+         7: aload_0
+         8: getfield      #7                  // Field allowedBiomes:Lnet/minecraft/core/HolderSet;
+        11: aload_1
+        12: invokeinterface #36,  2           // InterfaceMethod net/minecraft/core/HolderSet.contains:(Lnet/minecraft/core/Holder;)Z
+        17: ifeq          153
+        20: aload_0
+        21: getfield      #13                 // Field deniedBiomes:Ljava/util/Optional;
+        24: invokevirtual #42                 // Method java/util/Optional.isPresent:()Z
+        27: ifeq          50
+        30: aload_0
+        31: getfield      #13                 // Field deniedBiomes:Ljava/util/Optional;
+        34: invokevirtual #48                 // Method java/util/Optional.get:()Ljava/lang/Object;
+        37: checkcast     #37                 // class net/minecraft/core/HolderSet
+        40: aload_1
+        41: invokeinterface #36,  2           // InterfaceMethod net/minecraft/core/HolderSet.contains:(Lnet/minecraft/core/Holder;)Z
+        46: ifeq          50
+        49: return
+        50: aload_0
+        51: getfield      #17                 // Field minimumTemperature:Ljava/util/Optional;
+        54: invokevirtual #42                 // Method java/util/Optional.isPresent:()Z
+        57: ifeq          90
+        60: aload_1
+        61: invokeinterface #52,  1           // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+        66: checkcast     #57                 // class net/minecraft/world/level/biome/Biome
+        69: invokevirtual #59                 // Method net/minecraft/world/level/biome/Biome.getBaseTemperature:()F
+        72: aload_0
+        73: getfield      #17                 // Field minimumTemperature:Ljava/util/Optional;
+        76: invokevirtual #48                 // Method java/util/Optional.get:()Ljava/lang/Object;
+        79: checkcast     #63                 // class java/lang/Float
+        82: invokevirtual #65                 // Method java/lang/Float.floatValue:()F
+        85: fcmpg
+        86: ifge          90
+        89: return
+        90: aload_0
+        91: getfield      #20                 // Field maximumTemperature:Ljava/util/Optional;
+        94: invokevirtual #42                 // Method java/util/Optional.isPresent:()Z
+        97: ifeq          130
+       100: aload_1
+       101: invokeinterface #52,  1           // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+       106: checkcast     #57                 // class net/minecraft/world/level/biome/Biome
+       109: invokevirtual #59                 // Method net/minecraft/world/level/biome/Biome.getBaseTemperature:()F
+       112: aload_0
+       113: getfield      #20                 // Field maximumTemperature:Ljava/util/Optional;
+       116: invokevirtual #48                 // Method java/util/Optional.get:()Ljava/lang/Object;
+       119: checkcast     #63                 // class java/lang/Float
+       122: invokevirtual #65                 // Method java/lang/Float.floatValue:()F
+       125: fcmpl
+       126: ifle          130
+       129: return
+       130: aload_3
+       131: invokevirtual #68                 // Method net/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder.getGenerationSettings:()Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;
+       134: astore        4
+       136: aload_0
+       137: getfield      #23                 // Field features:Lnet/minecraft/core/HolderSet;
+       140: aload_0
+       141: aload         4
+       143: invokedynamic #74,  0             // InvokeDynamic #0:accept:(Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;)Ljava/util/function/Consumer;
+       148: invokeinterface #78,  2           // InterfaceMethod net/minecraft/core/HolderSet.forEach:(Ljava/util/function/Consumer;)V
+       153: return
+      LineNumberTable:
+        line 28: 0
+        line 29: 20
+        line 30: 49
+        line 32: 50
+        line 33: 89
+        line 35: 90
+        line 36: 129
+        line 38: 130
+        line 39: 136
+        line 41: 153
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          136      17     4 generationSettings   Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;
+            0     154     0  this   Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;
+            0     154     1 biome   Lnet/minecraft/core/Holder;
+            0     154     2 phase   Lnet/neoforged/neoforge/common/world/BiomeModifier$Phase;
+            0     154     3 builder   Lnet/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0     154     1 biome   Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;
+      StackMapTable: number_of_entries = 4
+        frame_type = 50 /* same */
+        frame_type = 39 /* same */
+        frame_type = 39 /* same */
+        frame_type = 22 /* same */
+    Signature: #138                         // (Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;Lnet/neoforged/neoforge/common/world/BiomeModifier$Phase;Lnet/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder;)V
+
+  public com.mojang.serialization.MapCodec<? extends net.neoforged.neoforge.common.world.BiomeModifier> codec();
+    descriptor: ()Lcom/mojang/serialization/MapCodec;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: getstatic     #82                 // Field vectorwing/farmersdelight/common/registry/ModBiomeModifiers.ADD_FEATURES_BY_FILTER:Ljava/util/function/Supplier;
+         3: invokeinterface #88,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+         8: checkcast     #91                 // class com/mojang/serialization/MapCodec
+        11: areturn
+      LineNumberTable:
+        line 45: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0  this   Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;
+    Signature: #141                         // ()Lcom/mojang/serialization/MapCodec<+Lnet/neoforged/neoforge/common/world/BiomeModifier;>;
+
+  public final java.lang.String toString();
+    descriptor: ()Ljava/lang/String;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokedynamic #99,  0             // InvokeDynamic #1:toString:(Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;)Ljava/lang/String;
+         6: areturn
+      LineNumberTable:
+        line 16: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       7     0  this   Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;
+
+  public final int hashCode();
+    descriptor: ()I
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokedynamic #103,  0            // InvokeDynamic #1:hashCode:(Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;)I
+         6: ireturn
+      LineNumberTable:
+        line 16: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       7     0  this   Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;
+
+  public final boolean equals(java.lang.Object);
+    descriptor: (Ljava/lang/Object;)Z
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokedynamic #107,  0            // InvokeDynamic #1:equals:(Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;Ljava/lang/Object;)Z
+         7: ireturn
+      LineNumberTable:
+        line 16: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;
+            0       8     1     o   Ljava/lang/Object;
+
+  public net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome> allowedBiomes();
+    descriptor: ()Lnet/minecraft/core/HolderSet;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #7                  // Field allowedBiomes:Lnet/minecraft/core/HolderSet;
+         4: areturn
+      LineNumberTable:
+        line 16: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;
+    Signature: #148                         // ()Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/biome/Biome;>;
+
+  public java.util.Optional<net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome>> deniedBiomes();
+    descriptor: ()Ljava/util/Optional;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #13                 // Field deniedBiomes:Ljava/util/Optional;
+         4: areturn
+      LineNumberTable:
+        line 16: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;
+    Signature: #150                         // ()Ljava/util/Optional<Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/biome/Biome;>;>;
+
+  public java.util.Optional<java.lang.Float> minimumTemperature();
+    descriptor: ()Ljava/util/Optional;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #17                 // Field minimumTemperature:Ljava/util/Optional;
+         4: areturn
+      LineNumberTable:
+        line 16: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;
+    Signature: #151                         // ()Ljava/util/Optional<Ljava/lang/Float;>;
+
+  public java.util.Optional<java.lang.Float> maximumTemperature();
+    descriptor: ()Ljava/util/Optional;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #20                 // Field maximumTemperature:Ljava/util/Optional;
+         4: areturn
+      LineNumberTable:
+        line 16: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;
+    Signature: #151                         // ()Ljava/util/Optional<Ljava/lang/Float;>;
+
+  public net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.placement.PlacedFeature> features();
+    descriptor: ()Lnet/minecraft/core/HolderSet;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #23                 // Field features:Lnet/minecraft/core/HolderSet;
+         4: areturn
+      LineNumberTable:
+        line 16: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;
+    Signature: #152                         // ()Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/levelgen/placement/PlacedFeature;>;
+
+  public net.minecraft.world.level.levelgen.GenerationStep$Decoration step();
+    descriptor: ()Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #26                 // Field step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+         4: areturn
+      LineNumberTable:
+        line 16: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;
+
+  private void lambda$modify$0(net.neoforged.neoforge.common.world.BiomeGenerationSettingsBuilder, net.minecraft.core.Holder);
+    descriptor: (Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;Lnet/minecraft/core/Holder;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_1
+         1: aload_0
+         2: getfield      #26                 // Field step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+         5: aload_2
+         6: invokevirtual #93                 // Method net/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder.addFeature:(Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/biome/BiomeGenerationSettings$PlainBuilder;
+         9: pop
+        10: return
+      LineNumberTable:
+        line 39: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lvectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier;
+            0      11     1 generationSettings   Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;
+            0      11     2 holder   Lnet/minecraft/core/Holder;
+}
+SourceFile: "AddFeaturesByFilterBiomeModifier.java"
+Record:
+  net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome> allowedBiomes;
+    descriptor: Lnet/minecraft/core/HolderSet;
+    Signature: #114                         // Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/biome/Biome;>;
+
+  java.util.Optional<net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome>> deniedBiomes;
+    descriptor: Ljava/util/Optional;
+    Signature: #115                         // Ljava/util/Optional<Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/biome/Biome;>;>;
+
+  java.util.Optional<java.lang.Float> minimumTemperature;
+    descriptor: Ljava/util/Optional;
+    Signature: #116                         // Ljava/util/Optional<Ljava/lang/Float;>;
+
+  java.util.Optional<java.lang.Float> maximumTemperature;
+    descriptor: Ljava/util/Optional;
+    Signature: #116                         // Ljava/util/Optional<Ljava/lang/Float;>;
+
+  net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.placement.PlacedFeature> features;
+    descriptor: Lnet/minecraft/core/HolderSet;
+    Signature: #117                         // Lnet/minecraft/core/HolderSet<Lnet/minecraft/world/level/levelgen/placement/PlacedFeature;>;
+
+  net.minecraft.world.level.levelgen.GenerationStep$Decoration step;
+    descriptor: Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+
+BootstrapMethods:
+  0: #176 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #161 (Ljava/lang/Object;)V
+      #163 REF_invokeVirtual vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.lambda$modify$0:(Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;Lnet/minecraft/core/Holder;)V
+      #166 (Lnet/minecraft/core/Holder;)V
+  1: #183 REF_invokeStatic java/lang/runtime/ObjectMethods.bootstrap:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object;
+    Method arguments:
+      #8 vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier
+      #168 allowedBiomes;deniedBiomes;minimumTemperature;maximumTemperature;features;step
+      #170 REF_getField vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.allowedBiomes:Lnet/minecraft/core/HolderSet;
+      #171 REF_getField vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.deniedBiomes:Ljava/util/Optional;
+      #172 REF_getField vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.minimumTemperature:Ljava/util/Optional;
+      #173 REF_getField vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.maximumTemperature:Ljava/util/Optional;
+      #174 REF_getField vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.features:Lnet/minecraft/core/HolderSet;
+      #175 REF_getField vectorwing/farmersdelight/common/world/modifier/AddFeaturesByFilterBiomeModifier.step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+InnerClasses:
+  public static final #195= #191 of #193; // Decoration=class net/minecraft/world/level/levelgen/GenerationStep$Decoration of class net/minecraft/world/level/levelgen/GenerationStep
+  public static final #196= #31 of #111;  // Phase=class net/neoforged/neoforge/common/world/BiomeModifier$Phase of class net/neoforged/neoforge/common/world/BiomeModifier
+  public static final #201= #197 of #199; // BiomeInfo=class net/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo of class net/neoforged/neoforge/common/world/ModifiableBiomeInfo
+  public static #202= #69 of #197;        // Builder=class net/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder of class net/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo
+  public static #207= #203 of #205;       // PlainBuilder=class net/minecraft/world/level/biome/BiomeGenerationSettings$PlainBuilder of class net/minecraft/world/level/biome/BiomeGenerationSettings
+  public static final #212= #208 of #210; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
