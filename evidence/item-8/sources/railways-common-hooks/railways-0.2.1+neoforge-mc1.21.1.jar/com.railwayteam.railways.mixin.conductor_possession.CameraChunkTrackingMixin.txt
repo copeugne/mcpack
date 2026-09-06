@@ -1,0 +1,240 @@
+Classfile railways-0.2.1+neoforge-mc1.21.1.jar!/com/railwayteam/railways/mixin/conductor_possession/CameraChunkTrackingMixin.class
+  Last modified Jun 1, 2026; size 2704 bytes
+  SHA-256 checksum 2f425ccb35575829cc947740b6f89a6589a66449ecd0124008853ce6d2adaf0a
+  Compiled from "CameraChunkTrackingMixin.java"
+public abstract class com.railwayteam.railways.mixin.conductor_possession.CameraChunkTrackingMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #26                         // com/railwayteam/railways/mixin/conductor_possession/CameraChunkTrackingMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 4, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // com/railwayteam/railways/content/conductor/ConductorPossessionController.isPossessingConductor:(Lnet/minecraft/world/entity/Entity;)Z
+    #8 = Class              #10           // com/railwayteam/railways/content/conductor/ConductorPossessionController
+    #9 = NameAndType        #11:#12       // isPossessingConductor:(Lnet/minecraft/world/entity/Entity;)Z
+   #10 = Utf8               com/railwayteam/railways/content/conductor/ConductorPossessionController
+   #11 = Utf8               isPossessingConductor
+   #12 = Utf8               (Lnet/minecraft/world/entity/Entity;)Z
+   #13 = Methodref          #14.#15       // net/minecraft/server/level/ServerPlayer.getCamera:()Lnet/minecraft/world/entity/Entity;
+   #14 = Class              #16           // net/minecraft/server/level/ServerPlayer
+   #15 = NameAndType        #17:#18       // getCamera:()Lnet/minecraft/world/entity/Entity;
+   #16 = Utf8               net/minecraft/server/level/ServerPlayer
+   #17 = Utf8               getCamera
+   #18 = Utf8               ()Lnet/minecraft/world/entity/Entity;
+   #19 = Methodref          #20.#21       // net/minecraft/world/entity/Entity.chunkPosition:()Lnet/minecraft/world/level/ChunkPos;
+   #20 = Class              #22           // net/minecraft/world/entity/Entity
+   #21 = NameAndType        #23:#24       // chunkPosition:()Lnet/minecraft/world/level/ChunkPos;
+   #22 = Utf8               net/minecraft/world/entity/Entity
+   #23 = Utf8               chunkPosition
+   #24 = Utf8               ()Lnet/minecraft/world/level/ChunkPos;
+   #25 = Methodref          #26.#27       // com/railwayteam/railways/mixin/conductor_possession/CameraChunkTrackingMixin.getPlayerViewDistance:(Lnet/minecraft/server/level/ServerPlayer;)I
+   #26 = Class              #28           // com/railwayteam/railways/mixin/conductor_possession/CameraChunkTrackingMixin
+   #27 = NameAndType        #29:#30       // getPlayerViewDistance:(Lnet/minecraft/server/level/ServerPlayer;)I
+   #28 = Utf8               com/railwayteam/railways/mixin/conductor_possession/CameraChunkTrackingMixin
+   #29 = Utf8               getPlayerViewDistance
+   #30 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;)I
+   #31 = Methodref          #14.#32       // net/minecraft/server/level/ServerPlayer.getChunkTrackingView:()Lnet/minecraft/server/level/ChunkTrackingView;
+   #32 = NameAndType        #33:#34       // getChunkTrackingView:()Lnet/minecraft/server/level/ChunkTrackingView;
+   #33 = Utf8               getChunkTrackingView
+   #34 = Utf8               ()Lnet/minecraft/server/level/ChunkTrackingView;
+   #35 = Class              #36           // net/minecraft/server/level/ChunkTrackingView$Positioned
+   #36 = Utf8               net/minecraft/server/level/ChunkTrackingView$Positioned
+   #37 = Methodref          #35.#38       // net/minecraft/server/level/ChunkTrackingView$Positioned.center:()Lnet/minecraft/world/level/ChunkPos;
+   #38 = NameAndType        #39:#24       // center:()Lnet/minecraft/world/level/ChunkPos;
+   #39 = Utf8               center
+   #40 = Methodref          #41.#42       // net/minecraft/world/level/ChunkPos.equals:(Ljava/lang/Object;)Z
+   #41 = Class              #43           // net/minecraft/world/level/ChunkPos
+   #42 = NameAndType        #44:#45       // equals:(Ljava/lang/Object;)Z
+   #43 = Utf8               net/minecraft/world/level/ChunkPos
+   #44 = Utf8               equals
+   #45 = Utf8               (Ljava/lang/Object;)Z
+   #46 = Methodref          #35.#47       // net/minecraft/server/level/ChunkTrackingView$Positioned.viewDistance:()I
+   #47 = NameAndType        #48:#49       // viewDistance:()I
+   #48 = Utf8               viewDistance
+   #49 = Utf8               ()I
+   #50 = InterfaceMethodref #51.#52       // net/minecraft/server/level/ChunkTrackingView.of:(Lnet/minecraft/world/level/ChunkPos;I)Lnet/minecraft/server/level/ChunkTrackingView;
+   #51 = Class              #53           // net/minecraft/server/level/ChunkTrackingView
+   #52 = NameAndType        #54:#55       // of:(Lnet/minecraft/world/level/ChunkPos;I)Lnet/minecraft/server/level/ChunkTrackingView;
+   #53 = Utf8               net/minecraft/server/level/ChunkTrackingView
+   #54 = Utf8               of
+   #55 = Utf8               (Lnet/minecraft/world/level/ChunkPos;I)Lnet/minecraft/server/level/ChunkTrackingView;
+   #56 = Methodref          #26.#57       // com/railwayteam/railways/mixin/conductor_possession/CameraChunkTrackingMixin.applyChunkTrackingView:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/server/level/ChunkTrackingView;)V
+   #57 = NameAndType        #58:#59       // applyChunkTrackingView:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/server/level/ChunkTrackingView;)V
+   #58 = Utf8               applyChunkTrackingView
+   #59 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/server/level/ChunkTrackingView;)V
+   #60 = Methodref          #61.#62       // org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+   #61 = Class              #63           // org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+   #62 = NameAndType        #64:#6        // cancel:()V
+   #63 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+   #64 = Utf8               cancel
+   #65 = Utf8               Code
+   #66 = Utf8               LineNumberTable
+   #67 = Utf8               LocalVariableTable
+   #68 = Utf8               this
+   #69 = Utf8               Lcom/railwayteam/railways/mixin/conductor_possession/CameraChunkTrackingMixin;
+   #70 = Utf8               RuntimeVisibleAnnotations
+   #71 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #72 = Utf8               railways$redirectToCamera
+   #73 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+   #74 = Utf8               positioned
+   #75 = Utf8               Lnet/minecraft/server/level/ChunkTrackingView$Positioned;
+   #76 = Utf8               camera
+   #77 = Utf8               Lnet/minecraft/world/entity/Entity;
+   #78 = Utf8               cameraChunk
+   #79 = Utf8               Lnet/minecraft/world/level/ChunkPos;
+   #80 = Utf8               dist
+   #81 = Utf8               I
+   #82 = Utf8               player
+   #83 = Utf8               Lnet/minecraft/server/level/ServerPlayer;
+   #84 = Utf8               ci
+   #85 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+   #86 = Utf8               StackMapTable
+   #87 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #88 = Utf8               method
+   #89 = Utf8               updateChunkTracking
+   #90 = Utf8               at
+   #91 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #92 = Utf8               value
+   #93 = Utf8               HEAD
+   #94 = Utf8               cancellable
+   #95 = Integer            1
+   #96 = Utf8               SourceFile
+   #97 = Utf8               CameraChunkTrackingMixin.java
+   #98 = Utf8               RuntimeInvisibleAnnotations
+   #99 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #100 = Utf8               Lnet/minecraft/server/level/ChunkMap;
+  #101 = Utf8               InnerClasses
+  #102 = Utf8               Positioned
+{
+  public com.railwayteam.railways.mixin.conductor_possession.CameraChunkTrackingMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 35: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/railwayteam/railways/mixin/conductor_possession/CameraChunkTrackingMixin;
+
+  protected abstract int getPlayerViewDistance(net.minecraft.server.level.ServerPlayer);
+    descriptor: (Lnet/minecraft/server/level/ServerPlayer;)I
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #71()
+        org.spongepowered.asm.mixin.Shadow
+
+  protected abstract void applyChunkTrackingView(net.minecraft.server.level.ServerPlayer, net.minecraft.server.level.ChunkTrackingView);
+    descriptor: (Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/server/level/ChunkTrackingView;)V
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #71()
+        org.spongepowered.asm.mixin.Shadow
+
+  private void railways$redirectToCamera(net.minecraft.server.level.ServerPlayer, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/server/level/ServerPlayer;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=8, args_size=3
+         0: aload_1
+         1: invokestatic  #7                  // Method com/railwayteam/railways/content/conductor/ConductorPossessionController.isPossessingConductor:(Lnet/minecraft/world/entity/Entity;)Z
+         4: ifeq          90
+         7: aload_1
+         8: invokevirtual #13                 // Method net/minecraft/server/level/ServerPlayer.getCamera:()Lnet/minecraft/world/entity/Entity;
+        11: astore_3
+        12: aload_3
+        13: ifnonnull     17
+        16: return
+        17: aload_3
+        18: invokevirtual #19                 // Method net/minecraft/world/entity/Entity.chunkPosition:()Lnet/minecraft/world/level/ChunkPos;
+        21: astore        4
+        23: aload_0
+        24: aload_1
+        25: invokevirtual #25                 // Method getPlayerViewDistance:(Lnet/minecraft/server/level/ServerPlayer;)I
+        28: istore        5
+        30: aload_1
+        31: invokevirtual #31                 // Method net/minecraft/server/level/ServerPlayer.getChunkTrackingView:()Lnet/minecraft/server/level/ChunkTrackingView;
+        34: astore        7
+        36: aload         7
+        38: instanceof    #35                 // class net/minecraft/server/level/ChunkTrackingView$Positioned
+        41: ifeq          74
+        44: aload         7
+        46: checkcast     #35                 // class net/minecraft/server/level/ChunkTrackingView$Positioned
+        49: astore        6
+        51: aload         6
+        53: invokevirtual #37                 // Method net/minecraft/server/level/ChunkTrackingView$Positioned.center:()Lnet/minecraft/world/level/ChunkPos;
+        56: aload         4
+        58: invokevirtual #40                 // Method net/minecraft/world/level/ChunkPos.equals:(Ljava/lang/Object;)Z
+        61: ifeq          74
+        64: aload         6
+        66: invokevirtual #46                 // Method net/minecraft/server/level/ChunkTrackingView$Positioned.viewDistance:()I
+        69: iload         5
+        71: if_icmpeq     86
+        74: aload_0
+        75: aload_1
+        76: aload         4
+        78: iload         5
+        80: invokestatic  #50                 // InterfaceMethod net/minecraft/server/level/ChunkTrackingView.of:(Lnet/minecraft/world/level/ChunkPos;I)Lnet/minecraft/server/level/ChunkTrackingView;
+        83: invokevirtual #56                 // Method applyChunkTrackingView:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/server/level/ChunkTrackingView;)V
+        86: aload_2
+        87: invokevirtual #60                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+        90: return
+      LineNumberTable:
+        line 45: 0
+        line 47: 7
+        line 48: 12
+        line 49: 17
+        line 50: 23
+        line 53: 30
+        line 54: 53
+        line 55: 66
+        line 56: 74
+        line 58: 86
+        line 60: 90
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           51      23     6 positioned   Lnet/minecraft/server/level/ChunkTrackingView$Positioned;
+           12      78     3 camera   Lnet/minecraft/world/entity/Entity;
+           23      67     4 cameraChunk   Lnet/minecraft/world/level/ChunkPos;
+           30      60     5  dist   I
+            0      91     0  this   Lcom/railwayteam/railways/mixin/conductor_possession/CameraChunkTrackingMixin;
+            0      91     1 player   Lnet/minecraft/server/level/ServerPlayer;
+            0      91     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 4
+        frame_type = 252 /* append */
+          offset_delta = 17
+          locals = [ class net/minecraft/world/entity/Entity ]
+        frame_type = 253 /* append */
+          offset_delta = 56
+          locals = [ class net/minecraft/world/level/ChunkPos, int ]
+        frame_type = 11 /* same */
+        frame_type = 248 /* chop */
+          offset_delta = 3
+    RuntimeVisibleAnnotations:
+      0: #87(#88=[s#89],#90=[@#91(#92=s#93)],#94=Z#95)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["updateChunkTracking"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          cancellable=true
+        )
+}
+SourceFile: "CameraChunkTrackingMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #99(#92=[c#100])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ChunkMap;]
+    )
+InnerClasses:
+  public static final #102= #35 of #51;   // Positioned=class net/minecraft/server/level/ChunkTrackingView$Positioned of class net/minecraft/server/level/ChunkTrackingView

@@ -1,0 +1,244 @@
+Classfile railways-0.2.1+neoforge-mc1.21.1.jar!/com/railwayteam/railways/mixin/MixinEdgeData.class
+  Last modified Jun 1, 2026; size 1543 bytes
+  SHA-256 checksum 0214cc663db0c7791f8007ec9654aa6c40f4bf226ab4a486880eba5988fb3f67
+  Compiled from "MixinEdgeData.java"
+public class com.railwayteam.railways.mixin.MixinEdgeData implements com.railwayteam.railways.mixin_interfaces.ISwitchDisabledEdge
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // com/railwayteam/railways/mixin/MixinEdgeData
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 3, methods: 9, attributes: 2
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Fieldref           #8.#9          // com/railwayteam/railways/mixin/MixinEdgeData.enabled:Z
+   #8 = Class              #10            // com/railwayteam/railways/mixin/MixinEdgeData
+   #9 = NameAndType        #11:#12        // enabled:Z
+  #10 = Utf8               com/railwayteam/railways/mixin/MixinEdgeData
+  #11 = Utf8               enabled
+  #12 = Utf8               Z
+  #13 = Fieldref           #8.#14         // com/railwayteam/railways/mixin/MixinEdgeData.automatic:Z
+  #14 = NameAndType        #15:#12        // automatic:Z
+  #15 = Utf8               automatic
+  #16 = Fieldref           #8.#17         // com/railwayteam/railways/mixin/MixinEdgeData.selectPriority:I
+  #17 = NameAndType        #18:#19        // selectPriority:I
+  #18 = Utf8               selectPriority
+  #19 = Utf8               I
+  #20 = Methodref          #21.#22        // com/railwayteam/railways/content/switches/TrackSwitch.getSelectionPriority:()I
+  #21 = Class              #23            // com/railwayteam/railways/content/switches/TrackSwitch
+  #22 = NameAndType        #24:#25        // getSelectionPriority:()I
+  #23 = Utf8               com/railwayteam/railways/content/switches/TrackSwitch
+  #24 = Utf8               getSelectionPriority
+  #25 = Utf8               ()I
+  #26 = Class              #27            // com/railwayteam/railways/mixin_interfaces/ISwitchDisabledEdge
+  #27 = Utf8               com/railwayteam/railways/mixin_interfaces/ISwitchDisabledEdge
+  #28 = Utf8               Code
+  #29 = Utf8               LineNumberTable
+  #30 = Utf8               LocalVariableTable
+  #31 = Utf8               this
+  #32 = Utf8               Lcom/railwayteam/railways/mixin/MixinEdgeData;
+  #33 = Utf8               setEnabled
+  #34 = Utf8               (Z)V
+  #35 = Utf8               isEnabled
+  #36 = Utf8               ()Z
+  #37 = Utf8               setAutomatic
+  #38 = Utf8               isAutomatic
+  #39 = Utf8               setAutomaticallySelected
+  #40 = Utf8               getAutomaticallySelectedPriority
+  #41 = Utf8               isAutomaticallySelected
+  #42 = Utf8               StackMapTable
+  #43 = Utf8               ackAutomaticSelection
+  #44 = Utf8               SourceFile
+  #45 = Utf8               MixinEdgeData.java
+  #46 = Utf8               RuntimeInvisibleAnnotations
+  #47 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #48 = Utf8               value
+  #49 = Utf8               Lcom/simibubi/create/content/trains/graph/EdgeData;
+  #50 = Utf8               remap
+  #51 = Integer            0
+{
+  private boolean enabled;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+
+  private boolean automatic;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+
+  private int selectPriority;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+
+  public com.railwayteam.railways.mixin.MixinEdgeData();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iconst_1
+         6: putfield      #7                  // Field enabled:Z
+         9: aload_0
+        10: iconst_0
+        11: putfield      #13                 // Field automatic:Z
+        14: aload_0
+        15: iconst_m1
+        16: putfield      #16                 // Field selectPriority:I
+        19: return
+      LineNumberTable:
+        line 27: 0
+        line 28: 4
+        line 29: 9
+        line 30: 14
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      20     0  this   Lcom/railwayteam/railways/mixin/MixinEdgeData;
+
+  public void setEnabled(boolean);
+    descriptor: (Z)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: iload_1
+         2: putfield      #7                  // Field enabled:Z
+         5: return
+      LineNumberTable:
+        line 34: 0
+        line 35: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/railwayteam/railways/mixin/MixinEdgeData;
+            0       6     1 enabled   Z
+
+  public boolean isEnabled();
+    descriptor: ()Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #7                  // Field enabled:Z
+         4: ireturn
+      LineNumberTable:
+        line 39: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/railwayteam/railways/mixin/MixinEdgeData;
+
+  public void setAutomatic(boolean);
+    descriptor: (Z)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: iload_1
+         2: putfield      #13                 // Field automatic:Z
+         5: return
+      LineNumberTable:
+        line 44: 0
+        line 45: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/railwayteam/railways/mixin/MixinEdgeData;
+            0       6     1 automatic   Z
+
+  public boolean isAutomatic();
+    descriptor: ()Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #13                 // Field automatic:Z
+         4: ireturn
+      LineNumberTable:
+        line 49: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/railwayteam/railways/mixin/MixinEdgeData;
+
+  public void setAutomaticallySelected();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokestatic  #20                 // Method com/railwayteam/railways/content/switches/TrackSwitch.getSelectionPriority:()I
+         4: putfield      #16                 // Field selectPriority:I
+         7: aload_0
+         8: iconst_1
+         9: putfield      #7                  // Field enabled:Z
+        12: return
+      LineNumberTable:
+        line 54: 0
+        line 55: 7
+        line 56: 12
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0  this   Lcom/railwayteam/railways/mixin/MixinEdgeData;
+
+  public int getAutomaticallySelectedPriority();
+    descriptor: ()I
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #16                 // Field selectPriority:I
+         4: ireturn
+      LineNumberTable:
+        line 60: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/railwayteam/railways/mixin/MixinEdgeData;
+
+  public boolean isAutomaticallySelected();
+    descriptor: ()Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #16                 // Field selectPriority:I
+         4: iconst_m1
+         5: if_icmpeq     12
+         8: iconst_1
+         9: goto          13
+        12: iconst_0
+        13: ireturn
+      LineNumberTable:
+        line 65: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0  this   Lcom/railwayteam/railways/mixin/MixinEdgeData;
+      StackMapTable: number_of_entries = 2
+        frame_type = 12 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+  public void ackAutomaticSelection();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: iconst_m1
+         2: putfield      #16                 // Field selectPriority:I
+         5: return
+      LineNumberTable:
+        line 70: 0
+        line 71: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/railwayteam/railways/mixin/MixinEdgeData;
+}
+SourceFile: "MixinEdgeData.java"
+RuntimeInvisibleAnnotations:
+  0: #47(#48=[c#49],#50=Z#51)
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lcom/simibubi/create/content/trains/graph/EdgeData;]
+      remap=false
+    )

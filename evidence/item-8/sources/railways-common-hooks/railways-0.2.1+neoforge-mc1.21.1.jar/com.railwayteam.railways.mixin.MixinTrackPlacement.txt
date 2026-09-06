@@ -1,0 +1,657 @@
+Classfile railways-0.2.1+neoforge-mc1.21.1.jar!/com/railwayteam/railways/mixin/MixinTrackPlacement.class
+  Last modified Jun 1, 2026; size 11607 bytes
+  SHA-256 checksum 8129caef2036b9f3da9f3c1f8cf5983cfc16830d9b05ebc293516ecb51f878f8
+  Compiled from "MixinTrackPlacement.java"
+public class com.railwayteam.railways.mixin.MixinTrackPlacement
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #123                        // com/railwayteam/railways/mixin/MixinTrackPlacement
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 5, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+    #8 = Class              #10           // net/minecraft/world/item/ItemStack
+    #9 = NameAndType        #11:#12       // getItem:()Lnet/minecraft/world/item/Item;
+   #10 = Utf8               net/minecraft/world/item/ItemStack
+   #11 = Utf8               getItem
+   #12 = Utf8               ()Lnet/minecraft/world/item/Item;
+   #13 = Methodref          #14.#15       // com/simibubi/create/content/trains/track/TrackMaterial.fromItem:(Lnet/minecraft/world/item/Item;)Lcom/simibubi/create/content/trains/track/TrackMaterial;
+   #14 = Class              #16           // com/simibubi/create/content/trains/track/TrackMaterial
+   #15 = NameAndType        #17:#18       // fromItem:(Lnet/minecraft/world/item/Item;)Lcom/simibubi/create/content/trains/track/TrackMaterial;
+   #16 = Utf8               com/simibubi/create/content/trains/track/TrackMaterial
+   #17 = Utf8               fromItem
+   #18 = Utf8               (Lnet/minecraft/world/item/Item;)Lcom/simibubi/create/content/trains/track/TrackMaterial;
+   #19 = Fieldref           #14.#20       // com/simibubi/create/content/trains/track/TrackMaterial.trackType:Lcom/simibubi/create/content/trains/track/TrackMaterial$TrackType;
+   #20 = NameAndType        #21:#22       // trackType:Lcom/simibubi/create/content/trains/track/TrackMaterial$TrackType;
+   #21 = Utf8               trackType
+   #22 = Utf8               Lcom/simibubi/create/content/trains/track/TrackMaterial$TrackType;
+   #23 = Fieldref           #24.#25       // com/railwayteam/railways/registry/CRTrackMaterials$CRTrackType.WIDE_GAUGE:Lcom/simibubi/create/content/trains/track/TrackMaterial$TrackType;
+   #24 = Class              #26           // com/railwayteam/railways/registry/CRTrackMaterials$CRTrackType
+   #25 = NameAndType        #27:#22       // WIDE_GAUGE:Lcom/simibubi/create/content/trains/track/TrackMaterial$TrackType;
+   #26 = Utf8               com/railwayteam/railways/registry/CRTrackMaterials$CRTrackType
+   #27 = Utf8               WIDE_GAUGE
+   #28 = Double             2.0d
+   #30 = Fieldref           #24.#31       // com/railwayteam/railways/registry/CRTrackMaterials$CRTrackType.NARROW_GAUGE:Lcom/simibubi/create/content/trains/track/TrackMaterial$TrackType;
+   #31 = NameAndType        #32:#22       // NARROW_GAUGE:Lcom/simibubi/create/content/trains/track/TrackMaterial$TrackType;
+   #32 = Utf8               NARROW_GAUGE
+   #33 = Fieldref           #24.#34       // com/railwayteam/railways/registry/CRTrackMaterials$CRTrackType.UNIVERSAL:Lcom/simibubi/create/content/trains/track/TrackMaterial$TrackType;
+   #34 = NameAndType        #35:#22       // UNIVERSAL:Lcom/simibubi/create/content/trains/track/TrackMaterial$TrackType;
+   #35 = Utf8               UNIVERSAL
+   #36 = Double             0.5d
+   #38 = InterfaceMethodref #39.#40       // com/llamalad7/mixinextras/sugar/ref/LocalRef.set:(Ljava/lang/Object;)V
+   #39 = Class              #41           // com/llamalad7/mixinextras/sugar/ref/LocalRef
+   #40 = NameAndType        #42:#43       // set:(Ljava/lang/Object;)V
+   #41 = Utf8               com/llamalad7/mixinextras/sugar/ref/LocalRef
+   #42 = Utf8               set
+   #43 = Utf8               (Ljava/lang/Object;)V
+   #44 = InterfaceMethodref #39.#45       // com/llamalad7/mixinextras/sugar/ref/LocalRef.get:()Ljava/lang/Object;
+   #45 = NameAndType        #46:#47       // get:()Ljava/lang/Object;
+   #46 = Utf8               get
+   #47 = Utf8               ()Ljava/lang/Object;
+   #48 = Class              #49           // net/minecraft/world/level/block/state/BlockState
+   #49 = Utf8               net/minecraft/world/level/block/state/BlockState
+   #50 = Fieldref           #51.#52       // com/simibubi/create/content/trains/track/TrackBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+   #51 = Class              #53           // com/simibubi/create/content/trains/track/TrackBlock
+   #52 = NameAndType        #54:#55       // SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+   #53 = Utf8               com/simibubi/create/content/trains/track/TrackBlock
+   #54 = Utf8               SHAPE
+   #55 = Utf8               Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+   #56 = Methodref          #48.#57       // net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+   #57 = NameAndType        #58:#59       // hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+   #58 = Utf8               hasProperty
+   #59 = Utf8               (Lnet/minecraft/world/level/block/state/properties/Property;)Z
+   #60 = Methodref          #48.#61       // net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+   #61 = NameAndType        #62:#63       // getBlock:()Lnet/minecraft/world/level/block/Block;
+   #62 = Utf8               getBlock
+   #63 = Utf8               ()Lnet/minecraft/world/level/block/Block;
+   #64 = Class              #65           // com/simibubi/create/content/trains/track/ITrackBlock
+   #65 = Utf8               com/simibubi/create/content/trains/track/ITrackBlock
+   #66 = Methodref          #48.#67       // net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+   #67 = NameAndType        #68:#69       // getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+   #68 = Utf8               getValue
+   #69 = Utf8               (Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+   #70 = Class              #71           // com/simibubi/create/content/trains/track/TrackShape
+   #71 = Utf8               com/simibubi/create/content/trains/track/TrackShape
+   #72 = Methodref          #73.#74       // com/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup.getMerged:(Lcom/simibubi/create/content/trains/track/TrackShape;Lcom/simibubi/create/content/trains/track/TrackShape;)Lnet/createmod/catnip/data/Pair;
+   #73 = Class              #75           // com/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup
+   #74 = NameAndType        #76:#77       // getMerged:(Lcom/simibubi/create/content/trains/track/TrackShape;Lcom/simibubi/create/content/trains/track/TrackShape;)Lnet/createmod/catnip/data/Pair;
+   #75 = Utf8               com/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup
+   #76 = Utf8               getMerged
+   #77 = Utf8               (Lcom/simibubi/create/content/trains/track/TrackShape;Lcom/simibubi/create/content/trains/track/TrackShape;)Lnet/createmod/catnip/data/Pair;
+   #78 = Class              #79           // com/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData
+   #79 = Utf8               com/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData
+   #80 = InterfaceMethodref #64.#81       // com/simibubi/create/content/trains/track/ITrackBlock.getMaterial:()Lcom/simibubi/create/content/trains/track/TrackMaterial;
+   #81 = NameAndType        #82:#83       // getMaterial:()Lcom/simibubi/create/content/trains/track/TrackMaterial;
+   #82 = Utf8               getMaterial
+   #83 = Utf8               ()Lcom/simibubi/create/content/trains/track/TrackMaterial;
+   #84 = Methodref          #78.#85       // com/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData."<init>":(Lnet/createmod/catnip/data/Pair;Lcom/simibubi/create/content/trains/track/TrackMaterial;Lcom/simibubi/create/content/trains/track/TrackMaterial;)V
+   #85 = NameAndType        #5:#86        // "<init>":(Lnet/createmod/catnip/data/Pair;Lcom/simibubi/create/content/trains/track/TrackMaterial;Lcom/simibubi/create/content/trains/track/TrackMaterial;)V
+   #86 = Utf8               (Lnet/createmod/catnip/data/Pair;Lcom/simibubi/create/content/trains/track/TrackMaterial;Lcom/simibubi/create/content/trains/track/TrackMaterial;)V
+   #87 = Fieldref           #88.#89       // com/railwayteam/railways/registry/CRBlocks.GENERIC_CROSSING:Lcom/tterrag/registrate/util/entry/BlockEntry;
+   #88 = Class              #90           // com/railwayteam/railways/registry/CRBlocks
+   #89 = NameAndType        #91:#92       // GENERIC_CROSSING:Lcom/tterrag/registrate/util/entry/BlockEntry;
+   #90 = Utf8               com/railwayteam/railways/registry/CRBlocks
+   #91 = Utf8               GENERIC_CROSSING
+   #92 = Utf8               Lcom/tterrag/registrate/util/entry/BlockEntry;
+   #93 = Methodref          #94.#95       // com/tterrag/registrate/util/entry/BlockEntry.getDefaultState:()Lnet/minecraft/world/level/block/state/BlockState;
+   #94 = Class              #96           // com/tterrag/registrate/util/entry/BlockEntry
+   #95 = NameAndType        #97:#98       // getDefaultState:()Lnet/minecraft/world/level/block/state/BlockState;
+   #96 = Utf8               com/tterrag/registrate/util/entry/BlockEntry
+   #97 = Utf8               getDefaultState
+   #98 = Utf8               ()Lnet/minecraft/world/level/block/state/BlockState;
+   #99 = Fieldref           #100.#52      // com/railwayteam/railways/content/custom_tracks/generic_crossing/GenericCrossingBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+  #100 = Class              #101          // com/railwayteam/railways/content/custom_tracks/generic_crossing/GenericCrossingBlock
+  #101 = Utf8               com/railwayteam/railways/content/custom_tracks/generic_crossing/GenericCrossingBlock
+  #102 = Methodref          #103.#104     // net/createmod/catnip/data/Pair.getFirst:()Ljava/lang/Object;
+  #103 = Class              #105          // net/createmod/catnip/data/Pair
+  #104 = NameAndType        #106:#47      // getFirst:()Ljava/lang/Object;
+  #105 = Utf8               net/createmod/catnip/data/Pair
+  #106 = Utf8               getFirst
+  #107 = Methodref          #48.#108      // net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+  #108 = NameAndType        #109:#110     // setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+  #109 = Utf8               setValue
+  #110 = Utf8               (Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+  #111 = Methodref          #112.#113     // net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #112 = Class              #114          // net/minecraft/world/level/Level
+  #113 = NameAndType        #115:#116     // getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #114 = Utf8               net/minecraft/world/level/Level
+  #115 = Utf8               getBlockEntity
+  #116 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #117 = Class              #118          // com/railwayteam/railways/content/custom_tracks/generic_crossing/GenericCrossingBlockEntity
+  #118 = Utf8               com/railwayteam/railways/content/custom_tracks/generic_crossing/GenericCrossingBlockEntity
+  #119 = Methodref          #117.#120     // com/railwayteam/railways/content/custom_tracks/generic_crossing/GenericCrossingBlockEntity.initFrom:(Lcom/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData;)V
+  #120 = NameAndType        #121:#122     // initFrom:(Lcom/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData;)V
+  #121 = Utf8               initFrom
+  #122 = Utf8               (Lcom/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData;)V
+  #123 = Class              #124          // com/railwayteam/railways/mixin/MixinTrackPlacement
+  #124 = Utf8               com/railwayteam/railways/mixin/MixinTrackPlacement
+  #125 = Utf8               Code
+  #126 = Utf8               LineNumberTable
+  #127 = Utf8               LocalVariableTable
+  #128 = Utf8               this
+  #129 = Utf8               Lcom/railwayteam/railways/mixin/MixinTrackPlacement;
+  #130 = Utf8               modifiedCurvesForGauges
+  #131 = Utf8               (DLnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/item/ItemStack;)D
+  #132 = Utf8               value
+  #133 = Utf8               D
+  #134 = Utf8               level
+  #135 = Utf8               Lnet/minecraft/world/level/Level;
+  #136 = Utf8               player
+  #137 = Utf8               Lnet/minecraft/world/entity/player/Player;
+  #138 = Utf8               pos2
+  #139 = Utf8               Lnet/minecraft/core/BlockPos;
+  #140 = Utf8               state2
+  #141 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+  #142 = Utf8               stack
+  #143 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #144 = Utf8               StackMapTable
+  #145 = Utf8               RuntimeVisibleAnnotations
+  #146 = Utf8               Lcom/llamalad7/mixinextras/injector/ModifyExpressionValue;
+  #147 = Utf8               method
+  #148 = Utf8               tryConnect
+  #149 = Utf8               at
+  #150 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #151 = Utf8               CONSTANT
+  #152 = Utf8               args
+  #153 = Utf8               doubleValue=7
+  #154 = Utf8               doubleValue=3.25
+  #155 = Utf8               placeGenericCrossing0
+  #156 = Utf8               (Lnet/minecraft/world/level/Level;Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef;Lnet/minecraft/world/level/block/state/BlockState;)V
+  #157 = Utf8               info
+  #158 = Utf8               Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;
+  #159 = Utf8               state1
+  #160 = Utf8               targetPos1
+  #161 = Utf8               targetPos2
+  #162 = Utf8               simulate
+  #163 = Utf8               Z
+  #164 = Utf8               cir
+  #165 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #166 = Utf8               oldToPlace
+  #167 = Utf8               Lcom/llamalad7/mixinextras/sugar/ref/LocalRef;
+  #168 = Utf8               toPlace
+  #169 = Utf8               LocalVariableTypeTable
+  #170 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;>;
+  #171 = Utf8               Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lnet/minecraft/world/level/block/state/BlockState;>;
+  #172 = Utf8               Signature
+  #173 = Utf8               (Lnet/minecraft/world/level/Level;Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;>;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lnet/minecraft/world/level/block/state/BlockState;>;Lnet/minecraft/world/level/block/state/BlockState;)V
+  #174 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #175 = Utf8               placeTracks
+  #176 = Utf8               INVOKE
+  #177 = Utf8               target
+  #178 = Utf8               Lcom/simibubi/create/content/trains/track/ITrackBlock;overlay(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+  #179 = Utf8               RuntimeInvisibleParameterAnnotations
+  #180 = Utf8               Lcom/llamalad7/mixinextras/sugar/Share;
+  #181 = Utf8               Lcom/llamalad7/mixinextras/sugar/Local;
+  #182 = Utf8               name
+  #183 = Utf8               placeGenericCrossing
+  #184 = Utf8               (Lnet/minecraft/world/level/Level;Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Lnet/minecraft/world/level/block/state/BlockState;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef;)V
+  #185 = Utf8               existingShape
+  #186 = Utf8               Lcom/simibubi/create/content/trains/track/TrackShape;
+  #187 = Utf8               overlayShape
+  #188 = Utf8               merged
+  #189 = Utf8               Lnet/createmod/catnip/data/Pair;
+  #190 = Utf8               exisingTrack
+  #191 = Utf8               Lcom/simibubi/create/content/trains/track/ITrackBlock;
+  #192 = Utf8               overlayTrack
+  #193 = Utf8               stateAtPos
+  #194 = Utf8               crossingData
+  #195 = Utf8               place
+  #196 = Utf8               Lnet/createmod/catnip/data/Pair<Lcom/simibubi/create/content/trains/track/TrackShape;Ljava/lang/Boolean;>;
+  #197 = Utf8               Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lcom/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData;>;
+  #198 = Utf8               (Lnet/minecraft/world/level/Level;Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;>;Lnet/minecraft/world/level/block/state/BlockState;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lnet/minecraft/world/level/block/state/BlockState;>;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lnet/minecraft/world/level/block/state/BlockState;>;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lcom/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData;>;)V
+  #199 = Utf8               INVOKE_ASSIGN
+  #200 = Utf8               shift
+  #201 = Utf8               Lorg/spongepowered/asm/mixin/injection/At$Shift;
+  #202 = Utf8               AFTER
+  #203 = Utf8               RuntimeInvisibleTypeAnnotations
+  #204 = Utf8               Lorg/jetbrains/annotations/Nullable;
+  #205 = Utf8               maybePlaceCrossing
+  #206 = Utf8               (Lnet/minecraft/world/level/Level;Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Lnet/minecraft/core/BlockPos;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef;)V
+  #207 = Utf8               genericCrossingBE
+  #208 = Utf8               Lcom/railwayteam/railways/content/custom_tracks/generic_crossing/GenericCrossingBlockEntity;
+  #209 = Utf8               offsetPos
+  #210 = Utf8               crossingDataRef
+  #211 = Utf8               Lcom/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData;
+  #212 = Utf8               (Lnet/minecraft/world/level/Level;Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;>;Lnet/minecraft/core/BlockPos;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lcom/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData;>;)V
+  #213 = Utf8               Lnet/minecraft/world/level/Level;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+  #214 = Utf8               SourceFile
+  #215 = Utf8               MixinTrackPlacement.java
+  #216 = Utf8               RuntimeInvisibleAnnotations
+  #217 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #218 = Utf8               Lcom/simibubi/create/content/trains/track/TrackPlacement;
+  #219 = Utf8               InnerClasses
+  #220 = Class              #221          // com/simibubi/create/content/trains/track/TrackMaterial$TrackType
+  #221 = Utf8               com/simibubi/create/content/trains/track/TrackMaterial$TrackType
+  #222 = Utf8               TrackType
+  #223 = Class              #224          // com/railwayteam/railways/registry/CRTrackMaterials
+  #224 = Utf8               com/railwayteam/railways/registry/CRTrackMaterials
+  #225 = Utf8               CRTrackType
+  #226 = Utf8               GenericCrossingData
+  #227 = Class              #228          // com/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo
+  #228 = Utf8               com/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo
+  #229 = Class              #230          // com/simibubi/create/content/trains/track/TrackPlacement
+  #230 = Utf8               com/simibubi/create/content/trains/track/TrackPlacement
+  #231 = Utf8               PlacementInfo
+  #232 = Class              #233          // org/spongepowered/asm/mixin/injection/At$Shift
+  #233 = Utf8               org/spongepowered/asm/mixin/injection/At$Shift
+  #234 = Class              #235          // org/spongepowered/asm/mixin/injection/At
+  #235 = Utf8               org/spongepowered/asm/mixin/injection/At
+  #236 = Utf8               Shift
+{
+  public com.railwayteam.railways.mixin.MixinTrackPlacement();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 50: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/railwayteam/railways/mixin/MixinTrackPlacement;
+
+  private static double modifiedCurvesForGauges(double, net.minecraft.world.level.Level, net.minecraft.world.entity.player.Player, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.item.ItemStack);
+    descriptor: (DLnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/item/ItemStack;)D
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=4, locals=7, args_size=6
+         0: aload         6
+         2: invokevirtual #7                  // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+         5: invokestatic  #13                 // Method com/simibubi/create/content/trains/track/TrackMaterial.fromItem:(Lnet/minecraft/world/item/Item;)Lcom/simibubi/create/content/trains/track/TrackMaterial;
+         8: getfield      #19                 // Field com/simibubi/create/content/trains/track/TrackMaterial.trackType:Lcom/simibubi/create/content/trains/track/TrackMaterial$TrackType;
+        11: getstatic     #23                 // Field com/railwayteam/railways/registry/CRTrackMaterials$CRTrackType.WIDE_GAUGE:Lcom/simibubi/create/content/trains/track/TrackMaterial$TrackType;
+        14: if_acmpne     23
+        17: dload_0
+        18: ldc2_w        #28                 // double 2.0d
+        21: dmul
+        22: dreturn
+        23: aload         6
+        25: invokevirtual #7                  // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+        28: invokestatic  #13                 // Method com/simibubi/create/content/trains/track/TrackMaterial.fromItem:(Lnet/minecraft/world/item/Item;)Lcom/simibubi/create/content/trains/track/TrackMaterial;
+        31: getfield      #19                 // Field com/simibubi/create/content/trains/track/TrackMaterial.trackType:Lcom/simibubi/create/content/trains/track/TrackMaterial$TrackType;
+        34: getstatic     #30                 // Field com/railwayteam/railways/registry/CRTrackMaterials$CRTrackType.NARROW_GAUGE:Lcom/simibubi/create/content/trains/track/TrackMaterial$TrackType;
+        37: if_acmpeq     57
+        40: aload         6
+        42: invokevirtual #7                  // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+        45: invokestatic  #13                 // Method com/simibubi/create/content/trains/track/TrackMaterial.fromItem:(Lnet/minecraft/world/item/Item;)Lcom/simibubi/create/content/trains/track/TrackMaterial;
+        48: getfield      #19                 // Field com/simibubi/create/content/trains/track/TrackMaterial.trackType:Lcom/simibubi/create/content/trains/track/TrackMaterial$TrackType;
+        51: getstatic     #33                 // Field com/railwayteam/railways/registry/CRTrackMaterials$CRTrackType.UNIVERSAL:Lcom/simibubi/create/content/trains/track/TrackMaterial$TrackType;
+        54: if_acmpne     63
+        57: dload_0
+        58: ldc2_w        #36                 // double 0.5d
+        61: dmul
+        62: dreturn
+        63: dload_0
+        64: dreturn
+      LineNumberTable:
+        line 58: 0
+        line 59: 17
+        line 61: 23
+        line 62: 42
+        line 63: 57
+        line 65: 63
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      65     0 value   D
+            0      65     2 level   Lnet/minecraft/world/level/Level;
+            0      65     3 player   Lnet/minecraft/world/entity/player/Player;
+            0      65     4  pos2   Lnet/minecraft/core/BlockPos;
+            0      65     5 state2   Lnet/minecraft/world/level/block/state/BlockState;
+            0      65     6 stack   Lnet/minecraft/world/item/ItemStack;
+      StackMapTable: number_of_entries = 3
+        frame_type = 23 /* same */
+        frame_type = 33 /* same */
+        frame_type = 5 /* same */
+    RuntimeVisibleAnnotations:
+      0: #146(#147=[s#148],#149=[@#150(#132=s#151,#152=[s#153]),@#150(#132=s#151,#152=[s#154])])
+        com.llamalad7.mixinextras.injector.ModifyExpressionValue(
+          method=["tryConnect"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="CONSTANT"
+            args=["doubleValue=7"]
+          ),@org.spongepowered.asm.mixin.injection.At(
+            value="CONSTANT"
+            args=["doubleValue=3.25"]
+          )]
+        )
+
+  private static void placeGenericCrossing0(net.minecraft.world.level.Level, com.simibubi.create.content.trains.track.TrackPlacement$PlacementInfo, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, boolean, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<com.simibubi.create.content.trains.track.TrackPlacement$PlacementInfo>, com.llamalad7.mixinextras.sugar.ref.LocalRef<net.minecraft.world.level.block.state.BlockState>, net.minecraft.world.level.block.state.BlockState);
+    descriptor: (Lnet/minecraft/world/level/Level;Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef;Lnet/minecraft/world/level/block/state/BlockState;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=2, locals=10, args_size=10
+         0: aload         8
+         2: aload         9
+         4: invokeinterface #38,  2           // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalRef.set:(Ljava/lang/Object;)V
+         9: return
+      LineNumberTable:
+        line 73: 0
+        line 74: 9
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0 level   Lnet/minecraft/world/level/Level;
+            0      10     1  info   Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;
+            0      10     2 state1   Lnet/minecraft/world/level/block/state/BlockState;
+            0      10     3 state2   Lnet/minecraft/world/level/block/state/BlockState;
+            0      10     4 targetPos1   Lnet/minecraft/core/BlockPos;
+            0      10     5 targetPos2   Lnet/minecraft/core/BlockPos;
+            0      10     6 simulate   Z
+            0      10     7   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            0      10     8 oldToPlace   Lcom/llamalad7/mixinextras/sugar/ref/LocalRef;
+            0      10     9 toPlace   Lnet/minecraft/world/level/block/state/BlockState;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      10     7   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;>;
+            0      10     8 oldToPlace   Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lnet/minecraft/world/level/block/state/BlockState;>;
+    Signature: #173                         // (Lnet/minecraft/world/level/Level;Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;>;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lnet/minecraft/world/level/block/state/BlockState;>;Lnet/minecraft/world/level/block/state/BlockState;)V
+    RuntimeVisibleAnnotations:
+      0: #174(#147=[s#175],#149=[@#150(#132=s#176,#177=s#178)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["placeTracks"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lcom/simibubi/create/content/trains/track/ITrackBlock;overlay(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;"
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+      parameter 3:
+      parameter 4:
+      parameter 5:
+      parameter 6:
+      parameter 7:
+      parameter 8:
+        0: #180(#132=s#166)
+          com.llamalad7.mixinextras.sugar.Share(
+            value="oldToPlace"
+          )
+      parameter 9:
+        0: #181(#182=[s#168])
+          com.llamalad7.mixinextras.sugar.Local(
+            name=["toPlace"]
+          )
+
+  private static void placeGenericCrossing(net.minecraft.world.level.Level, com.simibubi.create.content.trains.track.TrackPlacement$PlacementInfo, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, boolean, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<com.simibubi.create.content.trains.track.TrackPlacement$PlacementInfo>, net.minecraft.world.level.block.state.BlockState, com.llamalad7.mixinextras.sugar.ref.LocalRef<net.minecraft.world.level.block.state.BlockState>, com.llamalad7.mixinextras.sugar.ref.LocalRef<net.minecraft.world.level.block.state.BlockState>, com.llamalad7.mixinextras.sugar.ref.LocalRef<com.railwayteam.railways.content.custom_tracks.generic_crossing.TrackShapeLookup$GenericCrossingData>);
+    descriptor: (Lnet/minecraft/world/level/Level;Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Lnet/minecraft/world/level/block/state/BlockState;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=6, locals=18, args_size=12
+         0: aload         11
+         2: aconst_null
+         3: invokeinterface #38,  2           // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalRef.set:(Ljava/lang/Object;)V
+         8: aload         10
+        10: invokeinterface #44,  1           // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalRef.get:()Ljava/lang/Object;
+        15: checkcast     #48                 // class net/minecraft/world/level/block/state/BlockState
+        18: astore        12
+        20: aload         8
+        22: aload         9
+        24: invokeinterface #44,  1           // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalRef.get:()Ljava/lang/Object;
+        29: if_acmpne     198
+        32: aload         8
+        34: getstatic     #50                 // Field com/simibubi/create/content/trains/track/TrackBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+        37: invokevirtual #56                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+        40: ifeq          198
+        43: aload         12
+        45: getstatic     #50                 // Field com/simibubi/create/content/trains/track/TrackBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+        48: invokevirtual #56                 // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+        51: ifeq          198
+        54: aload         8
+        56: invokevirtual #60                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+        59: astore        15
+        61: aload         15
+        63: instanceof    #64                 // class com/simibubi/create/content/trains/track/ITrackBlock
+        66: ifeq          198
+        69: aload         15
+        71: checkcast     #64                 // class com/simibubi/create/content/trains/track/ITrackBlock
+        74: astore        13
+        76: aload         12
+        78: invokevirtual #60                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+        81: astore        15
+        83: aload         15
+        85: instanceof    #64                 // class com/simibubi/create/content/trains/track/ITrackBlock
+        88: ifeq          198
+        91: aload         15
+        93: checkcast     #64                 // class com/simibubi/create/content/trains/track/ITrackBlock
+        96: astore        14
+        98: aload         8
+       100: getstatic     #50                 // Field com/simibubi/create/content/trains/track/TrackBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+       103: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+       106: checkcast     #70                 // class com/simibubi/create/content/trains/track/TrackShape
+       109: astore        15
+       111: aload         12
+       113: getstatic     #50                 // Field com/simibubi/create/content/trains/track/TrackBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+       116: invokevirtual #66                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+       119: checkcast     #70                 // class com/simibubi/create/content/trains/track/TrackShape
+       122: astore        16
+       124: aload         15
+       126: aload         16
+       128: invokestatic  #72                 // Method com/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup.getMerged:(Lcom/simibubi/create/content/trains/track/TrackShape;Lcom/simibubi/create/content/trains/track/TrackShape;)Lnet/createmod/catnip/data/Pair;
+       131: astore        17
+       133: aload         17
+       135: ifnull        198
+       138: aload         11
+       140: new           #78                 // class com/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData
+       143: dup
+       144: aload         17
+       146: aload         13
+       148: invokeinterface #80,  1           // InterfaceMethod com/simibubi/create/content/trains/track/ITrackBlock.getMaterial:()Lcom/simibubi/create/content/trains/track/TrackMaterial;
+       153: aload         14
+       155: invokeinterface #80,  1           // InterfaceMethod com/simibubi/create/content/trains/track/ITrackBlock.getMaterial:()Lcom/simibubi/create/content/trains/track/TrackMaterial;
+       160: invokespecial #84                 // Method com/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData."<init>":(Lnet/createmod/catnip/data/Pair;Lcom/simibubi/create/content/trains/track/TrackMaterial;Lcom/simibubi/create/content/trains/track/TrackMaterial;)V
+       163: invokeinterface #38,  2           // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalRef.set:(Ljava/lang/Object;)V
+       168: aload         9
+       170: getstatic     #87                 // Field com/railwayteam/railways/registry/CRBlocks.GENERIC_CROSSING:Lcom/tterrag/registrate/util/entry/BlockEntry;
+       173: invokevirtual #93                 // Method com/tterrag/registrate/util/entry/BlockEntry.getDefaultState:()Lnet/minecraft/world/level/block/state/BlockState;
+       176: getstatic     #99                 // Field com/railwayteam/railways/content/custom_tracks/generic_crossing/GenericCrossingBlock.SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+       179: aload         17
+       181: invokevirtual #102                // Method net/createmod/catnip/data/Pair.getFirst:()Ljava/lang/Object;
+       184: checkcast     #70                 // class com/simibubi/create/content/trains/track/TrackShape
+       187: invokevirtual #107                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+       190: checkcast     #48                 // class net/minecraft/world/level/block/state/BlockState
+       193: invokeinterface #38,  2           // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalRef.set:(Ljava/lang/Object;)V
+       198: return
+      LineNumberTable:
+        line 84: 0
+        line 85: 8
+        line 86: 20
+        line 87: 32
+        line 88: 54
+        line 89: 76
+        line 90: 98
+        line 91: 111
+        line 93: 124
+        line 94: 133
+        line 95: 138
+        line 96: 168
+        line 100: 198
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          111      87    15 existingShape   Lcom/simibubi/create/content/trains/track/TrackShape;
+          124      74    16 overlayShape   Lcom/simibubi/create/content/trains/track/TrackShape;
+          133      65    17 merged   Lnet/createmod/catnip/data/Pair;
+           76     122    13 exisingTrack   Lcom/simibubi/create/content/trains/track/ITrackBlock;
+           98     100    14 overlayTrack   Lcom/simibubi/create/content/trains/track/ITrackBlock;
+            0     199     0 level   Lnet/minecraft/world/level/Level;
+            0     199     1  info   Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;
+            0     199     2 state1   Lnet/minecraft/world/level/block/state/BlockState;
+            0     199     3 state2   Lnet/minecraft/world/level/block/state/BlockState;
+            0     199     4 targetPos1   Lnet/minecraft/core/BlockPos;
+            0     199     5 targetPos2   Lnet/minecraft/core/BlockPos;
+            0     199     6 simulate   Z
+            0     199     7   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            0     199     8 stateAtPos   Lnet/minecraft/world/level/block/state/BlockState;
+            0     199     9 toPlace   Lcom/llamalad7/mixinextras/sugar/ref/LocalRef;
+            0     199    10 oldToPlace   Lcom/llamalad7/mixinextras/sugar/ref/LocalRef;
+            0     199    11 crossingData   Lcom/llamalad7/mixinextras/sugar/ref/LocalRef;
+           20     179    12 place   Lnet/minecraft/world/level/block/state/BlockState;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          133      65    17 merged   Lnet/createmod/catnip/data/Pair<Lcom/simibubi/create/content/trains/track/TrackShape;Ljava/lang/Boolean;>;
+            0     199     7   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;>;
+            0     199     9 toPlace   Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lnet/minecraft/world/level/block/state/BlockState;>;
+            0     199    10 oldToPlace   Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lnet/minecraft/world/level/block/state/BlockState;>;
+            0     199    11 crossingData   Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lcom/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 198
+          locals = [ class net/minecraft/world/level/block/state/BlockState ]
+    Signature: #198                         // (Lnet/minecraft/world/level/Level;Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;>;Lnet/minecraft/world/level/block/state/BlockState;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lnet/minecraft/world/level/block/state/BlockState;>;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lnet/minecraft/world/level/block/state/BlockState;>;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lcom/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData;>;)V
+    RuntimeVisibleAnnotations:
+      0: #174(#147=[s#175],#149=[@#150(#132=s#199,#177=s#178,#200=e#201.#202)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["placeTracks"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE_ASSIGN"
+            target="Lcom/simibubi/create/content/trains/track/ITrackBlock;overlay(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;"
+            shift=Lorg/spongepowered/asm/mixin/injection/At$Shift;.AFTER
+          )]
+        )
+    RuntimeInvisibleTypeAnnotations:
+      0: #204(): METHOD_FORMAL_PARAMETER, param_index=11, location=[TYPE_ARGUMENT(0)]
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+      parameter 3:
+      parameter 4:
+      parameter 5:
+      parameter 6:
+      parameter 7:
+      parameter 8:
+        0: #181(#182=[s#193])
+          com.llamalad7.mixinextras.sugar.Local(
+            name=["stateAtPos"]
+          )
+      parameter 9:
+        0: #181(#182=[s#168])
+          com.llamalad7.mixinextras.sugar.Local(
+            name=["toPlace"]
+          )
+      parameter 10:
+        0: #180(#132=s#166)
+          com.llamalad7.mixinextras.sugar.Share(
+            value="oldToPlace"
+          )
+      parameter 11:
+        0: #180(#132=s#194)
+          com.llamalad7.mixinextras.sugar.Share(
+            value="crossingData"
+          )
+
+  private static void maybePlaceCrossing(net.minecraft.world.level.Level, com.simibubi.create.content.trains.track.TrackPlacement$PlacementInfo, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, boolean, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<com.simibubi.create.content.trains.track.TrackPlacement$PlacementInfo>, net.minecraft.core.BlockPos, com.llamalad7.mixinextras.sugar.ref.LocalRef<com.railwayteam.railways.content.custom_tracks.generic_crossing.TrackShapeLookup$GenericCrossingData>);
+    descriptor: (Lnet/minecraft/world/level/Level;Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Lnet/minecraft/core/BlockPos;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=2, locals=13, args_size=10
+         0: aload         9
+         2: invokeinterface #44,  1           // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalRef.get:()Ljava/lang/Object;
+         7: checkcast     #78                 // class com/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData
+        10: astore        10
+        12: aload         10
+        14: ifnull        47
+        17: aload_0
+        18: aload         8
+        20: invokevirtual #111                // Method net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+        23: astore        12
+        25: aload         12
+        27: instanceof    #117                // class com/railwayteam/railways/content/custom_tracks/generic_crossing/GenericCrossingBlockEntity
+        30: ifeq          47
+        33: aload         12
+        35: checkcast     #117                // class com/railwayteam/railways/content/custom_tracks/generic_crossing/GenericCrossingBlockEntity
+        38: astore        11
+        40: aload         11
+        42: aload         10
+        44: invokevirtual #119                // Method com/railwayteam/railways/content/custom_tracks/generic_crossing/GenericCrossingBlockEntity.initFrom:(Lcom/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData;)V
+        47: aload         9
+        49: aconst_null
+        50: invokeinterface #38,  2           // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalRef.set:(Ljava/lang/Object;)V
+        55: return
+      LineNumberTable:
+        line 108: 0
+        line 109: 12
+        line 110: 40
+        line 112: 47
+        line 113: 55
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           40       7    11 genericCrossingBE   Lcom/railwayteam/railways/content/custom_tracks/generic_crossing/GenericCrossingBlockEntity;
+            0      56     0 level   Lnet/minecraft/world/level/Level;
+            0      56     1  info   Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;
+            0      56     2 state1   Lnet/minecraft/world/level/block/state/BlockState;
+            0      56     3 state2   Lnet/minecraft/world/level/block/state/BlockState;
+            0      56     4 targetPos1   Lnet/minecraft/core/BlockPos;
+            0      56     5 targetPos2   Lnet/minecraft/core/BlockPos;
+            0      56     6 simulate   Z
+            0      56     7   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            0      56     8 offsetPos   Lnet/minecraft/core/BlockPos;
+            0      56     9 crossingDataRef   Lcom/llamalad7/mixinextras/sugar/ref/LocalRef;
+           12      44    10 crossingData   Lcom/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      56     7   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;>;
+            0      56     9 crossingDataRef   Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lcom/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 47
+          locals = [ class com/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData ]
+      RuntimeInvisibleTypeAnnotations:
+        0: #204(): LOCAL_VARIABLE, {start_pc=12, length=44, index=10}
+          org.jetbrains.annotations.Nullable
+    Signature: #212                         // (Lnet/minecraft/world/level/Level;Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lcom/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo;>;Lnet/minecraft/core/BlockPos;Lcom/llamalad7/mixinextras/sugar/ref/LocalRef<Lcom/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData;>;)V
+    RuntimeVisibleAnnotations:
+      0: #174(#147=[s#175],#149=[@#150(#132=s#176,#177=s#213,#200=e#201.#202)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["placeTracks"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/level/Level;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z"
+            shift=Lorg/spongepowered/asm/mixin/injection/At$Shift;.AFTER
+          )]
+        )
+    RuntimeInvisibleTypeAnnotations:
+      0: #204(): METHOD_FORMAL_PARAMETER, param_index=9, location=[TYPE_ARGUMENT(0)]
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+      parameter 3:
+      parameter 4:
+      parameter 5:
+      parameter 6:
+      parameter 7:
+      parameter 8:
+        0: #181(#182=[s#209])
+          com.llamalad7.mixinextras.sugar.Local(
+            name=["offsetPos"]
+          )
+      parameter 9:
+        0: #180(#132=s#194)
+          com.llamalad7.mixinextras.sugar.Share(
+            value="crossingData"
+          )
+}
+SourceFile: "MixinTrackPlacement.java"
+RuntimeInvisibleAnnotations:
+  0: #217(#132=[c#218])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lcom/simibubi/create/content/trains/track/TrackPlacement;]
+    )
+InnerClasses:
+  public static #222= #220 of #14;        // TrackType=class com/simibubi/create/content/trains/track/TrackMaterial$TrackType of class com/simibubi/create/content/trains/track/TrackMaterial
+  public static #225= #24 of #223;        // CRTrackType=class com/railwayteam/railways/registry/CRTrackMaterials$CRTrackType of class com/railwayteam/railways/registry/CRTrackMaterials
+  public static final #226= #78 of #73;   // GenericCrossingData=class com/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup$GenericCrossingData of class com/railwayteam/railways/content/custom_tracks/generic_crossing/TrackShapeLookup
+  public static #231= #227 of #229;       // PlacementInfo=class com/simibubi/create/content/trains/track/TrackPlacement$PlacementInfo of class com/simibubi/create/content/trains/track/TrackPlacement
+  public static final #236= #232 of #234; // Shift=class org/spongepowered/asm/mixin/injection/At$Shift of class org/spongepowered/asm/mixin/injection/At
