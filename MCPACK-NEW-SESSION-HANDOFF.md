@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-06
 
+Inventory now agrees with arena/fortress decisions delivered at 5e5cb5e2 and
+reproduces exactly. Working groups: 408. Explicit provisional queue: 60, with
+seven Nether landmarks and 53 Voyager decisions next. No live process remains.
+
+
 Nether arena/fortress boundaries are resolved: small and large arenas are two
 layouts of mns:arena; dragon arena and fortress remain separate designs. Nine
 affected cases and scoped quality checks pass. Source groups: 408. Explicit
