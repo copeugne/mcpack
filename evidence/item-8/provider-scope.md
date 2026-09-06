@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 86 of 136. The exact queue below has 50 open rows.
+Supported provider dispositions: 87 of 136. The exact queue below has 49 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -669,7 +669,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `kotlinforforge-5.11.0-all.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `letmedespawn-1.21.x-neoforge-1.5.0.jar` | `letmedespawn-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing mob persistence/discard behavior; no independent family. See small utility provider dispositions below. |
 | `libraryferret-neoforge-1.21.1-4.0.0.jar` | `libraryferret-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Abstract consumer-supplied jigsaw/placement support and coin content. No independent family. See additional shared provider dispositions below. |
-| `lithostitched-1.7.10+beta4-neoforge-21.1.jar` | `lithostitched-alias-code`, `lithostitched-biome-injector-code`, `lithostitched-feature-modifier-code`, `lithostitched-platform-modifier-code`, `lithostitched-pool-additions-code`, `lithostitched-pool-compilation-code`, `lithostitched-processor-registration-code`, `lithostitched-random-block-code`, `lithostitched-street-processor-code`, `lithostitched-surface-lifecycle-code`, `pool-codecs` | Reuse modifier, pool, alias and processor captures; reconcile remaining entry/codec consumers and packaged modifiers. |
+| `lithostitched-1.7.10+beta4-neoforge-21.1.jar` | Existing pool/alias/modifier sources; provider entry 4fbbe70 and remaining hooks 37c3259; test_lithostitched_provider_scope.py | RESOLVED: Shared generation codecs, terrain/biome changes and existing vanilla template/processor/alias components. No independent family. See Lithostitched provider disposition below. |
 | `lootintegrations-1.21.1-4.7.jar` | `lootintegrations-provider` (47047d6), test_small_utility_provider_scope.py | RESOLVED: Core integration loader and loot-list modifier, 43 definitions and seven chest-table targets. No independent family; remains a required loot-attribute input. See disposition below. |
 | `mca-neoforge-7.7.11+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar` | Eight capture directories bound by test_moog_library_provider_scope.py; latest registration boundaries ee8e2c0. | RESOLVED: shared generation and modification library; no independent authored family or packaged generation resources. See Moog library provider disposition below. |
@@ -701,6 +701,69 @@ attributes. This separates unknown membership from incomplete attributes.
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+
+## Lithostitched provider disposition
+
+lithostitched-1.7.10+beta4-neoforge-21.1.jar is RESOLVED as shared generation
+support and modification of existing components, with no independent family.
+Archive SHA-256: d367ea1885486755dd8a162b8bb28404a35155e9fd34eba03108991363b6c70a.
+The complete 445-file payload contains 339 classes, 77 data JSON files, twenty
+conditional shipwreck NBT overlays, three META-INF files and six root files.
+There are no nested archives. The root idea.json describes a density-function
+wrapper outside the data resource tree; it supplies no independent site.
+
+Source 4fbbe70 covers the sole annotated NeoForge entry, utility class and
+registry dispatch. Source 37c3259 adds the remaining 51 common/server mixins
+and the direct configuration and built-in registry delegates. Four earlier
+mixin captures complete all 55 declared common/server hooks. The focused test
+binds thirteen existing source manifests, archive class bytes and disassemblies;
+it reuses the prior pool, alias, biome, modifier, processor and lifecycle work.
+The built-in registrations expose consumer-supplied codecs and dynamic
+registries. Registering a dungeon, well or jigsaw type does not instantiate an
+independent family. Existing consumer-provider dispositions account for those
+supplied definitions; unused generic codec implementations are not extra sites.
+
+Inspected hooks expose registry/biome fields, apply supplied biome/terrain/noise
+modifiers, filter resource loading predicates, assemble an existing jigsaw root,
+and select supplied processors or templates for existing vanilla pieces. Mansion
+floor selectors and the registry-aware mansion piece placer operate inside the
+existing mansion root. Villager tags select villager appearance. Configuration
+loading and platform lifecycle hooks register or load this behavior, without an
+independent root writer. Client integrated-server lifecycle remains distinct
+from the dedicated-server hook set.
+
+All 26 template lists resolve to 97 distinct templates in the exact pinned
+Minecraft inner server archive: fourteen nether fossils, thirteen ruined-portal
+pieces, twenty shipwreck pieces and fifty mansion rooms. These are components
+of four existing vanilla designs, not 97 families. The twenty overlay paths
+match the complete shipwreck selection exactly. NeoForge overlay selection is
+conditional on lithostitched:breaks_seed_parity; component membership does not
+assert that the overlay is enabled or that its bytes match vanilla templates.
+
+The two packaged modifiers compile raw templates and replace aliases for
+minecraft:trial_chambers. All four referenced trial-spawner tags resolve to
+existing vanilla pools. The sole packaged pool replaces the existing trial
+chamber entrance cap, retaining its vanilla template and copper-bulb processor.
+The 23 processor lists contain fourteen empty extension points, eight shipwreck
+block-palette substitutions and one per-piece random palette-list selection.
+These alter existing pieces. The remaining data consists of five density
+functions, three noise configurations, three biome regions, one noise definition
+and thirteen tags (seven villager types, one biome-source exclusion, one palette
+list and four trial-spawner pool lists). These define terrain, eligibility or
+component selection, without an independent authored site.
+
+```sh
+uv run pytest -q tests/item8/test_lithostitched_provider_scope.py
+uv run ruff check tests/item8/test_lithostitched_provider_scope.py
+uv run basedpyright tests/item8/test_lithostitched_provider_scope.py
+```
+
+Three focused cases pass (0.31s), with scoped Ruff and Basedpyright passing.
+The initial test used the wrong template-list namespace and included a processor
+tag as a processor list; exact packaged paths corrected both selectors. A
+subsequent test-edit syntax error was corrected before acceptance. No raw source
+or packaged evidence was changed. Census: 87 resolved providers, 49 open. Final
+canonical grouping and the eleven family attributes remain unfinished.
 
 ## Naturalist provider disposition
 
