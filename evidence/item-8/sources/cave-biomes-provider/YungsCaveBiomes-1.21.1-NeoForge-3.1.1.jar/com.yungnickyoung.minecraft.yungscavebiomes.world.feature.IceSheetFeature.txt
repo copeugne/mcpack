@@ -1,0 +1,185 @@
+Compiled from "IceSheetFeature.java"
+public class com.yungnickyoung.minecraft.yungscavebiomes.world.feature.IceSheetFeature extends net.minecraft.world.level.levelgen.feature.Feature<com.yungnickyoung.minecraft.yungscavebiomes.world.feature.IceSheetConfiguration> {
+  public com.yungnickyoung.minecraft.yungscavebiomes.world.feature.IceSheetFeature(com.mojang.serialization.Codec<com.yungnickyoung.minecraft.yungscavebiomes.world.feature.IceSheetConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<com.yungnickyoung.minecraft.yungscavebiomes.world.feature.IceSheetConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      14: checkcast     #21                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/IceSheetConfiguration
+      17: astore        4
+      19: aload         4
+      21: getfield      #23                 // Field com/yungnickyoung/minecraft/yungscavebiomes/world/feature/IceSheetConfiguration.searchRange:I
+      24: istore        5
+      26: aload_3
+      27: invokevirtual #27                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      30: astore        6
+      32: aload         6
+      34: invokevirtual #33                 // Method net/minecraft/core/BlockPos$MutableBlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      37: astore        7
+      39: iload         5
+      41: ineg
+      42: istore        8
+      44: iload         8
+      46: iload         5
+      48: if_icmpgt     346
+      51: iload         5
+      53: ineg
+      54: istore        9
+      56: iload         9
+      58: iload         5
+      60: if_icmpgt     340
+      63: iload         5
+      65: ineg
+      66: istore        10
+      68: iload         10
+      70: iload         5
+      72: if_icmpgt     334
+      75: iload         8
+      77: i2d
+      78: iload         5
+      80: i2d
+      81: ddiv
+      82: dstore        11
+      84: iload         9
+      86: i2d
+      87: iload         5
+      89: i2d
+      90: ddiv
+      91: dstore        13
+      93: iload         10
+      95: i2d
+      96: iload         5
+      98: i2d
+      99: ddiv
+     100: dstore        15
+     102: dload         11
+     104: dload         11
+     106: dmul
+     107: dload         13
+     109: dload         13
+     111: dmul
+     112: dadd
+     113: dload         15
+     115: dload         15
+     117: dmul
+     118: dadd
+     119: dconst_1
+     120: dcmpl
+     121: ifle          127
+     124: goto          328
+     127: aload         6
+     129: aload_3
+     130: iload         8
+     132: iload         9
+     134: iload         10
+     136: invokevirtual #36                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setWithOffset:(Lnet/minecraft/core/Vec3i;III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     139: pop
+     140: aload_2
+     141: aload         6
+     143: invokeinterface #40,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     148: astore        17
+     150: aload         17
+     152: invokestatic  #46                 // Method isAirOrWater:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+     155: ifne          161
+     158: goto          328
+     161: aload         4
+     163: getfield      #52                 // Field com/yungnickyoung/minecraft/yungscavebiomes/world/feature/IceSheetConfiguration.validDirections:Ljava/util/List;
+     166: invokeinterface #56,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     171: astore        18
+     173: aload         18
+     175: invokeinterface #62,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     180: ifeq          269
+     183: aload         18
+     185: invokeinterface #68,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     190: checkcast     #72                 // class net/minecraft/core/Direction
+     193: astore        19
+     195: aload         7
+     197: aload         6
+     199: aload         19
+     201: invokevirtual #74                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setWithOffset:(Lnet/minecraft/core/Vec3i;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     204: pop
+     205: aload_2
+     206: aload         7
+     208: invokeinterface #40,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     213: astore        20
+     215: aload         20
+     217: getstatic     #77                 // Field com/yungnickyoung/minecraft/yungscavebiomes/module/BlockModule.ICE_SHEET_FEATURE_AVOID:Lnet/minecraft/tags/TagKey;
+     220: invokevirtual #83                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     223: ifeq          229
+     226: goto          173
+     229: getstatic     #89                 // Field com/yungnickyoung/minecraft/yungscavebiomes/module/BlockModule.ICE_SHEET:Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock;
+     232: invokevirtual #93                 // Method com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock.get:()Ljava/lang/Object;
+     235: checkcast     #98                 // class com/yungnickyoung/minecraft/yungscavebiomes/block/IceSheetBlock
+     238: astore        21
+     240: aload         21
+     242: aload         17
+     244: aload_2
+     245: aload         6
+     247: aload         19
+     249: invokevirtual #100                // Method com/yungnickyoung/minecraft/yungscavebiomes/block/IceSheetBlock.getStateForPlacement:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/level/block/state/BlockState;
+     252: astore        22
+     254: aload         22
+     256: ifnonnull     262
+     259: goto          173
+     262: aload         22
+     264: astore        17
+     266: goto          173
+     269: aload         17
+     271: getstatic     #89                 // Field com/yungnickyoung/minecraft/yungscavebiomes/module/BlockModule.ICE_SHEET:Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock;
+     274: invokevirtual #93                 // Method com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock.get:()Ljava/lang/Object;
+     277: checkcast     #104                // class net/minecraft/world/level/block/Block
+     280: invokevirtual #106                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     283: ifeq          328
+     286: aload         17
+     288: getstatic     #109                // Field com/yungnickyoung/minecraft/yungscavebiomes/block/IceSheetBlock.GROWTH_DISTANCE:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+     291: iconst_3
+     292: invokestatic  #113                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     295: invokevirtual #119                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     298: checkcast     #84                 // class net/minecraft/world/level/block/state/BlockState
+     301: astore        17
+     303: aload_2
+     304: aload         6
+     306: aload         17
+     308: iconst_3
+     309: invokeinterface #123,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     314: pop
+     315: aload_2
+     316: aload         6
+     318: invokeinterface #127,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getChunk:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/chunk/ChunkAccess;
+     323: aload         6
+     325: invokevirtual #131                // Method net/minecraft/world/level/chunk/ChunkAccess.markPosForPostprocessing:(Lnet/minecraft/core/BlockPos;)V
+     328: iinc          10, 1
+     331: goto          68
+     334: iinc          9, 1
+     337: goto          56
+     340: iinc          8, 1
+     343: goto          44
+     346: iconst_1
+     347: ireturn
+
+  private static boolean isAirOrWater(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: invokevirtual #137                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+       4: ifne          17
+       7: aload_0
+       8: getstatic     #140                // Field net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+      11: invokevirtual #106                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      14: ifeq          21
+      17: iconst_1
+      18: goto          22
+      21: iconst_0
+      22: ireturn
+}

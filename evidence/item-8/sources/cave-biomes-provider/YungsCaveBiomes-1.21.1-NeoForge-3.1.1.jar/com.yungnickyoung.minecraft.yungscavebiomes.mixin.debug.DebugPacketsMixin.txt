@@ -1,0 +1,437 @@
+Classfile YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar!/com/yungnickyoung/minecraft/yungscavebiomes/mixin/debug/DebugPacketsMixin.class
+  Last modified Aug 21, 2025; size 5489 bytes
+  SHA-256 checksum ce2e071e68d6cd2eef318de708f454fbe7f11a6c59c4ca2cba1314a5235b1018
+  Compiled from "DebugPacketsMixin.java"
+public abstract class com.yungnickyoung.minecraft.yungscavebiomes.mixin.debug.DebugPacketsMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #65                         // com/yungnickyoung/minecraft/yungscavebiomes/mixin/debug/DebugPacketsMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 6, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Class              #8            // net/minecraft/server/level/ServerLevel
+    #8 = Utf8               net/minecraft/server/level/ServerLevel
+    #9 = Fieldref           #10.#11       // com/yungnickyoung/minecraft/yungscavebiomes/YungsCaveBiomesCommon.DEBUG_RENDERING:Z
+   #10 = Class              #12           // com/yungnickyoung/minecraft/yungscavebiomes/YungsCaveBiomesCommon
+   #11 = NameAndType        #13:#14       // DEBUG_RENDERING:Z
+   #12 = Utf8               com/yungnickyoung/minecraft/yungscavebiomes/YungsCaveBiomesCommon
+   #13 = Utf8               DEBUG_RENDERING
+   #14 = Utf8               Z
+   #15 = Methodref          #16.#17       // net/minecraft/world/entity/ai/goal/GoalSelector.getAvailableGoals:()Ljava/util/Set;
+   #16 = Class              #18           // net/minecraft/world/entity/ai/goal/GoalSelector
+   #17 = NameAndType        #19:#20       // getAvailableGoals:()Ljava/util/Set;
+   #18 = Utf8               net/minecraft/world/entity/ai/goal/GoalSelector
+   #19 = Utf8               getAvailableGoals
+   #20 = Utf8               ()Ljava/util/Set;
+   #21 = InterfaceMethodref #22.#23       // java/util/Set.stream:()Ljava/util/stream/Stream;
+   #22 = Class              #24           // java/util/Set
+   #23 = NameAndType        #25:#26       // stream:()Ljava/util/stream/Stream;
+   #24 = Utf8               java/util/Set
+   #25 = Utf8               stream
+   #26 = Utf8               ()Ljava/util/stream/Stream;
+   #27 = InvokeDynamic      #0:#28        // #0:compare:()Ljava/util/Comparator;
+   #28 = NameAndType        #29:#30       // compare:()Ljava/util/Comparator;
+   #29 = Utf8               compare
+   #30 = Utf8               ()Ljava/util/Comparator;
+   #31 = InterfaceMethodref #32.#33       // java/util/stream/Stream.sorted:(Ljava/util/Comparator;)Ljava/util/stream/Stream;
+   #32 = Class              #34           // java/util/stream/Stream
+   #33 = NameAndType        #35:#36       // sorted:(Ljava/util/Comparator;)Ljava/util/stream/Stream;
+   #34 = Utf8               java/util/stream/Stream
+   #35 = Utf8               sorted
+   #36 = Utf8               (Ljava/util/Comparator;)Ljava/util/stream/Stream;
+   #37 = InvokeDynamic      #1:#38        // #1:apply:()Ljava/util/function/Function;
+   #38 = NameAndType        #39:#40       // apply:()Ljava/util/function/Function;
+   #39 = Utf8               apply
+   #40 = Utf8               ()Ljava/util/function/Function;
+   #41 = InterfaceMethodref #32.#42       // java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+   #42 = NameAndType        #43:#44       // map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+   #43 = Utf8               map
+   #44 = Utf8               (Ljava/util/function/Function;)Ljava/util/stream/Stream;
+   #45 = InterfaceMethodref #32.#46       // java/util/stream/Stream.toList:()Ljava/util/List;
+   #46 = NameAndType        #47:#48       // toList:()Ljava/util/List;
+   #47 = Utf8               toList
+   #48 = Utf8               ()Ljava/util/List;
+   #49 = Class              #50           // net/minecraft/network/protocol/common/custom/GoalDebugPayload
+   #50 = Utf8               net/minecraft/network/protocol/common/custom/GoalDebugPayload
+   #51 = Methodref          #52.#53       // net/minecraft/world/entity/Mob.getId:()I
+   #52 = Class              #54           // net/minecraft/world/entity/Mob
+   #53 = NameAndType        #55:#56       // getId:()I
+   #54 = Utf8               net/minecraft/world/entity/Mob
+   #55 = Utf8               getId
+   #56 = Utf8               ()I
+   #57 = Methodref          #52.#58       // net/minecraft/world/entity/Mob.blockPosition:()Lnet/minecraft/core/BlockPos;
+   #58 = NameAndType        #59:#60       // blockPosition:()Lnet/minecraft/core/BlockPos;
+   #59 = Utf8               blockPosition
+   #60 = Utf8               ()Lnet/minecraft/core/BlockPos;
+   #61 = Methodref          #49.#62       // net/minecraft/network/protocol/common/custom/GoalDebugPayload."<init>":(ILnet/minecraft/core/BlockPos;Ljava/util/List;)V
+   #62 = NameAndType        #5:#63        // "<init>":(ILnet/minecraft/core/BlockPos;Ljava/util/List;)V
+   #63 = Utf8               (ILnet/minecraft/core/BlockPos;Ljava/util/List;)V
+   #64 = Methodref          #65.#66       // com/yungnickyoung/minecraft/yungscavebiomes/mixin/debug/DebugPacketsMixin.sendPacketToAllPlayers:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+   #65 = Class              #67           // com/yungnickyoung/minecraft/yungscavebiomes/mixin/debug/DebugPacketsMixin
+   #66 = NameAndType        #68:#69       // sendPacketToAllPlayers:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+   #67 = Utf8               com/yungnickyoung/minecraft/yungscavebiomes/mixin/debug/DebugPacketsMixin
+   #68 = Utf8               sendPacketToAllPlayers
+   #69 = Utf8               (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+   #70 = Methodref          #71.#72       // net/minecraft/world/level/pathfinder/Path.copy:()Lnet/minecraft/world/level/pathfinder/Path;
+   #71 = Class              #73           // net/minecraft/world/level/pathfinder/Path
+   #72 = NameAndType        #74:#75       // copy:()Lnet/minecraft/world/level/pathfinder/Path;
+   #73 = Utf8               net/minecraft/world/level/pathfinder/Path
+   #74 = Utf8               copy
+   #75 = Utf8               ()Lnet/minecraft/world/level/pathfinder/Path;
+   #76 = Class              #77           // net/minecraft/network/protocol/common/custom/PathfindingDebugPayload
+   #77 = Utf8               net/minecraft/network/protocol/common/custom/PathfindingDebugPayload
+   #78 = Methodref          #76.#79       // net/minecraft/network/protocol/common/custom/PathfindingDebugPayload."<init>":(ILnet/minecraft/world/level/pathfinder/Path;F)V
+   #79 = NameAndType        #5:#80        // "<init>":(ILnet/minecraft/world/level/pathfinder/Path;F)V
+   #80 = Utf8               (ILnet/minecraft/world/level/pathfinder/Path;F)V
+   #81 = Class              #82           // net/minecraft/network/protocol/common/custom/GoalDebugPayload$DebugGoal
+   #82 = Utf8               net/minecraft/network/protocol/common/custom/GoalDebugPayload$DebugGoal
+   #83 = Methodref          #84.#85       // net/minecraft/world/entity/ai/goal/WrappedGoal.getPriority:()I
+   #84 = Class              #86           // net/minecraft/world/entity/ai/goal/WrappedGoal
+   #85 = NameAndType        #87:#56       // getPriority:()I
+   #86 = Utf8               net/minecraft/world/entity/ai/goal/WrappedGoal
+   #87 = Utf8               getPriority
+   #88 = Methodref          #84.#89       // net/minecraft/world/entity/ai/goal/WrappedGoal.isRunning:()Z
+   #89 = NameAndType        #90:#91       // isRunning:()Z
+   #90 = Utf8               isRunning
+   #91 = Utf8               ()Z
+   #92 = Methodref          #84.#93       // net/minecraft/world/entity/ai/goal/WrappedGoal.getGoal:()Lnet/minecraft/world/entity/ai/goal/Goal;
+   #93 = NameAndType        #94:#95       // getGoal:()Lnet/minecraft/world/entity/ai/goal/Goal;
+   #94 = Utf8               getGoal
+   #95 = Utf8               ()Lnet/minecraft/world/entity/ai/goal/Goal;
+   #96 = Methodref          #97.#98       // net/minecraft/world/entity/ai/goal/Goal.toString:()Ljava/lang/String;
+   #97 = Class              #99           // net/minecraft/world/entity/ai/goal/Goal
+   #98 = NameAndType        #100:#101     // toString:()Ljava/lang/String;
+   #99 = Utf8               net/minecraft/world/entity/ai/goal/Goal
+  #100 = Utf8               toString
+  #101 = Utf8               ()Ljava/lang/String;
+  #102 = Methodref          #81.#103      // net/minecraft/network/protocol/common/custom/GoalDebugPayload$DebugGoal."<init>":(IZLjava/lang/String;)V
+  #103 = NameAndType        #5:#104       // "<init>":(IZLjava/lang/String;)V
+  #104 = Utf8               (IZLjava/lang/String;)V
+  #105 = Methodref          #106.#107     // java/lang/Integer.compare:(II)I
+  #106 = Class              #108          // java/lang/Integer
+  #107 = NameAndType        #29:#109      // compare:(II)I
+  #108 = Utf8               java/lang/Integer
+  #109 = Utf8               (II)I
+  #110 = Utf8               Code
+  #111 = Utf8               LineNumberTable
+  #112 = Utf8               LocalVariableTable
+  #113 = Utf8               this
+  #114 = Utf8               Lcom/yungnickyoung/minecraft/yungscavebiomes/mixin/debug/DebugPacketsMixin;
+  #115 = Utf8               $$0
+  #116 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+  #117 = Utf8               $$1
+  #118 = Utf8               Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;
+  #119 = Utf8               RuntimeVisibleAnnotations
+  #120 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #121 = Utf8               yungscavebiomes_debugSendGoalSelector
+  #122 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Mob;Lnet/minecraft/world/entity/ai/goal/GoalSelector;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #123 = Utf8               debugGoals
+  #124 = Utf8               Ljava/util/List;
+  #125 = Utf8               payload
+  #126 = Utf8               Lnet/minecraft/network/protocol/common/custom/GoalDebugPayload;
+  #127 = Utf8               serverLevel
+  #128 = Utf8               level
+  #129 = Utf8               Lnet/minecraft/world/level/Level;
+  #130 = Utf8               mob
+  #131 = Utf8               Lnet/minecraft/world/entity/Mob;
+  #132 = Utf8               goalSelector
+  #133 = Utf8               Lnet/minecraft/world/entity/ai/goal/GoalSelector;
+  #134 = Utf8               ci
+  #135 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #136 = Utf8               LocalVariableTypeTable
+  #137 = Utf8               Ljava/util/List<Lnet/minecraft/network/protocol/common/custom/GoalDebugPayload$DebugGoal;>;
+  #138 = Utf8               StackMapTable
+  #139 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #140 = Utf8               method
+  #141 = Utf8               sendGoalSelector
+  #142 = Utf8               at
+  #143 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #144 = Utf8               value
+  #145 = Utf8               HEAD
+  #146 = Utf8               yungscavebiomes_debugPathfinding
+  #147 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Mob;Lnet/minecraft/world/level/pathfinder/Path;FLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #148 = Utf8               Lnet/minecraft/network/protocol/common/custom/PathfindingDebugPayload;
+  #149 = Utf8               path
+  #150 = Utf8               Lnet/minecraft/world/level/pathfinder/Path;
+  #151 = Utf8               maxDistanceToWaypoint
+  #152 = Utf8               F
+  #153 = Utf8               pathCopy
+  #154 = Utf8               sendPathFindingPacket
+  #155 = Utf8               RuntimeVisibleParameterAnnotations
+  #156 = Utf8               Ljavax/annotation/Nullable;
+  #157 = Utf8               lambda$yungscavebiomes_debugSendGoalSelector$1
+  #158 = Utf8               (Lnet/minecraft/world/entity/ai/goal/WrappedGoal;)Lnet/minecraft/network/protocol/common/custom/GoalDebugPayload$DebugGoal;
+  #159 = Utf8               goal
+  #160 = Utf8               Lnet/minecraft/world/entity/ai/goal/WrappedGoal;
+  #161 = Utf8               lambda$yungscavebiomes_debugSendGoalSelector$0
+  #162 = Utf8               (Lnet/minecraft/world/entity/ai/goal/WrappedGoal;Lnet/minecraft/world/entity/ai/goal/WrappedGoal;)I
+  #163 = Utf8               a
+  #164 = Utf8               b
+  #165 = Utf8               SourceFile
+  #166 = Utf8               DebugPacketsMixin.java
+  #167 = Utf8               RuntimeInvisibleAnnotations
+  #168 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #169 = Utf8               Lnet/minecraft/network/protocol/game/DebugPackets;
+  #170 = Utf8               BootstrapMethods
+  #171 = MethodType         #172          //  (Ljava/lang/Object;Ljava/lang/Object;)I
+  #172 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)I
+  #173 = MethodHandle       6:#174        // REF_invokeStatic com/yungnickyoung/minecraft/yungscavebiomes/mixin/debug/DebugPacketsMixin.lambda$yungscavebiomes_debugSendGoalSelector$0:(Lnet/minecraft/world/entity/ai/goal/WrappedGoal;Lnet/minecraft/world/entity/ai/goal/WrappedGoal;)I
+  #174 = Methodref          #65.#175      // com/yungnickyoung/minecraft/yungscavebiomes/mixin/debug/DebugPacketsMixin.lambda$yungscavebiomes_debugSendGoalSelector$0:(Lnet/minecraft/world/entity/ai/goal/WrappedGoal;Lnet/minecraft/world/entity/ai/goal/WrappedGoal;)I
+  #175 = NameAndType        #161:#162     // lambda$yungscavebiomes_debugSendGoalSelector$0:(Lnet/minecraft/world/entity/ai/goal/WrappedGoal;Lnet/minecraft/world/entity/ai/goal/WrappedGoal;)I
+  #176 = MethodType         #162          //  (Lnet/minecraft/world/entity/ai/goal/WrappedGoal;Lnet/minecraft/world/entity/ai/goal/WrappedGoal;)I
+  #177 = MethodType         #178          //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #178 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #179 = MethodHandle       6:#180        // REF_invokeStatic com/yungnickyoung/minecraft/yungscavebiomes/mixin/debug/DebugPacketsMixin.lambda$yungscavebiomes_debugSendGoalSelector$1:(Lnet/minecraft/world/entity/ai/goal/WrappedGoal;)Lnet/minecraft/network/protocol/common/custom/GoalDebugPayload$DebugGoal;
+  #180 = Methodref          #65.#181      // com/yungnickyoung/minecraft/yungscavebiomes/mixin/debug/DebugPacketsMixin.lambda$yungscavebiomes_debugSendGoalSelector$1:(Lnet/minecraft/world/entity/ai/goal/WrappedGoal;)Lnet/minecraft/network/protocol/common/custom/GoalDebugPayload$DebugGoal;
+  #181 = NameAndType        #157:#158     // lambda$yungscavebiomes_debugSendGoalSelector$1:(Lnet/minecraft/world/entity/ai/goal/WrappedGoal;)Lnet/minecraft/network/protocol/common/custom/GoalDebugPayload$DebugGoal;
+  #182 = MethodType         #158          //  (Lnet/minecraft/world/entity/ai/goal/WrappedGoal;)Lnet/minecraft/network/protocol/common/custom/GoalDebugPayload$DebugGoal;
+  #183 = MethodHandle       6:#184        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #184 = Methodref          #185.#186     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #185 = Class              #187          // java/lang/invoke/LambdaMetafactory
+  #186 = NameAndType        #188:#189     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #187 = Utf8               java/lang/invoke/LambdaMetafactory
+  #188 = Utf8               metafactory
+  #189 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #190 = Utf8               InnerClasses
+  #191 = Utf8               DebugGoal
+  #192 = Class              #193          // java/lang/invoke/MethodHandles$Lookup
+  #193 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #194 = Class              #195          // java/lang/invoke/MethodHandles
+  #195 = Utf8               java/lang/invoke/MethodHandles
+  #196 = Utf8               Lookup
+{
+  public com.yungnickyoung.minecraft.yungscavebiomes.mixin.debug.DebugPacketsMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 26: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/yungnickyoung/minecraft/yungscavebiomes/mixin/debug/DebugPacketsMixin;
+
+  private static void sendPacketToAllPlayers(net.minecraft.server.level.ServerLevel, net.minecraft.network.protocol.common.custom.CustomPacketPayload);
+    descriptor: (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=0, locals=2, args_size=2
+         0: return
+      LineNumberTable:
+        line 29: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       1     0   $$0   Lnet/minecraft/server/level/ServerLevel;
+            0       1     1   $$1   Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;
+    RuntimeVisibleAnnotations:
+      0: #120()
+        org.spongepowered.asm.mixin.Shadow
+
+  private static void yungscavebiomes_debugSendGoalSelector(net.minecraft.world.level.Level, net.minecraft.world.entity.Mob, net.minecraft.world.entity.ai.goal.GoalSelector, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Mob;Lnet/minecraft/world/entity/ai/goal/GoalSelector;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=5, locals=7, args_size=4
+         0: aload_0
+         1: instanceof    #7                  // class net/minecraft/server/level/ServerLevel
+         4: ifeq          81
+         7: aload_0
+         8: checkcast     #7                  // class net/minecraft/server/level/ServerLevel
+        11: astore        4
+        13: getstatic     #9                  // Field com/yungnickyoung/minecraft/yungscavebiomes/YungsCaveBiomesCommon.DEBUG_RENDERING:Z
+        16: ifeq          81
+        19: aload_2
+        20: invokevirtual #15                 // Method net/minecraft/world/entity/ai/goal/GoalSelector.getAvailableGoals:()Ljava/util/Set;
+        23: invokeinterface #21,  1           // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+        28: invokedynamic #27,  0             // InvokeDynamic #0:compare:()Ljava/util/Comparator;
+        33: invokeinterface #31,  2           // InterfaceMethod java/util/stream/Stream.sorted:(Ljava/util/Comparator;)Ljava/util/stream/Stream;
+        38: invokedynamic #37,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+        43: invokeinterface #41,  2           // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+        48: invokeinterface #45,  1           // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+        53: astore        5
+        55: new           #49                 // class net/minecraft/network/protocol/common/custom/GoalDebugPayload
+        58: dup
+        59: aload_1
+        60: invokevirtual #51                 // Method net/minecraft/world/entity/Mob.getId:()I
+        63: aload_1
+        64: invokevirtual #57                 // Method net/minecraft/world/entity/Mob.blockPosition:()Lnet/minecraft/core/BlockPos;
+        67: aload         5
+        69: invokespecial #61                 // Method net/minecraft/network/protocol/common/custom/GoalDebugPayload."<init>":(ILnet/minecraft/core/BlockPos;Ljava/util/List;)V
+        72: astore        6
+        74: aload         4
+        76: aload         6
+        78: invokestatic  #64                 // Method sendPacketToAllPlayers:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+        81: return
+      LineNumberTable:
+        line 33: 0
+        line 34: 19
+        line 35: 33
+        line 36: 43
+        line 37: 48
+        line 39: 55
+        line 40: 74
+        line 42: 81
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           55      26     5 debugGoals   Ljava/util/List;
+           74       7     6 payload   Lnet/minecraft/network/protocol/common/custom/GoalDebugPayload;
+           13      68     4 serverLevel   Lnet/minecraft/server/level/ServerLevel;
+            0      82     0 level   Lnet/minecraft/world/level/Level;
+            0      82     1   mob   Lnet/minecraft/world/entity/Mob;
+            0      82     2 goalSelector   Lnet/minecraft/world/entity/ai/goal/GoalSelector;
+            0      82     3    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           55      26     5 debugGoals   Ljava/util/List<Lnet/minecraft/network/protocol/common/custom/GoalDebugPayload$DebugGoal;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 81
+    RuntimeVisibleAnnotations:
+      0: #139(#140=[s#141],#142=[@#143(#144=s#145)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["sendGoalSelector"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+
+  private static void yungscavebiomes_debugPathfinding(net.minecraft.world.level.Level, net.minecraft.world.entity.Mob, net.minecraft.world.level.pathfinder.Path, float, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Mob;Lnet/minecraft/world/level/pathfinder/Path;FLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=5, locals=8, args_size=5
+         0: aload_2
+         1: ifnonnull     5
+         4: return
+         5: aload_2
+         6: invokevirtual #70                 // Method net/minecraft/world/level/pathfinder/Path.copy:()Lnet/minecraft/world/level/pathfinder/Path;
+         9: astore        5
+        11: aload_0
+        12: instanceof    #7                  // class net/minecraft/server/level/ServerLevel
+        15: ifeq          53
+        18: aload_0
+        19: checkcast     #7                  // class net/minecraft/server/level/ServerLevel
+        22: astore        6
+        24: getstatic     #9                  // Field com/yungnickyoung/minecraft/yungscavebiomes/YungsCaveBiomesCommon.DEBUG_RENDERING:Z
+        27: ifeq          53
+        30: new           #76                 // class net/minecraft/network/protocol/common/custom/PathfindingDebugPayload
+        33: dup
+        34: aload_1
+        35: invokevirtual #51                 // Method net/minecraft/world/entity/Mob.getId:()I
+        38: aload         5
+        40: fload_3
+        41: invokespecial #78                 // Method net/minecraft/network/protocol/common/custom/PathfindingDebugPayload."<init>":(ILnet/minecraft/world/level/pathfinder/Path;F)V
+        44: astore        7
+        46: aload         6
+        48: aload         7
+        50: invokestatic  #64                 // Method sendPacketToAllPlayers:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+        53: return
+      LineNumberTable:
+        line 46: 0
+        line 48: 5
+        line 50: 11
+        line 59: 30
+        line 60: 46
+        line 62: 53
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           46       7     7 payload   Lnet/minecraft/network/protocol/common/custom/PathfindingDebugPayload;
+           24      29     6 serverLevel   Lnet/minecraft/server/level/ServerLevel;
+            0      54     0 level   Lnet/minecraft/world/level/Level;
+            0      54     1   mob   Lnet/minecraft/world/entity/Mob;
+            0      54     2  path   Lnet/minecraft/world/level/pathfinder/Path;
+            0      54     3 maxDistanceToWaypoint   F
+            0      54     4    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+           11      43     5 pathCopy   Lnet/minecraft/world/level/pathfinder/Path;
+      StackMapTable: number_of_entries = 2
+        frame_type = 5 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 47
+          locals = [ class net/minecraft/world/level/pathfinder/Path ]
+    RuntimeVisibleAnnotations:
+      0: #139(#140=[s#154],#142=[@#143(#144=s#145)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["sendPathFindingPacket"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+    RuntimeVisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+        0: #156()
+          javax.annotation.Nullable
+      parameter 3:
+      parameter 4:
+
+  private static net.minecraft.network.protocol.common.custom.GoalDebugPayload$DebugGoal lambda$yungscavebiomes_debugSendGoalSelector$1(net.minecraft.world.entity.ai.goal.WrappedGoal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/WrappedGoal;)Lnet/minecraft/network/protocol/common/custom/GoalDebugPayload$DebugGoal;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=5, locals=1, args_size=1
+         0: new           #81                 // class net/minecraft/network/protocol/common/custom/GoalDebugPayload$DebugGoal
+         3: dup
+         4: aload_0
+         5: invokevirtual #83                 // Method net/minecraft/world/entity/ai/goal/WrappedGoal.getPriority:()I
+         8: aload_0
+         9: invokevirtual #88                 // Method net/minecraft/world/entity/ai/goal/WrappedGoal.isRunning:()Z
+        12: aload_0
+        13: invokevirtual #92                 // Method net/minecraft/world/entity/ai/goal/WrappedGoal.getGoal:()Lnet/minecraft/world/entity/ai/goal/Goal;
+        16: invokevirtual #96                 // Method net/minecraft/world/entity/ai/goal/Goal.toString:()Ljava/lang/String;
+        19: invokespecial #102                // Method net/minecraft/network/protocol/common/custom/GoalDebugPayload$DebugGoal."<init>":(IZLjava/lang/String;)V
+        22: areturn
+      LineNumberTable:
+        line 36: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      23     0  goal   Lnet/minecraft/world/entity/ai/goal/WrappedGoal;
+
+  private static int lambda$yungscavebiomes_debugSendGoalSelector$0(net.minecraft.world.entity.ai.goal.WrappedGoal, net.minecraft.world.entity.ai.goal.WrappedGoal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/WrappedGoal;Lnet/minecraft/world/entity/ai/goal/WrappedGoal;)I
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: invokevirtual #83                 // Method net/minecraft/world/entity/ai/goal/WrappedGoal.getPriority:()I
+         4: aload_0
+         5: invokevirtual #83                 // Method net/minecraft/world/entity/ai/goal/WrappedGoal.getPriority:()I
+         8: invokestatic  #105                // Method java/lang/Integer.compare:(II)I
+        11: ireturn
+      LineNumberTable:
+        line 35: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0     a   Lnet/minecraft/world/entity/ai/goal/WrappedGoal;
+            0      12     1     b   Lnet/minecraft/world/entity/ai/goal/WrappedGoal;
+}
+SourceFile: "DebugPacketsMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #168(#144=[c#169])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/network/protocol/game/DebugPackets;]
+    )
+BootstrapMethods:
+  0: #183 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #171 (Ljava/lang/Object;Ljava/lang/Object;)I
+      #173 REF_invokeStatic com/yungnickyoung/minecraft/yungscavebiomes/mixin/debug/DebugPacketsMixin.lambda$yungscavebiomes_debugSendGoalSelector$0:(Lnet/minecraft/world/entity/ai/goal/WrappedGoal;Lnet/minecraft/world/entity/ai/goal/WrappedGoal;)I
+      #176 (Lnet/minecraft/world/entity/ai/goal/WrappedGoal;Lnet/minecraft/world/entity/ai/goal/WrappedGoal;)I
+  1: #183 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #177 (Ljava/lang/Object;)Ljava/lang/Object;
+      #179 REF_invokeStatic com/yungnickyoung/minecraft/yungscavebiomes/mixin/debug/DebugPacketsMixin.lambda$yungscavebiomes_debugSendGoalSelector$1:(Lnet/minecraft/world/entity/ai/goal/WrappedGoal;)Lnet/minecraft/network/protocol/common/custom/GoalDebugPayload$DebugGoal;
+      #182 (Lnet/minecraft/world/entity/ai/goal/WrappedGoal;)Lnet/minecraft/network/protocol/common/custom/GoalDebugPayload$DebugGoal;
+InnerClasses:
+  public static final #191= #81 of #49;   // DebugGoal=class net/minecraft/network/protocol/common/custom/GoalDebugPayload$DebugGoal of class net/minecraft/network/protocol/common/custom/GoalDebugPayload
+  public static final #196= #192 of #194; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles

@@ -1,0 +1,100 @@
+Compiled from "CeilingReplaceFeature.java"
+public class com.yungnickyoung.minecraft.yungscavebiomes.world.feature.CeilingReplaceFeature extends net.minecraft.world.level.levelgen.feature.Feature<com.yungnickyoung.minecraft.yungscavebiomes.world.feature.CeilingReplaceConfig> {
+  private static final double NOISE_FREQUENCY_XZ = 0.15d;
+
+  private static final double NOISE_FREQUENCY_Y = 0.15d;
+
+  private static final long NOISE_SEED_FLIP_MASK = -7005860059682304583l;
+
+  public com.yungnickyoung.minecraft.yungscavebiomes.world.feature.CeilingReplaceFeature(com.mojang.serialization.Codec<com.yungnickyoung.minecraft.yungscavebiomes.world.feature.CeilingReplaceConfig>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<com.yungnickyoung.minecraft.yungscavebiomes.world.feature.CeilingReplaceConfig>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      14: checkcast     #21                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/CeilingReplaceConfig
+      17: getfield      #23                 // Field com/yungnickyoung/minecraft/yungscavebiomes/world/feature/CeilingReplaceConfig.radiusMin:I
+      20: istore        4
+      22: aload_1
+      23: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      26: checkcast     #21                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/CeilingReplaceConfig
+      29: getfield      #27                 // Field com/yungnickyoung/minecraft/yungscavebiomes/world/feature/CeilingReplaceConfig.radiusMax:I
+      32: istore        5
+      34: aload_1
+      35: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      38: checkcast     #21                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/CeilingReplaceConfig
+      41: getfield      #30                 // Field com/yungnickyoung/minecraft/yungscavebiomes/world/feature/CeilingReplaceConfig.matches:Ljava/util/List;
+      44: astore        6
+      46: aload_1
+      47: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      50: invokeinterface #34,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getSeed:()J
+      55: ldc2_w        #42                 // long -7005860059682304583l
+      58: lxor
+      59: lstore        7
+      61: new           #44                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/util/NoisySphereUtils$NoisySphereIterable
+      64: dup
+      65: aload_3
+      66: lload         7
+      68: ldc2_w        #46                 // double 0.15d
+      71: ldc2_w        #46                 // double 0.15d
+      74: iload         4
+      76: iload         5
+      78: invokespecial #48                 // Method com/yungnickyoung/minecraft/yungscavebiomes/world/feature/util/NoisySphereUtils$NoisySphereIterable."<init>":(Lnet/minecraft/core/BlockPos;JDDII)V
+      81: invokevirtual #51                 // Method com/yungnickyoung/minecraft/yungscavebiomes/world/feature/util/NoisySphereUtils$NoisySphereIterable.iterator:()Ljava/util/Iterator;
+      84: astore        9
+      86: aload         9
+      88: invokeinterface #55,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      93: ifeq          198
+      96: aload         9
+      98: invokeinterface #61,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     103: checkcast     #65                 // class net/minecraft/core/BlockPos
+     106: astore        10
+     108: aload         6
+     110: aload_2
+     111: aload         10
+     113: invokeinterface #67,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     118: invokevirtual #71                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     121: invokeinterface #77,  2           // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+     126: ifeq          195
+     129: aload_1
+     130: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     133: checkcast     #21                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/CeilingReplaceConfig
+     136: getfield      #83                 // Field com/yungnickyoung/minecraft/yungscavebiomes/world/feature/CeilingReplaceConfig.width:I
+     139: istore        11
+     141: iload         11
+     143: iconst_1
+     144: if_icmplt     195
+     147: aload_2
+     148: aload         10
+     150: iload         11
+     152: invokevirtual #86                 // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+     155: invokeinterface #67,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     160: invokevirtual #90                 // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     163: ifeq          189
+     166: aload_2
+     167: aload         10
+     169: aload_1
+     170: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     173: checkcast     #21                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/CeilingReplaceConfig
+     176: getfield      #93                 // Field com/yungnickyoung/minecraft/yungscavebiomes/world/feature/CeilingReplaceConfig.place:Lnet/minecraft/world/level/block/state/BlockState;
+     179: iconst_3
+     180: invokeinterface #97,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     185: pop
+     186: goto          195
+     189: iinc          11, -1
+     192: goto          141
+     195: goto          86
+     198: iconst_1
+     199: ireturn
+}
