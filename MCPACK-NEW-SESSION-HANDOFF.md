@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-06
 
+Latest checkpoint at 32b2d46: Better Mineshafts provider scope is closed,
+pushed and remote-ref verified. Census: 67 resolved providers, 69 open. Three
+focused cases and scoped quality checks pass. New source 26d2a97 reproduces
+exactly and complements the existing forty-class generator capture. All thirteen
+roots and the sole set remain the existing mineshaft group. Preserve the narrow
+far-chunk diagnostic suppression limitation recorded in provider-scope.md.
+
+Next reconcile Better Dungeons using betterdungeons-code, which already captures
+seven specialized generator classes. Initial archive inspection found five roots,
+227 templates, three declared mixins and both Forge/NeoForge vanilla-dungeon
+removal declarations. These are leads, not a closed disposition. Inspect remaining
+entry/module/service paths and link all components before updating its row.
+Do not repeat delivered Mineshafts work. Final census, canonical family count,
+remaining attributes and review/main merge are still open.
+
 Latest checkpoint at 9680555: Better End Island provider scope is closed,
 pushed and remote-ref verified. Census: 66 resolved providers, 70 open. Seven
 focused cases and scoped Ruff/Basedpyright pass. Nine remaining entry hooks in
