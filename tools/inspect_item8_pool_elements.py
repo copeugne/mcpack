@@ -926,6 +926,23 @@ CLASSES: tuple[str, ...] = (
     "com/craisinlord/idas/state/stateCache.class",
     "com/craisinlord/idas/state/stateRegion.class",
     "com/craisinlord/idas/tab/IDASTabs.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/BetterWitchHutsCommon.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/BetterWitchHutsNeoForge.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/config/BWHConfigNeoForge.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/mixin/LocateVanillaWitchHutCommandMixin.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/module/ConfigModule$General.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/module/ConfigModule.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/module/StructureProcessorTypeModule.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/services/IModulesLoader.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/services/IPlatformHelper.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/services/NeoForgeModulesLoader.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/services/NeoForgePlatformHelper.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/services/Services.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/world/processor/BrewingStandProcessor.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/world/processor/FenceLegProcessor.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/world/processor/LegProcessor.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/world/processor/PottedMushroomProcessor.class",
+    "com/yungnickyoung/minecraft/betterwitchhuts/world/processor/WitchCircleProcessor.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1059,6 +1076,11 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     }
                     and not name.endswith("ConfigGeneralNeoforge.class")
                     and not name.endswith("ConfigModuleNeoforge.class")
+                )
+                verbose |= (
+                    source.name == "YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar"
+                    and not name.endswith("ConfigGeneralNeoForge.class")
+                    and not name.endswith("ConfigModuleNeoForge.class")
                 )
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
                     "biomesoplenty/core/BiomesOPlenty.class",
