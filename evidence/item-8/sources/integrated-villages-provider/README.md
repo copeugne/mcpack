@@ -10,6 +10,7 @@ b53a485828da352b1a6a24cd2796aacf5d8360632b98c7dfba295f235d41ec00.
 
 ```sh
 uv run -m tools.inspect_item8_pool_elements \
+  --archive integrated_villages-1.3.3+1.21.1-neoforge.jar \
   --class-name architectury_inject_IntegratedVillages_common_dac55d1c3d7c43d0b24fcf81e4608720_81a8cfc75ab7849b22873acf463ab0d4326a7a023946e85fdc1fb3c982d0127bintegrated_villages1331211commondevjar/PlatformMethods.class \
   --class-name com/craisinlord/integrated_villages/IntegratedVillages.class \
   --class-name 'com/craisinlord/integrated_villages/config/ConfigModule$General.class' \

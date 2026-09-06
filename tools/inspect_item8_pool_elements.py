@@ -908,6 +908,24 @@ CLASSES: tuple[str, ...] = (
     "com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool$ExpandedPoolEntry.class",
     "com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool.class",
     "com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager.class",
+    "architectury_inject_IDAS_common_dac55d1c3d7c43d0b24fcf81e4608720_ada83c3f6ff40818e1642131a53d09761e2621fbd5744848c87d68aaef472d6eidas11371211commondevjar/PlatformMethods.class",
+    "com/craisinlord/idas/IDAS.class",
+    "com/craisinlord/idas/IDASTags.class",
+    "com/craisinlord/idas/config/ConfigModule$General.class",
+    "com/craisinlord/idas/config/ConfigModule.class",
+    "com/craisinlord/idas/config/IDASConfigNeoforge.class",
+    "com/craisinlord/idas/item/IDASItems.class",
+    "com/craisinlord/idas/mixins/LabyrinthBossKilledMixin.class",
+    "com/craisinlord/idas/mixins/LocateStructuresCommandMixin.class",
+    "com/craisinlord/idas/mixins/ServerLevelMixin.class",
+    "com/craisinlord/idas/mixins/ServerPlayerTickMixin.class",
+    "com/craisinlord/idas/neoforge/IDASNeoForgeRegistries.class",
+    "com/craisinlord/idas/neoforge/IDASNeoforge.class",
+    "com/craisinlord/idas/sound/IDASSounds.class",
+    "com/craisinlord/idas/state/IStateCacheProvider.class",
+    "com/craisinlord/idas/state/stateCache.class",
+    "com/craisinlord/idas/state/stateRegion.class",
+    "com/craisinlord/idas/tab/IDASTabs.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1035,7 +1053,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
                 ))
                 verbose |= (
-                    source.name == "integrated_villages-1.3.3+1.21.1-neoforge.jar"
+                    source.name in {
+                        "integrated_villages-1.3.3+1.21.1-neoforge.jar",
+                        "idas-1.13.7+1.21.1-neoforge.jar",
+                    }
                     and not name.endswith("ConfigGeneralNeoforge.class")
                     and not name.endswith("ConfigModuleNeoforge.class")
                 )
