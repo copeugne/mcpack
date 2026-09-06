@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Better Combat membership is resolved from aea34a1e, c6a937e0 and 60b953d3:
+player combat/weapon attributes, no independent generated family. Reuse Tiny
+Config captures: every nested member byte matches Village Taverns despite
+different archive hashes. Three focused cases and scoped checks pass. Whole
+providers: 115 resolved, 21 open. Working groups remain 410 and 100 explicitly
+provisional Moog records require decisions. Continue provider membership and
+canonical grouping before detailed attributes. Preserve combat effects; do not
+trace more generic Better Combat balance, team or network internals.
+
+
 Bookshelf membership is resolved from 3a315ed2 and 17cdf0d7: utility codecs,
 commands and consumer gameplay/loot APIs, no independent generated family. Full
 payload/entry/hook/service/source binding and scoped checks pass. Whole providers:

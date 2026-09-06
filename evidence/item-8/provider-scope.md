@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 114 of 136. The exact queue below has 22 open rows.
+Supported provider dispositions: 115 of 136. The exact queue below has 21 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -633,7 +633,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `attributefix-neoforge-1.21.1-21.1.3.jar` | `attributefix-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing attribute range configuration; no structure contribution. See small utility provider dispositions below. |
 | `azurelibarmor-neo-1.21.1-3.1.2.jar` | Sources a37e5b08 and 57ea6b5c; test_small_utility_provider_scope.py | RESOLVED: Item animation identity, synchronization and rendering support; no independent family. See AzureLib Armor disposition below. |
 | `bclib-21.0.24.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `bettercombat-neoforge-2.3.2+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `bettercombat-neoforge-2.3.2+1.21.1.jar` | aea34a1e entries; c6a937e0 resources; 60b953d3 team compatibility; reused Tiny Config. | RESOLVED: player combat and weapon attributes, no independent generated family. See Better Combat membership closure. |
 | `bettervillage-neoforge-1.21.1-3.3.1.jar` | `bettervillage-code` | RESOLVED: see Better Village provider disposition below. |
 | `bookshelf-neoforge-1.21.1-21.1.81.jar` | 3a315ed2 provider entries; 17cdf0d7 common initialization. | RESOLVED: utility codecs, commands and consumer gameplay/loot APIs, no independent generated family. See Bookshelf membership closure. |
 | `bundle-api-neoforge-1.1.0.jar` | `bundle-api-provider` (a14b5e0), test_small_utility_provider_scope.py | RESOLVED: Custom bundle data components, item interaction and rendering; no independent family. See bundle and shield dispositions below. |
@@ -7425,3 +7425,41 @@ identities. This focused test, scoped Ruff and Basedpyright pass. Both source
 captures reproduce exactly with the commands in their READMEs. Whole providers:
 114 resolved, 22 open. Working groups remain 410 and canonical Moog decisions
 remain provisional. Item 8 is not complete.
+
+
+## Better Combat membership closure
+
+Exact archive bettercombat-neoforge-2.3.2+1.21.1.jar, SHA-256
+afb1f28271ee3b622947f533aa754bb22ed67edd4940a3e9fdf2cca1edb7b8a9.
+Full outer payload: 158 classes, 161 client assets, 41 weapon-attribute JSON
+definitions and seven other files including nested Tiny Config. No packaged
+structure definitions or templates.
+
+Sources aea34a1e, c6a937e0 and 60b953d3 capture five automatic entries, all
+ten common hooks, the mixin plugin and common/resource/compatibility delegates.
+Entries initialize configuration, sounds/particles, attack handling and
+synchronization. WeaponRegistry reads weapon_attributes into attribute maps and
+encodes them for synchronization. Hooks affect existing player attacks, reach,
+knockback, dual wielding, hand selection, item data and ranged-weapon handling.
+Preserve these combat effects for later hostility/mob attribution.
+
+The plugin checks for Player Animator's IAnimation class and adds no additional
+hooks. Compatibility initialization conditionally registers an FTB team-relation
+matcher. These paths supply no independent generated family. Do not continue
+generic combat balance, team, attribute parser or network auditing for membership.
+
+Nested Tiny Config SHA-256:
+eef9a1d8b3fa561b08cb7b765ba15f2055277d44399cb1261cec0296550c6e3c.
+Every contained file name and byte matches the Village Taverns nested copy
+whose archive hash is 1587ed9848881e7b677da5b8c85e0f35719315eb5f6571592d31840cf1421f63.
+Reuse tiny-config-entry and the existing Tavern payload check. Its automatic
+entry calls an empty initializer; ConfigManager reads/writes consumer JSON.
+Do not confuse archive-container byte differences with different class behavior.
+
+`uv run pytest -q tests/item8/test_better_combat_provider_scope.py tests/item8/test_tavern_provider_scope.py`
+passes three cases, binding full payload, entry/hook/source identity and complete
+nested-member equivalence. Scoped Ruff/Basedpyright pass after separating the
+nested equivalence assertion into its own focused case. All 20 new captured
+classes reproduce exactly using the three source README commands. Whole providers:
+115 resolved, 21 open. Working groups remain 410 and 100 explicitly provisional
+Moog records still require canonical decisions. Item 8 is not complete.
