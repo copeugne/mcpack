@@ -9471,3 +9471,28 @@ SHA-256: 04bc241dbb692e7473df65b408f83da459dff061bf895493134e78ef14d73613.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-terralith-buildings-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-terralith-buildings-r2.json
 ```
+
+### AdoraBuild small installations and furnished vegetation correction, 2026-09-07
+
+Existing template contents distinguish the acacia well, bamboo sleeping/cooking
+camp and birch apiary. The well preserves dispenser/tripwire/redstone inputs;
+operation is unproven. The apiary preserves dedicated loot, hive blocks and authored
+bee entities rather than being dismissed as a natural nest. These three canonical
+design relationships are resolved without new capture or measurement.
+
+The prior tree description was inaccurate: all three tree templates contain
+ladders, campfires and loot chests; birch also contains masonry, bookshelves,
+crafting and enchanting equipment. Cherry and oak preserve their own nest/crafting
+contents. The mushroom is furnished accommodation. Both records now describe
+these authored contents, but their relationships to other residence/tree-house
+designs remain open. Neither is excluded as vegetation based on its filename.
+
+The affected definition/registry/evidence case and scoped checks pass. Canonical
+backlog: 87, down from 90 (IDAS 59, AdoraBuild 28). Coverage groups remain 405.
+Required attributes and reconciliation of 33 nonregistry contributions remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```

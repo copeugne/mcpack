@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+AdoraBuild well, bamboo camp and apiary design relationships are resolved from
+existing template content. Tree and mushroom descriptions now correctly identify
+furnished installations/residence; their design reconciliation remains open. The
+affected case and scoped checks pass. Canonical-note backlog: 87 (IDAS 59,
+AdoraBuild 28). Inventory refresh follows. Attributes and nonregistry work remain.
+
 Inventory matches 9d75c96b and reproduces exactly. Canonical-note backlog: 90
 (IDAS 59, AdoraBuild 31). Coverage groups: 405. Next: remaining IDAS/AdoraBuild
 design relationships using existing evidence and only necessary layout views.
