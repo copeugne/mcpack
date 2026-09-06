@@ -9249,3 +9249,11 @@ uv run pytest tests/item8/test_integrated_suppression.py tests/item8/test_yung_s
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+Inventory regenerated from 2eb64661 and independently reproduced exactly.
+SHA-256: 400b5d2608332439e6dcf1e738d335f7f23f72cae9364cda5d33573657549e42.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-replacement-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-replacement-r2.json
+```

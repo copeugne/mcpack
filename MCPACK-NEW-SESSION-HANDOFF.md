@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 2eb64661 and reproduces exactly. Canonical-note backlog: 119.
+Coverage groups: 405, including inactive candidates. Next: remaining design
+relationships against preserved templates and source graphs. Nonregistry and
+required-attribute work remain open.
+
 Stronghold replacement and Terralith fortified-village dispositions now agree with
 existing suppression evidence. Both custom stronghold types remain distinct from
 vanilla STRONGHOLD; both fortified-village roots remain suppressed candidates.
