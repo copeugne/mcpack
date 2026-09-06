@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-06
 
+Latest checkpoint at 82238e0: shared YUNG API provider scope is closed,
+pushed and remote-ref verified. Census: 72 resolved providers, 64 open. One
+focused case and scoped quality checks pass. Source a796af9 preserves 43
+registration/service/plugin/hook entries with exact r1 reproduction; existing
+pool-codecs contributes two reused classes. No independent family. The four
+empty packaged tags are extended by consuming providers; do not call their
+effective values empty. Optional weight injection (upper bound 5000, require=0)
+is a declaration, not confirmed execution. Full disposition is in provider-scope.md.
+
+Next reconcile Quark using its existing sixteen source directories listed in
+the provider queue, its recorded nonregistry families and frozen module state.
+Do not recapture known generators or reopen completed YUNG provider work.
+Finish its remaining packaged-resource and generation-entry coverage, then the
+remaining named providers before canonical family grouping and attributes.
+Shared Zeta remains a separate provider responsibility. Final family count,
+eleven attributes and clean review/main merge remain open. This goal turn
+made progress through a delivered provider closure; there is no blocker.
+
 Latest checkpoint at 967baca: Cave Biomes provider scope is closed, pushed
 and remote-ref verified. Census: 71 resolved providers, 65 open. One focused
 case and scoped quality checks pass. Source 7f76013 reproduces exactly.
