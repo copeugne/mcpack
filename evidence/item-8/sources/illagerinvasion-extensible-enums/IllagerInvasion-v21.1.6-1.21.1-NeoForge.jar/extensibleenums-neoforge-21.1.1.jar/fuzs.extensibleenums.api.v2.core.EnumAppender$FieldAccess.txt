@@ -1,0 +1,130 @@
+Compiled from "EnumAppender.java"
+public final class fuzs.extensibleenums.api.v2.core.EnumAppender$FieldAccess extends java.lang.Record {
+  private final int ordinal;
+
+  private final java.lang.Class<?> clazz;
+
+  private final boolean optional;
+
+  public fuzs.extensibleenums.api.v2.core.EnumAppender$FieldAccess(int, java.lang.Class<?>);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: aload_2
+       3: iconst_0
+       4: invokespecial #26                 // Method "<init>":(ILjava/lang/Class;Z)V
+       7: return
+
+  public fuzs.extensibleenums.api.v2.core.EnumAppender$FieldAccess(int, java.lang.Class<?>, boolean);
+    Code:
+       0: aload_0
+       1: invokespecial #32                 // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: iload_1
+       6: putfield      #34                 // Field ordinal:I
+       9: aload_0
+      10: aload_2
+      11: putfield      #36                 // Field clazz:Ljava/lang/Class;
+      14: aload_0
+      15: iload_3
+      16: putfield      #38                 // Field optional:Z
+      19: return
+
+  java.lang.reflect.Field getField(java.lang.Class<? extends java.lang.Enum<?>>);
+    Code:
+       0: aload_0
+       1: getfield      #34                 // Field ordinal:I
+       4: istore_2
+       5: aload_1
+       6: invokevirtual #49                 // Method java/lang/Class.getDeclaredFields:()[Ljava/lang/reflect/Field;
+       9: astore_3
+      10: aload_3
+      11: arraylength
+      12: istore        4
+      14: iconst_0
+      15: istore        5
+      17: iload         5
+      19: iload         4
+      21: if_icmpge     58
+      24: aload_3
+      25: iload         5
+      27: aaload
+      28: astore        6
+      30: aload         6
+      32: invokevirtual #57                 // Method java/lang/reflect/Field.getType:()Ljava/lang/Class;
+      35: aload_0
+      36: getfield      #36                 // Field clazz:Ljava/lang/Class;
+      39: if_acmpne     52
+      42: iload_2
+      43: iinc          2, -1
+      46: ifne          52
+      49: aload         6
+      51: areturn
+      52: iinc          5, 1
+      55: goto          17
+      58: aload_0
+      59: getfield      #38                 // Field optional:Z
+      62: ifne          103
+      65: new           #59                 // class java/lang/IllegalStateException
+      68: dup
+      69: ldc           #61                 // String No field of type %s found at ordinal %s in enum class %s
+      71: iconst_3
+      72: anewarray     #63                 // class java/lang/Object
+      75: dup
+      76: iconst_0
+      77: aload_0
+      78: getfield      #36                 // Field clazz:Ljava/lang/Class;
+      81: aastore
+      82: dup
+      83: iconst_1
+      84: aload_0
+      85: getfield      #34                 // Field ordinal:I
+      88: invokestatic  #69                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      91: aastore
+      92: dup
+      93: iconst_2
+      94: aload_1
+      95: aastore
+      96: invokevirtual #75                 // Method java/lang/String.formatted:([Ljava/lang/Object;)Ljava/lang/String;
+      99: invokespecial #78                 // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+     102: athrow
+     103: aconst_null
+     104: areturn
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #98,  0             // InvokeDynamic #0:toString:(Lfuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #103,  0            // InvokeDynamic #0:hashCode:(Lfuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #109,  0            // InvokeDynamic #0:equals:(Lfuzs/extensibleenums/api/v2/core/EnumAppender$FieldAccess;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public int ordinal();
+    Code:
+       0: aload_0
+       1: getfield      #34                 // Field ordinal:I
+       4: ireturn
+
+  public java.lang.Class<?> clazz();
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field clazz:Ljava/lang/Class;
+       4: areturn
+
+  public boolean optional();
+    Code:
+       0: aload_0
+       1: getfield      #38                 // Field optional:Z
+       4: ireturn
+}

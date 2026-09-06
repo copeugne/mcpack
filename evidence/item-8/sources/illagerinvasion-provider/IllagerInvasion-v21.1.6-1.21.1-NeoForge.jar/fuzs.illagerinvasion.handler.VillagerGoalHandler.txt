@@ -1,0 +1,192 @@
+Compiled from "VillagerGoalHandler.java"
+public class fuzs.illagerinvasion.handler.VillagerGoalHandler {
+  private static final java.util.List<fuzs.illagerinvasion.handler.VillagerGoalHandler$AvoidVillagerEnemy<?>> VILLAGER_ENEMIES;
+
+  public fuzs.illagerinvasion.handler.VillagerGoalHandler();
+    Code:
+       0: aload_0
+       1: invokespecial #30                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static fuzs.puzzleslib.api.event.v1.core.EventResult onEntityLoad(net.minecraft.world.entity.Entity, net.minecraft.server.level.ServerLevel);
+    Code:
+       0: aload_0
+       1: invokevirtual #42                 // Method net/minecraft/world/entity/Entity.getType:()Lnet/minecraft/world/entity/EntityType;
+       4: getstatic     #48                 // Field net/minecraft/world/entity/EntityType.WANDERING_TRADER:Lnet/minecraft/world/entity/EntityType;
+       7: if_acmpne     49
+      10: getstatic     #50                 // Field VILLAGER_ENEMIES:Ljava/util/List;
+      13: invokeinterface #56,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      18: astore_2
+      19: aload_2
+      20: invokeinterface #62,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      25: ifeq          49
+      28: aload_2
+      29: invokeinterface #66,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      34: checkcast     #7                  // class fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy
+      37: astore_3
+      38: aload_3
+      39: aload_0
+      40: checkcast     #68                 // class net/minecraft/world/entity/npc/AbstractVillager
+      43: invokevirtual #72                 // Method fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy.addGoal:(Lnet/minecraft/world/entity/npc/AbstractVillager;)V
+      46: goto          19
+      49: getstatic     #78                 // Field fuzs/puzzleslib/api/event/v1/core/EventResult.PASS:Lfuzs/puzzleslib/api/event/v1/core/EventResult;
+      52: areturn
+
+  public static void init();
+    Code:
+       0: new           #86                 // class java/util/IdentityHashMap
+       3: dup
+       4: invokestatic  #92                 // InterfaceMethod fuzs/illagerinvasion/mixin/accessor/VillagerHostilesSensorAccessor.illagerinvasion$getAcceptableDistanceFromHostiles:()Lcom/google/common/collect/ImmutableMap;
+       7: invokespecial #95                 // Method java/util/IdentityHashMap."<init>":(Ljava/util/Map;)V
+      10: astore_0
+      11: getstatic     #50                 // Field VILLAGER_ENEMIES:Ljava/util/List;
+      14: invokeinterface #56,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      19: astore_1
+      20: aload_1
+      21: invokeinterface #62,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      26: ifeq          57
+      29: aload_1
+      30: invokeinterface #66,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      35: checkcast     #7                  // class fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy
+      38: astore_2
+      39: aload_2
+      40: aload_0
+      41: dup
+      42: invokestatic  #101                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      45: pop
+      46: invokedynamic #123,  0            // InvokeDynamic #0:accept:(Ljava/util/Map;)Ljava/util/function/BiConsumer;
+      51: invokevirtual #127                // Method fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy.addAcceptableDistance:(Ljava/util/function/BiConsumer;)V
+      54: goto          20
+      57: aload_0
+      58: invokestatic  #133                // Method com/google/common/collect/ImmutableMap.copyOf:(Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap;
+      61: invokestatic  #137                // InterfaceMethod fuzs/illagerinvasion/mixin/accessor/VillagerHostilesSensorAccessor.illagerinvasion$setAcceptableDistanceFromHostiles:(Lcom/google/common/collect/ImmutableMap;)V
+      64: return
+
+  static {};
+    Code:
+       0: invokestatic  #145                // Method com/google/common/collect/ImmutableList.builder:()Lcom/google/common/collect/ImmutableList$Builder;
+       3: new           #7                  // class fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy
+       6: dup
+       7: ldc           #147                // class fuzs/illagerinvasion/world/entity/monster/Alchemist
+       9: getstatic     #153                // Field fuzs/illagerinvasion/init/ModEntityTypes.ALCHEMIST_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      12: dup
+      13: invokestatic  #101                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      16: pop
+      17: invokedynamic #163,  0            // InvokeDynamic #1:get:(Lnet/minecraft/core/Holder$Reference;)Ljava/util/function/Supplier;
+      22: ldc           #164                // float 12.0f
+      24: invokespecial #167                // Method fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy."<init>":(Ljava/lang/Class;Ljava/util/function/Supplier;F)V
+      27: invokevirtual #171                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      30: new           #7                  // class fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy
+      33: dup
+      34: ldc           #173                // class fuzs/illagerinvasion/world/entity/monster/Archivist
+      36: getstatic     #176                // Field fuzs/illagerinvasion/init/ModEntityTypes.ARCHIVIST_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      39: dup
+      40: invokestatic  #101                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      43: pop
+      44: invokedynamic #163,  0            // InvokeDynamic #1:get:(Lnet/minecraft/core/Holder$Reference;)Ljava/util/function/Supplier;
+      49: ldc           #164                // float 12.0f
+      51: invokespecial #167                // Method fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy."<init>":(Ljava/lang/Class;Ljava/util/function/Supplier;F)V
+      54: invokevirtual #171                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      57: new           #7                  // class fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy
+      60: dup
+      61: ldc           #178                // class fuzs/illagerinvasion/world/entity/monster/Basher
+      63: getstatic     #181                // Field fuzs/illagerinvasion/init/ModEntityTypes.BASHER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      66: dup
+      67: invokestatic  #101                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      70: pop
+      71: invokedynamic #163,  0            // InvokeDynamic #1:get:(Lnet/minecraft/core/Holder$Reference;)Ljava/util/function/Supplier;
+      76: ldc           #182                // float 8.0f
+      78: invokespecial #167                // Method fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy."<init>":(Ljava/lang/Class;Ljava/util/function/Supplier;F)V
+      81: invokevirtual #171                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+      84: new           #7                  // class fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy
+      87: dup
+      88: ldc           #184                // class fuzs/illagerinvasion/world/entity/monster/Firecaller
+      90: getstatic     #187                // Field fuzs/illagerinvasion/init/ModEntityTypes.FIRECALLER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+      93: dup
+      94: invokestatic  #101                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      97: pop
+      98: invokedynamic #163,  0            // InvokeDynamic #1:get:(Lnet/minecraft/core/Holder$Reference;)Ljava/util/function/Supplier;
+     103: ldc           #164                // float 12.0f
+     105: invokespecial #167                // Method fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy."<init>":(Ljava/lang/Class;Ljava/util/function/Supplier;F)V
+     108: invokevirtual #171                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+     111: new           #7                  // class fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy
+     114: dup
+     115: ldc           #189                // class fuzs/illagerinvasion/world/entity/monster/Inquisitor
+     117: getstatic     #192                // Field fuzs/illagerinvasion/init/ModEntityTypes.INQUISITOR_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     120: dup
+     121: invokestatic  #101                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     124: pop
+     125: invokedynamic #163,  0            // InvokeDynamic #1:get:(Lnet/minecraft/core/Holder$Reference;)Ljava/util/function/Supplier;
+     130: ldc           #193                // float 15.0f
+     132: invokespecial #167                // Method fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy."<init>":(Ljava/lang/Class;Ljava/util/function/Supplier;F)V
+     135: invokevirtual #171                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+     138: new           #7                  // class fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy
+     141: dup
+     142: ldc           #195                // class fuzs/illagerinvasion/world/entity/monster/Invoker
+     144: getstatic     #198                // Field fuzs/illagerinvasion/init/ModEntityTypes.INVOKER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     147: dup
+     148: invokestatic  #101                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     151: pop
+     152: invokedynamic #163,  0            // InvokeDynamic #1:get:(Lnet/minecraft/core/Holder$Reference;)Ljava/util/function/Supplier;
+     157: ldc           #193                // float 15.0f
+     159: invokespecial #167                // Method fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy."<init>":(Ljava/lang/Class;Ljava/util/function/Supplier;F)V
+     162: invokevirtual #171                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+     165: new           #7                  // class fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy
+     168: dup
+     169: ldc           #200                // class fuzs/illagerinvasion/world/entity/monster/Marauder
+     171: getstatic     #203                // Field fuzs/illagerinvasion/init/ModEntityTypes.MARAUDER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     174: dup
+     175: invokestatic  #101                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     178: pop
+     179: invokedynamic #163,  0            // InvokeDynamic #1:get:(Lnet/minecraft/core/Holder$Reference;)Ljava/util/function/Supplier;
+     184: ldc           #164                // float 12.0f
+     186: invokespecial #167                // Method fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy."<init>":(Ljava/lang/Class;Ljava/util/function/Supplier;F)V
+     189: invokevirtual #171                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+     192: new           #7                  // class fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy
+     195: dup
+     196: ldc           #205                // class fuzs/illagerinvasion/world/entity/monster/Necromancer
+     198: getstatic     #208                // Field fuzs/illagerinvasion/init/ModEntityTypes.NECROMANCER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     201: dup
+     202: invokestatic  #101                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     205: pop
+     206: invokedynamic #163,  0            // InvokeDynamic #1:get:(Lnet/minecraft/core/Holder$Reference;)Ljava/util/function/Supplier;
+     211: ldc           #193                // float 15.0f
+     213: invokespecial #167                // Method fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy."<init>":(Ljava/lang/Class;Ljava/util/function/Supplier;F)V
+     216: invokevirtual #171                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+     219: new           #7                  // class fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy
+     222: dup
+     223: ldc           #210                // class fuzs/illagerinvasion/world/entity/monster/Provoker
+     225: getstatic     #213                // Field fuzs/illagerinvasion/init/ModEntityTypes.PROVOKER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     228: dup
+     229: invokestatic  #101                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     232: pop
+     233: invokedynamic #163,  0            // InvokeDynamic #1:get:(Lnet/minecraft/core/Holder$Reference;)Ljava/util/function/Supplier;
+     238: ldc           #164                // float 12.0f
+     240: invokespecial #167                // Method fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy."<init>":(Ljava/lang/Class;Ljava/util/function/Supplier;F)V
+     243: invokevirtual #171                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+     246: new           #7                  // class fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy
+     249: dup
+     250: ldc           #215                // class fuzs/illagerinvasion/world/entity/monster/Sorcerer
+     252: getstatic     #218                // Field fuzs/illagerinvasion/init/ModEntityTypes.SORCERER_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     255: dup
+     256: invokestatic  #101                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     259: pop
+     260: invokedynamic #163,  0            // InvokeDynamic #1:get:(Lnet/minecraft/core/Holder$Reference;)Ljava/util/function/Supplier;
+     265: ldc           #164                // float 12.0f
+     267: invokespecial #167                // Method fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy."<init>":(Ljava/lang/Class;Ljava/util/function/Supplier;F)V
+     270: invokevirtual #171                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+     273: new           #7                  // class fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy
+     276: dup
+     277: ldc           #220                // class fuzs/illagerinvasion/world/entity/monster/Surrendered
+     279: getstatic     #223                // Field fuzs/illagerinvasion/init/ModEntityTypes.SURRENDERED_ENTITY_TYPE:Lnet/minecraft/core/Holder$Reference;
+     282: dup
+     283: invokestatic  #101                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     286: pop
+     287: invokedynamic #163,  0            // InvokeDynamic #1:get:(Lnet/minecraft/core/Holder$Reference;)Ljava/util/function/Supplier;
+     292: ldc           #182                // float 8.0f
+     294: invokespecial #167                // Method fuzs/illagerinvasion/handler/VillagerGoalHandler$AvoidVillagerEnemy."<init>":(Ljava/lang/Class;Ljava/util/function/Supplier;F)V
+     297: invokevirtual #171                // Method com/google/common/collect/ImmutableList$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;
+     300: invokevirtual #227                // Method com/google/common/collect/ImmutableList$Builder.build:()Lcom/google/common/collect/ImmutableList;
+     303: putstatic     #50                 // Field VILLAGER_ENEMIES:Ljava/util/List;
+     306: return
+}
