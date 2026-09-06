@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+TerraBlender membership is resolved from 3230f7ff and c2de78c1. It initializes
+consumer biome regions/surface rules for existing dimensions; no independent
+family. Complete payload/source binding and scoped checks pass. Preserve its
+validation-cancellation/stable-lifecycle behavior as limitations, not acceptance
+proof. Whole providers: 96 resolved, 40 open (20 code-reference, 20 unmatched-
+search). No family change. Continue remaining provider boundaries and Moog
+canonical grouping before attributes. Reuse completed evidence.
+
+
 GlitchCore membership is resolved from a447496 and a2fc4ee: consumer event
 forwarding, platform adapters and configuration synchronization only. Full
 payload/source binding and scoped checks pass. Whole providers: 95 resolved,

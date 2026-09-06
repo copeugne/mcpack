@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 95 of 136. The exact queue below has 41 open rows.
+Supported provider dispositions: 96 of 136. The exact queue below has 40 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -605,7 +605,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `Patchouli-1.21.1-93-NEOFORGE.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `PuzzlesLib-v21.1.52-1.21.1-NeoForge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `Quark-4.1-480.jar` | `quark-end-generators`, `quark-end-registration`, `quark-fallen-log-decor`, `quark-landmark-encounter-generators`, `quark-monster-box-behavior`, `quark-monster-box-bindings`, `quark-nether-spikes`, `quark-spire-config-annotations`, `quark-stone-clusters`, `quark-underground-base`, `quark-underground-context`, `quark-underground-fill`, `quark-underground-styles`, `quark-vegetation`, `quark-world-category` | RESOLVED: Existing five named nonregistry site candidates, terrain/vegetation and existing-structure replacement hooks; bundled Biolith adds biome/surface support. Full disposition below; canonical count and attributes remain open. |
-| `TerraBlender-neoforge-1.21.1-4.1.0.8.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `TerraBlender-neoforge-1.21.1-4.1.0.8.jar` | Sources 3230f7ff and c2de78c1; test_terrablender_provider_scope.py | RESOLVED: Consumer biome regions, noise and surface rules; no independent family. See TerraBlender disposition below. |
 | `Terralith_1.21.1_v2.6.2_Neoforge.jar` | `terralith-provider` (b87f3bb), test_terralith_provider_scope.py | RESOLVED: 28 existing roots, terrain/vegetation and one named Frostfire ornament candidate. Overlay, disconnected and missing component dispositions below; canonical ornament grouping remains open. |
 | `YungsApi-1.21.1-NeoForge-5.1.6.jar` | Existing `pool-codecs`; `yungs-api-provider` (a796af9); test_yungs_api_provider_scope.py | RESOLVED: Shared registration, placement/pool codecs and existing-structure terrain/feature hooks. No independent family. See disposition below. |
 | `YungsBetterCaves-1.21.1-NeoForge-3.1.4.jar` | `better-caves-provider` (d9e30ff); test_better_caves_provider_scope.py | RESOLVED: Cave/cavern carving and liquid-region/aquifer terrain support. No independent structure family. See disposition below. |
@@ -6819,3 +6819,44 @@ untyped TOML declarations was fixed with the existing explicit type pattern;
 Basedpyright then passes. Whole providers: 95 resolved, 41 open (21 code-reference
 and 20 unmatched-search rows). No family count change. Continue remaining
 provider contribution boundaries and canonical Moog grouping.
+
+### TerraBlender membership resolved
+
+Sources 3230f7ff and c2de78c1 preserve common/NeoForge entry, the startup
+handler, all ten common hooks and the server-start biome initializer. The
+initializer enumerates existing dimension stems, reads their generators and
+world seed, appends consumer biome entries, initializes region parameter maps
+and chooses surface-rule categories. It does not define or place authored sites.
+
+Hooks modify multi-noise and End biome selection, deferred biome lists, noise
+settings and namespaced surface-rule composition. Registry bootstrap adds the
+merged material-rule codec. The remaining classes supply biome-region APIs,
+surface-rule wrappers, weighted noise and configuration support. These are
+terrain and consumer eligibility roles, not independent structure families.
+
+Preserve two implementation limitations: MixinChunkGenerator cancels the
+vanilla validate hook, and MixinPrimaryLevelData returns a stable lifecycle.
+Those changes cannot serve as compatibility acceptance evidence. They do not
+add an authored family or justify reopening accepted empirical world evidence
+without a concrete contradiction. Effective biome and surface effects remain
+relevant to consuming family attributes.
+
+The complete packaged data contains two dimension-type tags selecting vanilla
+Overworld/Nether types and one deferred_placeholder biome with empty features,
+carvers and all mob-spawn lists. No template, structure definition, configured
+feature or independent content route is present. The focused check binds all
+63 classes, the sole automatic entry, ten common and one client hook, both
+mixin declarations and all twenty non-class files (data, translations, metadata,
+access declarations and images). No nested archives or services occur. Both
+source captures independently reproduce byte for byte.
+
+```sh
+uv run pytest -q tests/item8/test_terrablender_provider_scope.py
+uv run ruff check tests/item8/test_terrablender_provider_scope.py
+uv run basedpyright tests/item8/test_terrablender_provider_scope.py
+```
+
+One focused case and Basedpyright pass. An overlong assertion was corrected
+before the passing Ruff run. Whole providers: 96 resolved, 40 open (20
+code-reference and 20 unmatched-search rows). No family added. Continue
+remaining provider boundaries and canonical Moog grouping before attributes.
