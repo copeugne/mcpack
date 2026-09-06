@@ -1,0 +1,296 @@
+Compiled from "DestinyMessage.java"
+public final class net.conczin.mca.network.c2s.DestinyMessage extends java.lang.Record implements net.conczin.mca.network.HandleablePayload {
+  private final java.lang.String location;
+
+  private final boolean isClosing;
+
+  public static final net.minecraft.network.protocol.common.custom.CustomPacketPayload$Type<net.conczin.mca.network.c2s.DestinyMessage> TYPE;
+
+  public static final net.minecraft.network.codec.StreamCodec<net.minecraft.network.FriendlyByteBuf, net.conczin.mca.network.c2s.DestinyMessage> STREAM_CODEC;
+
+  public net.conczin.mca.network.c2s.DestinyMessage(java.lang.String, boolean);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field location:Ljava/lang/String;
+       9: aload_0
+      10: iload_2
+      11: putfield      #13                 // Field isClosing:Z
+      14: return
+
+  public void handle(net.minecraft.world.entity.player.Player);
+    Code:
+       0: aload_1
+       1: instanceof    #17                 // class net/minecraft/server/level/ServerPlayer
+       4: ifeq          15
+       7: aload_1
+       8: checkcast     #17                 // class net/minecraft/server/level/ServerPlayer
+      11: astore_2
+      12: goto          16
+      15: return
+      16: aload_0
+      17: getfield      #13                 // Field isClosing:Z
+      20: ifeq          39
+      23: aload_2
+      24: getstatic     #19                 // Field net/minecraft/world/effect/MobEffects.INVISIBILITY:Lnet/minecraft/core/Holder;
+      27: invokevirtual #25                 // Method net/minecraft/server/level/ServerPlayer.removeEffect:(Lnet/minecraft/core/Holder;)Z
+      30: pop
+      31: aload_2
+      32: getstatic     #29                 // Field net/minecraft/world/effect/MobEffects.HEALTH_BOOST:Lnet/minecraft/core/Holder;
+      35: invokevirtual #25                 // Method net/minecraft/server/level/ServerPlayer.removeEffect:(Lnet/minecraft/core/Holder;)Z
+      38: pop
+      39: invokestatic  #32                 // Method net/conczin/mca/Config.getInstance:()Lnet/conczin/mca/Config;
+      42: getfield      #38                 // Field net/conczin/mca/Config.allowDestinyTeleportation:Z
+      45: ifeq          73
+      48: aload_0
+      49: getfield      #7                  // Field location:Ljava/lang/String;
+      52: invokevirtual #41                 // Method java/lang/String.isEmpty:()Z
+      55: ifne          73
+      58: getstatic     #47                 // Field net/conczin/mca/MCA.executorService:Ljava/util/concurrent/ExecutorService;
+      61: aload_0
+      62: aload_2
+      63: invokedynamic #53,  0             // InvokeDynamic #0:run:(Lnet/conczin/mca/network/c2s/DestinyMessage;Lnet/minecraft/server/level/ServerPlayer;)Ljava/lang/Runnable;
+      68: invokeinterface #57,  2           // InterfaceMethod java/util/concurrent/ExecutorService.execute:(Ljava/lang/Runnable;)V
+      73: return
+
+  private void handleBlockPos(net.minecraft.server.level.ServerPlayer, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: invokevirtual #63                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+       4: aload_2
+       5: invokevirtual #67                 // Method net/minecraft/world/level/Level.getChunkAt:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/chunk/LevelChunk;
+       8: pop
+       9: aload_0
+      10: getfield      #7                  // Field location:Ljava/lang/String;
+      13: ldc           #73                 // String minecraft:ancient_city
+      15: invokevirtual #75                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      18: ifeq          42
+      21: new           #79                 // class net/minecraft/core/BlockPos
+      24: dup
+      25: aload_2
+      26: invokevirtual #81                 // Method net/minecraft/core/BlockPos.getX:()I
+      29: bipush        -50
+      31: aload_2
+      32: invokevirtual #85                 // Method net/minecraft/core/BlockPos.getZ:()I
+      35: invokespecial #88                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+      38: astore_2
+      39: goto          54
+      42: aload_1
+      43: invokevirtual #63                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+      46: getstatic     #91                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      49: aload_2
+      50: invokevirtual #97                 // Method net/minecraft/world/level/Level.getHeightmapPos:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+      53: astore_2
+      54: aload_2
+      55: aload_1
+      56: invokevirtual #63                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+      59: invokevirtual #101                // Method net/minecraft/world/level/Level.getHeight:()I
+      62: aload_1
+      63: invokedynamic #104,  0            // InvokeDynamic #1:test:(Lnet/minecraft/server/level/ServerPlayer;)Ljava/util/function/Predicate;
+      68: invokestatic  #108                // Method net/minecraft/world/entity/ai/util/RandomPos.moveUpOutOfSolid:(Lnet/minecraft/core/BlockPos;ILjava/util/function/Predicate;)Lnet/minecraft/core/BlockPos;
+      71: astore_2
+      72: aload_2
+      73: iconst_1
+      74: aload_1
+      75: invokedynamic #114,  0            // InvokeDynamic #2:test:(Lnet/minecraft/server/level/ServerPlayer;)Ljava/util/function/Predicate;
+      80: invokestatic  #115                // Method net/conczin/mca/util/compat/ExtendedFuzzyPositions.downWhile:(Lnet/minecraft/core/BlockPos;ILjava/util/function/Predicate;)Lnet/minecraft/core/BlockPos;
+      83: astore_2
+      84: new           #120                // class net/minecraft/world/level/ChunkPos
+      87: dup
+      88: aload_2
+      89: invokespecial #122                // Method net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+      92: astore_3
+      93: aload_1
+      94: invokevirtual #125                // Method net/minecraft/server/level/ServerPlayer.serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+      97: invokevirtual #129                // Method net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+     100: getstatic     #135                // Field net/minecraft/server/level/TicketType.POST_TELEPORT:Lnet/minecraft/server/level/TicketType;
+     103: aload_3
+     104: iconst_1
+     105: aload_1
+     106: invokevirtual #141                // Method net/minecraft/server/level/ServerPlayer.getId:()I
+     109: invokestatic  #144                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     112: invokevirtual #150                // Method net/minecraft/server/level/ServerChunkCache.addRegionTicket:(Lnet/minecraft/server/level/TicketType;Lnet/minecraft/world/level/ChunkPos;ILjava/lang/Object;)V
+     115: aload_1
+     116: getfield      #156                // Field net/minecraft/server/level/ServerPlayer.connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+     119: aload_2
+     120: invokevirtual #81                 // Method net/minecraft/core/BlockPos.getX:()I
+     123: i2d
+     124: aload_2
+     125: invokevirtual #160                // Method net/minecraft/core/BlockPos.getY:()I
+     128: i2d
+     129: aload_2
+     130: invokevirtual #85                 // Method net/minecraft/core/BlockPos.getZ:()I
+     133: i2d
+     134: aload_1
+     135: invokevirtual #163                // Method net/minecraft/server/level/ServerPlayer.getYRot:()F
+     138: aload_1
+     139: invokevirtual #167                // Method net/minecraft/server/level/ServerPlayer.getXRot:()F
+     142: ldc           #170                // class net/minecraft/world/entity/RelativeMovement
+     144: invokestatic  #172                // Method java/util/EnumSet.noneOf:(Ljava/lang/Class;)Ljava/util/EnumSet;
+     147: invokevirtual #178                // Method net/minecraft/server/network/ServerGamePacketListenerImpl.teleport:(DDDFFLjava/util/Set;)V
+     150: aload_1
+     151: aload_1
+     152: invokevirtual #63                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+     155: invokevirtual #184                // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+     158: aload_2
+     159: fconst_0
+     160: iconst_1
+     161: iconst_0
+     162: invokevirtual #188                // Method net/minecraft/server/level/ServerPlayer.setRespawnPosition:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/core/BlockPos;FZZ)V
+     165: aload_1
+     166: invokevirtual #63                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+     169: invokevirtual #192                // Method net/minecraft/world/level/Level.getServer:()Lnet/minecraft/server/MinecraftServer;
+     172: aload_1
+     173: invokevirtual #196                // Method net/minecraft/server/level/ServerPlayer.getGameProfile:()Lcom/mojang/authlib/GameProfile;
+     176: invokevirtual #200                // Method net/minecraft/server/MinecraftServer.isSingleplayerOwner:(Lcom/mojang/authlib/GameProfile;)Z
+     179: ifeq          191
+     182: aload_1
+     183: invokevirtual #125                // Method net/minecraft/server/level/ServerPlayer.serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+     186: aload_2
+     187: fconst_0
+     188: invokevirtual #206                // Method net/minecraft/server/level/ServerLevel.setDefaultSpawnPos:(Lnet/minecraft/core/BlockPos;F)V
+     191: return
+
+  public net.minecraft.network.protocol.common.custom.CustomPacketPayload$Type<net.conczin.mca.network.c2s.DestinyMessage> type();
+    Code:
+       0: getstatic     #210                // Field TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+       3: areturn
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #284,  0            // InvokeDynamic #5:toString:(Lnet/conczin/mca/network/c2s/DestinyMessage;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #288,  0            // InvokeDynamic #5:hashCode:(Lnet/conczin/mca/network/c2s/DestinyMessage;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #292,  0            // InvokeDynamic #5:equals:(Lnet/conczin/mca/network/c2s/DestinyMessage;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public java.lang.String location();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field location:Ljava/lang/String;
+       4: areturn
+
+  public boolean isClosing();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field isClosing:Z
+       4: ireturn
+
+  private static boolean lambda$handleBlockPos$4(net.minecraft.server.level.ServerPlayer, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: invokevirtual #63                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+       4: aload_1
+       5: invokevirtual #214                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+       8: invokevirtual #218                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      11: aload_0
+      12: invokevirtual #63                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+      15: aload_1
+      16: invokevirtual #222                // Method net/minecraft/world/level/block/state/BlockState.isCollisionShapeFullBlock:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Z
+      19: ifne          26
+      22: iconst_1
+      23: goto          27
+      26: iconst_0
+      27: ireturn
+
+  private static boolean lambda$handleBlockPos$3(net.minecraft.server.level.ServerPlayer, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: invokevirtual #63                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+       4: aload_1
+       5: invokevirtual #218                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       8: aload_0
+       9: invokevirtual #63                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+      12: aload_1
+      13: invokevirtual #228                // Method net/minecraft/world/level/block/state/BlockState.isSuffocating:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Z
+      16: ireturn
+
+  private void lambda$handle$2(net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field location:Ljava/lang/String;
+       4: iconst_0
+       5: invokevirtual #231                // Method java/lang/String.charAt:(I)C
+       8: bipush        35
+      10: if_icmpne     59
+      13: aload_0
+      14: getfield      #7                  // Field location:Ljava/lang/String;
+      17: iconst_1
+      18: invokevirtual #235                // Method java/lang/String.substring:(I)Ljava/lang/String;
+      21: astore_2
+      22: aload_1
+      23: invokevirtual #125                // Method net/minecraft/server/level/ServerPlayer.serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+      26: aload_1
+      27: invokevirtual #239                // Method net/minecraft/server/level/ServerPlayer.blockPosition:()Lnet/minecraft/core/BlockPos;
+      30: getstatic     #242                // Field net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+      33: aload_2
+      34: invokestatic  #248                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      37: invokestatic  #254                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+      40: sipush        128
+      43: invokestatic  #260                // InterfaceMethod net/conczin/mca/util/WorldUtils.getClosestStructurePosition:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/tags/TagKey;I)Ljava/util/Optional;
+      46: aload_0
+      47: aload_1
+      48: invokedynamic #266,  0            // InvokeDynamic #3:accept:(Lnet/conczin/mca/network/c2s/DestinyMessage;Lnet/minecraft/server/level/ServerPlayer;)Ljava/util/function/Consumer;
+      53: invokevirtual #270                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+      56: goto          90
+      59: aload_1
+      60: invokevirtual #125                // Method net/minecraft/server/level/ServerPlayer.serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+      63: aload_1
+      64: invokevirtual #239                // Method net/minecraft/server/level/ServerPlayer.blockPosition:()Lnet/minecraft/core/BlockPos;
+      67: aload_0
+      68: getfield      #7                  // Field location:Ljava/lang/String;
+      71: invokestatic  #248                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      74: sipush        128
+      77: invokestatic  #276                // InterfaceMethod net/conczin/mca/util/WorldUtils.getClosestStructurePosition:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/resources/ResourceLocation;I)Ljava/util/Optional;
+      80: aload_0
+      81: aload_1
+      82: invokedynamic #279,  0            // InvokeDynamic #4:accept:(Lnet/conczin/mca/network/c2s/DestinyMessage;Lnet/minecraft/server/level/ServerPlayer;)Ljava/util/function/Consumer;
+      87: invokevirtual #270                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+      90: return
+
+  private void lambda$handle$1(net.minecraft.server.level.ServerPlayer, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #280                // Method handleBlockPos:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/BlockPos;)V
+       6: return
+
+  private void lambda$handle$0(net.minecraft.server.level.ServerPlayer, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #280                // Method handleBlockPos:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/BlockPos;)V
+       6: return
+
+  static {};
+    Code:
+       0: new           #295                // class net/minecraft/network/protocol/common/custom/CustomPacketPayload$Type
+       3: dup
+       4: ldc_w         #297                // String destiny_message
+       7: invokestatic  #299                // Method net/conczin/mca/MCA.locate:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      10: invokespecial #302                // Method net/minecraft/network/protocol/common/custom/CustomPacketPayload$Type."<init>":(Lnet/minecraft/resources/ResourceLocation;)V
+      13: putstatic     #210                // Field TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      16: getstatic     #305                // Field net/minecraft/network/codec/ByteBufCodecs.STRING_UTF8:Lnet/minecraft/network/codec/StreamCodec;
+      19: invokedynamic #311,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+      24: getstatic     #315                // Field net/minecraft/network/codec/ByteBufCodecs.BOOL:Lnet/minecraft/network/codec/StreamCodec;
+      27: invokedynamic #318,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+      32: invokedynamic #319,  0            // InvokeDynamic #8:apply:()Ljava/util/function/BiFunction;
+      37: invokestatic  #322                // InterfaceMethod net/minecraft/network/codec/StreamCodec.composite:(Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Ljava/util/function/BiFunction;)Lnet/minecraft/network/codec/StreamCodec;
+      40: putstatic     #328                // Field STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      43: return
+}

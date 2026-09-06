@@ -1,0 +1,739 @@
+Compiled from "BuildingType.java"
+public final class net.conczin.mca.resources.data.BuildingType {
+  public static final net.minecraft.network.codec.StreamCodec<net.minecraft.network.FriendlyByteBuf, net.conczin.mca.resources.data.BuildingType> STREAM_CODEC;
+
+  private final java.lang.String name;
+
+  private final int margin;
+
+  private final java.lang.String color;
+
+  private final int priority;
+
+  private final boolean visible;
+
+  private final boolean noBeds;
+
+  private final java.util.Map<java.lang.String, java.lang.Integer> blocks;
+
+  private final boolean icon;
+
+  private final int iconU;
+
+  private final int iconV;
+
+  private final boolean grouped;
+
+  private final int mergeRange;
+
+  private transient java.util.Map<net.minecraft.resources.ResourceLocation, net.minecraft.resources.ResourceLocation> blockToGroup;
+
+  private transient java.util.Map<net.minecraft.tags.TagKey<net.minecraft.world.level.block.Block>, net.minecraft.resources.ResourceLocation> tagToGroup;
+
+  private transient java.util.Map<net.minecraft.resources.ResourceLocation, java.lang.Integer> groups;
+
+  private net.conczin.mca.resources.data.BuildingType(java.lang.String, int, java.lang.String, int, boolean, boolean, boolean, int, int, boolean, int, java.util.Map<java.lang.String, java.lang.Integer>);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field name:Ljava/lang/String;
+       9: aload_0
+      10: iload_2
+      11: putfield      #13                 // Field margin:I
+      14: aload_0
+      15: aload_3
+      16: putfield      #17                 // Field color:Ljava/lang/String;
+      19: aload_0
+      20: iload         4
+      22: putfield      #20                 // Field priority:I
+      25: aload_0
+      26: iload         5
+      28: putfield      #23                 // Field visible:Z
+      31: aload_0
+      32: iload         6
+      34: putfield      #27                 // Field noBeds:Z
+      37: aload_0
+      38: iload         7
+      40: putfield      #30                 // Field icon:Z
+      43: aload_0
+      44: iload         8
+      46: putfield      #33                 // Field iconU:I
+      49: aload_0
+      50: iload         9
+      52: putfield      #36                 // Field iconV:I
+      55: aload_0
+      56: iload         10
+      58: putfield      #39                 // Field grouped:Z
+      61: aload_0
+      62: iload         11
+      64: putfield      #42                 // Field mergeRange:I
+      67: aload_0
+      68: aload         12
+      70: putfield      #45                 // Field blocks:Ljava/util/Map;
+      73: return
+
+  public net.conczin.mca.resources.data.BuildingType();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: ldc           #49                 // String ?
+       7: putfield      #7                  // Field name:Ljava/lang/String;
+      10: aload_0
+      11: iconst_0
+      12: putfield      #13                 // Field margin:I
+      15: aload_0
+      16: ldc           #51                 // String ffffffff
+      18: putfield      #17                 // Field color:Ljava/lang/String;
+      21: aload_0
+      22: iconst_0
+      23: putfield      #20                 // Field priority:I
+      26: aload_0
+      27: iconst_1
+      28: putfield      #23                 // Field visible:Z
+      31: aload_0
+      32: iconst_0
+      33: putfield      #27                 // Field noBeds:Z
+      36: aload_0
+      37: ldc           #53                 // String #minecraft:beds
+      39: ldc           #55                 // int 1000000000
+      41: invokestatic  #56                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      44: invokestatic  #62                 // InterfaceMethod java/util/Map.of:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+      47: putfield      #45                 // Field blocks:Ljava/util/Map;
+      50: aload_0
+      51: aconst_null
+      52: putfield      #68                 // Field blockToGroup:Ljava/util/Map;
+      55: aload_0
+      56: iconst_0
+      57: putfield      #30                 // Field icon:Z
+      60: aload_0
+      61: iconst_0
+      62: putfield      #33                 // Field iconU:I
+      65: aload_0
+      66: iconst_0
+      67: putfield      #36                 // Field iconV:I
+      70: aload_0
+      71: iconst_0
+      72: putfield      #39                 // Field grouped:Z
+      75: aload_0
+      76: bipush        32
+      78: putfield      #42                 // Field mergeRange:I
+      81: return
+
+  public net.conczin.mca.resources.data.BuildingType(java.lang.String, com.google.gson.JsonObject);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field name:Ljava/lang/String;
+       9: aload_0
+      10: aload_2
+      11: ldc           #71                 // String margin
+      13: iconst_0
+      14: invokestatic  #72                 // Method net/minecraft/util/GsonHelper.getAsInt:(Lcom/google/gson/JsonObject;Ljava/lang/String;I)I
+      17: putfield      #13                 // Field margin:I
+      20: aload_0
+      21: aload_2
+      22: ldc           #78                 // String color
+      24: ldc           #51                 // String ffffffff
+      26: invokestatic  #79                 // Method net/minecraft/util/GsonHelper.getAsString:(Lcom/google/gson/JsonObject;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      29: putfield      #17                 // Field color:Ljava/lang/String;
+      32: aload_0
+      33: aload_2
+      34: ldc           #83                 // String priority
+      36: iconst_0
+      37: invokestatic  #72                 // Method net/minecraft/util/GsonHelper.getAsInt:(Lcom/google/gson/JsonObject;Ljava/lang/String;I)I
+      40: putfield      #20                 // Field priority:I
+      43: aload_0
+      44: aload_2
+      45: ldc           #84                 // String visible
+      47: iconst_1
+      48: invokestatic  #85                 // Method net/minecraft/util/GsonHelper.getAsBoolean:(Lcom/google/gson/JsonObject;Ljava/lang/String;Z)Z
+      51: putfield      #23                 // Field visible:Z
+      54: aload_0
+      55: aload_2
+      56: ldc           #89                 // String noBeds
+      58: iconst_0
+      59: invokestatic  #85                 // Method net/minecraft/util/GsonHelper.getAsBoolean:(Lcom/google/gson/JsonObject;Ljava/lang/String;Z)Z
+      62: putfield      #27                 // Field noBeds:Z
+      65: aload_0
+      66: aload_2
+      67: ldc           #90                 // String icon
+      69: iconst_0
+      70: invokestatic  #85                 // Method net/minecraft/util/GsonHelper.getAsBoolean:(Lcom/google/gson/JsonObject;Ljava/lang/String;Z)Z
+      73: putfield      #30                 // Field icon:Z
+      76: aload_0
+      77: aload_2
+      78: ldc           #91                 // String iconU
+      80: iconst_0
+      81: invokestatic  #72                 // Method net/minecraft/util/GsonHelper.getAsInt:(Lcom/google/gson/JsonObject;Ljava/lang/String;I)I
+      84: putfield      #33                 // Field iconU:I
+      87: aload_0
+      88: aload_2
+      89: ldc           #92                 // String iconV
+      91: iconst_0
+      92: invokestatic  #72                 // Method net/minecraft/util/GsonHelper.getAsInt:(Lcom/google/gson/JsonObject;Ljava/lang/String;I)I
+      95: putfield      #36                 // Field iconV:I
+      98: aload_0
+      99: aload_2
+     100: ldc           #93                 // String grouped
+     102: iconst_0
+     103: invokestatic  #85                 // Method net/minecraft/util/GsonHelper.getAsBoolean:(Lcom/google/gson/JsonObject;Ljava/lang/String;Z)Z
+     106: putfield      #39                 // Field grouped:Z
+     109: aload_0
+     110: aload_2
+     111: ldc           #94                 // String mergeRange
+     113: iconst_0
+     114: invokestatic  #72                 // Method net/minecraft/util/GsonHelper.getAsInt:(Lcom/google/gson/JsonObject;Ljava/lang/String;I)I
+     117: putfield      #42                 // Field mergeRange:I
+     120: aload_0
+     121: new           #95                 // class java/util/HashMap
+     124: dup
+     125: invokespecial #97                 // Method java/util/HashMap."<init>":()V
+     128: putfield      #45                 // Field blocks:Ljava/util/Map;
+     131: aload_2
+     132: ldc           #98                 // String blocks
+     134: invokestatic  #99                 // Method net/minecraft/util/GsonHelper.isObjectNode:(Lcom/google/gson/JsonObject;Ljava/lang/String;)Z
+     137: ifeq          219
+     140: aload_2
+     141: ldc           #98                 // String blocks
+     143: invokestatic  #103                // Method net/minecraft/util/GsonHelper.getAsJsonObject:(Lcom/google/gson/JsonObject;Ljava/lang/String;)Lcom/google/gson/JsonObject;
+     146: astore_3
+     147: aload_3
+     148: invokevirtual #107                // Method com/google/gson/JsonObject.entrySet:()Ljava/util/Set;
+     151: invokeinterface #113,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     156: astore        4
+     158: aload         4
+     160: invokeinterface #119,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     165: ifeq          219
+     168: aload         4
+     170: invokeinterface #125,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     175: checkcast     #129                // class java/util/Map$Entry
+     178: astore        5
+     180: aload_0
+     181: getfield      #45                 // Field blocks:Ljava/util/Map;
+     184: aload         5
+     186: invokeinterface #131,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     191: checkcast     #134                // class java/lang/String
+     194: aload         5
+     196: invokeinterface #136,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     201: checkcast     #139                // class com/google/gson/JsonElement
+     204: invokevirtual #141                // Method com/google/gson/JsonElement.getAsInt:()I
+     207: invokestatic  #56                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     210: invokeinterface #144,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     215: pop
+     216: goto          158
+     219: aload_0
+     220: new           #95                 // class java/util/HashMap
+     223: dup
+     224: invokespecial #97                 // Method java/util/HashMap."<init>":()V
+     227: putfield      #148                // Field groups:Ljava/util/Map;
+     230: aload_2
+     231: ldc           #151                // String groups
+     233: invokestatic  #99                 // Method net/minecraft/util/GsonHelper.isObjectNode:(Lcom/google/gson/JsonObject;Ljava/lang/String;)Z
+     236: ifeq          321
+     239: aload_2
+     240: ldc           #151                // String groups
+     242: invokestatic  #103                // Method net/minecraft/util/GsonHelper.getAsJsonObject:(Lcom/google/gson/JsonObject;Ljava/lang/String;)Lcom/google/gson/JsonObject;
+     245: astore_3
+     246: aload_3
+     247: invokevirtual #107                // Method com/google/gson/JsonObject.entrySet:()Ljava/util/Set;
+     250: invokeinterface #113,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     255: astore        4
+     257: aload         4
+     259: invokeinterface #119,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     264: ifeq          321
+     267: aload         4
+     269: invokeinterface #125,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     274: checkcast     #129                // class java/util/Map$Entry
+     277: astore        5
+     279: aload_0
+     280: getfield      #148                // Field groups:Ljava/util/Map;
+     283: aload         5
+     285: invokeinterface #131,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     290: checkcast     #134                // class java/lang/String
+     293: invokestatic  #152                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     296: aload         5
+     298: invokeinterface #136,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     303: checkcast     #139                // class com/google/gson/JsonElement
+     306: invokevirtual #141                // Method com/google/gson/JsonElement.getAsInt:()I
+     309: invokestatic  #56                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     312: invokeinterface #144,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     317: pop
+     318: goto          257
+     321: return
+
+  public java.lang.String name();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field name:Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String color();
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field color:Ljava/lang/String;
+       4: areturn
+
+  public int priority();
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field priority:I
+       4: ireturn
+
+  public boolean visible();
+    Code:
+       0: aload_0
+       1: getfield      #23                 // Field visible:Z
+       4: ireturn
+
+  public int getColor();
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field color:Ljava/lang/String;
+       4: bipush        16
+       6: invokestatic  #158                // Method java/lang/Long.parseLong:(Ljava/lang/String;I)J
+       9: l2i
+      10: ireturn
+
+  public java.util.Map<net.minecraft.resources.ResourceLocation, net.minecraft.resources.ResourceLocation> getBlockToGroup();
+    Code:
+       0: aload_0
+       1: getfield      #68                 // Field blockToGroup:Ljava/util/Map;
+       4: ifnonnull     200
+       7: aload_0
+       8: new           #95                 // class java/util/HashMap
+      11: dup
+      12: invokespecial #97                 // Method java/util/HashMap."<init>":()V
+      15: putfield      #68                 // Field blockToGroup:Ljava/util/Map;
+      18: aload_0
+      19: new           #95                 // class java/util/HashMap
+      22: dup
+      23: invokespecial #97                 // Method java/util/HashMap."<init>":()V
+      26: putfield      #164                // Field tagToGroup:Ljava/util/Map;
+      29: aload_0
+      30: new           #95                 // class java/util/HashMap
+      33: dup
+      34: invokespecial #97                 // Method java/util/HashMap."<init>":()V
+      37: putfield      #148                // Field groups:Ljava/util/Map;
+      40: aload_0
+      41: getfield      #45                 // Field blocks:Ljava/util/Map;
+      44: invokeinterface #167,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      49: invokeinterface #113,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      54: astore_1
+      55: aload_1
+      56: invokeinterface #119,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      61: ifeq          200
+      64: aload_1
+      65: invokeinterface #125,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      70: checkcast     #129                // class java/util/Map$Entry
+      73: astore_2
+      74: aload_2
+      75: invokeinterface #131,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      80: checkcast     #134                // class java/lang/String
+      83: ldc           #168                // String #
+      85: invokevirtual #170                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      88: ifeq          152
+      91: aload_2
+      92: invokeinterface #131,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      97: checkcast     #134                // class java/lang/String
+     100: iconst_1
+     101: invokevirtual #174                // Method java/lang/String.substring:(I)Ljava/lang/String;
+     104: invokestatic  #152                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     107: astore_3
+     108: getstatic     #178                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+     111: aload_3
+     112: invokestatic  #184                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+     115: astore        4
+     117: aload         4
+     119: invokestatic  #190                // Method net/conczin/mca/util/RegistryHelper.isTagEmpty:(Lnet/minecraft/tags/TagKey;)Z
+     122: ifeq          136
+     125: getstatic     #196                // Field net/conczin/mca/MCA.LOGGER:Lorg/apache/logging/log4j/Logger;
+     128: ldc           #202                // String Unknown building type tag {}
+     130: aload_3
+     131: invokeinterface #204,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+     136: aload_0
+     137: getfield      #164                // Field tagToGroup:Ljava/util/Map;
+     140: aload         4
+     142: aload_3
+     143: invokeinterface #144,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     148: pop
+     149: goto          177
+     152: aload_2
+     153: invokeinterface #131,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     158: checkcast     #134                // class java/lang/String
+     161: invokestatic  #152                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     164: astore_3
+     165: aload_0
+     166: getfield      #68                 // Field blockToGroup:Ljava/util/Map;
+     169: aload_3
+     170: aload_3
+     171: invokeinterface #144,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     176: pop
+     177: aload_0
+     178: getfield      #148                // Field groups:Ljava/util/Map;
+     181: aload_3
+     182: aload_2
+     183: invokeinterface #136,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     188: checkcast     #57                 // class java/lang/Integer
+     191: invokeinterface #144,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     196: pop
+     197: goto          55
+     200: aload_0
+     201: getfield      #68                 // Field blockToGroup:Ljava/util/Map;
+     204: areturn
+
+  private java.util.Optional<net.minecraft.resources.ResourceLocation> getGroupForBlock(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: invokevirtual #210                // Method getBlockToGroup:()Ljava/util/Map;
+       4: pop
+       5: aload_0
+       6: getfield      #68                 // Field blockToGroup:Ljava/util/Map;
+       9: aload_1
+      10: invokeinterface #214,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      15: checkcast     #153                // class net/minecraft/resources/ResourceLocation
+      18: astore_2
+      19: aload_2
+      20: ifnull        28
+      23: aload_2
+      24: invokestatic  #218                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      27: areturn
+      28: getstatic     #223                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+      31: aload_1
+      32: invokeinterface #228,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getHolder:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Optional;
+      37: astore_3
+      38: aload_3
+      39: invokevirtual #234                // Method java/util/Optional.isEmpty:()Z
+      42: ifeq          49
+      45: invokestatic  #237                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      48: areturn
+      49: aload_0
+      50: getfield      #164                // Field tagToGroup:Ljava/util/Map;
+      53: invokeinterface #167,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      58: invokeinterface #113,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      63: astore        4
+      65: aload         4
+      67: invokeinterface #119,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      72: ifeq          127
+      75: aload         4
+      77: invokeinterface #125,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      82: checkcast     #129                // class java/util/Map$Entry
+      85: astore        5
+      87: aload_3
+      88: invokevirtual #241                // Method java/util/Optional.get:()Ljava/lang/Object;
+      91: checkcast     #243                // class net/minecraft/core/Holder$Reference
+      94: aload         5
+      96: invokeinterface #131,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     101: checkcast     #185                // class net/minecraft/tags/TagKey
+     104: invokevirtual #245                // Method net/minecraft/core/Holder$Reference.is:(Lnet/minecraft/tags/TagKey;)Z
+     107: ifeq          124
+     110: aload         5
+     112: invokeinterface #136,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     117: checkcast     #153                // class net/minecraft/resources/ResourceLocation
+     120: invokestatic  #218                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+     123: areturn
+     124: goto          65
+     127: invokestatic  #237                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     130: areturn
+
+  public boolean matchesBlock(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #248                // Method getGroupForBlock:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Optional;
+       5: invokevirtual #251                // Method java/util/Optional.isPresent:()Z
+       8: ireturn
+
+  public java.util.Map<net.minecraft.resources.ResourceLocation, java.lang.Integer> getGroups();
+    Code:
+       0: aload_0
+       1: invokevirtual #210                // Method getBlockToGroup:()Ljava/util/Map;
+       4: pop
+       5: aload_0
+       6: getfield      #148                // Field groups:Ljava/util/Map;
+       9: areturn
+
+  public java.util.Map<net.minecraft.resources.ResourceLocation, java.util.List<net.minecraft.core.BlockPos>> getGroups(java.util.Map<net.minecraft.resources.ResourceLocation, java.util.List<net.minecraft.core.BlockPos>>);
+    Code:
+       0: new           #95                 // class java/util/HashMap
+       3: dup
+       4: invokespecial #97                 // Method java/util/HashMap."<init>":()V
+       7: astore_2
+       8: aload_1
+       9: invokeinterface #167,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      14: invokeinterface #113,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      19: astore_3
+      20: aload_3
+      21: invokeinterface #119,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      26: ifeq          68
+      29: aload_3
+      30: invokeinterface #125,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      35: checkcast     #129                // class java/util/Map$Entry
+      38: astore        4
+      40: aload_0
+      41: aload         4
+      43: invokeinterface #131,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      48: checkcast     #153                // class net/minecraft/resources/ResourceLocation
+      51: invokevirtual #248                // Method getGroupForBlock:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Optional;
+      54: aload_2
+      55: aload         4
+      57: invokedynamic #254,  0            // InvokeDynamic #0:accept:(Ljava/util/HashMap;Ljava/util/Map$Entry;)Ljava/util/function/Consumer;
+      62: invokevirtual #258                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+      65: goto          20
+      68: aload_2
+      69: areturn
+
+  public boolean isIcon();
+    Code:
+       0: aload_0
+       1: getfield      #30                 // Field icon:Z
+       4: ireturn
+
+  public int iconU();
+    Code:
+       0: aload_0
+       1: getfield      #33                 // Field iconU:I
+       4: bipush        20
+       6: imul
+       7: ireturn
+
+  public int iconV();
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field iconV:I
+       4: bipush        60
+       6: imul
+       7: ireturn
+
+  public boolean grouped();
+    Code:
+       0: aload_0
+       1: getfield      #39                 // Field grouped:Z
+       4: ireturn
+
+  public int mergeRange();
+    Code:
+       0: aload_0
+       1: getfield      #42                 // Field mergeRange:I
+       4: ireturn
+
+  public boolean noBeds();
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field noBeds:Z
+       4: ireturn
+
+  public int getMargin();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field margin:I
+       4: ireturn
+
+  public int getMinBlocks();
+    Code:
+       0: aload_0
+       1: getfield      #45                 // Field blocks:Ljava/util/Map;
+       4: invokeinterface #262,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+       9: invokeinterface #266,  1          // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+      14: invokedynamic #272,  0            // InvokeDynamic #1:applyAsInt:()Ljava/util/function/ToIntFunction;
+      19: invokeinterface #276,  2          // InterfaceMethod java/util/stream/Stream.mapToInt:(Ljava/util/function/ToIntFunction;)Ljava/util/stream/IntStream;
+      24: invokeinterface #282,  1          // InterfaceMethod java/util/stream/IntStream.sum:()I
+      29: ireturn
+
+  private static int lambda$getMinBlocks$5(java.lang.Integer);
+    Code:
+       0: aload_0
+       1: invokevirtual #287                // Method java/lang/Integer.intValue:()I
+       4: ireturn
+
+  private static void lambda$getGroups$4(java.util.HashMap, java.util.Map$Entry, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: invokedynamic #290,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+       7: invokevirtual #294                // Method java/util/HashMap.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      10: checkcast     #298                // class java/util/List
+      13: aload_1
+      14: invokeinterface #136,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      19: checkcast     #267                // class java/util/Collection
+      22: invokeinterface #300,  2          // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+      27: pop
+      28: return
+
+  private static java.util.List lambda$getGroups$3(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: new           #304                // class java/util/LinkedList
+       3: dup
+       4: invokespecial #306                // Method java/util/LinkedList."<init>":()V
+       7: areturn
+
+  private static net.conczin.mca.resources.data.BuildingType lambda$static$2(net.minecraft.network.FriendlyByteBuf);
+    Code:
+       0: aload_0
+       1: invokevirtual #307                // Method net/minecraft/network/FriendlyByteBuf.readUtf:()Ljava/lang/String;
+       4: astore_1
+       5: aload_0
+       6: invokevirtual #313                // Method net/minecraft/network/FriendlyByteBuf.readVarInt:()I
+       9: istore_2
+      10: aload_0
+      11: invokevirtual #307                // Method net/minecraft/network/FriendlyByteBuf.readUtf:()Ljava/lang/String;
+      14: astore_3
+      15: aload_0
+      16: invokevirtual #313                // Method net/minecraft/network/FriendlyByteBuf.readVarInt:()I
+      19: istore        4
+      21: aload_0
+      22: invokevirtual #316                // Method net/minecraft/network/FriendlyByteBuf.readBoolean:()Z
+      25: istore        5
+      27: aload_0
+      28: invokevirtual #316                // Method net/minecraft/network/FriendlyByteBuf.readBoolean:()Z
+      31: istore        6
+      33: aload_0
+      34: invokevirtual #316                // Method net/minecraft/network/FriendlyByteBuf.readBoolean:()Z
+      37: istore        7
+      39: aload_0
+      40: invokevirtual #313                // Method net/minecraft/network/FriendlyByteBuf.readVarInt:()I
+      43: istore        8
+      45: aload_0
+      46: invokevirtual #313                // Method net/minecraft/network/FriendlyByteBuf.readVarInt:()I
+      49: istore        9
+      51: aload_0
+      52: invokevirtual #316                // Method net/minecraft/network/FriendlyByteBuf.readBoolean:()Z
+      55: istore        10
+      57: aload_0
+      58: invokevirtual #313                // Method net/minecraft/network/FriendlyByteBuf.readVarInt:()I
+      61: istore        11
+      63: aload_0
+      64: invokevirtual #313                // Method net/minecraft/network/FriendlyByteBuf.readVarInt:()I
+      67: istore        12
+      69: new           #95                 // class java/util/HashMap
+      72: dup
+      73: iload         12
+      75: invokespecial #319                // Method java/util/HashMap."<init>":(I)V
+      78: astore        13
+      80: iconst_0
+      81: istore        14
+      83: iload         14
+      85: iload         12
+      87: if_icmpge     115
+      90: aload         13
+      92: aload_0
+      93: invokevirtual #307                // Method net/minecraft/network/FriendlyByteBuf.readUtf:()Ljava/lang/String;
+      96: aload_0
+      97: invokevirtual #313                // Method net/minecraft/network/FriendlyByteBuf.readVarInt:()I
+     100: invokestatic  #56                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     103: invokeinterface #144,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     108: pop
+     109: iinc          14, 1
+     112: goto          83
+     115: new           #8                  // class net/conczin/mca/resources/data/BuildingType
+     118: dup
+     119: aload_1
+     120: iload_2
+     121: aload_3
+     122: iload         4
+     124: iload         5
+     126: iload         6
+     128: iload         7
+     130: iload         8
+     132: iload         9
+     134: iload         10
+     136: iload         11
+     138: aload         13
+     140: invokespecial #322                // Method "<init>":(Ljava/lang/String;ILjava/lang/String;IZZZIIZILjava/util/Map;)V
+     143: areturn
+
+  private static void lambda$static$1(net.minecraft.network.FriendlyByteBuf, net.conczin.mca.resources.data.BuildingType);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: getfield      #7                  // Field name:Ljava/lang/String;
+       5: invokevirtual #325                // Method net/minecraft/network/FriendlyByteBuf.writeUtf:(Ljava/lang/String;)Lnet/minecraft/network/FriendlyByteBuf;
+       8: pop
+       9: aload_0
+      10: aload_1
+      11: getfield      #13                 // Field margin:I
+      14: invokevirtual #329                // Method net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+      17: pop
+      18: aload_0
+      19: aload_1
+      20: getfield      #17                 // Field color:Ljava/lang/String;
+      23: invokevirtual #325                // Method net/minecraft/network/FriendlyByteBuf.writeUtf:(Ljava/lang/String;)Lnet/minecraft/network/FriendlyByteBuf;
+      26: pop
+      27: aload_0
+      28: aload_1
+      29: getfield      #20                 // Field priority:I
+      32: invokevirtual #329                // Method net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+      35: pop
+      36: aload_0
+      37: aload_1
+      38: getfield      #23                 // Field visible:Z
+      41: invokevirtual #333                // Method net/minecraft/network/FriendlyByteBuf.writeBoolean:(Z)Lnet/minecraft/network/FriendlyByteBuf;
+      44: pop
+      45: aload_0
+      46: aload_1
+      47: getfield      #27                 // Field noBeds:Z
+      50: invokevirtual #333                // Method net/minecraft/network/FriendlyByteBuf.writeBoolean:(Z)Lnet/minecraft/network/FriendlyByteBuf;
+      53: pop
+      54: aload_0
+      55: aload_1
+      56: getfield      #30                 // Field icon:Z
+      59: invokevirtual #333                // Method net/minecraft/network/FriendlyByteBuf.writeBoolean:(Z)Lnet/minecraft/network/FriendlyByteBuf;
+      62: pop
+      63: aload_0
+      64: aload_1
+      65: getfield      #33                 // Field iconU:I
+      68: invokevirtual #329                // Method net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+      71: pop
+      72: aload_0
+      73: aload_1
+      74: getfield      #36                 // Field iconV:I
+      77: invokevirtual #329                // Method net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+      80: pop
+      81: aload_0
+      82: aload_1
+      83: getfield      #39                 // Field grouped:Z
+      86: invokevirtual #333                // Method net/minecraft/network/FriendlyByteBuf.writeBoolean:(Z)Lnet/minecraft/network/FriendlyByteBuf;
+      89: pop
+      90: aload_0
+      91: aload_1
+      92: getfield      #42                 // Field mergeRange:I
+      95: invokevirtual #329                // Method net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+      98: pop
+      99: aload_0
+     100: aload_1
+     101: getfield      #45                 // Field blocks:Ljava/util/Map;
+     104: invokeinterface #337,  1          // InterfaceMethod java/util/Map.size:()I
+     109: invokevirtual #329                // Method net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+     112: pop
+     113: aload_1
+     114: getfield      #45                 // Field blocks:Ljava/util/Map;
+     117: aload_0
+     118: invokedynamic #340,  0            // InvokeDynamic #3:accept:(Lnet/minecraft/network/FriendlyByteBuf;)Ljava/util/function/BiConsumer;
+     123: invokeinterface #343,  2          // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+     128: return
+
+  private static void lambda$static$0(net.minecraft.network.FriendlyByteBuf, java.lang.String, java.lang.Integer);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #325                // Method net/minecraft/network/FriendlyByteBuf.writeUtf:(Ljava/lang/String;)Lnet/minecraft/network/FriendlyByteBuf;
+       5: pop
+       6: aload_0
+       7: aload_2
+       8: invokevirtual #287                // Method java/lang/Integer.intValue:()I
+      11: invokevirtual #329                // Method net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+      14: pop
+      15: return
+
+  static {};
+    Code:
+       0: invokedynamic #347,  0            // InvokeDynamic #4:encode:()Lnet/minecraft/network/codec/StreamEncoder;
+       5: invokedynamic #351,  0            // InvokeDynamic #5:decode:()Lnet/minecraft/network/codec/StreamDecoder;
+      10: invokestatic  #355                // InterfaceMethod net/minecraft/network/codec/StreamCodec.of:(Lnet/minecraft/network/codec/StreamEncoder;Lnet/minecraft/network/codec/StreamDecoder;)Lnet/minecraft/network/codec/StreamCodec;
+      13: putstatic     #360                // Field STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      16: return
+}
