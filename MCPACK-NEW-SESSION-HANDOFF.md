@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Curios membership is resolved with no independent family. Reuse source increments
+68eeeb92 and 38e02fc7 (24 classes). Slot reloaders and shared events manage
+existing entities' equipment; no generated structure payload is present. Captures
+reproduce exactly; the focused source binding and scoped quality checks pass.
+Whole providers: 129 resolved, 7 open. Working groups remain 410 and explicit
+provisional Moog decisions remain 100. Stop generic Curios equipment/API tracing.
+Next provider: Fzzy Config. Canonical reconciliation precedes detailed attributes.
+Item 8 final acceptance, clean review and main merge remain incomplete.
+
+
 Diesel Generators membership is resolved with no independent family. Reuse
 9dd6ae20, 44ae9c8a, c8adfcaa and 07de7794 (32 classes), plus existing identical
 Supplementaries Sable Companion evidence. Oil is a saved numeric chunk resource,
