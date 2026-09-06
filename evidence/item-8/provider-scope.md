@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 58 of 136. The exact queue below has 78 open rows.
+Supported provider dispositions: 59 of 136. The exact queue below has 77 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -614,7 +614,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `idas-1.13.7+1.21.1-neoforge.jar` | `idas-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `integrated_api-1.7.3+1.21.1-neoforge.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `integrated_stronghold-1.1.4+1.21.1-neoforge.jar` | `integrated-stronghold-provider`, existing root/graph and family-decision regression | RESOLVED: one existing root, both modification mixins, all components and disconnected/missing templates accounted for. See Integrated Stronghold provider disposition below. |
-| `integrated_villages-1.3.3+1.21.1-neoforge.jar` | `integrated-village-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
+| `integrated_villages-1.3.3+1.21.1-neoforge.jar` | `integrated-villages-provider` (97000f2), prior suppression evidence, test_integrated_villages_provider_scope.py | RESOLVED: Twelve existing roots, full component partition, four incompatible legacy addition declarations and existing village suppression. See Integrated Villages disposition below. Shared Integrated API remains open. |
 | `kotlinforforge-5.11.0-all.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `letmedespawn-1.21.x-neoforge-1.5.0.jar` | `letmedespawn-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing mob persistence/discard behavior; no independent family. See small utility provider dispositions below. |
 | `libraryferret-neoforge-1.21.1-4.0.0.jar` | `libraryferret-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Abstract consumer-supplied jigsaw/placement support and coin content. No independent family. See additional shared provider dispositions below. |
@@ -2051,3 +2051,61 @@ uv run basedpyright tests/item8/test_small_utility_provider_scope.py
 
 Current census: 58 resolved providers and 78 open. These closures add no family
 candidate and do not complete the affected families' eleven required attributes.
+
+## Integrated Villages provider disposition
+
+Source 97000f2 plus the prior suppression capture covers all fourteen classes in
+integrated_villages-1.3.3+1.21.1-neoforge.jar. The focused payload check binds all
+1475 files to the frozen archive identity and the exact source manifests. No
+additional nested archive, service, script or feature/carver registration is
+present in this payload. Entry, configuration, loot diagnostic and pool consumer
+roles are documented with the source; the two declared mixins modify generation
+and direct locate behavior for existing vanilla/Terralith villages.
+
+All twelve packaged roots are already in the inventory and preserved graph.
+Ten use Integrated API generic_structure, pirate uses biome_facing_structure,
+and quark/minka uses optional_dependency_structure. Reuse runtime registration,
+frozen suppression and prior design enumeration. These twelve roots are not a
+new canonical family count. Shared Integrated API implementation remains an open
+provider dependency.
+
+The existing graph accounts for all 421 pools and 754 templates. Exactly 51 pools
+and 74 templates are disconnected from those twelve root graphs. Their exact
+IDs are retained in test_integrated_villages_provider_scope.py. They are village
+house, job, path, decoration, mob and compatibility components, not independent
+registered families. Several have names resembling missing references; do not
+silently substitute them. Missing pool/template references remain on cabin,
+kutcha, marketstead, oasis, pirate, quark/minka and sunken roots. The test binds
+the complete missing-reference lists to the preserved graph; all twelve traces
+have no unresolved pool elements. Graph reachability does not prove successful
+world placement of every connected piece.
+
+Four additional component declarations target Mediterranean bakery, pirate
+market, tavern market and tavern well. Each targets one of the disconnected
+packaged templates. All use name and required_mod, while the captured consumer
+reads target_pool and optional condition. Preserve this incompatible declaration
+shape. The missing target_pool is read before the codec exception handler. Entry
+code does not register the reload listener, and this source capture establishes
+neither successful injection nor an observed runtime parsing failure. Mod absence
+alone is not their effective disposition. Their candidate role is nevertheless
+bounded: components of existing villages, not additional structure families.
+
+Twelve Integrated API workstation definitions select block components. One
+integrated_structure_spawners definition declares zombie weight 15 and skeleton
+weight 10. These are component/encounter inputs for shared consumers, not new
+structure roots or proof of realized spawners. Other packaged data consists of
+loot, tags, advancements, processors and structure sets. Preserve these inputs
+for the later eleven-attribute pass.
+
+```sh
+uv run pytest -q tests/item8/test_integrated_villages_provider_scope.py tests/item8/test_integrated_suppression.py
+uv run ruff check tests/item8/test_integrated_villages_provider_scope.py
+uv run basedpyright tests/item8/test_integrated_villages_provider_scope.py
+```
+
+Five cases pass; scoped Ruff and Basedpyright pass. The initial new test looked
+for the condition codec in ExpandedPoolEntry, but javap places that codec in the
+enclosing AdditionalStructureTemplatePool. Correcting the asserted source file
+resolved the test failure without changing raw evidence. Initial formatting
+findings were corrected. Provider dispositions now cover 59 of 136, leaving
+77 open. Canonical family grouping and the final Item 8 gate remain open.
