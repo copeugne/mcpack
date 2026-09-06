@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Ten Soaring grouping decisions are settled from manually inspected house/tower
+views, existing packaged contents and complete pool traces. Six house designs
+and four tower/ruin designs remain separate families, with attached pieces kept
+as components. Explicit provisional queue: 90, comprising Soaring 15, Nether 22
+and Voyager 53. Working group count remains 410. Reuse the five compressed Soaring
+view sheets; remaining landscape, island and monument inspections follow. The
+arena is a 21-template assembly and is not represented in these sheets. Required
+attributes, nonregistry reconciliation and final delivery gates remain open.
+
+
 Soaring view pilots exposed two concrete issues: arena is a 21-template assembly,
 not arena.nbt, and unculled buried island cells produced a 70 MB house SVG whose
 conversion exceeded three minutes. Stop that conversion and omit cells hidden
