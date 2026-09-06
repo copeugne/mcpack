@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 128 of 136. The exact queue below has 8 open rows.
+Supported provider dispositions: 129 of 136. The exact queue below has 7 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -651,7 +651,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `creatingspace-1.21.1-1.7.18.jar` | Existing root decisions, creating-space-provider, creating-space-arrival, creating-space-common-delegates and test_creating_space_provider_scope.py | RESOLVED: Four existing roots, five connected pools, six templates partitioned, terrain and common-hook roles accounted for. Disconnected outpost retained below. Canonical grouping and attributes remain separate. |
 | `cristellib-neoforge-1.21.1-3.1.7.jar` | `cristellib-provider`, `cristellib-writers`, `cristellib-set-writers`, `cristellib-conditions`, `cristellib-builtin`; full payload/source binding. | RESOLVED: consumer pack loading and existing structure-set configuration. No independent family; Waystones replacement condition fails in the frozen runtime. |
 | `cupboard-1.21-3.7.jar` | `cupboard-provider` (77dd750), test_small_utility_provider_scope.py | RESOLVED: Shared configuration, lookups, diagnostics and existing-entity handling; no independent family. Frozen error-suppression setting and limitations below. |
-| `curios-neoforge-9.5.1+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `curios-neoforge-9.5.1+1.21.1.jar` | curios-provider, curios-delegates and focused source binding | RESOLVED: equipment slot data, existing-entity inventory and consumer item behavior, no independent family. See Curios membership closure below. |
 | `deep_aether-1.21.1-1.1.5.1.jar` | `deep-aether-totem-scope`, `deep-aether-provider`, `deep-aether-aeroblender`, `deep-aether-biome-setup`; focused candidate and provider checks | RESOLVED: Four roots, fifteen templates, custom feature candidates, common hooks, optional packs and active AeroBlender accounted for. Preserve inactive Sacred Lands and fallen-tree grouping boundaries. See final Deep Aether disposition below. |
 | `dummmmmmy-1.21-2.0.12-neoforge.jar` | Source 51ba791c; test_small_utility_provider_scope.py | RESOLVED: Item/dispenser-placed target dummy and existing-entity interaction hooks. No independent family. See target dummy disposition below. |
 | `emi_loot-0.7.9+1.21+neoforge.jar` | ebf5a286 entry paths; a2f485ef parser and accessors. | RESOLVED: existing-loot inspection and client display synchronization, no independent generated family. See EMI Loot membership closure. |
@@ -8175,5 +8175,46 @@ automatic entry/common mixin set and every captured class/source hash. Escaped
 paths and unexplained capture files fail. One test line was wrapped for style.
 
 Whole providers: 128 resolved, 8 open. Working groups remain 410 and explicit
+provisional Moog decisions remain 100. Final canonical membership, attributes,
+acceptance, clean review and main delivery remain incomplete.
+
+## Curios membership closure
+
+Curios membership is RESOLVED with no independent generated family. Archive
+curios-neoforge-9.5.1+1.21.1.jar has SHA-256
+a45df2125c26219974aba7507ffc9afe7b83acc941a386af3faacb1cc0056fde.
+Its 152 classes and ten equipment-slot definitions are bound by the focused
+test. It packages no structure definitions, NBT templates or nested JARs.
+Its single platform service implements equipment-related queries.
+
+Source increments 68eeeb92 and 38e02fc7 retain 24 classes and reproduce exactly.
+They cover both automatic entries, the platform service, all thirteen common
+mixins, registration, data reloaders, shared events, commands and direct API
+implementation. The reloaders build slot definitions and entity-to-slot maps.
+They do not spawn entities or authored structures. Shared events operate on
+existing entities' equipment, inventory contents, modifiers, synchronization,
+drops, and consumer item callbacks. Commands edit player equipment slots.
+The item-entity constructor supplies dropped equipment, not an encounter family.
+
+Mixins integrate equipment with advancement predicates, data migration,
+inventory checks, looting/fortune, piglin neutrality and snow protection. These
+are equipment-dependent modifications to existing gameplay, not new structures.
+Consumer-supplied item callbacks remain attributable to their owning providers.
+Stop general inventory, networking, rendering, commands and equipment API
+tracing at these established roles. No new runtime measurement was needed.
+
+```sh
+uv run pytest -q tests/item8/test_curios_provider_scope.py
+uv run ruff check tests/item8/test_curios_provider_scope.py
+uv run basedpyright tests/item8/test_curios_provider_scope.py
+```
+
+The focused case and scoped quality checks pass. The test binds the archive,
+complete data payload, service, automatic-entry and common-mixin sets, and
+captured class/source hashes. It rejects escaped paths and unexplained files.
+One assertion was wrapped for style without a semantic change. This membership
+decision does not establish equipment balance, compatibility or persistence.
+
+Whole providers: 129 resolved, 7 open. Working groups remain 410 and explicit
 provisional Moog decisions remain 100. Final canonical membership, attributes,
 acceptance, clean review and main delivery remain incomplete.

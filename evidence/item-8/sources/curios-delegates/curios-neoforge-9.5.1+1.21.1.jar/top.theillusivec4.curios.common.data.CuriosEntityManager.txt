@@ -1,0 +1,2077 @@
+Classfile curios-neoforge-9.5.1+1.21.1.jar!/top/theillusivec4/curios/common/data/CuriosEntityManager.class
+  Last modified May 14, 2025; size 19071 bytes
+  SHA-256 checksum b5e2d91d77f07f3e51f428da25e4dc1c1ae422c522860c50e222dc78561eb773
+  Compiled from "CuriosEntityManager.java"
+public class top.theillusivec4.curios.common.data.CuriosEntityManager extends net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // top/theillusivec4/curios/common/data/CuriosEntityManager
+  super_class: #10                        // net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener
+  interfaces: 0, fields: 5, methods: 26, attributes: 3
+Constant pool:
+    #1 = Fieldref           #2.#3         // top/theillusivec4/curios/common/data/CuriosEntityManager.GSON:Lcom/google/gson/Gson;
+    #2 = Class              #4            // top/theillusivec4/curios/common/data/CuriosEntityManager
+    #3 = NameAndType        #5:#6         // GSON:Lcom/google/gson/Gson;
+    #4 = Utf8               top/theillusivec4/curios/common/data/CuriosEntityManager
+    #5 = Utf8               GSON
+    #6 = Utf8               Lcom/google/gson/Gson;
+    #7 = String             #8            // curios/entities
+    #8 = Utf8               curios/entities
+    #9 = Methodref          #10.#11       // net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener."<init>":(Lcom/google/gson/Gson;Ljava/lang/String;)V
+   #10 = Class              #12           // net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener
+   #11 = NameAndType        #13:#14       // "<init>":(Lcom/google/gson/Gson;Ljava/lang/String;)V
+   #12 = Utf8               net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener
+   #13 = Utf8               <init>
+   #14 = Utf8               (Lcom/google/gson/Gson;Ljava/lang/String;)V
+   #15 = Methodref          #16.#17       // com/google/common/collect/ImmutableMap.of:()Lcom/google/common/collect/ImmutableMap;
+   #16 = Class              #18           // com/google/common/collect/ImmutableMap
+   #17 = NameAndType        #19:#20       // of:()Lcom/google/common/collect/ImmutableMap;
+   #18 = Utf8               com/google/common/collect/ImmutableMap
+   #19 = Utf8               of
+   #20 = Utf8               ()Lcom/google/common/collect/ImmutableMap;
+   #21 = Fieldref           #2.#22        // top/theillusivec4/curios/common/data/CuriosEntityManager.entitySlots:Ljava/util/Map;
+   #22 = NameAndType        #23:#24       // entitySlots:Ljava/util/Map;
+   #23 = Utf8               entitySlots
+   #24 = Utf8               Ljava/util/Map;
+   #25 = Fieldref           #2.#26        // top/theillusivec4/curios/common/data/CuriosEntityManager.idToMods:Ljava/util/Map;
+   #26 = NameAndType        #27:#24       // idToMods:Ljava/util/Map;
+   #27 = Utf8               idToMods
+   #28 = Class              #29           // java/util/HashMap
+   #29 = Utf8               java/util/HashMap
+   #30 = Methodref          #28.#31       // java/util/HashMap."<init>":()V
+   #31 = NameAndType        #13:#32       // "<init>":()V
+   #32 = Utf8               ()V
+   #33 = Class              #34           // java/util/LinkedHashMap
+   #34 = Utf8               java/util/LinkedHashMap
+   #35 = Methodref          #33.#31       // java/util/LinkedHashMap."<init>":()V
+   #36 = InterfaceMethodref #37.#38       // net/minecraft/server/packs/resources/ResourceManager.listPacks:()Ljava/util/stream/Stream;
+   #37 = Class              #39           // net/minecraft/server/packs/resources/ResourceManager
+   #38 = NameAndType        #40:#41       // listPacks:()Ljava/util/stream/Stream;
+   #39 = Utf8               net/minecraft/server/packs/resources/ResourceManager
+   #40 = Utf8               listPacks
+   #41 = Utf8               ()Ljava/util/stream/Stream;
+   #42 = InvokeDynamic      #0:#43        // #0:accept:(Ljava/util/Map;Ljava/util/Map;)Ljava/util/function/Consumer;
+   #43 = NameAndType        #44:#45       // accept:(Ljava/util/Map;Ljava/util/Map;)Ljava/util/function/Consumer;
+   #44 = Utf8               accept
+   #45 = Utf8               (Ljava/util/Map;Ljava/util/Map;)Ljava/util/function/Consumer;
+   #46 = InterfaceMethodref #47.#48       // java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+   #47 = Class              #49           // java/util/stream/Stream
+   #48 = NameAndType        #50:#51       // forEach:(Ljava/util/function/Consumer;)V
+   #49 = Utf8               java/util/stream/Stream
+   #50 = Utf8               forEach
+   #51 = Utf8               (Ljava/util/function/Consumer;)V
+   #52 = InterfaceMethodref #53.#54       // java/util/Map.entrySet:()Ljava/util/Set;
+   #53 = Class              #55           // java/util/Map
+   #54 = NameAndType        #56:#57       // entrySet:()Ljava/util/Set;
+   #55 = Utf8               java/util/Map
+   #56 = Utf8               entrySet
+   #57 = Utf8               ()Ljava/util/Set;
+   #58 = InterfaceMethodref #59.#60       // java/util/Set.iterator:()Ljava/util/Iterator;
+   #59 = Class              #61           // java/util/Set
+   #60 = NameAndType        #62:#63       // iterator:()Ljava/util/Iterator;
+   #61 = Utf8               java/util/Set
+   #62 = Utf8               iterator
+   #63 = Utf8               ()Ljava/util/Iterator;
+   #64 = InterfaceMethodref #65.#66       // java/util/Iterator.hasNext:()Z
+   #65 = Class              #67           // java/util/Iterator
+   #66 = NameAndType        #68:#69       // hasNext:()Z
+   #67 = Utf8               java/util/Iterator
+   #68 = Utf8               hasNext
+   #69 = Utf8               ()Z
+   #70 = InterfaceMethodref #65.#71       // java/util/Iterator.next:()Ljava/lang/Object;
+   #71 = NameAndType        #72:#73       // next:()Ljava/lang/Object;
+   #72 = Utf8               next
+   #73 = Utf8               ()Ljava/lang/Object;
+   #74 = Class              #75           // java/util/Map$Entry
+   #75 = Utf8               java/util/Map$Entry
+   #76 = InterfaceMethodref #74.#77       // java/util/Map$Entry.getKey:()Ljava/lang/Object;
+   #77 = NameAndType        #78:#73       // getKey:()Ljava/lang/Object;
+   #78 = Utf8               getKey
+   #79 = Class              #80           // net/minecraft/resources/ResourceLocation
+   #80 = Utf8               net/minecraft/resources/ResourceLocation
+   #81 = Methodref          #79.#82       // net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+   #82 = NameAndType        #83:#84       // getPath:()Ljava/lang/String;
+   #83 = Utf8               getPath
+   #84 = Utf8               ()Ljava/lang/String;
+   #85 = String             #86           // _
+   #86 = Utf8               _
+   #87 = Methodref          #88.#89       // java/lang/String.startsWith:(Ljava/lang/String;)Z
+   #88 = Class              #90           // java/lang/String
+   #89 = NameAndType        #91:#92       // startsWith:(Ljava/lang/String;)Z
+   #90 = Utf8               java/lang/String
+   #91 = Utf8               startsWith
+   #92 = Utf8               (Ljava/lang/String;)Z
+   #93 = InterfaceMethodref #74.#94       // java/util/Map$Entry.getValue:()Ljava/lang/Object;
+   #94 = NameAndType        #95:#73       // getValue:()Ljava/lang/Object;
+   #95 = Utf8               getValue
+   #96 = Class              #97           // com/google/gson/JsonElement
+   #97 = Utf8               com/google/gson/JsonElement
+   #98 = String             #99           // top element
+   #99 = Utf8               top element
+  #100 = Methodref          #101.#102     // net/minecraft/util/GsonHelper.convertToJsonObject:(Lcom/google/gson/JsonElement;Ljava/lang/String;)Lcom/google/gson/JsonObject;
+  #101 = Class              #103          // net/minecraft/util/GsonHelper
+  #102 = NameAndType        #104:#105     // convertToJsonObject:(Lcom/google/gson/JsonElement;Ljava/lang/String;)Lcom/google/gson/JsonObject;
+  #103 = Utf8               net/minecraft/util/GsonHelper
+  #104 = Utf8               convertToJsonObject
+  #105 = Utf8               (Lcom/google/gson/JsonElement;Ljava/lang/String;)Lcom/google/gson/JsonObject;
+  #106 = Methodref          #2.#107       // top/theillusivec4/curios/common/data/CuriosEntityManager.getSlotsForEntities:(Lcom/google/gson/JsonObject;Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map;
+  #107 = NameAndType        #108:#109     // getSlotsForEntities:(Lcom/google/gson/JsonObject;Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map;
+  #108 = Utf8               getSlotsForEntities
+  #109 = Utf8               (Lcom/google/gson/JsonObject;Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map;
+  #110 = String             #111          // replace
+  #111 = Utf8               replace
+  #112 = Methodref          #101.#113     // net/minecraft/util/GsonHelper.getAsBoolean:(Lcom/google/gson/JsonObject;Ljava/lang/String;Z)Z
+  #113 = NameAndType        #114:#115     // getAsBoolean:(Lcom/google/gson/JsonObject;Ljava/lang/String;Z)Z
+  #114 = Utf8               getAsBoolean
+  #115 = Utf8               (Lcom/google/gson/JsonObject;Ljava/lang/String;Z)Z
+  #116 = Methodref          #16.#117      // com/google/common/collect/ImmutableMap.builder:()Lcom/google/common/collect/ImmutableMap$Builder;
+  #117 = NameAndType        #118:#119     // builder:()Lcom/google/common/collect/ImmutableMap$Builder;
+  #118 = Utf8               builder
+  #119 = Utf8               ()Lcom/google/common/collect/ImmutableMap$Builder;
+  #120 = Methodref          #121.#122     // com/google/common/collect/ImmutableMap$Builder.putAll:(Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #121 = Class              #123          // com/google/common/collect/ImmutableMap$Builder
+  #122 = NameAndType        #124:#125     // putAll:(Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #123 = Utf8               com/google/common/collect/ImmutableMap$Builder
+  #124 = Utf8               putAll
+  #125 = Utf8               (Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #126 = Class              #127          // net/minecraft/world/entity/EntityType
+  #127 = Utf8               net/minecraft/world/entity/EntityType
+  #128 = InterfaceMethodref #53.#129      // java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #129 = NameAndType        #130:#131     // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #130 = Utf8               put
+  #131 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #132 = InvokeDynamic      #1:#133       // #1:apply:()Ljava/util/function/Function;
+  #133 = NameAndType        #134:#135     // apply:()Ljava/util/function/Function;
+  #134 = Utf8               apply
+  #135 = Utf8               ()Ljava/util/function/Function;
+  #136 = InterfaceMethodref #53.#137      // java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+  #137 = NameAndType        #138:#139     // computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+  #138 = Utf8               computeIfAbsent
+  #139 = Utf8               (Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+  #140 = InvokeDynamic      #2:#133       // #2:apply:()Ljava/util/function/Function;
+  #141 = Class              #142          // com/google/common/collect/ImmutableSet$Builder
+  #142 = Utf8               com/google/common/collect/ImmutableSet$Builder
+  #143 = Methodref          #79.#144      // net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+  #144 = NameAndType        #145:#84      // getNamespace:()Ljava/lang/String;
+  #145 = Utf8               getNamespace
+  #146 = Methodref          #141.#147     // com/google/common/collect/ImmutableSet$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #147 = NameAndType        #148:#149     // add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #148 = Utf8               add
+  #149 = Utf8               (Ljava/lang/Object;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #150 = Class              #151          // java/lang/IllegalArgumentException
+  #151 = Utf8               java/lang/IllegalArgumentException
+  #152 = Class              #153          // com/google/gson/JsonParseException
+  #153 = Utf8               com/google/gson/JsonParseException
+  #154 = Fieldref           #155.#156     // top/theillusivec4/curios/CuriosConstants.LOG:Lorg/slf4j/Logger;
+  #155 = Class              #157          // top/theillusivec4/curios/CuriosConstants
+  #156 = NameAndType        #158:#159     // LOG:Lorg/slf4j/Logger;
+  #157 = Utf8               top/theillusivec4/curios/CuriosConstants
+  #158 = Utf8               LOG
+  #159 = Utf8               Lorg/slf4j/Logger;
+  #160 = String             #161          // Parsing error loading curio entity {}
+  #161 = Utf8               Parsing error loading curio entity {}
+  #162 = InterfaceMethodref #163.#164     // org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+  #163 = Class              #165          // org/slf4j/Logger
+  #164 = NameAndType        #166:#167     // error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+  #165 = Utf8               org/slf4j/Logger
+  #166 = Utf8               error
+  #167 = Utf8               (Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+  #168 = Fieldref           #169.#170     // top/theillusivec4/curios/common/data/CuriosSlotManager.SERVER:Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+  #169 = Class              #171          // top/theillusivec4/curios/common/data/CuriosSlotManager
+  #170 = NameAndType        #172:#173     // SERVER:Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+  #171 = Utf8               top/theillusivec4/curios/common/data/CuriosSlotManager
+  #172 = Utf8               SERVER
+  #173 = Utf8               Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+  #174 = Methodref          #169.#175     // top/theillusivec4/curios/common/data/CuriosSlotManager.getConfigSlots:()Ljava/util/Set;
+  #175 = NameAndType        #176:#57      // getConfigSlots:()Ljava/util/Set;
+  #176 = Utf8               getConfigSlots
+  #177 = Methodref          #169.#178     // top/theillusivec4/curios/common/data/CuriosSlotManager.getSlot:(Ljava/lang/String;)Ljava/util/Optional;
+  #178 = NameAndType        #179:#180     // getSlot:(Ljava/lang/String;)Ljava/util/Optional;
+  #179 = Utf8               getSlot
+  #180 = Utf8               (Ljava/lang/String;)Ljava/util/Optional;
+  #181 = InvokeDynamic      #3:#182       // #3:accept:(Ljava/util/Map;Ljava/lang/String;)Ljava/util/function/Consumer;
+  #182 = NameAndType        #44:#183      // accept:(Ljava/util/Map;Ljava/lang/String;)Ljava/util/function/Consumer;
+  #183 = Utf8               (Ljava/util/Map;Ljava/lang/String;)Ljava/util/function/Consumer;
+  #184 = InvokeDynamic      #4:#185       // #4:run:(Ljava/lang/String;)Ljava/lang/Runnable;
+  #185 = NameAndType        #186:#187     // run:(Ljava/lang/String;)Ljava/lang/Runnable;
+  #186 = Utf8               run
+  #187 = Utf8               (Ljava/lang/String;)Ljava/lang/Runnable;
+  #188 = Methodref          #189.#190     // java/util/Optional.ifPresentOrElse:(Ljava/util/function/Consumer;Ljava/lang/Runnable;)V
+  #189 = Class              #191          // java/util/Optional
+  #190 = NameAndType        #192:#193     // ifPresentOrElse:(Ljava/util/function/Consumer;Ljava/lang/Runnable;)V
+  #191 = Utf8               java/util/Optional
+  #192 = Utf8               ifPresentOrElse
+  #193 = Utf8               (Ljava/util/function/Consumer;Ljava/lang/Runnable;)V
+  #194 = Fieldref           #126.#195     // net/minecraft/world/entity/EntityType.PLAYER:Lnet/minecraft/world/entity/EntityType;
+  #195 = NameAndType        #196:#197     // PLAYER:Lnet/minecraft/world/entity/EntityType;
+  #196 = Utf8               PLAYER
+  #197 = Utf8               Lnet/minecraft/world/entity/EntityType;
+  #198 = InvokeDynamic      #5:#133       // #5:apply:()Ljava/util/function/Function;
+  #199 = InterfaceMethodref #59.#200      // java/util/Set.stream:()Ljava/util/stream/Stream;
+  #200 = NameAndType        #201:#41      // stream:()Ljava/util/stream/Stream;
+  #201 = Utf8               stream
+  #202 = InvokeDynamic      #6:#133       // #6:apply:()Ljava/util/function/Function;
+  #203 = InvokeDynamic      #7:#133       // #7:apply:()Ljava/util/function/Function;
+  #204 = Methodref          #16.#205      // com/google/common/collect/ImmutableMap.toImmutableMap:(Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Collector;
+  #205 = NameAndType        #206:#207     // toImmutableMap:(Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Collector;
+  #206 = Utf8               toImmutableMap
+  #207 = Utf8               (Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Collector;
+  #208 = InterfaceMethodref #47.#209      // java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+  #209 = NameAndType        #210:#211     // collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+  #210 = Utf8               collect
+  #211 = Utf8               (Ljava/util/stream/Collector;)Ljava/lang/Object;
+  #212 = InvokeDynamic      #8:#133       // #8:apply:()Ljava/util/function/Function;
+  #213 = InvokeDynamic      #9:#133       // #9:apply:()Ljava/util/function/Function;
+  #214 = String             #215          // Loaded {} curio entities
+  #215 = Utf8               Loaded {} curio entities
+  #216 = InterfaceMethodref #53.#217      // java/util/Map.size:()I
+  #217 = NameAndType        #218:#219     // size:()I
+  #218 = Utf8               size
+  #219 = Utf8               ()I
+  #220 = Methodref          #221.#222     // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+  #221 = Class              #223          // java/lang/Integer
+  #222 = NameAndType        #224:#225     // valueOf:(I)Ljava/lang/Integer;
+  #223 = Utf8               java/lang/Integer
+  #224 = Utf8               valueOf
+  #225 = Utf8               (I)Ljava/lang/Integer;
+  #226 = InterfaceMethodref #163.#227     // org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+  #227 = NameAndType        #228:#229     // info:(Ljava/lang/String;Ljava/lang/Object;)V
+  #228 = Utf8               info
+  #229 = Utf8               (Ljava/lang/String;Ljava/lang/Object;)V
+  #230 = Class              #231          // net/minecraft/nbt/ListTag
+  #231 = Utf8               net/minecraft/nbt/ListTag
+  #232 = Methodref          #230.#31      // net/minecraft/nbt/ListTag."<init>":()V
+  #233 = Fieldref           #2.#234       // top/theillusivec4/curios/common/data/CuriosEntityManager.SERVER:Ltop/theillusivec4/curios/common/data/CuriosEntityManager;
+  #234 = NameAndType        #172:#235     // SERVER:Ltop/theillusivec4/curios/common/data/CuriosEntityManager;
+  #235 = Utf8               Ltop/theillusivec4/curios/common/data/CuriosEntityManager;
+  #236 = Fieldref           #237.#238     // net/minecraft/core/registries/BuiltInRegistries.ENTITY_TYPE:Lnet/minecraft/core/DefaultedRegistry;
+  #237 = Class              #239          // net/minecraft/core/registries/BuiltInRegistries
+  #238 = NameAndType        #240:#241     // ENTITY_TYPE:Lnet/minecraft/core/DefaultedRegistry;
+  #239 = Utf8               net/minecraft/core/registries/BuiltInRegistries
+  #240 = Utf8               ENTITY_TYPE
+  #241 = Utf8               Lnet/minecraft/core/DefaultedRegistry;
+  #242 = InterfaceMethodref #243.#244     // net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+  #243 = Class              #245          // net/minecraft/core/DefaultedRegistry
+  #244 = NameAndType        #78:#246      // getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+  #245 = Utf8               net/minecraft/core/DefaultedRegistry
+  #246 = Utf8               (Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+  #247 = Class              #248          // net/minecraft/nbt/CompoundTag
+  #248 = Utf8               net/minecraft/nbt/CompoundTag
+  #249 = Methodref          #247.#31      // net/minecraft/nbt/CompoundTag."<init>":()V
+  #250 = String             #251          // Entity
+  #251 = Utf8               Entity
+  #252 = Methodref          #79.#253      // net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+  #253 = NameAndType        #254:#84      // toString:()Ljava/lang/String;
+  #254 = Utf8               toString
+  #255 = Methodref          #247.#256     // net/minecraft/nbt/CompoundTag.putString:(Ljava/lang/String;Ljava/lang/String;)V
+  #256 = NameAndType        #257:#258     // putString:(Ljava/lang/String;Ljava/lang/String;)V
+  #257 = Utf8               putString
+  #258 = Utf8               (Ljava/lang/String;Ljava/lang/String;)V
+  #259 = Methodref          #260.#261     // net/minecraft/nbt/StringTag.valueOf:(Ljava/lang/String;)Lnet/minecraft/nbt/StringTag;
+  #260 = Class              #262          // net/minecraft/nbt/StringTag
+  #261 = NameAndType        #224:#263     // valueOf:(Ljava/lang/String;)Lnet/minecraft/nbt/StringTag;
+  #262 = Utf8               net/minecraft/nbt/StringTag
+  #263 = Utf8               (Ljava/lang/String;)Lnet/minecraft/nbt/StringTag;
+  #264 = Methodref          #230.#265     // net/minecraft/nbt/ListTag.add:(Ljava/lang/Object;)Z
+  #265 = NameAndType        #148:#266     // add:(Ljava/lang/Object;)Z
+  #266 = Utf8               (Ljava/lang/Object;)Z
+  #267 = String             #268          // Slots
+  #268 = Utf8               Slots
+  #269 = Methodref          #247.#270     // net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+  #270 = NameAndType        #130:#271     // put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+  #271 = Utf8               (Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+  #272 = Methodref          #230.#60      // net/minecraft/nbt/ListTag.iterator:()Ljava/util/Iterator;
+  #273 = Class              #274          // net/minecraft/nbt/Tag
+  #274 = Utf8               net/minecraft/nbt/Tag
+  #275 = Methodref          #247.#276     // net/minecraft/nbt/CompoundTag.getString:(Ljava/lang/String;)Ljava/lang/String;
+  #276 = NameAndType        #277:#278     // getString:(Ljava/lang/String;)Ljava/lang/String;
+  #277 = Utf8               getString
+  #278 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+  #279 = Methodref          #79.#280      // net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #280 = NameAndType        #281:#282     // parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #281 = Utf8               parse
+  #282 = Utf8               (Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #283 = InterfaceMethodref #243.#284     // net/minecraft/core/DefaultedRegistry.getOptional:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Optional;
+  #284 = NameAndType        #285:#286     // getOptional:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Optional;
+  #285 = Utf8               getOptional
+  #286 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Optional;
+  #287 = Methodref          #189.#288     // java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+  #288 = NameAndType        #289:#290     // orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+  #289 = Utf8               orElse
+  #290 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #291 = Methodref          #247.#292     // net/minecraft/nbt/CompoundTag.getList:(Ljava/lang/String;I)Lnet/minecraft/nbt/ListTag;
+  #292 = NameAndType        #293:#294     // getList:(Ljava/lang/String;I)Lnet/minecraft/nbt/ListTag;
+  #293 = Utf8               getList
+  #294 = Utf8               (Ljava/lang/String;I)Lnet/minecraft/nbt/ListTag;
+  #295 = Methodref          #260.#296     // net/minecraft/nbt/StringTag.getAsString:()Ljava/lang/String;
+  #296 = NameAndType        #297:#84      // getAsString:()Ljava/lang/String;
+  #297 = Utf8               getAsString
+  #298 = Fieldref           #169.#299     // top/theillusivec4/curios/common/data/CuriosSlotManager.CLIENT:Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+  #299 = NameAndType        #300:#173     // CLIENT:Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+  #300 = Utf8               CLIENT
+  #301 = InvokeDynamic      #10:#302      // #10:accept:(Ljava/util/Map;Lnet/minecraft/world/entity/EntityType;Ljava/lang/String;)Ljava/util/function/Consumer;
+  #302 = NameAndType        #44:#303      // accept:(Ljava/util/Map;Lnet/minecraft/world/entity/EntityType;Ljava/lang/String;)Ljava/util/function/Consumer;
+  #303 = Utf8               (Ljava/util/Map;Lnet/minecraft/world/entity/EntityType;Ljava/lang/String;)Ljava/util/function/Consumer;
+  #304 = Methodref          #189.#305     // java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+  #305 = NameAndType        #306:#51      // ifPresent:(Ljava/util/function/Consumer;)V
+  #306 = Utf8               ifPresent
+  #307 = Fieldref           #2.#308       // top/theillusivec4/curios/common/data/CuriosEntityManager.CLIENT:Ltop/theillusivec4/curios/common/data/CuriosEntityManager;
+  #308 = NameAndType        #300:#235     // CLIENT:Ltop/theillusivec4/curios/common/data/CuriosEntityManager;
+  #309 = InvokeDynamic      #11:#133      // #11:apply:()Ljava/util/function/Function;
+  #310 = Fieldref           #311.#312     // com/mojang/serialization/JsonOps.INSTANCE:Lcom/mojang/serialization/JsonOps;
+  #311 = Class              #313          // com/mojang/serialization/JsonOps
+  #312 = NameAndType        #314:#315     // INSTANCE:Lcom/mojang/serialization/JsonOps;
+  #313 = Utf8               com/mojang/serialization/JsonOps
+  #314 = Utf8               INSTANCE
+  #315 = Utf8               Lcom/mojang/serialization/JsonOps;
+  #316 = InterfaceMethodref #317.#318     // net/neoforged/neoforge/common/conditions/ICondition.conditionsMatched:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Z
+  #317 = Class              #319          // net/neoforged/neoforge/common/conditions/ICondition
+  #318 = NameAndType        #320:#321     // conditionsMatched:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Z
+  #319 = Utf8               net/neoforged/neoforge/common/conditions/ICondition
+  #320 = Utf8               conditionsMatched
+  #321 = Utf8               (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Z
+  #322 = String             #323          // Skipping loading entity file {} as its conditions were not met
+  #323 = Utf8               Skipping loading entity file {} as its conditions were not met
+  #324 = InterfaceMethodref #163.#325     // org/slf4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;)V
+  #325 = NameAndType        #326:#229     // debug:(Ljava/lang/String;Ljava/lang/Object;)V
+  #326 = Utf8               debug
+  #327 = String             #328          // entities
+  #328 = Utf8               entities
+  #329 = Class              #330          // com/google/gson/JsonArray
+  #330 = Utf8               com/google/gson/JsonArray
+  #331 = Methodref          #329.#31      // com/google/gson/JsonArray."<init>":()V
+  #332 = Methodref          #101.#333     // net/minecraft/util/GsonHelper.getAsJsonArray:(Lcom/google/gson/JsonObject;Ljava/lang/String;Lcom/google/gson/JsonArray;)Lcom/google/gson/JsonArray;
+  #333 = NameAndType        #334:#335     // getAsJsonArray:(Lcom/google/gson/JsonObject;Ljava/lang/String;Lcom/google/gson/JsonArray;)Lcom/google/gson/JsonArray;
+  #334 = Utf8               getAsJsonArray
+  #335 = Utf8               (Lcom/google/gson/JsonObject;Ljava/lang/String;Lcom/google/gson/JsonArray;)Lcom/google/gson/JsonArray;
+  #336 = Class              #337          // java/util/HashSet
+  #337 = Utf8               java/util/HashSet
+  #338 = Methodref          #336.#31      // java/util/HashSet."<init>":()V
+  #339 = Methodref          #329.#60      // com/google/gson/JsonArray.iterator:()Ljava/util/Iterator;
+  #340 = Methodref          #96.#296      // com/google/gson/JsonElement.getAsString:()Ljava/lang/String;
+  #341 = String             #342          // #
+  #342 = Utf8               #
+  #343 = Fieldref           #344.#345     // net/minecraft/core/registries/Registries.ENTITY_TYPE:Lnet/minecraft/resources/ResourceKey;
+  #344 = Class              #346          // net/minecraft/core/registries/Registries
+  #345 = NameAndType        #240:#347     // ENTITY_TYPE:Lnet/minecraft/resources/ResourceKey;
+  #346 = Utf8               net/minecraft/core/registries/Registries
+  #347 = Utf8               Lnet/minecraft/resources/ResourceKey;
+  #348 = Methodref          #349.#350     // net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+  #349 = Class              #351          // net/minecraft/tags/TagKey
+  #350 = NameAndType        #352:#353     // create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+  #351 = Utf8               net/minecraft/tags/TagKey
+  #352 = Utf8               create
+  #353 = Utf8               (Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+  #354 = InterfaceMethodref #243.#355     // net/minecraft/core/DefaultedRegistry.getTag:(Lnet/minecraft/tags/TagKey;)Ljava/util/Optional;
+  #355 = NameAndType        #356:#357     // getTag:(Lnet/minecraft/tags/TagKey;)Ljava/util/Optional;
+  #356 = Utf8               getTag
+  #357 = Utf8               (Lnet/minecraft/tags/TagKey;)Ljava/util/Optional;
+  #358 = InvokeDynamic      #12:#359      // #12:accept:(Ljava/util/Set;)Ljava/util/function/Consumer;
+  #359 = NameAndType        #44:#360      // accept:(Ljava/util/Set;)Ljava/util/function/Consumer;
+  #360 = Utf8               (Ljava/util/Set;)Ljava/util/function/Consumer;
+  #361 = InterfaceMethodref #59.#265      // java/util/Set.add:(Ljava/lang/Object;)Z
+  #362 = String             #363          // {} is not a registered entity type!
+  #363 = Utf8               {} is not a registered entity type!
+  #364 = InterfaceMethodref #163.#365     // org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+  #365 = NameAndType        #166:#229     // error:(Ljava/lang/String;Ljava/lang/Object;)V
+  #366 = String             #367          // slots
+  #367 = Utf8               slots
+  #368 = InvokeDynamic      #13:#182      // #13:accept:(Ljava/util/Map;Ljava/lang/String;)Ljava/util/function/Consumer;
+  #369 = InvokeDynamic      #14:#185      // #14:run:(Ljava/lang/String;)Ljava/lang/Runnable;
+  #370 = InvokeDynamic      #15:#133      // #15:apply:()Ljava/util/function/Function;
+  #371 = InterfaceMethodref #53.#372      // java/util/Map.putAll:(Ljava/util/Map;)V
+  #372 = NameAndType        #124:#373     // putAll:(Ljava/util/Map;)V
+  #373 = Utf8               (Ljava/util/Map;)V
+  #374 = InterfaceMethodref #53.#375      // java/util/Map.containsKey:(Ljava/lang/Object;)Z
+  #375 = NameAndType        #376:#266     // containsKey:(Ljava/lang/Object;)Z
+  #376 = Utf8               containsKey
+  #377 = InterfaceMethodref #53.#378      // java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #378 = NameAndType        #379:#290     // get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #379 = Utf8               get
+  #380 = Methodref          #16.#381      // com/google/common/collect/ImmutableMap.copyOf:(Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap;
+  #381 = NameAndType        #382:#383     // copyOf:(Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap;
+  #382 = Utf8               copyOf
+  #383 = Utf8               (Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap;
+  #384 = Methodref          #2.#385       // top/theillusivec4/curios/common/data/CuriosEntityManager.apply:(Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #385 = NameAndType        #134:#386     // apply:(Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #386 = Utf8               (Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #387 = String             #388          // {} is not a registered slot type!
+  #388 = Utf8               {} is not a registered slot type!
+  #389 = Methodref          #390.#60      // net/minecraft/core/HolderSet$Named.iterator:()Ljava/util/Iterator;
+  #390 = Class              #391          // net/minecraft/core/HolderSet$Named
+  #391 = Utf8               net/minecraft/core/HolderSet$Named
+  #392 = Class              #393          // net/minecraft/core/Holder
+  #393 = Utf8               net/minecraft/core/Holder
+  #394 = InterfaceMethodref #392.#395     // net/minecraft/core/Holder.value:()Ljava/lang/Object;
+  #395 = NameAndType        #396:#73      // value:()Ljava/lang/Object;
+  #396 = Utf8               value
+  #397 = Methodref          #121.#398     // com/google/common/collect/ImmutableMap$Builder.build:()Lcom/google/common/collect/ImmutableMap;
+  #398 = NameAndType        #399:#20      // build:()Lcom/google/common/collect/ImmutableMap;
+  #399 = Utf8               build
+  #400 = InvokeDynamic      #16:#133      // #16:apply:()Ljava/util/function/Function;
+  #401 = Methodref          #121.#402     // com/google/common/collect/ImmutableMap$Builder.put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #402 = NameAndType        #130:#403     // put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #403 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #404 = Methodref          #141.#405     // com/google/common/collect/ImmutableSet$Builder.build:()Lcom/google/common/collect/ImmutableSet;
+  #405 = NameAndType        #399:#406     // build:()Lcom/google/common/collect/ImmutableSet;
+  #406 = Utf8               ()Lcom/google/common/collect/ImmutableSet;
+  #407 = Methodref          #121.#408     // com/google/common/collect/ImmutableMap$Builder.buildKeepingLast:()Lcom/google/common/collect/ImmutableMap;
+  #408 = NameAndType        #409:#20      // buildKeepingLast:()Lcom/google/common/collect/ImmutableMap;
+  #409 = Utf8               buildKeepingLast
+  #410 = Methodref          #411.#412     // com/google/common/collect/ImmutableSet.builder:()Lcom/google/common/collect/ImmutableSet$Builder;
+  #411 = Class              #413          // com/google/common/collect/ImmutableSet
+  #412 = NameAndType        #118:#414     // builder:()Lcom/google/common/collect/ImmutableSet$Builder;
+  #413 = Utf8               com/google/common/collect/ImmutableSet
+  #414 = Utf8               ()Lcom/google/common/collect/ImmutableSet$Builder;
+  #415 = Fieldref           #416.#417     // net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+  #416 = Class              #418          // net/minecraft/server/packs/PackType
+  #417 = NameAndType        #419:#420     // SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+  #418 = Utf8               net/minecraft/server/packs/PackType
+  #419 = Utf8               SERVER_DATA
+  #420 = Utf8               Lnet/minecraft/server/packs/PackType;
+  #421 = InterfaceMethodref #422.#423     // net/minecraft/server/packs/PackResources.getNamespaces:(Lnet/minecraft/server/packs/PackType;)Ljava/util/Set;
+  #422 = Class              #424          // net/minecraft/server/packs/PackResources
+  #423 = NameAndType        #425:#426     // getNamespaces:(Lnet/minecraft/server/packs/PackType;)Ljava/util/Set;
+  #424 = Utf8               net/minecraft/server/packs/PackResources
+  #425 = Utf8               getNamespaces
+  #426 = Utf8               (Lnet/minecraft/server/packs/PackType;)Ljava/util/Set;
+  #427 = InvokeDynamic      #17:#428      // #17:accept:(Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;)Ljava/util/function/Consumer;
+  #428 = NameAndType        #44:#429      // accept:(Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;)Ljava/util/function/Consumer;
+  #429 = Utf8               (Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;)Ljava/util/function/Consumer;
+  #430 = InterfaceMethodref #59.#48       // java/util/Set.forEach:(Ljava/util/function/Consumer;)V
+  #431 = InvokeDynamic      #18:#432      // #18:accept:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)Lnet/minecraft/server/packs/PackResources$ResourceOutput;
+  #432 = NameAndType        #44:#433      // accept:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)Lnet/minecraft/server/packs/PackResources$ResourceOutput;
+  #433 = Utf8               (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)Lnet/minecraft/server/packs/PackResources$ResourceOutput;
+  #434 = InterfaceMethodref #422.#435     // net/minecraft/server/packs/PackResources.listResources:(Lnet/minecraft/server/packs/PackType;Ljava/lang/String;Ljava/lang/String;Lnet/minecraft/server/packs/PackResources$ResourceOutput;)V
+  #435 = NameAndType        #436:#437     // listResources:(Lnet/minecraft/server/packs/PackType;Ljava/lang/String;Ljava/lang/String;Lnet/minecraft/server/packs/PackResources$ResourceOutput;)V
+  #436 = Utf8               listResources
+  #437 = Utf8               (Lnet/minecraft/server/packs/PackType;Ljava/lang/String;Ljava/lang/String;Lnet/minecraft/server/packs/PackResources$ResourceOutput;)V
+  #438 = String             #439          // curios/entities/
+  #439 = Utf8               curios/entities/
+  #440 = Methodref          #88.#441      // java/lang/String.length:()I
+  #441 = NameAndType        #442:#219     // length:()I
+  #442 = Utf8               length
+  #443 = String             #444          // .json
+  #444 = Utf8               .json
+  #445 = Methodref          #88.#446      // java/lang/String.substring:(II)Ljava/lang/String;
+  #446 = NameAndType        #447:#448     // substring:(II)Ljava/lang/String;
+  #447 = Utf8               substring
+  #448 = Utf8               (II)Ljava/lang/String;
+  #449 = Methodref          #79.#450      // net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #450 = NameAndType        #451:#452     // fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #451 = Utf8               fromNamespaceAndPath
+  #452 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #453 = Class              #454          // com/google/gson/GsonBuilder
+  #454 = Utf8               com/google/gson/GsonBuilder
+  #455 = Methodref          #453.#31      // com/google/gson/GsonBuilder."<init>":()V
+  #456 = Methodref          #453.#457     // com/google/gson/GsonBuilder.setPrettyPrinting:()Lcom/google/gson/GsonBuilder;
+  #457 = NameAndType        #458:#459     // setPrettyPrinting:()Lcom/google/gson/GsonBuilder;
+  #458 = Utf8               setPrettyPrinting
+  #459 = Utf8               ()Lcom/google/gson/GsonBuilder;
+  #460 = Methodref          #453.#461     // com/google/gson/GsonBuilder.disableHtmlEscaping:()Lcom/google/gson/GsonBuilder;
+  #461 = NameAndType        #462:#459     // disableHtmlEscaping:()Lcom/google/gson/GsonBuilder;
+  #462 = Utf8               disableHtmlEscaping
+  #463 = Methodref          #453.#464     // com/google/gson/GsonBuilder.create:()Lcom/google/gson/Gson;
+  #464 = NameAndType        #352:#465     // create:()Lcom/google/gson/Gson;
+  #465 = Utf8               ()Lcom/google/gson/Gson;
+  #466 = Methodref          #2.#31        // top/theillusivec4/curios/common/data/CuriosEntityManager."<init>":()V
+  #467 = Utf8               Signature
+  #468 = Utf8               Ljava/util/Map<Lnet/minecraft/world/entity/EntityType<*>;Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;>;
+  #469 = Utf8               Ljava/util/Map<Ljava/lang/String;Ljava/util/Set<Ljava/lang/String;>;>;
+  #470 = Utf8               Code
+  #471 = Utf8               LineNumberTable
+  #472 = Utf8               LocalVariableTable
+  #473 = Utf8               this
+  #474 = Utf8               Lcom/google/common/collect/ImmutableMap$Builder;
+  #475 = Utf8               entry1
+  #476 = Utf8               Ljava/util/Map$Entry;
+  #477 = Utf8               jsonObject
+  #478 = Utf8               Lcom/google/gson/JsonObject;
+  #479 = Utf8               e
+  #480 = Utf8               Ljava/lang/RuntimeException;
+  #481 = Utf8               resourcelocation
+  #482 = Utf8               Lnet/minecraft/resources/ResourceLocation;
+  #483 = Utf8               entry
+  #484 = Utf8               configSlot
+  #485 = Utf8               Ljava/lang/String;
+  #486 = Utf8               pObject
+  #487 = Utf8               pResourceManager
+  #488 = Utf8               Lnet/minecraft/server/packs/resources/ResourceManager;
+  #489 = Utf8               pProfiler
+  #490 = Utf8               Lnet/minecraft/util/profiling/ProfilerFiller;
+  #491 = Utf8               map
+  #492 = Utf8               modMap
+  #493 = Utf8               sorted
+  #494 = Utf8               configSlots
+  #495 = Utf8               LocalVariableTypeTable
+  #496 = Utf8               Lcom/google/common/collect/ImmutableMap$Builder<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+  #497 = Utf8               Ljava/util/Map$Entry<Lnet/minecraft/world/entity/EntityType<*>;Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;>;
+  #498 = Utf8               Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+  #499 = Utf8               Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+  #500 = Utf8               Ljava/util/Map<Lnet/minecraft/world/entity/EntityType<*>;Lcom/google/common/collect/ImmutableMap$Builder<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;>;
+  #501 = Utf8               Ljava/util/Map<Ljava/lang/String;Lcom/google/common/collect/ImmutableSet$Builder<Ljava/lang/String;>;>;
+  #502 = Utf8               Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+  #503 = Utf8               StackMapTable
+  #504 = Class              #505          // net/minecraft/util/profiling/ProfilerFiller
+  #505 = Utf8               net/minecraft/util/profiling/ProfilerFiller
+  #506 = Class              #507          // com/google/gson/JsonObject
+  #507 = Utf8               com/google/gson/JsonObject
+  #508 = Class              #509          // java/lang/RuntimeException
+  #509 = Utf8               java/lang/RuntimeException
+  #510 = Utf8               (Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #511 = Utf8               RuntimeVisibleParameterAnnotations
+  #512 = Utf8               Ljavax/annotation/Nonnull;
+  #513 = Utf8               getSyncPacket
+  #514 = Utf8               ()Lnet/minecraft/nbt/ListTag;
+  #515 = Utf8               val
+  #516 = Utf8               rl
+  #517 = Utf8               entity
+  #518 = Utf8               Lnet/minecraft/nbt/CompoundTag;
+  #519 = Utf8               tag1
+  #520 = Utf8               Lnet/minecraft/nbt/ListTag;
+  #521 = Utf8               tag
+  #522 = Utf8               Ljava/util/Map$Entry<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+  #523 = Utf8               applySyncPacket
+  #524 = Utf8               (Lnet/minecraft/nbt/ListTag;)V
+  #525 = Utf8               id
+  #526 = Utf8               stringTag
+  #527 = Utf8               Lnet/minecraft/nbt/StringTag;
+  #528 = Utf8               slot
+  #529 = Utf8               Lnet/minecraft/nbt/Tag;
+  #530 = Utf8               type
+  #531 = Utf8               Lnet/minecraft/world/entity/EntityType<*>;
+  #532 = Utf8               jsonEntity
+  #533 = Utf8               Lcom/google/gson/JsonElement;
+  #534 = Utf8               jsonSlot
+  #535 = Utf8               entityType
+  #536 = Utf8               resourceLocation
+  #537 = Utf8               jsonEntities
+  #538 = Utf8               Lcom/google/gson/JsonArray;
+  #539 = Utf8               toAdd
+  #540 = Utf8               Ljava/util/Set;
+  #541 = Utf8               jsonSlots
+  #542 = Utf8               Ljava/util/Set<Lnet/minecraft/world/entity/EntityType<*>;>;
+  #543 = Utf8               (Lcom/google/gson/JsonObject;Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map<Lnet/minecraft/world/entity/EntityType<*>;Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;>;
+  #544 = Utf8               getEntitySlots
+  #545 = Utf8               (Lnet/minecraft/world/entity/EntityType;)Ljava/util/Map;
+  #546 = Utf8               (Lnet/minecraft/world/entity/EntityType<*>;)Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+  #547 = Utf8               getModsFromSlots
+  #548 = Utf8               ()Ljava/util/Map;
+  #549 = Utf8               ()Ljava/util/Map<Ljava/lang/String;Ljava/util/Set<Ljava/lang/String;>;>;
+  #550 = Utf8               (Ljava/lang/Object;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #551 = Utf8               MethodParameters
+  #552 = Utf8               lambda$getSlotsForEntities$16
+  #553 = Utf8               k
+  #554 = Utf8               lambda$getSlotsForEntities$15
+  #555 = Utf8               (Ljava/lang/String;)V
+  #556 = Utf8               lambda$getSlotsForEntities$14
+  #557 = Utf8               (Ljava/util/Map;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+  #558 = Utf8               Ltop/theillusivec4/curios/api/type/ISlotType;
+  #559 = Utf8               lambda$getSlotsForEntities$13
+  #560 = Utf8               (Ljava/util/Set;Lnet/minecraft/core/HolderSet$Named;)V
+  #561 = Utf8               entityTypeHolder
+  #562 = Utf8               Lnet/minecraft/core/Holder;
+  #563 = Utf8               named
+  #564 = Utf8               Lnet/minecraft/core/HolderSet$Named;
+  #565 = Utf8               Lnet/minecraft/core/Holder<Lnet/minecraft/world/entity/EntityType<*>;>;
+  #566 = Utf8               lambda$applySyncPacket$12
+  #567 = Utf8               (Ljava/util/Map$Entry;)Ljava/util/Map;
+  #568 = Utf8               lambda$applySyncPacket$11
+  #569 = Utf8               (Ljava/util/Map;Lnet/minecraft/world/entity/EntityType;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+  #570 = Utf8               slotType
+  #571 = Utf8               lambda$applySyncPacket$10
+  #572 = Utf8               (Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #573 = Utf8               lambda$apply$9
+  #574 = Utf8               (Ljava/util/Map$Entry;)Ljava/util/Set;
+  #575 = Utf8               lambda$apply$8
+  #576 = Utf8               lambda$apply$7
+  #577 = Utf8               lambda$apply$6
+  #578 = Utf8               lambda$apply$5
+  #579 = Utf8               lambda$apply$4
+  #580 = Utf8               (Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #581 = Utf8               lambda$apply$3
+  #582 = Utf8               lambda$apply$2
+  #583 = Utf8               (Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/server/packs/PackResources;)V
+  #584 = Utf8               packResources
+  #585 = Utf8               Lnet/minecraft/server/packs/PackResources;
+  #586 = Utf8               namespaces
+  #587 = Utf8               Ljava/util/Set<Ljava/lang/String;>;
+  #588 = Utf8               lambda$apply$1
+  #589 = Utf8               (Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;)V
+  #590 = Utf8               namespace
+  #591 = Utf8               lambda$apply$0
+  #592 = Utf8               (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+  #593 = Utf8               inputStreamIoSupplier
+  #594 = Utf8               Lnet/minecraft/server/packs/resources/IoSupplier;
+  #595 = Utf8               path
+  #596 = Utf8               el
+  #597 = Utf8               <clinit>
+  #598 = Utf8               SourceFile
+  #599 = Utf8               CuriosEntityManager.java
+  #600 = Utf8               BootstrapMethods
+  #601 = MethodType         #602          //  (Ljava/lang/Object;)V
+  #602 = Utf8               (Ljava/lang/Object;)V
+  #603 = MethodHandle       6:#604        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$2:(Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/server/packs/PackResources;)V
+  #604 = Methodref          #2.#605       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$2:(Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/server/packs/PackResources;)V
+  #605 = NameAndType        #582:#583     // lambda$apply$2:(Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/server/packs/PackResources;)V
+  #606 = MethodType         #607          //  (Lnet/minecraft/server/packs/PackResources;)V
+  #607 = Utf8               (Lnet/minecraft/server/packs/PackResources;)V
+  #608 = MethodType         #290          //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #609 = MethodHandle       6:#610        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$3:(Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #610 = Methodref          #2.#611       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$3:(Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #611 = NameAndType        #581:#572     // lambda$apply$3:(Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #612 = MethodType         #572          //  (Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #613 = MethodHandle       6:#614        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$4:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #614 = Methodref          #2.#615       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$4:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #615 = NameAndType        #579:#580     // lambda$apply$4:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #616 = MethodType         #580          //  (Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #617 = MethodHandle       6:#618        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$5:(Ljava/util/Map;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+  #618 = Methodref          #2.#619       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$5:(Ljava/util/Map;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+  #619 = NameAndType        #578:#557     // lambda$apply$5:(Ljava/util/Map;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+  #620 = MethodType         #621          //  (Ltop/theillusivec4/curios/api/type/ISlotType;)V
+  #621 = Utf8               (Ltop/theillusivec4/curios/api/type/ISlotType;)V
+  #622 = MethodType         #32           //  ()V
+  #623 = MethodHandle       6:#624        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$6:(Ljava/lang/String;)V
+  #624 = Methodref          #2.#625       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$6:(Ljava/lang/String;)V
+  #625 = NameAndType        #577:#555     // lambda$apply$6:(Ljava/lang/String;)V
+  #626 = MethodHandle       6:#627        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$7:(Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #627 = Methodref          #2.#628       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$7:(Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #628 = NameAndType        #576:#572     // lambda$apply$7:(Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #629 = MethodHandle       9:#76         // REF_invokeInterface java/util/Map$Entry.getKey:()Ljava/lang/Object;
+  #630 = MethodType         #631          //  (Ljava/util/Map$Entry;)Lnet/minecraft/world/entity/EntityType;
+  #631 = Utf8               (Ljava/util/Map$Entry;)Lnet/minecraft/world/entity/EntityType;
+  #632 = MethodHandle       6:#633        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$8:(Ljava/util/Map$Entry;)Ljava/util/Map;
+  #633 = Methodref          #2.#634       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$8:(Ljava/util/Map$Entry;)Ljava/util/Map;
+  #634 = NameAndType        #575:#567     // lambda$apply$8:(Ljava/util/Map$Entry;)Ljava/util/Map;
+  #635 = MethodType         #567          //  (Ljava/util/Map$Entry;)Ljava/util/Map;
+  #636 = MethodType         #637          //  (Ljava/util/Map$Entry;)Ljava/lang/String;
+  #637 = Utf8               (Ljava/util/Map$Entry;)Ljava/lang/String;
+  #638 = MethodHandle       6:#639        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$9:(Ljava/util/Map$Entry;)Ljava/util/Set;
+  #639 = Methodref          #2.#640       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$9:(Ljava/util/Map$Entry;)Ljava/util/Set;
+  #640 = NameAndType        #573:#574     // lambda$apply$9:(Ljava/util/Map$Entry;)Ljava/util/Set;
+  #641 = MethodType         #574          //  (Ljava/util/Map$Entry;)Ljava/util/Set;
+  #642 = MethodHandle       6:#643        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$applySyncPacket$11:(Ljava/util/Map;Lnet/minecraft/world/entity/EntityType;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+  #643 = Methodref          #2.#644       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$applySyncPacket$11:(Ljava/util/Map;Lnet/minecraft/world/entity/EntityType;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+  #644 = NameAndType        #568:#569     // lambda$applySyncPacket$11:(Ljava/util/Map;Lnet/minecraft/world/entity/EntityType;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+  #645 = MethodHandle       6:#646        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$applySyncPacket$12:(Ljava/util/Map$Entry;)Ljava/util/Map;
+  #646 = Methodref          #2.#647       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$applySyncPacket$12:(Ljava/util/Map$Entry;)Ljava/util/Map;
+  #647 = NameAndType        #566:#567     // lambda$applySyncPacket$12:(Ljava/util/Map$Entry;)Ljava/util/Map;
+  #648 = MethodHandle       6:#649        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$getSlotsForEntities$13:(Ljava/util/Set;Lnet/minecraft/core/HolderSet$Named;)V
+  #649 = Methodref          #2.#650       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$getSlotsForEntities$13:(Ljava/util/Set;Lnet/minecraft/core/HolderSet$Named;)V
+  #650 = NameAndType        #559:#560     // lambda$getSlotsForEntities$13:(Ljava/util/Set;Lnet/minecraft/core/HolderSet$Named;)V
+  #651 = MethodType         #652          //  (Lnet/minecraft/core/HolderSet$Named;)V
+  #652 = Utf8               (Lnet/minecraft/core/HolderSet$Named;)V
+  #653 = MethodHandle       6:#654        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$getSlotsForEntities$14:(Ljava/util/Map;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+  #654 = Methodref          #2.#655       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$getSlotsForEntities$14:(Ljava/util/Map;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+  #655 = NameAndType        #556:#557     // lambda$getSlotsForEntities$14:(Ljava/util/Map;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+  #656 = MethodHandle       6:#657        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$getSlotsForEntities$15:(Ljava/lang/String;)V
+  #657 = Methodref          #2.#658       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$getSlotsForEntities$15:(Ljava/lang/String;)V
+  #658 = NameAndType        #554:#555     // lambda$getSlotsForEntities$15:(Ljava/lang/String;)V
+  #659 = MethodHandle       6:#660        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$getSlotsForEntities$16:(Lnet/minecraft/world/entity/EntityType;)Ljava/util/Map;
+  #660 = Methodref          #2.#661       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$getSlotsForEntities$16:(Lnet/minecraft/world/entity/EntityType;)Ljava/util/Map;
+  #661 = NameAndType        #552:#545     // lambda$getSlotsForEntities$16:(Lnet/minecraft/world/entity/EntityType;)Ljava/util/Map;
+  #662 = MethodType         #545          //  (Lnet/minecraft/world/entity/EntityType;)Ljava/util/Map;
+  #663 = MethodHandle       6:#664        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$applySyncPacket$10:(Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #664 = Methodref          #2.#665       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$applySyncPacket$10:(Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #665 = NameAndType        #571:#572     // lambda$applySyncPacket$10:(Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #666 = MethodHandle       6:#667        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$1:(Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;)V
+  #667 = Methodref          #2.#668       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$1:(Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;)V
+  #668 = NameAndType        #588:#589     // lambda$apply$1:(Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;)V
+  #669 = MethodType         #555          //  (Ljava/lang/String;)V
+  #670 = MethodType         #671          //  (Ljava/lang/Object;Ljava/lang/Object;)V
+  #671 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)V
+  #672 = MethodHandle       6:#673        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$0:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+  #673 = Methodref          #2.#674       // top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$0:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+  #674 = NameAndType        #591:#592     // lambda$apply$0:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+  #675 = MethodType         #676          //  (Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+  #676 = Utf8               (Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+  #677 = MethodHandle       6:#678        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #678 = Methodref          #679.#680     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #679 = Class              #681          // java/lang/invoke/LambdaMetafactory
+  #680 = NameAndType        #682:#683     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #681 = Utf8               java/lang/invoke/LambdaMetafactory
+  #682 = Utf8               metafactory
+  #683 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #684 = Utf8               InnerClasses
+  #685 = Utf8               Entry
+  #686 = Utf8               Builder
+  #687 = Class              #688          // net/minecraft/core/HolderSet
+  #688 = Utf8               net/minecraft/core/HolderSet
+  #689 = Utf8               Named
+  #690 = Class              #691          // net/minecraft/server/packs/PackResources$ResourceOutput
+  #691 = Utf8               net/minecraft/server/packs/PackResources$ResourceOutput
+  #692 = Utf8               ResourceOutput
+  #693 = Class              #694          // java/lang/invoke/MethodHandles$Lookup
+  #694 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #695 = Class              #696          // java/lang/invoke/MethodHandles
+  #696 = Utf8               java/lang/invoke/MethodHandles
+  #697 = Utf8               Lookup
+{
+  private static final com.google.gson.Gson GSON;
+    descriptor: Lcom/google/gson/Gson;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+
+  public static top.theillusivec4.curios.common.data.CuriosEntityManager SERVER;
+    descriptor: Ltop/theillusivec4/curios/common/data/CuriosEntityManager;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+
+  public static top.theillusivec4.curios.common.data.CuriosEntityManager CLIENT;
+    descriptor: Ltop/theillusivec4/curios/common/data/CuriosEntityManager;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+
+  private java.util.Map<net.minecraft.world.entity.EntityType<?>, java.util.Map<java.lang.String, top.theillusivec4.curios.api.type.ISlotType>> entitySlots;
+    descriptor: Ljava/util/Map;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #468                         // Ljava/util/Map<Lnet/minecraft/world/entity/EntityType<*>;Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;>;
+
+  private java.util.Map<java.lang.String, java.util.Set<java.lang.String>> idToMods;
+    descriptor: Ljava/util/Map;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #469                         // Ljava/util/Map<Ljava/lang/String;Ljava/util/Set<Ljava/lang/String;>;>;
+
+  public top.theillusivec4.curios.common.data.CuriosEntityManager();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: getstatic     #1                  // Field GSON:Lcom/google/gson/Gson;
+         4: ldc           #7                  // String curios/entities
+         6: invokespecial #9                  // Method net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener."<init>":(Lcom/google/gson/Gson;Ljava/lang/String;)V
+         9: aload_0
+        10: invokestatic  #15                 // Method com/google/common/collect/ImmutableMap.of:()Lcom/google/common/collect/ImmutableMap;
+        13: putfield      #21                 // Field entitySlots:Ljava/util/Map;
+        16: aload_0
+        17: invokestatic  #15                 // Method com/google/common/collect/ImmutableMap.of:()Lcom/google/common/collect/ImmutableMap;
+        20: putfield      #25                 // Field idToMods:Ljava/util/Map;
+        23: return
+      LineNumberTable:
+        line 68: 0
+        line 64: 9
+        line 65: 16
+        line 69: 23
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      24     0  this   Ltop/theillusivec4/curios/common/data/CuriosEntityManager;
+
+  protected void apply(java.util.Map<net.minecraft.resources.ResourceLocation, com.google.gson.JsonElement>, net.minecraft.server.packs.resources.ResourceManager, net.minecraft.util.profiling.ProfilerFiller);
+    descriptor: (Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=4, locals=14, args_size=4
+         0: new           #28                 // class java/util/HashMap
+         3: dup
+         4: invokespecial #30                 // Method java/util/HashMap."<init>":()V
+         7: astore        4
+         9: new           #28                 // class java/util/HashMap
+        12: dup
+        13: invokespecial #30                 // Method java/util/HashMap."<init>":()V
+        16: astore        5
+        18: new           #33                 // class java/util/LinkedHashMap
+        21: dup
+        22: invokespecial #35                 // Method java/util/LinkedHashMap."<init>":()V
+        25: astore        6
+        27: aload_2
+        28: invokeinterface #36,  1           // InterfaceMethod net/minecraft/server/packs/resources/ResourceManager.listPacks:()Ljava/util/stream/Stream;
+        33: aload_1
+        34: aload         6
+        36: invokedynamic #42,  0             // InvokeDynamic #0:accept:(Ljava/util/Map;Ljava/util/Map;)Ljava/util/function/Consumer;
+        41: invokeinterface #46,  2           // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+        46: aload         6
+        48: invokeinterface #52,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+        53: invokeinterface #58,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        58: astore        7
+        60: aload         7
+        62: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        67: ifeq          316
+        70: aload         7
+        72: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        77: checkcast     #74                 // class java/util/Map$Entry
+        80: astore        8
+        82: aload         8
+        84: invokeinterface #76,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+        89: checkcast     #79                 // class net/minecraft/resources/ResourceLocation
+        92: astore        9
+        94: aload         9
+        96: invokevirtual #81                 // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+        99: ldc           #85                 // String _
+       101: invokevirtual #87                 // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+       104: ifeq          110
+       107: goto          60
+       110: aload         8
+       112: invokeinterface #93,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       117: checkcast     #96                 // class com/google/gson/JsonElement
+       120: ldc           #98                 // String top element
+       122: invokestatic  #100                // Method net/minecraft/util/GsonHelper.convertToJsonObject:(Lcom/google/gson/JsonElement;Ljava/lang/String;)Lcom/google/gson/JsonObject;
+       125: astore        10
+       127: aload         10
+       129: aload         9
+       131: invokestatic  #106                // Method getSlotsForEntities:(Lcom/google/gson/JsonObject;Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map;
+       134: invokeinterface #52,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+       139: invokeinterface #58,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       144: astore        11
+       146: aload         11
+       148: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       153: ifeq          294
+       156: aload         11
+       158: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       163: checkcast     #74                 // class java/util/Map$Entry
+       166: astore        12
+       168: aload         10
+       170: ldc           #110                // String replace
+       172: iconst_0
+       173: invokestatic  #112                // Method net/minecraft/util/GsonHelper.getAsBoolean:(Lcom/google/gson/JsonObject;Ljava/lang/String;Z)Z
+       176: ifeq          223
+       179: invokestatic  #116                // Method com/google/common/collect/ImmutableMap.builder:()Lcom/google/common/collect/ImmutableMap$Builder;
+       182: astore        13
+       184: aload         13
+       186: aload         12
+       188: invokeinterface #93,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       193: checkcast     #53                 // class java/util/Map
+       196: invokevirtual #120                // Method com/google/common/collect/ImmutableMap$Builder.putAll:(Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap$Builder;
+       199: pop
+       200: aload         4
+       202: aload         12
+       204: invokeinterface #76,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       209: checkcast     #126                // class net/minecraft/world/entity/EntityType
+       212: aload         13
+       214: invokeinterface #128,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       219: pop
+       220: goto          262
+       223: aload         4
+       225: aload         12
+       227: invokeinterface #76,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       232: checkcast     #126                // class net/minecraft/world/entity/EntityType
+       235: invokedynamic #132,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+       240: invokeinterface #136,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+       245: checkcast     #121                // class com/google/common/collect/ImmutableMap$Builder
+       248: aload         12
+       250: invokeinterface #93,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       255: checkcast     #53                 // class java/util/Map
+       258: invokevirtual #120                // Method com/google/common/collect/ImmutableMap$Builder.putAll:(Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap$Builder;
+       261: pop
+       262: aload         5
+       264: aload         9
+       266: invokevirtual #81                 // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+       269: invokedynamic #140,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+       274: invokeinterface #136,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+       279: checkcast     #141                // class com/google/common/collect/ImmutableSet$Builder
+       282: aload         9
+       284: invokevirtual #143                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+       287: invokevirtual #146                // Method com/google/common/collect/ImmutableSet$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableSet$Builder;
+       290: pop
+       291: goto          146
+       294: goto          313
+       297: astore        10
+       299: getstatic     #154                // Field top/theillusivec4/curios/CuriosConstants.LOG:Lorg/slf4j/Logger;
+       302: ldc           #160                // String Parsing error loading curio entity {}
+       304: aload         9
+       306: aload         10
+       308: invokeinterface #162,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+       313: goto          60
+       316: new           #28                 // class java/util/HashMap
+       319: dup
+       320: invokespecial #30                 // Method java/util/HashMap."<init>":()V
+       323: astore        7
+       325: getstatic     #168                // Field top/theillusivec4/curios/common/data/CuriosSlotManager.SERVER:Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+       328: invokevirtual #174                // Method top/theillusivec4/curios/common/data/CuriosSlotManager.getConfigSlots:()Ljava/util/Set;
+       331: invokeinterface #58,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       336: astore        8
+       338: aload         8
+       340: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       345: ifeq          390
+       348: aload         8
+       350: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       355: checkcast     #88                 // class java/lang/String
+       358: astore        9
+       360: getstatic     #168                // Field top/theillusivec4/curios/common/data/CuriosSlotManager.SERVER:Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+       363: aload         9
+       365: invokevirtual #177                // Method top/theillusivec4/curios/common/data/CuriosSlotManager.getSlot:(Ljava/lang/String;)Ljava/util/Optional;
+       368: aload         7
+       370: aload         9
+       372: invokedynamic #181,  0            // InvokeDynamic #3:accept:(Ljava/util/Map;Ljava/lang/String;)Ljava/util/function/Consumer;
+       377: aload         9
+       379: invokedynamic #184,  0            // InvokeDynamic #4:run:(Ljava/lang/String;)Ljava/lang/Runnable;
+       384: invokevirtual #188                // Method java/util/Optional.ifPresentOrElse:(Ljava/util/function/Consumer;Ljava/lang/Runnable;)V
+       387: goto          338
+       390: aload         4
+       392: getstatic     #194                // Field net/minecraft/world/entity/EntityType.PLAYER:Lnet/minecraft/world/entity/EntityType;
+       395: invokedynamic #198,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+       400: invokeinterface #136,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+       405: checkcast     #121                // class com/google/common/collect/ImmutableMap$Builder
+       408: aload         7
+       410: invokevirtual #120                // Method com/google/common/collect/ImmutableMap$Builder.putAll:(Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap$Builder;
+       413: pop
+       414: aload_0
+       415: aload         4
+       417: invokeinterface #52,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+       422: invokeinterface #199,  1          // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+       427: invokedynamic #202,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+       432: invokedynamic #203,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+       437: invokestatic  #204                // Method com/google/common/collect/ImmutableMap.toImmutableMap:(Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Collector;
+       440: invokeinterface #208,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+       445: checkcast     #53                 // class java/util/Map
+       448: putfield      #21                 // Field entitySlots:Ljava/util/Map;
+       451: aload_0
+       452: aload         5
+       454: invokeinterface #52,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+       459: invokeinterface #199,  1          // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+       464: invokedynamic #212,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+       469: invokedynamic #213,  0            // InvokeDynamic #9:apply:()Ljava/util/function/Function;
+       474: invokestatic  #204                // Method com/google/common/collect/ImmutableMap.toImmutableMap:(Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Collector;
+       477: invokeinterface #208,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+       482: checkcast     #53                 // class java/util/Map
+       485: putfield      #25                 // Field idToMods:Ljava/util/Map;
+       488: getstatic     #154                // Field top/theillusivec4/curios/CuriosConstants.LOG:Lorg/slf4j/Logger;
+       491: ldc           #214                // String Loaded {} curio entities
+       493: aload         4
+       495: invokeinterface #216,  1          // InterfaceMethod java/util/Map.size:()I
+       500: invokestatic  #220                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       503: invokeinterface #226,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+       508: return
+      Exception table:
+         from    to  target type
+           110   294   297   Class java/lang/IllegalArgumentException
+           110   294   297   Class com/google/gson/JsonParseException
+      LineNumberTable:
+        line 74: 0
+        line 75: 9
+        line 76: 18
+        line 77: 27
+        line 93: 46
+        line 94: 82
+        line 96: 94
+        line 97: 107
+        line 101: 110
+        line 103: 127
+        line 104: 134
+        line 103: 139
+        line 106: 168
+        line 107: 179
+        line 108: 184
+        line 109: 200
+        line 110: 220
+        line 111: 223
+        line 112: 250
+        line 114: 262
+        line 115: 284
+        line 116: 291
+        line 119: 294
+        line 117: 297
+        line 118: 299
+        line 120: 313
+        line 121: 316
+        line 123: 325
+        line 124: 360
+        line 125: 384
+        line 127: 387
+        line 128: 390
+        line 129: 414
+        line 130: 437
+        line 129: 440
+        line 132: 451
+        line 133: 474
+        line 134: 488
+        line 135: 508
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          184      36    13 builder   Lcom/google/common/collect/ImmutableMap$Builder;
+          168     123    12 entry1   Ljava/util/Map$Entry;
+          127     167    10 jsonObject   Lcom/google/gson/JsonObject;
+          299      14    10     e   Ljava/lang/RuntimeException;
+           94     219     9 resourcelocation   Lnet/minecraft/resources/ResourceLocation;
+           82     231     8 entry   Ljava/util/Map$Entry;
+          360      27     9 configSlot   Ljava/lang/String;
+            0     509     0  this   Ltop/theillusivec4/curios/common/data/CuriosEntityManager;
+            0     509     1 pObject   Ljava/util/Map;
+            0     509     2 pResourceManager   Lnet/minecraft/server/packs/resources/ResourceManager;
+            0     509     3 pProfiler   Lnet/minecraft/util/profiling/ProfilerFiller;
+            9     500     4   map   Ljava/util/Map;
+           18     491     5 modMap   Ljava/util/Map;
+           27     482     6 sorted   Ljava/util/Map;
+          325     184     7 configSlots   Ljava/util/Map;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          184      36    13 builder   Lcom/google/common/collect/ImmutableMap$Builder<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+          168     123    12 entry1   Ljava/util/Map$Entry<Lnet/minecraft/world/entity/EntityType<*>;Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;>;
+           82     231     8 entry   Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+            0     509     1 pObject   Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+            9     500     4   map   Ljava/util/Map<Lnet/minecraft/world/entity/EntityType<*>;Lcom/google/common/collect/ImmutableMap$Builder<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;>;
+           18     491     5 modMap   Ljava/util/Map<Ljava/lang/String;Lcom/google/common/collect/ImmutableSet$Builder<Ljava/lang/String;>;>;
+           27     482     6 sorted   Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+          325     184     7 configSlots   Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+      StackMapTable: number_of_entries = 11
+        frame_type = 255 /* full_frame */
+          offset_delta = 60
+          locals = [ class top/theillusivec4/curios/common/data/CuriosEntityManager, class java/util/Map, class net/minecraft/server/packs/resources/ResourceManager, class net/minecraft/util/profiling/ProfilerFiller, class java/util/Map, class java/util/Map, class java/util/Map, class java/util/Iterator ]
+          stack = []
+        frame_type = 253 /* append */
+          offset_delta = 49
+          locals = [ class java/util/Map$Entry, class net/minecraft/resources/ResourceLocation ]
+        frame_type = 253 /* append */
+          offset_delta = 35
+          locals = [ class com/google/gson/JsonObject, class java/util/Iterator ]
+        frame_type = 252 /* append */
+          offset_delta = 76
+          locals = [ class java/util/Map$Entry ]
+        frame_type = 38 /* same */
+        frame_type = 248 /* chop */
+          offset_delta = 31
+        frame_type = 66 /* same_locals_1_stack_item */
+          stack = [ class java/lang/RuntimeException ]
+        frame_type = 249 /* chop */
+          offset_delta = 15
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 253 /* append */
+          offset_delta = 21
+          locals = [ class java/util/Map, class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 51
+    Signature: #510                         // (Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+    RuntimeVisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+        0: #512()
+          javax.annotation.Nonnull
+      parameter 2:
+        0: #512()
+          javax.annotation.Nonnull
+
+  public static net.minecraft.nbt.ListTag getSyncPacket();
+    descriptor: ()Lnet/minecraft/nbt/ListTag;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=8, args_size=0
+         0: new           #230                // class net/minecraft/nbt/ListTag
+         3: dup
+         4: invokespecial #232                // Method net/minecraft/nbt/ListTag."<init>":()V
+         7: astore_0
+         8: getstatic     #233                // Field SERVER:Ltop/theillusivec4/curios/common/data/CuriosEntityManager;
+        11: getfield      #21                 // Field entitySlots:Ljava/util/Map;
+        14: invokeinterface #52,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+        19: invokeinterface #58,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        24: astore_1
+        25: aload_1
+        26: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        31: ifeq          177
+        34: aload_1
+        35: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        40: checkcast     #74                 // class java/util/Map$Entry
+        43: astore_2
+        44: getstatic     #236                // Field net/minecraft/core/registries/BuiltInRegistries.ENTITY_TYPE:Lnet/minecraft/core/DefaultedRegistry;
+        47: aload_2
+        48: invokeinterface #76,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+        53: checkcast     #126                // class net/minecraft/world/entity/EntityType
+        56: invokeinterface #242,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+        61: astore_3
+        62: new           #247                // class net/minecraft/nbt/CompoundTag
+        65: dup
+        66: invokespecial #249                // Method net/minecraft/nbt/CompoundTag."<init>":()V
+        69: astore        4
+        71: aload         4
+        73: ldc           #250                // String Entity
+        75: aload_3
+        76: invokevirtual #252                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+        79: invokevirtual #255                // Method net/minecraft/nbt/CompoundTag.putString:(Ljava/lang/String;Ljava/lang/String;)V
+        82: new           #230                // class net/minecraft/nbt/ListTag
+        85: dup
+        86: invokespecial #232                // Method net/minecraft/nbt/ListTag."<init>":()V
+        89: astore        5
+        91: aload_2
+        92: invokeinterface #93,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+        97: checkcast     #53                 // class java/util/Map
+       100: invokeinterface #52,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+       105: invokeinterface #58,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       110: astore        6
+       112: aload         6
+       114: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       119: ifeq          156
+       122: aload         6
+       124: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       129: checkcast     #74                 // class java/util/Map$Entry
+       132: astore        7
+       134: aload         5
+       136: aload         7
+       138: invokeinterface #76,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       143: checkcast     #88                 // class java/lang/String
+       146: invokestatic  #259                // Method net/minecraft/nbt/StringTag.valueOf:(Ljava/lang/String;)Lnet/minecraft/nbt/StringTag;
+       149: invokevirtual #264                // Method net/minecraft/nbt/ListTag.add:(Ljava/lang/Object;)Z
+       152: pop
+       153: goto          112
+       156: aload         4
+       158: ldc_w         #267                // String Slots
+       161: aload         5
+       163: invokevirtual #269                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+       166: pop
+       167: aload_0
+       168: aload         4
+       170: invokevirtual #264                // Method net/minecraft/nbt/ListTag.add:(Ljava/lang/Object;)Z
+       173: pop
+       174: goto          25
+       177: aload_0
+       178: areturn
+      LineNumberTable:
+        line 138: 0
+        line 140: 8
+        line 141: 44
+        line 143: 62
+        line 144: 71
+        line 145: 82
+        line 147: 91
+        line 148: 134
+        line 149: 153
+        line 150: 156
+        line 151: 167
+        line 152: 174
+        line 153: 177
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          134      19     7   val   Ljava/util/Map$Entry;
+           62     112     3    rl   Lnet/minecraft/resources/ResourceLocation;
+           71     103     4 entity   Lnet/minecraft/nbt/CompoundTag;
+           91      83     5  tag1   Lnet/minecraft/nbt/ListTag;
+           44     130     2 entry   Ljava/util/Map$Entry;
+            8     171     0   tag   Lnet/minecraft/nbt/ListTag;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          134      19     7   val   Ljava/util/Map$Entry<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+           44     130     2 entry   Ljava/util/Map$Entry<Lnet/minecraft/world/entity/EntityType<*>;Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;>;
+      StackMapTable: number_of_entries = 4
+        frame_type = 253 /* append */
+          offset_delta = 25
+          locals = [ class net/minecraft/nbt/ListTag, class java/util/Iterator ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 86
+          locals = [ class net/minecraft/nbt/ListTag, class java/util/Iterator, class java/util/Map$Entry, class net/minecraft/resources/ResourceLocation, class net/minecraft/nbt/CompoundTag, class net/minecraft/nbt/ListTag, class java/util/Iterator ]
+          stack = []
+        frame_type = 250 /* chop */
+          offset_delta = 43
+        frame_type = 255 /* full_frame */
+          offset_delta = 20
+          locals = [ class net/minecraft/nbt/ListTag ]
+          stack = []
+
+  public static void applySyncPacket(net.minecraft.nbt.ListTag);
+    descriptor: (Lnet/minecraft/nbt/ListTag;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=11, args_size=1
+         0: new           #28                 // class java/util/HashMap
+         3: dup
+         4: invokespecial #30                 // Method java/util/HashMap."<init>":()V
+         7: astore_1
+         8: aload_0
+         9: invokevirtual #272                // Method net/minecraft/nbt/ListTag.iterator:()Ljava/util/Iterator;
+        12: astore_2
+        13: aload_2
+        14: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        19: ifeq          167
+        22: aload_2
+        23: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        28: checkcast     #273                // class net/minecraft/nbt/Tag
+        31: astore_3
+        32: aload_3
+        33: instanceof    #247                // class net/minecraft/nbt/CompoundTag
+        36: ifeq          164
+        39: aload_3
+        40: checkcast     #247                // class net/minecraft/nbt/CompoundTag
+        43: astore        4
+        45: getstatic     #236                // Field net/minecraft/core/registries/BuiltInRegistries.ENTITY_TYPE:Lnet/minecraft/core/DefaultedRegistry;
+        48: aload         4
+        50: ldc           #250                // String Entity
+        52: invokevirtual #275                // Method net/minecraft/nbt/CompoundTag.getString:(Ljava/lang/String;)Ljava/lang/String;
+        55: invokestatic  #279                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+        58: invokeinterface #283,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getOptional:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Optional;
+        63: aconst_null
+        64: invokevirtual #287                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+        67: checkcast     #126                // class net/minecraft/world/entity/EntityType
+        70: astore        5
+        72: aload         5
+        74: ifnull        164
+        77: aload         4
+        79: ldc_w         #267                // String Slots
+        82: bipush        8
+        84: invokevirtual #291                // Method net/minecraft/nbt/CompoundTag.getList:(Ljava/lang/String;I)Lnet/minecraft/nbt/ListTag;
+        87: astore        6
+        89: aload         6
+        91: invokevirtual #272                // Method net/minecraft/nbt/ListTag.iterator:()Ljava/util/Iterator;
+        94: astore        7
+        96: aload         7
+        98: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       103: ifeq          164
+       106: aload         7
+       108: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       113: checkcast     #273                // class net/minecraft/nbt/Tag
+       116: astore        8
+       118: aload         8
+       120: instanceof    #260                // class net/minecraft/nbt/StringTag
+       123: ifeq          161
+       126: aload         8
+       128: checkcast     #260                // class net/minecraft/nbt/StringTag
+       131: astore        9
+       133: aload         9
+       135: invokevirtual #295                // Method net/minecraft/nbt/StringTag.getAsString:()Ljava/lang/String;
+       138: astore        10
+       140: getstatic     #298                // Field top/theillusivec4/curios/common/data/CuriosSlotManager.CLIENT:Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+       143: aload         10
+       145: invokevirtual #177                // Method top/theillusivec4/curios/common/data/CuriosSlotManager.getSlot:(Ljava/lang/String;)Ljava/util/Optional;
+       148: aload_1
+       149: aload         5
+       151: aload         10
+       153: invokedynamic #301,  0            // InvokeDynamic #10:accept:(Ljava/util/Map;Lnet/minecraft/world/entity/EntityType;Ljava/lang/String;)Ljava/util/function/Consumer;
+       158: invokevirtual #304                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+       161: goto          96
+       164: goto          13
+       167: getstatic     #307                // Field CLIENT:Ltop/theillusivec4/curios/common/data/CuriosEntityManager;
+       170: aload_1
+       171: invokeinterface #52,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+       176: invokeinterface #199,  1          // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+       181: invokedynamic #202,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+       186: invokedynamic #309,  0            // InvokeDynamic #11:apply:()Ljava/util/function/Function;
+       191: invokestatic  #204                // Method com/google/common/collect/ImmutableMap.toImmutableMap:(Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Collector;
+       194: invokeinterface #208,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+       199: checkcast     #53                 // class java/util/Map
+       202: putfield      #21                 // Field entitySlots:Ljava/util/Map;
+       205: return
+      LineNumberTable:
+        line 157: 0
+        line 159: 8
+        line 161: 32
+        line 162: 45
+        line 163: 52
+        line 162: 58
+        line 163: 64
+        line 165: 72
+        line 166: 77
+        line 168: 89
+        line 170: 118
+        line 171: 133
+        line 172: 140
+        line 176: 161
+        line 179: 164
+        line 180: 167
+        line 181: 191
+        line 180: 194
+        line 182: 205
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          140      21    10    id   Ljava/lang/String;
+          133      28     9 stringTag   Lnet/minecraft/nbt/StringTag;
+          118      43     8  slot   Lnet/minecraft/nbt/Tag;
+           89      75     6 slots   Lnet/minecraft/nbt/ListTag;
+           72      92     5  type   Lnet/minecraft/world/entity/EntityType;
+           45     119     4 entity   Lnet/minecraft/nbt/CompoundTag;
+           32     132     3  tag1   Lnet/minecraft/nbt/Tag;
+            0     206     0   tag   Lnet/minecraft/nbt/ListTag;
+            8     198     1   map   Ljava/util/Map;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           72      92     5  type   Lnet/minecraft/world/entity/EntityType<*>;
+            8     198     1   map   Ljava/util/Map<Lnet/minecraft/world/entity/EntityType<*>;Lcom/google/common/collect/ImmutableMap$Builder<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;>;
+      StackMapTable: number_of_entries = 5
+        frame_type = 253 /* append */
+          offset_delta = 13
+          locals = [ class java/util/Map, class java/util/Iterator ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 82
+          locals = [ class net/minecraft/nbt/ListTag, class java/util/Map, class java/util/Iterator, class net/minecraft/nbt/Tag, class net/minecraft/nbt/CompoundTag, class net/minecraft/world/entity/EntityType, class net/minecraft/nbt/ListTag, class java/util/Iterator ]
+          stack = []
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 64
+        frame_type = 255 /* full_frame */
+          offset_delta = 2
+          locals = [ class net/minecraft/nbt/ListTag, class java/util/Map, class java/util/Iterator ]
+          stack = []
+        frame_type = 250 /* chop */
+          offset_delta = 2
+
+  private static java.util.Map<net.minecraft.world.entity.EntityType<?>, java.util.Map<java.lang.String, top.theillusivec4.curios.api.type.ISlotType>> getSlotsForEntities(com.google.gson.JsonObject, net.minecraft.resources.ResourceLocation);
+    descriptor: (Lcom/google/gson/JsonObject;Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=4, locals=10, args_size=2
+         0: new           #28                 // class java/util/HashMap
+         3: dup
+         4: invokespecial #30                 // Method java/util/HashMap."<init>":()V
+         7: astore_2
+         8: getstatic     #310                // Field com/mojang/serialization/JsonOps.INSTANCE:Lcom/mojang/serialization/JsonOps;
+        11: aload_0
+        12: invokestatic  #316                // InterfaceMethod net/neoforged/neoforge/common/conditions/ICondition.conditionsMatched:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Z
+        15: ifne          32
+        18: getstatic     #154                // Field top/theillusivec4/curios/CuriosConstants.LOG:Lorg/slf4j/Logger;
+        21: ldc_w         #322                // String Skipping loading entity file {} as its conditions were not met
+        24: aload_1
+        25: invokeinterface #324,  3          // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;)V
+        30: aload_2
+        31: areturn
+        32: aload_0
+        33: ldc_w         #327                // String entities
+        36: new           #329                // class com/google/gson/JsonArray
+        39: dup
+        40: invokespecial #331                // Method com/google/gson/JsonArray."<init>":()V
+        43: invokestatic  #332                // Method net/minecraft/util/GsonHelper.getAsJsonArray:(Lcom/google/gson/JsonObject;Ljava/lang/String;Lcom/google/gson/JsonArray;)Lcom/google/gson/JsonArray;
+        46: astore_3
+        47: new           #336                // class java/util/HashSet
+        50: dup
+        51: invokespecial #338                // Method java/util/HashSet."<init>":()V
+        54: astore        4
+        56: aload_3
+        57: invokevirtual #339                // Method com/google/gson/JsonArray.iterator:()Ljava/util/Iterator;
+        60: astore        5
+        62: aload         5
+        64: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        69: ifeq          190
+        72: aload         5
+        74: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        79: checkcast     #96                 // class com/google/gson/JsonElement
+        82: astore        6
+        84: aload         6
+        86: invokevirtual #340                // Method com/google/gson/JsonElement.getAsString:()Ljava/lang/String;
+        89: astore        7
+        91: aload         7
+        93: ldc_w         #341                // String #
+        96: invokevirtual #87                 // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+        99: ifeq          134
+       102: getstatic     #236                // Field net/minecraft/core/registries/BuiltInRegistries.ENTITY_TYPE:Lnet/minecraft/core/DefaultedRegistry;
+       105: getstatic     #343                // Field net/minecraft/core/registries/Registries.ENTITY_TYPE:Lnet/minecraft/resources/ResourceKey;
+       108: aload         7
+       110: invokestatic  #279                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       113: invokestatic  #348                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+       116: invokeinterface #354,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getTag:(Lnet/minecraft/tags/TagKey;)Ljava/util/Optional;
+       121: aload         4
+       123: invokedynamic #358,  0            // InvokeDynamic #12:accept:(Ljava/util/Set;)Ljava/util/function/Consumer;
+       128: invokevirtual #304                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+       131: goto          187
+       134: getstatic     #236                // Field net/minecraft/core/registries/BuiltInRegistries.ENTITY_TYPE:Lnet/minecraft/core/DefaultedRegistry;
+       137: aload         7
+       139: invokestatic  #279                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       142: invokeinterface #283,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getOptional:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Optional;
+       147: aconst_null
+       148: invokevirtual #287                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+       151: checkcast     #126                // class net/minecraft/world/entity/EntityType
+       154: astore        8
+       156: aload         8
+       158: ifnull        174
+       161: aload         4
+       163: aload         8
+       165: invokeinterface #361,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+       170: pop
+       171: goto          187
+       174: getstatic     #154                // Field top/theillusivec4/curios/CuriosConstants.LOG:Lorg/slf4j/Logger;
+       177: ldc_w         #362                // String {} is not a registered entity type!
+       180: aload         7
+       182: invokeinterface #364,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+       187: goto          62
+       190: aload_0
+       191: ldc_w         #366                // String slots
+       194: new           #329                // class com/google/gson/JsonArray
+       197: dup
+       198: invokespecial #331                // Method com/google/gson/JsonArray."<init>":()V
+       201: invokestatic  #332                // Method net/minecraft/util/GsonHelper.getAsJsonArray:(Lcom/google/gson/JsonObject;Ljava/lang/String;Lcom/google/gson/JsonArray;)Lcom/google/gson/JsonArray;
+       204: astore        5
+       206: new           #28                 // class java/util/HashMap
+       209: dup
+       210: invokespecial #30                 // Method java/util/HashMap."<init>":()V
+       213: astore        6
+       215: aload         5
+       217: invokevirtual #339                // Method com/google/gson/JsonArray.iterator:()Ljava/util/Iterator;
+       220: astore        7
+       222: aload         7
+       224: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       229: ifeq          281
+       232: aload         7
+       234: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       239: checkcast     #96                 // class com/google/gson/JsonElement
+       242: astore        8
+       244: aload         8
+       246: invokevirtual #340                // Method com/google/gson/JsonElement.getAsString:()Ljava/lang/String;
+       249: astore        9
+       251: getstatic     #168                // Field top/theillusivec4/curios/common/data/CuriosSlotManager.SERVER:Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+       254: aload         9
+       256: invokevirtual #177                // Method top/theillusivec4/curios/common/data/CuriosSlotManager.getSlot:(Ljava/lang/String;)Ljava/util/Optional;
+       259: aload         6
+       261: aload         9
+       263: invokedynamic #368,  0            // InvokeDynamic #13:accept:(Ljava/util/Map;Ljava/lang/String;)Ljava/util/function/Consumer;
+       268: aload         9
+       270: invokedynamic #369,  0            // InvokeDynamic #14:run:(Ljava/lang/String;)Ljava/lang/Runnable;
+       275: invokevirtual #188                // Method java/util/Optional.ifPresentOrElse:(Ljava/util/function/Consumer;Ljava/lang/Runnable;)V
+       278: goto          222
+       281: aload         4
+       283: invokeinterface #58,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       288: astore        7
+       290: aload         7
+       292: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       297: ifeq          338
+       300: aload         7
+       302: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       307: checkcast     #126                // class net/minecraft/world/entity/EntityType
+       310: astore        8
+       312: aload_2
+       313: aload         8
+       315: invokedynamic #370,  0            // InvokeDynamic #15:apply:()Ljava/util/function/Function;
+       320: invokeinterface #136,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+       325: checkcast     #53                 // class java/util/Map
+       328: aload         6
+       330: invokeinterface #371,  2          // InterfaceMethod java/util/Map.putAll:(Ljava/util/Map;)V
+       335: goto          290
+       338: aload_2
+       339: areturn
+      LineNumberTable:
+        line 186: 0
+        line 188: 8
+        line 189: 18
+        line 191: 30
+        line 193: 32
+        line 194: 47
+        line 196: 56
+        line 197: 84
+        line 199: 91
+        line 200: 102
+        line 201: 110
+        line 200: 116
+        line 202: 128
+        line 208: 134
+        line 209: 139
+        line 211: 156
+        line 212: 161
+        line 214: 174
+        line 217: 187
+        line 218: 190
+        line 219: 206
+        line 221: 215
+        line 222: 244
+        line 223: 251
+        line 225: 278
+        line 227: 281
+        line 228: 312
+        line 229: 335
+        line 230: 338
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          156      31     8  type   Lnet/minecraft/world/entity/EntityType;
+           91      96     7 entity   Ljava/lang/String;
+           84     103     6 jsonEntity   Lcom/google/gson/JsonElement;
+          251      27     9    id   Ljava/lang/String;
+          244      34     8 jsonSlot   Lcom/google/gson/JsonElement;
+          312      23     8 entityType   Lnet/minecraft/world/entity/EntityType;
+            0     340     0 jsonObject   Lcom/google/gson/JsonObject;
+            0     340     1 resourceLocation   Lnet/minecraft/resources/ResourceLocation;
+            8     332     2   map   Ljava/util/Map;
+           47     293     3 jsonEntities   Lcom/google/gson/JsonArray;
+           56     284     4 toAdd   Ljava/util/Set;
+          206     134     5 jsonSlots   Lcom/google/gson/JsonArray;
+          215     125     6 slots   Ljava/util/Map;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          156      31     8  type   Lnet/minecraft/world/entity/EntityType<*>;
+          312      23     8 entityType   Lnet/minecraft/world/entity/EntityType<*>;
+            8     332     2   map   Ljava/util/Map<Lnet/minecraft/world/entity/EntityType<*>;Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;>;
+           56     284     4 toAdd   Ljava/util/Set<Lnet/minecraft/world/entity/EntityType<*>;>;
+          215     125     6 slots   Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+      StackMapTable: number_of_entries = 10
+        frame_type = 252 /* append */
+          offset_delta = 32
+          locals = [ class java/util/Map ]
+        frame_type = 254 /* append */
+          offset_delta = 29
+          locals = [ class com/google/gson/JsonArray, class java/util/Set, class java/util/Iterator ]
+        frame_type = 253 /* append */
+          offset_delta = 71
+          locals = [ class com/google/gson/JsonElement, class java/lang/String ]
+        frame_type = 252 /* append */
+          offset_delta = 39
+          locals = [ class net/minecraft/world/entity/EntityType ]
+        frame_type = 248 /* chop */
+          offset_delta = 12
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 254 /* append */
+          offset_delta = 31
+          locals = [ class com/google/gson/JsonArray, class java/util/Map, class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 58
+        frame_type = 252 /* append */
+          offset_delta = 8
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 47
+    Signature: #543                         // (Lcom/google/gson/JsonObject;Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Map<Lnet/minecraft/world/entity/EntityType<*>;Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;>;
+
+  public java.util.Map<java.lang.String, top.theillusivec4.curios.api.type.ISlotType> getEntitySlots(net.minecraft.world.entity.EntityType<?>);
+    descriptor: (Lnet/minecraft/world/entity/EntityType;)Ljava/util/Map;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #21                 // Field entitySlots:Ljava/util/Map;
+         4: aload_1
+         5: invokeinterface #374,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+        10: ifeq          27
+        13: aload_0
+        14: getfield      #21                 // Field entitySlots:Ljava/util/Map;
+        17: aload_1
+        18: invokeinterface #377,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        23: checkcast     #53                 // class java/util/Map
+        26: areturn
+        27: invokestatic  #15                 // Method com/google/common/collect/ImmutableMap.of:()Lcom/google/common/collect/ImmutableMap;
+        30: areturn
+      LineNumberTable:
+        line 235: 0
+        line 236: 13
+        line 238: 27
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      31     0  this   Ltop/theillusivec4/curios/common/data/CuriosEntityManager;
+            0      31     1  type   Lnet/minecraft/world/entity/EntityType;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      31     1  type   Lnet/minecraft/world/entity/EntityType<*>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 27 /* same */
+    Signature: #546                         // (Lnet/minecraft/world/entity/EntityType<*>;)Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+
+  public java.util.Map<java.lang.String, java.util.Set<java.lang.String>> getModsFromSlots();
+    descriptor: ()Ljava/util/Map;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #25                 // Field idToMods:Ljava/util/Map;
+         4: invokestatic  #380                // Method com/google/common/collect/ImmutableMap.copyOf:(Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap;
+         7: areturn
+      LineNumberTable:
+        line 242: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Ltop/theillusivec4/curios/common/data/CuriosEntityManager;
+    Signature: #549                         // ()Ljava/util/Map<Ljava/lang/String;Ljava/util/Set<Ljava/lang/String;>;>;
+
+  protected void apply(java.lang.Object, net.minecraft.server.packs.resources.ResourceManager, net.minecraft.util.profiling.ProfilerFiller);
+    descriptor: (Ljava/lang/Object;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+    flags: (0x1044) ACC_PROTECTED, ACC_BRIDGE, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=4, args_size=4
+         0: aload_0
+         1: aload_1
+         2: checkcast     #53                 // class java/util/Map
+         5: aload_2
+         6: aload_3
+         7: invokevirtual #384                // Method apply:(Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+        10: return
+      LineNumberTable:
+        line 57: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Ltop/theillusivec4/curios/common/data/CuriosEntityManager;
+    MethodParameters:
+      Name                           Flags
+      <no name>                      synthetic
+      <no name>                      synthetic
+      <no name>                      synthetic
+    RuntimeVisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+        0: #512()
+          javax.annotation.Nonnull
+      parameter 2:
+        0: #512()
+          javax.annotation.Nonnull
+
+  private static java.util.Map lambda$getSlotsForEntities$16(net.minecraft.world.entity.EntityType);
+    descriptor: (Lnet/minecraft/world/entity/EntityType;)Ljava/util/Map;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: new           #28                 // class java/util/HashMap
+         3: dup
+         4: invokespecial #30                 // Method java/util/HashMap."<init>":()V
+         7: areturn
+      LineNumberTable:
+        line 228: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0     k   Lnet/minecraft/world/entity/EntityType;
+
+  private static void lambda$getSlotsForEntities$15(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: getstatic     #154                // Field top/theillusivec4/curios/CuriosConstants.LOG:Lorg/slf4j/Logger;
+         3: ldc_w         #387                // String {} is not a registered slot type!
+         6: aload_0
+         7: invokeinterface #364,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+        12: return
+      LineNumberTable:
+        line 224: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0    id   Ljava/lang/String;
+
+  private static void lambda$getSlotsForEntities$14(java.util.Map, java.lang.String, top.theillusivec4.curios.api.type.ISlotType);
+    descriptor: (Ljava/util/Map;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokeinterface #128,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+         8: pop
+         9: return
+      LineNumberTable:
+        line 223: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0 slots   Ljava/util/Map;
+            0      10     1    id   Ljava/lang/String;
+            0      10     2  slot   Ltop/theillusivec4/curios/api/type/ISlotType;
+
+  private static void lambda$getSlotsForEntities$13(java.util.Set, net.minecraft.core.HolderSet$Named);
+    descriptor: (Ljava/util/Set;Lnet/minecraft/core/HolderSet$Named;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=4, args_size=2
+         0: aload_1
+         1: invokevirtual #389                // Method net/minecraft/core/HolderSet$Named.iterator:()Ljava/util/Iterator;
+         4: astore_2
+         5: aload_2
+         6: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        11: ifeq          43
+        14: aload_2
+        15: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        20: checkcast     #392                // class net/minecraft/core/Holder
+        23: astore_3
+        24: aload_0
+        25: aload_3
+        26: invokeinterface #394,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+        31: checkcast     #126                // class net/minecraft/world/entity/EntityType
+        34: invokeinterface #361,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+        39: pop
+        40: goto          5
+        43: return
+      LineNumberTable:
+        line 203: 0
+        line 204: 24
+        line 205: 40
+        line 206: 43
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           24      16     3 entityTypeHolder   Lnet/minecraft/core/Holder;
+            0      44     0 toAdd   Ljava/util/Set;
+            0      44     1 named   Lnet/minecraft/core/HolderSet$Named;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           24      16     3 entityTypeHolder   Lnet/minecraft/core/Holder<Lnet/minecraft/world/entity/EntityType<*>;>;
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 5
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 37
+
+  private static java.util.Map lambda$applySyncPacket$12(java.util.Map$Entry);
+    descriptor: (Ljava/util/Map$Entry;)Ljava/util/Map;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokeinterface #93,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+         6: checkcast     #121                // class com/google/common/collect/ImmutableMap$Builder
+         9: invokevirtual #397                // Method com/google/common/collect/ImmutableMap$Builder.build:()Lcom/google/common/collect/ImmutableMap;
+        12: areturn
+      LineNumberTable:
+        line 181: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0 entry   Ljava/util/Map$Entry;
+
+  private static void lambda$applySyncPacket$11(java.util.Map, net.minecraft.world.entity.EntityType, java.lang.String, top.theillusivec4.curios.api.type.ISlotType);
+    descriptor: (Ljava/util/Map;Lnet/minecraft/world/entity/EntityType;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=4, args_size=4
+         0: aload_0
+         1: aload_1
+         2: invokedynamic #400,  0            // InvokeDynamic #16:apply:()Ljava/util/function/Function;
+         7: invokeinterface #136,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+        12: checkcast     #121                // class com/google/common/collect/ImmutableMap$Builder
+        15: aload_2
+        16: aload_3
+        17: invokevirtual #401                // Method com/google/common/collect/ImmutableMap$Builder.put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+        20: pop
+        21: return
+      LineNumberTable:
+        line 173: 0
+        line 174: 17
+        line 173: 21
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      22     0   map   Ljava/util/Map;
+            0      22     1  type   Lnet/minecraft/world/entity/EntityType;
+            0      22     2    id   Ljava/lang/String;
+            0      22     3 slotType   Ltop/theillusivec4/curios/api/type/ISlotType;
+
+  private static com.google.common.collect.ImmutableMap$Builder lambda$applySyncPacket$10(net.minecraft.world.entity.EntityType);
+    descriptor: (Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: invokestatic  #116                // Method com/google/common/collect/ImmutableMap.builder:()Lcom/google/common/collect/ImmutableMap$Builder;
+         3: areturn
+      LineNumberTable:
+        line 173: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       4     0     k   Lnet/minecraft/world/entity/EntityType;
+
+  private static java.util.Set lambda$apply$9(java.util.Map$Entry);
+    descriptor: (Ljava/util/Map$Entry;)Ljava/util/Set;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokeinterface #93,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+         6: checkcast     #141                // class com/google/common/collect/ImmutableSet$Builder
+         9: invokevirtual #404                // Method com/google/common/collect/ImmutableSet$Builder.build:()Lcom/google/common/collect/ImmutableSet;
+        12: areturn
+      LineNumberTable:
+        line 133: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0 entry   Ljava/util/Map$Entry;
+
+  private static java.util.Map lambda$apply$8(java.util.Map$Entry);
+    descriptor: (Ljava/util/Map$Entry;)Ljava/util/Map;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokeinterface #93,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+         6: checkcast     #121                // class com/google/common/collect/ImmutableMap$Builder
+         9: invokevirtual #407                // Method com/google/common/collect/ImmutableMap$Builder.buildKeepingLast:()Lcom/google/common/collect/ImmutableMap;
+        12: areturn
+      LineNumberTable:
+        line 131: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0 entry   Ljava/util/Map$Entry;
+
+  private static com.google.common.collect.ImmutableMap$Builder lambda$apply$7(net.minecraft.world.entity.EntityType);
+    descriptor: (Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: invokestatic  #116                // Method com/google/common/collect/ImmutableMap.builder:()Lcom/google/common/collect/ImmutableMap$Builder;
+         3: areturn
+      LineNumberTable:
+        line 128: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       4     0     k   Lnet/minecraft/world/entity/EntityType;
+
+  private static void lambda$apply$6(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: getstatic     #154                // Field top/theillusivec4/curios/CuriosConstants.LOG:Lorg/slf4j/Logger;
+         3: ldc_w         #387                // String {} is not a registered slot type!
+         6: aload_0
+         7: invokeinterface #364,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+        12: return
+      LineNumberTable:
+        line 126: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0 configSlot   Ljava/lang/String;
+
+  private static void lambda$apply$5(java.util.Map, java.lang.String, top.theillusivec4.curios.api.type.ISlotType);
+    descriptor: (Ljava/util/Map;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokeinterface #128,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+         8: pop
+         9: return
+      LineNumberTable:
+        line 125: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0 configSlots   Ljava/util/Map;
+            0      10     1 configSlot   Ljava/lang/String;
+            0      10     2  slot   Ltop/theillusivec4/curios/api/type/ISlotType;
+
+  private static com.google.common.collect.ImmutableSet$Builder lambda$apply$4(java.lang.String);
+    descriptor: (Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: invokestatic  #410                // Method com/google/common/collect/ImmutableSet.builder:()Lcom/google/common/collect/ImmutableSet$Builder;
+         3: areturn
+      LineNumberTable:
+        line 114: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       4     0     k   Ljava/lang/String;
+
+  private static com.google.common.collect.ImmutableMap$Builder lambda$apply$3(net.minecraft.world.entity.EntityType);
+    descriptor: (Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: invokestatic  #116                // Method com/google/common/collect/ImmutableMap.builder:()Lcom/google/common/collect/ImmutableMap$Builder;
+         3: areturn
+      LineNumberTable:
+        line 111: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       4     0     k   Lnet/minecraft/world/entity/EntityType;
+
+  private static void lambda$apply$2(java.util.Map, java.util.Map, net.minecraft.server.packs.PackResources);
+    descriptor: (Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/server/packs/PackResources;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=4, args_size=3
+         0: aload_2
+         1: getstatic     #415                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+         4: invokeinterface #421,  2          // InterfaceMethod net/minecraft/server/packs/PackResources.getNamespaces:(Lnet/minecraft/server/packs/PackType;)Ljava/util/Set;
+         9: astore_3
+        10: aload_3
+        11: aload_2
+        12: aload_0
+        13: aload_1
+        14: invokedynamic #427,  0            // InvokeDynamic #17:accept:(Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;)Ljava/util/function/Consumer;
+        19: invokeinterface #430,  2          // InterfaceMethod java/util/Set.forEach:(Ljava/util/function/Consumer;)V
+        24: return
+      LineNumberTable:
+        line 78: 0
+        line 79: 10
+        line 91: 24
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      25     0 pObject   Ljava/util/Map;
+            0      25     1 sorted   Ljava/util/Map;
+            0      25     2 packResources   Lnet/minecraft/server/packs/PackResources;
+           10      15     3 namespaces   Ljava/util/Set;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           10      15     3 namespaces   Ljava/util/Set<Ljava/lang/String;>;
+
+  private static void lambda$apply$1(net.minecraft.server.packs.PackResources, java.util.Map, java.util.Map, java.lang.String);
+    descriptor: (Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=7, locals=4, args_size=4
+         0: aload_0
+         1: getstatic     #415                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+         4: aload_3
+         5: ldc           #7                  // String curios/entities
+         7: aload_3
+         8: aload_1
+         9: aload_2
+        10: invokedynamic #431,  0            // InvokeDynamic #18:accept:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)Lnet/minecraft/server/packs/PackResources$ResourceOutput;
+        15: invokeinterface #434,  5          // InterfaceMethod net/minecraft/server/packs/PackResources.listResources:(Lnet/minecraft/server/packs/PackType;Ljava/lang/String;Ljava/lang/String;Lnet/minecraft/server/packs/PackResources$ResourceOutput;)V
+        20: return
+      LineNumberTable:
+        line 80: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      21     0 packResources   Lnet/minecraft/server/packs/PackResources;
+            0      21     1 pObject   Ljava/util/Map;
+            0      21     2 sorted   Ljava/util/Map;
+            0      21     3 namespace   Ljava/lang/String;
+
+  private static void lambda$apply$0(java.lang.String, java.util.Map, java.util.Map, net.minecraft.resources.ResourceLocation, net.minecraft.server.packs.resources.IoSupplier);
+    descriptor: (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=5, locals=8, args_size=5
+         0: aload_3
+         1: invokevirtual #81                 // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+         4: astore        5
+         6: aload_0
+         7: aload         5
+         9: ldc_w         #438                // String curios/entities/
+        12: invokevirtual #440                // Method java/lang/String.length:()I
+        15: aload         5
+        17: invokevirtual #440                // Method java/lang/String.length:()I
+        20: ldc_w         #443                // String .json
+        23: invokevirtual #440                // Method java/lang/String.length:()I
+        26: isub
+        27: invokevirtual #445                // Method java/lang/String.substring:(II)Ljava/lang/String;
+        30: invokestatic  #449                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+        33: astore        6
+        35: aload_1
+        36: aload         6
+        38: invokeinterface #377,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        43: checkcast     #96                 // class com/google/gson/JsonElement
+        46: astore        7
+        48: aload         7
+        50: ifnull        64
+        53: aload_2
+        54: aload         6
+        56: aload         7
+        58: invokeinterface #128,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        63: pop
+        64: return
+      LineNumberTable:
+        line 83: 0
+        line 84: 6
+        line 85: 12
+        line 84: 30
+        line 86: 35
+        line 87: 48
+        line 88: 53
+        line 90: 64
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      65     0 namespace   Ljava/lang/String;
+            0      65     1 pObject   Ljava/util/Map;
+            0      65     2 sorted   Ljava/util/Map;
+            0      65     3 resourceLocation   Lnet/minecraft/resources/ResourceLocation;
+            0      65     4 inputStreamIoSupplier   Lnet/minecraft/server/packs/resources/IoSupplier;
+            6      59     5  path   Ljava/lang/String;
+           35      30     6    rl   Lnet/minecraft/resources/ResourceLocation;
+           48      17     7    el   Lcom/google/gson/JsonElement;
+      StackMapTable: number_of_entries = 1
+        frame_type = 254 /* append */
+          offset_delta = 64
+          locals = [ class java/lang/String, class net/minecraft/resources/ResourceLocation, class com/google/gson/JsonElement ]
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: new           #453                // class com/google/gson/GsonBuilder
+         3: dup
+         4: invokespecial #455                // Method com/google/gson/GsonBuilder."<init>":()V
+         7: invokevirtual #456                // Method com/google/gson/GsonBuilder.setPrettyPrinting:()Lcom/google/gson/GsonBuilder;
+        10: invokevirtual #460                // Method com/google/gson/GsonBuilder.disableHtmlEscaping:()Lcom/google/gson/GsonBuilder;
+        13: invokevirtual #463                // Method com/google/gson/GsonBuilder.create:()Lcom/google/gson/Gson;
+        16: putstatic     #1                  // Field GSON:Lcom/google/gson/Gson;
+        19: new           #2                  // class top/theillusivec4/curios/common/data/CuriosEntityManager
+        22: dup
+        23: invokespecial #466                // Method "<init>":()V
+        26: putstatic     #233                // Field SERVER:Ltop/theillusivec4/curios/common/data/CuriosEntityManager;
+        29: new           #2                  // class top/theillusivec4/curios/common/data/CuriosEntityManager
+        32: dup
+        33: invokespecial #466                // Method "<init>":()V
+        36: putstatic     #307                // Field CLIENT:Ltop/theillusivec4/curios/common/data/CuriosEntityManager;
+        39: return
+      LineNumberTable:
+        line 59: 0
+        line 60: 7
+        line 62: 19
+        line 63: 29
+}
+SourceFile: "CuriosEntityManager.java"
+BootstrapMethods:
+  0: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #601 (Ljava/lang/Object;)V
+      #603 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$2:(Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/server/packs/PackResources;)V
+      #606 (Lnet/minecraft/server/packs/PackResources;)V
+  1: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #608 (Ljava/lang/Object;)Ljava/lang/Object;
+      #609 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$3:(Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+      #612 (Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+  2: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #608 (Ljava/lang/Object;)Ljava/lang/Object;
+      #613 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$4:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+      #616 (Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  3: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #601 (Ljava/lang/Object;)V
+      #617 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$5:(Ljava/util/Map;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+      #620 (Ltop/theillusivec4/curios/api/type/ISlotType;)V
+  4: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #622 ()V
+      #623 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$6:(Ljava/lang/String;)V
+      #622 ()V
+  5: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #608 (Ljava/lang/Object;)Ljava/lang/Object;
+      #626 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$7:(Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+      #612 (Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+  6: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #608 (Ljava/lang/Object;)Ljava/lang/Object;
+      #629 REF_invokeInterface java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      #630 (Ljava/util/Map$Entry;)Lnet/minecraft/world/entity/EntityType;
+  7: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #608 (Ljava/lang/Object;)Ljava/lang/Object;
+      #632 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$8:(Ljava/util/Map$Entry;)Ljava/util/Map;
+      #635 (Ljava/util/Map$Entry;)Ljava/util/Map;
+  8: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #608 (Ljava/lang/Object;)Ljava/lang/Object;
+      #629 REF_invokeInterface java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      #636 (Ljava/util/Map$Entry;)Ljava/lang/String;
+  9: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #608 (Ljava/lang/Object;)Ljava/lang/Object;
+      #638 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$9:(Ljava/util/Map$Entry;)Ljava/util/Set;
+      #641 (Ljava/util/Map$Entry;)Ljava/util/Set;
+  10: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #601 (Ljava/lang/Object;)V
+      #642 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$applySyncPacket$11:(Ljava/util/Map;Lnet/minecraft/world/entity/EntityType;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+      #620 (Ltop/theillusivec4/curios/api/type/ISlotType;)V
+  11: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #608 (Ljava/lang/Object;)Ljava/lang/Object;
+      #645 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$applySyncPacket$12:(Ljava/util/Map$Entry;)Ljava/util/Map;
+      #635 (Ljava/util/Map$Entry;)Ljava/util/Map;
+  12: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #601 (Ljava/lang/Object;)V
+      #648 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$getSlotsForEntities$13:(Ljava/util/Set;Lnet/minecraft/core/HolderSet$Named;)V
+      #651 (Lnet/minecraft/core/HolderSet$Named;)V
+  13: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #601 (Ljava/lang/Object;)V
+      #653 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$getSlotsForEntities$14:(Ljava/util/Map;Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;)V
+      #620 (Ltop/theillusivec4/curios/api/type/ISlotType;)V
+  14: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #622 ()V
+      #656 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$getSlotsForEntities$15:(Ljava/lang/String;)V
+      #622 ()V
+  15: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #608 (Ljava/lang/Object;)Ljava/lang/Object;
+      #659 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$getSlotsForEntities$16:(Lnet/minecraft/world/entity/EntityType;)Ljava/util/Map;
+      #662 (Lnet/minecraft/world/entity/EntityType;)Ljava/util/Map;
+  16: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #608 (Ljava/lang/Object;)Ljava/lang/Object;
+      #663 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$applySyncPacket$10:(Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+      #612 (Lnet/minecraft/world/entity/EntityType;)Lcom/google/common/collect/ImmutableMap$Builder;
+  17: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #601 (Ljava/lang/Object;)V
+      #666 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$1:(Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;)V
+      #669 (Ljava/lang/String;)V
+  18: #677 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #670 (Ljava/lang/Object;Ljava/lang/Object;)V
+      #672 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosEntityManager.lambda$apply$0:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+      #675 (Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+InnerClasses:
+  public static #685= #74 of #53;         // Entry=class java/util/Map$Entry of class java/util/Map
+  public static #686= #121 of #16;        // Builder=class com/google/common/collect/ImmutableMap$Builder of class com/google/common/collect/ImmutableMap
+  public static #686= #141 of #411;       // Builder=class com/google/common/collect/ImmutableSet$Builder of class com/google/common/collect/ImmutableSet
+  public static #689= #390 of #687;       // Named=class net/minecraft/core/HolderSet$Named of class net/minecraft/core/HolderSet
+  public static #692= #690 of #422;       // ResourceOutput=class net/minecraft/server/packs/PackResources$ResourceOutput of class net/minecraft/server/packs/PackResources
+  public static final #697= #693 of #695; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
