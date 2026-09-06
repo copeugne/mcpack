@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Latest checkpoint at fd93f7f: BOP provider census is resolved, pushed and remote
+ref verified. Five focused cases, Ruff and Basedpyright pass. Queue: 55 resolved
+providers, 81 open. All 81 BOP registered feature types have supported roles;
+the three coral types are embedded in dead_coral's selector. Preserve anomaly
+and monolith candidates plus the named giant-pumpkin/carved-patch boundaries
+for canonical reconciliation. Source and final dispositions are under
+evidence/item-8/provider-scope.md. Do not repeat BetterEnd or BOP coverage.
+Continue the remaining provider rows before attributes or final family counting.
+
 Current checkpoint at 711a696: BetterEnd provider candidate coverage is resolved.
 The commit is pushed and its remote ref verified. Thirteen focused cases, Ruff
 and Basedpyright pass. Current queue: 54 resolved providers and 82 open, recorded
