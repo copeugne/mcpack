@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+All 136 retained-provider membership dispositions are resolved, with zero open
+provider rows. You're in Grave Danger supplies player-death graves and recovery,
+not an independent structure family. Reuse yigd-entries, yigd-delegates and
+yigd-resources; stop generic provider/helper tracing. Next is canonical grouping:
+100 explicitly provisional Moog decisions and nonregistry contribution reconciliation.
+Publish the resulting exact named family list before resuming attributes. The
+887 runtime roots and 410 working groups remain intermediate counts. Item 8 is
+not complete and has not entered its final PR review loop.
+
+
 Simply Swords membership is resolved with no independent family. Sources
 295a0c93, 94876e7d and 26569325 bind eleven entry, hook and content classes.
 Loot callbacks remain family attribute inputs. Provider status is 135 resolved

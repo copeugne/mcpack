@@ -1,7 +1,8 @@
 # Retained-provider scope pass
 
-Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 135 of 136. The exact queue below has 1 open row.
+Status: every retained provider has a supported membership disposition.
+Canonical family reconciliation remains incomplete.
+Supported provider dispositions: 136 of 136. The exact queue below has 0 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -700,7 +701,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `ubesdelight-neoforge-1.21.1-0.4.13.jar` | `ubes-delight-provider` (b6ef5a0), MidnightLib ca67c60, config delegates e40ea32; test_ubes_delight_provider_scope.py | RESOLVED: Four crop chains, food/item interactions and bundled configuration support. No independent structure family. Full disposition below. |
 | `worldweaver-21.0.24.jar` | Six wover provider captures, existing pool-codecs and biome modifier captures | RESOLVED: Shared consumer generation/registry/terrain APIs and presets, no independent family. Preserve terrain and pack-loading effects below. |
 | `wunderlib-21.0.10.jar` | Source 185b55c; test_small_utility_provider_scope.py | RESOLVED: Networking entries and supplied-coordinate geometry; no independent family. See WunderLib disposition below. |
-| `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `youre-in-grave-danger-neoforge-2.0.13.jar` | Three grave provider source increments | RESOLVED: player death, grave storage and recovery; no independent family. See grave provider closure below. |
 
 ## Final Regions Unexplored provider disposition
 
@@ -8508,3 +8509,51 @@ uv run pytest tests/item8/test_simplyswords_provider_scope.py -q
 uv run ruff check tests/item8/test_simplyswords_provider_scope.py
 uv run basedpyright tests/item8/test_simplyswords_provider_scope.py
 ```
+
+## Grave provider closure
+
+You're in Grave Danger archive SHA-256:
+dd2142a3c6a9d5b990ab36220be482f7aa9f528755f93b8fef8996f509ddcda2.
+Its 142 classes contain two automatic entries, four common and one server mixin,
+two client mixins, and no mixin plugin, nested archive, service entry or NBT.
+Packaged data categories and exact source bindings are reproduced by
+test_yigd_provider_scope.py. Data consists of tags, two enchantments, a legacy
+recipe directory, a grave block loot table and three custom grave resources.
+
+Thirteen classes in yigd-entries (2c0a3dac), yigd-delegates (dcd64d22) and
+yigd-resources retain startup, common/server hooks, registered event handlers and
+custom resource consumers. Each capture README records the extractor revision,
+command and manifest hash; independent r1 captures match exactly.
+
+Startup registers grave blocks/items, block entities, attachments, components,
+networking, commands and event handlers. ServerEventHandler handles player death,
+inventory drops, respawn, player positions and saved death data. YigdServerEventHandler
+handles grave creation eligibility, placement positions, recovery and drop rules.
+These are player-death recovery mechanics, not independently generated authored sites.
+EndPlatformFeatureMixin changes the existing End platform block predicate to include
+graves. LevelChunkMixin notifies a removed grave block entity. Compass and spawn
+protection hooks concern grave recovery. RegistryDataLoaderMixin conditionally
+cancels the provider's enchantment loads, not structure registry entries.
+
+The custom loaders read grave_shape.json into the grave block shape, graveyard.json
+into grave coordinates, and grave_areas.json into drop-rule overrides. Packaged
+graveyard coordinates and override areas are empty. The grave shape is block-model
+geometry, not a building template. The grave block loot table returns the grave
+item and conditionally copies components for Silk Touch. It is not chest loot.
+No independent family is added. Stop general recovery, networking and command
+tracing. These dispositions close the final retained-provider membership row.
+
+```sh
+uv run pytest tests/item8/test_yigd_provider_scope.py -q
+uv run ruff check tests/item8/test_yigd_provider_scope.py
+uv run basedpyright tests/item8/test_yigd_provider_scope.py
+```
+
+All 136 retained providers now have supported dispositions. The remaining membership
+work is canonical reconciliation: 100 explicit provisional Moog grouping decisions,
+plus reconciliation of the recorded nonregistry contributions with the existing
+working groups. Neither 887 roots nor 410 working groups is a final family count.
+The required attributes and final Item 8 acceptance also remain incomplete.
+
+The focused grave provider test passes. Ruff reported one long assertion, which
+was wrapped; scoped Ruff and Basedpyright pass after that formatting correction.
