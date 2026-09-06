@@ -189,6 +189,42 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/fabricmc/loader/impl/bootstrap/FabricLoaderHackyInjector.class",
+    "net/fabricmc/fabric/mixin/transfer/AbstractFurnaceBlockEntityMixin.class",
+    "net/fabricmc/fabric/mixin/transfer/BucketItemMixin.class",
+    "net/fabricmc/fabric/mixin/transfer/BundleContentsComponentAccessor.class",
+    "net/fabricmc/fabric/mixin/transfer/ContainerComponentAccessor.class",
+    "net/fabricmc/fabric/mixin/transfer/DoubleInventoryAccessor.class",
+    "net/fabricmc/fabric/mixin/transfer/FluidMixin.class",
+    "net/fabricmc/fabric/mixin/transfer/ItemMixin.class",
+    "net/fabricmc/fabric/mixin/transfer/JukeboxBlockEntityMixin.class",
+    "net/fabricmc/fabric/mixin/transfer/LockableContainerBlockEntityMixin.class",
+    "net/fabricmc/fabric/mixin/transfer/SimpleInventoryMixin.class",
+    "org/sinytra/fabric/transfer_api/TransferApiNeoCompat.class",
+    "org/sinytra/fabric/transfer_api/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/mixin/registry/sync/BaseMappedRegistryAccessor.class",
+    "net/fabricmc/fabric/mixin/registry/sync/DebugChunkGeneratorAccessor.class",
+    "net/fabricmc/fabric/mixin/registry/sync/MappedRegistryAccessor.class",
+    "net/fabricmc/fabric/mixin/registry/sync/RegistryLoaderMixin.class",
+    "net/fabricmc/fabric/mixin/registry/sync/RegistryManagerAccessor.class",
+    "org/sinytra/fabric/registry_sync/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/mixin/networking/ClientConnectionMixin.class",
+    "net/fabricmc/fabric/mixin/networking/EntityTrackerEntryMixin.class",
+    "net/fabricmc/fabric/mixin/networking/GenericPacketSplitterMixin.class",
+    "net/fabricmc/fabric/mixin/networking/LoginQueryRequestS2CPacketMixin.class",
+    "net/fabricmc/fabric/mixin/networking/LoginQueryResponseC2SPacketMixin.class",
+    "net/fabricmc/fabric/mixin/networking/NetworkRegistryMixin.class",
+    "net/fabricmc/fabric/mixin/networking/ServerCommonNetworkHandlerMixin.class",
+    "net/fabricmc/fabric/mixin/networking/ServerConfigurationNetworkHandlerMixin.class",
+    "net/fabricmc/fabric/mixin/networking/ServerLoginNetworkHandlerMixin.class",
+    "net/fabricmc/fabric/mixin/networking/ServerPlayNetworkHandlerMixin.class",
+    "net/fabricmc/fabric/mixin/networking/accessor/EntityTrackerAccessor.class",
+    "net/fabricmc/fabric/mixin/networking/accessor/NetworkRegistryAccessor.class",
+    "net/fabricmc/fabric/mixin/networking/accessor/ServerChunkLoadingManagerAccessor.class",
+    "net/fabricmc/fabric/mixin/networking/accessor/ServerCommonNetworkHandlerAccessor.class",
+    "net/fabricmc/fabric/mixin/networking/accessor/ServerLoginNetworkHandlerAccessor.class",
+    "org/sinytra/fabric/networking_api/NetworkingEventHooks.class",
+    "org/sinytra/fabric/networking_api/generated/GeneratedEntryPoint.class",
     "net/fabricmc/fabric/impl/event/interaction/InteractionEventsRouter.class",
     "net/fabricmc/fabric/impl/item/EnchantmentUtil.class",
     "net/fabricmc/fabric/mixin/object/builder/AbstractBlockAccessor.class",
@@ -2486,6 +2522,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar",
+        "META-INF/jars/fabric-transfer-api-v1-5.4.3+a25cb45619.jar",
+        "META-INF/jars/fabric-registry-sync-v0-5.3.1+f9aace1619.jar",
+        "META-INF/jars/fabric-networking-api-v1-4.3.0+30a980d919.jar",
         "META-INF/jars/fabric-object-builder-api-v1-15.2.1+cc242efd19.jar",
         "META-INF/jars/fabric-item-api-v1-11.2.0+0c57911319.jar",
         "META-INF/jars/fabric-events-interaction-v0-0.7.13+86e0887119.jar",
@@ -2542,6 +2582,22 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "fe0b6b5e95917ab26fd1271e8d72fc714283a4c2542c5a732fb1261a69f18c43",
+        ),
+        "META-INF/jars/fabric-transfer-api-v1-5.4.3+a25cb45619.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "94991eb275380266690d1f156d9dc1d137c7c69a44a6075bf93422e54d820ed0",
+        ),
+        "META-INF/jars/fabric-registry-sync-v0-5.3.1+f9aace1619.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "39625078cb1c8f1c05ef13566f4aad418f6baba6842533e97cf433497456a096",
+        ),
+        "META-INF/jars/fabric-networking-api-v1-4.3.0+30a980d919.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "ed0cea85766c66a989ae83447f6051fa33bcfd9e41d65ea72d46f3a8ed4566a9",
+        ),
         "META-INF/jars/fabric-object-builder-api-v1-15.2.1+cc242efd19.jar": (
             "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
             "9217c882c6bb8abe8044af9420d3905ab1aa206f8705e390943d272673e57b2d",
