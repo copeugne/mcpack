@@ -1,0 +1,1078 @@
+Compiled from "RuntimePack.java"
+public class de.cristelknight.cristellib.builtinpacks.RuntimePack implements net.minecraft.server.packs.PackResources {
+  public static final com.google.gson.Gson GSON;
+
+  private final java.util.concurrent.locks.Lock waiting;
+
+  private final java.util.Map<net.minecraft.resources.ResourceLocation, java.util.function.Supplier<byte[]>> data;
+
+  private final java.util.Map<net.minecraft.resources.ResourceLocation, java.util.function.Supplier<byte[]>> assets;
+
+  private final java.util.Map<java.util.List<java.lang.String>, java.util.function.Supplier<byte[]>> root;
+
+  public final int packVersion;
+
+  private final java.lang.String id;
+
+  private final net.minecraft.server.packs.PackLocationInfo metadata;
+
+  public de.cristelknight.cristellib.builtinpacks.RuntimePack(net.minecraft.resources.ResourceLocation, int, java.lang.String, java.io.InputStream);
+    Code:
+       0: aload_0
+       1: invokespecial #45                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #47                 // class java/util/concurrent/locks/ReentrantLock
+       8: dup
+       9: invokespecial #48                 // Method java/util/concurrent/locks/ReentrantLock."<init>":()V
+      12: putfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      15: aload_0
+      16: new           #52                 // class java/util/concurrent/ConcurrentHashMap
+      19: dup
+      20: invokespecial #53                 // Method java/util/concurrent/ConcurrentHashMap."<init>":()V
+      23: putfield      #55                 // Field data:Ljava/util/Map;
+      26: aload_0
+      27: new           #52                 // class java/util/concurrent/ConcurrentHashMap
+      30: dup
+      31: invokespecial #53                 // Method java/util/concurrent/ConcurrentHashMap."<init>":()V
+      34: putfield      #57                 // Field assets:Ljava/util/Map;
+      37: aload_0
+      38: new           #52                 // class java/util/concurrent/ConcurrentHashMap
+      41: dup
+      42: invokespecial #53                 // Method java/util/concurrent/ConcurrentHashMap."<init>":()V
+      45: putfield      #59                 // Field root:Ljava/util/Map;
+      48: aload_0
+      49: iload_2
+      50: putfield      #61                 // Field packVersion:I
+      53: aload_0
+      54: aload_1
+      55: invokevirtual #67                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      58: putfield      #69                 // Field id:Ljava/lang/String;
+      61: aload_0
+      62: new           #71                 // class net/minecraft/server/packs/PackLocationInfo
+      65: dup
+      66: aload_0
+      67: getfield      #69                 // Field id:Ljava/lang/String;
+      70: aload_3
+      71: invokestatic  #77                 // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      74: new           #79                 // class de/cristelknight/cristellib/builtinpacks/BuiltinResourcePackSource
+      77: dup
+      78: invokespecial #80                 // Method de/cristelknight/cristellib/builtinpacks/BuiltinResourcePackSource."<init>":()V
+      81: invokestatic  #86                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+      84: invokespecial #89                 // Method net/minecraft/server/packs/PackLocationInfo."<init>":(Ljava/lang/String;Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackSource;Ljava/util/Optional;)V
+      87: putfield      #91                 // Field metadata:Lnet/minecraft/server/packs/PackLocationInfo;
+      90: aload         4
+      92: ifnull        116
+      95: aload         4
+      97: invokestatic  #97                 // Method de/cristelknight/cristellib/util/runtimepack/RuntimePackUtil.extractImageBytes:(Ljava/io/InputStream;)[B
+     100: astore        5
+     102: aload         5
+     104: ifnull        116
+     107: aload_0
+     108: ldc           #99                 // String pack.png
+     110: aload         5
+     112: invokevirtual #103                // Method addRootResource:(Ljava/lang/String;[B)[B
+     115: pop
+     116: aload_0
+     117: iconst_1
+     118: anewarray     #105                // class java/lang/String
+     121: dup
+     122: iconst_0
+     123: ldc           #109                // String pack.mcmeta
+     125: aastore
+     126: invokevirtual #113                // Method hasRootResource:([Ljava/lang/String;)Z
+     129: ifne          221
+     132: new           #115                // class com/google/gson/JsonObject
+     135: dup
+     136: invokespecial #116                // Method com/google/gson/JsonObject."<init>":()V
+     139: astore        5
+     141: new           #115                // class com/google/gson/JsonObject
+     144: dup
+     145: invokespecial #116                // Method com/google/gson/JsonObject."<init>":()V
+     148: astore        6
+     150: aload         6
+     152: ldc           #118                // String pack_format
+     154: aload_0
+     155: getfield      #61                 // Field packVersion:I
+     158: invokestatic  #124                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     161: invokevirtual #128                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Number;)V
+     164: aload         6
+     166: ldc           #130                // String min_format
+     168: aload_0
+     169: getfield      #61                 // Field packVersion:I
+     172: invokestatic  #124                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     175: invokevirtual #128                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Number;)V
+     178: aload         6
+     180: ldc           #132                // String max_format
+     182: aload_0
+     183: getfield      #61                 // Field packVersion:I
+     186: invokestatic  #124                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     189: invokevirtual #128                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Number;)V
+     192: aload         6
+     194: ldc           #133                // String description
+     196: aload_3
+     197: invokevirtual #136                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+     200: aload         5
+     202: ldc           #138                // String pack
+     204: aload         6
+     206: invokevirtual #142                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+     209: aload_0
+     210: ldc           #109                // String pack.mcmeta
+     212: aload         5
+     214: invokestatic  #146                // Method de/cristelknight/cristellib/util/runtimepack/RuntimePackUtil.serializeJson:(Lcom/google/gson/JsonObject;)[B
+     217: invokevirtual #103                // Method addRootResource:(Ljava/lang/String;[B)[B
+     220: pop
+     221: return
+
+  protected java.util.Map<net.minecraft.resources.ResourceLocation, java.util.function.Supplier<byte[]>> getSys(net.minecraft.server.packs.PackType);
+    Code:
+       0: aload_1
+       1: getstatic     #164                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+       4: if_acmpne     14
+       7: aload_0
+       8: getfield      #57                 // Field assets:Ljava/util/Map;
+      11: goto          18
+      14: aload_0
+      15: getfield      #55                 // Field data:Ljava/util/Map;
+      18: areturn
+
+  public byte[] addStructureSet(net.minecraft.resources.ResourceLocation, com.google.gson.JsonObject);
+    Code:
+       0: aload_0
+       1: ldc           #170                // String worldgen/structure_set
+       3: aload_1
+       4: aload_2
+       5: invokevirtual #174                // Method addDataForJsonLocation:(Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)[B
+       8: areturn
+
+  public boolean removeStructureSet(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: ldc           #170                // String worldgen/structure_set
+       3: aload_1
+       4: invokevirtual #180                // Method removeDataForJsonLocation:(Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;)Z
+       7: ireturn
+
+  public byte[] addBiome(net.minecraft.resources.ResourceLocation, com.google.gson.JsonObject);
+    Code:
+       0: aload_0
+       1: ldc           #184                // String worldgen/biome
+       3: aload_1
+       4: aload_2
+       5: invokevirtual #174                // Method addDataForJsonLocation:(Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)[B
+       8: areturn
+
+  public byte[] addStructure(net.minecraft.resources.ResourceLocation, com.google.gson.JsonObject);
+    Code:
+       0: aload_0
+       1: ldc           #188                // String worldgen/structure
+       3: aload_1
+       4: aload_2
+       5: invokevirtual #174                // Method addDataForJsonLocation:(Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)[B
+       8: areturn
+
+  public byte[] addLootTable(net.minecraft.resources.ResourceLocation, com.google.gson.JsonObject);
+    Code:
+       0: aload_0
+       1: ldc           #192                // String loot_tables
+       3: aload_1
+       4: aload_2
+       5: invokevirtual #174                // Method addDataForJsonLocation:(Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)[B
+       8: areturn
+
+  public byte[] addDataForJsonLocationFromPath(java.lang.String, net.minecraft.resources.ResourceLocation, java.lang.String, java.lang.String);
+    Code:
+       0: aload         4
+       2: aload_3
+       3: invokestatic  #203                // Method de/cristelknight/cristellib/util/JsonHelper.getElement:(Ljava/lang/String;Ljava/lang/String;)Lcom/google/gson/JsonElement;
+       6: astore        6
+       8: aload         6
+      10: instanceof    #115                // class com/google/gson/JsonObject
+      13: ifeq          32
+      16: aload         6
+      18: checkcast     #115                // class com/google/gson/JsonObject
+      21: astore        5
+      23: aload_0
+      24: aload_1
+      25: aload_2
+      26: aload         5
+      28: invokevirtual #174                // Method addDataForJsonLocation:(Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)[B
+      31: areturn
+      32: aconst_null
+      33: areturn
+
+  public byte[] addDataForJsonLocation(java.lang.String, net.minecraft.resources.ResourceLocation, com.google.gson.JsonObject);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: ldc           #207                // String json
+       4: aload_2
+       5: aload_3
+       6: invokevirtual #211                // Method addAndSerializeDataForLocation:(Ljava/lang/String;Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)[B
+       9: areturn
+
+  public boolean removeDataForJsonLocation(java.lang.String, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: ldc           #207                // String json
+       4: aload_2
+       5: invokevirtual #215                // Method removeDataForLocation:(Ljava/lang/String;Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;)Z
+       8: ireturn
+
+  public byte[] addAndSerializeDataForLocation(java.lang.String, java.lang.String, net.minecraft.resources.ResourceLocation, com.google.gson.JsonObject);
+    Code:
+       0: aload_0
+       1: aload_3
+       2: invokevirtual #219                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+       5: aload_1
+       6: aload_3
+       7: invokevirtual #222                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      10: aload_2
+      11: invokedynamic #234,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      16: invokestatic  #238                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      19: aload         4
+      21: invokestatic  #146                // Method de/cristelknight/cristellib/util/runtimepack/RuntimePackUtil.serializeJson:(Lcom/google/gson/JsonObject;)[B
+      24: invokevirtual #242                // Method addData:(Lnet/minecraft/resources/ResourceLocation;[B)[B
+      27: areturn
+
+  public boolean removeDataForLocation(java.lang.String, java.lang.String, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: aload_3
+       2: invokevirtual #219                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+       5: aload_1
+       6: aload_3
+       7: invokevirtual #222                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      10: aload_2
+      11: invokedynamic #234,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      16: invokestatic  #238                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      19: invokevirtual #245                // Method removeData:(Lnet/minecraft/resources/ResourceLocation;)Z
+      22: ireturn
+
+  public byte[] addData(net.minecraft.resources.ResourceLocation, byte[]);
+    Code:
+       0: aload_0
+       1: invokevirtual #249                // Method lock:()V
+       4: aload_0
+       5: getfield      #55                 // Field data:Ljava/util/Map;
+       8: aload_1
+       9: aload_2
+      10: invokedynamic #269,  0            // InvokeDynamic #1:get:([B)Ljava/util/function/Supplier;
+      15: invokeinterface #273,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      20: pop
+      21: aload_2
+      22: astore_3
+      23: aload_0
+      24: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      27: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      32: aload_3
+      33: areturn
+      34: astore        4
+      36: aload_0
+      37: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      40: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      45: aload         4
+      47: athrow
+    Exception table:
+       from    to  target type
+           4    23    34   any
+          34    36    34   any
+
+  public byte[] addImageAsset(net.minecraft.resources.ResourceLocation, java.lang.String, java.lang.String);
+    Code:
+       0: aload_2
+       1: aload_3
+       2: invokestatic  #290                // Method de/cristelknight/cristellib/PlatformHelper.getResourceStream:(Ljava/lang/String;Ljava/lang/String;)Ljava/io/InputStream;
+       5: astore        4
+       7: aload         4
+       9: ifnonnull     14
+      12: aconst_null
+      13: areturn
+      14: aload         4
+      16: invokestatic  #97                 // Method de/cristelknight/cristellib/util/runtimepack/RuntimePackUtil.extractImageBytes:(Ljava/io/InputStream;)[B
+      19: astore        5
+      21: aload_0
+      22: aload_1
+      23: aload         5
+      25: invokevirtual #293                // Method addAsset:(Lnet/minecraft/resources/ResourceLocation;[B)[B
+      28: areturn
+
+  public byte[] addAsset(net.minecraft.resources.ResourceLocation, byte[]);
+    Code:
+       0: aload_0
+       1: invokevirtual #249                // Method lock:()V
+       4: aload_0
+       5: getfield      #57                 // Field assets:Ljava/util/Map;
+       8: aload_1
+       9: aload_2
+      10: invokedynamic #300,  0            // InvokeDynamic #2:get:([B)Ljava/util/function/Supplier;
+      15: invokeinterface #273,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      20: pop
+      21: aload_2
+      22: astore_3
+      23: aload_0
+      24: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      27: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      32: aload_3
+      33: areturn
+      34: astore        4
+      36: aload_0
+      37: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      40: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      45: aload         4
+      47: athrow
+    Exception table:
+       from    to  target type
+           4    23    34   any
+          34    36    34   any
+
+  public boolean removeData(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: invokevirtual #249                // Method lock:()V
+       4: aload_0
+       5: getfield      #55                 // Field data:Ljava/util/Map;
+       8: aload_1
+       9: invokeinterface #304,  2          // InterfaceMethod java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+      14: ifnull        21
+      17: iconst_1
+      18: goto          22
+      21: iconst_0
+      22: istore_2
+      23: aload_0
+      24: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      27: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      32: iload_2
+      33: ireturn
+      34: astore_3
+      35: aload_0
+      36: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      39: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      44: aload_3
+      45: athrow
+    Exception table:
+       from    to  target type
+           4    23    34   any
+
+  public void removeAsset(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: invokevirtual #249                // Method lock:()V
+       4: aload_0
+       5: getfield      #57                 // Field assets:Ljava/util/Map;
+       8: aload_1
+       9: invokeinterface #304,  2          // InterfaceMethod java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+      14: pop
+      15: aload_0
+      16: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      19: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      24: goto          39
+      27: astore_2
+      28: aload_0
+      29: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      32: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      37: aload_2
+      38: athrow
+      39: return
+    Exception table:
+       from    to  target type
+           4    15    27   any
+
+  public byte[] addRootResource(java.lang.String, byte[]);
+    Code:
+       0: aload_0
+       1: invokevirtual #249                // Method lock:()V
+       4: aload_0
+       5: getfield      #59                 // Field root:Ljava/util/Map;
+       8: aload_1
+       9: ldc_w         #308                // String /
+      12: invokevirtual #312                // Method java/lang/String.split:(Ljava/lang/String;)[Ljava/lang/String;
+      15: invokestatic  #318                // Method java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+      18: aload_2
+      19: invokedynamic #323,  0            // InvokeDynamic #3:get:([B)Ljava/util/function/Supplier;
+      24: invokeinterface #273,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      29: pop
+      30: aload_2
+      31: astore_3
+      32: aload_0
+      33: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      36: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      41: aload_3
+      42: areturn
+      43: astore        4
+      45: aload_0
+      46: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      49: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      54: aload         4
+      56: athrow
+    Exception table:
+       from    to  target type
+           4    32    43   any
+          43    45    43   any
+
+  public net.minecraft.server.packs.resources.IoSupplier<java.io.InputStream> getRootResource(java.lang.String...);
+    Code:
+       0: aload_0
+       1: invokevirtual #249                // Method lock:()V
+       4: aload_0
+       5: getfield      #59                 // Field root:Ljava/util/Map;
+       8: aload_1
+       9: invokestatic  #318                // Method java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+      12: invokeinterface #330,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      17: checkcast     #332                // class java/util/function/Supplier
+      20: astore_2
+      21: aload_2
+      22: ifnonnull     38
+      25: aconst_null
+      26: astore_3
+      27: aload_0
+      28: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      31: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      36: aload_3
+      37: areturn
+      38: aload_2
+      39: invokedynamic #342,  0            // InvokeDynamic #4:get:(Ljava/util/function/Supplier;)Lnet/minecraft/server/packs/resources/IoSupplier;
+      44: astore_3
+      45: aload_0
+      46: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      49: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      54: aload_3
+      55: areturn
+      56: astore        4
+      58: aload_0
+      59: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      62: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      67: aload         4
+      69: athrow
+    Exception table:
+       from    to  target type
+           4    27    56   any
+          38    45    56   any
+          56    58    56   any
+
+  public boolean hasRootResource(java.lang.String...);
+    Code:
+       0: aload_0
+       1: invokevirtual #249                // Method lock:()V
+       4: aload_0
+       5: getfield      #59                 // Field root:Ljava/util/Map;
+       8: aload_1
+       9: invokestatic  #318                // Method java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+      12: invokeinterface #351,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      17: istore_2
+      18: aload_0
+      19: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      22: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      27: iload_2
+      28: ireturn
+      29: astore_3
+      30: aload_0
+      31: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      34: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      39: aload_3
+      40: athrow
+    Exception table:
+       from    to  target type
+           4    18    29   any
+
+  public net.minecraft.server.packs.resources.IoSupplier<java.io.InputStream> getResource(net.minecraft.server.packs.PackType, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: invokevirtual #249                // Method lock:()V
+       4: aload_0
+       5: aload_1
+       6: invokevirtual #357                // Method getSys:(Lnet/minecraft/server/packs/PackType;)Ljava/util/Map;
+       9: aload_2
+      10: invokeinterface #330,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      15: checkcast     #332                // class java/util/function/Supplier
+      18: astore_3
+      19: aload_3
+      20: ifnonnull     38
+      23: aconst_null
+      24: astore        4
+      26: aload_0
+      27: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      30: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      35: aload         4
+      37: areturn
+      38: aload_3
+      39: invokedynamic #362,  0            // InvokeDynamic #5:get:(Ljava/util/function/Supplier;)Lnet/minecraft/server/packs/resources/IoSupplier;
+      44: astore        4
+      46: aload_0
+      47: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      50: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      55: aload         4
+      57: areturn
+      58: astore        5
+      60: aload_0
+      61: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      64: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      69: aload         5
+      71: athrow
+    Exception table:
+       from    to  target type
+           4    26    58   any
+          38    46    58   any
+          58    60    58   any
+
+  public com.google.gson.JsonObject getResourceAsJson(net.minecraft.server.packs.PackType, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #371                // Method getResource:(Lnet/minecraft/server/packs/PackType;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/server/packs/resources/IoSupplier;
+       6: astore_3
+       7: new           #373                // class java/io/InputStreamReader
+      10: dup
+      11: aload_3
+      12: invokeinterface #377,  1          // InterfaceMethod net/minecraft/server/packs/resources/IoSupplier.get:()Ljava/lang/Object;
+      17: checkcast     #107                // class java/io/InputStream
+      20: getstatic     #383                // Field java/nio/charset/StandardCharsets.UTF_8:Ljava/nio/charset/Charset;
+      23: invokespecial #386                // Method java/io/InputStreamReader."<init>":(Ljava/io/InputStream;Ljava/nio/charset/Charset;)V
+      26: invokestatic  #392                // Method net/minecraft/util/GsonHelper.parse:(Ljava/io/Reader;)Lcom/google/gson/JsonObject;
+      29: astore        4
+      31: goto          52
+      34: astore        5
+      36: getstatic     #400                // Field de/cristelknight/cristellib/Constants.LOG:Lorg/apache/logging/log4j/Logger;
+      39: ldc_w         #402                // String Couldn\'t get JsonObject from location: {}
+      42: aload_2
+      43: aload         5
+      45: invokeinterface #408,  4          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      50: aconst_null
+      51: areturn
+      52: aload         4
+      54: areturn
+    Exception table:
+       from    to  target type
+           7    31    34   Class java/io/IOException
+           7    31    34   Class java/lang/NullPointerException
+
+  public boolean hasData(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: invokevirtual #249                // Method lock:()V
+       4: aload_0
+       5: getfield      #55                 // Field data:Ljava/util/Map;
+       8: aload_1
+       9: invokeinterface #351,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      14: istore_2
+      15: aload_0
+      16: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      19: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      24: iload_2
+      25: ireturn
+      26: astore_3
+      27: aload_0
+      28: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      31: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      36: aload_3
+      37: athrow
+    Exception table:
+       from    to  target type
+           4    15    26   any
+
+  public boolean hasAsset(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: invokevirtual #249                // Method lock:()V
+       4: aload_0
+       5: getfield      #57                 // Field assets:Ljava/util/Map;
+       8: aload_1
+       9: invokeinterface #351,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      14: istore_2
+      15: aload_0
+      16: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      19: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      24: iload_2
+      25: ireturn
+      26: astore_3
+      27: aload_0
+      28: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      31: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      36: aload_3
+      37: athrow
+    Exception table:
+       from    to  target type
+           4    15    26   any
+
+  public void listResources(net.minecraft.server.packs.PackType, java.lang.String, java.lang.String, net.minecraft.server.packs.PackResources$ResourceOutput);
+    Code:
+       0: aload_0
+       1: invokevirtual #249                // Method lock:()V
+       4: aload_0
+       5: aload_1
+       6: invokevirtual #357                // Method getSys:(Lnet/minecraft/server/packs/PackType;)Ljava/util/Map;
+       9: invokeinterface #423,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+      14: invokeinterface #429,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      19: astore        5
+      21: aload         5
+      23: invokeinterface #435,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      28: ifeq          120
+      31: aload         5
+      33: invokeinterface #438,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      38: checkcast     #63                 // class net/minecraft/resources/ResourceLocation
+      41: astore        6
+      43: aload_0
+      44: aload_1
+      45: invokevirtual #357                // Method getSys:(Lnet/minecraft/server/packs/PackType;)Ljava/util/Map;
+      48: aload         6
+      50: invokeinterface #330,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      55: checkcast     #332                // class java/util/function/Supplier
+      58: astore        7
+      60: aload         7
+      62: ifnonnull     68
+      65: goto          21
+      68: aload         6
+      70: invokevirtual #219                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+      73: aload_2
+      74: invokevirtual #441                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      77: ifeq          117
+      80: aload         6
+      82: invokevirtual #222                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      85: aload_3
+      86: invokedynamic #446,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      91: invokevirtual #450                // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+      94: ifeq          117
+      97: aload         7
+      99: invokedynamic #455,  0            // InvokeDynamic #7:get:(Ljava/util/function/Supplier;)Lnet/minecraft/server/packs/resources/IoSupplier;
+     104: astore        8
+     106: aload         4
+     108: aload         6
+     110: aload         8
+     112: invokeinterface #459,  3          // InterfaceMethod net/minecraft/server/packs/PackResources$ResourceOutput.accept:(Ljava/lang/Object;Ljava/lang/Object;)V
+     117: goto          21
+     120: aload_0
+     121: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+     124: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+     129: goto          146
+     132: astore        9
+     134: aload_0
+     135: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+     138: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+     143: aload         9
+     145: athrow
+     146: return
+    Exception table:
+       from    to  target type
+           4   120   132   any
+         132   134   132   any
+
+  public java.util.Set<java.lang.String> getNamespaces(net.minecraft.server.packs.PackType);
+    Code:
+       0: aload_0
+       1: invokevirtual #249                // Method lock:()V
+       4: new           #466                // class java/util/HashSet
+       7: dup
+       8: invokespecial #467                // Method java/util/HashSet."<init>":()V
+      11: astore_2
+      12: aload_0
+      13: aload_1
+      14: invokevirtual #357                // Method getSys:(Lnet/minecraft/server/packs/PackType;)Ljava/util/Map;
+      17: invokeinterface #423,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+      22: invokeinterface #429,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      27: astore_3
+      28: aload_3
+      29: invokeinterface #435,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      34: ifeq          63
+      37: aload_3
+      38: invokeinterface #438,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      43: checkcast     #63                 // class net/minecraft/resources/ResourceLocation
+      46: astore        4
+      48: aload_2
+      49: aload         4
+      51: invokevirtual #219                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+      54: invokeinterface #469,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      59: pop
+      60: goto          28
+      63: aload_2
+      64: astore_3
+      65: aload_0
+      66: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      69: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      74: aload_3
+      75: areturn
+      76: astore        5
+      78: aload_0
+      79: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      82: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      87: aload         5
+      89: athrow
+    Exception table:
+       from    to  target type
+           4    65    76   any
+          76    78    76   any
+
+  public <T> T getMetadataSection(net.minecraft.server.packs.metadata.MetadataSectionSerializer<T>);
+    Code:
+       0: aconst_null
+       1: astore_2
+       2: aload_0
+       3: iconst_1
+       4: anewarray     #105                // class java/lang/String
+       7: dup
+       8: iconst_0
+       9: ldc           #109                // String pack.mcmeta
+      11: aastore
+      12: invokevirtual #478                // Method getRootResource:([Ljava/lang/String;)Lnet/minecraft/server/packs/resources/IoSupplier;
+      15: astore_3
+      16: aload_3
+      17: ifnull        30
+      20: aload_3
+      21: invokeinterface #377,  1          // InterfaceMethod net/minecraft/server/packs/resources/IoSupplier.get:()Ljava/lang/Object;
+      26: checkcast     #107                // class java/io/InputStream
+      29: astore_2
+      30: goto          43
+      33: astore_3
+      34: new           #482                // class java/lang/RuntimeException
+      37: dup
+      38: aload_3
+      39: invokespecial #485                // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+      42: athrow
+      43: aload_2
+      44: ifnull        53
+      47: aload_1
+      48: aload_2
+      49: invokestatic  #491                // Method net/minecraft/server/packs/FilePackResources.getMetadataFromStream:(Lnet/minecraft/server/packs/metadata/MetadataSectionSerializer;Ljava/io/InputStream;)Ljava/lang/Object;
+      52: areturn
+      53: aload_1
+      54: invokeinterface #494,  1          // InterfaceMethod net/minecraft/server/packs/metadata/MetadataSectionSerializer.getMetadataSectionName:()Ljava/lang/String;
+      59: ldc           #138                // String pack
+      61: invokevirtual #441                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      64: ifeq          106
+      67: new           #115                // class com/google/gson/JsonObject
+      70: dup
+      71: invokespecial #116                // Method com/google/gson/JsonObject."<init>":()V
+      74: astore_3
+      75: aload_3
+      76: ldc           #118                // String pack_format
+      78: aload_0
+      79: getfield      #61                 // Field packVersion:I
+      82: invokestatic  #124                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      85: invokevirtual #128                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Number;)V
+      88: aload_3
+      89: ldc           #133                // String description
+      91: aload_0
+      92: getfield      #69                 // Field id:Ljava/lang/String;
+      95: invokevirtual #136                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+      98: aload_1
+      99: aload_3
+     100: invokeinterface #498,  2          // InterfaceMethod net/minecraft/server/packs/metadata/MetadataSectionSerializer.fromJson:(Lcom/google/gson/JsonObject;)Ljava/lang/Object;
+     105: areturn
+     106: aload_1
+     107: invokeinterface #494,  1          // InterfaceMethod net/minecraft/server/packs/metadata/MetadataSectionSerializer.getMetadataSectionName:()Ljava/lang/String;
+     112: ldc_w         #500                // String features
+     115: invokevirtual #441                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     118: ifeq          146
+     121: aload_1
+     122: getstatic     #506                // Field net/minecraft/server/packs/FeatureFlagsMetadataSection.TYPE:Lnet/minecraft/server/packs/metadata/MetadataSectionType;
+     125: new           #502                // class net/minecraft/server/packs/FeatureFlagsMetadataSection
+     128: dup
+     129: getstatic     #512                // Field net/minecraft/world/flag/FeatureFlags.DEFAULT_FLAGS:Lnet/minecraft/world/flag/FeatureFlagSet;
+     132: invokespecial #515                // Method net/minecraft/server/packs/FeatureFlagsMetadataSection."<init>":(Lnet/minecraft/world/flag/FeatureFlagSet;)V
+     135: invokeinterface #521,  2          // InterfaceMethod net/minecraft/server/packs/metadata/MetadataSectionType.toJson:(Ljava/lang/Object;)Lcom/google/gson/JsonObject;
+     140: invokeinterface #498,  2          // InterfaceMethod net/minecraft/server/packs/metadata/MetadataSectionSerializer.fromJson:(Lcom/google/gson/JsonObject;)Ljava/lang/Object;
+     145: areturn
+     146: getstatic     #400                // Field de/cristelknight/cristellib/Constants.LOG:Lorg/apache/logging/log4j/Logger;
+     149: ldc_w         #523                // String \'{}\' is an unsupported metadata key
+     152: aload_1
+     153: invokeinterface #494,  1          // InterfaceMethod net/minecraft/server/packs/metadata/MetadataSectionSerializer.getMetadataSectionName:()Ljava/lang/String;
+     158: invokeinterface #527,  3          // InterfaceMethod org/apache/logging/log4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;)V
+     163: aconst_null
+     164: areturn
+    Exception table:
+       from    to  target type
+           2    30    33   Class java/io/IOException
+
+  public net.minecraft.server.packs.PackLocationInfo location();
+    Code:
+       0: aload_0
+       1: getfield      #91                 // Field metadata:Lnet/minecraft/server/packs/PackLocationInfo;
+       4: areturn
+
+  public java.lang.String packId();
+    Code:
+       0: aload_0
+       1: getfield      #69                 // Field id:Ljava/lang/String;
+       4: areturn
+
+  private void lock();
+    Code:
+       0: aload_0
+       1: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+       4: invokeinterface #534,  1          // InterfaceMethod java/util/concurrent/locks/Lock.lock:()V
+       9: return
+
+  public void clear(net.minecraft.server.packs.PackType);
+    Code:
+       0: aload_0
+       1: invokevirtual #249                // Method lock:()V
+       4: aload_0
+       5: aload_1
+       6: invokevirtual #357                // Method getSys:(Lnet/minecraft/server/packs/PackType;)Ljava/util/Map;
+       9: invokeinterface #538,  1          // InterfaceMethod java/util/Map.clear:()V
+      14: aload_0
+      15: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      18: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      23: goto          38
+      26: astore_2
+      27: aload_0
+      28: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+      31: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      36: aload_2
+      37: athrow
+      38: return
+    Exception table:
+       from    to  target type
+           4    14    26   any
+
+  public void close();
+    Code:
+       0: getstatic     #400                // Field de/cristelknight/cristellib/Constants.LOG:Lorg/apache/logging/log4j/Logger;
+       3: ldc_w         #541                // String Closing Runtime Pack: {}
+       6: aload_0
+       7: getfield      #69                 // Field id:Ljava/lang/String;
+      10: invokeinterface #527,  3          // InterfaceMethod org/apache/logging/log4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;)V
+      15: return
+
+  public void dumpToFolder(java.nio.file.Path) throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: invokevirtual #249                // Method lock:()V
+       4: aload_0
+       5: getfield      #59                 // Field root:Ljava/util/Map;
+       8: invokeinterface #547,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      13: invokeinterface #429,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      18: astore_2
+      19: aload_2
+      20: invokeinterface #435,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      25: ifeq          134
+      28: aload_2
+      29: invokeinterface #438,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      34: checkcast     #12                 // class java/util/Map$Entry
+      37: astore_3
+      38: aload_3
+      39: invokeinterface #550,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      44: checkcast     #552                // class java/util/List
+      47: astore        4
+      49: aload_1
+      50: ldc_w         #554                // String
+      53: aload         4
+      55: iconst_0
+      56: anewarray     #105                // class java/lang/String
+      59: invokeinterface #558,  2          // InterfaceMethod java/util/List.toArray:([Ljava/lang/Object;)[Ljava/lang/Object;
+      64: checkcast     #344                // class "[Ljava/lang/String;"
+      67: invokestatic  #563                // Method java/nio/file/Paths.get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+      70: invokeinterface #569,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/nio/file/Path;)Ljava/nio/file/Path;
+      75: astore        5
+      77: aload         5
+      79: invokeinterface #573,  1          // InterfaceMethod java/nio/file/Path.getParent:()Ljava/nio/file/Path;
+      84: iconst_0
+      85: anewarray     #575                // class java/nio/file/attribute/FileAttribute
+      88: invokestatic  #581                // Method java/nio/file/Files.createDirectories:(Ljava/nio/file/Path;[Ljava/nio/file/attribute/FileAttribute;)Ljava/nio/file/Path;
+      91: pop
+      92: aload         5
+      94: aload_3
+      95: invokeinterface #584,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     100: checkcast     #332                // class java/util/function/Supplier
+     103: invokeinterface #585,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     108: checkcast     #586                // class "[B"
+     111: iconst_2
+     112: anewarray     #588                // class java/nio/file/OpenOption
+     115: dup
+     116: iconst_0
+     117: getstatic     #594                // Field java/nio/file/StandardOpenOption.CREATE:Ljava/nio/file/StandardOpenOption;
+     120: aastore
+     121: dup
+     122: iconst_1
+     123: getstatic     #597                // Field java/nio/file/StandardOpenOption.TRUNCATE_EXISTING:Ljava/nio/file/StandardOpenOption;
+     126: aastore
+     127: invokestatic  #601                // Method java/nio/file/Files.write:(Ljava/nio/file/Path;[B[Ljava/nio/file/OpenOption;)Ljava/nio/file/Path;
+     130: pop
+     131: goto          19
+     134: aload_0
+     135: getfield      #55                 // Field data:Ljava/util/Map;
+     138: invokeinterface #547,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+     143: invokeinterface #429,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     148: astore_2
+     149: aload_2
+     150: invokeinterface #435,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     155: ifeq          270
+     158: aload_2
+     159: invokeinterface #438,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     164: checkcast     #12                 // class java/util/Map$Entry
+     167: astore_3
+     168: aload_3
+     169: invokeinterface #550,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     174: checkcast     #63                 // class net/minecraft/resources/ResourceLocation
+     177: astore        4
+     179: aload_1
+     180: ldc_w         #602                // String data
+     183: iconst_2
+     184: anewarray     #105                // class java/lang/String
+     187: dup
+     188: iconst_0
+     189: aload         4
+     191: invokevirtual #219                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+     194: aastore
+     195: dup
+     196: iconst_1
+     197: aload         4
+     199: invokevirtual #222                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+     202: aastore
+     203: invokestatic  #563                // Method java/nio/file/Paths.get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+     206: invokeinterface #569,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/nio/file/Path;)Ljava/nio/file/Path;
+     211: astore        5
+     213: aload         5
+     215: invokeinterface #573,  1          // InterfaceMethod java/nio/file/Path.getParent:()Ljava/nio/file/Path;
+     220: iconst_0
+     221: anewarray     #575                // class java/nio/file/attribute/FileAttribute
+     224: invokestatic  #581                // Method java/nio/file/Files.createDirectories:(Ljava/nio/file/Path;[Ljava/nio/file/attribute/FileAttribute;)Ljava/nio/file/Path;
+     227: pop
+     228: aload         5
+     230: aload_3
+     231: invokeinterface #584,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     236: checkcast     #332                // class java/util/function/Supplier
+     239: invokeinterface #585,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     244: checkcast     #586                // class "[B"
+     247: iconst_2
+     248: anewarray     #588                // class java/nio/file/OpenOption
+     251: dup
+     252: iconst_0
+     253: getstatic     #594                // Field java/nio/file/StandardOpenOption.CREATE:Ljava/nio/file/StandardOpenOption;
+     256: aastore
+     257: dup
+     258: iconst_1
+     259: getstatic     #597                // Field java/nio/file/StandardOpenOption.TRUNCATE_EXISTING:Ljava/nio/file/StandardOpenOption;
+     262: aastore
+     263: invokestatic  #601                // Method java/nio/file/Files.write:(Ljava/nio/file/Path;[B[Ljava/nio/file/OpenOption;)Ljava/nio/file/Path;
+     266: pop
+     267: goto          149
+     270: aload_0
+     271: getfield      #57                 // Field assets:Ljava/util/Map;
+     274: invokeinterface #547,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+     279: invokeinterface #429,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     284: astore_2
+     285: aload_2
+     286: invokeinterface #435,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     291: ifeq          406
+     294: aload_2
+     295: invokeinterface #438,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     300: checkcast     #12                 // class java/util/Map$Entry
+     303: astore_3
+     304: aload_3
+     305: invokeinterface #550,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     310: checkcast     #63                 // class net/minecraft/resources/ResourceLocation
+     313: astore        4
+     315: aload_1
+     316: ldc_w         #603                // String assets
+     319: iconst_2
+     320: anewarray     #105                // class java/lang/String
+     323: dup
+     324: iconst_0
+     325: aload         4
+     327: invokevirtual #219                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+     330: aastore
+     331: dup
+     332: iconst_1
+     333: aload         4
+     335: invokevirtual #222                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+     338: aastore
+     339: invokestatic  #563                // Method java/nio/file/Paths.get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+     342: invokeinterface #569,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/nio/file/Path;)Ljava/nio/file/Path;
+     347: astore        5
+     349: aload         5
+     351: invokeinterface #573,  1          // InterfaceMethod java/nio/file/Path.getParent:()Ljava/nio/file/Path;
+     356: iconst_0
+     357: anewarray     #575                // class java/nio/file/attribute/FileAttribute
+     360: invokestatic  #581                // Method java/nio/file/Files.createDirectories:(Ljava/nio/file/Path;[Ljava/nio/file/attribute/FileAttribute;)Ljava/nio/file/Path;
+     363: pop
+     364: aload         5
+     366: aload_3
+     367: invokeinterface #584,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     372: checkcast     #332                // class java/util/function/Supplier
+     375: invokeinterface #585,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     380: checkcast     #586                // class "[B"
+     383: iconst_2
+     384: anewarray     #588                // class java/nio/file/OpenOption
+     387: dup
+     388: iconst_0
+     389: getstatic     #594                // Field java/nio/file/StandardOpenOption.CREATE:Ljava/nio/file/StandardOpenOption;
+     392: aastore
+     393: dup
+     394: iconst_1
+     395: getstatic     #597                // Field java/nio/file/StandardOpenOption.TRUNCATE_EXISTING:Ljava/nio/file/StandardOpenOption;
+     398: aastore
+     399: invokestatic  #601                // Method java/nio/file/Files.write:(Ljava/nio/file/Path;[B[Ljava/nio/file/OpenOption;)Ljava/nio/file/Path;
+     402: pop
+     403: goto          285
+     406: aload_0
+     407: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+     410: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+     415: goto          432
+     418: astore        6
+     420: aload_0
+     421: getfield      #50                 // Field waiting:Ljava/util/concurrent/locks/Lock;
+     424: invokeinterface #278,  1          // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+     429: aload         6
+     431: athrow
+     432: return
+    Exception table:
+       from    to  target type
+           4   406   418   any
+         418   420   418   any
+
+  private static java.io.InputStream lambda$listResources$5(java.util.function.Supplier) throws java.io.IOException;
+    Code:
+       0: new           #615                // class java/io/ByteArrayInputStream
+       3: dup
+       4: aload_0
+       5: invokeinterface #585,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      10: checkcast     #586                // class "[B"
+      13: invokespecial #618                // Method java/io/ByteArrayInputStream."<init>":([B)V
+      16: areturn
+
+  private static java.io.InputStream lambda$getResource$4(java.util.function.Supplier) throws java.io.IOException;
+    Code:
+       0: new           #615                // class java/io/ByteArrayInputStream
+       3: dup
+       4: aload_0
+       5: invokeinterface #585,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      10: checkcast     #586                // class "[B"
+      13: invokespecial #618                // Method java/io/ByteArrayInputStream."<init>":([B)V
+      16: areturn
+
+  private static java.io.InputStream lambda$getRootResource$3(java.util.function.Supplier) throws java.io.IOException;
+    Code:
+       0: new           #615                // class java/io/ByteArrayInputStream
+       3: dup
+       4: aload_0
+       5: invokeinterface #585,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      10: checkcast     #586                // class "[B"
+      13: invokespecial #618                // Method java/io/ByteArrayInputStream."<init>":([B)V
+      16: areturn
+
+  private static byte[] lambda$addRootResource$2(byte[]);
+    Code:
+       0: aload_0
+       1: areturn
+
+  private static byte[] lambda$addAsset$1(byte[]);
+    Code:
+       0: aload_0
+       1: areturn
+
+  private static byte[] lambda$addData$0(byte[]);
+    Code:
+       0: aload_0
+       1: areturn
+
+  static {};
+    Code:
+       0: new           #621                // class com/google/gson/GsonBuilder
+       3: dup
+       4: invokespecial #622                // Method com/google/gson/GsonBuilder."<init>":()V
+       7: invokevirtual #626                // Method com/google/gson/GsonBuilder.disableHtmlEscaping:()Lcom/google/gson/GsonBuilder;
+      10: invokevirtual #630                // Method com/google/gson/GsonBuilder.create:()Lcom/google/gson/Gson;
+      13: putstatic     #632                // Field GSON:Lcom/google/gson/Gson;
+      16: return
+}

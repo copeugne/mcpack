@@ -35,6 +35,7 @@ ARCHIVES = frozenset(
     {
         "Patchouli-1.21.1-93-NEOFORGE.jar",
         "cloth-config-15.0.140-neoforge.jar",
+        "cristellib-neoforge-1.21.1-3.1.7.jar",
         MAPPED_SERVER.name,
         PATCHED_SERVER.name,
         "chipped-neoforge-1.21.1-4.0.2.jar",
@@ -204,6 +205,29 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "de/cristelknight/cristellib/api/BuiltInAPI.class",
+    "de/cristelknight/cristellib/data/condition/ConditionNode.class",
+    "de/cristelknight/cristellib/data/condition/ConditionRegistry.class",
+    "de/cristelknight/cristellib/data/condition/conditions/ModLoadedCondition.class",
+    "de/cristelknight/cristellib/neoforge/ModLoadingUtilImpl.class",
+
+    "de/cristelknight/cristellib/StructureConfigToggle.class",
+    "de/cristelknight/cristellib/StructureConfigPlacement.class",
+    "de/cristelknight/cristellib/StructureConfig.class",
+    "de/cristelknight/cristellib/util/Util.class",
+    "de/cristelknight/cristellib/data/ReadData.class",
+
+    "de/cristelknight/cristellib/neoforge/CristelLibNeoForge.class",
+    "de/cristelknight/cristellib/neoforge/client/CristelLibNeoForgeClient.class",
+    "de/cristelknight/cristellib/neoforge/extraapiutil/APIFinder.class",
+    "de/cristelknight/cristellib/CristelLib.class",
+    "de/cristelknight/cristellib/CristelLibRegistry.class",
+    "de/cristelknight/cristellib/autoconfig/ModFinder.class",
+    "de/cristelknight/cristellib/builtinpacks/BuiltInPackLoader.class",
+    "de/cristelknight/cristellib/neoforge/PlatformHelperImpl.class",
+    "de/cristelknight/cristellib/neoforge/mixin/PathPackResourcesAccessor.class",
+    "de/cristelknight/cristellib/builtinpacks/RuntimePack.class",
+
     "me/shedaniel/clothconfig/ClothConfigForge.class",
     "vazkii/patchouli/common/book/BookRegistry.class",
     "vazkii/patchouli/common/multiblock/MultiblockRegistry.class",
