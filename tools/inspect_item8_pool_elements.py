@@ -626,6 +626,10 @@ CLASSES: tuple[str, ...] = (
     "org/betterx/betterend/mixin/common/EndSpikeMixin.class",
     "org/betterx/betterend/mixin/common/EndDragonFightMixin.class",
     "org/betterx/betterend/mixin/common/EndCityFeatureMixin.class",
+    "org/betterx/betterend/world/generator/TerrainGenerator.class",
+    "org/betterx/betterend/world/generator/GeneratorOptions.class",
+    "org/betterx/betterend/world/features/BiomeIslandFeature.class",
+    "org/betterx/betterend/world/structures/features/EternalPortalStructure.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
