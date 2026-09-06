@@ -6,6 +6,46 @@
 
 ### Continuation update - 2026-09-07
 
+Eight Voyager house decisions now retain distinct inspected layouts with component
+and content ownership preserved. Source views already delivered at b580a10f were
+reused. Working groups remain 406. Explicit provisional remainder: 32, listed below.
+Inventory refresh follows. Required attributes and nonregistry reconciliation remain
+open independently of this queue.
+
+- mvs:beach_bar
+- mvs:bee_dome
+- mvs:castle_ruins
+- mvs:cathedral
+- mvs:crimson_enchanting_table
+- mvs:crystal
+- mvs:desert_pump
+- mvs:duck
+- mvs:fox_hut
+- mvs:gallows
+- mvs:horse_pen
+- mvs:lamp_chest
+- mvs:large_mushroom
+- mvs:lecturn_garden
+- mvs:log_ruin
+- mvs:mushroom_statue
+- mvs:nether_devil
+- mvs:railway
+- mvs:ruined_beacon
+- mvs:small_ruin
+- mvs:small_ship
+- mvs:snowy_dog_hut
+- mvs:snowy_fossil
+- mvs:statue_ruins
+- mvs:stone_fountain
+- mvs:stone_pillars
+- mvs:sunzi_gate
+- mvs:tree_monument
+- mvs:villager_statue
+- mvs:wheat_grain_bin
+- mvs:windmill
+- mvs:wooden_wheat_farm
+
+
 Inventory now matches decisions delivered at 0eea8158 and reproduces exactly.
 Working groups: 406. Explicit provisional remainder: 40, all Voyager. Next are
 the eight houses already rendered and inspected in voyager-building-views.
