@@ -189,6 +189,9 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "org/sinytra/fabric/client_tags_api/generated/GeneratedEntryPoint.class",
+    "org/sinytra/fabric/renderer_api/generated/GeneratedEntryPoint.class",
+    "org/sinytra/fabric/rendering_fluids/generated/GeneratedEntryPoint.class",
     "org/sinytra/fabric/blockrenderlayer/generated/GeneratedEntryPoint.class",
     "org/sinytra/fabric/key_binding_api/generated/GeneratedEntryPoint.class",
     "org/sinytra/fabric/sound_api/generated/GeneratedEntryPoint.class",
@@ -2324,6 +2327,9 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/fabric-client-tags-api-v1-1.1.15+e053909619.jar",
+        "META-INF/jars/fabric-renderer-api-v1-3.4.1+9125b6dc19.jar",
+        "META-INF/jars/fabric-rendering-fluids-v1-3.1.6+a51883b219.jar",
         "META-INF/jars/fabric-blockrenderlayer-v1-1.1.52+c290471319.jar",
         "META-INF/jars/fabric-key-binding-api-v1-1.0.47+62cc7ce119.jar",
         "META-INF/jars/fabric-sound-api-v1-1.0.23+10b84f8419.jar",
@@ -2351,6 +2357,18 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/fabric-client-tags-api-v1-1.1.15+e053909619.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "c1ea8b4555271e9d5d4d4a6519ee48959d8b40030d93ac9606311fec360af5fc",
+        ),
+        "META-INF/jars/fabric-renderer-api-v1-3.4.1+9125b6dc19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "bd442fb36885af1230a43f52fdb2bc288f1d8649c56a6fcc2b16db6529f72c58",
+        ),
+        "META-INF/jars/fabric-rendering-fluids-v1-3.1.6+a51883b219.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "a2ff7666434f16ec337854989c3dd84ee503b6962debc4a4a0a147db9fd996e2",
+        ),
         "META-INF/jars/fabric-blockrenderlayer-v1-1.1.52+c290471319.jar": (
             "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
             "b287141d9de03f7dee046c9f55deaa5aa93dad29ca9785b3d6aed76d2165392e",
