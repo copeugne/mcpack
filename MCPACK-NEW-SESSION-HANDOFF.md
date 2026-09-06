@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches aad4e79f and reproduces byte-for-byte independently. All 887
+roots remain covered once in 411 working groups. Canonical-note backlog: 68
+(IDAS 59, AdoraBuild 9). Next: the remaining AdoraBuild buildings listed below.
+Required attributes, 33 nonregistry contributions and final review/delivery remain.
+
 Five AdoraBuild Nether records are reconciled against views 190bd9d1 and packaged
 content. Separate the fortress network, courtyard and wart house, and the tall
 bastion compound from low bastion variants. Full root definitions are preserved.

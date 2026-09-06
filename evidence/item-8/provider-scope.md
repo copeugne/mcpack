@@ -9607,6 +9607,19 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-facilities
 ```
 # AdoraBuild Nether design reconciliation (2026-09-07)
 
+Derived inventory matches aad4e79f. Two fresh runs are byte-identical; changes
+are confined to the five reconciled records and three separated designs plus
+the input decision hash. All 887 roots remain assigned once in 411 working groups.
+Inventory SHA-256:
+6ae901112b231b83c53c7bcf3fd45a5718145a06ce7e0a710bcff7eaf38313e6.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-nether-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-nether-r2.json
+cmp evidence/raw/item8/inventory-adora-nether-r1.json evidence/raw/item8/inventory-adora-nether-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-nether-r2.json
+```
+
 Views at 190bd9d1 and preserved template contents resolve the five Nether records.
 The fortress network, standalone courtyard and roofed wart house are separate
 designs. The tall bastion compound is separate from three low building variants.
