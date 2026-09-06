@@ -205,6 +205,10 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "de/cristelknight/cristellib/StructureConfig.class",
+    "de/cristelknight/cristellib/util/Util.class",
+    "de/cristelknight/cristellib/data/ReadData.class",
+
     "de/cristelknight/cristellib/neoforge/CristelLibNeoForge.class",
     "de/cristelknight/cristellib/neoforge/client/CristelLibNeoForgeClient.class",
     "de/cristelknight/cristellib/neoforge/extraapiutil/APIFinder.class",
