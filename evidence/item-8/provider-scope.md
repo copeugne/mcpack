@@ -5751,8 +5751,8 @@ remains 90 resolved, 46 open providers; no family candidate was added.
 
 ### Exact Fabric module queue
 
-The frozen parent contains 43 modules. Seventeen membership roles are resolved below;
-26 remain open. These are internal modules of one retained provider, not added
+The frozen parent contains 43 modules. Twenty membership roles are resolved below;
+23 remain open. These are internal modules of one retained provider, not added
 providers or families. All packaged data is already partitioned by the existing
 Fabric check. Open rows require contribution-role inspection, not an audit of
 every implementation method. Reuse existing captures and stop at the content
@@ -5761,10 +5761,10 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | Fabric module | Membership disposition |
 | --- | --- |
 | `fabric-api-base-0.4.42+d1308ded19.jar` | RESOLVED: empty loader entry and consumer-driven event/utility library; see below. |
-| `fabric-api-lookup-api-v1-1.6.71+c290471319.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-api-lookup-api-v1-1.6.71+c290471319.jar` | OPEN: entry/cache hooks captured; inspect EntityApiLookupImpl.checkSelfImplementingTypes registered at server start. |
 | `fabric-biome-api-v1-13.0.31+1e62d33c19.jar` | RESOLVED: biome selection and consumer callbacks; see above. |
-| `fabric-block-api-v1-1.1.0+b0c22bb819.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-block-view-api-v2-1.0.11+e9036fd419.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-block-api-v1-1.1.0+b0c22bb819.jar` | RESOLVED: block interface, read/accessor or climbing roles; no independent family. See below. |
+| `fabric-block-view-api-v2-1.0.11+e9036fd419.jar` | RESOLVED: block interface, read/accessor or climbing roles; no independent family. See below. |
 | `fabric-blockrenderlayer-v1-1.1.52+c290471319.jar` | RESOLVED: client utility, no independent server family; see below. |
 | `fabric-client-tags-api-v1-1.1.15+e053909619.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
 | `fabric-command-api-v2-2.2.28+36d727be19.jar` | OPEN: inspect entry and declared hook contribution roles. |
@@ -5792,7 +5792,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-registry-sync-v0-5.3.1+f9aace1619.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-renderer-api-v1-3.4.1+9125b6dc19.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
 | `fabric-renderer-indigo-1.7.1+9125b6dc19.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
-| `fabric-rendering-data-attachment-v1-0.3.49+73761d2e19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-rendering-data-attachment-v1-0.3.49+73761d2e19.jar` | RESOLVED: block interface, read/accessor or climbing roles; no independent family. See below. |
 | `fabric-rendering-fluids-v1-3.1.6+a51883b219.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
 | `fabric-rendering-v1-5.1.0+1a09bd5a19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-resource-conditions-api-v1-4.3.0+5bdd099819.jar` | OPEN: inspect entry and declared hook contribution roles. |
@@ -5934,3 +5934,40 @@ uv run basedpyright tests/item8/test_fabric_provider_scope.py
 All eighteen focused cases and scoped checks pass. Fabric now has seventeen
 resolved and twenty-six open modules. No family was added. Whole-provider
 coverage remains 90 resolved, 46 open, including the unfinished Fabric parent.
+
+### Three Fabric block utility modules resolved; lookup callback remains open
+
+Source 771947f (extractor 231284d) reproduces four generated entries and all
+nine declared common mixins across lookup, block API, block-view API and
+rendering-data attachment. The latter three entries are empty. Block API adds
+interfaces and tag-driven trapdoor-climbing behavior, retaining ladder-facing
+checks. Block-view supplies block/render-data interfaces and delegates existing
+biome reads. Rendering-data attachment defaults its attachment to null and
+forwards its render-data accessor. These are consumer utilities, not independent
+generation paths. No content helper tracing is required for those three roles.
+
+The existing test binds all common hooks and the full payload partitions:
+29 lookup, 8 block API, 12 block-view and 8 rendering-data classes. Nonclass
+files are exact metadata/icons/mixin configs, plus the block-view access
+transformer. Client-only additional mixins number two for block-view and one
+for rendering-data; neither client config has a common/server hook or plugin.
+Every module has only its generated annotated entry, no annotated subscriber,
+and no data/service/nested archive payload.
+
+Lookup is deliberately still open. Its common hook maintains weak lookup
+cache references and invalidates caller caches. Source 3a9ed5d (extractor
+2043743) reproduces ApiLookupImpl: its only initialization action registers
+EntityApiLookupImpl.checkSelfImplementingTypes on SERVER_STARTED. Inspect that
+concrete callback next; the callback name is not absence proof. Do not repeat
+the delivered cache/initializer captures or inspect unrelated lookup methods.
+
+```sh
+uv run pytest -q tests/item8/test_fabric_provider_scope.py
+uv run ruff check tests/item8/test_fabric_provider_scope.py
+uv run basedpyright tests/item8/test_fabric_provider_scope.py
+```
+
+All twenty-two focused cases and scoped checks pass. Three membership roles
+close, giving twenty resolved and twenty-three open Fabric modules. No family
+is added. Whole-provider census stays 90 resolved and 46 open. Exact source
+reproduction commands and hashes are in the five source READMEs.

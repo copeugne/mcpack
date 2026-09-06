@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric block API, block-view API and rendering-data attachment are resolved as
+consumer interfaces/accessors and climbing behavior, with no independent family.
+Source 771947f, extractor 231284d. Twenty-two focused cases and scoped checks pass;
+Fabric now has twenty resolved and twenty-three open modules. Lookup remains
+open: source 3a9ed5d (extractor 2043743) shows its initializer registers
+EntityApiLookupImpl.checkSelfImplementingTypes on SERVER_STARTED. Inspect that
+callback next, reusing all captured entry/cache paths. Whole-provider census
+remains 90 resolved, 46 open. No live process; other family groupings remain open.
+
 Four more Fabric modules are resolved: model loading, particles, Indigo and
 screen API. Source b3a9dd3 (extractor e2ae798) reproduces entries, two client event
 subscribers and Indigo's renderer-selection plugin. Full payload and client
