@@ -4,6 +4,7 @@ import gzip
 import hashlib
 import json
 import tomllib
+from collections import Counter
 from io import BytesIO
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
@@ -288,3 +289,62 @@ def test_supplementaries_mixinsquared_library_entries() -> None:
                 assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
                 raw = (directory / row["disassembly"]).read_bytes()
                 assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+
+
+def test_supplementaries_complete_parent_payload_partition() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name.startswith("supplementaries-"))
+    assert source.sha256 == "0dd0445af35aa15ad012833c4b8024d2ed70320d1ace0316d2f5b684b06a997d"
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    with ZipFile(source.path) as archive:
+        names = {n for n in archive.namelist() if not n.endswith("/")}
+        classes = {n for n in names if n.endswith(".class")}
+        assets = {n for n in names if n.startswith("assets/")}
+        data = {n for n in names if n.startswith("data/")}
+        other = names - classes - assets - data
+        assert len(names) == 6364
+        assert (len(classes), len(assets), len(data), len(other)) == (1179, 3577, 1589, 19)
+        assert len(names) == len(classes) + len(assets) + len(data) + len(other)
+        assert Counter(n.split("/")[2] for n in data) == {
+            "advancement": 322, "banner_pattern": 1, "catchable_mobs_properties": 102,
+            "curios": 1, "damage_type": 7, "data_maps": 3, "enchantment": 1, "entities": 2,
+            "flute_songs": 31, "hourglass_dusts": 12, "jukebox_song": 2, "loot_modifiers": 6,
+            "loot_table": 221, "moonlight": 164, "neoforge": 5, "painting_variant": 2,
+            "recipe": 308, "recipes": 5, "slots": 2, "structure": 18, "supplementaries": 6,
+            "tags": 327, "trim_pattern": 1, "unused_songs": 10, "weapon_attributes": 1,
+            "worldgen": 29,
+        }
+        assert Counter(n.split("/")[3] for n in data if n.split("/")[2] == "moonlight") == {
+            "soft_fluid": 109, "map_marker": 34, "villager_trade": 21,
+        }
+        assert {n for n in data if not n.endswith((".json", ".nbt"))} == {
+            "data/minecraft/moonlight/villager_trade/cartographer/example.json.disabled",
+            "data/supplementaries/flute_songs/midi_converter.py",
+            "data/supplementaries/flute_songs/revenge.json1",
+        }
+        pack = "resourcepacks/darker_ropes/"
+        assert {n.removeprefix(pack) for n in other if n.startswith(pack)} == {
+            "pack.mcmeta", "pack.png", "assets/supplementaries/textures/block/pulley_side_rope.png",
+            "assets/supplementaries/textures/block/rope.png",
+            "assets/supplementaries/textures/block/rope_knot_10.png",
+            "assets/supplementaries/textures/block/rope_knot_6.png",
+            "assets/supplementaries/textures/block/rope_knot_8.png",
+            "assets/supplementaries/textures/item/rope.png",
+            "assets/supplementaries/textures/item/rope_arrow.png",
+        }
+        assert {n for n in other if not n.startswith(pack)} == {
+            "META-INF/MANIFEST.MF", "META-INF/accesstransformer.cfg",
+            "META-INF/neoforge.mods.toml", "META-INF/jarjar/metadata.json",
+            "META-INF/jarjar/mixinsquared-forge-0.3.3.jar",
+            "META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar",
+            "supplementaries-common.mixins.json", "supplementaries.mixins.json",
+            "icon.png", "LICENSE_Supplementaries.md",
+        }
+        assert {
+            n for n in classes if any(marker in archive.read(n) for marker in (
+                b"Lnet/neoforged/fml/common/Mod;", b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+            ))
+        } == {
+            "net/mehvahdjukaar/supplementaries/platform/SupplementariesForge.class",
+            "net/mehvahdjukaar/supplementaries/platform/SupplementariesForgeClient.class",
+            "net/mehvahdjukaar/supplementaries/client/renderers/platform/PicklePlayer.class",
+        }
