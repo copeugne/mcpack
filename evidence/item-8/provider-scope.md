@@ -8889,3 +8889,33 @@ SHA-256: 2c45fab771257defa1c76dfcf8c52b0193ba8d72a73b22cacf241d254c82698a.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nether-houses-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-nether-houses-r2.json
 ```
+
+## Nether arena and fortress boundaries
+
+Small and large arenas now form mns:arena with two explicit architectural layouts.
+The inspected pieces share a walled fighting-court motif with galleries and entrance
+structures. The larger multilevel layout, trial/vault fixtures and different mobs
+are variant attributes. Shared mob templates alone were not the grouping basis.
+The exact small/large definitions and selected template sets remain in the variant
+map, including lowest-land versus fixed-height placement, liquid eligibility and
+carving differences. The direct regression checks these inputs against preserved
+sources, unique root ownership and the shared mob-only template intersection.
+
+The dragon arena remains separate: its head/body/limb construction above a broad
+platform is a sculptural encounter design rather than another walled court layout.
+Its seven upper, thirteen lower and four mob templates are components. The fortress
+remains one branching furnished complex with 196 reachable alternatives, including
+rooms, passages, crossings, stairs and encounter modules. Neither reachable count
+is a per-instance observation. Boundary exemptions, terrain adaptation, spawn
+overrides and version selection remain preserved in the source records.
+
+Nine affected cases pass, with scoped Ruff and Basedpyright passing. Explicit
+provisional remainder: 60 (Nether 7, Voyager 53). Source working groups: 408.
+The derived inventory refresh follows this increment. Item 8 attributes, nonregistry
+reconciliation, final family count and final review/merge remain incomplete.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mns or moog_modular_variants or nether_arena'
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+```

@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Nether arena/fortress boundaries are resolved: small and large arenas are two
+layouts of mns:arena; dragon arena and fortress remain separate designs. Nine
+affected cases and scoped quality checks pass. Source groups: 408. Explicit
+provisional queue: 60 (Nether 7, Voyager 53). Refresh inventory next. The remaining
+Nether records are grave_yard, nether_wart_farm, ruined_portal, soul_fire, sword,
+train and warped_dome. Reuse source graphs and arena views; no further arena or
+fortress rendering is needed.
+
+
 Arena membership comparison uses the existing renderer for 30 architectural
 pieces across small, large and dragon arenas. Shared entity-only mob templates
 stay in the existing source graph, not the layout views. This comparison is

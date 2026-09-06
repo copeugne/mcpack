@@ -7894,7 +7894,7 @@
       "structure_ids": [
         "mns:dragon_arena"
       ],
-      "rationale": "The dragon arena has its own multi-piece architecture, vault references and fixed-height terrain adaptation. Shared mob templates with other arenas remain shared components. Broader canonical relationships among related designs remain provisional. Root assignment does not establish effective placement or gameplay.",
+      "rationale": "A sculptural dragon encounter assembled from seven upper architectural pieces, thirteen lower platform pieces and four selected mob templates. The inspected head, body and limb forms establish a distinct focal design above a broad platform, rather than another layout of the walled-arena family. Trial spawners, vaults and ordinary spawners remain encounter components, as do shared mob templates. Preserve the fixed-height terrain adaptation and selected 1.21.1 content; template totals are the reachable set, not a claim that every generated instance includes every piece. These membership findings do not establish effective placement, occupied dimensions or actual gameplay.",
       "start_pool": "mns:dragon_arena/start_pool",
       "generation_settings": {
         "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure",
@@ -7927,7 +7927,10 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/nether-arena-views/dragon_upper.svg.gz": "5ceb4d72e6b81a44ef63520b2be16bfcc82135d29887b47667a049a241d31f70",
+        "evidence/item-8/sources/nether-arena-views/dragon_lower.svg.gz": "273fb1b70b5b1a2259f17e05ace8a416309df5af99f160261d99dab2adff3ea2"
       }
     },
     {
@@ -7991,46 +7994,91 @@
       }
     },
     {
-      "family_id": "mns:large_arena",
-      "name": "Moog's Nether Structures Large Arena",
+      "family_id": "mns:arena",
+      "name": "Moog's Nether Walled Arena",
       "structure_ids": [
+        "mns:small_arena",
         "mns:large_arena"
       ],
-      "rationale": "The large arena has its own architecture, loot sources and fixed-height carving band. Shared mob templates remain components, not new families. Broader canonical relationships among related designs remain provisional. Root assignment does not establish effective placement or gameplay.",
-      "start_pool": "mns:large_arena/start_pool",
-      "generation_settings": {
-        "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure",
-        "start_height": {
-          "absolute": 35
-        },
-        "cannot_spawn_in_liquid": false
-      },
-      "custom_generation_settings": {
-        "enhanced_terrain_adaptation": {
-          "band": {
-            "bottom": 19,
-            "piece_heights": [
-              47
-            ],
-            "top": 47
+      "rationale": "One walled-arena family with small and large architectural layouts. Both selected assemblies build a bounded fighting court with surrounding walls, galleries and entrance structures. The larger multilevel layout and different encounter/reward fixtures remain explicit variants, not extra families for size labels. This grouping is based on the inspected architectural motif together with pool connections and source contents, not shared mob templates alone. The dragon arena remains separate because its focal design is a sculptural dragon above a broad platform rather than a walled court. Each variant retains its exact placement, terrain adaptation, selected templates and content ownership; the family does not imply equal difficulty, rewards or footprint. Source views and definitions are not evidence of actual generated dimensions or encounters.",
+      "variants": {
+        "mns:small_arena": {
+          "definition": {
+            "biomes": "#mns:has_structure/nether_biomes",
+            "cannot_spawn_in_liquid": true,
+            "land_search_direction": "LOWEST_LAND",
+            "max_distance_from_center": 128,
+            "size": 20,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mns:small_arena/start_pool",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_box",
+            "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
           },
-          "bottom": "carve",
-          "kernel_distance": 8,
-          "kernel_size": 16,
-          "top": "carve"
+          "templates": [
+            "mns:mega_arenas/mobs/1.21/arena_bowman",
+            "mns:mega_arenas/mobs/1.21/ember_sentinel",
+            "mns:mega_arenas/mobs/1.21/pit_brute",
+            "mns:mega_arenas/mobs/1.21/pit_vanguard",
+            "mns:small_arena/back",
+            "mns:small_arena/front",
+            "mns:small_arena/left",
+            "mns:small_arena/middle"
+          ]
         },
-        "land_search_direction": "FIXED_HEIGHT",
-        "max_distance_from_center": 128,
-        "size": 20,
-        "spawn_overrides": {},
-        "step": "surface_structures",
-        "terrain_adaptation": "none"
+        "mns:large_arena": {
+          "definition": {
+            "biomes": "#mns:has_structure/nether_biomes",
+            "cannot_spawn_in_liquid": false,
+            "enhanced_terrain_adaptation": {
+              "band": {
+                "bottom": 19,
+                "piece_heights": [
+                  47
+                ],
+                "top": 47
+              },
+              "bottom": "carve",
+              "kernel_distance": 8,
+              "kernel_size": 16,
+              "top": "carve"
+            },
+            "land_search_direction": "FIXED_HEIGHT",
+            "max_distance_from_center": 128,
+            "size": 20,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 35
+            },
+            "start_pool": "mns:large_arena/start_pool",
+            "step": "surface_structures",
+            "terrain_adaptation": "none",
+            "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+          },
+          "templates": [
+            "mns:large_arena/l1",
+            "mns:large_arena/l2",
+            "mns:large_arena/l3",
+            "mns:large_arena/r1",
+            "mns:large_arena/r2",
+            "mns:large_arena/r3",
+            "mns:mega_arenas/mobs/1.21/arena_bowman",
+            "mns:mega_arenas/mobs/1.21/arena_gladiator",
+            "mns:mega_arenas/mobs/1.21/ember_sentinel",
+            "mns:mega_arenas/mobs/1.21/pit_vanguard"
+          ]
+        }
       },
-      "missing_components": [],
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/nether-arena-views/small_arena.svg.gz": "0ffc2a583a818a18922afe962c48750078099acb11fefff42b84f48a44fe5dc5",
+        "evidence/item-8/sources/nether-arena-views/large_arena.svg.gz": "9e277febf077a9222d81df9053a7425753253cbd1338e96131aaf082858cfa8f"
       }
     },
     {
@@ -8101,7 +8149,7 @@
       "structure_ids": [
         "mns:mega_fortress"
       ],
-      "rationale": "The fortress has 196 reachable templates, including corridor, room and mob alternatives; a single assembly need not use all of them. They belong to this working fortress design. Preserve boundary-exempt pools, custom terrain adaptation and monster spawn overrides. Broader canonical relationships among related designs remain provisional. Root assignment does not establish effective placement or gameplay.",
+      "rationale": "One modular fortress complex rooted at mega_fortress/start/start_pool. The selected graph reaches 196 templates spanning crossings, corridors, corners, staircases, rooms, upper passages, spawner modules and mob alternatives. This branching furnished fortress network is distinct from the bounded arena courts, sculptural dragon platform and standalone house or tower sites. Rooms, decorative alternatives and mob templates remain components, not additional families; a single instance need not select all 196. Preserve boundary-exempt pools, custom terrain adaptation and monster spawn overrides, including the version-selected 1.21.1 starting piece. This graph-based family boundary does not assert actual generation, occupied dimensions or encounter counts.",
       "start_pool": "mns:mega_fortress/start/start_pool",
       "generation_settings": {
         "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure",
@@ -8178,7 +8226,8 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
       }
     },
     {
@@ -8330,36 +8379,6 @@
         "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
         "evidence/item-8/sources/nether-pair-views/skulls_shrines_towers.svg.gz": "d4c7b3d3ca94a80b81e418622a4e958773b93dd44269f03d8b5847dbca61900c"
-      }
-    },
-    {
-      "family_id": "mns:small_arena",
-      "name": "Moog's Nether Structures Small Arena",
-      "structure_ids": [
-        "mns:small_arena"
-      ],
-      "rationale": "The small arena uses a separate assembly and lowest-land placement. Shared mob templates with other arenas do not alone resolve a broader arena family. Broader canonical relationships among related designs remain provisional. Root assignment does not establish effective placement or gameplay.",
-      "start_pool": "mns:small_arena/start_pool",
-      "generation_settings": {
-        "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure",
-        "start_height": {
-          "absolute": 0
-        },
-        "cannot_spawn_in_liquid": true
-      },
-      "custom_generation_settings": {
-        "land_search_direction": "LOWEST_LAND",
-        "max_distance_from_center": 128,
-        "size": 20,
-        "spawn_overrides": {},
-        "step": "surface_structures",
-        "terrain_adaptation": "beard_box"
-      },
-      "missing_components": [],
-      "evidence": {
-        "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-        "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
       }
     },
     {
