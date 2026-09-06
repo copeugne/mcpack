@@ -1,0 +1,706 @@
+Compiled from "ModBiomes.java"
+public class biomesoplenty.init.ModBiomes {
+  public biomesoplenty.init.ModBiomes();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void setup();
+    Code:
+       0: invokestatic  #7                  // Method registerVillagerTypes:()V
+       3: return
+
+  public static void setupTerraBlender();
+    Code:
+       0: new           #12                 // class biomesoplenty/worldgen/BOPOverworldRegionPrimary
+       3: dup
+       4: getstatic     #14                 // Field biomesoplenty/init/ModConfig.generation:Lbiomesoplenty/config/GenerationConfig;
+       7: getfield      #20                 // Field biomesoplenty/config/GenerationConfig.bopPrimaryOverworldRegionWeight:I
+      10: invokespecial #26                 // Method biomesoplenty/worldgen/BOPOverworldRegionPrimary."<init>":(I)V
+      13: invokestatic  #29                 // Method terrablender/api/Regions.register:(Lterrablender/api/Region;)V
+      16: new           #35                 // class biomesoplenty/worldgen/BOPOverworldRegionSecondary
+      19: dup
+      20: getstatic     #14                 // Field biomesoplenty/init/ModConfig.generation:Lbiomesoplenty/config/GenerationConfig;
+      23: getfield      #37                 // Field biomesoplenty/config/GenerationConfig.bopSecondaryOverworldRegionWeight:I
+      26: invokespecial #40                 // Method biomesoplenty/worldgen/BOPOverworldRegionSecondary."<init>":(I)V
+      29: invokestatic  #29                 // Method terrablender/api/Regions.register:(Lterrablender/api/Region;)V
+      32: new           #41                 // class biomesoplenty/worldgen/BOPOverworldRegionRare
+      35: dup
+      36: getstatic     #14                 // Field biomesoplenty/init/ModConfig.generation:Lbiomesoplenty/config/GenerationConfig;
+      39: getfield      #43                 // Field biomesoplenty/config/GenerationConfig.bopOverworldRareRegionWeight:I
+      42: invokespecial #46                 // Method biomesoplenty/worldgen/BOPOverworldRegionRare."<init>":(I)V
+      45: invokestatic  #29                 // Method terrablender/api/Regions.register:(Lterrablender/api/Region;)V
+      48: new           #47                 // class biomesoplenty/worldgen/BOPNetherRegionCommon
+      51: dup
+      52: getstatic     #14                 // Field biomesoplenty/init/ModConfig.generation:Lbiomesoplenty/config/GenerationConfig;
+      55: getfield      #49                 // Field biomesoplenty/config/GenerationConfig.bopNetherRegionWeight:I
+      58: invokespecial #52                 // Method biomesoplenty/worldgen/BOPNetherRegionCommon."<init>":(I)V
+      61: invokestatic  #29                 // Method terrablender/api/Regions.register:(Lterrablender/api/Region;)V
+      64: new           #53                 // class biomesoplenty/worldgen/BOPNetherRegionRare
+      67: dup
+      68: getstatic     #14                 // Field biomesoplenty/init/ModConfig.generation:Lbiomesoplenty/config/GenerationConfig;
+      71: getfield      #55                 // Field biomesoplenty/config/GenerationConfig.bopNetherRareRegionWeight:I
+      74: invokespecial #58                 // Method biomesoplenty/worldgen/BOPNetherRegionRare."<init>":(I)V
+      77: invokestatic  #29                 // Method terrablender/api/Regions.register:(Lterrablender/api/Region;)V
+      80: getstatic     #59                 // Field biomesoplenty/api/biome/BOPBiomes.END_WILDS:Lnet/minecraft/resources/ResourceKey;
+      83: bipush        9
+      85: invokestatic  #65                 // Method registerHighlandsBiome:(Lnet/minecraft/resources/ResourceKey;I)V
+      88: getstatic     #69                 // Field biomesoplenty/api/biome/BOPBiomes.END_REEF:Lnet/minecraft/resources/ResourceKey;
+      91: bipush        6
+      93: invokestatic  #65                 // Method registerHighlandsBiome:(Lnet/minecraft/resources/ResourceKey;I)V
+      96: getstatic     #72                 // Field biomesoplenty/api/biome/BOPBiomes.END_CORRUPTION:Lnet/minecraft/resources/ResourceKey;
+      99: iconst_3
+     100: invokestatic  #65                 // Method registerHighlandsBiome:(Lnet/minecraft/resources/ResourceKey;I)V
+     103: return
+
+  public static void bootstrapBiomes(net.minecraft.data.worldgen.BootstrapContext<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: aload_0
+       1: getstatic     #75                 // Field net/minecraft/core/registries/Registries.CONFIGURED_CARVER:Lnet/minecraft/resources/ResourceKey;
+       4: invokeinterface #80,  2           // InterfaceMethod net/minecraft/data/worldgen/BootstrapContext.lookup:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/HolderGetter;
+       9: astore_1
+      10: aload_0
+      11: getstatic     #86                 // Field net/minecraft/core/registries/Registries.PLACED_FEATURE:Lnet/minecraft/resources/ResourceKey;
+      14: invokeinterface #80,  2           // InterfaceMethod net/minecraft/data/worldgen/BootstrapContext.lookup:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/HolderGetter;
+      19: astore_2
+      20: aload_0
+      21: getstatic     #89                 // Field biomesoplenty/api/biome/BOPBiomes.ASPEN_GLADE:Lnet/minecraft/resources/ResourceKey;
+      24: aload_2
+      25: aload_1
+      26: invokestatic  #92                 // Method biomesoplenty/biome/BOPOverworldBiomes.aspenGlade:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+      29: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+      32: aload_0
+      33: getstatic     #101                // Field biomesoplenty/api/biome/BOPBiomes.AURORAL_GARDEN:Lnet/minecraft/resources/ResourceKey;
+      36: aload_2
+      37: aload_1
+      38: invokestatic  #104                // Method biomesoplenty/biome/BOPOverworldBiomes.auroralGarden:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+      41: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+      44: aload_0
+      45: getstatic     #107                // Field biomesoplenty/api/biome/BOPBiomes.BAYOU:Lnet/minecraft/resources/ResourceKey;
+      48: aload_2
+      49: aload_1
+      50: invokestatic  #110                // Method biomesoplenty/biome/BOPOverworldBiomes.bayou:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+      53: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+      56: aload_0
+      57: getstatic     #113                // Field biomesoplenty/api/biome/BOPBiomes.BOG:Lnet/minecraft/resources/ResourceKey;
+      60: aload_2
+      61: aload_1
+      62: invokestatic  #116                // Method biomesoplenty/biome/BOPOverworldBiomes.bog:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+      65: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+      68: aload_0
+      69: getstatic     #119                // Field biomesoplenty/api/biome/BOPBiomes.COLD_DESERT:Lnet/minecraft/resources/ResourceKey;
+      72: aload_2
+      73: aload_1
+      74: invokestatic  #122                // Method biomesoplenty/biome/BOPOverworldBiomes.coldDesert:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+      77: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+      80: aload_0
+      81: getstatic     #125                // Field biomesoplenty/api/biome/BOPBiomes.CONIFEROUS_FOREST:Lnet/minecraft/resources/ResourceKey;
+      84: aload_2
+      85: aload_1
+      86: iconst_0
+      87: invokestatic  #128                // Method biomesoplenty/biome/BOPOverworldBiomes.coniferousForest:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;Z)Lnet/minecraft/world/level/biome/Biome;
+      90: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+      93: aload_0
+      94: getstatic     #132                // Field biomesoplenty/api/biome/BOPBiomes.CRAG:Lnet/minecraft/resources/ResourceKey;
+      97: aload_2
+      98: aload_1
+      99: invokestatic  #135                // Method biomesoplenty/biome/BOPOverworldBiomes.crag:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     102: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     105: aload_0
+     106: getstatic     #138                // Field biomesoplenty/api/biome/BOPBiomes.DEAD_FOREST:Lnet/minecraft/resources/ResourceKey;
+     109: aload_2
+     110: aload_1
+     111: invokestatic  #141                // Method biomesoplenty/biome/BOPOverworldBiomes.deadForest:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     114: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     117: aload_0
+     118: getstatic     #144                // Field biomesoplenty/api/biome/BOPBiomes.DRYLAND:Lnet/minecraft/resources/ResourceKey;
+     121: aload_2
+     122: aload_1
+     123: invokestatic  #147                // Method biomesoplenty/biome/BOPOverworldBiomes.dryland:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     126: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     129: aload_0
+     130: getstatic     #150                // Field biomesoplenty/api/biome/BOPBiomes.DUNE_BEACH:Lnet/minecraft/resources/ResourceKey;
+     133: aload_2
+     134: aload_1
+     135: invokestatic  #153                // Method biomesoplenty/biome/BOPOverworldBiomes.duneBeach:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     138: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     141: aload_0
+     142: getstatic     #156                // Field biomesoplenty/api/biome/BOPBiomes.FIELD:Lnet/minecraft/resources/ResourceKey;
+     145: aload_2
+     146: aload_1
+     147: iconst_0
+     148: invokestatic  #159                // Method biomesoplenty/biome/BOPOverworldBiomes.field:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;Z)Lnet/minecraft/world/level/biome/Biome;
+     151: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     154: aload_0
+     155: getstatic     #162                // Field biomesoplenty/api/biome/BOPBiomes.FIR_CLEARING:Lnet/minecraft/resources/ResourceKey;
+     158: aload_2
+     159: aload_1
+     160: iconst_0
+     161: invokestatic  #165                // Method biomesoplenty/biome/BOPOverworldBiomes.firClearing:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;Z)Lnet/minecraft/world/level/biome/Biome;
+     164: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     167: aload_0
+     168: getstatic     #168                // Field biomesoplenty/api/biome/BOPBiomes.FLOODPLAIN:Lnet/minecraft/resources/ResourceKey;
+     171: aload_2
+     172: aload_1
+     173: invokestatic  #171                // Method biomesoplenty/biome/BOPOverworldBiomes.floodplain:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     176: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     179: aload_0
+     180: getstatic     #174                // Field biomesoplenty/api/biome/BOPBiomes.FORESTED_FIELD:Lnet/minecraft/resources/ResourceKey;
+     183: aload_2
+     184: aload_1
+     185: iconst_1
+     186: invokestatic  #159                // Method biomesoplenty/biome/BOPOverworldBiomes.field:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;Z)Lnet/minecraft/world/level/biome/Biome;
+     189: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     192: aload_0
+     193: getstatic     #177                // Field biomesoplenty/api/biome/BOPBiomes.FUNGAL_JUNGLE:Lnet/minecraft/resources/ResourceKey;
+     196: aload_2
+     197: aload_1
+     198: invokestatic  #180                // Method biomesoplenty/biome/BOPOverworldBiomes.fungalJungle:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     201: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     204: aload_0
+     205: getstatic     #183                // Field biomesoplenty/api/biome/BOPBiomes.GRASSLAND:Lnet/minecraft/resources/ResourceKey;
+     208: aload_2
+     209: aload_1
+     210: invokestatic  #186                // Method biomesoplenty/biome/BOPOverworldBiomes.grassland:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     213: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     216: aload_0
+     217: getstatic     #189                // Field biomesoplenty/api/biome/BOPBiomes.GRAVEL_BEACH:Lnet/minecraft/resources/ResourceKey;
+     220: aload_2
+     221: aload_1
+     222: invokestatic  #192                // Method biomesoplenty/biome/BOPOverworldBiomes.gravelBeach:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     225: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     228: aload_0
+     229: getstatic     #195                // Field biomesoplenty/api/biome/BOPBiomes.HIGHLAND:Lnet/minecraft/resources/ResourceKey;
+     232: aload_2
+     233: aload_1
+     234: invokestatic  #198                // Method biomesoplenty/biome/BOPOverworldBiomes.highland:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     237: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     240: aload_0
+     241: getstatic     #201                // Field biomesoplenty/api/biome/BOPBiomes.HOT_SPRINGS:Lnet/minecraft/resources/ResourceKey;
+     244: aload_2
+     245: aload_1
+     246: invokestatic  #204                // Method biomesoplenty/biome/BOPOverworldBiomes.hotSprings:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     249: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     252: aload_0
+     253: getstatic     #207                // Field biomesoplenty/api/biome/BOPBiomes.JACARANDA_GLADE:Lnet/minecraft/resources/ResourceKey;
+     256: aload_2
+     257: aload_1
+     258: invokestatic  #210                // Method biomesoplenty/biome/BOPOverworldBiomes.jacarandaGlade:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     261: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     264: aload_0
+     265: getstatic     #213                // Field biomesoplenty/api/biome/BOPBiomes.JADE_CLIFFS:Lnet/minecraft/resources/ResourceKey;
+     268: aload_2
+     269: aload_1
+     270: invokestatic  #216                // Method biomesoplenty/biome/BOPOverworldBiomes.jadeCliffs:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     273: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     276: aload_0
+     277: getstatic     #219                // Field biomesoplenty/api/biome/BOPBiomes.LAVENDER_FIELD:Lnet/minecraft/resources/ResourceKey;
+     280: aload_2
+     281: aload_1
+     282: invokestatic  #222                // Method biomesoplenty/biome/BOPOverworldBiomes.lavenderField:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     285: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     288: aload_0
+     289: getstatic     #225                // Field biomesoplenty/api/biome/BOPBiomes.LUSH_DESERT:Lnet/minecraft/resources/ResourceKey;
+     292: aload_2
+     293: aload_1
+     294: invokestatic  #228                // Method biomesoplenty/biome/BOPOverworldBiomes.lushDesert:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     297: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     300: aload_0
+     301: getstatic     #231                // Field biomesoplenty/api/biome/BOPBiomes.LUSH_SAVANNA:Lnet/minecraft/resources/ResourceKey;
+     304: aload_2
+     305: aload_1
+     306: invokestatic  #234                // Method biomesoplenty/biome/BOPOverworldBiomes.lushSavanna:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     309: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     312: aload_0
+     313: getstatic     #237                // Field biomesoplenty/api/biome/BOPBiomes.MAPLE_WOODS:Lnet/minecraft/resources/ResourceKey;
+     316: aload_2
+     317: aload_1
+     318: iconst_0
+     319: invokestatic  #240                // Method biomesoplenty/biome/BOPOverworldBiomes.mapleWoods:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;Z)Lnet/minecraft/world/level/biome/Biome;
+     322: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     325: aload_0
+     326: getstatic     #243                // Field biomesoplenty/api/biome/BOPBiomes.MARSH:Lnet/minecraft/resources/ResourceKey;
+     329: aload_2
+     330: aload_1
+     331: invokestatic  #246                // Method biomesoplenty/biome/BOPOverworldBiomes.marsh:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     334: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     337: aload_0
+     338: getstatic     #249                // Field biomesoplenty/api/biome/BOPBiomes.MEDITERRANEAN_FOREST:Lnet/minecraft/resources/ResourceKey;
+     341: aload_2
+     342: aload_1
+     343: invokestatic  #252                // Method biomesoplenty/biome/BOPOverworldBiomes.mediterraneanForest:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     346: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     349: aload_0
+     350: getstatic     #255                // Field biomesoplenty/api/biome/BOPBiomes.MOOR:Lnet/minecraft/resources/ResourceKey;
+     353: aload_2
+     354: aload_1
+     355: invokestatic  #258                // Method biomesoplenty/biome/BOPOverworldBiomes.moor:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     358: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     361: aload_0
+     362: getstatic     #261                // Field biomesoplenty/api/biome/BOPBiomes.MUSKEG:Lnet/minecraft/resources/ResourceKey;
+     365: aload_2
+     366: aload_1
+     367: invokestatic  #264                // Method biomesoplenty/biome/BOPOverworldBiomes.muskeg:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     370: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     373: aload_0
+     374: getstatic     #267                // Field biomesoplenty/api/biome/BOPBiomes.MYSTIC_GROVE:Lnet/minecraft/resources/ResourceKey;
+     377: aload_2
+     378: aload_1
+     379: invokestatic  #270                // Method biomesoplenty/biome/BOPOverworldBiomes.mysticGrove:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     382: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     385: aload_0
+     386: getstatic     #273                // Field biomesoplenty/api/biome/BOPBiomes.OLD_GROWTH_DEAD_FOREST:Lnet/minecraft/resources/ResourceKey;
+     389: aload_2
+     390: aload_1
+     391: invokestatic  #276                // Method biomesoplenty/biome/BOPOverworldBiomes.oldGrowthDeadForest:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     394: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     397: aload_0
+     398: getstatic     #279                // Field biomesoplenty/api/biome/BOPBiomes.OLD_GROWTH_WOODLAND:Lnet/minecraft/resources/ResourceKey;
+     401: aload_2
+     402: aload_1
+     403: iconst_1
+     404: invokestatic  #282                // Method biomesoplenty/biome/BOPOverworldBiomes.woodland:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;Z)Lnet/minecraft/world/level/biome/Biome;
+     407: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     410: aload_0
+     411: getstatic     #285                // Field biomesoplenty/api/biome/BOPBiomes.OMINOUS_WOODS:Lnet/minecraft/resources/ResourceKey;
+     414: aload_2
+     415: aload_1
+     416: invokestatic  #288                // Method biomesoplenty/biome/BOPOverworldBiomes.ominousWoods:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     419: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     422: aload_0
+     423: getstatic     #291                // Field biomesoplenty/api/biome/BOPBiomes.ORCHARD:Lnet/minecraft/resources/ResourceKey;
+     426: aload_2
+     427: aload_1
+     428: invokestatic  #294                // Method biomesoplenty/biome/BOPOverworldBiomes.orchard:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     431: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     434: aload_0
+     435: getstatic     #297                // Field biomesoplenty/api/biome/BOPBiomes.ORIGIN_VALLEY:Lnet/minecraft/resources/ResourceKey;
+     438: aload_2
+     439: aload_1
+     440: iconst_0
+     441: invokestatic  #300                // Method biomesoplenty/biome/BOPOverworldBiomes.originValley:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;Z)Lnet/minecraft/world/level/biome/Biome;
+     444: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     447: aload_0
+     448: getstatic     #303                // Field biomesoplenty/api/biome/BOPBiomes.OVERGROWN_GREENS:Lnet/minecraft/resources/ResourceKey;
+     451: aload_2
+     452: aload_1
+     453: invokestatic  #306                // Method biomesoplenty/biome/BOPOverworldBiomes.overgrownGreens:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     456: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     459: aload_0
+     460: getstatic     #309                // Field biomesoplenty/api/biome/BOPBiomes.PASTURE:Lnet/minecraft/resources/ResourceKey;
+     463: aload_2
+     464: aload_1
+     465: invokestatic  #312                // Method biomesoplenty/biome/BOPOverworldBiomes.pasture:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     468: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     471: aload_0
+     472: getstatic     #315                // Field biomesoplenty/api/biome/BOPBiomes.PRAIRIE:Lnet/minecraft/resources/ResourceKey;
+     475: aload_2
+     476: aload_1
+     477: invokestatic  #318                // Method biomesoplenty/biome/BOPOverworldBiomes.prairie:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     480: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     483: aload_0
+     484: getstatic     #321                // Field biomesoplenty/api/biome/BOPBiomes.PUMPKIN_PATCH:Lnet/minecraft/resources/ResourceKey;
+     487: aload_2
+     488: aload_1
+     489: invokestatic  #324                // Method biomesoplenty/biome/BOPOverworldBiomes.pumpkinPatch:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     492: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     495: aload_0
+     496: getstatic     #327                // Field biomesoplenty/api/biome/BOPBiomes.RAINFOREST:Lnet/minecraft/resources/ResourceKey;
+     499: aload_2
+     500: aload_1
+     501: invokestatic  #330                // Method biomesoplenty/biome/BOPOverworldBiomes.rainforest:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     504: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     507: aload_0
+     508: getstatic     #333                // Field biomesoplenty/api/biome/BOPBiomes.REDWOOD_FOREST:Lnet/minecraft/resources/ResourceKey;
+     511: aload_2
+     512: aload_1
+     513: invokestatic  #336                // Method biomesoplenty/biome/BOPOverworldBiomes.redwoodForest:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     516: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     519: aload_0
+     520: getstatic     #339                // Field biomesoplenty/api/biome/BOPBiomes.ROCKY_RAINFOREST:Lnet/minecraft/resources/ResourceKey;
+     523: aload_2
+     524: aload_1
+     525: invokestatic  #342                // Method biomesoplenty/biome/BOPOverworldBiomes.rockyRainforest:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     528: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     531: aload_0
+     532: getstatic     #345                // Field biomesoplenty/api/biome/BOPBiomes.ROCKY_SHRUBLAND:Lnet/minecraft/resources/ResourceKey;
+     535: aload_2
+     536: aload_1
+     537: invokestatic  #348                // Method biomesoplenty/biome/BOPOverworldBiomes.rockyShrubland:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     540: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     543: aload_0
+     544: getstatic     #351                // Field biomesoplenty/api/biome/BOPBiomes.SCRUBLAND:Lnet/minecraft/resources/ResourceKey;
+     547: aload_2
+     548: aload_1
+     549: invokestatic  #354                // Method biomesoplenty/biome/BOPOverworldBiomes.scrubland:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     552: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     555: aload_0
+     556: getstatic     #357                // Field biomesoplenty/api/biome/BOPBiomes.SEASONAL_FOREST:Lnet/minecraft/resources/ResourceKey;
+     559: aload_2
+     560: aload_1
+     561: invokestatic  #360                // Method biomesoplenty/biome/BOPOverworldBiomes.seasonalForest:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     564: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     567: aload_0
+     568: getstatic     #363                // Field biomesoplenty/api/biome/BOPBiomes.SHRUBLAND:Lnet/minecraft/resources/ResourceKey;
+     571: aload_2
+     572: aload_1
+     573: invokestatic  #366                // Method biomesoplenty/biome/BOPOverworldBiomes.shrubland:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     576: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     579: aload_0
+     580: getstatic     #369                // Field biomesoplenty/api/biome/BOPBiomes.SNOWBLOSSOM_GROVE:Lnet/minecraft/resources/ResourceKey;
+     583: aload_2
+     584: aload_1
+     585: invokestatic  #372                // Method biomesoplenty/biome/BOPOverworldBiomes.snowblossomGrove:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     588: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     591: aload_0
+     592: getstatic     #375                // Field biomesoplenty/api/biome/BOPBiomes.SNOWY_CONIFEROUS_FOREST:Lnet/minecraft/resources/ResourceKey;
+     595: aload_2
+     596: aload_1
+     597: iconst_1
+     598: invokestatic  #128                // Method biomesoplenty/biome/BOPOverworldBiomes.coniferousForest:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;Z)Lnet/minecraft/world/level/biome/Biome;
+     601: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     604: aload_0
+     605: getstatic     #378                // Field biomesoplenty/api/biome/BOPBiomes.SNOWY_FIR_CLEARING:Lnet/minecraft/resources/ResourceKey;
+     608: aload_2
+     609: aload_1
+     610: iconst_1
+     611: invokestatic  #165                // Method biomesoplenty/biome/BOPOverworldBiomes.firClearing:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;Z)Lnet/minecraft/world/level/biome/Biome;
+     614: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     617: aload_0
+     618: getstatic     #381                // Field biomesoplenty/api/biome/BOPBiomes.SNOWY_MAPLE_WOODS:Lnet/minecraft/resources/ResourceKey;
+     621: aload_2
+     622: aload_1
+     623: iconst_1
+     624: invokestatic  #240                // Method biomesoplenty/biome/BOPOverworldBiomes.mapleWoods:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;Z)Lnet/minecraft/world/level/biome/Biome;
+     627: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     630: aload_0
+     631: getstatic     #384                // Field biomesoplenty/api/biome/BOPBiomes.TROPICS:Lnet/minecraft/resources/ResourceKey;
+     634: aload_2
+     635: aload_1
+     636: invokestatic  #387                // Method biomesoplenty/biome/BOPOverworldBiomes.tropics:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     639: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     642: aload_0
+     643: getstatic     #390                // Field biomesoplenty/api/biome/BOPBiomes.TUNDRA:Lnet/minecraft/resources/ResourceKey;
+     646: aload_2
+     647: aload_1
+     648: invokestatic  #393                // Method biomesoplenty/biome/BOPOverworldBiomes.tundra:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     651: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     654: aload_0
+     655: getstatic     #396                // Field biomesoplenty/api/biome/BOPBiomes.VOLCANIC_PLAINS:Lnet/minecraft/resources/ResourceKey;
+     658: aload_2
+     659: aload_1
+     660: invokestatic  #399                // Method biomesoplenty/biome/BOPOverworldBiomes.volcanicPlains:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     663: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     666: aload_0
+     667: getstatic     #402                // Field biomesoplenty/api/biome/BOPBiomes.VOLCANO:Lnet/minecraft/resources/ResourceKey;
+     670: aload_2
+     671: aload_1
+     672: invokestatic  #405                // Method biomesoplenty/biome/BOPOverworldBiomes.volcano:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     675: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     678: aload_0
+     679: getstatic     #408                // Field biomesoplenty/api/biome/BOPBiomes.WASTELAND:Lnet/minecraft/resources/ResourceKey;
+     682: aload_2
+     683: aload_1
+     684: invokestatic  #411                // Method biomesoplenty/biome/BOPOverworldBiomes.wasteland:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     687: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     690: aload_0
+     691: getstatic     #414                // Field biomesoplenty/api/biome/BOPBiomes.WASTELAND_STEPPE:Lnet/minecraft/resources/ResourceKey;
+     694: aload_2
+     695: aload_1
+     696: invokestatic  #417                // Method biomesoplenty/biome/BOPOverworldBiomes.wastelandSteppe:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     699: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     702: aload_0
+     703: getstatic     #420                // Field biomesoplenty/api/biome/BOPBiomes.WETLAND:Lnet/minecraft/resources/ResourceKey;
+     706: aload_2
+     707: aload_1
+     708: invokestatic  #423                // Method biomesoplenty/biome/BOPOverworldBiomes.wetland:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     711: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     714: aload_0
+     715: getstatic     #426                // Field biomesoplenty/api/biome/BOPBiomes.WINTRY_ORIGIN_VALLEY:Lnet/minecraft/resources/ResourceKey;
+     718: aload_2
+     719: aload_1
+     720: iconst_1
+     721: invokestatic  #300                // Method biomesoplenty/biome/BOPOverworldBiomes.originValley:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;Z)Lnet/minecraft/world/level/biome/Biome;
+     724: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     727: aload_0
+     728: getstatic     #429                // Field biomesoplenty/api/biome/BOPBiomes.WOODLAND:Lnet/minecraft/resources/ResourceKey;
+     731: aload_2
+     732: aload_1
+     733: iconst_0
+     734: invokestatic  #282                // Method biomesoplenty/biome/BOPOverworldBiomes.woodland:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;Z)Lnet/minecraft/world/level/biome/Biome;
+     737: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     740: aload_0
+     741: getstatic     #432                // Field biomesoplenty/api/biome/BOPBiomes.GLOWING_GROTTO:Lnet/minecraft/resources/ResourceKey;
+     744: aload_2
+     745: aload_1
+     746: invokestatic  #435                // Method biomesoplenty/biome/BOPOverworldBiomes.glowingGrotto:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     749: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     752: aload_0
+     753: getstatic     #438                // Field biomesoplenty/api/biome/BOPBiomes.SPIDER_NEST:Lnet/minecraft/resources/ResourceKey;
+     756: aload_2
+     757: aload_1
+     758: invokestatic  #441                // Method biomesoplenty/biome/BOPOverworldBiomes.spiderNest:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     761: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     764: aload_0
+     765: getstatic     #444                // Field biomesoplenty/api/biome/BOPBiomes.CRYSTALLINE_CHASM:Lnet/minecraft/resources/ResourceKey;
+     768: aload_2
+     769: aload_1
+     770: invokestatic  #447                // Method biomesoplenty/biome/BOPNetherBiomes.crystallineChasm:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     773: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     776: aload_0
+     777: getstatic     #452                // Field biomesoplenty/api/biome/BOPBiomes.ERUPTING_INFERNO:Lnet/minecraft/resources/ResourceKey;
+     780: aload_2
+     781: aload_1
+     782: invokestatic  #455                // Method biomesoplenty/biome/BOPNetherBiomes.eruptingInferno:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     785: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     788: aload_0
+     789: getstatic     #458                // Field biomesoplenty/api/biome/BOPBiomes.UNDERGROWTH:Lnet/minecraft/resources/ResourceKey;
+     792: aload_2
+     793: aload_1
+     794: invokestatic  #461                // Method biomesoplenty/biome/BOPNetherBiomes.undergrowth:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     797: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     800: aload_0
+     801: getstatic     #464                // Field biomesoplenty/api/biome/BOPBiomes.VISCERAL_HEAP:Lnet/minecraft/resources/ResourceKey;
+     804: aload_2
+     805: aload_1
+     806: invokestatic  #467                // Method biomesoplenty/biome/BOPNetherBiomes.visceralHeap:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     809: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     812: aload_0
+     813: getstatic     #470                // Field biomesoplenty/api/biome/BOPBiomes.WITHERED_ABYSS:Lnet/minecraft/resources/ResourceKey;
+     816: aload_2
+     817: aload_1
+     818: invokestatic  #473                // Method biomesoplenty/biome/BOPNetherBiomes.witheredAbyss:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     821: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     824: aload_0
+     825: getstatic     #59                 // Field biomesoplenty/api/biome/BOPBiomes.END_WILDS:Lnet/minecraft/resources/ResourceKey;
+     828: aload_2
+     829: aload_1
+     830: invokestatic  #476                // Method biomesoplenty/biome/BOPEndBiomes.endWilds:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     833: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     836: aload_0
+     837: getstatic     #69                 // Field biomesoplenty/api/biome/BOPBiomes.END_REEF:Lnet/minecraft/resources/ResourceKey;
+     840: aload_2
+     841: aload_1
+     842: invokestatic  #481                // Method biomesoplenty/biome/BOPEndBiomes.endReef:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     845: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     848: aload_0
+     849: getstatic     #72                 // Field biomesoplenty/api/biome/BOPBiomes.END_CORRUPTION:Lnet/minecraft/resources/ResourceKey;
+     852: aload_2
+     853: aload_1
+     854: invokestatic  #484                // Method biomesoplenty/biome/BOPEndBiomes.endCorruption:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/biome/Biome;
+     857: invokestatic  #98                 // Method register:(Lnet/minecraft/data/worldgen/BootstrapContext;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Biome;)V
+     860: return
+
+  private static void registerVillagerTypes();
+    Code:
+       0: getstatic     #89                 // Field biomesoplenty/api/biome/BOPBiomes.ASPEN_GLADE:Lnet/minecraft/resources/ResourceKey;
+       3: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+       6: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+       9: getstatic     #101                // Field biomesoplenty/api/biome/BOPBiomes.AURORAL_GARDEN:Lnet/minecraft/resources/ResourceKey;
+      12: getstatic     #497                // Field net/minecraft/world/entity/npc/VillagerType.SNOW:Lnet/minecraft/world/entity/npc/VillagerType;
+      15: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+      18: getstatic     #107                // Field biomesoplenty/api/biome/BOPBiomes.BAYOU:Lnet/minecraft/resources/ResourceKey;
+      21: getstatic     #500                // Field net/minecraft/world/entity/npc/VillagerType.SWAMP:Lnet/minecraft/world/entity/npc/VillagerType;
+      24: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+      27: getstatic     #113                // Field biomesoplenty/api/biome/BOPBiomes.BOG:Lnet/minecraft/resources/ResourceKey;
+      30: getstatic     #500                // Field net/minecraft/world/entity/npc/VillagerType.SWAMP:Lnet/minecraft/world/entity/npc/VillagerType;
+      33: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+      36: getstatic     #119                // Field biomesoplenty/api/biome/BOPBiomes.COLD_DESERT:Lnet/minecraft/resources/ResourceKey;
+      39: getstatic     #497                // Field net/minecraft/world/entity/npc/VillagerType.SNOW:Lnet/minecraft/world/entity/npc/VillagerType;
+      42: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+      45: getstatic     #125                // Field biomesoplenty/api/biome/BOPBiomes.CONIFEROUS_FOREST:Lnet/minecraft/resources/ResourceKey;
+      48: getstatic     #503                // Field net/minecraft/world/entity/npc/VillagerType.TAIGA:Lnet/minecraft/world/entity/npc/VillagerType;
+      51: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+      54: getstatic     #132                // Field biomesoplenty/api/biome/BOPBiomes.CRAG:Lnet/minecraft/resources/ResourceKey;
+      57: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+      60: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+      63: getstatic     #138                // Field biomesoplenty/api/biome/BOPBiomes.DEAD_FOREST:Lnet/minecraft/resources/ResourceKey;
+      66: getstatic     #503                // Field net/minecraft/world/entity/npc/VillagerType.TAIGA:Lnet/minecraft/world/entity/npc/VillagerType;
+      69: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+      72: getstatic     #144                // Field biomesoplenty/api/biome/BOPBiomes.DRYLAND:Lnet/minecraft/resources/ResourceKey;
+      75: getstatic     #506                // Field net/minecraft/world/entity/npc/VillagerType.DESERT:Lnet/minecraft/world/entity/npc/VillagerType;
+      78: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+      81: getstatic     #150                // Field biomesoplenty/api/biome/BOPBiomes.DUNE_BEACH:Lnet/minecraft/resources/ResourceKey;
+      84: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+      87: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+      90: getstatic     #162                // Field biomesoplenty/api/biome/BOPBiomes.FIR_CLEARING:Lnet/minecraft/resources/ResourceKey;
+      93: getstatic     #503                // Field net/minecraft/world/entity/npc/VillagerType.TAIGA:Lnet/minecraft/world/entity/npc/VillagerType;
+      96: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+      99: getstatic     #156                // Field biomesoplenty/api/biome/BOPBiomes.FIELD:Lnet/minecraft/resources/ResourceKey;
+     102: getstatic     #503                // Field net/minecraft/world/entity/npc/VillagerType.TAIGA:Lnet/minecraft/world/entity/npc/VillagerType;
+     105: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     108: getstatic     #168                // Field biomesoplenty/api/biome/BOPBiomes.FLOODPLAIN:Lnet/minecraft/resources/ResourceKey;
+     111: getstatic     #509                // Field net/minecraft/world/entity/npc/VillagerType.JUNGLE:Lnet/minecraft/world/entity/npc/VillagerType;
+     114: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     117: getstatic     #174                // Field biomesoplenty/api/biome/BOPBiomes.FORESTED_FIELD:Lnet/minecraft/resources/ResourceKey;
+     120: getstatic     #503                // Field net/minecraft/world/entity/npc/VillagerType.TAIGA:Lnet/minecraft/world/entity/npc/VillagerType;
+     123: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     126: getstatic     #177                // Field biomesoplenty/api/biome/BOPBiomes.FUNGAL_JUNGLE:Lnet/minecraft/resources/ResourceKey;
+     129: getstatic     #509                // Field net/minecraft/world/entity/npc/VillagerType.JUNGLE:Lnet/minecraft/world/entity/npc/VillagerType;
+     132: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     135: getstatic     #183                // Field biomesoplenty/api/biome/BOPBiomes.GRASSLAND:Lnet/minecraft/resources/ResourceKey;
+     138: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     141: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     144: getstatic     #189                // Field biomesoplenty/api/biome/BOPBiomes.GRAVEL_BEACH:Lnet/minecraft/resources/ResourceKey;
+     147: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     150: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     153: getstatic     #195                // Field biomesoplenty/api/biome/BOPBiomes.HIGHLAND:Lnet/minecraft/resources/ResourceKey;
+     156: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     159: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     162: getstatic     #201                // Field biomesoplenty/api/biome/BOPBiomes.HOT_SPRINGS:Lnet/minecraft/resources/ResourceKey;
+     165: getstatic     #503                // Field net/minecraft/world/entity/npc/VillagerType.TAIGA:Lnet/minecraft/world/entity/npc/VillagerType;
+     168: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     171: getstatic     #207                // Field biomesoplenty/api/biome/BOPBiomes.JACARANDA_GLADE:Lnet/minecraft/resources/ResourceKey;
+     174: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     177: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     180: getstatic     #213                // Field biomesoplenty/api/biome/BOPBiomes.JADE_CLIFFS:Lnet/minecraft/resources/ResourceKey;
+     183: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     186: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     189: getstatic     #219                // Field biomesoplenty/api/biome/BOPBiomes.LAVENDER_FIELD:Lnet/minecraft/resources/ResourceKey;
+     192: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     195: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     198: getstatic     #225                // Field biomesoplenty/api/biome/BOPBiomes.LUSH_DESERT:Lnet/minecraft/resources/ResourceKey;
+     201: getstatic     #512                // Field net/minecraft/world/entity/npc/VillagerType.SAVANNA:Lnet/minecraft/world/entity/npc/VillagerType;
+     204: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     207: getstatic     #231                // Field biomesoplenty/api/biome/BOPBiomes.LUSH_SAVANNA:Lnet/minecraft/resources/ResourceKey;
+     210: getstatic     #512                // Field net/minecraft/world/entity/npc/VillagerType.SAVANNA:Lnet/minecraft/world/entity/npc/VillagerType;
+     213: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     216: getstatic     #237                // Field biomesoplenty/api/biome/BOPBiomes.MAPLE_WOODS:Lnet/minecraft/resources/ResourceKey;
+     219: getstatic     #503                // Field net/minecraft/world/entity/npc/VillagerType.TAIGA:Lnet/minecraft/world/entity/npc/VillagerType;
+     222: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     225: getstatic     #243                // Field biomesoplenty/api/biome/BOPBiomes.MARSH:Lnet/minecraft/resources/ResourceKey;
+     228: getstatic     #500                // Field net/minecraft/world/entity/npc/VillagerType.SWAMP:Lnet/minecraft/world/entity/npc/VillagerType;
+     231: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     234: getstatic     #249                // Field biomesoplenty/api/biome/BOPBiomes.MEDITERRANEAN_FOREST:Lnet/minecraft/resources/ResourceKey;
+     237: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     240: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     243: getstatic     #255                // Field biomesoplenty/api/biome/BOPBiomes.MOOR:Lnet/minecraft/resources/ResourceKey;
+     246: getstatic     #500                // Field net/minecraft/world/entity/npc/VillagerType.SWAMP:Lnet/minecraft/world/entity/npc/VillagerType;
+     249: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     252: getstatic     #261                // Field biomesoplenty/api/biome/BOPBiomes.MUSKEG:Lnet/minecraft/resources/ResourceKey;
+     255: getstatic     #497                // Field net/minecraft/world/entity/npc/VillagerType.SNOW:Lnet/minecraft/world/entity/npc/VillagerType;
+     258: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     261: getstatic     #267                // Field biomesoplenty/api/biome/BOPBiomes.MYSTIC_GROVE:Lnet/minecraft/resources/ResourceKey;
+     264: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     267: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     270: getstatic     #273                // Field biomesoplenty/api/biome/BOPBiomes.OLD_GROWTH_DEAD_FOREST:Lnet/minecraft/resources/ResourceKey;
+     273: getstatic     #503                // Field net/minecraft/world/entity/npc/VillagerType.TAIGA:Lnet/minecraft/world/entity/npc/VillagerType;
+     276: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     279: getstatic     #279                // Field biomesoplenty/api/biome/BOPBiomes.OLD_GROWTH_WOODLAND:Lnet/minecraft/resources/ResourceKey;
+     282: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     285: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     288: getstatic     #285                // Field biomesoplenty/api/biome/BOPBiomes.OMINOUS_WOODS:Lnet/minecraft/resources/ResourceKey;
+     291: getstatic     #500                // Field net/minecraft/world/entity/npc/VillagerType.SWAMP:Lnet/minecraft/world/entity/npc/VillagerType;
+     294: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     297: getstatic     #291                // Field biomesoplenty/api/biome/BOPBiomes.ORCHARD:Lnet/minecraft/resources/ResourceKey;
+     300: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     303: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     306: getstatic     #297                // Field biomesoplenty/api/biome/BOPBiomes.ORIGIN_VALLEY:Lnet/minecraft/resources/ResourceKey;
+     309: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     312: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     315: getstatic     #303                // Field biomesoplenty/api/biome/BOPBiomes.OVERGROWN_GREENS:Lnet/minecraft/resources/ResourceKey;
+     318: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     321: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     324: getstatic     #309                // Field biomesoplenty/api/biome/BOPBiomes.PASTURE:Lnet/minecraft/resources/ResourceKey;
+     327: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     330: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     333: getstatic     #315                // Field biomesoplenty/api/biome/BOPBiomes.PRAIRIE:Lnet/minecraft/resources/ResourceKey;
+     336: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     339: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     342: getstatic     #321                // Field biomesoplenty/api/biome/BOPBiomes.PUMPKIN_PATCH:Lnet/minecraft/resources/ResourceKey;
+     345: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     348: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     351: getstatic     #327                // Field biomesoplenty/api/biome/BOPBiomes.RAINFOREST:Lnet/minecraft/resources/ResourceKey;
+     354: getstatic     #509                // Field net/minecraft/world/entity/npc/VillagerType.JUNGLE:Lnet/minecraft/world/entity/npc/VillagerType;
+     357: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     360: getstatic     #339                // Field biomesoplenty/api/biome/BOPBiomes.ROCKY_RAINFOREST:Lnet/minecraft/resources/ResourceKey;
+     363: getstatic     #509                // Field net/minecraft/world/entity/npc/VillagerType.JUNGLE:Lnet/minecraft/world/entity/npc/VillagerType;
+     366: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     369: getstatic     #333                // Field biomesoplenty/api/biome/BOPBiomes.REDWOOD_FOREST:Lnet/minecraft/resources/ResourceKey;
+     372: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     375: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     378: getstatic     #345                // Field biomesoplenty/api/biome/BOPBiomes.ROCKY_SHRUBLAND:Lnet/minecraft/resources/ResourceKey;
+     381: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     384: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     387: getstatic     #351                // Field biomesoplenty/api/biome/BOPBiomes.SCRUBLAND:Lnet/minecraft/resources/ResourceKey;
+     390: getstatic     #512                // Field net/minecraft/world/entity/npc/VillagerType.SAVANNA:Lnet/minecraft/world/entity/npc/VillagerType;
+     393: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     396: getstatic     #357                // Field biomesoplenty/api/biome/BOPBiomes.SEASONAL_FOREST:Lnet/minecraft/resources/ResourceKey;
+     399: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     402: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     405: getstatic     #363                // Field biomesoplenty/api/biome/BOPBiomes.SHRUBLAND:Lnet/minecraft/resources/ResourceKey;
+     408: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     411: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     414: getstatic     #369                // Field biomesoplenty/api/biome/BOPBiomes.SNOWBLOSSOM_GROVE:Lnet/minecraft/resources/ResourceKey;
+     417: getstatic     #497                // Field net/minecraft/world/entity/npc/VillagerType.SNOW:Lnet/minecraft/world/entity/npc/VillagerType;
+     420: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     423: getstatic     #375                // Field biomesoplenty/api/biome/BOPBiomes.SNOWY_CONIFEROUS_FOREST:Lnet/minecraft/resources/ResourceKey;
+     426: getstatic     #503                // Field net/minecraft/world/entity/npc/VillagerType.TAIGA:Lnet/minecraft/world/entity/npc/VillagerType;
+     429: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     432: getstatic     #378                // Field biomesoplenty/api/biome/BOPBiomes.SNOWY_FIR_CLEARING:Lnet/minecraft/resources/ResourceKey;
+     435: getstatic     #503                // Field net/minecraft/world/entity/npc/VillagerType.TAIGA:Lnet/minecraft/world/entity/npc/VillagerType;
+     438: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     441: getstatic     #381                // Field biomesoplenty/api/biome/BOPBiomes.SNOWY_MAPLE_WOODS:Lnet/minecraft/resources/ResourceKey;
+     444: getstatic     #503                // Field net/minecraft/world/entity/npc/VillagerType.TAIGA:Lnet/minecraft/world/entity/npc/VillagerType;
+     447: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     450: getstatic     #384                // Field biomesoplenty/api/biome/BOPBiomes.TROPICS:Lnet/minecraft/resources/ResourceKey;
+     453: getstatic     #509                // Field net/minecraft/world/entity/npc/VillagerType.JUNGLE:Lnet/minecraft/world/entity/npc/VillagerType;
+     456: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     459: getstatic     #390                // Field biomesoplenty/api/biome/BOPBiomes.TUNDRA:Lnet/minecraft/resources/ResourceKey;
+     462: getstatic     #503                // Field net/minecraft/world/entity/npc/VillagerType.TAIGA:Lnet/minecraft/world/entity/npc/VillagerType;
+     465: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     468: getstatic     #396                // Field biomesoplenty/api/biome/BOPBiomes.VOLCANIC_PLAINS:Lnet/minecraft/resources/ResourceKey;
+     471: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     474: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     477: getstatic     #402                // Field biomesoplenty/api/biome/BOPBiomes.VOLCANO:Lnet/minecraft/resources/ResourceKey;
+     480: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     483: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     486: getstatic     #408                // Field biomesoplenty/api/biome/BOPBiomes.WASTELAND:Lnet/minecraft/resources/ResourceKey;
+     489: getstatic     #506                // Field net/minecraft/world/entity/npc/VillagerType.DESERT:Lnet/minecraft/world/entity/npc/VillagerType;
+     492: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     495: getstatic     #414                // Field biomesoplenty/api/biome/BOPBiomes.WASTELAND_STEPPE:Lnet/minecraft/resources/ResourceKey;
+     498: getstatic     #506                // Field net/minecraft/world/entity/npc/VillagerType.DESERT:Lnet/minecraft/world/entity/npc/VillagerType;
+     501: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     504: getstatic     #420                // Field biomesoplenty/api/biome/BOPBiomes.WETLAND:Lnet/minecraft/resources/ResourceKey;
+     507: getstatic     #500                // Field net/minecraft/world/entity/npc/VillagerType.SWAMP:Lnet/minecraft/world/entity/npc/VillagerType;
+     510: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     513: getstatic     #426                // Field biomesoplenty/api/biome/BOPBiomes.WINTRY_ORIGIN_VALLEY:Lnet/minecraft/resources/ResourceKey;
+     516: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     519: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     522: getstatic     #429                // Field biomesoplenty/api/biome/BOPBiomes.WOODLAND:Lnet/minecraft/resources/ResourceKey;
+     525: getstatic     #487                // Field net/minecraft/world/entity/npc/VillagerType.PLAINS:Lnet/minecraft/world/entity/npc/VillagerType;
+     528: invokestatic  #493                // Method registerVillagerType:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/npc/VillagerType;)V
+     531: return
+
+  private static void register(net.minecraft.data.worldgen.BootstrapContext<net.minecraft.world.level.biome.Biome>, net.minecraft.resources.ResourceKey<net.minecraft.world.level.biome.Biome>, net.minecraft.world.level.biome.Biome);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokeinterface #515,  3          // InterfaceMethod net/minecraft/data/worldgen/BootstrapContext.register:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/Object;)Lnet/minecraft/core/Holder$Reference;
+       8: pop
+       9: return
+
+  private static void registerVillagerType(net.minecraft.resources.ResourceKey<net.minecraft.world.level.biome.Biome>, net.minecraft.world.entity.npc.VillagerType);
+    Code:
+       0: aload_0
+       1: invokestatic  #518                // Method biomesoplenty/init/ModConfig.isBiomeEnabled:(Lnet/minecraft/resources/ResourceKey;)Z
+       4: ifeq          18
+       7: getstatic     #522                // Field net/minecraft/world/entity/npc/VillagerType.BY_BIOME:Ljava/util/Map;
+      10: aload_0
+      11: aload_1
+      12: invokeinterface #526,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      17: pop
+      18: return
+
+  private static void registerHighlandsBiome(net.minecraft.resources.ResourceKey<net.minecraft.world.level.biome.Biome>, int);
+    Code:
+       0: aload_0
+       1: invokestatic  #518                // Method biomesoplenty/init/ModConfig.isBiomeEnabled:(Lnet/minecraft/resources/ResourceKey;)Z
+       4: ifeq          12
+       7: aload_0
+       8: iload_1
+       9: invokestatic  #532                // Method terrablender/api/EndBiomeRegistry.registerHighlandsBiome:(Lnet/minecraft/resources/ResourceKey;I)V
+      12: return
+}

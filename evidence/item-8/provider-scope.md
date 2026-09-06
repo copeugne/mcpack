@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 54 of 136. The exact queue below has 82 open rows.
+Supported provider dispositions: 55 of 136. The exact queue below has 81 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -543,7 +543,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `AI-Improvements-1.21-0.5.3.jar` | `ai-improvements-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing-entity AI goals and look control; no structure contribution. See small utility provider dispositions below. |
 | `Almanac-1.21.1-2-neoforge-1.5.2.jar` | `almanac-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Configuration/command support and existing item/entity behavior. No independent family. See additional shared provider dispositions below. |
 | `BetterEnd-21.0.31.jar` | BetterEnd source captures and shared BCLib/Wover consumers; test_betterend_feature_candidates.py | RESOLVED: Fourteen existing roots, the complete 128-template partition, feature candidates, common hooks and modifier consumers accounted for below. Named architectural and landmark grouping decisions remain open for canonical reconciliation. |
-| `BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar` | `bop-feature-scope` | Bind anomaly, monolith and bone-spine placement; settle landmark versus terrain disposition; reconcile remaining features. |
+| `BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar` | BOP entry, feature and delegated-material captures; test_bop_feature_candidates.py | RESOLVED: All registered features and packaged resources have contribution roles. Anomaly and monolith are landmark candidates; giant pumpkin and carved-pumpkin patches retain named decoration boundaries for canonical grouping. No structure roots, templates or pools. See final BOP disposition below. |
 | `CreateDragonsPlus-1.11.2b.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `CreeperOverhaul-neoforge-1.21.1-4.0.6.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `DungeonsArise-1.21.1-2.1.68-release.jar` | `wda-provider-scope` | RESOLVED: see WDA structure-provider disposition below. |
@@ -1916,3 +1916,93 @@ commands above. The final payload/carver case binds the exact archive contents
 and preserved source identities. Its initial overlong line was corrected before
 acceptance. Current census: 54 supported provider dispositions and 82 open rows.
 Item 8, final canonical grouping and eleven-attribute completion remain open.
+
+### Biomes O' Plenty named feature decisions
+
+The existing source capture 846bc09 is reused without recapture. The two focused
+tests bind its three exact class/disassembly identities to the frozen archive,
+packaged configured and placed features, biome consumers, live registries and
+the preserved dimension-biome-source membership capture.
+
+| Candidate | Scope decision and evidence |
+| --- | --- |
+| monolith | Retain one distinct landmark candidate. The direct writer builds a rectilinear obsidian form with variation in its dimensions; dimensional variation is not another design. Packaged placement uses rarity chance 4, in-square, MOTION_BLOCKING heightmap and biome filtering. Its sole packaged biome consumer is end_corruption, present in the captured End biome source. |
+| anomaly | Retain one distinct landmark candidate. In addition to modifying underlying terrain, the direct writer builds a cube of ANOMALY blocks with stable interior and randomized surface states. This is a discrete authored form, not merely a terrain-material replacement. Packaged placement uses rarity chance 2 with the same remaining modifiers as monolith; end_corruption is its sole packaged biome consumer and is in the captured End source. Block-state variation does not create separate families. |
+| bone_spine / nether_bone_spine | Natural decoration, excluded as an independent structure family. Both empty configurations use the same direct writer, which places a vertical bone-block column. The nether variant has a placed route consumed by visceral_heap, present in the captured Nether biome source. The plain configured ID has no reference anywhere in this archive's packaged JSON except the two type declarations. This is a bounded packaged-route result, not proof that another provider could never reference it. |
+
+All four configured IDs and the three connected placed IDs exist in the captured
+live registries. All 321 packaged placed features use string feature references,
+so there is no additional inline configured implementation hidden in those
+entries. Runtime registration and biome-source membership do not prove a
+successful placement or measured encounter frequency. Canonical inventory
+integration follows the census; these two landmarks are not added to the 887
+structure-registry roots, and unrelated Moog monoliths must not be merged by name.
+
+The initial exploratory path filter also matched biome tags and then an archive
+directory entry. Those two failed reads informed no accepted count. The tracked
+checks use the exact worldgen-biome prefix and only JSON files. The initial
+combined test exceeded the complexity limit; splitting the independent selector
+reference check resolved it. Two tests, Ruff and Basedpyright pass:
+
+```sh
+uv run pytest -q tests/item8/test_bop_feature_candidates.py
+uv run ruff check tests/item8/test_bop_feature_candidates.py
+uv run basedpyright tests/item8/test_bop_feature_candidates.py
+```
+
+BOP whole-provider coverage remains open for its remaining feature types and
+generation entry hooks. Current provider totals remain 54 resolved and 82 open.
+
+Entry reconciliation in d802cf9 now preserves and reproduces the normal loader,
+feature/carver registrars, biome setup, datagen subscriber and both declared
+fluid mixins. See sources/bop-generation-entries/README.md. Cave carving and
+fluid-type mixins add no authored family. The entry registration binds all 78
+custom types referenced by the packaged configured features. Its three extra
+types are dead_coral_tree, dead_coral_mushroom and dead_coral_claw, which have no
+standalone packaged configured entry. They remain in consumer reconciliation,
+not presumed inactive from that absence. The other thirteen configured types
+are vanilla types. These are feature-type counts, not family counts.
+
+The remaining BOP feature scope is therefore 75 custom configured types after
+the three named decisions above, plus the three registered coral consumers.
+Use their existing configurations and concrete placement roles; follow only
+unresolved candidate behavior, not unrelated plant/block gameplay. Whole payload
+accounting still needs its final join. Do not repeat the entry capture or the
+three named decisions. Three focused BOP cases pass; scoped Ruff and Basedpyright
+pass after fixing one long line and typing the regular-expression result.
+
+### Biomes O' Plenty provider census closure
+
+The remaining 78 registered feature writers are preserved in edc36d3, with
+shared tree and quartz material writers in 4314947. Both captures reproduce
+exactly using their source README commands. The complete 81-type registration
+now has an explicit, nonoverlapping role partition in the focused BOP test.
+
+| Contribution | Final provider disposition |
+| --- | --- |
+| anomaly and monolith | Two existing named landmark candidates, with their packaged placement and captured End biome-source membership bound above. |
+| big_pumpkin and pumpkin_patch | Two named decoration-boundary questions for canonical grouping. The first writes a giant pumpkin form, oak-log stem and persistent leaves. Its carved-pumpkin/jack-o-lantern references belong to the replaceable-space predicate, not writes to the giant form. The second scatters ordinary/carved pumpkins, jack-o-lanterns and persistent leaves. Both have packaged placement with rarity chance 1 and the pumpkin_patch biome consumer, present in the captured Overworld biome source. Do not silently equate either resource name with an accepted family. |
+| Terrain/mineral writers | Ground-material patches, cliffs, lakes/tidepools, rocks, quartz, vents and fumaroles. Direct materials and the quartz inner writer establish these roles. Bone spine remains natural decoration. |
+| Vegetation and ecological decoration | Trees, fungi, ground and hanging plants, vines, leaf piles, fallen logs/stumps, coral, barnacles, webs and a packed-mud termite mound. These writers supply natural materials/ecological forms rather than buildings or authored encounter layouts. Shared tree block-state providers are bound by the delegated-material capture. |
+| Three coral types without standalone configured files | All three are inline configured features inside the packaged dead_coral simple_random_selector. This resolves the earlier open consumer question; standalone-file absence did not imply inactivity. |
+| Cave and fluid hooks | The previously bound origin cave carver and two fluid-type mixins add no authored family. |
+| Remaining resources | Biomes and tags supply terrain, eligibility and ecological constraints; wolf variants, loot, recipes, advancements, damage types, trim materials, jukebox and data-map resources are content or attribute inputs. Assets, metadata and datagen caches are accounted for separately. They are not independent structure families. |
+
+The full frozen archive accounting covers all 4,542 non-directory files,
+including 317 classes and the complete worldgen partition: 279 configured
+features, 321 placed features, 69 biomes and one configured carver. The only
+loader/subscriber annotation classes are the already preserved NeoForge entry
+and datagen handler. There are no nested archives, service-provider files,
+structure definitions, template pools or NBT templates in the accounted payload,
+and no BOP root in the captured structure registry.
+
+Five focused cases, scoped Ruff and Basedpyright pass using the BOP commands
+above. The tests bind all 81 registered feature writers, exact source identities,
+the inline coral selector, named placement consumers and exhaustive payload
+categories. Two formatting findings (the regex flag alias and a long line) were
+corrected before acceptance. No new measurement, runtime world, baseline change
+or interpretation of rarity as observed encounter pacing was introduced.
+
+Provider census is now 55 resolved and 81 open. BOP contribution membership is
+accounted for; canonical pumpkin boundaries and final family integration remain
+separate from provider closure. Item 8 and its eleven-attribute gate remain open.

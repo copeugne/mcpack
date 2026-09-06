@@ -1,0 +1,176 @@
+Compiled from "LargeRoseQuartzFeature.java"
+public class biomesoplenty.worldgen.feature.misc.LargeRoseQuartzFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.LargeDripstoneConfiguration> {
+  public biomesoplenty.worldgen.feature.misc.LargeRoseQuartzFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.LargeDripstoneConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.LargeDripstoneConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      14: checkcast     #21                 // class net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration
+      17: astore        4
+      19: aload_1
+      20: invokevirtual #23                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      23: astore        5
+      25: aload_2
+      26: aload_3
+      27: invokestatic  #27                 // Method biomesoplenty/util/biome/RoseQuartzUtils.isEmptyOrWater:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+      30: ifne          35
+      33: iconst_0
+      34: ireturn
+      35: aload_2
+      36: aload_3
+      37: aload         4
+      39: getfield      #33                 // Field net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration.floorToCeilingSearchRange:I
+      42: invokedynamic #37,  0             // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+      47: invokedynamic #41,  0             // InvokeDynamic #1:test:()Ljava/util/function/Predicate;
+      52: invokestatic  #42                 // Method net/minecraft/world/level/levelgen/Column.scan:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/core/BlockPos;ILjava/util/function/Predicate;Ljava/util/function/Predicate;)Ljava/util/Optional;
+      55: astore        6
+      57: aload         6
+      59: invokevirtual #48                 // Method java/util/Optional.isPresent:()Z
+      62: ifeq          314
+      65: aload         6
+      67: invokevirtual #54                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      70: instanceof    #58                 // class net/minecraft/world/level/levelgen/Column$Range
+      73: ifeq          314
+      76: aload         6
+      78: invokevirtual #54                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      81: checkcast     #58                 // class net/minecraft/world/level/levelgen/Column$Range
+      84: astore        7
+      86: aload         7
+      88: invokevirtual #60                 // Method net/minecraft/world/level/levelgen/Column$Range.height:()I
+      91: iconst_4
+      92: if_icmpge     97
+      95: iconst_0
+      96: ireturn
+      97: aload         7
+      99: invokevirtual #60                 // Method net/minecraft/world/level/levelgen/Column$Range.height:()I
+     102: i2f
+     103: aload         4
+     105: getfield      #64                 // Field net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration.maxColumnRadiusToCaveHeightRatio:F
+     108: fmul
+     109: f2i
+     110: istore        8
+     112: iload         8
+     114: aload         4
+     116: getfield      #68                 // Field net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration.columnRadius:Lnet/minecraft/util/valueproviders/IntProvider;
+     119: invokevirtual #72                 // Method net/minecraft/util/valueproviders/IntProvider.getMinValue:()I
+     122: aload         4
+     124: getfield      #68                 // Field net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration.columnRadius:Lnet/minecraft/util/valueproviders/IntProvider;
+     127: invokevirtual #77                 // Method net/minecraft/util/valueproviders/IntProvider.getMaxValue:()I
+     130: invokestatic  #80                 // Method net/minecraft/util/Mth.clamp:(III)I
+     133: istore        9
+     135: aload         5
+     137: aload         4
+     139: getfield      #68                 // Field net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration.columnRadius:Lnet/minecraft/util/valueproviders/IntProvider;
+     142: invokevirtual #72                 // Method net/minecraft/util/valueproviders/IntProvider.getMinValue:()I
+     145: iload         9
+     147: invokestatic  #86                 // Method net/minecraft/util/Mth.randomBetweenInclusive:(Lnet/minecraft/util/RandomSource;II)I
+     150: istore        10
+     152: aload_3
+     153: aload         7
+     155: invokevirtual #90                 // Method net/minecraft/world/level/levelgen/Column$Range.ceiling:()I
+     158: iconst_1
+     159: isub
+     160: invokevirtual #93                 // Method net/minecraft/core/BlockPos.atY:(I)Lnet/minecraft/core/BlockPos;
+     163: iconst_0
+     164: aload         5
+     166: iload         10
+     168: aload         4
+     170: getfield      #99                 // Field net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration.stalactiteBluntness:Lnet/minecraft/util/valueproviders/FloatProvider;
+     173: aload         4
+     175: getfield      #103                // Field net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration.heightScale:Lnet/minecraft/util/valueproviders/FloatProvider;
+     178: invokestatic  #106                // Method makeRoseQuartz:(Lnet/minecraft/core/BlockPos;ZLnet/minecraft/util/RandomSource;ILnet/minecraft/util/valueproviders/FloatProvider;Lnet/minecraft/util/valueproviders/FloatProvider;)Lbiomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$LargeRoseQuartz;
+     181: astore        11
+     183: aload_3
+     184: aload         7
+     186: invokevirtual #112                // Method net/minecraft/world/level/levelgen/Column$Range.floor:()I
+     189: iconst_1
+     190: iadd
+     191: invokevirtual #93                 // Method net/minecraft/core/BlockPos.atY:(I)Lnet/minecraft/core/BlockPos;
+     194: iconst_1
+     195: aload         5
+     197: iload         10
+     199: aload         4
+     201: getfield      #115                // Field net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration.stalagmiteBluntness:Lnet/minecraft/util/valueproviders/FloatProvider;
+     204: aload         4
+     206: getfield      #103                // Field net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration.heightScale:Lnet/minecraft/util/valueproviders/FloatProvider;
+     209: invokestatic  #106                // Method makeRoseQuartz:(Lnet/minecraft/core/BlockPos;ZLnet/minecraft/util/RandomSource;ILnet/minecraft/util/valueproviders/FloatProvider;Lnet/minecraft/util/valueproviders/FloatProvider;)Lbiomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$LargeRoseQuartz;
+     212: astore        12
+     214: aload         11
+     216: aload         4
+     218: invokevirtual #118                // Method biomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$LargeRoseQuartz.isSuitableForWind:(Lnet/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration;)Z
+     221: ifeq          257
+     224: aload         12
+     226: aload         4
+     228: invokevirtual #118                // Method biomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$LargeRoseQuartz.isSuitableForWind:(Lnet/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration;)Z
+     231: ifeq          257
+     234: new           #124                // class biomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$WindOffsetter
+     237: dup
+     238: aload_3
+     239: invokevirtual #126                // Method net/minecraft/core/BlockPos.getY:()I
+     242: aload         5
+     244: aload         4
+     246: getfield      #129                // Field net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration.windSpeed:Lnet/minecraft/util/valueproviders/FloatProvider;
+     249: invokespecial #132                // Method biomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$WindOffsetter."<init>":(ILnet/minecraft/util/RandomSource;Lnet/minecraft/util/valueproviders/FloatProvider;)V
+     252: astore        13
+     254: goto          262
+     257: invokestatic  #135                // Method biomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$WindOffsetter.noWind:()Lbiomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$WindOffsetter;
+     260: astore        13
+     262: aload         11
+     264: aload_2
+     265: aload         13
+     267: invokevirtual #139                // Method biomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$LargeRoseQuartz.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary:(Lnet/minecraft/world/level/WorldGenLevel;Lbiomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$WindOffsetter;)Z
+     270: istore        14
+     272: aload         12
+     274: aload_2
+     275: aload         13
+     277: invokevirtual #139                // Method biomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$LargeRoseQuartz.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary:(Lnet/minecraft/world/level/WorldGenLevel;Lbiomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$WindOffsetter;)Z
+     280: istore        15
+     282: iload         14
+     284: ifeq          297
+     287: aload         11
+     289: aload_2
+     290: aload         5
+     292: aload         13
+     294: invokevirtual #143                // Method biomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$LargeRoseQuartz.placeBlocks:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lbiomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$WindOffsetter;)V
+     297: iload         15
+     299: ifeq          312
+     302: aload         12
+     304: aload_2
+     305: aload         5
+     307: aload         13
+     309: invokevirtual #143                // Method biomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$LargeRoseQuartz.placeBlocks:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lbiomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$WindOffsetter;)V
+     312: iconst_1
+     313: ireturn
+     314: iconst_0
+     315: ireturn
+
+  private static biomesoplenty.worldgen.feature.misc.LargeRoseQuartzFeature$LargeRoseQuartz makeRoseQuartz(net.minecraft.core.BlockPos, boolean, net.minecraft.util.RandomSource, int, net.minecraft.util.valueproviders.FloatProvider, net.minecraft.util.valueproviders.FloatProvider);
+    Code:
+       0: new           #119                // class biomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$LargeRoseQuartz
+       3: dup
+       4: aload_0
+       5: iload_1
+       6: iload_3
+       7: aload         4
+       9: aload_2
+      10: invokevirtual #147                // Method net/minecraft/util/valueproviders/FloatProvider.sample:(Lnet/minecraft/util/RandomSource;)F
+      13: f2d
+      14: aload         5
+      16: aload_2
+      17: invokevirtual #147                // Method net/minecraft/util/valueproviders/FloatProvider.sample:(Lnet/minecraft/util/RandomSource;)F
+      20: f2d
+      21: invokespecial #153                // Method biomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$LargeRoseQuartz."<init>":(Lnet/minecraft/core/BlockPos;ZIDD)V
+      24: areturn
+}
