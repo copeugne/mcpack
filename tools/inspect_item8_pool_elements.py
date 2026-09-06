@@ -35,6 +35,7 @@ ARCHIVES = frozenset(
     {
         MAPPED_SERVER.name,
         PATCHED_SERVER.name,
+        "chipped-neoforge-1.21.1-4.0.2.jar",
         "geckolib-neoforge-1.21.1-4.8.4.jar",
         "azurelibarmor-neo-1.21.1-3.1.2.jar",
         "player-animation-lib-forge-2.0.4+1.21.1.jar",
@@ -201,6 +202,13 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "earth/terrarium/chipped/Chipped.class",
+    "earth/terrarium/chipped/neoforge/ChippedNeoForge.class",
+    "earth/terrarium/chipped/client/neoforge/ChippedClientNeoForge.class",
+    "earth/terrarium/chipped/mixins/BlockBehaviourMixin.class",
+    "earth/terrarium/chipped/mixins/NetherWartBlockMixin.class",
+    "earth/terrarium/chipped/common/network/NetworkHandler.class",
+    "earth/terrarium/chipped/common/network/ServerboundCraftPacket.class",
     "software/bernie/geckolib/GeckoLibConstants.class",
     "software/bernie/geckolib/service/GeckoLibNetworking.class",
     "software/bernie/geckolib/GeckoLib.class",
