@@ -3626,3 +3626,42 @@ provider-check pattern to close this specific coverage gap. No new measurement,
 framework or runtime sample was added. Provider closure does not establish
 observed placement, the final canonical count or the eleven family attributes.
 Supported dispositions now cover 77 of 136 providers; 59 remain open.
+
+### Regions Unexplored packaged component boundary
+
+Provider coverage remains OPEN. Existing feature and surface contribution
+checks are reused. Source increment f479e0a retains fifteen loader/common-entry
+and mixin classes in sources/regions-unexplored-provider, extracted with a5efbc8.
+Manifest SHA-256:
+cb7185024530c1b77bbf71dbf9ccefb2ba1acf505688896a1803f0a4240a4894.
+Independent r1 matches every generated file. The new focused check binds these
+classes, including all three annotated entry classes and nine common mixins,
+to the retained archive and captured disassembly bytes.
+
+The pinned archive has 8,077 files and exactly one NBT template:
+regions_unexplored:trial_chambers/ashen. Its sole actual template-pool definition
+selects that template and the melee trial-spawner pool tag includes that pool.
+The existing pool-link check already proves the selected graph reaches this
+component from minecraft:trial_chambers; normal and ominous spawn potentials
+name regions_unexplored:ashen. Preserve this as an existing-family encounter
+component, not an independent family. No packaged structure or structure-set
+definition and no regions_unexplored runtime structure root are present.
+
+The provider's own worldgen directory contains 386 configured features,
+287 placed features, 78 biomes, ten processor lists, five noise definitions,
+one density function and one template pool. Tags and overlays are separate
+resource roles and must not be added to these definition counts.
+
+```sh
+uv run pytest -q tests/item8/test_regions_unexplored_candidates.py tests/item8/test_pool_links.py tests/item8/test_feature_modifier_references.py tests/item8/test_surface_rule_contribution.py
+uv run ruff check tests/item8/test_regions_unexplored_candidates.py
+uv run basedpyright tests/item8/test_regions_unexplored_candidates.py
+```
+
+41 cases pass (12.40 seconds). Scoped Ruff and Basedpyright pass after splitting
+one overlong line. No new measurement or repeated runtime capture. Remaining
+provider work: interpret the captured entry/mixin roles, account for custom
+features beyond the existing modifier subset, and reconcile the remaining
+payload including overlays and the embedded JSON5 library. The provider stays
+in the existing queue: 77 resolved and 59 open. Do not repeat the Ashen component
+or the previously accepted 34 feature-modifier and surface-rule analyses.
