@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Soaring view pilots exposed two concrete issues: arena is a 21-template assembly,
+not arena.nbt, and unculled buried island cells produced a 70 MB house SVG whose
+conversion exceeded three minutes. Stop that conversion and omit cells hidden
+behind occupied neighbors in the three visible directions for Soaring only.
+Keep the old BetterEnd default unchanged. Retain pilots as rejected, and use
+actual pyramid piece paths. This narrow rendering fix is needed for the existing
+layout comparison, not authorization for broader visual machinery.
+
+
 Canonical comparison requires block layouts omitted by the existing redacted
 palette catalog. Reuse the existing BetterEnd template renderer with a fixed
 Soaring selection for the 25 provisional designs. This is the existing diagram

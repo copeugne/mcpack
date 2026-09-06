@@ -17,7 +17,7 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
-def diagram(raw: bytes, title: str, origin_x: int, origin_y: int) -> str:
+def diagram(raw: bytes, title: str, origin_x: int, origin_y: int, *, exposed: bool = False) -> str:
     """Project occupied block cells; preserve material names in SVG tooltips."""
     root = decode_compound_nbt(gzip.decompress(raw))
     palette = cast("list[dict[str, JsonValue]]", root["palette"])
@@ -31,7 +31,10 @@ def diagram(raw: bytes, title: str, origin_x: int, origin_y: int) -> str:
         name = str(palette[cast("int", block["state"])]["Name"])
         if name not in {"minecraft:air", "minecraft:cave_air", "minecraft:structure_void"}:
             cells.append((x, y, z, name))
+    occupied: set[tuple[int, int, int]] = {(x, y, z) for x, y, z, _ in cells} if exposed else set()
     for x, y, z, name in sorted(cells, key=lambda cell: (sum(cell[:3]), cell[1])):
+        if exposed and all(p in occupied for p in ((x + 1, y, z), (x, y + 1, z), (x, y, z + 1))):
+            continue
         px = origin_x + 110 + (x - z) * step
         py = origin_y + 180 + (x + z) * step / 2 - y * step
         # Green is a visual hint only, not a membership classifier.
@@ -91,7 +94,8 @@ def main() -> None:
             for index, name in enumerate(names):
                 raw = archive.read(f"data/{namespace}/structure/{name}.nbt")
                 title = name if soaring else name.rsplit("/", 1)[1]
-                pieces.append(diagram(raw, title, 20 + index % 2 * 300, 35 + index // 2 * 300))
+                pieces.append(diagram(raw, title, 20 + index % 2 * 300,
+                                      35 + index // 2 * 300, exposed=soaring))
             height = ((count + 1) // 2) * 300
             svg = "".join((
                 f'<svg xmlns="http://www.w3.org/2000/svg" width="620" height="{height}">',
