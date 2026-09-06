@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Soaring membership decisions are settled: 26 groups cover its 35 runtime roots.
+The remaining explicit provisional queue is 75, consisting of Nether 22 and
+Voyager 53. Overall source group count is 409 after the pond merge. Reuse the
+existing pool/content evidence and five inspected Soaring sheets. Do not redo
+Soaring or provider audits. Next: Nether's named 22 grouping decisions, then
+Voyager 53, nonregistry reconciliation and the exact final named family list.
+The inventory needs regeneration from these current source decisions.
+
+
 Frozen and small pond now form mss:pond with their distinct placement settings
 preserved per variant. Nineteen affected tests and scoped quality checks pass.
 Explicit provisional remainder: 88. Source groups: 409. Derived inventory refresh

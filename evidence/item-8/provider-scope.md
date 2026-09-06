@@ -8786,3 +8786,35 @@ uv run pytest tests/item8/test_family_decisions.py -q -k 'soaring_pond or author
 uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
 uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
 ```
+
+## Remaining Soaring design decisions
+
+The remaining thirteen Soaring rationales now bind the selected pool graph,
+packaged contents and inspected views where applicable. The pyramid, well and
+portal retain distinct built forms. Jungle, leaf hollow, mangrove, muddy water
+hole, mushroom, palm island, red sand, taiga and volcano retain their documented
+site arrangements; furnishings and encounter contents prevent treating their
+landscape names as vegetation exclusions. The individual rationales state the
+specific comparisons, components and limitations. This is an interpretive site
+design grouping, not a claim that a different biome or template guarantees a family.
+
+Arena is one connected 21-template encounter assembly. Its ordinary/trial spawners,
+vaults and authored bogged are components of that site. The versioned pool elements
+for pieces 2, 3 and 4 select the original paths on 1.21.1. The 1_21_9 alternatives
+in the same resources do not change membership or add live templates on this stack.
+No new arena view or measurement was required to establish its assembly boundary.
+
+Soaring now has 26 working canonical groups covering all 35 runtime roots, including
+the existing tree and river variant groups and the new pond group. No Soaring
+rationale remains explicitly provisional. The remaining explicit queue is 75:
+Nether 22 and Voyager 53. Overall source groups remain 409. Nonregistry reconciliation,
+all required attributes and final Item 8 acceptance remain incomplete.
+
+All 74 existing and directly affected family-decision cases pass. Scoped Ruff
+and Basedpyright pass for the inventory builder.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
