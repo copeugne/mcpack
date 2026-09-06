@@ -1,0 +1,70 @@
+Compiled from "MengerSpongeFeature.java"
+public class org.betterx.betterend.world.features.MengerSpongeFeature extends org.betterx.betterend.world.features.UnderwaterPlantScatter<org.betterx.betterend.world.features.ScatterFeatureConfig> {
+  public org.betterx.betterend.world.features.MengerSpongeFeature();
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field org/betterx/betterend/world/features/ScatterFeatureConfig.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #7                  // Method org/betterx/betterend/world/features/UnderwaterPlantScatter."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  public void generate(org.betterx.betterend.world.features.ScatterFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_2
+       1: aload         4
+       3: getstatic     #13                 // Field org/betterx/betterend/registry/EndBlocks.MENGER_SPONGE_WET:Lnet/minecraft/world/level/block/Block;
+       6: invokestatic  #19                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;)V
+       9: aload_3
+      10: invokeinterface #25,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+      15: ifeq          84
+      18: getstatic     #31                 // Field org/betterx/bclib/util/BlocksHelper.DIRECTIONS:[Lnet/minecraft/core/Direction;
+      21: astore        5
+      23: aload         5
+      25: arraylength
+      26: istore        6
+      28: iconst_0
+      29: istore        7
+      31: iload         7
+      33: iload         6
+      35: if_icmpge     84
+      38: aload         5
+      40: iload         7
+      42: aaload
+      43: astore        8
+      45: aload         4
+      47: aload         8
+      49: invokevirtual #35                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      52: astore        9
+      54: aload_0
+      55: aload_2
+      56: aload         9
+      58: invokeinterface #41,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      63: invokevirtual #47                 // Method canReplace:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+      66: ifeq          78
+      69: aload_2
+      70: aload         9
+      72: getstatic     #13                 // Field org/betterx/betterend/registry/EndBlocks.MENGER_SPONGE_WET:Lnet/minecraft/world/level/block/Block;
+      75: invokestatic  #19                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;)V
+      78: iinc          7, 1
+      81: goto          31
+      84: return
+
+  private boolean canReplace(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_1
+       1: getstatic     #53                 // Field org/betterx/betterend/registry/EndBlocks.END_LOTUS_STEM:Lnet/minecraft/world/level/block/Block;
+       4: invokevirtual #56                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+       7: ifeq          12
+      10: iconst_0
+      11: ireturn
+      12: aload_1
+      13: invokevirtual #62                 // Method net/minecraft/world/level/block/state/BlockState.getFluidState:()Lnet/minecraft/world/level/material/FluidState;
+      16: invokevirtual #66                 // Method net/minecraft/world/level/material/FluidState.isEmpty:()Z
+      19: ifeq          29
+      22: aload_1
+      23: invokevirtual #71                 // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+      26: ifeq          33
+      29: iconst_1
+      30: goto          34
+      33: iconst_0
+      34: ireturn
+}

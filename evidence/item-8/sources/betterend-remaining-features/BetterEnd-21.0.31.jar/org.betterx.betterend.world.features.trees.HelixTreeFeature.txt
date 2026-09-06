@@ -1,0 +1,829 @@
+Compiled from "HelixTreeFeature.java"
+public class org.betterx.betterend.world.features.trees.HelixTreeFeature extends org.betterx.bclib.api.v2.levelgen.features.features.DefaultFeature {
+  public org.betterx.betterend.world.features.trees.HelixTreeFeature();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method org/betterx/bclib/api/v2/levelgen/features/features/DefaultFeature."<init>":()V
+       4: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      14: astore        4
+      16: aload         4
+      18: aload_3
+      19: invokevirtual #21                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      22: invokeinterface #26,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      27: getstatic     #32                 // Field net/minecraft/tags/BlockTags.NYLIUM:Lnet/minecraft/tags/TagKey;
+      30: invokevirtual #38                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      33: ifne          38
+      36: iconst_0
+      37: ireturn
+      38: aload         4
+      40: aload_3
+      41: getstatic     #44                 // Field AIR:Lnet/minecraft/world/level/block/state/BlockState;
+      44: invokestatic  #50                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      47: aload_2
+      48: invokeinterface #56,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      53: ldc           #64                 // float 6.2831855f
+      55: fmul
+      56: fstore        5
+      58: ldc           #65                 // float 4.5f
+      60: ldc           #66                 // float 6.0f
+      62: aload_2
+      63: invokestatic  #67                 // Method org/betterx/bclib/util/MHelper.randRange:(FFLnet/minecraft/util/RandomSource;)F
+      66: fstore        6
+      68: ldc           #71                 // float 0.5f
+      70: fconst_1
+      71: aload_2
+      72: invokestatic  #67                 // Method org/betterx/bclib/util/MHelper.randRange:(FFLnet/minecraft/util/RandomSource;)F
+      75: fstore        7
+      77: new           #72                 // class java/util/ArrayList
+      80: dup
+      81: bipush        10
+      83: invokespecial #74                 // Method java/util/ArrayList."<init>":(I)V
+      86: astore        10
+      88: iconst_0
+      89: istore        11
+      91: iload         11
+      93: bipush        10
+      95: if_icmpge     174
+      98: ldc           #77                 // float 0.9f
+     100: iload         11
+     102: i2f
+     103: ldc           #78                 // float 0.1f
+     105: fmul
+     106: fsub
+     107: fload         6
+     109: fmul
+     110: fstore        12
+     112: iload         11
+     114: i2f
+     115: fload         5
+     117: fadd
+     118: f2d
+     119: invokestatic  #79                 // Method java/lang/Math.sin:(D)D
+     122: d2f
+     123: fload         12
+     125: fmul
+     126: fstore        8
+     128: iload         11
+     130: i2f
+     131: fload         5
+     133: fadd
+     134: f2d
+     135: invokestatic  #85                 // Method java/lang/Math.cos:(D)D
+     138: d2f
+     139: fload         12
+     141: fmul
+     142: fstore        9
+     144: aload         10
+     146: new           #88                 // class org/joml/Vector3f
+     149: dup
+     150: fload         8
+     152: iload         11
+     154: iconst_2
+     155: imul
+     156: i2f
+     157: fload         9
+     159: invokespecial #90                 // Method org/joml/Vector3f."<init>":(FFF)V
+     162: invokeinterface #93,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     167: pop
+     168: iinc          11, 1
+     171: goto          91
+     174: aload         10
+     176: ldc           #99                 // float 1.7f
+     178: ldc           #71                 // float 0.5f
+     180: invokedynamic #100,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+     185: invokestatic  #104                // Method org/betterx/bclib/util/SplineHelper.buildSDF:(Ljava/util/List;FFLjava/util/function/Function;)Lorg/betterx/bclib/sdf/SDF;
+     188: astore        11
+     190: new           #110                // class org/betterx/bclib/sdf/operator/SDFRotation
+     193: dup
+     194: invokespecial #112                // Method org/betterx/bclib/sdf/operator/SDFRotation."<init>":()V
+     197: getstatic     #113                // Field com/mojang/math/Axis.YP:Lcom/mojang/math/Axis;
+     200: ldc           #119                // float 3.1415927f
+     202: invokevirtual #120                // Method org/betterx/bclib/sdf/operator/SDFRotation.setRotation:(Lcom/mojang/math/Axis;F)Lorg/betterx/bclib/sdf/operator/SDFRotation;
+     205: aload         11
+     207: invokevirtual #124                // Method org/betterx/bclib/sdf/operator/SDFRotation.setSource:(Lorg/betterx/bclib/sdf/SDF;)Lorg/betterx/bclib/sdf/operator/SDFUnary;
+     210: astore        12
+     212: new           #128                // class org/betterx/bclib/sdf/operator/SDFUnion
+     215: dup
+     216: invokespecial #130                // Method org/betterx/bclib/sdf/operator/SDFUnion."<init>":()V
+     219: aload         12
+     221: invokevirtual #131                // Method org/betterx/bclib/sdf/operator/SDFUnion.setSourceA:(Lorg/betterx/bclib/sdf/SDF;)Lorg/betterx/bclib/sdf/operator/SDFBinary;
+     224: aload         11
+     226: invokevirtual #135                // Method org/betterx/bclib/sdf/operator/SDFBinary.setSourceB:(Lorg/betterx/bclib/sdf/SDF;)Lorg/betterx/bclib/sdf/operator/SDFBinary;
+     229: astore        11
+     231: aload         10
+     233: aload         10
+     235: invokeinterface #140,  1          // InterfaceMethod java/util/List.size:()I
+     240: iconst_1
+     241: isub
+     242: invokeinterface #144,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     247: checkcast     #88                 // class org/joml/Vector3f
+     250: astore        13
+     252: fconst_0
+     253: fconst_0
+     254: fconst_0
+     255: fconst_0
+     256: ldc           #148                // float 20.0f
+     258: fconst_0
+     259: iconst_5
+     260: invokestatic  #149                // Method org/betterx/bclib/util/SplineHelper.makeSpline:(FFFFFFI)Ljava/util/List;
+     263: astore        14
+     265: aload         14
+     267: fconst_1
+     268: ldc           #71                 // float 0.5f
+     270: invokedynamic #153,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+     275: invokestatic  #104                // Method org/betterx/bclib/util/SplineHelper.buildSDF:(Ljava/util/List;FFLjava/util/function/Function;)Lorg/betterx/bclib/sdf/SDF;
+     278: astore        15
+     280: new           #154                // class org/betterx/bclib/sdf/operator/SDFTranslate
+     283: dup
+     284: invokespecial #156                // Method org/betterx/bclib/sdf/operator/SDFTranslate."<init>":()V
+     287: aload         13
+     289: invokevirtual #157                // Method org/joml/Vector3f.x:()F
+     292: aload         13
+     294: invokevirtual #160                // Method org/joml/Vector3f.y:()F
+     297: aload         13
+     299: invokevirtual #163                // Method org/joml/Vector3f.z:()F
+     302: invokevirtual #166                // Method org/betterx/bclib/sdf/operator/SDFTranslate.setTranslate:(FFF)Lorg/betterx/bclib/sdf/operator/SDFTranslate;
+     305: aload         15
+     307: invokevirtual #170                // Method org/betterx/bclib/sdf/operator/SDFTranslate.setSource:(Lorg/betterx/bclib/sdf/SDF;)Lorg/betterx/bclib/sdf/operator/SDFUnary;
+     310: astore        15
+     312: new           #171                // class org/betterx/bclib/sdf/operator/SDFSmoothUnion
+     315: dup
+     316: invokespecial #173                // Method org/betterx/bclib/sdf/operator/SDFSmoothUnion."<init>":()V
+     319: ldc           #174                // float 3.0f
+     321: invokevirtual #175                // Method org/betterx/bclib/sdf/operator/SDFSmoothUnion.setRadius:(F)Lorg/betterx/bclib/sdf/operator/SDFSmoothUnion;
+     324: aload         11
+     326: invokevirtual #179                // Method org/betterx/bclib/sdf/operator/SDFSmoothUnion.setSourceA:(Lorg/betterx/bclib/sdf/SDF;)Lorg/betterx/bclib/sdf/operator/SDFBinary;
+     329: aload         15
+     331: invokevirtual #135                // Method org/betterx/bclib/sdf/operator/SDFBinary.setSourceB:(Lorg/betterx/bclib/sdf/SDF;)Lorg/betterx/bclib/sdf/operator/SDFBinary;
+     334: astore        11
+     336: new           #180                // class org/betterx/bclib/sdf/operator/SDFScale
+     339: dup
+     340: invokespecial #182                // Method org/betterx/bclib/sdf/operator/SDFScale."<init>":()V
+     343: fload         7
+     345: invokevirtual #183                // Method org/betterx/bclib/sdf/operator/SDFScale.setScale:(F)Lorg/betterx/bclib/sdf/operator/SDFScale;
+     348: aload         11
+     350: invokevirtual #187                // Method org/betterx/bclib/sdf/operator/SDFScale.setSource:(Lorg/betterx/bclib/sdf/SDF;)Lorg/betterx/bclib/sdf/operator/SDFUnary;
+     353: astore        11
+     355: ldc           #188                // float 30.0f
+     357: fload         7
+     359: fmul
+     360: fstore        8
+     362: ldc           #189                // float -20.0f
+     364: fload         7
+     366: fmul
+     367: fstore        16
+     369: ldc           #190                // float 100.0f
+     371: fload         7
+     373: fmul
+     374: fstore        17
+     376: aload         11
+     378: aload_0
+     379: invokevirtual #191                // Method postProcessFunc:()Ljava/util/function/Function;
+     382: invokevirtual #194                // Method org/betterx/bclib/sdf/SDF.addPostProcess:(Ljava/util/function/Function;)Lorg/betterx/bclib/sdf/SDF;
+     385: aload         4
+     387: aload_3
+     388: new           #200                // class net/minecraft/world/phys/AABB
+     391: dup
+     392: aload_3
+     393: fload         8
+     395: fneg
+     396: f2i
+     397: fload         16
+     399: f2i
+     400: fload         8
+     402: fneg
+     403: f2i
+     404: invokevirtual #202                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     407: invokevirtual #206                // Method net/minecraft/core/BlockPos.getCenter:()Lnet/minecraft/world/phys/Vec3;
+     410: aload_3
+     411: fload         8
+     413: f2i
+     414: fload         17
+     416: f2i
+     417: fload         8
+     419: f2i
+     420: invokevirtual #202                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     423: invokevirtual #206                // Method net/minecraft/core/BlockPos.getCenter:()Lnet/minecraft/world/phys/Vec3;
+     426: invokespecial #210                // Method net/minecraft/world/phys/AABB."<init>":(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V
+     429: invokevirtual #213                // Method org/betterx/bclib/sdf/SDF.fillArea:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/AABB;)V
+     432: aload         10
+     434: fload         7
+     436: invokestatic  #217                // Method org/betterx/bclib/util/SplineHelper.scale:(Ljava/util/List;F)V
+     439: aload         10
+     441: aload         4
+     443: getstatic     #221                // Field org/betterx/betterend/registry/EndBlocks.HELIX_TREE:Lorg/betterx/betterend/complexmaterials/EndWoodenComplexMaterial;
+     446: invokevirtual #227                // Method org/betterx/betterend/complexmaterials/EndWoodenComplexMaterial.getBark:()Lnet/minecraft/world/level/block/Block;
+     449: invokevirtual #233                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     452: aload_3
+     453: invokedynamic #239,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+     458: invokestatic  #240                // Method org/betterx/bclib/util/SplineHelper.fillSplineForce:(Ljava/util/List;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Ljava/util/function/Function;)V
+     461: aload         10
+     463: ldc           #119                // float 3.1415927f
+     465: invokestatic  #244                // Method org/betterx/bclib/util/SplineHelper.rotateSpline:(Ljava/util/List;F)V
+     468: aload         10
+     470: aload         4
+     472: getstatic     #221                // Field org/betterx/betterend/registry/EndBlocks.HELIX_TREE:Lorg/betterx/betterend/complexmaterials/EndWoodenComplexMaterial;
+     475: invokevirtual #227                // Method org/betterx/betterend/complexmaterials/EndWoodenComplexMaterial.getBark:()Lnet/minecraft/world/level/block/Block;
+     478: invokevirtual #233                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     481: aload_3
+     482: invokedynamic #239,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+     487: invokestatic  #240                // Method org/betterx/bclib/util/SplineHelper.fillSplineForce:(Ljava/util/List;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Ljava/util/function/Function;)V
+     490: aload         14
+     492: fload         7
+     494: invokestatic  #217                // Method org/betterx/bclib/util/SplineHelper.scale:(Ljava/util/List;F)V
+     497: aload_3
+     498: aload         13
+     500: invokevirtual #157                // Method org/joml/Vector3f.x:()F
+     503: f2d
+     504: ldc2_w        #247                // double 0.5d
+     507: dadd
+     508: d2i
+     509: aload         13
+     511: invokevirtual #160                // Method org/joml/Vector3f.y:()F
+     514: f2d
+     515: ldc2_w        #247                // double 0.5d
+     518: dadd
+     519: d2i
+     520: aload         13
+     522: invokevirtual #163                // Method org/joml/Vector3f.z:()F
+     525: f2d
+     526: ldc2_w        #247                // double 0.5d
+     529: dadd
+     530: d2i
+     531: invokevirtual #202                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     534: astore        18
+     536: aload         14
+     538: aload         4
+     540: getstatic     #221                // Field org/betterx/betterend/registry/EndBlocks.HELIX_TREE:Lorg/betterx/betterend/complexmaterials/EndWoodenComplexMaterial;
+     543: invokevirtual #227                // Method org/betterx/betterend/complexmaterials/EndWoodenComplexMaterial.getBark:()Lnet/minecraft/world/level/block/Block;
+     546: invokevirtual #233                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     549: aload         18
+     551: invokedynamic #239,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+     556: invokestatic  #240                // Method org/betterx/bclib/util/SplineHelper.fillSplineForce:(Ljava/util/List;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Ljava/util/function/Function;)V
+     559: aload         10
+     561: invokeinterface #249,  1          // InterfaceMethod java/util/List.clear:()V
+     566: ldc           #252                // float 8.0f
+     568: ldc           #253                // float 11.0f
+     570: aload_2
+     571: invokestatic  #67                 // Method org/betterx/bclib/util/MHelper.randRange:(FFLnet/minecraft/util/RandomSource;)F
+     574: fstore        19
+     576: bipush        20
+     578: bipush        30
+     580: aload_2
+     581: invokestatic  #254                // Method org/betterx/bclib/util/MHelper.randRange:(IILnet/minecraft/util/RandomSource;)I
+     584: istore        20
+     586: ldc           #148                // float 20.0f
+     588: iload         20
+     590: i2f
+     591: fdiv
+     592: fload         7
+     594: fmul
+     595: ldc_w         #257                // float 1.75f
+     598: fmul
+     599: fstore        21
+     601: ldc           #148                // float 20.0f
+     603: iload         20
+     605: i2f
+     606: fdiv
+     607: ldc_w         #258                // float 0.05f
+     610: fmul
+     611: fstore        22
+     613: iconst_0
+     614: istore        23
+     616: iload         23
+     618: iload         20
+     620: if_icmpgt     734
+     623: fconst_1
+     624: iload         23
+     626: i2f
+     627: fload         22
+     629: fmul
+     630: fsub
+     631: fstore        24
+     633: fload         24
+     635: fload         24
+     637: fmul
+     638: fconst_2
+     639: fmul
+     640: fconst_1
+     641: fsub
+     642: fstore        24
+     644: fload         24
+     646: fload         24
+     648: fmul
+     649: fstore        24
+     651: fconst_1
+     652: fload         24
+     654: fsub
+     655: fload         19
+     657: fmul
+     658: fload         7
+     660: fmul
+     661: fstore        24
+     663: iload         23
+     665: i2f
+     666: ldc_w         #259                // float 0.45f
+     669: fmul
+     670: fload         5
+     672: fadd
+     673: f2d
+     674: invokestatic  #79                 // Method java/lang/Math.sin:(D)D
+     677: d2f
+     678: fload         24
+     680: fmul
+     681: fstore        8
+     683: iload         23
+     685: i2f
+     686: ldc_w         #259                // float 0.45f
+     689: fmul
+     690: fload         5
+     692: fadd
+     693: f2d
+     694: invokestatic  #85                 // Method java/lang/Math.cos:(D)D
+     697: d2f
+     698: fload         24
+     700: fmul
+     701: fstore        9
+     703: aload         10
+     705: new           #88                 // class org/joml/Vector3f
+     708: dup
+     709: fload         8
+     711: iload         23
+     713: i2f
+     714: fload         21
+     716: fmul
+     717: fload         9
+     719: invokespecial #90                 // Method org/joml/Vector3f."<init>":(FFF)V
+     722: invokeinterface #93,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     727: pop
+     728: iinc          23, 1
+     731: goto          616
+     734: new           #88                 // class org/joml/Vector3f
+     737: dup
+     738: invokespecial #260                // Method org/joml/Vector3f."<init>":()V
+     741: astore        23
+     743: new           #88                 // class org/joml/Vector3f
+     746: dup
+     747: invokespecial #260                // Method org/joml/Vector3f."<init>":()V
+     750: astore        24
+     752: aload         10
+     754: iconst_0
+     755: invokeinterface #144,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     760: checkcast     #88                 // class org/joml/Vector3f
+     763: astore        13
+     765: getstatic     #261                // Field org/betterx/betterend/registry/EndBlocks.HELIX_TREE_LEAVES:Lnet/minecraft/world/level/block/Block;
+     768: invokevirtual #233                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     771: astore        25
+     773: iconst_1
+     774: istore        26
+     776: iload         26
+     778: aload         10
+     780: invokeinterface #140,  1          // InterfaceMethod java/util/List.size:()I
+     785: if_icmpge     1148
+     788: aload         10
+     790: iload         26
+     792: invokeinterface #144,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     797: checkcast     #88                 // class org/joml/Vector3f
+     800: astore        27
+     802: aload         13
+     804: invokevirtual #160                // Method org/joml/Vector3f.y:()F
+     807: f2d
+     808: invokestatic  #265                // Method org/betterx/bclib/util/MHelper.floor:(D)I
+     811: istore        28
+     813: aload         27
+     815: invokevirtual #160                // Method org/joml/Vector3f.y:()F
+     818: f2d
+     819: invokestatic  #265                // Method org/betterx/bclib/util/MHelper.floor:(D)I
+     822: istore        29
+     824: aload         27
+     826: invokevirtual #160                // Method org/joml/Vector3f.y:()F
+     829: aload         13
+     831: invokevirtual #160                // Method org/joml/Vector3f.y:()F
+     834: fsub
+     835: fstore        30
+     837: iload         28
+     839: i2f
+     840: fstore        31
+     842: fload         31
+     844: iload         29
+     846: i2f
+     847: fcmpg
+     848: ifgt          1138
+     851: aload         23
+     853: fconst_0
+     854: fload         31
+     856: fconst_0
+     857: invokevirtual #269                // Method org/joml/Vector3f.set:(FFF)Lorg/joml/Vector3f;
+     860: pop
+     861: fload         31
+     863: iload         28
+     865: i2f
+     866: fsub
+     867: fload         30
+     869: fdiv
+     870: fstore        32
+     872: fload         32
+     874: aload         13
+     876: invokevirtual #157                // Method org/joml/Vector3f.x:()F
+     879: aload         27
+     881: invokevirtual #157                // Method org/joml/Vector3f.x:()F
+     884: invokestatic  #273                // Method net/minecraft/util/Mth.lerp:(FFF)F
+     887: fstore        33
+     889: fload         32
+     891: aload         13
+     893: invokevirtual #163                // Method org/joml/Vector3f.z:()F
+     896: aload         27
+     898: invokevirtual #163                // Method org/joml/Vector3f.z:()F
+     901: invokestatic  #273                // Method net/minecraft/util/Mth.lerp:(FFF)F
+     904: fstore        34
+     906: aload         24
+     908: fload         33
+     910: fload         31
+     912: fload         34
+     914: invokevirtual #269                // Method org/joml/Vector3f.set:(FFF)Lorg/joml/Vector3f;
+     917: pop
+     918: aload_0
+     919: aload         23
+     921: aload         24
+     923: aload         4
+     925: aload         25
+     927: aload         18
+     929: iload         26
+     931: iconst_2
+     932: idiv
+     933: iconst_1
+     934: isub
+     935: invokevirtual #279                // Method fillLine:(Lorg/joml/Vector3f;Lorg/joml/Vector3f;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;I)V
+     938: fload         33
+     940: invokestatic  #283                // Method java/lang/Math.abs:(F)F
+     943: fstore        35
+     945: fload         34
+     947: invokestatic  #283                // Method java/lang/Math.abs:(F)F
+     950: fstore        36
+     952: fload         35
+     954: fload         36
+     956: fcmpl
+     957: ifle          1035
+     960: aload         23
+     962: aload         23
+     964: invokevirtual #157                // Method org/joml/Vector3f.x:()F
+     967: aload         23
+     969: invokevirtual #160                // Method org/joml/Vector3f.y:()F
+     972: aload         23
+     974: invokevirtual #163                // Method org/joml/Vector3f.z:()F
+     977: fload         36
+     979: fadd
+     980: fconst_0
+     981: fcmpl
+     982: ifle          989
+     985: fconst_1
+     986: goto          992
+     989: ldc_w         #287                // float -1.0f
+     992: invokevirtual #269                // Method org/joml/Vector3f.set:(FFF)Lorg/joml/Vector3f;
+     995: pop
+     996: aload         24
+     998: aload         24
+    1000: invokevirtual #157                // Method org/joml/Vector3f.x:()F
+    1003: aload         24
+    1005: invokevirtual #160                // Method org/joml/Vector3f.y:()F
+    1008: aload         24
+    1010: invokevirtual #163                // Method org/joml/Vector3f.z:()F
+    1013: fload         36
+    1015: fadd
+    1016: fconst_0
+    1017: fcmpl
+    1018: ifle          1025
+    1021: fconst_1
+    1022: goto          1028
+    1025: ldc_w         #287                // float -1.0f
+    1028: invokevirtual #269                // Method org/joml/Vector3f.set:(FFF)Lorg/joml/Vector3f;
+    1031: pop
+    1032: goto          1107
+    1035: aload         23
+    1037: aload         23
+    1039: invokevirtual #157                // Method org/joml/Vector3f.x:()F
+    1042: fload         35
+    1044: fadd
+    1045: fconst_0
+    1046: fcmpl
+    1047: ifle          1054
+    1050: fconst_1
+    1051: goto          1057
+    1054: ldc_w         #287                // float -1.0f
+    1057: aload         23
+    1059: invokevirtual #160                // Method org/joml/Vector3f.y:()F
+    1062: aload         23
+    1064: invokevirtual #163                // Method org/joml/Vector3f.z:()F
+    1067: invokevirtual #269                // Method org/joml/Vector3f.set:(FFF)Lorg/joml/Vector3f;
+    1070: pop
+    1071: aload         24
+    1073: aload         24
+    1075: invokevirtual #157                // Method org/joml/Vector3f.x:()F
+    1078: fload         35
+    1080: fadd
+    1081: fconst_0
+    1082: fcmpl
+    1083: ifle          1090
+    1086: fconst_1
+    1087: goto          1093
+    1090: ldc_w         #287                // float -1.0f
+    1093: aload         24
+    1095: invokevirtual #160                // Method org/joml/Vector3f.y:()F
+    1098: aload         24
+    1100: invokevirtual #163                // Method org/joml/Vector3f.z:()F
+    1103: invokevirtual #269                // Method org/joml/Vector3f.set:(FFF)Lorg/joml/Vector3f;
+    1106: pop
+    1107: aload_0
+    1108: aload         23
+    1110: aload         24
+    1112: aload         4
+    1114: aload         25
+    1116: aload         18
+    1118: iload         26
+    1120: iconst_2
+    1121: idiv
+    1122: iconst_1
+    1123: isub
+    1124: invokevirtual #279                // Method fillLine:(Lorg/joml/Vector3f;Lorg/joml/Vector3f;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;I)V
+    1127: fload         31
+    1129: ldc_w         #288                // float 0.2f
+    1132: fadd
+    1133: fstore        31
+    1135: goto          842
+    1138: aload         27
+    1140: astore        13
+    1142: iinc          26, 1
+    1145: goto          776
+    1148: aload         25
+    1150: getstatic     #289                // Field org/betterx/betterend/blocks/HelixTreeLeavesBlock.COLOR:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+    1153: bipush        7
+    1155: invokestatic  #295                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+    1158: invokevirtual #301                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+    1161: checkcast     #39                 // class net/minecraft/world/level/block/state/BlockState
+    1164: astore        25
+    1166: aload         18
+    1168: iconst_0
+    1169: aload         13
+    1171: invokevirtual #160                // Method org/joml/Vector3f.y:()F
+    1174: f2i
+    1175: iconst_0
+    1176: invokevirtual #202                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+    1179: astore        18
+    1181: aload         4
+    1183: aload         18
+    1185: invokeinterface #26,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+    1190: invokevirtual #305                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+    1193: ifeq          1267
+    1196: aload         4
+    1198: aload         18
+    1200: aload         25
+    1202: invokestatic  #50                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+    1205: aload         18
+    1207: invokevirtual #309                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+    1210: astore        18
+    1212: aload         4
+    1214: aload         18
+    1216: invokeinterface #26,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+    1221: invokevirtual #305                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+    1224: ifeq          1267
+    1227: aload         4
+    1229: aload         18
+    1231: aload         25
+    1233: invokestatic  #50                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+    1236: aload         18
+    1238: invokevirtual #309                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+    1241: astore        18
+    1243: aload         4
+    1245: aload         18
+    1247: invokeinterface #26,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+    1252: invokevirtual #305                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+    1255: ifeq          1267
+    1258: aload         4
+    1260: aload         18
+    1262: aload         25
+    1264: invokestatic  #50                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+    1267: iconst_1
+    1268: ireturn
+
+  private void fillLine(org.joml.Vector3f, org.joml.Vector3f, net.minecraft.world.level.WorldGenLevel, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos, int);
+    Code:
+       0: aload_2
+       1: invokevirtual #157                // Method org/joml/Vector3f.x:()F
+       4: aload_1
+       5: invokevirtual #157                // Method org/joml/Vector3f.x:()F
+       8: fsub
+       9: fstore        7
+      11: aload_2
+      12: invokevirtual #160                // Method org/joml/Vector3f.y:()F
+      15: aload_1
+      16: invokevirtual #160                // Method org/joml/Vector3f.y:()F
+      19: fsub
+      20: fstore        8
+      22: aload_2
+      23: invokevirtual #163                // Method org/joml/Vector3f.z:()F
+      26: aload_1
+      27: invokevirtual #163                // Method org/joml/Vector3f.z:()F
+      30: fsub
+      31: fstore        9
+      33: fload         7
+      35: invokestatic  #283                // Method java/lang/Math.abs:(F)F
+      38: fload         8
+      40: invokestatic  #283                // Method java/lang/Math.abs:(F)F
+      43: fload         9
+      45: invokestatic  #283                // Method java/lang/Math.abs:(F)F
+      48: invokestatic  #312                // Method org/betterx/bclib/util/MHelper.max:(FFF)F
+      51: fstore        10
+      53: fload         10
+      55: fconst_1
+      56: fadd
+      57: f2d
+      58: invokestatic  #265                // Method org/betterx/bclib/util/MHelper.floor:(D)I
+      61: istore        11
+      63: fload         7
+      65: fload         10
+      67: fdiv
+      68: fstore        7
+      70: fload         8
+      72: fload         10
+      74: fdiv
+      75: fstore        8
+      77: fload         9
+      79: fload         10
+      81: fdiv
+      82: fstore        9
+      84: aload_1
+      85: invokevirtual #157                // Method org/joml/Vector3f.x:()F
+      88: fstore        12
+      90: aload_1
+      91: invokevirtual #160                // Method org/joml/Vector3f.y:()F
+      94: fstore        13
+      96: aload_1
+      97: invokevirtual #163                // Method org/joml/Vector3f.z:()F
+     100: fstore        14
+     102: new           #315                // class net/minecraft/core/BlockPos$MutableBlockPos
+     105: dup
+     106: invokespecial #317                // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+     109: astore        15
+     111: iconst_0
+     112: istore        16
+     114: iload         16
+     116: iload         11
+     118: if_icmpge     253
+     121: aload         15
+     123: fload         12
+     125: aload         5
+     127: invokevirtual #318                // Method net/minecraft/core/BlockPos.getX:()I
+     130: i2f
+     131: fadd
+     132: f2d
+     133: fload         13
+     135: aload         5
+     137: invokevirtual #321                // Method net/minecraft/core/BlockPos.getY:()I
+     140: i2f
+     141: fadd
+     142: f2d
+     143: fload         14
+     145: aload         5
+     147: invokevirtual #324                // Method net/minecraft/core/BlockPos.getZ:()I
+     150: i2f
+     151: fadd
+     152: f2d
+     153: invokevirtual #327                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(DDD)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     156: pop
+     157: iload         16
+     159: i2f
+     160: iload         11
+     162: i2f
+     163: fdiv
+     164: ldc_w         #330                // float 7.0f
+     167: fmul
+     168: ldc           #71                 // float 0.5f
+     170: fadd
+     171: f2d
+     172: invokestatic  #265                // Method org/betterx/bclib/util/MHelper.floor:(D)I
+     175: iload         6
+     177: iadd
+     178: istore        17
+     180: iload         17
+     182: iconst_0
+     183: bipush        7
+     185: invokestatic  #331                // Method net/minecraft/util/Mth.clamp:(III)I
+     188: istore        17
+     190: aload_3
+     191: aload         15
+     193: invokeinterface #26,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     198: invokevirtual #335                // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+     201: ifeq          226
+     204: aload_3
+     205: aload         15
+     207: aload         4
+     209: getstatic     #289                // Field org/betterx/betterend/blocks/HelixTreeLeavesBlock.COLOR:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+     212: iload         17
+     214: invokestatic  #295                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     217: invokevirtual #301                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     220: checkcast     #39                 // class net/minecraft/world/level/block/state/BlockState
+     223: invokestatic  #50                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     226: fload         12
+     228: fload         7
+     230: fadd
+     231: fstore        12
+     233: fload         13
+     235: fload         8
+     237: fadd
+     238: fstore        13
+     240: fload         14
+     242: fload         9
+     244: fadd
+     245: fstore        14
+     247: iinc          16, 1
+     250: goto          114
+     253: aload         15
+     255: aload_2
+     256: invokevirtual #157                // Method org/joml/Vector3f.x:()F
+     259: aload         5
+     261: invokevirtual #318                // Method net/minecraft/core/BlockPos.getX:()I
+     264: i2f
+     265: fadd
+     266: f2d
+     267: aload_2
+     268: invokevirtual #160                // Method org/joml/Vector3f.y:()F
+     271: aload         5
+     273: invokevirtual #321                // Method net/minecraft/core/BlockPos.getY:()I
+     276: i2f
+     277: fadd
+     278: f2d
+     279: aload_2
+     280: invokevirtual #163                // Method org/joml/Vector3f.z:()F
+     283: aload         5
+     285: invokevirtual #324                // Method net/minecraft/core/BlockPos.getZ:()I
+     288: i2f
+     289: fadd
+     290: f2d
+     291: invokevirtual #327                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(DDD)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     294: pop
+     295: aload_3
+     296: aload         15
+     298: invokeinterface #26,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     303: invokevirtual #335                // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+     306: ifeq          331
+     309: aload_3
+     310: aload         15
+     312: aload         4
+     314: getstatic     #289                // Field org/betterx/betterend/blocks/HelixTreeLeavesBlock.COLOR:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+     317: bipush        7
+     319: invokestatic  #295                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     322: invokevirtual #301                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     325: checkcast     #39                 // class net/minecraft/world/level/block/state/BlockState
+     328: invokestatic  #50                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     331: return
+
+  private java.util.function.Function<org.betterx.bclib.sdf.PosInfo, net.minecraft.world.level.block.state.BlockState> postProcessFunc();
+    Code:
+       0: invokedynamic #338,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+       5: areturn
+
+  private static net.minecraft.world.level.block.state.BlockState lambda$postProcessFunc$2(org.betterx.bclib.sdf.PosInfo);
+    Code:
+       0: getstatic     #221                // Field org/betterx/betterend/registry/EndBlocks.HELIX_TREE:Lorg/betterx/betterend/complexmaterials/EndWoodenComplexMaterial;
+       3: aload_0
+       4: invokevirtual #339                // Method org/betterx/bclib/sdf/PosInfo.getStateUp:()Lnet/minecraft/world/level/block/state/BlockState;
+       7: invokevirtual #344                // Method org/betterx/betterend/complexmaterials/EndWoodenComplexMaterial.isTreeLog:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+      10: ifeq          36
+      13: getstatic     #221                // Field org/betterx/betterend/registry/EndBlocks.HELIX_TREE:Lorg/betterx/betterend/complexmaterials/EndWoodenComplexMaterial;
+      16: aload_0
+      17: invokevirtual #348                // Method org/betterx/bclib/sdf/PosInfo.getStateDown:()Lnet/minecraft/world/level/block/state/BlockState;
+      20: invokevirtual #344                // Method org/betterx/betterend/complexmaterials/EndWoodenComplexMaterial.isTreeLog:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+      23: ifeq          36
+      26: getstatic     #221                // Field org/betterx/betterend/registry/EndBlocks.HELIX_TREE:Lorg/betterx/betterend/complexmaterials/EndWoodenComplexMaterial;
+      29: invokevirtual #227                // Method org/betterx/betterend/complexmaterials/EndWoodenComplexMaterial.getBark:()Lnet/minecraft/world/level/block/Block;
+      32: invokevirtual #233                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      35: areturn
+      36: aload_0
+      37: invokevirtual #351                // Method org/betterx/bclib/sdf/PosInfo.getState:()Lnet/minecraft/world/level/block/state/BlockState;
+      40: areturn
+
+  private static net.minecraft.world.level.block.state.BlockState lambda$place$1(net.minecraft.core.BlockPos);
+    Code:
+       0: getstatic     #221                // Field org/betterx/betterend/registry/EndBlocks.HELIX_TREE:Lorg/betterx/betterend/complexmaterials/EndWoodenComplexMaterial;
+       3: invokevirtual #227                // Method org/betterx/betterend/complexmaterials/EndWoodenComplexMaterial.getBark:()Lnet/minecraft/world/level/block/Block;
+       6: invokevirtual #233                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       9: areturn
+
+  private static net.minecraft.world.level.block.state.BlockState lambda$place$0(net.minecraft.core.BlockPos);
+    Code:
+       0: getstatic     #221                // Field org/betterx/betterend/registry/EndBlocks.HELIX_TREE:Lorg/betterx/betterend/complexmaterials/EndWoodenComplexMaterial;
+       3: invokevirtual #227                // Method org/betterx/betterend/complexmaterials/EndWoodenComplexMaterial.getBark:()Lnet/minecraft/world/level/block/Block;
+       6: invokevirtual #233                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       9: areturn
+}

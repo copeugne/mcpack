@@ -1,0 +1,68 @@
+Compiled from "SingleBlockFeature.java"
+public class org.betterx.betterend.world.features.terrain.SingleBlockFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration> {
+  public org.betterx.betterend.world.features.terrain.SingleBlockFeature();
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field net/minecraft/world/level/levelgen/feature/configurations/SimpleBlockConfiguration.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #7                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #23                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      14: astore        4
+      16: aload_1
+      17: invokevirtual #27                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      20: checkcast     #2                  // class net/minecraft/world/level/levelgen/feature/configurations/SimpleBlockConfiguration
+      23: astore        5
+      25: aload         4
+      27: aload_3
+      28: invokevirtual #31                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      31: invokeinterface #36,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      36: getstatic     #42                 // Field org/betterx/wover/tag/api/predefined/CommonBlockTags.END_STONES:Lnet/minecraft/tags/TagKey;
+      39: invokevirtual #48                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      42: ifne          47
+      45: iconst_0
+      46: ireturn
+      47: aload         5
+      49: invokevirtual #54                 // Method net/minecraft/world/level/levelgen/feature/configurations/SimpleBlockConfiguration.toPlace:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      52: aload_2
+      53: aload_3
+      54: invokevirtual #58                 // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      57: astore        6
+      59: aload         6
+      61: invokevirtual #64                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      64: invokevirtual #68                 // Method net/minecraft/world/level/block/Block.getStateDefinition:()Lnet/minecraft/world/level/block/state/StateDefinition;
+      67: ldc           #74                 // String waterlogged
+      69: invokevirtual #76                 // Method net/minecraft/world/level/block/state/StateDefinition.getProperty:(Ljava/lang/String;)Lnet/minecraft/world/level/block/state/properties/Property;
+      72: ifnull        114
+      75: aload         4
+      77: aload_3
+      78: invokeinterface #82,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+      83: invokevirtual #86                 // Method net/minecraft/world/level/material/FluidState.isEmpty:()Z
+      86: ifne          93
+      89: iconst_1
+      90: goto          94
+      93: iconst_0
+      94: istore        7
+      96: aload         6
+      98: getstatic     #92                 // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     101: iload         7
+     103: invokestatic  #98                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     106: invokevirtual #104                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     109: checkcast     #49                 // class net/minecraft/world/level/block/state/BlockState
+     112: astore        6
+     114: aload         4
+     116: aload_3
+     117: aload         6
+     119: invokestatic  #108                // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     122: iconst_1
+     123: ireturn
+}

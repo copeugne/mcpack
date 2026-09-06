@@ -1,0 +1,311 @@
+Compiled from "EndTreeHelper.java"
+public final class org.betterx.betterend.world.features.trees.EndTreeHelper {
+  private static final int SCAN_DOWN = 16;
+
+  private static final int SCAN_UP = 8;
+
+  private static final int GATE_DOWN = 3;
+
+  private static final int GATE_UP = 2;
+
+  private org.betterx.betterend.world.features.trees.EndTreeHelper();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void waterlogSubmerged(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos, int);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/core/BlockPos.getX:()I
+       4: iload_2
+       5: isub
+       6: istore_3
+       7: aload_1
+       8: invokevirtual #7                  // Method net/minecraft/core/BlockPos.getX:()I
+      11: iload_2
+      12: iadd
+      13: istore        4
+      15: aload_1
+      16: invokevirtual #13                 // Method net/minecraft/core/BlockPos.getZ:()I
+      19: iload_2
+      20: isub
+      21: istore        5
+      23: aload_1
+      24: invokevirtual #13                 // Method net/minecraft/core/BlockPos.getZ:()I
+      27: iload_2
+      28: iadd
+      29: istore        6
+      31: new           #16                 // class net/minecraft/core/BlockPos$MutableBlockPos
+      34: dup
+      35: invokespecial #18                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+      38: astore        7
+      40: aload_0
+      41: aload         7
+      43: iload_3
+      44: iload         4
+      46: iload         5
+      48: iload         6
+      50: aload_1
+      51: invokevirtual #19                 // Method net/minecraft/core/BlockPos.getY:()I
+      54: iconst_3
+      55: isub
+      56: aload_1
+      57: invokevirtual #19                 // Method net/minecraft/core/BlockPos.getY:()I
+      60: iconst_2
+      61: iadd
+      62: invokestatic  #24                 // Method hasWater:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos$MutableBlockPos;IIIIII)Z
+      65: ifne          69
+      68: return
+      69: aload_1
+      70: invokevirtual #19                 // Method net/minecraft/core/BlockPos.getY:()I
+      73: bipush        16
+      75: isub
+      76: istore        8
+      78: aload_1
+      79: invokevirtual #19                 // Method net/minecraft/core/BlockPos.getY:()I
+      82: bipush        8
+      84: iadd
+      85: istore        9
+      87: new           #28                 // class java/util/ArrayDeque
+      90: dup
+      91: invokespecial #30                 // Method java/util/ArrayDeque."<init>":()V
+      94: astore        10
+      96: new           #31                 // class it/unimi/dsi/fastutil/longs/LongOpenHashSet
+      99: dup
+     100: invokespecial #33                 // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet."<init>":()V
+     103: astore        11
+     105: ldc           #36                 // int -2147483648
+     107: istore        12
+     109: iload         8
+     111: istore        13
+     113: iload         13
+     115: iload         9
+     117: if_icmpgt     240
+     120: aload         7
+     122: iload         13
+     124: invokevirtual #37                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     127: pop
+     128: iload_3
+     129: istore        14
+     131: iload         14
+     133: iload         4
+     135: if_icmpgt     234
+     138: aload         7
+     140: iload         14
+     142: invokevirtual #41                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setX:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     145: pop
+     146: iload         5
+     148: istore        15
+     150: iload         15
+     152: iload         6
+     154: if_icmpgt     228
+     157: aload         7
+     159: iload         15
+     161: invokevirtual #44                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setZ:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     164: pop
+     165: aload_0
+     166: aload         7
+     168: invokeinterface #47,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     173: invokestatic  #53                 // Method isLakeWater:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+     176: ifeq          222
+     179: aload         7
+     181: invokevirtual #57                 // Method net/minecraft/core/BlockPos$MutableBlockPos.asLong:()J
+     184: lstore        16
+     186: aload         11
+     188: lload         16
+     190: invokeinterface #61,  3           // InterfaceMethod it/unimi/dsi/fastutil/longs/LongSet.add:(J)Z
+     195: ifeq          211
+     198: aload         10
+     200: aload         7
+     202: invokevirtual #67                 // Method net/minecraft/core/BlockPos$MutableBlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+     205: invokeinterface #71,  2           // InterfaceMethod java/util/Deque.add:(Ljava/lang/Object;)Z
+     210: pop
+     211: iload         13
+     213: iload         12
+     215: if_icmple     222
+     218: iload         13
+     220: istore        12
+     222: iinc          15, 1
+     225: goto          150
+     228: iinc          14, 1
+     231: goto          131
+     234: iinc          13, 1
+     237: goto          113
+     240: aload         10
+     242: invokeinterface #76,  1           // InterfaceMethod java/util/Deque.isEmpty:()Z
+     247: ifeq          251
+     250: return
+     251: new           #16                 // class net/minecraft/core/BlockPos$MutableBlockPos
+     254: dup
+     255: invokespecial #18                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+     258: astore        13
+     260: aload         10
+     262: invokeinterface #76,  1           // InterfaceMethod java/util/Deque.isEmpty:()Z
+     267: ifne          539
+     270: aload         10
+     272: invokeinterface #80,  1           // InterfaceMethod java/util/Deque.poll:()Ljava/lang/Object;
+     277: checkcast     #8                  // class net/minecraft/core/BlockPos
+     280: astore        14
+     282: invokestatic  #84                 // Method net/minecraft/core/Direction.values:()[Lnet/minecraft/core/Direction;
+     285: astore        15
+     287: aload         15
+     289: arraylength
+     290: istore        16
+     292: iconst_0
+     293: istore        17
+     295: iload         17
+     297: iload         16
+     299: if_icmpge     536
+     302: aload         15
+     304: iload         17
+     306: aaload
+     307: astore        18
+     309: aload         13
+     311: aload         14
+     313: invokevirtual #90                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     316: aload         18
+     318: invokevirtual #94                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     321: pop
+     322: aload         13
+     324: invokevirtual #98                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getX:()I
+     327: iload_3
+     328: if_icmplt     530
+     331: aload         13
+     333: invokevirtual #98                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getX:()I
+     336: iload         4
+     338: if_icmpgt     530
+     341: aload         13
+     343: invokevirtual #99                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+     346: iload         8
+     348: if_icmplt     530
+     351: aload         13
+     353: invokevirtual #99                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+     356: iload         9
+     358: if_icmpgt     530
+     361: aload         13
+     363: invokevirtual #100                // Method net/minecraft/core/BlockPos$MutableBlockPos.getZ:()I
+     366: iload         5
+     368: if_icmplt     530
+     371: aload         13
+     373: invokevirtual #100                // Method net/minecraft/core/BlockPos$MutableBlockPos.getZ:()I
+     376: iload         6
+     378: if_icmpgt     530
+     381: aload         13
+     383: invokevirtual #99                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+     386: iload         12
+     388: if_icmple     394
+     391: goto          530
+     394: aload         13
+     396: invokevirtual #57                 // Method net/minecraft/core/BlockPos$MutableBlockPos.asLong:()J
+     399: lstore        19
+     401: aload         11
+     403: lload         19
+     405: invokeinterface #101,  3          // InterfaceMethod it/unimi/dsi/fastutil/longs/LongSet.contains:(J)Z
+     410: ifeq          416
+     413: goto          530
+     416: aload_0
+     417: aload         13
+     419: invokeinterface #47,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     424: astore        21
+     426: aload         21
+     428: invokestatic  #53                 // Method isLakeWater:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+     431: istore        22
+     433: aload         21
+     435: getstatic     #104                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     438: invokevirtual #110                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     441: ifeq          465
+     444: aload         21
+     446: getstatic     #104                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     449: invokevirtual #116                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     452: checkcast     #120                // class java/lang/Boolean
+     455: invokevirtual #122                // Method java/lang/Boolean.booleanValue:()Z
+     458: ifne          465
+     461: iconst_1
+     462: goto          466
+     465: iconst_0
+     466: istore        23
+     468: iload         22
+     470: ifne          481
+     473: iload         23
+     475: ifne          481
+     478: goto          530
+     481: aload         11
+     483: lload         19
+     485: invokeinterface #61,  3           // InterfaceMethod it/unimi/dsi/fastutil/longs/LongSet.add:(J)Z
+     490: pop
+     491: iload         23
+     493: ifeq          517
+     496: aload_0
+     497: aload         13
+     499: aload         21
+     501: getstatic     #104                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     504: iconst_1
+     505: invokestatic  #125                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     508: invokevirtual #129                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     511: checkcast     #111                // class net/minecraft/world/level/block/state/BlockState
+     514: invokestatic  #133                // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     517: aload         10
+     519: aload         13
+     521: invokevirtual #67                 // Method net/minecraft/core/BlockPos$MutableBlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+     524: invokeinterface #71,  2           // InterfaceMethod java/util/Deque.add:(Ljava/lang/Object;)Z
+     529: pop
+     530: iinc          17, 1
+     533: goto          295
+     536: goto          260
+     539: return
+
+  private static boolean hasWater(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos$MutableBlockPos, int, int, int, int, int, int);
+    Code:
+       0: iload         6
+       2: istore        8
+       4: iload         8
+       6: iload         7
+       8: if_icmpgt     76
+      11: iload_2
+      12: istore        9
+      14: iload         9
+      16: iload_3
+      17: if_icmpgt     70
+      20: iload         4
+      22: istore        10
+      24: iload         10
+      26: iload         5
+      28: if_icmpgt     64
+      31: aload_0
+      32: aload_1
+      33: iload         9
+      35: iload         8
+      37: iload         10
+      39: invokevirtual #139                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      42: invokeinterface #142,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+      47: getstatic     #146                // Field net/minecraft/tags/FluidTags.WATER:Lnet/minecraft/tags/TagKey;
+      50: invokevirtual #152                // Method net/minecraft/world/level/material/FluidState.is:(Lnet/minecraft/tags/TagKey;)Z
+      53: ifeq          58
+      56: iconst_1
+      57: ireturn
+      58: iinc          10, 1
+      61: goto          24
+      64: iinc          9, 1
+      67: goto          14
+      70: iinc          8, 1
+      73: goto          4
+      76: iconst_0
+      77: ireturn
+
+  private static boolean isLakeWater(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: invokevirtual #158                // Method net/minecraft/world/level/block/state/BlockState.getFluidState:()Lnet/minecraft/world/level/material/FluidState;
+       4: getstatic     #146                // Field net/minecraft/tags/FluidTags.WATER:Lnet/minecraft/tags/TagKey;
+       7: invokevirtual #152                // Method net/minecraft/world/level/material/FluidState.is:(Lnet/minecraft/tags/TagKey;)Z
+      10: ifeq          27
+      13: aload_0
+      14: getstatic     #104                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      17: invokevirtual #110                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      20: ifne          27
+      23: iconst_1
+      24: goto          28
+      27: iconst_0
+      28: ireturn
+}

@@ -1,0 +1,80 @@
+Compiled from "BlueVineFeature.java"
+public class org.betterx.betterend.world.features.BlueVineFeature extends org.betterx.betterend.world.features.ScatterFeature<org.betterx.betterend.world.features.ScatterFeatureConfig> {
+  private boolean small;
+
+  public org.betterx.betterend.world.features.BlueVineFeature();
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field org/betterx/betterend/world/features/ScatterFeatureConfig.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #7                  // Method org/betterx/betterend/world/features/ScatterFeature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  public boolean canGenerate(org.betterx.betterend.world.features.ScatterFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, float);
+    Code:
+       0: aload         4
+       2: invokevirtual #13                 // Method net/minecraft/core/BlockPos.getX:()I
+       5: aload         5
+       7: invokevirtual #13                 // Method net/minecraft/core/BlockPos.getX:()I
+      10: isub
+      11: i2f
+      12: aload         4
+      14: invokevirtual #19                 // Method net/minecraft/core/BlockPos.getZ:()I
+      17: aload         5
+      19: invokevirtual #19                 // Method net/minecraft/core/BlockPos.getZ:()I
+      22: isub
+      23: i2f
+      24: invokestatic  #22                 // Method org/betterx/bclib/util/MHelper.length:(FF)F
+      27: fload         6
+      29: fdiv
+      30: ldc           #28                 // float 0.6f
+      32: fmul
+      33: aload_3
+      34: invokeinterface #29,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      39: ldc           #35                 // float 0.4f
+      41: fmul
+      42: fadd
+      43: fstore        7
+      45: aload_0
+      46: fload         7
+      48: ldc           #36                 // float 0.5f
+      50: fcmpl
+      51: ifle          58
+      54: iconst_1
+      55: goto          59
+      58: iconst_0
+      59: putfield      #37                 // Field small:Z
+      62: getstatic     #43                 // Field org/betterx/betterend/registry/EndBlocks.BLUE_VINE_SEED:Lnet/minecraft/world/level/block/Block;
+      65: invokevirtual #49                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      68: aload_2
+      69: aload         5
+      71: invokevirtual #55                 // Method net/minecraft/world/level/block/state/BlockState.canSurvive:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z
+      74: ireturn
+
+  public void generate(org.betterx.betterend.world.features.ScatterFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: getfield      #37                 // Field small:Z
+       4: ifeq          41
+       7: aload_2
+       8: aload         4
+      10: getstatic     #43                 // Field org/betterx/betterend/registry/EndBlocks.BLUE_VINE_SEED:Lnet/minecraft/world/level/block/Block;
+      13: invokevirtual #49                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      16: getstatic     #61                 // Field org/betterx/betterend/blocks/basis/EndPlantWithAgeBlock.AGE:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+      19: aload_3
+      20: iconst_4
+      21: invokeinterface #67,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      26: invokestatic  #71                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      29: invokevirtual #77                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      32: checkcast     #56                 // class net/minecraft/world/level/block/state/BlockState
+      35: invokestatic  #81                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      38: goto          58
+      41: getstatic     #43                 // Field org/betterx/betterend/registry/EndBlocks.BLUE_VINE_SEED:Lnet/minecraft/world/level/block/Block;
+      44: checkcast     #62                 // class org/betterx/betterend/blocks/basis/EndPlantWithAgeBlock
+      47: astore        5
+      49: aload         5
+      51: aload_2
+      52: aload_3
+      53: aload         4
+      55: invokevirtual #87                 // Method org/betterx/betterend/blocks/basis/EndPlantWithAgeBlock.growAdult:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+      58: return
+}

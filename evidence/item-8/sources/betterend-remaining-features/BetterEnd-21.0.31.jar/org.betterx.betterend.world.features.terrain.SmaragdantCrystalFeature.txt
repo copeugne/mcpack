@@ -1,0 +1,233 @@
+Compiled from "SmaragdantCrystalFeature.java"
+public class org.betterx.betterend.world.features.terrain.SmaragdantCrystalFeature extends org.betterx.bclib.api.v2.levelgen.features.features.DefaultFeature {
+  public org.betterx.betterend.world.features.terrain.SmaragdantCrystalFeature();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method org/betterx/bclib/api/v2/levelgen/features/features/DefaultFeature."<init>":()V
+       4: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      14: astore        4
+      16: aload         4
+      18: aload_3
+      19: invokevirtual #21                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      22: invokeinterface #26,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      27: getstatic     #32                 // Field org/betterx/wover/tag/api/predefined/CommonBlockTags.END_STONES:Lnet/minecraft/tags/TagKey;
+      30: invokevirtual #38                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      33: ifne          38
+      36: iconst_0
+      37: ireturn
+      38: new           #44                 // class net/minecraft/core/BlockPos$MutableBlockPos
+      41: dup
+      42: invokespecial #46                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+      45: astore        5
+      47: bipush        15
+      49: bipush        30
+      51: aload_2
+      52: invokestatic  #47                 // Method org/betterx/bclib/util/MHelper.randRange:(IILnet/minecraft/util/RandomSource;)I
+      55: istore        6
+      57: getstatic     #53                 // Field org/betterx/betterend/registry/EndBlocks.SMARAGDANT_CRYSTAL:Lnet/minecraft/world/level/block/Block;
+      60: invokevirtual #59                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      63: astore        7
+      65: getstatic     #65                 // Field org/betterx/betterend/registry/EndBlocks.SMARAGDANT_CRYSTAL_SHARD:Lnet/minecraft/world/level/block/Block;
+      68: invokevirtual #59                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      71: astore        8
+      73: getstatic     #68                 // Field org/betterx/betterend/registry/EndBlocks.BUDDING_SMARAGDANT_CRYSTAL:Lnet/minecraft/world/level/block/Block;
+      76: invokevirtual #59                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      79: astore        9
+      81: iconst_0
+      82: istore        10
+      84: iload         10
+      86: iload         6
+      88: if_icmpge     512
+      91: aload         5
+      93: aload_3
+      94: invokevirtual #71                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      97: aload_2
+      98: invokeinterface #75,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextGaussian:()D
+     103: ldc2_w        #81                 // double 2.0d
+     106: dmul
+     107: ldc2_w        #83                 // double 0.5d
+     110: dadd
+     111: invokestatic  #85                 // Method org/betterx/bclib/util/MHelper.floor:(D)I
+     114: iconst_5
+     115: aload_2
+     116: invokeinterface #75,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextGaussian:()D
+     121: ldc2_w        #81                 // double 2.0d
+     124: dmul
+     125: ldc2_w        #83                 // double 0.5d
+     128: dadd
+     129: invokestatic  #85                 // Method org/betterx/bclib/util/MHelper.floor:(D)I
+     132: invokevirtual #89                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     135: pop
+     136: ldc           #93                 // float 1.5f
+     138: aload         5
+     140: invokevirtual #94                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getX:()I
+     143: aload_3
+     144: invokevirtual #98                 // Method net/minecraft/core/BlockPos.getX:()I
+     147: isub
+     148: i2f
+     149: aload         5
+     151: invokevirtual #99                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getZ:()I
+     154: aload_3
+     155: invokevirtual #102                // Method net/minecraft/core/BlockPos.getZ:()I
+     158: isub
+     159: i2f
+     160: invokestatic  #103                // Method org/betterx/bclib/util/MHelper.length:(FF)F
+     163: fsub
+     164: f2d
+     165: invokestatic  #85                 // Method org/betterx/bclib/util/MHelper.floor:(D)I
+     168: aload_2
+     169: iconst_3
+     170: invokeinterface #107,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     175: iadd
+     176: istore        11
+     178: iload         11
+     180: ifle          506
+     183: aload         4
+     185: aload         5
+     187: invokeinterface #26,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     192: astore        12
+     194: iconst_0
+     195: istore        13
+     197: iload         13
+     199: bipush        10
+     201: if_icmpge     242
+     204: aload         12
+     206: invokevirtual #111                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     209: ifeq          242
+     212: aload         5
+     214: aload         5
+     216: invokevirtual #115                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+     219: iconst_1
+     220: isub
+     221: invokevirtual #118                // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     224: pop
+     225: aload         4
+     227: aload         5
+     229: invokeinterface #26,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     234: astore        12
+     236: iinc          13, 1
+     239: goto          197
+     242: aload         12
+     244: getstatic     #32                 // Field org/betterx/wover/tag/api/predefined/CommonBlockTags.END_STONES:Lnet/minecraft/tags/TagKey;
+     247: invokevirtual #38                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     250: ifeq          506
+     253: aload         4
+     255: aload         5
+     257: invokevirtual #122                // Method net/minecraft/core/BlockPos$MutableBlockPos.above:()Lnet/minecraft/core/BlockPos;
+     260: invokeinterface #26,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     265: invokevirtual #111                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     268: ifeq          506
+     271: iconst_0
+     272: istore        13
+     274: iload         13
+     276: iload         11
+     278: if_icmpgt     461
+     281: aload_2
+     282: bipush        8
+     284: invokeinterface #107,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     289: ifne          433
+     292: aload         4
+     294: aload         5
+     296: aload         9
+     298: invokestatic  #125                // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     301: getstatic     #131                // Field org/betterx/bclib/util/BlocksHelper.HORIZONTAL:[Lnet/minecraft/core/Direction;
+     304: astore        14
+     306: aload         14
+     308: arraylength
+     309: istore        15
+     311: iconst_0
+     312: istore        16
+     314: iload         16
+     316: iload         15
+     318: if_icmpge     430
+     321: aload         14
+     323: iload         16
+     325: aaload
+     326: astore        17
+     328: aload         5
+     330: aload         17
+     332: invokevirtual #135                // Method net/minecraft/core/BlockPos$MutableBlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     335: astore        18
+     337: aload         4
+     339: aload         18
+     341: invokeinterface #26,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     346: astore        19
+     348: aload         19
+     350: invokestatic  #139                // Method org/betterx/betterend/blocks/BuddingSmaragdantCrystalBlock.canShardGrowAtState:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+     353: ifeq          424
+     356: aload_2
+     357: invokeinterface #145,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+     362: ifeq          424
+     365: getstatic     #65                 // Field org/betterx/betterend/registry/EndBlocks.SMARAGDANT_CRYSTAL_SHARD:Lnet/minecraft/world/level/block/Block;
+     368: invokevirtual #59                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     371: getstatic     #148                // Field org/betterx/betterend/blocks/SmaragdantCrystalShardBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     374: aload         19
+     376: invokevirtual #154                // Method net/minecraft/world/level/block/state/BlockState.getFluidState:()Lnet/minecraft/world/level/material/FluidState;
+     379: invokevirtual #158                // Method net/minecraft/world/level/material/FluidState.getType:()Lnet/minecraft/world/level/material/Fluid;
+     382: getstatic     #164                // Field net/minecraft/world/level/material/Fluids.WATER:Lnet/minecraft/world/level/material/FlowingFluid;
+     385: if_acmpne     392
+     388: iconst_1
+     389: goto          393
+     392: iconst_0
+     393: invokestatic  #170                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     396: invokevirtual #176                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     399: checkcast     #39                 // class net/minecraft/world/level/block/state/BlockState
+     402: getstatic     #180                // Field org/betterx/betterend/blocks/SmaragdantCrystalShardBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     405: aload         17
+     407: invokevirtual #176                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     410: checkcast     #39                 // class net/minecraft/world/level/block/state/BlockState
+     413: astore        20
+     415: aload         4
+     417: aload         18
+     419: aload         20
+     421: invokestatic  #125                // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     424: iinc          16, 1
+     427: goto          314
+     430: goto          442
+     433: aload         4
+     435: aload         5
+     437: aload         7
+     439: invokestatic  #125                // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     442: aload         5
+     444: aload         5
+     446: invokevirtual #115                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+     449: iconst_1
+     450: iadd
+     451: invokevirtual #118                // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     454: pop
+     455: iinc          13, 1
+     458: goto          274
+     461: aload         4
+     463: aload         5
+     465: invokeinterface #184,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+     470: invokevirtual #187                // Method net/minecraft/world/level/material/FluidState.isEmpty:()Z
+     473: ifne          480
+     476: iconst_1
+     477: goto          481
+     480: iconst_0
+     481: istore        13
+     483: aload         4
+     485: aload         5
+     487: aload         8
+     489: getstatic     #190                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     492: iload         13
+     494: invokestatic  #170                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     497: invokevirtual #176                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     500: checkcast     #39                 // class net/minecraft/world/level/block/state/BlockState
+     503: invokestatic  #125                // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     506: iinc          10, 1
+     509: goto          84
+     512: iconst_1
+     513: ireturn
+}

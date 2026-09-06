@@ -1,0 +1,208 @@
+Compiled from "StalactiteFeature.java"
+public class org.betterx.betterend.world.features.terrain.StalactiteFeature extends net.minecraft.world.level.levelgen.feature.Feature<org.betterx.betterend.world.features.terrain.StalactiteFeatureConfig> {
+  public org.betterx.betterend.world.features.terrain.StalactiteFeature();
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field org/betterx/betterend/world/features/terrain/StalactiteFeatureConfig.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #7                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<org.betterx.betterend.world.features.terrain.StalactiteFeatureConfig>);
+    Code:
+       0: aload_1
+       1: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #23                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      14: astore        4
+      16: aload_1
+      17: invokevirtual #27                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      20: checkcast     #2                  // class org/betterx/betterend/world/features/terrain/StalactiteFeatureConfig
+      23: astore        5
+      25: aload         5
+      27: getfield      #31                 // Field org/betterx/betterend/world/features/terrain/StalactiteFeatureConfig.allowedGround:Lnet/minecraft/world/level/levelgen/blockpredicates/BlockPredicate;
+      30: aload         4
+      32: aload         5
+      34: getfield      #35                 // Field org/betterx/betterend/world/features/terrain/StalactiteFeatureConfig.ceiling:Z
+      37: ifeq          47
+      40: aload_3
+      41: invokevirtual #39                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      44: goto          51
+      47: aload_3
+      48: invokevirtual #44                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      51: invokeinterface #47,  3           // InterfaceMethod net/minecraft/world/level/levelgen/blockpredicates/BlockPredicate.test:(Ljava/lang/Object;Ljava/lang/Object;)Z
+      56: ifne          61
+      59: iconst_0
+      60: ireturn
+      61: new           #53                 // class net/minecraft/core/BlockPos$MutableBlockPos
+      64: dup
+      65: invokespecial #55                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+      68: aload_3
+      69: invokevirtual #58                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      72: astore        6
+      74: aload_2
+      75: bipush        16
+      77: invokeinterface #62,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      82: istore        7
+      84: aload         5
+      86: getfield      #35                 // Field org/betterx/betterend/world/features/terrain/StalactiteFeatureConfig.ceiling:Z
+      89: ifeq          96
+      92: iconst_m1
+      93: goto          97
+      96: iconst_1
+      97: istore        8
+      99: iconst_0
+     100: istore        9
+     102: iconst_1
+     103: istore        10
+     105: iload         10
+     107: iload         7
+     109: if_icmpgt     170
+     112: aload         6
+     114: aload_3
+     115: invokevirtual #68                 // Method net/minecraft/core/BlockPos.getY:()I
+     118: iload         10
+     120: iload         8
+     122: imul
+     123: iadd
+     124: invokevirtual #72                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     127: pop
+     128: aload         4
+     130: aload         6
+     132: invokeinterface #76,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     137: astore        11
+     139: aload         11
+     141: invokevirtual #82                 // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+     144: ifne          164
+     147: aload         11
+     149: getstatic     #88                 // Field org/betterx/wover/tag/api/predefined/CommonBlockTags.END_STONES:Lnet/minecraft/tags/TagKey;
+     152: invokevirtual #94                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     155: istore        9
+     157: iload         10
+     159: istore        7
+     161: goto          170
+     164: iinc          10, 1
+     167: goto          105
+     170: iload         9
+     172: ifne          192
+     175: iload         7
+     177: bipush        7
+     179: if_icmple     192
+     182: aload_2
+     183: bipush        8
+     185: invokeinterface #62,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     190: istore        7
+     192: iload         7
+     194: i2f
+     195: ldc           #98                 // float 0.5f
+     197: fmul
+     198: fstore        10
+     200: iconst_0
+     201: istore        11
+     203: iload         11
+     205: iload         7
+     207: if_icmpge     423
+     210: aload         6
+     212: aload_3
+     213: invokevirtual #68                 // Method net/minecraft/core/BlockPos.getY:()I
+     216: iload         11
+     218: iload         8
+     220: imul
+     221: iadd
+     222: invokevirtual #72                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     225: pop
+     226: iload         9
+     228: ifeq          252
+     231: iload         11
+     233: i2f
+     234: fload         10
+     236: fsub
+     237: invokestatic  #99                 // Method net/minecraft/util/Mth.abs:(F)F
+     240: fconst_1
+     241: fadd
+     242: f2i
+     243: iconst_1
+     244: bipush        7
+     246: invokestatic  #105                // Method net/minecraft/util/Mth.clamp:(III)I
+     249: goto          259
+     252: iload         7
+     254: iload         11
+     256: isub
+     257: iconst_1
+     258: isub
+     259: istore        12
+     261: aload         4
+     263: aload         6
+     265: invokeinterface #109,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+     270: invokevirtual #113                // Method net/minecraft/world/level/material/FluidState.isEmpty:()Z
+     273: ifne          280
+     276: iconst_1
+     277: goto          281
+     280: iconst_0
+     281: istore        13
+     283: aload         5
+     285: getfield      #118                // Field org/betterx/betterend/world/features/terrain/StalactiteFeatureConfig.block:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     288: aload_2
+     289: aload         6
+     291: invokevirtual #122                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     294: getstatic     #128                // Field org/betterx/bclib/blocks/StalactiteBlock.SIZE:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+     297: iload         12
+     299: invokestatic  #134                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     302: invokevirtual #140                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     305: checkcast     #83                 // class net/minecraft/world/level/block/state/BlockState
+     308: getstatic     #144                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     311: iload         13
+     313: invokestatic  #150                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     316: invokevirtual #140                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     319: checkcast     #83                 // class net/minecraft/world/level/block/state/BlockState
+     322: astore        14
+     324: iload         9
+     326: ifeq          382
+     329: aload         14
+     331: getstatic     #155                // Field org/betterx/bclib/blocks/StalactiteBlock.IS_FLOOR:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     334: iload         8
+     336: ifle          356
+     339: iload         11
+     341: i2f
+     342: fload         10
+     344: fcmpg
+     345: ifge          352
+     348: iconst_1
+     349: goto          370
+     352: iconst_0
+     353: goto          370
+     356: iload         11
+     358: i2f
+     359: fload         10
+     361: fcmpl
+     362: ifle          369
+     365: iconst_1
+     366: goto          370
+     369: iconst_0
+     370: invokestatic  #150                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     373: invokevirtual #140                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     376: checkcast     #83                 // class net/minecraft/world/level/block/state/BlockState
+     379: goto          406
+     382: aload         14
+     384: getstatic     #155                // Field org/betterx/bclib/blocks/StalactiteBlock.IS_FLOOR:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     387: iload         8
+     389: ifle          396
+     392: iconst_1
+     393: goto          397
+     396: iconst_0
+     397: invokestatic  #150                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     400: invokevirtual #140                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     403: checkcast     #83                 // class net/minecraft/world/level/block/state/BlockState
+     406: astore        15
+     408: aload         4
+     410: aload         6
+     412: aload         15
+     414: invokestatic  #158                // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     417: iinc          11, 1
+     420: goto          203
+     423: iconst_1
+     424: ireturn
+}
