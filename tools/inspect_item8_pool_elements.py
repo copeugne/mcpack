@@ -1539,6 +1539,20 @@ CLASSES: tuple[str, ...] = (
     "io/github/razordevs/deep_aether/world/structure/brass/BrassRoom.class",
     "io/github/razordevs/deep_aether/world/structure/brass/processor/BrassDungeonRoomProcessor.class",
     "io/github/razordevs/deep_aether/world/structure/brass/processor/BrassProcessorSettings.class",
+    "io/github/razordevs/aeroblender/Aeroblender.class",
+    "io/github/razordevs/aeroblender/DimensionTypeTags.class",
+    "io/github/razordevs/aeroblender/aether/AetherRegionType.class",
+    "io/github/razordevs/aeroblender/aether/AetherRuleCategory.class",
+    "io/github/razordevs/aeroblender/aether/AetherSurfaceRuleData.class",
+    "io/github/razordevs/aeroblender/aether/DefaultAetherRegion.class",
+    "io/github/razordevs/aeroblender/mixin/LayeredNoiseUtilMixin.class",
+    "io/github/razordevs/aeroblender/mixin/LevelUtilsMixin.class",
+    "io/github/razordevs/aeroblender/mixin/NoiseGeneratorSettingsMixin.class",
+    "io/github/razordevs/aeroblender/mixin/RegionMixin.class",
+    "io/github/razordevs/aeroblender/mixin/RegionTypeMixin.class",
+    "io/github/razordevs/aeroblender/mixin/RuleCategoryMixin.class",
+    "io/github/razordevs/aeroblender/mixin/SurfaceRuleManagerAccessor.class",
+    "io/github/razordevs/aeroblender/mixin/SurfaceRuleManagerMixin.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1563,13 +1577,18 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
         "META-INF/jars/extensibleenums-neoforge-21.1.1.jar",
         "META-INF/jarjar/biolith-neoforge-3.0.10.jar",
         "META-INF/jarjar/cumulus_menus-1.21.1-2.0.7-neoforge.jar",
-        "META-INF/jarjar/nitrogen_internals-1.21.1-1.1.25-neoforge.jar"])
+        "META-INF/jarjar/nitrogen_internals-1.21.1-1.1.25-neoforge.jar",
+        "META-INF/jarjar/aeroblender-1.21.1-1.0.0-neoforge.jar"])
     args = parser.parse_args()
     output = cast("Path", args.output)
     selected_archive = cast("str | None", args.archive)
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jarjar/aeroblender-1.21.1-1.0.0-neoforge.jar": (
+            "deep_aether-1.21.1-1.1.5.1.jar",
+            "85739c5737ae2d3a289022aaa2834c4889838a3e6c53125a5334535c12ae7588",
+        ),
         "META-INF/jarjar/cumulus_menus-1.21.1-2.0.7-neoforge.jar": (
             "aether-1.21.1-1.5.10-neoforge.jar",
             "2518abccb1a012bb63b5b3ea14b8ed93c82fb5002105c86afadadf518bf149a1",
