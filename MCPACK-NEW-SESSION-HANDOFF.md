@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Nether house comparison must include the existing medium-house variants because
+that record explicitly leaves its larger/warped relationships open. Reuse the
+renderer with ten selected templates: medium 2, large 1, warped 6 and forge 1.
+The warped root selects alternatives, not a six-piece assembly. This resolves
+the current house-family boundary; it does not reopen unrelated provider work.
+
+
 Inventory now agrees with Nether pair decisions delivered at 282e291c and
 reproduces exactly. Continue the 14 named Nether decisions, then Voyager 53.
 No active process or provider audit remains. Overall working groups: 409.

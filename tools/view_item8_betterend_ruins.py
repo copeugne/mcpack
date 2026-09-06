@@ -61,10 +61,12 @@ def main() -> None:
     selection = parser.add_mutually_exclusive_group()
     _ = selection.add_argument("--soaring", action="store_true")
     _ = selection.add_argument("--nether", action="store_true")
+    _ = selection.add_argument("--nether-houses", action="store_true")
     args = parser.parse_args()
     output = cast("Path", args.output)
     soaring = cast("bool", args.soaring)
-    nether = cast("bool", args.nether)
+    nether_houses = cast("bool", args.nether_houses)
+    nether = cast("bool", args.nether) or nether_houses
     archive_name = "MoogsSoaringStructures-1.21-2.1.2.jar" if soaring else "BetterEnd-21.0.31.jar"
     if nether:
         archive_name = "MoogsNetherStructures-1.21-3.0.0-alpha.2.jar"
@@ -99,6 +101,12 @@ def main() -> None:
                 "skulls_shrines_towers": ["giant_skull", "sandy_skull", "shrine",
                                          "smoking_shrine", "copper_tower", "nether_tower"],
                 "pools": ["lava_pool", "lava_pool_lower", "warped_pool", "warped_pool_lower"],
+            }
+        if nether_houses:
+            sheets = {
+                "house_comparison": ["houses/medium_house_1", "houses/medium_house_2",
+                                     "houses/large_house_1", "crimson_forge"],
+                "warped_houses": [f"houses/warped_house_{i}" for i in range(1, 7)],
             }
         for biome, names in sheets.items():
             count = len(names)
