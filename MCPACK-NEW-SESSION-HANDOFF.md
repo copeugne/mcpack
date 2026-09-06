@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Registry membership is resolved from 4bc3d16, e5a03ee and 7b86b55. Forty-three
+Fabric cases and scoped checks pass. Fabric: 42 resolved, one open (loader).
+The loader sources are delivered: service 1cb6fe0, bootstrap 4beaa6b and mod-list
+delegate 6a6fcc4. They propagate existing FML metadata into lookup containers;
+finish its complete payload binding, then close Fabric as one provider. No more
+generic startup helper tracing is needed for that membership question.
+
+
 Networking membership is resolved from existing source ad9fbe2. Forty-two
 focused cases and scoped checks pass. Fabric: 41 resolved, two open (registry
 sync and loader). Whole providers: 90 resolved, 46 open. No family change.

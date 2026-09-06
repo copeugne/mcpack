@@ -106,6 +106,13 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
     ("module", "label", "digest", "count", "consumers"),
     [
         (
+            "fabric-registry-sync-v0-5.3.1+f9aace1619",
+            "fabric-registry-sync-v0-entry",
+            "c90f9978bdaed1e208676fdcad9b108f560aa95b5f6f539bdfc205460c5c056c",
+            5,
+            {"org/sinytra/fabric/registry_sync/generated/GeneratedEntryPoint.class"},
+        ),
+        (
             "fabric-networking-api-v1-4.3.0+30a980d919",
             "fabric-networking-api-v1-entry",
             "971327a550fa9613691f4ef1f17389cf24d00373a109cce7fe7e788618d7bfeb",
@@ -364,6 +371,15 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert extra["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / extra["disassembly"]).read_bytes()).hexdigest()
             initializer_sources = {
+                "fabric-registry-sync-v0": [(
+                    "fabric-registry-init",
+                    "ea158b38e8bf3ee48080a442721fc1e796bee22b6fb4e37e794315e7e5d5f1af",
+                    {"net/fabricmc/fabric/impl/registry/sync/FabricRegistryInit.class"},
+                ), (
+                    "fabric-dynamic-registries",
+                    "648c159c662bbd522074b4b61f7f1814689803cb8aa125918ac4614f83868ac1",
+                    {"net/fabricmc/fabric/impl/registry/sync/DynamicRegistriesImpl.class"},
+                )],
                 "fabric-events-interaction-v0": [(
                     "fabric-interaction-router",
                     "1f6918e1d747541523585d23f29310ceb4a298516a221e80e05251cfa02d41e3",
@@ -431,6 +447,7 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert row["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / row["disassembly"]).read_bytes()).hexdigest()
             block_modules = {
+                "fabric-registry-sync-v0": (26, 0),
                 "fabric-networking-api-v1": (129, 8),
                 "fabric-transfer-api-v1": (120, 0),
                 "fabric-events-interaction-v0": (36, 3),
@@ -474,9 +491,16 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                             "fabric-lifecycle-events-v1", "fabric-item-group-api-v1",
                             "fabric-content-registries-v0", "fabric-data-generation-api-v1",
                             "fabric-screen-handler-api-v1", "fabric-resource-conditions-api-v1",
-                            "fabric-object-builder-api-v1", "fabric-networking-api-v1"}:
+                            "fabric-object-builder-api-v1", "fabric-networking-api-v1",
+                            "fabric-registry-sync-v0"}:
                     extras.add("META-INF/accesstransformer.cfg")
                 extras.update({
+                    "fabric-registry-sync-v0": {
+                        f"assets/fabric-registry-sync-v0/lang/{locale}.json" for locale in (
+                            "de_de", "en_us", "es_cl", "es_es", "et_ee", "fi_fi", "fr_fr",
+                            "it_it", "ja_jp", "ko_kr", "ms_my", "nl_nl", "pl_pl", "pt_br",
+                            "ru_ru", "sv_se", "tok", "tt_ru", "uk_ua", "vi_vn", "zh_cn", "zh_tw",
+                        )},
                     "fabric-data-attachment-api-v1": {
                         "assets/fabric-data-attachment-api-v1/lang/en_us.json"},
                 }.get(name, set()))

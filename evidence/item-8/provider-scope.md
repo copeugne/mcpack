@@ -5789,7 +5789,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-object-builder-api-v1-15.2.1+cc242efd19.jar` | RESOLVED: Empty initializer and supplied object/type support. Source 0fa369a; no independent family. |
 | `fabric-particles-v1-4.0.2+824f924c19.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
 | `fabric-recipe-api-v1-5.0.15+59440bcc19.jar` | RESOLVED: Ingredient serializer registration and NeoForge ingredient-wrapper codecs; no independent family. See final loot/recipe/rule disposition below. |
-| `fabric-registry-sync-v0-5.3.1+f9aace1619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-registry-sync-v0-5.3.1+f9aace1619.jar` | RESOLVED: Caller registry registration and existing-registry callbacks; sources 4bc3d16, e5a03ee and 7b86b55. No independent family. |
 | `fabric-renderer-api-v1-3.4.1+9125b6dc19.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
 | `fabric-renderer-indigo-1.7.1+9125b6dc19.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
 | `fabric-rendering-data-attachment-v1-0.3.49+73761d2e19.jar` | RESOLVED: block interface, read/accessor or climbing roles; no independent family. See below. |
@@ -6626,3 +6626,20 @@ All 42 Fabric cases and scoped Ruff/Basedpyright pass. Fabric: 41 resolved, two
 open (registry sync and loader). Whole providers: 90 resolved, 46 open. This
 closes a module disposition, adds no family and does not establish the final
 family count.
+
+### Fabric registry membership resolved
+
+The six entry/hook classes in 4bc3d16 expose registry accessors and forward
+existing registry setup callbacks. Initializer e5a03ee registers the datapack
+registry callback. Delegate 7b86b55 stores caller-supplied keys/codecs in an
+initially empty list and submits precisely those registrations to NeoForge.
+Its duplicate-key set starts with vanilla registry keys; it creates no authored
+site or independent feature. Registry entry callbacks likewise forward supplied
+entries. This resolves the concrete startup question without further tracing.
+
+The existing test binds the three captures, all 26 module classes, the one
+automatic entry, five common hooks, 22 translation resources and complete
+metadata/icon/access-transformer payload. There is no client mixin file or
+generation data. All 43 focused Fabric cases and scoped Ruff/Basedpyright pass.
+Fabric: 42 resolved, one open (loader). Whole providers: 90 resolved, 46 open.
+No canonical family is added.
