@@ -208,6 +208,16 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "com/natamus/collective/neoforge/services/NeoForgeRegisterKeyMappingHelper.class",
+    "com/natamus/collective/neoforge/services/NeoForgeModLoaderHelper.class",
+    "com/natamus/collective/neoforge/services/NeoForgeRegisterItemHelper.class",
+    "com/natamus/collective/neoforge/services/NeoForgeEventTriggerHelper.class",
+    "com/natamus/collective/neoforge/services/NeoForgeToolFunctionsHelper.class",
+    "com/natamus/collective/neoforge/services/NeoForgeClientUtilsHelper.class",
+    "com/natamus/collective/neoforge/services/NeoForgeRegisterBlockHelper.class",
+    "com/natamus/collective/neoforge/services/NeoForgeTeleportHelper.class",
+    "com/natamus/collective/neoforge/services/NeoForgeBlockTagsHelper.class",
+
     "com/natamus/collective/CollectiveNeoForge.class",
     "com/natamus/collective/neoforge/events/RegisterCollectiveNeoForgeEvents.class",
     "com/natamus/collective_common_neoforge/CollectiveCommon.class",
