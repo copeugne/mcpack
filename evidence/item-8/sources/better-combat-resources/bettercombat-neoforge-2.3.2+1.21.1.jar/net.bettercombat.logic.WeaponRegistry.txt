@@ -1,0 +1,1623 @@
+Classfile bettercombat-neoforge-2.3.2+1.21.1.jar!/net/bettercombat/logic/WeaponRegistry.class
+  Last modified Jan 1, 1980; size 13550 bytes
+  SHA-256 checksum f63bfa2a2ee24e21c8efb5bea93bef4d5c48960a2d13275ac5c8ebb386a0137c
+  Compiled from "WeaponRegistry.java"
+public class net.bettercombat.logic.WeaponRegistry
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // net/bettercombat/logic/WeaponRegistry
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 6, methods: 19, attributes: 4
+Constant pool:
+    #1 = Utf8               net/bettercombat/logic/WeaponRegistry
+    #2 = Class              #1            // net/bettercombat/logic/WeaponRegistry
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               WeaponRegistry.java
+    #6 = Utf8               net/bettercombat/logic/WeaponRegistry$SyncFormat
+    #7 = Class              #6            // net/bettercombat/logic/WeaponRegistry$SyncFormat
+    #8 = Utf8               net/bettercombat/logic/WeaponRegistry$Encoded
+    #9 = Class              #8            // net/bettercombat/logic/WeaponRegistry$Encoded
+   #10 = Utf8               java/util/Map$Entry
+   #11 = Class              #10           // java/util/Map$Entry
+   #12 = Utf8               java/util/Map
+   #13 = Class              #12           // java/util/Map
+   #14 = Utf8               Entry
+   #15 = Utf8               SyncFormat
+   #16 = Utf8               Encoded
+   #17 = Utf8               net/bettercombat/network/Packets$WeaponRegistrySync
+   #18 = Class              #17           // net/bettercombat/network/Packets$WeaponRegistrySync
+   #19 = Utf8               net/bettercombat/network/Packets
+   #20 = Class              #19           // net/bettercombat/network/Packets
+   #21 = Utf8               WeaponRegistrySync
+   #22 = Utf8               java/lang/invoke/MethodHandles$Lookup
+   #23 = Class              #22           // java/lang/invoke/MethodHandles$Lookup
+   #24 = Utf8               java/lang/invoke/MethodHandles
+   #25 = Class              #24           // java/lang/invoke/MethodHandles
+   #26 = Utf8               Lookup
+   #27 = Utf8               LOGGER
+   #28 = Utf8               Lorg/slf4j/Logger;
+   #29 = Utf8               registrations
+   #30 = Utf8               Ljava/util/Map;
+   #31 = Utf8               Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/WeaponAttributes;>;
+   #32 = Utf8               containers
+   #33 = Utf8               Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;>;
+   #34 = Utf8               encodedRegistrations
+   #35 = Utf8               Lnet/bettercombat/logic/WeaponRegistry$Encoded;
+   #36 = Utf8               CHUNK_SIZE
+   #37 = Utf8               I
+   #38 = Integer            10000
+   #39 = Utf8               gson
+   #40 = Utf8               Lcom/google/gson/Gson;
+   #41 = Utf8               <init>
+   #42 = Utf8               ()V
+   #43 = NameAndType        #41:#42       // "<init>":()V
+   #44 = Methodref          #4.#43        // java/lang/Object."<init>":()V
+   #45 = Utf8               this
+   #46 = Utf8               Lnet/bettercombat/logic/WeaponRegistry;
+   #47 = Utf8               register
+   #48 = Utf8               (Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/WeaponAttributes;)V
+   #49 = Utf8               itemId
+   #50 = Utf8               attributes
+   #51 = NameAndType        #29:#30       // registrations:Ljava/util/Map;
+   #52 = Fieldref           #2.#51        // net/bettercombat/logic/WeaponRegistry.registrations:Ljava/util/Map;
+   #53 = Utf8               put
+   #54 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+   #55 = NameAndType        #53:#54       // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+   #56 = InterfaceMethodref #13.#55       // java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+   #57 = Utf8               Lnet/minecraft/resources/ResourceLocation;
+   #58 = Utf8               Lnet/bettercombat/api/WeaponAttributes;
+   #59 = Utf8               getAttributes
+   #60 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Lnet/bettercombat/api/WeaponAttributes;
+   #61 = Utf8               get
+   #62 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #63 = NameAndType        #61:#62       // get:(Ljava/lang/Object;)Ljava/lang/Object;
+   #64 = InterfaceMethodref #13.#63       // java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+   #65 = Utf8               net/bettercombat/api/WeaponAttributes
+   #66 = Class              #65           // net/bettercombat/api/WeaponAttributes
+   #67 = Utf8               (Lnet/minecraft/world/item/ItemStack;)Lnet/bettercombat/api/WeaponAttributes;
+   #68 = Utf8               itemStack
+   #69 = Utf8               net/bettercombat/api/component/BetterCombatDataComponents
+   #70 = Class              #69           // net/bettercombat/api/component/BetterCombatDataComponents
+   #71 = Utf8               WEAPON_PRESET_ID
+   #72 = Utf8               Lnet/minecraft/core/component/DataComponentType;
+   #73 = NameAndType        #71:#72       // WEAPON_PRESET_ID:Lnet/minecraft/core/component/DataComponentType;
+   #74 = Fieldref           #70.#73       // net/bettercombat/api/component/BetterCombatDataComponents.WEAPON_PRESET_ID:Lnet/minecraft/core/component/DataComponentType;
+   #75 = Utf8               net/minecraft/world/item/ItemStack
+   #76 = Class              #75           // net/minecraft/world/item/ItemStack
+   #77 = Utf8               (Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+   #78 = NameAndType        #61:#77       // get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+   #79 = Methodref          #76.#78       // net/minecraft/world/item/ItemStack.get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+   #80 = Utf8               net/minecraft/resources/ResourceLocation
+   #81 = Class              #80           // net/minecraft/resources/ResourceLocation
+   #82 = NameAndType        #32:#30       // containers:Ljava/util/Map;
+   #83 = Fieldref           #2.#82        // net/bettercombat/logic/WeaponRegistry.containers:Ljava/util/Map;
+   #84 = Utf8               net/bettercombat/api/AttributesContainer
+   #85 = Class              #84           // net/bettercombat/api/AttributesContainer
+   #86 = Utf8               ()Lnet/bettercombat/api/WeaponAttributes;
+   #87 = NameAndType        #50:#86       // attributes:()Lnet/bettercombat/api/WeaponAttributes;
+   #88 = Methodref          #85.#87       // net/bettercombat/api/AttributesContainer.attributes:()Lnet/bettercombat/api/WeaponAttributes;
+   #89 = Utf8               getItem
+   #90 = Utf8               ()Lnet/minecraft/world/item/Item;
+   #91 = NameAndType        #89:#90       // getItem:()Lnet/minecraft/world/item/Item;
+   #92 = Methodref          #76.#91       // net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+   #93 = Utf8               net/minecraft/core/registries/BuiltInRegistries
+   #94 = Class              #93           // net/minecraft/core/registries/BuiltInRegistries
+   #95 = Utf8               ITEM
+   #96 = Utf8               Lnet/minecraft/core/DefaultedRegistry;
+   #97 = NameAndType        #95:#96       // ITEM:Lnet/minecraft/core/DefaultedRegistry;
+   #98 = Fieldref           #94.#97       // net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+   #99 = Utf8               net/minecraft/core/DefaultedRegistry
+  #100 = Class              #99           // net/minecraft/core/DefaultedRegistry
+  #101 = Utf8               getKey
+  #102 = Utf8               (Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+  #103 = NameAndType        #101:#102     // getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+  #104 = InterfaceMethodref #100.#103     // net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+  #105 = NameAndType        #59:#60       // getAttributes:(Lnet/minecraft/resources/ResourceLocation;)Lnet/bettercombat/api/WeaponAttributes;
+  #106 = Methodref          #2.#105       // net/bettercombat/logic/WeaponRegistry.getAttributes:(Lnet/minecraft/resources/ResourceLocation;)Lnet/bettercombat/api/WeaponAttributes;
+  #107 = Utf8               container
+  #108 = Utf8               Lnet/bettercombat/api/AttributesContainer;
+  #109 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #110 = Utf8               component
+  #111 = Utf8               item
+  #112 = Utf8               Lnet/minecraft/world/item/Item;
+  #113 = Utf8               id
+  #114 = Utf8               loadAttributes
+  #115 = Utf8               (Lnet/minecraft/server/packs/resources/ResourceManager;)V
+  #116 = Utf8               resourceManager
+  #117 = Utf8               loadContainers
+  #118 = NameAndType        #117:#115     // loadContainers:(Lnet/minecraft/server/packs/resources/ResourceManager;)V
+  #119 = Methodref          #2.#118       // net/bettercombat/logic/WeaponRegistry.loadContainers:(Lnet/minecraft/server/packs/resources/ResourceManager;)V
+  #120 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)V
+  #121 = MethodType         #120          //  (Ljava/lang/Object;Ljava/lang/Object;)V
+  #122 = Utf8               lambda$loadAttributes$0
+  #123 = Utf8               (Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+  #124 = NameAndType        #122:#123     // lambda$loadAttributes$0:(Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+  #125 = Methodref          #2.#124       // net/bettercombat/logic/WeaponRegistry.lambda$loadAttributes$0:(Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+  #126 = MethodHandle       6:#125        // REF_invokeStatic net/bettercombat/logic/WeaponRegistry.lambda$loadAttributes$0:(Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+  #127 = MethodType         #123          //  (Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+  #128 = Utf8               java/lang/invoke/LambdaMetafactory
+  #129 = Class              #128          // java/lang/invoke/LambdaMetafactory
+  #130 = Utf8               metafactory
+  #131 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #132 = NameAndType        #130:#131     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #133 = Methodref          #129.#132     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #134 = MethodHandle       6:#133        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #135 = Utf8               accept
+  #136 = Utf8               ()Ljava/util/function/BiConsumer;
+  #137 = NameAndType        #135:#136     // accept:()Ljava/util/function/BiConsumer;
+  #138 = InvokeDynamic      #0:#137       // #0:accept:()Ljava/util/function/BiConsumer;
+  #139 = Utf8               forEach
+  #140 = Utf8               (Ljava/util/function/BiConsumer;)V
+  #141 = NameAndType        #139:#140     // forEach:(Ljava/util/function/BiConsumer;)V
+  #142 = InterfaceMethodref #13.#141      // java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+  #143 = Utf8               Lnet/minecraft/server/packs/resources/ResourceManager;
+  #144 = Utf8               java/lang/Exception
+  #145 = Class              #144          // java/lang/Exception
+  #146 = Utf8               java/util/HashMap
+  #147 = Class              #146          // java/util/HashMap
+  #148 = Methodref          #147.#43      // java/util/HashMap."<init>":()V
+  #149 = Utf8               net/bettercombat/BetterCombatMod
+  #150 = Class              #149          // net/bettercombat/BetterCombatMod
+  #151 = Utf8               config
+  #152 = Utf8               Lnet/bettercombat/config/ServerConfig;
+  #153 = NameAndType        #151:#152     // config:Lnet/bettercombat/config/ServerConfig;
+  #154 = Fieldref           #150.#153     // net/bettercombat/BetterCombatMod.config:Lnet/bettercombat/config/ServerConfig;
+  #155 = Utf8               net/bettercombat/config/ServerConfig
+  #156 = Class              #155          // net/bettercombat/config/ServerConfig
+  #157 = Utf8               weapon_registry_logging
+  #158 = Utf8               Z
+  #159 = NameAndType        #157:#158     // weapon_registry_logging:Z
+  #160 = Fieldref           #156.#159     // net/bettercombat/config/ServerConfig.weapon_registry_logging:Z
+  #161 = Utf8               weapon_attributes
+  #162 = String             #161          // weapon_attributes
+  #163 = Utf8               (Ljava/lang/Object;)Z
+  #164 = MethodType         #163          //  (Ljava/lang/Object;)Z
+  #165 = Utf8               lambda$loadContainers$1
+  #166 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Z
+  #167 = NameAndType        #165:#166     // lambda$loadContainers$1:(Lnet/minecraft/resources/ResourceLocation;)Z
+  #168 = Methodref          #2.#167       // net/bettercombat/logic/WeaponRegistry.lambda$loadContainers$1:(Lnet/minecraft/resources/ResourceLocation;)Z
+  #169 = MethodHandle       6:#168        // REF_invokeStatic net/bettercombat/logic/WeaponRegistry.lambda$loadContainers$1:(Lnet/minecraft/resources/ResourceLocation;)Z
+  #170 = MethodType         #166          //  (Lnet/minecraft/resources/ResourceLocation;)Z
+  #171 = Utf8               test
+  #172 = Utf8               ()Ljava/util/function/Predicate;
+  #173 = NameAndType        #171:#172     // test:()Ljava/util/function/Predicate;
+  #174 = InvokeDynamic      #1:#173       // #1:test:()Ljava/util/function/Predicate;
+  #175 = Utf8               net/minecraft/server/packs/resources/ResourceManager
+  #176 = Class              #175          // net/minecraft/server/packs/resources/ResourceManager
+  #177 = Utf8               listResources
+  #178 = Utf8               (Ljava/lang/String;Ljava/util/function/Predicate;)Ljava/util/Map;
+  #179 = NameAndType        #177:#178     // listResources:(Ljava/lang/String;Ljava/util/function/Predicate;)Ljava/util/Map;
+  #180 = InterfaceMethodref #176.#179     // net/minecraft/server/packs/resources/ResourceManager.listResources:(Ljava/lang/String;Ljava/util/function/Predicate;)Ljava/util/Map;
+  #181 = Utf8               entrySet
+  #182 = Utf8               ()Ljava/util/Set;
+  #183 = NameAndType        #181:#182     // entrySet:()Ljava/util/Set;
+  #184 = InterfaceMethodref #13.#183      // java/util/Map.entrySet:()Ljava/util/Set;
+  #185 = Utf8               java/util/Set
+  #186 = Class              #185          // java/util/Set
+  #187 = Utf8               iterator
+  #188 = Utf8               ()Ljava/util/Iterator;
+  #189 = NameAndType        #187:#188     // iterator:()Ljava/util/Iterator;
+  #190 = InterfaceMethodref #186.#189     // java/util/Set.iterator:()Ljava/util/Iterator;
+  #191 = Utf8               java/util/Iterator
+  #192 = Class              #191          // java/util/Iterator
+  #193 = Utf8               hasNext
+  #194 = Utf8               ()Z
+  #195 = NameAndType        #193:#194     // hasNext:()Z
+  #196 = InterfaceMethodref #192.#195     // java/util/Iterator.hasNext:()Z
+  #197 = Utf8               next
+  #198 = Utf8               ()Ljava/lang/Object;
+  #199 = NameAndType        #197:#198     // next:()Ljava/lang/Object;
+  #200 = InterfaceMethodref #192.#199     // java/util/Iterator.next:()Ljava/lang/Object;
+  #201 = NameAndType        #101:#198     // getKey:()Ljava/lang/Object;
+  #202 = InterfaceMethodref #11.#201      // java/util/Map$Entry.getKey:()Ljava/lang/Object;
+  #203 = Utf8               getValue
+  #204 = NameAndType        #203:#198     // getValue:()Ljava/lang/Object;
+  #205 = InterfaceMethodref #11.#204      // java/util/Map$Entry.getValue:()Ljava/lang/Object;
+  #206 = Utf8               net/minecraft/server/packs/resources/Resource
+  #207 = Class              #206          // net/minecraft/server/packs/resources/Resource
+  #208 = Utf8               com/google/gson/stream/JsonReader
+  #209 = Class              #208          // com/google/gson/stream/JsonReader
+  #210 = Utf8               java/io/InputStreamReader
+  #211 = Class              #210          // java/io/InputStreamReader
+  #212 = Utf8               open
+  #213 = Utf8               ()Ljava/io/InputStream;
+  #214 = NameAndType        #212:#213     // open:()Ljava/io/InputStream;
+  #215 = Methodref          #207.#214     // net/minecraft/server/packs/resources/Resource.open:()Ljava/io/InputStream;
+  #216 = Utf8               (Ljava/io/InputStream;)V
+  #217 = NameAndType        #41:#216      // "<init>":(Ljava/io/InputStream;)V
+  #218 = Methodref          #211.#217     // java/io/InputStreamReader."<init>":(Ljava/io/InputStream;)V
+  #219 = Utf8               (Ljava/io/Reader;)V
+  #220 = NameAndType        #41:#219      // "<init>":(Ljava/io/Reader;)V
+  #221 = Methodref          #209.#220     // com/google/gson/stream/JsonReader."<init>":(Ljava/io/Reader;)V
+  #222 = Utf8               net/bettercombat/api/WeaponAttributesHelper
+  #223 = Class              #222          // net/bettercombat/api/WeaponAttributesHelper
+  #224 = Utf8               decode
+  #225 = Utf8               (Lcom/google/gson/stream/JsonReader;)Lnet/bettercombat/api/AttributesContainer;
+  #226 = NameAndType        #224:#225     // decode:(Lcom/google/gson/stream/JsonReader;)Lnet/bettercombat/api/AttributesContainer;
+  #227 = Methodref          #223.#226     // net/bettercombat/api/WeaponAttributesHelper.decode:(Lcom/google/gson/stream/JsonReader;)Lnet/bettercombat/api/AttributesContainer;
+  #228 = Utf8               toString
+  #229 = Utf8               ()Ljava/lang/String;
+  #230 = NameAndType        #228:#229     // toString:()Ljava/lang/String;
+  #231 = Methodref          #81.#230      // net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+  #232 = Utf8               weapon_attributes/
+  #233 = String             #232          // weapon_attributes/
+  #234 = Utf8
+  #235 = String             #234          //
+  #236 = Utf8               java/lang/String
+  #237 = Class              #236          // java/lang/String
+  #238 = Utf8               replace
+  #239 = Utf8               (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+  #240 = NameAndType        #238:#239     // replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+  #241 = Methodref          #237.#240     // java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+  #242 = Utf8               lastIndexOf
+  #243 = Utf8               (I)I
+  #244 = NameAndType        #242:#243     // lastIndexOf:(I)I
+  #245 = Methodref          #237.#244     // java/lang/String.lastIndexOf:(I)I
+  #246 = Utf8               substring
+  #247 = Utf8               (II)Ljava/lang/String;
+  #248 = NameAndType        #246:#247     // substring:(II)Ljava/lang/String;
+  #249 = Methodref          #237.#248     // java/lang/String.substring:(II)Ljava/lang/String;
+  #250 = Utf8               parse
+  #251 = Utf8               (Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #252 = NameAndType        #250:#251     // parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #253 = Methodref          #81.#252      // net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #254 = Utf8               java/lang/System
+  #255 = Class              #254          // java/lang/System
+  #256 = Utf8               out
+  #257 = Utf8               Ljava/io/PrintStream;
+  #258 = NameAndType        #256:#257     // out:Ljava/io/PrintStream;
+  #259 = Fieldref           #255.#258     // java/lang/System.out:Ljava/io/PrintStream;
+  #260 = Utf8               Loaded container: \u0001
+  #261 = String             #260          // Loaded container: \u0001
+  #262 = Utf8               java/lang/invoke/StringConcatFactory
+  #263 = Class              #262          // java/lang/invoke/StringConcatFactory
+  #264 = Utf8               makeConcatWithConstants
+  #265 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #266 = NameAndType        #264:#265     // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #267 = Methodref          #263.#266     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #268 = MethodHandle       6:#267        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #269 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+  #270 = NameAndType        #264:#269     // makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #271 = InvokeDynamic      #2:#270       // #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #272 = Utf8               java/io/PrintStream
+  #273 = Class              #272          // java/io/PrintStream
+  #274 = Utf8               println
+  #275 = Utf8               (Ljava/lang/String;)V
+  #276 = NameAndType        #274:#275     // println:(Ljava/lang/String;)V
+  #277 = Methodref          #273.#276     // java/io/PrintStream.println:(Ljava/lang/String;)V
+  #278 = Utf8               err
+  #279 = NameAndType        #278:#257     // err:Ljava/io/PrintStream;
+  #280 = Fieldref           #255.#279     // java/lang/System.err:Ljava/io/PrintStream;
+  #281 = Utf8               valueOf
+  #282 = Utf8               (Ljava/lang/Object;)Ljava/lang/String;
+  #283 = NameAndType        #281:#282     // valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+  #284 = Methodref          #237.#283     // java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+  #285 = Utf8               Failed to parse: \u0001
+  #286 = String             #285          // Failed to parse: \u0001
+  #287 = InvokeDynamic      #3:#270       // #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #288 = Utf8               printStackTrace
+  #289 = NameAndType        #288:#42      // printStackTrace:()V
+  #290 = Methodref          #145.#289     // java/lang/Exception.printStackTrace:()V
+  #291 = Utf8               parent
+  #292 = NameAndType        #291:#229     // parent:()Ljava/lang/String;
+  #293 = Methodref          #85.#292      // net/bettercombat/api/AttributesContainer.parent:()Ljava/lang/String;
+  #294 = Utf8               resolveAttributes
+  #295 = Utf8               (Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)Lnet/bettercombat/api/WeaponAttributes;
+  #296 = NameAndType        #294:#295     // resolveAttributes:(Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)Lnet/bettercombat/api/WeaponAttributes;
+  #297 = Methodref          #2.#296       // net/bettercombat/logic/WeaponRegistry.resolveAttributes:(Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)Lnet/bettercombat/api/WeaponAttributes;
+  #298 = Utf8               (Ljava/lang/String;Lnet/bettercombat/api/WeaponAttributes;)V
+  #299 = NameAndType        #41:#298      // "<init>":(Ljava/lang/String;Lnet/bettercombat/api/WeaponAttributes;)V
+  #300 = Methodref          #85.#299      // net/bettercombat/api/AttributesContainer."<init>":(Ljava/lang/String;Lnet/bettercombat/api/WeaponAttributes;)V
+  #301 = Utf8               reader
+  #302 = Utf8               Lcom/google/gson/stream/JsonReader;
+  #303 = Utf8               Ljava/lang/String;
+  #304 = Utf8               e
+  #305 = Utf8               Ljava/lang/Exception;
+  #306 = Utf8               identifier
+  #307 = Utf8               resource
+  #308 = Utf8               Lnet/minecraft/server/packs/resources/Resource;
+  #309 = Utf8               entry
+  #310 = Utf8               Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/Resource;>;
+  #311 = Utf8               Ljava/util/Map$Entry;
+  #312 = Utf8               resolvedAttributes
+  #313 = Utf8               Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;>;
+  #314 = Utf8               logging
+  #315 = Utf8               resolvedContainers
+  #316 = Utf8               java/util/ArrayList
+  #317 = Class              #316          // java/util/ArrayList
+  #318 = Methodref          #317.#43      // java/util/ArrayList."<init>":()V
+  #319 = Utf8               add
+  #320 = Utf8               (ILjava/lang/Object;)V
+  #321 = NameAndType        #319:#320     // add:(ILjava/lang/Object;)V
+  #322 = Methodref          #317.#321     // java/util/ArrayList.add:(ILjava/lang/Object;)V
+  #323 = Utf8               empty
+  #324 = NameAndType        #323:#86      // empty:()Lnet/bettercombat/api/WeaponAttributes;
+  #325 = Methodref          #66.#324      // net/bettercombat/api/WeaponAttributes.empty:()Lnet/bettercombat/api/WeaponAttributes;
+  #326 = Utf8               stream
+  #327 = Utf8               ()Ljava/util/stream/Stream;
+  #328 = NameAndType        #326:#327     // stream:()Ljava/util/stream/Stream;
+  #329 = Methodref          #317.#328     // java/util/ArrayList.stream:()Ljava/util/stream/Stream;
+  #330 = MethodType         #54           //  (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #331 = Utf8               lambda$resolveAttributes$2
+  #332 = Utf8               (Lnet/bettercombat/api/WeaponAttributes;Lnet/bettercombat/api/WeaponAttributes;)Lnet/bettercombat/api/WeaponAttributes;
+  #333 = NameAndType        #331:#332     // lambda$resolveAttributes$2:(Lnet/bettercombat/api/WeaponAttributes;Lnet/bettercombat/api/WeaponAttributes;)Lnet/bettercombat/api/WeaponAttributes;
+  #334 = Methodref          #2.#333       // net/bettercombat/logic/WeaponRegistry.lambda$resolveAttributes$2:(Lnet/bettercombat/api/WeaponAttributes;Lnet/bettercombat/api/WeaponAttributes;)Lnet/bettercombat/api/WeaponAttributes;
+  #335 = MethodHandle       6:#334        // REF_invokeStatic net/bettercombat/logic/WeaponRegistry.lambda$resolveAttributes$2:(Lnet/bettercombat/api/WeaponAttributes;Lnet/bettercombat/api/WeaponAttributes;)Lnet/bettercombat/api/WeaponAttributes;
+  #336 = MethodType         #332          //  (Lnet/bettercombat/api/WeaponAttributes;Lnet/bettercombat/api/WeaponAttributes;)Lnet/bettercombat/api/WeaponAttributes;
+  #337 = Utf8               apply
+  #338 = Utf8               ()Ljava/util/function/BinaryOperator;
+  #339 = NameAndType        #337:#338     // apply:()Ljava/util/function/BinaryOperator;
+  #340 = InvokeDynamic      #4:#339       // #4:apply:()Ljava/util/function/BinaryOperator;
+  #341 = Utf8               java/util/stream/Stream
+  #342 = Class              #341          // java/util/stream/Stream
+  #343 = Utf8               reduce
+  #344 = Utf8               (Ljava/lang/Object;Ljava/util/function/BinaryOperator;)Ljava/lang/Object;
+  #345 = NameAndType        #343:#344     // reduce:(Ljava/lang/Object;Ljava/util/function/BinaryOperator;)Ljava/lang/Object;
+  #346 = InterfaceMethodref #342.#345     // java/util/stream/Stream.reduce:(Ljava/lang/Object;Ljava/util/function/BinaryOperator;)Ljava/lang/Object;
+  #347 = Utf8               validate
+  #348 = Utf8               (Lnet/bettercombat/api/WeaponAttributes;)V
+  #349 = NameAndType        #347:#348     // validate:(Lnet/bettercombat/api/WeaponAttributes;)V
+  #350 = Methodref          #223.#349     // net/bettercombat/api/WeaponAttributesHelper.validate:(Lnet/bettercombat/api/WeaponAttributes;)V
+  #351 = NameAndType        #27:#28       // LOGGER:Lorg/slf4j/Logger;
+  #352 = Fieldref           #2.#351       // net/bettercombat/logic/WeaponRegistry.LOGGER:Lorg/slf4j/Logger;
+  #353 = Utf8               getMessage
+  #354 = NameAndType        #353:#229     // getMessage:()Ljava/lang/String;
+  #355 = Methodref          #145.#354     // java/lang/Exception.getMessage:()Ljava/lang/String;
+  #356 = Utf8               Failed to resolve weapon attributes for: \u0001. Reason: \u0001
+  #357 = String             #356          // Failed to resolve weapon attributes for: \u0001. Reason: \u0001
+  #358 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #359 = NameAndType        #264:#358     // makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #360 = InvokeDynamic      #5:#359       // #5:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #361 = Utf8               org/slf4j/Logger
+  #362 = Class              #361          // org/slf4j/Logger
+  #363 = Utf8               error
+  #364 = NameAndType        #363:#275     // error:(Ljava/lang/String;)V
+  #365 = InterfaceMethodref #362.#364     // org/slf4j/Logger.error:(Ljava/lang/String;)V
+  #366 = Utf8               resolutionChain
+  #367 = Utf8               Ljava/util/ArrayList<Lnet/bettercombat/api/WeaponAttributes;>;
+  #368 = Utf8               Ljava/util/ArrayList;
+  #369 = Utf8               current
+  #370 = Utf8               resolveAndRegisterAttributes
+  #371 = NameAndType        #47:#48       // register:(Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/WeaponAttributes;)V
+  #372 = Methodref          #2.#371       // net/bettercombat/logic/WeaponRegistry.register:(Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/WeaponAttributes;)V
+  #373 = Utf8               encodeRegistry
+  #374 = Utf8               weapon_registry_compression
+  #375 = NameAndType        #374:#158     // weapon_registry_compression:Z
+  #376 = Fieldref           #156.#375     // net/bettercombat/config/ServerConfig.weapon_registry_compression:Z
+  #377 = Methodref          #7.#43        // net/bettercombat/logic/WeaponRegistry$SyncFormat."<init>":()V
+  #378 = Utf8               lambda$encodeRegistry$3
+  #379 = Utf8               (Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+  #380 = NameAndType        #378:#379     // lambda$encodeRegistry$3:(Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+  #381 = Methodref          #2.#380       // net/bettercombat/logic/WeaponRegistry.lambda$encodeRegistry$3:(Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+  #382 = MethodHandle       6:#381        // REF_invokeStatic net/bettercombat/logic/WeaponRegistry.lambda$encodeRegistry$3:(Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+  #383 = Utf8               (Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;)Ljava/util/function/BiConsumer;
+  #384 = NameAndType        #135:#383     // accept:(Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;)Ljava/util/function/BiConsumer;
+  #385 = InvokeDynamic      #6:#384       // #6:accept:(Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;)Ljava/util/function/BiConsumer;
+  #386 = Utf8               lambda$encodeRegistry$4
+  #387 = Utf8               (Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/WeaponAttributes;)V
+  #388 = NameAndType        #386:#387     // lambda$encodeRegistry$4:(Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/WeaponAttributes;)V
+  #389 = Methodref          #2.#388       // net/bettercombat/logic/WeaponRegistry.lambda$encodeRegistry$4:(Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/WeaponAttributes;)V
+  #390 = MethodHandle       6:#389        // REF_invokeStatic net/bettercombat/logic/WeaponRegistry.lambda$encodeRegistry$4:(Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/WeaponAttributes;)V
+  #391 = MethodType         #48           //  (Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/WeaponAttributes;)V
+  #392 = InvokeDynamic      #7:#384       // #7:accept:(Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;)Ljava/util/function/BiConsumer;
+  #393 = NameAndType        #39:#40       // gson:Lcom/google/gson/Gson;
+  #394 = Fieldref           #2.#393       // net/bettercombat/logic/WeaponRegistry.gson:Lcom/google/gson/Gson;
+  #395 = Utf8               com/google/gson/Gson
+  #396 = Class              #395          // com/google/gson/Gson
+  #397 = Utf8               toJson
+  #398 = NameAndType        #397:#282     // toJson:(Ljava/lang/Object;)Ljava/lang/String;
+  #399 = Methodref          #396.#398     // com/google/gson/Gson.toJson:(Ljava/lang/Object;)Ljava/lang/String;
+  #400 = Utf8               net/bettercombat/utils/CompressionHelper
+  #401 = Class              #400          // net/bettercombat/utils/CompressionHelper
+  #402 = Utf8               gzipCompress
+  #403 = NameAndType        #402:#269     // gzipCompress:(Ljava/lang/String;)Ljava/lang/String;
+  #404 = Methodref          #401.#403     // net/bettercombat/utils/CompressionHelper.gzipCompress:(Ljava/lang/String;)Ljava/lang/String;
+  #405 = Utf8               Weapon Attribute assignments loaded: \u0001
+  #406 = String             #405          // Weapon Attribute assignments loaded: \u0001
+  #407 = InvokeDynamic      #8:#270       // #8:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #408 = Utf8               info
+  #409 = NameAndType        #408:#275     // info:(Ljava/lang/String;)V
+  #410 = InterfaceMethodref #362.#409     // org/slf4j/Logger.info:(Ljava/lang/String;)V
+  #411 = Utf8               length
+  #412 = Utf8               ()I
+  #413 = NameAndType        #411:#412     // length:()I
+  #414 = Methodref          #237.#413     // java/lang/String.length:()I
+  #415 = Utf8               java/lang/Math
+  #416 = Class              #415          // java/lang/Math
+  #417 = Utf8               min
+  #418 = Utf8               (II)I
+  #419 = NameAndType        #417:#418     // min:(II)I
+  #420 = Methodref          #416.#419     // java/lang/Math.min:(II)I
+  #421 = Utf8               java/util/List
+  #422 = Class              #421          // java/util/List
+  #423 = NameAndType        #319:#163     // add:(Ljava/lang/Object;)Z
+  #424 = InterfaceMethodref #422.#423     // java/util/List.add:(Ljava/lang/Object;)Z
+  #425 = Utf8               (ZLjava/util/List;)V
+  #426 = NameAndType        #41:#425      // "<init>":(ZLjava/util/List;)V
+  #427 = Methodref          #9.#426       // net/bettercombat/logic/WeaponRegistry$Encoded."<init>":(ZLjava/util/List;)V
+  #428 = NameAndType        #34:#35       // encodedRegistrations:Lnet/bettercombat/logic/WeaponRegistry$Encoded;
+  #429 = Fieldref           #2.#428       // net/bettercombat/logic/WeaponRegistry.encodedRegistrations:Lnet/bettercombat/logic/WeaponRegistry$Encoded;
+  #430 = Methodref          #18.#426      // net/bettercombat/network/Packets$WeaponRegistrySync."<init>":(ZLjava/util/List;)V
+  #431 = Utf8               net/bettercombat/Platform
+  #432 = Class              #431          // net/bettercombat/Platform
+  #433 = Utf8               createByteBuffer
+  #434 = Utf8               ()Lnet/minecraft/network/FriendlyByteBuf;
+  #435 = NameAndType        #433:#434     // createByteBuffer:()Lnet/minecraft/network/FriendlyByteBuf;
+  #436 = Methodref          #432.#435     // net/bettercombat/Platform.createByteBuffer:()Lnet/minecraft/network/FriendlyByteBuf;
+  #437 = Utf8               write
+  #438 = Utf8               (Lnet/minecraft/network/FriendlyByteBuf;)V
+  #439 = NameAndType        #437:#438     // write:(Lnet/minecraft/network/FriendlyByteBuf;)V
+  #440 = Methodref          #18.#439      // net/bettercombat/network/Packets$WeaponRegistrySync.write:(Lnet/minecraft/network/FriendlyByteBuf;)V
+  #441 = Utf8               net/minecraft/network/FriendlyByteBuf
+  #442 = Class              #441          // net/minecraft/network/FriendlyByteBuf
+  #443 = Utf8               readableBytes
+  #444 = NameAndType        #443:#412     // readableBytes:()I
+  #445 = Methodref          #442.#444     // net/minecraft/network/FriendlyByteBuf.readableBytes:()I
+  #446 = Utf8               size
+  #447 = NameAndType        #446:#412     // size:()I
+  #448 = InterfaceMethodref #422.#447     // java/util/List.size:()I
+  #449 = Utf8               Encoded Weapon Attribute registry size (with package overhead): \u0001 bytes (in \u0001 string chunks with the size of 10000)
+  #450 = String             #449          // Encoded Weapon Attribute registry size (with package overhead): \u0001 bytes (in \u0001 string chunks with the size of 10000)
+  #451 = NameAndType        #264:#247     // makeConcatWithConstants:(II)Ljava/lang/String;
+  #452 = InvokeDynamic      #9:#451       // #9:makeConcatWithConstants:(II)Ljava/lang/String;
+  #453 = Utf8               i
+  #454 = Utf8               compressed
+  #455 = Utf8               chunks
+  #456 = Utf8               Ljava/util/List<Ljava/lang/String;>;
+  #457 = Utf8               Ljava/util/List;
+  #458 = Utf8               syncContent
+  #459 = Utf8               Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;
+  #460 = Utf8               json
+  #461 = Utf8               referencePacket
+  #462 = Utf8               Lnet/bettercombat/network/Packets$WeaponRegistrySync;
+  #463 = Utf8               buffer
+  #464 = Utf8               Lnet/minecraft/network/FriendlyByteBuf;
+  #465 = Utf8               decodeRegistry
+  #466 = Utf8               (Lnet/bettercombat/network/Packets$WeaponRegistrySync;)V
+  #467 = Utf8               syncPacket
+  #468 = NameAndType        #454:#194     // compressed:()Z
+  #469 = Methodref          #18.#468      // net/bettercombat/network/Packets$WeaponRegistrySync.compressed:()Z
+  #470 = Utf8               ()Ljava/util/List;
+  #471 = NameAndType        #455:#470     // chunks:()Ljava/util/List;
+  #472 = Methodref          #18.#471      // net/bettercombat/network/Packets$WeaponRegistrySync.chunks:()Ljava/util/List;
+  #473 = InterfaceMethodref #422.#189     // java/util/List.iterator:()Ljava/util/Iterator;
+  #474 = Utf8               concat
+  #475 = NameAndType        #474:#269     // concat:(Ljava/lang/String;)Ljava/lang/String;
+  #476 = Methodref          #237.#475     // java/lang/String.concat:(Ljava/lang/String;)Ljava/lang/String;
+  #477 = Utf8               gzipDecompress
+  #478 = NameAndType        #477:#269     // gzipDecompress:(Ljava/lang/String;)Ljava/lang/String;
+  #479 = Methodref          #401.#478     // net/bettercombat/utils/CompressionHelper.gzipDecompress:(Ljava/lang/String;)Ljava/lang/String;
+  #480 = Utf8               Decoded Weapon Attribute registry in \u0001 string chunks
+  #481 = String             #480          // Decoded Weapon Attribute registry in \u0001 string chunks
+  #482 = Utf8               (I)Ljava/lang/String;
+  #483 = NameAndType        #264:#482     // makeConcatWithConstants:(I)Ljava/lang/String;
+  #484 = InvokeDynamic      #10:#483      // #10:makeConcatWithConstants:(I)Ljava/lang/String;
+  #485 = Utf8               Weapon Attribute registry received: \u0001
+  #486 = String             #485          // Weapon Attribute registry received: \u0001
+  #487 = InvokeDynamic      #11:#270      // #11:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #488 = Utf8               fromJson
+  #489 = Utf8               (Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;
+  #490 = NameAndType        #488:#489     // fromJson:(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;
+  #491 = Methodref          #396.#490     // com/google/gson/Gson.fromJson:(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;
+  #492 = Utf8               clear
+  #493 = NameAndType        #492:#42      // clear:()V
+  #494 = InterfaceMethodref #13.#493      // java/util/Map.clear:()V
+  #495 = NameAndType        #50:#30       // attributes:Ljava/util/Map;
+  #496 = Fieldref           #7.#495       // net/bettercombat/logic/WeaponRegistry$SyncFormat.attributes:Ljava/util/Map;
+  #497 = Utf8               lambda$decodeRegistry$5
+  #498 = Utf8               (Ljava/lang/String;Lnet/bettercombat/api/AttributesContainer;)V
+  #499 = NameAndType        #497:#498     // lambda$decodeRegistry$5:(Ljava/lang/String;Lnet/bettercombat/api/AttributesContainer;)V
+  #500 = Methodref          #2.#499       // net/bettercombat/logic/WeaponRegistry.lambda$decodeRegistry$5:(Ljava/lang/String;Lnet/bettercombat/api/AttributesContainer;)V
+  #501 = MethodHandle       6:#500        // REF_invokeStatic net/bettercombat/logic/WeaponRegistry.lambda$decodeRegistry$5:(Ljava/lang/String;Lnet/bettercombat/api/AttributesContainer;)V
+  #502 = MethodType         #498          //  (Ljava/lang/String;Lnet/bettercombat/api/AttributesContainer;)V
+  #503 = InvokeDynamic      #12:#137      // #12:accept:()Ljava/util/function/BiConsumer;
+  #504 = Fieldref           #7.#51        // net/bettercombat/logic/WeaponRegistry$SyncFormat.registrations:Ljava/util/Map;
+  #505 = Utf8               lambda$decodeRegistry$6
+  #506 = NameAndType        #505:#298     // lambda$decodeRegistry$6:(Ljava/lang/String;Lnet/bettercombat/api/WeaponAttributes;)V
+  #507 = Methodref          #2.#506       // net/bettercombat/logic/WeaponRegistry.lambda$decodeRegistry$6:(Ljava/lang/String;Lnet/bettercombat/api/WeaponAttributes;)V
+  #508 = MethodHandle       6:#507        // REF_invokeStatic net/bettercombat/logic/WeaponRegistry.lambda$decodeRegistry$6:(Ljava/lang/String;Lnet/bettercombat/api/WeaponAttributes;)V
+  #509 = MethodType         #298          //  (Ljava/lang/String;Lnet/bettercombat/api/WeaponAttributes;)V
+  #510 = InvokeDynamic      #13:#137      // #13:accept:()Ljava/util/function/BiConsumer;
+  #511 = Utf8               chunk
+  #512 = Utf8               sync
+  #513 = Utf8               getEncodedRegistry
+  #514 = Utf8               ()Lnet/bettercombat/logic/WeaponRegistry$Encoded;
+  #515 = Utf8               key
+  #516 = Utf8               value
+  #517 = Utf8               a
+  #518 = Utf8               b
+  #519 = Utf8               override
+  #520 = NameAndType        #519:#332     // override:(Lnet/bettercombat/api/WeaponAttributes;Lnet/bettercombat/api/WeaponAttributes;)Lnet/bettercombat/api/WeaponAttributes;
+  #521 = Methodref          #223.#520     // net/bettercombat/api/WeaponAttributesHelper.override:(Lnet/bettercombat/api/WeaponAttributes;Lnet/bettercombat/api/WeaponAttributes;)Lnet/bettercombat/api/WeaponAttributes;
+  #522 = Utf8               fileName
+  #523 = Utf8               getPath
+  #524 = NameAndType        #523:#229     // getPath:()Ljava/lang/String;
+  #525 = Methodref          #81.#524      // net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+  #526 = Utf8               .json
+  #527 = String             #526          // .json
+  #528 = Utf8               endsWith
+  #529 = Utf8               (Ljava/lang/String;)Z
+  #530 = NameAndType        #528:#529     // endsWith:(Ljava/lang/String;)Z
+  #531 = Methodref          #237.#530     // java/lang/String.endsWith:(Ljava/lang/String;)Z
+  #532 = Utf8               containsKey
+  #533 = NameAndType        #532:#166     // containsKey:(Lnet/minecraft/resources/ResourceLocation;)Z
+  #534 = InterfaceMethodref #100.#533     // net/minecraft/core/DefaultedRegistry.containsKey:(Lnet/minecraft/resources/ResourceLocation;)Z
+  #535 = NameAndType        #370:#123     // resolveAndRegisterAttributes:(Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+  #536 = Methodref          #2.#535       // net/bettercombat/logic/WeaponRegistry.resolveAndRegisterAttributes:(Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+  #537 = Utf8               <clinit>
+  #538 = Utf8               com/mojang/logging/LogUtils
+  #539 = Class              #538          // com/mojang/logging/LogUtils
+  #540 = Utf8               getLogger
+  #541 = Utf8               ()Lorg/slf4j/Logger;
+  #542 = NameAndType        #540:#541     // getLogger:()Lorg/slf4j/Logger;
+  #543 = Methodref          #539.#542     // com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+  #544 = Utf8               of
+  #545 = NameAndType        #544:#470     // of:()Ljava/util/List;
+  #546 = InterfaceMethodref #422.#545     // java/util/List.of:()Ljava/util/List;
+  #547 = Utf8               com/google/gson/GsonBuilder
+  #548 = Class              #547          // com/google/gson/GsonBuilder
+  #549 = Methodref          #548.#43      // com/google/gson/GsonBuilder."<init>":()V
+  #550 = Utf8               create
+  #551 = Utf8               ()Lcom/google/gson/Gson;
+  #552 = NameAndType        #550:#551     // create:()Lcom/google/gson/Gson;
+  #553 = Methodref          #548.#552     // com/google/gson/GsonBuilder.create:()Lcom/google/gson/Gson;
+  #554 = Utf8               Signature
+  #555 = Utf8               ConstantValue
+  #556 = Utf8               Code
+  #557 = Utf8               LineNumberTable
+  #558 = Utf8               LocalVariableTable
+  #559 = Utf8               MethodParameters
+  #560 = Utf8               StackMapTable
+  #561 = Utf8               LocalVariableTypeTable
+  #562 = Utf8               InnerClasses
+  #563 = Utf8               SourceFile
+  #564 = Utf8               BootstrapMethods
+  #565 = Utf8               NestMembers
+{
+  static final org.slf4j.Logger LOGGER;
+    descriptor: Lorg/slf4j/Logger;
+    flags: (0x0018) ACC_STATIC, ACC_FINAL
+
+  static java.util.Map<net.minecraft.resources.ResourceLocation, net.bettercombat.api.WeaponAttributes> registrations;
+    descriptor: Ljava/util/Map;
+    flags: (0x0008) ACC_STATIC
+    Signature: #31                          // Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/WeaponAttributes;>;
+
+  static java.util.Map<net.minecraft.resources.ResourceLocation, net.bettercombat.api.AttributesContainer> containers;
+    descriptor: Ljava/util/Map;
+    flags: (0x0008) ACC_STATIC
+    Signature: #33                          // Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;>;
+
+  private static net.bettercombat.logic.WeaponRegistry$Encoded encodedRegistrations;
+    descriptor: Lnet/bettercombat/logic/WeaponRegistry$Encoded;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+
+  private static final int CHUNK_SIZE = 10000;
+    descriptor: I
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+    ConstantValue: int 10000
+
+  private static final com.google.gson.Gson gson;
+    descriptor: Lcom/google/gson/Gson;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+
+  public net.bettercombat.logic.WeaponRegistry();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #44                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 28: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/bettercombat/logic/WeaponRegistry;
+
+  public static void register(net.minecraft.resources.ResourceLocation, net.bettercombat.api.WeaponAttributes);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/WeaponAttributes;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: getstatic     #52                 // Field registrations:Ljava/util/Map;
+         3: aload_0
+         4: aload_1
+         5: invokeinterface #56,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        10: pop
+        11: return
+      LineNumberTable:
+        line 35: 0
+        line 36: 11
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0 itemId   Lnet/minecraft/resources/ResourceLocation;
+            0      12     1 attributes   Lnet/bettercombat/api/WeaponAttributes;
+    MethodParameters:
+      Name                           Flags
+      itemId
+      attributes
+
+  static net.bettercombat.api.WeaponAttributes getAttributes(net.minecraft.resources.ResourceLocation);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;)Lnet/bettercombat/api/WeaponAttributes;
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: getstatic     #52                 // Field registrations:Ljava/util/Map;
+         3: aload_0
+         4: invokeinterface #64,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+         9: checkcast     #66                 // class net/bettercombat/api/WeaponAttributes
+        12: areturn
+      LineNumberTable:
+        line 39: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0 itemId   Lnet/minecraft/resources/ResourceLocation;
+    MethodParameters:
+      Name                           Flags
+      itemId
+
+  public static net.bettercombat.api.WeaponAttributes getAttributes(net.minecraft.world.item.ItemStack);
+    descriptor: (Lnet/minecraft/world/item/ItemStack;)Lnet/bettercombat/api/WeaponAttributes;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=4, args_size=1
+         0: aload_0
+         1: ifnonnull     6
+         4: aconst_null
+         5: areturn
+         6: aload_0
+         7: getstatic     #74                 // Field net/bettercombat/api/component/BetterCombatDataComponents.WEAPON_PRESET_ID:Lnet/minecraft/core/component/DataComponentType;
+        10: invokevirtual #79                 // Method net/minecraft/world/item/ItemStack.get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+        13: checkcast     #81                 // class net/minecraft/resources/ResourceLocation
+        16: astore_1
+        17: aload_1
+        18: ifnull        43
+        21: getstatic     #83                 // Field containers:Ljava/util/Map;
+        24: aload_1
+        25: invokeinterface #64,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        30: checkcast     #85                 // class net/bettercombat/api/AttributesContainer
+        33: astore_2
+        34: aload_2
+        35: ifnull        43
+        38: aload_2
+        39: invokevirtual #88                 // Method net/bettercombat/api/AttributesContainer.attributes:()Lnet/bettercombat/api/WeaponAttributes;
+        42: areturn
+        43: aload_0
+        44: invokevirtual #92                 // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+        47: astore_2
+        48: getstatic     #98                 // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+        51: aload_2
+        52: invokeinterface #104,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+        57: astore_3
+        58: aload_3
+        59: invokestatic  #106                // Method getAttributes:(Lnet/minecraft/resources/ResourceLocation;)Lnet/bettercombat/api/WeaponAttributes;
+        62: areturn
+      StackMapTable: number_of_entries = 2
+        frame_type = 6 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 36
+          locals = [ class net/minecraft/resources/ResourceLocation ]
+      LineNumberTable:
+        line 43: 0
+        line 44: 4
+        line 51: 6
+        line 52: 17
+        line 53: 21
+        line 54: 34
+        line 55: 38
+        line 58: 43
+        line 59: 48
+        line 60: 58
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           34       9     2 container   Lnet/bettercombat/api/AttributesContainer;
+            0      63     0 itemStack   Lnet/minecraft/world/item/ItemStack;
+           17      46     1 component   Lnet/minecraft/resources/ResourceLocation;
+           48      15     2  item   Lnet/minecraft/world/item/Item;
+           58       5     3    id   Lnet/minecraft/resources/ResourceLocation;
+    MethodParameters:
+      Name                           Flags
+      itemStack
+
+  public static void loadAttributes(net.minecraft.server.packs.resources.ResourceManager);
+    descriptor: (Lnet/minecraft/server/packs/resources/ResourceManager;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokestatic  #119                // Method loadContainers:(Lnet/minecraft/server/packs/resources/ResourceManager;)V
+         4: getstatic     #83                 // Field containers:Ljava/util/Map;
+         7: invokedynamic #138,  0            // InvokeDynamic #0:accept:()Ljava/util/function/BiConsumer;
+        12: invokeinterface #142,  2          // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+        17: return
+      LineNumberTable:
+        line 66: 0
+        line 69: 4
+        line 75: 17
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      18     0 resourceManager   Lnet/minecraft/server/packs/resources/ResourceManager;
+    MethodParameters:
+      Name                           Flags
+      resourceManager
+
+  private static void loadContainers(net.minecraft.server.packs.resources.ResourceManager);
+    descriptor: (Lnet/minecraft/server/packs/resources/ResourceManager;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=5, locals=10, args_size=1
+         0: new           #147                // class java/util/HashMap
+         3: dup
+         4: invokespecial #148                // Method java/util/HashMap."<init>":()V
+         7: astore_1
+         8: getstatic     #154                // Field net/bettercombat/BetterCombatMod.config:Lnet/bettercombat/config/ServerConfig;
+        11: getfield      #160                // Field net/bettercombat/config/ServerConfig.weapon_registry_logging:Z
+        14: istore_2
+        15: aload_0
+        16: ldc           #162                // String weapon_attributes
+        18: invokedynamic #174,  0            // InvokeDynamic #1:test:()Ljava/util/function/Predicate;
+        23: invokeinterface #180,  3          // InterfaceMethod net/minecraft/server/packs/resources/ResourceManager.listResources:(Ljava/lang/String;Ljava/util/function/Predicate;)Ljava/util/Map;
+        28: invokeinterface #184,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+        33: invokeinterface #190,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        38: astore_3
+        39: aload_3
+        40: invokeinterface #196,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        45: ifeq          200
+        48: aload_3
+        49: invokeinterface #200,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        54: checkcast     #11                 // class java/util/Map$Entry
+        57: astore        4
+        59: aload         4
+        61: invokeinterface #202,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+        66: checkcast     #81                 // class net/minecraft/resources/ResourceLocation
+        69: astore        5
+        71: aload         4
+        73: invokeinterface #205,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+        78: checkcast     #207                // class net/minecraft/server/packs/resources/Resource
+        81: astore        6
+        83: new           #209                // class com/google/gson/stream/JsonReader
+        86: dup
+        87: new           #211                // class java/io/InputStreamReader
+        90: dup
+        91: aload         6
+        93: invokevirtual #215                // Method net/minecraft/server/packs/resources/Resource.open:()Ljava/io/InputStream;
+        96: invokespecial #218                // Method java/io/InputStreamReader."<init>":(Ljava/io/InputStream;)V
+        99: invokespecial #221                // Method com/google/gson/stream/JsonReader."<init>":(Ljava/io/Reader;)V
+       102: astore        7
+       104: aload         7
+       106: invokestatic  #227                // Method net/bettercombat/api/WeaponAttributesHelper.decode:(Lcom/google/gson/stream/JsonReader;)Lnet/bettercombat/api/AttributesContainer;
+       109: astore        8
+       111: aload         5
+       113: invokevirtual #231                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+       116: ldc           #233                // String weapon_attributes/
+       118: ldc           #235                // String
+       120: invokevirtual #241                // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+       123: astore        9
+       125: aload         9
+       127: iconst_0
+       128: aload         9
+       130: bipush        46
+       132: invokevirtual #245                // Method java/lang/String.lastIndexOf:(I)I
+       135: invokevirtual #249                // Method java/lang/String.substring:(II)Ljava/lang/String;
+       138: astore        9
+       140: aload_1
+       141: aload         9
+       143: invokestatic  #253                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       146: aload         8
+       148: invokeinterface #56,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       153: pop
+       154: iload_2
+       155: ifeq          171
+       158: getstatic     #259                // Field java/lang/System.out:Ljava/io/PrintStream;
+       161: aload         9
+       163: invokedynamic #271,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       168: invokevirtual #277                // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+       171: goto          197
+       174: astore        7
+       176: getstatic     #280                // Field java/lang/System.err:Ljava/io/PrintStream;
+       179: aload         5
+       181: invokestatic  #284                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       184: invokedynamic #287,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       189: invokevirtual #277                // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+       192: aload         7
+       194: invokevirtual #290                // Method java/lang/Exception.printStackTrace:()V
+       197: goto          39
+       200: aload_1
+       201: putstatic     #83                 // Field containers:Ljava/util/Map;
+       204: new           #147                // class java/util/HashMap
+       207: dup
+       208: invokespecial #148                // Method java/util/HashMap."<init>":()V
+       211: astore_3
+       212: aload_1
+       213: invokeinterface #184,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+       218: invokeinterface #190,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       223: astore        4
+       225: aload         4
+       227: invokeinterface #196,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       232: ifeq          319
+       235: aload         4
+       237: invokeinterface #200,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       242: checkcast     #11                 // class java/util/Map$Entry
+       245: astore        5
+       247: aload         5
+       249: invokeinterface #202,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       254: checkcast     #81                 // class net/minecraft/resources/ResourceLocation
+       257: astore        6
+       259: aload         5
+       261: invokeinterface #205,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       266: checkcast     #85                 // class net/bettercombat/api/AttributesContainer
+       269: astore        7
+       271: aload         7
+       273: invokevirtual #293                // Method net/bettercombat/api/AttributesContainer.parent:()Ljava/lang/String;
+       276: ifnull        305
+       279: aload         6
+       281: aload         7
+       283: invokestatic  #297                // Method resolveAttributes:(Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)Lnet/bettercombat/api/WeaponAttributes;
+       286: astore        8
+       288: aload         8
+       290: ifnull        305
+       293: new           #85                 // class net/bettercombat/api/AttributesContainer
+       296: dup
+       297: aconst_null
+       298: aload         8
+       300: invokespecial #300                // Method net/bettercombat/api/AttributesContainer."<init>":(Ljava/lang/String;Lnet/bettercombat/api/WeaponAttributes;)V
+       303: astore        7
+       305: aload_3
+       306: aload         6
+       308: aload         7
+       310: invokeinterface #56,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       315: pop
+       316: goto          225
+       319: aload_3
+       320: putstatic     #83                 // Field containers:Ljava/util/Map;
+       323: return
+      Exception table:
+         from    to  target type
+            83   171   174   Class java/lang/Exception
+      StackMapTable: number_of_entries = 8
+        frame_type = 254 /* append */
+          offset_delta = 39
+          locals = [ class java/util/HashMap, int, class java/util/Iterator ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 131
+          locals = [ class net/minecraft/server/packs/resources/ResourceManager, class java/util/HashMap, int, class java/util/Iterator, class java/util/Map$Entry, class net/minecraft/resources/ResourceLocation, class net/minecraft/server/packs/resources/Resource, class com/google/gson/stream/JsonReader, class net/bettercombat/api/AttributesContainer, class java/lang/String ]
+          stack = []
+        frame_type = 255 /* full_frame */
+          offset_delta = 2
+          locals = [ class net/minecraft/server/packs/resources/ResourceManager, class java/util/HashMap, int, class java/util/Iterator, class java/util/Map$Entry, class net/minecraft/resources/ResourceLocation, class net/minecraft/server/packs/resources/Resource ]
+          stack = [ class java/lang/Exception ]
+        frame_type = 252 /* append */
+          offset_delta = 22
+          locals = [ class java/lang/Object ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 2
+          locals = [ class net/minecraft/server/packs/resources/ResourceManager, class java/util/HashMap, int, class java/util/Iterator ]
+          stack = []
+        frame_type = 255 /* full_frame */
+          offset_delta = 24
+          locals = [ class net/minecraft/server/packs/resources/ResourceManager, class java/util/HashMap, int, class java/util/HashMap, class java/util/Iterator ]
+          stack = []
+        frame_type = 254 /* append */
+          offset_delta = 79
+          locals = [ class java/util/Map$Entry, class net/minecraft/resources/ResourceLocation, class net/bettercombat/api/AttributesContainer ]
+        frame_type = 248 /* chop */
+          offset_delta = 13
+      LineNumberTable:
+        line 78: 0
+        line 79: 8
+        line 81: 15
+        line 82: 59
+        line 83: 71
+        line 86: 83
+        line 87: 104
+        line 88: 111
+        line 89: 113
+        line 90: 125
+        line 91: 140
+        line 92: 154
+        line 93: 158
+        line 98: 171
+        line 95: 174
+        line 96: 176
+        line 97: 192
+        line 99: 197
+        line 102: 200
+        line 105: 204
+        line 106: 212
+        line 107: 247
+        line 108: 259
+        line 109: 271
+        line 110: 279
+        line 111: 288
+        line 112: 293
+        line 115: 305
+        line 116: 316
+        line 118: 319
+        line 119: 323
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          104      67     7 reader   Lcom/google/gson/stream/JsonReader;
+          111      60     8 container   Lnet/bettercombat/api/AttributesContainer;
+          125      46     9    id   Ljava/lang/String;
+          176      21     7     e   Ljava/lang/Exception;
+           71     126     5 identifier   Lnet/minecraft/resources/ResourceLocation;
+           83     114     6 resource   Lnet/minecraft/server/packs/resources/Resource;
+           59     138     4 entry   Ljava/util/Map$Entry;
+          288      17     8 resolvedAttributes   Lnet/bettercombat/api/WeaponAttributes;
+          259      57     6    id   Lnet/minecraft/resources/ResourceLocation;
+          271      45     7 container   Lnet/bettercombat/api/AttributesContainer;
+          247      69     5 entry   Ljava/util/Map$Entry;
+            0     324     0 resourceManager   Lnet/minecraft/server/packs/resources/ResourceManager;
+            8     316     1 containers   Ljava/util/Map;
+           15     309     2 logging   Z
+          212     112     3 resolvedContainers   Ljava/util/Map;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           59     138     4 entry   Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/Resource;>;
+          247      69     5 entry   Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;>;
+            8     316     1 containers   Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;>;
+          212     112     3 resolvedContainers   Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;>;
+    MethodParameters:
+      Name                           Flags
+      resourceManager
+
+  public static net.bettercombat.api.WeaponAttributes resolveAttributes(net.minecraft.resources.ResourceLocation, net.bettercombat.api.AttributesContainer);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)Lnet/bettercombat/api/WeaponAttributes;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=6, args_size=2
+         0: new           #317                // class java/util/ArrayList
+         3: dup
+         4: invokespecial #318                // Method java/util/ArrayList."<init>":()V
+         7: astore_2
+         8: aload_1
+         9: astore_3
+        10: aload_3
+        11: ifnull        57
+        14: aload_2
+        15: iconst_0
+        16: aload_3
+        17: invokevirtual #88                 // Method net/bettercombat/api/AttributesContainer.attributes:()Lnet/bettercombat/api/WeaponAttributes;
+        20: invokevirtual #322                // Method java/util/ArrayList.add:(ILjava/lang/Object;)V
+        23: aload_3
+        24: invokevirtual #293                // Method net/bettercombat/api/AttributesContainer.parent:()Ljava/lang/String;
+        27: ifnull        52
+        30: getstatic     #83                 // Field containers:Ljava/util/Map;
+        33: aload_3
+        34: invokevirtual #293                // Method net/bettercombat/api/AttributesContainer.parent:()Ljava/lang/String;
+        37: invokestatic  #253                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+        40: invokeinterface #64,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        45: checkcast     #85                 // class net/bettercombat/api/AttributesContainer
+        48: astore_3
+        49: goto          10
+        52: aconst_null
+        53: astore_3
+        54: goto          10
+        57: invokestatic  #325                // Method net/bettercombat/api/WeaponAttributes.empty:()Lnet/bettercombat/api/WeaponAttributes;
+        60: astore        4
+        62: aload_2
+        63: invokevirtual #329                // Method java/util/ArrayList.stream:()Ljava/util/stream/Stream;
+        66: aload         4
+        68: invokedynamic #340,  0            // InvokeDynamic #4:apply:()Ljava/util/function/BinaryOperator;
+        73: invokeinterface #346,  3          // InterfaceMethod java/util/stream/Stream.reduce:(Ljava/lang/Object;Ljava/util/function/BinaryOperator;)Ljava/lang/Object;
+        78: checkcast     #66                 // class net/bettercombat/api/WeaponAttributes
+        81: astore        5
+        83: aload         5
+        85: invokestatic  #350                // Method net/bettercombat/api/WeaponAttributesHelper.validate:(Lnet/bettercombat/api/WeaponAttributes;)V
+        88: aload         5
+        90: areturn
+        91: astore_2
+        92: getstatic     #352                // Field LOGGER:Lorg/slf4j/Logger;
+        95: aload_0
+        96: invokestatic  #284                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        99: aload_2
+       100: invokevirtual #355                // Method java/lang/Exception.getMessage:()Ljava/lang/String;
+       103: invokedynamic #360,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+       108: invokeinterface #365,  2          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;)V
+       113: aload_2
+       114: invokevirtual #290                // Method java/lang/Exception.printStackTrace:()V
+       117: aconst_null
+       118: areturn
+      Exception table:
+         from    to  target type
+             0    90    91   Class java/lang/Exception
+      StackMapTable: number_of_entries = 4
+        frame_type = 253 /* append */
+          offset_delta = 10
+          locals = [ class java/util/ArrayList, class net/bettercombat/api/AttributesContainer ]
+        frame_type = 41 /* same */
+        frame_type = 4 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 33
+          locals = [ class net/minecraft/resources/ResourceLocation, class net/bettercombat/api/AttributesContainer ]
+          stack = [ class java/lang/Exception ]
+      LineNumberTable:
+        line 123: 0
+        line 124: 8
+        line 125: 10
+        line 126: 14
+        line 127: 23
+        line 128: 30
+        line 130: 52
+        line 134: 57
+        line 135: 62
+        line 136: 63
+        line 137: 73
+        line 144: 83
+        line 145: 88
+        line 146: 91
+        line 147: 92
+        line 148: 113
+        line 149: 117
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            8      83     2 resolutionChain   Ljava/util/ArrayList;
+           10      81     3 current   Lnet/bettercombat/api/AttributesContainer;
+           62      29     4 empty   Lnet/bettercombat/api/WeaponAttributes;
+           83       8     5 resolvedAttributes   Lnet/bettercombat/api/WeaponAttributes;
+           92      27     2     e   Ljava/lang/Exception;
+            0     119     0 itemId   Lnet/minecraft/resources/ResourceLocation;
+            0     119     1 container   Lnet/bettercombat/api/AttributesContainer;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            8      83     2 resolutionChain   Ljava/util/ArrayList<Lnet/bettercombat/api/WeaponAttributes;>;
+    MethodParameters:
+      Name                           Flags
+      itemId
+      container
+
+  public static void resolveAndRegisterAttributes(net.minecraft.resources.ResourceLocation, net.bettercombat.api.AttributesContainer);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=3, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokestatic  #297                // Method resolveAttributes:(Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)Lnet/bettercombat/api/WeaponAttributes;
+         5: astore_2
+         6: aload_2
+         7: ifnull        15
+        10: aload_0
+        11: aload_2
+        12: invokestatic  #372                // Method register:(Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/WeaponAttributes;)V
+        15: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 15
+          locals = [ class net/bettercombat/api/WeaponAttributes ]
+      LineNumberTable:
+        line 154: 0
+        line 155: 6
+        line 156: 10
+        line 158: 15
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0 itemId   Lnet/minecraft/resources/ResourceLocation;
+            0      16     1 container   Lnet/bettercombat/api/AttributesContainer;
+            6      10     2 resolvedAttributes   Lnet/bettercombat/api/WeaponAttributes;
+    MethodParameters:
+      Name                           Flags
+      itemId
+      container
+
+  public static void encodeRegistry();
+    descriptor: ()V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=6, locals=6, args_size=0
+         0: getstatic     #154                // Field net/bettercombat/BetterCombatMod.config:Lnet/bettercombat/config/ServerConfig;
+         3: getfield      #376                // Field net/bettercombat/config/ServerConfig.weapon_registry_compression:Z
+         6: istore_0
+         7: new           #317                // class java/util/ArrayList
+        10: dup
+        11: invokespecial #318                // Method java/util/ArrayList."<init>":()V
+        14: astore_1
+        15: new           #7                  // class net/bettercombat/logic/WeaponRegistry$SyncFormat
+        18: dup
+        19: invokespecial #377                // Method net/bettercombat/logic/WeaponRegistry$SyncFormat."<init>":()V
+        22: astore_2
+        23: getstatic     #83                 // Field containers:Ljava/util/Map;
+        26: aload_2
+        27: invokedynamic #385,  0            // InvokeDynamic #6:accept:(Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;)Ljava/util/function/BiConsumer;
+        32: invokeinterface #142,  2          // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+        37: getstatic     #52                 // Field registrations:Ljava/util/Map;
+        40: aload_2
+        41: invokedynamic #392,  0            // InvokeDynamic #7:accept:(Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;)Ljava/util/function/BiConsumer;
+        46: invokeinterface #142,  2          // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+        51: getstatic     #394                // Field gson:Lcom/google/gson/Gson;
+        54: aload_2
+        55: invokevirtual #399                // Method com/google/gson/Gson.toJson:(Ljava/lang/Object;)Ljava/lang/String;
+        58: astore_3
+        59: iload_0
+        60: ifeq          68
+        63: aload_3
+        64: invokestatic  #404                // Method net/bettercombat/utils/CompressionHelper.gzipCompress:(Ljava/lang/String;)Ljava/lang/String;
+        67: astore_3
+        68: getstatic     #154                // Field net/bettercombat/BetterCombatMod.config:Lnet/bettercombat/config/ServerConfig;
+        71: getfield      #160                // Field net/bettercombat/config/ServerConfig.weapon_registry_logging:Z
+        74: ifeq          91
+        77: getstatic     #352                // Field LOGGER:Lorg/slf4j/Logger;
+        80: aload_3
+        81: invokedynamic #407,  0            // InvokeDynamic #8:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        86: invokeinterface #410,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+        91: iconst_0
+        92: istore        4
+        94: iload         4
+        96: aload_3
+        97: invokevirtual #414                // Method java/lang/String.length:()I
+       100: if_icmpge     138
+       103: aload_1
+       104: aload_3
+       105: iload         4
+       107: aload_3
+       108: invokevirtual #414                // Method java/lang/String.length:()I
+       111: iload         4
+       113: sipush        10000
+       116: iadd
+       117: invokestatic  #420                // Method java/lang/Math.min:(II)I
+       120: invokevirtual #249                // Method java/lang/String.substring:(II)Ljava/lang/String;
+       123: invokeinterface #424,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       128: pop
+       129: iinc_w        4, 10000
+       135: goto          94
+       138: new           #9                  // class net/bettercombat/logic/WeaponRegistry$Encoded
+       141: dup
+       142: iload_0
+       143: aload_1
+       144: invokespecial #427                // Method net/bettercombat/logic/WeaponRegistry$Encoded."<init>":(ZLjava/util/List;)V
+       147: putstatic     #429                // Field encodedRegistrations:Lnet/bettercombat/logic/WeaponRegistry$Encoded;
+       150: new           #18                 // class net/bettercombat/network/Packets$WeaponRegistrySync
+       153: dup
+       154: iload_0
+       155: aload_1
+       156: invokespecial #430                // Method net/bettercombat/network/Packets$WeaponRegistrySync."<init>":(ZLjava/util/List;)V
+       159: astore        4
+       161: invokestatic  #436                // Method net/bettercombat/Platform.createByteBuffer:()Lnet/minecraft/network/FriendlyByteBuf;
+       164: astore        5
+       166: aload         4
+       168: aload         5
+       170: invokevirtual #440                // Method net/bettercombat/network/Packets$WeaponRegistrySync.write:(Lnet/minecraft/network/FriendlyByteBuf;)V
+       173: getstatic     #352                // Field LOGGER:Lorg/slf4j/Logger;
+       176: aload         5
+       178: invokevirtual #445                // Method net/minecraft/network/FriendlyByteBuf.readableBytes:()I
+       181: aload_1
+       182: invokeinterface #448,  1          // InterfaceMethod java/util/List.size:()I
+       187: invokedynamic #452,  0            // InvokeDynamic #9:makeConcatWithConstants:(II)Ljava/lang/String;
+       192: invokeinterface #410,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+       197: return
+      StackMapTable: number_of_entries = 4
+        frame_type = 255 /* full_frame */
+          offset_delta = 68
+          locals = [ int, class java/util/ArrayList, class net/bettercombat/logic/WeaponRegistry$SyncFormat, class java/lang/String ]
+          stack = []
+        frame_type = 22 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 2
+          locals = [ int ]
+        frame_type = 43 /* same */
+      LineNumberTable:
+        line 172: 0
+        line 173: 7
+        line 174: 15
+        line 175: 23
+        line 178: 37
+        line 182: 51
+        line 183: 59
+        line 184: 63
+        line 186: 68
+        line 187: 77
+        line 189: 91
+        line 190: 103
+        line 189: 129
+        line 193: 138
+        line 195: 150
+        line 196: 161
+        line 197: 166
+        line 198: 173
+        line 199: 182
+        line 198: 192
+        line 200: 197
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           94      44     4     i   I
+            7     191     0 compressed   Z
+           15     183     1 chunks   Ljava/util/List;
+           23     175     2 syncContent   Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;
+           59     139     3  json   Ljava/lang/String;
+          161      37     4 referencePacket   Lnet/bettercombat/network/Packets$WeaponRegistrySync;
+          166      32     5 buffer   Lnet/minecraft/network/FriendlyByteBuf;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           15     183     1 chunks   Ljava/util/List<Ljava/lang/String;>;
+
+  public static void decodeRegistry(net.bettercombat.network.Packets$WeaponRegistrySync);
+    descriptor: (Lnet/bettercombat/network/Packets$WeaponRegistrySync;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=5, args_size=1
+         0: aload_0
+         1: invokevirtual #469                // Method net/bettercombat/network/Packets$WeaponRegistrySync.compressed:()Z
+         4: istore_1
+         5: ldc           #235                // String
+         7: astore_2
+         8: aload_0
+         9: invokevirtual #472                // Method net/bettercombat/network/Packets$WeaponRegistrySync.chunks:()Ljava/util/List;
+        12: invokeinterface #473,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        17: astore_3
+        18: aload_3
+        19: invokeinterface #196,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        24: ifeq          48
+        27: aload_3
+        28: invokeinterface #200,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        33: checkcast     #237                // class java/lang/String
+        36: astore        4
+        38: aload_2
+        39: aload         4
+        41: invokevirtual #476                // Method java/lang/String.concat:(Ljava/lang/String;)Ljava/lang/String;
+        44: astore_2
+        45: goto          18
+        48: iload_1
+        49: ifeq          57
+        52: aload_2
+        53: invokestatic  #479                // Method net/bettercombat/utils/CompressionHelper.gzipDecompress:(Ljava/lang/String;)Ljava/lang/String;
+        56: astore_2
+        57: getstatic     #352                // Field LOGGER:Lorg/slf4j/Logger;
+        60: aload_0
+        61: invokevirtual #472                // Method net/bettercombat/network/Packets$WeaponRegistrySync.chunks:()Ljava/util/List;
+        64: invokeinterface #448,  1          // InterfaceMethod java/util/List.size:()I
+        69: invokedynamic #484,  0            // InvokeDynamic #10:makeConcatWithConstants:(I)Ljava/lang/String;
+        74: invokeinterface #410,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+        79: getstatic     #154                // Field net/bettercombat/BetterCombatMod.config:Lnet/bettercombat/config/ServerConfig;
+        82: getfield      #160                // Field net/bettercombat/config/ServerConfig.weapon_registry_logging:Z
+        85: ifeq          102
+        88: getstatic     #352                // Field LOGGER:Lorg/slf4j/Logger;
+        91: aload_2
+        92: invokedynamic #487,  0            // InvokeDynamic #11:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        97: invokeinterface #410,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+       102: getstatic     #394                // Field gson:Lcom/google/gson/Gson;
+       105: aload_2
+       106: ldc           #7                  // class net/bettercombat/logic/WeaponRegistry$SyncFormat
+       108: invokevirtual #491                // Method com/google/gson/Gson.fromJson:(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;
+       111: checkcast     #7                  // class net/bettercombat/logic/WeaponRegistry$SyncFormat
+       114: astore_3
+       115: getstatic     #83                 // Field containers:Ljava/util/Map;
+       118: invokeinterface #494,  1          // InterfaceMethod java/util/Map.clear:()V
+       123: aload_3
+       124: getfield      #496                // Field net/bettercombat/logic/WeaponRegistry$SyncFormat.attributes:Ljava/util/Map;
+       127: invokedynamic #503,  0            // InvokeDynamic #12:accept:()Ljava/util/function/BiConsumer;
+       132: invokeinterface #142,  2          // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+       137: getstatic     #52                 // Field registrations:Ljava/util/Map;
+       140: invokeinterface #494,  1          // InterfaceMethod java/util/Map.clear:()V
+       145: aload_3
+       146: getfield      #504                // Field net/bettercombat/logic/WeaponRegistry$SyncFormat.registrations:Ljava/util/Map;
+       149: invokedynamic #510,  0            // InvokeDynamic #13:accept:()Ljava/util/function/BiConsumer;
+       154: invokeinterface #142,  2          // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+       159: return
+      StackMapTable: number_of_entries = 4
+        frame_type = 254 /* append */
+          offset_delta = 18
+          locals = [ int, class java/lang/String, class java/util/Iterator ]
+        frame_type = 29 /* same */
+        frame_type = 8 /* same */
+        frame_type = 44 /* same */
+      LineNumberTable:
+        line 203: 0
+        line 204: 5
+        line 205: 8
+        line 206: 38
+        line 207: 45
+        line 208: 48
+        line 209: 52
+        line 211: 57
+        line 212: 79
+        line 213: 88
+        line 216: 102
+        line 217: 115
+        line 218: 123
+        line 221: 137
+        line 222: 145
+        line 225: 159
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           38       7     4 chunk   Ljava/lang/String;
+            0     160     0 syncPacket   Lnet/bettercombat/network/Packets$WeaponRegistrySync;
+            5     155     1 compressed   Z
+            8     152     2  json   Ljava/lang/String;
+          115      45     3  sync   Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;
+    MethodParameters:
+      Name                           Flags
+      syncPacket
+
+  public static net.bettercombat.logic.WeaponRegistry$Encoded getEncodedRegistry();
+    descriptor: ()Lnet/bettercombat/logic/WeaponRegistry$Encoded;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #429                // Field encodedRegistrations:Lnet/bettercombat/logic/WeaponRegistry$Encoded;
+         3: areturn
+      LineNumberTable:
+        line 228: 0
+
+  private static void lambda$decodeRegistry$6(java.lang.String, net.bettercombat.api.WeaponAttributes);
+    descriptor: (Ljava/lang/String;Lnet/bettercombat/api/WeaponAttributes;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: getstatic     #52                 // Field registrations:Ljava/util/Map;
+         3: aload_0
+         4: invokestatic  #253                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+         7: aload_1
+         8: invokeinterface #56,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        13: pop
+        14: return
+      LineNumberTable:
+        line 223: 0
+        line 224: 14
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      15     0   key   Ljava/lang/String;
+            0      15     1 value   Lnet/bettercombat/api/WeaponAttributes;
+    MethodParameters:
+      Name                           Flags
+      key
+      value
+
+  private static void lambda$decodeRegistry$5(java.lang.String, net.bettercombat.api.AttributesContainer);
+    descriptor: (Ljava/lang/String;Lnet/bettercombat/api/AttributesContainer;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: getstatic     #83                 // Field containers:Ljava/util/Map;
+         3: aload_0
+         4: invokestatic  #253                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+         7: aload_1
+         8: invokeinterface #56,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        13: pop
+        14: return
+      LineNumberTable:
+        line 219: 0
+        line 220: 14
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      15     0   key   Ljava/lang/String;
+            0      15     1 value   Lnet/bettercombat/api/AttributesContainer;
+    MethodParameters:
+      Name                           Flags
+      key
+      value
+
+  private static void lambda$encodeRegistry$4(net.bettercombat.logic.WeaponRegistry$SyncFormat, net.minecraft.resources.ResourceLocation, net.bettercombat.api.WeaponAttributes);
+    descriptor: (Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/WeaponAttributes;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #504                // Field net/bettercombat/logic/WeaponRegistry$SyncFormat.registrations:Ljava/util/Map;
+         4: aload_1
+         5: invokevirtual #231                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+         8: aload_2
+         9: invokeinterface #56,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        14: pop
+        15: return
+      LineNumberTable:
+        line 179: 0
+        line 180: 15
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0 syncContent   Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;
+            0      16     1   key   Lnet/minecraft/resources/ResourceLocation;
+            0      16     2 value   Lnet/bettercombat/api/WeaponAttributes;
+    MethodParameters:
+      Name                           Flags
+      syncContent
+      key
+      value
+
+  private static void lambda$encodeRegistry$3(net.bettercombat.logic.WeaponRegistry$SyncFormat, net.minecraft.resources.ResourceLocation, net.bettercombat.api.AttributesContainer);
+    descriptor: (Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #496                // Field net/bettercombat/logic/WeaponRegistry$SyncFormat.attributes:Ljava/util/Map;
+         4: aload_1
+         5: invokevirtual #231                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+         8: aload_2
+         9: invokeinterface #56,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        14: pop
+        15: return
+      LineNumberTable:
+        line 176: 0
+        line 177: 15
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0 syncContent   Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;
+            0      16     1   key   Lnet/minecraft/resources/ResourceLocation;
+            0      16     2 value   Lnet/bettercombat/api/AttributesContainer;
+    MethodParameters:
+      Name                           Flags
+      syncContent
+      key
+      value
+
+  private static net.bettercombat.api.WeaponAttributes lambda$resolveAttributes$2(net.bettercombat.api.WeaponAttributes, net.bettercombat.api.WeaponAttributes);
+    descriptor: (Lnet/bettercombat/api/WeaponAttributes;Lnet/bettercombat/api/WeaponAttributes;)Lnet/bettercombat/api/WeaponAttributes;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: ifnonnull     6
+         4: aload_0
+         5: areturn
+         6: aload_0
+         7: aload_1
+         8: invokestatic  #521                // Method net/bettercombat/api/WeaponAttributesHelper.override:(Lnet/bettercombat/api/WeaponAttributes;Lnet/bettercombat/api/WeaponAttributes;)Lnet/bettercombat/api/WeaponAttributes;
+        11: areturn
+      StackMapTable: number_of_entries = 1
+        frame_type = 6 /* same */
+      LineNumberTable:
+        line 138: 0
+        line 139: 4
+        line 141: 6
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0     a   Lnet/bettercombat/api/WeaponAttributes;
+            0      12     1     b   Lnet/bettercombat/api/WeaponAttributes;
+    MethodParameters:
+      Name                           Flags
+      a
+      b
+
+  private static boolean lambda$loadContainers$1(net.minecraft.resources.ResourceLocation);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #525                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+         4: ldc_w         #527                // String .json
+         7: invokevirtual #531                // Method java/lang/String.endsWith:(Ljava/lang/String;)Z
+        10: ireturn
+      LineNumberTable:
+        line 81: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0 fileName   Lnet/minecraft/resources/ResourceLocation;
+    MethodParameters:
+      Name                           Flags
+      fileName
+
+  private static void lambda$loadAttributes$0(net.minecraft.resources.ResourceLocation, net.bettercombat.api.AttributesContainer);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: getstatic     #98                 // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+         3: aload_0
+         4: invokeinterface #534,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.containsKey:(Lnet/minecraft/resources/ResourceLocation;)Z
+         9: ifne          13
+        12: return
+        13: aload_0
+        14: aload_1
+        15: invokestatic  #536                // Method resolveAndRegisterAttributes:(Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+        18: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 13 /* same */
+      LineNumberTable:
+        line 70: 0
+        line 71: 12
+        line 73: 13
+        line 74: 18
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      19     0 itemId   Lnet/minecraft/resources/ResourceLocation;
+            0      19     1 container   Lnet/bettercombat/api/AttributesContainer;
+    MethodParameters:
+      Name                           Flags
+      itemId
+      container
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=4, locals=0, args_size=0
+         0: invokestatic  #543                // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+         3: putstatic     #352                // Field LOGGER:Lorg/slf4j/Logger;
+         6: new           #147                // class java/util/HashMap
+         9: dup
+        10: invokespecial #148                // Method java/util/HashMap."<init>":()V
+        13: putstatic     #52                 // Field registrations:Ljava/util/Map;
+        16: new           #147                // class java/util/HashMap
+        19: dup
+        20: invokespecial #148                // Method java/util/HashMap."<init>":()V
+        23: putstatic     #83                 // Field containers:Ljava/util/Map;
+        26: new           #9                  // class net/bettercombat/logic/WeaponRegistry$Encoded
+        29: dup
+        30: iconst_1
+        31: invokestatic  #546                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+        34: invokespecial #427                // Method net/bettercombat/logic/WeaponRegistry$Encoded."<init>":(ZLjava/util/List;)V
+        37: putstatic     #429                // Field encodedRegistrations:Lnet/bettercombat/logic/WeaponRegistry$Encoded;
+        40: new           #548                // class com/google/gson/GsonBuilder
+        43: dup
+        44: invokespecial #549                // Method com/google/gson/GsonBuilder."<init>":()V
+        47: invokevirtual #553                // Method com/google/gson/GsonBuilder.create:()Lcom/google/gson/Gson;
+        50: putstatic     #394                // Field gson:Lcom/google/gson/Gson;
+        53: return
+      LineNumberTable:
+        line 29: 0
+        line 31: 6
+        line 32: 16
+        line 162: 26
+        line 165: 40
+}
+InnerClasses:
+  public static #14= #11 of #13;          // Entry=class java/util/Map$Entry of class java/util/Map
+  public static #15= #7 of #2;            // SyncFormat=class net/bettercombat/logic/WeaponRegistry$SyncFormat of class net/bettercombat/logic/WeaponRegistry
+  public static final #16= #9 of #2;      // Encoded=class net/bettercombat/logic/WeaponRegistry$Encoded of class net/bettercombat/logic/WeaponRegistry
+  public static final #21= #18 of #20;    // WeaponRegistrySync=class net/bettercombat/network/Packets$WeaponRegistrySync of class net/bettercombat/network/Packets
+  public static final #26= #23 of #25;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+SourceFile: "WeaponRegistry.java"
+BootstrapMethods:
+  0: #134 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #121 (Ljava/lang/Object;Ljava/lang/Object;)V
+      #126 REF_invokeStatic net/bettercombat/logic/WeaponRegistry.lambda$loadAttributes$0:(Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+      #127 (Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+  1: #134 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #164 (Ljava/lang/Object;)Z
+      #169 REF_invokeStatic net/bettercombat/logic/WeaponRegistry.lambda$loadContainers$1:(Lnet/minecraft/resources/ResourceLocation;)Z
+      #170 (Lnet/minecraft/resources/ResourceLocation;)Z
+  2: #268 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #261 Loaded container: \u0001
+  3: #268 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #286 Failed to parse: \u0001
+  4: #134 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #330 (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      #335 REF_invokeStatic net/bettercombat/logic/WeaponRegistry.lambda$resolveAttributes$2:(Lnet/bettercombat/api/WeaponAttributes;Lnet/bettercombat/api/WeaponAttributes;)Lnet/bettercombat/api/WeaponAttributes;
+      #336 (Lnet/bettercombat/api/WeaponAttributes;Lnet/bettercombat/api/WeaponAttributes;)Lnet/bettercombat/api/WeaponAttributes;
+  5: #268 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #357 Failed to resolve weapon attributes for: \u0001. Reason: \u0001
+  6: #134 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #121 (Ljava/lang/Object;Ljava/lang/Object;)V
+      #382 REF_invokeStatic net/bettercombat/logic/WeaponRegistry.lambda$encodeRegistry$3:(Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+      #127 (Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/AttributesContainer;)V
+  7: #134 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #121 (Ljava/lang/Object;Ljava/lang/Object;)V
+      #390 REF_invokeStatic net/bettercombat/logic/WeaponRegistry.lambda$encodeRegistry$4:(Lnet/bettercombat/logic/WeaponRegistry$SyncFormat;Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/WeaponAttributes;)V
+      #391 (Lnet/minecraft/resources/ResourceLocation;Lnet/bettercombat/api/WeaponAttributes;)V
+  8: #268 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #406 Weapon Attribute assignments loaded: \u0001
+  9: #268 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #450 Encoded Weapon Attribute registry size (with package overhead): \u0001 bytes (in \u0001 string chunks with the size of 10000)
+  10: #268 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #481 Decoded Weapon Attribute registry in \u0001 string chunks
+  11: #268 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #486 Weapon Attribute registry received: \u0001
+  12: #134 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #121 (Ljava/lang/Object;Ljava/lang/Object;)V
+      #501 REF_invokeStatic net/bettercombat/logic/WeaponRegistry.lambda$decodeRegistry$5:(Ljava/lang/String;Lnet/bettercombat/api/AttributesContainer;)V
+      #502 (Ljava/lang/String;Lnet/bettercombat/api/AttributesContainer;)V
+  13: #134 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #121 (Ljava/lang/Object;Ljava/lang/Object;)V
+      #508 REF_invokeStatic net/bettercombat/logic/WeaponRegistry.lambda$decodeRegistry$6:(Ljava/lang/String;Lnet/bettercombat/api/WeaponAttributes;)V
+      #509 (Ljava/lang/String;Lnet/bettercombat/api/WeaponAttributes;)V
+NestMembers:
+  net/bettercombat/logic/WeaponRegistry$SyncFormat
+  net/bettercombat/logic/WeaponRegistry$Encoded
