@@ -1,0 +1,805 @@
+Classfile accessories-neoforge-1.1.0-beta.53+1.21.1.jar!/io/wispforest/accessories/mixin/PatchedDataComponentMapMixin.class
+  Last modified Jan 1, 1980; size 8495 bytes
+  SHA-256 checksum c1f935b0a539c401b240c319895fc8db790eb3edd89f5f8ba208f770627bb0ac
+  Compiled from "PatchedDataComponentMapMixin.java"
+public abstract class io.wispforest.accessories.mixin.PatchedDataComponentMapMixin implements io.wispforest.accessories.pond.stack.PatchedDataComponentMapExtension
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // io/wispforest/accessories/mixin/PatchedDataComponentMapMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 1, fields: 4, methods: 13, attributes: 4
+Constant pool:
+    #1 = Utf8               io/wispforest/accessories/mixin/PatchedDataComponentMapMixin
+    #2 = Class              #1            // io/wispforest/accessories/mixin/PatchedDataComponentMapMixin
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               io/wispforest/accessories/pond/stack/PatchedDataComponentMapExtension
+    #6 = Class              #5            // io/wispforest/accessories/pond/stack/PatchedDataComponentMapExtension
+    #7 = Utf8               PatchedDataComponentMapMixin.java
+    #8 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #9 = Utf8               value
+   #10 = Utf8               Lnet/minecraft/core/component/PatchedDataComponentMap;
+   #11 = Utf8               java/util/Map$Entry
+   #12 = Class              #11           // java/util/Map$Entry
+   #13 = Utf8               java/util/Map
+   #14 = Class              #13           // java/util/Map
+   #15 = Utf8               Entry
+   #16 = Utf8               java/lang/invoke/MethodHandles$Lookup
+   #17 = Class              #16           // java/lang/invoke/MethodHandles$Lookup
+   #18 = Utf8               java/lang/invoke/MethodHandles
+   #19 = Class              #18           // java/lang/invoke/MethodHandles
+   #20 = Utf8               Lookup
+   #21 = Utf8               changeCheckStack
+   #22 = Utf8               Z
+   #23 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+   #24 = Utf8               itemStack
+   #25 = Utf8               Lnet/minecraft/world/item/ItemStack;
+   #26 = Utf8               Lorg/jetbrains/annotations/Nullable;
+   #27 = Utf8               mutationEvent
+   #28 = Utf8               Lio/wispforest/owo/util/EventStream;
+   #29 = Utf8               Lio/wispforest/owo/util/EventStream<Lio/wispforest/accessories/utils/ItemStackMutation;>;
+   #30 = Utf8               inApplyPatchLock
+   #31 = Utf8               <init>
+   #32 = Utf8               ()V
+   #33 = NameAndType        #31:#32       // "<init>":()V
+   #34 = Methodref          #4.#33        // java/lang/Object."<init>":()V
+   #35 = NameAndType        #21:#22       // changeCheckStack:Z
+   #36 = Fieldref           #2.#35        // io/wispforest/accessories/mixin/PatchedDataComponentMapMixin.changeCheckStack:Z
+   #37 = NameAndType        #24:#25       // itemStack:Lnet/minecraft/world/item/ItemStack;
+   #38 = Fieldref           #2.#37        // io/wispforest/accessories/mixin/PatchedDataComponentMapMixin.itemStack:Lnet/minecraft/world/item/ItemStack;
+   #39 = NameAndType        #27:#28       // mutationEvent:Lio/wispforest/owo/util/EventStream;
+   #40 = Fieldref           #2.#39        // io/wispforest/accessories/mixin/PatchedDataComponentMapMixin.mutationEvent:Lio/wispforest/owo/util/EventStream;
+   #41 = NameAndType        #30:#22       // inApplyPatchLock:Z
+   #42 = Fieldref           #2.#41        // io/wispforest/accessories/mixin/PatchedDataComponentMapMixin.inApplyPatchLock:Z
+   #43 = Utf8               this
+   #44 = Utf8               Lio/wispforest/accessories/mixin/PatchedDataComponentMapMixin;
+   #45 = Utf8               accessories$getMutationEvent
+   #46 = Utf8               (Lnet/minecraft/world/item/ItemStack;)Lio/wispforest/owo/util/EventStream;
+   #47 = Utf8               (Lnet/minecraft/world/item/ItemStack;)Lio/wispforest/owo/util/EventStream<Lio/wispforest/accessories/utils/ItemStackMutation;>;
+   #48 = Utf8               java/util/Objects
+   #49 = Class              #48           // java/util/Objects
+   #50 = Utf8               requireNonNull
+   #51 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #52 = NameAndType        #50:#51       // requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+   #53 = Methodref          #49.#52       // java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+   #54 = Utf8               io/wispforest/owo/util/EventStream
+   #55 = Class              #54           // io/wispforest/owo/util/EventStream
+   #56 = MethodType         #51           //  (Ljava/lang/Object;)Ljava/lang/Object;
+   #57 = Utf8               lambda$accessories$getMutationEvent$2
+   #58 = Utf8               (Ljava/util/List;)Lio/wispforest/accessories/utils/ItemStackMutation;
+   #59 = NameAndType        #57:#58       // lambda$accessories$getMutationEvent$2:(Ljava/util/List;)Lio/wispforest/accessories/utils/ItemStackMutation;
+   #60 = Methodref          #2.#59        // io/wispforest/accessories/mixin/PatchedDataComponentMapMixin.lambda$accessories$getMutationEvent$2:(Ljava/util/List;)Lio/wispforest/accessories/utils/ItemStackMutation;
+   #61 = MethodHandle       6:#60         // REF_invokeStatic io/wispforest/accessories/mixin/PatchedDataComponentMapMixin.lambda$accessories$getMutationEvent$2:(Ljava/util/List;)Lio/wispforest/accessories/utils/ItemStackMutation;
+   #62 = MethodType         #58           //  (Ljava/util/List;)Lio/wispforest/accessories/utils/ItemStackMutation;
+   #63 = Utf8               java/lang/invoke/LambdaMetafactory
+   #64 = Class              #63           // java/lang/invoke/LambdaMetafactory
+   #65 = Utf8               metafactory
+   #66 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #67 = NameAndType        #65:#66       // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #68 = Methodref          #64.#67       // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #69 = MethodHandle       6:#68         // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #70 = Utf8               apply
+   #71 = Utf8               ()Ljava/util/function/Function;
+   #72 = NameAndType        #70:#71       // apply:()Ljava/util/function/Function;
+   #73 = InvokeDynamic      #0:#72        // #0:apply:()Ljava/util/function/Function;
+   #74 = Utf8               (Ljava/util/function/Function;)V
+   #75 = NameAndType        #31:#74       // "<init>":(Ljava/util/function/Function;)V
+   #76 = Methodref          #55.#75       // io/wispforest/owo/util/EventStream."<init>":(Ljava/util/function/Function;)V
+   #77 = Utf8               accessories$hasChanged
+   #78 = Utf8               ()Z
+   #79 = Utf8               bl
+   #80 = Utf8               accessories$updateChangeValue_set
+   #81 = Utf8               (Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+   #82 = Utf8               <T:Ljava/lang/Object;>(Lnet/minecraft/core/component/DataComponentType<-TT;>;TT;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<TT;>;)V
+   #83 = Utf8               component
+   #84 = Utf8               cir
+   #85 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #86 = Utf8               method
+   #87 = Utf8               set(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+   #88 = Utf8               at
+   #89 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #90 = Utf8               HEAD
+   #91 = Utf8               java/util/List
+   #92 = Class              #91           // java/util/List
+   #93 = Utf8               of
+   #94 = Utf8               (Ljava/lang/Object;)Ljava/util/List;
+   #95 = NameAndType        #93:#94       // of:(Ljava/lang/Object;)Ljava/util/List;
+   #96 = InterfaceMethodref #92.#95       // java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+   #97 = Utf8               accessories$handleMutationEvent
+   #98 = Utf8               (Ljava/util/List;)V
+   #99 = NameAndType        #97:#98       // accessories$handleMutationEvent:(Ljava/util/List;)V
+  #100 = Methodref          #2.#99        // io/wispforest/accessories/mixin/PatchedDataComponentMapMixin.accessories$handleMutationEvent:(Ljava/util/List;)V
+  #101 = Utf8               Lnet/minecraft/core/component/DataComponentType<-TT;>;
+  #102 = Utf8               Lnet/minecraft/core/component/DataComponentType;
+  #103 = Utf8               TT;
+  #104 = Utf8               Ljava/lang/Object;
+  #105 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<TT;>;
+  #106 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #107 = Utf8               accessories$updateChangeValue_remove
+  #108 = Utf8               (Lnet/minecraft/core/component/DataComponentType;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+  #109 = Utf8               <T:Ljava/lang/Object;>(Lnet/minecraft/core/component/DataComponentType<-TT;>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<TT;>;)V
+  #110 = Utf8               remove(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #111 = Utf8               accessories$updateChangeValue_applyPatchHead
+  #112 = Utf8               (Lnet/minecraft/core/component/DataComponentPatch;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #113 = Utf8               patch
+  #114 = Utf8               ci
+  #115 = Utf8               applyPatch(Lnet/minecraft/core/component/DataComponentPatch;)V
+  #116 = Utf8               Lnet/minecraft/core/component/DataComponentPatch;
+  #117 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #118 = Utf8               accessories$updateChangeValue_applyPatchTail
+  #119 = Utf8               TAIL
+  #120 = Utf8               java/util/ArrayList
+  #121 = Class              #120          // java/util/ArrayList
+  #122 = Methodref          #121.#33      // java/util/ArrayList."<init>":()V
+  #123 = Utf8               net/minecraft/core/component/DataComponentPatch
+  #124 = Class              #123          // net/minecraft/core/component/DataComponentPatch
+  #125 = Utf8               entrySet
+  #126 = Utf8               ()Ljava/util/Set;
+  #127 = NameAndType        #125:#126     // entrySet:()Ljava/util/Set;
+  #128 = Methodref          #124.#127     // net/minecraft/core/component/DataComponentPatch.entrySet:()Ljava/util/Set;
+  #129 = Utf8               java/util/Set
+  #130 = Class              #129          // java/util/Set
+  #131 = Utf8               iterator
+  #132 = Utf8               ()Ljava/util/Iterator;
+  #133 = NameAndType        #131:#132     // iterator:()Ljava/util/Iterator;
+  #134 = InterfaceMethodref #130.#133     // java/util/Set.iterator:()Ljava/util/Iterator;
+  #135 = Utf8               java/util/Iterator
+  #136 = Class              #135          // java/util/Iterator
+  #137 = Utf8               hasNext
+  #138 = NameAndType        #137:#78      // hasNext:()Z
+  #139 = InterfaceMethodref #136.#138     // java/util/Iterator.hasNext:()Z
+  #140 = Utf8               next
+  #141 = Utf8               ()Ljava/lang/Object;
+  #142 = NameAndType        #140:#141     // next:()Ljava/lang/Object;
+  #143 = InterfaceMethodref #136.#142     // java/util/Iterator.next:()Ljava/lang/Object;
+  #144 = Utf8               getKey
+  #145 = NameAndType        #144:#141     // getKey:()Ljava/lang/Object;
+  #146 = InterfaceMethodref #12.#145      // java/util/Map$Entry.getKey:()Ljava/lang/Object;
+  #147 = Utf8               net/minecraft/core/component/DataComponentType
+  #148 = Class              #147          // net/minecraft/core/component/DataComponentType
+  #149 = Utf8               add
+  #150 = Utf8               (Ljava/lang/Object;)Z
+  #151 = NameAndType        #149:#150     // add:(Ljava/lang/Object;)Z
+  #152 = Methodref          #121.#151     // java/util/ArrayList.add:(Ljava/lang/Object;)Z
+  #153 = Utf8               entry
+  #154 = Utf8               Ljava/util/Map$Entry<Lnet/minecraft/core/component/DataComponentType<*>;Ljava/util/Optional<*>;>;
+  #155 = Utf8               Ljava/util/Map$Entry;
+  #156 = Utf8               list
+  #157 = Utf8               Ljava/util/ArrayList<Lnet/minecraft/core/component/DataComponentType<*>;>;
+  #158 = Utf8               Ljava/util/ArrayList;
+  #159 = Utf8               accessories$updateChangeValue_applyPatch
+  #160 = Utf8               (Lnet/minecraft/core/component/DataComponentType;Ljava/util/Optional;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #161 = Utf8               (Lnet/minecraft/core/component/DataComponentType<*>;Ljava/util/Optional<*>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #162 = Utf8               applyPatch(Lnet/minecraft/core/component/DataComponentType;Ljava/util/Optional;)V
+  #163 = Utf8               Lnet/minecraft/core/component/DataComponentType<*>;
+  #164 = Utf8               Ljava/util/Optional<*>;
+  #165 = Utf8               Ljava/util/Optional;
+  #166 = Utf8               accessories$updateChangeValue_restorePatch
+  #167 = Utf8               restorePatch(Lnet/minecraft/core/component/DataComponentPatch;)V
+  #168 = Utf8               (Ljava/util/List<Lnet/minecraft/core/component/DataComponentType<*>;>;)V
+  #169 = Utf8               changedDataTypes
+  #170 = Utf8               sink
+  #171 = NameAndType        #170:#141     // sink:()Ljava/lang/Object;
+  #172 = Methodref          #55.#171      // io/wispforest/owo/util/EventStream.sink:()Ljava/lang/Object;
+  #173 = Utf8               io/wispforest/accessories/utils/ItemStackMutation
+  #174 = Class              #173          // io/wispforest/accessories/utils/ItemStackMutation
+  #175 = Utf8               onMutation
+  #176 = Utf8               (Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)V
+  #177 = NameAndType        #175:#176     // onMutation:(Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)V
+  #178 = InterfaceMethodref #174.#177     // io/wispforest/accessories/utils/ItemStackMutation.onMutation:(Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)V
+  #179 = Utf8               Ljava/util/List<Lnet/minecraft/core/component/DataComponentType<*>;>;
+  #180 = Utf8               Ljava/util/List;
+  #181 = Utf8               invokers
+  #182 = MethodType         #176          //  (Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)V
+  #183 = Utf8               lambda$accessories$getMutationEvent$1
+  #184 = Utf8               (Ljava/util/List;Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)V
+  #185 = NameAndType        #183:#184     // lambda$accessories$getMutationEvent$1:(Ljava/util/List;Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)V
+  #186 = Methodref          #2.#185       // io/wispforest/accessories/mixin/PatchedDataComponentMapMixin.lambda$accessories$getMutationEvent$1:(Ljava/util/List;Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)V
+  #187 = MethodHandle       6:#186        // REF_invokeStatic io/wispforest/accessories/mixin/PatchedDataComponentMapMixin.lambda$accessories$getMutationEvent$1:(Ljava/util/List;Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)V
+  #188 = NameAndType        #175:#58      // onMutation:(Ljava/util/List;)Lio/wispforest/accessories/utils/ItemStackMutation;
+  #189 = InvokeDynamic      #1:#188       // #1:onMutation:(Ljava/util/List;)Lio/wispforest/accessories/utils/ItemStackMutation;
+  #190 = Utf8               stack
+  #191 = Utf8               types
+  #192 = Utf8               (Ljava/lang/Object;)V
+  #193 = MethodType         #192          //  (Ljava/lang/Object;)V
+  #194 = Utf8               lambda$accessories$getMutationEvent$0
+  #195 = Utf8               (Lnet/minecraft/world/item/ItemStack;Ljava/util/List;Lio/wispforest/accessories/utils/ItemStackMutation;)V
+  #196 = NameAndType        #194:#195     // lambda$accessories$getMutationEvent$0:(Lnet/minecraft/world/item/ItemStack;Ljava/util/List;Lio/wispforest/accessories/utils/ItemStackMutation;)V
+  #197 = Methodref          #2.#196       // io/wispforest/accessories/mixin/PatchedDataComponentMapMixin.lambda$accessories$getMutationEvent$0:(Lnet/minecraft/world/item/ItemStack;Ljava/util/List;Lio/wispforest/accessories/utils/ItemStackMutation;)V
+  #198 = MethodHandle       6:#197        // REF_invokeStatic io/wispforest/accessories/mixin/PatchedDataComponentMapMixin.lambda$accessories$getMutationEvent$0:(Lnet/minecraft/world/item/ItemStack;Ljava/util/List;Lio/wispforest/accessories/utils/ItemStackMutation;)V
+  #199 = Utf8               (Lio/wispforest/accessories/utils/ItemStackMutation;)V
+  #200 = MethodType         #199          //  (Lio/wispforest/accessories/utils/ItemStackMutation;)V
+  #201 = Utf8               accept
+  #202 = Utf8               (Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)Ljava/util/function/Consumer;
+  #203 = NameAndType        #201:#202     // accept:(Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)Ljava/util/function/Consumer;
+  #204 = InvokeDynamic      #2:#203       // #2:accept:(Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)Ljava/util/function/Consumer;
+  #205 = Utf8               forEach
+  #206 = Utf8               (Ljava/util/function/Consumer;)V
+  #207 = NameAndType        #205:#206     // forEach:(Ljava/util/function/Consumer;)V
+  #208 = InterfaceMethodref #92.#207      // java/util/List.forEach:(Ljava/util/function/Consumer;)V
+  #209 = Utf8               itemStackMutation
+  #210 = Utf8               Lio/wispforest/accessories/utils/ItemStackMutation;
+  #211 = Utf8               RuntimeVisibleAnnotations
+  #212 = Utf8               RuntimeInvisibleAnnotations
+  #213 = Utf8               RuntimeInvisibleTypeAnnotations
+  #214 = Utf8               Signature
+  #215 = Utf8               Code
+  #216 = Utf8               LineNumberTable
+  #217 = Utf8               LocalVariableTable
+  #218 = Utf8               StackMapTable
+  #219 = Utf8               MethodParameters
+  #220 = Utf8               LocalVariableTypeTable
+  #221 = Utf8               RuntimeInvisibleParameterAnnotations
+  #222 = Utf8               InnerClasses
+  #223 = Utf8               SourceFile
+  #224 = Utf8               BootstrapMethods
+{
+  private boolean changeCheckStack;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Unique
+
+  private net.minecraft.world.item.ItemStack itemStack;
+    descriptor: Lnet/minecraft/world/item/ItemStack;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeInvisibleAnnotations:
+      0: #26()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #26(): FIELD
+        org.jetbrains.annotations.Nullable
+
+  private io.wispforest.owo.util.EventStream<io.wispforest.accessories.utils.ItemStackMutation> mutationEvent;
+    descriptor: Lio/wispforest/owo/util/EventStream;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #29                          // Lio/wispforest/owo/util/EventStream<Lio/wispforest/accessories/utils/ItemStackMutation;>;
+    RuntimeInvisibleAnnotations:
+      0: #26()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #26(): FIELD
+        org.jetbrains.annotations.Nullable
+
+  private boolean inApplyPatchLock;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Unique
+
+  public io.wispforest.accessories.mixin.PatchedDataComponentMapMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #34                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iconst_0
+         6: putfield      #36                 // Field changeCheckStack:Z
+         9: aload_0
+        10: aconst_null
+        11: putfield      #38                 // Field itemStack:Lnet/minecraft/world/item/ItemStack;
+        14: aload_0
+        15: aconst_null
+        16: putfield      #40                 // Field mutationEvent:Lio/wispforest/owo/util/EventStream;
+        19: aload_0
+        20: iconst_0
+        21: putfield      #42                 // Field inApplyPatchLock:Z
+        24: return
+      LineNumberTable:
+        line 25: 0
+        line 27: 4
+        line 30: 9
+        line 33: 14
+        line 74: 19
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      25     0  this   Lio/wispforest/accessories/mixin/PatchedDataComponentMapMixin;
+
+  public io.wispforest.owo.util.EventStream<io.wispforest.accessories.utils.ItemStackMutation> accessories$getMutationEvent(net.minecraft.world.item.ItemStack);
+    descriptor: (Lnet/minecraft/world/item/ItemStack;)Lio/wispforest/owo/util/EventStream;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=2, args_size=2
+         0: aload_1
+         1: invokestatic  #53                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+         4: pop
+         5: aload_0
+         6: aload_1
+         7: putfield      #38                 // Field itemStack:Lnet/minecraft/world/item/ItemStack;
+        10: aload_0
+        11: getfield      #40                 // Field mutationEvent:Lio/wispforest/owo/util/EventStream;
+        14: ifnonnull     33
+        17: aload_0
+        18: new           #55                 // class io/wispforest/owo/util/EventStream
+        21: dup
+        22: invokedynamic #73,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+        27: invokespecial #76                 // Method io/wispforest/owo/util/EventStream."<init>":(Ljava/util/function/Function;)V
+        30: putfield      #40                 // Field mutationEvent:Lio/wispforest/owo/util/EventStream;
+        33: aload_0
+        34: getfield      #40                 // Field mutationEvent:Lio/wispforest/owo/util/EventStream;
+        37: areturn
+      StackMapTable: number_of_entries = 1
+        frame_type = 33 /* same */
+      LineNumberTable:
+        line 38: 0
+        line 40: 5
+        line 42: 10
+        line 43: 17
+        line 48: 33
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      38     0  this   Lio/wispforest/accessories/mixin/PatchedDataComponentMapMixin;
+            0      38     1 itemStack   Lnet/minecraft/world/item/ItemStack;
+    Signature: #47                          // (Lnet/minecraft/world/item/ItemStack;)Lio/wispforest/owo/util/EventStream<Lio/wispforest/accessories/utils/ItemStackMutation;>;
+    MethodParameters:
+      Name                           Flags
+      itemStack
+
+  public boolean accessories$hasChanged();
+    descriptor: ()Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: aload_0
+         1: getfield      #36                 // Field changeCheckStack:Z
+         4: istore_1
+         5: aload_0
+         6: iconst_0
+         7: putfield      #36                 // Field changeCheckStack:Z
+        10: iload_1
+        11: ireturn
+      LineNumberTable:
+        line 53: 0
+        line 55: 5
+        line 57: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0  this   Lio/wispforest/accessories/mixin/PatchedDataComponentMapMixin;
+            5       7     1    bl   Z
+
+  private <T extends java.lang.Object> void accessories$updateChangeValue_set(net.minecraft.core.component.DataComponentType<? super T>, T, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<T>);
+    descriptor: (Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=4, args_size=4
+         0: aload_0
+         1: iconst_1
+         2: putfield      #36                 // Field changeCheckStack:Z
+         5: aload_0
+         6: aload_1
+         7: invokestatic  #96                 // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+        10: invokevirtual #100                // Method accessories$handleMutationEvent:(Ljava/util/List;)V
+        13: return
+      LineNumberTable:
+        line 62: 0
+        line 64: 5
+        line 65: 13
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0  this   Lio/wispforest/accessories/mixin/PatchedDataComponentMapMixin;
+            0      14     1 component   Lnet/minecraft/core/component/DataComponentType;
+            0      14     2 value   Ljava/lang/Object;
+            0      14     3   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      14     1 component   Lnet/minecraft/core/component/DataComponentType<-TT;>;
+            0      14     2 value   TT;
+            0      14     3   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<TT;>;
+    Signature: #82                          // <T:Ljava/lang/Object;>(Lnet/minecraft/core/component/DataComponentType<-TT;>;TT;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<TT;>;)V
+    RuntimeVisibleAnnotations:
+      0: #85(#86=[s#87],#88=[@#89(#9=s#90)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["set(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+    RuntimeInvisibleTypeAnnotations:
+      0: #26(): METHOD_FORMAL_PARAMETER, param_index=1
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+        0: #26()
+          org.jetbrains.annotations.Nullable
+      parameter 2:
+    MethodParameters:
+      Name                           Flags
+      component
+      value
+      cir
+
+  private <T extends java.lang.Object> void accessories$updateChangeValue_remove(net.minecraft.core.component.DataComponentType<? super T>, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<T>);
+    descriptor: (Lnet/minecraft/core/component/DataComponentType;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_0
+         1: iconst_1
+         2: putfield      #36                 // Field changeCheckStack:Z
+         5: aload_0
+         6: aload_1
+         7: invokestatic  #96                 // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+        10: invokevirtual #100                // Method accessories$handleMutationEvent:(Ljava/util/List;)V
+        13: return
+      LineNumberTable:
+        line 69: 0
+        line 71: 5
+        line 72: 13
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0  this   Lio/wispforest/accessories/mixin/PatchedDataComponentMapMixin;
+            0      14     1 component   Lnet/minecraft/core/component/DataComponentType;
+            0      14     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      14     1 component   Lnet/minecraft/core/component/DataComponentType<-TT;>;
+            0      14     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<TT;>;
+    Signature: #109                         // <T:Ljava/lang/Object;>(Lnet/minecraft/core/component/DataComponentType<-TT;>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<TT;>;)V
+    RuntimeVisibleAnnotations:
+      0: #85(#86=[s#110],#88=[@#89(#9=s#90)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["remove(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      component
+      cir
+
+  private void accessories$updateChangeValue_applyPatchHead(net.minecraft.core.component.DataComponentPatch, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/core/component/DataComponentPatch;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_0
+         1: iconst_1
+         2: putfield      #36                 // Field changeCheckStack:Z
+         5: aload_0
+         6: iconst_1
+         7: putfield      #42                 // Field inApplyPatchLock:Z
+        10: return
+      LineNumberTable:
+        line 79: 0
+        line 81: 5
+        line 82: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lio/wispforest/accessories/mixin/PatchedDataComponentMapMixin;
+            0      11     1 patch   Lnet/minecraft/core/component/DataComponentPatch;
+            0      11     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #85(#86=[s#115],#88=[@#89(#9=s#90)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["applyPatch(Lnet/minecraft/core/component/DataComponentPatch;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      patch
+      ci
+
+  private void accessories$updateChangeValue_applyPatchTail(net.minecraft.core.component.DataComponentPatch, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/core/component/DataComponentPatch;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=6, args_size=3
+         0: aload_0
+         1: iconst_0
+         2: putfield      #42                 // Field inApplyPatchLock:Z
+         5: new           #121                // class java/util/ArrayList
+         8: dup
+         9: invokespecial #122                // Method java/util/ArrayList."<init>":()V
+        12: astore_3
+        13: aload_1
+        14: invokevirtual #128                // Method net/minecraft/core/component/DataComponentPatch.entrySet:()Ljava/util/Set;
+        17: invokeinterface #134,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        22: astore        4
+        24: aload         4
+        26: invokeinterface #139,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        31: ifeq          64
+        34: aload         4
+        36: invokeinterface #143,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        41: checkcast     #12                 // class java/util/Map$Entry
+        44: astore        5
+        46: aload_3
+        47: aload         5
+        49: invokeinterface #146,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+        54: checkcast     #148                // class net/minecraft/core/component/DataComponentType
+        57: invokevirtual #152                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+        60: pop
+        61: goto          24
+        64: aload_0
+        65: aload_3
+        66: invokevirtual #100                // Method accessories$handleMutationEvent:(Ljava/util/List;)V
+        69: return
+      StackMapTable: number_of_entries = 2
+        frame_type = 253 /* append */
+          offset_delta = 24
+          locals = [ class java/util/ArrayList, class java/util/Iterator ]
+        frame_type = 39 /* same */
+      LineNumberTable:
+        line 86: 0
+        line 88: 5
+        line 89: 13
+        line 90: 64
+        line 91: 69
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           46      15     5 entry   Ljava/util/Map$Entry;
+            0      70     0  this   Lio/wispforest/accessories/mixin/PatchedDataComponentMapMixin;
+            0      70     1 patch   Lnet/minecraft/core/component/DataComponentPatch;
+            0      70     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+           13      57     3  list   Ljava/util/ArrayList;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           46      15     5 entry   Ljava/util/Map$Entry<Lnet/minecraft/core/component/DataComponentType<*>;Ljava/util/Optional<*>;>;
+           13      57     3  list   Ljava/util/ArrayList<Lnet/minecraft/core/component/DataComponentType<*>;>;
+    RuntimeVisibleAnnotations:
+      0: #85(#86=[s#115],#88=[@#89(#9=s#119)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["applyPatch(Lnet/minecraft/core/component/DataComponentPatch;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="TAIL"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      patch
+      ci
+
+  private void accessories$updateChangeValue_applyPatch(net.minecraft.core.component.DataComponentType<?>, java.util.Optional<?>, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/core/component/DataComponentType;Ljava/util/Optional;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=4, args_size=4
+         0: aload_0
+         1: iconst_1
+         2: putfield      #36                 // Field changeCheckStack:Z
+         5: aload_0
+         6: getfield      #42                 // Field inApplyPatchLock:Z
+         9: ifne          20
+        12: aload_0
+        13: aload_1
+        14: invokestatic  #96                 // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+        17: invokevirtual #100                // Method accessories$handleMutationEvent:(Ljava/util/List;)V
+        20: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 20 /* same */
+      LineNumberTable:
+        line 95: 0
+        line 97: 5
+        line 98: 12
+        line 100: 20
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      21     0  this   Lio/wispforest/accessories/mixin/PatchedDataComponentMapMixin;
+            0      21     1 component   Lnet/minecraft/core/component/DataComponentType;
+            0      21     2 value   Ljava/util/Optional;
+            0      21     3    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      21     1 component   Lnet/minecraft/core/component/DataComponentType<*>;
+            0      21     2 value   Ljava/util/Optional<*>;
+    Signature: #161                         // (Lnet/minecraft/core/component/DataComponentType<*>;Ljava/util/Optional<*>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    RuntimeVisibleAnnotations:
+      0: #85(#86=[s#162],#88=[@#89(#9=s#90)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["applyPatch(Lnet/minecraft/core/component/DataComponentType;Ljava/util/Optional;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      component
+      value
+      ci
+
+  private void accessories$updateChangeValue_restorePatch(net.minecraft.core.component.DataComponentPatch, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/core/component/DataComponentPatch;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=6, args_size=3
+         0: aload_0
+         1: iconst_1
+         2: putfield      #36                 // Field changeCheckStack:Z
+         5: new           #121                // class java/util/ArrayList
+         8: dup
+         9: invokespecial #122                // Method java/util/ArrayList."<init>":()V
+        12: astore_3
+        13: aload_1
+        14: invokevirtual #128                // Method net/minecraft/core/component/DataComponentPatch.entrySet:()Ljava/util/Set;
+        17: invokeinterface #134,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        22: astore        4
+        24: aload         4
+        26: invokeinterface #139,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        31: ifeq          64
+        34: aload         4
+        36: invokeinterface #143,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        41: checkcast     #12                 // class java/util/Map$Entry
+        44: astore        5
+        46: aload_3
+        47: aload         5
+        49: invokeinterface #146,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+        54: checkcast     #148                // class net/minecraft/core/component/DataComponentType
+        57: invokevirtual #152                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+        60: pop
+        61: goto          24
+        64: aload_0
+        65: aload_3
+        66: invokevirtual #100                // Method accessories$handleMutationEvent:(Ljava/util/List;)V
+        69: return
+      StackMapTable: number_of_entries = 2
+        frame_type = 253 /* append */
+          offset_delta = 24
+          locals = [ class java/util/ArrayList, class java/util/Iterator ]
+        frame_type = 39 /* same */
+      LineNumberTable:
+        line 104: 0
+        line 106: 5
+        line 107: 13
+        line 108: 64
+        line 109: 69
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           46      15     5 entry   Ljava/util/Map$Entry;
+            0      70     0  this   Lio/wispforest/accessories/mixin/PatchedDataComponentMapMixin;
+            0      70     1 patch   Lnet/minecraft/core/component/DataComponentPatch;
+            0      70     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+           13      57     3  list   Ljava/util/ArrayList;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           46      15     5 entry   Ljava/util/Map$Entry<Lnet/minecraft/core/component/DataComponentType<*>;Ljava/util/Optional<*>;>;
+           13      57     3  list   Ljava/util/ArrayList<Lnet/minecraft/core/component/DataComponentType<*>;>;
+    RuntimeVisibleAnnotations:
+      0: #85(#86=[s#167],#88=[@#89(#9=s#90)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["restorePatch(Lnet/minecraft/core/component/DataComponentPatch;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      patch
+      ci
+
+  private void accessories$handleMutationEvent(java.util.List<net.minecraft.core.component.DataComponentType<?>>);
+    descriptor: (Ljava/util/List;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #40                 // Field mutationEvent:Lio/wispforest/owo/util/EventStream;
+         4: ifnonnull     8
+         7: return
+         8: aload_0
+         9: getfield      #40                 // Field mutationEvent:Lio/wispforest/owo/util/EventStream;
+        12: invokevirtual #172                // Method io/wispforest/owo/util/EventStream.sink:()Ljava/lang/Object;
+        15: checkcast     #174                // class io/wispforest/accessories/utils/ItemStackMutation
+        18: aload_0
+        19: getfield      #38                 // Field itemStack:Lnet/minecraft/world/item/ItemStack;
+        22: aload_1
+        23: invokeinterface #178,  3          // InterfaceMethod io/wispforest/accessories/utils/ItemStackMutation.onMutation:(Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)V
+        28: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 8 /* same */
+      LineNumberTable:
+        line 113: 0
+        line 115: 8
+        line 116: 28
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      29     0  this   Lio/wispforest/accessories/mixin/PatchedDataComponentMapMixin;
+            0      29     1 changedDataTypes   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      29     1 changedDataTypes   Ljava/util/List<Lnet/minecraft/core/component/DataComponentType<*>;>;
+    Signature: #168                         // (Ljava/util/List<Lnet/minecraft/core/component/DataComponentType<*>;>;)V
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Unique
+    MethodParameters:
+      Name                           Flags
+      changedDataTypes
+
+  private static io.wispforest.accessories.utils.ItemStackMutation lambda$accessories$getMutationEvent$2(java.util.List);
+    descriptor: (Ljava/util/List;)Lio/wispforest/accessories/utils/ItemStackMutation;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokedynamic #189,  0            // InvokeDynamic #1:onMutation:(Ljava/util/List;)Lio/wispforest/accessories/utils/ItemStackMutation;
+         6: areturn
+      LineNumberTable:
+        line 43: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       7     0 invokers   Ljava/util/List;
+    MethodParameters:
+      Name                           Flags
+      invokers
+
+  private static void lambda$accessories$getMutationEvent$1(java.util.List, net.minecraft.world.item.ItemStack, java.util.List);
+    descriptor: (Ljava/util/List;Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokedynamic #204,  0            // InvokeDynamic #2:accept:(Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)Ljava/util/function/Consumer;
+         8: invokeinterface #208,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+        13: return
+      LineNumberTable:
+        line 44: 0
+        line 45: 13
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0 invokers   Ljava/util/List;
+            0      14     1 stack   Lnet/minecraft/world/item/ItemStack;
+            0      14     2 types   Ljava/util/List;
+    MethodParameters:
+      Name                           Flags
+      invokers
+      stack
+      types
+
+  private static void lambda$accessories$getMutationEvent$0(net.minecraft.world.item.ItemStack, java.util.List, io.wispforest.accessories.utils.ItemStackMutation);
+    descriptor: (Lnet/minecraft/world/item/ItemStack;Ljava/util/List;Lio/wispforest/accessories/utils/ItemStackMutation;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_2
+         1: aload_0
+         2: aload_1
+         3: invokeinterface #178,  3          // InterfaceMethod io/wispforest/accessories/utils/ItemStackMutation.onMutation:(Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)V
+         8: return
+      LineNumberTable:
+        line 44: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0 stack   Lnet/minecraft/world/item/ItemStack;
+            0       9     1 types   Ljava/util/List;
+            0       9     2 itemStackMutation   Lio/wispforest/accessories/utils/ItemStackMutation;
+    MethodParameters:
+      Name                           Flags
+      stack
+      types
+      itemStackMutation
+}
+InnerClasses:
+  public static #15= #12 of #14;          // Entry=class java/util/Map$Entry of class java/util/Map
+  public static final #20= #17 of #19;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+SourceFile: "PatchedDataComponentMapMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #8(#9=[c#10])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/core/component/PatchedDataComponentMap;]
+    )
+BootstrapMethods:
+  0: #69 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #56 (Ljava/lang/Object;)Ljava/lang/Object;
+      #61 REF_invokeStatic io/wispforest/accessories/mixin/PatchedDataComponentMapMixin.lambda$accessories$getMutationEvent$2:(Ljava/util/List;)Lio/wispforest/accessories/utils/ItemStackMutation;
+      #62 (Ljava/util/List;)Lio/wispforest/accessories/utils/ItemStackMutation;
+  1: #69 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #182 (Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)V
+      #187 REF_invokeStatic io/wispforest/accessories/mixin/PatchedDataComponentMapMixin.lambda$accessories$getMutationEvent$1:(Ljava/util/List;Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)V
+      #182 (Lnet/minecraft/world/item/ItemStack;Ljava/util/List;)V
+  2: #69 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #193 (Ljava/lang/Object;)V
+      #198 REF_invokeStatic io/wispforest/accessories/mixin/PatchedDataComponentMapMixin.lambda$accessories$getMutationEvent$0:(Lnet/minecraft/world/item/ItemStack;Ljava/util/List;Lio/wispforest/accessories/utils/ItemStackMutation;)V
+      #200 (Lio/wispforest/accessories/utils/ItemStackMutation;)V
