@@ -6,6 +6,33 @@
 
 ### Continuation update - 2026-09-06
 
+Latest delivered increments: 75ad62e records the four custom feature roles and
+resolves HolidayFilter; 5bf0795 binds actual nested-library selection to the
+preserved runtime log. Five focused Aether cases and scoped checks pass.
+Accessories beta.53 is selected from the retained top-level archive; do not
+audit embedded beta.48 as running code. Cumulus 2.0.7 and Nitrogen 1.1.25 load
+from Aether and still need contribution roles. Census remains 75 resolved and
+61 open. The user's immediate priority is closing this finite provider queue
+and canonical family denominator before returning to detailed attributes.
+
+Source 4487f8f, extractor 54c0801, captures 49 common-entry/listener/mixin and
+portal classes in sources/aether-common-hooks. Manifest SHA-256:
+9c3b21c8bf2eab73550acc646a9c74081c15daac08c941367f298adf0bb8c50f.
+Independent r1 matches all generated files. Both refs are pushed and verified.
+The earlier Aether main capture was non-verbose and lacked callback bootstrap
+bindings. The new capture fixes this concrete evidence gap using the existing
+extractor, with the old source preserved. Do not recapture these classes.
+
+Next interpret those roles and resolve the two selected nested libraries.
+DimensionListener delegates world-load/time/portal behavior to DimensionHooks;
+inspect that concrete boundary, not every gameplay helper. Main callbacks also
+identify AetherCommands and ReloadListeners; dataSetup is a GatherDataEvent
+callback. Portal pack source reads add_ruined_portal_automatically, whose frozen
+common config is false; six optional roots remain absent from the runtime
+registry. Its captured pack-source and portal-template consumers still need
+final reconciliation. Source capture alone does not close these roles or Aether.
+No runtime process is live and no external blocker exists.
+
 Latest Aether increments 93dbd29 and f3a2b1b are pushed and remote-ref verified.
 Silver's ten selected component names and Gold's four account for their template
 sets except Silver test_door, which has no literal reference in archive classes.
