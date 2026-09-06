@@ -207,6 +207,10 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "com/natamus/quickrightclick_common_neoforge/features/BedBlockFeature.class",
+    "com/natamus/quickrightclick_common_neoforge/features/ShulkerBoxFeature.class",
+    "com/natamus/quickrightclick_common_neoforge/util/Util.class",
+
     "com/natamus/quickrightclick/ModNeoForge.class",
     "com/natamus/quickrightclick/neoforge/events/NeoForgeQuickEvent.class",
     "com/natamus/quickrightclick_common_neoforge/ModCommon.class",
