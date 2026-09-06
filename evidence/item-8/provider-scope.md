@@ -9409,3 +9409,24 @@ SHA-256: 555f07790ee25963ece0b361fe1ca49cf29fec08b1d2bb99284d4597c8b5f4da.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-terralith-encounters-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-terralith-encounters-r2.json
 ```
+
+### Terralith rubble design reconciliation, 2026-09-07
+
+All six biome sets retain corresponding small, medium and large authored ruin
+alternatives. Existing templates bind brushable blocks to common trail-ruins loot;
+large alternatives also bind decorated pots to rare trail-ruins loot. Medium pots
+lack that rare-loot binding. Matching size envelopes and corresponding masonry,
+timber, sign and vegetation substitutions support one family with material and
+size variants. These are authored archaeological caches, not terrain-only rubble.
+Effective exposure and reward behavior remain unproven. No new capture or
+measurement was needed.
+
+The affected case and scoped checks pass. Canonical-note backlog: 100, down from
+101 (IDAS 59, AdoraBuild 31, Terralith 10). Coverage groups remain 405. Required
+attributes and nonregistry contribution reconciliation remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k terralith
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
