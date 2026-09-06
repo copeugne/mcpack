@@ -1051,6 +1051,15 @@ CLASSES: tuple[str, ...] = (
     "com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.class",
     "com/yungnickyoung/minecraft/betterjungletemples/world/processor/TorchProcessor.class",
     "com/yungnickyoung/minecraft/betterjungletemples/world/util/ArrowData.class",
+    "com/yungnickyoung/minecraft/betterendisland/command/EndIslandCommand.class",
+    "com/yungnickyoung/minecraft/betterendisland/mixin/EndergeticExpansionMixins.class",
+    "com/yungnickyoung/minecraft/betterendisland/mixin/PrimaryLevelDataMixin.class",
+    "com/yungnickyoung/minecraft/betterendisland/mixin/ServerLevelMixin.class",
+    "com/yungnickyoung/minecraft/betterendisland/mixin/TheEndGatewayBlockEntityMixin.class",
+    "com/yungnickyoung/minecraft/betterendisland/mixin/accessor/EndDragonFightAccessor.class",
+    "com/yungnickyoung/minecraft/betterendisland/module/CommandModule.class",
+    "com/yungnickyoung/minecraft/betterendisland/module/StructureProcessorTypeModule.class",
+    "com/yungnickyoung/minecraft/betterendisland/services/IModulesLoader.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
