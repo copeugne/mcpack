@@ -1,0 +1,839 @@
+Classfile accessories-neoforge-1.1.0-beta.53+1.21.1.jar!/io/wispforest/accessories/mixin/InventoryMixin.class
+  Last modified Jan 1, 1980; size 9930 bytes
+  SHA-256 checksum 52c25f93764b43f8ebc891e1d17b85a7fa2e0c53820dc977d29bf98c45de81b2
+  Compiled from "InventoryMixin.java"
+public abstract class io.wispforest.accessories.mixin.InventoryMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // io/wispforest/accessories/mixin/InventoryMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 2, methods: 10, attributes: 4
+Constant pool:
+    #1 = Utf8               io/wispforest/accessories/mixin/InventoryMixin
+    #2 = Class              #1            // io/wispforest/accessories/mixin/InventoryMixin
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               InventoryMixin.java
+    #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #7 = Utf8               value
+    #8 = Utf8               Lnet/minecraft/world/entity/player/Inventory;
+    #9 = Utf8               org/spongepowered/asm/mixin/injection/At$Shift
+   #10 = Class              #9            // org/spongepowered/asm/mixin/injection/At$Shift
+   #11 = Utf8               org/spongepowered/asm/mixin/injection/At
+   #12 = Class              #11           // org/spongepowered/asm/mixin/injection/At
+   #13 = Utf8               Shift
+   #14 = Utf8               java/lang/invoke/MethodHandles$Lookup
+   #15 = Class              #14           // java/lang/invoke/MethodHandles$Lookup
+   #16 = Utf8               java/lang/invoke/MethodHandles
+   #17 = Class              #16           // java/lang/invoke/MethodHandles
+   #18 = Utf8               Lookup
+   #19 = Utf8               player
+   #20 = Utf8               Lnet/minecraft/world/entity/player/Player;
+   #21 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #22 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+   #23 = Utf8               selected
+   #24 = Utf8               I
+   #25 = Utf8               <init>
+   #26 = Utf8               ()V
+   #27 = NameAndType        #25:#26       // "<init>":()V
+   #28 = Methodref          #4.#27        // java/lang/Object."<init>":()V
+   #29 = Utf8               this
+   #30 = Utf8               Lio/wispforest/accessories/mixin/InventoryMixin;
+   #31 = Utf8               clearAccessories
+   #32 = Utf8               (Ljava/util/function/Predicate;ILnet/minecraft/world/Container;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;)V
+   #33 = Utf8               (Ljava/util/function/Predicate<Lnet/minecraft/world/item/ItemStack;>;ILnet/minecraft/world/Container;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Integer;>;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;)V
+   #34 = Utf8               stackPredicate
+   #35 = Utf8               maxCount
+   #36 = Utf8               inventory
+   #37 = Utf8               cir
+   #38 = Utf8               i
+   #39 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #40 = Utf8               method
+   #41 = Utf8               clearOrCountMatchingItems(Ljava/util/function/Predicate;ILnet/minecraft/world/Container;)I
+   #42 = Utf8               at
+   #43 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #44 = Utf8               INVOKE
+   #45 = Utf8               target
+   #46 = Utf8               Lnet/minecraft/world/item/ItemStack;isEmpty()Z
+   #47 = Utf8               shift
+   #48 = Utf8               Lorg/spongepowered/asm/mixin/injection/At$Shift;
+   #49 = Utf8               AFTER
+   #50 = Utf8               Lcom/llamalad7/mixinextras/sugar/Local;
+   #51 = Utf8               ordinal
+   #52 = Integer            1
+   #53 = NameAndType        #19:#20       // player:Lnet/minecraft/world/entity/player/Player;
+   #54 = Fieldref           #2.#53        // io/wispforest/accessories/mixin/InventoryMixin.player:Lnet/minecraft/world/entity/player/Player;
+   #55 = Utf8               io/wispforest/accessories/api/AccessoriesCapability
+   #56 = Class              #55           // io/wispforest/accessories/api/AccessoriesCapability
+   #57 = Utf8               get
+   #58 = Utf8               (Lnet/minecraft/world/entity/LivingEntity;)Lio/wispforest/accessories/api/AccessoriesCapability;
+   #59 = NameAndType        #57:#58       // get:(Lnet/minecraft/world/entity/LivingEntity;)Lio/wispforest/accessories/api/AccessoriesCapability;
+   #60 = InterfaceMethodref #56.#59       // io/wispforest/accessories/api/AccessoriesCapability.get:(Lnet/minecraft/world/entity/LivingEntity;)Lio/wispforest/accessories/api/AccessoriesCapability;
+   #61 = Utf8               getContainers
+   #62 = Utf8               ()Ljava/util/Map;
+   #63 = NameAndType        #61:#62       // getContainers:()Ljava/util/Map;
+   #64 = InterfaceMethodref #56.#63       // io/wispforest/accessories/api/AccessoriesCapability.getContainers:()Ljava/util/Map;
+   #65 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)V
+   #66 = MethodType         #65           //  (Ljava/lang/Object;Ljava/lang/Object;)V
+   #67 = Utf8               lambda$clearAccessories$0
+   #68 = Utf8               (Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Ljava/util/function/Predicate;ILjava/lang/String;Lio/wispforest/accessories/api/AccessoriesContainer;)V
+   #69 = NameAndType        #67:#68       // lambda$clearAccessories$0:(Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Ljava/util/function/Predicate;ILjava/lang/String;Lio/wispforest/accessories/api/AccessoriesContainer;)V
+   #70 = Methodref          #2.#69        // io/wispforest/accessories/mixin/InventoryMixin.lambda$clearAccessories$0:(Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Ljava/util/function/Predicate;ILjava/lang/String;Lio/wispforest/accessories/api/AccessoriesContainer;)V
+   #71 = MethodHandle       6:#70         // REF_invokeStatic io/wispforest/accessories/mixin/InventoryMixin.lambda$clearAccessories$0:(Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Ljava/util/function/Predicate;ILjava/lang/String;Lio/wispforest/accessories/api/AccessoriesContainer;)V
+   #72 = Utf8               (Ljava/lang/String;Lio/wispforest/accessories/api/AccessoriesContainer;)V
+   #73 = MethodType         #72           //  (Ljava/lang/String;Lio/wispforest/accessories/api/AccessoriesContainer;)V
+   #74 = Utf8               java/lang/invoke/LambdaMetafactory
+   #75 = Class              #74           // java/lang/invoke/LambdaMetafactory
+   #76 = Utf8               metafactory
+   #77 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #78 = NameAndType        #76:#77       // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #79 = Methodref          #75.#78       // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #80 = MethodHandle       6:#79         // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #81 = Utf8               accept
+   #82 = Utf8               (Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Ljava/util/function/Predicate;I)Ljava/util/function/BiConsumer;
+   #83 = NameAndType        #81:#82       // accept:(Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Ljava/util/function/Predicate;I)Ljava/util/function/BiConsumer;
+   #84 = InvokeDynamic      #0:#83        // #0:accept:(Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Ljava/util/function/Predicate;I)Ljava/util/function/BiConsumer;
+   #85 = Utf8               java/util/Map
+   #86 = Class              #85           // java/util/Map
+   #87 = Utf8               forEach
+   #88 = Utf8               (Ljava/util/function/BiConsumer;)V
+   #89 = NameAndType        #87:#88       // forEach:(Ljava/util/function/BiConsumer;)V
+   #90 = InterfaceMethodref #86.#89       // java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+   #91 = Utf8               Ljava/util/function/Predicate<Lnet/minecraft/world/item/ItemStack;>;
+   #92 = Utf8               Ljava/util/function/Predicate;
+   #93 = Utf8               Lnet/minecraft/world/Container;
+   #94 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Integer;>;
+   #95 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+   #96 = Utf8               Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;
+   #97 = Utf8               capability
+   #98 = Utf8               Lio/wispforest/accessories/api/AccessoriesCapability;
+   #99 = Utf8               extendContainsCheck
+  #100 = Utf8               (Lnet/minecraft/world/item/ItemStack;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+  #101 = Utf8               (Lnet/minecraft/world/item/ItemStack;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+  #102 = Utf8               stack
+  #103 = Utf8               contains(Lnet/minecraft/world/item/ItemStack;)Z
+  #104 = Utf8               TAIL
+  #105 = Utf8               cancellable
+  #106 = Utf8               (Ljava/lang/Object;)Z
+  #107 = MethodType         #106          //  (Ljava/lang/Object;)Z
+  #108 = Utf8               lambda$extendContainsCheck$1
+  #109 = Utf8               (Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z
+  #110 = NameAndType        #108:#109     // lambda$extendContainsCheck$1:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z
+  #111 = Methodref          #2.#110       // io/wispforest/accessories/mixin/InventoryMixin.lambda$extendContainsCheck$1:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z
+  #112 = MethodHandle       6:#111        // REF_invokeStatic io/wispforest/accessories/mixin/InventoryMixin.lambda$extendContainsCheck$1:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z
+  #113 = Utf8               (Lnet/minecraft/world/item/ItemStack;)Z
+  #114 = MethodType         #113          //  (Lnet/minecraft/world/item/ItemStack;)Z
+  #115 = Utf8               test
+  #116 = Utf8               (Lnet/minecraft/world/item/ItemStack;)Ljava/util/function/Predicate;
+  #117 = NameAndType        #115:#116     // test:(Lnet/minecraft/world/item/ItemStack;)Ljava/util/function/Predicate;
+  #118 = InvokeDynamic      #1:#117       // #1:test:(Lnet/minecraft/world/item/ItemStack;)Ljava/util/function/Predicate;
+  #119 = Utf8               isEquipped
+  #120 = Utf8               (Ljava/util/function/Predicate;)Z
+  #121 = NameAndType        #119:#120     // isEquipped:(Ljava/util/function/Predicate;)Z
+  #122 = InterfaceMethodref #56.#121      // io/wispforest/accessories/api/AccessoriesCapability.isEquipped:(Ljava/util/function/Predicate;)Z
+  #123 = Utf8               java/lang/Boolean
+  #124 = Class              #123          // java/lang/Boolean
+  #125 = Utf8               valueOf
+  #126 = Utf8               (Z)Ljava/lang/Boolean;
+  #127 = NameAndType        #125:#126     // valueOf:(Z)Ljava/lang/Boolean;
+  #128 = Methodref          #124.#127     // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+  #129 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+  #130 = Class              #129          // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+  #131 = Utf8               setReturnValue
+  #132 = Utf8               (Ljava/lang/Object;)V
+  #133 = NameAndType        #131:#132     // setReturnValue:(Ljava/lang/Object;)V
+  #134 = Methodref          #130.#133     // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+  #135 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #136 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+  #137 = Utf8               bl
+  #138 = Utf8               Z
+  #139 = Utf8               (Lnet/minecraft/tags/TagKey;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+  #140 = Utf8               (Lnet/minecraft/tags/TagKey<Lnet/minecraft/world/item/Item;>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+  #141 = Utf8               tag
+  #142 = Utf8               contains(Lnet/minecraft/tags/TagKey;)Z
+  #143 = Utf8               lambda$extendContainsCheck$2
+  #144 = Utf8               (Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/ItemStack;)Z
+  #145 = NameAndType        #143:#144     // lambda$extendContainsCheck$2:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/ItemStack;)Z
+  #146 = Methodref          #2.#145       // io/wispforest/accessories/mixin/InventoryMixin.lambda$extendContainsCheck$2:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/ItemStack;)Z
+  #147 = MethodHandle       6:#146        // REF_invokeStatic io/wispforest/accessories/mixin/InventoryMixin.lambda$extendContainsCheck$2:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/ItemStack;)Z
+  #148 = Utf8               (Lnet/minecraft/tags/TagKey;)Ljava/util/function/Predicate;
+  #149 = NameAndType        #115:#148     // test:(Lnet/minecraft/tags/TagKey;)Ljava/util/function/Predicate;
+  #150 = InvokeDynamic      #2:#149       // #2:test:(Lnet/minecraft/tags/TagKey;)Ljava/util/function/Predicate;
+  #151 = Utf8               Lnet/minecraft/tags/TagKey<Lnet/minecraft/world/item/Item;>;
+  #152 = Utf8               Lnet/minecraft/tags/TagKey;
+  #153 = Utf8               (Ljava/util/function/Predicate;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+  #154 = Utf8               (Ljava/util/function/Predicate<Lnet/minecraft/world/item/ItemStack;>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+  #155 = Utf8               predicate
+  #156 = Utf8               contains(Ljava/util/function/Predicate;)Z
+  #157 = Utf8               addAccessoriesToDropCall
+  #158 = Utf8               (Ljava/util/List;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Ljava/util/Iterator;
+  #159 = Utf8               (Ljava/util/List<Ljava/util/List<Lnet/minecraft/world/item/ItemStack;>;>;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/util/Iterator<Ljava/util/List<Lnet/minecraft/world/item/ItemStack;>;>;>;)Ljava/util/Iterator<Ljava/util/List<Lnet/minecraft/world/item/ItemStack;>;>;
+  #160 = Utf8               instance
+  #161 = Utf8               original
+  #162 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/WrapOperation;
+  #163 = Utf8               dropAll()V
+  #164 = Utf8               Ljava/util/List;iterator()Ljava/util/Iterator;
+  #165 = Utf8               java/util/ArrayList
+  #166 = Class              #165          // java/util/ArrayList
+  #167 = Utf8               (Ljava/util/Collection;)V
+  #168 = NameAndType        #25:#167      // "<init>":(Ljava/util/Collection;)V
+  #169 = Methodref          #166.#168     // java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+  #170 = Utf8               io/wispforest/accessories/pond/DroppedStacksExtension
+  #171 = Class              #170          // io/wispforest/accessories/pond/DroppedStacksExtension
+  #172 = Utf8               toBeDroppedStacks
+  #173 = Utf8               ()Ljava/util/Collection;
+  #174 = NameAndType        #172:#173     // toBeDroppedStacks:()Ljava/util/Collection;
+  #175 = InterfaceMethodref #171.#174     // io/wispforest/accessories/pond/DroppedStacksExtension.toBeDroppedStacks:()Ljava/util/Collection;
+  #176 = Utf8               add
+  #177 = NameAndType        #176:#106     // add:(Ljava/lang/Object;)Z
+  #178 = Methodref          #166.#177     // java/util/ArrayList.add:(Ljava/lang/Object;)Z
+  #179 = Utf8               com/llamalad7/mixinextras/injector/wrapoperation/Operation
+  #180 = Class              #179          // com/llamalad7/mixinextras/injector/wrapoperation/Operation
+  #181 = Utf8               call
+  #182 = Utf8               ([Ljava/lang/Object;)Ljava/lang/Object;
+  #183 = NameAndType        #181:#182     // call:([Ljava/lang/Object;)Ljava/lang/Object;
+  #184 = InterfaceMethodref #180.#183     // com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+  #185 = Utf8               java/util/Iterator
+  #186 = Class              #185          // java/util/Iterator
+  #187 = Utf8               Ljava/util/List<Ljava/util/List<Lnet/minecraft/world/item/ItemStack;>;>;
+  #188 = Utf8               Ljava/util/List;
+  #189 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/util/Iterator<Ljava/util/List<Lnet/minecraft/world/item/ItemStack;>;>;>;
+  #190 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+  #191 = Utf8               combinedList
+  #192 = Utf8               Ljava/util/ArrayList<Ljava/util/List<Lnet/minecraft/world/item/ItemStack;>;>;
+  #193 = Utf8               Ljava/util/ArrayList;
+  #194 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #195 = Utf8               ci
+  #196 = Utf8               java/util/List
+  #197 = Class              #196          // java/util/List
+  #198 = Utf8               of
+  #199 = Utf8               ()Ljava/util/List;
+  #200 = NameAndType        #198:#199     // of:()Ljava/util/List;
+  #201 = InterfaceMethodref #197.#200     // java/util/List.of:()Ljava/util/List;
+  #202 = Utf8               addToBeDroppedStacks
+  #203 = NameAndType        #202:#167     // addToBeDroppedStacks:(Ljava/util/Collection;)V
+  #204 = InterfaceMethodref #171.#203     // io/wispforest/accessories/pond/DroppedStacksExtension.addToBeDroppedStacks:(Ljava/util/Collection;)V
+  #205 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #206 = Utf8               stack1
+  #207 = Utf8               net/minecraft/world/item/ItemStack
+  #208 = Class              #207          // net/minecraft/world/item/ItemStack
+  #209 = Utf8               isEmpty
+  #210 = Utf8               ()Z
+  #211 = NameAndType        #209:#210     // isEmpty:()Z
+  #212 = Methodref          #208.#211     // net/minecraft/world/item/ItemStack.isEmpty:()Z
+  #213 = Utf8               is
+  #214 = Utf8               (Lnet/minecraft/tags/TagKey;)Z
+  #215 = NameAndType        #213:#214     // is:(Lnet/minecraft/tags/TagKey;)Z
+  #216 = Methodref          #208.#215     // net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/tags/TagKey;)Z
+  #217 = Utf8               isSameItemSameComponents
+  #218 = NameAndType        #217:#109     // isSameItemSameComponents:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z
+  #219 = Methodref          #208.#218     // net/minecraft/world/item/ItemStack.isSameItemSameComponents:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z
+  #220 = Utf8               s
+  #221 = Utf8               container
+  #222 = Utf8               io/wispforest/accessories/api/AccessoriesContainer
+  #223 = Class              #222          // io/wispforest/accessories/api/AccessoriesContainer
+  #224 = Utf8               getAccessories
+  #225 = Utf8               ()Lio/wispforest/accessories/impl/ExpandedSimpleContainer;
+  #226 = NameAndType        #224:#225     // getAccessories:()Lio/wispforest/accessories/impl/ExpandedSimpleContainer;
+  #227 = InterfaceMethodref #223.#226     // io/wispforest/accessories/api/AccessoriesContainer.getAccessories:()Lio/wispforest/accessories/impl/ExpandedSimpleContainer;
+  #228 = Utf8               com/llamalad7/mixinextras/sugar/ref/LocalIntRef
+  #229 = Class              #228          // com/llamalad7/mixinextras/sugar/ref/LocalIntRef
+  #230 = Utf8               ()I
+  #231 = NameAndType        #57:#230      // get:()I
+  #232 = InterfaceMethodref #229.#231     // com/llamalad7/mixinextras/sugar/ref/LocalIntRef.get:()I
+  #233 = Utf8               java/util/function/Predicate
+  #234 = Class              #233          // java/util/function/Predicate
+  #235 = Utf8               java/lang/String
+  #236 = Class              #235          // java/lang/String
+  #237 = Utf8               io/wispforest/accessories/impl/ExpandedSimpleContainer
+  #238 = Class              #237          // io/wispforest/accessories/impl/ExpandedSimpleContainer
+  #239 = Utf8               net/minecraft/world/ContainerHelper
+  #240 = Class              #239          // net/minecraft/world/ContainerHelper
+  #241 = Utf8               clearOrCountMatchingItems
+  #242 = Utf8               (Lnet/minecraft/world/Container;Ljava/util/function/Predicate;IZ)I
+  #243 = NameAndType        #241:#242     // clearOrCountMatchingItems:(Lnet/minecraft/world/Container;Ljava/util/function/Predicate;IZ)I
+  #244 = Methodref          #240.#243     // net/minecraft/world/ContainerHelper.clearOrCountMatchingItems:(Lnet/minecraft/world/Container;Ljava/util/function/Predicate;IZ)I
+  #245 = Utf8               set
+  #246 = Utf8               (I)V
+  #247 = NameAndType        #245:#246     // set:(I)V
+  #248 = InterfaceMethodref #229.#247     // com/llamalad7/mixinextras/sugar/ref/LocalIntRef.set:(I)V
+  #249 = Utf8               getCosmeticAccessories
+  #250 = NameAndType        #249:#225     // getCosmeticAccessories:()Lio/wispforest/accessories/impl/ExpandedSimpleContainer;
+  #251 = InterfaceMethodref #223.#250     // io/wispforest/accessories/api/AccessoriesContainer.getCosmeticAccessories:()Lio/wispforest/accessories/impl/ExpandedSimpleContainer;
+  #252 = Utf8               Ljava/lang/String;
+  #253 = Utf8               Lio/wispforest/accessories/api/AccessoriesContainer;
+  #254 = Utf8               accessories
+  #255 = Utf8               Lio/wispforest/accessories/impl/ExpandedSimpleContainer;
+  #256 = Utf8               cosmetics
+  #257 = Utf8               RuntimeVisibleAnnotations
+  #258 = Utf8               Code
+  #259 = Utf8               LineNumberTable
+  #260 = Utf8               LocalVariableTable
+  #261 = Utf8               StackMapTable
+  #262 = Utf8               LocalVariableTypeTable
+  #263 = Utf8               Signature
+  #264 = Utf8               RuntimeInvisibleParameterAnnotations
+  #265 = Utf8               MethodParameters
+  #266 = Utf8               InnerClasses
+  #267 = Utf8               SourceFile
+  #268 = Utf8               RuntimeInvisibleAnnotations
+  #269 = Utf8               BootstrapMethods
+{
+  public net.minecraft.world.entity.player.Player player;
+    descriptor: Lnet/minecraft/world/entity/player/Player;
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #21()
+        org.spongepowered.asm.mixin.Shadow
+      1: #22()
+        org.spongepowered.asm.mixin.Final
+
+  public int selected;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #21()
+        org.spongepowered.asm.mixin.Shadow
+
+  public io.wispforest.accessories.mixin.InventoryMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #28                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 30: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lio/wispforest/accessories/mixin/InventoryMixin;
+
+  private void clearAccessories(java.util.function.Predicate<net.minecraft.world.item.ItemStack>, int, net.minecraft.world.Container, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Integer>, com.llamalad7.mixinextras.sugar.ref.LocalIntRef);
+    descriptor: (Ljava/util/function/Predicate;ILnet/minecraft/world/Container;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=7, args_size=6
+         0: aload_0
+         1: getfield      #54                 // Field player:Lnet/minecraft/world/entity/player/Player;
+         4: invokestatic  #60                 // InterfaceMethod io/wispforest/accessories/api/AccessoriesCapability.get:(Lnet/minecraft/world/entity/LivingEntity;)Lio/wispforest/accessories/api/AccessoriesCapability;
+         7: astore        6
+         9: aload         6
+        11: ifnonnull     15
+        14: return
+        15: aload         6
+        17: invokeinterface #64,  1           // InterfaceMethod io/wispforest/accessories/api/AccessoriesCapability.getContainers:()Ljava/util/Map;
+        22: aload         5
+        24: aload_1
+        25: iload_2
+        26: invokedynamic #84,  0             // InvokeDynamic #0:accept:(Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Ljava/util/function/Predicate;I)Ljava/util/function/BiConsumer;
+        31: invokeinterface #90,  2           // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+        36: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 15
+          locals = [ class io/wispforest/accessories/api/AccessoriesCapability ]
+      LineNumberTable:
+        line 38: 0
+        line 40: 9
+        line 42: 15
+        line 49: 36
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      37     0  this   Lio/wispforest/accessories/mixin/InventoryMixin;
+            0      37     1 stackPredicate   Ljava/util/function/Predicate;
+            0      37     2 maxCount   I
+            0      37     3 inventory   Lnet/minecraft/world/Container;
+            0      37     4   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            0      37     5     i   Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;
+            9      28     6 capability   Lio/wispforest/accessories/api/AccessoriesCapability;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      37     1 stackPredicate   Ljava/util/function/Predicate<Lnet/minecraft/world/item/ItemStack;>;
+            0      37     4   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Integer;>;
+    Signature: #33                          // (Ljava/util/function/Predicate<Lnet/minecraft/world/item/ItemStack;>;ILnet/minecraft/world/Container;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Integer;>;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;)V
+    RuntimeVisibleAnnotations:
+      0: #39(#40=[s#41],#42=[@#43(#7=s#44,#45=s#46,#47=e#48.#49)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["clearOrCountMatchingItems(Ljava/util/function/Predicate;ILnet/minecraft/world/Container;)I"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/item/ItemStack;isEmpty()Z"
+            shift=Lorg/spongepowered/asm/mixin/injection/At$Shift;.AFTER
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+      parameter 3:
+      parameter 4:
+        0: #50(#51=I#52)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=1
+          )
+    MethodParameters:
+      Name                           Flags
+      stackPredicate
+      maxCount
+      inventory
+      cir
+      i
+
+  private void extendContainsCheck(net.minecraft.world.item.ItemStack, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+    descriptor: (Lnet/minecraft/world/item/ItemStack;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=5, args_size=3
+         0: aload_0
+         1: getfield      #54                 // Field player:Lnet/minecraft/world/entity/player/Player;
+         4: invokestatic  #60                 // InterfaceMethod io/wispforest/accessories/api/AccessoriesCapability.get:(Lnet/minecraft/world/entity/LivingEntity;)Lio/wispforest/accessories/api/AccessoriesCapability;
+         7: astore_3
+         8: aload_3
+         9: ifnonnull     13
+        12: return
+        13: aload_3
+        14: aload_1
+        15: invokedynamic #118,  0            // InvokeDynamic #1:test:(Lnet/minecraft/world/item/ItemStack;)Ljava/util/function/Predicate;
+        20: invokeinterface #122,  2          // InterfaceMethod io/wispforest/accessories/api/AccessoriesCapability.isEquipped:(Ljava/util/function/Predicate;)Z
+        25: istore        4
+        27: iload         4
+        29: ifeq          40
+        32: aload_2
+        33: iconst_1
+        34: invokestatic  #128                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        37: invokevirtual #134                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+        40: return
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 13
+          locals = [ class io/wispforest/accessories/api/AccessoriesCapability ]
+        frame_type = 252 /* append */
+          offset_delta = 26
+          locals = [ int ]
+      LineNumberTable:
+        line 53: 0
+        line 55: 8
+        line 57: 13
+        line 59: 27
+        line 60: 40
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      41     0  this   Lio/wispforest/accessories/mixin/InventoryMixin;
+            0      41     1 stack   Lnet/minecraft/world/item/ItemStack;
+            0      41     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            8      33     3 capability   Lio/wispforest/accessories/api/AccessoriesCapability;
+           27      14     4    bl   Z
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      41     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+    Signature: #101                         // (Lnet/minecraft/world/item/ItemStack;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+    RuntimeVisibleAnnotations:
+      0: #39(#40=[s#103],#42=[@#43(#7=s#104)],#105=Z#52)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["contains(Lnet/minecraft/world/item/ItemStack;)Z"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="TAIL"
+          )]
+          cancellable=true
+        )
+    MethodParameters:
+      Name                           Flags
+      stack
+      cir
+
+  private void extendContainsCheck(net.minecraft.tags.TagKey<net.minecraft.world.item.Item>, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+    descriptor: (Lnet/minecraft/tags/TagKey;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=5, args_size=3
+         0: aload_0
+         1: getfield      #54                 // Field player:Lnet/minecraft/world/entity/player/Player;
+         4: invokestatic  #60                 // InterfaceMethod io/wispforest/accessories/api/AccessoriesCapability.get:(Lnet/minecraft/world/entity/LivingEntity;)Lio/wispforest/accessories/api/AccessoriesCapability;
+         7: astore_3
+         8: aload_3
+         9: ifnonnull     13
+        12: return
+        13: aload_3
+        14: aload_1
+        15: invokedynamic #150,  0            // InvokeDynamic #2:test:(Lnet/minecraft/tags/TagKey;)Ljava/util/function/Predicate;
+        20: invokeinterface #122,  2          // InterfaceMethod io/wispforest/accessories/api/AccessoriesCapability.isEquipped:(Ljava/util/function/Predicate;)Z
+        25: istore        4
+        27: iload         4
+        29: ifeq          40
+        32: aload_2
+        33: iconst_1
+        34: invokestatic  #128                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        37: invokevirtual #134                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+        40: return
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 13
+          locals = [ class io/wispforest/accessories/api/AccessoriesCapability ]
+        frame_type = 252 /* append */
+          offset_delta = 26
+          locals = [ int ]
+      LineNumberTable:
+        line 64: 0
+        line 66: 8
+        line 68: 13
+        line 70: 27
+        line 71: 40
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      41     0  this   Lio/wispforest/accessories/mixin/InventoryMixin;
+            0      41     1   tag   Lnet/minecraft/tags/TagKey;
+            0      41     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            8      33     3 capability   Lio/wispforest/accessories/api/AccessoriesCapability;
+           27      14     4    bl   Z
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      41     1   tag   Lnet/minecraft/tags/TagKey<Lnet/minecraft/world/item/Item;>;
+            0      41     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+    Signature: #140                         // (Lnet/minecraft/tags/TagKey<Lnet/minecraft/world/item/Item;>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+    RuntimeVisibleAnnotations:
+      0: #39(#40=[s#142],#42=[@#43(#7=s#104)],#105=Z#52)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["contains(Lnet/minecraft/tags/TagKey;)Z"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="TAIL"
+          )]
+          cancellable=true
+        )
+    MethodParameters:
+      Name                           Flags
+      tag
+      cir
+
+  private void extendContainsCheck(java.util.function.Predicate<net.minecraft.world.item.ItemStack>, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+    descriptor: (Ljava/util/function/Predicate;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=5, args_size=3
+         0: aload_0
+         1: getfield      #54                 // Field player:Lnet/minecraft/world/entity/player/Player;
+         4: invokestatic  #60                 // InterfaceMethod io/wispforest/accessories/api/AccessoriesCapability.get:(Lnet/minecraft/world/entity/LivingEntity;)Lio/wispforest/accessories/api/AccessoriesCapability;
+         7: astore_3
+         8: aload_3
+         9: ifnonnull     13
+        12: return
+        13: aload_3
+        14: aload_1
+        15: invokeinterface #122,  2          // InterfaceMethod io/wispforest/accessories/api/AccessoriesCapability.isEquipped:(Ljava/util/function/Predicate;)Z
+        20: istore        4
+        22: iload         4
+        24: ifeq          35
+        27: aload_2
+        28: iconst_1
+        29: invokestatic  #128                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        32: invokevirtual #134                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+        35: return
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 13
+          locals = [ class io/wispforest/accessories/api/AccessoriesCapability ]
+        frame_type = 252 /* append */
+          offset_delta = 21
+          locals = [ int ]
+      LineNumberTable:
+        line 75: 0
+        line 77: 8
+        line 79: 13
+        line 81: 22
+        line 82: 35
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      36     0  this   Lio/wispforest/accessories/mixin/InventoryMixin;
+            0      36     1 predicate   Ljava/util/function/Predicate;
+            0      36     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            8      28     3 capability   Lio/wispforest/accessories/api/AccessoriesCapability;
+           22      14     4    bl   Z
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      36     1 predicate   Ljava/util/function/Predicate<Lnet/minecraft/world/item/ItemStack;>;
+            0      36     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+    Signature: #154                         // (Ljava/util/function/Predicate<Lnet/minecraft/world/item/ItemStack;>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+    RuntimeVisibleAnnotations:
+      0: #39(#40=[s#156],#42=[@#43(#7=s#104)],#105=Z#52)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["contains(Ljava/util/function/Predicate;)Z"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="TAIL"
+          )]
+          cancellable=true
+        )
+    MethodParameters:
+      Name                           Flags
+      predicate
+      cir
+
+  private java.util.Iterator<java.util.List<net.minecraft.world.item.ItemStack>> addAccessoriesToDropCall(java.util.List<java.util.List<net.minecraft.world.item.ItemStack>>, com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.util.Iterator<java.util.List<net.minecraft.world.item.ItemStack>>>);
+    descriptor: (Ljava/util/List;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Ljava/util/Iterator;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=4, args_size=3
+         0: new           #166                // class java/util/ArrayList
+         3: dup
+         4: aload_1
+         5: invokespecial #169                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+         8: astore_3
+         9: aload_3
+        10: new           #166                // class java/util/ArrayList
+        13: dup
+        14: aload_0
+        15: getfield      #54                 // Field player:Lnet/minecraft/world/entity/player/Player;
+        18: checkcast     #171                // class io/wispforest/accessories/pond/DroppedStacksExtension
+        21: invokeinterface #175,  1          // InterfaceMethod io/wispforest/accessories/pond/DroppedStacksExtension.toBeDroppedStacks:()Ljava/util/Collection;
+        26: invokespecial #169                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+        29: invokevirtual #178                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+        32: pop
+        33: aload_2
+        34: iconst_1
+        35: anewarray     #4                  // class java/lang/Object
+        38: dup
+        39: iconst_0
+        40: aload_3
+        41: aastore
+        42: invokeinterface #184,  2          // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        47: checkcast     #186                // class java/util/Iterator
+        50: areturn
+      LineNumberTable:
+        line 86: 0
+        line 88: 9
+        line 90: 33
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      51     0  this   Lio/wispforest/accessories/mixin/InventoryMixin;
+            0      51     1 instance   Ljava/util/List;
+            0      51     2 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+            9      42     3 combinedList   Ljava/util/ArrayList;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      51     1 instance   Ljava/util/List<Ljava/util/List<Lnet/minecraft/world/item/ItemStack;>;>;
+            0      51     2 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/util/Iterator<Ljava/util/List<Lnet/minecraft/world/item/ItemStack;>;>;>;
+            9      42     3 combinedList   Ljava/util/ArrayList<Ljava/util/List<Lnet/minecraft/world/item/ItemStack;>;>;
+    Signature: #159                         // (Ljava/util/List<Ljava/util/List<Lnet/minecraft/world/item/ItemStack;>;>;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/util/Iterator<Ljava/util/List<Lnet/minecraft/world/item/ItemStack;>;>;>;)Ljava/util/Iterator<Ljava/util/List<Lnet/minecraft/world/item/ItemStack;>;>;
+    RuntimeVisibleAnnotations:
+      0: #162(#40=[s#163],#42=[@#43(#7=s#44,#45=s#164)])
+        com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation(
+          method=["dropAll()V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Ljava/util/List;iterator()Ljava/util/Iterator;"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      instance
+      original
+
+  private void addAccessoriesToDropCall(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #54                 // Field player:Lnet/minecraft/world/entity/player/Player;
+         4: checkcast     #171                // class io/wispforest/accessories/pond/DroppedStacksExtension
+         7: invokestatic  #201                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+        10: invokeinterface #204,  2          // InterfaceMethod io/wispforest/accessories/pond/DroppedStacksExtension.addToBeDroppedStacks:(Ljava/util/Collection;)V
+        15: return
+      LineNumberTable:
+        line 95: 0
+        line 96: 15
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lio/wispforest/accessories/mixin/InventoryMixin;
+            0      16     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #39(#40=[s#163],#42=[@#43(#7=s#104)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["dropAll()V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="TAIL"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      ci
+
+  private static boolean lambda$extendContainsCheck$2(net.minecraft.tags.TagKey, net.minecraft.world.item.ItemStack);
+    descriptor: (Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/ItemStack;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: invokevirtual #212                // Method net/minecraft/world/item/ItemStack.isEmpty:()Z
+         4: ifne          19
+         7: aload_1
+         8: aload_0
+         9: invokevirtual #216                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/tags/TagKey;)Z
+        12: ifeq          19
+        15: iconst_1
+        16: goto          20
+        19: iconst_0
+        20: ireturn
+      StackMapTable: number_of_entries = 2
+        frame_type = 19 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+      LineNumberTable:
+        line 68: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      21     0   tag   Lnet/minecraft/tags/TagKey;
+            0      21     1 stack1   Lnet/minecraft/world/item/ItemStack;
+    MethodParameters:
+      Name                           Flags
+      tag
+      stack1
+
+  private static boolean lambda$extendContainsCheck$1(net.minecraft.world.item.ItemStack, net.minecraft.world.item.ItemStack);
+    descriptor: (Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: invokevirtual #212                // Method net/minecraft/world/item/ItemStack.isEmpty:()Z
+         4: ifeq          19
+         7: aload_1
+         8: aload_0
+         9: invokestatic  #219                // Method net/minecraft/world/item/ItemStack.isSameItemSameComponents:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z
+        12: ifeq          19
+        15: iconst_1
+        16: goto          20
+        19: iconst_0
+        20: ireturn
+      StackMapTable: number_of_entries = 2
+        frame_type = 19 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+      LineNumberTable:
+        line 57: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      21     0 stack   Lnet/minecraft/world/item/ItemStack;
+            0      21     1 stack1   Lnet/minecraft/world/item/ItemStack;
+    MethodParameters:
+      Name                           Flags
+      stack
+      stack1
+
+  private static void lambda$clearAccessories$0(com.llamalad7.mixinextras.sugar.ref.LocalIntRef, java.util.function.Predicate, int, java.lang.String, io.wispforest.accessories.api.AccessoriesContainer);
+    descriptor: (Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Ljava/util/function/Predicate;ILjava/lang/String;Lio/wispforest/accessories/api/AccessoriesContainer;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=7, locals=7, args_size=5
+         0: aload         4
+         2: invokeinterface #227,  1          // InterfaceMethod io/wispforest/accessories/api/AccessoriesContainer.getAccessories:()Lio/wispforest/accessories/impl/ExpandedSimpleContainer;
+         7: astore        5
+         9: aload_0
+        10: aload_0
+        11: invokeinterface #232,  1          // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalIntRef.get:()I
+        16: aload         5
+        18: aload_1
+        19: iload_2
+        20: aload_0
+        21: invokeinterface #232,  1          // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalIntRef.get:()I
+        26: isub
+        27: iload_2
+        28: aload_0
+        29: invokeinterface #232,  1          // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalIntRef.get:()I
+        34: isub
+        35: ifne          42
+        38: iconst_1
+        39: goto          43
+        42: iconst_0
+        43: invokestatic  #244                // Method net/minecraft/world/ContainerHelper.clearOrCountMatchingItems:(Lnet/minecraft/world/Container;Ljava/util/function/Predicate;IZ)I
+        46: iadd
+        47: invokeinterface #248,  2          // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalIntRef.set:(I)V
+        52: aload         4
+        54: invokeinterface #251,  1          // InterfaceMethod io/wispforest/accessories/api/AccessoriesContainer.getCosmeticAccessories:()Lio/wispforest/accessories/impl/ExpandedSimpleContainer;
+        59: astore        6
+        61: aload_0
+        62: aload_0
+        63: invokeinterface #232,  1          // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalIntRef.get:()I
+        68: aload         6
+        70: aload_1
+        71: iload_2
+        72: aload_0
+        73: invokeinterface #232,  1          // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalIntRef.get:()I
+        78: isub
+        79: iload_2
+        80: aload_0
+        81: invokeinterface #232,  1          // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalIntRef.get:()I
+        86: isub
+        87: ifne          94
+        90: iconst_1
+        91: goto          95
+        94: iconst_0
+        95: invokestatic  #244                // Method net/minecraft/world/ContainerHelper.clearOrCountMatchingItems:(Lnet/minecraft/world/Container;Ljava/util/function/Predicate;IZ)I
+        98: iadd
+        99: invokeinterface #248,  2          // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalIntRef.set:(I)V
+       104: return
+      StackMapTable: number_of_entries = 4
+        frame_type = 255 /* full_frame */
+          offset_delta = 42
+          locals = [ class com/llamalad7/mixinextras/sugar/ref/LocalIntRef, class java/util/function/Predicate, int, class java/lang/String, class io/wispforest/accessories/api/AccessoriesContainer, class io/wispforest/accessories/impl/ExpandedSimpleContainer ]
+          stack = [ class com/llamalad7/mixinextras/sugar/ref/LocalIntRef, int, class io/wispforest/accessories/impl/ExpandedSimpleContainer, class java/util/function/Predicate, int ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class com/llamalad7/mixinextras/sugar/ref/LocalIntRef, class java/util/function/Predicate, int, class java/lang/String, class io/wispforest/accessories/api/AccessoriesContainer, class io/wispforest/accessories/impl/ExpandedSimpleContainer ]
+          stack = [ class com/llamalad7/mixinextras/sugar/ref/LocalIntRef, int, class io/wispforest/accessories/impl/ExpandedSimpleContainer, class java/util/function/Predicate, int, int ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 50
+          locals = [ class com/llamalad7/mixinextras/sugar/ref/LocalIntRef, class java/util/function/Predicate, int, class java/lang/String, class io/wispforest/accessories/api/AccessoriesContainer, class io/wispforest/accessories/impl/ExpandedSimpleContainer, class io/wispforest/accessories/impl/ExpandedSimpleContainer ]
+          stack = [ class com/llamalad7/mixinextras/sugar/ref/LocalIntRef, int, class io/wispforest/accessories/impl/ExpandedSimpleContainer, class java/util/function/Predicate, int ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class com/llamalad7/mixinextras/sugar/ref/LocalIntRef, class java/util/function/Predicate, int, class java/lang/String, class io/wispforest/accessories/api/AccessoriesContainer, class io/wispforest/accessories/impl/ExpandedSimpleContainer, class io/wispforest/accessories/impl/ExpandedSimpleContainer ]
+          stack = [ class com/llamalad7/mixinextras/sugar/ref/LocalIntRef, int, class io/wispforest/accessories/impl/ExpandedSimpleContainer, class java/util/function/Predicate, int, int ]
+      LineNumberTable:
+        line 43: 0
+        line 44: 9
+        line 46: 52
+        line 47: 61
+        line 48: 104
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     105     0     i   Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;
+            0     105     1 stackPredicate   Ljava/util/function/Predicate;
+            0     105     2 maxCount   I
+            0     105     3     s   Ljava/lang/String;
+            0     105     4 container   Lio/wispforest/accessories/api/AccessoriesContainer;
+            9      96     5 accessories   Lio/wispforest/accessories/impl/ExpandedSimpleContainer;
+           61      44     6 cosmetics   Lio/wispforest/accessories/impl/ExpandedSimpleContainer;
+    MethodParameters:
+      Name                           Flags
+      i
+      stackPredicate
+      maxCount
+      s
+      container
+}
+InnerClasses:
+  public static final #13= #10 of #12;    // Shift=class org/spongepowered/asm/mixin/injection/At$Shift of class org/spongepowered/asm/mixin/injection/At
+  public static final #18= #15 of #17;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+SourceFile: "InventoryMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/entity/player/Inventory;]
+    )
+BootstrapMethods:
+  0: #80 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #66 (Ljava/lang/Object;Ljava/lang/Object;)V
+      #71 REF_invokeStatic io/wispforest/accessories/mixin/InventoryMixin.lambda$clearAccessories$0:(Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Ljava/util/function/Predicate;ILjava/lang/String;Lio/wispforest/accessories/api/AccessoriesContainer;)V
+      #73 (Ljava/lang/String;Lio/wispforest/accessories/api/AccessoriesContainer;)V
+  1: #80 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #107 (Ljava/lang/Object;)Z
+      #112 REF_invokeStatic io/wispforest/accessories/mixin/InventoryMixin.lambda$extendContainsCheck$1:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z
+      #114 (Lnet/minecraft/world/item/ItemStack;)Z
+  2: #80 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #107 (Ljava/lang/Object;)Z
+      #147 REF_invokeStatic io/wispforest/accessories/mixin/InventoryMixin.lambda$extendContainsCheck$2:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/ItemStack;)Z
+      #114 (Lnet/minecraft/world/item/ItemStack;)Z
