@@ -6,6 +6,30 @@
 
 ### Continuation update - 2026-09-06
 
+Current provider: Regions Unexplored, still OPEN. Delivered a5efbc8 adds fifteen
+entry/common-mixin selectors; f479e0a retains the source with an exact independent
+repeat; ac87000 binds the archive component boundary and existing graph checks.
+All are pushed and remote-verified. Source manifest SHA-256:
+cb7185024530c1b77bbf71dbf9ccefb2ba1acf505688896a1803f0a4240a4894.
+41 focused candidate/pool-link/feature-modifier/surface cases passed in 12.40s;
+scoped Ruff and Basedpyright pass after one line wrap. No runtime is running.
+
+The sole NBT template and actual pool are trial_chambers/ashen, already reached
+by the accepted minecraft:trial_chambers graph. No own structure-registry roots
+or packaged structure definitions. Do not repeat that component reconciliation.
+Remaining RU work: common-entry/mixin role disposition, custom features beyond
+the already accepted modifier subset, remaining payload/overlays and JSON5.
+The captured RULithostitched registers surface modifiers, regions and biome
+injectors; its nether rule delegates to RUSurfaceRuleBuilder.nether and biome
+injection uses BiomeTarget. These concrete generation delegates are not yet
+resolved by this provider census. Common setup calls afterRegistriesFreeze
+(block-tool/fire compatibility and RUBlocks/RUEntityTypes post-registration).
+Avoid interpreting names or method signatures alone as provider closure.
+
+Census remains 77 resolved and 59 open. Deep Aether is closed, as recorded below.
+Canonical-family count, attributes and final delivery gates remain incomplete.
+
+
 Latest checkpoint: Deep Aether provider coverage is RESOLVED in 6da0c86,
 pushed and remote-verified. The three final biome/surface delegates were
 preserved in 193bbe3. Five focused candidate/provider/totem cases pass;
