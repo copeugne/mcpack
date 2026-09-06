@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 72 of 136. The exact queue below has 64 open rows.
+Supported provider dispositions: 73 of 136. The exact queue below has 63 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -553,7 +553,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `LeavesBeGone-v21.1.1-1.21.1-NeoForge.jar` | `leavesbegone-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Leaf ticking and chunk tick persistence; no authored structure contribution. See small utility provider dispositions below. |
 | `Patchouli-1.21.1-93-NEOFORGE.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `PuzzlesLib-v21.1.52-1.21.1-NeoForge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `Quark-4.1-480.jar` | `quark-end-generators`, `quark-end-registration`, `quark-fallen-log-decor`, `quark-landmark-encounter-generators`, `quark-monster-box-behavior`, `quark-monster-box-bindings`, `quark-nether-spikes`, `quark-spire-config-annotations`, `quark-stone-clusters`, `quark-underground-base`, `quark-underground-context`, `quark-underground-fill`, `quark-underground-styles`, `quark-vegetation`, `quark-world-category` | Reuse recorded nonregistry contributions and module activation; reconcile remaining generation entries and packaged resources. |
+| `Quark-4.1-480.jar` | `quark-end-generators`, `quark-end-registration`, `quark-fallen-log-decor`, `quark-landmark-encounter-generators`, `quark-monster-box-behavior`, `quark-monster-box-bindings`, `quark-nether-spikes`, `quark-spire-config-annotations`, `quark-stone-clusters`, `quark-underground-base`, `quark-underground-context`, `quark-underground-fill`, `quark-underground-styles`, `quark-vegetation`, `quark-world-category` | RESOLVED: Existing five named nonregistry site candidates, terrain/vegetation and existing-structure replacement hooks; bundled Biolith adds biome/surface support. Full disposition below; canonical count and attributes remain open. |
 | `TerraBlender-neoforge-1.21.1-4.1.0.8.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `Terralith_1.21.1_v2.6.2_Neoforge.jar` | `terralith-provider` (b87f3bb), test_terralith_provider_scope.py | RESOLVED: 28 existing roots, terrain/vegetation and one named Frostfire ornament candidate. Overlay, disconnected and missing component dispositions below; canonical ornament grouping remains open. |
 | `YungsApi-1.21.1-NeoForge-5.1.6.jar` | Existing `pool-codecs`; `yungs-api-provider` (a796af9); test_yungs_api_provider_scope.py | RESOLVED: Shared registration, placement/pool codecs and existing-structure terrain/feature hooks. No independent family. See disposition below. |
@@ -2752,3 +2752,65 @@ wrapped before acceptance. The source r1 reproduction matches every generated
 file. Census: 72 resolved providers and 64 open. Continue with Quark's existing
 generator/module evidence and remaining provider resources; do not restart the
 completed YUNG provider work or detailed family attributes.
+
+## Quark provider disposition
+
+The frozen Quark-4.1-480.jar has SHA-256
+989c465df2e4cb9f602840c2eec143358bf11462cc19dc0b0c7c9f17449e75a5.
+The focused check accounts for all 9367 files, including 967 outer classes,
+optional packs and the exact bundled Biolith archive. Eighteen existing source
+manifests are hash-bound; all packaged world generators, top-level world modules
+and Feature implementations are represented by retained disassemblies. New
+source increments 174dba6, b9670f9 and 4e4a158 complement earlier captures without
+repeating generator or configuration interpretation.
+
+The existing candidate list remains quark:spiral_spire, quark:fairy_ring,
+quark:fallen_log, quark:monster_box and quark:nether_obsidian_spike. Preserve these
+five named site candidates for canonical reconciliation; this is not the final
+whole-stack family count. The existing underground_styles, vegetation and
+stone_generation entries are contribution dispositions, not extra families.
+No new independent candidate is identified in the remaining paths below.
+
+| Contribution path | Supported disposition |
+| --- | --- |
+| Existing generators | Reuse the existing spire, ring, log, monster-box and Nether-spike captures and decisions. Do not count repeated blocks, ring mushrooms, material variants or individual spikes as new families. Existing central-island reach and observed-world limitations remain separate from provider membership. |
+| Underground and stone generation | Existing captured underground style/base/context/fill paths replace and decorate cave surfaces with Permafrost and Corundum materials. Stone clusters and stone-type generators are terrain/resource contributions. Their materials and configuration variants are not authored site families. |
+| Six configured features, eight placed features and one biome | All configured features are Minecraft trees: five blossom colors and ancient_tree. Placed features select blossom trees, inline glow-shroom/glow-extra implementations or vanilla ore_lapis. Glimmering Weald supplies biome generation and spawn lists. These are vegetation, ore and biome inputs, not standalone structures or pools. Ancient/azalea wood and tree decorators remain vegetation. |
+| Other existing vegetation | Reuse captured chorus vegetation, water petals, fallen-log decoration and blossom-tree consumers. The log itself remains the named candidate; attached vegetation does not multiply it. |
+| Gold bars and variant chests | Register block-replacement callbacks against existing structure context. Chest material selection and fortress fence adjustments modify consuming structures, not independent layouts. Existing loot sources and container behavior remain attribute inputs. |
+| Generation hooks | ChunkGenerator supplies structure/pool context, climate hooks handle disabled biome parameters, mushroom hooks adjust replacement behavior, SpringFeature consults NoMoreLavaPockets, and WorldGenRegion repairs chunk-access behavior. These modify existing generation. Spawner replacement is disabled in the frozen configuration and its callback checks that state before touching the existing spawner. |
+| Other entry roles | The main Quark entry starts the existing CommonProxy/Zeta module path, registers pack finders and capabilities. Its event subscriber handles brewing. Other automatic entries are datagen or client animation/rendering. Remaining common/client mixins concern entity, block, inventory, redstone, trading, rendering and interaction behavior. ServerLevel's captured hook stores the magnet tracker. Lootr integration services and optional mixin adapt existing containers; they do not supply generation layouts. Lootr is not in the retained manifest. Shared Zeta interface-delegate dispatch remains its own provider responsibility. |
+| Bundled Biolith | Exact nested SHA-256 7f5c86757c61f56c7dccf602b44a2c17ba08d32d7e88cb531cbcd0c7b4789eab. Its 106 files include 95 classes, metadata, a platform service and assets; no data definitions or authored templates. The captured entry, APIs, loaders, fifteen declared mixins and plugin connect supplied biome/surface rules, world lifecycle and feature indexing. Glimmering Weald calls addOverworld. Biolith's optional biome-source integrations are compatibility paths, not independent content. |
+| Optional packs | Programmer art contains only assets and pack metadata. Optional datapacks contain pack metadata, component tags and three vanilla stone-ore configured-feature overrides. They introduce no structure definitions, pools or templates. Frozen Vanilla Stone Clusters is false; regardless of activation these three ore overrides are terrain, not family candidates. |
+
+Full payload roles: outer code comprises Quark content/integration/datagen and
+its bundled tween engine; assets are models/textures/sounds and UI resources.
+Root data comprises recipes, advancements, loot tables/modifiers, tags, damage
+and jukebox definitions plus the fifteen worldgen resources above. There are no
+NBT templates or mcfunctions anywhere in the outer archive. Biolith's loaders
+accept biome_placement.json and surface_generation.json under biolith; Quark
+packages neither input and uses the inspected API call instead. These statements
+are grounded in full payload accounting and the captured generation entry roles,
+not just keyword absence.
+
+Frozen quark-common.toml SHA-256 is
+94bfff490eea33f9bb105fae298606c4708ddb8af2f3df8630cc0f0ac7e85327.
+Reuse the earlier Zeta category/module binding and initial-refresh evidence.
+Do not reinterpret a declared hook or optional pack as observed execution.
+Biome mobs, Wraith rules, chest replacement, loot modifiers and Monster Box
+behavior remain inputs to detailed family attributes. Provider coverage does
+not prove spawning success, generated-world occurrence, frequency or final
+canonical boundaries. Earlier working-decision scope strings are historical
+checkpoints; canonical inventory regeneration remains deferred until the full
+provider queue is resolved.
+
+```sh
+uv run pytest -q tests/item8/test_quark_provider_scope.py
+uv run ruff check tests/item8/test_quark_provider_scope.py
+uv run basedpyright tests/item8/test_quark_provider_scope.py
+```
+
+The focused case and scoped quality checks pass. Initial test formatting/type
+findings were corrected before acceptance. No new runtime measurement, helper
+framework or generator capture was added for this closure. Census: 73 resolved
+providers and 63 open. Next reconcile shared Zeta using its existing captures.
