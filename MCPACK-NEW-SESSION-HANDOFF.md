@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Three IDAS optional roots are now inactive candidates: archmages_tower, dread_citadel
+and sirens_cove. The exact dependency consumer, inherited caller and NeoForge lookup
+are delivered at b9d76078/82b5f4ec; the frozen runtime log excludes Ars Nouveau and
+Ice and Fire. Adaptive enchantingtower, haunted_manor and labyrinth retain default
+pools, but their broader design notes remain open. Four affected cases and scoped
+quality checks pass. Canonical-note backlog: 121. Coverage groups: 405. Inventory
+refresh follows; no new world experiment was needed.
+
 Dependency-selection source is delivered at b9d76078. Select only its three
 remaining direct boundaries: JigsawStructure generation caller, PlatformHooks
 lookup and NeoForge PlatformHooksImpl. Existing extractor and scoped checks are
