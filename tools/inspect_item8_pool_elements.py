@@ -2124,6 +2124,10 @@ CLASSES: tuple[str, ...] = (
     "com/simibubi/create/infrastructure/worldgen/LayeredOreFeature.class",
     "com/simibubi/create/infrastructure/worldgen/ConfigPlacementFilter.class",
     "com/simibubi/create/infrastructure/gametest/CreateGameTests.class",
+    "com/simibubi/create/infrastructure/gametest/CreateTestFunction.class",
+    "com/simibubi/create/Create.class",
+    "com/simibubi/create/AllStructureProcessorTypes.class",
+    "com/simibubi/create/foundation/mixin/CreateMixinPlugin.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
