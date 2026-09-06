@@ -1,0 +1,114 @@
+from __future__ import annotations
+
+import hashlib
+import json
+import tomllib
+from pathlib import Path
+from typing import TYPE_CHECKING, cast
+from zipfile import ZipFile
+
+import pytest
+
+from mcpack_evidence.item8_sources import retained_sources
+
+if TYPE_CHECKING:
+    from pydantic import JsonValue
+
+
+@pytest.mark.parametrize(("name", "count", "manifest", "other_files", "entry_classes"), [
+    ("ai-improvements", 20,
+     "15b2c2a5826ddbfea4b8befab50ba609ac1ec17de1540a169fac968c08b06bbd",
+     {"META-INF/accesstransformer.cfg", "pack.mcmeta"},
+     {"com/builtbroken/ai/improvements/AIImprovements.class"}),
+    ("attributefix", 5,
+     "6b5f5497616109f88376d894557a498edcf9b97bccb58e8e639702dca1d9206b",
+     {"attributefix.neoforge.mixins.json", "attributefix.mixins.json",
+      "logo_attributefix.png", "pack.mcmeta", "license_attributefix.txt"},
+     {"net/darkhax/attributefix/impl/NeoForgeMod.class"}),
+    ("leavesbegone", 12,
+     "19cc43de2ea86c8bc0f3f6212f49903de293517fe1d78ddef0c805e3f0584af4",
+     {"CHANGELOG.md", "LICENSE-ASSETS.md", "LICENSE.md", "META-INF/accesstransformer.cfg",
+      "leavesbegone.common.mixins.json", "leavesbegone.common.refmap.json",
+      "leavesbegone.neoforge.mixins.json", "mod_banner.png", "mod_logo.png", "pack.mcmeta"},
+     {"fuzs/leavesbegone/neoforge/LeavesBeGoneNeoForge.class",
+      "fuzs/leavesbegone/neoforge/client/LeavesBeGoneNeoForgeClient.class"}),
+    ("letmedespawn", 6,
+     "57020da079e8b92682e1bf9e6b7328b281a034c4c543966bd8c2e126d96a90bc",
+     {"META-INF/accesstransformer.cfg", "architectury.common.json",
+      "letmedespawn-1.21.x-common-common-refmap.json", "letmedespawn.accesswidener",
+      "letmedespawn.mixins.json", "lmd.png"},
+     {"com/frikinjay/letmedespawn/neoforge/LetMeDespawnNeoForge.class"}),
+    ("sparsestructures", 14,
+     "33d153974364c484e57da384dc44729b0d61cb3628dc529f4020f62e97337c54",
+     {"sparsestructures.mixins.json", "sparse-structures-default-config.json5",
+      "META-INF/services/io.github.maxencedc.sparsestructures.platform.services.IPlatformHelper",
+      "sparsestructures.png", "pack.mcmeta", "sparsestructures.neoforge.mixins.json",
+      "LICENSE_SparseStructures"},
+     {"io/github/maxencedc/sparsestructures/SparseStructuresNeoForge.class"}),
+    ("structure-pool-api", 12,
+     "0c401d9a9c6234c9dceb36d6d5e108c1eb0daf90c7d6dc0c4fa8fbddc6837538",
+     {"META-INF/accesstransformer.cfg", "icon.png", "structure_pool.mixins.json",
+      "structure_pool_api-common-common-refmap.json"},
+     {"net/fabric_extras/structure_pool/neoforge/NeoForgeMod.class"}),
+])
+def test_complete_small_utility_payload_and_entry_binding(
+    name: str, count: int, manifest: str, other_files: set[str], entry_classes: set[str],
+) -> None:
+    directory = Path(f"evidence/item-8/sources/{name}-provider")
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == manifest
+    identities = cast("list[dict[str, str]]", json.loads(raw))
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == identities[0]["archive"])
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    assert len(identities) == count
+    with ZipFile(source.path) as archive:
+        names = archive.namelist()
+        assert len(names) == len(set(names))
+        classes = {r["class"] for r in identities}
+        assert len(classes) == count
+        assert {n for n in names if not n.endswith("/")} == classes | other_files | {
+            "META-INF/MANIFEST.MF", "META-INF/neoforge.mods.toml",
+        }
+        # Full explicit accounting excludes nested archives, data packs, templates,
+        # extra entry metadata and generation resources. Code roles are inspected
+        # in sources/small-utility-providers.md, not inferred from search absence.
+        for row in identities:
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+            assert hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest() == (
+                row["disassembly_sha256"]
+            )
+        assert {c for c in classes if b"Lnet/neoforged/fml/common/Mod;" in archive.read(c)} == (
+            entry_classes
+        )
+        subscribers = {
+            c for c in classes
+            if b"Lnet/neoforged/fml/common/EventBusSubscriber;" in archive.read(c)
+        }
+        expected: set[str] = entry_classes if name == "attributefix" else set()
+        if name == "ai-improvements":
+            expected = entry_classes | {
+                "com/builtbroken/ai/improvements/modifier/ModifierSystem.class",
+            }
+        assert subscribers == expected
+        metadata = tomllib.loads(archive.read("META-INF/neoforge.mods.toml").decode())
+        assert metadata["modLoader"] == "javafml"
+        declarations = cast("list[dict[str, str]]", metadata.get("mixins", []))
+        assert {r["config"] for r in declarations} == {
+            n for n in other_files if n.endswith(".mixins.json")
+        }
+        for row in declarations:
+            mixin = cast("dict[str, JsonValue]", json.loads(archive.read(row["config"])))
+            assert "plugin" not in mixin
+            for side in ("mixins", "client", "server"):
+                for member in cast("list[str]", mixin.get(side, [])):
+                    path = f"{mixin['package']}.{member}".replace(".", "/") + ".class"
+                    assert path in classes
+        if name == "sparsestructures":
+            service = (
+                "META-INF/services/"
+                "io.github.maxencedc.sparsestructures.platform.services.IPlatformHelper"
+            )
+            implementation = archive.read(service).decode().strip().replace(".", "/") + ".class"
+            assert implementation in classes

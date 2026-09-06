@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Six small utility providers now have supported dispositions: AI Improvements,
+AttributeFix, Leaves Be Gone, Let Me Despawn, Sparse Structures and Structure
+Pool API. Selector 39ef785 and complete 69-class capture 69119c6 are delivered;
+all six captures reproduced byte for byte. The six-case full-payload test passes
+with scoped checks. No independent families added. Sparse Structures and the
+pool API retain explicit modifying roles; entity/leaf effects remain attributable
+later. Counts: 40 resolved providers, 96 open. Continue candidate completeness
+before detailed attributes, reusing captures and existing consumer relationships.
+
+
 CTOV provider coverage now passes: complete payload, 78 existing roots, 181 pools
 and 2,093 current-path templates accounted for. Outside its root graphs, 1,005
 templates have condition-failing compatibility references and 128 are disconnected
