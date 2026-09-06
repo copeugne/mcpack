@@ -7803,3 +7803,23 @@ Whole-provider closure still requires accounting for the remaining hooks,
 startup delegates and bundled-library entry roles. Preserve the existing
 threading disposition and stop tracing already resolved paths. Counts remain
 121 providers resolved, 15 open, with 100 provisional Moog grouping decisions.
+
+C2ME continuation in 914afefd resolves the eight remaining configuration and
+view-distance startup delegates. They read settings, send render-distance
+values and set a render-distance override. They add no independent family.
+9afeb260 retains every common hook declared by the allocation, density-function
+compilation, math and native-math modules (27 classes). These hooks reuse
+existing ore/surface/noise inputs and modify allocation, evaluation, caching
+or sampling. Preserve optional activation and numerical-equivalence limits;
+this is not a performance or compiler correctness audit. All captures reproduce
+exactly with their committed extractor. Extractor quality checks pass.
+
+Next C2ME boundaries are base accessors/lifecycle hooks, client view distance,
+general-threading and chunk-status fixes, no-tick view distance, chunk-I/O and
+scheduling, chunk serialization/system/I-O rewrites, server commands and
+lighting. Reuse all resolved generation and startup roles. In particular, do
+not inspect density AST internals, random algorithms, numeric equivalence or
+configuration parsers merely because the provider index references them.
+The scheduling mixin declaration contains a null entry; retain it as packaged,
+with no invented class target. It is not a family candidate. Bundled-library
+entry roles remain to reconcile. Whole providers remain 121 resolved, 15 open.

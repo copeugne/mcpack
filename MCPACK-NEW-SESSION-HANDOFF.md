@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-06
 
+C2ME startup delegates are resolved in 914afefd: eight configuration/listener
+classes read settings and update view distance, with no family. 9afeb260 adds
+all 27 declared common hooks from opts-allocs, opts-dfc, opts-math and
+opts-natives-math. Their roles are existing ore/surface/noise allocation and
+computation. Every capture reproduces exactly; extractor quality checks pass.
+Do not expand into numerical, compiler, native-binding or network audits.
+Remaining declared hook groups: base (including accessors), client-uncapvd,
+fixes-general-threading-issues, fixes-worldgen-vanilla-bugs, notickvd,
+opts-chunkio, opts-scheduling, rewrites-chunk-serializer, rewrites-chunk-system,
+rewrites-chunkio, server-utils and threading-lighting. Also reconcile bundled
+library entry roles. The scheduling declaration contains a null list entry;
+preserve it without inventing a target class. Reuse all existing C2ME captures.
+Whole providers: 121 resolved, 15 open. Working groups: 410; explicitly
+provisional Moog decisions: 100. Family membership still comes before
+attributes. Final Item 8 gate, clean review and main delivery remain open.
+
+
 C2ME continued in 5a44fce9 (26 entries/plugins across the other 18 modules),
 7658d2f6 (ten pool/generation hooks) and cb594f9b (existing pool codec wrapper).
 All captures reproduce exactly; extractor quality checks pass. These establish
