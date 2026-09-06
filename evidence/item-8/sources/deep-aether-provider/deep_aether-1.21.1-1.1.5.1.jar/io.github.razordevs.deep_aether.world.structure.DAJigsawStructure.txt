@@ -1,0 +1,996 @@
+Classfile deep_aether-1.21.1-1.1.5.1.jar!/io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.class
+  Last modified Mar 30, 2026; size 13177 bytes
+  SHA-256 checksum 140980a2e3d12649bbe8261f95fe7c69d46366bbdf58910b30169a688ec3f520
+  Compiled from "DAJigsawStructure.java"
+public class io.github.razordevs.deep_aether.world.structure.DAJigsawStructure extends net.minecraft.world.level.levelgen.structure.Structure
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure
+  super_class: #2                         // net/minecraft/world/level/levelgen/structure/Structure
+  interfaces: 0, fields: 12, methods: 16, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // net/minecraft/world/level/levelgen/structure/Structure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+    #2 = Class              #4            // net/minecraft/world/level/levelgen/structure/Structure
+    #3 = NameAndType        #5:#6         // "<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+    #4 = Utf8               net/minecraft/world/level/levelgen/structure/Structure
+    #5 = Utf8               <init>
+    #6 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+    #7 = Fieldref           #8.#9         // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.startPool:Lnet/minecraft/core/Holder;
+    #8 = Class              #10           // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure
+    #9 = NameAndType        #11:#12       // startPool:Lnet/minecraft/core/Holder;
+   #10 = Utf8               io/github/razordevs/deep_aether/world/structure/DAJigsawStructure
+   #11 = Utf8               startPool
+   #12 = Utf8               Lnet/minecraft/core/Holder;
+   #13 = Fieldref           #8.#14        // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.startJigsawName:Ljava/util/Optional;
+   #14 = NameAndType        #15:#16       // startJigsawName:Ljava/util/Optional;
+   #15 = Utf8               startJigsawName
+   #16 = Utf8               Ljava/util/Optional;
+   #17 = Fieldref           #8.#18        // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.size:I
+   #18 = NameAndType        #19:#20       // size:I
+   #19 = Utf8               size
+   #20 = Utf8               I
+   #21 = Fieldref           #8.#22        // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.startHeight:Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+   #22 = NameAndType        #23:#24       // startHeight:Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+   #23 = Utf8               startHeight
+   #24 = Utf8               Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+   #25 = Fieldref           #8.#26        // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.projectStartToHeightmap:Ljava/util/Optional;
+   #26 = NameAndType        #27:#16       // projectStartToHeightmap:Ljava/util/Optional;
+   #27 = Utf8               projectStartToHeightmap
+   #28 = Fieldref           #8.#29        // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.maxDistanceFromCenter:I
+   #29 = NameAndType        #30:#20       // maxDistanceFromCenter:I
+   #30 = Utf8               maxDistanceFromCenter
+   #31 = Fieldref           #8.#32        // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.discardBelowY:I
+   #32 = NameAndType        #33:#20       // discardBelowY:I
+   #33 = Utf8               discardBelowY
+   #34 = Fieldref           #8.#35        // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.discardAboveY:I
+   #35 = NameAndType        #36:#20       // discardAboveY:I
+   #36 = Utf8               discardAboveY
+   #37 = Fieldref           #8.#38        // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.poolAliases:Ljava/util/List;
+   #38 = NameAndType        #39:#40       // poolAliases:Ljava/util/List;
+   #39 = Utf8               poolAliases
+   #40 = Utf8               Ljava/util/List;
+   #41 = Fieldref           #8.#42        // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.dimensionPadding:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+   #42 = NameAndType        #43:#44       // dimensionPadding:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+   #43 = Utf8               dimensionPadding
+   #44 = Utf8               Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+   #45 = Fieldref           #8.#46        // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.liquidSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+   #46 = NameAndType        #47:#48       // liquidSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+   #47 = Utf8               liquidSettings
+   #48 = Utf8               Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+   #49 = Class              #50           // io/github/razordevs/deep_aether/world/structure/HeightSpawningChecks
+   #50 = Utf8               io/github/razordevs/deep_aether/world/structure/HeightSpawningChecks
+   #51 = Methodref          #49.#52       // io/github/razordevs/deep_aether/world/structure/HeightSpawningChecks."<init>":()V
+   #52 = NameAndType        #5:#53        // "<init>":()V
+   #53 = Utf8               ()V
+   #54 = Methodref          #49.#55       // io/github/razordevs/deep_aether/world/structure/HeightSpawningChecks.checkHeight:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;II)Z
+   #55 = NameAndType        #56:#57       // checkHeight:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;II)Z
+   #56 = Utf8               checkHeight
+   #57 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;II)Z
+   #58 = Methodref          #59.#60       // java/util/Optional.empty:()Ljava/util/Optional;
+   #59 = Class              #61           // java/util/Optional
+   #60 = NameAndType        #62:#63       // empty:()Ljava/util/Optional;
+   #61 = Utf8               java/util/Optional
+   #62 = Utf8               empty
+   #63 = Utf8               ()Ljava/util/Optional;
+   #64 = Methodref          #65.#66       // net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+   #65 = Class              #67           // net/minecraft/world/level/levelgen/structure/Structure$GenerationContext
+   #66 = NameAndType        #68:#69       // random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+   #67 = Utf8               net/minecraft/world/level/levelgen/structure/Structure$GenerationContext
+   #68 = Utf8               random
+   #69 = Utf8               ()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+   #70 = Class              #71           // net/minecraft/world/level/levelgen/WorldGenerationContext
+   #71 = Utf8               net/minecraft/world/level/levelgen/WorldGenerationContext
+   #72 = Methodref          #65.#73       // net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+   #73 = NameAndType        #74:#75       // chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+   #74 = Utf8               chunkGenerator
+   #75 = Utf8               ()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+   #76 = Methodref          #65.#77       // net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+   #77 = NameAndType        #78:#79       // heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+   #78 = Utf8               heightAccessor
+   #79 = Utf8               ()Lnet/minecraft/world/level/LevelHeightAccessor;
+   #80 = Methodref          #70.#81       // net/minecraft/world/level/levelgen/WorldGenerationContext."<init>":(Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/LevelHeightAccessor;)V
+   #81 = NameAndType        #5:#82        // "<init>":(Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/LevelHeightAccessor;)V
+   #82 = Utf8               (Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/LevelHeightAccessor;)V
+   #83 = Methodref          #84.#85       // net/minecraft/world/level/levelgen/heightproviders/HeightProvider.sample:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/WorldGenerationContext;)I
+   #84 = Class              #86           // net/minecraft/world/level/levelgen/heightproviders/HeightProvider
+   #85 = NameAndType        #87:#88       // sample:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/WorldGenerationContext;)I
+   #86 = Utf8               net/minecraft/world/level/levelgen/heightproviders/HeightProvider
+   #87 = Utf8               sample
+   #88 = Utf8               (Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/WorldGenerationContext;)I
+   #89 = Methodref          #65.#90       // net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+   #90 = NameAndType        #91:#92       // chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+   #91 = Utf8               chunkPos
+   #92 = Utf8               ()Lnet/minecraft/world/level/ChunkPos;
+   #93 = Class              #94           // net/minecraft/core/BlockPos
+   #94 = Utf8               net/minecraft/core/BlockPos
+   #95 = Methodref          #96.#97       // net/minecraft/world/level/ChunkPos.getMiddleBlockX:()I
+   #96 = Class              #98           // net/minecraft/world/level/ChunkPos
+   #97 = NameAndType        #99:#100      // getMiddleBlockX:()I
+   #98 = Utf8               net/minecraft/world/level/ChunkPos
+   #99 = Utf8               getMiddleBlockX
+  #100 = Utf8               ()I
+  #101 = Methodref          #96.#102      // net/minecraft/world/level/ChunkPos.getMiddleBlockZ:()I
+  #102 = NameAndType        #103:#100     // getMiddleBlockZ:()I
+  #103 = Utf8               getMiddleBlockZ
+  #104 = Methodref          #93.#105      // net/minecraft/core/BlockPos."<init>":(III)V
+  #105 = NameAndType        #5:#106       // "<init>":(III)V
+  #106 = Utf8               (III)V
+  #107 = Methodref          #65.#108      // net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.seed:()J
+  #108 = NameAndType        #109:#110     // seed:()J
+  #109 = Utf8               seed
+  #110 = Utf8               ()J
+  #111 = InterfaceMethodref #112.#113     // net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup.create:(Ljava/util/List;Lnet/minecraft/core/BlockPos;J)Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;
+  #112 = Class              #114          // net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup
+  #113 = NameAndType        #115:#116     // create:(Ljava/util/List;Lnet/minecraft/core/BlockPos;J)Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;
+  #114 = Utf8               net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup
+  #115 = Utf8               create
+  #116 = Utf8               (Ljava/util/List;Lnet/minecraft/core/BlockPos;J)Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;
+  #117 = Methodref          #118.#119     // net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement.addPieces:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/core/Holder;Ljava/util/Optional;ILnet/minecraft/core/BlockPos;ZLjava/util/Optional;ILnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)Ljava/util/Optional;
+  #118 = Class              #120          // net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement
+  #119 = NameAndType        #121:#122     // addPieces:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/core/Holder;Ljava/util/Optional;ILnet/minecraft/core/BlockPos;ZLjava/util/Optional;ILnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)Ljava/util/Optional;
+  #120 = Utf8               net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement
+  #121 = Utf8               addPieces
+  #122 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/core/Holder;Ljava/util/Optional;ILnet/minecraft/core/BlockPos;ZLjava/util/Optional;ILnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)Ljava/util/Optional;
+  #123 = Fieldref           #124.#125     // io/github/razordevs/deep_aether/world/structure/DAStructureTypes.DA_JIGSAW:Lnet/neoforged/neoforge/registries/DeferredHolder;
+  #124 = Class              #126          // io/github/razordevs/deep_aether/world/structure/DAStructureTypes
+  #125 = NameAndType        #127:#128     // DA_JIGSAW:Lnet/neoforged/neoforge/registries/DeferredHolder;
+  #126 = Utf8               io/github/razordevs/deep_aether/world/structure/DAStructureTypes
+  #127 = Utf8               DA_JIGSAW
+  #128 = Utf8               Lnet/neoforged/neoforge/registries/DeferredHolder;
+  #129 = Methodref          #130.#131     // net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+  #130 = Class              #132          // net/neoforged/neoforge/registries/DeferredHolder
+  #131 = NameAndType        #133:#134     // get:()Ljava/lang/Object;
+  #132 = Utf8               net/neoforged/neoforge/registries/DeferredHolder
+  #133 = Utf8               get
+  #134 = Utf8               ()Ljava/lang/Object;
+  #135 = Class              #136          // net/minecraft/world/level/levelgen/structure/StructureType
+  #136 = Utf8               net/minecraft/world/level/levelgen/structure/StructureType
+  #137 = Methodref          #8.#138       // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.settingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+  #138 = NameAndType        #139:#140     // settingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+  #139 = Utf8               settingsCodec
+  #140 = Utf8               (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+  #141 = Fieldref           #142.#143     // net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool.CODEC:Lcom/mojang/serialization/Codec;
+  #142 = Class              #144          // net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool
+  #143 = NameAndType        #145:#146     // CODEC:Lcom/mojang/serialization/Codec;
+  #144 = Utf8               net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool
+  #145 = Utf8               CODEC
+  #146 = Utf8               Lcom/mojang/serialization/Codec;
+  #147 = String             #148          // start_pool
+  #148 = Utf8               start_pool
+  #149 = InterfaceMethodref #150.#151     // com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+  #150 = Class              #152          // com/mojang/serialization/Codec
+  #151 = NameAndType        #153:#154     // fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+  #152 = Utf8               com/mojang/serialization/Codec
+  #153 = Utf8               fieldOf
+  #154 = Utf8               (Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+  #155 = InvokeDynamic      #0:#156       // #0:apply:()Ljava/util/function/Function;
+  #156 = NameAndType        #157:#158     // apply:()Ljava/util/function/Function;
+  #157 = Utf8               apply
+  #158 = Utf8               ()Ljava/util/function/Function;
+  #159 = Methodref          #160.#161     // com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+  #160 = Class              #162          // com/mojang/serialization/MapCodec
+  #161 = NameAndType        #163:#164     // forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+  #162 = Utf8               com/mojang/serialization/MapCodec
+  #163 = Utf8               forGetter
+  #164 = Utf8               (Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+  #165 = Fieldref           #166.#143     // net/minecraft/resources/ResourceLocation.CODEC:Lcom/mojang/serialization/Codec;
+  #166 = Class              #167          // net/minecraft/resources/ResourceLocation
+  #167 = Utf8               net/minecraft/resources/ResourceLocation
+  #168 = String             #169          // start_jigsaw_name
+  #169 = Utf8               start_jigsaw_name
+  #170 = InterfaceMethodref #150.#171     // com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+  #171 = NameAndType        #172:#154     // optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+  #172 = Utf8               optionalFieldOf
+  #173 = InvokeDynamic      #1:#156       // #1:apply:()Ljava/util/function/Function;
+  #174 = InterfaceMethodref #150.#175     // com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+  #175 = NameAndType        #176:#177     // intRange:(II)Lcom/mojang/serialization/Codec;
+  #176 = Utf8               intRange
+  #177 = Utf8               (II)Lcom/mojang/serialization/Codec;
+  #178 = String             #19           // size
+  #179 = InvokeDynamic      #2:#156       // #2:apply:()Ljava/util/function/Function;
+  #180 = Fieldref           #84.#143      // net/minecraft/world/level/levelgen/heightproviders/HeightProvider.CODEC:Lcom/mojang/serialization/Codec;
+  #181 = String             #182          // start_height
+  #182 = Utf8               start_height
+  #183 = InvokeDynamic      #3:#156       // #3:apply:()Ljava/util/function/Function;
+  #184 = Fieldref           #185.#143     // net/minecraft/world/level/levelgen/Heightmap$Types.CODEC:Lcom/mojang/serialization/Codec;
+  #185 = Class              #186          // net/minecraft/world/level/levelgen/Heightmap$Types
+  #186 = Utf8               net/minecraft/world/level/levelgen/Heightmap$Types
+  #187 = String             #188          // project_start_to_heightmap
+  #188 = Utf8               project_start_to_heightmap
+  #189 = InvokeDynamic      #4:#156       // #4:apply:()Ljava/util/function/Function;
+  #190 = String             #191          // max_distance_from_center
+  #191 = Utf8               max_distance_from_center
+  #192 = InvokeDynamic      #5:#156       // #5:apply:()Ljava/util/function/Function;
+  #193 = String             #194          // discard_below_y
+  #194 = Utf8               discard_below_y
+  #195 = InvokeDynamic      #6:#156       // #6:apply:()Ljava/util/function/Function;
+  #196 = String             #197          // discard_above_y
+  #197 = Utf8               discard_above_y
+  #198 = InvokeDynamic      #7:#156       // #7:apply:()Ljava/util/function/Function;
+  #199 = Fieldref           #200.#143     // net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasBinding.CODEC:Lcom/mojang/serialization/Codec;
+  #200 = Class              #201          // net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasBinding
+  #201 = Utf8               net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasBinding
+  #202 = InterfaceMethodref #150.#203     // com/mojang/serialization/Codec.list:(Lcom/mojang/serialization/Codec;)Lcom/mojang/serialization/Codec;
+  #203 = NameAndType        #204:#205     // list:(Lcom/mojang/serialization/Codec;)Lcom/mojang/serialization/Codec;
+  #204 = Utf8               list
+  #205 = Utf8               (Lcom/mojang/serialization/Codec;)Lcom/mojang/serialization/Codec;
+  #206 = String             #207          // pool_aliases
+  #207 = Utf8               pool_aliases
+  #208 = InterfaceMethodref #209.#210     // java/util/List.of:()Ljava/util/List;
+  #209 = Class              #211          // java/util/List
+  #210 = NameAndType        #212:#213     // of:()Ljava/util/List;
+  #211 = Utf8               java/util/List
+  #212 = Utf8               of
+  #213 = Utf8               ()Ljava/util/List;
+  #214 = InterfaceMethodref #150.#215     // com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+  #215 = NameAndType        #172:#216     // optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+  #216 = Utf8               (Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+  #217 = InvokeDynamic      #8:#156       // #8:apply:()Ljava/util/function/Function;
+  #218 = Fieldref           #219.#143     // net/minecraft/world/level/levelgen/structure/pools/DimensionPadding.CODEC:Lcom/mojang/serialization/Codec;
+  #219 = Class              #220          // net/minecraft/world/level/levelgen/structure/pools/DimensionPadding
+  #220 = Utf8               net/minecraft/world/level/levelgen/structure/pools/DimensionPadding
+  #221 = String             #222          // dimension_padding
+  #222 = Utf8               dimension_padding
+  #223 = Fieldref           #219.#224     // net/minecraft/world/level/levelgen/structure/pools/DimensionPadding.ZERO:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+  #224 = NameAndType        #225:#44      // ZERO:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+  #225 = Utf8               ZERO
+  #226 = InvokeDynamic      #9:#156       // #9:apply:()Ljava/util/function/Function;
+  #227 = Fieldref           #228.#143     // net/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings.CODEC:Lcom/mojang/serialization/Codec;
+  #228 = Class              #229          // net/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings
+  #229 = Utf8               net/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings
+  #230 = String             #231          // liquid_settings
+  #231 = Utf8               liquid_settings
+  #232 = Fieldref           #233.#234     // net/minecraft/world/level/levelgen/structure/structures/JigsawStructure.DEFAULT_LIQUID_SETTINGS:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+  #233 = Class              #235          // net/minecraft/world/level/levelgen/structure/structures/JigsawStructure
+  #234 = NameAndType        #236:#48      // DEFAULT_LIQUID_SETTINGS:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+  #235 = Utf8               net/minecraft/world/level/levelgen/structure/structures/JigsawStructure
+  #236 = Utf8               DEFAULT_LIQUID_SETTINGS
+  #237 = InvokeDynamic      #10:#156      // #10:apply:()Ljava/util/function/Function;
+  #238 = Methodref          #239.#240     // com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P12;
+  #239 = Class              #241          // com/mojang/serialization/codecs/RecordCodecBuilder$Instance
+  #240 = NameAndType        #242:#243     // group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P12;
+  #241 = Utf8               com/mojang/serialization/codecs/RecordCodecBuilder$Instance
+  #242 = Utf8               group
+  #243 = Utf8               (Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P12;
+  #244 = InvokeDynamic      #11:#245      // #11:apply:()Lcom/mojang/datafixers/util/Function12;
+  #245 = NameAndType        #157:#246     // apply:()Lcom/mojang/datafixers/util/Function12;
+  #246 = Utf8               ()Lcom/mojang/datafixers/util/Function12;
+  #247 = Methodref          #248.#249     // com/mojang/datafixers/Products$P12.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function12;)Lcom/mojang/datafixers/kinds/App;
+  #248 = Class              #250          // com/mojang/datafixers/Products$P12
+  #249 = NameAndType        #157:#251     // apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function12;)Lcom/mojang/datafixers/kinds/App;
+  #250 = Utf8               com/mojang/datafixers/Products$P12
+  #251 = Utf8               (Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function12;)Lcom/mojang/datafixers/kinds/App;
+  #252 = Methodref          #253.#254     // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+  #253 = Class              #255          // java/lang/Integer
+  #254 = NameAndType        #256:#257     // valueOf:(I)Ljava/lang/Integer;
+  #255 = Utf8               java/lang/Integer
+  #256 = Utf8               valueOf
+  #257 = Utf8               (I)Ljava/lang/Integer;
+  #258 = InvokeDynamic      #12:#156      // #12:apply:()Ljava/util/function/Function;
+  #259 = Methodref          #260.#261     // com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+  #260 = Class              #262          // com/mojang/serialization/codecs/RecordCodecBuilder
+  #261 = NameAndType        #263:#264     // mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+  #262 = Utf8               com/mojang/serialization/codecs/RecordCodecBuilder
+  #263 = Utf8               mapCodec
+  #264 = Utf8               (Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+  #265 = Fieldref           #8.#266       // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.CODEC:Lcom/mojang/serialization/MapCodec;
+  #266 = NameAndType        #145:#267     // CODEC:Lcom/mojang/serialization/MapCodec;
+  #267 = Utf8               Lcom/mojang/serialization/MapCodec;
+  #268 = Utf8               Signature
+  #269 = Utf8               Lcom/mojang/serialization/MapCodec<Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;>;
+  #270 = Utf8               Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;
+  #271 = Utf8               Ljava/util/Optional<Lnet/minecraft/resources/ResourceLocation;>;
+  #272 = Utf8               Ljava/util/Optional<Lnet/minecraft/world/level/levelgen/Heightmap$Types;>;
+  #273 = Utf8               Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasBinding;>;
+  #274 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;Lnet/minecraft/core/Holder;Ljava/util/Optional;ILnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;Ljava/util/Optional;IIILjava/util/List;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V
+  #275 = Utf8               Code
+  #276 = Utf8               LineNumberTable
+  #277 = Utf8               LocalVariableTable
+  #278 = Utf8               this
+  #279 = Utf8               Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+  #280 = Utf8               config
+  #281 = Utf8               Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;
+  #282 = Utf8               LocalVariableTypeTable
+  #283 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;Ljava/util/Optional<Lnet/minecraft/resources/ResourceLocation;>;ILnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;Ljava/util/Optional<Lnet/minecraft/world/level/levelgen/Heightmap$Types;>;IIILjava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasBinding;>;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V
+  #284 = Utf8               findGenerationPoint
+  #285 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Ljava/util/Optional;
+  #286 = Utf8               context
+  #287 = Utf8               Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;
+  #288 = Utf8               startY
+  #289 = Utf8               Lnet/minecraft/world/level/ChunkPos;
+  #290 = Utf8               pos
+  #291 = Utf8               Lnet/minecraft/core/BlockPos;
+  #292 = Utf8               StackMapTable
+  #293 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Ljava/util/Optional<Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationStub;>;
+  #294 = Utf8               type
+  #295 = Utf8               ()Lnet/minecraft/world/level/levelgen/structure/StructureType;
+  #296 = Utf8               ()Lnet/minecraft/world/level/levelgen/structure/StructureType<*>;
+  #297 = Utf8               lambda$static$11
+  #298 = Utf8               (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+  #299 = Utf8               instance
+  #300 = Utf8               Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;
+  #301 = Utf8               lambda$static$10
+  #302 = Utf8               (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+  #303 = Utf8               structure
+  #304 = Utf8               lambda$static$9
+  #305 = Utf8               (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+  #306 = Utf8               lambda$static$8
+  #307 = Utf8               (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/List;
+  #308 = Utf8               lambda$static$7
+  #309 = Utf8               (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  #310 = Utf8               lambda$static$6
+  #311 = Utf8               lambda$static$5
+  #312 = Utf8               lambda$static$4
+  #313 = Utf8               (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/Optional;
+  #314 = Utf8               lambda$static$3
+  #315 = Utf8               (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+  #316 = Utf8               lambda$static$2
+  #317 = Utf8               lambda$static$1
+  #318 = Utf8               lambda$static$0
+  #319 = Utf8               (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/core/Holder;
+  #320 = Utf8               <clinit>
+  #321 = Utf8               SourceFile
+  #322 = Utf8               DAJigsawStructure.java
+  #323 = Utf8               BootstrapMethods
+  #324 = MethodType         #325          //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #325 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #326 = MethodHandle       6:#327        // REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$0:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/core/Holder;
+  #327 = Methodref          #8.#328       // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$0:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/core/Holder;
+  #328 = NameAndType        #318:#319     // lambda$static$0:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/core/Holder;
+  #329 = MethodType         #319          //  (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/core/Holder;
+  #330 = MethodHandle       6:#331        // REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$1:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/Optional;
+  #331 = Methodref          #8.#332       // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$1:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/Optional;
+  #332 = NameAndType        #317:#313     // lambda$static$1:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/Optional;
+  #333 = MethodType         #313          //  (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/Optional;
+  #334 = MethodHandle       6:#335        // REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$2:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  #335 = Methodref          #8.#336       // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$2:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  #336 = NameAndType        #316:#309     // lambda$static$2:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  #337 = MethodType         #309          //  (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  #338 = MethodHandle       6:#339        // REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$3:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+  #339 = Methodref          #8.#340       // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$3:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+  #340 = NameAndType        #314:#315     // lambda$static$3:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+  #341 = MethodType         #315          //  (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+  #342 = MethodHandle       6:#343        // REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$4:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/Optional;
+  #343 = Methodref          #8.#344       // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$4:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/Optional;
+  #344 = NameAndType        #312:#313     // lambda$static$4:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/Optional;
+  #345 = MethodHandle       6:#346        // REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$5:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  #346 = Methodref          #8.#347       // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$5:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  #347 = NameAndType        #311:#309     // lambda$static$5:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  #348 = MethodHandle       6:#349        // REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$6:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  #349 = Methodref          #8.#350       // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$6:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  #350 = NameAndType        #310:#309     // lambda$static$6:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  #351 = MethodHandle       6:#352        // REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$7:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  #352 = Methodref          #8.#353       // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$7:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  #353 = NameAndType        #308:#309     // lambda$static$7:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  #354 = MethodHandle       6:#355        // REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$8:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/List;
+  #355 = Methodref          #8.#356       // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$8:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/List;
+  #356 = NameAndType        #306:#307     // lambda$static$8:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/List;
+  #357 = MethodType         #307          //  (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/List;
+  #358 = MethodHandle       6:#359        // REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$9:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+  #359 = Methodref          #8.#360       // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$9:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+  #360 = NameAndType        #304:#305     // lambda$static$9:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+  #361 = MethodType         #305          //  (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+  #362 = MethodHandle       6:#363        // REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$10:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+  #363 = Methodref          #8.#364       // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$10:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+  #364 = NameAndType        #301:#302     // lambda$static$10:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+  #365 = MethodType         #302          //  (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+  #366 = MethodType         #367          //  (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #367 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #368 = MethodHandle       8:#369        // REF_newInvokeSpecial io/github/razordevs/deep_aether/world/structure/DAJigsawStructure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;Lnet/minecraft/core/Holder;Ljava/util/Optional;ILnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;Ljava/util/Optional;IIILjava/util/List;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V
+  #369 = Methodref          #8.#370       // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;Lnet/minecraft/core/Holder;Ljava/util/Optional;ILnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;Ljava/util/Optional;IIILjava/util/List;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V
+  #370 = NameAndType        #5:#274       // "<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;Lnet/minecraft/core/Holder;Ljava/util/Optional;ILnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;Ljava/util/Optional;IIILjava/util/List;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V
+  #371 = MethodType         #372          //  (Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;Lnet/minecraft/core/Holder;Ljava/util/Optional;Ljava/lang/Integer;Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;Ljava/util/Optional;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/util/List;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+  #372 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;Lnet/minecraft/core/Holder;Ljava/util/Optional;Ljava/lang/Integer;Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;Ljava/util/Optional;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/util/List;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+  #373 = MethodHandle       6:#374        // REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$11:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+  #374 = Methodref          #8.#375       // io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$11:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+  #375 = NameAndType        #297:#298     // lambda$static$11:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+  #376 = MethodType         #298          //  (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+  #377 = MethodHandle       6:#378        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #378 = Methodref          #379.#380     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #379 = Class              #381          // java/lang/invoke/LambdaMetafactory
+  #380 = NameAndType        #382:#383     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #381 = Utf8               java/lang/invoke/LambdaMetafactory
+  #382 = Utf8               metafactory
+  #383 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #384 = Utf8               InnerClasses
+  #385 = Class              #386          // net/minecraft/world/level/levelgen/structure/Structure$StructureSettings
+  #386 = Utf8               net/minecraft/world/level/levelgen/structure/Structure$StructureSettings
+  #387 = Utf8               StructureSettings
+  #388 = Utf8               GenerationContext
+  #389 = Utf8               Instance
+  #390 = Class              #391          // net/minecraft/world/level/levelgen/Heightmap
+  #391 = Utf8               net/minecraft/world/level/levelgen/Heightmap
+  #392 = Utf8               Types
+  #393 = Class              #394          // com/mojang/datafixers/Products
+  #394 = Utf8               com/mojang/datafixers/Products
+  #395 = Utf8               P12
+  #396 = Class              #397          // net/minecraft/world/level/levelgen/structure/Structure$GenerationStub
+  #397 = Utf8               net/minecraft/world/level/levelgen/structure/Structure$GenerationStub
+  #398 = Utf8               GenerationStub
+  #399 = Class              #400          // java/lang/invoke/MethodHandles$Lookup
+  #400 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #401 = Class              #402          // java/lang/invoke/MethodHandles
+  #402 = Utf8               java/lang/invoke/MethodHandles
+  #403 = Utf8               Lookup
+{
+  public static final com.mojang.serialization.MapCodec<io.github.razordevs.deep_aether.world.structure.DAJigsawStructure> CODEC;
+    descriptor: Lcom/mojang/serialization/MapCodec;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    Signature: #269                         // Lcom/mojang/serialization/MapCodec<Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;>;
+
+  private final net.minecraft.core.Holder<net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool> startPool;
+    descriptor: Lnet/minecraft/core/Holder;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #270                         // Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;
+
+  private final java.util.Optional<net.minecraft.resources.ResourceLocation> startJigsawName;
+    descriptor: Ljava/util/Optional;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #271                         // Ljava/util/Optional<Lnet/minecraft/resources/ResourceLocation;>;
+
+  private final int size;
+    descriptor: I
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  private final net.minecraft.world.level.levelgen.heightproviders.HeightProvider startHeight;
+    descriptor: Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  private final java.util.Optional<net.minecraft.world.level.levelgen.Heightmap$Types> projectStartToHeightmap;
+    descriptor: Ljava/util/Optional;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #272                         // Ljava/util/Optional<Lnet/minecraft/world/level/levelgen/Heightmap$Types;>;
+
+  private final int maxDistanceFromCenter;
+    descriptor: I
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  private final int discardBelowY;
+    descriptor: I
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  private final int discardAboveY;
+    descriptor: I
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  private final java.util.List<net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBinding> poolAliases;
+    descriptor: Ljava/util/List;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #273                         // Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasBinding;>;
+
+  private final net.minecraft.world.level.levelgen.structure.pools.DimensionPadding dimensionPadding;
+    descriptor: Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  private final net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings liquidSettings;
+    descriptor: Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  protected io.github.razordevs.deep_aether.world.structure.DAJigsawStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings, net.minecraft.core.Holder<net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool>, java.util.Optional<net.minecraft.resources.ResourceLocation>, int, net.minecraft.world.level.levelgen.heightproviders.HeightProvider, java.util.Optional<net.minecraft.world.level.levelgen.Heightmap$Types>, int, int, int, java.util.List<net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBinding>, net.minecraft.world.level.levelgen.structure.pools.DimensionPadding, net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;Lnet/minecraft/core/Holder;Ljava/util/Optional;ILnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;Ljava/util/Optional;IIILjava/util/List;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=2, locals=13, args_size=13
+         0: aload_0
+         1: aload_1
+         2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/Structure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+         5: aload_0
+         6: aload_2
+         7: putfield      #7                  // Field startPool:Lnet/minecraft/core/Holder;
+        10: aload_0
+        11: aload_3
+        12: putfield      #13                 // Field startJigsawName:Ljava/util/Optional;
+        15: aload_0
+        16: iload         4
+        18: putfield      #17                 // Field size:I
+        21: aload_0
+        22: aload         5
+        24: putfield      #21                 // Field startHeight:Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+        27: aload_0
+        28: aload         6
+        30: putfield      #25                 // Field projectStartToHeightmap:Ljava/util/Optional;
+        33: aload_0
+        34: iload         7
+        36: putfield      #28                 // Field maxDistanceFromCenter:I
+        39: aload_0
+        40: iload         8
+        42: putfield      #31                 // Field discardBelowY:I
+        45: aload_0
+        46: iload         9
+        48: putfield      #34                 // Field discardAboveY:I
+        51: aload_0
+        52: aload         10
+        54: putfield      #37                 // Field poolAliases:Ljava/util/List;
+        57: aload_0
+        58: aload         11
+        60: putfield      #41                 // Field dimensionPadding:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+        63: aload_0
+        64: aload         12
+        66: putfield      #45                 // Field liquidSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+        69: return
+      LineNumberTable:
+        line 61: 0
+        line 62: 5
+        line 63: 10
+        line 64: 15
+        line 65: 21
+        line 66: 27
+        line 67: 33
+        line 68: 39
+        line 69: 45
+        line 70: 51
+        line 71: 57
+        line 72: 63
+        line 73: 69
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      70     0  this   Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+            0      70     1 config   Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;
+            0      70     2 startPool   Lnet/minecraft/core/Holder;
+            0      70     3 startJigsawName   Ljava/util/Optional;
+            0      70     4  size   I
+            0      70     5 startHeight   Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+            0      70     6 projectStartToHeightmap   Ljava/util/Optional;
+            0      70     7 maxDistanceFromCenter   I
+            0      70     8 discardBelowY   I
+            0      70     9 discardAboveY   I
+            0      70    10 poolAliases   Ljava/util/List;
+            0      70    11 dimensionPadding   Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+            0      70    12 liquidSettings   Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      70     2 startPool   Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;
+            0      70     3 startJigsawName   Ljava/util/Optional<Lnet/minecraft/resources/ResourceLocation;>;
+            0      70     6 projectStartToHeightmap   Ljava/util/Optional<Lnet/minecraft/world/level/levelgen/Heightmap$Types;>;
+            0      70    10 poolAliases   Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasBinding;>;
+    Signature: #283                         // (Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;Ljava/util/Optional<Lnet/minecraft/resources/ResourceLocation;>;ILnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;Ljava/util/Optional<Lnet/minecraft/world/level/levelgen/Heightmap$Types;>;IIILjava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasBinding;>;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V
+
+  protected java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Ljava/util/Optional;
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=12, locals=5, args_size=2
+         0: new           #49                 // class io/github/razordevs/deep_aether/world/structure/HeightSpawningChecks
+         3: dup
+         4: invokespecial #51                 // Method io/github/razordevs/deep_aether/world/structure/HeightSpawningChecks."<init>":()V
+         7: aload_1
+         8: aload_0
+         9: getfield      #31                 // Field discardBelowY:I
+        12: aload_0
+        13: getfield      #34                 // Field discardAboveY:I
+        16: invokevirtual #54                 // Method io/github/razordevs/deep_aether/world/structure/HeightSpawningChecks.checkHeight:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;II)Z
+        19: ifne          26
+        22: invokestatic  #58                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+        25: areturn
+        26: aload_0
+        27: getfield      #21                 // Field startHeight:Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+        30: aload_1
+        31: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+        34: new           #70                 // class net/minecraft/world/level/levelgen/WorldGenerationContext
+        37: dup
+        38: aload_1
+        39: invokevirtual #72                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+        42: aload_1
+        43: invokevirtual #76                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+        46: invokespecial #80                 // Method net/minecraft/world/level/levelgen/WorldGenerationContext."<init>":(Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/LevelHeightAccessor;)V
+        49: invokevirtual #83                 // Method net/minecraft/world/level/levelgen/heightproviders/HeightProvider.sample:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/WorldGenerationContext;)I
+        52: istore_2
+        53: aload_1
+        54: invokevirtual #89                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+        57: astore_3
+        58: new           #93                 // class net/minecraft/core/BlockPos
+        61: dup
+        62: aload_3
+        63: invokevirtual #95                 // Method net/minecraft/world/level/ChunkPos.getMiddleBlockX:()I
+        66: iload_2
+        67: aload_3
+        68: invokevirtual #101                // Method net/minecraft/world/level/ChunkPos.getMiddleBlockZ:()I
+        71: invokespecial #104                // Method net/minecraft/core/BlockPos."<init>":(III)V
+        74: astore        4
+        76: aload_1
+        77: aload_0
+        78: getfield      #7                  // Field startPool:Lnet/minecraft/core/Holder;
+        81: aload_0
+        82: getfield      #13                 // Field startJigsawName:Ljava/util/Optional;
+        85: aload_0
+        86: getfield      #17                 // Field size:I
+        89: aload         4
+        91: iconst_0
+        92: aload_0
+        93: getfield      #25                 // Field projectStartToHeightmap:Ljava/util/Optional;
+        96: aload_0
+        97: getfield      #28                 // Field maxDistanceFromCenter:I
+       100: aload_0
+       101: getfield      #37                 // Field poolAliases:Ljava/util/List;
+       104: aload         4
+       106: aload_1
+       107: invokevirtual #107                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.seed:()J
+       110: invokestatic  #111                // InterfaceMethod net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup.create:(Ljava/util/List;Lnet/minecraft/core/BlockPos;J)Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;
+       113: aload_0
+       114: getfield      #41                 // Field dimensionPadding:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+       117: aload_0
+       118: getfield      #45                 // Field liquidSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+       121: invokestatic  #117                // Method net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement.addPieces:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/core/Holder;Ljava/util/Optional;ILnet/minecraft/core/BlockPos;ZLjava/util/Optional;ILnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)Ljava/util/Optional;
+       124: areturn
+      LineNumberTable:
+        line 77: 0
+        line 78: 22
+        line 80: 26
+        line 81: 53
+        line 82: 58
+        line 83: 76
+        line 92: 107
+        line 83: 121
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     125     0  this   Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+            0     125     1 context   Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;
+           53      72     2 startY   I
+           58      67     3 chunkPos   Lnet/minecraft/world/level/ChunkPos;
+           76      49     4   pos   Lnet/minecraft/core/BlockPos;
+      StackMapTable: number_of_entries = 1
+        frame_type = 26 /* same */
+    Signature: #293                         // (Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Ljava/util/Optional<Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationStub;>;
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<?> type();
+    descriptor: ()Lnet/minecraft/world/level/levelgen/structure/StructureType;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: getstatic     #123                // Field io/github/razordevs/deep_aether/world/structure/DAStructureTypes.DA_JIGSAW:Lnet/neoforged/neoforge/registries/DeferredHolder;
+         3: invokevirtual #129                // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+         6: checkcast     #135                // class net/minecraft/world/level/levelgen/structure/StructureType
+         9: areturn
+      LineNumberTable:
+        line 100: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+    Signature: #296                         // ()Lnet/minecraft/world/level/levelgen/structure/StructureType<*>;
+
+  private static com.mojang.datafixers.kinds.App lambda$static$11(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    descriptor: (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=15, locals=1, args_size=1
+         0: aload_0
+         1: aload_0
+         2: invokestatic  #137                // Method settingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+         5: getstatic     #141                // Field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool.CODEC:Lcom/mojang/serialization/Codec;
+         8: ldc           #147                // String start_pool
+        10: invokeinterface #149,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+        15: invokedynamic #155,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+        20: invokevirtual #159                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+        23: getstatic     #165                // Field net/minecraft/resources/ResourceLocation.CODEC:Lcom/mojang/serialization/Codec;
+        26: ldc           #168                // String start_jigsaw_name
+        28: invokeinterface #170,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+        33: invokedynamic #173,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+        38: invokevirtual #159                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+        41: iconst_0
+        42: bipush        30
+        44: invokestatic  #174                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+        47: ldc           #178                // String size
+        49: invokeinterface #149,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+        54: invokedynamic #179,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+        59: invokevirtual #159                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+        62: getstatic     #180                // Field net/minecraft/world/level/levelgen/heightproviders/HeightProvider.CODEC:Lcom/mojang/serialization/Codec;
+        65: ldc           #181                // String start_height
+        67: invokeinterface #149,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+        72: invokedynamic #183,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+        77: invokevirtual #159                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+        80: getstatic     #184                // Field net/minecraft/world/level/levelgen/Heightmap$Types.CODEC:Lcom/mojang/serialization/Codec;
+        83: ldc           #187                // String project_start_to_heightmap
+        85: invokeinterface #170,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+        90: invokedynamic #189,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+        95: invokevirtual #159                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+        98: iconst_1
+        99: sipush        128
+       102: invokestatic  #174                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+       105: ldc           #190                // String max_distance_from_center
+       107: invokeinterface #149,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+       112: invokedynamic #192,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+       117: invokevirtual #159                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       120: sipush        -4096
+       123: sipush        4096
+       126: invokestatic  #174                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+       129: ldc           #193                // String discard_below_y
+       131: invokeinterface #149,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+       136: invokedynamic #195,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+       141: invokevirtual #159                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       144: sipush        -4096
+       147: sipush        4096
+       150: invokestatic  #174                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+       153: ldc           #196                // String discard_above_y
+       155: invokeinterface #149,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+       160: invokedynamic #198,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+       165: invokevirtual #159                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       168: getstatic     #199                // Field net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasBinding.CODEC:Lcom/mojang/serialization/Codec;
+       171: invokestatic  #202                // InterfaceMethod com/mojang/serialization/Codec.list:(Lcom/mojang/serialization/Codec;)Lcom/mojang/serialization/Codec;
+       174: ldc           #206                // String pool_aliases
+       176: invokestatic  #208                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+       179: invokeinterface #214,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+       184: invokedynamic #217,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+       189: invokevirtual #159                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       192: getstatic     #218                // Field net/minecraft/world/level/levelgen/structure/pools/DimensionPadding.CODEC:Lcom/mojang/serialization/Codec;
+       195: ldc           #221                // String dimension_padding
+       197: getstatic     #223                // Field net/minecraft/world/level/levelgen/structure/pools/DimensionPadding.ZERO:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+       200: invokeinterface #214,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+       205: invokedynamic #226,  0            // InvokeDynamic #9:apply:()Ljava/util/function/Function;
+       210: invokevirtual #159                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       213: getstatic     #227                // Field net/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings.CODEC:Lcom/mojang/serialization/Codec;
+       216: ldc           #230                // String liquid_settings
+       218: getstatic     #232                // Field net/minecraft/world/level/levelgen/structure/structures/JigsawStructure.DEFAULT_LIQUID_SETTINGS:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+       221: invokeinterface #214,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+       226: invokedynamic #237,  0            // InvokeDynamic #10:apply:()Ljava/util/function/Function;
+       231: invokevirtual #159                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       234: invokevirtual #238                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P12;
+       237: aload_0
+       238: invokedynamic #244,  0            // InvokeDynamic #11:apply:()Lcom/mojang/datafixers/util/Function12;
+       243: invokevirtual #247                // Method com/mojang/datafixers/Products$P12.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function12;)Lcom/mojang/datafixers/kinds/App;
+       246: areturn
+      LineNumberTable:
+        line 29: 0
+        line 30: 10
+        line 31: 28
+        line 32: 44
+        line 33: 67
+        line 34: 85
+        line 35: 102
+        line 36: 126
+        line 37: 150
+        line 38: 171
+        line 39: 200
+        line 40: 221
+        line 29: 234
+        line 42: 243
+        line 29: 246
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     247     0 instance   Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;
+
+  private static net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings lambda$static$10(io.github.razordevs.deep_aether.world.structure.DAJigsawStructure);
+    descriptor: (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #45                 // Field liquidSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+         4: areturn
+      LineNumberTable:
+        line 40: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0 structure   Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+
+  private static net.minecraft.world.level.levelgen.structure.pools.DimensionPadding lambda$static$9(io.github.razordevs.deep_aether.world.structure.DAJigsawStructure);
+    descriptor: (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #41                 // Field dimensionPadding:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+         4: areturn
+      LineNumberTable:
+        line 39: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0 structure   Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+
+  private static java.util.List lambda$static$8(io.github.razordevs.deep_aether.world.structure.DAJigsawStructure);
+    descriptor: (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/List;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #37                 // Field poolAliases:Ljava/util/List;
+         4: areturn
+      LineNumberTable:
+        line 38: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0 structure   Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+
+  private static java.lang.Integer lambda$static$7(io.github.razordevs.deep_aether.world.structure.DAJigsawStructure);
+    descriptor: (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #34                 // Field discardAboveY:I
+         4: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+         7: areturn
+      LineNumberTable:
+        line 37: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 structure   Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+
+  private static java.lang.Integer lambda$static$6(io.github.razordevs.deep_aether.world.structure.DAJigsawStructure);
+    descriptor: (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #31                 // Field discardBelowY:I
+         4: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+         7: areturn
+      LineNumberTable:
+        line 36: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 structure   Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+
+  private static java.lang.Integer lambda$static$5(io.github.razordevs.deep_aether.world.structure.DAJigsawStructure);
+    descriptor: (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #28                 // Field maxDistanceFromCenter:I
+         4: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+         7: areturn
+      LineNumberTable:
+        line 35: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 structure   Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+
+  private static java.util.Optional lambda$static$4(io.github.razordevs.deep_aether.world.structure.DAJigsawStructure);
+    descriptor: (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/Optional;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #25                 // Field projectStartToHeightmap:Ljava/util/Optional;
+         4: areturn
+      LineNumberTable:
+        line 34: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0 structure   Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+
+  private static net.minecraft.world.level.levelgen.heightproviders.HeightProvider lambda$static$3(io.github.razordevs.deep_aether.world.structure.DAJigsawStructure);
+    descriptor: (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #21                 // Field startHeight:Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+         4: areturn
+      LineNumberTable:
+        line 33: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0 structure   Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+
+  private static java.lang.Integer lambda$static$2(io.github.razordevs.deep_aether.world.structure.DAJigsawStructure);
+    descriptor: (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #17                 // Field size:I
+         4: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+         7: areturn
+      LineNumberTable:
+        line 32: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 structure   Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+
+  private static java.util.Optional lambda$static$1(io.github.razordevs.deep_aether.world.structure.DAJigsawStructure);
+    descriptor: (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/Optional;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #13                 // Field startJigsawName:Ljava/util/Optional;
+         4: areturn
+      LineNumberTable:
+        line 31: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0 structure   Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+
+  private static net.minecraft.core.Holder lambda$static$0(io.github.razordevs.deep_aether.world.structure.DAJigsawStructure);
+    descriptor: (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/core/Holder;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #7                  // Field startPool:Lnet/minecraft/core/Holder;
+         4: areturn
+      LineNumberTable:
+        line 30: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0 structure   Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: invokedynamic #258,  0            // InvokeDynamic #12:apply:()Ljava/util/function/Function;
+         5: invokestatic  #259                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+         8: putstatic     #265                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+        11: return
+      LineNumberTable:
+        line 28: 0
+}
+SourceFile: "DAJigsawStructure.java"
+BootstrapMethods:
+  0: #377 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #324 (Ljava/lang/Object;)Ljava/lang/Object;
+      #326 REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$0:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/core/Holder;
+      #329 (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/core/Holder;
+  1: #377 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #324 (Ljava/lang/Object;)Ljava/lang/Object;
+      #330 REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$1:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/Optional;
+      #333 (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/Optional;
+  2: #377 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #324 (Ljava/lang/Object;)Ljava/lang/Object;
+      #334 REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$2:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+      #337 (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  3: #377 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #324 (Ljava/lang/Object;)Ljava/lang/Object;
+      #338 REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$3:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+      #341 (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+  4: #377 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #324 (Ljava/lang/Object;)Ljava/lang/Object;
+      #342 REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$4:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/Optional;
+      #333 (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/Optional;
+  5: #377 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #324 (Ljava/lang/Object;)Ljava/lang/Object;
+      #345 REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$5:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+      #337 (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  6: #377 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #324 (Ljava/lang/Object;)Ljava/lang/Object;
+      #348 REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$6:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+      #337 (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  7: #377 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #324 (Ljava/lang/Object;)Ljava/lang/Object;
+      #351 REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$7:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+      #337 (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/lang/Integer;
+  8: #377 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #324 (Ljava/lang/Object;)Ljava/lang/Object;
+      #354 REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$8:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/List;
+      #357 (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Ljava/util/List;
+  9: #377 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #324 (Ljava/lang/Object;)Ljava/lang/Object;
+      #358 REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$9:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+      #361 (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+  10: #377 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #324 (Ljava/lang/Object;)Ljava/lang/Object;
+      #362 REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$10:(Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+      #365 (Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+  11: #377 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #366 (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      #368 REF_newInvokeSpecial io/github/razordevs/deep_aether/world/structure/DAJigsawStructure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;Lnet/minecraft/core/Holder;Ljava/util/Optional;ILnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;Ljava/util/Optional;IIILjava/util/List;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V
+      #371 (Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;Lnet/minecraft/core/Holder;Ljava/util/Optional;Ljava/lang/Integer;Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;Ljava/util/Optional;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/util/List;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)Lio/github/razordevs/deep_aether/world/structure/DAJigsawStructure;
+  12: #377 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #324 (Ljava/lang/Object;)Ljava/lang/Object;
+      #373 REF_invokeStatic io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.lambda$static$11:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+      #376 (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+InnerClasses:
+  public static final #387= #385 of #2;   // StructureSettings=class net/minecraft/world/level/levelgen/structure/Structure$StructureSettings of class net/minecraft/world/level/levelgen/structure/Structure
+  public static final #388= #65 of #2;    // GenerationContext=class net/minecraft/world/level/levelgen/structure/Structure$GenerationContext of class net/minecraft/world/level/levelgen/structure/Structure
+  public static final #389= #239 of #260; // Instance=class com/mojang/serialization/codecs/RecordCodecBuilder$Instance of class com/mojang/serialization/codecs/RecordCodecBuilder
+  public static final #392= #185 of #390; // Types=class net/minecraft/world/level/levelgen/Heightmap$Types of class net/minecraft/world/level/levelgen/Heightmap
+  public static final #395= #248 of #393; // P12=class com/mojang/datafixers/Products$P12 of class com/mojang/datafixers/Products
+  public static final #398= #396 of #2;   // GenerationStub=class net/minecraft/world/level/levelgen/structure/Structure$GenerationStub of class net/minecraft/world/level/levelgen/structure/Structure
+  public static final #403= #399 of #401; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
