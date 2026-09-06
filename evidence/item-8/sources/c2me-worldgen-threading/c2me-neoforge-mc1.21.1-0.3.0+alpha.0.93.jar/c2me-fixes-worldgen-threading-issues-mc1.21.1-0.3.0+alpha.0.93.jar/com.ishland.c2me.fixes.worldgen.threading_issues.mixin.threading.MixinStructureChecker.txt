@@ -1,0 +1,319 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-fixes-worldgen-threading-issues-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureChecker.class
+  Last modified Jan 1, 1980; size 3700 bytes
+  SHA-256 checksum 4b34f17df6df5d5d02863df19a14d4d67ec45bc020fbadf5dc263cf7634188a1
+  Compiled from "MixinStructureChecker.java"
+public class com.ishland.c2me.fixes.worldgen.threading_issues.mixin.threading.MixinStructureChecker
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureChecker
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 3, methods: 3, attributes: 2
+Constant pool:
+    #1 = Utf8               com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureChecker
+    #2 = Class              #1            // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureChecker
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               MixinStructureChecker.java
+    #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #7 = Utf8               value
+    #8 = Utf8               Lnet/minecraft/world/level/levelgen/structure/StructureCheck;
+    #9 = Utf8               loadedChunks
+   #10 = Utf8               Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+   #11 = Utf8               Lit/unimi/dsi/fastutil/longs/Long2ObjectMap<Lit/unimi/dsi/fastutil/objects/Object2IntMap<Lnet/minecraft/world/level/levelgen/structure/Structure;>;>;
+   #12 = Utf8               Lorg/spongepowered/asm/mixin/Mutable;
+   #13 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #14 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+   #15 = Utf8               featureChecks
+   #16 = Utf8               Ljava/util/Map;
+   #17 = Utf8               Ljava/util/Map<Lnet/minecraft/world/level/levelgen/structure/Structure;Lit/unimi/dsi/fastutil/longs/Long2BooleanMap;>;
+   #18 = Utf8               mapMutex
+   #19 = Utf8               Ljava/lang/Object;
+   #20 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+   #21 = Utf8               <init>
+   #22 = Utf8               ()V
+   #23 = NameAndType        #21:#22       // "<init>":()V
+   #24 = Methodref          #4.#23        // java/lang/Object."<init>":()V
+   #25 = NameAndType        #18:#19       // mapMutex:Ljava/lang/Object;
+   #26 = Fieldref           #2.#25        // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureChecker.mapMutex:Ljava/lang/Object;
+   #27 = Utf8               this
+   #28 = Utf8               Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureChecker;
+   #29 = Utf8               onInit
+   #30 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+   #31 = Utf8               info
+   #32 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #33 = Utf8               method
+   #34 = Utf8               at
+   #35 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #36 = Utf8               RETURN
+   #37 = NameAndType        #9:#10        // loadedChunks:Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+   #38 = Fieldref           #2.#37        // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureChecker.loadedChunks:Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+   #39 = Utf8               it/unimi/dsi/fastutil/longs/Long2ObjectMaps
+   #40 = Class              #39           // it/unimi/dsi/fastutil/longs/Long2ObjectMaps
+   #41 = Utf8               synchronize
+   #42 = Utf8               (Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;)Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+   #43 = NameAndType        #41:#42       // synchronize:(Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;)Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+   #44 = Methodref          #40.#43       // it/unimi/dsi/fastutil/longs/Long2ObjectMaps.synchronize:(Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;)Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+   #45 = Utf8               it/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap
+   #46 = Class              #45           // it/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap
+   #47 = Methodref          #46.#23       // it/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap."<init>":()V
+   #48 = Utf8               it/unimi/dsi/fastutil/objects/Object2ObjectMaps
+   #49 = Class              #48           // it/unimi/dsi/fastutil/objects/Object2ObjectMaps
+   #50 = Utf8               (Lit/unimi/dsi/fastutil/objects/Object2ObjectMap;Ljava/lang/Object;)Lit/unimi/dsi/fastutil/objects/Object2ObjectMap;
+   #51 = NameAndType        #41:#50       // synchronize:(Lit/unimi/dsi/fastutil/objects/Object2ObjectMap;Ljava/lang/Object;)Lit/unimi/dsi/fastutil/objects/Object2ObjectMap;
+   #52 = Methodref          #49.#51       // it/unimi/dsi/fastutil/objects/Object2ObjectMaps.synchronize:(Lit/unimi/dsi/fastutil/objects/Object2ObjectMap;Ljava/lang/Object;)Lit/unimi/dsi/fastutil/objects/Object2ObjectMap;
+   #53 = NameAndType        #15:#16       // featureChecks:Ljava/util/Map;
+   #54 = Fieldref           #2.#53        // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureChecker.featureChecks:Ljava/util/Map;
+   #55 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+   #56 = Utf8               redirectForEach
+   #57 = Utf8               (Ljava/util/Collection;Ljava/util/function/Consumer;)V
+   #58 = Utf8               (Ljava/util/Collection<Lit/unimi/dsi/fastutil/longs/Long2BooleanMap;>;Ljava/util/function/Consumer<Lit/unimi/dsi/fastutil/longs/Long2BooleanMap;>;)V
+   #59 = Utf8               instance
+   #60 = Utf8               consumer
+   #61 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+   #62 = Utf8               cache(JLit/unimi/dsi/fastutil/objects/Object2IntMap;)V
+   #63 = Utf8               INVOKE
+   #64 = Utf8               target
+   #65 = Utf8               Ljava/util/Collection;forEach(Ljava/util/function/Consumer;)V
+   #66 = Utf8               java/util/Collection
+   #67 = Class              #66           // java/util/Collection
+   #68 = Utf8               iterator
+   #69 = Utf8               ()Ljava/util/Iterator;
+   #70 = NameAndType        #68:#69       // iterator:()Ljava/util/Iterator;
+   #71 = InterfaceMethodref #67.#70       // java/util/Collection.iterator:()Ljava/util/Iterator;
+   #72 = Utf8               java/util/Iterator
+   #73 = Class              #72           // java/util/Iterator
+   #74 = Utf8               hasNext
+   #75 = Utf8               ()Z
+   #76 = NameAndType        #74:#75       // hasNext:()Z
+   #77 = InterfaceMethodref #73.#76       // java/util/Iterator.hasNext:()Z
+   #78 = Utf8               next
+   #79 = Utf8               ()Ljava/lang/Object;
+   #80 = NameAndType        #78:#79       // next:()Ljava/lang/Object;
+   #81 = InterfaceMethodref #73.#80       // java/util/Iterator.next:()Ljava/lang/Object;
+   #82 = Utf8               it/unimi/dsi/fastutil/longs/Long2BooleanMap
+   #83 = Class              #82           // it/unimi/dsi/fastutil/longs/Long2BooleanMap
+   #84 = Utf8               java/util/function/Consumer
+   #85 = Class              #84           // java/util/function/Consumer
+   #86 = Utf8               accept
+   #87 = Utf8               (Ljava/lang/Object;)V
+   #88 = NameAndType        #86:#87       // accept:(Ljava/lang/Object;)V
+   #89 = InterfaceMethodref #85.#88       // java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+   #90 = Utf8               isEmpty
+   #91 = NameAndType        #90:#75       // isEmpty:()Z
+   #92 = InterfaceMethodref #83.#91       // it/unimi/dsi/fastutil/longs/Long2BooleanMap.isEmpty:()Z
+   #93 = Utf8               remove
+   #94 = NameAndType        #93:#22       // remove:()V
+   #95 = InterfaceMethodref #73.#94       // java/util/Iterator.remove:()V
+   #96 = Utf8               java/lang/Throwable
+   #97 = Class              #96           // java/lang/Throwable
+   #98 = Utf8               Lit/unimi/dsi/fastutil/longs/Long2BooleanMap;
+   #99 = Utf8               Ljava/util/Iterator<Lit/unimi/dsi/fastutil/longs/Long2BooleanMap;>;
+  #100 = Utf8               Ljava/util/Iterator;
+  #101 = Utf8               Ljava/util/Collection<Lit/unimi/dsi/fastutil/longs/Long2BooleanMap;>;
+  #102 = Utf8               Ljava/util/Collection;
+  #103 = Utf8               Ljava/util/function/Consumer<Lit/unimi/dsi/fastutil/longs/Long2BooleanMap;>;
+  #104 = Utf8               Ljava/util/function/Consumer;
+  #105 = Utf8               Signature
+  #106 = Utf8               RuntimeVisibleAnnotations
+  #107 = Utf8               Code
+  #108 = Utf8               LineNumberTable
+  #109 = Utf8               LocalVariableTable
+  #110 = Utf8               MethodParameters
+  #111 = Utf8               StackMapTable
+  #112 = Utf8               LocalVariableTypeTable
+  #113 = Utf8               SourceFile
+  #114 = Utf8               RuntimeInvisibleAnnotations
+{
+  private it.unimi.dsi.fastutil.longs.Long2ObjectMap<it.unimi.dsi.fastutil.objects.Object2IntMap<net.minecraft.world.level.levelgen.structure.Structure>> loadedChunks;
+    descriptor: Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #11                          // Lit/unimi/dsi/fastutil/longs/Long2ObjectMap<Lit/unimi/dsi/fastutil/objects/Object2IntMap<Lnet/minecraft/world/level/levelgen/structure/Structure;>;>;
+    RuntimeVisibleAnnotations:
+      0: #12()
+        org.spongepowered.asm.mixin.Mutable
+      1: #13()
+        org.spongepowered.asm.mixin.Shadow
+      2: #14()
+        org.spongepowered.asm.mixin.Final
+
+  private java.util.Map<net.minecraft.world.level.levelgen.structure.Structure, it.unimi.dsi.fastutil.longs.Long2BooleanMap> featureChecks;
+    descriptor: Ljava/util/Map;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #17                          // Ljava/util/Map<Lnet/minecraft/world/level/levelgen/structure/Structure;Lit/unimi/dsi/fastutil/longs/Long2BooleanMap;>;
+    RuntimeVisibleAnnotations:
+      0: #12()
+        org.spongepowered.asm.mixin.Mutable
+      1: #13()
+        org.spongepowered.asm.mixin.Shadow
+      2: #14()
+        org.spongepowered.asm.mixin.Final
+
+  private java.lang.Object mapMutex;
+    descriptor: Ljava/lang/Object;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #20()
+        org.spongepowered.asm.mixin.Unique
+
+  public com.ishland.c2me.fixes.worldgen.threading_issues.mixin.threading.MixinStructureChecker();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #24                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #4                  // class java/lang/Object
+         8: dup
+         9: invokespecial #24                 // Method java/lang/Object."<init>":()V
+        12: putfield      #26                 // Field mapMutex:Ljava/lang/Object;
+        15: return
+      LineNumberTable:
+        line 27: 0
+        line 35: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureChecker;
+
+  private void onInit(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: new           #4                  // class java/lang/Object
+         4: dup
+         5: invokespecial #24                 // Method java/lang/Object."<init>":()V
+         8: putfield      #26                 // Field mapMutex:Ljava/lang/Object;
+        11: aload_0
+        12: aload_0
+        13: getfield      #38                 // Field loadedChunks:Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+        16: invokestatic  #44                 // Method it/unimi/dsi/fastutil/longs/Long2ObjectMaps.synchronize:(Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;)Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+        19: putfield      #38                 // Field loadedChunks:Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+        22: aload_0
+        23: new           #46                 // class it/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap
+        26: dup
+        27: invokespecial #47                 // Method it/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap."<init>":()V
+        30: aload_0
+        31: getfield      #26                 // Field mapMutex:Ljava/lang/Object;
+        34: invokestatic  #52                 // Method it/unimi/dsi/fastutil/objects/Object2ObjectMaps.synchronize:(Lit/unimi/dsi/fastutil/objects/Object2ObjectMap;Ljava/lang/Object;)Lit/unimi/dsi/fastutil/objects/Object2ObjectMap;
+        37: putfield      #54                 // Field featureChecks:Ljava/util/Map;
+        40: return
+      LineNumberTable:
+        line 40: 0
+        line 41: 11
+        line 42: 22
+        line 43: 40
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      41     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureChecker;
+            0      41     1  info   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #32(#33=[s#21],#34=[@#35(#7=s#36)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<init>"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      info
+
+  private void redirectForEach(java.util.Collection<it.unimi.dsi.fastutil.longs.Long2BooleanMap>, java.util.function.Consumer<it.unimi.dsi.fastutil.longs.Long2BooleanMap>);
+    descriptor: (Ljava/util/Collection;Ljava/util/function/Consumer;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=7, args_size=3
+         0: aload_0
+         1: getfield      #26                 // Field mapMutex:Ljava/lang/Object;
+         4: dup
+         5: astore_3
+         6: monitorenter
+         7: aload_1
+         8: invokeinterface #71,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+        13: astore        4
+        15: aload         4
+        17: invokeinterface #77,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        22: ifeq          65
+        25: aload         4
+        27: invokeinterface #81,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        32: checkcast     #83                 // class it/unimi/dsi/fastutil/longs/Long2BooleanMap
+        35: astore        5
+        37: aload_2
+        38: aload         5
+        40: invokeinterface #89,  2           // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+        45: aload         5
+        47: invokeinterface #92,  1           // InterfaceMethod it/unimi/dsi/fastutil/longs/Long2BooleanMap.isEmpty:()Z
+        52: ifeq          62
+        55: aload         4
+        57: invokeinterface #95,  1           // InterfaceMethod java/util/Iterator.remove:()V
+        62: goto          15
+        65: aload_3
+        66: monitorexit
+        67: goto          77
+        70: astore        6
+        72: aload_3
+        73: monitorexit
+        74: aload         6
+        76: athrow
+        77: return
+      Exception table:
+         from    to  target type
+             7    67    70   any
+            70    74    70   any
+      StackMapTable: number_of_entries = 5
+        frame_type = 253 /* append */
+          offset_delta = 15
+          locals = [ class java/lang/Object, class java/util/Iterator ]
+        frame_type = 46 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 68 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Throwable ]
+        frame_type = 250 /* chop */
+          offset_delta = 6
+      LineNumberTable:
+        line 48: 0
+        line 49: 7
+        line 50: 15
+        line 51: 25
+        line 52: 37
+        line 53: 45
+        line 54: 62
+        line 55: 65
+        line 56: 77
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           37      25     5  next   Lit/unimi/dsi/fastutil/longs/Long2BooleanMap;
+           15      50     4 iterator   Ljava/util/Iterator;
+            0      78     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureChecker;
+            0      78     1 instance   Ljava/util/Collection;
+            0      78     2 consumer   Ljava/util/function/Consumer;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           15      50     4 iterator   Ljava/util/Iterator<Lit/unimi/dsi/fastutil/longs/Long2BooleanMap;>;
+            0      78     1 instance   Ljava/util/Collection<Lit/unimi/dsi/fastutil/longs/Long2BooleanMap;>;
+            0      78     2 consumer   Ljava/util/function/Consumer<Lit/unimi/dsi/fastutil/longs/Long2BooleanMap;>;
+    Signature: #58                          // (Ljava/util/Collection<Lit/unimi/dsi/fastutil/longs/Long2BooleanMap;>;Ljava/util/function/Consumer<Lit/unimi/dsi/fastutil/longs/Long2BooleanMap;>;)V
+    RuntimeVisibleAnnotations:
+      0: #61(#33=[s#62],#34=@#35(#7=s#63,#64=s#65))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["cache(JLit/unimi/dsi/fastutil/objects/Object2IntMap;)V"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Ljava/util/Collection;forEach(Ljava/util/function/Consumer;)V"
+          )
+        )
+    MethodParameters:
+      Name                           Flags
+      instance
+      consumer
+}
+SourceFile: "MixinStructureChecker.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/levelgen/structure/StructureCheck;]
+    )
