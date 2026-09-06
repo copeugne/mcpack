@@ -9562,3 +9562,12 @@ uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+Inventory regenerated from 622762bf and independently reproduced exactly.
+Only the five landmark grouping decisions and the decision input identity changed.
+SHA-256: 652a636e2b0726bd4d80653b3e8853c6fdc43c6724e6ce4fa79d57b4896fa8e7.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-landmarks-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-landmarks-r2.json
+```

@@ -6,6 +6,10 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 622762bf and reproduces exactly. Canonical-note backlog: 79
+(IDAS 59, AdoraBuild 20). Coverage groups: 406. Next: remaining AdoraBuild building
+and vessel comparisons. Required attributes and 33 nonregistry contributions remain.
+
 Five AdoraBuild landmark relationships are resolved against views 0df11558 and
 existing template content. The affected case and scoped checks pass. Backlog: 79
 (IDAS 59, AdoraBuild 20). Coverage groups: 406. Inventory refresh follows. AdoraBuild
