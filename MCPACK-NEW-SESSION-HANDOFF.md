@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 03cd8b3d and independently reproduces exactly. All 887 roots
+remain covered once in 421 working groups. Backlog: 60 (IDAS 59, Overworld house
+with 35 roots). Full End/Nether variants are preserved. Next: remaining Overworld
+house layouts using existing views. Attributes, nonregistry and delivery remain.
+
 Nine End/Nether house roots are reconciled using existing abfaa574 views and
 contents: raised End rooms (2), low End houses (3), crimson tower (1), crimson
 hall (1), warped houses (2). Full definitions and inhabitants remain attached to
