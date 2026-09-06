@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+Latest checkpoint at f5b7069: Better Desert Temples provider scope is closed,
+pushed and remote-ref verified. Census: 69 resolved providers, 67 open. Seven
+focused cases and scoped quality checks pass. Source 02ae27e reproduces exactly.
+One existing root, all 28 pools and 198 templates are accounted for; preserve the
+disconnected crushing corridor. All 26 processors are component registrations.
+Pharaoh, mining-fatigue and saved-state hooks affect the existing temple.
+Next reconcile YUNG's Better Caves, Cave Biomes and shared API provider roles,
+then the remaining named queue. Keep detailed attributes deferred and do not
+repeat completed YUNG structure-provider closures. Whole-stack canonical family
+count, remaining boundaries, attributes and review/main merge remain open.
+
 Latest checkpoint at 4d72e0f: Better Dungeons provider scope is closed,
 pushed and remote-ref verified. Census: 68 resolved providers, 68 open. Two
 focused cases and scoped quality checks pass. Source f9696df reproduces exactly.
