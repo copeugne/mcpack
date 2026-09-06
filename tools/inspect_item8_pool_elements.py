@@ -888,6 +888,9 @@ CLASSES: tuple[str, ...] = (
     "biomesoplenty/worldgen/feature/tree/TaigaTreeFeature.class",
     "biomesoplenty/worldgen/feature/tree/TwigletTreeFeature.class",
     "biomesoplenty/worldgen/feature/tree/UmbranTreeFeature.class",
+    "biomesoplenty/worldgen/feature/tree/BOPTreeFeature.class",
+    "biomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$LargeRoseQuartz.class",
+    "biomesoplenty/util/biome/RoseQuartzUtils.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
