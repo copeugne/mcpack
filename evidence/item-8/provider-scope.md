@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 96 of 136. The exact queue below has 40 open rows.
+Supported provider dispositions: 98 of 136. The exact queue below has 38 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -679,13 +679,13 @@ attributes. This separates unknown membership from incomplete attributes.
 | `owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `player-animation-lib-forge-2.0.4+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `polymorph-neoforge-1.1.0+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `prickle-neoforge-1.21.1-21.1.11.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `prickle-neoforge-1.21.1-21.1.11.jar` | Sources eb9670dc and 4e7468fb; test_config_library_provider_scope.py | RESOLVED: Configuration adapters, platform lookup and initialization; no independent family. See configuration library disposition below. |
 | `quickrightclick-1.21.1-1.9.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `railways-0.2.1+neoforge-mc1.21.1.jar` | Provider entry eaa7a6b, player assembly 0e7edb0, common hooks d17d854; test_railways_provider_scope.py | RESOLVED: Construction, player vehicles, existing-block/entity behavior, data migration and visual/network support. No independent structure family. See final Railways disposition below. |
 | `ranged_weapon_api-neoforge-2.3.3+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `regions-unexplored-0.6.1-neoforge-21.1.jar` | Existing feature, component and entry captures; tree source 0f263ed, root/condition source f4ad223; focused candidate/provider tests | RESOLVED: Fallen-log candidate, Ashen trial-chamber component, terrain/vegetation, full payload and common-entry roles accounted for. Fallen-log canonical boundary remains open. See final RU disposition below. |
 | `repurposed_structures-7.5.21+1.21.1-neoforge.jar` | Existing mansion/monument/pool evidence, `repurposed-provider`, `repurposed-feature-roles`, `repurposed-assembly`, `repurposed-datagen-entry`; focused provider and component checks. | RESOLVED: 107 existing roots, 23 dungeon/well configuration candidates, all feature and component roles, common hooks and data-generation entry accounted for below. Canonical grouping and effective eligibility remain separate. |
-| `resourcefulconfig-neoforge-1.21-3.0.11.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `resourcefulconfig-neoforge-1.21-3.0.11.jar` | Sources b335f9e8; test_config_library_provider_scope.py | RESOLVED: Configuration parsing, interface initialization and server settings accessors; no independent family. See configuration library disposition below. |
 | `resourcefullib-neoforge-1.21-3.0.12.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `ritchiesprojectilelib-2.1.2+mc.1.21.1-neoforge.jar` | `projectile-library-provider` (50bc747), test_small_utility_provider_scope.py | RESOLVED: Projectile entity, chunk-loading and synchronization support; no authored structure family. Packaged mixin files lack loader declarations. See disposition below. |
 | `servercore-neoforge-1.5.17+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -6860,3 +6860,39 @@ One focused case and Basedpyright pass. An overlong assertion was corrected
 before the passing Ruff run. Whole providers: 96 resolved, 40 open (20
 code-reference and 20 unmatched-search rows). No family added. Continue
 remaining provider boundaries and canonical Moog grouping before attributes.
+
+### Prickle and Resourceful Config membership resolved
+
+Prickle sources eb9670dc and 4e7468fb cover the loader, both declared services
+and common initializer. Initialization verifies platform availability and rejects
+repeat initialization. Services provide configuration property adapters and the
+platform configuration path. Both mixin lists are empty. Complete payload
+accounting binds 47 classes and nine non-class files; no generation data,
+templates or nested archives occur. No independent family is contributed.
+
+Resourceful Config source b335f9e8 covers the loader, declared parser service
+and all three common mixin accessors. The parser reads caller-supplied annotated
+configuration classes. The accessors expose server settings and the player
+limit. Startup initializes configuration compatibility and a web configuration
+interface, and stores the started server reference. This is an operational role;
+network exposure was not tested by this membership inspection. The complete
+payload has 186 classes, 35 interface/language assets and five other files.
+No generation data, templates or nested archives occur. No independent family
+is contributed. Configuration effects on consumers remain separate attributes.
+
+The existing captures reproduce independently as recorded in their source
+README files. The focused test binds archive hashes, complete payloads, automatic
+entries, common hooks, declared services and all captured disassembly identities.
+No further generic configuration helper tracing is needed for membership.
+
+```sh
+uv run pytest -q tests/item8/test_config_library_provider_scope.py
+uv run ruff check tests/item8/test_config_library_provider_scope.py
+uv run basedpyright tests/item8/test_config_library_provider_scope.py
+```
+
+Two cases and scoped quality checks pass. The initial seven-argument test
+signature exceeded the existing Ruff limit; grouping the archive identity into
+one tuple fixes that finding. Whole providers: 98 resolved, 38 open. This closes
+two unmatched-search rows, leaving 20 code-reference and 18 unmatched-search
+rows. Canonical Moog grouping remains open; no family count changed here.
