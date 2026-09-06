@@ -24,3 +24,7 @@ Compressed SHA-256 identities:
 - nether_towers.svg.gz: f6a7fe318791e114ff98daf8dc6f90e58f57ef43e6ed13a438d4dd410c8bbfc3
 - outbuildings.svg.gz: 91b5fa5e60774580ad5a8d7178d8c0ed90a120c1fd9634711ab4cb97d4d5441f
 - towers.svg.gz: a4b8869c67f916d779fe3e4cdfdf6f4f32fb406b8477fcd635954a2efbe2ce95
+
+The filename nether_towers is an organizational label, not dimension evidence.
+The red tower definition targets the taiga biome tag. Full definitions in the
+packaged source and family variants govern biome and dimension attribution.

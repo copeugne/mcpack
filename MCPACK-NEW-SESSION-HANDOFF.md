@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Voyager tower/outbuilding decisions resolve nine explicit provisionals. Red and
+jungle towers merge as tiered-tower variants with full definitions/components;
+other four towers and three outbuildings remain distinct. Sixteen affected cases
+and scoped quality checks pass. Working groups: 406. Explicit remainder: 40.
+Eight house decisions have inspected views already; no recapture is needed.
+The comparison filename nether_towers is not a dimension claim; red uses taiga.
+Inventory refresh follows this decision increment.
+
 Voyager buildings comparison selects 23 architecture templates for the 17 pending
 house, outbuilding and tower decisions. Shared vanilla villager templates remain
 component references in the existing graph. The existing renderer and archive
