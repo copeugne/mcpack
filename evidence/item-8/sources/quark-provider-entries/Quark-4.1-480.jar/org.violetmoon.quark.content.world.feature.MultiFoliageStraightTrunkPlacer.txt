@@ -1,0 +1,148 @@
+Compiled from "MultiFoliageStraightTrunkPlacer.java"
+public class org.violetmoon.quark.content.world.feature.MultiFoliageStraightTrunkPlacer extends net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer {
+  final int foliageDistance;
+
+  final int maxBlobs;
+
+  public static final com.mojang.serialization.MapCodec<org.violetmoon.quark.content.world.feature.MultiFoliageStraightTrunkPlacer> CODEC;
+
+  public static final net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType<org.violetmoon.quark.content.world.feature.MultiFoliageStraightTrunkPlacer> TYPE;
+
+  public org.violetmoon.quark.content.world.feature.MultiFoliageStraightTrunkPlacer(int, int, int, int, int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iload_2
+       3: iload_3
+       4: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacer."<init>":(III)V
+       7: aload_0
+       8: iload         4
+      10: putfield      #7                  // Field foliageDistance:I
+      13: aload_0
+      14: iload         5
+      16: putfield      #13                 // Field maxBlobs:I
+      19: return
+
+  protected net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType<?> type();
+    Code:
+       0: getstatic     #16                 // Field TYPE:Lnet/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType;
+       3: areturn
+
+  public java.util.List<net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageAttachment> placeTrunk(net.minecraft.world.level.LevelSimulatedReader, java.util.function.BiConsumer<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState>, net.minecraft.util.RandomSource, int, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_3
+       3: aload         5
+       5: invokevirtual #20                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+       8: aload         6
+      10: invokestatic  #26                 // Method setDirtAt:(Lnet/minecraft/world/level/LevelSimulatedReader;Ljava/util/function/BiConsumer;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;)V
+      13: new           #30                 // class java/util/ArrayList
+      16: dup
+      17: invokespecial #32                 // Method java/util/ArrayList."<init>":()V
+      20: astore        7
+      22: iconst_0
+      23: istore        8
+      25: iconst_0
+      26: istore        9
+      28: iload         4
+      30: istore        10
+      32: iload         10
+      34: iflt          103
+      37: aload         5
+      39: iload         10
+      41: invokevirtual #35                 // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+      44: astore        11
+      46: aload_0
+      47: aload_1
+      48: aload_2
+      49: aload_3
+      50: aload         11
+      52: aload         6
+      54: invokevirtual #39                 // Method placeLog:(Lnet/minecraft/world/level/LevelSimulatedReader;Ljava/util/function/BiConsumer;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;)Z
+      57: pop
+      58: iload         8
+      60: aload_0
+      61: getfield      #13                 // Field maxBlobs:I
+      64: if_icmpge     97
+      67: iload         9
+      69: ifne          94
+      72: aload         7
+      74: aload         11
+      76: invokeinterface #43,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      81: pop
+      82: aload_0
+      83: getfield      #7                  // Field foliageDistance:I
+      86: istore        9
+      88: iinc          8, 1
+      91: goto          97
+      94: iinc          9, -1
+      97: iinc          10, -1
+     100: goto          32
+     103: aload         7
+     105: invokeinterface #49,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+     110: invokedynamic #53,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+     115: invokeinterface #57,  2           // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+     120: invokestatic  #63                 // Method java/util/stream/Collectors.toList:()Ljava/util/stream/Collector;
+     123: invokeinterface #69,  2           // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+     128: checkcast     #44                 // class java/util/List
+     131: areturn
+
+  private static net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageAttachment lambda$placeTrunk$3(net.minecraft.core.BlockPos);
+    Code:
+       0: new           #73                 // class net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageAttachment
+       3: dup
+       4: aload_0
+       5: iconst_0
+       6: iconst_0
+       7: invokespecial #75                 // Method net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageAttachment."<init>":(Lnet/minecraft/core/BlockPos;IZ)V
+      10: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$2(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: invokestatic  #78                 // Method trunkPlacerParts:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/Products$P3;
+       4: aload_0
+       5: getstatic     #82                 // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+       8: ldc           #88                 // String foliageDistance
+      10: invokeinterface #89,  2           // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      15: invokedynamic #95,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      20: invokevirtual #96                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      23: getstatic     #82                 // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      26: ldc           #102                // String maxBlobs
+      28: invokeinterface #89,  2           // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      33: invokedynamic #103,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      38: invokevirtual #96                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      41: invokevirtual #104                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P2;
+      44: invokevirtual #110                // Method com/mojang/datafixers/Products$P3.and:(Lcom/mojang/datafixers/Products$P2;)Lcom/mojang/datafixers/Products$P5;
+      47: aload_0
+      48: invokedynamic #116,  0            // InvokeDynamic #3:apply:()Lcom/mojang/datafixers/util/Function5;
+      53: invokevirtual #119                // Method com/mojang/datafixers/Products$P5.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function5;)Lcom/mojang/datafixers/kinds/App;
+      56: areturn
+
+  private static java.lang.Integer lambda$static$1(org.violetmoon.quark.content.world.feature.MultiFoliageStraightTrunkPlacer);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field maxBlobs:I
+       4: invokestatic  #124                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$0(org.violetmoon.quark.content.world.feature.MultiFoliageStraightTrunkPlacer);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field foliageDistance:I
+       4: invokestatic  #124                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #130,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+       5: invokestatic  #131                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #137                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: new           #141                // class net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType
+      14: dup
+      15: getstatic     #137                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      18: invokespecial #143                // Method net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType."<init>":(Lcom/mojang/serialization/MapCodec;)V
+      21: putstatic     #16                 // Field TYPE:Lnet/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType;
+      24: return
+}

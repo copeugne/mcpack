@@ -1,0 +1,290 @@
+Compiled from "WraithModule.java"
+public class org.violetmoon.quark.content.mobs.module.WraithModule extends org.violetmoon.zeta.module.ZetaModule {
+  public static net.minecraft.world.entity.EntityType<org.violetmoon.quark.content.mobs.entity.Wraith> wraithType;
+
+  public static net.minecraft.world.entity.EntityType<org.violetmoon.quark.content.mobs.entity.SoulBead> soulBeadType;
+
+  private static java.util.List<java.lang.String> wraithSounds;
+
+  public static org.violetmoon.zeta.config.type.EntitySpawnConfig spawnConfig;
+
+  public static net.minecraft.tags.TagKey<net.minecraft.world.level.block.Block> wraithSpawnableTag;
+
+  public static net.minecraft.tags.TagKey<net.minecraft.world.level.levelgen.structure.Structure> soulBeadTargetTag;
+
+  public static java.util.List<java.lang.String> validWraithSounds;
+
+  public static net.minecraft.world.item.Item soul_bead;
+
+  public org.violetmoon.quark.content.mobs.module.WraithModule();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method org/violetmoon/zeta/module/ZetaModule."<init>":()V
+       4: return
+
+  public final void register(org.violetmoon.zeta.event.load.ZRegister);
+    Code:
+       0: new           #7                  // class org/violetmoon/quark/content/mobs/item/SoulBeadItem
+       3: dup
+       4: aload_0
+       5: invokespecial #9                  // Method org/violetmoon/quark/content/mobs/item/SoulBeadItem."<init>":(Lorg/violetmoon/zeta/module/ZetaModule;)V
+       8: putstatic     #12                 // Field soul_bead:Lnet/minecraft/world/item/Item;
+      11: invokedynamic #18,  0             // InvokeDynamic #0:create:()Lnet/minecraft/world/entity/EntityType$EntityFactory;
+      16: getstatic     #22                 // Field net/minecraft/world/entity/MobCategory.MONSTER:Lnet/minecraft/world/entity/MobCategory;
+      19: invokestatic  #28                 // Method net/minecraft/world/entity/EntityType$Builder.of:(Lnet/minecraft/world/entity/EntityType$EntityFactory;Lnet/minecraft/world/entity/MobCategory;)Lnet/minecraft/world/entity/EntityType$Builder;
+      22: ldc           #34                 // float 0.6f
+      24: ldc           #35                 // float 1.95f
+      26: invokevirtual #36                 // Method net/minecraft/world/entity/EntityType$Builder.sized:(FF)Lnet/minecraft/world/entity/EntityType$Builder;
+      29: bipush        8
+      31: invokevirtual #40                 // Method net/minecraft/world/entity/EntityType$Builder.clientTrackingRange:(I)Lnet/minecraft/world/entity/EntityType$Builder;
+      34: invokevirtual #44                 // Method net/minecraft/world/entity/EntityType$Builder.fireImmune:()Lnet/minecraft/world/entity/EntityType$Builder;
+      37: ldc           #48                 // String wraith
+      39: invokevirtual #50                 // Method net/minecraft/world/entity/EntityType$Builder.build:(Ljava/lang/String;)Lnet/minecraft/world/entity/EntityType;
+      42: putstatic     #54                 // Field wraithType:Lnet/minecraft/world/entity/EntityType;
+      45: getstatic     #58                 // Field org/violetmoon/quark/base/Quark.ZETA:Lorg/violetmoon/zeta/Zeta;
+      48: getfield      #64                 // Field org/violetmoon/zeta/Zeta.registry:Lorg/violetmoon/zeta/registry/ZetaRegistry;
+      51: getstatic     #54                 // Field wraithType:Lnet/minecraft/world/entity/EntityType;
+      54: ldc           #48                 // String wraith
+      56: getstatic     #70                 // Field net/minecraft/core/registries/Registries.ENTITY_TYPE:Lnet/minecraft/resources/ResourceKey;
+      59: invokevirtual #76                 // Method org/violetmoon/zeta/registry/ZetaRegistry.register:(Ljava/lang/Object;Ljava/lang/String;Lnet/minecraft/resources/ResourceKey;)V
+      62: invokedynamic #82,  0             // InvokeDynamic #1:create:()Lnet/minecraft/world/entity/EntityType$EntityFactory;
+      67: getstatic     #83                 // Field net/minecraft/world/entity/MobCategory.MISC:Lnet/minecraft/world/entity/MobCategory;
+      70: invokestatic  #28                 // Method net/minecraft/world/entity/EntityType$Builder.of:(Lnet/minecraft/world/entity/EntityType$EntityFactory;Lnet/minecraft/world/entity/MobCategory;)Lnet/minecraft/world/entity/EntityType$Builder;
+      73: fconst_0
+      74: fconst_0
+      75: invokevirtual #36                 // Method net/minecraft/world/entity/EntityType$Builder.sized:(FF)Lnet/minecraft/world/entity/EntityType$Builder;
+      78: iconst_4
+      79: invokevirtual #40                 // Method net/minecraft/world/entity/EntityType$Builder.clientTrackingRange:(I)Lnet/minecraft/world/entity/EntityType$Builder;
+      82: bipush        10
+      84: invokevirtual #86                 // Method net/minecraft/world/entity/EntityType$Builder.updateInterval:(I)Lnet/minecraft/world/entity/EntityType$Builder;
+      87: invokevirtual #44                 // Method net/minecraft/world/entity/EntityType$Builder.fireImmune:()Lnet/minecraft/world/entity/EntityType$Builder;
+      90: ldc           #89                 // String soul_bead
+      92: invokevirtual #50                 // Method net/minecraft/world/entity/EntityType$Builder.build:(Ljava/lang/String;)Lnet/minecraft/world/entity/EntityType;
+      95: putstatic     #90                 // Field soulBeadType:Lnet/minecraft/world/entity/EntityType;
+      98: aload_1
+      99: invokeinterface #93,  1           // InterfaceMethod org/violetmoon/zeta/event/load/ZRegister.getRegistry:()Lorg/violetmoon/zeta/registry/ZetaRegistry;
+     104: getstatic     #90                 // Field soulBeadType:Lnet/minecraft/world/entity/EntityType;
+     107: ldc           #89                 // String soul_bead
+     109: getstatic     #70                 // Field net/minecraft/core/registries/Registries.ENTITY_TYPE:Lnet/minecraft/resources/ResourceKey;
+     112: invokevirtual #76                 // Method org/violetmoon/zeta/registry/ZetaRegistry.register:(Ljava/lang/Object;Ljava/lang/String;Lnet/minecraft/resources/ResourceKey;)V
+     115: getstatic     #58                 // Field org/violetmoon/quark/base/Quark.ZETA:Lorg/violetmoon/zeta/Zeta;
+     118: getfield      #99                 // Field org/violetmoon/zeta/Zeta.entitySpawn:Lorg/violetmoon/zeta/world/EntitySpawnHandler;
+     121: getstatic     #54                 // Field wraithType:Lnet/minecraft/world/entity/EntityType;
+     124: getstatic     #22                 // Field net/minecraft/world/entity/MobCategory.MONSTER:Lnet/minecraft/world/entity/MobCategory;
+     127: getstatic     #103                // Field net/minecraft/world/entity/SpawnPlacementTypes.ON_GROUND:Lnet/minecraft/world/entity/SpawnPlacementType;
+     130: getstatic     #109                // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING_NO_LEAVES:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     133: invokedynamic #115,  0            // InvokeDynamic #2:test:()Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;
+     138: getstatic     #119                // Field spawnConfig:Lorg/violetmoon/zeta/config/type/EntitySpawnConfig;
+     141: invokevirtual #123                // Method org/violetmoon/zeta/world/EntitySpawnHandler.registerSpawn:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/MobCategory;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;Lorg/violetmoon/zeta/config/type/EntitySpawnConfig;)V
+     144: getstatic     #58                 // Field org/violetmoon/quark/base/Quark.ZETA:Lorg/violetmoon/zeta/Zeta;
+     147: getfield      #99                 // Field org/violetmoon/zeta/Zeta.entitySpawn:Lorg/violetmoon/zeta/world/EntitySpawnHandler;
+     150: aload_0
+     151: getstatic     #54                 // Field wraithType:Lnet/minecraft/world/entity/EntityType;
+     154: ldc           #129                // int 15527148
+     156: ldc           #130                // int 12434877
+     158: getstatic     #119                // Field spawnConfig:Lorg/violetmoon/zeta/config/type/EntitySpawnConfig;
+     161: invokevirtual #131                // Method org/violetmoon/zeta/world/EntitySpawnHandler.addEgg:(Lorg/violetmoon/zeta/module/ZetaModule;Lnet/minecraft/world/entity/EntityType;IILorg/violetmoon/zeta/config/type/EntitySpawnConfig;)V
+     164: aload_1
+     165: invokeinterface #135,  1          // InterfaceMethod org/violetmoon/zeta/event/load/ZRegister.getAdvancementModifierRegistry:()Lorg/violetmoon/zeta/advancement/AdvancementModifierRegistry;
+     170: new           #139                // class org/violetmoon/zeta/advancement/modifier/MonsterHunterModifier
+     173: dup
+     174: aload_0
+     175: getstatic     #54                 // Field wraithType:Lnet/minecraft/world/entity/EntityType;
+     178: invokestatic  #141                // Method com/google/common/collect/ImmutableSet.of:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableSet;
+     181: invokespecial #146                // Method org/violetmoon/zeta/advancement/modifier/MonsterHunterModifier."<init>":(Lorg/violetmoon/zeta/module/ZetaModule;Ljava/util/Set;)V
+     184: invokevirtual #149                // Method org/violetmoon/zeta/advancement/AdvancementModifierRegistry.addModifier:(Lorg/violetmoon/zeta/api/IAdvancementModifier;)V
+     187: return
+
+  public final void entityAttrs(org.violetmoon.zeta.event.load.ZEntityAttributeCreation);
+    Code:
+       0: aload_1
+       1: getstatic     #54                 // Field wraithType:Lnet/minecraft/world/entity/EntityType;
+       4: invokestatic  #155                // Method org/violetmoon/quark/content/mobs/entity/Wraith.registerAttributes:()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+       7: invokevirtual #161                // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.build:()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier;
+      10: invokeinterface #166,  3          // InterfaceMethod org/violetmoon/zeta/event/load/ZEntityAttributeCreation.put:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier;)V
+      15: return
+
+  public final void setup(org.violetmoon.zeta.event.load.ZCommonSetup);
+    Code:
+       0: getstatic     #172                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+       3: ldc           #175                // String wraith_spawnable
+       5: invokestatic  #177                // Method org/violetmoon/quark/base/Quark.asTagKey:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lnet/minecraft/tags/TagKey;
+       8: putstatic     #181                // Field wraithSpawnableTag:Lnet/minecraft/tags/TagKey;
+      11: getstatic     #185                // Field net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+      14: ldc           #188                // String soul_bead_target
+      16: invokestatic  #177                // Method org/violetmoon/quark/base/Quark.asTagKey:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lnet/minecraft/tags/TagKey;
+      19: putstatic     #190                // Field soulBeadTargetTag:Lnet/minecraft/tags/TagKey;
+      22: return
+
+  public final void configChanged(org.violetmoon.zeta.event.load.ZConfigChanged);
+    Code:
+       0: getstatic     #193                // Field wraithSounds:Ljava/util/List;
+       3: invokeinterface #197,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+       8: invokedynamic #203,  0            // InvokeDynamic #3:test:()Ljava/util/function/Predicate;
+      13: invokeinterface #206,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      18: invokestatic  #212                // Method java/util/stream/Collectors.toList:()Ljava/util/stream/Collector;
+      21: invokeinterface #218,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+      26: checkcast     #198                // class java/util/List
+      29: putstatic     #222                // Field validWraithSounds:Ljava/util/List;
+      32: return
+
+  private static boolean lambda$configChanged$2(java.lang.String);
+    Code:
+       0: aload_0
+       1: ldc           #225                // String \\|
+       3: invokevirtual #227                // Method java/lang/String.split:(Ljava/lang/String;)[Ljava/lang/String;
+       6: arraylength
+       7: iconst_3
+       8: if_icmpne     15
+      11: iconst_1
+      12: goto          16
+      15: iconst_0
+      16: ireturn
+
+  private static boolean lambda$register$1(net.minecraft.world.entity.EntityType, net.minecraft.world.level.ServerLevelAccessor, net.minecraft.world.entity.MobSpawnType, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aload         4
+       6: invokestatic  #233                // Method net/minecraft/world/entity/monster/Monster.checkMonsterSpawnRules:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)Z
+       9: ifeq          35
+      12: aload_1
+      13: aload_3
+      14: invokevirtual #239                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      17: invokeinterface #245,  2          // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      22: getstatic     #181                // Field wraithSpawnableTag:Lnet/minecraft/tags/TagKey;
+      25: invokevirtual #251                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      28: ifeq          35
+      31: iconst_1
+      32: goto          36
+      35: iconst_0
+      36: ireturn
+
+  private static boolean lambda$static$0(java.lang.String);
+    Code:
+       0: aload_0
+       1: ldc           #225                // String \\|
+       3: invokevirtual #227                // Method java/lang/String.split:(Ljava/lang/String;)[Ljava/lang/String;
+       6: arraylength
+       7: iconst_3
+       8: if_icmpne     15
+      11: iconst_1
+      12: goto          16
+      15: iconst_0
+      16: ireturn
+
+  static {};
+    Code:
+       0: bipush        20
+       2: anewarray     #228                // class java/lang/String
+       5: dup
+       6: iconst_0
+       7: ldc_w         #257                // String entity.sheep.ambient|entity.sheep.hurt|entity.sheep.death
+      10: aastore
+      11: dup
+      12: iconst_1
+      13: ldc_w         #259                // String entity.cow.ambient|entity.cow.hurt|entity.cow.death
+      16: aastore
+      17: dup
+      18: iconst_2
+      19: ldc_w         #261                // String entity.pig.ambient|entity.pig.hurt|entity.pig.death
+      22: aastore
+      23: dup
+      24: iconst_3
+      25: ldc_w         #263                // String entity.chicken.ambient|entity.chicken.hurt|entity.chicken.death
+      28: aastore
+      29: dup
+      30: iconst_4
+      31: ldc_w         #265                // String entity.horse.ambient|entity.horse.hurt|entity.horse.death
+      34: aastore
+      35: dup
+      36: iconst_5
+      37: ldc_w         #267                // String entity.cat.ambient|entity.cat.hurt|entity.cat.death
+      40: aastore
+      41: dup
+      42: bipush        6
+      44: ldc_w         #269                // String entity.wolf.ambient|entity.wolf.hurt|entity.wolf.death
+      47: aastore
+      48: dup
+      49: bipush        7
+      51: ldc_w         #271                // String entity.villager.ambient|entity.villager.hurt|entity.villager.death
+      54: aastore
+      55: dup
+      56: bipush        8
+      58: ldc_w         #273                // String entity.polar_bear.ambient|entity.polar_bear.hurt|entity.polar_bear.death
+      61: aastore
+      62: dup
+      63: bipush        9
+      65: ldc_w         #275                // String entity.zombie.ambient|entity.zombie.hurt|entity.zombie.death
+      68: aastore
+      69: dup
+      70: bipush        10
+      72: ldc_w         #277                // String entity.skeleton.ambient|entity.skeleton.hurt|entity.skeleton.death
+      75: aastore
+      76: dup
+      77: bipush        11
+      79: ldc_w         #279                // String entity.spider.ambient|entity.spider.hurt|entity.spider.death
+      82: aastore
+      83: dup
+      84: bipush        12
+      86: ldc_w         #281                // String |entity.creeper.hurt|entity.creeper.death
+      89: aastore
+      90: dup
+      91: bipush        13
+      93: ldc_w         #283                // String entity.enderman.ambient|entity.enderman.hurt|entity.enderman.death
+      96: aastore
+      97: dup
+      98: bipush        14
+     100: ldc_w         #285                // String entity.zombified_piglin.ambient|entity.zombified_piglin.hurt|entity.zombified_piglin.death
+     103: aastore
+     104: dup
+     105: bipush        15
+     107: ldc_w         #287                // String entity.witch.ambient|entity.witch.hurt|entity.witch.death
+     110: aastore
+     111: dup
+     112: bipush        16
+     114: ldc_w         #289                // String entity.blaze.ambient|entity.blaze.hurt|entity.blaze.death
+     117: aastore
+     118: dup
+     119: bipush        17
+     121: ldc_w         #291                // String entity.llama.ambient|entity.llama.hurt|entity.llama.death
+     124: aastore
+     125: dup
+     126: bipush        18
+     128: ldc_w         #293                // String |quark:entity.stoneling.cry|quark:entity.stoneling.die
+     131: aastore
+     132: dup
+     133: bipush        19
+     135: ldc_w         #295                // String minecraft:entity.frog.ambient|minecraft:entity.frog.hurt|minecraft:entity.frog.death
+     138: aastore
+     139: invokestatic  #297                // Method com/google/common/collect/Lists.newArrayList:([Ljava/lang/Object;)Ljava/util/ArrayList;
+     142: putstatic     #193                // Field wraithSounds:Ljava/util/List;
+     145: new           #303                // class org/violetmoon/zeta/config/type/CostSensitiveEntitySpawnConfig
+     148: dup
+     149: iconst_5
+     150: iconst_1
+     151: iconst_3
+     152: ldc2_w        #305                // double 0.7d
+     155: ldc2_w        #307                // double 0.15d
+     158: iconst_0
+     159: iconst_1
+     160: anewarray     #228                // class java/lang/String
+     163: dup
+     164: iconst_0
+     165: ldc_w         #309                // String minecraft:soul_sand_valley
+     168: aastore
+     169: invokestatic  #311                // Method org/violetmoon/zeta/config/type/CompoundBiomeConfig.fromBiomeReslocs:(Z[Ljava/lang/String;)Lorg/violetmoon/zeta/config/type/CompoundBiomeConfig;
+     172: invokespecial #317                // Method org/violetmoon/zeta/config/type/CostSensitiveEntitySpawnConfig."<init>":(IIIDDLorg/violetmoon/zeta/config/type/IBiomeConfig;)V
+     175: putstatic     #119                // Field spawnConfig:Lorg/violetmoon/zeta/config/type/EntitySpawnConfig;
+     178: getstatic     #193                // Field wraithSounds:Ljava/util/List;
+     181: invokeinterface #197,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+     186: invokedynamic #320,  0            // InvokeDynamic #4:test:()Ljava/util/function/Predicate;
+     191: invokeinterface #206,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+     196: invokestatic  #212                // Method java/util/stream/Collectors.toList:()Ljava/util/stream/Collector;
+     199: invokeinterface #218,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+     204: checkcast     #198                // class java/util/List
+     207: putstatic     #222                // Field validWraithSounds:Ljava/util/List;
+     210: return
+}

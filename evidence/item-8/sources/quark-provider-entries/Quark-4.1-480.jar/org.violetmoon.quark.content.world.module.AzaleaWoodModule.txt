@@ -1,0 +1,71 @@
+Compiled from "AzaleaWoodModule.java"
+public class org.violetmoon.quark.content.world.module.AzaleaWoodModule extends org.violetmoon.zeta.module.ZetaModule {
+  public static org.violetmoon.quark.base.handler.WoodSetHandler$WoodSet woodSet;
+
+  public org.violetmoon.quark.content.world.module.AzaleaWoodModule();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method org/violetmoon/zeta/module/ZetaModule."<init>":()V
+       4: return
+
+  public final void register(org.violetmoon.zeta.event.load.ZRegister);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: ldc           #7                  // String azalea
+       4: getstatic     #9                  // Field net/minecraft/world/level/material/MapColor.COLOR_LIGHT_GREEN:Lnet/minecraft/world/level/material/MapColor;
+       7: getstatic     #15                 // Field net/minecraft/world/level/material/MapColor.COLOR_BROWN:Lnet/minecraft/world/level/material/MapColor;
+      10: iconst_1
+      11: invokestatic  #18                 // Method org/violetmoon/quark/base/handler/WoodSetHandler.addWoodSet:(Lorg/violetmoon/zeta/event/load/ZRegister;Lorg/violetmoon/zeta/module/ZetaModule;Ljava/lang/String;Lnet/minecraft/world/level/material/MapColor;Lnet/minecraft/world/level/material/MapColor;Z)Lorg/violetmoon/quark/base/handler/WoodSetHandler$WoodSet;
+      14: putstatic     #24                 // Field woodSet:Lorg/violetmoon/quark/base/handler/WoodSetHandler$WoodSet;
+      17: return
+
+  public final void onServerReload(org.violetmoon.zeta.event.load.ZAddReloadListener);
+    Code:
+       0: aload_1
+       1: invokeinterface #30,  1           // InterfaceMethod org/violetmoon/zeta/event/load/ZAddReloadListener.getRegistryAccess:()Lnet/minecraft/core/RegistryAccess;
+       6: getstatic     #36                 // Field net/minecraft/core/registries/Registries.CONFIGURED_FEATURE:Lnet/minecraft/resources/ResourceKey;
+       9: invokeinterface #42,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      14: invokedynamic #48,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      19: invokevirtual #52                 // Method java/util/Optional.flatMap:(Ljava/util/function/Function;)Ljava/util/Optional;
+      22: aconst_null
+      23: invokevirtual #58                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      26: checkcast     #62                 // class net/minecraft/world/level/levelgen/feature/ConfiguredFeature
+      29: astore_2
+      30: getstatic     #24                 // Field woodSet:Lorg/violetmoon/quark/base/handler/WoodSetHandler$WoodSet;
+      33: ifnull        63
+      36: aload_2
+      37: ifnull        63
+      40: aload_2
+      41: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/feature/ConfiguredFeature.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      44: astore        4
+      46: aload         4
+      48: instanceof    #68                 // class net/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration
+      51: ifeq          63
+      54: aload         4
+      56: checkcast     #68                 // class net/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration
+      59: astore_3
+      60: goto          64
+      63: return
+      64: aload_0
+      65: invokevirtual #70                 // Method isEnabled:()Z
+      68: ifeq          87
+      71: aload_3
+      72: getstatic     #24                 // Field woodSet:Lorg/violetmoon/quark/base/handler/WoodSetHandler$WoodSet;
+      75: getfield      #74                 // Field org/violetmoon/quark/base/handler/WoodSetHandler$WoodSet.log:Lnet/minecraft/world/level/block/Block;
+      78: invokestatic  #80                 // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.simple:(Lnet/minecraft/world/level/block/Block;)Lnet/minecraft/world/level/levelgen/feature/stateproviders/SimpleStateProvider;
+      81: putfield      #86                 // Field net/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration.trunkProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      84: goto          97
+      87: aload_3
+      88: getstatic     #90                 // Field net/minecraft/world/level/block/Blocks.OAK_LOG:Lnet/minecraft/world/level/block/Block;
+      91: invokestatic  #80                 // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.simple:(Lnet/minecraft/world/level/block/Block;)Lnet/minecraft/world/level/levelgen/feature/stateproviders/SimpleStateProvider;
+      94: putfield      #86                 // Field net/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration.trunkProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      97: return
+
+  private static java.util.Optional lambda$onServerReload$0(net.minecraft.core.Registry);
+    Code:
+       0: aload_0
+       1: getstatic     #95                 // Field net/minecraft/data/worldgen/features/TreeFeatures.AZALEA_TREE:Lnet/minecraft/resources/ResourceKey;
+       4: invokeinterface #100,  2          // InterfaceMethod net/minecraft/core/Registry.getOptional:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+       9: areturn
+}
