@@ -61,7 +61,7 @@ def parse_args() -> argparse.Namespace:
     selection = parser.add_mutually_exclusive_group()
     for flag in ("--soaring", "--nether", "--nether-houses", "--nether-arenas",
                  "--nether-landmarks", "--voyager-small", "--voyager-buildings",
-                 "--voyager-landmarks", "--terralith-buildings"):
+                 "--voyager-landmarks", "--terralith-buildings", "--adora-trees"):
         _ = selection.add_argument(flag, action="store_true")
     return parser.parse_args()
 
@@ -80,9 +80,12 @@ def main() -> None:
     archive_name = "MoogsSoaringStructures-1.21-2.1.2.jar" if soaring else "BetterEnd-21.0.31.jar"
     archive_name = "MoogsNetherStructures-1.21-3.0.0-alpha.2.jar" if nether else archive_name
     archive_name = "MoogsVoyagerStructures-1.21-5.0.11.jar" if voyager else archive_name
-    archive_name = ("Terralith_1.21.1_v2.6.2_Neoforge.jar"
+    archive_name = ("adorabuild-structures-2.11.0-neoforge-1.21.3.jar"
+                    if cast("bool", args.adora_trees) else
+                    "Terralith_1.21.1_v2.6.2_Neoforge.jar"
                     if cast("bool", args.terralith_buildings) else archive_name)
-    compressed = soaring or nether or voyager or cast("bool", args.terralith_buildings)
+    compressed = (soaring or nether or voyager or cast("bool", args.terralith_buildings)
+                  or cast("bool", args.adora_trees))
     source = next(s for s in retained_sources(Path.cwd()) if s.name == archive_name)
     if hashlib.sha256(source.path.read_bytes()).hexdigest() != source.sha256:
         message = f"Archive identity mismatch: {archive_name}"
@@ -194,15 +197,20 @@ def main() -> None:
                              ("complex", "barracks", "house", "house2", "house3",
                               "road_straight", "road_crosswalk")],
         } if cast("bool", args.terralith_buildings) else sheets
+        namespace = "adorabuild_structures" if cast("bool", args.adora_trees) else namespace
+        sheets = {
+            "trees_mushroom": ["birch_tree_1", "cherry_tree_1", "oak_tree_1", "mushroom_large_1"],
+            "tree_houses": ["jungle_tree_house_1", "mangrove_tree_house_1",
+                            "mangrove_tree_house_2"],
+        } if cast("bool", args.adora_trees) else sheets
         for biome, names in sheets.items():
-            count = len(names)
             pieces: list[str] = []
             for index, name in enumerate(names):
                 raw = archive.read(f"data/{namespace}/structure/{name}.nbt")
                 title = name if compressed else name.rsplit("/", 1)[1]
                 pieces.append(diagram(raw, title, 20 + index % 2 * 300,
                                       35 + index // 2 * 300, exposed=compressed))
-            height = ((count + 1) // 2) * 300
+            height = ((len(names) + 1) // 2) * 300
             svg = "".join((
                 f'<svg xmlns="http://www.w3.org/2000/svg" width="620" height="{height}">',
                    '<rect width="100%" height="100%" fill="white"/>',

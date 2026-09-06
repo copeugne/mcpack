@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+The furnished AdoraBuild tree/mushroom/tree-house boundary needs a direct layout
+comparison: content lists cannot distinguish built-in tree rooms from separate
+canopy houses. Select their seven exact templates with the existing renderer.
+No new measurement system or broader capture is justified. Backlog remains 87.
+
 Inventory matches 1ccfea35 and reproduces exactly. Canonical-note backlog: 87
 (IDAS 59, AdoraBuild 28). Next: furnished tree/mushroom/tree-house relationships
 and remaining AdoraBuild designs. Coverage groups: 405. Required attributes and
