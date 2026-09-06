@@ -1218,7 +1218,9 @@ def test_provider_groups_bind_full_definitions_pools_and_registry(
     if namespace == "adorabuild_structures":
         counts = {
             "acacia_well": 1,
-            "ancient_palace": 3,
+            "ancient_palace": 1,
+            "ancient_palace_hall": 1,
+            "ancient_palace_pavilion": 1,
             "bamboo_campfire": 1,
             "basalt_chambers": 1,
             "birch_beehive": 1,
@@ -1245,7 +1247,8 @@ def test_provider_groups_bind_full_definitions_pools_and_registry(
             "ocean_bubble": 1,
             "ocean_temple": 4,
             "prison": 2,
-            "red_sand_temple": 2,
+            "red_sand_temple": 1,
+            "red_sand_shrine": 1,
             "sand_castle": 1,
             "sand_pyramid": 1,
             "tree": 2,
