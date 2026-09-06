@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 1ccfea35 and reproduces exactly. Canonical-note backlog: 87
+(IDAS 59, AdoraBuild 28). Next: furnished tree/mushroom/tree-house relationships
+and remaining AdoraBuild designs. Coverage groups: 405. Required attributes and
+33 nonregistry contributions remain open.
+
 AdoraBuild well, bamboo camp and apiary design relationships are resolved from
 existing template content. Tree and mushroom descriptions now correctly identify
 furnished installations/residence; their design reconciliation remains open. The
