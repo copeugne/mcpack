@@ -1,0 +1,547 @@
+Classfile forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar!/META-INF/jars/fabric-api-lookup-api-v1-1.6.71+c290471319.jar!/net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.class
+  Last modified Feb 21, 2026; size 4671 bytes
+  SHA-256 checksum 01532a1d81bd32958b2b366d1bc4c5843d964d38d2c7f3d55b63cddb087f28eb
+  Compiled from "ServerWorldMixin.java"
+abstract class net.fabricmc.fabric.mixin.lookup.ServerWorldMixin implements net.fabricmc.fabric.impl.lookup.block.ServerWorldCache
+  minor version: 0
+  major version: 65
+  flags: (0x0420) ACC_SUPER, ACC_ABSTRACT
+  this_class: #11                         // net/fabricmc/fabric/mixin/lookup/ServerWorldMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 2, methods: 9, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Class              #8            // it/unimi/dsi/fastutil/objects/Object2ReferenceOpenHashMap
+    #8 = Utf8               it/unimi/dsi/fastutil/objects/Object2ReferenceOpenHashMap
+    #9 = Methodref          #7.#3         // it/unimi/dsi/fastutil/objects/Object2ReferenceOpenHashMap."<init>":()V
+   #10 = Fieldref           #11.#12       // net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.apiLookupCaches:Ljava/util/Map;
+   #11 = Class              #13           // net/fabricmc/fabric/mixin/lookup/ServerWorldMixin
+   #12 = NameAndType        #14:#15       // apiLookupCaches:Ljava/util/Map;
+   #13 = Utf8               net/fabricmc/fabric/mixin/lookup/ServerWorldMixin
+   #14 = Utf8               apiLookupCaches
+   #15 = Utf8               Ljava/util/Map;
+   #16 = Fieldref           #11.#17       // net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.apiLookupAccessesWithoutCleanup:I
+   #17 = NameAndType        #18:#19       // apiLookupAccessesWithoutCleanup:I
+   #18 = Utf8               apiLookupAccessesWithoutCleanup
+   #19 = Utf8               I
+   #20 = Methodref          #21.#22       // net/minecraft/core/BlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+   #21 = Class              #23           // net/minecraft/core/BlockPos
+   #22 = NameAndType        #24:#25       // immutable:()Lnet/minecraft/core/BlockPos;
+   #23 = Utf8               net/minecraft/core/BlockPos
+   #24 = Utf8               immutable
+   #25 = Utf8               ()Lnet/minecraft/core/BlockPos;
+   #26 = InvokeDynamic      #0:#27        // #0:apply:()Ljava/util/function/Function;
+   #27 = NameAndType        #28:#29       // apply:()Ljava/util/function/Function;
+   #28 = Utf8               apply
+   #29 = Utf8               ()Ljava/util/function/Function;
+   #30 = InterfaceMethodref #31.#32       // java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+   #31 = Class              #33           // java/util/Map
+   #32 = NameAndType        #34:#35       // computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+   #33 = Utf8               java/util/Map
+   #34 = Utf8               computeIfAbsent
+   #35 = Utf8               (Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+   #36 = Class              #37           // java/util/List
+   #37 = Utf8               java/util/List
+   #38 = InvokeDynamic      #1:#39        // #1:test:()Ljava/util/function/Predicate;
+   #39 = NameAndType        #40:#41       // test:()Ljava/util/function/Predicate;
+   #40 = Utf8               test
+   #41 = Utf8               ()Ljava/util/function/Predicate;
+   #42 = InterfaceMethodref #36.#43       // java/util/List.removeIf:(Ljava/util/function/Predicate;)Z
+   #43 = NameAndType        #44:#45       // removeIf:(Ljava/util/function/Predicate;)Z
+   #44 = Utf8               removeIf
+   #45 = Utf8               (Ljava/util/function/Predicate;)Z
+   #46 = Class              #47           // java/lang/ref/WeakReference
+   #47 = Utf8               java/lang/ref/WeakReference
+   #48 = Methodref          #46.#49       // java/lang/ref/WeakReference."<init>":(Ljava/lang/Object;)V
+   #49 = NameAndType        #5:#50        // "<init>":(Ljava/lang/Object;)V
+   #50 = Utf8               (Ljava/lang/Object;)V
+   #51 = InterfaceMethodref #36.#52       // java/util/List.add:(Ljava/lang/Object;)Z
+   #52 = NameAndType        #53:#54       // add:(Ljava/lang/Object;)Z
+   #53 = Utf8               add
+   #54 = Utf8               (Ljava/lang/Object;)Z
+   #55 = InterfaceMethodref #31.#56       // java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+   #56 = NameAndType        #57:#58       // get:(Ljava/lang/Object;)Ljava/lang/Object;
+   #57 = Utf8               get
+   #58 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #59 = InvokeDynamic      #2:#39        // #2:test:()Ljava/util/function/Predicate;
+   #60 = InterfaceMethodref #36.#61       // java/util/List.size:()I
+   #61 = NameAndType        #62:#63       // size:()I
+   #62 = Utf8               size
+   #63 = Utf8               ()I
+   #64 = InterfaceMethodref #31.#65       // java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+   #65 = NameAndType        #66:#58       // remove:(Ljava/lang/Object;)Ljava/lang/Object;
+   #66 = Utf8               remove
+   #67 = InvokeDynamic      #3:#68        // #3:accept:()Ljava/util/function/Consumer;
+   #68 = NameAndType        #69:#70       // accept:()Ljava/util/function/Consumer;
+   #69 = Utf8               accept
+   #70 = Utf8               ()Ljava/util/function/Consumer;
+   #71 = InterfaceMethodref #36.#72       // java/util/List.forEach:(Ljava/util/function/Consumer;)V
+   #72 = NameAndType        #73:#74       // forEach:(Ljava/util/function/Consumer;)V
+   #73 = Utf8               forEach
+   #74 = Utf8               (Ljava/util/function/Consumer;)V
+   #75 = InterfaceMethodref #31.#61       // java/util/Map.size:()I
+   #76 = InterfaceMethodref #31.#77       // java/util/Map.entrySet:()Ljava/util/Set;
+   #77 = NameAndType        #78:#79       // entrySet:()Ljava/util/Set;
+   #78 = Utf8               entrySet
+   #79 = Utf8               ()Ljava/util/Set;
+   #80 = InvokeDynamic      #4:#39        // #4:test:()Ljava/util/function/Predicate;
+   #81 = InterfaceMethodref #82.#43       // java/util/Set.removeIf:(Ljava/util/function/Predicate;)Z
+   #82 = Class              #83           // java/util/Set
+   #83 = Utf8               java/util/Set
+   #84 = InterfaceMethodref #85.#86       // java/util/Map$Entry.getValue:()Ljava/lang/Object;
+   #85 = Class              #87           // java/util/Map$Entry
+   #86 = NameAndType        #88:#89       // getValue:()Ljava/lang/Object;
+   #87 = Utf8               java/util/Map$Entry
+   #88 = Utf8               getValue
+   #89 = Utf8               ()Ljava/lang/Object;
+   #90 = InvokeDynamic      #5:#39        // #5:test:()Ljava/util/function/Predicate;
+   #91 = InterfaceMethodref #36.#92       // java/util/List.isEmpty:()Z
+   #92 = NameAndType        #93:#94       // isEmpty:()Z
+   #93 = Utf8               isEmpty
+   #94 = Utf8               ()Z
+   #95 = Methodref          #46.#96       // java/lang/ref/WeakReference.get:()Ljava/lang/Object;
+   #96 = NameAndType        #57:#89       // get:()Ljava/lang/Object;
+   #97 = Class              #98           // net/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl
+   #98 = Utf8               net/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl
+   #99 = Methodref          #97.#100      // net/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl.invalidate:()V
+  #100 = NameAndType        #101:#6       // invalidate:()V
+  #101 = Utf8               invalidate
+  #102 = Class              #103          // java/util/ArrayList
+  #103 = Utf8               java/util/ArrayList
+  #104 = Methodref          #102.#3       // java/util/ArrayList."<init>":()V
+  #105 = Class              #106          // net/fabricmc/fabric/impl/lookup/block/ServerWorldCache
+  #106 = Utf8               net/fabricmc/fabric/impl/lookup/block/ServerWorldCache
+  #107 = Utf8               Signature
+  #108 = Utf8               Ljava/util/Map<Lnet/minecraft/core/BlockPos;Ljava/util/List<Ljava/lang/ref/WeakReference<Lnet/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl<**>;>;>;>;
+  #109 = Utf8               RuntimeVisibleAnnotations
+  #110 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #111 = Utf8               Code
+  #112 = Utf8               LineNumberTable
+  #113 = Utf8               LocalVariableTable
+  #114 = Utf8               this
+  #115 = Utf8               Lnet/fabricmc/fabric/mixin/lookup/ServerWorldMixin;
+  #116 = Utf8               fabric_registerCache
+  #117 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl;)V
+  #118 = Utf8               pos
+  #119 = Utf8               Lnet/minecraft/core/BlockPos;
+  #120 = Utf8               cache
+  #121 = Utf8               Lnet/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl;
+  #122 = Utf8               caches
+  #123 = Utf8               Ljava/util/List;
+  #124 = Utf8               LocalVariableTypeTable
+  #125 = Utf8               Lnet/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl<**>;
+  #126 = Utf8               Ljava/util/List<Ljava/lang/ref/WeakReference<Lnet/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl<**>;>;>;
+  #127 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl<**>;)V
+  #128 = Utf8               fabric_invalidateCache
+  #129 = Utf8               (Lnet/minecraft/core/BlockPos;)V
+  #130 = Utf8               StackMapTable
+  #131 = Utf8               lambda$fabric_invalidateCache$5
+  #132 = Utf8               (Ljava/util/Map$Entry;)Z
+  #133 = Utf8               entry
+  #134 = Utf8               Ljava/util/Map$Entry;
+  #135 = Utf8               lambda$fabric_invalidateCache$4
+  #136 = Utf8               (Ljava/lang/ref/WeakReference;)Z
+  #137 = Utf8               weakReference
+  #138 = Utf8               Ljava/lang/ref/WeakReference;
+  #139 = Utf8               lambda$fabric_invalidateCache$3
+  #140 = Utf8               (Ljava/lang/ref/WeakReference;)V
+  #141 = Utf8               lambda$fabric_invalidateCache$2
+  #142 = Utf8               lambda$fabric_registerCache$1
+  #143 = Utf8               lambda$fabric_registerCache$0
+  #144 = Utf8               (Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+  #145 = Utf8               ignored
+  #146 = Utf8               SourceFile
+  #147 = Utf8               ServerWorldMixin.java
+  #148 = Utf8               RuntimeInvisibleAnnotations
+  #149 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #150 = Utf8               value
+  #151 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+  #152 = Utf8               BootstrapMethods
+  #153 = MethodType         #58           //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #154 = MethodHandle       6:#155        // REF_invokeStatic net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_registerCache$0:(Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+  #155 = Methodref          #11.#156      // net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_registerCache$0:(Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+  #156 = NameAndType        #143:#144     // lambda$fabric_registerCache$0:(Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+  #157 = MethodType         #144          //  (Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+  #158 = MethodType         #54           //  (Ljava/lang/Object;)Z
+  #159 = MethodHandle       6:#160        // REF_invokeStatic net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_registerCache$1:(Ljava/lang/ref/WeakReference;)Z
+  #160 = Methodref          #11.#161      // net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_registerCache$1:(Ljava/lang/ref/WeakReference;)Z
+  #161 = NameAndType        #142:#136     // lambda$fabric_registerCache$1:(Ljava/lang/ref/WeakReference;)Z
+  #162 = MethodType         #136          //  (Ljava/lang/ref/WeakReference;)Z
+  #163 = MethodHandle       6:#164        // REF_invokeStatic net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_invalidateCache$2:(Ljava/lang/ref/WeakReference;)Z
+  #164 = Methodref          #11.#165      // net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_invalidateCache$2:(Ljava/lang/ref/WeakReference;)Z
+  #165 = NameAndType        #141:#136     // lambda$fabric_invalidateCache$2:(Ljava/lang/ref/WeakReference;)Z
+  #166 = MethodType         #50           //  (Ljava/lang/Object;)V
+  #167 = MethodHandle       6:#168        // REF_invokeStatic net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_invalidateCache$3:(Ljava/lang/ref/WeakReference;)V
+  #168 = Methodref          #11.#169      // net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_invalidateCache$3:(Ljava/lang/ref/WeakReference;)V
+  #169 = NameAndType        #139:#140     // lambda$fabric_invalidateCache$3:(Ljava/lang/ref/WeakReference;)V
+  #170 = MethodType         #140          //  (Ljava/lang/ref/WeakReference;)V
+  #171 = MethodHandle       6:#172        // REF_invokeStatic net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_invalidateCache$5:(Ljava/util/Map$Entry;)Z
+  #172 = Methodref          #11.#173      // net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_invalidateCache$5:(Ljava/util/Map$Entry;)Z
+  #173 = NameAndType        #131:#132     // lambda$fabric_invalidateCache$5:(Ljava/util/Map$Entry;)Z
+  #174 = MethodType         #132          //  (Ljava/util/Map$Entry;)Z
+  #175 = MethodHandle       6:#176        // REF_invokeStatic net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_invalidateCache$4:(Ljava/lang/ref/WeakReference;)Z
+  #176 = Methodref          #11.#177      // net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_invalidateCache$4:(Ljava/lang/ref/WeakReference;)Z
+  #177 = NameAndType        #135:#136     // lambda$fabric_invalidateCache$4:(Ljava/lang/ref/WeakReference;)Z
+  #178 = MethodHandle       6:#179        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #179 = Methodref          #180.#181     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #180 = Class              #182          // java/lang/invoke/LambdaMetafactory
+  #181 = NameAndType        #183:#184     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #182 = Utf8               java/lang/invoke/LambdaMetafactory
+  #183 = Utf8               metafactory
+  #184 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #185 = Utf8               InnerClasses
+  #186 = Utf8               Entry
+  #187 = Class              #188          // java/lang/invoke/MethodHandles$Lookup
+  #188 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #189 = Class              #190          // java/lang/invoke/MethodHandles
+  #190 = Utf8               java/lang/invoke/MethodHandles
+  #191 = Utf8               Lookup
+{
+  private final java.util.Map<net.minecraft.core.BlockPos, java.util.List<java.lang.ref.WeakReference<net.fabricmc.fabric.impl.lookup.block.BlockApiCacheImpl<?, ?>>>> apiLookupCaches;
+    descriptor: Ljava/util/Map;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #108                         // Ljava/util/Map<Lnet/minecraft/core/BlockPos;Ljava/util/List<Ljava/lang/ref/WeakReference<Lnet/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl<**>;>;>;>;
+    RuntimeVisibleAnnotations:
+      0: #110()
+        org.spongepowered.asm.mixin.Unique
+
+  private int apiLookupAccessesWithoutCleanup;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #110()
+        org.spongepowered.asm.mixin.Unique
+
+  net.fabricmc.fabric.mixin.lookup.ServerWorldMixin();
+    descriptor: ()V
+    flags: (0x0000)
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #7                  // class it/unimi/dsi/fastutil/objects/Object2ReferenceOpenHashMap
+         8: dup
+         9: invokespecial #9                  // Method it/unimi/dsi/fastutil/objects/Object2ReferenceOpenHashMap."<init>":()V
+        12: putfield      #10                 // Field apiLookupCaches:Ljava/util/Map;
+        15: aload_0
+        16: iconst_0
+        17: putfield      #16                 // Field apiLookupAccessesWithoutCleanup:I
+        20: return
+      LineNumberTable:
+        line 33: 0
+        line 34: 4
+        line 39: 15
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      21     0  this   Lnet/fabricmc/fabric/mixin/lookup/ServerWorldMixin;
+
+  public void fabric_registerCache(net.minecraft.core.BlockPos, net.fabricmc.fabric.impl.lookup.block.BlockApiCacheImpl<?, ?>);
+    descriptor: (Lnet/minecraft/core/BlockPos;Lnet/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=4, args_size=3
+         0: aload_0
+         1: getfield      #10                 // Field apiLookupCaches:Ljava/util/Map;
+         4: aload_1
+         5: invokevirtual #20                 // Method net/minecraft/core/BlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+         8: invokedynamic #26,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+        13: invokeinterface #30,  3           // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+        18: checkcast     #36                 // class java/util/List
+        21: astore_3
+        22: aload_3
+        23: invokedynamic #38,  0             // InvokeDynamic #1:test:()Ljava/util/function/Predicate;
+        28: invokeinterface #42,  2           // InterfaceMethod java/util/List.removeIf:(Ljava/util/function/Predicate;)Z
+        33: pop
+        34: aload_3
+        35: new           #46                 // class java/lang/ref/WeakReference
+        38: dup
+        39: aload_2
+        40: invokespecial #48                 // Method java/lang/ref/WeakReference."<init>":(Ljava/lang/Object;)V
+        43: invokeinterface #51,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+        48: pop
+        49: aload_0
+        50: dup
+        51: getfield      #16                 // Field apiLookupAccessesWithoutCleanup:I
+        54: iconst_1
+        55: iadd
+        56: putfield      #16                 // Field apiLookupAccessesWithoutCleanup:I
+        59: return
+      LineNumberTable:
+        line 44: 0
+        line 45: 22
+        line 46: 34
+        line 47: 49
+        line 48: 59
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      60     0  this   Lnet/fabricmc/fabric/mixin/lookup/ServerWorldMixin;
+            0      60     1   pos   Lnet/minecraft/core/BlockPos;
+            0      60     2 cache   Lnet/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl;
+           22      38     3 caches   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      60     2 cache   Lnet/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl<**>;
+           22      38     3 caches   Ljava/util/List<Ljava/lang/ref/WeakReference<Lnet/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl<**>;>;>;
+    Signature: #127                         // (Lnet/minecraft/core/BlockPos;Lnet/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl<**>;)V
+
+  public void fabric_invalidateCache(net.minecraft.core.BlockPos);
+    descriptor: (Lnet/minecraft/core/BlockPos;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=2
+         0: aload_0
+         1: getfield      #10                 // Field apiLookupCaches:Ljava/util/Map;
+         4: aload_1
+         5: invokeinterface #55,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        10: checkcast     #36                 // class java/util/List
+        13: astore_2
+        14: aload_2
+        15: ifnull        64
+        18: aload_2
+        19: invokedynamic #59,  0             // InvokeDynamic #2:test:()Ljava/util/function/Predicate;
+        24: invokeinterface #42,  2           // InterfaceMethod java/util/List.removeIf:(Ljava/util/function/Predicate;)Z
+        29: pop
+        30: aload_2
+        31: invokeinterface #60,  1           // InterfaceMethod java/util/List.size:()I
+        36: ifne          53
+        39: aload_0
+        40: getfield      #10                 // Field apiLookupCaches:Ljava/util/Map;
+        43: aload_1
+        44: invokeinterface #64,  2           // InterfaceMethod java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+        49: pop
+        50: goto          64
+        53: aload_2
+        54: invokedynamic #67,  0             // InvokeDynamic #3:accept:()Ljava/util/function/Consumer;
+        59: invokeinterface #71,  2           // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+        64: aload_0
+        65: dup
+        66: getfield      #16                 // Field apiLookupAccessesWithoutCleanup:I
+        69: iconst_1
+        70: iadd
+        71: putfield      #16                 // Field apiLookupAccessesWithoutCleanup:I
+        74: aload_0
+        75: getfield      #16                 // Field apiLookupAccessesWithoutCleanup:I
+        78: iconst_2
+        79: aload_0
+        80: getfield      #10                 // Field apiLookupCaches:Ljava/util/Map;
+        83: invokeinterface #75,  1           // InterfaceMethod java/util/Map.size:()I
+        88: imul
+        89: if_icmple     117
+        92: aload_0
+        93: getfield      #10                 // Field apiLookupCaches:Ljava/util/Map;
+        96: invokeinterface #76,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+       101: invokedynamic #80,  0             // InvokeDynamic #4:test:()Ljava/util/function/Predicate;
+       106: invokeinterface #81,  2           // InterfaceMethod java/util/Set.removeIf:(Ljava/util/function/Predicate;)Z
+       111: pop
+       112: aload_0
+       113: iconst_0
+       114: putfield      #16                 // Field apiLookupAccessesWithoutCleanup:I
+       117: return
+      LineNumberTable:
+        line 52: 0
+        line 54: 14
+        line 55: 18
+        line 57: 30
+        line 58: 39
+        line 60: 53
+        line 70: 64
+        line 73: 74
+        line 74: 92
+        line 79: 112
+        line 81: 117
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     118     0  this   Lnet/fabricmc/fabric/mixin/lookup/ServerWorldMixin;
+            0     118     1   pos   Lnet/minecraft/core/BlockPos;
+           14     104     2 caches   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           14     104     2 caches   Ljava/util/List<Ljava/lang/ref/WeakReference<Lnet/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl<**>;>;>;
+      StackMapTable: number_of_entries = 3
+        frame_type = 252 /* append */
+          offset_delta = 53
+          locals = [ class java/util/List ]
+        frame_type = 10 /* same */
+        frame_type = 52 /* same */
+
+  private static boolean lambda$fabric_invalidateCache$5(java.util.Map$Entry);
+    descriptor: (Ljava/util/Map$Entry;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokeinterface #84,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+         6: checkcast     #36                 // class java/util/List
+         9: invokedynamic #90,  0             // InvokeDynamic #5:test:()Ljava/util/function/Predicate;
+        14: invokeinterface #42,  2           // InterfaceMethod java/util/List.removeIf:(Ljava/util/function/Predicate;)Z
+        19: pop
+        20: aload_0
+        21: invokeinterface #84,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+        26: checkcast     #36                 // class java/util/List
+        29: invokeinterface #91,  1           // InterfaceMethod java/util/List.isEmpty:()Z
+        34: ireturn
+      LineNumberTable:
+        line 75: 0
+        line 76: 20
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      35     0 entry   Ljava/util/Map$Entry;
+
+  private static boolean lambda$fabric_invalidateCache$4(java.lang.ref.WeakReference);
+    descriptor: (Ljava/lang/ref/WeakReference;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #95                 // Method java/lang/ref/WeakReference.get:()Ljava/lang/Object;
+         4: ifnonnull     11
+         7: iconst_1
+         8: goto          12
+        11: iconst_0
+        12: ireturn
+      LineNumberTable:
+        line 75: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0 weakReference   Ljava/lang/ref/WeakReference;
+      StackMapTable: number_of_entries = 2
+        frame_type = 11 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+  private static void lambda$fabric_invalidateCache$3(java.lang.ref.WeakReference);
+    descriptor: (Ljava/lang/ref/WeakReference;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=2, args_size=1
+         0: aload_0
+         1: invokevirtual #95                 // Method java/lang/ref/WeakReference.get:()Ljava/lang/Object;
+         4: checkcast     #97                 // class net/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl
+         7: astore_1
+         8: aload_1
+         9: ifnull        16
+        12: aload_1
+        13: invokevirtual #99                 // Method net/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl.invalidate:()V
+        16: return
+      LineNumberTable:
+        line 61: 0
+        line 63: 8
+        line 64: 12
+        line 66: 16
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      17     0 weakReference   Ljava/lang/ref/WeakReference;
+            8       9     1 cache   Lnet/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            8       9     1 cache   Lnet/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl<**>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 16
+          locals = [ class net/fabricmc/fabric/impl/lookup/block/BlockApiCacheImpl ]
+
+  private static boolean lambda$fabric_invalidateCache$2(java.lang.ref.WeakReference);
+    descriptor: (Ljava/lang/ref/WeakReference;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #95                 // Method java/lang/ref/WeakReference.get:()Ljava/lang/Object;
+         4: ifnonnull     11
+         7: iconst_1
+         8: goto          12
+        11: iconst_0
+        12: ireturn
+      LineNumberTable:
+        line 55: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0 weakReference   Ljava/lang/ref/WeakReference;
+      StackMapTable: number_of_entries = 2
+        frame_type = 11 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+  private static boolean lambda$fabric_registerCache$1(java.lang.ref.WeakReference);
+    descriptor: (Ljava/lang/ref/WeakReference;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #95                 // Method java/lang/ref/WeakReference.get:()Ljava/lang/Object;
+         4: ifnonnull     11
+         7: iconst_1
+         8: goto          12
+        11: iconst_0
+        12: ireturn
+      LineNumberTable:
+        line 45: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0 weakReference   Ljava/lang/ref/WeakReference;
+      StackMapTable: number_of_entries = 2
+        frame_type = 11 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+  private static java.util.List lambda$fabric_registerCache$0(net.minecraft.core.BlockPos);
+    descriptor: (Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: new           #102                // class java/util/ArrayList
+         3: dup
+         4: invokespecial #104                // Method java/util/ArrayList."<init>":()V
+         7: areturn
+      LineNumberTable:
+        line 44: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 ignored   Lnet/minecraft/core/BlockPos;
+}
+SourceFile: "ServerWorldMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #149(#150=[c#151])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ServerLevel;]
+    )
+BootstrapMethods:
+  0: #178 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #153 (Ljava/lang/Object;)Ljava/lang/Object;
+      #154 REF_invokeStatic net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_registerCache$0:(Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+      #157 (Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+  1: #178 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #158 (Ljava/lang/Object;)Z
+      #159 REF_invokeStatic net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_registerCache$1:(Ljava/lang/ref/WeakReference;)Z
+      #162 (Ljava/lang/ref/WeakReference;)Z
+  2: #178 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #158 (Ljava/lang/Object;)Z
+      #163 REF_invokeStatic net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_invalidateCache$2:(Ljava/lang/ref/WeakReference;)Z
+      #162 (Ljava/lang/ref/WeakReference;)Z
+  3: #178 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #166 (Ljava/lang/Object;)V
+      #167 REF_invokeStatic net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_invalidateCache$3:(Ljava/lang/ref/WeakReference;)V
+      #170 (Ljava/lang/ref/WeakReference;)V
+  4: #178 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #158 (Ljava/lang/Object;)Z
+      #171 REF_invokeStatic net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_invalidateCache$5:(Ljava/util/Map$Entry;)Z
+      #174 (Ljava/util/Map$Entry;)Z
+  5: #178 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #158 (Ljava/lang/Object;)Z
+      #175 REF_invokeStatic net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.lambda$fabric_invalidateCache$4:(Ljava/lang/ref/WeakReference;)Z
+      #162 (Ljava/lang/ref/WeakReference;)Z
+InnerClasses:
+  public static #186= #85 of #31;         // Entry=class java/util/Map$Entry of class java/util/Map
+  public static final #191= #187 of #189; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
