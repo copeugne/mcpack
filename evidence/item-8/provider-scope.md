@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 64 of 136. The exact queue below has 72 open rows.
+Supported provider dispositions: 65 of 136. The exact queue below has 71 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -561,7 +561,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar` | `desert-temple-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar` | `betterdungeons-code` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar` | `better-end-island-activation`, `better-end-island-configuration`, `better-end-island-exit-portal`, `better-end-island-generator-dependencies`, `better-end-island-platform-gateway`, `better-end-island-processors`, `better-end-island-spike-podium` | Reuse platform/gateway, activation and generator captures; account for remaining entries and resources. |
-| `YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar` | `jungle-temple-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
+| `YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar` | `jungle-temple-provider` (e4bb5e3), prior suppression source, test_jungle_temple_provider_scope.py | RESOLVED: One existing root, 17 connected pools and 127 templates including two disconnected table props. Custom placement and eight component processors accounted for below. |
 | `YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar` | `mineshafts-code` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar` | `fortress-provider` (5933abb), prior suppression source, test_fortress_provider_scope.py | RESOLVED: One existing root, 15 connected pools, 169 templates with 20 disconnected components and one missing template. Component processors and existing-fortress spawning hook accounted for below. |
 | `YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar` | `ocean-monument-provider` (a2f2832), prior suppression source, test_ocean_monument_provider_scope.py | RESOLVED: One existing root, 13 connected pools, 59 templates including two disconnected seagrass components. Ten block processors and marked-trident hook accounted for below. |
@@ -2368,3 +2368,45 @@ without changing raw evidence. A local complexity exemption keeps the single
 archive/graph assertion together. Source capture reproduces exactly. Census:
 64 resolved providers, 72 open. Canonical grouping and Item 8's remaining
 attribute and delivery gates are open.
+
+## Better Jungle Temples provider disposition
+
+Source e4bb5e3 and jungle-temple-suppression preserve all 32 packaged classes.
+The focused check binds archive, class and source identities and accounts for
+all 203 files. Three services select the captured NeoForge module, platform and
+processor providers. Common registration delegates to YUNG API; the module-loader
+default and compatibility initializer are empty. Prior suppression evidence
+continues to bind the frozen configuration. Shared YUNG API remains open.
+
+The sole betterjungletemples:jungle_temple root matches the runtime registry.
+All 17 pools are connected. Of 127 templates, only props/prop_table_0 and
+props/prop_table_1 are disconnected from the preserved graph. They are table
+components, not independent families. No missing references or unresolved pool
+elements occur in this graph. This establishes component accounting, not observed
+placement success for every template.
+
+Custom placement selects the same root using random-spread placement, horizontal
+biome search and an enhanced exclusion check. The two processor lists use eight
+custom types in total: block replacement, pillar supports, vine decoration, torch
+variation, blast-furnace marker variation, arrow dispensers, fireball dispensers
+and item-frame position correction. These modify this temple's components.
+ArrowData supplies trap item information. Pillar extension and serialized trap
+contents remain inputs for later size and content attribution; this closure does
+not assert effective runtime NBT acceptance. Item-frame processing adjusts existing
+frame coordinates and does not randomize loot.
+
+Other payload is loot, tags, translations, visual assets and loader metadata.
+No nested archives, functions, feature/carver definitions or unexplained payload
+categories remain. No additional family candidate was found in these entry paths.
+
+```sh
+uv run pytest -q tests/item8/test_jungle_temple_provider_scope.py tests/item8/test_yung_suppression.py
+uv run ruff check tests/item8/test_jungle_temple_provider_scope.py
+uv run basedpyright tests/item8/test_jungle_temple_provider_scope.py
+```
+
+Seven affected cases pass. The first scoped Ruff run reported function complexity;
+a local exemption preserves the existing single-archive assertion pattern.
+Scoped Ruff and Basedpyright then pass. The source's independent reproduction
+is recorded in its README. Census: 65 resolved providers, 71 open. Canonical
+grouping, required attributes and final Item 8 delivery remain open.
