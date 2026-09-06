@@ -203,6 +203,13 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "vazkii/patchouli/common/book/BookRegistry.class",
+    "vazkii/patchouli/common/multiblock/MultiblockRegistry.class",
+    "vazkii/patchouli/common/multiblock/AbstractMultiblock.class",
+    "vazkii/patchouli/common/handler/ReloadContentsHandler.class",
+    "vazkii/patchouli/common/handler/LecternEventHandler.class",
+    "vazkii/patchouli/neoforge/network/NeoForgeNetworkHandler.class",
+
     "vazkii/patchouli/neoforge/common/NeoForgeModInitializer.class",
     "vazkii/patchouli/neoforge/client/NeoForgeClientInitializer.class",
     "vazkii/patchouli/neoforge/xplat/NeoForgeXplatImpl.class",
