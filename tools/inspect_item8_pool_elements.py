@@ -227,6 +227,7 @@ CLASSES: tuple[str, ...] = (
     "rbasamoyai/createbigcannons/CreateBigCannons.class",
     "rbasamoyai/createbigcannons/CBCCommonNeoForgeEvents.class",
     "rbasamoyai/createbigcannons/CBCCommonEvents.class",
+    "rbasamoyai/createbigcannons/base/PartialBlockDamageManager.class",
     "rbasamoyai/createbigcannons/CBCModsNeoForge.class",
     "rbasamoyai/createbigcannons/mixin/ContextAwareReloadListenerAccessor.class",
     "rbasamoyai/createbigcannons/mixin/EntityMixin.class",
