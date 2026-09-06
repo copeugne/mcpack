@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches f9705ace and reproduces exactly. Canonical-note backlog: 106
+(IDAS 59, AdoraBuild 31, Terralith 15, Towns and Towers 1). Coverage groups: 405.
+Next: the remaining village relationship, then the named design comparisons.
+Required attributes and reconciliation of 33 nonregistry contributions remain.
+
+Four Aether/Deep Aether dungeon design records now bind existing custom assembly
+and template evidence. Six affected cases and scoped checks pass. Canonical-note
+backlog: 106. Coverage groups: 405. Inventory refresh follows. Successful assembly
+and effective gameplay remain unproven; nonregistry and attribute work remain.
+
 Inventory matches edd0bf75 and reproduces exactly. Canonical-note backlog: 110.
 Coverage groups: 405. Next: four Aether/Deep Aether dungeon design records against
 existing custom-generator evidence. Required attributes and nonregistry work remain.
