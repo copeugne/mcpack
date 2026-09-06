@@ -571,7 +571,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `YungsExtras-1.21.1-NeoForge-5.1.1.jar` | `yungs-extras-desert-code`, `yungs-extras-generators`, `yungs-extras-initialization`, `yungs-extras-module-default`, `yungs-extras-processor-bindings`, `yungs-extras-registration` | RESOLVED: see YUNG Extras provider disposition below. |
 | `Zeta-1.1-40.jar` | `quark-enablement-callers`, `zeta-biome-modifier`, `zeta-component-biomes`, `zeta-compound-biome`, `zeta-config-binding`, `zeta-config-event-fields`, `zeta-deferred-feature`, `zeta-enablement-inputs`, `zeta-generation-applicability`, `zeta-generation-spawn`, `zeta-generator-dispatch`, `zeta-horizontal-directions`, `zeta-module-assignment`, `zeta-module-name`, `zeta-module-section`, `zeta-stone-ore` | Reuse Quark module/feature dispatch captures; reconcile remaining public generation and nested entry consumers. |
-| `[Neoforge]ctov-3.6.3.jar` | `ctov-provider` (82ac234), test_ctov_provider_selection.py, existing CTOV family regressions and root graphs | Code and frozen callback/modifier selection bound. Reconcile bundled compatibility resources/ZIP, modifier-driven components outside root graphs, and disconnected/missing components. Do not repeat code capture or selection checks. |
+| `[Neoforge]ctov-3.6.3.jar` | `ctov-provider` (82ac234), test_ctov_provider_selection.py, test_ctov_bundled_resources.py, existing CTOV regressions/graphs | Code, selection and bundled compatibility payloads accounted for. Remaining: full ordinary payload and disconnected/missing components with modifier relationships. Do not repeat completed captures/checks. |
 | `accessories-neoforge-1.1.0-beta.53+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `adorabuild-structures-2.11.0-neoforge-1.21.3.jar` | `adorabuild-provider`, existing runtime/root and pool graph evidence | RESOLVED: 106 existing roots; all 110 pools and 121 templates connected; one preserved missing pool reference. See AdoraBuild provider disposition below. |
 | `aether-1.21.1-1.5.10-neoforge.jar` | `aether-bronze`, `aether-custom-entry`, `aether-piece-binding`, `aether-placement`, `aether-trap-bindings`, `aether-trapped-block` | Reconcile Bronze, Silver, Gold and terrain generation entry coverage; do not reopen Bronze helper internals. |
@@ -950,3 +950,33 @@ source capture and frozen config, reuses the existing condition evaluator, and
 adds no parser or measurement system. Remaining: compatibility directories/ZIP,
 full payload, disconnected/missing components and their modifier relationships.
 Provider count remains 33 resolved, 103 open.
+
+### CTOV bundled-resource disposition
+
+The extended-mushrooms ZIP contains five processor JSON files and pack metadata,
+all byte-identical to the loose bundled copies. The loose metadata is located at
+ctov-extended-mushrooms/data/pack.mcmeta. One processor list uses apply_random;
+the other four use block_swap for mushroom component materials. These are
+component transformations, not family definitions. No executable nested archive
+or independent root occurs in that ZIP.
+
+The savage-and-ravage add-on contains eleven base_plate.nbt outpost components
+and pack metadata. They are under the bundled prefix and legacy structures path,
+not additional root definitions. Captured CTOV entry code provides no loader
+for either bundled pack. Preserve the files without enabling or migrating them.
+
+The two .jso files contain add_structure_set_entries documents referencing
+eleven existing outposts and 63 existing village roots. They are outside the
+JSON modifier catalog, not extra families. Their entries all have weight 1;
+do not substitute those weights for the active callback's frozen 10/4/1 village
+weights. The callback is the separately verified selection path.
+
+```sh
+uv run pytest -q tests/item8/test_ctov_bundled_resources.py
+```
+
+One focused case and scoped Ruff/Basedpyright pass. The initial expected
+processor-type set was corrected after inspecting the four block_swap documents;
+no source resource was changed. Remaining CTOV coverage is ordinary full-payload
+accounting and disconnected/missing component relationships. Counts remain
+33 resolved, 103 open.

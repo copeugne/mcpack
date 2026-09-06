@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+CTOV bundled compatibility resources now have a passing focused check in
+test_ctov_bundled_resources.py. Mushroom ZIP contains five processor documents
+and metadata identical to loose copies; Savage and Ravage has eleven old-path
+outpost components. Two .jso files only reference existing roots and are outside
+the JSON catalog. Do not enable, migrate or count these as families. Remaining
+CTOV coverage: ordinary full payload and disconnected/missing components with
+modifier relationships. Code, frozen selection and bundle checks must be reused.
+Counts unchanged: 33 resolved, 103 open. No baseline or family-decision changes.
+
 CTOV frozen callback/modifier selection now has a focused passing regression.
 It binds 74 callback-selected roots (63 villages and eleven outposts) to the
 registry; mesa outpost and three underground-size roots remain outside that
