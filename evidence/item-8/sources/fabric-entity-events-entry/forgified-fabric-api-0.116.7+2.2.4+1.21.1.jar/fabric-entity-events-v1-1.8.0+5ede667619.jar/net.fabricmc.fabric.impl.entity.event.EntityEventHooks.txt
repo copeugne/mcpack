@@ -1,0 +1,171 @@
+Compiled from "EntityEventHooks.java"
+public final class net.fabricmc.fabric.impl.entity.event.EntityEventHooks {
+  public static void onLivingAttack(net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #1                  // Method net/neoforged/neoforge/event/entity/living/LivingIncomingDamageEvent.getEntity:()Lnet/minecraft/world/entity/LivingEntity;
+       4: astore_1
+       5: aload_1
+       6: invokevirtual #7                  // Method net/minecraft/world/entity/LivingEntity.level:()Lnet/minecraft/world/level/Level;
+       9: invokevirtual #13                 // Method net/minecraft/world/level/Level.isClientSide:()Z
+      12: ifne          46
+      15: getstatic     #19                 // Field net/fabricmc/fabric/api/entity/event/v1/ServerLivingEntityEvents.ALLOW_DAMAGE:Lnet/fabricmc/fabric/api/event/Event;
+      18: invokevirtual #25                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      21: checkcast     #31                 // class net/fabricmc/fabric/api/entity/event/v1/ServerLivingEntityEvents$AllowDamage
+      24: aload_1
+      25: aload_0
+      26: invokevirtual #33                 // Method net/neoforged/neoforge/event/entity/living/LivingIncomingDamageEvent.getSource:()Lnet/minecraft/world/damagesource/DamageSource;
+      29: aload_0
+      30: invokevirtual #37                 // Method net/neoforged/neoforge/event/entity/living/LivingIncomingDamageEvent.getAmount:()F
+      33: invokeinterface #41,  4           // InterfaceMethod net/fabricmc/fabric/api/entity/event/v1/ServerLivingEntityEvents$AllowDamage.allowDamage:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/damagesource/DamageSource;F)Z
+      38: ifne          46
+      41: aload_0
+      42: iconst_1
+      43: invokevirtual #45                 // Method net/neoforged/neoforge/event/entity/living/LivingIncomingDamageEvent.setCanceled:(Z)V
+      46: return
+
+  public static void afterLivingDamage(net.neoforged.neoforge.event.entity.living.LivingDamageEvent$Post);
+    Code:
+       0: aload_0
+       1: invokevirtual #49                 // Method net/neoforged/neoforge/event/entity/living/LivingDamageEvent$Post.getEntity:()Lnet/minecraft/world/entity/LivingEntity;
+       4: invokevirtual #52                 // Method net/minecraft/world/entity/LivingEntity.isDeadOrDying:()Z
+       7: ifne          54
+      10: getstatic     #55                 // Field net/fabricmc/fabric/api/entity/event/v1/ServerLivingEntityEvents.AFTER_DAMAGE:Lnet/fabricmc/fabric/api/event/Event;
+      13: invokevirtual #25                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      16: checkcast     #58                 // class net/fabricmc/fabric/api/entity/event/v1/ServerLivingEntityEvents$AfterDamage
+      19: aload_0
+      20: invokevirtual #49                 // Method net/neoforged/neoforge/event/entity/living/LivingDamageEvent$Post.getEntity:()Lnet/minecraft/world/entity/LivingEntity;
+      23: aload_0
+      24: invokevirtual #60                 // Method net/neoforged/neoforge/event/entity/living/LivingDamageEvent$Post.getSource:()Lnet/minecraft/world/damagesource/DamageSource;
+      27: aload_0
+      28: invokevirtual #61                 // Method net/neoforged/neoforge/event/entity/living/LivingDamageEvent$Post.getOriginalDamage:()F
+      31: aload_0
+      32: invokevirtual #64                 // Method net/neoforged/neoforge/event/entity/living/LivingDamageEvent$Post.getNewDamage:()F
+      35: aload_0
+      36: invokevirtual #67                 // Method net/neoforged/neoforge/event/entity/living/LivingDamageEvent$Post.getBlockedDamage:()F
+      39: fconst_0
+      40: fcmpl
+      41: ifle          48
+      44: iconst_1
+      45: goto          49
+      48: iconst_0
+      49: invokeinterface #70,  6           // InterfaceMethod net/fabricmc/fabric/api/entity/event/v1/ServerLivingEntityEvents$AfterDamage.afterDamage:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/damagesource/DamageSource;FFZ)V
+      54: return
+
+  public static void onPlayerSleepInBed(net.neoforged.neoforge.event.entity.player.CanPlayerSleepEvent);
+    Code:
+       0: getstatic     #74                 // Field net/fabricmc/fabric/api/entity/event/v1/EntitySleepEvents.ALLOW_SLEEPING:Lnet/fabricmc/fabric/api/event/Event;
+       3: invokevirtual #25                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+       6: checkcast     #79                 // class net/fabricmc/fabric/api/entity/event/v1/EntitySleepEvents$AllowSleeping
+       9: aload_0
+      10: invokevirtual #81                 // Method net/neoforged/neoforge/event/entity/player/CanPlayerSleepEvent.getEntity:()Lnet/minecraft/server/level/ServerPlayer;
+      13: aload_0
+      14: invokevirtual #86                 // Method net/neoforged/neoforge/event/entity/player/CanPlayerSleepEvent.getPos:()Lnet/minecraft/core/BlockPos;
+      17: invokeinterface #90,  3           // InterfaceMethod net/fabricmc/fabric/api/entity/event/v1/EntitySleepEvents$AllowSleeping.allowSleep:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/entity/player/Player$BedSleepingProblem;
+      22: astore_1
+      23: aload_1
+      24: ifnull        32
+      27: aload_0
+      28: aload_1
+      29: invokevirtual #94                 // Method net/neoforged/neoforge/event/entity/player/CanPlayerSleepEvent.setProblem:(Lnet/minecraft/world/entity/player/Player$BedSleepingProblem;)V
+      32: return
+
+  public static void onPlayerSleepingTimeCheck(net.neoforged.neoforge.event.entity.player.CanContinueSleepingEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #98                 // Method net/neoforged/neoforge/event/entity/player/CanContinueSleepingEvent.getEntity:()Lnet/minecraft/world/entity/LivingEntity;
+       4: invokevirtual #101                // Method net/minecraft/world/entity/LivingEntity.getSleepingPos:()Ljava/util/Optional;
+       7: aload_0
+       8: invokedynamic #105,  0            // InvokeDynamic #0:accept:(Lnet/neoforged/neoforge/event/entity/player/CanContinueSleepingEvent;)Ljava/util/function/Consumer;
+      13: invokevirtual #109                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+      16: return
+
+  public static void onPlayerClone(net.neoforged.neoforge.event.entity.player.PlayerEvent$Clone);
+    Code:
+       0: getstatic     #115                // Field net/fabricmc/fabric/api/entity/event/v1/ServerPlayerEvents.COPY_FROM:Lnet/fabricmc/fabric/api/event/Event;
+       3: invokevirtual #25                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+       6: checkcast     #120                // class net/fabricmc/fabric/api/entity/event/v1/ServerPlayerEvents$CopyFrom
+       9: aload_0
+      10: invokevirtual #122                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$Clone.getOriginal:()Lnet/minecraft/world/entity/player/Player;
+      13: checkcast     #128                // class net/minecraft/server/level/ServerPlayer
+      16: aload_0
+      17: invokevirtual #130                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$Clone.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      20: checkcast     #128                // class net/minecraft/server/level/ServerPlayer
+      23: aload_0
+      24: invokevirtual #132                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$Clone.isWasDeath:()Z
+      27: ifne          34
+      30: iconst_1
+      31: goto          35
+      34: iconst_0
+      35: invokeinterface #135,  4          // InterfaceMethod net/fabricmc/fabric/api/entity/event/v1/ServerPlayerEvents$CopyFrom.copyFromPlayer:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/server/level/ServerPlayer;Z)V
+      40: return
+
+  public static void onLivingConversion(net.neoforged.neoforge.event.entity.living.LivingConversionEvent$Post);
+    Code:
+       0: aload_0
+       1: invokevirtual #139                // Method net/neoforged/neoforge/event/entity/living/LivingConversionEvent$Post.getEntity:()Lnet/minecraft/world/entity/LivingEntity;
+       4: astore_3
+       5: aload_3
+       6: instanceof    #142                // class net/minecraft/world/entity/Mob
+       9: ifeq          51
+      12: aload_3
+      13: checkcast     #142                // class net/minecraft/world/entity/Mob
+      16: astore_1
+      17: aload_0
+      18: invokevirtual #144                // Method net/neoforged/neoforge/event/entity/living/LivingConversionEvent$Post.getOutcome:()Lnet/minecraft/world/entity/LivingEntity;
+      21: astore_3
+      22: aload_3
+      23: instanceof    #142                // class net/minecraft/world/entity/Mob
+      26: ifeq          51
+      29: aload_3
+      30: checkcast     #142                // class net/minecraft/world/entity/Mob
+      33: astore_2
+      34: getstatic     #147                // Field net/fabricmc/fabric/api/entity/event/v1/ServerLivingEntityEvents.MOB_CONVERSION:Lnet/fabricmc/fabric/api/event/Event;
+      37: invokevirtual #25                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      40: checkcast     #150                // class net/fabricmc/fabric/api/entity/event/v1/ServerLivingEntityEvents$MobConversion
+      43: aload_1
+      44: aload_2
+      45: iconst_0
+      46: invokeinterface #152,  4          // InterfaceMethod net/fabricmc/fabric/api/entity/event/v1/ServerLivingEntityEvents$MobConversion.onConversion:(Lnet/minecraft/world/entity/Mob;Lnet/minecraft/world/entity/Mob;Z)V
+      51: return
+
+  private net.fabricmc.fabric.impl.entity.event.EntityEventHooks();
+    Code:
+       0: aload_0
+       1: invokespecial #156                // Method java/lang/Object."<init>":()V
+       4: return
+
+  private static void lambda$onPlayerSleepingTimeCheck$0(net.neoforged.neoforge.event.entity.player.CanContinueSleepingEvent, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: invokevirtual #98                 // Method net/neoforged/neoforge/event/entity/player/CanContinueSleepingEvent.getEntity:()Lnet/minecraft/world/entity/LivingEntity;
+       4: astore_3
+       5: aload_3
+       6: instanceof    #162                // class net/minecraft/world/entity/player/Player
+       9: ifeq          64
+      12: aload_3
+      13: checkcast     #162                // class net/minecraft/world/entity/player/Player
+      16: astore_2
+      17: getstatic     #164                // Field net/fabricmc/fabric/api/entity/event/v1/EntitySleepEvents.ALLOW_SLEEP_TIME:Lnet/fabricmc/fabric/api/event/Event;
+      20: invokevirtual #25                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      23: checkcast     #167                // class net/fabricmc/fabric/api/entity/event/v1/EntitySleepEvents$AllowSleepTime
+      26: aload_2
+      27: aload_1
+      28: aload_2
+      29: invokevirtual #169                // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+      32: invokevirtual #170                // Method net/minecraft/world/level/Level.isDay:()Z
+      35: ifne          42
+      38: iconst_1
+      39: goto          43
+      42: iconst_0
+      43: invokeinterface #173,  4          // InterfaceMethod net/fabricmc/fabric/api/entity/event/v1/EntitySleepEvents$AllowSleepTime.allowSleepTime:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Z)Lnet/minecraft/world/InteractionResult;
+      48: astore_3
+      49: aload_3
+      50: getstatic     #177                // Field net/minecraft/world/InteractionResult.PASS:Lnet/minecraft/world/InteractionResult;
+      53: if_acmpeq     64
+      56: aload_0
+      57: aload_3
+      58: invokevirtual #183                // Method net/minecraft/world/InteractionResult.consumesAction:()Z
+      61: invokevirtual #186                // Method net/neoforged/neoforge/event/entity/player/CanContinueSleepingEvent.setContinueSleeping:(Z)V
+      64: return
+}
