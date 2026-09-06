@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric interaction and item membership are resolved from existing entries plus
+5147b43 and 41d9c83 delegates. Forty focused cases and scoped checks pass.
+Fabric: 39 resolved, four open (networking, registry sync, transfer, loader).
+Whole providers: 90 resolved, 46 open. No family added. Continue those four
+module entries using the existing tools and bounded contribution checks. Do not
+repeat interaction callbacks or item enchantment/component internals. The family
+count still requires the full provider closure and canonical grouping decisions.
+
+
 Fabric object-builder membership is resolved from 0fa369a. Thirty-eight focused
 cases and scoped checks pass. Fabric: 37 resolved, six open. Whole providers:
 90 resolved, 46 open. No family added. Interaction capture e030cd8 calls the

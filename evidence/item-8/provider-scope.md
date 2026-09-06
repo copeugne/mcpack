@@ -5774,10 +5774,10 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-data-attachment-api-v1-1.4.5+26d408aa19.jar` | RESOLVED: Caller attachment-type registration and transfer of existing data. Sources a17da36, db84f92 and e6aa022; no independent family. |
 | `fabric-data-generation-api-v1-20.2.34+a4c3605619.jar` | RESOLVED: Empty initializer and data-output hooks for consumer pack generation. Source 36951e9; no independent family. |
 | `fabric-entity-events-v1-1.8.0+5ede667619.jar` | RESOLVED: Existing-entity event and elytra/sleep callbacks; no independent family. See entity-event disposition below. |
-| `fabric-events-interaction-v0-0.7.13+86e0887119.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-events-interaction-v0-0.7.13+86e0887119.jar` | RESOLVED: Existing interaction callbacks and cancelled-break state synchronization; sources e030cd8 and 5147b43. No independent family. |
 | `fabric-game-rule-api-v1-1.0.53+36d727be19.jar` | RESOLVED: Game-rule maps, command categories and client rule editing; no independent family. See final loot/recipe/rule disposition below. |
 | `fabric-gametest-api-v1-2.0.5+29f188ce19.jar` | RESOLVED: test registration and SNBT loading; see above. |
-| `fabric-item-api-v1-11.2.0+0c57911319.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-item-api-v1-11.2.0+0c57911319.jar` | RESOLVED: Existing item/component and enchantment modification support; sources 4ddacfa and 41d9c83. No independent family. |
 | `fabric-item-group-api-v1-4.1.7+e324903319.jar` | RESOLVED: Empty initializer, creative-menu modification callbacks and client UI resources. Source 07cd09b; no independent family. |
 | `fabric-key-binding-api-v1-1.0.47+62cc7ce119.jar` | RESOLVED: client utility, no independent server family; see below. |
 | `fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar` | RESOLVED: Entry and seven common/server hooks 4de41d1, initializer 353d68f. Existing lifecycle callbacks and loaded-chunk bookkeeping; no independent family. |
@@ -6554,3 +6554,28 @@ reproduce byte for byte. They remain open at InteractionEventsRouter.onInitializ
 and the item RegistryLoaderMixin's EnchantmentUtil delegate respectively. Reuse
 their other entry/hook captures. These are named remaining calls, not completed
 provider dispositions or permission to audit unrelated gameplay internals.
+
+### Fabric interaction and item membership resolved
+
+Interaction source 5147b43 resolves the router called by e030cd8. Initialization
+registers block-attack and cancelled-break handlers. They forward existing block
+interactions and resend existing block states to the player. The other captured
+hooks forward player/entity/block use and attack, break and advancement events.
+The guarded client initializer and three client hooks do not add server content.
+
+Item source 41d9c83 resolves the loading delegate in 4ddacfa. It copies a supplied
+enchantment, invokes its modification callback and rebuilds the same entry, with
+source classification for vanilla, mod and data-pack inputs. Other captured
+hooks support components, equipment slots, durability, recipe remainders,
+enchantment acceptance and tooltips. The generated initializer is empty. These
+modules supply no independent authored site or packaged generation resources.
+
+The existing test binds complete payloads of 36 interaction and 43 item classes,
+all automatic entries, two and thirteen common hooks respectively, and three and
+one client hooks. Both exact resource sets contain loader metadata, icons and
+mixin declarations. The delegate sources independently reproduce byte for byte.
+All 40 focused Fabric cases, scoped Ruff and Basedpyright pass using the commands
+above. Fabric now has 39 resolved modules and four open: networking, registry
+sync, transfer and loader. Whole providers remain 90 resolved and 46 open.
+No family-list change. Continue those four checks, then the other provider and
+canonical grouping decisions; do not repeat the resolved interaction/item paths.

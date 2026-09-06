@@ -106,6 +106,23 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
     ("module", "label", "digest", "count", "consumers"),
     [
         (
+            "fabric-events-interaction-v0-0.7.13+86e0887119",
+            "fabric-events-interaction-v0-entry",
+            "614f8f550bebcc2f4247a0be3905dbafc49647536eb93c547efac92c4f26bbd3",
+            2,
+            {"org/sinytra/fabric/events_interaction/generated/GeneratedEntryPoint.class",
+             "net/fabricmc/fabric/impl/event/interaction/InteractionEventHooks.class"},
+        ),
+        (
+            "fabric-item-api-v1-11.2.0+0c57911319",
+            "fabric-item-api-v1-entry",
+            "079c11a09085ddb9668c75ede629e2222a0485498ba7f8bb896c28a4cf3ece8a",
+            13,
+            {"org/sinytra/fabric/item_api/generated/GeneratedEntryPoint.class",
+             "net/fabricmc/fabric/impl/item/DefaultItemComponentImpl.class",
+             "net/fabricmc/fabric/impl/client/item/ClientItemEventHooks.class"},
+        ),
+        (
             "fabric-object-builder-api-v1-15.2.1+cc242efd19",
             "fabric-object-builder-api-v1-entry",
             "d7a0bf493eb787b68c5ec8df4170657dbd74f1686d1a6b4fa58b22059570e393",
@@ -331,6 +348,16 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert extra["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / extra["disassembly"]).read_bytes()).hexdigest()
             initializer_sources = {
+                "fabric-events-interaction-v0": [(
+                    "fabric-interaction-router",
+                    "1f6918e1d747541523585d23f29310ceb4a298516a221e80e05251cfa02d41e3",
+                    {"net/fabricmc/fabric/impl/event/interaction/InteractionEventsRouter.class"},
+                )],
+                "fabric-item-api-v1": [(
+                    "fabric-item-enchantment",
+                    "d653028574d440be486250233dd9364855a141a5da678dbc6f3ff23338104e31",
+                    {"net/fabricmc/fabric/impl/item/EnchantmentUtil.class"},
+                )],
                 "fabric-resource-conditions-api-v1": [(
                     "fabric-resource-condition-delegates",
                     "e6103740fe144f96a30b6d57d87bc672b35fffa3b9553f52b2a4cb4188bb6697",
@@ -388,6 +415,8 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert row["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / row["disassembly"]).read_bytes()).hexdigest()
             block_modules = {
+                "fabric-events-interaction-v0": (36, 3),
+                "fabric-item-api-v1": (43, 1),
                 "fabric-object-builder-api-v1": (44, 0),
                 "fabric-resource-conditions-api-v1": (31, 0),
                 "fabric-message-api-v1": (32, 2),
