@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 94 of 136. The exact queue below has 42 open rows.
+Supported provider dispositions: 95 of 136. The exact queue below has 41 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -599,7 +599,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `CreeperOverhaul-neoforge-1.21.1-4.0.6.jar` | `creeper-overhaul-provider` (e8d3713), `creeper-overhaul-login` (d21ca8f), test_creeper_overhaul_provider_scope.py | RESOLVED: Biome mob spawning, entity behavior/loot and cosmetic synchronization; no independent structure family. Full payload and bundled-library boundary below. |
 | `DungeonsArise-1.21.1-2.1.68-release.jar` | `wda-provider-scope` | RESOLVED: see WDA structure-provider disposition below. |
 | `FarmersDelight-1.21.1-1.3.2.jar` | `farmers-delight-provider` (555d912), common setup 15cb251, server packet 6678ec9; test_farmers_delight_provider_scope.py | RESOLVED: Five vanilla village components, farm-processor crop changes, vegetation and food/item interactions. No independent structure family. Full disposition below. |
-| `GlitchCore-neoforge-1.21.1-2.1.0.2.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `GlitchCore-neoforge-1.21.1-2.1.0.2.jar` | Sources a447496 and a2fc4ee; test_glitchcore_provider_scope.py | RESOLVED: Consumer events, configuration synchronization and platform adapters. No independent family. See GlitchCore disposition below. |
 | `IllagerInvasion-v21.1.6-1.21.1-NeoForge.jar` | `illagerinvasion-provider`, `illagerinvasion-extensible-enums` (e0f2c9a), existing pool codecs, test_illagerinvasion_provider_scope.py | RESOLVED: Five existing roots, thirteen mansion replacement components and encounter/loot modifications. Bundled enum library has no independent family; disconnected pillager pool/template preserved below. |
 | `LeavesBeGone-v21.1.1-1.21.1-NeoForge.jar` | `leavesbegone-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Leaf ticking and chunk tick persistence; no authored structure contribution. See small utility provider dispositions below. |
 | `Patchouli-1.21.1-93-NEOFORGE.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -6787,3 +6787,35 @@ One focused case and both scoped quality checks pass. Whole providers: 94
 resolved, 42 open (21 code-reference and 21 unmatched-search rows). No canonical
 family added or grouping changed. Continue those providers and Moog grouping;
 do not audit clean generic codec helpers without a concrete family boundary.
+
+### GlitchCore membership resolved
+
+Source a447496 preserves twelve automatic entries and all eight common hooks.
+The entries forward consumer events for registration, commands, trades, ticks,
+tags, item/block interaction, tools, colors, particles, rendering and tooltips.
+The mixins adapt existing item use, player joins, configuration tasks, platform
+queries, networking and rendering. They provide no authored site or independent
+placement route. Source a2fc4ee resolves the remaining common startup callback:
+GlitchCore.init registers only its sync_config packet. Static initialization
+creates the logger, channel and packet handler. No further networking helper
+inspection is required for family membership.
+
+The focused test binds both source manifests, all 80 classes, twelve automatic
+entries, eight common hooks, four client hooks and the complete nine-file
+non-class payload. Only metadata, access declarations, mixin configurations,
+icons and pack metadata accompany code. There are no generation data files,
+templates, nested archives or services. Both source captures independently
+reproduce byte for byte. Consumer event effects remain attributable to their
+providers; this shared library introduces no independent family.
+
+```sh
+uv run pytest -q tests/item8/test_glitchcore_provider_scope.py
+uv run ruff check tests/item8/test_glitchcore_provider_scope.py
+uv run basedpyright tests/item8/test_glitchcore_provider_scope.py
+```
+
+One focused case and scoped Ruff pass. An initial Basedpyright finding for
+untyped TOML declarations was fixed with the existing explicit type pattern;
+Basedpyright then passes. Whole providers: 95 resolved, 41 open (21 code-reference
+and 20 unmatched-search rows). No family count change. Continue remaining
+provider contribution boundaries and canonical Moog grouping.
