@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+Prickle and Resourceful Config membership is resolved from existing captures
+with two passing payload/source cases and scoped quality checks. Neither adds
+an independent family. Whole providers: 98 resolved, 38 open (20 code-reference,
+18 unmatched-search). Resourceful Config web-interface startup is recorded as
+an operational behavior, not tested network exposure. Do not trace more generic
+configuration helpers. Finish the remaining explicit provider queue and Moog
+canonical grouping before detailed attributes. The user's immediate deliverable
+is the finite family list and remaining attribute work, not another indefinite
+coverage status. Reuse already completed inspections.
+
+
 TerraBlender membership is resolved from 3230f7ff and c2de78c1. It initializes
 consumer biome regions/surface rules for existing dimensions; no independent
 family. Complete payload/source binding and scoped checks pass. Preserve its
