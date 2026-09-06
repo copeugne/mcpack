@@ -4984,3 +4984,43 @@ corrected before final validation. Continue the captured vegetation roles and
 remaining common-entry/payload boundaries. Do not repeat accepted terrain,
 fallen-tree, trial-chamber, modifier or surface checks. Census remains 77
 resolved and 59 open.
+
+### Regions Unexplored remaining captured feature roles
+
+The 35 implementations in source 04c515f now have contribution dispositions.
+Their actual block writers, supplied configured-feature materials and internal
+branch/cap/root geometry establish the following roles. Reuse this inspection;
+source coverage alone was insufficient in the preceding checkpoint.
+
+| Implementations | Contribution role |
+| --- | --- |
+| GlisteringIvyFeature, HangingEarlightFeature | Hanging plant columns and roof substrate patches using ivy/wart or earlight and Nether terrain states. |
+| HangingPrismariteFeature | Hanging prismarite blobs and pillars. Mineral decoration, not a building or authored monument. |
+| HyacinthPlantsFeature, HyacinthStockFeature | Aquatic plants, blooms, seagrass and supplied tall-hyacinth states. |
+| GiantBlueBioshroomFeature, GiantGreenBioshroomFeature, GiantPinkBioshroomFeature, GiantYellowBioshroomFeature | Mushroom stems and caps using configured bioshroom stem/block/glowing-block states. Large plant geometry does not establish an adventure family. |
+| AshenTreeFeature, AspenTreeFeature, BlackwoodTreeFeature, CypressTreeFeature, DeadTreeFeature, EucalyptusTreeFeature, GiantCypressTreeFeature | Trunks, foliage, roots and branches with supplied wood/leaf states; cypress adds moss and hanging vegetation. |
+| KapokTreeFeature, LarchTreeFeature, LargeSocotraTreeFeature, LushPineTreeFeature, MegaBaobabTreeFeature, SakuraTreeFeature | Tree canopies and branches; kapok and pine include vines, and Sakura includes a bee-nest placement. A bee nest on a tree is an ecological component, not a separate authored encounter site. |
+| SmallEucalyptusTreeFeature, SmallJoshuaTreeFeature, SmallOakTreeFeature, StrippedPineTreeFeature, TreeShrubFeature, UltraBaobabTreeFeature | Supplied tree/shrub logs, leaves and branches, with ground/root handling. Size or material variants are not independent families. |
+| CobaltShrubFeature, LargeJoshuaTreeFeature, MediumJoshuaTreeFeature, SmallSocotraTreeFeature, YellowBioshroomShrubFeature, BrimWillowFeature, TallBrimWillowFeature | Direct natural-set wood/leaves, mushroom or Nether plant states, producing shrubs, branches and tree forms. |
+
+The 26 tree/shrub implementations, four giant bioshrooms and five plant/mineral
+implementations account for all 35 captured classes. They introduce no additional
+named authored-site candidate. The existing stump-and-fallen-log candidate remains
+separate, with its six configuration variants and possible stump-only outcome.
+The earlier thirteen terrain feature and Ashen trial-chamber component decisions
+also remain unchanged.
+
+PlaceOnGroundDecorator source e06c9e1 is now bound in the existing candidate test.
+Its exact manifest is
+2b459bc6975a0ddffe6826ea332312ef7f78e0d31354d165d455f3d127f03544.
+The writer chooses the configured state above eligible dirt using supplied
+height and target checks. It decorates an existing tree's ground neighborhood;
+it does not supply another architectural layout. Branch-mode configuration in
+several tree writers controls whether natural branches are placed. Do not expand
+that material-selection boundary into a gameplay or tree-shape audit.
+
+The two focused candidate/source cases pass (0.96s), with scoped Ruff and
+Basedpyright passing, using the commands in the preceding checkpoint. No source
+was recaptured and no new measurement system was introduced. Regions Unexplored
+remains OPEN for its remaining common-entry, tree-placer/decorator and complete
+payload/overlay/JSON5 roles. Current census is still 88 resolved, 48 open.
