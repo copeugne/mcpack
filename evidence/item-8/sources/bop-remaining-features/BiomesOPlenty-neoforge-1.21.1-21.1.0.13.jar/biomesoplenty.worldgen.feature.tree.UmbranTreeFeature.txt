@@ -1,0 +1,716 @@
+Compiled from "UmbranTreeFeature.java"
+public class biomesoplenty.worldgen.feature.tree.UmbranTreeFeature extends biomesoplenty.worldgen.feature.tree.BOPTreeFeature<biomesoplenty.worldgen.feature.configurations.TaigaTreeConfiguration> {
+  public biomesoplenty.worldgen.feature.tree.UmbranTreeFeature(com.mojang.serialization.Codec<biomesoplenty.worldgen.feature.configurations.TaigaTreeConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method biomesoplenty/worldgen/feature/tree/BOPTreeFeature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean checkSpace(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, int, int, biomesoplenty.worldgen.feature.configurations.TaigaTreeConfiguration);
+    Code:
+       0: iconst_0
+       1: istore        6
+       3: iload         6
+       5: iload         4
+       7: if_icmpgt     169
+      10: aload         5
+      12: getfield      #7                  // Field biomesoplenty/worldgen/feature/configurations/TaigaTreeConfiguration.trunkWidth:I
+      15: iload         4
+      17: iload         6
+      19: isub
+      20: imul
+      21: iload         4
+      23: idiv
+      24: iconst_1
+      25: iadd
+      26: istore        7
+      28: ldc2_w        #13                 // double 0.25d
+      31: iload         7
+      33: i2d
+      34: ldc2_w        #15                 // double 2.0d
+      37: ddiv
+      38: dsub
+      39: invokestatic  #17                 // Method net/minecraft/util/Mth.ceil:(D)I
+      42: istore        8
+      44: ldc2_w        #13                 // double 0.25d
+      47: iload         7
+      49: i2d
+      50: ldc2_w        #15                 // double 2.0d
+      53: ddiv
+      54: dadd
+      55: invokestatic  #23                 // Method net/minecraft/util/Mth.floor:(D)I
+      58: istore        9
+      60: iload         6
+      62: iload_3
+      63: if_icmpgt     71
+      66: iload         8
+      68: goto          75
+      71: iload         8
+      73: iconst_1
+      74: isub
+      75: istore        10
+      77: iload         6
+      79: iload_3
+      80: if_icmpgt     88
+      83: iload         9
+      85: goto          92
+      88: iload         9
+      90: iconst_1
+      91: iadd
+      92: istore        11
+      94: iload         10
+      96: istore        12
+      98: iload         12
+     100: iload         11
+     102: if_icmpgt     163
+     105: iload         10
+     107: istore        13
+     109: iload         13
+     111: iload         11
+     113: if_icmpgt     157
+     116: aload_2
+     117: iload         12
+     119: iload         6
+     121: iload         13
+     123: invokevirtual #26                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     126: astore        14
+     128: aload         14
+     130: invokevirtual #32                 // Method net/minecraft/core/BlockPos.getY:()I
+     133: sipush        255
+     136: if_icmpge     149
+     139: aload_0
+     140: aload_1
+     141: aload         14
+     143: invokevirtual #36                 // Method canReplace:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+     146: ifne          151
+     149: iconst_0
+     150: ireturn
+     151: iinc          13, 1
+     154: goto          109
+     157: iinc          12, 1
+     160: goto          98
+     163: iinc          6, 1
+     166: goto          3
+     169: iconst_1
+     170: ireturn
+
+  public void generateLeafLayer(net.minecraft.world.level.LevelAccessor, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, int, int, int, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageSetter, biomesoplenty.worldgen.feature.configurations.TaigaTreeConfiguration);
+    Code:
+       0: iload         5
+       2: iload         4
+       4: isub
+       5: istore        9
+       7: iload         6
+       9: iload         4
+      11: iadd
+      12: istore        10
+      14: iload         9
+      16: istore        11
+      18: iload         11
+      20: iload         10
+      22: if_icmpgt     221
+      25: iload         9
+      27: istore        12
+      29: iload         12
+      31: iload         10
+      33: if_icmpgt     215
+      36: iload         4
+      38: ifle          72
+      41: iload         11
+      43: iload         9
+      45: if_icmpeq     55
+      48: iload         11
+      50: iload         10
+      52: if_icmpne     72
+      55: iload         12
+      57: iload         9
+      59: if_icmpeq     209
+      62: iload         12
+      64: iload         10
+      66: if_icmpne     72
+      69: goto          209
+      72: iload         11
+      74: ifge          85
+      77: iload         5
+      79: iload         11
+      81: isub
+      82: goto          90
+      85: iload         11
+      87: iload         6
+      89: isub
+      90: iload         12
+      92: ifge          103
+      95: iload         5
+      97: iload         12
+      99: isub
+     100: goto          108
+     103: iload         12
+     105: iload         6
+     107: isub
+     108: iadd
+     109: istore        13
+     111: iload         13
+     113: iconst_4
+     114: if_icmplt     133
+     117: iload         13
+     119: iconst_4
+     120: if_icmpne     209
+     123: aload_2
+     124: iconst_2
+     125: invokeinterface #42,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     130: ifne          209
+     133: aload_0
+     134: aload_1
+     135: aload_3
+     136: iload         11
+     138: iconst_0
+     139: iload         12
+     141: invokevirtual #26                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     144: aload         7
+     146: aload         8
+     148: invokevirtual #48                 // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     151: pop
+     152: iload         11
+     154: iload         9
+     156: if_icmpeq     180
+     159: iload         11
+     161: iload         10
+     163: if_icmpeq     180
+     166: iload         12
+     168: iload         9
+     170: if_icmpeq     180
+     173: iload         12
+     175: iload         10
+     177: if_icmpne     209
+     180: aload_2
+     181: iconst_3
+     182: invokeinterface #42,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     187: ifeq          209
+     190: aload_0
+     191: aload_1
+     192: aload_3
+     193: iload         11
+     195: iconst_m1
+     196: iload         12
+     198: invokevirtual #26                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     201: aload         7
+     203: aload         8
+     205: invokevirtual #48                 // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     208: pop
+     209: iinc          12, 1
+     212: goto          29
+     215: iinc          11, 1
+     218: goto          18
+     221: aload_2
+     222: bipush        6
+     224: invokeinterface #42,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     229: ifeq          306
+     232: iload         4
+     234: iconst_1
+     235: if_icmple     306
+     238: aload_0
+     239: aload_1
+     240: aload_3
+     241: iconst_m1
+     242: iconst_1
+     243: iconst_0
+     244: invokevirtual #26                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     247: aload         7
+     249: aload         8
+     251: invokevirtual #48                 // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     254: pop
+     255: aload_0
+     256: aload_1
+     257: aload_3
+     258: iconst_1
+     259: iconst_1
+     260: iconst_0
+     261: invokevirtual #26                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     264: aload         7
+     266: aload         8
+     268: invokevirtual #48                 // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     271: pop
+     272: aload_0
+     273: aload_1
+     274: aload_3
+     275: iconst_0
+     276: iconst_1
+     277: iconst_m1
+     278: invokevirtual #26                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     281: aload         7
+     283: aload         8
+     285: invokevirtual #48                 // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     288: pop
+     289: aload_0
+     290: aload_1
+     291: aload_3
+     292: iconst_0
+     293: iconst_1
+     294: iconst_1
+     295: invokevirtual #26                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     298: aload         7
+     300: aload         8
+     302: invokevirtual #48                 // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     305: pop
+     306: return
+
+  public void generateBranch(net.minecraft.world.level.LevelAccessor, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.Direction, int, java.util.function.BiConsumer<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState>, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageSetter, biomesoplenty.worldgen.feature.configurations.TaigaTreeConfiguration);
+    Code:
+       0: aload         4
+       2: invokevirtual #52                 // Method net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+       5: astore        9
+       7: aload         4
+       9: invokevirtual #58                 // Method net/minecraft/core/Direction.getClockWise:()Lnet/minecraft/core/Direction;
+      12: astore        10
+      14: iconst_1
+      15: istore        11
+      17: iconst_0
+      18: istore        12
+      20: iconst_1
+      21: istore        13
+      23: iload         13
+      25: iload         5
+      27: if_icmpgt     218
+      30: aload_3
+      31: aload         4
+      33: iload         13
+      35: iload         12
+      37: i2d
+      38: invokestatic  #62                 // Method java/lang/Math.floor:(D)D
+      41: d2i
+      42: isub
+      43: invokevirtual #67                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+      46: iload         12
+      48: i2d
+      49: invokestatic  #62                 // Method java/lang/Math.floor:(D)D
+      52: d2i
+      53: invokevirtual #71                 // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+      56: astore        14
+      58: iload         13
+      60: iconst_1
+      61: if_icmpeq     71
+      64: iload         13
+      66: iload         5
+      68: if_icmpne     75
+      71: iconst_1
+      72: goto          76
+      75: iconst_2
+      76: istore        15
+      78: iload         15
+      80: ineg
+      81: istore        16
+      83: iload         16
+      85: iload         15
+      87: if_icmpgt     132
+      90: iload         13
+      92: iload         5
+      94: if_icmplt     107
+      97: aload_2
+      98: iconst_2
+      99: invokeinterface #42,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     104: ifne          126
+     107: aload_0
+     108: aload_1
+     109: aload         14
+     111: aload         10
+     113: iload         16
+     115: invokevirtual #67                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+     118: aload         7
+     120: aload         8
+     122: invokevirtual #48                 // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     125: pop
+     126: iinc          16, 1
+     129: goto          83
+     132: iload         5
+     134: iload         13
+     136: isub
+     137: iconst_2
+     138: if_icmple     198
+     141: aload_0
+     142: aload_1
+     143: aload         14
+     145: invokevirtual #75                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     148: aload         7
+     150: aload         8
+     152: invokevirtual #48                 // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     155: pop
+     156: aload_0
+     157: aload_1
+     158: aload         14
+     160: invokevirtual #75                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     163: aload         10
+     165: iconst_m1
+     166: invokevirtual #67                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+     169: aload         7
+     171: aload         8
+     173: invokevirtual #48                 // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     176: pop
+     177: aload_0
+     178: aload_1
+     179: aload         14
+     181: invokevirtual #75                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     184: aload         10
+     186: iconst_1
+     187: invokevirtual #67                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+     190: aload         7
+     192: aload         8
+     194: invokevirtual #48                 // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     197: pop
+     198: iload         11
+     200: ifeq          212
+     203: iload         13
+     205: iconst_2
+     206: if_icmple     212
+     209: iinc          12, 1
+     212: iinc          13, 1
+     215: goto          23
+     218: return
+
+  protected boolean doPlace(net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, java.util.function.BiConsumer<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState>, java.util.function.BiConsumer<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState>, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageSetter, net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration);
+    Code:
+       0: aload         7
+       2: checkcast     #8                  // class biomesoplenty/worldgen/feature/configurations/TaigaTreeConfiguration
+       5: astore        8
+       7: aload_3
+       8: invokevirtual #32                 // Method net/minecraft/core/BlockPos.getY:()I
+      11: aload_1
+      12: invokeinterface #79,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getMinBuildHeight:()I
+      17: iconst_1
+      18: iadd
+      19: if_icmplt     32
+      22: aload_1
+      23: aload_3
+      24: invokeinterface #84,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      29: ifne          48
+      32: aload_1
+      33: aload_3
+      34: invokeinterface #88,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      39: getstatic     #92                 // Field net/minecraft/tags/BlockTags.LEAVES:Lnet/minecraft/tags/TagKey;
+      42: invokevirtual #98                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      45: ifeq          56
+      48: aload_3
+      49: invokevirtual #104                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      52: astore_3
+      53: goto          7
+      56: aload_2
+      57: aload         8
+      59: getfield      #106                // Field biomesoplenty/worldgen/feature/configurations/TaigaTreeConfiguration.minHeight:I
+      62: aload         8
+      64: getfield      #109                // Field biomesoplenty/worldgen/feature/configurations/TaigaTreeConfiguration.maxHeight:I
+      67: invokestatic  #112                // Method biomesoplenty/util/biome/GeneratorUtil.nextIntBetween:(Lnet/minecraft/util/RandomSource;II)I
+      70: istore        9
+      72: aload_2
+      73: iload         9
+      75: iconst_5
+      76: idiv
+      77: iload         9
+      79: iconst_3
+      80: idiv
+      81: invokestatic  #112                // Method biomesoplenty/util/biome/GeneratorUtil.nextIntBetween:(Lnet/minecraft/util/RandomSource;II)I
+      84: istore        10
+      86: iload         9
+      88: iload         10
+      90: isub
+      91: istore        11
+      93: iload         11
+      95: iconst_3
+      96: if_icmpge     101
+      99: iconst_0
+     100: ireturn
+     101: aload_0
+     102: aload_1
+     103: aload_3
+     104: invokevirtual #75                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     107: iload         10
+     109: iload         9
+     111: aload         8
+     113: invokevirtual #118                // Method checkSpace:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;IILbiomesoplenty/worldgen/feature/configurations/TaigaTreeConfiguration;)Z
+     116: ifne          121
+     119: iconst_0
+     120: ireturn
+     121: aload_3
+     122: iload         9
+     124: invokevirtual #122                // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+     127: astore        12
+     129: iload         9
+     131: bipush        20
+     133: if_icmpgt     140
+     136: iconst_1
+     137: goto          155
+     140: aload_2
+     141: iconst_3
+     142: invokeinterface #42,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     147: ifne          154
+     150: iconst_1
+     151: goto          155
+     154: iconst_0
+     155: istore        13
+     157: iload         13
+     159: ifeq          174
+     162: aload_0
+     163: aload_1
+     164: aload         12
+     166: aload         6
+     168: aload         8
+     170: invokevirtual #48                 // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     173: pop
+     174: aload         12
+     176: invokevirtual #104                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     179: pop
+     180: iconst_0
+     181: istore        14
+     183: iload         14
+     185: iload         11
+     187: if_icmpge     497
+     190: aload         8
+     192: getfield      #7                  // Field biomesoplenty/worldgen/feature/configurations/TaigaTreeConfiguration.trunkWidth:I
+     195: iload         14
+     197: imul
+     198: iload         9
+     200: idiv
+     201: iconst_1
+     202: iadd
+     203: istore        15
+     205: ldc2_w        #13                 // double 0.25d
+     208: iload         15
+     210: i2d
+     211: ldc2_w        #15                 // double 2.0d
+     214: ddiv
+     215: dsub
+     216: invokestatic  #17                 // Method net/minecraft/util/Mth.ceil:(D)I
+     219: istore        16
+     221: ldc2_w        #13                 // double 0.25d
+     224: iload         15
+     226: i2d
+     227: ldc2_w        #15                 // double 2.0d
+     230: ddiv
+     231: dadd
+     232: invokestatic  #23                 // Method net/minecraft/util/Mth.floor:(D)I
+     235: istore        17
+     237: iload         14
+     239: iconst_2
+     240: iadd
+     241: iconst_3
+     242: idiv
+     243: iconst_3
+     244: iload         11
+     246: iload         14
+     248: isub
+     249: iadd
+     250: invokestatic  #124                // Method java/lang/Math.min:(II)I
+     253: bipush        6
+     255: invokestatic  #124                // Method java/lang/Math.min:(II)I
+     258: istore        18
+     260: iload         18
+     262: ifne          300
+     265: iload         13
+     267: ifeq          285
+     270: aload_0
+     271: aload_1
+     272: aload         12
+     274: aload         6
+     276: aload         8
+     278: invokevirtual #48                 // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     281: pop
+     282: goto          484
+     285: aload_0
+     286: aload_1
+     287: aload         12
+     289: aload         5
+     291: aload         8
+     293: invokevirtual #128                // Method placeLog:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Ljava/util/function/BiConsumer;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     296: pop
+     297: goto          484
+     300: iload         18
+     302: iconst_4
+     303: if_icmpge     369
+     306: iload         14
+     308: iconst_3
+     309: irem
+     310: ifne          334
+     313: aload_0
+     314: aload_1
+     315: aload_2
+     316: aload         12
+     318: iload         18
+     320: iload         16
+     322: iload         17
+     324: aload         6
+     326: aload         8
+     328: invokevirtual #132                // Method generateLeafLayer:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;IIILnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/TaigaTreeConfiguration;)V
+     331: goto          484
+     334: iload         13
+     336: ifeq          354
+     339: aload_0
+     340: aload_1
+     341: aload         12
+     343: aload         6
+     345: aload         8
+     347: invokevirtual #48                 // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     350: pop
+     351: goto          484
+     354: aload_0
+     355: aload_1
+     356: aload         12
+     358: aload         5
+     360: aload         8
+     362: invokevirtual #128                // Method placeLog:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Ljava/util/function/BiConsumer;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     365: pop
+     366: goto          484
+     369: iload         14
+     371: iconst_3
+     372: irem
+     373: ifne          484
+     376: aload_0
+     377: aload_1
+     378: aload_2
+     379: aload         12
+     381: iload         16
+     383: iconst_0
+     384: iload         16
+     386: invokevirtual #26                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     389: getstatic     #136                // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+     392: iload         18
+     394: aload         5
+     396: aload         6
+     398: aload         8
+     400: invokevirtual #140                // Method generateBranch:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;ILjava/util/function/BiConsumer;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/TaigaTreeConfiguration;)V
+     403: aload_0
+     404: aload_1
+     405: aload_2
+     406: aload         12
+     408: iload         17
+     410: iconst_0
+     411: iload         16
+     413: invokevirtual #26                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     416: getstatic     #144                // Field net/minecraft/core/Direction.EAST:Lnet/minecraft/core/Direction;
+     419: iload         18
+     421: aload         5
+     423: aload         6
+     425: aload         8
+     427: invokevirtual #140                // Method generateBranch:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;ILjava/util/function/BiConsumer;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/TaigaTreeConfiguration;)V
+     430: aload_0
+     431: aload_1
+     432: aload_2
+     433: aload         12
+     435: iload         17
+     437: iconst_0
+     438: iload         17
+     440: invokevirtual #26                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     443: getstatic     #147                // Field net/minecraft/core/Direction.SOUTH:Lnet/minecraft/core/Direction;
+     446: iload         18
+     448: aload         5
+     450: aload         6
+     452: aload         8
+     454: invokevirtual #140                // Method generateBranch:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;ILjava/util/function/BiConsumer;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/TaigaTreeConfiguration;)V
+     457: aload_0
+     458: aload_1
+     459: aload_2
+     460: aload         12
+     462: iload         16
+     464: iconst_0
+     465: iload         17
+     467: invokevirtual #26                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     470: getstatic     #150                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+     473: iload         18
+     475: aload         5
+     477: aload         6
+     479: aload         8
+     481: invokevirtual #140                // Method generateBranch:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;ILjava/util/function/BiConsumer;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/TaigaTreeConfiguration;)V
+     484: aload         12
+     486: invokevirtual #104                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     489: astore        12
+     491: iinc          14, 1
+     494: goto          183
+     497: iconst_0
+     498: istore        14
+     500: iload         14
+     502: iload         9
+     504: iconst_1
+     505: isub
+     506: if_icmpge     673
+     509: aload         8
+     511: getfield      #7                  // Field biomesoplenty/worldgen/feature/configurations/TaigaTreeConfiguration.trunkWidth:I
+     514: iload         9
+     516: iload         14
+     518: isub
+     519: imul
+     520: iload         9
+     522: idiv
+     523: iconst_1
+     524: iadd
+     525: istore        15
+     527: ldc2_w        #13                 // double 0.25d
+     530: iload         15
+     532: i2d
+     533: ldc2_w        #15                 // double 2.0d
+     536: ddiv
+     537: dsub
+     538: invokestatic  #17                 // Method net/minecraft/util/Mth.ceil:(D)I
+     541: istore        16
+     543: ldc2_w        #13                 // double 0.25d
+     546: iload         15
+     548: i2d
+     549: ldc2_w        #15                 // double 2.0d
+     552: ddiv
+     553: dadd
+     554: invokestatic  #23                 // Method net/minecraft/util/Mth.floor:(D)I
+     557: istore        17
+     559: iload         15
+     561: iconst_1
+     562: if_icmplt     575
+     565: iload         15
+     567: aload         8
+     569: getfield      #7                  // Field biomesoplenty/worldgen/feature/configurations/TaigaTreeConfiguration.trunkWidth:I
+     572: if_icmple     581
+     575: iconst_0
+     576: istore        16
+     578: iconst_0
+     579: istore        17
+     581: iload         16
+     583: istore        18
+     585: iload         18
+     587: iload         17
+     589: if_icmpgt     667
+     592: iload         16
+     594: istore        19
+     596: iload         19
+     598: iload         17
+     600: if_icmpgt     661
+     603: iload         14
+     605: iconst_1
+     606: if_icmpne     635
+     609: aload_1
+     610: aload_3
+     611: iload         18
+     613: iload         14
+     615: iconst_1
+     616: isub
+     617: iload         19
+     619: invokevirtual #26                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     622: getstatic     #153                // Field net/minecraft/world/level/block/Blocks.DIRT:Lnet/minecraft/world/level/block/Block;
+     625: invokevirtual #159                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     628: iconst_3
+     629: invokeinterface #165,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     634: pop
+     635: aload_0
+     636: aload_1
+     637: aload_3
+     638: iload         18
+     640: iload         14
+     642: iload         19
+     644: invokevirtual #26                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     647: aload         5
+     649: aload         8
+     651: invokevirtual #128                // Method placeLog:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Ljava/util/function/BiConsumer;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     654: pop
+     655: iinc          19, 1
+     658: goto          596
+     661: iinc          18, 1
+     664: goto          585
+     667: iinc          14, 1
+     670: goto          500
+     673: iconst_1
+     674: ireturn
+}

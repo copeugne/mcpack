@@ -1,0 +1,158 @@
+Compiled from "HangingFleshTendonFeature.java"
+public class biomesoplenty.worldgen.feature.misc.HangingFleshTendonFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> {
+  private static final net.minecraft.core.Direction[] DIRECTIONS;
+
+  public biomesoplenty.worldgen.feature.misc.HangingFleshTendonFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      14: astore        4
+      16: aload_2
+      17: aload_3
+      18: invokeinterface #21,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      23: ifne          28
+      26: iconst_0
+      27: ireturn
+      28: aload_2
+      29: aload_3
+      30: invokevirtual #27                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      33: invokeinterface #32,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      38: astore        5
+      40: aload         5
+      42: getstatic     #36                 // Field biomesoplenty/init/ModTags$Blocks.FLESH:Lnet/minecraft/tags/TagKey;
+      45: invokevirtual #42                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      48: ifne          53
+      51: iconst_0
+      52: ireturn
+      53: aload_0
+      54: aload_2
+      55: aload         4
+      57: aload_3
+      58: invokevirtual #48                 // Method placeFleshTendons:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+      61: iconst_1
+      62: ireturn
+
+  private void placeFleshTendons(net.minecraft.world.level.LevelAccessor, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: new           #54                 // class net/minecraft/core/BlockPos$MutableBlockPos
+       3: dup
+       4: invokespecial #56                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+       7: astore        4
+       9: iconst_0
+      10: istore        5
+      12: iload         5
+      14: bipush        100
+      16: if_icmpge     135
+      19: aload         4
+      21: aload_3
+      22: aload_2
+      23: bipush        8
+      25: invokeinterface #59,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      30: aload_2
+      31: bipush        8
+      33: invokeinterface #59,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      38: isub
+      39: aload_2
+      40: bipush        8
+      42: invokeinterface #59,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      47: aload_2
+      48: bipush        8
+      50: invokeinterface #59,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      55: isub
+      56: aload_2
+      57: bipush        8
+      59: invokeinterface #59,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      64: aload_2
+      65: bipush        8
+      67: invokeinterface #59,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      72: isub
+      73: invokevirtual #65                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setWithOffset:(Lnet/minecraft/core/Vec3i;III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      76: pop
+      77: aload_1
+      78: aload         4
+      80: invokeinterface #69,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      85: ifeq          129
+      88: aload_1
+      89: aload         4
+      91: invokevirtual #72                 // Method net/minecraft/core/BlockPos$MutableBlockPos.above:()Lnet/minecraft/core/BlockPos;
+      94: invokeinterface #73,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      99: astore        6
+     101: aload         6
+     103: getstatic     #36                 // Field biomesoplenty/init/ModTags$Blocks.FLESH:Lnet/minecraft/tags/TagKey;
+     106: invokevirtual #42                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     109: ifeq          129
+     112: aload_2
+     113: iconst_1
+     114: iconst_4
+     115: invokestatic  #74                 // Method net/minecraft/util/Mth.nextInt:(Lnet/minecraft/util/RandomSource;II)I
+     118: istore        7
+     120: aload_1
+     121: aload_2
+     122: aload         4
+     124: iload         7
+     126: invokestatic  #79                 // Method placeFleshTendonColumn:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos$MutableBlockPos;I)V
+     129: iinc          5, 1
+     132: goto          12
+     135: return
+
+  public static void placeFleshTendonColumn(net.minecraft.world.level.LevelAccessor, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos$MutableBlockPos, int);
+    Code:
+       0: iconst_0
+       1: istore        4
+       3: iload         4
+       5: iload_3
+       6: if_icmpgt     85
+       9: aload_0
+      10: aload_2
+      11: invokeinterface #69,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      16: ifeq          71
+      19: iload         4
+      21: iload_3
+      22: if_icmpeq     38
+      25: aload_0
+      26: aload_2
+      27: invokevirtual #83                 // Method net/minecraft/core/BlockPos$MutableBlockPos.below:()Lnet/minecraft/core/BlockPos;
+      30: invokeinterface #69,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      35: ifne          56
+      38: aload_0
+      39: aload_2
+      40: getstatic     #86                 // Field biomesoplenty/api/block/BOPBlocks.FLESH_TENDONS:Lnet/minecraft/world/level/block/Block;
+      43: invokevirtual #92                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      46: iconst_2
+      47: invokeinterface #98,  4           // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      52: pop
+      53: goto          85
+      56: aload_0
+      57: aload_2
+      58: getstatic     #102                // Field biomesoplenty/api/block/BOPBlocks.FLESH_TENDONS_STRAND:Lnet/minecraft/world/level/block/Block;
+      61: invokevirtual #92                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      64: iconst_2
+      65: invokeinterface #98,  4           // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      70: pop
+      71: aload_2
+      72: getstatic     #105                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+      75: invokevirtual #111                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      78: pop
+      79: iinc          4, 1
+      82: goto          3
+      85: return
+
+  static {};
+    Code:
+       0: invokestatic  #115                // Method net/minecraft/core/Direction.values:()[Lnet/minecraft/core/Direction;
+       3: putstatic     #119                // Field DIRECTIONS:[Lnet/minecraft/core/Direction;
+       6: return
+}
