@@ -228,6 +228,10 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "net/mehvahdjukaar/moonlight/core/pack/DynamicResourcesInternals.class",
+    "net/mehvahdjukaar/moonlight/api/platform/platform/RegHelperImpl.class",
+    "net/mehvahdjukaar/moonlight/core/commands/ModCommands.class",
+    "net/mehvahdjukaar/moonlight/core/misc/platform/ModLootModifiers.class",
     "net/mehvahdjukaar/moonlight/core/Moonlight.class",
     "net/mehvahdjukaar/moonlight/api/MoonlightRegistry.class",
     "net/mehvahdjukaar/moonlight/core/worldgen/SpawnBoxStructurePiece.class",
