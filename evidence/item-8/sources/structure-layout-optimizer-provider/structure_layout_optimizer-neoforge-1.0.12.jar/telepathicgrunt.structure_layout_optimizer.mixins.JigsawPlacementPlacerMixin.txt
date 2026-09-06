@@ -1,0 +1,978 @@
+Classfile structure_layout_optimizer-neoforge-1.0.12.jar!/telepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin.class
+  Last modified Jan 9, 2026; size 14185 bytes
+  SHA-256 checksum 3ea469a58b73361089ef58f931f8644162c276056daae3f9e0859b8dc260be60
+  Compiled from "JigsawPlacementPlacerMixin.java"
+public class telepathicgrunt.structure_layout_optimizer.mixins.JigsawPlacementPlacerMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #168                        // telepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 2, methods: 10, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // telepathicgrunt/structure_layout_optimizer/utils/GeneralUtils.canJigsawsAttach:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Z
+    #8 = Class              #10           // telepathicgrunt/structure_layout_optimizer/utils/GeneralUtils
+    #9 = NameAndType        #11:#12       // canJigsawsAttach:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Z
+   #10 = Utf8               telepathicgrunt/structure_layout_optimizer/utils/GeneralUtils
+   #11 = Utf8               canJigsawsAttach
+   #12 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Z
+   #13 = Methodref          #14.#15       // org/apache/commons/lang3/mutable/MutableObject.getValue:()Ljava/lang/Object;
+   #14 = Class              #16           // org/apache/commons/lang3/mutable/MutableObject
+   #15 = NameAndType        #17:#18       // getValue:()Ljava/lang/Object;
+   #16 = Utf8               org/apache/commons/lang3/mutable/MutableObject
+   #17 = Utf8               getValue
+   #18 = Utf8               ()Ljava/lang/Object;
+   #19 = Class              #20           // telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape
+   #20 = Utf8               telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape
+   #21 = Methodref          #22.#23       // net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement.getProjection:()Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection;
+   #22 = Class              #24           // net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement
+   #23 = NameAndType        #25:#26       // getProjection:()Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection;
+   #24 = Utf8               net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement
+   #25 = Utf8               getProjection
+   #26 = Utf8               ()Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection;
+   #27 = Fieldref           #28.#29       // net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection.RIGID:Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection;
+   #28 = Class              #30           // net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection
+   #29 = NameAndType        #31:#32       // RIGID:Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection;
+   #30 = Utf8               net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection
+   #31 = Utf8               RIGID
+   #32 = Utf8               Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection;
+   #33 = Fieldref           #19.#34       // telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape.boxOctree:Ltelepathicgrunt/structure_layout_optimizer/utils/BoxOctree;
+   #34 = NameAndType        #35:#36       // boxOctree:Ltelepathicgrunt/structure_layout_optimizer/utils/BoxOctree;
+   #35 = Utf8               boxOctree
+   #36 = Utf8               Ltelepathicgrunt/structure_layout_optimizer/utils/BoxOctree;
+   #37 = Methodref          #38.#39       // telepathicgrunt/structure_layout_optimizer/utils/BoxOctree.boundaryContains:(Lnet/minecraft/core/BlockPos;)Z
+   #38 = Class              #40           // telepathicgrunt/structure_layout_optimizer/utils/BoxOctree
+   #39 = NameAndType        #41:#42       // boundaryContains:(Lnet/minecraft/core/BlockPos;)Z
+   #40 = Utf8               telepathicgrunt/structure_layout_optimizer/utils/BoxOctree
+   #41 = Utf8               boundaryContains
+   #42 = Utf8               (Lnet/minecraft/core/BlockPos;)Z
+   #43 = Methodref          #38.#44       // telepathicgrunt/structure_layout_optimizer/utils/BoxOctree.withinAnyBox:(Lnet/minecraft/core/BlockPos;)Z
+   #44 = NameAndType        #45:#42       // withinAnyBox:(Lnet/minecraft/core/BlockPos;)Z
+   #45 = Utf8               withinAnyBox
+   #46 = Class              #47           // java/util/ArrayList
+   #47 = Utf8               java/util/ArrayList
+   #48 = Methodref          #46.#3        // java/util/ArrayList."<init>":()V
+   #49 = Methodref          #50.#51       // net/minecraft/world/phys/AABB.of:(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Lnet/minecraft/world/phys/AABB;
+   #50 = Class              #52           // net/minecraft/world/phys/AABB
+   #51 = NameAndType        #53:#54       // of:(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Lnet/minecraft/world/phys/AABB;
+   #52 = Utf8               net/minecraft/world/phys/AABB
+   #53 = Utf8               of
+   #54 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Lnet/minecraft/world/phys/AABB;
+   #55 = Double             0.25d
+   #57 = Methodref          #50.#58       // net/minecraft/world/phys/AABB.deflate:(D)Lnet/minecraft/world/phys/AABB;
+   #58 = NameAndType        #59:#60       // deflate:(D)Lnet/minecraft/world/phys/AABB;
+   #59 = Utf8               deflate
+   #60 = Utf8               (D)Lnet/minecraft/world/phys/AABB;
+   #61 = Methodref          #38.#62       // telepathicgrunt/structure_layout_optimizer/utils/BoxOctree.withinBoundsButNotIntersectingChildren:(Lnet/minecraft/world/phys/AABB;)Z
+   #62 = NameAndType        #63:#64       // withinBoundsButNotIntersectingChildren:(Lnet/minecraft/world/phys/AABB;)Z
+   #63 = Utf8               withinBoundsButNotIntersectingChildren
+   #64 = Utf8               (Lnet/minecraft/world/phys/AABB;)Z
+   #65 = InterfaceMethodref #66.#67       // com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+   #66 = Class              #68           // com/llamalad7/mixinextras/injector/wrapoperation/Operation
+   #67 = NameAndType        #69:#70       // call:([Ljava/lang/Object;)Ljava/lang/Object;
+   #68 = Utf8               com/llamalad7/mixinextras/injector/wrapoperation/Operation
+   #69 = Utf8               call
+   #70 = Utf8               ([Ljava/lang/Object;)Ljava/lang/Object;
+   #71 = Class              #72           // java/lang/Boolean
+   #72 = Utf8               java/lang/Boolean
+   #73 = Methodref          #71.#74       // java/lang/Boolean.booleanValue:()Z
+   #74 = NameAndType        #75:#76       // booleanValue:()Z
+   #75 = Utf8               booleanValue
+   #76 = Utf8               ()Z
+   #77 = Methodref          #38.#78       // telepathicgrunt/structure_layout_optimizer/utils/BoxOctree."<init>":(Lnet/minecraft/world/phys/AABB;)V
+   #78 = NameAndType        #5:#79        // "<init>":(Lnet/minecraft/world/phys/AABB;)V
+   #79 = Utf8               (Lnet/minecraft/world/phys/AABB;)V
+   #80 = Methodref          #19.#81       // telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape."<init>":(Ltelepathicgrunt/structure_layout_optimizer/utils/BoxOctree;)V
+   #81 = NameAndType        #5:#82        // "<init>":(Ltelepathicgrunt/structure_layout_optimizer/utils/BoxOctree;)V
+   #82 = Utf8               (Ltelepathicgrunt/structure_layout_optimizer/utils/BoxOctree;)V
+   #83 = Methodref          #14.#84       // org/apache/commons/lang3/mutable/MutableObject.setValue:(Ljava/lang/Object;)V
+   #84 = NameAndType        #85:#86       // setValue:(Ljava/lang/Object;)V
+   #85 = Utf8               setValue
+   #86 = Utf8               (Ljava/lang/Object;)V
+   #87 = Methodref          #38.#88       // telepathicgrunt/structure_layout_optimizer/utils/BoxOctree.addBox:(Lnet/minecraft/world/phys/AABB;)V
+   #88 = NameAndType        #89:#79       // addBox:(Lnet/minecraft/world/phys/AABB;)V
+   #89 = Utf8               addBox
+   #90 = Methodref          #91.#92       // net/minecraft/world/phys/shapes/Shapes.empty:()Lnet/minecraft/world/phys/shapes/VoxelShape;
+   #91 = Class              #93           // net/minecraft/world/phys/shapes/Shapes
+   #92 = NameAndType        #94:#95       // empty:()Lnet/minecraft/world/phys/shapes/VoxelShape;
+   #93 = Utf8               net/minecraft/world/phys/shapes/Shapes
+   #94 = Utf8               empty
+   #95 = Utf8               ()Lnet/minecraft/world/phys/shapes/VoxelShape;
+   #96 = Fieldref           #97.#98       // telepathicgrunt/structure_layout_optimizer/SloConfig.deduplicateShuffledTemplatePoolElementList:Z
+   #97 = Class              #99           // telepathicgrunt/structure_layout_optimizer/SloConfig
+   #98 = NameAndType        #100:#101     // deduplicateShuffledTemplatePoolElementList:Z
+   #99 = Utf8               telepathicgrunt/structure_layout_optimizer/SloConfig
+  #100 = Utf8               deduplicateShuffledTemplatePoolElementList
+  #101 = Utf8               Z
+  #102 = Methodref          #103.#104     // net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool.getShuffledTemplates:(Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+  #103 = Class              #105          // net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool
+  #104 = NameAndType        #106:#107     // getShuffledTemplates:(Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+  #105 = Utf8               net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool
+  #106 = Utf8               getShuffledTemplates
+  #107 = Utf8               (Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+  #108 = Class              #109          // java/util/LinkedHashSet
+  #109 = Utf8               java/util/LinkedHashSet
+  #110 = Class              #111          // telepathicgrunt/structure_layout_optimizer/mixins/StructureTemplatePoolAccessor
+  #111 = Utf8               telepathicgrunt/structure_layout_optimizer/mixins/StructureTemplatePoolAccessor
+  #112 = InterfaceMethodref #110.#113     // telepathicgrunt/structure_layout_optimizer/mixins/StructureTemplatePoolAccessor.getRawTemplates:()Ljava/util/List;
+  #113 = NameAndType        #114:#115     // getRawTemplates:()Ljava/util/List;
+  #114 = Utf8               getRawTemplates
+  #115 = Utf8               ()Ljava/util/List;
+  #116 = InterfaceMethodref #117.#118     // java/util/List.size:()I
+  #117 = Class              #119          // java/util/List
+  #118 = NameAndType        #120:#121     // size:()I
+  #119 = Utf8               java/util/List
+  #120 = Utf8               size
+  #121 = Utf8               ()I
+  #122 = Methodref          #108.#123     // java/util/LinkedHashSet."<init>":(I)V
+  #123 = NameAndType        #5:#124       // "<init>":(I)V
+  #124 = Utf8               (I)V
+  #125 = InterfaceMethodref #117.#126     // java/util/List.iterator:()Ljava/util/Iterator;
+  #126 = NameAndType        #127:#128     // iterator:()Ljava/util/Iterator;
+  #127 = Utf8               iterator
+  #128 = Utf8               ()Ljava/util/Iterator;
+  #129 = InterfaceMethodref #130.#131     // java/util/Iterator.hasNext:()Z
+  #130 = Class              #132          // java/util/Iterator
+  #131 = NameAndType        #133:#76      // hasNext:()Z
+  #132 = Utf8               java/util/Iterator
+  #133 = Utf8               hasNext
+  #134 = InterfaceMethodref #130.#135     // java/util/Iterator.next:()Ljava/lang/Object;
+  #135 = NameAndType        #136:#18      // next:()Ljava/lang/Object;
+  #136 = Utf8               next
+  #137 = Methodref          #108.#138     // java/util/LinkedHashSet.add:(Ljava/lang/Object;)Z
+  #138 = NameAndType        #139:#140     // add:(Ljava/lang/Object;)Z
+  #139 = Utf8               add
+  #140 = Utf8               (Ljava/lang/Object;)Z
+  #141 = Methodref          #108.#118     // java/util/LinkedHashSet.size:()I
+  #142 = Methodref          #46.#123      // java/util/ArrayList."<init>":(I)V
+  #143 = Methodref          #108.#144     // java/util/LinkedHashSet.removeFirst:()Ljava/lang/Object;
+  #144 = NameAndType        #145:#18      // removeFirst:()Ljava/lang/Object;
+  #145 = Utf8               removeFirst
+  #146 = InterfaceMethodref #117.#138     // java/util/List.add:(Ljava/lang/Object;)Z
+  #147 = Methodref          #148.#149     // com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;
+  #148 = Class              #150          // com/google/common/collect/Lists
+  #149 = NameAndType        #151:#152     // newArrayList:()Ljava/util/ArrayList;
+  #150 = Utf8               com/google/common/collect/Lists
+  #151 = Utf8               newArrayList
+  #152 = Utf8               ()Ljava/util/ArrayList;
+  #153 = Class              #154          // telepathicgrunt/structure_layout_optimizer/utils/TrojanArrayList
+  #154 = Utf8               telepathicgrunt/structure_layout_optimizer/utils/TrojanArrayList
+  #155 = Methodref          #153.#3       // telepathicgrunt/structure_layout_optimizer/utils/TrojanArrayList."<init>":()V
+  #156 = Fieldref           #153.#157     // telepathicgrunt/structure_layout_optimizer/utils/TrojanArrayList.elementsAlreadyParsed:Ljava/util/Set;
+  #157 = NameAndType        #158:#159     // elementsAlreadyParsed:Ljava/util/Set;
+  #158 = Utf8               elementsAlreadyParsed
+  #159 = Utf8               Ljava/util/Set;
+  #160 = InterfaceMethodref #161.#162     // java/util/Set.contains:(Ljava/lang/Object;)Z
+  #161 = Class              #163          // java/util/Set
+  #162 = NameAndType        #164:#140     // contains:(Ljava/lang/Object;)Z
+  #163 = Utf8               java/util/Set
+  #164 = Utf8               contains
+  #165 = Class              #166          // net/minecraft/world/level/block/Rotation
+  #166 = Utf8               net/minecraft/world/level/block/Rotation
+  #167 = Fieldref           #168.#169     // telepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin.structureTemplateManager:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+  #168 = Class              #170          // telepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin
+  #169 = NameAndType        #171:#172     // structureTemplateManager:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+  #170 = Utf8               telepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin
+  #171 = Utf8               structureTemplateManager
+  #172 = Utf8               Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+  #173 = Fieldref           #174.#175     // net/minecraft/core/BlockPos.ZERO:Lnet/minecraft/core/BlockPos;
+  #174 = Class              #176          // net/minecraft/core/BlockPos
+  #175 = NameAndType        #177:#178     // ZERO:Lnet/minecraft/core/BlockPos;
+  #176 = Utf8               net/minecraft/core/BlockPos
+  #177 = Utf8               ZERO
+  #178 = Utf8               Lnet/minecraft/core/BlockPos;
+  #179 = Fieldref           #168.#180     // telepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin.random:Lnet/minecraft/util/RandomSource;
+  #180 = NameAndType        #181:#182     // random:Lnet/minecraft/util/RandomSource;
+  #181 = Utf8               random
+  #182 = Utf8               Lnet/minecraft/util/RandomSource;
+  #183 = Methodref          #22.#184      // net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement.getShuffledJigsawBlocks:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+  #184 = NameAndType        #185:#186     // getShuffledJigsawBlocks:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+  #185 = Utf8               getShuffledJigsawBlocks
+  #186 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+  #187 = InterfaceMethodref #161.#138     // java/util/Set.add:(Ljava/lang/Object;)Z
+  #188 = Utf8               RuntimeVisibleAnnotations
+  #189 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #190 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #191 = Utf8               Code
+  #192 = Utf8               LineNumberTable
+  #193 = Utf8               LocalVariableTable
+  #194 = Utf8               this
+  #195 = Utf8               Ltelepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin;
+  #196 = Utf8               structureLayoutOptimizer$optimizeJigsawConnecting
+  #197 = Utf8               jigsaw1
+  #198 = Utf8               Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+  #199 = Utf8               jigsaw2
+  #200 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+  #201 = Utf8               method
+  #202 = Utf8               tryPlacingChildren(Lnet/minecraft/world/level/levelgen/structure/PoolElementStructurePiece;Lorg/apache/commons/lang3/mutable/MutableObject;IZLnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V
+  #203 = Utf8               at
+  #204 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #205 = Utf8               value
+  #206 = Utf8               INVOKE
+  #207 = Utf8               target
+  #208 = Utf8               Lnet/minecraft/world/level/block/JigsawBlock;canAttach(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Z
+  #209 = Utf8               structureLayoutOptimizer$skipBlockedJigsaws
+  #210 = Utf8               (Ljava/util/List;ZLorg/apache/commons/lang3/mutable/MutableObject;Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+  #211 = Utf8               candidatePlacementBehavior
+  #212 = Utf8               isCandidateRigid
+  #213 = Utf8               trojanVoxelShape
+  #214 = Utf8               Ltelepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape;
+  #215 = Utf8               original
+  #216 = Utf8               Ljava/util/List;
+  #217 = Utf8               useExpansionHack
+  #218 = Utf8               voxelShapeMutableObject
+  #219 = Utf8               Lorg/apache/commons/lang3/mutable/MutableObject;
+  #220 = Utf8               structurePoolElement
+  #221 = Utf8               Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;
+  #222 = Utf8               parentJigsawBlockInfo
+  #223 = Utf8               parentTargetPosition
+  #224 = Utf8               LocalVariableTypeTable
+  #225 = Utf8               Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;>;
+  #226 = Utf8               Lorg/apache/commons/lang3/mutable/MutableObject<Lnet/minecraft/world/phys/shapes/VoxelShape;>;
+  #227 = Utf8               StackMapTable
+  #228 = Utf8               Signature
+  #229 = Utf8               (Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;>;ZLorg/apache/commons/lang3/mutable/MutableObject<Lnet/minecraft/world/phys/shapes/VoxelShape;>;Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/core/BlockPos;)Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;>;
+  #230 = Utf8               Lcom/llamalad7/mixinextras/injector/ModifyExpressionValue;
+  #231 = Utf8               tryPlacingChildren
+  #232 = Utf8               Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;getShuffledJigsawBlocks(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+  #233 = Utf8               ordinal
+  #234 = Integer            1
+  #235 = Utf8               RuntimeInvisibleParameterAnnotations
+  #236 = Utf8               Lcom/llamalad7/mixinextras/sugar/Local;
+  #237 = Integer            0
+  #238 = Utf8               argsOnly
+  #239 = Integer            2
+  #240 = Utf8               structureLayoutOptimizer$replaceVoxelShape2
+  #241 = Utf8               (Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/BooleanOp;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Z
+  #242 = Utf8               pieceAABB
+  #243 = Utf8               Lnet/minecraft/world/phys/AABB;
+  #244 = Utf8               parentBounds
+  #245 = Utf8               Lnet/minecraft/world/phys/shapes/VoxelShape;
+  #246 = Utf8               pieceShape
+  #247 = Utf8               booleanOp
+  #248 = Utf8               Lnet/minecraft/world/phys/shapes/BooleanOp;
+  #249 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+  #250 = Utf8               pieceBounds
+  #251 = Utf8               Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+  #252 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Boolean;>;
+  #253 = Utf8               (Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/BooleanOp;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Boolean;>;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Z
+  #254 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/WrapOperation;
+  #255 = Utf8               Lnet/minecraft/world/phys/shapes/Shapes;joinIsNotEmpty(Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/BooleanOp;)Z
+  #256 = Integer            3
+  #257 = Utf8               structureLayoutOptimizer$replaceVoxelShape3
+  #258 = Utf8               (Lorg/apache/commons/lang3/mutable/MutableObject;Ljava/lang/Object;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+  #259 = Utf8               instance
+  #260 = Utf8               Ljava/lang/Object;
+  #261 = Utf8               (Lorg/apache/commons/lang3/mutable/MutableObject<Lnet/minecraft/world/phys/shapes/VoxelShape;>;Ljava/lang/Object;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+  #262 = Utf8               Lorg/apache/commons/lang3/mutable/MutableObject;setValue(Ljava/lang/Object;)V
+  #263 = Utf8               structureLayoutOptimizer$replaceVoxelShape4
+  #264 = Utf8               structureLayoutOptimizer$turnOffOldVoxelShapeBehavior1
+  #265 = Utf8               (Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/BooleanOp;)Lnet/minecraft/world/phys/shapes/VoxelShape;
+  #266 = Utf8               indexmerger
+  #267 = Utf8               indexmerger1
+  #268 = Utf8               indexmerger2
+  #269 = Utf8               Lnet/minecraft/world/phys/shapes/Shapes;joinUnoptimized(Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/BooleanOp;)Lnet/minecraft/world/phys/shapes/VoxelShape;
+  #270 = Utf8               structureLayoutOptimizer$removeDuplicateTemplatePoolElementLists
+  #271 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+  #272 = Utf8               piece
+  #273 = Utf8               i
+  #274 = Utf8               I
+  #275 = Utf8               Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;
+  #276 = Utf8               uniquePieces
+  #277 = Utf8               Ljava/util/LinkedHashSet;
+  #278 = Utf8               uniquePiecesFound
+  #279 = Utf8               deduplicatedListOfPieces
+  #280 = Utf8               Ljava/util/LinkedHashSet<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+  #281 = Utf8               Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+  #282 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;Lnet/minecraft/util/RandomSource;)Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+  #283 = Utf8               Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;getShuffledTemplates(Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+  #284 = Utf8               structureLayoutOptimizer$skipDuplicateTemplatePoolElementLists1
+  #285 = Utf8               ()Ljava/util/ArrayList<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+  #286 = Utf8               Lcom/google/common/collect/Lists;newArrayList()Ljava/util/ArrayList;
+  #287 = Utf8               structureLayoutOptimizer$skipDuplicateTemplatePoolElementLists2
+  #288 = Utf8               (Ljava/util/List;Ljava/util/List;Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Ljava/util/List;
+  #289 = Utf8               rotation1
+  #290 = Utf8               Lnet/minecraft/world/level/block/Rotation;
+  #291 = Utf8               trojanArrayList
+  #292 = Utf8               Ltelepathicgrunt/structure_layout_optimizer/utils/TrojanArrayList;
+  #293 = Utf8               list
+  #294 = Utf8               structurepoolelement1
+  #295 = Utf8               Ltelepathicgrunt/structure_layout_optimizer/utils/TrojanArrayList<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+  #296 = Utf8               Ljava/util/List<Lnet/minecraft/world/level/block/Rotation;>;
+  #297 = Utf8               (Ljava/util/List<Lnet/minecraft/world/level/block/Rotation;>;Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Ljava/util/List<Lnet/minecraft/world/level/block/Rotation;>;
+  #298 = Utf8               Lnet/minecraft/world/level/block/Rotation;getShuffled(Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+  #299 = Utf8               SourceFile
+  #300 = Utf8               JigsawPlacementPlacerMixin.java
+  #301 = Utf8               RuntimeInvisibleAnnotations
+  #302 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #303 = Utf8               targets
+  #304 = Utf8               net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement$Placer
+  #305 = Utf8               InnerClasses
+  #306 = Class              #307          // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+  #307 = Utf8               net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+  #308 = Class              #309          // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+  #309 = Utf8               net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+  #310 = Utf8               StructureBlockInfo
+  #311 = Utf8               Projection
+{
+  private net.minecraft.util.RandomSource random;
+    descriptor: Lnet/minecraft/util/RandomSource;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #189()
+        org.spongepowered.asm.mixin.Final
+      1: #190()
+        org.spongepowered.asm.mixin.Shadow
+
+  private net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager structureTemplateManager;
+    descriptor: Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #189()
+        org.spongepowered.asm.mixin.Final
+      1: #190()
+        org.spongepowered.asm.mixin.Shadow
+
+  public telepathicgrunt.structure_layout_optimizer.mixins.JigsawPlacementPlacerMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 37: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Ltelepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin;
+
+  private boolean structureLayoutOptimizer$optimizeJigsawConnecting(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_1
+         1: aload_2
+         2: invokestatic  #7                  // Method telepathicgrunt/structure_layout_optimizer/utils/GeneralUtils.canJigsawsAttach:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Z
+         5: ireturn
+      LineNumberTable:
+        line 42: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Ltelepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin;
+            0       6     1 jigsaw1   Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+            0       6     2 jigsaw2   Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+    RuntimeVisibleAnnotations:
+      0: #200(#201=[s#202],#203=@#204(#205=s#206,#207=s#208))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["tryPlacingChildren(Lnet/minecraft/world/level/levelgen/structure/PoolElementStructurePiece;Lorg/apache/commons/lang3/mutable/MutableObject;IZLnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/level/block/JigsawBlock;canAttach(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Z"
+          )
+        )
+
+  private java.util.List<net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo> structureLayoutOptimizer$skipBlockedJigsaws(java.util.List<net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo>, boolean, org.apache.commons.lang3.mutable.MutableObject<net.minecraft.world.phys.shapes.VoxelShape>, net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.core.BlockPos);
+    descriptor: (Ljava/util/List;ZLorg/apache/commons/lang3/mutable/MutableObject;Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/core/BlockPos;)Ljava/util/List;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=10, args_size=7
+         0: aload_3
+         1: invokevirtual #13                 // Method org/apache/commons/lang3/mutable/MutableObject.getValue:()Ljava/lang/Object;
+         4: astore        8
+         6: aload         8
+         8: instanceof    #19                 // class telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape
+        11: ifeq          82
+        14: aload         8
+        16: checkcast     #19                 // class telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape
+        19: astore        7
+        21: aload         4
+        23: invokevirtual #21                 // Method net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement.getProjection:()Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection;
+        26: astore        8
+        28: aload         8
+        30: getstatic     #27                 // Field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection.RIGID:Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection;
+        33: if_acmpne     40
+        36: iconst_1
+        37: goto          41
+        40: iconst_0
+        41: istore        9
+        43: iload         9
+        45: ifeq          82
+        48: aload         7
+        50: getfield      #33                 // Field telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape.boxOctree:Ltelepathicgrunt/structure_layout_optimizer/utils/BoxOctree;
+        53: aload         6
+        55: invokevirtual #37                 // Method telepathicgrunt/structure_layout_optimizer/utils/BoxOctree.boundaryContains:(Lnet/minecraft/core/BlockPos;)Z
+        58: ifeq          74
+        61: aload         7
+        63: getfield      #33                 // Field telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape.boxOctree:Ltelepathicgrunt/structure_layout_optimizer/utils/BoxOctree;
+        66: aload         6
+        68: invokevirtual #43                 // Method telepathicgrunt/structure_layout_optimizer/utils/BoxOctree.withinAnyBox:(Lnet/minecraft/core/BlockPos;)Z
+        71: ifeq          82
+        74: new           #46                 // class java/util/ArrayList
+        77: dup
+        78: invokespecial #48                 // Method java/util/ArrayList."<init>":()V
+        81: areturn
+        82: aload_1
+        83: areturn
+      LineNumberTable:
+        line 57: 0
+        line 59: 21
+        line 60: 28
+        line 61: 43
+        line 62: 74
+        line 65: 82
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           28      54     8 candidatePlacementBehavior   Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection;
+           43      39     9 isCandidateRigid   Z
+           21      61     7 trojanVoxelShape   Ltelepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape;
+            0      84     0  this   Ltelepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin;
+            0      84     1 original   Ljava/util/List;
+            0      84     2 useExpansionHack   Z
+            0      84     3 voxelShapeMutableObject   Lorg/apache/commons/lang3/mutable/MutableObject;
+            0      84     4 structurePoolElement   Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;
+            0      84     5 parentJigsawBlockInfo   Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+            0      84     6 parentTargetPosition   Lnet/minecraft/core/BlockPos;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      84     1 original   Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;>;
+            0      84     3 voxelShapeMutableObject   Lorg/apache/commons/lang3/mutable/MutableObject<Lnet/minecraft/world/phys/shapes/VoxelShape;>;
+      StackMapTable: number_of_entries = 4
+        frame_type = 253 /* append */
+          offset_delta = 40
+          locals = [ class telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape, class net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 32
+          locals = [ int ]
+        frame_type = 248 /* chop */
+          offset_delta = 7
+    Signature: #229                         // (Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;>;ZLorg/apache/commons/lang3/mutable/MutableObject<Lnet/minecraft/world/phys/shapes/VoxelShape;>;Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/core/BlockPos;)Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;>;
+    RuntimeVisibleAnnotations:
+      0: #230(#201=[s#231],#203=[@#204(#205=s#206,#207=s#232,#233=I#234)])
+        com.llamalad7.mixinextras.injector.ModifyExpressionValue(
+          method=["tryPlacingChildren"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;getShuffledJigsawBlocks(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/util/RandomSource;)Ljava/util/List;"
+            ordinal=1
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+        0: #236(#233=I#237,#238=Z#234)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=0
+            argsOnly=true
+          )
+      parameter 2:
+        0: #236(#233=I#239)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=2
+          )
+      parameter 3:
+        0: #236(#233=I#234)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=1
+          )
+      parameter 4:
+        0: #236(#233=I#237)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=0
+          )
+      parameter 5:
+        0: #236(#233=I#239)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=2
+          )
+
+  private boolean structureLayoutOptimizer$replaceVoxelShape2(net.minecraft.world.phys.shapes.VoxelShape, net.minecraft.world.phys.shapes.VoxelShape, net.minecraft.world.phys.shapes.BooleanOp, com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.lang.Boolean>, net.minecraft.world.level.levelgen.structure.BoundingBox);
+    descriptor: (Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/BooleanOp;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=8, args_size=6
+         0: aload_1
+         1: instanceof    #19                 // class telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape
+         4: ifeq          45
+         7: aload_1
+         8: checkcast     #19                 // class telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape
+        11: astore        6
+        13: aload         5
+        15: invokestatic  #49                 // Method net/minecraft/world/phys/AABB.of:(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Lnet/minecraft/world/phys/AABB;
+        18: ldc2_w        #55                 // double 0.25d
+        21: invokevirtual #57                 // Method net/minecraft/world/phys/AABB.deflate:(D)Lnet/minecraft/world/phys/AABB;
+        24: astore        7
+        26: aload         6
+        28: getfield      #33                 // Field telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape.boxOctree:Ltelepathicgrunt/structure_layout_optimizer/utils/BoxOctree;
+        31: aload         7
+        33: invokevirtual #61                 // Method telepathicgrunt/structure_layout_optimizer/utils/BoxOctree.withinBoundsButNotIntersectingChildren:(Lnet/minecraft/world/phys/AABB;)Z
+        36: ifne          43
+        39: iconst_1
+        40: goto          44
+        43: iconst_0
+        44: ireturn
+        45: aload         4
+        47: iconst_3
+        48: anewarray     #2                  // class java/lang/Object
+        51: dup
+        52: iconst_0
+        53: aload_1
+        54: aastore
+        55: dup
+        56: iconst_1
+        57: aload_2
+        58: aastore
+        59: dup
+        60: iconst_2
+        61: aload_3
+        62: aastore
+        63: invokeinterface #65,  2           // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        68: checkcast     #71                 // class java/lang/Boolean
+        71: invokevirtual #73                 // Method java/lang/Boolean.booleanValue:()Z
+        74: ireturn
+      LineNumberTable:
+        line 73: 0
+        line 74: 13
+        line 77: 26
+        line 80: 45
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           26      19     7 pieceAABB   Lnet/minecraft/world/phys/AABB;
+           13      32     6 trojanVoxelShape   Ltelepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape;
+            0      75     0  this   Ltelepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin;
+            0      75     1 parentBounds   Lnet/minecraft/world/phys/shapes/VoxelShape;
+            0      75     2 pieceShape   Lnet/minecraft/world/phys/shapes/VoxelShape;
+            0      75     3 booleanOp   Lnet/minecraft/world/phys/shapes/BooleanOp;
+            0      75     4 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+            0      75     5 pieceBounds   Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      75     4 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Boolean;>;
+      StackMapTable: number_of_entries = 3
+        frame_type = 253 /* append */
+          offset_delta = 43
+          locals = [ class telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape, class net/minecraft/world/phys/AABB ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 249 /* chop */
+          offset_delta = 0
+    Signature: #253                         // (Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/BooleanOp;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Boolean;>;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Z
+    RuntimeVisibleAnnotations:
+      0: #254(#201=[s#202],#203=[@#204(#205=s#206,#207=s#255)])
+        com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation(
+          method=["tryPlacingChildren(Lnet/minecraft/world/level/levelgen/structure/PoolElementStructurePiece;Lorg/apache/commons/lang3/mutable/MutableObject;IZLnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/phys/shapes/Shapes;joinIsNotEmpty(Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/BooleanOp;)Z"
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+      parameter 3:
+      parameter 4:
+        0: #236(#233=I#256)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=3
+          )
+
+  private void structureLayoutOptimizer$replaceVoxelShape3(org.apache.commons.lang3.mutable.MutableObject<net.minecraft.world.phys.shapes.VoxelShape>, java.lang.Object, net.minecraft.world.level.levelgen.structure.BoundingBox);
+    descriptor: (Lorg/apache/commons/lang3/mutable/MutableObject;Ljava/lang/Object;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=5, args_size=4
+         0: new           #19                 // class telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape
+         3: dup
+         4: new           #38                 // class telepathicgrunt/structure_layout_optimizer/utils/BoxOctree
+         7: dup
+         8: aload_3
+         9: invokestatic  #49                 // Method net/minecraft/world/phys/AABB.of:(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Lnet/minecraft/world/phys/AABB;
+        12: invokespecial #77                 // Method telepathicgrunt/structure_layout_optimizer/utils/BoxOctree."<init>":(Lnet/minecraft/world/phys/AABB;)V
+        15: invokespecial #80                 // Method telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape."<init>":(Ltelepathicgrunt/structure_layout_optimizer/utils/BoxOctree;)V
+        18: astore        4
+        20: aload_1
+        21: aload         4
+        23: invokevirtual #83                 // Method org/apache/commons/lang3/mutable/MutableObject.setValue:(Ljava/lang/Object;)V
+        26: return
+      LineNumberTable:
+        line 86: 0
+        line 87: 20
+        line 88: 26
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      27     0  this   Ltelepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin;
+            0      27     1 instance   Lorg/apache/commons/lang3/mutable/MutableObject;
+            0      27     2 value   Ljava/lang/Object;
+            0      27     3 pieceBounds   Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+           20       7     4 trojanVoxelShape   Ltelepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      27     1 instance   Lorg/apache/commons/lang3/mutable/MutableObject<Lnet/minecraft/world/phys/shapes/VoxelShape;>;
+    Signature: #261                         // (Lorg/apache/commons/lang3/mutable/MutableObject<Lnet/minecraft/world/phys/shapes/VoxelShape;>;Ljava/lang/Object;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    RuntimeVisibleAnnotations:
+      0: #200(#201=[s#202],#203=@#204(#205=s#206,#207=s#262,#233=I#237))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["tryPlacingChildren(Lnet/minecraft/world/level/levelgen/structure/PoolElementStructurePiece;Lorg/apache/commons/lang3/mutable/MutableObject;IZLnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lorg/apache/commons/lang3/mutable/MutableObject;setValue(Ljava/lang/Object;)V"
+            ordinal=0
+          )
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+        0: #236(#233=I#237)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=0
+          )
+
+  private void structureLayoutOptimizer$replaceVoxelShape4(org.apache.commons.lang3.mutable.MutableObject<net.minecraft.world.phys.shapes.VoxelShape>, java.lang.Object, net.minecraft.world.level.levelgen.structure.BoundingBox);
+    descriptor: (Lorg/apache/commons/lang3/mutable/MutableObject;Ljava/lang/Object;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=6, args_size=4
+         0: aload_1
+         1: invokevirtual #13                 // Method org/apache/commons/lang3/mutable/MutableObject.getValue:()Ljava/lang/Object;
+         4: astore        5
+         6: aload         5
+         8: instanceof    #19                 // class telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape
+        11: ifeq          33
+        14: aload         5
+        16: checkcast     #19                 // class telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape
+        19: astore        4
+        21: aload         4
+        23: getfield      #33                 // Field telepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape.boxOctree:Ltelepathicgrunt/structure_layout_optimizer/utils/BoxOctree;
+        26: aload_3
+        27: invokestatic  #49                 // Method net/minecraft/world/phys/AABB.of:(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Lnet/minecraft/world/phys/AABB;
+        30: invokevirtual #87                 // Method telepathicgrunt/structure_layout_optimizer/utils/BoxOctree.addBox:(Lnet/minecraft/world/phys/AABB;)V
+        33: return
+      LineNumberTable:
+        line 93: 0
+        line 94: 21
+        line 96: 33
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           21      12     4 trojanVoxelShape   Ltelepathicgrunt/structure_layout_optimizer/utils/TrojanVoxelShape;
+            0      34     0  this   Ltelepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin;
+            0      34     1 instance   Lorg/apache/commons/lang3/mutable/MutableObject;
+            0      34     2 value   Ljava/lang/Object;
+            0      34     3 pieceBounds   Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      34     1 instance   Lorg/apache/commons/lang3/mutable/MutableObject<Lnet/minecraft/world/phys/shapes/VoxelShape;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 33 /* same */
+    Signature: #261                         // (Lorg/apache/commons/lang3/mutable/MutableObject<Lnet/minecraft/world/phys/shapes/VoxelShape;>;Ljava/lang/Object;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+    RuntimeVisibleAnnotations:
+      0: #200(#201=[s#202],#203=@#204(#205=s#206,#207=s#262,#233=I#234))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["tryPlacingChildren(Lnet/minecraft/world/level/levelgen/structure/PoolElementStructurePiece;Lorg/apache/commons/lang3/mutable/MutableObject;IZLnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lorg/apache/commons/lang3/mutable/MutableObject;setValue(Ljava/lang/Object;)V"
+            ordinal=1
+          )
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+        0: #236(#233=I#256)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=3
+          )
+
+  private net.minecraft.world.phys.shapes.VoxelShape structureLayoutOptimizer$turnOffOldVoxelShapeBehavior1(net.minecraft.world.phys.shapes.VoxelShape, net.minecraft.world.phys.shapes.VoxelShape, net.minecraft.world.phys.shapes.BooleanOp);
+    descriptor: (Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/BooleanOp;)Lnet/minecraft/world/phys/shapes/VoxelShape;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=4, args_size=4
+         0: invokestatic  #90                 // Method net/minecraft/world/phys/shapes/Shapes.empty:()Lnet/minecraft/world/phys/shapes/VoxelShape;
+         3: areturn
+      LineNumberTable:
+        line 101: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       4     0  this   Ltelepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin;
+            0       4     1 indexmerger   Lnet/minecraft/world/phys/shapes/VoxelShape;
+            0       4     2 indexmerger1   Lnet/minecraft/world/phys/shapes/VoxelShape;
+            0       4     3 indexmerger2   Lnet/minecraft/world/phys/shapes/BooleanOp;
+    RuntimeVisibleAnnotations:
+      0: #200(#201=[s#202],#203=@#204(#205=s#206,#207=s#269))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["tryPlacingChildren(Lnet/minecraft/world/level/levelgen/structure/PoolElementStructurePiece;Lorg/apache/commons/lang3/mutable/MutableObject;IZLnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/phys/shapes/Shapes;joinUnoptimized(Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/VoxelShape;Lnet/minecraft/world/phys/shapes/BooleanOp;)Lnet/minecraft/world/phys/shapes/VoxelShape;"
+          )
+        )
+
+  private java.util.List<net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement> structureLayoutOptimizer$removeDuplicateTemplatePoolElementLists(net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool, net.minecraft.util.RandomSource);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=7, args_size=3
+         0: getstatic     #96                 // Field telepathicgrunt/structure_layout_optimizer/SloConfig.deduplicateShuffledTemplatePoolElementList:Z
+         3: ifne          12
+         6: aload_1
+         7: aload_2
+         8: invokevirtual #102                // Method net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool.getShuffledTemplates:(Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+        11: areturn
+        12: new           #108                // class java/util/LinkedHashSet
+        15: dup
+        16: aload_1
+        17: checkcast     #110                // class telepathicgrunt/structure_layout_optimizer/mixins/StructureTemplatePoolAccessor
+        20: invokeinterface #112,  1          // InterfaceMethod telepathicgrunt/structure_layout_optimizer/mixins/StructureTemplatePoolAccessor.getRawTemplates:()Ljava/util/List;
+        25: invokeinterface #116,  1          // InterfaceMethod java/util/List.size:()I
+        30: invokespecial #122                // Method java/util/LinkedHashSet."<init>":(I)V
+        33: astore_3
+        34: aload_1
+        35: aload_2
+        36: invokevirtual #102                // Method net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool.getShuffledTemplates:(Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+        39: invokeinterface #125,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        44: astore        4
+        46: aload         4
+        48: invokeinterface #129,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        53: ifeq          78
+        56: aload         4
+        58: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        63: checkcast     #22                 // class net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement
+        66: astore        5
+        68: aload_3
+        69: aload         5
+        71: invokevirtual #137                // Method java/util/LinkedHashSet.add:(Ljava/lang/Object;)Z
+        74: pop
+        75: goto          46
+        78: aload_3
+        79: invokevirtual #141                // Method java/util/LinkedHashSet.size:()I
+        82: istore        4
+        84: new           #46                 // class java/util/ArrayList
+        87: dup
+        88: iload         4
+        90: invokespecial #142                // Method java/util/ArrayList."<init>":(I)V
+        93: astore        5
+        95: iconst_0
+        96: istore        6
+        98: iload         6
+       100: iload         4
+       102: if_icmpge     126
+       105: aload         5
+       107: aload_3
+       108: invokevirtual #143                // Method java/util/LinkedHashSet.removeFirst:()Ljava/lang/Object;
+       111: checkcast     #22                 // class net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement
+       114: invokeinterface #146,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       119: pop
+       120: iinc          6, 1
+       123: goto          98
+       126: aload         5
+       128: areturn
+      LineNumberTable:
+        line 117: 0
+        line 118: 6
+        line 122: 12
+        line 126: 34
+        line 128: 68
+        line 129: 75
+        line 132: 78
+        line 133: 84
+        line 134: 95
+        line 135: 105
+        line 134: 120
+        line 138: 126
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           68       7     5 piece   Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;
+           98      28     6     i   I
+            0     129     0  this   Ltelepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin;
+            0     129     1 instance   Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;
+            0     129     2 random   Lnet/minecraft/util/RandomSource;
+           34      95     3 uniquePieces   Ljava/util/LinkedHashSet;
+           84      45     4 uniquePiecesFound   I
+           95      34     5 deduplicatedListOfPieces   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           34      95     3 uniquePieces   Ljava/util/LinkedHashSet<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+           95      34     5 deduplicatedListOfPieces   Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+      StackMapTable: number_of_entries = 5
+        frame_type = 12 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 33
+          locals = [ class java/util/LinkedHashSet, class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 31
+        frame_type = 254 /* append */
+          offset_delta = 19
+          locals = [ int, class java/util/List, int ]
+        frame_type = 250 /* chop */
+          offset_delta = 27
+    Signature: #282                         // (Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;Lnet/minecraft/util/RandomSource;)Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+    RuntimeVisibleAnnotations:
+      0: #200(#201=[s#202],#203=@#204(#205=s#206,#207=s#283,#233=I#237))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["tryPlacingChildren(Lnet/minecraft/world/level/levelgen/structure/PoolElementStructurePiece;Lorg/apache/commons/lang3/mutable/MutableObject;IZLnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;getShuffledTemplates(Lnet/minecraft/util/RandomSource;)Ljava/util/List;"
+            ordinal=0
+          )
+        )
+
+  private java.util.ArrayList<net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement> structureLayoutOptimizer$skipDuplicateTemplatePoolElementLists1();
+    descriptor: ()Ljava/util/ArrayList;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=1, args_size=1
+         0: getstatic     #96                 // Field telepathicgrunt/structure_layout_optimizer/SloConfig.deduplicateShuffledTemplatePoolElementList:Z
+         3: ifeq          12
+         6: invokestatic  #147                // Method com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;
+         9: goto          19
+        12: new           #153                // class telepathicgrunt/structure_layout_optimizer/utils/TrojanArrayList
+        15: dup
+        16: invokespecial #155                // Method telepathicgrunt/structure_layout_optimizer/utils/TrojanArrayList."<init>":()V
+        19: areturn
+      LineNumberTable:
+        line 145: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      20     0  this   Ltelepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin;
+      StackMapTable: number_of_entries = 2
+        frame_type = 12 /* same */
+        frame_type = 70 /* same_locals_1_stack_item */
+          stack = [ class java/util/ArrayList ]
+    Signature: #285                         // ()Ljava/util/ArrayList<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+    RuntimeVisibleAnnotations:
+      0: #200(#201=[s#202],#203=@#204(#205=s#206,#207=s#286,#233=I#237))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["tryPlacingChildren(Lnet/minecraft/world/level/levelgen/structure/PoolElementStructurePiece;Lorg/apache/commons/lang3/mutable/MutableObject;IZLnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lcom/google/common/collect/Lists;newArrayList()Ljava/util/ArrayList;"
+            ordinal=0
+          )
+        )
+
+  private java.util.List<net.minecraft.world.level.block.Rotation> structureLayoutOptimizer$skipDuplicateTemplatePoolElementLists2(java.util.List<net.minecraft.world.level.block.Rotation>, java.util.List<net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement>, net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement);
+    descriptor: (Ljava/util/List;Ljava/util/List;Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Ljava/util/List;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=7, args_size=4
+         0: getstatic     #96                 // Field telepathicgrunt/structure_layout_optimizer/SloConfig.deduplicateShuffledTemplatePoolElementList:Z
+         3: ifne          104
+         6: aload_2
+         7: instanceof    #153                // class telepathicgrunt/structure_layout_optimizer/utils/TrojanArrayList
+        10: ifeq          104
+        13: aload_2
+        14: checkcast     #153                // class telepathicgrunt/structure_layout_optimizer/utils/TrojanArrayList
+        17: astore        4
+        19: aload         4
+        21: getfield      #156                // Field telepathicgrunt/structure_layout_optimizer/utils/TrojanArrayList.elementsAlreadyParsed:Ljava/util/Set;
+        24: aload_3
+        25: invokeinterface #160,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+        30: ifeq          92
+        33: aload_1
+        34: invokeinterface #125,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        39: astore        5
+        41: aload         5
+        43: invokeinterface #129,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        48: ifeq          84
+        51: aload         5
+        53: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        58: checkcast     #165                // class net/minecraft/world/level/block/Rotation
+        61: astore        6
+        63: aload_3
+        64: aload_0
+        65: getfield      #167                // Field structureTemplateManager:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+        68: getstatic     #173                // Field net/minecraft/core/BlockPos.ZERO:Lnet/minecraft/core/BlockPos;
+        71: aload         6
+        73: aload_0
+        74: getfield      #179                // Field random:Lnet/minecraft/util/RandomSource;
+        77: invokevirtual #183                // Method net/minecraft/world/level/levelgen/structure/pools/StructurePoolElement.getShuffledJigsawBlocks:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+        80: pop
+        81: goto          41
+        84: new           #46                 // class java/util/ArrayList
+        87: dup
+        88: invokespecial #48                 // Method java/util/ArrayList."<init>":()V
+        91: areturn
+        92: aload         4
+        94: getfield      #156                // Field telepathicgrunt/structure_layout_optimizer/utils/TrojanArrayList.elementsAlreadyParsed:Ljava/util/Set;
+        97: aload_3
+        98: invokeinterface #187,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+       103: pop
+       104: aload_1
+       105: areturn
+      LineNumberTable:
+        line 155: 0
+        line 157: 19
+        line 161: 33
+        line 162: 63
+        line 163: 81
+        line 166: 84
+        line 170: 92
+        line 175: 104
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           63      18     6 rotation1   Lnet/minecraft/world/level/block/Rotation;
+           19      85     4 trojanArrayList   Ltelepathicgrunt/structure_layout_optimizer/utils/TrojanArrayList;
+            0     106     0  this   Ltelepathicgrunt/structure_layout_optimizer/mixins/JigsawPlacementPlacerMixin;
+            0     106     1 original   Ljava/util/List;
+            0     106     2  list   Ljava/util/List;
+            0     106     3 structurepoolelement1   Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           19      85     4 trojanArrayList   Ltelepathicgrunt/structure_layout_optimizer/utils/TrojanArrayList<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+            0     106     1 original   Ljava/util/List<Lnet/minecraft/world/level/block/Rotation;>;
+            0     106     2  list   Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+      StackMapTable: number_of_entries = 4
+        frame_type = 253 /* append */
+          offset_delta = 41
+          locals = [ class telepathicgrunt/structure_layout_optimizer/utils/TrojanArrayList, class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 42
+        frame_type = 7 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 11
+    Signature: #297                         // (Ljava/util/List<Lnet/minecraft/world/level/block/Rotation;>;Ljava/util/List<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;)Ljava/util/List<Lnet/minecraft/world/level/block/Rotation;>;
+    RuntimeVisibleAnnotations:
+      0: #230(#201=[s#202],#203=[@#204(#205=s#206,#207=s#298,#233=I#237)])
+        com.llamalad7.mixinextras.injector.ModifyExpressionValue(
+          method=["tryPlacingChildren(Lnet/minecraft/world/level/levelgen/structure/PoolElementStructurePiece;Lorg/apache/commons/lang3/mutable/MutableObject;IZLnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/level/block/Rotation;getShuffled(Lnet/minecraft/util/RandomSource;)Ljava/util/List;"
+            ordinal=0
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+        0: #236(#233=I#237)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=0
+          )
+      parameter 2:
+        0: #236(#233=I#234)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=1
+          )
+}
+SourceFile: "JigsawPlacementPlacerMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #302(#303=[s#304])
+    org.spongepowered.asm.mixin.Mixin(
+      targets=["net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement$Placer"]
+    )
+InnerClasses:
+  public static final #310= #306 of #308; // StructureBlockInfo=class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo of class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+  public static final #311= #28 of #103;  // Projection=class net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection of class net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool
