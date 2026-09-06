@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "amendments-1.21-2.0.15-neoforge.jar",
         "accessories-neoforge-1.1.0-beta.53+1.21.1.jar",
         "CreateDragonsPlus-1.11.2b.jar",
         "polymorph-neoforge-1.1.0+1.21.1.jar",
@@ -216,6 +217,48 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/mehvahdjukaar/amendments/mixins/AbstractCauldronBlockMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/AbstractSkullBlockMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/BellMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/BellTileEntityMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/BlocksMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/BrewingMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/BrewingStandMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/CampfireBlockEntityMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/CauldronBlockMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/CeilingHangingSignBlockMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/CompatQuarkSelfCandleSkullMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/DragonFireballMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/ExplosionMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/FenceBlockMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/FireChargeMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/FireballMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/FlowerPotBlockMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/HangingSignBlockEntityMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/JukeboxBlockEntityMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/JukeboxBlockMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/LanternBlockPlacementMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/LargeFireballMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/LavaCauldronMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/LecternBlockEntityMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/LecternBlockEntityUpdateMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/LecternBlockMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/MixinPlugin.class",
+    "net/mehvahdjukaar/amendments/mixins/PotionTooltipMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/SignBlockEntityMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/SignBlockMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/SkullBlockMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/SlimeBallMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/SmallFireballMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/SnowballMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/VineMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/WallHangingSignBlockMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/WallSignBlockMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/WaterLilyMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/neoforge/CompatFDSignBlockEntityMixin.class",
+    "net/mehvahdjukaar/amendments/mixins/neoforge/CompatFDWallSignBlockEntityMixin.class",
+    "net/mehvahdjukaar/amendments/neoforge/AmendmentsForge.class",
+
     "io/wispforest/accessories/Accessories.class",
     "io/wispforest/accessories/impl/AccessoriesEventHandler.class",
     "io/wispforest/accessories/mixin/AccessoriesMixinPlugin.class",
@@ -3635,6 +3678,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
                 verbose |= name.startswith("plus/dragons/createdragonsplus/")
                 verbose |= name.startswith("io/wispforest/accessories/")
+                verbose |= name.startswith("net/mehvahdjukaar/amendments/")
                 verbose |= name.startswith("org/betterx/wover/entrypoint/")
                 verbose |= name in {
                     "org/betterx/wover/core/api/ModCore.class",
