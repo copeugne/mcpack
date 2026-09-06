@@ -189,6 +189,14 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/fabricmc/fabric/mixin/biome/BiomeSourceMixin.class",
+    "net/fabricmc/fabric/mixin/biome/ChunkNoiseSamplerMixin.class",
+    "net/fabricmc/fabric/mixin/biome/MultiNoiseUtilMultiNoiseSamplerMixin.class",
+    "net/fabricmc/fabric/mixin/biome/NetherBiomePresetMixin.class",
+    "net/fabricmc/fabric/mixin/biome/NoiseConfigMixin.class",
+    "net/fabricmc/fabric/mixin/biome/TheEndBiomeSourceMixin.class",
+    "net/fabricmc/fabric/impl/biome/NetherBiomeData.class",
+    "net/fabricmc/fabric/impl/biome/TheEndBiomeData.class",
     "org/sinytra/fabric/biome_api/generated/GeneratedEntryPoint.class",
     "org/sinytra/fabric/biome_api/FabricBiomeApiV1.class",
     "net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl.class",
