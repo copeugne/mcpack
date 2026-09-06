@@ -6105,3 +6105,32 @@ uv run basedpyright tests/item8/test_betterend_feature_candidates.py tools/build
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-template-exclusions-r1.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-betterend-template-exclusions-r1.json
 ```
+
+### BetterEnd furnished-building family decisions
+
+Six complete building designs are integrated under betterend:biome_buildings:
+mushroom library, mushroom tree house, Lantern Woods cabin, Shadow Forest
+mansion, Umbrella Jungle workshop house and Umbrella Jungle raised house.
+The decision records each exact template, packaged box and design rationale.
+The two Umbrella Jungle houses are not merged by name: broad workstation
+construction differs from the narrow tall ladder/chest design. The mushroom
+library and dwelling likewise differ in built form and furnished function.
+
+These independently selected biome templates are outside the existing village
+component graph. Rotation, terrain merging, offsets and recurring biome
+placements do not add families. Packaged boxes are not accepted assembled-world
+footprint measurements. Existing source, catalogs and active-list checks are
+reused; no renderer or measurement system was added.
+
+Fourteen focused cases and scoped checks pass. The new direct binding checks
+join all six named templates, their used furnishing blocks and packaged sizes
+to their active configured lists. The remaining BetterEnd selected architectural
+queue is 35 ruin templates; grouping them remains open.
+
+```sh
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py
+uv run ruff check tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-buildings-r1.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-betterend-buildings-r1.json
+```

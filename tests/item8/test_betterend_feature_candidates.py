@@ -444,6 +444,44 @@ def test_betterend_building_lists_partition_exact_template_candidates() -> None:
         assert len(vegetation_paths) == 21  # explicit vegetation partition.
 
 
+def test_betterend_furnished_building_decisions_bind_distinct_content() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    decision = contributions["betterend:biome_buildings"]
+    designs = cast("dict[str, dict[str, JsonValue]]", decision["designs"])
+    assert set(cast("list[str]", decision["families"])) == set(designs)
+    expected = {
+        "mushroom_library": ("foggy_mushroomland/library", "betterend:mossy_glowshroom_bookshelf"),
+        "mushroom_tree_house": ("foggy_mushroomland/tree_house", "betterend:mossy_glowshroom_door"),
+        "lantern_woods_cabin": ("lantern_woods/cabin", "betterend:lucernia_crafting_table"),
+        "shadow_forest_mansion": ("shadow_forest/small_mansion", "betterend:end_stone_smelter"),
+        "umbrella_jungle_workshop_house": ("umbrella_jungle/house_1", "minecraft:enchanting_table"),
+        "umbrella_jungle_raised_house": ("umbrella_jungle/house_2", "betterend:jellyshroom_ladder"),
+    }
+    assert set(designs) == {"betterend:" + name for name in expected}
+    for path, digest in cast("dict[str, str]", decision["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    with ZipFile(source.path) as archive:
+        for family, (relative, furnishing) in expected.items():
+            design = designs["betterend:" + family]
+            path = "data/betterend/structure/biome/" + relative + ".nbt"
+            assert design["template"] == path
+            template = template_summary(archive.read(path))
+            assert design["packaged_size"] == template["size"]
+            palette = cast("list[dict[str, str]]", template["palette"])
+            counts = cast("dict[str, int]", template["state_counts"])
+            assert furnishing in {state["Name"] for i, state in enumerate(palette)
+                                  if counts.get(str(i), 0)}
+            biome = relative.split("/")[0]
+            configured = cast("dict[str, dict[str, list[dict[str, str]]]]", json.loads(
+                archive.read(f"data/betterend/worldgen/configured_feature/{biome}_structures.json")))
+            assert "/" + path in {row["path"] for row in configured["config"]["structures"]}
+
+
 def test_betterend_crashed_ship_inline_configuration_and_biome_routes() -> None:
     decisions = cast("dict[str, JsonValue]", json.loads(Path(
         "evidence/item-8/family-decisions.json").read_bytes()))
