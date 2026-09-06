@@ -1,0 +1,261 @@
+Compiled from "EndPortals.java"
+public class org.betterx.betterend.registry.EndPortals {
+  public static final net.minecraft.resources.ResourceLocation OVERWORLD_ID;
+
+  private static org.betterx.betterend.registry.EndPortals$PortalInfo[] portals;
+
+  public org.betterx.betterend.registry.EndPortals();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void loadPortals();
+    Code:
+       0: new           #7                  // class java/io/File
+       3: dup
+       4: getstatic     #9                  // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       7: invokevirtual #15                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+      10: invokeinterface #19,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      15: ldc           #25                 // String betterend/portals.json
+      17: invokespecial #27                 // Method java/io/File."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+      20: astore_0
+      21: aload_0
+      22: invokevirtual #30                 // Method java/io/File.exists:()Z
+      25: ifne          44
+      28: aload_0
+      29: invokevirtual #34                 // Method java/io/File.getParentFile:()Ljava/io/File;
+      32: invokevirtual #38                 // Method java/io/File.mkdirs:()Z
+      35: pop
+      36: aload_0
+      37: invokestatic  #41                 // Method makeDefault:(Ljava/io/File;)Lcom/google/gson/JsonObject;
+      40: astore_1
+      41: goto          49
+      44: aload_0
+      45: invokestatic  #47                 // Method org/betterx/bclib/util/JsonFactory.getJsonObject:(Ljava/io/File;)Lcom/google/gson/JsonObject;
+      48: astore_1
+      49: aload_1
+      50: ldc           #52                 // String portals
+      52: invokevirtual #54                 // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+      55: ifeq          70
+      58: aload_1
+      59: ldc           #52                 // String portals
+      61: invokevirtual #60                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      64: invokevirtual #63                 // Method com/google/gson/JsonElement.isJsonArray:()Z
+      67: ifne          75
+      70: aload_0
+      71: invokestatic  #41                 // Method makeDefault:(Ljava/io/File;)Lcom/google/gson/JsonObject;
+      74: astore_1
+      75: aload_1
+      76: ldc           #52                 // String portals
+      78: invokevirtual #60                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      81: invokevirtual #68                 // Method com/google/gson/JsonElement.getAsJsonArray:()Lcom/google/gson/JsonArray;
+      84: astore_2
+      85: aload_2
+      86: invokevirtual #72                 // Method com/google/gson/JsonArray.size:()I
+      89: ifne          107
+      92: aload_0
+      93: invokestatic  #41                 // Method makeDefault:(Ljava/io/File;)Lcom/google/gson/JsonObject;
+      96: astore_1
+      97: aload_1
+      98: ldc           #52                 // String portals
+     100: invokevirtual #60                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     103: invokevirtual #68                 // Method com/google/gson/JsonElement.getAsJsonArray:()Lcom/google/gson/JsonArray;
+     106: astore_2
+     107: aload_2
+     108: invokevirtual #72                 // Method com/google/gson/JsonArray.size:()I
+     111: anewarray     #78                 // class org/betterx/betterend/registry/EndPortals$PortalInfo
+     114: putstatic     #80                 // Field portals:[Lorg/betterx/betterend/registry/EndPortals$PortalInfo;
+     117: iconst_0
+     118: istore_3
+     119: iload_3
+     120: getstatic     #80                 // Field portals:[Lorg/betterx/betterend/registry/EndPortals$PortalInfo;
+     123: arraylength
+     124: if_icmpge     153
+     127: getstatic     #80                 // Field portals:[Lorg/betterx/betterend/registry/EndPortals$PortalInfo;
+     130: iload_3
+     131: new           #78                 // class org/betterx/betterend/registry/EndPortals$PortalInfo
+     134: dup
+     135: aload_2
+     136: iload_3
+     137: invokevirtual #83                 // Method com/google/gson/JsonArray.get:(I)Lcom/google/gson/JsonElement;
+     140: invokevirtual #86                 // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     143: invokespecial #90                 // Method org/betterx/betterend/registry/EndPortals$PortalInfo."<init>":(Lcom/google/gson/JsonObject;)V
+     146: aastore
+     147: iinc          3, 1
+     150: goto          119
+     153: return
+
+  public static int getCount();
+    Code:
+       0: getstatic     #80                 // Field portals:[Lorg/betterx/betterend/registry/EndPortals$PortalInfo;
+       3: arraylength
+       4: iconst_1
+       5: isub
+       6: iconst_1
+       7: invokestatic  #93                 // Method org/betterx/bclib/util/MHelper.max:(II)I
+      10: ireturn
+
+  public static net.minecraft.server.level.ServerLevel getWorld(net.minecraft.server.MinecraftServer, int);
+    Code:
+       0: iload_1
+       1: iflt          12
+       4: iload_1
+       5: getstatic     #80                 // Field portals:[Lorg/betterx/betterend/registry/EndPortals$PortalInfo;
+       8: arraylength
+       9: if_icmplt     17
+      12: aload_0
+      13: invokevirtual #99                 // Method net/minecraft/server/MinecraftServer.overworld:()Lnet/minecraft/server/level/ServerLevel;
+      16: areturn
+      17: getstatic     #80                 // Field portals:[Lorg/betterx/betterend/registry/EndPortals$PortalInfo;
+      20: iload_1
+      21: aaload
+      22: aload_0
+      23: invokevirtual #105                // Method org/betterx/betterend/registry/EndPortals$PortalInfo.getWorld:(Lnet/minecraft/server/MinecraftServer;)Lnet/minecraft/server/level/ServerLevel;
+      26: areturn
+
+  public static net.minecraft.resources.ResourceLocation getWorldId(int);
+    Code:
+       0: iload_0
+       1: iflt          12
+       4: iload_0
+       5: getstatic     #80                 // Field portals:[Lorg/betterx/betterend/registry/EndPortals$PortalInfo;
+       8: arraylength
+       9: if_icmplt     16
+      12: getstatic     #109                // Field OVERWORLD_ID:Lnet/minecraft/resources/ResourceLocation;
+      15: areturn
+      16: getstatic     #80                 // Field portals:[Lorg/betterx/betterend/registry/EndPortals$PortalInfo;
+      19: iload_0
+      20: aaload
+      21: getfield      #113                // Field org/betterx/betterend/registry/EndPortals$PortalInfo.dimension:Lnet/minecraft/resources/ResourceLocation;
+      24: areturn
+
+  public static int getPortalIdByItem(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: iload_1
+       3: getstatic     #80                 // Field portals:[Lorg/betterx/betterend/registry/EndPortals$PortalInfo;
+       6: arraylength
+       7: if_icmpge     33
+      10: getstatic     #80                 // Field portals:[Lorg/betterx/betterend/registry/EndPortals$PortalInfo;
+      13: iload_1
+      14: aaload
+      15: getfield      #116                // Field org/betterx/betterend/registry/EndPortals$PortalInfo.item:Lnet/minecraft/resources/ResourceLocation;
+      18: aload_0
+      19: invokevirtual #119                // Method net/minecraft/resources/ResourceLocation.equals:(Ljava/lang/Object;)Z
+      22: ifeq          27
+      25: iload_1
+      26: ireturn
+      27: iinc          1, 1
+      30: goto          2
+      33: iconst_0
+      34: ireturn
+
+  public static int getPortalIdByWorld(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: iload_1
+       3: getstatic     #80                 // Field portals:[Lorg/betterx/betterend/registry/EndPortals$PortalInfo;
+       6: arraylength
+       7: if_icmpge     33
+      10: getstatic     #80                 // Field portals:[Lorg/betterx/betterend/registry/EndPortals$PortalInfo;
+      13: iload_1
+      14: aaload
+      15: getfield      #113                // Field org/betterx/betterend/registry/EndPortals$PortalInfo.dimension:Lnet/minecraft/resources/ResourceLocation;
+      18: aload_0
+      19: invokevirtual #119                // Method net/minecraft/resources/ResourceLocation.equals:(Ljava/lang/Object;)Z
+      22: ifeq          27
+      25: iload_1
+      26: ireturn
+      27: iinc          1, 1
+      30: goto          2
+      33: iconst_0
+      34: ireturn
+
+  public static int getColor(int);
+    Code:
+       0: getstatic     #80                 // Field portals:[Lorg/betterx/betterend/registry/EndPortals$PortalInfo;
+       3: iload_0
+       4: aaload
+       5: getfield      #125                // Field org/betterx/betterend/registry/EndPortals$PortalInfo.color:I
+       8: ireturn
+
+  public static boolean isAvailableItem(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: getstatic     #80                 // Field portals:[Lorg/betterx/betterend/registry/EndPortals$PortalInfo;
+       3: astore_1
+       4: aload_1
+       5: arraylength
+       6: istore_2
+       7: iconst_0
+       8: istore_3
+       9: iload_3
+      10: iload_2
+      11: if_icmpge     39
+      14: aload_1
+      15: iload_3
+      16: aaload
+      17: astore        4
+      19: aload         4
+      21: getfield      #116                // Field org/betterx/betterend/registry/EndPortals$PortalInfo.item:Lnet/minecraft/resources/ResourceLocation;
+      24: aload_0
+      25: invokevirtual #119                // Method net/minecraft/resources/ResourceLocation.equals:(Ljava/lang/Object;)Z
+      28: ifeq          33
+      31: iconst_1
+      32: ireturn
+      33: iinc          3, 1
+      36: goto          9
+      39: iconst_0
+      40: ireturn
+
+  private static com.google.gson.JsonObject makeDefault(java.io.File);
+    Code:
+       0: new           #55                 // class com/google/gson/JsonObject
+       3: dup
+       4: invokespecial #129                // Method com/google/gson/JsonObject."<init>":()V
+       7: astore_1
+       8: aload_0
+       9: aload_1
+      10: invokestatic  #130                // Method org/betterx/bclib/util/JsonFactory.storeJson:(Ljava/io/File;Lcom/google/gson/JsonElement;)V
+      13: new           #73                 // class com/google/gson/JsonArray
+      16: dup
+      17: invokespecial #134                // Method com/google/gson/JsonArray."<init>":()V
+      20: astore_2
+      21: aload_1
+      22: ldc           #52                 // String portals
+      24: aload_2
+      25: invokevirtual #135                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+      28: aload_2
+      29: invokestatic  #139                // Method makeDefault:()Lorg/betterx/betterend/registry/EndPortals$PortalInfo;
+      32: invokevirtual #142                // Method org/betterx/betterend/registry/EndPortals$PortalInfo.toJson:()Lcom/google/gson/JsonObject;
+      35: invokevirtual #145                // Method com/google/gson/JsonArray.add:(Lcom/google/gson/JsonElement;)V
+      38: aload_0
+      39: aload_1
+      40: invokestatic  #130                // Method org/betterx/bclib/util/JsonFactory.storeJson:(Ljava/io/File;Lcom/google/gson/JsonElement;)V
+      43: aload_1
+      44: areturn
+
+  private static org.betterx.betterend.registry.EndPortals$PortalInfo makeDefault();
+    Code:
+       0: new           #78                 // class org/betterx/betterend/registry/EndPortals$PortalInfo
+       3: dup
+       4: ldc           #148                // String overworld
+       6: invokestatic  #149                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       9: getstatic     #153                // Field org/betterx/betterend/BetterEnd.C:Lorg/betterx/wover/core/api/ModCore;
+      12: ldc           #159                // String eternal_crystal
+      14: invokevirtual #161                // Method org/betterx/wover/core/api/ModCore.mk:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      17: sipush        255
+      20: sipush        255
+      23: sipush        255
+      26: invokespecial #166                // Method org/betterx/betterend/registry/EndPortals$PortalInfo."<init>":(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;III)V
+      29: areturn
+
+  static {};
+    Code:
+       0: getstatic     #169                // Field net/minecraft/world/level/Level.OVERWORLD:Lnet/minecraft/resources/ResourceKey;
+       3: invokevirtual #175                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       6: putstatic     #109                // Field OVERWORLD_ID:Lnet/minecraft/resources/ResourceLocation;
+       9: return
+}

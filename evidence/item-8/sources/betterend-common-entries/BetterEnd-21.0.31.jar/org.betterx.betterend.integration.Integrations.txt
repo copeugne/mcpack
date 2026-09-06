@@ -1,0 +1,70 @@
+Compiled from "Integrations.java"
+public class org.betterx.betterend.integration.Integrations {
+  public static final org.betterx.bclib.integration.ModIntegration BYG;
+
+  public static final org.betterx.bclib.integration.ModIntegration FLAMBOYANT_REFABRICATED;
+
+  public static final org.betterx.bclib.integration.ModIntegration DYE_DEPOT;
+
+  private static final net.minecraft.resources.ResourceLocation GUIDEBOOK_ID;
+
+  public org.betterx.betterend.integration.Integrations();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init();
+    Code:
+       0: getstatic     #7                  // Field org/betterx/betterend/BetterEnd.PATCHOULI:Lorg/betterx/wover/core/api/ModCore;
+       3: invokevirtual #13                 // Method org/betterx/wover/core/api/ModCore.isLoaded:()Z
+       6: ifeq          9
+       9: return
+
+  private static void lambda$init$0(net.minecraft.resources.ResourceLocation, net.minecraft.server.level.ServerPlayer, net.minecraft.advancements.AdvancementHolder, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: invokevirtual #19                 // Method net/minecraft/advancements/AdvancementHolder.id:()Lnet/minecraft/resources/ResourceLocation;
+       5: invokevirtual #25                 // Method net/minecraft/resources/ResourceLocation.equals:(Ljava/lang/Object;)Z
+       8: ifeq          49
+      11: getstatic     #31                 // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+      14: getstatic     #37                 // Field GUIDEBOOK_ID:Lnet/minecraft/resources/ResourceLocation;
+      17: invokeinterface #43,  2           // InterfaceMethod net/minecraft/core/DefaultedRegistry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+      22: checkcast     #49                 // class net/minecraft/world/item/Item
+      25: astore        4
+      27: aload         4
+      29: getstatic     #51                 // Field net/minecraft/world/item/Items.AIR:Lnet/minecraft/world/item/Item;
+      32: if_acmpeq     49
+      35: aload_1
+      36: new           #57                 // class net/minecraft/world/item/ItemStack
+      39: dup
+      40: aload         4
+      42: invokespecial #59                 // Method net/minecraft/world/item/ItemStack."<init>":(Lnet/minecraft/world/level/ItemLike;)V
+      45: invokevirtual #62                 // Method net/minecraft/server/level/ServerPlayer.addItem:(Lnet/minecraft/world/item/ItemStack;)Z
+      48: pop
+      49: return
+
+  static {};
+    Code:
+       0: new           #68                 // class org/betterx/betterend/integration/byg/BYGIntegration
+       3: dup
+       4: invokespecial #70                 // Method org/betterx/betterend/integration/byg/BYGIntegration."<init>":()V
+       7: invokestatic  #71                 // Method org/betterx/bclib/api/v2/ModIntegrationAPI.register:(Lorg/betterx/bclib/integration/ModIntegration;)Lorg/betterx/bclib/integration/ModIntegration;
+      10: putstatic     #77                 // Field BYG:Lorg/betterx/bclib/integration/ModIntegration;
+      13: new           #81                 // class org/betterx/betterend/integration/FlamboyantRefabricatedIntegration
+      16: dup
+      17: invokespecial #83                 // Method org/betterx/betterend/integration/FlamboyantRefabricatedIntegration."<init>":()V
+      20: invokestatic  #71                 // Method org/betterx/bclib/api/v2/ModIntegrationAPI.register:(Lorg/betterx/bclib/integration/ModIntegration;)Lorg/betterx/bclib/integration/ModIntegration;
+      23: putstatic     #84                 // Field FLAMBOYANT_REFABRICATED:Lorg/betterx/bclib/integration/ModIntegration;
+      26: new           #87                 // class org/betterx/betterend/integration/DyeDepotIntegration
+      29: dup
+      30: invokespecial #89                 // Method org/betterx/betterend/integration/DyeDepotIntegration."<init>":()V
+      33: invokestatic  #71                 // Method org/betterx/bclib/api/v2/ModIntegrationAPI.register:(Lorg/betterx/bclib/integration/ModIntegration;)Lorg/betterx/bclib/integration/ModIntegration;
+      36: putstatic     #90                 // Field DYE_DEPOT:Lorg/betterx/bclib/integration/ModIntegration;
+      39: getstatic     #93                 // Field org/betterx/betterend/BetterEnd.C:Lorg/betterx/wover/core/api/ModCore;
+      42: ldc           #96                 // String guidebook
+      44: invokevirtual #98                 // Method org/betterx/wover/core/api/ModCore.mk:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      47: putstatic     #37                 // Field GUIDEBOOK_ID:Lnet/minecraft/resources/ResourceLocation;
+      50: return
+}
