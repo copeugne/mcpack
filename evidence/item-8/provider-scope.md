@@ -8856,3 +8856,28 @@ SHA-256: dbd33667b810b11f4d1b83d60f958ade966fa2bea31c5ce8720663761379971a.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nether-pairs-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-nether-pairs-r2.json
 ```
+
+## Nether house and forge boundaries
+
+The forge, large house and warped-house decisions are settled, along with the
+medium-house record's explicit relationship to the latter two. The forge is an
+open workshop, the medium variants share a compact gabled form, the large house
+is a hall-and-tower composition, and the warped variants share an upright framed
+form. The six warped templates are equal-weight alternatives of one family.
+No new family is counted for their different furnishings or slight size variation.
+
+The inspected source sheets in sources/nether-house-views and the full packaged
+catalog are hash-bound to these four records. The existing graph binds the selected
+1.21.1 large-house version. This settles three explicitly provisional decisions;
+the medium family was already grouped but its relationship note required closure.
+Remaining explicit queue: 64 (Nether 11, Voyager 53). Working groups remain 409.
+Attribute and generated-world claims remain separate, and the inventory refresh
+follows this decision increment.
+
+Eight affected cases pass; scoped Ruff and Basedpyright pass.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mns or moog_modular_variants'
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
