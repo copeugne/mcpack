@@ -1,0 +1,55 @@
+Compiled from "PuzzlesLibNeoForgeClient.java"
+public class fuzs.puzzleslib.neoforge.impl.client.PuzzlesLibNeoForgeClient {
+  public fuzs.puzzleslib.neoforge.impl.client.PuzzlesLibNeoForgeClient();
+    Code:
+       0: aload_0
+       1: invokespecial #20                 // Method java/lang/Object."<init>":()V
+       4: ldc           #21                 // String puzzleslib
+       6: invokedynamic #40,  0             // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+      11: invokestatic  #46                 // InterfaceMethod fuzs/puzzleslib/api/client/core/v1/ClientModConstructor.construct:(Ljava/lang/String;Ljava/util/function/Supplier;)V
+      14: getstatic     #52                 // Field fuzs/puzzleslib/api/core/v1/ModLoaderEnvironment.INSTANCE:Lfuzs/puzzleslib/api/core/v1/ModLoaderEnvironment;
+      17: ldc           #21                 // String puzzleslib
+      19: invokeinterface #56,  2           // InterfaceMethod fuzs/puzzleslib/api/core/v1/ModLoaderEnvironment.isDevelopmentEnvironmentWithoutDataGeneration:(Ljava/lang/String;)Z
+      24: ifeq          40
+      27: ldc           #58                 // String client/development
+      29: invokestatic  #64                 // Method fuzs/puzzleslib/impl/PuzzlesLibMod.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      32: invokedynamic #69,  0             // InvokeDynamic #1:get:()Ljava/util/function/Supplier;
+      37: invokestatic  #72                 // InterfaceMethod fuzs/puzzleslib/api/client/core/v1/ClientModConstructor.construct:(Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Supplier;)V
+      40: getstatic     #78                 // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      43: invokestatic  #82                 // Method registerEventHandlers:(Lnet/neoforged/bus/api/IEventBus;)V
+      46: return
+
+  private static void registerEventHandlers(net.neoforged.bus.api.IEventBus);
+    Code:
+       0: getstatic     #52                 // Field fuzs/puzzleslib/api/core/v1/ModLoaderEnvironment.INSTANCE:Lfuzs/puzzleslib/api/core/v1/ModLoaderEnvironment;
+       3: ldc           #21                 // String puzzleslib
+       5: invokeinterface #56,  2           // InterfaceMethod fuzs/puzzleslib/api/core/v1/ModLoaderEnvironment.isDevelopmentEnvironmentWithoutDataGeneration:(Ljava/lang/String;)Z
+      10: ifne          14
+      13: return
+      14: aload_0
+      15: invokedynamic #97,  0             // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+      20: invokeinterface #103,  2          // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      25: return
+
+  private static void lambda$registerEventHandlers$2(net.neoforged.neoforge.client.event.RegisterClientCommandsEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #110                // Method net/neoforged/neoforge/client/event/RegisterClientCommandsEvent.getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+       4: invokedynamic #121,  0            // InvokeDynamic #3:accept:()Ljava/util/function/BiConsumer;
+       9: invokestatic  #127                // Method fuzs/puzzleslib/neoforge/impl/client/commands/NeoForgeConfigCommand.register:(Lcom/mojang/brigadier/CommandDispatcher;Ljava/util/function/BiConsumer;)V
+      12: return
+
+  private static void lambda$registerEventHandlers$1(net.minecraft.commands.CommandSourceStack, net.minecraft.network.chat.Component);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #140,  0            // InvokeDynamic #4:get:(Lnet/minecraft/network/chat/Component;)Ljava/util/function/Supplier;
+       7: iconst_1
+       8: invokevirtual #146                // Method net/minecraft/commands/CommandSourceStack.sendSuccess:(Ljava/util/function/Supplier;Z)V
+      11: return
+
+  private static net.minecraft.network.chat.Component lambda$registerEventHandlers$0(net.minecraft.network.chat.Component);
+    Code:
+       0: aload_0
+       1: areturn
+}
