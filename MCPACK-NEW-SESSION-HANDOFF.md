@@ -6,6 +6,37 @@
 
 ### Continuation update - 2026-09-07
 
+Cathedral and eight facility decisions now resolve nine explicit provisionals.
+Working groups remain 406. Explicit remainder: 23. All their layout views are
+already inspected and delivered at 6178f004; no recapture is needed. Sixteen affected
+cases and scoped quality checks pass. Cathedral loot namespace disposition remains
+an attribute task. Inventory refresh follows.
+
+- mvs:bee_dome
+- mvs:castle_ruins
+- mvs:crystal
+- mvs:duck
+- mvs:fox_hut
+- mvs:gallows
+- mvs:large_mushroom
+- mvs:log_ruin
+- mvs:mushroom_statue
+- mvs:nether_devil
+- mvs:railway
+- mvs:ruined_beacon
+- mvs:small_ruin
+- mvs:small_ship
+- mvs:snowy_dog_hut
+- mvs:snowy_fossil
+- mvs:statue_ruins
+- mvs:stone_fountain
+- mvs:stone_pillars
+- mvs:sunzi_gate
+- mvs:tree_monument
+- mvs:villager_statue
+- mvs:windmill
+
+
 The final pending Voyager landmark comparison selects exactly 32 architecture
 templates for the 31 non-cathedral decisions. Five fixed sheets reuse the existing
 renderer; the selected-path pilot and scoped checks pass. No broader provider

@@ -9051,3 +9051,28 @@ SHA-256: 4ed633922ed26ff99ff681f08730e98098c1f84e0b89e0f6195f7d121d2b06c7.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-houses-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-voyager-houses-r2.json
 ```
+
+### Voyager cathedral and facility decisions, 2026-09-07
+
+The connected cathedral graph establishes one modular family; 29 reachable
+templates are alternatives/components, not 29 structures per instance. Packaged
+cathedral_start and ordinary corridor_8 are not selected by that graph. The
+minecraft:mvs/cathedral_common references remain preserved and require effective
+loot disposition during attribute completion. No namespace correction is inferred.
+
+Eight facility layouts remain distinct after inspection of views delivered at
+6178f004 and their contents: beach bar, enchanting installation, pump depiction,
+horse pen, lamp cache, lectern garden, raised grain bin and wheat plot. Their
+functional blocks and loot references remain attributed to their templates; no
+observed animal presence, machinery throughput or production loop is inferred.
+
+Sixteen affected cases and scoped Ruff/Basedpyright pass. Working groups remain
+406; the explicit provisional remainder is 23 and all remaining views are already
+inspected. Nonregistry reconciliation, required attributes and final review remain
+open. Inventory refresh follows.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mvs or voyager'
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
