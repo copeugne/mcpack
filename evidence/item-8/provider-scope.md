@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 61 of 136. The exact queue below has 75 open rows.
+Supported provider dispositions: 62 of 136. The exact queue below has 74 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -563,7 +563,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar` | `better-end-island-activation`, `better-end-island-configuration`, `better-end-island-exit-portal`, `better-end-island-generator-dependencies`, `better-end-island-platform-gateway`, `better-end-island-processors`, `better-end-island-spike-podium` | Reuse platform/gateway, activation and generator captures; account for remaining entries and resources. |
 | `YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar` | `jungle-temple-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar` | `mineshafts-code` | Reconcile existing roots, all components and additional feature/entry routes. |
-| `YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar` | `fortress-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
+| `YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar` | `fortress-provider` (5933abb), prior suppression source, test_fortress_provider_scope.py | RESOLVED: One existing root, 15 connected pools, 169 templates with 20 disconnected components and one missing template. Component processors and existing-fortress spawning hook accounted for below. |
 | `YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar` | `monument-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar` | `stronghold-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar` | `witch-hut-provider` (04b6ab5), prior suppression capture, test_witch_hut_provider_scope.py | RESOLVED: Two existing roots, three pools, six connected templates and five component processors. Packaged services and entry roles are accounted for below. |
@@ -2225,3 +2225,49 @@ with a wrapped assertion and a local exemption keeping the single archive/graph
 assertion together. The source capture independently reproduces exactly. Current
 census: 61 resolved providers, 75 open. Canonical family grouping and Item 8's
 remaining attribute and final delivery gates are unchanged.
+
+## Better Nether Fortresses provider disposition
+
+Source 5933abb and fortress-suppression preserve all 26 packaged classes in
+YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar. The focused check binds
+archive/class/source identities, accounts for all 244 files, and matches the
+single betterfortresses:fortress root against the runtime registry. Three
+packaged service declarations select the captured NeoForge modules, platform
+and item-frame processor providers. Common registration scans the module package;
+the modules service delegates to an empty default. Reuse the prior configuration,
+vanilla suppression and direct locate evidence.
+
+All 15 pools are connected in the preserved root graph. Of 169 templates,
+20 are disconnected; their exact IDs are listed in test_fortress_provider_scope.py.
+These are bridge, stair, pillar, hall and tower alternatives or props. None has
+an independent root. The missing reference betterfortresses:halls/hall_4 is
+preserved; the packaged halls/hall_4_ has a distinct ID and is not substituted.
+The root graph has no unresolved pool elements. Do not count disconnected pieces
+or alternate layouts as new families, or equate graph reachability with observed
+successful placement.
+
+The main processor list uses seven captured custom processor types plus vanilla
+rule processing. They construct component supports/arches, replace liquid and
+stair markers, vary wart placement and populate existing item-frame entity NBT.
+Pillar states and item choices use shared YUNG API randomizers. The existing
+spawning mixin recognizes monster-category positions over nether bricks inside
+a valid Better Fortress start. These are component and existing-encounter effects,
+not independent families. Preserve direct support writes outside template bounds
+and exact item NBT for later size/content attribution. Shared YUNG API semantics
+remain an open provider dependency; this closure is not a gameplay or final
+attribute acceptance claim.
+
+Other data is loot, tags, an advancement, translations and metadata/assets.
+There are no nested archives, functions, feature/carver definitions or unexplained
+payload categories. The source capture reproduces exactly.
+
+```sh
+uv run pytest -q tests/item8/test_fortress_provider_scope.py tests/item8/test_yung_suppression.py
+uv run ruff check tests/item8/test_fortress_provider_scope.py
+uv run basedpyright tests/item8/test_fortress_provider_scope.py
+```
+
+Seven cases pass. Scoped Ruff and Basedpyright pass after correcting an overlong
+assertion and explicitly typing the JSON processor IDs as strings. No raw input
+or frozen configuration changed. Current census: 62 resolved providers and 74
+open. Canonical grouping, eleven attributes and the final Item 8 gate remain open.
