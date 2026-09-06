@@ -1,0 +1,483 @@
+Classfile tectonic-3.0.22-neoforge-21.1.jar!/dev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin.class
+  Last modified Feb 1, 1980; size 6157 bytes
+  SHA-256 checksum c5c57594528e6dad358b8e9d93e046646c583e8635256ec45799e63cd9e38046
+  Compiled from "NoiseBasedChunkGeneratorMixin.java"
+public class dev.worldgen.tectonic.mixin.NoiseBasedChunkGeneratorMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // dev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 5, attributes: 4
+Constant pool:
+    #1 = Utf8               dev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin
+    #2 = Class              #1            // dev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               NoiseBasedChunkGeneratorMixin.java
+    #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #7 = Utf8               value
+    #8 = Utf8               Lnet/minecraft/world/level/levelgen/NoiseBasedChunkGenerator;
+    #9 = Utf8               dev/worldgen/tectonic/config/state/ConfigState$GlobalTerrain
+   #10 = Class              #9            // dev/worldgen/tectonic/config/state/ConfigState$GlobalTerrain
+   #11 = Utf8               dev/worldgen/tectonic/config/state/ConfigState
+   #12 = Class              #11           // dev/worldgen/tectonic/config/state/ConfigState
+   #13 = Utf8               GlobalTerrain
+   #14 = Utf8               net/minecraft/world/level/levelgen/Aquifer$FluidStatus
+   #15 = Class              #14           // net/minecraft/world/level/levelgen/Aquifer$FluidStatus
+   #16 = Utf8               net/minecraft/world/level/levelgen/Aquifer
+   #17 = Class              #16           // net/minecraft/world/level/levelgen/Aquifer
+   #18 = Utf8               FluidStatus
+   #19 = Utf8               net/minecraft/world/level/levelgen/Aquifer$FluidPicker
+   #20 = Class              #19           // net/minecraft/world/level/levelgen/Aquifer$FluidPicker
+   #21 = Utf8               FluidPicker
+   #22 = Utf8               java/lang/invoke/MethodHandles$Lookup
+   #23 = Class              #22           // java/lang/invoke/MethodHandles$Lookup
+   #24 = Utf8               java/lang/invoke/MethodHandles
+   #25 = Class              #24           // java/lang/invoke/MethodHandles
+   #26 = Utf8               Lookup
+   #27 = Utf8               globalFluidPicker
+   #28 = Utf8               Ljava/util/function/Supplier;
+   #29 = Utf8               Ljava/util/function/Supplier<Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;>;
+   #30 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #31 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+   #32 = Utf8               Lorg/spongepowered/asm/mixin/Mutable;
+   #33 = Utf8               <init>
+   #34 = Utf8               ()V
+   #35 = NameAndType        #33:#34       // "<init>":()V
+   #36 = Methodref          #4.#35        // java/lang/Object."<init>":()V
+   #37 = Utf8               this
+   #38 = Utf8               Ldev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin;
+   #39 = Utf8               tectonic$fixLavaLevel
+   #40 = Utf8               (Lnet/minecraft/world/level/biome/BiomeSource;Lnet/minecraft/core/Holder;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+   #41 = Utf8               (Lnet/minecraft/world/level/biome/BiomeSource;Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/levelgen/NoiseGeneratorSettings;>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+   #42 = Utf8               source
+   #43 = Utf8               settings
+   #44 = Utf8               ci
+   #45 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #46 = Utf8               method
+   #47 = Utf8               <init>(Lnet/minecraft/world/level/biome/BiomeSource;Lnet/minecraft/core/Holder;)V
+   #48 = Utf8               at
+   #49 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #50 = Utf8               RETURN
+   #51 = Utf8               dev/worldgen/tectonic/Tectonic
+   #52 = Class              #51           // dev/worldgen/tectonic/Tectonic
+   #53 = Utf8               isEnabled
+   #54 = Utf8               ()Z
+   #55 = NameAndType        #53:#54       // isEnabled:()Z
+   #56 = Methodref          #52.#55       // dev/worldgen/tectonic/Tectonic.isEnabled:()Z
+   #57 = Utf8               net/minecraft/core/Holder
+   #58 = Class              #57           // net/minecraft/core/Holder
+   #59 = Utf8               unwrapKey
+   #60 = Utf8               ()Ljava/util/Optional;
+   #61 = NameAndType        #59:#60       // unwrapKey:()Ljava/util/Optional;
+   #62 = InterfaceMethodref #58.#61       // net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+   #63 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #64 = MethodType         #63           //  (Ljava/lang/Object;)Ljava/lang/Object;
+   #65 = Utf8               lambda$tectonic$fixLavaLevel$0
+   #66 = Utf8               (Lnet/minecraft/resources/ResourceKey;)Ljava/lang/Boolean;
+   #67 = NameAndType        #65:#66       // lambda$tectonic$fixLavaLevel$0:(Lnet/minecraft/resources/ResourceKey;)Ljava/lang/Boolean;
+   #68 = Methodref          #2.#67        // dev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin.lambda$tectonic$fixLavaLevel$0:(Lnet/minecraft/resources/ResourceKey;)Ljava/lang/Boolean;
+   #69 = MethodHandle       6:#68         // REF_invokeStatic dev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin.lambda$tectonic$fixLavaLevel$0:(Lnet/minecraft/resources/ResourceKey;)Ljava/lang/Boolean;
+   #70 = MethodType         #66           //  (Lnet/minecraft/resources/ResourceKey;)Ljava/lang/Boolean;
+   #71 = Utf8               java/lang/invoke/LambdaMetafactory
+   #72 = Class              #71           // java/lang/invoke/LambdaMetafactory
+   #73 = Utf8               metafactory
+   #74 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #75 = NameAndType        #73:#74       // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #76 = Methodref          #72.#75       // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #77 = MethodHandle       6:#76         // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #78 = Utf8               apply
+   #79 = Utf8               ()Ljava/util/function/Function;
+   #80 = NameAndType        #78:#79       // apply:()Ljava/util/function/Function;
+   #81 = InvokeDynamic      #0:#80        // #0:apply:()Ljava/util/function/Function;
+   #82 = Utf8               java/util/Optional
+   #83 = Class              #82           // java/util/Optional
+   #84 = Utf8               map
+   #85 = Utf8               (Ljava/util/function/Function;)Ljava/util/Optional;
+   #86 = NameAndType        #84:#85       // map:(Ljava/util/function/Function;)Ljava/util/Optional;
+   #87 = Methodref          #83.#86       // java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+   #88 = Utf8               java/lang/Boolean
+   #89 = Class              #88           // java/lang/Boolean
+   #90 = Utf8               valueOf
+   #91 = Utf8               (Z)Ljava/lang/Boolean;
+   #92 = NameAndType        #90:#91       // valueOf:(Z)Ljava/lang/Boolean;
+   #93 = Methodref          #89.#92       // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+   #94 = Utf8               orElse
+   #95 = NameAndType        #94:#63       // orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+   #96 = Methodref          #83.#95       // java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+   #97 = Utf8               booleanValue
+   #98 = NameAndType        #97:#54       // booleanValue:()Z
+   #99 = Methodref          #89.#98       // java/lang/Boolean.booleanValue:()Z
+  #100 = Utf8               ()Ljava/lang/Object;
+  #101 = MethodType         #100          //  ()Ljava/lang/Object;
+  #102 = Utf8               lambda$tectonic$fixLavaLevel$1
+  #103 = Utf8               (Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;
+  #104 = NameAndType        #102:#103     // lambda$tectonic$fixLavaLevel$1:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;
+  #105 = Methodref          #2.#104       // dev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin.lambda$tectonic$fixLavaLevel$1:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;
+  #106 = MethodHandle       6:#105        // REF_invokeStatic dev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin.lambda$tectonic$fixLavaLevel$1:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;
+  #107 = Utf8               ()Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;
+  #108 = MethodType         #107          //  ()Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;
+  #109 = Utf8               get
+  #110 = Utf8               (Lnet/minecraft/core/Holder;)Lcom/google/common/base/Supplier;
+  #111 = NameAndType        #109:#110     // get:(Lnet/minecraft/core/Holder;)Lcom/google/common/base/Supplier;
+  #112 = InvokeDynamic      #1:#111       // #1:get:(Lnet/minecraft/core/Holder;)Lcom/google/common/base/Supplier;
+  #113 = Utf8               com/google/common/base/Suppliers
+  #114 = Class              #113          // com/google/common/base/Suppliers
+  #115 = Utf8               memoize
+  #116 = Utf8               (Lcom/google/common/base/Supplier;)Lcom/google/common/base/Supplier;
+  #117 = NameAndType        #115:#116     // memoize:(Lcom/google/common/base/Supplier;)Lcom/google/common/base/Supplier;
+  #118 = Methodref          #114.#117     // com/google/common/base/Suppliers.memoize:(Lcom/google/common/base/Supplier;)Lcom/google/common/base/Supplier;
+  #119 = NameAndType        #27:#28       // globalFluidPicker:Ljava/util/function/Supplier;
+  #120 = Fieldref           #2.#119       // dev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin.globalFluidPicker:Ljava/util/function/Supplier;
+  #121 = Utf8               Lnet/minecraft/world/level/biome/BiomeSource;
+  #122 = Utf8               Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/levelgen/NoiseGeneratorSettings;>;
+  #123 = Utf8               Lnet/minecraft/core/Holder;
+  #124 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #125 = Utf8               dev/worldgen/tectonic/config/ConfigHandler
+  #126 = Class              #125          // dev/worldgen/tectonic/config/ConfigHandler
+  #127 = Utf8               getState
+  #128 = Utf8               ()Ldev/worldgen/tectonic/config/state/ConfigState;
+  #129 = NameAndType        #127:#128     // getState:()Ldev/worldgen/tectonic/config/state/ConfigState;
+  #130 = Methodref          #126.#129     // dev/worldgen/tectonic/config/ConfigHandler.getState:()Ldev/worldgen/tectonic/config/state/ConfigState;
+  #131 = Utf8               globalTerrain
+  #132 = Utf8               Ldev/worldgen/tectonic/config/state/ConfigState$GlobalTerrain;
+  #133 = NameAndType        #131:#132     // globalTerrain:Ldev/worldgen/tectonic/config/state/ConfigState$GlobalTerrain;
+  #134 = Fieldref           #12.#133      // dev/worldgen/tectonic/config/state/ConfigState.globalTerrain:Ldev/worldgen/tectonic/config/state/ConfigState$GlobalTerrain;
+  #135 = Utf8               heightLimits
+  #136 = Utf8               Ldev/worldgen/tectonic/config/state/object/HeightLimits;
+  #137 = NameAndType        #135:#136     // heightLimits:Ldev/worldgen/tectonic/config/state/object/HeightLimits;
+  #138 = Fieldref           #10.#137      // dev/worldgen/tectonic/config/state/ConfigState$GlobalTerrain.heightLimits:Ldev/worldgen/tectonic/config/state/object/HeightLimits;
+  #139 = Utf8               dev/worldgen/tectonic/config/state/object/HeightLimits
+  #140 = Class              #139          // dev/worldgen/tectonic/config/state/object/HeightLimits
+  #141 = Utf8               minY
+  #142 = Utf8               I
+  #143 = NameAndType        #141:#142     // minY:I
+  #144 = Fieldref           #140.#143     // dev/worldgen/tectonic/config/state/object/HeightLimits.minY:I
+  #145 = Utf8               net/minecraft/world/level/block/Blocks
+  #146 = Class              #145          // net/minecraft/world/level/block/Blocks
+  #147 = Utf8               LAVA
+  #148 = Utf8               Lnet/minecraft/world/level/block/Block;
+  #149 = NameAndType        #147:#148     // LAVA:Lnet/minecraft/world/level/block/Block;
+  #150 = Fieldref           #146.#149     // net/minecraft/world/level/block/Blocks.LAVA:Lnet/minecraft/world/level/block/Block;
+  #151 = Utf8               net/minecraft/world/level/block/Block
+  #152 = Class              #151          // net/minecraft/world/level/block/Block
+  #153 = Utf8               defaultBlockState
+  #154 = Utf8               ()Lnet/minecraft/world/level/block/state/BlockState;
+  #155 = NameAndType        #153:#154     // defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+  #156 = Methodref          #152.#155     // net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+  #157 = Utf8               (ILnet/minecraft/world/level/block/state/BlockState;)V
+  #158 = NameAndType        #33:#157      // "<init>":(ILnet/minecraft/world/level/block/state/BlockState;)V
+  #159 = Methodref          #15.#158      // net/minecraft/world/level/levelgen/Aquifer$FluidStatus."<init>":(ILnet/minecraft/world/level/block/state/BlockState;)V
+  #160 = NameAndType        #7:#100       // value:()Ljava/lang/Object;
+  #161 = InterfaceMethodref #58.#160      // net/minecraft/core/Holder.value:()Ljava/lang/Object;
+  #162 = Utf8               net/minecraft/world/level/levelgen/NoiseGeneratorSettings
+  #163 = Class              #162          // net/minecraft/world/level/levelgen/NoiseGeneratorSettings
+  #164 = Utf8               seaLevel
+  #165 = Utf8               ()I
+  #166 = NameAndType        #164:#165     // seaLevel:()I
+  #167 = Methodref          #163.#166     // net/minecraft/world/level/levelgen/NoiseGeneratorSettings.seaLevel:()I
+  #168 = Utf8               defaultFluid
+  #169 = NameAndType        #168:#154     // defaultFluid:()Lnet/minecraft/world/level/block/state/BlockState;
+  #170 = Methodref          #163.#169     // net/minecraft/world/level/levelgen/NoiseGeneratorSettings.defaultFluid:()Lnet/minecraft/world/level/block/state/BlockState;
+  #171 = Utf8               net/minecraft/world/level/dimension/DimensionType
+  #172 = Class              #171          // net/minecraft/world/level/dimension/DimensionType
+  #173 = Utf8               MIN_Y
+  #174 = NameAndType        #173:#142     // MIN_Y:I
+  #175 = Fieldref           #172.#174     // net/minecraft/world/level/dimension/DimensionType.MIN_Y:I
+  #176 = Utf8               AIR
+  #177 = NameAndType        #176:#148     // AIR:Lnet/minecraft/world/level/block/Block;
+  #178 = Fieldref           #146.#177     // net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+  #179 = Utf8               (III)Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;
+  #180 = MethodType         #179          //  (III)Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;
+  #181 = Utf8               lambda$tectonic$fixLavaLevel$2
+  #182 = Utf8               (IILnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;III)Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;
+  #183 = NameAndType        #181:#182     // lambda$tectonic$fixLavaLevel$2:(IILnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;III)Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;
+  #184 = Methodref          #2.#183       // dev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin.lambda$tectonic$fixLavaLevel$2:(IILnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;III)Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;
+  #185 = MethodHandle       6:#184        // REF_invokeStatic dev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin.lambda$tectonic$fixLavaLevel$2:(IILnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;III)Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;
+  #186 = Utf8               computeFluid
+  #187 = Utf8               (IILnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;)Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;
+  #188 = NameAndType        #186:#187     // computeFluid:(IILnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;)Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;
+  #189 = InvokeDynamic      #2:#188       // #2:computeFluid:(IILnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;)Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;
+  #190 = Utf8               lavaLevel
+  #191 = Utf8               lavaStatus
+  #192 = Utf8               Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;
+  #193 = Utf8               seaStatus
+  #194 = Utf8               disabledStatus
+  #195 = Utf8               j
+  #196 = Utf8               k
+  #197 = Utf8               l
+  #198 = Utf8               java/lang/Math
+  #199 = Class              #198          // java/lang/Math
+  #200 = Utf8               min
+  #201 = Utf8               (II)I
+  #202 = NameAndType        #200:#201     // min:(II)I
+  #203 = Methodref          #199.#202     // java/lang/Math.min:(II)I
+  #204 = Utf8               key
+  #205 = Utf8               net/minecraft/resources/ResourceKey
+  #206 = Class              #205          // net/minecraft/resources/ResourceKey
+  #207 = Utf8               location
+  #208 = Utf8               ()Lnet/minecraft/resources/ResourceLocation;
+  #209 = NameAndType        #207:#208     // location:()Lnet/minecraft/resources/ResourceLocation;
+  #210 = Methodref          #206.#209     // net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+  #211 = Utf8               net/minecraft/resources/ResourceLocation
+  #212 = Class              #211          // net/minecraft/resources/ResourceLocation
+  #213 = Utf8               getPath
+  #214 = Utf8               ()Ljava/lang/String;
+  #215 = NameAndType        #213:#214     // getPath:()Ljava/lang/String;
+  #216 = Methodref          #212.#215     // net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+  #217 = Utf8               overworld
+  #218 = String             #217          // overworld
+  #219 = Utf8               java/lang/String
+  #220 = Class              #219          // java/lang/String
+  #221 = Utf8               equals
+  #222 = Utf8               (Ljava/lang/Object;)Z
+  #223 = NameAndType        #221:#222     // equals:(Ljava/lang/Object;)Z
+  #224 = Methodref          #220.#223     // java/lang/String.equals:(Ljava/lang/Object;)Z
+  #225 = Utf8               Lnet/minecraft/resources/ResourceKey;
+  #226 = Utf8               Signature
+  #227 = Utf8               RuntimeVisibleAnnotations
+  #228 = Utf8               Code
+  #229 = Utf8               LineNumberTable
+  #230 = Utf8               LocalVariableTable
+  #231 = Utf8               StackMapTable
+  #232 = Utf8               LocalVariableTypeTable
+  #233 = Utf8               MethodParameters
+  #234 = Utf8               InnerClasses
+  #235 = Utf8               SourceFile
+  #236 = Utf8               RuntimeInvisibleAnnotations
+  #237 = Utf8               BootstrapMethods
+{
+  private java.util.function.Supplier<net.minecraft.world.level.levelgen.Aquifer$FluidPicker> globalFluidPicker;
+    descriptor: Ljava/util/function/Supplier;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #29                          // Ljava/util/function/Supplier<Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;>;
+    RuntimeVisibleAnnotations:
+      0: #30()
+        org.spongepowered.asm.mixin.Shadow
+      1: #31()
+        org.spongepowered.asm.mixin.Final
+      2: #32()
+        org.spongepowered.asm.mixin.Mutable
+
+  public dev.worldgen.tectonic.mixin.NoiseBasedChunkGeneratorMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #36                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 25: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Ldev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin;
+
+  private void tectonic$fixLavaLevel(net.minecraft.world.level.biome.BiomeSource, net.minecraft.core.Holder<net.minecraft.world.level.levelgen.NoiseGeneratorSettings>, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/level/biome/BiomeSource;Lnet/minecraft/core/Holder;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=4, args_size=4
+         0: invokestatic  #56                 // Method dev/worldgen/tectonic/Tectonic.isEnabled:()Z
+         3: ifeq          49
+         6: aload_2
+         7: invokeinterface #62,  1           // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+        12: invokedynamic #81,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+        17: invokevirtual #87                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+        20: iconst_0
+        21: invokestatic  #93                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        24: invokevirtual #96                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+        27: checkcast     #89                 // class java/lang/Boolean
+        30: invokevirtual #99                 // Method java/lang/Boolean.booleanValue:()Z
+        33: ifeq          49
+        36: aload_0
+        37: aload_2
+        38: invokedynamic #112,  0            // InvokeDynamic #1:get:(Lnet/minecraft/core/Holder;)Lcom/google/common/base/Supplier;
+        43: invokestatic  #118                // Method com/google/common/base/Suppliers.memoize:(Lcom/google/common/base/Supplier;)Lcom/google/common/base/Supplier;
+        46: putfield      #120                // Field globalFluidPicker:Ljava/util/function/Supplier;
+        49: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 49 /* same */
+      LineNumberTable:
+        line 34: 0
+        line 35: 36
+        line 52: 49
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      50     0  this   Ldev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin;
+            0      50     1 source   Lnet/minecraft/world/level/biome/BiomeSource;
+            0      50     2 settings   Lnet/minecraft/core/Holder;
+            0      50     3    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      50     2 settings   Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/levelgen/NoiseGeneratorSettings;>;
+    Signature: #41                          // (Lnet/minecraft/world/level/biome/BiomeSource;Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/levelgen/NoiseGeneratorSettings;>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    RuntimeVisibleAnnotations:
+      0: #45(#46=[s#47],#48=[@#49(#7=s#50)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<init>(Lnet/minecraft/world/level/biome/BiomeSource;Lnet/minecraft/core/Holder;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      source
+      settings
+      ci
+
+  private static net.minecraft.world.level.levelgen.Aquifer$FluidPicker lambda$tectonic$fixLavaLevel$1(net.minecraft.core.Holder);
+    descriptor: (Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=6, args_size=1
+         0: invokestatic  #130                // Method dev/worldgen/tectonic/config/ConfigHandler.getState:()Ldev/worldgen/tectonic/config/state/ConfigState;
+         3: getfield      #134                // Field dev/worldgen/tectonic/config/state/ConfigState.globalTerrain:Ldev/worldgen/tectonic/config/state/ConfigState$GlobalTerrain;
+         6: getfield      #138                // Field dev/worldgen/tectonic/config/state/ConfigState$GlobalTerrain.heightLimits:Ldev/worldgen/tectonic/config/state/object/HeightLimits;
+         9: getfield      #144                // Field dev/worldgen/tectonic/config/state/object/HeightLimits.minY:I
+        12: bipush        10
+        14: iadd
+        15: istore_1
+        16: new           #15                 // class net/minecraft/world/level/levelgen/Aquifer$FluidStatus
+        19: dup
+        20: iload_1
+        21: getstatic     #150                // Field net/minecraft/world/level/block/Blocks.LAVA:Lnet/minecraft/world/level/block/Block;
+        24: invokevirtual #156                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+        27: invokespecial #159                // Method net/minecraft/world/level/levelgen/Aquifer$FluidStatus."<init>":(ILnet/minecraft/world/level/block/state/BlockState;)V
+        30: astore_2
+        31: aload_0
+        32: invokeinterface #161,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+        37: checkcast     #163                // class net/minecraft/world/level/levelgen/NoiseGeneratorSettings
+        40: invokevirtual #167                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.seaLevel:()I
+        43: istore_3
+        44: new           #15                 // class net/minecraft/world/level/levelgen/Aquifer$FluidStatus
+        47: dup
+        48: iload_3
+        49: aload_0
+        50: invokeinterface #161,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+        55: checkcast     #163                // class net/minecraft/world/level/levelgen/NoiseGeneratorSettings
+        58: invokevirtual #170                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.defaultFluid:()Lnet/minecraft/world/level/block/state/BlockState;
+        61: invokespecial #159                // Method net/minecraft/world/level/levelgen/Aquifer$FluidStatus."<init>":(ILnet/minecraft/world/level/block/state/BlockState;)V
+        64: astore        4
+        66: new           #15                 // class net/minecraft/world/level/levelgen/Aquifer$FluidStatus
+        69: dup
+        70: getstatic     #175                // Field net/minecraft/world/level/dimension/DimensionType.MIN_Y:I
+        73: iconst_2
+        74: imul
+        75: getstatic     #178                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+        78: invokevirtual #156                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+        81: invokespecial #159                // Method net/minecraft/world/level/levelgen/Aquifer$FluidStatus."<init>":(ILnet/minecraft/world/level/block/state/BlockState;)V
+        84: astore        5
+        86: iload_1
+        87: iload_3
+        88: aload_2
+        89: aload         4
+        91: invokedynamic #189,  0            // InvokeDynamic #2:computeFluid:(IILnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;)Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;
+        96: areturn
+      LineNumberTable:
+        line 36: 0
+        line 37: 16
+        line 38: 31
+        line 39: 44
+        line 40: 66
+        line 41: 86
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      97     0 settings   Lnet/minecraft/core/Holder;
+           16      81     1 lavaLevel   I
+           31      66     2 lavaStatus   Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;
+           44      53     3 seaLevel   I
+           66      31     4 seaStatus   Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;
+           86      11     5 disabledStatus   Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;
+    MethodParameters:
+      Name                           Flags
+      settings
+
+  private static net.minecraft.world.level.levelgen.Aquifer$FluidStatus lambda$tectonic$fixLavaLevel$2(int, int, net.minecraft.world.level.levelgen.Aquifer$FluidStatus, net.minecraft.world.level.levelgen.Aquifer$FluidStatus, int, int, int);
+    descriptor: (IILnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;III)Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=7, args_size=7
+         0: iload         5
+         2: iload_0
+         3: iload_1
+         4: invokestatic  #203                // Method java/lang/Math.min:(II)I
+         7: if_icmpge     12
+        10: aload_2
+        11: areturn
+        12: aload_3
+        13: areturn
+      StackMapTable: number_of_entries = 1
+        frame_type = 12 /* same */
+      LineNumberTable:
+        line 45: 0
+        line 46: 10
+        line 48: 12
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0 lavaLevel   I
+            0      14     1 seaLevel   I
+            0      14     2 lavaStatus   Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;
+            0      14     3 seaStatus   Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;
+            0      14     4     j   I
+            0      14     5     k   I
+            0      14     6     l   I
+    MethodParameters:
+      Name                           Flags
+      lavaLevel
+      seaLevel
+      lavaStatus
+      seaStatus
+      j
+      k
+      l
+
+  private static java.lang.Boolean lambda$tectonic$fixLavaLevel$0(net.minecraft.resources.ResourceKey);
+    descriptor: (Lnet/minecraft/resources/ResourceKey;)Ljava/lang/Boolean;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #210                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+         4: invokevirtual #216                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+         7: ldc           #218                // String overworld
+         9: invokevirtual #224                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        12: invokestatic  #93                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        15: areturn
+      LineNumberTable:
+        line 34: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0   key   Lnet/minecraft/resources/ResourceKey;
+    MethodParameters:
+      Name                           Flags
+      key
+}
+InnerClasses:
+  public static #13= #10 of #12;          // GlobalTerrain=class dev/worldgen/tectonic/config/state/ConfigState$GlobalTerrain of class dev/worldgen/tectonic/config/state/ConfigState
+  public static final #18= #15 of #17;    // FluidStatus=class net/minecraft/world/level/levelgen/Aquifer$FluidStatus of class net/minecraft/world/level/levelgen/Aquifer
+  public static #21= #20 of #17;          // FluidPicker=class net/minecraft/world/level/levelgen/Aquifer$FluidPicker of class net/minecraft/world/level/levelgen/Aquifer
+  public static final #26= #23 of #25;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+SourceFile: "NoiseBasedChunkGeneratorMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/levelgen/NoiseBasedChunkGenerator;]
+    )
+BootstrapMethods:
+  0: #77 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #64 (Ljava/lang/Object;)Ljava/lang/Object;
+      #69 REF_invokeStatic dev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin.lambda$tectonic$fixLavaLevel$0:(Lnet/minecraft/resources/ResourceKey;)Ljava/lang/Boolean;
+      #70 (Lnet/minecraft/resources/ResourceKey;)Ljava/lang/Boolean;
+  1: #77 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #101 ()Ljava/lang/Object;
+      #106 REF_invokeStatic dev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin.lambda$tectonic$fixLavaLevel$1:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;
+      #108 ()Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;
+  2: #77 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #180 (III)Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;
+      #185 REF_invokeStatic dev/worldgen/tectonic/mixin/NoiseBasedChunkGeneratorMixin.lambda$tectonic$fixLavaLevel$2:(IILnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;III)Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;
+      #180 (III)Lnet/minecraft/world/level/levelgen/Aquifer$FluidStatus;

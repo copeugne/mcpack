@@ -1,0 +1,165 @@
+Compiled from "SetHeightLimitsModifier.java"
+public final class dev.worldgen.tectonic.lithostitched.SetHeightLimitsModifier extends java.lang.Record implements dev.worldgen.lithostitched.api.worldgen.modifier.WorldgenModifier {
+  private final java.util.Optional<dev.worldgen.lithostitched.api.predicate.LoadPredicate> predicate;
+
+  private final int priority;
+
+  private final net.minecraft.core.Holder<net.minecraft.world.level.dimension.DimensionType> dimensionType;
+
+  private final net.minecraft.core.Holder<net.minecraft.world.level.levelgen.NoiseGeneratorSettings> noiseSettings;
+
+  public static final com.mojang.serialization.MapCodec<dev.worldgen.tectonic.lithostitched.SetHeightLimitsModifier> CODEC;
+
+  public dev.worldgen.tectonic.lithostitched.SetHeightLimitsModifier(java.util.Optional<dev.worldgen.lithostitched.api.predicate.LoadPredicate>, int, net.minecraft.core.Holder<net.minecraft.world.level.dimension.DimensionType>, net.minecraft.core.Holder<net.minecraft.world.level.levelgen.NoiseGeneratorSettings>);
+    Code:
+       0: aload_0
+       1: invokespecial #46                 // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #48                 // Field predicate:Ljava/util/Optional;
+       9: aload_0
+      10: iload_2
+      11: putfield      #50                 // Field priority:I
+      14: aload_0
+      15: aload_3
+      16: putfield      #52                 // Field dimensionType:Lnet/minecraft/core/Holder;
+      19: aload_0
+      20: aload         4
+      22: putfield      #54                 // Field noiseSettings:Lnet/minecraft/core/Holder;
+      25: return
+
+  public void apply(net.minecraft.core.RegistryAccess);
+    Code:
+       0: invokestatic  #65                 // Method dev/worldgen/tectonic/Tectonic.isEnabled:()Z
+       3: ifne          7
+       6: return
+       7: invokestatic  #71                 // Method dev/worldgen/tectonic/config/ConfigHandler.getState:()Ldev/worldgen/tectonic/config/state/ConfigState;
+      10: getfield      #75                 // Field dev/worldgen/tectonic/config/state/ConfigState.globalTerrain:Ldev/worldgen/tectonic/config/state/ConfigState$GlobalTerrain;
+      13: getfield      #79                 // Field dev/worldgen/tectonic/config/state/ConfigState$GlobalTerrain.heightLimits:Ldev/worldgen/tectonic/config/state/object/HeightLimits;
+      16: astore_2
+      17: aload_2
+      18: invokevirtual #84                 // Method dev/worldgen/tectonic/config/state/object/HeightLimits.isVanilla:()Z
+      21: ifeq          25
+      24: return
+      25: aload_0
+      26: getfield      #52                 // Field dimensionType:Lnet/minecraft/core/Holder;
+      29: invokeinterface #90,  1           // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      34: checkcast     #92                 // class dev/worldgen/tectonic/mixin/DimensionTypeAccessor
+      37: astore_3
+      38: aload_3
+      39: aload_2
+      40: getfield      #95                 // Field dev/worldgen/tectonic/config/state/object/HeightLimits.minY:I
+      43: invokeinterface #99,  2           // InterfaceMethod dev/worldgen/tectonic/mixin/DimensionTypeAccessor.setMinY:(I)V
+      48: aload_3
+      49: aload_2
+      50: invokevirtual #103                // Method dev/worldgen/tectonic/config/state/object/HeightLimits.getHeight:()I
+      53: invokeinterface #106,  2          // InterfaceMethod dev/worldgen/tectonic/mixin/DimensionTypeAccessor.setHeight:(I)V
+      58: aload_3
+      59: aload_2
+      60: invokevirtual #103                // Method dev/worldgen/tectonic/config/state/object/HeightLimits.getHeight:()I
+      63: invokeinterface #109,  2          // InterfaceMethod dev/worldgen/tectonic/mixin/DimensionTypeAccessor.setLogicalHeight:(I)V
+      68: aload_0
+      69: getfield      #54                 // Field noiseSettings:Lnet/minecraft/core/Holder;
+      72: invokeinterface #90,  1           // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      77: checkcast     #111                // class net/minecraft/world/level/levelgen/NoiseGeneratorSettings
+      80: invokevirtual #114                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.noiseSettings:()Lnet/minecraft/world/level/levelgen/NoiseSettings;
+      83: checkcast     #116                // class dev/worldgen/tectonic/mixin/NoiseSettingsAccessor
+      86: astore        4
+      88: aload         4
+      90: aload_2
+      91: getfield      #95                 // Field dev/worldgen/tectonic/config/state/object/HeightLimits.minY:I
+      94: invokeinterface #117,  2          // InterfaceMethod dev/worldgen/tectonic/mixin/NoiseSettingsAccessor.setMinY:(I)V
+      99: aload         4
+     101: aload_2
+     102: invokevirtual #103                // Method dev/worldgen/tectonic/config/state/object/HeightLimits.getHeight:()I
+     105: invokeinterface #118,  2          // InterfaceMethod dev/worldgen/tectonic/mixin/NoiseSettingsAccessor.setHeight:(I)V
+     110: aload_1
+     111: getstatic     #124                // Field net/minecraft/core/registries/Registries.DIMENSION_TYPE:Lnet/minecraft/resources/ResourceKey;
+     114: invokestatic  #130                // Method dev/worldgen/lithostitched/Lithostitched.registry:(Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+     117: aload_0
+     118: getfield      #52                 // Field dimensionType:Lnet/minecraft/core/Holder;
+     121: invokestatic  #134                // InterfaceMethod dev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier.resetRegistrationInfo:(Lnet/minecraft/core/Registry;Lnet/minecraft/core/Holder;)V
+     124: return
+
+  public int priority();
+    Code:
+       0: aload_0
+       1: getfield      #50                 // Field priority:I
+       4: ireturn
+
+  public com.mojang.serialization.MapCodec<dev.worldgen.tectonic.lithostitched.SetHeightLimitsModifier> codec();
+    Code:
+       0: getstatic     #145                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+       3: areturn
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #163,  0            // InvokeDynamic #0:toString:(Ldev/worldgen/tectonic/lithostitched/SetHeightLimitsModifier;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #167,  0            // InvokeDynamic #0:hashCode:(Ldev/worldgen/tectonic/lithostitched/SetHeightLimitsModifier;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #173,  0            // InvokeDynamic #0:equals:(Ldev/worldgen/tectonic/lithostitched/SetHeightLimitsModifier;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public java.util.Optional<dev.worldgen.lithostitched.api.predicate.LoadPredicate> predicate();
+    Code:
+       0: aload_0
+       1: getfield      #48                 // Field predicate:Ljava/util/Optional;
+       4: areturn
+
+  public net.minecraft.core.Holder<net.minecraft.world.level.dimension.DimensionType> dimensionType();
+    Code:
+       0: aload_0
+       1: getfield      #52                 // Field dimensionType:Lnet/minecraft/core/Holder;
+       4: areturn
+
+  public net.minecraft.core.Holder<net.minecraft.world.level.levelgen.NoiseGeneratorSettings> noiseSettings();
+    Code:
+       0: aload_0
+       1: getfield      #54                 // Field noiseSettings:Lnet/minecraft/core/Holder;
+       4: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #187                // Field dev/worldgen/lithostitched/api/predicate/LoadPredicate.CODEC:Lcom/mojang/serialization/Codec;
+       4: ldc           #188                // String predicate
+       6: invokeinterface #194,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #211,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      16: invokevirtual #217                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: getstatic     #220                // Field dev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier.PRIORITY_DEFAULT_CODEC:Lcom/mojang/serialization/MapCodec;
+      22: invokedynamic #226,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      27: invokevirtual #217                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      30: getstatic     #229                // Field net/minecraft/world/level/dimension/DimensionType.CODEC:Lcom/mojang/serialization/Codec;
+      33: ldc           #231                // String dimension_type
+      35: invokeinterface #234,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      40: invokedynamic #240,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      45: invokevirtual #217                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      48: getstatic     #241                // Field net/minecraft/world/level/levelgen/NoiseGeneratorSettings.CODEC:Lcom/mojang/serialization/Codec;
+      51: ldc           #243                // String noise_settings
+      53: invokeinterface #234,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      58: invokedynamic #247,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      63: invokevirtual #217                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      66: invokevirtual #251                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P4;
+      69: aload_0
+      70: invokedynamic #261,  0            // InvokeDynamic #5:apply:()Lcom/mojang/datafixers/util/Function4;
+      75: invokevirtual #264                // Method com/mojang/datafixers/Products$P4.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function4;)Lcom/mojang/datafixers/kinds/App;
+      78: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #271,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+       5: invokestatic  #275                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #145                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}
