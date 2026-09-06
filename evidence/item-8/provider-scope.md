@@ -9605,3 +9605,23 @@ SHA-256: 025824a16a5c7180f67b76304a518e1953c55d77751b8b0c6b9df50ac3ca0783.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-facilities-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-facilities-r2.json
 ```
+# AdoraBuild Nether design reconciliation (2026-09-07)
+
+Views at 190bd9d1 and preserved template contents resolve the five Nether records.
+The fortress network, standalone courtyard and roofed wart house are separate
+designs. The tall bastion compound is separate from three low building variants.
+Basalt chambers remain one modular design with their missing pool reference
+preserved. Blackstone and nether-brick shrines retain separate forms and declared
+spawn behavior. No successful assembly or effective exposure is inferred.
+
+All 887 roots and full variants are preserved exactly. Working groups rise from
+408 to 411. Canonical-note backlog falls from 73 to 68 (IDAS 59, AdoraBuild 9).
+The focused AdoraBuild definition, trace and evidence-binding case passes, as do
+scoped Ruff and Basedpyright checks. Inventory regeneration follows separately.
+Required attributes, 33 nonregistry contribution records and final delivery remain.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+```

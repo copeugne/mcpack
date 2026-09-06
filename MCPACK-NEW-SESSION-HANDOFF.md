@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-07
 
+Five AdoraBuild Nether records are reconciled against views 190bd9d1 and packaged
+content. Separate the fortress network, courtyard and wart house, and the tall
+bastion compound from low bastion variants. Full root definitions are preserved.
+The affected source-binding case and scoped checks pass. Canonical-note backlog:
+68 (IDAS 59, AdoraBuild 9). Coverage groups: 411. Inventory refresh follows.
+The nine AdoraBuild records are ancient_palace, buried_sand_castle,
+dark_oak_mansion, end_temple, house, ocean_temple, red_sand_temple, sand_castle and
+sand_pyramid. Required attributes and 33 nonregistry contributions remain open.
+
 AdoraBuild Nether comparisons require the 23 selected templates across basalt
 chambers, fortress assembly/alternatives, bastions and temples. Reuse the existing
 renderer. The basalt graph has a preserved missing minecraft:basalt_chambers/
