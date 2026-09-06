@@ -1060,6 +1060,17 @@ CLASSES: tuple[str, ...] = (
     "com/yungnickyoung/minecraft/betterendisland/module/CommandModule.class",
     "com/yungnickyoung/minecraft/betterendisland/module/StructureProcessorTypeModule.class",
     "com/yungnickyoung/minecraft/betterendisland/services/IModulesLoader.class",
+    "com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsCommon.class",
+    "com/yungnickyoung/minecraft/bettermineshafts/BetterMineshaftsNeoForge.class",
+    "com/yungnickyoung/minecraft/bettermineshafts/mixin/BlockBehaviourAccessor.class",
+    "com/yungnickyoung/minecraft/bettermineshafts/mixin/BoundingBoxAccessor.class",
+    "com/yungnickyoung/minecraft/bettermineshafts/mixin/SuppressLogMixin.class",
+    "com/yungnickyoung/minecraft/bettermineshafts/module/StructurePieceTypeModule.class",
+    "com/yungnickyoung/minecraft/bettermineshafts/services/IModulesLoader.class",
+    "com/yungnickyoung/minecraft/bettermineshafts/services/IPlatformHelper.class",
+    "com/yungnickyoung/minecraft/bettermineshafts/services/NeoForgeModulesLoader.class",
+    "com/yungnickyoung/minecraft/bettermineshafts/services/NeoForgePlatformHelper.class",
+    "com/yungnickyoung/minecraft/bettermineshafts/services/Services.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
