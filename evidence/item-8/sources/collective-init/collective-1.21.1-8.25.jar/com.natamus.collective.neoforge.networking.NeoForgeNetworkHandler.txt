@@ -1,0 +1,179 @@
+Compiled from "NeoForgeNetworkHandler.java"
+public class com.natamus.collective.neoforge.networking.NeoForgeNetworkHandler extends com.natamus.collective_common_neoforge.implementations.networking.PacketRegistrationHandler {
+  public com.natamus.collective.neoforge.networking.NeoForgeNetworkHandler(com.natamus.collective_common_neoforge.implementations.networking.data.Side);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method com/natamus/collective_common_neoforge/implementations/networking/PacketRegistrationHandler."<init>":(Lcom/natamus/collective_common_neoforge/implementations/networking/data/Side;)V
+       5: return
+
+  protected <T> void registerPacket(com.natamus.collective_common_neoforge.implementations.networking.data.PacketContainer<T>);
+    Code:
+       0: return
+
+  public void register(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field PACKET_MAP:Ljava/util/Map;
+       4: invokeinterface #13,  1           // InterfaceMethod java/util/Map.isEmpty:()Z
+       9: ifne          28
+      12: aload_0
+      13: getfield      #7                  // Field PACKET_MAP:Ljava/util/Map;
+      16: aload_0
+      17: aload_1
+      18: invokedynamic #19,  0             // InvokeDynamic #0:accept:(Lcom/natamus/collective/neoforge/networking/NeoForgeNetworkHandler;Lnet/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent;)Ljava/util/function/BiConsumer;
+      23: invokeinterface #23,  2           // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+      28: return
+
+  public <T> void sendToServer(T);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_0
+       3: invokevirtual #27                 // Method sendToServer:(Ljava/lang/Object;Z)V
+       6: return
+
+  public <T> void sendToServer(T, boolean);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field PACKET_MAP:Ljava/util/Map;
+       4: aload_1
+       5: invokevirtual #31                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+       8: invokeinterface #37,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      13: checkcast     #41                 // class com/natamus/collective_common_neoforge/implementations/networking/data/PacketContainer
+      16: astore_3
+      17: aload_3
+      18: ifnull        40
+      21: new           #43                 // class com/natamus/collective_common_neoforge/implementations/networking/data/CommonPacketWrapper
+      24: dup
+      25: aload_3
+      26: aload_1
+      27: invokespecial #45                 // Method com/natamus/collective_common_neoforge/implementations/networking/data/CommonPacketWrapper."<init>":(Lcom/natamus/collective_common_neoforge/implementations/networking/data/PacketContainer;Ljava/lang/Object;)V
+      30: iconst_0
+      31: anewarray     #48                 // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+      34: invokestatic  #50                 // Method net/neoforged/neoforge/network/PacketDistributor.sendToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+      37: goto          60
+      40: new           #55                 // class com/natamus/collective_common_neoforge/implementations/networking/exceptions/RegistrationException
+      43: dup
+      44: aload_1
+      45: invokevirtual #31                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      48: invokestatic  #57                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      51: invokedynamic #63,  0             // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      56: invokespecial #67                 // Method com/natamus/collective_common_neoforge/implementations/networking/exceptions/RegistrationException."<init>":(Ljava/lang/String;)V
+      59: athrow
+      60: return
+
+  public <T> void sendToClient(T, net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field PACKET_MAP:Ljava/util/Map;
+       4: aload_1
+       5: invokevirtual #31                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+       8: invokeinterface #37,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      13: checkcast     #41                 // class com/natamus/collective_common_neoforge/implementations/networking/data/PacketContainer
+      16: astore_3
+      17: aload_3
+      18: ifnull        55
+      21: aload_2
+      22: getfield      #70                 // Field net/minecraft/server/level/ServerPlayer.connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+      25: aload_3
+      26: invokevirtual #76                 // Method com/natamus/collective_common_neoforge/implementations/networking/data/PacketContainer.type:()Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      29: invokevirtual #80                 // Method net/minecraft/server/network/ServerGamePacketListenerImpl.hasChannel:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;)Z
+      32: ifeq          75
+      35: aload_2
+      36: new           #43                 // class com/natamus/collective_common_neoforge/implementations/networking/data/CommonPacketWrapper
+      39: dup
+      40: aload_3
+      41: aload_1
+      42: invokespecial #45                 // Method com/natamus/collective_common_neoforge/implementations/networking/data/CommonPacketWrapper."<init>":(Lcom/natamus/collective_common_neoforge/implementations/networking/data/PacketContainer;Ljava/lang/Object;)V
+      45: iconst_0
+      46: anewarray     #48                 // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+      49: invokestatic  #86                 // Method net/neoforged/neoforge/network/PacketDistributor.sendToPlayer:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+      52: goto          75
+      55: new           #55                 // class com/natamus/collective_common_neoforge/implementations/networking/exceptions/RegistrationException
+      58: dup
+      59: aload_1
+      60: invokevirtual #31                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      63: invokestatic  #57                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      66: invokedynamic #90,  0             // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      71: invokespecial #67                 // Method com/natamus/collective_common_neoforge/implementations/networking/exceptions/RegistrationException."<init>":(Ljava/lang/String;)V
+      74: athrow
+      75: return
+
+  private <T, K extends com.natamus.collective_common_neoforge.implementations.networking.data.CommonPacketWrapper<T>> net.neoforged.neoforge.network.handling.IPayloadHandler<K> buildHandler(java.util.function.Consumer<com.natamus.collective_common_neoforge.implementations.networking.data.PacketContext<T>>);
+    Code:
+       0: aload_1
+       1: invokedynamic #91,  0             // InvokeDynamic #3:handle:(Ljava/util/function/Consumer;)Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+       6: areturn
+
+  private static void lambda$buildHandler$1(java.util.function.Consumer, com.natamus.collective_common_neoforge.implementations.networking.data.CommonPacketWrapper, net.neoforged.neoforge.network.handling.IPayloadContext);
+    Code:
+       0: aload_2
+       1: invokeinterface #95,  1           // InterfaceMethod net/neoforged/neoforge/network/handling/IPayloadContext.flow:()Lnet/minecraft/network/protocol/PacketFlow;
+       6: invokevirtual #101                // Method net/minecraft/network/protocol/PacketFlow.getReceptionSide:()Lnet/neoforged/fml/LogicalSide;
+       9: getstatic     #107                // Field net/neoforged/fml/LogicalSide.SERVER:Lnet/neoforged/fml/LogicalSide;
+      12: invokevirtual #113                // Method net/neoforged/fml/LogicalSide.equals:(Ljava/lang/Object;)Z
+      15: ifeq          24
+      18: getstatic     #117                // Field com/natamus/collective_common_neoforge/implementations/networking/data/Side.SERVER:Lcom/natamus/collective_common_neoforge/implementations/networking/data/Side;
+      21: goto          27
+      24: getstatic     #122                // Field com/natamus/collective_common_neoforge/implementations/networking/data/Side.CLIENT:Lcom/natamus/collective_common_neoforge/implementations/networking/data/Side;
+      27: astore_3
+      28: getstatic     #117                // Field com/natamus/collective_common_neoforge/implementations/networking/data/Side.SERVER:Lcom/natamus/collective_common_neoforge/implementations/networking/data/Side;
+      31: aload_3
+      32: invokevirtual #125                // Method com/natamus/collective_common_neoforge/implementations/networking/data/Side.equals:(Ljava/lang/Object;)Z
+      35: ifeq          68
+      38: aload_0
+      39: new           #126                // class com/natamus/collective_common_neoforge/implementations/networking/data/PacketContext
+      42: dup
+      43: aload_2
+      44: invokeinterface #128,  1          // InterfaceMethod net/neoforged/neoforge/network/handling/IPayloadContext.player:()Lnet/minecraft/world/entity/player/Player;
+      49: checkcast     #71                 // class net/minecraft/server/level/ServerPlayer
+      52: aload_1
+      53: invokevirtual #132                // Method com/natamus/collective_common_neoforge/implementations/networking/data/CommonPacketWrapper.packet:()Ljava/lang/Object;
+      56: aload_3
+      57: invokespecial #136                // Method com/natamus/collective_common_neoforge/implementations/networking/data/PacketContext."<init>":(Lnet/minecraft/world/entity/player/Player;Ljava/lang/Object;Lcom/natamus/collective_common_neoforge/implementations/networking/data/Side;)V
+      60: invokeinterface #139,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      65: goto          86
+      68: aload_0
+      69: new           #126                // class com/natamus/collective_common_neoforge/implementations/networking/data/PacketContext
+      72: dup
+      73: aload_1
+      74: invokevirtual #132                // Method com/natamus/collective_common_neoforge/implementations/networking/data/CommonPacketWrapper.packet:()Ljava/lang/Object;
+      77: aload_3
+      78: invokespecial #144                // Method com/natamus/collective_common_neoforge/implementations/networking/data/PacketContext."<init>":(Ljava/lang/Object;Lcom/natamus/collective_common_neoforge/implementations/networking/data/Side;)V
+      81: invokeinterface #139,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      86: goto          108
+      89: astore_3
+      90: getstatic     #149                // Field com/natamus/collective_common_neoforge/data/Constants.LOG:Lorg/slf4j/Logger;
+      93: ldc           #155                // String Error handling packet: {} ->
+      95: aload_1
+      96: invokevirtual #132                // Method com/natamus/collective_common_neoforge/implementations/networking/data/CommonPacketWrapper.packet:()Ljava/lang/Object;
+      99: invokevirtual #31                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     102: aload_3
+     103: invokeinterface #157,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     108: return
+    Exception table:
+       from    to  target type
+           0    86    89   Class java/lang/Throwable
+
+  private void lambda$register$0(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent, java.lang.Class, com.natamus.collective_common_neoforge.implementations.networking.data.PacketContainer);
+    Code:
+       0: aload_1
+       1: aload_3
+       2: invokevirtual #163                // Method com/natamus/collective_common_neoforge/implementations/networking/data/PacketContainer.getType:()Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+       5: invokevirtual #166                // Method net/minecraft/network/protocol/common/custom/CustomPacketPayload$Type.id:()Lnet/minecraft/resources/ResourceLocation;
+       8: invokevirtual #172                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+      11: invokevirtual #178                // Method net/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent.registrar:(Ljava/lang/String;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      14: invokevirtual #184                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.optional:()Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      17: aload_3
+      18: invokevirtual #163                // Method com/natamus/collective_common_neoforge/implementations/networking/data/PacketContainer.getType:()Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      21: aload_3
+      22: invokevirtual #190                // Method com/natamus/collective_common_neoforge/implementations/networking/data/PacketContainer.getCodec:()Lnet/minecraft/network/codec/StreamCodec;
+      25: aload_0
+      26: aload_3
+      27: invokevirtual #194                // Method com/natamus/collective_common_neoforge/implementations/networking/data/PacketContainer.handler:()Ljava/util/function/Consumer;
+      30: invokevirtual #198                // Method buildHandler:(Ljava/util/function/Consumer;)Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      33: invokevirtual #201                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.commonBidirectional:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      36: pop
+      37: return
+}

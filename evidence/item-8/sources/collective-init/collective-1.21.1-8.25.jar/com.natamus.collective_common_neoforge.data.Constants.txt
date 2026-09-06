@@ -1,0 +1,97 @@
+Compiled from "Constants.java"
+public class com.natamus.collective_common_neoforge.data.Constants {
+  public static final org.slf4j.Logger LOG;
+
+  public static final com.google.gson.Gson GSON;
+
+  public static final java.util.List<net.minecraft.world.entity.EquipmentSlot> equipmentSlots;
+
+  public static final net.minecraft.world.item.ItemStack normalPickaxeStack;
+
+  public static final net.minecraft.world.item.ItemStack silkPickaxeStack;
+
+  private static boolean ranInit;
+
+  public com.natamus.collective_common_neoforge.data.Constants();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void initConstantData(net.minecraft.world.level.Level);
+    Code:
+       0: getstatic     #7                  // Field ranInit:Z
+       3: ifeq          7
+       6: return
+       7: new           #13                 // class net/minecraft/world/item/enchantment/ItemEnchantments$Mutable
+      10: dup
+      11: getstatic     #15                 // Field net/minecraft/world/item/enchantment/ItemEnchantments.EMPTY:Lnet/minecraft/world/item/enchantment/ItemEnchantments;
+      14: invokespecial #21                 // Method net/minecraft/world/item/enchantment/ItemEnchantments$Mutable."<init>":(Lnet/minecraft/world/item/enchantment/ItemEnchantments;)V
+      17: astore_1
+      18: aload_1
+      19: aload_0
+      20: invokevirtual #24                 // Method net/minecraft/world/level/Level.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+      23: getstatic     #30                 // Field net/minecraft/core/registries/Registries.ENCHANTMENT:Lnet/minecraft/resources/ResourceKey;
+      26: invokeinterface #36,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+      31: getstatic     #42                 // Field net/minecraft/world/item/enchantment/Enchantments.SILK_TOUCH:Lnet/minecraft/resources/ResourceKey;
+      34: invokeinterface #47,  2           // InterfaceMethod net/minecraft/core/Registry.getHolderOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference;
+      39: iconst_1
+      40: invokevirtual #53                 // Method net/minecraft/world/item/enchantment/ItemEnchantments$Mutable.set:(Lnet/minecraft/core/Holder;I)V
+      43: getstatic     #57                 // Field silkPickaxeStack:Lnet/minecraft/world/item/ItemStack;
+      46: aload_1
+      47: invokevirtual #61                 // Method net/minecraft/world/item/enchantment/ItemEnchantments$Mutable.toImmutable:()Lnet/minecraft/world/item/enchantment/ItemEnchantments;
+      50: invokestatic  #65                 // Method net/minecraft/world/item/enchantment/EnchantmentHelper.setEnchantments:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/enchantment/ItemEnchantments;)V
+      53: iconst_1
+      54: putstatic     #7                  // Field ranInit:Z
+      57: return
+
+  static {};
+    Code:
+       0: ldc           #73                 // String Collective
+       2: invokestatic  #75                 // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/String;)Lorg/slf4j/Logger;
+       5: putstatic     #81                 // Field LOG:Lorg/slf4j/Logger;
+       8: new           #85                 // class com/google/gson/GsonBuilder
+      11: dup
+      12: invokespecial #87                 // Method com/google/gson/GsonBuilder."<init>":()V
+      15: invokevirtual #88                 // Method com/google/gson/GsonBuilder.setPrettyPrinting:()Lcom/google/gson/GsonBuilder;
+      18: invokevirtual #92                 // Method com/google/gson/GsonBuilder.disableHtmlEscaping:()Lcom/google/gson/GsonBuilder;
+      21: invokevirtual #95                 // Method com/google/gson/GsonBuilder.create:()Lcom/google/gson/Gson;
+      24: putstatic     #99                 // Field GSON:Lcom/google/gson/Gson;
+      27: iconst_5
+      28: anewarray     #103                // class net/minecraft/world/entity/EquipmentSlot
+      31: dup
+      32: iconst_0
+      33: getstatic     #105                // Field net/minecraft/world/entity/EquipmentSlot.HEAD:Lnet/minecraft/world/entity/EquipmentSlot;
+      36: aastore
+      37: dup
+      38: iconst_1
+      39: getstatic     #109                // Field net/minecraft/world/entity/EquipmentSlot.CHEST:Lnet/minecraft/world/entity/EquipmentSlot;
+      42: aastore
+      43: dup
+      44: iconst_2
+      45: getstatic     #112                // Field net/minecraft/world/entity/EquipmentSlot.LEGS:Lnet/minecraft/world/entity/EquipmentSlot;
+      48: aastore
+      49: dup
+      50: iconst_3
+      51: getstatic     #115                // Field net/minecraft/world/entity/EquipmentSlot.FEET:Lnet/minecraft/world/entity/EquipmentSlot;
+      54: aastore
+      55: dup
+      56: iconst_4
+      57: getstatic     #118                // Field net/minecraft/world/entity/EquipmentSlot.OFFHAND:Lnet/minecraft/world/entity/EquipmentSlot;
+      60: aastore
+      61: invokestatic  #121                // Method java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+      64: putstatic     #127                // Field equipmentSlots:Ljava/util/List;
+      67: new           #131                // class net/minecraft/world/item/ItemStack
+      70: dup
+      71: getstatic     #133                // Field net/minecraft/world/item/Items.NETHERITE_PICKAXE:Lnet/minecraft/world/item/Item;
+      74: invokespecial #139                // Method net/minecraft/world/item/ItemStack."<init>":(Lnet/minecraft/world/level/ItemLike;)V
+      77: putstatic     #142                // Field normalPickaxeStack:Lnet/minecraft/world/item/ItemStack;
+      80: new           #131                // class net/minecraft/world/item/ItemStack
+      83: dup
+      84: getstatic     #133                // Field net/minecraft/world/item/Items.NETHERITE_PICKAXE:Lnet/minecraft/world/item/Item;
+      87: invokespecial #139                // Method net/minecraft/world/item/ItemStack."<init>":(Lnet/minecraft/world/level/ItemLike;)V
+      90: putstatic     #57                 // Field silkPickaxeStack:Lnet/minecraft/world/item/ItemStack;
+      93: iconst_0
+      94: putstatic     #7                  // Field ranInit:Z
+      97: return
+}

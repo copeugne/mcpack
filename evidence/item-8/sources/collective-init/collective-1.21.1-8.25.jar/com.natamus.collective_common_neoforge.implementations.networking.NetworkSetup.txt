@@ -1,0 +1,61 @@
+Compiled from "NetworkSetup.java"
+public class com.natamus.collective_common_neoforge.implementations.networking.NetworkSetup {
+  private final com.natamus.collective_common_neoforge.implementations.networking.PacketRegistrationHandler packetRegistration;
+
+  private static com.natamus.collective_common_neoforge.implementations.networking.DelayedPacketRegistrationHandler delayedHandler;
+
+  public static com.natamus.collective_common_neoforge.implementations.networking.NetworkSetup INSTANCE;
+
+  public com.natamus.collective_common_neoforge.implementations.networking.NetworkSetup(com.natamus.collective_common_neoforge.implementations.networking.PacketRegistrationHandler);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: putstatic     #7                  // Field INSTANCE:Lcom/natamus/collective_common_neoforge/implementations/networking/NetworkSetup;
+       8: aload_0
+       9: aload_1
+      10: putfield      #13                 // Field packetRegistration:Lcom/natamus/collective_common_neoforge/implementations/networking/PacketRegistrationHandler;
+      13: invokestatic  #17                 // Method getDelayedHandler:()Lcom/natamus/collective_common_neoforge/implementations/networking/DelayedPacketRegistrationHandler;
+      16: aload_1
+      17: invokevirtual #21                 // Method com/natamus/collective_common_neoforge/implementations/networking/DelayedPacketRegistrationHandler.registerQueuedPackets:(Lcom/natamus/collective_common_neoforge/implementations/networking/PacketRegistrationHandler;)V
+      20: return
+
+  public static com.natamus.collective_common_neoforge.implementations.networking.DelayedPacketRegistrationHandler getDelayedHandler();
+    Code:
+       0: getstatic     #27                 // Field delayedHandler:Lcom/natamus/collective_common_neoforge/implementations/networking/DelayedPacketRegistrationHandler;
+       3: ifnonnull     16
+       6: new           #22                 // class com/natamus/collective_common_neoforge/implementations/networking/DelayedPacketRegistrationHandler
+       9: dup
+      10: invokespecial #31                 // Method com/natamus/collective_common_neoforge/implementations/networking/DelayedPacketRegistrationHandler."<init>":()V
+      13: putstatic     #27                 // Field delayedHandler:Lcom/natamus/collective_common_neoforge/implementations/networking/DelayedPacketRegistrationHandler;
+      16: getstatic     #27                 // Field delayedHandler:Lcom/natamus/collective_common_neoforge/implementations/networking/DelayedPacketRegistrationHandler;
+      19: areturn
+
+  public static <T> com.natamus.collective_common_neoforge.implementations.networking.PacketRegistrar registerPacket(net.minecraft.resources.ResourceLocation, java.lang.Class<T>, java.util.function.BiConsumer<T, net.minecraft.network.FriendlyByteBuf>, java.util.function.Function<net.minecraft.network.FriendlyByteBuf, T>, java.util.function.Consumer<com.natamus.collective_common_neoforge.implementations.networking.data.PacketContext<T>>);
+    Code:
+       0: getstatic     #7                  // Field INSTANCE:Lcom/natamus/collective_common_neoforge/implementations/networking/NetworkSetup;
+       3: ifnull        22
+       6: getstatic     #7                  // Field INSTANCE:Lcom/natamus/collective_common_neoforge/implementations/networking/NetworkSetup;
+       9: getfield      #13                 // Field packetRegistration:Lcom/natamus/collective_common_neoforge/implementations/networking/PacketRegistrationHandler;
+      12: aload_0
+      13: aload_1
+      14: aload_2
+      15: aload_3
+      16: aload         4
+      18: invokevirtual #32                 // Method com/natamus/collective_common_neoforge/implementations/networking/PacketRegistrationHandler.registerPacket:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/util/function/BiConsumer;Ljava/util/function/Function;Ljava/util/function/Consumer;)Lcom/natamus/collective_common_neoforge/implementations/networking/PacketRegistrar;
+      21: areturn
+      22: invokestatic  #17                 // Method getDelayedHandler:()Lcom/natamus/collective_common_neoforge/implementations/networking/DelayedPacketRegistrationHandler;
+      25: aload_0
+      26: aload_1
+      27: aload_2
+      28: aload_3
+      29: aload         4
+      31: invokevirtual #38                 // Method com/natamus/collective_common_neoforge/implementations/networking/DelayedPacketRegistrationHandler.registerPacket:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/util/function/BiConsumer;Ljava/util/function/Function;Ljava/util/function/Consumer;)Lcom/natamus/collective_common_neoforge/implementations/networking/PacketRegistrar;
+      34: areturn
+
+  public com.natamus.collective_common_neoforge.implementations.networking.PacketRegistrationHandler getPacketRegistration();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field packetRegistration:Lcom/natamus/collective_common_neoforge/implementations/networking/PacketRegistrationHandler;
+       4: areturn
+}
