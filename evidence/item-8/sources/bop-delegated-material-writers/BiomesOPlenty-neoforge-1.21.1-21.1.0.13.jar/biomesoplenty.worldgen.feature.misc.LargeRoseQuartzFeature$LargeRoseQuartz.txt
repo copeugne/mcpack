@@ -1,0 +1,370 @@
+Compiled from "LargeRoseQuartzFeature.java"
+final class biomesoplenty.worldgen.feature.misc.LargeRoseQuartzFeature$LargeRoseQuartz {
+  private net.minecraft.core.BlockPos root;
+
+  private final boolean pointingUp;
+
+  private int radius;
+
+  private final double bluntness;
+
+  private final double scale;
+
+  biomesoplenty.worldgen.feature.misc.LargeRoseQuartzFeature$LargeRoseQuartz(net.minecraft.core.BlockPos, boolean, int, double, double);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field root:Lnet/minecraft/core/BlockPos;
+       9: aload_0
+      10: iload_2
+      11: putfield      #13                 // Field pointingUp:Z
+      14: aload_0
+      15: iload_3
+      16: putfield      #17                 // Field radius:I
+      19: aload_0
+      20: dload         4
+      22: putfield      #21                 // Field bluntness:D
+      25: aload_0
+      26: dload         6
+      28: putfield      #25                 // Field scale:D
+      31: return
+
+  private int getHeight();
+    Code:
+       0: aload_0
+       1: fconst_0
+       2: invokevirtual #28                 // Method getHeightAtRadius:(F)I
+       5: ireturn
+
+  private int getMinY();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field pointingUp:Z
+       4: ifeq          17
+       7: aload_0
+       8: getfield      #7                  // Field root:Lnet/minecraft/core/BlockPos;
+      11: invokevirtual #32                 // Method net/minecraft/core/BlockPos.getY:()I
+      14: goto          29
+      17: aload_0
+      18: getfield      #7                  // Field root:Lnet/minecraft/core/BlockPos;
+      21: invokevirtual #32                 // Method net/minecraft/core/BlockPos.getY:()I
+      24: aload_0
+      25: invokevirtual #38                 // Method getHeight:()I
+      28: isub
+      29: ireturn
+
+  private int getMaxY();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field pointingUp:Z
+       4: ifne          17
+       7: aload_0
+       8: getfield      #7                  // Field root:Lnet/minecraft/core/BlockPos;
+      11: invokevirtual #32                 // Method net/minecraft/core/BlockPos.getY:()I
+      14: goto          29
+      17: aload_0
+      18: getfield      #7                  // Field root:Lnet/minecraft/core/BlockPos;
+      21: invokevirtual #32                 // Method net/minecraft/core/BlockPos.getY:()I
+      24: aload_0
+      25: invokevirtual #38                 // Method getHeight:()I
+      28: iadd
+      29: ireturn
+
+  boolean moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(net.minecraft.world.level.WorldGenLevel, biomesoplenty.worldgen.feature.misc.LargeRoseQuartzFeature$WindOffsetter);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field radius:I
+       4: iconst_1
+       5: if_icmple     118
+       8: aload_0
+       9: getfield      #7                  // Field root:Lnet/minecraft/core/BlockPos;
+      12: invokevirtual #41                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      15: astore_3
+      16: bipush        10
+      18: aload_0
+      19: invokevirtual #38                 // Method getHeight:()I
+      22: invokestatic  #45                 // Method java/lang/Math.min:(II)I
+      25: istore        4
+      27: iconst_0
+      28: istore        5
+      30: iload         5
+      32: iload         4
+      34: if_icmpge     105
+      37: aload_1
+      38: aload_3
+      39: invokeinterface #51,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      44: getstatic     #57                 // Field net/minecraft/world/level/block/Blocks.LAVA:Lnet/minecraft/world/level/block/Block;
+      47: invokevirtual #63                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      50: ifeq          55
+      53: iconst_0
+      54: ireturn
+      55: aload_1
+      56: aload_2
+      57: aload_3
+      58: invokevirtual #69                 // Method biomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$WindOffsetter.offset:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+      61: aload_0
+      62: getfield      #17                 // Field radius:I
+      65: invokestatic  #75                 // Method biomesoplenty/util/biome/RoseQuartzUtils.isCircleMostlyEmbeddedInStone:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;I)Z
+      68: ifeq          78
+      71: aload_0
+      72: aload_3
+      73: putfield      #7                  // Field root:Lnet/minecraft/core/BlockPos;
+      76: iconst_1
+      77: ireturn
+      78: aload_3
+      79: aload_0
+      80: getfield      #13                 // Field pointingUp:Z
+      83: ifeq          92
+      86: getstatic     #81                 // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+      89: goto          95
+      92: getstatic     #87                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+      95: invokevirtual #90                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      98: pop
+      99: iinc          5, 1
+     102: goto          30
+     105: aload_0
+     106: dup
+     107: getfield      #17                 // Field radius:I
+     110: iconst_2
+     111: idiv
+     112: putfield      #17                 // Field radius:I
+     115: goto          0
+     118: iconst_0
+     119: ireturn
+
+  private int getHeightAtRadius(float);
+    Code:
+       0: fload_1
+       1: f2d
+       2: aload_0
+       3: getfield      #17                 // Field radius:I
+       6: i2d
+       7: aload_0
+       8: getfield      #25                 // Field scale:D
+      11: aload_0
+      12: getfield      #21                 // Field bluntness:D
+      15: invokestatic  #96                 // Method biomesoplenty/util/biome/RoseQuartzUtils.getRoseQuartzHeight:(DDDD)D
+      18: d2i
+      19: ireturn
+
+  void placeBlocks(net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, biomesoplenty.worldgen.feature.misc.LargeRoseQuartzFeature$WindOffsetter);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field radius:I
+       4: ineg
+       5: istore        4
+       7: iload         4
+       9: aload_0
+      10: getfield      #17                 // Field radius:I
+      13: if_icmpgt     459
+      16: aload_0
+      17: getfield      #17                 // Field radius:I
+      20: ineg
+      21: istore        5
+      23: iload         5
+      25: aload_0
+      26: getfield      #17                 // Field radius:I
+      29: if_icmpgt     453
+      32: iload         4
+      34: iload         4
+      36: imul
+      37: iload         5
+      39: iload         5
+      41: imul
+      42: iadd
+      43: i2f
+      44: invokestatic  #100                // Method net/minecraft/util/Mth.sqrt:(F)F
+      47: fstore        6
+      49: fload         6
+      51: aload_0
+      52: getfield      #17                 // Field radius:I
+      55: i2f
+      56: fcmpl
+      57: ifgt          447
+      60: aload_0
+      61: fload         6
+      63: invokevirtual #28                 // Method getHeightAtRadius:(F)I
+      66: istore        7
+      68: iload         7
+      70: ifle          447
+      73: aload_2
+      74: invokeinterface #106,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      79: f2d
+      80: ldc2_w        #112                // double 0.2d
+      83: dcmpg
+      84: ifge          101
+      87: iload         7
+      89: i2f
+      90: aload_2
+      91: ldc           #114                // float 0.8f
+      93: fconst_1
+      94: invokestatic  #115                // Method net/minecraft/util/Mth.randomBetween:(Lnet/minecraft/util/RandomSource;FF)F
+      97: fmul
+      98: f2i
+      99: istore        7
+     101: aload_0
+     102: getfield      #7                  // Field root:Lnet/minecraft/core/BlockPos;
+     105: iload         4
+     107: iconst_0
+     108: iload         5
+     110: invokevirtual #119                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     113: invokevirtual #41                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     116: astore        8
+     118: iconst_0
+     119: istore        9
+     121: iconst_0
+     122: istore        10
+     124: iload         10
+     126: iload         7
+     128: if_icmpge     447
+     131: aload_3
+     132: aload         8
+     134: invokevirtual #69                 // Method biomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$WindOffsetter.offset:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+     137: astore        11
+     139: aload_1
+     140: aload         11
+     142: invokestatic  #122                // Method biomesoplenty/util/biome/RoseQuartzUtils.isEmptyOrWaterOrLava:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+     145: ifne          182
+     148: aload_1
+     149: aload         11
+     151: invokeinterface #51,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     156: getstatic     #126                // Field net/minecraft/tags/BlockTags.CRYSTAL_SOUND_BLOCKS:Lnet/minecraft/tags/TagKey;
+     159: invokevirtual #132                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     162: ifne          182
+     165: aload_1
+     166: aload         11
+     168: invokeinterface #51,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     173: invokevirtual #135                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     176: instanceof    #139                // class net/minecraft/world/level/block/AmethystClusterBlock
+     179: ifeq          394
+     182: iconst_1
+     183: istore        9
+     185: getstatic     #141                // Field biomesoplenty/api/block/BOPBlocks.ROSE_QUARTZ_BLOCK:Lnet/minecraft/world/level/block/Block;
+     188: astore        12
+     190: aload_1
+     191: aload         11
+     193: aload         12
+     195: invokevirtual #146                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     198: iconst_2
+     199: invokeinterface #152,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     204: pop
+     205: invokestatic  #156                // Method net/minecraft/core/Direction.values:()[Lnet/minecraft/core/Direction;
+     208: astore        13
+     210: aload         13
+     212: arraylength
+     213: istore        14
+     215: iconst_0
+     216: istore        15
+     218: iload         15
+     220: iload         14
+     222: if_icmpge     391
+     225: aload         13
+     227: iload         15
+     229: aaload
+     230: astore        16
+     232: aload_2
+     233: iconst_2
+     234: invokeinterface #160,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     239: ifne          385
+     242: aload_2
+     243: bipush        6
+     245: invokeinterface #160,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     250: tableswitch   { // 0 to 3
+                     0: 313
+                     1: 302
+                     2: 291
+                     3: 280
+               default: 291
+          }
+     280: getstatic     #164                // Field biomesoplenty/api/block/BOPBlocks.ROSE_QUARTZ_CLUSTER:Lnet/minecraft/world/level/block/Block;
+     283: invokevirtual #146                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     286: astore        17
+     288: goto          321
+     291: getstatic     #167                // Field biomesoplenty/api/block/BOPBlocks.LARGE_ROSE_QUARTZ_BUD:Lnet/minecraft/world/level/block/Block;
+     294: invokevirtual #146                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     297: astore        17
+     299: goto          321
+     302: getstatic     #170                // Field biomesoplenty/api/block/BOPBlocks.MEDIUM_ROSE_QUARTZ_BUD:Lnet/minecraft/world/level/block/Block;
+     305: invokevirtual #146                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     308: astore        17
+     310: goto          321
+     313: getstatic     #173                // Field biomesoplenty/api/block/BOPBlocks.SMALL_ROSE_QUARTZ_BUD:Lnet/minecraft/world/level/block/Block;
+     316: invokevirtual #146                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     319: astore        17
+     321: aload         17
+     323: getstatic     #176                // Field net/minecraft/world/level/block/AmethystClusterBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     326: aload         16
+     328: invokevirtual #180                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     331: checkcast     #64                 // class net/minecraft/world/level/block/state/BlockState
+     334: astore        18
+     336: aload_1
+     337: aload         11
+     339: aload         16
+     341: invokevirtual #184                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     344: invokeinterface #188,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+     349: ifeq          385
+     352: aload         18
+     354: aload_1
+     355: aload         11
+     357: aload         16
+     359: invokevirtual #184                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     362: invokevirtual #192                // Method net/minecraft/world/level/block/state/BlockState.canSurvive:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z
+     365: ifeq          385
+     368: aload_1
+     369: aload         11
+     371: aload         16
+     373: invokevirtual #184                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     376: aload         18
+     378: iconst_2
+     379: invokeinterface #152,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     384: pop
+     385: iinc          15, 1
+     388: goto          218
+     391: goto          419
+     394: iload         9
+     396: ifeq          419
+     399: aload_1
+     400: aload         11
+     402: invokeinterface #51,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     407: getstatic     #196                // Field net/minecraft/world/level/block/Blocks.NETHERRACK:Lnet/minecraft/world/level/block/Block;
+     410: invokevirtual #63                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     413: ifeq          419
+     416: goto          447
+     419: aload         8
+     421: aload_0
+     422: getfield      #13                 // Field pointingUp:Z
+     425: ifeq          434
+     428: getstatic     #87                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     431: goto          437
+     434: getstatic     #81                 // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+     437: invokevirtual #90                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     440: pop
+     441: iinc          10, 1
+     444: goto          124
+     447: iinc          5, 1
+     450: goto          23
+     453: iinc          4, 1
+     456: goto          7
+     459: return
+
+  boolean isSuitableForWind(net.minecraft.world.level.levelgen.feature.configurations.LargeDripstoneConfiguration);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field radius:I
+       4: aload_1
+       5: getfield      #199                // Field net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration.minRadiusForWind:I
+       8: if_icmplt     28
+      11: aload_0
+      12: getfield      #21                 // Field bluntness:D
+      15: aload_1
+      16: getfield      #204                // Field net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration.minBluntnessForWind:F
+      19: f2d
+      20: dcmpl
+      21: iflt          28
+      24: iconst_1
+      25: goto          29
+      28: iconst_0
+      29: ireturn
+}

@@ -1,0 +1,312 @@
+Compiled from "RoseQuartzUtils.java"
+public class biomesoplenty.util.biome.RoseQuartzUtils {
+  public biomesoplenty.util.biome.RoseQuartzUtils();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static double getRoseQuartzHeight(double, double, double, double);
+    Code:
+       0: dload_0
+       1: dload         6
+       3: dcmpg
+       4: ifge          10
+       7: dload         6
+       9: dstore_0
+      10: ldc2_w        #7                  // double 0.384d
+      13: dstore        8
+      15: dload_0
+      16: dload_2
+      17: ddiv
+      18: ldc2_w        #7                  // double 0.384d
+      21: dmul
+      22: dstore        10
+      24: ldc2_w        #9                  // double 0.75d
+      27: dload         10
+      29: ldc2_w        #11                 // double 1.3333333333333333d
+      32: invokestatic  #13                 // Method java/lang/Math.pow:(DD)D
+      35: dmul
+      36: dstore        12
+      38: dload         10
+      40: ldc2_w        #19                 // double 0.6666666666666666d
+      43: invokestatic  #13                 // Method java/lang/Math.pow:(DD)D
+      46: dstore        14
+      48: ldc2_w        #21                 // double 0.3333333333333333d
+      51: dload         10
+      53: invokestatic  #23                 // Method java/lang/Math.log:(D)D
+      56: dmul
+      57: dstore        16
+      59: dload         4
+      61: dload         12
+      63: dload         14
+      65: dsub
+      66: dload         16
+      68: dsub
+      69: dmul
+      70: dstore        18
+      72: dload         18
+      74: dconst_0
+      75: invokestatic  #27                 // Method java/lang/Math.max:(DD)D
+      78: dstore        18
+      80: dload         18
+      82: ldc2_w        #7                  // double 0.384d
+      85: ddiv
+      86: dload_2
+      87: dmul
+      88: dreturn
+
+  public static boolean isCircleMostlyEmbeddedInStone(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos, int);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #30                 // Method isEmptyOrWaterOrLava:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+       5: ifeq          10
+       8: iconst_0
+       9: ireturn
+      10: ldc           #36                 // float 6.0f
+      12: fstore_3
+      13: ldc           #36                 // float 6.0f
+      15: iload_2
+      16: i2f
+      17: fdiv
+      18: fstore        4
+      20: fconst_0
+      21: fstore        5
+      23: fload         5
+      25: ldc           #37                 // float 6.2831855f
+      27: fcmpg
+      28: ifge          81
+      31: fload         5
+      33: invokestatic  #38                 // Method net/minecraft/util/Mth.cos:(F)F
+      36: iload_2
+      37: i2f
+      38: fmul
+      39: f2i
+      40: istore        6
+      42: fload         5
+      44: invokestatic  #44                 // Method net/minecraft/util/Mth.sin:(F)F
+      47: iload_2
+      48: i2f
+      49: fmul
+      50: f2i
+      51: istore        7
+      53: aload_0
+      54: aload_1
+      55: iload         6
+      57: iconst_0
+      58: iload         7
+      60: invokevirtual #47                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      63: invokestatic  #30                 // Method isEmptyOrWaterOrLava:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+      66: ifeq          71
+      69: iconst_0
+      70: ireturn
+      71: fload         5
+      73: fload         4
+      75: fadd
+      76: fstore        5
+      78: goto          23
+      81: iconst_1
+      82: ireturn
+
+  public static boolean isEmptyOrWater(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #53,  0             // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+       7: invokeinterface #57,  3           // InterfaceMethod net/minecraft/world/level/LevelAccessor.isStateAtPosition:(Lnet/minecraft/core/BlockPos;Ljava/util/function/Predicate;)Z
+      12: ireturn
+
+  public static boolean isEmptyOrWaterOrLava(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #63,  0             // InvokeDynamic #1:test:()Ljava/util/function/Predicate;
+       7: invokeinterface #57,  3           // InterfaceMethod net/minecraft/world/level/LevelAccessor.isStateAtPosition:(Lnet/minecraft/core/BlockPos;Ljava/util/function/Predicate;)Z
+      12: ireturn
+
+  public static void buildBaseToTipColumn(net.minecraft.core.Direction, int, boolean, java.util.function.Consumer<net.minecraft.world.level.block.state.BlockState>);
+    Code:
+       0: iload_1
+       1: iconst_3
+       2: if_icmplt     48
+       5: aload_3
+       6: aload_0
+       7: getstatic     #64                 // Field net/minecraft/world/level/block/state/properties/DripstoneThickness.BASE:Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;
+      10: invokestatic  #70                 // Method createPointedRoseQuartz:(Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;)Lnet/minecraft/world/level/block/state/BlockState;
+      13: invokeinterface #74,  2           // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      18: iconst_0
+      19: istore        4
+      21: iload         4
+      23: iload_1
+      24: iconst_3
+      25: isub
+      26: if_icmpge     48
+      29: aload_3
+      30: aload_0
+      31: getstatic     #80                 // Field net/minecraft/world/level/block/state/properties/DripstoneThickness.MIDDLE:Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;
+      34: invokestatic  #70                 // Method createPointedRoseQuartz:(Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;)Lnet/minecraft/world/level/block/state/BlockState;
+      37: invokeinterface #74,  2           // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      42: iinc          4, 1
+      45: goto          21
+      48: iload_1
+      49: iconst_2
+      50: if_icmplt     66
+      53: aload_3
+      54: aload_0
+      55: getstatic     #83                 // Field net/minecraft/world/level/block/state/properties/DripstoneThickness.FRUSTUM:Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;
+      58: invokestatic  #70                 // Method createPointedRoseQuartz:(Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;)Lnet/minecraft/world/level/block/state/BlockState;
+      61: invokeinterface #74,  2           // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      66: iload_1
+      67: iconst_1
+      68: if_icmplt     94
+      71: aload_3
+      72: aload_0
+      73: iload_2
+      74: ifeq          83
+      77: getstatic     #86                 // Field net/minecraft/world/level/block/state/properties/DripstoneThickness.TIP_MERGE:Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;
+      80: goto          86
+      83: getstatic     #89                 // Field net/minecraft/world/level/block/state/properties/DripstoneThickness.TIP:Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;
+      86: invokestatic  #70                 // Method createPointedRoseQuartz:(Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;)Lnet/minecraft/world/level/block/state/BlockState;
+      89: invokeinterface #74,  2           // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      94: return
+
+  public static void growPointedRoseQuartz(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos, net.minecraft.core.Direction, int, boolean);
+    Code:
+       0: aload_1
+       1: invokevirtual #92                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       4: astore        5
+       6: aload_2
+       7: iload_3
+       8: iload         4
+      10: aload_0
+      11: aload         5
+      13: aload_2
+      14: invokedynamic #96,  0             // InvokeDynamic #2:accept:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos$MutableBlockPos;Lnet/minecraft/core/Direction;)Ljava/util/function/Consumer;
+      19: invokestatic  #99                 // Method buildBaseToTipColumn:(Lnet/minecraft/core/Direction;IZLjava/util/function/Consumer;)V
+      22: return
+
+  public static boolean placeRoseQuartzBlockIfPossible(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokeinterface #103,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       7: astore_2
+       8: aload_2
+       9: getstatic     #109                // Field net/minecraft/world/level/block/Blocks.NETHERRACK:Lnet/minecraft/world/level/block/Block;
+      12: invokevirtual #115                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      15: ifeq          35
+      18: aload_0
+      19: aload_1
+      20: getstatic     #121                // Field biomesoplenty/api/block/BOPBlocks.ROSE_QUARTZ_BLOCK:Lnet/minecraft/world/level/block/Block;
+      23: invokevirtual #126                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      26: iconst_2
+      27: invokeinterface #132,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      32: pop
+      33: iconst_1
+      34: ireturn
+      35: iconst_0
+      36: ireturn
+
+  public static net.minecraft.world.level.block.state.BlockState createPointedRoseQuartz(net.minecraft.core.Direction, net.minecraft.world.level.block.state.properties.DripstoneThickness);
+    Code:
+       0: getstatic     #136                // Field net/minecraft/world/level/block/Blocks.POINTED_DRIPSTONE:Lnet/minecraft/world/level/block/Block;
+       3: invokevirtual #126                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       6: getstatic     #139                // Field net/minecraft/world/level/block/PointedDripstoneBlock.TIP_DIRECTION:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+       9: aload_0
+      10: invokevirtual #145                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      13: checkcast     #116                // class net/minecraft/world/level/block/state/BlockState
+      16: getstatic     #149                // Field net/minecraft/world/level/block/PointedDripstoneBlock.THICKNESS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      19: aload_1
+      20: invokevirtual #145                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      23: checkcast     #116                // class net/minecraft/world/level/block/state/BlockState
+      26: areturn
+
+  public static boolean isRoseQuartzBaseOrLava(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: invokestatic  #153                // Method isRoseQuartzBase:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+       4: ifne          17
+       7: aload_0
+       8: getstatic     #157                // Field net/minecraft/world/level/block/Blocks.LAVA:Lnet/minecraft/world/level/block/Block;
+      11: invokevirtual #115                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      14: ifeq          21
+      17: iconst_1
+      18: goto          22
+      21: iconst_0
+      22: ireturn
+
+  public static boolean isRoseQuartzBase(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getstatic     #121                // Field biomesoplenty/api/block/BOPBlocks.ROSE_QUARTZ_BLOCK:Lnet/minecraft/world/level/block/Block;
+       4: invokevirtual #115                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+       7: ifne          20
+      10: aload_0
+      11: getstatic     #109                // Field net/minecraft/world/level/block/Blocks.NETHERRACK:Lnet/minecraft/world/level/block/Block;
+      14: invokevirtual #115                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      17: ifeq          24
+      20: iconst_1
+      21: goto          25
+      24: iconst_0
+      25: ireturn
+
+  public static boolean isEmptyOrWater(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: invokevirtual #160                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+       4: ifne          17
+       7: aload_0
+       8: getstatic     #164                // Field net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+      11: invokevirtual #115                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      14: ifeq          21
+      17: iconst_1
+      18: goto          22
+      21: iconst_0
+      22: ireturn
+
+  public static boolean isEmptyOrWaterOrLava(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: invokevirtual #160                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+       4: ifne          27
+       7: aload_0
+       8: getstatic     #164                // Field net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+      11: invokevirtual #115                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      14: ifne          27
+      17: aload_0
+      18: getstatic     #157                // Field net/minecraft/world/level/block/Blocks.LAVA:Lnet/minecraft/world/level/block/Block;
+      21: invokevirtual #115                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      24: ifeq          31
+      27: iconst_1
+      28: goto          32
+      31: iconst_0
+      32: ireturn
+
+  private static void lambda$growPointedRoseQuartz$0(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos$MutableBlockPos, net.minecraft.core.Direction, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_3
+       1: getstatic     #136                // Field net/minecraft/world/level/block/Blocks.POINTED_DRIPSTONE:Lnet/minecraft/world/level/block/Block;
+       4: invokevirtual #115                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+       7: ifeq          31
+      10: aload_3
+      11: getstatic     #167                // Field net/minecraft/world/level/block/PointedDripstoneBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      14: aload_0
+      15: aload_1
+      16: invokeinterface #171,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isWaterAt:(Lnet/minecraft/core/BlockPos;)Z
+      21: invokestatic  #175                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      24: invokevirtual #145                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      27: checkcast     #116                // class net/minecraft/world/level/block/state/BlockState
+      30: astore_3
+      31: aload_0
+      32: aload_1
+      33: aload_3
+      34: iconst_2
+      35: invokeinterface #132,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      40: pop
+      41: aload_1
+      42: aload_2
+      43: invokevirtual #181                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      46: pop
+      47: return
+}
