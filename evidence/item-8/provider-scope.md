@@ -9317,3 +9317,25 @@ changed. SHA-256: 8a68f25b473a8e8e2b6cee131886202efdb2e1035b56bb64cd09a46c215c72
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-illager-designs-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-illager-designs-r2.json
 ```
+
+### Aether dungeon design reconciliation, 2026-09-07
+
+Existing custom-entry, builder/piece and template evidence supports four separate
+assemblies: Bronze connected rooms/tunnels, Silver multi-floor building, Gold
+island/chamber, and Deep Aether Brass rotated rooms with upper parts and a door.
+Shared cloud bedding is supporting terrain. The Brass processor's bronze naming
+does not alias its own assembly to Bronze. Silver test_door remains unselected
+in the inspected paths. Selected room alternatives and boss forms remain components.
+These decisions bind already delivered sources, not new captures or measurements.
+Successful assembly, placement and effective gameplay attributes remain unproven.
+
+Six affected cases and scoped quality checks pass. Canonical-note backlog: 106,
+down from 110. Remaining named records: IDAS 59, AdoraBuild 31, Terralith 15, Towns
+and Towers 1. Coverage groups remain 405, not a final active authored-family count.
+Nonregistry contribution reconciliation and required attributes remain open.
+
+```sh
+uv run pytest tests/item8/test_aether_bronze_components.py tests/item8/test_aether_cloud_source.py tests/item8/test_deep_aether_candidates.py -q -k 'bronze or silver_gold or brass or packaged_candidate_partition'
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
