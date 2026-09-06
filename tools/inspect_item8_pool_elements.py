@@ -221,6 +221,7 @@ CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
     "com/ishland/c2me/C2MEMod.class",
     "com/ishland/c2me/PreLaunchHandler.class",
+    "com/ishland/c2me/fixes/chunkio/threading_issues/common/SynchronizedCodec.class",
     "com/ishland/c2me/fixes/chunkio/threading_issues/mixin/MixinStructurePoolElement.class",
     "com/ishland/c2me/opts/worldgen/general/mixin/random_instances/MixinAtomicSimpleRandomFactory.class",
     "com/ishland/c2me/opts/worldgen/general/mixin/random_instances/MixinRedirectAtomicSimpleRandom.class",
