@@ -2966,3 +2966,36 @@ still OPEN. These checks reuse the existing evidence and tests.
 Four focused cases, scoped Ruff and Basedpyright pass. An initial lint failure
 placed the existing complexity suppression on the wrong line of the multiline
 function declaration; moving it to the declaration line resolved that failure.
+
+### Repurposed residual resource roles
+
+The third case in test_repurposed_feature_candidates.py binds the seven residual
+pools to their actual contents. The two city no_stair_room pools contain existing
+large, medium and tiny rooms plus bridge ends. Four village trees pools select
+cherry, mega pine, pine and swamp tree features. The giant-taiga zombie terminator
+pool selects four normal road-end templates. These are component alternatives,
+not independent authored family candidates. Their absence from generic traces
+remains recorded; this check does not establish actual selection.
+
+| Residual templates | Count | Supported resource disposition |
+| --- | ---: | --- |
+| Mineshaft minecarts | 16 | Each matching mineshaft_minecarts configuration selects a 1 by 1 by 1 template with one chest minecart. These are encounter/loot components of mineshafts. |
+| Ancient-city bottom_right_corner | 3 | No single-pool location selects the exact name. Pools select the corresponding _1 and _2 corner variants instead. Preserve these extra wall components. The initial substring search incorrectly appeared to find exact references and was rejected. |
+| Stronghold crossing | 2 | No single-pool location selects the exact template. Piece-count data imposes a maximum of seven, without a required minimum. A same-named pool reference in start stairs targets a pool, not this NBT file. Preserve the extra crossing components without claiming activation. |
+| Underground bastion mob templates | 5 | Air/jigsaw-only templates with one skeleton or skeleton horse each. No single-pool location selects these exact NBT files. The horse name also appears as a pool reference, which is a different resource kind. |
+| Village components | 27 | Houses, streets, villagers and mobs under variants with existing village root definitions. None is selected by a single-pool location in this archive. Preserve the disconnected component alternatives; do not turn these paths into independent village families. |
+| Total | 53 | All residual template resource roles accounted for; this is not runtime reachability proof. |
+
+This closes the residual resource-role partition. Source entry/feature/hook
+reconciliation must still determine whether additional code consumers affect
+these dispositions before the provider row closes. Census remains 74 resolved
+and 62 open. No new measurement or evidence format was added.
+
+```sh
+uv run pytest -q tests/item8/test_repurposed_feature_candidates.py
+uv run ruff check tests/item8/test_repurposed_feature_candidates.py
+uv run basedpyright tests/item8/test_repurposed_feature_candidates.py
+```
+
+Three focused cases pass. Initial formatting, unused suppression and JSON typing
+findings were corrected in the focused check. Raw catalogs remain unchanged.

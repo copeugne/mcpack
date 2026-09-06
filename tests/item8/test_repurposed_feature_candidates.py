@@ -112,3 +112,121 @@ def test_repurposed_existing_graph_partition() -> None:
         assert Counter(n.split(":", 1)[1].split("/", 1)[0] for n in outside) == outside_counts
     assert all(t["missing"] == [] for t in traces.values())
     assert all(t["unresolved_elements"] == [] for t in traces.values())
+
+
+def test_repurposed_residual_component_links() -> None:  # noqa: PLR0915
+    """Distinguish template consumers from equal-named pools and count limits."""
+    raw = Path("evidence/item-8/sources/templates-redacted.json.gz").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+    )
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(raw)))
+    templates = {identity[0]: cast("dict[str, JsonValue]", r["document"])
+                 for r in catalog["resources"]
+                 if (identity := resource_identity(str(r["path"]), "structure", ".nbt"))
+                 and identity[0].startswith("repurposed_structures:")}
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name.startswith("repurposed_structures-"))
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == (
+        "aeb473f0a0a0632cea089377cdd9f66c42cf6f97557fd32c368ac40635285dd2"
+    )
+    prefix = "data/repurposed_structures/"
+    namespace = "repurposed_structures:"
+    with ZipFile(source.path) as archive:
+        documents = {n: cast("dict[str, JsonValue]", json.loads(archive.read(n)))
+                     for n in archive.namelist()
+                     if n.startswith(prefix + "worldgen/") and n.endswith(".json")}
+        for variant in ("nether", "overworld"):
+            path = prefix + f"worldgen/template_pool/cities/{variant}/no_stair_room.json"
+            document = documents[path]
+            assert document["fallback"] == namespace + f"cities/{variant}/no_stair_room"
+            elements = cast("list[dict[str, JsonValue]]", document["elements"])
+            assert {str(cast("dict[str, JsonValue]", e["element"])["location"])
+                    for e in elements} == {
+                namespace + f"cities/{variant}/" + n
+                for n in ("large_room_ns", "medium_room_ns", "tiny_room_ns", "bridge_end")
+            }
+        tree_features = {
+            "cherry": namespace + "cherry_bees_05", "giant_taiga": "minecraft:mega_pine_checked",
+            "mountains": "minecraft:pine", "swamp": namespace + "swamp_tree_checked",
+        }
+        for variant, feature in tree_features.items():
+            document = documents[prefix + f"worldgen/template_pool/villages/{variant}/trees.json"]
+            assert document["fallback"] == "minecraft:empty"
+            assert document["elements"] == [{"weight": 1, "element": {
+                "element_type": "minecraft:feature_pool_element", "feature": feature,
+                "projection": "rigid",
+            }}]
+        path = prefix + "worldgen/template_pool/villages/giant_taiga/zombie/terminators.json"
+        document = documents[path]
+        assert document["fallback"] == "minecraft:empty"
+        entries = cast("list[dict[str, JsonValue]]", document["elements"])
+        assert {str(cast("dict[str, JsonValue]", e["element"])["location"])
+                for e in entries} == {
+            namespace + f"villages/giant_taiga/terminators/terminator_0{i}" for i in range(1, 5)
+        }
+        minecarts = {n: d for n, d in documents.items()
+                     if d.get("type") == namespace + "mineshaft_minecarts"}
+        assert len(minecarts) == 16
+        for document in minecarts.values():
+            config = cast("dict[str, JsonValue]", document["config"])
+            template = templates[str(config["minecart_nbt_file"])]
+            assert template["size"] == [1, 1, 1]
+            entities = cast("list[dict[str, JsonValue]]", template["entities"])
+            assert len(entities) == 1
+            entity = cast("dict[str, JsonValue]", entities[0]["nbt"])
+            assert entity["id"] == "minecraft:chest_minecart"
+        # A matching pool ID is not a reference to the same-named NBT file.
+        locations = {str(cast("dict[str, JsonValue]", e["element"]).get("location"))
+                     for n, d in documents.items() if "/template_pool/" in n
+                     for e in cast("list[dict[str, JsonValue]]", d["elements"])}
+        for variant in ("end", "nether", "ocean"):
+            key = namespace + f"ancient_cities/{variant}/city_center/walls/bottom_right_corner"
+            assert key in templates
+            assert key not in locations
+            assert {key + "_1", key + "_2"} <= locations
+        for variant in ("end", "nether"):
+            key = namespace + f"strongholds/{variant}/crossing"
+            assert key in templates
+            assert key not in locations
+            start = templates[namespace + f"strongholds/{variant}/start_stairs"]
+            blocks = cast("list[dict[str, JsonValue]]", start["block_entities"])
+            assert any(cast("dict[str, JsonValue]", b["nbt"]).get("pool") == key
+                       for b in blocks)
+            counts = cast("dict[str, JsonValue]", json.loads(archive.read(
+                prefix + f"rs_pieces_spawn_counts/stronghold_{variant}.json"
+            )))
+            limits = cast("list[dict[str, JsonValue]]", counts["pieces_spawn_counts"])
+            assert next(e for e in limits if e["nbt_piece_name"] == key) == {
+                "nbt_piece_name": key, "never_spawn_more_than_this_many": 7,
+            }
+        raw = Path("evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == (
+            "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5"
+        )
+        graph = cast("dict[str, dict[str, dict[str, JsonValue]]]",
+                     json.loads(gzip.decompress(raw)))["structures"]
+        reached = {str(t) for key, trace in graph.items() if key.startswith(namespace)
+                   for t in cast("list[str]", trace["templates"])}
+        remaining = {k for k in templates if k not in reached
+                     and k.split(":", 1)[1].split("/", 1)[0] in {"bastions", "villages"}}
+        assert len(remaining) == 32
+        assert remaining.isdisjoint(locations)
+        entrance = templates[namespace + "bastions/underground/bridge/starting_pieces/entrance"]
+        blocks = cast("list[dict[str, JsonValue]]", entrance["block_entities"])
+        assert any(cast("dict[str, JsonValue]", b["nbt"]).get("pool") ==
+                   namespace + "bastions/underground/mobs/skeleton_horse" for b in blocks)
+        for key in remaining:
+            parts = key.split(":", 1)[1].split("/")
+            if parts[0] == "bastions":
+                assert parts[:3] == ["bastions", "underground", "mobs"]
+                template = templates[key]
+                palette = cast("list[dict[str, JsonValue]]", template["palette"])
+                assert {str(p["Name"]) for p in palette} == {"minecraft:air", "minecraft:jigsaw"}
+                entities = cast("list[dict[str, JsonValue]]", template["entities"])
+                assert len(entities) == 1
+                entity = cast("dict[str, JsonValue]", entities[0]["nbt"])
+                assert entity["id"] in {"minecraft:skeleton", "minecraft:skeleton_horse"}
+            else:
+                assert prefix + f"worldgen/structure/village_{parts[1]}.json" in documents
+                assert any(p in {"houses", "streets", "villagers", "mobs"} for p in parts[2:])
