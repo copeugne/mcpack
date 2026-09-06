@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+House content inspection separates bamboo_house_small_2 as bamboo_cache: a low
+platform with simple-dungeon trapped chest, piston and magma block, without bed
+or domestic workstation. Do not claim tested trap operation. All original
+variants remain preserved. The affected case and scoped checks pass. Inventory
+refresh follows. Backlog remains 60 (IDAS 59, house with 44 remaining roots).
+Coverage groups: 416. Complete views at abfaa574 need no recapture. Next reconcile
+the remaining domestic, raised, End and Nether layouts against furnishings.
+
 AdoraBuild house reconciliation needs all 45 standalone layouts. The existing
 renderer selects them on eight sheets; material groupings are inspection order,
 not family decisions. Authored inhabitants and loot differ, including shulkers,
