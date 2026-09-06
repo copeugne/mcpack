@@ -1,0 +1,246 @@
+Compiled from "Dummmmmmy.java"
+public class net.mehvahdjukaar.dummmmmmy.Dummmmmmy {
+  public static final java.lang.String MOD_ID = "dummmmmmy";
+
+  public static final org.apache.logging.log4j.Logger LOGGER;
+
+  public static final boolean CRITICAL_STRIKE;
+
+  public static final java.lang.String TARGET_DUMMY_NAME = "target_dummy";
+
+  public static final java.util.function.Supplier<net.minecraft.world.entity.EntityType<net.mehvahdjukaar.dummmmmmy.common.TargetDummyEntity>> TARGET_DUMMY;
+
+  public static final java.util.function.Supplier<net.minecraft.world.item.Item> DUMMY_ITEM;
+
+  public static final java.util.function.Supplier<net.minecraft.core.particles.SimpleParticleType> NUMBER_PARTICLE;
+
+  public static final java.util.function.Supplier<net.minecraft.core.particles.SimpleParticleType> HAY_PARTICLE;
+
+  public static final net.minecraft.tags.TagKey<net.minecraft.world.item.Item> AQUATIC_MOB_HEADS;
+
+  public static final net.minecraft.tags.TagKey<net.minecraft.world.item.Item> ARTHROPOD_HEADS;
+
+  public static final net.minecraft.tags.TagKey<net.minecraft.world.item.Item> NETHER_MOB_HEADS;
+
+  public static final net.minecraft.tags.TagKey<net.minecraft.world.item.Item> UNDEAD_HEADS;
+
+  public static final net.minecraft.tags.TagKey<net.minecraft.world.damagesource.DamageType> IS_THORN;
+
+  public static final net.minecraft.tags.TagKey<net.minecraft.world.damagesource.DamageType> IS_FIRE;
+
+  public static final net.minecraft.tags.TagKey<net.minecraft.world.damagesource.DamageType> IS_EXPLOSION;
+
+  public static final net.minecraft.tags.TagKey<net.minecraft.world.damagesource.DamageType> IS_WITHER;
+
+  public static final net.minecraft.tags.TagKey<net.minecraft.world.damagesource.DamageType> IS_COLD;
+
+  public static final net.mehvahdjukaar.moonlight.api.misc.HolderReference<net.minecraft.world.damagesource.DamageType> TRUE_DAMAGE;
+
+  public static final net.mehvahdjukaar.moonlight.api.misc.HolderReference<net.minecraft.world.damagesource.DamageType> CRITICAL_DAMAGE;
+
+  public static final java.text.DecimalFormat DF2;
+
+  public static final java.text.DecimalFormat DF1;
+
+  public net.mehvahdjukaar.dummmmmmy.Dummmmmmy();
+    Code:
+       0: aload_0
+       1: invokespecial #89                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static net.minecraft.resources.ResourceLocation res(java.lang.String);
+    Code:
+       0: ldc           #51                 // String dummmmmmy
+       2: aload_0
+       3: invokestatic  #100                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       6: areturn
+
+  public static void init();
+    Code:
+       0: invokestatic  #105                // Method net/mehvahdjukaar/moonlight/api/platform/PlatHelper.getPhysicalSide:()Lnet/mehvahdjukaar/moonlight/api/platform/PlatHelper$Side;
+       3: invokevirtual #109                // Method net/mehvahdjukaar/moonlight/api/platform/PlatHelper$Side.isClient:()Z
+       6: ifeq          31
+       9: invokestatic  #113                // Method net/mehvahdjukaar/dummmmmmy/DummmmmmyClient.init:()V
+      12: invokestatic  #116                // Method net/mehvahdjukaar/dummmmmmy/configs/ClientConfigs.init:()V
+      15: invokestatic  #120                // Method net/minecraft/advancements/critereon/EntityPredicate$Builder.entity:()Lnet/minecraft/advancements/critereon/EntityPredicate$Builder;
+      18: getstatic     #125                // Field net/minecraft/tags/EntityTypeTags.SENSITIVE_TO_IMPALING:Lnet/minecraft/tags/TagKey;
+      21: invokestatic  #131                // Method net/minecraft/advancements/critereon/EntityTypePredicate.of:(Lnet/minecraft/tags/TagKey;)Lnet/minecraft/advancements/critereon/EntityTypePredicate;
+      24: invokevirtual #135                // Method net/minecraft/advancements/critereon/EntityPredicate$Builder.entityType:(Lnet/minecraft/advancements/critereon/EntityTypePredicate;)Lnet/minecraft/advancements/critereon/EntityPredicate$Builder;
+      27: invokevirtual #139                // Method net/minecraft/advancements/critereon/EntityPredicate$Builder.build:()Lnet/minecraft/advancements/critereon/EntityPredicate;
+      30: pop
+      31: invokestatic  #142                // Method net/mehvahdjukaar/dummmmmmy/network/ModMessages.init:()V
+      34: invokestatic  #145                // Method net/mehvahdjukaar/dummmmmmy/configs/CommonConfigs.init:()V
+      37: invokedynamic #161,  0            // InvokeDynamic #0:run:()Ljava/lang/Runnable;
+      42: invokestatic  #165                // Method net/mehvahdjukaar/moonlight/api/platform/PlatHelper.addCommonSetup:(Ljava/lang/Runnable;)V
+      45: invokedynamic #177,  0            // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+      50: invokestatic  #181                // Method net/mehvahdjukaar/moonlight/api/platform/RegHelper.addAttributeRegistration:(Ljava/util/function/Consumer;)V
+      53: invokedynamic #188,  0            // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+      58: invokestatic  #191                // Method net/mehvahdjukaar/moonlight/api/platform/RegHelper.addItemsToTabsRegistration:(Ljava/util/function/Consumer;)V
+      61: return
+
+  public static void setup();
+    Code:
+       0: getstatic     #193                // Field DUMMY_ITEM:Ljava/util/function/Supplier;
+       3: invokeinterface #199,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       8: checkcast     #201                // class net/minecraft/world/level/ItemLike
+      11: new           #7                  // class net/mehvahdjukaar/dummmmmmy/Dummmmmmy$SpawnDummyBehavior
+      14: dup
+      15: invokespecial #202                // Method net/mehvahdjukaar/dummmmmmy/Dummmmmmy$SpawnDummyBehavior."<init>":()V
+      18: invokestatic  #208                // Method net/minecraft/world/level/block/DispenserBlock.registerBehavior:(Lnet/minecraft/world/level/ItemLike;Lnet/minecraft/core/dispenser/DispenseItemBehavior;)V
+      21: return
+
+  private static void registerItemsToTab(net.mehvahdjukaar.moonlight.api.platform.RegHelper$ItemToTabEvent);
+    Code:
+       0: aload_0
+       1: getstatic     #215                // Field net/minecraft/world/item/CreativeModeTabs.COMBAT:Lnet/minecraft/resources/ResourceKey;
+       4: invokedynamic #227,  0            // InvokeDynamic #3:test:()Ljava/util/function/Predicate;
+       9: iconst_1
+      10: anewarray     #201                // class net/minecraft/world/level/ItemLike
+      13: dup
+      14: iconst_0
+      15: getstatic     #193                // Field DUMMY_ITEM:Ljava/util/function/Supplier;
+      18: invokeinterface #199,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      23: checkcast     #201                // class net/minecraft/world/level/ItemLike
+      26: aastore
+      27: invokeinterface #231,  4          // InterfaceMethod net/mehvahdjukaar/moonlight/api/platform/RegHelper$ItemToTabEvent.addBefore:(Lnet/minecraft/resources/ResourceKey;Ljava/util/function/Predicate;[Lnet/minecraft/world/level/ItemLike;)V
+      32: return
+
+  private static void registerEntityAttributes(net.mehvahdjukaar.moonlight.api.platform.RegHelper$AttributeEvent);
+    Code:
+       0: aload_0
+       1: getstatic     #234                // Field TARGET_DUMMY:Ljava/util/function/Supplier;
+       4: invokeinterface #199,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       9: checkcast     #39                 // class net/minecraft/world/entity/EntityType
+      12: invokestatic  #240                // Method net/mehvahdjukaar/dummmmmmy/common/TargetDummyEntity.makeAttributes:()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+      15: invokeinterface #244,  3          // InterfaceMethod net/mehvahdjukaar/moonlight/api/platform/RegHelper$AttributeEvent.register:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;)V
+      20: return
+
+  private static net.minecraft.world.item.Item lambda$static$1();
+    Code:
+       0: new           #249                // class net/mehvahdjukaar/dummmmmmy/common/TargetDummyItem
+       3: dup
+       4: new           #32                 // class net/minecraft/world/item/Item$Properties
+       7: dup
+       8: invokespecial #250                // Method net/minecraft/world/item/Item$Properties."<init>":()V
+      11: bipush        16
+      13: invokevirtual #254                // Method net/minecraft/world/item/Item$Properties.stacksTo:(I)Lnet/minecraft/world/item/Item$Properties;
+      16: invokespecial #257                // Method net/mehvahdjukaar/dummmmmmy/common/TargetDummyItem."<init>":(Lnet/minecraft/world/item/Item$Properties;)V
+      19: areturn
+
+  private static boolean lambda$registerItemsToTab$0(net.minecraft.world.item.ItemStack);
+    Code:
+       0: aload_0
+       1: getstatic     #264                // Field net/minecraft/world/item/Items.TOTEM_OF_UNDYING:Lnet/minecraft/world/item/Item;
+       4: invokevirtual #270                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+       7: ireturn
+
+  static {};
+    Code:
+       0: invokestatic  #278                // Method org/apache/logging/log4j/LogManager.getLogger:()Lorg/apache/logging/log4j/Logger;
+       3: putstatic     #280                // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+       6: ldc_w         #282                // String critical_strike
+       9: invokestatic  #286                // Method net/mehvahdjukaar/moonlight/api/platform/PlatHelper.isModLoaded:(Ljava/lang/String;)Z
+      12: putstatic     #288                // Field CRITICAL_STRIKE:Z
+      15: ldc           #58                 // String target_dummy
+      17: invokestatic  #290                // Method res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      20: invokedynamic #302,  0            // InvokeDynamic #4:create:()Lnet/minecraft/world/entity/EntityType$EntityFactory;
+      25: getstatic     #308                // Field net/minecraft/world/entity/MobCategory.MISC:Lnet/minecraft/world/entity/MobCategory;
+      28: invokestatic  #311                // Method net/minecraft/world/entity/EntityType$Builder.of:(Lnet/minecraft/world/entity/EntityType$EntityFactory;Lnet/minecraft/world/entity/MobCategory;)Lnet/minecraft/world/entity/EntityType$Builder;
+      31: bipush        10
+      33: invokevirtual #315                // Method net/minecraft/world/entity/EntityType$Builder.clientTrackingRange:(I)Lnet/minecraft/world/entity/EntityType$Builder;
+      36: bipush        40
+      38: invokevirtual #318                // Method net/minecraft/world/entity/EntityType$Builder.updateInterval:(I)Lnet/minecraft/world/entity/EntityType$Builder;
+      41: ldc_w         #319                // float 0.6f
+      44: fconst_2
+      45: invokevirtual #323                // Method net/minecraft/world/entity/EntityType$Builder.sized:(FF)Lnet/minecraft/world/entity/EntityType$Builder;
+      48: invokestatic  #327                // Method net/mehvahdjukaar/moonlight/api/platform/RegHelper.registerEntityType:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/entity/EntityType$Builder;)Lnet/mehvahdjukaar/moonlight/api/misc/RegSupplier;
+      51: putstatic     #234                // Field TARGET_DUMMY:Ljava/util/function/Supplier;
+      54: ldc           #58                 // String target_dummy
+      56: invokestatic  #290                // Method res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      59: invokedynamic #335,  0            // InvokeDynamic #5:get:()Ljava/util/function/Supplier;
+      64: invokestatic  #339                // Method net/mehvahdjukaar/moonlight/api/platform/RegHelper.registerItem:(Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Supplier;)Lnet/mehvahdjukaar/moonlight/api/misc/RegSupplier;
+      67: putstatic     #193                // Field DUMMY_ITEM:Ljava/util/function/Supplier;
+      70: ldc_w         #341                // String number
+      73: invokestatic  #290                // Method res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      76: invokestatic  #345                // Method net/mehvahdjukaar/moonlight/api/platform/RegHelper.registerParticle:(Lnet/minecraft/resources/ResourceLocation;)Lnet/mehvahdjukaar/moonlight/api/misc/RegSupplier;
+      79: putstatic     #347                // Field NUMBER_PARTICLE:Ljava/util/function/Supplier;
+      82: ldc_w         #349                // String hay
+      85: invokestatic  #290                // Method res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      88: invokestatic  #345                // Method net/mehvahdjukaar/moonlight/api/platform/RegHelper.registerParticle:(Lnet/minecraft/resources/ResourceLocation;)Lnet/mehvahdjukaar/moonlight/api/misc/RegSupplier;
+      91: putstatic     #351                // Field HAY_PARTICLE:Ljava/util/function/Supplier;
+      94: getstatic     #356                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+      97: ldc_w         #358                // String aquatic_mob_heads
+     100: invokestatic  #290                // Method res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     103: invokestatic  #363                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+     106: putstatic     #365                // Field AQUATIC_MOB_HEADS:Lnet/minecraft/tags/TagKey;
+     109: getstatic     #356                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+     112: ldc_w         #367                // String arthropod_heads
+     115: invokestatic  #290                // Method res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     118: invokestatic  #363                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+     121: putstatic     #369                // Field ARTHROPOD_HEADS:Lnet/minecraft/tags/TagKey;
+     124: getstatic     #356                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+     127: ldc_w         #371                // String nether_mob_heads
+     130: invokestatic  #290                // Method res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     133: invokestatic  #363                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+     136: putstatic     #373                // Field NETHER_MOB_HEADS:Lnet/minecraft/tags/TagKey;
+     139: getstatic     #356                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+     142: ldc_w         #375                // String undead_heads
+     145: invokestatic  #290                // Method res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     148: invokestatic  #363                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+     151: putstatic     #377                // Field UNDEAD_HEADS:Lnet/minecraft/tags/TagKey;
+     154: getstatic     #380                // Field net/minecraft/core/registries/Registries.DAMAGE_TYPE:Lnet/minecraft/resources/ResourceKey;
+     157: ldc_w         #382                // String is_thorn
+     160: invokestatic  #290                // Method res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     163: invokestatic  #363                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+     166: putstatic     #384                // Field IS_THORN:Lnet/minecraft/tags/TagKey;
+     169: getstatic     #380                // Field net/minecraft/core/registries/Registries.DAMAGE_TYPE:Lnet/minecraft/resources/ResourceKey;
+     172: ldc_w         #386                // String is_fire
+     175: invokestatic  #290                // Method res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     178: invokestatic  #363                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+     181: putstatic     #388                // Field IS_FIRE:Lnet/minecraft/tags/TagKey;
+     184: getstatic     #380                // Field net/minecraft/core/registries/Registries.DAMAGE_TYPE:Lnet/minecraft/resources/ResourceKey;
+     187: ldc_w         #390                // String is_explosion
+     190: invokestatic  #290                // Method res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     193: invokestatic  #363                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+     196: putstatic     #392                // Field IS_EXPLOSION:Lnet/minecraft/tags/TagKey;
+     199: getstatic     #380                // Field net/minecraft/core/registries/Registries.DAMAGE_TYPE:Lnet/minecraft/resources/ResourceKey;
+     202: ldc_w         #394                // String is_wither
+     205: invokestatic  #290                // Method res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     208: invokestatic  #363                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+     211: putstatic     #396                // Field IS_WITHER:Lnet/minecraft/tags/TagKey;
+     214: getstatic     #380                // Field net/minecraft/core/registries/Registries.DAMAGE_TYPE:Lnet/minecraft/resources/ResourceKey;
+     217: ldc_w         #398                // String is_cold
+     220: invokestatic  #290                // Method res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     223: invokestatic  #363                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+     226: putstatic     #400                // Field IS_COLD:Lnet/minecraft/tags/TagKey;
+     229: ldc_w         #402                // String true
+     232: invokestatic  #290                // Method res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     235: getstatic     #380                // Field net/minecraft/core/registries/Registries.DAMAGE_TYPE:Lnet/minecraft/resources/ResourceKey;
+     238: invokestatic  #407                // Method net/mehvahdjukaar/moonlight/api/misc/HolderReference.of:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceKey;)Lnet/mehvahdjukaar/moonlight/api/misc/HolderReference;
+     241: putstatic     #409                // Field TRUE_DAMAGE:Lnet/mehvahdjukaar/moonlight/api/misc/HolderReference;
+     244: ldc_w         #411                // String critical
+     247: invokestatic  #290                // Method res:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     250: getstatic     #380                // Field net/minecraft/core/registries/Registries.DAMAGE_TYPE:Lnet/minecraft/resources/ResourceKey;
+     253: invokestatic  #407                // Method net/mehvahdjukaar/moonlight/api/misc/HolderReference.of:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceKey;)Lnet/mehvahdjukaar/moonlight/api/misc/HolderReference;
+     256: putstatic     #413                // Field CRITICAL_DAMAGE:Lnet/mehvahdjukaar/moonlight/api/misc/HolderReference;
+     259: new           #415                // class java/text/DecimalFormatSymbols
+     262: dup
+     263: invokespecial #416                // Method java/text/DecimalFormatSymbols."<init>":()V
+     266: astore_0
+     267: aload_0
+     268: bipush        46
+     270: invokevirtual #420                // Method java/text/DecimalFormatSymbols.setDecimalSeparator:(C)V
+     273: new           #422                // class java/text/DecimalFormat
+     276: dup
+     277: ldc_w         #424                // String #.##
+     280: aload_0
+     281: invokespecial #427                // Method java/text/DecimalFormat."<init>":(Ljava/lang/String;Ljava/text/DecimalFormatSymbols;)V
+     284: putstatic     #429                // Field DF1:Ljava/text/DecimalFormat;
+     287: new           #422                // class java/text/DecimalFormat
+     290: dup
+     291: ldc_w         #431                // String #.#
+     294: aload_0
+     295: invokespecial #427                // Method java/text/DecimalFormat."<init>":(Ljava/lang/String;Ljava/text/DecimalFormatSymbols;)V
+     298: putstatic     #433                // Field DF2:Ljava/text/DecimalFormat;
+     301: return
+}

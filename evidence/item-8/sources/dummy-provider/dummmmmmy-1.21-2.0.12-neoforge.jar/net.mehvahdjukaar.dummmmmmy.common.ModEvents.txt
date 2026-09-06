@@ -1,0 +1,313 @@
+Compiled from "ModEvents.java"
+public class net.mehvahdjukaar.dummmmmmy.common.ModEvents {
+  public net.mehvahdjukaar.dummmmmmy.common.ModEvents();
+    Code:
+       0: aload_0
+       1: invokespecial #21                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void onEntityCriticalHit(net.minecraft.world.entity.player.Player, net.minecraft.world.entity.Entity, float);
+    Code:
+       0: aload_0
+       1: ifnull        32
+       4: aload_0
+       5: invokevirtual #34                 // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+       8: getfield      #40                 // Field net/minecraft/world/level/Level.isClientSide:Z
+      11: ifne          32
+      14: aload_1
+      15: instanceof    #42                 // class net/mehvahdjukaar/dummmmmmy/common/TargetDummyEntity
+      18: ifeq          32
+      21: aload_1
+      22: checkcast     #42                 // class net/mehvahdjukaar/dummmmmmy/common/TargetDummyEntity
+      25: astore_3
+      26: aload_3
+      27: aload_0
+      28: fload_2
+      29: invokevirtual #46                 // Method net/mehvahdjukaar/dummmmmmy/common/TargetDummyEntity.moist:(Lnet/minecraft/world/entity/Entity;F)V
+      32: return
+
+  public static boolean canBeScaredByScarecrow(net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_0
+       1: invokevirtual #60                 // Method net/minecraft/world/entity/Entity.getType:()Lnet/minecraft/world/entity/EntityType;
+       4: invokestatic  #66                 // Method net/mehvahdjukaar/moonlight/api/util/Utils.getID:(Lnet/minecraft/world/entity/EntityType;)Lnet/minecraft/resources/ResourceLocation;
+       7: invokevirtual #72                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      10: astore_1
+      11: aload_0
+      12: instanceof    #74                 // class net/minecraft/world/entity/animal/Animal
+      15: ifne          38
+      18: getstatic     #78                 // Field net/mehvahdjukaar/dummmmmmy/configs/CommonConfigs.WHITELIST:Ljava/util/function/Supplier;
+      21: invokeinterface #84,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      26: checkcast     #86                 // class java/util/List
+      29: aload_1
+      30: invokeinterface #90,  2           // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+      35: ifeq          62
+      38: getstatic     #95                 // Field net/mehvahdjukaar/dummmmmmy/configs/CommonConfigs.BLACKLIST:Ljava/util/function/Supplier;
+      41: invokeinterface #84,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      46: checkcast     #86                 // class java/util/List
+      49: aload_1
+      50: invokeinterface #90,  2           // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+      55: ifne          62
+      58: iconst_1
+      59: goto          63
+      62: iconst_0
+      63: ireturn
+
+  public static boolean isScarecrowInRange(net.minecraft.world.entity.Entity, net.minecraft.world.level.Level);
+    Code:
+       0: aload_1
+       1: getstatic     #105                // Field net/mehvahdjukaar/dummmmmmy/Dummmmmmy.TARGET_DUMMY:Ljava/util/function/Supplier;
+       4: invokeinterface #84,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       9: checkcast     #107                // class net/minecraft/world/level/entity/EntityTypeTest
+      12: aload_0
+      13: invokevirtual #111                // Method net/minecraft/world/entity/Entity.getBoundingBox:()Lnet/minecraft/world/phys/AABB;
+      16: ldc2_w        #112                // double 10.0d
+      19: invokevirtual #119                // Method net/minecraft/world/phys/AABB.inflate:(D)Lnet/minecraft/world/phys/AABB;
+      22: invokedynamic #138,  0            // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+      27: invokevirtual #142                // Method net/minecraft/world/level/Level.getEntities:(Lnet/minecraft/world/level/entity/EntityTypeTest;Lnet/minecraft/world/phys/AABB;Ljava/util/function/Predicate;)Ljava/util/List;
+      30: invokeinterface #145,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+      35: ifne          42
+      38: iconst_1
+      39: goto          43
+      42: iconst_0
+      43: ireturn
+
+  public static boolean onCheckSpawn(net.minecraft.world.entity.Mob, net.minecraft.world.level.LevelAccessor);
+    Code:
+       0: aload_1
+       1: instanceof    #36                 // class net/minecraft/world/level/Level
+       4: ifeq          25
+       7: aload_1
+       8: checkcast     #36                 // class net/minecraft/world/level/Level
+      11: astore_2
+      12: aload_0
+      13: invokestatic  #150                // Method canBeScaredByScarecrow:(Lnet/minecraft/world/entity/Entity;)Z
+      16: ifeq          25
+      19: aload_0
+      20: aload_2
+      21: invokestatic  #152                // Method isScarecrowInRange:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/Level;)Z
+      24: ireturn
+      25: iconst_0
+      26: ireturn
+
+  public static void onEntityJoinWorld(net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_0
+       1: invokevirtual #158                // Method net/minecraft/world/entity/Entity.level:()Lnet/minecraft/world/level/Level;
+       4: getfield      #40                 // Field net/minecraft/world/level/Level.isClientSide:Z
+       7: ifeq          11
+      10: return
+      11: aload_0
+      12: instanceof    #160                // class net/minecraft/world/entity/PathfinderMob
+      15: ifeq          72
+      18: aload_0
+      19: checkcast     #160                // class net/minecraft/world/entity/PathfinderMob
+      22: astore_1
+      23: aload_0
+      24: invokestatic  #150                // Method canBeScaredByScarecrow:(Lnet/minecraft/world/entity/Entity;)Z
+      27: ifeq          72
+      30: aload_1
+      31: getfield      #164                // Field net/minecraft/world/entity/PathfinderMob.goalSelector:Lnet/minecraft/world/entity/ai/goal/GoalSelector;
+      34: iconst_0
+      35: new           #166                // class net/minecraft/world/entity/ai/goal/AvoidEntityGoal
+      38: dup
+      39: aload_1
+      40: ldc           #42                 // class net/mehvahdjukaar/dummmmmmy/common/TargetDummyEntity
+      42: getstatic     #169                // Field net/mehvahdjukaar/dummmmmmy/configs/CommonConfigs.RADIUS:Ljava/util/function/Supplier;
+      45: invokeinterface #84,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      50: checkcast     #171                // class java/lang/Integer
+      53: invokevirtual #175                // Method java/lang/Integer.intValue:()I
+      56: i2f
+      57: dconst_1
+      58: ldc2_w        #176                // double 1.3d
+      61: invokedynamic #184,  0            // InvokeDynamic #1:test:()Ljava/util/function/Predicate;
+      66: invokespecial #187                // Method net/minecraft/world/entity/ai/goal/AvoidEntityGoal."<init>":(Lnet/minecraft/world/entity/PathfinderMob;Ljava/lang/Class;FDDLjava/util/function/Predicate;)V
+      69: invokevirtual #193                // Method net/minecraft/world/entity/ai/goal/GoalSelector.addGoal:(ILnet/minecraft/world/entity/ai/goal/Goal;)V
+      72: getstatic     #196                // Field net/mehvahdjukaar/dummmmmmy/configs/CommonConfigs.DECOY:Ljava/util/function/Supplier;
+      75: invokeinterface #84,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      80: checkcast     #198                // class java/lang/Boolean
+      83: invokevirtual #201                // Method java/lang/Boolean.booleanValue:()Z
+      86: ifeq          129
+      89: aload_0
+      90: instanceof    #203                // class net/minecraft/world/entity/monster/Monster
+      93: ifeq          129
+      96: aload_0
+      97: checkcast     #203                // class net/minecraft/world/entity/monster/Monster
+     100: astore_1
+     101: aload_1
+     102: getfield      #204                // Field net/minecraft/world/entity/monster/Monster.goalSelector:Lnet/minecraft/world/entity/ai/goal/GoalSelector;
+     105: bipush        6
+     107: new           #206                // class net/minecraft/world/entity/ai/goal/target/NearestAttackableTargetGoal
+     110: dup
+     111: aload_1
+     112: ldc           #42                 // class net/mehvahdjukaar/dummmmmmy/common/TargetDummyEntity
+     114: bipush        20
+     116: iconst_1
+     117: iconst_1
+     118: invokedynamic #211,  0            // InvokeDynamic #2:test:()Ljava/util/function/Predicate;
+     123: invokespecial #214                // Method net/minecraft/world/entity/ai/goal/target/NearestAttackableTargetGoal."<init>":(Lnet/minecraft/world/entity/Mob;Ljava/lang/Class;IZZLjava/util/function/Predicate;)V
+     126: invokevirtual #193                // Method net/minecraft/world/entity/ai/goal/GoalSelector.addGoal:(ILnet/minecraft/world/entity/ai/goal/Goal;)V
+     129: return
+
+  public static void onEntityDamage(net.minecraft.world.entity.LivingEntity, float, net.minecraft.world.damagesource.DamageSource);
+    Code:
+       0: aload_0
+       1: invokevirtual #225                // Method net/minecraft/world/entity/LivingEntity.level:()Lnet/minecraft/world/level/Level;
+       4: getfield      #40                 // Field net/minecraft/world/level/Level.isClientSide:Z
+       7: ifne          195
+      10: aload_0
+      11: invokevirtual #226                // Method net/minecraft/world/entity/LivingEntity.getType:()Lnet/minecraft/world/entity/EntityType;
+      14: getstatic     #105                // Field net/mehvahdjukaar/dummmmmmy/Dummmmmmy.TARGET_DUMMY:Ljava/util/function/Supplier;
+      17: invokeinterface #84,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      22: if_acmpeq     195
+      25: fload_1
+      26: fconst_0
+      27: fcmpl
+      28: ifeq          195
+      31: aconst_null
+      32: astore_3
+      33: getstatic     #229                // Field net/mehvahdjukaar/dummmmmmy/Dummmmmmy.CRITICAL_STRIKE:Z
+      36: ifeq          67
+      39: aload_2
+      40: invokestatic  #235                // Method net/mehvahdjukaar/dummmmmmy/compat/CritCompat.getCritMultiplier:(Lnet/minecraft/world/damagesource/DamageSource;)F
+      43: fstore        4
+      45: fload         4
+      47: fconst_0
+      48: fcmpl
+      49: ifle          65
+      52: new           #237                // class net/mehvahdjukaar/dummmmmmy/common/CritRecord
+      55: dup
+      56: aconst_null
+      57: fload         4
+      59: invokespecial #239                // Method net/mehvahdjukaar/dummmmmmy/common/CritRecord."<init>":(Lnet/minecraft/world/entity/Entity;F)V
+      62: goto          66
+      65: aconst_null
+      66: astore_3
+      67: new           #243                // class net/mehvahdjukaar/dummmmmmy/network/ClientBoundDamageNumberMessage
+      70: dup
+      71: aload_0
+      72: invokevirtual #246                // Method net/minecraft/world/entity/LivingEntity.getId:()I
+      75: fload_1
+      76: aload_2
+      77: aload_3
+      78: aload_0
+      79: invokevirtual #225                // Method net/minecraft/world/entity/LivingEntity.level:()Lnet/minecraft/world/level/Level;
+      82: invokespecial #249                // Method net/mehvahdjukaar/dummmmmmy/network/ClientBoundDamageNumberMessage."<init>":(IFLnet/minecraft/world/damagesource/DamageSource;Lnet/mehvahdjukaar/dummmmmmy/common/CritRecord;Lnet/minecraft/world/level/Level;)V
+      85: astore        4
+      87: getstatic     #253                // Field net/mehvahdjukaar/dummmmmmy/common/ModEvents$1.$SwitchMap$net$mehvahdjukaar$dummmmmmy$configs$CommonConfigs$Mode:[I
+      90: getstatic     #256                // Field net/mehvahdjukaar/dummmmmmy/configs/CommonConfigs.DAMAGE_NUMBERS_MODE:Ljava/util/function/Supplier;
+      93: invokeinterface #84,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      98: checkcast     #9                  // class net/mehvahdjukaar/dummmmmmy/configs/CommonConfigs$Mode
+     101: invokevirtual #259                // Method net/mehvahdjukaar/dummmmmmy/configs/CommonConfigs$Mode.ordinal:()I
+     104: iaload
+     105: tableswitch   { // 1 to 4
+                     1: 136
+                     2: 145
+                     3: 164
+                     4: 195
+               default: 195
+          }
+     136: aload_0
+     137: aload         4
+     139: invokestatic  #265                // Method net/mehvahdjukaar/moonlight/api/platform/network/NetworkHelper.sendToAllClientPlayersTrackingEntity:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+     142: goto          195
+     145: aload_2
+     146: invokevirtual #269                // Method net/minecraft/world/damagesource/DamageSource.getEntity:()Lnet/minecraft/world/entity/Entity;
+     149: instanceof    #271                // class net/minecraft/server/level/ServerPlayer
+     152: ifeq          195
+     155: aload_0
+     156: aload         4
+     158: invokestatic  #265                // Method net/mehvahdjukaar/moonlight/api/platform/network/NetworkHelper.sendToAllClientPlayersTrackingEntity:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+     161: goto          195
+     164: aload_2
+     165: invokevirtual #269                // Method net/minecraft/world/damagesource/DamageSource.getEntity:()Lnet/minecraft/world/entity/Entity;
+     168: astore        6
+     170: aload         6
+     172: instanceof    #271                // class net/minecraft/server/level/ServerPlayer
+     175: ifeq          192
+     178: aload         6
+     180: checkcast     #271                // class net/minecraft/server/level/ServerPlayer
+     183: astore        5
+     185: aload         5
+     187: aload         4
+     189: invokestatic  #275                // Method net/mehvahdjukaar/moonlight/api/platform/network/NetworkHelper.sendToClientPlayer:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+     192: goto          195
+     195: return
+
+  public static void onEntityHeal(net.minecraft.world.entity.LivingEntity, float);
+    Code:
+       0: aload_0
+       1: invokevirtual #225                // Method net/minecraft/world/entity/LivingEntity.level:()Lnet/minecraft/world/level/Level;
+       4: getfield      #40                 // Field net/minecraft/world/level/Level.isClientSide:Z
+       7: ifne          143
+      10: aload_0
+      11: invokevirtual #226                // Method net/minecraft/world/entity/LivingEntity.getType:()Lnet/minecraft/world/entity/EntityType;
+      14: getstatic     #105                // Field net/mehvahdjukaar/dummmmmmy/Dummmmmmy.TARGET_DUMMY:Ljava/util/function/Supplier;
+      17: invokeinterface #84,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      22: if_acmpeq     143
+      25: fload_1
+      26: fconst_0
+      27: fcmpl
+      28: ifeq          143
+      31: new           #243                // class net/mehvahdjukaar/dummmmmmy/network/ClientBoundDamageNumberMessage
+      34: dup
+      35: aload_0
+      36: invokevirtual #246                // Method net/minecraft/world/entity/LivingEntity.getId:()I
+      39: fload_1
+      40: fneg
+      41: aconst_null
+      42: aconst_null
+      43: aload_0
+      44: invokevirtual #225                // Method net/minecraft/world/entity/LivingEntity.level:()Lnet/minecraft/world/level/Level;
+      47: invokespecial #249                // Method net/mehvahdjukaar/dummmmmmy/network/ClientBoundDamageNumberMessage."<init>":(IFLnet/minecraft/world/damagesource/DamageSource;Lnet/mehvahdjukaar/dummmmmmy/common/CritRecord;Lnet/minecraft/world/level/Level;)V
+      50: astore_2
+      51: getstatic     #253                // Field net/mehvahdjukaar/dummmmmmy/common/ModEvents$1.$SwitchMap$net$mehvahdjukaar$dummmmmmy$configs$CommonConfigs$Mode:[I
+      54: getstatic     #289                // Field net/mehvahdjukaar/dummmmmmy/configs/CommonConfigs.HEALING_NUMBERS_MODE:Ljava/util/function/Supplier;
+      57: invokeinterface #84,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      62: checkcast     #9                  // class net/mehvahdjukaar/dummmmmmy/configs/CommonConfigs$Mode
+      65: invokevirtual #259                // Method net/mehvahdjukaar/dummmmmmy/configs/CommonConfigs$Mode.ordinal:()I
+      68: iaload
+      69: tableswitch   { // 1 to 4
+                     1: 100
+                     2: 108
+                     3: 123
+                     4: 143
+               default: 143
+          }
+     100: aload_0
+     101: aload_2
+     102: invokestatic  #265                // Method net/mehvahdjukaar/moonlight/api/platform/network/NetworkHelper.sendToAllClientPlayersTrackingEntity:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+     105: goto          143
+     108: aload_0
+     109: instanceof    #271                // class net/minecraft/server/level/ServerPlayer
+     112: ifeq          143
+     115: aload_0
+     116: aload_2
+     117: invokestatic  #265                // Method net/mehvahdjukaar/moonlight/api/platform/network/NetworkHelper.sendToAllClientPlayersTrackingEntity:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+     120: goto          143
+     123: aload_0
+     124: instanceof    #271                // class net/minecraft/server/level/ServerPlayer
+     127: ifeq          140
+     130: aload_0
+     131: checkcast     #271                // class net/minecraft/server/level/ServerPlayer
+     134: astore_3
+     135: aload_3
+     136: aload_2
+     137: invokestatic  #275                // Method net/mehvahdjukaar/moonlight/api/platform/network/NetworkHelper.sendToClientPlayer:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+     140: goto          143
+     143: return
+
+  private static boolean lambda$onEntityJoinWorld$1(net.minecraft.world.entity.LivingEntity);
+    Code:
+       0: aload_0
+       1: checkcast     #42                 // class net/mehvahdjukaar/dummmmmmy/common/TargetDummyEntity
+       4: invokevirtual #294                // Method net/mehvahdjukaar/dummmmmmy/common/TargetDummyEntity.canAttract:()Z
+       7: ireturn
+
+  private static boolean lambda$onEntityJoinWorld$0(net.minecraft.world.entity.LivingEntity);
+    Code:
+       0: aload_0
+       1: checkcast     #42                 // class net/mehvahdjukaar/dummmmmmy/common/TargetDummyEntity
+       4: invokevirtual #124                // Method net/mehvahdjukaar/dummmmmmy/common/TargetDummyEntity.canScare:()Z
+       7: ireturn
+}
