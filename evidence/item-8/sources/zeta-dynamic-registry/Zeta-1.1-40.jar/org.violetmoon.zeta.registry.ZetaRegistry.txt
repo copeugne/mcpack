@@ -1,0 +1,664 @@
+Compiled from "ZetaRegistry.java"
+public abstract class org.violetmoon.zeta.registry.ZetaRegistry {
+  public final org.violetmoon.zeta.Zeta z;
+
+  private final com.google.common.collect.Multimap<net.minecraft.resources.ResourceLocation, java.util.function.Supplier<java.lang.Object>> defers;
+
+  private final java.util.Map<net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<?>>, java.util.List<net.minecraft.core.Holder<?>>> myRegisteredObjects;
+
+  public final java.util.Map<java.lang.Object, net.minecraft.resources.ResourceLocation> internalNames;
+
+  private final java.util.Map<net.minecraft.world.level.block.Block, java.lang.String> blocksToColorProviderName;
+
+  private final java.util.Map<net.minecraft.world.item.Item, java.lang.String> itemsToColorProviderName;
+
+  private final java.util.Map<net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<?>>, java.util.List<org.violetmoon.zeta.registry.ZetaRegistry$DynamicEntry<?>>> dynamicDefers;
+
+  public org.violetmoon.zeta.registry.ZetaRegistry(org.violetmoon.zeta.Zeta);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: invokestatic  #7                  // Method com/google/common/collect/ArrayListMultimap.create:()Lcom/google/common/collect/ArrayListMultimap;
+       8: putfield      #13                 // Field defers:Lcom/google/common/collect/Multimap;
+      11: aload_0
+      12: new           #19                 // class java/util/HashMap
+      15: dup
+      16: invokespecial #21                 // Method java/util/HashMap."<init>":()V
+      19: putfield      #22                 // Field myRegisteredObjects:Ljava/util/Map;
+      22: aload_0
+      23: new           #26                 // class java/util/IdentityHashMap
+      26: dup
+      27: invokespecial #28                 // Method java/util/IdentityHashMap."<init>":()V
+      30: putfield      #29                 // Field internalNames:Ljava/util/Map;
+      33: aload_0
+      34: new           #19                 // class java/util/HashMap
+      37: dup
+      38: invokespecial #21                 // Method java/util/HashMap."<init>":()V
+      41: putfield      #32                 // Field blocksToColorProviderName:Ljava/util/Map;
+      44: aload_0
+      45: new           #19                 // class java/util/HashMap
+      48: dup
+      49: invokespecial #21                 // Method java/util/HashMap."<init>":()V
+      52: putfield      #35                 // Field itemsToColorProviderName:Ljava/util/Map;
+      55: aload_0
+      56: new           #19                 // class java/util/HashMap
+      59: dup
+      60: invokespecial #21                 // Method java/util/HashMap."<init>":()V
+      63: putfield      #38                 // Field dynamicDefers:Ljava/util/Map;
+      66: aload_0
+      67: aload_1
+      68: putfield      #41                 // Field z:Lorg/violetmoon/zeta/Zeta;
+      71: return
+
+  public <T> net.minecraft.resources.ResourceLocation getRegistryName(T, net.minecraft.core.Registry<T>);
+    Code:
+       0: aload_0
+       1: getfield      #29                 // Field internalNames:Ljava/util/Map;
+       4: aload_1
+       5: invokeinterface #45,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #51                 // class net/minecraft/resources/ResourceLocation
+      13: astore_3
+      14: aload_3
+      15: ifnonnull     28
+      18: aload_2
+      19: aload_1
+      20: invokeinterface #53,  2           // InterfaceMethod net/minecraft/core/Registry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+      25: goto          29
+      28: aload_3
+      29: areturn
+
+  public net.minecraft.resources.ResourceLocation newResourceLocation(java.lang.String);
+    Code:
+       0: aload_1
+       1: bipush        58
+       3: invokevirtual #59                 // Method java/lang/String.indexOf:(I)I
+       6: iconst_m1
+       7: if_icmpne     22
+      10: aload_0
+      11: getfield      #41                 // Field z:Lorg/violetmoon/zeta/Zeta;
+      14: getfield      #65                 // Field org/violetmoon/zeta/Zeta.modid:Ljava/lang/String;
+      17: aload_1
+      18: invokestatic  #71                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      21: areturn
+      22: aload_1
+      23: invokestatic  #75                 // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      26: areturn
+
+  public <T> void register(T, net.minecraft.resources.ResourceLocation, net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<T>>);
+    Code:
+       0: aload_1
+       1: ifnonnull     14
+       4: new           #79                 // class java/lang/IllegalArgumentException
+       7: dup
+       8: ldc           #81                 // String Can\'t register null object.
+      10: invokespecial #83                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+      13: athrow
+      14: aload_1
+      15: instanceof    #86                 // class net/minecraft/world/level/block/Block
+      18: ifeq          69
+      21: aload_1
+      22: checkcast     #86                 // class net/minecraft/world/level/block/Block
+      25: astore        4
+      27: aload_1
+      28: instanceof    #88                 // class org/violetmoon/zeta/registry/IZetaBlockColorProvider
+      31: ifeq          69
+      34: aload_1
+      35: checkcast     #88                 // class org/violetmoon/zeta/registry/IZetaBlockColorProvider
+      38: astore        5
+      40: aload         5
+      42: invokeinterface #90,  1           // InterfaceMethod org/violetmoon/zeta/registry/IZetaBlockColorProvider.getBlockColorProviderName:()Ljava/lang/String;
+      47: ifnull        69
+      50: aload_0
+      51: getfield      #32                 // Field blocksToColorProviderName:Ljava/util/Map;
+      54: aload         4
+      56: aload         5
+      58: invokeinterface #90,  1           // InterfaceMethod org/violetmoon/zeta/registry/IZetaBlockColorProvider.getBlockColorProviderName:()Ljava/lang/String;
+      63: invokeinterface #94,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      68: pop
+      69: aload_1
+      70: instanceof    #98                 // class net/minecraft/world/item/Item
+      73: ifeq          124
+      76: aload_1
+      77: checkcast     #98                 // class net/minecraft/world/item/Item
+      80: astore        4
+      82: aload_1
+      83: instanceof    #100                // class org/violetmoon/zeta/registry/IZetaItemColorProvider
+      86: ifeq          124
+      89: aload_1
+      90: checkcast     #100                // class org/violetmoon/zeta/registry/IZetaItemColorProvider
+      93: astore        5
+      95: aload         5
+      97: invokeinterface #102,  1          // InterfaceMethod org/violetmoon/zeta/registry/IZetaItemColorProvider.getItemColorProviderName:()Ljava/lang/String;
+     102: ifnull        124
+     105: aload_0
+     106: getfield      #35                 // Field itemsToColorProviderName:Ljava/util/Map;
+     109: aload         4
+     111: aload         5
+     113: invokeinterface #102,  1          // InterfaceMethod org/violetmoon/zeta/registry/IZetaItemColorProvider.getItemColorProviderName:()Ljava/lang/String;
+     118: invokeinterface #94,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     123: pop
+     124: aload_0
+     125: getfield      #29                 // Field internalNames:Ljava/util/Map;
+     128: aload_1
+     129: aload_2
+     130: invokeinterface #94,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     135: pop
+     136: aload_0
+     137: getfield      #13                 // Field defers:Lcom/google/common/collect/Multimap;
+     140: aload_3
+     141: invokevirtual #105                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     144: aload_1
+     145: invokedynamic #111,  0            // InvokeDynamic #0:get:(Ljava/lang/Object;)Ljava/util/function/Supplier;
+     150: invokeinterface #114,  3          // InterfaceMethod com/google/common/collect/Multimap.put:(Ljava/lang/Object;Ljava/lang/Object;)Z
+     155: pop
+     156: return
+
+  public <T> void register(T, java.lang.String, net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<T>>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_0
+       3: aload_2
+       4: invokevirtual #119                // Method newResourceLocation:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       7: aload_3
+       8: invokevirtual #122                // Method register:(Ljava/lang/Object;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceKey;)V
+      11: return
+
+  public void registerItem(net.minecraft.world.item.Item, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: getstatic     #126                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+       6: invokevirtual #122                // Method register:(Ljava/lang/Object;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceKey;)V
+       9: return
+
+  public void registerItem(net.minecraft.world.item.Item, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_0
+       3: aload_2
+       4: invokevirtual #119                // Method newResourceLocation:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       7: getstatic     #126                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+      10: invokevirtual #122                // Method register:(Ljava/lang/Object;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceKey;)V
+      13: return
+
+  public void registerBlock(net.minecraft.world.level.block.Block, net.minecraft.resources.ResourceLocation, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: getstatic     #132                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+       6: invokevirtual #122                // Method register:(Ljava/lang/Object;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceKey;)V
+       9: iload_3
+      10: ifeq          36
+      13: aload_0
+      14: getfield      #13                 // Field defers:Lcom/google/common/collect/Multimap;
+      17: getstatic     #126                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+      20: invokevirtual #105                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      23: aload_0
+      24: aload_1
+      25: invokedynamic #135,  0            // InvokeDynamic #1:get:(Lorg/violetmoon/zeta/registry/ZetaRegistry;Lnet/minecraft/world/level/block/Block;)Ljava/util/function/Supplier;
+      30: invokeinterface #114,  3          // InterfaceMethod com/google/common/collect/Multimap.put:(Ljava/lang/Object;Ljava/lang/Object;)Z
+      35: pop
+      36: return
+
+  public void registerBlock(net.minecraft.world.level.block.Block, java.lang.String, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_0
+       3: aload_2
+       4: invokevirtual #119                // Method newResourceLocation:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       7: iload_3
+       8: invokevirtual #138                // Method registerBlock:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/resources/ResourceLocation;Z)V
+      11: return
+
+  public void registerBlock(net.minecraft.world.level.block.Block, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: iconst_1
+       4: invokevirtual #138                // Method registerBlock:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/resources/ResourceLocation;Z)V
+       7: return
+
+  public void registerBlock(net.minecraft.world.level.block.Block, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: iconst_1
+       4: invokevirtual #142                // Method registerBlock:(Lnet/minecraft/world/level/block/Block;Ljava/lang/String;Z)V
+       7: return
+
+  private net.minecraft.world.item.Item createItemBlock(net.minecraft.world.level.block.Block);
+    Code:
+       0: new           #145                // class net/minecraft/world/item/Item$Properties
+       3: dup
+       4: invokespecial #147                // Method net/minecraft/world/item/Item$Properties."<init>":()V
+       7: astore_2
+       8: aload_0
+       9: getfield      #29                 // Field internalNames:Ljava/util/Map;
+      12: aload_1
+      13: invokeinterface #45,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      18: checkcast     #51                 // class net/minecraft/resources/ResourceLocation
+      21: astore_3
+      22: aload_1
+      23: instanceof    #148                // class org/violetmoon/zeta/registry/IZetaItemPropertiesFiller
+      26: ifeq          43
+      29: aload_1
+      30: checkcast     #148                // class org/violetmoon/zeta/registry/IZetaItemPropertiesFiller
+      33: astore        4
+      35: aload         4
+      37: aload_2
+      38: invokeinterface #150,  2          // InterfaceMethod org/violetmoon/zeta/registry/IZetaItemPropertiesFiller.fillItemProperties:(Lnet/minecraft/world/item/Item$Properties;)V
+      43: aload_1
+      44: instanceof    #154                // class org/violetmoon/zeta/registry/IZetaBlockItemProvider
+      47: ifeq          66
+      50: aload_1
+      51: checkcast     #154                // class org/violetmoon/zeta/registry/IZetaBlockItemProvider
+      54: aload_1
+      55: aload_2
+      56: invokeinterface #156,  3          // InterfaceMethod org/violetmoon/zeta/registry/IZetaBlockItemProvider.provideItemBlock:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/item/Item$Properties;)Lnet/minecraft/world/item/BlockItem;
+      61: astore        4
+      63: goto          77
+      66: new           #160                // class org/violetmoon/zeta/item/ZetaBlockItem
+      69: dup
+      70: aload_1
+      71: aload_2
+      72: invokespecial #162                // Method org/violetmoon/zeta/item/ZetaBlockItem."<init>":(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/item/Item$Properties;)V
+      75: astore        4
+      77: aload_1
+      78: instanceof    #100                // class org/violetmoon/zeta/registry/IZetaItemColorProvider
+      81: ifeq          119
+      84: aload_1
+      85: checkcast     #100                // class org/violetmoon/zeta/registry/IZetaItemColorProvider
+      88: astore        5
+      90: aload         5
+      92: invokeinterface #102,  1          // InterfaceMethod org/violetmoon/zeta/registry/IZetaItemColorProvider.getItemColorProviderName:()Ljava/lang/String;
+      97: ifnull        119
+     100: aload_0
+     101: getfield      #35                 // Field itemsToColorProviderName:Ljava/util/Map;
+     104: aload         4
+     106: aload         5
+     108: invokeinterface #102,  1          // InterfaceMethod org/violetmoon/zeta/registry/IZetaItemColorProvider.getItemColorProviderName:()Ljava/lang/String;
+     113: invokeinterface #94,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     118: pop
+     119: aload_0
+     120: getfield      #29                 // Field internalNames:Ljava/util/Map;
+     123: aload         4
+     125: aload_3
+     126: invokeinterface #94,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     131: pop
+     132: aload         4
+     134: areturn
+
+  public java.util.Collection<java.util.function.Supplier<java.lang.Object>> getDefers(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field defers:Lcom/google/common/collect/Multimap;
+       4: aload_1
+       5: invokeinterface #165,  2          // InterfaceMethod com/google/common/collect/Multimap.get:(Ljava/lang/Object;)Ljava/util/Collection;
+      10: areturn
+
+  public void clearDeferCache(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field defers:Lcom/google/common/collect/Multimap;
+       4: aload_1
+       5: invokeinterface #168,  2          // InterfaceMethod com/google/common/collect/Multimap.removeAll:(Ljava/lang/Object;)Ljava/util/Collection;
+      10: pop
+      11: return
+
+  public void assignBlockColor(java.lang.String, java.util.function.Consumer<net.minecraft.world.level.block.Block>);
+    Code:
+       0: iconst_0
+       1: istore_3
+       2: aload_0
+       3: getfield      #32                 // Field blocksToColorProviderName:Ljava/util/Map;
+       6: invokeinterface #171,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      11: invokeinterface #175,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      16: astore        4
+      18: aload         4
+      20: invokeinterface #181,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      25: ifeq          85
+      28: aload         4
+      30: invokeinterface #187,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      35: checkcast     #191                // class java/util/Map$Entry
+      38: astore        5
+      40: aload         5
+      42: invokeinterface #193,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      47: checkcast     #60                 // class java/lang/String
+      50: aload_1
+      51: invokevirtual #196                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      54: ifeq          82
+      57: iconst_1
+      58: istore_3
+      59: aload_2
+      60: aload         5
+      62: invokeinterface #200,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      67: checkcast     #86                 // class net/minecraft/world/level/block/Block
+      70: invokeinterface #202,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      75: aload         4
+      77: invokeinterface #208,  1          // InterfaceMethod java/util/Iterator.remove:()V
+      82: goto          18
+      85: iload_3
+      86: ifne          104
+      89: aload_0
+      90: getfield      #41                 // Field z:Lorg/violetmoon/zeta/Zeta;
+      93: getfield      #211                // Field org/violetmoon/zeta/Zeta.log:Lorg/apache/logging/log4j/Logger;
+      96: ldc           #215                // String Unknown block color creator {} used on block
+      98: aload_1
+      99: invokeinterface #217,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+     104: return
+
+  public void assignItemColor(java.lang.String, java.util.function.Consumer<net.minecraft.world.item.Item>);
+    Code:
+       0: iconst_0
+       1: istore_3
+       2: aload_0
+       3: getfield      #35                 // Field itemsToColorProviderName:Ljava/util/Map;
+       6: invokeinterface #171,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      11: invokeinterface #175,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      16: astore        4
+      18: aload         4
+      20: invokeinterface #181,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      25: ifeq          85
+      28: aload         4
+      30: invokeinterface #187,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      35: checkcast     #191                // class java/util/Map$Entry
+      38: astore        5
+      40: aload         5
+      42: invokeinterface #193,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      47: checkcast     #60                 // class java/lang/String
+      50: aload_1
+      51: invokevirtual #196                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      54: ifeq          82
+      57: iconst_1
+      58: istore_3
+      59: aload_2
+      60: aload         5
+      62: invokeinterface #200,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      67: checkcast     #98                 // class net/minecraft/world/item/Item
+      70: invokeinterface #202,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      75: aload         4
+      77: invokeinterface #208,  1          // InterfaceMethod java/util/Iterator.remove:()V
+      82: goto          18
+      85: iload_3
+      86: ifne          104
+      89: aload_0
+      90: getfield      #41                 // Field z:Lorg/violetmoon/zeta/Zeta;
+      93: getfield      #211                // Field org/violetmoon/zeta/Zeta.log:Lorg/apache/logging/log4j/Logger;
+      96: ldc           #223                // String Unknown item color creator {} used on item
+      98: aload_1
+      99: invokeinterface #217,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+     104: return
+
+  public void validateColorsProviders();
+    Code:
+       0: aload_0
+       1: getfield      #32                 // Field blocksToColorProviderName:Ljava/util/Map;
+       4: invokeinterface #225,  1          // InterfaceMethod java/util/Map.isEmpty:()Z
+       9: ifne          35
+      12: aload_0
+      13: getfield      #41                 // Field z:Lorg/violetmoon/zeta/Zeta;
+      16: getfield      #211                // Field org/violetmoon/zeta/Zeta.log:Lorg/apache/logging/log4j/Logger;
+      19: ldc           #228                // String Block color providers {} were not assigned to any blocks
+      21: aload_0
+      22: getfield      #32                 // Field blocksToColorProviderName:Ljava/util/Map;
+      25: invokeinterface #230,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      30: invokeinterface #217,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+      35: aload_0
+      36: getfield      #35                 // Field itemsToColorProviderName:Ljava/util/Map;
+      39: invokeinterface #225,  1          // InterfaceMethod java/util/Map.isEmpty:()Z
+      44: ifne          70
+      47: aload_0
+      48: getfield      #41                 // Field z:Lorg/violetmoon/zeta/Zeta;
+      51: getfield      #211                // Field org/violetmoon/zeta/Zeta.log:Lorg/apache/logging/log4j/Logger;
+      54: ldc           #234                // String Item color providers {} were not assigned to any items
+      56: aload_0
+      57: getfield      #35                 // Field itemsToColorProviderName:Ljava/util/Map;
+      60: invokeinterface #230,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      65: invokeinterface #217,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+      70: return
+
+  private <T> net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<?>> erase(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>);
+    Code:
+       0: aload_1
+       1: checkcast     #106                // class net/minecraft/resources/ResourceKey
+       4: areturn
+
+  public <T> org.violetmoon.zeta.registry.LateBoundHolder<T> registerDynamicF(java.util.function.Function<net.minecraft.resources.RegistryOps$RegistryInfoLookup, T>, net.minecraft.resources.ResourceKey<T>, net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>);
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field z:Lorg/violetmoon/zeta/Zeta;
+       4: invokestatic  #236                // Method org/violetmoon/zeta/util/RegisterDynamicUtil.signup:(Lorg/violetmoon/zeta/Zeta;)V
+       7: new           #242                // class org/violetmoon/zeta/registry/LateBoundHolder
+      10: dup
+      11: aload_2
+      12: invokespecial #244                // Method org/violetmoon/zeta/registry/LateBoundHolder."<init>":(Lnet/minecraft/resources/ResourceKey;)V
+      15: astore        4
+      17: aload_0
+      18: getfield      #38                 // Field dynamicDefers:Ljava/util/Map;
+      21: aload_0
+      22: aload_3
+      23: invokevirtual #247                // Method erase:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/resources/ResourceKey;
+      26: invokedynamic #251,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      31: invokeinterface #255,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      36: checkcast     #259                // class java/util/List
+      39: new           #261                // class org/violetmoon/zeta/registry/ZetaRegistry$DynamicEntry
+      42: dup
+      43: aload_2
+      44: aload_1
+      45: aload         4
+      47: invokespecial #263                // Method org/violetmoon/zeta/registry/ZetaRegistry$DynamicEntry."<init>":(Lnet/minecraft/resources/ResourceKey;Ljava/util/function/Function;Lorg/violetmoon/zeta/registry/LateBoundHolder;)V
+      50: invokeinterface #266,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      55: pop
+      56: aload         4
+      58: areturn
+
+  public <T> org.violetmoon.zeta.registry.LateBoundHolder<T> registerDynamicF(java.util.function.Function<net.minecraft.resources.RegistryOps$RegistryInfoLookup, T>, net.minecraft.resources.ResourceLocation, net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_3
+       3: aload_2
+       4: invokestatic  #269                // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+       7: aload_3
+       8: invokevirtual #272                // Method registerDynamicF:(Ljava/util/function/Function;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceKey;)Lorg/violetmoon/zeta/registry/LateBoundHolder;
+      11: areturn
+
+  public <T> org.violetmoon.zeta.registry.LateBoundHolder<T> registerDynamicF(java.util.function.Function<net.minecraft.resources.RegistryOps$RegistryInfoLookup, T>, java.lang.String, net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_0
+       3: aload_2
+       4: invokevirtual #119                // Method newResourceLocation:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       7: aload_3
+       8: invokevirtual #276                // Method registerDynamicF:(Ljava/util/function/Function;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceKey;)Lorg/violetmoon/zeta/registry/LateBoundHolder;
+      11: areturn
+
+  public <T> net.minecraft.core.Holder$Direct<T> registerDynamic(T, net.minecraft.resources.ResourceKey<T>, net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>);
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field z:Lorg/violetmoon/zeta/Zeta;
+       4: invokestatic  #236                // Method org/violetmoon/zeta/util/RegisterDynamicUtil.signup:(Lorg/violetmoon/zeta/Zeta;)V
+       7: aload_0
+       8: getfield      #38                 // Field dynamicDefers:Ljava/util/Map;
+      11: aload_0
+      12: aload_3
+      13: invokevirtual #247                // Method erase:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/resources/ResourceKey;
+      16: invokedynamic #279,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      21: invokeinterface #255,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      26: checkcast     #259                // class java/util/List
+      29: new           #261                // class org/violetmoon/zeta/registry/ZetaRegistry$DynamicEntry
+      32: dup
+      33: aload_2
+      34: aload_1
+      35: invokedynamic #280,  0            // InvokeDynamic #4:apply:(Ljava/lang/Object;)Ljava/util/function/Function;
+      40: aconst_null
+      41: invokespecial #263                // Method org/violetmoon/zeta/registry/ZetaRegistry$DynamicEntry."<init>":(Lnet/minecraft/resources/ResourceKey;Ljava/util/function/Function;Lorg/violetmoon/zeta/registry/LateBoundHolder;)V
+      44: invokeinterface #266,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      49: pop
+      50: new           #283                // class net/minecraft/core/Holder$Direct
+      53: dup
+      54: aload_1
+      55: invokespecial #285                // Method net/minecraft/core/Holder$Direct."<init>":(Ljava/lang/Object;)V
+      58: areturn
+
+  public <T> net.minecraft.core.Holder$Direct<T> registerDynamic(T, net.minecraft.resources.ResourceLocation, net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_3
+       3: aload_2
+       4: invokestatic  #269                // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+       7: aload_3
+       8: invokevirtual #287                // Method registerDynamic:(Ljava/lang/Object;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Direct;
+      11: areturn
+
+  public <T> net.minecraft.core.Holder$Direct<T> registerDynamic(T, java.lang.String, net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_0
+       3: aload_2
+       4: invokevirtual #119                // Method newResourceLocation:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       7: aload_3
+       8: invokevirtual #291                // Method registerDynamic:(Ljava/lang/Object;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Direct;
+      11: areturn
+
+  public <T> void performDynamicRegistration(net.minecraft.resources.RegistryOps$RegistryInfoLookup, net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<?>>, net.minecraft.core.WritableRegistry<T>);
+    Code:
+       0: aload_0
+       1: getfield      #38                 // Field dynamicDefers:Ljava/util/Map;
+       4: aload_2
+       5: invokeinterface #45,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #259                // class java/util/List
+      13: astore        4
+      15: aload         4
+      17: ifnull        30
+      20: aload         4
+      22: invokeinterface #294,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+      27: ifeq          31
+      30: return
+      31: aload_0
+      32: getfield      #41                 // Field z:Lorg/violetmoon/zeta/Zeta;
+      35: getfield      #211                // Field org/violetmoon/zeta/Zeta.log:Lorg/apache/logging/log4j/Logger;
+      38: ldc_w         #295                // String Dynamically registering {} thing{} into {}
+      41: aload         4
+      43: invokeinterface #297,  1          // InterfaceMethod java/util/List.size:()I
+      48: invokestatic  #301                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      51: aload         4
+      53: invokeinterface #297,  1          // InterfaceMethod java/util/List.size:()I
+      58: iconst_1
+      59: if_icmple     68
+      62: ldc_w         #307                // String s
+      65: goto          71
+      68: ldc_w         #309                // String
+      71: aload_2
+      72: invokevirtual #105                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      75: invokeinterface #311,  5          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+      80: aload         4
+      82: checkcast     #259                // class java/util/List
+      85: astore        5
+      87: aload         5
+      89: aload_1
+      90: aload_3
+      91: invokedynamic #315,  0            // InvokeDynamic #5:accept:(Lnet/minecraft/resources/RegistryOps$RegistryInfoLookup;Lnet/minecraft/core/WritableRegistry;)Ljava/util/function/Consumer;
+      96: invokeinterface #318,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+     101: return
+
+  protected <O> void trackRegisteredObject(net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<O>>, net.minecraft.core.Holder<O>);
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field myRegisteredObjects:Ljava/util/Map;
+       4: aload_1
+       5: invokedynamic #322,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+      10: invokeinterface #255,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      15: checkcast     #259                // class java/util/List
+      18: aload_2
+      19: invokeinterface #266,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      24: pop
+      25: return
+
+  public <O> java.util.Collection<net.minecraft.core.Holder<O>> getRegisteredObjects(net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<O>>);
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field myRegisteredObjects:Ljava/util/Map;
+       4: aload_1
+       5: invokestatic  #323                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+       8: invokeinterface #327,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      13: checkcast     #330                // class java/util/Collection
+      16: areturn
+
+  private static java.util.List lambda$trackRegisteredObject$6(net.minecraft.resources.ResourceKey);
+    Code:
+       0: new           #332                // class java/util/ArrayList
+       3: dup
+       4: invokespecial #334                // Method java/util/ArrayList."<init>":()V
+       7: areturn
+
+  private static void lambda$performDynamicRegistration$5(net.minecraft.resources.RegistryOps$RegistryInfoLookup, net.minecraft.core.WritableRegistry, org.violetmoon.zeta.registry.ZetaRegistry$DynamicEntry);
+    Code:
+       0: aload_2
+       1: getfield      #335                // Field org/violetmoon/zeta/registry/ZetaRegistry$DynamicEntry.creator:Ljava/util/function/Function;
+       4: aload_0
+       5: invokeinterface #339,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: astore_3
+      11: aload_1
+      12: aload_2
+      13: getfield      #343                // Field org/violetmoon/zeta/registry/ZetaRegistry$DynamicEntry.id:Lnet/minecraft/resources/ResourceKey;
+      16: aload_3
+      17: new           #346                // class net/minecraft/core/RegistrationInfo
+      20: dup
+      21: invokestatic  #348                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      24: invokestatic  #354                // Method com/mojang/serialization/Lifecycle.stable:()Lcom/mojang/serialization/Lifecycle;
+      27: invokespecial #360                // Method net/minecraft/core/RegistrationInfo."<init>":(Ljava/util/Optional;Lcom/mojang/serialization/Lifecycle;)V
+      30: invokeinterface #363,  4          // InterfaceMethod net/minecraft/core/WritableRegistry.register:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/Object;Lnet/minecraft/core/RegistrationInfo;)Lnet/minecraft/core/Holder$Reference;
+      35: pop
+      36: aload_2
+      37: getfield      #368                // Field org/violetmoon/zeta/registry/ZetaRegistry$DynamicEntry.lateBound:Lorg/violetmoon/zeta/registry/LateBoundHolder;
+      40: ifnull        52
+      43: aload_2
+      44: getfield      #368                // Field org/violetmoon/zeta/registry/ZetaRegistry$DynamicEntry.lateBound:Lorg/violetmoon/zeta/registry/LateBoundHolder;
+      47: aload_3
+      48: aload_1
+      49: invokevirtual #372                // Method org/violetmoon/zeta/registry/LateBoundHolder.bind:(Ljava/lang/Object;Lnet/minecraft/core/Registry;)V
+      52: return
+
+  private static java.lang.Object lambda$registerDynamic$4(java.lang.Object, net.minecraft.resources.RegistryOps$RegistryInfoLookup);
+    Code:
+       0: aload_0
+       1: areturn
+
+  private static java.util.List lambda$registerDynamic$3(net.minecraft.resources.ResourceKey);
+    Code:
+       0: new           #332                // class java/util/ArrayList
+       3: dup
+       4: invokespecial #334                // Method java/util/ArrayList."<init>":()V
+       7: areturn
+
+  private static java.util.List lambda$registerDynamicF$2(net.minecraft.resources.ResourceKey);
+    Code:
+       0: new           #332                // class java/util/ArrayList
+       3: dup
+       4: invokespecial #334                // Method java/util/ArrayList."<init>":()V
+       7: areturn
+
+  private java.lang.Object lambda$registerBlock$1(net.minecraft.world.level.block.Block);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #376                // Method createItemBlock:(Lnet/minecraft/world/level/block/Block;)Lnet/minecraft/world/item/Item;
+       5: areturn
+
+  private static java.lang.Object lambda$register$0(java.lang.Object);
+    Code:
+       0: aload_0
+       1: areturn
+}
