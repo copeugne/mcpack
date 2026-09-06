@@ -189,6 +189,41 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/fabricmc/fabric/mixin/itemgroup/ItemGroupMixin.class",
+    "org/sinytra/fabric/item_group_api/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/mixin/datagen/DataGeneratorMixin.class",
+    "net/fabricmc/fabric/mixin/datagen/DataProviderMixin.class",
+    "net/fabricmc/fabric/mixin/datagen/ModelProviderMixin.class",
+    "net/fabricmc/fabric/mixin/datagen/loot/BlockLootTableGeneratorAccessor.class",
+    "net/fabricmc/fabric/mixin/datagen/loot/BlockLootTableGeneratorMixin.class",
+    "net/fabricmc/fabric/mixin/datagen/recipe/AllCraftingRecipeJsonBuildersMixin.class",
+    "net/fabricmc/fabric/mixin/datagen/recipe/ComplexRecipeJsonBuilderMixin.class",
+    "net/fabricmc/fabric/mixin/datagen/recipe/RecipeOutputMixin.class",
+    "net/fabricmc/fabric/mixin/datagen/recipe/SmithingTransformRecipeJsonBuilderMixin.class",
+    "net/fabricmc/fabric/mixin/datagen/recipe/SmithingTrimRecipeJsonBuilderMixin.class",
+    "org/sinytra/fabric/data_generation_api/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/impl/attachment/AttachmentModImpl.class",
+    "net/fabricmc/fabric/mixin/attachment/AttachmentHolderAccessor.class",
+    "net/fabricmc/fabric/mixin/attachment/AttachmentTypeAccessor.class",
+    "net/fabricmc/fabric/mixin/attachment/BaseMappedRegistryAccessor.class",
+    "net/fabricmc/fabric/mixin/attachment/IAttachmentHolderMixin.class",
+    "org/sinytra/fabric/data_attachment_api/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/api/registry/TillableBlockRegistry.class",
+    "net/fabricmc/fabric/impl/content/registry/FuelRegistryImpl.class",
+    "net/fabricmc/fabric/mixin/content/registry/AxeItemAccessor.class",
+    "net/fabricmc/fabric/mixin/content/registry/BaseRegistryMixin.class",
+    "net/fabricmc/fabric/mixin/content/registry/BrewingRecipeRegistryBuilderMixin.class",
+    "net/fabricmc/fabric/mixin/content/registry/FarmerWorkTaskAccessor.class",
+    "net/fabricmc/fabric/mixin/content/registry/FireBlockMixin.class",
+    "net/fabricmc/fabric/mixin/content/registry/GiveGiftsToHeroTaskAccessor.class",
+    "net/fabricmc/fabric/mixin/content/registry/HoeItemAccessor.class",
+    "net/fabricmc/fabric/mixin/content/registry/HoneycombItemMixin.class",
+    "net/fabricmc/fabric/mixin/content/registry/LandPathNodeMakerMixin.class",
+    "net/fabricmc/fabric/mixin/content/registry/OxidizableMixin.class",
+    "net/fabricmc/fabric/mixin/content/registry/PathContextMixin.class",
+    "net/fabricmc/fabric/mixin/content/registry/ShovelItemAccessor.class",
+    "net/fabricmc/fabric/mixin/content/registry/VillagerEntityAccessor.class",
+    "org/sinytra/fabric/content_registries/generated/GeneratedEntryPoint.class",
     "org/sinytra/fabric/command_api/FabricCommandApiV2.class",
     "net/fabricmc/fabric/impl/event/lifecycle/LifecycleEventsImpl.class",
     "org/sinytra/fabric/command_api/generated/GeneratedEntryPoint.class",
@@ -2394,6 +2429,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/fabric-item-group-api-v1-4.1.7+e324903319.jar",
+        "META-INF/jars/fabric-data-generation-api-v1-20.2.34+a4c3605619.jar",
+        "META-INF/jars/fabric-data-attachment-api-v1-1.4.5+26d408aa19.jar",
+        "META-INF/jars/fabric-content-registries-v0-8.0.19+5e0d320019.jar",
         "META-INF/jars/fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar",
         "META-INF/jars/fabric-entity-events-v1-1.8.0+5ede667619.jar",
         "META-INF/jars/fabric-command-api-v2-2.2.28+36d727be19.jar",
@@ -2439,6 +2478,22 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/fabric-item-group-api-v1-4.1.7+e324903319.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "9869a3d30809a765a9a0a104b6b82dd15f8206b1f3d8d601e17d8c6203feba22",
+        ),
+        "META-INF/jars/fabric-data-generation-api-v1-20.2.34+a4c3605619.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "d898e2398976fe722c8b0b18a5d8cdf79f2e0e90efbf336edd518c5252822a48",
+        ),
+        "META-INF/jars/fabric-data-attachment-api-v1-1.4.5+26d408aa19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "c345e258cba6c240ce82f7761c7cf202480a959e6ef532138eeeb6507a88d3d4",
+        ),
+        "META-INF/jars/fabric-content-registries-v0-8.0.19+5e0d320019.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "712c414c4799ddf5ce0996471d462b6b9a5f5d09f61394fa492c4a625eec1d49",
+        ),
         "META-INF/jars/fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar": (
             "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
             "5795d02717bdb52c95b4a2de146f2759d4f5d1d10ea32c47e30bcffdb6d6bc5d",
