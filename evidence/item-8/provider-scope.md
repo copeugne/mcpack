@@ -5767,20 +5767,20 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-block-view-api-v2-1.0.11+e9036fd419.jar` | RESOLVED: block interface, read/accessor or climbing roles; no independent family. See below. |
 | `fabric-blockrenderlayer-v1-1.1.52+c290471319.jar` | RESOLVED: client utility, no independent server family; see below. |
 | `fabric-client-tags-api-v1-1.1.15+e053909619.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
-| `fabric-command-api-v2-2.2.28+36d727be19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-command-api-v2-2.2.28+36d727be19.jar` | OPEN: Entry and selector hook captured at 0224278. Inspect FabricCommandApiV2 server initializer; client initializer is guarded. |
 | `fabric-content-registries-v0-8.0.19+5e0d320019.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-convention-tags-v1-2.1.5+7f945d5b19.jar` | RESOLVED: tag keys and legacy-tag warning callback; no independent family. |
 | `fabric-convention-tags-v2-2.11.1+87e5848019.jar` | RESOLVED: conventional tags, tag interface and translation warnings; no independent family. |
 | `fabric-data-attachment-api-v1-1.4.5+26d408aa19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-data-generation-api-v1-20.2.34+a4c3605619.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-entity-events-v1-1.8.0+5ede667619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-entity-events-v1-1.8.0+5ede667619.jar` | RESOLVED: Existing-entity event and elytra/sleep callbacks; no independent family. See entity-event disposition below. |
 | `fabric-events-interaction-v0-0.7.13+86e0887119.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-game-rule-api-v1-1.0.53+36d727be19.jar` | RESOLVED: Game-rule maps, command categories and client rule editing; no independent family. See final loot/recipe/rule disposition below. |
 | `fabric-gametest-api-v1-2.0.5+29f188ce19.jar` | RESOLVED: test registration and SNBT loading; see above. |
 | `fabric-item-api-v1-11.2.0+0c57911319.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-item-group-api-v1-4.1.7+e324903319.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-key-binding-api-v1-1.0.47+62cc7ce119.jar` | RESOLVED: client utility, no independent server family; see below. |
-| `fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar` | OPEN: Entry and seven common/server hooks captured at 4de41d1. Inspect LifecycleEventsImpl server initializer; client initialization is guarded. |
 | `fabric-loot-api-v2-3.0.15+a3ee712d19.jar` | RESOLVED: Legacy loot interfaces and v3-to-v2 consumer callback forwarding; no independent family. See final loot/recipe/rule disposition below. |
 | `fabric-loot-api-v3-1.0.3+333dfad919.jar` | RESOLVED: Loot provenance, consumer reload callbacks and builder/accessor support; no independent family. See final loot/recipe/rule disposition below. |
 | `fabric-message-api-v1-6.0.14+6a754fce19.jar` | OPEN: inspect entry and declared hook contribution roles. |
@@ -6354,3 +6354,33 @@ uv run pytest -q tests/item8/test_fabric_provider_scope.py
 uv run ruff check tests/item8/test_fabric_provider_scope.py
 uv run basedpyright tests/item8/test_fabric_provider_scope.py
 ```
+
+
+## Fabric entity-event membership resolved, 2026-09-06
+
+Source 9402ecf (extractor a2c1e65) binds the empty generated loader, annotated
+EntityEventHooks and all nine declared common mixins. They forward existing
+entity damage/death/combat/conversion, player respawn/join/leave, dimension
+changes, sleeping and elytra decisions to consumer events. Their bed position/
+state and flight changes concern existing entities. No independent structure
+contribution is introduced. Consumer behavior remains attributable separately.
+
+The module's complete payload is 47 classes and five metadata/icon/mixin files,
+with no client/server-only mixin file, plugin, data resource or nested archive.
+The existing test binds both annotated classes, all nine common hooks and every
+archive/class/disassembly hash. Independent r1 reproduction matches exactly.
+Twenty-seven Fabric cases and scoped Ruff/Basedpyright pass using the existing
+commands above. Fabric now has 26 resolved and 17 open modules; overall providers
+remain 90 resolved and 46 open. No family count changes in this increment.
+
+Command source 0224278 and lifecycle source 4de41d1 are also delivered and
+independently reproduced, but their modules remain open. The exact next calls
+are org/sinytra/fabric/command_api/FabricCommandApiV2.onInitialize and
+net/fabricmc/fabric/impl/event/lifecycle/LifecycleEventsImpl.onInitialize.
+Reuse their existing selector, seven lifecycle hooks and guarded client-entry
+findings. Do not repeat collection of the 21 captured classes.
+
+Initial extraction stopped at argument parsing because the nested archive
+allowlist was incomplete; a2c1e65 fixes the exact three archive selections and
+hash bindings. No failed capture was represented as accepted source evidence.
+No runtime experiment or measurement system was added.

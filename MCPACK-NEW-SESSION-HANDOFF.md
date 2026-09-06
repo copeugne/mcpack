@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric entity-event membership is resolved, source 9402ecf. Twenty-seven Fabric
+cases and scoped checks pass. Fabric now has 26 resolved, 17 open modules; whole
+providers stay 90 resolved, 46 open. Command source 0224278 and lifecycle source
+4de41d1 are delivered but remain open at exactly two server initializers:
+org/sinytra/fabric/command_api/FabricCommandApiV2.onInitialize and
+net/fabricmc/fabric/impl/event/lifecycle/LifecycleEventsImpl.onInitialize.
+Capture those direct consumers next using the existing extractor, then finish
+their bindings. Do not repeat the 21 delivered entry/hook classes. Initial
+argument-parser rejection is recorded; archive selections are fixed at a2c1e65.
+
 Fabric game-rule, loot v2, loot v3 and recipe module membership is resolved.
 Parked initializer sources are delivered at 0f9b272; existing entry captures
 and full payload bindings are reused. Twenty-six focused cases and scoped
