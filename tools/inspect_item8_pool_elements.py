@@ -208,6 +208,14 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "com/natamus/collective_common_neoforge/config/GenerateJSONFiles.class",
+    "com/natamus/collective_common_neoforge/config/LoadJSONFiles.class",
+    "com/natamus/collective_common_neoforge/data/GlobalVariables.class",
+    "com/natamus/collective_common_neoforge/data/Constants.class",
+    "com/natamus/collective_common_neoforge/implementations/networking/NetworkSetup.class",
+    "com/natamus/collective_common_neoforge/check/RegisterMod.class",
+    "com/natamus/collective/neoforge/networking/NeoForgeNetworkHandler.class",
+
     "com/natamus/collective/neoforge/services/NeoForgeRegisterKeyMappingHelper.class",
     "com/natamus/collective/neoforge/services/NeoForgeModLoaderHelper.class",
     "com/natamus/collective/neoforge/services/NeoForgeRegisterItemHelper.class",
