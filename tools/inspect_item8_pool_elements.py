@@ -208,6 +208,15 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "com/natamus/collective/CollectiveNeoForge.class",
+    "com/natamus/collective/neoforge/events/RegisterCollectiveNeoForgeEvents.class",
+    "com/natamus/collective_common_neoforge/CollectiveCommon.class",
+    "com/natamus/collective_common_neoforge/events/CollectiveEvents.class",
+    "com/natamus/collective/neoforge/mixin/BaseSpawnerMixin.class",
+    "com/natamus/collective/neoforge/mixin/BlockEntityMixin.class",
+    "com/natamus/collective/neoforge/mixin/BoneMealItemMixin.class",
+    "com/natamus/collective/neoforge/mixin/PrimaryLevelDataMixin.class",
+
     "com/natamus/collective/neoforge/mixin/plugin/NeoForgeMixinConfigPlugin.class",
     "com/natamus/quickrightclick_common_neoforge/features/BedBlockFeature.class",
     "com/natamus/quickrightclick_common_neoforge/features/ShulkerBoxFeature.class",
