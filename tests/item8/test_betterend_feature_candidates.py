@@ -445,6 +445,15 @@ def test_betterend_building_lists_partition_exact_template_candidates() -> None:
 
 
 def test_betterend_crashed_ship_inline_configuration_and_biome_routes() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    ship = contributions["betterend:crashed_ship"]
+    assert ship["placed_feature"] == "betterend:crashed_ship"
+    assert ship["class_to_template"] == {"CrashedShipFeature": "minecraft:end_city/ship"}
+    for path, digest in cast("dict[str, str]", ship["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
     source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
     assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
     directory = Path("evidence/item-8/sources/betterend-feature-scope")

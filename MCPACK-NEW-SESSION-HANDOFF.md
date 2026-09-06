@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-06
 
+BetterEnd crashed-ship family membership is now recorded in family-decisions.json
+and the rebuilt working inventory. Its independent placement and erosion make it
+one standalone wreck family despite reuse of the vanilla End-city ship template.
+Existing runtime, biome and source evidence is reused. Thirteen focused BetterEnd
+cases and scoped Ruff/Basedpyright pass. Reproduction and limits are recorded in
+evidence/item-8/provider-scope.md. This resolves one named family decision, not
+the final total. The 421 registry-root groups are unchanged. Provider coverage
+still has 46 open rows, including Fabric with 33 open modules. Prioritize the
+complete named membership list and explicit merge/split decisions; do not resume
+detailed attributes or expand generic library tracing. No runtime process is live.
+The broader family-decision run has 70 passes and three existing stale
+custom-generation UNKNOWN assertions (Explorations, Aether, Repurposed Structures).
+Their registry groups are unchanged by the ship increment. Reconcile those
+assertions narrowly against existing focused source tests before final validation;
+see the failure details and rerun command in provider-scope.md.
+
 Three Fabric client utility modules resolved: block render layers, key bindings,
 and sound. Source 1c35ebe (extractor 5624e8a) independently reproduces the entries;
 client initialization guards/client-only mixins and full partitions are bound.
