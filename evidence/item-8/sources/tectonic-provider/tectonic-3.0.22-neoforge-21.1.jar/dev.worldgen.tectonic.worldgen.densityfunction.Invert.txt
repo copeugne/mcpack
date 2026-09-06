@@ -1,0 +1,177 @@
+Compiled from "Invert.java"
+public final class dev.worldgen.tectonic.worldgen.densityfunction.Invert extends java.lang.Record implements net.minecraft.world.level.levelgen.DensityFunction {
+  private final net.minecraft.world.level.levelgen.DensityFunction input;
+
+  private final double min;
+
+  private final double max;
+
+  public static final com.mojang.serialization.MapCodec<dev.worldgen.tectonic.worldgen.densityfunction.Invert> DATA_CODEC;
+
+  public static net.minecraft.util.KeyDispatchDataCodec<dev.worldgen.tectonic.worldgen.densityfunction.Invert> CODEC_HOLDER;
+
+  public dev.worldgen.tectonic.worldgen.densityfunction.Invert(net.minecraft.world.level.levelgen.DensityFunction, double, double);
+    Code:
+       0: aload_0
+       1: invokespecial #37                 // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #39                 // Field input:Lnet/minecraft/world/level/levelgen/DensityFunction;
+       9: aload_0
+      10: dload_2
+      11: putfield      #41                 // Field min:D
+      14: aload_0
+      15: dload         4
+      17: putfield      #43                 // Field max:D
+      20: return
+
+  public static dev.worldgen.tectonic.worldgen.densityfunction.Invert create(net.minecraft.world.level.levelgen.DensityFunction);
+    Code:
+       0: aload_0
+       1: invokeinterface #51,  1           // InterfaceMethod net/minecraft/world/level/levelgen/DensityFunction.minValue:()D
+       6: dstore_1
+       7: aload_0
+       8: invokeinterface #54,  1           // InterfaceMethod net/minecraft/world/level/levelgen/DensityFunction.maxValue:()D
+      13: dstore_3
+      14: dload_1
+      15: dconst_0
+      16: dcmpg
+      17: ifge          41
+      20: dload_3
+      21: dconst_0
+      22: dcmpl
+      23: ifle          41
+      26: new           #2                  // class dev/worldgen/tectonic/worldgen/densityfunction/Invert
+      29: dup
+      30: aload_0
+      31: ldc2_w        #55                 // double -Infinityd
+      34: ldc2_w        #57                 // double Infinityd
+      37: invokespecial #60                 // Method "<init>":(Lnet/minecraft/world/level/levelgen/DensityFunction;DD)V
+      40: areturn
+      41: new           #2                  // class dev/worldgen/tectonic/worldgen/densityfunction/Invert
+      44: dup
+      45: aload_0
+      46: dload_1
+      47: dload_3
+      48: invokespecial #60                 // Method "<init>":(Lnet/minecraft/world/level/levelgen/DensityFunction;DD)V
+      51: areturn
+
+  public double transform(double);
+    Code:
+       0: dconst_1
+       1: dload_1
+       2: ddiv
+       3: dreturn
+
+  public double compute(net.minecraft.world.level.levelgen.DensityFunction$FunctionContext);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokevirtual #69                 // Method input:()Lnet/minecraft/world/level/levelgen/DensityFunction;
+       5: aload_1
+       6: invokeinterface #71,  2           // InterfaceMethod net/minecraft/world/level/levelgen/DensityFunction.compute:(Lnet/minecraft/world/level/levelgen/DensityFunction$FunctionContext;)D
+      11: invokevirtual #73                 // Method transform:(D)D
+      14: dreturn
+
+  public void fillArray(double[], net.minecraft.world.level.levelgen.DensityFunction$ContextProvider);
+    Code:
+       0: aload_0
+       1: invokevirtual #69                 // Method input:()Lnet/minecraft/world/level/levelgen/DensityFunction;
+       4: aload_1
+       5: aload_2
+       6: invokeinterface #80,  3           // InterfaceMethod net/minecraft/world/level/levelgen/DensityFunction.fillArray:([DLnet/minecraft/world/level/levelgen/DensityFunction$ContextProvider;)V
+      11: iconst_0
+      12: istore_3
+      13: iload_3
+      14: aload_1
+      15: arraylength
+      16: if_icmpge     35
+      19: aload_1
+      20: iload_3
+      21: aload_0
+      22: aload_1
+      23: iload_3
+      24: daload
+      25: invokevirtual #73                 // Method transform:(D)D
+      28: dastore
+      29: iinc          3, 1
+      32: goto          13
+      35: return
+
+  public net.minecraft.world.level.levelgen.DensityFunction mapAll(net.minecraft.world.level.levelgen.DensityFunction$Visitor);
+    Code:
+       0: aload_0
+       1: getfield      #39                 // Field input:Lnet/minecraft/world/level/levelgen/DensityFunction;
+       4: aload_1
+       5: invokeinterface #89,  2           // InterfaceMethod net/minecraft/world/level/levelgen/DensityFunction.mapAll:(Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;)Lnet/minecraft/world/level/levelgen/DensityFunction;
+      10: invokestatic  #91                 // Method create:(Lnet/minecraft/world/level/levelgen/DensityFunction;)Ldev/worldgen/tectonic/worldgen/densityfunction/Invert;
+      13: areturn
+
+  public double minValue();
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field min:D
+       4: dreturn
+
+  public double maxValue();
+    Code:
+       0: aload_0
+       1: getfield      #43                 // Field max:D
+       4: dreturn
+
+  public net.minecraft.util.KeyDispatchDataCodec<? extends net.minecraft.world.level.levelgen.DensityFunction> codec();
+    Code:
+       0: getstatic     #97                 // Field CODEC_HOLDER:Lnet/minecraft/util/KeyDispatchDataCodec;
+       3: areturn
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #114,  0            // InvokeDynamic #0:toString:(Ldev/worldgen/tectonic/worldgen/densityfunction/Invert;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #119,  0            // InvokeDynamic #0:hashCode:(Ldev/worldgen/tectonic/worldgen/densityfunction/Invert;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #125,  0            // InvokeDynamic #0:equals:(Ldev/worldgen/tectonic/worldgen/densityfunction/Invert;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public net.minecraft.world.level.levelgen.DensityFunction input();
+    Code:
+       0: aload_0
+       1: getfield      #39                 // Field input:Lnet/minecraft/world/level/levelgen/DensityFunction;
+       4: areturn
+
+  public double min();
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field min:D
+       4: dreturn
+
+  public double max();
+    Code:
+       0: aload_0
+       1: getfield      #43                 // Field max:D
+       4: dreturn
+
+  static {};
+    Code:
+       0: getstatic     #131                // Field net/minecraft/world/level/levelgen/DensityFunction.HOLDER_HELPER_CODEC:Lcom/mojang/serialization/Codec;
+       3: ldc           #133                // String argument
+       5: invokeinterface #139,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      10: invokedynamic #154,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      15: invokedynamic #158,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      20: invokevirtual #164                // Method com/mojang/serialization/MapCodec.xmap:(Ljava/util/function/Function;Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+      23: putstatic     #166                // Field DATA_CODEC:Lcom/mojang/serialization/MapCodec;
+      26: getstatic     #166                // Field DATA_CODEC:Lcom/mojang/serialization/MapCodec;
+      29: invokestatic  #172                // Method net/minecraft/util/KeyDispatchDataCodec.of:(Lcom/mojang/serialization/MapCodec;)Lnet/minecraft/util/KeyDispatchDataCodec;
+      32: putstatic     #97                 // Field CODEC_HOLDER:Lnet/minecraft/util/KeyDispatchDataCodec;
+      35: return
+}

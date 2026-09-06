@@ -1,0 +1,153 @@
+Compiled from "HeightStabilizedCount.java"
+public class dev.worldgen.tectonic.worldgen.placementmodifier.HeightStabilizedCount extends net.minecraft.world.level.levelgen.placement.PlacementModifier {
+  public static final com.mojang.serialization.MapCodec<dev.worldgen.tectonic.worldgen.placementmodifier.HeightStabilizedCount> CODEC;
+
+  public static final net.minecraft.world.level.levelgen.placement.PlacementModifierType<dev.worldgen.tectonic.worldgen.placementmodifier.HeightStabilizedCount> TYPE;
+
+  private final net.minecraft.world.level.levelgen.VerticalAnchor maxY;
+
+  private final float countPerSection;
+
+  private final boolean biasedToBottom;
+
+  public dev.worldgen.tectonic.worldgen.placementmodifier.HeightStabilizedCount(net.minecraft.world.level.levelgen.VerticalAnchor, float, boolean);
+    Code:
+       0: aload_0
+       1: invokespecial #37                 // Method net/minecraft/world/level/levelgen/placement/PlacementModifier."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #39                 // Field maxY:Lnet/minecraft/world/level/levelgen/VerticalAnchor;
+       9: aload_0
+      10: fload_2
+      11: putfield      #41                 // Field countPerSection:F
+      14: aload_0
+      15: iload_3
+      16: putfield      #43                 // Field biasedToBottom:Z
+      19: return
+
+  public net.minecraft.world.level.levelgen.VerticalAnchor maxY();
+    Code:
+       0: aload_0
+       1: getfield      #39                 // Field maxY:Lnet/minecraft/world/level/levelgen/VerticalAnchor;
+       4: areturn
+
+  public float countPerSection();
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field countPerSection:F
+       4: freturn
+
+  public boolean favorBottom();
+    Code:
+       0: aload_0
+       1: getfield      #43                 // Field biasedToBottom:Z
+       4: ireturn
+
+  public java.util.stream.Stream<net.minecraft.core.BlockPos> getPositions(net.minecraft.world.level.levelgen.placement.PlacementContext, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: getfield      #39                 // Field maxY:Lnet/minecraft/world/level/levelgen/VerticalAnchor;
+       4: aload_1
+       5: invokeinterface #61,  2           // InterfaceMethod net/minecraft/world/level/levelgen/VerticalAnchor.resolveY:(Lnet/minecraft/world/level/levelgen/WorldGenerationContext;)I
+      10: istore        4
+      12: aload_1
+      13: invokevirtual #67                 // Method net/minecraft/world/level/levelgen/placement/PlacementContext.getMinGenY:()I
+      16: istore        5
+      18: iload         4
+      20: iload         5
+      22: isub
+      23: istore        6
+      25: iload         6
+      27: i2f
+      28: ldc           #68                 // float 16.0f
+      30: fdiv
+      31: aload_0
+      32: getfield      #41                 // Field countPerSection:F
+      35: fmul
+      36: f2d
+      37: invokestatic  #74                 // Method java/lang/Math.ceil:(D)D
+      40: d2i
+      41: istore        7
+      43: new           #76                 // class java/util/ArrayList
+      46: dup
+      47: invokespecial #77                 // Method java/util/ArrayList."<init>":()V
+      50: astore        8
+      52: iconst_0
+      53: istore        9
+      55: iload         9
+      57: iload         7
+      59: if_icmpge     125
+      62: aload_0
+      63: getfield      #43                 // Field biasedToBottom:Z
+      66: ifeq          93
+      69: iload         5
+      71: aload_2
+      72: aload_2
+      73: iload         6
+      75: iconst_2
+      76: idiv
+      77: iload         6
+      79: invokeinterface #87,  3           // InterfaceMethod net/minecraft/util/RandomSource.nextIntBetweenInclusive:(II)I
+      84: invokeinterface #91,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      89: iadd
+      90: goto          103
+      93: aload_2
+      94: iload         5
+      96: iload         4
+      98: invokeinterface #87,  3           // InterfaceMethod net/minecraft/util/RandomSource.nextIntBetweenInclusive:(II)I
+     103: istore        10
+     105: aload         8
+     107: aload_3
+     108: iload         10
+     110: invokevirtual #95                 // Method net/minecraft/core/BlockPos.atY:(I)Lnet/minecraft/core/BlockPos;
+     113: invokeinterface #99,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     118: pop
+     119: iinc          9, 1
+     122: goto          55
+     125: aload         8
+     127: invokeinterface #103,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+     132: areturn
+
+  public net.minecraft.world.level.levelgen.placement.PlacementModifierType<?> type();
+    Code:
+       0: getstatic     #120                // Field TYPE:Lnet/minecraft/world/level/levelgen/placement/PlacementModifierType;
+       3: areturn
+
+  private static com.mojang.serialization.MapCodec lambda$static$1();
+    Code:
+       0: getstatic     #124                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+       3: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #129                // Field net/minecraft/world/level/levelgen/VerticalAnchor.CODEC:Lcom/mojang/serialization/Codec;
+       4: ldc           #131                // String max_y
+       6: invokeinterface #137,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #155,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      16: invokevirtual #161                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: getstatic     #166                // Field net/minecraft/util/ExtraCodecs.POSITIVE_FLOAT:Lcom/mojang/serialization/Codec;
+      22: ldc           #168                // String count_per_section
+      24: invokeinterface #137,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      29: invokedynamic #174,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      34: invokevirtual #161                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      37: getstatic     #178                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      40: ldc           #180                // String biased_to_bottom
+      42: invokeinterface #183,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      47: invokedynamic #189,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      52: invokevirtual #161                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      55: invokevirtual #193                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P3;
+      58: aload_0
+      59: invokedynamic #203,  0            // InvokeDynamic #3:apply:()Lcom/mojang/datafixers/util/Function3;
+      64: invokevirtual #206                // Method com/mojang/datafixers/Products$P3.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function3;)Lcom/mojang/datafixers/kinds/App;
+      67: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #213,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+       5: invokestatic  #217                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #124                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #224,  0            // InvokeDynamic #5:codec:()Lnet/minecraft/world/level/levelgen/placement/PlacementModifierType;
+      16: putstatic     #120                // Field TYPE:Lnet/minecraft/world/level/levelgen/placement/PlacementModifierType;
+      19: return
+}
