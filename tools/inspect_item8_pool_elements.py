@@ -35,6 +35,7 @@ ARCHIVES = frozenset(
     {
         MAPPED_SERVER.name,
         PATCHED_SERVER.name,
+        "dummmmmmy-1.21-2.0.12-neoforge.jar",
         "prickle-neoforge-1.21.1-21.1.11.jar",
         "resourcefulconfig-neoforge-1.21-3.0.11.jar",
 
@@ -196,6 +197,17 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/mehvahdjukaar/dummmmmmy/neoforge/DummmmmmyForge.class",
+    "net/mehvahdjukaar/dummmmmmy/Dummmmmmy.class",
+    "net/mehvahdjukaar/dummmmmmy/Dummmmmmy$SpawnDummyBehavior.class",
+    "net/mehvahdjukaar/dummmmmmy/common/ModEvents.class",
+    "net/mehvahdjukaar/dummmmmmy/common/TargetDummyItem.class",
+    "net/mehvahdjukaar/dummmmmmy/mixins/ArmorStandFIxMixin.class",
+    "net/mehvahdjukaar/dummmmmmy/mixins/EnchantmentMixin.class",
+    "net/mehvahdjukaar/dummmmmmy/mixins/LivingEntityMixin.class",
+    "net/mehvahdjukaar/dummmmmmy/mixins/PlayerMixin.class",
+    "net/mehvahdjukaar/dummmmmmy/mixins/SwordItemMixin.class",
+    "net/mehvahdjukaar/dummmmmmy/mixins/ToolItemMixin.class",
     "net/darkhax/pricklemc/common/impl/PrickleMod.class",
     "com/teamresourceful/resourcefulconfig/common/loader/JavaConfigParser.class",
     "com/teamresourceful/resourcefulconfig/mixins/common/DedicatedServerAccessor.class",

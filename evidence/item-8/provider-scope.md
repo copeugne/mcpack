@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 98 of 136. The exact queue below has 38 open rows.
+Supported provider dispositions: 99 of 136. The exact queue below has 37 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -653,7 +653,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `cupboard-1.21-3.7.jar` | `cupboard-provider` (77dd750), test_small_utility_provider_scope.py | RESOLVED: Shared configuration, lookups, diagnostics and existing-entity handling; no independent family. Frozen error-suppression setting and limitations below. |
 | `curios-neoforge-9.5.1+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `deep_aether-1.21.1-1.1.5.1.jar` | `deep-aether-totem-scope`, `deep-aether-provider`, `deep-aether-aeroblender`, `deep-aether-biome-setup`; focused candidate and provider checks | RESOLVED: Four roots, fifteen templates, custom feature candidates, common hooks, optional packs and active AeroBlender accounted for. Preserve inactive Sacred Lands and fallen-tree grouping boundaries. See final Deep Aether disposition below. |
-| `dummmmmmy-1.21-2.0.12-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `dummmmmmy-1.21-2.0.12-neoforge.jar` | Source 51ba791c; test_small_utility_provider_scope.py | RESOLVED: Item/dispenser-placed target dummy and existing-entity interaction hooks. No independent family. See target dummy disposition below. |
 | `emi_loot-0.7.9+1.21+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `emi_ores-1.2+1.21.1+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `ends_delight-2.6+neoforge.1.21.1.jar` | `ends-delight-provider` (311c1fe), test_ends_delight_provider_scope.py | RESOLVED: Chorus succulent vegetation, food/loot and existing knife-attack behavior. No independent structure family. Full disposition below. |
@@ -6896,3 +6896,38 @@ signature exceeded the existing Ruff limit; grouping the archive identity into
 one tuple fixes that finding. Whole providers: 98 resolved, 38 open. This closes
 two unmatched-search rows, leaving 20 code-reference and 18 unmatched-search
 rows. Canonical Moog grouping remains open; no family count changed here.
+
+### Target dummy membership resolved
+
+Source 51ba791c binds the NeoForge entry, common initialization, all six common
+mixins, event callbacks and item/dispenser placement. Initialization registers
+one target-dummy entity/item, particles, entity attributes, configuration,
+client messages and dispenser behavior. Item use checks the placement space,
+removes replaceable blocks and creates the dummy at the selected location.
+Dispensing creates the same entity adjacent to the dispenser. Neither path
+defines a generated site or a structure family.
+
+The common hooks implement armor-stand head rotation, dummy-specific enchantment
+applicability, damage/healing reporting and tool/sword wear behavior. Registered
+events handle critical hits, natural-spawn cancellation near eligible scarecrows
+and scarecrow/decoy goals on existing mobs. Preserve these mob effects for
+encounter attribution; no claim of absent gameplay impact or measured activation
+is made. The source supports no independent authored world-generation family.
+
+The complete archive contains 45 classes, 28 visual/language assets, fifteen
+crafting/damage-type/tag data files and eight metadata/mixin/access files.
+There are no structures, templates, generation data, services or nested archives.
+The sole automatic entry and both declared mixin configurations are bound by
+the existing utility-provider test. All eleven disassemblies reproduce exactly.
+No further dummy combat or generic library implementation audit is required.
+
+```sh
+uv run pytest -q tests/item8/test_small_utility_provider_scope.py
+uv run ruff check tests/item8/test_small_utility_provider_scope.py
+uv run basedpyright tests/item8/test_small_utility_provider_scope.py
+```
+
+Twenty focused cases and scoped quality checks pass. Whole providers: 99
+resolved, 37 open (20 code-reference, 17 unmatched-search). No family added.
+Continue the remaining provider contribution checks and Moog grouping before
+attributes. These are membership checks, not a new gameplay measurement system.

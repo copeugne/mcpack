@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Target dummy membership is resolved from source 51ba791c, with twenty utility
+cases and scoped quality checks passing. It creates a dummy through item use
+or dispensing; no independent structure family. Preserve scarecrow/decoy and
+natural-spawn effects for later encounter attribution. Whole providers: 99
+resolved, 37 open (20 code-reference, 17 unmatched-search). Continue the finite
+provider queue and Moog grouping before attributes. Do not repeat this source
+inspection or expand into unrelated dummy combat internals.
+
+
 Prickle and Resourceful Config membership is resolved from existing captures
 with two passing payload/source cases and scoped quality checks. Neither adds
 an independent family. Whole providers: 98 resolved, 38 open (20 code-reference,
