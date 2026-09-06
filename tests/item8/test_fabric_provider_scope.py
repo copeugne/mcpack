@@ -854,3 +854,62 @@ def test_fabric_client_utility_membership(
                     row["disassembly_sha256"]
                     == hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
                 )
+
+
+def test_fabric_loader_membership_payload() -> None:
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name == "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    member = "META-INF/jars/forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar"
+    with ZipFile(source.path) as parent:
+        payload = parent.read(member)
+    digest = hashlib.sha256(payload).hexdigest()
+    assert digest == "fe0b6b5e95917ab26fd1271e8d72fc714283a4c2542c5a732fb1261a69f18c43"
+    with ZipFile(BytesIO(payload)) as archive:
+        files = {n for n in archive.namelist() if not n.endswith("/")}
+        classes = {n for n in files if n.endswith(".class")}
+        assert len(classes) == 785
+        assert files - classes == {
+            "META-INF/MANIFEST.MF", "META-INF/architectury-loom-nesting-metadata.json",
+            "META-INF/services/net.neoforged.neoforgespi.language.IModLanguageLoader",
+            "META-INF/maven/org.ow2.sat4j/org.ow2.sat4j.core/pom.properties",
+            "META-INF/maven/org.ow2.sat4j/org.ow2.sat4j.core/pom.xml",
+            "META-INF/maven/org.ow2.sat4j/org.ow2.sat4j.pb/pom.properties",
+            "META-INF/maven/org.ow2.sat4j/org.ow2.sat4j.pb/pom.xml",
+            "net/fabricmc/loader/Messages.properties",
+            "net/fabricmc/loader/Messages_es.properties",
+            "net/fabricmc/loader/Messages_ja_JP.properties",
+            "net/fabricmc/loader/Messages_ko_KR.properties",
+            "net/fabricmc/loader/Messages_vi_VN.properties",
+            "about.html", "mappings.tsrg", "mappings/mappings.tiny", "sat4j.version",
+        }
+        assert b"FMLModType: LIBRARY" in archive.read("META-INF/MANIFEST.MF")
+        assert archive.read(
+            "META-INF/services/net.neoforged.neoforgespi.language.IModLanguageLoader"
+        ).decode().strip() == "net.fabricmc.loader.impl.bootstrap.FabricLoaderHackyInjector"
+        assert not any(marker in archive.read(n) for n in classes for marker in (
+            b"Lnet/neoforged/fml/common/Mod;", b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+        ))
+        for label, identity, target in (
+            ("forgified-fabric-loader-2.5.68+0.18.4+1.21.1-entry",
+             "f36fb741b2e5a6cb1061b83f9a2e049c68ecee80b44ec3404e0e49a5e153c25d",
+             "bootstrap/FabricLoaderHackyInjector"),
+            ("fabric-loader-bootstrap",
+             "2800b7f9a5f95e344a15a56a68fdf137c30184114f23b10e969d1c48344fb764",
+             "bootstrap/FabricLoaderBootstrap"),
+            ("fabric-loader-mod-list",
+             "329ecd4c85011b336075d95309f9f9fd0820551ec9e8b854b0413a7fad8bba70",
+             "FabricLoaderImpl"),
+        ):
+            directory = Path("evidence/item-8/sources") / label
+            raw = (directory / "identities.json").read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == identity
+            rows = cast("list[dict[str, str]]", json.loads(raw))
+            assert len(rows) == 1
+            row = rows[0]
+            assert row["class"] == f"net/fabricmc/loader/impl/{target}.class"
+            assert row["archive"] == source.name + "!/" + member
+            assert row["archive_sha256"] == digest
+            assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+            assert row["disassembly_sha256"] == hashlib.sha256(
+                (directory / row["disassembly"]).read_bytes()).hexdigest()

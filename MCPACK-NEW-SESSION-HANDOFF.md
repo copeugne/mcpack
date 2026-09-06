@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric is fully resolved: all 43 module dispositions, 44 passing focused cases
+and scoped quality checks. Whole providers: 91 resolved, 45 open. No independent
+family added. Reuse these completed boundaries; do not continue generic Fabric
+helper inspection. Remaining scope is 24 code-reference providers, 21 providers
+unmatched by the existing generation searches, and canonical Moog grouping.
+The requested finite family list remains the immediate deliverable before
+attribute work. Entry checks should end once their concrete generation or
+component contribution is resolved. No new measurement system is required.
+
+
 Registry membership is resolved from 4bc3d16, e5a03ee and 7b86b55. Forty-three
 Fabric cases and scoped checks pass. Fabric: 42 resolved, one open (loader).
 The loader sources are delivered: service 1cb6fe0, bootstrap 4beaa6b and mod-list
