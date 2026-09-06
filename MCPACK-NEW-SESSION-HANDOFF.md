@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Latest checkpoint at 8e2b6df: Better Ocean Monuments provider scope is closed,
+pushed and remote-ref verified. Census: 63 resolved providers, 73 open. Seven
+affected cases and scoped quality checks pass. Source a2f2832 reproduces exactly.
+One existing root, 13 connected pools and 59 templates are accounted for; two
+seagrass templates are disconnected, with no missing graph references. Ten block
+processors and the specifically marked trident hook modify existing components.
+Next inspect YUNG's Better Strongholds using the existing stronghold-suppression
+capture. Keep shared YUNG API and canonical grouping work open. Do not repeat
+delivered providers or resume detailed attributes before the census closes.
+
 Latest checkpoint at e474790: Better Nether Fortresses provider scope is closed,
 pushed and remote-ref verified. Census: 62 resolved providers, 74 open. Seven
 affected cases and scoped Ruff/Basedpyright pass. Source 5933abb reproduces
