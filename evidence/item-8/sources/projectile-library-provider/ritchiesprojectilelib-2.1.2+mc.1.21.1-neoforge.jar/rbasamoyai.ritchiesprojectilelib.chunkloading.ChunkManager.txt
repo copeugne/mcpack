@@ -1,0 +1,433 @@
+Compiled from "ChunkManager.java"
+public class rbasamoyai.ritchiesprojectilelib.chunkloading.ChunkManager extends net.minecraft.world.level.saveddata.SavedData {
+  private final it.unimi.dsi.fastutil.longs.LongOpenHashSet chunks;
+
+  private final it.unimi.dsi.fastutil.longs.LongArrayFIFOQueue queue;
+
+  private final it.unimi.dsi.fastutil.longs.LongOpenHashSet inQueue;
+
+  private final it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap loaded;
+
+  public rbasamoyai.ritchiesprojectilelib.chunkloading.ChunkManager();
+    Code:
+       0: aload_0
+       1: new           #49                 // class it/unimi/dsi/fastutil/longs/LongOpenHashSet
+       4: dup
+       5: invokespecial #51                 // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet."<init>":()V
+       8: invokespecial #54                 // Method "<init>":(Lit/unimi/dsi/fastutil/longs/LongOpenHashSet;)V
+      11: return
+
+  public static net.minecraft.world.level.saveddata.SavedData$Factory<rbasamoyai.ritchiesprojectilelib.chunkloading.ChunkManager> factory();
+    Code:
+       0: new           #7                  // class net/minecraft/world/level/saveddata/SavedData$Factory
+       3: dup
+       4: invokedynamic #74,  0             // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+       9: invokedynamic #84,  0             // InvokeDynamic #1:apply:()Ljava/util/function/BiFunction;
+      14: getstatic     #90                 // Field net/minecraft/util/datafix/DataFixTypes.SAVED_DATA_FORCED_CHUNKS:Lnet/minecraft/util/datafix/DataFixTypes;
+      17: invokespecial #93                 // Method net/minecraft/world/level/saveddata/SavedData$Factory."<init>":(Ljava/util/function/Supplier;Ljava/util/function/BiFunction;Lnet/minecraft/util/datafix/DataFixTypes;)V
+      20: areturn
+
+  public rbasamoyai.ritchiesprojectilelib.chunkloading.ChunkManager(it.unimi.dsi.fastutil.longs.LongOpenHashSet);
+    Code:
+       0: aload_0
+       1: invokespecial #94                 // Method net/minecraft/world/level/saveddata/SavedData."<init>":()V
+       4: aload_0
+       5: new           #96                 // class it/unimi/dsi/fastutil/longs/LongArrayFIFOQueue
+       8: dup
+       9: invokespecial #97                 // Method it/unimi/dsi/fastutil/longs/LongArrayFIFOQueue."<init>":()V
+      12: putfield      #99                 // Field queue:Lit/unimi/dsi/fastutil/longs/LongArrayFIFOQueue;
+      15: aload_0
+      16: new           #101                // class it/unimi/dsi/fastutil/longs/Long2IntOpenHashMap
+      19: dup
+      20: invokespecial #102                // Method it/unimi/dsi/fastutil/longs/Long2IntOpenHashMap."<init>":()V
+      23: putfield      #104                // Field loaded:Lit/unimi/dsi/fastutil/longs/Long2IntOpenHashMap;
+      26: aload_0
+      27: aload_1
+      28: putfield      #106                // Field chunks:Lit/unimi/dsi/fastutil/longs/LongOpenHashSet;
+      31: aload_0
+      32: new           #49                 // class it/unimi/dsi/fastutil/longs/LongOpenHashSet
+      35: dup
+      36: aload_0
+      37: getfield      #106                // Field chunks:Lit/unimi/dsi/fastutil/longs/LongOpenHashSet;
+      40: invokespecial #109                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet."<init>":(Lit/unimi/dsi/fastutil/longs/LongCollection;)V
+      43: putfield      #111                // Field inQueue:Lit/unimi/dsi/fastutil/longs/LongOpenHashSet;
+      46: aload_0
+      47: getfield      #106                // Field chunks:Lit/unimi/dsi/fastutil/longs/LongOpenHashSet;
+      50: invokevirtual #115                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet.iterator:()Lit/unimi/dsi/fastutil/longs/LongIterator;
+      53: astore_2
+      54: aload_2
+      55: invokeinterface #123,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      60: ifeq          87
+      63: aload_2
+      64: invokeinterface #126,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      69: checkcast     #128                // class java/lang/Long
+      72: invokevirtual #132                // Method java/lang/Long.longValue:()J
+      75: lstore_3
+      76: aload_0
+      77: getfield      #99                 // Field queue:Lit/unimi/dsi/fastutil/longs/LongArrayFIFOQueue;
+      80: lload_3
+      81: invokevirtual #136                // Method it/unimi/dsi/fastutil/longs/LongArrayFIFOQueue.enqueue:(J)V
+      84: goto          54
+      87: return
+
+  public static rbasamoyai.ritchiesprojectilelib.chunkloading.ChunkManager load(net.minecraft.nbt.CompoundTag, net.minecraft.core.HolderLookup$Provider);
+    Code:
+       0: aload_0
+       1: ldc           #144                // String LoadedChunks
+       3: invokevirtual #150                // Method net/minecraft/nbt/CompoundTag.getLongArray:(Ljava/lang/String;)[J
+       6: astore_2
+       7: new           #49                 // class it/unimi/dsi/fastutil/longs/LongOpenHashSet
+      10: dup
+      11: aload_2
+      12: invokespecial #153                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet."<init>":([J)V
+      15: astore_3
+      16: new           #2                  // class rbasamoyai/ritchiesprojectilelib/chunkloading/ChunkManager
+      19: dup
+      20: aload_3
+      21: invokespecial #54                 // Method "<init>":(Lit/unimi/dsi/fastutil/longs/LongOpenHashSet;)V
+      24: areturn
+
+  public net.minecraft.nbt.CompoundTag save(net.minecraft.nbt.CompoundTag, net.minecraft.core.HolderLookup$Provider);
+    Code:
+       0: aload_1
+       1: ldc           #144                // String LoadedChunks
+       3: aload_0
+       4: getfield      #106                // Field chunks:Lit/unimi/dsi/fastutil/longs/LongOpenHashSet;
+       7: invokevirtual #164                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet.toLongArray:()[J
+      10: invokevirtual #168                // Method net/minecraft/nbt/CompoundTag.putLongArray:(Ljava/lang/String;[J)V
+      13: aload_1
+      14: areturn
+
+  public void queueForceLoad(net.minecraft.world.level.ChunkPos);
+    Code:
+       0: aload_1
+       1: invokevirtual #177                // Method net/minecraft/world/level/ChunkPos.toLong:()J
+       4: lstore_2
+       5: aload_0
+       6: getfield      #111                // Field inQueue:Lit/unimi/dsi/fastutil/longs/LongOpenHashSet;
+       9: lload_2
+      10: invokevirtual #181                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet.add:(J)Z
+      13: ifeq          37
+      16: aload_0
+      17: getfield      #99                 // Field queue:Lit/unimi/dsi/fastutil/longs/LongArrayFIFOQueue;
+      20: lload_2
+      21: invokevirtual #136                // Method it/unimi/dsi/fastutil/longs/LongArrayFIFOQueue.enqueue:(J)V
+      24: aload_0
+      25: getfield      #106                // Field chunks:Lit/unimi/dsi/fastutil/longs/LongOpenHashSet;
+      28: lload_2
+      29: invokevirtual #181                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet.add:(J)Z
+      32: pop
+      33: aload_0
+      34: invokevirtual #184                // Method setDirty:()V
+      37: return
+
+  public void tick(net.minecraft.server.level.ServerLevel);
+    Code:
+       0: aload_1
+       1: invokevirtual #194                // Method net/minecraft/server/level/ServerLevel.getForcedChunks:()Lit/unimi/dsi/fastutil/longs/LongSet;
+       4: astore_2
+       5: invokestatic  #198                // Method rbasamoyai/ritchiesprojectilelib/config/RPLConfigs.server:()Lrbasamoyai/ritchiesprojectilelib/config/RPLConfigs$Server;
+       8: getfield      #202                // Field rbasamoyai/ritchiesprojectilelib/config/RPLConfigs$Server.maxChunksForceLoaded:Lnet/neoforged/neoforge/common/ModConfigSpec$IntValue;
+      11: invokevirtual #204                // Method net/neoforged/neoforge/common/ModConfigSpec$IntValue.get:()Ljava/lang/Object;
+      14: checkcast     #206                // class java/lang/Integer
+      17: invokevirtual #210                // Method java/lang/Integer.intValue:()I
+      20: istore_3
+      21: iload_3
+      22: ifgt          28
+      25: ldc           #211                // int 2147483647
+      27: istore_3
+      28: invokestatic  #198                // Method rbasamoyai/ritchiesprojectilelib/config/RPLConfigs.server:()Lrbasamoyai/ritchiesprojectilelib/config/RPLConfigs$Server;
+      31: getfield      #216                // Field rbasamoyai/ritchiesprojectilelib/config/RPLConfigs$Server.maxChunksLoadedEachTick:Lnet/neoforged/neoforge/common/ModConfigSpec$IntValue;
+      34: invokevirtual #204                // Method net/neoforged/neoforge/common/ModConfigSpec$IntValue.get:()Ljava/lang/Object;
+      37: checkcast     #206                // class java/lang/Integer
+      40: invokevirtual #210                // Method java/lang/Integer.intValue:()I
+      43: istore        4
+      45: invokestatic  #198                // Method rbasamoyai/ritchiesprojectilelib/config/RPLConfigs.server:()Lrbasamoyai/ritchiesprojectilelib/config/RPLConfigs$Server;
+      48: getfield      #219                // Field rbasamoyai/ritchiesprojectilelib/config/RPLConfigs$Server.projectileChunkAge:Lnet/neoforged/neoforge/common/ModConfigSpec$IntValue;
+      51: invokevirtual #204                // Method net/neoforged/neoforge/common/ModConfigSpec$IntValue.get:()Ljava/lang/Object;
+      54: checkcast     #206                // class java/lang/Integer
+      57: invokevirtual #210                // Method java/lang/Integer.intValue:()I
+      60: istore        5
+      62: invokestatic  #198                // Method rbasamoyai/ritchiesprojectilelib/config/RPLConfigs.server:()Lrbasamoyai/ritchiesprojectilelib/config/RPLConfigs$Server;
+      65: getfield      #222                // Field rbasamoyai/ritchiesprojectilelib/config/RPLConfigs$Server.entityLoadTimeout:Lnet/neoforged/neoforge/common/ModConfigSpec$IntValue;
+      68: invokevirtual #204                // Method net/neoforged/neoforge/common/ModConfigSpec$IntValue.get:()Ljava/lang/Object;
+      71: checkcast     #206                // class java/lang/Integer
+      74: invokevirtual #210                // Method java/lang/Integer.intValue:()I
+      77: ineg
+      78: iconst_1
+      79: isub
+      80: istore        6
+      82: new           #49                 // class it/unimi/dsi/fastutil/longs/LongOpenHashSet
+      85: dup
+      86: invokespecial #51                 // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet."<init>":()V
+      89: astore        7
+      91: aload_0
+      92: getfield      #104                // Field loaded:Lit/unimi/dsi/fastutil/longs/Long2IntOpenHashMap;
+      95: invokevirtual #226                // Method it/unimi/dsi/fastutil/longs/Long2IntOpenHashMap.long2IntEntrySet:()Lit/unimi/dsi/fastutil/longs/Long2IntMap$FastEntrySet;
+      98: invokeinterface #229,  1          // InterfaceMethod it/unimi/dsi/fastutil/longs/Long2IntMap$FastEntrySet.iterator:()Lit/unimi/dsi/fastutil/objects/ObjectIterator;
+     103: astore        8
+     105: aload         8
+     107: invokeinterface #123,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     112: ifeq          255
+     115: aload         8
+     117: invokeinterface #126,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     122: checkcast     #25                 // class java/util/Map$Entry
+     125: astore        9
+     127: aload         9
+     129: invokeinterface #234,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     134: checkcast     #128                // class java/lang/Long
+     137: invokevirtual #132                // Method java/lang/Long.longValue:()J
+     140: lstore        10
+     142: aload         9
+     144: invokeinterface #237,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     149: checkcast     #206                // class java/lang/Integer
+     152: invokevirtual #210                // Method java/lang/Integer.intValue:()I
+     155: istore        12
+     157: iload         12
+     159: iconst_m1
+     160: if_icmpgt     213
+     163: new           #174                // class net/minecraft/world/level/ChunkPos
+     166: dup
+     167: lload         10
+     169: invokespecial #239                // Method net/minecraft/world/level/ChunkPos."<init>":(J)V
+     172: astore        13
+     174: new           #241                // class net/minecraft/core/BlockPos
+     177: dup
+     178: aload         13
+     180: getfield      #245                // Field net/minecraft/world/level/ChunkPos.x:I
+     183: invokestatic  #251                // Method net/minecraft/core/SectionPos.sectionToBlockCoord:(I)I
+     186: iconst_0
+     187: aload         13
+     189: getfield      #254                // Field net/minecraft/world/level/ChunkPos.z:I
+     192: invokestatic  #251                // Method net/minecraft/core/SectionPos.sectionToBlockCoord:(I)I
+     195: invokespecial #257                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     198: astore        14
+     200: aload_1
+     201: aload         14
+     203: invokevirtual #261                // Method net/minecraft/server/level/ServerLevel.isPositionEntityTicking:(Lnet/minecraft/core/BlockPos;)Z
+     206: ifeq          213
+     209: iload         5
+     211: istore        12
+     213: iload         12
+     215: iconst_1
+     216: isub
+     217: istore        13
+     219: aload         9
+     221: iload         13
+     223: invokestatic  #265                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     226: invokeinterface #269,  2          // InterfaceMethod java/util/Map$Entry.setValue:(Ljava/lang/Object;)Ljava/lang/Object;
+     231: pop
+     232: iload         13
+     234: ifeq          244
+     237: iload         13
+     239: iload         6
+     241: if_icmpgt     252
+     244: aload         7
+     246: lload         10
+     248: invokevirtual #181                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet.add:(J)Z
+     251: pop
+     252: goto          105
+     255: iconst_0
+     256: iload_3
+     257: aload_0
+     258: getfield      #104                // Field loaded:Lit/unimi/dsi/fastutil/longs/Long2IntOpenHashMap;
+     261: invokevirtual #272                // Method it/unimi/dsi/fastutil/longs/Long2IntOpenHashMap.size:()I
+     264: isub
+     265: invokestatic  #278                // Method java/lang/Math.max:(II)I
+     268: istore        8
+     270: iload         4
+     272: iload         8
+     274: aload         7
+     276: invokevirtual #279                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet.size:()I
+     279: iadd
+     280: invokestatic  #282                // Method java/lang/Math.min:(II)I
+     283: istore        9
+     285: iload         9
+     287: aload_0
+     288: getfield      #99                 // Field queue:Lit/unimi/dsi/fastutil/longs/LongArrayFIFOQueue;
+     291: invokevirtual #283                // Method it/unimi/dsi/fastutil/longs/LongArrayFIFOQueue.size:()I
+     294: invokestatic  #282                // Method java/lang/Math.min:(II)I
+     297: istore        9
+     299: iconst_0
+     300: istore        10
+     302: iload         10
+     304: iload         9
+     306: if_icmpge     460
+     309: aload_0
+     310: getfield      #99                 // Field queue:Lit/unimi/dsi/fastutil/longs/LongArrayFIFOQueue;
+     313: invokevirtual #286                // Method it/unimi/dsi/fastutil/longs/LongArrayFIFOQueue.isEmpty:()Z
+     316: ifeq          322
+     319: goto          460
+     322: aload_0
+     323: getfield      #99                 // Field queue:Lit/unimi/dsi/fastutil/longs/LongArrayFIFOQueue;
+     326: invokevirtual #289                // Method it/unimi/dsi/fastutil/longs/LongArrayFIFOQueue.dequeueLong:()J
+     329: lstore        11
+     331: aload_0
+     332: getfield      #111                // Field inQueue:Lit/unimi/dsi/fastutil/longs/LongOpenHashSet;
+     335: lload         11
+     337: invokevirtual #292                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet.remove:(J)Z
+     340: pop
+     341: new           #174                // class net/minecraft/world/level/ChunkPos
+     344: dup
+     345: lload         11
+     347: invokespecial #239                // Method net/minecraft/world/level/ChunkPos."<init>":(J)V
+     350: astore        13
+     352: aload_0
+     353: getfield      #104                // Field loaded:Lit/unimi/dsi/fastutil/longs/Long2IntOpenHashMap;
+     356: lload         11
+     358: invokevirtual #295                // Method it/unimi/dsi/fastutil/longs/Long2IntOpenHashMap.containsKey:(J)Z
+     361: ifeq          400
+     364: aload_0
+     365: getfield      #104                // Field loaded:Lit/unimi/dsi/fastutil/longs/Long2IntOpenHashMap;
+     368: lload         11
+     370: invokevirtual #298                // Method it/unimi/dsi/fastutil/longs/Long2IntOpenHashMap.get:(J)I
+     373: iconst_m1
+     374: if_icmple     400
+     377: aload_0
+     378: getfield      #104                // Field loaded:Lit/unimi/dsi/fastutil/longs/Long2IntOpenHashMap;
+     381: lload         11
+     383: iload         5
+     385: invokevirtual #302                // Method it/unimi/dsi/fastutil/longs/Long2IntOpenHashMap.put:(JI)I
+     388: pop
+     389: aload         7
+     391: lload         11
+     393: invokevirtual #292                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet.remove:(J)Z
+     396: pop
+     397: goto          454
+     400: aload_2
+     401: lload         11
+     403: invokeinterface #305,  3          // InterfaceMethod it/unimi/dsi/fastutil/longs/LongSet.contains:(J)Z
+     408: ifne          444
+     411: aload_1
+     412: aload         13
+     414: invokestatic  #309                // Method loadChunkNoGenerate:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/ChunkPos;)Z
+     417: ifeq          444
+     420: aload_0
+     421: getfield      #104                // Field loaded:Lit/unimi/dsi/fastutil/longs/Long2IntOpenHashMap;
+     424: lload         11
+     426: iconst_m1
+     427: invokevirtual #302                // Method it/unimi/dsi/fastutil/longs/Long2IntOpenHashMap.put:(JI)I
+     430: pop
+     431: aload_1
+     432: invokevirtual #313                // Method net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+     435: aload         13
+     437: iconst_1
+     438: invokevirtual #319                // Method net/minecraft/server/level/ServerChunkCache.updateChunkForced:(Lnet/minecraft/world/level/ChunkPos;Z)V
+     441: goto          454
+     444: aload_0
+     445: getfield      #106                // Field chunks:Lit/unimi/dsi/fastutil/longs/LongOpenHashSet;
+     448: lload         11
+     450: invokevirtual #292                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet.remove:(J)Z
+     453: pop
+     454: iinc          10, 1
+     457: goto          302
+     460: aload         7
+     462: invokevirtual #115                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet.iterator:()Lit/unimi/dsi/fastutil/longs/LongIterator;
+     465: astore        10
+     467: aload         10
+     469: invokeinterface #123,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     474: ifeq          544
+     477: aload         10
+     479: invokeinterface #126,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     484: checkcast     #128                // class java/lang/Long
+     487: invokevirtual #132                // Method java/lang/Long.longValue:()J
+     490: lstore        11
+     492: aload_1
+     493: invokevirtual #313                // Method net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+     496: new           #174                // class net/minecraft/world/level/ChunkPos
+     499: dup
+     500: lload         11
+     502: invokespecial #239                // Method net/minecraft/world/level/ChunkPos."<init>":(J)V
+     505: iconst_0
+     506: invokevirtual #319                // Method net/minecraft/server/level/ServerChunkCache.updateChunkForced:(Lnet/minecraft/world/level/ChunkPos;Z)V
+     509: aload_0
+     510: getfield      #104                // Field loaded:Lit/unimi/dsi/fastutil/longs/Long2IntOpenHashMap;
+     513: lload         11
+     515: invokevirtual #321                // Method it/unimi/dsi/fastutil/longs/Long2IntOpenHashMap.remove:(J)I
+     518: pop
+     519: aload_0
+     520: getfield      #111                // Field inQueue:Lit/unimi/dsi/fastutil/longs/LongOpenHashSet;
+     523: lload         11
+     525: invokevirtual #322                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet.contains:(J)Z
+     528: ifne          541
+     531: aload_0
+     532: getfield      #106                // Field chunks:Lit/unimi/dsi/fastutil/longs/LongOpenHashSet;
+     535: lload         11
+     537: invokevirtual #292                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet.remove:(J)Z
+     540: pop
+     541: goto          467
+     544: aload_0
+     545: getfield      #104                // Field loaded:Lit/unimi/dsi/fastutil/longs/Long2IntOpenHashMap;
+     548: invokevirtual #325                // Method it/unimi/dsi/fastutil/longs/Long2IntOpenHashMap.trim:()Z
+     551: pop
+     552: aload_0
+     553: getfield      #111                // Field inQueue:Lit/unimi/dsi/fastutil/longs/LongOpenHashSet;
+     556: invokevirtual #326                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet.trim:()Z
+     559: pop
+     560: aload_0
+     561: getfield      #99                 // Field queue:Lit/unimi/dsi/fastutil/longs/LongArrayFIFOQueue;
+     564: invokevirtual #328                // Method it/unimi/dsi/fastutil/longs/LongArrayFIFOQueue.trim:()V
+     567: aload_0
+     568: getfield      #106                // Field chunks:Lit/unimi/dsi/fastutil/longs/LongOpenHashSet;
+     571: invokevirtual #326                // Method it/unimi/dsi/fastutil/longs/LongOpenHashSet.trim:()Z
+     574: pop
+     575: aload_0
+     576: invokevirtual #184                // Method setDirty:()V
+     579: return
+
+  private static boolean loadChunkNoGenerate(net.minecraft.server.level.ServerLevel, net.minecraft.world.level.ChunkPos);
+    Code:
+       0: aload_0
+       1: invokevirtual #313                // Method net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+       4: astore_2
+       5: aload_2
+       6: aload_1
+       7: getfield      #245                // Field net/minecraft/world/level/ChunkPos.x:I
+      10: aload_1
+      11: getfield      #254                // Field net/minecraft/world/level/ChunkPos.z:I
+      14: invokevirtual #352                // Method net/minecraft/server/level/ServerChunkCache.getChunkNow:(II)Lnet/minecraft/world/level/chunk/LevelChunk;
+      17: astore_3
+      18: aload_3
+      19: ifnull        24
+      22: iconst_1
+      23: ireturn
+      24: aload_2
+      25: aload_1
+      26: getfield      #245                // Field net/minecraft/world/level/ChunkPos.x:I
+      29: aload_1
+      30: getfield      #254                // Field net/minecraft/world/level/ChunkPos.z:I
+      33: getstatic     #360                // Field net/minecraft/world/level/chunk/status/ChunkStatus.EMPTY:Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+      36: iconst_1
+      37: invokevirtual #364                // Method net/minecraft/server/level/ServerChunkCache.getChunk:(IILnet/minecraft/world/level/chunk/status/ChunkStatus;Z)Lnet/minecraft/world/level/chunk/ChunkAccess;
+      40: astore        4
+      42: aload         4
+      44: instanceof    #366                // class net/minecraft/world/level/chunk/ProtoChunk
+      47: ifeq          79
+      50: aload_2
+      51: getstatic     #372                // Field net/minecraft/server/level/TicketType.UNKNOWN:Lnet/minecraft/server/level/TicketType;
+      54: aload_1
+      55: bipush        -11
+      57: aload_1
+      58: invokevirtual #376                // Method net/minecraft/server/level/ServerChunkCache.removeRegionTicket:(Lnet/minecraft/server/level/TicketType;Lnet/minecraft/world/level/ChunkPos;ILjava/lang/Object;)V
+      61: aload_2
+      62: aload_1
+      63: getfield      #245                // Field net/minecraft/world/level/ChunkPos.x:I
+      66: aload_1
+      67: getfield      #254                // Field net/minecraft/world/level/ChunkPos.z:I
+      70: getstatic     #379                // Field net/minecraft/world/level/chunk/status/ChunkStatus.FULL:Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+      73: iconst_1
+      74: invokevirtual #364                // Method net/minecraft/server/level/ServerChunkCache.getChunk:(IILnet/minecraft/world/level/chunk/status/ChunkStatus;Z)Lnet/minecraft/world/level/chunk/ChunkAccess;
+      77: astore        4
+      79: aload         4
+      81: instanceof    #354                // class net/minecraft/world/level/chunk/LevelChunk
+      84: ireturn
+
+  private static java.lang.Object lambda$factory$0(java.lang.Object, java.lang.Object);
+    Code:
+       0: aload_0
+       1: checkcast     #146                // class net/minecraft/nbt/CompoundTag
+       4: aload_1
+       5: checkcast     #30                 // class net/minecraft/core/HolderLookup$Provider
+       8: invokestatic  #389                // Method load:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)Lrbasamoyai/ritchiesprojectilelib/chunkloading/ChunkManager;
+      11: areturn
+}

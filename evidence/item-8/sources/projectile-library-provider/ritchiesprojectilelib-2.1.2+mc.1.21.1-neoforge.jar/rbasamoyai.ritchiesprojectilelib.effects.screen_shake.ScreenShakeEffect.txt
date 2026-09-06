@@ -1,0 +1,152 @@
+Compiled from "ScreenShakeEffect.java"
+public class rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeEffect {
+  public final int duration;
+
+  private int timer;
+
+  public final float yawMagnitude;
+
+  public final float pitchMagnitude;
+
+  public final float rollMagnitude;
+
+  public final float yawJitter;
+
+  public final float pitchJitter;
+
+  public final float rollJitter;
+
+  public final double posX;
+
+  public final double posY;
+
+  public final double posZ;
+
+  public rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeEffect(int, float, float, float, float, float, float, double, double, double);
+    Code:
+       0: aload_0
+       1: invokespecial #24                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iload_1
+       6: putfield      #26                 // Field duration:I
+       9: aload_0
+      10: iload_1
+      11: putfield      #28                 // Field timer:I
+      14: aload_0
+      15: fload_2
+      16: putfield      #30                 // Field yawMagnitude:F
+      19: aload_0
+      20: fload_3
+      21: putfield      #32                 // Field pitchMagnitude:F
+      24: aload_0
+      25: fload         4
+      27: putfield      #34                 // Field rollMagnitude:F
+      30: aload_0
+      31: fload         5
+      33: putfield      #36                 // Field yawJitter:F
+      36: aload_0
+      37: fload         6
+      39: putfield      #38                 // Field pitchJitter:F
+      42: aload_0
+      43: fload         7
+      45: putfield      #40                 // Field rollJitter:F
+      48: aload_0
+      49: dload         8
+      51: putfield      #42                 // Field posX:D
+      54: aload_0
+      55: dload         10
+      57: putfield      #44                 // Field posY:D
+      60: aload_0
+      61: dload         12
+      63: putfield      #46                 // Field posZ:D
+      66: return
+
+  public rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeEffect(int, float, float, double, double, double);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: fload_2
+       3: fload_2
+       4: fload_2
+       5: fload_3
+       6: fload_3
+       7: fload_3
+       8: dload         8
+      10: dload         6
+      12: dload         4
+      14: invokespecial #53                 // Method "<init>":(IFFFFFFDDD)V
+      17: return
+
+  public boolean tick();
+    Code:
+       0: aload_0
+       1: getfield      #26                 // Field duration:I
+       4: iconst_1
+       5: if_icmpge     10
+       8: iconst_1
+       9: ireturn
+      10: aload_0
+      11: dup
+      12: getfield      #28                 // Field timer:I
+      15: iconst_1
+      16: isub
+      17: putfield      #28                 // Field timer:I
+      20: aload_0
+      21: getfield      #28                 // Field timer:I
+      24: iconst_1
+      25: if_icmpge     32
+      28: iconst_1
+      29: goto          33
+      32: iconst_0
+      33: ireturn
+
+  public float getProgress(float);
+    Code:
+       0: aload_0
+       1: getfield      #28                 // Field timer:I
+       4: i2f
+       5: fload_1
+       6: fadd
+       7: freturn
+
+  public float getProgressNormalized(float);
+    Code:
+       0: aload_0
+       1: getfield      #26                 // Field duration:I
+       4: iconst_1
+       5: if_icmpge     12
+       8: fconst_0
+       9: goto          23
+      12: aload_0
+      13: fload_1
+      14: invokevirtual #61                 // Method getProgress:(F)F
+      17: aload_0
+      18: getfield      #26                 // Field duration:I
+      21: i2f
+      22: fdiv
+      23: freturn
+
+  public rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeEffect copyWithProgressAndDuration(float, float, float, float, float, float, double, double, double);
+    Code:
+       0: new           #2                  // class rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect
+       3: dup
+       4: aload_0
+       5: getfield      #26                 // Field duration:I
+       8: fload_1
+       9: fload_2
+      10: fload_3
+      11: fload         4
+      13: fload         5
+      15: fload         6
+      17: dload         7
+      19: dload         9
+      21: dload         11
+      23: invokespecial #53                 // Method "<init>":(IFFFFFFDDD)V
+      26: astore        13
+      28: aload         13
+      30: aload_0
+      31: getfield      #28                 // Field timer:I
+      34: putfield      #28                 // Field timer:I
+      37: aload         13
+      39: areturn
+}

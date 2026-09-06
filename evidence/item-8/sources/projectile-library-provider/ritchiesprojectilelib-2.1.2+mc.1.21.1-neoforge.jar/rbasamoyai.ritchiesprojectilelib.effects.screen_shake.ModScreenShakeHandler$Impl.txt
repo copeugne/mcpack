@@ -1,0 +1,313 @@
+Compiled from "ModScreenShakeHandler.java"
+public class rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ModScreenShakeHandler$Impl implements rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ModScreenShakeHandler {
+  protected final java.util.Set<rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeEffect> delayedShakes;
+
+  protected net.minecraft.world.phys.Vec3 velocity;
+
+  protected net.minecraft.world.phys.Vec3 acceleration;
+
+  protected net.minecraft.world.phys.Vec3 displacement;
+
+  protected final java.util.Random random;
+
+  public rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ModScreenShakeHandler$Impl();
+    Code:
+       0: aload_0
+       1: invokespecial #21                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #23                 // class java/util/LinkedHashSet
+       8: dup
+       9: invokespecial #24                 // Method java/util/LinkedHashSet."<init>":()V
+      12: putfield      #26                 // Field delayedShakes:Ljava/util/Set;
+      15: aload_0
+      16: getstatic     #31                 // Field net/minecraft/world/phys/Vec3.ZERO:Lnet/minecraft/world/phys/Vec3;
+      19: putfield      #33                 // Field velocity:Lnet/minecraft/world/phys/Vec3;
+      22: aload_0
+      23: getstatic     #31                 // Field net/minecraft/world/phys/Vec3.ZERO:Lnet/minecraft/world/phys/Vec3;
+      26: putfield      #35                 // Field acceleration:Lnet/minecraft/world/phys/Vec3;
+      29: aload_0
+      30: getstatic     #31                 // Field net/minecraft/world/phys/Vec3.ZERO:Lnet/minecraft/world/phys/Vec3;
+      33: putfield      #37                 // Field displacement:Lnet/minecraft/world/phys/Vec3;
+      36: aload_0
+      37: new           #39                 // class java/util/Random
+      40: dup
+      41: invokespecial #40                 // Method java/util/Random."<init>":()V
+      44: putfield      #42                 // Field random:Ljava/util/Random;
+      47: return
+
+  public void tick(net.minecraft.client.Minecraft);
+    Code:
+       0: aload_0
+       1: getfield      #26                 // Field delayedShakes:Ljava/util/Set;
+       4: invokeinterface #53,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       9: astore_2
+      10: aload_2
+      11: invokeinterface #59,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      16: ifeq          50
+      19: aload_2
+      20: invokeinterface #63,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      25: checkcast     #65                 // class rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect
+      28: astore_3
+      29: aload_3
+      30: invokevirtual #67                 // Method rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect.tick:()Z
+      33: ifeq          47
+      36: aload_0
+      37: aload_3
+      38: invokevirtual #71                 // Method immediatelyAddEffect:(Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;)V
+      41: aload_2
+      42: invokeinterface #74,  1           // InterfaceMethod java/util/Iterator.remove:()V
+      47: goto          10
+      50: bipush        10
+      52: istore_2
+      53: dconst_1
+      54: iload_2
+      55: i2d
+      56: ddiv
+      57: dstore_3
+      58: ldc2_w        #75                 // double 0.005d
+      61: aload_0
+      62: invokevirtual #80                 // Method getRestitution:()D
+      65: invokestatic  #86                 // Method java/lang/Math.max:(DD)D
+      68: dstore        5
+      70: ldc2_w        #75                 // double 0.005d
+      73: aload_0
+      74: invokevirtual #89                 // Method getDrag:()D
+      77: invokestatic  #86                 // Method java/lang/Math.max:(DD)D
+      80: dstore        7
+      82: iconst_0
+      83: istore        9
+      85: iload         9
+      87: iload_2
+      88: if_icmpge     204
+      91: aload_0
+      92: getfield      #37                 // Field displacement:Lnet/minecraft/world/phys/Vec3;
+      95: aload_0
+      96: getfield      #33                 // Field velocity:Lnet/minecraft/world/phys/Vec3;
+      99: dload_3
+     100: invokevirtual #95                 // Method net/minecraft/world/phys/Vec3.scale:(D)Lnet/minecraft/world/phys/Vec3;
+     103: invokevirtual #99                 // Method net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+     106: aload_0
+     107: getfield      #35                 // Field acceleration:Lnet/minecraft/world/phys/Vec3;
+     110: ldc2_w        #100                // double 0.5d
+     113: dload_3
+     114: dmul
+     115: dload_3
+     116: dmul
+     117: invokevirtual #95                 // Method net/minecraft/world/phys/Vec3.scale:(D)Lnet/minecraft/world/phys/Vec3;
+     120: invokevirtual #99                 // Method net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+     123: astore        10
+     125: aload_0
+     126: getfield      #37                 // Field displacement:Lnet/minecraft/world/phys/Vec3;
+     129: dload         5
+     131: dneg
+     132: invokevirtual #95                 // Method net/minecraft/world/phys/Vec3.scale:(D)Lnet/minecraft/world/phys/Vec3;
+     135: aload_0
+     136: getfield      #33                 // Field velocity:Lnet/minecraft/world/phys/Vec3;
+     139: dload         7
+     141: dneg
+     142: invokevirtual #95                 // Method net/minecraft/world/phys/Vec3.scale:(D)Lnet/minecraft/world/phys/Vec3;
+     145: invokevirtual #99                 // Method net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+     148: astore        11
+     150: aload_0
+     151: getfield      #33                 // Field velocity:Lnet/minecraft/world/phys/Vec3;
+     154: aload_0
+     155: getfield      #35                 // Field acceleration:Lnet/minecraft/world/phys/Vec3;
+     158: aload         11
+     160: invokevirtual #99                 // Method net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+     163: ldc2_w        #100                // double 0.5d
+     166: dload_3
+     167: dmul
+     168: invokevirtual #95                 // Method net/minecraft/world/phys/Vec3.scale:(D)Lnet/minecraft/world/phys/Vec3;
+     171: invokevirtual #99                 // Method net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+     174: astore        12
+     176: aload_0
+     177: aload         10
+     179: putfield      #37                 // Field displacement:Lnet/minecraft/world/phys/Vec3;
+     182: aload_0
+     183: aload         12
+     185: putfield      #33                 // Field velocity:Lnet/minecraft/world/phys/Vec3;
+     188: aload_0
+     189: aload         11
+     191: putfield      #35                 // Field acceleration:Lnet/minecraft/world/phys/Vec3;
+     194: aload_0
+     195: invokevirtual #104                // Method applyConstraints:()V
+     198: iinc          9, 1
+     201: goto          85
+     204: aload_0
+     205: getfield      #37                 // Field displacement:Lnet/minecraft/world/phys/Vec3;
+     208: invokevirtual #107                // Method net/minecraft/world/phys/Vec3.lengthSqr:()D
+     211: ldc2_w        #108                // double 1.0E-4d
+     214: dcmpg
+     215: ifge          250
+     218: aload_0
+     219: getfield      #33                 // Field velocity:Lnet/minecraft/world/phys/Vec3;
+     222: invokevirtual #107                // Method net/minecraft/world/phys/Vec3.lengthSqr:()D
+     225: ldc2_w        #108                // double 1.0E-4d
+     228: dcmpg
+     229: ifge          250
+     232: aload_0
+     233: getfield      #35                 // Field acceleration:Lnet/minecraft/world/phys/Vec3;
+     236: invokevirtual #107                // Method net/minecraft/world/phys/Vec3.lengthSqr:()D
+     239: ldc2_w        #108                // double 1.0E-4d
+     242: dcmpg
+     243: ifge          250
+     246: aload_0
+     247: invokevirtual #112                // Method clearEffects:()V
+     250: return
+
+  public void applyEffects(rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeContext);
+    Code:
+       0: aload_1
+       1: invokevirtual #137                // Method rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeContext.partialTicks:()F
+       4: fstore_2
+       5: aload_0
+       6: getfield      #37                 // Field displacement:Lnet/minecraft/world/phys/Vec3;
+       9: aload_0
+      10: getfield      #33                 // Field velocity:Lnet/minecraft/world/phys/Vec3;
+      13: fload_2
+      14: f2d
+      15: invokevirtual #95                 // Method net/minecraft/world/phys/Vec3.scale:(D)Lnet/minecraft/world/phys/Vec3;
+      18: invokevirtual #99                 // Method net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+      21: aload_0
+      22: getfield      #35                 // Field acceleration:Lnet/minecraft/world/phys/Vec3;
+      25: fload_2
+      26: fload_2
+      27: fmul
+      28: f2d
+      29: ldc2_w        #100                // double 0.5d
+      32: dmul
+      33: invokevirtual #95                 // Method net/minecraft/world/phys/Vec3.scale:(D)Lnet/minecraft/world/phys/Vec3;
+      36: invokevirtual #99                 // Method net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+      39: astore_3
+      40: aload_1
+      41: aload_1
+      42: invokevirtual #140                // Method rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeContext.getDeltaYaw:()F
+      45: aload_3
+      46: getfield      #143                // Field net/minecraft/world/phys/Vec3.x:D
+      49: d2f
+      50: fadd
+      51: invokevirtual #147                // Method rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeContext.setDeltaYaw:(F)V
+      54: aload_1
+      55: aload_1
+      56: invokevirtual #150                // Method rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeContext.getDeltaPitch:()F
+      59: aload_3
+      60: getfield      #153                // Field net/minecraft/world/phys/Vec3.y:D
+      63: d2f
+      64: fadd
+      65: invokevirtual #156                // Method rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeContext.setDeltaPitch:(F)V
+      68: aload_1
+      69: aload_1
+      70: invokevirtual #159                // Method rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeContext.getDeltaRoll:()F
+      73: aload_3
+      74: getfield      #162                // Field net/minecraft/world/phys/Vec3.z:D
+      77: d2f
+      78: fadd
+      79: invokevirtual #165                // Method rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeContext.setDeltaRoll:(F)V
+      82: return
+
+  public void addEffect(rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeEffect);
+    Code:
+       0: aload_1
+       1: getfield      #172                // Field rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect.duration:I
+       4: ifgt          15
+       7: aload_0
+       8: aload_1
+       9: invokevirtual #71                 // Method immediatelyAddEffect:(Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;)V
+      12: goto          26
+      15: aload_0
+      16: getfield      #26                 // Field delayedShakes:Ljava/util/Set;
+      19: aload_1
+      20: invokeinterface #175,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      25: pop
+      26: return
+
+  protected void immediatelyAddEffect(rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeEffect);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #179                // Method modifyScreenShake:(Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;)Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;
+       5: astore_2
+       6: aload_2
+       7: getfield      #182                // Field rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect.yawMagnitude:F
+      10: f2d
+      11: aload_0
+      12: getfield      #42                 // Field random:Ljava/util/Random;
+      15: invokevirtual #185                // Method java/util/Random.nextDouble:()D
+      18: aload_0
+      19: getfield      #42                 // Field random:Ljava/util/Random;
+      22: invokevirtual #185                // Method java/util/Random.nextDouble:()D
+      25: dsub
+      26: dmul
+      27: ldc2_w        #100                // double 0.5d
+      30: dmul
+      31: dstore_3
+      32: aload_2
+      33: getfield      #188                // Field rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect.pitchMagnitude:F
+      36: f2d
+      37: aload_0
+      38: getfield      #42                 // Field random:Ljava/util/Random;
+      41: invokevirtual #185                // Method java/util/Random.nextDouble:()D
+      44: aload_0
+      45: getfield      #42                 // Field random:Ljava/util/Random;
+      48: invokevirtual #185                // Method java/util/Random.nextDouble:()D
+      51: dsub
+      52: dmul
+      53: ldc2_w        #100                // double 0.5d
+      56: dmul
+      57: dstore        5
+      59: aload_2
+      60: getfield      #191                // Field rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect.rollMagnitude:F
+      63: f2d
+      64: aload_0
+      65: getfield      #42                 // Field random:Ljava/util/Random;
+      68: invokevirtual #185                // Method java/util/Random.nextDouble:()D
+      71: aload_0
+      72: getfield      #42                 // Field random:Ljava/util/Random;
+      75: invokevirtual #185                // Method java/util/Random.nextDouble:()D
+      78: dsub
+      79: dmul
+      80: ldc2_w        #100                // double 0.5d
+      83: dmul
+      84: dstore        7
+      86: aload_0
+      87: aload_0
+      88: getfield      #33                 // Field velocity:Lnet/minecraft/world/phys/Vec3;
+      91: dload_3
+      92: dload         5
+      94: dload         7
+      96: invokevirtual #194                // Method net/minecraft/world/phys/Vec3.add:(DDD)Lnet/minecraft/world/phys/Vec3;
+      99: putfield      #33                 // Field velocity:Lnet/minecraft/world/phys/Vec3;
+     102: return
+
+  public void clearEffects();
+    Code:
+       0: aload_0
+       1: getstatic     #31                 // Field net/minecraft/world/phys/Vec3.ZERO:Lnet/minecraft/world/phys/Vec3;
+       4: putfield      #37                 // Field displacement:Lnet/minecraft/world/phys/Vec3;
+       7: aload_0
+       8: getstatic     #31                 // Field net/minecraft/world/phys/Vec3.ZERO:Lnet/minecraft/world/phys/Vec3;
+      11: putfield      #33                 // Field velocity:Lnet/minecraft/world/phys/Vec3;
+      14: aload_0
+      15: getstatic     #31                 // Field net/minecraft/world/phys/Vec3.ZERO:Lnet/minecraft/world/phys/Vec3;
+      18: putfield      #35                 // Field acceleration:Lnet/minecraft/world/phys/Vec3;
+      21: return
+
+  protected rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeEffect modifyScreenShake(rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeEffect);
+    Code:
+       0: aload_1
+       1: areturn
+
+  protected double getRestitution();
+    Code:
+       0: ldc2_w        #199                // double 0.1d
+       3: dreturn
+
+  protected double getDrag();
+    Code:
+       0: ldc2_w        #201                // double 0.2d
+       3: dreturn
+
+  protected void applyConstraints();
+    Code:
+       0: return
+}
