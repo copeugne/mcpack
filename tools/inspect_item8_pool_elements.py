@@ -1980,6 +1980,8 @@ CLASSES: tuple[str, ...] = (
     "com/railwayteam/railways/mixin/StructureMixin.class",
     "com/railwayteam/railways/mixin/CRMixinPlugin.class",
     "com/railwayteam/railways/neoforge/mixin/CRMixinPlugin.class",
+    "com/railwayteam/railways/ModSetup.class",
+    "com/railwayteam/railways/content/handcar/HandcarItem.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
