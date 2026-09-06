@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "create-enchantment-industry-2.4.0.jar",
         "resourcefullib-neoforge-1.21-3.0.12.jar",
         "comforts-neoforge-9.0.5+1.21.1.jar",
         "cc-tweaked-1.21.1-forge-1.119.0.jar",
@@ -222,6 +223,37 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "plus/dragons/createenchantmentindustry/integration/apotheosis/mixin/create/BeltInventoryMixin.class",
+    "plus/dragons/createenchantmentindustry/integration/apotheosis/mixin/create/DepotBehaviourMixin.class",
+    "plus/dragons/createenchantmentindustry/integration/apothic_enchanting/mixin/create/AllItemAttributeTypesMixin.class",
+    "plus/dragons/createenchantmentindustry/integration/apothic_enchanting/mixin/create/BasinBlockEntityMixin.class",
+    "plus/dragons/createenchantmentindustry/integration/apothic_enchanting/mixin/create/BasinBlockMixin.class",
+    "plus/dragons/createenchantmentindustry/mixin/ConnectivityHandlerMixin.class",
+    "plus/dragons/createenchantmentindustry/mixin/CreateNBTProcessorsMixin.class",
+    "plus/dragons/createenchantmentindustry/mixin/CrushingWheelControllerBlockEntityMixin.class",
+    "plus/dragons/createenchantmentindustry/mixin/DeployerFakePlayerMixin.class",
+    "plus/dragons/createenchantmentindustry/mixin/DeployerHandlerMixin.class",
+    "plus/dragons/createenchantmentindustry/mixin/EnchantmentHelperMixin.class",
+    "plus/dragons/createenchantmentindustry/mixin/FillingBySpoutMixin.class",
+    "plus/dragons/createenchantmentindustry/mixin/LightningBoltMixin.class",
+    "plus/dragons/createenchantmentindustry/mixin/PlayerMixin.class",
+    "plus/dragons/createenchantmentindustry/mixin/SmartBlockEntityMixin.class",
+    "plus/dragons/createenchantmentindustry/mixin/accessor/CreateRecipeCategoryAccessor.class",
+    "plus/dragons/createenchantmentindustry/integration/sable/mixin/CaptureEntityBehaviourMixin.class",
+    "plus/dragons/createenchantmentindustry/integration/sable/mixin/ExperienceLanternBlockEntityMixin.class",
+    "plus/dragons/createenchantmentindustry/integration/sable/mixin/ExperienceLightningChargerMixin.class",
+    "plus/dragons/createenchantmentindustry/integration/sable/mixin/SubLevelAssemblyHelperMixin.class",
+    "plus/dragons/createenchantmentindustry/client/CEIClient.class",
+    "plus/dragons/createenchantmentindustry/common/CEICommon.class",
+    "plus/dragons/createenchantmentindustry/common/kinetics/deployer/DeployerExtension.class",
+    "plus/dragons/createenchantmentindustry/common/processing/classic_enchanter/ClassicBlazeEnchanterItemRenderer.class",
+    "plus/dragons/createenchantmentindustry/common/processing/enchanter/BlazeEnchanterItemRenderer.class",
+    "plus/dragons/createenchantmentindustry/common/processing/forger/BlazeForgerItemRenderer.class",
+    "plus/dragons/createenchantmentindustry/data/CEIData.class",
+    "plus/dragons/createenchantmentindustry/integration/apotheosis/common/CEIAXCommon.class",
+    "plus/dragons/createenchantmentindustry/integration/apothic_enchanting/client/CEIAClient.class",
+    "plus/dragons/createenchantmentindustry/integration/apothic_enchanting/common/CEIACommon.class",
+    "plus/dragons/createenchantmentindustry/integration/apothic_enchanting/data/CEIAData.class",
     "com/teamresourceful/resourcefullib/neoforge/ResourcefulLibNeoForge.class",
     "com/teamresourceful/resourcefullib/ResourcefulLib.class",
     "com/teamresourceful/resourcefullib/common/utils/files/GlobalStorage.class",
@@ -4116,6 +4148,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 ))
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
                 verbose |= name.startswith("plus/dragons/createdragonsplus/")
+                verbose |= name.startswith("plus/dragons/createenchantmentindustry/")
                 verbose |= name.startswith("com/teamresourceful/resourcefullib/")
                 verbose |= name.startswith("com/illusivesoulworks/")
                 verbose |= name.startswith("dan200/computercraft/")
