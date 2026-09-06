@@ -6,6 +6,31 @@
 
 ### Continuation update - 2026-09-06
 
+Lithostitched membership is in progress. Reuse the 38 previously captured
+classes; do not repeat their pool, alias, modifier or processor analysis.
+New entry source 4fbbe70 (extractor 9dbb13d) retains the sole annotated entry,
+central utilities and platform registry dispatch. The remaining hook capture
+is under evidence/item-8/sources/lithostitched-provider-hooks, extractor
+0c1ecb552cb270d7419df2306d10468c30c907fa, manifest
+7b4524568318a99cc4fc77d5ac4d8c23c125cc492d5c3045ae6347f3d170a8c2.
+All 53 new classes reproduce exactly: 51 remaining declared common/server
+mixins and two direct configuration/registry delegates. Together with the four
+older mixin captures, all 55 declared common/server hooks now have source.
+No runtime is live. Census remains 86 resolved, 50 open; source coverage is
+not a provider closure.
+
+Next: bind the inspected hook roles and full 445-file payload, then reconcile
+26 packaged template lists and the twenty shipwreck overlay templates with
+existing vanilla consumers. The two packaged worldgen modifiers compile raw
+templates and replace trial-chamber aliases; the sole packaged pool is the
+existing trial-chamber entrance cap. Other packaged data is processor lists,
+terrain/noise/region definitions and tags. Preserve overlay enablement separately
+from membership. Hooks select supplied templates/processors or alter existing
+biome/terrain/jigsaw behavior. Follow a further delegate only for a concrete
+unresolved independent-site boundary; do not audit every unused library codec.
+Finish the existing focused provider check and supported disposition before
+decrementing the queue. No new measurement or framework is required.
+
 Naturalist membership is RESOLVED. Source 9682cb0 captures its entry, seven
 common mixins and mob-spawn modifier. Two focused cases pass (0.13s); scoped
 Ruff/Basedpyright pass. No independent family added. Census: 86 resolved,
