@@ -1,0 +1,388 @@
+Compiled from "NeoForgeClientHooksHelper.java"
+public class net.createmod.catnip.platform.NeoForgeClientHooksHelper implements net.createmod.catnip.platform.services.ModClientHooksHelper {
+  private final java.util.Map<net.minecraft.resources.ResourceLocation, net.minecraft.client.particle.ParticleProvider<?>> particleProviders;
+
+  public net.createmod.catnip.platform.NeoForgeClientHooksHelper();
+    Code:
+       0: aload_0
+       1: invokespecial #29                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: invokestatic  #35                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+       8: getfield      #39                 // Field net/minecraft/client/Minecraft.particleEngine:Lnet/minecraft/client/particle/ParticleEngine;
+      11: checkcast     #41                 // class net/createmod/ponder/mixin/client/accessor/ParticleEngineAccessor
+      14: invokeinterface #45,  1           // InterfaceMethod net/createmod/ponder/mixin/client/accessor/ParticleEngineAccessor.ponder$getProviders:()Ljava/util/Map;
+      19: putfield      #47                 // Field particleProviders:Ljava/util/Map;
+      22: return
+
+  public java.util.Locale getCurrentLocale();
+    Code:
+       0: invokestatic  #35                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+       3: invokevirtual #55                 // Method net/minecraft/client/Minecraft.getLanguageManager:()Lnet/minecraft/client/resources/language/LanguageManager;
+       6: invokevirtual #60                 // Method net/minecraft/client/resources/language/LanguageManager.getJavaLocale:()Ljava/util/Locale;
+       9: areturn
+
+  public <T extends net.minecraft.core.particles.ParticleOptions> net.minecraft.client.particle.Particle createParticleFromData(T, net.minecraft.client.multiplayer.ClientLevel, double, double, double, double, double, double);
+    Code:
+       0: aload_1
+       1: invokeinterface #70,  1           // InterfaceMethod net/minecraft/core/particles/ParticleOptions.getType:()Lnet/minecraft/core/particles/ParticleType;
+       6: invokestatic  #76                 // Method net/createmod/catnip/registry/RegisteredObjectsHelper.getKeyOrThrow:(Lnet/minecraft/core/particles/ParticleType;)Lnet/minecraft/resources/ResourceLocation;
+       9: astore        15
+      11: aload_0
+      12: getfield      #47                 // Field particleProviders:Ljava/util/Map;
+      15: aload         15
+      17: invokeinterface #82,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      22: checkcast     #84                 // class net/minecraft/client/particle/ParticleProvider
+      25: astore        16
+      27: aload         16
+      29: ifnonnull     36
+      32: aconst_null
+      33: goto          56
+      36: aload         16
+      38: aload_1
+      39: aload_2
+      40: dload_3
+      41: dload         5
+      43: dload         7
+      45: dload         9
+      47: dload         11
+      49: dload         13
+      51: invokeinterface #89,  15          // InterfaceMethod net/minecraft/client/particle/ParticleProvider.createParticle:(Lnet/minecraft/core/particles/ParticleOptions;Lnet/minecraft/client/multiplayer/ClientLevel;DDDDDD)Lnet/minecraft/client/particle/Particle;
+      56: areturn
+
+  public net.minecraft.client.Minecraft getMinecraftFromScreen(net.minecraft.client.gui.screens.Screen);
+    Code:
+       0: aload_1
+       1: invokevirtual #115                // Method net/minecraft/client/gui/screens/Screen.getMinecraft:()Lnet/minecraft/client/Minecraft;
+       4: areturn
+
+  public boolean isKeyPressed(net.minecraft.client.KeyMapping);
+    Code:
+       0: aload_1
+       1: invokevirtual #125                // Method net/minecraft/client/KeyMapping.getKey:()Lcom/mojang/blaze3d/platform/InputConstants$Key;
+       4: invokevirtual #129                // Method com/mojang/blaze3d/platform/InputConstants$Key.getValue:()I
+       7: istore_2
+       8: invokestatic  #35                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+      11: invokevirtual #133                // Method net/minecraft/client/Minecraft.getWindow:()Lcom/mojang/blaze3d/platform/Window;
+      14: invokevirtual #138                // Method com/mojang/blaze3d/platform/Window.getWindow:()J
+      17: lstore_3
+      18: lload_3
+      19: iload_2
+      20: invokestatic  #142                // Method com/mojang/blaze3d/platform/InputConstants.isKeyDown:(JI)Z
+      23: ifeq          37
+      26: aload_1
+      27: invokevirtual #146                // Method net/minecraft/client/KeyMapping.isConflictContextAndModifierActive:()Z
+      30: ifeq          37
+      33: iconst_1
+      34: goto          38
+      37: iconst_0
+      38: ireturn
+
+  public void enableStencilBuffer(com.mojang.blaze3d.pipeline.RenderTarget);
+    Code:
+       0: aload_1
+       1: invokevirtual #159                // Method com/mojang/blaze3d/pipeline/RenderTarget.enableStencil:()V
+       4: return
+
+  public void renderFullFluidState(com.mojang.blaze3d.vertex.PoseStack, net.minecraft.client.renderer.MultiBufferSource$BufferSource, net.minecraft.world.level.material.FluidState);
+    Code:
+       0: getstatic     #169                // Field net/createmod/catnip/platform/CatnipServices.FLUID_RENDERER:Lnet/createmod/catnip/render/FluidRenderHelper;
+       3: aload_3
+       4: fconst_0
+       5: fconst_0
+       6: fconst_0
+       7: fconst_1
+       8: fconst_1
+       9: fconst_1
+      10: aload_2
+      11: aload_1
+      12: ldc           #170                // int 15728880
+      14: iconst_0
+      15: iconst_1
+      16: invokevirtual #176                // Method net/createmod/catnip/render/FluidRenderHelper.renderFluidBox:(Lnet/minecraft/world/level/material/FluidState;FFFFFFLnet/minecraft/client/renderer/MultiBufferSource;Lcom/mojang/blaze3d/vertex/PoseStack;IZZ)V
+      19: return
+
+  public void bufferModel(net.minecraft.client.resources.model.BakedModel, net.minecraft.core.BlockPos, net.minecraft.world.level.BlockAndTintGetter, net.minecraft.world.level.block.state.BlockState, com.mojang.blaze3d.vertex.PoseStack, net.createmod.catnip.client.render.model.ShadeSeparatedBufferSource);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_3
+       3: aload         4
+       5: aload         5
+       7: aload         6
+       9: invokestatic  #188                // Method net/createmod/catnip/impl/client/render/model/BakedModelBuffererImpl.bufferModel:(Lnet/minecraft/client/resources/model/BakedModel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/BlockAndTintGetter;Lnet/minecraft/world/level/block/state/BlockState;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/createmod/catnip/client/render/model/ShadeSeparatedBufferSource;)V
+      12: return
+
+  public void bufferModel(net.minecraft.client.resources.model.BakedModel, net.minecraft.core.BlockPos, net.minecraft.world.level.BlockAndTintGetter, net.minecraft.world.level.block.state.BlockState, com.mojang.blaze3d.vertex.PoseStack, net.createmod.catnip.client.render.model.ShadeSeparatedResultConsumer);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_3
+       3: aload         4
+       5: aload         5
+       7: aload         6
+       9: invokestatic  #201                // Method net/createmod/catnip/impl/client/render/model/BakedModelBuffererImpl.bufferModel:(Lnet/minecraft/client/resources/model/BakedModel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/BlockAndTintGetter;Lnet/minecraft/world/level/block/state/BlockState;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/createmod/catnip/client/render/model/ShadeSeparatedResultConsumer;)V
+      12: return
+
+  public void bufferBlocks(java.util.Iterator<net.minecraft.core.BlockPos>, net.minecraft.world.level.BlockAndTintGetter, com.mojang.blaze3d.vertex.PoseStack, boolean, net.createmod.catnip.client.render.model.ShadeSeparatedBufferSource);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_3
+       3: iload         4
+       5: aload         5
+       7: invokestatic  #208                // Method net/createmod/catnip/impl/client/render/model/BakedModelBuffererImpl.bufferBlocks:(Ljava/util/Iterator;Lnet/minecraft/world/level/BlockAndTintGetter;Lcom/mojang/blaze3d/vertex/PoseStack;ZLnet/createmod/catnip/client/render/model/ShadeSeparatedBufferSource;)V
+      10: return
+
+  public void bufferBlocks(java.util.Iterator<net.minecraft.core.BlockPos>, net.minecraft.world.level.BlockAndTintGetter, com.mojang.blaze3d.vertex.PoseStack, boolean, net.createmod.catnip.client.render.model.ShadeSeparatedResultConsumer);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_3
+       3: iload         4
+       5: aload         5
+       7: invokestatic  #217                // Method net/createmod/catnip/impl/client/render/model/BakedModelBuffererImpl.bufferBlocks:(Ljava/util/Iterator;Lnet/minecraft/world/level/BlockAndTintGetter;Lcom/mojang/blaze3d/vertex/PoseStack;ZLnet/createmod/catnip/client/render/model/ShadeSeparatedResultConsumer;)V
+      10: return
+
+  public net.createmod.catnip.render.ShadedBlockSbbBuilder createSbbBuilder(com.mojang.blaze3d.vertex.BufferBuilder);
+    Code:
+       0: new           #221                // class net/createmod/ponder/render/NeoForgeShadedBlockSbbBuilder
+       3: dup
+       4: invokespecial #222                // Method net/createmod/ponder/render/NeoForgeShadedBlockSbbBuilder."<init>":()V
+       7: areturn
+
+  public java.lang.Iterable<net.minecraft.client.renderer.RenderType> getRenderTypesForBlockModel(net.minecraft.world.level.block.state.BlockState, net.minecraft.util.RandomSource, net.minecraft.world.level.block.entity.BlockEntity);
+    Code:
+       0: invokestatic  #35                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+       3: invokevirtual #231                // Method net/minecraft/client/Minecraft.getBlockRenderer:()Lnet/minecraft/client/renderer/block/BlockRenderDispatcher;
+       6: aload_1
+       7: invokevirtual #237                // Method net/minecraft/client/renderer/block/BlockRenderDispatcher.getBlockModel:(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/client/resources/model/BakedModel;
+      10: astore        4
+      12: aload_3
+      13: ifnull        23
+      16: aload_3
+      17: invokevirtual #243                // Method net/minecraft/world/level/block/entity/BlockEntity.getModelData:()Lnet/neoforged/neoforge/client/model/data/ModelData;
+      20: goto          26
+      23: getstatic     #251                // Field net/neoforged/neoforge/client/model/data/ModelData.EMPTY:Lnet/neoforged/neoforge/client/model/data/ModelData;
+      26: astore        5
+      28: aload         4
+      30: aload_1
+      31: aload_2
+      32: aload         5
+      34: invokeinterface #255,  4          // InterfaceMethod net/minecraft/client/resources/model/BakedModel.getRenderTypes:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/util/RandomSource;Lnet/neoforged/neoforge/client/model/data/ModelData;)Lnet/neoforged/neoforge/client/ChunkRenderTypeSet;
+      39: areturn
+
+  public boolean doesBlockModelContainRenderType(net.minecraft.client.renderer.RenderType, net.minecraft.world.level.block.state.BlockState, net.minecraft.util.RandomSource, net.minecraft.world.level.block.entity.BlockEntity);
+    Code:
+       0: invokestatic  #35                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+       3: invokevirtual #231                // Method net/minecraft/client/Minecraft.getBlockRenderer:()Lnet/minecraft/client/renderer/block/BlockRenderDispatcher;
+       6: aload_2
+       7: invokevirtual #237                // Method net/minecraft/client/renderer/block/BlockRenderDispatcher.getBlockModel:(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/client/resources/model/BakedModel;
+      10: astore        5
+      12: aload         4
+      14: ifnull        25
+      17: aload         4
+      19: invokevirtual #243                // Method net/minecraft/world/level/block/entity/BlockEntity.getModelData:()Lnet/neoforged/neoforge/client/model/data/ModelData;
+      22: goto          28
+      25: getstatic     #251                // Field net/neoforged/neoforge/client/model/data/ModelData.EMPTY:Lnet/neoforged/neoforge/client/model/data/ModelData;
+      28: astore        6
+      30: aload         5
+      32: aload_2
+      33: aload_3
+      34: aload         6
+      36: invokeinterface #255,  4          // InterfaceMethod net/minecraft/client/resources/model/BakedModel.getRenderTypes:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/util/RandomSource;Lnet/neoforged/neoforge/client/model/data/ModelData;)Lnet/neoforged/neoforge/client/ChunkRenderTypeSet;
+      41: aload_1
+      42: invokevirtual #268                // Method net/neoforged/neoforge/client/ChunkRenderTypeSet.contains:(Lnet/minecraft/client/renderer/RenderType;)Z
+      45: ireturn
+
+  public void tesselateBlockVirtual(net.minecraft.client.renderer.block.BlockRenderDispatcher, net.minecraft.client.resources.model.BakedModel, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos, com.mojang.blaze3d.vertex.PoseStack, com.mojang.blaze3d.vertex.VertexConsumer, boolean, net.minecraft.util.RandomSource, long, int, net.minecraft.client.renderer.RenderType);
+    Code:
+       0: aload_1
+       1: invokevirtual #276                // Method net/minecraft/client/renderer/block/BlockRenderDispatcher.getModelRenderer:()Lnet/minecraft/client/renderer/block/ModelBlockRenderer;
+       4: astore        13
+       6: aload_2
+       7: getstatic     #282                // Field dev/engine_room/flywheel/lib/model/baked/EmptyVirtualBlockGetter.FULL_DARK:Ldev/engine_room/flywheel/lib/model/baked/EmptyVirtualBlockGetter;
+      10: aload         4
+      12: aload_3
+      13: getstatic     #287                // Field net/createmod/ponder/render/VirtualRenderHelper.VIRTUAL_DATA:Lnet/neoforged/neoforge/client/model/data/ModelData;
+      16: invokeinterface #290,  5          // InterfaceMethod net/minecraft/client/resources/model/BakedModel.getModelData:(Lnet/minecraft/world/level/BlockAndTintGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/neoforged/neoforge/client/model/data/ModelData;)Lnet/neoforged/neoforge/client/model/data/ModelData;
+      21: astore        14
+      23: aload         13
+      25: getstatic     #282                // Field dev/engine_room/flywheel/lib/model/baked/EmptyVirtualBlockGetter.FULL_DARK:Ldev/engine_room/flywheel/lib/model/baked/EmptyVirtualBlockGetter;
+      28: aload_2
+      29: aload_3
+      30: aload         4
+      32: aload         5
+      34: aload         6
+      36: iload         7
+      38: aload         8
+      40: lload         9
+      42: iload         11
+      44: aload         14
+      46: aload         12
+      48: invokevirtual #296                // Method net/minecraft/client/renderer/block/ModelBlockRenderer.tesselateBlock:(Lnet/minecraft/world/level/BlockAndTintGetter;Lnet/minecraft/client/resources/model/BakedModel;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;ZLnet/minecraft/util/RandomSource;JILnet/neoforged/neoforge/client/model/data/ModelData;Lnet/minecraft/client/renderer/RenderType;)V
+      51: return
+
+  public void tesselateBlockVirtual(net.minecraft.world.level.Level, net.minecraft.client.renderer.block.BlockRenderDispatcher, net.minecraft.client.resources.model.BakedModel, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos, com.mojang.blaze3d.vertex.PoseStack, com.mojang.blaze3d.vertex.VertexConsumer, boolean, net.minecraft.util.RandomSource, long, int, net.minecraft.client.renderer.RenderType);
+    Code:
+       0: aload_2
+       1: invokevirtual #276                // Method net/minecraft/client/renderer/block/BlockRenderDispatcher.getModelRenderer:()Lnet/minecraft/client/renderer/block/ModelBlockRenderer;
+       4: astore        14
+       6: aload_1
+       7: aload         5
+       9: invokevirtual #314                // Method net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+      12: astore        15
+      14: aload_3
+      15: aload_1
+      16: aload         5
+      18: aload         4
+      20: aload         15
+      22: ifnonnull     31
+      25: getstatic     #251                // Field net/neoforged/neoforge/client/model/data/ModelData.EMPTY:Lnet/neoforged/neoforge/client/model/data/ModelData;
+      28: goto          36
+      31: aload         15
+      33: invokevirtual #243                // Method net/minecraft/world/level/block/entity/BlockEntity.getModelData:()Lnet/neoforged/neoforge/client/model/data/ModelData;
+      36: invokeinterface #290,  5          // InterfaceMethod net/minecraft/client/resources/model/BakedModel.getModelData:(Lnet/minecraft/world/level/BlockAndTintGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/neoforged/neoforge/client/model/data/ModelData;)Lnet/neoforged/neoforge/client/model/data/ModelData;
+      41: astore        16
+      43: aload         14
+      45: aload_1
+      46: aload_3
+      47: aload         4
+      49: aload         5
+      51: aload         6
+      53: aload         7
+      55: iload         8
+      57: aload         9
+      59: lload         10
+      61: iload         12
+      63: aload         16
+      65: aload         13
+      67: invokevirtual #296                // Method net/minecraft/client/renderer/block/ModelBlockRenderer.tesselateBlock:(Lnet/minecraft/world/level/BlockAndTintGetter;Lnet/minecraft/client/resources/model/BakedModel;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;ZLnet/minecraft/util/RandomSource;JILnet/neoforged/neoforge/client/model/data/ModelData;Lnet/minecraft/client/renderer/RenderType;)V
+      70: return
+
+  public void renderGuiGameElementModel(net.minecraft.client.renderer.block.BlockRenderDispatcher, net.minecraft.client.renderer.MultiBufferSource$BufferSource, com.mojang.blaze3d.vertex.PoseStack, net.minecraft.world.level.block.state.BlockState, net.minecraft.client.resources.model.BakedModel, int, net.minecraft.world.level.block.entity.BlockEntity);
+    Code:
+       0: aload         7
+       2: ifnull        13
+       5: aload         7
+       7: invokevirtual #243                // Method net/minecraft/world/level/block/entity/BlockEntity.getModelData:()Lnet/neoforged/neoforge/client/model/data/ModelData;
+      10: goto          16
+      13: getstatic     #287                // Field net/createmod/ponder/render/VirtualRenderHelper.VIRTUAL_DATA:Lnet/neoforged/neoforge/client/model/data/ModelData;
+      16: astore        8
+      18: aload         4
+      20: invokevirtual #332                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      23: getstatic     #338                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+      26: if_acmpne     69
+      29: invokestatic  #344                // Method net/minecraft/client/renderer/Sheets.translucentCullBlockSheet:()Lnet/minecraft/client/renderer/RenderType;
+      32: astore        9
+      34: aload_1
+      35: invokevirtual #276                // Method net/minecraft/client/renderer/block/BlockRenderDispatcher.getModelRenderer:()Lnet/minecraft/client/renderer/block/ModelBlockRenderer;
+      38: aload_3
+      39: invokevirtual #348                // Method com/mojang/blaze3d/vertex/PoseStack.last:()Lcom/mojang/blaze3d/vertex/PoseStack$Pose;
+      42: aload_2
+      43: aload         9
+      45: invokevirtual #352                // Method net/minecraft/client/renderer/MultiBufferSource$BufferSource.getBuffer:(Lnet/minecraft/client/renderer/RenderType;)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+      48: aload         4
+      50: aload         5
+      52: fconst_1
+      53: fconst_1
+      54: fconst_1
+      55: ldc           #170                // int 15728880
+      57: getstatic     #357                // Field net/minecraft/client/renderer/texture/OverlayTexture.NO_OVERLAY:I
+      60: aload         8
+      62: aconst_null
+      63: invokevirtual #361                // Method net/minecraft/client/renderer/block/ModelBlockRenderer.renderModel:(Lcom/mojang/blaze3d/vertex/PoseStack$Pose;Lcom/mojang/blaze3d/vertex/VertexConsumer;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/client/resources/model/BakedModel;FFFIILnet/neoforged/neoforge/client/model/data/ModelData;Lnet/minecraft/client/renderer/RenderType;)V
+      66: goto          208
+      69: invokestatic  #35                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+      72: invokevirtual #365                // Method net/minecraft/client/Minecraft.getBlockColors:()Lnet/minecraft/client/color/block/BlockColors;
+      75: aload         4
+      77: aconst_null
+      78: aconst_null
+      79: iconst_0
+      80: invokevirtual #371                // Method net/minecraft/client/color/block/BlockColors.getColor:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockAndTintGetter;Lnet/minecraft/core/BlockPos;I)I
+      83: istore        9
+      85: new           #373                // class net/createmod/catnip/theme/Color
+      88: dup
+      89: iload         9
+      91: iconst_m1
+      92: if_icmpne     100
+      95: iload         6
+      97: goto          102
+     100: iload         9
+     102: invokespecial #376                // Method net/createmod/catnip/theme/Color."<init>":(I)V
+     105: astore        10
+     107: aload         5
+     109: aload         4
+     111: ldc2_w        #377                // long 42l
+     114: invokestatic  #382                // InterfaceMethod net/minecraft/util/RandomSource.create:(J)Lnet/minecraft/util/RandomSource;
+     117: getstatic     #287                // Field net/createmod/ponder/render/VirtualRenderHelper.VIRTUAL_DATA:Lnet/neoforged/neoforge/client/model/data/ModelData;
+     120: invokeinterface #255,  4          // InterfaceMethod net/minecraft/client/resources/model/BakedModel.getRenderTypes:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/util/RandomSource;Lnet/neoforged/neoforge/client/model/data/ModelData;)Lnet/neoforged/neoforge/client/ChunkRenderTypeSet;
+     125: invokevirtual #386                // Method net/neoforged/neoforge/client/ChunkRenderTypeSet.iterator:()Ljava/util/Iterator;
+     128: astore        11
+     130: aload         11
+     132: invokeinterface #391,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     137: ifeq          208
+     140: aload         11
+     142: invokeinterface #395,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     147: checkcast     #324                // class net/minecraft/client/renderer/RenderType
+     150: astore        12
+     152: aload         12
+     154: iconst_0
+     155: invokestatic  #401                // Method net/neoforged/neoforge/client/RenderTypeHelper.getEntityRenderType:(Lnet/minecraft/client/renderer/RenderType;Z)Lnet/minecraft/client/renderer/RenderType;
+     158: astore        13
+     160: aload_1
+     161: invokevirtual #276                // Method net/minecraft/client/renderer/block/BlockRenderDispatcher.getModelRenderer:()Lnet/minecraft/client/renderer/block/ModelBlockRenderer;
+     164: aload_3
+     165: invokevirtual #348                // Method com/mojang/blaze3d/vertex/PoseStack.last:()Lcom/mojang/blaze3d/vertex/PoseStack$Pose;
+     168: aload_2
+     169: aload         13
+     171: invokevirtual #352                // Method net/minecraft/client/renderer/MultiBufferSource$BufferSource.getBuffer:(Lnet/minecraft/client/renderer/RenderType;)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+     174: aload         4
+     176: aload         5
+     178: aload         10
+     180: invokevirtual #405                // Method net/createmod/catnip/theme/Color.getRedAsFloat:()F
+     183: aload         10
+     185: invokevirtual #408                // Method net/createmod/catnip/theme/Color.getGreenAsFloat:()F
+     188: aload         10
+     190: invokevirtual #411                // Method net/createmod/catnip/theme/Color.getBlueAsFloat:()F
+     193: ldc           #170                // int 15728880
+     195: getstatic     #357                // Field net/minecraft/client/renderer/texture/OverlayTexture.NO_OVERLAY:I
+     198: aload         8
+     200: aload         12
+     202: invokevirtual #361                // Method net/minecraft/client/renderer/block/ModelBlockRenderer.renderModel:(Lcom/mojang/blaze3d/vertex/PoseStack$Pose;Lcom/mojang/blaze3d/vertex/VertexConsumer;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/client/resources/model/BakedModel;FFFIILnet/neoforged/neoforge/client/model/data/ModelData;Lnet/minecraft/client/renderer/RenderType;)V
+     205: goto          130
+     208: return
+
+  public void renderVirtualBlockStateModel(net.minecraft.client.renderer.block.BlockRenderDispatcher, com.mojang.blaze3d.vertex.PoseStack, com.mojang.blaze3d.vertex.VertexConsumer, net.minecraft.world.level.block.state.BlockState, net.minecraft.client.resources.model.BakedModel, float, float, float, net.minecraft.client.renderer.RenderType);
+    Code:
+       0: aload_1
+       1: invokevirtual #276                // Method net/minecraft/client/renderer/block/BlockRenderDispatcher.getModelRenderer:()Lnet/minecraft/client/renderer/block/ModelBlockRenderer;
+       4: aload_2
+       5: invokevirtual #348                // Method com/mojang/blaze3d/vertex/PoseStack.last:()Lcom/mojang/blaze3d/vertex/PoseStack$Pose;
+       8: aload_3
+       9: aload         4
+      11: aload         5
+      13: fload         6
+      15: fload         7
+      17: fload         8
+      19: ldc           #170                // int 15728880
+      21: getstatic     #357                // Field net/minecraft/client/renderer/texture/OverlayTexture.NO_OVERLAY:I
+      24: getstatic     #287                // Field net/createmod/ponder/render/VirtualRenderHelper.VIRTUAL_DATA:Lnet/neoforged/neoforge/client/model/data/ModelData;
+      27: aload         9
+      29: invokevirtual #361                // Method net/minecraft/client/renderer/block/ModelBlockRenderer.renderModel:(Lcom/mojang/blaze3d/vertex/PoseStack$Pose;Lcom/mojang/blaze3d/vertex/VertexConsumer;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/client/resources/model/BakedModel;FFFIILnet/neoforged/neoforge/client/model/data/ModelData;Lnet/minecraft/client/renderer/RenderType;)V
+      32: return
+
+  public void vertexConsumerPutBulkDataWithAlpha(com.mojang.blaze3d.vertex.VertexConsumer, com.mojang.blaze3d.vertex.PoseStack$Pose, net.minecraft.client.renderer.block.model.BakedQuad, float, float, float, float, int, int);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_3
+       3: fload         4
+       5: fload         5
+       7: fload         6
+       9: fload         7
+      11: iload         8
+      13: iload         9
+      15: iconst_1
+      16: invokeinterface #431,  10         // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.putBulkData:(Lcom/mojang/blaze3d/vertex/PoseStack$Pose;Lnet/minecraft/client/renderer/block/model/BakedQuad;FFFFIIZ)V
+      21: return
+}

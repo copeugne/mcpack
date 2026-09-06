@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Create membership is RESOLVED. Ponder source 0177383 (extractor 28badcf)
+and the final complete parent partition close the last gaps. Ponder templates
+are client guide scenes, GameTest templates are fixtures, and generation is
+three ore chains. No independent family added. Six focused cases, Ruff and
+Basedpyright pass. Census: 90 resolved, 46 open providers. Next: Forgified Fabric
+API, then 24 code-only and 21 unmatched rows, followed by canonical grouping.
+The 887 runtime entries and 421 provisional groups are not final family counts.
+Reuse all closed Create roles. No runtime or capture process is live.
+
 Create embedded Flywheel and Registrate membership is resolved. Flywheel
 source 4a7f244 (extractor f61db3a) is independently reproduced and client-only;
 Registrate is a consumer-driven library with no automatic entry or data payload.

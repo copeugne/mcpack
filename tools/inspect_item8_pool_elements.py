@@ -2136,6 +2136,23 @@ CLASSES: tuple[str, ...] = (
     "com/simibubi/create/foundation/data/RuntimeDataGenerator.class",
     "com/simibubi/create/foundation/data/RuntimeDataGenerator$StandardBuilder.class",
     "dev/engine_room/flywheel/impl/FlywheelNeoForge.class",
+    "net/createmod/catnip/platform/NeoForgeClientHooksHelper.class",
+    "net/createmod/catnip/platform/NeoForgeFluidHelper.class",
+    "net/createmod/catnip/platform/NeoForgeHooksHelper.class",
+    "net/createmod/catnip/platform/NeoForgeNetworkHelper.class",
+    "net/createmod/catnip/platform/NeoForgePlatformHelper.class",
+    "net/createmod/ponder/NeoForgePonder$Events.class",
+    "net/createmod/ponder/NeoForgePonder$ModBusEvents.class",
+    "net/createmod/ponder/NeoForgePonder.class",
+    "net/createmod/ponder/Ponder.class",
+    "net/createmod/ponder/PonderClient.class",
+    "net/createmod/ponder/foundation/registration/PonderSceneRegistry.class",
+    "net/createmod/ponder/NeoForgePonderClient$ClientEvents.class",
+    "net/createmod/ponder/NeoForgePonderClient$ModBusClientEvents.class",
+    "net/createmod/ponder/NeoForgePonderClient.class",
+    "net/createmod/ponder/mixin/accessor/BiomeManagerAccessor.class",
+    "net/createmod/ponder/mixin/accessor/EntityAccessor.class",
+    "net/createmod/ponder/mixin/accessor/MinecraftServerAccessor.class",
     "com/simibubi/create/AllKeys.class",
     "com/simibubi/create/CreateClient.class",
     "com/simibubi/create/api/registry/CreateBuiltInRegistries.class",
@@ -2254,6 +2271,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jarjar/ponder-neoforge-1.0.82+mc1.21.1.jar",
         "META-INF/jarjar/flywheel-neoforge-1.21.1-1.0.6.jar",
         "META-INF/jars/midnightlib-1.9.2+1.21.1-neoforge.jar",
         "META-INF/jars/tiny-config-3.1.0-neoforge.jar",
@@ -2271,6 +2289,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jarjar/ponder-neoforge-1.0.82+mc1.21.1.jar": (
+            "create-1.21.1-6.0.10.jar",
+            "0cf4611ad853042b689ac386184c5bbe02950efcffddb49e5f604e82baddb0dc",
+        ),
         "META-INF/jarjar/flywheel-neoforge-1.21.1-1.0.6.jar": (
             "create-1.21.1-6.0.10.jar",
             "31dda15c205eb596d3b3449ef03f6af7363a6cd35b3da4bfe916b304f9e5337e",
