@@ -62,7 +62,8 @@ def parse_args() -> argparse.Namespace:
     for flag in ("--soaring", "--nether", "--nether-houses", "--nether-arenas",
                  "--nether-landmarks", "--voyager-small", "--voyager-buildings",
                  "--voyager-landmarks", "--terralith-buildings", "--adora-trees",
-                 "--adora-landmarks", "--adora-facilities", "--adora-nether"):
+                 "--adora-landmarks", "--adora-facilities", "--adora-nether",
+                 "--adora-monuments"):
         _ = selection.add_argument(flag, action="store_true")
     return parser.parse_args()
 
@@ -84,12 +85,14 @@ def main() -> None:
     archive_name = ("adorabuild-structures-2.11.0-neoforge-1.21.3.jar"
                     if (cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
                         or cast("bool", args.adora_facilities)
-                        or cast("bool", args.adora_nether)) else
+                        or cast("bool", args.adora_nether)
+                        or cast("bool", args.adora_monuments)) else
                     "Terralith_1.21.1_v2.6.2_Neoforge.jar"
                     if cast("bool", args.terralith_buildings) else archive_name)
     compressed = (soaring or nether or voyager or cast("bool", args.terralith_buildings)
                   or cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
-                  or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether))
+                  or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether)
+                        or cast("bool", args.adora_monuments))
     source = next(s for s in retained_sources(Path.cwd()) if s.name == archive_name)
     if hashlib.sha256(source.path.read_bytes()).hexdigest() != source.sha256:
         message = f"Archive identity mismatch: {archive_name}"
@@ -203,9 +206,19 @@ def main() -> None:
         } if cast("bool", args.terralith_buildings) else sheets
         namespace = ("adorabuild_structures"
                      if (cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
-                        or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether))
+                        or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether)
+                        or cast("bool", args.adora_monuments))
                      else namespace)
         sheets = {
+            "palaces_mansion": ["ancient_palace_1", "ancient_palace_2",
+                                "ancient_palace_3", "dark_oak_mansion_medium_1"],
+            "end_ocean_temples": ["end_temple_small_1", "end_temple_large_1",
+                                  "ocean_temple_small_1", "ocean_temple_small_2",
+                                  "ocean_temple_medium_1", "ocean_temple_medium_2"],
+            "sand_designs": ["red_sand_temple_small_1", "red_sand_temple_medium_1",
+                             "sand_castle_small_1", "sand_underground_castle_1",
+                             "sand_castle_tiny_1", "sand_pyramid_1"],
+        } if cast("bool", args.adora_monuments) else {
             "basalt_chambers": [f"basalt_chambers/{n}" for n in
                                 ("ancient_debris", "dummy_side", "empty", "passage_1",
                                  "passage_2", "spawner", "trap")],
