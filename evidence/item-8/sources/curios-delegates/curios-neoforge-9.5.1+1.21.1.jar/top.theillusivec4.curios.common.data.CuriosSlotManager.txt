@@ -1,0 +1,2735 @@
+Classfile curios-neoforge-9.5.1+1.21.1.jar!/top/theillusivec4/curios/common/data/CuriosSlotManager.class
+  Last modified May 14, 2025; size 22162 bytes
+  SHA-256 checksum 61d1b6b81739405a07aac578ea7e58b22e1e98fad999a42f039825b0af87f376
+  Compiled from "CuriosSlotManager.java"
+public class top.theillusivec4.curios.common.data.CuriosSlotManager extends net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // top/theillusivec4/curios/common/data/CuriosSlotManager
+  super_class: #10                        // net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener
+  interfaces: 0, fields: 7, methods: 28, attributes: 3
+Constant pool:
+    #1 = Fieldref           #2.#3         // top/theillusivec4/curios/common/data/CuriosSlotManager.GSON:Lcom/google/gson/Gson;
+    #2 = Class              #4            // top/theillusivec4/curios/common/data/CuriosSlotManager
+    #3 = NameAndType        #5:#6         // GSON:Lcom/google/gson/Gson;
+    #4 = Utf8               top/theillusivec4/curios/common/data/CuriosSlotManager
+    #5 = Utf8               GSON
+    #6 = Utf8               Lcom/google/gson/Gson;
+    #7 = String             #8            // curios/slots
+    #8 = Utf8               curios/slots
+    #9 = Methodref          #10.#11       // net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener."<init>":(Lcom/google/gson/Gson;Ljava/lang/String;)V
+   #10 = Class              #12           // net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener
+   #11 = NameAndType        #13:#14       // "<init>":(Lcom/google/gson/Gson;Ljava/lang/String;)V
+   #12 = Utf8               net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener
+   #13 = Utf8               <init>
+   #14 = Utf8               (Lcom/google/gson/Gson;Ljava/lang/String;)V
+   #15 = Methodref          #16.#17       // com/google/common/collect/ImmutableMap.of:()Lcom/google/common/collect/ImmutableMap;
+   #16 = Class              #18           // com/google/common/collect/ImmutableMap
+   #17 = NameAndType        #19:#20       // of:()Lcom/google/common/collect/ImmutableMap;
+   #18 = Utf8               com/google/common/collect/ImmutableMap
+   #19 = Utf8               of
+   #20 = Utf8               ()Lcom/google/common/collect/ImmutableMap;
+   #21 = Fieldref           #2.#22        // top/theillusivec4/curios/common/data/CuriosSlotManager.slots:Ljava/util/Map;
+   #22 = NameAndType        #23:#24       // slots:Ljava/util/Map;
+   #23 = Utf8               slots
+   #24 = Utf8               Ljava/util/Map;
+   #25 = Methodref          #26.#27       // com/google/common/collect/ImmutableSet.of:()Lcom/google/common/collect/ImmutableSet;
+   #26 = Class              #28           // com/google/common/collect/ImmutableSet
+   #27 = NameAndType        #19:#29       // of:()Lcom/google/common/collect/ImmutableSet;
+   #28 = Utf8               com/google/common/collect/ImmutableSet
+   #29 = Utf8               ()Lcom/google/common/collect/ImmutableSet;
+   #30 = Fieldref           #2.#31        // top/theillusivec4/curios/common/data/CuriosSlotManager.configSlots:Ljava/util/Set;
+   #31 = NameAndType        #32:#33       // configSlots:Ljava/util/Set;
+   #32 = Utf8               configSlots
+   #33 = Utf8               Ljava/util/Set;
+   #34 = Fieldref           #2.#35        // top/theillusivec4/curios/common/data/CuriosSlotManager.icons:Ljava/util/Map;
+   #35 = NameAndType        #36:#24       // icons:Ljava/util/Map;
+   #36 = Utf8               icons
+   #37 = Fieldref           #2.#38        // top/theillusivec4/curios/common/data/CuriosSlotManager.idToMods:Ljava/util/Map;
+   #38 = NameAndType        #39:#24       // idToMods:Ljava/util/Map;
+   #39 = Utf8               idToMods
+   #40 = Class              #41           // java/util/HashMap
+   #41 = Utf8               java/util/HashMap
+   #42 = Methodref          #40.#43       // java/util/HashMap."<init>":()V
+   #43 = NameAndType        #13:#44       // "<init>":()V
+   #44 = Utf8               ()V
+   #45 = Class              #46           // java/util/LinkedHashMap
+   #46 = Utf8               java/util/LinkedHashMap
+   #47 = Methodref          #45.#43       // java/util/LinkedHashMap."<init>":()V
+   #48 = InterfaceMethodref #49.#50       // net/minecraft/server/packs/resources/ResourceManager.listPacks:()Ljava/util/stream/Stream;
+   #49 = Class              #51           // net/minecraft/server/packs/resources/ResourceManager
+   #50 = NameAndType        #52:#53       // listPacks:()Ljava/util/stream/Stream;
+   #51 = Utf8               net/minecraft/server/packs/resources/ResourceManager
+   #52 = Utf8               listPacks
+   #53 = Utf8               ()Ljava/util/stream/Stream;
+   #54 = InvokeDynamic      #0:#55        // #0:accept:(Ljava/util/Map;Ljava/util/Map;)Ljava/util/function/Consumer;
+   #55 = NameAndType        #56:#57       // accept:(Ljava/util/Map;Ljava/util/Map;)Ljava/util/function/Consumer;
+   #56 = Utf8               accept
+   #57 = Utf8               (Ljava/util/Map;Ljava/util/Map;)Ljava/util/function/Consumer;
+   #58 = InterfaceMethodref #59.#60       // java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+   #59 = Class              #61           // java/util/stream/Stream
+   #60 = NameAndType        #62:#63       // forEach:(Ljava/util/function/Consumer;)V
+   #61 = Utf8               java/util/stream/Stream
+   #62 = Utf8               forEach
+   #63 = Utf8               (Ljava/util/function/Consumer;)V
+   #64 = InterfaceMethodref #65.#66       // java/util/Map.entrySet:()Ljava/util/Set;
+   #65 = Class              #67           // java/util/Map
+   #66 = NameAndType        #68:#69       // entrySet:()Ljava/util/Set;
+   #67 = Utf8               java/util/Map
+   #68 = Utf8               entrySet
+   #69 = Utf8               ()Ljava/util/Set;
+   #70 = InterfaceMethodref #71.#72       // java/util/Set.iterator:()Ljava/util/Iterator;
+   #71 = Class              #73           // java/util/Set
+   #72 = NameAndType        #74:#75       // iterator:()Ljava/util/Iterator;
+   #73 = Utf8               java/util/Set
+   #74 = Utf8               iterator
+   #75 = Utf8               ()Ljava/util/Iterator;
+   #76 = InterfaceMethodref #77.#78       // java/util/Iterator.hasNext:()Z
+   #77 = Class              #79           // java/util/Iterator
+   #78 = NameAndType        #80:#81       // hasNext:()Z
+   #79 = Utf8               java/util/Iterator
+   #80 = Utf8               hasNext
+   #81 = Utf8               ()Z
+   #82 = InterfaceMethodref #77.#83       // java/util/Iterator.next:()Ljava/lang/Object;
+   #83 = NameAndType        #84:#85       // next:()Ljava/lang/Object;
+   #84 = Utf8               next
+   #85 = Utf8               ()Ljava/lang/Object;
+   #86 = Class              #87           // java/util/Map$Entry
+   #87 = Utf8               java/util/Map$Entry
+   #88 = InterfaceMethodref #86.#89       // java/util/Map$Entry.getKey:()Ljava/lang/Object;
+   #89 = NameAndType        #90:#85       // getKey:()Ljava/lang/Object;
+   #90 = Utf8               getKey
+   #91 = Class              #92           // net/minecraft/resources/ResourceLocation
+   #92 = Utf8               net/minecraft/resources/ResourceLocation
+   #93 = Methodref          #91.#94       // net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+   #94 = NameAndType        #95:#96       // getNamespace:()Ljava/lang/String;
+   #95 = Utf8               getNamespace
+   #96 = Utf8               ()Ljava/lang/String;
+   #97 = String             #98           // curios
+   #98 = Utf8               curios
+   #99 = Methodref          #100.#101     // java/lang/String.equals:(Ljava/lang/Object;)Z
+  #100 = Class              #102          // java/lang/String
+  #101 = NameAndType        #103:#104     // equals:(Ljava/lang/Object;)Z
+  #102 = Utf8               java/lang/String
+  #103 = Utf8               equals
+  #104 = Utf8               (Ljava/lang/Object;)Z
+  #105 = Methodref          #91.#106      // net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+  #106 = NameAndType        #107:#96      // getPath:()Ljava/lang/String;
+  #107 = Utf8               getPath
+  #108 = Fieldref           #109.#110     // com/mojang/serialization/JsonOps.INSTANCE:Lcom/mojang/serialization/JsonOps;
+  #109 = Class              #111          // com/mojang/serialization/JsonOps
+  #110 = NameAndType        #112:#113     // INSTANCE:Lcom/mojang/serialization/JsonOps;
+  #111 = Utf8               com/mojang/serialization/JsonOps
+  #112 = Utf8               INSTANCE
+  #113 = Utf8               Lcom/mojang/serialization/JsonOps;
+  #114 = InterfaceMethodref #86.#115      // java/util/Map$Entry.getValue:()Ljava/lang/Object;
+  #115 = NameAndType        #116:#85      // getValue:()Ljava/lang/Object;
+  #116 = Utf8               getValue
+  #117 = Class              #118          // com/google/gson/JsonElement
+  #118 = Utf8               com/google/gson/JsonElement
+  #119 = Methodref          #117.#120     // com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+  #120 = NameAndType        #121:#122     // getAsJsonObject:()Lcom/google/gson/JsonObject;
+  #121 = Utf8               getAsJsonObject
+  #122 = Utf8               ()Lcom/google/gson/JsonObject;
+  #123 = InterfaceMethodref #124.#125     // net/neoforged/neoforge/common/conditions/ICondition.conditionsMatched:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Z
+  #124 = Class              #126          // net/neoforged/neoforge/common/conditions/ICondition
+  #125 = NameAndType        #127:#128     // conditionsMatched:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Z
+  #126 = Utf8               net/neoforged/neoforge/common/conditions/ICondition
+  #127 = Utf8               conditionsMatched
+  #128 = Utf8               (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Z
+  #129 = Fieldref           #130.#131     // top/theillusivec4/curios/CuriosConstants.LOG:Lorg/slf4j/Logger;
+  #130 = Class              #132          // top/theillusivec4/curios/CuriosConstants
+  #131 = NameAndType        #133:#134     // LOG:Lorg/slf4j/Logger;
+  #132 = Utf8               top/theillusivec4/curios/CuriosConstants
+  #133 = Utf8               LOG
+  #134 = Utf8               Lorg/slf4j/Logger;
+  #135 = String             #136          // Skipping loading slot {} as its conditions were not met
+  #136 = Utf8               Skipping loading slot {} as its conditions were not met
+  #137 = InterfaceMethodref #138.#139     // org/slf4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;)V
+  #138 = Class              #140          // org/slf4j/Logger
+  #139 = NameAndType        #141:#142     // debug:(Ljava/lang/String;Ljava/lang/Object;)V
+  #140 = Utf8               org/slf4j/Logger
+  #141 = Utf8               debug
+  #142 = Utf8               (Ljava/lang/String;Ljava/lang/Object;)V
+  #143 = InvokeDynamic      #1:#144       // #1:apply:(Ljava/lang/String;)Ljava/util/function/Function;
+  #144 = NameAndType        #145:#146     // apply:(Ljava/lang/String;)Ljava/util/function/Function;
+  #145 = Utf8               apply
+  #146 = Utf8               (Ljava/lang/String;)Ljava/util/function/Function;
+  #147 = InterfaceMethodref #65.#148      // java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+  #148 = NameAndType        #149:#150     // computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+  #149 = Utf8               computeIfAbsent
+  #150 = Utf8               (Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+  #151 = Class              #152          // top/theillusivec4/curios/common/slottype/SlotType$Builder
+  #152 = Utf8               top/theillusivec4/curios/common/slottype/SlotType$Builder
+  #153 = String             #154          // top element
+  #154 = Utf8               top element
+  #155 = Methodref          #156.#157     // net/minecraft/util/GsonHelper.convertToJsonObject:(Lcom/google/gson/JsonElement;Ljava/lang/String;)Lcom/google/gson/JsonObject;
+  #156 = Class              #158          // net/minecraft/util/GsonHelper
+  #157 = NameAndType        #159:#160     // convertToJsonObject:(Lcom/google/gson/JsonElement;Ljava/lang/String;)Lcom/google/gson/JsonObject;
+  #158 = Utf8               net/minecraft/util/GsonHelper
+  #159 = Utf8               convertToJsonObject
+  #160 = Utf8               (Lcom/google/gson/JsonElement;Ljava/lang/String;)Lcom/google/gson/JsonObject;
+  #161 = Methodref          #2.#162       // top/theillusivec4/curios/common/data/CuriosSlotManager.fromJson:(Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;Lcom/google/gson/JsonObject;)V
+  #162 = NameAndType        #163:#164     // fromJson:(Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;Lcom/google/gson/JsonObject;)V
+  #163 = Utf8               fromJson
+  #164 = Utf8               (Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;Lcom/google/gson/JsonObject;)V
+  #165 = InvokeDynamic      #2:#166       // #2:apply:()Ljava/util/function/Function;
+  #166 = NameAndType        #145:#167     // apply:()Ljava/util/function/Function;
+  #167 = Utf8               ()Ljava/util/function/Function;
+  #168 = Class              #169          // com/google/common/collect/ImmutableSet$Builder
+  #169 = Utf8               com/google/common/collect/ImmutableSet$Builder
+  #170 = Methodref          #168.#171     // com/google/common/collect/ImmutableSet$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #171 = NameAndType        #172:#173     // add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #172 = Utf8               add
+  #173 = Utf8               (Ljava/lang/Object;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #174 = Class              #175          // java/lang/IllegalArgumentException
+  #175 = Utf8               java/lang/IllegalArgumentException
+  #176 = Class              #177          // com/google/gson/JsonParseException
+  #177 = Utf8               com/google/gson/JsonParseException
+  #178 = String             #179          // Parsing error loading curio slot {}
+  #179 = Utf8               Parsing error loading curio slot {}
+  #180 = InterfaceMethodref #138.#181     // org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+  #181 = NameAndType        #182:#183     // error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+  #182 = Utf8               error
+  #183 = Utf8               (Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+  #184 = Methodref          #185.#186     // top/theillusivec4/curios/common/slottype/LegacySlotManager.getImcBuilders:()Ljava/util/Map;
+  #185 = Class              #187          // top/theillusivec4/curios/common/slottype/LegacySlotManager
+  #186 = NameAndType        #188:#189     // getImcBuilders:()Ljava/util/Map;
+  #187 = Utf8               top/theillusivec4/curios/common/slottype/LegacySlotManager
+  #188 = Utf8               getImcBuilders
+  #189 = Utf8               ()Ljava/util/Map;
+  #190 = InvokeDynamic      #3:#191       // #3:apply:(Ljava/util/Map$Entry;)Ljava/util/function/Function;
+  #191 = NameAndType        #145:#192     // apply:(Ljava/util/Map$Entry;)Ljava/util/function/Function;
+  #192 = Utf8               (Ljava/util/Map$Entry;)Ljava/util/function/Function;
+  #193 = Methodref          #151.#194     // top/theillusivec4/curios/common/slottype/SlotType$Builder.apply:(Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;)V
+  #194 = NameAndType        #145:#195     // apply:(Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;)V
+  #195 = Utf8               (Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;)V
+  #196 = Methodref          #185.#197     // top/theillusivec4/curios/common/slottype/LegacySlotManager.getIdsToMods:()Ljava/util/Map;
+  #197 = NameAndType        #198:#189     // getIdsToMods:()Ljava/util/Map;
+  #198 = Utf8               getIdsToMods
+  #199 = InvokeDynamic      #4:#166       // #4:apply:()Ljava/util/function/Function;
+  #200 = Class              #201          // java/lang/Iterable
+  #201 = Utf8               java/lang/Iterable
+  #202 = Methodref          #168.#203     // com/google/common/collect/ImmutableSet$Builder.addAll:(Ljava/lang/Iterable;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #203 = NameAndType        #204:#205     // addAll:(Ljava/lang/Iterable;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #204 = Utf8               addAll
+  #205 = Utf8               (Ljava/lang/Iterable;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #206 = String             #207          // _
+  #207 = Utf8               _
+  #208 = Methodref          #100.#209     // java/lang/String.startsWith:(Ljava/lang/String;)Z
+  #209 = NameAndType        #210:#211     // startsWith:(Ljava/lang/String;)Z
+  #210 = Utf8               startsWith
+  #211 = Utf8               (Ljava/lang/String;)Z
+  #212 = InvokeDynamic      #5:#144       // #5:apply:(Ljava/lang/String;)Ljava/util/function/Function;
+  #213 = InvokeDynamic      #6:#166       // #6:apply:()Ljava/util/function/Function;
+  #214 = Methodref          #2.#215       // top/theillusivec4/curios/common/data/CuriosSlotManager.fromConfig:(Ljava/util/Map;)Ljava/util/Set;
+  #215 = NameAndType        #216:#217     // fromConfig:(Ljava/util/Map;)Ljava/util/Set;
+  #216 = Utf8               fromConfig
+  #217 = Utf8               (Ljava/util/Map;)Ljava/util/Set;
+  #218 = Methodref          #26.#219      // com/google/common/collect/ImmutableSet.copyOf:(Ljava/util/Collection;)Lcom/google/common/collect/ImmutableSet;
+  #219 = NameAndType        #220:#221     // copyOf:(Ljava/util/Collection;)Lcom/google/common/collect/ImmutableSet;
+  #220 = Utf8               copyOf
+  #221 = Utf8               (Ljava/util/Collection;)Lcom/google/common/collect/ImmutableSet;
+  #222 = InvokeDynamic      #7:#166       // #7:apply:()Ljava/util/function/Function;
+  #223 = String             #224          // config
+  #224 = Utf8               config
+  #225 = String             #226          // Config parsing error
+  #226 = Utf8               Config parsing error
+  #227 = InterfaceMethodref #138.#228     // org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+  #228 = NameAndType        #182:#229     // error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+  #229 = Utf8               (Ljava/lang/String;Ljava/lang/Throwable;)V
+  #230 = InterfaceMethodref #71.#231      // java/util/Set.stream:()Ljava/util/stream/Stream;
+  #231 = NameAndType        #232:#53      // stream:()Ljava/util/stream/Stream;
+  #232 = Utf8               stream
+  #233 = InvokeDynamic      #8:#166       // #8:apply:()Ljava/util/function/Function;
+  #234 = InvokeDynamic      #9:#166       // #9:apply:()Ljava/util/function/Function;
+  #235 = Methodref          #16.#236      // com/google/common/collect/ImmutableMap.toImmutableMap:(Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Collector;
+  #236 = NameAndType        #237:#238     // toImmutableMap:(Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Collector;
+  #237 = Utf8               toImmutableMap
+  #238 = Utf8               (Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Collector;
+  #239 = InterfaceMethodref #59.#240      // java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+  #240 = NameAndType        #241:#242     // collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+  #241 = Utf8               collect
+  #242 = Utf8               (Ljava/util/stream/Collector;)Ljava/lang/Object;
+  #243 = InvokeDynamic      #10:#166      // #10:apply:()Ljava/util/function/Function;
+  #244 = String             #245          // Loaded {} curio slots
+  #245 = Utf8               Loaded {} curio slots
+  #246 = InterfaceMethodref #65.#247      // java/util/Map.size:()I
+  #247 = NameAndType        #248:#249     // size:()I
+  #248 = Utf8               size
+  #249 = Utf8               ()I
+  #250 = Methodref          #251.#252     // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+  #251 = Class              #253          // java/lang/Integer
+  #252 = NameAndType        #254:#255     // valueOf:(I)Ljava/lang/Integer;
+  #253 = Utf8               java/lang/Integer
+  #254 = Utf8               valueOf
+  #255 = Utf8               (I)Ljava/lang/Integer;
+  #256 = InterfaceMethodref #138.#257     // org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+  #257 = NameAndType        #258:#142     // info:(Ljava/lang/String;Ljava/lang/Object;)V
+  #258 = Utf8               info
+  #259 = InterfaceMethodref #65.#260      // java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #260 = NameAndType        #261:#262     // get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #261 = Utf8               get
+  #262 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #263 = Class              #264          // top/theillusivec4/curios/api/type/ISlotType
+  #264 = Utf8               top/theillusivec4/curios/api/type/ISlotType
+  #265 = Methodref          #266.#267     // java/util/Optional.ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+  #266 = Class              #268          // java/util/Optional
+  #267 = NameAndType        #269:#270     // ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+  #268 = Utf8               java/util/Optional
+  #269 = Utf8               ofNullable
+  #270 = Utf8               (Ljava/lang/Object;)Ljava/util/Optional;
+  #271 = Class              #272          // net/minecraft/nbt/ListTag
+  #272 = Utf8               net/minecraft/nbt/ListTag
+  #273 = Methodref          #271.#43      // net/minecraft/nbt/ListTag."<init>":()V
+  #274 = Fieldref           #2.#275       // top/theillusivec4/curios/common/data/CuriosSlotManager.SERVER:Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+  #275 = NameAndType        #276:#277     // SERVER:Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+  #276 = Utf8               SERVER
+  #277 = Utf8               Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+  #278 = InterfaceMethodref #263.#279     // top/theillusivec4/curios/api/type/ISlotType.writeNbt:()Lnet/minecraft/nbt/CompoundTag;
+  #279 = NameAndType        #280:#281     // writeNbt:()Lnet/minecraft/nbt/CompoundTag;
+  #280 = Utf8               writeNbt
+  #281 = Utf8               ()Lnet/minecraft/nbt/CompoundTag;
+  #282 = Methodref          #271.#283     // net/minecraft/nbt/ListTag.add:(Ljava/lang/Object;)Z
+  #283 = NameAndType        #172:#104     // add:(Ljava/lang/Object;)Z
+  #284 = Methodref          #16.#285      // com/google/common/collect/ImmutableMap.builder:()Lcom/google/common/collect/ImmutableMap$Builder;
+  #285 = NameAndType        #286:#287     // builder:()Lcom/google/common/collect/ImmutableMap$Builder;
+  #286 = Utf8               builder
+  #287 = Utf8               ()Lcom/google/common/collect/ImmutableMap$Builder;
+  #288 = Methodref          #271.#72      // net/minecraft/nbt/ListTag.iterator:()Ljava/util/Iterator;
+  #289 = Class              #290          // net/minecraft/nbt/Tag
+  #290 = Utf8               net/minecraft/nbt/Tag
+  #291 = Class              #292          // net/minecraft/nbt/CompoundTag
+  #292 = Utf8               net/minecraft/nbt/CompoundTag
+  #293 = Methodref          #294.#295     // top/theillusivec4/curios/common/slottype/SlotType.from:(Lnet/minecraft/nbt/CompoundTag;)Ltop/theillusivec4/curios/api/type/ISlotType;
+  #294 = Class              #296          // top/theillusivec4/curios/common/slottype/SlotType
+  #295 = NameAndType        #297:#298     // from:(Lnet/minecraft/nbt/CompoundTag;)Ltop/theillusivec4/curios/api/type/ISlotType;
+  #296 = Utf8               top/theillusivec4/curios/common/slottype/SlotType
+  #297 = Utf8               from
+  #298 = Utf8               (Lnet/minecraft/nbt/CompoundTag;)Ltop/theillusivec4/curios/api/type/ISlotType;
+  #299 = InterfaceMethodref #263.#300     // top/theillusivec4/curios/api/type/ISlotType.getIdentifier:()Ljava/lang/String;
+  #300 = NameAndType        #301:#96      // getIdentifier:()Ljava/lang/String;
+  #301 = Utf8               getIdentifier
+  #302 = Methodref          #303.#304     // com/google/common/collect/ImmutableMap$Builder.put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #303 = Class              #305          // com/google/common/collect/ImmutableMap$Builder
+  #304 = NameAndType        #306:#307     // put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #305 = Utf8               com/google/common/collect/ImmutableMap$Builder
+  #306 = Utf8               put
+  #307 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+  #308 = Fieldref           #2.#309       // top/theillusivec4/curios/common/data/CuriosSlotManager.CLIENT:Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+  #309 = NameAndType        #310:#277     // CLIENT:Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+  #310 = Utf8               CLIENT
+  #311 = Methodref          #303.#312     // com/google/common/collect/ImmutableMap$Builder.build:()Lcom/google/common/collect/ImmutableMap;
+  #312 = NameAndType        #313:#20      // build:()Lcom/google/common/collect/ImmutableMap;
+  #313 = Utf8               build
+  #314 = Methodref          #16.#315      // com/google/common/collect/ImmutableMap.copyOf:(Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap;
+  #315 = NameAndType        #220:#316     // copyOf:(Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap;
+  #316 = Utf8               (Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap;
+  #317 = Class              #318          // top/theillusivec4/curios/api/CuriosApi
+  #318 = Utf8               top/theillusivec4/curios/api/CuriosApi
+  #319 = String             #320          // slot/empty_curio_slot
+  #320 = Utf8               slot/empty_curio_slot
+  #321 = Methodref          #91.#322      // net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #322 = NameAndType        #323:#324     // fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #323 = Utf8               fromNamespaceAndPath
+  #324 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #325 = InterfaceMethodref #65.#326      // java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #326 = NameAndType        #327:#328     // getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #327 = Utf8               getOrDefault
+  #328 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #329 = Class              #330          // java/util/ArrayList
+  #330 = Utf8               java/util/ArrayList
+  #331 = Methodref          #329.#43      // java/util/ArrayList."<init>":()V
+  #332 = Fieldref           #333.#334     // top/theillusivec4/curios/common/CuriosConfig.COMMON:Ltop/theillusivec4/curios/common/CuriosConfig$Common;
+  #333 = Class              #335          // top/theillusivec4/curios/common/CuriosConfig
+  #334 = NameAndType        #336:#337     // COMMON:Ltop/theillusivec4/curios/common/CuriosConfig$Common;
+  #335 = Utf8               top/theillusivec4/curios/common/CuriosConfig
+  #336 = Utf8               COMMON
+  #337 = Utf8               Ltop/theillusivec4/curios/common/CuriosConfig$Common;
+  #338 = Fieldref           #339.#340     // top/theillusivec4/curios/common/CuriosConfig$Common.slots:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+  #339 = Class              #341          // top/theillusivec4/curios/common/CuriosConfig$Common
+  #340 = NameAndType        #23:#342      // slots:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+  #341 = Utf8               top/theillusivec4/curios/common/CuriosConfig$Common
+  #342 = Utf8               Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+  #343 = Methodref          #344.#345     // net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+  #344 = Class              #346          // net/neoforged/neoforge/common/ModConfigSpec$ConfigValue
+  #345 = NameAndType        #261:#85      // get:()Ljava/lang/Object;
+  #346 = Utf8               net/neoforged/neoforge/common/ModConfigSpec$ConfigValue
+  #347 = Class              #348          // java/util/List
+  #348 = Utf8               java/util/List
+  #349 = Class              #350          // java/util/HashSet
+  #350 = Utf8               java/util/HashSet
+  #351 = Methodref          #349.#43      // java/util/HashSet."<init>":()V
+  #352 = InterfaceMethodref #347.#72      // java/util/List.iterator:()Ljava/util/Iterator;
+  #353 = Class              #354          // java/util/StringTokenizer
+  #354 = Utf8               java/util/StringTokenizer
+  #355 = String             #356          // ;
+  #356 = Utf8               ;
+  #357 = Methodref          #353.#358     // java/util/StringTokenizer."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+  #358 = NameAndType        #13:#359      // "<init>":(Ljava/lang/String;Ljava/lang/String;)V
+  #359 = Utf8               (Ljava/lang/String;Ljava/lang/String;)V
+  #360 = Methodref          #353.#361     // java/util/StringTokenizer.hasMoreTokens:()Z
+  #361 = NameAndType        #362:#81      // hasMoreTokens:()Z
+  #362 = Utf8               hasMoreTokens
+  #363 = Methodref          #353.#364     // java/util/StringTokenizer.nextToken:()Ljava/lang/String;
+  #364 = NameAndType        #365:#96      // nextToken:()Ljava/lang/String;
+  #365 = Utf8               nextToken
+  #366 = String             #367          // =
+  #367 = Utf8               =
+  #368 = Methodref          #100.#369     // java/lang/String.split:(Ljava/lang/String;)[Ljava/lang/String;
+  #369 = NameAndType        #370:#371     // split:(Ljava/lang/String;)[Ljava/lang/String;
+  #370 = Utf8               split
+  #371 = Utf8               (Ljava/lang/String;)[Ljava/lang/String;
+  #372 = InterfaceMethodref #65.#373      // java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #373 = NameAndType        #306:#328     // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #374 = String             #375          // id
+  #375 = Utf8               id
+  #376 = InterfaceMethodref #65.#377      // java/util/Map.containsKey:(Ljava/lang/Object;)Z
+  #377 = NameAndType        #378:#104     // containsKey:(Ljava/lang/Object;)Z
+  #378 = Utf8               containsKey
+  #379 = InterfaceMethodref #347.#283     // java/util/List.add:(Ljava/lang/Object;)Z
+  #380 = InvokeDynamic      #11:#381      // #11:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #381 = NameAndType        #382:#383     // makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #382 = Utf8               makeConcatWithConstants
+  #383 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+  #384 = Methodref          #174.#385     // java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+  #385 = NameAndType        #13:#386      // "<init>":(Ljava/lang/String;)V
+  #386 = Utf8               (Ljava/lang/String;)V
+  #387 = InvokeDynamic      #12:#144      // #12:apply:(Ljava/lang/String;)Ljava/util/function/Function;
+  #388 = String             #248          // size
+  #389 = Methodref          #251.#390     // java/lang/Integer.parseInt:(Ljava/lang/String;)I
+  #390 = NameAndType        #391:#392     // parseInt:(Ljava/lang/String;)I
+  #391 = Utf8               parseInt
+  #392 = Utf8               (Ljava/lang/String;)I
+  #393 = Methodref          #251.#394     // java/lang/Integer.intValue:()I
+  #394 = NameAndType        #395:#249     // intValue:()I
+  #395 = Utf8               intValue
+  #396 = String             #397          // Size cannot be less than 0!
+  #397 = Utf8               Size cannot be less than 0!
+  #398 = String             #399          // operation
+  #399 = Utf8               operation
+  #400 = String             #401          // SET
+  #401 = Utf8               SET
+  #402 = String             #403          // ADD
+  #403 = Utf8               ADD
+  #404 = String             #405          // REMOVE
+  #405 = Utf8               REMOVE
+  #406 = InvokeDynamic      #13:#381      // #13:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #407 = String             #408          // drop_rule
+  #408 = Utf8               drop_rule
+  #409 = String             #410          //
+  #410 = Utf8
+  #411 = Methodref          #100.#412     // java/lang/String.isEmpty:()Z
+  #412 = NameAndType        #413:#81      // isEmpty:()Z
+  #413 = Utf8               isEmpty
+  #414 = Class              #415          // top/theillusivec4/curios/api/type/capability/ICurio$DropRule
+  #415 = Utf8               top/theillusivec4/curios/api/type/capability/ICurio$DropRule
+  #416 = Methodref          #417.#418     // org/apache/commons/lang3/EnumUtils.isValidEnum:(Ljava/lang/Class;Ljava/lang/String;)Z
+  #417 = Class              #419          // org/apache/commons/lang3/EnumUtils
+  #418 = NameAndType        #420:#421     // isValidEnum:(Ljava/lang/Class;Ljava/lang/String;)Z
+  #419 = Utf8               org/apache/commons/lang3/EnumUtils
+  #420 = Utf8               isValidEnum
+  #421 = Utf8               (Ljava/lang/Class;Ljava/lang/String;)Z
+  #422 = InvokeDynamic      #14:#381      // #14:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #423 = InterfaceMethodref #71.#283      // java/util/Set.add:(Ljava/lang/Object;)Z
+  #424 = String             #425          // order
+  #425 = Utf8               order
+  #426 = String             #427          // icon
+  #427 = Utf8               icon
+  #428 = String             #429          // render_toggle
+  #429 = Utf8               render_toggle
+  #430 = Methodref          #431.#432     // java/lang/Boolean.parseBoolean:(Ljava/lang/String;)Z
+  #431 = Class              #433          // java/lang/Boolean
+  #432 = NameAndType        #434:#211     // parseBoolean:(Ljava/lang/String;)Z
+  #433 = Utf8               java/lang/Boolean
+  #434 = Utf8               parseBoolean
+  #435 = Methodref          #431.#436     // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+  #436 = NameAndType        #254:#437     // valueOf:(Z)Ljava/lang/Boolean;
+  #437 = Utf8               (Z)Ljava/lang/Boolean;
+  #438 = String             #439          // add_cosmetic
+  #439 = Utf8               add_cosmetic
+  #440 = String             #441          // use_native_gui
+  #441 = Utf8               use_native_gui
+  #442 = Methodref          #151.#443     // top/theillusivec4/curios/common/slottype/SlotType$Builder.order:(IZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #443 = NameAndType        #425:#444     // order:(IZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #444 = Utf8               (IZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #445 = Methodref          #91.#446      // net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #446 = NameAndType        #447:#448     // parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #447 = Utf8               parse
+  #448 = Utf8               (Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #449 = Methodref          #151.#450     // top/theillusivec4/curios/common/slottype/SlotType$Builder.icon:(Lnet/minecraft/resources/ResourceLocation;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #450 = NameAndType        #427:#451     // icon:(Lnet/minecraft/resources/ResourceLocation;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #451 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #452 = Methodref          #151.#453     // top/theillusivec4/curios/common/slottype/SlotType$Builder.dropRule:(Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #453 = NameAndType        #454:#455     // dropRule:(Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #454 = Utf8               dropRule
+  #455 = Utf8               (Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #456 = Methodref          #151.#457     // top/theillusivec4/curios/common/slottype/SlotType$Builder.size:(ILjava/lang/String;Z)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #457 = NameAndType        #248:#458     // size:(ILjava/lang/String;Z)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #458 = Utf8               (ILjava/lang/String;Z)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #459 = Methodref          #431.#460     // java/lang/Boolean.booleanValue:()Z
+  #460 = NameAndType        #461:#81      // booleanValue:()Z
+  #461 = Utf8               booleanValue
+  #462 = Methodref          #151.#463     // top/theillusivec4/curios/common/slottype/SlotType$Builder.hasCosmetic:(ZZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #463 = NameAndType        #464:#465     // hasCosmetic:(ZZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #464 = Utf8               hasCosmetic
+  #465 = Utf8               (ZZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #466 = Methodref          #151.#467     // top/theillusivec4/curios/common/slottype/SlotType$Builder.useNativeGui:(ZZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #467 = NameAndType        #468:#465     // useNativeGui:(ZZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #468 = Utf8               useNativeGui
+  #469 = Methodref          #151.#470     // top/theillusivec4/curios/common/slottype/SlotType$Builder.renderToggle:(ZZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #470 = NameAndType        #471:#465     // renderToggle:(ZZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #471 = Utf8               renderToggle
+  #472 = Methodref          #473.#474     // com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+  #473 = Class              #475          // com/google/gson/JsonObject
+  #474 = NameAndType        #476:#211     // has:(Ljava/lang/String;)Z
+  #475 = Utf8               com/google/gson/JsonObject
+  #476 = Utf8               has
+  #477 = Methodref          #156.#478     // net/minecraft/util/GsonHelper.getAsInt:(Lcom/google/gson/JsonObject;Ljava/lang/String;)I
+  #478 = NameAndType        #479:#480     // getAsInt:(Lcom/google/gson/JsonObject;Ljava/lang/String;)I
+  #479 = Utf8               getAsInt
+  #480 = Utf8               (Lcom/google/gson/JsonObject;Ljava/lang/String;)I
+  #481 = Methodref          #156.#482     // net/minecraft/util/GsonHelper.getAsString:(Lcom/google/gson/JsonObject;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #482 = NameAndType        #483:#484     // getAsString:(Lcom/google/gson/JsonObject;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #483 = Utf8               getAsString
+  #484 = Utf8               (Lcom/google/gson/JsonObject;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #485 = String             #486          // replace
+  #486 = Utf8               replace
+  #487 = Methodref          #156.#488     // net/minecraft/util/GsonHelper.getAsBoolean:(Lcom/google/gson/JsonObject;Ljava/lang/String;Z)Z
+  #488 = NameAndType        #489:#490     // getAsBoolean:(Lcom/google/gson/JsonObject;Ljava/lang/String;Z)Z
+  #489 = Utf8               getAsBoolean
+  #490 = Utf8               (Lcom/google/gson/JsonObject;Ljava/lang/String;Z)Z
+  #491 = Methodref          #156.#492     // net/minecraft/util/GsonHelper.getAsBoolean:(Lcom/google/gson/JsonObject;Ljava/lang/String;)Z
+  #492 = NameAndType        #489:#493     // getAsBoolean:(Lcom/google/gson/JsonObject;Ljava/lang/String;)Z
+  #493 = Utf8               (Lcom/google/gson/JsonObject;Ljava/lang/String;)Z
+  #494 = String             #495          // validators
+  #495 = Utf8               validators
+  #496 = Methodref          #156.#497     // net/minecraft/util/GsonHelper.getAsJsonArray:(Lcom/google/gson/JsonObject;Ljava/lang/String;)Lcom/google/gson/JsonArray;
+  #497 = NameAndType        #498:#499     // getAsJsonArray:(Lcom/google/gson/JsonObject;Ljava/lang/String;)Lcom/google/gson/JsonArray;
+  #498 = Utf8               getAsJsonArray
+  #499 = Utf8               (Lcom/google/gson/JsonObject;Ljava/lang/String;)Lcom/google/gson/JsonArray;
+  #500 = Methodref          #501.#72      // com/google/gson/JsonArray.iterator:()Ljava/util/Iterator;
+  #501 = Class              #502          // com/google/gson/JsonArray
+  #502 = Utf8               com/google/gson/JsonArray
+  #503 = Methodref          #117.#504     // com/google/gson/JsonElement.getAsString:()Ljava/lang/String;
+  #504 = NameAndType        #483:#96      // getAsString:()Ljava/lang/String;
+  #505 = Methodref          #151.#506     // top/theillusivec4/curios/common/slottype/SlotType$Builder.validator:(Lnet/minecraft/resources/ResourceLocation;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #506 = NameAndType        #507:#451     // validator:(Lnet/minecraft/resources/ResourceLocation;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #507 = Utf8               validator
+  #508 = Methodref          #2.#509       // top/theillusivec4/curios/common/data/CuriosSlotManager.apply:(Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #509 = NameAndType        #145:#510     // apply:(Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #510 = Utf8               (Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #511 = Methodref          #151.#385     // top/theillusivec4/curios/common/slottype/SlotType$Builder."<init>":(Ljava/lang/String;)V
+  #512 = Methodref          #168.#513     // com/google/common/collect/ImmutableSet$Builder.build:()Lcom/google/common/collect/ImmutableSet;
+  #513 = NameAndType        #313:#29      // build:()Lcom/google/common/collect/ImmutableSet;
+  #514 = Methodref          #151.#515     // top/theillusivec4/curios/common/slottype/SlotType$Builder.build:()Ltop/theillusivec4/curios/common/slottype/SlotType;
+  #515 = NameAndType        #313:#516     // build:()Ltop/theillusivec4/curios/common/slottype/SlotType;
+  #516 = Utf8               ()Ltop/theillusivec4/curios/common/slottype/SlotType;
+  #517 = Methodref          #26.#518      // com/google/common/collect/ImmutableSet.builder:()Lcom/google/common/collect/ImmutableSet$Builder;
+  #518 = NameAndType        #286:#519     // builder:()Lcom/google/common/collect/ImmutableSet$Builder;
+  #519 = Utf8               ()Lcom/google/common/collect/ImmutableSet$Builder;
+  #520 = Fieldref           #521.#522     // net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+  #521 = Class              #523          // net/minecraft/server/packs/PackType
+  #522 = NameAndType        #524:#525     // SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+  #523 = Utf8               net/minecraft/server/packs/PackType
+  #524 = Utf8               SERVER_DATA
+  #525 = Utf8               Lnet/minecraft/server/packs/PackType;
+  #526 = InterfaceMethodref #527.#528     // net/minecraft/server/packs/PackResources.getNamespaces:(Lnet/minecraft/server/packs/PackType;)Ljava/util/Set;
+  #527 = Class              #529          // net/minecraft/server/packs/PackResources
+  #528 = NameAndType        #530:#531     // getNamespaces:(Lnet/minecraft/server/packs/PackType;)Ljava/util/Set;
+  #529 = Utf8               net/minecraft/server/packs/PackResources
+  #530 = Utf8               getNamespaces
+  #531 = Utf8               (Lnet/minecraft/server/packs/PackType;)Ljava/util/Set;
+  #532 = InvokeDynamic      #15:#533      // #15:accept:(Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;)Ljava/util/function/Consumer;
+  #533 = NameAndType        #56:#534      // accept:(Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;)Ljava/util/function/Consumer;
+  #534 = Utf8               (Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;)Ljava/util/function/Consumer;
+  #535 = InterfaceMethodref #71.#60       // java/util/Set.forEach:(Ljava/util/function/Consumer;)V
+  #536 = InvokeDynamic      #16:#537      // #16:accept:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)Lnet/minecraft/server/packs/PackResources$ResourceOutput;
+  #537 = NameAndType        #56:#538      // accept:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)Lnet/minecraft/server/packs/PackResources$ResourceOutput;
+  #538 = Utf8               (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)Lnet/minecraft/server/packs/PackResources$ResourceOutput;
+  #539 = InterfaceMethodref #527.#540     // net/minecraft/server/packs/PackResources.listResources:(Lnet/minecraft/server/packs/PackType;Ljava/lang/String;Ljava/lang/String;Lnet/minecraft/server/packs/PackResources$ResourceOutput;)V
+  #540 = NameAndType        #541:#542     // listResources:(Lnet/minecraft/server/packs/PackType;Ljava/lang/String;Ljava/lang/String;Lnet/minecraft/server/packs/PackResources$ResourceOutput;)V
+  #541 = Utf8               listResources
+  #542 = Utf8               (Lnet/minecraft/server/packs/PackType;Ljava/lang/String;Ljava/lang/String;Lnet/minecraft/server/packs/PackResources$ResourceOutput;)V
+  #543 = String             #544          // curios/slots/
+  #544 = Utf8               curios/slots/
+  #545 = Methodref          #100.#546     // java/lang/String.length:()I
+  #546 = NameAndType        #547:#249     // length:()I
+  #547 = Utf8               length
+  #548 = String             #549          // .json
+  #549 = Utf8               .json
+  #550 = Methodref          #100.#551     // java/lang/String.substring:(II)Ljava/lang/String;
+  #551 = NameAndType        #552:#553     // substring:(II)Ljava/lang/String;
+  #552 = Utf8               substring
+  #553 = Utf8               (II)Ljava/lang/String;
+  #554 = Class              #555          // com/google/gson/GsonBuilder
+  #555 = Utf8               com/google/gson/GsonBuilder
+  #556 = Methodref          #554.#43      // com/google/gson/GsonBuilder."<init>":()V
+  #557 = Methodref          #554.#558     // com/google/gson/GsonBuilder.setPrettyPrinting:()Lcom/google/gson/GsonBuilder;
+  #558 = NameAndType        #559:#560     // setPrettyPrinting:()Lcom/google/gson/GsonBuilder;
+  #559 = Utf8               setPrettyPrinting
+  #560 = Utf8               ()Lcom/google/gson/GsonBuilder;
+  #561 = Methodref          #554.#562     // com/google/gson/GsonBuilder.disableHtmlEscaping:()Lcom/google/gson/GsonBuilder;
+  #562 = NameAndType        #563:#560     // disableHtmlEscaping:()Lcom/google/gson/GsonBuilder;
+  #563 = Utf8               disableHtmlEscaping
+  #564 = Methodref          #554.#565     // com/google/gson/GsonBuilder.create:()Lcom/google/gson/Gson;
+  #565 = NameAndType        #566:#567     // create:()Lcom/google/gson/Gson;
+  #566 = Utf8               create
+  #567 = Utf8               ()Lcom/google/gson/Gson;
+  #568 = Methodref          #2.#43        // top/theillusivec4/curios/common/data/CuriosSlotManager."<init>":()V
+  #569 = Utf8               Signature
+  #570 = Utf8               Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+  #571 = Utf8               Ljava/util/Set<Ljava/lang/String;>;
+  #572 = Utf8               Ljava/util/Map<Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;>;
+  #573 = Utf8               Ljava/util/Map<Ljava/lang/String;Ljava/util/Set<Ljava/lang/String;>;>;
+  #574 = Utf8               Code
+  #575 = Utf8               LineNumberTable
+  #576 = Utf8               LocalVariableTable
+  #577 = Utf8               this
+  #578 = Utf8               Ljava/lang/String;
+  #579 = Utf8               e
+  #580 = Utf8               Ljava/lang/RuntimeException;
+  #581 = Utf8               resourcelocation
+  #582 = Utf8               Lnet/minecraft/resources/ResourceLocation;
+  #583 = Utf8               entry
+  #584 = Utf8               Ljava/util/Map$Entry;
+  #585 = Utf8               Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #586 = Utf8               configs
+  #587 = Utf8               Ljava/lang/IllegalArgumentException;
+  #588 = Utf8               pObject
+  #589 = Utf8               pResourceManager
+  #590 = Utf8               Lnet/minecraft/server/packs/resources/ResourceManager;
+  #591 = Utf8               pProfiler
+  #592 = Utf8               Lnet/minecraft/util/profiling/ProfilerFiller;
+  #593 = Utf8               map
+  #594 = Utf8               modMap
+  #595 = Utf8               sorted
+  #596 = Utf8               LocalVariableTypeTable
+  #597 = Utf8               Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+  #598 = Utf8               Ljava/util/Map$Entry<Ljava/lang/String;Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;>;
+  #599 = Utf8               Ljava/util/Map$Entry<Ljava/lang/String;Ljava/util/Set<Ljava/lang/String;>;>;
+  #600 = Utf8               Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+  #601 = Utf8               Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;>;
+  #602 = Utf8               Ljava/util/Map<Ljava/lang/String;Lcom/google/common/collect/ImmutableSet$Builder<Ljava/lang/String;>;>;
+  #603 = Utf8               StackMapTable
+  #604 = Class              #605          // net/minecraft/util/profiling/ProfilerFiller
+  #605 = Utf8               net/minecraft/util/profiling/ProfilerFiller
+  #606 = Class              #607          // java/lang/RuntimeException
+  #607 = Utf8               java/lang/RuntimeException
+  #608 = Utf8               (Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #609 = Utf8               RuntimeVisibleParameterAnnotations
+  #610 = Utf8               Ljavax/annotation/Nonnull;
+  #611 = Utf8               getSlots
+  #612 = Utf8               ()Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+  #613 = Utf8               getSlot
+  #614 = Utf8               (Ljava/lang/String;)Ljava/util/Optional;
+  #615 = Utf8               (Ljava/lang/String;)Ljava/util/Optional<Ltop/theillusivec4/curios/api/type/ISlotType;>;
+  #616 = Utf8               getSyncPacket
+  #617 = Utf8               ()Lnet/minecraft/nbt/ListTag;
+  #618 = Utf8               tag
+  #619 = Utf8               Lnet/minecraft/nbt/ListTag;
+  #620 = Utf8               Ljava/util/Map$Entry<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+  #621 = Utf8               applySyncPacket
+  #622 = Utf8               (Lnet/minecraft/nbt/ListTag;)V
+  #623 = Utf8               type
+  #624 = Utf8               Ltop/theillusivec4/curios/api/type/ISlotType;
+  #625 = Utf8               slotType
+  #626 = Utf8               Lnet/minecraft/nbt/CompoundTag;
+  #627 = Utf8               tag1
+  #628 = Utf8               Lnet/minecraft/nbt/Tag;
+  #629 = Utf8               Lcom/google/common/collect/ImmutableMap$Builder;
+  #630 = Utf8               Lcom/google/common/collect/ImmutableMap$Builder<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+  #631 = Utf8               setIcons
+  #632 = Utf8               (Ljava/util/Map;)V
+  #633 = Utf8               (Ljava/util/Map<Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;>;)V
+  #634 = Utf8               getConfigSlots
+  #635 = Utf8               ()Ljava/util/Set<Ljava/lang/String;>;
+  #636 = Utf8               getIcons
+  #637 = Utf8               ()Ljava/util/Map<Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;>;
+  #638 = Utf8               getIcon
+  #639 = Utf8               identifier
+  #640 = Utf8               getModsFromSlots
+  #641 = Utf8               ()Ljava/util/Map<Ljava/lang/String;Ljava/util/Set<Ljava/lang/String;>;>;
+  #642 = Utf8               token
+  #643 = Utf8               keyValue
+  #644 = Utf8               [Ljava/lang/String;
+  #645 = Utf8               tokenizer
+  #646 = Utf8               Ljava/util/StringTokenizer;
+  #647 = Utf8               subMap
+  #648 = Utf8               s
+  #649 = Utf8               Ljava/lang/Integer;
+  #650 = Utf8               Z
+  #651 = Utf8               toggle
+  #652 = Utf8               Ljava/lang/Boolean;
+  #653 = Utf8               cosmetic
+  #654 = Utf8               nativeGui
+  #655 = Utf8               parsed
+  #656 = Utf8               Ljava/util/List;
+  #657 = Utf8               list
+  #658 = Utf8               results
+  #659 = Utf8               Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;
+  #660 = Utf8               Ljava/util/List<Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;>;
+  #661 = Utf8               Ljava/util/List<+Ljava/lang/String;>;
+  #662 = Utf8               Exceptions
+  #663 = Utf8               (Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;>;)Ljava/util/Set<Ljava/lang/String;>;
+  #664 = Utf8               jsonElement
+  #665 = Utf8               Lcom/google/gson/JsonElement;
+  #666 = Utf8               jsonObject
+  #667 = Utf8               Lcom/google/gson/JsonObject;
+  #668 = Utf8               jsonSize
+  #669 = Utf8               jsonDropRule
+  #670 = Utf8               jsonOrder
+  #671 = Utf8               jsonIcon
+  #672 = Utf8               jsonToggle
+  #673 = Utf8               jsonCosmetic
+  #674 = Utf8               jsonNative
+  #675 = Utf8               jsonSlotResultPredicate
+  #676 = Utf8               Lcom/google/gson/JsonArray;
+  #677 = Utf8               (Ljava/lang/Object;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #678 = Utf8               MethodParameters
+  #679 = Utf8               lambda$fromConfig$12
+  #680 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #681 = Utf8               k
+  #682 = Utf8               lambda$apply$11
+  #683 = Utf8               (Ljava/util/Map$Entry;)Ljava/util/Set;
+  #684 = Utf8               lambda$apply$10
+  #685 = Utf8               (Ljava/util/Map$Entry;)Ltop/theillusivec4/curios/api/type/ISlotType;
+  #686 = Utf8               lambda$apply$9
+  #687 = Utf8               (Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #688 = Utf8               lambda$apply$8
+  #689 = Utf8               lambda$apply$7
+  #690 = Utf8               lambda$apply$6
+  #691 = Utf8               lambda$apply$5
+  #692 = Utf8               (Ljava/util/Map$Entry;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #693 = Utf8               lambda$apply$4
+  #694 = Utf8               lambda$apply$3
+  #695 = Utf8               lambda$apply$2
+  #696 = Utf8               (Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/server/packs/PackResources;)V
+  #697 = Utf8               packResources
+  #698 = Utf8               Lnet/minecraft/server/packs/PackResources;
+  #699 = Utf8               namespaces
+  #700 = Utf8               lambda$apply$1
+  #701 = Utf8               (Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;)V
+  #702 = Utf8               namespace
+  #703 = Utf8               lambda$apply$0
+  #704 = Utf8               (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+  #705 = Utf8               resourceLocation
+  #706 = Utf8               inputStreamIoSupplier
+  #707 = Utf8               Lnet/minecraft/server/packs/resources/IoSupplier;
+  #708 = Utf8               path
+  #709 = Utf8               rl
+  #710 = Utf8               el
+  #711 = Utf8               <clinit>
+  #712 = Utf8               SourceFile
+  #713 = Utf8               CuriosSlotManager.java
+  #714 = Utf8               BootstrapMethods
+  #715 = MethodType         #716          //  (Ljava/lang/Object;)V
+  #716 = Utf8               (Ljava/lang/Object;)V
+  #717 = MethodHandle       6:#718        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$2:(Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/server/packs/PackResources;)V
+  #718 = Methodref          #2.#719       // top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$2:(Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/server/packs/PackResources;)V
+  #719 = NameAndType        #695:#696     // lambda$apply$2:(Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/server/packs/PackResources;)V
+  #720 = MethodType         #721          //  (Lnet/minecraft/server/packs/PackResources;)V
+  #721 = Utf8               (Lnet/minecraft/server/packs/PackResources;)V
+  #722 = MethodType         #262          //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #723 = MethodHandle       6:#724        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$3:(Ljava/lang/String;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #724 = Methodref          #2.#725       // top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$3:(Ljava/lang/String;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #725 = NameAndType        #694:#680     // lambda$apply$3:(Ljava/lang/String;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #726 = MethodType         #455          //  (Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #727 = MethodHandle       6:#728        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$4:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #728 = Methodref          #2.#729       // top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$4:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #729 = NameAndType        #693:#687     // lambda$apply$4:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #730 = MethodType         #687          //  (Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #731 = MethodHandle       6:#732        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$5:(Ljava/util/Map$Entry;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #732 = Methodref          #2.#733       // top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$5:(Ljava/util/Map$Entry;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #733 = NameAndType        #691:#692     // lambda$apply$5:(Ljava/util/Map$Entry;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #734 = MethodHandle       6:#735        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$6:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #735 = Methodref          #2.#736       // top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$6:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #736 = NameAndType        #690:#687     // lambda$apply$6:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #737 = MethodHandle       6:#738        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$7:(Ljava/lang/String;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #738 = Methodref          #2.#739       // top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$7:(Ljava/lang/String;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #739 = NameAndType        #689:#680     // lambda$apply$7:(Ljava/lang/String;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #740 = MethodHandle       6:#741        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$8:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #741 = Methodref          #2.#742       // top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$8:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #742 = NameAndType        #688:#687     // lambda$apply$8:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #743 = MethodHandle       6:#744        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$9:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #744 = Methodref          #2.#745       // top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$9:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #745 = NameAndType        #686:#687     // lambda$apply$9:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  #746 = MethodHandle       9:#88         // REF_invokeInterface java/util/Map$Entry.getKey:()Ljava/lang/Object;
+  #747 = MethodType         #748          //  (Ljava/util/Map$Entry;)Ljava/lang/String;
+  #748 = Utf8               (Ljava/util/Map$Entry;)Ljava/lang/String;
+  #749 = MethodHandle       6:#750        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$10:(Ljava/util/Map$Entry;)Ltop/theillusivec4/curios/api/type/ISlotType;
+  #750 = Methodref          #2.#751       // top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$10:(Ljava/util/Map$Entry;)Ltop/theillusivec4/curios/api/type/ISlotType;
+  #751 = NameAndType        #684:#685     // lambda$apply$10:(Ljava/util/Map$Entry;)Ltop/theillusivec4/curios/api/type/ISlotType;
+  #752 = MethodType         #685          //  (Ljava/util/Map$Entry;)Ltop/theillusivec4/curios/api/type/ISlotType;
+  #753 = MethodHandle       6:#754        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$11:(Ljava/util/Map$Entry;)Ljava/util/Set;
+  #754 = Methodref          #2.#755       // top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$11:(Ljava/util/Map$Entry;)Ljava/util/Set;
+  #755 = NameAndType        #682:#683     // lambda$apply$11:(Ljava/util/Map$Entry;)Ljava/util/Set;
+  #756 = MethodType         #683          //  (Ljava/util/Map$Entry;)Ljava/util/Set;
+  #757 = String             #758          // Cannot load config entry \u0001 due to missing id field
+  #758 = Utf8               Cannot load config entry \u0001 due to missing id field
+  #759 = MethodHandle       6:#760        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$fromConfig$12:(Ljava/lang/String;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #760 = Methodref          #2.#761       // top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$fromConfig$12:(Ljava/lang/String;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #761 = NameAndType        #679:#680     // lambda$fromConfig$12:(Ljava/lang/String;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  #762 = String             #763          // \u0001 is not a valid operation!
+  #763 = Utf8               \u0001 is not a valid operation!
+  #764 = String             #765          // \u0001 is not a valid drop rule!
+  #765 = Utf8               \u0001 is not a valid drop rule!
+  #766 = MethodHandle       6:#767        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$1:(Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;)V
+  #767 = Methodref          #2.#768       // top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$1:(Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;)V
+  #768 = NameAndType        #700:#701     // lambda$apply$1:(Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;)V
+  #769 = MethodType         #386          //  (Ljava/lang/String;)V
+  #770 = MethodType         #771          //  (Ljava/lang/Object;Ljava/lang/Object;)V
+  #771 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)V
+  #772 = MethodHandle       6:#773        // REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$0:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+  #773 = Methodref          #2.#774       // top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$0:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+  #774 = NameAndType        #703:#704     // lambda$apply$0:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+  #775 = MethodType         #776          //  (Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+  #776 = Utf8               (Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+  #777 = MethodHandle       6:#778        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #778 = Methodref          #779.#780     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #779 = Class              #781          // java/lang/invoke/LambdaMetafactory
+  #780 = NameAndType        #782:#783     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #781 = Utf8               java/lang/invoke/LambdaMetafactory
+  #782 = Utf8               metafactory
+  #783 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #784 = MethodHandle       6:#785        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #785 = Methodref          #786.#787     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #786 = Class              #788          // java/lang/invoke/StringConcatFactory
+  #787 = NameAndType        #382:#789     // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #788 = Utf8               java/lang/invoke/StringConcatFactory
+  #789 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #790 = Utf8               InnerClasses
+  #791 = Utf8               Entry
+  #792 = Utf8               Builder
+  #793 = Utf8               Common
+  #794 = Class              #795          // net/neoforged/neoforge/common/ModConfigSpec
+  #795 = Utf8               net/neoforged/neoforge/common/ModConfigSpec
+  #796 = Utf8               ConfigValue
+  #797 = Class              #798          // top/theillusivec4/curios/api/type/capability/ICurio
+  #798 = Utf8               top/theillusivec4/curios/api/type/capability/ICurio
+  #799 = Utf8               DropRule
+  #800 = Class              #801          // net/minecraft/server/packs/PackResources$ResourceOutput
+  #801 = Utf8               net/minecraft/server/packs/PackResources$ResourceOutput
+  #802 = Utf8               ResourceOutput
+  #803 = Class              #804          // java/lang/invoke/MethodHandles$Lookup
+  #804 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #805 = Class              #806          // java/lang/invoke/MethodHandles
+  #806 = Utf8               java/lang/invoke/MethodHandles
+  #807 = Utf8               Lookup
+{
+  private static final com.google.gson.Gson GSON;
+    descriptor: Lcom/google/gson/Gson;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+
+  public static top.theillusivec4.curios.common.data.CuriosSlotManager SERVER;
+    descriptor: Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+
+  public static top.theillusivec4.curios.common.data.CuriosSlotManager CLIENT;
+    descriptor: Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+
+  private java.util.Map<java.lang.String, top.theillusivec4.curios.api.type.ISlotType> slots;
+    descriptor: Ljava/util/Map;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #570                         // Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+
+  private java.util.Set<java.lang.String> configSlots;
+    descriptor: Ljava/util/Set;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #571                         // Ljava/util/Set<Ljava/lang/String;>;
+
+  private java.util.Map<java.lang.String, net.minecraft.resources.ResourceLocation> icons;
+    descriptor: Ljava/util/Map;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #572                         // Ljava/util/Map<Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;>;
+
+  private java.util.Map<java.lang.String, java.util.Set<java.lang.String>> idToMods;
+    descriptor: Ljava/util/Map;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #573                         // Ljava/util/Map<Ljava/lang/String;Ljava/util/Set<Ljava/lang/String;>;>;
+
+  public top.theillusivec4.curios.common.data.CuriosSlotManager();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: getstatic     #1                  // Field GSON:Lcom/google/gson/Gson;
+         4: ldc           #7                  // String curios/slots
+         6: invokespecial #9                  // Method net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener."<init>":(Lcom/google/gson/Gson;Ljava/lang/String;)V
+         9: aload_0
+        10: invokestatic  #15                 // Method com/google/common/collect/ImmutableMap.of:()Lcom/google/common/collect/ImmutableMap;
+        13: putfield      #21                 // Field slots:Ljava/util/Map;
+        16: aload_0
+        17: invokestatic  #25                 // Method com/google/common/collect/ImmutableSet.of:()Lcom/google/common/collect/ImmutableSet;
+        20: putfield      #30                 // Field configSlots:Ljava/util/Set;
+        23: aload_0
+        24: invokestatic  #15                 // Method com/google/common/collect/ImmutableMap.of:()Lcom/google/common/collect/ImmutableMap;
+        27: putfield      #34                 // Field icons:Ljava/util/Map;
+        30: aload_0
+        31: invokestatic  #15                 // Method com/google/common/collect/ImmutableMap.of:()Lcom/google/common/collect/ImmutableMap;
+        34: putfield      #37                 // Field idToMods:Ljava/util/Map;
+        37: return
+      LineNumberTable:
+        line 73: 0
+        line 67: 9
+        line 68: 16
+        line 69: 23
+        line 70: 30
+        line 74: 37
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      38     0  this   Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+
+  protected void apply(java.util.Map<net.minecraft.resources.ResourceLocation, com.google.gson.JsonElement>, net.minecraft.server.packs.resources.ResourceManager, net.minecraft.util.profiling.ProfilerFiller);
+    descriptor: (Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=4, locals=11, args_size=4
+         0: new           #40                 // class java/util/HashMap
+         3: dup
+         4: invokespecial #42                 // Method java/util/HashMap."<init>":()V
+         7: astore        4
+         9: new           #40                 // class java/util/HashMap
+        12: dup
+        13: invokespecial #42                 // Method java/util/HashMap."<init>":()V
+        16: astore        5
+        18: new           #45                 // class java/util/LinkedHashMap
+        21: dup
+        22: invokespecial #47                 // Method java/util/LinkedHashMap."<init>":()V
+        25: astore        6
+        27: aload_2
+        28: invokeinterface #48,  1           // InterfaceMethod net/minecraft/server/packs/resources/ResourceManager.listPacks:()Ljava/util/stream/Stream;
+        33: aload_1
+        34: aload         6
+        36: invokedynamic #54,  0             // InvokeDynamic #0:accept:(Ljava/util/Map;Ljava/util/Map;)Ljava/util/function/Consumer;
+        41: invokeinterface #58,  2           // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+        46: aload         6
+        48: invokeinterface #64,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+        53: invokeinterface #70,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        58: astore        7
+        60: aload         7
+        62: invokeinterface #76,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        67: ifeq          236
+        70: aload         7
+        72: invokeinterface #82,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        77: checkcast     #86                 // class java/util/Map$Entry
+        80: astore        8
+        82: aload         8
+        84: invokeinterface #88,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+        89: checkcast     #91                 // class net/minecraft/resources/ResourceLocation
+        92: astore        9
+        94: aload         9
+        96: invokevirtual #93                 // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+        99: ldc           #97                 // String curios
+       101: invokevirtual #99                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       104: ifeq          233
+       107: aload         9
+       109: invokevirtual #105                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+       112: astore        10
+       114: getstatic     #108                // Field com/mojang/serialization/JsonOps.INSTANCE:Lcom/mojang/serialization/JsonOps;
+       117: aload         8
+       119: invokeinterface #114,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       124: checkcast     #117                // class com/google/gson/JsonElement
+       127: invokevirtual #119                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+       130: invokestatic  #123                // InterfaceMethod net/neoforged/neoforge/common/conditions/ICondition.conditionsMatched:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Z
+       133: ifne          151
+       136: getstatic     #129                // Field top/theillusivec4/curios/CuriosConstants.LOG:Lorg/slf4j/Logger;
+       139: ldc           #135                // String Skipping loading slot {} as its conditions were not met
+       141: aload         9
+       143: invokeinterface #137,  3          // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;)V
+       148: goto          60
+       151: aload         4
+       153: aload         10
+       155: aload         10
+       157: invokedynamic #143,  0            // InvokeDynamic #1:apply:(Ljava/lang/String;)Ljava/util/function/Function;
+       162: invokeinterface #147,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+       167: checkcast     #151                // class top/theillusivec4/curios/common/slottype/SlotType$Builder
+       170: aload         8
+       172: invokeinterface #114,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       177: checkcast     #117                // class com/google/gson/JsonElement
+       180: ldc           #153                // String top element
+       182: invokestatic  #155                // Method net/minecraft/util/GsonHelper.convertToJsonObject:(Lcom/google/gson/JsonElement;Ljava/lang/String;)Lcom/google/gson/JsonObject;
+       185: invokestatic  #161                // Method fromJson:(Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;Lcom/google/gson/JsonObject;)V
+       188: aload         5
+       190: aload         10
+       192: invokedynamic #165,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+       197: invokeinterface #147,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+       202: checkcast     #168                // class com/google/common/collect/ImmutableSet$Builder
+       205: aload         9
+       207: invokevirtual #93                 // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+       210: invokevirtual #170                // Method com/google/common/collect/ImmutableSet$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableSet$Builder;
+       213: pop
+       214: goto          233
+       217: astore        10
+       219: getstatic     #129                // Field top/theillusivec4/curios/CuriosConstants.LOG:Lorg/slf4j/Logger;
+       222: ldc           #178                // String Parsing error loading curio slot {}
+       224: aload         9
+       226: aload         10
+       228: invokeinterface #180,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+       233: goto          60
+       236: invokestatic  #184                // Method top/theillusivec4/curios/common/slottype/LegacySlotManager.getImcBuilders:()Ljava/util/Map;
+       239: invokeinterface #64,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+       244: invokeinterface #70,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       249: astore        7
+       251: aload         7
+       253: invokeinterface #76,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       258: ifeq          320
+       261: aload         7
+       263: invokeinterface #82,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       268: checkcast     #86                 // class java/util/Map$Entry
+       271: astore        8
+       273: aload         4
+       275: aload         8
+       277: invokeinterface #88,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       282: checkcast     #100                // class java/lang/String
+       285: aload         8
+       287: invokedynamic #190,  0            // InvokeDynamic #3:apply:(Ljava/util/Map$Entry;)Ljava/util/function/Function;
+       292: invokeinterface #147,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+       297: checkcast     #151                // class top/theillusivec4/curios/common/slottype/SlotType$Builder
+       300: astore        9
+       302: aload         9
+       304: aload         8
+       306: invokeinterface #114,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       311: checkcast     #151                // class top/theillusivec4/curios/common/slottype/SlotType$Builder
+       314: invokevirtual #193                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.apply:(Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;)V
+       317: goto          251
+       320: invokestatic  #196                // Method top/theillusivec4/curios/common/slottype/LegacySlotManager.getIdsToMods:()Ljava/util/Map;
+       323: invokeinterface #64,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+       328: invokeinterface #70,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       333: astore        7
+       335: aload         7
+       337: invokeinterface #76,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       342: ifeq          399
+       345: aload         7
+       347: invokeinterface #82,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       352: checkcast     #86                 // class java/util/Map$Entry
+       355: astore        8
+       357: aload         5
+       359: aload         8
+       361: invokeinterface #88,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       366: checkcast     #100                // class java/lang/String
+       369: invokedynamic #199,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+       374: invokeinterface #147,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+       379: checkcast     #168                // class com/google/common/collect/ImmutableSet$Builder
+       382: aload         8
+       384: invokeinterface #114,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       389: checkcast     #200                // class java/lang/Iterable
+       392: invokevirtual #202                // Method com/google/common/collect/ImmutableSet$Builder.addAll:(Ljava/lang/Iterable;)Lcom/google/common/collect/ImmutableSet$Builder;
+       395: pop
+       396: goto          335
+       399: aload         6
+       401: invokeinterface #64,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+       406: invokeinterface #70,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       411: astore        7
+       413: aload         7
+       415: invokeinterface #76,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       420: ifeq          605
+       423: aload         7
+       425: invokeinterface #82,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       430: checkcast     #86                 // class java/util/Map$Entry
+       433: astore        8
+       435: aload         8
+       437: invokeinterface #88,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       442: checkcast     #91                 // class net/minecraft/resources/ResourceLocation
+       445: astore        9
+       447: aload         9
+       449: invokevirtual #105                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+       452: ldc           #206                // String _
+       454: invokevirtual #208                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+       457: ifne          413
+       460: aload         9
+       462: invokevirtual #93                 // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+       465: ldc           #97                 // String curios
+       467: invokevirtual #99                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       470: ifeq          476
+       473: goto          413
+       476: aload         9
+       478: invokevirtual #105                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+       481: astore        10
+       483: getstatic     #108                // Field com/mojang/serialization/JsonOps.INSTANCE:Lcom/mojang/serialization/JsonOps;
+       486: aload         8
+       488: invokeinterface #114,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       493: checkcast     #117                // class com/google/gson/JsonElement
+       496: invokevirtual #119                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+       499: invokestatic  #123                // InterfaceMethod net/neoforged/neoforge/common/conditions/ICondition.conditionsMatched:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Z
+       502: ifne          520
+       505: getstatic     #129                // Field top/theillusivec4/curios/CuriosConstants.LOG:Lorg/slf4j/Logger;
+       508: ldc           #135                // String Skipping loading slot {} as its conditions were not met
+       510: aload         9
+       512: invokeinterface #137,  3          // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;)V
+       517: goto          413
+       520: aload         4
+       522: aload         10
+       524: aload         10
+       526: invokedynamic #212,  0            // InvokeDynamic #5:apply:(Ljava/lang/String;)Ljava/util/function/Function;
+       531: invokeinterface #147,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+       536: checkcast     #151                // class top/theillusivec4/curios/common/slottype/SlotType$Builder
+       539: aload         8
+       541: invokeinterface #114,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       546: checkcast     #117                // class com/google/gson/JsonElement
+       549: ldc           #153                // String top element
+       551: invokestatic  #155                // Method net/minecraft/util/GsonHelper.convertToJsonObject:(Lcom/google/gson/JsonElement;Ljava/lang/String;)Lcom/google/gson/JsonObject;
+       554: invokestatic  #161                // Method fromJson:(Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;Lcom/google/gson/JsonObject;)V
+       557: aload         5
+       559: aload         10
+       561: invokedynamic #213,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+       566: invokeinterface #147,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+       571: checkcast     #168                // class com/google/common/collect/ImmutableSet$Builder
+       574: aload         9
+       576: invokevirtual #93                 // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+       579: invokevirtual #170                // Method com/google/common/collect/ImmutableSet$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableSet$Builder;
+       582: pop
+       583: goto          602
+       586: astore        10
+       588: getstatic     #129                // Field top/theillusivec4/curios/CuriosConstants.LOG:Lorg/slf4j/Logger;
+       591: ldc           #178                // String Parsing error loading curio slot {}
+       593: aload         9
+       595: aload         10
+       597: invokeinterface #180,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+       602: goto          413
+       605: aload         4
+       607: invokestatic  #214                // Method fromConfig:(Ljava/util/Map;)Ljava/util/Set;
+       610: astore        7
+       612: aload_0
+       613: aload         7
+       615: invokestatic  #218                // Method com/google/common/collect/ImmutableSet.copyOf:(Ljava/util/Collection;)Lcom/google/common/collect/ImmutableSet;
+       618: putfield      #30                 // Field configSlots:Ljava/util/Set;
+       621: aload         7
+       623: invokeinterface #70,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       628: astore        8
+       630: aload         8
+       632: invokeinterface #76,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       637: ifeq          678
+       640: aload         8
+       642: invokeinterface #82,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       647: checkcast     #100                // class java/lang/String
+       650: astore        9
+       652: aload         5
+       654: aload         9
+       656: invokedynamic #222,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+       661: invokeinterface #147,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+       666: checkcast     #168                // class com/google/common/collect/ImmutableSet$Builder
+       669: ldc           #223                // String config
+       671: invokevirtual #170                // Method com/google/common/collect/ImmutableSet$Builder.add:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableSet$Builder;
+       674: pop
+       675: goto          630
+       678: goto          695
+       681: astore        7
+       683: getstatic     #129                // Field top/theillusivec4/curios/CuriosConstants.LOG:Lorg/slf4j/Logger;
+       686: ldc           #225                // String Config parsing error
+       688: aload         7
+       690: invokeinterface #227,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+       695: aload_0
+       696: aload         4
+       698: invokeinterface #64,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+       703: invokeinterface #230,  1          // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+       708: invokedynamic #233,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+       713: invokedynamic #234,  0            // InvokeDynamic #9:apply:()Ljava/util/function/Function;
+       718: invokestatic  #235                // Method com/google/common/collect/ImmutableMap.toImmutableMap:(Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Collector;
+       721: invokeinterface #239,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+       726: checkcast     #65                 // class java/util/Map
+       729: putfield      #21                 // Field slots:Ljava/util/Map;
+       732: aload_0
+       733: aload         5
+       735: invokeinterface #64,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+       740: invokeinterface #230,  1          // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+       745: invokedynamic #233,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+       750: invokedynamic #243,  0            // InvokeDynamic #10:apply:()Ljava/util/function/Function;
+       755: invokestatic  #235                // Method com/google/common/collect/ImmutableMap.toImmutableMap:(Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Collector;
+       758: invokeinterface #239,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+       763: checkcast     #65                 // class java/util/Map
+       766: putfield      #37                 // Field idToMods:Ljava/util/Map;
+       769: getstatic     #129                // Field top/theillusivec4/curios/CuriosConstants.LOG:Lorg/slf4j/Logger;
+       772: ldc           #244                // String Loaded {} curio slots
+       774: aload         4
+       776: invokeinterface #246,  1          // InterfaceMethod java/util/Map.size:()I
+       781: invokestatic  #250                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       784: invokeinterface #256,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+       789: return
+      Exception table:
+         from    to  target type
+           107   148   217   Class java/lang/IllegalArgumentException
+           107   148   217   Class com/google/gson/JsonParseException
+           151   214   217   Class java/lang/IllegalArgumentException
+           151   214   217   Class com/google/gson/JsonParseException
+           476   517   586   Class java/lang/IllegalArgumentException
+           476   517   586   Class com/google/gson/JsonParseException
+           520   583   586   Class java/lang/IllegalArgumentException
+           520   583   586   Class com/google/gson/JsonParseException
+           605   678   681   Class java/lang/IllegalArgumentException
+      LineNumberTable:
+        line 79: 0
+        line 80: 9
+        line 81: 18
+        line 82: 27
+        line 98: 46
+        line 99: 82
+        line 101: 94
+        line 104: 107
+        line 106: 114
+        line 107: 136
+        line 109: 148
+        line 111: 151
+        line 112: 172
+        line 111: 185
+        line 113: 188
+        line 114: 207
+        line 117: 214
+        line 115: 217
+        line 116: 219
+        line 119: 233
+        line 123: 236
+        line 124: 239
+        line 123: 244
+        line 125: 273
+        line 126: 277
+        line 127: 302
+        line 128: 317
+        line 130: 320
+        line 131: 357
+        line 132: 384
+        line 133: 396
+        line 135: 399
+        line 136: 435
+        line 138: 447
+        line 139: 462
+        line 140: 473
+        line 144: 476
+        line 146: 483
+        line 147: 505
+        line 149: 517
+        line 151: 520
+        line 152: 541
+        line 151: 554
+        line 153: 557
+        line 154: 576
+        line 157: 583
+        line 155: 586
+        line 156: 588
+        line 158: 602
+        line 161: 605
+        line 162: 612
+        line 164: 621
+        line 165: 652
+        line 166: 675
+        line 169: 678
+        line 167: 681
+        line 168: 683
+        line 170: 695
+        line 171: 718
+        line 172: 732
+        line 173: 755
+        line 174: 769
+        line 175: 789
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          114     100    10    id   Ljava/lang/String;
+          219      14    10     e   Ljava/lang/RuntimeException;
+           94     139     9 resourcelocation   Lnet/minecraft/resources/ResourceLocation;
+           82     151     8 entry   Ljava/util/Map$Entry;
+          302      15     9 builder   Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+          273      44     8 entry   Ljava/util/Map$Entry;
+          357      39     8 entry   Ljava/util/Map$Entry;
+          483     100    10    id   Ljava/lang/String;
+          588      14    10     e   Ljava/lang/RuntimeException;
+          447     155     9 resourcelocation   Lnet/minecraft/resources/ResourceLocation;
+          435     167     8 entry   Ljava/util/Map$Entry;
+          652      23     9    id   Ljava/lang/String;
+          612      66     7 configs   Ljava/util/Set;
+          683      12     7     e   Ljava/lang/IllegalArgumentException;
+            0     790     0  this   Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+            0     790     1 pObject   Ljava/util/Map;
+            0     790     2 pResourceManager   Lnet/minecraft/server/packs/resources/ResourceManager;
+            0     790     3 pProfiler   Lnet/minecraft/util/profiling/ProfilerFiller;
+            9     781     4   map   Ljava/util/Map;
+           18     772     5 modMap   Ljava/util/Map;
+           27     763     6 sorted   Ljava/util/Map;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           82     151     8 entry   Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+          273      44     8 entry   Ljava/util/Map$Entry<Ljava/lang/String;Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;>;
+          357      39     8 entry   Ljava/util/Map$Entry<Ljava/lang/String;Ljava/util/Set<Ljava/lang/String;>;>;
+          435     167     8 entry   Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+          612      66     7 configs   Ljava/util/Set<Ljava/lang/String;>;
+            0     790     1 pObject   Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+            9     781     4   map   Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;>;
+           18     772     5 modMap   Ljava/util/Map<Ljava/lang/String;Lcom/google/common/collect/ImmutableSet$Builder<Ljava/lang/String;>;>;
+           27     763     6 sorted   Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+      StackMapTable: number_of_entries = 19
+        frame_type = 255 /* full_frame */
+          offset_delta = 60
+          locals = [ class top/theillusivec4/curios/common/data/CuriosSlotManager, class java/util/Map, class net/minecraft/server/packs/resources/ResourceManager, class net/minecraft/util/profiling/ProfilerFiller, class java/util/Map, class java/util/Map, class java/util/Map, class java/util/Iterator ]
+          stack = []
+        frame_type = 254 /* append */
+          offset_delta = 90
+          locals = [ class java/util/Map$Entry, class net/minecraft/resources/ResourceLocation, class java/lang/String ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 65
+          locals = [ class top/theillusivec4/curios/common/data/CuriosSlotManager, class java/util/Map, class net/minecraft/server/packs/resources/ResourceManager, class net/minecraft/util/profiling/ProfilerFiller, class java/util/Map, class java/util/Map, class java/util/Map, class java/util/Iterator, class java/util/Map$Entry, class net/minecraft/resources/ResourceLocation ]
+          stack = [ class java/lang/RuntimeException ]
+        frame_type = 249 /* chop */
+          offset_delta = 15
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 252 /* append */
+          offset_delta = 14
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 68
+        frame_type = 252 /* append */
+          offset_delta = 14
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 63
+        frame_type = 252 /* append */
+          offset_delta = 13
+          locals = [ class java/util/Iterator ]
+        frame_type = 253 /* append */
+          offset_delta = 62
+          locals = [ class java/util/Map$Entry, class net/minecraft/resources/ResourceLocation ]
+        frame_type = 252 /* append */
+          offset_delta = 43
+          locals = [ class java/lang/String ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 65
+          locals = [ class top/theillusivec4/curios/common/data/CuriosSlotManager, class java/util/Map, class net/minecraft/server/packs/resources/ResourceManager, class net/minecraft/util/profiling/ProfilerFiller, class java/util/Map, class java/util/Map, class java/util/Map, class java/util/Iterator, class java/util/Map$Entry, class net/minecraft/resources/ResourceLocation ]
+          stack = [ class java/lang/RuntimeException ]
+        frame_type = 249 /* chop */
+          offset_delta = 15
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 253 /* append */
+          offset_delta = 24
+          locals = [ class java/util/Set, class java/util/Iterator ]
+        frame_type = 249 /* chop */
+          offset_delta = 47
+        frame_type = 66 /* same_locals_1_stack_item */
+          stack = [ class java/lang/IllegalArgumentException ]
+        frame_type = 13 /* same */
+    Signature: #608                         // (Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+    RuntimeVisibleParameterAnnotations:
+      parameter 0:
+        0: #610()
+          javax.annotation.Nonnull
+      parameter 1:
+        0: #610()
+          javax.annotation.Nonnull
+      parameter 2:
+        0: #610()
+          javax.annotation.Nonnull
+
+  public java.util.Map<java.lang.String, top.theillusivec4.curios.api.type.ISlotType> getSlots();
+    descriptor: ()Ljava/util/Map;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #21                 // Field slots:Ljava/util/Map;
+         4: areturn
+      LineNumberTable:
+        line 178: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+    Signature: #612                         // ()Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+
+  public java.util.Optional<top.theillusivec4.curios.api.type.ISlotType> getSlot(java.lang.String);
+    descriptor: (Ljava/lang/String;)Ljava/util/Optional;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #21                 // Field slots:Ljava/util/Map;
+         4: aload_1
+         5: invokeinterface #259,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        10: checkcast     #263                // class top/theillusivec4/curios/api/type/ISlotType
+        13: invokestatic  #265                // Method java/util/Optional.ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+        16: areturn
+      LineNumberTable:
+        line 182: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      17     0  this   Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+            0      17     1    id   Ljava/lang/String;
+    Signature: #615                         // (Ljava/lang/String;)Ljava/util/Optional<Ltop/theillusivec4/curios/api/type/ISlotType;>;
+
+  public static net.minecraft.nbt.ListTag getSyncPacket();
+    descriptor: ()Lnet/minecraft/nbt/ListTag;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=3, args_size=0
+         0: new           #271                // class net/minecraft/nbt/ListTag
+         3: dup
+         4: invokespecial #273                // Method net/minecraft/nbt/ListTag."<init>":()V
+         7: astore_0
+         8: getstatic     #274                // Field SERVER:Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+        11: getfield      #21                 // Field slots:Ljava/util/Map;
+        14: invokeinterface #64,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+        19: invokeinterface #70,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        24: astore_1
+        25: aload_1
+        26: invokeinterface #76,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        31: ifeq          66
+        34: aload_1
+        35: invokeinterface #82,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        40: checkcast     #86                 // class java/util/Map$Entry
+        43: astore_2
+        44: aload_0
+        45: aload_2
+        46: invokeinterface #114,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+        51: checkcast     #263                // class top/theillusivec4/curios/api/type/ISlotType
+        54: invokeinterface #278,  1          // InterfaceMethod top/theillusivec4/curios/api/type/ISlotType.writeNbt:()Lnet/minecraft/nbt/CompoundTag;
+        59: invokevirtual #282                // Method net/minecraft/nbt/ListTag.add:(Ljava/lang/Object;)Z
+        62: pop
+        63: goto          25
+        66: aload_0
+        67: areturn
+      LineNumberTable:
+        line 186: 0
+        line 188: 8
+        line 189: 44
+        line 190: 63
+        line 191: 66
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           44      19     2 entry   Ljava/util/Map$Entry;
+            8      60     0   tag   Lnet/minecraft/nbt/ListTag;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           44      19     2 entry   Ljava/util/Map$Entry<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+      StackMapTable: number_of_entries = 2
+        frame_type = 253 /* append */
+          offset_delta = 25
+          locals = [ class net/minecraft/nbt/ListTag, class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 40
+
+  public static void applySyncPacket(net.minecraft.nbt.ListTag);
+    descriptor: (Lnet/minecraft/nbt/ListTag;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=6, args_size=1
+         0: invokestatic  #284                // Method com/google/common/collect/ImmutableMap.builder:()Lcom/google/common/collect/ImmutableMap$Builder;
+         3: astore_1
+         4: aload_0
+         5: invokevirtual #288                // Method net/minecraft/nbt/ListTag.iterator:()Ljava/util/Iterator;
+         8: astore_2
+         9: aload_2
+        10: invokeinterface #76,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        15: ifeq          65
+        18: aload_2
+        19: invokeinterface #82,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        24: checkcast     #289                // class net/minecraft/nbt/Tag
+        27: astore_3
+        28: aload_3
+        29: instanceof    #291                // class net/minecraft/nbt/CompoundTag
+        32: ifeq          62
+        35: aload_3
+        36: checkcast     #291                // class net/minecraft/nbt/CompoundTag
+        39: astore        4
+        41: aload         4
+        43: invokestatic  #293                // Method top/theillusivec4/curios/common/slottype/SlotType.from:(Lnet/minecraft/nbt/CompoundTag;)Ltop/theillusivec4/curios/api/type/ISlotType;
+        46: astore        5
+        48: aload_1
+        49: aload         5
+        51: invokeinterface #299,  1          // InterfaceMethod top/theillusivec4/curios/api/type/ISlotType.getIdentifier:()Ljava/lang/String;
+        56: aload         5
+        58: invokevirtual #302                // Method com/google/common/collect/ImmutableMap$Builder.put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+        61: pop
+        62: goto          9
+        65: getstatic     #308                // Field CLIENT:Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+        68: aload_1
+        69: invokevirtual #311                // Method com/google/common/collect/ImmutableMap$Builder.build:()Lcom/google/common/collect/ImmutableMap;
+        72: putfield      #21                 // Field slots:Ljava/util/Map;
+        75: return
+      LineNumberTable:
+        line 195: 0
+        line 197: 4
+        line 199: 28
+        line 200: 41
+        line 201: 48
+        line 203: 62
+        line 204: 65
+        line 205: 75
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           48      14     5  type   Ltop/theillusivec4/curios/api/type/ISlotType;
+           41      21     4 slotType   Lnet/minecraft/nbt/CompoundTag;
+           28      34     3  tag1   Lnet/minecraft/nbt/Tag;
+            0      76     0   tag   Lnet/minecraft/nbt/ListTag;
+            4      72     1   map   Lcom/google/common/collect/ImmutableMap$Builder;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            4      72     1   map   Lcom/google/common/collect/ImmutableMap$Builder<Ljava/lang/String;Ltop/theillusivec4/curios/api/type/ISlotType;>;
+      StackMapTable: number_of_entries = 3
+        frame_type = 253 /* append */
+          offset_delta = 9
+          locals = [ class com/google/common/collect/ImmutableMap$Builder, class java/util/Iterator ]
+        frame_type = 52 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 2
+
+  public void setIcons(java.util.Map<java.lang.String, net.minecraft.resources.ResourceLocation>);
+    descriptor: (Ljava/util/Map;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokestatic  #314                // Method com/google/common/collect/ImmutableMap.copyOf:(Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap;
+         5: putfield      #34                 // Field icons:Ljava/util/Map;
+         8: return
+      LineNumberTable:
+        line 208: 0
+        line 209: 8
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0  this   Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+            0       9     1 icons   Ljava/util/Map;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       9     1 icons   Ljava/util/Map<Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;>;
+    Signature: #633                         // (Ljava/util/Map<Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;>;)V
+
+  public java.util.Set<java.lang.String> getConfigSlots();
+    descriptor: ()Ljava/util/Set;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #30                 // Field configSlots:Ljava/util/Set;
+         4: areturn
+      LineNumberTable:
+        line 212: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+    Signature: #635                         // ()Ljava/util/Set<Ljava/lang/String;>;
+
+  public java.util.Map<java.lang.String, net.minecraft.resources.ResourceLocation> getIcons();
+    descriptor: ()Ljava/util/Map;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #34                 // Field icons:Ljava/util/Map;
+         4: areturn
+      LineNumberTable:
+        line 216: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+    Signature: #637                         // ()Ljava/util/Map<Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;>;
+
+  public net.minecraft.resources.ResourceLocation getIcon(java.lang.String);
+    descriptor: (Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #34                 // Field icons:Ljava/util/Map;
+         4: aload_1
+         5: ldc           #97                 // String curios
+         7: ldc_w         #319                // String slot/empty_curio_slot
+        10: invokestatic  #321                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+        13: invokeinterface #325,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        18: checkcast     #91                 // class net/minecraft/resources/ResourceLocation
+        21: areturn
+      LineNumberTable:
+        line 220: 0
+        line 221: 10
+        line 220: 13
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      22     0  this   Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+            0      22     1 identifier   Ljava/lang/String;
+
+  public java.util.Map<java.lang.String, java.util.Set<java.lang.String>> getModsFromSlots();
+    descriptor: ()Ljava/util/Map;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #37                 // Field idToMods:Ljava/util/Map;
+         4: areturn
+      LineNumberTable:
+        line 225: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+    Signature: #641                         // ()Ljava/util/Map<Ljava/lang/String;Ljava/util/Set<Ljava/lang/String;>;>;
+
+  public static java.util.Set<java.lang.String> fromConfig(java.util.Map<java.lang.String, top.theillusivec4.curios.common.slottype.SlotType$Builder>) throws java.lang.IllegalArgumentException;
+    descriptor: (Ljava/util/Map;)Ljava/util/Set;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=17, args_size=1
+         0: new           #329                // class java/util/ArrayList
+         3: dup
+         4: invokespecial #331                // Method java/util/ArrayList."<init>":()V
+         7: astore_1
+         8: getstatic     #332                // Field top/theillusivec4/curios/common/CuriosConfig.COMMON:Ltop/theillusivec4/curios/common/CuriosConfig$Common;
+        11: getfield      #338                // Field top/theillusivec4/curios/common/CuriosConfig$Common.slots:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+        14: invokevirtual #343                // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+        17: checkcast     #347                // class java/util/List
+        20: astore_2
+        21: new           #349                // class java/util/HashSet
+        24: dup
+        25: invokespecial #351                // Method java/util/HashSet."<init>":()V
+        28: astore_3
+        29: aload_2
+        30: invokeinterface #352,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        35: astore        4
+        37: aload         4
+        39: invokeinterface #76,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        44: ifeq          169
+        47: aload         4
+        49: invokeinterface #82,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        54: checkcast     #100                // class java/lang/String
+        57: astore        5
+        59: new           #353                // class java/util/StringTokenizer
+        62: dup
+        63: aload         5
+        65: ldc_w         #355                // String ;
+        68: invokespecial #357                // Method java/util/StringTokenizer."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+        71: astore        6
+        73: new           #40                 // class java/util/HashMap
+        76: dup
+        77: invokespecial #42                 // Method java/util/HashMap."<init>":()V
+        80: astore        7
+        82: aload         6
+        84: invokevirtual #360                // Method java/util/StringTokenizer.hasMoreTokens:()Z
+        87: ifeq          126
+        90: aload         6
+        92: invokevirtual #363                // Method java/util/StringTokenizer.nextToken:()Ljava/lang/String;
+        95: astore        8
+        97: aload         8
+        99: ldc_w         #366                // String =
+       102: invokevirtual #368                // Method java/lang/String.split:(Ljava/lang/String;)[Ljava/lang/String;
+       105: astore        9
+       107: aload         7
+       109: aload         9
+       111: iconst_0
+       112: aaload
+       113: aload         9
+       115: iconst_1
+       116: aaload
+       117: invokeinterface #372,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       122: pop
+       123: goto          82
+       126: aload         7
+       128: ldc_w         #374                // String id
+       131: invokeinterface #376,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+       136: ifeq          151
+       139: aload_1
+       140: aload         7
+       142: invokeinterface #379,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       147: pop
+       148: goto          166
+       151: new           #174                // class java/lang/IllegalArgumentException
+       154: dup
+       155: aload         5
+       157: invokedynamic #380,  0            // InvokeDynamic #11:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       162: invokespecial #384                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       165: athrow
+       166: goto          37
+       169: aload_1
+       170: invokeinterface #352,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       175: astore        4
+       177: aload         4
+       179: invokeinterface #76,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       184: ifeq          726
+       187: aload         4
+       189: invokeinterface #82,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       194: checkcast     #65                 // class java/util/Map
+       197: astore        5
+       199: aload         5
+       201: ldc_w         #374                // String id
+       204: invokeinterface #259,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       209: checkcast     #100                // class java/lang/String
+       212: astore        6
+       214: aload_0
+       215: aload         6
+       217: aload         6
+       219: invokedynamic #387,  0            // InvokeDynamic #12:apply:(Ljava/lang/String;)Ljava/util/function/Function;
+       224: invokeinterface #147,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+       229: checkcast     #151                // class top/theillusivec4/curios/common/slottype/SlotType$Builder
+       232: astore        7
+       234: aload         5
+       236: ldc_w         #388                // String size
+       239: invokeinterface #376,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+       244: ifeq          269
+       247: aload         5
+       249: ldc_w         #388                // String size
+       252: invokeinterface #259,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       257: checkcast     #100                // class java/lang/String
+       260: invokestatic  #389                // Method java/lang/Integer.parseInt:(Ljava/lang/String;)I
+       263: invokestatic  #250                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       266: goto          270
+       269: aconst_null
+       270: astore        8
+       272: aload         8
+       274: ifnull        296
+       277: aload         8
+       279: invokevirtual #393                // Method java/lang/Integer.intValue:()I
+       282: ifge          296
+       285: new           #174                // class java/lang/IllegalArgumentException
+       288: dup
+       289: ldc_w         #396                // String Size cannot be less than 0!
+       292: invokespecial #384                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       295: athrow
+       296: aload         5
+       298: ldc_w         #398                // String operation
+       301: ldc_w         #400                // String SET
+       304: invokeinterface #325,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       309: checkcast     #100                // class java/lang/String
+       312: astore        9
+       314: aload         9
+       316: ldc_w         #400                // String SET
+       319: invokevirtual #99                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       322: ifne          362
+       325: aload         9
+       327: ldc_w         #402                // String ADD
+       330: invokevirtual #99                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       333: ifne          362
+       336: aload         9
+       338: ldc_w         #404                // String REMOVE
+       341: invokevirtual #99                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       344: ifne          362
+       347: new           #174                // class java/lang/IllegalArgumentException
+       350: dup
+       351: aload         9
+       353: invokedynamic #406,  0            // InvokeDynamic #13:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       358: invokespecial #384                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       361: athrow
+       362: aload         5
+       364: ldc_w         #407                // String drop_rule
+       367: ldc_w         #409                // String
+       370: invokeinterface #325,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       375: checkcast     #100                // class java/lang/String
+       378: astore        10
+       380: aload         10
+       382: invokevirtual #411                // Method java/lang/String.isEmpty:()Z
+       385: ifne          414
+       388: ldc_w         #414                // class top/theillusivec4/curios/api/type/capability/ICurio$DropRule
+       391: aload         10
+       393: invokestatic  #416                // Method org/apache/commons/lang3/EnumUtils.isValidEnum:(Ljava/lang/Class;Ljava/lang/String;)Z
+       396: ifne          414
+       399: new           #174                // class java/lang/IllegalArgumentException
+       402: dup
+       403: aload         10
+       405: invokedynamic #422,  0            // InvokeDynamic #14:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       410: invokespecial #384                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       413: athrow
+       414: aload_3
+       415: aload         6
+       417: invokeinterface #423,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+       422: pop
+       423: iconst_1
+       424: istore        11
+       426: aload         5
+       428: ldc_w         #424                // String order
+       431: invokeinterface #376,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+       436: ifeq          461
+       439: aload         5
+       441: ldc_w         #424                // String order
+       444: invokeinterface #259,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       449: checkcast     #100                // class java/lang/String
+       452: invokestatic  #389                // Method java/lang/Integer.parseInt:(Ljava/lang/String;)I
+       455: invokestatic  #250                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       458: goto          462
+       461: aconst_null
+       462: astore        12
+       464: aload         5
+       466: ldc_w         #426                // String icon
+       469: ldc_w         #409                // String
+       472: invokeinterface #325,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       477: checkcast     #100                // class java/lang/String
+       480: astore        13
+       482: aload         5
+       484: ldc_w         #428                // String render_toggle
+       487: invokeinterface #376,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+       492: ifeq          517
+       495: aload         5
+       497: ldc_w         #428                // String render_toggle
+       500: invokeinterface #259,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       505: checkcast     #100                // class java/lang/String
+       508: invokestatic  #430                // Method java/lang/Boolean.parseBoolean:(Ljava/lang/String;)Z
+       511: invokestatic  #435                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       514: goto          518
+       517: aconst_null
+       518: astore        14
+       520: aload         5
+       522: ldc_w         #438                // String add_cosmetic
+       525: invokeinterface #376,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+       530: ifeq          555
+       533: aload         5
+       535: ldc_w         #438                // String add_cosmetic
+       538: invokeinterface #259,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       543: checkcast     #100                // class java/lang/String
+       546: invokestatic  #430                // Method java/lang/Boolean.parseBoolean:(Ljava/lang/String;)Z
+       549: invokestatic  #435                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       552: goto          556
+       555: aconst_null
+       556: astore        15
+       558: aload         5
+       560: ldc_w         #440                // String use_native_gui
+       563: invokeinterface #376,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+       568: ifeq          593
+       571: aload         5
+       573: ldc_w         #440                // String use_native_gui
+       576: invokeinterface #259,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       581: checkcast     #100                // class java/lang/String
+       584: invokestatic  #430                // Method java/lang/Boolean.parseBoolean:(Ljava/lang/String;)Z
+       587: invokestatic  #435                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       590: goto          594
+       593: aconst_null
+       594: astore        16
+       596: aload         12
+       598: ifnull        614
+       601: aload         7
+       603: aload         12
+       605: invokevirtual #393                // Method java/lang/Integer.intValue:()I
+       608: iload         11
+       610: invokevirtual #442                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.order:(IZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+       613: pop
+       614: aload         13
+       616: invokevirtual #411                // Method java/lang/String.isEmpty:()Z
+       619: ifne          633
+       622: aload         7
+       624: aload         13
+       626: invokestatic  #445                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       629: invokevirtual #449                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.icon:(Lnet/minecraft/resources/ResourceLocation;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+       632: pop
+       633: aload         10
+       635: invokevirtual #411                // Method java/lang/String.isEmpty:()Z
+       638: ifne          649
+       641: aload         7
+       643: aload         10
+       645: invokevirtual #452                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.dropRule:(Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+       648: pop
+       649: aload         8
+       651: ifnull        669
+       654: aload         7
+       656: aload         8
+       658: invokevirtual #393                // Method java/lang/Integer.intValue:()I
+       661: aload         9
+       663: iload         11
+       665: invokevirtual #456                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.size:(ILjava/lang/String;Z)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+       668: pop
+       669: aload         15
+       671: ifnull        687
+       674: aload         7
+       676: aload         15
+       678: invokevirtual #459                // Method java/lang/Boolean.booleanValue:()Z
+       681: iload         11
+       683: invokevirtual #462                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.hasCosmetic:(ZZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+       686: pop
+       687: aload         16
+       689: ifnull        705
+       692: aload         7
+       694: aload         16
+       696: invokevirtual #459                // Method java/lang/Boolean.booleanValue:()Z
+       699: iload         11
+       701: invokevirtual #466                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.useNativeGui:(ZZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+       704: pop
+       705: aload         14
+       707: ifnull        723
+       710: aload         7
+       712: aload         14
+       714: invokevirtual #459                // Method java/lang/Boolean.booleanValue:()Z
+       717: iload         11
+       719: invokevirtual #469                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.renderToggle:(ZZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+       722: pop
+       723: goto          177
+       726: aload_3
+       727: areturn
+      LineNumberTable:
+        line 230: 0
+        line 231: 8
+        line 232: 21
+        line 234: 29
+        line 235: 59
+        line 236: 73
+        line 238: 82
+        line 239: 90
+        line 240: 97
+        line 241: 107
+        line 242: 123
+        line 244: 126
+        line 245: 139
+        line 247: 151
+        line 250: 166
+        line 252: 169
+        line 253: 199
+        line 254: 214
+        line 255: 234
+        line 257: 272
+        line 258: 285
+        line 260: 296
+        line 262: 314
+        line 263: 347
+        line 265: 362
+        line 267: 380
+        line 268: 399
+        line 270: 414
+        line 271: 423
+        line 272: 426
+        line 273: 464
+        line 275: 482
+        line 276: 517
+        line 278: 520
+        line 279: 555
+        line 281: 558
+        line 282: 593
+        line 284: 596
+        line 285: 601
+        line 288: 614
+        line 289: 622
+        line 292: 633
+        line 293: 641
+        line 296: 649
+        line 297: 654
+        line 300: 669
+        line 301: 674
+        line 304: 687
+        line 305: 692
+        line 308: 705
+        line 309: 710
+        line 311: 723
+        line 312: 726
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           97      26     8 token   Ljava/lang/String;
+          107      16     9 keyValue   [Ljava/lang/String;
+           73      93     6 tokenizer   Ljava/util/StringTokenizer;
+           82      84     7 subMap   Ljava/util/Map;
+           59     107     5     s   Ljava/lang/String;
+          214     509     6    id   Ljava/lang/String;
+          234     489     7 builder   Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+          272     451     8  size   Ljava/lang/Integer;
+          314     409     9 operation   Ljava/lang/String;
+          380     343    10 dropRule   Ljava/lang/String;
+          426     297    11 replace   Z
+          464     259    12 order   Ljava/lang/Integer;
+          482     241    13  icon   Ljava/lang/String;
+          520     203    14 toggle   Ljava/lang/Boolean;
+          558     165    15 cosmetic   Ljava/lang/Boolean;
+          596     127    16 nativeGui   Ljava/lang/Boolean;
+          199     524     5 entry   Ljava/util/Map;
+            0     728     0   map   Ljava/util/Map;
+            8     720     1 parsed   Ljava/util/List;
+           21     707     2  list   Ljava/util/List;
+           29     699     3 results   Ljava/util/Set;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           82      84     7 subMap   Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;
+          199     524     5 entry   Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;
+            0     728     0   map   Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;>;
+            8     720     1 parsed   Ljava/util/List<Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;>;
+           21     707     2  list   Ljava/util/List<+Ljava/lang/String;>;
+           29     699     3 results   Ljava/util/Set<Ljava/lang/String;>;
+      StackMapTable: number_of_entries = 28
+        frame_type = 255 /* full_frame */
+          offset_delta = 37
+          locals = [ class java/util/Map, class java/util/List, class java/util/List, class java/util/Set, class java/util/Iterator ]
+          stack = []
+        frame_type = 254 /* append */
+          offset_delta = 44
+          locals = [ class java/lang/String, class java/util/StringTokenizer, class java/util/Map ]
+        frame_type = 43 /* same */
+        frame_type = 24 /* same */
+        frame_type = 248 /* chop */
+          offset_delta = 14
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 252 /* append */
+          offset_delta = 7
+          locals = [ class java/util/Iterator ]
+        frame_type = 254 /* append */
+          offset_delta = 91
+          locals = [ class java/util/Map, class java/lang/String, class top/theillusivec4/curios/common/slottype/SlotType$Builder ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Integer ]
+        frame_type = 252 /* append */
+          offset_delta = 25
+          locals = [ class java/lang/Integer ]
+        frame_type = 252 /* append */
+          offset_delta = 65
+          locals = [ class java/lang/String ]
+        frame_type = 252 /* append */
+          offset_delta = 51
+          locals = [ class java/lang/String ]
+        frame_type = 252 /* append */
+          offset_delta = 46
+          locals = [ int ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Integer ]
+        frame_type = 253 /* append */
+          offset_delta = 54
+          locals = [ class java/lang/Integer, class java/lang/String ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Boolean ]
+        frame_type = 252 /* append */
+          offset_delta = 36
+          locals = [ class java/lang/Boolean ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Boolean ]
+        frame_type = 252 /* append */
+          offset_delta = 36
+          locals = [ class java/lang/Boolean ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Boolean ]
+        frame_type = 252 /* append */
+          offset_delta = 19
+          locals = [ class java/lang/Boolean ]
+        frame_type = 18 /* same */
+        frame_type = 15 /* same */
+        frame_type = 19 /* same */
+        frame_type = 17 /* same */
+        frame_type = 17 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 17
+          locals = [ class java/util/Map, class java/util/List, class java/util/List, class java/util/Set, class java/util/Iterator ]
+          stack = []
+        frame_type = 250 /* chop */
+          offset_delta = 2
+    Exceptions:
+      throws java.lang.IllegalArgumentException
+    Signature: #663                         // (Ljava/util/Map<Ljava/lang/String;Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;>;)Ljava/util/Set<Ljava/lang/String;>;
+
+  public static void fromJson(top.theillusivec4.curios.common.slottype.SlotType$Builder, com.google.gson.JsonObject) throws java.lang.IllegalArgumentException, com.google.gson.JsonParseException;
+    descriptor: (Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;Lcom/google/gson/JsonObject;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=14, args_size=2
+         0: aload_1
+         1: ldc_w         #388                // String size
+         4: invokevirtual #472                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+         7: ifeq          23
+        10: aload_1
+        11: ldc_w         #388                // String size
+        14: invokestatic  #477                // Method net/minecraft/util/GsonHelper.getAsInt:(Lcom/google/gson/JsonObject;Ljava/lang/String;)I
+        17: invokestatic  #250                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        20: goto          24
+        23: aconst_null
+        24: astore_2
+        25: aload_2
+        26: ifnull        47
+        29: aload_2
+        30: invokevirtual #393                // Method java/lang/Integer.intValue:()I
+        33: ifge          47
+        36: new           #174                // class java/lang/IllegalArgumentException
+        39: dup
+        40: ldc_w         #396                // String Size cannot be less than 0!
+        43: invokespecial #384                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+        46: athrow
+        47: aload_1
+        48: ldc_w         #398                // String operation
+        51: ldc_w         #400                // String SET
+        54: invokestatic  #481                // Method net/minecraft/util/GsonHelper.getAsString:(Lcom/google/gson/JsonObject;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+        57: astore_3
+        58: aload_3
+        59: ldc_w         #400                // String SET
+        62: invokevirtual #99                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        65: ifne          102
+        68: aload_3
+        69: ldc_w         #402                // String ADD
+        72: invokevirtual #99                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        75: ifne          102
+        78: aload_3
+        79: ldc_w         #404                // String REMOVE
+        82: invokevirtual #99                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        85: ifne          102
+        88: new           #174                // class java/lang/IllegalArgumentException
+        91: dup
+        92: aload_3
+        93: invokedynamic #406,  0            // InvokeDynamic #13:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        98: invokespecial #384                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       101: athrow
+       102: aload_1
+       103: ldc_w         #407                // String drop_rule
+       106: ldc_w         #409                // String
+       109: invokestatic  #481                // Method net/minecraft/util/GsonHelper.getAsString:(Lcom/google/gson/JsonObject;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+       112: astore        4
+       114: aload         4
+       116: invokevirtual #411                // Method java/lang/String.isEmpty:()Z
+       119: ifne          148
+       122: ldc_w         #414                // class top/theillusivec4/curios/api/type/capability/ICurio$DropRule
+       125: aload         4
+       127: invokestatic  #416                // Method org/apache/commons/lang3/EnumUtils.isValidEnum:(Ljava/lang/Class;Ljava/lang/String;)Z
+       130: ifne          148
+       133: new           #174                // class java/lang/IllegalArgumentException
+       136: dup
+       137: aload         4
+       139: invokedynamic #422,  0            // InvokeDynamic #14:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       144: invokespecial #384                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       147: athrow
+       148: aload_1
+       149: ldc_w         #485                // String replace
+       152: iconst_0
+       153: invokestatic  #487                // Method net/minecraft/util/GsonHelper.getAsBoolean:(Lcom/google/gson/JsonObject;Ljava/lang/String;Z)Z
+       156: istore        5
+       158: aload_1
+       159: ldc_w         #424                // String order
+       162: invokevirtual #472                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+       165: ifeq          181
+       168: aload_1
+       169: ldc_w         #424                // String order
+       172: invokestatic  #477                // Method net/minecraft/util/GsonHelper.getAsInt:(Lcom/google/gson/JsonObject;Ljava/lang/String;)I
+       175: invokestatic  #250                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       178: goto          182
+       181: aconst_null
+       182: astore        6
+       184: aload_1
+       185: ldc_w         #426                // String icon
+       188: ldc_w         #409                // String
+       191: invokestatic  #481                // Method net/minecraft/util/GsonHelper.getAsString:(Lcom/google/gson/JsonObject;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+       194: astore        7
+       196: aload_1
+       197: ldc_w         #428                // String render_toggle
+       200: invokevirtual #472                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+       203: ifeq          219
+       206: aload_1
+       207: ldc_w         #428                // String render_toggle
+       210: invokestatic  #491                // Method net/minecraft/util/GsonHelper.getAsBoolean:(Lcom/google/gson/JsonObject;Ljava/lang/String;)Z
+       213: invokestatic  #435                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       216: goto          220
+       219: aconst_null
+       220: astore        8
+       222: aload_1
+       223: ldc_w         #438                // String add_cosmetic
+       226: invokevirtual #472                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+       229: ifeq          245
+       232: aload_1
+       233: ldc_w         #438                // String add_cosmetic
+       236: invokestatic  #491                // Method net/minecraft/util/GsonHelper.getAsBoolean:(Lcom/google/gson/JsonObject;Ljava/lang/String;)Z
+       239: invokestatic  #435                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       242: goto          246
+       245: aconst_null
+       246: astore        9
+       248: aload_1
+       249: ldc_w         #440                // String use_native_gui
+       252: invokevirtual #472                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+       255: ifeq          271
+       258: aload_1
+       259: ldc_w         #440                // String use_native_gui
+       262: invokestatic  #491                // Method net/minecraft/util/GsonHelper.getAsBoolean:(Lcom/google/gson/JsonObject;Ljava/lang/String;)Z
+       265: invokestatic  #435                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       268: goto          272
+       271: aconst_null
+       272: astore        10
+       274: aload_1
+       275: ldc_w         #494                // String validators
+       278: invokevirtual #472                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+       281: ifeq          294
+       284: aload_1
+       285: ldc_w         #494                // String validators
+       288: invokestatic  #496                // Method net/minecraft/util/GsonHelper.getAsJsonArray:(Lcom/google/gson/JsonObject;Ljava/lang/String;)Lcom/google/gson/JsonArray;
+       291: goto          295
+       294: aconst_null
+       295: astore        11
+       297: aload         6
+       299: ifnull        314
+       302: aload_0
+       303: aload         6
+       305: invokevirtual #393                // Method java/lang/Integer.intValue:()I
+       308: iload         5
+       310: invokevirtual #442                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.order:(IZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+       313: pop
+       314: aload         7
+       316: invokevirtual #411                // Method java/lang/String.isEmpty:()Z
+       319: ifne          332
+       322: aload_0
+       323: aload         7
+       325: invokestatic  #445                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       328: invokevirtual #449                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.icon:(Lnet/minecraft/resources/ResourceLocation;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+       331: pop
+       332: aload         4
+       334: invokevirtual #411                // Method java/lang/String.isEmpty:()Z
+       337: ifne          347
+       340: aload_0
+       341: aload         4
+       343: invokevirtual #452                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.dropRule:(Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+       346: pop
+       347: aload_2
+       348: ifnull        363
+       351: aload_0
+       352: aload_2
+       353: invokevirtual #393                // Method java/lang/Integer.intValue:()I
+       356: aload_3
+       357: iload         5
+       359: invokevirtual #456                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.size:(ILjava/lang/String;Z)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+       362: pop
+       363: aload         9
+       365: ifnull        380
+       368: aload_0
+       369: aload         9
+       371: invokevirtual #459                // Method java/lang/Boolean.booleanValue:()Z
+       374: iload         5
+       376: invokevirtual #462                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.hasCosmetic:(ZZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+       379: pop
+       380: aload         10
+       382: ifnull        397
+       385: aload_0
+       386: aload         10
+       388: invokevirtual #459                // Method java/lang/Boolean.booleanValue:()Z
+       391: iload         5
+       393: invokevirtual #466                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.useNativeGui:(ZZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+       396: pop
+       397: aload         8
+       399: ifnull        414
+       402: aload_0
+       403: aload         8
+       405: invokevirtual #459                // Method java/lang/Boolean.booleanValue:()Z
+       408: iload         5
+       410: invokevirtual #469                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.renderToggle:(ZZ)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+       413: pop
+       414: aload         11
+       416: ifnull        464
+       419: aload         11
+       421: invokevirtual #500                // Method com/google/gson/JsonArray.iterator:()Ljava/util/Iterator;
+       424: astore        12
+       426: aload         12
+       428: invokeinterface #76,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       433: ifeq          464
+       436: aload         12
+       438: invokeinterface #82,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       443: checkcast     #117                // class com/google/gson/JsonElement
+       446: astore        13
+       448: aload_0
+       449: aload         13
+       451: invokevirtual #503                // Method com/google/gson/JsonElement.getAsString:()Ljava/lang/String;
+       454: invokestatic  #445                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       457: invokevirtual #505                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.validator:(Lnet/minecraft/resources/ResourceLocation;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+       460: pop
+       461: goto          426
+       464: return
+      LineNumberTable:
+        line 317: 0
+        line 319: 25
+        line 320: 36
+        line 322: 47
+        line 324: 58
+        line 325: 88
+        line 327: 102
+        line 329: 114
+        line 330: 133
+        line 332: 148
+        line 333: 158
+        line 334: 184
+        line 336: 196
+        line 337: 219
+        line 339: 222
+        line 341: 248
+        line 342: 271
+        line 343: 274
+        line 344: 284
+        line 346: 297
+        line 347: 302
+        line 350: 314
+        line 351: 322
+        line 354: 332
+        line 355: 340
+        line 358: 347
+        line 359: 351
+        line 362: 363
+        line 363: 368
+        line 366: 380
+        line 367: 385
+        line 370: 397
+        line 371: 402
+        line 374: 414
+        line 376: 419
+        line 377: 448
+        line 378: 461
+        line 380: 464
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          448      13    13 jsonElement   Lcom/google/gson/JsonElement;
+            0     465     0 builder   Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+            0     465     1 jsonObject   Lcom/google/gson/JsonObject;
+           25     440     2 jsonSize   Ljava/lang/Integer;
+           58     407     3 operation   Ljava/lang/String;
+          114     351     4 jsonDropRule   Ljava/lang/String;
+          158     307     5 replace   Z
+          184     281     6 jsonOrder   Ljava/lang/Integer;
+          196     269     7 jsonIcon   Ljava/lang/String;
+          222     243     8 jsonToggle   Ljava/lang/Boolean;
+          248     217     9 jsonCosmetic   Ljava/lang/Boolean;
+          274     191    10 jsonNative   Ljava/lang/Boolean;
+          297     168    11 jsonSlotResultPredicate   Lcom/google/gson/JsonArray;
+      StackMapTable: number_of_entries = 24
+        frame_type = 23 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Integer ]
+        frame_type = 252 /* append */
+          offset_delta = 22
+          locals = [ class java/lang/Integer ]
+        frame_type = 252 /* append */
+          offset_delta = 54
+          locals = [ class java/lang/String ]
+        frame_type = 252 /* append */
+          offset_delta = 45
+          locals = [ class java/lang/String ]
+        frame_type = 252 /* append */
+          offset_delta = 32
+          locals = [ int ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Integer ]
+        frame_type = 253 /* append */
+          offset_delta = 36
+          locals = [ class java/lang/Integer, class java/lang/String ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Boolean ]
+        frame_type = 252 /* append */
+          offset_delta = 24
+          locals = [ class java/lang/Boolean ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Boolean ]
+        frame_type = 252 /* append */
+          offset_delta = 24
+          locals = [ class java/lang/Boolean ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Boolean ]
+        frame_type = 252 /* append */
+          offset_delta = 21
+          locals = [ class java/lang/Boolean ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ class com/google/gson/JsonArray ]
+        frame_type = 252 /* append */
+          offset_delta = 18
+          locals = [ class com/google/gson/JsonArray ]
+        frame_type = 17 /* same */
+        frame_type = 14 /* same */
+        frame_type = 15 /* same */
+        frame_type = 16 /* same */
+        frame_type = 16 /* same */
+        frame_type = 16 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 11
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 37
+    Exceptions:
+      throws java.lang.IllegalArgumentException, com.google.gson.JsonParseException
+
+  protected void apply(java.lang.Object, net.minecraft.server.packs.resources.ResourceManager, net.minecraft.util.profiling.ProfilerFiller);
+    descriptor: (Ljava/lang/Object;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+    flags: (0x1044) ACC_PROTECTED, ACC_BRIDGE, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=4, args_size=4
+         0: aload_0
+         1: aload_1
+         2: checkcast     #65                 // class java/util/Map
+         5: aload_2
+         6: aload_3
+         7: invokevirtual #508                // Method apply:(Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+        10: return
+      LineNumberTable:
+        line 61: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+    MethodParameters:
+      Name                           Flags
+      <no name>                      synthetic
+      <no name>                      synthetic
+      <no name>                      synthetic
+    RuntimeVisibleParameterAnnotations:
+      parameter 0:
+        0: #610()
+          javax.annotation.Nonnull
+      parameter 1:
+        0: #610()
+          javax.annotation.Nonnull
+      parameter 2:
+        0: #610()
+          javax.annotation.Nonnull
+
+  private static top.theillusivec4.curios.common.slottype.SlotType$Builder lambda$fromConfig$12(java.lang.String, java.lang.String);
+    descriptor: (Ljava/lang/String;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: new           #151                // class top/theillusivec4/curios/common/slottype/SlotType$Builder
+         3: dup
+         4: aload_0
+         5: invokespecial #511                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder."<init>":(Ljava/lang/String;)V
+         8: areturn
+      LineNumberTable:
+        line 254: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0    id   Ljava/lang/String;
+            0       9     1     k   Ljava/lang/String;
+
+  private static java.util.Set lambda$apply$11(java.util.Map$Entry);
+    descriptor: (Ljava/util/Map$Entry;)Ljava/util/Set;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokeinterface #114,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+         6: checkcast     #168                // class com/google/common/collect/ImmutableSet$Builder
+         9: invokevirtual #512                // Method com/google/common/collect/ImmutableSet$Builder.build:()Lcom/google/common/collect/ImmutableSet;
+        12: areturn
+      LineNumberTable:
+        line 173: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0 entry   Ljava/util/Map$Entry;
+
+  private static top.theillusivec4.curios.api.type.ISlotType lambda$apply$10(java.util.Map$Entry);
+    descriptor: (Ljava/util/Map$Entry;)Ltop/theillusivec4/curios/api/type/ISlotType;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokeinterface #114,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+         6: checkcast     #151                // class top/theillusivec4/curios/common/slottype/SlotType$Builder
+         9: invokevirtual #514                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder.build:()Ltop/theillusivec4/curios/common/slottype/SlotType;
+        12: areturn
+      LineNumberTable:
+        line 171: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0 entry   Ljava/util/Map$Entry;
+
+  private static com.google.common.collect.ImmutableSet$Builder lambda$apply$9(java.lang.String);
+    descriptor: (Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: invokestatic  #517                // Method com/google/common/collect/ImmutableSet.builder:()Lcom/google/common/collect/ImmutableSet$Builder;
+         3: areturn
+      LineNumberTable:
+        line 165: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       4     0     k   Ljava/lang/String;
+
+  private static com.google.common.collect.ImmutableSet$Builder lambda$apply$8(java.lang.String);
+    descriptor: (Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: invokestatic  #517                // Method com/google/common/collect/ImmutableSet.builder:()Lcom/google/common/collect/ImmutableSet$Builder;
+         3: areturn
+      LineNumberTable:
+        line 153: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       4     0     k   Ljava/lang/String;
+
+  private static top.theillusivec4.curios.common.slottype.SlotType$Builder lambda$apply$7(java.lang.String, java.lang.String);
+    descriptor: (Ljava/lang/String;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: new           #151                // class top/theillusivec4/curios/common/slottype/SlotType$Builder
+         3: dup
+         4: aload_0
+         5: invokespecial #511                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder."<init>":(Ljava/lang/String;)V
+         8: areturn
+      LineNumberTable:
+        line 151: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0    id   Ljava/lang/String;
+            0       9     1     k   Ljava/lang/String;
+
+  private static com.google.common.collect.ImmutableSet$Builder lambda$apply$6(java.lang.String);
+    descriptor: (Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: invokestatic  #517                // Method com/google/common/collect/ImmutableSet.builder:()Lcom/google/common/collect/ImmutableSet$Builder;
+         3: areturn
+      LineNumberTable:
+        line 131: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       4     0     k   Ljava/lang/String;
+
+  private static top.theillusivec4.curios.common.slottype.SlotType$Builder lambda$apply$5(java.util.Map$Entry, java.lang.String);
+    descriptor: (Ljava/util/Map$Entry;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: new           #151                // class top/theillusivec4/curios/common/slottype/SlotType$Builder
+         3: dup
+         4: aload_0
+         5: invokeinterface #88,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+        10: checkcast     #100                // class java/lang/String
+        13: invokespecial #511                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder."<init>":(Ljava/lang/String;)V
+        16: areturn
+      LineNumberTable:
+        line 126: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      17     0 entry   Ljava/util/Map$Entry;
+            0      17     1     k   Ljava/lang/String;
+
+  private static com.google.common.collect.ImmutableSet$Builder lambda$apply$4(java.lang.String);
+    descriptor: (Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: invokestatic  #517                // Method com/google/common/collect/ImmutableSet.builder:()Lcom/google/common/collect/ImmutableSet$Builder;
+         3: areturn
+      LineNumberTable:
+        line 113: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       4     0     k   Ljava/lang/String;
+
+  private static top.theillusivec4.curios.common.slottype.SlotType$Builder lambda$apply$3(java.lang.String, java.lang.String);
+    descriptor: (Ljava/lang/String;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: new           #151                // class top/theillusivec4/curios/common/slottype/SlotType$Builder
+         3: dup
+         4: aload_0
+         5: invokespecial #511                // Method top/theillusivec4/curios/common/slottype/SlotType$Builder."<init>":(Ljava/lang/String;)V
+         8: areturn
+      LineNumberTable:
+        line 111: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0    id   Ljava/lang/String;
+            0       9     1     k   Ljava/lang/String;
+
+  private static void lambda$apply$2(java.util.Map, java.util.Map, net.minecraft.server.packs.PackResources);
+    descriptor: (Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/server/packs/PackResources;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=4, args_size=3
+         0: aload_2
+         1: getstatic     #520                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+         4: invokeinterface #526,  2          // InterfaceMethod net/minecraft/server/packs/PackResources.getNamespaces:(Lnet/minecraft/server/packs/PackType;)Ljava/util/Set;
+         9: astore_3
+        10: aload_3
+        11: aload_2
+        12: aload_0
+        13: aload_1
+        14: invokedynamic #532,  0            // InvokeDynamic #15:accept:(Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;)Ljava/util/function/Consumer;
+        19: invokeinterface #535,  2          // InterfaceMethod java/util/Set.forEach:(Ljava/util/function/Consumer;)V
+        24: return
+      LineNumberTable:
+        line 83: 0
+        line 84: 10
+        line 96: 24
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      25     0 pObject   Ljava/util/Map;
+            0      25     1 sorted   Ljava/util/Map;
+            0      25     2 packResources   Lnet/minecraft/server/packs/PackResources;
+           10      15     3 namespaces   Ljava/util/Set;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           10      15     3 namespaces   Ljava/util/Set<Ljava/lang/String;>;
+
+  private static void lambda$apply$1(net.minecraft.server.packs.PackResources, java.util.Map, java.util.Map, java.lang.String);
+    descriptor: (Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=7, locals=4, args_size=4
+         0: aload_0
+         1: getstatic     #520                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+         4: aload_3
+         5: ldc           #7                  // String curios/slots
+         7: aload_3
+         8: aload_1
+         9: aload_2
+        10: invokedynamic #536,  0            // InvokeDynamic #16:accept:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)Lnet/minecraft/server/packs/PackResources$ResourceOutput;
+        15: invokeinterface #539,  5          // InterfaceMethod net/minecraft/server/packs/PackResources.listResources:(Lnet/minecraft/server/packs/PackType;Ljava/lang/String;Ljava/lang/String;Lnet/minecraft/server/packs/PackResources$ResourceOutput;)V
+        20: return
+      LineNumberTable:
+        line 85: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      21     0 packResources   Lnet/minecraft/server/packs/PackResources;
+            0      21     1 pObject   Ljava/util/Map;
+            0      21     2 sorted   Ljava/util/Map;
+            0      21     3 namespace   Ljava/lang/String;
+
+  private static void lambda$apply$0(java.lang.String, java.util.Map, java.util.Map, net.minecraft.resources.ResourceLocation, net.minecraft.server.packs.resources.IoSupplier);
+    descriptor: (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=5, locals=8, args_size=5
+         0: aload_3
+         1: invokevirtual #105                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+         4: astore        5
+         6: aload_0
+         7: aload         5
+         9: ldc_w         #543                // String curios/slots/
+        12: invokevirtual #545                // Method java/lang/String.length:()I
+        15: aload         5
+        17: invokevirtual #545                // Method java/lang/String.length:()I
+        20: ldc_w         #548                // String .json
+        23: invokevirtual #545                // Method java/lang/String.length:()I
+        26: isub
+        27: invokevirtual #550                // Method java/lang/String.substring:(II)Ljava/lang/String;
+        30: invokestatic  #321                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+        33: astore        6
+        35: aload_1
+        36: aload         6
+        38: invokeinterface #259,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        43: checkcast     #117                // class com/google/gson/JsonElement
+        46: astore        7
+        48: aload         7
+        50: ifnull        64
+        53: aload_2
+        54: aload         6
+        56: aload         7
+        58: invokeinterface #372,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        63: pop
+        64: return
+      LineNumberTable:
+        line 87: 0
+        line 88: 6
+        line 89: 12
+        line 88: 30
+        line 91: 35
+        line 92: 48
+        line 93: 53
+        line 95: 64
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      65     0 namespace   Ljava/lang/String;
+            0      65     1 pObject   Ljava/util/Map;
+            0      65     2 sorted   Ljava/util/Map;
+            0      65     3 resourceLocation   Lnet/minecraft/resources/ResourceLocation;
+            0      65     4 inputStreamIoSupplier   Lnet/minecraft/server/packs/resources/IoSupplier;
+            6      59     5  path   Ljava/lang/String;
+           35      30     6    rl   Lnet/minecraft/resources/ResourceLocation;
+           48      17     7    el   Lcom/google/gson/JsonElement;
+      StackMapTable: number_of_entries = 1
+        frame_type = 254 /* append */
+          offset_delta = 64
+          locals = [ class java/lang/String, class net/minecraft/resources/ResourceLocation, class com/google/gson/JsonElement ]
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: new           #554                // class com/google/gson/GsonBuilder
+         3: dup
+         4: invokespecial #556                // Method com/google/gson/GsonBuilder."<init>":()V
+         7: invokevirtual #557                // Method com/google/gson/GsonBuilder.setPrettyPrinting:()Lcom/google/gson/GsonBuilder;
+        10: invokevirtual #561                // Method com/google/gson/GsonBuilder.disableHtmlEscaping:()Lcom/google/gson/GsonBuilder;
+        13: invokevirtual #564                // Method com/google/gson/GsonBuilder.create:()Lcom/google/gson/Gson;
+        16: putstatic     #1                  // Field GSON:Lcom/google/gson/Gson;
+        19: new           #2                  // class top/theillusivec4/curios/common/data/CuriosSlotManager
+        22: dup
+        23: invokespecial #568                // Method "<init>":()V
+        26: putstatic     #274                // Field SERVER:Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+        29: new           #2                  // class top/theillusivec4/curios/common/data/CuriosSlotManager
+        32: dup
+        33: invokespecial #568                // Method "<init>":()V
+        36: putstatic     #308                // Field CLIENT:Ltop/theillusivec4/curios/common/data/CuriosSlotManager;
+        39: return
+      LineNumberTable:
+        line 63: 0
+        line 64: 7
+        line 65: 19
+        line 66: 29
+}
+SourceFile: "CuriosSlotManager.java"
+BootstrapMethods:
+  0: #777 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #715 (Ljava/lang/Object;)V
+      #717 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$2:(Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/server/packs/PackResources;)V
+      #720 (Lnet/minecraft/server/packs/PackResources;)V
+  1: #777 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #722 (Ljava/lang/Object;)Ljava/lang/Object;
+      #723 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$3:(Ljava/lang/String;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+      #726 (Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  2: #777 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #722 (Ljava/lang/Object;)Ljava/lang/Object;
+      #727 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$4:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+      #730 (Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  3: #777 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #722 (Ljava/lang/Object;)Ljava/lang/Object;
+      #731 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$5:(Ljava/util/Map$Entry;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+      #726 (Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  4: #777 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #722 (Ljava/lang/Object;)Ljava/lang/Object;
+      #734 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$6:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+      #730 (Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  5: #777 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #722 (Ljava/lang/Object;)Ljava/lang/Object;
+      #737 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$7:(Ljava/lang/String;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+      #726 (Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  6: #777 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #722 (Ljava/lang/Object;)Ljava/lang/Object;
+      #740 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$8:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+      #730 (Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  7: #777 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #722 (Ljava/lang/Object;)Ljava/lang/Object;
+      #743 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$9:(Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+      #730 (Ljava/lang/String;)Lcom/google/common/collect/ImmutableSet$Builder;
+  8: #777 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #722 (Ljava/lang/Object;)Ljava/lang/Object;
+      #746 REF_invokeInterface java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      #747 (Ljava/util/Map$Entry;)Ljava/lang/String;
+  9: #777 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #722 (Ljava/lang/Object;)Ljava/lang/Object;
+      #749 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$10:(Ljava/util/Map$Entry;)Ltop/theillusivec4/curios/api/type/ISlotType;
+      #752 (Ljava/util/Map$Entry;)Ltop/theillusivec4/curios/api/type/ISlotType;
+  10: #777 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #722 (Ljava/lang/Object;)Ljava/lang/Object;
+      #753 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$11:(Ljava/util/Map$Entry;)Ljava/util/Set;
+      #756 (Ljava/util/Map$Entry;)Ljava/util/Set;
+  11: #784 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #757 Cannot load config entry \u0001 due to missing id field
+  12: #777 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #722 (Ljava/lang/Object;)Ljava/lang/Object;
+      #759 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$fromConfig$12:(Ljava/lang/String;Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+      #726 (Ljava/lang/String;)Ltop/theillusivec4/curios/common/slottype/SlotType$Builder;
+  13: #784 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #762 \u0001 is not a valid operation!
+  14: #784 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #764 \u0001 is not a valid drop rule!
+  15: #777 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #715 (Ljava/lang/Object;)V
+      #766 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$1:(Lnet/minecraft/server/packs/PackResources;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;)V
+      #769 (Ljava/lang/String;)V
+  16: #777 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #770 (Ljava/lang/Object;Ljava/lang/Object;)V
+      #772 REF_invokeStatic top/theillusivec4/curios/common/data/CuriosSlotManager.lambda$apply$0:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+      #775 (Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/IoSupplier;)V
+InnerClasses:
+  public static #791= #86 of #65;         // Entry=class java/util/Map$Entry of class java/util/Map
+  public static #792= #151 of #294;       // Builder=class top/theillusivec4/curios/common/slottype/SlotType$Builder of class top/theillusivec4/curios/common/slottype/SlotType
+  public static #792= #168 of #26;        // Builder=class com/google/common/collect/ImmutableSet$Builder of class com/google/common/collect/ImmutableSet
+  public static #792= #303 of #16;        // Builder=class com/google/common/collect/ImmutableMap$Builder of class com/google/common/collect/ImmutableMap
+  public static #793= #339 of #333;       // Common=class top/theillusivec4/curios/common/CuriosConfig$Common of class top/theillusivec4/curios/common/CuriosConfig
+  public static #796= #344 of #794;       // ConfigValue=class net/neoforged/neoforge/common/ModConfigSpec$ConfigValue of class net/neoforged/neoforge/common/ModConfigSpec
+  public static final #799= #414 of #797; // DropRule=class top/theillusivec4/curios/api/type/capability/ICurio$DropRule of class top/theillusivec4/curios/api/type/capability/ICurio
+  public static #802= #800 of #527;       // ResourceOutput=class net/minecraft/server/packs/PackResources$ResourceOutput of class net/minecraft/server/packs/PackResources
+  public static final #807= #803 of #805; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
