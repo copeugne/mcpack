@@ -9224,3 +9224,28 @@ SHA-256: 9c4475699659ebec70769cb33202dea7679a4657f09cfc56c3808e60743396fe.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-dependencies-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-dependencies-r2.json
 ```
+
+### Stronghold replacement and fortified-village reconciliation, 2026-09-07
+
+Integrated Stronghold and Better Strongholds each reject vanilla STRONGHOLD normal
+generation. Their own roots use integrated_api:generic_structure and
+yungsapi:yung_jigsaw respectively, so neither matches these vanilla-type filters.
+The two custom assemblies remain separate families; vanilla remains a suppressed
+candidate. The artificial locate position and effective Eye of Ender tag selection
+are not structure observations or proofs of generation. Missing components remain.
+
+Both Terralith fortified-village roots are suppressed by the already bound frozen
+Integrated Villages setting and exact-key hook. Their family record now records
+that inactive disposition while preserving both variants and missing pieces.
+Command placement and pre-existing structures remain outside the normal-generation
+claim. No new source capture or experiment was required.
+
+Thirteen affected cases and scoped quality checks pass. Named canonical backlog:
+119, down from 121. Coverage groups remain 405, including inactive candidates.
+Nonregistry reconciliation and required attributes remain open.
+
+```sh
+uv run pytest tests/item8/test_integrated_suppression.py tests/item8/test_yung_suppression.py tests/item8/test_integrated_stronghold_provider_scope.py tests/item8/test_family_decisions.py -q -k 'suppression or stronghold'
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```

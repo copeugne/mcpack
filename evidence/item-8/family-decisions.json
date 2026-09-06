@@ -2746,12 +2746,14 @@
       "structure_ids": [
         "integrated_stronghold:stronghold"
       ],
-      "rationale": "One assembled stronghold rooted at the fountain start pool. Dining halls, libraries, prisons, portal rooms and other connected pools are components of this structure, not independent families. Vanilla and Better Strongholds remain separate generator identities; their effective replacement relationships require disposition.",
+      "rationale": "One assembled stronghold rooted at the fountain start pool. Dining halls, libraries, prisons, portal rooms and other connected pools are components of this structure, not independent families. The Integrated Stronghold and Better Strongholds suppression hooks target vanilla StructureType.STRONGHOLD. This root uses integrated_api:generic_structure and the Better Strongholds root uses yungsapi:yung_jigsaw, so neither matches those vanilla-type filters. Their distinct assembled designs remain separate families, while vanilla is retained as a suppressed candidate. This resolves the replacement boundary without claiming observed placement, completed attributes or an effective Eye of Ender target.",
       "start_pool": "integrated_stronghold:fountain/fountain",
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/integrated-stronghold-provider/identities.json": "0044580a6b6f71c9b32c8d385d539779c7b0b2ad22d4c21bf1a5bfbbf2785d5b",
+        "evidence/item-8/sources/stronghold-suppression/identities.json": "56e90dc542fe8ef9a152ccaa201cfa79e2e4f629f4b9b68623a4bf9c96f7224b"
       },
       "attributes": {
         "mob_source": {
@@ -5430,7 +5432,7 @@
       "structure_ids": [
         "betterstrongholds:stronghold"
       ],
-      "rationale": "A stronghold assembly with rooms, stairs and passages reached from its starts pool. Rooms, pieces, pools and alternative templates are not additional families. This root assignment does not establish effective placement, replacement behavior or completed gameplay attributes.",
+      "rationale": "A stronghold assembly with rooms, stairs and passages reached from its starts pool. Rooms, pieces, pools and alternative templates are not additional families. This root uses yungsapi:yung_jigsaw, distinct from Integrated Stronghold integrated_api:generic_structure. Both providers suppress the vanilla STRONGHOLD type rather than these custom types. Preserve the two custom assemblies as separate families and vanilla as a suppressed candidate. Effective placement, missing components, Eye of Ender selection and gameplay attributes remain separate unresolved questions.",
       "start_pool": "betterstrongholds:starts",
       "generation_settings": {
         "type": "yungsapi:yung_jigsaw",
@@ -5453,7 +5455,9 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/integrated-stronghold-provider/identities.json": "0044580a6b6f71c9b32c8d385d539779c7b0b2ad22d4c21bf1a5bfbbf2785d5b",
+        "evidence/item-8/sources/stronghold-suppression/identities.json": "56e90dc542fe8ef9a152ccaa201cfa79e2e4f629f4b9b68623a4bf9c96f7224b"
       }
     },
     {
@@ -23332,7 +23336,7 @@
         "terralith:fortified_desert_village",
         "terralith:fortified_village"
       ],
-      "rationale": "Desert and other fortified villages are architectural variants of a settlement assembled from houses and roads. Their different sizes, templates and missing desert farmer/toolsmith components remain explicit. Full definitions and content are preserved; effective attributes and final canonical reconciliation remain open.",
+      "rationale": "Desert and other fortified villages are architectural variants of a settlement assembled from houses and roads. Their different sizes, templates and missing desert farmer/toolsmith components remain explicit. Both exact registry roots are suppressed during normal generation by the frozen Integrated Villages setting and required hook, as bound in the variant dispositions. Retain their settlement designs and component failures as inactive candidates; neither counts as an active family in this baseline. This does not cover command placement or pre-existing structures, and shared village pieces do not create independent families.",
       "variants": {
         "terralith:fortified_desert_village": {
           "definition": {
@@ -23397,7 +23401,8 @@
         "evidence/item-8/sources/integrated-village-suppression/identities.json": "1e13f934a2a29c03d56bfdb610aaea5c53b28367e4a554a0ecf3abaf58942320",
         "evidence/item-8/sources/integrated-village-suppression/integrated_villages-1.3.3+1.21.1-neoforge.jar/mixin-metadata.json": "ecf1442a28223b45b4454b58c9607d9e26904055e591570eb10000ba23a7df46",
         "evidence/item-6/frozen/config/integrated_villages-neoforge-1_21.toml": "008ef7ca6fa759b865a0df2371724f78e4b6e85fb1a449c52d720b2215da2d39"
-      }
+      },
+      "contribution_disposition": "Both registered fortified-village variants are suppressed during normal generation in the frozen baseline. Retain them as inactive candidates and component coverage, not active canonical families."
     },
     {
       "family_id": "terralith:glacial_hut",
@@ -27266,7 +27271,7 @@
       "structure_ids": [
         "minecraft:stronghold"
       ],
-      "rationale": "One vanilla stronghold generation design. Its components and layout alternatives are not extra families. Packaged definition identity is preserved; retained-mod hooks, effective content and remaining attributes require reconciliation.",
+      "rationale": "One vanilla stronghold generation design. Its components and layout alternatives are not extra families. Packaged definition identity is preserved; retained-mod hooks, effective content and remaining attributes require reconciliation. Both the Better Strongholds and Integrated Stronghold required hooks reject normal generation for vanilla StructureType.STRONGHOLD; the two custom stronghold roots use other types and are not aliases of this root. Retain the vanilla registry row as a suppressed candidate, not an active family.",
       "variants": {
         "minecraft:stronghold": {
           "definition": {
@@ -27280,7 +27285,8 @@
           "normal_generation": {
             "status": "SUPPRESSED",
             "basis": "This hook has no configuration predicate. The required betterstrongholds mixin cancels ChunkGenerator.tryGenerateStructure at HEAD with false for StructureType.STRONGHOLD.",
-            "scope": "Source-and-configuration derivation for normal generation in the retained stack. Keep the registered root and compatible biome information. This does not establish command placement, pre-existing worlds or a separately instrumented hook invocation; vanilla content descriptions do not imply active generation."
+            "scope": "Source-and-configuration derivation for normal generation in the retained stack. Keep the registered root and compatible biome information. This does not establish command placement, pre-existing worlds or a separately instrumented hook invocation; vanilla content descriptions do not imply active generation.",
+            "additional_suppression": "Integrated Stronghold also unconditionally rejects StructureType.STRONGHOLD at ChunkGenerator.tryGenerateStructure HEAD. Its separate artificial locate result is not a generated structure observation."
           }
         }
       },
@@ -27289,8 +27295,10 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/stronghold-suppression/identities.json": "56e90dc542fe8ef9a152ccaa201cfa79e2e4f629f4b9b68623a4bf9c96f7224b",
-        "evidence/item-8/sources/stronghold-suppression/YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar/mixin-metadata.json": "a4dc068b8293a73a4b6aba4a571143164bd69e2e72a9123b4371a703b729d9b5"
-      }
+        "evidence/item-8/sources/stronghold-suppression/YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar/mixin-metadata.json": "a4dc068b8293a73a4b6aba4a571143164bd69e2e72a9123b4371a703b729d9b5",
+        "evidence/item-8/sources/integrated-stronghold-provider/identities.json": "0044580a6b6f71c9b32c8d385d539779c7b0b2ad22d4c21bf1a5bfbbf2785d5b"
+      },
+      "contribution_disposition": "Normal generation suppressed by retained stronghold replacement hooks. Keep the vanilla root and component context as an inactive candidate."
     },
     {
       "family_id": "minecraft:swamp_hut",

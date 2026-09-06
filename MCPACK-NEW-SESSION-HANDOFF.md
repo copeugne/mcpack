@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Stronghold replacement and Terralith fortified-village dispositions now agree with
+existing suppression evidence. Both custom stronghold types remain distinct from
+vanilla STRONGHOLD; both fortified-village roots remain suppressed candidates.
+Thirteen affected cases and scoped checks pass. Canonical-note backlog: 119.
+Coverage groups remain 405. No new capture was needed. Inventory refresh follows.
+
 Inventory matches b296565c and reproduces exactly. Canonical-note backlog: 121.
 Coverage groups remain 405. Optional IDAS roots are inactive; adaptive default
 pool selection is resolved, but their design reconciliation remains open.
