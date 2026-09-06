@@ -228,6 +228,11 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "net/mehvahdjukaar/moonlight/core/Moonlight.class",
+    "net/mehvahdjukaar/moonlight/api/MoonlightRegistry.class",
+    "net/mehvahdjukaar/moonlight/core/worldgen/SpawnBoxStructurePiece.class",
+    "net/mehvahdjukaar/moonlight/core/worldgen/JigsawCodecWithExtra.class",
+    "net/mehvahdjukaar/moonlight/core/misc/ReloadInstanceWrapper.class",
     "net/mehvahdjukaar/moonlight/api/client/platform/ForgeFluidTypeHelper.class",
     "net/mehvahdjukaar/moonlight/platform/MoonlightForge.class",
     "net/mehvahdjukaar/moonlight/core/mixins/MixinPlugin.class",
