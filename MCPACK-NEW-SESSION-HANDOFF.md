@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+CristelLib membership is resolved from 301e7486, 8cf26f9e, 70b3b9ce, 0e6adb61
+and 781e1a8d. It loads consumer packs and configures existing structure sets;
+no independent family. Waystones replacement eligibility is false in the frozen
+runtime. Full payload/source binding, the existing Towns and Towers case and
+scoped quality checks pass. Whole providers: 107 resolved, 29 open. Preserve
+set-toggle/placement effects for attributes. No further generic CristelLib
+helper tracing. Continue remaining providers and canonical Moog grouping.
+
+
 Cloth Config membership is resolved from 6e7567c7. Its sole entry only registers
 a client config page; no independent family. Full payload/source binding,
 27 utility cases and scoped checks pass. Whole providers: 106 resolved, 30 open.

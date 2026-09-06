@@ -1,0 +1,315 @@
+Compiled from "PlatformHelperImpl.java"
+public class de.cristelknight.cristellib.neoforge.PlatformHelperImpl {
+  public de.cristelknight.cristellib.neoforge.PlatformHelperImpl();
+    Code:
+       0: aload_0
+       1: invokespecial #14                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static java.nio.file.Path getConfigDirectory();
+    Code:
+       0: getstatic     #24                 // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #27                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: areturn
+
+  public static java.io.InputStream getResourceStream(java.lang.String, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #37                 // Method getResourceDirectory:(Ljava/lang/String;Ljava/lang/String;)Ljava/nio/file/Path;
+       5: astore_3
+       6: aload_3
+       7: ifnonnull     12
+      10: aconst_null
+      11: areturn
+      12: aload_3
+      13: iconst_0
+      14: anewarray     #41                 // class java/nio/file/OpenOption
+      17: invokestatic  #47                 // Method java/nio/file/Files.newInputStream:(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Ljava/io/InputStream;
+      20: astore_2
+      21: goto          41
+      24: astore        4
+      26: getstatic     #53                 // Field de/cristelknight/cristellib/Constants.LOG:Lorg/apache/logging/log4j/Logger;
+      29: ldc           #55                 // String Couldn\'t create Input Stream for Path {}
+      31: aload_3
+      32: aload         4
+      34: invokeinterface #61,  4           // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      39: aconst_null
+      40: areturn
+      41: aload_2
+      42: areturn
+    Exception table:
+       from    to  target type
+          12    21    24   Class java/io/IOException
+
+  public static com.mojang.datafixers.util.Pair<net.minecraft.server.packs.PackResources, net.minecraft.server.packs.PackResources> registerBuiltinResourcePack(net.minecraft.resources.ResourceLocation, net.minecraft.network.chat.Component);
+    Code:
+       0: aload_0
+       1: invokevirtual #83                 // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+       4: astore_2
+       5: aload_0
+       6: invokevirtual #86                 // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+       9: astore_3
+      10: aload_2
+      11: aload_0
+      12: invokevirtual #86                 // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      15: invokestatic  #37                 // Method getResourceDirectory:(Ljava/lang/String;Ljava/lang/String;)Ljava/nio/file/Path;
+      18: astore        4
+      20: aload         4
+      22: ifnull        127
+      25: new           #88                 // class net/minecraft/server/packs/PackLocationInfo
+      28: dup
+      29: aload_0
+      30: invokevirtual #91                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      33: aload_1
+      34: new           #93                 // class de/cristelknight/cristellib/builtinpacks/BuiltinResourcePackSource
+      37: dup
+      38: invokespecial #94                 // Method de/cristelknight/cristellib/builtinpacks/BuiltinResourcePackSource."<init>":()V
+      41: invokestatic  #100                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      44: invokespecial #103                // Method net/minecraft/server/packs/PackLocationInfo."<init>":(Ljava/lang/String;Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackSource;Ljava/util/Optional;)V
+      47: astore        5
+      49: new           #105                // class net/minecraft/server/packs/PathPackResources
+      52: dup
+      53: aload         5
+      55: aload         4
+      57: invokespecial #108                // Method net/minecraft/server/packs/PathPackResources."<init>":(Lnet/minecraft/server/packs/PackLocationInfo;Ljava/nio/file/Path;)V
+      60: astore        6
+      62: new           #105                // class net/minecraft/server/packs/PathPackResources
+      65: dup
+      66: aload         5
+      68: aload         4
+      70: invokespecial #108                // Method net/minecraft/server/packs/PathPackResources."<init>":(Lnet/minecraft/server/packs/PackLocationInfo;Ljava/nio/file/Path;)V
+      73: astore        7
+      75: new           #110                // class com/mojang/datafixers/util/Pair
+      78: dup
+      79: aload         6
+      81: getstatic     #116                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+      84: invokevirtual #120                // Method net/minecraft/server/packs/PathPackResources.getNamespaces:(Lnet/minecraft/server/packs/PackType;)Ljava/util/Set;
+      87: invokeinterface #126,  1          // InterfaceMethod java/util/Set.isEmpty:()Z
+      92: ifeq          99
+      95: aconst_null
+      96: goto          101
+      99: aload         6
+     101: aload         7
+     103: getstatic     #133                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+     106: invokevirtual #120                // Method net/minecraft/server/packs/PathPackResources.getNamespaces:(Lnet/minecraft/server/packs/PackType;)Ljava/util/Set;
+     109: invokeinterface #126,  1          // InterfaceMethod java/util/Set.isEmpty:()Z
+     114: ifeq          121
+     117: aconst_null
+     118: goto          123
+     121: aload         7
+     123: invokespecial #136                // Method com/mojang/datafixers/util/Pair."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+     126: areturn
+     127: getstatic     #53                 // Field de/cristelknight/cristellib/Constants.LOG:Lorg/apache/logging/log4j/Logger;
+     130: ldc           #138                // String Couldn\'t find path: {} in container for modID: {} for pack with display name: {}
+     132: aload_3
+     133: aload_2
+     134: aload_1
+     135: invokeinterface #142,  5          // InterfaceMethod org/apache/logging/log4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+     140: aconst_null
+     141: areturn
+
+  public static net.minecraft.server.packs.PackResources createOverlay(net.minecraft.server.packs.PackResources, java.lang.String);
+    Code:
+       0: aload_0
+       1: instanceof    #158                // class de/cristelknight/cristellib/neoforge/mixin/PathPackResourcesAccessor
+       4: ifeq          15
+       7: aload_0
+       8: checkcast     #158                // class de/cristelknight/cristellib/neoforge/mixin/PathPackResourcesAccessor
+      11: astore_2
+      12: goto          33
+      15: getstatic     #53                 // Field de/cristelknight/cristellib/Constants.LOG:Lorg/apache/logging/log4j/Logger;
+      18: ldc           #160                // String Couldn\'t create overlay for Pack: {}, because it does not support overlays
+      20: aload_0
+      21: invokeinterface #163,  1          // InterfaceMethod net/minecraft/server/packs/PackResources.packId:()Ljava/lang/String;
+      26: invokeinterface #166,  3          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+      31: aconst_null
+      32: areturn
+      33: new           #105                // class net/minecraft/server/packs/PathPackResources
+      36: dup
+      37: aload_0
+      38: invokeinterface #170,  1          // InterfaceMethod net/minecraft/server/packs/PackResources.location:()Lnet/minecraft/server/packs/PackLocationInfo;
+      43: aload_2
+      44: invokeinterface #173,  1          // InterfaceMethod de/cristelknight/cristellib/neoforge/mixin/PathPackResourcesAccessor.cristellib$getRoot:()Ljava/nio/file/Path;
+      49: aload_1
+      50: invokeinterface #177,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      55: invokespecial #108                // Method net/minecraft/server/packs/PathPackResources."<init>":(Lnet/minecraft/server/packs/PackLocationInfo;Ljava/nio/file/Path;)V
+      58: areturn
+
+  public static java.lang.String getModDisplayName(java.lang.String);
+    Code:
+       0: invokestatic  #187                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: aload_0
+       4: invokevirtual #191                // Method net/neoforged/fml/ModList.getModContainerById:(Ljava/lang/String;)Ljava/util/Optional;
+       7: invokedynamic #210,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      12: invokevirtual #214                // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      15: aload_0
+      16: invokevirtual #217                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      19: checkcast     #63                 // class java/lang/String
+      22: areturn
+
+  public static de.cristelknight.cristellib.util.Platform getPlatform();
+    Code:
+       0: getstatic     #225                // Field de/cristelknight/cristellib/util/Platform.NEO_FORGE:Lde/cristelknight/cristellib/util/Platform;
+       3: areturn
+
+  public static boolean isClient();
+    Code:
+       0: getstatic     #232                // Field net/neoforged/fml/loading/FMLEnvironment.dist:Lnet/neoforged/api/distmarker/Dist;
+       3: invokevirtual #236                // Method net/neoforged/api/distmarker/Dist.isClient:()Z
+       6: ireturn
+
+  public static void findInModFiles(java.lang.String, java.lang.String, java.util.function.Predicate<java.nio.file.Path>, java.util.function.Consumer<java.lang.String>);
+    Code:
+       0: aload_0
+       1: invokestatic  #246                // Method getModFile:(Ljava/lang/String;)Lnet/neoforged/neoforgespi/locating/IModFile;
+       4: astore        4
+       6: aload         4
+       8: ifnonnull     12
+      11: return
+      12: aload_0
+      13: aload_1
+      14: invokestatic  #37                 // Method getResourceDirectory:(Ljava/lang/String;Ljava/lang/String;)Ljava/nio/file/Path;
+      17: aload_2
+      18: aload_3
+      19: invokestatic  #254                // Method de/cristelknight/cristellib/data/PathFinder.walk:(Ljava/nio/file/Path;Ljava/util/function/Predicate;Ljava/util/function/Consumer;)V
+      22: goto          43
+      25: astore        5
+      27: new           #256                // class java/lang/RuntimeException
+      30: dup
+      31: ldc_w         #258                // String Error while trying to walk through mod files
+      34: invokestatic  #261                // Method de/cristelknight/cristellib/Constants.getWithPrefix:(Ljava/lang/String;)Ljava/lang/String;
+      37: aload         5
+      39: invokespecial #264                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+      42: athrow
+      43: return
+    Exception table:
+       from    to  target type
+          12    22    25   Class java/io/IOException
+
+  public static java.util.Map<java.lang.String, de.cristelknight.cristellib.api.CristelLibAPI> getApis();
+    Code:
+       0: new           #275                // class java/util/HashMap
+       3: dup
+       4: invokespecial #276                // Method java/util/HashMap."<init>":()V
+       7: astore_0
+       8: ldc_w         #278                // class de/cristelknight/cristellib/api/CristelPlugin
+      11: ldc_w         #280                // class de/cristelknight/cristellib/api/CristelLibAPI
+      14: invokestatic  #286                // Method de/cristelknight/cristellib/neoforge/extraapiutil/APIFinder.scanForAPIs:(Ljava/lang/Class;Ljava/lang/Class;)Ljava/util/List;
+      17: astore_1
+      18: aload_1
+      19: invokeinterface #292,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      24: astore_2
+      25: aload_2
+      26: invokeinterface #299,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      31: ifeq          80
+      34: aload_2
+      35: invokeinterface #303,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      40: checkcast     #110                // class com/mojang/datafixers/util/Pair
+      43: astore_3
+      44: aload_3
+      45: invokevirtual #306                // Method com/mojang/datafixers/util/Pair.getFirst:()Ljava/lang/Object;
+      48: checkcast     #288                // class java/util/List
+      51: invokeinterface #307,  1          // InterfaceMethod java/util/List.getFirst:()Ljava/lang/Object;
+      56: checkcast     #63                 // class java/lang/String
+      59: astore        4
+      61: aload_0
+      62: aload         4
+      64: aload_3
+      65: invokevirtual #310                // Method com/mojang/datafixers/util/Pair.getSecond:()Ljava/lang/Object;
+      68: checkcast     #280                // class de/cristelknight/cristellib/api/CristelLibAPI
+      71: invokeinterface #314,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      76: pop
+      77: goto          25
+      80: aload_0
+      81: areturn
+
+  public static boolean isDevelopmentEnvironment();
+    Code:
+       0: invokestatic  #329                // Method net/neoforged/fml/loading/FMLLoader.isProduction:()Z
+       3: ifne          10
+       6: iconst_1
+       7: goto          11
+      10: iconst_0
+      11: ireturn
+
+  private static net.neoforged.neoforgespi.locating.IModFile getModFile(java.lang.String);
+    Code:
+       0: invokestatic  #187                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: astore_1
+       4: aload_1
+       5: ifnonnull     42
+       8: aload_0
+       9: invokestatic  #335                // Method de/cristelknight/cristellib/neoforge/ModLoadingUtilImpl.getPreLoadedModInfo:(Ljava/lang/String;)Lnet/neoforged/fml/loading/moddiscovery/ModInfo;
+      12: astore_3
+      13: aload_3
+      14: ifnonnull     31
+      17: getstatic     #53                 // Field de/cristelknight/cristellib/Constants.LOG:Lorg/apache/logging/log4j/Logger;
+      20: ldc_w         #337                // String Mod info for modId: {} is null
+      23: aload_0
+      24: invokeinterface #166,  3          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+      29: aconst_null
+      30: areturn
+      31: aload_3
+      32: invokevirtual #343                // Method net/neoforged/fml/loading/moddiscovery/ModInfo.getOwningFile:()Lnet/neoforged/fml/loading/moddiscovery/ModFileInfo;
+      35: invokevirtual #349                // Method net/neoforged/fml/loading/moddiscovery/ModFileInfo.getFile:()Lnet/neoforged/fml/loading/moddiscovery/ModFile;
+      38: astore_2
+      39: goto          88
+      42: aload_1
+      43: aload_0
+      44: invokevirtual #191                // Method net/neoforged/fml/ModList.getModContainerById:(Ljava/lang/String;)Ljava/util/Optional;
+      47: aconst_null
+      48: invokevirtual #217                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      51: checkcast     #351                // class net/neoforged/fml/ModContainer
+      54: astore_3
+      55: aload_3
+      56: ifnonnull     73
+      59: getstatic     #53                 // Field de/cristelknight/cristellib/Constants.LOG:Lorg/apache/logging/log4j/Logger;
+      62: ldc_w         #353                // String Mod container for modId: {} is null
+      65: aload_0
+      66: invokeinterface #166,  3          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+      71: aconst_null
+      72: areturn
+      73: aload_3
+      74: invokevirtual #357                // Method net/neoforged/fml/ModContainer.getModInfo:()Lnet/neoforged/neoforgespi/language/IModInfo;
+      77: invokeinterface #362,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModInfo.getOwningFile:()Lnet/neoforged/neoforgespi/language/IModFileInfo;
+      82: invokeinterface #367,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.getFile:()Lnet/neoforged/neoforgespi/locating/IModFile;
+      87: astore_2
+      88: aload_2
+      89: areturn
+
+  private static java.nio.file.Path getResourceDirectory(java.lang.String, java.lang.String);
+    Code:
+       0: aload_0
+       1: invokestatic  #246                // Method getModFile:(Ljava/lang/String;)Lnet/neoforged/neoforgespi/locating/IModFile;
+       4: astore_2
+       5: aload_2
+       6: ifnonnull     11
+       9: aconst_null
+      10: areturn
+      11: aload_2
+      12: iconst_1
+      13: anewarray     #63                 // class java/lang/String
+      16: dup
+      17: iconst_0
+      18: aload_1
+      19: aastore
+      20: invokeinterface #378,  2          // InterfaceMethod net/neoforged/neoforgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+      25: astore_3
+      26: aload_3
+      27: ifnonnull     43
+      30: getstatic     #53                 // Field de/cristelknight/cristellib/Constants.LOG:Lorg/apache/logging/log4j/Logger;
+      33: ldc_w         #380                // String Path for subPath: {} in modId: {} is null
+      36: aload_1
+      37: aload_0
+      38: invokeinterface #61,  4           // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      43: aload_3
+      44: areturn
+
+  private static java.lang.String lambda$getModDisplayName$0(net.neoforged.fml.ModContainer);
+    Code:
+       0: aload_0
+       1: invokevirtual #357                // Method net/neoforged/fml/ModContainer.getModInfo:()Lnet/neoforged/neoforgespi/language/IModInfo;
+       4: invokeinterface #383,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModInfo.getDisplayName:()Ljava/lang/String;
+       9: areturn
+}

@@ -1,0 +1,139 @@
+Compiled from "ModLoadedCondition.java"
+public final class de.cristelknight.cristellib.data.condition.conditions.ModLoadedCondition extends java.lang.Record implements de.cristelknight.cristellib.data.condition.ICondition<de.cristelknight.cristellib.data.condition.conditions.ModLoadedCondition> {
+  private final java.lang.String modId;
+
+  private final java.util.Optional<java.lang.String> optionalVersion;
+
+  public static final com.mojang.serialization.Codec<de.cristelknight.cristellib.data.condition.conditions.ModLoadedCondition> CODEC;
+
+  public de.cristelknight.cristellib.data.condition.conditions.ModLoadedCondition(java.lang.String, java.util.Optional<java.lang.String>);
+    Code:
+       0: aload_0
+       1: invokespecial #37                 // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #39                 // Field modId:Ljava/lang/String;
+       9: aload_0
+      10: aload_2
+      11: putfield      #41                 // Field optionalVersion:Ljava/util/Optional;
+      14: return
+
+  public boolean test();
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field optionalVersion:Ljava/util/Optional;
+       4: invokevirtual #50                 // Method java/util/Optional.isEmpty:()Z
+       7: ifeq          18
+      10: aload_0
+      11: getfield      #39                 // Field modId:Ljava/lang/String;
+      14: invokestatic  #56                 // Method de/cristelknight/cristellib/ModLoadingUtil.isModLoaded:(Ljava/lang/String;)Z
+      17: ireturn
+      18: aload_0
+      19: getfield      #41                 // Field optionalVersion:Ljava/util/Optional;
+      22: invokevirtual #60                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      25: checkcast     #62                 // class java/lang/String
+      28: astore_1
+      29: invokestatic  #68                 // Method de/cristelknight/cristellib/util/ModVersionComparator.values:()[Lde/cristelknight/cristellib/util/ModVersionComparator;
+      32: astore_2
+      33: aload_2
+      34: arraylength
+      35: istore_3
+      36: iconst_0
+      37: istore        4
+      39: iload         4
+      41: iload_3
+      42: if_icmpge     94
+      45: aload_2
+      46: iload         4
+      48: aaload
+      49: astore        5
+      51: aload         5
+      53: invokevirtual #74                 // Method de/cristelknight/cristellib/util/ModVersionComparator.getSerialized:()Ljava/lang/String;
+      56: astore        6
+      58: aload_1
+      59: aload         6
+      61: invokevirtual #77                 // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      64: ifne          70
+      67: goto          88
+      70: aload         5
+      72: aload_0
+      73: getfield      #39                 // Field modId:Ljava/lang/String;
+      76: aload_1
+      77: aload         6
+      79: ldc           #79                 // String
+      81: invokevirtual #83                 // Method java/lang/String.replaceFirst:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      84: invokevirtual #86                 // Method de/cristelknight/cristellib/util/ModVersionComparator.test:(Ljava/lang/String;Ljava/lang/String;)Z
+      87: ireturn
+      88: iinc          4, 1
+      91: goto          39
+      94: getstatic     #92                 // Field de/cristelknight/cristellib/Constants.LOG:Lorg/apache/logging/log4j/Logger;
+      97: ldc           #94                 // String Couldn\'t compare \"version\": \"{}\" of \"mod\": \"{}\"
+      99: aload_1
+     100: aload_0
+     101: getfield      #39                 // Field modId:Ljava/lang/String;
+     104: invokeinterface #100,  4          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     109: iconst_0
+     110: ireturn
+
+  public com.mojang.serialization.Codec<de.cristelknight.cristellib.data.condition.conditions.ModLoadedCondition> getCodec();
+    Code:
+       0: getstatic     #109                // Field CODEC:Lcom/mojang/serialization/Codec;
+       3: areturn
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #124,  0            // InvokeDynamic #0:toString:(Lde/cristelknight/cristellib/data/condition/conditions/ModLoadedCondition;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #129,  0            // InvokeDynamic #0:hashCode:(Lde/cristelknight/cristellib/data/condition/conditions/ModLoadedCondition;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #135,  0            // InvokeDynamic #0:equals:(Lde/cristelknight/cristellib/data/condition/conditions/ModLoadedCondition;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public java.lang.String modId();
+    Code:
+       0: aload_0
+       1: getfield      #39                 // Field modId:Ljava/lang/String;
+       4: areturn
+
+  public java.util.Optional<java.lang.String> optionalVersion();
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field optionalVersion:Ljava/util/Optional;
+       4: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #147                // Field com/mojang/serialization/Codec.STRING:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+       4: ldc           #149                // String modid
+       6: invokeinterface #155,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #172,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      16: invokevirtual #178                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: getstatic     #147                // Field com/mojang/serialization/Codec.STRING:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      22: ldc           #179                // String version
+      24: invokeinterface #182,  2          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      29: invokedynamic #188,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      34: invokevirtual #178                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      37: invokevirtual #192                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P2;
+      40: aload_0
+      41: invokedynamic #202,  0            // InvokeDynamic #3:apply:()Ljava/util/function/BiFunction;
+      46: invokevirtual #205                // Method com/mojang/datafixers/Products$P2.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/BiFunction;)Lcom/mojang/datafixers/kinds/App;
+      49: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #212,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+       5: invokestatic  #216                // Method com/mojang/serialization/codecs/RecordCodecBuilder.create:(Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;
+       8: putstatic     #109                // Field CODEC:Lcom/mojang/serialization/Codec;
+      11: return
+}
