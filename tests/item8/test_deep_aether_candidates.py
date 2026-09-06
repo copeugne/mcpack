@@ -93,3 +93,30 @@ def test_deep_aether_packaged_candidate_partition() -> None:
         }
         for name, digest in nested.items():
             assert hashlib.sha256(archive.read("META-INF/jarjar/" + name)).hexdigest() == digest
+
+
+def test_deep_aether_brass_source_binding() -> None:
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name == "deep_aether-1.21.1-1.1.5.1.jar")
+    base = Path("evidence/item-8/sources/deep-aether-provider")
+    raw = (base / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "71c441da5bd3213d84b0ce9f1f38f098979d158b3f16146397428b99e958d5c4"
+    )
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    with ZipFile(source.path) as archive:
+        for row in cast("list[dict[str, str]]", json.loads(raw)):
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+            assert hashlib.sha256((base / row["disassembly"]).read_bytes()).hexdigest() == (
+                row["disassembly_sha256"]
+            )
+        prefix = "io/github/razordevs/deep_aether/world/structure/brass/"
+        structure = archive.read(prefix + "BrassDungeonStructure.class")
+        piece = archive.read(prefix + "BrassDungeonPiece.class")
+        assert b"brass_dungeon/\x01" in piece
+        assert b"\x01_boss" in structure
+        assert all(f"brass_dungeon_room_{i}".encode() in structure for i in range(5))
+        assert b"room_part_up" in structure
+        assert b"door" in structure

@@ -3456,3 +3456,24 @@ following any helper; do not repeat the totem or candidate partition.
 Three focused candidate/selection/totem cases and scoped checks pass using the
 commands above. Provider coverage remains OPEN. Source capture is not acceptance
 of the contribution roles; no final family count or Item 8 completion is claimed.
+
+### Deep Aether Brass component reconciliation
+
+The captured BrassDungeonStructure selects brass_dungeon_room_0 through _4.
+createBossRoom appends _boss for the boss-room branch, uses the ordinary room
+otherwise, and adds room_part_up. generatePieces also selects door.
+BrassDungeonPiece qualifies the supplied names under brass_dungeon/. Together
+these select all twelve packaged Brass templates as dungeon components, not
+twelve independent families. This is a call-site/name reconciliation, not a
+simulation of successful assembly or a proof of dimensions or encounter quality.
+
+test_deep_aether_brass_source_binding binds the exact source manifest and every
+captured class/disassembly hash, plus the actual constant-pool concatenation
+recipes and room-name choices. The existing packaged partition supplies the
+exact twelve-template set. Four focused candidate/selection/source/totem cases
+pass; a combined-assertion lint finding was split and its affected case rerun.
+Scoped Ruff and Basedpyright pass. No new capture or measurement was needed.
+
+Remaining Deep Aether work: jigsaw consumer/eligibility reconciliation, custom
+feature and common-entry roles, optional packs and AeroBlender's contribution.
+Do not reopen the Brass room-name or inactive-totem checks during that census.
