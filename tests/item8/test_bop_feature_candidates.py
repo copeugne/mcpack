@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 from zipfile import ZipFile
@@ -112,3 +113,44 @@ def test_bop_plain_bone_spine_has_no_packaged_selector_reference() -> None:
             prefix + "configured_feature/bone_spine.json",
             prefix + "configured_feature/nether_bone_spine.json",
         }
+
+
+def test_bop_generation_entry_capture_covers_configured_type_registrations() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name.startswith("BiomesOPlenty-"))
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    directory = Path("evidence/item-8/sources/bop-generation-entries")
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "e39ce1ed03f04e960d04b689e6843a27be532200b5b7c523162564b489ddcaed"
+    )
+    rows = cast("list[dict[str, str]]", json.loads(raw))
+    assert len(rows) == 9
+    with ZipFile(source.path) as archive:
+        for row in rows:
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+            assert hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest() == (
+                row["disassembly_sha256"]
+            )
+        types = {
+            str(cast("dict[str, JsonValue]", json.loads(archive.read(n)))["type"])
+            for n in archive.namelist()
+            if n.startswith("data/biomesoplenty/worldgen/configured_feature/")
+            and n.endswith(".json")
+        }
+    custom = {t for t in types if t.startswith("biomesoplenty:")}
+    assert len(custom) == 78
+    assert len(types - custom) == 13
+    path = directory / source.name / "biomesoplenty.worldgen.feature.BOPBaseFeatures.txt"
+    text = path.read_text()
+    registration = text.split("public static void registerFeatures(", 1)[1].split(
+        "private static", 1)[0]
+    names = cast("list[str]", re.findall(r"// String (\w+)", registration))
+    registered = {"biomesoplenty:" + name for name in names}
+    assert len(registered) == 81
+    assert custom <= registered
+    assert registered - custom == {
+        "biomesoplenty:dead_coral_claw", "biomesoplenty:dead_coral_mushroom",
+        "biomesoplenty:dead_coral_tree",
+    }

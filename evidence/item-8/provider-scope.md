@@ -1952,3 +1952,21 @@ uv run basedpyright tests/item8/test_bop_feature_candidates.py
 
 BOP whole-provider coverage remains open for its remaining feature types and
 generation entry hooks. Current provider totals remain 54 resolved and 82 open.
+
+Entry reconciliation in d802cf9 now preserves and reproduces the normal loader,
+feature/carver registrars, biome setup, datagen subscriber and both declared
+fluid mixins. See sources/bop-generation-entries/README.md. Cave carving and
+fluid-type mixins add no authored family. The entry registration binds all 78
+custom types referenced by the packaged configured features. Its three extra
+types are dead_coral_tree, dead_coral_mushroom and dead_coral_claw, which have no
+standalone packaged configured entry. They remain in consumer reconciliation,
+not presumed inactive from that absence. The other thirteen configured types
+are vanilla types. These are feature-type counts, not family counts.
+
+The remaining BOP feature scope is therefore 75 custom configured types after
+the three named decisions above, plus the three registered coral consumers.
+Use their existing configurations and concrete placement roles; follow only
+unresolved candidate behavior, not unrelated plant/block gameplay. Whole payload
+accounting still needs its final join. Do not repeat the entry capture or the
+three named decisions. Three focused BOP cases pass; scoped Ruff and Basedpyright
+pass after fixing one long line and typing the regular-expression result.
