@@ -9339,3 +9339,12 @@ uv run pytest tests/item8/test_aether_bronze_components.py tests/item8/test_aeth
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+Inventory regenerated from f9705ace and independently reproduced exactly.
+Only the four dungeon grouping decisions and the decision input identity changed.
+SHA-256: 36a7af5025bf1800f3cd7b32f6c6965949ae48bc736229ad751aa26ab768140a.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-aether-designs-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-aether-designs-r2.json
+```
