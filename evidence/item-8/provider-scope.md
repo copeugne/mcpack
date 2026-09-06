@@ -3665,3 +3665,36 @@ features beyond the existing modifier subset, and reconcile the remaining
 payload including overlays and the embedded JSON5 library. The provider stays
 in the existing queue: 77 resolved and 59 open. Do not repeat the Ashen component
 or the previously accepted 34 feature-modifier and surface-rule analyses.
+
+### Regions Unexplored fallen-tree candidate
+
+Source 23f8c7b adds the fallen-tree implementation and the two direct biome/
+surface delegates under sources/regions-unexplored-generation-delegates.
+Manifest SHA-256:
+b779daaf84f5a04384246079c6ada082941188e6319cb4c8835bfe6dad089770.
+The existing extractor 389b2ed produced an exact independent r1 repeat.
+
+Retain one named stump-and-fallen-log candidate with six configuration variants:
+larch, maple, oak, pine, silver_birch and snow_pine. Their supplied log states,
+length bounds and decorators vary; these are not six independently established
+families. RUFallenTreeFeature places the stump first, chooses a horizontal
+direction, tests the log run and places/decorates that run only if it fits.
+Its place method returns true regardless of the log-fit result. Preserve the
+possible stump-only outcome; do not claim observed placement or whole-form
+success from the return value or supplied length bounds.
+
+The focused candidate test binds the exact six configurations, their supplied
+logs and bounds, empty stump decorators, attached-to-log decorator type, and
+the new source manifest/class/disassembly identities. Decorator implementation
+and placement-consumer reconciliation remain open. This is a named canonical
+boundary, not a completed family count or a new runtime measurement.
+
+```sh
+uv run pytest -q tests/item8/test_regions_unexplored_candidates.py
+uv run ruff check tests/item8/test_regions_unexplored_candidates.py
+uv run basedpyright tests/item8/test_regions_unexplored_candidates.py
+```
+
+Both cases and scoped quality checks pass. Provider coverage remains OPEN:
+77 resolved, 59 open. Continue the other feature/entry and payload roles rather
+than repeating this candidate's implementation capture.
