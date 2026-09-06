@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-06
 
+Moonlight membership is in progress. Reuse extractor f1d6b260 and sources
+10f33521 (three entries/plugin), 7ef8cd70 (34 common hooks), plus the delivered
+moonlight-platform-hooks increment (nine platform hooks). All three captures
+reproduce byte for byte in their independent r1 directories. Do not recapture
+SimpleMixinPlugin; it is already in supplementaries-shared-plugin.
+Next inspect commonInit and its actual registrations, SpawnBoxStructurePiece,
+and the dynamic resource reload boundary. Jigsaw hooks attach spawn-box pieces
+to existing structures and replace marker blocks; the place-command hook sends
+debug packets. Remaining common hook roles still need final disposition.
+No Moonlight closure claim yet. Providers remain 131 resolved, 5 open; canonical
+working groups remain 410 with 100 explicit provisional Moog decisions. Keep
+membership reconciliation ahead of detailed attributes. No Item 9 to 11 work.
+
+
 Kotlin for Forge membership is resolved with no independent family. Source
 increments 5dc5e092 and a93663c8 preserve six language/mod entry classes. All 11
 nested archives have no generation payload; the mod entries only log activation,
