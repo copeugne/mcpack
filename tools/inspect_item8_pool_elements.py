@@ -189,6 +189,25 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "org/sinytra/fabric/game_rule_api/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/mixin/gamerule/GameRuleCommandAccessor.class",
+    "net/fabricmc/fabric/mixin/gamerule/GameRuleCommandVisitorMixin.class",
+    "net/fabricmc/fabric/mixin/gamerule/GameRulesAccessor.class",
+    "net/fabricmc/fabric/mixin/gamerule/GameRulesIntRuleAccessor.class",
+    "net/fabricmc/fabric/mixin/gamerule/GameRulesKeyMixin.class",
+    "org/sinytra/fabric/loot_api_v2/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/mixin/loot/v2/LootPoolBuilderMixin.class",
+    "net/fabricmc/fabric/mixin/loot/v2/LootTableBuilderMixin.class",
+    "org/sinytra/fabric/loot_api/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/mixin/loot/JsonDataLoaderMixin.class",
+    "net/fabricmc/fabric/mixin/loot/ReloadableRegistriesMixin.class",
+    "net/fabricmc/fabric/mixin/loot/LootPoolAccessor.class",
+    "net/fabricmc/fabric/mixin/loot/LootPoolBuilderMixin.class",
+    "net/fabricmc/fabric/mixin/loot/LootTableAccessor.class",
+    "net/fabricmc/fabric/mixin/loot/LootTableBuilderMixin.class",
+    "org/sinytra/fabric/recipe_api/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/mixin/recipe/ingredient/IngredientMixin.class",
+    "net/fabricmc/fabric/mixin/recipe/ingredient/CraftingHelperMixin.class",
     "net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.class",
     "net/fabricmc/fabric/impl/lookup/ApiLookupImpl.class",
     "org/sinytra/fabric/api_lookup_api/generated/GeneratedEntryPoint.class",
@@ -2349,6 +2368,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/fabric-game-rule-api-v1-1.0.53+36d727be19.jar",
+        "META-INF/jars/fabric-loot-api-v2-3.0.15+a3ee712d19.jar",
+        "META-INF/jars/fabric-loot-api-v3-1.0.3+333dfad919.jar",
+        "META-INF/jars/fabric-recipe-api-v1-5.0.15+59440bcc19.jar",
         "META-INF/jars/fabric-api-lookup-api-v1-1.6.71+c290471319.jar",
         "META-INF/jars/fabric-block-api-v1-1.1.0+b0c22bb819.jar",
         "META-INF/jars/fabric-block-view-api-v2-1.0.11+e9036fd419.jar",
@@ -2387,6 +2410,22 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/fabric-game-rule-api-v1-1.0.53+36d727be19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "9148277161738e724c66ce5b68a951469c4947fd33e0b8630279dc53c81452ae",
+        ),
+        "META-INF/jars/fabric-loot-api-v2-3.0.15+a3ee712d19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "4ecb6040736bd737d4714f8dae20dc9936d30267968c6a5a47f9d78849c15fd1",
+        ),
+        "META-INF/jars/fabric-loot-api-v3-1.0.3+333dfad919.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "88b83793391303943b09573e6437ec8aa064ac84097d3bd2ce0e1a8090bb9e51",
+        ),
+        "META-INF/jars/fabric-recipe-api-v1-5.0.15+59440bcc19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "42a2c8078b85b9772efbc7f4f424501f0cf02af511240016c7e9fce68c1aa9f0",
+        ),
         "META-INF/jars/fabric-api-lookup-api-v1-1.6.71+c290471319.jar": (
             "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
             "ba2c510f49ca28c7d1d5f246af39d252d3b9ce445329716513f4aa97fe0c13fb",
