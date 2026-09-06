@@ -192,6 +192,7 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "glitchcore/core/GlitchCore.class",
     "glitchcore/mixin/MixinItemStack.class",
     "glitchcore/mixin/MixinServerConfigurationPacketListenerImpl.class",
     "glitchcore/mixin/MixinServerLevel.class",
