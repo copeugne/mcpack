@@ -3789,3 +3789,26 @@ reproducibility of random geometry from these contribution-role decisions.
 This batch is resolved. Other vegetation implementations, remaining common
 entry roles and full payload/overlay/JSON5 reconciliation still prevent provider
 closure. Census remains 77 resolved and 59 open.
+
+### Regions Unexplored registered implementation source coverage
+
+Source 04c515f captures the remaining 35 feature implementations selected by
+RUFeatureTypes, using extractor b5e5564. The full generation command is in
+sources/regions-unexplored-vegetation-features/README.md. Manifest SHA-256:
+6e77e0aab7c6f999e08de37eca0fdf8417b07377823cd848bae016e50cdc1bb6.
+Independent r1 matches every generated file. The isolated large source increment
+preserves complete implementations rather than selected favorable excerpts.
+
+The existing test now binds this manifest and the original feature-registration
+manifest, then reconciles all 53 directly constructed custom-feature classes
+against preserved class/disassembly identities. This is source coverage only:
+18 implementation captures preceded this increment; the remaining 35 still need
+semantic contribution dispositions. It does not close the whole provider,
+resolve custom tree placers/decorators, or establish a canonical-family count.
+
+Both focused candidate/source cases pass (0.93 seconds); scoped Ruff and
+Basedpyright pass. An overlong line and implicit string concatenation were
+corrected before final validation. Continue the captured vegetation roles and
+remaining common-entry/payload boundaries. Do not repeat accepted terrain,
+fallen-tree, trial-chamber, modifier or surface checks. Census remains 77
+resolved and 59 open.

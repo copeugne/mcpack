@@ -3,6 +3,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+import re
 from collections import Counter
 from pathlib import Path
 from typing import cast
@@ -135,6 +136,7 @@ def test_regions_unexplored_feature_candidates_and_sources() -> None:
     source = next(s for s in retained_sources(Path.cwd())
                   if s.name == "regions-unexplored-0.6.1-neoforge-21.1.jar")
     assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    captured: set[str] = set()
     with ZipFile(source.path) as archive:
         for directory, digest in (
             ("regions-unexplored-generation-delegates",
@@ -145,14 +147,29 @@ def test_regions_unexplored_feature_candidates_and_sources() -> None:
              "408438fe5484a1798d6487f12725cd3becac5c315a0d99dc585163177a2d474c"),
             ("regions-unexplored-redstone-writer",
              "31143f1076e6d08d7280dd918331ce67087d07626cfe25778608398c26827bdd"),
+            ("regions-unexplored-vegetation-features",
+             "6e77e0aab7c6f999e08de37eca0fdf8417b07377823cd848bae016e50cdc1bb6"),
+            ("regions-unexplored-feature-code",
+             "d27de44a59aedb2dd41e12dcc0f35db1328207314c8cbe59dae6120de5b9953b"),
         ):
             base = Path("evidence/item-8/sources") / directory
             raw = (base / "identities.json").read_bytes()
             assert hashlib.sha256(raw).hexdigest() == digest
             for row in cast("list[dict[str, str]]", json.loads(raw)):
                 assert row["archive"] == source.name
+                captured.add(row["class"].removesuffix(".class"))
                 assert row["archive_sha256"] == source.sha256
                 assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
                 assert hashlib.sha256((base / row["disassembly"]).read_bytes()).hexdigest() == (
                     row["disassembly_sha256"]
                 )
+    registration = (
+        Path("evidence/item-8/sources/regions-unexplored-feature-code")
+        / "regions-unexplored-0.6.1-neoforge-21.1.jar"
+        / "net.regions_unexplored.registry.RUFeatureTypes.txt"
+    ).read_text()
+    implementations = set(re.findall(
+        r"// class (net/regions_unexplored/[^\s]+Feature)", registration
+    ))
+    assert len(implementations) == 53
+    assert implementations <= captured
