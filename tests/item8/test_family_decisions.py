@@ -1248,7 +1248,9 @@ def test_provider_groups_bind_full_definitions_pools_and_registry(
             "tree": 2,
             "birch_tree_workshop": 1,
             "tree_house": 3,
-            "watercraft": 7,
+            "watercraft": 4,
+            "raft": 2,
+            "riverboat": 1,
         }
         expected = {key: ("adorabuild_structures:", size) for key, size in counts.items()}
     if namespace == "terralith":

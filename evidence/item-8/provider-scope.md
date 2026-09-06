@@ -9571,3 +9571,26 @@ SHA-256: 652a636e2b0726bd4d80653b3e8853c6fdc43c6724e6ce4fa79d57b4896fa8e7.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-landmarks-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-landmarks-r2.json
 ```
+
+### AdoraBuild vessel and facility family boundaries, 2026-09-07
+
+Views 03112db3 and existing contents resolve six original records. Watercraft
+separates into four sailing-ship variants, two raft variants and one covered
+riverboat, retaining all full roots and encounter/loot differences. The compact
+End ship remains distinct. Frozen shelters preserve their furnished ice forms;
+libraries preserve chamber/gallery and placement alternatives; mines preserve
+ladder/rail access alternatives; prisons preserve building and population variants.
+No boat operation, portal-like travel, mechanism behavior or effective placement
+is inferred from authored templates. Filename size labels remain non-authoritative.
+
+The existing definition/registry/evidence check expects the split and binds all
+provider roots exactly once to full definitions and traces. That case and scoped
+quality checks pass. Canonical-note backlog: 73, down from 79 (IDAS 59, AdoraBuild
+14). Coverage groups: 408, up from 406 because of the watercraft split. Required
+attributes and 33 nonregistry contribution records remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+```
