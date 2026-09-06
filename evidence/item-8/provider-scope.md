@@ -9496,3 +9496,13 @@ uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+Inventory regenerated from 1ccfea35 and independently reproduced exactly.
+Only the five AdoraBuild grouping decisions and the decision input identity changed.
+Three records are resolved; tree and mushroom remain open.
+SHA-256: 98a4a76bcae6e401ae55bb8b11e1a6883359b3a476a5e8ced8df82c39ca86c80.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-installations-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-installations-r2.json
+```
