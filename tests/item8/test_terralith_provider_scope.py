@@ -170,6 +170,17 @@ def test_terralith_provider_payload_and_components() -> None:  # noqa: PLR0915
 
 
 def test_terralith_feature_routes_and_named_decoration_candidate() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    fixture = contributions["terralith:cave/frostfire/frostfire_ceiling"]
+    assert fixture["families"] == []
+    assert fixture["configured_resource"] == (
+        "data/terralith/worldgen/configured_feature/cave/frostfire/frostfire_ceiling.json"
+    )
+    for path, digest in cast("dict[str, str]", fixture["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
     source = next(s for s in retained_sources(Path.cwd()) if s.name.startswith("Terralith_"))
     assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
     with ZipFile(source.path) as archive:

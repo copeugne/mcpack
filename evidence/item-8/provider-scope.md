@@ -2491,6 +2491,38 @@ attributes, the applicable final gate and the required PR review/merge workflow.
 
 ## Tectonic provider candidate disposition
 
+### Hanging-fixture boundary resolved on 2026-09-06
+
+The decisions and working inventory now explicitly exclude
+`tectonic:underground_river/lanterns` and the hanging-light branch of
+`terralith:cave/frostfire/frostfire_ceiling` from additional structure families.
+Each repeats an individual chain-and-light fixture on existing cave terrain.
+Neither contribution assembles a separate site beyond that fixture. Their
+authored materials justify preserving them as named environmental contributions,
+but do not make every repeated ceiling decoration a family. This decision is
+based on the complete configured geometry, not the provider name, vanilla codec,
+lack of loot, or a numerical size cutoff. It does not exclude distinct buildings
+or landmarks containing the same blocks.
+
+The existing provider tests now bind both exclusion records and their evidence
+identities while retaining the geometry, placement-route and frozen-configuration
+checks. All four cases and scoped Ruff/Basedpyright pass. The existing builder
+reproduces the inventory exactly:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-hanging-fixture-dispositions.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-hanging-fixture-dispositions.json
+uv run pytest -q tests/item8/test_tectonic_provider_scope.py tests/item8/test_terralith_provider_scope.py
+uv run ruff check tests/item8/test_tectonic_provider_scope.py tests/item8/test_terralith_provider_scope.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_tectonic_provider_scope.py tests/item8/test_terralith_provider_scope.py tools/build_item8_inventory.py
+```
+
+Use an absent output path. This closes two named family-boundary questions,
+adding no families and changing no baseline content. It does not assert inactive
+placement or observed frequency. The decorated-mushroom and other named boundary
+questions remain open. The 421 provisional registry groups and provider census
+(90 resolved, 46 open) are unchanged.
+
 Source fba027c preserves 31 directly relevant classes across the entry capture
 and ConfigState selection capture. Both reproduced exactly. The focused check
 accounts for all 310 files, including 57 classes, and binds both annotated mod

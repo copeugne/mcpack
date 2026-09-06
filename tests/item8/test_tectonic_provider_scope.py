@@ -85,6 +85,18 @@ def test_tectonic_provider_payload_and_generation_entries() -> None:
 
 
 def test_tectonic_named_lantern_candidate_and_frozen_selection() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    fixture = contributions["tectonic:underground_river/lanterns"]
+    assert fixture["families"] == []
+    assert fixture["configured_resource"] == (
+        "resourcepacks/tectonic/data/tectonic/worldgen/configured_feature/"
+        "underground_river/lanterns.json"
+    )
+    for path, digest in cast("dict[str, str]", fixture["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
     source = next(s for s in retained_sources(Path.cwd()) if s.name.startswith("tectonic-"))
     assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
     raw = Path("evidence/item-6/frozen/config/tectonic.json").read_bytes()

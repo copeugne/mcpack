@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Two named boundary questions are resolved: Tectonic's underground-river lantern
+and Terralith's Frostfire hanging soul lantern are ambient fixtures, not additional
+structure families. Both remain explicit nonregistry contributions with empty
+family lists. Existing geometry/placement/configuration checks and decision
+bindings pass in four cases; scoped checks and inventory reproduction pass.
+See evidence/item-8/provider-scope.md for rationale and commands. No new experiment
+or baseline change. Decorated mushroom and other named boundaries remain open;
+provider census remains 90 resolved, 46 open.
+
 Explorations scarecrow is now recorded as one nonregistry family with nine
 material variants. The unsuffixed selector is not a tenth family. The existing
 provider tests bind the decision, source hashes, runtime IDs and packaged routes;
