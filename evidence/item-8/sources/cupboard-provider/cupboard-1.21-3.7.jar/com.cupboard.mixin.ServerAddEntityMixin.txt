@@ -1,0 +1,377 @@
+Classfile cupboard-1.21-3.7.jar!/com/cupboard/mixin/ServerAddEntityMixin.class
+  Last modified Jun 8, 2026; size 3886 bytes
+  SHA-256 checksum b7bfda3a987eb2a6fc948cf833ebad26b7b72b1dc85469f3090dedffe6b6a90c
+  Compiled from "ServerAddEntityMixin.java"
+public abstract class com.cupboard.mixin.ServerAddEntityMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #11                         // com/cupboard/mixin/ServerAddEntityMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 3, methods: 3, attributes: 2
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Class              #8            // java/util/concurrent/ConcurrentLinkedQueue
+    #8 = Utf8               java/util/concurrent/ConcurrentLinkedQueue
+    #9 = Methodref          #7.#3         // java/util/concurrent/ConcurrentLinkedQueue."<init>":()V
+   #10 = Fieldref           #11.#12       // com/cupboard/mixin/ServerAddEntityMixin.toAdd:Ljava/util/concurrent/ConcurrentLinkedQueue;
+   #11 = Class              #13           // com/cupboard/mixin/ServerAddEntityMixin
+   #12 = NameAndType        #14:#15       // toAdd:Ljava/util/concurrent/ConcurrentLinkedQueue;
+   #13 = Utf8               com/cupboard/mixin/ServerAddEntityMixin
+   #14 = Utf8               toAdd
+   #15 = Utf8               Ljava/util/concurrent/ConcurrentLinkedQueue;
+   #16 = Class              #17           // java/util/concurrent/ConcurrentHashMap
+   #17 = Utf8               java/util/concurrent/ConcurrentHashMap
+   #18 = Methodref          #16.#3        // java/util/concurrent/ConcurrentHashMap."<init>":()V
+   #19 = Fieldref           #11.#20       // com/cupboard/mixin/ServerAddEntityMixin.warned:Ljava/util/concurrent/ConcurrentHashMap;
+   #20 = NameAndType        #21:#22       // warned:Ljava/util/concurrent/ConcurrentHashMap;
+   #21 = Utf8               warned
+   #22 = Utf8               Ljava/util/concurrent/ConcurrentHashMap;
+   #23 = Fieldref           #11.#24       // com/cupboard/mixin/ServerAddEntityMixin.addingLate:Z
+   #24 = NameAndType        #25:#26       // addingLate:Z
+   #25 = Utf8               addingLate
+   #26 = Utf8               Z
+   #27 = Methodref          #28.#29       // java/lang/Thread.currentThread:()Ljava/lang/Thread;
+   #28 = Class              #30           // java/lang/Thread
+   #29 = NameAndType        #31:#32       // currentThread:()Ljava/lang/Thread;
+   #30 = Utf8               java/lang/Thread
+   #31 = Utf8               currentThread
+   #32 = Utf8               ()Ljava/lang/Thread;
+   #33 = Methodref          #28.#34       // java/lang/Thread.getName:()Ljava/lang/String;
+   #34 = NameAndType        #35:#36       // getName:()Ljava/lang/String;
+   #35 = Utf8               getName
+   #36 = Utf8               ()Ljava/lang/String;
+   #37 = Fieldref           #38.#39       // java/util/Locale.ROOT:Ljava/util/Locale;
+   #38 = Class              #40           // java/util/Locale
+   #39 = NameAndType        #41:#42       // ROOT:Ljava/util/Locale;
+   #40 = Utf8               java/util/Locale
+   #41 = Utf8               ROOT
+   #42 = Utf8               Ljava/util/Locale;
+   #43 = Methodref          #44.#45       // java/lang/String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+   #44 = Class              #46           // java/lang/String
+   #45 = NameAndType        #47:#48       // toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+   #46 = Utf8               java/lang/String
+   #47 = Utf8               toLowerCase
+   #48 = Utf8               (Ljava/util/Locale;)Ljava/lang/String;
+   #49 = String             #50           // server
+   #50 = Utf8               server
+   #51 = Methodref          #44.#52       // java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+   #52 = NameAndType        #53:#54       // contains:(Ljava/lang/CharSequence;)Z
+   #53 = Utf8               contains
+   #54 = Utf8               (Ljava/lang/CharSequence;)Z
+   #55 = Fieldref           #56.#57       // com/cupboard/Cupboard.config:Lcom/cupboard/config/CupboardConfig;
+   #56 = Class              #58           // com/cupboard/Cupboard
+   #57 = NameAndType        #59:#60       // config:Lcom/cupboard/config/CupboardConfig;
+   #58 = Utf8               com/cupboard/Cupboard
+   #59 = Utf8               config
+   #60 = Utf8               Lcom/cupboard/config/CupboardConfig;
+   #61 = Methodref          #62.#63       // com/cupboard/config/CupboardConfig.getCommonConfig:()Lcom/cupboard/config/ICommonConfig;
+   #62 = Class              #64           // com/cupboard/config/CupboardConfig
+   #63 = NameAndType        #65:#66       // getCommonConfig:()Lcom/cupboard/config/ICommonConfig;
+   #64 = Utf8               com/cupboard/config/CupboardConfig
+   #65 = Utf8               getCommonConfig
+   #66 = Utf8               ()Lcom/cupboard/config/ICommonConfig;
+   #67 = Class              #68           // com/cupboard/config/CommonConfiguration
+   #68 = Utf8               com/cupboard/config/CommonConfiguration
+   #69 = Fieldref           #67.#70       // com/cupboard/config/CommonConfiguration.logOffthreadEntityAdd:Z
+   #70 = NameAndType        #71:#26       // logOffthreadEntityAdd:Z
+   #71 = Utf8               logOffthreadEntityAdd
+   #72 = Methodref          #73.#74       // net/minecraft/world/entity/Entity.getType:()Lnet/minecraft/world/entity/EntityType;
+   #73 = Class              #75           // net/minecraft/world/entity/Entity
+   #74 = NameAndType        #76:#77       // getType:()Lnet/minecraft/world/entity/EntityType;
+   #75 = Utf8               net/minecraft/world/entity/Entity
+   #76 = Utf8               getType
+   #77 = Utf8               ()Lnet/minecraft/world/entity/EntityType;
+   #78 = Methodref          #16.#79       // java/util/concurrent/ConcurrentHashMap.contains:(Ljava/lang/Object;)Z
+   #79 = NameAndType        #53:#80       // contains:(Ljava/lang/Object;)Z
+   #80 = Utf8               (Ljava/lang/Object;)Z
+   #81 = Fieldref           #56.#82       // com/cupboard/Cupboard.LOGGER:Lorg/apache/logging/log4j/Logger;
+   #82 = NameAndType        #83:#84       // LOGGER:Lorg/apache/logging/log4j/Logger;
+   #83 = Utf8               LOGGER
+   #84 = Utf8               Lorg/apache/logging/log4j/Logger;
+   #85 = String             #86           // A mod is trying to add an entity from offthread, this should be avoided. Printing trace:
+   #86 = Utf8               A mod is trying to add an entity from offthread, this should be avoided. Printing trace:
+   #87 = Class              #88           // java/lang/Exception
+   #88 = Utf8               java/lang/Exception
+   #89 = Methodref          #87.#3        // java/lang/Exception."<init>":()V
+   #90 = InterfaceMethodref #91.#92       // org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Throwable;)V
+   #91 = Class              #93           // org/apache/logging/log4j/Logger
+   #92 = NameAndType        #94:#95       // warn:(Ljava/lang/String;Ljava/lang/Throwable;)V
+   #93 = Utf8               org/apache/logging/log4j/Logger
+   #94 = Utf8               warn
+   #95 = Utf8               (Ljava/lang/String;Ljava/lang/Throwable;)V
+   #96 = Methodref          #16.#97       // java/util/concurrent/ConcurrentHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+   #97 = NameAndType        #98:#99       // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+   #98 = Utf8               put
+   #99 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #100 = Methodref          #7.#101       // java/util/concurrent/ConcurrentLinkedQueue.add:(Ljava/lang/Object;)Z
+  #101 = NameAndType        #102:#80      // add:(Ljava/lang/Object;)Z
+  #102 = Utf8               add
+  #103 = Methodref          #104.#105     // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+  #104 = Class              #106          // java/lang/Boolean
+  #105 = NameAndType        #107:#108     // valueOf:(Z)Ljava/lang/Boolean;
+  #106 = Utf8               java/lang/Boolean
+  #107 = Utf8               valueOf
+  #108 = Utf8               (Z)Ljava/lang/Boolean;
+  #109 = Methodref          #110.#111     // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+  #110 = Class              #112          // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+  #111 = NameAndType        #113:#114     // setReturnValue:(Ljava/lang/Object;)V
+  #112 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+  #113 = Utf8               setReturnValue
+  #114 = Utf8               (Ljava/lang/Object;)V
+  #115 = Methodref          #7.#116       // java/util/concurrent/ConcurrentLinkedQueue.iterator:()Ljava/util/Iterator;
+  #116 = NameAndType        #117:#118     // iterator:()Ljava/util/Iterator;
+  #117 = Utf8               iterator
+  #118 = Utf8               ()Ljava/util/Iterator;
+  #119 = InterfaceMethodref #120.#121     // java/util/Iterator.hasNext:()Z
+  #120 = Class              #122          // java/util/Iterator
+  #121 = NameAndType        #123:#124     // hasNext:()Z
+  #122 = Utf8               java/util/Iterator
+  #123 = Utf8               hasNext
+  #124 = Utf8               ()Z
+  #125 = InterfaceMethodref #120.#126     // java/util/Iterator.next:()Ljava/lang/Object;
+  #126 = NameAndType        #127:#128     // next:()Ljava/lang/Object;
+  #127 = Utf8               next
+  #128 = Utf8               ()Ljava/lang/Object;
+  #129 = Methodref          #11.#130      // com/cupboard/mixin/ServerAddEntityMixin.addEntity:(Lnet/minecraft/world/entity/Entity;)Z
+  #130 = NameAndType        #131:#132     // addEntity:(Lnet/minecraft/world/entity/Entity;)Z
+  #131 = Utf8               addEntity
+  #132 = Utf8               (Lnet/minecraft/world/entity/Entity;)Z
+  #133 = InterfaceMethodref #120.#134     // java/util/Iterator.remove:()V
+  #134 = NameAndType        #135:#6       // remove:()V
+  #135 = Utf8               remove
+  #136 = Utf8               Signature
+  #137 = Utf8               Ljava/util/concurrent/ConcurrentLinkedQueue<Lnet/minecraft/world/entity/Entity;>;
+  #138 = Utf8               RuntimeVisibleAnnotations
+  #139 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #140 = Utf8               Ljava/util/concurrent/ConcurrentHashMap<Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/EntityType;>;
+  #141 = Utf8               Code
+  #142 = Utf8               LineNumberTable
+  #143 = Utf8               LocalVariableTable
+  #144 = Utf8               this
+  #145 = Utf8               Lcom/cupboard/mixin/ServerAddEntityMixin;
+  #146 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #147 = Utf8               OnaddEntity
+  #148 = Utf8               (Lnet/minecraft/world/entity/Entity;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+  #149 = Utf8               it
+  #150 = Utf8               Ljava/util/Iterator;
+  #151 = Utf8               entityIn
+  #152 = Utf8               Lnet/minecraft/world/entity/Entity;
+  #153 = Utf8               c
+  #154 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #155 = Utf8               current
+  #156 = Utf8               Ljava/lang/String;
+  #157 = Utf8               LocalVariableTypeTable
+  #158 = Utf8               Ljava/util/Iterator<Lnet/minecraft/world/entity/Entity;>;
+  #159 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+  #160 = Utf8               StackMapTable
+  #161 = Utf8               (Lnet/minecraft/world/entity/Entity;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+  #162 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #163 = Utf8               method
+  #164 = Utf8               at
+  #165 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #166 = Utf8               value
+  #167 = Utf8               HEAD
+  #168 = Utf8               cancellable
+  #169 = Integer            1
+  #170 = Utf8               SourceFile
+  #171 = Utf8               ServerAddEntityMixin.java
+  #172 = Utf8               RuntimeInvisibleAnnotations
+  #173 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #174 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+{
+  private final java.util.concurrent.ConcurrentLinkedQueue<net.minecraft.world.entity.Entity> toAdd;
+    descriptor: Ljava/util/concurrent/ConcurrentLinkedQueue;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #137                         // Ljava/util/concurrent/ConcurrentLinkedQueue<Lnet/minecraft/world/entity/Entity;>;
+    RuntimeVisibleAnnotations:
+      0: #139()
+        org.spongepowered.asm.mixin.Unique
+
+  private final java.util.concurrent.ConcurrentHashMap<net.minecraft.world.entity.EntityType, net.minecraft.world.entity.EntityType> warned;
+    descriptor: Ljava/util/concurrent/ConcurrentHashMap;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #140                         // Ljava/util/concurrent/ConcurrentHashMap<Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/EntityType;>;
+    RuntimeVisibleAnnotations:
+      0: #139()
+        org.spongepowered.asm.mixin.Unique
+
+  private boolean addingLate;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #139()
+        org.spongepowered.asm.mixin.Unique
+
+  public com.cupboard.mixin.ServerAddEntityMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #7                  // class java/util/concurrent/ConcurrentLinkedQueue
+         8: dup
+         9: invokespecial #9                  // Method java/util/concurrent/ConcurrentLinkedQueue."<init>":()V
+        12: putfield      #10                 // Field toAdd:Ljava/util/concurrent/ConcurrentLinkedQueue;
+        15: aload_0
+        16: new           #16                 // class java/util/concurrent/ConcurrentHashMap
+        19: dup
+        20: invokespecial #18                 // Method java/util/concurrent/ConcurrentHashMap."<init>":()V
+        23: putfield      #19                 // Field warned:Ljava/util/concurrent/ConcurrentHashMap;
+        26: aload_0
+        27: iconst_0
+        28: putfield      #23                 // Field addingLate:Z
+        31: return
+      LineNumberTable:
+        line 20: 0
+        line 25: 4
+        line 28: 15
+        line 31: 26
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      32     0  this   Lcom/cupboard/mixin/ServerAddEntityMixin;
+
+  public abstract boolean addEntity(net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/entity/Entity;)Z
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #146()
+        org.spongepowered.asm.mixin.Shadow
+
+  private void OnaddEntity(net.minecraft.world.entity.Entity, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+    descriptor: (Lnet/minecraft/world/entity/Entity;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=5, args_size=3
+         0: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+         3: invokevirtual #33                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+         6: astore_3
+         7: aload_3
+         8: getstatic     #37                 // Field java/util/Locale.ROOT:Ljava/util/Locale;
+        11: invokevirtual #43                 // Method java/lang/String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+        14: ldc           #49                 // String server
+        16: invokevirtual #51                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+        19: ifne          104
+        22: getstatic     #55                 // Field com/cupboard/Cupboard.config:Lcom/cupboard/config/CupboardConfig;
+        25: invokevirtual #61                 // Method com/cupboard/config/CupboardConfig.getCommonConfig:()Lcom/cupboard/config/ICommonConfig;
+        28: checkcast     #67                 // class com/cupboard/config/CommonConfiguration
+        31: getfield      #69                 // Field com/cupboard/config/CommonConfiguration.logOffthreadEntityAdd:Z
+        34: ifeq          84
+        37: aload_0
+        38: getfield      #19                 // Field warned:Ljava/util/concurrent/ConcurrentHashMap;
+        41: aload_1
+        42: invokevirtual #72                 // Method net/minecraft/world/entity/Entity.getType:()Lnet/minecraft/world/entity/EntityType;
+        45: invokevirtual #78                 // Method java/util/concurrent/ConcurrentHashMap.contains:(Ljava/lang/Object;)Z
+        48: ifne          84
+        51: getstatic     #81                 // Field com/cupboard/Cupboard.LOGGER:Lorg/apache/logging/log4j/Logger;
+        54: ldc           #85                 // String A mod is trying to add an entity from offthread, this should be avoided. Printing trace:
+        56: new           #87                 // class java/lang/Exception
+        59: dup
+        60: invokespecial #89                 // Method java/lang/Exception."<init>":()V
+        63: invokeinterface #90,  3           // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Throwable;)V
+        68: aload_0
+        69: getfield      #19                 // Field warned:Ljava/util/concurrent/ConcurrentHashMap;
+        72: aload_1
+        73: invokevirtual #72                 // Method net/minecraft/world/entity/Entity.getType:()Lnet/minecraft/world/entity/EntityType;
+        76: aload_1
+        77: invokevirtual #72                 // Method net/minecraft/world/entity/Entity.getType:()Lnet/minecraft/world/entity/EntityType;
+        80: invokevirtual #96                 // Method java/util/concurrent/ConcurrentHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        83: pop
+        84: aload_0
+        85: getfield      #10                 // Field toAdd:Ljava/util/concurrent/ConcurrentLinkedQueue;
+        88: aload_1
+        89: invokevirtual #100                // Method java/util/concurrent/ConcurrentLinkedQueue.add:(Ljava/lang/Object;)Z
+        92: pop
+        93: aload_2
+        94: iconst_1
+        95: invokestatic  #103                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        98: invokevirtual #109                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+       101: goto          165
+       104: aload_0
+       105: getfield      #23                 // Field addingLate:Z
+       108: ifne          165
+       111: aload_0
+       112: iconst_1
+       113: putfield      #23                 // Field addingLate:Z
+       116: aload_0
+       117: getfield      #10                 // Field toAdd:Ljava/util/concurrent/ConcurrentLinkedQueue;
+       120: invokevirtual #115                // Method java/util/concurrent/ConcurrentLinkedQueue.iterator:()Ljava/util/Iterator;
+       123: astore        4
+       125: aload         4
+       127: invokeinterface #119,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       132: ifeq          160
+       135: aload_0
+       136: aload         4
+       138: invokeinterface #125,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       143: checkcast     #73                 // class net/minecraft/world/entity/Entity
+       146: invokevirtual #129                // Method addEntity:(Lnet/minecraft/world/entity/Entity;)Z
+       149: pop
+       150: aload         4
+       152: invokeinterface #133,  1          // InterfaceMethod java/util/Iterator.remove:()V
+       157: goto          125
+       160: aload_0
+       161: iconst_0
+       162: putfield      #23                 // Field addingLate:Z
+       165: return
+      LineNumberTable:
+        line 37: 0
+        line 38: 7
+        line 40: 22
+        line 42: 51
+        line 43: 68
+        line 46: 84
+        line 47: 93
+        line 49: 104
+        line 51: 111
+        line 53: 116
+        line 54: 125
+        line 56: 135
+        line 57: 150
+        line 59: 160
+        line 61: 165
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          125      40     4    it   Ljava/util/Iterator;
+            0     166     0  this   Lcom/cupboard/mixin/ServerAddEntityMixin;
+            0     166     1 entityIn   Lnet/minecraft/world/entity/Entity;
+            0     166     2     c   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            7     159     3 current   Ljava/lang/String;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          125      40     4    it   Ljava/util/Iterator<Lnet/minecraft/world/entity/Entity;>;
+            0     166     2     c   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+      StackMapTable: number_of_entries = 5
+        frame_type = 252 /* append */
+          offset_delta = 84
+          locals = [ class java/lang/String ]
+        frame_type = 19 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 20
+          locals = [ class java/util/Iterator ]
+        frame_type = 34 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 4
+    Signature: #161                         // (Lnet/minecraft/world/entity/Entity;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+    RuntimeVisibleAnnotations:
+      0: #162(#163=[s#131],#164=[@#165(#166=s#167)],#168=Z#169)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["addEntity"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          cancellable=true
+        )
+}
+SourceFile: "ServerAddEntityMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #173(#166=[c#174])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ServerLevel;]
+    )

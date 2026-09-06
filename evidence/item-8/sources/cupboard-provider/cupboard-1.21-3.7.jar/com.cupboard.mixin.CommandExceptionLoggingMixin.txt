@@ -1,0 +1,131 @@
+Classfile cupboard-1.21-3.7.jar!/com/cupboard/mixin/CommandExceptionLoggingMixin.class
+  Last modified Jun 8, 2026; size 1288 bytes
+  SHA-256 checksum bae64ec0115c51a137aaa7d3f618109920d8a92edf638c26df4ea3d13fb966fa
+  Compiled from "CommandExceptionLoggingMixin.java"
+public class com.cupboard.mixin.CommandExceptionLoggingMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #31                         // com/cupboard/mixin/CommandExceptionLoggingMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 2, attributes: 2
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = InterfaceMethodref #8.#9          // org/slf4j/Logger.isDebugEnabled:()Z
+   #8 = Class              #10            // org/slf4j/Logger
+   #9 = NameAndType        #11:#12        // isDebugEnabled:()Z
+  #10 = Utf8               org/slf4j/Logger
+  #11 = Utf8               isDebugEnabled
+  #12 = Utf8               ()Z
+  #13 = Fieldref           #14.#15        // com/cupboard/Cupboard.config:Lcom/cupboard/config/CupboardConfig;
+  #14 = Class              #16            // com/cupboard/Cupboard
+  #15 = NameAndType        #17:#18        // config:Lcom/cupboard/config/CupboardConfig;
+  #16 = Utf8               com/cupboard/Cupboard
+  #17 = Utf8               config
+  #18 = Utf8               Lcom/cupboard/config/CupboardConfig;
+  #19 = Methodref          #20.#21        // com/cupboard/config/CupboardConfig.getCommonConfig:()Lcom/cupboard/config/ICommonConfig;
+  #20 = Class              #22            // com/cupboard/config/CupboardConfig
+  #21 = NameAndType        #23:#24        // getCommonConfig:()Lcom/cupboard/config/ICommonConfig;
+  #22 = Utf8               com/cupboard/config/CupboardConfig
+  #23 = Utf8               getCommonConfig
+  #24 = Utf8               ()Lcom/cupboard/config/ICommonConfig;
+  #25 = Class              #26            // com/cupboard/config/CommonConfiguration
+  #26 = Utf8               com/cupboard/config/CommonConfiguration
+  #27 = Fieldref           #25.#28        // com/cupboard/config/CommonConfiguration.showCommandExecutionErrors:Z
+  #28 = NameAndType        #29:#30        // showCommandExecutionErrors:Z
+  #29 = Utf8               showCommandExecutionErrors
+  #30 = Utf8               Z
+  #31 = Class              #32            // com/cupboard/mixin/CommandExceptionLoggingMixin
+  #32 = Utf8               com/cupboard/mixin/CommandExceptionLoggingMixin
+  #33 = Utf8               Code
+  #34 = Utf8               LineNumberTable
+  #35 = Utf8               LocalVariableTable
+  #36 = Utf8               this
+  #37 = Utf8               Lcom/cupboard/mixin/CommandExceptionLoggingMixin;
+  #38 = Utf8               cupboard$logCommandError
+  #39 = Utf8               (Lorg/slf4j/Logger;)Z
+  #40 = Utf8               instance
+  #41 = Utf8               Lorg/slf4j/Logger;
+  #42 = Utf8               StackMapTable
+  #43 = Utf8               RuntimeVisibleAnnotations
+  #44 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+  #45 = Utf8               method
+  #46 = Utf8               performCommand
+  #47 = Utf8               at
+  #48 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #49 = Utf8               value
+  #50 = Utf8               INVOKE
+  #51 = Utf8               target
+  #52 = Utf8               Lorg/slf4j/Logger;isDebugEnabled()Z
+  #53 = Utf8               remap
+  #54 = Integer            0
+  #55 = Utf8               SourceFile
+  #56 = Utf8               CommandExceptionLoggingMixin.java
+  #57 = Utf8               RuntimeInvisibleAnnotations
+  #58 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #59 = Utf8               Lnet/minecraft/commands/Commands;
+{
+  public com.cupboard.mixin.CommandExceptionLoggingMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 11: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/cupboard/mixin/CommandExceptionLoggingMixin;
+
+  private boolean cupboard$logCommandError(org.slf4j.Logger);
+    descriptor: (Lorg/slf4j/Logger;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_1
+         1: invokeinterface #7,  1            // InterfaceMethod org/slf4j/Logger.isDebugEnabled:()Z
+         6: ifne          24
+         9: getstatic     #13                 // Field com/cupboard/Cupboard.config:Lcom/cupboard/config/CupboardConfig;
+        12: invokevirtual #19                 // Method com/cupboard/config/CupboardConfig.getCommonConfig:()Lcom/cupboard/config/ICommonConfig;
+        15: checkcast     #25                 // class com/cupboard/config/CommonConfiguration
+        18: getfield      #27                 // Field com/cupboard/config/CommonConfiguration.showCommandExecutionErrors:Z
+        21: ifeq          28
+        24: iconst_1
+        25: goto          29
+        28: iconst_0
+        29: ireturn
+      LineNumberTable:
+        line 16: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      30     0  this   Lcom/cupboard/mixin/CommandExceptionLoggingMixin;
+            0      30     1 instance   Lorg/slf4j/Logger;
+      StackMapTable: number_of_entries = 3
+        frame_type = 24 /* same */
+        frame_type = 3 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+    RuntimeVisibleAnnotations:
+      0: #44(#45=[s#46],#47=@#48(#49=s#50,#51=s#52,#53=Z#54))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["performCommand"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lorg/slf4j/Logger;isDebugEnabled()Z"
+            remap=false
+          )
+        )
+}
+SourceFile: "CommandExceptionLoggingMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #58(#49=[c#59])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/commands/Commands;]
+    )
