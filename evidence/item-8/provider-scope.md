@@ -8848,3 +8848,11 @@ uv run pytest 'tests/item8/test_family_decisions.py::test_authored_designs_bind_
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+Inventory regenerated from 282e291c. Both independent runs match byte for byte.
+SHA-256: dbd33667b810b11f4d1b83d60f958ade966fa2bea31c5ce8720663761379971a.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nether-pairs-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-nether-pairs-r2.json
+```
