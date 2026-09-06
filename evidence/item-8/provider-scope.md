@@ -6287,3 +6287,33 @@ cmp evidence/raw/item8/inventory-quark-membership-r1.json evidence/item-8/invent
 ```
 
 Two focused cases, scoped quality checks and inventory reproduction pass.
+
+
+## Supplementaries cave-cache membership, 2026-09-06
+
+The freestanding cave urn patch is one canonical family,
+supplementaries:cave_urn_cache. Its form is a group of authored treasure vessels,
+generated independently of a building or vegetation feature. Random positions,
+partial placement and repeated urn blocks are variants of the same cache design.
+The existing galleon urn pool consumes that same urns_patch as a ship component;
+it does not add another family. Road-sign feature/root reconciliation remains
+unchanged. This settles the named cache-versus-decoration membership question.
+
+The existing packaged-data test now binds the galleon reuse and both membership
+dispositions as well as the freestanding modifier/placed/configured chain.
+Configured tries and repetitions are not observed urn counts. The treasure=true
+state is not proof of actual rewards or placement success. Effective eligibility,
+reward behavior and other required attributes remain open. Provider coverage
+stays 90 resolved, 46 open. No source recapture or runtime measurement was added.
+
+```sh
+uv run pytest -q tests/item8/test_supplementaries_provider_scope.py
+uv run ruff check tests/item8/test_supplementaries_provider_scope.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_supplementaries_provider_scope.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-cave-urn-membership-r1.json
+cmp evidence/raw/item8/inventory-cave-urn-membership-r1.json evidence/item-8/inventory.json
+```
+
+Eight focused cases and scoped checks pass. The initial lint pass flagged the
+expanded single component-chain test's statement count. A local PLR0915 waiver
+keeps the related artifact join together without introducing a test helper.

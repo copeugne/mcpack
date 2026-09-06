@@ -31185,6 +31185,33 @@
           "evidence/item-8/sources/regions-unexplored-log-decorator/identities.json": "7656c29c7f0b77b5827cbb01b082d2509f800a7cac87e342ec47bc6785bdc77d"
         },
         "verification": "tests/item8/test_regions_unexplored_candidates.py"
+      },
+      "supplementaries:cave_urn_cache": {
+        "mechanism": "The cave_urns biome modifier adds a freestanding underground placement of urns_patch. The vanilla random patch places simple urn blocks marked treasure=true on supported air positions.",
+        "families": [
+          "supplementaries:cave_urn_cache"
+        ],
+        "configured_feature": "supplementaries:urns_patch",
+        "placed_feature": "supplementaries:cave_urns",
+        "biome_modifier": "supplementaries:cave_urns",
+        "dispositions": [
+          {
+            "contribution": "supplementaries:cave_urn_cache",
+            "decision": "INCLUDE_ONE_FAMILY",
+            "rationale": "A freestanding group of authored treasure vessels is one cache design. It is generated independently of a building or vegetation feature. Scattered positions and the number of successful urn placements are variants, not additional families."
+          },
+          {
+            "contribution": "supplementaries:galleon/urns",
+            "decision": "EXISTING_FAMILY_COMPONENT",
+            "rationale": "The galleon pool reuses urns_patch inside the existing ship family. Count the standalone cave cache once, not another family for each urn or for this component reuse."
+          }
+        ],
+        "scope": "Membership only. The treasure block state is an authored input, not proof of actual loot contents, successful placement or observed cache occurrence. Effective biome eligibility, disabled-content conditions, urn reward behavior and required attributes remain open. Nine patch tries and six placement repetitions are configured attempts, not observed counts.",
+        "evidence": {
+          "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
+          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5"
+        },
+        "verification": "tests/item8/test_supplementaries_provider_scope.py::test_supplementaries_components_and_road_sign_feature_chain"
       }
     }
   }

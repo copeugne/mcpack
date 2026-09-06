@@ -159078,7 +159078,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "524424722e730e3d0be1fce7017147a18afa3785c45377555d302cb1afa1c8dc",
+    "evidence/item-8/family-decisions.json": "367d8ff3e0e7bd08f0d78de671f93d08192edaff8a32376b6f6b9496c5026af9",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -161315,6 +161315,33 @@
         ],
         "scope": "The generator can return success after placing only a stump when the full fallen log cannot fit. Retain this limitation and all eight placed variants. Ashen remains a vanilla trial-chamber component, not an additional family.",
         "verification": "tests/item8/test_regions_unexplored_candidates.py"
+      },
+      "supplementaries:cave_urn_cache": {
+        "biome_modifier": "supplementaries:cave_urns",
+        "configured_feature": "supplementaries:urns_patch",
+        "dispositions": [
+          {
+            "contribution": "supplementaries:cave_urn_cache",
+            "decision": "INCLUDE_ONE_FAMILY",
+            "rationale": "A freestanding group of authored treasure vessels is one cache design. It is generated independently of a building or vegetation feature. Scattered positions and the number of successful urn placements are variants, not additional families."
+          },
+          {
+            "contribution": "supplementaries:galleon/urns",
+            "decision": "EXISTING_FAMILY_COMPONENT",
+            "rationale": "The galleon pool reuses urns_patch inside the existing ship family. Count the standalone cave cache once, not another family for each urn or for this component reuse."
+          }
+        ],
+        "evidence": {
+          "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
+          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5"
+        },
+        "families": [
+          "supplementaries:cave_urn_cache"
+        ],
+        "mechanism": "The cave_urns biome modifier adds a freestanding underground placement of urns_patch. The vanilla random patch places simple urn blocks marked treasure=true on supported air positions.",
+        "placed_feature": "supplementaries:cave_urns",
+        "scope": "Membership only. The treasure block state is an authored input, not proof of actual loot contents, successful placement or observed cache occurrence. Effective biome eligibility, disabled-content conditions, urn reward behavior and required attributes remain open. Nine patch tries and six placement repetitions are configured attempts, not observed counts.",
+        "verification": "tests/item8/test_supplementaries_provider_scope.py::test_supplementaries_components_and_road_sign_feature_chain"
       },
       "tectonic:underground_river/lanterns": {
         "configured_resource": "resourcepacks/tectonic/data/tectonic/worldgen/configured_feature/underground_river/lanterns.json",
