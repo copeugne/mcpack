@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+WunderLib is resolved from source 185b55c: networking entry roles and supplied
+bounding-box geometry, with complete payload binding. Nineteen utility cases
+and scoped checks pass. Whole providers: 92 resolved, 44 open (23 code-reference,
+21 unmatched-search). Fabric is already fully closed. No family change.
+Remaining MCA candidates identified in the existing index: MixinProtoChunk,
+DestinyMessage, Village, VillageManager, BlockBoxExtended and WorldUtils. Common
+and client NeoForge entries have not yet been captured. Integrated API likewise
+remains open; reuse its pool-codec sources. Do not turn support-library helper
+inspection into a separate audit. Finish finite membership and Moog grouping.
+
+
 Fabric is fully resolved: all 43 module dispositions, 44 passing focused cases
 and scoped quality checks. Whole providers: 91 resolved, 45 open. No independent
 family added. Reuse these completed boundaries; do not continue generic Fabric
