@@ -152,3 +152,51 @@ def test_fabric_sources_cover_declared_mixins(
                     row["disassembly_sha256"]
                     == hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
                 )
+
+
+def test_fabric_pack_discovery_consumer_sources() -> None:
+    source = next(
+        s
+        for s in retained_sources(Path.cwd())
+        if s.name == "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar"
+    )
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    member = "META-INF/jars/fabric-resource-loader-v0-1.3.1+4ea8954419.jar"
+    with ZipFile(source.path) as parent:
+        payload = parent.read(member)
+        with ZipFile(BytesIO(payload)) as archive:
+            for label, digest, classes in (
+                (
+                    "fabric-pack-activation",
+                    "3f4e27140b27fb0d7f009370d126338ffdc1c43bdc2508041ca94cc13f32ad5a",
+                    {"ModResourcePackUtil", "ModNioResourcePack"},
+                ),
+                (
+                    "fabric-pack-discovery",
+                    "7bf8e338a6020383713752059acca9d36a8678c9a8f5b7fdbec1db280a65afda",
+                    {"ModResourcePackCreator"},
+                ),
+                (
+                    "fabric-fixed-pack",
+                    "ecf4b1a13f7b850275c43454bcb9aa90f549983b6c6b36d3794a266fcc9d9134",
+                    {"PlaceholderResourcePack", "PlaceholderResourcePack$Factory"},
+                ),
+            ):
+                directory = Path("evidence/item-8/sources") / label
+                raw = (directory / "identities.json").read_bytes()
+                assert hashlib.sha256(raw).hexdigest() == digest
+                rows = cast("list[dict[str, str]]", json.loads(raw))
+                assert {r["class"] for r in rows} == {
+                    "net/fabricmc/fabric/impl/resource/loader/" + c + ".class" for c in classes
+                }
+                for row in rows:
+                    assert row["archive"] == source.name + "!/" + member
+                    assert row["archive_sha256"] == hashlib.sha256(payload).hexdigest()
+                    assert (
+                        row["class_sha256"]
+                        == hashlib.sha256(archive.read(row["class"])).hexdigest()
+                    )
+                    assert (
+                        row["disassembly_sha256"]
+                        == hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
+                    )

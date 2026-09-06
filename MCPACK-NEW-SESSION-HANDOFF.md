@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric resource-loading membership is resolved. Discovery/fixed-pack source
+8cfe15c (extractors 6cf2878, e29938a) independently reproduces. Fixed pack has
+metadata only, no namespaces or ordinary resource content; other packs are
+consumer-supplied. Five focused Fabric cases bind all three consumer batches,
+and scoped checks pass. Next: other bundled Fabric module entry/mixin roles.
+Do not restart biome, GameTest, resource or pack-supplier checks. No new family
+candidate. Census remains 90 resolved, 46 open. No live runtime/capture process.
+
 Fabric resource sources are delivered: cce2d3d (extractor 8cf0d23), thirteen
 common hooks, entry and ResourceManagerHelperImpl; 6326f21 (extractor 149e849),
 ModResourcePackUtil and ModNioResourcePack. Both independently reproduce.

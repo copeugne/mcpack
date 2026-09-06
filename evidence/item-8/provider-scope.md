@@ -5574,3 +5574,24 @@ expand registry packet behavior into a networking audit. The two-consumer source
 still needs its focused identity binding alongside the final discovery result.
 Census remains 90 resolved, 46 open providers. Other Fabric module entry/mixin
 roles remain after this resource-loading question.
+
+### Fabric resource-loading membership resolved
+
+Source 8cfe15c retains ModResourcePackCreator (extractor 6cf2878) and the
+PlaceholderResourcePack/Factory supplier (extractor e29938a). Both captures
+independently reproduce. The focused check also binds the previously delivered
+ModResourcePackUtil and ModNioResourcePack source in 6326f21.
+
+ModResourcePackCreator.loadPacks constructs the fixed fabric pack, adds
+programmer-art and high-contrast paths only for CLIENT_RESOURCES, and returns
+to ResourceManagerHelperImpl's caller-registered built-in pack list. The fixed
+pack has no namespaces, returns no ordinary resource and enumerates no resources;
+its factory wraps that same pack. It supplies pack metadata rather than structure
+content. Together with mod-path/overlay loading and the complete packaged-data
+partition, this resolves resource loading as infrastructure for consumer content,
+with no independent family. No further generic supplier or packet audit is needed.
+
+Five focused Fabric cases and scoped Ruff/Basedpyright pass using the existing
+commands. Reuse the resolved biome, GameTest and resource-loading roles. Other
+bundled module entry/mixin roles remain before whole-provider closure. Census
+remains 90 resolved, 46 open providers; no family candidate was added.
