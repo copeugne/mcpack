@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+AdoraBuild bubble, gateway/portal and fossil relationships need ten fixed template
+views using the existing renderer. Their content differs materially (habitats,
+sculk installation, gateway/portal blocks and decorated fossils); names alone do
+not settle design boundaries. No new measurement system is justified. Backlog: 84.
+
 Inventory matches 54e4d725 and reproduces exactly. All 887 roots remain covered
 once; the birch workshop split preserves full variants. Coverage groups: 406.
 Canonical-note backlog: 84 (IDAS 59, AdoraBuild 25). Next: remaining AdoraBuild
