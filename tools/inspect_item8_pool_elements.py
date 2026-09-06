@@ -1685,6 +1685,13 @@ CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/supplementaries/common/worldgen/RemoveDisabledBlocksProcessor.class",
     "net/mehvahdjukaar/supplementaries/common/worldgen/RemoveDisabledBlocksProcessor$Replacement.class",
     "net/mehvahdjukaar/supplementaries/common/worldgen/RandomSpreadStructurePlacementWithExclusion.class",
+    "net/mehvahdjukaar/supplementaries/Supplementaries.class",
+    "net/mehvahdjukaar/supplementaries/platform/SupplementariesForge.class",
+    "net/mehvahdjukaar/supplementaries/common/events/ServerEvents.class",
+    "net/mehvahdjukaar/supplementaries/common/events/platform/ServerEventsForge.class",
+    "net/mehvahdjukaar/supplementaries/mixins/MixinPlugin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/StrongholdCrossingSconceMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/StrongholdRoomSconceMixin.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
