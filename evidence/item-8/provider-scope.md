@@ -9043,3 +9043,11 @@ uv run pytest tests/item8/test_family_decisions.py -q -k 'mvs or voyager'
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+Inventory regenerated from cf877811 and independently reproduced exactly.
+SHA-256: 4ed633922ed26ff99ff681f08730e98098c1f84e0b89e0f6195f7d121d2b06c7.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-houses-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-voyager-houses-r2.json
+```
