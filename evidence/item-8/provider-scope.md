@@ -8826,3 +8826,25 @@ independent outputs match byte for byte. SHA-256: c6342abc3852f2562aa83ddacd828a
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-soaring-settled-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-soaring-settled-r2.json
 ```
+
+## Nether paired family decisions
+
+Eight Nether decisions now have explicit layout/content rationales: giant_skull,
+sandy_skull, shrine, smoking_shrine, copper_tower, nether_tower, lava_pool and
+warped_pool. The two inspected sheets in sources/nether-pair-views are bound in
+their evidence alongside the full template catalog and existing pool traces.
+The skull forms, shrine plans, tower arrangements and pool upper/lower compositions
+are distinct. Neither material, size, shared naming nor generic generation code
+alone establishes these boundaries. Lower pool templates remain components.
+
+These decisions add no runtime measurements or attribute-completion claims.
+The remaining explicit queue is 67 (Nether 14, Voyager 53). Overall working
+groups remain 409. The derived inventory will be refreshed from these decisions.
+
+The affected Nether source-binding case passes, as do scoped Ruff and Basedpyright.
+
+```sh
+uv run pytest 'tests/item8/test_family_decisions.py::test_authored_designs_bind_roots_settings_and_missing_components[mns:]' -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
