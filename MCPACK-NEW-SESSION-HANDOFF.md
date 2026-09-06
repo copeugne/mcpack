@@ -6,6 +6,29 @@
 
 ### Continuation update - 2026-09-06
 
+Latest continuation correction at 4307aa7: the paragraphs below are earlier
+checkpoints. BetterEnd's complete 128-template partition is now bound by
+69fb95a, including the seven extra biome templates, legacy lists, village,
+pillars and portals. Frozen generator branch selection is bound by ad9dd54.
+Do not repeat those checks. The eight common entry captures in 4307aa7 are
+pushed and remote-ref verified; their nine generated files reproduce exactly.
+See evidence/item-8/sources/betterend-common-entries/README.md for the bounded
+interpretations and preserved limitations.
+
+The user's immediate requested outcome is an exhaustive named candidate list
+and a defensible family remainder. Provider counts alone do not satisfy it.
+Coverage remains 53 resolved and 83 open. Do not resume detailed attributes
+or turn every uncaptured class into another mandatory investigation. Resolve
+actual generation and component consumers using the existing evidence first.
+For BetterEnd, remaining named entry questions include cave feature dispatch,
+the concrete BYG/Flamboyant/DyeDepot integration routes, BetterEndPlugin service
+providers, remaining declared common mixin generation hooks, and shared Wover
+modifiers. These must be reconciled with the existing roots and feature
+registrations. An uncaptured class is not itself a missing family. No additional
+measurement framework, world run, or baseline repair is authorized by these
+questions. Finish the provider census and explicit grouping decisions before
+claiming a final family denominator.
+
 Current continuation: provider census first, with 53 of 136 supported provider
 dispositions and 83 open rows in evidence/item-8/provider-scope.md. The later
 commits below supersede the older 47-provider checkpoint. Save/structure utility
