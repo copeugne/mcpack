@@ -229,6 +229,12 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "io/wispforest/owo/ops/LootOps.class",
+    "io/wispforest/owo/util/TagInjector.class",
+    "io/wispforest/owo/util/Maldenhagen.class",
+    "io/wispforest/owo/command/debug/OwoDebugCommands.class",
+    "io/wispforest/owo/network/neoforge/NeoOwoNetworking.class",
+    "io/wispforest/owo/util/Wisdom.class",
     "io/wispforest/owo/Owo.class",
     "io/wispforest/owo/client/OwoClient.class",
     "io/wispforest/owo/config/ConfigAP.class",
