@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-06
 
+Latest RU increment: c373525 binds one stump-and-fallen-log candidate with six
+configuration variants and preserves the possible stump-only outcome. Both
+focused candidate cases and scoped Ruff/Basedpyright pass. Source 23f8c7b,
+extractor 389b2ed, adds RUFallenTreeFeature, RUSurfaceRuleBuilder and BiomeTarget;
+manifest b779daaf84f5a04384246079c6ada082941188e6319cb4c8835bfe6dad089770.
+Independent r1 matches. All source and tests are pushed and verified.
+
+Region/surface delegate roles are now reconciled in provider-scope.md:
+Nether surface composition, Inferno spring/aquifer modification, and biome
+replacement/climate-point/forced-placement support. No extra site route in
+these delegates. Do not recapture or re-audit them. Fallen-tree decorator and
+placement-consumer links remain open, along with other custom features,
+remaining common entry roles and payload/overlay/JSON5 reconciliation.
+Provider census remains 77 resolved and 59 open. No runtime process is live.
+
+
 Current provider: Regions Unexplored, still OPEN. Delivered a5efbc8 adds fifteen
 entry/common-mixin selectors; f479e0a retains the source with an exact independent
 repeat; ac87000 binds the archive component boundary and existing graph checks.
