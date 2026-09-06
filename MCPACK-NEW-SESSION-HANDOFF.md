@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Create Dragons Plus membership is resolved from 332870dc and fb5716dd.
+Machine/fluid/dye/recipe and existing-loot support, no independent generated
+family. Two focused cases bind parent/nested payloads and all entry/hook
+boundaries. Preserve smithing-template loot injection and processing effects;
+stop tracing generic CDP internals. Whole providers: 119 resolved, 17 open.
+Working groups remain 410 and 100 provisional Moog decisions remain. Continue
+remaining provider membership and canonical grouping before detailed attributes.
+No final Item 8 gate, clean review or main merge has passed.
+
+
 WorldWeaver membership is resolved from its six provider captures through
 1717ee10, with existing pool/biome captures reused. All entries/services and
 45 common hooks are bound; 91 distinct classes cover the inspected boundaries.
