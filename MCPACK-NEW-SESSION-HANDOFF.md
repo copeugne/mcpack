@@ -6,6 +6,32 @@
 
 ### Continuation update - 2026-09-06
 
+Latest checkpoint: Deep Aether provider coverage is RESOLVED in 6da0c86,
+pushed and remote-verified. The three final biome/surface delegates were
+preserved in 193bbe3. Five focused candidate/provider/totem cases pass;
+scoped Ruff and Basedpyright pass. Do not reopen the completed Deep Aether
+source, component, optional-pack or nested-library checks. Its inactive
+Sacred Lands routes and fallen-tree candidate remain canonical-grouping inputs.
+
+Current census: 77 supported provider dispositions, 59 open providers. The
+exact queue is evidence/item-8/provider-scope.md, starting at its Exact provider
+queue section. That historical table started with 110 rows after 26 closures;
+51 of its rows are now RESOLVED and 59 remain open. Do not interpret the table
+as only 110 retained candidates or the provider count as a family count.
+
+The user's unresolved request is a finite canonical-family inventory and exact
+remaining family count. Finish this existing provider queue before returning
+to the eleven attributes. Use the existing packaged/runtime catalogs and
+captured sources. Inspect actual generation boundaries; do not audit unrelated
+gameplay helpers or add measurement systems for hypothetical gaps. Then resolve
+canonical designs and publish each named grouping ambiguity. The 887 roots and
+421 provisional groups remain inputs, not an accepted final denominator.
+No runtime process is live and no external blocker prevents continuation.
+Final Item 8 evidence, Codex review loop and verified main merge remain open.
+
+Earlier checkpoints below are preserved as history and superseded where they
+conflict with this latest checkpoint.
+
 Deep Aether is current, still OPEN. Candidate partition 63d6dfd and runtime
 library selection fa379f0 are delivered: four roots, fifteen templates, sixty
 configured features; active TerraBlender is retained 4.1.0.8, not embedded .3.
