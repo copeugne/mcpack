@@ -1,0 +1,114 @@
+Compiled from "NetherBiomeData.java"
+public final class net.fabricmc.fabric.impl.biome.NetherBiomeData {
+  private static final java.util.Set<net.minecraft.resources.ResourceKey<net.minecraft.world.level.biome.Biome>> NETHER_BIOMES;
+
+  private static final java.util.Map<net.minecraft.resources.ResourceKey<net.minecraft.world.level.biome.Biome>, net.minecraft.world.level.biome.Climate$ParameterPoint> NETHER_BIOME_NOISE_POINTS;
+
+  private net.fabricmc.fabric.impl.biome.NetherBiomeData();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void addNetherBiome(net.minecraft.resources.ResourceKey<net.minecraft.world.level.biome.Biome>, net.minecraft.world.level.biome.Climate$ParameterPoint);
+    Code:
+       0: aload_0
+       1: ifnull        8
+       4: iconst_1
+       5: goto          9
+       8: iconst_0
+       9: ldc           #7                  // String Biome is null
+      11: invokestatic  #9                  // Method com/google/common/base/Preconditions.checkArgument:(ZLjava/lang/Object;)V
+      14: aload_1
+      15: ifnull        22
+      18: iconst_1
+      19: goto          23
+      22: iconst_0
+      23: ldc           #15                 // String MultiNoiseUtil.NoiseValuePoint is null
+      25: invokestatic  #9                  // Method com/google/common/base/Preconditions.checkArgument:(ZLjava/lang/Object;)V
+      28: getstatic     #17                 // Field NETHER_BIOME_NOISE_POINTS:Ljava/util/Map;
+      31: aload_0
+      32: aload_1
+      33: invokeinterface #23,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      38: pop
+      39: invokestatic  #29                 // Method clearBiomeSourceCache:()V
+      42: return
+
+  public static boolean canGenerateInNether(net.minecraft.resources.ResourceKey<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: getstatic     #32                 // Field net/minecraft/world/level/biome/MultiNoiseBiomeSourceParameterList$Preset.NETHER:Lnet/minecraft/world/level/biome/MultiNoiseBiomeSourceParameterList$Preset;
+       3: invokevirtual #38                 // Method net/minecraft/world/level/biome/MultiNoiseBiomeSourceParameterList$Preset.usedBiomes:()Ljava/util/stream/Stream;
+       6: aload_0
+       7: invokedynamic #42,  0             // InvokeDynamic #0:test:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/function/Predicate;
+      12: invokeinterface #46,  2           // InterfaceMethod java/util/stream/Stream.anyMatch:(Ljava/util/function/Predicate;)Z
+      17: ireturn
+
+  private static void clearBiomeSourceCache();
+    Code:
+       0: getstatic     #52                 // Field NETHER_BIOMES:Ljava/util/Set;
+       3: invokeinterface #56,  1           // InterfaceMethod java/util/Set.clear:()V
+       8: return
+
+  public static <T> net.minecraft.world.level.biome.Climate$ParameterList<T> withModdedBiomeEntries(net.minecraft.world.level.biome.Climate$ParameterList<T>, java.util.function.Function<net.minecraft.resources.ResourceKey<net.minecraft.world.level.biome.Biome>, T>);
+    Code:
+       0: getstatic     #17                 // Field NETHER_BIOME_NOISE_POINTS:Ljava/util/Map;
+       3: invokeinterface #61,  1           // InterfaceMethod java/util/Map.isEmpty:()Z
+       8: ifeq          13
+      11: aload_0
+      12: areturn
+      13: new           #65                 // class java/util/ArrayList
+      16: dup
+      17: aload_0
+      18: invokevirtual #67                 // Method net/minecraft/world/level/biome/Climate$ParameterList.values:()Ljava/util/List;
+      21: invokespecial #73                 // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+      24: astore_2
+      25: getstatic     #17                 // Field NETHER_BIOME_NOISE_POINTS:Ljava/util/Map;
+      28: invokeinterface #76,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      33: invokeinterface #80,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      38: astore_3
+      39: aload_3
+      40: invokeinterface #84,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      45: ifeq          96
+      48: aload_3
+      49: invokeinterface #89,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      54: checkcast     #93                 // class java/util/Map$Entry
+      57: astore        4
+      59: aload_2
+      60: aload         4
+      62: invokeinterface #95,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      67: checkcast     #98                 // class net/minecraft/world/level/biome/Climate$ParameterPoint
+      70: aload_1
+      71: aload         4
+      73: invokeinterface #100,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      78: checkcast     #103                // class net/minecraft/resources/ResourceKey
+      81: invokeinterface #105,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+      86: invokestatic  #111                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+      89: invokevirtual #117                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+      92: pop
+      93: goto          39
+      96: new           #68                 // class net/minecraft/world/level/biome/Climate$ParameterList
+      99: dup
+     100: aload_2
+     101: invokestatic  #121                // Method java/util/Collections.unmodifiableList:(Ljava/util/List;)Ljava/util/List;
+     104: invokespecial #127                // Method net/minecraft/world/level/biome/Climate$ParameterList."<init>":(Ljava/util/List;)V
+     107: areturn
+
+  private static boolean lambda$canGenerateInNether$0(net.minecraft.resources.ResourceKey, net.minecraft.resources.ResourceKey);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #130                // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+       5: ireturn
+
+  static {};
+    Code:
+       0: new           #133                // class java/util/HashSet
+       3: dup
+       4: invokespecial #135                // Method java/util/HashSet."<init>":()V
+       7: putstatic     #52                 // Field NETHER_BIOMES:Ljava/util/Set;
+      10: new           #136                // class java/util/HashMap
+      13: dup
+      14: invokespecial #138                // Method java/util/HashMap."<init>":()V
+      17: putstatic     #17                 // Field NETHER_BIOME_NOISE_POINTS:Ljava/util/Map;
+      20: return
+}
