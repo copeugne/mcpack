@@ -78,6 +78,7 @@ ARCHIVES = frozenset(
         "AI-Improvements-1.21-0.5.3.jar",
         "Almanac-1.21.1-2-neoforge-1.5.2.jar",
         "libraryferret-neoforge-1.21.1-4.0.0.jar",
+        "oceansdelight-neoforge-1.0.4-1.21.1.jar",
         "structure_layout_optimizer-neoforge-1.0.12.jar",
         "attributefix-neoforge-1.21.1-21.1.3.jar",
         "LeavesBeGone-v21.1.1-1.21.1-NeoForge.jar",
@@ -94,6 +95,7 @@ ARCHIVES = frozenset(
     }
 )
 GENERATION_PREFIXES = (
+    "com/scouter/oceansdelight/",
     "com/frikinjay/almanac/",
     "architectury_inject_almanac_",
     "com/jtorleonstudios/libraryferret/",
@@ -688,6 +690,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
                 ))
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
+                    "com/scouter/oceansdelight/OceansDelight.class",
+                    "com/scouter/oceansdelight/datagen/DataGenerators.class",
                     "net/choicetheorem/ctov/CTOV.class",
                     "net/choicetheorem/ctov/neoforge/ctovNeo.class",
                     "net/adorabuild/structures/AdorabuildStructuresMod.class",
