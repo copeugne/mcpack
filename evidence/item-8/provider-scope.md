@@ -5275,3 +5275,28 @@ the existing commands above. Create remains OPEN for the dynamic recipe output
 boundary, other annotated/common mixin entry roles, Ponder and embedded-library
 roles. Reuse completed common dispatch and schematic interpretation. Census is
 89 resolved and 47 open. No runtime or source capture process is live.
+
+### Create dynamic-data output resolved
+
+Source 23fbee3, extractor 346e42e, preserves StandardBuilder. Its independent
+capture matches; identities SHA-256 is
+3bfb8d0f3a362eec0930be85992d6ee2470bf3aa40b1621748ec7c78061b7292.
+The builder encodes a processing recipe with Recipe.CONDITIONAL_CODEC and inserts
+successful JSON results into JSON_FILES with the recipe/ prefix. Together with
+RuntimeDataGenerator's item-tag writer, this closes the observed dynamic-pack
+membership question: recipe and item-tag content, no additional family candidate.
+No recursive inspection of generic recipe codecs is required for membership.
+
+The same focused test file now inventories the declared top-level entry surface:
+58 classes contain Mod/EventBusSubscriber annotation descriptors, and 43 distinct
+classes are declared in the common mixin list. These sets are disjoint. At this
+checkpoint four annotated entries are already captured (Create, CommonEvents,
+ModBusEvents and CreateGameTests), leaving 54 annotated classes and 43 common
+mixins to disposition. Client-only annotations can justify exclusion once
+inspected; these are entry checks, not 97 new families or a requirement to audit
+all gameplay helpers. The three embedded libraries remain Flywheel, Ponder and
+Registrate. Ponder template-consumer roles remain outstanding.
+
+Four focused cases pass (0.47s); scoped Ruff/Basedpyright pass. Provider census
+remains 89 resolved and 47 open. Continue the finite entry and embedded-library
+checks without reopening the resolved dynamic pack, ore or schematic roles.
