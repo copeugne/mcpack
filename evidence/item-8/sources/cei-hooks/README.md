@@ -1,0 +1,12 @@
+# cei-hooks source boundaries
+
+Extractor 5d97984cada264d3efc3138db30722801d22b3dc. Independent r1 reproduction matches all
+disassemblies and the identity manifest. Manifest SHA-256:
+1d37bcd725fde63649bc32b2ea767ad6a31d60bfafbf9d7a6daac6415c18b94d
+
+```sh
+uv run -m tools.inspect_item8_pool_elements --archive create-enchantment-industry-2.4.0.jar --class-name plus/dragons/createenchantmentindustry/integration/apotheosis/mixin/create/BeltInventoryMixin.class --class-name plus/dragons/createenchantmentindustry/integration/apotheosis/mixin/create/DepotBehaviourMixin.class --class-name plus/dragons/createenchantmentindustry/integration/apothic_enchanting/mixin/create/AllItemAttributeTypesMixin.class --class-name plus/dragons/createenchantmentindustry/integration/apothic_enchanting/mixin/create/BasinBlockEntityMixin.class --class-name plus/dragons/createenchantmentindustry/integration/apothic_enchanting/mixin/create/BasinBlockMixin.class --class-name plus/dragons/createenchantmentindustry/mixin/ConnectivityHandlerMixin.class --class-name plus/dragons/createenchantmentindustry/mixin/CreateNBTProcessorsMixin.class --class-name plus/dragons/createenchantmentindustry/mixin/CrushingWheelControllerBlockEntityMixin.class --class-name plus/dragons/createenchantmentindustry/mixin/DeployerFakePlayerMixin.class --class-name plus/dragons/createenchantmentindustry/mixin/DeployerHandlerMixin.class --class-name plus/dragons/createenchantmentindustry/mixin/EnchantmentHelperMixin.class --class-name plus/dragons/createenchantmentindustry/mixin/FillingBySpoutMixin.class --class-name plus/dragons/createenchantmentindustry/mixin/LightningBoltMixin.class --class-name plus/dragons/createenchantmentindustry/mixin/PlayerMixin.class --class-name plus/dragons/createenchantmentindustry/mixin/SmartBlockEntityMixin.class --class-name plus/dragons/createenchantmentindustry/mixin/accessor/CreateRecipeCategoryAccessor.class --class-name plus/dragons/createenchantmentindustry/integration/sable/mixin/CaptureEntityBehaviourMixin.class --class-name plus/dragons/createenchantmentindustry/integration/sable/mixin/ExperienceLanternBlockEntityMixin.class --class-name plus/dragons/createenchantmentindustry/integration/sable/mixin/ExperienceLightningChargerMixin.class --class-name plus/dragons/createenchantmentindustry/integration/sable/mixin/SubLevelAssemblyHelperMixin.class --output evidence/item-8/sources/cei-hooks
+```
+
+Provider membership source inspection. Optional integration captures do not
+claim activation, and Sable remains excluded from the retained stack.

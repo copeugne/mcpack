@@ -1,0 +1,415 @@
+Classfile create-enchantment-industry-2.4.0.jar!/plus/dragons/createenchantmentindustry/mixin/ConnectivityHandlerMixin.class
+  Last modified Jun 5, 2026; size 4743 bytes
+  SHA-256 checksum 677d8bcd29a95707172dd303eda7d0fe83600b238d336c2a32c2232b28b1eda2
+  Compiled from "ConnectivityHandlerMixin.java"
+public class plus.dragons.createenchantmentindustry.mixin.ConnectivityHandlerMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #66                         // plus/dragons/createenchantmentindustry/mixin/ConnectivityHandlerMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 3, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // net/minecraft/world/level/block/entity/BlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+    #8 = Class              #10           // net/minecraft/world/level/block/entity/BlockEntity
+    #9 = NameAndType        #11:#12       // getLevel:()Lnet/minecraft/world/level/Level;
+   #10 = Utf8               net/minecraft/world/level/block/entity/BlockEntity
+   #11 = Utf8               getLevel
+   #12 = Utf8               ()Lnet/minecraft/world/level/Level;
+   #13 = Class              #14           // net/minecraft/server/level/ServerLevel
+   #14 = Utf8               net/minecraft/server/level/ServerLevel
+   #15 = Methodref          #8.#16        // net/minecraft/world/level/block/entity/BlockEntity.isRemoved:()Z
+   #16 = NameAndType        #17:#18       // isRemoved:()Z
+   #17 = Utf8               isRemoved
+   #18 = Utf8               ()Z
+   #19 = Methodref          #20.#21       // plus/dragons/createenchantmentindustry/common/fluids/experience/ExperienceFluidDropContext.shouldDropExperienceFluid:(Lnet/minecraft/world/level/Level;)Z
+   #20 = Class              #22           // plus/dragons/createenchantmentindustry/common/fluids/experience/ExperienceFluidDropContext
+   #21 = NameAndType        #23:#24       // shouldDropExperienceFluid:(Lnet/minecraft/world/level/Level;)Z
+   #22 = Utf8               plus/dragons/createenchantmentindustry/common/fluids/experience/ExperienceFluidDropContext
+   #23 = Utf8               shouldDropExperienceFluid
+   #24 = Utf8               (Lnet/minecraft/world/level/Level;)Z
+   #25 = Class              #26           // com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid
+   #26 = Utf8               com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid
+   #27 = InterfaceMethodref #25.#28       // com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid.hasTank:()Z
+   #28 = NameAndType        #29:#18       // hasTank:()Z
+   #29 = Utf8               hasTank
+   #30 = InterfaceMethodref #25.#31       // com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid.getTank:(I)Lnet/neoforged/neoforge/fluids/IFluidTank;
+   #31 = NameAndType        #32:#33       // getTank:(I)Lnet/neoforged/neoforge/fluids/IFluidTank;
+   #32 = Utf8               getTank
+   #33 = Utf8               (I)Lnet/neoforged/neoforge/fluids/IFluidTank;
+   #34 = Class              #35           // com/simibubi/create/content/fluids/tank/CreativeFluidTankBlockEntity$CreativeSmartFluidTank
+   #35 = Utf8               com/simibubi/create/content/fluids/tank/CreativeFluidTankBlockEntity$CreativeSmartFluidTank
+   #36 = InterfaceMethodref #25.#37       // com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid.getFluid:(I)Lnet/neoforged/neoforge/fluids/FluidStack;
+   #37 = NameAndType        #38:#39       // getFluid:(I)Lnet/neoforged/neoforge/fluids/FluidStack;
+   #38 = Utf8               getFluid
+   #39 = Utf8               (I)Lnet/neoforged/neoforge/fluids/FluidStack;
+   #40 = Methodref          #41.#42       // plus/dragons/createenchantmentindustry/common/fluids/experience/ExperienceHelper.getExperienceFromFluid:(Lnet/neoforged/neoforge/fluids/FluidStack;)I
+   #41 = Class              #43           // plus/dragons/createenchantmentindustry/common/fluids/experience/ExperienceHelper
+   #42 = NameAndType        #44:#45       // getExperienceFromFluid:(Lnet/neoforged/neoforge/fluids/FluidStack;)I
+   #43 = Utf8               plus/dragons/createenchantmentindustry/common/fluids/experience/ExperienceHelper
+   #44 = Utf8               getExperienceFromFluid
+   #45 = Utf8               (Lnet/neoforged/neoforge/fluids/FluidStack;)I
+   #46 = Methodref          #8.#47        // net/minecraft/world/level/block/entity/BlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+   #47 = NameAndType        #48:#49       // getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+   #48 = Utf8               getBlockState
+   #49 = Utf8               ()Lnet/minecraft/world/level/block/state/BlockState;
+   #50 = Methodref          #8.#51        // net/minecraft/world/level/block/entity/BlockEntity.getBlockPos:()Lnet/minecraft/core/BlockPos;
+   #51 = NameAndType        #52:#53       // getBlockPos:()Lnet/minecraft/core/BlockPos;
+   #52 = Utf8               getBlockPos
+   #53 = Utf8               ()Lnet/minecraft/core/BlockPos;
+   #54 = Methodref          #55.#56       // net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+   #55 = Class              #57           // net/minecraft/world/level/block/state/BlockState
+   #56 = NameAndType        #58:#59       // getBlock:()Lnet/minecraft/world/level/block/Block;
+   #57 = Utf8               net/minecraft/world/level/block/state/BlockState
+   #58 = Utf8               getBlock
+   #59 = Utf8               ()Lnet/minecraft/world/level/block/Block;
+   #60 = Methodref          #61.#62       // net/minecraft/world/level/block/Block.popExperience:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;I)V
+   #61 = Class              #63           // net/minecraft/world/level/block/Block
+   #62 = NameAndType        #64:#65       // popExperience:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;I)V
+   #63 = Utf8               net/minecraft/world/level/block/Block
+   #64 = Utf8               popExperience
+   #65 = Utf8               (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;I)V
+   #66 = Class              #67           // plus/dragons/createenchantmentindustry/mixin/ConnectivityHandlerMixin
+   #67 = Utf8               plus/dragons/createenchantmentindustry/mixin/ConnectivityHandlerMixin
+   #68 = Utf8               Code
+   #69 = Utf8               LineNumberTable
+   #70 = Utf8               LocalVariableTable
+   #71 = Utf8               this
+   #72 = Utf8               Lplus/dragons/createenchantmentindustry/mixin/ConnectivityHandlerMixin;
+   #73 = Utf8               splitMulti$dropExperienceFluidSingle
+   #74 = Utf8               (Lnet/minecraft/world/level/block/entity/BlockEntity;Ljava/lang/Object;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+   #75 = Utf8               level
+   #76 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+   #77 = Utf8               fluidContainer
+   #78 = Utf8               Lcom/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid;
+   #79 = Utf8               state
+   #80 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+   #81 = Utf8               pos
+   #82 = Utf8               Lnet/minecraft/core/BlockPos;
+   #83 = Utf8               be
+   #84 = Utf8               Lnet/minecraft/world/level/block/entity/BlockEntity;
+   #85 = Utf8               cache
+   #86 = Utf8               Ljava/lang/Object;
+   #87 = Utf8               tryReconnect
+   #88 = Utf8               Z
+   #89 = Utf8               ci
+   #90 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+   #91 = Utf8               dropped
+   #92 = Utf8               Lnet/neoforged/neoforge/fluids/FluidStack;
+   #93 = Utf8               experience
+   #94 = Utf8               I
+   #95 = Utf8               LocalVariableTypeTable
+   #96 = Utf8               TT;
+   #97 = Utf8               StackMapTable
+   #98 = Class              #99           // net/neoforged/neoforge/fluids/FluidStack
+   #99 = Utf8               net/neoforged/neoforge/fluids/FluidStack
+  #100 = Utf8               Signature
+  #101 = Utf8               <T:Lnet/minecraft/world/level/block/entity/BlockEntity;:Lcom/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer;>(TT;Ljava/lang/Object;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #102 = Utf8               RuntimeVisibleAnnotations
+  #103 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #104 = Utf8               method
+  #105 = Utf8               splitMultiAndInvalidate
+  #106 = Utf8               at
+  #107 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #108 = Utf8               value
+  #109 = Utf8               RETURN
+  #110 = Utf8               ordinal
+  #111 = Integer            2
+  #112 = Utf8               RuntimeInvisibleParameterAnnotations
+  #113 = Utf8               Lorg/spongepowered/asm/mixin/injection/Coerce;
+  #114 = Utf8               splitMulti$dropExperienceFluidMulti
+  #115 = Utf8               (Lnet/minecraft/world/level/block/entity/BlockEntity;Ljava/lang/Object;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;Lnet/neoforged/neoforge/fluids/FluidStack;)V
+  #116 = Utf8               <T:Lnet/minecraft/world/level/block/entity/BlockEntity;:Lcom/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer;>(TT;Ljava/lang/Object;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;Lnet/neoforged/neoforge/fluids/FluidStack;)V
+  #117 = Utf8               TAIL
+  #118 = Utf8               Lcom/llamalad7/mixinextras/sugar/Local;
+  #119 = Utf8               SourceFile
+  #120 = Utf8               ConnectivityHandlerMixin.java
+  #121 = Utf8               RuntimeInvisibleAnnotations
+  #122 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #123 = Utf8               Lcom/simibubi/create/api/connectivity/ConnectivityHandler;
+  #124 = Utf8               InnerClasses
+  #125 = Class              #126          // com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer
+  #126 = Utf8               com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer
+  #127 = Utf8               Fluid
+  #128 = Class              #129          // com/simibubi/create/content/fluids/tank/CreativeFluidTankBlockEntity
+  #129 = Utf8               com/simibubi/create/content/fluids/tank/CreativeFluidTankBlockEntity
+  #130 = Utf8               CreativeSmartFluidTank
+{
+  public plus.dragons.createenchantmentindustry.mixin.ConnectivityHandlerMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 37: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lplus/dragons/createenchantmentindustry/mixin/ConnectivityHandlerMixin;
+
+  private static <T extends net.minecraft.world.level.block.entity.BlockEntity & com.simibubi.create.foundation.blockEntity.IMultiBlockEntityContainer> void splitMulti$dropExperienceFluidSingle(T, java.lang.Object, boolean, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/level/block/entity/BlockEntity;Ljava/lang/Object;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=4, locals=10, args_size=4
+         0: aload_0
+         1: invokevirtual #7                  // Method net/minecraft/world/level/block/entity/BlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+         4: astore        5
+         6: aload         5
+         8: instanceof    #13                 // class net/minecraft/server/level/ServerLevel
+        11: ifeq          28
+        14: aload         5
+        16: checkcast     #13                 // class net/minecraft/server/level/ServerLevel
+        19: astore        4
+        21: aload_0
+        22: invokevirtual #15                 // Method net/minecraft/world/level/block/entity/BlockEntity.isRemoved:()Z
+        25: ifne          29
+        28: return
+        29: aload         4
+        31: invokestatic  #19                 // Method plus/dragons/createenchantmentindustry/common/fluids/experience/ExperienceFluidDropContext.shouldDropExperienceFluid:(Lnet/minecraft/world/level/Level;)Z
+        34: ifne          38
+        37: return
+        38: aload_0
+        39: instanceof    #25                 // class com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid
+        42: ifeq          54
+        45: aload_0
+        46: checkcast     #25                 // class com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid
+        49: astore        5
+        51: goto          55
+        54: return
+        55: aload         5
+        57: invokeinterface #27,  1           // InterfaceMethod com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid.hasTank:()Z
+        62: ifeq          79
+        65: aload         5
+        67: iconst_0
+        68: invokeinterface #30,  2           // InterfaceMethod com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid.getTank:(I)Lnet/neoforged/neoforge/fluids/IFluidTank;
+        73: instanceof    #34                 // class com/simibubi/create/content/fluids/tank/CreativeFluidTankBlockEntity$CreativeSmartFluidTank
+        76: ifeq          80
+        79: return
+        80: aload         5
+        82: iconst_0
+        83: invokeinterface #36,  2           // InterfaceMethod com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid.getFluid:(I)Lnet/neoforged/neoforge/fluids/FluidStack;
+        88: astore        6
+        90: aload         6
+        92: invokestatic  #40                 // Method plus/dragons/createenchantmentindustry/common/fluids/experience/ExperienceHelper.getExperienceFromFluid:(Lnet/neoforged/neoforge/fluids/FluidStack;)I
+        95: istore        7
+        97: iload         7
+        99: ifle          128
+       102: aload_0
+       103: invokevirtual #46                 // Method net/minecraft/world/level/block/entity/BlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       106: astore        8
+       108: aload_0
+       109: invokevirtual #50                 // Method net/minecraft/world/level/block/entity/BlockEntity.getBlockPos:()Lnet/minecraft/core/BlockPos;
+       112: astore        9
+       114: aload         8
+       116: invokevirtual #54                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       119: aload         4
+       121: aload         9
+       123: iload         7
+       125: invokevirtual #60                 // Method net/minecraft/world/level/block/Block.popExperience:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;I)V
+       128: return
+      LineNumberTable:
+        line 40: 0
+        line 41: 28
+        line 42: 29
+        line 43: 37
+        line 44: 38
+        line 45: 54
+        line 46: 55
+        line 47: 79
+        line 48: 80
+        line 49: 90
+        line 50: 97
+        line 51: 102
+        line 52: 108
+        line 53: 114
+        line 55: 128
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           21       7     4 level   Lnet/minecraft/server/level/ServerLevel;
+           51       3     5 fluidContainer   Lcom/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid;
+          108      20     8 state   Lnet/minecraft/world/level/block/state/BlockState;
+          114      14     9   pos   Lnet/minecraft/core/BlockPos;
+            0     129     0    be   Lnet/minecraft/world/level/block/entity/BlockEntity;
+            0     129     1 cache   Ljava/lang/Object;
+            0     129     2 tryReconnect   Z
+            0     129     3    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+           29     100     4 level   Lnet/minecraft/server/level/ServerLevel;
+           55      74     5 fluidContainer   Lcom/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid;
+           90      39     6 dropped   Lnet/neoforged/neoforge/fluids/FluidStack;
+           97      32     7 experience   I
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0     129     0    be   TT;
+      StackMapTable: number_of_entries = 8
+        frame_type = 28 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 0
+          locals = [ class net/minecraft/server/level/ServerLevel ]
+        frame_type = 8 /* same */
+        frame_type = 15 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 0
+          locals = [ class com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid ]
+        frame_type = 23 /* same */
+        frame_type = 0 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 47
+          locals = [ class net/neoforged/neoforge/fluids/FluidStack, int ]
+    Signature: #101                         // <T:Lnet/minecraft/world/level/block/entity/BlockEntity;:Lcom/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer;>(TT;Ljava/lang/Object;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    RuntimeVisibleAnnotations:
+      0: #103(#104=[s#105],#106=[@#107(#108=s#109,#110=I#111)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["splitMultiAndInvalidate"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+            ordinal=2
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+        0: #113()
+          org.spongepowered.asm.mixin.injection.Coerce
+      parameter 2:
+      parameter 3:
+
+  private static <T extends net.minecraft.world.level.block.entity.BlockEntity & com.simibubi.create.foundation.blockEntity.IMultiBlockEntityContainer> void splitMulti$dropExperienceFluidMulti(T, java.lang.Object, boolean, org.spongepowered.asm.mixin.injection.callback.CallbackInfo, net.neoforged.neoforge.fluids.FluidStack);
+    descriptor: (Lnet/minecraft/world/level/block/entity/BlockEntity;Ljava/lang/Object;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;Lnet/neoforged/neoforge/fluids/FluidStack;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=4, locals=10, args_size=5
+         0: aload_0
+         1: invokevirtual #7                  // Method net/minecraft/world/level/block/entity/BlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+         4: astore        6
+         6: aload         6
+         8: instanceof    #13                 // class net/minecraft/server/level/ServerLevel
+        11: ifeq          24
+        14: aload         6
+        16: checkcast     #13                 // class net/minecraft/server/level/ServerLevel
+        19: astore        5
+        21: goto          25
+        24: return
+        25: aload         5
+        27: invokestatic  #19                 // Method plus/dragons/createenchantmentindustry/common/fluids/experience/ExperienceFluidDropContext.shouldDropExperienceFluid:(Lnet/minecraft/world/level/Level;)Z
+        30: ifne          34
+        33: return
+        34: aload_0
+        35: instanceof    #25                 // class com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid
+        38: ifeq          50
+        41: aload_0
+        42: checkcast     #25                 // class com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid
+        45: astore        6
+        47: goto          51
+        50: return
+        51: aload         6
+        53: invokeinterface #27,  1           // InterfaceMethod com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid.hasTank:()Z
+        58: ifeq          75
+        61: aload         6
+        63: iconst_0
+        64: invokeinterface #30,  2           // InterfaceMethod com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid.getTank:(I)Lnet/neoforged/neoforge/fluids/IFluidTank;
+        69: instanceof    #34                 // class com/simibubi/create/content/fluids/tank/CreativeFluidTankBlockEntity$CreativeSmartFluidTank
+        72: ifeq          76
+        75: return
+        76: aload         4
+        78: invokestatic  #40                 // Method plus/dragons/createenchantmentindustry/common/fluids/experience/ExperienceHelper.getExperienceFromFluid:(Lnet/neoforged/neoforge/fluids/FluidStack;)I
+        81: istore        7
+        83: iload         7
+        85: ifle          114
+        88: aload_0
+        89: invokevirtual #46                 // Method net/minecraft/world/level/block/entity/BlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+        92: astore        8
+        94: aload_0
+        95: invokevirtual #50                 // Method net/minecraft/world/level/block/entity/BlockEntity.getBlockPos:()Lnet/minecraft/core/BlockPos;
+        98: astore        9
+       100: aload         8
+       102: invokevirtual #54                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       105: aload         5
+       107: aload         9
+       109: iload         7
+       111: invokevirtual #60                 // Method net/minecraft/world/level/block/Block.popExperience:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;I)V
+       114: return
+      LineNumberTable:
+        line 59: 0
+        line 60: 24
+        line 61: 25
+        line 62: 33
+        line 63: 34
+        line 64: 50
+        line 65: 51
+        line 66: 75
+        line 67: 76
+        line 68: 83
+        line 69: 88
+        line 70: 94
+        line 71: 100
+        line 73: 114
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           21       3     5 level   Lnet/minecraft/server/level/ServerLevel;
+           47       3     6 fluidContainer   Lcom/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid;
+           94      20     8 state   Lnet/minecraft/world/level/block/state/BlockState;
+          100      14     9   pos   Lnet/minecraft/core/BlockPos;
+            0     115     0    be   Lnet/minecraft/world/level/block/entity/BlockEntity;
+            0     115     1 cache   Ljava/lang/Object;
+            0     115     2 tryReconnect   Z
+            0     115     3    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+            0     115     4 dropped   Lnet/neoforged/neoforge/fluids/FluidStack;
+           25      90     5 level   Lnet/minecraft/server/level/ServerLevel;
+           51      64     6 fluidContainer   Lcom/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid;
+           83      32     7 experience   I
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0     115     0    be   TT;
+      StackMapTable: number_of_entries = 8
+        frame_type = 24 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 0
+          locals = [ class net/minecraft/server/level/ServerLevel ]
+        frame_type = 8 /* same */
+        frame_type = 15 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 0
+          locals = [ class com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid ]
+        frame_type = 23 /* same */
+        frame_type = 0 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 37
+          locals = [ int ]
+    Signature: #116                         // <T:Lnet/minecraft/world/level/block/entity/BlockEntity;:Lcom/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer;>(TT;Ljava/lang/Object;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;Lnet/neoforged/neoforge/fluids/FluidStack;)V
+    RuntimeVisibleAnnotations:
+      0: #103(#104=[s#105],#106=[@#107(#108=s#117)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["splitMultiAndInvalidate"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="TAIL"
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+        0: #113()
+          org.spongepowered.asm.mixin.injection.Coerce
+      parameter 2:
+      parameter 3:
+      parameter 4:
+        0: #118()
+          com.llamalad7.mixinextras.sugar.Local
+}
+SourceFile: "ConnectivityHandlerMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #122(#108=[c#123])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lcom/simibubi/create/api/connectivity/ConnectivityHandler;]
+    )
+InnerClasses:
+  public static #127= #25 of #125;        // Fluid=class com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer$Fluid of class com/simibubi/create/foundation/blockEntity/IMultiBlockEntityContainer
+  public static #130= #34 of #128;        // CreativeSmartFluidTank=class com/simibubi/create/content/fluids/tank/CreativeFluidTankBlockEntity$CreativeSmartFluidTank of class com/simibubi/create/content/fluids/tank/CreativeFluidTankBlockEntity
