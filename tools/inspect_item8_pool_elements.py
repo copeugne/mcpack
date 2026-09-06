@@ -189,6 +189,21 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/fabricmc/fabric/mixin/resource/loader/DatapackCommandMixin.class",
+    "net/fabricmc/fabric/mixin/resource/loader/KeyedResourceReloadListenerMixin.class",
+    "net/fabricmc/fabric/mixin/resource/loader/LifecycledResourceManagerImplMixin.class",
+    "net/fabricmc/fabric/mixin/resource/loader/MinecraftServerMixin.class",
+    "net/fabricmc/fabric/mixin/resource/loader/ResourceMixin.class",
+    "net/fabricmc/fabric/mixin/resource/loader/ResourcePackManagerMixin.class",
+    "net/fabricmc/fabric/mixin/resource/loader/ResourcePackProfileMixin.class",
+    "net/fabricmc/fabric/mixin/resource/loader/SelectKnownPacksC2SPacketMixin.class",
+    "net/fabricmc/fabric/mixin/resource/loader/ServerConfigurationNetworkHandlerMixin.class",
+    "net/fabricmc/fabric/mixin/resource/loader/ServerPropertiesHandlerMixin.class",
+    "net/fabricmc/fabric/mixin/resource/loader/SimpleResourceReloadMixin.class",
+    "net/fabricmc/fabric/mixin/resource/loader/SynchronizeRegistriesTaskMixin.class",
+    "net/fabricmc/fabric/mixin/resource/loader/TestServerMixin.class",
+    "net/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl.class",
+    "org/sinytra/fabric/resource_loader/generated/GeneratedEntryPoint.class",
     "net/fabricmc/fabric/mixin/gametest/TestCommandMixin.class",
     "net/fabricmc/fabric/mixin/gametest/GameTestRegistryMixin.class",
     "net/fabricmc/fabric/mixin/gametest/GameTestHooksMixin.class",
@@ -2293,6 +2308,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/fabric-resource-loader-v0-1.3.1+4ea8954419.jar",
         "META-INF/jars/fabric-gametest-api-v1-2.0.5+29f188ce19.jar",
         "META-INF/jars/fabric-biome-api-v1-13.0.31+1e62d33c19.jar",
         "META-INF/jarjar/ponder-neoforge-1.0.82+mc1.21.1.jar",
@@ -2313,6 +2329,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/fabric-resource-loader-v0-1.3.1+4ea8954419.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "8db86bb10c87f97b4450aed6236ad7611ddbadb32e6e5fa00f47781bc99e1244",
+        ),
         "META-INF/jars/fabric-gametest-api-v1-2.0.5+29f188ce19.jar": (
             "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
             "d924ee221d887abd7728a3e48ed16e37a76b1217afad9e33bb049e84494c1506",
