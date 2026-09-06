@@ -1,0 +1,802 @@
+Classfile integrated_villages-1.3.3+1.21.1-neoforge.jar!/com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager.class
+  Last modified Jan 1, 1980; size 10794 bytes
+  SHA-256 checksum 02a4b9da07dd7ace3685038973255e3eb86db6703a133fb22b1390139cadb1b5
+  Compiled from "PoolAdditionMergerManager.java"
+public final class com.craisinlord.integrated_villages.pooladditions.PoolAdditionMergerManager extends net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener
+  minor version: 0
+  major version: 65
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #2                          // com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager
+  super_class: #4                         // net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener
+  interfaces: 0, fields: 2, methods: 11, attributes: 4
+Constant pool:
+    #1 = Utf8               com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager
+    #2 = Class              #1            // com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager
+    #3 = Utf8               net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener
+    #4 = Class              #3            // net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener
+    #5 = Utf8               PoolAdditionMergerManager.java
+    #6 = Utf8               com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool
+    #7 = Class              #6            // com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool
+    #8 = Utf8               com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool$ExpandedPoolEntry
+    #9 = Class              #8            // com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool$ExpandedPoolEntry
+   #10 = Utf8               net/minecraft/core/RegistryAccess$Frozen
+   #11 = Class              #10           // net/minecraft/core/RegistryAccess$Frozen
+   #12 = Utf8               net/minecraft/core/RegistryAccess
+   #13 = Class              #12           // net/minecraft/core/RegistryAccess
+   #14 = Utf8               Frozen
+   #15 = Utf8               net/minecraft/core/HolderLookup$Provider
+   #16 = Class              #15           // net/minecraft/core/HolderLookup$Provider
+   #17 = Utf8               net/minecraft/core/HolderLookup
+   #18 = Class              #17           // net/minecraft/core/HolderLookup
+   #19 = Utf8               Provider
+   #20 = Utf8               java/util/Map$Entry
+   #21 = Class              #20           // java/util/Map$Entry
+   #22 = Utf8               java/util/Map
+   #23 = Class              #22           // java/util/Map
+   #24 = Utf8               Entry
+   #25 = Utf8               AdditionalStructureTemplatePool
+   #26 = Utf8               ExpandedPoolEntry
+   #27 = Utf8               java/lang/invoke/MethodHandles$Lookup
+   #28 = Class              #27           // java/lang/invoke/MethodHandles$Lookup
+   #29 = Utf8               java/lang/invoke/MethodHandles
+   #30 = Class              #29           // java/lang/invoke/MethodHandles
+   #31 = Utf8               Lookup
+   #32 = Utf8               POOL_ADDITIONS_MERGER_MANAGER
+   #33 = Utf8               Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager;
+   #34 = Utf8               cachedMap
+   #35 = Utf8               Ljava/util/Map;
+   #36 = Utf8               Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+   #37 = Utf8               <init>
+   #38 = Utf8               ()V
+   #39 = Utf8               com/craisinlord/integrated_api/IntegratedAPI
+   #40 = Class              #39           // com/craisinlord/integrated_api/IntegratedAPI
+   #41 = Utf8               GSON
+   #42 = Utf8               Lcom/google/gson/Gson;
+   #43 = NameAndType        #41:#42       // GSON:Lcom/google/gson/Gson;
+   #44 = Fieldref           #40.#43       // com/craisinlord/integrated_api/IntegratedAPI.GSON:Lcom/google/gson/Gson;
+   #45 = Utf8               integrated_villages_pool_additions
+   #46 = String             #45           // integrated_villages_pool_additions
+   #47 = Utf8               (Lcom/google/gson/Gson;Ljava/lang/String;)V
+   #48 = NameAndType        #37:#47       // "<init>":(Lcom/google/gson/Gson;Ljava/lang/String;)V
+   #49 = Methodref          #4.#48        // net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener."<init>":(Lcom/google/gson/Gson;Ljava/lang/String;)V
+   #50 = Utf8               this
+   #51 = Utf8               apply
+   #52 = Utf8               (Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+   #53 = Utf8               (Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+   #54 = Utf8               loader
+   #55 = Utf8               manager
+   #56 = Utf8               profiler
+   #57 = NameAndType        #34:#35       // cachedMap:Ljava/util/Map;
+   #58 = Fieldref           #2.#57        // com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager.cachedMap:Ljava/util/Map;
+   #59 = Utf8               Lnet/minecraft/server/packs/resources/ResourceManager;
+   #60 = Utf8               Lnet/minecraft/util/profiling/ProfilerFiller;
+   #61 = Utf8               mergeAdditionPools
+   #62 = Utf8               (Lcom/craisinlord/integrated_api/events/lifecycle/ServerGoingToStartEvent;)V
+   #63 = Utf8               event
+   #64 = Utf8               com/craisinlord/integrated_api/events/lifecycle/ServerGoingToStartEvent
+   #65 = Class              #64           // com/craisinlord/integrated_api/events/lifecycle/ServerGoingToStartEvent
+   #66 = Utf8               getServer
+   #67 = Utf8               ()Lnet/minecraft/server/MinecraftServer;
+   #68 = NameAndType        #66:#67       // getServer:()Lnet/minecraft/server/MinecraftServer;
+   #69 = Methodref          #65.#68       // com/craisinlord/integrated_api/events/lifecycle/ServerGoingToStartEvent.getServer:()Lnet/minecraft/server/MinecraftServer;
+   #70 = Utf8               net/minecraft/server/MinecraftServer
+   #71 = Class              #70           // net/minecraft/server/MinecraftServer
+   #72 = Utf8               registryAccess
+   #73 = Utf8               ()Lnet/minecraft/core/RegistryAccess$Frozen;
+   #74 = NameAndType        #72:#73       // registryAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+   #75 = Methodref          #71.#74       // net/minecraft/server/MinecraftServer.registryAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+   #76 = Utf8               getResourceManager
+   #77 = Utf8               ()Lnet/minecraft/server/packs/resources/ResourceManager;
+   #78 = NameAndType        #76:#77       // getResourceManager:()Lnet/minecraft/server/packs/resources/ResourceManager;
+   #79 = Methodref          #71.#78       // net/minecraft/server/MinecraftServer.getResourceManager:()Lnet/minecraft/server/packs/resources/ResourceManager;
+   #80 = Utf8               parsePoolsAndBeginMerger
+   #81 = Utf8               (Ljava/util/Map;Lnet/minecraft/core/RegistryAccess$Frozen;Lnet/minecraft/server/packs/resources/ResourceManager;)V
+   #82 = NameAndType        #80:#81       // parsePoolsAndBeginMerger:(Ljava/util/Map;Lnet/minecraft/core/RegistryAccess$Frozen;Lnet/minecraft/server/packs/resources/ResourceManager;)V
+   #83 = Methodref          #2.#82        // com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager.parsePoolsAndBeginMerger:(Ljava/util/Map;Lnet/minecraft/core/RegistryAccess$Frozen;Lnet/minecraft/server/packs/resources/ResourceManager;)V
+   #84 = Utf8               Lcom/craisinlord/integrated_api/events/lifecycle/ServerGoingToStartEvent;
+   #85 = Utf8               (Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;Lnet/minecraft/core/RegistryAccess$Frozen;Lnet/minecraft/server/packs/resources/ResourceManager;)V
+   #86 = Utf8               poolAdditionJSON
+   #87 = Utf8               frozen
+   #88 = Utf8               java/lang/Exception
+   #89 = Class              #88           // java/lang/Exception
+   #90 = Utf8               net/minecraft/core/registries/Registries
+   #91 = Class              #90           // net/minecraft/core/registries/Registries
+   #92 = Utf8               TEMPLATE_POOL
+   #93 = Utf8               Lnet/minecraft/resources/ResourceKey;
+   #94 = NameAndType        #92:#93       // TEMPLATE_POOL:Lnet/minecraft/resources/ResourceKey;
+   #95 = Fieldref           #91.#94       // net/minecraft/core/registries/Registries.TEMPLATE_POOL:Lnet/minecraft/resources/ResourceKey;
+   #96 = Utf8               registryOrThrow
+   #97 = Utf8               (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+   #98 = NameAndType        #96:#97       // registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+   #99 = InterfaceMethodref #11.#98       // net/minecraft/core/RegistryAccess$Frozen.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+  #100 = Utf8               com/mojang/serialization/JsonOps
+  #101 = Class              #100          // com/mojang/serialization/JsonOps
+  #102 = Utf8               INSTANCE
+  #103 = Utf8               Lcom/mojang/serialization/JsonOps;
+  #104 = NameAndType        #102:#103     // INSTANCE:Lcom/mojang/serialization/JsonOps;
+  #105 = Fieldref           #101.#104     // com/mojang/serialization/JsonOps.INSTANCE:Lcom/mojang/serialization/JsonOps;
+  #106 = Utf8               net/minecraft/resources/RegistryOps
+  #107 = Class              #106          // net/minecraft/resources/RegistryOps
+  #108 = Utf8               create
+  #109 = Utf8               (Lcom/mojang/serialization/DynamicOps;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/resources/RegistryOps;
+  #110 = NameAndType        #108:#109     // create:(Lcom/mojang/serialization/DynamicOps;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/resources/RegistryOps;
+  #111 = Methodref          #107.#110     // net/minecraft/resources/RegistryOps.create:(Lcom/mojang/serialization/DynamicOps;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/resources/RegistryOps;
+  #112 = Utf8               entrySet
+  #113 = Utf8               ()Ljava/util/Set;
+  #114 = NameAndType        #112:#113     // entrySet:()Ljava/util/Set;
+  #115 = InterfaceMethodref #23.#114      // java/util/Map.entrySet:()Ljava/util/Set;
+  #116 = Utf8               java/util/Set
+  #117 = Class              #116          // java/util/Set
+  #118 = Utf8               iterator
+  #119 = Utf8               ()Ljava/util/Iterator;
+  #120 = NameAndType        #118:#119     // iterator:()Ljava/util/Iterator;
+  #121 = InterfaceMethodref #117.#120     // java/util/Set.iterator:()Ljava/util/Iterator;
+  #122 = Utf8               net/minecraft/core/Registry
+  #123 = Class              #122          // net/minecraft/core/Registry
+  #124 = Utf8               java/util/Iterator
+  #125 = Class              #124          // java/util/Iterator
+  #126 = Utf8               hasNext
+  #127 = Utf8               ()Z
+  #128 = NameAndType        #126:#127     // hasNext:()Z
+  #129 = InterfaceMethodref #125.#128     // java/util/Iterator.hasNext:()Z
+  #130 = Utf8               next
+  #131 = Utf8               ()Ljava/lang/Object;
+  #132 = NameAndType        #130:#131     // next:()Ljava/lang/Object;
+  #133 = InterfaceMethodref #125.#132     // java/util/Iterator.next:()Ljava/lang/Object;
+  #134 = Utf8               getValue
+  #135 = NameAndType        #134:#131     // getValue:()Ljava/lang/Object;
+  #136 = InterfaceMethodref #21.#135      // java/util/Map$Entry.getValue:()Ljava/lang/Object;
+  #137 = Utf8               com/google/gson/JsonElement
+  #138 = Class              #137          // com/google/gson/JsonElement
+  #139 = Utf8               getAsJsonObject
+  #140 = Utf8               ()Lcom/google/gson/JsonObject;
+  #141 = NameAndType        #139:#140     // getAsJsonObject:()Lcom/google/gson/JsonObject;
+  #142 = Methodref          #138.#141     // com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+  #143 = Utf8               target_pool
+  #144 = String             #143          // target_pool
+  #145 = Utf8               com/google/gson/JsonObject
+  #146 = Class              #145          // com/google/gson/JsonObject
+  #147 = Utf8               get
+  #148 = Utf8               (Ljava/lang/String;)Lcom/google/gson/JsonElement;
+  #149 = NameAndType        #147:#148     // get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+  #150 = Methodref          #146.#149     // com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+  #151 = Utf8               getAsString
+  #152 = Utf8               ()Ljava/lang/String;
+  #153 = NameAndType        #151:#152     // getAsString:()Ljava/lang/String;
+  #154 = Methodref          #138.#153     // com/google/gson/JsonElement.getAsString:()Ljava/lang/String;
+  #155 = Utf8               net/minecraft/resources/ResourceLocation
+  #156 = Class              #155          // net/minecraft/resources/ResourceLocation
+  #157 = Utf8               parse
+  #158 = Utf8               (Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #159 = NameAndType        #157:#158     // parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #160 = Methodref          #156.#159     // net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #161 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+  #162 = NameAndType        #147:#161     // get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+  #163 = InterfaceMethodref #123.#162     // net/minecraft/core/Registry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+  #164 = Utf8               DIRECT_CODEC
+  #165 = Utf8               Lcom/mojang/serialization/Codec;
+  #166 = NameAndType        #164:#165     // DIRECT_CODEC:Lcom/mojang/serialization/Codec;
+  #167 = Fieldref           #7.#166       // com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool.DIRECT_CODEC:Lcom/mojang/serialization/Codec;
+  #168 = Utf8               com/mojang/serialization/Codec
+  #169 = Class              #168          // com/mojang/serialization/Codec
+  #170 = Utf8               (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+  #171 = NameAndType        #157:#170     // parse:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+  #172 = InterfaceMethodref #169.#171     // com/mojang/serialization/Codec.parse:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+  #173 = Utf8               (Ljava/lang/Object;)V
+  #174 = MethodType         #173          //  (Ljava/lang/Object;)V
+  #175 = Utf8               lambda$parsePoolsAndBeginMerger$0
+  #176 = Utf8               (Ljava/util/Map$Entry;Ljava/lang/String;)V
+  #177 = NameAndType        #175:#176     // lambda$parsePoolsAndBeginMerger$0:(Ljava/util/Map$Entry;Ljava/lang/String;)V
+  #178 = Methodref          #2.#177       // com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager.lambda$parsePoolsAndBeginMerger$0:(Ljava/util/Map$Entry;Ljava/lang/String;)V
+  #179 = MethodHandle       6:#178        // REF_invokeStatic com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager.lambda$parsePoolsAndBeginMerger$0:(Ljava/util/Map$Entry;Ljava/lang/String;)V
+  #180 = Utf8               (Ljava/lang/String;)V
+  #181 = MethodType         #180          //  (Ljava/lang/String;)V
+  #182 = Utf8               java/lang/invoke/LambdaMetafactory
+  #183 = Class              #182          // java/lang/invoke/LambdaMetafactory
+  #184 = Utf8               metafactory
+  #185 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #186 = NameAndType        #184:#185     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #187 = Methodref          #183.#186     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #188 = MethodHandle       6:#187        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #189 = Utf8               accept
+  #190 = Utf8               (Ljava/util/Map$Entry;)Ljava/util/function/Consumer;
+  #191 = NameAndType        #189:#190     // accept:(Ljava/util/Map$Entry;)Ljava/util/function/Consumer;
+  #192 = InvokeDynamic      #0:#191       // #0:accept:(Ljava/util/Map$Entry;)Ljava/util/function/Consumer;
+  #193 = Utf8               com/mojang/serialization/DataResult
+  #194 = Class              #193          // com/mojang/serialization/DataResult
+  #195 = Utf8               resultOrPartial
+  #196 = Utf8               (Ljava/util/function/Consumer;)Ljava/util/Optional;
+  #197 = NameAndType        #195:#196     // resultOrPartial:(Ljava/util/function/Consumer;)Ljava/util/Optional;
+  #198 = InterfaceMethodref #194.#197     // com/mojang/serialization/DataResult.resultOrPartial:(Ljava/util/function/Consumer;)Ljava/util/Optional;
+  #199 = Utf8               lambda$parsePoolsAndBeginMerger$1
+  #200 = Utf8               (Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/ResourceManager;Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;)V
+  #201 = NameAndType        #199:#200     // lambda$parsePoolsAndBeginMerger$1:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/ResourceManager;Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;)V
+  #202 = Methodref          #2.#201       // com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager.lambda$parsePoolsAndBeginMerger$1:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/ResourceManager;Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;)V
+  #203 = MethodHandle       6:#202        // REF_invokeStatic com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager.lambda$parsePoolsAndBeginMerger$1:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/ResourceManager;Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;)V
+  #204 = Utf8               (Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;)V
+  #205 = MethodType         #204          //  (Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;)V
+  #206 = Utf8               (Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/ResourceManager;)Ljava/util/function/Consumer;
+  #207 = NameAndType        #189:#206     // accept:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/ResourceManager;)Ljava/util/function/Consumer;
+  #208 = InvokeDynamic      #1:#207       // #1:accept:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/ResourceManager;)Ljava/util/function/Consumer;
+  #209 = Utf8               java/util/Optional
+  #210 = Class              #209          // java/util/Optional
+  #211 = Utf8               ifPresent
+  #212 = Utf8               (Ljava/util/function/Consumer;)V
+  #213 = NameAndType        #211:#212     // ifPresent:(Ljava/util/function/Consumer;)V
+  #214 = Methodref          #210.#213     // java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+  #215 = Utf8               com/craisinlord/integrated_villages/IntegratedVillages
+  #216 = Class              #215          // com/craisinlord/integrated_villages/IntegratedVillages
+  #217 = Utf8               LOGGER
+  #218 = Utf8               Lorg/apache/logging/log4j/Logger;
+  #219 = NameAndType        #217:#218     // LOGGER:Lorg/apache/logging/log4j/Logger;
+  #220 = Fieldref           #216.#219     // com/craisinlord/integrated_villages/IntegratedVillages.LOGGER:Lorg/apache/logging/log4j/Logger;
+  #221 = Utf8               \nIntegrated Villages: Pool Addition json failed to be parsed.\nThis is usually due to using a mod compat datapack without the other mod being on.\nFile failed to be resolved: %s\nTarget pool: %s\nRegistry being used: %s\nError message is: %s
+  #222 = String             #221          // \nIntegrated Villages: Pool Addition json failed to be parsed.\nThis is usually due to using a mod compat datapack without the other mod being on.\nFile failed to be resolved: %s\nTarget pool: %s\nRegistry being used: %s\nError message is: %s
+  #223 = Utf8               java/lang/Object
+  #224 = Class              #223          // java/lang/Object
+  #225 = Utf8               getKey
+  #226 = NameAndType        #225:#131     // getKey:()Ljava/lang/Object;
+  #227 = InterfaceMethodref #21.#226      // java/util/Map$Entry.getKey:()Ljava/lang/Object;
+  #228 = Utf8               getMessage
+  #229 = NameAndType        #228:#152     // getMessage:()Ljava/lang/String;
+  #230 = Methodref          #89.#229      // java/lang/Exception.getMessage:()Ljava/lang/String;
+  #231 = Utf8               java/lang/String
+  #232 = Class              #231          // java/lang/String
+  #233 = Utf8               formatted
+  #234 = Utf8               ([Ljava/lang/Object;)Ljava/lang/String;
+  #235 = NameAndType        #233:#234     // formatted:([Ljava/lang/Object;)Ljava/lang/String;
+  #236 = Methodref          #232.#235     // java/lang/String.formatted:([Ljava/lang/Object;)Ljava/lang/String;
+  #237 = Utf8               indent
+  #238 = Utf8               (I)Ljava/lang/String;
+  #239 = NameAndType        #237:#238     // indent:(I)Ljava/lang/String;
+  #240 = Methodref          #232.#239     // java/lang/String.indent:(I)Ljava/lang/String;
+  #241 = Utf8               org/apache/logging/log4j/Logger
+  #242 = Class              #241          // org/apache/logging/log4j/Logger
+  #243 = Utf8               error
+  #244 = NameAndType        #243:#180     // error:(Ljava/lang/String;)V
+  #245 = InterfaceMethodref #242.#244     // org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+  #246 = Utf8               e
+  #247 = Utf8               Ljava/lang/Exception;
+  #248 = Utf8               targetPool
+  #249 = Utf8               Lnet/minecraft/resources/ResourceLocation;
+  #250 = Utf8               entry
+  #251 = Utf8               Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+  #252 = Utf8               Ljava/util/Map$Entry;
+  #253 = Utf8               Lnet/minecraft/core/RegistryAccess$Frozen;
+  #254 = Utf8               poolRegistry
+  #255 = Utf8               Lnet/minecraft/core/Registry<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;
+  #256 = Utf8               Lnet/minecraft/core/Registry;
+  #257 = Utf8               customRegistryOps
+  #258 = Utf8               Lnet/minecraft/resources/RegistryOps<Lcom/google/gson/JsonElement;>;
+  #259 = Utf8               Lnet/minecraft/resources/RegistryOps;
+  #260 = Utf8               mergeIntoExistingPool
+  #261 = Utf8               (Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;Lnet/minecraft/server/packs/resources/ResourceManager;)V
+  #262 = Utf8               feedingPool
+  #263 = Utf8               gluttonyPool
+  #264 = Utf8               it/unimi/dsi/fastutil/objects/ObjectArrayList
+  #265 = Class              #264          // it/unimi/dsi/fastutil/objects/ObjectArrayList
+  #266 = Utf8               com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor
+  #267 = Class              #266          // com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor
+  #268 = Utf8               integratedapi_getTemplates
+  #269 = Utf8               ()Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+  #270 = NameAndType        #268:#269     // integratedapi_getTemplates:()Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+  #271 = InterfaceMethodref #267.#270     // com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor.integratedapi_getTemplates:()Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+  #272 = Utf8               (Lit/unimi/dsi/fastutil/objects/ObjectList;)V
+  #273 = NameAndType        #37:#272      // "<init>":(Lit/unimi/dsi/fastutil/objects/ObjectList;)V
+  #274 = Methodref          #265.#273     // it/unimi/dsi/fastutil/objects/ObjectArrayList."<init>":(Lit/unimi/dsi/fastutil/objects/ObjectList;)V
+  #275 = Utf8               java/util/ArrayList
+  #276 = Class              #275          // java/util/ArrayList
+  #277 = Utf8               integratedapi_getRawTemplates
+  #278 = Utf8               ()Ljava/util/List;
+  #279 = NameAndType        #277:#278     // integratedapi_getRawTemplates:()Ljava/util/List;
+  #280 = InterfaceMethodref #267.#279     // com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor.integratedapi_getRawTemplates:()Ljava/util/List;
+  #281 = Utf8               (Ljava/util/Collection;)V
+  #282 = NameAndType        #37:#281      // "<init>":(Ljava/util/Collection;)V
+  #283 = Methodref          #276.#282     // java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+  #284 = Utf8               addAll
+  #285 = Utf8               (Lit/unimi/dsi/fastutil/objects/ObjectList;)Z
+  #286 = NameAndType        #284:#285     // addAll:(Lit/unimi/dsi/fastutil/objects/ObjectList;)Z
+  #287 = Methodref          #265.#286     // it/unimi/dsi/fastutil/objects/ObjectArrayList.addAll:(Lit/unimi/dsi/fastutil/objects/ObjectList;)Z
+  #288 = Utf8               java/util/List
+  #289 = Class              #288          // java/util/List
+  #290 = Utf8               (Ljava/util/Collection;)Z
+  #291 = NameAndType        #284:#290     // addAll:(Ljava/util/Collection;)Z
+  #292 = InterfaceMethodref #289.#291     // java/util/List.addAll:(Ljava/util/Collection;)Z
+  #293 = Utf8               integratedapi_setTemplates
+  #294 = Utf8               (Lit/unimi/dsi/fastutil/objects/ObjectArrayList;)V
+  #295 = NameAndType        #293:#294     // integratedapi_setTemplates:(Lit/unimi/dsi/fastutil/objects/ObjectArrayList;)V
+  #296 = InterfaceMethodref #267.#295     // com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor.integratedapi_setTemplates:(Lit/unimi/dsi/fastutil/objects/ObjectArrayList;)V
+  #297 = Utf8               integratedapi_setRawTemplates
+  #298 = Utf8               (Ljava/util/List;)V
+  #299 = NameAndType        #297:#298     // integratedapi_setRawTemplates:(Ljava/util/List;)V
+  #300 = InterfaceMethodref #267.#299     // com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor.integratedapi_setRawTemplates:(Ljava/util/List;)V
+  #301 = Utf8               Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;
+  #302 = Utf8               Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;
+  #303 = Utf8               elements
+  #304 = Utf8               Lit/unimi/dsi/fastutil/objects/ObjectArrayList<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+  #305 = Utf8               Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+  #306 = Utf8               elementCounts
+  #307 = Utf8               Ljava/util/List<Lcom/mojang/datafixers/util/Pair<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;Ljava/lang/Integer;>;>;
+  #308 = Utf8               Ljava/util/List;
+  #309 = Utf8               logBadData
+  #310 = Utf8               (Lnet/minecraft/resources/ResourceLocation;Ljava/lang/String;)V
+  #311 = Utf8               poolPath
+  #312 = Utf8               messageString
+  #313 = Utf8               (Integrated Villages POOL MERGER) Failed to parse {} additions file. Error is: {}
+  #314 = String             #313          // (Integrated Villages POOL MERGER) Failed to parse {} additions file. Error is: {}
+  #315 = Utf8               (Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+  #316 = NameAndType        #243:#315     // error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+  #317 = InterfaceMethodref #242.#316     // org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+  #318 = Utf8               Ljava/lang/String;
+  #319 = Utf8               (Ljava/lang/Object;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #320 = NameAndType        #51:#52       // apply:(Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #321 = Methodref          #2.#320       // com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager.apply:(Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+  #322 = Utf8               prepare
+  #323 = Utf8               (Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)Ljava/lang/Object;
+  #324 = Utf8               (Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)Ljava/util/Map;
+  #325 = NameAndType        #322:#324     // prepare:(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)Ljava/util/Map;
+  #326 = Methodref          #4.#325       // net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener.prepare:(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)Ljava/util/Map;
+  #327 = Utf8               validPool
+  #328 = Utf8               net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool
+  #329 = Class              #328          // net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool
+  #330 = NameAndType        #260:#261     // mergeIntoExistingPool:(Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;Lnet/minecraft/server/packs/resources/ResourceManager;)V
+  #331 = Methodref          #2.#330       // com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager.mergeIntoExistingPool:(Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;Lnet/minecraft/server/packs/resources/ResourceManager;)V
+  #332 = NameAndType        #309:#310     // logBadData:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/String;)V
+  #333 = Methodref          #2.#332       // com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager.logBadData:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/String;)V
+  #334 = Utf8               <clinit>
+  #335 = NameAndType        #37:#38       // "<init>":()V
+  #336 = Methodref          #2.#335       // com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager."<init>":()V
+  #337 = NameAndType        #32:#33       // POOL_ADDITIONS_MERGER_MANAGER:Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager;
+  #338 = Fieldref           #2.#337       // com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager.POOL_ADDITIONS_MERGER_MANAGER:Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager;
+  #339 = Utf8               Signature
+  #340 = Utf8               Code
+  #341 = Utf8               LineNumberTable
+  #342 = Utf8               LocalVariableTable
+  #343 = Utf8               LocalVariableTypeTable
+  #344 = Utf8               MethodParameters
+  #345 = Utf8               StackMapTable
+  #346 = Utf8               InnerClasses
+  #347 = Utf8               SourceFile
+  #348 = Utf8               BootstrapMethods
+  #349 = Utf8               NestMembers
+{
+  public static final com.craisinlord.integrated_villages.pooladditions.PoolAdditionMergerManager POOL_ADDITIONS_MERGER_MANAGER;
+    descriptor: Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  private static java.util.Map<net.minecraft.resources.ResourceLocation, com.google.gson.JsonElement> cachedMap;
+    descriptor: Ljava/util/Map;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Signature: #36                          // Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+
+  public com.craisinlord.integrated_villages.pooladditions.PoolAdditionMergerManager();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: getstatic     #44                 // Field com/craisinlord/integrated_api/IntegratedAPI.GSON:Lcom/google/gson/Gson;
+         4: ldc           #46                 // String integrated_villages_pool_additions
+         6: invokespecial #49                 // Method net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener."<init>":(Lcom/google/gson/Gson;Ljava/lang/String;)V
+         9: return
+      LineNumberTable:
+        line 42: 0
+        line 43: 9
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager;
+
+  protected void apply(java.util.Map<net.minecraft.resources.ResourceLocation, com.google.gson.JsonElement>, net.minecraft.server.packs.resources.ResourceManager, net.minecraft.util.profiling.ProfilerFiller);
+    descriptor: (Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=1, locals=4, args_size=4
+         0: aload_1
+         1: putstatic     #58                 // Field cachedMap:Ljava/util/Map;
+         4: return
+      LineNumberTable:
+        line 47: 0
+        line 48: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager;
+            0       5     1 loader   Ljava/util/Map;
+            0       5     2 manager   Lnet/minecraft/server/packs/resources/ResourceManager;
+            0       5     3 profiler   Lnet/minecraft/util/profiling/ProfilerFiller;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       5     1 loader   Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+    Signature: #53                          // (Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+    MethodParameters:
+      Name                           Flags
+      loader
+      manager
+      profiler
+
+  public static void mergeAdditionPools(com.craisinlord.integrated_api.events.lifecycle.ServerGoingToStartEvent);
+    descriptor: (Lcom/craisinlord/integrated_api/events/lifecycle/ServerGoingToStartEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: getstatic     #58                 // Field cachedMap:Ljava/util/Map;
+         3: ifnull        30
+         6: getstatic     #58                 // Field cachedMap:Ljava/util/Map;
+         9: aload_0
+        10: invokevirtual #69                 // Method com/craisinlord/integrated_api/events/lifecycle/ServerGoingToStartEvent.getServer:()Lnet/minecraft/server/MinecraftServer;
+        13: invokevirtual #75                 // Method net/minecraft/server/MinecraftServer.registryAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+        16: aload_0
+        17: invokevirtual #69                 // Method com/craisinlord/integrated_api/events/lifecycle/ServerGoingToStartEvent.getServer:()Lnet/minecraft/server/MinecraftServer;
+        20: invokevirtual #79                 // Method net/minecraft/server/MinecraftServer.getResourceManager:()Lnet/minecraft/server/packs/resources/ResourceManager;
+        23: invokestatic  #83                 // Method parsePoolsAndBeginMerger:(Ljava/util/Map;Lnet/minecraft/core/RegistryAccess$Frozen;Lnet/minecraft/server/packs/resources/ResourceManager;)V
+        26: aconst_null
+        27: putstatic     #58                 // Field cachedMap:Ljava/util/Map;
+        30: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 30 /* same */
+      LineNumberTable:
+        line 54: 0
+        line 55: 6
+        line 56: 26
+        line 58: 30
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      31     0 event   Lcom/craisinlord/integrated_api/events/lifecycle/ServerGoingToStartEvent;
+    MethodParameters:
+      Name                           Flags
+      event
+
+  private static void parsePoolsAndBeginMerger(java.util.Map<net.minecraft.resources.ResourceLocation, com.google.gson.JsonElement>, net.minecraft.core.RegistryAccess$Frozen, net.minecraft.server.packs.resources.ResourceManager);
+    descriptor: (Ljava/util/Map;Lnet/minecraft/core/RegistryAccess$Frozen;Lnet/minecraft/server/packs/resources/ResourceManager;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=6, locals=9, args_size=3
+         0: aload_1
+         1: getstatic     #95                 // Field net/minecraft/core/registries/Registries.TEMPLATE_POOL:Lnet/minecraft/resources/ResourceKey;
+         4: invokeinterface #99,  2           // InterfaceMethod net/minecraft/core/RegistryAccess$Frozen.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+         9: astore_3
+        10: getstatic     #105                // Field com/mojang/serialization/JsonOps.INSTANCE:Lcom/mojang/serialization/JsonOps;
+        13: aload_1
+        14: invokestatic  #111                // Method net/minecraft/resources/RegistryOps.create:(Lcom/mojang/serialization/DynamicOps;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/resources/RegistryOps;
+        17: astore        4
+        19: aload_0
+        20: invokeinterface #115,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+        25: invokeinterface #121,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        30: astore        5
+        32: aload         5
+        34: invokeinterface #129,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        39: ifeq          194
+        42: aload         5
+        44: invokeinterface #133,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        49: checkcast     #21                 // class java/util/Map$Entry
+        52: astore        6
+        54: aload         6
+        56: invokeinterface #136,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+        61: checkcast     #138                // class com/google/gson/JsonElement
+        64: invokevirtual #142                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+        67: ldc           #144                // String target_pool
+        69: invokevirtual #150                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+        72: invokevirtual #154                // Method com/google/gson/JsonElement.getAsString:()Ljava/lang/String;
+        75: invokestatic  #160                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+        78: astore        7
+        80: aload_3
+        81: aload         7
+        83: invokeinterface #163,  2          // InterfaceMethod net/minecraft/core/Registry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+        88: ifnonnull     94
+        91: goto          32
+        94: getstatic     #167                // Field com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool.DIRECT_CODEC:Lcom/mojang/serialization/Codec;
+        97: aload         4
+        99: aload         6
+       101: invokeinterface #136,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       106: checkcast     #138                // class com/google/gson/JsonElement
+       109: invokeinterface #172,  3          // InterfaceMethod com/mojang/serialization/Codec.parse:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+       114: aload         6
+       116: invokedynamic #192,  0            // InvokeDynamic #0:accept:(Ljava/util/Map$Entry;)Ljava/util/function/Consumer;
+       121: invokeinterface #198,  2          // InterfaceMethod com/mojang/serialization/DataResult.resultOrPartial:(Ljava/util/function/Consumer;)Ljava/util/Optional;
+       126: aload_3
+       127: aload         7
+       129: aload_2
+       130: invokedynamic #208,  0            // InvokeDynamic #1:accept:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/ResourceManager;)Ljava/util/function/Consumer;
+       135: invokevirtual #214                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+       138: goto          191
+       141: astore        8
+       143: getstatic     #220                // Field com/craisinlord/integrated_villages/IntegratedVillages.LOGGER:Lorg/apache/logging/log4j/Logger;
+       146: ldc           #222                // String \nIntegrated Villages: Pool Addition json failed to be parsed.\nThis is usually due to using a mod compat datapack without the other mod being on.\nFile failed to be resolved: %s\nTarget pool: %s\nRegistry being used: %s\nError message is: %s
+       148: iconst_4
+       149: anewarray     #224                // class java/lang/Object
+       152: dup
+       153: iconst_0
+       154: aload         6
+       156: invokeinterface #227,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       161: aastore
+       162: dup
+       163: iconst_1
+       164: aload         7
+       166: aastore
+       167: dup
+       168: iconst_2
+       169: aload_3
+       170: aastore
+       171: dup
+       172: iconst_3
+       173: aload         8
+       175: invokevirtual #230                // Method java/lang/Exception.getMessage:()Ljava/lang/String;
+       178: aastore
+       179: invokevirtual #236                // Method java/lang/String.formatted:([Ljava/lang/Object;)Ljava/lang/String;
+       182: iconst_1
+       183: invokevirtual #240                // Method java/lang/String.indent:(I)Ljava/lang/String;
+       186: invokeinterface #245,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+       191: goto          32
+       194: return
+      Exception table:
+         from    to  target type
+            94   138   141   Class java/lang/Exception
+      StackMapTable: number_of_entries = 5
+        frame_type = 254 /* append */
+          offset_delta = 32
+          locals = [ class net/minecraft/core/Registry, class net/minecraft/resources/RegistryOps, class java/util/Iterator ]
+        frame_type = 253 /* append */
+          offset_delta = 61
+          locals = [ class java/util/Map$Entry, class net/minecraft/resources/ResourceLocation ]
+        frame_type = 110 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Exception ]
+        frame_type = 49 /* same */
+        frame_type = 249 /* chop */
+          offset_delta = 2
+      LineNumberTable:
+        line 65: 0
+        line 66: 10
+        line 69: 19
+        line 70: 54
+        line 71: 80
+        line 75: 94
+        line 76: 121
+        line 77: 135
+        line 88: 138
+        line 79: 141
+        line 80: 143
+        line 87: 156
+        line 80: 186
+        line 89: 191
+        line 90: 194
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          143      48     8     e   Ljava/lang/Exception;
+           80     111     7 targetPool   Lnet/minecraft/resources/ResourceLocation;
+           54     137     6 entry   Ljava/util/Map$Entry;
+            0     195     0 poolAdditionJSON   Ljava/util/Map;
+            0     195     1 frozen   Lnet/minecraft/core/RegistryAccess$Frozen;
+            0     195     2 manager   Lnet/minecraft/server/packs/resources/ResourceManager;
+           10     185     3 poolRegistry   Lnet/minecraft/core/Registry;
+           19     176     4 customRegistryOps   Lnet/minecraft/resources/RegistryOps;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           54     137     6 entry   Ljava/util/Map$Entry<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+            0     195     0 poolAdditionJSON   Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;
+           10     185     3 poolRegistry   Lnet/minecraft/core/Registry<Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;>;
+           19     176     4 customRegistryOps   Lnet/minecraft/resources/RegistryOps<Lcom/google/gson/JsonElement;>;
+    Signature: #85                          // (Ljava/util/Map<Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonElement;>;Lnet/minecraft/core/RegistryAccess$Frozen;Lnet/minecraft/server/packs/resources/ResourceManager;)V
+    MethodParameters:
+      Name                           Flags
+      poolAdditionJSON
+      frozen
+      manager
+
+  private static void mergeIntoExistingPool(com.craisinlord.integrated_villages.pooladditions.PoolAdditionMergerManager$AdditionalStructureTemplatePool, net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool, net.minecraft.server.packs.resources.ResourceManager);
+    descriptor: (Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;Lnet/minecraft/server/packs/resources/ResourceManager;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=3, locals=5, args_size=3
+         0: new           #265                // class it/unimi/dsi/fastutil/objects/ObjectArrayList
+         3: dup
+         4: aload_1
+         5: checkcast     #267                // class com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor
+         8: invokeinterface #271,  1          // InterfaceMethod com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor.integratedapi_getTemplates:()Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+        13: invokespecial #274                // Method it/unimi/dsi/fastutil/objects/ObjectArrayList."<init>":(Lit/unimi/dsi/fastutil/objects/ObjectList;)V
+        16: astore_3
+        17: new           #276                // class java/util/ArrayList
+        20: dup
+        21: aload_1
+        22: checkcast     #267                // class com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor
+        25: invokeinterface #280,  1          // InterfaceMethod com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor.integratedapi_getRawTemplates:()Ljava/util/List;
+        30: invokespecial #283                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+        33: astore        4
+        35: aload_3
+        36: aload_0
+        37: checkcast     #267                // class com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor
+        40: invokeinterface #271,  1          // InterfaceMethod com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor.integratedapi_getTemplates:()Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+        45: invokevirtual #287                // Method it/unimi/dsi/fastutil/objects/ObjectArrayList.addAll:(Lit/unimi/dsi/fastutil/objects/ObjectList;)Z
+        48: pop
+        49: aload         4
+        51: aload_0
+        52: checkcast     #267                // class com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor
+        55: invokeinterface #280,  1          // InterfaceMethod com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor.integratedapi_getRawTemplates:()Ljava/util/List;
+        60: invokeinterface #292,  2          // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+        65: pop
+        66: aload_1
+        67: checkcast     #267                // class com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor
+        70: aload_3
+        71: invokeinterface #296,  2          // InterfaceMethod com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor.integratedapi_setTemplates:(Lit/unimi/dsi/fastutil/objects/ObjectArrayList;)V
+        76: aload_1
+        77: checkcast     #267                // class com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor
+        80: aload         4
+        82: invokeinterface #300,  2          // InterfaceMethod com/craisinlord/integrated_api/mixins/structures/StructurePoolAccessor.integratedapi_setRawTemplates:(Ljava/util/List;)V
+        87: return
+      LineNumberTable:
+        line 97: 0
+        line 98: 17
+        line 100: 35
+        line 101: 49
+        line 103: 66
+        line 104: 76
+        line 105: 87
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      88     0 feedingPool   Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;
+            0      88     1 gluttonyPool   Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;
+            0      88     2 manager   Lnet/minecraft/server/packs/resources/ResourceManager;
+           17      71     3 elements   Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+           35      53     4 elementCounts   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           17      71     3 elements   Lit/unimi/dsi/fastutil/objects/ObjectArrayList<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;>;
+           35      53     4 elementCounts   Ljava/util/List<Lcom/mojang/datafixers/util/Pair<Lnet/minecraft/world/level/levelgen/structure/pools/StructurePoolElement;Ljava/lang/Integer;>;>;
+    MethodParameters:
+      Name                           Flags
+      feedingPool
+      gluttonyPool
+      manager
+
+  private static void logBadData(net.minecraft.resources.ResourceLocation, java.lang.String);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;Ljava/lang/String;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=4, locals=2, args_size=2
+         0: getstatic     #220                // Field com/craisinlord/integrated_villages/IntegratedVillages.LOGGER:Lorg/apache/logging/log4j/Logger;
+         3: ldc_w         #314                // String (Integrated Villages POOL MERGER) Failed to parse {} additions file. Error is: {}
+         6: aload_0
+         7: aload_1
+         8: invokeinterface #317,  4          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+        13: return
+      LineNumberTable:
+        line 111: 0
+        line 112: 13
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0 poolPath   Lnet/minecraft/resources/ResourceLocation;
+            0      14     1 messageString   Ljava/lang/String;
+    MethodParameters:
+      Name                           Flags
+      poolPath
+      messageString
+
+  protected void apply(java.lang.Object, net.minecraft.server.packs.resources.ResourceManager, net.minecraft.util.profiling.ProfilerFiller);
+    descriptor: (Ljava/lang/Object;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+    flags: (0x1044) ACC_PROTECTED, ACC_BRIDGE, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=4, args_size=4
+         0: aload_0
+         1: aload_1
+         2: checkcast     #23                 // class java/util/Map
+         5: aload_2
+         6: aload_3
+         7: invokevirtual #321                // Method apply:(Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V
+        10: return
+      LineNumberTable:
+        line 34: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager;
+    MethodParameters:
+      Name                           Flags
+      <no name>                      synthetic
+      <no name>                      synthetic
+      <no name>                      synthetic
+
+  protected java.lang.Object prepare(net.minecraft.server.packs.resources.ResourceManager, net.minecraft.util.profiling.ProfilerFiller);
+    descriptor: (Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)Ljava/lang/Object;
+    flags: (0x1044) ACC_PROTECTED, ACC_BRIDGE, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokespecial #326                // Method net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener.prepare:(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)Ljava/util/Map;
+         6: areturn
+      LineNumberTable:
+        line 34: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       7     0  this   Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager;
+    MethodParameters:
+      Name                           Flags
+      <no name>                      synthetic
+      <no name>                      synthetic
+
+  private static void lambda$parsePoolsAndBeginMerger$1(net.minecraft.core.Registry, net.minecraft.resources.ResourceLocation, net.minecraft.server.packs.resources.ResourceManager, com.craisinlord.integrated_villages.pooladditions.PoolAdditionMergerManager$AdditionalStructureTemplatePool);
+    descriptor: (Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/ResourceManager;Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=4, args_size=4
+         0: aload_3
+         1: aload_0
+         2: aload_1
+         3: invokeinterface #163,  2          // InterfaceMethod net/minecraft/core/Registry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+         8: checkcast     #329                // class net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool
+        11: aload_2
+        12: invokestatic  #331                // Method mergeIntoExistingPool:(Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;Lnet/minecraft/server/packs/resources/ResourceManager;)V
+        15: return
+      LineNumberTable:
+        line 77: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0 poolRegistry   Lnet/minecraft/core/Registry;
+            0      16     1 targetPool   Lnet/minecraft/resources/ResourceLocation;
+            0      16     2 manager   Lnet/minecraft/server/packs/resources/ResourceManager;
+            0      16     3 validPool   Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;
+    MethodParameters:
+      Name                           Flags
+      poolRegistry
+      targetPool
+      manager
+      validPool
+
+  private static void lambda$parsePoolsAndBeginMerger$0(java.util.Map$Entry, java.lang.String);
+    descriptor: (Ljava/util/Map$Entry;Ljava/lang/String;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: invokeinterface #227,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+         6: checkcast     #156                // class net/minecraft/resources/ResourceLocation
+         9: aload_1
+        10: invokestatic  #333                // Method logBadData:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/String;)V
+        13: return
+      LineNumberTable:
+        line 76: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0 entry   Ljava/util/Map$Entry;
+            0      14     1 messageString   Ljava/lang/String;
+    MethodParameters:
+      Name                           Flags
+      entry
+      messageString
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: new           #2                  // class com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager
+         3: dup
+         4: invokespecial #336                // Method "<init>":()V
+         7: putstatic     #338                // Field POOL_ADDITIONS_MERGER_MANAGER:Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager;
+        10: aconst_null
+        11: putstatic     #58                 // Field cachedMap:Ljava/util/Map;
+        14: return
+      LineNumberTable:
+        line 36: 0
+        line 37: 10
+}
+InnerClasses:
+  public static #14= #11 of #13;          // Frozen=class net/minecraft/core/RegistryAccess$Frozen of class net/minecraft/core/RegistryAccess
+  public static #19= #16 of #18;          // Provider=class net/minecraft/core/HolderLookup$Provider of class net/minecraft/core/HolderLookup
+  public static #24= #21 of #23;          // Entry=class java/util/Map$Entry of class java/util/Map
+  private static #25= #7 of #2;           // AdditionalStructureTemplatePool=class com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool of class com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager
+  public static final #26= #9 of #7;      // ExpandedPoolEntry=class com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool$ExpandedPoolEntry of class com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool
+  public static final #31= #28 of #30;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+SourceFile: "PoolAdditionMergerManager.java"
+BootstrapMethods:
+  0: #188 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #174 (Ljava/lang/Object;)V
+      #179 REF_invokeStatic com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager.lambda$parsePoolsAndBeginMerger$0:(Ljava/util/Map$Entry;Ljava/lang/String;)V
+      #181 (Ljava/lang/String;)V
+  1: #188 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #174 (Ljava/lang/Object;)V
+      #203 REF_invokeStatic com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager.lambda$parsePoolsAndBeginMerger$1:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/ResourceManager;Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;)V
+      #205 (Lcom/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool;)V
+NestMembers:
+  com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool
+  com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool$ExpandedPoolEntry
