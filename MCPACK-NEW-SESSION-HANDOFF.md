@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Farmer's Delight membership is RESOLVED in the provider-scope disposition.
+Source 555d912, common setup 15cb251 and server packet 6678ec9 account for
+five existing-village components, crop processor changes, vegetation and
+non-generation entries. Three focused cases pass (0.15s); scoped Ruff and
+Basedpyright pass. Census: 81 resolved, 55 open. Reuse this closure rather than
+reopening food/item mechanics. Continue the dependent food add-ons and remaining
+packaged providers: ten packaged-generation rows, 24 code-only and 21 unmatched
+rows remain. Canonical membership/grouping still precedes detailed attributes.
+
 Creeper Overhaul provider membership is RESOLVED. Source e8d3713 and login
 delegate d21ca8f establish mob-spawn/loot/cosmetic roles without an independent
 family. All 317 parent files, seventeen spawn modifiers and the nested
