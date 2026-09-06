@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+AdoraBuild vessels and facilities require comparison of their complete seventeen
+templates (watercraft, End ship, frozen shelters, libraries, mines and prisons).
+Use the existing renderer to distinguish design variants; no new measurement
+system is needed. Canonical-note backlog remains 79 until decisions are verified.
+
 Inventory matches 622762bf and reproduces exactly. Canonical-note backlog: 79
 (IDAS 59, AdoraBuild 20). Coverage groups: 406. Next: remaining AdoraBuild building
 and vessel comparisons. Required attributes and 33 nonregistry contributions remain.
