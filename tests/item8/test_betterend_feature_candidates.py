@@ -16,6 +16,50 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
+def test_betterend_packaged_roots_and_remaining_consumers() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    roots = {
+        "end_bridge", "end_lake", "end_lake_normal", "end_lake_rare", "end_village",
+        "eternal_portal", "giant_ice_star", "giant_mossy_glowshroom", "megalake",
+        "megalake_small", "mountain", "painted_mountain", "small_island", "sulphuric_cave",
+    }
+    directory = Path("evidence/item-8/sources/betterend-remaining-root-consumers")
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "eb0d8ea37b2766dc0081c0e84035d9c37168758023bb33400d3028ef73363dbd"
+    )
+    with ZipFile(source.path) as archive:
+        rows = cast("list[dict[str, str]]", json.loads(raw))
+        assert len(rows) == 18
+        for row in rows:
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+            assert hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest() == (
+                row["disassembly_sha256"]
+            )
+        prefix = "data/betterend/worldgen/structure/"
+        assert {n.filename for n in archive.infolist()
+                if n.filename.startswith(prefix) and not n.is_dir()} == {
+            prefix + name + ".json" for name in roots
+        }
+        for name in roots:
+            definition = cast("dict[str, JsonValue]", json.loads(
+                archive.read(prefix + name + ".json")))
+            assert definition["type"] == (
+                "minecraft:jigsaw" if name == "end_village" else "betterend:" + name
+            )
+        village_feature = cast("dict[str, JsonValue]", json.loads(archive.read(
+            "data/betterend/worldgen/placed_feature/village_chorus.json")))
+        assert village_feature["feature"] == "minecraft:chorus_plant"
+    live = read_registry(Path(
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"))
+    assert {name for name in live if name.startswith("betterend:")} == {
+        "betterend:" + name for name in roots
+    }
+
+
 def test_betterend_building_lists_partition_exact_template_candidates() -> None:
     source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
     assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256

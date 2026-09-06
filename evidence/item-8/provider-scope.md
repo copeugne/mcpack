@@ -1666,3 +1666,52 @@ open binding question for these branches. The 128-template accounting remains
 closed. Continue remaining generation entries, shared modifiers and consumers;
 do not reopen this configuration trace or add a new runtime measurement.
 Whole-provider counts remain 53 resolved and 83 open.
+
+### BetterEnd remaining custom roots and cave consumers
+
+Source 5428e8f preserves eighteen remaining root, cave-consumer and integration
+classes, reproduced exactly with selector 95997cf. Manifest SHA-256:
+eb0d8ea37b2766dc0081c0e84035d9c37168758023bb33400d3028ef73363dbd.
+The README in sources/betterend-remaining-root-consumers records the exact command
+and interpretation boundaries. Common entry capture 4307aa7 separately preserves
+biome, portal, command, integration-interface and loot entry bodies.
+
+The complete packaged BetterEnd root list now matches the live registry exactly:
+end_bridge, end_lake, end_lake_normal, end_lake_rare, end_village, eternal_portal,
+giant_ice_star, giant_mossy_glowshroom, megalake, megalake_small, mountain,
+painted_mountain, small_island and sulphuric_cave. This is fourteen roots, not
+fourteen accepted families. Existing lake/mountain, village and portal evidence
+is reused, with the remaining five custom roots bound to the new capture.
+
+| Root | Candidate disposition |
+| --- | --- |
+| end_bridge | EndBridgeStructure selects anchors and creates EndBridgePiece, which writes an end-stone-brick deck and walls. One bridge-design candidate; anchors, materials and span variations are not separate families. |
+| sulphuric_cave | Cave terrain with water, sulphuric rock, vents, brimstone, crystals and tube worms. Reconcile with the existing formation inventory; do not count pieces as families. |
+| giant_ice_star | Snow/emerald-ice SDF formation; retain its named terrain candidate disposition. |
+| giant_mossy_glowshroom | Fungal SDF formation; retain its named vegetation candidate disposition. |
+| small_island | Terrain with flower/vine or waterfall/stalactite treatment. Named terrain candidate, with variation within the generator. |
+
+VillagePools creates the already accounted pool keys. Its village_chorus key
+resolves to a placed vanilla chorus_plant feature, not a second village route.
+EndCaveFeatures consumes the separate cave-biome picker, updates cave biome
+information and dispatches floor/ceiling features; CaveChunkPopulatorFeature
+also dispatches cave floor/ceiling features. This closes the missing consumer
+link without claiming every surface-biome feature executes inside caves.
+
+BYGIntegration explicitly delegates to BYG block, feature and biome registries.
+Flamboyant's init is empty and its explicit registration concerns colored blocks;
+DyeDepot supplies colored crafting recipes. BCLib conditional dispatch and
+retained BetterEndPlugin services remain shared activation inputs. Do not
+expand into unrelated recipe auditing or inactive compatibility geometry.
+
+Validation: seven cases pass in test_betterend_feature_candidates.py, including
+the exact fourteen-root package/runtime set and eighteen source identities.
+Scoped Ruff and Basedpyright pass. The initial added case included the ZIP
+directory entry as a file and failed; corrected to exclude actual directories.
+Initial missing JSON type casts were corrected before acceptance.
+
+Remaining provider coverage: other feature registration consumers, remaining
+declared common generation mixins, shared integration and Wover modifier
+activation. Keep packaged template and root enumeration closed unless new
+evidence contradicts them. Provider counts remain 53 resolved and 83 open;
+family grouping and detailed attributes are not complete.
