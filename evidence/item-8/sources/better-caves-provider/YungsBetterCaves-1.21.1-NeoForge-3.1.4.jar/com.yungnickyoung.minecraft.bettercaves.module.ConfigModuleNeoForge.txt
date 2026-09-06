@@ -1,0 +1,277 @@
+Compiled from "ConfigModuleNeoForge.java"
+public class com.yungnickyoung.minecraft.bettercaves.module.ConfigModuleNeoForge {
+  private static final java.lang.String CUSTOM_CONFIG_PATH = "bettercaves";
+
+  public static final java.lang.String VERSION_PATH = "neoforge-1_21_1";
+
+  public com.yungnickyoung.minecraft.bettercaves.module.ConfigModuleNeoForge();
+    Code:
+       0: aload_0
+       1: invokespecial #3                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init(net.neoforged.fml.ModContainer);
+    Code:
+       0: invokestatic  #9                  // Method initCustomFiles:()V
+       3: aload_0
+       4: getstatic     #14                 // Field net/neoforged/fml/config/ModConfig$Type.COMMON:Lnet/neoforged/fml/config/ModConfig$Type;
+       7: getstatic     #20                 // Field com/yungnickyoung/minecraft/bettercaves/config/BCConfigNeoForge.SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+      10: ldc           #26                 // String bettercaves-neoforge-1_21_1.toml
+      12: invokevirtual #28                 // Method net/neoforged/fml/ModContainer.registerConfig:(Lnet/neoforged/fml/config/ModConfig$Type;Lnet/neoforged/fml/config/IConfigSpec;Ljava/lang/String;)V
+      15: getstatic     #34                 // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      18: invokedynamic #40,  0             // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+      23: invokeinterface #44,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      28: getstatic     #50                 // Field com/yungnickyoung/minecraft/bettercaves/BetterCavesNeoForge.loadingContextEventBus:Lnet/neoforged/bus/api/IEventBus;
+      31: invokedynamic #55,  0             // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+      36: invokeinterface #44,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      41: return
+
+  private static void onWorldLoad(net.neoforged.neoforge.event.level.LevelEvent$Load);
+    Code:
+       0: invokestatic  #56                 // Method bakeConfig:()V
+       3: invokestatic  #59                 // Method reloadJSON:()V
+       6: return
+
+  private static void onConfigChange(net.neoforged.fml.event.config.ModConfigEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #62                 // Method net/neoforged/fml/event/config/ModConfigEvent.getConfig:()Lnet/neoforged/fml/config/ModConfig;
+       4: invokevirtual #68                 // Method net/neoforged/fml/config/ModConfig.getSpec:()Lnet/neoforged/fml/config/IConfigSpec;
+       7: getstatic     #20                 // Field com/yungnickyoung/minecraft/bettercaves/config/BCConfigNeoForge.SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+      10: if_acmpne     19
+      13: invokestatic  #56                 // Method bakeConfig:()V
+      16: invokestatic  #59                 // Method reloadJSON:()V
+      19: return
+
+  private static void initCustomFiles();
+    Code:
+       0: invokestatic  #74                 // Method createDirectory:()V
+       3: invokestatic  #77                 // Method createBaseReadMe:()V
+       6: invokestatic  #80                 // Method createJsonReadMe:()V
+       9: invokestatic  #59                 // Method reloadJSON:()V
+      12: return
+
+  private static void reloadJSON();
+    Code:
+       0: invokestatic  #83                 // Method loadLiquidRegionsJSON:()V
+       3: return
+
+  private static void createDirectory();
+    Code:
+       0: new           #86                 // class java/io/File
+       3: dup
+       4: getstatic     #88                 // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       7: invokevirtual #94                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+      10: invokeinterface #98,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      15: ldc           #104                // String bettercaves
+      17: invokespecial #106                // Method java/io/File."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+      20: astore_0
+      21: new           #86                 // class java/io/File
+      24: dup
+      25: aload_0
+      26: ldc           #109                // String neoforge-1_21_1
+      28: invokespecial #111                // Method java/io/File."<init>":(Ljava/io/File;Ljava/lang/String;)V
+      31: astore_1
+      32: aload_1
+      33: invokevirtual #114                // Method java/io/File.getCanonicalPath:()Ljava/lang/String;
+      36: astore_2
+      37: aload_1
+      38: invokevirtual #117                // Method java/io/File.mkdirs:()Z
+      41: ifeq          55
+      44: getstatic     #121                // Field com/yungnickyoung/minecraft/bettercaves/BetterCavesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      47: ldc           #125                // String Creating directory for additional Better Caves config at {}
+      49: aload_2
+      50: invokeinterface #127,  3          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+      55: goto          73
+      58: astore_2
+      59: getstatic     #121                // Field com/yungnickyoung/minecraft/bettercaves/BetterCavesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      62: ldc           #135                // String ERROR creating Better Caves config directory: {}
+      64: aload_2
+      65: invokevirtual #137                // Method java/io/IOException.toString:()Ljava/lang/String;
+      68: invokeinterface #138,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+      73: return
+    Exception table:
+       from    to  target type
+          32    55    58   Class java/io/IOException
+
+  private static void createBaseReadMe();
+    Code:
+       0: getstatic     #88                 // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #94                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: invokeinterface #98,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      11: iconst_2
+      12: anewarray     #141                // class java/lang/String
+      15: dup
+      16: iconst_0
+      17: ldc           #104                // String bettercaves
+      19: aastore
+      20: dup
+      21: iconst_1
+      22: ldc           #143                // String README.txt
+      24: aastore
+      25: invokestatic  #145                // Method java/nio/file/Paths.get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+      28: astore_0
+      29: new           #86                 // class java/io/File
+      32: dup
+      33: aload_0
+      34: invokeinterface #98,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      39: invokespecial #150                // Method java/io/File."<init>":(Ljava/lang/String;)V
+      42: astore_1
+      43: aload_1
+      44: invokevirtual #153                // Method java/io/File.exists:()Z
+      47: ifne          80
+      50: ldc           #156                // String This directory is for a few additional options for YUNG\'s Better Caves.\nOptions provided may vary by version.\nThis directory contains subdirectories for supported versions. The first time you run Better Caves, a version subdirectory will be created if that version supports advanced options.\nFor example, the first time you use Better Caves for MC 1.21.1 on Fabric, the \'fabric-1_21_1\' subdirectory will be created in this folder.\nIf no subdirectory for your version is created, then that version probably does not support the additional options.
+      52: astore_2
+      53: aload_0
+      54: aload_2
+      55: invokevirtual #158                // Method java/lang/String.getBytes:()[B
+      58: iconst_0
+      59: anewarray     #162                // class java/nio/file/OpenOption
+      62: invokestatic  #164                // Method java/nio/file/Files.write:(Ljava/nio/file/Path;[B[Ljava/nio/file/OpenOption;)Ljava/nio/file/Path;
+      65: pop
+      66: goto          80
+      69: astore_3
+      70: getstatic     #121                // Field com/yungnickyoung/minecraft/bettercaves/BetterCavesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      73: ldc           #170                // String Unable to create README file!
+      75: invokeinterface #172,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+      80: return
+    Exception table:
+       from    to  target type
+          53    66    69   Class java/io/IOException
+
+  private static void createJsonReadMe();
+    Code:
+       0: getstatic     #88                 // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #94                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: invokeinterface #98,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      11: iconst_3
+      12: anewarray     #141                // class java/lang/String
+      15: dup
+      16: iconst_0
+      17: ldc           #104                // String bettercaves
+      19: aastore
+      20: dup
+      21: iconst_1
+      22: ldc           #109                // String neoforge-1_21_1
+      24: aastore
+      25: dup
+      26: iconst_2
+      27: ldc           #143                // String README.txt
+      29: aastore
+      30: invokestatic  #145                // Method java/nio/file/Paths.get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+      33: astore_0
+      34: new           #86                 // class java/io/File
+      37: dup
+      38: aload_0
+      39: invokeinterface #98,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      44: invokespecial #150                // Method java/io/File."<init>":(Ljava/lang/String;)V
+      47: astore_1
+      48: aload_1
+      49: invokevirtual #153                // Method java/io/File.exists:()Z
+      52: ifne          85
+      55: ldc           #174                // String ######################################\n#         liquidregions.json         #\n######################################\n  This file contains the Liquid Regions settings for each dimension.\nWhile the Better Caves carvers are added per-biome, the Liquid Regions\n(i.e. the giant water and lava pools at the bottom of the world) are handled\non a per-dimension basis.\nThe liquidregions.json file is used to define the Liquid Regions for each dimension.\nYou can add or remove dimensions, or modify the settings for existing dimensions.\nIf a dimension is not defined in this file, then it will not have any Liquid Regions.\nIn that case, the normal aquifers will be used instead, as specified in the dimension\'s\nrespective noise_settings data pack json.\n
+      57: astore_2
+      58: aload_0
+      59: aload_2
+      60: invokevirtual #158                // Method java/lang/String.getBytes:()[B
+      63: iconst_0
+      64: anewarray     #162                // class java/nio/file/OpenOption
+      67: invokestatic  #164                // Method java/nio/file/Files.write:(Ljava/nio/file/Path;[B[Ljava/nio/file/OpenOption;)Ljava/nio/file/Path;
+      70: pop
+      71: goto          85
+      74: astore_3
+      75: getstatic     #121                // Field com/yungnickyoung/minecraft/bettercaves/BetterCavesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      78: ldc           #176                // String Unable to create Liquid Regions README file!
+      80: invokeinterface #172,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+      85: return
+    Exception table:
+       from    to  target type
+          58    71    74   Class java/io/IOException
+
+  private static void loadLiquidRegionsJSON();
+    Code:
+       0: getstatic     #88                 // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #94                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: invokeinterface #98,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      11: iconst_3
+      12: anewarray     #141                // class java/lang/String
+      15: dup
+      16: iconst_0
+      17: ldc           #104                // String bettercaves
+      19: aastore
+      20: dup
+      21: iconst_1
+      22: ldc           #109                // String neoforge-1_21_1
+      24: aastore
+      25: dup
+      26: iconst_2
+      27: ldc           #178                // String liquidregions.json
+      29: aastore
+      30: invokestatic  #145                // Method java/nio/file/Paths.get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+      33: astore_0
+      34: new           #86                 // class java/io/File
+      37: dup
+      38: aload_0
+      39: invokeinterface #98,  1           // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      44: invokespecial #150                // Method java/io/File."<init>":(Ljava/lang/String;)V
+      47: astore_1
+      48: aload_1
+      49: invokevirtual #153                // Method java/io/File.exists:()Z
+      52: ifne          86
+      55: invokestatic  #180                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/liquidregion/LiquidRegionsController.useDefaultSettings:()V
+      58: aload_0
+      59: invokestatic  #185                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/liquidregion/LiquidRegionsController.getInstance:()Lcom/yungnickyoung/minecraft/bettercaves/worldgen/liquidregion/LiquidRegionsController;
+      62: invokestatic  #189                // Method com/yungnickyoung/minecraft/yungsapi/io/JSON.createJsonFileFromObject:(Ljava/nio/file/Path;Ljava/lang/Object;)V
+      65: goto          176
+      68: astore_2
+      69: getstatic     #121                // Field com/yungnickyoung/minecraft/bettercaves/BetterCavesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      72: ldc           #195                // String Unable to create liquidregions.json file: {}
+      74: aload_2
+      75: invokevirtual #137                // Method java/io/IOException.toString:()Ljava/lang/String;
+      78: invokeinterface #138,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+      83: goto          176
+      86: aload_1
+      87: invokevirtual #197                // Method java/io/File.canRead:()Z
+      90: ifne          107
+      93: getstatic     #121                // Field com/yungnickyoung/minecraft/bettercaves/BetterCavesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      96: ldc           #200                // String Better Caves liquidregions.json file not readable! Using default configuration...
+      98: invokeinterface #172,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+     103: invokestatic  #180                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/liquidregion/LiquidRegionsController.useDefaultSettings:()V
+     106: return
+     107: invokestatic  #202                // Method com/yungnickyoung/minecraft/yungsapi/io/JSON.newGsonBuilder:()Lcom/google/gson/GsonBuilder;
+     110: ldc           #206                // class net/minecraft/resources/ResourceLocation
+     112: new           #208                // class com/yungnickyoung/minecraft/bettercaves/json/ResourceLocationAdapter
+     115: dup
+     116: invokespecial #210                // Method com/yungnickyoung/minecraft/bettercaves/json/ResourceLocationAdapter."<init>":()V
+     119: invokevirtual #211                // Method com/google/gson/GsonBuilder.registerTypeHierarchyAdapter:(Ljava/lang/Class;Ljava/lang/Object;)Lcom/google/gson/GsonBuilder;
+     122: invokevirtual #217                // Method com/google/gson/GsonBuilder.setPrettyPrinting:()Lcom/google/gson/GsonBuilder;
+     125: invokevirtual #220                // Method com/google/gson/GsonBuilder.disableHtmlEscaping:()Lcom/google/gson/GsonBuilder;
+     128: invokevirtual #223                // Method com/google/gson/GsonBuilder.create:()Lcom/google/gson/Gson;
+     131: astore_2
+     132: aload_0
+     133: ldc           #181                // class com/yungnickyoung/minecraft/bettercaves/worldgen/liquidregion/LiquidRegionsController
+     135: aload_2
+     136: invokestatic  #227                // Method com/yungnickyoung/minecraft/yungsapi/io/JSON.loadObjectFromJsonFile:(Ljava/nio/file/Path;Ljava/lang/Class;Lcom/google/gson/Gson;)Ljava/lang/Object;
+     139: checkcast     #181                // class com/yungnickyoung/minecraft/bettercaves/worldgen/liquidregion/LiquidRegionsController
+     142: putstatic     #231                // Field com/yungnickyoung/minecraft/bettercaves/worldgen/liquidregion/LiquidRegionsController.INSTANCE:Lcom/yungnickyoung/minecraft/bettercaves/worldgen/liquidregion/LiquidRegionsController;
+     145: goto          176
+     148: astore_2
+     149: getstatic     #121                // Field com/yungnickyoung/minecraft/bettercaves/BetterCavesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     152: ldc           #235                // String Error loading Better Caves liquidregions.json file: {}
+     154: aload_2
+     155: invokevirtual #137                // Method java/io/IOException.toString:()Ljava/lang/String;
+     158: invokeinterface #138,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+     163: getstatic     #121                // Field com/yungnickyoung/minecraft/bettercaves/BetterCavesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     166: ldc           #237                // String Using default configuration...
+     168: invokeinterface #172,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+     173: invokestatic  #180                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/liquidregion/LiquidRegionsController.useDefaultSettings:()V
+     176: return
+    Exception table:
+       from    to  target type
+          55    65    68   Class java/io/IOException
+         107   145   148   Class java/io/IOException
+
+  private static void bakeConfig();
+    Code:
+       0: return
+}

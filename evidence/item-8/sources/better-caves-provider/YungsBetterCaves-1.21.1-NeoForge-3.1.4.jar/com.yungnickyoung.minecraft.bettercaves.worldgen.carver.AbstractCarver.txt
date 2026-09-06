@@ -1,0 +1,155 @@
+Compiled from "AbstractCarver.java"
+public abstract class com.yungnickyoung.minecraft.bettercaves.worldgen.carver.AbstractCarver {
+  protected final com.yungnickyoung.minecraft.bettercaves.worldgen.carver.CarverSettings settings;
+
+  private final com.google.common.collect.ImmutableSet<net.minecraft.world.level.block.state.BlockState> DEBUG_BLOCKS;
+
+  public abstract int getSpawnWeight();
+
+  public abstract int getBottomY();
+
+  public abstract int getTopY();
+
+  public abstract com.yungnickyoung.minecraft.bettercaves.noise.NoiseGen getNoiseGen();
+
+  public com.yungnickyoung.minecraft.bettercaves.worldgen.carver.AbstractCarver(com.yungnickyoung.minecraft.bettercaves.worldgen.carver.CarverSettings);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: getstatic     #7                  // Field net/minecraft/world/level/block/Blocks.GOLD_BLOCK:Lnet/minecraft/world/level/block/Block;
+       8: invokevirtual #13                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      11: getstatic     #19                 // Field net/minecraft/world/level/block/Blocks.OAK_PLANKS:Lnet/minecraft/world/level/block/Block;
+      14: invokevirtual #13                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      17: getstatic     #22                 // Field net/minecraft/world/level/block/Blocks.COBBLESTONE:Lnet/minecraft/world/level/block/Block;
+      20: invokevirtual #13                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      23: getstatic     #25                 // Field net/minecraft/world/level/block/Blocks.REDSTONE_BLOCK:Lnet/minecraft/world/level/block/Block;
+      26: invokevirtual #13                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      29: getstatic     #28                 // Field net/minecraft/world/level/block/Blocks.EMERALD_BLOCK:Lnet/minecraft/world/level/block/Block;
+      32: invokevirtual #13                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      35: getstatic     #31                 // Field net/minecraft/world/level/block/Blocks.BRICKS:Lnet/minecraft/world/level/block/Block;
+      38: invokevirtual #13                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      41: iconst_0
+      42: anewarray     #34                 // class net/minecraft/world/level/block/state/BlockState
+      45: invokestatic  #36                 // Method com/google/common/collect/ImmutableSet.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;[Ljava/lang/Object;)Lcom/google/common/collect/ImmutableSet;
+      48: putfield      #42                 // Field DEBUG_BLOCKS:Lcom/google/common/collect/ImmutableSet;
+      51: aload_0
+      52: aload_1
+      53: putfield      #48                 // Field settings:Lcom/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverSettings;
+      56: return
+
+  protected void carveBlock(com.yungnickyoung.minecraft.bettercaves.worldgen.BetterCavesWorldCarverConfig, net.minecraft.world.level.chunk.ChunkAccess, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.chunk.CarvingMask, net.minecraft.world.level.levelgen.Aquifer);
+    Code:
+       0: aload         6
+       2: aload_3
+       3: invokevirtual #52                 // Method net/minecraft/core/BlockPos.getX:()I
+       6: aload_3
+       7: invokevirtual #58                 // Method net/minecraft/core/BlockPos.getY:()I
+      10: aload_3
+      11: invokevirtual #61                 // Method net/minecraft/core/BlockPos.getZ:()I
+      14: invokevirtual #64                 // Method net/minecraft/world/level/chunk/CarvingMask.set:(III)V
+      17: aload_2
+      18: aload_3
+      19: invokevirtual #70                 // Method net/minecraft/world/level/chunk/ChunkAccess.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      22: aload_1
+      23: getfield      #76                 // Field com/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig.misc:Lcom/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig$MiscSettings;
+      26: invokevirtual #82                 // Method com/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig$MiscSettings.replaceable:()Lnet/minecraft/core/HolderSet;
+      29: invokevirtual #88                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/core/HolderSet;)Z
+      32: ifne          36
+      35: return
+      36: aload         4
+      38: invokevirtual #92                 // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+      41: ifeq          75
+      44: aload_3
+      45: invokevirtual #58                 // Method net/minecraft/core/BlockPos.getY:()I
+      48: aload_0
+      49: getfield      #48                 // Field settings:Lcom/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverSettings;
+      52: invokevirtual #96                 // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverSettings.getLiquidAltitude:()I
+      55: if_icmpgt     75
+      58: aload         5
+      60: ifnull        145
+      63: aload_2
+      64: aload_3
+      65: aload         5
+      67: iconst_0
+      68: invokevirtual #101                // Method net/minecraft/world/level/chunk/ChunkAccess.setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+      71: pop
+      72: goto          145
+      75: aload         7
+      77: new           #105                // class net/minecraft/world/level/levelgen/DensityFunction$SinglePointContext
+      80: dup
+      81: aload_3
+      82: invokevirtual #52                 // Method net/minecraft/core/BlockPos.getX:()I
+      85: aload_3
+      86: invokevirtual #58                 // Method net/minecraft/core/BlockPos.getY:()I
+      89: aload_3
+      90: invokevirtual #61                 // Method net/minecraft/core/BlockPos.getZ:()I
+      93: invokespecial #107                // Method net/minecraft/world/level/levelgen/DensityFunction$SinglePointContext."<init>":(III)V
+      96: dconst_0
+      97: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/levelgen/Aquifer.computeSubstance:(Lnet/minecraft/world/level/levelgen/DensityFunction$FunctionContext;D)Lnet/minecraft/world/level/block/state/BlockState;
+     102: astore        8
+     104: aload         8
+     106: ifnonnull     110
+     109: return
+     110: aload_2
+     111: aload_3
+     112: aload         8
+     114: iconst_0
+     115: invokevirtual #101                // Method net/minecraft/world/level/chunk/ChunkAccess.setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+     118: pop
+     119: aload         7
+     121: invokeinterface #115,  1          // InterfaceMethod net/minecraft/world/level/levelgen/Aquifer.shouldScheduleFluidUpdate:()Z
+     126: ifeq          145
+     129: aload         8
+     131: invokevirtual #118                // Method net/minecraft/world/level/block/state/BlockState.getFluidState:()Lnet/minecraft/world/level/material/FluidState;
+     134: invokevirtual #122                // Method net/minecraft/world/level/material/FluidState.isEmpty:()Z
+     137: ifne          145
+     140: aload_2
+     141: aload_3
+     142: invokevirtual #127                // Method net/minecraft/world/level/chunk/ChunkAccess.markPosForPostprocessing:(Lnet/minecraft/core/BlockPos;)V
+     145: return
+
+  protected void carveBlock(com.yungnickyoung.minecraft.bettercaves.worldgen.BetterCavesWorldCarverConfig, net.minecraft.world.level.chunk.ChunkAccess, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.chunk.CarvingMask, net.minecraft.world.level.levelgen.Aquifer);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: getstatic     #131                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+       7: invokevirtual #13                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      10: aload         4
+      12: aload         5
+      14: aload         6
+      16: invokevirtual #134                // Method carveBlock:(Lcom/yungnickyoung/minecraft/bettercaves/worldgen/BetterCavesWorldCarverConfig;Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/chunk/CarvingMask;Lnet/minecraft/world/level/levelgen/Aquifer;)V
+      19: return
+
+  protected void debugCarveBlock(net.minecraft.world.level.chunk.ChunkAccess, net.minecraft.core.BlockPos, boolean);
+    Code:
+       0: aload_0
+       1: getfield      #42                 // Field DEBUG_BLOCKS:Lcom/google/common/collect/ImmutableSet;
+       4: aload_1
+       5: aload_2
+       6: invokevirtual #70                 // Method net/minecraft/world/level/chunk/ChunkAccess.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       9: invokevirtual #138                // Method com/google/common/collect/ImmutableSet.contains:(Ljava/lang/Object;)Z
+      12: ifeq          16
+      15: return
+      16: iload_3
+      17: ifeq          37
+      20: aload_1
+      21: aload_2
+      22: aload_0
+      23: getfield      #48                 // Field settings:Lcom/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverSettings;
+      26: invokevirtual #142                // Method com/yungnickyoung/minecraft/bettercaves/worldgen/carver/CarverSettings.getDebugBlock:()Lnet/minecraft/world/level/block/state/BlockState;
+      29: iconst_0
+      30: invokevirtual #101                // Method net/minecraft/world/level/chunk/ChunkAccess.setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+      33: pop
+      34: goto          50
+      37: aload_1
+      38: aload_2
+      39: getstatic     #131                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+      42: invokevirtual #13                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      45: iconst_0
+      46: invokevirtual #101                // Method net/minecraft/world/level/chunk/ChunkAccess.setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+      49: pop
+      50: return
+}
