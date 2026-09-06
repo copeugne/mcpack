@@ -1,0 +1,537 @@
+Compiled from "ChunkGeneratorManagerImpl.java"
+public class org.betterx.wover.generator.impl.chunkgenerator.ChunkGeneratorManagerImpl {
+  private static final net.minecraft.resources.ResourceLocation LEGACY_ID;
+
+  private static final java.util.List<java.lang.String> GENERATOR_IDS;
+
+  private static final java.util.Map<net.minecraft.resources.ResourceLocation, com.mojang.serialization.MapCodec<? extends net.minecraft.world.level.chunk.ChunkGenerator>> PENDING_GENERATORS;
+
+  public org.betterx.wover.generator.impl.chunkgenerator.ChunkGeneratorManagerImpl();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static java.util.Map<java.lang.String, java.util.function.Supplier<com.mojang.datafixers.types.templates.TypeTemplate>> addGeneratorDSL(java.util.Map<java.lang.String, java.util.function.Supplier<com.mojang.datafixers.types.templates.TypeTemplate>>);
+    Code:
+       0: aload_0
+       1: ldc           #7                  // String minecraft:flat
+       3: invokeinterface #9,  2            // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+       8: ifeq          45
+      11: invokestatic  #15                 // Method org/betterx/wover/core/api/ModCore.isDatagen:()Z
+      14: ifne          45
+      17: new           #21                 // class java/util/HashMap
+      20: dup
+      21: aload_0
+      22: invokespecial #23                 // Method java/util/HashMap."<init>":(Ljava/util/Map;)V
+      25: astore_1
+      26: getstatic     #26                 // Field GENERATOR_IDS:Ljava/util/List;
+      29: aload_1
+      30: invokedynamic #32,  0             // InvokeDynamic #0:accept:(Ljava/util/Map;)Ljava/util/function/Consumer;
+      35: invokeinterface #36,  2           // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+      40: aload_1
+      41: invokestatic  #42                 // Method com/google/common/collect/ImmutableMap.copyOf:(Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap;
+      44: areturn
+      45: aload_0
+      46: areturn
+
+  public static void initialize();
+    Code:
+       0: getstatic     #48                 // Field org/betterx/wover/generator/impl/chunkgenerator/WoverChunkGenerator.ID:Lnet/minecraft/resources/ResourceLocation;
+       3: getstatic     #54                 // Field org/betterx/wover/generator/impl/chunkgenerator/WoverChunkGenerator.CODEC:Lcom/mojang/serialization/MapCodec;
+       6: invokestatic  #58                 // Method register:(Lnet/minecraft/resources/ResourceLocation;Lcom/mojang/serialization/MapCodec;)V
+       9: invokestatic  #62                 // Method org/betterx/wover/legacy/api/LegacyHelper.isLegacyEnabled:()Z
+      12: ifeq          27
+      15: getstatic     #67                 // Field LEGACY_ID:Lnet/minecraft/resources/ResourceLocation;
+      18: getstatic     #54                 // Field org/betterx/wover/generator/impl/chunkgenerator/WoverChunkGenerator.CODEC:Lcom/mojang/serialization/MapCodec;
+      21: invokestatic  #70                 // Method org/betterx/wover/legacy/api/LegacyHelper.wrap:(Lcom/mojang/serialization/MapCodec;)Lcom/mojang/serialization/MapCodec;
+      24: invokestatic  #58                 // Method register:(Lnet/minecraft/resources/ResourceLocation;Lcom/mojang/serialization/MapCodec;)V
+      27: getstatic     #74                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+      30: invokestatic  #80                 // Method org/betterx/wover/state/api/WorldConfig.registerMod:(Lorg/betterx/wover/core/api/ModCore;)V
+      33: getstatic     #86                 // Field org/betterx/wover/events/api/WorldLifecycle.CREATED_NEW_WORLD_FOLDER:Lorg/betterx/wover/events/api/Event;
+      36: invokedynamic #92,  0             // InvokeDynamic #1:init:()Lorg/betterx/wover/events/api/types/CreatedNewWorldFolder;
+      41: sipush        20000
+      44: invokeinterface #98,  3           // InterfaceMethod org/betterx/wover/events/api/Event.subscribe:(Lorg/betterx/wover/events/api/Subscriber;I)Z
+      49: pop
+      50: return
+
+  private static void onWorldCreation(net.minecraft.world.level.storage.LevelStorageSource$LevelStorageAccess, net.minecraft.core.RegistryAccess, net.minecraft.core.Holder<net.minecraft.world.level.levelgen.presets.WorldPreset>, net.minecraft.world.level.levelgen.WorldDimensions, boolean);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_3
+       3: invokestatic  #104                // Method org/betterx/wover/generator/impl/chunkgenerator/WorldGeneratorConfigImpl.createWorldConfig:(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/core/Holder;Lnet/minecraft/world/level/levelgen/WorldDimensions;)V
+       6: return
+
+  public static void onWorldReCreate(net.minecraft.world.level.storage.LevelStorageSource$LevelStorageAccess, net.minecraft.client.gui.screens.worldselection.WorldCreationContext);
+    Code:
+       0: aload_0
+       1: invokestatic  #110                // Method org/betterx/wover/generator/impl/chunkgenerator/WorldGeneratorConfigImpl.getPresetsNbtFromFolder:(Lnet/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess;)Lnet/minecraft/nbt/CompoundTag;
+       4: astore_2
+       5: invokestatic  #114                // Method org/betterx/wover/state/api/WorldState.allStageRegistryAccess:()Lnet/minecraft/core/RegistryAccess;
+       8: aload_2
+       9: invokestatic  #120                // Method org/betterx/wover/generator/impl/chunkgenerator/WorldGeneratorConfigImpl.loadWorldDimensions:(Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/nbt/CompoundTag;)Ljava/util/Map;
+      12: astore_3
+      13: aload_1
+      14: invokevirtual #124                // Method net/minecraft/client/gui/screens/worldselection/WorldCreationContext.selectedDimensions:()Lnet/minecraft/world/level/levelgen/WorldDimensions;
+      17: invokevirtual #130                // Method net/minecraft/world/level/levelgen/WorldDimensions.dimensions:()Ljava/util/Map;
+      20: invokeinterface #136,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      25: invokeinterface #140,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      30: astore        4
+      32: aload         4
+      34: invokeinterface #146,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      39: ifeq          154
+      42: aload         4
+      44: invokeinterface #151,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      49: checkcast     #155                // class java/util/Map$Entry
+      52: astore        5
+      54: aload_3
+      55: aload         5
+      57: invokeinterface #157,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      62: invokeinterface #160,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      67: checkcast     #164                // class net/minecraft/world/level/chunk/ChunkGenerator
+      70: astore        6
+      72: aload         6
+      74: instanceof    #166                // class org/betterx/wover/generator/impl/chunkgenerator/ConfiguredChunkGenerator
+      77: ifeq          151
+      80: aload         6
+      82: checkcast     #166                // class org/betterx/wover/generator/impl/chunkgenerator/ConfiguredChunkGenerator
+      85: astore        7
+      87: aload         7
+      89: invokeinterface #168,  1          // InterfaceMethod org/betterx/wover/generator/impl/chunkgenerator/ConfiguredChunkGenerator.wover_getConfiguredWorldPreset:()Lnet/minecraft/resources/ResourceKey;
+      94: ifnull        151
+      97: aload         5
+      99: invokeinterface #172,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     104: checkcast     #175                // class net/minecraft/world/level/dimension/LevelStem
+     107: invokevirtual #177                // Method net/minecraft/world/level/dimension/LevelStem.generator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+     110: astore        9
+     112: aload         9
+     114: instanceof    #166                // class org/betterx/wover/generator/impl/chunkgenerator/ConfiguredChunkGenerator
+     117: ifeq          151
+     120: aload         9
+     122: checkcast     #166                // class org/betterx/wover/generator/impl/chunkgenerator/ConfiguredChunkGenerator
+     125: astore        8
+     127: aload         8
+     129: invokeinterface #168,  1          // InterfaceMethod org/betterx/wover/generator/impl/chunkgenerator/ConfiguredChunkGenerator.wover_getConfiguredWorldPreset:()Lnet/minecraft/resources/ResourceKey;
+     134: ifnonnull     151
+     137: aload         8
+     139: aload         7
+     141: invokeinterface #168,  1          // InterfaceMethod org/betterx/wover/generator/impl/chunkgenerator/ConfiguredChunkGenerator.wover_getConfiguredWorldPreset:()Lnet/minecraft/resources/ResourceKey;
+     146: invokeinterface #181,  2          // InterfaceMethod org/betterx/wover/generator/impl/chunkgenerator/ConfiguredChunkGenerator.wover_setConfiguredWorldPreset:(Lnet/minecraft/resources/ResourceKey;)V
+     151: goto          32
+     154: return
+
+  public static void register(net.minecraft.resources.ResourceLocation, com.mojang.serialization.MapCodec<? extends net.minecraft.world.level.chunk.ChunkGenerator>);
+    Code:
+       0: aload_0
+       1: invokevirtual #185                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+       4: astore_2
+       5: getstatic     #26                 // Field GENERATOR_IDS:Ljava/util/List;
+       8: aload_2
+       9: invokeinterface #191,  2          // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+      14: ifeq          31
+      17: new           #194                // class java/lang/IllegalStateException
+      20: dup
+      21: aload_2
+      22: invokedynamic #196,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      27: invokespecial #200                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      30: athrow
+      31: getstatic     #26                 // Field GENERATOR_IDS:Ljava/util/List;
+      34: aload_2
+      35: invokeinterface #203,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      40: pop
+      41: getstatic     #206                // Field PENDING_GENERATORS:Ljava/util/Map;
+      44: aload_0
+      45: aload_1
+      46: invokeinterface #210,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      51: pop
+      52: return
+
+  public static void onRegister(net.neoforged.neoforge.registries.RegisterEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #214                // Method net/neoforged/neoforge/registries/RegisterEvent.getRegistryKey:()Lnet/minecraft/resources/ResourceKey;
+       4: getstatic     #219                // Field net/minecraft/core/registries/Registries.CHUNK_GENERATOR:Lnet/minecraft/resources/ResourceKey;
+       7: invokevirtual #225                // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+      10: ifne          14
+      13: return
+      14: aload_0
+      15: getstatic     #219                // Field net/minecraft/core/registries/Registries.CHUNK_GENERATOR:Lnet/minecraft/resources/ResourceKey;
+      18: invokedynamic #228,  0            // InvokeDynamic #3:accept:()Ljava/util/function/Consumer;
+      23: invokevirtual #231                // Method net/neoforged/neoforge/registries/RegisterEvent.register:(Lnet/minecraft/resources/ResourceKey;Ljava/util/function/Consumer;)V
+      26: return
+
+  public static java.lang.String enumerateFeatureNamespaces(net.minecraft.world.level.chunk.ChunkGenerator);
+    Code:
+       0: aload_0
+       1: instanceof    #234                // class org/betterx/wover/biome/mixin/ChunkGeneratorAccessor
+       4: ifeq          325
+       7: aload_0
+       8: checkcast     #234                // class org/betterx/wover/biome/mixin/ChunkGeneratorAccessor
+      11: astore_1
+      12: aload_1
+      13: invokeinterface #236,  1          // InterfaceMethod org/betterx/wover/biome/mixin/ChunkGeneratorAccessor.wover_getFeaturesPerStep:()Ljava/util/function/Supplier;
+      18: astore_2
+      19: aload_2
+      20: ifnull        325
+      23: new           #21                 // class java/util/HashMap
+      26: dup
+      27: invokespecial #240                // Method java/util/HashMap."<init>":()V
+      30: astore_3
+      31: aload_2
+      32: invokeinterface #241,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      37: checkcast     #37                 // class java/util/List
+      40: astore        4
+      42: aload         4
+      44: ifnull        260
+      47: aload         4
+      49: invokeinterface #245,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      54: astore        5
+      56: aload         5
+      58: invokeinterface #146,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      63: ifeq          260
+      66: aload         5
+      68: invokeinterface #151,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      73: checkcast     #246                // class net/minecraft/world/level/biome/FeatureSorter$StepFeatureData
+      76: astore        6
+      78: aload         6
+      80: ifnull        257
+      83: aload         6
+      85: invokevirtual #248                // Method net/minecraft/world/level/biome/FeatureSorter$StepFeatureData.features:()Ljava/util/List;
+      88: invokeinterface #245,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      93: astore        7
+      95: aload         7
+      97: invokeinterface #146,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     102: ifeq          257
+     105: aload         7
+     107: invokeinterface #151,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     112: checkcast     #252                // class net/minecraft/world/level/levelgen/placement/PlacedFeature
+     115: astore        8
+     117: aload         8
+     119: ifnull        254
+     122: aconst_null
+     123: astore        9
+     125: invokestatic  #254                // Method org/betterx/wover/state/api/WorldState.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+     128: ifnull        163
+     131: invokestatic  #254                // Method org/betterx/wover/state/api/WorldState.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+     134: getstatic     #257                // Field net/minecraft/core/registries/Registries.PLACED_FEATURE:Lnet/minecraft/resources/ResourceKey;
+     137: invokeinterface #260,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+     142: aload         8
+     144: invokeinterface #266,  2          // InterfaceMethod net/minecraft/core/Registry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+     149: astore        10
+     151: aload         10
+     153: ifnull        163
+     156: aload         10
+     158: invokevirtual #271                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+     161: astore        9
+     163: aload         9
+     165: ifnonnull     216
+     168: aload         8
+     170: invokevirtual #274                // Method net/minecraft/world/level/levelgen/placement/PlacedFeature.feature:()Lnet/minecraft/core/Holder;
+     173: ifnull        216
+     176: aload         8
+     178: invokevirtual #274                // Method net/minecraft/world/level/levelgen/placement/PlacedFeature.feature:()Lnet/minecraft/core/Holder;
+     181: invokeinterface #278,  1          // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+     186: invokevirtual #284                // Method java/util/Optional.isPresent:()Z
+     189: ifeq          216
+     192: aload         8
+     194: invokevirtual #274                // Method net/minecraft/world/level/levelgen/placement/PlacedFeature.feature:()Lnet/minecraft/core/Holder;
+     197: invokeinterface #278,  1          // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+     202: invokevirtual #289                // Method java/util/Optional.get:()Ljava/lang/Object;
+     205: checkcast     #290                // class net/minecraft/resources/ResourceKey
+     208: invokevirtual #292                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     211: invokevirtual #271                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+     214: astore        9
+     216: aload         9
+     218: ifnonnull     226
+     221: ldc_w         #296                // String none
+     224: astore        9
+     226: aload_3
+     227: aload         9
+     229: aload_3
+     230: aload         9
+     232: iconst_0
+     233: invokestatic  #298                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     236: invokevirtual #304                // Method java/util/HashMap.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     239: checkcast     #299                // class java/lang/Integer
+     242: invokevirtual #307                // Method java/lang/Integer.intValue:()I
+     245: iconst_1
+     246: iadd
+     247: invokestatic  #298                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     250: invokevirtual #311                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     253: pop
+     254: goto          95
+     257: goto          56
+     260: goto          286
+     263: astore        4
+     265: getstatic     #74                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+     268: getfield      #314                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+     271: ldc_w         #318                // String Failed to enumerate feature namespaces
+     274: iconst_1
+     275: anewarray     #2                  // class java/lang/Object
+     278: dup
+     279: iconst_0
+     280: aload         4
+     282: aastore
+     283: invokevirtual #320                // Method org/betterx/wover/core/api/Logger.warn:(Ljava/lang/String;[Ljava/lang/Object;)V
+     286: aload_3
+     287: invokevirtual #326                // Method java/util/HashMap.entrySet:()Ljava/util/Set;
+     290: invokeinterface #327,  1          // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+     295: invokedynamic #331,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+     300: invokeinterface #335,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+     305: invokedynamic #341,  0            // InvokeDynamic #5:apply:()Ljava/util/function/BinaryOperator;
+     310: invokeinterface #344,  2          // InterfaceMethod java/util/stream/Stream.reduce:(Ljava/util/function/BinaryOperator;)Ljava/util/Optional;
+     315: ldc_w         #296                // String none
+     318: invokevirtual #348                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+     321: checkcast     #351                // class java/lang/String
+     324: areturn
+     325: ldc_w         #353                // String unknown
+     328: areturn
+    Exception table:
+       from    to  target type
+          31   260   263   Class java/lang/Throwable
+
+  public static java.lang.String printGeneratorInfo(java.lang.String, net.minecraft.world.level.chunk.ChunkGenerator);
+    Code:
+       0: new           #355                // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #357                // Method java/lang/StringBuilder."<init>":()V
+       7: astore_2
+       8: aload_2
+       9: aload_0
+      10: ifnonnull     23
+      13: aload_1
+      14: invokevirtual #358                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      17: invokevirtual #362                // Method java/lang/Class.getSimpleName:()Ljava/lang/String;
+      20: goto          24
+      23: aload_0
+      24: invokevirtual #367                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      27: ldc_w         #371                // String  (
+      30: invokevirtual #367                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      33: aload_1
+      34: invokevirtual #373                // Method java/lang/Object.hashCode:()I
+      37: invokestatic  #376                // Method java/lang/Integer.toHexString:(I)Ljava/lang/String;
+      40: invokevirtual #367                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      43: ldc_w         #380                // String )
+      46: invokevirtual #367                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      49: pop
+      50: aload_1
+      51: instanceof    #166                // class org/betterx/wover/generator/impl/chunkgenerator/ConfiguredChunkGenerator
+      54: ifeq          97
+      57: aload_1
+      58: checkcast     #166                // class org/betterx/wover/generator/impl/chunkgenerator/ConfiguredChunkGenerator
+      61: astore_3
+      62: aload_3
+      63: invokeinterface #168,  1          // InterfaceMethod org/betterx/wover/generator/impl/chunkgenerator/ConfiguredChunkGenerator.wover_getConfiguredWorldPreset:()Lnet/minecraft/resources/ResourceKey;
+      68: astore        4
+      70: aload_2
+      71: ldc_w         #382                // String \n    preset     =
+      74: invokevirtual #367                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      77: aload         4
+      79: ifnonnull     88
+      82: ldc_w         #296                // String none
+      85: goto          93
+      88: aload         4
+      90: invokevirtual #292                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      93: invokevirtual #384                // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      96: pop
+      97: aload_1
+      98: instanceof    #387                // class net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator
+     101: ifeq          156
+     104: aload_1
+     105: checkcast     #387                // class net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator
+     108: astore_3
+     109: aload_3
+     110: invokevirtual #389                // Method net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator.generatorSettings:()Lnet/minecraft/core/Holder;
+     113: invokeinterface #278,  1          // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+     118: astore        4
+     120: aload_2
+     121: ldc_w         #392                // String \n    noise      =
+     124: invokevirtual #367                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     127: aload         4
+     129: invokevirtual #394                // Method java/util/Optional.isEmpty:()Z
+     132: ifeq          141
+     135: ldc_w         #397                // String custom
+     138: goto          152
+     141: aload         4
+     143: invokevirtual #289                // Method java/util/Optional.get:()Ljava/lang/Object;
+     146: checkcast     #290                // class net/minecraft/resources/ResourceKey
+     149: invokevirtual #292                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     152: invokevirtual #384                // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+     155: pop
+     156: aload_1
+     157: instanceof    #234                // class org/betterx/wover/biome/mixin/ChunkGeneratorAccessor
+     160: ifeq          178
+     163: aload_2
+     164: ldc_w         #399                // String \n    features   =
+     167: invokevirtual #367                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     170: aload_1
+     171: invokestatic  #401                // Method enumerateFeatureNamespaces:(Lnet/minecraft/world/level/chunk/ChunkGenerator;)Ljava/lang/String;
+     174: invokevirtual #367                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     177: pop
+     178: aload_2
+     179: invokevirtual #405                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     182: areturn
+
+  public static void printDimensionInfo(net.minecraft.world.level.levelgen.WorldDimensions);
+    Code:
+       0: getstatic     #406                // Field org/betterx/wover/config/api/Configs.MAIN:Lorg/betterx/wover/config/api/MainConfig;
+       3: getfield      #412                // Field org/betterx/wover/config/api/MainConfig.verboseLogging:Lde/ambertation/wunderlib/configs/AbstractConfig$BooleanValue;
+       6: invokevirtual #418                // Method de/ambertation/wunderlib/configs/AbstractConfig$BooleanValue.get:()Ljava/lang/Object;
+       9: checkcast     #421                // class java/lang/Boolean
+      12: invokevirtual #423                // Method java/lang/Boolean.booleanValue:()Z
+      15: ifne          19
+      18: return
+      19: ldc_w         #426                // String World Dimensions
+      22: aload_0
+      23: invokevirtual #130                // Method net/minecraft/world/level/levelgen/WorldDimensions.dimensions:()Ljava/util/Map;
+      26: invokeinterface #136,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      31: invokestatic  #428                // Method printDimensionInfo:(Ljava/lang/String;Ljava/util/Set;)V
+      34: return
+
+  public static void printDimensionInfo(net.minecraft.core.Registry<net.minecraft.world.level.dimension.LevelStem>);
+    Code:
+       0: getstatic     #406                // Field org/betterx/wover/config/api/Configs.MAIN:Lorg/betterx/wover/config/api/MainConfig;
+       3: getfield      #412                // Field org/betterx/wover/config/api/MainConfig.verboseLogging:Lde/ambertation/wunderlib/configs/AbstractConfig$BooleanValue;
+       6: invokevirtual #418                // Method de/ambertation/wunderlib/configs/AbstractConfig$BooleanValue.get:()Ljava/lang/Object;
+       9: checkcast     #421                // class java/lang/Boolean
+      12: invokevirtual #423                // Method java/lang/Boolean.booleanValue:()Z
+      15: ifne          19
+      18: return
+      19: ldc_w         #426                // String World Dimensions
+      22: aload_0
+      23: invokeinterface #432,  1          // InterfaceMethod net/minecraft/core/Registry.entrySet:()Ljava/util/Set;
+      28: invokestatic  #428                // Method printDimensionInfo:(Ljava/lang/String;Ljava/util/Set;)V
+      31: return
+
+  public static void printDimensionInfo(java.lang.String, net.minecraft.world.level.levelgen.WorldDimensions);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #130                // Method net/minecraft/world/level/levelgen/WorldDimensions.dimensions:()Ljava/util/Map;
+       5: invokeinterface #136,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      10: invokestatic  #428                // Method printDimensionInfo:(Ljava/lang/String;Ljava/util/Set;)V
+      13: return
+
+  public static void printDimensionInfo(java.lang.String, java.util.Set<java.util.Map$Entry<net.minecraft.resources.ResourceKey<net.minecraft.world.level.dimension.LevelStem>, net.minecraft.world.level.dimension.LevelStem>>);
+    Code:
+       0: new           #355                // class java/lang/StringBuilder
+       3: dup
+       4: aload_0
+       5: invokedynamic #433,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      10: invokespecial #434                // Method java/lang/StringBuilder."<init>":(Ljava/lang/String;)V
+      13: astore_2
+      14: aload_1
+      15: invokeinterface #140,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      20: astore_3
+      21: aload_3
+      22: invokeinterface #146,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      27: ifeq          145
+      30: aload_3
+      31: invokeinterface #151,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      36: checkcast     #155                // class java/util/Map$Entry
+      39: astore        4
+      41: aload_2
+      42: ldc_w         #435                // String \n -
+      45: invokevirtual #367                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: aload         4
+      50: invokeinterface #157,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      55: checkcast     #290                // class net/minecraft/resources/ResourceKey
+      58: invokevirtual #292                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      61: invokevirtual #384                // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      64: ldc_w         #437                // String :
+      67: invokevirtual #367                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      70: ldc_w         #439                // String \n
+      73: invokevirtual #367                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      76: aload         4
+      78: invokeinterface #172,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      83: checkcast     #175                // class net/minecraft/world/level/dimension/LevelStem
+      86: invokevirtual #177                // Method net/minecraft/world/level/dimension/LevelStem.generator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      89: invokevirtual #441                // Method java/lang/Object.toString:()Ljava/lang/String;
+      92: ldc_w         #442                // String \n
+      95: ldc_w         #439                // String \n
+      98: invokevirtual #444                // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+     101: invokevirtual #367                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     104: ldc_w         #439                // String \n
+     107: invokevirtual #367                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     110: aload         4
+     112: invokeinterface #172,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     117: checkcast     #175                // class net/minecraft/world/level/dimension/LevelStem
+     120: invokevirtual #177                // Method net/minecraft/world/level/dimension/LevelStem.generator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+     123: invokevirtual #448                // Method net/minecraft/world/level/chunk/ChunkGenerator.getBiomeSource:()Lnet/minecraft/world/level/biome/BiomeSource;
+     126: invokevirtual #441                // Method java/lang/Object.toString:()Ljava/lang/String;
+     129: ldc_w         #442                // String \n
+     132: ldc_w         #439                // String \n
+     135: invokevirtual #444                // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+     138: invokevirtual #367                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     141: pop
+     142: goto          21
+     145: getstatic     #74                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+     148: getfield      #314                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+     151: aload_2
+     152: invokevirtual #405                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     155: invokevirtual #452                // Method org/betterx/wover/core/api/Logger.info:(Ljava/lang/String;)V
+     158: return
+
+  private static java.lang.String lambda$enumerateFeatureNamespaces$4(java.lang.String, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #455,  0            // InvokeDynamic #7:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+       7: areturn
+
+  private static java.lang.String lambda$enumerateFeatureNamespaces$3(java.util.Map$Entry);
+    Code:
+       0: aload_0
+       1: invokeinterface #157,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       6: checkcast     #351                // class java/lang/String
+       9: aload_0
+      10: invokeinterface #172,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      15: invokestatic  #458                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      18: invokedynamic #461,  0            // InvokeDynamic #8:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      23: areturn
+
+  private static void lambda$onRegister$2(net.neoforged.neoforge.registries.RegisterEvent$RegisterHelper);
+    Code:
+       0: getstatic     #206                // Field PENDING_GENERATORS:Ljava/util/Map;
+       3: aload_0
+       4: invokedynamic #462,  0            // InvokeDynamic #9:accept:(Lnet/neoforged/neoforge/registries/RegisterEvent$RegisterHelper;)Ljava/util/function/BiConsumer;
+       9: invokeinterface #465,  2          // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+      14: return
+
+  private static void lambda$onRegister$1(net.neoforged.neoforge.registries.RegisterEvent$RegisterHelper, net.minecraft.resources.ResourceLocation, com.mojang.serialization.MapCodec);
+    Code:
+       0: aload_2
+       1: astore_3
+       2: aload_0
+       3: aload_1
+       4: aload_3
+       5: invokeinterface #468,  3          // InterfaceMethod net/neoforged/neoforge/registries/RegisterEvent$RegisterHelper.register:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Object;)V
+      10: return
+
+  private static void lambda$addGeneratorDSL$0(java.util.Map, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #473,  0            // InvokeDynamic #10:get:()Ljava/util/function/Supplier;
+       7: invokeinterface #210,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      12: pop
+      13: return
+
+  static {};
+    Code:
+       0: getstatic     #475                // Field org/betterx/wover/legacy/api/LegacyHelper.BCLIB_CORE:Lorg/betterx/wover/core/api/ModCore;
+       3: getstatic     #48                 // Field org/betterx/wover/generator/impl/chunkgenerator/WoverChunkGenerator.ID:Lnet/minecraft/resources/ResourceLocation;
+       6: invokevirtual #478                // Method org/betterx/wover/core/api/ModCore.convertNamespace:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceLocation;
+       9: putstatic     #67                 // Field LEGACY_ID:Lnet/minecraft/resources/ResourceLocation;
+      12: new           #482                // class java/util/ArrayList
+      15: dup
+      16: iconst_1
+      17: invokespecial #484                // Method java/util/ArrayList."<init>":(I)V
+      20: putstatic     #26                 // Field GENERATOR_IDS:Ljava/util/List;
+      23: new           #487                // class java/util/LinkedHashMap
+      26: dup
+      27: invokespecial #489                // Method java/util/LinkedHashMap."<init>":()V
+      30: putstatic     #206                // Field PENDING_GENERATORS:Ljava/util/Map;
+      33: return
+}
