@@ -8755,3 +8755,11 @@ All 73 existing family-decision tests pass, with scoped Ruff and Basedpyright
 passing. Diagram evidence d07a3b79 was delivered after an HTTP 408 on the first
 push; retrying the same commit with an 8 MiB HTTP post buffer succeeded and the
 delivered ref was verified before committing these dependent decisions.
+
+Working inventory regenerated from 42246219. Independent r1/r2 outputs match
+byte for byte. Inventory SHA-256: a05f8a0d5645a7a36b074b8ba29474d4a2dffe87efcd8cef0ff21e488c56e7a9.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-soaring-houses-towers-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-soaring-houses-towers-r2.json
+```
