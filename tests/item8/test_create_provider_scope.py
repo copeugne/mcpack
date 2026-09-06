@@ -139,6 +139,11 @@ def test_create_common_schematic_and_dynamic_data_sources() -> None:
                 "3bfb8d0f3a362eec0930be85992d6ee2470bf3aa40b1621748ec7c78061b7292",
                 1,
             ),
+            (
+                "create-common-mixins",
+                "e7941906291f7bfe6f15b3989e4db734cb57c0aec9e2ac55f370bd4cd2be7193",
+                43,
+            ),
         ):
             directory = Path("evidence/item-8/sources") / label
             raw = (directory / "identities.json").read_bytes()
@@ -180,3 +185,10 @@ def test_create_remaining_declared_entry_inventory() -> None:
         assert len(common) == 43
         assert not annotated & common
         assert common <= set(archive.namelist())
+        rows = cast(
+            "list[dict[str, str]]",
+            json.loads(
+                Path("evidence/item-8/sources/create-common-mixins/identities.json").read_text()
+            ),
+        )
+        assert {row["class"] for row in rows} == common

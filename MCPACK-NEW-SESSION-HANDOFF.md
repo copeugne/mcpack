@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Create common-mixin batch is delivered: all 43 classes in source 9ad30e0
+(extractor 969a3d9), independent repeat exact, roles in provider-scope.md.
+Four focused checks and scoped quality checks pass. Do not recapture these
+hooks. Remaining: 54 annotated entry classes, including registry reconciliation
+and the concrete CreateBuiltInRegistries.init delegate, plus Ponder consumers
+and embedded Flywheel/Ponder/Registrate roles. No new family candidate added.
+Census remains 89 resolved, 47 open. No runtime or capture process is live.
+
 Create dynamic-pack membership is resolved: StandardBuilder source 23fbee3
 (extractor 346e42e) writes recipe JSON; parent writes item tags. No family added.
 Four focused checks and scoped quality checks pass. Remaining top-level entry
