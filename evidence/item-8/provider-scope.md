@@ -5551,3 +5551,26 @@ Three focused Fabric cases and scoped Ruff/Basedpyright pass with the commands
 above. Remaining whole-provider work is the other bundled entry/mixin roles,
 particularly resource loading. Reuse all closed biome and GameTest roles.
 Census remains 90 resolved, 46 open; no family candidate was added.
+
+### Fabric resource-loading checkpoint
+
+Source cce2d3d (extractor 8cf0d23) independently reproduces the thirteen declared
+common resource-loading mixins, generated entry and ResourceManagerHelperImpl.
+The existing focused check binds their complete declared set and source hashes.
+Four Fabric cases and scoped Ruff/Basedpyright pass with the commands above.
+
+The hooks cover pack visibility/activation, resource type and source tracking,
+reload-listener ordering, default/test pack selection and known-pack registry
+synchronization. No independent site candidate has emerged. ResourceManagerHelperImpl
+registers caller-provided mod pack paths and reload listeners. Two concrete
+consumers were retained separately in 6326f21 (extractor 149e849), with independent
+byte-for-byte reproduction: ModResourcePackUtil and ModNioResourcePack.
+
+ModNioResourcePack opens mod paths and overlays. ModResourcePackUtil's fallback
+resources are pack.mcmeta and pack.png. The default/test selection methods call
+ModResourcePackCreator.loadPacks. That specific pack-discovery delegate remains
+to inspect before closing this module; do not restart its thirteen hooks or
+expand registry packet behavior into a networking audit. The two-consumer source
+still needs its focused identity binding alongside the final discovery result.
+Census remains 90 resolved, 46 open providers. Other Fabric module entry/mixin
+roles remain after this resource-loading question.

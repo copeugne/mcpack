@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric resource sources are delivered: cce2d3d (extractor 8cf0d23), thirteen
+common hooks, entry and ResourceManagerHelperImpl; 6326f21 (extractor 149e849),
+ModResourcePackUtil and ModNioResourcePack. Both independently reproduce.
+Four focused Fabric cases and scoped checks pass, binding the first batch.
+Next: inspect ModResourcePackCreator.loadPacks, the concrete default/test pack
+discovery delegate, then bind the two-consumer source and record final module
+roles. Other Fabric modules still remain. No new family candidate; census is
+90 resolved, 46 open. No live runtime or capture process.
+
 Fabric GameTest roles are resolved from source 6bffda6 (extractor ad51ae4):
 five mixins and three entry/namespace consumers, independently reproduced.
 The module registers tests and loads SNBT resources; no natural placement

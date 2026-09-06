@@ -85,6 +85,16 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
     ("module", "label", "digest", "count", "consumers"),
     [
         (
+            "fabric-resource-loader-v0-1.3.1+4ea8954419",
+            "fabric-resource-loading",
+            "4030af446b6db49bce752d0d87cc98fb1e937c611c7a483b8fd8fe9dc199d57f",
+            13,
+            {
+                "net/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl.class",
+                "org/sinytra/fabric/resource_loader/generated/GeneratedEntryPoint.class",
+            },
+        ),
+        (
             "fabric-biome-api-v1-13.0.31+1e62d33c19",
             "fabric-biome-selection",
             "de014a8e4cb7983f0b7dee3f690487f1d7a0fe016dea4855f91d42202331cd73",
