@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-06
 
+Supplementaries placement/processor membership paths are resolved in source
+a74ae7b, extracted by e1e2005. Reuse sources/supplementaries-placement-processor
+under evidence/item-8. Three class identities are bound by the existing provider
+test: both cases pass; scoped Ruff and Basedpyright pass after a line-length fix.
+The exclusion placement only queries other structure sets; the processor
+transforms blocks within existing template block information. Neither adds a
+family. Cave-urn cache remains a named canonical-boundary candidate.
+
+Provider census remains 78 resolved, 58 open. Next concrete Supplementaries
+membership checks are its SupplementariesForge loader and common delegates,
+MixinPlugin and declared common hooks (including the two Stronghold sconce
+mixins), plus full payload and the two nested archives. Exploratory metadata
+inspection found mixinsquared-forge-0.3.3.jar and
+sable-companion-common-1.21.1-1.6.0.jar. This is not a nested-provider disposition
+or authorization to re-enable Sable. Bind the actual loader reachability and
+contribution roles using existing tooling before closing Supplementaries.
+Do not repeat resolved roots, pools, templates, features, elevator or processor
+analysis. Source captures alone do not reduce the provider/family backlog.
+
 Creating Space provider coverage is now RESOLVED. See its final disposition in
 evidence/item-8/provider-scope.md and test_creating_space_provider_scope.py.
 Four existing roots, five connected pools and six templates are accounted for;
