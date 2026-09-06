@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 119 of 136. The exact queue below has 17 open rows.
+Supported provider dispositions: 120 of 136. The exact queue below has 16 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -623,7 +623,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `YungsExtras-1.21.1-NeoForge-5.1.1.jar` | `yungs-extras-desert-code`, `yungs-extras-generators`, `yungs-extras-initialization`, `yungs-extras-module-default`, `yungs-extras-processor-bindings`, `yungs-extras-registration` | RESOLVED: see YUNG Extras provider disposition below. |
 | `Zeta-1.1-40.jar` | `quark-enablement-callers`, `zeta-biome-modifier`, `zeta-component-biomes`, `zeta-compound-biome`, `zeta-config-binding`, `zeta-config-event-fields`, `zeta-deferred-feature`, `zeta-enablement-inputs`, `zeta-generation-applicability`, `zeta-generation-spawn`, `zeta-generator-dispatch`, `zeta-horizontal-directions`, `zeta-module-assignment`, `zeta-module-name`, `zeta-module-section`, `zeta-stone-ore` | RESOLVED: Consumer module/configuration, registry, biome/generator and structure-replacement dispatch. No independent family. See Zeta disposition below. |
 | `[Neoforge]ctov-3.6.3.jar` | `ctov-provider` (82ac234), test_ctov_provider_scope.py, selection/bundle checks, existing CTOV regressions/graphs | RESOLVED: 78 existing roots, village/outpost components, compatibility injections and processors. Disconnected and missing components accounted for below. |
-| `accessories-neoforge-1.1.0-beta.53+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `accessories-neoforge-1.1.0-beta.53+1.21.1.jar` | accessories-provider and accessories-startup | RESOLVED: Existing-entity accessory equipment/data APIs, no independent family. Preserve inventory/loot/NBT effects below. |
 | `adorabuild-structures-2.11.0-neoforge-1.21.3.jar` | `adorabuild-provider`, existing runtime/root and pool graph evidence | RESOLVED: 106 existing roots; all 110 pools and 121 templates connected; one preserved missing pool reference. See AdoraBuild provider disposition below. |
 | `aether-1.21.1-1.5.10-neoforge.jar` | Existing Aether source captures, test_aether_provider_scope.py and focused candidate/component checks | RESOLVED: Three dungeon candidates, cloud terrain, conditional holiday-tree boundary, inactive portal components, common hooks and selected-library roles accounted for below. Canonical grouping and attributes remain open. |
 | `aethersdelight-0.1.4.2-1.21.1.jar` | `aethers-delight-provider` (13d2013), test_aethers_delight_provider_scope.py | RESOLVED: Ore, plant and food/item content, including both packaged compatibility data packs. No independent structure family. Full disposition below. |
@@ -7662,3 +7662,44 @@ Disposition: no independent generated family. Whole providers: 119 resolved,
 17 open. Working groups remain 410 and 100 explicitly provisional Moog decisions
 remain. Canonical grouping, attributes and final Item 8 review/main delivery
 are still incomplete. Stop tracing generic CDP recipe/network/processing code.
+
+## Accessories whole-provider membership closure
+
+Frozen accessories-neoforge-1.1.0-beta.53+1.21.1.jar SHA-256:
+`10017a3da78ea63e9ece27a1ca32f8cf490362f348778cf8cb759e7282f3beb0`.
+The complete archive has 416 classes, 27 data files, 133 client assets and twelve
+other metadata/schema files. Data defines accessory entity/group/slot resources
+and enchantment/entity/item tags. Assets are languages, UI textures, shaders
+and atlases. No nested archive, service descriptor or packaged structure,
+pool/template generation content is present.
+
+7aab0d60 retains the two automatic entries, all 32 common hooks and both mixin
+plugins. c1e2927f retains Accessories.init and AccessoriesEventHandler, giving
+38 distinct captured classes. The 36 client-only hooks are separately declared.
+Both plugins return empty extra-mixin lists. The common plugin can disable its
+temporary NBT fixes using a configuration marker and logs an old-world-data
+warning. The NeoForge plugin selects the Curios hook only with curios present
+and cclayer absent. No frozen configuration was changed.
+
+Entries and delegates implement accessory capabilities, armor-slot support,
+equipping/use/drop handling, commands, render data and synchronization.
+onWorldTick reaches player revalidation after reload; entityLoad synchronizes
+existing player containers. Common hooks extend equipment/inventory,
+enchantment/loot and existing entity behavior, NBT and accessors. These affect
+real gameplay and saved data but do not introduce an independent generated
+family. Preserve their effects for attribution; this is not a compatibility,
+privacy or no-gameplay-impact claim. Do not expand membership into general
+packet, renderer, equipment or NBT implementation audits.
+
+The focused command
+`uv run pytest -q tests/item8/test_accessories_provider_scope.py`
+passes one case binding the complete archive categories, entry/hook/plugin
+coverage and source bytes. Scoped Ruff and Basedpyright pass. Both independent
+r1 source reproductions match disassembly and identity manifest bytes. Exact
+commands and extractor commits are in the capture READMEs. No new measurement
+system or generalized verification framework was added.
+
+Disposition: no independent generated family. Whole providers: 120 resolved,
+16 open. The 410 working groups and 100 explicitly provisional Moog grouping
+decisions remain unchanged. Item 8 canonical grouping, attributes and final
+review/main delivery are incomplete.

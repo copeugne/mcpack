@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Accessories membership is resolved from 7aab0d60 and c1e2927f: accessory
+inventory/equipment and existing-entity APIs, no independent generated family.
+All entries/common hooks/plugins and full payload are bound by the passing
+focused test. Preserve inventory/loot/NBT effects and plugin conditions; stop
+tracing generic Accessories internals. Whole providers: 120 resolved, 16 open.
+Working groups remain 410 and 100 provisional Moog decisions remain. Continue
+provider membership and canonical grouping before attributes. Final Item 8
+gate, clean review and main merge remain open.
+
+
 Create Dragons Plus membership is resolved from 332870dc and fb5716dd.
 Machine/fluid/dye/recipe and existing-loot support, no independent generated
 family. Two focused cases bind parent/nested payloads and all entry/hook
