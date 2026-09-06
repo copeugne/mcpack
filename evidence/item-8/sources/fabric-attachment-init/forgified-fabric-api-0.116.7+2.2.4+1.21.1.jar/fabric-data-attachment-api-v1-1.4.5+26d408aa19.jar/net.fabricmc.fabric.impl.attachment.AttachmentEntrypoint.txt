@@ -1,0 +1,109 @@
+Compiled from "AttachmentEntrypoint.java"
+public class net.fabricmc.fabric.impl.attachment.AttachmentEntrypoint implements net.fabricmc.api.ModInitializer {
+  public static final org.slf4j.Logger LOGGER;
+
+  public net.fabricmc.fabric.impl.attachment.AttachmentEntrypoint();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public void onInitialize();
+    Code:
+       0: getstatic     #7                  // Field net/fabricmc/fabric/api/entity/event/v1/ServerPlayerEvents.AFTER_RESPAWN:Lnet/fabricmc/fabric/api/event/Event;
+       3: invokedynamic #13,  0             // InvokeDynamic #0:afterRespawn:()Lnet/fabricmc/fabric/api/entity/event/v1/ServerPlayerEvents$AfterRespawn;
+       8: invokevirtual #17                 // Method net/fabricmc/fabric/api/event/Event.register:(Ljava/lang/Object;)V
+      11: getstatic     #23                 // Field net/fabricmc/fabric/api/entity/event/v1/ServerEntityWorldChangeEvents.AFTER_ENTITY_CHANGE_WORLD:Lnet/fabricmc/fabric/api/event/Event;
+      14: invokedynamic #28,  0             // InvokeDynamic #1:afterChangeWorld:()Lnet/fabricmc/fabric/api/entity/event/v1/ServerEntityWorldChangeEvents$AfterEntityChange;
+      19: invokevirtual #17                 // Method net/fabricmc/fabric/api/event/Event.register:(Ljava/lang/Object;)V
+      22: getstatic     #32                 // Field net/fabricmc/fabric/api/entity/event/v1/ServerLivingEntityEvents.MOB_CONVERSION:Lnet/fabricmc/fabric/api/event/Event;
+      25: invokedynamic #37,  0             // InvokeDynamic #2:onConversion:()Lnet/fabricmc/fabric/api/entity/event/v1/ServerLivingEntityEvents$MobConversion;
+      30: invokevirtual #17                 // Method net/fabricmc/fabric/api/event/Event.register:(Ljava/lang/Object;)V
+      33: return
+
+  public static void transfer(net.neoforged.neoforge.attachment.IAttachmentHolder, net.neoforged.neoforge.attachment.IAttachmentHolder, boolean, boolean);
+    Code:
+       0: aload_0
+       1: checkcast     #41                 // class net/fabricmc/fabric/mixin/attachment/AttachmentHolderAccessor
+       4: invokeinterface #43,  1           // InterfaceMethod net/fabricmc/fabric/mixin/attachment/AttachmentHolderAccessor.invokeGetAttachmentMap:()Ljava/util/Map;
+       9: astore        4
+      11: aload         4
+      13: ifnonnull     17
+      16: return
+      17: aload         4
+      19: invokeinterface #47,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      24: invokeinterface #53,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      29: astore        5
+      31: aload         5
+      33: invokeinterface #59,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      38: ifeq          127
+      41: aload         5
+      43: invokeinterface #65,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      48: checkcast     #69                 // class java/util/Map$Entry
+      51: astore        6
+      53: aload         6
+      55: invokeinterface #71,  1           // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      60: checkcast     #74                 // class net/neoforged/neoforge/attachment/AttachmentType
+      63: astore        7
+      65: aload         7
+      67: invokestatic  #76                 // Method net/fabricmc/fabric/impl/attachment/AttachmentRegistryImpl.getFabricAttachmentType:(Lnet/neoforged/neoforge/attachment/AttachmentType;)Lnet/fabricmc/fabric/api/attachment/v1/AttachmentType;
+      70: astore        8
+      72: aload         8
+      74: ifnull        124
+      77: iload_2
+      78: ifeq          94
+      81: aload         7
+      83: checkcast     #82                 // class net/fabricmc/fabric/mixin/attachment/AttachmentTypeAccessor
+      86: invokeinterface #84,  1           // InterfaceMethod net/fabricmc/fabric/mixin/attachment/AttachmentTypeAccessor.getSerializer:()Lnet/neoforged/neoforge/attachment/IAttachmentSerializer;
+      91: ifnonnull     124
+      94: iload_3
+      95: ifeq          108
+      98: aload         8
+     100: invokeinterface #88,  1           // InterfaceMethod net/fabricmc/fabric/api/attachment/v1/AttachmentType.copyOnDeath:()Z
+     105: ifeq          124
+     108: aload_1
+     109: aload         7
+     111: aload         6
+     113: invokeinterface #93,  1           // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     118: invokeinterface #96,  3           // InterfaceMethod net/neoforged/neoforge/attachment/IAttachmentHolder.setData:(Lnet/neoforged/neoforge/attachment/AttachmentType;Ljava/lang/Object;)Ljava/lang/Object;
+     123: pop
+     124: goto          31
+     127: return
+
+  private static void lambda$onInitialize$2(net.minecraft.world.entity.Mob, net.minecraft.world.entity.Mob, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_0
+       3: iconst_1
+       4: invokestatic  #102                // Method transfer:(Lnet/neoforged/neoforge/attachment/IAttachmentHolder;Lnet/neoforged/neoforge/attachment/IAttachmentHolder;ZZ)V
+       7: return
+
+  private static void lambda$onInitialize$1(net.minecraft.world.entity.Entity, net.minecraft.world.entity.Entity, net.minecraft.server.level.ServerLevel, net.minecraft.server.level.ServerLevel);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_0
+       3: iconst_0
+       4: invokestatic  #102                // Method transfer:(Lnet/neoforged/neoforge/attachment/IAttachmentHolder;Lnet/neoforged/neoforge/attachment/IAttachmentHolder;ZZ)V
+       7: return
+
+  private static void lambda$onInitialize$0(net.minecraft.server.level.ServerPlayer, net.minecraft.server.level.ServerPlayer, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_1
+       3: iload_2
+       4: ifne          11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: invokestatic  #102                // Method transfer:(Lnet/neoforged/neoforge/attachment/IAttachmentHolder;Lnet/neoforged/neoforge/attachment/IAttachmentHolder;ZZ)V
+      15: return
+
+  static {};
+    Code:
+       0: invokestatic  #108                // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       3: putstatic     #114                // Field LOGGER:Lorg/slf4j/Logger;
+       6: return
+}
