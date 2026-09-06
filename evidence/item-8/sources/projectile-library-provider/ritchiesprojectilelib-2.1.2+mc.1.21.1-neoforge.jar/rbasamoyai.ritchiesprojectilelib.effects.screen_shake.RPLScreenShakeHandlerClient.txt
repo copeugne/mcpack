@@ -1,0 +1,141 @@
+Compiled from "RPLScreenShakeHandlerClient.java"
+public class rbasamoyai.ritchiesprojectilelib.effects.screen_shake.RPLScreenShakeHandlerClient {
+  private static final java.util.Map<net.minecraft.resources.ResourceLocation, rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ModScreenShakeHandler> HANDLERS;
+
+  public static final net.minecraft.resources.ResourceLocation DEFAULT_HANDLER_ID;
+
+  public static final rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ModScreenShakeHandler$Impl DEFAULT_HANDLER;
+
+  public rbasamoyai.ritchiesprojectilelib.effects.screen_shake.RPLScreenShakeHandlerClient();
+    Code:
+       0: aload_0
+       1: invokespecial #26                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static <T extends rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ModScreenShakeHandler> T registerModScreenShakeHandler(net.minecraft.resources.ResourceLocation, T);
+    Code:
+       0: getstatic     #35                 // Field HANDLERS:Ljava/util/Map;
+       3: aload_0
+       4: invokeinterface #41,  2           // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+       9: ifeq          29
+      12: new           #43                 // class java/lang/IllegalStateException
+      15: dup
+      16: aload_0
+      17: invokestatic  #49                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      20: invokedynamic #61,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      25: invokespecial #64                 // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      28: athrow
+      29: getstatic     #35                 // Field HANDLERS:Ljava/util/Map;
+      32: aload_0
+      33: aload_1
+      34: invokeinterface #68,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      39: pop
+      40: aload_1
+      41: areturn
+
+  public static void tick(net.minecraft.client.Minecraft);
+    Code:
+       0: aload_0
+       1: invokevirtual #79                 // Method net/minecraft/client/Minecraft.isPaused:()Z
+       4: ifeq          8
+       7: return
+       8: getstatic     #35                 // Field HANDLERS:Ljava/util/Map;
+      11: invokeinterface #83,  1           // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      16: invokeinterface #89,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      21: astore_1
+      22: aload_1
+      23: invokeinterface #94,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      28: ifeq          51
+      31: aload_1
+      32: invokeinterface #98,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      37: checkcast     #9                  // class rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ModScreenShakeHandler
+      40: astore_2
+      41: aload_2
+      42: aload_0
+      43: invokeinterface #100,  2          // InterfaceMethod rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ModScreenShakeHandler.tick:(Lnet/minecraft/client/Minecraft;)V
+      48: goto          22
+      51: return
+
+  public static rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeContext getScreenShake(float);
+    Code:
+       0: new           #106                // class rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeContext
+       3: dup
+       4: fload_0
+       5: invokespecial #109                // Method rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeContext."<init>":(F)V
+       8: astore_1
+       9: getstatic     #35                 // Field HANDLERS:Ljava/util/Map;
+      12: invokeinterface #83,  1           // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      17: invokeinterface #89,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      22: astore_2
+      23: aload_2
+      24: invokeinterface #94,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      29: ifeq          52
+      32: aload_2
+      33: invokeinterface #98,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      38: checkcast     #9                  // class rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ModScreenShakeHandler
+      41: astore_3
+      42: aload_3
+      43: aload_1
+      44: invokeinterface #113,  2          // InterfaceMethod rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ModScreenShakeHandler.applyEffects:(Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeContext;)V
+      49: goto          23
+      52: aload_1
+      53: areturn
+
+  public static void addShakeEffect(rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeEffect);
+    Code:
+       0: getstatic     #121                // Field DEFAULT_HANDLER:Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ModScreenShakeHandler$Impl;
+       3: aload_0
+       4: invokevirtual #124                // Method rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ModScreenShakeHandler$Impl.addEffect:(Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;)V
+       7: return
+
+  public static void addShakeEffect(net.minecraft.resources.ResourceLocation, rbasamoyai.ritchiesprojectilelib.effects.screen_shake.ScreenShakeEffect);
+    Code:
+       0: getstatic     #35                 // Field HANDLERS:Ljava/util/Map;
+       3: aload_0
+       4: invokeinterface #41,  2           // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+       9: ifne          13
+      12: return
+      13: getstatic     #35                 // Field HANDLERS:Ljava/util/Map;
+      16: aload_0
+      17: invokeinterface #131,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      22: checkcast     #9                  // class rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ModScreenShakeHandler
+      25: aload_1
+      26: invokeinterface #132,  2          // InterfaceMethod rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ModScreenShakeHandler.addEffect:(Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ScreenShakeEffect;)V
+      31: return
+
+  public static void onPlayerLogOut(net.minecraft.world.entity.player.Player);
+    Code:
+       0: getstatic     #35                 // Field HANDLERS:Ljava/util/Map;
+       3: invokeinterface #83,  1           // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+       8: invokeinterface #89,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      13: astore_1
+      14: aload_1
+      15: invokeinterface #94,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      20: ifeq          42
+      23: aload_1
+      24: invokeinterface #98,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      29: checkcast     #9                  // class rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ModScreenShakeHandler
+      32: astore_2
+      33: aload_2
+      34: invokeinterface #138,  1          // InterfaceMethod rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ModScreenShakeHandler.clearEffects:()V
+      39: goto          14
+      42: return
+
+  static {};
+    Code:
+       0: new           #142                // class it/unimi/dsi/fastutil/objects/Object2ReferenceOpenHashMap
+       3: dup
+       4: invokespecial #143                // Method it/unimi/dsi/fastutil/objects/Object2ReferenceOpenHashMap."<init>":()V
+       7: putstatic     #35                 // Field HANDLERS:Ljava/util/Map;
+      10: ldc           #145                // String shake_handler
+      12: invokestatic  #151                // Method rbasamoyai/ritchiesprojectilelib/RitchiesProjectileLib.resource:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      15: putstatic     #153                // Field DEFAULT_HANDLER_ID:Lnet/minecraft/resources/ResourceLocation;
+      18: getstatic     #153                // Field DEFAULT_HANDLER_ID:Lnet/minecraft/resources/ResourceLocation;
+      21: new           #7                  // class rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ModScreenShakeHandler$Impl
+      24: dup
+      25: invokespecial #154                // Method rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ModScreenShakeHandler$Impl."<init>":()V
+      28: invokestatic  #156                // Method registerModScreenShakeHandler:(Lnet/minecraft/resources/ResourceLocation;Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ModScreenShakeHandler;)Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ModScreenShakeHandler;
+      31: checkcast     #7                  // class rbasamoyai/ritchiesprojectilelib/effects/screen_shake/ModScreenShakeHandler$Impl
+      34: putstatic     #121                // Field DEFAULT_HANDLER:Lrbasamoyai/ritchiesprojectilelib/effects/screen_shake/ModScreenShakeHandler$Impl;
+      37: return
+}
