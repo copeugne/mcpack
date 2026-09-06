@@ -1,0 +1,89 @@
+Compiled from "BiomeModificationsImpl.java"
+class dev.architectury.registry.level.biome.forge.BiomeModificationsImpl$BiomeModifierImpl implements net.neoforged.neoforge.common.world.BiomeModifier {
+  private static final dev.architectury.registry.level.biome.forge.BiomeModificationsImpl$BiomeModifierImpl INSTANCE;
+
+  private dev.architectury.registry.level.biome.forge.BiomeModificationsImpl$BiomeModifierImpl();
+    Code:
+       0: aload_0
+       1: invokespecial #42                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public void modify(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>, net.neoforged.neoforge.common.world.BiomeModifier$Phase, net.neoforged.neoforge.common.world.ModifiableBiomeInfo$BiomeInfo$Builder);
+    Code:
+       0: getstatic     #53                 // Field dev/architectury/registry/level/biome/forge/BiomeModificationsImpl$2.$SwitchMap$net$neoforged$neoforge$common$world$BiomeModifier$Phase:[I
+       3: aload_2
+       4: invokevirtual #57                 // Method net/neoforged/neoforge/common/world/BiomeModifier$Phase.ordinal:()I
+       7: iaload
+       8: tableswitch   { // 1 to 4
+                     1: 40
+                     2: 46
+                     3: 52
+                     4: 58
+               default: 64
+          }
+      40: getstatic     #61                 // Field dev/architectury/registry/level/biome/forge/BiomeModificationsImpl.ADDITIONS:Ljava/util/List;
+      43: goto          65
+      46: getstatic     #64                 // Field dev/architectury/registry/level/biome/forge/BiomeModificationsImpl.REMOVALS:Ljava/util/List;
+      49: goto          65
+      52: getstatic     #67                 // Field dev/architectury/registry/level/biome/forge/BiomeModificationsImpl.REPLACEMENTS:Ljava/util/List;
+      55: goto          65
+      58: getstatic     #70                 // Field dev/architectury/registry/level/biome/forge/BiomeModificationsImpl.POST_PROCESSING:Ljava/util/List;
+      61: goto          65
+      64: aconst_null
+      65: astore        4
+      67: aload         4
+      69: ifnonnull     73
+      72: return
+      73: aload_1
+      74: invokeinterface #78,  1           // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+      79: aload_3
+      80: invokestatic  #82                 // Method dev/architectury/registry/level/biome/forge/BiomeModificationsImpl.wrapSelectionContext:(Ljava/util/Optional;Lnet/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder;)Ldev/architectury/registry/level/biome/BiomeModifications$BiomeContext;
+      83: astore        5
+      85: new           #29                 // class dev/architectury/registry/level/biome/forge/BiomeModificationsImpl$MutableBiomeWrapped
+      88: dup
+      89: aload_3
+      90: invokespecial #85                 // Method dev/architectury/registry/level/biome/forge/BiomeModificationsImpl$MutableBiomeWrapped."<init>":(Lnet/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder;)V
+      93: astore        6
+      95: aload         4
+      97: invokeinterface #89,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     102: astore        7
+     104: aload         7
+     106: invokeinterface #95,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     111: ifeq          164
+     114: aload         7
+     116: invokeinterface #99,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     121: checkcast     #101                // class org/apache/commons/lang3/tuple/Pair
+     124: astore        8
+     126: aload         8
+     128: invokevirtual #104                // Method org/apache/commons/lang3/tuple/Pair.getLeft:()Ljava/lang/Object;
+     131: checkcast     #106                // class java/util/function/Predicate
+     134: aload         5
+     136: invokeinterface #110,  2          // InterfaceMethod java/util/function/Predicate.test:(Ljava/lang/Object;)Z
+     141: ifeq          161
+     144: aload         8
+     146: invokevirtual #113                // Method org/apache/commons/lang3/tuple/Pair.getRight:()Ljava/lang/Object;
+     149: checkcast     #115                // class java/util/function/BiConsumer
+     152: aload         5
+     154: aload         6
+     156: invokeinterface #119,  3          // InterfaceMethod java/util/function/BiConsumer.accept:(Ljava/lang/Object;Ljava/lang/Object;)V
+     161: goto          104
+     164: return
+
+  public com.mojang.serialization.MapCodec<? extends net.neoforged.neoforge.common.world.BiomeModifier> codec();
+    Code:
+       0: getstatic     #139                // Field dev/architectury/registry/level/biome/forge/BiomeModificationsImpl.noneBiomeModCodec:Lcom/mojang/serialization/MapCodec;
+       3: ifnull        10
+       6: getstatic     #139                // Field dev/architectury/registry/level/biome/forge/BiomeModificationsImpl.noneBiomeModCodec:Lcom/mojang/serialization/MapCodec;
+       9: areturn
+      10: getstatic     #141                // Field INSTANCE:Ldev/architectury/registry/level/biome/forge/BiomeModificationsImpl$BiomeModifierImpl;
+      13: invokestatic  #147                // Method com/mojang/serialization/MapCodec.unit:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      16: areturn
+
+  static {};
+    Code:
+       0: new           #2                  // class dev/architectury/registry/level/biome/forge/BiomeModificationsImpl$BiomeModifierImpl
+       3: dup
+       4: invokespecial #149                // Method "<init>":()V
+       7: putstatic     #141                // Field INSTANCE:Ldev/architectury/registry/level/biome/forge/BiomeModificationsImpl$BiomeModifierImpl;
+      10: return
+}
