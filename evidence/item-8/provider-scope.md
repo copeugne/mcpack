@@ -7781,3 +7781,25 @@ Scoped quality checks pass after replacing an initially rejected split string
 with the exact single-line member name. Every capture reproduces byte-for-byte
 with its recorded extractor. Source README files retain the commands and hashes.
 Whole providers remain 121 resolved and 15 open; no canonical grouping changed.
+
+C2ME continuation: 5a44fce9 retains the remaining 18 module initialization
+boundaries (26 classes). Entries initialize settings, view-distance networking
+and serialization of supplied chunks. Config and listener delegates remain
+bounded startup inputs to reconcile. Do not expand this into a packet or NBT
+correctness audit. 7658d2f6 retains ten pool/generation hooks: existing random
+source replacement, aquifer computation, structure terrain blending, End biome
+and block-shape caching, and biome/noise executor redirection. cb594f9b retains
+the pool codec wrapper, which locks and delegates the existing codec. This
+closes the pool-wrapper question without adding a family. All these captures
+reproduce byte-for-byte using their committed extractor and README command.
+Extractor Ruff and Basedpyright checks pass. No new measurement was run.
+
+The remaining index points to accessors, existing-structure state,
+chunk lifecycle/serialization, ore and surface computation, density-function
+compilation, noise math and random implementations. Reconcile them against the
+already inspected callers; a class-name reference is neither an additional
+family nor automatic justification to inspect every implementation helper.
+Whole-provider closure still requires accounting for the remaining hooks,
+startup delegates and bundled-library entry roles. Preserve the existing
+threading disposition and stop tracing already resolved paths. Counts remain
+121 providers resolved, 15 open, with 100 provisional Moog grouping decisions.
