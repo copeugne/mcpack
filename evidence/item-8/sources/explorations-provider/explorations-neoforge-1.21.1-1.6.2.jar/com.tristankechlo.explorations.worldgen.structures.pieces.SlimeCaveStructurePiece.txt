@@ -1,0 +1,234 @@
+Compiled from "SlimeCaveStructurePiece.java"
+public class com.tristankechlo.explorations.worldgen.structures.pieces.SlimeCaveStructurePiece extends net.minecraft.world.level.levelgen.structure.TemplateStructurePiece {
+  private static final net.minecraft.util.InclusiveRange<java.lang.Integer> RANGE;
+
+  private static net.minecraft.nbt.Tag spawnDataTag;
+
+  public com.tristankechlo.explorations.worldgen.structures.pieces.SlimeCaveStructurePiece(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager, net.minecraft.resources.ResourceLocation, net.minecraft.core.BlockPos, net.minecraft.world.level.block.Rotation);
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field com/tristankechlo/explorations/init/ModRegistry.SLIME_CAVE_PIECE:Lcom/tristankechlo/explorations/registration/RegistryObject;
+       4: invokeinterface #7,  1            // InterfaceMethod com/tristankechlo/explorations/registration/RegistryObject.get:()Ljava/lang/Object;
+       9: checkcast     #13                 // class net/minecraft/world/level/levelgen/structure/pieces/StructurePieceType
+      12: iconst_0
+      13: aload_1
+      14: aload_2
+      15: aload_2
+      16: invokevirtual #15                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      19: aload         4
+      21: invokestatic  #21                 // Method makeSettings:(Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+      24: aload_3
+      25: invokespecial #27                 // Method net/minecraft/world/level/levelgen/structure/TemplateStructurePiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;ILnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/resources/ResourceLocation;Ljava/lang/String;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/core/BlockPos;)V
+      28: invokestatic  #33                 // Method createSpawnData:()V
+      31: return
+
+  public com.tristankechlo.explorations.worldgen.structures.pieces.SlimeCaveStructurePiece(net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager, net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field com/tristankechlo/explorations/init/ModRegistry.SLIME_CAVE_PIECE:Lcom/tristankechlo/explorations/registration/RegistryObject;
+       4: invokeinterface #7,  1            // InterfaceMethod com/tristankechlo/explorations/registration/RegistryObject.get:()Ljava/lang/Object;
+       9: checkcast     #13                 // class net/minecraft/world/level/levelgen/structure/pieces/StructurePieceType
+      12: aload_2
+      13: aload_1
+      14: aload_2
+      15: invokedynamic #37,  0             // InvokeDynamic #0:apply:(Lnet/minecraft/nbt/CompoundTag;)Ljava/util/function/Function;
+      20: invokespecial #41                 // Method net/minecraft/world/level/levelgen/structure/TemplateStructurePiece."<init>":(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceType;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Ljava/util/function/Function;)V
+      23: invokestatic  #33                 // Method createSpawnData:()V
+      26: return
+
+  public com.tristankechlo.explorations.worldgen.structures.pieces.SlimeCaveStructurePiece(net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext, net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #44                 // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePieceSerializationContext.structureTemplateManager:()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+       5: aload_2
+       6: invokespecial #50                 // Method "<init>":(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/nbt/CompoundTag;)V
+       9: return
+
+  private static net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings makeSettings(net.minecraft.world.level.block.Rotation);
+    Code:
+       0: new           #53                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings
+       3: dup
+       4: invokespecial #55                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings."<init>":()V
+       7: aload_0
+       8: invokevirtual #57                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.setRotation:(Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+      11: getstatic     #60                 // Field com/tristankechlo/explorations/worldgen/structures/processors/DeepslateProcessor.INSTANCE:Lcom/tristankechlo/explorations/worldgen/structures/processors/DeepslateProcessor;
+      14: invokevirtual #66                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.addProcessor:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+      17: areturn
+
+  private static void createSpawnData();
+    Code:
+       0: getstatic     #70                 // Field spawnDataTag:Lnet/minecraft/nbt/Tag;
+       3: ifnonnull     83
+       6: new           #74                 // class net/minecraft/nbt/CompoundTag
+       9: dup
+      10: invokespecial #76                 // Method net/minecraft/nbt/CompoundTag."<init>":()V
+      13: astore_0
+      14: aload_0
+      15: ldc           #77                 // String id
+      17: ldc           #79                 // String minecraft:slime
+      19: invokevirtual #81                 // Method net/minecraft/nbt/CompoundTag.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      22: new           #85                 // class net/minecraft/world/level/SpawnData$CustomSpawnRules
+      25: dup
+      26: getstatic     #87                 // Field RANGE:Lnet/minecraft/util/InclusiveRange;
+      29: getstatic     #87                 // Field RANGE:Lnet/minecraft/util/InclusiveRange;
+      32: invokespecial #91                 // Method net/minecraft/world/level/SpawnData$CustomSpawnRules."<init>":(Lnet/minecraft/util/InclusiveRange;Lnet/minecraft/util/InclusiveRange;)V
+      35: astore_1
+      36: new           #94                 // class net/minecraft/world/level/SpawnData
+      39: dup
+      40: aload_0
+      41: aload_1
+      42: invokestatic  #96                 // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      45: invokestatic  #102                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      48: invokespecial #106                // Method net/minecraft/world/level/SpawnData."<init>":(Lnet/minecraft/nbt/CompoundTag;Ljava/util/Optional;Ljava/util/Optional;)V
+      51: astore_2
+      52: getstatic     #109                // Field net/minecraft/world/level/SpawnData.CODEC:Lcom/mojang/serialization/Codec;
+      55: getstatic     #113                // Field net/minecraft/nbt/NbtOps.INSTANCE:Lnet/minecraft/nbt/NbtOps;
+      58: aload_2
+      59: invokeinterface #118,  3          // InterfaceMethod com/mojang/serialization/Codec.encodeStart:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      64: invokeinterface #124,  1          // InterfaceMethod com/mojang/serialization/DataResult.result:()Ljava/util/Optional;
+      69: invokedynamic #129,  0            // InvokeDynamic #1:get:()Ljava/util/function/Supplier;
+      74: invokevirtual #132                // Method java/util/Optional.orElseThrow:(Ljava/util/function/Supplier;)Ljava/lang/Object;
+      77: checkcast     #136                // class net/minecraft/nbt/Tag
+      80: putstatic     #70                 // Field spawnDataTag:Lnet/minecraft/nbt/Tag;
+      83: return
+
+  protected void handleDataMarker(java.lang.String, net.minecraft.core.BlockPos, net.minecraft.world.level.ServerLevelAccessor, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.structure.BoundingBox);
+    Code:
+       0: aload_3
+       1: aload_2
+       2: getstatic     #138                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+       5: invokevirtual #144                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       8: iconst_2
+       9: invokeinterface #150,  4          // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      14: pop
+      15: aload_1
+      16: ldc           #156                // String spawner
+      18: invokevirtual #158                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      21: ifeq          116
+      24: aload_3
+      25: aload_2
+      26: getstatic     #164                // Field net/minecraft/world/level/block/Blocks.SPAWNER:Lnet/minecraft/world/level/block/Block;
+      29: invokevirtual #144                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      32: iconst_2
+      33: invokeinterface #150,  4          // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      38: pop
+      39: aload_3
+      40: aload_2
+      41: invokeinterface #167,  2          // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+      46: astore        6
+      48: aload         6
+      50: instanceof    #171                // class net/minecraft/world/level/block/entity/SpawnerBlockEntity
+      53: ifeq          113
+      56: aload         6
+      58: checkcast     #171                // class net/minecraft/world/level/block/entity/SpawnerBlockEntity
+      61: astore        7
+      63: aload         7
+      65: invokevirtual #173                // Method net/minecraft/world/level/block/entity/SpawnerBlockEntity.getSpawner:()Lnet/minecraft/world/level/BaseSpawner;
+      68: new           #74                 // class net/minecraft/nbt/CompoundTag
+      71: dup
+      72: invokespecial #76                 // Method net/minecraft/nbt/CompoundTag."<init>":()V
+      75: invokevirtual #177                // Method net/minecraft/world/level/BaseSpawner.save:(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/nbt/CompoundTag;
+      78: astore        8
+      80: aload         8
+      82: ldc           #183                // String SpawnData
+      84: getstatic     #70                 // Field spawnDataTag:Lnet/minecraft/nbt/Tag;
+      87: invokevirtual #185                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+      90: pop
+      91: aload         7
+      93: invokevirtual #173                // Method net/minecraft/world/level/block/entity/SpawnerBlockEntity.getSpawner:()Lnet/minecraft/world/level/BaseSpawner;
+      96: aconst_null
+      97: aload_2
+      98: aload         8
+     100: invokevirtual #189                // Method net/minecraft/world/level/BaseSpawner.load:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/nbt/CompoundTag;)V
+     103: aload         7
+     105: invokevirtual #193                // Method net/minecraft/world/level/block/entity/SpawnerBlockEntity.setChanged:()V
+     108: aload         6
+     110: invokevirtual #196                // Method net/minecraft/world/level/block/entity/BlockEntity.setChanged:()V
+     113: goto          198
+     116: aload_1
+     117: ldc           #199                // String slime
+     119: invokevirtual #158                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     122: ifeq          198
+     125: getstatic     #201                // Field net/minecraft/world/entity/EntityType.SLIME:Lnet/minecraft/world/entity/EntityType;
+     128: aload_3
+     129: invokeinterface #207,  1          // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+     134: invokevirtual #211                // Method net/minecraft/world/entity/EntityType.create:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+     137: checkcast     #215                // class net/minecraft/world/entity/monster/Slime
+     140: astore        6
+     142: aload         6
+     144: ifnull        198
+     147: aload         6
+     149: aload_2
+     150: fconst_0
+     151: fconst_0
+     152: invokevirtual #217                // Method net/minecraft/world/entity/monster/Slime.moveTo:(Lnet/minecraft/core/BlockPos;FF)V
+     155: aload         6
+     157: aload_3
+     158: aload_3
+     159: aload_2
+     160: invokeinterface #221,  2          // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.getCurrentDifficultyAt:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/DifficultyInstance;
+     165: getstatic     #225                // Field net/minecraft/world/entity/MobSpawnType.STRUCTURE:Lnet/minecraft/world/entity/MobSpawnType;
+     168: aconst_null
+     169: invokevirtual #231                // Method net/minecraft/world/entity/monster/Slime.finalizeSpawn:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;)Lnet/minecraft/world/entity/SpawnGroupData;
+     172: pop
+     173: aload         6
+     175: aload         4
+     177: iconst_3
+     178: invokeinterface #235,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     183: iconst_1
+     184: iadd
+     185: iconst_1
+     186: invokevirtual #241                // Method net/minecraft/world/entity/monster/Slime.setSize:(IZ)V
+     189: aload_3
+     190: aload         6
+     192: invokeinterface #245,  2          // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.addFreshEntity:(Lnet/minecraft/world/entity/Entity;)Z
+     197: pop
+     198: return
+
+  protected void addAdditionalSaveData(net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext, net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokespecial #249                // Method net/minecraft/world/level/levelgen/structure/TemplateStructurePiece.addAdditionalSaveData:(Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePieceSerializationContext;Lnet/minecraft/nbt/CompoundTag;)V
+       6: aload_2
+       7: ldc           #253                // String Rot
+       9: aload_0
+      10: getfield      #255                // Field placeSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+      13: invokevirtual #259                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.getRotation:()Lnet/minecraft/world/level/block/Rotation;
+      16: invokevirtual #263                // Method net/minecraft/world/level/block/Rotation.name:()Ljava/lang/String;
+      19: invokevirtual #81                 // Method net/minecraft/nbt/CompoundTag.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      22: return
+
+  private static java.lang.IllegalStateException lambda$createSpawnData$1();
+    Code:
+       0: new           #268                // class java/lang/IllegalStateException
+       3: dup
+       4: ldc_w         #270                // String Invalid SpawnData
+       7: invokespecial #272                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      10: areturn
+
+  private static net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings lambda$new$0(net.minecraft.nbt.CompoundTag, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: ldc           #253                // String Rot
+       3: invokevirtual #275                // Method net/minecraft/nbt/CompoundTag.getString:(Ljava/lang/String;)Ljava/lang/String;
+       6: invokestatic  #279                // Method net/minecraft/world/level/block/Rotation.valueOf:(Ljava/lang/String;)Lnet/minecraft/world/level/block/Rotation;
+       9: invokestatic  #21                 // Method makeSettings:(Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+      12: areturn
+
+  static {};
+    Code:
+       0: new           #283                // class net/minecraft/util/InclusiveRange
+       3: dup
+       4: iconst_0
+       5: invokestatic  #285                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       8: bipush        7
+      10: invokestatic  #285                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      13: invokespecial #290                // Method net/minecraft/util/InclusiveRange."<init>":(Ljava/lang/Comparable;Ljava/lang/Comparable;)V
+      16: putstatic     #87                 // Field RANGE:Lnet/minecraft/util/InclusiveRange;
+      19: aconst_null
+      20: putstatic     #70                 // Field spawnDataTag:Lnet/minecraft/nbt/Tag;
+      23: return
+}

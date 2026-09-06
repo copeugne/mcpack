@@ -1,0 +1,219 @@
+Compiled from "StoneBrickAgingProcessor.java"
+public class com.tristankechlo.explorations.worldgen.structures.processors.StoneBrickAgingProcessor extends net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor {
+  public static final com.mojang.serialization.MapCodec<com.tristankechlo.explorations.worldgen.structures.processors.StoneBrickAgingProcessor> CODEC;
+
+  private static final java.util.List<net.minecraft.world.level.block.Block> STONE_BRICKS_REPLACEMENTS;
+
+  private static final java.util.Map<net.minecraft.world.level.block.Block, net.minecraft.world.level.block.Block> BRICKS;
+
+  private final com.tristankechlo.explorations.worldgen.structures.processors.StoneBrickAgingProcessor$Chances chances;
+
+  public com.tristankechlo.explorations.worldgen.structures.processors.StoneBrickAgingProcessor(com.tristankechlo.explorations.worldgen.structures.processors.StoneBrickAgingProcessor$Chances);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field chances:Lcom/tristankechlo/explorations/worldgen/structures/processors/StoneBrickAgingProcessor$Chances;
+       9: return
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo processBlock(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload         5
+       2: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+       5: astore        7
+       7: aconst_null
+       8: astore        8
+      10: aload         6
+      12: aload         5
+      14: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      17: invokevirtual #23                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.getRandom:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/util/RandomSource;
+      20: astore        9
+      22: aload         7
+      24: getstatic     #29                 // Field net/minecraft/world/level/block/Blocks.STONE_BRICKS:Lnet/minecraft/world/level/block/Block;
+      27: invokevirtual #35                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      30: ifeq          68
+      33: getstatic     #41                 // Field STONE_BRICKS_REPLACEMENTS:Ljava/util/List;
+      36: aload         9
+      38: invokestatic  #45                 // Method net/minecraft/Util.getRandom:(Ljava/util/List;Lnet/minecraft/util/RandomSource;)Ljava/lang/Object;
+      41: checkcast     #50                 // class net/minecraft/world/level/block/Block
+      44: astore        10
+      46: aload_0
+      47: aload         10
+      49: aload         7
+      51: aload         9
+      53: aload_0
+      54: getfield      #7                  // Field chances:Lcom/tristankechlo/explorations/worldgen/structures/processors/StoneBrickAgingProcessor$Chances;
+      57: invokevirtual #52                 // Method com/tristankechlo/explorations/worldgen/structures/processors/StoneBrickAgingProcessor$Chances.bricks:()F
+      60: invokevirtual #58                 // Method tryReplacing:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/util/RandomSource;F)Lnet/minecraft/world/level/block/state/BlockState;
+      63: astore        8
+      65: goto          223
+      68: aload         7
+      70: getstatic     #62                 // Field net/minecraft/world/level/block/Blocks.STONE_BRICK_STAIRS:Lnet/minecraft/world/level/block/Block;
+      73: invokevirtual #35                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      76: ifeq          102
+      79: aload_0
+      80: getstatic     #65                 // Field net/minecraft/world/level/block/Blocks.MOSSY_STONE_BRICK_STAIRS:Lnet/minecraft/world/level/block/Block;
+      83: aload         7
+      85: aload         9
+      87: aload_0
+      88: getfield      #7                  // Field chances:Lcom/tristankechlo/explorations/worldgen/structures/processors/StoneBrickAgingProcessor$Chances;
+      91: invokevirtual #68                 // Method com/tristankechlo/explorations/worldgen/structures/processors/StoneBrickAgingProcessor$Chances.stairs:()F
+      94: invokevirtual #58                 // Method tryReplacing:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/util/RandomSource;F)Lnet/minecraft/world/level/block/state/BlockState;
+      97: astore        8
+      99: goto          223
+     102: aload         7
+     104: getstatic     #71                 // Field net/minecraft/world/level/block/Blocks.STONE_BRICK_SLAB:Lnet/minecraft/world/level/block/Block;
+     107: invokevirtual #35                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     110: ifeq          136
+     113: aload_0
+     114: getstatic     #74                 // Field net/minecraft/world/level/block/Blocks.MOSSY_STONE_BRICK_SLAB:Lnet/minecraft/world/level/block/Block;
+     117: aload         7
+     119: aload         9
+     121: aload_0
+     122: getfield      #7                  // Field chances:Lcom/tristankechlo/explorations/worldgen/structures/processors/StoneBrickAgingProcessor$Chances;
+     125: invokevirtual #77                 // Method com/tristankechlo/explorations/worldgen/structures/processors/StoneBrickAgingProcessor$Chances.slabs:()F
+     128: invokevirtual #58                 // Method tryReplacing:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/util/RandomSource;F)Lnet/minecraft/world/level/block/state/BlockState;
+     131: astore        8
+     133: goto          223
+     136: aload         7
+     138: getstatic     #80                 // Field net/minecraft/world/level/block/Blocks.STONE_BRICK_WALL:Lnet/minecraft/world/level/block/Block;
+     141: invokevirtual #35                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     144: ifeq          170
+     147: aload_0
+     148: getstatic     #83                 // Field net/minecraft/world/level/block/Blocks.MOSSY_STONE_BRICK_WALL:Lnet/minecraft/world/level/block/Block;
+     151: aload         7
+     153: aload         9
+     155: aload_0
+     156: getfield      #7                  // Field chances:Lcom/tristankechlo/explorations/worldgen/structures/processors/StoneBrickAgingProcessor$Chances;
+     159: invokevirtual #86                 // Method com/tristankechlo/explorations/worldgen/structures/processors/StoneBrickAgingProcessor$Chances.walls:()F
+     162: invokevirtual #58                 // Method tryReplacing:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/util/RandomSource;F)Lnet/minecraft/world/level/block/state/BlockState;
+     165: astore        8
+     167: goto          223
+     170: getstatic     #89                 // Field BRICKS:Ljava/util/Map;
+     173: aload         7
+     175: invokevirtual #93                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     178: invokeinterface #97,  2           // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+     183: ifeq          223
+     186: getstatic     #89                 // Field BRICKS:Ljava/util/Map;
+     189: aload         7
+     191: invokevirtual #93                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     194: invokeinterface #103,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     199: checkcast     #50                 // class net/minecraft/world/level/block/Block
+     202: astore        10
+     204: aload_0
+     205: aload         10
+     207: aload         7
+     209: aload         9
+     211: aload_0
+     212: getfield      #7                  // Field chances:Lcom/tristankechlo/explorations/worldgen/structures/processors/StoneBrickAgingProcessor$Chances;
+     215: invokevirtual #52                 // Method com/tristankechlo/explorations/worldgen/structures/processors/StoneBrickAgingProcessor$Chances.bricks:()F
+     218: invokevirtual #58                 // Method tryReplacing:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/util/RandomSource;F)Lnet/minecraft/world/level/block/state/BlockState;
+     221: astore        8
+     223: aload         8
+     225: ifnonnull     231
+     228: aload         5
+     230: areturn
+     231: new           #14                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     234: dup
+     235: aload         5
+     237: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     240: aload         8
+     242: aload         5
+     244: invokevirtual #107                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.nbt:()Lnet/minecraft/nbt/CompoundTag;
+     247: invokespecial #111                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+     250: areturn
+
+  private net.minecraft.world.level.block.state.BlockState tryReplacing(net.minecraft.world.level.block.Block, net.minecraft.world.level.block.state.BlockState, net.minecraft.util.RandomSource, float);
+    Code:
+       0: aload_3
+       1: invokeinterface #114,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+       6: fload         4
+       8: fcmpg
+       9: ifge          77
+      12: aload_1
+      13: invokevirtual #119                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      16: astore        5
+      18: aload_2
+      19: invokevirtual #122                // Method net/minecraft/world/level/block/state/BlockState.getProperties:()Ljava/util/Collection;
+      22: invokeinterface #126,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      27: astore        6
+      29: aload         6
+      31: invokeinterface #132,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      36: ifeq          74
+      39: aload         6
+      41: invokeinterface #138,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      46: checkcast     #142                // class net/minecraft/world/level/block/state/properties/Property
+      49: astore        7
+      51: aload         5
+      53: aload         7
+      55: invokevirtual #144                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      58: ifeq          71
+      61: aload_2
+      62: aload         5
+      64: aload         7
+      66: invokestatic  #148                // Method copyProperty:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/properties/Property;)Lnet/minecraft/world/level/block/state/BlockState;
+      69: astore        5
+      71: goto          29
+      74: aload         5
+      76: areturn
+      77: aload_2
+      78: areturn
+
+  private static <T extends java.lang.Comparable<T>> net.minecraft.world.level.block.state.BlockState copyProperty(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.properties.Property<T>);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_0
+       3: aload_2
+       4: invokevirtual #152                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+       7: invokevirtual #156                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      10: checkcast     #36                 // class net/minecraft/world/level/block/state/BlockState
+      13: areturn
+
+  protected net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType<?> getType();
+    Code:
+       0: getstatic     #160                // Field com/tristankechlo/explorations/init/ModRegistry.STONE_BRICK_AGING_PROCESSOR:Lcom/tristankechlo/explorations/registration/RegistryObject;
+       3: invokeinterface #166,  1          // InterfaceMethod com/tristankechlo/explorations/registration/RegistryObject.get:()Ljava/lang/Object;
+       8: checkcast     #170                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType
+      11: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$1(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #172                // Field com/tristankechlo/explorations/worldgen/structures/processors/StoneBrickAgingProcessor$Chances.CODEC:Lcom/mojang/serialization/Codec;
+       4: ldc           #176                // String chances
+       6: invokeinterface #177,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #183,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      16: invokevirtual #187                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: invokevirtual #193                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P1;
+      22: aload_0
+      23: invokedynamic #199,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      28: invokevirtual #200                // Method com/mojang/datafixers/Products$P1.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/Function;)Lcom/mojang/datafixers/kinds/App;
+      31: areturn
+
+  private static com.tristankechlo.explorations.worldgen.structures.processors.StoneBrickAgingProcessor$Chances lambda$static$0(com.tristankechlo.explorations.worldgen.structures.processors.StoneBrickAgingProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field chances:Lcom/tristankechlo/explorations/worldgen/structures/processors/StoneBrickAgingProcessor$Chances;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #205,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+       5: invokestatic  #206                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #212                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: getstatic     #215                // Field net/minecraft/world/level/block/Blocks.MOSSY_STONE_BRICKS:Lnet/minecraft/world/level/block/Block;
+      14: getstatic     #218                // Field net/minecraft/world/level/block/Blocks.CRACKED_STONE_BRICKS:Lnet/minecraft/world/level/block/Block;
+      17: invokestatic  #221                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;
+      20: putstatic     #41                 // Field STONE_BRICKS_REPLACEMENTS:Ljava/util/List;
+      23: getstatic     #227                // Field net/minecraft/world/level/block/Blocks.CHISELED_STONE_BRICKS:Lnet/minecraft/world/level/block/Block;
+      26: getstatic     #218                // Field net/minecraft/world/level/block/Blocks.CRACKED_STONE_BRICKS:Lnet/minecraft/world/level/block/Block;
+      29: getstatic     #230                // Field net/minecraft/world/level/block/Blocks.DEEPSLATE_BRICKS:Lnet/minecraft/world/level/block/Block;
+      32: getstatic     #233                // Field net/minecraft/world/level/block/Blocks.CRACKED_DEEPSLATE_BRICKS:Lnet/minecraft/world/level/block/Block;
+      35: getstatic     #236                // Field net/minecraft/world/level/block/Blocks.DEEPSLATE_TILES:Lnet/minecraft/world/level/block/Block;
+      38: getstatic     #239                // Field net/minecraft/world/level/block/Blocks.CRACKED_DEEPSLATE_TILES:Lnet/minecraft/world/level/block/Block;
+      41: invokestatic  #242                // InterfaceMethod java/util/Map.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+      44: putstatic     #89                 // Field BRICKS:Ljava/util/Map;
+      47: return
+}
