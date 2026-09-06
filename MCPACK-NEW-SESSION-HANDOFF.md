@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-06
 
+Create Diesel Generators membership is in progress. Source 9dd6ae20 retains
+all three automatic entries and twelve common mixins (15 classes), with exact
+r1 reproduction. Archive SHA-256 is
+56ef1d574278fc311f1ffa223dbd613077b899354a18d01ae8dca2578a4e2990.
+Its ten NBT assets are Ponder tutorials; packaged custom data defines five fuel
+types. GameEvents.loadLootTable builds ReverseLootTable.ALL from entity loot
+items; it does not inject structure loot. Server ticks process queued fuel
+explosions. Next account for direct registration targets and CDGCommands,
+then close the provider with the existing focused payload/source binding pattern.
+Reuse supplementaries-sable-companion: the bundled library SHA-256 is identical
+(873633e35046e3761b277ff8a1ecad0d55d9a3014fa81a0b084c9aecba1f3bed).
+Do not repeat that library capture. An unnecessary duplicate selector e2b1e848
+failed Ruff and was accidentally committed by a shell sequence continuing after
+failure. Revert 89b07d38 removes it completely; Ruff and Basedpyright pass and
+the corrected ref is delivered. Preserve this failed attempt in history.
+Whole providers remain 127 resolved, 9 open. Working groups remain 410 and
+explicit provisional Moog decisions remain 100. Final canonical membership,
+attributes, acceptance, clean review and main merge remain incomplete.
+
+
 Big Cannons membership is resolved with no independent generated family. Reuse
 seven captures ending at 38af6929 and b67e8d0b (62 classes). Shared world-load
 and tick paths operate existing partial-block damage; registrations and hooks
