@@ -1,0 +1,454 @@
+Classfile idas-1.13.7+1.21.1-neoforge.jar!/com/craisinlord/idas/mixins/ServerPlayerTickMixin.class
+  Last modified Jan 1, 1980; size 4884 bytes
+  SHA-256 checksum 6d6663f81872d434a033327049d4c4382a4ce9818c31a0a79ca0c6ec363afc33
+  Compiled from "ServerPlayerTickMixin.java"
+public abstract class com.craisinlord.idas.mixins.ServerPlayerTickMixin extends net.minecraft.world.entity.player.Player
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // com/craisinlord/idas/mixins/ServerPlayerTickMixin
+  super_class: #4                         // net/minecraft/world/entity/player/Player
+  interfaces: 0, fields: 2, methods: 3, attributes: 3
+Constant pool:
+    #1 = Utf8               com/craisinlord/idas/mixins/ServerPlayerTickMixin
+    #2 = Class              #1            // com/craisinlord/idas/mixins/ServerPlayerTickMixin
+    #3 = Utf8               net/minecraft/world/entity/player/Player
+    #4 = Class              #3            // net/minecraft/world/entity/player/Player
+    #5 = Utf8               ServerPlayerTickMixin.java
+    #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #7 = Utf8               value
+    #8 = Utf8               Lnet/minecraft/server/level/ServerPlayer;
+    #9 = Utf8               com/craisinlord/idas/config/ConfigModule$General
+   #10 = Class              #9            // com/craisinlord/idas/config/ConfigModule$General
+   #11 = Utf8               com/craisinlord/idas/config/ConfigModule
+   #12 = Class              #11           // com/craisinlord/idas/config/ConfigModule
+   #13 = Utf8               General
+   #14 = Utf8               connection
+   #15 = Utf8               Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+   #16 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #17 = Utf8               gameMode
+   #18 = Utf8               Lnet/minecraft/server/level/ServerPlayerGameMode;
+   #19 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+   #20 = Utf8               <init>
+   #21 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLcom/mojang/authlib/GameProfile;)V
+   #22 = Utf8               $$0
+   #23 = Utf8               $$1
+   #24 = Utf8               $$2
+   #25 = Utf8               $$3
+   #26 = NameAndType        #20:#21       // "<init>":(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLcom/mojang/authlib/GameProfile;)V
+   #27 = Methodref          #4.#26        // net/minecraft/world/entity/player/Player."<init>":(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLcom/mojang/authlib/GameProfile;)V
+   #28 = Utf8               this
+   #29 = Utf8               Lcom/craisinlord/idas/mixins/ServerPlayerTickMixin;
+   #30 = Utf8               Lnet/minecraft/world/level/Level;
+   #31 = Utf8               Lnet/minecraft/core/BlockPos;
+   #32 = Utf8               F
+   #33 = Utf8               Lcom/mojang/authlib/GameProfile;
+   #34 = Utf8               serverLevel
+   #35 = Utf8               ()Lnet/minecraft/server/level/ServerLevel;
+   #36 = Utf8               idas_playerTick
+   #37 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+   #38 = Utf8               info
+   #39 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #40 = Utf8               method
+   #41 = Utf8               tick()V
+   #42 = Utf8               at
+   #43 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #44 = Utf8               HEAD
+   #45 = NameAndType        #17:#18       // gameMode:Lnet/minecraft/server/level/ServerPlayerGameMode;
+   #46 = Fieldref           #2.#45        // com/craisinlord/idas/mixins/ServerPlayerTickMixin.gameMode:Lnet/minecraft/server/level/ServerPlayerGameMode;
+   #47 = Utf8               net/minecraft/server/level/ServerPlayerGameMode
+   #48 = Class              #47           // net/minecraft/server/level/ServerPlayerGameMode
+   #49 = Utf8               isSurvival
+   #50 = Utf8               ()Z
+   #51 = NameAndType        #49:#50       // isSurvival:()Z
+   #52 = Methodref          #48.#51       // net/minecraft/server/level/ServerPlayerGameMode.isSurvival:()Z
+   #53 = Utf8               tickCount
+   #54 = Utf8               I
+   #55 = NameAndType        #53:#54       // tickCount:I
+   #56 = Fieldref           #2.#55        // com/craisinlord/idas/mixins/ServerPlayerTickMixin.tickCount:I
+   #57 = Utf8               blockPosition
+   #58 = Utf8               ()Lnet/minecraft/core/BlockPos;
+   #59 = NameAndType        #57:#58       // blockPosition:()Lnet/minecraft/core/BlockPos;
+   #60 = Methodref          #2.#59        // com/craisinlord/idas/mixins/ServerPlayerTickMixin.blockPosition:()Lnet/minecraft/core/BlockPos;
+   #61 = NameAndType        #34:#35       // serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+   #62 = Methodref          #2.#61        // com/craisinlord/idas/mixins/ServerPlayerTickMixin.serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+   #63 = Utf8               net/minecraft/server/level/ServerLevel
+   #64 = Class              #63           // net/minecraft/server/level/ServerLevel
+   #65 = Utf8               structureManager
+   #66 = Utf8               ()Lnet/minecraft/world/level/StructureManager;
+   #67 = NameAndType        #65:#66       // structureManager:()Lnet/minecraft/world/level/StructureManager;
+   #68 = Methodref          #64.#67       // net/minecraft/server/level/ServerLevel.structureManager:()Lnet/minecraft/world/level/StructureManager;
+   #69 = Utf8               com/craisinlord/idas/IDASTags
+   #70 = Class              #69           // com/craisinlord/idas/IDASTags
+   #71 = Utf8               APPLIES_MINING_FATIGUE
+   #72 = Utf8               Lnet/minecraft/tags/TagKey;
+   #73 = NameAndType        #71:#72       // APPLIES_MINING_FATIGUE:Lnet/minecraft/tags/TagKey;
+   #74 = Fieldref           #70.#73       // com/craisinlord/idas/IDASTags.APPLIES_MINING_FATIGUE:Lnet/minecraft/tags/TagKey;
+   #75 = Utf8               net/minecraft/world/level/StructureManager
+   #76 = Class              #75           // net/minecraft/world/level/StructureManager
+   #77 = Utf8               getStructureWithPieceAt
+   #78 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/tags/TagKey;)Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+   #79 = NameAndType        #77:#78       // getStructureWithPieceAt:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/tags/TagKey;)Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+   #80 = Methodref          #76.#79       // net/minecraft/world/level/StructureManager.getStructureWithPieceAt:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/tags/TagKey;)Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+   #81 = Utf8               isLoaded
+   #82 = Utf8               (Lnet/minecraft/core/BlockPos;)Z
+   #83 = NameAndType        #81:#82       // isLoaded:(Lnet/minecraft/core/BlockPos;)Z
+   #84 = Methodref          #64.#83       // net/minecraft/server/level/ServerLevel.isLoaded:(Lnet/minecraft/core/BlockPos;)Z
+   #85 = Utf8               net/minecraft/world/level/levelgen/structure/StructureStart
+   #86 = Class              #85           // net/minecraft/world/level/levelgen/structure/StructureStart
+   #87 = Utf8               isValid
+   #88 = NameAndType        #87:#50       // isValid:()Z
+   #89 = Methodref          #86.#88       // net/minecraft/world/level/levelgen/structure/StructureStart.isValid:()Z
+   #90 = Utf8               net/minecraft/core/BlockPos
+   #91 = Class              #90           // net/minecraft/core/BlockPos
+   #92 = Utf8               com/craisinlord/idas/IDAS
+   #93 = Class              #92           // com/craisinlord/idas/IDAS
+   #94 = Utf8               CONFIG
+   #95 = Utf8               Lcom/craisinlord/idas/config/ConfigModule;
+   #96 = NameAndType        #94:#95       // CONFIG:Lcom/craisinlord/idas/config/ConfigModule;
+   #97 = Fieldref           #93.#96       // com/craisinlord/idas/IDAS.CONFIG:Lcom/craisinlord/idas/config/ConfigModule;
+   #98 = Utf8               general
+   #99 = Utf8               Lcom/craisinlord/idas/config/ConfigModule$General;
+  #100 = NameAndType        #98:#99       // general:Lcom/craisinlord/idas/config/ConfigModule$General;
+  #101 = Fieldref           #12.#100      // com/craisinlord/idas/config/ConfigModule.general:Lcom/craisinlord/idas/config/ConfigModule$General;
+  #102 = Utf8               applyMiningFatigue
+  #103 = Utf8               Z
+  #104 = NameAndType        #102:#103     // applyMiningFatigue:Z
+  #105 = Fieldref           #10.#104      // com/craisinlord/idas/config/ConfigModule$General.applyMiningFatigue:Z
+  #106 = Utf8               com/craisinlord/idas/state/IStateCacheProvider
+  #107 = Class              #106          // com/craisinlord/idas/state/IStateCacheProvider
+  #108 = Utf8               getStateCache
+  #109 = Utf8               ()Lcom/craisinlord/idas/state/stateCache;
+  #110 = NameAndType        #108:#109     // getStateCache:()Lcom/craisinlord/idas/state/stateCache;
+  #111 = InterfaceMethodref #107.#110     // com/craisinlord/idas/state/IStateCacheProvider.getStateCache:()Lcom/craisinlord/idas/state/stateCache;
+  #112 = Utf8               getChunkPos
+  #113 = Utf8               ()Lnet/minecraft/world/level/ChunkPos;
+  #114 = NameAndType        #112:#113     // getChunkPos:()Lnet/minecraft/world/level/ChunkPos;
+  #115 = Methodref          #86.#114      // net/minecraft/world/level/levelgen/structure/StructureStart.getChunkPos:()Lnet/minecraft/world/level/ChunkPos;
+  #116 = Utf8               net/minecraft/world/level/ChunkPos
+  #117 = Class              #116          // net/minecraft/world/level/ChunkPos
+  #118 = Utf8               getWorldPosition
+  #119 = NameAndType        #118:#58      // getWorldPosition:()Lnet/minecraft/core/BlockPos;
+  #120 = Methodref          #117.#119     // net/minecraft/world/level/ChunkPos.getWorldPosition:()Lnet/minecraft/core/BlockPos;
+  #121 = Utf8               com/craisinlord/idas/state/stateCache
+  #122 = Class              #121          // com/craisinlord/idas/state/stateCache
+  #123 = Utf8               isCleared
+  #124 = NameAndType        #123:#82      // isCleared:(Lnet/minecraft/core/BlockPos;)Z
+  #125 = Methodref          #122.#124     // com/craisinlord/idas/state/stateCache.isCleared:(Lnet/minecraft/core/BlockPos;)Z
+  #126 = Utf8               net/minecraft/world/effect/MobEffects
+  #127 = Class              #126          // net/minecraft/world/effect/MobEffects
+  #128 = Utf8               DIG_SLOWDOWN
+  #129 = Utf8               Lnet/minecraft/core/Holder;
+  #130 = NameAndType        #128:#129     // DIG_SLOWDOWN:Lnet/minecraft/core/Holder;
+  #131 = Fieldref           #127.#130     // net/minecraft/world/effect/MobEffects.DIG_SLOWDOWN:Lnet/minecraft/core/Holder;
+  #132 = Utf8               hasEffect
+  #133 = Utf8               (Lnet/minecraft/core/Holder;)Z
+  #134 = NameAndType        #132:#133     // hasEffect:(Lnet/minecraft/core/Holder;)Z
+  #135 = Methodref          #2.#134       // com/craisinlord/idas/mixins/ServerPlayerTickMixin.hasEffect:(Lnet/minecraft/core/Holder;)Z
+  #136 = Utf8               getEffect
+  #137 = Utf8               (Lnet/minecraft/core/Holder;)Lnet/minecraft/world/effect/MobEffectInstance;
+  #138 = NameAndType        #136:#137     // getEffect:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/effect/MobEffectInstance;
+  #139 = Methodref          #2.#138       // com/craisinlord/idas/mixins/ServerPlayerTickMixin.getEffect:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/effect/MobEffectInstance;
+  #140 = Utf8               net/minecraft/world/effect/MobEffectInstance
+  #141 = Class              #140          // net/minecraft/world/effect/MobEffectInstance
+  #142 = Utf8               getAmplifier
+  #143 = Utf8               ()I
+  #144 = NameAndType        #142:#143     // getAmplifier:()I
+  #145 = Methodref          #141.#144     // net/minecraft/world/effect/MobEffectInstance.getAmplifier:()I
+  #146 = Utf8               getDuration
+  #147 = NameAndType        #146:#143     // getDuration:()I
+  #148 = Methodref          #141.#147     // net/minecraft/world/effect/MobEffectInstance.getDuration:()I
+  #149 = NameAndType        #14:#15       // connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+  #150 = Fieldref           #2.#149       // com/craisinlord/idas/mixins/ServerPlayerTickMixin.connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+  #151 = Utf8               net/minecraft/network/protocol/game/ClientboundSoundPacket
+  #152 = Class              #151          // net/minecraft/network/protocol/game/ClientboundSoundPacket
+  #153 = Utf8               net/minecraft/core/registries/BuiltInRegistries
+  #154 = Class              #153          // net/minecraft/core/registries/BuiltInRegistries
+  #155 = Utf8               SOUND_EVENT
+  #156 = Utf8               Lnet/minecraft/core/Registry;
+  #157 = NameAndType        #155:#156     // SOUND_EVENT:Lnet/minecraft/core/Registry;
+  #158 = Fieldref           #154.#157     // net/minecraft/core/registries/BuiltInRegistries.SOUND_EVENT:Lnet/minecraft/core/Registry;
+  #159 = Utf8               net/minecraft/sounds/SoundEvents
+  #160 = Class              #159          // net/minecraft/sounds/SoundEvents
+  #161 = Utf8               ELDER_GUARDIAN_CURSE
+  #162 = Utf8               Lnet/minecraft/sounds/SoundEvent;
+  #163 = NameAndType        #161:#162     // ELDER_GUARDIAN_CURSE:Lnet/minecraft/sounds/SoundEvent;
+  #164 = Fieldref           #160.#163     // net/minecraft/sounds/SoundEvents.ELDER_GUARDIAN_CURSE:Lnet/minecraft/sounds/SoundEvent;
+  #165 = Utf8               net/minecraft/core/Registry
+  #166 = Class              #165          // net/minecraft/core/Registry
+  #167 = Utf8               wrapAsHolder
+  #168 = Utf8               (Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+  #169 = NameAndType        #167:#168     // wrapAsHolder:(Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+  #170 = InterfaceMethodref #166.#169     // net/minecraft/core/Registry.wrapAsHolder:(Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+  #171 = Utf8               net/minecraft/sounds/SoundSource
+  #172 = Class              #171          // net/minecraft/sounds/SoundSource
+  #173 = Utf8               HOSTILE
+  #174 = Utf8               Lnet/minecraft/sounds/SoundSource;
+  #175 = NameAndType        #173:#174     // HOSTILE:Lnet/minecraft/sounds/SoundSource;
+  #176 = Fieldref           #172.#175     // net/minecraft/sounds/SoundSource.HOSTILE:Lnet/minecraft/sounds/SoundSource;
+  #177 = Utf8               getX
+  #178 = Utf8               ()D
+  #179 = NameAndType        #177:#178     // getX:()D
+  #180 = Methodref          #2.#179       // com/craisinlord/idas/mixins/ServerPlayerTickMixin.getX:()D
+  #181 = Utf8               getY
+  #182 = NameAndType        #181:#178     // getY:()D
+  #183 = Methodref          #2.#182       // com/craisinlord/idas/mixins/ServerPlayerTickMixin.getY:()D
+  #184 = Utf8               getZ
+  #185 = NameAndType        #184:#178     // getZ:()D
+  #186 = Methodref          #2.#185       // com/craisinlord/idas/mixins/ServerPlayerTickMixin.getZ:()D
+  #187 = Utf8               getSeed
+  #188 = Utf8               ()J
+  #189 = NameAndType        #187:#188     // getSeed:()J
+  #190 = Methodref          #64.#189      // net/minecraft/server/level/ServerLevel.getSeed:()J
+  #191 = Utf8               (Lnet/minecraft/core/Holder;Lnet/minecraft/sounds/SoundSource;DDDFFJ)V
+  #192 = NameAndType        #20:#191      // "<init>":(Lnet/minecraft/core/Holder;Lnet/minecraft/sounds/SoundSource;DDDFFJ)V
+  #193 = Methodref          #152.#192     // net/minecraft/network/protocol/game/ClientboundSoundPacket."<init>":(Lnet/minecraft/core/Holder;Lnet/minecraft/sounds/SoundSource;DDDFFJ)V
+  #194 = Utf8               net/minecraft/server/network/ServerGamePacketListenerImpl
+  #195 = Class              #194          // net/minecraft/server/network/ServerGamePacketListenerImpl
+  #196 = Utf8               send
+  #197 = Utf8               (Lnet/minecraft/network/protocol/Packet;)V
+  #198 = NameAndType        #196:#197     // send:(Lnet/minecraft/network/protocol/Packet;)V
+  #199 = Methodref          #195.#198     // net/minecraft/server/network/ServerGamePacketListenerImpl.send:(Lnet/minecraft/network/protocol/Packet;)V
+  #200 = Utf8               (Lnet/minecraft/core/Holder;II)V
+  #201 = NameAndType        #20:#200      // "<init>":(Lnet/minecraft/core/Holder;II)V
+  #202 = Methodref          #141.#201     // net/minecraft/world/effect/MobEffectInstance."<init>":(Lnet/minecraft/core/Holder;II)V
+  #203 = Utf8               addEffect
+  #204 = Utf8               (Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z
+  #205 = NameAndType        #203:#204     // addEffect:(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z
+  #206 = Methodref          #2.#205       // com/craisinlord/idas/mixins/ServerPlayerTickMixin.addEffect:(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z
+  #207 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #208 = Class              #207          // org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #209 = Utf8               playerPos
+  #210 = Utf8               structureStart
+  #211 = Utf8               Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+  #212 = Utf8               isInLabyrinth
+  #213 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #214 = Utf8               RuntimeVisibleAnnotations
+  #215 = Utf8               Code
+  #216 = Utf8               LineNumberTable
+  #217 = Utf8               LocalVariableTable
+  #218 = Utf8               MethodParameters
+  #219 = Utf8               StackMapTable
+  #220 = Utf8               InnerClasses
+  #221 = Utf8               SourceFile
+  #222 = Utf8               RuntimeInvisibleAnnotations
+{
+  public net.minecraft.server.network.ServerGamePacketListenerImpl connection;
+    descriptor: Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #16()
+        org.spongepowered.asm.mixin.Shadow
+
+  public net.minecraft.server.level.ServerPlayerGameMode gameMode;
+    descriptor: Lnet/minecraft/server/level/ServerPlayerGameMode;
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #16()
+        org.spongepowered.asm.mixin.Shadow
+      1: #19()
+        org.spongepowered.asm.mixin.Final
+
+  public com.craisinlord.idas.mixins.ServerPlayerTickMixin(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, float, com.mojang.authlib.GameProfile);
+    descriptor: (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLcom/mojang/authlib/GameProfile;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=5, locals=5, args_size=5
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: fload_3
+         4: aload         4
+         6: invokespecial #27                 // Method net/minecraft/world/entity/player/Player."<init>":(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLcom/mojang/authlib/GameProfile;)V
+         9: return
+      LineNumberTable:
+        line 37: 0
+        line 38: 9
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Lcom/craisinlord/idas/mixins/ServerPlayerTickMixin;
+            0      10     1   $$0   Lnet/minecraft/world/level/Level;
+            0      10     2   $$1   Lnet/minecraft/core/BlockPos;
+            0      10     3   $$2   F
+            0      10     4   $$3   Lcom/mojang/authlib/GameProfile;
+    MethodParameters:
+      Name                           Flags
+      $$0
+      $$1
+      $$2
+      $$3
+
+  public abstract net.minecraft.server.level.ServerLevel serverLevel();
+    descriptor: ()Lnet/minecraft/server/level/ServerLevel;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #16()
+        org.spongepowered.asm.mixin.Shadow
+
+  private void idas_playerTick(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=15, locals=6, args_size=2
+         0: aload_0
+         1: getfield      #46                 // Field gameMode:Lnet/minecraft/server/level/ServerPlayerGameMode;
+         4: invokevirtual #52                 // Method net/minecraft/server/level/ServerPlayerGameMode.isSurvival:()Z
+         7: ifeq          231
+        10: aload_0
+        11: getfield      #56                 // Field tickCount:I
+        14: bipush        100
+        16: irem
+        17: ifne          231
+        20: aload_0
+        21: invokevirtual #60                 // Method blockPosition:()Lnet/minecraft/core/BlockPos;
+        24: astore_2
+        25: aload_0
+        26: invokevirtual #62                 // Method serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+        29: invokevirtual #68                 // Method net/minecraft/server/level/ServerLevel.structureManager:()Lnet/minecraft/world/level/StructureManager;
+        32: aload_2
+        33: getstatic     #74                 // Field com/craisinlord/idas/IDASTags.APPLIES_MINING_FATIGUE:Lnet/minecraft/tags/TagKey;
+        36: invokevirtual #80                 // Method net/minecraft/world/level/StructureManager.getStructureWithPieceAt:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/tags/TagKey;)Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+        39: astore_3
+        40: aload_0
+        41: invokevirtual #62                 // Method serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+        44: aload_2
+        45: invokevirtual #84                 // Method net/minecraft/server/level/ServerLevel.isLoaded:(Lnet/minecraft/core/BlockPos;)Z
+        48: ifeq          62
+        51: aload_3
+        52: invokevirtual #89                 // Method net/minecraft/world/level/levelgen/structure/StructureStart.isValid:()Z
+        55: ifeq          62
+        58: iconst_1
+        59: goto          63
+        62: iconst_0
+        63: istore        4
+        65: iload         4
+        67: ifeq          82
+        70: getstatic     #97                 // Field com/craisinlord/idas/IDAS.CONFIG:Lcom/craisinlord/idas/config/ConfigModule;
+        73: getfield      #101                // Field com/craisinlord/idas/config/ConfigModule.general:Lcom/craisinlord/idas/config/ConfigModule$General;
+        76: getfield      #105                // Field com/craisinlord/idas/config/ConfigModule$General.applyMiningFatigue:Z
+        79: ifne          83
+        82: return
+        83: aload_0
+        84: invokevirtual #62                 // Method serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+        87: checkcast     #107                // class com/craisinlord/idas/state/IStateCacheProvider
+        90: invokeinterface #111,  1          // InterfaceMethod com/craisinlord/idas/state/IStateCacheProvider.getStateCache:()Lcom/craisinlord/idas/state/stateCache;
+        95: aload_3
+        96: invokevirtual #115                // Method net/minecraft/world/level/levelgen/structure/StructureStart.getChunkPos:()Lnet/minecraft/world/level/ChunkPos;
+        99: invokevirtual #120                // Method net/minecraft/world/level/ChunkPos.getWorldPosition:()Lnet/minecraft/core/BlockPos;
+       102: invokevirtual #125                // Method com/craisinlord/idas/state/stateCache.isCleared:(Lnet/minecraft/core/BlockPos;)Z
+       105: istore        5
+       107: iload         5
+       109: ifeq          113
+       112: return
+       113: aload_0
+       114: getstatic     #131                // Field net/minecraft/world/effect/MobEffects.DIG_SLOWDOWN:Lnet/minecraft/core/Holder;
+       117: invokevirtual #135                // Method hasEffect:(Lnet/minecraft/core/Holder;)Z
+       120: ifeq          152
+       123: aload_0
+       124: getstatic     #131                // Field net/minecraft/world/effect/MobEffects.DIG_SLOWDOWN:Lnet/minecraft/core/Holder;
+       127: invokevirtual #139                // Method getEffect:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/effect/MobEffectInstance;
+       130: invokevirtual #145                // Method net/minecraft/world/effect/MobEffectInstance.getAmplifier:()I
+       133: iconst_2
+       134: if_icmplt     152
+       137: aload_0
+       138: getstatic     #131                // Field net/minecraft/world/effect/MobEffects.DIG_SLOWDOWN:Lnet/minecraft/core/Holder;
+       141: invokevirtual #139                // Method getEffect:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/effect/MobEffectInstance;
+       144: invokevirtual #148                // Method net/minecraft/world/effect/MobEffectInstance.getDuration:()I
+       147: bipush        120
+       149: if_icmpge     231
+       152: aload_0
+       153: getstatic     #131                // Field net/minecraft/world/effect/MobEffects.DIG_SLOWDOWN:Lnet/minecraft/core/Holder;
+       156: invokevirtual #135                // Method hasEffect:(Lnet/minecraft/core/Holder;)Z
+       159: ifne          211
+       162: aload_0
+       163: getfield      #150                // Field connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+       166: new           #152                // class net/minecraft/network/protocol/game/ClientboundSoundPacket
+       169: dup
+       170: getstatic     #158                // Field net/minecraft/core/registries/BuiltInRegistries.SOUND_EVENT:Lnet/minecraft/core/Registry;
+       173: getstatic     #164                // Field net/minecraft/sounds/SoundEvents.ELDER_GUARDIAN_CURSE:Lnet/minecraft/sounds/SoundEvent;
+       176: invokeinterface #170,  2          // InterfaceMethod net/minecraft/core/Registry.wrapAsHolder:(Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+       181: getstatic     #176                // Field net/minecraft/sounds/SoundSource.HOSTILE:Lnet/minecraft/sounds/SoundSource;
+       184: aload_0
+       185: invokevirtual #180                // Method getX:()D
+       188: aload_0
+       189: invokevirtual #183                // Method getY:()D
+       192: aload_0
+       193: invokevirtual #186                // Method getZ:()D
+       196: fconst_1
+       197: fconst_1
+       198: aload_0
+       199: invokevirtual #62                 // Method serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+       202: invokevirtual #190                // Method net/minecraft/server/level/ServerLevel.getSeed:()J
+       205: invokespecial #193                // Method net/minecraft/network/protocol/game/ClientboundSoundPacket."<init>":(Lnet/minecraft/core/Holder;Lnet/minecraft/sounds/SoundSource;DDDFFJ)V
+       208: invokevirtual #199                // Method net/minecraft/server/network/ServerGamePacketListenerImpl.send:(Lnet/minecraft/network/protocol/Packet;)V
+       211: aload_0
+       212: new           #141                // class net/minecraft/world/effect/MobEffectInstance
+       215: dup
+       216: getstatic     #131                // Field net/minecraft/world/effect/MobEffects.DIG_SLOWDOWN:Lnet/minecraft/core/Holder;
+       219: sipush        600
+       222: iconst_2
+       223: invokespecial #202                // Method net/minecraft/world/effect/MobEffectInstance."<init>":(Lnet/minecraft/core/Holder;II)V
+       226: aload_0
+       227: invokevirtual #206                // Method addEffect:(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z
+       230: pop
+       231: return
+      StackMapTable: number_of_entries = 8
+        frame_type = 253 /* append */
+          offset_delta = 62
+          locals = [ class net/minecraft/core/BlockPos, class net/minecraft/world/level/levelgen/structure/StructureStart ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 18
+          locals = [ int ]
+        frame_type = 0 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 29
+          locals = [ int ]
+        frame_type = 38 /* same */
+        frame_type = 58 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 19
+          locals = [ class com/craisinlord/idas/mixins/ServerPlayerTickMixin, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo ]
+          stack = []
+      LineNumberTable:
+        line 46: 0
+        line 47: 20
+        line 48: 25
+        line 51: 40
+        line 52: 65
+        line 55: 83
+        line 56: 107
+        line 59: 113
+        line 60: 152
+        line 61: 162
+        line 63: 211
+        line 66: 231
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           25     206     2 playerPos   Lnet/minecraft/core/BlockPos;
+           40     191     3 structureStart   Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+           65     166     4 isInLabyrinth   Z
+          107     124     5 isCleared   Z
+            0     232     0  this   Lcom/craisinlord/idas/mixins/ServerPlayerTickMixin;
+            0     232     1  info   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #39(#40=[s#41],#42=[@#43(#7=s#44)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["tick()V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      info
+}
+InnerClasses:
+  public static #13= #10 of #12;          // General=class com/craisinlord/idas/config/ConfigModule$General of class com/craisinlord/idas/config/ConfigModule
+SourceFile: "ServerPlayerTickMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ServerPlayer;]
+    )
