@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+WorldWeaver listener targets are now retained in 3b2c7fd9 (extractor 2dec51db
+adds verbose entrypoint disassembly). f632c8bd retains ten direct registration
+targets; reuse the eleventh in pool-codecs. Both r1 reproductions match bytes.
+Feature/structure registrations expose reusable types, not automatically new
+families. Continue bootstrap consumer and common-hook reconciliation against
+frozen registry/data/configuration evidence. Preserve the earlier nonverbose
+captures with their recorded extractor versions. Counts remain 117 resolved,
+19 open and 100 provisional Moog decisions. No provider closure this increment.
+
+
 WorldWeaver remains open. 372669cb retains its seven automatic entries and six
 registry services; 46c52394 retains all seventeen directly invoked modules.
 Both independent r1 reproductions match bytes. The sole packaged generation
