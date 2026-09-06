@@ -991,6 +991,37 @@ CLASSES: tuple[str, ...] = (
     "com/yungnickyoung/minecraft/betteroceanmonuments/world/processor/SeagrassProcessor.class",
     "com/yungnickyoung/minecraft/betteroceanmonuments/world/processor/StructureVoidProcessor.class",
     "com/yungnickyoung/minecraft/betteroceanmonuments/world/processor/WaterlogProcessor.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/BetterStrongholdsCommon.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/BetterStrongholdsNeoForge.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/config/BSConfigNeoForge.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/config/ConfigGeneralNeoForge.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/mixin/LocateStrongholdCommandMixin.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/module/ConfigModule$General.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/module/ConfigModule.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/module/ConfigModuleNeoForge.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/module/StructurePlacementTypeModule.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/module/StructureProcessorTypeModule.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/services/IModulesLoader.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/services/IPlatformHelper.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/services/IProcessorProvider.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/services/NeoForgeModulesLoader.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/services/NeoForgePlatformHelper.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/services/NeoForgeProcessorProvider.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/services/Services.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/world/ArmorStandChances.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/world/ItemFrameChances.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/world/OreChances.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/world/RareBlockChances.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/world/placement/BetterStrongholdsPlacement.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/world/processor/ArmorStandProcessor.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/world/processor/BannerProcessor.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/world/processor/EndPortalFrameProcessor.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/world/processor/ItemFrameProcessor.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/world/processor/LegProcessor.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/world/processor/OreProcessor.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/world/processor/RareBlockProcessor.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/world/processor/RedstoneProcessor.class",
+    "com/yungnickyoung/minecraft/betterstrongholds/world/processor/RuinProcessor.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1138,6 +1169,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     and not name.endswith("ConfigGeneralForge.class")
                     and not name.endswith("ConfigModuleNeoForge.class")
                 )
+                verbose |= source.name == "YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar"
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
                     "biomesoplenty/core/BiomesOPlenty.class",
                     "biomesoplenty/neoforge/core/BiomesOPlentyNeoForge.class",
