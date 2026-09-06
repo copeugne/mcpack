@@ -1,0 +1,116 @@
+Compiled from "NeoForgePlatform.java"
+public class com.illusivesoulworks.polymorph.platform.NeoForgePlatform implements com.illusivesoulworks.polymorph.platform.services.IPlatform {
+  private static final com.illusivesoulworks.polymorph.api.common.base.IPolymorphNetwork PACKET_DISTRIBUTOR;
+
+  public com.illusivesoulworks.polymorph.platform.NeoForgePlatform();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public java.nio.file.Path getGameDir();
+    Code:
+       0: getstatic     #7                  // Field net/neoforged/fml/loading/FMLPaths.GAMEDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #13                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: areturn
+
+  public java.nio.file.Path getConfigDir();
+    Code:
+       0: getstatic     #17                 // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #13                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: areturn
+
+  public boolean isModLoaded(java.lang.String);
+    Code:
+       0: invokestatic  #20                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: aload_1
+       4: invokevirtual #25                 // Method net/neoforged/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+       7: ireturn
+
+  public boolean isModFileLoaded(java.lang.String);
+    Code:
+       0: invokestatic  #29                 // Method net/neoforged/fml/loading/FMLLoader.getLoadingModList:()Lnet/neoforged/fml/loading/LoadingModList;
+       3: aload_1
+       4: invokevirtual #35                 // Method net/neoforged/fml/loading/LoadingModList.getModFileById:(Ljava/lang/String;)Lnet/neoforged/fml/loading/moddiscovery/ModFileInfo;
+       7: ifnull        14
+      10: iconst_1
+      11: goto          15
+      14: iconst_0
+      15: ireturn
+
+  public boolean isShaped(net.minecraft.world.item.crafting.Recipe<?>);
+    Code:
+       0: aload_1
+       1: instanceof    #41                 // class net/minecraft/world/item/crafting/ShapedRecipe
+       4: ireturn
+
+  public boolean isSameShape(net.minecraft.world.item.crafting.Recipe<?>, net.minecraft.world.item.crafting.Recipe<?>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #43                 // Method isShaped:(Lnet/minecraft/world/item/crafting/Recipe;)Z
+       5: ifeq          57
+       8: aload_0
+       9: aload_2
+      10: invokevirtual #43                 // Method isShaped:(Lnet/minecraft/world/item/crafting/Recipe;)Z
+      13: ifeq          57
+      16: aload_1
+      17: checkcast     #41                 // class net/minecraft/world/item/crafting/ShapedRecipe
+      20: astore_3
+      21: aload_2
+      22: checkcast     #41                 // class net/minecraft/world/item/crafting/ShapedRecipe
+      25: astore        4
+      27: aload_3
+      28: invokevirtual #49                 // Method net/minecraft/world/item/crafting/ShapedRecipe.getHeight:()I
+      31: aload         4
+      33: invokevirtual #49                 // Method net/minecraft/world/item/crafting/ShapedRecipe.getHeight:()I
+      36: if_icmpne     55
+      39: aload_3
+      40: invokevirtual #53                 // Method net/minecraft/world/item/crafting/ShapedRecipe.getWidth:()I
+      43: aload         4
+      45: invokevirtual #53                 // Method net/minecraft/world/item/crafting/ShapedRecipe.getWidth:()I
+      48: if_icmpne     55
+      51: iconst_1
+      52: goto          56
+      55: iconst_0
+      56: ireturn
+      57: iconst_1
+      58: ireturn
+
+  public com.illusivesoulworks.polymorph.api.common.capability.IPlayerRecipeData getRecipeData(net.minecraft.world.entity.player.Player);
+    Code:
+       0: aload_1
+       1: getstatic     #56                 // Field com/illusivesoulworks/polymorph/common/PolymorphNeoForgeCapabilities.RECIPE_DATA:Ljava/util/function/Supplier;
+       4: invokeinterface #62,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       9: checkcast     #67                 // class net/neoforged/neoforge/attachment/AttachmentType
+      12: invokevirtual #69                 // Method net/minecraft/world/entity/player/Player.getData:(Lnet/neoforged/neoforge/attachment/AttachmentType;)Ljava/lang/Object;
+      15: checkcast     #75                 // class com/illusivesoulworks/polymorph/common/PolymorphNeoForgeCapabilities$RecipeDataAttachment
+      18: invokevirtual #77                 // Method com/illusivesoulworks/polymorph/common/PolymorphNeoForgeCapabilities$RecipeDataAttachment.getRecipeData:()Lcom/illusivesoulworks/polymorph/api/common/capability/IRecipeData;
+      21: checkcast     #81                 // class com/illusivesoulworks/polymorph/api/common/capability/IPlayerRecipeData
+      24: areturn
+
+  public com.illusivesoulworks.polymorph.api.common.capability.IBlockEntityRecipeData getRecipeData(net.minecraft.world.level.block.entity.BlockEntity);
+    Code:
+       0: aload_1
+       1: getstatic     #56                 // Field com/illusivesoulworks/polymorph/common/PolymorphNeoForgeCapabilities.RECIPE_DATA:Ljava/util/function/Supplier;
+       4: invokeinterface #62,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       9: checkcast     #67                 // class net/neoforged/neoforge/attachment/AttachmentType
+      12: invokevirtual #83                 // Method net/minecraft/world/level/block/entity/BlockEntity.getData:(Lnet/neoforged/neoforge/attachment/AttachmentType;)Ljava/lang/Object;
+      15: checkcast     #75                 // class com/illusivesoulworks/polymorph/common/PolymorphNeoForgeCapabilities$RecipeDataAttachment
+      18: invokevirtual #77                 // Method com/illusivesoulworks/polymorph/common/PolymorphNeoForgeCapabilities$RecipeDataAttachment.getRecipeData:()Lcom/illusivesoulworks/polymorph/api/common/capability/IRecipeData;
+      21: checkcast     #86                 // class com/illusivesoulworks/polymorph/api/common/capability/IBlockEntityRecipeData
+      24: areturn
+
+  public com.illusivesoulworks.polymorph.api.common.base.IPolymorphNetwork getPacketDistributor();
+    Code:
+       0: getstatic     #88                 // Field PACKET_DISTRIBUTOR:Lcom/illusivesoulworks/polymorph/api/common/base/IPolymorphNetwork;
+       3: areturn
+
+  static {};
+    Code:
+       0: new           #92                 // class com/illusivesoulworks/polymorph/common/network/PolymorphNeoForgePacketDistributor
+       3: dup
+       4: invokespecial #94                 // Method com/illusivesoulworks/polymorph/common/network/PolymorphNeoForgePacketDistributor."<init>":()V
+       7: putstatic     #88                 // Field PACKET_DISTRIBUTOR:Lcom/illusivesoulworks/polymorph/api/common/base/IPolymorphNetwork;
+      10: return
+}
