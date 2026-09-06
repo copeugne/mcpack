@@ -1,0 +1,562 @@
+Compiled from "Quark.java"
+public class org.violetmoon.quark.base.Quark {
+  public static final java.lang.String MOD_ID = "quark";
+
+  public static final org.apache.logging.log4j.Logger LOG;
+
+  public static final org.violetmoon.zeta.Zeta ZETA;
+
+  public static final java.lang.String ODDITIES_ID;
+
+  public static org.violetmoon.quark.base.Quark instance;
+
+  public static org.violetmoon.quark.base.proxy.CommonProxy proxy;
+
+  public static final org.violetmoon.quark.integration.claim.IClaimIntegration FLAN_INTEGRATION;
+
+  public static final org.violetmoon.quark.integration.lootr.ILootrIntegration LOOTR_INTEGRATION;
+
+  public org.violetmoon.quark.base.Quark(net.neoforged.bus.api.IEventBus);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: putstatic     #7                  // Field instance:Lorg/violetmoon/quark/base/Quark;
+       8: getstatic     #13                 // Field org/violetmoon/quark/content/mobs/module/CrabsModule.EFFECTS:Lnet/neoforged/neoforge/registries/DeferredRegister;
+      11: aload_1
+      12: invokevirtual #19                 // Method net/neoforged/neoforge/registries/DeferredRegister.register:(Lnet/neoforged/bus/api/IEventBus;)V
+      15: getstatic     #25                 // Field org/violetmoon/quark/content/mobs/module/CrabsModule.POTIONS:Lnet/neoforged/neoforge/registries/DeferredRegister;
+      18: aload_1
+      19: invokevirtual #19                 // Method net/neoforged/neoforge/registries/DeferredRegister.register:(Lnet/neoforged/bus/api/IEventBus;)V
+      22: getstatic     #28                 // Field ZETA:Lorg/violetmoon/zeta/Zeta;
+      25: invokevirtual #32                 // Method org/violetmoon/zeta/Zeta.start:()V
+      28: invokedynamic #37,  0             // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+      33: invokedynamic #41,  0             // InvokeDynamic #1:get:()Ljava/util/function/Supplier;
+      38: invokestatic  #42                 // Method org/violetmoon/zeta/multiloader/Env.unsafeRunForDist:(Ljava/util/function/Supplier;Ljava/util/function/Supplier;)Ljava/lang/Object;
+      41: checkcast     #48                 // class org/violetmoon/quark/base/proxy/CommonProxy
+      44: putstatic     #50                 // Field proxy:Lorg/violetmoon/quark/base/proxy/CommonProxy;
+      47: getstatic     #50                 // Field proxy:Lorg/violetmoon/quark/base/proxy/CommonProxy;
+      50: invokevirtual #54                 // Method org/violetmoon/quark/base/proxy/CommonProxy.start:()V
+      53: ldc           #55                 // String quark.auditMixins
+      55: ldc           #57                 // String false
+      57: invokestatic  #59                 // Method java/lang/System.getProperty:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      60: invokestatic  #65                 // Method java/lang/Boolean.parseBoolean:(Ljava/lang/String;)Z
+      63: ifeq          66
+      66: aload_1
+      67: invokedynamic #71,  0             // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+      72: invokeinterface #75,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      77: aload_1
+      78: invokedynamic #81,  0             // InvokeDynamic #3:accept:()Ljava/util/function/Consumer;
+      83: invokeinterface #75,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      88: return
+
+  public static net.minecraft.resources.ResourceLocation asResource(java.lang.String);
+    Code:
+       0: ldc           #82                 // String quark
+       2: aload_0
+       3: invokestatic  #84                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       6: areturn
+
+  public static <T> net.minecraft.resources.ResourceKey<T> asResourceKey(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #90                 // Method asResource:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       5: invokestatic  #94                 // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+       8: areturn
+
+  public static <T> net.minecraft.tags.TagKey<T> asTagKey(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #90                 // Method asResource:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       5: invokestatic  #100                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+       8: areturn
+
+  private static void addPackFinders(net.neoforged.neoforge.event.AddPackFindersEvent);
+    Code:
+       0: new           #105                // class java/util/HashMap
+       3: dup
+       4: invokespecial #107                // Method java/util/HashMap."<init>":()V
+       7: astore_1
+       8: aload_1
+       9: ldc           #108                // String quark_ct_variant_chests
+      11: getstatic     #110                // Field org/violetmoon/quark/content/building/module/VariantChestsModule.staticEnabled:Z
+      14: invokestatic  #116                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      17: invokeinterface #120,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      22: pop
+      23: aload_1
+      24: ldc           #126                // String quark_ct_variant_bookshelves
+      26: getstatic     #128                // Field org/violetmoon/quark/content/building/module/VariantBookshelvesModule.staticEnabled:Z
+      29: invokestatic  #116                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      32: invokeinterface #120,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      37: pop
+      38: aload_1
+      39: ldc           #131                // String quark_ct_framed_glass
+      41: getstatic     #133                // Field org/violetmoon/quark/content/building/module/FramedGlassModule.staticEnabled:Z
+      44: invokestatic  #116                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      47: invokeinterface #120,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      52: pop
+      53: aload_1
+      54: ldc           #136                // String quark_ct_variant_ladders
+      56: getstatic     #138                // Field org/violetmoon/quark/content/building/module/VariantLaddersModule.staticEnabled:Z
+      59: invokestatic  #116                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      62: invokeinterface #120,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      67: pop
+      68: aload_0
+      69: invokevirtual #141                // Method net/neoforged/neoforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+      72: getstatic     #147                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+      75: if_acmpne     133
+      78: aload_1
+      79: invokeinterface #153,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+      84: invokeinterface #157,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      89: astore_2
+      90: aload_2
+      91: invokeinterface #163,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      96: ifeq          133
+      99: aload_2
+     100: invokeinterface #169,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     105: checkcast     #173                // class java/lang/String
+     108: astore_3
+     109: aload_1
+     110: aload_3
+     111: invokeinterface #175,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     116: checkcast     #66                 // class java/lang/Boolean
+     119: invokevirtual #178                // Method java/lang/Boolean.booleanValue:()Z
+     122: ifeq          130
+     125: aload_3
+     126: aload_0
+     127: invokestatic  #181                // Method addSubDataPack:(Ljava/lang/String;Lnet/neoforged/neoforge/event/AddPackFindersEvent;)V
+     130: goto          90
+     133: getstatic     #185                // Field org/violetmoon/quark/base/config/QuarkGeneralConfig.quarkVDO:Z
+     136: ifeq          333
+     139: new           #105                // class java/util/HashMap
+     142: dup
+     143: invokespecial #107                // Method java/util/HashMap."<init>":()V
+     146: astore_2
+     147: aload_2
+     148: ldc           #190                // String quark_vdo_variant_bookshelves
+     150: getstatic     #128                // Field org/violetmoon/quark/content/building/module/VariantBookshelvesModule.staticEnabled:Z
+     153: invokestatic  #116                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     156: invokeinterface #120,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     161: pop
+     162: aload_2
+     163: ldc           #192                // String quark_vdo_variant_chests
+     165: getstatic     #110                // Field org/violetmoon/quark/content/building/module/VariantChestsModule.staticEnabled:Z
+     168: invokestatic  #116                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     171: invokeinterface #120,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     176: pop
+     177: aload_2
+     178: ldc           #194                // String quark_vdo_variant_ladders
+     180: getstatic     #138                // Field org/violetmoon/quark/content/building/module/VariantLaddersModule.staticEnabled:Z
+     183: invokestatic  #116                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     186: invokeinterface #120,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     191: pop
+     192: aload_2
+     193: ldc           #196                // String quark_vdo_nether_wart_sack
+     195: getstatic     #198                // Field org/violetmoon/quark/content/building/module/CompressedBlocksModule.staticEnabled:Z
+     198: ifeq          211
+     201: getstatic     #201                // Field org/violetmoon/quark/content/building/module/CompressedBlocksModule.enableNetherWartSack:Z
+     204: ifeq          211
+     207: iconst_1
+     208: goto          212
+     211: iconst_0
+     212: invokestatic  #116                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     215: invokeinterface #120,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     220: pop
+     221: aload_2
+     222: ldc           #204                // String quark_vdo_better_stone_tools
+     224: getstatic     #206                // Field org/violetmoon/quark/content/tweaks/module/UtilityRecipesModule.staticEnabled:Z
+     227: ifeq          240
+     230: getstatic     #209                // Field org/violetmoon/quark/content/tweaks/module/UtilityRecipesModule.betterStoneToolCrafting:Z
+     233: ifeq          240
+     236: iconst_1
+     237: goto          241
+     240: iconst_0
+     241: invokestatic  #116                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     244: invokeinterface #120,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     249: pop
+     250: aload_2
+     251: ldc           #212                // String quark_vdo_vanilla_stone_clusters
+     253: getstatic     #214                // Field org/violetmoon/quark/content/experimental/module/VanillaStoneClustersModule.staticEnabled:Z
+     256: invokestatic  #116                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     259: invokeinterface #120,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     264: pop
+     265: aload_0
+     266: invokevirtual #141                // Method net/neoforged/neoforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+     269: getstatic     #147                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+     272: if_acmpne     333
+     275: aload_2
+     276: invokeinterface #153,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+     281: invokeinterface #157,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     286: astore_3
+     287: aload_3
+     288: invokeinterface #163,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     293: ifeq          333
+     296: aload_3
+     297: invokeinterface #169,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     302: checkcast     #173                // class java/lang/String
+     305: astore        4
+     307: aload_2
+     308: aload         4
+     310: invokeinterface #175,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     315: checkcast     #66                 // class java/lang/Boolean
+     318: invokevirtual #178                // Method java/lang/Boolean.booleanValue:()Z
+     321: ifeq          330
+     324: aload         4
+     326: aload_0
+     327: invokestatic  #181                // Method addSubDataPack:(Ljava/lang/String;Lnet/neoforged/neoforge/event/AddPackFindersEvent;)V
+     330: goto          287
+     333: getstatic     #217                // Field org/violetmoon/quark/base/config/QuarkGeneralConfig.generateProgrammerArt:Z
+     336: ifeq          456
+     339: aload_0
+     340: invokevirtual #141                // Method net/neoforged/neoforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+     343: getstatic     #220                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+     346: if_acmpne     456
+     349: invokestatic  #223                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+     352: ldc           #82                 // String quark
+     354: invokevirtual #228                // Method net/neoforged/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/neoforged/neoforgespi/language/IModFileInfo;
+     357: invokeinterface #232,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.getFile:()Lnet/neoforged/neoforgespi/locating/IModFile;
+     362: astore_2
+     363: aload_2
+     364: iconst_2
+     365: anewarray     #173                // class java/lang/String
+     368: dup
+     369: iconst_0
+     370: ldc           #238                // String resourcepacks
+     372: aastore
+     373: dup
+     374: iconst_1
+     375: ldc           #240                // String quark_programmer_art
+     377: aastore
+     378: invokeinterface #242,  2          // InterfaceMethod net/neoforged/neoforgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+     383: astore_3
+     384: new           #248                // class net/minecraft/server/packs/PackSelectionConfig
+     387: dup
+     388: iconst_0
+     389: getstatic     #250                // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+     392: iconst_0
+     393: invokespecial #256                // Method net/minecraft/server/packs/PackSelectionConfig."<init>":(ZLnet/minecraft/server/packs/repository/Pack$Position;Z)V
+     396: astore        4
+     398: new           #259                // class net/minecraft/server/packs/PackLocationInfo
+     401: dup
+     402: ldc           #240                // String quark_programmer_art
+     404: ldc_w         #261                // String Quark Programmer Art
+     407: invokestatic  #263                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     410: getstatic     #269                // Field net/minecraft/server/packs/repository/PackSource.BUILT_IN:Lnet/minecraft/server/packs/repository/PackSource;
+     413: invokestatic  #275                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     416: invokespecial #281                // Method net/minecraft/server/packs/PackLocationInfo."<init>":(Ljava/lang/String;Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackSource;Ljava/util/Optional;)V
+     419: astore        5
+     421: new           #284                // class net/minecraft/server/packs/PathPackResources$PathResourcesSupplier
+     424: dup
+     425: aload_3
+     426: invokespecial #286                // Method net/minecraft/server/packs/PathPackResources$PathResourcesSupplier."<init>":(Ljava/nio/file/Path;)V
+     429: astore        6
+     431: aload         5
+     433: aload         6
+     435: getstatic     #147                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+     438: aload         4
+     440: invokestatic  #289                // Method net/minecraft/server/packs/repository/Pack.readMetaAndCreate:(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/PackType;Lnet/minecraft/server/packs/PackSelectionConfig;)Lnet/minecraft/server/packs/repository/Pack;
+     443: astore        7
+     445: aload_0
+     446: aload         7
+     448: invokedynamic #295,  0            // InvokeDynamic #4:loadPacks:(Lnet/minecraft/server/packs/repository/Pack;)Lnet/minecraft/server/packs/repository/RepositorySource;
+     453: invokevirtual #299                // Method net/neoforged/neoforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+     456: return
+
+  private static void addSubDataPack(java.lang.String, net.neoforged.neoforge.event.AddPackFindersEvent);
+    Code:
+       0: invokestatic  #223                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: ldc           #82                 // String quark
+       5: invokevirtual #228                // Method net/neoforged/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/neoforged/neoforgespi/language/IModFileInfo;
+       8: invokeinterface #232,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.getFile:()Lnet/neoforged/neoforgespi/locating/IModFile;
+      13: astore_2
+      14: aload_2
+      15: iconst_2
+      16: anewarray     #173                // class java/lang/String
+      19: dup
+      20: iconst_0
+      21: ldc_w         #303                // String datapacks
+      24: aastore
+      25: dup
+      26: iconst_1
+      27: aload_0
+      28: aastore
+      29: invokeinterface #242,  2          // InterfaceMethod net/neoforged/neoforgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+      34: astore_3
+      35: new           #248                // class net/minecraft/server/packs/PackSelectionConfig
+      38: dup
+      39: iconst_0
+      40: getstatic     #250                // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+      43: iconst_0
+      44: invokespecial #256                // Method net/minecraft/server/packs/PackSelectionConfig."<init>":(ZLnet/minecraft/server/packs/repository/Pack$Position;Z)V
+      47: astore        4
+      49: new           #259                // class net/minecraft/server/packs/PackLocationInfo
+      52: dup
+      53: aload_0
+      54: aload_0
+      55: invokestatic  #263                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      58: getstatic     #269                // Field net/minecraft/server/packs/repository/PackSource.BUILT_IN:Lnet/minecraft/server/packs/repository/PackSource;
+      61: invokestatic  #275                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      64: invokespecial #281                // Method net/minecraft/server/packs/PackLocationInfo."<init>":(Ljava/lang/String;Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackSource;Ljava/util/Optional;)V
+      67: astore        5
+      69: new           #284                // class net/minecraft/server/packs/PathPackResources$PathResourcesSupplier
+      72: dup
+      73: aload_3
+      74: invokespecial #286                // Method net/minecraft/server/packs/PathPackResources$PathResourcesSupplier."<init>":(Ljava/nio/file/Path;)V
+      77: astore        6
+      79: aload         5
+      81: aload         6
+      83: getstatic     #147                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+      86: aload         4
+      88: invokestatic  #289                // Method net/minecraft/server/packs/repository/Pack.readMetaAndCreate:(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/PackType;Lnet/minecraft/server/packs/PackSelectionConfig;)Lnet/minecraft/server/packs/repository/Pack;
+      91: astore        7
+      93: aload_1
+      94: aload         7
+      96: invokedynamic #305,  0            // InvokeDynamic #5:loadPacks:(Lnet/minecraft/server/packs/repository/Pack;)Lnet/minecraft/server/packs/repository/RepositorySource;
+     101: invokevirtual #299                // Method net/neoforged/neoforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+     104: return
+
+  public static void registerCapabilities(net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent);
+    Code:
+       0: getstatic     #306                // Field org/violetmoon/quark/content/building/module/VariantChestsModule.regularChests:Ljava/util/Map;
+       3: invokeinterface #310,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+       8: invokeinterface #314,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      13: astore_1
+      14: aload_1
+      15: invokeinterface #163,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      20: ifeq          56
+      23: aload_1
+      24: invokeinterface #169,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      29: checkcast     #317                // class net/minecraft/world/level/block/Block
+      32: astore_2
+      33: aload_0
+      34: getstatic     #319                // Field net/neoforged/neoforge/capabilities/Capabilities$ItemHandler.BLOCK:Lnet/neoforged/neoforge/capabilities/BlockCapability;
+      37: invokedynamic #325,  0            // InvokeDynamic #6:getCapability:()Lnet/neoforged/neoforge/capabilities/IBlockCapabilityProvider;
+      42: iconst_1
+      43: anewarray     #317                // class net/minecraft/world/level/block/Block
+      46: dup
+      47: iconst_0
+      48: aload_2
+      49: aastore
+      50: invokevirtual #329                // Method net/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent.registerBlock:(Lnet/neoforged/neoforge/capabilities/BlockCapability;Lnet/neoforged/neoforge/capabilities/IBlockCapabilityProvider;[Lnet/minecraft/world/level/block/Block;)V
+      53: goto          14
+      56: getstatic     #335                // Field org/violetmoon/quark/content/building/module/VariantChestsModule.trappedChests:Ljava/util/Map;
+      59: invokeinterface #310,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      64: invokeinterface #314,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      69: astore_1
+      70: aload_1
+      71: invokeinterface #163,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      76: ifeq          112
+      79: aload_1
+      80: invokeinterface #169,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      85: checkcast     #317                // class net/minecraft/world/level/block/Block
+      88: astore_2
+      89: aload_0
+      90: getstatic     #319                // Field net/neoforged/neoforge/capabilities/Capabilities$ItemHandler.BLOCK:Lnet/neoforged/neoforge/capabilities/BlockCapability;
+      93: invokedynamic #338,  0            // InvokeDynamic #7:getCapability:()Lnet/neoforged/neoforge/capabilities/IBlockCapabilityProvider;
+      98: iconst_1
+      99: anewarray     #317                // class net/minecraft/world/level/block/Block
+     102: dup
+     103: iconst_0
+     104: aload_2
+     105: aastore
+     106: invokevirtual #329                // Method net/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent.registerBlock:(Lnet/neoforged/neoforge/capabilities/BlockCapability;Lnet/neoforged/neoforge/capabilities/IBlockCapabilityProvider;[Lnet/minecraft/world/level/block/Block;)V
+     109: goto          70
+     112: aload_0
+     113: getstatic     #319                // Field net/neoforged/neoforge/capabilities/Capabilities$ItemHandler.BLOCK:Lnet/neoforged/neoforge/capabilities/BlockCapability;
+     116: invokedynamic #339,  0            // InvokeDynamic #8:getCapability:()Lnet/neoforged/neoforge/capabilities/IBlockCapabilityProvider;
+     121: iconst_2
+     122: anewarray     #317                // class net/minecraft/world/level/block/Block
+     125: dup
+     126: iconst_0
+     127: getstatic     #340                // Field org/violetmoon/quark/addons/oddities/module/PipesModule.pipe:Lnet/minecraft/world/level/block/Block;
+     130: aastore
+     131: dup
+     132: iconst_1
+     133: getstatic     #346                // Field org/violetmoon/quark/addons/oddities/module/PipesModule.encasedPipe:Lnet/minecraft/world/level/block/Block;
+     136: aastore
+     137: invokevirtual #329                // Method net/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent.registerBlock:(Lnet/neoforged/neoforge/capabilities/BlockCapability;Lnet/neoforged/neoforge/capabilities/IBlockCapabilityProvider;[Lnet/minecraft/world/level/block/Block;)V
+     140: aload_0
+     141: getstatic     #319                // Field net/neoforged/neoforge/capabilities/Capabilities$ItemHandler.BLOCK:Lnet/neoforged/neoforge/capabilities/BlockCapability;
+     144: invokedynamic #349,  0            // InvokeDynamic #9:getCapability:()Lnet/neoforged/neoforge/capabilities/IBlockCapabilityProvider;
+     149: iconst_1
+     150: anewarray     #317                // class net/minecraft/world/level/block/Block
+     153: dup
+     154: iconst_0
+     155: getstatic     #350                // Field org/violetmoon/quark/addons/oddities/module/CrateModule.crate:Lnet/minecraft/world/level/block/Block;
+     158: aastore
+     159: invokevirtual #329                // Method net/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent.registerBlock:(Lnet/neoforged/neoforge/capabilities/BlockCapability;Lnet/neoforged/neoforge/capabilities/IBlockCapabilityProvider;[Lnet/minecraft/world/level/block/Block;)V
+     162: aload_0
+     163: getstatic     #319                // Field net/neoforged/neoforge/capabilities/Capabilities$ItemHandler.BLOCK:Lnet/neoforged/neoforge/capabilities/BlockCapability;
+     166: invokedynamic #355,  0            // InvokeDynamic #10:getCapability:()Lnet/neoforged/neoforge/capabilities/IBlockCapabilityProvider;
+     171: iconst_2
+     172: anewarray     #317                // class net/minecraft/world/level/block/Block
+     175: dup
+     176: iconst_0
+     177: getstatic     #356                // Field org/violetmoon/quark/content/building/module/VariantFurnacesModule.blackstoneFurnace:Lnet/minecraft/world/level/block/Block;
+     180: aastore
+     181: dup
+     182: iconst_1
+     183: getstatic     #361                // Field org/violetmoon/quark/content/building/module/VariantFurnacesModule.deepslateFurnace:Lnet/minecraft/world/level/block/Block;
+     186: aastore
+     187: invokevirtual #329                // Method net/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent.registerBlock:(Lnet/neoforged/neoforge/capabilities/BlockCapability;Lnet/neoforged/neoforge/capabilities/IBlockCapabilityProvider;[Lnet/minecraft/world/level/block/Block;)V
+     190: return
+
+  public static void crashOnOldConfig(java.lang.String, int) throws java.text.ParseException;
+    Code:
+       0: ldc_w         #364                // String 1.20.1
+       3: astore_2
+       4: ldc_w         #366                // String 1.21.1
+       7: astore_3
+       8: ldc_w         #368                // String Quark has detected you are likely using a 1.20.1 config file. We recommend you do not do this in 1.21.1 as the format has changed. We recommend you delete your old config and then re-create it with the in-game config menu to prevent issues.
+      11: astore        4
+      13: getstatic     #370                // Field LOG:Lorg/apache/logging/log4j/Logger;
+      16: aload_0
+      17: invokedynamic #374,  0            // InvokeDynamic #11:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      22: invokeinterface #378,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+      27: new           #384                // class java/text/ParseException
+      30: dup
+      31: aload         4
+      33: iload_1
+      34: invokespecial #386                // Method java/text/ParseException."<init>":(Ljava/lang/String;I)V
+      37: athrow
+
+  private static net.neoforged.neoforge.items.IItemHandler lambda$registerCapabilities$12(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.entity.BlockEntity, net.minecraft.core.Direction);
+    Code:
+       0: new           #389                // class net/neoforged/neoforge/items/wrapper/SidedInvWrapper
+       3: dup
+       4: aload_3
+       5: checkcast     #391                // class net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity
+       8: aload         4
+      10: invokespecial #393                // Method net/neoforged/neoforge/items/wrapper/SidedInvWrapper."<init>":(Lnet/minecraft/world/WorldlyContainer;Lnet/minecraft/core/Direction;)V
+      13: areturn
+
+  private static net.neoforged.neoforge.items.IItemHandler lambda$registerCapabilities$11(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.entity.BlockEntity, net.minecraft.core.Direction);
+    Code:
+       0: new           #396                // class net/neoforged/neoforge/items/wrapper/InvWrapper
+       3: dup
+       4: aload_3
+       5: checkcast     #398                // class org/violetmoon/quark/addons/oddities/block/be/CrateBlockEntity
+       8: invokespecial #400                // Method net/neoforged/neoforge/items/wrapper/InvWrapper."<init>":(Lnet/minecraft/world/Container;)V
+      11: areturn
+
+  private static net.neoforged.neoforge.items.IItemHandler lambda$registerCapabilities$10(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.entity.BlockEntity, net.minecraft.core.Direction);
+    Code:
+       0: new           #389                // class net/neoforged/neoforge/items/wrapper/SidedInvWrapper
+       3: dup
+       4: aload_3
+       5: checkcast     #403                // class org/violetmoon/quark/addons/oddities/block/be/PipeBlockEntity
+       8: aload         4
+      10: invokespecial #393                // Method net/neoforged/neoforge/items/wrapper/SidedInvWrapper."<init>":(Lnet/minecraft/world/WorldlyContainer;Lnet/minecraft/core/Direction;)V
+      13: areturn
+
+  private static net.neoforged.neoforge.items.IItemHandler lambda$registerCapabilities$9(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.entity.BlockEntity, net.minecraft.core.Direction);
+    Code:
+       0: new           #396                // class net/neoforged/neoforge/items/wrapper/InvWrapper
+       3: dup
+       4: aload_2
+       5: invokevirtual #405                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       8: checkcast     #411                // class net/minecraft/world/level/block/ChestBlock
+      11: aload_2
+      12: aload_0
+      13: aload_1
+      14: iconst_1
+      15: invokestatic  #413                // Method net/minecraft/world/level/block/ChestBlock.getContainer:(Lnet/minecraft/world/level/block/ChestBlock;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Z)Lnet/minecraft/world/Container;
+      18: invokespecial #400                // Method net/neoforged/neoforge/items/wrapper/InvWrapper."<init>":(Lnet/minecraft/world/Container;)V
+      21: areturn
+
+  private static net.neoforged.neoforge.items.IItemHandler lambda$registerCapabilities$8(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.entity.BlockEntity, net.minecraft.core.Direction);
+    Code:
+       0: new           #396                // class net/neoforged/neoforge/items/wrapper/InvWrapper
+       3: dup
+       4: aload_2
+       5: invokevirtual #405                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       8: checkcast     #411                // class net/minecraft/world/level/block/ChestBlock
+      11: aload_2
+      12: aload_0
+      13: aload_1
+      14: iconst_1
+      15: invokestatic  #413                // Method net/minecraft/world/level/block/ChestBlock.getContainer:(Lnet/minecraft/world/level/block/ChestBlock;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Z)Lnet/minecraft/world/Container;
+      18: invokespecial #400                // Method net/neoforged/neoforge/items/wrapper/InvWrapper."<init>":(Lnet/minecraft/world/Container;)V
+      21: areturn
+
+  private static void lambda$addSubDataPack$7(net.minecraft.server.packs.repository.Pack, java.util.function.Consumer);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #417,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+       7: return
+
+  private static void lambda$addPackFinders$6(net.minecraft.server.packs.repository.Pack, java.util.function.Consumer);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #417,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+       7: return
+
+  private static java.util.function.Supplier lambda$static$5();
+    Code:
+       0: invokedynamic #422,  0            // InvokeDynamic #12:get:()Ljava/util/function/Supplier;
+       5: areturn
+
+  private static java.util.function.Supplier lambda$static$4();
+    Code:
+       0: invokedynamic #423,  0            // InvokeDynamic #13:get:()Ljava/util/function/Supplier;
+       5: areturn
+
+  private static java.util.function.Supplier lambda$static$3();
+    Code:
+       0: invokedynamic #424,  0            // InvokeDynamic #14:get:()Ljava/util/function/Supplier;
+       5: areturn
+
+  private static java.util.function.Supplier lambda$static$2();
+    Code:
+       0: invokedynamic #425,  0            // InvokeDynamic #15:get:()Ljava/util/function/Supplier;
+       5: areturn
+
+  private static java.util.function.Supplier lambda$new$1();
+    Code:
+       0: invokedynamic #426,  0            // InvokeDynamic #16:get:()Ljava/util/function/Supplier;
+       5: areturn
+
+  private static java.util.function.Supplier lambda$new$0();
+    Code:
+       0: invokedynamic #427,  0            // InvokeDynamic #17:get:()Ljava/util/function/Supplier;
+       5: areturn
+
+  static {};
+    Code:
+       0: ldc           #82                 // String quark
+       2: invokestatic  #428                // Method org/apache/logging/log4j/LogManager.getLogger:(Ljava/lang/String;)Lorg/apache/logging/log4j/Logger;
+       5: putstatic     #370                // Field LOG:Lorg/apache/logging/log4j/Logger;
+       8: new           #434                // class org/violetmoon/zetaimplforge/ForgeZeta
+      11: dup
+      12: ldc           #82                 // String quark
+      14: ldc_w         #436                // String quark-zeta
+      17: invokestatic  #428                // Method org/apache/logging/log4j/LogManager.getLogger:(Ljava/lang/String;)Lorg/apache/logging/log4j/Logger;
+      20: invokespecial #438                // Method org/violetmoon/zetaimplforge/ForgeZeta."<init>":(Ljava/lang/String;Lorg/apache/logging/log4j/Logger;)V
+      23: putstatic     #28                 // Field ZETA:Lorg/violetmoon/zeta/Zeta;
+      26: getstatic     #28                 // Field ZETA:Lorg/violetmoon/zeta/Zeta;
+      29: getfield      #441                // Field org/violetmoon/zeta/Zeta.isProduction:Z
+      32: ifeq          41
+      35: ldc_w         #444                // String quarkoddities
+      38: goto          43
+      41: ldc           #82                 // String quark
+      43: putstatic     #446                // Field ODDITIES_ID:Ljava/lang/String;
+      46: getstatic     #28                 // Field ZETA:Lorg/violetmoon/zeta/Zeta;
+      49: ldc_w         #450                // String flan
+      52: invokedynamic #452,  0            // InvokeDynamic #18:get:()Ljava/util/function/Supplier;
+      57: invokedynamic #453,  0            // InvokeDynamic #19:get:()Ljava/util/function/Supplier;
+      62: invokevirtual #454                // Method org/violetmoon/zeta/Zeta.modIntegration:(Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;)Ljava/lang/Object;
+      65: checkcast     #458                // class org/violetmoon/quark/integration/claim/IClaimIntegration
+      68: putstatic     #460                // Field FLAN_INTEGRATION:Lorg/violetmoon/quark/integration/claim/IClaimIntegration;
+      71: getstatic     #28                 // Field ZETA:Lorg/violetmoon/zeta/Zeta;
+      74: ldc_w         #464                // String lootr
+      77: invokedynamic #466,  0            // InvokeDynamic #20:get:()Ljava/util/function/Supplier;
+      82: invokedynamic #467,  0            // InvokeDynamic #21:get:()Ljava/util/function/Supplier;
+      87: invokevirtual #454                // Method org/violetmoon/zeta/Zeta.modIntegration:(Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;)Ljava/lang/Object;
+      90: checkcast     #468                // class org/violetmoon/quark/integration/lootr/ILootrIntegration
+      93: putstatic     #470                // Field LOOTR_INTEGRATION:Lorg/violetmoon/quark/integration/lootr/ILootrIntegration;
+      96: return
+}

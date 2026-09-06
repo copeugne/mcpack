@@ -1,0 +1,29 @@
+Compiled from "PlatformHelper.java"
+public interface com.terraformersmc.biolith.impl.platform.services.PlatformHelper {
+  public abstract java.lang.String getPlatformName();
+
+  public abstract boolean isModLoaded(java.lang.String);
+
+  public abstract boolean isDevelopmentEnvironment();
+
+  public default java.lang.String getEnvironmentName();
+    Code:
+       0: aload_0
+       1: invokeinterface #27,  1           // InterfaceMethod isDevelopmentEnvironment:()Z
+       6: ifeq          14
+       9: ldc           #29                 // String development
+      11: goto          16
+      14: ldc           #31                 // String production
+      16: areturn
+
+  public abstract java.nio.file.Path getConfigDir();
+
+  public default int describeModernerBeta(com.mojang.brigadier.context.CommandContext<net.minecraft.commands.CommandSourceStack>, int, int, int, net.minecraft.server.level.ServerLevel, net.minecraft.world.level.biome.BiomeSource, net.minecraft.world.level.biome.Climate$ParameterList<net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>>, net.minecraft.world.level.biome.Climate$Sampler);
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  public abstract com.terraformersmc.biolith.impl.compat.TerraBlenderCompat getTerraBlenderCompat();
+
+  public abstract void registerCommandRegistrationCallback(org.apache.commons.lang3.function.TriFunction<com.mojang.brigadier.CommandDispatcher<net.minecraft.commands.CommandSourceStack>, net.minecraft.commands.CommandBuildContext, net.minecraft.commands.Commands$CommandSelection, com.mojang.brigadier.tree.LiteralCommandNode<net.minecraft.commands.CommandSourceStack>>);
+}

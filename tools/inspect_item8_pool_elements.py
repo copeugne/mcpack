@@ -1237,6 +1237,59 @@ CLASSES: tuple[str, ...] = (
     "com/yungnickyoung/minecraft/yungsapi/services/NeoForgePlatformHelper.class",
     "com/yungnickyoung/minecraft/yungsapi/services/Services.class",
     "com/yungnickyoung/minecraft/yungsapi/util/MixinUtils.class",
+    "org/violetmoon/quark/base/Quark.class",
+    "org/violetmoon/quark/base/Quark$QuarkEventBusSubscriber.class",
+    "org/violetmoon/quark/content/world/module/GlimmeringWealdModule.class",
+    "org/violetmoon/quark/content/world/module/AncientWoodModule.class",
+    "org/violetmoon/quark/content/world/module/AzaleaWoodModule.class",
+    "org/violetmoon/quark/content/world/module/NoMoreLavaPocketsModule.class",
+    "org/violetmoon/quark/content/world/feature/GlowExtrasFeature.class",
+    "org/violetmoon/quark/content/world/feature/GlowShroomsFeature.class",
+    "org/violetmoon/quark/content/world/feature/AncientTreeTopperDecorator.class",
+    "org/violetmoon/quark/content/world/feature/MultiFoliageStraightTrunkPlacer.class",
+    "org/violetmoon/quark/content/world/feature/OffsetFancyFoliagePlacer.class",
+    "org/violetmoon/quark/content/mobs/module/WraithModule.class",
+    "org/violetmoon/quark/content/building/module/GoldBarsModule.class",
+    "org/violetmoon/quark/content/building/module/VariantChestsModule.class",
+    "org/violetmoon/quark/mixin/mixins/ChunkGeneratorMixin.class",
+    "org/violetmoon/quark/mixin/mixins/ClimateParameterPointMixin.class",
+    "org/violetmoon/quark/mixin/mixins/HugeBrownMushroomFeatureMixin.class",
+    "org/violetmoon/quark/mixin/mixins/HugeRedMushroomFeatureMixin.class",
+    "org/violetmoon/quark/mixin/mixins/NetherFortressPiecesMixin.class",
+    "org/violetmoon/quark/mixin/mixins/NetherFortressPiecesMixin$CastleEntranceMixin.class",
+    "org/violetmoon/quark/mixin/mixins/ServerLevelMixin.class",
+    "org/violetmoon/quark/mixin/mixins/SpawnerBlockEntityMixin.class",
+    "org/violetmoon/quark/mixin/mixins/SpringFeatureMixin.class",
+    "org/violetmoon/quark/mixin/mixins/WorldGenRegionMixin.class",
+    "org/violetmoon/quark/mixin/mixins/accessor/AccessorSinglePoolElement.class",
+    "org/violetmoon/quark/mixin/mixins/accessor/AccessorOverworldBiomes.class",
+    "com/terraformersmc/biolith/impl/Biolith.class",
+    "com/terraformersmc/biolith/impl/BiolithInit.class",
+    "com/terraformersmc/biolith/api/biome/BiomePlacement.class",
+    "com/terraformersmc/biolith/api/surface/SurfaceGeneration.class",
+    "com/terraformersmc/biolith/impl/data/BiomePlacementLoader.class",
+    "com/terraformersmc/biolith/impl/data/SurfaceGenerationLoader.class",
+    "com/terraformersmc/biolith/impl/platform/NeoForgePlatformHelper.class",
+    "com/terraformersmc/biolith/impl/platform/services/PlatformHelper.class",
+    "com/terraformersmc/biolith/impl/commands/BiolithCommands.class",
+    "com/terraformersmc/biolith/impl/compat/BiolithCompat.class",
+    "com/terraformersmc/biolith/impl/mixin/BiolithNeoForgeMixinConfigPlugin.class",
+    "com/terraformersmc/biolith/impl/mixin/MixinBiomeSource.class",
+    "com/terraformersmc/biolith/impl/mixin/MixinChunkGenerator.class",
+    "com/terraformersmc/biolith/impl/mixin/MixinChunkGeneratorSettings.class",
+    "com/terraformersmc/biolith/impl/mixin/MixinDataPackContents.class",
+    "com/terraformersmc/biolith/impl/mixin/MixinDimensionOptions.class",
+    "com/terraformersmc/biolith/impl/mixin/MixinMinecraftServer.class",
+    "com/terraformersmc/biolith/impl/mixin/MixinMultiNoiseBiomeSource.class",
+    "com/terraformersmc/biolith/impl/mixin/MixinPlacedFeatureIndexer.class",
+    "com/terraformersmc/biolith/impl/mixin/MixinSearchTree.class",
+    "com/terraformersmc/biolith/impl/mixin/MixinServerWorld.class",
+    "com/terraformersmc/biolith/impl/mixin/MixinSurfaceBuilder.class",
+    "com/terraformersmc/biolith/impl/mixin/MixinTheEndBiomeSource.class",
+    "com/terraformersmc/biolith/impl/mixin/MixinMBBiomeSource.class",
+    "com/terraformersmc/biolith/impl/mixin/MixinSaveLoader.class",
+    "com/terraformersmc/biolith/impl/mixin/MixinTBTheEndBiomeSource.class",
+    "org/violetmoon/quark/content/experimental/module/SpawnerReplacerModule.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1258,7 +1311,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
         "META-INF/jars/tiny-config-3.1.0-neoforge.jar",
-        "META-INF/jars/extensibleenums-neoforge-21.1.1.jar"])
+        "META-INF/jars/extensibleenums-neoforge-21.1.1.jar",
+        "META-INF/jarjar/biolith-neoforge-3.0.10.jar"])
     args = parser.parse_args()
     output = cast("Path", args.output)
     selected_archive = cast("str | None", args.archive)
@@ -1272,6 +1326,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
         "META-INF/jars/extensibleenums-neoforge-21.1.1.jar": (
             "IllagerInvasion-v21.1.6-1.21.1-NeoForge.jar",
             "35720e0569288b37fe59dfd3781691019d24ce1fab48623980b9d7a9b5af2e1c",
+        ),
+        "META-INF/jarjar/biolith-neoforge-3.0.10.jar": (
+            "Quark-4.1-480.jar",
+            "7f5c86757c61f56c7dccf602b44a2c17ba08d32d7e88cb531cbcd0c7b4789eab",
         ),
     }
     if nested and selected_archive != nested_sources[nested][0]:

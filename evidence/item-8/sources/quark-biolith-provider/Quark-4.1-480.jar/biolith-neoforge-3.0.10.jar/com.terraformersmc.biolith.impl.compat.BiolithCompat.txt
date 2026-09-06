@@ -1,0 +1,47 @@
+Compiled from "BiolithCompat.java"
+public class com.terraformersmc.biolith.impl.compat.BiolithCompat {
+  public static final boolean COMPAT_DATAGEN;
+
+  public static final boolean COMPAT_MODERNER_BETA;
+
+  public static final boolean COMPAT_TERRABLENDER;
+
+  public com.terraformersmc.biolith.impl.compat.BiolithCompat();
+    Code:
+       0: aload_0
+       1: invokespecial #13                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init();
+    Code:
+       0: getstatic     #18                 // Field COMPAT_MODERNER_BETA:Z
+       3: ifeq          16
+       6: getstatic     #24                 // Field com/terraformersmc/biolith/impl/Biolith.LOGGER:Lorg/slf4j/Logger;
+       9: ldc           #26                 // String Enabling Biolith\'s Moderner Beta compatibility layer.
+      11: invokeinterface #32,  2           // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+      16: getstatic     #34                 // Field COMPAT_TERRABLENDER:Z
+      19: ifeq          32
+      22: getstatic     #24                 // Field com/terraformersmc/biolith/impl/Biolith.LOGGER:Lorg/slf4j/Logger;
+      25: ldc           #36                 // String Enabling Biolith\'s TerraBlender compatibility layer.
+      27: invokeinterface #32,  2           // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+      32: return
+
+  static {};
+    Code:
+       0: ldc           #39                 // String fabric-api.datagen
+       2: invokestatic  #45                 // Method java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
+       5: ifnull        12
+       8: iconst_1
+       9: goto          13
+      12: iconst_0
+      13: putstatic     #47                 // Field COMPAT_DATAGEN:Z
+      16: getstatic     #53                 // Field com/terraformersmc/biolith/impl/platform/Services.PLATFORM:Lcom/terraformersmc/biolith/impl/platform/services/PlatformHelper;
+      19: ldc           #55                 // String moderner_beta
+      21: invokeinterface #61,  2           // InterfaceMethod com/terraformersmc/biolith/impl/platform/services/PlatformHelper.isModLoaded:(Ljava/lang/String;)Z
+      26: putstatic     #18                 // Field COMPAT_MODERNER_BETA:Z
+      29: getstatic     #53                 // Field com/terraformersmc/biolith/impl/platform/Services.PLATFORM:Lcom/terraformersmc/biolith/impl/platform/services/PlatformHelper;
+      32: ldc           #63                 // String terrablender
+      34: invokeinterface #61,  2           // InterfaceMethod com/terraformersmc/biolith/impl/platform/services/PlatformHelper.isModLoaded:(Ljava/lang/String;)Z
+      39: putstatic     #34                 // Field COMPAT_TERRABLENDER:Z
+      42: return
+}

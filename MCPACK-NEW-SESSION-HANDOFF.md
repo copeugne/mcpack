@@ -6,6 +6,87 @@
 
 ### Continuation update - 2026-09-06
 
+Latest closure at 6e765f5 is pushed and remote-ref verified. Census:
+73 resolved providers, 63 open. Quark provider scope is closed. The existing
+five named site candidates remain spire, fairy ring, fallen log, Monster Box
+and Nether obsidian spike; terrain/vegetation contributions are not extra
+families. Canonical whole-stack grouping remains separate and incomplete.
+
+One focused case in tests/item8/test_quark_provider_scope.py passes, with scoped
+Ruff and Basedpyright clean. It binds eighteen source manifests, exact outer and
+nested payloads, all world generators/top-level world modules/feature classes,
+packaged worldgen categories and frozen configuration. The detailed disposition
+is at the end of provider-scope.md. Do not recapture or repeat completed Quark
+and Biolith sources or reinterpret provider closure as observed placement.
+
+Next close shared Zeta using the existing captures listed in its queue row.
+Inspect remaining entry/plugin roles and complete packaged payload accounting;
+reuse module/config/biome/generator dispatch evidence. Do not expand generic
+math or unrelated gameplay internals. All remaining providers precede final
+canonical grouping and detailed family attributes. Item 8, clean review and
+main merge remain open. This turn delivered a provider closure; no blocker.
+
+Latest source checkpoints b9670f9 and 4e4a158 are pushed and remote-ref
+verified. Census remains 72 resolved providers and 64 open. Quark remains open.
+The specific spawner callback is resolved: configChanged copies isEnabled to
+staticEnabled; spawnerUpdate immediately returns when false or client-side.
+Frozen experimental."Spawner Replacer" is false. Enabled behavior only changes
+an existing spawner's entity type. Reuse quark-spawner-replacement (one class)
+and prior Zeta binding evidence; do not recapture or run a new experiment.
+
+quark-biolith-provider captures 26 bundled Biolith entry/API/service/loader/
+plugin/mixin classes through existing nested extraction support added at
+1ee9b51. Both captures reproduce exactly; scoped extractor checks passed.
+The Biolith loaders read biolith/biome_placement.json and
+biolith/surface_generation.json resources. Quark supplies neither resource;
+Glimmering Weald uses the captured direct BiomePlacement API. Biolith initializes
+configuration, compat, commands and criteria, and its hooks connect supplied
+biome/surface rules to generation. Complete its bounded role reconciliation
+with final Quark payload/entry accounting; do not expand unrelated math helpers.
+
+Remaining Quark closure work is the focused full-payload/source check and
+supported narrative disposition, including optional datapacks, declared hooks,
+existing generator candidates, bundled Biolith roles and frozen configuration.
+The full outer payload partition observed is 903 org classes, 64 tween-engine
+classes, 4479 assets, 3580 data files, 285 resource-pack files, 44 datapack files,
+seven META-INF files and five root metadata/icon files. This sums to 9367 and
+is an inspection lead to bind in the focused check, not a provider closure.
+No generation-class name outside the known world/mixin paths was found except
+datagen QuarkTags$Structures; name search alone is not absence evidence.
+Preserve existing candidate and variant distinctions. Final canonical family
+count, attributes and review/main merge remain open. This turn delivered source
+evidence and resolved a concrete callback; no blocker is present.
+
+Latest source checkpoint at 174dba6 is pushed and remote-ref verified.
+Census remains 72 resolved providers and 64 open; Quark is not closed.
+quark-provider-entries preserves 26 previously uncaptured entry/module/feature/
+mixin classes, with exact r1 reproduction and passing scoped extractor checks.
+Reuse the earlier 34 Quark classes and recorded nonregistry generators.
+
+Remaining Quark scope checks: bundled Biolith, SpawnerReplacerModule's direct
+callback, and final full packaged-resource/entry-role reconciliation. The captured
+SpawnerBlockEntityMixin calls that experimental module. Frozen quark-common.toml
+has experimental."Spawner Replacer" = false (line 1648); bind its implementation
+to this setting rather than inferring activation from the hook declaration.
+Glimmering Weald, Gold Bars and Variant Chests are true in the frozen file.
+No new independent family has been accepted in this source increment.
+
+Quark archive SHA-256 is
+989c465df2e4cb9f602840c2eec143358bf11462cc19dc0b0c7c9f17449e75a5.
+Initial full listing has 9367 files and 967 classes, fifteen root worldgen JSONs,
+optional datapacks (including three vanilla ore configured-feature overrides)
+and a programmer-art resource pack. The nested archive path is
+META-INF/jarjar/biolith-neoforge-3.0.10.jar, SHA-256
+7f5c86757c61f56c7dccf602b44a2c17ba08d32d7e88cb531cbcd0c7b4789eab.
+It has 106 files and 95 classes, twelve common and three NeoForge mixin entries,
+a NeoForge mixin plugin, one platform service and no packaged data definitions.
+These observations are leads for a bounded shared-biome-provider reconciliation,
+not a closure. GlimmeringWealdModule calls Biolith BiomePlacement.addOverworld.
+Zeta and its interface-delegate mixin plugin remain a separate provider row.
+Do not recapture existing Quark generators or audit unrelated gameplay internals.
+Final canonical count, attributes and review/main merge remain open. This turn
+made progress through delivered source evidence; no blocker is present.
+
 Latest checkpoint at 82238e0: shared YUNG API provider scope is closed,
 pushed and remote-ref verified. Census: 72 resolved providers, 64 open. One
 focused case and scoped quality checks pass. Source a796af9 preserves 43
@@ -15,7 +96,7 @@ empty packaged tags are extended by consuming providers; do not call their
 effective values empty. Optional weight injection (upper bound 5000, require=0)
 is a declaration, not confirmed execution. Full disposition is in provider-scope.md.
 
-Next reconcile Quark using its existing sixteen source directories listed in
+Next reconcile Quark using its existing source directories listed in
 the provider queue, its recorded nonregistry families and frozen module state.
 Do not recapture known generators or reopen completed YUNG provider work.
 Finish its remaining packaged-resource and generation-entry coverage, then the
