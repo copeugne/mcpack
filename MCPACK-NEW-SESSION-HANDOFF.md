@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Eight Nether paired decisions are settled: two skulls, two shrines, two towers
+and two pools. They retain separate site designs; lower pool templates stay
+components. Reuse sources/nether-pair-views and existing source graphs. Explicit
+provisional remainder: 67 (Nether 14, Voyager 53). Working groups remain 409.
+Derived inventory refresh is next, then the other fourteen Nether decisions.
+
+
 Nether comparison starts with its skull, shrine, tower and pool pairs. Their
 palette/content summaries omit layout, so reuse the existing template renderer
 with ten exact packaged paths, including both pool lower pieces. No new renderer,
