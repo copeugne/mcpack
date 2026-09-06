@@ -201,6 +201,8 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "software/bernie/geckolib/GeckoLibConstants.class",
+    "software/bernie/geckolib/service/GeckoLibNetworking.class",
     "software/bernie/geckolib/GeckoLib.class",
     "software/bernie/geckolib/platform/GeckoLibClientNeoForge.class",
     "software/bernie/geckolib/event/GeckoLibEventsNeoForge.class",
