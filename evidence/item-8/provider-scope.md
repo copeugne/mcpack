@@ -5795,7 +5795,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-rendering-data-attachment-v1-0.3.49+73761d2e19.jar` | RESOLVED: block interface, read/accessor or climbing roles; no independent family. See below. |
 | `fabric-rendering-fluids-v1-3.1.6+a51883b219.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
 | `fabric-rendering-v1-5.1.0+1a09bd5a19.jar` | RESOLVED: Client-guarded initialization and fifteen client-only hooks; source 2e5d280. No independent family. |
-| `fabric-resource-conditions-api-v1-4.3.0+5bdd099819.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-resource-conditions-api-v1-4.3.0+5bdd099819.jar` | RESOLVED: Consumer resource filtering and declared overlay selection. Sources 969f1bb and abcf742; no independent family. |
 | `fabric-resource-loader-v0-1.3.1+4ea8954419.jar` | RESOLVED: consumer pack loading; see above. |
 | `fabric-screen-api-v1-2.0.25+0ae1214819.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
 | `fabric-screen-handler-api-v1-1.3.90+8dbc56dd19.jar` | RESOLVED: Empty initializer and menu-opening support; source c5ebd6e. No independent family. |
@@ -6510,3 +6510,24 @@ Resource-condition source 969f1bb is delivered with independent byte-identical
 reproduction. Its initializer and ten data-loading hooks still require semantic
 reconciliation. Keep that module open; the other three dispositions do not prove
 resource-condition behavior. Reuse the delivered capture instead of recapturing.
+
+### Fabric resource-condition membership resolved
+
+Source 969f1bb binds the generated initializer and ten loading hooks. Source
+abcf742 resolves the initializer/evaluation and overlay delegates. Initialization
+registers nine predicate types. The loader hooks filter supplied JSON resources,
+retain registry/tag/feature context, and append consumer-declared overlays whose
+conditions pass. They do not contribute an authored layout or independent site.
+The module's remaining types are condition API/codecs, predicate implementations
+and overlay records. The full payload has 31 classes, an access transformer,
+loader metadata, one icon and the common mixin declaration, with no generation
+resources or additional executable entry. The existing test binds this payload,
+all automatic/common entries and both source manifests to the frozen archive.
+
+All 37 focused Fabric cases, scoped Ruff and Basedpyright pass using the commands
+above. Both delegate disassemblies independently reproduce byte for byte. No new
+measurement system was added. Effective consumer conditions remain part of each
+family's eligibility evidence; this membership disposition does not assert they
+pass. Fabric now has 36 resolved modules and seven open. Whole providers remain
+90 resolved and 46 open. No family-list change. Continue the remaining named
+module/provider checks and canonical grouping before detailed attributes.

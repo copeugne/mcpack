@@ -106,6 +106,13 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
     ("module", "label", "digest", "count", "consumers"),
     [
         (
+            "fabric-resource-conditions-api-v1-4.3.0+5bdd099819",
+            "fabric-resource-conditions-api-v1-entry",
+            "1b89585428466581c618936da06eef4e7dc4684c64a150080ccf2ba02dda9c21",
+            10,
+            {"org/sinytra/fabric/resource_conditions_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
             "fabric-message-api-v1-6.0.14+6a754fce19",
             "fabric-message-api-v1-entry",
             "9222255dfc0fe5fdf7b15eab08a4d6c45db376e76a6299bcc4629a08ca9a7f96",
@@ -316,6 +323,12 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert extra["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / extra["disassembly"]).read_bytes()).hexdigest()
             initializer_sources = {
+                "fabric-resource-conditions-api-v1": [(
+                    "fabric-resource-condition-delegates",
+                    "e6103740fe144f96a30b6d57d87bc672b35fffa3b9553f52b2a4cb4188bb6697",
+                    {"net/fabricmc/fabric/impl/resource/conditions/ResourceConditionsImpl.class",
+                     "net/fabricmc/fabric/impl/resource/conditions/OverlayConditionsMetadata.class"},
+                )],
                 "fabric-data-attachment-api-v1": [(
                     "fabric-attachment-registration",
                     "e5d85879d444086c19fa15921336c7e711185d212564b35501e8bc8eb58dda67",
@@ -367,6 +380,7 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert row["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / row["disassembly"]).read_bytes()).hexdigest()
             block_modules = {
+                "fabric-resource-conditions-api-v1": (31, 0),
                 "fabric-message-api-v1": (32, 2),
                 "fabric-screen-handler-api-v1": (9, 0),
                 "fabric-data-attachment-api-v1": (20, 1),
@@ -403,7 +417,7 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                             "fabric-recipe-api-v1", "fabric-command-api-v2",
                             "fabric-lifecycle-events-v1", "fabric-item-group-api-v1",
                             "fabric-content-registries-v0", "fabric-data-generation-api-v1",
-                            "fabric-screen-handler-api-v1"}:
+                            "fabric-screen-handler-api-v1", "fabric-resource-conditions-api-v1"}:
                     extras.add("META-INF/accesstransformer.cfg")
                 extras.update({
                     "fabric-data-attachment-api-v1": {

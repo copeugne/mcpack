@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric resource-condition membership is resolved from 969f1bb and abcf742.
+It filters consumer resources and selects declared overlays; no independent
+family. All 37 focused cases and scoped checks pass. Fabric: 36 resolved, seven
+open. Whole providers: 90 resolved, 46 open. Remaining Fabric modules are events
+interaction, item API, networking, object builder, registry sync, transfer and
+forgified loader. Reuse the completed condition sources; effective conditions
+remain per-family eligibility work after the membership list is frozen.
+
+
 Fabric message, screen-handler and rendering membership are resolved. Sources:
 1e30004, c5ebd6e, 2e5d280. All 36 focused cases and scoped checks pass. Fabric:
 35 resolved, eight open. Whole providers: 90 resolved, 46 open. No family added.
