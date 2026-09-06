@@ -1,0 +1,541 @@
+Classfile amendments-1.21-2.0.15-neoforge.jar!/net/mehvahdjukaar/amendments/mixins/BellMixin.class
+  Last modified Jan 1, 1980; size 7822 bytes
+  SHA-256 checksum 981c265519ae1b54d9b64a76eb1582bf9fff58f74ea06a62c96e7dfcb3859722
+  Compiled from "BellMixin.java"
+public abstract class net.mehvahdjukaar.amendments.mixins.BellMixin extends net.minecraft.world.level.block.Block
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // net/mehvahdjukaar/amendments/mixins/BellMixin
+  super_class: #4                         // net/minecraft/world/level/block/Block
+  interfaces: 0, fields: 0, methods: 5, attributes: 3
+Constant pool:
+    #1 = Utf8               net/mehvahdjukaar/amendments/mixins/BellMixin
+    #2 = Class              #1            // net/mehvahdjukaar/amendments/mixins/BellMixin
+    #3 = Utf8               net/minecraft/world/level/block/Block
+    #4 = Class              #3            // net/minecraft/world/level/block/Block
+    #5 = Utf8               BellMixin.java
+    #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #7 = Utf8               value
+    #8 = Utf8               Lnet/minecraft/world/level/block/BellBlock;
+    #9 = Utf8               net/minecraft/world/level/block/state/BlockBehaviour$Properties
+   #10 = Class              #9            // net/minecraft/world/level/block/state/BlockBehaviour$Properties
+   #11 = Utf8               net/minecraft/world/level/block/state/BlockBehaviour
+   #12 = Class              #11           // net/minecraft/world/level/block/state/BlockBehaviour
+   #13 = Utf8               Properties
+   #14 = Utf8               net/mehvahdjukaar/amendments/common/IBellConnection$Type
+   #15 = Class              #14           // net/mehvahdjukaar/amendments/common/IBellConnection$Type
+   #16 = Utf8               net/mehvahdjukaar/amendments/common/IBellConnection
+   #17 = Class              #16           // net/mehvahdjukaar/amendments/common/IBellConnection
+   #18 = Utf8               Type
+   #19 = Utf8               net/minecraft/core/Direction$Axis
+   #20 = Class              #19           // net/minecraft/core/Direction$Axis
+   #21 = Utf8               net/minecraft/core/Direction
+   #22 = Class              #21           // net/minecraft/core/Direction
+   #23 = Utf8               Axis
+   #24 = Utf8               <init>
+   #25 = Utf8               (Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+   #26 = Utf8               properties
+   #27 = NameAndType        #24:#25       // "<init>":(Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+   #28 = Methodref          #4.#27        // net/minecraft/world/level/block/Block."<init>":(Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+   #29 = Utf8               this
+   #30 = Utf8               Lnet/mehvahdjukaar/amendments/mixins/BellMixin;
+   #31 = Utf8               Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+   #32 = Utf8               amendments$tryConnect
+   #33 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;)Z
+   #34 = Utf8               pos
+   #35 = Utf8               facingState
+   #36 = Utf8               world
+   #37 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+   #38 = Utf8               net/minecraft/world/level/LevelAccessor
+   #39 = Class              #38           // net/minecraft/world/level/LevelAccessor
+   #40 = Utf8               getBlockEntity
+   #41 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+   #42 = NameAndType        #40:#41       // getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+   #43 = InterfaceMethodref #39.#42       // net/minecraft/world/level/LevelAccessor.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+   #44 = Utf8               NONE
+   #45 = Utf8               Lnet/mehvahdjukaar/amendments/common/IBellConnection$Type;
+   #46 = NameAndType        #44:#45       // NONE:Lnet/mehvahdjukaar/amendments/common/IBellConnection$Type;
+   #47 = Fieldref           #15.#46       // net/mehvahdjukaar/amendments/common/IBellConnection$Type.NONE:Lnet/mehvahdjukaar/amendments/common/IBellConnection$Type;
+   #48 = Utf8               net/minecraft/world/level/block/state/BlockState
+   #49 = Class              #48           // net/minecraft/world/level/block/state/BlockState
+   #50 = Utf8               getBlock
+   #51 = Utf8               ()Lnet/minecraft/world/level/block/Block;
+   #52 = NameAndType        #50:#51       // getBlock:()Lnet/minecraft/world/level/block/Block;
+   #53 = Methodref          #49.#52       // net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+   #54 = Utf8               net/minecraft/world/level/block/ChainBlock
+   #55 = Class              #54           // net/minecraft/world/level/block/ChainBlock
+   #56 = Utf8               net/minecraft/world/level/block/RotatedPillarBlock
+   #57 = Class              #56           // net/minecraft/world/level/block/RotatedPillarBlock
+   #58 = Utf8               AXIS
+   #59 = Utf8               Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+   #60 = NameAndType        #58:#59       // AXIS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+   #61 = Fieldref           #57.#60       // net/minecraft/world/level/block/RotatedPillarBlock.AXIS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+   #62 = Utf8               getValue
+   #63 = Utf8               (Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+   #64 = NameAndType        #62:#63       // getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+   #65 = Methodref          #49.#64       // net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+   #66 = Utf8               Y
+   #67 = Utf8               Lnet/minecraft/core/Direction$Axis;
+   #68 = NameAndType        #66:#67       // Y:Lnet/minecraft/core/Direction$Axis;
+   #69 = Fieldref           #20.#68       // net/minecraft/core/Direction$Axis.Y:Lnet/minecraft/core/Direction$Axis;
+   #70 = Utf8               CHAIN
+   #71 = NameAndType        #70:#45       // CHAIN:Lnet/mehvahdjukaar/amendments/common/IBellConnection$Type;
+   #72 = Fieldref           #15.#71       // net/mehvahdjukaar/amendments/common/IBellConnection$Type.CHAIN:Lnet/mehvahdjukaar/amendments/common/IBellConnection$Type;
+   #73 = Utf8               net/minecraft/world/level/block/entity/BlockEntity
+   #74 = Class              #73           // net/minecraft/world/level/block/entity/BlockEntity
+   #75 = Utf8               net/mehvahdjukaar/amendments/integration/CompatHandler
+   #76 = Class              #75           // net/mehvahdjukaar/amendments/integration/CompatHandler
+   #77 = Utf8               SUPPLEMENTARIES
+   #78 = Utf8               Z
+   #79 = NameAndType        #77:#78       // SUPPLEMENTARIES:Z
+   #80 = Fieldref           #76.#79       // net/mehvahdjukaar/amendments/integration/CompatHandler.SUPPLEMENTARIES:Z
+   #81 = Utf8               net/mehvahdjukaar/amendments/integration/SuppCompat
+   #82 = Class              #81           // net/mehvahdjukaar/amendments/integration/SuppCompat
+   #83 = Utf8               isRope
+   #84 = Utf8               (Lnet/minecraft/world/level/block/Block;)Z
+   #85 = NameAndType        #83:#84       // isRope:(Lnet/minecraft/world/level/block/Block;)Z
+   #86 = Methodref          #82.#85       // net/mehvahdjukaar/amendments/integration/SuppCompat.isRope:(Lnet/minecraft/world/level/block/Block;)Z
+   #87 = Utf8               ROPE
+   #88 = NameAndType        #87:#45       // ROPE:Lnet/mehvahdjukaar/amendments/common/IBellConnection$Type;
+   #89 = Fieldref           #15.#88       // net/mehvahdjukaar/amendments/common/IBellConnection$Type.ROPE:Lnet/mehvahdjukaar/amendments/common/IBellConnection$Type;
+   #90 = Utf8               amendments$setConnected
+   #91 = Utf8               (Lnet/mehvahdjukaar/amendments/common/IBellConnection$Type;)V
+   #92 = NameAndType        #90:#91       // amendments$setConnected:(Lnet/mehvahdjukaar/amendments/common/IBellConnection$Type;)V
+   #93 = InterfaceMethodref #17.#92       // net/mehvahdjukaar/amendments/common/IBellConnection.amendments$setConnected:(Lnet/mehvahdjukaar/amendments/common/IBellConnection$Type;)V
+   #94 = Utf8               setChanged
+   #95 = Utf8               ()V
+   #96 = NameAndType        #94:#95       // setChanged:()V
+   #97 = Methodref          #74.#96       // net/minecraft/world/level/block/entity/BlockEntity.setChanged:()V
+   #98 = Utf8               connection
+   #99 = Utf8               bc
+  #100 = Utf8               Lnet/mehvahdjukaar/amendments/common/IBellConnection;
+  #101 = Utf8               Lnet/minecraft/core/BlockPos;
+  #102 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+  #103 = Utf8               Lnet/minecraft/world/level/LevelAccessor;
+  #104 = Utf8               te
+  #105 = Utf8               Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #106 = Utf8               updateShape
+  #107 = Utf8               (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+  #108 = Utf8               (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/level/block/state/BlockState;>;)V
+  #109 = Utf8               stateIn
+  #110 = Utf8               facing
+  #111 = Utf8               worldIn
+  #112 = Utf8               currentPos
+  #113 = Utf8               facingPos
+  #114 = Utf8               info
+  #115 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #116 = Utf8               method
+  #117 = Utf8               updateShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #118 = Utf8               at
+  #119 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #120 = Utf8               HEAD
+  #121 = Utf8               java/lang/Exception
+  #122 = Class              #121          // java/lang/Exception
+  #123 = Utf8               DOWN
+  #124 = Utf8               Lnet/minecraft/core/Direction;
+  #125 = NameAndType        #123:#124     // DOWN:Lnet/minecraft/core/Direction;
+  #126 = Fieldref           #22.#125      // net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+  #127 = NameAndType        #32:#33       // amendments$tryConnect:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;)Z
+  #128 = Methodref          #2.#127       // net/mehvahdjukaar/amendments/mixins/BellMixin.amendments$tryConnect:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;)Z
+  #129 = Utf8               net/minecraft/world/level/Level
+  #130 = Class              #129          // net/minecraft/world/level/Level
+  #131 = Utf8               sendBlockUpdated
+  #132 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;I)V
+  #133 = NameAndType        #131:#132     // sendBlockUpdated:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;I)V
+  #134 = Methodref          #130.#133     // net/minecraft/world/level/Level.sendBlockUpdated:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;I)V
+  #135 = Utf8               level
+  #136 = Utf8               Lnet/minecraft/world/level/Level;
+  #137 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/level/block/state/BlockState;>;
+  #138 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #139 = Utf8               amendments$updateObservers
+  #140 = Utf8               (Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Lnet/minecraft/world/level/block/entity/BlockEntity;)V
+  #141 = Utf8               (Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;Lnet/minecraft/world/level/block/entity/BlockEntity;)V
+  #142 = Utf8               entity
+  #143 = Utf8               direction
+  #144 = Utf8               cir
+  #145 = Utf8               blockEntity
+  #146 = Utf8               attemptToRing(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Z
+  #147 = Utf8               INVOKE
+  #148 = Utf8               target
+  #149 = Utf8               Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+  #150 = Utf8               Lcom/llamalad7/mixinextras/sugar/Local;
+  #151 = Utf8               getBlockState
+  #152 = Utf8               ()Lnet/minecraft/world/level/block/state/BlockState;
+  #153 = NameAndType        #151:#152     // getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+  #154 = Methodref          #74.#153      // net/minecraft/world/level/block/entity/BlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+  #155 = Utf8               net/minecraft/world/level/block/BellBlock
+  #156 = Class              #155          // net/minecraft/world/level/block/BellBlock
+  #157 = Utf8               POWERED
+  #158 = Utf8               Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+  #159 = NameAndType        #157:#158     // POWERED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+  #160 = Fieldref           #156.#159     // net/minecraft/world/level/block/BellBlock.POWERED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+  #161 = Utf8               java/lang/Boolean
+  #162 = Class              #161          // java/lang/Boolean
+  #163 = Utf8               booleanValue
+  #164 = Utf8               ()Z
+  #165 = NameAndType        #163:#164     // booleanValue:()Z
+  #166 = Methodref          #162.#165     // java/lang/Boolean.booleanValue:()Z
+  #167 = Utf8               valueOf
+  #168 = Utf8               (Z)Ljava/lang/Boolean;
+  #169 = NameAndType        #167:#168     // valueOf:(Z)Ljava/lang/Boolean;
+  #170 = Methodref          #162.#169     // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+  #171 = Utf8               setValue
+  #172 = Utf8               (Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+  #173 = NameAndType        #171:#172     // setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+  #174 = Methodref          #49.#173      // net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+  #175 = Utf8               setBlockAndUpdate
+  #176 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #177 = NameAndType        #175:#176     // setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #178 = Methodref          #130.#177     // net/minecraft/world/level/Level.setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #179 = Utf8               Lnet/minecraft/world/entity/Entity;
+  #180 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+  #181 = Utf8               state
+  #182 = Utf8               setPlacedBy
+  #183 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;)V
+  #184 = Utf8               placer
+  #185 = Utf8               stack
+  #186 = NameAndType        #182:#183     // setPlacedBy:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;)V
+  #187 = Methodref          #4.#186       // net/minecraft/world/level/block/Block.setPlacedBy:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;)V
+  #188 = Utf8               net/minecraft/core/BlockPos
+  #189 = Class              #188          // net/minecraft/core/BlockPos
+  #190 = Utf8               below
+  #191 = Utf8               ()Lnet/minecraft/core/BlockPos;
+  #192 = NameAndType        #190:#191     // below:()Lnet/minecraft/core/BlockPos;
+  #193 = Methodref          #189.#192     // net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+  #194 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #195 = NameAndType        #151:#194     // getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #196 = Methodref          #130.#195     // net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #197 = Utf8               Lnet/minecraft/world/entity/LivingEntity;
+  #198 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #199 = Utf8               Code
+  #200 = Utf8               LineNumberTable
+  #201 = Utf8               LocalVariableTable
+  #202 = Utf8               MethodParameters
+  #203 = Utf8               StackMapTable
+  #204 = Utf8               RuntimeVisibleAnnotations
+  #205 = Utf8               LocalVariableTypeTable
+  #206 = Utf8               Signature
+  #207 = Utf8               RuntimeInvisibleParameterAnnotations
+  #208 = Utf8               InnerClasses
+  #209 = Utf8               SourceFile
+  #210 = Utf8               RuntimeInvisibleAnnotations
+{
+  protected net.mehvahdjukaar.amendments.mixins.BellMixin(net.minecraft.world.level.block.state.BlockBehaviour$Properties);
+    descriptor: (Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokespecial #28                 // Method net/minecraft/world/level/block/Block."<init>":(Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+         5: return
+      LineNumberTable:
+        line 28: 0
+        line 29: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lnet/mehvahdjukaar/amendments/mixins/BellMixin;
+            0       6     1 properties   Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+    MethodParameters:
+      Name                           Flags
+      properties
+
+  public boolean amendments$tryConnect(net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.LevelAccessor);
+    descriptor: (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;)Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=7, args_size=4
+         0: aload_3
+         1: aload_1
+         2: invokeinterface #43,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+         7: astore        4
+         9: aload         4
+        11: instanceof    #17                 // class net/mehvahdjukaar/amendments/common/IBellConnection
+        14: ifeq          97
+        17: aload         4
+        19: checkcast     #17                 // class net/mehvahdjukaar/amendments/common/IBellConnection
+        22: astore        5
+        24: getstatic     #47                 // Field net/mehvahdjukaar/amendments/common/IBellConnection$Type.NONE:Lnet/mehvahdjukaar/amendments/common/IBellConnection$Type;
+        27: astore        6
+        29: aload_2
+        30: invokevirtual #53                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+        33: instanceof    #55                 // class net/minecraft/world/level/block/ChainBlock
+        36: ifeq          60
+        39: aload_2
+        40: getstatic     #61                 // Field net/minecraft/world/level/block/RotatedPillarBlock.AXIS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+        43: invokevirtual #65                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+        46: getstatic     #69                 // Field net/minecraft/core/Direction$Axis.Y:Lnet/minecraft/core/Direction$Axis;
+        49: if_acmpne     60
+        52: getstatic     #72                 // Field net/mehvahdjukaar/amendments/common/IBellConnection$Type.CHAIN:Lnet/mehvahdjukaar/amendments/common/IBellConnection$Type;
+        55: astore        6
+        57: goto          81
+        60: getstatic     #80                 // Field net/mehvahdjukaar/amendments/integration/CompatHandler.SUPPLEMENTARIES:Z
+        63: ifeq          81
+        66: aload_2
+        67: invokevirtual #53                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+        70: invokestatic  #86                 // Method net/mehvahdjukaar/amendments/integration/SuppCompat.isRope:(Lnet/minecraft/world/level/block/Block;)Z
+        73: ifeq          81
+        76: getstatic     #89                 // Field net/mehvahdjukaar/amendments/common/IBellConnection$Type.ROPE:Lnet/mehvahdjukaar/amendments/common/IBellConnection$Type;
+        79: astore        6
+        81: aload         5
+        83: aload         6
+        85: invokeinterface #93,  2           // InterfaceMethod net/mehvahdjukaar/amendments/common/IBellConnection.amendments$setConnected:(Lnet/mehvahdjukaar/amendments/common/IBellConnection$Type;)V
+        90: aload         4
+        92: invokevirtual #97                 // Method net/minecraft/world/level/block/entity/BlockEntity.setChanged:()V
+        95: iconst_1
+        96: ireturn
+        97: iconst_0
+        98: ireturn
+      StackMapTable: number_of_entries = 3
+        frame_type = 254 /* append */
+          offset_delta = 60
+          locals = [ class net/minecraft/world/level/block/entity/BlockEntity, class net/mehvahdjukaar/amendments/common/IBellConnection, class net/mehvahdjukaar/amendments/common/IBellConnection$Type ]
+        frame_type = 20 /* same */
+        frame_type = 249 /* chop */
+          offset_delta = 15
+      LineNumberTable:
+        line 35: 0
+        line 36: 9
+        line 37: 24
+        line 38: 29
+        line 39: 52
+        line 40: 60
+        line 41: 76
+        line 42: 81
+        line 43: 90
+        line 44: 95
+        line 46: 97
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           29      68     6 connection   Lnet/mehvahdjukaar/amendments/common/IBellConnection$Type;
+           24      73     5    bc   Lnet/mehvahdjukaar/amendments/common/IBellConnection;
+            0      99     0  this   Lnet/mehvahdjukaar/amendments/mixins/BellMixin;
+            0      99     1   pos   Lnet/minecraft/core/BlockPos;
+            0      99     2 facingState   Lnet/minecraft/world/level/block/state/BlockState;
+            0      99     3 world   Lnet/minecraft/world/level/LevelAccessor;
+            9      90     4    te   Lnet/minecraft/world/level/block/entity/BlockEntity;
+    RuntimeVisibleAnnotations:
+      0: #37()
+        org.spongepowered.asm.mixin.Unique
+    MethodParameters:
+      Name                           Flags
+      pos
+      facingState
+      world
+
+  public void updateShape(net.minecraft.world.level.block.state.BlockState, net.minecraft.core.Direction, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<net.minecraft.world.level.block.state.BlockState>);
+    descriptor: (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=5, locals=9, args_size=8
+         0: aload_2
+         1: getstatic     #126                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+         4: if_acmpne     44
+         7: aload_0
+         8: aload         5
+        10: aload_3
+        11: aload         4
+        13: invokevirtual #128                // Method amendments$tryConnect:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;)Z
+        16: ifeq          44
+        19: aload         4
+        21: instanceof    #130                // class net/minecraft/world/level/Level
+        24: ifeq          44
+        27: aload         4
+        29: checkcast     #130                // class net/minecraft/world/level/Level
+        32: astore        8
+        34: aload         8
+        36: aload         5
+        38: aload_1
+        39: aload_1
+        40: iconst_2
+        41: invokevirtual #134                // Method net/minecraft/world/level/Level.sendBlockUpdated:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;I)V
+        44: goto          49
+        47: astore        8
+        49: return
+      Exception table:
+         from    to  target type
+             0    44    47   Class java/lang/Exception
+      StackMapTable: number_of_entries = 3
+        frame_type = 44 /* same */
+        frame_type = 66 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Exception ]
+        frame_type = 1 /* same */
+      LineNumberTable:
+        line 53: 0
+        line 54: 19
+        line 55: 34
+        line 59: 44
+        line 58: 47
+        line 60: 49
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           34      10     8 level   Lnet/minecraft/world/level/Level;
+            0      50     0  this   Lnet/mehvahdjukaar/amendments/mixins/BellMixin;
+            0      50     1 stateIn   Lnet/minecraft/world/level/block/state/BlockState;
+            0      50     2 facing   Lnet/minecraft/core/Direction;
+            0      50     3 facingState   Lnet/minecraft/world/level/block/state/BlockState;
+            0      50     4 worldIn   Lnet/minecraft/world/level/LevelAccessor;
+            0      50     5 currentPos   Lnet/minecraft/core/BlockPos;
+            0      50     6 facingPos   Lnet/minecraft/core/BlockPos;
+            0      50     7  info   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      50     7  info   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/level/block/state/BlockState;>;
+    Signature: #108                         // (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/level/block/state/BlockState;>;)V
+    RuntimeVisibleAnnotations:
+      0: #115(#116=[s#117],#118=[@#119(#7=s#120)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["updateShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      stateIn
+      facing
+      facingState
+      worldIn
+      currentPos
+      facingPos
+      info
+
+  public void amendments$updateObservers(net.minecraft.world.entity.Entity, net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.core.Direction, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>, net.minecraft.world.level.block.entity.BlockEntity);
+    descriptor: (Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Lnet/minecraft/world/level/block/entity/BlockEntity;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=5, locals=8, args_size=7
+         0: aload         6
+         2: invokevirtual #154                // Method net/minecraft/world/level/block/entity/BlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+         5: astore        7
+         7: aload         7
+         9: getstatic     #160                // Field net/minecraft/world/level/block/BellBlock.POWERED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+        12: invokevirtual #65                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+        15: checkcast     #162                // class java/lang/Boolean
+        18: invokevirtual #166                // Method java/lang/Boolean.booleanValue:()Z
+        21: ifne          66
+        24: aload_2
+        25: aload_3
+        26: aload         7
+        28: getstatic     #160                // Field net/minecraft/world/level/block/BellBlock.POWERED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+        31: iconst_1
+        32: invokestatic  #170                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        35: invokevirtual #174                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+        38: checkcast     #49                 // class net/minecraft/world/level/block/state/BlockState
+        41: invokevirtual #178                // Method net/minecraft/world/level/Level.setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+        44: pop
+        45: aload_2
+        46: aload_3
+        47: aload         7
+        49: getstatic     #160                // Field net/minecraft/world/level/block/BellBlock.POWERED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+        52: iconst_0
+        53: invokestatic  #170                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        56: invokevirtual #174                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+        59: checkcast     #49                 // class net/minecraft/world/level/block/state/BlockState
+        62: invokevirtual #178                // Method net/minecraft/world/level/Level.setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+        65: pop
+        66: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 66
+          locals = [ class net/minecraft/world/level/block/state/BlockState ]
+      LineNumberTable:
+        line 66: 0
+        line 67: 7
+        line 68: 24
+        line 69: 45
+        line 71: 66
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      67     0  this   Lnet/mehvahdjukaar/amendments/mixins/BellMixin;
+            0      67     1 entity   Lnet/minecraft/world/entity/Entity;
+            0      67     2 level   Lnet/minecraft/world/level/Level;
+            0      67     3   pos   Lnet/minecraft/core/BlockPos;
+            0      67     4 direction   Lnet/minecraft/core/Direction;
+            0      67     5   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            0      67     6 blockEntity   Lnet/minecraft/world/level/block/entity/BlockEntity;
+            7      60     7 state   Lnet/minecraft/world/level/block/state/BlockState;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      67     5   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+    Signature: #141                         // (Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;Lnet/minecraft/world/level/block/entity/BlockEntity;)V
+    RuntimeVisibleAnnotations:
+      0: #115(#116=[s#146],#118=[@#119(#7=s#147,#148=s#149)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["attemptToRing(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Z"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V"
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+      parameter 3:
+      parameter 4:
+      parameter 5:
+        0: #150()
+          com.llamalad7.mixinextras.sugar.Local
+    MethodParameters:
+      Name                           Flags
+      entity
+      level
+      pos
+      direction
+      cir
+      blockEntity
+
+  public void setPlacedBy(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.entity.LivingEntity, net.minecraft.world.item.ItemStack);
+    descriptor: (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=6, locals=6, args_size=6
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: aload_3
+         4: aload         4
+         6: aload         5
+         8: invokespecial #187                // Method net/minecraft/world/level/block/Block.setPlacedBy:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;)V
+        11: aload_0
+        12: aload_2
+        13: aload_1
+        14: aload_2
+        15: invokevirtual #193                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+        18: invokevirtual #196                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+        21: aload_1
+        22: invokevirtual #128                // Method amendments$tryConnect:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;)Z
+        25: pop
+        26: return
+      LineNumberTable:
+        line 75: 0
+        line 76: 11
+        line 77: 26
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      27     0  this   Lnet/mehvahdjukaar/amendments/mixins/BellMixin;
+            0      27     1 worldIn   Lnet/minecraft/world/level/Level;
+            0      27     2   pos   Lnet/minecraft/core/BlockPos;
+            0      27     3 state   Lnet/minecraft/world/level/block/state/BlockState;
+            0      27     4 placer   Lnet/minecraft/world/entity/LivingEntity;
+            0      27     5 stack   Lnet/minecraft/world/item/ItemStack;
+    MethodParameters:
+      Name                           Flags
+      worldIn
+      pos
+      state
+      placer
+      stack
+}
+InnerClasses:
+  public static #13= #10 of #12;          // Properties=class net/minecraft/world/level/block/state/BlockBehaviour$Properties of class net/minecraft/world/level/block/state/BlockBehaviour
+  public static final #18= #15 of #17;    // Type=class net/mehvahdjukaar/amendments/common/IBellConnection$Type of class net/mehvahdjukaar/amendments/common/IBellConnection
+  public static abstract #23= #20 of #22; // Axis=class net/minecraft/core/Direction$Axis of class net/minecraft/core/Direction
+SourceFile: "BellMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/block/BellBlock;]
+    )
