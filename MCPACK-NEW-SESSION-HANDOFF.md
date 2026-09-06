@@ -6,6 +6,40 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric lookup is resolved. Source 6a7858d (extractor 65b700e) shows its startup
+callback validates caller-supplied entity types by constructing an instance and
+checking API compatibility, without adding it to the world or registering a
+generation route. Existing entry/cache/payload evidence is reused; initializer
+and callback hashes are now bound. Twenty-two cases and scoped checks pass.
+Fabric has twenty-one resolved and twenty-two open modules; whole-provider
+census stays 90 resolved, 46 open. No family added. Continue remaining named
+modules and family groupings; no further lookup helper tracing is needed.
+
+Fabric block API, block-view API and rendering-data attachment are resolved as
+consumer interfaces/accessors and climbing behavior, with no independent family.
+Source 771947f, extractor 231284d. Twenty-two focused cases and scoped checks pass;
+Fabric now has twenty resolved and twenty-three open modules. Lookup remains
+open: source 3a9ed5d (extractor 2043743) shows its initializer registers
+EntityApiLookupImpl.checkSelfImplementingTypes on SERVER_STARTED. Inspect that
+callback next, reusing all captured entry/cache paths. Whole-provider census
+remains 90 resolved, 46 open. No live process; other family groupings remain open.
+
+Four more Fabric modules are resolved: model loading, particles, Indigo and
+screen API. Source b3a9dd3 (extractor e2ae798) reproduces entries, two client event
+subscribers and Indigo's renderer-selection plugin. Full payload and client
+mixin partitions pass in eighteen focused cases; scoped checks pass. Fabric:
+seventeen resolved, twenty-six open modules. No family added. Whole-provider
+census remains 90 resolved, 46 open. Continue remaining named contribution roles
+and family groupings. Do not revisit the closed client helper implementations.
+
+Three Fabric client API modules are resolved: client tags, renderer API and
+fluid rendering. Their entries are empty or client-guarded; complete payloads
+and client-only mixin partitions are verified. Source 339a264, extractor 6ff2013.
+Fourteen focused Fabric cases and scoped checks pass. Fabric now has thirteen
+resolved and thirty open modules. Whole-provider census remains 90 resolved,
+46 open. No new family. Continue remaining named membership roles without
+tracing unrelated rendering helpers; retain the delivered grouping decisions.
+
 Explorations' decorated-mushroom boundary is resolved: its procedural stem/canopy
 and hanging-light decorator are recorded as decorated vegetation, with no added
 family. The generation contribution and shuffle limitation remain explicit.
