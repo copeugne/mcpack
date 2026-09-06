@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric GameTest roles are resolved from source 6bffda6 (extractor ad51ae4):
+five mixins and three entry/namespace consumers, independently reproduced.
+The module registers tests and loads SNBT resources; no natural placement
+request or new family candidate. Three focused Fabric cases and scoped checks
+pass. Remaining Fabric: other bundled entry/mixin roles, particularly resource
+loading. Reuse closed packaged-data, modifier, biome and GameTest work. Census:
+90 resolved, 46 open. No live runtime or capture process.
+
 Fabric biome selection roles are resolved from source d052da5 (extractor
 2426342): six declared mixins and Nether/End registration data, independently
 reproduced. Seed propagation and consumer-supplied biome selection add no site

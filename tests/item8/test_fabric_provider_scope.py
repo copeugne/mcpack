@@ -8,6 +8,8 @@ from pathlib import Path
 from typing import cast
 from zipfile import ZipFile
 
+import pytest
+
 from mcpack_evidence.item8_sources import retained_sources
 
 
@@ -79,36 +81,59 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
         }
 
 
-def test_fabric_biome_selection_sources_cover_declared_mixins() -> None:
+@pytest.mark.parametrize(
+    ("module", "label", "digest", "count", "consumers"),
+    [
+        (
+            "fabric-biome-api-v1-13.0.31+1e62d33c19",
+            "fabric-biome-selection",
+            "de014a8e4cb7983f0b7dee3f690487f1d7a0fe016dea4855f91d42202331cd73",
+            6,
+            {
+                "net/fabricmc/fabric/impl/biome/NetherBiomeData.class",
+                "net/fabricmc/fabric/impl/biome/TheEndBiomeData.class",
+            },
+        ),
+        (
+            "fabric-gametest-api-v1-2.0.5+29f188ce19",
+            "fabric-gametest-consumers",
+            "3013cd1a423391736354782d30a6614077c99583ca0afd0be07b432b45d27a71",
+            5,
+            {
+                "net/fabricmc/fabric/impl/gametest/FabricGameTestModInitializer.class",
+                "org/sinytra/fabric/gametest_api/generated/GeneratedEntryPoint.class",
+                "org/sinytra/fabric/gametest_api_v1/FabricGameTestApiV1.class",
+            },
+        ),
+    ],
+)
+def test_fabric_sources_cover_declared_mixins(
+    module: str, label: str, digest: str, count: int, consumers: set[str]
+) -> None:
     source = next(
         s
         for s in retained_sources(Path.cwd())
         if s.name == "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar"
     )
     assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
-    member = "META-INF/jars/fabric-biome-api-v1-13.0.31+1e62d33c19.jar"
-    directory = Path("evidence/item-8/sources/fabric-biome-selection")
+    member = f"META-INF/jars/{module}.jar"
+    directory = Path("evidence/item-8/sources") / label
     raw = (directory / "identities.json").read_bytes()
-    assert (
-        hashlib.sha256(raw).hexdigest()
-        == "de014a8e4cb7983f0b7dee3f690487f1d7a0fe016dea4855f91d42202331cd73"
-    )
+    assert hashlib.sha256(raw).hexdigest() == digest
     rows = cast("list[dict[str, str]]", json.loads(raw))
     with ZipFile(source.path) as parent:
         payload = parent.read(member)
         with ZipFile(BytesIO(payload)) as archive:
             config = cast(
-                "dict[str, object]", json.loads(archive.read("fabric-biome-api-v1.mixins.json"))
+                "dict[str, object]",
+                json.loads(archive.read(module.rsplit("-", 1)[0] + ".mixins.json")),
             )
             prefix = cast("str", config["package"]).replace(".", "/") + "/"
             declared = {prefix + name + ".class" for name in cast("list[str]", config["mixins"])}
-            assert len(declared) == 6
+            assert len(declared) == count
             assert not config.get("plugin")
             assert not config.get("server")
-            assert {r["class"] for r in rows} == declared | {
-                "net/fabricmc/fabric/impl/biome/NetherBiomeData.class",
-                "net/fabricmc/fabric/impl/biome/TheEndBiomeData.class",
-            }
+            assert {r["class"] for r in rows} == declared | consumers
             for row in rows:
                 assert row["archive"] == source.name + "!/" + member
                 assert row["archive_sha256"] == hashlib.sha256(payload).hexdigest()

@@ -5529,3 +5529,25 @@ above. No new family candidate. Whole provider membership remains open for the
 other bundled entry/mixin roles, particularly resource loading and GameTest
 consumers. Census remains 90 resolved, 46 open; these completed biome roles must
 not be recaptured or reinterpreted on continuation.
+
+### Fabric GameTest consumer roles
+
+Source 6bffda6 (extractor ad51ae4) independently reproduces all five GameTest
+mixins plus generated entry, initializer and namespace consumer. The generated
+entry invokes FabricGameTestModInitializer, which registers classes from the
+fabric-gametest entrypoint with Minecraft's GameTestRegistry. Namespace and test
+registry hooks supply test names and invoke FabricGameTest implementations.
+StructureTemplateManagerMixin adds an SNBT resource source to the template
+manager; this is a loading path, not a natural structure placement request.
+TestCommandMixin reads the test-output directory property. TestServerMixin
+changes the test server's dedicated-server flag.
+
+These roles account for the packaged empty test fixture without creating an
+independent family. They do not imply that all template-manager calls are
+restricted to tests. No custom authored site is supplied by this module's
+packaged data. The existing focused source check now covers both biome and
+GameTest declared mixins without duplicating the binding implementation.
+Three focused Fabric cases and scoped Ruff/Basedpyright pass with the commands
+above. Remaining whole-provider work is the other bundled entry/mixin roles,
+particularly resource loading. Reuse all closed biome and GameTest roles.
+Census remains 90 resolved, 46 open; no family candidate was added.
