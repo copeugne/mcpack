@@ -108,6 +108,7 @@ ARCHIVES = frozenset(
         "CreeperOverhaul-neoforge-1.21.1-4.0.6.jar",
         "FarmersDelight-1.21.1-1.3.2.jar",
         "coffee_delight-1.4.1.jar",
+        "ends_delight-2.6+neoforge.1.21.1.jar",
         "YungsBridges-1.21.1-NeoForge-5.1.1.jar",
         "YungsExtras-1.21.1-NeoForge-5.1.1.jar",
         "YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar",
@@ -1849,6 +1850,11 @@ CLASSES: tuple[str, ...] = (
     "lcyzsdh/coffee_delight/worldgen/ModBiomeModifier.class",
     "lcyzsdh/coffee_delight/worldgen/ModFeatures.class",
     "lcyzsdh/coffee_delight/worldgen/ModPlacement.class",
+    "cn/foggyhillside/ends_delight/EndsDelight.class",
+    "cn/foggyhillside/ends_delight/EndsDelight$ClientSetupEvents.class",
+    "cn/foggyhillside/ends_delight/event/DragonToothKnifeEvent$KnifeEvents.class",
+    "cn/foggyhillside/ends_delight/registry/ModBiomeFeatures.class",
+    "cn/foggyhillside/ends_delight/worldgen/ChorusSucculentFeature.class",
     "vectorwing/farmersdelight/common/registry/ModBiomeFeatures.class",
     "vectorwing/farmersdelight/common/registry/ModBiomeModifiers.class",
     "vectorwing/farmersdelight/common/registry/ModPlacementModifiers.class",
@@ -2022,7 +2028,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = source.name.startswith((
                     "alternate_current-", "cupboard-", "lootintegrations-", "creatingspace-",
-                    "CreeperOverhaul-", "FarmersDelight-", "coffee_delight-",
+                    "CreeperOverhaul-", "FarmersDelight-", "coffee_delight-", "ends_delight-",
                     "mcw-", "AI-Improvements-", "attributefix-", "LeavesBeGone-",
                     "Almanac-", "libraryferret-", "structure_layout_optimizer-",
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
