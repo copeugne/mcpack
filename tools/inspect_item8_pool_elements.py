@@ -231,6 +231,7 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "net/sweenus/simplyswords/SimplySwords.class",
     "net/sweenus/simplyswords/neoforge/SimplySwordsForge.class",
     "net/sweenus/simplyswords/neoforge/client/SimplySwordsClientForge.class",
     "net/sweenus/simplyswords/mixin/LivingEntityMixin.class",
