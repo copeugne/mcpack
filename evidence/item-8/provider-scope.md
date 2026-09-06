@@ -702,6 +702,60 @@ attributes. This separates unknown membership from incomplete attributes.
 | `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 
+## Railways membership checkpoint
+
+Railways remains OPEN. Archive railways-0.2.1+neoforge-mc1.21.1.jar has SHA-256
+b7636c8b1b0352ed1a130dfe67f8bb574e2fc08803ed1cda4d3ea00505193914.
+Source eaa7a6b (extractor 60016db) retains thirteen classes: all eight annotated
+entries, the common initializer/event delegate, both mixin plugins and the
+StructureTemplate save hook. Source 0e7edb0 (extractor cf398e3) adds ModSetup
+and HandcarItem. Both captures reproduced exactly, with commands alongside them.
+
+The focused check accounts for all 14066 payload files, including 2735 root data
+files. The data partition is recipes (1071), advancements (660), loot tables
+(615), tags (387), one liquid-fuel definition and one legacy structures template.
+The optional phantom-track data pack contains exactly three sequenced-assembly
+recipes plus metadata. This packaged content does not add a generated site.
+
+The sole root template is data/railways/structures/handcar/assembly.nbt. It is a
+3 by 3 by 3 handcar assembly, with air, seat and handcar palette entries, no
+entities, and a single bogey block-entity payload. Preserve its legacy plural
+structures path and DataVersion 3120. It is not an adventure family. Do not
+claim that HandcarItem consumes this resource: the inspected makeTrain method
+assembles the vehicle directly through temporary block placement/restoration
+and CarriageContraption assembly, called through player item interaction.
+StructureMixin adds Railways data-version metadata to an existing template save;
+it does not generate an independent root.
+
+The common event delegate handles redstone-link instruction ticks, joining-player
+version notification and tag-cycle updates. Its NeoForge wrapper also registers
+fluid/item capabilities, stops conductor viewing on game-mode change and installs
+the liquid-fuel reload listener. ModSetup dispatches construction, train, item,
+entity, sound, recipe, portal-track and compatibility registrations. The common
+mixin plugin supplies no extra mixin list and delegates conditional selection.
+The NeoForge plugin additionally patches rolling-mode enums and container-level
+access. These observations narrow the scope; final entry/delegate and mixin role
+reconciliation remains necessary before provider closure.
+
+The two declared mixin files contain 106 common entries (97 plus nine), with
+68 separately declared client entries. StructureMixin is inspected; the other
+105 common entries still need supported role dispositions, reusing any available
+consumer evidence. Inspect actual targets and callbacks. Follow a helper only
+for a concrete unresolved independent-site boundary, not general train gameplay.
+Also finish the resource-pack/META-INF role check and bind the resulting provider
+disposition. Do not recapture the fifteen classes already retained.
+
+```sh
+uv run pytest -q tests/item8/test_railways_provider_scope.py
+uv run ruff check tests/item8/test_railways_provider_scope.py
+uv run basedpyright tests/item8/test_railways_provider_scope.py
+```
+
+Two focused tests pass (0.22s). Scoped Ruff and Basedpyright pass after an explicit
+string type annotation for palette names. These checks establish the packaged
+vehicle boundary and bind existing source, not complete provider coverage.
+Census remains 87 resolved providers, 49 open.
+
 ## Lithostitched provider disposition
 
 lithostitched-1.7.10+beta4-neoforge-21.1.jar is RESOLVED as shared generation

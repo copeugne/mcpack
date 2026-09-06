@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+Railways is current and remains OPEN. Delivered source eaa7a6b and 0e7edb0
+covers fifteen classes, including all eight annotated entries, both mixin plugins,
+common setup/events, StructureMixin and player handcar assembly. The focused
+provider checkpoint accounts for the full payload, three optional crafting
+recipes and the sole legacy handcar template. Two tests pass (0.22s); scoped
+Ruff/Basedpyright pass. No independent family arises from the handcar component.
+Next: reconcile the other 105 declared common mixin roles, finish actual
+entry/delegate and resource-pack/META-INF boundaries, then close the provider.
+Do not audit general train gameplay or repeat the fifteen captures. Census stays
+87 resolved, 49 open. No runtime or capture process is live.
+
 Lithostitched membership is RESOLVED. The full archive, all declared common/server
 hooks, 26 template lists, twenty overlays and remaining resource roles are bound
 by test_lithostitched_provider_scope.py. Three cases pass (0.31s); scoped Ruff and
