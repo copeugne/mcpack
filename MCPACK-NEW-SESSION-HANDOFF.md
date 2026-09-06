@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+AdoraBuild furnished tree relationships are resolved using views a052167e. Birch
+workshop is separated from cherry/oak tree camps; tree-house variants and mushroom
+residence retain their distinct forms. The affected definition/root/evidence case
+and scoped checks pass. Backlog: 84 (IDAS 59, AdoraBuild 25). Coverage groups: 406,
+up one after the justified split. Inventory refresh follows; attributes and
+33 nonregistry contributions remain open.
+
 The furnished AdoraBuild tree/mushroom/tree-house boundary needs a direct layout
 comparison: content lists cannot distinguish built-in tree rooms from separate
 canopy houses. Select their seven exact templates with the existing renderer.

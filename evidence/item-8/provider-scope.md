@@ -9506,3 +9506,26 @@ SHA-256: 98a4a76bcae6e401ae55bb8b11e1a6883359b3a476a5e8ced8df82c39ca86c80.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-installations-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-installations-r2.json
 ```
+
+### AdoraBuild furnished tree family boundaries, 2026-09-07
+
+Views a052167e and preserved template contents show a substantial masonry workshop
+beneath birch, distinct from cherry/oak tree-and-camp caches. The birch root moves
+to birch_tree_workshop with its full definition retained. Negative offset and bury
+adaptation are source inputs, not observed exposure. Cherry/oak remain variants
+with their nest, loot and crafting differences. The tree-house alternatives retain
+their constructed room volumes and different chest/pot elevations. The furnished
+mushroom stem-and-cap residence remains a separate design.
+
+The existing definition/registry/evidence check now expects the split and continues
+to bind every root exactly once to full packaged definitions and component traces.
+That case and scoped quality checks pass. Canonical-note backlog: 84, down from 87
+(IDAS 59, AdoraBuild 25). Coverage groups: 406, up from 405 because of the justified
+birch split. No new root or provider was introduced. Required attributes and
+33 nonregistry contribution records remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+```
