@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Dependency-selection source is delivered at b9d76078. Select only its three
+remaining direct boundaries: JigsawStructure generation caller, PlatformHooks
+lookup and NeoForge PlatformHooksImpl. Existing extractor and scoped checks are
+reused. Backlog remains 124 until the full path and frozen loaded mods are bound.
+
 IDAS optional-dependency dispositions need the actual OptionalDependencyStructure
 consumer, which is absent from prior captures. ModAdaptiveStructure also governs
 three existing alternate-pool notes. Select these two exact retained classes with
