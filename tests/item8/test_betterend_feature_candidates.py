@@ -331,3 +331,48 @@ def test_betterend_complete_template_partition_and_village_graph() -> None:
     registry = read_registry(Path(
         "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"))
     assert {"betterend:end_village", "betterend:eternal_portal"} <= set(registry)
+
+
+def test_betterend_frozen_generator_keys_bind_captured_fields() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    directory = Path("evidence/item-8/sources/betterend-generator-config")
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "ecf9389b2ff32e43bfedd76f5039971e8b4de987b0022373470f61a3b372334e"
+    )
+    identities = cast("list[dict[str, str]]", json.loads(raw))
+    assert len(identities) == 1
+    row = identities[0]
+    assert row["archive"] == source.name
+    assert row["archive_sha256"] == source.sha256
+    with ZipFile(source.path) as archive:
+        assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+    disassembly = (directory / row["disassembly"]).read_bytes()
+    assert hashlib.sha256(disassembly).hexdigest() == row["disassembly_sha256"]
+    raw_config = Path("evidence/item-6/frozen/config/betterend/generator.json").read_bytes()
+    assert hashlib.sha256(raw_config).hexdigest() == (
+        "6f1156606391286f22eda4f84a1101fa9059ca1efdd1b2be49d7ab29a37ffa75"
+    )
+    config = cast("dict[str, dict[str, JsonValue]]", json.loads(raw_config))
+    for key, field in (
+        ("generate_central_island", "generateCentralIsland"),
+        ("generate_obsidian_platform", "generateObsidianPlatform"),
+        ("has_portal", "hasPortal"), ("replace_portal", "replacePortal"),
+        ("has_pillars", "hasPillars"), ("replace_pillars", "replacePillars"),
+    ):
+        assert config["structure"][key] is True
+        assert ("// String " + key).encode() in disassembly
+        assert ("// Field " + field + ":").encode() in disassembly
+    assert config["structure"]["end_city_fail_chance"] == 1
+    assert config["generator"]["use_new_generator"] is True
+    assert config["entity"]["has_dragon_fights"] is True
+    spawn = cast("dict[str, JsonValue]", config["entity"]["spawn"])
+    assert spawn["has_spawn"] is False
+    for key, field in (
+        ("end_city_fail_chance", "endCityFailChance"),
+        ("use_new_generator", "newGenerator"),
+        ("has_dragon_fights", "hasDragonFights"), ("has_spawn", "changeSpawn"),
+    ):
+        assert ("// String " + key).encode() in disassembly
+        assert ("// Field " + field + ":").encode() in disassembly
