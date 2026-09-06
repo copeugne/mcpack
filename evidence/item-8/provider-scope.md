@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 126 of 136. The exact queue below has 10 open rows.
+Supported provider dispositions: 127 of 136. The exact queue below has 9 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -646,7 +646,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `comforts-neoforge-9.0.5+1.21.1.jar` | comforts-provider and comforts-spectrelib; focused provider test | RESOLVED: player sleeping equipment, sleep events and config support, no independent family. See Comforts membership closure below. |
 | `create-1.21.1-6.0.10.jar` | Create captures and test_create_provider_scope.py; final disposition below. | RESOLVED: Ore generation, player construction, machine behavior, GameTest fixtures and client Ponder scenes. All three embedded libraries accounted for. No independent natural structure family. |
 | `create-enchantment-industry-2.4.0.jar` | cei-entries, hooks, registrations and world-interaction; focused provider test | RESOLVED: player machines, experience processing, existing-block lightning transformation and client tutorials, no independent family. See Enchantment Industry membership closure below. |
-| `createbigcannons-5.11.6+mc.1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `createbigcannons-5.11.6+mc.1.21.1.jar` | Seven cbc source increments and test_cbc_provider_scope.py | RESOLVED: player-built cannon equipment, contraption assembly, projectile effects and tutorials, no independent family. See Big Cannons membership closure below. |
 | `createdieselgenerators-1.21.1-1.3.15.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `creatingspace-1.21.1-1.7.18.jar` | Existing root decisions, creating-space-provider, creating-space-arrival, creating-space-common-delegates and test_creating_space_provider_scope.py | RESOLVED: Four existing roots, five connected pools, six templates partitioned, terrain and common-hook roles accounted for. Disconnected outpost retained below. Canonical grouping and attributes remain separate. |
 | `cristellib-neoforge-1.21.1-3.1.7.jar` | `cristellib-provider`, `cristellib-writers`, `cristellib-set-writers`, `cristellib-conditions`, `cristellib-builtin`; full payload/source binding. | RESOLVED: consumer pack loading and existing structure-set configuration. No independent family; Waystones replacement condition fails in the frozen runtime. |
@@ -8066,3 +8066,59 @@ or new evidence framework was needed.
 Whole providers: 126 resolved, 10 open. Working groups remain 410 and explicit
 provisional Moog grouping decisions remain 100. Canonical membership, required
 attributes, final acceptance, clean review and main delivery remain incomplete.
+
+## Big Cannons membership closure
+
+Create Big Cannons membership is RESOLVED with no independent generated
+structure family. Archive createbigcannons-5.11.6+mc.1.21.1.jar has SHA-256
+9345e8773aa8be0f33bbf633796124e70d84c0c299aac94d8d252086f8712ffe.
+Its 855 classes, complete data-category partition and 29 Ponder NBT assets are
+bound by test_cbc_provider_scope.py. There are no nested JARs or service entries.
+Packaged data describes cannon recipes, equipment, projectiles, block armor,
+impact transformations, fluid properties, tags and related parameters. It has
+no structure definitions or generated-world templates. Tutorial assets belong
+to the client Ponder namespace, not independent world generation.
+
+Reuse seven source increments: 5c75167e (entry/plugin declarations), 6444274f
+(common and conditional hooks), ce85231e (common initialization), 09ecf172
+(shared events), d0844cc0 (damage lifecycle), 38af6929 (registrations), and
+b67e8d0b (construction integrations). All 62 captured classes independently
+reproduce exactly. The entry and hook set includes all four automatic entries,
+the mixin plugin, and all 32 common/conditional hooks. CBCClientNeoForge
+explicitly declares Dist.CLIENT; 15 additional mixins are declared client-only.
+Optional plugin checks and integration selection are preserved without claiming
+that excluded Sable or other optional providers are active.
+
+Registrations add cannon blocks and items, block entities, projectile and
+contraption entities, fluids, recipes, menus, particles, sounds, data components,
+display sources and mechanical-arm interactions. Construction integrations
+register movement checks, cannon-loader/fragile contraption types, copycat armor
+serialization and Curios gas-mask equipment predicates. These consume existing
+or player-built blocks and equipment. Contraption uses of StructureBlockInfo
+and searchMovedStructure are assembly of existing blocks, not generated families.
+
+Shared events handle player construction/breakage, data reload and synchronization,
+munition recipes and existing-world damage state. The world tick delegate updates
+partial damage records and block-damage visuals. Its load path restores existing
+damage data. Projectile/explosion effects and block-impact transformations alter
+existing content; they are not independently generated authored structures.
+Stop generic cannon, physics, networking, recipe, serializer and damage-system
+tracing here. Membership inspection does not prove compatibility, persistence
+correctness, cannon balance or acceptable shared-server damage.
+
+```sh
+uv run pytest -q tests/item8/test_cbc_provider_scope.py
+uv run ruff check tests/item8/test_cbc_provider_scope.py
+uv run basedpyright tests/item8/test_cbc_provider_scope.py
+```
+
+The focused source/payload case and scoped quality checks pass. The test binds
+archive identity, complete packaged data categories, tutorial-only NBT paths,
+automatic entries, common mixin targets and all captured source/class hashes.
+It rejects escaped capture paths and unexplained source files. A single test
+assertion was wrapped to meet the line-length style limit. No new runtime
+measurement or evidence framework was needed for the membership decision.
+
+Whole providers: 127 resolved, 9 open. Working groups remain 410 and explicit
+provisional Moog decisions remain 100. Canonical reconciliation, attributes,
+final acceptance, clean review and main delivery remain incomplete.
