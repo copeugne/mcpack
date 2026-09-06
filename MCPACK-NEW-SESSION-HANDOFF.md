@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-07
 
+Seven AdoraBuild records are reconciled using ee31d68f views and packaged content.
+Palace, hall and pavilion are separated, as are red sandstone hall and trapped
+shrine. Buried castle and End temple variants retain their full differences.
+The focused source-binding case and scoped checks pass. Canonical-note backlog:
+61 (IDAS 59, AdoraBuild ocean_temple and house). Coverage groups: 414. Inventory
+refresh follows. Ocean geometry is obscured by water in the preserved projection;
+do not treat that projection as a completed layout comparison. Houses have 45
+templates. Required attributes and 33 nonregistry contributions remain open.
+
 The eight remaining non-house AdoraBuild records contain sixteen standalone
 templates with no missing trace components. Existing content shows different
 loot, inhabitants and building envelopes; compare their complete layouts with
