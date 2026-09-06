@@ -6,6 +6,27 @@
 
 ### Continuation update - 2026-09-06
 
+Latest checkpoint at 967baca: Cave Biomes provider scope is closed, pushed
+and remote-ref verified. Census: 71 resolved providers, 65 open. One focused
+case and scoped quality checks pass. Source 7f76013 reproduces exactly.
+All 38 worldgen resources are accounted for as cave terrain/vegetation and
+existing vanilla feature consumers. No independent family. Biome eligibility,
+natural mob inputs, common hooks and frozen configuration are recorded in
+provider-scope.md. Do not repeat this closure or detailed attribute work yet.
+
+Next: shared YUNG API. Initial archive inspection confirms 197 files, 179
+classes, four structure tags and four platform services. Common mixin metadata
+selects YungsApiMixinPlugin and fifteen mixins; the NeoForge metadata adds
+IncreaseStructureWeightLimitMixinNeoForge. Its sole mod entry is
+YungsApiNeoForge. Reuse pool-codecs and existing consuming YUNG source captures;
+inspect registration dispatch, plugin and modifier roles before closing this
+provider. These initial observations are leads, not acceptance. The first
+metadata probe accidentally included class paths containing /services/ and
+failed UTF-8 decoding; the corrected probe restricted META-INF/services/.
+Canonical grouping, final family count, eleven attributes and review/main merge
+remain open. Previous goal turn delivered source evidence; this turn delivered
+provider closure. No blocker and no new measurement system.
+
 Latest checkpoint at b270bb3: Better Caves provider scope is closed,
 pushed and remote-ref verified. Census: 70 resolved providers, 66 open. One
 focused case and scoped quality checks pass. Source d9e30ff reproduces exactly.
