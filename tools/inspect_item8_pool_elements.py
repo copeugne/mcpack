@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "curios-neoforge-9.5.1+1.21.1.jar",
         "createdieselgenerators-1.21.1-1.3.15.jar",
         "createbigcannons-5.11.6+mc.1.21.1.jar",
         "create-enchantment-industry-2.4.0.jar",
@@ -225,6 +226,22 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "top/theillusivec4/curios/Curios.class",
+    "top/theillusivec4/curios/Curios$ClientProxy.class",
+    "top/theillusivec4/curios/platform/NeoForgeCurios.class",
+    "top/theillusivec4/curios/mixin/core/AccessorEntity.class",
+    "top/theillusivec4/curios/mixin/core/MixinCuriosTriggers.class",
+    "top/theillusivec4/curios/mixin/core/MixinCuriosTriggersEquip.class",
+    "top/theillusivec4/curios/mixin/core/MixinApplyBonusCount.class",
+    "top/theillusivec4/curios/mixin/core/MixinCuriosApi.class",
+    "top/theillusivec4/curios/mixin/core/MixinCuriosDataProvider.class",
+    "top/theillusivec4/curios/mixin/core/MixinEnchantedCountIncreaseFunction.class",
+    "top/theillusivec4/curios/mixin/core/MixinInventory.class",
+    "top/theillusivec4/curios/mixin/core/MixinLivingEntity.class",
+    "top/theillusivec4/curios/mixin/core/MixinNbtPredicate.class",
+    "top/theillusivec4/curios/mixin/core/MixinPiglinAi.class",
+    "top/theillusivec4/curios/mixin/core/MixinPowderSnowBlock.class",
+    "top/theillusivec4/curios/mixin/core/MixinV1460.class",
     "com/jesz/createdieselgenerators/CDGBlockEntityTypes.class",
     "com/jesz/createdieselgenerators/CDGBlocks.class",
     "com/jesz/createdieselgenerators/CDGCreativeTab.class",
@@ -4263,6 +4280,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 verbose |= name.startswith("plus/dragons/createenchantmentindustry/")
                 verbose |= name.startswith("rbasamoyai/createbigcannons/")
                 verbose |= name.startswith("com/jesz/createdieselgenerators/")
+                verbose |= name.startswith("top/theillusivec4/curios/")
                 verbose |= name.startswith("com/teamresourceful/resourcefullib/")
                 verbose |= name.startswith("com/illusivesoulworks/")
                 verbose |= name.startswith("dan200/computercraft/")
