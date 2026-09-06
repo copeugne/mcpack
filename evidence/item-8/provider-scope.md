@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 122 of 136. The exact queue below has 14 open rows.
+Supported provider dispositions: 123 of 136. The exact queue below has 13 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -638,7 +638,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `bookshelf-neoforge-1.21.1-21.1.81.jar` | 3a315ed2 provider entries; 17cdf0d7 common initialization. | RESOLVED: utility codecs, commands and consumer gameplay/loot APIs, no independent generated family. See Bookshelf membership closure. |
 | `bundle-api-neoforge-1.1.0.jar` | `bundle-api-provider` (a14b5e0), test_small_utility_provider_scope.py | RESOLVED: Custom bundle data components, item interaction and rendering; no independent family. See bundle and shield dispositions below. |
 | `c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar` | 52 C2ME source captures; test_c2me_provider_scope.py | RESOLVED: existing generation, scheduling, persistence and view-distance modifications; no independent family. See final C2ME membership closure below. |
-| `cc-tweaked-1.21.1-forge-1.119.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `cc-tweaked-1.21.1-forge-1.119.0.jar` | cc-tweaked-provider, startup, registry-lifecycle and client-entries; focused provider test | RESOLVED: player computers, existing-block lifecycle and loot modifiers, no independent family. See CC:Tweaked membership closure below. |
 | `chipped-neoforge-1.21.1-4.0.2.jar` | `chipped-provider`, `chipped-crafting`; complete payload binding. | RESOLVED: building blocks, recipes, player workbench crafting and block behavior. No independent structure family. |
 | `cloth-config-15.0.140-neoforge.jar` | `cloth-config-provider` (6e7567c7), complete payload/source binding. | RESOLVED: config-screen API; sole automatic initialization is client-guarded. No independent family. |
 | `coffee_delight-1.4.1.jar` | `coffee-delight-provider` (49445ab), test_coffee_delight_provider_scope.py | RESOLVED: Vanilla coffee-bush patch and food/item content, with no independent structure family. Full disposition below. |
@@ -7876,3 +7876,56 @@ complexity suppressions to avoid adding a helper framework.
 Whole providers: 122 resolved, 14 open. Working groups remain 410 and 100
 explicitly provisional Moog grouping decisions remain. Item 8's canonical
 family list, attributes, final gate and review/main delivery remain incomplete.
+
+## CC:Tweaked membership closure
+
+CC:Tweaked membership is RESOLVED, with no independent generated family.
+Archive cc-tweaked-1.21.1-forge-1.119.0.jar has SHA-256
+169e2fe0445e320562c0568baa4c796a69a3464a0a5e902c484be1be3e326a0b.
+Its 1,190 classes, computer Lua programs, recipes, advancements, tags, upgrade
+and loot data are bound by the focused provider test. No structure definitions
+or NBT templates are packaged. Nested Cobalt and JZlib provide Lua/runtime
+and compression support, with no Minecraft references or service entries.
+
+Source increments 602c594a, 67708b9f, 8d0af4df and a66abd1c retain 31 classes
+and reproduce byte-for-byte with their committed extractor commands. They
+cover automatic entries, all four common mixins, three common service
+providers, direct registration/integration delegates and computer lifecycle.
+Both automatic client subscribers explicitly declare Dist.CLIENT. The client
+service and mixin roles are rendering, UI and client-network support.
+
+Mod registries add computer blocks/items, block entities, data components,
+upgrades, menus, commands, recipes, loot conditions and creative tabs. Server
+lifecycle operates registered computers and existing block-entity ticks.
+Common mixins migrate computer/turtle data. Create integration supplies block
+movement checks; More Red integration supplies bundled-redstone capability.
+These are construction and existing-content behavior, not a generated family.
+Stop tracing generic Lua, filesystem, networking, renderer or turtle APIs.
+
+Retain the computercraft:treasure_disk injection into ten existing vanilla
+loot tables: SIMPLE_DUNGEON, ABANDONED_MINESHAFT, STRONGHOLD_CORRIDOR,
+STRONGHOLD_CROSSING, STRONGHOLD_LIBRARY, DESERT_PYRAMID, JUNGLE_TEMPLE,
+IGLOO_CHEST, WOODLAND_MANSION and VILLAGE_CARTOGRAPHER. CommonHooks supplies
+the extra loot pool and ForgeCommonHooks adds it on loot-table loading. This
+is a family loot-attribute input, not another family or proof of an observed
+disk in a specific chest. Player-programmed construction remains distinct
+from automatically generated authored content. No tuning or new measurement
+was needed for this provider decision.
+
+```sh
+uv run pytest -q tests/item8/test_cc_tweaked_provider_scope.py
+uv run ruff check tests/item8/test_cc_tweaked_provider_scope.py
+uv run basedpyright tests/item8/test_cc_tweaked_provider_scope.py
+```
+
+The focused case and scoped quality checks pass. The test binds the frozen
+payload, data categories, nested libraries, common entry/hook/service set,
+client side declarations and all captured archive/class/source hashes. It
+rejects escaped capture paths and unexplained files. One initial assertion
+line exceeded the style limit by one character; it was wrapped without a
+semantic change. No runtime activation or gameplay equivalence is inferred
+from this source-membership check.
+
+Whole providers: 123 resolved, 13 open. Working groups remain 410; 100
+explicitly provisional Moog grouping decisions remain. Final canonical
+membership, family attributes, final gate and review/main delivery remain open.

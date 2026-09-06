@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+CC:Tweaked membership is resolved with no independent family. Reuse source
+increments 602c594a, 67708b9f, 8d0af4df and a66abd1c (31 classes). Retain
+the treasure-disk pool additions to ten existing vanilla loot tables as
+attribute inputs. The focused payload/source test and scoped quality checks
+pass; all captures reproduce exactly. Stop generic computer/Lua/network/
+renderer/turtle tracing. Whole providers: 123 resolved, 13 open. Working
+groups remain 410 and explicitly provisional Moog decisions remain 100.
+Continue remaining provider membership and canonical grouping before detailed
+attributes. Final Item 8 gate, clean review and main merge remain open.
+
+
 C2ME membership is resolved with no independent generated family. Reuse all
 52 C2ME source captures (259 disassemblies), ending with remaining-hook
 increments 7afc4e46 through 241de3bd and command/plugin boundary 56cbfb4f.
